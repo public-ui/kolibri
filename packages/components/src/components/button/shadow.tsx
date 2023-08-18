@@ -118,7 +118,7 @@ export class KolButton implements Props {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
@@ -135,7 +135,7 @@ export class KolButton implements Props {
 	@Prop() public _iconAlign?: AlignPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;

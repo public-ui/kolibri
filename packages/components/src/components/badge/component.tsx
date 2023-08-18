@@ -67,12 +67,12 @@ export class KolBadge implements API {
 	}
 
 	/**
-	 * Setzt die Hintergrundfarbe.
+	 * Defines the backgroundColor and foregroundColor.
 	 */
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
-	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
+	 * ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
 	 *   since it would not be accessible without visible labeling. A separate tooltip
 	 *   is not planed, because a badge is not an interactive element.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -86,7 +86,7 @@ export class KolBadge implements API {
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @deprecated use _hide-label
 	 */

@@ -33,7 +33,7 @@ export class KolSpan implements Props {
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;

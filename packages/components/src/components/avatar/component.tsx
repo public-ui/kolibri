@@ -28,7 +28,7 @@ export class KolAvatarWc implements API {
 	}
 
 	/**
-	 * Defines the image source to render
+	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop() public _src?: ImageSourcePropType;
 

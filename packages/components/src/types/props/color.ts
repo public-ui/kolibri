@@ -12,6 +12,9 @@ type CharacteristicColors = {
 	neutral: string;
 };
 
+/**
+ * Defines the backgroundColor and foregroundColor.
+ */
 export type ColorPair = {
 	backgroundColor: string;
 	foregroundColor: Stringified<CharacteristicColors>;

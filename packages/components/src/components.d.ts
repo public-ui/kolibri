@@ -229,7 +229,7 @@ export namespace Components {
          */
         "_label": string;
         /**
-          * Defines the image source to render
+          * Sets the image `src` attribute to the given string.
          */
         "_src"?: string;
     }
@@ -239,17 +239,17 @@ export namespace Components {
          */
         "_label": LabelPropType;
         /**
-          * Defines the image source to render
+          * Sets the image `src` attribute to the given string.
          */
         "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
-          * Setzt die Hintergrundfarbe.
+          * Defines the backgroundColor and foregroundColor.
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
+          * ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
           * @deprecated Will be removed in the next major version.
          */
@@ -259,7 +259,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -324,7 +324,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -337,7 +337,7 @@ export namespace Components {
          */
         "_iconAlign"?: AlignPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -425,7 +425,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -434,7 +434,7 @@ export namespace Components {
          */
         "_icon"?: IconPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -524,7 +524,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -537,7 +537,7 @@ export namespace Components {
          */
         "_iconAlign"?: AlignPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -950,7 +950,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1036,7 +1036,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1153,7 +1153,7 @@ export namespace Components {
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1270,7 +1270,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1357,7 +1357,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1479,7 +1479,7 @@ export namespace Components {
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1578,7 +1578,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1663,7 +1663,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1734,7 +1734,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1834,7 +1834,7 @@ export namespace Components {
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1977,7 +1977,7 @@ export namespace Components {
          */
         "_download"?: DownloadPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1994,7 +1994,7 @@ export namespace Components {
          */
         "_iconAlign"?: AlignPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2087,7 +2087,7 @@ export namespace Components {
          */
         "_download"?: DownloadPropType;
         /**
-          * Tells the label and shows it in a Tooltip instead.
+          * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -2100,7 +2100,7 @@ export namespace Components {
          */
         "_icon"?: IconPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2214,7 +2214,7 @@ export namespace Components {
          */
         "_download"?: DownloadPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2231,7 +2231,7 @@ export namespace Components {
          */
         "_iconAlign"?: AlignPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2344,7 +2344,7 @@ export namespace Components {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Defines if navigation labels should be hidden.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -2497,7 +2497,7 @@ export namespace Components {
          */
         "_height"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -2600,7 +2600,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2620,7 +2620,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2671,7 +2671,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2833,7 +2833,7 @@ export namespace Components {
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -3537,7 +3537,7 @@ declare namespace LocalJSX {
          */
         "_label": string;
         /**
-          * Defines the image source to render
+          * Sets the image `src` attribute to the given string.
          */
         "_src"?: string;
     }
@@ -3547,17 +3547,17 @@ declare namespace LocalJSX {
          */
         "_label": LabelPropType;
         /**
-          * Defines the image source to render
+          * Sets the image `src` attribute to the given string.
          */
         "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
-          * Setzt die Hintergrundfarbe.
+          * Defines the backgroundColor and foregroundColor.
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
+          * ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
           * @deprecated Will be removed in the next major version.
          */
@@ -3567,7 +3567,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -3632,7 +3632,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3645,7 +3645,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: AlignPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -3733,7 +3733,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -3742,7 +3742,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: IconPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -3832,7 +3832,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3845,7 +3845,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: AlignPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -4258,7 +4258,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4344,7 +4344,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4461,7 +4461,7 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4578,7 +4578,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4665,7 +4665,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4787,7 +4787,7 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4886,7 +4886,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4971,7 +4971,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5042,7 +5042,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5142,7 +5142,7 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5285,7 +5285,7 @@ declare namespace LocalJSX {
          */
         "_download"?: DownloadPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5302,7 +5302,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: AlignPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -5395,7 +5395,7 @@ declare namespace LocalJSX {
          */
         "_download"?: DownloadPropType;
         /**
-          * Tells the label and shows it in a Tooltip instead.
+          * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5408,7 +5408,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: IconPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -5522,7 +5522,7 @@ declare namespace LocalJSX {
          */
         "_download"?: DownloadPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5539,7 +5539,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: AlignPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -5652,7 +5652,7 @@ declare namespace LocalJSX {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Defines if navigation labels should be hidden.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5805,7 +5805,7 @@ declare namespace LocalJSX {
          */
         "_height"?: string;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5908,7 +5908,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -5928,7 +5928,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -5979,7 +5979,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
         "_hideLabel"?: boolean;
         /**
@@ -6141,7 +6141,7 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label.
+          * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
