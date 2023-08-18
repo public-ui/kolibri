@@ -84,7 +84,7 @@ export class KolButton implements Props {
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
@@ -96,7 +96,7 @@ export class KolButton implements Props {
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @deprecated use _label instead
 	 */
@@ -135,7 +135,7 @@ export class KolButton implements Props {
 	@Prop() public _iconAlign?: AlignPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;

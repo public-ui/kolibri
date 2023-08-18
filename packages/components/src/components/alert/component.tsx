@@ -135,7 +135,7 @@ export class KolAlertWc implements API {
 	@Prop() public _on?: KoliBriAlertEventCallbacks;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 

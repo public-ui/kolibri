@@ -151,7 +151,7 @@ export class KolInputColor implements API {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Vorschlagswörter an.
+	 * Deprecated: Gibt die Liste der Vorschlagswörter an.
 	 * @deprecated Use _suggestions instead.
 	 */
 	@Prop() public _list?: SuggestionsPropType;

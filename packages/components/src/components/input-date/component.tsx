@@ -172,7 +172,7 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Vorschlagszahlen an.
+	 * Deprecated: Gibt die Liste der Vorschlagszahlen an.
 	 * @deprecated Use _suggestions instead.
 	 */
 	@Prop() public _list?: Stringified<string[]>;
@@ -247,7 +247,7 @@ export class KolInputDate implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type: InputDateType = 'date';
 

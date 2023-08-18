@@ -39,12 +39,13 @@ export class KolAlert implements Props {
 	@Prop() public _alert?: boolean = false;
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
+	 * TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Deprecated: Gibt die Beschriftung der Komponente an.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _heading?: string;
@@ -65,7 +66,7 @@ export class KolAlert implements Props {
 	@Prop() public _on?: KoliBriAlertEventCallbacks;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 

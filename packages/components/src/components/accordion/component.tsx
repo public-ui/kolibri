@@ -118,7 +118,7 @@ export class KolAccordion implements API {
 	}
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Deprecated: Gibt die Beschriftung der Komponente an.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _heading?: string;
