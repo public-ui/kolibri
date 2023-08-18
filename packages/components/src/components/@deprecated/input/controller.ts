@@ -48,7 +48,7 @@ export class InputController extends ControlledInputController implements Watche
 		validateHideLabel(this.component, value, {
 			hooks: {
 				afterPatch: () => {
-					if (value) {
+					if (this.component.state._hideLabel) {
 						a11yHint('Property hide-label for inputs: Only use for exceptions like search inputs that are clearly identifiable by their context.');
 					}
 				},
