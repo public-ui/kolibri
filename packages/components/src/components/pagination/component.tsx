@@ -65,7 +65,7 @@ export class KolPagination implements API {
 
 		return (
 			<Host>
-				<div>
+				<div aria-label={translate('kol-pagination')}>
 					{this.state._hasButtons.first && (
 						<kol-button
 							class="first"
@@ -267,6 +267,7 @@ export class KolPagination implements API {
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
 			<kol-button
+				aria-label={translate('kol-page-current', { placeholders: { page: String(page) } })}
 				exportparts="icon"
 				key={`${this.nonce}-${page}`}
 				_customClass={this.state._customClass}

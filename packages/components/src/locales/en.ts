@@ -13,6 +13,7 @@ export default {
 	'change-order': 'Change order of {{colLabel}}',
 	'action-running': 'Action is running...',
 	'action-done': 'Action done',
+	pagination: 'Pagination',
 	'page-first': 'Directly to the first page',
 	'page-back': 'One page back',
 	'page-next': 'One page further',
