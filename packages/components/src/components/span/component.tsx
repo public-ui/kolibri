@@ -27,7 +27,7 @@ export class KolSpanWc implements API {
 				{this.state._icon.top && <kol-icon class="icon top" style={this.state._icon.top.style} _label="" _icon={this.state._icon.top.icon} />}
 				<span>
 					{this.state._icon.left && <kol-icon class="icon left" style={this.state._icon.left.style} _label="" _icon={this.state._icon.left.icon} />}
-					{!this.state._hideLabel && hideExpertSlot ? <span>{this.state._label}</span> : ''}
+					{!this.state._hideLabel && hideExpertSlot ? <span class="span-label">{this.state._label}</span> : ''}
 					<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
