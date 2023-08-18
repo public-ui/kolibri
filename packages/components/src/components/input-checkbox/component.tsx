@@ -202,7 +202,7 @@ export class KolInputCheckbox implements API {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @deprecated Verwende stattdessen das Attribute _variant.
 	 */
@@ -214,7 +214,7 @@ export class KolInputCheckbox implements API {
 	@Prop() public _value!: Stringified<StencilUnknown>;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: InputCheckboxVariant; // TODO: = 'default'; in v2 setzen
 

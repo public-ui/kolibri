@@ -64,7 +64,7 @@ export class KolSpin implements API {
 	@Prop() public _show?: boolean = false;
 
 	/**
-	 * Defines the variant of spin navigation.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: SpinVariantPropType = 'dot';
 

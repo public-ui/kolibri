@@ -163,7 +163,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+          * Defines whether the card has a close button.
          */
         "_hasCloser"?: boolean;
         /**
@@ -184,11 +184,11 @@ export namespace Components {
          */
         "_on"?: KoliBriAlertEventCallbacks;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: AlertType;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: AlertVariant;
     }
@@ -198,7 +198,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed.
+          * Defines whether the card has a close button.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -215,11 +215,11 @@ export namespace Components {
          */
         "_on"?: KoliBriAlertEventCallbacks;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: AlertType;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: AlertVariant;
     }
@@ -914,7 +914,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
           * @deprecated Verwende stattdessen das Attribute _variant.
          */
         "_type"?: InputCheckboxVariant;
@@ -923,7 +923,7 @@ export namespace Components {
          */
         "_value": Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: InputCheckboxVariant;
     }
@@ -1117,7 +1117,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type": InputDateType;
         /**
@@ -1442,7 +1442,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
           * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
          */
         "_type"?: InputNumberType;
@@ -1919,7 +1919,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: InputTextType;
         /**
@@ -2361,7 +2361,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -2433,7 +2433,7 @@ export namespace Components {
          */
         "_max": number;
         /**
-          * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+          * Defines which variant should be used for presentation.
           * @deprecated will be removed in v2, use _variant
          */
         "_type"?: KoliBriProgressVariantType;
@@ -2446,7 +2446,7 @@ export namespace Components {
          */
         "_value": number;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: KoliBriProgressVariantType;
     }
@@ -2469,7 +2469,7 @@ export namespace Components {
          */
         "_quote": string;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: KoliBriQuoteVariant;
     }
@@ -2636,7 +2636,7 @@ export namespace Components {
          */
         "_show"?: boolean;
         /**
-          * Defines the variant of spin navigation.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: SpinVariantPropType;
     }
@@ -2911,7 +2911,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed.
+          * Defines whether the card has a close button.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -2942,7 +2942,7 @@ export namespace Components {
          */
         "_showDuration"?: number;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: AlertType;
     }
@@ -3471,7 +3471,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+          * Defines whether the card has a close button.
          */
         "_hasCloser"?: boolean;
         /**
@@ -3492,11 +3492,11 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriAlertEventCallbacks;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: AlertType;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: AlertVariant;
     }
@@ -3506,7 +3506,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed.
+          * Defines whether the card has a close button.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -3523,11 +3523,11 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriAlertEventCallbacks;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: AlertType;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: AlertVariant;
     }
@@ -4222,7 +4222,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
           * @deprecated Verwende stattdessen das Attribute _variant.
          */
         "_type"?: InputCheckboxVariant;
@@ -4231,7 +4231,7 @@ declare namespace LocalJSX {
          */
         "_value": Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: InputCheckboxVariant;
     }
@@ -4425,7 +4425,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: InputDateType;
         /**
@@ -4750,7 +4750,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
           * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
          */
         "_type"?: InputNumberType;
@@ -5227,7 +5227,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: InputTextType;
         /**
@@ -5669,7 +5669,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -5741,7 +5741,7 @@ declare namespace LocalJSX {
          */
         "_max": number;
         /**
-          * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+          * Defines which variant should be used for presentation.
           * @deprecated will be removed in v2, use _variant
          */
         "_type"?: KoliBriProgressVariantType;
@@ -5754,7 +5754,7 @@ declare namespace LocalJSX {
          */
         "_value": number;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: KoliBriProgressVariantType;
     }
@@ -5777,7 +5777,7 @@ declare namespace LocalJSX {
          */
         "_quote": string;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: KoliBriQuoteVariant;
     }
@@ -5944,7 +5944,7 @@ declare namespace LocalJSX {
          */
         "_show"?: boolean;
         /**
-          * Defines the variant of spin navigation.
+          * Defines which variant should be used for presentation.
          */
         "_variant"?: SpinVariantPropType;
     }
@@ -6219,7 +6219,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed.
+          * Defines whether the card has a close button.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -6250,7 +6250,7 @@ declare namespace LocalJSX {
          */
         "_showDuration"?: number;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: AlertType;
     }

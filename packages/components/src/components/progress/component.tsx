@@ -117,7 +117,7 @@ export class KolProcess implements API {
 	@Prop() public _max!: number;
 
 	/**
-	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * Defines which variant should be used for presentation.
 	 * @deprecated will be removed in v2, use _variant
 	 */
 	@Prop() public _type?: KoliBriProgressVariantType;
@@ -133,7 +133,7 @@ export class KolProcess implements API {
 	@Prop() public _value!: number;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: KoliBriProgressVariantType;
 

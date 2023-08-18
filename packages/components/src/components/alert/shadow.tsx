@@ -39,7 +39,7 @@ export class KolAlert implements Props {
 	@Prop() public _alert?: boolean = false;
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the card has a close button.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
@@ -65,12 +65,12 @@ export class KolAlert implements Props {
 	@Prop() public _on?: KoliBriAlertEventCallbacks;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 

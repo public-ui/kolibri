@@ -115,7 +115,7 @@ export class KolAlertWc implements API {
 
 	/*  */
 	/**
-	 * Defines whether the element can be closed.
+	 * Defines whether the card has a close button.
 	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
@@ -136,12 +136,12 @@ export class KolAlertWc implements API {
 	@Prop() public _on?: KoliBriAlertEventCallbacks;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 

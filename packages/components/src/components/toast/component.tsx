@@ -27,7 +27,7 @@ export class KolToast implements API {
 	@Prop() public _alert?: boolean = true;
 
 	/**
-	 * Defines whether the element can be closed.
+	 * Defines whether the card has a close button.
 	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
@@ -65,7 +65,7 @@ export class KolToast implements API {
 	@Prop() public _showDuration?: number = 10000;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 

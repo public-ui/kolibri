@@ -255,7 +255,7 @@ export class KolNav implements API {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @deprecated This property is deprecated and will be removed in the next major version.
 	 */

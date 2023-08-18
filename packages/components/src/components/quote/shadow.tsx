@@ -35,7 +35,7 @@ export class KolQuote implements API {
 	@Prop() public _quote!: string;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 
