@@ -2439,7 +2439,7 @@ export namespace Components {
          */
         "_type"?: KoliBriProgressVariantType;
         /**
-          * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
+          * Defines the unit of the step values (not shown).
          */
         "_unit"?: string;
         /**
@@ -2466,7 +2466,7 @@ export namespace Components {
          */
         "_label"?: string;
         /**
-          * Setzt den Text, also das Zitat selbst.
+          * Defines the text of the quote.
          */
         "_quote": string;
         /**
@@ -5748,7 +5748,7 @@ declare namespace LocalJSX {
          */
         "_type"?: KoliBriProgressVariantType;
         /**
-          * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
+          * Defines the unit of the step values (not shown).
          */
         "_unit"?: string;
         /**
@@ -5775,7 +5775,7 @@ declare namespace LocalJSX {
          */
         "_label"?: string;
         /**
-          * Setzt den Text, also das Zitat selbst.
+          * Defines the text of the quote.
          */
         "_quote": string;
         /**

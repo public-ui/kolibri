@@ -30,7 +30,7 @@ export class KolQuote implements API {
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Setzt den Text, also das Zitat selbst.
+	 * Defines the text of the quote.
 	 */
 	@Prop() public _quote!: string;
 
