@@ -653,7 +653,7 @@ export namespace Components {
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Überschrift an.
+          * Defines the text of the secondary headline.
          */
         "_secondaryHeadline"?: string;
     }
@@ -737,7 +737,7 @@ export namespace Components {
          */
         "_alt": string;
         /**
-          * Setzt den Lademodus.
+          * Defines the loading mode for the image.
          */
         "_loading"?: Loading;
         /**
@@ -3962,7 +3962,7 @@ declare namespace LocalJSX {
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Überschrift an.
+          * Defines the text of the secondary headline.
          */
         "_secondaryHeadline"?: string;
     }
@@ -4046,7 +4046,7 @@ declare namespace LocalJSX {
          */
         "_alt": string;
         /**
-          * Setzt den Lademodus.
+          * Defines the loading mode for the image.
          */
         "_loading"?: Loading;
         /**

@@ -19,7 +19,7 @@ export class KolImage implements API {
 	@Prop() public _alt!: string;
 
 	/**
-	 * Setzt den Lademodus.
+	 * Defines the loading mode for the image.
 	 */
 	@Prop() public _loading?: Loading = 'lazy';
 
