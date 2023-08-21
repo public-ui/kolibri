@@ -143,7 +143,7 @@ export class KolInputCheckbox implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames.
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<InputCheckboxIcon>;
 

@@ -171,7 +171,7 @@ export class KolInputEmail implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 

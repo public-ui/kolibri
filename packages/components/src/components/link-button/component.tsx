@@ -130,7 +130,7 @@ export class KolLinkButton implements Props {
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Defines the icon classnames.
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: IconPropType;
 

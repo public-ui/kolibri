@@ -111,7 +111,7 @@ export class KolButtonLink implements Props {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: IconPropType;
 

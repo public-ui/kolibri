@@ -123,7 +123,7 @@ export class KolButton implements Props {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Defines the icon classnames.
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: IconPropType;
 

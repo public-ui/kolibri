@@ -255,7 +255,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -328,7 +328,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**
@@ -430,7 +430,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**
@@ -528,7 +528,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**
@@ -678,7 +678,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon": string;
         /**
@@ -786,7 +786,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: KoliBriHorizontalIcon;
         /**
@@ -867,7 +867,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<InputCheckboxIcon>;
         /**
@@ -959,7 +959,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -1045,7 +1045,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -1162,7 +1162,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -1279,7 +1279,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -1366,7 +1366,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -1488,7 +1488,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -1743,7 +1743,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -1843,7 +1843,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -1985,7 +1985,7 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2096,7 +2096,7 @@ export namespace Components {
          */
         "_href": HrefPropType;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**
@@ -2222,7 +2222,7 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2506,7 +2506,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -2596,7 +2596,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2616,7 +2616,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2675,7 +2675,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**
@@ -3563,7 +3563,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -3636,7 +3636,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**
@@ -3738,7 +3738,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**
@@ -3836,7 +3836,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**
@@ -3986,7 +3986,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon": string;
         /**
@@ -4094,7 +4094,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: KoliBriHorizontalIcon;
         /**
@@ -4175,7 +4175,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<InputCheckboxIcon>;
         /**
@@ -4267,7 +4267,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -4353,7 +4353,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -4470,7 +4470,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -4587,7 +4587,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -4674,7 +4674,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -4796,7 +4796,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -5051,7 +5051,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -5151,7 +5151,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -5293,7 +5293,7 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -5404,7 +5404,7 @@ declare namespace LocalJSX {
          */
         "_href": HrefPropType;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**
@@ -5530,7 +5530,7 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -5814,7 +5814,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
@@ -5904,7 +5904,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -5924,7 +5924,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -5983,7 +5983,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames.
+          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
         "_icon"?: IconPropType;
         /**

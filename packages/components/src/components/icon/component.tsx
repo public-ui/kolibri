@@ -44,7 +44,7 @@ export class KolIcon implements API {
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon!: string;
 
