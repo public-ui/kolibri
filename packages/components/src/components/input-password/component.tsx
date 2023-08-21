@@ -198,7 +198,7 @@ export class KolInputPassword implements API {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+	 * Defines a validation pattern for the input field.
 	 */
 	@Prop() public _pattern?: string;
 
