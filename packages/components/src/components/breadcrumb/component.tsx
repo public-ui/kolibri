@@ -54,7 +54,7 @@ export class KolBreadcrumb implements API {
 	}
 
 	/**
-	 * Setzt die semantische Beschriftung der Komponente.
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */

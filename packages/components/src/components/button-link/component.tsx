@@ -73,7 +73,7 @@ export class KolButtonLink implements Props {
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
@@ -86,7 +86,7 @@ export class KolButtonLink implements Props {
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
-	 * Setzt die semantische Beschriftung der Komponente.
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
@@ -116,7 +116,7 @@ export class KolButtonLink implements Props {
 	@Prop() public _icon?: IconPropType;
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;

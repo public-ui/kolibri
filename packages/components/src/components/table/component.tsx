@@ -47,7 +47,7 @@ export class KolTable implements API {
 	private ariaLive = '';
 
 	/**
-	 * Defines the visible caption of the component.
+	 * Deprecated: Defines the visible caption of the component.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _caption?: string;

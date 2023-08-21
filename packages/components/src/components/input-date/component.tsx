@@ -172,7 +172,7 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Vorschlagszahlen an.
+	 * Deprecated: Gibt die Liste der Vorschlagszahlen an.
 	 * @deprecated Use _suggestions instead.
 	 */
 	@Prop() public _list?: Stringified<string[]>;

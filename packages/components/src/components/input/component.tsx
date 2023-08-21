@@ -21,7 +21,6 @@ export class KolInput implements Props {
 	public render(): JSX.Element {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
-		const hideLabel = this._hideLabel === true && this._required !== true;
 		const slotName = this._slotName ? this._slotName : 'input';
 
 		return (
@@ -35,7 +34,7 @@ export class KolInput implements Props {
 				}}
 			>
 				{this._renderNoLabel === false && (
-					<label id={`${this._id}-label`} hidden={hideLabel} htmlFor={this._id}>
+					<label id={`${this._id}-label`} hidden={this._hideLabel} htmlFor={this._id}>
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}

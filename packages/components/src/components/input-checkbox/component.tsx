@@ -202,7 +202,7 @@ export class KolInputCheckbox implements API {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines which variant should be used for presentation.
+	 * Deprecated: Defines which variant should be used for presentation.
 	 *
 	 * @deprecated Verwende stattdessen das Attribute _variant.
 	 */

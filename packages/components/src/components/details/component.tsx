@@ -54,7 +54,7 @@ export class KolDetails implements API {
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	/**
-	 * Gibt die Zusammenfassung der Detailbeschreibung an.
+	 * Deprecated: Gibt die Zusammenfassung der Detailbeschreibung an.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _summary?: string;

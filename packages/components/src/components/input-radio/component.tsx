@@ -180,7 +180,7 @@ export class KolInputRadio implements API {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Optionen für das Eingabefeld an.
+	 * Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.
 	 * @deprecated Use _options.
 	 */
 	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;

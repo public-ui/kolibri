@@ -176,7 +176,7 @@ export class KolInputNumber implements API {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Vorschlagszahlen an.
+	 * Deprecated: Gibt die Liste der Vorschlagszahlen an.
 	 * @deprecated Use _suggestions intead.
 	 */
 	@Prop() public _list?: Stringified<string[]>;
@@ -256,7 +256,7 @@ export class KolInputNumber implements API {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines either the type of the component or of the components interactive element.
+	 * Deprecated: Defines either the type of the component or of the components interactive element.
 	 *
 	 * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
 	 */

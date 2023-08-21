@@ -2,7 +2,6 @@ import { Generic } from '@a11y-ui/core';
 
 import { InputTypeOnOff } from '../../types/input/types';
 import { validateHasCounter } from '../../types/props/has-counter';
-import { devHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
@@ -16,15 +15,6 @@ export class InputPasswordController extends InputIconController implements Watc
 		this.component = component;
 	}
 
-	private handleHiddenLabelAndRequired = (): void => {
-		if (this.component.state._hideLabel === true && this.component.state._required === true) {
-			devHint(`[KolInput*] Wenn man das Label ausblendet, dann kann der sehende Nutzer:in nicht mehr erkennen, ob die Eingabe erforderlich ist.`);
-			this.hideLabel = false;
-		} else {
-			this.hideLabel = this.component.state._hideLabel === true;
-		}
-	};
-
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		watchValidator(
 			this.component,
@@ -37,14 +27,6 @@ export class InputPasswordController extends InputIconController implements Watc
 
 	public validateHasCounter(value?: boolean): void {
 		validateHasCounter(this.component, value);
-	}
-
-	public validateHideLabel(value?: boolean): void {
-		watchBoolean(this.component, '_hideLabel', value, {
-			hooks: {
-				afterPatch: this.handleHiddenLabelAndRequired,
-			},
-		});
 	}
 
 	public validateMaxLength(value?: number): void {
@@ -66,11 +48,7 @@ export class InputPasswordController extends InputIconController implements Watc
 	}
 
 	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value, {
-			hooks: {
-				afterPatch: this.handleHiddenLabelAndRequired,
-			},
-		});
+		watchBoolean(this.component, '_required', value);
 	}
 
 	public validateSize(value?: number): void {

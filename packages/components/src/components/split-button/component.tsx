@@ -139,7 +139,7 @@ export class KolSplitButton implements API {
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
-	 * Setzt die semantische Beschriftung der Komponente.
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */

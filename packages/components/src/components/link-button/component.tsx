@@ -67,35 +67,35 @@ export class KolLinkButton implements Props {
 	}
 
 	/**
-	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @deprecated use _listen-aria-current instead
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
-	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
-	 * Setzt die semantische Beschriftung der Komponente.
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @deprecated will be removed in v2
 	 */
@@ -107,7 +107,7 @@ export class KolLinkButton implements Props {
 	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Deprecated: Makes the element not focusable and ignore all events.
 	 *
 	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
@@ -135,7 +135,7 @@ export class KolLinkButton implements Props {
 	@Prop() public _icon?: IconPropType;
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;

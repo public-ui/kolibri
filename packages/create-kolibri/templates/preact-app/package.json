@@ -27,9 +27,9 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.6.0-rc.27",
-		"@public-ui/preact": "1.6.0-rc.27",
-		"@public-ui/themes": "1.6.0-rc.27",
+		"@public-ui/components": "1.6.0-rc.28",
+		"@public-ui/preact": "1.6.0-rc.28",
+		"@public-ui/themes": "1.6.0-rc.28",
 		"preact": "10.11.3"
 	},
 	"devDependencies": {

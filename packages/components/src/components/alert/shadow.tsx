@@ -40,11 +40,12 @@ export class KolAlert implements Props {
 
 	/**
 	 * Defines whether the card has a close button.
+	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Deprecated: Gibt die Beschriftung der Komponente an.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _heading?: string;

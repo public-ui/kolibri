@@ -70,7 +70,7 @@ export class KolLinkGroup implements API {
 	private isUl = true;
 
 	/**
-	 * Setzt die semantische Beschriftung der Komponente.
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
@@ -102,7 +102,7 @@ export class KolLinkGroup implements API {
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	/**
-	 * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+	 * Deprecated: Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
 	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
 	 */
 	@Prop() public _ordered?: boolean;

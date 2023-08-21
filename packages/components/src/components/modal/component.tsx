@@ -88,7 +88,7 @@ export class KolModal implements API {
 	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
 
 	/**
-	 * Setzt die semantische Beschriftung der Komponente.
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */

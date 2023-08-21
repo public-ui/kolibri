@@ -21,7 +21,7 @@ export class KolSymbol implements API {
 	}
 
 	/**
-	 * Setzt die semantische Beschriftung der Komponente.
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 * @deprecated use _label
 	 */
 	@Prop() public _ariaLabel?: string;
