@@ -30,5 +30,6 @@ export default {
 	'sort-descending': 'Spalte {{column}} absteigend sortiert',
 	'sort-ascending': 'Spalte {{column}} aufsteigend sortiert',
 	'sort-none': 'Spalte {{column}} nicht sortiert',
+	'table-pagination-label': 'Paginierung für die Tabelle {{label}}',
 	'avatar-alt': 'Avatar von {{name}}',
 };
