@@ -320,7 +320,7 @@ export namespace Components {
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
         "_disabled"?: boolean;
         /**
@@ -420,7 +420,7 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
           * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
@@ -520,7 +520,7 @@ export namespace Components {
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
         "_disabled"?: boolean;
         /**
@@ -1655,7 +1655,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
         "_disabled"?: boolean;
         /**
@@ -1968,7 +1968,7 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -2074,11 +2074,11 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Defines the custom class attribute.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -2205,7 +2205,7 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -2372,7 +2372,7 @@ export namespace Components {
          */
         "_boundaryCount"?: number;
         /**
-          * Defines the custom class attribute.
+          * Defines the custom class attribute for the buttons.
          */
         "_customClass"?: CustomClassPropType;
         /**
@@ -2667,7 +2667,7 @@ export namespace Components {
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
         "_disabled"?: boolean;
         /**
@@ -3628,7 +3628,7 @@ declare namespace LocalJSX {
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
         "_disabled"?: boolean;
         /**
@@ -3728,7 +3728,7 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
           * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
@@ -3828,7 +3828,7 @@ declare namespace LocalJSX {
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
         "_disabled"?: boolean;
         /**
@@ -4963,7 +4963,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
         "_disabled"?: boolean;
         /**
@@ -5276,7 +5276,7 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -5382,11 +5382,11 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Defines the custom class attribute.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -5513,7 +5513,7 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -5680,7 +5680,7 @@ declare namespace LocalJSX {
          */
         "_boundaryCount"?: number;
         /**
-          * Defines the custom class attribute.
+          * Defines the custom class attribute for the buttons.
          */
         "_customClass"?: CustomClassPropType;
         /**
@@ -5975,7 +5975,7 @@ declare namespace LocalJSX {
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
         "_disabled"?: boolean;
         /**

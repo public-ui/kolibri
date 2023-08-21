@@ -158,7 +158,7 @@ export class KolButtonWc implements API {
 	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop() public _disabled?: boolean = false;
 

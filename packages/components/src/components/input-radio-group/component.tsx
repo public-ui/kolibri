@@ -53,7 +53,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop() public _disabled?: boolean;
 
