@@ -240,7 +240,7 @@ export class KolInputEmail implements API {
 	@Prop() public _size?: number;
 
 	/**
-	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 

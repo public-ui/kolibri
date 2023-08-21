@@ -268,7 +268,7 @@ export namespace Components {
          */
         "_label": LabelPropType;
         /**
-          * Ermöglicht einen Schalter in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }
@@ -816,7 +816,7 @@ export namespace Components {
          */
         "_slotName"?: string;
         /**
-          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -984,7 +984,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -1088,7 +1088,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -1218,7 +1218,7 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -1309,7 +1309,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -1413,7 +1413,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -1534,7 +1534,7 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -1894,7 +1894,7 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -3576,7 +3576,7 @@ declare namespace LocalJSX {
          */
         "_label": LabelPropType;
         /**
-          * Ermöglicht einen Schalter in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }
@@ -4124,7 +4124,7 @@ declare namespace LocalJSX {
          */
         "_slotName"?: string;
         /**
-          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -4292,7 +4292,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -4396,7 +4396,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -4526,7 +4526,7 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -4617,7 +4617,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -4721,7 +4721,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -4842,7 +4842,7 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
@@ -5202,7 +5202,7 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
