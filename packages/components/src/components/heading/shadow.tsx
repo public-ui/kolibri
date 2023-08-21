@@ -33,7 +33,7 @@ export class KolHeading implements Props {
 	@Prop() public _level?: HeadingLevel;
 
 	/**
-	 * Gibt den Text der zusätzlichen Überschrift an.
+	 * Defines the text of the secondary headline.
 	 */
 	@Prop() public _secondaryHeadline?: string;
 }
