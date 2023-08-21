@@ -120,7 +120,7 @@ export class KolInput implements Props {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string = '';
 

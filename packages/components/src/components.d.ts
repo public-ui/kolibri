@@ -741,7 +741,7 @@ export namespace Components {
          */
         "_loading"?: Loading;
         /**
-          * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
+          * Defines the image sizes for different screen resolutions, supporting _srcset.
          */
         "_sizes"?: string;
         /**
@@ -768,7 +768,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -854,7 +854,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -946,7 +946,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -1032,7 +1032,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -1144,7 +1144,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -1266,7 +1266,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -1353,7 +1353,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -1470,7 +1470,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -1574,7 +1574,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -1660,7 +1660,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -1731,7 +1731,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -1826,7 +1826,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -2489,7 +2489,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -2825,7 +2825,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4050,7 +4050,7 @@ declare namespace LocalJSX {
          */
         "_loading"?: Loading;
         /**
-          * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
+          * Defines the image sizes for different screen resolutions, supporting _srcset.
          */
         "_sizes"?: string;
         /**
@@ -4077,7 +4077,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4163,7 +4163,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4255,7 +4255,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4341,7 +4341,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4453,7 +4453,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4575,7 +4575,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4662,7 +4662,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4779,7 +4779,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4883,7 +4883,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -4969,7 +4969,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -5040,7 +5040,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -5135,7 +5135,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -5798,7 +5798,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
@@ -6134,7 +6134,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Text für eine Fehlermeldung an.
+          * Defines the error message text.
          */
         "_error"?: string;
         /**
