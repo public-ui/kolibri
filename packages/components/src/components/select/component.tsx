@@ -179,7 +179,7 @@ export class KolSelect implements API {
 	@Prop() public _error?: string;
 
 	/**
-	 * Gibt an, ob eine individuelle Höhe übergeben werden soll.
+	 * Defines a individual height.
 	 *
 	 * @deprecated Use _rows instead.
 	 */
