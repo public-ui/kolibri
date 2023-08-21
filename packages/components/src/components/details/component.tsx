@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { watchBoolean } from '../../utils/prop.validators';
+import { validateOpen } from '../../types/props/open';
 import { API, States } from './types';
 
 /**
@@ -70,7 +70,7 @@ export class KolDetails implements API {
 
 	@Watch('_open')
 	public validateOpen(value?: boolean): void {
-		watchBoolean(this, '_open', value);
+		validateOpen(this, value);
 	}
 
 	@Watch('_summary')
