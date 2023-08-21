@@ -229,7 +229,7 @@ export class KolInputRange implements API {
 	@Prop() public _max?: number;
 
 	/**
-	 * Gibt den kleinstmöglichen Eingabewert an.
+	 * Defines the smallest possible input value.
 	 */
 	@Prop() public _min?: number;
 

@@ -187,7 +187,7 @@ export class KolInputNumber implements API {
 	@Prop() public _max?: number | Iso8601;
 
 	/**
-	 * Gibt den kleinstmöglichen Eingabewert an.
+	 * Defines the smallest possible input value.
 	 */
 	@Prop() public _min?: number | Iso8601;
 

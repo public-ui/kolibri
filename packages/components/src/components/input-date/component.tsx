@@ -183,7 +183,7 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _max?: Iso8601 | Date;
 
 	/**
-	 * Gibt den kleinstmöglichen Eingabewert an.
+	 * Defines the smallest possible input value.
 	 */
 	@Prop() public _min?: Iso8601 | Date;
 
