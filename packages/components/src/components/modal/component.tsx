@@ -105,7 +105,7 @@ export class KolModal implements API {
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
 	/**
-	 * Setzt die Breite des Modals. (max-width: 100%).
+	 * Defines the width of the modal. (max-width: 100%)
 	 */
 	@Prop() public _width?: string = '100%';
 

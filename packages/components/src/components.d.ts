@@ -2035,7 +2035,7 @@ export namespace Components {
          */
         "_target"?: LinkTargetPropType;
         /**
-          * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+          * Defines the description to use when the link is going to be opened in another application.
          */
         "_targetDescription"?: string;
         /**
@@ -2131,7 +2131,7 @@ export namespace Components {
          */
         "_target"?: LinkTargetPropType;
         /**
-          * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+          * Defines the description to use when the link is going to be opened in another application.
          */
         "_targetDescription"?: string;
         /**
@@ -2272,7 +2272,7 @@ export namespace Components {
          */
         "_target"?: LinkTargetPropType;
         /**
-          * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+          * Defines the description to use when the link is going to be opened in another application.
          */
         "_targetDescription"?: string;
         /**
@@ -5344,7 +5344,7 @@ declare namespace LocalJSX {
          */
         "_target"?: LinkTargetPropType;
         /**
-          * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+          * Defines the description to use when the link is going to be opened in another application.
          */
         "_targetDescription"?: string;
         /**
@@ -5440,7 +5440,7 @@ declare namespace LocalJSX {
          */
         "_target"?: LinkTargetPropType;
         /**
-          * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+          * Defines the description to use when the link is going to be opened in another application.
          */
         "_targetDescription"?: string;
         /**
@@ -5581,7 +5581,7 @@ declare namespace LocalJSX {
          */
         "_target"?: LinkTargetPropType;
         /**
-          * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+          * Defines the description to use when the link is going to be opened in another application.
          */
         "_targetDescription"?: string;
         /**
