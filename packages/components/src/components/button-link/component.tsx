@@ -132,7 +132,7 @@ export class KolButtonLink implements Props {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: NamePropType;
 

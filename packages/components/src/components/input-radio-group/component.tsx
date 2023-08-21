@@ -88,7 +88,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _list!: Stringified<Option<W3CInputValue>[]>;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: string;
 

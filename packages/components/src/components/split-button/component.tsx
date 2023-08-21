@@ -181,7 +181,7 @@ export class KolSplitButton implements API {
 	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: string;
 

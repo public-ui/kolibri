@@ -350,7 +350,7 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: string;
         /**
@@ -447,7 +447,7 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: NamePropType;
         /**
@@ -550,7 +550,7 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: string;
         /**
@@ -1683,7 +1683,7 @@ export namespace Components {
          */
         "_list": Stringified<Option<W3CInputValue>[]>;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: string;
         /**
@@ -2687,7 +2687,7 @@ export namespace Components {
          */
         "_label": LabelPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: string;
         /**
@@ -3658,7 +3658,7 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: string;
         /**
@@ -3755,7 +3755,7 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: NamePropType;
         /**
@@ -3858,7 +3858,7 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: string;
         /**
@@ -4991,7 +4991,7 @@ declare namespace LocalJSX {
          */
         "_list": Stringified<Option<W3CInputValue>[]>;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: string;
         /**
@@ -5995,7 +5995,7 @@ declare namespace LocalJSX {
          */
         "_label": LabelPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
         "_name"?: string;
         /**
