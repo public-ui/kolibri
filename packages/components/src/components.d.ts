@@ -782,7 +782,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -863,7 +863,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -937,7 +937,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -955,7 +955,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -1023,7 +1023,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -1041,7 +1041,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -1135,7 +1135,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -1158,7 +1158,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -1275,7 +1275,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -1344,7 +1344,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -1362,7 +1362,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -1461,7 +1461,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -1484,7 +1484,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -1583,7 +1583,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -1668,7 +1668,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -1722,7 +1722,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -1740,7 +1740,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -1817,7 +1817,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -1840,7 +1840,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -2503,7 +2503,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -2839,7 +2839,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4091,7 +4091,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4172,7 +4172,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4246,7 +4246,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -4264,7 +4264,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4332,7 +4332,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -4350,7 +4350,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4444,7 +4444,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -4467,7 +4467,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4584,7 +4584,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4653,7 +4653,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -4671,7 +4671,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4770,7 +4770,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -4793,7 +4793,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4892,7 +4892,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -4977,7 +4977,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -5031,7 +5031,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -5049,7 +5049,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -5126,7 +5126,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+          * Defines whether the input can be auto-completed.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
@@ -5149,7 +5149,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -5812,7 +5812,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
@@ -6148,7 +6148,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Hinweistext an.
+          * Defines the hint text.
          */
         "_hint"?: string;
         /**
