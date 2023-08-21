@@ -141,7 +141,7 @@ export class KolPagination implements API {
 	}
 
 	/**
-	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
+	 * Defines the amount of pages to show next to the outer arrow buttons.
 	 */
 	@Prop() public _boundaryCount?: number = 1;
 
