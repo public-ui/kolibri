@@ -218,7 +218,7 @@ export class KolInputEmail implements API {
 	@Prop() public _pattern?: string;
 
 	/**
-	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop() public _placeholder?: string;
 

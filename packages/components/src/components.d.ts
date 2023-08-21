@@ -1196,11 +1196,11 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+          * Defines a validation pattern for the input field.
          */
         "_pattern"?: string;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
@@ -1399,7 +1399,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
@@ -1512,11 +1512,11 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+          * Defines a validation pattern for the input field.
          */
         "_pattern"?: string;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
@@ -1873,11 +1873,11 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+          * Defines a validation pattern for the input field.
          */
         "_pattern"?: string;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
@@ -2863,7 +2863,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
@@ -4505,11 +4505,11 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+          * Defines a validation pattern for the input field.
          */
         "_pattern"?: string;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
@@ -4708,7 +4708,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
@@ -4821,11 +4821,11 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+          * Defines a validation pattern for the input field.
          */
         "_pattern"?: string;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
@@ -5182,11 +5182,11 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+          * Defines a validation pattern for the input field.
          */
         "_pattern"?: string;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
@@ -6172,7 +6172,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+          * Defines the placeholder for input field. To be shown when there's no value.
          */
         "_placeholder"?: string;
         /**
