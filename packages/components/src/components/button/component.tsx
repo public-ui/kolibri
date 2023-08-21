@@ -187,7 +187,7 @@ export class KolButtonWc implements API {
 	@Prop() public _iconOnly?: boolean;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
 	@Prop() public _id?: string;
 

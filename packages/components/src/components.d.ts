@@ -342,7 +342,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
         "_id"?: string;
         /**
@@ -542,7 +542,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
         "_id"?: string;
         /**
@@ -1671,7 +1671,7 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
         "_id"?: string;
         /**
@@ -2679,7 +2679,7 @@ export namespace Components {
          */
         "_icon"?: IconPropType;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
         "_id"?: string;
         /**
@@ -3650,7 +3650,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
         "_id"?: string;
         /**
@@ -3850,7 +3850,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
         "_id"?: string;
         /**
@@ -4979,7 +4979,7 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
         "_id"?: string;
         /**
@@ -5987,7 +5987,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: IconPropType;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
         "_id"?: string;
         /**

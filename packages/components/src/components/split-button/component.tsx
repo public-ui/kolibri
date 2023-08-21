@@ -171,7 +171,7 @@ export class KolSplitButton implements API {
 	@Prop() public _icon?: IconPropType;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
 	@Prop() public _id?: string;
 
