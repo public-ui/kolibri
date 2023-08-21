@@ -44,5 +44,5 @@ export const TAG_NAMES: string[] = [
 	'kol-table',
 	'kol-tabs',
 	'kol-toast',
-	'kol-tooltip',
+	'kol-tooltip-wc',
 ];

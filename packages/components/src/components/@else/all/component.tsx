@@ -64,7 +64,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-table _caption="" _data={[]} _headers={{}}></kol-table>
 				<kol-tabs _ariaLabel="" _tabs={[]}></kol-tabs>
 				<kol-textarea _label=""></kol-textarea>
-				<kol-tooltip _label="Label"></kol-tooltip>
+				<kol-tooltip-wc _label="Label"></kol-tooltip-wc>
 				<kol-version _version=""></kol-version>
 			</Host>
 		);

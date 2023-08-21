@@ -130,7 +130,7 @@ export class KolLinkWc implements API {
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
-				<kol-tooltip
+				<kol-tooltip-wc
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -139,7 +139,7 @@ export class KolLinkWc implements API {
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
-				></kol-tooltip>
+				></kol-tooltip-wc>
 			</Host>
 		);
 	}

@@ -2789,7 +2789,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		list-style-type: none !important;
 		margin-left: 0;
 	}`,
-	'KOL-TOOLTIP': `:host {
+	'KOL-TOOLTIP-WC': `:host {
 		--kolibri-font-size: var(--textFontSize);
 	}`,
 	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {

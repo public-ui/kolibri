@@ -27,7 +27,7 @@ export class KolAbbr implements API {
 						<slot />
 					</span>
 				</abbr>
-				<kol-tooltip _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip>
+				<kol-tooltip-wc _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip-wc>
 			</Host>
 		);
 	}

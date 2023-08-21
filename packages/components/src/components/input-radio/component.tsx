@@ -99,7 +99,7 @@ export class KolInputRadio implements API {
 										onChange={this.onChange}
 										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 									/>
-									<kol-tooltip
+									<kol-tooltip-wc
 										/**
 										 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 										 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -108,7 +108,7 @@ export class KolInputRadio implements API {
 										class="input-tooltip"
 										hidden={hasExpertSlot || !this.state._hideLabel}
 										_label={typeof this.state._label === 'string' ? this.state._label : ''}
-									></kol-tooltip>
+									></kol-tooltip-wc>
 									<label
 										htmlFor={`${customId}`}
 										style={{

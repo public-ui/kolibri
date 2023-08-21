@@ -102,7 +102,7 @@ export class KolButtonWc implements API {
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
-				<kol-tooltip
+				<kol-tooltip-wc
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -111,7 +111,7 @@ export class KolButtonWc implements API {
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
-				></kol-tooltip>
+				></kol-tooltip-wc>
 			</Host>
 		);
 	}
