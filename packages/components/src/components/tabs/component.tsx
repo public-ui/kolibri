@@ -166,12 +166,12 @@ export class KolTabs implements API {
 	@Prop() public _on?: KoliBriTabsCallbacks;
 
 	/**
-	 * Gibt an, welches Tab selektiert sein soll.
+	 * Defines which tab is active.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
 
 	/**
-	 * Setzt die Daten für die Registrierkarten.
+	 * Defines the tab captions.
 	 */
 	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
 

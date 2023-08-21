@@ -2750,15 +2750,15 @@ export namespace Components {
          */
         "_caption"?: string;
         /**
-          * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
+          * Defines the primary table data.
          */
         "_data": Stringified<KoliBriTableDataType[]>;
         /**
-          * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+          * Defines the data for the table footer.
          */
         "_dataFoot"?: Stringified<KoliBriTableDataType[]>;
         /**
-          * Gibt die horizontalen und vertikalen Header für die Tabelle an.
+          * Defines the horizontal and vertical table headers.
          */
         "_headers": Stringified<KoliBriTableHeaders>;
         /**
@@ -2766,11 +2766,11 @@ export namespace Components {
          */
         "_label"?: string;
         /**
-          * Gibt an, die minimale Breite der Tabelle an.
+          * Defines the table min-width.
          */
         "_minWidth"?: string;
         /**
-          * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
+          * Defines whether to show the data distributed over multiple pages.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
     }
@@ -2793,11 +2793,11 @@ export namespace Components {
          */
         "_on"?: KoliBriTabsCallbacks;
         /**
-          * Gibt an, welches Tab selektiert sein soll.
+          * Defines which tab is active.
          */
         "_selected"?: number;
         /**
-          * Setzt die Daten für die Registrierkarten.
+          * Defines the tab captions.
          */
         "_tabs": Stringified<TabButtonProps[]>;
         /**
@@ -6059,15 +6059,15 @@ declare namespace LocalJSX {
          */
         "_caption"?: string;
         /**
-          * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
+          * Defines the primary table data.
          */
         "_data": Stringified<KoliBriTableDataType[]>;
         /**
-          * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+          * Defines the data for the table footer.
          */
         "_dataFoot"?: Stringified<KoliBriTableDataType[]>;
         /**
-          * Gibt die horizontalen und vertikalen Header für die Tabelle an.
+          * Defines the horizontal and vertical table headers.
          */
         "_headers": Stringified<KoliBriTableHeaders>;
         /**
@@ -6075,11 +6075,11 @@ declare namespace LocalJSX {
          */
         "_label"?: string;
         /**
-          * Gibt an, die minimale Breite der Tabelle an.
+          * Defines the table min-width.
          */
         "_minWidth"?: string;
         /**
-          * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
+          * Defines whether to show the data distributed over multiple pages.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
     }
@@ -6102,11 +6102,11 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriTabsCallbacks;
         /**
-          * Gibt an, welches Tab selektiert sein soll.
+          * Defines which tab is active.
          */
         "_selected"?: number;
         /**
-          * Setzt die Daten für die Registrierkarten.
+          * Defines the tab captions.
          */
         "_tabs": Stringified<TabButtonProps[]>;
         /**
