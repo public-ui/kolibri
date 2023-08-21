@@ -121,7 +121,14 @@ export const getKoliBri = (): Record<string, unknown> => KoliBri || {};
 export const initKoliBri = (): void => {
 	if (KoliBri === null) {
 		KoliBri = getWindow().KoliBri || {};
+		/**
+	   * @deprecate ModalService - wurde schon durch Dialog abgelöst.
+		 */
 		const Modal = new ModalService();
+		
+		/**
+	   * @deprecate ToasterService
+		 */
 		const Toaster = new ToasterService(getDocument());
 		Object.defineProperty(KoliBri, 'Modal', {
 			get: function (): ModalService {
