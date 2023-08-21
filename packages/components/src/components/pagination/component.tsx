@@ -6,10 +6,11 @@ import { Option } from '../../types/input/types';
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { API, KoliBriPaginationButtonCallbacks, States, PaginationHasButton } from './types';
+import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -65,7 +66,7 @@ export class KolPagination implements API {
 
 		return (
 			<Host>
-				<nav aria-label={translate('kol-pagination')}>
+				<nav aria-label={this.state._label}>
 					<ul class="navigation-list">
 						{this.state._hasButtons.first && (
 							<li>
@@ -161,6 +162,11 @@ export class KolPagination implements API {
 	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
+	 * Defines the description of the component.
+	 */
+	@Prop() public _label?: LabelPropType;
+
+	/**
 	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
 	 */
 	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
@@ -207,6 +213,7 @@ export class KolPagination implements API {
 
 	@State() public state: States = {
 		_boundaryCount: 1,
+		_label: translate('kol-pagination'),
 		_hasButtons: {
 			first: true,
 			last: true,
@@ -313,6 +320,11 @@ export class KolPagination implements API {
 	@Watch('_customClass')
 	public validateCustomClass(value?: CustomClassPropType): void {
 		validateCustomClass(this, value);
+	}
+
+	@Watch('_label')
+	public validateLabel(label?: LabelPropType) {
+		validateLabel(this, label);
 	}
 
 	@Watch('_hasButtons')
@@ -492,6 +504,7 @@ export class KolPagination implements API {
 		this.validateBoundaryCount(this._boundaryCount);
 		this.validateCustomClass(this._customClass);
 		this.validateHasButtons(this._hasButtons);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validatePage(this._page);
 		this.validatePageSize(this._pageSize);

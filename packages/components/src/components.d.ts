@@ -2312,6 +2312,10 @@ export namespace Components {
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
+          * Defines the description of the component.
+         */
+        "_label"?: LabelPropType;
+        /**
           * Gibt an, auf welche Callback-Events reagiert werden.
          */
         "_on": KoliBriPaginationButtonCallbacks;
@@ -5534,6 +5538,10 @@ declare namespace LocalJSX {
           * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
+        /**
+          * Defines the description of the component.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, auf welche Callback-Events reagiert werden.
          */

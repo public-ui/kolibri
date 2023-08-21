@@ -7,6 +7,7 @@ import { Option } from '../../types/input/types';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
 import { PropButtonVariant } from '../../types/props/button-variant';
 import { PropCustomClass } from '../../types/props/custom-class';
+import { PropLabel } from '../../types/props/label';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, number>;
@@ -50,6 +51,7 @@ type OptionalProps = {
 	siblingCount: number;
 } & PropCustomClass &
 	PropButtonVariant &
+	PropLabel &
 	PropTooltipAlign;
 
 export type KoliBriPaginationProps = RequiredProps & OptionalProps;
@@ -65,7 +67,7 @@ type RequiredStates = {
 	total: number;
 } & PropButtonVariant;
 
-type OptionalStates = PropCustomClass & PropTooltipAlign;
+type OptionalStates = PropCustomClass & PropLabel & PropTooltipAlign;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
