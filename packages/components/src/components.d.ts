@@ -283,7 +283,7 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+          * Defines the list of links combined with their labels to render.
          */
         "_links": Stringified<BreadcrumbLinkProps[]>;
     }
@@ -2161,7 +2161,7 @@ export namespace Components {
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+          * Defines the list of links to render.
          */
         "_links": Stringified<LinkProps[]>;
         /**
@@ -2353,7 +2353,7 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+          * Defines the list of links, buttons or texts to render.
          */
         "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
@@ -2585,7 +2585,7 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+          * Defines the list of links combined with their labels to render.
          */
         "_links": Stringified<LinkProps[]>;
     }
@@ -3591,7 +3591,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+          * Defines the list of links combined with their labels to render.
          */
         "_links": Stringified<BreadcrumbLinkProps[]>;
     }
@@ -5469,7 +5469,7 @@ declare namespace LocalJSX {
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+          * Defines the list of links to render.
          */
         "_links": Stringified<LinkProps[]>;
         /**
@@ -5661,7 +5661,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+          * Defines the list of links, buttons or texts to render.
          */
         "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
@@ -5893,7 +5893,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+          * Defines the list of links combined with their labels to render.
          */
         "_links": Stringified<LinkProps[]>;
     }

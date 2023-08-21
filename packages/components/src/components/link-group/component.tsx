@@ -97,7 +97,7 @@ export class KolLinkGroup implements API {
 	@Prop() public _level?: HeadingLevel;
 
 	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links to render.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 

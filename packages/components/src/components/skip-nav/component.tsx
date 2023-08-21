@@ -43,7 +43,7 @@ export class KolSkipNav implements API {
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links combined with their labels to render.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
