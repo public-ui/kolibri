@@ -95,7 +95,7 @@ export class KolLinkButton implements Props {
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @deprecated will be removed in v2
 	 */
