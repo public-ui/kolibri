@@ -174,6 +174,7 @@ export class KolAccordion implements API {
 	@Watch('_open')
 	public validateOpen(value?: OpenPropType): void {
 		validateOpen(this, value);
+		this.resizeWrapper();
 	}
 
 	public componentWillLoad(): void {
@@ -193,7 +194,6 @@ export class KolAccordion implements API {
 
 	private onClick = (event: Event) => {
 		this._open = !this._open;
-		this.resizeWrapper();
 
 		/**
 		 * Der Timeout wird benötigt, damit das Event
