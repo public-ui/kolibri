@@ -2493,7 +2493,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob eine individuelle Höhe übergeben werden soll.
+          * Defines a individual height.
           * @deprecated Use _rows instead.
          */
         "_height"?: string;
@@ -2700,7 +2700,7 @@ export namespace Components {
          */
         "_role"?: AlternativeButtonLinkRolePropType;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines whether to show the dropdown menu.
          */
         "_showDropdown"?: boolean;
         /**
@@ -5802,7 +5802,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob eine individuelle Höhe übergeben werden soll.
+          * Defines a individual height.
           * @deprecated Use _rows instead.
          */
         "_height"?: string;
@@ -6009,7 +6009,7 @@ declare namespace LocalJSX {
          */
         "_role"?: AlternativeButtonLinkRolePropType;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines whether to show the dropdown menu.
          */
         "_showDropdown"?: boolean;
         /**

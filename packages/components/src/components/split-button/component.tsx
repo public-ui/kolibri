@@ -202,7 +202,7 @@ export class KolSplitButton implements API {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines whether to show the dropdown menu.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _showDropdown?: boolean = false;
 
