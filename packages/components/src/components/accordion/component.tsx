@@ -173,8 +173,13 @@ export class KolAccordion implements API {
 
 	@Watch('_open')
 	public validateOpen(value?: OpenPropType): void {
-		validateOpen(this, value);
-		this.resizeWrapper();
+		validateOpen(this, value, {
+			hooks: {
+				afterPatch: () => {
+					this.resizeWrapper();
+				},
+			},
+		});
 	}
 
 	public componentWillLoad(): void {
