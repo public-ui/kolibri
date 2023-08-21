@@ -125,7 +125,7 @@ export class KolLinkButton implements Props {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * This property is used for a link from a reference to the target URL.
+	 * Defines the target URI of the link.
 	 */
 	@Prop() public _href!: HrefPropType;
 

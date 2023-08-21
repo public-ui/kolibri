@@ -1982,7 +1982,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt die Ziel-Url des Links an.
+          * Defines the target URI of the link.
          */
         "_href": string;
         /**
@@ -2093,7 +2093,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * This property is used for a link from a reference to the target URL.
+          * Defines the target URI of the link.
          */
         "_href": HrefPropType;
         /**
@@ -2219,7 +2219,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt die Ziel-Url des Links an.
+          * Defines the target URI of the link.
          */
         "_href": string;
         /**
@@ -2458,7 +2458,7 @@ export namespace Components {
          */
         "_caption"?: string;
         /**
-          * Defines the link the source of the quote.
+          * Defines the link to the source of the quote.
          */
         "_href": HrefPropType;
         /**
@@ -5291,7 +5291,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt die Ziel-Url des Links an.
+          * Defines the target URI of the link.
          */
         "_href": string;
         /**
@@ -5402,7 +5402,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * This property is used for a link from a reference to the target URL.
+          * Defines the target URI of the link.
          */
         "_href": HrefPropType;
         /**
@@ -5528,7 +5528,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt die Ziel-Url des Links an.
+          * Defines the target URI of the link.
          */
         "_href": string;
         /**
@@ -5767,7 +5767,7 @@ declare namespace LocalJSX {
          */
         "_caption"?: string;
         /**
-          * Defines the link the source of the quote.
+          * Defines the link to the source of the quote.
          */
         "_href": HrefPropType;
         /**

@@ -25,7 +25,7 @@ export class KolQuote implements API {
 	@Prop() public _label?: string;
 
 	/**
-	 * Defines the link the source of the quote.
+	 * Defines the link to the source of the quote.
 	 */
 	@Prop() public _href!: HrefPropType;
 

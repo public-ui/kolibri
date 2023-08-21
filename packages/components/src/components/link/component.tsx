@@ -197,7 +197,7 @@ export class KolLinkWc implements API {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Gibt die Ziel-Url des Links an.
+	 * Defines the target URI of the link.
 	 */
 	@Prop() public _href!: string;
 
