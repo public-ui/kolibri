@@ -25,6 +25,6 @@ textarea:focus {
 	place-items: center;
 }
 
-kol-input.required .tooltip-content .span-label::after {
+kol-input.required .input-tooltip .span-label::after {
 	content: '*';
 }
