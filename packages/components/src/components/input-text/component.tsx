@@ -131,6 +131,7 @@ export class KolInputText implements API {
 							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 							 */
 							aria-hidden="true"
+							class="input-tooltip"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
