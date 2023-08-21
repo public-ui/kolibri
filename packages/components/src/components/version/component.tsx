@@ -22,7 +22,7 @@ export class KolVersion implements API {
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
-	 * Gibt die Versionsnummer als Text an.
+	 * Deprecated: Gibt die Versionsnummer als Text an.
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _version?: string;

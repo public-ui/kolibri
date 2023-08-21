@@ -47,7 +47,7 @@ export class KolTable implements API {
 	private ariaLive = '';
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _caption?: string;

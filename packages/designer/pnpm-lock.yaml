@@ -7,16 +7,16 @@ settings:
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.6.0-rc.26)
+    version: 0.0.3(@public-ui/components@1.6.0-rc.28)
   '@public-ui/components':
-    specifier: 1.6.0-rc.26
-    version: 1.6.0-rc.26
+    specifier: 1.6.0-rc.28
+    version: 1.6.0-rc.28
   '@public-ui/solid':
-    specifier: 1.6.0-rc.26
-    version: 1.6.0-rc.26(@public-ui/components@1.6.0-rc.26)(solid-js@1.7.11)
+    specifier: 1.6.0-rc.28
+    version: 1.6.0-rc.28(@public-ui/components@1.6.0-rc.28)(solid-js@1.7.11)
   '@public-ui/themes':
-    specifier: 1.6.0-rc.26
-    version: 1.6.0-rc.26(@public-ui/components@1.6.0-rc.26)
+    specifier: 1.6.0-rc.28
+    version: 1.6.0-rc.28(@public-ui/components@1.6.0-rc.28)
   monaco-editor:
     specifier: 0.41.0
     version: 0.41.0
@@ -33,8 +33,8 @@ dependencies:
     specifier: 1.7.11
     version: 1.7.11
   world_countries_lists:
-    specifier: 2.8.1
-    version: 2.8.1
+    specifier: 2.8.2
+    version: 2.8.2
 
 devDependencies:
   '@leanup/stack':
@@ -47,17 +47,17 @@ devDependencies:
     specifier: 1.3.44
     version: 1.3.44(@leanup/stack@1.3.44)(esbuild@0.18.16)(less@4.1.3)(postcss@8.4.27)
   '@playwright/test':
-    specifier: 1.37.0
-    version: 1.37.0
+    specifier: 1.37.1
+    version: 1.37.1
   '@types/prettier':
     specifier: 2.7.3
     version: 2.7.3
   '@unocss/preset-mini':
-    specifier: 0.55.1
-    version: 0.55.1
+    specifier: 0.55.2
+    version: 0.55.2
   '@unocss/webpack':
-    specifier: 0.55.1
-    version: 0.55.1(webpack@5.75.0)
+    specifier: 0.55.2
+    version: 0.55.2(webpack@5.75.0)
   chromedriver:
     specifier: 114.0.3
     version: 114.0.3
@@ -80,8 +80,8 @@ devDependencies:
     specifier: 4.1.5
     version: 4.1.5
   playwright:
-    specifier: 1.37.0
-    version: 1.37.0
+    specifier: 1.37.1
+    version: 1.37.1
   react-dev-utils:
     specifier: 12.0.1
     version: 12.0.1(eslint@8.32.0)(typescript@5.1.6)(webpack@5.75.0)
@@ -104,10 +104,10 @@ packages:
       loglevel: 1.8.1
     dev: false
 
-  /@a11y-ui/core@1.0.3:
-    resolution: {integrity: sha512-yzL0NESiAXL4Z/aqf4iptvZZsuju5Px6TUkdSVG+0PnrBaHfL35ThhoxDk2PJafm2d/b93mMVkw8VET5+2f73g==}
+  /@a11y-ui/core@1.0.5:
+    resolution: {integrity: sha512-eC+cyWuerJ8YueeTfiw/xfDo845s0fQHE55VjvrsOwZQNFRKqpbTyD/oT0H7yYacI6APc2Sw8TPljd/OLNVjtQ==}
     dependencies:
-      adopted-style-sheets: 1.0.3
+      adopted-style-sheets: 1.0.5
     dev: false
 
   /@ampproject/remapping@2.2.1:
@@ -2121,32 +2121,32 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@playwright/test@1.37.0:
-    resolution: {integrity: sha512-181WBLk4SRUyH1Q96VZl7BP6HcK0b7lbdeKisn3N/vnjitk+9HbdlFz/L5fey05vxaAhldIDnzo8KUoy8S3mmQ==}
+  /@playwright/test@1.37.1:
+    resolution: {integrity: sha512-bq9zTli3vWJo8S3LwB91U0qDNQDpEXnw7knhxLM0nwDvexQAwx9tO8iKDZSqqneVq+URd/WIoz+BALMqUTgdSg==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
       '@types/node': 20.3.1
-      playwright-core: 1.37.0
+      playwright-core: 1.37.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.26):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.28):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.6.0-rc.26:
-    resolution: {integrity: sha512-6kVDXSTzUV//6+YSHuOzjt1Y38ZWeQtXDiTUxJ/woFk0c2O9gBydNzLDjUEbcGdbszndteDs/svGGpC2subRKg==}
+  /@public-ui/components@1.6.0-rc.28:
+    resolution: {integrity: sha512-zcdGcv1KrfVGCcxROzsBfcZqPQqG4gyy3fH6FkAGeqiz8lDkTe20UD6eyyTvtY1Rx/WdAh2h73rLfcZOIzy5kw==}
     dependencies:
-      '@a11y-ui/core': 1.0.3
+      '@a11y-ui/core': 1.0.5
       '@floating-ui/dom': 1.5.1
-      '@public-ui/schema': 1.6.0-rc.26
+      '@public-ui/schema': 1.6.0-rc.28
       i18next: 23.4.4
     dev: false
 
@@ -2163,28 +2163,28 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.26:
-    resolution: {integrity: sha512-G87X6QazI1XtdToywgnLJNmWa4Z0M0lY3SfTqH359uVtWed+mBFmYGm2s6cYxi1m2jVh+wCN7hG+RKVT4fKoHQ==}
+  /@public-ui/schema@1.6.0-rc.28:
+    resolution: {integrity: sha512-Cnm52iAHhGiwgmlOHGBlWNzXM4RquyCTcjGs0UNEsBaa5xOHGYUDXYEbUyhtddZvA15l89fiVUfpswXJUP4NRQ==}
     dependencies:
-      '@a11y-ui/core': 1.0.3
+      '@a11y-ui/core': 1.0.5
     dev: false
 
-  /@public-ui/solid@1.6.0-rc.26(@public-ui/components@1.6.0-rc.26)(solid-js@1.7.11):
-    resolution: {integrity: sha512-EXUjWDedjouyj/8hGMH7Lt3pFfjXvppK6HZthfpKXNr5mTYBiMswVcvvmnLoRhyxsUXsFYio5dGNJ2s1rHWrBw==}
+  /@public-ui/solid@1.6.0-rc.28(@public-ui/components@1.6.0-rc.28)(solid-js@1.7.11):
+    resolution: {integrity: sha512-1QMBYUBofub6I9E6L6e1sGpi5AKoPVoY1eO36G0Fn+Hg95LxkuKwtIb/e4pcyTkdg+Gz/ZNFFZ2xqcxAP7NsDQ==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
       solid-js: 1.7.11
     dev: false
 
-  /@public-ui/themes@1.6.0-rc.26(@public-ui/components@1.6.0-rc.26):
-    resolution: {integrity: sha512-nhtGO4PRcpMKCQRQLb/BGG9Om653iSN31Txlo61flVkx6TTSqv3qEXiOv3xwiekKhZZwHrPMincQ/kFLBubBxw==}
+  /@public-ui/themes@1.6.0-rc.28(@public-ui/components@1.6.0-rc.28):
+    resolution: {integrity: sha512-lKwxp3pqEZ27l54ELy4hAn2mkIvrV3ios+cvcIMV9slINkjxw44I2/m1vYAj1xISXQKsCdYMnS3YCWh7R1Zg5w==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
     dependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
     dev: false
 
   /@rollup/pluginutils@5.0.3:
@@ -2360,7 +2360,7 @@ packages:
   /@ts-morph/common@0.12.3:
     resolution: {integrity: sha512-4tUmeLyXJnJWvTFOKtcNJ1yh0a3SsTLi2MUoyj8iUNznFRN1ZquaNe7Oukqrnki2FzZkm0J9adCNLDZxUzvj+w==}
     dependencies:
-      fast-glob: 3.2.12
+      fast-glob: 3.3.1
       minimatch: 3.1.2
       mkdirp: 1.0.4
       path-browserify: 1.0.1
@@ -2396,7 +2396,7 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.40.2
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.1
 
   /@types/eslint@8.40.2:
     resolution: {integrity: sha512-PRVjQ4Eh9z9pmmtaq8nTjZjQwKFk7YIHIud3lRoKRBgUQjgjRmoGxxGEPXQkF+lH7QkHJRNr5F4aBgYCW0lqpQ==}
@@ -2662,40 +2662,40 @@ packages:
     resolution: {integrity: sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==}
     dev: true
 
-  /@unocss/config@0.55.1:
-    resolution: {integrity: sha512-4wfNagEgROxb8RAw3X8oKoyZijJaI34QGp1kblqJXHh1eoRhmvL8UIx/8Lhmb2JA6xaZa2CYl9uOBqlChw5MIQ==}
+  /@unocss/config@0.55.2:
+    resolution: {integrity: sha512-RYDv9QzhUeBz9BY+Pty0xc9vk/m4LGBNMiBghcItW6zXN554JbSuoPD55DmnvO2iXrIYujBZdB/Kob6GLCZpqw==}
     engines: {node: '>=14'}
     dependencies:
-      '@unocss/core': 0.55.1
+      '@unocss/core': 0.55.2
       unconfig: 0.3.10
     dev: true
 
-  /@unocss/core@0.55.1:
-    resolution: {integrity: sha512-hZffURZtvH72UvobL9anzE1t7PDldBa89fxWVIsjLb8KHReNfcOv8uEepce0ODUfGrdWPbij017XG/HY5YUexg==}
+  /@unocss/core@0.55.2:
+    resolution: {integrity: sha512-ZLEES8RDgWoK/vttUzl3PM2bZqL3HvhLgj8xdDa09Xw+JiTlR4c66s+hLn52oCoJTnT9lGsD2j7tTGN9ToSiTA==}
     dev: true
 
-  /@unocss/extractor-arbitrary-variants@0.55.1:
-    resolution: {integrity: sha512-8PMN4web1Fwk6LtJKgYJy0Kw16bPn49jTKdlPCN3CGpNN8th1ORFwMpESMRHDKhQ42PdA7+aJOTeLLJ9oY3Jrg==}
+  /@unocss/extractor-arbitrary-variants@0.55.2:
+    resolution: {integrity: sha512-mHEoFx+ITe3OgFoIUhkCQxRgUjvOJeHtI1Z3Sm8NDMy2vTqOlkSf7NLWEyFfQsSFYqpWGTkaW1XiMZujGMoB/g==}
     dependencies:
-      '@unocss/core': 0.55.1
+      '@unocss/core': 0.55.2
     dev: true
 
-  /@unocss/preset-mini@0.55.1:
-    resolution: {integrity: sha512-HPq/jGD4Y21eCAbhEGkxxdEMXW+phuU897vVoYcwO8pIB6cO5ORXl8x/M70MU1LetyfEX5/1bkh7EX4+689JIg==}
+  /@unocss/preset-mini@0.55.2:
+    resolution: {integrity: sha512-jwUsrwtPwMvFVJUP+FVFjq+sp+xQPyFLRPSb89ZI34F1a3EwJ2wioDICLqWjOjY7zei9UgtSY0owBM9vwxw/kg==}
     dependencies:
-      '@unocss/core': 0.55.1
-      '@unocss/extractor-arbitrary-variants': 0.55.1
+      '@unocss/core': 0.55.2
+      '@unocss/extractor-arbitrary-variants': 0.55.2
     dev: true
 
-  /@unocss/webpack@0.55.1(webpack@5.75.0):
-    resolution: {integrity: sha512-f81hX3lXkZ3d56B/A8oWyMECaYCITD0ldOyC8ZfdxLn9v2cka5ctyRSfaUe5ChPyEditfItogXTBqdqmoiuzqg==}
+  /@unocss/webpack@0.55.2(webpack@5.75.0):
+    resolution: {integrity: sha512-kjs2uKuU7id2ZC4LIBxXCxbbXxVhFFQtX3JAL9ADRae5jlCvUkfaOq+Jq4+WA1mmMOmLJdSu3BWd+R9i5iUnMw==}
     peerDependencies:
       webpack: ^4 || ^5
     dependencies:
       '@ampproject/remapping': 2.2.1
       '@rollup/pluginutils': 5.0.3
-      '@unocss/config': 0.55.1
-      '@unocss/core': 0.55.1
+      '@unocss/config': 0.55.2
+      '@unocss/core': 0.55.2
       chokidar: 3.5.3
       fast-glob: 3.3.1
       magic-string: 0.30.2
@@ -2751,7 +2751,7 @@ packages:
       '@vue/compiler-core': 3.3.4
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2
-      magic-string: 0.30.0
+      magic-string: 0.30.2
     dev: true
 
   /@vue/shared@3.3.4:
@@ -2938,8 +2938,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /adopted-style-sheets@1.0.3:
-    resolution: {integrity: sha512-zMTpWbVY6CqhDTkoE6JFslgXkz4irt1wL9QoO5rkqmju8i3X6cc5yxncnUqVJCHfT98hPlZcxLKIbnZzZQ3D2g==}
+  /adopted-style-sheets@1.0.5:
+    resolution: {integrity: sha512-JyShbb4SMmCqyDcTMu+aaPws5tpgcvWLnfSelB4yMiZvy+npQZVGnKOZlxmBiC/bvVZ7G1Cm7eG8+m+nFfDB0Q==}
     dependencies:
       loglevel: 1.8.1
     dev: false
@@ -5123,7 +5123,7 @@ packages:
     dependencies:
       array-union: 3.0.1
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.3.1
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 4.0.0
@@ -5134,7 +5134,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.3.1
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 4.0.0
@@ -7134,19 +7134,19 @@ packages:
       find-up: 3.0.0
     dev: true
 
-  /playwright-core@1.37.0:
-    resolution: {integrity: sha512-1c46jhTH/myQw6sesrcuHVtLoSNfJv8Pfy9t3rs6subY7kARv0HRw5PpyfPYPpPtQvBOmgbE6K+qgYUpj81LAA==}
+  /playwright-core@1.37.1:
+    resolution: {integrity: sha512-17EuQxlSIYCmEMwzMqusJ2ztDgJePjrbttaefgdsiqeLWidjYz9BxXaTaZWxH1J95SHGk6tjE+dwgWILJoUZfA==}
     engines: {node: '>=16'}
     hasBin: true
     dev: true
 
-  /playwright@1.37.0:
-    resolution: {integrity: sha512-CrAEFfVioamMwDKmygc/HAkzEAxYAwjD+zod2poTxM7ObivkoDsKHu1ned16fnQV/Tf1kDB8KtsyH8Qd3VzJIg==}
+  /playwright@1.37.1:
+    resolution: {integrity: sha512-bgUXRrQKhT48zHdxDYQTpf//0xDfDd5hLeEhjuSw8rXEGoT9YeElpfvs/izonTNY21IQZ7d3s22jLxYaAnubbQ==}
     engines: {node: '>=16'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      playwright-core: 1.37.0
+      playwright-core: 1.37.1
     dev: true
 
   /please-upgrade-node@3.2.0:
@@ -8948,8 +8948,8 @@ packages:
     resolution: {integrity: sha512-i3KR1mQMNwY2wx20ozq2EjISGtQWDIfV56We+yGJ5yDs8jTwQiLLaqHlkBHITlCuJnYlVRmXegxFxZg7gqI++A==}
     dev: true
 
-  /world_countries_lists@2.8.1:
-    resolution: {integrity: sha512-hDluXmzFVSgsD1Lo3++0lP8ESIXMt0UrV/AK3wa2nTv803d47zmQl32Ugtavp+DIWG7xrrbae1kLGta9Y383ig==}
+  /world_countries_lists@2.8.2:
+    resolution: {integrity: sha512-zfVaEpHy6BVktcmsOQz1VQWFGgxczhZZwQlUZ1XanMiW69g+25Y7c1RbhzEA3GjKRq8J3XN+RbLkupZ0vJnN5Q==}
     dev: false
 
   /wrap-ansi@6.2.0:

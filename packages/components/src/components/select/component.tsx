@@ -179,7 +179,7 @@ export class KolSelect implements API {
 	@Prop() public _error?: string;
 
 	/**
-	 * Gibt an, ob eine individuelle Höhe übergeben werden soll.
+	 * Deprecated: Gibt an, ob eine individuelle Höhe übergeben werden soll.
 	 *
 	 * @deprecated Use _rows instead.
 	 */
@@ -212,7 +212,7 @@ export class KolSelect implements API {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Options the user can choose from, also supporting Optgroup.
+	 * Deprecated: Options the user can choose from, also supporting Optgroup.
 	 * @deprecated use _options
 	 */
 	@Prop() public _list?: Stringified<SelectOption<W3CInputValue>[]>;

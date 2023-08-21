@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.6.0-rc.26
-    version: 1.6.0-rc.26
+    specifier: 1.6.0-rc.28
+    version: 1.6.0-rc.28
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -16,7 +16,7 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts5.1
-    version: 20.5.0
+    version: 20.5.1
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
@@ -41,10 +41,10 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core@1.0.3:
-    resolution: {integrity: sha512-yzL0NESiAXL4Z/aqf4iptvZZsuju5Px6TUkdSVG+0PnrBaHfL35ThhoxDk2PJafm2d/b93mMVkw8VET5+2f73g==}
+  /@a11y-ui/core@1.0.5:
+    resolution: {integrity: sha512-eC+cyWuerJ8YueeTfiw/xfDo845s0fQHE55VjvrsOwZQNFRKqpbTyD/oT0H7yYacI6APc2Sw8TPljd/OLNVjtQ==}
     dependencies:
-      adopted-style-sheets: 1.0.3
+      adopted-style-sheets: 1.0.5
     dev: true
 
   /@ampproject/remapping@2.2.1:
@@ -533,19 +533,19 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.26:
-    resolution: {integrity: sha512-6kVDXSTzUV//6+YSHuOzjt1Y38ZWeQtXDiTUxJ/woFk0c2O9gBydNzLDjUEbcGdbszndteDs/svGGpC2subRKg==}
+  /@public-ui/components@1.6.0-rc.28:
+    resolution: {integrity: sha512-zcdGcv1KrfVGCcxROzsBfcZqPQqG4gyy3fH6FkAGeqiz8lDkTe20UD6eyyTvtY1Rx/WdAh2h73rLfcZOIzy5kw==}
     dependencies:
-      '@a11y-ui/core': 1.0.3
+      '@a11y-ui/core': 1.0.5
       '@floating-ui/dom': 1.5.1
-      '@public-ui/schema': 1.6.0-rc.26
+      '@public-ui/schema': 1.6.0-rc.28
       i18next: 23.4.4
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.26:
-    resolution: {integrity: sha512-G87X6QazI1XtdToywgnLJNmWa4Z0M0lY3SfTqH359uVtWed+mBFmYGm2s6cYxi1m2jVh+wCN7hG+RKVT4fKoHQ==}
+  /@public-ui/schema@1.6.0-rc.28:
+    resolution: {integrity: sha512-Cnm52iAHhGiwgmlOHGBlWNzXM4RquyCTcjGs0UNEsBaa5xOHGYUDXYEbUyhtddZvA15l89fiVUfpswXJUP4NRQ==}
     dependencies:
-      '@a11y-ui/core': 1.0.3
+      '@a11y-ui/core': 1.0.5
     dev: true
 
   /@rollup/plugin-alias@5.0.0(rollup@3.26.0):
@@ -651,8 +651,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.5.0:
-    resolution: {integrity: sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==}
+  /@types/node@20.5.1:
+    resolution: {integrity: sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -691,8 +691,8 @@ packages:
     hasBin: true
     dev: true
 
-  /adopted-style-sheets@1.0.3:
-    resolution: {integrity: sha512-zMTpWbVY6CqhDTkoE6JFslgXkz4irt1wL9QoO5rkqmju8i3X6cc5yxncnUqVJCHfT98hPlZcxLKIbnZzZQ3D2g==}
+  /adopted-style-sheets@1.0.5:
+    resolution: {integrity: sha512-JyShbb4SMmCqyDcTMu+aaPws5tpgcvWLnfSelB4yMiZvy+npQZVGnKOZlxmBiC/bvVZ7G1Cm7eG8+m+nFfDB0Q==}
     dependencies:
       loglevel: 1.8.1
     dev: true

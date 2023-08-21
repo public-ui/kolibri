@@ -209,7 +209,7 @@ export class KolNav implements API {
 	@Prop() public _ariaCurrentValue: AriaCurrentPropType = false;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @deprecated use _label instead
 	 */
@@ -222,13 +222,13 @@ export class KolNav implements API {
 	@Prop() public _collapsible?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Navigation kompakt angezeigt wird.
+	 * Deprecated: Gibt an, ob die Navigation kompakt angezeigt wird.
 	 * @deprecated Use _hide-label
 	 */
 	@Prop() public _compact?: boolean = false;
 
 	/**
-	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+	 * Deprecated: Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
 	 * @deprecated Version 2
 	 */
 	@Prop() public _hasCompactButton?: boolean = false;
@@ -255,7 +255,7 @@ export class KolNav implements API {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Deprecated: Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @deprecated This property is deprecated and will be removed in the next major version.
 	 */

@@ -43,7 +43,7 @@ export class KolAbbr implements API {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+	 * Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _title?: string;

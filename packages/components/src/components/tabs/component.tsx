@@ -149,7 +149,7 @@ export class KolTabs implements API {
 	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @deprecated use _label instead
 	 */
@@ -176,7 +176,7 @@ export class KolTabs implements API {
 	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
 
 	/**
-	 * Setzt die Position der Registrierkarten.
+	 * Deprecated: Setzt die Position der Registrierkarten.
 	 * @deprecated Use _align.
 	 */
 	@Prop() public _tabsAlign?: AlignPropType = 'top';

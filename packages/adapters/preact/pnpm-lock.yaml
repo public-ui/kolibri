@@ -6,16 +6,16 @@ settings:
 
 dependencies:
   '@public-ui/react':
-    specifier: 1.6.0-rc.26
-    version: 1.6.0-rc.26(@public-ui/components@1.6.0-rc.26)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.6.0-rc.28
+    version: 1.6.0-rc.28(@public-ui/components@1.6.0-rc.28)(react-dom@18.2.0)(react@18.2.0)
   preact:
     specifier: '>=10.11.3'
     version: 10.11.3
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.6.0-rc.26
-    version: 1.6.0-rc.26
+    specifier: 1.6.0-rc.28
+    version: 1.6.0-rc.28
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -31,10 +31,10 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core@1.0.3:
-    resolution: {integrity: sha512-yzL0NESiAXL4Z/aqf4iptvZZsuju5Px6TUkdSVG+0PnrBaHfL35ThhoxDk2PJafm2d/b93mMVkw8VET5+2f73g==}
+  /@a11y-ui/core@1.0.5:
+    resolution: {integrity: sha512-eC+cyWuerJ8YueeTfiw/xfDo845s0fQHE55VjvrsOwZQNFRKqpbTyD/oT0H7yYacI6APc2Sw8TPljd/OLNVjtQ==}
     dependencies:
-      adopted-style-sheets: 1.0.3
+      adopted-style-sheets: 1.0.5
 
   /@ampproject/remapping@2.2.1:
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
@@ -518,30 +518,30 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.26:
-    resolution: {integrity: sha512-6kVDXSTzUV//6+YSHuOzjt1Y38ZWeQtXDiTUxJ/woFk0c2O9gBydNzLDjUEbcGdbszndteDs/svGGpC2subRKg==}
+  /@public-ui/components@1.6.0-rc.28:
+    resolution: {integrity: sha512-zcdGcv1KrfVGCcxROzsBfcZqPQqG4gyy3fH6FkAGeqiz8lDkTe20UD6eyyTvtY1Rx/WdAh2h73rLfcZOIzy5kw==}
     dependencies:
-      '@a11y-ui/core': 1.0.3
+      '@a11y-ui/core': 1.0.5
       '@floating-ui/dom': 1.5.1
-      '@public-ui/schema': 1.6.0-rc.26
+      '@public-ui/schema': 1.6.0-rc.28
       i18next: 23.4.4
 
-  /@public-ui/react@1.6.0-rc.26(@public-ui/components@1.6.0-rc.26)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-fzX502ERRE/xbm7LZHSCIuD6h1oX3+aN3ADEbP3UTaVStkpwpxUjmn6tqgDKi3X0LC/MOgJDTWWuiQMyA21ewQ==}
+  /@public-ui/react@1.6.0-rc.28(@public-ui/components@1.6.0-rc.28)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-GtuikZz5DXfXSI7HiP5MQ6kfB5sHe+NQ2PnNlTQKLJG+V2fphXSgThmagA9SRMfagiE3uiyIuaJk3uMRxJImXA==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.26:
-    resolution: {integrity: sha512-G87X6QazI1XtdToywgnLJNmWa4Z0M0lY3SfTqH359uVtWed+mBFmYGm2s6cYxi1m2jVh+wCN7hG+RKVT4fKoHQ==}
+  /@public-ui/schema@1.6.0-rc.28:
+    resolution: {integrity: sha512-Cnm52iAHhGiwgmlOHGBlWNzXM4RquyCTcjGs0UNEsBaa5xOHGYUDXYEbUyhtddZvA15l89fiVUfpswXJUP4NRQ==}
     dependencies:
-      '@a11y-ui/core': 1.0.3
+      '@a11y-ui/core': 1.0.5
 
   /@rollup/plugin-alias@5.0.0(rollup@3.25.1):
     resolution: {integrity: sha512-l9hY5chSCjuFRPsnRm16twWBiSApl2uYFLsepQYwtBuAxNMQ/1dJqADld40P0Jkqm65GRTLy/AC6hnpVebtLsA==}
@@ -648,8 +648,8 @@ packages:
     hasBin: true
     dev: true
 
-  /adopted-style-sheets@1.0.3:
-    resolution: {integrity: sha512-zMTpWbVY6CqhDTkoE6JFslgXkz4irt1wL9QoO5rkqmju8i3X6cc5yxncnUqVJCHfT98hPlZcxLKIbnZzZQ3D2g==}
+  /adopted-style-sheets@1.0.5:
+    resolution: {integrity: sha512-JyShbb4SMmCqyDcTMu+aaPws5tpgcvWLnfSelB4yMiZvy+npQZVGnKOZlxmBiC/bvVZ7G1Cm7eG8+m+nFfDB0Q==}
     dependencies:
       loglevel: 1.8.1
 

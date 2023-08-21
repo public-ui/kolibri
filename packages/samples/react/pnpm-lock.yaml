@@ -7,16 +7,16 @@ settings:
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.6.0-rc.26)
+    version: 0.0.3(@public-ui/components@1.6.0-rc.28)
   '@public-ui/components':
-    specifier: 1.6.0-rc.26
-    version: 1.6.0-rc.26
+    specifier: 1.6.0-rc.28
+    version: 1.6.0-rc.28
   '@public-ui/react':
-    specifier: 1.6.0-rc.26
-    version: 1.6.0-rc.26(@public-ui/components@1.6.0-rc.26)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.6.0-rc.28
+    version: 1.6.0-rc.28(@public-ui/components@1.6.0-rc.28)(react-dom@18.2.0)(react@18.2.0)
   '@public-ui/themes':
-    specifier: 1.6.0-rc.26
-    version: 1.6.0-rc.26(@public-ui/components@1.6.0-rc.26)
+    specifier: 1.6.0-rc.28
+    version: 1.6.0-rc.28(@public-ui/components@1.6.0-rc.28)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -30,8 +30,8 @@ dependencies:
     specifier: 6.15.0
     version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
   world_countries_lists:
-    specifier: 2.8.1
-    version: 2.8.1
+    specifier: 2.8.2
+    version: 2.8.2
 
 devDependencies:
   '@leanup/stack':
@@ -50,11 +50,11 @@ devDependencies:
     specifier: 18.2.7
     version: 18.2.7
   '@unocss/preset-mini':
-    specifier: 0.55.1
-    version: 0.55.1
+    specifier: 0.55.2
+    version: 0.55.2
   '@unocss/webpack':
-    specifier: 0.55.1
-    version: 0.55.1(webpack@5.87.0)
+    specifier: 0.55.2
+    version: 0.55.2(webpack@5.87.0)
   ajv:
     specifier: 8.12.0
     version: 8.12.0
@@ -95,10 +95,10 @@ packages:
       loglevel: 1.8.1
     dev: false
 
-  /@a11y-ui/core@1.0.3:
-    resolution: {integrity: sha512-yzL0NESiAXL4Z/aqf4iptvZZsuju5Px6TUkdSVG+0PnrBaHfL35ThhoxDk2PJafm2d/b93mMVkw8VET5+2f73g==}
+  /@a11y-ui/core@1.0.5:
+    resolution: {integrity: sha512-eC+cyWuerJ8YueeTfiw/xfDo845s0fQHE55VjvrsOwZQNFRKqpbTyD/oT0H7yYacI6APc2Sw8TPljd/OLNVjtQ==}
     dependencies:
-      adopted-style-sheets: 1.0.3
+      adopted-style-sheets: 1.0.5
     dev: false
 
   /@ampproject/remapping@2.2.1:
@@ -1006,21 +1006,21 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.26):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.28):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.6.0-rc.26:
-    resolution: {integrity: sha512-6kVDXSTzUV//6+YSHuOzjt1Y38ZWeQtXDiTUxJ/woFk0c2O9gBydNzLDjUEbcGdbszndteDs/svGGpC2subRKg==}
+  /@public-ui/components@1.6.0-rc.28:
+    resolution: {integrity: sha512-zcdGcv1KrfVGCcxROzsBfcZqPQqG4gyy3fH6FkAGeqiz8lDkTe20UD6eyyTvtY1Rx/WdAh2h73rLfcZOIzy5kw==}
     dependencies:
-      '@a11y-ui/core': 1.0.3
+      '@a11y-ui/core': 1.0.5
       '@floating-ui/dom': 1.5.1
-      '@public-ui/schema': 1.6.0-rc.26
+      '@public-ui/schema': 1.6.0-rc.28
       i18next: 23.4.4
     dev: false
 
@@ -1031,14 +1031,14 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/react@1.6.0-rc.26(@public-ui/components@1.6.0-rc.26)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-fzX502ERRE/xbm7LZHSCIuD6h1oX3+aN3ADEbP3UTaVStkpwpxUjmn6tqgDKi3X0LC/MOgJDTWWuiQMyA21ewQ==}
+  /@public-ui/react@1.6.0-rc.28(@public-ui/components@1.6.0-rc.28)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-GtuikZz5DXfXSI7HiP5MQ6kfB5sHe+NQ2PnNlTQKLJG+V2fphXSgThmagA9SRMfagiE3uiyIuaJk3uMRxJImXA==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -1049,18 +1049,18 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.26:
-    resolution: {integrity: sha512-G87X6QazI1XtdToywgnLJNmWa4Z0M0lY3SfTqH359uVtWed+mBFmYGm2s6cYxi1m2jVh+wCN7hG+RKVT4fKoHQ==}
+  /@public-ui/schema@1.6.0-rc.28:
+    resolution: {integrity: sha512-Cnm52iAHhGiwgmlOHGBlWNzXM4RquyCTcjGs0UNEsBaa5xOHGYUDXYEbUyhtddZvA15l89fiVUfpswXJUP4NRQ==}
     dependencies:
-      '@a11y-ui/core': 1.0.3
+      '@a11y-ui/core': 1.0.5
     dev: false
 
-  /@public-ui/themes@1.6.0-rc.26(@public-ui/components@1.6.0-rc.26):
-    resolution: {integrity: sha512-nhtGO4PRcpMKCQRQLb/BGG9Om653iSN31Txlo61flVkx6TTSqv3qEXiOv3xwiekKhZZwHrPMincQ/kFLBubBxw==}
+  /@public-ui/themes@1.6.0-rc.28(@public-ui/components@1.6.0-rc.28):
+    resolution: {integrity: sha512-lKwxp3pqEZ27l54ELy4hAn2mkIvrV3ios+cvcIMV9slINkjxw44I2/m1vYAj1xISXQKsCdYMnS3YCWh7R1Zg5w==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
     dependencies:
-      '@public-ui/components': 1.6.0-rc.26
+      '@public-ui/components': 1.6.0-rc.28
     dev: false
 
   /@remix-run/router@1.8.0:
@@ -1582,40 +1582,40 @@ packages:
     resolution: {integrity: sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==}
     dev: true
 
-  /@unocss/config@0.55.1:
-    resolution: {integrity: sha512-4wfNagEgROxb8RAw3X8oKoyZijJaI34QGp1kblqJXHh1eoRhmvL8UIx/8Lhmb2JA6xaZa2CYl9uOBqlChw5MIQ==}
+  /@unocss/config@0.55.2:
+    resolution: {integrity: sha512-RYDv9QzhUeBz9BY+Pty0xc9vk/m4LGBNMiBghcItW6zXN554JbSuoPD55DmnvO2iXrIYujBZdB/Kob6GLCZpqw==}
     engines: {node: '>=14'}
     dependencies:
-      '@unocss/core': 0.55.1
+      '@unocss/core': 0.55.2
       unconfig: 0.3.10
     dev: true
 
-  /@unocss/core@0.55.1:
-    resolution: {integrity: sha512-hZffURZtvH72UvobL9anzE1t7PDldBa89fxWVIsjLb8KHReNfcOv8uEepce0ODUfGrdWPbij017XG/HY5YUexg==}
+  /@unocss/core@0.55.2:
+    resolution: {integrity: sha512-ZLEES8RDgWoK/vttUzl3PM2bZqL3HvhLgj8xdDa09Xw+JiTlR4c66s+hLn52oCoJTnT9lGsD2j7tTGN9ToSiTA==}
     dev: true
 
-  /@unocss/extractor-arbitrary-variants@0.55.1:
-    resolution: {integrity: sha512-8PMN4web1Fwk6LtJKgYJy0Kw16bPn49jTKdlPCN3CGpNN8th1ORFwMpESMRHDKhQ42PdA7+aJOTeLLJ9oY3Jrg==}
+  /@unocss/extractor-arbitrary-variants@0.55.2:
+    resolution: {integrity: sha512-mHEoFx+ITe3OgFoIUhkCQxRgUjvOJeHtI1Z3Sm8NDMy2vTqOlkSf7NLWEyFfQsSFYqpWGTkaW1XiMZujGMoB/g==}
     dependencies:
-      '@unocss/core': 0.55.1
+      '@unocss/core': 0.55.2
     dev: true
 
-  /@unocss/preset-mini@0.55.1:
-    resolution: {integrity: sha512-HPq/jGD4Y21eCAbhEGkxxdEMXW+phuU897vVoYcwO8pIB6cO5ORXl8x/M70MU1LetyfEX5/1bkh7EX4+689JIg==}
+  /@unocss/preset-mini@0.55.2:
+    resolution: {integrity: sha512-jwUsrwtPwMvFVJUP+FVFjq+sp+xQPyFLRPSb89ZI34F1a3EwJ2wioDICLqWjOjY7zei9UgtSY0owBM9vwxw/kg==}
     dependencies:
-      '@unocss/core': 0.55.1
-      '@unocss/extractor-arbitrary-variants': 0.55.1
+      '@unocss/core': 0.55.2
+      '@unocss/extractor-arbitrary-variants': 0.55.2
     dev: true
 
-  /@unocss/webpack@0.55.1(webpack@5.87.0):
-    resolution: {integrity: sha512-f81hX3lXkZ3d56B/A8oWyMECaYCITD0ldOyC8ZfdxLn9v2cka5ctyRSfaUe5ChPyEditfItogXTBqdqmoiuzqg==}
+  /@unocss/webpack@0.55.2(webpack@5.87.0):
+    resolution: {integrity: sha512-kjs2uKuU7id2ZC4LIBxXCxbbXxVhFFQtX3JAL9ADRae5jlCvUkfaOq+Jq4+WA1mmMOmLJdSu3BWd+R9i5iUnMw==}
     peerDependencies:
       webpack: ^4 || ^5
     dependencies:
       '@ampproject/remapping': 2.2.1
       '@rollup/pluginutils': 5.0.3
-      '@unocss/config': 0.55.1
-      '@unocss/core': 0.55.1
+      '@unocss/config': 0.55.2
+      '@unocss/core': 0.55.2
       chokidar: 3.5.3
       fast-glob: 3.3.1
       magic-string: 0.30.2
@@ -1930,8 +1930,8 @@ packages:
     hasBin: true
     dev: true
 
-  /adopted-style-sheets@1.0.3:
-    resolution: {integrity: sha512-zMTpWbVY6CqhDTkoE6JFslgXkz4irt1wL9QoO5rkqmju8i3X6cc5yxncnUqVJCHfT98hPlZcxLKIbnZzZQ3D2g==}
+  /adopted-style-sheets@1.0.5:
+    resolution: {integrity: sha512-JyShbb4SMmCqyDcTMu+aaPws5tpgcvWLnfSelB4yMiZvy+npQZVGnKOZlxmBiC/bvVZ7G1Cm7eG8+m+nFfDB0Q==}
     dependencies:
       loglevel: 1.8.1
     dev: false
@@ -7997,8 +7997,8 @@ packages:
     resolution: {integrity: sha512-Rsk5qQHJ9eowMH28Jwhe8HEbmdYDX4lwoMWshiCXugjtHqMD9ZbiqSDLxcsfdqsETPzVUtX5s1Z5kStiIM6l4A==}
     dev: true
 
-  /world_countries_lists@2.8.1:
-    resolution: {integrity: sha512-hDluXmzFVSgsD1Lo3++0lP8ESIXMt0UrV/AK3wa2nTv803d47zmQl32Ugtavp+DIWG7xrrbae1kLGta9Y383ig==}
+  /world_countries_lists@2.8.2:
+    resolution: {integrity: sha512-zfVaEpHy6BVktcmsOQz1VQWFGgxczhZZwQlUZ1XanMiW69g+25Y7c1RbhzEA3GjKRq8J3XN+RbLkupZ0vJnN5Q==}
     dev: false
 
   /wrap-ansi@6.2.0:
