@@ -244,7 +244,7 @@ export class KolInputRange implements API {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt die Schrittweite der Wertveränderung an.
+	 * Defines the step size for value changes.
 	 */
 	@Prop() public _step?: number;
 

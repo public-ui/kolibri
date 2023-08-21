@@ -229,7 +229,7 @@ export class KolInputNumber implements API {
 	@Prop() public _suggestions?: SuggestionsPropType;
 
 	/**
-	 * Gibt die Schrittweite der Wertveränderung an.
+	 * Defines the step size for value changes.
 	 */
 	@Prop() public _step?: number;
 

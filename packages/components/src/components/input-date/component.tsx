@@ -226,7 +226,7 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt die Schrittweite der Wertveränderung an.
+	 * Defines the step size for value changes.
 	 */
 	@Prop() public _step?: number;
 

@@ -1066,7 +1066,7 @@ export namespace Components {
          */
         "_max"?: Iso8601 | Date;
         /**
-          * Gibt den kleinstmöglichen Eingabewert an.
+          * Defines the smallest possible input value.
          */
         "_min"?: Iso8601 | Date;
         /**
@@ -1092,7 +1092,7 @@ export namespace Components {
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
-          * Gibt die Schrittweite der Wertveränderung an.
+          * Defines the step size for value changes.
          */
         "_step"?: number;
         /**
@@ -1387,7 +1387,7 @@ export namespace Components {
          */
         "_max"?: number | Iso8601;
         /**
-          * Gibt den kleinstmöglichen Eingabewert an.
+          * Defines the smallest possible input value.
          */
         "_min"?: number | Iso8601;
         /**
@@ -1417,7 +1417,7 @@ export namespace Components {
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
-          * Gibt die Schrittweite der Wertveränderung an.
+          * Defines the step size for value changes.
          */
         "_step"?: number;
         /**
@@ -1765,7 +1765,7 @@ export namespace Components {
          */
         "_max"?: number;
         /**
-          * Gibt den kleinstmöglichen Eingabewert an.
+          * Defines the smallest possible input value.
          */
         "_min"?: number;
         /**
@@ -1777,7 +1777,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt die Schrittweite der Wertveränderung an.
+          * Defines the step size for value changes.
          */
         "_step"?: number;
         /**
@@ -4375,7 +4375,7 @@ declare namespace LocalJSX {
          */
         "_max"?: Iso8601 | Date;
         /**
-          * Gibt den kleinstmöglichen Eingabewert an.
+          * Defines the smallest possible input value.
          */
         "_min"?: Iso8601 | Date;
         /**
@@ -4401,7 +4401,7 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
-          * Gibt die Schrittweite der Wertveränderung an.
+          * Defines the step size for value changes.
          */
         "_step"?: number;
         /**
@@ -4696,7 +4696,7 @@ declare namespace LocalJSX {
          */
         "_max"?: number | Iso8601;
         /**
-          * Gibt den kleinstmöglichen Eingabewert an.
+          * Defines the smallest possible input value.
          */
         "_min"?: number | Iso8601;
         /**
@@ -4726,7 +4726,7 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
-          * Gibt die Schrittweite der Wertveränderung an.
+          * Defines the step size for value changes.
          */
         "_step"?: number;
         /**
@@ -5074,7 +5074,7 @@ declare namespace LocalJSX {
          */
         "_max"?: number;
         /**
-          * Gibt den kleinstmöglichen Eingabewert an.
+          * Defines the smallest possible input value.
          */
         "_min"?: number;
         /**
@@ -5086,7 +5086,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt die Schrittweite der Wertveränderung an.
+          * Defines the step size for value changes.
          */
         "_step"?: number;
         /**
