@@ -204,7 +204,7 @@ export class KolNav implements API {
 	}
 
 	/**
-	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+	 * Defines the value of aria-current to be used with the current context within the navigation.
 	 */
 	@Prop() public _ariaCurrentValue: AriaCurrentPropType = false;
 

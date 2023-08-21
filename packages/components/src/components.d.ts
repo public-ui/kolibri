@@ -2315,13 +2315,13 @@ export namespace Components {
          */
         "_on"?: KoliBriModalEventCallbacks;
         /**
-          * Setzt die Breite des Modals. (max-width: 100%).
+          * Defines the width of the modal. (max-width: 100%)
          */
         "_width"?: string;
     }
     interface KolNav {
         /**
-          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+          * Defines the value of aria-current to be used with the current context within the navigation.
          */
         "_ariaCurrentValue": AriaCurrentPropType;
         /**
@@ -5624,13 +5624,13 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriModalEventCallbacks;
         /**
-          * Setzt die Breite des Modals. (max-width: 100%).
+          * Defines the width of the modal. (max-width: 100%)
          */
         "_width"?: string;
     }
     interface KolNav {
         /**
-          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+          * Defines the value of aria-current to be used with the current context within the navigation.
          */
         "_ariaCurrentValue"?: AriaCurrentPropType;
         /**
