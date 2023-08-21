@@ -2369,7 +2369,7 @@ export namespace Components {
     }
     interface KolPagination {
         /**
-          * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
+          * Defines the amount of pages to show next to the outer arrow buttons.
          */
         "_boundaryCount"?: number;
         /**
@@ -2377,7 +2377,7 @@ export namespace Components {
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
+          * Defines which navigation buttons to render (first, last, next, previous buttons).
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
@@ -2385,19 +2385,19 @@ export namespace Components {
          */
         "_on": KoliBriPaginationButtonCallbacks;
         /**
-          * Gibt an, welche Seite aktuell ausgewählt ist.
+          * Defines the current page.
          */
         "_page": number;
         /**
-          * Gibt an, wie viele Einträge pro Seite angezeigt werden.
+          * Defines the amount of entries to show per page.
          */
         "_pageSize": number;
         /**
-          * Setzt die Optionen für das Seitenlängenselect.
+          * Defines the options for the page-size-select.
          */
         "_pageSizeOptions": Stringified<number[]>;
         /**
-          * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
+          * Defines the amount of pages to show next to the current page.
          */
         "_siblingCount"?: number;
         /**
@@ -5678,7 +5678,7 @@ declare namespace LocalJSX {
     }
     interface KolPagination {
         /**
-          * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
+          * Defines the amount of pages to show next to the outer arrow buttons.
          */
         "_boundaryCount"?: number;
         /**
@@ -5686,7 +5686,7 @@ declare namespace LocalJSX {
          */
         "_customClass"?: CustomClassPropType;
         /**
-          * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
+          * Defines which navigation buttons to render (first, last, next, previous buttons).
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
@@ -5694,19 +5694,19 @@ declare namespace LocalJSX {
          */
         "_on": KoliBriPaginationButtonCallbacks;
         /**
-          * Gibt an, welche Seite aktuell ausgewählt ist.
+          * Defines the current page.
          */
         "_page": number;
         /**
-          * Gibt an, wie viele Einträge pro Seite angezeigt werden.
+          * Defines the amount of entries to show per page.
          */
         "_pageSize"?: number;
         /**
-          * Setzt die Optionen für das Seitenlängenselect.
+          * Defines the options for the page-size-select.
          */
         "_pageSizeOptions"?: Stringified<number[]>;
         /**
-          * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
+          * Defines the amount of pages to show next to the current page.
          */
         "_siblingCount"?: number;
         /**

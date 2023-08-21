@@ -151,22 +151,22 @@ export class KolPagination implements API {
 	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
-	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
+	 * Defines which navigation buttons to render (first, last, next, previous buttons).
 	 */
 	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
 
 	/**
-	 * Gibt an, welche Seite aktuell ausgewählt ist.
+	 * Defines the current page.
 	 */
 	@Prop() public _page!: number;
 
 	/**
-	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
+	 * Defines the amount of entries to show per page.
 	 */
 	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
 
 	/**
-	 * Setzt die Optionen für das Seitenlängenselect.
+	 * Defines the options for the page-size-select.
 	 */
 	@Prop() public _pageSizeOptions: Stringified<number[]> = [];
 
@@ -176,7 +176,7 @@ export class KolPagination implements API {
 	@Prop() public _on!: KoliBriPaginationButtonCallbacks;
 
 	/**
-	 * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
+	 * Defines the amount of pages to show next to the current page.
 	 */
 	@Prop() public _siblingCount?: number = 1;
 
