@@ -2200,7 +2200,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;

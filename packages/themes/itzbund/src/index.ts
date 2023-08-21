@@ -315,7 +315,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;

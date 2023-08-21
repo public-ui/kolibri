@@ -744,7 +744,7 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;

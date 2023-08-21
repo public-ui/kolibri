@@ -2088,7 +2088,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			display: grid;
 			gap: calc(var(--spacing) * 4);
 		}
-		:host > div {
+		:host .navigation-list {
 			display: inline-flex;
 			flex-wrap: wrap;
 			align-items: center;

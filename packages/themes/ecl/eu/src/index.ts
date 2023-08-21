@@ -501,7 +501,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		display: grid;
 		gap: var(--spacing-m);
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
