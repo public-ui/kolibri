@@ -51,7 +51,7 @@ export class KolForm implements API {
 	@Prop() public _on?: KoliBriFormCallbacks;
 
 	/**
-	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
+	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
 
