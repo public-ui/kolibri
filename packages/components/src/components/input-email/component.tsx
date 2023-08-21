@@ -154,7 +154,7 @@ export class KolInputEmail implements API {
 	@Prop() public _error?: string;
 
 	/**
-	 * Shows the character count on the lower border of the input.s
+	 * Shows the character count on the lower border of the input.
 	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCounter?: boolean;
