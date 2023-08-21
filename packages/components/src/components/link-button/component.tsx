@@ -102,7 +102,7 @@ export class KolLinkButton implements Props {
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Defines the custom class attribute.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
 

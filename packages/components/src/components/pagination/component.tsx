@@ -146,7 +146,7 @@ export class KolPagination implements API {
 	@Prop() public _boundaryCount?: number = 1;
 
 	/**
-	 * Defines the custom class attribute.
+	 * Defines the custom class attribute for the buttons.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
 
