@@ -378,7 +378,7 @@ export namespace Components {
          */
         "_type"?: ButtonTypePropType;
         /**
-          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+          * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
@@ -475,7 +475,7 @@ export namespace Components {
          */
         "_type"?: ButtonTypePropType;
         /**
-          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+          * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
     }
@@ -578,7 +578,7 @@ export namespace Components {
          */
         "_type"?: ButtonTypePropType;
         /**
-          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+          * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
@@ -919,7 +919,7 @@ export namespace Components {
          */
         "_type"?: InputCheckboxVariant;
         /**
-          * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
+          * Defines the value of the input.
          */
         "_value": Stringified<StencilUnknown>;
         /**
@@ -1009,7 +1009,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -1121,7 +1121,7 @@ export namespace Components {
          */
         "_type": InputDateType;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: Iso8601 | Date | null;
     }
@@ -1243,7 +1243,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -1330,7 +1330,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -1447,7 +1447,7 @@ export namespace Components {
          */
         "_type"?: InputNumberType;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: number | Iso8601 | null;
     }
@@ -1555,7 +1555,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -1638,7 +1638,8 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
+          * Defines the value of the input.
+          * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
          */
         "_value"?: Stringified<W3CInputValue>;
     }
@@ -1707,7 +1708,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert der Radio an.
+          * Defines the value of the input.
          */
         "_value"?: W3CInputValue;
     }
@@ -1801,7 +1802,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: number;
     }
@@ -1923,7 +1924,7 @@ export namespace Components {
          */
         "_type"?: InputTextType;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -2442,7 +2443,7 @@ export namespace Components {
          */
         "_unit"?: string;
         /**
-          * Gibt an, wie weit die Anzeige fortgeschritten ist.
+          * Defines the progress.
          */
         "_value": number;
         /**
@@ -2570,7 +2571,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: Stringified<W3CInputValue[]>;
     }
@@ -2719,7 +2720,7 @@ export namespace Components {
          */
         "_type"?: ButtonTypePropType;
         /**
-          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+          * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
@@ -2901,7 +2902,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -3686,7 +3687,7 @@ declare namespace LocalJSX {
          */
         "_type"?: ButtonTypePropType;
         /**
-          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+          * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
@@ -3783,7 +3784,7 @@ declare namespace LocalJSX {
          */
         "_type"?: ButtonTypePropType;
         /**
-          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+          * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
     }
@@ -3886,7 +3887,7 @@ declare namespace LocalJSX {
          */
         "_type"?: ButtonTypePropType;
         /**
-          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+          * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
@@ -4227,7 +4228,7 @@ declare namespace LocalJSX {
          */
         "_type"?: InputCheckboxVariant;
         /**
-          * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
+          * Defines the value of the input.
          */
         "_value": Stringified<StencilUnknown>;
         /**
@@ -4317,7 +4318,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -4429,7 +4430,7 @@ declare namespace LocalJSX {
          */
         "_type"?: InputDateType;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: Iso8601 | Date | null;
     }
@@ -4551,7 +4552,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -4638,7 +4639,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -4755,7 +4756,7 @@ declare namespace LocalJSX {
          */
         "_type"?: InputNumberType;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: number | Iso8601 | null;
     }
@@ -4863,7 +4864,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -4946,7 +4947,8 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
+          * Defines the value of the input.
+          * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
          */
         "_value"?: Stringified<W3CInputValue>;
     }
@@ -5015,7 +5017,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert der Radio an.
+          * Defines the value of the input.
          */
         "_value"?: W3CInputValue;
     }
@@ -5109,7 +5111,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: number;
     }
@@ -5231,7 +5233,7 @@ declare namespace LocalJSX {
          */
         "_type"?: InputTextType;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }
@@ -5750,7 +5752,7 @@ declare namespace LocalJSX {
          */
         "_unit"?: string;
         /**
-          * Gibt an, wie weit die Anzeige fortgeschritten ist.
+          * Defines the progress.
          */
         "_value": number;
         /**
@@ -5878,7 +5880,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: Stringified<W3CInputValue[]>;
     }
@@ -6027,7 +6029,7 @@ declare namespace LocalJSX {
          */
         "_type"?: ButtonTypePropType;
         /**
-          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+          * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
@@ -6209,7 +6211,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert des Eingabefeldes an.
+          * Defines the value of the input.
          */
         "_value"?: string;
     }

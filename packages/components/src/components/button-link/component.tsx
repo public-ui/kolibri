@@ -168,7 +168,7 @@ export class KolButtonLink implements Props {
 	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
-	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+	 * Defines the value that the button emits on click.
 	 */
 	@Prop() public _value?: Stringified<StencilUnknown>;
 }

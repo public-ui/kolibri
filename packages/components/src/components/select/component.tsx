@@ -277,7 +277,7 @@ export class KolSelect implements API {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
 

@@ -289,7 +289,7 @@ export class KolInputText implements API {
 	@Prop() public _type?: InputTextType = 'text';
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: string;
 

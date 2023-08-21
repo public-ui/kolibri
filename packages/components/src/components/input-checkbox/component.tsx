@@ -209,7 +209,7 @@ export class KolInputCheckbox implements API {
 	@Prop() public _type?: InputCheckboxVariant;
 
 	/**
-	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
+	 * Defines the value of the input.
 	 */
 	@Prop() public _value!: Stringified<StencilUnknown>;
 

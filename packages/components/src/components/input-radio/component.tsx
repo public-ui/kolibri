@@ -234,7 +234,8 @@ export class KolInputRadio implements API {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
+	 * Defines the value of the input.
+	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
 	 */
 	@Prop() public _value?: Stringified<W3CInputValue>;
 

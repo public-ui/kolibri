@@ -118,7 +118,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert der Radio an.
+	 * Defines the value of the input.
 	 */
 	@Prop() public _value?: W3CInputValue;
 }

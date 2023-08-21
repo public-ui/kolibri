@@ -128,7 +128,7 @@ export class KolProcess implements API {
 	@Prop() public _unit?: string = '%';
 
 	/**
-	 * Gibt an, wie weit die Anzeige fortgeschritten ist.
+	 * Defines the progress.
 	 */
 	@Prop() public _value!: number;
 

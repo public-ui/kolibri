@@ -263,7 +263,7 @@ export class KolInputNumber implements API {
 	@Prop() public _type?: InputNumberType = 'number';
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: number | Iso8601 | null;
 

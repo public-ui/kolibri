@@ -252,7 +252,7 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _type: InputDateType = 'date';
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
 
