@@ -65,65 +65,75 @@ export class KolPagination implements API {
 
 		return (
 			<Host>
-				<div aria-label={translate('kol-pagination')}>
-					{this.state._hasButtons.first && (
-						<kol-button
-							class="first"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={this.state._page <= 1}
-							_icon={leftDoubleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-first')}
-							_on={this.onGoToFirst}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{this.state._hasButtons.previous && (
-						<kol-button
-							class="previous"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={this.state._page <= 1}
-							_icon={leftSingleArrow}
-							_hideLabel
-							_label={translate('kol-page-back')}
-							_on={this.onGoBackward}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{pageButtons}
-					{this.state._hasButtons.next && (
-						<kol-button
-							class="next"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={count <= this.state._page}
-							_icon={rightSingleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-next')}
-							_on={this.onGoForward}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{this.state._hasButtons.last && (
-						<kol-button
-							class="last"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={count <= this.state._page}
-							_icon={rightDoubleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-last')}
-							_on={this.onGoToEnd}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-				</div>
+				<nav aria-label={translate('kol-pagination')}>
+					<ul class="navigation-list">
+						{this.state._hasButtons.first && (
+							<li>
+								<kol-button
+									class="first"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={this.state._page <= 1}
+									_icon={leftDoubleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-first')}
+									_on={this.onGoToFirst}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+						{this.state._hasButtons.previous && (
+							<li>
+								<kol-button
+									class="previous"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={this.state._page <= 1}
+									_icon={leftSingleArrow}
+									_hideLabel
+									_label={translate('kol-page-back')}
+									_on={this.onGoBackward}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+						{pageButtons}
+						{this.state._hasButtons.next && (
+							<li>
+								<kol-button
+									class="next"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={count <= this.state._page}
+									_icon={rightSingleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-next')}
+									_on={this.onGoForward}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+						{this.state._hasButtons.last && (
+							<li>
+								<kol-button
+									class="last"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={count <= this.state._page}
+									_icon={rightDoubleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-last')}
+									_on={this.onGoToEnd}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+					</ul>
+				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
 					<kol-select
 						_hideLabel
@@ -267,7 +277,6 @@ export class KolPagination implements API {
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
 			<kol-button
-				aria-label={translate('kol-page-current', { placeholders: { page: String(page) } })}
 				exportparts="icon"
 				key={`${this.nonce}-${page}`}
 				_customClass={this.state._customClass}
