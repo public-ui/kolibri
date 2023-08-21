@@ -1249,7 +1249,7 @@ export namespace Components {
     }
     interface KolInputFile {
         /**
-          * Gibt an, welche Dateiformate erlaubt sind.
+          * Defines which file formats are accepted.
          */
         "_accept"?: string;
         /**
@@ -1612,7 +1612,7 @@ export namespace Components {
          */
         "_options"?: OptionsPropType;
         /**
-          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+          * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
         /**
@@ -1692,7 +1692,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+          * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
         /**
@@ -2175,7 +2175,7 @@ export namespace Components {
          */
         "_ordered"?: boolean;
         /**
-          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+          * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
     }
@@ -2358,7 +2358,7 @@ export namespace Components {
          */
         "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
-          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+          * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
         /**
@@ -4558,7 +4558,7 @@ declare namespace LocalJSX {
     }
     interface KolInputFile {
         /**
-          * Gibt an, welche Dateiformate erlaubt sind.
+          * Defines which file formats are accepted.
          */
         "_accept"?: string;
         /**
@@ -4921,7 +4921,7 @@ declare namespace LocalJSX {
          */
         "_options"?: OptionsPropType;
         /**
-          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+          * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
         /**
@@ -5001,7 +5001,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+          * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
         /**
@@ -5484,7 +5484,7 @@ declare namespace LocalJSX {
          */
         "_ordered"?: boolean;
         /**
-          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+          * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
     }
@@ -5667,7 +5667,7 @@ declare namespace LocalJSX {
          */
         "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
-          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+          * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
         /**

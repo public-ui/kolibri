@@ -98,7 +98,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 

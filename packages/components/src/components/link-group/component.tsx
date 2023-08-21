@@ -108,7 +108,7 @@ export class KolLinkGroup implements API {
 	@Prop() public _ordered?: boolean;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 

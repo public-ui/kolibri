@@ -201,7 +201,7 @@ export class KolInputRadio implements API {
 	@Prop() public _options?: OptionsPropType;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
