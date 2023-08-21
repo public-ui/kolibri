@@ -99,7 +99,7 @@ export class KolInputFile implements API {
 	private readonly controller: InputFileController;
 
 	/**
-	 * Gibt an, welche Dateiformate erlaubt sind.
+	 * Defines which file formats are accepted.
 	 */
 	@Prop() public _accept?: string;
 
