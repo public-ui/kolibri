@@ -123,7 +123,7 @@ export class KolProcess implements API {
 	@Prop() public _type?: KoliBriProgressVariantType;
 
 	/**
-	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
+	 * Defines the unit of the step values (not shown).
 	 */
 	@Prop() public _unit?: string = '%';
 
