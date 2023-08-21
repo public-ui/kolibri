@@ -210,7 +210,7 @@ export class KolInputText implements API {
 	@Prop() public _list?: Stringified<string[]>;
 
 	/**
-	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
 

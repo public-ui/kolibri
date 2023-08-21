@@ -794,7 +794,7 @@ export namespace Components {
          */
         "_id": IdPropType;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**
@@ -1148,7 +1148,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input.s
+          * Shows the character count on the lower border of the input.
           * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
@@ -1179,7 +1179,7 @@ export namespace Components {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**
@@ -1500,7 +1500,7 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**
@@ -1861,7 +1861,7 @@ export namespace Components {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**
@@ -2851,7 +2851,7 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**
@@ -4103,7 +4103,7 @@ declare namespace LocalJSX {
          */
         "_id": IdPropType;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**
@@ -4457,7 +4457,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input.s
+          * Shows the character count on the lower border of the input.
           * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
@@ -4488,7 +4488,7 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**
@@ -4809,7 +4809,7 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**
@@ -5170,7 +5170,7 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**
@@ -6160,7 +6160,7 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+          * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
         /**

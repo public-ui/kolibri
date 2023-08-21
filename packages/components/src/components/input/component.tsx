@@ -152,7 +152,7 @@ export class KolInput implements Props {
 	@Prop() public _id!: IdPropType;
 
 	/**
-	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
 
