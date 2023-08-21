@@ -289,12 +289,12 @@ export namespace Components {
     }
     interface KolButton {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
           * @deprecated
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -392,11 +392,11 @@ export namespace Components {
     }
     interface KolButtonLink {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -490,11 +490,11 @@ export namespace Components {
     }
     interface KolButtonWc {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -836,7 +836,7 @@ export namespace Components {
     }
     interface KolInputCheckbox {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -929,7 +929,7 @@ export namespace Components {
     }
     interface KolInputColor {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1015,7 +1015,7 @@ export namespace Components {
     }
     interface KolInputDate {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1127,7 +1127,7 @@ export namespace Components {
     }
     interface KolInputEmail {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1253,7 +1253,7 @@ export namespace Components {
          */
         "_accept"?: string;
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1336,7 +1336,7 @@ export namespace Components {
     }
     interface KolInputNumber {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1453,7 +1453,7 @@ export namespace Components {
     }
     interface KolInputPassword {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1561,7 +1561,7 @@ export namespace Components {
     }
     interface KolInputRadio {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1647,7 +1647,7 @@ export namespace Components {
      */
     interface KolInputRadioGroup {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1713,7 +1713,7 @@ export namespace Components {
     }
     interface KolInputRange {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1807,7 +1807,7 @@ export namespace Components {
     }
     interface KolInputText {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -1943,7 +1943,7 @@ export namespace Components {
     }
     interface KolLink {
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
@@ -2049,7 +2049,7 @@ export namespace Components {
     }
     interface KolLinkButton {
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
@@ -2180,7 +2180,7 @@ export namespace Components {
     }
     interface KolLinkWc {
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
@@ -2475,7 +2475,7 @@ export namespace Components {
     }
     interface KolSelect {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -2642,11 +2642,11 @@ export namespace Components {
     }
     interface KolSplitButton {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -2807,7 +2807,7 @@ export namespace Components {
     }
     interface KolTextarea {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -3597,12 +3597,12 @@ declare namespace LocalJSX {
     }
     interface KolButton {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
           * @deprecated
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -3700,11 +3700,11 @@ declare namespace LocalJSX {
     }
     interface KolButtonLink {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -3798,11 +3798,11 @@ declare namespace LocalJSX {
     }
     interface KolButtonWc {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -4144,7 +4144,7 @@ declare namespace LocalJSX {
     }
     interface KolInputCheckbox {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -4237,7 +4237,7 @@ declare namespace LocalJSX {
     }
     interface KolInputColor {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -4323,7 +4323,7 @@ declare namespace LocalJSX {
     }
     interface KolInputDate {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -4435,7 +4435,7 @@ declare namespace LocalJSX {
     }
     interface KolInputEmail {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -4561,7 +4561,7 @@ declare namespace LocalJSX {
          */
         "_accept"?: string;
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -4644,7 +4644,7 @@ declare namespace LocalJSX {
     }
     interface KolInputNumber {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -4761,7 +4761,7 @@ declare namespace LocalJSX {
     }
     interface KolInputPassword {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -4869,7 +4869,7 @@ declare namespace LocalJSX {
     }
     interface KolInputRadio {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -4955,7 +4955,7 @@ declare namespace LocalJSX {
      */
     interface KolInputRadioGroup {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -5021,7 +5021,7 @@ declare namespace LocalJSX {
     }
     interface KolInputRange {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -5115,7 +5115,7 @@ declare namespace LocalJSX {
     }
     interface KolInputText {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -5251,7 +5251,7 @@ declare namespace LocalJSX {
     }
     interface KolLink {
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
@@ -5357,7 +5357,7 @@ declare namespace LocalJSX {
     }
     interface KolLinkButton {
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
@@ -5488,7 +5488,7 @@ declare namespace LocalJSX {
     }
     interface KolLinkWc {
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
@@ -5783,7 +5783,7 @@ declare namespace LocalJSX {
     }
     interface KolSelect {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
@@ -5950,11 +5950,11 @@ declare namespace LocalJSX {
     }
     interface KolSplitButton {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -6115,7 +6115,7 @@ declare namespace LocalJSX {
     }
     interface KolTextarea {
         /**
-          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * Defines which key combination can be used to trigger or focus the interactive element of the component.
          */
         "_accessKey"?: string;
         /**
