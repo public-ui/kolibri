@@ -12,7 +12,7 @@ type Toast = {
 };
 
 export class ToasterService {
-	private readonly toastElement: HTMLKolToastElement;
+	private toastElement?: HTMLKolToastElement;
 
 	private readonly queue: Set<Toast> = new Set();
 
@@ -40,6 +40,22 @@ export class ToasterService {
 		this.document.body.insertBefore(this.toastElement, this.document.body.firstChild);
 	}
 
+	public dispose() {
+		const element = this.toastElement;
+		if (element) {
+			this.toastElement = undefined;
+			this.queue.clear();
+			element.remove();
+
+			const on = element._on;
+			if (on && on.onClose) {
+				on.onClose(new Event('dispose'));
+			}
+		} else {
+			console.warn('Toaster service is already disposed.');
+		}
+	}
+
 	/**
 	 * Reiht einen neuen Toast in die Warteschlange ein, um ihn anzuzeigen.
 	 */
@@ -59,6 +75,10 @@ export class ToasterService {
 			throw new Error('Toast requires a label.');
 		}
 
+		if (!this.toastElement) {
+			console.warn('Tried to show a new toast at a disposed toaster service!');
+			return;
+		}
 		this.toastElement.setAttribute('_label', label);
 		this.toastElement.setAttribute('_show', 'true');
 		this.toastElement.setAttribute('_type', data.type);
@@ -66,3 +86,40 @@ export class ToasterService {
 		this.isOpen = true;
 	}
 }
+
+class ToasterFabricator {
+	private readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();
+
+	/**
+	 * Get a toaster for the specified document environment. Each environment has exactly one instance of the service.
+	 * @param document the document
+	 * @returns the toaster service instance
+	 */
+	public get(document: Document) {
+		let instance = this.instances.get(document);
+		if (!instance) {
+			instance = new ToasterService(document);
+			this.instances.set(document, instance);
+		}
+		return instance;
+	}
+
+	/**
+	 * Disposes the toaster service instance for the given document, if available.
+	 * @param document the document
+	 */
+	public removeFor(document: Document) {
+		let instance = this.instances.get(document);
+		if (!instance) {
+			return;
+		}
+		instance.dispose();
+		this.instances.delete(document);
+	}
+}
+
+/**
+ * The toaster fabricator provides instances of the toaster service, that makes it possible to spawn messages
+ * via toasts.
+ */
+export const fabricator = new ToasterFabricator();
