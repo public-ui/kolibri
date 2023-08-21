@@ -182,7 +182,7 @@ export class KolInputNumber implements API {
 	@Prop() public _list?: Stringified<string[]>;
 
 	/**
-	 * Gibt den größtmöglichen Eingabewert an.
+	 * Defines the largest possible input value.
 	 */
 	@Prop() public _max?: number | Iso8601;
 

@@ -112,7 +112,7 @@ export class KolProcess implements API {
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
+	 * Defines at which value the progress display is completed.
 	 */
 	@Prop() public _max!: number;
 

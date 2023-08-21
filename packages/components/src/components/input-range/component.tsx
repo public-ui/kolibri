@@ -224,7 +224,7 @@ export class KolInputRange implements API {
 	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
 
 	/**
-	 * Gibt den größtmöglichen Eingabewert an.
+	 * Defines the largest possible input value.
 	 */
 	@Prop() public _max?: number;
 

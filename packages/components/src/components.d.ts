@@ -1062,7 +1062,7 @@ export namespace Components {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt den größtmöglichen Eingabewert an.
+          * Defines the largest possible input value.
          */
         "_max"?: Iso8601 | Date;
         /**
@@ -1383,7 +1383,7 @@ export namespace Components {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt den größtmöglichen Eingabewert an.
+          * Defines the largest possible input value.
          */
         "_max"?: number | Iso8601;
         /**
@@ -1761,7 +1761,7 @@ export namespace Components {
          */
         "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
-          * Gibt den größtmöglichen Eingabewert an.
+          * Defines the largest possible input value.
          */
         "_max"?: number;
         /**
@@ -2430,7 +2430,7 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
+          * Defines at which value the progress display is completed.
          */
         "_max": number;
         /**
@@ -4371,7 +4371,7 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt den größtmöglichen Eingabewert an.
+          * Defines the largest possible input value.
          */
         "_max"?: Iso8601 | Date;
         /**
@@ -4692,7 +4692,7 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt den größtmöglichen Eingabewert an.
+          * Defines the largest possible input value.
          */
         "_max"?: number | Iso8601;
         /**
@@ -5070,7 +5070,7 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
-          * Gibt den größtmöglichen Eingabewert an.
+          * Defines the largest possible input value.
          */
         "_max"?: number;
         /**
@@ -5739,7 +5739,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
+          * Defines at which value the progress display is completed.
          */
         "_max": number;
         /**
