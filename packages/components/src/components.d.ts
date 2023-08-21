@@ -298,12 +298,12 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -400,12 +400,12 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @TODO : Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
          */
         "_ariaExpanded"?: boolean;
@@ -498,12 +498,12 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -1948,12 +1948,12 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
@@ -2054,12 +2054,12 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
@@ -2185,12 +2185,12 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
@@ -2650,7 +2650,7 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -3606,12 +3606,12 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -3708,12 +3708,12 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @TODO : Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
          */
         "_ariaExpanded"?: boolean;
@@ -3806,12 +3806,12 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -5256,12 +5256,12 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
@@ -5362,12 +5362,12 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
@@ -5493,12 +5493,12 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
@@ -5958,7 +5958,7 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**

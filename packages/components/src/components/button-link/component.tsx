@@ -80,7 +80,7 @@ export class KolButtonLink implements Props {
 	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
-	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 * @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _ariaExpanded?: boolean;
