@@ -47,7 +47,7 @@ const HEADERS: KoliBriTableHeaders = {
 							}}
 							_icon="codicon codicon-location"
 							_label={'Speichern'}
-						/>
+						/>,
 					);
 				},
 			},
