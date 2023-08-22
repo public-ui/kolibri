@@ -32,10 +32,10 @@ Das eigentliche Symbol, welches am Bildschirm ausgegeben wird, wird über die Pr
 
 ## Properties
 
-| Property               | Attribute     | Description                                                                                                                                                                                      | Type                  | Default     |
-| ---------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- | ----------- |
-| `_ariaLabel`           | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined` | `undefined` |
-| `_label`               | `_label`      | Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).                                                                                  | `string \| undefined` | `undefined` |
-| `_symbol` _(required)_ | `_symbol`     | Dieses Property gibt den String an der angezeigt werden soll.                                                                                                                                    | `string`              | `undefined` |
+| Property               | Attribute     | Description                                                                                                                         | Type                  | Default     |
+| ---------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `_ariaLabel`           | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string \| undefined` | `undefined` |
+| `_label`               | `_label`      | Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).                     | `string \| undefined` | `undefined` |
+| `_symbol` _(required)_ | `_symbol`     | Dieses Property gibt den String an der angezeigt werden soll.                                                                       | `string`              | `undefined` |
 
 ---

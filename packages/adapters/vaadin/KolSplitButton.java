@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-split-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-split-button")
 public class KolSplitButton extends Component {
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +35,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @return Optional<String>
 	 */
@@ -54,26 +54,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-	 *
-	 * @param value String
-	 */
-	public void setAriaCurrent(final String value) {
-		getElement().setProperty("_aria-current", value.toString());
-	}
-
-	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-	 *
-	 * @return Optional<String>
-	 */
-	public Optional<String> getAriaCurrent() {
-		var value = getElement().getProperty("_aria-current", null);
-		return value.isEmpty() ? Optional.empty() : Optional.of(value);
-	}
-
-	/**
-	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @param value String
 	 */
@@ -82,7 +63,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @return Optional<String>
 	 */
@@ -92,7 +73,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @param value String
 	 */
@@ -101,7 +82,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @return Optional<String>
 	 */
@@ -111,7 +92,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @param value String
 	 */
@@ -120,7 +101,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @return Optional<String>
 	 */
@@ -130,7 +111,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 *
 	 * @param value String
 	 */
@@ -139,7 +120,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 *
 	 * @return Optional<String>
 	 */
@@ -150,7 +131,6 @@ public class KolSplitButton extends Component {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -160,7 +140,6 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -170,7 +149,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @param value String
 	 */
@@ -179,7 +158,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @return Optional<String>
 	 */
@@ -189,7 +168,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @param value String
 	 */
@@ -198,7 +177,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @return Optional<String>
 	 */
@@ -208,26 +187,26 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @param value String
 	 */
-	public void setIconOnly(final String value) {
-		getElement().setProperty("_icon-only", value.toString());
+	public void setId(final String value) {
+		getElement().setProperty("_id", value.toString());
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @return Optional<String>
 	 */
-	public Optional<String> getIconOnly() {
-		var value = getElement().getProperty("_icon-only", null);
+	public Optional<String> getId() {
+		var value = getElement().getProperty("_id", null);
 		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -236,7 +215,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -246,7 +225,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 *
 	 * @param value String
 	 */
@@ -255,7 +234,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 *
 	 * @return Optional<String>
 	 */
@@ -284,7 +263,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines whether to show the dropdown menu.
 	 *
 	 * @param value String
 	 */
@@ -293,7 +272,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines whether to show the dropdown menu.
 	 *
 	 * @return Optional<String>
 	 */
@@ -303,7 +282,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -312,7 +291,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */
@@ -360,7 +339,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+	 * Defines the value that the button emits on click.
 	 *
 	 * @param value String
 	 */
@@ -369,7 +348,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+	 * Defines the value that the button emits on click.
 	 *
 	 * @return Optional<String>
 	 */

@@ -54,12 +54,12 @@ Ausführliche Erklärung zu `_srcset` und `_sizes`: <kol-link _href="https://www
 
 ## Properties
 
-| Property            | Attribute  | Description                                                                | Type                             | Default     |
-| ------------------- | ---------- | -------------------------------------------------------------------------- | -------------------------------- | ----------- |
-| `_alt` _(required)_ | `_alt`     | Setzt den alternativen Text.                                               | `string`                         | `undefined` |
-| `_loading`          | `_loading` | Setzt den Lademodus.                                                       | `"eager" \| "lazy" \| undefined` | `'lazy'`    |
-| `_sizes`            | `_sizes`   | Setzt Größen für unterschiedliche Auflösungen, unterstützend für \_srcset. | `string \| undefined`            | `undefined` |
-| `_src` _(required)_ | `_src`     | Sets the image `src` attribute to the given string.                        | `string`                         | `undefined` |
-| `_srcset`           | `_srcset`  | Setzt eine Liste von Quell-URLs mit Breiten der Bilder.                    | `string \| undefined`            | `undefined` |
+| Property            | Attribute  | Description                                                                    | Type                             | Default     |
+| ------------------- | ---------- | ------------------------------------------------------------------------------ | -------------------------------- | ----------- |
+| `_alt` _(required)_ | `_alt`     | Setzt den alternativen Text.                                                   | `string`                         | `undefined` |
+| `_loading`          | `_loading` | Defines the loading mode for the image.                                        | `"eager" \| "lazy" \| undefined` | `'lazy'`    |
+| `_sizes`            | `_sizes`   | Defines the image sizes for different screen resolutions, supporting \_srcset. | `string \| undefined`            | `undefined` |
+| `_src` _(required)_ | `_src`     | Sets the image `src` attribute to the given string.                            | `string`                         | `undefined` |
+| `_srcset`           | `_srcset`  | Setzt eine Liste von Quell-URLs mit Breiten der Bilder.                        | `string \| undefined`            | `undefined` |
 
 ---

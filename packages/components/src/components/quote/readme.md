@@ -21,13 +21,13 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 
 ## Properties
 
-| Property              | Attribute  | Description                                                                                                                                                                                       | Type                               | Default     |
-| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------- |
-| `_caption`            | `_caption` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`              | `undefined` |
-| `_href` _(required)_  | `_href`    | Defines the link the source of the quote.                                                                                                                                                         | `string`                           | `undefined` |
-| `_label`              | `_label`   | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                       | `string \| undefined`              | `undefined` |
-| `_quote` _(required)_ | `_quote`   | Setzt den Text, also das Zitat selbst.                                                                                                                                                            | `string`                           | `undefined` |
-| `_variant`            | `_variant` | Gibt an, welche Variante der Darstellung genutzt werden soll.                                                                                                                                     | `"block" \| "inline" \| undefined` | `'inline'`  |
+| Property              | Attribute  | Description                                                                                                                     | Type                               | Default     |
+| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------- |
+| `_caption`            | `_caption` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Defines the visible caption of the component. | `string \| undefined`              | `undefined` |
+| `_href` _(required)_  | `_href`    | Defines the link to the source of the quote.                                                                                    | `string`                           | `undefined` |
+| `_label`              | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).              | `string \| undefined`              | `undefined` |
+| `_quote` _(required)_ | `_quote`   | Defines the text of the quote.                                                                                                  | `string`                           | `undefined` |
+| `_variant`            | `_variant` | Defines which variant should be used for presentation.                                                                          | `"block" \| "inline" \| undefined` | `'inline'`  |
 
 ## Dependencies
 
@@ -43,9 +43,9 @@ graph TD;
   kol-link --> kol-link-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip
+  kol-link-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   style kol-quote fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

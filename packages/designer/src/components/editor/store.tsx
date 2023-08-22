@@ -1716,7 +1716,7 @@ export const components: Record<string, Component> = {
       <KolToast _type="warning">Hier wird die Warnung kurz beschrieben.</KolToast> */}
 		</div>
 	),
-	'KOL-TOOLTIP': () => (
+	'KOL-TOOLTIP-WC': () => (
 		<div class="grid justify-items-center gap-8">
 			<div class="grid gap-4 grid-cols-4 justify-items-center">
 				<KolButton _icon="codicon codicon-arrow-down" _hideLabel _label="unten" _tooltip-align="bottom" _variant="primary" />

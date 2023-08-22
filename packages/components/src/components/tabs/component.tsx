@@ -149,14 +149,14 @@ export class KolTabs implements API {
 	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
-	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
@@ -166,12 +166,12 @@ export class KolTabs implements API {
 	@Prop() public _on?: KoliBriTabsCallbacks;
 
 	/**
-	 * Gibt an, welches Tab selektiert sein soll.
+	 * Defines which tab is active.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
 
 	/**
-	 * Setzt die Daten für die Registrierkarten.
+	 * Defines the tab captions.
 	 */
 	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
 

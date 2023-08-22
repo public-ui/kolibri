@@ -57,17 +57,17 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		kol-heading-wc {
 			font-weight: 700;
 		}
-		kol-tooltip .tooltip-floating {
+		kol-tooltip-wc .tooltip-floating {
 			border: var(--border-width) solid var(--color-subtle);
 			border-radius: var(--border-radius);
 		}
-		kol-tooltip .tooltip-arrow {
+		kol-tooltip-wc .tooltip-arrow {
 			border: var(--border-width) solid var(--color-subtle);
 		}
-		kol-tooltip .tooltip-area {
+		kol-tooltip-wc .tooltip-area {
 			background-color: var(--color-light);
 		}
-		kol-tooltip .tooltip-content {
+		kol-tooltip-wc .tooltip-content {
 			border-radius: var(--border-radius);
 			line-height: 1.5;
 			padding: var(--spacing) calc(var(--spacing) * 1.5);
@@ -2088,7 +2088,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			display: grid;
 			gap: calc(var(--spacing) * 4);
 		}
-		:host > div {
+		:host .navigation-list {
 			display: inline-flex;
 			flex-wrap: wrap;
 			align-items: center;

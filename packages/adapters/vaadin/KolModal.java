@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-modal")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-modal")
 public class KolModal extends Component {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolModal extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +35,7 @@ public class KolModal extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolModal extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -54,7 +54,7 @@ public class KolModal extends Component {
 	}
 
 	/**
-	 * Setzt die Breite des Modals. (max-width: 100%).
+	 * Defines the width of the modal. (max-width: 100%)
 	 *
 	 * @param value String
 	 */
@@ -63,7 +63,7 @@ public class KolModal extends Component {
 	}
 
 	/**
-	 * Setzt die Breite des Modals. (max-width: 100%).
+	 * Defines the width of the modal. (max-width: 100%)
 	 *
 	 * @return Optional<String>
 	 */

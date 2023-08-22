@@ -51,7 +51,7 @@ export function containsOnlyNumbers(str: string): boolean {
 export type LabelPropType = string;
 
 /**
- * Defines the type of the label with expert-slot toggle property.
+ * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
  */
 export type LabelWithExpertSlotPropType = LabelPropType | false;
 

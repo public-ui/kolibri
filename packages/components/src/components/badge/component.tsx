@@ -67,39 +67,39 @@ export class KolBadge implements API {
 	}
 
 	/**
-	 * Setzt die Hintergrundfarbe.
+	 * Defines the backgroundColor and foregroundColor.
 	 */
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
 	 * Deprecated:
-	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
+	 * ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
 	 *   since it would not be accessible without visible labeling. A separate tooltip
 	 *   is not planed, because a badge is not an interactive element.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Ermöglicht einen Schalter in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 

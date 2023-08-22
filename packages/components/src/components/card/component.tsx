@@ -81,13 +81,13 @@ export class KolCard implements API {
 
 	/**
 	 * Defines whether the element can be closed.
-	 * TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Shows the slot="footer".
-	 * TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasFooter?: boolean = false;
 
@@ -105,12 +105,12 @@ export class KolCard implements API {
 	@Prop() public _headline?: string;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the description of the component.
 	 */
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 

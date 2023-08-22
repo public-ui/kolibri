@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-pagination")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-pagination")
 public class KolPagination extends Component {
 	/**
-	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
+	 * Defines the amount of pages to show next to the outer arrow buttons.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
+	 * Defines the amount of pages to show next to the outer arrow buttons.
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +35,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Defines the custom class attribute.
+	 * Defines the custom class attribute for the buttons.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Defines the custom class attribute.
+	 * Defines the custom class attribute for the buttons.
 	 *
 	 * @return Optional<String>
 	 */
@@ -54,7 +54,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
+	 * Defines which navigation buttons to render (first, last, next, previous buttons).
 	 *
 	 * @param value String
 	 */
@@ -63,7 +63,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
+	 * Defines which navigation buttons to render (first, last, next, previous buttons).
 	 *
 	 * @return Optional<String>
 	 */
@@ -73,7 +73,26 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Seite aktuell ausgewählt ist.
+	 * Defines the description of the component.
+	 *
+	 * @param value String
+	 */
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
+	}
+
+	/**
+	 * Defines the description of the component.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * Defines the current page.
 	 *
 	 * @param value String
 	 */
@@ -82,7 +101,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Seite aktuell ausgewählt ist.
+	 * Defines the current page.
 	 *
 	 * @return Optional<String>
 	 */
@@ -92,7 +111,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
+	 * Defines the amount of entries to show per page.
 	 *
 	 * @param value String
 	 */
@@ -101,7 +120,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
+	 * Defines the amount of entries to show per page.
 	 *
 	 * @return Optional<String>
 	 */
@@ -111,7 +130,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Setzt die Optionen für das Seitenlängenselect.
+	 * Defines the options for the page-size-select.
 	 *
 	 * @param value String
 	 */
@@ -120,7 +139,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Setzt die Optionen für das Seitenlängenselect.
+	 * Defines the options for the page-size-select.
 	 *
 	 * @return Optional<String>
 	 */
@@ -130,7 +149,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
+	 * Defines the amount of pages to show next to the current page.
 	 *
 	 * @param value String
 	 */
@@ -139,7 +158,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
+	 * Defines the amount of pages to show next to the current page.
 	 *
 	 * @return Optional<String>
 	 */

@@ -13,11 +13,11 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
  */
 
 @Tag("kol-link-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-link-button")
 public class KolLinkButton extends Component {
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @param value String
 	 */
@@ -26,7 +26,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @return Optional<String>
 	 */
@@ -36,7 +36,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @param value String
 	 */
@@ -45,7 +45,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @return Optional<String>
 	 */
@@ -55,7 +55,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @param value String
 	 */
@@ -64,7 +64,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @return Optional<String>
 	 */
@@ -74,7 +74,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @param value String
 	 */
@@ -83,7 +83,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @return Optional<String>
 	 */
@@ -93,7 +93,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @param value String
 	 */
@@ -102,7 +102,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @return Optional<String>
 	 */
@@ -112,7 +112,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Defines the custom class attribute.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 *
 	 * @param value String
 	 */
@@ -121,7 +121,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Defines the custom class attribute.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 *
 	 * @return Optional<String>
 	 */
@@ -131,7 +131,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Deprecated: Makes the element not focusable and ignore all events.
 	 *
 	 * @param value String
 	 */
@@ -140,7 +140,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Deprecated: Makes the element not focusable and ignore all events.
 	 *
 	 * @return Optional<String>
 	 */
@@ -169,8 +169,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Tells the label and shows it in a Tooltip instead.
-TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @param value String
 	 */
@@ -179,8 +178,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Tells the label and shows it in a Tooltip instead.
-TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @return Optional<String>
 	 */
@@ -190,7 +188,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * This property is used for a link from a reference to the target URL.
+	 * Defines the target URI of the link.
 	 *
 	 * @param value String
 	 */
@@ -199,7 +197,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * This property is used for a link from a reference to the target URL.
+	 * Defines the target URI of the link.
 	 *
 	 * @return Optional<String>
 	 */
@@ -209,7 +207,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Defines the icon classnames.
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @param value String
 	 */
@@ -218,7 +216,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Defines the icon classnames.
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @return Optional<String>
 	 */
@@ -228,7 +226,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @param value String
 	 */
@@ -237,7 +235,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @return Optional<String>
 	 */
@@ -247,7 +245,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @param value String
 	 */
@@ -256,7 +254,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -304,7 +302,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -313,7 +311,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */
@@ -342,7 +340,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+	 * Defines the description to use when the link is going to be opened in another application.
 	 *
 	 * @param value String
 	 */
@@ -351,7 +349,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+	 * Defines the description to use when the link is going to be opened in another application.
 	 *
 	 * @return Optional<String>
 	 */

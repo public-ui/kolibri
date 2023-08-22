@@ -47,38 +47,38 @@ export class KolTable implements API {
 	private ariaLive = '';
 
 	/**
-	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Defines the visible caption of the component.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _caption?: string;
 
 	/**
-	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
+	 * Defines the primary table data.
 	 */
 	@Prop() public _data!: Stringified<KoliBriTableDataType[]>;
 
 	/**
-	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+	 * Defines the data for the table footer.
 	 */
 	@Prop() public _dataFoot?: Stringified<KoliBriTableDataType[]>;
 
 	/**
-	 * Gibt die horizontalen und vertikalen Header für die Tabelle an.
+	 * Defines the horizontal and vertical table headers.
 	 */
 	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: string;
 
 	/**
-	 * Gibt an, die minimale Breite der Tabelle an.
+	 * Defines the table min-width.
 	 */
 	@Prop() public _minWidth?: string;
 
 	/**
-	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
+	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
@@ -661,6 +661,7 @@ export class KolTable implements API {
 								_siblingCount={this.state._pagination._siblingCount}
 								_tooltipAlign="bottom"
 								_total={this.state._pagination._total || this.state._data.length}
+								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
 							></kol-pagination>
 						</div>
 					</div>

@@ -14,28 +14,28 @@ import { HrefPropType } from '../../types/props/href';
 })
 export class KolQuote implements API {
 	/**
-	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Defines the visible caption of the component.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _caption?: string;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: string;
 
 	/**
-	 * Defines the link the source of the quote.
+	 * Defines the link to the source of the quote.
 	 */
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Setzt den Text, also das Zitat selbst.
+	 * Defines the text of the quote.
 	 */
 	@Prop() public _quote!: string;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 

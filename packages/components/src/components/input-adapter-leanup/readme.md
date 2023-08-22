@@ -22,13 +22,13 @@ graph TD;
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
   kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   kol-link --> kol-link-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip
+  kol-link-wc --> kol-tooltip-wc
   style kol-input-adapter-leanup fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

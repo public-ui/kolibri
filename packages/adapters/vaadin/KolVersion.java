@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-version")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-version")
 public class KolVersion extends Component {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolVersion extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +35,7 @@ public class KolVersion extends Component {
 	}
 
 	/**
-	 * Gibt die Versionsnummer als Text an.
+	 * Deprecated: Gibt die Versionsnummer als Text an.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolVersion extends Component {
 	}
 
 	/**
-	 * Gibt die Versionsnummer als Text an.
+	 * Deprecated: Gibt die Versionsnummer als Text an.
 	 *
 	 * @return Optional<String>
 	 */

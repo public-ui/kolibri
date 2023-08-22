@@ -70,13 +70,13 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		outline-width: 3px;
 		transition: outline-offset 0.2s linear;
 	}
-	kol-tooltip .tooltip-area {
+	kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		border-radius: 2px;
 		border: 1px solid #626262;
 		color: #000000 !important;
@@ -1494,7 +1494,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;

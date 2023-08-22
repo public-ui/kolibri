@@ -10,7 +10,7 @@ import { processEnv } from '../../utils/reuse';
 import { API, States } from './types';
 
 @Component({
-	tag: 'kol-tooltip',
+	tag: 'kol-tooltip-wc',
 	styleUrl: './style.css',
 	shadow: false,
 })
@@ -153,7 +153,7 @@ export class KolTooltip implements API {
 	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
 
