@@ -52,30 +52,30 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 
 ## Properties
 
-| Property              | Attribute        | Description                                                                                                                                          | Type                                                                                     | Default      |
-| --------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------ |
-| `_accessKey`          | `_access-key`    | Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.                                    | `string \| undefined`                                                                    | `undefined`  |
-| `_adjustHeight`       | `_adjust-height` | Adjusts the height of the element to its content. TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved                    | `boolean \| undefined`                                                                   | `false`      |
-| `_alert`              | `_alert`         | Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.                                                                                        | `boolean \| undefined`                                                                   | `true`       |
-| `_disabled`           | `_disabled`      | Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved             | `boolean \| undefined`                                                                   | `undefined`  |
-| `_error`              | `_error`         | Gibt den Text für eine Fehlermeldung an.                                                                                                             | `string \| undefined`                                                                    | `undefined`  |
-| `_hasCounter`         | `_has-counter`   | Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved      | `boolean \| undefined`                                                                   | `undefined`  |
-| `_hideLabel`          | `_hide-label`    | Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.                             | `boolean \| undefined`                                                                   | `undefined`  |
-| `_hint`               | `_hint`          | Gibt den Hinweistext an.                                                                                                                             | `string \| undefined`                                                                    | `''`         |
-| `_id`                 | `_id`            | Defines the internal ID of the primary component element.                                                                                            | `string \| undefined`                                                                    | `undefined`  |
-| `_label` _(required)_ | `_label`         | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                          | `boolean \| string`                                                                      | `undefined`  |
-| `_maxLength`          | `_max-length`    | Gibt an, wie viele Zeichen maximal eingegeben werden können.                                                                                         | `number \| undefined`                                                                    | `undefined`  |
-| `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                        | `string \| undefined`                                                                    | `undefined`  |
-| `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                            | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined` | `undefined`  |
-| `_placeholder`        | `_placeholder`   | Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.                                                                                         | `string \| undefined`                                                                    | `undefined`  |
-| `_readOnly`           | `_read-only`     | Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved                                 | `boolean \| undefined`                                                                   | `undefined`  |
-| `_required`           | `_required`      | Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved                                  | `boolean \| undefined`                                                                   | `undefined`  |
-| `_resize`             | `_resize`        | Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)                | `"both" \| "horizontal" \| "none" \| "vertical" \| undefined`                            | `'vertical'` |
-| `_rows`               | `_rows`          | Defines how many rows of text should be visible at the same time.                                                                                    | `number \| undefined`                                                                    | `undefined`  |
-| `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                    | `undefined`  |
-| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                            | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
-| `_touched`            | `_touched`       | Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved                           | `boolean \| undefined`                                                                   | `false`      |
-| `_value`              | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                                  | `string \| undefined`                                                                    | `undefined`  |
+| Property              | Attribute        | Description                                                                                                                                                  | Type                                                                                     | Default      |
+| --------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ------------ |
+| `_accessKey`          | `_access-key`    | Defines which key combination can be used to trigger or focus the interactive element of the component.                                                      | `string \| undefined`                                                                    | `undefined`  |
+| `_adjustHeight`       | `_adjust-height` | Adjusts the height of the element to its content. TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved                            | `boolean \| undefined`                                                                   | `false`      |
+| `_alert`              | `_alert`         | Defines whether the screen-readers should read out the notification.                                                                                         | `boolean \| undefined`                                                                   | `true`       |
+| `_disabled`           | `_disabled`      | Makes the element not focusable and ignore all events.                                                                                                       | `boolean \| undefined`                                                                   | `undefined`  |
+| `_error`              | `_error`         | Defines the error message text.                                                                                                                              | `string \| undefined`                                                                    | `undefined`  |
+| `_hasCounter`         | `_has-counter`   | Shows the character count on the lower border of the input.                                                                                                  | `boolean \| undefined`                                                                   | `undefined`  |
+| `_hideLabel`          | `_hide-label`    | Hides the label.                                                                                                                                             | `boolean \| undefined`                                                                   | `undefined`  |
+| `_hint`               | `_hint`          | Defines the hint text.                                                                                                                                       | `string \| undefined`                                                                    | `''`         |
+| `_id`                 | `_id`            | Defines the internal ID of the primary component element.                                                                                                    | `string \| undefined`                                                                    | `undefined`  |
+| `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `boolean \| string`                                                                      | `undefined`  |
+| `_maxLength`          | `_max-length`    | Defines the maximum number of input characters.                                                                                                              | `number \| undefined`                                                                    | `undefined`  |
+| `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                | `string \| undefined`                                                                    | `undefined`  |
+| `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                    | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined` | `undefined`  |
+| `_placeholder`        | `_placeholder`   | Defines the placeholder for input field. To be shown when there's no value.                                                                                  | `string \| undefined`                                                                    | `undefined`  |
+| `_readOnly`           | `_read-only`     | Makes the input element read only.                                                                                                                           | `boolean \| undefined`                                                                   | `undefined`  |
+| `_required`           | `_required`      | Makes the input element required.                                                                                                                            | `boolean \| undefined`                                                                   | `undefined`  |
+| `_resize`             | `_resize`        | Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)              | `"both" \| "horizontal" \| "none" \| "vertical" \| undefined`                            | `'vertical'` |
+| `_rows`               | `_rows`          | Defines how many rows of text should be visible at the same time.                                                                                            | `number \| undefined`                                                                    | `undefined`  |
+| `_tabIndex`           | `_tab-index`     | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)             | `number \| undefined`                                                                    | `undefined`  |
+| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
+| `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                   | `false`      |
+| `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `string \| undefined`                                                                    | `undefined`  |
 
 ## Slots
 
@@ -88,21 +88,21 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 ### Depends on
 
 - kol-input
-- [kol-tooltip](../tooltip)
+- [kol-tooltip-wc](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-textarea --> kol-input
-  kol-textarea --> kol-tooltip
+  kol-textarea --> kol-tooltip-wc
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   kol-alert --> kol-alert-wc
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc

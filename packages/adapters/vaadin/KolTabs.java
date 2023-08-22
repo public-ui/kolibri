@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-tabs")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-tabs")
 public class KolTabs extends Component {
 	/**
@@ -35,7 +35,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @return Optional<String>
 	 */
@@ -54,7 +54,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -63,7 +63,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -73,7 +73,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Gibt an, welches Tab selektiert sein soll.
+	 * Defines which tab is active.
 	 *
 	 * @param value String
 	 */
@@ -82,7 +82,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Gibt an, welches Tab selektiert sein soll.
+	 * Defines which tab is active.
 	 *
 	 * @return Optional<String>
 	 */
@@ -92,7 +92,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Setzt die Daten für die Registrierkarten.
+	 * Defines the tab captions.
 	 *
 	 * @param value String
 	 */
@@ -101,7 +101,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Setzt die Daten für die Registrierkarten.
+	 * Defines the tab captions.
 	 *
 	 * @return Optional<String>
 	 */
@@ -111,7 +111,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Setzt die Position der Registrierkarten.
+	 * Deprecated: Setzt die Position der Registrierkarten.
 	 *
 	 * @param value String
 	 */
@@ -120,7 +120,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Setzt die Position der Registrierkarten.
+	 * Deprecated: Setzt die Position der Registrierkarten.
 	 *
 	 * @return Optional<String>
 	 */

@@ -87,11 +87,11 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 
 ## Properties
 
-| Property              | Attribute     | Description                                                                                                                                                                                              | Type                              | Default     |
-| --------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ----------- |
-| `_ariaLabel`          | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`             | `undefined` |
-| `_label`              | `_label`      | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                              | `string \| undefined`             | `undefined` |
-| `_links` _(required)_ | `_links`      | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                                                                                                          | `BreadcrumbLinkProps[] \| string` | `undefined` |
+| Property              | Attribute     | Description                                                                                                                                 | Type                              | Default     |
+| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ----------- |
+| `_ariaLabel`          | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string \| undefined`             | `undefined` |
+| `_label`              | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                          | `string \| undefined`             | `undefined` |
+| `_links` _(required)_ | `_links`      | Defines the list of links combined with their labels to render.                                                                             | `BreadcrumbLinkProps[] \| string` | `undefined` |
 
 ## Dependencies
 
@@ -109,9 +109,9 @@ graph TD;
   kol-link --> kol-link-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip
+  kol-link-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   style kol-breadcrumb fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

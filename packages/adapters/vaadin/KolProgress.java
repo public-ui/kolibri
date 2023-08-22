@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-progress")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-progress")
 public class KolProgress extends Component {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +35,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
+	 * Defines at which value the progress display is completed.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
+	 * Defines at which value the progress display is completed.
 	 *
 	 * @return Optional<String>
 	 */
@@ -54,7 +54,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -63,7 +63,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */
@@ -73,7 +73,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
+	 * Defines the unit of the step values (not shown).
 	 *
 	 * @param value String
 	 */
@@ -82,7 +82,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
+	 * Defines the unit of the step values (not shown).
 	 *
 	 * @return Optional<String>
 	 */
@@ -92,7 +92,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, wie weit die Anzeige fortgeschritten ist.
+	 * Defines the progress.
 	 *
 	 * @param value String
 	 */
@@ -101,7 +101,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, wie weit die Anzeige fortgeschritten ist.
+	 * Defines the progress.
 	 *
 	 * @return Optional<String>
 	 */
@@ -111,7 +111,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -120,7 +120,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */

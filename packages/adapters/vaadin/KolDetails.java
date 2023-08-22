@@ -18,11 +18,11 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
  */
 
 @Tag("kol-details")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-details")
 public class KolDetails extends Component {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -31,7 +31,7 @@ public class KolDetails extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -42,7 +42,6 @@ public class KolDetails extends Component {
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
-TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -52,7 +51,6 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
-TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -62,7 +60,7 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt die Zusammenfassung der Detailbeschreibung an.
+	 * Deprecated: Gibt die Zusammenfassung der Detailbeschreibung an.
 	 *
 	 * @param value String
 	 */
@@ -71,7 +69,7 @@ TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt die Zusammenfassung der Detailbeschreibung an.
+	 * Deprecated: Gibt die Zusammenfassung der Detailbeschreibung an.
 	 *
 	 * @return Optional<String>
 	 */

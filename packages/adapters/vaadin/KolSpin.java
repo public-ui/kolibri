@@ -12,12 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-spin")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-spin")
 public class KolSpin extends Component {
 	/**
 	 * Makes the element show up.
-TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -27,7 +26,6 @@ TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 
 	/**
 	 * Makes the element show up.
-TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -37,7 +35,7 @@ TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Defines the variant of spin navigation.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -46,7 +44,7 @@ TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Defines the variant of spin navigation.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */
