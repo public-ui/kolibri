@@ -10,7 +10,7 @@ import { processEnv } from '../../utils/reuse';
 import { API, States } from './types';
 
 @Component({
-	tag: 'kol-tooltip',
+	tag: 'kol-tooltip-wc',
 	styleUrl: './style.css',
 	shadow: false,
 })

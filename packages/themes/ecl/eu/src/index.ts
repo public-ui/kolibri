@@ -2,13 +2,13 @@ import { KoliBri } from '@public-ui/schema';
 
 // Europa Component Library - European Union | https://ec.europa.eu/component-library/eu/
 export const ECL_EU = KoliBri.createTheme('ecl-eu', {
-	GLOBAL: `kol-tooltip .tooltip-area {
+	GLOBAL: `kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;

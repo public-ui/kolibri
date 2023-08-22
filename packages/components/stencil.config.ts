@@ -58,14 +58,13 @@ const TAGS = [
 	'kol-tabs',
 	'kol-textarea',
 	'kol-toast',
-	'kol-tooltip',
 	'kol-version',
 ];
 const EXCLUDE_TAGS = [
-	'kol-all',
 	'kol-alert-wc',
-	'kol-button-wc',
+	'kol-all',
 	'kol-button-link-text-switch',
+	'kol-button-wc',
 	'kol-color',
 	'kol-counter',
 	'kol-heading-wc',
@@ -73,6 +72,7 @@ const EXCLUDE_TAGS = [
 	'kol-input-radio-group',
 	'kol-link-wc',
 	'kol-span-wc',
+	'kol-tooltip-wc',
 ];
 const BUNDLES: {
 	components: string[];

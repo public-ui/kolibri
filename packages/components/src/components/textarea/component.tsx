@@ -97,7 +97,7 @@ export class KolTextarea implements API {
 							}}
 							value={this.state._value}
 						/>
-						<kol-tooltip
+						<kol-tooltip-wc
 							/**
 							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -107,7 +107,7 @@ export class KolTextarea implements API {
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip>
+						></kol-tooltip-wc>
 					</div>
 				</kol-input>
 			</Host>

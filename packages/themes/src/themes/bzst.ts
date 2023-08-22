@@ -2789,9 +2789,6 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		list-style-type: none !important;
 		margin-left: 0;
 	}`,
-	'KOL-TOOLTIP': `:host {
-		--kolibri-font-size: var(--textFontSize);
-	}`,
 	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
 		border-radius: 2px;
 		border-style: solid;

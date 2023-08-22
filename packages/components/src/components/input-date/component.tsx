@@ -101,7 +101,7 @@ export class KolInputDate implements ComponentApi {
 							{...this.controller.onFacade}
 							onKeyUp={this.onKeyUp}
 						/>
-						<kol-tooltip
+						<kol-tooltip-wc
 							/**
 							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -111,7 +111,7 @@ export class KolInputDate implements ComponentApi {
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip>
+						></kol-tooltip-wc>
 					</div>
 				</kol-input>
 			</Host>

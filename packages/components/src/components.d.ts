@@ -2951,7 +2951,7 @@ export namespace Components {
          */
         "_type"?: AlertType;
     }
-    interface KolTooltip {
+    interface KolTooltipWc {
         /**
           * Defines the alignment of the tooltip in relation to the parent element.
          */
@@ -3353,11 +3353,11 @@ declare global {
         prototype: HTMLKolToastElement;
         new (): HTMLKolToastElement;
     };
-    interface HTMLKolTooltipElement extends Components.KolTooltip, HTMLStencilElement {
+    interface HTMLKolTooltipWcElement extends Components.KolTooltipWc, HTMLStencilElement {
     }
-    var HTMLKolTooltipElement: {
-        prototype: HTMLKolTooltipElement;
-        new (): HTMLKolTooltipElement;
+    var HTMLKolTooltipWcElement: {
+        prototype: HTMLKolTooltipWcElement;
+        new (): HTMLKolTooltipWcElement;
     };
     interface HTMLKolVersionElement extends Components.KolVersion, HTMLStencilElement {
     }
@@ -3426,7 +3426,7 @@ declare global {
         "kol-tabs": HTMLKolTabsElement;
         "kol-textarea": HTMLKolTextareaElement;
         "kol-toast": HTMLKolToastElement;
-        "kol-tooltip": HTMLKolTooltipElement;
+        "kol-tooltip-wc": HTMLKolTooltipWcElement;
         "kol-version": HTMLKolVersionElement;
     }
 }
@@ -6264,7 +6264,7 @@ declare namespace LocalJSX {
          */
         "_type"?: AlertType;
     }
-    interface KolTooltip {
+    interface KolTooltipWc {
         /**
           * Defines the alignment of the tooltip in relation to the parent element.
          */
@@ -6350,7 +6350,7 @@ declare namespace LocalJSX {
         "kol-tabs": KolTabs;
         "kol-textarea": KolTextarea;
         "kol-toast": KolToast;
-        "kol-tooltip": KolTooltip;
+        "kol-tooltip-wc": KolTooltipWc;
         "kol-version": KolVersion;
     }
 }
@@ -6433,7 +6433,7 @@ declare module "@stencil/core" {
             "kol-tabs": LocalJSX.KolTabs & JSXBase.HTMLAttributes<HTMLKolTabsElement>;
             "kol-textarea": LocalJSX.KolTextarea & JSXBase.HTMLAttributes<HTMLKolTextareaElement>;
             "kol-toast": LocalJSX.KolToast & JSXBase.HTMLAttributes<HTMLKolToastElement>;
-            "kol-tooltip": LocalJSX.KolTooltip & JSXBase.HTMLAttributes<HTMLKolTooltipElement>;
+            "kol-tooltip-wc": LocalJSX.KolTooltipWc & JSXBase.HTMLAttributes<HTMLKolTooltipWcElement>;
             "kol-version": LocalJSX.KolVersion & JSXBase.HTMLAttributes<HTMLKolVersionElement>;
         }
     }
