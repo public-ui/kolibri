@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { LinkOnCallbacks } from '../../types/button-link';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
@@ -14,6 +13,7 @@ import { CustomClassPropType } from '../../types/props/custom-class';
 import { HrefPropType } from '../../types/props/href';
 import { IconPropType } from '../../types/props/icon';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { LinkCallbacksPropType } from '../../types/props/link-callbacks';
 
 @Component({
 	tag: 'kol-link-button',
@@ -151,10 +151,9 @@ export class KolLinkButton implements Props {
 	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für den Link an.
-	 * @deprecated
+	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkOnCallbacks;
+	@Prop() public _on?: LinkCallbacksPropType;
 
 	/**
 	 * Defines the role of the components primary element.

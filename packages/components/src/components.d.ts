@@ -44,8 +44,9 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
-import { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
+import { LinkCallbacksPropType } from "./types/props/link-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
+import { LinkUseCase } from "./types/button-link";
 import { HrefPropType } from "./types/props/href";
 import { ListStyleType } from "./components/link-group/types";
 import { LinkProps } from "./components/link/types";
@@ -100,8 +101,9 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
-export { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
+export { LinkCallbacksPropType } from "./types/props/link-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
+export { LinkUseCase } from "./types/button-link";
 export { HrefPropType } from "./types/props/href";
 export { ListStyleType } from "./components/link-group/types";
 export { LinkProps } from "./components/link/types";
@@ -163,12 +165,8 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-<<<<<<< HEAD
-          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
-=======
           * Defines whether the card has a close button.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
          */
         "_hasCloser"?: boolean;
         /**
@@ -254,12 +252,8 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
-<<<<<<< HEAD
-          * Deprecated: ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-=======
           * Deprecated: ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Will be removed in the next major version.
          */
         "_hideLabel"?: boolean;
@@ -268,11 +262,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -287,11 +277,7 @@ export namespace Components {
     }
     interface KolBreadcrumb {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -315,11 +301,7 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
@@ -328,11 +310,7 @@ export namespace Components {
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -362,11 +340,7 @@ export namespace Components {
          */
         "_iconAlign"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -429,11 +403,7 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
@@ -443,11 +413,7 @@ export namespace Components {
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -471,11 +437,7 @@ export namespace Components {
          */
         "_icon"?: IconPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -539,11 +501,7 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
@@ -552,11 +510,7 @@ export namespace Components {
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -586,11 +540,7 @@ export namespace Components {
          */
         "_iconAlign"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -641,12 +591,8 @@ export namespace Components {
     }
     interface KolCard {
         /**
-<<<<<<< HEAD
-          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
-=======
           * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
          */
         "_hasCloser"?: boolean;
         /**
@@ -665,11 +611,7 @@ export namespace Components {
          */
         "_headline"?: string;
         /**
-<<<<<<< HEAD
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Defines the description of the component.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
          */
         "_label"?: LabelPropType;
         /**
@@ -737,11 +679,7 @@ export namespace Components {
     }
     interface KolIcon {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -982,11 +920,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Variante der Darstellung genutzt werden soll.
-=======
           * Deprecated: Defines which variant should be used for presentation.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Verwende stattdessen das Attribute _variant.
          */
         "_type"?: InputCheckboxVariant;
@@ -2010,66 +1944,38 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
-<<<<<<< HEAD
-          * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
-=======
           * Defines whether the component has a label.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
          */
         "_labeled"?: boolean;
     }
     interface KolLink {
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-=======
           * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-=======
           * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-=======
           * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-=======
           * Deprecated: Makes the element not focusable and ignore all events.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -2095,11 +2001,7 @@ export namespace Components {
          */
         "_iconAlign"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2112,10 +2014,9 @@ export namespace Components {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated will be removed in v2
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -2154,47 +2055,27 @@ export namespace Components {
     }
     interface KolLinkButton {
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-=======
           * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-=======
           * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-=======
           * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
@@ -2203,11 +2084,7 @@ export namespace Components {
          */
         "_customClass"?: CustomClassPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-=======
           * Deprecated: Makes the element not focusable and ignore all events.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -2229,11 +2106,7 @@ export namespace Components {
          */
         "_icon"?: IconPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2246,10 +2119,9 @@ export namespace Components {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -2277,11 +2149,7 @@ export namespace Components {
     }
     interface KolLinkGroup {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -2317,56 +2185,32 @@ export namespace Components {
     }
     interface KolLinkWc {
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-=======
           * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-=======
           * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-=======
           * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-=======
           * Deprecated: Makes the element not focusable and ignore all events.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -2392,11 +2236,7 @@ export namespace Components {
          */
         "_iconAlign"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2409,10 +2249,9 @@ export namespace Components {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated will be removed in v2
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -2466,11 +2305,7 @@ export namespace Components {
          */
         "_activeElement"?: HTMLElement | null;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -2493,11 +2328,7 @@ export namespace Components {
          */
         "_ariaCurrentValue": AriaCurrentPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -2534,11 +2365,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Variante der Darstellung genutzt werden soll.
-=======
           * Deprecated: Defines which variant should be used for presentation.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -2633,11 +2460,7 @@ export namespace Components {
     }
     interface KolQuote {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Defines the visible caption of the component.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Use _label.
          */
         "_caption"?: string;
@@ -2677,11 +2500,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob eine individuelle Höhe übergeben werden soll.
-=======
           * Deprecated: Defines an individual height.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Use _rows instead.
          */
         "_height"?: string;
@@ -2765,11 +2584,7 @@ export namespace Components {
     }
     interface KolSkipNav {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -2793,11 +2608,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2817,11 +2628,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -2855,11 +2662,7 @@ export namespace Components {
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -2934,11 +2737,7 @@ export namespace Components {
     }
     interface KolSymbol {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label
          */
         "_ariaLabel"?: string;
@@ -2953,11 +2752,7 @@ export namespace Components {
     }
     interface KolTable {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Defines the visible caption of the component.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Use _label.
          */
         "_caption"?: string;
@@ -2992,11 +2787,7 @@ export namespace Components {
          */
         "_align"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -3688,12 +3479,8 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-<<<<<<< HEAD
-          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
-=======
           * Defines whether the card has a close button.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
          */
         "_hasCloser"?: boolean;
         /**
@@ -3779,12 +3566,8 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
-<<<<<<< HEAD
-          * Deprecated: ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-=======
           * Deprecated: ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Will be removed in the next major version.
          */
         "_hideLabel"?: boolean;
@@ -3793,11 +3576,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -3812,11 +3591,7 @@ declare namespace LocalJSX {
     }
     interface KolBreadcrumb {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -3840,11 +3615,7 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
@@ -3853,11 +3624,7 @@ declare namespace LocalJSX {
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -3887,11 +3654,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -3954,11 +3717,7 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
@@ -3968,11 +3727,7 @@ declare namespace LocalJSX {
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -3996,11 +3751,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: IconPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -4064,11 +3815,7 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrentPropType;
@@ -4077,11 +3824,7 @@ declare namespace LocalJSX {
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -4111,11 +3854,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -4166,12 +3905,8 @@ declare namespace LocalJSX {
     }
     interface KolCard {
         /**
-<<<<<<< HEAD
-          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
-=======
           * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
          */
         "_hasCloser"?: boolean;
         /**
@@ -4190,11 +3925,7 @@ declare namespace LocalJSX {
          */
         "_headline"?: string;
         /**
-<<<<<<< HEAD
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Defines the description of the component.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
          */
         "_label"?: LabelPropType;
         /**
@@ -4262,11 +3993,7 @@ declare namespace LocalJSX {
     }
     interface KolIcon {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -4507,11 +4234,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Variante der Darstellung genutzt werden soll.
-=======
           * Deprecated: Defines which variant should be used for presentation.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Verwende stattdessen das Attribute _variant.
          */
         "_type"?: InputCheckboxVariant;
@@ -5535,66 +5258,38 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
-<<<<<<< HEAD
-          * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
-=======
           * Defines whether the component has a label.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
          */
         "_labeled"?: boolean;
     }
     interface KolLink {
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-=======
           * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-=======
           * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-=======
           * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-=======
           * Deprecated: Makes the element not focusable and ignore all events.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -5620,11 +5315,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -5637,10 +5328,9 @@ declare namespace LocalJSX {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated will be removed in v2
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -5679,47 +5369,27 @@ declare namespace LocalJSX {
     }
     interface KolLinkButton {
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-=======
           * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-=======
           * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-=======
           * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
@@ -5728,11 +5398,7 @@ declare namespace LocalJSX {
          */
         "_customClass"?: CustomClassPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-=======
           * Deprecated: Makes the element not focusable and ignore all events.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -5754,11 +5420,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: IconPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -5771,10 +5433,9 @@ declare namespace LocalJSX {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -5802,11 +5463,7 @@ declare namespace LocalJSX {
     }
     interface KolLinkGroup {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -5842,56 +5499,32 @@ declare namespace LocalJSX {
     }
     interface KolLinkWc {
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-=======
           * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-=======
           * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-=======
           * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-=======
           * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-=======
           * Deprecated: Makes the element not focusable and ignore all events.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -5917,11 +5550,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -5934,10 +5563,9 @@ declare namespace LocalJSX {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated will be removed in v2
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -5991,11 +5619,7 @@ declare namespace LocalJSX {
          */
         "_activeElement"?: HTMLElement | null;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -6018,11 +5642,7 @@ declare namespace LocalJSX {
          */
         "_ariaCurrentValue"?: AriaCurrentPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -6059,11 +5679,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, welche Variante der Darstellung genutzt werden soll.
-=======
           * Deprecated: Defines which variant should be used for presentation.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -6158,11 +5774,7 @@ declare namespace LocalJSX {
     }
     interface KolQuote {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Defines the visible caption of the component.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Use _label.
          */
         "_caption"?: string;
@@ -6202,11 +5814,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-<<<<<<< HEAD
-          * Deprecated: Gibt an, ob eine individuelle Höhe übergeben werden soll.
-=======
           * Deprecated: Defines an individual height.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Use _rows instead.
          */
         "_height"?: string;
@@ -6290,11 +5898,7 @@ declare namespace LocalJSX {
     }
     interface KolSkipNav {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -6318,11 +5922,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -6342,11 +5942,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-<<<<<<< HEAD
-          * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-=======
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
@@ -6380,11 +5976,7 @@ declare namespace LocalJSX {
          */
         "_ariaExpanded"?: boolean;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
@@ -6459,11 +6051,7 @@ declare namespace LocalJSX {
     }
     interface KolSymbol {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label
          */
         "_ariaLabel"?: string;
@@ -6478,11 +6066,7 @@ declare namespace LocalJSX {
     }
     interface KolTable {
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Defines the visible caption of the component.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated Use _label.
          */
         "_caption"?: string;
@@ -6517,11 +6101,7 @@ declare namespace LocalJSX {
          */
         "_align"?: AlignPropType;
         /**
-<<<<<<< HEAD
-          * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-=======
           * Deprecated: Setzt die semantische Beschriftung der Komponente.
->>>>>>> 198e456f8c62e2013edebdd90d8ae7a501a2b66c
           * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
