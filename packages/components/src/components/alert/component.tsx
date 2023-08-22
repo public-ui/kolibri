@@ -109,23 +109,24 @@ export class KolAlertWc implements API {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop() public _alert?: boolean = false;
 
+	/*  */
 	/**
-	 * Defines whether the element can be closed.
-	 * TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+	 * Defines whether the card has a close button.
+	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -140,7 +141,7 @@ export class KolAlertWc implements API {
 	@Prop() public _type?: AlertType = 'default';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 

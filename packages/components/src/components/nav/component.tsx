@@ -204,12 +204,12 @@ export class KolNav implements API {
 	}
 
 	/**
-	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+	 * Defines the value of aria-current to be used with the current context within the navigation.
 	 */
 	@Prop() public _ariaCurrentValue: AriaCurrentPropType = false;
 
 	/**
-	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
@@ -217,7 +217,7 @@ export class KolNav implements API {
 
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
-	 * TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _collapsible?: boolean = true;
 
@@ -234,28 +234,28 @@ export class KolNav implements API {
 	@Prop() public _hasCompactButton?: boolean = false;
 
 	/**
-	 * Defines if navigation labels should be hidden.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * Hides the label.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links, buttons or texts to render.
 	 */
 	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Deprecated: Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Deprecated: Defines which variant should be used for presentation.
 	 *
 	 * @deprecated This property is deprecated and will be removed in the next major version.
 	 */

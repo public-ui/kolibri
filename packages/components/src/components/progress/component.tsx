@@ -107,33 +107,33 @@ export class KolProcess implements API {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
+	 * Defines at which value the progress display is completed.
 	 */
 	@Prop() public _max!: number;
 
 	/**
-	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * Defines which variant should be used for presentation.
 	 * @deprecated will be removed in v2, use _variant
 	 */
 	@Prop() public _type?: KoliBriProgressVariantType;
 
 	/**
-	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
+	 * Defines the unit of the step values (not shown).
 	 */
 	@Prop() public _unit?: string = '%';
 
 	/**
-	 * Gibt an, wie weit die Anzeige fortgeschritten ist.
+	 * Defines the progress.
 	 */
 	@Prop() public _value!: number;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: KoliBriProgressVariantType;
 

@@ -145,42 +145,42 @@ export class KolLinkWc implements API {
 	}
 
 	/**
-	 * Deprecated: Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Deprecated: Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @deprecated use _listen-aria-current instead
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
-	 * Deprecated: Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
-	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Deprecated: Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Deprecated: Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Deprecated: Makes the element not focusable and ignore all events.
 	 *
 	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
@@ -192,17 +192,17 @@ export class KolLinkWc implements API {
 	@Prop() public _download?: DownloadPropType = false;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Gibt die Ziel-Url des Links an.
+	 * Defines the target URI of the link.
 	 */
 	@Prop() public _href!: string;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
@@ -214,13 +214,13 @@ export class KolLinkWc implements API {
 	@Prop() public _iconAlign?: AlignPropType;
 
 	/**
-	 * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
@@ -256,7 +256,7 @@ export class KolLinkWc implements API {
 	@Prop() public _stealth?: boolean = false;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -266,7 +266,7 @@ export class KolLinkWc implements API {
 	@Prop() public _target?: LinkTargetPropType;
 
 	/**
-	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+	 * Defines the description to use when the link is going to be opened in another application.
 	 */
 	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 

@@ -62,7 +62,7 @@ export class KolKolibri implements API {
 	@Prop() public _color?: Stringified<PropColor> = '#003c78';
 
 	/**
-	 * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
+	 * Defines whether the component has a label.
 	 */
 	@Prop() public _labeled?: boolean;
 

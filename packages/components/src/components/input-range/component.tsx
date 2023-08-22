@@ -167,44 +167,44 @@ export class KolInputRange implements API {
 	private readonly controller: InputRangeController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
-	 * Tells the element to hide the label.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * Hides the label.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
@@ -214,7 +214,7 @@ export class KolInputRange implements API {
 	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -225,12 +225,12 @@ export class KolInputRange implements API {
 	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
 
 	/**
-	 * Gibt den größtmöglichen Eingabewert an.
+	 * Defines the largest possible input value.
 	 */
 	@Prop() public _max?: number;
 
 	/**
-	 * Gibt den kleinstmöglichen Eingabewert an.
+	 * Defines the smallest possible input value.
 	 */
 	@Prop() public _min?: number;
 
@@ -245,7 +245,7 @@ export class KolInputRange implements API {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt die Schrittweite der Wertveränderung an.
+	 * Defines the step size for value changes.
 	 */
 	@Prop() public _step?: number;
 
@@ -261,7 +261,7 @@ export class KolInputRange implements API {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -272,12 +272,12 @@ export class KolInputRange implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop() public _value?: number;
 

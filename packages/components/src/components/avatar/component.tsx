@@ -28,12 +28,12 @@ export class KolAvatarWc implements API {
 	}
 
 	/**
-	 * Defines the image source to render
+	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop() public _src?: ImageSourcePropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
 

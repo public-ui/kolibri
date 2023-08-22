@@ -106,45 +106,45 @@ export class KolInputCheckbox implements API {
 	private readonly controller: InputCheckboxController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Defines whether the checkbox is checked or not. Can be read and written.
-	 * TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames.
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<InputCheckboxIcon>;
 
@@ -155,12 +155,12 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
-	 * TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -176,7 +176,7 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Makes the input element required.
-	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean;
 
@@ -187,7 +187,7 @@ export class KolInputCheckbox implements API {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -198,24 +198,24 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Deprecated: Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Deprecated: Defines which variant should be used for presentation.
 	 *
 	 * @deprecated Verwende stattdessen das Attribute _variant.
 	 */
 	@Prop() public _type?: InputCheckboxVariant;
 
 	/**
-	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
+	 * Defines the value of the input.
 	 */
 	@Prop() public _value!: Stringified<StencilUnknown>;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: InputCheckboxVariant; // TODO: = 'default'; in v2 setzen
 

@@ -24,17 +24,17 @@ export class KolHeading implements Props {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel;
 
 	/**
-	 * Gibt den Text der zusätzlichen Überschrift an.
+	 * Defines the text of the secondary headline.
 	 */
 	@Prop() public _secondaryHeadline?: string;
 }

@@ -19,12 +19,12 @@ export class KolImage implements API {
 	@Prop() public _alt!: string;
 
 	/**
-	 * Setzt den Lademodus.
+	 * Defines the loading mode for the image.
 	 */
 	@Prop() public _loading?: Loading = 'lazy';
 
 	/**
-	 * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
+	 * Defines the image sizes for different screen resolutions, supporting _srcset.
 	 */
 	@Prop() public _sizes?: string;
 
