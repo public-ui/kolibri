@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-progress")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-progress")
 public class KolProgress extends Component {
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */

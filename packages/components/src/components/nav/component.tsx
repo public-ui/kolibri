@@ -11,7 +11,7 @@ import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-lab
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
-import { KoliBriNavAPI, KoliBriNavStates } from './types';
+import { API, States } from './types';
 import { watchNavLinks } from './validation';
 
 /**
@@ -60,7 +60,7 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	},
 	shadow: true,
 })
-export class KolNav implements KoliBriNavAPI {
+export class KolNav implements API {
 	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
@@ -204,12 +204,12 @@ export class KolNav implements KoliBriNavAPI {
 	}
 
 	/**
-	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+	 * Defines the value of aria-current to be used with the current context within the navigation.
 	 */
 	@Prop() public _ariaCurrentValue: AriaCurrentPropType = false;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
@@ -217,49 +217,51 @@ export class KolNav implements KoliBriNavAPI {
 
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
+	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _collapsible?: CollapsiblePropType = true;
+	@Prop() public _collapsible?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Navigation kompakt angezeigt wird.
+	 * Deprecated: Gibt an, ob die Navigation kompakt angezeigt wird.
 	 * @deprecated Use _hide-label
 	 */
 	@Prop() public _compact?: boolean = false;
 
 	/**
-	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+	 * Deprecated: Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
 	 * @deprecated Version 2
 	 */
 	@Prop() public _hasCompactButton?: boolean = false;
 
 	/**
-	 * Defines if navigation labels should be hidden.
+	 * Hides the label.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links, buttons or texts to render.
 	 */
 	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Deprecated: Defines which variant should be used for presentation.
 	 *
 	 * @deprecated This property is deprecated and will be removed in the next major version.
 	 */
 	@Prop() public _variant?: KoliBriNavVariant = 'primary';
 
-	@State() public state: KoliBriNavStates = {
+	@State() public state: States = {
 		_ariaCurrentValue: false,
 		_collapsible: true,
 		_hasCompactButton: false,

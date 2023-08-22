@@ -2,7 +2,6 @@ import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { AlignPropType, validateAlign } from '../../types/props/align';
 import { LabelPropType, validateLabel } from '../../types/props/label';
@@ -10,7 +9,8 @@ import { StencilUnknown } from '../../types/unknown';
 import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
-import { KoliBriTabsAPI, KoliBriTabsCallbacks, KoliBriTabsStates, TabButtonProps } from './types';
+import { API, KoliBriTabsCallbacks, States, TabButtonProps } from './types';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -21,7 +21,7 @@ import { KoliBriTabsAPI, KoliBriTabsCallbacks, KoliBriTabsStates, TabButtonProps
 	},
 	shadow: true,
 })
-export class KolTabs implements KoliBriTabsAPI {
+export class KolTabs implements API {
 	@Element() private readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
@@ -80,7 +80,7 @@ export class KolTabs implements KoliBriTabsAPI {
 		event.stopPropagation();
 	};
 
-	private readonly callbacks: KoliBriButtonCallbacks<number> = {
+	private readonly callbacks: ButtonCallbacksPropType<number> = {
 		onClick: this.onClickSelect,
 		onMouseDown: this.onMouseDown,
 	};
@@ -94,7 +94,7 @@ export class KolTabs implements KoliBriTabsAPI {
 						_icon={button._icon}
 						_hideLabel={button._hideLabel || button._iconOnly}
 						_label={button._label} // TODO: ariaLabel-Konzept prüfen
-						_on={this.callbacks as KoliBriButtonCallbacks<StencilUnknown>}
+						_on={this.callbacks as ButtonCallbacksPropType<StencilUnknown>}
 						_tabIndex={this.state._selected === index ? 0 : -1}
 						_tooltipAlign={button._tooltipAlign}
 						_variant={this.state._selected === index ? 'custom' : undefined}
@@ -149,14 +149,14 @@ export class KolTabs implements KoliBriTabsAPI {
 	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
@@ -166,22 +166,22 @@ export class KolTabs implements KoliBriTabsAPI {
 	@Prop() public _on?: KoliBriTabsCallbacks;
 
 	/**
-	 * Gibt an, welches Tab selektiert sein soll.
+	 * Defines which tab is active.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
 
 	/**
-	 * Setzt die Daten für die Registrierkarten.
+	 * Defines the tab captions.
 	 */
 	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
 
 	/**
-	 * Setzt die Position der Registrierkarten.
+	 * Deprecated: Setzt die Position der Registrierkarten.
 	 * @deprecated Use _align.
 	 */
 	@Prop() public _tabsAlign?: AlignPropType = 'top';
 
-	@State() public state: KoliBriTabsStates = {
+	@State() public state: States = {
 		_align: 'top',
 		_label: '…', // ⚠ required
 		_selected: 0,

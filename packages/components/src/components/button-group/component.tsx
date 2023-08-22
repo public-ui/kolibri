@@ -1,19 +1,11 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, State } from '@stencil/core';
-
-type RequiredProps = unknown;
-type OptionalProps = unknown;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-button-group-wc',
 	shadow: false,
 })
-export class KolButtonGroupWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolButtonGroupWc implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>

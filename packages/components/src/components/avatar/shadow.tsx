@@ -19,12 +19,12 @@ export class KolAvatar implements Props {
 	}
 
 	/**
-	 * Defines the image source to render
+	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop() public _src?: string;
 
 	/**
-	 * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: string;
 }

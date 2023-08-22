@@ -3,7 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-export type RequiredPropType = boolean;
+type RequiredPropType = boolean;
 
 /**
  * Makes the input element required.

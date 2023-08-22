@@ -3,7 +3,7 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
-import { LinkProps } from '../../../types/button-link';
+import { LinkProps } from '../../link/types';
 import { COMPONENTS } from '../../component-list';
 import { getLinkHtml } from './html.mock';
 

@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { devHint } from '../../utils/a11y.tipps';
 import { watchString } from '../../utils/prop.validators';
-import { KoliBriIconAPI, KoliBriIconStates } from './types';
+import { API, States } from './types';
 
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
@@ -15,7 +15,7 @@ import { KoliBriIconAPI, KoliBriIconStates } from './types';
 	},
 	shadow: true,
 })
-export class KolIcon implements KoliBriIconAPI {
+export class KolIcon implements API {
 	public render(): JSX.Element {
 		const ariaShow = typeof this.state._label === 'string' && this.state._label.length > 0;
 		return (
@@ -38,29 +38,29 @@ export class KolIcon implements KoliBriIconAPI {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon!: string;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
-	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+	 * Deprecated: Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
 	 *
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop() public _part?: string;
 
-	@State() public state: KoliBriIconStates = {
+	@State() public state: States = {
 		_icon: 'codicon codicon-home',
 		// _label: false, // ⚠ required TODO: required in v2
 	};

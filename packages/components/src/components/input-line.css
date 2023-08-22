@@ -24,3 +24,7 @@ textarea:focus {
 	height: var(--a11y-min-size);
 	place-items: center;
 }
+
+kol-input.required .input-tooltip .span-label::after {
+	content: '*';
+}

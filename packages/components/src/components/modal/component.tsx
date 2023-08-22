@@ -7,7 +7,7 @@ import { featureHint } from '../../utils/a11y.tipps';
 import { getKoliBri } from '../../utils/dev.utils';
 import { setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { ModalService } from './service';
-import { KoliBriModalAPI, KoliBriModalStates } from './types';
+import { API, States } from './types';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -24,7 +24,7 @@ import { KoliBriModalAPI, KoliBriModalStates } from './types';
 	},
 	shadow: true,
 })
-export class KolModal implements KoliBriModalAPI {
+export class KolModal implements API {
 	private hostElement?: HTMLElement;
 
 	public componentDidRender(): void {
@@ -88,14 +88,14 @@ export class KolModal implements KoliBriModalAPI {
 	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
@@ -105,11 +105,11 @@ export class KolModal implements KoliBriModalAPI {
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
 	/**
-	 * Setzt die Breite des Modals. (max-width: 100%).
+	 * Defines the width of the modal. (max-width: 100%)
 	 */
 	@Prop() public _width?: string = '100%';
 
-	@State() public state: KoliBriModalStates = {
+	@State() public state: States = {
 		_activeElement: null,
 		_label: '…', // ⚠ required
 		_width: '100%',

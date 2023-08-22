@@ -1,21 +1,18 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { AlignPropType } from '../../types/props/align';
-import { validateAriaControls } from '../../types/props/aria-controls';
-import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
-import { validateAriaExpanded } from '../../types/props/aria-expanded';
-import { validateAriaSelected } from '../../types/props/aria-selected';
-import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
-import { validateHideLabel } from '../../types/props/hide-label';
-import { LabelPropType, validateLabel } from '../../types/props/label';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
+import { ButtonTypePropType } from '../../types/props/button-type';
+import { ButtonVariantPropType } from '../../types/props/button-variant';
+import { CustomClassPropType } from '../../types/props/custom-class';
+import { IconPropType } from '../../types/props/icon';
+import { LabelPropType } from '../../types/props/label';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
-import { a11yHintDisabled } from '../../utils/a11y.tipps';
-import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
-import { validateTabIndex } from '../../utils/validators/tab-index';
-import { watchButtonType, watchButtonVariant } from '../button/controller';
-import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback } from './types';
+import { watchBoolean } from '../../utils/prop.validators';
+import { API, States } from './types';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -27,17 +24,21 @@ import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCal
 	},
 	shadow: true,
 })
-export class KolSplitButton implements KoliBriSplitButtonAPI {
+export class KolSplitButton implements API {
 	private dropdown: HTMLDivElement | undefined;
 	private dropdownContent: HTMLDivElement | undefined;
 
-	private readonly clickHandler = (e: Event) => {
-		if (typeof this.state._on.onClick === 'function') {
-			this.state._on.onClick(e);
-		} else {
-			this.toggleDropdown();
-		}
+	private readonly clickButtonHandler = {
+		onClick: (e: MouseEvent) => {
+			if (typeof this._on?.onClick === 'function') {
+				// TODO: this._on is not validated
+				this._on?.onClick(e, this._value);
+			} else {
+				this.toggleDropdown();
+			}
+		},
 	};
+	private readonly clickToggleHandler = { onClick: () => this.toggleDropdown() };
 
 	private readonly openDropdown = () => {
 		if (this.dropdown && this.dropdownContent) {
@@ -87,7 +88,6 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 					}}
 					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}
-					_ariaCurrent={this._ariaCurrent}
 					_ariaExpanded={this._ariaExpanded}
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
@@ -96,7 +96,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 					_hideLabel={this._hideLabel}
 					_label={this._label}
 					_name={this._name}
-					_on={{ onClick: this.clickHandler }}
+					_on={this.clickButtonHandler}
 					_role={this._role}
 					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
@@ -112,7 +112,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 					_hideLabel
 					_icon="codicon codicon-triangle-down"
 					_label={`dropdown ${this.state._showDropdown ? 'schließen' : 'öffnen'}`}
-					_on={{ onClick: () => this.toggleDropdown() }}
+					_on={this.clickToggleHandler}
 				></kol-button-wc>
 				<div class="popover" ref={this.catchDropdownElements}>
 					<div class="popover-content">
@@ -124,206 +124,116 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-	 *
-	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-	 */
-	@Prop() public _ariaCurrent?: AriaCurrentPropType;
-
-	/**
-	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
-	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
-	@Prop() public _icon?: string;
+	@Prop() public _icon?: IconPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-	 * @deprecated use _hide-label
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _iconOnly?: boolean;
+	@Prop() public _id?: string;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: string;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für die Button-Events an.
+	 * Defines the callback functions for button events.
 	 */
-	@Prop() public _on?: { onClick: KoliBriSplitButtonCallback };
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines whether to show the dropdown menu.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _showDropdown?: boolean = false;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
-	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+	 * Defines the value that the button emits on click.
 	 */
 	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
-	@State() public state: KoliBriSplitButtonAStates = {
-		_icon: '',
-		_label: '',
-		_on: {},
+	@State() public state: States = {
 		_showDropdown: false,
 	};
-
-	@Watch('_accessKey')
-	public validateAccessKey(value?: string): void {
-		watchString(this, '_accessKey', value);
-	}
-
-	@Watch('_ariaControls')
-	public validateAriaControls(value?: string): void {
-		validateAriaControls(this, value);
-	}
-
-	@Watch('_ariaCurrent')
-	public validateAriaCurrent(value?: AriaCurrentPropType): void {
-		validateAriaCurrent(this, value);
-	}
-
-	@Watch('_ariaExpanded')
-	public validateAriaExpanded(value?: boolean): void {
-		validateAriaExpanded(this, value);
-	}
-
-	/**
-	 * @deprecated use _label
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-
-	@Watch('_ariaSelected')
-	public validateAriaSelected(value?: boolean): void {
-		validateAriaSelected(this, value);
-	}
-
-	@Watch('_customClass')
-	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, { defaultValue: undefined });
-	}
-
-	@Watch('_disabled')
-	public validateDisabled(value?: DisabledPropType): void {
-		validateDisabled(this, value);
-		if (value) a11yHintDisabled();
-	}
-
-	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
-		validateHideLabel(this, value);
-	}
-
-	@Watch('_icon')
-	public validateIcon(value?: string): void {
-		watchString(this, '_icon', value);
-	}
-
-	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
-		this.validateHideLabel(value);
-	}
-
-	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
-	}
-
-	@Watch('_on')
-	public validateOn(value?: { onClick: KoliBriSplitButtonCallback }): void {
-		if (typeof value === 'object' && value !== null) {
-			this.state = {
-				...this.state,
-				_on: value,
-			};
-		}
-	}
-
-	@Watch('_role')
-	public validateRole(value?: AlternativButtonLinkRole): void {
-		watchString(this, '_role', value);
-	}
 
 	@Watch('_showDropdown')
 	public validateShowDropdown(value?: boolean): void {
@@ -331,49 +241,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 		this.toggleDropdown(value);
 	}
 
-	@Watch('_tabIndex')
-	public validateTabIndex(value?: number): void {
-		validateTabIndex(this, value);
-	}
-
-	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
-	}
-
-	@Watch('_type')
-	public validateType(value?: KoliBriButtonType): void {
-		watchButtonType(this, '_type', value);
-	}
-
-	@Watch('_value')
-	public validateValue(value?: Stringified<StencilUnknown>): void {
-		setState(this, '_value', value);
-	}
-
-	@Watch('_variant')
-	public validateVariant(value?: KoliBriButtonVariant): void {
-		watchButtonVariant(this, '_variant', value);
-	}
-
 	public componentWillLoad(): void {
-		this.validateAccessKey(this._accessKey);
-		this.validateAriaControls(this._ariaControls);
-		this.validateAriaCurrent(this._ariaCurrent);
-		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaSelected(this._ariaSelected);
-		this.validateCustomClass(this._customClass);
-		this.validateDisabled(this._disabled);
-		this.validateHideLabel(this._hideLabel || this._iconOnly);
-		this.validateIcon(this._icon);
-		this.validateLabel(this._label || this._ariaLabel);
-		this.validateOn(this._on);
-		this.validateRole(this._role);
 		this.validateShowDropdown(this._showDropdown);
-		this.validateTabIndex(this._tabIndex);
-		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateType(this._type);
-		this.validateValue(this._value);
-		this.validateVariant(this._variant);
 	}
 }

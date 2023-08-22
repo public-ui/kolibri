@@ -1,8 +1,8 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { watchBoolean } from '../../utils/prop.validators';
-import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
+import { validateOpen } from '../../types/props/open';
+import { API, States } from './types';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -14,7 +14,7 @@ import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
 	},
 	shadow: true,
 })
-export class KolDetails implements KoliBriDetailsAPI {
+export class KolDetails implements API {
 	private htmlDetailsElement?: HTMLDetailsElement;
 
 	public render(): JSX.Element {
@@ -29,11 +29,7 @@ export class KolDetails implements KoliBriDetailsAPI {
 					{/* Link: https://github.com/public-ui/kolibri/issues/3558 */}
 					{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
 					<summary onClick={this.onClick}>
-						{this.state._open ? (
-							<kol-icon _ariaLabel="" _icon="codicon codicon-chevron-down" />
-						) : (
-							<kol-icon _ariaLabel="" _icon="codicon codicon-chevron-right" />
-						)}
+						{this.state._open ? <kol-icon _label="" _icon="codicon codicon-chevron-down" /> : <kol-icon _label="" _icon="codicon codicon-chevron-right" />}
 						<span>{this.state._label}</span>
 					</summary>
 					<div class="content">
@@ -47,22 +43,23 @@ export class KolDetails implements KoliBriDetailsAPI {
 	}
 
 	/**
-	 * Defines the summary label.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	/**
-	 * Gibt die Zusammenfassung der Detailbeschreibung an.
+	 * Deprecated: Gibt die Zusammenfassung der Detailbeschreibung an.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _summary?: string;
 
-	@State() public state: KoliBriDetailsStates = {
+	@State() public state: States = {
 		_label: '…', // '⚠'
 	};
 
@@ -73,7 +70,7 @@ export class KolDetails implements KoliBriDetailsAPI {
 
 	@Watch('_open')
 	public validateOpen(value?: boolean): void {
-		watchBoolean(this, '_open', value);
+		validateOpen(this, value);
 	}
 
 	@Watch('_summary')

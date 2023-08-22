@@ -43,42 +43,42 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop() public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop() public _disabled?: boolean;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
 	@Prop() public _id?: string;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -88,7 +88,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _list!: Stringified<Option<W3CInputValue>[]>;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: string;
 
@@ -98,7 +98,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
@@ -108,7 +108,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _required?: boolean;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -118,7 +118,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert der Radio an.
+	 * Defines the value of the input.
 	 */
 	@Prop() public _value?: W3CInputValue;
 }

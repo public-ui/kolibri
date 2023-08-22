@@ -2,7 +2,7 @@ import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Farbspektrum } from '../../enums/color';
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { KoliBriVersionAPI, KoliBriVersionStates } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-version',
@@ -11,23 +11,23 @@ import { KoliBriVersionAPI, KoliBriVersionStates } from './types';
 	},
 	shadow: true,
 })
-export class KolVersion implements KoliBriVersionAPI {
+export class KolVersion implements API {
 	public render(): JSX.Element {
 		return <kol-badge _color={Farbspektrum.Hellgrau} _icon="codicon codicon-versions" _label={`v${this.state._label}`} />;
 	}
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
-	 * Gibt die Versionsnummer als Text an.
+	 * Deprecated: Gibt die Versionsnummer als Text an.
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _version?: string;
 
-	@State() public state: KoliBriVersionStates = {
+	@State() public state: States = {
 		_label: '0.0.0-alpha.0',
 	};
 

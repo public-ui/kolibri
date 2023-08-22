@@ -4,7 +4,7 @@ import { BUND_LOGO_TEXT_MAP, Bundesamt, Bundesanstalt, Bundesministerium } from 
 import { translate } from '../../i18n';
 import { devHint } from '../../utils/a11y.tipps';
 import { setState } from '../../utils/prop.validators';
-import { KoliBriLogoAPI, KoliBriLogoStates } from './types';
+import { API, States } from './types';
 
 function enumToArray(enumeration: Record<string, string>, enumAsMap: Map<string, string> = new Map()): Map<string, string> {
 	Object.entries(enumeration).map(([key, value]) => {
@@ -90,9 +90,9 @@ c1.57,2.48,2.8,2.44,4.65,2.44c-1.2-0.97-2.21-2.14-3-3.46l-2.99-4.7c0.16-0.29,0.2
 	},
 	shadow: true,
 })
-export class KolLogo implements KoliBriLogoAPI {
+export class KolLogo implements API {
 	/**
-	 * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
+	 * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
 	 *
 	 * @deprecated Verwende stattdessen das Property _org.
 	 */
@@ -103,7 +103,7 @@ export class KolLogo implements KoliBriLogoAPI {
 	 */
 	@Prop() public _org!: Bundesministerium | Bundesamt | Bundesanstalt;
 
-	@State() public state: KoliBriLogoStates = {
+	@State() public state: States = {
 		_org: Bundesanstalt['Informationstechnikzentrum Bund'],
 	};
 

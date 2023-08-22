@@ -20,7 +20,7 @@ Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `seconda
  */
 
 @Tag("kol-button-link")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-button-link")
 public class KolButtonLink extends Component {
 	/**
@@ -82,6 +82,7 @@ public class KolButtonLink extends Component {
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -91,6 +92,7 @@ public class KolButtonLink extends Component {
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -120,6 +122,7 @@ public class KolButtonLink extends Component {
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -129,6 +132,7 @@ public class KolButtonLink extends Component {
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -139,6 +143,7 @@ public class KolButtonLink extends Component {
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -148,6 +153,7 @@ public class KolButtonLink extends Component {
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -158,6 +164,7 @@ public class KolButtonLink extends Component {
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @param value String
 	 */
@@ -167,6 +174,7 @@ public class KolButtonLink extends Component {
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @return Optional<String>
 	 */
@@ -271,7 +279,7 @@ public class KolButtonLink extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @param value String
 	 */
@@ -280,7 +288,7 @@ public class KolButtonLink extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -328,7 +336,7 @@ public class KolButtonLink extends Component {
 	}
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 *
 	 * @param value String
 	 */
@@ -337,7 +345,7 @@ public class KolButtonLink extends Component {
 	}
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 *
 	 * @return Optional<String>
 	 */

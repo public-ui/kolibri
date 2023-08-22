@@ -16,8 +16,7 @@
 		"test": "vitest",
 		"test:ui": "vitest --ui",
 		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" assets --dot",
+		"postinstall:public-ui": "cpy \"node_modules/@public-ui/**/*\" assets/@public-ui --dot",
 		"update": "ncu -t minor -u && ncu"
 	},
 	"dependencies": {
@@ -25,9 +24,9 @@
 		"react-dom": "17.0.2"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.6.0-rc.23",
-		"@public-ui/react": "1.6.0-rc.23",
-		"@public-ui/themes": "1.6.0-rc.23",
+		"@public-ui/components": "1.6.0-rc.28",
+		"@public-ui/react": "1.6.0-rc.28",
+		"@public-ui/themes": "1.6.0-rc.28",
 		"@testing-library/dom": "8.20.0",
 		"@testing-library/jest-dom": "5.16.2",
 		"@testing-library/react": "12.1.3",

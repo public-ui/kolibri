@@ -83,11 +83,11 @@ export const MFM = KoliBri.createTheme('mfm', {
 		kol-heading-wc {
 			font-weight: 700;
 		}
-		kol-tooltip .tooltip-area {
+		kol-tooltip-wc .tooltip-area {
 			background-color: var(--color-metal);
 			color: var(--color-white);
 		}
-		kol-tooltip .tooltip-content {
+		kol-tooltip-wc .tooltip-content {
 			border-radius: var(--border-radius);
 			line-height: 1.5em;
 			padding: 0.5rem 0.75rem;
@@ -2164,7 +2164,7 @@ export const MFM = KoliBri.createTheme('mfm', {
 			display: grid;
 			gap: 1rem;
 		}
-		:host > div {
+		:host .navigation-list {
 			display: inline-flex;
 			flex-wrap: wrap;
 			align-items: center;

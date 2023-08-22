@@ -1,21 +1,20 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchTooltipAlignment } from '../../types/button-link';
-import { AlignPropType } from '../../types/props/align';
+import { AlignPropType, validateAlign } from '../../types/props/align';
 import { IdPropType, validateId } from '../../types/props/id';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { processEnv } from '../../utils/reuse';
-import { KoliBriTooltipAPI, KoliBriTooltipStates } from './types';
+import { API, States } from './types';
 
 @Component({
-	tag: 'kol-tooltip',
+	tag: 'kol-tooltip-wc',
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolTooltip implements KoliBriTooltipAPI {
+export class KolTooltip implements API {
 	private previousSibling?: HTMLElement | null;
 	private tooltipElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
@@ -154,11 +153,11 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
 
-	@State() public state: KoliBriTooltipStates = {
+	@State() public state: States = {
 		_align: 'top',
 		_id: nonce(),
 		_label: '…', // ⚠ required
@@ -166,7 +165,7 @@ export class KolTooltip implements KoliBriTooltipAPI {
 
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_align', value);
+		validateAlign(this, value);
 	}
 
 	@Watch('_id')

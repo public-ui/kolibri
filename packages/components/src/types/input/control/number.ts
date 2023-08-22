@@ -1,4 +1,4 @@
-import { ButtonProps } from '../../button-link';
+import { Props as ButtonProps } from '../../../components/button/types';
 import { Stringified } from '../../common';
 import { KoliBriHorizontalIcon } from '../../icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../types';

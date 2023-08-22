@@ -1,6 +1,20 @@
 import { SelectOption } from '@public-ui/components';
 
-export type Theme = 'unstyled' | 'bamf' | 'bmf' | 'by' | 'bzst' | 'desy-v1' | 'desy-v2' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'mapz' | 'th' | 'zoll-v2';
+export type Theme =
+	| 'bamf'
+	| 'bmf'
+	| 'by'
+	| 'bzst'
+	| 'default'
+	| 'desy-v1'
+	| 'desy-v2'
+	| 'ecl-ec'
+	| 'ecl-eu'
+	| 'itzbund'
+	| 'mapz'
+	| 'th'
+	| 'unstyled'
+	| 'zoll-v2';
 
 export const isTheme = (value: unknown) => {
 	console.log('typeof value', typeof value);
@@ -11,6 +25,7 @@ export const isTheme = (value: unknown) => {
 			value === 'bmf' ||
 			value === 'by' ||
 			value === 'bzst' ||
+			value === 'default' ||
 			value === 'desy-v1' ||
 			value === 'desy-v2' ||
 			value === 'ecl-ec' ||
@@ -32,28 +47,32 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		label: 'Unstyled',
 		value: 'unstyled',
 	},
-	{
-		disabled: true,
-		label: 'Bundesamt für Migration und Flüchtlinge',
-		value: 'bamf',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'Bundesamt für Migration und Flüchtlinge',
+	// 	value: 'bamf',
+	// },
 	{
 		label: 'Bundesministerium der Finanzen',
 		value: 'bmf',
 	},
-	{
-		label: 'Freistaat Bayern (StMWi)',
-		value: 'by',
-	},
+	// {
+	// 	label: 'Freistaat Bayern (StMWi)',
+	// 	value: 'by',
+	// },
 	{
 		label: 'Bundesamt für Zoll und Steuern',
 		value: 'bzst',
 	},
 	{
-		disabled: true,
-		label: 'DESY-Styleguide (v1)',
-		value: 'desy-v1',
+		label: 'Default',
+		value: 'default',
 	},
+	// {
+	// 	disabled: true,
+	// 	label: 'DESY-Styleguide (v1)',
+	// 	value: 'desy-v1',
+	// },
 	{
 		label: 'DESY-Styleguide (v2)',
 		value: 'desy-v2',

@@ -2,9 +2,9 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { getButtonWcHtml } from '../../button/test/html.mock';
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
-import { koliBriCardProps } from '../types';
+import { Props } from '../types';
 
-export const getCardHtml = (props: koliBriCardProps): string => {
+export const getCardHtml = (props: Props): string => {
 	props = mixMembers(
 		{
 			_label: '…',

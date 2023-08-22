@@ -1,10 +1,9 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { ButtonProps } from '../../types/button-link';
+import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { AlignPropType } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
@@ -13,7 +12,11 @@ import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -25,7 +28,7 @@ import { ComponentApi, States } from './types';
 	},
 	shadow: true,
 })
-export class KolInputPassword implements ComponentApi {
+export class KolInputPassword implements API {
 	@Element() private readonly host?: HTMLKolInputPasswordElement;
 	private ref?: HTMLInputElement;
 
@@ -103,16 +106,17 @@ export class KolInputPassword implements ComponentApi {
 							{...this.controller.onFacade}
 							onKeyUp={this.onKeyUp}
 						/>
-						<kol-tooltip
+						<kol-tooltip-wc
 							/**
 							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 							 */
 							aria-hidden="true"
+							class="input-tooltip"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip>
+						></kol-tooltip-wc>
 					</div>
 				</kol-input>
 			</Host>
@@ -122,69 +126,72 @@ export class KolInputPassword implements ComponentApi {
 	private readonly controller: InputPasswordController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
+	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCounter?: boolean;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -192,22 +199,24 @@ export class KolInputPassword implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+	 * Defines a validation pattern for the input field.
 	 */
 	@Prop() public _pattern?: string;
 
 	/**
-	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _readOnly?: boolean;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean;
 
@@ -217,7 +226,7 @@ export class KolInputPassword implements ComponentApi {
 	@Prop() public _size?: number;
 
 	/**
-	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
@@ -225,25 +234,26 @@ export class KolInputPassword implements ComponentApi {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop() public _value?: string;
 
@@ -366,7 +376,7 @@ export class KolInputPassword implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

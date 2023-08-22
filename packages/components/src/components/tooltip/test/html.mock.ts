@@ -2,10 +2,10 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { nonce } from '../../../utils/dev.utils';
 import { getSpanWcHtml } from '../../span/test/html.mock';
-import { KoliBriTooltipProps, KoliBriTooltipStates } from '../types';
+import { Props, States } from '../types';
 
-export const getTooltipHtml = (props: KoliBriTooltipProps, additionalAttrs = ''): string => {
-	const state: KoliBriTooltipStates = mixMembers<KoliBriTooltipProps, KoliBriTooltipStates>(
+export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
+	const state: States = mixMembers<Props, States>(
 		{
 			_align: 'top',
 			_id: nonce(),
@@ -14,7 +14,7 @@ export const getTooltipHtml = (props: KoliBriTooltipProps, additionalAttrs = '')
 		props
 	);
 	return `
-<kol-tooltip${additionalAttrs}>
+<kol-tooltip-wc${additionalAttrs}>
 	${
 		state._label === ''
 			? ''
@@ -31,5 +31,5 @@ export const getTooltipHtml = (props: KoliBriTooltipProps, additionalAttrs = '')
 			)}
 		</div>`
 	}
-</kol-tooltip>`;
+</kol-tooltip-wc>`;
 };

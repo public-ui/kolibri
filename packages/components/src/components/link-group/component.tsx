@@ -1,6 +1,6 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../../types/button-link';
+import { LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { HeadingLevel } from '../../types/heading-level';
 import { Orientation } from '../../types/orientation';
@@ -8,7 +8,7 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { watchNavLinks } from '../nav/validation';
-import { KoliBriLinkGroupAPI, KoliBriLinkGroupStates, ListStyleType } from './types';
+import { API, States, ListStyleType } from './types';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
@@ -40,7 +40,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 	},
 	shadow: true,
 })
-export class KolLinkGroup implements KoliBriLinkGroupAPI {
+export class KolLinkGroup implements API {
 	public render(): JSX.Element {
 		return (
 			<nav
@@ -70,7 +70,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	private isUl = true;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
@@ -87,32 +87,32 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	@Prop() public _heading?: string;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel;
 
 	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links to render.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	/**
-	 * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+	 * Deprecated: Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
 	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
 	 */
 	@Prop() public _ordered?: boolean;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	@State() public state: KoliBriLinkGroupStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_listStyleType: 'disc',
 		_links: [],

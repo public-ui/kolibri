@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { AlignPropType } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { RowsPropType } from '../../types/props/rows';
 import { nonce } from '../../utils/dev.utils';
@@ -9,9 +8,13 @@ import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
-import { ComponentApi, CSSResize, States } from './types';
+import { API, CSSResize, States } from './types';
 import { AdjustHeightPropType } from '../../types/props/adjust-height';
 import { HasCounterPropType } from '../../types/props/has-counter';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -36,7 +39,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	},
 	shadow: true,
 })
-export class KolTextarea implements ComponentApi {
+export class KolTextarea implements API {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 	private ref?: HTMLTextAreaElement;
 
@@ -94,16 +97,17 @@ export class KolTextarea implements ComponentApi {
 							}}
 							value={this.state._value}
 						/>
-						<kol-tooltip
+						<kol-tooltip-wc
 							/**
 							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 							 */
 							aria-hidden="true"
+							class="input-tooltip"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip>
+						></kol-tooltip-wc>
 					</div>
 				</kol-input>
 			</Host>
@@ -113,64 +117,68 @@ export class KolTextarea implements ComponentApi {
 	private readonly controller: TextareaController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
 	 * Adjusts the height of the element to its content.
+	 * TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 */
-	@Prop() public _adjustHeight?: AdjustHeightPropType = false;
+	@Prop() public _adjustHeight?: boolean = false;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
 	 * Shows the character count on the lower border of the input.
+	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCounter?: HasCounterPropType;
+	@Prop() public _hasCounter?: boolean;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -178,22 +186,24 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _readOnly?: boolean;
 
 	/**
-	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 */
 	@Prop() public _resize?: CSSResize = 'vertical';
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean;
 
@@ -206,25 +216,26 @@ export class KolTextarea implements ComponentApi {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop() public _value?: string;
 
@@ -332,7 +343,7 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

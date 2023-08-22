@@ -1,6 +1,5 @@
 import { Component, h, Host, JSX } from '@stencil/core';
-
-import { Props } from './component';
+import { Props } from './types';
 
 @Component({
 	tag: 'kol-button-group',

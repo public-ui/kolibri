@@ -81,13 +81,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		color: var(--color-red);
 		padding-left: 0.25em;
 	}
-	kol-tooltip .tooltip-area {
+	kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -734,7 +734,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -1730,6 +1730,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	kol-input > kol-alert.error {
 		order: 3;
+	}
+	.inputs-wrapper {
+		gap: 1em;
 	}`,
 	'KOL-ICON': `/*! * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) * Copyright 2022 Fonticons, Inc. */
 	.fa {

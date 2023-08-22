@@ -3,7 +3,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
 import { mapIconProp2State } from '../../../types/props/icon';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { KolibriSpanProps, KolibriSpanStates } from '../types';
+import { Props, States } from '../types';
 
 type Slots = {
 	''?: string;
@@ -11,13 +11,13 @@ type Slots = {
 } & Record<string, undefined | string>;
 
 export const getSpanWcHtml = (
-	props: KolibriSpanProps,
+	props: Props,
 	slots: Slots = {
 		expert: undefined,
 	},
 	additionalAttrs = ''
 ): string => {
-	const state = mixMembers<KolibriSpanProps, KolibriSpanStates>(
+	const state = mixMembers<Props, States>(
 		{
 			_icon: {},
 			_hideLabel: false,
@@ -52,8 +52,8 @@ export const getSpanWcHtml = (
 				  )
 				: ''
 		}
-		${!state._hideLabel && hideExpertSlot ? `<span>${state._label as string}</span>` : ``}
-		<span${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
+		${!state._hideLabel && hideExpertSlot ? `<span class="span-label">${state._label as string}</span>` : ``}
+		<span class="span-label" ${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
 			${slots.expert ? slots.expert : ``}
 		</span>
 		${
@@ -80,7 +80,7 @@ export const getSpanWcHtml = (
 };
 
 export const getSpanHtml = (
-	props: KolibriSpanProps,
+	props: Props,
 	slots: Slots = {
 		expert: `<slot name="expert" slot="expert"></slot>`,
 	}

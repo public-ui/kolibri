@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { watchString } from '../../utils/prop.validators';
-import { KoliBriHeadingAPI, KoliBriHeadingStates } from './types';
+import { API, States } from './types';
 import { watchHeadingLevel } from './validation';
 
 /**
@@ -13,14 +13,14 @@ import { watchHeadingLevel } from './validation';
 	tag: 'kol-heading-wc',
 	shadow: false,
 })
-export class KolHeadingWc implements KoliBriHeadingAPI {
+export class KolHeadingWc implements API {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -29,7 +29,7 @@ export class KolHeadingWc implements KoliBriHeadingAPI {
 	 */
 	@Prop() public _secondaryHeadline?: string;
 
-	@State() public state: KoliBriHeadingStates = {
+	@State() public state: States = {
 		_label: false, // ⚠ required
 		_level: 1,
 	};

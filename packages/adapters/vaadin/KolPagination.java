@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-pagination")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-pagination")
 public class KolPagination extends Component {
 	/**
@@ -35,7 +35,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute.
 	 *
 	 * @return Optional<String>
 	 */
@@ -187,7 +187,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -196,7 +196,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */

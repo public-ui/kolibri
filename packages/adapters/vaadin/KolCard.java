@@ -17,11 +17,12 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
  */
 
 @Tag("kol-card")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-card")
 public class KolCard extends Component {
 	/**
 	 * Defines whether the card has a close button.
+TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -31,6 +32,7 @@ public class KolCard extends Component {
 
 	/**
 	 * Defines whether the card has a close button.
+TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -41,6 +43,7 @@ public class KolCard extends Component {
 
 	/**
 	 * Shows the slot="footer".
+TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -50,6 +53,7 @@ public class KolCard extends Component {
 
 	/**
 	 * Shows the slot="footer".
+TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */

@@ -14,7 +14,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
  */
 
 @Tag("kol-accordion")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-accordion")
 public class KolAccordion extends Component {
 	/**
@@ -37,7 +37,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Defines the button label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -46,7 +46,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Defines the button label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -76,6 +76,7 @@ public class KolAccordion extends Component {
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -85,6 +86,7 @@ public class KolAccordion extends Component {
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */

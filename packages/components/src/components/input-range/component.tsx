@@ -3,7 +3,6 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
-import { AlignPropType } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
@@ -12,7 +11,11 @@ import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -24,7 +27,7 @@ import { ComponentApi, States } from './types';
 	},
 	shadow: true,
 })
-export class KolInputRange implements ComponentApi {
+export class KolInputRange implements API {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
 	private ref?: HTMLInputElement;
 
@@ -81,67 +84,74 @@ export class KolInputRange implements ComponentApi {
 				>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
-					<div slot="input" class="inputs-wrapper">
-						<input
-							title=""
-							accessKey={this.state._accessKey}
-							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-							autoCapitalize="off"
-							autoComplete={this.state._autoComplete}
-							autoCorrect="off"
-							disabled={this.state._disabled}
-							list={hasSuggestions ? `${this.state._id}-list` : undefined}
-							max={this.state._max}
-							min={this.state._min}
-							name={this.state._name ? `${this.state._name}-range` : undefined}
-							spellcheck="false"
-							step={this.state._step}
-							tabIndex={-1}
-							type="range"
-							value={this.state._value as number}
-							{...this.controller.onFacade}
-							onChange={this.onChange}
-						/>
-						<input
-							ref={this.catchInputNumberRef}
-							title=""
-							accessKey={this.state._accessKey}
-							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-							autoCapitalize="off"
-							autoComplete={this.state._autoComplete}
-							autoCorrect="off"
-							disabled={this.state._disabled}
-							id={this.state._id}
-							list={hasSuggestions ? `${this.state._id}-list` : undefined}
-							max={this.state._max}
-							min={this.state._min}
-							name={this.state._name ? `${this.state._name}-number` : undefined}
-							step={this.state._step}
-							type="number"
-							value={this.state._value}
-							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
-							onChange={this.onChange}
-						/>
-						<kol-tooltip
-							/**
-							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-							 */
-							aria-hidden="true"
-							hidden={hasExpertSlot || !this.state._hideLabel}
-							_align={this._tooltipAlign}
-							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip>
+					<div slot="input">
+						<div
+							class="inputs-wrapper"
+							style={{
+								'--kolibri-input-range--input-number--width': `${this.state._max}`.length + 0.5 + 'em',
+							}}
+						>
+							<input
+								title=""
+								accessKey={this.state._accessKey}
+								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+								autoCapitalize="off"
+								autoComplete={this.state._autoComplete}
+								autoCorrect="off"
+								disabled={this.state._disabled}
+								list={hasSuggestions ? `${this.state._id}-list` : undefined}
+								max={this.state._max}
+								min={this.state._min}
+								name={this.state._name ? `${this.state._name}-range` : undefined}
+								spellcheck="false"
+								step={this.state._step}
+								tabIndex={-1}
+								type="range"
+								value={this.state._value as number}
+								{...this.controller.onFacade}
+								onChange={this.onChange}
+							/>
+							<input
+								ref={this.catchInputNumberRef}
+								title=""
+								accessKey={this.state._accessKey}
+								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+								autoCapitalize="off"
+								autoComplete={this.state._autoComplete}
+								autoCorrect="off"
+								disabled={this.state._disabled}
+								id={this.state._id}
+								list={hasSuggestions ? `${this.state._id}-list` : undefined}
+								max={this.state._max}
+								min={this.state._min}
+								name={this.state._name ? `${this.state._name}-number` : undefined}
+								step={this.state._step}
+								type="number"
+								value={this.state._value}
+								{...this.controller.onFacade}
+								onKeyUp={this.onKeyUp}
+								onChange={this.onChange}
+							/>
+							<kol-tooltip-wc
+								/**
+								 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+								 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+								 */
+								aria-hidden="true"
+								class="input-tooltip"
+								hidden={hasExpertSlot || !this.state._hideLabel}
+								_align={this._tooltipAlign}
+								_label={typeof this.state._label === 'string' ? this.state._label : ''}
+							></kol-tooltip-wc>
+						</div>
 						{hasSuggestions && [
 							<datalist id={`${this.state._id}-list`}>
 								{this.state._suggestions.map((option: W3CInputValue) => (
 									<option value={option} />
 								))}
 							</datalist>,
-
 							// <ul class="grid gap-1 text-sm grid-flow-col">
 							//   {this.state._suggestions.map((option: InputOption<number>) => (
 							//     <li class="border-1">{option.label}</li>
@@ -157,75 +167,77 @@ export class KolInputRange implements ComponentApi {
 	private readonly controller: InputRangeController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Vorschlagswörter an.
+	 * Deprecated: Gibt die Liste der Vorschlagswörter an.
 	 * @deprecated Use _suggestions.
 	 */
 	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
 
 	/**
-	 * Gibt den größtmöglichen Eingabewert an.
+	 * Defines the largest possible input value.
 	 */
 	@Prop() public _max?: number;
 
 	/**
-	 * Gibt den kleinstmöglichen Eingabewert an.
+	 * Defines the smallest possible input value.
 	 */
 	@Prop() public _min?: number;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -233,7 +245,7 @@ export class KolInputRange implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt die Schrittweite der Wertveränderung an.
+	 * Defines the step size for value changes.
 	 */
 	@Prop() public _step?: number;
 
@@ -246,25 +258,26 @@ export class KolInputRange implements ComponentApi {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop() public _value?: number;
 
@@ -365,7 +378,7 @@ export class KolInputRange implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

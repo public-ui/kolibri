@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-input-text")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-input-text")
 public class KolInputText extends Component {
 	/**
@@ -36,6 +36,7 @@ public class KolInputText extends Component {
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
+TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -45,6 +46,7 @@ public class KolInputText extends Component {
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
+TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -73,7 +75,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -82,7 +85,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -111,7 +115,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
+TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -120,7 +125,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
+TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -130,7 +136,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @param value String
 	 */
@@ -139,7 +146,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @return Optional<String>
 	 */
@@ -187,7 +195,7 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @param value String
 	 */
@@ -196,7 +204,7 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -263,7 +271,7 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 *
 	 * @param value String
 	 */
@@ -272,7 +280,7 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 *
 	 * @return Optional<String>
 	 */
@@ -320,7 +328,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
+TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -329,7 +338,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
+TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -339,7 +349,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -348,7 +359,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -453,7 +465,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -462,7 +475,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */

@@ -10,7 +10,7 @@ export type KoliBriCardEventCallbacks = {
 	onClose?: EventCallback<Event>;
 };
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	/**
 	 * @deprecated Use _label instead.
@@ -26,10 +26,10 @@ type OptionalProps = {
 	PropLabel & // TODO v2: PropLabel will become required
 	PropHasCloser;
 
-export type koliBriCardProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps & PropLabel;
 type OptionalStates = OptionalProps;
 
-export type KoliBriCardStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriCardAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

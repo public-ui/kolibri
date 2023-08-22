@@ -1,10 +1,10 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../../types/button-link';
+import { LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchNavLinks } from '../nav/validation';
-import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-skip-nav',
@@ -13,7 +13,7 @@ import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
 	},
 	shadow: true,
 })
-export class KolSkipNav implements KoliBriSkipNavAPI {
+export class KolSkipNav implements API {
 	public render(): JSX.Element {
 		return (
 			<nav aria-label={this.state._label}>
@@ -31,23 +31,23 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links combined with their labels to render.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
-	@State() public state: KoliBriSkipNavStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_links: [],
 	};

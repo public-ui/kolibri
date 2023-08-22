@@ -1,15 +1,16 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { AlignPropType } from '../../types/props/align';
 import { nonce } from '../../utils/dev.utils';
-import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { watchButtonVariant } from '../button/controller';
-import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
+import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
+import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -31,7 +32,7 @@ const rightDoubleArrowIcon = {
 	},
 	shadow: true,
 })
-export class KolPagination implements KoliBriPaginationAPI {
+export class KolPagination implements API {
 	private readonly nonce = nonce();
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
@@ -65,65 +66,75 @@ export class KolPagination implements KoliBriPaginationAPI {
 
 		return (
 			<Host>
-				<div>
-					{this.state._hasButtons.first && (
-						<kol-button
-							class="first"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={this.state._page <= 1}
-							_icon={leftDoubleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-first')}
-							_on={this.onGoToFirst}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{this.state._hasButtons.previous && (
-						<kol-button
-							class="previous"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={this.state._page <= 1}
-							_icon={leftSingleArrow}
-							_hideLabel
-							_label={translate('kol-page-back')}
-							_on={this.onGoBackward}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{pageButtons}
-					{this.state._hasButtons.next && (
-						<kol-button
-							class="next"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={count <= this.state._page}
-							_icon={rightSingleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-next')}
-							_on={this.onGoForward}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{this.state._hasButtons.last && (
-						<kol-button
-							class="last"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={count <= this.state._page}
-							_icon={rightDoubleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-last')}
-							_on={this.onGoToEnd}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-				</div>
+				<nav aria-label={this.state._label}>
+					<ul class="navigation-list">
+						{this.state._hasButtons.first && (
+							<li>
+								<kol-button
+									class="first"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={this.state._page <= 1}
+									_icon={leftDoubleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-first')}
+									_on={this.onGoToFirst}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+						{this.state._hasButtons.previous && (
+							<li>
+								<kol-button
+									class="previous"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={this.state._page <= 1}
+									_icon={leftSingleArrow}
+									_hideLabel
+									_label={translate('kol-page-back')}
+									_on={this.onGoBackward}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+						{pageButtons}
+						{this.state._hasButtons.next && (
+							<li>
+								<kol-button
+									class="next"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={count <= this.state._page}
+									_icon={rightSingleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-next')}
+									_on={this.onGoForward}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+						{this.state._hasButtons.last && (
+							<li>
+								<kol-button
+									class="last"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={count <= this.state._page}
+									_icon={rightDoubleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-last')}
+									_on={this.onGoToEnd}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+					</ul>
+				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
 					<kol-select
 						_hideLabel
@@ -141,32 +152,37 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	/**
-	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
+	 * Defines the amount of pages to show next to the outer arrow buttons.
 	 */
 	@Prop() public _boundaryCount?: number = 1;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute for the buttons.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
-	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
+	 * Defines the description of the component.
+	 */
+	@Prop() public _label?: LabelPropType;
+
+	/**
+	 * Defines which navigation buttons to render (first, last, next, previous buttons).
 	 */
 	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
 
 	/**
-	 * Gibt an, welche Seite aktuell ausgewählt ist.
+	 * Defines the current page.
 	 */
 	@Prop() public _page!: number;
 
 	/**
-	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
+	 * Defines the amount of entries to show per page.
 	 */
 	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
 
 	/**
-	 * Setzt die Optionen für das Seitenlängenselect.
+	 * Defines the options for the page-size-select.
 	 */
 	@Prop() public _pageSizeOptions: Stringified<number[]> = [];
 
@@ -176,14 +192,14 @@ export class KolPagination implements KoliBriPaginationAPI {
 	@Prop() public _on!: KoliBriPaginationButtonCallbacks;
 
 	/**
-	 * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
+	 * Defines the amount of pages to show next to the current page.
 	 */
 	@Prop() public _siblingCount?: number = 1;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Setzt die Gesamtanzahl der Seiten.
@@ -191,12 +207,13 @@ export class KolPagination implements KoliBriPaginationAPI {
 	@Prop() public _total!: number;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
-	@State() public state: KoliBriPaginationStates = {
+	@State() public state: States = {
 		_boundaryCount: 1,
+		_label: translate('kol-pagination'),
 		_hasButtons: {
 			first: true,
 			last: true,
@@ -301,10 +318,13 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	@Watch('_customClass')
-	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, {
-			defaultValue: undefined,
-		});
+	public validateCustomClass(value?: CustomClassPropType): void {
+		validateCustomClass(this, value);
+	}
+
+	@Watch('_label')
+	public validateLabel(label?: LabelPropType) {
+		validateLabel(this, label);
 	}
 
 	@Watch('_hasButtons')
@@ -471,19 +491,20 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: KoliBriButtonVariant): void {
-		watchButtonVariant(this, '_variant', value);
+	public validateVariant(value?: ButtonVariantPropType): void {
+		validateButtonVariant(this, value);
 	}
 
 	public componentWillLoad(): void {
 		this.validateBoundaryCount(this._boundaryCount);
 		this.validateCustomClass(this._customClass);
 		this.validateHasButtons(this._hasButtons);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validatePage(this._page);
 		this.validatePageSize(this._pageSize);

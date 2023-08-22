@@ -83,18 +83,18 @@ export const BMF = KoliBri.createTheme('bmf', {
 	kol-heading-wc {
 		font-weight: 700;
 	}
-	kol-tooltip .tooltip-floating {
+	kol-tooltip-wc .tooltip-floating {
 		border: 1px solid var(--color-metal);
 		border-radius: var(--border-radius);
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		border: 1px solid var(--color-metal);
 	}
-	kol-tooltip .tooltip-area {
+	kol-tooltip-wc .tooltip-area {
 		background-color: var(--color-white);
 		color: var(--color-metal);
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5em;
 		padding: 0.5rem 0.75rem;
@@ -199,30 +199,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:is(a, button).loading > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
 	}
-  /** small ghost button */
-	.ghost :is(a, button).small > kol-span-wc {
-		border: none;
-		background-color: transparent;
-		box-shadow: none;
+  /** button with inline focus */
+	:is(a, button).focus-inline:focus > kol-span-wc {
+		outline-offset: -2px;
 	}
-	.ghost :is(a, button).small > kol-span-wc > span {
-		border-radius: 1.5em;
-		border-style: solid;
-		border-width: 2px;
-		border-color: var(--color-white);
-		background-color: var(--color-white);
-	}
-	.ghost :is(a, button).small:active > kol-span-wc > span,
-	.ghost :is(a, button).small:hover > kol-span-wc > span,
-	.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
-	.ghost :is(a, button).small.transparent:hover > kol-span-wc > span {
-		background-color: var(--color-ocean);
-		border-color: var(--color-ocean);
-		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-		color: var(--color-white);
-	} /** :is(a,button) with transparent background */
+	/** :is(a,button) with transparent background */
 	:is(a, button).transparent > kol-span-wc > span,
-	.ghost :is(a, button).small.transparent > kol-span-wc > span,
+	.ghost :is(a, button).transparent > kol-span-wc > span,
 	:is(a, button).transparent > kol-span-wc {
 		background-color: transparent;
 		border-color: transparent;
@@ -957,7 +940,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.card > .content {
 		padding: 1rem;
 		max-height: 9.5rem;
-  	overflow-y: auto;
+  		overflow-y: auto;
 	}
 	.card.default > .heading {
 		background-color: var(--color-grey);
@@ -2200,7 +2183,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -2265,8 +2248,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input {
-		border: none;
+	.inputs-wrapper {
+		gap: 1em;
 	}
 	input::placeholder {
 		color: var(--color-grey);

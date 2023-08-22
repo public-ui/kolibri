@@ -4,7 +4,7 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { Props } from '../component';
+import { Props } from '../types';
 import { getIndentedTextHtml } from './html.mock';
 
 executeTests<Props>(

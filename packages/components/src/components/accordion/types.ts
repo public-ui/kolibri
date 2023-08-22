@@ -10,7 +10,7 @@ export type KoliBriAccordionCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;
 };
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	/**
 	 * @deprecated Use label.

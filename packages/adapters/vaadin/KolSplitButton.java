@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-split-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-split-button")
 public class KolSplitButton extends Component {
 	/**
@@ -150,6 +150,7 @@ public class KolSplitButton extends Component {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -159,6 +160,7 @@ public class KolSplitButton extends Component {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -225,7 +227,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -234,7 +236,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -263,7 +265,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @param value String
 	 */
@@ -272,7 +274,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -339,7 +341,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 *
 	 * @param value String
 	 */
@@ -348,7 +350,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -377,7 +379,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -386,7 +388,7 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */

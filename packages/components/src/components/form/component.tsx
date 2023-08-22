@@ -3,7 +3,7 @@ import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
-import { KoliBriFormAPI, KoliBriFormCallbacks, KoliBriFormStates } from './types';
+import { API, KoliBriFormCallbacks, States } from './types';
 
 /**
  * @slot - Inhalt der Form.
@@ -12,7 +12,7 @@ import { KoliBriFormAPI, KoliBriFormCallbacks, KoliBriFormStates } from './types
 	tag: 'kol-form',
 	shadow: true,
 })
-export class KolForm implements KoliBriFormAPI {
+export class KolForm implements API {
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
 		event.stopPropagation();
@@ -51,11 +51,11 @@ export class KolForm implements KoliBriFormAPI {
 	@Prop() public _on?: KoliBriFormCallbacks;
 
 	/**
-	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
+	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
 
-	@State() public state: KoliBriFormStates = {};
+	@State() public state: States = {};
 
 	@Watch('_on')
 	public validateOn(value?: KoliBriFormCallbacks): void {

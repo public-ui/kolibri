@@ -13,6 +13,7 @@ export default {
 	'change-order': 'Sortierung von {{colLabel}} ändern',
 	'action-running': 'Aktion wird ausgeführt...',
 	'action-done': 'Aktion abgeschlossen',
+	pagination: 'Paginierung',
 	'page-first': 'Direkt zur ersten Seite',
 	'page-back': 'Eine Seite zurück',
 	'page-next': 'Eine Seite weiter',
@@ -29,5 +30,6 @@ export default {
 	'sort-descending': 'Spalte {{column}} absteigend sortiert',
 	'sort-ascending': 'Spalte {{column}} aufsteigend sortiert',
 	'sort-none': 'Spalte {{column}} nicht sortiert',
+	'table-pagination-label': 'Paginierung für die Tabelle {{label}}',
 	'avatar-alt': 'Avatar von {{name}}',
 };

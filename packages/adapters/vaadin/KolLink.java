@@ -15,7 +15,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
  */
 
 @Tag("kol-link")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-link")
 public class KolLink extends Component {
 	/**
@@ -285,7 +285,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @param value String
 	 */
@@ -294,7 +294,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -361,7 +361,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 *
 	 * @param value String
 	 */
@@ -370,7 +370,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 *
 	 * @return Optional<String>
 	 */

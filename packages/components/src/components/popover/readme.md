@@ -12,7 +12,7 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 | Property | Attribute | Description                                                                                               | Type                                                  | Default |
 | -------- | --------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------- |
 | `_align` | `_align`  | Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'` |
-| `_show`  | `_show`   | Makes the element show up.                                                                                | `boolean \| undefined`                                | `false` |
+| `_show`  | `_show`   | Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved  | `boolean \| undefined`                                | `false` |
 
 ## Slots
 

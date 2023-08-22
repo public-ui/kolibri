@@ -46,10 +46,10 @@ Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefr
 
 ## Properties
 
-| Property              | Attribute | Description                                                                                           | Type                  | Default     |
-| --------------------- | --------- | ----------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `_label` _(required)_ | `_label`  | Defines the label, usually the name of the person, to render as alt text and to compute initials from | `string`              | `undefined` |
-| `_src`                | `_src`    | Defines the image source to render                                                                    | `string \| undefined` | `undefined` |
+| Property              | Attribute | Description                                                                                                                 | Type                  | Default     |
+| --------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `_label` _(required)_ | `_label`  | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`              | `undefined` |
+| `_src`                | `_src`    | Defines the image source to render                                                                                          | `string \| undefined` | `undefined` |
 
 ## Dependencies
 

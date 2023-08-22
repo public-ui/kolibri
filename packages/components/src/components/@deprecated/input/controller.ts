@@ -1,23 +1,22 @@
 import { Generic } from '@a11y-ui/core';
 
-import { ButtonProps } from '../../../types/button-link';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { AdjustHeightPropType, validateAdjustHeight } from '../../../types/props/adjust-height';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../../types/props/label';
-import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
+import { a11yHint, a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../../utils/events';
 import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
 import { validateTabIndex } from '../../../utils/validators/tab-index';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
+import { Props as ButtonProps } from '../../button/types';
 import { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import { Props, Watches } from './types';
+import { validateHideLabel } from '../../../types/props/hide-label';
 
 type ValueChangeListener = (value: string) => void;
 
 export class InputController extends ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props & AdapterProps;
-
-	public hideLabel = false;
 
 	private readonly valueChangeListeners: ValueChangeListener[] = [];
 
@@ -46,7 +45,15 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateHideLabel(value?: boolean): void {
-		watchBoolean(this.component, '_hideLabel', value);
+		validateHideLabel(this.component, value, {
+			hooks: {
+				afterPatch: () => {
+					if (this.component.state._hideLabel) {
+						a11yHint('Property hide-label for inputs: Only use for exceptions like search inputs that are clearly identifiable by their context.');
+					}
+				},
+			},
+		});
 	}
 
 	public validateHint(value?: string): void {

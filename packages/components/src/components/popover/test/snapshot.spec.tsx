@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { KoliBriPopoverProps } from '../types';
+import { Props } from '../types';
 import { getPopoverHtml } from './html.mock';
 
-executeTests<KoliBriPopoverProps>(
+executeTests<Props>(
 	'Popover',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({

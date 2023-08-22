@@ -14,7 +14,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`
  */
 
 @Tag("kol-quote")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-quote")
 public class KolQuote extends Component {
 	/**
@@ -56,7 +56,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Defines the label of the citation link.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -65,7 +65,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Defines the label of the citation link.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */

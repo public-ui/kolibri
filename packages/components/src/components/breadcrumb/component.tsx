@@ -1,11 +1,11 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../../types/button-link';
+import { LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchNavLinks } from '../nav/validation';
-import { BreadcrumbLinkProps, KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
+import { BreadcrumbLinkProps, API, States } from './types';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -14,7 +14,7 @@ import { BreadcrumbLinkProps, KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } fr
 	},
 	shadow: true,
 })
-export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
+export class KolBreadcrumb implements API {
 	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
 		const hideLabel = link._iconOnly || link._hideLabel;
@@ -54,23 +54,23 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links combined with their labels to render.
 	 */
 	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
 
-	@State() public state: KoliBriBreadcrumbStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_links: [],
 	};

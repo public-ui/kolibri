@@ -13,11 +13,11 @@ Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Kompone
  */
 
 @Tag("kol-abbr")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-abbr")
 public class KolAbbr extends Component {
 	/**
-	 * Defines the abbreviation title and tooltip content
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -26,7 +26,7 @@ public class KolAbbr extends Component {
 	}
 
 	/**
-	 * Defines the abbreviation title and tooltip content
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */

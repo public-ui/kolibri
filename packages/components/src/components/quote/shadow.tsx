@@ -2,7 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
-import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './types';
+import { API, States, KoliBriQuoteVariant } from './types';
 import { HrefPropType } from '../../types/props/href';
 
 @Component({
@@ -12,34 +12,34 @@ import { HrefPropType } from '../../types/props/href';
 	},
 	shadow: true,
 })
-export class KolQuote implements KoliBriQuoteApi {
+export class KolQuote implements API {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Defines the visible caption of the component.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _caption?: string;
 
 	/**
-	 * Defines the label of the citation link.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: string;
 
 	/**
-	 * Defines the link the source of the quote.
+	 * Defines the link to the source of the quote.
 	 */
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Setzt den Text, also das Zitat selbst.
+	 * Defines the text of the quote.
 	 */
 	@Prop() public _quote!: string;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 
-	@State() public state: KoliBriQuoteStates = {
+	@State() public state: States = {
 		_href: '…', // ⚠ required
 		_quote: '…', // ⚠ required
 		_variant: 'inline',

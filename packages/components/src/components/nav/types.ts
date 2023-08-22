@@ -50,6 +50,6 @@ type RequiredStates = {
 	PropLabel &
 	PropHideLabel;
 type OptionalStates = PropCompact;
-export type KoliBriNavStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
-export type KoliBriNavAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

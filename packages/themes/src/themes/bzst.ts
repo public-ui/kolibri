@@ -2459,7 +2459,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -2788,9 +2788,6 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	li.list-none {
 		list-style-type: none !important;
 		margin-left: 0;
-	}`,
-	'KOL-TOOLTIP': `:host {
-		--kolibri-font-size: var(--textFontSize);
 	}`,
 	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
 		border-radius: 2px;

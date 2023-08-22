@@ -81,5 +81,5 @@ type OptionalStates = {
 	sortDirection: KoliBriSortDirection;
 };
 
-export type KoliBriTableStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriTableAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

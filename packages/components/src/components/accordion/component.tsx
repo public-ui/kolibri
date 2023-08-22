@@ -118,18 +118,18 @@ export class KolAccordion implements API {
 	}
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Deprecated: Gibt die Beschriftung der Komponente an.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _heading?: string;
 
 	/**
-	 * Defines the button label
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: string;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -140,8 +140,9 @@ export class KolAccordion implements API {
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	@State() public state: States = {
 		_label: '…', // ⚠ required
@@ -172,7 +173,13 @@ export class KolAccordion implements API {
 
 	@Watch('_open')
 	public validateOpen(value?: OpenPropType): void {
-		validateOpen(this, value);
+		validateOpen(this, value, {
+			hooks: {
+				afterPatch: () => {
+					this.resizeWrapper();
+				},
+			},
+		});
 	}
 
 	public componentWillLoad(): void {
@@ -192,7 +199,6 @@ export class KolAccordion implements API {
 
 	private onClick = (event: Event) => {
 		this._open = !this._open;
-		this.resizeWrapper();
 
 		/**
 		 * Der Timeout wird benötigt, damit das Event

@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { KoliBriVersionProps } from '../types';
+import { Props } from '../types';
 import { getVersionHtml } from './html.mock';
 
-executeTests<KoliBriVersionProps>(
+executeTests<Props>(
 	'Version',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({

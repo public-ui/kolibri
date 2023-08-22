@@ -1,7 +1,8 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
+import { LinkOnCallbacks, LinkUseCase } from '../../types/button-link';
+import { States as LinkStates } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -18,6 +19,10 @@ import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
 import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
+import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
+import { API } from './types';
 
 /**
  * @internal
@@ -26,7 +31,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements KoliBriLinkAPI {
+export class KolLinkWc implements API {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private ref?: HTMLAnchorElement;
 
@@ -125,7 +130,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
-				<kol-tooltip
+				<kol-tooltip-wc
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -134,48 +139,48 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
-				></kol-tooltip>
+				></kol-tooltip-wc>
 			</Host>
 		);
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @deprecated use _listen-aria-current instead
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
-	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Deprecated: Makes the element not focusable and ignore all events.
 	 *
 	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
@@ -187,17 +192,17 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _download?: DownloadPropType = false;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Gibt die Ziel-Url des Links an.
+	 * Defines the target URI of the link.
 	 */
 	@Prop() public _href!: string;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
@@ -209,13 +214,13 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _iconAlign?: AlignPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
@@ -225,53 +230,53 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für den Link an.
+	 * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+	 * Deprecated: Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _selector?: string;
 
 	/**
-	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
+	 * Deprecated: Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 *
 	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _stealth?: boolean = false;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTarget;
+	@Prop() public _target?: LinkTargetPropType;
 
 	/**
-	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+	 * Defines the description to use when the link is going to be opened in another application.
 	 */
 	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'right';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	/**
-	 * Gibt den Verwendungsfall des Links an.
+	 * Deprecated: Gibt den Verwendungsfall des Links an.
 	 *
 	 * @deprecated will be removed in v2
 	 */
@@ -279,7 +284,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
-		_icon: {},
+		_icon: {}, // ⚠ required
 		_label: false, // TODO: version 1
 		// _label: '', // TODO: version 2
 	};
@@ -394,8 +399,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_role')
-	public validateRole(value?: AlternativButtonLinkRole): void {
-		watchString(this, '_role', value);
+	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
+		validateAlternativeButtonLinkRole(this, value);
 	}
 
 	/**
@@ -420,8 +425,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_target')
-	public validateTarget(value?: LinkTarget): void {
-		watchString(this, '_target', value);
+	public validateTarget(value?: LinkTargetPropType): void {
+		validateLinkTarget(this, value);
 	}
 
 	@Watch('_targetDescription')
@@ -430,8 +435,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	/**
