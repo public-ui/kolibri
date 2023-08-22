@@ -734,7 +734,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;

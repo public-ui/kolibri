@@ -325,7 +325,7 @@
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -1762,6 +1762,10 @@
 	</head>
 	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
 		<main class="container">
+			<kol-pagination _total="9" _page="3" class="bordered p-i"></kol-pagination>
+			<kol-pagination _total="9" _page="3" class="bordered p-i" _label="Paginierung für Foo"></kol-pagination>
+
+			<kol-table _id="day_table" _label="Sternzeichen" _data=""></kol-table>
 			<kol-accordion _label="breadcrumb 1">
 				<div>
 					<div class="row">

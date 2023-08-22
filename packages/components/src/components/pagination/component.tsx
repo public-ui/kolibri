@@ -6,10 +6,11 @@ import { Option } from '../../types/input/types';
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { API, KoliBriPaginationButtonCallbacks, States, PaginationHasButton } from './types';
+import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -65,65 +66,75 @@ export class KolPagination implements API {
 
 		return (
 			<Host>
-				<div>
-					{this.state._hasButtons.first && (
-						<kol-button
-							class="first"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={this.state._page <= 1}
-							_icon={leftDoubleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-first')}
-							_on={this.onGoToFirst}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{this.state._hasButtons.previous && (
-						<kol-button
-							class="previous"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={this.state._page <= 1}
-							_icon={leftSingleArrow}
-							_hideLabel
-							_label={translate('kol-page-back')}
-							_on={this.onGoBackward}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{pageButtons}
-					{this.state._hasButtons.next && (
-						<kol-button
-							class="next"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={count <= this.state._page}
-							_icon={rightSingleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-next')}
-							_on={this.onGoForward}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{this.state._hasButtons.last && (
-						<kol-button
-							class="last"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={count <= this.state._page}
-							_icon={rightDoubleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-last')}
-							_on={this.onGoToEnd}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-				</div>
+				<nav aria-label={this.state._label}>
+					<ul class="navigation-list">
+						{this.state._hasButtons.first && (
+							<li>
+								<kol-button
+									class="first"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={this.state._page <= 1}
+									_icon={leftDoubleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-first')}
+									_on={this.onGoToFirst}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+						{this.state._hasButtons.previous && (
+							<li>
+								<kol-button
+									class="previous"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={this.state._page <= 1}
+									_icon={leftSingleArrow}
+									_hideLabel
+									_label={translate('kol-page-back')}
+									_on={this.onGoBackward}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+						{pageButtons}
+						{this.state._hasButtons.next && (
+							<li>
+								<kol-button
+									class="next"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={count <= this.state._page}
+									_icon={rightSingleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-next')}
+									_on={this.onGoForward}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+						{this.state._hasButtons.last && (
+							<li>
+								<kol-button
+									class="last"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={count <= this.state._page}
+									_icon={rightDoubleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-last')}
+									_on={this.onGoToEnd}
+									_variant={this.state._variant}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button>
+							</li>
+						)}
+					</ul>
+				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
 					<kol-select
 						_hideLabel
@@ -149,6 +160,11 @@ export class KolPagination implements API {
 	 * Defines the custom class attribute for the buttons.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
+
+	/**
+	 * Defines the description of the component.
+	 */
+	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * Defines which navigation buttons to render (first, last, next, previous buttons).
@@ -197,6 +213,7 @@ export class KolPagination implements API {
 
 	@State() public state: States = {
 		_boundaryCount: 1,
+		_label: translate('kol-pagination'),
 		_hasButtons: {
 			first: true,
 			last: true,
@@ -303,6 +320,11 @@ export class KolPagination implements API {
 	@Watch('_customClass')
 	public validateCustomClass(value?: CustomClassPropType): void {
 		validateCustomClass(this, value);
+	}
+
+	@Watch('_label')
+	public validateLabel(label?: LabelPropType) {
+		validateLabel(this, label);
 	}
 
 	@Watch('_hasButtons')
@@ -482,6 +504,7 @@ export class KolPagination implements API {
 		this.validateBoundaryCount(this._boundaryCount);
 		this.validateCustomClass(this._customClass);
 		this.validateHasButtons(this._hasButtons);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validatePage(this._page);
 		this.validatePageSize(this._pageSize);

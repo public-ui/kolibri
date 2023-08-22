@@ -661,6 +661,7 @@ export class KolTable implements API {
 								_siblingCount={this.state._pagination._siblingCount}
 								_tooltipAlign="bottom"
 								_total={this.state._pagination._total || this.state._data.length}
+								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
 							></kol-pagination>
 						</div>
 					</div>
