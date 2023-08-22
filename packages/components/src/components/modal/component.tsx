@@ -88,14 +88,14 @@ export class KolModal implements API {
 	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
 
 	/**
-	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
@@ -105,7 +105,7 @@ export class KolModal implements API {
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
 	/**
-	 * Setzt die Breite des Modals. (max-width: 100%).
+	 * Defines the width of the modal. (max-width: 100%)
 	 */
 	@Prop() public _width?: string = '100%';
 

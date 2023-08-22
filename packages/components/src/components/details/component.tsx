@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { watchBoolean } from '../../utils/prop.validators';
+import { validateOpen } from '../../types/props/open';
 import { API, States } from './types';
 
 /**
@@ -43,13 +43,13 @@ export class KolDetails implements API {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
-	 * TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
@@ -70,7 +70,7 @@ export class KolDetails implements API {
 
 	@Watch('_open')
 	public validateOpen(value?: boolean): void {
-		watchBoolean(this, '_open', value);
+		validateOpen(this, value);
 	}
 
 	@Watch('_summary')

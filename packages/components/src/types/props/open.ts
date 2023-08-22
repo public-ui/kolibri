@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { watchBoolean } from '../../utils/prop.validators';
+import { watchBoolean, WatchBooleanOptions } from '../../utils/prop.validators';
 
 /* types */
 export type OpenPropType = boolean;
@@ -13,6 +13,6 @@ export type PropOpen = {
 };
 
 /* validator */
-export const validateOpen = (component: Generic.Element.Component, value?: OpenPropType): void => {
-	watchBoolean(component, '_open', value);
+export const validateOpen = (component: Generic.Element.Component, value: OpenPropType | undefined, options?: WatchBooleanOptions): void => {
+	watchBoolean(component, '_open', value, options);
 };

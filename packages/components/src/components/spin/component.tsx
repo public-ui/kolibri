@@ -59,12 +59,12 @@ export class KolSpin implements API {
 
 	/**
 	 * Makes the element show up.
-	 * TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _show?: boolean = false;
 
 	/**
-	 * Defines the variant of spin navigation.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: SpinVariantPropType = 'dot';
 

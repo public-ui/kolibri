@@ -14,7 +14,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 		props
 	);
 	return `
-<kol-tooltip${additionalAttrs}>
+<kol-tooltip-wc${additionalAttrs}>
 	${
 		state._label === ''
 			? ''
@@ -31,5 +31,5 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 			)}
 		</div>`
 	}
-</kol-tooltip>`;
+</kol-tooltip-wc>`;
 };

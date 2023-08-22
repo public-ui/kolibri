@@ -1,8 +1,15 @@
-import { KoliBri } from '@public-ui/schema';
-
-// Informationstechnikzentrum Bund
-export const ITZBund = KoliBri.createTheme('itzbund', {
-	GLOBAL: `:host {
+<!DOCTYPE html>
+<html dir="ltr" lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<title>BIK BITV-Test | KoliBri</title>
+		<meta name="description" content="Auf der Seite werden alle KoliBri-Komponenten für den BIK BITV-Test dargestellt." />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script type="module">
+			import('./build/index.esm.js')
+				.then((module) => {
+					module.KoliBriDevHelper.patchTheme('demo', {
+						GLOBAL: `:host {
 		--border-color: var(--color-anthrazit);
 		--border-radius: 0.125rem;
 		--color-anthrazit: #333;
@@ -76,20 +83,23 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	kol-span-wc > span {
 		gap: 0.25em;
 	}
-	kol-tooltip-wc .tooltip-area {
+	kol-tooltip .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip-wc .tooltip-arrow {
-		background-color: #626262;
+	kol-tooltip .tooltip-floating {
+		border: 1px solid #626262;
 	}
-	kol-tooltip-wc .tooltip-content {
+	kol-tooltip .tooltip-arrow {
+		border: 1px solid #626262;
+	}
+	kol-tooltip .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
 		border-radius: 2px;
 		border: 1px solid #626262;
 	}`,
-	'KOL-BUTTON': `button {
+						'KOL-BUTTON': `button {
 		background-color: transparent;
 	}
 	a,
@@ -199,12 +209,12 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		border-color: var(--color-ghost);
 		color: var(--color-anthrazit);
 	}`,
-	'KOL-BUTTON-GROUP': `:host > kol-button-group-wc {
+						'KOL-BUTTON-GROUP': `:host > kol-button-group-wc {
 		display: inline-flex;
 		flex-wrap: wrap;
 		gap: 0.25rem;
 	}`,
-	'KOL-LINK-BUTTON': `a,
+						'KOL-LINK-BUTTON': `a,
 	button {
 		border-radius: 2rem !important;
 		font-family: var(--font-family-sans);
@@ -311,11 +321,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		border-color: var(--color-ghost);
 		color: var(--color-anthrazit);
 	}`,
-	'KOL-PAGINATION': `:host {
+						'KOL-PAGINATION': `:host {
 		display: grid;
 		gap: 1rem;
 	}
-	:host .navigation-list {
+	:host > div {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -337,7 +347,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		padding: calc(4 * var(--spacing));
 		text-decoration: underline;
 	}`,
-	'KOL-BUTTON-LINK': `kol-link-wc a,
+						'KOL-BUTTON-LINK': `kol-link-wc a,
 	kol-button-wc button {
 		text-decoration-line: none;
 	}
@@ -384,7 +394,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		left: unset;
 		position: unset;
 	}`,
-	'KOL-INPUT-TEXT': `input:hover,
+						'KOL-INPUT-TEXT': `input:hover,
 	input:focus {
 		border-color: var(--border-color) !important;
 		border-radius: none !important;
@@ -433,7 +443,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	input::placeholder {
 		font-style: italic;
 	}`,
-	'KOL-INPUT-PASSWORD': `input:hover,
+						'KOL-INPUT-PASSWORD': `input:hover,
 	input:focus {
 		border-color: var(--border-color) !important;
 		border-radius: none !important;
@@ -482,7 +492,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	input::placeholder {
 		font-style: italic;
 	}`,
-	'KOL-INPUT-NUMBER': `input:hover,
+						'KOL-INPUT-NUMBER': `input:hover,
 	input:focus {
 		border-color: var(--border-color) !important;
 		border-radius: none !important;
@@ -531,7 +541,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	input::placeholder {
 		font-style: italic;
 	}`,
-	'KOL-INPUT-DATE': `input:hover,
+						'KOL-INPUT-DATE': `input:hover,
 	input:focus {
 		border-color: var(--border-color) !important;
 		border-radius: none !important;
@@ -580,7 +590,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	input::placeholder {
 		font-style: italic;
 	}`,
-	'KOL-INPUT-EMAIL': `input:hover,
+						'KOL-INPUT-EMAIL': `input:hover,
 	input:focus {
 		border-color: var(--border-color) !important;
 		border-radius: none !important;
@@ -629,7 +639,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	input::placeholder {
 		font-style: italic;
 	}`,
-	'KOL-INPUT-FILE': `input:hover,
+						'KOL-INPUT-FILE': `input:hover,
 	input:focus {
 		border-color: var(--border-color) !important;
 		border-radius: none !important;
@@ -678,7 +688,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	input::placeholder {
 		font-style: italic;
 	}`,
-	'KOL-TEXTAREA': `textarea:hover,
+						'KOL-TEXTAREA': `textarea:hover,
 	textarea:focus {
 		border-color: var(--default-border-hover);
 		outline-color: var(--primary) !important;
@@ -725,7 +735,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		margin-top: var(--spacing);
 		display: block;
 	}`,
-	'KOL-ALERT': `:host {
+						'KOL-ALERT': `:host {
 		--kolibri-border-width: 1px;
 	}
 	:host .default {
@@ -758,7 +768,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	.warning .heading-icon {
 		background-color: var(--color-warn);
 	}`,
-	'KOL-HEADING': `h1,
+						'KOL-HEADING': `h1,
 	h2,
 	h3,
 	h4,
@@ -798,7 +808,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-size: 17px;
 		font-weight: normal;
 	}`,
-	'KOL-BADGE': `:host {
+						'KOL-BADGE': `:host {
 		display: inline-block;
 	}
 	:host > span {
@@ -824,14 +834,14 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	:host button {
 		border-radius: 0 var(--spacing) var(--spacing) 0;
 	}`,
-	'KOL-INDENTED-TEXT': `:host > div {
+						'KOL-INDENTED-TEXT': `:host > div {
 		background: var(--color-white);
 		border-left: none;
 		box-shadow: -4px 0px 0px var(--color-petrol);
 		padding: 0.25em 0.5em;
 		width: 100%;
 	}`,
-	'KOL-LINK': `kol-link-wc a,
+						'KOL-LINK': `kol-link-wc a,
 	kol-button-wc button {
 		text-decoration-line: none;
 	}
@@ -878,11 +888,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		left: unset;
 		position: unset;
 	}`,
-	'KOL-BREADCRUMB': `li > span {
+						'KOL-BREADCRUMB': `li > span {
 		font-weight: bold;
 		/* text-transform: uppercase; */
 	}`,
-	'KOL-SPIN': `.spin {
+						'KOL-SPIN': `.spin {
 		display: inline-block;
 		height: 1rem;
 		position: relative;
@@ -945,7 +955,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			transform: scale(0);
 		}
 	}`,
-	'KOL-PROGRESS': `:host progress,
+						'KOL-PROGRESS': `:host progress,
 	:host span {
 		display: block;
 		height: 0px;
@@ -965,7 +975,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	progress {
 		display: none;
 	}`,
-	'KOL-SELECT': `select:hover,
+						'KOL-SELECT': `select:hover,
 	select:focus {
 		border-color: var(--default-border-hover);
 		outline-color: var(--primary) !important;
@@ -1012,7 +1022,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	.kol-required span::after {
 		content: "*";
 	}`,
-	'KOL-INPUT-COLOR': `input:hover,
+						'KOL-INPUT-COLOR': `input:hover,
 	input:focus {
 		border-color: var(--border-color) !important;
 		border-radius: none !important;
@@ -1061,7 +1071,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	input::placeholder {
 		font-style: italic;
 	}`,
-	'KOL-ACCORDION': `:host > div {
+						'KOL-ACCORDION': `:host > div {
 		font-family: var(--font-family);
 		box-sizing: border-box;
 		width: 100%;
@@ -1125,7 +1135,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-family: "Font Awesome 6 Free";
 		content: "\\f078";
 	}`,
-	'KOL-TABLE': `:host > div {
+						'KOL-TABLE': `:host > div {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
@@ -1185,7 +1195,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			gap: 1rem;
 		}
 	}`,
-	'KOL-NAV': `:host .hidden {
+						'KOL-NAV': `:host .hidden {
 		display: none;
 	}
 	:host > div > nav ul {
@@ -1271,7 +1281,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	kol-span-wc {
 		justify-items: baseline;
 	}`,
-	'KOL-CARD': `:host > div {
+						'KOL-CARD': `:host > div {
 		background-color: white;
 		border-color: var(--border-color);
 		border-style: solid;
@@ -1299,7 +1309,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		border-top-color: var(--color-achat);
 		border-top-width: 1px;
 	}`,
-	'KOL-INPUT-CHECKBOX': `/* ALL INPUT, SELECT, TEXTAREA */
+						'KOL-INPUT-CHECKBOX': `/* ALL INPUT, SELECT, TEXTAREA */
 	label {
 		cursor: pointer;
 	}
@@ -1448,7 +1458,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		order: 3;
 		padding: 0 var(--spacing);
 	}`,
-	'KOL-INPUT-RADIO': `/* INPUT */
+						'KOL-INPUT-RADIO': `/* INPUT */
 	:host input:focus {
 		outline-color: var(--color-achat) !important;
 		outline-offset: 2px;
@@ -1529,7 +1539,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		border-color: #999;
 		cursor: not-allowed;
 	}`,
-	'KOL-TOAST': `:host > div {
+						'KOL-TOAST': `:host > div {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -1550,7 +1560,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		margin: auto;
 		width: 1em;
 	}`,
-	'KOL-TABS': `:host > div {
+						'KOL-TABS': `:host > div {
 		display: block;
 		width: 100%;
 	}
@@ -1708,7 +1718,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		display: flex;
 		flex-wrap: wrap;
 	}`,
-	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+						'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
 		border-radius: 2rem;
   	border-style: solid;
 		gap: 0.5rem;
@@ -1719,4 +1729,192 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		color: var(--color-weiss);
 		cursor: pointer;
 	}`,
-});
+					});
+				})
+				.catch(console.warn);
+		</script>
+		<script type="module" src="build/kolibri.esm.js"></script>
+		<script nomodule src="build/kolibri.js"></script>
+
+		<meta name="robots" content="noindex" />
+		<meta name="kolibri" content="dev-mode=true,experimental-mode=true,color-contrast-analysis=false" />
+
+		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
+
+		<script defer src="assets/simulations/alert-simulation.js"></script>
+		<script defer src="assets/simulations/modal-simulation.js"></script>
+		<script defer src="assets/simulations/nav-simulation.js"></script>
+		<script defer src="assets/simulations/pagination-simulation.js"></script>
+		<script defer src="assets/simulations/popover-simulation.js"></script>
+		<script defer src="assets/simulations/progress-simulation.js"></script>
+		<script defer src="assets/simulations/smart-button-simulation.js"></script>
+		<script defer src="assets/simulations/spin-simulation.js"></script>
+		<script defer src="assets/simulations/table-simulation.js"></script>
+		<script defer src="assets/simulations/tabs-simulation.js"></script>
+		<script defer src="assets/simulations/toast-simulation.js"></script>
+
+		<script src="https://unpkg.com/petite-vue" defer init></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<link rel="stylesheet" href="assets/codicons/codicon.css" />
+		<link rel="stylesheet" href="assets/style.css" />
+		<link rel="stylesheet" href="assets/loader.css" />
+	</head>
+	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
+		<main class="container">
+			<kol-accordion _label="breadcrumb 1">
+				<div>
+					<div class="row">
+						<div class="col-12">
+							<div class="gap-2 d-flex">
+								<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v9"></kol-badge>
+								<kol-badge _icon="codicon codicon-checklist" _color="#033" _label="Snapshot-Tests"></kol-badge>
+							</div>
+							<kol-heading _label="" _level="2">Breadcrumb</kol-heading>
+						</div>
+						<div class="gap-2 py-2 col-12 d-grid">
+							<kol-breadcrumb
+								_label="Breadcrumb aus Text-Links"
+								_links="[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- oder Text-Links"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- und Text-Links"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_href':'#/'},{'_label':'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- und Text-Links 2"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
+							>
+							</kol-breadcrumb>
+						</div>
+					</div>
+				</div>
+			</kol-accordion>
+			<kol-accordion _label="breadcrumb 2" _open>
+				<div>
+					<div class="row">
+						<div class="col-12">
+							<div class="gap-2 d-flex">
+								<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v9"></kol-badge>
+								<kol-badge _icon="codicon codicon-checklist" _color="#033" _label="Snapshot-Tests"></kol-badge>
+							</div>
+							<kol-heading _label="" _level="2">Breadcrumb</kol-heading>
+						</div>
+						<div class="gap-2 py-2 col-12 d-grid">
+							<kol-breadcrumb
+								_label="Breadcrumb aus Text-Links"
+								_links="[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- oder Text-Links"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- und Text-Links"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_href':'#/'},{'_label':'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- und Text-Links 2"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
+							>
+							</kol-breadcrumb>
+						</div>
+					</div>
+				</div>
+			</kol-accordion>
+			<kol-details _label="details 1">
+				<div>
+					<div class="row">
+						<div class="col-12">
+							<div class="gap-2 d-flex">
+								<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v9"></kol-badge>
+								<kol-badge _icon="codicon codicon-checklist" _color="#033" _label="Snapshot-Tests"></kol-badge>
+							</div>
+							<kol-heading _label="" _level="2">Breadcrumb</kol-heading>
+						</div>
+						<div class="gap-2 py-2 col-12 d-grid">
+							<kol-breadcrumb
+								_label="Breadcrumb aus Text-Links"
+								_links="[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- oder Text-Links"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- und Text-Links"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_href':'#/'},{'_label':'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- und Text-Links 2"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
+							>
+							</kol-breadcrumb>
+						</div>
+					</div>
+				</div>
+			</kol-details>
+			<kol-details _label="details 2" _open>
+				<div>
+					<div class="row">
+						<div class="col-12">
+							<div class="gap-2 d-flex">
+								<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v9"></kol-badge>
+								<kol-badge _icon="codicon codicon-checklist" _color="#033" _label="Snapshot-Tests"></kol-badge>
+							</div>
+							<kol-heading _label="" _level="2">Breadcrumb</kol-heading>
+						</div>
+						<div class="gap-2 py-2 col-12 d-grid">
+							<kol-breadcrumb
+								_label="Breadcrumb aus Text-Links"
+								_links="[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- oder Text-Links"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- und Text-Links"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_href':'#/'},{'_label':'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+							>
+							</kol-breadcrumb>
+							<kol-breadcrumb
+								_label="Breadcrumb aus Icons- und Text-Links 2"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
+							>
+							</kol-breadcrumb>
+						</div>
+					</div>
+				</div>
+			</kol-details>
+		</main>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				console.log('DOMContentLoaded');
+				const interval = setInterval(() => {
+					const items = document.querySelectorAll('kol-accordion,kol-details');
+					if (items) {
+						items.forEach((item) => {
+							item._open = !item._open;
+						});
+					}
+				}, 1000);
+			});
+		</script>
+	</body>
+</html>

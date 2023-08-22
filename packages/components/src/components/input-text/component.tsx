@@ -125,16 +125,17 @@ export class KolInputText implements API {
 							// onInput={this.controller.onFacade.onChange}
 							onKeyUp={this.onKeyUp}
 						/>
-						<kol-tooltip
+						<kol-tooltip-wc
 							/**
 							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 							 */
 							aria-hidden="true"
+							class="input-tooltip"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip>
+						></kol-tooltip-wc>
 					</div>
 				</kol-input>
 			</Host>
@@ -144,51 +145,51 @@ export class KolInputText implements API {
 	private readonly controller: InputTextController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
-	 * TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
 	 * Shows the character count on the lower border of the input.
-	 * TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCounter?: boolean;
 
 	/**
-	 * Tells the element to hide the label.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * Hides the label.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
@@ -198,7 +199,7 @@ export class KolInputText implements API {
 	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -209,7 +210,7 @@ export class KolInputText implements API {
 	@Prop() public _list?: Stringified<string[]>;
 
 	/**
-	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
 
@@ -224,24 +225,24 @@ export class KolInputText implements API {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+	 * Defines a validation pattern for the input field.
 	 */
 	@Prop() public _pattern?: string;
 
 	/**
-	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop() public _placeholder?: string;
 
 	/**
 	 * Makes the input element read only.
-	 * TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _readOnly?: boolean;
 
 	/**
 	 * Makes the input element required.
-	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean;
 
@@ -256,7 +257,7 @@ export class KolInputText implements API {
 	@Prop() public _suggestions?: SuggestionsPropType;
 
 	/**
-	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
@@ -267,7 +268,7 @@ export class KolInputText implements API {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -278,7 +279,7 @@ export class KolInputText implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
@@ -288,7 +289,7 @@ export class KolInputText implements API {
 	@Prop() public _type?: InputTextType = 'text';
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: string;
 

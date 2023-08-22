@@ -12,7 +12,7 @@ executeTests<Props>(
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-tooltip {...props} />,
+			template: () => <kol-tooltip-wc {...props} />,
 		});
 		return page;
 	},
