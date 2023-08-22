@@ -4,7 +4,7 @@ import { format } from 'prettier';
 import parserTypeScript from 'prettier/esm/parser-typescript.mjs';
 import { copyToClipboard, formatReadableCssJson } from './utils';
 
-const Toaster = new ToasterService(document);
+const Toaster = ToasterService.getInstance(document);
 
 /**
  * - https://www.npmjs.com/package/sass

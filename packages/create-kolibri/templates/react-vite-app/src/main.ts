@@ -4,4 +4,4 @@ import 'uno.css'; // https://github.com/antfu/unocss
 import './style.scss';
 
 // App
-import './vue.main';
+import './react.main';

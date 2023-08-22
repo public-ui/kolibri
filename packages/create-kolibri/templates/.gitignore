@@ -30,7 +30,6 @@ prettier.config.js
 proxy.conf.json
 pwa-manifest.config.js
 README.md
-unocss.config.ts
 workbox-config.js
 yarn.lock
 
