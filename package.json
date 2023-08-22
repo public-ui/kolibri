@@ -6,7 +6,7 @@
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "lerna exec --stream -- rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"depcheck": "lerna run depcheck",
-		"format": "lerna run format",
+		"format": "pnpm -r run format",
 		"lint": "lerna run lint",
 		"ts-prune": "git clean -f -d -X packages/adapters/**/src && lerna exec --stream -- npx ts-prune src -e",
 		"ncu:major": "ncu -x rimraf && lerna exec --stream -- ncu -x rimraf",
