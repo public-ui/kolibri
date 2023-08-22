@@ -75,15 +75,15 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 ## Properties
 
-| Property     | Attribute     | Description                                                                                                                                           | Type                                                            | Default     |
-| ------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
-| `_hasCloser` | `_has-closer` | Defines whether the card has a close button. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved                       | `boolean \| undefined`                                          | `undefined` |
-| `_hasFooter` | `_has-footer` | Shows the slot="footer". TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved                                           | `boolean \| undefined`                                          | `false`     |
-| `_heading`   | `_heading`    | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Beschriftung der Komponente an.                                        | `string \| undefined`                                           | `undefined` |
-| `_headline`  | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Gibt die Beschriftung der Komponente an.        | `string \| undefined`                                           | `undefined` |
-| `_label`     | `_label`      |                                                                                                                                                       | `string \| undefined`                                           | `undefined` |
-| `_level`     | `_level`      | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                  | `1`         |
-| `_on`        | --            | Defines the event callback functions for the component.                                                                                               | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
+| Property     | Attribute     | Description                                                                                                                                                | Type                                                            | Default     |
+| ------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
+| `_hasCloser` | `_has-closer` | Defines whether the element can be closed.                                                                                                                 | `boolean \| undefined`                                          | `false`     |
+| `_hasFooter` | `_has-footer` | Shows the slot="footer".                                                                                                                                   | `boolean \| undefined`                                          | `false`     |
+| `_heading`   | `_heading`    | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an.                                 | `string \| undefined`                                           | `undefined` |
+| `_headline`  | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string \| undefined`                                           | `undefined` |
+| `_label`     | `_label`      | Defines the description of the component.                                                                                                                  | `string \| undefined`                                           | `undefined` |
+| `_level`     | `_level`      | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                                                          | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                  | `1`         |
+| `_on`        | --            | Defines the event callback functions for the component.                                                                                                    | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
 
 ## Slots
 
@@ -108,9 +108,9 @@ graph TD;
   kol-card --> kol-heading-wc
   kol-card --> kol-button-wc
   kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   style kol-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

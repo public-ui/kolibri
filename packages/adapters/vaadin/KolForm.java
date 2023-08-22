@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-form")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-form")
 public class KolForm extends Component {
 	/**
-	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
+	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolForm extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
+	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
 	 *
 	 * @return Optional<String>
 	 */

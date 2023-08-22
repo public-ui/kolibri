@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-logo")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-logo")
 public class KolLogo extends Component {
 	/**
-	 * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
+	 * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolLogo extends Component {
 	}
 
 	/**
-	 * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
+	 * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
 	 *
 	 * @return Optional<String>
 	 */

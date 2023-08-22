@@ -17,10 +17,10 @@ Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf. �
 **Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, darf das Referenz-Element nicht `display: inline` haben.
  */
 
-@Tag("kol-tooltip")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
-@JsModule("@public-ui/components/dist/components/kol-tooltip")
-public class KolTooltip extends Component {
+@Tag("kol-tooltip-wc")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
+@JsModule("@public-ui/components/dist/components/kol-tooltip-wc")
+public class KolTooltipWc extends Component {
 	/**
 	 * Defines the alignment of the tooltip in relation to the parent element.
 	 *
@@ -60,7 +60,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -69,7 +69,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

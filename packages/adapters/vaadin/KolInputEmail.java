@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-input-email")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-input-email")
 public class KolInputEmail extends Component {
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +35,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 *
 	 * @return Optional<String>
 	 */
@@ -54,7 +54,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+	 * Defines whether the input can be auto-completed.
 	 *
 	 * @param value String
 	 */
@@ -63,7 +63,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+	 * Defines whether the input can be auto-completed.
 	 *
 	 * @return Optional<String>
 	 */
@@ -74,7 +74,6 @@ public class KolInputEmail extends Component {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -84,7 +83,6 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -94,7 +92,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 *
 	 * @param value String
 	 */
@@ -103,7 +101,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 *
 	 * @return Optional<String>
 	 */
@@ -113,8 +111,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Shows the character count on the lower border of the input.s
-TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+	 * Shows the character count on the lower border of the input.
 	 *
 	 * @param value String
 	 */
@@ -123,8 +120,7 @@ TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resol
 	}
 
 	/**
-	 * Shows the character count on the lower border of the input.s
-TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+	 * Shows the character count on the lower border of the input.
 	 *
 	 * @return Optional<String>
 	 */
@@ -134,8 +130,7 @@ TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resol
 	}
 
 	/**
-	 * Tells the element to hide the label.
-TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * Hides the label.
 	 *
 	 * @param value String
 	 */
@@ -144,8 +139,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Tells the element to hide the label.
-TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * Hides the label.
 	 *
 	 * @return Optional<String>
 	 */
@@ -155,7 +149,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 *
 	 * @param value String
 	 */
@@ -164,7 +158,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 *
 	 * @return Optional<String>
 	 */
@@ -174,7 +168,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @param value String
 	 */
@@ -183,7 +177,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @return Optional<String>
 	 */
@@ -212,7 +206,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @param value String
 	 */
@@ -221,7 +215,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -231,7 +225,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt die Liste der Vorschlagswörter an.
+	 * Deprecated: Gibt die Liste der Vorschlagswörter an.
 	 *
 	 * @param value String
 	 */
@@ -240,7 +234,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt die Liste der Vorschlagswörter an.
+	 * Deprecated: Gibt die Liste der Vorschlagswörter an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -250,7 +244,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 * Defines the maximum number of input characters.
 	 *
 	 * @param value String
 	 */
@@ -259,7 +253,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 * Defines the maximum number of input characters.
 	 *
 	 * @return Optional<String>
 	 */
@@ -270,7 +264,6 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 
 	/**
 	 * Makes the input accept multiple inputs.
-TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -280,7 +273,6 @@ TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Makes the input accept multiple inputs.
-TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -309,7 +301,7 @@ TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+	 * Defines a validation pattern for the input field.
 	 *
 	 * @param value String
 	 */
@@ -318,7 +310,7 @@ TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+	 * Defines a validation pattern for the input field.
 	 *
 	 * @return Optional<String>
 	 */
@@ -328,7 +320,7 @@ TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+	 * Defines the placeholder for input field. To be shown when there's no value.
 	 *
 	 * @param value String
 	 */
@@ -337,7 +329,7 @@ TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+	 * Defines the placeholder for input field. To be shown when there's no value.
 	 *
 	 * @return Optional<String>
 	 */
@@ -348,7 +340,6 @@ TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Makes the input element read only.
-TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -358,7 +349,6 @@ TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Makes the input element read only.
-TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -369,7 +359,6 @@ TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Makes the input element required.
-TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -379,7 +368,6 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Makes the input element required.
-TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -408,7 +396,7 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 *
 	 * @param value String
 	 */
@@ -417,7 +405,7 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 *
 	 * @return Optional<String>
 	 */
@@ -446,7 +434,7 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -455,7 +443,7 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */
@@ -485,7 +473,6 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Shows if the input was touched by a user.
-TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -495,7 +482,6 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 
 	/**
 	 * Shows if the input was touched by a user.
-TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -505,7 +491,7 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 *
 	 * @param value String
 	 */
@@ -514,7 +500,7 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 *
 	 * @return Optional<String>
 	 */

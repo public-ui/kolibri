@@ -1,5 +1,4 @@
 import { ModalService } from '../components/modal/service';
-import { ToasterService } from '../components/toast/toaster';
 import { processEnv } from './reuse';
 
 let WINDOW: Window | null = null;
@@ -122,15 +121,9 @@ export const initKoliBri = (): void => {
 	if (KoliBri === null) {
 		KoliBri = getWindow().KoliBri || {};
 		const Modal = new ModalService();
-		const Toaster = new ToasterService(getDocument());
 		Object.defineProperty(KoliBri, 'Modal', {
 			get: function (): ModalService {
 				return Modal;
-			},
-		});
-		Object.defineProperty(KoliBri, 'Toaster', {
-			get: function (): ToasterService {
-				return Toaster;
 			},
 		});
 		initMeta();
@@ -141,7 +134,7 @@ export const initKoliBri = (): void => {
 	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 1.6.0-rc.28
+	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 1.6.0-rc.29
 		`,
 			{
 				forceLog: true,

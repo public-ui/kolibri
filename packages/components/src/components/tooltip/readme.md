@@ -24,11 +24,11 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 ## Properties
 
-| Property              | Attribute | Description                                                                                                                 | Type                                                  | Default     |
-| --------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
-| `_align`              | `_align`  | Defines the alignment of the tooltip in relation to the parent element.                                                     | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
-| `_id`                 | `_id`     | Defines the internal ID of the primary component element.                                                                   | `string \| undefined`                                 | `undefined` |
-| `_label` _(required)_ | `_label`  | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                                              | `undefined` |
+| Property              | Attribute | Description                                                                                                        | Type                                                  | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
+| `_align`              | `_align`  | Defines the alignment of the tooltip in relation to the parent element.                                            | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
+| `_id`                 | `_id`     | Defines the internal ID of the primary component element.                                                          | `string \| undefined`                                 | `undefined` |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
 
 ## Dependencies
 
@@ -58,24 +58,24 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 ```mermaid
 graph TD;
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   kol-span-wc --> kol-icon
-  kol-abbr --> kol-tooltip
-  kol-button-wc --> kol-tooltip
-  kol-input-checkbox --> kol-tooltip
-  kol-input-color --> kol-tooltip
-  kol-input-date --> kol-tooltip
-  kol-input-email --> kol-tooltip
-  kol-input-file --> kol-tooltip
-  kol-input-number --> kol-tooltip
-  kol-input-password --> kol-tooltip
-  kol-input-radio --> kol-tooltip
-  kol-input-range --> kol-tooltip
-  kol-input-text --> kol-tooltip
-  kol-link-wc --> kol-tooltip
-  kol-select --> kol-tooltip
-  kol-textarea --> kol-tooltip
-  style kol-tooltip fill:#f9f,stroke:#333,stroke-width:4px
+  kol-abbr --> kol-tooltip-wc
+  kol-button-wc --> kol-tooltip-wc
+  kol-input-checkbox --> kol-tooltip-wc
+  kol-input-color --> kol-tooltip-wc
+  kol-input-date --> kol-tooltip-wc
+  kol-input-email --> kol-tooltip-wc
+  kol-input-file --> kol-tooltip-wc
+  kol-input-number --> kol-tooltip-wc
+  kol-input-password --> kol-tooltip-wc
+  kol-input-radio --> kol-tooltip-wc
+  kol-input-range --> kol-tooltip-wc
+  kol-input-text --> kol-tooltip-wc
+  kol-link-wc --> kol-tooltip-wc
+  kol-select --> kol-tooltip-wc
+  kol-textarea --> kol-tooltip-wc
+  style kol-tooltip-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ---

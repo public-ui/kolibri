@@ -13,11 +13,11 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
  */
 
 @Tag("kol-badge")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-badge")
 public class KolBadge extends Component {
 	/**
-	 * Setzt die Hintergrundfarbe.
+	 * Defines the backgroundColor and foregroundColor.
 	 *
 	 * @param value String
 	 */
@@ -26,7 +26,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Setzt die Hintergrundfarbe.
+	 * Defines the backgroundColor and foregroundColor.
 	 *
 	 * @return Optional<String>
 	 */
@@ -36,10 +36,10 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
+	 * Deprecated:
+⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
   since it would not be accessible without visible labeling. A separate tooltip
   is not planed, because a badge is not an interactive element.
-TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @param value String
 	 */
@@ -48,10 +48,10 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
+	 * Deprecated:
+⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
   since it would not be accessible without visible labeling. A separate tooltip
   is not planed, because a badge is not an interactive element.
-TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @return Optional<String>
 	 */
@@ -61,7 +61,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @param value String
 	 */
@@ -70,7 +70,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @return Optional<String>
 	 */
@@ -80,7 +80,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @param value String
 	 */
@@ -89,7 +89,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @return Optional<String>
 	 */
@@ -99,7 +99,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -108,7 +108,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -118,7 +118,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Ermöglicht einen Schalter in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 *
 	 * @param value String
 	 */
@@ -127,7 +127,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Ermöglicht einen Schalter in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 *
 	 * @return Optional<String>
 	 */

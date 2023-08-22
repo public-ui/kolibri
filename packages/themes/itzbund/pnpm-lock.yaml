@@ -6,13 +6,13 @@ settings:
 
 dependencies:
   '@public-ui/components':
-    specifier: 1.6.0-rc.28
-    version: 1.6.0-rc.28
+    specifier: 1.6.0-rc.29
+    version: 1.6.0-rc.29
 
 devDependencies:
   '@public-ui/schema':
-    specifier: 1.6.0-rc.28
-    version: 1.6.0-rc.28
+    specifier: 1.6.0-rc.29
+    version: 1.6.0-rc.29
   '@types/node':
     specifier: ts5.1
     version: 20.5.1
@@ -581,17 +581,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.28:
-    resolution: {integrity: sha512-zcdGcv1KrfVGCcxROzsBfcZqPQqG4gyy3fH6FkAGeqiz8lDkTe20UD6eyyTvtY1Rx/WdAh2h73rLfcZOIzy5kw==}
+  /@public-ui/components@1.6.0-rc.29:
+    resolution: {integrity: sha512-3Aeb1MX3M5zM8ExsZ5fquzKRW646KFpYs+6Fk2I73P7yGd/qWWZ6ExrKWy99A4/dKzZUBpbdJHAR7QVpLhBeRg==}
     dependencies:
       '@a11y-ui/core': 1.0.5
       '@floating-ui/dom': 1.5.1
-      '@public-ui/schema': 1.6.0-rc.28
+      '@public-ui/schema': 1.6.0-rc.29
       i18next: 23.4.4
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.28:
-    resolution: {integrity: sha512-Cnm52iAHhGiwgmlOHGBlWNzXM4RquyCTcjGs0UNEsBaa5xOHGYUDXYEbUyhtddZvA15l89fiVUfpswXJUP4NRQ==}
+  /@public-ui/schema@1.6.0-rc.29:
+    resolution: {integrity: sha512-mO+WOBeT5WwumO0r0gQ/3OfIsEgEZhnTrpgB30vYNGLfEIoXjHKsvFCjLTcEoLvXv4wRmy0j6tu9G7fBn73Q+Q==}
     dependencies:
       '@a11y-ui/core': 1.0.5
 
