@@ -1,8 +1,11 @@
-import type { Plugin } from 'vue'
 import { register } from '@public-ui/components'
-import { BMF } from '@public-ui/themes'
-export const ComponentLibrary: Plugin = {
+import { defineCustomElements } from '@public-ui/components/dist/loader'
+import { DEFAULT } from '@public-ui/themes'
+
+export const ComponentLibrary = {
 	install() {
-		register(BMF, []).catch(console.warn)
+		register(DEFAULT, defineCustomElements)
+			.then(() => console.log('Components registered'))
+			.catch(console.warn)
 	}
 }
