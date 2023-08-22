@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-symbol")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.29")
 @JsModule("@public-ui/components/dist/components/kol-symbol")
 public class KolSymbol extends Component {
 	/**
