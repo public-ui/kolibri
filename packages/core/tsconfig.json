@@ -18,7 +18,7 @@
 		"sourceMap": true,
 		"jsx": "react",
 		"target": "ES2017",
-		"types": ["node"],
+		"types": [],
 		"typeRoots": ["node_modules/@types"],
 		"forceConsistentCasingInFileNames": false,
 		"importHelpers": false,
