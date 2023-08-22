@@ -107,7 +107,7 @@
 		"depcheck": "1.4.5",
 		"husky": "8.0.3",
 		"license-report": "6.4.0",
-		"lint-staged": "13.3.0",
+		"lint-staged": "14.0.1",
 		"prettier": "3.0.2",
 		"rimraf": "3.0.2",
 		"ts-node": "10.9.1",
