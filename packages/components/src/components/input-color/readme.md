@@ -7,12 +7,12 @@ Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer belieb
 ### Code
 
 ```html
-<kol-input-color _id="meine_farbe" _name="meine_farbe" _value="#d4fcf4" _icon='{ "right": "codicon codicon-symbol-color"}'> Hintergrundfarbe </kol-input-color>
+<kol-input-color _name="meine_farbe" _value="#d4fcf4" _label="Hintergrundfarbe" _icon='{"right": "codicon codicon-symbol-color"}'></kol-input-color>
 ```
 
 ### Beispiel
 
-<kol-input-color  _id="meine_farbe" _name="meine_farbe" _value="#d4fcf4" _icon='{ "right": "codicon codicon-symbol-color"}'>Hintergrundfarbe</kol-input-color>
+<kol-input-color _name="meine_farbe" _value="#d4fcf4" _label="Hintergrundfarbe" _icon='{"right": "codicon codicon-symbol-color"}'></kol-input-color>
 
 ## Verwendung
 
@@ -20,7 +20,7 @@ Stellen Sie die Default-Farbe über das Attribut `_value` ein. Verwenden Sie hie
 
 ### Best practices
 
-- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
+- Achten Sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 

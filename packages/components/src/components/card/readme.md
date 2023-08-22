@@ -12,7 +12,7 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 ### Code
 
 ```html
-<kol-card _label="Testtitel" _has-footer _max-height="vh2">
+<kol-card _label="Testtitel" _has-footer>
 	<div slot="header">Text im Header-Bereich</div>
 	<div slot="content">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
@@ -26,7 +26,7 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 
 ### Beispiel
 
-<kol-card _label="Testtitel" _has-footer _max-height="vh2">
+<kol-card _label="Testtitel" _has-footer>
 	<div slot="header">Text im Header-Bereich</div>
 	<div slot="content">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.

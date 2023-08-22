@@ -12,7 +12,6 @@ Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und
 
 ```html
 <kol-input-radio
-	_id="anrede"
 	_name="anrede"
 	_options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'
 ></kol-input-radio>
@@ -20,7 +19,7 @@ Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und
 
 ### Beispiel
 
-<kol-input-radio _id="anrede" _name="anrede" _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
+<kol-input-radio _name="anrede" _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
 
 ## Verwendung
 

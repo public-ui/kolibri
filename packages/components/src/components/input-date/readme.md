@@ -7,12 +7,12 @@ Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können k
 ### Code
 
 ```html
-<kol-input-date _id="mein_datum" _name="mein_datum" _type="date" _icon='{ "right": "codicon codicon-calendar"}'>Erstellungsdatum</kol-input-date>
+<kol-input-date _name="mein_datum" _type="date" _label="Erstellungsdatum" _icon='{ "right": "codicon codicon-calendar"}'></kol-input-date>
 ```
 
 ### Beispiel
 
-<kol-input-date _id="mein_datum" _name="mein_datum" _type="date" _icon='{ "right": "codicon codicon-calendar"}'>Erstellungsdatum</kol-input-date>
+<kol-input-date _name="mein_datum" _type="date" _label="Erstellungsdatum" _icon='{ "right": "codicon codicon-calendar"}'></kol-input-date>
 
 ## Verwendung
 

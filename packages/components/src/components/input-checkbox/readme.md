@@ -7,20 +7,18 @@ Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken
 ### Code
 
 ```html
-<kol-input-checkbox _id="checkbox"
-	>Ich stimme der <kol-link _href="#" _label="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
->
-<kol-input-checkbox _id="switch" _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
-<kol-input-checkbox _checked _id="button" _variant="button">Schalter aktiviert</kol-input-checkbox>
-<kol-input-checkbox _id="button" _variant="button">Schalter deaktiviert</kol-input-checkbox>
+<kol-input-checkbox>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
+<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
+<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
+<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
 ```
 
 ### Beispiel
 
-<kol-input-checkbox _id="checkbox">Ich stimme der <kol-link _href="#" _label="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox>
-<kol-input-checkbox _id="switch" _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
-<kol-input-checkbox _checked _id="button" _variant="button">Schalter aktiviert</kol-input-checkbox>
-<kol-input-checkbox _id="button" _variant="button">Schalter deaktiviert</kol-input-checkbox>
+<kol-input-checkbox>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
+<kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
+<kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
+<kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
 
 ## Verwendung
 
