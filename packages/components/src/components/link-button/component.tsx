@@ -13,7 +13,7 @@ import { CustomClassPropType } from '../../types/props/custom-class';
 import { HrefPropType } from '../../types/props/href';
 import { IconPropType } from '../../types/props/icon';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { LinkCallbacksPropType } from '../../types/props/link-callbacks';
+import { LinkOnCallbacksPropType } from '../../types/props/link-on-callbacks';
 
 @Component({
 	tag: 'kol-link-button',
@@ -153,7 +153,7 @@ export class KolLinkButton implements Props {
 	/**
 	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkCallbacksPropType;
+	@Prop() public _on?: LinkOnCallbacksPropType;
 
 	/**
 	 * Defines the role of the components primary element.

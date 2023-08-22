@@ -23,7 +23,7 @@ import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } 
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
 import { API } from './types';
-import { LinkCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-callbacks';
+import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
 
 /**
  * @internal
@@ -233,7 +233,7 @@ export class KolLinkWc implements API {
 	/**
 	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkCallbacksPropType;
+	@Prop() public _on?: LinkOnCallbacksPropType;
 
 	/**
 	 * Defines the role of the components primary element.
@@ -388,7 +388,7 @@ export class KolLinkWc implements API {
 	 * @deprecated
 	 */
 	@Watch('_on')
-	public validateOn(value?: LinkCallbacksPropType): void {
+	public validateOn(value?: LinkOnCallbacksPropType): void {
 		validateLinkCallbacks(this, value);
 	}
 

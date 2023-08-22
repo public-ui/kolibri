@@ -44,7 +44,7 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
-import { LinkCallbacksPropType } from "./types/props/link-callbacks";
+import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
 import { LinkUseCase } from "./types/button-link";
 import { HrefPropType } from "./types/props/href";
@@ -101,7 +101,7 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
-export { LinkCallbacksPropType } from "./types/props/link-callbacks";
+export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
 export { LinkUseCase } from "./types/button-link";
 export { HrefPropType } from "./types/props/href";
@@ -2016,7 +2016,7 @@ export namespace Components {
         /**
           * Defines the callback functions for links.
          */
-        "_on"?: LinkCallbacksPropType;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -2121,7 +2121,7 @@ export namespace Components {
         /**
           * Defines the callback functions for links.
          */
-        "_on"?: LinkCallbacksPropType;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -2251,7 +2251,7 @@ export namespace Components {
         /**
           * Defines the callback functions for links.
          */
-        "_on"?: LinkCallbacksPropType;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -5330,7 +5330,7 @@ declare namespace LocalJSX {
         /**
           * Defines the callback functions for links.
          */
-        "_on"?: LinkCallbacksPropType;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -5435,7 +5435,7 @@ declare namespace LocalJSX {
         /**
           * Defines the callback functions for links.
          */
-        "_on"?: LinkCallbacksPropType;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -5565,7 +5565,7 @@ declare namespace LocalJSX {
         /**
           * Defines the callback functions for links.
          */
-        "_on"?: LinkCallbacksPropType;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */

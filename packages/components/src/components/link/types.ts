@@ -16,7 +16,7 @@ import { PropDisabled } from '../../types/props/disabled';
 import { PropAriaControls } from '../../types/props/aria-controls';
 import { PropAriaSelected } from '../../types/props/aria-selected';
 import { PropIcon } from '../../types/props/icon';
-import { PropLinkCallbacks } from '../../types/props/link-callbacks';
+import { PropLinkOnCallbacks } from '../../types/props/link-on-callbacks';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -54,7 +54,7 @@ export type OptionalProps = {
 	PropHideLabel &
 	PropIcon &
 	PropLabelWithExpertSlot &
-	PropLinkCallbacks &
+	PropLinkOnCallbacks &
 	PropLinkTarget &
 	PropListenAriaCurrent &
 	PropStealth &

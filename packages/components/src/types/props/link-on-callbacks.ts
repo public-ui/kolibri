@@ -3,19 +3,19 @@ import { Events } from '../../enums/events';
 import { EventValueOrEventCallback } from '../callbacks';
 
 /* types */
-export type LinkCallbacksPropType = {
+export type LinkOnCallbacksPropType = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, string>;
 };
 
 /**
  * Defines the callback functions for links.
  */
-export type PropLinkCallbacks = {
-	on: LinkCallbacksPropType;
+export type PropLinkOnCallbacks = {
+	on: LinkOnCallbacksPropType;
 };
 
 /* validator */
-export const validateLinkCallbacks = (component: Generic.Element.Component, value?: LinkCallbacksPropType): void => {
+export const validateLinkCallbacks = (component: Generic.Element.Component, value?: LinkOnCallbacksPropType): void => {
 	if (typeof value === 'object' && typeof value?.onClick === 'function') {
 		component.state = {
 			...component.state,

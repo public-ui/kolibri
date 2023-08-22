@@ -12,7 +12,7 @@ import { DownloadPropType } from '../../types/props/download';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { LinkTargetPropType } from '../../types/props/link-target';
-import { LinkCallbacksPropType } from '../../types/props/link-callbacks';
+import { LinkOnCallbacksPropType } from '../../types/props/link-on-callbacks';
 
 @Component({
 	tag: 'kol-link',
@@ -158,7 +158,7 @@ export class KolLink implements LinkProps {
 	/**
 	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkCallbacksPropType;
+	@Prop() public _on?: LinkOnCallbacksPropType;
 
 	/**
 	 * Defines the role of the components primary element.
