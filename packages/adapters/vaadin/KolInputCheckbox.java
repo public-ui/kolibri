@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-input-checkbox")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-input-checkbox")
 public class KolInputCheckbox extends Component {
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +35,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 *
 	 * @return Optional<String>
 	 */
@@ -55,7 +55,6 @@ public class KolInputCheckbox extends Component {
 
 	/**
 	 * Defines whether the checkbox is checked or not. Can be read and written.
-TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -65,7 +64,6 @@ TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
 
 	/**
 	 * Defines whether the checkbox is checked or not. Can be read and written.
-TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -76,7 +74,6 @@ TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -86,7 +83,6 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -96,7 +92,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 *
 	 * @param value String
 	 */
@@ -105,7 +101,7 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 *
 	 * @return Optional<String>
 	 */
@@ -116,7 +112,6 @@ TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.
-TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @param value String
 	 */
@@ -126,7 +121,6 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.
-TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @return Optional<String>
 	 */
@@ -136,7 +130,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 *
 	 * @param value String
 	 */
@@ -145,7 +139,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 *
 	 * @return Optional<String>
 	 */
@@ -155,7 +149,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Defines the icon classnames.
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @param value String
 	 */
@@ -164,7 +158,7 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Defines the icon classnames.
+	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 *
 	 * @return Optional<String>
 	 */
@@ -194,7 +188,6 @@ TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolv
 
 	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
-TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -204,7 +197,6 @@ TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been re
 
 	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
-TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -214,7 +206,7 @@ TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been re
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @param value String
 	 */
@@ -223,7 +215,7 @@ TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been re
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -253,7 +245,6 @@ TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been re
 
 	/**
 	 * Makes the input element required.
-TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -263,7 +254,6 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Makes the input element required.
-TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -273,7 +263,7 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -282,7 +272,7 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */
@@ -312,7 +302,6 @@ TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolve
 
 	/**
 	 * Shows if the input was touched by a user.
-TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -322,7 +311,6 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 
 	/**
 	 * Shows if the input was touched by a user.
-TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -332,7 +320,7 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Deprecated: Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -341,7 +329,7 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Deprecated: Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */
@@ -351,7 +339,7 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
+	 * Defines the value of the input.
 	 *
 	 * @param value String
 	 */
@@ -360,7 +348,7 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
+	 * Defines the value of the input.
 	 *
 	 * @return Optional<String>
 	 */
@@ -370,7 +358,7 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -379,7 +367,7 @@ TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */

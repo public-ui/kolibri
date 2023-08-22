@@ -15,7 +15,7 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
  */
 
 @Tag("kol-popover")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-popover")
 public class KolPopover extends Component {
 	/**
@@ -39,7 +39,6 @@ public class KolPopover extends Component {
 
 	/**
 	 * Makes the element show up.
-TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -49,7 +48,6 @@ TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 
 	/**
 	 * Makes the element show up.
-TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */

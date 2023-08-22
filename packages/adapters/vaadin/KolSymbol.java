@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-symbol")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-symbol")
 public class KolSymbol extends Component {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolSymbol extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
 	 *
 	 * @return Optional<String>
 	 */

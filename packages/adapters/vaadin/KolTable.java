@@ -16,11 +16,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-table")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-table")
 public class KolTable extends Component {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Defines the visible caption of the component.
 	 *
 	 * @param value String
 	 */
@@ -29,7 +29,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Defines the visible caption of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -39,7 +39,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
+	 * Defines the primary table data.
 	 *
 	 * @param value String
 	 */
@@ -48,7 +48,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
+	 * Defines the primary table data.
 	 *
 	 * @return Optional<String>
 	 */
@@ -58,7 +58,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+	 * Defines the data for the table footer.
 	 *
 	 * @param value String
 	 */
@@ -67,7 +67,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+	 * Defines the data for the table footer.
 	 *
 	 * @return Optional<String>
 	 */
@@ -77,7 +77,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Gibt die horizontalen und vertikalen Header für die Tabelle an.
+	 * Defines the horizontal and vertical table headers.
 	 *
 	 * @param value String
 	 */
@@ -86,7 +86,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Gibt die horizontalen und vertikalen Header für die Tabelle an.
+	 * Defines the horizontal and vertical table headers.
 	 *
 	 * @return Optional<String>
 	 */
@@ -96,7 +96,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -105,7 +105,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -115,7 +115,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Gibt an, die minimale Breite der Tabelle an.
+	 * Defines the table min-width.
 	 *
 	 * @param value String
 	 */
@@ -124,7 +124,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Gibt an, die minimale Breite der Tabelle an.
+	 * Defines the table min-width.
 	 *
 	 * @return Optional<String>
 	 */
@@ -134,7 +134,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
+	 * Defines whether to show the data distributed over multiple pages.
 	 *
 	 * @param value String
 	 */
@@ -143,7 +143,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
+	 * Defines whether to show the data distributed over multiple pages.
 	 *
 	 * @return Optional<String>
 	 */

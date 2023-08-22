@@ -26,10 +26,10 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                 | Type                  | Default     |
-| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `_label`   | `_label`   | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined` | `undefined` |
-| `_version` | `_version` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Gibt die Versionsnummer als Text an.           | `string \| undefined` | `undefined` |
+| Property   | Attribute  | Description                                                                                                                   | Type                  | Default     |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `_label`   | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).            | `string \| undefined` | `undefined` |
+| `_version` | `_version` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Gibt die Versionsnummer als Text an. | `string \| undefined` | `undefined` |
 
 ## Dependencies
 
@@ -45,9 +45,9 @@ graph TD;
   kol-badge --> kol-button-wc
   kol-badge --> kol-span-wc
   kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   style kol-version fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

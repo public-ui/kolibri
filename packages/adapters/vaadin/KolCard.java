@@ -17,12 +17,11 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
  */
 
 @Tag("kol-card")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-card")
 public class KolCard extends Component {
 	/**
-	 * Defines whether the card has a close button.
-TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+	 * Defines whether the element can be closed.
 	 *
 	 * @param value String
 	 */
@@ -31,8 +30,7 @@ TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Defines whether the card has a close button.
-TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+	 * Defines whether the element can be closed.
 	 *
 	 * @return Optional<String>
 	 */
@@ -43,7 +41,6 @@ TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolv
 
 	/**
 	 * Shows the slot="footer".
-TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -53,7 +50,6 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 
 	/**
 	 * Shows the slot="footer".
-TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -63,7 +59,7 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Deprecated: Gibt die Beschriftung der Komponente an.
 	 *
 	 * @param value String
 	 */
@@ -72,7 +68,7 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Deprecated: Gibt die Beschriftung der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -82,7 +78,7 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Deprecated: Gibt die Beschriftung der Komponente an.
 	 *
 	 * @param value String
 	 */
@@ -91,7 +87,7 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Deprecated: Gibt die Beschriftung der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -101,7 +97,7 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * 
+	 * Defines the description of the component.
 	 *
 	 * @param value String
 	 */
@@ -110,7 +106,7 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * 
+	 * Defines the description of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -120,7 +116,7 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 *
 	 * @param value String
 	 */
@@ -129,7 +125,7 @@ TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolv
 	}
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 *
 	 * @return Optional<String>
 	 */

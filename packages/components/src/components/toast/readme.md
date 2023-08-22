@@ -58,17 +58,17 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 ## Properties
 
-| Property        | Attribute        | Description                                                                                                                                           | Type                                                                    | Default     |
-| --------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
-| `_alert`        | `_alert`         | Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.                                                                                         | `boolean \| undefined`                                                  | `true`      |
-| `_hasCloser`    | `_has-closer`    | Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved                         | `boolean \| undefined`                                                  | `false`     |
-| `_heading`      | `_heading`       | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Beschriftung der Komponente an.                                        | `string \| undefined`                                                   | `''`        |
-| `_label`        | `_label`         | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                           | `string \| undefined`                                                   | `undefined` |
-| `_level`        | `_level`         | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                          | `1`         |
-| `_on`           | --               | Gibt die EventCallback-Function für das Schließen des Toasts an.                                                                                      | `undefined \| { onClose?: EventCallback<Event> \| undefined; }`         | `undefined` |
-| `_show`         | `_show`          | Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved                                              | `boolean \| undefined`                                                  | `true`      |
-| `_showDuration` | `_show-duration` | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.                                                                                  | `number \| undefined`                                                   | `10000`     |
-| `_type`         | `_type`          | Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.                                                                     | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
+| Property        | Attribute        | Description                                                                                                                | Type                                                                    | Default     |
+| --------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
+| `_alert`        | `_alert`         | Defines whether the screen-readers should read out the notification.                                                       | `boolean \| undefined`                                                  | `true`      |
+| `_hasCloser`    | `_has-closer`    | Defines whether the card has a close button.                                                                               | `boolean \| undefined`                                                  | `false`     |
+| `_heading`      | `_heading`       | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string \| undefined`                                                   | `''`        |
+| `_label`        | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).         | `string \| undefined`                                                   | `undefined` |
+| `_level`        | `_level`         | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                          | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                          | `1`         |
+| `_on`           | --               | Gibt die EventCallback-Function für das Schließen des Toasts an.                                                           | `undefined \| { onClose?: EventCallback<Event> \| undefined; }`         | `undefined` |
+| `_show`         | `_show`          | Makes the element show up.                                                                                                 | `boolean \| undefined`                                                  | `true`      |
+| `_showDuration` | `_show-duration` | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.                                                       | `number \| undefined`                                                   | `10000`     |
+| `_type`         | `_type`          | Defines either the type of the component or of the components interactive element.                                         | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 
 ## Slots
 
@@ -92,9 +92,9 @@ graph TD;
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
   kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   style kol-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

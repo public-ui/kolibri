@@ -82,26 +82,26 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 ## Properties
 
-| Property              | Attribute        | Description                                                                                                                                          | Type                                                                                     | Default      |
-| --------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------ |
-| `_accessKey`          | `_access-key`    | Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.                                    | `string \| undefined`                                                                    | `undefined`  |
-| `_alert`              | `_alert`         | Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.                                                                                        | `boolean \| undefined`                                                                   | `true`       |
-| `_disabled`           | `_disabled`      | Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved             | `boolean \| undefined`                                                                   | `undefined`  |
-| `_error`              | `_error`         | Gibt den Text für eine Fehlermeldung an.                                                                                                             | `string \| undefined`                                                                    | `undefined`  |
-| `_hideLabel`          | `_hide-label`    | Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.                             | `boolean \| undefined`                                                                   | `undefined`  |
-| `_hint`               | `_hint`          | Gibt den Hinweistext an.                                                                                                                             | `string \| undefined`                                                                    | `''`         |
-| `_id`                 | `_id`            | Defines the internal ID of the primary component element.                                                                                            | `string \| undefined`                                                                    | `undefined`  |
-| `_label` _(required)_ | `_label`         | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                          | `boolean \| string`                                                                      | `undefined`  |
-| `_list`               | `_list`          | <span style="color:red">**[DEPRECATED]**</span> Use \_options.<br/><br/>Gibt die Liste der Optionen für das Eingabefeld an.                          | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
-| `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                        | `string \| undefined`                                                                    | `undefined`  |
-| `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                            | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined` | `undefined`  |
-| `_options`            | `_options`       | Options the user can choose from.                                                                                                                    | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
-| `_orientation`        | `_orientation`   | Gibt die horizontale oder vertikale Ausrichtung der Komponente an.                                                                                   | `"horizontal" \| "vertical" \| undefined`                                                | `'vertical'` |
-| `_required`           | `_required`      | Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved                                  | `boolean \| undefined`                                                                   | `undefined`  |
-| `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                    | `undefined`  |
-| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                            | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
-| `_touched`            | `_touched`       | Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved                           | `boolean \| undefined`                                                                   | `false`      |
-| `_value`              | `_value`         | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)                                                           | `number \| string \| undefined`                                                          | `undefined`  |
+| Property              | Attribute        | Description                                                                                                                                                  | Type                                                                                     | Default      |
+| --------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ------------ |
+| `_accessKey`          | `_access-key`    | Defines which key combination can be used to trigger or focus the interactive element of the component.                                                      | `string \| undefined`                                                                    | `undefined`  |
+| `_alert`              | `_alert`         | Defines whether the screen-readers should read out the notification.                                                                                         | `boolean \| undefined`                                                                   | `true`       |
+| `_disabled`           | `_disabled`      | Makes the element not focusable and ignore all events.                                                                                                       | `boolean \| undefined`                                                                   | `undefined`  |
+| `_error`              | `_error`         | Defines the error message text.                                                                                                                              | `string \| undefined`                                                                    | `undefined`  |
+| `_hideLabel`          | `_hide-label`    | Hides the label.                                                                                                                                             | `boolean \| undefined`                                                                   | `undefined`  |
+| `_hint`               | `_hint`          | Defines the hint text.                                                                                                                                       | `string \| undefined`                                                                    | `''`         |
+| `_id`                 | `_id`            | Defines the internal ID of the primary component element.                                                                                                    | `string \| undefined`                                                                    | `undefined`  |
+| `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `boolean \| string`                                                                      | `undefined`  |
+| `_list`               | `_list`          | <span style="color:red">**[DEPRECATED]**</span> Use \_options.<br/><br/>Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.                      | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
+| `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                | `string \| undefined`                                                                    | `undefined`  |
+| `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                    | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined` | `undefined`  |
+| `_options`            | `_options`       | Options the user can choose from.                                                                                                                            | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
+| `_orientation`        | `_orientation`   | Defines whether the orientation of the component is horizontal or vertical.                                                                                  | `"horizontal" \| "vertical" \| undefined`                                                | `'vertical'` |
+| `_required`           | `_required`      | Makes the input element required.                                                                                                                            | `boolean \| undefined`                                                                   | `undefined`  |
+| `_tabIndex`           | `_tab-index`     | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)             | `number \| undefined`                                                                    | `undefined`  |
+| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
+| `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                   | `false`      |
+| `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `number \| string \| undefined`                                                          | `undefined`  |
 
 ## Slots
 
@@ -118,7 +118,7 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 ### Depends on
 
 - kol-input
-- [kol-tooltip](../tooltip)
+- [kol-tooltip-wc](../tooltip)
 - [kol-alert](../alert)
 
 ### Graph
@@ -126,15 +126,15 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 ```mermaid
 graph TD;
   kol-input-radio --> kol-input
-  kol-input-radio --> kol-tooltip
+  kol-input-radio --> kol-tooltip-wc
   kol-input-radio --> kol-alert
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   kol-alert --> kol-alert-wc
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc

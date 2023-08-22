@@ -14,11 +14,11 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`
  */
 
 @Tag("kol-quote")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-quote")
 public class KolQuote extends Component {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Defines the visible caption of the component.
 	 *
 	 * @param value String
 	 */
@@ -27,7 +27,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Defines the visible caption of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -37,7 +37,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Defines the link the source of the quote.
+	 * Defines the link to the source of the quote.
 	 *
 	 * @param value String
 	 */
@@ -46,7 +46,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Defines the link the source of the quote.
+	 * Defines the link to the source of the quote.
 	 *
 	 * @return Optional<String>
 	 */
@@ -56,7 +56,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -65,7 +65,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -75,7 +75,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Setzt den Text, also das Zitat selbst.
+	 * Defines the text of the quote.
 	 *
 	 * @param value String
 	 */
@@ -84,7 +84,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Setzt den Text, also das Zitat selbst.
+	 * Defines the text of the quote.
 	 *
 	 * @return Optional<String>
 	 */
@@ -94,7 +94,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -103,7 +103,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */

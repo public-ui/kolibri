@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-kolibri")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.28")
 @JsModule("@public-ui/components/dist/components/kol-kolibri")
 public class KolKolibri extends Component {
 	/**
@@ -54,7 +54,7 @@ public class KolKolibri extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines whether the component has a label.
 	 *
 	 * @param value String
 	 */
@@ -63,7 +63,7 @@ public class KolKolibri extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines whether the component has a label.
 	 *
 	 * @return Optional<String>
 	 */
