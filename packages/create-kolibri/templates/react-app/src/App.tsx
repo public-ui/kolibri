@@ -5,7 +5,7 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<p>Hello Vite + React + KoliBri!</p>
+				<p>Hello Webpack + React + KoliBri!</p>
 				<p className="flex gap-4">
 					<KolButton
 						_label="Primary"
