@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { LinkOnCallbacks, LinkUseCase } from '../../types/button-link';
+import { LinkUseCase } from '../../types/button-link';
 import { States as LinkStates } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
@@ -23,6 +23,7 @@ import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } 
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
 import { API } from './types';
+import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
 
 /**
  * @internal
@@ -230,11 +231,9 @@ export class KolLinkWc implements API {
 	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
-	 * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
-	 *
-	 * @deprecated will be removed in v2
+	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkOnCallbacks;
+	@Prop() public _on?: LinkOnCallbacksPropType;
 
 	/**
 	 * Defines the role of the components primary element.
@@ -389,13 +388,8 @@ export class KolLinkWc implements API {
 	 * @deprecated
 	 */
 	@Watch('_on')
-	public validateOn(value?: LinkOnCallbacks): void {
-		if (typeof value === 'object' && typeof value?.onClick === 'function') {
-			this.state = {
-				...this.state,
-				_on: value,
-			};
-		}
+	public validateOn(value?: LinkOnCallbacksPropType): void {
+		validateLinkCallbacks(this, value);
 	}
 
 	@Watch('_role')
