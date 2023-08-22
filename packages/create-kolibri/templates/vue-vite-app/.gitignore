@@ -1,28 +1,52 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Next
+.next
 
-node_modules
-.DS_Store
-dist
-dist-ssr
-coverage
-*.local
+# GraphQL
+src/__generated__
 
-/cypress/videos/
-/cypress/screenshots/
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+# IDE's
 .idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.project
+*.sublime-*
+*.code-*
+
+
+# Node.js
+node_modules
+npm-debug.log
+
+
+# Build and test tools
+*.zip
+dist/*
+
+# Cache
+.sass-cache
+.cache
+
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+
+# Other
+/.husky
+/.reports
+.env
+.eslintcache
+*~
+*.log
+*.tgz
+
+assets/bundes/
+assets/codicons/
+assets/fontawesome-free/
+assets/icofont/
+assets/kreon/
+assets/material-icons/
+assets/material-symbols/
+assets/noto-sans/
+assets/roboto/
+assets/tabler-icons/
+assets/kolibri.ico

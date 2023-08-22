@@ -1,15 +1,7 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import 'uno.css'; // https://github.com/antfu/unocss
 
-import App from './App.vue'
-import router from './router'
+// App style
+import './style.scss';
 
-import { ComponentLibrary } from './plugins/kolibri'
-
-const app = createApp(App)
-
-app.use(createPinia())
-app.use(router)
-app.use(ComponentLibrary)
-
-app.mount('#app')
+// App
+import './vue.main';

@@ -44,8 +44,9 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
-import { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
+import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
+import { LinkUseCase } from "./types/button-link";
 import { HrefPropType } from "./types/props/href";
 import { ListStyleType } from "./components/link-group/types";
 import { LinkProps } from "./components/link/types";
@@ -100,8 +101,9 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
-export { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
+export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
+export { LinkUseCase } from "./types/button-link";
 export { HrefPropType } from "./types/props/href";
 export { ListStyleType } from "./components/link-group/types";
 export { LinkProps } from "./components/link/types";
@@ -2012,10 +2014,9 @@ export namespace Components {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated will be removed in v2
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -2118,10 +2119,9 @@ export namespace Components {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -2249,10 +2249,9 @@ export namespace Components {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated will be removed in v2
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -5329,10 +5328,9 @@ declare namespace LocalJSX {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated will be removed in v2
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -5435,10 +5433,9 @@ declare namespace LocalJSX {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
@@ -5566,10 +5563,9 @@ declare namespace LocalJSX {
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
-          * Deprecated: Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated will be removed in v2
+          * Defines the callback functions for links.
          */
-        "_on"?: LinkOnCallbacks;
+        "_on"?: LinkOnCallbacksPropType;
         /**
           * Defines the role of the components primary element.
          */
