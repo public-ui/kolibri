@@ -1340,8 +1340,8 @@ export const components: Record<string, Component> = {
 							_label="Schließen"
 							_on={{
 								onClick: () => {
-									if (modalElement) {
-										(modalElement as any)._activeElement = null;
+									if (modalElement instanceof HTMLKolModalElement) {
+										modalElement._activeElement = null;
 									}
 								},
 							}}
@@ -1354,7 +1354,7 @@ export const components: Record<string, Component> = {
 				_on={{
 					onClick: (event: Event) => {
 						if (modalElement instanceof HTMLKolModalElement) {
-							(modalElement as HTMLKolModalElement)._activeElement = event.target as HTMLElement;
+							modalElement._activeElement = event.target as HTMLElement;
 						}
 					},
 				}}
