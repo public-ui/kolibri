@@ -7,12 +7,12 @@ Der Input-Typ **E-Mail** erzeugt ein Eingabefeld für E-Mails.
 ### Code
 
 ```html
-<kol-input-email _label="E-Mail-Adresse" _icon='{ "right": "codicon codicon-mail"}'></kol-input-email>
+<kol-input-email _label="E-Mail-Adresse" _icon='{"right": "codicon codicon-mail"}'></kol-input-email>
 ```
 
 ### Beispiel
 
-<kol-input-email _label="E-Mail-Adresse" _icon='{ "right": "codicon codicon-mail"}'></kol-input-email>
+<kol-input-email _label="E-Mail-Adresse" _icon='{"right": "codicon codicon-mail"}'></kol-input-email>
 
 ## Verwendung
 

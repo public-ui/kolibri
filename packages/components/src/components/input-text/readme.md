@@ -10,26 +10,26 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 <kol-input-text
 	_type="text"
 	_label="Texteingabe"
-	_icon="{ left: 'codicon codicon-arrow-left', right: { icon: 'codicon codicon-arrow-right', style: { 'font-size': '200%', }, }, }"
+	_icon='{"left": "codicon codicon-arrow-left", "right": {"icon": "codicon codicon-arrow-right", "style": {"font-size": "200%"}}}'
 ></kol-input-text>
 <kol-input-text _type="text" _label="Deaktiviert" _disabled></kol-input-text>
 <kol-input-text _type="text" _label="Schreibgeschützt" _read-only></kol-input-text>
 <kol-input-text
 	_type="text"
 	_label="Mit Button"
-	_smart-button="{ '_icon': 'codicon codicon-chrome-close', '_hideLabel': true, '_label': 'Löschen' }"
+	_smart-button='{"_icon": "codicon codicon-chrome-close", "_hideLabel": true, "_label": "Löschen"}'
 ></kol-input-text>
 ```
 
 ### Beispiel
 
-<kol-input-text _type="text" _label="Texteingabe"  _icon="{ left: 'codicon codicon-arrow-left', right: { icon: 'codicon codicon-arrow-right', style: { 'font-size': '200%', }, }, }"></kol-input-text>
+<kol-input-text _type="text" _label="Texteingabe" _icon='{"left": "codicon codicon-arrow-left", "right": {"icon": "codicon codicon-arrow-right", "style": {"font-size": "200%"}}}'></kol-input-text>
 <kol-input-text _type="text" _label="Deaktiviert" _disabled></kol-input-text>
 <kol-input-text _type="text" _label="Schreibgeschützt" _read-only></kol-input-text>
 <kol-input-text
 	_type="text"
 	_label="Mit Button"
-	_smart-button="{ '_icon': 'codicon codicon-chrome-close', '_hideLabel': true, '_label': 'Löschen' }"
+	_smart-button='{"_icon": "codicon codicon-chrome-close", "_hideLabel": true, "_label": "Löschen"}'
 	></kol-input-text
 
 >

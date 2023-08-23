@@ -7,7 +7,7 @@ Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken
 ### Code
 
 ```html
-<kol-input-checkbox>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
+<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
 <kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
 <kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
 <kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
@@ -15,7 +15,7 @@ Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken
 
 ### Beispiel
 
-<kol-input-checkbox>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
+<kol-input-checkbox _label="false">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung"></kol-link> zu.</kol-input-checkbox>
 <kol-input-checkbox _variant="switch" _label="Geburtsdatum anzeigen?"></kol-input-checkbox>
 <kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
 <kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>

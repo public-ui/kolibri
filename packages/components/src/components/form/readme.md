@@ -7,17 +7,17 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 ### Code
 
 ```html
-<kol-form>
-	<kol-input-text>Vorname</kol-input-text>
-	<kol-input-text>Nachname</kol-input-text>
+<kol-form _requiredText="Sternchen heißt Pflichtfeld.">
+	<kol-input-text _label="Vorname"></kol-input-text>
+	<kol-input-text _label="Nachname"></kol-input-text>
 </kol-form>
 ```
 
 ### Beispiel
 
-<kol-form>
-	<kol-input-text>Vorname</kol-input-text>
-	<kol-input-text>Nachname</kol-input-text>
+<kol-form _requiredText="Sternchen heißt Pflichtfeld.">
+	<kol-input-text _label="Vorname"></kol-input-text>
+	<kol-input-text _label="Nachname"></kol-input-text>
 </kol-form>
 
 <!-- Auto Generated Below -->

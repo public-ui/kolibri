@@ -7,12 +7,12 @@ Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es kö
 ### Code
 
 ```html
-<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icon='{ "right": "codicon codicon-device-camera"}'></kol-input-file>
+<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icon='{"right": "codicon codicon-device-camera"}'></kol-input-file>
 ```
 
 ### Beispiel
 
-<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icon='{ "right": "codicon codicon-device-camera"}'></kol-input-file>
+<kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icon='{"right": "codicon codicon-device-camera"}'></kol-input-file>
 
 ## Verwendung
 
