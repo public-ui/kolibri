@@ -66,7 +66,7 @@
 		"@angular/compiler-cli": "15.2.9",
 		"@angular/compiler": "15.2.9",
 		"@angular/core": "15.2.9",
-		"@public-ui/components": "1.6.1",
+		"@public-ui/components": "1.6.0",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
@@ -80,7 +80,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": "^15",
-		"@public-ui/components": "1.6.1"
+		"@public-ui/components": "1.6.0"
 	},
 	"files": [
 		"dist"
