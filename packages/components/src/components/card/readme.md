@@ -12,7 +12,7 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 ### Code
 
 ```html
-<kol-card _label="Testtitel" _has-footer>
+<kol-card _label="Testtitel">
 	<div slot="header">Text im Header-Bereich</div>
 	<div slot="content">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
@@ -20,13 +20,12 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
 		et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 	</div>
-	<div slot="footer">Weiterer Beispieltext im Fuß-Bereich</div>
 </kol-card>
 ```
 
 ### Beispiel
 
-<kol-card _label="Testtitel" _has-footer>
+<kol-card _label="Testtitel">
 	<div slot="header">Text im Header-Bereich</div>
 	<div slot="content">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
@@ -34,7 +33,6 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
 		et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 	</div>
-	<div slot="footer">Weiterer Beispieltext im Fuß-Bereich</div>
 </kol-card>
 
 ## Verwendung
