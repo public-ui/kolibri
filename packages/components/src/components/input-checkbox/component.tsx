@@ -212,7 +212,7 @@ export class KolInputCheckbox implements API {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value!: Stringified<StencilUnknown>;
+	@Prop() public _value?: Stringified<StencilUnknown> = true;
 
 	/**
 	 * Defines which variant should be used for presentation.
@@ -226,10 +226,10 @@ export class KolInputCheckbox implements API {
 			indeterminate: 'codicon codicon-remove',
 			unchecked: 'codicon codicon-add',
 		},
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_indeterminate: false,
 		_label: false, // ⚠ required
-		_value: null, // ⚠ required
+		_value: true,
 		_variant: 'default',
 	};
 
