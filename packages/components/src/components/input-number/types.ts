@@ -17,7 +17,7 @@ import { PropRequired } from '../../types/props/required';
 import { PropReadOnly } from '../../types/props/read-only';
 import { PropTouched } from '../../types/props/touched';
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	placeholder: string;
 	type: InputNumberType;
@@ -26,6 +26,7 @@ type OptionalProps = {
 	 */
 	list: SuggestionsPropType;
 } & OptionalInputProps<number | Iso8601> &
+	PropLabelWithExpertSlot &
 	PropSuggestions;
 
 type RequiredStates = {

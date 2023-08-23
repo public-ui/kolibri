@@ -16,7 +16,7 @@ import { PropId } from '../../types/props/id';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -32,6 +32,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
+	PropLabelWithExpertSlot &
 	PropName &
 	PropReadOnly &
 	PropRequired &

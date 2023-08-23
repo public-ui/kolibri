@@ -5,8 +5,8 @@ import { Stringified } from '../../../types/common';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../../types/props/label';
 
-type RequiredProps = PropLabelWithExpertSlot;
-type OptionalProps = {
+type RequiredProps = NonNullable<unknown>;
+type OptionalProps = PropLabelWithExpertSlot & {
 	accessKey: string;
 	adjustHeight: boolean;
 	disabled: boolean;
