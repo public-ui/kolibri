@@ -11,15 +11,12 @@ Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und
 ### Code
 
 ```html
-<kol-input-radio
-	_name="anrede"
-	_options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'
-></kol-input-radio>
+<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
 ```
 
 ### Beispiel
 
-<kol-input-radio _name="anrede" _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
+<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
 
 ## Verwendung
 
@@ -44,8 +41,6 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 ```jsx
 <kol-input-radio
-	_id="anrede"
-	_name="anrede"
 	_options={[
 		{ label: 'Herr', value: 'Herr' },
 		{ label: 'Frau', value: 'Frau' },

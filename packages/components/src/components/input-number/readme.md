@@ -7,12 +7,12 @@ Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 ### Code
 
 ```html
-<kol-input-number _name="meine_zahl" _value="74" _label="ZAHL!" _icon='{ "right": "codicon codicon-dashboard"}'></kol-input-number>
+<kol-input-number _value="74" _label="ZAHL!" _icon='{ "right": "codicon codicon-dashboard"}'></kol-input-number>
 ```
 
 ### Beispiel
 
-<kol-input-number _name="meine_zahl" _value="74" _label="ZAHL!" _icon='{ "right": "codicon codicon-dashboard"}'></kol-input-number>
+<kol-input-number _value="74" _label="ZAHL!" _icon='{ "right": "codicon codicon-dashboard"}'></kol-input-number>
 
 ## Verwendung
 

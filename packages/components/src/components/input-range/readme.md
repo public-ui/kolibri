@@ -8,7 +8,6 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 
 ```html
 <kol-input-range
-	_name="meine_range"
 	_label="Wertebereich"
 	_min="100"
 	_max="200"
@@ -21,7 +20,6 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 ### Beispiel
 
 <kol-input-range
-	_name="meine_range"
 	_label="Wertebereich"
 	_min="100"
 	_max="200"

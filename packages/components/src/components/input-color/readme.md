@@ -7,12 +7,12 @@ Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer belieb
 ### Code
 
 ```html
-<kol-input-color _name="meine_farbe" _value="#d4fcf4" _label="Hintergrundfarbe" _icon='{"right": "codicon codicon-symbol-color"}'></kol-input-color>
+<kol-input-color _value="#d4fcf4" _label="Hintergrundfarbe" _icon='{"right": "codicon codicon-symbol-color"}'></kol-input-color>
 ```
 
 ### Beispiel
 
-<kol-input-color _name="meine_farbe" _value="#d4fcf4" _label="Hintergrundfarbe" _icon='{"right": "codicon codicon-symbol-color"}'></kol-input-color>
+<kol-input-color _value="#d4fcf4" _label="Hintergrundfarbe" _icon='{"right": "codicon codicon-symbol-color"}'></kol-input-color>
 
 ## Verwendung
 

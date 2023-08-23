@@ -8,16 +8,16 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 
 ```html
 <kol-form>
-	<kol-input-text _id="firstname">Vorname</kol-input-text>
-	<kol-input-text _id="lastname">Nachname</kol-input-text>
+	<kol-input-text>Vorname</kol-input-text>
+	<kol-input-text>Nachname</kol-input-text>
 </kol-form>
 ```
 
 ### Beispiel
 
 <kol-form>
-	<kol-input-text _id="firstname">Vorname</kol-input-text>
-	<kol-input-text _id="lastname">Nachname</kol-input-text>
+	<kol-input-text>Vorname</kol-input-text>
+	<kol-input-text>Nachname</kol-input-text>
 </kol-form>
 
 <!-- Auto Generated Below -->
