@@ -15,7 +15,7 @@ import { PropReadOnly } from '../../types/props/read-only';
 import { PropTouched } from '../../types/props/touched';
 import { PropId } from '../../types/props/id';
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -37,6 +37,7 @@ type OptionalProps = {
 } & PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
+	PropLabelWithExpertSlot &
 	PropName &
 	PropReadOnly &
 	PropRequired &

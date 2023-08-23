@@ -17,7 +17,7 @@ import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
 import { PropTouched } from '../../types/props/touched';
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	type: InputDateType;
 
@@ -26,6 +26,7 @@ type OptionalProps = {
 	 */
 	list: SuggestionsPropType;
 } & OptionalInputProps<Iso8601 | Date> &
+	PropLabelWithExpertSlot &
 	PropSuggestions;
 
 type RequiredStates = {

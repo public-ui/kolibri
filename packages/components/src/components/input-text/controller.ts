@@ -9,11 +9,12 @@ import { watchValidator } from '../../utils/prop.validators';
 import { InputPasswordController } from '../input-password/controller';
 import { Props as InputTextProps, Watches as InputTextWatches } from './types';
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	id: string;
 	list: Stringified<string[]>;
-} & PropSuggestions;
+} & PropLabelWithExpertSlot &
+	PropSuggestions;
 type InputTextEmailProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 type InputTextEmailWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
