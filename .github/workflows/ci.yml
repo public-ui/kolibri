@@ -53,14 +53,14 @@ jobs:
 
       - name: Install
         run: pnpm i --no-frozen-lockfile
-      - name: Build
-        run: pnpm -r run build
       - name: Unused
         run: pnpm -r run ts-prune
       - name: Depcheck
         run: pnpm -r run depcheck
       - name: Format
         run: pnpm -r run format
+      - name: Build
+        run: pnpm -r run build
       - name: Lint
         run: pnpm -r run lint
       - name: Test
