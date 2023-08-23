@@ -17,17 +17,14 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</div>
-		<div slot="header">Inhalt eines Header</div>
 	</kol-accordion>
 	<kol-accordion _label="Element 2">
-		<div slot="header">Inhalt im Header</div>
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</div>
-		<div slot="footer">Inhalt im Footer</div>
 	</kol-accordion>
 </div>
 ```
@@ -42,17 +39,14 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</div>
-		<div slot="header">Inhalt eines Header</div>
 	</kol-accordion>
 	<kol-accordion _label="Element 2">
-		<div slot="header">Inhalt im Header</div>
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</div>
-		<div slot="footer">Inhalt im Footer</div>
 	</kol-accordion>
 </div>
 
@@ -65,12 +59,6 @@ Der Text, der als Überschrift im Accordion-Tab angezeigt werden soll, wird durc
 ### Überschriftenebene
 
 Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglich sind die Level **1** bis **6**
-
-### Inhalt im Kopfbereich des Accordion
-
-Ein optisch abgetrennter Inhalt im Kopfbereich des Accordions wird über einen eigenen Slot übergeben. Gibt es diesen Slot nicht oder wird er leer übergeben, ist der Kopfbereich nicht sichtbar.
-
-**`<div slot="header">Inhalt im Kopfbereich</div>`**
 
 ### Inhalt des Accordion
 
