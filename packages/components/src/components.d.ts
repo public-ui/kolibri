@@ -927,7 +927,7 @@ export namespace Components {
         /**
           * Defines the value of the input.
          */
-        "_value": Stringified<StencilUnknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Defines which variant should be used for presentation.
          */
@@ -4241,7 +4241,7 @@ declare namespace LocalJSX {
         /**
           * Defines the value of the input.
          */
-        "_value": Stringified<StencilUnknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Defines which variant should be used for presentation.
          */
