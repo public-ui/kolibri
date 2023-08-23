@@ -123,7 +123,7 @@ export class KolTextarea implements API {
 
 	/**
 	 * Adjusts the height of the element to its content.
-	 * TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
+	 * @TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 */
 	@Prop() public _adjustHeight?: boolean = false;
 

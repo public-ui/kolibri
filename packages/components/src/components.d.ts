@@ -201,7 +201,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -611,7 +611,7 @@ export namespace Components {
          */
         "_headline"?: string;
         /**
-          * Defines the description of the component.
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2384,7 +2384,7 @@ export namespace Components {
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
-          * Defines the description of the component.
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2819,7 +2819,8 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Adjusts the height of the element to its content. TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
+          * Adjusts the height of the element to its content.
+          * @TODO : change back to AdjustHeightPropType after stencil #4663 has been resolved
          */
         "_adjustHeight"?: boolean;
         /**
@@ -2919,7 +2920,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -3515,7 +3516,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -3925,7 +3926,7 @@ declare namespace LocalJSX {
          */
         "_headline"?: string;
         /**
-          * Defines the description of the component.
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5698,7 +5699,7 @@ declare namespace LocalJSX {
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
-          * Defines the description of the component.
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -6133,7 +6134,8 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Adjusts the height of the element to its content. TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
+          * Adjusts the height of the element to its content.
+          * @TODO : change back to AdjustHeightPropType after stencil #4663 has been resolved
          */
         "_adjustHeight"?: boolean;
         /**
@@ -6233,7 +6235,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
