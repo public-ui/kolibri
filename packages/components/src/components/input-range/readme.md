@@ -8,20 +8,25 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 
 ```html
 <kol-input-range
-	_id="meine_range"
-	_name="meine_range"
+	_label="Wertebereich"
 	_min="100"
 	_max="200"
 	_value="100"
 	_step="20"
-	_icon='{ "left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'
-	>Wertebereich</kol-input-range
->
+	_icon='{"left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'
+></kol-input-range>
 ```
 
 ### Beispiel
 
-<kol-input-range _id="meine_range" _name="meine_range" _min="100" _max="200" _value="100" _step="20" _icon='{ "left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'>Wertebereich</kol-input-range>
+<kol-input-range
+	_label="Wertebereich"
+	_min="100"
+	_max="200"
+	_value="100"
+	_step="20"
+	_icon='{"left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'
+	></kol-input-range
 
 ## Verwendung
 

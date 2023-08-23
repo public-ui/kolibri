@@ -12,29 +12,25 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 ### Code
 
 ```html
-<kol-card _label="Testtitel" _has-footer _max-height="vh2">
-	<div slot="header">Text im Header-Bereich</div>
+<kol-card _label="Testtitel">
 	<div slot="content">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 		At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
 		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
 		et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 	</div>
-	<div slot="footer">Weiterer Beispieltext im Fuß-Bereich</div>
 </kol-card>
 ```
 
 ### Beispiel
 
-<kol-card _label="Testtitel" _has-footer _max-height="vh2">
-	<div slot="header">Text im Header-Bereich</div>
+<kol-card _label="Testtitel">
 	<div slot="content">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 		At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
 		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
 		et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 	</div>
-	<div slot="footer">Weiterer Beispieltext im Fuß-Bereich</div>
 </kol-card>
 
 ## Verwendung
@@ -58,9 +54,7 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 ```html
 <kol-card _label="Beispiel" _level="1">
-	<div slot="header">Text im Header-Bereich</div>
 	<div slot="content">Text im Inhalts-Bereich</div>
-	<div slot="footer">Text im Fuß-Bereich</div>
 </kol-card>
 ```
 
