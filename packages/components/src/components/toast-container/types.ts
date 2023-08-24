@@ -1,16 +1,18 @@
 import { Generic } from '@a11y-ui/core';
-import { PropLabel } from '../../types/props/label';
-import { KoliBriToastEventCallbacks } from '../../types/toast';
-import { AlertType } from '../alert/types';
+import { Toast } from '../toast/toaster';
 
-type RequiredProps = PropLabel;
-type OptionalProps = {
-	on: KoliBriToastEventCallbacks;
-	type: AlertType;
+export type ToastState = {
+	toast: Toast;
+	status: 'adding' | 'settled' | 'removing';
 };
+
+type RequiredProps = NonNullable<unknown>;
+type OptionalProps = NonNullable<unknown>;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps;
+type RequiredStates = RequiredProps & {
+	toastStates: ToastState[];
+};
 type OptionalStates = OptionalProps;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;

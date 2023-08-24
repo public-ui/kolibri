@@ -1,0 +1,4 @@
+:host {
+	position: fixed;
+	z-index: 200;
+}

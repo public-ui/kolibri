@@ -17,10 +17,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_alert: [false, true],
 		_label: ['Überschrift'],
-		_level: [1, 2, 3, 4, 5, 6],
-		_show: [false, true],
 		_type: ['default', 'error', 'info', 'success', 'warning'],
 	},
 	getToastHtml,
