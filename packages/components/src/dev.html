@@ -1761,40 +1761,40 @@
 		<link rel="stylesheet" href="assets/loader.css" />
 	</head>
 	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
-	<main class="container">
-<!--		<kol-nav _label="…"></kol-nav>-->
-<!--		<kol-nav _label="…"></kol-nav>-->
+		<main class="container">
+			<!--		<kol-nav _label="…"></kol-nav>-->
+			<!--		<kol-nav _label="…"></kol-nav>-->
 
-<!--		<kol-pagination _total="11" _page="6" _variant="primary" _sibling-count="0"></kol-pagination>-->
-<!--		<kol-pagination _total="11" _page="2" _variant="secondary" _has-buttons="false"></kol-pagination>-->
-<!--		<kol-pagination-->
-<!--			_total="11"-->
-<!--			_page="10"-->
-<!--			_variant="normal"-->
-<!--			_has-buttons="{'first':false,'last':false,'next':false,'previous':false}"-->
-<!--		></kol-pagination>-->
-<!--		<kol-pagination-->
-<!--			_total="11"-->
-<!--			_page="1"-->
-<!--			_variant="danger"-->
-<!--			_sibling-count="0"-->
-<!--			_boundary-count="2"-->
-<!--			_has-buttons="{'first':true,'last':true,'next':false,'previous':false}"-->
-<!--		>-->
-<!--		</kol-pagination>-->
-<!--		<kol-pagination-->
-<!--			_total="11"-->
-<!--			_page="11"-->
-<!--			_variant="ghost"-->
-<!--			_boundary-count="2"-->
-<!--			_has-buttons="{'first':false,'last':false,'next':true,'previous':true}"-->
-<!--		></kol-pagination>-->
-<!--		<kol-pagination _total="110" _page="6" _page-size="1" _page-size-options="[10,20]" _variant="primary" _sibling-count="0"></kol-pagination>-->
-<!--		<kol-pagination _total="110" _page="16" _page-size="5" _page-size-options="[20,15,10,5]" _variant="primary" _sibling-count="0"></kol-pagination>-->
-<!--		<kol-pagination _total="110" _page="6" _page-size-options="[20,15,10,5]" _variant="primary" _sibling-count="0"></kol-pagination>-->
-		<kol-pagination _total="110" _page="50" _page-size-options="[20,15,10,5]" _variant="primary" _sibling-count="0"></kol-pagination>
-		<kol-pagination _total="0" _page="0" _label="pag2"></kol-pagination>
-
+			<!--		<kol-pagination _total="11" _page="6" _variant="primary" _sibling-count="0"></kol-pagination>-->
+			<!--		<kol-pagination _total="11" _page="2" _variant="secondary" _has-buttons="false"></kol-pagination>-->
+			<!--		<kol-pagination-->
+			<!--			_total="11"-->
+			<!--			_page="10"-->
+			<!--			_variant="normal"-->
+			<!--			_has-buttons="{'first':false,'last':false,'next':false,'previous':false}"-->
+			<!--		></kol-pagination>-->
+			<!--		<kol-pagination-->
+			<!--			_total="11"-->
+			<!--			_page="1"-->
+			<!--			_variant="danger"-->
+			<!--			_sibling-count="0"-->
+			<!--			_boundary-count="2"-->
+			<!--			_has-buttons="{'first':true,'last':true,'next':false,'previous':false}"-->
+			<!--		>-->
+			<!--		</kol-pagination>-->
+			<!--		<kol-pagination-->
+			<!--			_total="11"-->
+			<!--			_page="11"-->
+			<!--			_variant="ghost"-->
+			<!--			_boundary-count="2"-->
+			<!--			_has-buttons="{'first':false,'last':false,'next':true,'previous':true}"-->
+			<!--		></kol-pagination>-->
+			<!--		<kol-pagination _total="110" _page="6" _page-size="1" _page-size-options="[10,20]" _variant="primary" _sibling-count="0"></kol-pagination>-->
+			<!--		<kol-pagination _total="110" _page="16" _page-size="5" _page-size-options="[20,15,10,5]" _variant="primary" _sibling-count="0"></kol-pagination>-->
+			<!--		<kol-pagination _total="110" _page="6" _page-size-options="[20,15,10,5]" _variant="primary" _sibling-count="0"></kol-pagination>-->
+			<kol-pagination _total="110" _page="50" _page-size-options="[20,15,10,5]" _variant="primary" _sibling-count="0"></kol-pagination>
+			<kol-pagination _total="0" _page="0" _label="pag2"></kol-pagination>
+		</main>
 		<script>
 			const nav1 = document.createElement('kol-nav');
 			nav1.setAttribute('_label', 'pag');
@@ -1806,7 +1806,7 @@
 				const nav2 = document.createElement('kol-nav');
 				nav2.setAttribute('_label', 'pag');
 				document.body.prepend(nav2);
-			}, 100)
+			}, 100);
 		</script>
 	</body>
 </html>
