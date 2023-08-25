@@ -13,28 +13,12 @@ import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y
 import { watchValidator } from '../../utils/prop.validators';
 import { API, States } from './types';
 import { watchNavLinks } from './validation';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 /**
  * @deprecated Removed in v2
  */
 export type KoliBriNavVariant = 'primary' | 'secondary';
-
-/**
- * There can be several navigations on one page (e.g. main navigation, subnavigation, breadcrumbs).
- * The navigations must be clearly named for accessibility reasons. To ensure this, all Aria labels are
- * stored in a set and checked for uniqueness.
- */
-const UNIQUE_ARIA_LABEL: Set<string> = new Set();
-function addAriaLabel(ariaLabel: string): void {
-	if (UNIQUE_ARIA_LABEL.has(ariaLabel)) {
-		console.error(`There already is a kol-nav with the label "${ariaLabel}"`);
-	} else {
-		UNIQUE_ARIA_LABEL.add(ariaLabel);
-	}
-}
-function removeAriaLabel(ariaLabel: string): void {
-	UNIQUE_ARIA_LABEL.delete(ariaLabel);
-}
 
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
@@ -315,11 +299,13 @@ export class KolNav implements API {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
-		removeAriaLabel(this.state._label); // remove the current
+	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
+		if (!initial) {
+			removeNavLabel(this.state._label); // remove the current
+		}
 		validateLabel(this, value);
 		a11yHintLabelingLandmarks(value);
-		addAriaLabel(this.state._label); // add the new; not value, because that could be invalid and not set as new label
+		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_links')
@@ -354,14 +340,14 @@ export class KolNav implements API {
 		this.validateCollapsible(this._collapsible);
 		this.validateHideLabel(this._hideLabel || this._compact);
 		this.validateHasCompactButton(this._hasCompactButton);
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label || this._ariaLabel, undefined, true);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
 		this.validateVariant(this._variant);
 	}
 
 	public disconnectedCallback(): void {
-		removeAriaLabel(this.state._label);
+		removeNavLabel(this.state._label);
 	}
 }
 
