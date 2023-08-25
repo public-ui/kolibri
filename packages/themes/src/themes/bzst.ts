@@ -14,6 +14,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		--color-green-dark: #23614e;
 		--color-heroic-blue: #126dff;
 		--color-mercury: #ebebeb;
+		--color-ocean: #0077b6;
 		--color-red-epiphyllum: #d00000;
 		--color-speedwell: #595f73;
 		--color-tropic-sea: #007194;
@@ -1609,6 +1610,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	option:checked:not(:disabled),
 	option:focus:not(:disabled),
 	option:hover:not(:disabled) {
+		background: var(--color-ocean);
 		color: white;
 	}`,
 	'KOL-INPUT-COLOR': `kol-input {
