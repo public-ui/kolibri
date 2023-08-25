@@ -58,7 +58,11 @@ export class KolPagination implements API {
 					}
 				} else if (ellipsis === true) {
 					ellipsis = false;
-					return <span class="separator" key={`${this.nonce}-el-${page}`} aria-hidden="true"></span>;
+					return (
+						<li>
+							<span class="separator" key={`${this.nonce}-el-${page}`} aria-hidden="true"></span>
+						</li>
+					);
 				} else {
 					return null;
 				}
@@ -283,32 +287,36 @@ export class KolPagination implements API {
 
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
-			<kol-button
-				exportparts="icon"
-				key={`${this.nonce}-${page}`}
-				_customClass={this.state._customClass}
-				_label={`${page}`}
-				_on={{
-					onClick: (event: Event) => {
-						this.onClick(event, page);
-					},
-				}}
-				_variant={this.state._variant}
-			></kol-button>
+			<li>
+				<kol-button
+					exportparts="icon"
+					key={`${this.nonce}-${page}`}
+					_customClass={this.state._customClass}
+					_label={`${page}`}
+					_on={{
+						onClick: (event: Event) => {
+							this.onClick(event, page);
+						},
+					}}
+					_variant={this.state._variant}
+				></kol-button>
+			</li>
 		);
 	}
 
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
-			<kol-button-wc
-				class="selected"
-				key={`${this.nonce}-selected`}
-				_customClass={this.state._customClass}
-				_disabled={true}
-				_ariaCurrent={true}
-				_label={`${page}`}
-				_variant={this.state._variant}
-			/>
+			<li>
+				<kol-button-wc
+					class="selected"
+					key={`${this.nonce}-selected`}
+					_customClass={this.state._customClass}
+					_disabled={true}
+					_ariaCurrent={true}
+					_label={`${page}`}
+					_variant={this.state._variant}
+				/>
+			</li>
 		);
 	}
 
