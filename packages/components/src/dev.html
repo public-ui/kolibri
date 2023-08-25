@@ -1761,164 +1761,36 @@
 		<link rel="stylesheet" href="assets/loader.css" />
 	</head>
 	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
-		<main class="container">
-			<kol-pagination _total="9" _page="3" class="bordered p-i"></kol-pagination>
-			<kol-pagination _total="9" _page="3" class="bordered p-i" _label="Paginierung für Foo"></kol-pagination>
-
-			<kol-table _id="day_table" _label="Sternzeichen" _data=""></kol-table>
-			<kol-accordion _label="breadcrumb 1">
-				<div>
-					<div class="row">
-						<div class="col-12">
-							<div class="gap-2 d-flex">
-								<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v9"></kol-badge>
-								<kol-badge _icon="codicon codicon-checklist" _color="#033" _label="Snapshot-Tests"></kol-badge>
-							</div>
-							<kol-heading _label="" _level="2">Breadcrumb</kol-heading>
-						</div>
-						<div class="gap-2 py-2 col-12 d-grid">
-							<kol-breadcrumb
-								_label="Breadcrumb aus Text-Links"
-								_links="[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- oder Text-Links"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- und Text-Links"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_href':'#/'},{'_label':'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- und Text-Links 2"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
-							>
-							</kol-breadcrumb>
-						</div>
-					</div>
-				</div>
-			</kol-accordion>
-			<kol-accordion _label="breadcrumb 2" _open>
-				<div>
-					<div class="row">
-						<div class="col-12">
-							<div class="gap-2 d-flex">
-								<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v9"></kol-badge>
-								<kol-badge _icon="codicon codicon-checklist" _color="#033" _label="Snapshot-Tests"></kol-badge>
-							</div>
-							<kol-heading _label="" _level="2">Breadcrumb</kol-heading>
-						</div>
-						<div class="gap-2 py-2 col-12 d-grid">
-							<kol-breadcrumb
-								_label="Breadcrumb aus Text-Links"
-								_links="[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- oder Text-Links"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- und Text-Links"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_href':'#/'},{'_label':'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- und Text-Links 2"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
-							>
-							</kol-breadcrumb>
-						</div>
-					</div>
-				</div>
-			</kol-accordion>
-			<kol-details _label="details 1">
-				<div>
-					<div class="row">
-						<div class="col-12">
-							<div class="gap-2 d-flex">
-								<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v9"></kol-badge>
-								<kol-badge _icon="codicon codicon-checklist" _color="#033" _label="Snapshot-Tests"></kol-badge>
-							</div>
-							<kol-heading _label="" _level="2">Breadcrumb</kol-heading>
-						</div>
-						<div class="gap-2 py-2 col-12 d-grid">
-							<kol-breadcrumb
-								_label="Breadcrumb aus Text-Links"
-								_links="[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- oder Text-Links"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- und Text-Links"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_href':'#/'},{'_label':'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- und Text-Links 2"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
-							>
-							</kol-breadcrumb>
-						</div>
-					</div>
-				</div>
-			</kol-details>
-			<kol-details _label="details 2" _open>
-				<div>
-					<div class="row">
-						<div class="col-12">
-							<div class="gap-2 d-flex">
-								<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v9"></kol-badge>
-								<kol-badge _icon="codicon codicon-checklist" _color="#033" _label="Snapshot-Tests"></kol-badge>
-							</div>
-							<kol-heading _label="" _level="2">Breadcrumb</kol-heading>
-						</div>
-						<div class="gap-2 py-2 col-12 d-grid">
-							<kol-breadcrumb
-								_label="Breadcrumb aus Text-Links"
-								_links="[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- oder Text-Links"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- und Text-Links"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_href':'#/'},{'_label':'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
-							>
-							</kol-breadcrumb>
-							<kol-breadcrumb
-								_label="Breadcrumb aus Icons- und Text-Links 2"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
-							>
-							</kol-breadcrumb>
-						</div>
-					</div>
-				</div>
-			</kol-details>
-		</main>
-		<script>
-			document.addEventListener('DOMContentLoaded', () => {
-				console.log('DOMContentLoaded');
-				const interval = setInterval(() => {
-					const items = document.querySelectorAll('kol-accordion,kol-details');
-					if (items) {
-						items.forEach((item) => {
-							item._open = !item._open;
-						});
-					}
-				}, 1000);
-			});
-		</script>
+	<main class="container">
+		<kol-pagination _total="11" _page="6" _variant="primary" _sibling-count="0"></kol-pagination>
+		<kol-pagination _total="11" _page="2" _variant="secondary" _has-buttons="false"></kol-pagination>
+		<kol-pagination
+			_total="11"
+			_page="10"
+			_variant="normal"
+			_has-buttons="{'first':false,'last':false,'next':false,'previous':false}"
+		></kol-pagination>
+		<kol-pagination
+			_total="11"
+			_page="1"
+			_variant="danger"
+			_sibling-count="0"
+			_boundary-count="2"
+			_has-buttons="{'first':true,'last':true,'next':false,'previous':false}"
+		>
+		</kol-pagination>
+		<kol-pagination
+			_total="11"
+			_page="11"
+			_variant="ghost"
+			_boundary-count="2"
+			_has-buttons="{'first':false,'last':false,'next':true,'previous':true}"
+		></kol-pagination>
+		<kol-pagination _total="110" _page="6" _page-size="1" _page-size-options="[10,20]" _variant="primary" _sibling-count="0"></kol-pagination>
+		<kol-pagination _total="110" _page="16" _page-size="5" _page-size-options="[20,15,10,5]" _variant="primary" _sibling-count="0"></kol-pagination>
+		<kol-pagination _total="110" _page="6" _page-size-options="[20,15,10,5]" _variant="primary" _sibling-count="0"></kol-pagination>
+		<kol-pagination _total="110" _page="50" _page-size-options="[20,15,10,5]" _variant="primary" _sibling-count="0"></kol-pagination>
+		<kol-indented-text>Wenn es keine Seiten gibt, dann wird die Pagination wie folgt angezeigt.</kol-indented-text>
+		<kol-pagination _total="0" _page="0 "></kol-pagination>
 	</body>
 </html>

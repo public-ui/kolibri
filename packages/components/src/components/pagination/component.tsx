@@ -58,7 +58,7 @@ export class KolPagination implements API {
 					}
 				} else if (ellipsis === true) {
 					ellipsis = false;
-					return <span class="separator" key={`${this.nonce}-el-${page}`}></span>;
+					return <span class="separator" key={`${this.nonce}-el-${page}`} aria-hidden="true"></span>;
 				} else {
 					return null;
 				}
