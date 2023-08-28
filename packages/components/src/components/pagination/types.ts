@@ -65,9 +65,10 @@ type RequiredStates = {
 	on: KoliBriPaginationButtonCallbacks;
 	siblingCount: number;
 	total: number;
-} & PropButtonVariant;
+} & PropButtonVariant &
+	PropLabel;
 
-type OptionalStates = PropCustomClass & PropLabel & PropTooltipAlign;
+type OptionalStates = PropCustomClass & PropTooltipAlign;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
