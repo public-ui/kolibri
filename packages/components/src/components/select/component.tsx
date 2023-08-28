@@ -98,7 +98,6 @@ export class KolSelect implements API {
 							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							autoCapitalize="off"
 							autoCorrect="off"
-							class="select"
 							disabled={this.state._disabled}
 							id={this.state._id}
 							multiple={this.state._multiple}
