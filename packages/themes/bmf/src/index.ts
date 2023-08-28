@@ -1961,6 +1961,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		position: relative;
 		min-height: 44px;
 		margin: 0;
+		gap: 0.5rem;
 	}
 	fieldset div label {
 		cursor: pointer;
