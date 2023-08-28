@@ -742,6 +742,11 @@ export const components: Record<string, Component> = {
 					</KolButtonGroup>
 				</div>
 			</KolCard>
+			<KolCard _hasCloser _heading="Kann geschlossen werden" _level={6}>
+				<div slot="content" style="background: lavender">
+					Inhalt über die ganze Breite
+				</div>
+			</KolCard>
 		</div>
 	),
 	'KOL-DETAILS': () => (
