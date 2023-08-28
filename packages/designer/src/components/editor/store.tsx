@@ -742,6 +742,11 @@ export const components: Record<string, Component> = {
 					</KolButtonGroup>
 				</div>
 			</KolCard>
+			<KolCard _hasCloser _heading="Kann geschlossen werden" _level={6}>
+				<div slot="content" style="background: lavender">
+					Inhalt über die ganze Breite
+				</div>
+			</KolCard>
 		</div>
 	),
 	'KOL-DETAILS': () => (
@@ -1401,7 +1406,7 @@ export const components: Record<string, Component> = {
 					modalElement = element;
 				}}
 			>
-				<KolCard _heading="Ich bin ein Modal">
+				<KolCard _heading="Ich bin ein Modal" style="width: 100%">
 					<div slot="content">
 						<KolButton
 							_label="Schließen"
