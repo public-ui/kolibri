@@ -1279,7 +1279,6 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		border-radius: calc(2 * var(--border-radius));
 		width: 100%;
 		height: 100%;
-		overflow: hidden;
 	}
 	kol-heading {
 		padding: 0.5rem;
