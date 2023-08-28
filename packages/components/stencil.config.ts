@@ -57,7 +57,6 @@ const TAGS = [
 	'kol-table',
 	'kol-tabs',
 	'kol-textarea',
-	'kol-toast',
 	'kol-toast-container',
 	'kol-version',
 ];

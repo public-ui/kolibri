@@ -4,16 +4,17 @@ import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { AlertType } from '../alert/types';
 import { API, States } from './types';
+import { ToastStatus } from '../toast-container/types';
 
 /**
  * @slot - Der Inhalt der Meldung.
  */
 @Component({
-	tag: 'kol-toast',
+	tag: 'kol-toast-wc',
 	styleUrls: {
 		default: './style.css',
 	},
-	shadow: true,
+	shadow: false,
 })
 export class KolToast implements API {
 	/**
@@ -22,9 +23,14 @@ export class KolToast implements API {
 	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Gibt die EventCallback-Function für das Schließen des Toasts an.
+	 * Defines the event callback functions for the component.
 	 */
 	@Prop() public _on?: KoliBriToastEventCallbacks;
+
+	/**
+	 * Defines the current toast status.
+	 */
+	@Prop() public _status!: ToastStatus;
 
 	/**
 	 * Defines either the type of the component or of the components interactive element.
@@ -33,6 +39,7 @@ export class KolToast implements API {
 
 	@State() public state: States = {
 		_label: '...',
+		_status: 'adding',
 	};
 
 	@Watch('_label')
@@ -45,6 +52,17 @@ export class KolToast implements API {
 		if (typeof value === 'object' && (typeof value?.onClose === 'function' || value.onClose === true)) {
 			setState<KoliBriToastEventCallbacks>(this, '_on', { onClose: value.onClose });
 		}
+	}
+
+	@Watch('_status')
+	public validateStatus(status?: ToastStatus): void {
+		watchValidator(
+			this,
+			'_status',
+			(status) => typeof status === 'string' && ['adding', 'settled', 'removing'].includes(status),
+			new Set('String {adding, settled, removing}'),
+			status
+		);
 	}
 
 	@Watch('_type')
@@ -61,6 +79,7 @@ export class KolToast implements API {
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
+		this.validateStatus(this._status);
 		this.validateType(this._type);
 	}
 
@@ -76,12 +95,10 @@ export class KolToast implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<div>
-					<kol-alert _alert={true} _label={this.state._label} _level={0} _hasCloser={true} _type={this.state._type} _variant="card" _on={this.on}>
-						<slot />
-					</kol-alert>
-				</div>
+			<Host class={`toast ${this.state._status}`}>
+				<kol-alert class="alert" _alert={true} _label={this.state._label} _level={0} _hasCloser={true} _type={this.state._type} _variant="card" _on={this.on}>
+					<slot />
+				</kol-alert>
 			</Host>
 		);
 	}

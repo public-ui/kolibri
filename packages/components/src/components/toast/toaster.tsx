@@ -1,11 +1,4 @@
-import { LabelPropType } from '../../types/props/label';
-import { AlertType } from '../alert/types';
-
-export type Toast = {
-	description: string;
-	label: LabelPropType;
-	type: AlertType;
-};
+import { Toast } from '../toast-container/types';
 
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();

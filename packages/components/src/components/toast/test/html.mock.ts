@@ -7,6 +7,7 @@ export const getToastHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
 		{
 			_label: '...',
+			_status: 'adding',
 		},
 		props
 	);

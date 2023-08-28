@@ -1,9 +1,18 @@
 import { Generic } from '@a11y-ui/core';
-import { Toast } from '../toast/toaster';
+import { LabelPropType } from '../../types/props/label';
+import { AlertType } from '../alert/types';
+
+export type ToastStatus = 'adding' | 'settled' | 'removing';
+
+export type Toast = {
+	description: string;
+	label: LabelPropType;
+	type: AlertType;
+};
 
 export type ToastState = {
 	toast: Toast;
-	status: 'adding' | 'settled' | 'removing';
+	status: ToastStatus;
 };
 
 type RequiredProps = NonNullable<unknown>;

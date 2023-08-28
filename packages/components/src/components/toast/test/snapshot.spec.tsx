@@ -19,6 +19,7 @@ executeTests<Props>(
 	{
 		_label: ['Überschrift'],
 		_type: ['default', 'error', 'info', 'success', 'warning'],
+		_status: ['adding', 'settled', 'removing'],
 	},
 	getToastHtml,
 	{

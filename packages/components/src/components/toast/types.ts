@@ -2,8 +2,11 @@ import { Generic } from '@a11y-ui/core';
 import { PropLabel } from '../../types/props/label';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { AlertType } from '../alert/types';
+import { ToastStatus } from '../toast-container/types';
 
-type RequiredProps = PropLabel;
+type RequiredProps = PropLabel & {
+	status: ToastStatus;
+};
 type OptionalProps = {
 	on: KoliBriToastEventCallbacks;
 	type: AlertType;

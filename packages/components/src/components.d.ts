@@ -61,8 +61,8 @@ import { SpinVariantPropType } from "./types/props/variant/spin";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
+import { Toast, ToastState, ToastStatus } from "./components/toast-container/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-import { Toast } from "./components/toast/toaster";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { TooltipAlignPropType } from "./types/props/tooltip-align";
 export { HeadingLevel } from "./types/heading-level";
@@ -119,8 +119,8 @@ export { SpinVariantPropType } from "./types/props/variant/spin";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
+export { Toast, ToastState, ToastStatus } from "./components/toast-container/types";
 export { KoliBriToastEventCallbacks } from "./types/toast";
-export { Toast } from "./components/toast/toaster";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -2916,22 +2916,26 @@ export namespace Components {
          */
         "_value"?: string;
     }
-    interface KolToast {
+    interface KolToastContainer {
+        "enqueue": (toast: Toast) => Promise<void>;
+    }
+    interface KolToastWc {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label": LabelPropType;
         /**
-          * Gibt die EventCallback-Function für das Schließen des Toasts an.
+          * Defines the event callback functions for the component.
          */
         "_on"?: KoliBriToastEventCallbacks;
+        /**
+          * Defines the current toast status.
+         */
+        "_status": ToastStatus;
         /**
           * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: AlertType;
-    }
-    interface KolToastContainer {
-        "enqueue": (toast: Toast) => Promise<void>;
     }
     interface KolTooltipWc {
         /**
@@ -3329,17 +3333,17 @@ declare global {
         prototype: HTMLKolTextareaElement;
         new (): HTMLKolTextareaElement;
     };
-    interface HTMLKolToastElement extends Components.KolToast, HTMLStencilElement {
-    }
-    var HTMLKolToastElement: {
-        prototype: HTMLKolToastElement;
-        new (): HTMLKolToastElement;
-    };
     interface HTMLKolToastContainerElement extends Components.KolToastContainer, HTMLStencilElement {
     }
     var HTMLKolToastContainerElement: {
         prototype: HTMLKolToastContainerElement;
         new (): HTMLKolToastContainerElement;
+    };
+    interface HTMLKolToastWcElement extends Components.KolToastWc, HTMLStencilElement {
+    }
+    var HTMLKolToastWcElement: {
+        prototype: HTMLKolToastWcElement;
+        new (): HTMLKolToastWcElement;
     };
     interface HTMLKolTooltipWcElement extends Components.KolTooltipWc, HTMLStencilElement {
     }
@@ -3413,8 +3417,8 @@ declare global {
         "kol-table": HTMLKolTableElement;
         "kol-tabs": HTMLKolTabsElement;
         "kol-textarea": HTMLKolTextareaElement;
-        "kol-toast": HTMLKolToastElement;
         "kol-toast-container": HTMLKolToastContainerElement;
+        "kol-toast-wc": HTMLKolToastWcElement;
         "kol-tooltip-wc": HTMLKolTooltipWcElement;
         "kol-version": HTMLKolVersionElement;
     }
@@ -6214,21 +6218,25 @@ declare namespace LocalJSX {
          */
         "_value"?: string;
     }
-    interface KolToast {
+    interface KolToastContainer {
+    }
+    interface KolToastWc {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label": LabelPropType;
         /**
-          * Gibt die EventCallback-Function für das Schließen des Toasts an.
+          * Defines the event callback functions for the component.
          */
         "_on"?: KoliBriToastEventCallbacks;
+        /**
+          * Defines the current toast status.
+         */
+        "_status": ToastStatus;
         /**
           * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: AlertType;
-    }
-    interface KolToastContainer {
     }
     interface KolTooltipWc {
         /**
@@ -6315,8 +6323,8 @@ declare namespace LocalJSX {
         "kol-table": KolTable;
         "kol-tabs": KolTabs;
         "kol-textarea": KolTextarea;
-        "kol-toast": KolToast;
         "kol-toast-container": KolToastContainer;
+        "kol-toast-wc": KolToastWc;
         "kol-tooltip-wc": KolTooltipWc;
         "kol-version": KolVersion;
     }
@@ -6399,8 +6407,8 @@ declare module "@stencil/core" {
             "kol-table": LocalJSX.KolTable & JSXBase.HTMLAttributes<HTMLKolTableElement>;
             "kol-tabs": LocalJSX.KolTabs & JSXBase.HTMLAttributes<HTMLKolTabsElement>;
             "kol-textarea": LocalJSX.KolTextarea & JSXBase.HTMLAttributes<HTMLKolTextareaElement>;
-            "kol-toast": LocalJSX.KolToast & JSXBase.HTMLAttributes<HTMLKolToastElement>;
             "kol-toast-container": LocalJSX.KolToastContainer & JSXBase.HTMLAttributes<HTMLKolToastContainerElement>;
+            "kol-toast-wc": LocalJSX.KolToastWc & JSXBase.HTMLAttributes<HTMLKolToastWcElement>;
             "kol-tooltip-wc": LocalJSX.KolTooltipWc & JSXBase.HTMLAttributes<HTMLKolTooltipWcElement>;
             "kol-version": LocalJSX.KolVersion & JSXBase.HTMLAttributes<HTMLKolVersionElement>;
         }
