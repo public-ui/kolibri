@@ -1,0 +1,8 @@
+packages:
+  - 'packages/components'
+  - 'packages/create-kolibri'
+  - 'packages/designer'
+  - 'packages/schema'
+  - 'packages/themes'
+  - 'packages/adapters/*'
+  - 'packages/samples/*'

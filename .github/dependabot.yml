@@ -78,12 +78,6 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: npm
-    directory: /packages/adapters/svelte/
-    labels:
-      - dependabot
-    schedule:
-      interval: daily
-  - package-ecosystem: npm
     directory: /packages/adapters/vue/
     labels:
       - dependabot

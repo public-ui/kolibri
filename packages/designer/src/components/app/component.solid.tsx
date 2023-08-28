@@ -187,8 +187,8 @@ export const AppComponent: Component = () => {
 									sessionStorage.setItem('kolibri-component', getComponent());
 								},
 							}}
-							ref={(el) => {
-								select = el;
+							ref={(el: HTMLElement) => {
+								select = el as HTMLKolSelectElement;
 							}}
 						>
 							Komponenten

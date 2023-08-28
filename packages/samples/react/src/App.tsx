@@ -63,7 +63,7 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 								))}
 							</div>
 						}
-					/>
+					/>,
 				);
 			} else if (typeof ThisRoute === 'object' && ThisRoute !== null) {
 				const keys = Object.keys(ThisRoute);
@@ -78,7 +78,7 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 									{getRouteTree(ThisRoute)}
 								</Routes>
 							}
-						/>
+						/>,
 					);
 				}
 			}

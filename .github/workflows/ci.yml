@@ -31,12 +31,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           # cache: pnpm
-          node-version: 16
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
+          node-version: 18
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -46,23 +46,21 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store # -${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store
           restore-keys: |
             ${{ runner.os }}-pnpm-store
 
       - name: Install
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm i --no-frozen-lockfile
       - name: Unused
-        run: npm run ts-prune
+        run: pnpm -r run ts-prune
       - name: Depcheck
-        if: always()
-        run: npm run depcheck
+        run: pnpm -r run depcheck
       - name: Format
-        if: always()
-        run: npm run format
+        run: pnpm -r run format
+      - name: Build
+        run: pnpm -r run build
       - name: Lint
-        run: npm run lint
+        run: pnpm -r run lint
       - name: Test
-        run: npx lerna run test
-      - name: 'Pack'
-        run: npx lerna exec --stream -- npm pack
+        run: pnpm -r run test
