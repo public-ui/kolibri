@@ -1693,10 +1693,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: none;
 	}
 	/** Compact mode */
-	.entry.hideLabel :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	.entry.hide-label :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		place-items: center;
 	}
-	.entry.hideLabel :is(a, button) {
+	.entry.hide-label :is(a, button) {
 		padding: 0;
 	}`,
 	'KOL-CARD': `/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
