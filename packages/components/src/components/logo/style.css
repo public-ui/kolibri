@@ -4,3 +4,6 @@ text {
 	letter-spacing: normal;
 	word-spacing: normal;
 }
+svg {
+	max-height: 100%;
+}
