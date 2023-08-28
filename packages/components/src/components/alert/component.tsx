@@ -113,9 +113,8 @@ export class KolAlertWc implements API {
 	 */
 	@Prop() public _alert?: boolean = false;
 
-	/*  */
 	/**
-	 * Defines whether the card has a close button.
+	 * Defines whether the element can be closed.
 	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;

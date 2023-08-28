@@ -123,7 +123,7 @@ export class KolTextarea implements API {
 
 	/**
 	 * Adjusts the height of the element to its content.
-	 * TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
+	 * @TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 */
 	@Prop() public _adjustHeight?: boolean = false;
 
@@ -168,7 +168,7 @@ export class KolTextarea implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
 	 * Defines the maximum number of input characters.

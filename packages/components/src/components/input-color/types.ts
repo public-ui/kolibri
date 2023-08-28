@@ -13,7 +13,7 @@ import { PropHideLabel } from '../../types/props/hide-label';
 import { PropName } from '../../types/props/name';
 import { PropTouched } from '../../types/props/touched';
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -29,11 +29,12 @@ type OptionalProps = {
 	smartButton: Stringified<ButtonProps>;
 	tabIndex: number;
 	value: string;
-} & PropSuggestions &
-	PropSyncValueBySelector &
-	PropDisabled &
+} & PropDisabled &
 	PropHideLabel &
+	PropLabelWithExpertSlot &
 	PropName &
+	PropSuggestions &
+	PropSyncValueBySelector &
 	PropTouched;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 

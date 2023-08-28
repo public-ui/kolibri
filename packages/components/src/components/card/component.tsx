@@ -38,22 +38,20 @@ export class KolCard implements API {
 		return (
 			<Host>
 				<div class="card">
-					<div class="content-container">
-						<div class="header">
-							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
-							<slot name="header"></slot>
-						</div>
-						<div class="content">
-							<slot name="content"></slot>
-							{/* Deprecated for version 2 */}
-							<slot />
-						</div>
-						{this.state._hasFooter && (
-							<div class="footer">
-								<slot name="footer"></slot>
-							</div>
-						)}
+					<div class="header">
+						<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
+						<slot name="header"></slot>
 					</div>
+					<div class="content">
+						<slot name="content"></slot>
+						{/* Deprecated for version 2 */}
+						<slot />
+					</div>
+					{this.state._hasFooter && (
+						<div class="footer">
+							<slot name="footer"></slot>
+						</div>
+					)}
 
 					{this.state._hasCloser && (
 						<kol-button-wc
@@ -105,7 +103,7 @@ export class KolCard implements API {
 	@Prop() public _headline?: string;
 
 	/**
-	 * Defines the description of the component.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType;
 

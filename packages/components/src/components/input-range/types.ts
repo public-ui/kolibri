@@ -13,7 +13,7 @@ import { PropName } from '../../types/props/name';
 import { PropTouched } from '../../types/props/touched';
 import { PropId } from '../../types/props/id';
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -33,6 +33,7 @@ type OptionalProps = {
 	value: number;
 } & PropDisabled &
 	PropHideLabel &
+	PropLabelWithExpertSlot &
 	PropName &
 	PropSuggestions &
 	PropSyncValueBySelector &

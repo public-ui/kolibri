@@ -9,7 +9,6 @@ Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine vertik
 ```html
 <kol-link-group
 	_label="Einfache LinkGroup"
-	_caption="Überschrift der LinkGroup"
 	_links="[{'_label':'Link 1','_href':'https://www.w3.org'},{'_label':'Link 2','_href':'https://www.w3.org'},{'_label':'Link 3','_href':'https://www.w3.org'}]"
 	_list-style-type="disc"
 	_orientation="'vertical"

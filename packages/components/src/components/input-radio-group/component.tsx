@@ -80,7 +80,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.

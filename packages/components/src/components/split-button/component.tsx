@@ -15,7 +15,7 @@ import { watchBoolean } from '../../utils/prop.validators';
 import { API, States } from './types';
 
 /**
- * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
+ * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
  */
 @Component({
 	tag: 'kol-split-button',
