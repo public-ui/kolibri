@@ -59,7 +59,7 @@
 		"@types/prettier": "2.7.3",
 		"@unocss/preset-mini": "0.55.2",
 		"@unocss/webpack": "0.55.2",
-		"chromedriver": "114.0.3",
+		"chromedriver": "116.0.0",
 		"cpy-cli": "5.0.0",
 		"depcheck": "1.4.5",
 		"eslint-plugin-jsx-a11y": "6.7.1",
