@@ -84,7 +84,7 @@ export class KolInput implements Props {
 					</datalist>
 				)}
 				{this._hasCounter && (
-					<span aria-atomic="true" aria-live="polite">
+					<span class="counter" aria-atomic="true" aria-live="polite">
 						{this._currentLength}
 						{this._maxLength && (
 							<Fragment>

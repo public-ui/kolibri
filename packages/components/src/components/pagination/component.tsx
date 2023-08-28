@@ -11,6 +11,7 @@ import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/to
 import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -58,7 +59,11 @@ export class KolPagination implements API {
 					}
 				} else if (ellipsis === true) {
 					ellipsis = false;
-					return <span class="separator" key={`${this.nonce}-el-${page}`}></span>;
+					return (
+						<li>
+							<span class="separator" key={`${this.nonce}-el-${page}`} aria-hidden="true"></span>
+						</li>
+					);
 				} else {
 					return null;
 				}
@@ -283,32 +288,36 @@ export class KolPagination implements API {
 
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
-			<kol-button
-				exportparts="icon"
-				key={`${this.nonce}-${page}`}
-				_customClass={this.state._customClass}
-				_label={`${page}`}
-				_on={{
-					onClick: (event: Event) => {
-						this.onClick(event, page);
-					},
-				}}
-				_variant={this.state._variant}
-			></kol-button>
+			<li>
+				<kol-button
+					exportparts="icon"
+					key={`${this.nonce}-${page}`}
+					_customClass={this.state._customClass}
+					_label={`${page}`}
+					_on={{
+						onClick: (event: Event) => {
+							this.onClick(event, page);
+						},
+					}}
+					_variant={this.state._variant}
+				></kol-button>
+			</li>
 		);
 	}
 
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
-			<kol-button-wc
-				class="selected"
-				key={`${this.nonce}-selected`}
-				_customClass={this.state._customClass}
-				_disabled={true}
-				_ariaCurrent={true}
-				_label={`${page}`}
-				_variant={this.state._variant}
-			/>
+			<li>
+				<kol-button-wc
+					class="selected"
+					key={`${this.nonce}-selected`}
+					_customClass={this.state._customClass}
+					_disabled={true}
+					_ariaCurrent={true}
+					_label={`${page}`}
+					_variant={this.state._variant}
+				/>
+			</li>
 		);
 	}
 
@@ -323,8 +332,12 @@ export class KolPagination implements API {
 	}
 
 	@Watch('_label')
-	public validateLabel(label?: LabelPropType) {
+	public validateLabel(label?: LabelPropType, _oldValue?: LabelPropType, initial = false) {
+		if (!initial) {
+			removeNavLabel(this.state._label);
+		}
 		validateLabel(this, label);
+		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_hasButtons')
@@ -504,7 +517,7 @@ export class KolPagination implements API {
 		this.validateBoundaryCount(this._boundaryCount);
 		this.validateCustomClass(this._customClass);
 		this.validateHasButtons(this._hasButtons);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label, undefined, true);
 		this.validateOn(this._on);
 		this.validatePage(this._page);
 		this.validatePageSize(this._pageSize);
@@ -519,5 +532,9 @@ export class KolPagination implements API {
 		 * nicht korrekt berechnet wird.
 		 */
 		this.validatePage(this._page);
+	}
+
+	public disconnectedCallback(): void {
+		removeNavLabel(this.state._label);
 	}
 }
