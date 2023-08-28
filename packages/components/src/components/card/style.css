@@ -1,6 +1,10 @@
 @import url(../style.css);
 :host > div.card {
-	align-items: flex-start;
-	display: flex;
 	height: 100%;
+	position: relative;
+}
+.close {
+	position: absolute;
+	top: 0;
+	right: 0;
 }

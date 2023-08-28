@@ -24,7 +24,7 @@
 			</KolAlert>
 			<KolAlert :_type="'warning'" _heading="Mitwirken" _variant="card" :_level="2">
 				<KolLink _href="https://github.com/public-ui/kolibri/" _label="" _target="_blank">
-					<KolIcon _ariaLabel="" _icon="fa-brands fa-github" /> Github öffnen
+					<KolIcon _ariaLabel="" _icon="fa-brands fa-github" /> GitHub öffnen
 				</KolLink>
 			</KolAlert>
 			<KolAlert :_type="'error'" _heading="Kontakt" _variant="card" :_level="2">
