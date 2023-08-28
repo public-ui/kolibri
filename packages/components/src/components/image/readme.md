@@ -18,9 +18,7 @@ Die Komponente **Image** wird über das HTML-Tag `<kol-image>` erzeugt.
 
 ### Beispiele
 
-<kol-image _src="url-zum-bild.jpg" _alt="Beschreibung des Bildes"></kol-image>
-<kol-image _src="nur-dekoratives-bild.jpg" _alt=""></kol-image>
-<kol-image _src="hintergrundbild-der-hero-sektion.jpg" _alt="" _loading="eager"></kol-image>
+<kol-image _src="https://placehold.co/100x100/cc006e/white" _alt="Beispielbild: 100 × 100"></kol-image>
 
 ## Verwendung
 

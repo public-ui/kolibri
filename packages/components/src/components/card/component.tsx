@@ -105,7 +105,7 @@ export class KolCard implements API {
 	@Prop() public _headline?: string;
 
 	/**
-	 * Defines the description of the component.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType;
 

@@ -34,9 +34,7 @@ export type InputCheckboxIcon = {
 	unchecked: AnyIconFontClass;
 };
 
-type RequiredProps = PropLabelWithExpertSlot & {
-	value: Stringified<StencilUnknown>;
-};
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -49,11 +47,13 @@ type OptionalProps = {
 	 * @deprecated
 	 */
 	type: InputCheckboxVariant;
+	value: Stringified<StencilUnknown>;
 	variant: InputCheckboxVariant;
 } & PropChecked &
 	PropDisabled &
 	PropHideLabel &
 	PropIndeterminate &
+	PropLabelWithExpertSlot &
 	PropName &
 	PropRequired &
 	PropSyncValueBySelector &

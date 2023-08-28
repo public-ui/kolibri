@@ -216,7 +216,7 @@ export class KolInputRange implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
 	 * Deprecated: Gibt die Liste der Vorschlagswörter an.

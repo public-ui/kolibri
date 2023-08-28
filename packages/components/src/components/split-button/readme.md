@@ -7,10 +7,27 @@
 ### Code
 
 ```html
+<kol-split-button _label="Split-Button">
+	<div slot="popover">Split-Button Popover</div>
+</kol-split-button>
+```
 
+Geöffnet:
+
+```html
+<kol-split-button _label="Split-Button" _show-dropdown>
+	<div slot="popover">Split-Button Popover</div>
+</kol-split-button>
 ```
 
 ### Beispiel
+
+<kol-split-button _label="Split-Button">
+  <div slot="popover">Split-Button Popover</div>
+</kol-split-button>
+<kol-split-button _label="Split-Button" _show-dropdown>
+  <div slot="popover">Split-Button Popover</div>
+</kol-split-button>
 
 ## Verwendung
 

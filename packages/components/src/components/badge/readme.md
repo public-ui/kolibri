@@ -8,14 +8,14 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
 ### Code
 
 ```html
-<kol-badge _label="Beispieltext" _color="#b7e4b4" _icon="home" _icon-align="right"></kol-badge>
-<kol-badge _label="Beispieltext" _color="#0c8703" _icon="home" _icon-align="right"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#b7e4b4" _icon="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#0c8703" _icon="codicon codicon-home"></kol-badge>
 ```
 
 ### Beispiel
 
-<kol-badge _label="Beispieltext" _color="#b7e4b4" _icon="home" _icon-align="right"></kol-badge>
-<kol-badge _label="Beispieltext" _color="#0c8703" _icon="home" _icon-align="right"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#b7e4b4" _icon="codicon codicon-home"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#0c8703" _icon="codicon codicon-home"></kol-badge>
 
 ## Verwendung
 

@@ -26,10 +26,10 @@ export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, option
 	});
 };
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	required: boolean;
-};
+} & PropLabelWithExpertSlot;
 type InputCheckboxRadioProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 type InputCheckboxRadioWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 

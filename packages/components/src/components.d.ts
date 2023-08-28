@@ -203,7 +203,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -613,7 +613,7 @@ export namespace Components {
          */
         "_headline"?: string;
         /**
-          * Defines the description of the component.
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -890,7 +890,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Defines the technical name of an input field.
          */
@@ -929,7 +929,7 @@ export namespace Components {
         /**
           * Defines the value of the input.
          */
-        "_value": Stringified<StencilUnknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Defines which variant should be used for presentation.
          */
@@ -977,7 +977,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions instead.
@@ -1063,7 +1063,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagszahlen an.
           * @deprecated Use _suggestions instead.
@@ -1180,7 +1180,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions.
@@ -1297,7 +1297,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Makes the input accept multiple inputs.
           * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
@@ -1384,7 +1384,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagszahlen an.
           * @deprecated Use _suggestions intead.
@@ -1506,7 +1506,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Defines the maximum number of input characters.
          */
@@ -1601,7 +1601,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.
           * @deprecated Use _options.
@@ -1686,7 +1686,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -1762,7 +1762,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions.
@@ -1862,7 +1862,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions.
@@ -2386,7 +2386,7 @@ export namespace Components {
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
-          * Defines the description of the component.
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2526,7 +2526,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Options the user can choose from, also supporting Optgroup.
           * @deprecated use _options
@@ -2821,7 +2821,8 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Adjusts the height of the element to its content. TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
+          * Adjusts the height of the element to its content.
+          * @TODO : change back to AdjustHeightPropType after stencil #4663 has been resolved
          */
         "_adjustHeight"?: boolean;
         /**
@@ -2858,7 +2859,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Defines the maximum number of input characters.
          */
@@ -3500,7 +3501,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -3910,7 +3911,7 @@ declare namespace LocalJSX {
          */
         "_headline"?: string;
         /**
-          * Defines the description of the component.
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -4187,7 +4188,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Defines the technical name of an input field.
          */
@@ -4226,7 +4227,7 @@ declare namespace LocalJSX {
         /**
           * Defines the value of the input.
          */
-        "_value": Stringified<StencilUnknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Defines which variant should be used for presentation.
          */
@@ -4274,7 +4275,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions instead.
@@ -4360,7 +4361,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagszahlen an.
           * @deprecated Use _suggestions instead.
@@ -4477,7 +4478,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions.
@@ -4594,7 +4595,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Makes the input accept multiple inputs.
           * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
@@ -4681,7 +4682,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagszahlen an.
           * @deprecated Use _suggestions intead.
@@ -4803,7 +4804,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Defines the maximum number of input characters.
          */
@@ -4898,7 +4899,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.
           * @deprecated Use _options.
@@ -4983,7 +4984,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -5059,7 +5060,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions.
@@ -5159,7 +5160,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions.
@@ -5683,7 +5684,7 @@ declare namespace LocalJSX {
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
-          * Defines the description of the component.
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5823,7 +5824,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Deprecated: Options the user can choose from, also supporting Optgroup.
           * @deprecated use _options
@@ -6118,7 +6119,8 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Adjusts the height of the element to its content. TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
+          * Adjusts the height of the element to its content.
+          * @TODO : change back to AdjustHeightPropType after stencil #4663 has been resolved
          */
         "_adjustHeight"?: boolean;
         /**
@@ -6155,7 +6157,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Defines the maximum number of input characters.
          */

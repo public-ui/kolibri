@@ -14,7 +14,7 @@ import { PropRequired } from '../../types/props/required';
 import { PropTouched } from '../../types/props/touched';
 import { PropId } from '../../types/props/id';
 
-type RequiredProps = PropLabelWithExpertSlot;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accept: string;
 	alert: boolean;
@@ -28,6 +28,7 @@ type OptionalProps = {
 	value: string;
 } & PropDisabled &
 	PropHideLabel &
+	PropLabelWithExpertSlot &
 	PropMultiple &
 	PropName &
 	PropRequired &
