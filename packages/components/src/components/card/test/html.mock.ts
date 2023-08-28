@@ -14,31 +14,29 @@ export const getCardHtml = (props: Props): string => {
 	return `<kol-card>
 	<mock:shadow-root>
 		<div class="card">
-			<div class="content-container">
-				<div class="header">
-					${getHeadingWcHtml(
-						{
-							_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
-							_level: props._level,
-						},
-						{
-							default: '',
-						}
-					)}
-					<slot name="header"></slot>
-				</div>
-				<div class="content">
-					<slot name="content"></slot>
-					<slot />
-				</div>
-				${
-					props._hasFooter
-						? `<div class="footer">
-								<slot name="footer"></slot>
-							</div>`
-						: ''
-				}
+			<div class="header">
+				${getHeadingWcHtml(
+					{
+						_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
+						_level: props._level,
+					},
+					{
+						default: '',
+					}
+				)}
+				<slot name="header"></slot>
 			</div>
+			<div class="content">
+				<slot name="content"></slot>
+				<slot />
+			</div>
+			${
+				props._hasFooter
+					? `<div class="footer">
+							<slot name="footer"></slot>
+						</div>`
+					: ''
+			}
 			${
 				props._hasCloser
 					? getButtonWcHtml(
