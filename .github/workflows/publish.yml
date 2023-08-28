@@ -9,15 +9,6 @@ env:
   npmjs-tag: next
 
 on:
-  # pull_request:
-  #   branches:
-  #     - main
-  # push:
-  #   branches:
-  #     - main
-  # release:
-  #   types:
-  #     - released
   workflow_dispatch:
 
 jobs:
@@ -29,7 +20,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          # ref: 'main'
       # - uses: pnpm/action-setup@v2.2.2
       #   with:
       #     version: 7
@@ -170,4 +160,4 @@ jobs:
 
   publish-page:
     needs: publish
-    uses: public-ui/kolibri/.github/workflows/publish-page.yml@main
+    uses: public-ui/kolibri/.github/workflows/publish-page.yml@develop
