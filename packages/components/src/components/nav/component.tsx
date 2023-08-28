@@ -84,7 +84,7 @@ export class KolNav implements API {
 		expanded: boolean
 	): JSX.Element {
 		return (
-			<div class="entry">
+			<div class={{ entry: true, hideLabel }}>
 				<kol-button-link-text-switch
 					_link={{
 						...link,

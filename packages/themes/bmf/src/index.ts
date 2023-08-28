@@ -1591,7 +1591,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 	nav {
 		font-family: var(--font-family);
 		font-size: var(--font-size);
-		background-color: var(--color-smoke);
 		width: 100%;
 	}
 	ul {
@@ -1604,10 +1603,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: flex;
 		place-items: center;
 	}
-	.entry > kol-span-wc > span {
+	.entry > kol-button-link-text-switch {
 		width: 100%;
 	}
-	.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	.entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		background-color: var(--color-white);
 		text-decoration: none;
 		color: var(--color-midnight);
@@ -1622,55 +1623,81 @@ export const BMF = KoliBri.createTheme('bmf', {
 		transition-property: background-color, color, border-color;
 		letter-spacing: 0.175px;
 	}
-	.entry > :is(kol-link-wc, kol-button-wc):first-child :is(a, button) {
+	.entry
+		> kol-button-link-text-switch
+		> :is(kol-link-wc, kol-button-wc):first-child:is(a, button) {
 		color: var(--color-midnight);
 		text-decoration: none;
 	}
-	.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
+	.entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
 		border-left-color: var(--color-ocean);
 		background-color: var(--color-ocean);
+		letter-spacing: unset;
 	}
 	.entry
+		> kol-button-link-text-switch
 		> :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover
 		> :is(a, button, span) {
 		color: var(--color-white);
+		background-color: var(--color-ocean);
 		font-weight: 700;
 		letter-spacing: unset;
 	}
-	.selected > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	:is(.active, .selected).list.entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+		background-color: var(--color-smoke);
+	}
+	:is(.active, .selected)
+		> .entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		background-color: var(--color-ice);
 		color: var(--color-midnight);
 		font-weight: 700;
 	}
-	.selected
+	:is(.active, .selected)
+		> .entry
+		> kol-button-link-text-switch
 		> :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child
 		> :is(a, button, span) {
 		font-weight: 700;
 	}
-	.selected :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
+	:is(.active, .selected)
+		> .entry
+		> kol-button-link-text-switch
+		> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
 		color: var(--color-white);
 		letter-spacing: unset;
 	}
-	.entry > kol-span-wc > span,
+	.entry > kol-button-link-text-switch > kol-span-wc > span,
 	.entry :is(a, button) {
 		border-left-color: transparent;
 		border-left-style: solid;
 		border-left-width: 0.5rem;
 		padding: 0.75rem 0.5rem 0.75rem 0.25rem;
 	}
-	.selected :is(a, button),
+	:is(.active, .selected) kol-button-link-text-switch :is(a, button),
 	[exportparts*="selected"] a {
 		border-left-color: var(--color-midnight);
-	} /** Compact mode */
-	.entry.compact :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	}
+	:is(kol-button-wc button, kol-link-wc a) {
+		color: var(--color-midnight);
+	}
+	kol-link-wc a {
+		text-decoration: none;
+	}
+	kol-link-wc kol-icon {
+		display: none;
+	}
+	/** Compact mode */
+	.entry.hideLabel :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		place-items: center;
 	}
-	.entry.compact > kol-span-wc > span {
-		flex-direction: column;
-	}
-	.entry.compact > kol-span-wc > span,
-	.entry.compact :is(a, button) {
-		padding-left: 0;
+	.entry.hideLabel :is(a, button) {
+		padding: 0;
 	}`,
 	'KOL-CARD': `/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 	:host > div {
