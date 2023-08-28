@@ -32,4 +32,5 @@ export default {
 	'sort-none': 'Spalte {{column}} nicht sortiert',
 	'table-pagination-label': 'Paginierung für die Tabelle {{label}}',
 	'avatar-alt': 'Avatar von {{name}}',
+	'toast-close-all': 'Alle schließen',
 };
