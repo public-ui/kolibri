@@ -63,7 +63,7 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/compiler-cli": "16.2.1",
+		"@angular/compiler-cli": "16.2.2",
 		"@angular/compiler": "16.2.1",
 		"@angular/core": "16.2.1",
 		"@public-ui/components": "1.7.0-rc.0",
