@@ -69,9 +69,9 @@ Geöffnet:
 
 ## Slots
 
-| Slot | Description                                                |
-| ---- | ---------------------------------------------------------- |
-|      | Ermöglicht das Einfügen beliebigen HTML's in das dropdown. |
+| Slot | Description                                               |
+| ---- | --------------------------------------------------------- |
+|      | Ermöglicht das Einfügen beliebigen HTMLs in das dropdown. |
 
 ## Dependencies
 

@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-pagination")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.29")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-pagination")
 public class KolPagination extends Component {
 	/**
@@ -73,7 +73,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Defines the description of the component.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -82,7 +82,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Defines the description of the component.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
