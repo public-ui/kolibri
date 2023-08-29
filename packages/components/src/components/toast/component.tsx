@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { setState, watchValidator } from '../../utils/prop.validators';
