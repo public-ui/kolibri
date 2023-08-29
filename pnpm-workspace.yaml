@@ -1,9 +1,9 @@
 packages:
   - 'packages/adapters/angular/*'
-  - 'packages/adapters/hydrate'
-  - 'packages/adapters/preact'
-  - 'packages/adapters/react'
-  - 'packages/adapters/solid'
+  - 'packages/adapters/hydrate*'
+  - 'packages/adapters/preact*'
+  - 'packages/adapters/react*'
+  - 'packages/adapters/solid*'
   - 'packages/adapters/vue'
   - 'packages/components'
   - 'packages/create-kolibri'

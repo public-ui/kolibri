@@ -396,6 +396,28 @@ importers:
         specifier: 1.2.1
         version: 1.2.1
 
+  packages/adapters/react-standalone:
+    dependencies:
+      '@public-ui/components':
+        specifier: 1.6.2
+        version: link:../../components
+      react:
+        specifier: '>=16.14.0'
+        version: 18.2.0
+      react-dom:
+        specifier: '>=16.14.0'
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@public-ui/react':
+        specifier: 1.6.2
+        version: link:../react
+      cpy-cli:
+        specifier: 5.0.0
+        version: 5.0.0
+      unbuild:
+        specifier: 1.2.1
+        version: 1.2.1
+
   packages/adapters/solid:
     devDependencies:
       '@public-ui/components':
