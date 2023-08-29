@@ -2,9 +2,9 @@
 
 Das **Components**-Modul beinhaltet **alle** zur Komponenten-Bibliothek gehörenden **Web Components**.
 
-Mehr zur **Modularisierung** kann im [Architekturkonzept](https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md) nachgelesen werden.
+Mehr zur **Modularisierung** kann im [Architekturkonzept](https://public-ui.github.io/docs/concepts/architecture) nachgelesen werden.
 
-Mehr zum **Projekt** kann in der [README](https://github.com/public-ui/kolibri/#readme) nachgelesen werden.
+Mehr zum **Projekt** kann in der [README](https://public-ui.github.io/docs) nachgelesen werden.
 
 ## Weiterentwicklung
 
