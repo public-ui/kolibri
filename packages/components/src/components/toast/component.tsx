@@ -11,9 +11,6 @@ import { ToastStatus } from '../toast-container/types';
  */
 @Component({
 	tag: 'kol-toast-wc',
-	styleUrls: {
-		default: './style.css',
-	},
 	shadow: false,
 })
 export class KolToast implements API {
