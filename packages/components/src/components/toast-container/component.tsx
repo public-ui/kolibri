@@ -1,6 +1,7 @@
 import { Component, Fragment, h, JSX, Method, State } from '@stencil/core';
 import { API, States, Toast, ToastState } from './types';
 import { translate } from '../../i18n';
+import { nonce } from '../../utils/dev.utils';
 
 const TRANSITION_TIMEOUT = 300;
 
@@ -23,6 +24,7 @@ export class KolToastContainer implements API {
 		const newToastState: ToastState = {
 			toast,
 			status: 'adding',
+			id: `toast-${nonce()}`,
 		};
 		this.state = {
 			...this.state,

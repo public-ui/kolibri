@@ -13,6 +13,7 @@ export type Toast = {
 export type ToastState = {
 	toast: Toast;
 	status: ToastStatus;
+	id: string;
 };
 
 type RequiredProps = NonNullable<unknown>;
