@@ -19,7 +19,6 @@ export type ToastState = {
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = NonNullable<unknown>;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps & {
 	toastStates: ToastState[];
