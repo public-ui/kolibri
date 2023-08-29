@@ -66,8 +66,18 @@ export class KolToastContainer implements API {
 	private handleCloseAllClick() {
 		this.state = {
 			...this.state,
-			_toastStates: [],
+			_toastStates: this.state._toastStates.map((localToastState) => ({
+				...localToastState,
+				status: 'removing',
+			})),
 		};
+
+		setTimeout(() => {
+			this.state = {
+				...this.state,
+				_toastStates: [],
+			};
+		}, TRANSITION_TIMEOUT);
 	}
 
 	public render(): JSX.Element {
