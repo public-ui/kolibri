@@ -826,45 +826,68 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-INPUT-CHECKBOX': () => (
 		<div class="grid gap-6">
-			<KolInputCheckbox _id="checkbox-1" _required>
-				Unchecked
-			</KolInputCheckbox>
-			<KolInputCheckbox _id="checkbox-2" _indeterminate _required>
-				Unchecked (indeterminate)
-			</KolInputCheckbox>
-			<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-3" _touched _error={ERROR_MSG}>
-				Checked
-			</KolInputCheckbox>
-			<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-4" _indeterminate _touched _error={ERROR_MSG}>
-				Checked (indeterminate)
-			</KolInputCheckbox>
+			<KolInputCheckbox _value={true} _label="Unchecked" _id="checkbox-1" _required></KolInputCheckbox>
+			<KolInputCheckbox _value={true} _label="Unchecked (indeterminate)" _id="checkbox-2" _indeterminate _required></KolInputCheckbox>
+			<KolInputCheckbox _value={true} _label="Checked" _checked _hint="Here is a hint for you!" _id="checkbox-3" _touched _error={ERROR_MSG}></KolInputCheckbox>
+			<KolInputCheckbox
+				_value={true}
+				_label="Checked (indeterminate)"
+				_checked
+				_hint="Here is a hint for you!"
+				_id="checkbox-4"
+				_indeterminate
+				_touched
+				_error={ERROR_MSG}
+			></KolInputCheckbox>
 			<hr />
-			<KolInputCheckbox _id="checkbox-switch-1" _required _variant="switch">
-				Unchecked
-			</KolInputCheckbox>
-			<KolInputCheckbox _id="checkbox-switch-2" _indeterminate _required _variant="switch">
-				Unchecked (indeterminate)
-			</KolInputCheckbox>
-			<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-switch-3" _variant="switch" _touched _error={ERROR_MSG}>
-				Checked
-			</KolInputCheckbox>
-			<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-switch-4" _indeterminate _variant="switch" _touched _error={ERROR_MSG}>
-				Checked (indeterminate)
-			</KolInputCheckbox>
+			<KolInputCheckbox _value={true} _label="Unchecked" _id="checkbox-switch-1" _required _variant="switch"></KolInputCheckbox>
+			<KolInputCheckbox _value={true} _label="Unchecked (indeterminate)" _id="checkbox-switch-2" _indeterminate _required _variant="switch"></KolInputCheckbox>
+			<KolInputCheckbox
+				_value={true}
+				_label="Checked"
+				_checked
+				_hint="Here is a hint for you!"
+				_id="checkbox-switch-3"
+				_variant="switch"
+				_touched
+				_error={ERROR_MSG}
+			></KolInputCheckbox>
+			<KolInputCheckbox
+				_value={true}
+				_label="Checked (indeterminate)"
+				_checked
+				_hint="Here is a hint for you!"
+				_id="checkbox-switch-4"
+				_indeterminate
+				_variant="switch"
+				_touched
+				_error={ERROR_MSG}
+			></KolInputCheckbox>
 			<hr />
-			<KolInputCheckbox _id="checkbox-button-1" _required _variant="button">
-				Unchecked
-			</KolInputCheckbox>
-			<KolInputCheckbox _id="checkbox-button-2" _indeterminate _required _variant="button">
-				Unchecked (indeterminate)
-			</KolInputCheckbox>
-			<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-button-3" _variant="button" _touched _error={ERROR_MSG}>
-				Checked
-			</KolInputCheckbox>
-			<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-button-4" _indeterminate _variant="button" _touched _error={ERROR_MSG}>
-				Checked (indeterminate)
-			</KolInputCheckbox>
-			<KolInputCheckbox _disabled _label="Disabled" _value={true} />
+			<KolInputCheckbox _value={true} _label="Unchecked" _id="checkbox-button-1" _required _variant="button"></KolInputCheckbox>
+			<KolInputCheckbox _value={true} _label="Unchecked (indeterminate)" _id="checkbox-button-2" _indeterminate _required _variant="button"></KolInputCheckbox>
+			<KolInputCheckbox
+				_value={true}
+				_label="Checked"
+				_checked
+				_hint="Here is a hint for you!"
+				_id="checkbox-button-3"
+				_variant="button"
+				_touched
+				_error={ERROR_MSG}
+			></KolInputCheckbox>
+			<KolInputCheckbox
+				_value={true}
+				_label="Checked (indeterminate)"
+				_checked
+				_hint="Here is a hint for you!"
+				_id="checkbox-button-4"
+				_indeterminate
+				_variant="button"
+				_touched
+				_error={ERROR_MSG}
+			></KolInputCheckbox>
+			<KolInputCheckbox _value={true} _disabled _label="Disabled" />
 		</div>
 	),
 	'KOL-INPUT-COLOR': () => (
@@ -883,56 +906,29 @@ export const components: Record<string, Component> = {
 					},
 				}}
 				_touched
-			>
-				Farbe
-			</KolInputColor>
-			<KolInputColor _id="farb1" _list="['#000000','#ff0000', '#0000ff','#00ff00']" _error={ERROR_MSG}>
-				Farbe
-			</KolInputColor>
-			<KolInputColor _id="farbe2" _hint="Hilfetext" _value="#ff0000">
-				Farbe (Disabled)
-			</KolInputColor>
-			<KolInputColor _disabled _id="farbe3" _value="#ff0000">
-				Farbe (Disabled)
-			</KolInputColor>
+				_label="Farbe"
+			></KolInputColor>
+			<KolInputColor _label="Farbe" _id="farb1" _list="['#000000','#ff0000', '#0000ff','#00ff00']" _error={ERROR_MSG}></KolInputColor>
+			<KolInputColor _label="Farbe (Disabled)" _id="farbe2" _hint="Hilfetext" _value="#ff0000"></KolInputColor>
+			<KolInputColor _label="Farbe (Disabled)" _disabled _id="farbe3" _value="#ff0000"></KolInputColor>
 		</div>
 	),
 	'KOL-INPUT-DATE': () => (
 		<div class="grid gap-6">
-			<KolInputDate _id="date1" _type="date">
-				Datumseingabe
-			</KolInputDate>
-			<KolInputDate _id="datetime-local1" _type="datetime-local">
-				Local-Datetime (Standard)
-			</KolInputDate>
-			<KolInputDate _id="datetime-local2" _step={1} _type="datetime-local" _error={ERROR_MSG}>
-				Local-Datetime (mit Sekunden)
-			</KolInputDate>
-			<KolInputDate _id="month" _type="month">
-				Monat
-			</KolInputDate>
-			<KolInputDate _id="week" _type="week">
-				Woche
-			</KolInputDate>
-			<KolInputDate _id="time" _type="time">
-				Zeit (Standard)
-			</KolInputDate>
-			<KolInputDate _id="time" _step={1} _type="time">
-				Zeit (mit Sekunden)
-			</KolInputDate>
-			<KolInputDate _id="date2" _read-only>
-				Zahleneingabe (Readonly)
-			</KolInputDate>
-			<KolInputDate _disabled _id="date3">
-				Zahleneingabe (Disabled)
-			</KolInputDate>
+			<KolInputDate _label="Datumseingabe" _id="date1" _type="date"></KolInputDate>
+			<KolInputDate _label="Local-Datetime (Standard)" _id="datetime-local1" _type="datetime-local"></KolInputDate>
+			<KolInputDate _label="Local-Datetime (mit Sekunden)" _id="datetime-local2" _step={1} _type="datetime-local" _error={ERROR_MSG}></KolInputDate>
+			<KolInputDate _label="Monat" _id="month" _type="month"></KolInputDate>
+			<KolInputDate _label="Woche" _id="week" _type="week"></KolInputDate>
+			<KolInputDate _label="Zeit (Standard)" _id="time" _type="time"></KolInputDate>
+			<KolInputDate _label="Zeit (mit Sekunden)" _id="time" _step={1} _type="time"></KolInputDate>
+			<KolInputDate _label="Zahleneingabe (Readonly)" _id="date2" _read-only></KolInputDate>
+			<KolInputDate _label="Zahleneingabe (Disabled)" _disabled _id="date3"></KolInputDate>
 		</div>
 	),
 	'KOL-INPUT-EMAIL': () => (
 		<div class="grid gap-6">
-			<KolInputEmail _id="email" _required _value="test@mail.de" _error={ERROR_MSG}>
-				E-Mail
-			</KolInputEmail>
+			<KolInputEmail _label="E-Mail" _id="email" _required _value="test@mail.de" _error={ERROR_MSG}></KolInputEmail>
 			<KolInputEmail
 				_id="email1"
 				_name="email1"
@@ -948,15 +944,10 @@ export const components: Record<string, Component> = {
 					},
 				}}
 				_touched
-			>
-				E-Mail (Liste)
-			</KolInputEmail>
-			<KolInputEmail _disabled _id="email2" _value="test@mail.de">
-				E-Mail (Disabled)
-			</KolInputEmail>
-			<KolInputEmail _id="email3" _read-only _value="test@mail.de">
-				E-Mail (Readonly)
-			</KolInputEmail>
+				_label="E-Mail (Liste)"
+			></KolInputEmail>
+			<KolInputEmail _label="E-Mail (Disabled)" _disabled _id="email2" _value="test@mail.de"></KolInputEmail>
+			<KolInputEmail _label="E-Mail (Readonly)" _id="email3" _read-only _value="test@mail.de"></KolInputEmail>
 		</div>
 	),
 	'KOL-INPUT-FILE': () => (
@@ -975,15 +966,10 @@ export const components: Record<string, Component> = {
 					},
 				}}
 				_touched
-			>
-				Datei hochladen
-			</KolInputFile>
-			<KolInputFile _id="file" _multiple _error={ERROR_MSG}>
-				Datei hochladen (Multiple)
-			</KolInputFile>
-			<KolInputFile _disabled _id="file">
-				Datei hochladen (Disabled)
-			</KolInputFile>
+				_label="Datei hochladen"
+			></KolInputFile>
+			<KolInputFile _label="Datei hochladen (Multiple)" _id="file" _multiple _error={ERROR_MSG}></KolInputFile>
+			<KolInputFile _label="Datei hochladen (Disabled)" _disabled _id="file"></KolInputFile>
 		</div>
 	),
 	'KOL-INPUT-NUMBER': () => (
@@ -1003,39 +989,18 @@ export const components: Record<string, Component> = {
 					},
 				}}
 				_touched
-			>
-				Zahleneingabe
-			</KolInputNumber>
-			<KolInputNumber _id="number" _max={10} _min={-10} _step={2}>
-				Zahleneingabe (-10 bis 10 in 2er Schritten)
-			</KolInputNumber>
-			<KolInputDate _id="date" _type="date">
-				Datumseingabe
-			</KolInputDate>
-			<KolInputDate _id="time" _type="datetime-local">
-				Local-Datetime (Standard)
-			</KolInputDate>
-			<KolInputDate _id="time" _step={1} _type="datetime-local" _error={ERROR_MSG}>
-				Local-Datetime (mit Sekunden)
-			</KolInputDate>
-			<KolInputDate _id="month" _type="month">
-				Monat
-			</KolInputDate>
-			<KolInputDate _id="week" _type="week">
-				Woche
-			</KolInputDate>
-			<KolInputDate _id="time" _type="time">
-				Zeit (Standard)
-			</KolInputDate>
-			<KolInputDate _id="time" _step={1} _type="time">
-				Zeit (mit Sekunden)
-			</KolInputDate>
-			<KolInputNumber _id="number" _read-only>
-				Zahleneingabe (Readonly)
-			</KolInputNumber>
-			<KolInputNumber _disabled _id="number">
-				Zahleneingabe (Disabled)
-			</KolInputNumber>
+				_label="Zahleneingabe"
+			></KolInputNumber>
+			<KolInputNumber _label="Zahleneingabe (-10 bis 10 in 2er Schritten)" _id="number" _max={10} _min={-10} _step={2}></KolInputNumber>
+			<KolInputDate _label="Datumseingabe" _id="date" _type="date"></KolInputDate>
+			<KolInputDate _label="Local-Datetime (Standard)" _id="time" _type="datetime-local"></KolInputDate>
+			<KolInputDate _label="Local-Datetime (mit Sekunden)" _id="time" _step={1} _type="datetime-local" _error={ERROR_MSG}></KolInputDate>
+			<KolInputDate _label="Monat" _id="month" _type="month"></KolInputDate>
+			<KolInputDate _label="Woche" _id="week" _type="week"></KolInputDate>
+			<KolInputDate _label="Zeit (Standard)" _id="time" _type="time"></KolInputDate>
+			<KolInputDate _label="Zeit (mit Sekunden)" _id="time" _step={1} _type="time"></KolInputDate>
+			<KolInputNumber _label="Zahleneingabe (Readonly)" _id="number" _read-only></KolInputNumber>
+			<KolInputNumber _label="Zahleneingabe (Disabled)" _disabled _id="number"></KolInputNumber>
 		</div>
 	),
 	'KOL-INPUT-PASSWORD': () => (
@@ -1067,15 +1032,10 @@ export const components: Record<string, Component> = {
 					},
 				}}
 				_touched
-			>
-				Passwort
-			</KolInputPassword>
-			<KolInputPassword _disabled _id="password" _error={ERROR_MSG}>
-				Passwort (Disabled)
-			</KolInputPassword>
-			<KolInputPassword _id="password" _read-only>
-				Passwort (Readonly)
-			</KolInputPassword>
+				_label="Passwort"
+			></KolInputPassword>
+			<KolInputPassword _label="Passwort (Disabled)" _disabled _id="password" _error={ERROR_MSG}></KolInputPassword>
+			<KolInputPassword _label="Passwort (Readonly)" _id="password" _read-only></KolInputPassword>
 		</div>
 	),
 	'KOL-INPUT-RADIO': () => (
@@ -1085,9 +1045,8 @@ export const components: Record<string, Component> = {
 				_error={ERROR_MSG}
 				_name="anrede"
 				_list="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
-			>
-				Anrede
-			</KolInputRadio>
+				_label="Anrede"
+			></KolInputRadio>
 			<KolInputRadio
 				_id="anrede"
 				_required
@@ -1095,9 +1054,8 @@ export const components: Record<string, Component> = {
 				_name="anrede2"
 				_value="Firma"
 				_list="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)','value':'Herr'},{'label':'Firma','value':'Firma'}]"
-			>
-				Anrede
-			</KolInputRadio>
+				_label="Anrede"
+			></KolInputRadio>
 			<KolInputRadio
 				_id="anrede"
 				_orientation="horizontal"
@@ -1106,9 +1064,8 @@ export const components: Record<string, Component> = {
 				_name="anrede2"
 				_value="Firma"
 				_list="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
-			>
-				Anrede (horizontal)
-			</KolInputRadio>
+				_label="Anrede (horizontal)"
+			></KolInputRadio>
 			<KolInputRadio
 				_id="anrede"
 				_disabled
@@ -1117,9 +1074,8 @@ export const components: Record<string, Component> = {
 				_name="anrede3"
 				_value="Firma"
 				_list="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
-			>
-				Anrede
-			</KolInputRadio>
+				_label="Anrede"
+			></KolInputRadio>
 		</div>
 	),
 	'KOL-INPUT-RANGE': () => (
@@ -1139,15 +1095,10 @@ export const components: Record<string, Component> = {
 					},
 				}}
 				_touched
-			>
-				Schieberegler
-			</KolInputRange>
-			<KolInputRange _id="range" _min={0} _max={50} _step={10} _error={ERROR_MSG}>
-				Schieberegler
-			</KolInputRange>
-			<KolInputRange _disabled _id="range" _min={0} _max={50}>
-				Schieberegler
-			</KolInputRange>
+				_label="Schieberegler"
+			></KolInputRange>
+			<KolInputRange _label="Schieberegler" _id="range" _min={0} _max={50} _step={10} _error={ERROR_MSG}></KolInputRange>
+			<KolInputRange _label="Schieberegler" _disabled _id="range" _min={0} _max={50}></KolInputRange>
 		</div>
 	),
 	'KOL-INPUT-TEXT': () => (
@@ -1182,9 +1133,8 @@ export const components: Record<string, Component> = {
 				}}
 				_touched
 				_type="search"
-			>
-				Suche
-			</KolInputText>
+				_label="Suche"
+			></KolInputText>
 			<KolInputText
 				_id=""
 				_error={ERROR_MSG}
@@ -1200,33 +1150,16 @@ export const components: Record<string, Component> = {
 				_hideLabel
 				_touched
 				_type="search"
-			>
-				Suche
-			</KolInputText>
-			<KolInputText _id="" _placeholder="Placeholder" _required _type="text">
-				Vorname (text)
-			</KolInputText>
-			<KolInputText _id="" _placeholder="Placeholder" _type="search">
-				Suche (search)
-			</KolInputText>
-			<KolInputText _id="vorname" _placeholder="Placeholder" _error={ERROR_MSG} _touched _type="url">
-				URL (url)
-			</KolInputText>
-			<KolInputText _id="" _placeholder="Placeholder" _type="tel">
-				Telefon (tel)
-			</KolInputText>
-			<KolInputText _id="" _placeholder="Placeholder" _read-only _type="text">
-				Vorname (text, readonly)
-			</KolInputText>
-			<KolInputText _id="" _value="Value" _read-only _type="text">
-				Vorname (text, readonly)
-			</KolInputText>
-			<KolInputText _id="" _placeholder="Placeholder" _disabled _type="text">
-				Vorname (text, disabled)
-			</KolInputText>
-			<KolInputText _id="" _value="Value" _disabled _type="text">
-				Vorname (text, disabled)
-			</KolInputText>
+				_label="Suche"
+			></KolInputText>
+			<KolInputText _label="Vorname (text)" _id="" _placeholder="Placeholder" _required _type="text"></KolInputText>
+			<KolInputText _label="Suche (search)" _id="" _placeholder="Placeholder" _type="search"></KolInputText>
+			<KolInputText _label="URL (url)" _id="vorname" _placeholder="Placeholder" _error={ERROR_MSG} _touched _type="url"></KolInputText>
+			<KolInputText _label="Telefon (tel)" _id="" _placeholder="Placeholder" _type="tel"></KolInputText>
+			<KolInputText _label="Vorname (text, readonly)" _id="" _placeholder="Placeholder" _read-only _type="text"></KolInputText>
+			<KolInputText _label="Vorname (text, readonly)" _id="" _value="Value" _read-only _type="text"></KolInputText>
+			<KolInputText _label="Vorname (text, disabled)" _id="" _placeholder="Placeholder" _disabled _type="text"></KolInputText>
+			<KolInputText _label="Vorname (text, disabled)" _id="" _value="Value" _disabled _type="text"></KolInputText>
 		</div>
 	),
 	'KOL-LINK-GROUP': () => (
@@ -1402,7 +1335,7 @@ export const components: Record<string, Component> = {
 			<KolModal
 				_ariaLabel=""
 				_width="80%"
-				ref={(element) => {
+				ref={(element: HTMLElement) => {
 					modalElement = element;
 				}}
 			>
@@ -1412,7 +1345,9 @@ export const components: Record<string, Component> = {
 							_label="Schließen"
 							_on={{
 								onClick: () => {
-									modalElement._activeElement = null;
+									if (modalElement instanceof HTMLKolModalElement) {
+										modalElement._activeElement = null;
+									}
 								},
 							}}
 						/>
@@ -1423,7 +1358,7 @@ export const components: Record<string, Component> = {
 				_label="Modal öffnen"
 				_on={{
 					onClick: (event: Event) => {
-						if (modalElement instanceof HTMLElement) {
+						if (modalElement instanceof HTMLKolModalElement) {
 							modalElement._activeElement = event.target as HTMLElement;
 						}
 					},
@@ -1470,12 +1405,8 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-SELECT': () => (
 		<div class="grid gap-6">
-			<KolSelect _id="" _list={STATUS_OPTIONS} _error={ERROR_MSG}>
-				Anrede
-			</KolSelect>
-			<KolSelect _id="" _disabled _list={STATUS_OPTIONS} _error={ERROR_MSG}>
-				Anrede
-			</KolSelect>
+			<KolSelect _label="Anrede" _id="" _list={STATUS_OPTIONS} _error={ERROR_MSG}></KolSelect>
+			<KolSelect _label="Anrede" _id="" _disabled _list={STATUS_OPTIONS} _error={ERROR_MSG}></KolSelect>
 			<KolSelect
 				_id=""
 				_list={STATUS_OPTIONS}
@@ -1489,12 +1420,9 @@ export const components: Record<string, Component> = {
 						icon: 'codicon codicon-home',
 					},
 				}}
-			>
-				Anrede
-			</KolSelect>
-			<KolSelect _id="" _list={STATUS_OPTIONS} _multiple _required _error={ERROR_MSG}>
-				Anrede
-			</KolSelect>
+				_label="Anrede"
+			></KolSelect>
+			<KolSelect _label="Anrede" _id="" _list={STATUS_OPTIONS} _multiple _required _error={ERROR_MSG}></KolSelect>
 		</div>
 	),
 	'KOL-SPIN': () => (
@@ -1656,20 +1584,12 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-TEXTAREA': () => (
 		<div class="grid gap-6">
-			<KolTextarea _rows={1} _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched>
-				Ihre Nachricht (1 Row)
-			</KolTextarea>
-			<KolTextarea _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched>
-				Ihre Nachricht
-			</KolTextarea>
-			<KolTextarea _resize="none" _rows={10} _required _error={ERROR_MSG}>
-				Ihre Nachricht
-			</KolTextarea>
-			<KolTextarea _hasCounter _maxLength={200} _resize="none" _rows={10} _required _error={ERROR_MSG}>
-				Ihre Nachricht
-			</KolTextarea>
-			<KolTextarea _disabled>Ihre Nachricht (Disabled)</KolTextarea>
-			<KolTextarea _read-only>Ihre Nachricht (Readonly)</KolTextarea>
+			<KolTextarea _label="Ihre Nachricht (1 Row)" _rows={1} _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched></KolTextarea>
+			<KolTextarea _label="Ihre Nachricht" _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched></KolTextarea>
+			<KolTextarea _label="Ihre Nachricht" _resize="none" _rows={10} _required _error={ERROR_MSG}></KolTextarea>
+			<KolTextarea _label="Ihre Nachricht" _hasCounter _maxLength={200} _resize="none" _rows={10} _required _error={ERROR_MSG}></KolTextarea>
+			<KolTextarea _label="Ihre Nachricht (Disabled)" _disabled></KolTextarea>
+			<KolTextarea _label="Ihre Nachricht (Readonly)" _read-only></KolTextarea>
 		</div>
 	),
 	'KOL-SKIP-NAV': () => (

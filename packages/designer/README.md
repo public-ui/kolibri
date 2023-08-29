@@ -200,7 +200,6 @@ Currently the following framework extensions are available:
 - [`@leanup/cli-preact`](https://www.npmjs.com/package/@leanup/cli-preact) ✔️
 - [`@leanup/cli-react`](https://www.npmjs.com/package/@leanup/cli-react) ✔️
 - [`@leanup/cli-solid`](https://www.npmjs.com/package/@leanup/cli-solid) ✔️
-- [`@leanup/cli-svelte`](https://www.npmjs.com/package/@leanup/cli-svelte) ✔️
 - [`@leanup/cli-vue`](https://www.npmjs.com/package/@leanup/cli-vue) ✔️
 - [`@leanup/cli-vue3`](https://www.npmjs.com/package/@leanup/cli-vue3) ✔️
 
@@ -237,7 +236,6 @@ There a separate packages for important application features.
 [sinon]: https://sinonjs.org
 [nyc]: https://istanbul.js.org
 [storybook]: https://storybook.js.org
-[svelte devtools]: https://github.com/RedHatter/svelte-devtools
 [nightwatch.js]: https://nightwatchjs.org
 [tslint]: https://palantir.github.io/tslint
 [eslint]: https://eslint.org

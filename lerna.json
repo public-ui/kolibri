@@ -24,6 +24,6 @@
 		"packages/themes/itzbund",
 		"packages/themes/mfm"
 	],
-	"useNx": false,
+	"useNx": true,
 	"version": "1.6.2"
 }

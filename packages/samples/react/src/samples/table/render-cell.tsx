@@ -44,7 +44,7 @@ const HEADERS: KoliBriTableHeaders = {
 						<>
 							<KolButton _label={'Speichern'} />
 							<KolInputText _id="test">Eingabe</KolInputText>
-						</>
+						</>,
 					);
 				},
 			},

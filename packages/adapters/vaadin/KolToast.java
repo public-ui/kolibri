@@ -14,7 +14,7 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
  */
 
 @Tag("kol-toast")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.29")
+@NpmPackage(value = "@public-ui/components", version = "1.6.2")
 @JsModule("@public-ui/components/dist/components/kol-toast")
 public class KolToast extends Component {
 	/**
@@ -37,7 +37,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines whether the card has a close button.
+	 * Defines whether the element can be closed.
 	 *
 	 * @param value String
 	 */
@@ -46,7 +46,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines whether the card has a close button.
+	 * Defines whether the element can be closed.
 	 *
 	 * @return Optional<String>
 	 */

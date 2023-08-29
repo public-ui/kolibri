@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-skip-nav")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.29")
+@NpmPackage(value = "@public-ui/components", version = "1.6.2")
 @JsModule("@public-ui/components/dist/components/kol-skip-nav")
 public class KolSkipNav extends Component {
 	/**

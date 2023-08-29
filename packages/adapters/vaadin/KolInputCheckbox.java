@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-input-checkbox")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.29")
+@NpmPackage(value = "@public-ui/components", version = "1.6.2")
 @JsModule("@public-ui/components/dist/components/kol-input-checkbox")
 public class KolInputCheckbox extends Component {
 	/**

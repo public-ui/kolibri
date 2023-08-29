@@ -72,8 +72,6 @@ Folgende Pakete/Artefakte von **[KoliBri]** werden in der öffentlichen [NPM-Reg
 |      [![Vue-Framework](https://public-ui.github.io/assets/logos/logo.vue.png)](https://vuejs.org)      | **[Vue]**-Components<br/><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **[Vue]** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                    |
 | [![Solid-Framework](https://public-ui.github.io/assets/logos/logo.solid.png)](https://www.solidjs.com) | **[Solid]**-Components<br/><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **[Solid]** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                |
 | [![Preact-Framework](https://public-ui.github.io/assets/logos/logo.preact.png)](https://preactjs.com)  | **[Preact]**-Components (experimentell)<br/><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **[Preact]** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                              |
-|  [![Svelte-Framework](https://public-ui.github.io/assets/logos/logo.svelte.png)](https://svelte.dev)   | **[Svelte]**-Components (offen)<br/><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **[Svelte]** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                      |
-|   [![Ember-Framework](https://public-ui.github.io/assets/logos/logo.ember.png)](https://emberjs.com)   | **[Ember]**-Components (offen)<br/><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **[Ember]** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                        |
 
 #### Server-Side-Frameworks
 
@@ -92,7 +90,6 @@ Folgende Pakete/Artefakte von **[KoliBri]** werden in der öffentlichen [NPM-Reg
 [React]: https://reactjs.org
 [Remix]: https://remix.run
 [Solid]: https://www.solidjs.com
-[Svelte]: https://svelte.dev
 [Vue]: https://vuejs.org
 
 ## Changelog

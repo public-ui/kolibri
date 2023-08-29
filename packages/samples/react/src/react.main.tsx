@@ -32,7 +32,7 @@ register([BAMF, BMF, DEFAULT, BZSt, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAP
 					<Router>
 						<App />
 					</Router>
-				</StrictMode>
+				</StrictMode>,
 			);
 		}
 	})
