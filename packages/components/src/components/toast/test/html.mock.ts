@@ -1,6 +1,4 @@
 import { mixMembers } from 'stencil-awesome-test';
-
-import { getAlertHtml } from '../../alert/test/html.mock';
 import { Props, States } from '../types';
 
 export const getToastHtml = (props: Props): string => {
@@ -8,25 +6,18 @@ export const getToastHtml = (props: Props): string => {
 		{
 			_label: '...',
 			_status: 'adding',
+			_type: 'default',
 		},
 		props
 	);
 	return `
 <kol-toast>
-  <mock:shadow-root>
-    <div>
-        ${getAlertHtml(
-					{
-						_alert: true,
-						_label: state._label,
-						_level: 0,
-						_hasCloser: true,
-						_type: state._type,
-						_variant: 'card',
-					},
-					'<slot />'
-				)}
-    </div>
-  </mock:shadow-root>
+	<mock:shadow-root>
+		<div class="toast ${state._status}">
+			<kol-alert _alert="" _hascloser="" _label="${state._label}" _level="0" _type="${state._type}" _variant="card" class="alert">
+				<slot></slot>
+			</kol-alert>
+		</div>
+	</mock:shadow-root>
 </kol-toast>`;
 };
