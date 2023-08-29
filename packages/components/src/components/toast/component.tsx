@@ -10,8 +10,11 @@ import { ToastStatus } from '../toast-container/types';
  * @slot - Der Inhalt der Meldung.
  */
 @Component({
-	tag: 'kol-toast-wc',
-	shadow: false,
+	tag: 'kol-toast',
+	shadow: true,
+	styleUrls: {
+		default: './style.css',
+	},
 })
 export class KolToast implements API {
 	/**
@@ -92,11 +95,11 @@ export class KolToast implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host class={`toast ${this.state._status}`}>
+			<div class={`toast ${this.state._status}`}>
 				<kol-alert class="alert" _alert={true} _label={this.state._label} _level={0} _hasCloser={true} _type={this.state._type} _variant="card" _on={this.on}>
 					<slot />
 				</kol-alert>
-			</Host>
+			</div>
 		);
 	}
 }
