@@ -4,7 +4,7 @@ import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { AlertType } from '../alert/types';
 import { API, States } from './types';
-import { ToastStatus } from '../toast-container/types';
+import { ToastStatus, toastStatusOptions } from '../toast-container/types';
 
 /**
  * @slot - Der Inhalt der Meldung.
@@ -59,7 +59,7 @@ export class KolToast implements API {
 		watchValidator(
 			this,
 			'_status',
-			(status) => typeof status === 'string' && ['adding', 'settled', 'removing'].includes(status),
+			(status) => typeof status === 'string' && toastStatusOptions.includes(status),
 			new Set('String {adding, settled, removing}'),
 			status
 		);

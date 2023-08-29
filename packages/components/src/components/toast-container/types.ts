@@ -2,7 +2,8 @@ import { Generic } from '@a11y-ui/core';
 import { LabelPropType } from '../../types/props/label';
 import { AlertType } from '../alert/types';
 
-export type ToastStatus = 'adding' | 'settled' | 'removing';
+export const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
+export type ToastStatus = (typeof toastStatusOptions)[number];
 
 export type Toast = {
 	description: string;
