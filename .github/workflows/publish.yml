@@ -9,15 +9,6 @@ env:
   npmjs-tag: next
 
 on:
-  # pull_request:
-  #   branches:
-  #     - main
-  # push:
-  #   branches:
-  #     - main
-  # release:
-  #   types:
-  #     - released
   workflow_dispatch:
 
 jobs:
@@ -29,7 +20,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          # ref: 'main'
       # - uses: pnpm/action-setup@v2.2.2
       #   with:
       #     version: 7
@@ -116,13 +106,6 @@ jobs:
         working-directory: packages/adapters/solid
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      # - name: Build and publish adapter svelte
-      #   run: |
-      #     npm i
-      #     npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-      #   working-directory: packages/adapters/svelte
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish adapter vue
         run: |
           npm i
@@ -170,4 +153,4 @@ jobs:
 
   publish-page:
     needs: publish
-    uses: public-ui/kolibri/.github/workflows/publish-page.yml@main
+    uses: public-ui/kolibri/.github/workflows/publish-page.yml@develop

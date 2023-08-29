@@ -7,26 +7,22 @@
 ### Code
 
 ```html
-<kol-split-button _label="Split-Button">
-	<div slot="popover">Split-Button Popover</div>
-</kol-split-button>
+<kol-split-button _label="Split-Button">Split-Button Popover</kol-split-button>
 ```
 
 Geöffnet:
 
 ```html
-<kol-split-button _label="Split-Button" _show-dropdown>
-	<div slot="popover">Split-Button Popover</div>
-</kol-split-button>
+<kol-split-button _label="Split-Button" _show-dropdown>Split-Button Popover</kol-split-button>
 ```
 
 ### Beispiel
 
 <kol-split-button _label="Split-Button">
-  <div slot="popover">Split-Button Popover</div>
+  Split-Button Popover
 </kol-split-button>
 <kol-split-button _label="Split-Button" _show-dropdown>
-  <div slot="popover">Split-Button Popover</div>
+  Split-Button Popover
 </kol-split-button>
 
 ## Verwendung
@@ -73,9 +69,9 @@ Geöffnet:
 
 ## Slots
 
-| Slot | Description                                                |
-| ---- | ---------------------------------------------------------- |
-|      | Ermöglicht das Einfügen beliebigen HTML's in das dropdown. |
+| Slot | Description                                               |
+| ---- | --------------------------------------------------------- |
+|      | Ermöglicht das Einfügen beliebigen HTMLs in das dropdown. |
 
 ## Dependencies
 

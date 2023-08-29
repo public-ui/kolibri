@@ -27,7 +27,7 @@ type Country = {
 	STATUS_OPTIONS.push({
 		label: country.name,
 		value: country.alpha2,
-	})
+	}),
 );
 
 export const SelectBasic: FC = () => (

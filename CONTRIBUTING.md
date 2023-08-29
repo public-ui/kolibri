@@ -36,6 +36,10 @@ Sie können neue Funktionen anfordern, indem Sie ein Problem an unser Ticketsyst
 - Bei größeren Neuerungen legen Sie bitte ein Ticket mit der Beschreibung der neuen Funktion an.
 - Bei kleinen Neuerungen können Sie die Implementierung direkt als Pull Request anbieten und begründen.
 
+### Git-Flow
+
+Wir arbeiten nach dem Git-Flow: https://medium.com/android-news/gitflow-with-github-c675aa4f606a
+
 ### Änder-/Neuerungen implementieren
 
 - [pnpm installieren](https://pnpm.io/installation)

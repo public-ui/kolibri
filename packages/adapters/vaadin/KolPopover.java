@@ -15,7 +15,7 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
  */
 
 @Tag("kol-popover")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.29")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-popover")
 public class KolPopover extends Component {
 	/**

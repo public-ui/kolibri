@@ -6,6 +6,7 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchNavLinks } from '../nav/validation';
 import { BreadcrumbLinkProps, API, States } from './types';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -84,9 +85,13 @@ export class KolBreadcrumb implements API {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
+	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
+		if (!initial) {
+			removeNavLabel(this.state._label); // remove the current
+		}
 		validateLabel(this, value);
 		a11yHintLabelingLandmarks(value);
+		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_links')
@@ -95,7 +100,11 @@ export class KolBreadcrumb implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label || this._ariaLabel, undefined, true);
 		this.validateLinks(this._links);
+	}
+
+	public disconnectedCallback(): void {
+		removeNavLabel(this.state._label);
 	}
 }

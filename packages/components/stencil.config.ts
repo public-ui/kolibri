@@ -211,12 +211,6 @@ if (process.env.NODE_ENV === 'production') {
 			directivesProxyFile: '../adapters/angular/v16/src/components.ts',
 			includeImportCustomElements: false,
 		}),
-		// preactOutputTarget({
-		//   componentCorePackage: '@public-ui/components',
-		//   excludeComponents: EXCLUDE_TAGS,
-		//   proxiesFile: '../adapters/preact/src/index.ts',
-		//   includeDefineCustomElements: false,
-		// }),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
@@ -229,12 +223,6 @@ if (process.env.NODE_ENV === 'production') {
 			proxiesFile: '../adapters/solid/src/index.ts',
 			includeDefineCustomElements: false,
 		}),
-		// svelteOutputTarget({
-		// 	componentCorePackage: '@public-ui/components',
-		// 	excludeComponents: EXCLUDE_TAGS,
-		// 	proxiesFile: '../adapters/svelte/src/index.ts',
-		// 	includeDefineCustomElements: false,
-		// }),
 		vueOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,

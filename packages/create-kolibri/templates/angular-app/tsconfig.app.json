@@ -32,7 +32,6 @@
 		"src/**/*inferno*.ts",
 		"src/**/*preact*.ts",
 		"src/**/*react*.ts",
-		"src/**/*svelte*.ts",
 		"src/**/*vanilla*.ts",
 		"src/**/*vue*.ts"
 	]

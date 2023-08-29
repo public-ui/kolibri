@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-textarea")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.29")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-textarea")
 public class KolTextarea extends Component {
 	/**
@@ -36,7 +36,6 @@ public class KolTextarea extends Component {
 
 	/**
 	 * Adjusts the height of the element to its content.
-TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -46,7 +45,6 @@ TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 
 	/**
 	 * Adjusts the height of the element to its content.
-TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */

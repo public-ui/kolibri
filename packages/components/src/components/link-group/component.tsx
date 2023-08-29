@@ -9,6 +9,7 @@ import { watchBoolean, watchString, watchValidator } from '../../utils/prop.vali
 import { watchHeadingLevel } from '../heading/validation';
 import { watchNavLinks } from '../nav/validation';
 import { API, States, ListStyleType } from './types';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
@@ -133,8 +134,12 @@ export class KolLinkGroup implements API {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
+	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
+		if (!initial) {
+			removeNavLabel(this.state._label); // remove the current
+		}
 		validateLabel(this, value);
+		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_level')
@@ -201,11 +206,15 @@ export class KolLinkGroup implements API {
 
 	public componentWillLoad(): void {
 		this.validateHeading(this._heading);
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label || this._ariaLabel, undefined, true);
 		this.validateLevel(this._level);
 		this.validateListStyleType(this._listStyleType);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
+	}
+
+	public disconnectedCallback(): void {
+		removeNavLabel(this.state._label);
 	}
 }
 
