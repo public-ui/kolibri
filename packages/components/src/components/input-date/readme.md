@@ -14,6 +14,27 @@ Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können k
 
 <kol-input-date _type="date" _label="Erstellungsdatum" _icon='{"right": "codicon codicon-calendar"}'></kol-input-date>
 
+#### Datum entfernen
+
+Folgendes Beispiel zeigt eine Component in React, die die Möglichkeit bietet über einen Button den Wert im Datumsfeld zu entfernen.
+
+```jsx
+const ClearableDateInput = () => {
+  const [value, setValue] = useState<Date>();
+  return (
+    <>
+        <KolInputDate
+          _label="Lorem ipsum dolor sit"
+          _value={value}
+          _on={{ onChange: (_, v: Date) => setValue(v) }}
+        />
+        {/* Set null as value to clear the inputs value. */}
+        <KolButton _on={{ onClick: () => setValue(null) }} _label="Clear" />
+    </>
+  );
+};
+```
+
 ## Verwendung
 
 Die **InputDate**-Komponente kann für die Erfassung von Daten verwendet werden. Es verwendet intern die InputNumber-Komponente.
