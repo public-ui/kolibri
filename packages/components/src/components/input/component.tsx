@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Component, Fragment, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { Props as ButtonProps } from '../button/types';
@@ -18,10 +18,26 @@ import { IdPropType } from '../../types/props/id';
 	shadow: false,
 })
 export class KolInput implements Props {
+	@Element() private readonly host?: HTMLElement;
+
+	private slotName: string = 'input';
+
+	public componentWillRender(): void {
+		this.slotName = this._slotName ? this._slotName : 'input';
+	}
+
+	private catchInputSlot = (slot?: HTMLDivElement): void => {
+		if (slot) {
+			const content = this.host?.querySelector(`[slot="${this.slotName}"]`);
+			if (content) {
+				slot.appendChild(content);
+			}
+		}
+	};
+
 	public render(): JSX.Element {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
-		const slotName = this._slotName ? this._slotName : 'input';
 
 		return (
 			<Host
@@ -55,7 +71,7 @@ export class KolInput implements Props {
 					}}
 				>
 					{this._icon?.left && <kol-icon _ariaLabel="" _icon={(this._icon.left as KoliBriCustomIcon).icon}></kol-icon>}
-					<slot name={slotName}></slot>
+					<div ref={this.catchInputSlot} id={this.slotName}></div>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
 							_customClass={this._smartButton._customClass}
