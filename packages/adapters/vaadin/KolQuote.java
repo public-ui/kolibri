@@ -8,9 +8,14 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
-
-Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`inline`) und eine eingerückte(`block`) Variante. Beide Varianten enthalten einen Link auf die Quelle des Zitates.
+ * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als
+ * ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht.
+ * Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch
+ * erst nach einem abgeschlossenen Release erfolgen.
+ * 
+ * Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze
+ * Fließtext-(`inline`) und eine eingerückte(`block`) Variante. Beide Varianten
+ * enthalten einen Link auf die Quelle des Zitates.
  */
 
 @Tag("kol-quote")
@@ -56,7 +61,8 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -65,7 +71,8 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

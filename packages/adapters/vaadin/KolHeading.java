@@ -8,7 +8,11 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Überschrift angezeigt werden soll. Durch die Verwendung der unterschiedlichen Größen, lassen sich Inhalte klar strukturieren und Seiten wirkungsvoll und abwechslungsreich präsentieren. Sie trennt Styling von Semantik und ermöglicht Flexibilität.
+ * Die **Heading**-Komponente kann überall dort verwendet werden, wo eine
+ * Überschrift angezeigt werden soll. Durch die Verwendung der unterschiedlichen
+ * Größen, lassen sich Inhalte klar strukturieren und Seiten wirkungsvoll und
+ * abwechslungsreich präsentieren. Sie trennt Styling von Semantik und
+ * ermöglicht Flexibilität.
  */
 
 @Tag("kol-heading")
@@ -16,7 +20,9 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-heading")
 public class KolHeading extends Component {
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +31,9 @@ public class KolHeading extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +43,8 @@ public class KolHeading extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
+	 * shown as bold text.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +53,8 @@ public class KolHeading extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
+	 * shown as bold text.
 	 *
 	 * @return Optional<String>
 	 */

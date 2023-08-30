@@ -8,7 +8,10 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt werden. Sie dient dazu, Sehbehinderten das Überspringen von Seitenbereichen zu ermöglichen. Sie wird nur nach Anspringen durch die **Tab-Taste** sichtbar.
+ * Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt
+ * werden. Sie dient dazu, Sehbehinderten das Überspringen von Seitenbereichen
+ * zu ermöglichen. Sie wird nur nach Anspringen durch die **Tab-Taste**
+ * sichtbar.
  */
 
 @Tag("kol-skip-nav")
@@ -35,7 +38,8 @@ public class KolSkipNav extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -44,7 +48,8 @@ public class KolSkipNav extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

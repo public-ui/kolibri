@@ -8,11 +8,18 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
-
-<kol-alert _alert _heading="Hinweis" _level="1" _type="info">
-  Das Input-Radio dient der Abbildung einer Auswahlmöglichkeit bei der mindestens und maximal eine Auswahl getroffen werden kann. Das bedeutet, dass ein Input-Radio nicht einzeln vorkommen kann. Aufgrund dessen haben wir die Komponente als Listen-Komponente umgesetzt.
-</kol-alert><br/>
+ * Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen
+ * und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es
+ * kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden.
+ * Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch
+ * hervorgehobenen Kreis dargestellt.
+ * 
+ * <kol-alert _alert _heading="Hinweis" _level="1" _type="info">
+ * Das Input-Radio dient der Abbildung einer Auswahlmöglichkeit bei der
+ * mindestens und maximal eine Auswahl getroffen werden kann. Das bedeutet, dass
+ * ein Input-Radio nicht einzeln vorkommen kann. Aufgrund dessen haben wir die
+ * Komponente als Listen-Komponente umgesetzt.
+ * </kol-alert><br/>
  */
 
 @Tag("kol-input-radio")
@@ -20,7 +27,8 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-input-radio")
 public class KolInputRadio extends Component {
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive
+	 * element of the component.
 	 *
 	 * @param value String
 	 */
@@ -29,7 +37,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive
+	 * element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -153,7 +162,9 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @param value String
 	 */
@@ -162,7 +173,9 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -267,7 +280,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -276,7 +290,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */

@@ -8,12 +8,20 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Um einzelne Bereiche Ihrer Webseite optisch hervorzuheben, bietet sich die **Card**-Komponente an. Mit ihrer Hilfe können Sie Ihre Inhalte sehr einfach strukturieren.
-
-Die **Card**-Komponente besteht aus einem **_Titel-Bereich_**, einem **_Inhalts-Bereich_** und einem **_Fuß-Bereich_**.
-
-Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der **Inhalts-Bereich** ist optisch durch eine horizontale Trennlinie unterhalb des Titel-Bereichs abgetrennt und wird in der Standardschrift ausgegeben.
-Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktiviert und stellt dann Platz für weitere Inhalte, z.B. eine **Button**-Komponente bereit. Der Fuß-Bereich ist optisch durch eine horizontale Trennlinie vom Inhalts-Bereich abgetrennt.
+ * Um einzelne Bereiche Ihrer Webseite optisch hervorzuheben, bietet sich die
+ * **Card**-Komponente an. Mit ihrer Hilfe können Sie Ihre Inhalte sehr einfach
+ * strukturieren.
+ * 
+ * Die **Card**-Komponente besteht aus einem **_Titel-Bereich_**, einem
+ * **_Inhalts-Bereich_** und einem **_Fuß-Bereich_**.
+ * 
+ * Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der
+ * **Inhalts-Bereich** ist optisch durch eine horizontale Trennlinie unterhalb
+ * des Titel-Bereichs abgetrennt und wird in der Standardschrift ausgegeben.
+ * Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`**
+ * aktiviert und stellt dann Platz für weitere Inhalte, z.B. eine
+ * **Button**-Komponente bereit. Der Fuß-Bereich ist optisch durch eine
+ * horizontale Trennlinie vom Inhalts-Bereich abgetrennt.
  */
 
 @Tag("kol-card")
@@ -97,7 +105,8 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -106,7 +115,8 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -116,7 +126,8 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
+	 * shown as bold text.
 	 *
 	 * @param value String
 	 */
@@ -125,7 +136,8 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
+	 * shown as bold text.
 	 *
 	 * @return Optional<String>
 	 */

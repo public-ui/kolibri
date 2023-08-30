@@ -8,8 +8,11 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Mit **Badges** können Sie bestimmte Informationen auf Ihrer Webseite optisch hervorheben.
-KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnung der Textfarbe auch die Möglichkeit, einem Badge ein Icon und/oder einen anderen Schriftschnitt mitzugeben.
+ * Mit **Badges** können Sie bestimmte Informationen auf Ihrer Webseite optisch
+ * hervorheben.
+ * KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer
+ * Berechnung der Textfarbe auch die Möglichkeit, einem Badge ein Icon und/oder
+ * einen anderen Schriftschnitt mitzugeben.
  */
 
 @Tag("kol-badge")
@@ -37,9 +40,9 @@ public class KolBadge extends Component {
 
 	/**
 	 * Deprecated:
-⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
-  since it would not be accessible without visible labeling. A separate tooltip
-  is not planed, because a badge is not an interactive element.
+	 * ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
+	 * since it would not be accessible without visible labeling. A separate tooltip
+	 * is not planed, because a badge is not an interactive element.
 	 *
 	 * @param value String
 	 */
@@ -49,9 +52,9 @@ public class KolBadge extends Component {
 
 	/**
 	 * Deprecated:
-⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
-  since it would not be accessible without visible labeling. A separate tooltip
-  is not planed, because a badge is not an interactive element.
+	 * ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
+	 * since it would not be accessible without visible labeling. A separate tooltip
+	 * is not planed, because a badge is not an interactive element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -99,7 +102,8 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -108,7 +112,8 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -118,7 +123,8 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 * Allows to add a button with an arbitrary action within the element
+	 * (_hide-label only).
 	 *
 	 * @param value String
 	 */
@@ -127,7 +133,8 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 * Allows to add a button with an arbitrary action within the element
+	 * (_hide-label only).
 	 *
 	 * @return Optional<String>
 	 */

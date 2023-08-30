@@ -8,9 +8,18 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
 
 ### Code
 
-```html
-<kol-alert _label="Erfolg" _type="success">Hier wird der Erfolg näher beschrieben.</kol-alert>
-<kol-alert _type="success" _show="false">Hier wird der Erfolg näher beschrieben.</kol-alert>
+```js
+import { ToasterService } from '@public-ui/components';
+
+// Get the toaster instance for the current HTML document.
+const toaster = ToasterService.getInstance(document);
+
+// Enqueue a new toast to the toaster to display:
+toaster.enqueue({
+	label: 'This is the title',
+	description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
+	type: 'info',
+});
 ```
 
 ### Beispiel

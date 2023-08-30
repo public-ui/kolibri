@@ -8,7 +8,9 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach durchlaufen.
+ * Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche,
+ * aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach
+ * durchlaufen.
  */
 
 @Tag("kol-pagination")
@@ -54,7 +56,8 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Defines which navigation buttons to render (first, last, next, previous buttons).
+	 * Defines which navigation buttons to render (first, last, next, previous
+	 * buttons).
 	 *
 	 * @param value String
 	 */
@@ -63,7 +66,8 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Defines which navigation buttons to render (first, last, next, previous buttons).
+	 * Defines which navigation buttons to render (first, last, next, previous
+	 * buttons).
 	 *
 	 * @return Optional<String>
 	 */
@@ -73,7 +77,8 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -82,7 +87,8 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

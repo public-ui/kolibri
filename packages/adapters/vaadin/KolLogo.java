@@ -8,7 +8,10 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Mit Hilfe der **Logo**-Komponente können an beliebigen Positionen die Logos verschiedener Bundesinstitutionen ausgegeben werden. Das Logo wird dabei aus einer Sammlung von SVG-Grafiken zusammengesetzt, die fertig konstruiert vorliegen.
+ * Mit Hilfe der **Logo**-Komponente können an beliebigen Positionen die Logos
+ * verschiedener Bundesinstitutionen ausgegeben werden. Das Logo wird dabei aus
+ * einer Sammlung von SVG-Grafiken zusammengesetzt, die fertig konstruiert
+ * vorliegen.
  */
 
 @Tag("kol-logo")
@@ -16,7 +19,8 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-logo")
 public class KolLogo extends Component {
 	/**
-	 * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
+	 * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer
+	 * Bundesanstalt an.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +29,8 @@ public class KolLogo extends Component {
 	}
 
 	/**
-	 * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
+	 * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer
+	 * Bundesanstalt an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +40,8 @@ public class KolLogo extends Component {
 	}
 
 	/**
-	 * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
+	 * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt
+	 * an.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +50,8 @@ public class KolLogo extends Component {
 	}
 
 	/**
-	 * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
+	 * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt
+	 * an.
 	 *
 	 * @return Optional<String>
 	 */

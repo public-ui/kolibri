@@ -8,7 +8,10 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ `_type` des Alert.
+ * Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie
+ * besteht aus einem farblich gestalteten Container, einer Überschrift, einem
+ * Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche
+ * Gestaltung sind abhängig vom Typ `_type` des Alert.
  */
 
 @Tag("kol-alert")
@@ -73,7 +76,8 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -82,7 +86,8 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -92,7 +97,8 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
+	 * shown as bold text.
 	 *
 	 * @param value String
 	 */
@@ -101,7 +107,8 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
+	 * shown as bold text.
 	 *
 	 * @return Optional<String>
 	 */
@@ -111,7 +118,8 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive element.
+	 * Defines either the type of the component or of the components interactive
+	 * element.
 	 *
 	 * @param value String
 	 */
@@ -120,7 +128,8 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive element.
+	 * Defines either the type of the component or of the components interactive
+	 * element.
 	 *
 	 * @return Optional<String>
 	 */

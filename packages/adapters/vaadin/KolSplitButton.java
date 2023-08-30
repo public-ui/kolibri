@@ -8,7 +8,10 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
+ * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als
+ * ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht.
+ * Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch
+ * erst nach einem abgeschlossenen Release erfolgen.
  */
 
 @Tag("kol-split-button")
@@ -16,7 +19,8 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-split-button")
 public class KolSplitButton extends Component {
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive
+	 * element of the component.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +29,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive
+	 * element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +40,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Defines which elements are controlled by this component.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @param value String
 	 */
@@ -44,7 +50,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Defines which elements are controlled by this component.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @return Optional<String>
 	 */
@@ -54,7 +61,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Defines whether the interactive element of the component expanded something.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @param value String
 	 */
@@ -63,7 +71,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Defines whether the interactive element of the component expanded something.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @return Optional<String>
 	 */
@@ -92,7 +101,9 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Defines whether the interactive element of the component is selected (e.g.
+	 * role=tab).
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @param value String
 	 */
@@ -101,7 +112,9 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Defines whether the interactive element of the component is selected (e.g.
+	 * role=tab).
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @return Optional<String>
 	 */
@@ -206,7 +219,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -215,7 +229,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -282,7 +297,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -291,7 +307,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */
@@ -320,7 +337,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive element.
+	 * Defines either the type of the component or of the components interactive
+	 * element.
 	 *
 	 * @param value String
 	 */
@@ -329,7 +347,8 @@ public class KolSplitButton extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive element.
+	 * Defines either the type of the component or of the components interactive
+	 * element.
 	 *
 	 * @return Optional<String>
 	 */
