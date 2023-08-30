@@ -683,20 +683,32 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}`,
 	'KOL-TEXTAREA': `kol-input {
 		gap: 0.25em;
+		display: grid;
+		grid-template-areas: "error error" "label counter" "input input" "hint hint";
+		grid-template-columns: 1fr 115px;
 	}
 	kol-input .error {
 		order: 1;
+		grid-area: error;
 	}
 	kol-input label {
 		order: 2;
+		grid-area: label;
+	}
+	kol-input .counter {
+		order: 2;
+		grid-area: counter;
+		justify-self: end;
 	}
 	kol-input .input {
 		order: 3;
+		grid-area: input;
 	}
 	kol-input .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
+		grid-area: hint;
 	}
 	textarea {
 		border: none;
@@ -1698,6 +1710,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	.entry.hide-label :is(a, button) {
 		padding: 0;
+		border-left: 0;
 	}`,
 	'KOL-CARD': `/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 	:host > div {
