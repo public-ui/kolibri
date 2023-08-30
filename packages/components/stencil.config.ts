@@ -1,4 +1,5 @@
-import { promises as fs } from 'fs';
+import fs, { promises as fsPromises } from 'fs';
+import path from 'path';
 
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
@@ -143,8 +144,10 @@ async function generateCustomElementsJson(docsData: JsonDocs) {
 		})),
 	};
 
-	await fs.writeFile('./custom-elements.json', JSON.stringify(jsonData, null, 2));
+	await fsPromises.writeFile('./custom-elements.json', JSON.stringify(jsonData, null, 2));
 }
+
+const developmentHtmlFiles = fs.readdirSync(path.join(__dirname, 'src/dev')).filter((fileName: string) => fileName.endsWith('.html'));
 
 let outputTargets: OutputTarget[] = [
 	{
@@ -165,6 +168,7 @@ let outputTargets: OutputTarget[] = [
 			{
 				src: 'dev.html',
 			},
+			...developmentHtmlFiles.map((fileName) => ({ src: path.join('dev', fileName) })),
 		],
 	},
 	// {
