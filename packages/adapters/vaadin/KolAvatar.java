@@ -8,15 +8,17 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.
+ * Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder
+ * dessen Initialen an, falls kein Bild vorhanden ist.
  */
 
 @Tag("kol-avatar")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-avatar")
 public class KolAvatar extends Component {
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -25,7 +27,8 @@ public class KolAvatar extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

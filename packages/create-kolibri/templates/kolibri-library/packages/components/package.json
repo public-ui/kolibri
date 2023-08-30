@@ -35,9 +35,9 @@
 		"postinstall:components-lib": "cpy \"node_modules/@public-ui/components/dist/kolibri/**/*\" src/assets/kolibri/ --dot"
 	},
 	"dependencies": {
-		"@a11y-ui/core": "1.0.7",
-		"@public-ui/components": "1.6.2",
-		"@public-ui/schema": "1.6.2"
+		"@a11y-ui/core": "1.0.3",
+		"@public-ui/components": "1.7.0-rc.0",
+		"@public-ui/schema": "1.7.0-rc.0"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.5.0",

@@ -8,15 +8,17 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.
+ * Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text,
+ * Suchbegriffe, URLs oder Telefonnummern.
  */
 
 @Tag("kol-input-text")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-input-text")
 public class KolInputText extends Component {
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive
+	 * element of the component.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +27,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive
+	 * element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -206,7 +209,9 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @param value String
 	 */
@@ -215,7 +220,9 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -377,7 +384,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 * Allows to add a button with an arbitrary action within the element
+	 * (_hide-label only).
 	 *
 	 * @param value String
 	 */
@@ -386,7 +394,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 * Allows to add a button with an arbitrary action within the element
+	 * (_hide-label only).
 	 *
 	 * @return Optional<String>
 	 */
@@ -415,7 +424,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -424,7 +434,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */
@@ -472,7 +483,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive element.
+	 * Defines either the type of the component or of the components interactive
+	 * element.
 	 *
 	 * @param value String
 	 */
@@ -481,7 +493,8 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive element.
+	 * Defines either the type of the component or of the components interactive
+	 * element.
 	 *
 	 * @return Optional<String>
 	 */

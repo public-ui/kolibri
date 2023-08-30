@@ -8,11 +8,12 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Mit Hilfe der **Breadcrumb**-Komponente kann der Pfad zur aktuellen Position einer Webseite in einer hierarchischen Struktur dargestellt werden.
+ * Mit Hilfe der **Breadcrumb**-Komponente kann der Pfad zur aktuellen Position
+ * einer Webseite in einer hierarchischen Struktur dargestellt werden.
  */
 
 @Tag("kol-breadcrumb")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-breadcrumb")
 public class KolBreadcrumb extends Component {
 	/**
@@ -35,7 +36,8 @@ public class KolBreadcrumb extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -44,7 +46,8 @@ public class KolBreadcrumb extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

@@ -8,18 +8,26 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
-
-Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in ein temporäres Element zu setzen, das, ähnlich wie <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement angeordnet ist.
-Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
+ * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als
+ * ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht.
+ * Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch
+ * erst nach einem abgeschlossenen Release erfolgen.
+ * 
+ * Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in
+ * ein temporäres Element zu setzen, das, ähnlich wie
+ * <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement
+ * angeordnet ist.
+ * Das Triggerelement ist immer das im HTML vorangehende Element
+ * (previousSibling).
  */
 
 @Tag("kol-popover")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-popover")
 public class KolPopover extends Component {
 	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In
+	 * relation to trigger element.
 	 *
 	 * @param value String
 	 */
@@ -28,7 +36,8 @@ public class KolPopover extends Component {
 	}
 
 	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In
+	 * relation to trigger element.
 	 *
 	 * @return Optional<String>
 	 */

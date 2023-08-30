@@ -8,17 +8,24 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * <kol-alert _type="warning">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
-
-Die **Tooltip**-Komponente implementiert das Gegenstück zum `Aria-Label`. Es ist also explizit nur dafür vorgesehen, dem/der Nutzer:in ohne Screenreader die Beschriftung eines Elementes anzuzeigen.
-
-Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf. überlagerte Seiteninformationen wieder sichtbar zu machen.
-
-**Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, darf das Referenz-Element nicht `display: inline` haben.
+ * <kol-alert _type="warning">Die **Tooltip**-Komponente wird innerhalb von
+ * KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung
+ * verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei,
+ * wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
+ * 
+ * Die **Tooltip**-Komponente implementiert das Gegenstück zum `Aria-Label`. Es
+ * ist also explizit nur dafür vorgesehen, dem/der Nutzer:in ohne Screenreader
+ * die Beschriftung eines Elementes anzuzeigen.
+ * 
+ * Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf.
+ * überlagerte Seiteninformationen wieder sichtbar zu machen.
+ ** 
+ * Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, darf das
+ * Referenz-Element nicht `display: inline` haben.
  */
 
 @Tag("kol-tooltip-wc")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-tooltip-wc")
 public class KolTooltipWc extends Component {
 	/**
@@ -60,7 +67,8 @@ public class KolTooltipWc extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -69,7 +77,8 @@ public class KolTooltipWc extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

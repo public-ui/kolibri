@@ -8,13 +8,16 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
-
-Die **Image**-Komponente dient dazu, Bilder darzustellen.
+ * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als
+ * ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht.
+ * Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch
+ * erst nach einem abgeschlossenen Release erfolgen.
+ * 
+ * Die **Image**-Komponente dient dazu, Bilder darzustellen.
  */
 
 @Tag("kol-image")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-image")
 public class KolImage extends Component {
 	/**

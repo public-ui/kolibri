@@ -8,16 +8,21 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
-Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="/docs/components/button" _label="Seite des Buttons"></kol-link>.
+ * Der LinkButton ist semantisch ein Link und hat das Design eines Buttons.
+ * Hierzu werden alle relevanten Properties der Link-Komponente übernommen und
+ * um die Design-bestimmenden Properties des Buttons erweitert.
+ * Weitere Informationen zum Aussehen finden Sie auf der
+ * <kol-link _href="/docs/components/button" _label="/docs/components/button"
+ * _label="Seite des Buttons"></kol-link>.
  */
 
 @Tag("kol-link-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-link-button")
 public class KolLinkButton extends Component {
 	/**
-	 * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Deprecated: Defines which elements are controlled by this component.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @param value String
 	 */
@@ -26,7 +31,8 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Deprecated: Defines which elements are controlled by this component.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @return Optional<String>
 	 */
@@ -36,7 +42,10 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements.
+	 * Can be one of the following: `date` | `location` | `page` | `step` | `time` |
+	 * `true`.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @param value String
 	 */
@@ -45,7 +54,10 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements.
+	 * Can be one of the following: `date` | `location` | `page` | `step` | `time` |
+	 * `true`.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @return Optional<String>
 	 */
@@ -55,7 +67,9 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Deprecated: Defines whether the interactive element of the component expanded
+	 * something.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @param value String
 	 */
@@ -64,7 +78,9 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Deprecated: Defines whether the interactive element of the component expanded
+	 * something.
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @return Optional<String>
 	 */
@@ -93,7 +109,9 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Deprecated: Defines whether the interactive element of the component is
+	 * selected (e.g. role=tab).
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @param value String
 	 */
@@ -102,7 +120,9 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Deprecated: Defines whether the interactive element of the component is
+	 * selected (e.g. role=tab).
+	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @return Optional<String>
 	 */
@@ -150,7 +170,8 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Tells the browser that the link contains a file. Optionally sets the filename.
+	 * Tells the browser that the link contains a file. Optionally sets the
+	 * filename.
 	 *
 	 * @param value String
 	 */
@@ -159,7 +180,8 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Tells the browser that the link contains a file. Optionally sets the filename.
+	 * Tells the browser that the link contains a file. Optionally sets the
+	 * filename.
 	 *
 	 * @return Optional<String>
 	 */
@@ -245,7 +267,9 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @param value String
 	 */
@@ -254,7 +278,9 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -264,7 +290,9 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 * Listen on a aria-current event with this value. If the value matches the
+	 * current value and the href is the same as the current url, the aria-current
+	 * attribute will be set to current value.
 	 *
 	 * @param value String
 	 */
@@ -273,7 +301,9 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 * Listen on a aria-current event with this value. If the value matches the
+	 * current value and the href is the same as the current url, the aria-current
+	 * attribute will be set to current value.
 	 *
 	 * @return Optional<String>
 	 */
@@ -302,7 +332,8 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -311,7 +342,8 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */
@@ -340,7 +372,8 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Defines the description to use when the link is going to be opened in another application.
+	 * Defines the description to use when the link is going to be opened in another
+	 * application.
 	 *
 	 * @param value String
 	 */
@@ -349,7 +382,8 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Defines the description to use when the link is going to be opened in another application.
+	 * Defines the description to use when the link is going to be opened in another
+	 * application.
 	 *
 	 * @return Optional<String>
 	 */

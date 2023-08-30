@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'main'
+          ref: 'develop'
 
       # - uses: pnpm/action-setup@v2.2.4
       #   with:

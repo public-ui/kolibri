@@ -8,15 +8,19 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Version**-Komponente stellt kurze Inhalte auf einem farbigen Hintergrund dar. Die **Version**-Komponente ist mit der **Tag**-Komponente eng verwandt, bietet aber nur ein Attribut zur Konfiguration. Sie ist optimiert für die Angabe z.B. von Versionen einer Seite.
+ * Die **Version**-Komponente stellt kurze Inhalte auf einem farbigen
+ * Hintergrund dar. Die **Version**-Komponente ist mit der **Tag**-Komponente
+ * eng verwandt, bietet aber nur ein Attribut zur Konfiguration. Sie ist
+ * optimiert für die Angabe z.B. von Versionen einer Seite.
  */
 
 @Tag("kol-version")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-version")
 public class KolVersion extends Component {
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -25,7 +29,8 @@ public class KolVersion extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

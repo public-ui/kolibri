@@ -8,15 +8,21 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
+ * Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur
+ * Verfügung. Im Gegensatz zum
+ * <kol-link _href="/docs/components/input-text" _label=
+ * "/docs/components/input-text" _label="InputText"></kol-link> können hier auch
+ * umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen
+ * sein können.
  */
 
 @Tag("kol-textarea")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-textarea")
 public class KolTextarea extends Component {
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive
+	 * element of the component.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +31,8 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive
+	 * element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -187,7 +194,9 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @param value String
 	 */
@@ -196,7 +205,9 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
+	 * slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -301,7 +312,8 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * Defines whether and in which direction the size of the input can be changed
+	 * by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 *
 	 * @param value String
 	 */
@@ -310,7 +322,8 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * Defines whether and in which direction the size of the input can be changed
+	 * by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 *
 	 * @return Optional<String>
 	 */
@@ -339,7 +352,8 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -348,7 +362,8 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has.
+	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */

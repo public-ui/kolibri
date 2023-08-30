@@ -8,21 +8,28 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Mit Hilfe der **Detail**-Komponente können weiterführende Informationen zunächst mit einem kurzen Einleitungstext angezeigt werden, die erst nach Klick
-durch die Nutzer:innen auf ein Pfeil-Icon in voller Größe aufgeklappt werden.
-
-Die **Detail**-Komponente stellt sich standardmäßig als einzeiliges Layout-Element dar, das aus einem Pfeil-Icon und einem nachfolgenden,
-kurzen Einleitungstext gebildet wird. Der eigentliche Inhalt der Komponente wird erst nach Klick auf den Kopfbereich nach unten hin geöffnet. Das Pfeil-Icon ändert dabei
-seine Ausrichtung von **_rechts_** nach **_unten_**.
-Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit verbergen.
+ * Mit Hilfe der **Detail**-Komponente können weiterführende Informationen
+ * zunächst mit einem kurzen Einleitungstext angezeigt werden, die erst nach
+ * Klick
+ * durch die Nutzer:innen auf ein Pfeil-Icon in voller Größe aufgeklappt werden.
+ * 
+ * Die **Detail**-Komponente stellt sich standardmäßig als einzeiliges
+ * Layout-Element dar, das aus einem Pfeil-Icon und einem nachfolgenden,
+ * kurzen Einleitungstext gebildet wird. Der eigentliche Inhalt der Komponente
+ * wird erst nach Klick auf den Kopfbereich nach unten hin geöffnet. Das
+ * Pfeil-Icon ändert dabei
+ * seine Ausrichtung von **_rechts_** nach **_unten_**.
+ * Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit
+ * verbergen.
  */
 
 @Tag("kol-details")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-details")
 public class KolDetails extends Component {
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -31,7 +38,8 @@ public class KolDetails extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -41,7 +49,8 @@ public class KolDetails extends Component {
 	}
 
 	/**
-	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * If set (to true) opens/expands the element, closes if not set (or set to
+	 * false).
 	 *
 	 * @param value String
 	 */
@@ -50,7 +59,8 @@ public class KolDetails extends Component {
 	}
 
 	/**
-	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * If set (to true) opens/expands the element, closes if not set (or set to
+	 * false).
 	 *
 	 * @return Optional<String>
 	 */

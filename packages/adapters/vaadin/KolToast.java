@@ -8,13 +8,18 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des Browserfenster angezeigt und verschwindet danach automatisch.
-
-Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für zehn Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.
+ * Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die
+ * Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des
+ * Browserfenster angezeigt und verschwindet danach automatisch.
+ * 
+ * Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des
+ * Browserfenster für zehn Sekunden angezeigt. Mit Ausblenden des **Toasts**
+ * wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss
+ * er z.B. über eine JavaScript-Funktion nachgeladen werden.
  */
 
 @Tag("kol-toast")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-toast")
 public class KolToast extends Component {
 	/**
@@ -75,7 +80,8 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -84,7 +90,8 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label,
+	 * label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -94,7 +101,8 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
+	 * shown as bold text.
 	 *
 	 * @param value String
 	 */
@@ -103,7 +111,8 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
+	 * shown as bold text.
 	 *
 	 * @return Optional<String>
 	 */
@@ -151,7 +160,8 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive element.
+	 * Defines either the type of the component or of the components interactive
+	 * element.
 	 *
 	 * @param value String
 	 */
@@ -160,7 +170,8 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive element.
+	 * Defines either the type of the component or of the components interactive
+	 * element.
 	 *
 	 * @return Optional<String>
 	 */

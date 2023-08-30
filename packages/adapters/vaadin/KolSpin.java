@@ -8,11 +8,13 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.
+ * Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über
+ * Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt
+ * kann durch eine wiederholte Animation kommuniziert werden.
  */
 
 @Tag("kol-spin")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-spin")
 public class KolSpin extends Component {
 	/**
