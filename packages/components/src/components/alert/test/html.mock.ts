@@ -3,6 +3,8 @@ import { mixMembers } from 'stencil-awesome-test';
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { Props } from '../types';
+import { translate } from '../../../i18n';
+import { getButtonWcHtml } from '../../button/test/html.mock';
 
 export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''): string => {
 	props = mixMembers(
@@ -16,7 +18,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 	props._variant = props._variant || 'msg';
 	return `<kol-alert${additionalHTML}>
   <mock:shadow-root>
-    <kol-alert-wc class="${type} ${props._variant}"${props._alert === true ? ' role="alert"' : ''}>
+    <kol-alert-wc class="${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}"${props._alert === true ? ' role="alert"' : ''}>
 			<div class="heading">
 				${getIconHtml(
 					{
@@ -67,6 +69,24 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 							: ''
 					}
 				</div>
+				${
+					props._hasCloser
+						? getButtonWcHtml(
+								{
+									_hideLabel: true,
+									_icon: {
+										left: {
+											icon: 'codicon codicon-close',
+										},
+									},
+									_label: translate('kol-close'),
+									_tooltipAlign: 'left',
+								},
+								{},
+								` class="close"`
+						  )
+						: ''
+				}
 			</div>${
 				props._variant === 'card'
 					? `<div class="content">

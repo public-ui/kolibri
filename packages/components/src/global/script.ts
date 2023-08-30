@@ -24,4 +24,8 @@ export default async (): Promise<void> => {
 		.catch((error) => {
 			Log.error(error);
 		});
+
+	if (process.env.NODE_ENV === 'development') {
+		import('../dev');
+	}
 };
