@@ -25,6 +25,7 @@ export default async (): Promise<void> => {
 			Log.error(error);
 		});
 
+	/* Import scripts necessary for the development server, i.e. the /dev/*.html files. Only include in development environment. */
 	if (process.env.NODE_ENV === 'development') {
 		import('../dev');
 	}

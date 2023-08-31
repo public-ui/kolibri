@@ -25,8 +25,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 	_max="200"
 	_value="100"
 	_step="20"
-	_icon='{"left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'
-	></kol-input-range
+	_icon='{"left": "codicon codicon-arrow-small-down", "right": "codicon codicon-arrow-small-up"}'></kol-input-range>
 
 ## Verwendung
 
