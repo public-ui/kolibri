@@ -29,10 +29,7 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 <kol-input-text
 	_type="text"
 	_label="Mit Button"
-	_smart-button='{"_icon": "codicon codicon-chrome-close", "_hideLabel": true, "_label": "Löschen"}'
-	></kol-input-text
-
->
+	_smart-button='{"_icon": "codicon codicon-chrome-close", "_hideLabel": true, "_label": "Löschen"}'></kol-input-text>
 
 ## Verwendung
 
