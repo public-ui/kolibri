@@ -63,7 +63,9 @@ const TAGS = [
 ];
 const EXCLUDE_TAGS = [
 	'kol-alert-wc',
+	'kol-avatar-wc',
 	'kol-all',
+	'kol-button-group-wc',
 	'kol-button-link-text-switch',
 	'kol-button-wc',
 	'kol-color',
@@ -183,37 +185,31 @@ if (process.env.NODE_ENV === 'production') {
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v11/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v12/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v13/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v14/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v15/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v16/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',
