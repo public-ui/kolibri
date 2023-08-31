@@ -1,9 +1,10 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { validateOpen } from '../../types/props/open';
-import { API, EventCallbacks, States } from './types';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { setState } from '../../utils/prop.validators';
+import { API, EventCallbacks, States } from './types';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -16,6 +17,7 @@ import { setState } from '../../utils/prop.validators';
 	shadow: true,
 })
 export class KolDetails implements API {
+	@Element() private readonly host?: HTMLKolDetailsElement;
 	private htmlDetailsElement?: HTMLDetailsElement;
 
 	public render(): JSX.Element {
@@ -97,11 +99,23 @@ export class KolDetails implements API {
 		this.validateOpen(this._open);
 	}
 
+	private toggleTimeout?: ReturnType<typeof setTimeout>;
+
 	private handleToggle = (event: Event) => {
-		setTimeout(() => {
-			this._open = Boolean(this.htmlDetailsElement?.open);
-			if (this.state._on?.onToggle) {
-				this.state._on?.onToggle(event, this._open);
+		clearTimeout(this.toggleTimeout);
+		this.toggleTimeout = setTimeout(() => {
+			const open = Boolean(this.htmlDetailsElement?.open);
+			if (open !== this.state._open) {
+				// Update state
+				this._open = Boolean(this.htmlDetailsElement?.open);
+
+				// Event handling
+				tryToDispatchKoliBriEvent('toggle', this.host, this._open);
+
+				// Callback
+				if (typeof this.state._on?.onToggle === 'function') {
+					this.state._on?.onToggle(event, this._open);
+				}
 			}
 		}, 25);
 	};
