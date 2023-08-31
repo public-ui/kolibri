@@ -104,14 +104,13 @@ export class KolDetails implements API {
 
 	private handleToggle = (event: Event) => {
 		clearTimeout(this.toggleTimeout);
-		this.toggleTimeout = smartSetTimeout(() => {
+		this.toggleTimeout = setTimeout(() => {
 			const open = Boolean(this.htmlDetailsElement?.open);
 			if (open !== this.state._open) {
 				// Update state
 				this._open = Boolean(this.htmlDetailsElement?.open);
 
 				// Event handling
-				// stopPropagation(event); not relevant, timeout
 				tryToDispatchKoliBriEvent('toggle', this.host, this._open);
 
 				// Callback
