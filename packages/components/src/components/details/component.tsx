@@ -2,7 +2,8 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { validateOpen } from '../../types/props/open';
-import { API, States } from './types';
+import { API, EventCallbacks, States } from './types';
+import { setState } from '../../utils/prop.validators';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -25,10 +26,9 @@ export class KolDetails implements API {
 						this.htmlDetailsElement = el as HTMLDetailsElement;
 					}}
 					open={this.state._open}
+					onToggle={this.handleToggle}
 				>
-					{/* Link: https://github.com/public-ui/kolibri/issues/3558 */}
-					{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-					<summary onClick={this.onClick}>
+					<summary>
 						{this.state._open ? <kol-icon _label="" _icon="codicon codicon-chevron-down" /> : <kol-icon _label="" _icon="codicon codicon-chevron-right" />}
 						<span>{this.state._label}</span>
 					</summary>
@@ -48,6 +48,11 @@ export class KolDetails implements API {
 	@Prop() public _label?: LabelPropType;
 
 	/**
+	 * Defines the callback functions for details.
+	 */
+	@Prop() public _on?: EventCallbacks;
+
+	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
 	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
@@ -61,11 +66,19 @@ export class KolDetails implements API {
 
 	@State() public state: States = {
 		_label: '…', // '⚠'
+		_on: {},
 	};
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
+	}
+
+	@Watch('_on')
+	public validateOn(on?: EventCallbacks) {
+		if (typeof on === 'object' && on !== null && typeof on.onToggle === 'function') {
+			setState<EventCallbacks>(this, '_on', on);
+		}
 	}
 
 	@Watch('_open')
@@ -79,13 +92,17 @@ export class KolDetails implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateOpen(this._open);
 		this.validateLabel(this._label || this._summary);
+		this.validateOn(this._on);
+		this.validateOpen(this._open);
 	}
 
-	private onClick = () => {
+	private handleToggle = (event: Event) => {
 		setTimeout(() => {
-			this._open = this.htmlDetailsElement?.open;
+			this._open = Boolean(this.htmlDetailsElement?.open);
+			if (this.state._on?.onToggle) {
+				this.state._on?.onToggle(event, this._open);
+			}
 		}, 25);
 	};
 }

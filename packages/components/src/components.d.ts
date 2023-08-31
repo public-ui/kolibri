@@ -30,6 +30,7 @@ import { IdPropType } from "./types/props/id";
 import { NamePropType } from "./types/props/name";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
+import { EventCallbacks } from "./components/details/types";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
@@ -88,6 +89,7 @@ export { IdPropType } from "./types/props/id";
 export { NamePropType } from "./types/props/name";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
+export { EventCallbacks } from "./components/details/types";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
@@ -630,6 +632,10 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
+        /**
+          * Defines the callback functions for details.
+         */
+        "_on"?: EventCallbacks;
         /**
           * If set (to true) opens/expands the element, closes if not set (or set to false).
           * @TODO : Change type back to `OpenPropType` after Stencil#4663 has been resolved.
@@ -3932,6 +3938,10 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label"?: LabelPropType;
+        /**
+          * Defines the callback functions for details.
+         */
+        "_on"?: EventCallbacks;
         /**
           * If set (to true) opens/expands the element, closes if not set (or set to false).
           * @TODO : Change type back to `OpenPropType` after Stencil#4663 has been resolved.
