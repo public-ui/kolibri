@@ -4,7 +4,6 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { validateOpen } from '../../types/props/open';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { setState } from '../../utils/prop.validators';
-import { smartSetTimeout } from '../../utils/reuse';
 import { API, EventCallbacks, States } from './types';
 
 /**
