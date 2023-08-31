@@ -13,12 +13,12 @@ export const propagateFocus = <H extends HTMLElement, R extends HTMLElement>(hos
  * @param cb Callback with the code to run
  * @param delay Timeout delay
  */
-// ts-prune-ignore-next
 export const smartSetTimeout = (cb: () => void, delay?: number) => {
 	const timeout = setTimeout(() => {
 		clearTimeout(timeout);
 		cb();
 	}, delay);
+	return timeout;
 };
 
 type ProzessEnv = 'development' | 'production' | 'test';
