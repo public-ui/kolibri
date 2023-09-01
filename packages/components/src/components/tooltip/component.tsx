@@ -174,6 +174,7 @@ export class KolTooltip implements API {
 	private overFocusTimeout?: ReturnType<typeof setTimeout>;
 
 	private incrementOverFocusCount = (): void => {
+		this.overFocusCount++;
 		this.showOrHideTooltip();
 	};
 
