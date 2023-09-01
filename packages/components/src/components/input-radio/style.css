@@ -39,7 +39,7 @@ fieldset {
 fieldset.vertical {
 	flex-direction: column;
 }
-fieldset [slot='input'] {
+fieldset .input-slot {
 	align-items: center;
 	display: flex;
 }

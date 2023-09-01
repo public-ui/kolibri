@@ -67,7 +67,7 @@ export class KolInput implements Props {
 					}}
 				>
 					{this._icon?.left && <kol-icon _ariaLabel="" _icon={(this._icon.left as KoliBriCustomIcon).icon}></kol-icon>}
-					<div ref={this.catchInputSlot} id={this.slotName}></div>
+					<div ref={this.catchInputSlot} id={this.slotName} class="input-slot"></div>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
 							_customClass={this._smartButton._customClass}

@@ -2047,7 +2047,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: inline-block;
 		margin-bottom: 0.25em;
 	}
-	fieldset [slot="input"] {
+	fieldset .input-slot {
 		gap: 0.5rem;
 	}
 	fieldset div label {
