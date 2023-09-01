@@ -28,3 +28,16 @@ try {
 } catch (e) {
 	processEnv = 'production';
 }
+
+/**
+ * This function is used to handle the slot content by
+ * moving a DOM element to a defined slot element.
+ */
+export const handleSlotContent = (hostRef: HTMLElement, slotRef: HTMLElement, slotName: string) => {
+	if (hostRef && slotRef && typeof slotName === 'string') {
+		const content = hostRef.querySelector(`[slot="${slotName}"]`);
+		if (content) {
+			slotRef.appendChild(content);
+		}
+	}
+};
