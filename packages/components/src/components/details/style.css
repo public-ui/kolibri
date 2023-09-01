@@ -23,12 +23,10 @@ details > kol-indented-text {
 @keyframes details-show {
 	to {
 		opacity: 1;
-		scale: 1;
 	}
 }
 .content {
 	opacity: 0;
-	scale: 1 0;
 	transform-origin: top;
 }
 details[open] > .content {
