@@ -2,13 +2,14 @@
 import { Component, Element, Fragment, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
+import { IdPropType } from '../../types/props/id';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
+import { handleSlotContent } from '../../utils/reuse';
+import { Props as ButtonProps } from '../button/types';
 import { Props } from './types';
-import { IdPropType } from '../../types/props/id';
 
 /**
  * @internal
@@ -27,12 +28,7 @@ export class KolInput implements Props {
 	}
 
 	private catchInputSlot = (slot?: HTMLDivElement): void => {
-		if (slot) {
-			const content = this.host?.querySelector(`[slot="${this.slotName}"]`);
-			if (content) {
-				slot.appendChild(content);
-			}
-		}
+		handleSlotContent(this.host!, slot!, this.slotName);
 	};
 
 	public render(): JSX.Element {
