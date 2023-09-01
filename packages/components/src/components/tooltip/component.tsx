@@ -111,19 +111,11 @@ export class KolTooltip implements API {
 	};
 
 	private catchHostElement = (el: HTMLElement | null): void => {
-		if (el /* SSR instanceof HTMLElement */) {
-			this.previousSibling = el.previousElementSibling as HTMLElement | null;
-			if (this.previousSibling /* SSR instanceof HTMLElement */) {
-				this.resyncListeners(this.previousSibling);
-			}
-		}
+		this.previousSibling = el?.previousElementSibling as HTMLElement | null;
 	};
 
 	private catchTooltipElement = (el?: HTMLDivElement): void => {
 		this.tooltipElement = el;
-		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-			this.resyncListeners(this.tooltipElement);
-		}
 	};
 	private catchArrowElement = (element?: HTMLDivElement): void => {
 		this.arrowElement = element;
@@ -182,7 +174,6 @@ export class KolTooltip implements API {
 	private overFocusTimeout?: ReturnType<typeof setTimeout>;
 
 	private incrementOverFocusCount = (): void => {
-		this.overFocusCount++;
 		this.showOrHideTooltip();
 	};
 
@@ -207,6 +198,15 @@ export class KolTooltip implements API {
 		this.validateAlign(this._align);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
+	}
+
+	public connectedCallback() {
+		if (this.previousSibling) {
+			this.resyncListeners(this.previousSibling);
+		}
+		if (this.tooltipElement) {
+			this.resyncListeners(this.tooltipElement);
+		}
 	}
 
 	/**
