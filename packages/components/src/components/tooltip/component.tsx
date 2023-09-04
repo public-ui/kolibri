@@ -112,18 +112,17 @@ export class KolTooltip implements API {
 		el.addEventListener('focusout', this.decrementOverFocusCount);
 	};
 
-	private resyncListeners = (last?: Element | null, next?: Element | null): void => {
+	private resyncListeners = (last?: Element | null, next?: Element | null, replacePreviousSibling = false): void => {
 		if (last) {
 			this.removeListeners(last);
 		}
 		if (next) {
 			/**
-			 * `last` and `next` are references to the class properties.
-			 * -> `last = next` will be set for example `this.previousSibling = next`.
-			 *
 			 * This makes the next element to the last element for the next resync cycle.
 			 */
-			last = next;
+			if (replacePreviousSibling) {
+				this.previousSibling = next;
+			}
 			this.addListeners(next);
 		}
 	};
@@ -216,7 +215,7 @@ export class KolTooltip implements API {
 	}
 
 	private handleEventListeners(): void {
-		this.resyncListeners(this.previousSibling, this.host?.previousElementSibling);
+		this.resyncListeners(this.previousSibling, this.host?.previousElementSibling, true);
 		this.resyncListeners(this.tooltipElement, this.tooltipElement);
 	}
 
