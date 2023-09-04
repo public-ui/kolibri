@@ -2,7 +2,7 @@ import { AbstractTask } from '../../abstract-task';
 
 export class TestVersionZero extends AbstractTask {
 	private constructor() {
-		super('test-version-zero', 'Test version zero', [], '^0');
+		super('test-version-zero', 'Test version zero', [], '<1');
 	}
 
 	public static getInstance(): TestVersionZero {
@@ -12,5 +12,7 @@ export class TestVersionZero extends AbstractTask {
 		return this.instance as TestVersionZero;
 	}
 
-	public run(): void {}
+	public run(): void {
+		this.setStatus('done');
+	}
 }

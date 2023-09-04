@@ -2,7 +2,6 @@ import { filterFilesByExt } from '../../../shares/reuse';
 import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../types';
 import { AbstractTask } from '../../abstract-task';
 
-import fs from 'fs';
 import { AccordionPropertyRenamingHeadingToLabel } from './accordion-property-renaming-heading-to-label';
 
 export class AbbrPropertyRenamingTitleToLabel extends AbstractTask {
@@ -11,7 +10,7 @@ export class AbbrPropertyRenamingTitleToLabel extends AbstractTask {
 			'abbr-property-renaming-title-to-label',
 			'Renaming property `_title` to `_label`',
 			COMPONENT_FILE_EXTENSIONS.concat(CUSTOM_ELEMENT_FILE_EXTENSIONS),
-			'^1',
+			'>=1 <2',
 			[AccordionPropertyRenamingHeadingToLabel.getInstance()],
 		);
 	}

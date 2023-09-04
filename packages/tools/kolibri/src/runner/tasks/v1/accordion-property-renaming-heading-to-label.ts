@@ -9,7 +9,7 @@ export class AccordionPropertyRenamingHeadingToLabel extends AbstractTask {
 			'accordion-property-renaming-heading-to-label copy',
 			'Renaming property `_heading` to `_label`',
 			COMPONENT_FILE_EXTENSIONS.concat(CUSTOM_ELEMENT_FILE_EXTENSIONS),
-			'^1',
+			'>=1 <2',
 		);
 	}
 

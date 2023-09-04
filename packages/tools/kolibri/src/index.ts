@@ -40,9 +40,35 @@ exec('git status --porcelain', (err, stdout) => {
 	const runner = new TaskRunner('test', versionOfPublicUiComponents);
 	runner.registerTasks(tasks);
 	runner.run();
-	const [done, pending] = runner.printSummary();
-	console.log(`done ${done}`);
-	console.log(`pending ${pending}`);
+	let summary = runner.printSummary();
+	console.log(`
+done ${summary.done}`);
+	console.log(`pending ${summary.pending}`);
+	console.log(`total ${summary.total}`);
+	console.log(`nextVersion ${summary.nextVersion}`);
+
+	console.warn(`Only update @public-ui/* to version smaller equal own version (CLI).`);
+
+	runner.setVersion(summary.nextVersion!);
+	console.log(`Update @public-ui/* to version ${summary.nextVersion} (npm i).`);
+	runner.run();
+	runner.printSummary();
+
+	summary = runner.printSummary();
+	console.log(`
+done ${summary.done}`);
+	console.log(`pending ${summary.pending}`);
+	console.log(`total ${summary.total}`);
+	console.log(`nextVersion ${summary.nextVersion}`);
+
+	console.warn(`Only update @public-ui/* to version smaller equal own version (CLI).`);
+
+	runner.setVersion(summary.nextVersion!);
+	console.log(`Update @public-ui/* to version ${summary.nextVersion} (npm i).`);
+	runner.run();
+	runner.printSummary();
+
+	console.warn(`At the end we update to version of the CLI and run npm i again.`);
 
 	console.log(`
 After the code migration has gone through, the code formatting may no longer
