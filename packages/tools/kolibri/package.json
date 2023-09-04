@@ -1,5 +1,5 @@
 {
-	"name": "@public-ui/kolibri",
+	"name": "@public-ui/kolibri-cli",
 	"version": "1.7.0-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -15,7 +15,7 @@
 	"bin": {
 		"kolibri": "dist/index.js"
 	},
-	"description": "Console tool for executing some helpful commands for KoliBri projects.",
+	"description": "CLI for executing some helpful commands for KoliBri projects.",
 	"scripts": {
 		"start": "nodemon src/index.ts test",
 		"format": "prettier -c src",

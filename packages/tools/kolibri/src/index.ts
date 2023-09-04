@@ -18,6 +18,7 @@ exec('git status --porcelain', (err, stdout) => {
 	// }
 
 	const packageJsonPath = path.resolve(process.cwd(), 'node_modules/@public-ui/components/package.json');
+	console.log(packageJsonPath);
 	if (!fs.existsSync(packageJsonPath)) {
 		throw new Error('@public-ui/components not installed');
 	}

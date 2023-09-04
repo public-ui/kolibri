@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import semver from 'semver';
 import { AbstractTask } from './abstract-task';
 
@@ -8,6 +10,9 @@ export class TaskRunner {
 		private readonly baseDir: string,
 		private version: string,
 	) {
+		if (!fs.existsSync(path.resolve(process.cwd(), baseDir))) {
+			throw new Error(`Base directory "${baseDir}" does not exist`);
+		}
 		if (semver.valid(version) === null) {
 			throw new Error(`Invalid semver version: ${version}`);
 		}
@@ -45,14 +50,13 @@ export class TaskRunner {
 		}
 	}
 
-	private dependentTaskRun(task: AbstractTask, dependentTasks: AbstractTask[]): boolean {
+	private dependentTaskRun(task: AbstractTask, dependentTasks: AbstractTask[]) {
 		dependentTasks.forEach((dependentTask) => {
 			this.dependentTaskRun(dependentTask, dependentTask.getDependentTasks());
 		});
 		if (dependentTasks.every((dependentTask) => dependentTask.getStatus() === 'done')) {
 			this.runTask(task);
 		}
-		return task.getStatus() === 'done';
 	}
 
 	public run(): void {
@@ -74,6 +78,7 @@ Summary:`);
 					done++;
 					break;
 				case 'pending':
+					pending++;
 					break;
 			}
 			console.log(`- ${task.getTitle()}: ${task.getStatus()}`);

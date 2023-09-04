@@ -3,7 +3,7 @@ import path from 'path';
 import { FileExtension } from '../types';
 
 /**
- * Recursively searches for files with the specified extension in the specified.
+ * Recursively searches for files with the specified extension in the specified directory.
  * @param {string} dir The directory to search in
  * @param {FileExtension | FileExtension[]} ext The extension to search for
  * @returns {string[]} The found files
