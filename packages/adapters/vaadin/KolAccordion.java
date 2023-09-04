@@ -8,18 +8,9 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Accordion**-Komponente ist ein Aufklapp-Menü. Klickt man auf den
- * Kopfbereich, bestehend aus Icon und Überschrift, klappt der Inhalt mit
- * zusätzlichen Informationen auf. Somit ist es ein interaktives
- * Navigationselement, welches dazu dient, umfangreiche Inhalte platzsparend
- * darzustellen.
- * 
- * Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff
- * zugeordnete Inhalte angezeigt oder verborgen werden sollen. Sie erlauben
- * umfangreichere Detailinformationen zu einem Oberbegriff, als es aus Gründen
- * der Übersichtlichkeit eigentlich sinnvoll wäre. Sie überlassen es den
- * Besucher:innen selbst, ob sie sich diese Informationen anzeigen lassen
- * möchten.
+ * Die **Accordion**-Komponente ist ein Aufklapp-Menü. Klickt man auf den Kopfbereich, bestehend aus Icon und Überschrift, klappt der Inhalt mit zusätzlichen Informationen auf. Somit ist es ein interaktives Navigationselement, welches dazu dient, umfangreiche Inhalte platzsparend darzustellen.
+
+Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zugeordnete Inhalte angezeigt oder verborgen werden sollen. Sie erlauben umfangreichere Detailinformationen zu einem Oberbegriff, als es aus Gründen der Übersichtlichkeit eigentlich sinnvoll wäre. Sie überlassen es den Besucher:innen selbst, ob sie sich diese Informationen anzeigen lassen möchten.
  */
 
 @Tag("kol-accordion")
@@ -46,8 +37,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -56,8 +46,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -67,8 +56,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
-	 * shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 *
 	 * @param value String
 	 */
@@ -77,8 +65,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is
-	 * shown as bold text.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 *
 	 * @return Optional<String>
 	 */
@@ -88,8 +75,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * If set (to true) opens/expands the element, closes if not set (or set to
-	 * false).
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
 	 *
 	 * @param value String
 	 */
@@ -98,8 +84,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * If set (to true) opens/expands the element, closes if not set (or set to
-	 * false).
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
 	 *
 	 * @return Optional<String>
 	 */

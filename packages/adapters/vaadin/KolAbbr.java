@@ -8,10 +8,8 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Abbr**-Komponente implementiert den HTML-Tag `abbr`, wobei hier jedoch
- * der Tooltip barrierefrei ist.
- * Der Tooltip für die Beschreibung wird bei Focus oder Hover der
- * **Abbr**-Komponente angezeigt und vorgelesen.
+ * Die **Abbr**-Komponente implementiert den HTML-Tag `abbr`, wobei hier jedoch der Tooltip barrierefrei ist.
+Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Komponente angezeigt und vorgelesen.
  */
 
 @Tag("kol-abbr")
@@ -19,8 +17,7 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-abbr")
 public class KolAbbr extends Component {
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -29,8 +26,7 @@ public class KolAbbr extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -40,8 +36,7 @@ public class KolAbbr extends Component {
 	}
 
 	/**
-	 * Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der
-	 * Abkürzung an.
+	 * Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
 	 *
 	 * @param value String
 	 */
@@ -50,8 +45,7 @@ public class KolAbbr extends Component {
 	}
 
 	/**
-	 * Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der
-	 * Abkürzung an.
+	 * Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
 	 *
 	 * @return Optional<String>
 	 */

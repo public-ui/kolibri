@@ -8,8 +8,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit
- * steuerbarer Ausgabe durch den Screenreader.
+ * Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerbarer Ausgabe durch den Screenreader.
  */
 
 @Tag("kol-symbol")
@@ -36,8 +35,7 @@ public class KolSymbol extends Component {
 	}
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label,
-	 * Headline, Caption, Summary, etc.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -46,8 +44,7 @@ public class KolSymbol extends Component {
 	}
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label,
-	 * Headline, Caption, Summary, etc.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

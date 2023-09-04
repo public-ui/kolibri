@@ -16,8 +16,7 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-input-email")
 public class KolInputEmail extends Component {
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive
-	 * element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @param value String
 	 */
@@ -26,8 +25,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive
-	 * element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -208,9 +206,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
-	 * slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @param value String
 	 */
@@ -219,9 +215,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
-	 * slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -402,8 +396,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Allows to add a button with an arbitrary action within the element
-	 * (_hide-label only).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 *
 	 * @param value String
 	 */
@@ -412,8 +405,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Allows to add a button with an arbitrary action within the element
-	 * (_hide-label only).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 *
 	 * @return Optional<String>
 	 */
@@ -442,8 +434,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has.
-	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -452,8 +443,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has.
-	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */

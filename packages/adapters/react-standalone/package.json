@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react-standalone",
-	"version": "1.6.2",
+	"version": "1.7.0-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -47,11 +47,11 @@
 		"prepack": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/react": "1.6.2",
+		"@public-ui/react": "1.7.0-rc.0",
 		"cpy-cli": "5.0.0"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.6.2",
+		"@public-ui/components": "1.7.0-rc.0",
 		"react": ">=16.14.0",
 		"react-dom": ">=16.14.0"
 	},

@@ -8,9 +8,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch
- * Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand
- * befindet sich ein farbiger Haken in der Box.
+ * Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand befindet sich ein farbiger Haken in der Box.
  */
 
 @Tag("kol-input-checkbox")
@@ -18,8 +16,7 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-input-checkbox")
 public class KolInputCheckbox extends Component {
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive
-	 * element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @param value String
 	 */
@@ -28,8 +25,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive
-	 * element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -191,8 +187,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Puts the checkbox in the indeterminate state, does not change the value of
-	 * _checked.
+	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 *
 	 * @param value String
 	 */
@@ -201,8 +196,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Puts the checkbox in the indeterminate state, does not change the value of
-	 * _checked.
+	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 *
 	 * @return Optional<String>
 	 */
@@ -212,9 +206,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
-	 * slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @param value String
 	 */
@@ -223,9 +215,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
-	 * slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -273,8 +263,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has.
-	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -283,8 +272,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has.
-	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */
