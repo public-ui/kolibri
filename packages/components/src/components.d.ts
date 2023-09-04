@@ -2299,6 +2299,12 @@ export namespace Components {
          */
         "_org": Bundesministerium | Bundesamt | Bundesanstalt;
     }
+    interface KolMarkdownRendererWc {
+        /**
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+         */
+        "_label": LabelPropType;
+    }
     interface KolModal {
         /**
           * Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.
@@ -2618,6 +2624,10 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
+        /**
+          * Allows to use markdown in the label. Defaults to `false`.
+         */
+        "_allowMarkdown"?: boolean;
         /**
           * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -3255,6 +3265,12 @@ declare global {
         prototype: HTMLKolLogoElement;
         new (): HTMLKolLogoElement;
     };
+    interface HTMLKolMarkdownRendererWcElement extends Components.KolMarkdownRendererWc, HTMLStencilElement {
+    }
+    var HTMLKolMarkdownRendererWcElement: {
+        prototype: HTMLKolMarkdownRendererWcElement;
+        new (): HTMLKolMarkdownRendererWcElement;
+    };
     interface HTMLKolModalElement extends Components.KolModal, HTMLStencilElement {
     }
     var HTMLKolModalElement: {
@@ -3413,6 +3429,7 @@ declare global {
         "kol-link-group": HTMLKolLinkGroupElement;
         "kol-link-wc": HTMLKolLinkWcElement;
         "kol-logo": HTMLKolLogoElement;
+        "kol-markdown-renderer-wc": HTMLKolMarkdownRendererWcElement;
         "kol-modal": HTMLKolModalElement;
         "kol-nav": HTMLKolNavElement;
         "kol-pagination": HTMLKolPaginationElement;
@@ -5614,6 +5631,12 @@ declare namespace LocalJSX {
          */
         "_org": Bundesministerium | Bundesamt | Bundesanstalt;
     }
+    interface KolMarkdownRendererWc {
+        /**
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+         */
+        "_label": LabelPropType;
+    }
     interface KolModal {
         /**
           * Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.
@@ -5933,6 +5956,10 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
+        /**
+          * Allows to use markdown in the label. Defaults to `false`.
+         */
+        "_allowMarkdown"?: boolean;
         /**
           * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -6339,6 +6366,7 @@ declare namespace LocalJSX {
         "kol-link-group": KolLinkGroup;
         "kol-link-wc": KolLinkWc;
         "kol-logo": KolLogo;
+        "kol-markdown-renderer-wc": KolMarkdownRendererWc;
         "kol-modal": KolModal;
         "kol-nav": KolNav;
         "kol-pagination": KolPagination;
@@ -6422,6 +6450,7 @@ declare module "@stencil/core" {
             "kol-link-group": LocalJSX.KolLinkGroup & JSXBase.HTMLAttributes<HTMLKolLinkGroupElement>;
             "kol-link-wc": LocalJSX.KolLinkWc & JSXBase.HTMLAttributes<HTMLKolLinkWcElement>;
             "kol-logo": LocalJSX.KolLogo & JSXBase.HTMLAttributes<HTMLKolLogoElement>;
+            "kol-markdown-renderer-wc": LocalJSX.KolMarkdownRendererWc & JSXBase.HTMLAttributes<HTMLKolMarkdownRendererWcElement>;
             "kol-modal": LocalJSX.KolModal & JSXBase.HTMLAttributes<HTMLKolModalElement>;
             "kol-nav": LocalJSX.KolNav & JSXBase.HTMLAttributes<HTMLKolNavElement>;
             "kol-pagination": LocalJSX.KolPagination & JSXBase.HTMLAttributes<HTMLKolPaginationElement>;

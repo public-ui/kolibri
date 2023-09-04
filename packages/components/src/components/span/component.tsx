@@ -6,6 +6,7 @@ import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-lab
 import { validateIcon } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { API, States } from './types';
+import { watchBoolean } from '../../utils/prop.validators';
 
 /**
  * @internal
@@ -27,7 +28,11 @@ export class KolSpanWc implements API {
 				{this.state._icon.top && <kol-icon class="icon top" style={this.state._icon.top.style} _label="" _icon={this.state._icon.top.icon} />}
 				<span>
 					{this.state._icon.left && <kol-icon class="icon left" style={this.state._icon.left.style} _label="" _icon={this.state._icon.left.icon} />}
-					{!this.state._hideLabel && hideExpertSlot ? <span class="span-label">{this.state._label}</span> : ''}
+					{!this.state._hideLabel && hideExpertSlot ? (
+						<span class="span-label">{this.state._allowMarkdown ? <kol-markdown-renderer-wc _label={this.state._label as string} /> : this.state._label}</span>
+					) : (
+						''
+					)}
 					<span aria-hidden={hideExpertSlot ? 'true' : undefined} class="span-label" hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
@@ -37,6 +42,11 @@ export class KolSpanWc implements API {
 			</Host>
 		);
 	}
+
+	/**
+	 * Allows to use markdown in the label. Defaults to `false`.
+	 */
+	@Prop() public _allowMarkdown?: boolean;
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.
@@ -66,6 +76,13 @@ export class KolSpanWc implements API {
 		_label: false, // ⚠ required
 	};
 
+	@Watch('_allowMarkdown')
+	public validateAllowMarkdown(value?: boolean): void {
+		watchBoolean(this, '_allowMarkdown', value, {
+			defaultValue: false,
+		});
+	}
+
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this, value);
@@ -90,6 +107,7 @@ export class KolSpanWc implements API {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAllowMarkdown(this._allowMarkdown);
 		this.validateHideLabel(this._hideLabel || this._iconOnly);
 		this.validateIcon(this._icon);
 		this.validateLabel(this._label);

@@ -41,6 +41,7 @@ import { KolLinkGroup } from './link-group/component';
 import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
 import { KolLogo } from './logo/component';
+import { KolMarkdownRendererWc } from './markdown-renderer/component';
 import { KolModal } from './modal/component';
 import { KolNav } from './nav/component';
 import { KolPagination } from './pagination/component';
@@ -105,6 +106,7 @@ export const COMPONENTS = [
 	KolLinkWc,
 	KolLinkGroup,
 	KolLogo,
+	KolMarkdownRendererWc,
 	KolModal,
 	KolNav,
 	KolPagination,
