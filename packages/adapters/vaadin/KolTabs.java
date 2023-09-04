@@ -8,13 +8,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Tabs**-Komponente wird verwendet, um verwandte Inhalte auf derselben
- * Seite zu organisieren und zwischen ihnen zu navigieren. Tabs sorgen dafür,
- * dass große Inhaltsmengen für Nutzer:innen leichter organisiert werden können.
- * Tabs sind in Registerkartenleisten angeordnet, die als Registerkartengruppen
- * bezeichnet werden, wobei die Registerkartenbeschriftung den Nutzer:innen
- * einen Hinweis darauf gibt, welcher Inhalt angezeigt wird, wenn die
- * Registerkarte ausgewählt wird.
+ * Die **Tabs**-Komponente wird verwendet, um verwandte Inhalte auf derselben Seite zu organisieren und zwischen ihnen zu navigieren. Tabs sorgen dafür, dass große Inhaltsmengen für Nutzer:innen leichter organisiert werden können. Tabs sind in Registerkartenleisten angeordnet, die als Registerkartengruppen bezeichnet werden, wobei die Registerkartenbeschriftung den Nutzer:innen einen Hinweis darauf gibt, welcher Inhalt angezeigt wird, wenn die Registerkarte ausgewählt wird.
  */
 
 @Tag("kol-tabs")
@@ -60,8 +54,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -70,8 +63,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

@@ -8,8 +8,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder
- * mehrere vorgegebene Möglichkeiten ausgewählt werden können.
+ * Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.
  */
 
 @Tag("kol-select")
@@ -17,8 +16,7 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-select")
 public class KolSelect extends Component {
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive
-	 * element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @param value String
 	 */
@@ -27,8 +25,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive
-	 * element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -190,9 +187,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
-	 * slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @param value String
 	 */
@@ -201,9 +196,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
-	 * slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -327,8 +320,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des
-	 * Feldes.
+	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
 	 *
 	 * @param value String
 	 */
@@ -337,8 +329,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des
-	 * Feldes.
+	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
 	 *
 	 * @return Optional<String>
 	 */
@@ -348,8 +339,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has.
-	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -358,8 +348,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has.
-	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */

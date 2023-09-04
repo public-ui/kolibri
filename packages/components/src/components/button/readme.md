@@ -129,6 +129,7 @@ Probleme mit Disabled-Status
 - [kol-nav](../nav)
 - [kol-pagination](../pagination)
 - [kol-table](../table)
+- [kol-toast-container](../toast-container)
 
 ### Depends on
 
@@ -146,6 +147,7 @@ graph TD;
   kol-nav --> kol-button
   kol-pagination --> kol-button
   kol-table --> kol-button
+  kol-toast-container --> kol-button
   style kol-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

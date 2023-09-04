@@ -8,14 +8,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * **Buttons** dienen dazu, Benutzer:innen Auswahlmöglichkeiten für Aktionen
- * anzuzeigen und diese in einer klaren Hierarchie anzuordnen. Sie helfen
- * Nutzer:innen, die wichtigsten Aktionen einer Seite oder innerhalb eines
- * Viewports zu finden und ermöglichen es ihnen, diese Aktionen auszuführen. Die
- * Beschriftung des Buttons wird verwendet, um Nutzer:innen klar anzuzeigen,
- * welche Aktion ausgelöst wird. Buttons ermöglichen es Nutzer:innen, eine
- * Änderung zu bestätigen, Schritte in einer Aufgabe abzuschließen oder
- * Entscheidungen zu treffen.
+ * **Buttons** dienen dazu, Benutzer:innen Auswahlmöglichkeiten für Aktionen anzuzeigen und diese in einer klaren Hierarchie anzuordnen. Sie helfen Nutzer:innen, die wichtigsten Aktionen einer Seite oder innerhalb eines Viewports zu finden und ermöglichen es ihnen, diese Aktionen auszuführen. Die Beschriftung des Buttons wird verwendet, um Nutzer:innen klar anzuzeigen, welche Aktion ausgelöst wird. Buttons ermöglichen es Nutzer:innen, eine Änderung zu bestätigen, Schritte in einer Aufgabe abzuschließen oder Entscheidungen zu treffen.
  */
 
 @Tag("kol-button")
@@ -23,8 +16,7 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-button")
 public class KolButton extends Component {
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive
-	 * element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @param value String
 	 */
@@ -33,8 +25,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive
-	 * element of the component.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 *
 	 * @return Optional<String>
 	 */
@@ -44,8 +35,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines which elements are controlled by this component.
-	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @param value String
 	 */
@@ -54,8 +44,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines which elements are controlled by this component.
-	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @return Optional<String>
 	 */
@@ -65,10 +54,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Marks the element as the selected in a group of related elements.
-	 * Can be one of the following: `date` | `location` | `page` | `step` | `time` |
-	 * `true`.
-	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @param value String
 	 */
@@ -77,10 +63,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Marks the element as the selected in a group of related elements.
-	 * Can be one of the following: `date` | `location` | `page` | `step` | `time` |
-	 * `true`.
-	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
 	 * @return Optional<String>
 	 */
@@ -90,8 +73,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines whether the interactive element of the component expanded something.
-	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @param value String
 	 */
@@ -100,8 +82,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines whether the interactive element of the component expanded something.
-	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
 	 * @return Optional<String>
 	 */
@@ -130,9 +111,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines whether the interactive element of the component is selected (e.g.
-	 * role=tab).
-	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @param value String
 	 */
@@ -141,9 +120,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines whether the interactive element of the component is selected (e.g.
-	 * role=tab).
-	 * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
 	 * @return Optional<String>
 	 */
@@ -229,8 +206,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom
-	 * or left.
+	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @param value String
 	 */
@@ -239,8 +215,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom
-	 * or left.
+	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @return Optional<String>
 	 */
@@ -288,9 +263,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
-	 * slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @param value String
 	 */
@@ -299,9 +272,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.). Set to `false` to enable the expert
-	 * slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 *
 	 * @return Optional<String>
 	 */
@@ -349,8 +320,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has.
-	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value String
 	 */
@@ -359,8 +329,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines which tab-index the primary element of the component has.
-	 * (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */
@@ -389,8 +358,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive
-	 * element.
+	 * Defines either the type of the component or of the components interactive element.
 	 *
 	 * @param value String
 	 */
@@ -399,8 +367,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Defines either the type of the component or of the components interactive
-	 * element.
+	 * Defines either the type of the component or of the components interactive element.
 	 *
 	 * @return Optional<String>
 	 */

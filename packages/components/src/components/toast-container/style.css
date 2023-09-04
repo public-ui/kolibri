@@ -4,7 +4,6 @@
 	position: fixed;
 	z-index: 200;
 }
-
 .close-all {
 	align-self: flex-end;
 }
