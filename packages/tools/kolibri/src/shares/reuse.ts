@@ -42,3 +42,23 @@ export function getPublicUiVersions(packageJson: Record<string, unknown>): Map<s
 	}
 	return publicUiVersions;
 }
+
+/**
+ * This function is used to get the version of the package.json.
+ * @param {string} path The path to the package.json
+ * @returns {string} The version of the package.json
+ */
+export function getPackageJsonVersion(path: string): string {
+	if (!fs.existsSync(path)) {
+		throw new Error(`${path} not found`);
+	}
+	const content = fs.readFileSync(path, 'utf8');
+	let json: Record<string, unknown>;
+	try {
+		json = JSON.parse(content) as Record<string, unknown>;
+	} catch (err) {
+		throw new Error(`Error reading package.json: ${(err as Error).message}`);
+	}
+	const version = json.version as string;
+	return version;
+}

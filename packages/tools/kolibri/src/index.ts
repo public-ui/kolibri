@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 import { exec } from 'child_process';
-import fs from 'fs';
 import path from 'path';
 import { TaskRunner } from './runner/task-runner';
+import semver from 'semver';
 import { tasks } from './runner/tasks';
+import { getPackageJsonVersion } from './shares/reuse';
 
 exec('git status --porcelain', (err, stdout) => {
 	if (err) {
@@ -17,58 +18,27 @@ exec('git status --porcelain', (err, stdout) => {
 	// 	throw new Error('There are uncommitted changes');
 	// }
 
-	const packageJsonPath = path.resolve(process.cwd(), 'node_modules/@public-ui/components/package.json');
-	console.log(packageJsonPath);
-	if (!fs.existsSync(packageJsonPath)) {
-		throw new Error('@public-ui/components not installed');
-	}
+	const versionOfPublicUiKoliBriCli = getPackageJsonVersion(path.resolve(__dirname, '..', 'package.json'));
+	const versionOfPublicUiComponents = getPackageJsonVersion(path.resolve(process.cwd(), 'node_modules/@public-ui/components/package.json'));
 
-	const packageJsonContent = fs.readFileSync(packageJsonPath, 'utf8');
-
-	let packageJson: Record<string, unknown>;
-	try {
-		packageJson = JSON.parse(packageJsonContent) as Record<string, unknown>;
-	} catch (err) {
-		throw new Error(`Error reading package.json: ${(err as Error).message}`);
-	}
-	const versionOfPublicUiComponents = packageJson.version as string;
-
-	if (!versionOfPublicUiComponents) {
-		throw new Error('Version of @public-ui/components not found');
-	}
-
-	const runner = new TaskRunner('test', versionOfPublicUiComponents);
+	const baseDir = process.argv[2];
+	const runner = new TaskRunner(baseDir, versionOfPublicUiKoliBriCli, versionOfPublicUiComponents);
 	runner.registerTasks(tasks);
-	runner.run();
+
 	let summary = runner.printSummary();
-	console.log(`
+	while (semver.lt(summary.nextVersion!, versionOfPublicUiKoliBriCli)) {
+		runner.run();
+		summary = runner.printSummary();
+		console.log(`
 done ${summary.done}`);
-	console.log(`pending ${summary.pending}`);
-	console.log(`total ${summary.total}`);
-	console.log(`nextVersion ${summary.nextVersion}`);
+		console.log(`pending ${summary.pending}`);
+		console.log(`total ${summary.total}`);
+		console.log(`nextVersion ${summary.nextVersion}`);
+		console.warn(`The project package.json must be updated to version ${summary.nextVersion} before the next run.`);
+		runner.setProjectVersion(summary.nextVersion!);
+	}
 
-	console.warn(`Only update @public-ui/* to version smaller equal own version (CLI).`);
-
-	runner.setVersion(summary.nextVersion!);
-	console.log(`Update @public-ui/* to version ${summary.nextVersion} (npm i).`);
-	runner.run();
-	runner.printSummary();
-
-	summary = runner.printSummary();
-	console.log(`
-done ${summary.done}`);
-	console.log(`pending ${summary.pending}`);
-	console.log(`total ${summary.total}`);
-	console.log(`nextVersion ${summary.nextVersion}`);
-
-	console.warn(`Only update @public-ui/* to version smaller equal own version (CLI).`);
-
-	runner.setVersion(summary.nextVersion!);
-	console.log(`Update @public-ui/* to version ${summary.nextVersion} (npm i).`);
-	runner.run();
-	runner.printSummary();
-
-	console.warn(`At the end we update to version of the CLI and run npm i again.`);
+	runner.printSummary(true);
 
 	console.log(`
 After the code migration has gone through, the code formatting may no longer

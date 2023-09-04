@@ -6,11 +6,13 @@ import { AbstractTask } from './abstract-task';
 export class TaskRunner {
 	private readonly tasks: Map<string, AbstractTask> = new Map();
 	private baseDir: string = '/';
-	private version: string = '0.0.0';
+	private cliVersion: string = '0.0.0';
+	private projectVersion: string = '0.0.0';
 
-	public constructor(baseDir: string, version: string) {
+	public constructor(baseDir: string, cliVersion: string, projectVersion: string) {
 		this.setBaseDir(baseDir);
-		this.setVersion(version);
+		this.setCliVersion(cliVersion);
+		this.setProjectVersion(projectVersion);
 	}
 
 	private setBaseDir(baseDir: string): void {
@@ -20,23 +22,30 @@ export class TaskRunner {
 		this.baseDir = baseDir;
 	}
 
-	public setVersion(version: string): void {
+	public setCliVersion(version: string): void {
 		if (semver.valid(version) === null) {
-			throw new Error(`Invalid semver version: ${version}`);
+			throw new Error(`Invalid CLI version: ${version}`);
 		}
-		this.version = version;
+		this.cliVersion = version;
+	}
+
+	public setProjectVersion(version: string): void {
+		if (semver.valid(version) === null) {
+			throw new Error(`Invalid project version: ${version}`);
+		}
+		this.projectVersion = version;
 	}
 
 	public registerTasks(tasks: AbstractTask[]): void {
 		tasks.forEach((task) => {
 			if (
-				semver.gtr(this.version, task.getVersionRange(), {
+				semver.gtr(this.projectVersion, task.getVersionRange(), {
 					includePrerelease: true,
 				})
 			) {
 				console.log(
 					`Task "${task.getTitle()}" will be excluded. The current version (${
-						this.version
+						this.projectVersion
 					}) is greater than the task version range (${task.getVersionRange()}).`,
 				);
 			} else {
@@ -52,7 +61,7 @@ export class TaskRunner {
 	private runTask(task: AbstractTask): void {
 		if (task.getStatus() === 'pending') {
 			if (
-				semver.satisfies(this.version, task.getVersionRange(), {
+				semver.satisfies(this.projectVersion, task.getVersionRange(), {
 					includePrerelease: true,
 				})
 			) {
@@ -60,7 +69,7 @@ export class TaskRunner {
 			} else {
 				console.log(
 					`Task "${task.getTitle()}" was skipped. The current version (${
-						this.version
+						this.projectVersion
 					}) does not satisfies with the task version range (${task.getVersionRange()}).`,
 				);
 			}
@@ -84,17 +93,15 @@ Running ${this.tasks.size} tasks...`);
 		});
 	}
 
-	public printSummary(): {
+	public printSummary(outline = false): {
 		done: number;
 		pending: number;
 		total: number;
 		nextVersion: string | null;
 	} {
-		console.log(`
-Summary:`);
 		let done = 0;
 		let pending = 0;
-		let minVersion: string | null = null;
+		let minVersion: string = this.cliVersion;
 		this.tasks.forEach((task) => {
 			switch (task.getStatus()) {
 				case 'done':
@@ -102,17 +109,16 @@ Summary:`);
 					break;
 				case 'pending':
 					pending++;
-					if (minVersion === null) {
-						minVersion = semver.minVersion(task.getVersionRange())?.raw as string;
-					}
 					// eslint-disable-next-line no-case-declarations
-					const taskMinVersion: string = semver.minVersion(task.getVersionRange())?.raw as string;
+					const taskMinVersion = semver.minVersion(task.getVersionRange())?.raw ?? this.cliVersion;
 					if (semver.gt(minVersion, taskMinVersion)) {
 						minVersion = taskMinVersion;
 					}
 					break;
 			}
-			console.log(`- ${task.getTitle()}: ${task.getStatus()}`);
+			if (outline) {
+				console.log(`- ${task.getTitle()}: ${task.getStatus()}`);
+			}
 		});
 		return {
 			done: done,
