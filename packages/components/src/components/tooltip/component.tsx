@@ -1,5 +1,5 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { AlignPropType, validateAlign } from '../../types/props/align';
 import { IdPropType, validateId } from '../../types/props/id';
@@ -15,9 +15,12 @@ import { API, States } from './types';
 	shadow: false,
 })
 export class KolTooltip implements API {
-	private previousSibling?: HTMLElement | null;
-	private tooltipElement?: HTMLDivElement;
+	@Element() private host!: HTMLKolTooltipWcElement;
+
 	private arrowElement?: HTMLDivElement;
+	private previousSibling?: Element | null;
+	private tooltipElement?: HTMLDivElement;
+
 	private cleanupAutoPositioning?: () => void;
 
 	private alignTooltip = (): void => {
@@ -94,24 +97,30 @@ export class KolTooltip implements API {
 	private addListeners = (el: Element): void => {
 		el.addEventListener('mouseover', this.incrementOverFocusCount);
 		el.addEventListener('focus', this.incrementOverFocusCount);
+		el.addEventListener('focusin', this.incrementOverFocusCount);
 		el.addEventListener('mouseout', this.decrementOverFocusCount);
 		el.addEventListener('blur', this.decrementOverFocusCount);
+		el.addEventListener('focusout', this.decrementOverFocusCount);
 	};
 
 	private removeListeners = (el: Element): void => {
 		el.removeEventListener('mouseover', this.incrementOverFocusCount);
 		el.removeEventListener('focus', this.incrementOverFocusCount);
+		el.removeEventListener('focusin', this.incrementOverFocusCount);
 		el.removeEventListener('mouseout', this.decrementOverFocusCount);
 		el.removeEventListener('blur', this.decrementOverFocusCount);
+		el.addEventListener('focusout', this.decrementOverFocusCount);
 	};
 
-	private resyncListeners = (el: Element): void => {
-		this.removeListeners(el);
-		this.addListeners(el);
-	};
-
-	private catchHostElement = (el: HTMLElement | null): void => {
-		this.previousSibling = el?.previousElementSibling as HTMLElement | null;
+	private resyncListeners = (last?: Element | null, next?: Element | null): void => {
+		console.log('resyncListeners', last, next);
+		if (last) {
+			this.removeListeners(last);
+		}
+		if (next) {
+			last = next;
+			this.addListeners(next);
+		}
 	};
 
 	private catchTooltipElement = (el?: HTMLDivElement): void => {
@@ -123,7 +132,7 @@ export class KolTooltip implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host ref={this.catchHostElement}>
+			<Host>
 				{this.state._label !== '' && (
 					<div class="tooltip-floating" ref={this.catchTooltipElement}>
 						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
@@ -201,13 +210,18 @@ export class KolTooltip implements API {
 		this.validateLabel(this._label);
 	}
 
-	public connectedCallback() {
-		if (this.previousSibling) {
-			this.resyncListeners(this.previousSibling);
-		}
-		if (this.tooltipElement) {
-			this.resyncListeners(this.tooltipElement);
-		}
+	private handleEventListeners(): void {
+		this.resyncListeners(this.previousSibling, this.host?.previousElementSibling);
+		this.resyncListeners(this.tooltipElement, this.tooltipElement);
+	}
+
+	public connectedCallback(): void {
+		this.previousSibling = this.host?.previousElementSibling;
+		this.handleEventListeners();
+	}
+
+	public componentDidRender(): void {
+		this.handleEventListeners();
 	}
 
 	/**
@@ -216,6 +230,7 @@ export class KolTooltip implements API {
 	public disconnectedCallback(): void {
 		if (this.previousSibling /* SSR instanceof HTMLElement */) {
 			this.removeListeners(this.previousSibling);
+			this.previousSibling = undefined;
 		}
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			this.removeListeners(this.tooltipElement);
