@@ -219,16 +219,22 @@ export const App: FC = () => {
 					className="col-span-2 sm:col-auto"
 					_disabled={!active}
 					_hideLabel
+					_label="Komponente wechseln"
 					_id="theme-toggle"
 					_list={componentList}
 					_on={componentSelectOn}
 					_value={[currentComponent]}
-				>
-					Komponente wechseln
-				</KolSelect>
-				<KolSelect className="col-span-2 sm:col-auto" _hideLabel _disabled={!active} _id="theme-toggle" _list={THEME_OPTIONS} _on={on} _value={[theme]}>
-					Theme wechseln
-				</KolSelect>
+				></KolSelect>
+				<KolSelect
+					_label="Theme wechseln"
+					className="col-span-2 sm:col-auto"
+					_hideLabel
+					_disabled={!active}
+					_id="theme-toggle"
+					_list={THEME_OPTIONS}
+					_on={on}
+					_value={[theme]}
+				></KolSelect>
 			</div>
 			<hr aria-hidden="true" />
 			<div className="p-4">

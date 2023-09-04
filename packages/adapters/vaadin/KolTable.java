@@ -8,19 +8,11 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 import java.util.Optional;
 
 /**
- * Die **Table**-Komponente dient primär der übersichtlichen Darstellung von
- * Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten
- * abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt.
- * Hierzu gehören beispielsweise die optionalen Funktionalitäten
- * Spaltensortierung oder Pagination.
- * 
- * <kol-indented-text _summary="Backend-seitige Pagination">
- * Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der
- * Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise
- * "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine
- * "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente
- * verwendet werden.
- * </kol-indented-text>
+ * Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+
+<kol-indented-text _summary="Backend-seitige Pagination">
+	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden.
+</kol-indented-text>
  */
 
 @Tag("kol-table")
@@ -104,8 +96,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -114,8 +105,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label,
-	 * label, headline, caption, summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
