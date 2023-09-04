@@ -113,11 +113,16 @@ export class KolTooltip implements API {
 	};
 
 	private resyncListeners = (last?: Element | null, next?: Element | null): void => {
-		console.log('resyncListeners', last, next);
 		if (last) {
 			this.removeListeners(last);
 		}
 		if (next) {
+			/**
+			 * `last` and `next` are references to the class properties.
+			 * -> `last = next` will be set for example `this.previousSibling = next`.
+			 *
+			 * This makes the next element to the last element for the next resync cycle.
+			 */
 			last = next;
 			this.addListeners(next);
 		}
