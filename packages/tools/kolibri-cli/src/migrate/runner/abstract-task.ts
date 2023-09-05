@@ -10,7 +10,7 @@ export type TaskOptions = {
 export abstract class AbstractTask {
 	private status: TaskStatus = 'pending';
 
-	protected static instance?: AbstractTask;
+	protected static readonly instances: Map<string, AbstractTask> = new Map();
 
 	protected readonly description?: string;
 

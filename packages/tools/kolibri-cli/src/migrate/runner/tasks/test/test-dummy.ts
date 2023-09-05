@@ -10,10 +10,10 @@ export class TestDummy extends AbstractTask {
 		dependentTasks: AbstractTask[] = [],
 		options: TaskOptions = {},
 	): TestDummy {
-		if (!(this.instance instanceof TestDummy)) {
-			this.instance = new TestDummy(identifier, title, extensions, versionRange, dependentTasks, options);
+		if (!this.instances.has(identifier)) {
+			this.instances.set(identifier, new TestDummy(identifier, title, extensions, versionRange, dependentTasks, options));
 		}
-		return this.instance as TestDummy;
+		return this.instances.get(identifier) as TestDummy;
 	}
 
 	public run(): void {}

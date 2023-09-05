@@ -5,7 +5,7 @@ import path from 'path';
 import { TaskRunner } from './runner/task-runner';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
-import { getPackageManagerInstallCommand, readPackageJson, readPackageString } from './shares/reuse';
+import { MODIFIED_FILES, getPackageManagerInstallCommand, readPackageJson, readPackageString } from './shares/reuse';
 
 type Option = 'testTasks';
 
@@ -70,6 +70,12 @@ Source folder to migrate: ${baseDir}`);
 						console.log(`
 Task status:`);
 						runner.getStatus(true);
+
+						console.log(`
+Modified files: ${MODIFIED_FILES.size}`);
+						MODIFIED_FILES.forEach((file) => {
+							console.log(`- ${file}`);
+						});
 
 						console.log(`
 After the code migration has gone through, the code formatting may no longer
