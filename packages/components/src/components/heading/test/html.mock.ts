@@ -16,12 +16,14 @@ export const getHeadingWcHtml = (
 		},
 		props
 	);
+	const tag = state._level === 0 ? 'strong' : `h${state._level || 1}`;
+
 	return `
 		<kol-heading-wc${additionalAttrs}>
-			<h${state._level || 1} class="headline">
+			<${tag} class="headline">
 				${typeof state._label === 'string' ? state._label : ''}
 				${typeof slots.default === 'string' ? slots.default : `<slot />`}
-			</h${state._level || 1}>
+			</${tag}>
 		</kol-heading-wc>`;
 };
 

@@ -1,27 +1,28 @@
 import { KolAbbr } from './abbr/component';
 import { KolAccordion } from './accordion/component';
-import { KolAlertWc } from './alert/component';
 import { KolAlert } from './alert/shadow';
-import { KolAvatarWc } from './avatar/component';
+import { KolAlertWc } from './alert/component';
 import { KolAvatar } from './avatar/shadow';
+import { KolAvatarWc } from './avatar/component';
 import { KolBadge } from './badge/component';
 import { KolBreadcrumb } from './breadcrumb/component';
-import { KolButtonGroupWc } from './button-group/component';
-import { KolButtonGroup } from './button-group/shadow';
-import { KolButtonLinkTextSwitch } from './button-link-text-switch/component';
-import { KolButtonLink } from './button-link/component';
-import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
+import { KolButtonGroup } from './button-group/shadow';
+import { KolButtonGroupWc } from './button-group/component';
+import { KolButtonLink } from './button-link/component';
+import { KolButtonLinkTextSwitch } from './button-link-text-switch/component';
+import { KolButtonWc } from './button/component';
 import { KolCard } from './card/component';
 import { KolDetails } from './details/component';
 import { KolForm } from './form/component';
-import { KolHeadingWc } from './heading/component';
 import { KolHeading } from './heading/shadow';
+import { KolHeadingWc } from './heading/component';
+import { KolIcon } from './icon/component';
 import { KolIconFontAwesome } from './icon-font-awesome/component';
 import { KolIconIcofont } from './icon-icofont/component';
-import { KolIcon } from './icon/component';
 import { KolImage } from './image/shadow';
 import { KolIndentedText } from './indented-text/component';
+import { KolInput } from './input/component';
 import { KolInputAdapterLeanup } from './input-adapter-leanup/component';
 import { KolInputCheckbox } from './input-checkbox/component';
 import { KolInputColor } from './input-color/component';
@@ -30,16 +31,15 @@ import { KolInputEmail } from './input-email/component';
 import { KolInputFile } from './input-file/component';
 import { KolInputNumber } from './input-number/component';
 import { KolInputPassword } from './input-password/component';
-import { KolInputRadioGroup } from './input-radio-group/component';
 import { KolInputRadio } from './input-radio/component';
+import { KolInputRadioGroup } from './input-radio-group/component';
 import { KolInputRange } from './input-range/component';
 import { KolInputText } from './input-text/component';
-import { KolInput } from './input/component';
 import { KolKolibri } from './kolibri/component';
+import { KolLink } from './link/shadow';
 import { KolLinkButton } from './link-button/component';
 import { KolLinkGroup } from './link-group/component';
 import { KolLinkWc } from './link/component';
-import { KolLink } from './link/shadow';
 import { KolLogo } from './logo/component';
 import { KolMarkdownRendererWc } from './markdown-renderer/component';
 import { KolModal } from './modal/component';
@@ -50,8 +50,8 @@ import { KolProcess } from './progress/component';
 import { KolQuote } from './quote/shadow';
 import { KolSelect } from './select/component';
 import { KolSkipNav } from './skip-nav/component';
-import { KolSpanWc } from './span/component';
 import { KolSpan } from './span/shadow';
+import { KolSpanWc } from './span/component';
 import { KolSpin } from './spin/component';
 import { KolSplitButton } from './split-button/component';
 import { KolSymbol } from './symbol/component';
@@ -59,6 +59,7 @@ import { KolTable } from './table/component';
 import { KolTabs } from './tabs/component';
 import { KolTextarea } from './textarea/component';
 import { KolToast } from './toast/component';
+import { KolToastContainer } from './toast-container/component';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/component';
 
@@ -72,13 +73,12 @@ export const COMPONENTS = [
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,
-	KolButtonWc,
-	KolButtonGroupWc,
 	KolButtonGroup,
+	KolButtonGroupWc,
 	KolButtonLink,
 	KolButtonLinkTextSwitch,
+	KolButtonWc,
 	KolCard,
-	KolInputAdapterLeanup,
 	KolDetails,
 	KolForm,
 	KolHeading,
@@ -89,10 +89,11 @@ export const COMPONENTS = [
 	KolImage,
 	KolIndentedText,
 	KolInput,
+	KolInputAdapterLeanup,
 	KolInputCheckbox,
 	KolInputColor,
-	KolInputEmail,
 	KolInputDate,
+	KolInputEmail,
 	KolInputFile,
 	KolInputNumber,
 	KolInputPassword,
@@ -103,8 +104,8 @@ export const COMPONENTS = [
 	KolKolibri,
 	KolLink,
 	KolLinkButton,
-	KolLinkWc,
 	KolLinkGroup,
+	KolLinkWc,
 	KolLogo,
 	KolMarkdownRendererWc,
 	KolModal,
@@ -124,6 +125,7 @@ export const COMPONENTS = [
 	KolTabs,
 	KolTextarea,
 	KolToast,
+	KolToastContainer,
 	KolTooltip,
 	KolVersion,
 ];

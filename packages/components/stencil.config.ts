@@ -1,4 +1,5 @@
-import { promises as fs } from 'fs';
+import fs, { promises as fsPromises } from 'fs';
+import path from 'path';
 
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
@@ -57,12 +58,14 @@ const TAGS = [
 	'kol-table',
 	'kol-tabs',
 	'kol-textarea',
-	'kol-toast',
+	'kol-toast-container',
 	'kol-version',
 ];
 const EXCLUDE_TAGS = [
 	'kol-alert-wc',
+	'kol-avatar-wc',
 	'kol-all',
+	'kol-button-group-wc',
 	'kol-button-link-text-switch',
 	'kol-button-wc',
 	'kol-color',
@@ -144,8 +147,10 @@ async function generateCustomElementsJson(docsData: JsonDocs) {
 		})),
 	};
 
-	await fs.writeFile('./custom-elements.json', JSON.stringify(jsonData, null, 2));
+	await fsPromises.writeFile('./custom-elements.json', JSON.stringify(jsonData, null, 2));
 }
+
+const developmentHtmlFiles = fs.readdirSync(path.join(__dirname, 'src/dev')).filter((fileName: string) => fileName.endsWith('.html'));
 
 let outputTargets: OutputTarget[] = [
 	{
@@ -166,6 +171,7 @@ let outputTargets: OutputTarget[] = [
 			{
 				src: 'dev.html',
 			},
+			...developmentHtmlFiles.map((fileName) => ({ src: path.join('dev', fileName) })),
 		],
 	},
 	// {
@@ -180,37 +186,31 @@ if (process.env.NODE_ENV === 'production') {
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v11/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v12/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v13/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v14/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v15/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v16/src/components.ts',
-			includeImportCustomElements: false,
 		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',

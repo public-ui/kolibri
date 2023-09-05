@@ -2136,7 +2136,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		--input-inner-size: calc(var(--spacing) * 3);
 		--input-outer-size: calc(var(--spacing) * 6);
 	}
-	div[slot="input"] {
+	.input-slot {
 		align-items: center;
 		display: flex;
 		gap: calc(var(--spacing) * 2);

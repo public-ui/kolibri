@@ -1917,7 +1917,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			display: inline-block;
 			margin-bottom: calc(var(--spacing) / 2);
 		}
-		fieldset [slot='input'] {
+		fieldset .input-slot {
 			gap: var(--spacing);
 		}
 		fieldset div label {

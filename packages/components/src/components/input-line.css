@@ -2,7 +2,7 @@
 kol-input {
 	display: grid;
 }
-kol-input [slot='input'] {
+kol-input .input-slot {
 	flex-grow: 1;
 }
 input:not([type='checkbox'], [type='radio']),
