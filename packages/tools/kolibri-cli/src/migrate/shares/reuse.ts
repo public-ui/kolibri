@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { FileExtension } from '../types';
+import { FileExtension, PackageJson } from '../../types';
 
 /**
  * Recursively searches for files with the specified extension in the specified directory.
@@ -44,21 +44,46 @@ export function getPublicUiVersions(packageJson: Record<string, unknown>): Map<s
 }
 
 /**
- * This function is used to get the version of the package.json.
- * @param {string} path The path to the package.json
- * @returns {string} The version of the package.json
+ * This function is used to get the version of the package.json as string.
+ * @param {string} offsetPath The offset path to the package.json
+ * @returns {string} The package.json as string
  */
-export function getPackageJsonVersion(path: string): string {
-	if (!fs.existsSync(path)) {
-		throw new Error(`${path} not found`);
+export function readPackageString(offsetPath: string): string {
+	offsetPath = path.resolve(offsetPath, 'package.json');
+	if (!fs.existsSync(offsetPath)) {
+		throw new Error(`${offsetPath} not found`);
 	}
-	const content = fs.readFileSync(path, 'utf8');
+	return fs.readFileSync(offsetPath, 'utf8');
+}
+
+/**
+ * This function is used to get the version of the package.json.
+ * @param {string} offsetPath The offset path to the package.json
+ * @returns {PackageJson} The package.json as object
+ */
+export function readPackageJson(offsetPath: string): PackageJson {
+	const content = readPackageString(offsetPath);
 	let json: Record<string, unknown>;
 	try {
 		json = JSON.parse(content) as Record<string, unknown>;
 	} catch (err) {
 		throw new Error(`Error reading package.json: ${(err as Error).message}`);
 	}
-	const version = json.version as string;
-	return version;
+	return json as PackageJson;
+}
+
+/**
+ * This function is used to get the package manager install command.
+ * @param {string} baseDir The base directory to start searching for the package manager
+ * @returns {string} The package manager install command
+ */
+export function getPackageManagerInstallCommand(baseDir: string = process.cwd()) {
+	if (fs.existsSync(path.resolve(baseDir, 'pnpm-lock.yaml'))) return 'pnpm i';
+	if (fs.existsSync(path.resolve(baseDir, 'yarn.lock'))) return 'yarn';
+	if (fs.existsSync(path.resolve(baseDir, 'package-lock.json'))) return 'npm i';
+	baseDir = path.resolve(baseDir, '..');
+	if (baseDir === '/') {
+		throw new Error('Package manager could not detected.');
+	}
+	return getPackageManagerInstallCommand(baseDir);
 }

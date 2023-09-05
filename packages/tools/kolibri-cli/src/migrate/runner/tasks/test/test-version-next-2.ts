@@ -12,7 +12,5 @@ export class TestVersionNext2 extends AbstractTask {
 		return this.instance as TestVersionNext2;
 	}
 
-	public run(): void {
-		this.setStatus('done');
-	}
+	public run(): void {}
 }

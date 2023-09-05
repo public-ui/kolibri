@@ -8,6 +8,7 @@ export class TaskRunner {
 	private baseDir: string = '/';
 	private cliVersion: string = '0.0.0';
 	private projectVersion: string = '0.0.0';
+	private openRun = true;
 
 	public constructor(baseDir: string, cliVersion: string, projectVersion: string) {
 		this.setBaseDir(baseDir);
@@ -22,7 +23,7 @@ export class TaskRunner {
 		this.baseDir = baseDir;
 	}
 
-	public setCliVersion(version: string): void {
+	private setCliVersion(version: string): void {
 		if (semver.valid(version) === null) {
 			throw new Error(`Invalid CLI version: ${version}`);
 		}
@@ -33,7 +34,10 @@ export class TaskRunner {
 		if (semver.valid(version) === null) {
 			throw new Error(`Invalid project version: ${version}`);
 		}
-		this.projectVersion = version;
+		if (this.projectVersion !== version) {
+			this.projectVersion = version;
+			this.openRun = true;
+		}
 	}
 
 	public registerTasks(tasks: AbstractTask[]): void {
@@ -50,6 +54,7 @@ export class TaskRunner {
 				);
 			} else {
 				this.tasks.set(task.getIdentifier(), task);
+				this.openRun = true;
 			}
 		});
 	}
@@ -66,12 +71,7 @@ export class TaskRunner {
 				})
 			) {
 				task.run(this.baseDir);
-			} else {
-				console.log(
-					`Task "${task.getTitle()}" was skipped. The current version (${
-						this.projectVersion
-					}) does not satisfies with the task version range (${task.getVersionRange()}).`,
-				);
+				task.setStatus('done');
 			}
 		}
 	}
@@ -86,14 +86,30 @@ export class TaskRunner {
 	}
 
 	public run(): void {
-		console.log(`
-Running ${this.tasks.size} tasks...`);
 		this.tasks.forEach((task) => {
 			this.dependentTaskRun(task, task.getDependentTasks());
 		});
+		this.openRun = false;
 	}
 
-	public printSummary(outline = false): {
+	public getPendingMinVersion(): string {
+		let version: string = this.cliVersion;
+		this.tasks.forEach((task) => {
+			if (task.getStatus() === 'pending') {
+				const minVersion = semver.minVersion(task.getVersionRange())?.raw ?? this.cliVersion;
+				if (semver.gt(version, minVersion)) {
+					version = minVersion;
+				}
+			}
+		});
+		return version;
+	}
+
+	public hasPendingTasks(): boolean {
+		return this.openRun || semver.lt(this.getPendingMinVersion(), this.cliVersion);
+	}
+
+	public getStatus(outline = false): {
 		done: number;
 		pending: number;
 		total: number;
@@ -101,7 +117,6 @@ Running ${this.tasks.size} tasks...`);
 	} {
 		let done = 0;
 		let pending = 0;
-		let minVersion: string = this.cliVersion;
 		this.tasks.forEach((task) => {
 			switch (task.getStatus()) {
 				case 'done':
@@ -109,11 +124,6 @@ Running ${this.tasks.size} tasks...`);
 					break;
 				case 'pending':
 					pending++;
-					// eslint-disable-next-line no-case-declarations
-					const taskMinVersion = semver.minVersion(task.getVersionRange())?.raw ?? this.cliVersion;
-					if (semver.gt(minVersion, taskMinVersion)) {
-						minVersion = taskMinVersion;
-					}
 					break;
 			}
 			if (outline) {
@@ -124,7 +134,7 @@ Running ${this.tasks.size} tasks...`);
 			done: done,
 			pending: pending,
 			total: this.tasks.size,
-			nextVersion: minVersion,
+			nextVersion: this.getPendingMinVersion(),
 		};
 	}
 }

@@ -1,5 +1,5 @@
 import semver from 'semver';
-import { FILE_EXTENSIONS, FileExtension } from '../types';
+import { FILE_EXTENSIONS, FileExtension } from '../../types';
 import { TaskStatus } from './types';
 
 type TaskOptions = {
@@ -42,7 +42,7 @@ export abstract class AbstractTask {
 		return this.identifier;
 	}
 
-	protected setStatus(status: TaskStatus): void {
+	public setStatus(status: TaskStatus): void {
 		this.status = status;
 	}
 
@@ -56,10 +56,6 @@ export abstract class AbstractTask {
 
 	public getVersionRange(): string {
 		return this.versionRange;
-	}
-
-	public static getInstance(): AbstractTask {
-		throw new Error('The static method getInstance() is not implemented.');
 	}
 
 	protected runDummy(files: string[]): void {

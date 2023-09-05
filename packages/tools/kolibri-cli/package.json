@@ -17,22 +17,29 @@
 	},
 	"description": "CLI for executing some helpful commands for KoliBri projects.",
 	"scripts": {
-		"start": "nodemon src/index.ts test",
+		"reset": "pnpm i @public-ui/components@1.1.7",
+		"depcheck": "depcheck --ignore-bin-package --skip-missing",
 		"format": "prettier -c src",
 		"lint": "eslint src && tsc --noEmit",
 		"prepack": "tsc",
+		"start": "pnpm reset && ts-node src/index.ts migrate test",
 		"unused": "knip",
-		"update": "ncu -t minor -u && ncu"
+		"update": "ncu -t minor -u && ncu",
+		"watch": "pnpm reset && nodemon  --ignore package.json src/index.ts migrate --test-tasks test"
 	},
 	"dependencies": {
+		"chalk": "5.3.0",
+		"commander": "11.0.0",
+		"loglevel": "1.8.1",
 		"prettier": "3.0.3",
 		"semver": "7.5.4"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.1.7",
+		"@public-ui/components": "1.7.0-rc.0",
+		"@types/node": "20.5.9",
 		"@typescript-eslint/eslint-plugin": "6.5.0",
 		"@typescript-eslint/parser": "6.5.0",
-		"@types/node": "20.5.9",
+		"depcheck": "1.4.5",
 		"eslint-config-prettier": "9.0.0",
 		"eslint-plugin-html": "7.1.0",
 		"eslint-plugin-jsdoc": "46.5.1",
@@ -40,13 +47,11 @@
 		"eslint-plugin-jsx-a11y": "6.7.1",
 		"eslint-plugin-no-loops": "0.3.0",
 		"eslint-plugin-react": "7.33.2",
-		"knip": "2.21.1",
 		"mocha": "10.2.0",
 		"nodemon": "3.0.1",
 		"npm-check-updates": "16.13.2",
-		"react": "18.2.0",
-		"typescript": "5.2.2",
-		"vue": "3.3.4"
+		"ts-node": "10.9.1",
+		"typescript": "5.2.2"
 	},
 	"files": [
 		"dist"

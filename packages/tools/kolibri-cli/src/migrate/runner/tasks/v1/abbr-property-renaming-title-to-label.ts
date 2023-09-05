@@ -1,8 +1,6 @@
 import { filterFilesByExt } from '../../../shares/reuse';
-import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../types';
+import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../../types';
 import { AbstractTask } from '../../abstract-task';
-
-import { AccordionPropertyRenamingHeadingToLabel } from './accordion-property-renaming-heading-to-label';
 
 export class AbbrPropertyRenamingTitleToLabel extends AbstractTask {
 	private constructor() {
@@ -11,7 +9,6 @@ export class AbbrPropertyRenamingTitleToLabel extends AbstractTask {
 			'Renaming property `_title` to `_label`',
 			COMPONENT_FILE_EXTENSIONS.concat(CUSTOM_ELEMENT_FILE_EXTENSIONS),
 			'>=1 <2',
-			[AccordionPropertyRenamingHeadingToLabel.getInstance()],
 		);
 	}
 
@@ -25,7 +22,6 @@ export class AbbrPropertyRenamingTitleToLabel extends AbstractTask {
 	public run(baseDir: string): void {
 		this.transpileComponentFile(baseDir);
 		this.transpileCustomElementFile(baseDir);
-		this.setStatus('done');
 	}
 
 	private transpileComponentFile(baseDir: string): void {

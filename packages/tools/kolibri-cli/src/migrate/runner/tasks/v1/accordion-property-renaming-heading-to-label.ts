@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { AbstractTask } from '../../abstract-task';
-import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../types';
+import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../../types';
 import { filterFilesByExt } from '../../../shares/reuse';
 
 export class AccordionPropertyRenamingHeadingToLabel extends AbstractTask {
@@ -23,7 +23,6 @@ export class AccordionPropertyRenamingHeadingToLabel extends AbstractTask {
 	public run(baseDir: string): void {
 		this.transpileComponentFile(baseDir);
 		this.transpileCustomElementFile(baseDir);
-		this.setStatus('done');
 	}
 
 	private transpileComponentFile(baseDir: string): void {
