@@ -1,0 +1,32 @@
+{
+	"name": "@public-ui/visual-tests",
+	"version": "1.7.0-rc.0",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": "https://github.com/public-ui/kolibri",
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"module": "tbd",
+	"types": "tbd",
+	"sideEffects": false,
+	"description": "tbd",
+	"scripts": {
+		"build": "",
+		"format": "prettier --check src",
+		"lint": "eslint src && tsc --noemit",
+		"unused": "knip"
+	},
+	"devDependencies": {
+		"eslint": "8.48.0",
+		"knip": "^2.21.2",
+		"npm-check-updates": "16.13.2",
+		"prettier": "^3.0.3"
+	},
+	"files": []
+}
