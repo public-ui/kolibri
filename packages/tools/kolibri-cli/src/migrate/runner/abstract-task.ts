@@ -2,7 +2,7 @@ import semver from 'semver';
 import { FILE_EXTENSIONS, FileExtension } from '../../types';
 import { TaskStatus } from './types';
 
-type TaskOptions = {
+export type TaskOptions = {
 	dependentTasks?: AbstractTask[];
 	description?: string;
 };

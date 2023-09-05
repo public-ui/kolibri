@@ -1,7 +1,6 @@
-import fs from 'fs';
-import { AbstractTask } from '../../abstract-task';
 import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../../types';
 import { filterFilesByExt } from '../../../shares/reuse';
+import { AbstractTask } from '../../abstract-task';
 
 export class AccordionPropertyRenamingHeadingToLabel extends AbstractTask {
 	private constructor() {

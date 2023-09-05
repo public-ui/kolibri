@@ -1,16 +1,7 @@
-import { AbstractTask } from '../../abstract-task';
+import { TestDummy } from './test-dummy';
 
-export class TestVersionZero extends AbstractTask {
-	private constructor() {
-		super('test-version-zero', 'Test version zero', [], '<1');
+export class TestVersionZero extends TestDummy {
+	public static getInstance(): TestDummy {
+		return super.getInstance('test-version-zero', 'Test version zero', [], '<1');
 	}
-
-	public static getInstance(): TestVersionZero {
-		if (!(this.instance instanceof TestVersionZero)) {
-			this.instance = new TestVersionZero();
-		}
-		return this.instance as TestVersionZero;
-	}
-
-	public run(): void {}
 }
