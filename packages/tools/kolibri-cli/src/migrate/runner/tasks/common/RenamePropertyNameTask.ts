@@ -68,7 +68,7 @@ export class RenamePropertyNameTask extends AbstractTask {
 			const newContent = content.replace(this.componentRegExp, `$1${this.newPropertyInCamelCase}$2`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
-				// fs.writeFileSync(file, newContent);
+				fs.writeFileSync(file, newContent);
 			}
 		});
 	}
@@ -79,7 +79,7 @@ export class RenamePropertyNameTask extends AbstractTask {
 			const newContent = content.replace(this.customElementRegExp, `$1${this.newProperty}$2`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
-				// fs.writeFileSync(file, newContent);
+				fs.writeFileSync(file, newContent);
 			}
 		});
 	}

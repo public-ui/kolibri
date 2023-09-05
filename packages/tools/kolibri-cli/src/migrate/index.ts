@@ -26,9 +26,9 @@ export default function (program: Command): void {
 					return;
 				}
 
-				// if (stdout) {
-				// 	throw new Error('There are uncommitted changes');
-				// }
+				if (stdout) {
+					throw new Error('There are uncommitted changes');
+				}
 
 				const versionOfPublicUiKoliBriCli = readPackageJson(path.resolve(__dirname, '..', '..')).version;
 				const versionOfPublicUiComponents = readPackageJson(path.resolve(process.cwd(), 'node_modules/@public-ui/components')).version;
