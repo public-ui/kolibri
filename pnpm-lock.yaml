@@ -414,6 +414,9 @@ importers:
       cpy-cli:
         specifier: 5.0.0
         version: 5.0.0
+      rimraf:
+        specifier: 3.0.2
+        version: 3.0.2
 
   packages/adapters/solid:
     devDependencies:
