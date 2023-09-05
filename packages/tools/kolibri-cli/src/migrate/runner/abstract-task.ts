@@ -58,13 +58,5 @@ export abstract class AbstractTask {
 		return this.versionRange;
 	}
 
-	protected runDummy(files: string[]): void {
-		files.forEach(() => {
-			// let content: string = fs.readFileSync(file, 'utf8');
-			// content = content.replace(/_heading="([^"]+)"/g, '_label="$1"');
-			// fs.writeFileSync(file, content);
-		});
-	}
-
 	public abstract run(baseDir: string): void;
 }

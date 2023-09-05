@@ -87,3 +87,18 @@ export function getPackageManagerInstallCommand(baseDir: string = process.cwd())
 	}
 	return getPackageManagerInstallCommand(baseDir);
 }
+
+export const isTagKebabCaseRegExp = /^kol-[a-z]+(-[a-z]+)*$/;
+export const isPropertyKebabCaseRegExp = /^_[a-z]+(-[a-z]+)*$/;
+
+/**
+ * Converts a kebab case string to a capital case string.
+ * @param {string} tag The kebab case string
+ * @returns {string} The capital case string
+ */
+export function kebabToCapitalCase(tag: string) {
+	return tag
+		.split('-') // Split on hyphen
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize each word
+		.join(''); // Join without space
+}
