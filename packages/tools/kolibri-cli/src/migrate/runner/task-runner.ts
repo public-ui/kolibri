@@ -76,10 +76,6 @@ export class TaskRunner {
 		});
 	}
 
-	public registerTask(task: AbstractTask): void {
-		this.registerTasks([task]);
-	}
-
 	private runTask(task: AbstractTask): void {
 		if (this.config.migrate?.tasks[task.getIdentifier()] === false) {
 			task.setStatus('skipped');
@@ -125,10 +121,6 @@ export class TaskRunner {
 			}
 		});
 		return version;
-	}
-
-	public hasPendingTasks(): boolean {
-		return this.openRun || semver.lt(this.getPendingMinVersion(), this.cliVersion);
 	}
 
 	public getStatus(outline = false): {

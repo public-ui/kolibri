@@ -24,26 +24,6 @@ export function filterFilesByExt(dir: string, ext: FileExtension | FileExtension
 }
 
 /**
- * This function is used to get the versions of @public-ui in the package.json.
- * @param {Record<string, unknown>} packageJson The package.json as object
- * @returns {Map<string, string>} The versions of @public-ui packages
- */
-export function getPublicUiVersions(packageJson: Record<string, unknown>): Map<string, string> {
-	const publicUiVersions = new Map<string, string>();
-	const dependencies = packageJson.dependencies ?? {};
-	const devDependencies = packageJson.devDependencies ?? {};
-	for (const [name, version] of Object.entries({
-		...dependencies,
-		...devDependencies,
-	})) {
-		if (name.startsWith('@public-ui/')) {
-			publicUiVersions.set(name, version as string);
-		}
-	}
-	return publicUiVersions;
-}
-
-/**
  * This function is used to get the version of the package.json as string.
  * @param {string} offsetPath The offset path to the package.json
  * @returns {string} The package.json as string

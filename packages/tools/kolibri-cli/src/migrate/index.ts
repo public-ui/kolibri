@@ -9,6 +9,7 @@ import { v1Tasks } from './runner/tasks/v1';
 import { MODIFIED_FILES, RemoveMode, getPackageManagerInstallCommand, readPackageJson, readPackageString, setRemoveMode } from './shares/reuse';
 
 type MigrateOption = {
+	ignoreUncommittedChanges: boolean;
 	removeMode: RemoveMode;
 	testTasks: boolean;
 };
@@ -22,6 +23,7 @@ export default function (program: Command): void {
 		.command('migrate')
 		.description('This command migrates KoliBri code to the current version.')
 		.argument('<string>', 'Source code folder to migrate')
+		.option('--ignore-uncommitted-changes', 'Allows execution with uncommitted changes', false)
 		.addOption(new Option('--remove-mode <mode>', 'Remove with comment out or delete').choices(['comment', 'delete']).default('comment'))
 		.option('--test-tasks', 'Run additional test tasks', false)
 		.action((baseDir: string, options: MigrateOption) => {
@@ -31,7 +33,7 @@ export default function (program: Command): void {
 					return;
 				}
 
-				if (stdout) {
+				if (!options.ignoreUncommittedChanges && stdout) {
 					throw new Error('There are uncommitted changes');
 				}
 

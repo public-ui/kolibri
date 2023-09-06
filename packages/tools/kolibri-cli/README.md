@@ -63,9 +63,10 @@ kolibri migrate <path>
 
 #### Options
 
-| Option          | Description                                | Type                  | Default   |
-| --------------- | ------------------------------------------ | --------------------- | --------- |
-| `--remove-mode` | Remove properties by comment out or delete | `comment` \| `delete` | `comment` |
+| Option                         | Description                                |          Type          |  Default   |
+| ------------------------------ | ------------------------------------------ | :--------------------: | :--------: |
+| `--ignore-uncommitted-changes` | Allows execution with uncommitted changes  |        boolean         |   false    |
+| `--remove-mode`                | Remove properties by comment out or delete | `delete` \| `prefixed` | `prefixed` |
 
 #### Configuration
 
