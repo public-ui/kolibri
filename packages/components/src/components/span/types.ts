@@ -17,6 +17,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
+	allowMarkdown: boolean;
 	icon: {
 		top?: KoliBriCustomIcon;
 		right?: KoliBriCustomIcon;
@@ -25,7 +26,6 @@ type RequiredStates = {
 	};
 } & PropLabelWithExpertSlot;
 type OptionalStates = {
-	allowMarkdown: boolean;
 	/**
 	 * @deprecated use _hide-label
 	 */

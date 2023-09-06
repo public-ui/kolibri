@@ -7,6 +7,7 @@ import { validateIcon } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { API, States } from './types';
 import { watchBoolean } from '../../utils/prop.validators';
+import { markdown } from '../../utils/markdown';
 
 /**
  * @internal
@@ -29,7 +30,11 @@ export class KolSpanWc implements API {
 				<span>
 					{this.state._icon.left && <kol-icon class="icon left" style={this.state._icon.left.style} _label="" _icon={this.state._icon.left.icon} />}
 					{!this.state._hideLabel && hideExpertSlot ? (
-						<span class="span-label">{this.state._allowMarkdown ? <kol-markdown-renderer-wc _label={this.state._label as string} /> : this.state._label}</span>
+						this.state._allowMarkdown && this.state._label ? (
+							<span class="span-label md" innerHTML={markdown(this.state._label)} />
+						) : (
+							<span class="span-label">{this.state._label}</span>
+						)
 					) : (
 						''
 					)}
@@ -71,6 +76,7 @@ export class KolSpanWc implements API {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	@State() public state: States = {
+		_allowMarkdown: false,
 		_hideLabel: false,
 		_icon: {},
 		_label: false, // ⚠ required
