@@ -39,7 +39,7 @@
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",
 		"@public-ui/components": "1.7.0-rc.2",
-		"@public-ui/solid": "1.7.0-rc.2-rc.0",
+		"@public-ui/solid": "1.7.0-rc.2",
 		"@public-ui/themes": "1.7.0-rc.2",
 		"monaco-editor": "0.41.0",
 		"monaco-editor-webpack-plugin": "7.1.0",
