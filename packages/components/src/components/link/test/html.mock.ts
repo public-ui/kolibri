@@ -38,7 +38,9 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
 				},
-				''
+				{
+					additionalAttrs: '',
+				}
 			)}
 			${
 				typeof state._target === 'string' && state._target !== '_self'
