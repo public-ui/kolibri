@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import semver from 'semver';
 import { AbstractTask } from './abstract-task';
+import { Configuration } from '../../types';
 
 export class TaskRunner {
 	private readonly tasks: Map<string, AbstractTask> = new Map();
@@ -9,11 +10,17 @@ export class TaskRunner {
 	private cliVersion: string = '0.0.0';
 	private projectVersion: string = '0.0.0';
 	private openRun = true;
+	private readonly config: Configuration = {
+		migrate: {
+			tasks: {},
+		},
+	};
 
-	public constructor(baseDir: string, cliVersion: string, projectVersion: string) {
+	public constructor(baseDir: string, cliVersion: string, projectVersion: string, config: Configuration) {
 		this.setBaseDir(baseDir);
 		this.setCliVersion(cliVersion);
 		this.setProjectVersion(projectVersion);
+		this.setConfig(config);
 	}
 
 	private setBaseDir(baseDir: string): void {
@@ -40,6 +47,15 @@ export class TaskRunner {
 		}
 	}
 
+	private setConfig(config: Configuration): void {
+		if (config.migrate?.tasks) {
+			this.config.migrate!.tasks = {
+				...this.config.migrate!.tasks,
+				...config.migrate?.tasks,
+			};
+		}
+	}
+
 	public registerTasks(tasks: AbstractTask[]): void {
 		tasks.forEach((task) => {
 			if (
@@ -52,6 +68,7 @@ export class TaskRunner {
 						this.projectVersion
 					}) is greater than the task version range (${task.getVersionRange()}).`,
 				);
+				this.config.migrate!.tasks[task.getIdentifier()] = false;
 			} else {
 				this.tasks.set(task.getIdentifier(), task);
 				this.openRun = true;
@@ -64,12 +81,17 @@ export class TaskRunner {
 	}
 
 	private runTask(task: AbstractTask): void {
-		if (task.getStatus() === 'pending') {
+		if (this.config.migrate?.tasks[task.getIdentifier()] === false) {
+			task.setStatus('skipped');
+		} else {
+			this.config.migrate!.tasks[task.getIdentifier()] = true;
 			if (
+				task.getStatus() === 'pending' &&
 				semver.satisfies(this.projectVersion, task.getVersionRange(), {
 					includePrerelease: true,
 				})
 			) {
+				// task.setStatus('running'); only of the task is async
 				task.run(this.baseDir);
 				task.setStatus('done');
 			}
@@ -114,6 +136,7 @@ export class TaskRunner {
 		pending: number;
 		total: number;
 		nextVersion: string | null;
+		config: Configuration;
 	} {
 		let done = 0;
 		let pending = 0;
@@ -135,6 +158,7 @@ export class TaskRunner {
 			pending: pending,
 			total: this.tasks.size,
 			nextVersion: this.getPendingMinVersion(),
+			config: this.config,
 		};
 	}
 }

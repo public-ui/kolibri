@@ -22,20 +22,23 @@
 		"format": "prettier -c src",
 		"lint": "eslint src && tsc --noEmit",
 		"prepack": "tsc",
-		"start": "pnpm reset && ts-node src/index.ts migrate test",
+		"start": "ts-node src/index.ts migrate --test-tasks test",
+		"restart": "pnpm reset && pnpm start",
 		"unused": "knip",
 		"update": "ncu -t minor -u && ncu",
-		"watch": "pnpm reset && nodemon  --ignore package.json src/index.ts migrate --test-tasks test"
+		"watch": "nodemon --ignore package.json src/index.ts migrate --test-tasks test"
 	},
 	"dependencies": {
 		"chalk": "5.3.0",
 		"commander": "11.0.0",
+		"gradient-string": "2.0.2",
 		"loglevel": "1.8.1",
 		"prettier": "3.0.3",
 		"semver": "7.5.4"
 	},
 	"devDependencies": {
 		"@public-ui/components": "1.7.0-rc.0",
+		"@types/gradient-string": "1.1.2",
 		"@types/node": "20.5.9",
 		"@typescript-eslint/eslint-plugin": "6.5.0",
 		"@typescript-eslint/parser": "6.5.0",

@@ -1,17 +1,23 @@
 import fs from 'fs';
-import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../../types';
-import { MODIFIED_FILES, filterFilesByExt, isPropertyKebabCaseRegExp, isTagKebabCaseRegExp, kebabToCapitalCase } from '../../../shares/reuse';
+import { COMPONENT_FILE_EXTENSIONS } from '../../../../types';
+import { MODIFIED_FILES, filterFilesByExt, getRemoveMode, isPropertyKebabCaseRegExp, isTagKebabCaseRegExp, kebabToCapitalCase } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
+import { GenericRenamePropertyTask } from './GenericRenamePropertyTask';
 
-const EXTENSIONS = COMPONENT_FILE_EXTENSIONS.concat(CUSTOM_ELEMENT_FILE_EXTENSIONS);
+const DATA_REMOVED_REGEXP = /data-removed-/g;
 
-export class RemovePropertyNameTask extends AbstractTask {
-	private readonly componentRegExp: RegExp;
-	private readonly customElementRegExp: RegExp;
+export class RemovePropertyNameTask extends GenericRenamePropertyTask {
+	private readonly componentRegExpBoolean: RegExp;
+	private readonly componentRegExpCurlyBrackets: RegExp;
+	private readonly componentRegExpQuotationMarks: RegExp;
+	private readonly customElementRegExpBoolean: RegExp;
+	private readonly customElementRegExpCurlyBrackets: RegExp;
+	private readonly customElementRegExpQuotationMarks: RegExp;
+
 	private readonly propertyInCamelCase: string;
 
 	protected constructor(identifier: string, tag: string, property: string, versionRange: string, dependentTasks?: AbstractTask[], options?: TaskOptions) {
-		super(identifier, `Remove property "${property}" of "${tag}" component`, EXTENSIONS, versionRange, dependentTasks, options);
+		super(identifier, `Remove property "${property}" of "${tag}" component`, tag, property, `data-removed-${property}`, versionRange, dependentTasks, options);
 
 		if (!isTagKebabCaseRegExp.test(tag)) {
 			throw new Error(`Tag "${tag}" is not in kebab case.`);
@@ -22,8 +28,12 @@ export class RemovePropertyNameTask extends AbstractTask {
 
 		this.propertyInCamelCase = kebabToCapitalCase(property);
 
-		this.componentRegExp = new RegExp(`(<${kebabToCapitalCase(tag)}[^>]+)${this.propertyInCamelCase}="[^"]+"`, 'g');
-		this.customElementRegExp = new RegExp(`(<${tag}[^>]+)${property}="[^"]+"`, 'g');
+		this.componentRegExpBoolean = new RegExp(`(<${kebabToCapitalCase(tag)}[^>]+)${this.propertyInCamelCase}([ >])`, 'g');
+		this.componentRegExpCurlyBrackets = new RegExp(`(<${kebabToCapitalCase(tag)}[^>]+)${this.propertyInCamelCase}(=\\{[^\\}]+\\})`, 'g');
+		this.componentRegExpQuotationMarks = new RegExp(`(<${kebabToCapitalCase(tag)}[^>]+)${this.propertyInCamelCase}(="[^"]+")`, 'g');
+		this.customElementRegExpBoolean = new RegExp(`(<${tag}[^>]+)${property}([ >])`, 'g');
+		this.customElementRegExpCurlyBrackets = new RegExp(`(<${tag}[^>]+)${property}(=\\{[^\\}]+\\})`, 'g');
+		this.customElementRegExpQuotationMarks = new RegExp(`(<${tag}[^>]+)${property}(="[^"]+")`, 'g');
 	}
 
 	public static getInstance(
@@ -41,14 +51,25 @@ export class RemovePropertyNameTask extends AbstractTask {
 	}
 
 	public run(baseDir: string): void {
-		this.transpileComponentFile(baseDir);
-		this.transpileCustomElementFile(baseDir);
+		switch (getRemoveMode()) {
+			case 'delete':
+				this.transpileComponentFileDelete(baseDir);
+				this.transpileCustomElementFileDelete(baseDir);
+				break;
+			default:
+				super.run(baseDir);
+		}
 	}
 
-	private transpileComponentFile(baseDir: string): void {
+	private transpileComponentFileDelete(baseDir: string): void {
 		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
-			const newContent = content.replace(this.componentRegExp, `$1$2`);
+			const newContent = content
+				// Replacements
+				.replace(DATA_REMOVED_REGEXP, ``)
+				.replace(this.componentRegExpBoolean, `$1$2`)
+				.replace(this.componentRegExpCurlyBrackets, `$1`)
+				.replace(this.componentRegExpQuotationMarks, `$1`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
@@ -56,10 +77,15 @@ export class RemovePropertyNameTask extends AbstractTask {
 		});
 	}
 
-	private transpileCustomElementFile(baseDir: string): void {
+	private transpileCustomElementFileDelete(baseDir: string): void {
 		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
-			const newContent = content.replace(this.customElementRegExp, `$1$2`);
+			const newContent = content
+				// Replacements
+				.replace(DATA_REMOVED_REGEXP, ``)
+				.replace(this.customElementRegExpBoolean, `$1$2`)
+				.replace(this.customElementRegExpCurlyBrackets, `$1`)
+				.replace(this.customElementRegExpQuotationMarks, `$1`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);

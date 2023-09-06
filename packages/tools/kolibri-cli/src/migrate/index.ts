@@ -1,13 +1,17 @@
 import { exec } from 'child_process';
-import { Command } from 'commander';
+import { Command, Option } from 'commander';
 import fs from 'fs';
 import path from 'path';
+import { Configuration } from '../types';
 import { TaskRunner } from './runner/task-runner';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
-import { MODIFIED_FILES, getPackageManagerInstallCommand, readPackageJson, readPackageString } from './shares/reuse';
+import { MODIFIED_FILES, RemoveMode, getPackageManagerInstallCommand, readPackageJson, readPackageString, setRemoveMode } from './shares/reuse';
 
-type Option = 'testTasks';
+type MigrateOption = {
+	removeMode: RemoveMode;
+	testTasks: boolean;
+};
 
 /**
  * This function is used to register the migrate command.
@@ -18,8 +22,9 @@ export default function (program: Command): void {
 		.command('migrate')
 		.description('This command migrates KoliBri code to the current version.')
 		.argument('<string>', 'Source code folder to migrate')
+		.addOption(new Option('--remove-mode <mode>', 'Remove with comment out or delete').choices(['comment', 'delete']).default('comment'))
 		.option('--test-tasks', 'Run additional test tasks', false)
-		.action((baseDir: string, options: Record<Option, boolean>) => {
+		.action((baseDir: string, options: MigrateOption) => {
 			exec('git status --porcelain', (err, stdout) => {
 				if (err) {
 					console.error(`exec error: ${err.message}`);
@@ -30,14 +35,27 @@ export default function (program: Command): void {
 					throw new Error('There are uncommitted changes');
 				}
 
+				setRemoveMode(options.removeMode);
+
 				const versionOfPublicUiKoliBriCli = readPackageJson(path.resolve(__dirname, '..', '..')).version;
 				const versionOfPublicUiComponents = readPackageJson(path.resolve(process.cwd(), 'node_modules/@public-ui/components')).version;
 
 				console.log(`
 Current version of @public-ui/components: ${versionOfPublicUiComponents}
-Source folder to migrate: ${baseDir}`);
+Source folder to migrate: ${baseDir}
+`);
 
-				const runner = new TaskRunner(baseDir, versionOfPublicUiKoliBriCli, versionOfPublicUiComponents);
+				const configFile = path.resolve(process.cwd(), '.kolibri.config.json');
+				let config: Configuration = {};
+				if (fs.existsSync(configFile)) {
+					try {
+						config = JSON.parse(fs.readFileSync(configFile, 'utf8')) as Configuration;
+					} catch (e) {
+						// ignore
+					}
+				}
+
+				const runner = new TaskRunner(baseDir, versionOfPublicUiKoliBriCli, versionOfPublicUiComponents, config);
 				runner.registerTasks(v1Tasks);
 
 				if (options.testTasks) {
@@ -69,7 +87,9 @@ Source folder to migrate: ${baseDir}`);
 					} else {
 						console.log(`
 Task status:`);
-						runner.getStatus(true);
+
+						const status = runner.getStatus(true);
+						fs.writeFileSync(configFile, JSON.stringify(status.config, null, 2));
 
 						console.log(`
 Modified files: ${MODIFIED_FILES.size}`);
@@ -85,7 +105,8 @@ Afterwards, it may be that functions or themes in newer major versions have
 changed or are no longer included. This should be checked finally and corrected
 manually if necessary.
 
-Is anything wrong, you can reset the migration with "git reset --hard HEAD~1".
+Is anything wrong, you can reset the migration with "git reset --hard HEAD~1" and
+read the troubleshooting section in the readme.
 `);
 					}
 				}

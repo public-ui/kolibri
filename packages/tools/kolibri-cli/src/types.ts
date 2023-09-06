@@ -12,3 +12,11 @@ export type PackageJson = {
 	devDependencies?: { [key: string]: string };
 	peerDependencies?: { [key: string]: string };
 };
+
+export type Configuration = {
+	migrate?: {
+		tasks: {
+			[identifier: string]: boolean;
+		};
+	};
+};

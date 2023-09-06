@@ -89,7 +89,7 @@ export function getPackageManagerInstallCommand(baseDir: string = process.cwd())
 }
 
 export const isTagKebabCaseRegExp = /^kol-[a-z]+(-[a-z]+)*$/;
-export const isPropertyKebabCaseRegExp = /^_[a-z]+(-[a-z]+)*$/;
+export const isPropertyKebabCaseRegExp = /^(data-removed-)?_[a-z]+(-[a-z]+)*$/;
 
 /**
  * Converts a kebab case string to a capital case string.
@@ -104,3 +104,22 @@ export function kebabToCapitalCase(tag: string) {
 }
 
 export const MODIFIED_FILES = new Set<string>();
+
+export type RemoveMode = 'comment' | 'delete';
+let REMOVE_MODE: RemoveMode = 'comment';
+
+/**
+ * Sets the remove mode.
+ * @param {RemoveMode} mode The remove mode
+ */
+export function setRemoveMode(mode: RemoveMode): void {
+	REMOVE_MODE = mode;
+}
+
+/**
+ * Gets the remove mode.
+ * @returns {RemoveMode} The remove mode
+ */
+export function getRemoveMode(): RemoveMode {
+	return REMOVE_MODE;
+}
