@@ -41,10 +41,10 @@ Actually the following migrations are available:
 
 #### How does it work?
 
-1. The migration command will check your project for clear `git history` and the `installed version` of `KoliBri`. Now it load all available migration tasks.
-2. If the task in the correct version range, it will be executed them one by one. Otherwise it will be skipped.
+1. The migration command will check your project for clear `git history` and the `installed version` of `KoliBri`. Now it loads all available migration tasks.
+2. Tasks in the correct version range will be executed one by one. Otherwise they will be skipped.
 3. After that the `package.json` will be updated with the new version of `KoliBri` and execute the `npm install` command.
-4. Are there any pending tasks, the migration command will be executed again. Otherwise the migration is finished.
+4. If there are any pending tasks, the migration command will be executed again. Otherwise the migration is finished.
 5. Now you can check the result and commit the changes.
 
 > **Note:** You can reset the migration with `git reset --hard HEAD~1` or by discarding the affected files.
@@ -63,10 +63,10 @@ kolibri migrate <path>
 
 #### Options
 
-| Option                         | Description                                |          Type          |  Default   |
-| ------------------------------ | ------------------------------------------ | :--------------------: | :--------: |
-| `--ignore-uncommitted-changes` | Allows execution with uncommitted changes  |        boolean         |   false    |
-| `--remove-mode`                | Remove properties by comment out or delete | `delete` \| `prefixed` | `prefixed` |
+| Option                         | Description                               |          Type          | Default  |
+| ------------------------------ | ----------------------------------------- | :--------------------: | :------: |
+| `--ignore-uncommitted-changes` | Allows execution with uncommitted changes |        boolean         |  false   |
+| `--remove-mode`                | Prefix property name or delete property   | `delete` \| `prefixed` | `prefix` |
 
 #### Configuration
 

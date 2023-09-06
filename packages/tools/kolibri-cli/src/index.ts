@@ -7,7 +7,7 @@ import { getVersionOfPublicUiKoliBriCli } from './migrate/shares/reuse';
 
 const versionOfPublicUiKoliBriCli = getVersionOfPublicUiKoliBriCli();
 
-const Banner = gradient.atlas.multiline(
+const banner = gradient.atlas.multiline(
 	`
 ,--. ,--.         ,--. ,--. ,-----.           ,--.
 |  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
@@ -20,7 +20,7 @@ const Banner = gradient.atlas.multiline(
 		interpolation: 'hsv',
 	},
 );
-console.log(Banner);
+console.log(banner);
 
 const program = new Command();
 

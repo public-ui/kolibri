@@ -942,8 +942,8 @@ importers:
         version: 7.5.4
     devDependencies:
       '@public-ui/components':
-        specifier: 1.1.7
-        version: 1.1.7
+        specifier: 1.7.0-rc.0
+        version: link:../../components
       '@types/gradient-string':
         specifier: 1.1.2
         version: 1.1.2
@@ -1000,13 +1000,6 @@ importers:
         version: 5.2.2
 
 packages:
-
-  /@a11y-ui/core@1.0.0-rc.15:
-    resolution: {integrity: sha512-vv4CcFc090ZVHTaxc6oX66oBR6dcVj27IxGV9cOFPcoRMKElfR9WFGYNxb3MFBnqj7OMfu5QfVEAgMTXQa8Jjw==}
-    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
-    dependencies:
-      '@leanup/lib': 1.3.20
-    dev: true
 
   /@a11y-ui/core@1.0.1-rc.6:
     resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
@@ -4958,20 +4951,6 @@ packages:
       - webpack
     dev: true
 
-  /@leanup/lib@1.3.20:
-    resolution: {integrity: sha512-xAHNLTMaXuV8ENPoMU+4J1WTzoXciRgkP0U9205DcPcZUf90M7jTCgRBz2z0mrbqNzUjJOaS9eBvznmYsIj+zg==}
-    dependencies:
-      loglevel: 1.8.0
-      tslib: 2.4.0
-    dev: true
-
-  /@leanup/lib@1.3.36:
-    resolution: {integrity: sha512-DnPkC0G63jjxX/AU2MuYnmUswQzdeoGWmoS7ouURXpO2E/iMu2dZHmRNy3pj52phdpNSdjbNlK0oIPkmUBAEag==}
-    dependencies:
-      loglevel: 1.8.0
-      tslib: 2.4.0
-    dev: true
-
   /@leanup/stack-react@1.3.44(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-xRBl/kLhrBrEBW3umDCT1etjvwgtEZBLLoGHC4l5Xn85+7rqYyH8FLyqv222eX10oz/phpynlEI+uDUzAH8MzA==}
     engines: {node: '>=14 <=18', npm: '>=6 <=8'}
@@ -5590,13 +5569,6 @@ packages:
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.1.7:
-    resolution: {integrity: sha512-f7PTiUk42mj4S1cN8E2NsTsqSrdye/nG2LEFxwj3mCR8reZ8wNgXhyrViJmbJIcZUE4PKu3J2x8dhR2umtbexA==}
-    dependencies:
-      '@leanup/lib': 1.3.36
-      '@public-ui/schema': 1.1.7
-    dev: true
-
   /@public-ui/core@1.1.15:
     resolution: {integrity: sha512-la537grID2UqyP/Wsaf/Rp80TrbRzAy1KDKn8wpeEnIakZSBJLwMU/O8lDNZ0LJ7vcvxcQsJFNQMpVeyvpKZjg==}
     dependencies:
@@ -5604,25 +5576,11 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/core@1.1.7:
-    resolution: {integrity: sha512-XhYBxPTyifcEpeksuFAaPj+5kq3S8BH0mhZsrWXjWRXhmtR6vhmvwUgrYsRseNxkM6E1THhsW6aGtI/ykNrDbg==}
-    dependencies:
-      '@a11y-ui/core': 1.0.0-rc.15
-      '@leanup/lib': 1.3.36
-      rxjs: 7.5.7
-    dev: true
-
   /@public-ui/schema@1.1.15:
     resolution: {integrity: sha512-1I1QM2xHyaXSBwHV4mlsAX6fi8vjLkcDsFrkxNl3gNl5qtZF8vP9kveOWYNqr1jKG4ZoRDFZ+/1/xP+Lu2a/dw==}
     dependencies:
       '@public-ui/core': 1.1.15
     dev: false
-
-  /@public-ui/schema@1.1.7:
-    resolution: {integrity: sha512-54bJyeAMim5DrZprhALC4UNJmwuHwYAyqoe/y8HCF66krRAKGTPOrcnPNfmLg+vPDBhKmwFKyyX4uM5Y8qdVoQ==}
-    dependencies:
-      '@public-ui/core': 1.1.7
-    dev: true
 
   /@public-ui/solid@1.7.0-rc.0-rc.0(@public-ui/components@packages+components)(solid-js@1.7.11):
     resolution: {integrity: sha512-nFlwwPbS42ScN7Fbpahsg2q4OWNpX4wXzKP18eGNQ2NlopLqiMFkqMJkrv1rgZDzKvT0aOxcZIYR5M795YIo5g==}
@@ -14270,11 +14228,6 @@ packages:
       wrap-ansi: 8.1.0
     dev: true
 
-  /loglevel@1.8.0:
-    resolution: {integrity: sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==}
-    engines: {node: '>= 0.6.0'}
-    dev: true
-
   /loglevel@1.8.1:
     resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
     engines: {node: '>= 0.6.0'}
@@ -17590,12 +17543,6 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /rxjs@7.5.7:
-    resolution: {integrity: sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==}
-    dependencies:
-      tslib: 2.6.2
-    dev: true
-
   /rxjs@7.6.0:
     resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
     dependencies:
@@ -19122,10 +19069,6 @@ packages:
 
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
-
-  /tslib@2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
-    dev: true
 
   /tslib@2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}

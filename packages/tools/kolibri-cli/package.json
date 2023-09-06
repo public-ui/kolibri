@@ -37,7 +37,7 @@
 		"semver": "7.5.4"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.1.7",
+		"@public-ui/components": "1.7.0-rc.0",
 		"@types/gradient-string": "1.1.2",
 		"@types/node": "20.5.9",
 		"@typescript-eslint/eslint-plugin": "6.5.0",
