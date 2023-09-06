@@ -9,16 +9,20 @@ type Slots = {
 	''?: string;
 	expert?: string;
 } & Record<string, undefined | string>;
-
+export type SpanOptions = {
+	parsedLabel?: string;
+	additionalAttrs?: string;
+};
 export const getSpanWcHtml = (
 	props: Props,
 	slots: Slots = {
 		expert: undefined,
 	},
-	additionalAttrs = ''
+	options?: SpanOptions
 ): string => {
 	const state = mixMembers<Props, States>(
 		{
+			_allowMarkdown: false,
 			_icon: {},
 			_hideLabel: false,
 			_label: false, // ⚠ required
@@ -31,7 +35,7 @@ export const getSpanWcHtml = (
 	const hideExpertSlot: boolean = typeof state._label === 'string';
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
-<kol-span-wc${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${additionalAttrs}>
+<kol-span-wc${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${options?.additionalAttrs ?? ''}>
 	${
 		icon.top
 			? getIconHtml({
@@ -52,7 +56,13 @@ export const getSpanWcHtml = (
 				  )
 				: ''
 		}
-		${!state._hideLabel && hideExpertSlot ? `<span class="span-label">${state._label as string}</span>` : ``}
+		${
+			!state._hideLabel && hideExpertSlot
+				? state._allowMarkdown && options?.parsedLabel !== undefined
+					? `<span class="span-label md">${options.parsedLabel}</span>`
+					: `<span class="span-label">${state._label as string}</span>`
+				: ``
+		}
 		<span class="span-label" ${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
 			${slots.expert ? slots.expert : ``}
 		</span>

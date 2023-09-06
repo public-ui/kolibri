@@ -56,6 +56,7 @@ export class KolBadge implements API {
 				>
 					<kol-span-wc
 						id={hasSmartButton ? this.id : undefined}
+						_allowMarkdown
 						_hideLabel={this._hideLabel || this._iconOnly}
 						_icon={this._icon}
 						_label={this._label}

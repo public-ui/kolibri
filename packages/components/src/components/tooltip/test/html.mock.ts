@@ -27,7 +27,9 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 				{
 					expert: undefined,
 				},
-				` class="tooltip-area tooltip-content" id="${state._id}"`
+				{
+					additionalAttrs: ` class="tooltip-area tooltip-content" id="${state._id}"`,
+				}
 			)}
 		</div>`
 	}
