@@ -26,5 +26,5 @@
 		"packages/tools/kolibri-cli"
 	],
 	"useNx": true,
-	"version": "1.7.0-rc.0"
+	"version": "1.7.0-rc.2"
 }
