@@ -31,9 +31,9 @@ export default function (program: Command): void {
 		.command('migrate')
 		.description('This command migrates KoliBri code to the current version.')
 		.argument('<string>', 'Source code folder to migrate')
-		.option('--ignore-uncommitted-changes', 'Allows execution with uncommitted changes', false)
+		.addOption(new Option('--ignore-uncommitted-changes', 'Allows execution with uncommitted changes').default(false))
 		.addOption(new Option('--remove-mode <mode>', 'Prefix property name or delete property').choices(REMOVE_MODE).default('prefix'))
-		.option('--test-tasks', 'Run additional test tasks', false)
+		.addOption(new Option('--test-tasks', 'Run additional test tasks').default(false).hideHelp())
 		.action((baseDir: string, options: MigrateOption) => {
 			exec('git status --porcelain', (err, stdout) => {
 				if (err) {

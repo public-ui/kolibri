@@ -16,10 +16,31 @@ yarn add -g @public-ui/kolibri-cli
 
 ## Usage
 
-Use the `kolibri` command to start the CLI.
+The `KoliBri` CLI is intended to be executed in the project root directory. Use the `kolibri` command to start the CLI.
 
 ```bash
 kolibri --help
+```
+
+```bash
+,--. ,--.         ,--. ,--. ,-----.           ,--.
+|  .'   /  ,---.  |  | `--' |  |) /_  ,--.--. `--'
+|  .   '  | .-. | |  | ,--. |  .-.  \ |  .--' ,--.
+|  |\   \ | '-' | |  | |  | |  '--' / |  |    |  |
+`--' `--´  `---´  `--' `--' `------´  `--'    `--'
+🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io
+
+Usage: kolibri [options] [command]
+
+CLI for executing some helpful commands for KoliBri projects.
+
+Options:
+  -V, --version               output the version number
+  -h, --help                  display help for command
+
+Commands:
+  migrate [options] <string>  This command migrates KoliBri code to the current version.
+  help [command]              display help for command
 ```
 
 ### Migrate
