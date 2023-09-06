@@ -16,7 +16,7 @@ yarn add -g @public-ui/kolibri-cli
 
 ## Usage
 
-The `KoliBri` CLI is intended to be executed in the project root directory. Use the `kolibri` command to start the CLI.
+The `KoliBri` CLI is intended to be executed in your project root directory. Use the `kolibri` command to start the CLI.
 
 ```bash
 kolibri --help
@@ -84,10 +84,10 @@ kolibri migrate <path>
 
 #### Options
 
-| Option                         | Description                               |          Type          | Default  |
-| ------------------------------ | ----------------------------------------- | :--------------------: | :------: |
-| `--ignore-uncommitted-changes` | Allows execution with uncommitted changes |        boolean         |  false   |
-| `--remove-mode`                | Prefix property name or delete property   | `delete` \| `prefixed` | `prefix` |
+| Option                         | Description                               |         Type         | Default  |
+| ------------------------------ | ----------------------------------------- | :------------------: | :------: |
+| `--ignore-uncommitted-changes` | Allows execution with uncommitted changes |       boolean        |  false   |
+| `--remove-mode`                | Prefix property name or delete property   | `delete` \| `prefix` | `prefix` |
 
 #### Configuration
 
