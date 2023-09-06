@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { FileExtension, PackageJson } from '../../types';
+import { RemoveMode } from '../types';
 
 /**
  * Recursively searches for files with the specified extension in the specified directory.
@@ -85,8 +86,7 @@ export function kebabToCapitalCase(tag: string) {
 
 export const MODIFIED_FILES = new Set<string>();
 
-export type RemoveMode = 'comment' | 'delete';
-let REMOVE_MODE: RemoveMode = 'comment';
+let REMOVE_MODE: RemoveMode = 'prefix';
 
 /**
  * Sets the remove mode.

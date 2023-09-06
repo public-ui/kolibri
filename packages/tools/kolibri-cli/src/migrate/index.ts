@@ -8,13 +8,13 @@ import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
 import {
 	MODIFIED_FILES,
-	RemoveMode,
 	getPackageManagerInstallCommand,
 	getVersionOfPublicUiComponents,
 	getVersionOfPublicUiKoliBriCli,
 	readPackageString,
 	setRemoveMode,
 } from './shares/reuse';
+import { REMOVE_MODE, RemoveMode } from './types';
 
 type MigrateOption = {
 	ignoreUncommittedChanges: boolean;
@@ -31,9 +31,9 @@ export default function (program: Command): void {
 		.command('migrate')
 		.description('This command migrates KoliBri code to the current version.')
 		.argument('<string>', 'Source code folder to migrate')
-		.option('--ignore-uncommitted-changes', 'Allows execution with uncommitted changes', false)
-		.addOption(new Option('--remove-mode <mode>', 'Remove with comment out or delete').choices(['comment', 'delete']).default('comment'))
-		.option('--test-tasks', 'Run additional test tasks', false)
+		.addOption(new Option('--ignore-uncommitted-changes', 'Allows execution with uncommitted changes').default(false))
+		.addOption(new Option('--remove-mode <mode>', 'Prefix property name or delete property').choices(REMOVE_MODE).default('prefix'))
+		.addOption(new Option('--test-tasks', 'Run additional test tasks').default(false).hideHelp())
 		.action((baseDir: string, options: MigrateOption) => {
 			exec('git status --porcelain', (err, stdout) => {
 				if (err) {
