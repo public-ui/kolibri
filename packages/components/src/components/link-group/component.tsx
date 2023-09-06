@@ -51,6 +51,7 @@ export class KolLinkGroup implements API {
 					horizontal: this.state._orientation === 'horizontal',
 				}}
 			>
+				{/* @deprecated remove in the next major version */}
 				{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
 					<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
 				)}
@@ -83,7 +84,8 @@ export class KolLinkGroup implements API {
 	@Prop() public _listStyleType?: ListStyleType;
 
 	/**
-	 * Gibt die optionale Überschrift zur Link-Gruppe an.
+	 * Deprecated: Gibt die optionale Überschrift zur Link-Gruppe an.
+	 * @deprecated remove in the next major version
 	 */
 	@Prop() public _heading?: string;
 

@@ -1,0 +1,24 @@
+{
+	"entry": ["src/index.ts"],
+	"ignoreBinaries": ["eslint", "package.json"],
+	"ignoreDependencies": [
+		"chalk",
+		"loglevel",
+		"@public-ui/components",
+		"@typescript-eslint/eslint-plugin",
+		"@typescript-eslint/parser",
+		"eslint-config-prettier",
+		"eslint-plugin-html",
+		"eslint-plugin-jsdoc",
+		"eslint-plugin-json",
+		"eslint-plugin-jsx-a11y",
+		"eslint-plugin-no-loops",
+		"eslint-plugin-react",
+		"mocha",
+		"package.json"
+	],
+	"project": ["src/**/*.ts"],
+	"rules": {
+		"classMembers": "warn"
+	}
+}
