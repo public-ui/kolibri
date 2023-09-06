@@ -22,11 +22,17 @@
 		"lint": "eslint src && tsc --noemit",
 		"unused": "knip"
 	},
+	"bin": {
+		"kolibri-visual-test": "./test-runner.sh"
+	},
 	"devDependencies": {
 		"eslint": "8.48.0",
 		"knip": "^2.21.2",
 		"npm-check-updates": "16.13.2",
 		"prettier": "^3.0.3"
 	},
-	"files": []
+	"files": [],
+	"dependencies": {
+		"@public-ui/sample-react": "workspace:1.7.0-rc.0"
+	}
 }

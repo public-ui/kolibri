@@ -22,7 +22,8 @@
 		"packages/themes/ecl/ec",
 		"packages/themes/ecl/eu",
 		"packages/themes/itzbund",
-		"packages/themes/mfm"
+		"packages/themes/mfm",
+		"packages/tools/visual-tests"
 	],
 	"useNx": true,
 	"version": "1.7.0-rc.0"
