@@ -26,6 +26,9 @@ type RequiredProps = {
 	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = {
+	/*
+	 * @deprecated
+	 */
 	heading: string;
 	level: HeadingLevel;
 	listStyleType: ListStyleType;
@@ -40,6 +43,9 @@ type RequiredStates = {
 	orientation: Orientation;
 } & PropLabel;
 type OptionalStates = {
+	/*
+	 * @deprecated
+	 */
 	heading: string;
 	level: HeadingLevel;
 	ordered: boolean;
