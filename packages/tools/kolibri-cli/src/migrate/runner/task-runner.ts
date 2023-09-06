@@ -9,7 +9,6 @@ export class TaskRunner {
 	private baseDir: string = '/';
 	private cliVersion: string = '0.0.0';
 	private projectVersion: string = '0.0.0';
-	private openRun = true;
 	private readonly config: Configuration = {
 		migrate: {
 			tasks: {},
@@ -43,7 +42,6 @@ export class TaskRunner {
 		}
 		if (this.projectVersion !== version) {
 			this.projectVersion = version;
-			this.openRun = true;
 		}
 	}
 
@@ -71,7 +69,6 @@ export class TaskRunner {
 				this.config.migrate!.tasks[task.getIdentifier()] = false;
 			} else {
 				this.tasks.set(task.getIdentifier(), task);
-				this.openRun = true;
 			}
 		});
 	}
@@ -107,7 +104,6 @@ export class TaskRunner {
 		this.tasks.forEach((task) => {
 			this.dependentTaskRun(task, task.getDependentTasks());
 		});
-		this.openRun = false;
 	}
 
 	public getPendingMinVersion(): string {

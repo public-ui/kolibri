@@ -103,3 +103,6 @@ export function setRemoveMode(mode: RemoveMode): void {
 export function getRemoveMode(): RemoveMode {
 	return REMOVE_MODE;
 }
+
+export const getVersionOfPublicUiComponents = () => readPackageJson(path.resolve(process.cwd(), 'node_modules/@public-ui/components')).version;
+export const getVersionOfPublicUiKoliBriCli = () => readPackageJson(path.resolve(__dirname, '..', '..', '..')).version;

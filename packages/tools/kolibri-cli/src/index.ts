@@ -3,6 +3,9 @@
 import { Command } from 'commander';
 import migrate from './migrate';
 import gradient from 'gradient-string';
+import { getVersionOfPublicUiKoliBriCli } from './migrate/shares/reuse';
+
+const versionOfPublicUiKoliBriCli = getVersionOfPublicUiKoliBriCli();
 
 const Banner = gradient.atlas.multiline(
 	`
@@ -11,7 +14,7 @@ const Banner = gradient.atlas.multiline(
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 |  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 \`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 1.7.0-rc.0
+🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${versionOfPublicUiKoliBriCli}
 `,
 	{
 		interpolation: 'hsv',
@@ -21,7 +24,7 @@ console.log(Banner);
 
 const program = new Command();
 
-program.name('kolibri').description('CLI for executing some helpful commands for KoliBri projects.').version('1.7.0-rc.0');
+program.name('kolibri').description('CLI for executing some helpful commands for KoliBri projects.').version(versionOfPublicUiKoliBriCli);
 
 // Add commands
 migrate(program);

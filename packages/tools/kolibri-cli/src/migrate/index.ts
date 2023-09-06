@@ -6,7 +6,15 @@ import { Configuration } from '../types';
 import { TaskRunner } from './runner/task-runner';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
-import { MODIFIED_FILES, RemoveMode, getPackageManagerInstallCommand, readPackageJson, readPackageString, setRemoveMode } from './shares/reuse';
+import {
+	MODIFIED_FILES,
+	RemoveMode,
+	getPackageManagerInstallCommand,
+	getVersionOfPublicUiComponents,
+	getVersionOfPublicUiKoliBriCli,
+	readPackageString,
+	setRemoveMode,
+} from './shares/reuse';
 
 type MigrateOption = {
 	ignoreUncommittedChanges: boolean;
@@ -39,8 +47,8 @@ export default function (program: Command): void {
 
 				setRemoveMode(options.removeMode);
 
-				const versionOfPublicUiKoliBriCli = readPackageJson(path.resolve(__dirname, '..', '..')).version;
-				const versionOfPublicUiComponents = readPackageJson(path.resolve(process.cwd(), 'node_modules/@public-ui/components')).version;
+				const versionOfPublicUiComponents = getVersionOfPublicUiComponents();
+				const versionOfPublicUiKoliBriCli = getVersionOfPublicUiKoliBriCli();
 
 				console.log(`
 Current version of @public-ui/components: ${versionOfPublicUiComponents}
@@ -100,16 +108,11 @@ Modified files: ${MODIFIED_FILES.size}`);
 						});
 
 						console.log(`
-After the code migration has gone through, the code formatting may no longer
-be as desired. Therefore, please reformat your code afterwards if necessary.
+After the code migration has gone through, the code formatting may no longer be as desired. Therefore, please reformat your code afterwards if necessary.
 
-Afterwards, it may be that functions or themes in newer major versions have
-changed or are no longer included. This should be checked finally and corrected
-manually if necessary.
+Afterwards, it may be that functions or themes in newer major versions have changed or are no longer included. This should be checked finally and corrected manually if necessary.
 
-Is anything wrong, you can reset the migration with "git reset --hard HEAD~1" and
-read the troubleshooting section in the readme.
-`);
+Is anything wrong, you can reset the migration with "git reset --hard HEAD~1" or by discarding the affected files. For more information read the troubleshooting section in the README.`);
 					}
 				}
 

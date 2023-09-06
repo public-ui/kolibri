@@ -47,7 +47,7 @@ Actually the following migrations are available:
 4. Are there any pending tasks, the migration command will be executed again. Otherwise the migration is finished.
 5. Now you can check the result and commit the changes.
 
-> **Note:** You can reset the migration with `git reset --hard HEAD~1`.
+> **Note:** You can reset the migration with `git reset --hard HEAD~1` or by discarding the affected files.
 
 #### Help
 
@@ -142,4 +142,4 @@ You have always the possibility of a dry run. Because before the migration will 
 
 After the migration you can check the result with `git status` and `git diff`.
 
-Is anything wrong, you can reset the migration with `git reset --hard HEAD~1`.
+Is anything wrong, you can reset the migration with `git reset --hard HEAD~1` or by discarding the affected files.
