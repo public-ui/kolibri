@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-tabs")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-tabs")
 public class KolTabs extends Component {
 	/**

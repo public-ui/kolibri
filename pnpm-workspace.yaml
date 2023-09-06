@@ -11,3 +11,4 @@ packages:
   - 'packages/samples/react'
   - 'packages/schema'
   - 'packages/themes'
+  - 'packages/tools/kolibri-cli'

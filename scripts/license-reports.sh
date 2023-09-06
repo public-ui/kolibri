@@ -14,3 +14,4 @@ npx license-report --output=html --package=packages/core/package.json >> license
 npx license-report --output=html --package=packages/library/package.json >> license-reports/library.html
 npx license-report --output=html --package=packages/schema/package.json >> license-reports/schema.html
 npx license-report --output=html --package=packages/themes/package.json >> license-reports/themes.html
+npx license-report --output=html --package=packages/tools/kolibri-cli/package.json >> license-reports/themes.html

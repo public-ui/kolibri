@@ -742,7 +742,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 0;
 		gap: 0.5rem;
 	}
-	div[slot="input"] {
+	.input-slot {
 		gap: 0.25rem;
 	}
 	fieldset kol-alert {

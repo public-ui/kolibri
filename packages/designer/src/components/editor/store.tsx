@@ -1588,6 +1588,15 @@ export const components: Record<string, Component> = {
 			<KolTextarea _label="Ihre Nachricht" _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched></KolTextarea>
 			<KolTextarea _label="Ihre Nachricht" _resize="none" _rows={10} _required _error={ERROR_MSG}></KolTextarea>
 			<KolTextarea _label="Ihre Nachricht" _hasCounter _maxLength={200} _resize="none" _rows={10} _required _error={ERROR_MSG}></KolTextarea>
+			<KolTextarea
+				_label="Ihre Nachricht (mit Hint)"
+				_hasCounter
+				_maxLength={200}
+				_hint="Here is a hint for you!"
+				_rows={10}
+				_error={ERROR_MSG}
+				_placeholder="Mit Hint"
+			></KolTextarea>
 			<KolTextarea _label="Ihre Nachricht (Disabled)" _disabled></KolTextarea>
 			<KolTextarea _label="Ihre Nachricht (Readonly)" _read-only></KolTextarea>
 		</div>

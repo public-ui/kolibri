@@ -2,6 +2,11 @@ import { Generic } from '@a11y-ui/core';
 
 import { PropLabel } from '../../types/props/label';
 import { PropOpen } from '../../types/props/open';
+import { EventValueOrEventCallback } from '../../types/callbacks';
+
+export type EventCallbacks = {
+	onToggle?: EventValueOrEventCallback<Event, boolean>;
+};
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -9,6 +14,7 @@ type OptionalProps = {
 	 * @deprecated Use label.
 	 */
 	summary: string;
+	on: EventCallbacks;
 } & PropOpen &
 	PropLabel; // TODO v2: PropLabel will become required
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

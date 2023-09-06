@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-pagination")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-pagination")
 public class KolPagination extends Component {
 	/**

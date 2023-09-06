@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-select")
-@NpmPackage(value = "@public-ui/components", version = "1.6.2")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-select")
 public class KolSelect extends Component {
 	/**

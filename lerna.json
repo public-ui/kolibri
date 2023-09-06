@@ -22,8 +22,9 @@
 		"packages/themes/ecl/ec",
 		"packages/themes/ecl/eu",
 		"packages/themes/itzbund",
-		"packages/themes/mfm"
+		"packages/themes/mfm",
+		"packages/tools/kolibri-cli"
 	],
 	"useNx": true,
-	"version": "1.6.2"
+	"version": "1.7.0-rc.2"
 }

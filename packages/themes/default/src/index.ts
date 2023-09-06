@@ -99,7 +99,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		}
 		:is(a, button) > kol-span-wc {
 			font-weight: 700;
-			border-radius: var(--a11y-min-size);
+			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: var(--border-width);
 			min-height: var(--a11y-min-size);
@@ -1917,7 +1917,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			display: inline-block;
 			margin-bottom: calc(var(--spacing) / 2);
 		}
-		fieldset [slot='input'] {
+		fieldset .input-slot {
 			gap: var(--spacing);
 		}
 		fieldset div label {

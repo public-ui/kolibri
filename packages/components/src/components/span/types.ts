@@ -7,6 +7,7 @@ import { PropLabelWithExpertSlot } from '../../types/props/label';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
+	allowMarkdown: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated use _hide-label
@@ -16,6 +17,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
+	allowMarkdown: boolean;
 	icon: {
 		top?: KoliBriCustomIcon;
 		right?: KoliBriCustomIcon;

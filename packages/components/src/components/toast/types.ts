@@ -1,26 +1,16 @@
 import { Generic } from '@a11y-ui/core';
-
-import { HeadingLevel } from '../../types/heading-level';
-import { PropHasCloser } from '../../types/props/has-closer';
 import { PropLabel } from '../../types/props/label';
-import { PropShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { AlertType } from '../alert/types';
+import { ToastStatus } from '../toast-container/types';
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabel & {
+	status: ToastStatus;
+};
 type OptionalProps = {
-	alert: boolean;
-	/**
-	 * @deprecated Use label.
-	 */
-	heading: string;
-	level: HeadingLevel;
 	on: KoliBriToastEventCallbacks;
-	showDuration: number;
 	type: AlertType;
-} & PropHasCloser &
-	PropShow &
-	PropLabel;
+};
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
