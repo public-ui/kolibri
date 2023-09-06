@@ -2,7 +2,7 @@ import { KoliBri } from '@public-ui/schema';
 
 // Bundeszentralamt für Steuern
 export const BZSt = KoliBri.createTheme('bzst', {
-	GLOBAL: `/* colors */
+	GLOBAL: `/* NOTE: Alle ':root' CSS properties sollten in KoliBri zu ':host' kopiert werden und umgekehrt. Damit vereinheitlicht man alle Variablen auf beiden Seiten und kann diese dann individuell nutzen.*/ /* colors */
 	:root,
 	:host {
 		/* token */
@@ -14,7 +14,6 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		--color-green-dark: #23614e;
 		--color-heroic-blue: #126dff;
 		--color-mercury: #ebebeb;
-		--color-ocean: #0077b6;
 		--color-red-epiphyllum: #d00000;
 		--color-speedwell: #595f73;
 		--color-tropic-sea: #007194;
@@ -89,21 +88,17 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	:root,
 	:host {
 		/* template */
-		--formBorderWidthAndStyle: 1px solid;
-		--formBorderColor: var(
-			--color-green
-		); /* TODO: eigentlich --color-green sein, aber im Styleguide ist der Wert: #23614E */
-		--formBorder: var(--formBorderWidthAndStyle) var(--color-green);
-		--formBorderHover: var(--formBorderWidthAndStyle) var(--color-green-light);
-		--formBorderDisabled: var(--formBorderWidthAndStyle) var(--color-mercury);
-		--formBorderInvalid: var(--formBorderWidthAndStyle)
-			var(--color-red-epiphyllum);
+		--formBorderWidthAndStyle: 1px solid; /* TODO: eigentlich --color-green sein, aber im Styleguide ist der Wert: #23614E */
+		--formBorder: var(--formBorderWidthAndStyle) var(--colorPrimarySuccess);
+		--formBorderHover: var(--formBorderWidthAndStyle) var(--colorPrimaryActive);
+		--formBorderDisabled: var(--formBorderWidthAndStyle) var(--colorDisabled);
+		--formBorderInvalid: var(--formBorderWidthAndStyle) var(--colorSignalError);
 		--focusOutline: var(--colorSignalFocus) solid 2px;
-		--formFieldBackground: var(--color-white); /*Select option */
-		--formFieldBackgroundHover: var(--color-green-dark); /* Select options */
+		--formFieldBackground: var(--colorLight); /*Select option */
+		--formFieldBackgroundHover: var(--colorPrimary); /* Select options */
 		--formFieldBackgroundEven: var(--formFieldBackground); /* Select options */
-		--formFieldBackgroundOdd: var(--color-mercury);
-		--formFieldBackgroundDisabled: var(--color-bleached-silk);
+		--formFieldBackgroundOdd: var(--colorSecondaryActive);
+		--formFieldBackgroundDisabled: var(--colorSecondarySuccess);
 		--formFieldTextColorDisabled: var(--colorTextDisabled);
 	} /* ********************************* */ /* ********************************* */ /* ********************************* */ /* ********************************* */
 	:host {
@@ -133,26 +128,33 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	:host * {
 		box-sizing: border-box;
 	}
-	:host h1,
-	:host h2 {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		font-family: var(--textFontSerif);
+	}
+	h1,
+	h2 {
 		font-weight: var(--textFontWeight);
 	}
-	:host h1 {
+	h1 {
 		font-size: var(--headline1FontSize);
 		line-height: var(--headline1LineHeight);
 	}
-	:host h2 {
+	h2 {
 		font-size: var(--headline2FontSize);
 		line-height: var(--headline2LineHeight);
 	}
-	:host h3 {
+	h3 {
 		font-size: var(--headline3FontSize);
 		line-height: var(--headline3LineHeight);
 	}
-	:host h4,
-	:host h5,
-	:host h6 {
+	h4,
+	h5,
+	h6 {
 		font-size: var(--headline4FontSize);
 		line-height: var(--headline4LineHeight);
 	}
@@ -169,17 +171,12 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		letter-spacing: inherit;
 		display: block;
 	} /* a,button,caption,input,option,select,summary,table,textarea {font-size: 1rem;} */
-	a:focus,
-	button:focus,
-	input:focus,
-	select:focus,
-	summary:focus,
-	textarea:focus {
-		cursor: pointer;
-		outline-color: var(--color-focus);
+	*[tabindex]:focus,
+	kol-input:not(.checkbox, .radio) .input:focus-within,
+	kol-input:is(.checkbox, .radio) input:focus,
+	summary:focus {
+		outline: var(--focusOutline);
 		outline-offset: 2px;
-		outline-style: solid;
-		outline-width: 0;
 		transition: outline-offset 0.2s linear;
 	}
 	@keyframes spin {
@@ -189,6 +186,22 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		100% {
 			transform: rotate(360deg);
 		}
+	}
+	kol-tooltip .area {
+		background-color: var(--colorDark);
+		color: var(--colorLight);
+	}
+	kol-tooltip kol-span-wc {
+		line-height: 1.5em;
+		padding: 0.5rem 0.75rem;
+	}
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.5em;
+	}
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.3em;
 	}`,
 	'KOL-BUTTON': `:host {
 		--background-color: var(--color-gruen-dunkel);
@@ -265,10 +278,10 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		align-items: center;
 		justify-content: center;
 	}
-	button.hide-label {
+	button.icon-only {
 		padding: 0.5rem;
 	}
-	button.hide-label kol-icon {
+	button.icon-only kol-icon {
 		display: inline-block;
 		width: 1.5em;
 		height: 1.5em;
@@ -276,261 +289,88 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	button.loading kol-icon {
 		animation: spin 5s infinite linear;
 	}`,
-	'KOL-INPUT-DATE': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
+	'KOL-INPUT-TEXT': `kol-input {
+		gap: 0.4em;
 	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
-		border-color: black;
-	}
-	input:focus-within,
-	select:focus-within,
-	textarea:focus-within {
-		outline: var(--color-focus) solid 2px;
-	}
-	kol-input > label {
-		order: 1;
-		margin-bottom: var(--gapSmallest);
-	}
-	kol-input > label > span {
-		color: black;
-		font-size: 0.875rem;
-		line-height: 1.5rem;
-	}
-	kol-input > div.input {
-		background-color: white;
-		display: block;
-		order: 2;
-	}
-	kol-input > kol-alert.error {
-		margin-top: 0.25em;
+	kol-input .error {
 		order: 3;
 	}
-	input,
-	select,
-	textarea {
-		font-family: var(--textFont);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: var(--textFontSize);
-		display: inline-flex;
-		line-height: 1.5;
-		color: black;
-		border-color: var(--color-gruen);
-		border-width: 1px;
+	kol-input label {
+		font-weight: 700;
+		order: 1;
+	}
+	kol-input .input {
+		order: 2;
+	}
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
+	}
+	input {
+		border: none;
+	}
+	.input {
+		border-color: var(--color-grey);
 		border-style: solid;
-		padding: 0.5em;
-		overflow: hidden;
-		width: 100%;
+		border-width: 1px;
+		padding: 0 0.5em;
 	}
-	input:not([type="range"]),
-	select:not([multiple]) {
-		height: 2.75em;
+	.input > kol-icon {
+		width: 1.5em;
 	}
-	textarea {
-		display: inherit;
+	.input > input:first-child {
+		padding-left: 0.375em;
 	}
-	input::placeholder {
-		color: var(--color-grau-dunkel);
+	.input > input:last-child {
+		padding-right: 0.375em;
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	.input:hover {
+		border-color: var(--color-gruen-hell);
+	}
+	input:not([type="color"]):read-only,
+	input:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
+	kol-input.error {
+		border-left: 3px solid var(--color-rot);
+		padding-left: 1em;
 	}
-	.icons > * {
-		margin: 0.75em;
+	kol-input.error .input:focus-within {
+		outline-color: var(--color-rot) !important;
 	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1;
-		margin-top: -33px;
-	}
-	kol-button-wc button {
-		border: 1px solid var(--color-grau-dunkel);
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
+	kol-input.error kol-alert.error {
+		color: var(--color-rot);
+		font-weight: 700;
 	}
 	.disabled {
 		opacity: 0.33;
 	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
-	}`,
-	'KOL-INPUT-TEXT': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
-		font-size: var(--text-size);
-	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
-		border-color: var(--color-gruen-hell);
-	}
-	.error input:invalid,
-	.error select:invalid,
-	.error textarea:invalid {
-		border-color: var(--color-rot);
-	}
-	input:focus-within,
-	select:focus-within,
-	textarea:focus-within {
-		outline: var(--color-focus) solid 2px;
-	}
-	kol-input > label {
-		order: 1;
-		margin-bottom: var(--gapSmallest);
-	}
-	kol-input > label > span {
+	label {
 		color: var(--color-text);
 		line-height: 1.5;
 	}
-	kol-input > div.input {
-		background-color: white;
-		display: block;
-		order: 2;
-	}
-	kol-input > kol-alert.error {
-		margin-top: 0.25rem;
-		order: 3;
-	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
+	.input {
 		font-size: var(--text-size);
-		display: inline-flex;
 		line-height: 1.5;
-		color: black;
+		color: var(--colorText);
 		border-color: var(--color-gruen);
-		border-width: 1px;
 		border-style: solid;
-		padding: 0.5em 0.75em;
-		overflow: hidden;
 		width: 100%;
 	}
-	input:not([type="range"]),
-	select:not([multiple]) {
+	input:not([type="range"]) {
 		height: 2.75em;
-	}
-	textarea {
-		display: inherit;
 	}
 	input::placeholder {
 		color: var(--color-grau-dunkel);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-		cursor: not-allowed;
-	}
 	.required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
-	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
-	}
-	.icons > * {
-		margin: 0.75em;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1000;
-		margin-top: -33px;
-	}
-	kol-button-wc button {
-		border: 1px solid var(--color-grau-dunkel);
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
-	}
-	.disabled {
-		opacity: 0.33;
-	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		color: white;
 	}`,
 	'KOL-INPUT-PASSWORD': `kol-input {
 		display: grid;
@@ -670,11 +510,12 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	textarea:focus-within {
 		outline: var(--color-focus) solid 2px;
 	}
-	kol-input > label {
+	kol-input label {
+		font-weight: 700;
 		order: 1;
 		margin-bottom: var(--gapSmallest);
 	}
-	kol-input > label > span {
+	kol-input label > span {
 		color: black;
 		font-size: 0.875rem;
 		line-height: 1.5rem;
@@ -777,6 +618,16 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	option:hover:not(:disabled) {
 		background: var(--color-ocean);
 		color: white;
+	}`,
+	'KOL-INPUT-DATE': `kol-input label {
+		font-weight: 700;
+		margin-bottom: var(--gapSmallest);
+	}
+	input {
+		border: var(--formBorder);
+	}
+	input:hover {
+		border: var(--formBorderHover);
 	}`,
 	'KOL-INPUT-EMAIL': `kol-input {
 		display: grid;
@@ -1018,74 +869,48 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	option:hover:not(:disabled) {
 		color: white;
 	}`,
-	'KOL-TEXTAREA': `/* input */
-	kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
-		font-size: var(--text-size);
+	'KOL-TEXTAREA': `kol-input {
+		gap: 0.4em;
 	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
-		border-color: var(--color-gruen-hell);
+	kol-input .error {
+		order: 3;
 	}
-	.error input:invalid,
-	.error select:invalid,
-	.error textarea:invalid {
-		border-color: var(--color-rot);
-	}
-	input:focus-within,
-	select:focus-within,
-	textarea:focus-within {
-		outline: var(--color-focus) solid 2px;
-	}
-	kol-input > label {
+	kol-input label {
+		font-weight: 700;
 		order: 1;
-		margin-bottom: var(--gapSmallest);
 	}
-	kol-input > label > span {
-		color: var(--color-text);
-		line-height: 1.5;
-	}
-	kol-input > div.input {
-		background-color: white;
-		display: block;
+	kol-input .input {
 		order: 2;
 	}
-	kol-input > kol-alert.error {
-		margin-top: 0.25rem;
-		order: 3;
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
 	}
 	input,
 	select,
 	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: var(--text-size);
-		display: inline-flex;
+		border: none;
+	}
+	.input {
+		color: var(--colorText);
+		border: var(--formBorder);
+		font-size: var(--textFontSize);
 		line-height: 1.5;
-		color: black;
-		border-color: var(--color-gruen);
-		border-width: 1px;
-		border-style: solid;
-		padding: 0.5em 0.75em;
-		overflow: hidden;
+		padding: 0 0.5em;
 		width: 100%;
 	}
-	input:not([type="range"]),
-	select:not([multiple]) {
-		height: 2.75em;
+	.input > kol-icon {
+		width: 1.5em;
 	}
-	textarea {
-		display: inherit;
+	.input > input:first-child {
+		padding-left: 0.375em;
 	}
-	input::placeholder {
-		color: var(--color-grau-dunkel);
+	.input > input:last-child {
+		padding-right: 0.375em;
+	}
+	.input:hover {
+		border-color: var(--color-gruen-hell);
 	}
 	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
 		cursor: not-allowed;
@@ -1094,60 +919,29 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
+	kol-input.error {
+		border-left: 3px solid var(--color-rot);
+		padding-left: 1em;
 	}
-	.icons > * {
-		margin: 0.75em;
+	kol-input.error .input:focus-within {
+		outline-color: var(--color-rot) !important;
 	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1;
-		margin-top: -33px;
-	}
-	kol-button-wc button {
-		border: 1px solid var(--color-grau-dunkel);
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
+	kol-input.error kol-alert.error {
+		color: var(--color-rot);
+		font-weight: 700;
 	}
 	.disabled {
 		opacity: 0.33;
 	}
-	select[multiple],
-	textarea {
-		overflow: auto;
+	label {
+		color: var(--color-text);
+		line-height: 1.5;
 	}
-	textarea {
-		display: block;
+	.input {
 	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		color: white;
+	.required label > span::after {
+		content: "*";
+		padding-left: 0.125em;
 	}`,
 	'KOL-ALERT': `:host > div {
 		background-color: white;
@@ -1294,10 +1088,10 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		background-color: rgba(0, 0, 0, 0);
 		border-color: rgba(0, 0, 0, 0);
 	}
-	.close > button.hide-label {
+	.close > button.icon-only {
 		padding: 8px;
 	}
-	.close > button.hide-label kol-icon {
+	.close > button.icon-only kol-icon {
 		display: inline-block;
 		width: 1.5em;
 		height: 1.5em;
@@ -1308,6 +1102,9 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	}
 	.close kol-icon::part(icon)::before {
 		content: "\\f00d";
+	}`,
+	'KOL-HEADING': `.headline {
+		margin-top: 0;
 	}`,
 	'KOL-BADGE': `:host {
 		display: inline-block;
@@ -1335,28 +1132,26 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		background: var(--color-grau-weiss);
 		box-shadow: -4px 0px 0px var(--color-gruen);
 	}`,
-	'KOL-LINK': `kol-link-wc {
-		display: inline-block;
-	}
-	a {
-		background-color: transparent;
-		border: 0;
-		cursor: pointer;
+	'KOL-LINK': `:is(a, button) {
+		/* color: var(--color-midnight); */
 		color: var(--external-link-color, var(--color-gruen));
-		display: inline-flex;
+		font-style: normal;
+		font-weight: 400;
 		padding: var(--external-link-padding, 0);
-		text-decoration-line: none !important; /* outline: none !important; */
+		text-decoration-line: none;
 	}
-	a:focus-within {
-		outline: var(--color-focus) solid 2px;
+	:is(a, button):focus {
+		/* outline: var(--color-focus) solid 2px; */
+		outline: none;
 	}
-	a:hover {
+	:is(a, button):hover {
+		/* text-decoration-thickness: 0.25em; */
 		box-shadow: inset 0 -1px 0 0 var(--external-link-color, var(--color-gruen));
 	}
-	kol-icon {
-		padding: 0 0.25rem;
-		display: inline-block;
-	}
+	.hidden {
+		display: none;
+		visibility: hidden;
+	} /*************************/ /* kol-link-wc {display: inline-block;} */ /* kol-icon {padding: 0 0.25rem;} */
 	.hidden {
 		display: none;
 		visibility: hidden;
@@ -1372,6 +1167,9 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		background: white;
 		left: unset;
 		position: unset;
+	}
+	.icon-only {
+		padding-bottom: 0.2rem;
 	}`,
 	'KOL-DETAILS': `details {
 		display: grid;
@@ -1476,127 +1274,41 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	progress {
 		display: none;
 	}`,
-	'KOL-SELECT': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
+	'KOL-SELECT': `:host {
+		--color: var(--colorText); /* --color: blue; */
+	}
+	kol-input {
+		color: var(--color);
 		font-size: var(--textFontSize);
+		gap: var(--gapSmallest);
 	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
-		border-color: var(--color-gruen-hell);
-	}
-	.error input:invalid,
-	.error select:invalid,
-	.error textarea:invalid {
-		border-color: var(--color-rot);
-	}
-	input:focus-within,
-	select:focus-within,
-	textarea:focus-within {
-		outline: var(--color-focus) solid 2px;
-	}
-	kol-input > label {
+	label {
+		font-weight: 700;
 		order: 1;
-		margin-bottom: var(--gapSmallest);
 	}
-	kol-input > label > span {
-		color: var(--color-text);
-		line-height: 1.5;
-	}
-	kol-input > div.input {
-		background-color: white;
-		display: block;
+	.input {
 		order: 2;
 	}
-	kol-input > kol-alert.error {
-		margin-top: 0.25rem;
+	kol-alert.error {
+		color: var(--colorSignalError);
 		order: 3;
 	}
-	input,
-	select,
-	textarea {
-		font-family: var(--textFont);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: var(--textFontSize);
-		display: inline-flex;
-		line-height: 1.5;
-		color: black;
-		border-color: var(--color-gruen);
-		border-width: 1px;
-		border-style: solid;
-		padding: 0.5em 0.75em;
-		overflow: hidden;
-		width: 100%;
-	}
 	select {
-		padding-top: 0.6115em;
-		padding-bottom: 0.6115em;
+		background-color: var(--colorLight);
+		line-height: 1.5;
+		color: var(--color);
+		border: var(--formBorder);
+		padding: 0.5em 0.75em;
 	}
-	input:not([type="range"])/* ,select:not([multiple]) */ {
-		height: 2.75em;
+	select:hover,
+	select:focus {
+		border-color: var(--colorPrimaryActive);
 	}
-	textarea {
-		display: inherit;
-	}
-	input::placeholder {
-		color: var(--color-grau-dunkel);
-	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	select:disabled {
 		cursor: not-allowed;
 	}
-	.required label > span::after {
-		content: "*";
-		padding-left: 0.125em;
-	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
-	}
-	.icons > * {
-		margin: 0.6em;
-	}
-	.icons > *:last-child:not(:first-child) {
-		margin-right: 1em;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1;
-		margin-top: -33px;
-	}
-	kol-button-wc button {
-		border: 1px solid var(--color-grau-dunkel);
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
-	}
-	.disabled {
-		opacity: 0.33;
-	}
-	select[multiple],
-	textarea {
+	select[multiple] {
 		overflow: auto;
-	}
-	textarea {
-		display: block;
 	}
 	select option {
 		margin: 1px 0;
@@ -1606,13 +1318,13 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	select option:disabled {
 		cursor: not-allowed;
 	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
-	}`,
+	.required label > span::after {
+		content: "*";
+		padding-left: 0.125em;
+	} /* kol-input.error select:invalid { */
+	kol-input.error select {
+		border-color: var(--colorSignalError);
+	} /* option:active:not(:disabled),option:focus:not(:disabled),option:hover:not(:disabled) {color: white;} */`,
 	'KOL-INPUT-COLOR': `kol-input {
 		display: grid;
 		padding: 0;
@@ -1762,15 +1474,14 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		padding-left: 0;
 	}
 	:host > div > kol-heading-wc button kol-icon::part(icon) {
+		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 		color: var(--color-midnight);
 	}
-	:host > div > kol-heading-wc button kol-icon::part(close)::before {
-		font-family: "Font Awesome 6 Free";
+	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f068";
 	}
-	:host > div > kol-heading-wc button kol-icon::part(open)::before {
-		font-family: "Font Awesome 6 Free";
+	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\2b";
 	}
 	:host > div {
@@ -1807,18 +1518,26 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		hyphens: var(--hyphens);
 		line-height: var(--textFontLineHeight);
 	}
-	:host > div:last-child {
+	:host > div:first-child {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
 	table {
-		width: 100%;
 		border-collapse: collapse;
-		border-spacing: 0;
 	}
 	caption {
 		height: auto;
 		text-align: left;
+	} /* visuell verstecken */
+	caption {
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		height: 1px;
+		width: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
 	}
 	table,
 	tr,
@@ -1852,92 +1571,51 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		align-items: center;
 		gap: 0.25em;
 	}
-	:host > div.pagination {
+	.pagination {
 		padding: 0.5em;
 		font-size: var(--textFontSize);
-	}
-	:host > div:last-child,
-	:host > div.pagination > div:last-child {
-		display: grid;
-		align-items: center;
-		justify-items: center;
-		gap: var(--gapSmallest);
-	}
-	@media (min-width: 1024px) {
-		:host > div:last-child,
-		:host > div.pagination > div:last-child {
-			grid-auto-flow: column;
-			justify-content: start;
-		}
-		:host > div.pagination kol-pagination {
-			display: flex;
-			gap: 1rem;
-		}
+		gap: 1rem;
 	}
 	th kol-button button {
 		padding: 0.5rem;
+	} /* default: [aria-sort="none"] */
+	[data-sort] kol-button::part(icon)::before {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+		content: "\\f0dc";
+	}
+	[data-sort="sort-ASC"] kol-button::part(icon)::before {
+		content: "\\f0de";
+	}
+	[data-sort="sort-DESC"] kol-button::part(icon)::before {
+		content: "\\f0dd";
 	}`,
-	'KOL-NAV': `* {
-		margin: 0;
-		padding: 0;
-	}
-	nav {
-		font-family: var(--font-family);
-		font-size: 18px;
-		background-color: var(--color-grau-hell);
-	}
-	ul {
+	'KOL-NAV': `ul {
 		list-style: none;
 	}
 	a {
-		background-color: var(--color-white);
-		text-decoration: none;
-		color: var(--color-dunkel);
-		width: 100%;
+		color: var(--colorText);
 		display: block;
-		font-style: normal;
-		font-weight: 700;
-		padding: 0.75rem 0.5rem 0.75rem 0;
-		border-left-color: var(--color-gruen-dunkel);
-		border-left-style: solid;
-		border-left-width: 0.5rem;
-		line-height: 1.5rem;
-		min-height: 44px;
-		min-width: 44px;
+		padding: 0.3rem 0.5rem;
+		text-decoration: none;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
 	}
 	a:hover {
-		border-left-color: var(--color-gruen-dunkel);
-		background-color: var(--color-gruen-hell);
-		color: var(--color-grau-dunkel);
+		background-color: var(--colorPrimarySuccess);
+		color: var(--colorLight);
 	}
-	a > kol-icon {
-		display: inline-block;
-		text-align: center;
-		width: 44px;
+	a:focus,
+	button:focus {
+		outline: var(--focusOutline);
+		outline-offset: 2px;
+		transition: outline-offset 0.2s linear;
 	}
-	button {
-		background-color: var(--color-gruen-dunkel);
+	.list[data-deep="0"] {
+		font-family: var(--textFontSerif);
 	}
-	a[part*="selected"] {
-		background-color: var(--color-ice);
-		border-left-color: var(--color-midnight);
-		color: var(--color-midnight);
-	}
-	.hidden {
-		display: none;
-	}
-	:host > div > div:last-child {
-		margin-top: 0.5em;
-		width: 100%;
-		text-align: center;
-	} /* horizontal */
-	ul.flex {
-		display: flex;
-	}
-	li > div > div.absolute {
-		position: absolute;
+	.horizontal {
+		gap: var(--gap);
 	}`,
 	'KOL-CARD': `:host > div {
 		--card-padding: var(--gap);
@@ -2022,7 +1700,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		justify-items: left;
 		width: 100%;
 	}
-	kol-input.default {
+	kol-input.checkbox {
 		grid-template-columns: calc(6 * var(--spacing)) auto;
 	}
 	kol-input.switch {
@@ -2061,19 +1739,19 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		background-color: var(--color-blau);
 		border-color: var(--color-blau);
 	}
-	.default input[type="checkbox"] {
+	.checkbox input[type="checkbox"] {
 		height: calc(6 * var(--spacing));
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
 	}
-	.default input[type="checkbox"]:before {
+	.checkbox input[type="checkbox"]:before {
 		background-color: transparent;
 		display: block;
 		height: calc(6 * var(--spacing));
 		position: relative;
 		width: calc(6 * var(--spacing));
 	}
-	.default input[type="checkbox"]:checked:before {
+	.checkbox input[type="checkbox"]:checked:before {
 		border-right-width: 3px;
 		border-bottom-width: 3px;
 		left: calc(1.5 * var(--spacing) - var(--border-width));
@@ -2086,7 +1764,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		height: calc(3 * var(--spacing));
 		width: calc(1.5 * var(--spacing));
 	}
-	.default input[type="checkbox"]:indeterminate:before {
+	.checkbox input[type="checkbox"]:indeterminate:before {
 		background-color: var(--color-grau-dunkel);
 		height: 0.375rem;
 		top: 0.5rem;
@@ -2136,7 +1814,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		--input-inner-size: calc(var(--spacing) * 3);
 		--input-outer-size: calc(var(--spacing) * 6);
 	}
-	.input-slot {
+	div[slot="input"] {
 		align-items: center;
 		display: flex;
 		gap: calc(var(--spacing) * 2);
@@ -2154,6 +1832,8 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	}
 	input {
 		cursor: pointer;
+		display: grid;
+		align-self: center;
 		border: var(--border-width) solid var(--input-color);
 		appearance: none;
 		border-radius: 100%;
@@ -2178,12 +1858,10 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	}
 	input::before {
 		content: "";
-		cursor: pointer;
-		left: var(--input-inner-position);
-		top: var(--input-inner-position);
+		cursor: pointer; /* left: var(--input-inner-position);top: var(--input-inner-position); */
 		position: relative;
 		border-radius: 100%;
-		display: block;
+		display: inline-block;
 		height: var(--input-inner-size);
 		width: var(--input-inner-size);
 	}
@@ -2221,6 +1899,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		cursor: pointer;
 		display: grid;
 		font-size: var(--text-size); /* order: 2; */
+		font-weight: 700;
 	}
 	legend {
 		font-size: var(--text-size);
@@ -2461,7 +2140,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host .navigation-list {
+	:host > div {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -2493,6 +2172,22 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		align-self: flex-end;
 		padding-bottom: 0.5rem;
 		color: var(--color-midnight);
+	}
+	kol-button::part(icon)::before {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+	}
+	kol-button.first::part(icon)::before {
+		content: "\\f100";
+	}
+	kol-button.previous::part(icon)::before {
+		content: "\\f104";
+	}
+	kol-button.next::part(icon)::before {
+		content: "\\f105";
+	}
+	kol-button.last::part(icon)::before {
+		content: "\\f101";
 	}`,
 	'KOL-INPUT-RANGE': `/* https://www.cssportal.com/style-input-range/ */
 	kol-input {
@@ -2694,10 +2389,10 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		align-items: center;
 		justify-content: center;
 	}
-	a.hide-label {
+	a.icon-only {
 		padding: 8px;
 	}
-	a.hide-label kol-icon {
+	a.icon-only kol-icon {
 		display: inline-block;
 		width: 1.5em;
 		height: 1.5em;
@@ -2751,17 +2446,213 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	:host kol-icon[exportparts*="separator"] {
 		padding: 0 0.5rem;
 	}
-	:host kol-icon::part(icon separator) {
-		font-weight: 900;
-		font-size: 0.875rem;
-	}
-	:host kol-icon::part(icon separator)::before {
-		color: black;
-		content: "\\f054";
+	:host kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+		font-size: 0.875rem !important;
+	}
+	:host kol-icon::part(icon)::before {
+		color: currentColor;
+		font-family: "Font Awesome 6 Free";
+	}
+	:host ul > li:not(:first-child) kol-icon::part(icon)::before {
+		content: "\\f105";
 	}
 	:host li > kol-link > kol-link-wc > a {
 		color: red !important;
+	}`,
+	'KOL-MODAL': `:host .overlay .modal {
+		max-height: calc(100% - 32px);
+	}`,
+	'KOL-ICON': `:host {
+		color: inherit;
+	} /*! * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) * Copyright 2022 Fonticons, Inc. */
+	.fa {
+		font-family: var(--fa-style-family, "Font Awesome 6 Free");
+		font-weight: var(--fa-style, 900);
+	}
+	.fa,
+	.fas,
+	.fa-solid,
+	.far,
+	.fa-regular,
+	.fal,
+	.fa-light,
+	.fat,
+	.fa-thin,
+	.fad,
+	.fa-duotone,
+	.fab,
+	.fa-brands {
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		display: var(--fa-display, inline-block);
+		font-style: normal;
+		font-variant: normal;
+		line-height: 1;
+		text-rendering: auto;
+	}
+	[class*="fa-"] {
+		font-style: 0.8rem;
+	} /************************************************************/
+	.fa-arrow-right::before {
+		content: "\\f061";
+	}
+	.fa-arrow-right-from-bracket::before {
+		content: "\\f08b";
+	}
+	.fa-clock::before {
+		content: "\\f017";
+	}
+	.fa-home::before {
+		content: "\\f015";
+	}
+	.fa-times-circle::before {
+		content: "\\f057";
+	}
+	.fa-exclamation-triangle::before {
+		content: "\\f071";
+	} /************************************************************/
+	.fa-chevron-left::before {
+		content: "\\f053";
+	}
+	.fa-chevron-right::before {
+		content: "\\f054";
+	}
+	fa-exclamation-triangle::before {
+		content: "\\f071";
+	}
+	.fa-file::before {
+		content: "\\f15b";
+	}
+	.fa-house::before {
+		content: "\\f015";
+	}
+	.fa-link::before {
+		content: "\\f0c1";
+	}
+	.fa-plus::before {
+		content: "\\2b";
+	}
+	.fa-search::before {
+		content: "\\f002";
+	}
+	.fa-times-circle::before {
+		content: "\\f057";
+	}
+	.fa-arrow-up-right-from-square::before {
+		content: "\\f08e";
+	}
+	.fa-user::before {
+		content: "\\f007";
+	}
+	.fa-xmark::before {
+		content: "\\f00d";
+	} /************************************************************/
+	:root,
+	:host {
+		--fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+	}
+	@font-face {
+		font-family: "Font Awesome 6 Free";
+		font-style: normal;
+		font-weight: 400;
+		font-display: block;
+		src: url("../webfonts/fa-regular-400.woff2") format("woff2"),
+			url("../webfonts/fa-regular-400.ttf") format("truetype");
+	}
+	.far,
+	.fa-regular {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 400;
+	}
+	:root,
+	:host {
+		--fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+	}
+	@font-face {
+		font-family: "Font Awesome 6 Free";
+		font-style: normal;
+		font-weight: 900;
+		font-display: block;
+		src: url("../webfonts/fa-solid-900.woff2") format("woff2"),
+			url("../webfonts/fa-solid-900.ttf") format("truetype");
+	}
+	.fas,
+	.fa-solid {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+	}
+	@font-face {
+		font-family: "Font Awesome 5 Brands";
+		font-display: block;
+		font-weight: 400;
+		src: url("../webfonts/fa-brands-400.woff2") format("woff2"),
+			url("../webfonts/fa-brands-400.ttf") format("truetype");
+	}
+	@font-face {
+		font-family: "Font Awesome 5 Free";
+		font-display: block;
+		font-weight: 900;
+		src: url("../webfonts/fa-solid-900.woff2") format("woff2"),
+			url("../webfonts/fa-solid-900.ttf") format("truetype");
+	}
+	@font-face {
+		font-family: "Font Awesome 5 Free";
+		font-display: block;
+		font-weight: 400;
+		src: url("../webfonts/fa-regular-400.woff2") format("woff2"),
+			url("../webfonts/fa-regular-400.ttf") format("truetype");
+	}
+	@font-face {
+		font-family: "FontAwesome";
+		font-display: block;
+		src: url("../webfonts/fa-solid-900.woff2") format("woff2"),
+			url("../webfonts/fa-solid-900.ttf") format("truetype");
+	}
+	@font-face {
+		font-family: "FontAwesome";
+		font-display: block;
+		src: url("../webfonts/fa-brands-400.woff2") format("woff2"),
+			url("../webfonts/fa-brands-400.ttf") format("truetype");
+	}
+	@font-face {
+		font-family: "FontAwesome";
+		font-display: block;
+		src: url("../webfonts/fa-regular-400.woff2") format("woff2"),
+			url("../webfonts/fa-regular-400.ttf") format("truetype");
+		unicode-range: U+F003, U+F006, U+F014, U+F016-F017, U+F01A-F01B, U+F01D,
+			U+F022, U+F03E, U+F044, U+F046, U+F05C-F05D, U+F06E, U+F070, U+F087-F088,
+			U+F08A, U+F094, U+F096-F097, U+F09D, U+F0A0, U+F0A2, U+F0A4-F0A7, U+F0C5,
+			U+F0C7, U+F0E5-F0E6, U+F0EB, U+F0F6-F0F8, U+F10C, U+F114-F115, U+F118-F11A,
+			U+F11C-F11D, U+F133, U+F147, U+F14E, U+F150-F152, U+F185-F186, U+F18E,
+			U+F190-F192, U+F196, U+F1C1-F1C9, U+F1D9, U+F1DB, U+F1E3, U+F1EA, U+F1F7,
+			U+F1F9, U+F20A, U+F247-F248, U+F24A, U+F24D, U+F255-F25B, U+F25D,
+			U+F271-F274, U+F278, U+F27B, U+F28C, U+F28E, U+F29C, U+F2B5, U+F2B7, U+F2BA,
+			U+F2BC, U+F2BE, U+F2C0-F2C1, U+F2C3, U+F2D0, U+F2D2, U+F2D4, U+F2DC;
+	}
+	@font-face {
+		font-family: "FontAwesome";
+		font-display: block;
+		src: url("../webfonts/fa-v4compatibility.woff2") format("woff2"),
+			url("../webfonts/fa-v4compatibility.ttf") format("truetype");
+		unicode-range: U+F041, U+F047, U+F065-F066, U+F07D-F07E, U+F080, U+F08B,
+			U+F08E, U+F090, U+F09A, U+F0AC, U+F0AE, U+F0B2, U+F0D0, U+F0D6, U+F0E4,
+			U+F0EC, U+F10A-F10B, U+F123, U+F13E, U+F148-F149, U+F14C, U+F156, U+F15E,
+			U+F160-F161, U+F163, U+F175-F178, U+F195, U+F1F8, U+F219, U+F250, U+F252,
+			U+F27A;
+	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: var(--a11y-min-size);
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 8px 14px;
+		background-color: var(--color-ocean);
+		border-color: var(--color-ocean);
+		color: var(--color-white);
+		cursor: pointer;
 	}`,
 	'KOL-LINK-GROUP': `ul {
 		list-style: none;
@@ -2791,16 +2682,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		list-style-type: none !important;
 		margin-left: 0;
 	}`,
-	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
-		border-radius: 2px;
-		border-style: solid;
-		border-width: 2px;
-		gap: 0.5rem;
-		line-height: 1rem;
-		padding: 0.75rem 1rem;
-		background-color: var(--colorPrimary);
-		border-color: var(--colorPrimary);
-		color: var(--colorPrimaryFront);
-		cursor: pointer;
+	'KOL-TOOLTIP': `:host {
+		--kolibri-font-size: var(--textFontSize);
 	}`,
 });
