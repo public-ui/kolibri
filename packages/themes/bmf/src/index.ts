@@ -1504,30 +1504,26 @@ export const BMF = KoliBri.createTheme('bmf', {
 		overflow-y: hidden;
 	}
 	caption {
-		padding: 0.5em;
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
 	}
 	th {
-		font-weight: normal;
-		color: var(--color-midnight);
-	}
-	:host table thead tr:first-child th,
-	:host table thead tr:first-child td {
-		border-width: 0;
-		border-top-width: 2px;
-		border-style: solid;
-		border-color: var(--color-ice);
+		font-weight: 700;
+		color: var(--color-black);
 	}
 	table {
 		width: 100%;
 		border-spacing: 0;
 	}
-	table,
-	:host table thead tr:last-child th,
-	:host table thead tr:last-child td {
-		border-width: 0;
-		border-bottom-width: 2px;
-		border-style: solid;
-		border-color: var(--color-ice);
+	tr:last-child td {
+		border-bottom-width: 0;
 	}
 	th {
 		background-color: var(--color-white);
@@ -1544,13 +1540,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	th div.right {
 		justify-content: end;
-	}
-	tr:nth-child(even) {
-		background-color: #f2f2f2;
-	}
+	} /*tr:nth-child(even) {background-color: #f2f2f2;}*/
 	th,
 	td {
 		padding: 0.5em;
+		border-bottom: 1px solid var(--color-granite);
+		height: 2.75rem;
 	}
 	td.center > div {
 		display: flex;
@@ -1573,6 +1568,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 		align-items: center;
 		justify-items: center;
 		gap: 1em;
+	}
+	.pagination {
+		align-items: center;
+		justify-content: start;
+		grid-template-columns: auto 1fr;
 	}
 	@media (min-width: 1024px) {
 		:host > div:last-child,
@@ -2209,7 +2209,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}`,
 	'KOL-PAGINATION': `:host {
 		display: grid;
+		grid-template-columns: 1fr auto;
 		gap: 1rem;
+		align-items: center;
 	}
 	:host .navigation-list {
 		display: inline-flex;
