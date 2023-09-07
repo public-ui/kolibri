@@ -20,7 +20,7 @@ noch die Icons ausgegeben.
  */
 
 @Tag("kol-nav")
-@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.3")
 @JsModule("@public-ui/components/dist/components/kol-nav")
 public class KolNav extends Component {
 	/**
