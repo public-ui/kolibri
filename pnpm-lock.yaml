@@ -1035,7 +1035,13 @@ importers:
       '@public-ui/sample-react':
         specifier: workspace:1.7.0-rc.2
         version: link:../../samples/react
+      express:
+        specifier: ^4.18.2
+        version: 4.18.2
     devDependencies:
+      '@playwright/test':
+        specifier: 1.37.1
+        version: 1.37.1
       eslint:
         specifier: 8.48.0
         version: 8.48.0
@@ -8638,6 +8644,7 @@ packages:
   /clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+    requiresBuild: true
     dev: true
 
   /cmd-shim@6.0.1:
@@ -9518,6 +9525,7 @@ packages:
 
   /defaults@1.0.4:
     resolution: {integrity: sha512-eFuaLoy/Rxalv2kr+lqMlUnrDWV+3j4pljOIJgLIhI058IQfWJ7vXhyEIHu+HtC738klGALYxOKDO0bQP3tg8A==}
+    requiresBuild: true
     dependencies:
       clone: 1.0.4
     dev: true
@@ -12189,6 +12197,7 @@ packages:
   /iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dependencies:
       safer-buffer: 2.1.2
     dev: true
@@ -19992,6 +20001,7 @@ packages:
 
   /wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
+    requiresBuild: true
     dependencies:
       defaults: 1.0.4
     dev: true

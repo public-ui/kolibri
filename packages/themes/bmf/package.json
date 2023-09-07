@@ -42,7 +42,7 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"test": "THEME_MODULE=../../../themes/bmf/src/index THEME_EXPORT=BMF kolibri-visual-test",
+		"test": "THEME_MODULE=src/index THEME_EXPORT=BMF kolibri-visual-test",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",

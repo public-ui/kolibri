@@ -12,20 +12,21 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"module": "tbd",
-	"types": "tbd",
+	"type": "module",
 	"sideEffects": false,
 	"description": "tbd",
 	"scripts": {
 		"build": "",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
-		"unused": "knip"
+		"unused": "knip",
+		"build-sample-react": "kolibri-sample-react-server"
 	},
 	"bin": {
-		"kolibri-visual-test": "./test-runner.sh"
+		"kolibri-visual-test": "./src/index.js"
 	},
 	"devDependencies": {
+		"@playwright/test": "1.37.1",
 		"eslint": "8.48.0",
 		"knip": "^2.21.2",
 		"npm-check-updates": "16.13.2",

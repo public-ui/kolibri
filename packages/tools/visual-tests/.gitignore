@@ -44,3 +44,6 @@ UserInterfaceState.xcuserstate
 # Allow
 !/node_martin/*.tgz
 !/src/types/
+/test-results/
+/playwright-report/
+/playwright/.cache/
