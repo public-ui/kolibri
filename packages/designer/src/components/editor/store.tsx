@@ -1435,7 +1435,7 @@ export const components: Record<string, Component> = {
 	'KOL-TABLE': () => (
 		<div class="grid gap-6">
 			<KolTable
-				_caption="Öffnungszeiten"
+				_label="Öffnungszeiten"
 				_data={DATA}
 				_headers={{
 					horizontal: [
@@ -1478,7 +1478,7 @@ export const components: Record<string, Component> = {
 				}}
 			/>
 			<KolTable
-				_caption="Öffnungszeiten"
+				_label="Öffnungszeiten"
 				_data={[
 					{
 						asp: 'City',
@@ -1506,8 +1506,10 @@ export const components: Record<string, Component> = {
 					},
 				]}
 				_headers={{
+					vertical: [[{ label: 'Berlin' }, { label: 'Hamburg' }, { label: 'München' }]],
 					horizontal: [
 						[
+							{ label: '' },
 							{
 								label: 'Stadtteil',
 								key: 'asp',
