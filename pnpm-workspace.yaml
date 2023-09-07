@@ -12,4 +12,5 @@ packages:
   - 'packages/schema'
   - 'packages/themes'
   - 'packages/themes/bmf'
+  - 'packages/tools/kolibri-cli'
   - 'packages/tools/visual-tests'

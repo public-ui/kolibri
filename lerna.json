@@ -23,8 +23,9 @@
 		"packages/themes/ecl/eu",
 		"packages/themes/itzbund",
 		"packages/themes/mfm",
+		"packages/tools/kolibri-cli",
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "1.7.0-rc.0"
+	"version": "1.7.0-rc.2"
 }

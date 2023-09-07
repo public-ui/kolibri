@@ -5,6 +5,7 @@ npm dist-tag $1 @public-ui/angular-v14@$2 $3
 npm dist-tag $1 @public-ui/angular-v15@$2 $3
 npm dist-tag $1 @public-ui/angular-v16@$2 $3
 npm dist-tag $1 @public-ui/hydrate@$2 $3
+npm dist-tag $1 @public-ui/kolibri-cli@$2 $3
 npm dist-tag $1 @public-ui/preact@$2 $3
 npm dist-tag $1 @public-ui/react@$2 $3
 npm dist-tag $1 @public-ui/solid@$2 $3
