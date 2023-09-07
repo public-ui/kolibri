@@ -22,14 +22,15 @@
 		"format": "prettier -c src",
 		"lint": "eslint src && tsc --noEmit",
 		"prepack": "tsc",
-		"start": "ts-node src/index.ts migrate --test-tasks test",
+		"start": "ts-node src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
 		"restart": "pnpm reset && pnpm start",
 		"unused": "knip",
 		"update": "ncu -t minor -u && ncu",
-		"watch": "nodemon --ignore package.json src/index.ts migrate --test-tasks test"
+		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test"
 	},
+	"type": "commonjs",
 	"dependencies": {
-		"chalk": "5.3.0",
+		"chalk": "^4",
 		"commander": "11.0.0",
 		"gradient-string": "2.0.2",
 		"loglevel": "1.8.1",

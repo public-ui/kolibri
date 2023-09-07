@@ -1,6 +1,14 @@
 import fs from 'fs';
+
 import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../../types';
-import { MODIFIED_FILES, filterFilesByExt, isPropertyKebabCaseRegExp, isTagKebabCaseRegExp, kebabToCapitalCase } from '../../../shares/reuse';
+import {
+	filterFilesByExt,
+	isPropertyKebabCaseRegExp,
+	isTagKebabCaseRegExp,
+	kebabToCapitalCase,
+	logAndCreateError,
+	MODIFIED_FILES,
+} from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 
 const EXTENSIONS = COMPONENT_FILE_EXTENSIONS.concat(CUSTOM_ELEMENT_FILE_EXTENSIONS);
@@ -28,13 +36,13 @@ export class GenericRenamePropertyTask extends AbstractTask {
 		super(identifier, description, EXTENSIONS, versionRange, dependentTasks, options);
 
 		if (!isTagKebabCaseRegExp.test(tag)) {
-			throw new Error(`Tag "${tag}" is not in kebab case.`);
+			logAndCreateError(`Tag "${tag}" is not in kebab case.`);
 		}
 		if (!isPropertyKebabCaseRegExp.test(oldProperty)) {
-			throw new Error(`Old property "${oldProperty}" is not in kebab case.`);
+			logAndCreateError(`Old property "${oldProperty}" is not in kebab case.`);
 		}
 		if (!isPropertyKebabCaseRegExp.test(newProperty)) {
-			throw new Error(`New property "${newProperty}" is not in kebab case.`);
+			throw logAndCreateError(`New property "${newProperty}" is not in kebab case.`);
 		}
 
 		this.newProperty = newProperty;

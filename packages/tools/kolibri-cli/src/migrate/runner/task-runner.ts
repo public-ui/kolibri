@@ -1,8 +1,11 @@
+import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 import semver from 'semver';
-import { AbstractTask } from './abstract-task';
+
 import { Configuration } from '../../types';
+import { logAndCreateError } from '../shares/reuse';
+import { AbstractTask } from './abstract-task';
 
 export class TaskRunner {
 	private readonly tasks: Map<string, AbstractTask> = new Map();
@@ -24,21 +27,21 @@ export class TaskRunner {
 
 	private setBaseDir(baseDir: string): void {
 		if (!fs.existsSync(path.resolve(process.cwd(), baseDir))) {
-			throw new Error(`Base directory "${baseDir}" does not exist`);
+			throw logAndCreateError(`Base directory "${baseDir}" does not exist`);
 		}
 		this.baseDir = baseDir;
 	}
 
 	private setCliVersion(version: string): void {
 		if (semver.valid(version) === null) {
-			throw new Error(`Invalid CLI version: ${version}`);
+			throw logAndCreateError(`Invalid CLI version: ${version}`);
 		}
 		this.cliVersion = version;
 	}
 
 	public setProjectVersion(version: string): void {
 		if (semver.valid(version) === null) {
-			throw new Error(`Invalid project version: ${version}`);
+			throw logAndCreateError(`Invalid project version: ${version}`);
 		}
 		if (this.projectVersion !== version) {
 			this.projectVersion = version;
@@ -138,7 +141,8 @@ export class TaskRunner {
 					break;
 			}
 			if (outline) {
-				console.log(`- ${task.getTitle()}: ${task.getStatus()}`);
+				const status = task.getStatus();
+				console.log(`- ${task.getTitle()}:`, status === 'done' ? chalk.green(status) : chalk.yellow(status));
 			}
 		});
 		return {
