@@ -33,6 +33,6 @@
 	},
 	"files": [],
 	"dependencies": {
-		"@public-ui/sample-react": "workspace:1.7.0-rc.0"
+		"@public-ui/sample-react": "workspace:1.7.0-rc.2"
 	}
 }
