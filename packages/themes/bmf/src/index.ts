@@ -1526,19 +1526,17 @@ export const BMF = KoliBri.createTheme('bmf', {
 		white-space: nowrap;
 		border-width: 0;
 	}
-	th {
-		font-weight: 700;
-		color: var(--color-black);
-	}
 	table {
 		width: 100%;
 		border-spacing: 0;
 	}
+	tbody tr:last-child th,
 	tr:last-child td {
 		border-bottom-width: 0;
 	}
 	th {
-		background-color: var(--color-white);
+		font-weight: 700;
+		color: var(--color-black);
 	}
 	th div {
 		width: 100%;
@@ -1552,7 +1550,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	th div.right {
 		justify-content: end;
-	} /*tr:nth-child(even) {background-color: #f2f2f2;}*/
+	}
 	th,
 	td {
 		padding: 0.5em;
