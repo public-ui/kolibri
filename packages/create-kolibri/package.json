@@ -103,7 +103,7 @@
 		"@types/node": "ts5.1",
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.5",
-		"prettier": "3.0.2",
+		"prettier": "3.0.3",
 		"rimraf": "3.0.2",
 		"ts-node": "10.9.1",
 		"ts-prune": "0.10.3",
