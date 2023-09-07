@@ -1,6 +1,15 @@
 import fs from 'fs';
+
 import { COMPONENT_FILE_EXTENSIONS } from '../../../../types';
-import { MODIFIED_FILES, filterFilesByExt, getRemoveMode, isPropertyKebabCaseRegExp, isTagKebabCaseRegExp, kebabToCapitalCase } from '../../../shares/reuse';
+import {
+	filterFilesByExt,
+	getRemoveMode,
+	isPropertyKebabCaseRegExp,
+	isTagKebabCaseRegExp,
+	kebabToCapitalCase,
+	logAndCreateError,
+	MODIFIED_FILES,
+} from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 import { GenericRenamePropertyTask } from './GenericRenamePropertyTask';
 
@@ -20,10 +29,10 @@ export class RemovePropertyNameTask extends GenericRenamePropertyTask {
 		super(identifier, `Remove property "${property}" of "${tag}" component`, tag, property, `data-removed-${property}`, versionRange, dependentTasks, options);
 
 		if (!isTagKebabCaseRegExp.test(tag)) {
-			throw new Error(`Tag "${tag}" is not in kebab case.`);
+			throw logAndCreateError(`Tag "${tag}" is not in kebab case.`);
 		}
 		if (!isPropertyKebabCaseRegExp.test(property)) {
-			throw new Error(`Property "${property}" is not in kebab case.`);
+			throw logAndCreateError(`Property "${property}" is not in kebab case.`);
 		}
 
 		this.propertyInCamelCase = kebabToCapitalCase(property);

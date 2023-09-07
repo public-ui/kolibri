@@ -1,4 +1,6 @@
+import { COMPONENT_FILE_EXTENSIONS } from '../../../../types';
 import { AbstractTask } from '../../abstract-task';
+import { LabelExpertSlot } from '../common/LabelExpertSlot';
 import { AbbrRenamePropertyTitleToLabel } from './abbr';
 import { AccordionRenamePropertyHeadingToLabel } from './accordion';
 import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel } from './badge';
@@ -127,3 +129,5 @@ v1Tasks.push(TabsRenamePropertyAriaLabelToLabel);
 v1Tasks.push(TabsRenamePropertyTabAlignToAlign);
 v1Tasks.push(ToastRenamePropertyHeadingToLabel);
 v1Tasks.push(VersionRenamePropertyVersionToLabel);
+
+v1Tasks.push(LabelExpertSlot.getInstance('label-expert-slot', 'Label Expert Slot', COMPONENT_FILE_EXTENSIONS, '^1'));

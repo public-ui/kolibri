@@ -1,5 +1,7 @@
 import semver from 'semver';
+
 import { FILE_EXTENSIONS, FileExtension } from '../../types';
+import { logAndCreateError } from '../shares/reuse';
 import { TaskStatus } from './types';
 
 export type TaskOptions = {
@@ -26,7 +28,7 @@ export abstract class AbstractTask {
 		this.extensions = this.extensions.filter((ext) => FILE_EXTENSIONS.includes(ext));
 
 		if (!semver.validRange(this.versionRange)) {
-			throw new Error(`[${this.identifier}] Invalid semver range version: ${this.versionRange}`);
+			throw logAndCreateError(`[${this.identifier}] Invalid semver range version: ${this.versionRange}`);
 		}
 	}
 
