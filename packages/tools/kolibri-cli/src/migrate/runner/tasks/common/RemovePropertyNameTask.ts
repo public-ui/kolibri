@@ -1,14 +1,9 @@
 import fs from 'fs';
 
-import { COMPONENT_FILE_EXTENSIONS } from '../../../../types';
+import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../../types';
 import {
-	filterFilesByExt,
-	getRemoveMode,
-	isPropertyKebabCaseRegExp,
-	isTagKebabCaseRegExp,
-	kebabToCapitalCase,
-	logAndCreateError,
-	MODIFIED_FILES,
+    filterFilesByExt, getRemoveMode, isPropertyKebabCaseRegExp, isTagKebabCaseRegExp,
+    kebabToCamelCase, kebabToCapitalCase, logAndCreateError, MODIFIED_FILES
 } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 import { GenericRenamePropertyTask } from './GenericRenamePropertyTask';
@@ -23,8 +18,6 @@ export class RemovePropertyNameTask extends GenericRenamePropertyTask {
 	private readonly customElementRegExpCurlyBrackets: RegExp;
 	private readonly customElementRegExpQuotationMarks: RegExp;
 
-	private readonly propertyInCamelCase: string;
-
 	protected constructor(identifier: string, tag: string, property: string, versionRange: string, dependentTasks?: AbstractTask[], options?: TaskOptions) {
 		super(identifier, `Remove property "${property}" of "${tag}" component`, tag, property, `data-removed-${property}`, versionRange, dependentTasks, options);
 
@@ -35,11 +28,12 @@ export class RemovePropertyNameTask extends GenericRenamePropertyTask {
 			throw logAndCreateError(`Property "${property}" is not in kebab case.`);
 		}
 
-		this.propertyInCamelCase = kebabToCapitalCase(property);
+		const tagCapitalCase = kebabToCapitalCase(tag);
+		const propertyInCamelCase = kebabToCamelCase(property);
 
-		this.componentRegExpBoolean = new RegExp(`(<${kebabToCapitalCase(tag)}[^>]+)${this.propertyInCamelCase}([ >])`, 'g');
-		this.componentRegExpCurlyBrackets = new RegExp(`(<${kebabToCapitalCase(tag)}[^>]+)${this.propertyInCamelCase}(=\\{[^\\}]+\\})`, 'g');
-		this.componentRegExpQuotationMarks = new RegExp(`(<${kebabToCapitalCase(tag)}[^>]+)${this.propertyInCamelCase}(="[^"]+")`, 'g');
+		this.componentRegExpBoolean = new RegExp(`(<${tagCapitalCase}[^>]+)${propertyInCamelCase}([ >])`, 'g');
+		this.componentRegExpCurlyBrackets = new RegExp(`(<${tagCapitalCase}[^>]+)${propertyInCamelCase}(=\\{[^\\}]+\\})`, 'g');
+		this.componentRegExpQuotationMarks = new RegExp(`(<${tagCapitalCase}[^>]+)${propertyInCamelCase}(="[^"]+")`, 'g');
 		this.customElementRegExpBoolean = new RegExp(`(<${tag}[^>]+)${property}([ >])`, 'g');
 		this.customElementRegExpCurlyBrackets = new RegExp(`(<${tag}[^>]+)${property}(=\\{[^\\}]+\\})`, 'g');
 		this.customElementRegExpQuotationMarks = new RegExp(`(<${tag}[^>]+)${property}(="[^"]+")`, 'g');
@@ -87,7 +81,7 @@ export class RemovePropertyNameTask extends GenericRenamePropertyTask {
 	}
 
 	private transpileCustomElementFileDelete(baseDir: string): void {
-		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
+		filterFilesByExt(baseDir, CUSTOM_ELEMENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
 			const newContent = content
 				// Replacements

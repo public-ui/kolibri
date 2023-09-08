@@ -1,17 +1,20 @@
-import { COMPONENT_FILE_EXTENSIONS } from '../../../../types';
 import { AbstractTask } from '../../abstract-task';
 import { LabelExpertSlot } from '../common/LabelExpertSlot';
 import { AbbrRenamePropertyTitleToLabel } from './abbr';
 import { AccordionRenamePropertyHeadingToLabel } from './accordion';
-import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel } from './badge';
+import {
+    BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly,
+    BadgeRenamePropertyIconOnlyToHideLabel
+} from './badge';
 import { BreadcrumbRenamePropertyAriaLabelToLabel } from './breadcrumb';
 import {
-	ButtonRemovePropertyAriaCurrent,
-	ButtonRemovePropertyAriaLabel,
-	ButtonRemovePropertyIconAlign,
-	ButtonRenamePropertyIconOnlyToHideLabel,
+    ButtonRemovePropertyAriaCurrent, ButtonRemovePropertyAriaLabel, ButtonRemovePropertyIconAlign,
+    ButtonRenamePropertyIconOnlyToHideLabel
 } from './button';
-import { ButtonLinkRemovePropertyAriaCurrent, ButtonLinkRemovePropertyAriaLabel, ButtonLinkRenamePropertyIconOnlyToHideLabel } from './button-link';
+import {
+    ButtonLinkRemovePropertyAriaCurrent, ButtonLinkRemovePropertyAriaLabel,
+    ButtonLinkRenamePropertyIconOnlyToHideLabel
+} from './button-link';
 import { CardRenamePropertyHeadingToLabel, CardRenamePropertyHeadlineToLabel } from './card';
 import { DetailsRenamePropertySummaryToLabel } from './details';
 import { IconRemovePropertyPart, IconRenamePropertyAriaLabelToLabel } from './icon';
@@ -24,31 +27,27 @@ import { InputRadioRenamePropertyListToSuggestions } from './input-radio';
 import { InputRangeRenamePropertyListToSuggestions } from './input-range';
 import { InputTextRenamePropertyListToSuggestions } from './input-text';
 import {
-	LinkRemovePropertyAriaControl,
-	LinkRemovePropertyAriaExpanded,
-	LinkRemovePropertyAriaLabel,
-	LinkRemovePropertyAriaSelected,
-	LinkRemovePropertyDisabled,
-	LinkRemovePropertyIconAlign,
-	LinkRemovePropertySelector,
-	LinkRemovePropertyStealth,
-	LinkRemovePropertyUseCase,
-	LinkRenamePropertyAriaCurrentToListenAriaCurrent,
-	LinkRenamePropertyIconOnlyToHideLabel,
+    LinkRemovePropertyAriaControl, LinkRemovePropertyAriaExpanded, LinkRemovePropertyAriaLabel,
+    LinkRemovePropertyAriaSelected, LinkRemovePropertyDisabled, LinkRemovePropertyIconAlign,
+    LinkRemovePropertySelector, LinkRemovePropertyStealth, LinkRemovePropertyUseCase,
+    LinkRenamePropertyAriaCurrentToListenAriaCurrent, LinkRenamePropertyIconOnlyToHideLabel
 } from './link';
 import {
-	LinkButtonRemovePropertyAriaControl,
-	LinkButtonRemovePropertyAriaExpanded,
-	LinkButtonRemovePropertyAriaLabel,
-	LinkButtonRemovePropertyAriaSelected,
-	LinkButtonRemovePropertyDisabled,
-	LinkButtonRenamePropertyAriaCurrentToListenAriaCurrent,
-	LinkButtonRenamePropertyIconOnlyToHideLabel,
+    LinkButtonRemovePropertyAriaControl, LinkButtonRemovePropertyAriaExpanded,
+    LinkButtonRemovePropertyAriaLabel, LinkButtonRemovePropertyAriaSelected,
+    LinkButtonRemovePropertyDisabled, LinkButtonRenamePropertyAriaCurrentToListenAriaCurrent,
+    LinkButtonRenamePropertyIconOnlyToHideLabel
 } from './link-button';
-import { LinkGroupRemovePropertyHeading, LinkGroupRemovePropertyOrdered, LinkGroupRenamePropertyAriaLabelToLabel } from './link-group';
+import {
+    LinkGroupRemovePropertyHeading, LinkGroupRemovePropertyOrdered,
+    LinkGroupRenamePropertyAriaLabelToLabel, LinkGroupRenamePropertyHeadingToLabel
+} from './link-group';
 import { LogoRenamePropertyAbbrToOrg } from './logo';
 import { ModalRenamePropertyAriaLabelToLabel } from './modal';
-import { NavRemovePropertyHasCompactButton, NavRemovePropertyVariant, NavRenamePropertyAriaLabelToLabel, NavRenamePropertyCompactToHideLabel } from './nav';
+import {
+    NavRemovePropertyHasCompactButton, NavRemovePropertyVariant, NavRenamePropertyAriaLabelToLabel,
+    NavRenamePropertyCompactToHideLabel
+} from './nav';
 import { PaginationRenamePropertyCountToTotal } from './pagination';
 import { ProgressRenamePropertyTypeToVariant } from './progress';
 import { QuoteRenamePropertyCaptionToLabel } from './quote';
@@ -107,10 +106,11 @@ v1Tasks.push(LinkRemovePropertySelector);
 v1Tasks.push(LinkRemovePropertyStealth);
 v1Tasks.push(LinkRemovePropertyUseCase);
 v1Tasks.push(LogoRenamePropertyAbbrToOrg);
-v1Tasks.push(ModalRenamePropertyAriaLabelToLabel);
 v1Tasks.push(LinkGroupRenamePropertyAriaLabelToLabel);
+v1Tasks.push(LinkGroupRenamePropertyHeadingToLabel);
 v1Tasks.push(LinkGroupRemovePropertyHeading);
 v1Tasks.push(LinkGroupRemovePropertyOrdered);
+v1Tasks.push(ModalRenamePropertyAriaLabelToLabel);
 v1Tasks.push(NavRenamePropertyAriaLabelToLabel);
 v1Tasks.push(NavRenamePropertyCompactToHideLabel);
 v1Tasks.push(NavRemovePropertyHasCompactButton);
@@ -130,4 +130,17 @@ v1Tasks.push(TabsRenamePropertyTabAlignToAlign);
 v1Tasks.push(ToastRenamePropertyHeadingToLabel);
 v1Tasks.push(VersionRenamePropertyVersionToLabel);
 
-v1Tasks.push(LabelExpertSlot.getInstance('label-expert-slot', 'Label Expert Slot', COMPONENT_FILE_EXTENSIONS, '^1'));
+v1Tasks.push(LabelExpertSlot.getInstance('kol-heading', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-checkbox', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-color', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-date', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-email', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-file', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-number', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-password', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-radio', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-range', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-input-text', '_label', '^1'));
+v1Tasks.push(LabelExpertSlot.getInstance('kol-link', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-select', '_label', '^1'));
+// v1Tasks.push(LabelExpertSlot.getInstance('kol-textarea', '_label', '^1'));

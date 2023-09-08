@@ -8,13 +8,8 @@ import { TaskRunner } from './runner/task-runner';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
 import {
-	getContentOfProjectPkgJson,
-	getPackageManagerInstallCommand,
-	getVersionOfPublicUiComponents,
-	getVersionOfPublicUiKoliBriCli,
-	logAndCreateError,
-	MODIFIED_FILES,
-	setRemoveMode,
+    getContentOfProjectPkgJson, getPackageManagerInstallCommand, getVersionOfPublicUiComponents,
+    getVersionOfPublicUiKoliBriCli, logAndCreateError, MODIFIED_FILES, setRemoveMode
 } from './shares/reuse';
 import { REMOVE_MODE, RemoveMode } from './types';
 
@@ -98,7 +93,7 @@ Source folder to migrate: ${baseDir}
 						});
 					} else {
 						console.log(`
-Task status:`);
+Status of all executed Tasks:`);
 
 						const status = runner.getStatus(true);
 						fs.writeFileSync(configFile, JSON.stringify(status.config, null, 2));
@@ -120,7 +115,7 @@ Is anything wrong, you can reset the migration with "git reset --hard HEAD~1" or
 
 				const status = runner.getStatus();
 				console.log(`
-Running ${status.total} tasks...`);
+Execute ${status.total} registered tasks...`);
 				runLoop();
 			});
 		});
