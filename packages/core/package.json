@@ -57,7 +57,7 @@
 		"@a11y-ui/core": "1.0.7",
 		"@types/node": "ts5.1",
 		"@typescript-eslint/eslint-plugin": "6.4.1",
-		"@typescript-eslint/parser": "6.4.1",
+		"@typescript-eslint/parser": "6.6.0",
 		"eslint": "8.47.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"prettier": "3.0.2",
