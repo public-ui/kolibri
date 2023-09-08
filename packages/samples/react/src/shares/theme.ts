@@ -17,7 +17,6 @@ export type Theme =
 	| 'zoll-v2';
 
 export const isTheme = (value: unknown) => {
-	console.log('typeof value', typeof value);
 	return (
 		typeof value === 'string' &&
 		(value === 'unstyled' ||
