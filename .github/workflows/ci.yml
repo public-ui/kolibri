@@ -58,9 +58,9 @@ jobs:
         run: pnpm -r run depcheck
       - name: Format
         run: pnpm -r run format
-      - name: Lint
-        run: pnpm -r run lint
       - name: Build
         run: pnpm -r run build
+      - name: Lint
+        run: pnpm -r run lint
       - name: Test
         run: pnpm -r run test
