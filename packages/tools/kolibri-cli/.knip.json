@@ -2,7 +2,6 @@
 	"entry": ["src/index.ts"],
 	"ignoreBinaries": ["eslint", "package.json"],
 	"ignoreDependencies": [
-		"chalk",
 		"loglevel",
 		"@public-ui/components",
 		"@typescript-eslint/eslint-plugin",

@@ -87,7 +87,7 @@ kolibri migrate <path>
 | Option                         | Description                               |         Type         | Default  |
 | ------------------------------ | ----------------------------------------- | :------------------: | :------: |
 | `--ignore-uncommitted-changes` | Allows execution with uncommitted changes |       boolean        |  false   |
-| `--remove-mode`                | Prefix property name or delete property   | `delete` \| `prefix` | `prefix` |
+| `--remove-mode`                | Prefix property name or delete property   | `delete` \| `prefix` | `prefix` |
 
 #### Configuration
 
@@ -152,6 +152,8 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 If the migration failed, you can reset the migration with `git reset --hard HEAD~1`.
 
 Use the configuration (`.kolibri.config.json`) to exclude some tasks.
+
+If there are multiple obsolete properties that have been migrated to just one new property, the new property may appear multiple times in the tag. You can then decide which variant to use and remove all other variants accordingly.
 
 Maybe it can help to prepare your code in the tricky places for migration.
 
