@@ -76,6 +76,10 @@ export class TaskRunner {
 		});
 	}
 
+	private registerTask(task: AbstractTask): void {
+		this.registerTasks([task]);
+	}
+
 	private runTask(task: AbstractTask): void {
 		if (this.config.migrate?.tasks[task.getIdentifier()] === false) {
 			task.setStatus('skipped');
@@ -88,6 +92,9 @@ export class TaskRunner {
 				})
 			) {
 				// task.setStatus('running'); only of the task is async
+				if (!this.tasks.has(task.getIdentifier())) {
+					this.registerTask(task);
+				}
 				task.run(this.baseDir);
 				task.setStatus('done');
 			}
