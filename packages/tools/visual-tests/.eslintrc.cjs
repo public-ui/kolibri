@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
 	root: true,
 	parserOptions: {
 		project: './tsconfig.json',
@@ -6,8 +6,6 @@ const config = {
 	},
 	extends: [
 		'eslint:recommended',
-		// 'plugin:@stencil/recommended',
-		// 'plugin:@stencil-community/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 	],
@@ -20,56 +18,19 @@ const config = {
 		 */
 		'@typescript-eslint/no-duplicate-type-constituents': 'off',
 		'@typescript-eslint/no-redundant-type-constituents': 'off',
-
-		/**
-		 * The HTML templates in TSX are recognized as any.
-		 */
-		'@typescript-eslint/no-unsafe-member-access': 'off',
-		'@typescript-eslint/no-unsafe-return': 'off',
 	},
-	settings: {
-		react: {
-			version: 'detect',
-		},
-	},
-};
-
-config.overrides = config.overrides || [];
-config.overrides.push({
-	extends: [
-		// 'plugin:react/recommended',
-		'plugin:jsx-a11y/recommended',
+	overrides: [
+		{
+			files: ['**/*.ts', '**/*.tsx'],
+			rules: {
+				/**
+				 * The typescript formatter used spaces and tabs in some cases.
+				 */
+				'no-mixed-spaces-and-tabs': 'off',
+			},
+		}
 	],
-	files: ['**/*.tsx'],
-	parserOptions: {
-		ecmaFeatures: {
-			jsx: true,
-		},
-	},
-	rules: {
-		'jsx-a11y/no-access-key': 'off',
-		// 'react/no-unused-state': 'error',
-	},
-});
-config.overrides.push({
-	files: ['**/*.ts', '**/*.tsx'],
-	rules: {
-		/**
-		 * The typescript formatter used spaces and tabs in some cases.
-		 */
-		'no-mixed-spaces-and-tabs': 'off',
-	},
-});
-
-config.plugins = config.plugins || [];
-// config.plugins.push('react');
-config.plugins.push('jsx-a11y');
-config.plugins.push('no-loops');
-
-config.settings = {
-	react: {
-		version: 'detect',
-	},
+	plugins: [
+		'no-loops',
+	],
 };
-
-module.exports = config;
