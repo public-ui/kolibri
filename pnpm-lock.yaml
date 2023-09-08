@@ -936,7 +936,7 @@ importers:
         specifier: 1.7.0-rc.2
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: workspace:1.7.0-rc.0
+        specifier: workspace:1.7.0-rc.2
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.1
@@ -1032,13 +1032,13 @@ importers:
 
   packages/tools/visual-tests:
     dependencies:
+      '@playwright/test':
+        specifier: 1.37.1
+        version: 1.37.1
       '@public-ui/sample-react':
         specifier: workspace:1.7.0-rc.2
         version: link:../../samples/react
     devDependencies:
-      '@playwright/test':
-        specifier: 1.37.1
-        version: 1.37.1
       eslint:
         specifier: 8.48.0
         version: 8.48.0
@@ -5621,7 +5621,6 @@ packages:
       playwright-core: 1.37.1
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /@pnpm/config.env-replace@1.1.0:
     resolution: {integrity: sha512-htyl8TWnKL7K/ESFa1oW2UB5lVDxuF5DpM7tBi6Hu2LNL3mWkIzNLG6N4zoCUP1lCKNxWy/3iu8mS8MvToGd6w==}
@@ -11328,7 +11327,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /fsevents@2.3.3:
@@ -16334,7 +16332,6 @@ packages:
     resolution: {integrity: sha512-17EuQxlSIYCmEMwzMqusJ2ztDgJePjrbttaefgdsiqeLWidjYz9BxXaTaZWxH1J95SHGk6tjE+dwgWILJoUZfA==}
     engines: {node: '>=16'}
     hasBin: true
-    dev: true
 
   /playwright@1.37.1:
     resolution: {integrity: sha512-bgUXRrQKhT48zHdxDYQTpf//0xDfDd5hLeEhjuSw8rXEGoT9YeElpfvs/izonTNY21IQZ7d3s22jLxYaAnubbQ==}

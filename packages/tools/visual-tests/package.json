@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "1.7.0-rc.0",
+	"version": "1.7.0-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -14,26 +14,24 @@
 	},
 	"type": "module",
 	"sideEffects": false,
-	"description": "tbd",
+	"description": "Provides utility to run visual regression tests for themes.",
 	"scripts": {
-		"build": "",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
-		"unused": "knip",
-		"build-sample-react": "kolibri-sample-react-server"
+		"unused": "knip"
 	},
 	"bin": {
 		"kolibri-visual-test": "./src/index.js"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.37.1",
 		"eslint": "8.48.0",
 		"knip": "^2.21.2",
 		"npm-check-updates": "16.13.2",
 		"prettier": "^3.0.3"
 	},
-	"files": [],
 	"dependencies": {
+		"@playwright/test": "1.37.1",
 		"@public-ui/sample-react": "workspace:1.7.0-rc.2"
-	}
+	},
+	"files": []
 }
