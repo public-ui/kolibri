@@ -110,7 +110,7 @@
 		"mustache": "4.2.0",
 		"postcss": "8.4.29",
 		"postcss-sorting": "8.0.2",
-		"prettier": "2.8.8",
+		"prettier": "3.0.3",
 		"pug": "3.0.2",
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
