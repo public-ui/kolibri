@@ -18,7 +18,7 @@
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot"
 	},
 	"bin": {
-		"kolibri-sample-react-server": "./server.sh"
+		"kolibri-sample-react-test-build": "test-build.sh"
 	},
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",

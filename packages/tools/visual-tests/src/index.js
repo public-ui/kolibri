@@ -10,7 +10,7 @@ const binaryPath = fileURLToPath(new URL('../node_modules/.bin', import.meta.url
 
 console.log(`Starting build...`);
 
-const result = child_process.execFileSync(path.join(binaryPath, 'kolibri-sample-react-server'), [buildPath], {
+const result = child_process.execFileSync(path.join(binaryPath, 'kolibri-sample-react-test-build'), [buildPath], {
 	encoding: 'utf-8',
 });
 
