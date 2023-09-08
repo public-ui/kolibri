@@ -1,16 +1,16 @@
 import child_process from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'url';
-import * as crypto from "crypto";
-import * as fs from "fs";
+import * as crypto from 'crypto';
+import * as fs from 'fs';
 
 process.env.KOLIBRI_CWD = process.cwd();
 
-if(!process.env.THEME_MODULE) {
-	throw new Error('Environment variable THEME_MODULE not specified.')
+if (!process.env.THEME_MODULE) {
+	throw new Error('Environment variable THEME_MODULE not specified.');
 }
-if(!process.env.TMPDIR) {
-	throw new Error('Environment variable TMPDIR not specified.')
+if (!process.env.TMPDIR) {
+	throw new Error('Environment variable TMPDIR not specified.');
 }
 
 process.env.THEME_MODULE = path.join(process.cwd(), process.env.THEME_MODULE); // Use current working directory (i.e. the theme folder) to complete module path
@@ -29,15 +29,15 @@ console.log(`React Sample App build finished. Directory:`, buildPath);
 const playwright = child_process.spawn(path.join(binaryPath, 'playwright'), ['test', ...process.argv.slice(2)], {
 	cwd: visualsTestModulePath,
 });
-playwright.stdout.on('data', data => {
+playwright.stdout.on('data', (data) => {
 	console.log('Plawright: ' + (data as string).toString());
 });
 
-playwright.stderr.on('data', data => {
+playwright.stderr.on('data', (data) => {
 	console.log('Plawright stderr: ' + (data as string).toString());
 });
 
-playwright.on('exit', code => {
+playwright.on('exit', (code) => {
 	console.log(`Playwright test finished with exit code ${code}.`);
 	console.log('Cleaning up build folder...');
 	fs.rmSync(buildPath, { recursive: true, force: true });
