@@ -87,7 +87,7 @@ kolibri migrate <path>
 | Option                         | Description                               |         Type         | Default  |
 | ------------------------------ | ----------------------------------------- | :------------------: | :------: |
 | `--ignore-uncommitted-changes` | Allows execution with uncommitted changes |       boolean        |  false   |
-| `--remove-mode`                | Prefix property name or delete property   | `delete` \| `prefix` | `prefix` |
+| `--remove-mode`                | Prefix property name or delete property   | `delete` \| `prefix` | `prefix` |
 
 #### Configuration
 
