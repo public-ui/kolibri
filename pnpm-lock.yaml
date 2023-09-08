@@ -1039,6 +1039,9 @@ importers:
         specifier: workspace:1.7.0-rc.2
         version: link:../../samples/react
     devDependencies:
+      '@types/node':
+        specifier: ^20.5.9
+        version: 20.5.9
       eslint:
         specifier: 8.48.0
         version: 8.48.0

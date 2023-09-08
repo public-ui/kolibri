@@ -16,14 +16,16 @@
 	"sideEffects": false,
 	"description": "Provides utility to run visual regression tests for themes.",
 	"scripts": {
+		"build": "tsc --outDir dist",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"unused": "knip"
 	},
 	"bin": {
-		"kolibri-visual-test": "./src/index.js"
+		"kolibri-visual-test": "dist/index.js"
 	},
 	"devDependencies": {
+		"@types/node": "^20.5.9",
 		"eslint": "8.48.0",
 		"knip": "^2.21.2",
 		"npm-check-updates": "16.13.2",
