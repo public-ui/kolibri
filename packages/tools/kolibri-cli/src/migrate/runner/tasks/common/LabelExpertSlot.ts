@@ -2,8 +2,13 @@ import fs from 'fs';
 
 import { COMPONENT_FILE_EXTENSIONS, MARKUP_EXTENSIONS } from '../../../../types';
 import {
-    filterFilesByExt, isPropertyKebabCaseRegExp, isTagKebabCaseRegExp, kebabToCamelCase,
-    kebabToCapitalCase, logAndCreateError, MODIFIED_FILES
+	filterFilesByExt,
+	isPropertyKebabCaseRegExp,
+	isTagKebabCaseRegExp,
+	kebabToCamelCase,
+	kebabToCapitalCase,
+	logAndCreateError,
+	MODIFIED_FILES,
 } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 

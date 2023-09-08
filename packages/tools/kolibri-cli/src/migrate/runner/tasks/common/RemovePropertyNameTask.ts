@@ -2,8 +2,14 @@ import fs from 'fs';
 
 import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../../types';
 import {
-    filterFilesByExt, getRemoveMode, isPropertyKebabCaseRegExp, isTagKebabCaseRegExp,
-    kebabToCamelCase, kebabToCapitalCase, logAndCreateError, MODIFIED_FILES
+	filterFilesByExt,
+	getRemoveMode,
+	isPropertyKebabCaseRegExp,
+	isTagKebabCaseRegExp,
+	kebabToCamelCase,
+	kebabToCapitalCase,
+	logAndCreateError,
+	MODIFIED_FILES,
 } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 import { GenericRenamePropertyTask } from './GenericRenamePropertyTask';

@@ -2,19 +2,15 @@ import { AbstractTask } from '../../abstract-task';
 import { LabelExpertSlot } from '../common/LabelExpertSlot';
 import { AbbrRenamePropertyTitleToLabel } from './abbr';
 import { AccordionRenamePropertyHeadingToLabel } from './accordion';
-import {
-    BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly,
-    BadgeRenamePropertyIconOnlyToHideLabel
-} from './badge';
+import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel } from './badge';
 import { BreadcrumbRenamePropertyAriaLabelToLabel } from './breadcrumb';
 import {
-    ButtonRemovePropertyAriaCurrent, ButtonRemovePropertyAriaLabel, ButtonRemovePropertyIconAlign,
-    ButtonRenamePropertyIconOnlyToHideLabel
+	ButtonRemovePropertyAriaCurrent,
+	ButtonRemovePropertyAriaLabel,
+	ButtonRemovePropertyIconAlign,
+	ButtonRenamePropertyIconOnlyToHideLabel,
 } from './button';
-import {
-    ButtonLinkRemovePropertyAriaCurrent, ButtonLinkRemovePropertyAriaLabel,
-    ButtonLinkRenamePropertyIconOnlyToHideLabel
-} from './button-link';
+import { ButtonLinkRemovePropertyAriaCurrent, ButtonLinkRemovePropertyAriaLabel, ButtonLinkRenamePropertyIconOnlyToHideLabel } from './button-link';
 import { CardRenamePropertyHeadingToLabel, CardRenamePropertyHeadlineToLabel } from './card';
 import { DetailsRenamePropertySummaryToLabel } from './details';
 import { IconRemovePropertyPart, IconRenamePropertyAriaLabelToLabel } from './icon';
@@ -27,27 +23,36 @@ import { InputRadioRenamePropertyListToSuggestions } from './input-radio';
 import { InputRangeRenamePropertyListToSuggestions } from './input-range';
 import { InputTextRenamePropertyListToSuggestions } from './input-text';
 import {
-    LinkRemovePropertyAriaControl, LinkRemovePropertyAriaExpanded, LinkRemovePropertyAriaLabel,
-    LinkRemovePropertyAriaSelected, LinkRemovePropertyDisabled, LinkRemovePropertyIconAlign,
-    LinkRemovePropertySelector, LinkRemovePropertyStealth, LinkRemovePropertyUseCase,
-    LinkRenamePropertyAriaCurrentToListenAriaCurrent, LinkRenamePropertyIconOnlyToHideLabel
+	LinkRemovePropertyAriaControl,
+	LinkRemovePropertyAriaExpanded,
+	LinkRemovePropertyAriaLabel,
+	LinkRemovePropertyAriaSelected,
+	LinkRemovePropertyDisabled,
+	LinkRemovePropertyIconAlign,
+	LinkRemovePropertySelector,
+	LinkRemovePropertyStealth,
+	LinkRemovePropertyUseCase,
+	LinkRenamePropertyAriaCurrentToListenAriaCurrent,
+	LinkRenamePropertyIconOnlyToHideLabel,
 } from './link';
 import {
-    LinkButtonRemovePropertyAriaControl, LinkButtonRemovePropertyAriaExpanded,
-    LinkButtonRemovePropertyAriaLabel, LinkButtonRemovePropertyAriaSelected,
-    LinkButtonRemovePropertyDisabled, LinkButtonRenamePropertyAriaCurrentToListenAriaCurrent,
-    LinkButtonRenamePropertyIconOnlyToHideLabel
+	LinkButtonRemovePropertyAriaControl,
+	LinkButtonRemovePropertyAriaExpanded,
+	LinkButtonRemovePropertyAriaLabel,
+	LinkButtonRemovePropertyAriaSelected,
+	LinkButtonRemovePropertyDisabled,
+	LinkButtonRenamePropertyAriaCurrentToListenAriaCurrent,
+	LinkButtonRenamePropertyIconOnlyToHideLabel,
 } from './link-button';
 import {
-    LinkGroupRemovePropertyHeading, LinkGroupRemovePropertyOrdered,
-    LinkGroupRenamePropertyAriaLabelToLabel, LinkGroupRenamePropertyHeadingToLabel
+	LinkGroupRemovePropertyHeading,
+	LinkGroupRemovePropertyOrdered,
+	LinkGroupRenamePropertyAriaLabelToLabel,
+	LinkGroupRenamePropertyHeadingToLabel,
 } from './link-group';
 import { LogoRenamePropertyAbbrToOrg } from './logo';
 import { ModalRenamePropertyAriaLabelToLabel } from './modal';
-import {
-    NavRemovePropertyHasCompactButton, NavRemovePropertyVariant, NavRenamePropertyAriaLabelToLabel,
-    NavRenamePropertyCompactToHideLabel
-} from './nav';
+import { NavRemovePropertyHasCompactButton, NavRemovePropertyVariant, NavRenamePropertyAriaLabelToLabel, NavRenamePropertyCompactToHideLabel } from './nav';
 import { PaginationRenamePropertyCountToTotal } from './pagination';
 import { ProgressRenamePropertyTypeToVariant } from './progress';
 import { QuoteRenamePropertyCaptionToLabel } from './quote';

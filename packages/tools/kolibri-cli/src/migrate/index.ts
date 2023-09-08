@@ -8,8 +8,13 @@ import { TaskRunner } from './runner/task-runner';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
 import {
-    getContentOfProjectPkgJson, getPackageManagerInstallCommand, getVersionOfPublicUiComponents,
-    getVersionOfPublicUiKoliBriCli, logAndCreateError, MODIFIED_FILES, setRemoveMode
+	getContentOfProjectPkgJson,
+	getPackageManagerInstallCommand,
+	getVersionOfPublicUiComponents,
+	getVersionOfPublicUiKoliBriCli,
+	logAndCreateError,
+	MODIFIED_FILES,
+	setRemoveMode,
 } from './shares/reuse';
 import { REMOVE_MODE, RemoveMode } from './types';
 
