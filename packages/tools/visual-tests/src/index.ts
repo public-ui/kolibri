@@ -5,18 +5,19 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 
 process.env.KOLIBRI_CWD = process.cwd();
+const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR;
 
 if (!process.env.THEME_MODULE) {
 	throw new Error('Environment variable THEME_MODULE not specified.');
 }
-if (!process.env.TMPDIR) {
-	throw new Error('Environment variable TMPDIR not specified.');
+if (!tempDir) {
+	throw new Error('Neither environment variable RUNNER_TEMP or TMPDIR specified.');
 }
 
 process.env.THEME_MODULE = path.join(process.cwd(), process.env.THEME_MODULE); // Use current working directory (i.e. the theme folder) to complete module path
 const visualsTestModulePath = fileURLToPath(new URL('..', import.meta.url));
 const binaryPath = fileURLToPath(new URL('../node_modules/.bin', import.meta.url));
-const buildPath = path.join(process.env.TMPDIR, `kolibri-visual-testing-build-${crypto.randomUUID()}`);
+const buildPath = path.join(tempDir, `kolibri-visual-testing-build-${crypto.randomUUID()}`);
 process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH = buildPath;
 
 console.log('Building React Sample App...');
