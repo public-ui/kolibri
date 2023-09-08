@@ -55,7 +55,7 @@
 		"eslint": "8.48.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "5.2.2",
-		"unbuild": "1.2.1"
+		"unbuild": "2.0.0"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "1.7.0-rc.4"
