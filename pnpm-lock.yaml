@@ -1041,6 +1041,9 @@ importers:
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
+      portfinder:
+        specifier: ^1.0.32
+        version: 1.0.32
     devDependencies:
       '@types/node':
         specifier: ^20.5.9

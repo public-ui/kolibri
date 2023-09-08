@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 import * as path from 'path';
+import * as process from 'process';
 
-const PORT = 9998;
+const PORT = Number(process.env.KOLIBRI_VISUAL_TEST_PORT);
 const URL = `http://127.0.0.1:${PORT}`;
 
 /**

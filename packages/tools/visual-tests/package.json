@@ -38,7 +38,8 @@
 	"dependencies": {
 		"@playwright/test": "1.37.1",
 		"@public-ui/sample-react": "workspace:1.7.0-rc.4",
-		"http-server": "^14.1.1"
+		"http-server": "^14.1.1",
+		"portfinder": "^1.0.32"
 	},
 	"files": []
 }

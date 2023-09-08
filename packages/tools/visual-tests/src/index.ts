@@ -3,6 +3,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'url';
 import * as crypto from 'crypto';
 import * as fs from 'fs';
+import portfinder from 'portfinder';
+import * as process from 'process';
 
 process.env.KOLIBRI_CWD = process.cwd();
 const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR;
@@ -27,20 +29,24 @@ child_process.execFileSync(path.join(binaryPath, 'kolibri-sample-react-test-buil
 
 console.log(`React Sample App build finished. Directory:`, buildPath);
 
-const playwright = child_process.spawn(path.join(binaryPath, 'playwright'), ['test', ...process.argv.slice(2)], {
-	cwd: visualsTestModulePath,
-});
-playwright.stdout.on('data', (data) => {
-	console.log('Plawright: ' + (data as string).toString());
-});
+void (async () => {
+	process.env.KOLIBRI_VISUAL_TEST_PORT = String(await portfinder.getPortPromise());
 
-playwright.stderr.on('data', (data) => {
-	console.log('Plawright stderr: ' + (data as string).toString());
-});
+	const playwright = child_process.spawn(path.join(binaryPath, 'playwright'), ['test', ...process.argv.slice(2)], {
+		cwd: visualsTestModulePath,
+	});
+	playwright.stdout.on('data', (data) => {
+		console.log('Plawright: ' + (data as string).toString());
+	});
 
-playwright.on('exit', (code) => {
-	console.log(`Playwright test finished with exit code ${code}.`);
-	console.log('Cleaning up build folder...');
-	fs.rmSync(buildPath, { recursive: true, force: true });
-	process.exit(code ?? 1);
-});
+	playwright.stderr.on('data', (data) => {
+		console.log('Plawright stderr: ' + (data as string).toString());
+	});
+
+	playwright.on('exit', (code) => {
+		console.log(`Playwright test finished with exit code ${code}.`);
+		console.log('Cleaning up build folder...');
+		fs.rmSync(buildPath, { recursive: true, force: true });
+		process.exit(code ?? 1);
+	});
+})();
