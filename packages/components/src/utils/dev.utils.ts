@@ -134,7 +134,7 @@ export const initKoliBri = (): void => {
 	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 1.7.0-rc.2
+	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 1.7.0-rc.4
 		`,
 			{
 				forceLog: true,

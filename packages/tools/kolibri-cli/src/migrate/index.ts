@@ -2,16 +2,18 @@ import { exec } from 'child_process';
 import { Command, Option } from 'commander';
 import fs from 'fs';
 import path from 'path';
+
 import { Configuration } from '../types';
 import { TaskRunner } from './runner/task-runner';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
 import {
-	MODIFIED_FILES,
+	getContentOfProjectPkgJson,
 	getPackageManagerInstallCommand,
 	getVersionOfPublicUiComponents,
 	getVersionOfPublicUiKoliBriCli,
-	readPackageString,
+	logAndCreateError,
+	MODIFIED_FILES,
 	setRemoveMode,
 } from './shares/reuse';
 import { REMOVE_MODE, RemoveMode } from './types';
@@ -30,7 +32,7 @@ export default function (program: Command): void {
 	program
 		.command('migrate')
 		.description('This command migrates KoliBri code to the current version.')
-		.argument('<string>', 'Source code folder to migrate')
+		.argument('[string]', 'Source code folder to migrate', 'src')
 		.addOption(new Option('--ignore-uncommitted-changes', 'Allows execution with uncommitted changes').default(false))
 		.addOption(new Option('--remove-mode <mode>', 'Prefix property name or delete property').choices(REMOVE_MODE).default('prefix'))
 		.addOption(new Option('--test-tasks', 'Run additional test tasks').default(false).hideHelp())
@@ -42,7 +44,7 @@ export default function (program: Command): void {
 				}
 
 				if (!options.ignoreUncommittedChanges && stdout) {
-					throw new Error('There are uncommitted changes');
+					throw logAndCreateError('There are uncommitted changes');
 				}
 
 				setRemoveMode(options.removeMode);
@@ -81,7 +83,7 @@ Source folder to migrate: ${baseDir}
 					runner.run();
 					if (version !== runner.getPendingMinVersion()) {
 						version = runner.getPendingMinVersion();
-						let packageJson = readPackageString(path.resolve(process.cwd()));
+						let packageJson = getContentOfProjectPkgJson();
 						packageJson = packageJson.replace(/"(@public-ui\/[^"]+)":\s*".*"/g, `"$1": "${version}"`);
 						fs.writeFileSync(path.resolve(process.cwd(), 'package.json'), packageJson);
 						runner.setProjectVersion(version);
@@ -96,7 +98,7 @@ Source folder to migrate: ${baseDir}
 						});
 					} else {
 						console.log(`
-Task status:`);
+Status of all executed Tasks:`);
 
 						const status = runner.getStatus(true);
 						fs.writeFileSync(configFile, JSON.stringify(status.config, null, 2));
@@ -118,7 +120,7 @@ Is anything wrong, you can reset the migration with "git reset --hard HEAD~1" or
 
 				const status = runner.getStatus();
 				console.log(`
-Running ${status.total} tasks...`);
+Execute ${status.total} registered tasks...`);
 				runLoop();
 			});
 		});

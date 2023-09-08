@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-avatar")
-@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.3")
 @JsModule("@public-ui/components/dist/components/kol-avatar")
 public class KolAvatar extends Component {
 	/**

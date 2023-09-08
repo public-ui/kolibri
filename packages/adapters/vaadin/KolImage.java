@@ -14,7 +14,7 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.
  */
 
 @Tag("kol-image")
-@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.3")
 @JsModule("@public-ui/components/dist/components/kol-image")
 public class KolImage extends Component {
 	/**

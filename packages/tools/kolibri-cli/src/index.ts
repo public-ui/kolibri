@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import migrate from './migrate';
 import gradient from 'gradient-string';
+
+import migrate from './migrate';
 import { getVersionOfPublicUiKoliBriCli } from './migrate/shares/reuse';
 
 const versionOfPublicUiKoliBriCli = getVersionOfPublicUiKoliBriCli();

@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-input-text")
-@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.7.0-rc.3")
 @JsModule("@public-ui/components/dist/components/kol-input-text")
 public class KolInputText extends Component {
 	/**

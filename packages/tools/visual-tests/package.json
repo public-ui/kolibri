@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "1.7.0-rc.2",
+	"version": "1.7.0-rc.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -33,7 +33,7 @@
 	},
 	"dependencies": {
 		"@playwright/test": "1.37.1",
-		"@public-ui/sample-react": "workspace:1.7.0-rc.2"
+		"@public-ui/sample-react": "workspace:1.7.0-rc.4"
 	},
 	"files": []
 }
