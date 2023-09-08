@@ -111,13 +111,25 @@ export const isPropertyKebabCaseRegExp = /^(data-removed-)?_[a-z]+(-[a-z]+)*$/;
 
 /**
  * Converts a kebab case string to a capital case string.
- * @param {string} tag The kebab case string
+ * @param {string} str The kebab case string
  * @returns {string} The capital case string
  */
-export function kebabToCapitalCase(tag: string) {
-	return tag
+export function kebabToCapitalCase(str: string) {
+	return str
 		.split('-') // Split on hyphen
 		.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize each word
+		.join(''); // Join without space
+}
+
+/**
+ * Converts a kebab case string to a camel case string.
+ * @param {string} str The kebab case string
+ * @returns {string} The camel case string
+ */
+export function kebabToCamelCase(str: string) {
+	return str
+		.split('-') // Split on hyphen
+		.map((word, index) => (index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())) // Capitalize each word
 		.join(''); // Join without space
 }
 
@@ -150,7 +162,7 @@ export const getContentOfProjectPkgJson = (): string => {
 };
 export const getVersionOfPublicUiComponents = (): string => {
 	try {
-		return readPackageJson(path.resolve(process.cwd(), 'node_modsules/@public-ui/components')).version;
+		return readPackageJson(path.resolve(process.cwd(), 'node_modules/@public-ui/components')).version;
 	} catch (err) {
 		throw logAndCreateError(
 			'Could not get version of installed "@public-ui/components" package!',

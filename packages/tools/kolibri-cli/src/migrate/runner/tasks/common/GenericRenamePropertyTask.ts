@@ -1,26 +1,24 @@
 import fs from 'fs';
 
-import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS } from '../../../../types';
+import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS, MARKUP_EXTENSIONS } from '../../../../types';
 import {
 	filterFilesByExt,
 	isPropertyKebabCaseRegExp,
 	isTagKebabCaseRegExp,
+	kebabToCamelCase,
 	kebabToCapitalCase,
 	logAndCreateError,
 	MODIFIED_FILES,
 } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 
-const EXTENSIONS = COMPONENT_FILE_EXTENSIONS.concat(CUSTOM_ELEMENT_FILE_EXTENSIONS);
-const DATA_REMOVED_REGEXP = /DataRemoved_/g; // not /DataRemoved-_/g
+const DATA_REMOVED_REGEXP = /DataRemoved_/gi; // not /DataRemoved-_/g
 const DATA_REMOVEDS_REGEXP = /(data-removed-){2,}/g;
 
 export class GenericRenamePropertyTask extends AbstractTask {
 	private readonly componentRegExp: RegExp;
 	private readonly customElementRegExp: RegExp;
 
-	private readonly newProperty: string;
-	private readonly oldPropertyInCamelCase: string;
 	private readonly newPropertyInCamelCase: string;
 
 	protected constructor(
@@ -28,29 +26,26 @@ export class GenericRenamePropertyTask extends AbstractTask {
 		description: string,
 		tag: string,
 		oldProperty: string,
-		newProperty: string,
+		private readonly newProperty: string,
 		versionRange: string,
 		dependentTasks: AbstractTask[] = [],
 		options: TaskOptions = {},
 	) {
-		super(identifier, description, EXTENSIONS, versionRange, dependentTasks, options);
+		super(identifier, description, MARKUP_EXTENSIONS, versionRange, dependentTasks, options);
 
 		if (!isTagKebabCaseRegExp.test(tag)) {
-			logAndCreateError(`Tag "${tag}" is not in kebab case.`);
+			throw logAndCreateError(`Tag "${tag}" is not in kebab case.`);
 		}
 		if (!isPropertyKebabCaseRegExp.test(oldProperty)) {
-			logAndCreateError(`Old property "${oldProperty}" is not in kebab case.`);
+			throw logAndCreateError(`Old property "${oldProperty}" is not in kebab case.`);
 		}
 		if (!isPropertyKebabCaseRegExp.test(newProperty)) {
 			throw logAndCreateError(`New property "${newProperty}" is not in kebab case.`);
 		}
 
-		this.newProperty = newProperty;
+		this.newPropertyInCamelCase = kebabToCamelCase(newProperty);
 
-		this.oldPropertyInCamelCase = kebabToCapitalCase(oldProperty);
-		this.newPropertyInCamelCase = kebabToCapitalCase(newProperty);
-
-		this.componentRegExp = new RegExp(`(<${kebabToCapitalCase(tag)}[^>]+)${this.oldPropertyInCamelCase}([ >=])`, 'g');
+		this.componentRegExp = new RegExp(`(<${kebabToCapitalCase(tag)}[^>]+)${kebabToCapitalCase(oldProperty)}([ >=])`, 'g');
 		this.customElementRegExp = new RegExp(`(<${tag}[^>]+)${oldProperty}([ >=])`, 'g');
 	}
 
@@ -75,7 +70,7 @@ export class GenericRenamePropertyTask extends AbstractTask {
 	}
 
 	private transpileCustomElementFileRename(baseDir: string): void {
-		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
+		filterFilesByExt(baseDir, CUSTOM_ELEMENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
 			const newContent = content
 				// Replacements

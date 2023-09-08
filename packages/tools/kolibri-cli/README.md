@@ -153,6 +153,8 @@ If the migration failed, you can reset the migration with `git reset --hard HEAD
 
 Use the configuration (`.kolibri.config.json`) to exclude some tasks.
 
+If there are multiple obsolete properties that have been migrated to just one new property, the new property may appear multiple times in the tag. You can then decide which variant to use and remove all other variants accordingly.
+
 Maybe it can help to prepare your code in the tricky places for migration.
 
 Please give us feedback, if you have problems with the migration: [GitHub Issues](https://github.com/public-ui/kolibri/issues/new?assignees=&labels=useful+hint&projects=&template=7_feedback.md&title=%F0%9F%92%A1+CLI%3A+)
