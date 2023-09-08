@@ -23,7 +23,7 @@ process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH = buildPath;
 runTests();
 
 function runTests() {
-	const playwright = child_process.spawn(path.join(binaryPath, 'playwright'), ['test'], {
+	const playwright = child_process.spawn(path.join(binaryPath, 'playwright'), ['test', ...process.argv.slice(2)], {
 		cwd: visualTestPath,
 	});
 	playwright.stdout.on('data', function (data) {
