@@ -4,13 +4,13 @@ import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
 import { mapIconProp2State } from '../../../types/props/icon';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { Props, States } from '../types';
+import { md } from '../../../utils/markdown';
 
 type Slots = {
 	''?: string;
 	expert?: string;
 } & Record<string, undefined | string>;
 export type SpanOptions = {
-	parsedLabel?: string;
 	additionalAttrs?: string;
 };
 export const getSpanWcHtml = (
@@ -58,8 +58,8 @@ export const getSpanWcHtml = (
 		}
 		${
 			!state._hideLabel && hideExpertSlot
-				? state._allowMarkdown && options?.parsedLabel !== undefined
-					? `<span class="span-label md">${options.parsedLabel}</span>`
+				? state._allowMarkdown
+					? `<span class="span-label md">${md(state._label as string)}</span>`
 					: `<span class="span-label">${state._label as string}</span>`
 				: ``
 		}

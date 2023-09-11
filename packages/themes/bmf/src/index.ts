@@ -1535,6 +1535,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-bottom-width: 0;
 	}
 	th {
+		padding: 0.75em 0;
 		font-weight: 700;
 		color: var(--color-black);
 	}
@@ -1553,9 +1554,18 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	th,
 	td {
-		padding: 0.5em;
+		vertical-align: top;
 		border-bottom: 1px solid var(--color-granite);
-		height: 2.75rem;
+		height: 1.25rem;
+	}
+	tbody th,
+	td {
+		padding: 1em 0;
+	}
+	th kol-button,
+	td kol-button {
+		margin-top: -0.75rem;
+		margin-bottom: -0.75rem;
 	}
 	td.center > div {
 		display: flex;
@@ -1568,9 +1578,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 	th[aria-sort="ascending"],
 	th[aria-sort="descending"] {
 		font-weight: 700;
-	}
-	:host > div:last-child {
-		padding: 0.5em;
 	}
 	:host > div:last-child,
 	:host > div:last-child > div:last-child {
