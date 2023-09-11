@@ -74,7 +74,7 @@
 		"markdown-it": "13.0.1"
 	},
 	"devDependencies": {
-		"@stencil/angular-output-target": "0.8.1",
+		"@stencil/angular-output-target": "0.8.2",
 		"@stencil/core": "4.2.0",
 		"@stencil/postcss": "2.1.0",
 		"@stencil/react-output-target": "0.5.3",
