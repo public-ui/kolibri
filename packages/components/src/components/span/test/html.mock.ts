@@ -22,7 +22,6 @@ export const getSpanWcHtml = (
 ): string => {
 	const state = mixMembers<Props, States>(
 		{
-			_allowMarkdown: false,
 			_icon: {},
 			_hideLabel: false,
 			_label: false, // ⚠ required
@@ -56,13 +55,7 @@ export const getSpanWcHtml = (
 				  )
 				: ''
 		}
-		${
-			!state._hideLabel && hideExpertSlot
-				? state._allowMarkdown
-					? `<span class="span-label md">${md(state._label as string)}</span>`
-					: `<span class="span-label">${state._label as string}</span>`
-				: ``
-		}
+		${!state._hideLabel && hideExpertSlot ? `<span class="span-label">${md(state._label as string)}</span>` : ``}
 		<span class="span-label" ${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
 			${slots.expert ? slots.expert : ``}
 		</span>

@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { handleColorChange, PropColor, validateColor } from '../../types/props/color';
-import { LabelPropType } from '../../types/props/label';
+import { LabelWithMarkdownPropType } from '../../types/props/label';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
@@ -56,7 +56,6 @@ export class KolBadge implements API {
 				>
 					<kol-span-wc
 						id={hasSmartButton ? this.id : undefined}
-						_allowMarkdown
 						_hideLabel={this._hideLabel || this._iconOnly}
 						_icon={this._icon}
 						_label={this._label}
@@ -97,7 +96,7 @@ export class KolBadge implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelWithMarkdownPropType;
 
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).

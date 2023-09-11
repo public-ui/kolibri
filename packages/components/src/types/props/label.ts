@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { a11yHint, uiUxHint } from '../../utils/a11y.tipps';
+import { md } from '../../utils/markdown';
 import { WatchStringOptions, watchValidator } from '../../utils/prop.validators';
 
 /* types */
@@ -51,6 +52,11 @@ export function containsOnlyNumbers(str: string): boolean {
 export type LabelPropType = string;
 
 /**
+ * Defines the type of the label property, with additional md support.
+ */
+export type LabelWithMarkdownPropType = string;
+
+/**
  * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
  */
 export type LabelWithExpertSlotPropType = LabelPropType | false;
@@ -73,6 +79,9 @@ export type LabelWithExpertSlotPropType = LabelPropType | false;
 export type PropLabel = {
 	label: LabelPropType;
 };
+export type PropLabelWithMarkdown = {
+	label: LabelWithMarkdownPropType;
+};
 export type PropLabelWithExpertSlot = {
 	label: LabelWithExpertSlotPropType;
 };
@@ -82,7 +91,9 @@ export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
 
 function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 	return {
+		...options,
 		hooks: {
+			...options.hooks,
 			afterPatch: (value, state, component, key) => {
 				if (typeof options.hooks?.afterPatch === 'function') {
 					options.hooks?.afterPatch(value, state, component, key);
@@ -94,7 +105,6 @@ function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 					uiUxHint(`A heading or label should not be longer than 80 characters.`);
 				}
 			},
-			beforePatch: options.hooks?.beforePatch,
 		},
 	};
 }
@@ -103,6 +113,22 @@ const LABEL_VALUES = new Set(['string']);
 export const validateLabel = (component: Generic.Element.Component, value?: LabelPropType, options: WatchStringOptions = {}): void => {
 	watchValidator(component, '_label', (value) => typeof value === 'string', LABEL_VALUES, value, getValidationOptions(options));
 };
+
+// Will be used later ...
+// export const validateLabelWithMarkdown = (component: Generic.Element.Component, value?: LabelWithMarkdownPropType, options: WatchStringOptions = {}): void => {
+// 	validateLabel(component, value, {
+// 		...options,
+// 		hooks: {
+// 			...options.hooks,
+// 			beforePatch: (nextValue, nextState, component, key) => {
+// 				nextState.set('_label', md(nextValue as string));
+// 				if (typeof options.hooks?.beforePatch === 'function') {
+// 					options.hooks?.beforePatch(nextValue, nextState, component, key);
+// 				}
+// 			},
+// 		},
+// 	});
+// };
 
 const LABEL_WITH_EXPERT_SLOT_VALUES = new Set(['string', 'false']);
 export const validateLabelWithExpertSlot = (
@@ -113,14 +139,26 @@ export const validateLabelWithExpertSlot = (
 	if (value === '' || value === 'false') {
 		value = false; // TODO: remove this workaround in v2
 	}
+	// @todo validation of expert slot and md are similar, so we should refactor this.
 	watchValidator(
 		component,
 		'_label',
 		(value) => value === false || typeof value === 'string',
 		LABEL_WITH_EXPERT_SLOT_VALUES,
 		value,
-		getValidationOptions(options)
+		getValidationOptions({
+			...options,
+			hooks: {
+				...options.hooks,
+				beforePatch: (nextValue, nextState, component, key) => {
+					if (typeof nextValue === 'string') {
+						nextState.set('_label', md(nextValue));
+					}
+					if (typeof options.hooks?.beforePatch === 'function') {
+						options.hooks?.beforePatch(nextValue, nextState, component, key);
+					}
+				},
+			},
+		})
 	);
 };
-
-// TODO: Validation for labelWithExpertSlot
