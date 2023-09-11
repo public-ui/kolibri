@@ -1,5 +1,5 @@
 import MarkdownIt from 'markdown-it';
 
-const md: MarkdownIt = new MarkdownIt();
+const markdown = new MarkdownIt();
 
-export const markdown = (text: string) => md.render(text);
+export const md = (str: string) => markdown.renderInline(str);

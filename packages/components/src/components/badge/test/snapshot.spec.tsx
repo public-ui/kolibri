@@ -7,10 +7,6 @@ import { COMPONENTS } from '../../component-list';
 import { Props } from '../types';
 import { getBadgeHtml } from './html.mock';
 
-const lables = new Map<string, string>();
-lables.set('Text', '<p>Text</p>');
-lables.set('**Te**xt', '<p><strong>Te</strong>xt</p>');
-
 executeTests<Props>(
 	'Badge',
 	async (props): Promise<SpecPage> => {
@@ -23,9 +19,9 @@ executeTests<Props>(
 	{
 		_color: ['#000000'],
 		_icon: ['codicon codicon-home'],
-		_label: Array.from(lables.keys()),
+		_label: ['Text', '**Te**xt'],
 	},
-	(props) => getBadgeHtml(props, { parsedLabel: lables.get(props._label) }),
+	(props) => getBadgeHtml(props),
 	{
 		execMode: 'default', // ready
 	}

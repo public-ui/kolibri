@@ -7,10 +7,6 @@ import { COMPONENTS } from '../../component-list';
 import { Props } from '../types';
 import { getVersionHtml } from './html.mock';
 
-const lables = new Map<string | undefined, string>();
-lables.set(undefined, '<p>v0.0.0-alpha.0</p>');
-lables.set('1.0.0', '<p>v1.0.0</p>');
-
 executeTests<Props>(
 	'Version',
 	async (props): Promise<SpecPage> => {
@@ -21,9 +17,9 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_label: Array.from(lables.keys()),
+		_label: [undefined, '1.0.0'],
 	},
-	(props) => getVersionHtml(props, { parsedLabel: lables.get(props._label) }),
+	(props) => getVersionHtml(props),
 	{
 		execMode: 'default', // ready
 	}
