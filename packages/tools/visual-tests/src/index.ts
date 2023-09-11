@@ -7,7 +7,7 @@ import portfinder from 'portfinder';
 import * as process from 'process';
 
 process.env.KOLIBRI_CWD = process.cwd();
-const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR;
+const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR; // TODO: Check on Windows
 
 if (!process.env.THEME_MODULE) {
 	throw new Error('Environment variable THEME_MODULE not specified.');
