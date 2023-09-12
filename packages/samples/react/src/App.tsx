@@ -95,11 +95,15 @@ const getIndexOfRoute = (str: string) => {
 	return ROUTE_LIST.indexOf(clearHash(str));
 };
 
-type CustomRoute = { label: string; value: string };
-const componentList: CustomRoute[] = [];
+const componentList: Map<string, Option<string>> = new Map();
 ROUTE_LIST.forEach((route) => {
 	const routeSplit = route.split('/');
-	if (routeSplit.pop() === 'basic') componentList.push({ label: routeSplit[1], value: route });
+	if (!componentList.has(routeSplit[1])) {
+		componentList.set(routeSplit[1], {
+			label: routeSplit[1],
+			value: route,
+		});
+	}
 });
 
 function getComponentFromSample(url: string): string {
@@ -231,7 +235,7 @@ export const App: FC = () => {
 					_hideLabel
 					_label="Komponente wechseln"
 					_id="theme-toggle"
-					_list={componentList}
+					_list={Array.from(componentList.values())}
 					_on={componentSelectOn}
 					_value={[currentComponent]}
 				></KolSelect>
