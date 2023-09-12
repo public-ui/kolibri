@@ -35,12 +35,13 @@ void (async () => {
 	const playwright = child_process.spawn(path.join(binaryPath, 'playwright'), ['test', ...process.argv.slice(2)], {
 		cwd: visualsTestModulePath,
 	});
+
 	playwright.stdout.on('data', (data) => {
-		console.log('Plawright: ' + (data as string).toString());
+		console.log('Playwright: ' + (data as string).toString());
 	});
 
 	playwright.stderr.on('data', (data) => {
-		console.log('Plawright stderr: ' + (data as string).toString());
+		console.log('Playwright stderr: ' + (data as string).toString());
 	});
 
 	playwright.on('exit', (code) => {
