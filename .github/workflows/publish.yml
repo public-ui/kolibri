@@ -43,13 +43,6 @@ jobs:
         working-directory: packages/components
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      - name: Build and publish themes
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/themes
-        env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish adapter angular v11
         run: |
           npm i
@@ -141,11 +134,25 @@ jobs:
         working-directory: packages/tools/kolibri-cli
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish sample react
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/samples/react
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish tools visual-tests
         run: |
           npm i
           npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
         working-directory: packages/tools/visual-tests
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish themes
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/themes
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
 
