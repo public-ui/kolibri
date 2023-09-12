@@ -41,7 +41,7 @@ It's also recommended to automatically run the tests before packing/publishing t
 ```json
 {
 	"scripts": {
-		" ": "npm test"
+		"prepack": "npm test"
 	}
 }
 ```
