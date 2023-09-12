@@ -51,7 +51,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/schema": "1.7.0-rc.5",
-		"@public-ui/visual-tests": "workspace:1.7.0-rc.5",
+		"@public-ui/visual-tests": "1.7.0-rc.5",
 		"@types/node": "ts5.1",
 		"eslint": "8.49.0",
 		"typescript": "5.2.2",
