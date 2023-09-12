@@ -113,6 +113,7 @@ export const App: FC = () => {
 	const [theme] = useState(getThemeFromLocation());
 	const [sample, setSample] = useState(clearHash(window.location.hash));
 	const [active, setActive] = useState(false);
+	const [firstComponentChangeEvent, setFirstComponentChangeEvent] = useState(true);
 
 	const currentComponent = useMemo(() => {
 		return getComponentFromSample(sample);
@@ -130,6 +131,17 @@ export const App: FC = () => {
 
 	const componentSelectOn = {
 		onChange: (_e: Event, v: unknown) => {
+			/**
+			 * Drop first event as a temporary bugfix for the following issue:
+			 * When navigated to a component example which is not "basic" it would navigate away from it on the first event, because the select only stores the basic routes.
+			 * e.g. accordion/header would become accordion/basic.
+			 * This problem will become obsolete when the select gets replaced with a proper navigation (https://github.com/public-ui/kolibri/issues/5064)
+			 */
+			if (firstComponentChangeEvent) {
+				setFirstComponentChangeEvent(false);
+				return;
+			}
+
 			const path = (v as string[])[0];
 			setSample(path);
 			window.location.href = `#${path}?theme=${theme}`;

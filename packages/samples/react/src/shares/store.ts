@@ -28,13 +28,11 @@ export function setStorage(storage: Storage) {
 	const RESTORE = STORAGE.getItem(STORE_IDENTIFIER);
 	try {
 		const store = JSON.parse(RESTORE as string) as Store;
-		console.log('RESTORE', store);
 		if (typeof store === 'object' && store !== null) {
 			STORE.darkMode = store.darkMode === true;
 			if (isTheme(store.theme)) {
 				STORE.theme = store.theme;
 			}
-			console.log('getTheme', getTheme());
 		}
 	} catch (e) {
 		/* empty */
