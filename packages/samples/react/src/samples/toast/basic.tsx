@@ -17,9 +17,5 @@ const handleButtonClick = () => {
 export const ToastBasic: FC = () => (
 	<div>
 		<KolButton _label="Show toast" _on={{ onClick: handleButtonClick }}></KolButton>
-
-		<KolToast _label="Toast Label" _status="adding">
-			Toast Description
-		</KolToast>
 	</div>
 );
