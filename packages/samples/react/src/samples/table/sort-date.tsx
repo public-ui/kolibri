@@ -1,21 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { KolTable } from '@public-ui/react';
-
-import { FC } from 'react';
 import { KoliBriTableHeaders } from '@public-ui/components';
+import { DATA, Data } from './test-data';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
 	month: '2-digit',
 	year: 'numeric',
 });
-
-type Data = {
-	order: number;
-	date: Date;
-};
-const DATA: Data[] = [];
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
