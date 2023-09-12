@@ -70,7 +70,7 @@
 		"@a11y-ui/core": "1.0.7",
 		"@floating-ui/dom": "1.5.1",
 		"@public-ui/schema": "1.7.0-rc.4",
-		"i18next": "23.5.0",
+		"i18next": "23.5.1",
 		"markdown-it": "13.0.1"
 	},
 	"devDependencies": {
