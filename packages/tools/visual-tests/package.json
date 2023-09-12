@@ -20,7 +20,7 @@
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"unused": "knip",
-		"prepare": "pnpm build"
+		"prepare": "npm run build"
 	},
 	"bin": {
 		"kolibri-visual-test": "kolibri-visual-test.sh"
