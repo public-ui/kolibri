@@ -1,23 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { KolBadge, KolTable } from '@public-ui/react';
 
-import React, { FC } from 'react';
-
 import { getRoot } from '../../shares/react-roots';
 import { KoliBriTableHeaders } from '@public-ui/components';
+import { DATA, Data } from './test-data';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
 	month: '2-digit',
 	year: 'numeric',
 });
-
-type Data = {
-	order: number;
-	date: Date;
-};
-const DATA: Data[] = [];
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
@@ -54,13 +47,5 @@ const HEADERS: KoliBriTableHeaders = {
 		],
 	],
 };
-
-new Array(15).fill(null).forEach((_v, idx) => {
-	const rand = Math.round(Math.random() * 999999999999);
-	DATA.push({
-		order: idx,
-		date: new Date(rand),
-	});
-});
 
 export const TableBadgeSize: FC = () => <KolTable _caption="Sort a date column" _data={DATA} _headers={HEADERS} />;
