@@ -10,11 +10,18 @@ export const configureSnapshotPath =
 		testInfo.snapshotPath = (snapshotName) => {
 			const result = originalSnapshotPath
 				.apply(testInfo, [snapshotName])
+
+				// Remove browser name from snapshot name
 				// .replace('-chromium', '')
 				// .replace('-firefox', '')
+
+				// Remove os name from snapshot name
 				.replace('-darwin', '')
 				.replace('-linux', '')
-				.replace('-windows', '');
+				.replace('-windows', '')
+
+				// Remove test counter from snapshot name
+				.replace('-1-', '-');
 			return result;
 		};
 	};
