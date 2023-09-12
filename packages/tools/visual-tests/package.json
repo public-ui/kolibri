@@ -42,5 +42,7 @@
 		"http-server": "14.1.1",
 		"portfinder": "1.0.32"
 	},
-	"files": []
+	"files": [
+		"dist"
+	]
 }
