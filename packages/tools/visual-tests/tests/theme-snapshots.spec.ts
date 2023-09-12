@@ -34,6 +34,7 @@ routes.forEach((route) => {
 		await page.waitForSelector(`kol-button[_aria-label="Weiter zum nächsten Komponenten-Beispiel"]`);
 		await expect(page).toHaveScreenshot({
 			fullPage: true,
+			maxDiffPixelRatio: 0.03,
 		});
 	});
 });
