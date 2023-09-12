@@ -118,10 +118,9 @@ export const App: FC = () => {
 		return getComponentFromSample(sample);
 	}, [sample]);
 
-	const title = document.querySelector('title');
-	if (title) {
-		title.innerHTML = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
-	}
+	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
+	document.body.setAttribute('class', theme);
+	document.body.dataset.theme = theme;
 
 	const catchRef = () => {
 		setTimeout(() => {

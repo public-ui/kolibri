@@ -1,4 +1,4 @@
-# kol-toast-container
+Siehe [Toast](/docs/components/toast).
 
 <!-- Auto Generated Below -->
 
