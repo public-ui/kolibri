@@ -1,10 +1,11 @@
 # Toast
 
-Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des Browserfenster angezeigt und verschwindet danach automatisch.
-
-Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für zehn Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.
+Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird am Kopf des Browserfenster
+angezeigt, bis sie geschlossen wird. Werden mehrere Toasts geöffnet, ohne das die bisherigen geschlossen wurden, so werden diese untereinander angezeigt.
 
 ## Konstruktion
+
+Die Toast-Komponente wird nicht direkt verwendet, sondern immer über den ToasterService konstruiert.
 
 ### Code
 
@@ -22,30 +23,15 @@ toaster.enqueue({
 });
 ```
 
-### Beispiel
-
-<div class="d-grid gap-2">
-  <kol-alert _label="Erfolg" _type="success">Hier wird der Erfolg näher beschrieben.</kol-alert>
-  <kol-alert _type="success" _show="false">Hier wird der Erfolg näher beschrieben.</kol-alert>
-</div>
-
 ## Verwendung
 
 ### Überschrift
 
 Verwenden Sie das Attribut **`_label`**, um die Überschrift des Toasts zu bestimmen.
 
-### Größe der Überschrift
+### Inhalt
 
-Verwenden Sie das Attribut **`_level`**, um die Überschriftenebene zu setzen.
-
-### Anzeigen des Toasts
-
-Verwenden Sie das Attribut **`_show`**, um den Toast manuell anzuzeigen.
-
-### Anzeigedauer des Toast
-
-Verwenden Sie das Attribut **`_showDuration`**, um die Anzeigedauer des Toasts festzulegen.
+Verwenden Sie das Attribut **`_description`**, um den Text-Inhalt des Toasts zu bestimmen.
 
 ### Anzeigetyp des Toast
 
@@ -56,12 +42,6 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 - `info`
 - `success`
 - `warning`
-
-<!--### Best practices
-
-### Anwendungsfälle-->
-
-## Barrierefreiheit
 
 <!-- Auto Generated Below -->
 
