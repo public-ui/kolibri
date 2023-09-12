@@ -19,7 +19,7 @@ class StaticStorage {
 
 const STORE: Store = {
 	darkMode: false,
-	theme: 'itzbund',
+	theme: 'default',
 };
 
 let STORAGE: Storage;

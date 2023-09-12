@@ -88,7 +88,6 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 };
 
 const ROUTE_LIST = getRouteList(ROUTES);
-const ROUTE_TREE = getRouteTree(ROUTES);
 
 const clearHash = (str: string) => str.replace(/\?.*/g, '').replace(/^#/g, '');
 
