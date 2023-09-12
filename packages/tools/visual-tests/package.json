@@ -19,10 +19,11 @@
 		"build": "tsc --outDir dist",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
-		"unused": "knip"
+		"unused": "knip",
+		"prepare": "pnpm build"
 	},
 	"bin": {
-		"kolibri-visual-test": "dist/index.js"
+		"kolibri-visual-test": "kolibri-visual-test.sh"
 	},
 	"devDependencies": {
 		"@types/node": "20.5.9",
