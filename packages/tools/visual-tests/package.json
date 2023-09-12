@@ -25,12 +25,12 @@
 		"kolibri-visual-test": "dist/index.js"
 	},
 	"devDependencies": {
-		"@types/node": "20.5.9",
-		"@typescript-eslint/eslint-plugin": "6.6.0",
-		"eslint": "8.48.0",
+		"@types/node": "20.6.0",
+		"@typescript-eslint/eslint-plugin": "6.7.0",
+		"eslint": "8.49.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "2.21.2",
-		"npm-check-updates": "16.13.2",
+		"knip": "2.22.0",
+		"npm-check-updates": "16.13.3",
 		"prettier": "3.0.3",
 		"tslib": "2.6.2",
 		"typescript": "5.2.2"
