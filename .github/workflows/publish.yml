@@ -138,6 +138,13 @@ jobs:
         run: |
           npm i
           npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+      - name: Build and publish themes
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/themes
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
@@ -146,13 +153,6 @@ jobs:
           npm i
           npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
         working-directory: packages/tools/visual-tests
-        env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      - name: Build and publish themes
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/themes
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
 
