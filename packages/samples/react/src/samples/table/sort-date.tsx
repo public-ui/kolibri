@@ -30,12 +30,4 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
-new Array(15).fill(null).forEach((_v, idx) => {
-	const rand = Math.round(Math.random() * 999999999999);
-	DATA.push({
-		order: idx,
-		date: new Date(rand),
-	});
-});
-
 export const TableSortTabel: FC = () => <KolTable _caption="Sort a date column" _data={DATA} _headers={HEADERS} />;
