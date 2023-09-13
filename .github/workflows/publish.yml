@@ -92,6 +92,13 @@ jobs:
         working-directory: packages/adapters/react
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter react-standalone
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/react-standalone
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish adapter solid
         run: |
           npm i
