@@ -19,69 +19,18 @@ hr {
 	grid-template-columns: auto auto;
 }
 
-.toolbar {
-	grid-template-columns: auto 1fr auto 1fr auto;
-	place-items: center;
+.app-container {
+	display: grid;
+	grid-template-columns: 360px auto;
+	height: 100%;
 }
 
-.toolbar kol-button[_label="Zurück"] {
-	order: 1;
-}
-
-.toolbar dl {
-	order: 2;
-	display: flex;
-	gap: 0.5em;
-	justify-self: start;
-	place-items: center;
-}
-
-.toolbar dd {
-	margin: 0;
-}
-
-.toolbar kol-select {
-	order: 3;
-}
-
-.toolbar kol-button[_label="Weiter"] {
-	order: 4;
-}
-
-@media only screen and (max-width: 1024px) {
-	.toolbar {
-		display: grid;
-		gap: 1rem;
-		grid-template-columns: 1fr 1fr;
-	}
-
-	.toolbar kol-button[_label="Zurück"] {
-		order: 3;
-	}
-
-	.toolbar dl {
-		order: 1;
-	}
-
-	.toolbar kol-select {
-		order: 2;
-	}
-
-	.toolbar kol-button[_label="Weiter"] {
-		order: 4;
-	}
-}
-
-@media only screen and (max-width: 512px) {
-
-	.toolbar dl,
-	.toolbar kol-select {
-		grid-column: span 2;
-	}
+.app-sidebar {
+	border-right: 1px solid gray;
+	font-family: sans-serif;
 }
 
 @media print {
-
 	.no-print,
 	.no-print * {
 		display: none !important;
