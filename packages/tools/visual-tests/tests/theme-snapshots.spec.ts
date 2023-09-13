@@ -31,6 +31,7 @@ test.beforeEach(configureSnapshotPath());
 routes.forEach((route) => {
 	test(`snapshot for ${route}`, async ({ page }) => {
 		await page.goto(`/#${route}?hideMenus`, { waitUntil: 'networkidle' });
+		await page.waitForTimeout(2000);
 		await expect(page).toHaveScreenshot({
 			fullPage: true,
 			maxDiffPixelRatio: 0.03,
