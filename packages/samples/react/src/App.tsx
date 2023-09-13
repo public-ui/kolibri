@@ -1,29 +1,17 @@
-import React, { useMemo } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import React, { FC } from 'react';
+import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 import { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
 import { Option } from '@public-ui/components';
-import { KolAlert, KolButton, KolSelect, KolVersion } from '@public-ui/react';
-import { FC, useState } from 'react';
+import { KolAlert } from '@public-ui/react';
 import { ROUTES } from './shares/routes';
-import { THEME_OPTIONS, Theme } from './shares/theme';
+import { Theme, THEME_OPTIONS } from './shares/theme';
 import PackageJson from '../package.json';
-import { getTheme, setTheme, setStorage, getThemeName } from './shares/store';
+import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
 import { Sidebar } from './components/Sidebar';
-
-const THEME_REGEX = /theme=([^&]+)/;
+import { useLocation } from 'react-router';
 
 setStorage(localStorage);
-
-const getThemeFromLocation = () => {
-	if (THEME_REGEX.test(window.location.hash)) {
-		const match = window.location.hash.match(THEME_REGEX);
-		if (Array.isArray(match) && match.length > 0) {
-			return match[0].replace(THEME_REGEX, '$1').toLowerCase();
-		}
-	}
-	return getTheme();
-};
 
 const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
 	let list: string[] = [];
@@ -91,12 +79,6 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 const ROUTE_LIST = getRouteList(ROUTES);
 const ROUTE_TREE = getRouteTree(ROUTES);
 
-const clearHash = (str: string) => str.replace(/\?.*/g, '').replace(/^#/g, '');
-
-const getIndexOfRoute = (str: string) => {
-	return ROUTE_LIST.indexOf(clearHash(str));
-};
-
 const componentList: Map<string, Option<string>> = new Map();
 ROUTE_LIST.forEach((route) => {
 	const routeSplit = route.split('/');
@@ -108,164 +90,38 @@ ROUTE_LIST.forEach((route) => {
 	}
 });
 
-function getComponentFromSample(url: string): string {
-	const routeSplit = url.split('/');
-	routeSplit[2] = 'basic';
-	return routeSplit.join('/');
-}
-
 export const App: FC = () => {
-	const [theme] = useState(getThemeFromLocation());
-	const [sample, setSample] = useState(clearHash(window.location.hash));
-	const [active, setActive] = useState(false);
-	const [firstComponentChangeEvent, setFirstComponentChangeEvent] = useState(true);
+	const routerLocation = useLocation();
+	const [searchParams, setSearchParams] = useSearchParams();
+	const theme = searchParams.get('theme') ?? getTheme();
 
-	const currentComponent = useMemo(() => {
-		return getComponentFromSample(sample);
-	}, [sample]);
+	setTheme(theme as Theme);
 
 	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
 	document.body.setAttribute('class', theme);
 	document.body.dataset.theme = theme;
 
-	const catchRef = () => {
-		setTimeout(() => {
-			setActive(true);
-		}, 500);
-	};
-
-	const componentSelectOn = {
-		onChange: (_e: Event, v: unknown) => {
-			/**
-			 * Drop first event as a temporary bugfix for the following issue:
-			 * When navigated to a component example which is not "basic" it would navigate away from it on the first event, because the select only stores the basic routes.
-			 * e.g. accordion/header would become accordion/basic.
-			 * This problem will become obsolete when the select gets replaced with a proper navigation (https://github.com/public-ui/kolibri/issues/5064)
-			 */
-			if (firstComponentChangeEvent) {
-				setFirstComponentChangeEvent(false);
-				return;
-			}
-
-			const path = (v as string[])[0];
-			setSample(path);
-			window.location.href = `#${path}?theme=${theme}`;
-		},
-	};
-
 	const handleThemeChange = (theme: unknown) => {
-		setTheme(theme as Theme);
-		window.location.href =
-			window.location.href
-				.replace(THEME_REGEX, '')
-				.replace(/(\?|&{1,})$/g, '')
-				.replace(/&{2,}/g, '&') + `?theme=${theme as string}`;
+		setSearchParams({ theme: theme as string });
 		window.location.reload();
 	};
 
-	const on = {
-		onChange: (_event: Event, value: unknown) => {
-			if (active) {
-				handleThemeChange(Array.isArray(value) ? value[0] : value);
-			}
-		},
-	};
-
-	const next = {
-		onClick: () => {
-			let idx = getIndexOfRoute(window.location.hash);
-			if (idx >= ROUTE_LIST.length - 1) {
-				idx = 0;
-			} else {
-				idx += 1;
-			}
-			setSample(clearHash(ROUTE_LIST[idx]));
-			window.location.href = `#${ROUTE_LIST[idx]}?theme=${theme}`;
-		},
-	};
-
-	const prev = {
-		onClick: () => {
-			let idx = getIndexOfRoute(window.location.hash);
-			if (idx <= 0) {
-				idx = ROUTE_LIST.length - 1;
-			} else {
-				idx -= 1;
-			}
-			setSample(clearHash(ROUTE_LIST[idx]));
-			window.location.href = `#${ROUTE_LIST[idx]}?theme=${theme}`;
-		},
-	};
-
 	return (
-		<div data-theme={theme} ref={catchRef}>
-			<div className="no-print grid gap-4 toolbar">
-				<dl>
-					<dt>Beispiel:</dt>
-					<dd>
-						<strong>
-							{/* <KolLink _href={`${window.location.href}?theme=${theme}`} _label={sample} _target="codesandbox" /> */}
-							{sample.replace(/\//g, ' ')}
-						</strong>{' '}
-						({getIndexOfRoute(window.location.hash) + 1}/{ROUTE_LIST.length})
-					</dd>
-					<dd>
-						<KolVersion _version={PackageJson.version}></KolVersion>
-					</dd>
-				</dl>
-				{active && (
-					<>
-						<KolButton
-							_ariaLabel="Weiter zum nächsten Komponenten-Beispiel"
-							_icon="codicon codicon-arrow-right"
-							_hideLabel
-							_label="Weiter"
-							_on={next}
-							_tooltipAlign="left"
-						/>
-						<KolButton
-							_ariaLabel="Weiter zum nächsten Komponenten-Beispiel"
-							_icon="codicon codicon-arrow-left"
-							_hideLabel
-							_label="Zurück"
-							_on={prev}
-							_tooltipAlign="right"
-							_variant="ghost"
-						/>
-					</>
-				)}
-				<KolSelect
-					className="col-span-2 sm:col-auto"
-					_disabled={!active}
-					_hideLabel
-					_label="Komponente wechseln"
-					_id="theme-toggle"
-					_list={Array.from(componentList.values())}
-					_on={componentSelectOn}
-					_value={[currentComponent]}
-				></KolSelect>
-				<KolSelect
-					_label="Theme wechseln"
-					className="col-span-2 sm:col-auto"
-					_hideLabel
-					_disabled={!active}
-					_id="theme-toggle"
-					_list={THEME_OPTIONS}
-					_on={on}
-					_value={[theme]}
-				></KolSelect>
-			</div>
-			<hr aria-hidden="true" />
+		<div className="app-container" data-theme={theme}>
+			<Sidebar
+				version={PackageJson.version}
+				theme={theme}
+				sample={routerLocation.pathname}
+				routes={ROUTES}
+				routeList={ROUTE_LIST}
+				onThemeChange={handleThemeChange}
+			/>
 
-			<div className="app-container">
-				<Sidebar version={PackageJson.version} theme={theme} onThemeChange={handleThemeChange} routes={ROUTES} />
-
-				<div className="p-4">
-					<Routes>
-						{ROUTE_TREE}
-						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
-					</Routes>
-				</div>
+			<div className="p-4">
+				<Routes>
+					{ROUTE_TREE}
+					<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
+				</Routes>
 			</div>
 		</div>
 	);
