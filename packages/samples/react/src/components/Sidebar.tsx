@@ -22,7 +22,8 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, onThemeChange }) =>
 		}
 	};
 
-	const handleLinkClick = () => {
+	const handleLinkClick = (event: Event) => {
+		location.replace((event.target as HTMLLinkElement).href); // KoliBri prevents the default click behavior as soon as an event listener is set, so we need to reimplement it.
 		document.body.scrollIntoView({ behavior: 'smooth' });
 		// @todo set focus?
 	};
@@ -33,8 +34,10 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, onThemeChange }) =>
 			<KolVersion _version={version} class="block mt"></KolVersion>
 			<KolSelect _label="Theme wählen" _list={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={[theme]} class="mt"></KolSelect>
 
-			<nav className="mt">
-				<ul className="p0 list-inside">
+			<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
+
+			<nav>
+				<ul className="m0 p0 list-inside">
 					{Object.entries(routes).map(([parentName, children]) => (
 						<li key={parentName} className="mt-2">
 							{parentName}
