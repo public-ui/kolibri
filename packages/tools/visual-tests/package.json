@@ -25,24 +25,27 @@
 	"bin": {
 		"kolibri-visual-test": "kolibri-visual-test.sh"
 	},
+	"dependencies": {
+		"@playwright/test": "1.37.1",
+		"@public-ui/sample-react": "1.7.0-rc.6",
+		"http-server": "14.1.1",
+		"portfinder": "1.0.32",
+		"tslib": "2.6.2",
+		"typescript": "5.2.2"
+	},
 	"devDependencies": {
 		"@types/node": "20.6.0",
 		"@typescript-eslint/eslint-plugin": "6.7.0",
 		"eslint": "8.49.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "2.23.0",
-		"npm-check-updates": "16.13.3",
-		"prettier": "3.0.3",
-		"tslib": "2.6.2",
-		"typescript": "5.2.2"
-	},
-	"dependencies": {
-		"@playwright/test": "1.37.1",
-		"@public-ui/sample-react": "1.7.0-rc.6",
-		"http-server": "14.1.1",
-		"portfinder": "1.0.32"
+		"knip": "2.24.0",
+		"npm-check-updates": "16.14.0",
+		"prettier": "3.0.3"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"playwright.config.ts",
+		"tests",
+		"tsconfig.json"
 	]
 }

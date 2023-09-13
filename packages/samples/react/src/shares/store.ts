@@ -1,5 +1,5 @@
 import { isTheme, Store, Theme } from './theme';
-import PackageJson from '../../node_modules/@public-ui/components/package.json';
+import PackageJson from '@public-ui/components/package.json';
 import { THEME_OPTIONS } from './theme';
 import { Option } from '@public-ui/components';
 
