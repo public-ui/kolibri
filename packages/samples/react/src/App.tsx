@@ -94,8 +94,9 @@ export const App: FC = () => {
 	const routerLocation = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
 	const theme = searchParams.get('theme') ?? getTheme();
+	const hideMenus = searchParams.has('hideMenus');
 
-	setTheme(theme as Theme);
+	setTheme(theme as Theme); // set for `getTheme` usages within the application
 
 	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
 	document.body.setAttribute('class', theme);
@@ -107,15 +108,17 @@ export const App: FC = () => {
 	};
 
 	return (
-		<div className="app-container" data-theme={theme}>
-			<Sidebar
-				version={PackageJson.version}
-				theme={theme}
-				sample={routerLocation.pathname}
-				routes={ROUTES}
-				routeList={ROUTE_LIST}
-				onThemeChange={handleThemeChange}
-			/>
+		<div className={!hideMenus ? 'app-container' : ''} data-theme={theme}>
+			{!hideMenus && (
+				<Sidebar
+					version={PackageJson.version}
+					theme={theme}
+					sample={routerLocation.pathname}
+					routes={ROUTES}
+					routeList={ROUTE_LIST}
+					onThemeChange={handleThemeChange}
+				/>
+			)}
 
 			<div className="p-4">
 				<Routes>
