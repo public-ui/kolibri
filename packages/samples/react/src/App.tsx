@@ -9,6 +9,7 @@ import { ROUTES } from './shares/routes';
 import { THEME_OPTIONS, Theme } from './shares/theme';
 import PackageJson from '../package.json';
 import { getTheme, setTheme, setStorage, getThemeName } from './shares/store';
+import { Sidebar } from './components/Sidebar';
 
 const THEME_REGEX = /theme=([^&]+)/;
 
@@ -88,6 +89,7 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 };
 
 const ROUTE_LIST = getRouteList(ROUTES);
+const ROUTE_TREE = getRouteTree(ROUTES);
 
 const clearHash = (str: string) => str.replace(/\?.*/g, '').replace(/^#/g, '');
 
@@ -151,17 +153,20 @@ export const App: FC = () => {
 		},
 	};
 
+	const handleThemeChange = (theme: unknown) => {
+		setTheme(theme as Theme);
+		window.location.href =
+			window.location.href
+				.replace(THEME_REGEX, '')
+				.replace(/(\?|&{1,})$/g, '')
+				.replace(/&{2,}/g, '&') + `?theme=${theme as string}`;
+		window.location.reload();
+	};
+
 	const on = {
 		onChange: (_event: Event, value: unknown) => {
 			if (active) {
-				value = Array.isArray(value) ? value[0] : value;
-				setTheme(value as Theme);
-				window.location.href =
-					window.location.href
-						.replace(THEME_REGEX, '')
-						.replace(/(\?|&{1,})$/g, '')
-						.replace(/&{2,}/g, '&') + `?theme=${value as string}`;
-				window.location.reload();
+				handleThemeChange(Array.isArray(value) ? value[0] : value);
 			}
 		},
 	};
@@ -193,7 +198,7 @@ export const App: FC = () => {
 	};
 
 	return (
-		<div className="grid gap-4" data-theme={theme} ref={catchRef}>
+		<div data-theme={theme} ref={catchRef}>
 			<div className="no-print grid gap-4 toolbar">
 				<dl>
 					<dt>Beispiel:</dt>
@@ -251,11 +256,16 @@ export const App: FC = () => {
 				></KolSelect>
 			</div>
 			<hr aria-hidden="true" />
-			<div className="p-4">
-				<Routes>
-					{getRouteTree(ROUTES)}
-					<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
-				</Routes>
+
+			<div className="app-container">
+				<Sidebar version={PackageJson.version} theme={theme} onThemeChange={handleThemeChange} routes={ROUTES} />
+
+				<div className="p-4">
+					<Routes>
+						{ROUTE_TREE}
+						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
+					</Routes>
+				</div>
 			</div>
 		</div>
 	);
