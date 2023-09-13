@@ -30,8 +30,7 @@ test.beforeEach(configureSnapshotPath());
 
 routes.forEach((route) => {
 	test(`snapshot for ${route}`, async ({ page }) => {
-		await page.goto(`/#/${route}`, { waitUntil: 'networkidle' });
-		await page.waitForSelector(`kol-button[_aria-label="Weiter zum nächsten Komponenten-Beispiel"]`);
+		await page.goto(`/#${route}?hideMenus`, { waitUntil: 'networkidle' });
 		await expect(page).toHaveScreenshot({
 			fullPage: true,
 			maxDiffPixelRatio: 0.03,
