@@ -1047,12 +1047,9 @@ importers:
         specifier: 1.0.32
         version: 1.0.32
     devDependencies:
-      '@types/node':
-        specifier: 20.6.0
-        version: 20.6.0
-      '@typescript-eslint/eslint-plugin':
-        specifier: 6.7.0
-        version: 6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.49.0)(typescript@5.2.2)
+      '@babel/eslint-parser':
+        specifier: 7.22.15
+        version: 7.22.15(@babel/core@7.22.17)(eslint@8.49.0)
       depcheck:
         specifier: 1.4.6
         version: 1.4.6
@@ -1068,12 +1065,6 @@ importers:
       prettier:
         specifier: 3.0.3
         version: 3.0.3
-      tslib:
-        specifier: 2.6.2
-        version: 2.6.2
-      typescript:
-        specifier: 5.2.2
-        version: 5.2.2
 
 packages:
 
@@ -1511,6 +1502,20 @@ packages:
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@babel/eslint-parser@7.22.15(@babel/core@7.22.17)(eslint@8.49.0):
+    resolution: {integrity: sha512-yc8OOBIQk1EcRrpizuARSQS0TWAcOMpEJ1aafhNznaeYkeL+OhqnDObGFylB8ka8VFF/sZc+S4RzHyO+3LjQxg==}
+    engines: {node: ^10.13.0 || ^12.13.0 || >=14.0.0}
+    peerDependencies:
+      '@babel/core': ^7.11.0
+      eslint: ^7.5.0 || ^8.0.0
+    dependencies:
+      '@babel/core': 7.22.17
+      '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
+      eslint: 8.49.0
+      eslint-visitor-keys: 2.1.0
+      semver: 6.3.1
     dev: true
 
   /@babel/generator@7.22.10:
@@ -5336,6 +5341,12 @@ packages:
       - debug
       - encoding
       - supports-color
+    dev: true
+
+  /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
+    resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
+    dependencies:
+      eslint-scope: 5.1.1
     dev: true
 
   /@nightwatch/chai@5.0.2:
@@ -10184,6 +10195,11 @@ packages:
     dependencies:
       esrecurse: 4.3.0
       estraverse: 5.3.0
+
+  /eslint-visitor-keys@2.1.0:
+    resolution: {integrity: sha512-0rSmRBzXgDzIsD6mGdJgevzgezI534Cer5L/vyMX0kHzT/jiB43jRhd9YUlMGYLQy2zprNmoT8qasCGtY+QaKw==}
+    engines: {node: '>=10'}
+    dev: true
 
   /eslint-visitor-keys@3.4.3:
     resolution: {integrity: sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag==}

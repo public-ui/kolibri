@@ -18,7 +18,7 @@
 	"scripts": {
 		"depcheck": "depcheck --ignores=@public-ui/sample-react,http-server,tslib",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "eslint src",
 		"unused": "knip"
 	},
 	"bin": {
@@ -31,6 +31,7 @@
 		"portfinder": "1.0.32"
 	},
 	"devDependencies": {
+		"@babel/eslint-parser": "7.22.15",
 		"depcheck": "1.4.6",
 		"eslint": "8.49.0",
 		"eslint-plugin-no-loops": "0.3.0",
