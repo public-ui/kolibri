@@ -38,6 +38,7 @@ export const ROUTES = [
 	'/input-file/basic',
 	'/input-number/basic',
 	'/input-password/basic',
+	'/input-password/show-password',
 	'/input-radio/basic',
 	'/input-radio/horizontal',
 	'/input-radio/select',

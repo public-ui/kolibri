@@ -7,8 +7,9 @@ import { ERROR_MSG } from '../../shares/constants';
 
 export const InputPasswordBasic: FC = () => (
 	<KolForm className="grid gap-4">
+		<KolInputPassword _disabled _error={ERROR_MSG} _label="Passwort (Disabled)" />
+		<KolInputPassword _read-only _label="Passwort (Readonly)" />
 		<KolInputPassword
-			_id="password"
 			_name="password"
 			_required
 			_error={ERROR_MSG}
@@ -22,20 +23,6 @@ export const InputPasswordBasic: FC = () => (
 					icon: 'codicon codicon-arrow-right',
 				},
 			}}
-			_smartButton={{
-				_icon: {
-					left: {
-						icon: 'codicon codicon-eye',
-					},
-				},
-				_hideLabel: true,
-				_label: 'Passwort anzeigen',
-				_on: {
-					onClick: () => {},
-				},
-			}}
 		/>
-		<KolInputPassword _disabled _id="password" _error={ERROR_MSG} _label="Passwort (Disabled)" />
-		<KolInputPassword _id="password" _read-only _label="Passwort (Readonly)" />
 	</KolForm>
 );
