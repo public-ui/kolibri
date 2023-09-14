@@ -1,11 +1,10 @@
-import { test, expect, TestInfo } from '@playwright/test';
-// @ts-ignore
-import { routes } from '@public-ui/sample-react/src/routes-test.ts';
+import { test, expect } from '@playwright/test';
+import { ROUTES } from './sample-app.routes';
 
 // https://github.com/microsoft/playwright/issues/7575#issuecomment-1288164474
 export const configureSnapshotPath =
-	(options?: {}) =>
-	({}: any, testInfo: TestInfo): any => {
+	() =>
+	({}, testInfo) => {
 		const originalSnapshotPath = testInfo.snapshotPath;
 		testInfo.snapshotPath = (snapshotName) => {
 			const result = originalSnapshotPath
@@ -31,16 +30,18 @@ test.beforeEach(configureSnapshotPath());
 /**
  * @todo stabilize and re-enable test
  */
-const blocklist = ['/heading/paragraph'];
+const blocklist = [];
 
-routes
-	.filter((route) => !blocklist.includes(route))
-	.forEach((route) => {
-		test(`snapshot for ${route}`, async ({ page }) => {
-			await page.goto(`/#${route}?hideMenus`, { waitUntil: 'networkidle' });
-			await expect(page).toHaveScreenshot({
-				fullPage: true,
-				maxDiffPixelRatio: 0.03,
-			});
+ROUTES.filter((route) => !blocklist.includes(route)).forEach((route) => {
+	test(`snapshot for ${route}`, async ({ page }) => {
+		await page.goto(`/#${route}?hideMenus`, { waitUntil: 'networkidle' });
+		await page.setViewportSize({
+			width: 1920,
+			height: 1080,
+		});
+		await expect(page).toHaveScreenshot({
+			fullPage: true,
+			maxDiffPixelRatio: 0.03,
 		});
 	});
+});
