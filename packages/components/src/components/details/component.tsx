@@ -5,6 +5,7 @@ import { validateOpen } from '../../types/props/open';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { setState } from '../../utils/prop.validators';
 import { API, EventCallbacks, States } from './types';
+import DetailsAnimationController from './DetailsAnimationController';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -18,23 +19,24 @@ import { API, EventCallbacks, States } from './types';
 })
 export class KolDetails implements API {
 	@Element() private readonly host?: HTMLKolDetailsElement;
-	private htmlDetailsElement?: HTMLDetailsElement;
+	private detailsElement?: HTMLDetailsElement;
+	private summaryElement?: HTMLElement;
+	private contentElement?: HTMLElement;
 
 	public render(): JSX.Element {
 		return (
 			<Host>
 				<details
 					ref={(el) => {
-						this.htmlDetailsElement = el as HTMLDetailsElement;
+						this.detailsElement = el as HTMLDetailsElement;
 					}}
-					open={this.state._open}
 					onToggle={this.handleToggle}
 				>
-					<summary>
+					<summary ref={(element) => (this.summaryElement = element)}>
 						{this.state._open ? <kol-icon _label="" _icon="codicon codicon-chevron-down" /> : <kol-icon _label="" _icon="codicon codicon-chevron-right" />}
 						<span>{this.state._label}</span>
 					</summary>
-					<div class="content">
+					<div class="content" ref={(element) => (this.contentElement = element)}>
 						<kol-indented-text>
 							<slot />
 						</kol-indented-text>
@@ -99,15 +101,21 @@ export class KolDetails implements API {
 		this.validateOpen(this._open);
 	}
 
+	public componentDidLoad() {
+		if (this.detailsElement && this.summaryElement && this.contentElement) {
+			new DetailsAnimationController(this.detailsElement, this.summaryElement, this.contentElement);
+		}
+	}
+
 	private toggleTimeout?: ReturnType<typeof setTimeout>;
 
 	private handleToggle = (event: Event) => {
 		clearTimeout(this.toggleTimeout);
 		this.toggleTimeout = setTimeout(() => {
-			const open = Boolean(this.htmlDetailsElement?.open);
+			const open = Boolean(this.detailsElement?.open);
 			if (open !== this.state._open) {
 				// Update state
-				this._open = Boolean(this.htmlDetailsElement?.open);
+				this._open = Boolean(this.detailsElement?.open);
 
 				// Event handling
 				tryToDispatchKoliBriEvent('toggle', this.host, this._open);
