@@ -22,7 +22,7 @@ const binaryPath = fileURLToPath(new URL('../node_modules/.bin', import.meta.url
 const buildPath = path.join(tempDir, `kolibri-visual-testing-build-${crypto.randomUUID()}`);
 process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH = buildPath;
 
-console.log('Building React Sample App...');
+console.log('Building React Sample App …');
 child_process.execFileSync(path.join(binaryPath, 'kolibri-sample-react-test-build'), [buildPath], {
 	encoding: 'utf-8',
 });
@@ -37,16 +37,16 @@ void (async () => {
 	});
 
 	playwright.stdout.on('data', (data) => {
-		console.log('Playwright: ' + (data as string).toString());
+		console.log('Playwright: ' + data.toString());
 	});
 
 	playwright.stderr.on('data', (data) => {
-		console.log('Playwright stderr: ' + (data as string).toString());
+		console.log('Playwright stderr: ' + data.toString());
 	});
 
 	playwright.on('exit', (code) => {
 		console.log(`Playwright test finished with exit code ${code}.`);
-		console.log('Cleaning up build folder...');
+		console.log('Cleaning up build folder …');
 		fs.rmSync(buildPath, { recursive: true, force: true });
 		process.exit(code ?? 1);
 	});
