@@ -48,7 +48,7 @@ export default class DetailsAnimationController {
 				height: [`${startHeight}px`, `${endHeight}px`],
 			},
 			{
-				duration: 250,
+				duration: matchMedia('(prefers-reduced-motion)').matches ? 0 : 250,
 				easing: 'ease-out',
 			}
 		);
