@@ -12,5 +12,5 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = RequiredProps;
 type OptionalStates = PropLabel;
 
-export type Statest = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
