@@ -19,15 +19,20 @@ hr {
 	grid-template-columns: auto auto;
 }
 
-.app-container {
-	display: grid;
-	grid-template-columns: 360px auto;
-	height: 100%;
+.app-sidebar {
+	font-family: sans-serif;
 }
 
-.app-sidebar {
-	border-right: 1px solid gray;
-	font-family: sans-serif;
+@media (min-width: 1024px) {
+	.app-container {
+		display: grid;
+		grid-template-columns: 360px auto;
+		height: 100%;
+	}
+
+	.app-sidebar {
+		border-right: 1px solid gray;
+	}
 }
 
 @media print {

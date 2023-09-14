@@ -120,7 +120,7 @@ export const App: FC = () => {
 				/>
 			)}
 
-			<div className="p-4">
+			<div className="p-4" id="route-container">
 				<Routes>
 					{ROUTE_TREE}
 					<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />

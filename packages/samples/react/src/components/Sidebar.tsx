@@ -1,7 +1,8 @@
-import React, { FC, useState } from 'react';
-import { KolButton, KolHeading, KolLink, KolSelect, KolVersion } from '@public-ui/react';
+import React, { FC, PropsWithChildren, useState } from 'react';
+import { KolAccordion, KolButton, KolHeading, KolLink, KolSelect, KolVersion } from '@public-ui/react';
 import { THEME_OPTIONS } from '../shares/theme';
 import { Routes } from '../shares/types';
+import { useMobile } from '../hooks/useMobile';
 
 type Props = {
 	version: string;
@@ -12,9 +13,18 @@ type Props = {
 	onThemeChange: (theme: unknown) => void;
 };
 
+const ComponentNavContainer = ({ children, isMobile }: PropsWithChildren<{ isMobile: boolean }>) =>
+	isMobile ? (
+		<KolAccordion _label="Alle Komponenten" class="mt">
+			{children}
+		</KolAccordion>
+	) : (
+		<div className="mt">{children}</div>
+	);
 export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, onThemeChange }) => {
 	/* KolSelect calls onChange initially by design - work around this with a state variable  */
 	const [isFirstThemeSelectChange, setIsFirstThemeSelectChange] = useState(true);
+	const isMobile = useMobile();
 
 	const getIndexOfSample = () => routeList.indexOf(sample);
 	const formatSampleAsLabel = () => sample.replace(/\//g, ' ');
@@ -29,8 +39,7 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 
 	const handleLinkClick = (event: Event) => {
 		location.replace((event.target as HTMLLinkElement).href); // KoliBri prevents the default click behavior as soon as an event listener is set, so we need to reimplement it.
-		document.documentElement.scrollIntoView({ behavior: 'smooth' });
-		// @todo set focus?
+		document.querySelector('#route-container')?.scrollIntoView({ behavior: 'smooth' });
 	};
 
 	const handlePreviousClick = () => {
@@ -57,25 +66,30 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 			<KolHeading _label="Komponenten" _level={2} className="block mt"></KolHeading>
 			<div className="flex flex-justify-between flex-items-center mt">
 				<KolButton _icon="codicon codicon-arrow-left" _hideLabel _label="Vorherige Komponente auswählen" _on={{ onClick: handlePreviousClick }} />
-				{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
+				<span className="text-center">
+					{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
+				</span>
 				<KolButton _icon="codicon codicon-arrow-right" _hideLabel _label="Nächste Komponente auswählen" _on={{ onClick: handleNextClick }} />
 			</div>
-			<nav className="block mt">
-				<ul className="m0 p0 list-inside">
-					{Object.entries(routes).map(([parentName, children]) => (
-						<li key={parentName} className="mt-2">
-							{parentName}
-							<ul className="list-inside ml p0">
-								{Object.keys(children).map((childName) => (
-									<li key={`${parentName}/${childName}`}>
-										<KolLink _label={childName} _href={`#/${parentName}/${childName}`} _on={{ onClick: handleLinkClick }} />
-									</li>
-								))}
-							</ul>
-						</li>
-					))}
-				</ul>
-			</nav>
+
+			<ComponentNavContainer isMobile={isMobile}>
+				<nav>
+					<ul className="m0 p0 list-inside">
+						{Object.entries(routes).map(([parentName, children]) => (
+							<li key={parentName} className="mt-2">
+								{parentName}
+								<ul className="list-inside ml p0">
+									{Object.keys(children).map((childName) => (
+										<li key={`${parentName}/${childName}`}>
+											<KolLink _label={childName} _href={`#/${parentName}/${childName}`} _on={{ onClick: handleLinkClick }} />
+										</li>
+									))}
+								</ul>
+							</li>
+						))}
+					</ul>
+				</nav>
+			</ComponentNavContainer>
 		</aside>
 	);
 };
