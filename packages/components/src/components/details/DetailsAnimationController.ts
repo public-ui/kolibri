@@ -28,20 +28,20 @@ export default class DetailsAnimationController {
 
 	private expand() {
 		this.isExpanding = true;
-		this.animateDetailsHeight(this.summaryElement.offsetHeight + this.contentElement.offsetHeight);
+		this.animateDetailsHeight(this.summaryElement.offsetHeight + this.contentElement.offsetHeight, 'expand');
 	}
 
 	private collapse() {
 		this.isClosing = true;
-		this.animateDetailsHeight(this.summaryElement.offsetHeight);
+		this.animateDetailsHeight(this.summaryElement.offsetHeight, 'collapse');
 	}
 
-	private animateDetailsHeight(endHeight: number) {
+	private animateDetailsHeight(endHeight: number, direction: 'expand' | 'collapse') {
+		const startHeight = this.detailsElement.offsetHeight;
+
 		if (this.animation) {
 			this.animation.cancel();
 		}
-
-		const startHeight = this.detailsElement.offsetHeight;
 
 		this.animation = this.detailsElement.animate(
 			{
@@ -52,8 +52,25 @@ export default class DetailsAnimationController {
 				easing: 'ease-out',
 			}
 		);
-		this.animation.onfinish = () => this.onAnimationFinish();
-		this.animation.oncancel = () => (this.isExpanding = false);
+
+		this.animation.addEventListener(
+			'finish',
+			() => {
+				this.onAnimationFinish();
+			},
+			{ once: true }
+		);
+		this.animation.addEventListener(
+			'cancel',
+			() => {
+				if (direction === 'expand') {
+					this.isExpanding = false;
+				} else {
+					this.isClosing = false;
+				}
+			},
+			{ once: true }
+		);
 	}
 
 	private onAnimationFinish() {

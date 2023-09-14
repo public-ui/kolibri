@@ -30,7 +30,6 @@ export class KolDetails implements API {
 					ref={(el) => {
 						this.detailsElement = el as HTMLDetailsElement;
 					}}
-					open={this.state._open}
 					onToggle={this.handleToggle}
 				>
 					<summary ref={(element) => (this.summaryElement = element)}>
@@ -102,7 +101,7 @@ export class KolDetails implements API {
 		this.validateOpen(this._open);
 	}
 
-	public componentDidRender() {
+	public componentDidLoad() {
 		if (this.detailsElement && this.summaryElement && this.contentElement) {
 			new DetailsAnimationController(this.detailsElement, this.summaryElement, this.contentElement);
 		}
