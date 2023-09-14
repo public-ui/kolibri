@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString } from '../../utils/prop.validators';
-import { API, Statest } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-symbol',
@@ -37,7 +37,7 @@ export class KolSymbol implements API {
 	 */
 	@Prop() public _symbol!: string;
 
-	@State() public state: Statest = {
+	@State() public state: States = {
 		_label: translate('kol-warning'),
 		_symbol: '…', // ⚠ required
 	};

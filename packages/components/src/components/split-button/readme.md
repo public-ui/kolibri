@@ -2,6 +2,13 @@
 
 > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
 
+Die SplitButton-Komponente kann genutzt werden, um einen zweigeteilten Button darzustellen. Dabei wird der Primär-Button
+üblicherweise für eine Haupt-Aktion genutzt, während der sekundäre Button ein Kontext-Menü ("Popover") öffnet, hinter
+dem sich weitere Aktionen verbergen.
+
+- Der Sekundär-Button togglet grundsätzlich das Kontextmenü.
+- Für den Primär-Button kann ein individueller Event-Handler hinterlegt werden, wird dies nicht getan togglet er ebenfalls das Kontextmenü.
+
 ## Konstruktion
 
 ### Code
@@ -10,7 +17,7 @@
 <kol-split-button _label="Split-Button">Split-Button Popover</kol-split-button>
 ```
 
-Geöffnet:
+Initial geöffnet:
 
 ```html
 <kol-split-button _label="Split-Button" _show-dropdown>Split-Button Popover</kol-split-button>
@@ -24,21 +31,6 @@ Geöffnet:
 <kol-split-button _label="Split-Button" _show-dropdown>
   Split-Button Popover
 </kol-split-button>
-
-## Verwendung
-
-### Best practices
-
-### Tastatursteuerung
-
-| Taste   | Funktion |
-| ------- | -------- |
-| `Tab`   | ??       |
-| `Enter` | ??       |
-
-## Links und Referenzen
-
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion" _label="https://www.w3.org/TR/wai-aria-practices/#accordion" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
