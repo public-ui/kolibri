@@ -1,4 +1,4 @@
-export const routes = [
+export const ROUTES = [
 	'/handout/basic',
 	'/abbr/basic',
 	'/accordion/basic',

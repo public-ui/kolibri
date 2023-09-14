@@ -17,10 +17,11 @@
 	"description": "Provides utility to run visual regression tests for themes.",
 	"scripts": {
 		"build": "tsc --outDir dist",
+		"depcheck": "depcheck --ignores=@public-ui/sample-react,http-server,tslib",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
-		"unused": "knip",
-		"prepare": "npm run build"
+		"prepare": "npm run build",
+		"unused": "knip"
 	},
 	"bin": {
 		"kolibri-visual-test": "kolibri-visual-test.sh"
@@ -29,22 +30,22 @@
 		"@playwright/test": "1.37.1",
 		"@public-ui/sample-react": "1.7.0-rc.7",
 		"http-server": "14.1.1",
-		"portfinder": "1.0.32",
-		"tslib": "2.6.2",
-		"typescript": "5.2.2"
+		"portfinder": "1.0.32"
 	},
 	"devDependencies": {
-		"@types/node": "20.6.0",
 		"@typescript-eslint/eslint-plugin": "6.7.0",
+		"@types/node": "20.6.0",
+		"depcheck": "1.4.6",
 		"eslint": "8.49.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"knip": "2.24.0",
-		"npm-check-updates": "16.14.0",
-		"prettier": "3.0.3"
+		"prettier": "3.0.3",
+		"tslib": "2.6.2",
+		"typescript": "5.2.2"
 	},
 	"files": [
-		"dist",
 		"playwright.config.ts",
+		"src",
 		"tests",
 		"tsconfig.json"
 	]

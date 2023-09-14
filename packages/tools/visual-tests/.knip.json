@@ -1,7 +1,7 @@
 {
 	"entry": ["src/index.ts"],
 	"ignoreBinaries": [],
-	"ignoreDependencies": ["@public-ui/components", "loglevel", "mocha"],
+	"ignoreDependencies": ["http-server"],
 	"project": ["src/**/*.ts"],
 	"rules": {
 		"classMembers": "warn"
