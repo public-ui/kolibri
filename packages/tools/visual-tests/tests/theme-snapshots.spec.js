@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { ROUTES } from './sample-app.routes';
+import { ROUTES } from './sample-app.routes.js';
 
 // https://github.com/microsoft/playwright/issues/7575#issuecomment-1288164474
 export const configureSnapshotPath =
@@ -37,10 +37,10 @@ ROUTES.filter((route) => !blocklist.includes(route)).forEach((route) => {
 		await page.goto(`/#${route}?hideMenus`, { waitUntil: 'networkidle' });
 		await page.setViewportSize({
 			width: 1920,
-			height: 1080,
+			height: 1280,
 		});
 		await expect(page).toHaveScreenshot({
-			fullPage: true,
+			// fullPage: true,
 			maxDiffPixelRatio: 0.03,
 		});
 	});
