@@ -17,7 +17,7 @@
 	"description": "Provides utility to run visual regression tests for themes.",
 	"scripts": {
 		"build": "tsc --outDir dist",
-		"depcheck": "depcheck --ignores=http-server,tslib",
+		"depcheck": "depcheck --ignores=@public-ui/sample-react,http-server,tslib",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"prepare": "npm run build",
