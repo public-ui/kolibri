@@ -1250,22 +1250,56 @@ export const BMF = KoliBri.createTheme('bmf', {
 			transform: scale(0);
 		}
 	}`,
-	'KOL-PROGRESS': `:host progress,
-	:host span {
-		display: block;
-		height: 0px;
-		overflow: hidden;
-		width: 0px;
+	'KOL-PROGRESS': `.bar > div {
+		flex-direction: column;
+		gap: 0.5rem !important;
+		width: 100px;
 	}
-	:host svg line:first-child,
-	:host svg circle:first-child {
-		fill: transparent;
+	.bar > div text {
+		color: var(--color-black);
+		align-self: flex-end;
+	}
+	.bar svg {
+		height: 1rem;
+	}
+	.bar .background {
+		fill: var(--color-ice);
 		stroke: var(--color-ice);
+		stroke-width: 1px;
 	}
-	:host svg line:last-child,
-	:host svg circle:last-child {
-		fill: transparent;
+	.bar .progress {
+		fill: var(--color-midnight);
 		stroke: var(--color-midnight);
+	}
+	.bar .border {
+		display: none;
+	}
+	.cycle {
+		overflow: visible;
+	}
+	.cycle .whitespace,
+	.cycle .border {
+		stroke: transparent;
+	}
+	.cycle .background {
+		stroke: var(--color-ice);
+		stroke-width: 1rem;
+	}
+	.cycle .progress {
+		stroke: var(--color-midnight);
+		stroke-width: 1rem;
+	}
+	.cycle text:first-of-type {
+		color: var(--color-grey);
+		line-height: 1.25rem;
+		alignment-baseline: after-edge;
+	}
+	.cycle text:last-of-type {
+		color: var(--color-black);
+		font-size: 1.75rem;
+		font-weight: 700;
+		line-height: 1.5rem;
+		alignment-baseline: central;
 	}`,
 	'KOL-SELECT': `kol-input {
 		gap: 0.25em;
@@ -1557,6 +1591,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		vertical-align: top;
 		border-bottom: 1px solid var(--color-granite);
 		height: 1.25rem;
+	}
+	tbody th {
+		text-align: left;
 	}
 	tbody th,
 	td {
