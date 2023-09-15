@@ -106,6 +106,7 @@ export function getPackageManagerInstallCommand(baseDir: string = process.cwd())
 	return getPackageManagerInstallCommand(baseDir);
 }
 
+export const isKebabCaseRegExp = /^((data-removed-)?[a-z]+(-[a-z]+)*)?$/;
 export const isTagKebabCaseRegExp = /^kol-[a-z]+(-[a-z]+)*$/;
 export const isPropertyKebabCaseRegExp = /^(data-removed-)?_[a-z]+(-[a-z]+)*$/;
 

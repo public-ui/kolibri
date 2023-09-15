@@ -8,10 +8,10 @@ import { ButtonVariantPropType } from '../../types/props/button-variant';
 import { CustomClassPropType } from '../../types/props/custom-class';
 import { IconPropType } from '../../types/props/icon';
 import { LabelPropType } from '../../types/props/label';
+import { validateShow } from '../../types/props/show';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
-import { watchBoolean } from '../../utils/prop.validators';
 import { API, States } from './types';
 
 /**
@@ -43,17 +43,17 @@ export class KolSplitButton implements API {
 	private readonly openDropdown = () => {
 		if (this.dropdown && this.dropdownContent) {
 			this.dropdown.style.height = `${this.dropdownContent.clientHeight}px`;
-			this.state = { ...this.state, _showDropdown: true };
+			this.state = { ...this.state, _show: true };
 		}
 	};
 	private readonly closeDropdown = () => {
 		if (this.dropdown && this.dropdownContent) {
 			this.dropdown.style.height = ``;
-			this.state = { ...this.state, _showDropdown: false };
+			this.state = { ...this.state, _show: false };
 		}
 	};
 	private readonly toggleDropdown = (value?: boolean) => {
-		const openIt = typeof value === 'boolean' ? value : !this.state._showDropdown;
+		const openIt = typeof value === 'boolean' ? value : !this.state._show;
 		if (openIt) this.openDropdown();
 		else this.closeDropdown();
 	};
@@ -71,7 +71,7 @@ export class KolSplitButton implements API {
 			this.dropdown = e;
 			setTimeout(() => {
 				this.dropdownContent = e.firstChild as HTMLDivElement;
-				if (this._showDropdown) this.forceOpenDropdown();
+				if (this._show) this.forceOpenDropdown();
 			});
 		}
 	};
@@ -111,7 +111,7 @@ export class KolSplitButton implements API {
 					_disabled={this._disabled}
 					_hideLabel
 					_icon="codicon codicon-triangle-down"
-					_label={`dropdown ${this.state._showDropdown ? 'schließen' : 'öffnen'}`}
+					_label={`dropdown ${this.state._show ? 'schließen' : 'öffnen'}`} // @todo: translate
 					_on={this.clickToggleHandler}
 				></kol-button-wc>
 				<div class="popover" ref={this.catchDropdownElements}>
@@ -202,6 +202,12 @@ export class KolSplitButton implements API {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
+	 * Makes the element show up.
+	 * @TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
+
+	/**
 	 * Defines whether to show the dropdown menu.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _showDropdown?: boolean = false;
@@ -232,16 +238,29 @@ export class KolSplitButton implements API {
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: States = {
-		_showDropdown: false,
+		_show: false,
 	};
 
-	@Watch('_showDropdown')
+	/**
+	 * @deprecated will be removed in the next major version
+	 */
+	@Watch('_show')
 	public validateShowDropdown(value?: boolean): void {
-		watchBoolean(this, '_showDropdown', value);
-		this.toggleDropdown(value);
+		this.validateShow(value);
+	}
+
+	@Watch('_show')
+	public validateShow(value?: boolean): void {
+		validateShow(this, value, {
+			hooks: {
+				afterPatch: (value) => {
+					this.toggleDropdown(!!value);
+				},
+			},
+		});
 	}
 
 	public componentWillLoad(): void {
-		this.validateShowDropdown(this._showDropdown);
+		this.validateShow(this._show || this._show);
 	}
 }

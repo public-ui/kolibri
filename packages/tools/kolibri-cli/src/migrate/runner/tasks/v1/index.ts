@@ -1,5 +1,7 @@
 import { AbstractTask } from '../../abstract-task';
 import { LabelExpertSlot } from '../common/LabelExpertSlot';
+import { MarkRemovedSlotTask } from '../common/MarkRemovedSlotTask';
+import { RenameSlotNameTask } from '../common/RenameSlotNameTask';
 import { AbbrRenamePropertyTitleToLabel } from './abbr';
 import { AccordionRenamePropertyHeadingToLabel } from './accordion';
 import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel } from './badge';
@@ -59,10 +61,10 @@ import { QuoteRenamePropertyCaptionToLabel } from './quote';
 import { SelectRenamePropertyHeightToRows, SelectRenamePropertyListToOptions } from './select';
 import { SkipNavButtonRenamePropertyAriaLabelToLabel } from './skip-nav';
 import { SpanRenamePropertyIconOnlyToHideLabel } from './span';
-import { SplitButtonRemovePropertyAriaLabel } from './split-button';
+import { SplitButtonRemovePropertyAriaLabel, SplitButtonRenamePropertyShowDropdownToShow } from './split-button';
 import { TableRenamePropertyCaptionToLabel } from './table';
 import { TabsRenamePropertyAriaLabelToLabel, TabsRenamePropertyTabAlignToAlign } from './tabs';
-import { ToastRenamePropertyHeadingToLabel } from './toast';
+import { ToastRemovePropertyNameShowDuration, ToastRenamePropertyHeadingToLabel } from './toast';
 import { VersionRenamePropertyVersionToLabel } from './version';
 
 export const v1Tasks: AbstractTask[] = [];
@@ -129,9 +131,11 @@ v1Tasks.push(SelectRenamePropertyListToOptions);
 v1Tasks.push(SkipNavButtonRenamePropertyAriaLabelToLabel);
 v1Tasks.push(SpanRenamePropertyIconOnlyToHideLabel);
 v1Tasks.push(SplitButtonRemovePropertyAriaLabel);
+v1Tasks.push(SplitButtonRenamePropertyShowDropdownToShow);
 v1Tasks.push(TableRenamePropertyCaptionToLabel);
 v1Tasks.push(TabsRenamePropertyAriaLabelToLabel);
 v1Tasks.push(TabsRenamePropertyTabAlignToAlign);
+v1Tasks.push(ToastRemovePropertyNameShowDuration);
 v1Tasks.push(ToastRenamePropertyHeadingToLabel);
 v1Tasks.push(VersionRenamePropertyVersionToLabel);
 
@@ -149,3 +153,14 @@ v1Tasks.push(LabelExpertSlot.getInstance('kol-heading', '_label', '^1'));
 v1Tasks.push(LabelExpertSlot.getInstance('kol-link', '_label', '^1'));
 // v1Tasks.push(LabelExpertSlot.getInstance('kol-select', '_label', '^1'));
 // v1Tasks.push(LabelExpertSlot.getInstance('kol-textarea', '_label', '^1'));
+
+v1Tasks.push(MarkRemovedSlotTask.getInstance('kol-accordion', 'header', '^1'));
+v1Tasks.push(MarkRemovedSlotTask.getInstance('kol-card', 'footer', '^1'));
+v1Tasks.push(MarkRemovedSlotTask.getInstance('kol-card', 'header', '^1'));
+
+v1Tasks.push(RenameSlotNameTask.getInstance('kol-accordion', 'content', '', '^1'));
+v1Tasks.push(RenameSlotNameTask.getInstance('kol-card', 'content', '', '^1'));
+
+// .gitignore
+// .vscode/settings.json
+// tsconfig.json
