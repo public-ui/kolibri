@@ -14,5 +14,6 @@ npm deprecate @public-ui/components@$1 "Wir empfehlen die Verwendung einer neuer
 npm deprecate @public-ui/core@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/schema@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/themes@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
+npm deprecate @public-ui/visual-tests@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 
 npm deprecate create-kolibri@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
