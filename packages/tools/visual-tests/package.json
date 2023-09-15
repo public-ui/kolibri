@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "1.7.0-rc.10",
+	"version": "1.7.0-rc.11",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -26,7 +26,7 @@
 	},
 	"dependencies": {
 		"@playwright/test": "1.38.0",
-		"@public-ui/sample-react": "1.7.0-rc.10",
+		"@public-ui/sample-react": "1.7.0-rc.11",
 		"http-server": "14.1.1",
 		"portfinder": "1.0.32"
 	},
