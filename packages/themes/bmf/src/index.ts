@@ -1960,7 +1960,57 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	:host .disabled {
 		opacity: 0.33;
-	}`,
+	}
+	:host kol-input.button {
+		cursor: inherit;
+		display: grid;
+		column-gap: 0;
+		grid-template-columns: 32px auto;
+		grid-template-areas:
+			"error error"
+			"input label"
+			"hint hint";
+	}
+
+	:host kol-input.button.checked > .input,
+	:host kol-input.button.checked > label {
+		background-color: var(--color-ice);
+	}
+
+	:host kol-input.button > .error {
+		grid-area: error;
+	}
+
+	:host kol-input.button > label {
+		grid-area: label;
+		background-color: var(--color-silver);
+		border-top-right-radius: var(--border-radius);
+		border-bottom-right-radius: var(--border-radius);
+		min-height: 32px;
+		align-items: center;
+		display: flex;
+		padding-right: 12px;
+		width: 100%;
+	}
+
+	:host kol-input.button > .input {
+		grid-area: input;
+		background-color: var(--color-silver);
+		border-top-left-radius: var(--border-radius);
+		border-bottom-left-radius: var(--border-radius);
+		min-height: 32px;
+		min-width: 32px;
+		place-content: center;
+	}
+
+	:host kol-input.button > .hint {
+		grid-area: hint;
+	}
+
+	:host kol-input.button > .input > div {
+		display: flex;
+	}
+`,
 	'KOL-INPUT-RADIO': `/* INPUT */
 	kol-input {
 		display: grid;

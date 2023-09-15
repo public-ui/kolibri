@@ -47,6 +47,7 @@ export class KolInputCheckbox implements API {
 						checkbox: true,
 						[this.state._variant]: true,
 						'hide-label': !!this.state._hideLabel,
+						checked: this.state._checked,
 					}}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
