@@ -55,6 +55,7 @@ Actually the following migrations are available:
 - Property removal ✓
 - Property type change ⏰
 - Logic refactoring ⏰
+- Old slots removal (`content`, `footer`, `header`, `label`) ⏰
 - Expert-Slot refactoring ⏰
 - `.vscode/settings.json` add IntelliSense for HTML ⏰
 - `.gitignore` exclude `.kolibri.migrate.json` ⏰

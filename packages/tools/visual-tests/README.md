@@ -36,6 +36,12 @@ In the following runs, new screenshots will be compared to this reference.
 
 To update the reference screenshots call `npm run test-update`.
 
+It's recommended to add the `test-results` folder to the `.gitignore` file:
+
+```bash
+/test-results/
+```
+
 It's also recommended to automatically run the tests before packing/publishing the module:
 
 ```json
