@@ -70,9 +70,9 @@ importers:
         version: 11.2.14(@angular/compiler@11.2.14)(typescript@4.1.2)
       '@angular/core':
         specifier: 11.2.14
-        version: 11.2.14(rxjs@6.5.5)(zone.js@0.11.8)
+        version: 11.2.14(rxjs@6.5.5)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -102,8 +102,8 @@ importers:
         specifier: '4.1'
         version: 4.1.2
       zone.js:
-        specifier: 0.11.8
-        version: 0.11.8
+        specifier: 0.13.3
+        version: 0.13.3
 
   packages/adapters/angular/v12:
     devDependencies:
@@ -115,9 +115,9 @@ importers:
         version: 12.2.17(@angular/compiler@12.2.17)(typescript@4.3.2)
       '@angular/core':
         specifier: 12.2.17
-        version: 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
+        version: 12.2.17(rxjs@7.6.0)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -147,8 +147,8 @@ importers:
         specifier: '4.3'
         version: 4.3.2
       zone.js:
-        specifier: 0.11.8
-        version: 0.11.8
+        specifier: 0.13.3
+        version: 0.13.3
 
   packages/adapters/angular/v13:
     devDependencies:
@@ -160,9 +160,9 @@ importers:
         version: 13.4.0(@angular/compiler@13.4.0)(typescript@4.6.2)
       '@angular/core':
         specifier: 13.4.0
-        version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
+        version: 13.4.0(rxjs@7.6.0)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -192,8 +192,8 @@ importers:
         specifier: '4.6'
         version: 4.6.2
       zone.js:
-        specifier: 0.11.8
-        version: 0.11.8
+        specifier: 0.13.3
+        version: 0.13.3
 
   packages/adapters/angular/v14:
     devDependencies:
@@ -205,9 +205,9 @@ importers:
         version: 14.3.0(@angular/compiler@14.3.0)(typescript@4.8.4)
       '@angular/core':
         specifier: 14.3.0
-        version: 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
+        version: 14.3.0(rxjs@7.6.0)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -237,8 +237,8 @@ importers:
         specifier: 4.8.4
         version: 4.8.4
       zone.js:
-        specifier: 0.12.0
-        version: 0.12.0
+        specifier: 0.13.3
+        version: 0.13.3
 
   packages/adapters/angular/v15:
     devDependencies:
@@ -250,9 +250,9 @@ importers:
         version: 15.2.9(@angular/compiler@15.2.9)(typescript@4.9.5)
       '@angular/core':
         specifier: 15.2.9
-        version: 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
+        version: 15.2.9(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -282,8 +282,8 @@ importers:
         specifier: 4.9.5
         version: 4.9.5
       zone.js:
-        specifier: 0.12.0
-        version: 0.12.0
+        specifier: 0.13.3
+        version: 0.13.3
 
   packages/adapters/angular/v16:
     devDependencies:
@@ -297,7 +297,7 @@ importers:
         specifier: 16.2.5
         version: 16.2.5(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -333,7 +333,7 @@ importers:
   packages/adapters/hydrate:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
       rimraf:
         specifier: 3.0.2
@@ -342,14 +342,14 @@ importers:
   packages/adapters/preact:
     dependencies:
       '@public-ui/react':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../react
       preact:
         specifier: '>=10.11.3'
         version: 10.11.3
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
       react:
         specifier: 18.2.0
@@ -367,7 +367,7 @@ importers:
   packages/adapters/react:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -403,7 +403,7 @@ importers:
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
       react:
         specifier: '>=16.14.0'
@@ -413,7 +413,7 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@public-ui/react':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../react
       cpy-cli:
         specifier: 5.0.0
@@ -425,7 +425,7 @@ importers:
   packages/adapters/solid:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -455,7 +455,7 @@ importers:
         specifier: 7.22.19
         version: 7.22.19
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -488,7 +488,7 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       '@public-ui/schema':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../schema
       i18next:
         specifier: 23.5.1
@@ -700,13 +700,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../components
       '@public-ui/solid':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../adapters/solid
       '@public-ui/themes':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../themes
       monaco-editor:
         specifier: 0.43.0
@@ -800,13 +800,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
       '@public-ui/react':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../adapters/react
       '@public-ui/themes':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../themes
       '@types/react':
         specifier: 18.2.21
@@ -897,11 +897,11 @@ importers:
   packages/themes:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../schema
       '@types/node':
         specifier: ts5.1
@@ -928,14 +928,14 @@ importers:
   packages/themes/bmf:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -947,14 +947,14 @@ importers:
   packages/themes/bzst:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -966,14 +966,14 @@ importers:
   packages/themes/default:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -985,14 +985,14 @@ importers:
   packages/themes/ecl:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1007,14 +1007,14 @@ importers:
   packages/themes/itzbund:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1026,14 +1026,14 @@ importers:
   packages/themes/mfm:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1045,14 +1045,14 @@ importers:
   packages/themes/zoll:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.10
+        specifier: 1.7.0-rc.11
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1089,14 +1089,14 @@ importers:
         version: 7.5.4
     devDependencies:
       '@public-ui/components':
-        specifier: 1.1.7
-        version: 1.1.7
+        specifier: 1.6.2
+        version: 1.6.2
       '@types/gradient-string':
         specifier: 1.1.2
         version: 1.1.2
       '@types/node':
-        specifier: 20.6.0
-        version: 20.6.0
+        specifier: 20.6.1
+        version: 20.6.1
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.0
         version: 6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.49.0)(typescript@5.2.2)
@@ -1147,7 +1147,7 @@ importers:
         version: 3.0.2
       ts-node:
         specifier: 10.9.1
-        version: 10.9.1(@types/node@20.6.0)(typescript@5.2.2)
+        version: 10.9.1(@types/node@20.6.1)(typescript@5.2.2)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -1158,8 +1158,8 @@ importers:
         specifier: 1.38.0
         version: 1.38.0
       '@public-ui/sample-react':
-        specifier: 1.7.0-rc.10
-        version: 1.7.0-rc.10(esbuild@0.19.2)(eslint@8.49.0)(less@4.2.0)(postcss@8.4.29)(webpack@5.88.2)
+        specifier: 1.7.0-rc.11
+        version: link:../../samples/react
       http-server:
         specifier: 14.1.1
         version: 14.1.1
@@ -1188,19 +1188,18 @@ importers:
 
 packages:
 
-  /@a11y-ui/core@1.0.0-rc.15:
-    resolution: {integrity: sha512-vv4CcFc090ZVHTaxc6oX66oBR6dcVj27IxGV9cOFPcoRMKElfR9WFGYNxb3MFBnqj7OMfu5QfVEAgMTXQa8Jjw==}
-    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
-    dependencies:
-      '@leanup/lib': 1.3.20
-    dev: true
-
   /@a11y-ui/core@1.0.1-rc.6:
     resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
     deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       loglevel: 1.8.1
     dev: false
+
+  /@a11y-ui/core@1.0.5:
+    resolution: {integrity: sha512-eC+cyWuerJ8YueeTfiw/xfDo845s0fQHE55VjvrsOwZQNFRKqpbTyD/oT0H7yYacI6APc2Sw8TPljd/OLNVjtQ==}
+    dependencies:
+      adopted-style-sheets: 1.0.7
+    dev: true
 
   /@a11y-ui/core@1.0.7:
     resolution: {integrity: sha512-NM4wETF7Posh7LxaIyCLWS8F1bacvSGjCIF0UbkJkURbaTdo2MUEXo2D1rMcERU1O9qEyV6APff24MxfsKwo+A==}
@@ -1399,7 +1398,7 @@ packages:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
+      '@angular/core': 14.3.0(rxjs@7.6.0)(zone.js@0.13.3)
       tslib: 2.6.2
     dev: true
 
@@ -1412,7 +1411,7 @@ packages:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
+      '@angular/core': 15.2.9(rxjs@7.8.1)(zone.js@0.13.3)
       tslib: 2.6.2
     dev: true
 
@@ -1429,7 +1428,7 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@angular/core@11.2.14(rxjs@6.5.5)(zone.js@0.11.8):
+  /@angular/core@11.2.14(rxjs@6.5.5)(zone.js@0.13.3):
     resolution: {integrity: sha512-vpR4XqBGitk1Faph37CSpemwIYTmJ3pdIVNoHKP6jLonpWu+0azkchf0f7oD8/2ivj2F81opcIw0tcsy/D/5Vg==}
     peerDependencies:
       rxjs: ^6.5.3
@@ -1437,10 +1436,10 @@ packages:
     dependencies:
       rxjs: 6.5.5
       tslib: 2.6.2
-      zone.js: 0.11.8
+      zone.js: 0.13.3
     dev: true
 
-  /@angular/core@12.2.17(rxjs@7.6.0)(zone.js@0.11.8):
+  /@angular/core@12.2.17(rxjs@7.6.0)(zone.js@0.13.3):
     resolution: {integrity: sha512-XUvTgU0D8XqNH5Y7UlTMk/XjUQaEGC0kZxhw/QSSQr65WrXtXmcD4d8Cg84TJ52uGXmf7IAruKvtbvu1Mbmvug==}
     engines: {node: ^12.14.1 || >=14.0.0}
     peerDependencies:
@@ -1449,10 +1448,10 @@ packages:
     dependencies:
       rxjs: 7.6.0
       tslib: 2.6.2
-      zone.js: 0.11.8
+      zone.js: 0.13.3
     dev: true
 
-  /@angular/core@13.4.0(rxjs@7.6.0)(zone.js@0.11.8):
+  /@angular/core@13.4.0(rxjs@7.6.0)(zone.js@0.13.3):
     resolution: {integrity: sha512-RE9KL7pRj+3lkJjdSR2uKmqiG0gqjnoVCMbSLG93pWrmzNIhElmlkiDaK39aMHGl836dc68Usv9CEisyVnRqHQ==}
     engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0}
     peerDependencies:
@@ -1461,10 +1460,10 @@ packages:
     dependencies:
       rxjs: 7.6.0
       tslib: 2.6.2
-      zone.js: 0.11.8
+      zone.js: 0.13.3
     dev: true
 
-  /@angular/core@14.3.0(rxjs@7.6.0)(zone.js@0.12.0):
+  /@angular/core@14.3.0(rxjs@7.6.0)(zone.js@0.13.3):
     resolution: {integrity: sha512-wYiwItc0Uyn4FWZ/OAx/Ubp2/WrD3EgUJ476y1XI7yATGPF8n9Ld5iCXT08HOvc4eBcYlDfh90kTXR6/MfhzdQ==}
     engines: {node: ^14.15.0 || >=16.10.0}
     peerDependencies:
@@ -1473,10 +1472,10 @@ packages:
     dependencies:
       rxjs: 7.6.0
       tslib: 2.6.2
-      zone.js: 0.12.0
+      zone.js: 0.13.3
     dev: true
 
-  /@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.12.0):
+  /@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.13.3):
     resolution: {integrity: sha512-w46Z1yUXCQfKV7XfnamOoLA2VD0MVUUYVrUjO73mHSskDXSXxfZAEHO9kfUS71Cj35PvhP3mbkqWscpea2WeYg==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
@@ -1485,7 +1484,7 @@ packages:
     dependencies:
       rxjs: 7.8.1
       tslib: 2.6.2
-      zone.js: 0.12.0
+      zone.js: 0.13.3
     dev: true
 
   /@angular/core@16.2.5(rxjs@7.8.1)(zone.js@0.13.3):
@@ -4939,14 +4938,13 @@ packages:
     resolution: {integrity: sha512-olUakR5nr9v2ueVr1yomoJnBTkHGqHzL/iK4AhforiJS/wKJgFphAYpZHZzADLv/zNUFuQwqLH3bcoUhFh2E1Q==}
     dependencies:
       '@floating-ui/utils': 0.1.3
-    dev: false
 
-  /@floating-ui/dom@1.5.2:
-    resolution: {integrity: sha512-6ArmenS6qJEWmwzczWyhvrXRdI/rI78poBcW0h/456+onlabit+2G+QxHx5xTOX60NBJQXjsCLFbW2CmsXpUog==}
+  /@floating-ui/dom@1.5.1:
+    resolution: {integrity: sha512-KwvVcPSXg6mQygvA1TjbN/gh///36kKtllIF8SUm0qpFj8+rvYrpvlYdL1JoA71SHpDqgSSdGOSoQ0Mp3uY5aw==}
     dependencies:
       '@floating-ui/core': 1.4.2
       '@floating-ui/utils': 0.1.3
-    dev: false
+    dev: true
 
   /@floating-ui/dom@1.5.3:
     resolution: {integrity: sha512-ClAbQnEqJAKCJOEbbLo5IUlZHkNszqhuxS4fHAVxRPXPya6Ysf2G8KypnYcOTpx6I8xcgF9bbHb6g/2KpbV8qA==}
@@ -4957,7 +4955,6 @@ packages:
 
   /@floating-ui/utils@0.1.3:
     resolution: {integrity: sha512-uvnFKtPgzLnpzzTRfhDlvXX0kLYi9lDRQbcDmT8iXl71Rx+uwSuaUIQl3DNC7w5OweAQ7XQMDObML+KaYDQfng==}
-    dev: false
 
   /@humanwhocodes/config-array@0.11.11:
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}
@@ -5256,20 +5253,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - webpack
-    dev: true
-
-  /@leanup/lib@1.3.20:
-    resolution: {integrity: sha512-xAHNLTMaXuV8ENPoMU+4J1WTzoXciRgkP0U9205DcPcZUf90M7jTCgRBz2z0mrbqNzUjJOaS9eBvznmYsIj+zg==}
-    dependencies:
-      loglevel: 1.8.0
-      tslib: 2.4.0
-    dev: true
-
-  /@leanup/lib@1.3.36:
-    resolution: {integrity: sha512-DnPkC0G63jjxX/AU2MuYnmUswQzdeoGWmoS7ouURXpO2E/iMu2dZHmRNy3pj52phdpNSdjbNlK0oIPkmUBAEag==}
-    dependencies:
-      loglevel: 1.8.0
-      tslib: 2.4.0
     dev: true
 
   /@leanup/stack-react@1.3.48(react-dom@18.2.0)(react@18.2.0):
@@ -5878,15 +5861,6 @@ packages:
       config-chain: 1.1.13
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.7.0-rc.10):
-    resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
-    peerDependencies:
-      '@public-ui/components': '>=1.1.13'
-    dependencies:
-      '@public-ui/components': 1.7.0-rc.10
-      '@public-ui/schema': 1.1.15
-    dev: false
-
   /@public-oss/kolibri-themes@0.0.3(@public-ui/components@packages+components):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
@@ -5896,22 +5870,14 @@ packages:
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.1.7:
-    resolution: {integrity: sha512-f7PTiUk42mj4S1cN8E2NsTsqSrdye/nG2LEFxwj3mCR8reZ8wNgXhyrViJmbJIcZUE4PKu3J2x8dhR2umtbexA==}
+  /@public-ui/components@1.6.2:
+    resolution: {integrity: sha512-de6shaymbOs107Cys9+0kwIVKILeJnNrlvzKeC2OOD7Qu12/Ol6VPKRhBW0Xov9Zr5r1GSsNfwn+yEFynvsfeQ==}
     dependencies:
-      '@leanup/lib': 1.3.36
-      '@public-ui/schema': 1.1.7
+      '@a11y-ui/core': 1.0.5
+      '@floating-ui/dom': 1.5.1
+      '@public-ui/schema': 1.6.2
+      i18next: 23.4.4
     dev: true
-
-  /@public-ui/components@1.7.0-rc.10:
-    resolution: {integrity: sha512-Xpiv4fxWcCo8hSfg4/mjNrBzHZsnX/qHO+gd6CruMWHeHFetUSsojHdRcqHfU6Xw4hNEULdMtrT2XCBBrs21Sw==}
-    dependencies:
-      '@a11y-ui/core': 1.0.7
-      '@floating-ui/dom': 1.5.2
-      '@public-ui/schema': 1.7.0-rc.10
-      i18next: 23.5.1
-      markdown-it: 13.0.1
-    dev: false
 
   /@public-ui/core@1.1.15:
     resolution: {integrity: sha512-la537grID2UqyP/Wsaf/Rp80TrbRzAy1KDKn8wpeEnIakZSBJLwMU/O8lDNZ0LJ7vcvxcQsJFNQMpVeyvpKZjg==}
@@ -5920,107 +5886,17 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/core@1.1.7:
-    resolution: {integrity: sha512-XhYBxPTyifcEpeksuFAaPj+5kq3S8BH0mhZsrWXjWRXhmtR6vhmvwUgrYsRseNxkM6E1THhsW6aGtI/ykNrDbg==}
-    dependencies:
-      '@a11y-ui/core': 1.0.0-rc.15
-      '@leanup/lib': 1.3.36
-      rxjs: 7.5.7
-    dev: true
-
-  /@public-ui/react@1.7.0-rc.10(@public-ui/components@1.7.0-rc.10)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-H2BCPv6YOr38NCk7UtSJflsayKXsDkUARsIR2dEDdE1b4NWc6egHhAGyf/wnbtYyZNvYyBNyXYa/q7h4MIVBSQ==}
-    peerDependencies:
-      '@public-ui/components': 1.7.0-rc.10
-      react: '>=16.14.0'
-      react-dom: '>=16.14.0'
-    dependencies:
-      '@public-ui/components': 1.7.0-rc.10
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@public-ui/sample-react@1.7.0-rc.10(esbuild@0.19.2)(eslint@8.49.0)(less@4.2.0)(postcss@8.4.29)(webpack@5.88.2):
-    resolution: {integrity: sha512-6xy/yyyAGgQdPcWgrRtQPtd+xThIMfl66QAer5TSy6rrnqOPSzLK52eWVpBcxQ2a8rixDWJw9yYb4VMaTeC7/Q==}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      '@leanup/stack': 1.3.48(chromedriver@116.0.0)(esbuild@0.19.2)(typescript@5.2.2)
-      '@leanup/stack-react': 1.3.48(react-dom@18.2.0)(react@18.2.0)
-      '@leanup/stack-webpack': 1.3.48(@leanup/stack@1.3.48)(esbuild@0.19.2)(less@4.2.0)(postcss@8.4.29)
-      '@public-oss/kolibri-themes': 0.0.3(@public-ui/components@1.7.0-rc.10)
-      '@public-ui/components': 1.7.0-rc.10
-      '@public-ui/react': 1.7.0-rc.10(@public-ui/components@1.7.0-rc.10)(react-dom@18.2.0)(react@18.2.0)
-      '@public-ui/themes': 1.7.0-rc.10(@public-ui/components@1.7.0-rc.10)
-      '@types/react': 18.2.21
-      '@types/react-dom': 18.2.7
-      '@unocss/preset-uno': 0.55.7
-      '@unocss/webpack': 0.55.7(webpack@5.88.2)
-      ajv: 8.12.0
-      chromedriver: 116.0.0
-      cpy-cli: 5.0.0
-      eslint-plugin-jsx-a11y: 6.7.1(eslint@8.49.0)
-      eslint-plugin-react: 7.33.2(eslint@8.49.0)
-      nightwatch-axe-verbose: 2.2.2
-      npm-run-all: 4.1.5
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.15.0(react@18.2.0)
-      react-router-dom: 6.15.0(react-dom@18.2.0)(react@18.2.0)
-      rimraf: 3.0.2
-      ts-prune: 0.10.3
-      typescript: 5.2.2
-      world_countries_lists: 2.8.2
-    transitivePeerDependencies:
-      - '@cucumber/cucumber'
-      - '@swc/helpers'
-      - '@webpack-cli/generators'
-      - '@webpack-cli/migrate'
-      - bufferutil
-      - canvas
-      - debug
-      - esbuild
-      - eslint
-      - fibers
-      - geckodriver
-      - less
-      - node-sass
-      - postcss
-      - rollup
-      - sass
-      - sass-embedded
-      - supports-color
-      - uglify-js
-      - utf-8-validate
-      - webpack
-      - webpack-bundle-analyzer
-    dev: false
-
   /@public-ui/schema@1.1.15:
     resolution: {integrity: sha512-1I1QM2xHyaXSBwHV4mlsAX6fi8vjLkcDsFrkxNl3gNl5qtZF8vP9kveOWYNqr1jKG4ZoRDFZ+/1/xP+Lu2a/dw==}
     dependencies:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.1.7:
-    resolution: {integrity: sha512-54bJyeAMim5DrZprhALC4UNJmwuHwYAyqoe/y8HCF66krRAKGTPOrcnPNfmLg+vPDBhKmwFKyyX4uM5Y8qdVoQ==}
+  /@public-ui/schema@1.6.2:
+    resolution: {integrity: sha512-JveRd0fIqyoUHU6v94Zwf+xT0OIk7XGhiERoBl+cmo1MBBSj6N4rs/RD2ZndBalbxWPAhhwXLURTSQEIrpskOA==}
     dependencies:
-      '@public-ui/core': 1.1.7
+      '@a11y-ui/core': 1.0.5
     dev: true
-
-  /@public-ui/schema@1.7.0-rc.10:
-    resolution: {integrity: sha512-5wT51w/DQM25of1FAidN3shSLnvfBPQ3klsgSDR/W2j6bsrSfxPOCgups0NsqL0+4W0+vu7kVu5xwq+o3ECUhg==}
-    dependencies:
-      '@a11y-ui/core': 1.0.7
-    dev: false
-
-  /@public-ui/themes@1.7.0-rc.10(@public-ui/components@1.7.0-rc.10):
-    resolution: {integrity: sha512-F5KzO/nRsjzUsgkjjcUFE65zfAmJdLoZpu7GljoH6ZPP8uk5l+gEErSu6/4t6g95fOu3tY4tD4GPheh7tqrUvw==}
-    peerDependencies:
-      '@public-ui/components': 1.7.0-rc.10
-    dependencies:
-      '@public-ui/components': 1.7.0-rc.10
-    dev: false
 
   /@puppeteer/browsers@1.7.0:
     resolution: {integrity: sha512-sl7zI0IkbQGak/+IE3VEEZab5SSOlI5F6558WvzWGC1n3+C722rfewC1ZIkcF9dsoGSsxhsONoseVlNQG4wWvQ==}
@@ -6037,11 +5913,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /@remix-run/router@1.8.0:
-    resolution: {integrity: sha512-mrfKqIHnSZRyIzBcanNJmVQELTnX+qagEDlcKO90RgRBVOZGSGvZKeDihTRfWcqoDn5N/NkUcwWTccnpN18Tfg==}
-    engines: {node: '>=14.0.0'}
-    dev: false
 
   /@remix-run/router@1.9.0:
     resolution: {integrity: sha512-bV63itrKBC0zdT27qYm6SDZHlkXwFL1xMBuhkn+X7l0+IIhNaH5wuuvZKp6eKhCD4KFhujhfhCT1YxXW6esUIA==}
@@ -7405,7 +7276,6 @@ packages:
     resolution: {integrity: sha512-xO9/y8Ug0TIxAUwu+mpZnMwxTMPSNsLoNbzCMAgrDgoRt1UZtNqb87DHfFrntKaGbFsQDwtqBhHcrOoBI1xrfw==}
     dependencies:
       loglevel: 1.8.1
-    dev: false
 
   /agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -12040,6 +11910,12 @@ packages:
     hasBin: true
     dev: true
 
+  /i18next@23.4.4:
+    resolution: {integrity: sha512-+c9B0txp/x1m5zn+QlwHaCS9vyFtmIAEXbVSFzwCX7vupm5V7va8F9cJGNJZ46X9ZtoGzhIiRC7eTIIh93TxPA==}
+    dependencies:
+      '@babel/runtime': 7.22.11
+    dev: true
+
   /i18next@23.5.1:
     resolution: {integrity: sha512-JelYzcaCoFDaa+Ysbfz2JsGAKkrHiMG6S61+HLBUEIPaF40WMwW9hCPymlQGrP+wWawKxKPuSuD71WZscCsWHg==}
     dependencies:
@@ -14196,15 +14072,9 @@ packages:
       wrap-ansi: 8.1.0
     dev: true
 
-  /loglevel@1.8.0:
-    resolution: {integrity: sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==}
-    engines: {node: '>= 0.6.0'}
-    dev: true
-
   /loglevel@1.8.1:
     resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
     engines: {node: '>= 0.6.0'}
-    dev: false
 
   /lookup-closest-locale@6.2.0:
     resolution: {integrity: sha512-/c2kL+Vnp1jnV6K6RpDTHK3dgg0Tu2VVp+elEiJpjfS1UyY7AjOYHohRug6wT0OpoX2qFgNORndE9RqesfVxWQ==}
@@ -16994,19 +16864,6 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
 
-  /react-router-dom@6.15.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-aR42t0fs7brintwBGAv2+mGlCtgtFQeOzK0BM1/OiqEzRejOZtpMZepvgkscpMUnKb8YO84G7s3LsHnnDNonbQ==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-      react-dom: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.8.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.15.0(react@18.2.0)
-    dev: false
-
   /react-router-dom@6.16.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-aTfBLv3mk/gaKLxgRDUPbPw+s4Y/O+ma3rEN1u8EgEpLpPe6gNjIsWt9rxushMHHMb7mSwxRGdGlGdvmFsyPIg==}
     engines: {node: '>=14.0.0'}
@@ -17018,16 +16875,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-router: 6.16.0(react@18.2.0)
-    dev: false
-
-  /react-router@6.15.0(react@18.2.0):
-    resolution: {integrity: sha512-NIytlzvzLwJkCQj2HLefmeakxxWHWAP+02EGqWEZy+DgfHHKQMUoBBjUQLOtFInBMhWtb3hiUy6MfFgwLjXhqg==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.8.0
-      react: 18.2.0
     dev: false
 
   /react-router@6.16.0(react@18.2.0):
@@ -17503,12 +17350,6 @@ packages:
     dependencies:
       tslib: 1.14.1
     dev: false
-
-  /rxjs@7.5.7:
-    resolution: {integrity: sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==}
-    dependencies:
-      tslib: 2.6.2
-    dev: true
 
   /rxjs@7.6.0:
     resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
@@ -18933,37 +18774,6 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-node@10.9.1(@types/node@20.6.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.9
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.4
-      '@types/node': 20.6.0
-      acorn: 8.10.0
-      acorn-walk: 8.2.0
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 5.2.2
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-    dev: true
-
   /ts-node@10.9.1(@types/node@20.6.1)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
@@ -19017,10 +18827,6 @@ packages:
 
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
-
-  /tslib@2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
-    dev: true
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
@@ -20605,18 +20411,6 @@ packages:
 
   /zod@3.22.2:
     resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
-    dev: true
-
-  /zone.js@0.11.8:
-    resolution: {integrity: sha512-82bctBg2hKcEJ21humWIkXRlLBBmrc3nN7DFh5LGGhcyycO2S7FN8NmdvlcKaGFDNVL4/9kFLmwmInTavdJERA==}
-    dependencies:
-      tslib: 2.6.2
-    dev: true
-
-  /zone.js@0.12.0:
-    resolution: {integrity: sha512-XtC+I5dXU14HrzidAKBNMqneIVUykLEAA1x+v4KVrd6AUPWlwYORF8KgsVqvgdHiKZ4BkxxjvYi/ksEixTPR0Q==}
-    dependencies:
-      tslib: 2.6.2
     dev: true
 
   /zone.js@0.13.3:
