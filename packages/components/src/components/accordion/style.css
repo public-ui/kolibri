@@ -1,22 +1,35 @@
 @import url(../style.css);
 @import url(../host-display-block.css);
+/* For animation technique see https://css-tricks.com/css-grid-can-do-auto-height-transitions/ */
+.wrapper {
+	display: grid;
+	grid-template-rows: 0fr;
+	overflow: hidden;
+	transition: grid-template-rows 300ms;
+}
+.accordion.open .wrapper {
+	grid-template-rows: 1fr;
+}
+.content {
+	min-height: 0;
+	transition: visibility 300ms;
+	/* This property is important to keep in sync with the visual transition (template-rows). Without it interactive elements within the accordion would stay focusable. */
+	visibility: hidden;
+}
+
+.accordion.open .content {
+	visibility: visible;
+}
+@media (prefers-reduced-motion) {
+	.wrapper,
+	.content {
+		transition-duration: 0s;
+	}
+}
 /*
  * Inside a button the label text ist always centered.
  * So we need text align left.
  */
 .accordion kol-heading-wc kol-button-wc button kol-span-wc {
 	justify-items: start;
-}
-.content {
-	inset: 0 0 auto 0;
-	width: 100%;
-}
-.transition {
-	transition: height 0.3s ease-in-out;
-}
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion */
-@media (prefers-reduced-motion) {
-	.transition {
-		transition-duration: 0s;
-	}
 }
