@@ -103,7 +103,10 @@ export class KolDetails implements API {
 
 	public componentDidLoad() {
 		if (this.detailsElement && this.summaryElement && this.contentElement) {
-			new DetailsAnimationController(this.detailsElement, this.summaryElement, this.contentElement);
+			const animationController = new DetailsAnimationController(this.detailsElement, this.summaryElement, this.contentElement);
+			if (this.state._open) {
+				animationController.open();
+			}
 		}
 	}
 

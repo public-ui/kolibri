@@ -20,7 +20,7 @@ export default class DetailsAnimationController {
 		}
 	}
 
-	private open() {
+	public open() {
 		this.detailsElement.style.height = `${this.detailsElement.offsetHeight}px`;
 		this.detailsElement.open = true;
 		window.requestAnimationFrame(this.expand.bind(this));
