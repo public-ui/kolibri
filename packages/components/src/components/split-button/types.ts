@@ -7,19 +7,22 @@ import { PropButtonVariant } from '../../types/props/button-variant';
 import { PropIcon } from '../../types/props/icon';
 import { PropLabel } from '../../types/props/label';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
+import { PropShow } from '../../types/props/show';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
 	on?: ButtonCallbacksPropType<StencilUnknown>;
+	/**
+	 * @deprecated Use `_show` instead.
+	 */
 	showDropdown: boolean;
 } & PropAlternativeButtonLinkRole &
 	PropIcon &
+	PropShow &
 	PropTooltipAlign &
 	PropButtonVariant;
 
-type RequiredStates = {
-	showDropdown: boolean;
-};
+type RequiredStates = PropShow;
 type OptionalStates = NonNullable<unknown>;
 
 type RequiredWatchers = RequiredStates;

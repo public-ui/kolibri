@@ -1250,22 +1250,56 @@ export const BMF = KoliBri.createTheme('bmf', {
 			transform: scale(0);
 		}
 	}`,
-	'KOL-PROGRESS': `:host progress,
-	:host span {
-		display: block;
-		height: 0px;
-		overflow: hidden;
-		width: 0px;
+	'KOL-PROGRESS': `.bar > div {
+		flex-direction: column;
+		gap: 0.5rem !important;
+		width: 100px;
 	}
-	:host svg line:first-child,
-	:host svg circle:first-child {
-		fill: transparent;
+	.bar > div text {
+		color: var(--color-black);
+		align-self: flex-end;
+	}
+	.bar svg {
+		height: 1rem;
+	}
+	.bar .background {
+		fill: var(--color-ice);
 		stroke: var(--color-ice);
+		stroke-width: 1px;
 	}
-	:host svg line:last-child,
-	:host svg circle:last-child {
-		fill: transparent;
+	.bar .progress {
+		fill: var(--color-midnight);
 		stroke: var(--color-midnight);
+	}
+	.bar .border {
+		display: none;
+	}
+	.cycle {
+		overflow: visible;
+	}
+	.cycle .whitespace,
+	.cycle .border {
+		stroke: transparent;
+	}
+	.cycle .background {
+		stroke: var(--color-ice);
+		stroke-width: 1rem;
+	}
+	.cycle .progress {
+		stroke: var(--color-midnight);
+		stroke-width: 1rem;
+	}
+	.cycle text:first-of-type {
+		color: var(--color-grey);
+		line-height: 1.25rem;
+		alignment-baseline: after-edge;
+	}
+	.cycle text:last-of-type {
+		color: var(--color-black);
+		font-size: 1.75rem;
+		font-weight: 700;
+		line-height: 1.5rem;
+		alignment-baseline: central;
 	}`,
 	'KOL-SELECT': `kol-input {
 		gap: 0.25em;
@@ -1557,6 +1591,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		vertical-align: top;
 		border-bottom: 1px solid var(--color-granite);
 		height: 1.25rem;
+	}
+	tbody th {
+		text-align: left;
 	}
 	tbody th,
 	td {
@@ -1923,7 +1960,57 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	:host .disabled {
 		opacity: 0.33;
-	}`,
+	}
+	:host kol-input.button {
+		cursor: inherit;
+		display: grid;
+		column-gap: 0;
+		grid-template-columns: 32px auto;
+		grid-template-areas:
+			"error error"
+			"input label"
+			"hint hint";
+	}
+
+	:host kol-input.button.checked > .input,
+	:host kol-input.button.checked > label {
+		background-color: var(--color-ice);
+	}
+
+	:host kol-input.button > .error {
+		grid-area: error;
+	}
+
+	:host kol-input.button > label {
+		grid-area: label;
+		background-color: var(--color-silver);
+		border-top-right-radius: var(--border-radius);
+		border-bottom-right-radius: var(--border-radius);
+		min-height: 32px;
+		align-items: center;
+		display: flex;
+		padding-right: 12px;
+		width: 100%;
+	}
+
+	:host kol-input.button > .input {
+		grid-area: input;
+		background-color: var(--color-silver);
+		border-top-left-radius: var(--border-radius);
+		border-bottom-left-radius: var(--border-radius);
+		min-height: 32px;
+		min-width: 32px;
+		place-content: center;
+	}
+
+	:host kol-input.button > .hint {
+		grid-area: hint;
+	}
+
+	:host kol-input.button > .input > div {
+		display: flex;
+	}
+`,
 	'KOL-INPUT-RADIO': `/* INPUT */
 	kol-input {
 		display: grid;

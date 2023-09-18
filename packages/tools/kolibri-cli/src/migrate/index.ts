@@ -17,6 +17,7 @@ import {
 	setRemoveMode,
 } from './shares/reuse';
 import { REMOVE_MODE, RemoveMode } from './types';
+import { commonTasks } from './runner/tasks';
 
 type MigrateOption = {
 	ignoreUncommittedChanges: boolean;
@@ -68,6 +69,7 @@ Source folder to migrate: ${baseDir}
 				}
 
 				const runner = new TaskRunner(baseDir, versionOfPublicUiKoliBriCli, versionOfPublicUiComponents, config);
+				runner.registerTasks(commonTasks);
 				runner.registerTasks(v1Tasks);
 
 				if (options.testTasks) {

@@ -1,18 +1,18 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { Props } from '../types';
+import { Props, States } from '../types';
 
 export const getSpinHtml = (props: Props): string => {
-	props = mixMembers(
+	const state = mixMembers<Props, States>(
 		{
-			_show: false,
+			_variant: 'dot',
 		},
 		props
 	);
-	return `<kol-spin>
+	return `<kol-spin${state._show === true ? ' _show' : ''}>
 	 <mock:shadow-root>
 		 ${
-				props._show === true
+				state._show === true
 					? `<span aria-busy="true" aria-label="kol-action-running" aria-live="polite" class="spin dot" role="alert">
 						<span class="bg-spin-1"></span>
 						<span class="bg-spin-2"></span>

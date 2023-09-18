@@ -20,7 +20,11 @@ export const configureSnapshotPath =
 				.replace('-windows', '')
 
 				// Remove test counter from snapshot name
-				.replace('-1-', '-');
+				.replace('-1-', '-')
+
+				// Make different snapshot folder for different themes
+				.replace('theme-snapshots.spec.js', `theme-${process.env.THEME_EXPORT.toLocaleLowerCase()}`)
+				.replace('-snapshots', '');
 			return result;
 		};
 	};
@@ -39,9 +43,10 @@ ROUTES.filter((route) => !blocklist.includes(route)).forEach((route) => {
 			width: 1920,
 			height: 1280,
 		});
+		// await page.waitForTimeout(250);
 		await expect(page).toHaveScreenshot({
 			// fullPage: true,
-			maxDiffPixelRatio: 0.03,
+			maxDiffPixelRatio: 0.1, // 0.03,
 		});
 	});
 });

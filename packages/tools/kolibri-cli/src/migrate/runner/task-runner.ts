@@ -70,6 +70,17 @@ export class TaskRunner {
 					}) is greater than the task version range (${task.getVersionRange()}).`,
 				);
 				this.config.migrate!.tasks[task.getIdentifier()] = false;
+			} else if (
+				semver.ltr(this.cliVersion, task.getVersionRange(), {
+					includePrerelease: true,
+				})
+			) {
+				console.log(
+					`Task "${task.getTitle()}" will be excluded. The target version (${
+						this.cliVersion
+					}) is lower than the task version range (${task.getVersionRange()}).`,
+				);
+				this.config.migrate!.tasks[task.getIdentifier()] = false;
 			} else {
 				this.tasks.set(task.getIdentifier(), task);
 			}

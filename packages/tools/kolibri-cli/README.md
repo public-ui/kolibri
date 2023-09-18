@@ -50,15 +50,17 @@ With the `migrate` command you can migrate your project to the latest version of
 Actually the following migrations are available:
 
 - Component renaming ✓
-- Component removal ⏰
+- Component removal (no one yet)
 - Property renaming ✓
 - Property removal ✓
-- Property type change ⏰
-- Logic refactoring ⏰
+- Property type change (`_label={false}`) ⏰
+- Slots renaming (`content`) ✓
+- Slots removal (`footer`, `header`) ✓
+- Logic refactoring (no one yet)
 - Expert-Slot refactoring ⏰
-- `.vscode/settings.json` add IntelliSense for HTML ⏰
-- `.gitignore` exclude `.kolibri.migrate.json` ⏰
-- `.tsconfig` add `@public-ui/components` to `types` array ⏰
+- `.vscode/settings.json` add IntelliSense for HTML ✓
+- `.gitignore` exclude `.kolibri.migrate.json` ✓
+- `.tsconfig` add `@public-ui/components` to `types` array ✓
 
 #### How does it work?
 
