@@ -4,7 +4,6 @@ import { setMode } from '@stencil/core';
 import { register } from '../core';
 import { Log } from '../utils/dev.utils';
 
-// ts-prune-ignore-next
 export default async (): Promise<void> => {
 	setMode((elm) => {
 		if (elm.shadowRoot instanceof ShadowRoot) {

@@ -7,7 +7,6 @@ import { getValues } from '../../../utils/color.utils';
 
 const COLOR_NAMES = Object.keys(Farbspektrum) as FarbspektrumNames[];
 
-// ts-prune-ignore-next
 // @Component({
 // 	tag: 'kol-color',
 // 	styleUrls: {
@@ -15,7 +14,6 @@ const COLOR_NAMES = Object.keys(Farbspektrum) as FarbspektrumNames[];
 // 	},
 // 	shadow: true,
 // })
-// ts-prune-ignore-next
 export class KolColor {
 	@State() private selectedColor: string | null = null;
 

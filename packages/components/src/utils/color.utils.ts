@@ -2,12 +2,10 @@ import colorConvert from 'color-convert';
 import { CMYK } from 'color-convert/conversions';
 import { hex as hexContrast, score } from 'wcag-contrast';
 
-// ts-prune-ignore-next
 export const cmykSaturation = (cmyk: number[], saturation = 1): CMYK => {
 	return [cmyk[0] * saturation, cmyk[1] * saturation, cmyk[2] * saturation, cmyk[3] * saturation];
 };
 
-// ts-prune-ignore-next
 export const getHexBySat = (hex: string, saturation = 1): string => {
 	return colorConvert.cmyk.hex(cmykSaturation(colorConvert.hex.cmyk(hex), saturation));
 };

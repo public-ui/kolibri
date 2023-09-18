@@ -1,0 +1,10 @@
+{
+	"entry": ["src/index.ts", "stencil.config.ts"],
+	"ignore": ["src/components/@else", "src/dev"],
+	"ignoreBinaries": [],
+	"ignoreDependencies": ["@types/jest"],
+	"project": ["src/**/*.ts", "src/**/*.tsx"],
+	"rules": {
+		"classMembers": "warn"
+	}
+}

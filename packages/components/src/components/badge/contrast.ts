@@ -31,8 +31,7 @@ type RGBA = [number, number, number, number];
 // const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
 
 // https://24ways.org/2010/calculating-color-contrast/
-// ts-prune-ignore-next
-export const getContrastYIQ = (r: number, g: number, b: number): number => {
+const getContrastYIQ = (r: number, g: number, b: number): number => {
 	const yiq = (r * 299 + g * 587 + b * 114) / 1000;
 	return yiq >= 128 ? -1 : 1;
 };
@@ -46,8 +45,7 @@ export type ColorContrast<T> = ColorPair<T> & {
 	contrast: number;
 };
 
-// ts-prune-ignore-next
-export const calcColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> => {
+const calcColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> => {
 	const color: RGB = [
 		Math.max(Math.min(Math.round(contrastColor[0] + dir * Math.max(1, contrastColor[0] / 100)), 255), 0),
 		Math.max(Math.min(Math.round(contrastColor[1] + dir * Math.max(1, contrastColor[1] / 100)), 255), 0),
@@ -68,8 +66,7 @@ export const calcColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: num
 
 const cache: Map<unknown, ColorContrast<RGB>> = new Map();
 
-// ts-prune-ignore-next
-export const getColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> => {
+const getColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> => {
 	if (cache.has(baseColor)) {
 		return cache.get(baseColor) as ColorContrast<RGB>;
 	}

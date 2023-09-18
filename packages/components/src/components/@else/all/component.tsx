@@ -14,7 +14,6 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 // @Component({
 //   tag: 'kol-all',
 // })
-// ts-prune-ignore-next
 export class KolAll implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	@State() public state: States = {};
 
