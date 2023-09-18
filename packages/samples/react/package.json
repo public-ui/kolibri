@@ -16,9 +16,6 @@
 		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot"
 	},
-	"bin": {
-		"kolibri-sample-react-test-build": "test-build.sh"
-	},
 	"dependencies": {
 		"@leanup/stack": "1.3.48",
 		"@leanup/stack-react": "1.3.48",
