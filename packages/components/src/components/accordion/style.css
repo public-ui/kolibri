@@ -10,19 +10,19 @@
 .accordion.open .wrapper {
 	grid-template-rows: 1fr;
 }
-.content {
+.animation-wrapper {
 	min-height: 0;
 	transition: visibility 300ms;
 	/* This property is important to keep in sync with the visual transition (template-rows). Without it interactive elements within the accordion would stay focusable. */
 	visibility: hidden;
 }
 
-.accordion.open .content {
+.accordion.open .animation-wrapper {
 	visibility: visible;
 }
 @media (prefers-reduced-motion) {
 	.wrapper,
-	.content {
+	.animation-wrapper {
 		transition-duration: 0s;
 	}
 }

@@ -57,9 +57,11 @@ export class KolAccordion implements API {
 						<slot name="header"></slot>
 					</div>
 					<div class="wrapper">
-						<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
-							<slot name="content"></slot> {/* Deprecated for version 2 */}
-							<slot />
+						<div class="animation-wrapper">
+							<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
+								<slot name="content"></slot> {/* Deprecated for version 2 */}
+								<slot />
+							</div>
 						</div>
 					</div>
 				</div>
