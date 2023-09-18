@@ -86,7 +86,7 @@
 		"@types/mustache": "4.2.2",
 		"@types/node": "ts5.1",
 		"@types/pug": "2.0.6",
-		"@types/twig": "1.12.11",
+		"@types/twig": "1.12.12",
 		"@types/wcag-contrast": "3.0.0",
 		"@typescript-eslint/eslint-plugin": "6.7.0",
 		"@typescript-eslint/parser": "6.7.0",
