@@ -18,7 +18,7 @@ export const getDetailsHtml = (
 	);
 	return `<kol-details${props._open ? ' _open' : ''}>
 	<mock:shadow-root>
-		<details>
+		<details${props._open ? ` style="height: undefinedpx;"` : ``}>
 			<summary>
 				${getIconHtml({
 					_label: '',
