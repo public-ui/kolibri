@@ -21,7 +21,11 @@ export default class DetailsAnimationController {
 	}
 
 	public open() {
-		this.detailsElement.style.height = `${this.detailsElement.offsetHeight}px`;
+		/**
+		 * The Jest test framework does not support the `offsetHeight` property on the `details` element.
+		 * This is a workaround to make the tests pass (?? 0).
+		 */
+		this.detailsElement.style.height = `${this.detailsElement.offsetHeight ?? 0}px`;
 		this.detailsElement.open = true;
 		window.requestAnimationFrame(this.expand.bind(this));
 	}
