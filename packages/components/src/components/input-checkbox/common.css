@@ -5,6 +5,7 @@ kol-input {
 	align-items: center;
 	display: grid;
 	justify-items: left;
+	width: 100;
 }
 kol-input.default,
 kol-input.switch {
@@ -35,8 +36,8 @@ kol-input .hint {
 	order: 4;
 }
 input {
-	border-style: solid;
 	border-width: 2px;
+	border-style: solid;
 	line-height: 24px;
 }
 input[type='checkbox'] {
@@ -52,7 +53,8 @@ input[type='checkbox']:before {
 	content: '';
 	cursor: pointer;
 }
-.default kol-icon {
+.default kol-icon,
+.switch kol-icon {
 	display: none;
 }
 kol-input.required .tooltip-content .span-label::after {

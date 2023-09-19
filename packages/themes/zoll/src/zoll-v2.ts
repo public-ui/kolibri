@@ -924,9 +924,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		transform: translateX(0.75em);
 		background-color: white;
 	}
-	.switch:has(input:not(:checked, :indeterminate)) .icon {
-		color: #fff;
-	}
 	.disabled {
 		opacity: 0.33;
 	}`,

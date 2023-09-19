@@ -1432,13 +1432,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		transform: translateX(0.75em);
 		background-color: var(--color-petrol);
 	}
-	.switch:has(input:not(:checked), input:indeterminate) .icon {
-		color: #fff;
-	}
 	.disabled {
 		opacity: 0.33;
 	}
-	.default kol-icon {
+	.default kol-icon,
+	.switch kol-icon {
 		display: none;
 	}
 	kol-input span.hint {
