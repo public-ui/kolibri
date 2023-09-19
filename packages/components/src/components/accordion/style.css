@@ -27,8 +27,8 @@
 	}
 }
 /*
- * Inside a button the label text ist always centered.
- * So we need text align left.
+ * Inside a button, the caption text is always centered.
+ * So we have to align the text to the left.
  */
 .accordion kol-heading-wc kol-button-wc button kol-span-wc {
 	justify-items: start;
