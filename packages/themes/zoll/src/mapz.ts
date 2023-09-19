@@ -770,6 +770,9 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		border-width: 2px;
 		order: 2;
 	}
+	kol-input .counter {
+		order: 3;
+	}
 	kol-input:hover > .input {
 		border-color: var(--kolibri-color-secondary);
 	}
@@ -780,10 +783,10 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		margin-right: 0.75em;
 	}
 	kol-input > .error {
-		order: 3;
+		order: 4;
 	}
 	kol-input > .hint {
-		order: 4;
+		order: 5;
 		font-size: 0.875em;
 	}
 	input,

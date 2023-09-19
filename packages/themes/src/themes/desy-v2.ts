@@ -1407,10 +1407,13 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		background-color: white;
 		border-radius: 0.3125rem;
 	}
+	kol-input .counter {
+		order: 3;
+	}
 	kol-input kol-alert.error {
 		margin-bottom: 0.4em;
 		margin-top: 0.2em;
-		order: 3;
+		order: 4;
 	}
 	input,
 	select,

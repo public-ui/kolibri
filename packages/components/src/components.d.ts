@@ -2720,6 +2720,11 @@ export namespace Components {
          */
         "_role"?: AlternativeButtonLinkRolePropType;
         /**
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
+         */
+        "_show"?: boolean;
+        /**
           * Defines whether to show the dropdown menu.
          */
         "_showDropdown"?: boolean;
@@ -6030,6 +6035,11 @@ declare namespace LocalJSX {
           * Defines the role of the components primary element.
          */
         "_role"?: AlternativeButtonLinkRolePropType;
+        /**
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
+         */
+        "_show"?: boolean;
         /**
           * Defines whether to show the dropdown menu.
          */

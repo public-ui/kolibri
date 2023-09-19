@@ -709,8 +709,11 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		kol-input .input {
 			order: 3;
 		}
-		kol-input .hint {
+		kol-input .counter {
 			order: 4;
+		}
+		kol-input .hint {
+			order: 5;
 			font-size: 0.9rem;
 			font-style: italic;
 		}

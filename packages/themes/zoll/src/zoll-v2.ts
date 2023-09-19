@@ -1379,14 +1379,17 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-radius: 0.25rem;
 		order: 2;
 	}
+	kol-input .counter {
+		order: 3;
+	}
+	kol-input > kol-alert.error {
+		order: 4;
+	}
 	kol-input > span.hint {
 		color: var(--color-grau-60);
 		font-style: italic;
-		order: 4;
+		order: 5;
 		font-size: 0.8rem;
-	}
-	kol-input > kol-alert.error {
-		order: 3;
 	}`,
 	'KOL-INDENTED-TEXT': `:host > div {
 		background: white;
