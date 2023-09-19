@@ -13,6 +13,7 @@ import { TextareaReadOnly } from './readonly';
 import { TextareaResize } from './resize';
 
 import { TextareaRows } from './rows';
+import { TextareaCounter } from './counter';
 
 export const TEXTAREA_ROUTES: Routes = {
 	textarea: {
@@ -23,5 +24,6 @@ export const TEXTAREA_ROUTES: Routes = {
 		readonly: TextareaReadOnly,
 		resize: TextareaResize,
 		rows: TextareaRows,
+		'with-counter': TextareaCounter,
 	},
 };
