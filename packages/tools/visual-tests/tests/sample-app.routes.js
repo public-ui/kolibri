@@ -20,7 +20,7 @@ ROUTES.set('handout/basic', {
 		width: 1920,
 		height: 1280,
 	},
-	waitForTimeout: 500,
+	waitForTimeout: 1000,
 });
 ROUTES.set('abbr/basic', null);
 ROUTES.set('accordion/basic', null);
@@ -47,7 +47,9 @@ ROUTES.set('card/basic', null);
 ROUTES.set('card/confirm', null);
 ROUTES.set('card/flex', null);
 ROUTES.set('card/selection', null);
-ROUTES.set('details/basic', null);
+ROUTES.set('details/basic', {
+	waitForTimeout: 500,
+});
 ROUTES.set('heading/badge', null);
 ROUTES.set('heading/basic', null);
 ROUTES.set('heading/paragraph', null);
@@ -70,7 +72,9 @@ ROUTES.set('input-number/basic', null);
 ROUTES.set('input-password/basic', null);
 ROUTES.set('input-password/show-password', null);
 ROUTES.set('input-radio/basic', null);
-ROUTES.set('input-radio/horizontal', null);
+ROUTES.set('input-radio/horizontal', {
+	waitForTimeout: 500,
+});
 ROUTES.set('input-radio/select', null);
 ROUTES.set('input-range/basic', null);
 ROUTES.set('input-text/basic', null);
