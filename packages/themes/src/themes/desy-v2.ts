@@ -1127,19 +1127,6 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		-ms-transform: translateX(1em);
 		transform: translateX(1em);
 	}
-	.switch {
-		& .icon {
-			width: 1.25em;
-			height: 1.25em;
-			left: 2px;
-		}
-		&:has(input:checked) .icon {
-			transform: translate(2em, -50%);
-		}
-		&:has(input:indeterminate) .icon {
-			transform: translate(1em, -50%);
-		}
-	}
 	.disabled {
 		opacity: 0.33;
 	}`,
