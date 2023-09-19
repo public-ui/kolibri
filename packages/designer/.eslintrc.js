@@ -1,9 +1,5 @@
 const config = require('@leanup/stack/.eslintrc');
 
-config.parserOptions = {
-	tsconfigRootDir: __dirname,
-};
-
 config.overrides = config.overrides || [];
 config.overrides.push({
 	extends: ['plugin:jsx-a11y/recommended'],

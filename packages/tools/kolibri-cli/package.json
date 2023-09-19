@@ -18,7 +18,7 @@
 	"description": "CLI for executing some helpful commands for KoliBri projects.",
 	"scripts": {
 		"reset": "pnpm i @public-ui/components@1.1.7",
-		"depcheck": "depcheck --ignores=\"@public-ui/components,deepmerge,loglevel,mocha\"",
+		"depcheck": "depcheck --ignores=\"@public-ui/components,loglevel,mocha\"",
 		"format": "prettier -c src",
 		"lint": "eslint src && tsc --noEmit",
 		"prepack": "tsc",
@@ -29,7 +29,7 @@
 	},
 	"type": "commonjs",
 	"dependencies": {
-		"chalk": "4.1.2",
+		"chalk": "^4",
 		"commander": "11.0.0",
 		"deepmerge": "4.3.1",
 		"gradient-string": "2.0.2",
