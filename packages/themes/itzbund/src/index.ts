@@ -1435,8 +1435,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	.disabled {
 		opacity: 0.33;
 	}
-	.default kol-icon,
-	.switch kol-icon {
+	.default kol-icon {
 		display: none;
 	}
 	kol-input span.hint {
