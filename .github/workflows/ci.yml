@@ -70,4 +70,4 @@ jobs:
         name: Upload theme test reports
         with:
           name: reports
-          path: packages/themes/**/.reports/*
+          path: packages/themes/**/.reports/**/*.png
