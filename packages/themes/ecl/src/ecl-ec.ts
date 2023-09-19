@@ -1255,6 +1255,9 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		order: 4;
 		align-items: center;
 	}
+	.counter {
+		order: 5;
+	}
 	input::placeholder,
 	textarea::placeholder {
 		color: var(--color-grey-50);

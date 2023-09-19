@@ -872,9 +872,6 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	'KOL-TEXTAREA': `kol-input {
 		gap: 0.4em;
 	}
-	kol-input .error {
-		order: 3;
-	}
 	kol-input label {
 		font-weight: 700;
 		order: 1;
@@ -882,8 +879,14 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	kol-input .input {
 		order: 2;
 	}
-	kol-input .hint {
+	kol-input .counter {
+		order: 3;
+	}
+	kol-input .error {
 		order: 4;
+	}
+	kol-input .hint {
+		order: 5;
 		font-size: 0.875em;
 		font-style: italic;
 	}
