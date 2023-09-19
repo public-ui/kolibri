@@ -8,6 +8,7 @@
 		"depcheck": "pnpm -r depcheck",
 		"format": "pnpm -r format",
 		"lint": "pnpm -r lint",
+		"unused": "pnpm -r unused",
 		"ts-prune": "git clean -f -d -X packages/adapters/**/src && pnpm -r exec npx ts-prune src -e",
 		"ncu:major": "ncu -x rimraf && pnpm -r exec ncu -x rimraf",
 		"ncu:minor": "ncu -t minor -u -x rimraf && pnpm -r exec ncu -t minor -u -x rimraf,rxjs,typescript,zone.js",
@@ -22,6 +23,7 @@
 		"prepare:husky:ts-prune": "husky add .husky/pre-commit \"pnpm ts-prune\"",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"test": "pnpm -r --workspace-concurrency=1 test",
+		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r --workspace-concurrency=1 test-update",
 		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
 	},

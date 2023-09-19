@@ -1,6 +1,6 @@
-import React from 'react';
-import { KolButton, KolToast } from '@public-ui/react';
 import { ToasterService } from '@public-ui/components';
+import { KolButton } from '@public-ui/react';
+import React from 'react';
 
 const toaster = ToasterService.getInstance(document);
 
