@@ -10,10 +10,6 @@
 }
 * {
 	/*
-	 * Verdana is an accessible font that can be used without requiring additional loading time.
-	 */
-	font-family: Verdana;
-	/*
 	 * This rule enables the word dividing for all texts. That is important for high zoom levels.
 	 */
 	hyphens: auto;

@@ -9,7 +9,7 @@ export const InputTextFocus: FC = () => {
 	useLayoutEffect(() => {
 		setTimeout(() => {
 			ref.current?.focus();
-		}, 500);
+		}, 100);
 	}, [ref]);
 
 	return (

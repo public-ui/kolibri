@@ -10,8 +10,7 @@ on:
 
 jobs:
   build:
-    # runs-on: ubuntu-latest
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -65,10 +64,3 @@ jobs:
         run: pnpm -r lint
       - name: Test
         run: pnpm -r --workspace-concurrency=1 test # https://pnpm.io/configuring
-
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        name: Upload theme test reports
-        with:
-          name: reports
-          path: packages/themes/**/.reports/**/*.png
