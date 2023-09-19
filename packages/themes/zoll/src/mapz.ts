@@ -988,6 +988,9 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		transform: translateX(0.75em);
 		background-color: var(--kolibri-color-primary);
 	}
+	.switch:has(input:not(:checked), input:indeterminate) .icon {
+		color: #fff;
+	}
 	.disabled {
 		opacity: 0.33;
 	}`,

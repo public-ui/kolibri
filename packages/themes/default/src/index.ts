@@ -1791,6 +1791,21 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		:host kol-input.switch input[type='checkbox']:indeterminate:before {
 			transform: translateX(1em);
 		}
+		.switch {
+			& .icon {
+				width: 1.25em;
+				height: 1.25em;
+				left: 2px;
+			}
+
+			&:has(input:checked) .icon {
+				transform: translate(2em, -50%);
+			}
+
+			&:has(input:indeterminate) .icon {
+				transform: translate(1em, -50%);
+			}
+		}
 		:host .disabled {
 			opacity: 0.33;
 		}
