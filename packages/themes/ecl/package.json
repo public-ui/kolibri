@@ -6,7 +6,7 @@
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
-		"test": "npm-run-all test:*",
+		"-test": "npm-run-all test:*",
 		"test:ecl-ec": "THEME_MODULE=src/index THEME_EXPORT=ECL_EC kolibri-visual-test",
 		"test:ecl-eu": "THEME_MODULE=src/index THEME_EXPORT=ECL_EU kolibri-visual-test",
 		"test-update": "npm-run-all test-update:*",
