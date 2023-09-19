@@ -8,7 +8,6 @@ import { OpenPropType, validateOpen } from '../../types/props/open';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
-import { processEnv } from '../../utils/reuse';
 import { watchHeadingLevel } from '../heading/validation';
 import { API, KoliBriAccordionCallbacks, States } from './types';
 
@@ -34,54 +33,6 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 })
 export class KolAccordion implements API {
 	private readonly nonce = nonce();
-	private contentElement: HTMLElement | null = null;
-	private contentWrapperElement: HTMLElement | null = null;
-	private contentObserver: ResizeObserver | null = null;
-	private transition = false;
-
-	private readonly catchContentElement = (element?: HTMLElement) => {
-		if (element) this.contentElement = element;
-	};
-	private readonly catchContentWrapperElement = (element?: HTMLElement) => {
-		if (element) this.contentWrapperElement = element;
-	};
-
-	resizeWrapper(list?: ResizeObserverEntry[]) {
-		const content = this.contentElement;
-		const wrapper = this.contentWrapperElement;
-		const observer = this.contentObserver;
-		if (content && wrapper && observer) {
-			if (this._open) {
-				wrapper.style.display = 'block';
-				setTimeout(() => {
-					wrapper.style.height = `${content?.clientHeight ?? 0}px`;
-				});
-				if (!list) observer.observe(content);
-				wrapper.addEventListener(
-					'transitionend',
-					() => {
-						wrapper.style.overflow = '';
-					},
-					{ once: true }
-				);
-			} else {
-				wrapper.style.overflow = 'hidden';
-				observer.unobserve(content);
-				wrapper.style.height = '0';
-				if (this.transition) {
-					wrapper.addEventListener(
-						'transitionend',
-						() => {
-							wrapper.style.display = 'none';
-						},
-						{ once: true }
-					);
-				} else {
-					wrapper.style.display = 'none';
-				}
-			}
-		}
-	}
 
 	public render(): JSX.Element {
 		return (
@@ -90,7 +41,6 @@ export class KolAccordion implements API {
 					class={{
 						accordion: true,
 						open: this.state._open === true,
-						close: this.state._open !== true,
 					}}
 				>
 					<kol-heading-wc _label="" _level={this.state._level}>
@@ -106,10 +56,12 @@ export class KolAccordion implements API {
 					<div class="header">
 						<slot name="header"></slot>
 					</div>
-					<div ref={this.catchContentWrapperElement} class={{ wrapper: true, transition: this.transition }}>
-						<div ref={this.catchContentElement} aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
-							<slot name="content"></slot> {/* Deprecated for version 2 */}
-							<slot />
+					<div class="wrapper">
+						<div class="animation-wrapper">
+							<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
+								<slot name="content"></slot> {/* Deprecated for version 2 */}
+								<slot />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -173,13 +125,7 @@ export class KolAccordion implements API {
 
 	@Watch('_open')
 	public validateOpen(value?: OpenPropType): void {
-		validateOpen(this, value, {
-			hooks: {
-				afterPatch: () => {
-					this.resizeWrapper();
-				},
-			},
-		});
+		validateOpen(this, value);
 	}
 
 	public componentWillLoad(): void {
@@ -187,14 +133,6 @@ export class KolAccordion implements API {
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateOpen(this._open);
-		if (processEnv !== 'test') this.contentObserver = new ResizeObserver(this.resizeWrapper.bind(this));
-		setTimeout(() => {
-			if (this.contentObserver && this.contentElement) this.contentObserver.observe(this.contentElement);
-		});
-		// So it does not transition if it is set to open from the start.
-		setTimeout(() => {
-			this.transition = true;
-		}, 200);
 	}
 
 	private onClick = (event: Event) => {
