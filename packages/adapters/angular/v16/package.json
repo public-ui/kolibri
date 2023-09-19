@@ -75,7 +75,7 @@
 		"rimraf": "3.0.2",
 		"rxjs": "7.8.1",
 		"tslib": "2.6.2",
-		"typescript": "5.1.6",
+		"typescript": "5.2.2",
 		"zone.js": "0.13.3"
 	},
 	"peerDependencies": {
