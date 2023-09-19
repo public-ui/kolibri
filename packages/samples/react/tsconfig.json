@@ -9,7 +9,7 @@
 		"preserveSymlinks": true,
 		"moduleResolution": "node",
 		"lib": ["es2017", "dom"],
-		"types": ["@public-ui/components", "mocha", "node", "react", "react-dom"],
+		"types": ["node", "react", "react-dom"],
 		"typeRoots": ["node_modules/@types", "src/types"],
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,
@@ -27,6 +27,5 @@
 		"jsxFactory": "React.createElement",
 		"jsxFragmentFactory": "React.Fragment"
 	},
-	"include": ["src/**/*", "tests/**/*", "node_modules/@leanup/**/*", "decs.d.ts"],
-	"exclude": ["node_modules/@leanup/**/template/**/*"]
+	"include": ["src/**/*"]
 }

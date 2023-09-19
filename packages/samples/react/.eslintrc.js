@@ -1,5 +1,9 @@
 const config = require('@leanup/stack/.eslintrc');
 
+config.parserOptions = {
+	tsconfigRootDir: __dirname,
+};
+
 config.overrides = config.overrides || [];
 config.overrides.push({
 	extends: ['plugin:react/recommended', 'plugin:jsx-a11y/recommended'],
@@ -10,6 +14,7 @@ config.overrides.push({
 		},
 	},
 	rules: {
+		'@typescript-eslint/no-unsafe-member-access': 'warn',
 		'react/no-unused-state': 'error',
 	},
 });
