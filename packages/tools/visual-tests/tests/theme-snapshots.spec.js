@@ -15,9 +15,9 @@ export const configureSnapshotPath =
 				// .replace('-firefox', '')
 
 				// Remove os name from snapshot name
-				.replace('-darwin', '')
-				.replace('-linux', '')
-				.replace('-windows', '')
+				// .replace('-darwin', '')
+				// .replace('-linux', '')
+				// .replace('-windows', '')
 
 				// Remove test counter from snapshot name
 				.replace('-1-', '-')

@@ -14,6 +14,7 @@ config.overrides.push({
 		},
 	},
 	rules: {
+		'@typescript-eslint/no-unsafe-member-access': 'warn',
 		'react/no-unused-state': 'error',
 	},
 });

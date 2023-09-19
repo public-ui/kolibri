@@ -14,7 +14,7 @@ export default defineConfig({
 	testDir: './tests',
 	snapshotDir: path.join(process.env.KOLIBRI_CWD, 'snapshots'),
 	// snapshotPathTemplate: '',
-	outputDir: path.join(process.env.KOLIBRI_CWD, '.reports/visual-tests'),
+	outputDir: path.join(process.env.KOLIBRI_CWD, 'test-results'),
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */

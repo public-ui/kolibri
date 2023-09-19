@@ -54,7 +54,7 @@ jobs:
       - name: Install
         run: pnpm i --no-frozen-lockfile
       - name: Unused
-        run: pnpm -r ts-prune
+        run: pnpm -r unused
       - name: Depcheck
         run: pnpm -r depcheck
       - name: Format
@@ -71,4 +71,6 @@ jobs:
         name: Upload theme test reports
         with:
           name: reports
-          path: packages/themes/**/.reports/**/*.png
+          path: |
+            packages/themes/**/test-results/**/*.png
+            !**/node_modules
