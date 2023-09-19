@@ -15,9 +15,9 @@ export const configureSnapshotPath =
 				// .replace('-firefox', '')
 
 				// Remove os name from snapshot name
-				.replace('-darwin', '')
-				.replace('-linux', '')
-				.replace('-windows', '')
+				// .replace('-darwin', '')
+				// .replace('-linux', '')
+				// .replace('-windows', '')
 
 				// Remove test counter from snapshot name
 				.replace('-1-', '-')
@@ -31,22 +31,39 @@ export const configureSnapshotPath =
 
 test.beforeEach(configureSnapshotPath());
 
+// https://playwright.dev/docs/emulation
+test.use({
+	colorScheme: 'light',
+	locale: 'de-DE',
+	isMobile: false,
+	timezoneId: 'Europe/Berlin',
+	viewport: {
+		width: 800,
+		height: 0,
+	},
+});
+
 /**
  * @todo stabilize and re-enable test
  */
 const blocklist = [];
 
-ROUTES.filter((route) => !blocklist.includes(route)).forEach((route) => {
+ROUTES.forEach((options, route) => {
+	if (blocklist.includes(route)) {
+		return;
+	}
 	test(`snapshot for ${route}`, async ({ page }) => {
 		await page.goto(`/#${route}?hideMenus`, { waitUntil: 'networkidle' });
-		await page.setViewportSize({
-			width: 1920,
-			height: 1280,
-		});
-		// await page.waitForTimeout(250);
+		if (options?.viewportSize) {
+			await page.setViewportSize(options.viewportSize);
+		}
+		if (options?.waitForTimeout) {
+			await page.waitForTimeout(options.waitForTimeout);
+		}
 		await expect(page).toHaveScreenshot({
-			// fullPage: true,
-			maxDiffPixelRatio: 0.1, // 0.03,
+			fullPage: true,
+			maxDiffPixelRatio: 0.05,
+			...options,
 		});
 	});
 });

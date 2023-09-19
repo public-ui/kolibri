@@ -89,7 +89,7 @@
 		"ncu:major": "ncu",
 		"ncu:minor": "ncu -t minor -u",
 		"ncu:patch": "ncu -t patch -u",
-		"ts-prune": "ts-prune src -e",
+		"unused": "ts-prune src -e",
 		"test": "npm run clean && pnpm i && npm run build && rimraf my-* && node dist/cli.js"
 	},
 	"bin": "dist/cli.js",
