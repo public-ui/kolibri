@@ -3,6 +3,7 @@ import { setMode } from '@stencil/core';
 
 import { register } from '../core';
 import { Log } from '../utils/dev.utils';
+import { processEnv } from '../utils/reuse';
 
 // ts-prune-ignore-next
 export default async (): Promise<void> => {
@@ -26,7 +27,7 @@ export default async (): Promise<void> => {
 		});
 
 	/* Import scripts necessary for the development server, i.e. the /dev/*.html files. Only include in development environment. */
-	if (process.env.NODE_ENV === 'development') {
+	if (processEnv) {
 		import('../dev');
 	}
 };

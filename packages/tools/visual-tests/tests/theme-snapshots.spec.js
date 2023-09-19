@@ -62,7 +62,7 @@ ROUTES.forEach((options, route) => {
 		}
 		await expect(page).toHaveScreenshot({
 			fullPage: true,
-			maxDiffPixelRatio: 0.05,
+			maxDiffPixelRatio: 0.025,
 			...options,
 		});
 	});
