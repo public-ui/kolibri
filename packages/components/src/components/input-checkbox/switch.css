@@ -17,14 +17,13 @@
 			position: absolute;
 			transition: 0.5s;
 			width: 1.2em;
+		}
+		&:checked::before {
+			transform: translateX(1.5em);
+		}
 
-			&:checked {
-				transform: translateX(1.5em);
-			}
-
-			&:indeterminate {
-				transform: translateX(0.75em);
-			}
+		&:indeterminate::before {
+			transform: translateX(0.75em);
 		}
 	}
 	& .icon {
@@ -39,11 +38,10 @@
 		left: 4px;
 		transform: translate(0, -50%);
 		transition: 0.5s;
-		color: #fff;
+		color: #000;
 	}
 	&:has(input:checked) .icon {
 		transform: translate(1.5em, -50%);
-		color: #000;
 	}
 	&:has(input:indeterminate) .icon {
 		transform: translate(0.75em, -50%);
