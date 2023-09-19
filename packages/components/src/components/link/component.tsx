@@ -2,10 +2,10 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 
 import { translate } from '../../i18n';
 import { LinkUseCase } from '../../types/button-link';
-import { States as LinkStates } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
+import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaSelected } from '../../types/props/aria-selected';
@@ -14,16 +14,16 @@ import { validateHideLabel } from '../../types/props/hide-label';
 import { validateHref } from '../../types/props/href';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
+import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
+import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
 import { validateStealth } from '../../types/props/stealth';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
 import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
-import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
+import { States as LinkStates } from '../link/types';
 import { API } from './types';
-import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
 
 /**
  * @internal
@@ -90,6 +90,7 @@ export class KolLinkWc implements API {
 			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0);',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: isExternal ? 'noopener' : undefined,
+			download: (typeof this.state._download === 'string' && this.state._download === 'true') || this.state._download === true ? true : undefined,
 		};
 
 		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !this.state._label) {

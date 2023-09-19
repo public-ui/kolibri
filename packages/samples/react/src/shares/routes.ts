@@ -40,6 +40,12 @@ import { TEXTAREA_ROUTES } from '../components/textarea/routes';
 import { TOAST_ROUTES } from '../components/toast/routes';
 import { VERSION_ROUTES } from '../components/version/routes';
 import { Routes } from './types';
+import { IMAGE_ROUTES } from '../components/image/routes';
+import { KOLIBRI_ROUTES } from '../components/kolibri/routes';
+import { LOGO_ROUTES } from '../components/logo/routes';
+import { MODAL_ROUTES } from '../components/modal/routes';
+import { QUOTE_ROUTES } from '../components/quote/routes';
+import { TABS_ROUTES } from '../components/tabs/routes';
 
 export const ROUTES: Routes = {
 	...HANDOUT_ROUTES,
@@ -49,14 +55,15 @@ export const ROUTES: Routes = {
 	...AVATAR_ROUTES,
 	...BADGE_ROUTES,
 	...BREADCRUMB_ROUTES,
-	...BUTTON_ROUTES,
-	...BUTTON_LINK_ROUTES,
 	...BUTTON_GROUP_ROUTES,
+	...BUTTON_LINK_ROUTES,
+	...BUTTON_ROUTES,
 	...CARD_ROUTES,
 	...DETAILS_ROUTES,
 	...FORM_ROUTES,
 	...HEADING_ROUTES,
 	...ICON_ROUTES,
+	...IMAGE_ROUTES,
 	...INDENTED_ROUTES,
 	...INPUT_CHECKBOX_ROUTES,
 	...INPUT_COLOR_ROUTES,
@@ -68,19 +75,24 @@ export const ROUTES: Routes = {
 	...INPUT_RADIO_ROUTES,
 	...INPUT_RANGE_ROUTES,
 	...INPUT_TEXT_ROUTES,
-	...LINK_ROUTES,
+	...KOLIBRI_ROUTES,
 	...LINK_BUTTON_ROUTES,
 	...LINK_GROUP_ROUTES,
+	...LINK_ROUTES,
+	...LOGO_ROUTES,
+	...MODAL_ROUTES,
 	...NAV_ROUTES,
 	...PAGINATION_ROUTES,
 	...POPOVER_ROUTES,
 	...PROGRESS_ROUTES,
+	...QUOTE_ROUTES,
 	...SELECT_ROUTES,
 	...SELECT_ROUTES,
 	...SKIP_NAV_ROUTES,
 	...SPIN_ROUTES,
 	...SPLIT_BUTTON_ROUTES,
 	...TABLE_ROUTES,
+	...TABS_ROUTES,
 	...TEXTAREA_ROUTES,
 	...TOAST_ROUTES,
 	...VERSION_ROUTES,
