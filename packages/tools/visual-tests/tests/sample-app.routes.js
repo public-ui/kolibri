@@ -20,7 +20,7 @@ ROUTES.set('handout/basic', {
 		width: 1920,
 		height: 1280,
 	},
-	waitForTimeout: 1000,
+	waitForTimeout: 500,
 });
 ROUTES.set('abbr/basic', null);
 ROUTES.set('accordion/basic', null);
@@ -47,18 +47,16 @@ ROUTES.set('card/basic', null);
 ROUTES.set('card/confirm', null);
 ROUTES.set('card/flex', null);
 ROUTES.set('card/selection', null);
-ROUTES.set('details/basic', {
-	waitForTimeout: 500,
-});
+ROUTES.set('details/basic', null);
 ROUTES.set('heading/badge', null);
 ROUTES.set('heading/basic', null);
 ROUTES.set('heading/paragraph', null);
 ROUTES.set('icon/basic', null);
 ROUTES.set('image/basic', null);
 ROUTES.set('indented-text/basic', null);
-ROUTES.set('input-checkbox/basic', { waitForTimeout: 500 });
-ROUTES.set('input-checkbox/button', { waitForTimeout: 500 });
-ROUTES.set('input-checkbox/switch', { waitForTimeout: 500 });
+ROUTES.set('input-checkbox/basic', null);
+ROUTES.set('input-checkbox/button', null);
+ROUTES.set('input-checkbox/switch', null);
 ROUTES.set('input-color/basic', null);
 ROUTES.set('input-date/basic', null);
 ROUTES.set('input-email/basic', null);
@@ -67,14 +65,12 @@ ROUTES.set('input-number/basic', null);
 ROUTES.set('input-password/basic', null);
 ROUTES.set('input-password/show-password', null);
 ROUTES.set('input-radio/basic', null);
-ROUTES.set('input-radio/horizontal', {
-	waitForTimeout: 500,
-});
+ROUTES.set('input-radio/horizontal', null);
 ROUTES.set('input-radio/select', null);
 ROUTES.set('input-range/basic', null);
 ROUTES.set('input-text/basic', null);
 ROUTES.set('input-text/blur', null);
-ROUTES.set('input-text/focus', { waitForTimeout: 500 });
+ROUTES.set('input-text/focus', null);
 ROUTES.set('input-text/hidden-label', null);
 ROUTES.set('kolibri/animated', null);
 ROUTES.set('kolibri/basic', null);
