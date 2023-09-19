@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { LinkProps, States } from '../../link/types';
 import { getIconHtml } from '../../icon/test/html.mock';
+import { LinkProps, States } from '../../link/types';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
@@ -29,7 +29,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
 	}"${typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
 		typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
-	}>
+	}${state._download ? ' download' : ''}>
 			${getSpanWcHtml(
 				{
 					...state,
