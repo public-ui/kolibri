@@ -10,21 +10,33 @@
 	"private": false,
 	"scripts": {
 		"build": "unbuild",
+		"depcheck": "depcheck",
+		"format": "prettier --check src",
+		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild",
+		"test": "THEME_MODULE=src/index THEME_EXPORT={{capital name}} kolibri-visual-test",
+		"test-update": "THEME_MODULE=src/index THEME_EXPORT={{capital name}} kolibri-visual-test --update-snapshots",
+		"unused": "knip",
 		"update": "ncu -t minor -u && ncu"
 	},
-	"dependencies": {
-		"@public-ui/components":"1.7.0-rc.11"
-	},
 	"devDependencies": {
-		"@a11y-ui/core":"1.0.2",
-		"@types/node":"18.11.17",
-		"eslint":"8.30.0",
-		"npm-check-updates":"16.6.0",
-		"prettier":"2.8.1",
-		"ts-prune":"0.10.3",
-		"typescript":"4.9.4",
-		"unbuild":"1.2.1"
+		"@public-ui/components": "1.7.0-rc.11",
+		"@public-ui/schema": "1.7.0-rc.11",
+		"@public-ui/visual-tests": "1.7.0-rc.11",
+		"@types/node": "ts5.2",
+		"@typescript-eslint/eslint-plugin": "6.7.0",
+		"@typescript-eslint/parser": "6.7.0",
+		"depcheck": "1.4.6",
+		"eslint": "8.49.0",
+		"eslint-plugin-no-loops": "0.3.0",
+		"knip": "2.24.1",
+		"npm-check-updates":"16.14.4",
+		"prettier":"3.0.3",
+		"typescript": "5.2.2",
+		"unbuild": "1.2.1"
+	},
+	"peerDependencies": {
+		"@public-ui/components": "1.7.0-rc.11"
 	},
 	"sideEffects": false,
 	"type": "module",
@@ -40,10 +52,6 @@
 	"types": "./dist/index.d.ts",
 	"files": [
 		"assets",
-		"reports",
 		"dist"
-	],
-	"publishConfig": {
-		"access": "public"
-	}
+	]
 }

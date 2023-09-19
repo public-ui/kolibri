@@ -6,7 +6,7 @@ import { Option } from '@public-ui/components';
 import { KolAlert } from '@public-ui/react';
 import { ROUTES } from './shares/routes';
 import { Theme, THEME_OPTIONS } from './shares/theme';
-import PackageJson from '../package.json';
+import PackageJson from '@public-ui/components/package.json';
 import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
 import { Sidebar } from './components/Sidebar';
 import { useLocation } from 'react-router';

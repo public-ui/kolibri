@@ -14,7 +14,7 @@ export default defineConfig({
 	testDir: './tests',
 	snapshotDir: path.join(process.env.KOLIBRI_CWD, 'snapshots'),
 	// snapshotPathTemplate: '',
-	outputDir: path.join(process.env.KOLIBRI_CWD, 'test-results'),
+	outputDir: path.join(process.env.KOLIBRI_CWD, '.reports/visual-tests'),
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -52,7 +52,7 @@ export default defineConfig({
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
-		command: `http-server ${process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH} -p ${PORT}`,
+		command: `serve ${process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH} -p ${PORT}`,
 		url: URL,
 		reuseExistingServer: false,
 	},

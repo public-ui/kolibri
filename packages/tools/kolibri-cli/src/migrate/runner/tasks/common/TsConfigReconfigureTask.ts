@@ -1,8 +1,4 @@
-import fs from 'fs';
-import path from 'path';
-import merge from 'deepmerge';
-
-import { MODIFIED_FILES, logAndCreateError } from '../../../shares/reuse';
+import { logAndCreateError } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 
 export class TsConfigReconfigureTask extends AbstractTask {
@@ -42,15 +38,18 @@ export class TsConfigReconfigureTask extends AbstractTask {
 	}
 
 	public run(): void {
-		const configPath = path.join(process.cwd(), 'tsconfig.json');
-		if (fs.existsSync(configPath)) {
-			try {
-				const fileContent = merge(JSON.parse(fs.readFileSync(configPath, 'utf8')) as Record<string, unknown>, this.config);
-				fs.writeFileSync(configPath, JSON.stringify(fileContent, null, 2));
-				MODIFIED_FILES.add(configPath);
-			} catch (e) {
-				// empty
-			}
-		}
+		/**
+		 * The tsconfig.json shows an error, if we add `@public-ui/components` to the `types` property list.
+		 */
+		// const configPath = path.join(process.cwd(), 'tsconfig.json');
+		// if (fs.existsSync(configPath)) {
+		// 	try {
+		// 		const fileContent = merge(JSON.parse(fs.readFileSync(configPath, 'utf8')) as Record<string, unknown>, this.config);
+		// 		fs.writeFileSync(configPath, JSON.stringify(fileContent, null, 2));
+		// 		MODIFIED_FILES.add(configPath);
+		// 	} catch (e) {
+		// 		// empty
+		// 	}
+		// }
 	}
 }

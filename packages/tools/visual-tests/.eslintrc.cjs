@@ -1,18 +1,19 @@
 module.exports = {
 	env: {
+		es6: true,
 		node: true,
 	},
 	root: true,
 	extends: ['eslint:recommended'],
 	parser: '@babel/eslint-parser',
 	parserOptions: {
-		requireConfigFile: false,
 		babelOptions: {
 			babelrc: false,
 			configFile: false,
-			// your babel options
+			plugins: ['@babel/plugin-syntax-import-attributes'],
 			presets: ['@babel/preset-env'],
 		},
+		requireConfigFile: false,
 	},
 	plugins: ['no-loops'],
 };
