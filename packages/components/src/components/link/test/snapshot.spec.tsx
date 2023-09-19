@@ -3,8 +3,8 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
-import { LinkProps } from '../../link/types';
 import { COMPONENTS } from '../../component-list';
+import { LinkProps } from '../../link/types';
 import { getLinkHtml } from './html.mock';
 
 executeTests<LinkProps>(
@@ -24,6 +24,7 @@ executeTests<LinkProps>(
 		_target: ['_self', '_blank', 'egal'],
 		_targetDescription: ['Der Link wird in einem neuen Tab geöffnet.'],
 		_tooltipAlign: ['top', 'right', 'bottom', 'left'],
+		_download: [true, false],
 	},
 	getLinkHtml,
 	{
