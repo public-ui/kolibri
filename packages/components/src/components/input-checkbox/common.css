@@ -35,6 +35,9 @@ kol-input kol-alert.error {
 kol-input .hint {
 	order: 4;
 }
+.error.hidden {
+	display: none;
+}
 input {
 	border-width: 2px;
 	border-style: solid;

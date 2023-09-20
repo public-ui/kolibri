@@ -12,6 +12,7 @@ import { PropDisabled } from '../../types/props/disabled';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropName } from '../../types/props/name';
 import { PropTouched } from '../../types/props/touched';
+import { PropHideError } from '../../types/props/hide-error';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -30,6 +31,7 @@ type OptionalProps = {
 	tabIndex: number;
 	value: string;
 } & PropDisabled &
+	PropHideError &
 	PropHideLabel &
 	PropLabelWithExpertSlot &
 	PropName &
@@ -42,7 +44,8 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
 	suggestions: W3CInputValue[];
-} & PropLabelWithExpertSlot;
+} & PropHideError &
+	PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;

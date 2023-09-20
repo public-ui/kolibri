@@ -20,6 +20,7 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
+import { HideErrorPropType } from '../../types/props/hide-error';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
@@ -83,6 +84,7 @@ export class KolInputText implements API {
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
+					_hideError={this.state._hideError}
 					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
@@ -176,6 +178,12 @@ export class KolInputText implements API {
 	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCounter?: boolean;
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
 	 * Hides the label.
@@ -296,8 +304,9 @@ export class KolInputText implements API {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_currentLength: 0,
-		_id: `id-${nonce()}`, // ⚠ required
 		_hasValue: false,
+		_hideError: false,
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_suggestions: [],
 		_type: 'text',
@@ -335,6 +344,11 @@ export class KolInputText implements API {
 	@Watch('_hasCounter')
 	public validateHasCounter(value?: boolean): void {
 		this.controller.validateHasCounter(value);
+	}
+
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
 	}
 
 	@Watch('_hideLabel')

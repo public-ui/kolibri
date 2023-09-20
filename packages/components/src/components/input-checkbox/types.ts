@@ -13,6 +13,7 @@ import { PropHideLabel } from '../../types/props/hide-label';
 import { PropName } from '../../types/props/name';
 import { PropRequired } from '../../types/props/required';
 import { PropTouched } from '../../types/props/touched';
+import { PropHideError } from '../../types/props/hide-error';
 
 export type InputCheckboxVariant =
 	| 'button'
@@ -51,6 +52,7 @@ type OptionalProps = {
 	variant: InputCheckboxVariant;
 } & PropChecked &
 	PropDisabled &
+	PropHideError &
 	PropHideLabel &
 	PropIndeterminate &
 	PropLabelWithExpertSlot &
@@ -66,6 +68,7 @@ type RequiredStates = {
 	value: StencilUnknown;
 	variant: InputCheckboxVariant;
 } & PropChecked &
+	PropHideError &
 	PropIndeterminate &
 	PropLabelWithExpertSlot;
 type OptionalStates = {

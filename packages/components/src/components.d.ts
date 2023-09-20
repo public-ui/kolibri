@@ -791,6 +791,11 @@ export namespace Components {
          */
         "_hasCounter"?: boolean;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -871,6 +876,11 @@ export namespace Components {
           * Defines the error message text.
          */
         "_error"?: string;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -964,6 +974,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -1049,6 +1064,11 @@ export namespace Components {
           * Defines the error message text.
          */
         "_error"?: string;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -1167,6 +1187,11 @@ export namespace Components {
          */
         "_hasCounter"?: boolean;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -1284,6 +1309,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -1370,6 +1400,11 @@ export namespace Components {
           * Defines the error message text.
          */
         "_error"?: string;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -1493,6 +1528,11 @@ export namespace Components {
          */
         "_hasCounter"?: boolean;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -1591,6 +1631,11 @@ export namespace Components {
           * Defines the error message text.
          */
         "_error"?: string;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -1749,6 +1794,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -1848,6 +1898,11 @@ export namespace Components {
           * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -2514,6 +2569,11 @@ export namespace Components {
          */
         "_height"?: string;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -2859,6 +2919,11 @@ export namespace Components {
           * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -4107,6 +4172,11 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: boolean;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -4187,6 +4257,11 @@ declare namespace LocalJSX {
           * Defines the error message text.
          */
         "_error"?: string;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label and shows the description in a Tooltip instead.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -4280,6 +4355,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -4365,6 +4445,11 @@ declare namespace LocalJSX {
           * Defines the error message text.
          */
         "_error"?: string;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -4483,6 +4568,11 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: boolean;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -4600,6 +4690,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -4686,6 +4781,11 @@ declare namespace LocalJSX {
           * Defines the error message text.
          */
         "_error"?: string;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -4809,6 +4909,11 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: boolean;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -4907,6 +5012,11 @@ declare namespace LocalJSX {
           * Defines the error message text.
          */
         "_error"?: string;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -5065,6 +5175,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -5164,6 +5279,11 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -5830,6 +5950,11 @@ declare namespace LocalJSX {
          */
         "_height"?: string;
         /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
+        /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -6175,6 +6300,11 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
+        /**
+          * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+          * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+         */
+        "_hideError"?: boolean;
         /**
           * Hides the label.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
