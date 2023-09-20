@@ -6,10 +6,11 @@ export const propagateFocus = <H extends HTMLElement, R extends HTMLElement>(hos
 	}
 };
 
-type ProzessEnv = 'development' | 'production' | 'test';
-export let processEnv: ProzessEnv = 'development';
+const PROCESS_ENVS = ['development', 'production', 'test'] as const;
+type ProcessEnv = (typeof PROCESS_ENVS)[number];
+export let processEnv: ProcessEnv = 'development';
 try {
-	processEnv = process.env.NODE_ENV as ProzessEnv;
+	processEnv = process.env.NODE_ENV as ProcessEnv;
 } catch (e) {
 	processEnv = 'production';
 }
