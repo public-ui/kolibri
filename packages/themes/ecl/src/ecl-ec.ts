@@ -156,7 +156,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		outline: 2px solid var(--color-blue);
 		outline-offset: -2px;
 	}
-	div[part="content"] {
+	.content {
 		padding: var(--spacing-s) var(--spacing-m);
 	}`,
 	'KOL-INDENTED-TEXT': `:host > div {

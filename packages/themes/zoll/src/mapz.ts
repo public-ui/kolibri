@@ -1436,6 +1436,9 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		font-weight: inherit;
 		font-size: inherit;
 		line-height: inherit;
+	}
+	.content {
+		padding: 0.5rem;
 	}`,
 	'KOL-CARD': `:host > div {
 		border-color: var(--kolibri-border-color);

@@ -1117,6 +1117,9 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-size: inherit;
 		line-height: inherit;
 	}
+	.content {
+		padding: 0.5rem;
+	}
 	:host > div > kol-heading-wc button kol-icon::part(close)::before {
 		font-family: "Font Awesome 6 Free";
 		content: "\\f077";
