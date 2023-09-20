@@ -260,7 +260,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	.open .headline button kol-icon::part(icon)::before {
 		content: "\\f077";
 	}
-	.close .headline button kol-icon::part(icon)::before {
+	:not(.open) .headline button kol-icon::part(icon)::before {
 		content: "\\f078";
 	}
 	.content,

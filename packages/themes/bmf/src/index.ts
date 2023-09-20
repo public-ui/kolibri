@@ -1510,7 +1510,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f078";
 	}
-	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
+	:host > div:not(.open) > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f054";
 	}
 	:host > div {

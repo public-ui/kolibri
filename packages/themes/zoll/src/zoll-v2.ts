@@ -375,7 +375,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f077";
 	}
-	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
+	:host > div:not(.open) > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f078";
 	}`,
 	'KOL-ALERT': `kol-alert-wc {
