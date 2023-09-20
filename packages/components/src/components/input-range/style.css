@@ -42,3 +42,6 @@ input[type='range']::-moz-range-thumb {
 	cursor: pointer;
 	-moz-appearance: none;
 }
+.error.hidden {
+	display: none;
+}

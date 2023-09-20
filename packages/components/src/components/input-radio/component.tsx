@@ -17,6 +17,7 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
+import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -48,6 +49,7 @@ export class KolInputRadio implements API {
 						disabled: this.state._disabled === true,
 						error: hasError === true,
 						required: this.state._required === true,
+						'hidden-error': this._hideError === true,
 						[this.state._orientation]: true,
 					}}
 				>
@@ -127,7 +129,7 @@ export class KolInputRadio implements API {
 						);
 					})}
 					{hasError && (
-						<kol-alert id="error" _alert={true} _type="error" _variant="msg">
+						<kol-alert id="error" _alert={true} _type="error" _variant="msg" aria-hidden={this._hideError} class={`error${this._hideError ? ' hidden' : ''}`}>
 							{this.state._error}
 						</kol-alert>
 					)}
@@ -158,6 +160,12 @@ export class KolInputRadio implements API {
 	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
 	 * Hides the label.
@@ -241,6 +249,7 @@ export class KolInputRadio implements API {
 	@Prop() public _value?: Stringified<W3CInputValue>;
 
 	@State() public state: States = {
+		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_options: [],
@@ -274,6 +283,11 @@ export class KolInputRadio implements API {
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
 		this.controller.validateHideLabel(value);
+	}
+
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
 	}
 
 	@Watch('_hint')

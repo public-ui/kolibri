@@ -43,6 +43,7 @@ export class KolInput implements Props {
 					'read-only': this._readOnly === true,
 					required: this._required === true,
 					touched: this._touched === true,
+					'hidden-error': this._hideError === true,
 				}}
 			>
 				{this._renderNoLabel === false && (
@@ -84,7 +85,14 @@ export class KolInput implements Props {
 					{this._icon?.right && <kol-icon _ariaLabel="" _icon={(this._icon.right as KoliBriCustomIcon).icon}></kol-icon>}
 				</div>
 				{hasError && (
-					<kol-alert class="error" id={`${this._id}-error`} _alert={this._alert} _type="error" _variant="msg">
+					<kol-alert
+						_alert={this._alert}
+						_type="error"
+						_variant="msg"
+						aria-hidden={this._hideError}
+						class={`error${this._hideError ? ' hidden' : ''}`}
+						id={`${this._id}-error`}
+					>
 						{this._error}
 					</kol-alert>
 				)}
@@ -140,6 +148,12 @@ export class KolInput implements Props {
 	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCounter?: boolean;
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideError?: boolean = false;
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.

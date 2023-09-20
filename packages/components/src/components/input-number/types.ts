@@ -16,6 +16,7 @@ import { PropName } from '../../types/props/name';
 import { PropRequired } from '../../types/props/required';
 import { PropReadOnly } from '../../types/props/read-only';
 import { PropTouched } from '../../types/props/touched';
+import { PropHideError } from '../../types/props/hide-error';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -26,6 +27,7 @@ type OptionalProps = {
 	 */
 	list: SuggestionsPropType;
 } & OptionalInputProps<number | Iso8601> &
+	PropHideError &
 	PropLabelWithExpertSlot &
 	PropSuggestions;
 
@@ -35,6 +37,7 @@ type RequiredStates = {
 	suggestions: W3CInputValue[];
 	type: InputNumberType;
 } & PropId &
+	PropHideError &
 	PropLabelWithExpertSlot;
 
 type OptionalStates = {
