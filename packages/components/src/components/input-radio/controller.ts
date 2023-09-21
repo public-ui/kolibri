@@ -12,6 +12,8 @@ import { mapString2Unknown, setState, watchValidator } from '../../utils/prop.va
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
+import { a11yHint } from '../../utils/a11y.tipps';
 
 export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, options: SelectOption<T>[], preKey = ''): void => {
 	options.forEach((option, index) => {
@@ -39,6 +41,18 @@ export class InputCheckboxRadioController extends InputController implements Inp
 	public constructor(component: Generic.Element.Component & InputCheckboxRadioProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
+	}
+
+	public validateHideError(value?: HideErrorPropType): void {
+		validateHideError(this.component, value, {
+			hooks: {
+				afterPatch: () => {
+					if (this.component.state._hideError) {
+						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
+					}
+				},
+			},
+		});
 	}
 
 	public validateRequired(value?: boolean): void {
@@ -129,6 +143,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 
 		this.validateOrientation(this.component._orientation);
 		this.validateOptions(this.component._options || this.component._list);
+		this.validateHideError(this.component._hideError);
 		this.validateValue(this.component._value);
 	}
 }

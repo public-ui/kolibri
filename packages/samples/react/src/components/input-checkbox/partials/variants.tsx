@@ -18,11 +18,52 @@ export const InputCheckboxVariant: FC<Props> = ({ variant }) => {
 	return (
 		<fieldset>
 			<legend>Checkbox ({variant})</legend>
-			<KolInputCheckbox _variant={variant} _label="Nicht ausgewählt" _value={false} />
-			<KolInputCheckbox _variant={variant} _label="Unbestimmt (Indeterminate)" _value={null} _indeterminate />
-			<KolInputCheckbox _variant={variant} _label="Ausgewählt" _value={true} _checked />
-			<KolInputCheckbox _variant={variant} _label="Disabled" _value={true} _disabled />
-			<KolInputCheckbox ref={ref} _variant={variant} _label="Mit Fehler" _value={true} _error={ERROR_MSG} _touched />
+			<KolInputCheckbox
+				_icon={{
+					unchecked: 'codicon codicon-close',
+				}}
+				_variant={variant}
+				_label="Nicht ausgewählt"
+				_value={false}
+			/>
+			<KolInputCheckbox
+				_icon={{
+					unchecked: 'codicon codicon-close',
+				}}
+				_variant={variant}
+				_label="Unbestimmt (Indeterminate)"
+				_value={null}
+				_indeterminate
+			/>
+			<KolInputCheckbox
+				_icon={{
+					unchecked: 'codicon codicon-close',
+				}}
+				_variant={variant}
+				_label="Ausgewählt"
+				_value={true}
+				_checked
+			/>
+			<KolInputCheckbox
+				_icon={{
+					unchecked: 'codicon codicon-close',
+				}}
+				_variant={variant}
+				_label="Disabled"
+				_value={true}
+				_disabled
+			/>
+			<KolInputCheckbox
+				ref={ref}
+				_icon={{
+					unchecked: 'codicon codicon-close',
+				}}
+				_variant={variant}
+				_label="Mit Fehler"
+				_value={true}
+				_error={ERROR_MSG}
+				_touched
+			/>
 		</fieldset>
 	);
 };

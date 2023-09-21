@@ -13,6 +13,7 @@ import { PropSuggestions } from '../../types/props/suggestions';
 import { PropTouched } from '../../types/props/touched';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropId } from '../../types/props/id';
+import { PropHideError } from '../../types/props/hide-error';
 
 type RequiredProps = PropId;
 type OptionalProps = {
@@ -26,6 +27,7 @@ type OptionalProps = {
 } & PropAlert &
 	PropDisabled &
 	PropHasCounter &
+	PropHideError &
 	PropHideLabel &
 	PropReadOnly &
 	PropRequired &

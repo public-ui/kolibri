@@ -9,13 +9,14 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
-import { API, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
+import { API, InputCheckboxIconProp, InputCheckboxVariant, States } from './types';
 import { CheckedPropType } from '../../types/props/checked';
 import { IndeterminatePropType } from '../../types/props/indeterminate';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -55,6 +56,7 @@ export class KolInputCheckbox implements API {
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
+					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_id={this.state._id}
@@ -65,9 +67,10 @@ export class KolInputCheckbox implements API {
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input">
 						<kol-icon
-							onClick={this.onChange}
-							_ariaLabel=""
+							class="icon"
+							onClick={this.handleIconClick.bind(this)}
 							_icon={this.state._indeterminate ? this.state._icon.indeterminate : this.state._checked ? this.state._icon.checked : this.state._icon.unchecked}
+							_label=""
 						/>
 						<input
 							ref={this.catchRef}
@@ -123,6 +126,12 @@ export class KolInputCheckbox implements API {
 	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
 
 	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+
+	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
@@ -147,7 +156,7 @@ export class KolInputCheckbox implements API {
 	/**
 	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
-	@Prop() public _icon?: Stringified<InputCheckboxIcon>;
+	@Prop() public _icon?: Stringified<InputCheckboxIconProp>;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -222,6 +231,7 @@ export class KolInputCheckbox implements API {
 
 	@State() public state: States = {
 		_checked: false,
+		_hideError: false,
 		_icon: {
 			checked: 'codicon codicon-check',
 			indeterminate: 'codicon codicon-remove',
@@ -263,6 +273,11 @@ export class KolInputCheckbox implements API {
 		this.controller.validateError(value);
 	}
 
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
+	}
+
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
 		this.controller.validateHideLabel(value);
@@ -274,7 +289,7 @@ export class KolInputCheckbox implements API {
 	}
 
 	@Watch('_icon')
-	public validateIcon(value?: Stringified<InputCheckboxIcon>): void {
+	public validateIcon(value?: Stringified<InputCheckboxIconProp>): void {
 		this.controller.validateIcon(value);
 	}
 
@@ -342,6 +357,12 @@ export class KolInputCheckbox implements API {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
+	}
+
+	private handleIconClick(event: Event): void {
+		if (!this.state._disabled) {
+			this.onChange(event);
+		}
 	}
 
 	private onChange = (event: Event): void => {

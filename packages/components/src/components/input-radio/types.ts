@@ -13,6 +13,7 @@ import { PropName } from '../../types/props/name';
 import { PropRequired } from '../../types/props/required';
 import { PropTouched } from '../../types/props/touched';
 import { PropId } from '../../types/props/id';
+import { PropHideError } from '../../types/props/hide-error';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -29,6 +30,7 @@ type OptionalProps = {
 	tabIndex: number;
 	value: W3CInputValue;
 } & PropDisabled &
+	PropHideError &
 	PropHideLabel &
 	PropLabelWithExpertSlot &
 	PropName &
@@ -42,6 +44,7 @@ type RequiredStates = {
 	options: Option<W3CInputValue>[];
 	orientation: Orientation;
 } & PropId &
+	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;

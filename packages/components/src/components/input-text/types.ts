@@ -17,6 +17,7 @@ import { PropName } from '../../types/props/name';
 import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
 import { PropTouched } from '../../types/props/touched';
+import { PropHideError } from '../../types/props/hide-error';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -44,6 +45,7 @@ type OptionalProps = {
 	value: string;
 } & PropDisabled &
 	PropHasCounter &
+	PropHideError &
 	PropHideLabel &
 	PropId &
 	PropLabelWithExpertSlot &
@@ -61,6 +63,7 @@ type RequiredStates = {
 	suggestions: W3CInputValue[];
 	type: InputTextType;
 } & PropId &
+	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
