@@ -81,7 +81,8 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 								<ul className="list-inside ml p0">
 									{Object.keys(children).map((childName) => (
 										<li key={`${parentName}/${childName}`}>
-											<KolLink _label={childName} _href={`#/${parentName}/${childName}`} _on={{ onClick: handleLinkClick }} />
+											<KolLink _label={childName} _href={`#/${parentName}/${childName}`} _on={{ onClick: handleLinkClick }} />{' '}
+											<KolLink _label="(alle Themes)" _href={`#/${parentName}/${childName}/all`} _on={{ onClick: handleLinkClick }} />
 										</li>
 									))}
 								</ul>
