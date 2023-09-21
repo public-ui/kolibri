@@ -67,7 +67,8 @@ export class KolInputCheckbox implements API {
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input">
 						<kol-icon
-							onClick={this.onChange}
+							class="icon"
+							onClick={this.handleIconClick.bind(this)}
 							_ariaLabel=""
 							_icon={this.state._indeterminate ? this.state._icon.indeterminate : this.state._checked ? this.state._icon.checked : this.state._icon.unchecked}
 						/>
@@ -356,6 +357,12 @@ export class KolInputCheckbox implements API {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
+	}
+
+	private handleIconClick(event: Event): void {
+		if (!this.state._disabled) {
+			this.onChange(event);
+		}
 	}
 
 	private onChange = (event: Event): void => {
