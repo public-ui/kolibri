@@ -15,6 +15,7 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -52,6 +53,7 @@ export class KolInputColor implements API {
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_icon={this.state._icon}
+					_hideError={this.state._hideError}
 					_id={this.state._id}
 					_suggestions={this.state._suggestions}
 					_smartButton={this.state._smartButton}
@@ -124,6 +126,12 @@ export class KolInputColor implements API {
 	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
 	 * Hides the label.
@@ -206,6 +214,7 @@ export class KolInputColor implements API {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
+		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_suggestions: [],
@@ -238,6 +247,11 @@ export class KolInputColor implements API {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
 	}
 
 	@Watch('_hideLabel')

@@ -13,6 +13,7 @@ import { PropName } from '../../types/props/name';
 import { PropRequired } from '../../types/props/required';
 import { PropTouched } from '../../types/props/touched';
 import { PropId } from '../../types/props/id';
+import { PropHideError } from '../../types/props/hide-error';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -27,6 +28,7 @@ type OptionalProps = {
 	tabIndex: number;
 	value: string;
 } & PropDisabled &
+	PropHideError &
 	PropHideLabel &
 	PropLabelWithExpertSlot &
 	PropMultiple &
@@ -36,7 +38,7 @@ type OptionalProps = {
 	PropTouched;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = PropId & PropLabelWithExpertSlot;
+type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideError;
 type OptionalStates = {
 	accept: string;
 	alert: boolean;

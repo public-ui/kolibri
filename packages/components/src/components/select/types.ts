@@ -15,6 +15,7 @@ import { PropName } from '../../types/props/name';
 import { PropRequired } from '../../types/props/required';
 import { PropTouched } from '../../types/props/touched';
 import { PropId } from '../../types/props/id';
+import { PropHideError } from '../../types/props/hide-error';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -40,6 +41,7 @@ type OptionalProps = {
 	value: Stringified<W3CInputValue[]>;
 } & PropDisabled &
 	PropHideLabel &
+	PropHideError &
 	PropLabelWithExpertSlot &
 	PropMultiple &
 	PropName &
@@ -55,6 +57,7 @@ type RequiredStates = {
 	options: SelectOption<W3CInputValue>[];
 	value: W3CInputValue[];
 } & PropId &
+	PropHideError &
 	PropMultiple &
 	PropLabelWithExpertSlot;
 type OptionalStates = {

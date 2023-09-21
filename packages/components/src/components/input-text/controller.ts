@@ -8,6 +8,8 @@ import { PropSuggestions, SuggestionsPropType, validateSuggestions } from '../..
 import { watchValidator } from '../../utils/prop.validators';
 import { InputPasswordController } from '../input-password/controller';
 import { Props as InputTextProps, Watches as InputTextWatches } from './types';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
+import { a11yHint } from '../../utils/a11y.tipps';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -24,6 +26,18 @@ export class InputTextEmailController extends InputPasswordController implements
 	public constructor(component: Generic.Element.Component & InputTextEmailProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
+	}
+
+	public validateHideError(value?: HideErrorPropType): void {
+		validateHideError(this.component, value, {
+			hooks: {
+				afterPatch: () => {
+					if (this.component.state._hideError) {
+						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
+					}
+				},
+			},
+		});
 	}
 
 	/**
@@ -68,6 +82,7 @@ export class InputTextController extends InputTextEmailController implements Inp
 
 	public componentWillLoad(): void {
 		super.componentWillLoad();
+		this.validateHideError(this.component._hideError);
 		this.validateType(this.component._type);
 		this.validateHasCounter(this.component._hasCounter);
 	}

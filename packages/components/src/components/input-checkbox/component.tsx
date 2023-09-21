@@ -16,6 +16,7 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -55,6 +56,7 @@ export class KolInputCheckbox implements API {
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
+					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_id={this.state._id}
@@ -121,6 +123,12 @@ export class KolInputCheckbox implements API {
 	 * @TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -222,6 +230,7 @@ export class KolInputCheckbox implements API {
 
 	@State() public state: States = {
 		_checked: false,
+		_hideError: false,
 		_icon: {
 			checked: 'codicon codicon-check',
 			indeterminate: 'codicon codicon-remove',
@@ -261,6 +270,11 @@ export class KolInputCheckbox implements API {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
 	}
 
 	@Watch('_hideLabel')

@@ -13,6 +13,7 @@ import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
 import { PropTouched } from '../../types/props/touched';
 import { PropId } from '../../types/props/id';
+import { PropHideError } from '../../types/props/hide-error';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 
@@ -31,6 +32,7 @@ type OptionalProps = {
 } & PropAdjustHeight &
 	PropDisabled &
 	PropHasCounter &
+	PropHideError &
 	PropHideLabel &
 	PropLabelWithExpertSlot &
 	PropName &
@@ -48,6 +50,7 @@ type RequiredStates = {
 	resize: CSSResize;
 } & PropId &
 	PropAdjustHeight &
+	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
