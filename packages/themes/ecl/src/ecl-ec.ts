@@ -355,7 +355,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		color: var(--color-blue-130);
 	}`,
 	'KOL-BADGE': `:host > span {
-		font: normal normal var(--font-weight) 0.875rem/1em var(--font-family);
+		font: normal normal var(--font-weight) 1em var(--font-family);
 		padding: calc(0.5rem - 1px) calc(0.75rem - 1px);
 		text-transform: uppercase;
 	}`,
@@ -636,6 +636,13 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	}
 	kol-input {
 		gap: var(--spacing-xs);
+	}
+	.button {
+		gap: var(--spacing-xs) 0;
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
 	}
 	kol-input > .input {
 		order: 2;

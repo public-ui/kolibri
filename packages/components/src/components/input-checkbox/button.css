@@ -1,8 +1,31 @@
 .button {
-	cursor: pointer;
-	display: inline-flex;
-	width: auto;
+	display: grid;
+	grid-template-columns: var(--a11y-min-size) auto;
+	grid-template-areas: 'error error' 'input label' 'hint hint';
+}
+.button[tabindex]:focus {
+	/* override global `[tabindex]:focus` style */
+	cursor: inherit;
 }
 .button input {
 	display: none;
+}
+.button > .error {
+	grid-area: error;
+}
+.button > label {
+	grid-area: label;
+}
+.button > .input {
+	grid-area: input;
+}
+.button > .hint {
+	grid-area: hint;
+}
+.button .icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--a11y-min-size);
+	height: var(--a11y-min-size);
 }

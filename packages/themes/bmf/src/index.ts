@@ -1093,9 +1093,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host > span {
 		border-radius: 0.3125rem;
 		display: inline-flex;
-		font-size: 1em;
 		font-style: normal;
-		line-height: 1.25rem;
 	}
 	:host > span.smart-button {
 		align-items: center;
@@ -1787,13 +1785,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		justify-items: left;
 		width: 100%;
 		min-height: 44px;
-		gap: 0.4em;
 	}
 	:host kol-input.default {
 		grid-template-columns: 1.5rem auto;
+		gap: 0.4em;
 	}
 	:host kol-input.switch {
 		grid-template-columns: 3.5rem auto;
+		gap: 0.4em;
 	}
 	:host kol-input > div.input {
 		display: inherit;
@@ -1975,15 +1974,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host .disabled {
 		opacity: 0.33;
 	}
+
 	:host kol-input.button {
-		cursor: inherit;
-		display: grid;
-		column-gap: 0;
-		grid-template-columns: 32px auto;
-		grid-template-areas:
-			"error error"
-			"input label"
-			"hint hint";
+		row-gap: 0.5rem;
 	}
 
 	:host kol-input.button.checked > .input,
@@ -1991,12 +1984,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background-color: var(--color-ice);
 	}
 
-	:host kol-input.button > .error {
-		grid-area: error;
-	}
-
 	:host kol-input.button > label {
-		grid-area: label;
 		background-color: var(--color-silver);
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
@@ -2008,7 +1996,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 
 	:host kol-input.button > .input {
-		grid-area: input;
 		background-color: var(--color-silver);
 		border-top-left-radius: var(--border-radius);
 		border-bottom-left-radius: var(--border-radius);
@@ -2017,12 +2004,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 		place-content: center;
 	}
 
-	:host kol-input.button > .hint {
-		grid-area: hint;
-	}
-
 	:host kol-input.button > .input > div {
 		display: flex;
+	}
+
+	:host kol-input.button .icon {
+		height: auto;
 	}
 `,
 	'KOL-INPUT-RADIO': `/* INPUT */

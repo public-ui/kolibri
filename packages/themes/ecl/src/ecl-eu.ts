@@ -763,6 +763,13 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	kol-input {
 		gap: var(--spacing-xs);
 	}
+	.button {
+		gap: var(--spacing-xs) 0;
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
+	}
 	kol-input > .input {
 		order: 2;
 	}

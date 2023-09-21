@@ -731,6 +731,9 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	:host .default {
 		border-color: var(--color-anthrazit);
 	}
+	.heading {
+		gap: 0.5rem;
+	}
 	.default .heading-icon {
 		background-color: var(--color-anthrazit);
 	}
@@ -804,7 +807,6 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	:host > span {
 		border-radius: 0.3125rem;
 		display: inline-flex;
-		line-height: 1.25rem;
 	}
 	:host > span kol-button-wc {
 		border-left: 1px solid rgba(0, 0, 0, 0.25);
@@ -1329,8 +1331,15 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	kol-input.default {
 		grid-template-columns: calc(6 * 2 * var(--spacing)) auto;
 	}
-	kol-input.switch {
+	.switch {
 		grid-template-columns: calc(13 * 2 * var(--spacing)) auto;
+	}
+	.button {
+		gap: 0.5rem 0;
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
 	}
 	kol-input > div.input {
 		display: inline-flex;

@@ -1010,12 +1010,12 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-BADGE': css`
 		:host {
 			display: inline-block;
+			font-size: inherit;
 		}
 		:host > span {
 			border-radius: var(--border-radius);
 			display: inline-flex;
 			font-style: normal;
-			line-height: 1.25rem;
 		}
 		:host > span.smart-button {
 			align-items: center;
@@ -1644,6 +1644,9 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		}
 		:host kol-input.switch {
 			grid-template-columns: 3.5rem auto;
+		}
+		:host kol-input.button {
+			gap: 0.4rem 0;
 		}
 		:host kol-input > div.input {
 			display: inherit;

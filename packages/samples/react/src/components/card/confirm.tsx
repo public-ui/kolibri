@@ -11,7 +11,7 @@ export const CardConfirm: FC = () => (
 			perferendis qui animi nesciunt illo facere, doloribus sint cupiditate nihil dolorem voluptate ab esse! Ducimus ad est commodi molestias voluptas
 			reiciendis.
 		</p>
-		<div slot="footer" className="d-flex gap-2 float-end">
+		<div slot="footer" className="flex gap-2 flex-justify-end">
 			<KolButton className="w-12rem" _variant="primary" _label="Speichern"></KolButton>
 			<KolButton className="w-12rem" _variant="secondary" _label="Abbrechen"></KolButton>
 		</div>

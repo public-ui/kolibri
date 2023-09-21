@@ -100,7 +100,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	:host > span {
 		border-radius: 0.3125rem;
 		display: inline-flex;
-		line-height: 1.25rem;
 	}
 	:host > span kol-span-wc {
 		padding: 0.25rem 0.5rem;
@@ -445,7 +444,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		display: flex;
 		gap: var(--spacing);
 		flex-grow: 1;
-		align-items: flex-start;
+		align-items: center;
 	}
 	.msg .heading > div {
 		display: flex;
@@ -819,6 +818,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	kol-input.switch {
 		grid-template-columns: calc(13 * var(--spacing)) auto;
+	}
+	.button {
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
+		gap: 0.5rem 0;
 	}
 	kol-input > div.input {
 		display: inline-flex;

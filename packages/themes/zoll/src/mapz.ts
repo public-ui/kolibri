@@ -888,6 +888,9 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	kol-input.switch {
 		grid-template-columns: calc(13 * var(--spacing)) auto;
 	}
+	.button {
+		gap: 0.5rem 0;
+	}
 	kol-input > div.input {
 		display: inline-flex;
 		order: 1;
