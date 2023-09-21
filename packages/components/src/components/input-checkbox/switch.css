@@ -24,6 +24,7 @@
 	transform: translateX(0.75em);
 }
 .switch .icon {
+	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -42,4 +43,16 @@
 }
 .switch:has(input:indeterminate) .icon {
 	transform: translate(0.75em, -50%);
+}
+
+/* Incomming */
+.switch .icon {
+	left: 0;
+	transform: translate(0.15em, -48%);
+}
+.switch:has(input:checked) .icon {
+	transform: translate(2.15em, -48%);
+}
+.switch:has(input:indeterminate) .icon {
+	transform: translate(1.15em, -48%);
 }

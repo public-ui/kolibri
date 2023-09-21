@@ -36,7 +36,7 @@ import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { SuggestionsPropType } from "./types/props/suggestions";
-import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
+import { InputCheckboxIconProp, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
@@ -95,7 +95,7 @@ export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { SuggestionsPropType } from "./types/props/suggestions";
-export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
+export { InputCheckboxIconProp, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
@@ -893,7 +893,7 @@ export namespace Components {
         /**
           * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
-        "_icon"?: Stringified<InputCheckboxIcon>;
+        "_icon"?: Stringified<InputCheckboxIconProp>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -4274,7 +4274,7 @@ declare namespace LocalJSX {
         /**
           * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
          */
-        "_icon"?: Stringified<InputCheckboxIcon>;
+        "_icon"?: Stringified<InputCheckboxIconProp>;
         /**
           * Defines the internal ID of the primary component element.
          */

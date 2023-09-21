@@ -21,17 +21,26 @@ export type InputCheckboxVariant =
 	| 'default'
 	| 'switch';
 
-export type InputCheckboxIcon = {
+export type InputCheckboxIconProp =
+	| {
+			checked: AnyIconFontClass;
+			indeterminate?: AnyIconFontClass;
+			unchecked?: AnyIconFontClass;
+	  }
+	| {
+			checked?: AnyIconFontClass;
+			indeterminate: AnyIconFontClass;
+			unchecked?: AnyIconFontClass;
+	  }
+	| {
+			checked?: AnyIconFontClass;
+			indeterminate?: AnyIconFontClass;
+			unchecked: AnyIconFontClass;
+	  };
+
+export type InputCheckboxIconState = {
 	checked: AnyIconFontClass;
-	indeterminate?: AnyIconFontClass;
-	unchecked?: AnyIconFontClass;
-} & {
-	checked?: AnyIconFontClass;
 	indeterminate: AnyIconFontClass;
-	unchecked?: AnyIconFontClass;
-} & {
-	checked?: AnyIconFontClass;
-	indeterminate?: AnyIconFontClass;
 	unchecked: AnyIconFontClass;
 };
 
@@ -41,7 +50,7 @@ type OptionalProps = {
 	alert: boolean;
 	error: string;
 	hint: string;
-	icon: Stringified<InputCheckboxIcon>;
+	icon: Stringified<InputCheckboxIconProp>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
 	/**
@@ -63,7 +72,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	icon: InputCheckboxIcon;
+	icon: InputCheckboxIconState;
 	id: string;
 	value: StencilUnknown;
 	variant: InputCheckboxVariant;
