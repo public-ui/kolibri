@@ -9,7 +9,7 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
-import { API, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
+import { API, InputCheckboxIconProp, InputCheckboxVariant, States } from './types';
 import { CheckedPropType } from '../../types/props/checked';
 import { IndeterminatePropType } from '../../types/props/indeterminate';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
@@ -69,8 +69,8 @@ export class KolInputCheckbox implements API {
 						<kol-icon
 							class="icon"
 							onClick={this.handleIconClick.bind(this)}
-							_ariaLabel=""
 							_icon={this.state._indeterminate ? this.state._icon.indeterminate : this.state._checked ? this.state._icon.checked : this.state._icon.unchecked}
+							_label=""
 						/>
 						<input
 							ref={this.catchRef}
@@ -156,7 +156,7 @@ export class KolInputCheckbox implements API {
 	/**
 	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
 	 */
-	@Prop() public _icon?: Stringified<InputCheckboxIcon>;
+	@Prop() public _icon?: Stringified<InputCheckboxIconProp>;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -289,7 +289,7 @@ export class KolInputCheckbox implements API {
 	}
 
 	@Watch('_icon')
-	public validateIcon(value?: Stringified<InputCheckboxIcon>): void {
+	public validateIcon(value?: Stringified<InputCheckboxIconProp>): void {
 		this.controller.validateIcon(value);
 	}
 

@@ -8,8 +8,8 @@ import { a11yHint, devHint } from '../../utils/a11y.tipps';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
-import { InputCheckboxIcon, InputCheckboxVariant, Props, Watches } from './types';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
+import { InputCheckboxIconProp, InputCheckboxIconState, InputCheckboxVariant, Props, Watches } from './types';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -44,15 +44,25 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		});
 	}
 
-	public validateIcon(value?: Stringified<InputCheckboxIcon>): void {
+	public validateIcon(value?: Stringified<InputCheckboxIconProp>): void {
 		watchValidator(
 			this.component,
-			'_icons',
+			'_icon',
 			(value): boolean => {
 				return typeof value === 'object' && value !== null && (isString(value.checked, 1) || isString(value.indeterminate, 1) || isString(value.unchecked, 1));
 			},
 			new Set(['InputCheckboxIcons']),
-			value
+			value,
+			{
+				hooks: {
+					beforePatch: (nextValue: unknown, nextState: Map<string, unknown>, component: Generic.Element.Component) => {
+						nextState.set('_icon', {
+							...(component.state._icon as InputCheckboxIconState),
+							...(nextValue as InputCheckboxIconProp),
+						});
+					},
+				},
+			}
 		);
 	}
 
