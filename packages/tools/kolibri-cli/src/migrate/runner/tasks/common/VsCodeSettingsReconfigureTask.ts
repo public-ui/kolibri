@@ -44,10 +44,14 @@ export class VsCodeSettingsReconfigureTask extends AbstractTask {
 		const settingsPath = path.join(process.cwd(), '.vscode', 'settings.json');
 
 		if (fs.existsSync(settingsPath)) {
-			const fileContent = JSON.parse(fs.readFileSync(settingsPath, 'utf8')) as Record<string, unknown>;
-			fileContent[this.key] = this.value;
-			fs.writeFileSync(settingsPath, JSON.stringify(fileContent, null, 2));
-			MODIFIED_FILES.add(settingsPath);
+			try {
+				const fileContent = JSON.parse(fs.readFileSync(settingsPath, 'utf8')) as Record<string, unknown>;
+				fileContent[this.key] = this.value;
+				fs.writeFileSync(settingsPath, JSON.stringify(fileContent, null, 2));
+				MODIFIED_FILES.add(settingsPath);
+			} catch (e) {
+				console.log(`Advice: Your .vscode/settings.json file is not valid JSON.`);
+			}
 		} else {
 			fs.mkdirSync(path.dirname(settingsPath), { recursive: true });
 			fs.writeFileSync(

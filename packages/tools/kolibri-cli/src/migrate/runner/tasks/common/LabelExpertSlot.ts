@@ -45,6 +45,9 @@ export class LabelExpertSlot extends AbstractTask {
 
 		this.componentRegExp = new RegExp(`(<${tagCapitalCase}[^>]*)>([^<]+(\\n\\s*)*)(<\\/${tagCapitalCase}>)`, 'g');
 		this.customElementRegExp = new RegExp(`(<${tag}[^>]*)>([^<]+(\\n\\s*)*)(<\\/${tag}>)`, 'g');
+
+		this.componentRegExp = new RegExp(`(<${tagCapitalCase}[^>]+)>([^<>]+)(<\\/${tagCapitalCase}>)`, 'g');
+		this.customElementRegExp = new RegExp(`(<${tag}[^>]+)>([^<>]+)(<\\/${tag}>)`, 'g');
 	}
 
 	public static getInstance(
@@ -72,7 +75,7 @@ export class LabelExpertSlot extends AbstractTask {
 			const newContent = content
 				// Replacements
 				.replace(this.componentRegExp, removeLineBreaksAndSpaces)
-				.replace(this.componentRegExp, `$1 ${this.propertyInCamelCase}="$2">$4`);
+				.replace(this.componentRegExp, `$1 ${this.propertyInCamelCase}={\`$2\`}/>`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
@@ -86,10 +89,10 @@ export class LabelExpertSlot extends AbstractTask {
 			const newContent = content
 				// Replacements
 				.replace(this.customElementRegExp, removeLineBreaksAndSpaces)
-				.replace(this.customElementRegExp, `$1 ${this.property}="$2">$4`);
+				.replace(this.customElementRegExp, `$1 ${this.property}={\`$2\`}/>`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
-				// fs.writeFileSync(file, newContent);
+				fs.writeFileSync(file, newContent);
 			}
 		});
 	}
