@@ -1469,7 +1469,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		padding: 0.5rem;
 	}
 	:host div.content {
-		padding: 0;
+		padding: 0.5rem;
 	}
 	:host div.content,
 	:host div.content + div.footer {

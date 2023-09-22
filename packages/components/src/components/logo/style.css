@@ -1,4 +1,7 @@
 @import url(../style.css);
+:host {
+	display: inline-block;
+}
 text {
 	font-size: 16px;
 	letter-spacing: normal;

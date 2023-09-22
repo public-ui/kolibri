@@ -524,8 +524,11 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 1px;
+		background: #fff;
 	}
-	:host > div .header {
+	:host > div .header,
+	.content,
+	.footer {
 		padding: 1.5rem;
 	}`,
 	'KOL-BUTTON': `:host > kol-button-wc > button > kol-span-wc,
