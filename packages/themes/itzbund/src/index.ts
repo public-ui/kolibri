@@ -1499,8 +1499,10 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		border: 0px;
 		margin: 0px;
 		padding: 0px;
-		display: grid;
-		gap: 0.25em;
+		flex-wrap: wrap;
+	}
+	fieldset.horizontal {
+		gap: 1rem;
 	}
 	fieldset legend {
 		display: block;
@@ -1541,6 +1543,9 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		background-color: var(--color-input-bg-default);
 		border-color: #999;
 		cursor: not-allowed;
+	}
+	kol-alert {
+		width: 100%:
 	}`,
 	'KOL-TOAST': `:host > div {
 		position: fixed;
