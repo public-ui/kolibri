@@ -29,7 +29,11 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
 	}"${typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
 		typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
-	}${state._download !== undefined && state._download !== false ? ` download${state._download === true || state._download === 'true' ? `=""` : `="${state._download}"`}` : ''}>
+	}${
+		state._download !== undefined && state._download !== false
+			? ` download${state._download === true || state._download === 'true' ? `=""` : `="${state._download}"`}`
+			: ''
+	}>
 			${getSpanWcHtml(
 				{
 					...state,
