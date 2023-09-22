@@ -668,7 +668,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px;
 		outline: none;
 	}
 	input,
@@ -696,6 +695,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -921,7 +921,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -949,6 +948,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -973,7 +973,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -1001,6 +1000,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1025,7 +1025,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -1053,6 +1052,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1077,7 +1077,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -1105,6 +1104,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
