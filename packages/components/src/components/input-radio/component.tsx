@@ -82,7 +82,7 @@ export class KolInputRadio implements API {
 								_slotName={slotName}
 								_touched={this.state._touched}
 							>
-								<div slot={slotName}>
+								<div slot={slotName} class="radio-input-wrapper">
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
 										title=""
@@ -112,6 +112,7 @@ export class KolInputRadio implements API {
 										_label={typeof this.state._label === 'string' ? this.state._label : ''}
 									></kol-tooltip-wc>
 									<label
+										class="radio-label"
 										htmlFor={`${customId}`}
 										style={{
 											height: this.state._hideLabel && this.state._required !== true ? '0' : undefined,

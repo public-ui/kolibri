@@ -1411,9 +1411,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-INPUT-RADIO': `fieldset {
 		border: 0;
 		gap: 0.5rem;
-	}
-	.input-slot {
-		gap: 0.25rem;
+		flex-wrap: wrap;
 	}
 	fieldset kol-alert {
 		order: 1;
@@ -1427,8 +1425,16 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	fieldset kol-input {
 		order: 4;
 	}
+	.radio-input-wrapper {
+    display: flex;
+		align-items: center;
+	}
+	.radio-label {
+		padding-left: 0.5rem;
+	}
 	input[type="radio"] {
-		border: 2px solid var(--color-grey-75);
+		outline: 2px solid var(--color-grey-75);
+		outline-offset: 2px;
 	}
 	input[type="radio"]:before {
 		display: none;
@@ -1438,8 +1444,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		border-width: 7px;
 	}
 	input[type="radio"]:focus {
-		outline: 2px solid var(--color-blue);
-		outline-offset: 2px;
+		outline-color: var(--color-blue);
 	}
 	input[type="radio"]:not(:disabled):hover {
 		border-color: var(--color-blue);
@@ -1469,6 +1474,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-xs));
 		order: 1;
+		width: 100%;
 	}
 	.hint {
 		font-size: 0.875rem;

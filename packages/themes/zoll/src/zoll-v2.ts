@@ -1017,6 +1017,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	fieldset kol-input {
 		order: 2;
 	}
+	.radio-input-wrapper {
+    display: flex;
+		align-items: center;
+	}
+	.radio-label {
+		padding-left: 0.5rem;
+	}
 	.disabled {
 		opacity: 0.33;
 	}

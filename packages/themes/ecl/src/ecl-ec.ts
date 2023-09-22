@@ -748,6 +748,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-INPUT-RADIO': `fieldset {
 		border: 0;
 		gap: 0.5rem;
+		flex-wrap: wrap;
 	}
 	.input-slot {
 		gap: 0.25rem;
@@ -763,6 +764,13 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	}
 	fieldset kol-input {
 		order: 4;
+	}
+	.radio-input-wrapper {
+    display: flex;
+		align-items: center;
+	}
+	.radio-label {
+		padding-left: 0.5rem;
 	}
 	input[type="radio"] {
 		border: 2px solid var(--color-grey-75);
@@ -806,6 +814,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-xs));
 		order: 1;
+		width: 100%;
 	}
 	.hint {
 		font-size: 0.875rem;
