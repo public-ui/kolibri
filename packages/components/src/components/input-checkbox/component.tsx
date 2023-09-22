@@ -60,7 +60,9 @@ export class KolInputCheckbox implements API {
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_id={this.state._id}
+					_label={this.state._label}
 					_required={this.state._required}
+					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 				>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
@@ -90,17 +92,6 @@ export class KolInputCheckbox implements API {
 							onChange={this.onChange}
 							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 						/>
-						<kol-tooltip-wc
-							/**
-							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-							 */
-							aria-hidden="true"
-							class="input-tooltip"
-							hidden={hasExpertSlot || !this.state._hideLabel}
-							_align={this._tooltipAlign}
-							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip-wc>
 					</div>
 				</kol-input>
 			</Host>

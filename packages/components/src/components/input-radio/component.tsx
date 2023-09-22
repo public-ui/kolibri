@@ -77,9 +77,11 @@ export class KolInputRadio implements API {
 								_hideLabel={this.state._hideLabel}
 								_hint={this.state._hint}
 								_id={customId}
+								_label={option.label as string}
 								_renderNoLabel={true}
 								_required={this.state._required}
 								_slotName={slotName}
+								_tooltipAlign={this._tooltipAlign}
 								_touched={this.state._touched}
 							>
 								<div slot={slotName}>
@@ -101,23 +103,13 @@ export class KolInputRadio implements API {
 										onChange={this.onChange}
 										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 									/>
-									<kol-tooltip-wc
-										/**
-										 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-										 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-										 */
-										aria-hidden="true"
-										class="input-tooltip"
-										hidden={hasExpertSlot || !this.state._hideLabel}
-										_label={typeof this.state._label === 'string' ? this.state._label : ''}
-									></kol-tooltip-wc>
 									<label
 										htmlFor={`${customId}`}
 										style={{
-											height: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
-											margin: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
-											padding: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
-											visibility: this.state._hideLabel && this.state._required !== true ? 'hidden' : undefined,
+											height: this.state._hideLabel ? '0' : undefined,
+											margin: this.state._hideLabel ? '0' : undefined,
+											padding: this.state._hideLabel ? '0' : undefined,
+											visibility: this.state._hideLabel ? 'hidden' : undefined,
 										}}
 									>
 										<span>

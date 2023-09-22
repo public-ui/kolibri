@@ -5,7 +5,9 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
 import { IdPropType } from '../../types/props/id';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { W3CInputValue } from '../../types/w3c';
 import { handleSlotContent } from '../../utils/reuse';
 import { Props as ButtonProps } from '../button/types';
@@ -33,6 +35,7 @@ export class KolInput implements Props {
 
 	public render(): JSX.Element {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
+		const hasExpertSlot = this._label === false; // _label="" or _label
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 
 		return (
@@ -46,8 +49,8 @@ export class KolInput implements Props {
 					'hidden-error': this._hideError === true,
 				}}
 			>
-				{this._renderNoLabel === false && (
-					<label id={`${this._id}-label`} hidden={this._hideLabel} htmlFor={this._id}>
+				{(hasExpertSlot || !this._hideLabel) && (
+					<label id={`${this._id}-label`} htmlFor={this._id}>
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}
@@ -84,6 +87,21 @@ export class KolInput implements Props {
 					)}
 					{this._icon?.right && <kol-icon _ariaLabel="" _icon={(this._icon.right as KoliBriCustomIcon).icon}></kol-icon>}
 				</div>
+				{!hasExpertSlot && this._hideLabel && (
+					<kol-tooltip-wc
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						aria-hidden="true"
+						class="input-tooltip"
+						_align={this._tooltipAlign}
+						_id={this._hideLabel ? `${this._id}-label` : undefined}
+						_label={this._label as string}
+					>
+						<slot name="label" slot="expert"></slot>
+					</kol-tooltip-wc>
+				)}
 				{hasError && (
 					<kol-alert
 						_alert={this._alert}
@@ -177,6 +195,11 @@ export class KolInput implements Props {
 	@Prop() public _id!: IdPropType;
 
 	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
 	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
@@ -213,6 +236,11 @@ export class KolInput implements Props {
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Shows if the input was touched by a user.
