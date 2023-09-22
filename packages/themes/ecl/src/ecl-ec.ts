@@ -906,6 +906,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
