@@ -25,7 +25,7 @@
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@playwright/test": "1.38.0",
+		"@playwright/test": "1.38.1",
 		"@public-ui/sample-react": "1.7.0-rc.13",
 		"portfinder": "1.0.32",
 		"serve": "14.2.1"
