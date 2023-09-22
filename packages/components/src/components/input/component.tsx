@@ -50,15 +50,13 @@ export class KolInput implements Props {
 					'hidden-error': this._hideError === true,
 				}}
 			>
-				{!useTooltopInsteadOfLabel && (
-					<label id={`${this._id}-label`} htmlFor={this._id}>
-						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
-						<span>
-							{/* INFO: label comes with any html tag or as plain text! */}
-							<slot name="label"></slot>
-						</span>
-					</label>
-				)}
+				<label id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={!useTooltopInsteadOfLabel} htmlFor={this._id}>
+					{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
+					<span>
+						{/* INFO: label comes with any html tag or as plain text! */}
+						<slot name="label"></slot>
+					</span>
+				</label>
 				{hasHint && (
 					<span class="hint" id={`${this._id}-hint`}>
 						{this._hint}
@@ -99,9 +97,7 @@ export class KolInput implements Props {
 						_align={this._tooltipAlign}
 						_id={this._hideLabel ? `${this._id}-label` : undefined}
 						_label={this._label as string}
-					>
-						<slot name="label" slot="expert"></slot>
-					</kol-tooltip-wc>
+					></kol-tooltip-wc>
 				)}
 				{hasError && (
 					<kol-alert
