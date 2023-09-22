@@ -1,3 +1,4 @@
+import child_process from 'node:child_process';
 import { exec } from 'child_process';
 import { Command, Option } from 'commander';
 import fs from 'fs';
@@ -20,6 +21,7 @@ import { REMOVE_MODE, RemoveMode } from './types';
 import { commonTasks } from './runner/tasks';
 
 type MigrateOption = {
+	format: boolean;
 	ignoreUncommittedChanges: boolean;
 	removeMode: RemoveMode;
 	testTasks: boolean;
@@ -34,6 +36,7 @@ export default function (program: Command): void {
 		.command('migrate')
 		.description('This command migrates KoliBri code to the current version.')
 		.argument('[string]', 'Source code folder to migrate', 'src')
+		.addOption(new Option('--format', 'Try to format the modified files with prettier').default(true))
 		.addOption(new Option('--ignore-uncommitted-changes', 'Allows execution with uncommitted changes').default(false))
 		.addOption(new Option('--remove-mode <mode>', 'Prefix property name or delete property').choices(REMOVE_MODE).default('prefix'))
 		.addOption(new Option('--test-tasks', 'Run additional test tasks').default(false).hideHelp())
@@ -111,12 +114,28 @@ Modified files: ${MODIFIED_FILES.size}`);
 							console.log(`- ${file}`);
 						});
 
+						if (options.format) {
+							console.log(`
+We try to format the modified files with prettier...`);
+							try {
+								child_process.execFileSync('npx', ['prettier', '-w', ...Array.from(MODIFIED_FILES)], {
+									encoding: 'utf-8',
+								});
+								console.log(`Modified files have been formatted.`);
+							} catch (e) {
+								console.log(`Modified files could not be formatted. Please format them manually: npx prettier ${baseDir} -w`);
+							}
+							console.log();
+						}
+
 						console.log(`
-After the code migration has gone through, the code formatting may no longer be as desired. Therefore, please reformat your code afterwards if necessary.
+After migrating the code, the formatting of the code may no longer be as desired. Therefore, reformat your code afterwards if necessary: npx prettier ${baseDir} -w
 
-Afterwards, it may be that functions or themes in newer major versions have changed or are no longer included. This should be checked finally and corrected manually if necessary.
+When migrating the labels, the text (innerText) is assigned 1 to 1 to the _label property. There could be the following situation, where manual corrections have to be made: _label={\`I am {count} years old.\`} -> _label={\`I am \${count} years old.\`} (add a $)
 
-Is anything wrong, you can reset the migration with "git reset --hard HEAD~1" or by discarding the affected files. For more information read the troubleshooting section in the README.`);
+Afterwards, it may be that functions or themes have changed or are no longer included in newer major versions. This should be checked finally and corrected manually if necessary.
+
+If something is wrong, the migration can be stopped with "git reset --hard HEAD~1" or by discarding the affected files. For more information, read the troubleshooting section in the README.`);
 					}
 				}
 
