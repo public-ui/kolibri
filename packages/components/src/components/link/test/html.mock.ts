@@ -31,7 +31,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
 	}${
 		state._download !== undefined && state._download !== false
-			? ` download${state._download === true || state._download === 'true' ? `=""` : `="${state._download}"`}`
+			? ` download${state._download === true ? `=""` : `="${state._download}"`}`
 			: ''
 	}>
 			${getSpanWcHtml(

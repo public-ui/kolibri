@@ -51,6 +51,7 @@ export class KolLinkWc implements API {
 	};
 
 	private readonly getRenderValues = () => {
+		const { _download } = this.state;
 		/**
 		 * DX
 		 * Das möchte ich ungern für HTML machen, sondern nur für Barrierefreiheitsthemen.
@@ -90,7 +91,7 @@ export class KolLinkWc implements API {
 			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0);',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: isExternal ? 'noopener' : undefined,
-			download: this.state._download === true || this.state._download === 'true' ? '' : this.state._download,
+			download: typeof _download === 'string' ? _download : _download === true ? '' : undefined,
 		};
 
 		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !this.state._label) {
