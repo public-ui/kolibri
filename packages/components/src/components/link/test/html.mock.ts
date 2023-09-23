@@ -23,35 +23,36 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 <kol-link>
   <mock:shadow-root>
   <kol-link-wc>
-    <a${state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''} class="${state._hideLabel === true ? ' icon-only hide-label' : ''
-		}${typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
-		}"${typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''}${typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
-		}${state._download !== undefined && state._download !== false
-			? ` download${state._download === true ? `=""` : `="${state._download}"`}`
-			: ''
-		}>
+    <a${state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''} class="${
+		state._hideLabel === true ? ' icon-only hide-label' : ''
+	}${typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''}" href="${
+		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
+	}"${typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
+		typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
+	}${state._download !== undefined && state._download !== false ? ` download${state._download === true ? `=""` : `="${state._download}"`}` : ''}>
 			${getSpanWcHtml(
-			{
-				...state,
-				_label: hasExpertSlot ? false : state._label || state._href,
-			},
-			{
-				expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
-			},
-			{
-				additionalAttrs: '',
-			}
-		)}
-			${typeof state._target === 'string' && state._target !== '_self'
-			? getIconHtml(
 				{
-					_label: 'Der Link wird in einem neuen Tab geöffnet.',
-					_icon: 'codicon codicon-link-external',
+					...state,
+					_label: hasExpertSlot ? false : state._label || state._href,
 				},
-				' class="external-link-icon"'
-			)
-			: ''
-		}
+				{
+					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
+				},
+				{
+					additionalAttrs: '',
+				}
+			)}
+			${
+				typeof state._target === 'string' && state._target !== '_self'
+					? getIconHtml(
+							{
+								_label: 'Der Link wird in einem neuen Tab geöffnet.',
+								_icon: 'codicon codicon-link-external',
+							},
+							' class="external-link-icon"'
+					  )
+					: ''
+			}
     </a>
 		${getTooltipHtml(
 			{
