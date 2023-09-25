@@ -29,7 +29,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
 	}"${typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
 		typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
-	}${typeof state._download === 'string' ? ` download="${state._download}"` : state._download === true ? ` download` : ''}>
+	}${typeof state._download === 'string' ? ` download="${state._download}"` : ''}>
 			${getSpanWcHtml(
 				{
 					...state,
