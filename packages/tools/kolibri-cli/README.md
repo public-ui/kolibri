@@ -53,14 +53,17 @@ Actually the following migrations are available:
 - Component removal (no one yet)
 - Property renaming ✓
 - Property removal ✓
-- Property type change (`_label={false}`) ⏰
 - Slots renaming (`content`) ✓
 - Slots removal (`footer`, `header`) ✓
 - Logic refactoring (no one yet)
 - Expert-Slot refactoring ⏰
+  - Move `innerText` to property ✓
+  - Property type change (remove `_label={false}`) ⏰
+  - Set `_label=""` to activate the expert slot ⏰
 - `.vscode/settings.json` add IntelliSense for HTML ✓
 - `.gitignore` exclude `.kolibri.migrate.json` ✓
 - `.tsconfig` add `@public-ui/components` to `types` array ✓
+- Format modified files (`prettier@^3`) ✓
 
 #### How does it work?
 
@@ -86,10 +89,11 @@ kolibri migrate <path>
 
 #### Options
 
-| Option                         | Description                               |         Type         | Default  |
-| ------------------------------ | ----------------------------------------- | :------------------: | :------: |
-| `--ignore-uncommitted-changes` | Allows execution with uncommitted changes |       boolean        |  false   |
-| `--remove-mode`                | Prefix property name or delete property   | `delete` \| `prefix` | `prefix` |
+| Option                         | Description                                    |         Type         | Default  |
+| ------------------------------ | ---------------------------------------------- | :------------------: | :------: |
+| `--format`                     | Try to format the modified files with prettier |       boolean        |   true   |
+| `--ignore-uncommitted-changes` | Allows execution with unconfirmed changes      |       boolean        |  false   |
+| `--remove-mode`                | Prefix property name or delete property        | `delete` \| `prefix` | `prefix` |
 
 #### Configuration
 
