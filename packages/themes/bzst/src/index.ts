@@ -42,7 +42,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		--colorTextActiveBg: var(--color-white); /* signal */
 		--colorSignal: var(--color-tropic-sea);
 		--colorSignalFront: var(
-			--color-white
+		--color-white
 		); /* colorSignalFocus hat keine Frontfarbe */
 		--colorSignalFocus: var(--color-heroic-blue);
 		--colorSignalSuccess: var(--color-green);
@@ -57,8 +57,8 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	:host {
 		/* token */
 		--font-family: "BundesSans Web", system-ui, -apple-system, BlinkMacSystemFont,
-			"Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-			sans-serif; /* Basis-Größe: html, rem */
+		"Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+		sans-serif; /* Basis-Größe: html, rem */
 		--font-size: 100%;
 		--line-height: 1.6875rem; /* template */ /* h1 */
 		--headline1FontSize: 2.5rem;
@@ -181,10 +181,10 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	}
 	@keyframes spin {
 		0% {
-			transform: rotate(0deg);
+		transform: rotate(0deg);
 		}
 		100% {
-			transform: rotate(360deg);
+		transform: rotate(360deg);
 		}
 	}
 	kol-tooltip .area {
@@ -872,6 +872,9 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	'KOL-TEXTAREA': `kol-input {
 		gap: 0.4em;
 	}
+	kol-input .error {
+		order: 3;
+	}
 	kol-input label {
 		font-weight: 700;
 		order: 1;
@@ -879,14 +882,8 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	kol-input .input {
 		order: 2;
 	}
-	kol-input .counter {
-		order: 3;
-	}
-	kol-input .error {
-		order: 4;
-	}
 	kol-input .hint {
-		order: 5;
+		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
 	}
@@ -1173,6 +1170,9 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	}
 	.icon-only {
 		padding-bottom: 0.2rem;
+	}
+	:is(a) kol-span-wc > span {
+		gap: var(--gapSmallest);
 	}`,
 	'KOL-DETAILS': `details {
 		display: grid;
@@ -1235,26 +1235,26 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	}
 	@keyframes spin1 {
 		0% {
-			transform: scale(0);
+		transform: scale(0);
 		}
 		100% {
-			transform: scale(1);
+		transform: scale(1);
 		}
 	}
 	@keyframes spin2 {
 		0% {
-			transform: translate(0px, 0px);
+		transform: translate(0px, 0px);
 		}
 		100% {
-			transform: translate(1rem, 0px);
+		transform: translate(1rem, 0px);
 		}
 	}
 	@keyframes spin3 {
 		0% {
-			transform: scale(1);
+		transform: scale(1);
 		}
 		100% {
-			transform: scale(0);
+		transform: scale(0);
 		}
 	}`,
 	'KOL-PROGRESS': `:host progress,
@@ -1481,21 +1481,21 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		font-weight: 900;
 		color: var(--color-midnight);
 	}
-	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
-		content: "\\f068";
-	}
-	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
+	.accordion > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\2b";
 	}
-	:host > div {
+	.accordion.open > kol-heading-wc button kol-icon::part(icon)::before {
+		content: "\\f068";
+	}
+	.accordion {
 		width: 100%;
 		height: 100%;
 		display: grid;
 	}
-	:host > div[part*="open"] div[part="header"] {
+	.accordion[part*="open"] div[part="header"] {
 		padding-left: 2em;
 	}
-	:host > div[part*="open"] div[part="content"] {
+	.accordion[part*="open"] div[part="content"] {
 		padding-top: 1rem;
 	}
 	button {
@@ -1503,12 +1503,12 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		font-size: inherit;
 		line-height: inherit;
 	}
-	:host > div {
+	.accordion {
 		background: var(--color-white);
 	}
-	:host > div[part*="open"] {
+	.accordion[part*="open"] {
 		padding-bottom: 1em;
-	} /* :host > div > [part="header"] {height: 0;} */
+	} /* .accordion > [part="header"] {height: 0;} */
 	h1,
 	h2,
 	h3,
@@ -2140,40 +2140,30 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		border-radius: 0.25rem 0 0 0.25rem;
 	}`,
 	'KOL-PAGINATION': `:host {
-		display: grid;
+		align-items: center;
+		display: flex;
 		gap: 1rem;
 	}
-	:host > div {
+	.navigation-list {
+		align-items: center;
 		display: inline-flex;
 		flex-wrap: wrap;
-		align-items: center;
-		gap: 0.5em;
+		gap: 0.5rem;
+		justify-content: center;
+		margin: 0;
+		padding: 0;
 	}
-	:host .selected button {
-		min-width: 44px;
-		min-height: 44px;
-		display: grid;
-		line-height: 1.5;
-		font-family: var(--textFont);
+	.navigation-list > li {
+		min-width: var(--a11y-min-size);
+		text-align: center;
+	}
+	.selected button {
 		cursor: not-allowed;
 		font-weight: 700;
-		padding: 10px 12px;
 		border-radius: 1.5em;
 		border: none;
-		font-size: var(--textFontSize);
-		font-style: normal;
-		text-align: center;
-		text-transform: uppercase;
-		width: inherit;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
-		color: var(--color-midnight);
-		background-color: var(--color-ice);
-		border-color: var(--color-ice);
-	}
-	:host > div > span {
-		align-self: flex-end;
-		padding-bottom: 0.5rem;
 		color: var(--color-midnight);
 	}
 	kol-button::part(icon)::before {
@@ -2522,6 +2512,9 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	.fa-chevron-right::before {
 		content: "\\f054";
 	}
+	.fa-download::before {
+		content: "\\f019";
+	}
 	fa-exclamation-triangle::before {
 		content: "\\f071";
 	}
@@ -2562,7 +2555,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		font-weight: 400;
 		font-display: block;
 		src: url("../webfonts/fa-regular-400.woff2") format("woff2"),
-			url("../webfonts/fa-regular-400.ttf") format("truetype");
+		url("../webfonts/fa-regular-400.ttf") format("truetype");
 	}
 	.far,
 	.fa-regular {
@@ -2579,7 +2572,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		font-weight: 900;
 		font-display: block;
 		src: url("../webfonts/fa-solid-900.woff2") format("woff2"),
-			url("../webfonts/fa-solid-900.ttf") format("truetype");
+		url("../webfonts/fa-solid-900.ttf") format("truetype");
 	}
 	.fas,
 	.fa-solid {
@@ -2591,59 +2584,59 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		font-display: block;
 		font-weight: 400;
 		src: url("../webfonts/fa-brands-400.woff2") format("woff2"),
-			url("../webfonts/fa-brands-400.ttf") format("truetype");
+		url("../webfonts/fa-brands-400.ttf") format("truetype");
 	}
 	@font-face {
 		font-family: "Font Awesome 5 Free";
 		font-display: block;
 		font-weight: 900;
 		src: url("../webfonts/fa-solid-900.woff2") format("woff2"),
-			url("../webfonts/fa-solid-900.ttf") format("truetype");
+		url("../webfonts/fa-solid-900.ttf") format("truetype");
 	}
 	@font-face {
 		font-family: "Font Awesome 5 Free";
 		font-display: block;
 		font-weight: 400;
 		src: url("../webfonts/fa-regular-400.woff2") format("woff2"),
-			url("../webfonts/fa-regular-400.ttf") format("truetype");
+		url("../webfonts/fa-regular-400.ttf") format("truetype");
 	}
 	@font-face {
 		font-family: "FontAwesome";
 		font-display: block;
 		src: url("../webfonts/fa-solid-900.woff2") format("woff2"),
-			url("../webfonts/fa-solid-900.ttf") format("truetype");
+		url("../webfonts/fa-solid-900.ttf") format("truetype");
 	}
 	@font-face {
 		font-family: "FontAwesome";
 		font-display: block;
 		src: url("../webfonts/fa-brands-400.woff2") format("woff2"),
-			url("../webfonts/fa-brands-400.ttf") format("truetype");
+		url("../webfonts/fa-brands-400.ttf") format("truetype");
 	}
 	@font-face {
 		font-family: "FontAwesome";
 		font-display: block;
 		src: url("../webfonts/fa-regular-400.woff2") format("woff2"),
-			url("../webfonts/fa-regular-400.ttf") format("truetype");
+		url("../webfonts/fa-regular-400.ttf") format("truetype");
 		unicode-range: U+F003, U+F006, U+F014, U+F016-F017, U+F01A-F01B, U+F01D,
-			U+F022, U+F03E, U+F044, U+F046, U+F05C-F05D, U+F06E, U+F070, U+F087-F088,
-			U+F08A, U+F094, U+F096-F097, U+F09D, U+F0A0, U+F0A2, U+F0A4-F0A7, U+F0C5,
-			U+F0C7, U+F0E5-F0E6, U+F0EB, U+F0F6-F0F8, U+F10C, U+F114-F115, U+F118-F11A,
-			U+F11C-F11D, U+F133, U+F147, U+F14E, U+F150-F152, U+F185-F186, U+F18E,
-			U+F190-F192, U+F196, U+F1C1-F1C9, U+F1D9, U+F1DB, U+F1E3, U+F1EA, U+F1F7,
-			U+F1F9, U+F20A, U+F247-F248, U+F24A, U+F24D, U+F255-F25B, U+F25D,
-			U+F271-F274, U+F278, U+F27B, U+F28C, U+F28E, U+F29C, U+F2B5, U+F2B7, U+F2BA,
-			U+F2BC, U+F2BE, U+F2C0-F2C1, U+F2C3, U+F2D0, U+F2D2, U+F2D4, U+F2DC;
+		U+F022, U+F03E, U+F044, U+F046, U+F05C-F05D, U+F06E, U+F070, U+F087-F088,
+		U+F08A, U+F094, U+F096-F097, U+F09D, U+F0A0, U+F0A2, U+F0A4-F0A7, U+F0C5,
+		U+F0C7, U+F0E5-F0E6, U+F0EB, U+F0F6-F0F8, U+F10C, U+F114-F115, U+F118-F11A,
+		U+F11C-F11D, U+F133, U+F147, U+F14E, U+F150-F152, U+F185-F186, U+F18E,
+		U+F190-F192, U+F196, U+F1C1-F1C9, U+F1D9, U+F1DB, U+F1E3, U+F1EA, U+F1F7,
+		U+F1F9, U+F20A, U+F247-F248, U+F24A, U+F24D, U+F255-F25B, U+F25D,
+		U+F271-F274, U+F278, U+F27B, U+F28C, U+F28E, U+F29C, U+F2B5, U+F2B7, U+F2BA,
+		U+F2BC, U+F2BE, U+F2C0-F2C1, U+F2C3, U+F2D0, U+F2D2, U+F2D4, U+F2DC;
 	}
 	@font-face {
 		font-family: "FontAwesome";
 		font-display: block;
 		src: url("../webfonts/fa-v4compatibility.woff2") format("woff2"),
-			url("../webfonts/fa-v4compatibility.ttf") format("truetype");
+		url("../webfonts/fa-v4compatibility.ttf") format("truetype");
 		unicode-range: U+F041, U+F047, U+F065-F066, U+F07D-F07E, U+F080, U+F08B,
-			U+F08E, U+F090, U+F09A, U+F0AC, U+F0AE, U+F0B2, U+F0D0, U+F0D6, U+F0E4,
-			U+F0EC, U+F10A-F10B, U+F123, U+F13E, U+F148-F149, U+F14C, U+F156, U+F15E,
-			U+F160-F161, U+F163, U+F175-F178, U+F195, U+F1F8, U+F219, U+F250, U+F252,
-			U+F27A;
+		U+F08E, U+F090, U+F09A, U+F0AC, U+F0AE, U+F0B2, U+F0D0, U+F0D6, U+F0E4,
+		U+F0EC, U+F10A-F10B, U+F123, U+F13E, U+F148-F149, U+F14C, U+F156, U+F15E,
+		U+F160-F161, U+F163, U+F175-F178, U+F195, U+F1F8, U+F219, U+F250, U+F252,
+		U+F27A;
 	}`,
 	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
 		border-radius: var(--a11y-min-size);
