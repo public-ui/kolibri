@@ -36,7 +36,7 @@ const HEADERS: KoliBriTableHeaders = {
 					getRoot(el).render(
 						<>
 							<KolButton _label={'Speichern'} />
-							<KolInputText _id="test" _label="Eingabe" />
+							<KolInputText _label="Eingabe" />
 						</>,
 					);
 				},

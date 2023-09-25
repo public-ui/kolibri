@@ -8,10 +8,8 @@ import { ERROR_MSG } from '../../../shares/constants';
 export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.KolInputEmail>(function InputEmailCases(props, ref) {
 	return (
 		<div className="grid gap-4">
-			<KolInputEmail _id="email" _required _value="test@mail.de" _error={ERROR_MSG} _label="E-Mail" />
+			<KolInputEmail _required _value="test@mail.de" _error={ERROR_MSG} _label="E-Mail" />
 			<KolInputEmail
-				_id="email1"
-				_name="email1"
 				_placeholder="elke@mustermann.de"
 				_list="['test1@mail.de', 'test2@mail.de', 'test3@mail.de']"
 				_label="E-Mail (Liste)"
@@ -26,8 +24,8 @@ export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.K
 					},
 				}}
 			/>
-			<KolInputEmail _disabled _id="email2" _value="test@mail.de" _label="E-Mail (Disabled)" />
-			<KolInputEmail _id="email3" _read-only _value="test@mail.de" _label="E-Mail (Readonly)" />
+			<KolInputEmail _disabled _value="test@mail.de" _label="E-Mail (Disabled)" />
+			<KolInputEmail _readOnly _value="test@mail.de" _label="E-Mail (Readonly)" />
 		</div>
 	);
 });

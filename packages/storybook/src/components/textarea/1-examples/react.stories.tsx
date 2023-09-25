@@ -29,7 +29,7 @@ Standard.args = {
 
 export const Placeholder = (args: any) => (
 	<div>
-		<KolTextarea _id="" _name="" _value="" _placeholder="Hier steht ein Platzhaltertext"></KolTextarea>
+		<KolTextarea _value="" _placeholder="Hier steht ein Platzhaltertext"></KolTextarea>
 	</div>
 );
 Placeholder.args = {
@@ -41,8 +41,6 @@ Placeholder.storyName = 'Platzhaltertext';
 export const Rows1 = (args: any) => (
 	<div>
 		<KolTextarea
-			_id=""
-			_name=""
 			_rows={1}
 			_value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
@@ -63,8 +61,6 @@ Rows1.storyName = 'Höhe: 1 Zeile';
 export const Rows10 = (args: any) => (
 	<div>
 		<KolTextarea
-			_id=""
-			_name=""
 			_rows={10}
 			_value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
@@ -85,8 +81,6 @@ Rows10.storyName = 'Höhe: 10 Zeilen';
 export const ResizeNone = (args: any) => (
 	<div>
 		<KolTextarea
-			_id=""
-			_name=""
 			_rows={4}
 			_value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
@@ -107,8 +101,6 @@ ResizeNone.storyName = 'Keine Größenänderung';
 export const ResizeVertical = (args: any) => (
 	<div>
 		<KolTextarea
-			_id=""
-			_name=""
 			_rows={4}
 			_value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
@@ -129,8 +121,6 @@ ResizeVertical.storyName = 'Vertikale Größenänderung';
 export const ResizeHorizontal = (args: any) => (
 	<div>
 		<KolTextarea
-			_id=""
-			_name=""
 			_rows={4}
 			_value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
@@ -151,8 +141,6 @@ ResizeHorizontal.storyName = 'Horizontale Größenänderung';
 export const ResizeBoth = (args: any) => (
 	<div>
 		<KolTextarea
-			_id=""
-			_name=""
 			_rows={4}
 			_value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
@@ -192,8 +180,6 @@ AdjustHeight.storyName = 'Automatische Höhenanpassung';
 export const Readonly = (args: any) => (
 	<div>
 		<KolTextarea
-			_id=""
-			_name=""
 			_value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
       gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
@@ -213,8 +199,6 @@ Readonly.storyName = 'Read only';
 export const Disabled = (args: any) => (
 	<div>
 		<KolTextarea
-			_id=""
-			_name=""
 			_value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
       magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
       gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
