@@ -100,7 +100,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	:host > span {
 		border-radius: 0.3125rem;
 		display: inline-flex;
-		line-height: 1.25rem;
 	}
 	:host > span kol-span-wc {
 		padding: 0.25rem 0.5rem;
@@ -329,13 +328,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	th[data-sort="sort-NOS"] kol-button::part(icon)::before,
 	th[data-sort="sort-undefined"] kol-button::part(icon)::before {
-		content: "\f0dc";
+		content: "\\f0dc";
 	}
 	th[data-sort="sort-ASC"] kol-button::part(icon)::before {
-		content: "\f0de";
+		content: "\\f0de";
 	}
 	th[data-sort="sort-DESC"] kol-button::part(icon)::before {
-		content: "\f0dd";
+		content: "\\f0dd";
 	}`,
 	'KOL-ACCORDION': `:host > div {
 		border-color: var(--border-color);
@@ -375,7 +374,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f077";
 	}
-	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
+	:host > div:not(.open) > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f078";
 	}`,
 	'KOL-ALERT': `kol-alert-wc {
@@ -445,7 +444,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		display: flex;
 		gap: var(--spacing);
 		flex-grow: 1;
-		align-items: flex-start;
+		align-items: center;
 	}
 	.msg .heading > div {
 		display: flex;
@@ -525,8 +524,11 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 1px;
+		background: #fff;
 	}
-	:host > div .header {
+	:host > div .header,
+	.content,
+	.footer {
 		padding: 1.5rem;
 	}`,
 	'KOL-BUTTON': `:host > kol-button-wc > button > kol-span-wc,
@@ -753,27 +755,18 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		padding: 0.75rem 1rem;
 		text-decoration: underline;
 	}`,
-	'KOL-TOAST': `:host > div {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
-	}
-	:host > div > kol-alert {
-		display: block;
-		margin: auto;
-		padding: 1rem;
-		max-width: 750px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		margin: auto;
-		width: 1em;
+	'KOL-TOAST-CONTAINER': `:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
 	}`,
+	'KOL-TOAST': `
+		.toast {
+			background: #fff;
+			margin-top: 1rem;
+		}
+	`,
 	'KOL-PROGRESS': `svg line:first-child,
 	svg circle:first-child {
 		stroke: var(--color-neutral);
@@ -819,6 +812,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	kol-input.switch {
 		grid-template-columns: calc(13 * var(--spacing)) auto;
+	}
+	.button {
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
+		gap: 0.5rem 0;
 	}
 	kol-input > div.input {
 		display: inline-flex;
@@ -1010,6 +1010,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	fieldset kol-input {
 		order: 2;
+	}
+	.radio-input-wrapper {
+    display: flex;
+		align-items: center;
+	}
+	.radio-label {
+		padding-left: 0.5rem;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -8626,5 +8633,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-color: var(--color-blau-dark);
 		color: white;
 		cursor: pointer;
+	}`,
+	'KOL-SPLIT-BUTTON': `.popover {
+		background: #fff;
 	}`,
 });

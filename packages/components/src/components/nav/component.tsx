@@ -162,7 +162,7 @@ export class KolNav implements API {
 						<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
-						<div class="mt-2 w-full compact">
+						<div class="compact">
 							<kol-button
 								_ariaControls="nav"
 								_ariaExpanded={!hideLabel}

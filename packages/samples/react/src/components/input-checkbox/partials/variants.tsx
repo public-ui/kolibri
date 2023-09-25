@@ -51,6 +51,7 @@ export const InputCheckboxVariant: FC<Props> = ({ variant }) => {
 				_variant={variant}
 				_label="Disabled"
 				_value={true}
+				_hint="Hint Hinweis Text"
 				_disabled
 			/>
 			<KolInputCheckbox
@@ -62,6 +63,7 @@ export const InputCheckboxVariant: FC<Props> = ({ variant }) => {
 				_label="Mit Fehler"
 				_value={true}
 				_error={ERROR_MSG}
+				_hint="Hint Hinweis Text"
 				_touched
 			/>
 		</fieldset>

@@ -15,7 +15,7 @@ export const InputPasswordShowPassword: FC = () => {
 	}, [isPasswordVisible]);
 
 	return (
-		<KolForm className="grid gap-4">
+		<KolForm>
 			<KolInputPassword
 				_placeholder="Mit 'Passwort anzeigen' Button"
 				_label="Passwort"
@@ -32,6 +32,7 @@ export const InputPasswordShowPassword: FC = () => {
 						onClick: handleTogglePasswordClick,
 					},
 				}}
+				className="block"
 			/>
 		</KolForm>
 	);

@@ -888,6 +888,9 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	kol-input.switch {
 		grid-template-columns: calc(13 * var(--spacing)) auto;
 	}
+	.button {
+		gap: 0.5rem 0;
+	}
 	kol-input > div.input {
 		display: inline-flex;
 		order: 1;
@@ -1439,6 +1442,9 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		font-weight: inherit;
 		font-size: inherit;
 		line-height: inherit;
+	}
+	.content {
+		padding: 0.5rem;
 	}`,
 	'KOL-CARD': `:host > div {
 		border-color: var(--kolibri-border-color);
@@ -1463,7 +1469,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		padding: 0.5rem;
 	}
 	:host div.content {
-		padding: 0;
+		padding: 0.5rem;
 	}
 	:host div.content,
 	:host div.content + div.footer {
@@ -1726,28 +1732,18 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	:host > div.tabs-align-right > div {
 		border-radius: 0.25rem 0 0 0.25rem;
 	}`,
-	'KOL-TOAST': `:host > div {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
-	}
-	:host > div > kol-alert {
-		background-color: white;
-		border-radius: var(--kolibri-border-radius);
-		display: block;
-		margin: 1rem auto;
-		max-width: 750px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		margin: auto;
-		width: 1em;
+	'KOL-TOAST-CONTAINER': `:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
 	}`,
+	'KOL-TOAST': `
+		.toast {
+			background: #fff;
+			margin-top: 1rem;
+		}
+	`,
 	'KOL-NAV': `:host > div {
 		gap: var(--spacing);
 	}
@@ -17597,5 +17593,8 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		border-color: var(--kolibri-border-color);
 		color: white;
 		cursor: pointer;
+	}`,
+	'KOL-SPLIT-BUTTON': `.popover {
+		background: #fff;
 	}`,
 });

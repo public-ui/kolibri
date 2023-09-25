@@ -38,7 +38,6 @@ ROUTES.set('button-group/basic', null);
 ROUTES.set('button-link/basic', null);
 ROUTES.set('button-link/icons', null);
 ROUTES.set('button-link/image', null);
-ROUTES.set('button-link/target', null);
 ROUTES.set('button/basic', null);
 ROUTES.set('button/hide-label', null);
 ROUTES.set('button/icons', null);

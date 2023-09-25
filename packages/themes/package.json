@@ -45,7 +45,8 @@
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
-		"prepack": "unbuild"
+		"prepack": "unbuild",
+		"dev": "nodemon --ignore dist -e ts,tsx  --exec 'pnpm build'"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "1.7.0-rc.13",
@@ -54,6 +55,7 @@
 		"@typescript-eslint/parser": "6.7.2",
 		"eslint": "8.50.0",
 		"eslint-plugin-no-loops": "0.3.0",
+		"nodemon": "3.0.1",
 		"typescript": "5.2.2",
 		"unbuild": "1.2.1"
 	},
