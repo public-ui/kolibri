@@ -63,7 +63,7 @@
 		"prettier": "3.0.2",
 		"ts-prune": "0.10.3",
 		"typescript": "5.2.2",
-		"unbuild": "1.2.1"
+		"unbuild": "2.0.0"
 	},
 	"sideEffects": false,
 	"type": "module",
