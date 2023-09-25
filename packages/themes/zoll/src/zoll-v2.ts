@@ -8643,4 +8643,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		color: white;
 		cursor: pointer;
 	}`,
+	'KOL-SPLIT-BUTTON': `.popover {
+		background: #fff;
+	}`,
 });

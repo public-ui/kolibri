@@ -1159,7 +1159,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -1187,6 +1186,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1492,5 +1492,8 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		background-color: #0e47cb;
 		color: #fff;
 		cursor: pointer;
+	}`,
+	'KOL-SPLIT-BUTTON': `.popover {
+		background: #fff;
 	}`,
 });

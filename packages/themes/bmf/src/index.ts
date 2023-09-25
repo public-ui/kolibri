@@ -9731,4 +9731,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-white);
 		cursor: pointer;
 	}`,
+	'KOL-SPLIT-BUTTON': `.popover {
+		background: #fff;
+	}`,
 });

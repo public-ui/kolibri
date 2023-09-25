@@ -2427,4 +2427,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			cursor: pointer;
 		}
 	`,
+	'KOL-SPLIT-BUTTON': `.popover {
+		background: #fff;
+	}`,
 });

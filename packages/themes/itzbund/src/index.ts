@@ -1737,4 +1737,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		color: var(--color-weiss);
 		cursor: pointer;
 	}`,
+	'KOL-SPLIT-BUTTON': `.popover {
+		background: #fff;
+	}`,
 });

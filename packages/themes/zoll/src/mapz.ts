@@ -17604,4 +17604,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		color: white;
 		cursor: pointer;
 	}`,
+	'KOL-SPLIT-BUTTON': `.popover {
+		background: #fff;
+	}`,
 });
