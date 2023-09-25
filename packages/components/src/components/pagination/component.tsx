@@ -8,9 +8,7 @@ import { CustomClassPropType, validateCustomClass } from '../../types/props/cust
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
-import {
-    parseJson, watchJsonArrayString, watchNumber, watchValidator
-} from '../../utils/prop.validators';
+import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';

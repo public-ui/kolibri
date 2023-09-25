@@ -3,15 +3,11 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { States as ButtonStates } from '../../components/button/types';
 import { Stringified } from '../../types/common';
 import { AlignPropType } from '../../types/props/align';
-import {
-    AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole
-} from '../../types/props/alternative-button-link-role';
+import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
-import {
-    ButtonCallbacksPropType, validateButtonCallbacks
-} from '../../types/props/button-callbacks';
+import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
 import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
 import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
@@ -24,10 +20,7 @@ import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/to
 import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import {
-    mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean,
-    watchString
-} from '../../utils/prop.validators';
+import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';

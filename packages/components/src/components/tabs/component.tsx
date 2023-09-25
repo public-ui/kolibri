@@ -9,9 +9,7 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
-import {
-    koliBriQuerySelector, setState, watchJsonArrayString, watchNumber
-} from '../../utils/prop.validators';
+import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
 import { API, KoliBriTabsCallbacks, States, TabButtonProps } from './types';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html

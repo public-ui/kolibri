@@ -5,9 +5,7 @@ import { InputTextType } from '../../types/input/control/text';
 import { validateHasCounter } from '../../types/props/has-counter';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
-import {
-    PropSuggestions, SuggestionsPropType, validateSuggestions
-} from '../../types/props/suggestions';
+import { PropSuggestions, SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 import { a11yHint } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
 import { InputPasswordController } from '../input-password/controller';

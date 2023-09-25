@@ -6,9 +6,7 @@ import { InputTypeOnOff } from '../../types/input/types';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 import { a11yHint } from '../../utils/a11y.tipps';
-import {
-    watchBoolean, watchNumber, watchString, watchValidator
-} from '../../utils/prop.validators';
+import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 

@@ -1,9 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { NamePropType, validateName } from '../../types/props/name';
-import {
-    PropSyncValueBySelector, SyncValueBySelectorPropType
-} from '../../types/props/sync-value-by-selector';
+import { PropSyncValueBySelector, SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { StencilUnknown } from '../../types/unknown';
 import { devHint, devWarning } from '../../utils/a11y.tipps';
 import { getExperimentalMode } from '../../utils/dev.utils';

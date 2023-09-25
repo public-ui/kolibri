@@ -3,9 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
-import {
-    OptionsWithOptgroupPropType, validateOptionsWithOptgroup
-} from '../../types/props/options';
+import { OptionsWithOptgroupPropType, validateOptionsWithOptgroup } from '../../types/props/options';
 import { RowsPropType, validateRows } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
 import { a11yHint } from '../../utils/a11y.tipps';

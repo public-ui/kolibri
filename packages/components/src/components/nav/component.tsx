@@ -1,9 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import {
-    ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps
-} from '../../types/button-link-text';
+import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
 import { AriaCurrentPropType } from '../../types/props/aria-current';

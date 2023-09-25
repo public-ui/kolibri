@@ -9,9 +9,7 @@ import { a11yHint, devHint } from '../../utils/a11y.tipps';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
-import {
-    InputCheckboxIconProp, InputCheckboxIconState, InputCheckboxVariant, Props, Watches
-} from './types';
+import { InputCheckboxIconProp, InputCheckboxIconState, InputCheckboxVariant, Props, Watches } from './types';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

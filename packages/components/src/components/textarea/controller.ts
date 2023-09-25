@@ -4,9 +4,7 @@ import { HasCounterPropType } from '../../types/props/has-counter';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { RowsPropType, validateRows } from '../../types/props/rows';
 import { a11yHint } from '../../utils/a11y.tipps';
-import {
-    watchBoolean, watchNumber, watchString, watchValidator
-} from '../../utils/prop.validators';
+import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
 import { CSSResize, Props, Watches } from './types';
 
