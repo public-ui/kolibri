@@ -99,7 +99,7 @@ export class KolLinkWc implements API {
 			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0);',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: isExternal ? 'noopener' : undefined,
-			download: (typeof this.state._download === 'string' && this.state._download === 'true') || this.state._download === true ? true : undefined,
+			download: typeof this.state._download === 'string' ? this.state._download : undefined,
 		};
 
 		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !this.state._label) {
@@ -200,7 +200,7 @@ export class KolLinkWc implements API {
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: DownloadPropType = false;
+	@Prop() public _download?: DownloadPropType;
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.

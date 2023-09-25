@@ -61,7 +61,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add **/package.json **/pnpm-lock.yaml
+          git add **/package.json pnpm-lock.yaml
           git status
           git commit -m "chore: auto dependency update"
 
