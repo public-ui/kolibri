@@ -30,7 +30,7 @@
 		"@unocss/preset-uno": "0.56.1",
 		"@unocss/webpack": "0.56.1",
 		"ajv": "8.12.0",
-		"chromedriver": "116.0.0",
+		"chromedriver": "117.0.2",
 		"cpy-cli": "5.0.0",
 		"eslint-plugin-jsx-a11y": "6.7.1",
 		"eslint-plugin-react": "7.33.2",
