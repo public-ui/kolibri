@@ -1,5 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
+import { showExpertSlot } from '../../../utils/reuse';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { LinkProps, States } from '../../link/types';
 import { getSpanWcHtml } from '../../span/test/html.mock';
@@ -11,19 +12,17 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_href: '…', // ⚠ required
 			_hideLabel: false,
 			_icon: {},
-			_label: false, // TODO: version 1
-			// _label: '', // TODO: version 2
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
 		props
 	);
-	const hasExpertSlot: boolean = state._label === false;
+	const hasExpertSlot = showExpertSlot(state._label);
 	return `
 <kol-link>
   <mock:shadow-root>
   <kol-link-wc>
-    <a${state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''} class="${
+<a${state._hideLabel === true && !hasExpertSlot && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''} class="${
 		state._hideLabel === true ? ' icon-only hide-label' : ''
 	}${typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''}" href="${
 		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
@@ -33,7 +32,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			${getSpanWcHtml(
 				{
 					...state,
-					_label: hasExpertSlot ? false : state._label || state._href,
+					_label: state._label || state._href,
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,

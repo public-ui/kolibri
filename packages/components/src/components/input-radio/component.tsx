@@ -40,7 +40,7 @@ export class KolInputRadio implements API {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host>
@@ -251,7 +251,7 @@ export class KolInputRadio implements API {
 	@State() public state: States = {
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_options: [],
 		_orientation: 'vertical',
 	};

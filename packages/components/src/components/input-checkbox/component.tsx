@@ -6,7 +6,7 @@ import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { API, InputCheckboxIconProp, InputCheckboxVariant, States } from './types';
@@ -39,7 +39,7 @@ export class KolInputCheckbox implements API {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host>
@@ -239,7 +239,7 @@ export class KolInputCheckbox implements API {
 		},
 		_id: `id-${nonce()}`,
 		_indeterminate: false,
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_value: true,
 		_variant: 'default',
 	};

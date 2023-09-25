@@ -69,7 +69,7 @@ export class KolSelect implements API {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host class={{ 'has-value': this.state._hasValue }}>
@@ -295,7 +295,7 @@ export class KolSelect implements API {
 		_height: '',
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_multiple: false,
 		_options: [],
 		_value: [],

@@ -68,7 +68,7 @@ export class KolInputText implements API {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host
@@ -307,7 +307,7 @@ export class KolInputText implements API {
 		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_suggestions: [],
 		_type: 'text',
 	};

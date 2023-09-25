@@ -82,7 +82,7 @@ export class KolQuote implements API {
 	}
 
 	public render(): JSX.Element {
-		const hideExpertSlot = this.state._quote !== '';
+		const hideExpertSlot = this.state._quote !== ''; // _quote instead of _caption as _label
 		return (
 			<Host>
 				<figure

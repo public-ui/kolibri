@@ -61,8 +61,8 @@ export type OptionalProps = {
 	PropTooltipAlign;
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = PropIcon & PropHref & PropLabelWithExpertSlot;
-type OptionalStates = Omit<RequiredProps & OptionalProps, keyof RequiredStates>;
+type RequiredStates = PropIcon & PropHref;
+type OptionalStates = Omit<RequiredProps & OptionalProps, keyof RequiredStates> & PropLabelWithExpertSlot;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

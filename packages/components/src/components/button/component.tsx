@@ -15,7 +15,7 @@ import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
@@ -71,7 +71,7 @@ export class KolButtonWc implements API {
 	};
 
 	public render(): JSX.Element {
-		const hasExpertSlot: boolean = this.state._label === false;
+		const hasExpertSlot = showExpertSlot(this.state._label);
 		return (
 			<Host>
 				<button
@@ -98,7 +98,7 @@ export class KolButtonWc implements API {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? false : this.state._label}>
+					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
@@ -244,7 +244,7 @@ export class KolButtonWc implements API {
 
 	@State() public state: ButtonStates = {
 		_icon: {}, // ⚠ required
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button', // ⚠ required
 		_variant: 'normal', // ⚠ required
