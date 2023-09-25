@@ -6,7 +6,7 @@ import { FC } from 'react';
 const ARGS = {
 	className: 'w-8rem',
 	_on: {
-		onClick: (_event, _value) => alert('Klick!'),
+		onClick: () => alert('Klick!'),
 	},
 };
 

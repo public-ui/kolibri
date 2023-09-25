@@ -3,21 +3,21 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { NamePropType } from '../../types/props/name';
 import { OptionsPropType } from '../../types/props/options';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { API, States } from './types';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { IdPropType } from '../../types/props/id';
-import { NamePropType } from '../../types/props/name';
-import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -40,7 +40,7 @@ export class KolInputRadio implements API {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host>
@@ -84,7 +84,7 @@ export class KolInputRadio implements API {
 								_tooltipAlign={this._tooltipAlign}
 								_touched={this.state._touched}
 							>
-								<div slot={slotName}>
+								<div slot={slotName} class="radio-input-wrapper">
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
 										title=""
@@ -104,6 +104,7 @@ export class KolInputRadio implements API {
 										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 									/>
 									<label
+										class="radio-label"
 										htmlFor={`${customId}`}
 										style={{
 											height: this.state._hideLabel ? '0' : undefined,
@@ -243,7 +244,7 @@ export class KolInputRadio implements API {
 	@State() public state: States = {
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_options: [],
 		_orientation: 'vertical',
 	};

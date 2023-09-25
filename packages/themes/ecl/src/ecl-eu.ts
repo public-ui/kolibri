@@ -47,6 +47,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		--color-grey-110: #222732;
 		--color-grey-100: #262b38;
 		--color-grey-80: #515560;
+		--color-grey-75: #515560;
 		--color-grey-60: #7d8088;
 		--color-grey-40: #a8aaaf;
 		--color-grey-20: #d4d5d7;
@@ -260,7 +261,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	.open .headline button kol-icon::part(icon)::before {
 		content: "\\f077";
 	}
-	.close .headline button kol-icon::part(icon)::before {
+	:not(.open) .headline button kol-icon::part(icon)::before {
 		content: "\\f078";
 	}
 	.content,
@@ -763,6 +764,13 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	kol-input {
 		gap: var(--spacing-xs);
 	}
+	.button {
+		gap: var(--spacing-xs) 0;
+		grid-template-areas:
+			"input label"
+			"hint hint"
+			"error error";
+	}
 	kol-input > .input {
 		order: 2;
 	}
@@ -787,7 +795,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px;
 		outline: none;
 	}
 	input,
@@ -815,6 +822,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -891,7 +899,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -919,6 +926,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -943,7 +951,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -971,6 +978,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -995,7 +1003,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -1023,6 +1030,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1047,7 +1055,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px;
 		outline: none;
 	}
 	input,
@@ -1075,6 +1082,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1099,7 +1107,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px;
 		outline: none;
 	}
 	input,
@@ -1127,6 +1134,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1151,7 +1159,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -1179,6 +1186,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1203,7 +1211,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	select,
 	textarea {
 		border: none;
-		margin: 1px 0.5em;
 		outline: none;
 	}
 	input,
@@ -1231,6 +1238,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
+		padding: 1px 0.5em;
 	}
 	kol-input .counter {
 		order: 5;
@@ -1404,9 +1412,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-INPUT-RADIO': `fieldset {
 		border: 0;
 		gap: 0.5rem;
-	}
-	.input-slot {
-		gap: 0.25rem;
+		flex-wrap: wrap;
 	}
 	fieldset kol-alert {
 		order: 1;
@@ -1420,8 +1426,16 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	fieldset kol-input {
 		order: 4;
 	}
+	.radio-input-wrapper {
+    display: flex;
+		align-items: center;
+	}
+	.radio-label {
+		padding-left: 0.5rem;
+	}
 	input[type="radio"] {
-		border: 2px solid var(--color-grey-75);
+		outline: 2px solid var(--color-grey-75);
+		outline-offset: 2px;
 	}
 	input[type="radio"]:before {
 		display: none;
@@ -1431,8 +1445,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		border-width: 7px;
 	}
 	input[type="radio"]:focus {
-		outline: 2px solid var(--color-blue);
-		outline-offset: 2px;
+		outline-color: var(--color-blue);
 	}
 	input[type="radio"]:not(:disabled):hover {
 		border-color: var(--color-blue);
@@ -1462,10 +1475,14 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-xs));
 		order: 1;
+		width: 100%;
 	}
 	.hint {
 		font-size: 0.875rem;
 		order: 4;
+	}`,
+	'KOL-INPUT-RANGE': `.inputs-wrapper {
+		gap: 1rem;
 	}`,
 	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
 		border-radius: 4px;
@@ -1475,5 +1492,23 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		background-color: #0e47cb;
 		color: #fff;
 		cursor: pointer;
+	}`,
+	'KOL-SPLIT-BUTTON': `.popover {
+		background: #fff;
+	}`,
+	'KOL-TOAST-CONTAINER': `:host {
+		top: 1rem;
+		right: 1rem;
+		width: 440px;
+	}`,
+	'KOL-TOAST': `:host {
+		display: block;
+	}
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
+	}
+	.alert {
+		display: block;
 	}`,
 });

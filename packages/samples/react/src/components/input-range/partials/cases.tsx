@@ -22,9 +22,10 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, Components.K
 						icon: 'codicon codicon-arrow-right',
 					},
 				}}
+				_touched
 			/>
-			<KolInputRange {...props} ref={ref} _min={0} _max={50} _step={10} _error={ERROR_MSG} _label="Schieberegler" />
-			<KolInputRange {...props} _disabled _min={0} _max={50} _label="Schieberegler" />
+			<KolInputRange {...props} ref={ref} _min={0} _max={50} _step={10} _error={ERROR_MSG} _label="Schieberegler mit Fehler" _touched />
+			<KolInputRange {...props} _disabled _min={0} _max={50} _label="Schieberegler (disabled)" />
 		</div>
 	);
 });

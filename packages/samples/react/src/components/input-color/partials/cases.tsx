@@ -15,11 +15,11 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, Components.K
 					left: 'codicon codicon-symbol-color',
 				}}
 				_label="Color"
-				_value="#ff0000"
+				_value="#f08080"
 			/>
-			<KolInputColor {...props} _error={ERROR_MSG} _label="Color with error" _list="['#000000','#ff0000', '#0000ff','#00ff00']" _touched />
-			<KolInputColor {...props} ref={ref} _hint="Hint text" _label="Color with hint" _value="#ff0000" />
-			<KolInputColor {...props} _disabled _label="Color (Disabled)" _value="#ff0000" />
+			<KolInputColor {...props} _error={ERROR_MSG} _label="Color with error" _list="['#000000','#f08080', '#0000ff','#00ff00']" _touched />
+			<KolInputColor {...props} ref={ref} _hint="Hint text" _label="Color with hint" _value="#f08080" />
+			<KolInputColor {...props} _disabled _label="Color (Disabled)" _value="#f08080" />
 		</div>
 	);
 });

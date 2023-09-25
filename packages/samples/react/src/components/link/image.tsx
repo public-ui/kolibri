@@ -9,9 +9,8 @@ export const LinkImage: FC = () => (
 		<br />
 		<KolLink _href="#" _label="">
 			<img alt="Abgrenzung" slot="expert" src="https://public-ui.github.io/assets/abgrenzung.jpg" width="300" />
-			<KolKolibri></KolKolibri>
+			<KolKolibri style={{ width: '300px' }}></KolKolibri>
 		</KolLink>
-		<KolKolibri />
 		<br />
 		<KolLink _href="#" _label="">
 			<img alt="Abgrenzung" slot="expert" src="https://public-ui.github.io/assets/abgrenzung.jpg" width="300" />

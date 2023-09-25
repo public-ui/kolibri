@@ -1,10 +1,11 @@
-import { Props as ButtonProps } from '../button/types';
+import { Generic } from '@a11y-ui/core';
+
 import { Stringified } from '../../types/common';
 import { ColorPair, PropColor } from '../../types/props/color';
 import { PropHideLabel } from '../../types/props/hide-label';
-import { PropLabel } from '../../types/props/label';
 import { PropIcon } from '../../types/props/icon';
-import { Generic } from '@a11y-ui/core';
+import { PropLabel } from '../../types/props/label';
+import { Props as ButtonProps } from '../button/types';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {

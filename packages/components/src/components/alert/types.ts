@@ -2,9 +2,9 @@ import { Generic } from '@a11y-ui/core';
 
 import { EventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';
-import { PropLabel } from '../../types/props/label';
 import { PropAlert } from '../../types/props/alert';
 import { PropHasCloser } from '../../types/props/has-closer';
+import { PropLabel } from '../../types/props/label';
 
 export type AlertType = 'default' | 'info' | 'success' | 'warning' | 'error';
 export type AlertVariant = 'card' | 'msg';

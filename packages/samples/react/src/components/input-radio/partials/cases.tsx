@@ -18,16 +18,16 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				{...props}
 				_required
 				_error={ERROR_MSG}
+				_touched
 				_value="Firma"
 				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)','value':'Herr'},{'label':'Firma','value':'Firma'}]"
-				_label="Anrede"
+				_label="Anrede (mit Fehler)"
 			/>
 			<KolInputRadio
 				{...props}
 				ref={ref}
 				_orientation="horizontal"
 				_required
-				_error={ERROR_MSG}
 				_value="Firma"
 				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
 				_label="Anrede (horizontal)"
@@ -35,7 +35,17 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 			<KolInputRadio
 				{...props}
 				_disabled
+				_orientation="horizontal"
+				_required
 				_error={ERROR_MSG}
+				_touched
+				_value="Firma"
+				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
+				_label="Anrede (horizontal mit Fehler)"
+			/>
+			<KolInputRadio
+				{...props}
+				_disabled
 				_value="Firma"
 				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
 				_label="Anrede"

@@ -7,7 +7,7 @@ export const getButtonLinkHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
 		{
 			_icon: {},
-			_label: false, // ⚠ required
+			_label: '', // ⚠ required
 			_on: {},
 			_type: 'button',
 			_variant: 'normal',

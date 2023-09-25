@@ -44,6 +44,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 				}}
 				_label="Disabled"
 				_value={true}
+				_hint="Hint text"
 			/>
 			<KolInputCheckbox
 				{...props}
@@ -54,6 +55,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 				_label="Mit Fehler"
 				_touched
 				_value={true}
+				_hint="Hint text"
 			/>
 		</div>
 	);

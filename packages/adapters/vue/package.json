@@ -46,12 +46,12 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.22.19",
+		"@babel/types": "7.23.0",
 		"@public-ui/components": "1.7.0-rc.13",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts5.1",
-		"@types/normalize-package-data": "2.4.1",
+		"@types/normalize-package-data": "2.4.2",
 		"typescript": "5.2.2",
 		"unbuild": "1.2.1",
 		"vue": "3.3.4"

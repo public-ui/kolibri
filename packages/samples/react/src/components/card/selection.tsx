@@ -11,7 +11,7 @@ const STYLE = {
 };
 
 export const CardSelection: FC = () => (
-	<div className="d-flex gap-2">
+	<div className="flex gap-2">
 		<KolCard _hasFooter _heading="DEBTI-25437/17-1">
 			<div slot="header">
 				TeCorp Endplatte

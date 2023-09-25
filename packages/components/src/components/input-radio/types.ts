@@ -3,17 +3,17 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
-import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { PropOptions } from '../../types/props/options';
-import { W3CInputValue } from '../../types/w3c';
-import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropDisabled } from '../../types/props/disabled';
-import { PropHideLabel } from '../../types/props/hide-label';
-import { PropName } from '../../types/props/name';
-import { PropRequired } from '../../types/props/required';
-import { PropTouched } from '../../types/props/touched';
-import { PropId } from '../../types/props/id';
 import { PropHideError } from '../../types/props/hide-error';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropId } from '../../types/props/id';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { PropName } from '../../types/props/name';
+import { PropOptions } from '../../types/props/options';
+import { PropRequired } from '../../types/props/required';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
+import { PropTouched } from '../../types/props/touched';
+import { W3CInputValue } from '../../types/w3c';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {

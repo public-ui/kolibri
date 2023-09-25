@@ -4,9 +4,8 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { getButtonLinkHtml } from './html.mock';
-
 import { Props } from '../types';
+import { getButtonLinkHtml } from './html.mock';
 
 executeTests<Props>(
 	'ButtonLink',

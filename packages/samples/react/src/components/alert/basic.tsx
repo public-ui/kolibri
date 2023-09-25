@@ -23,6 +23,12 @@ const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 		<KolAlert _type={type} _variant={variant}>
 			In diesem Alert wird nur der Text ohne Überschrift verwendet.
 		</KolAlert>
+		<KolAlert _heading="Das ist die Überschrift des Alert." _level={level} _type={type} _variant={variant} _hasCloser>
+			Das ist der Text des Alert. Mit Schließen-Button.
+		</KolAlert>
+		<KolAlert _type={type} _variant={variant} _hasCloser>
+			In diesem Alert wird nur der Text ohne Überschrift verwendet. Mit Schließen-Button.
+		</KolAlert>
 	</>
 );
 

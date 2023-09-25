@@ -8,7 +8,7 @@ import { ERROR_MSG } from '../../../shares/constants';
 export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, Components.KolInputPassword>(function InputPasswordCases(props, ref) {
 	return (
 		<div className="grid gap-4">
-			<KolInputPassword {...props} _disabled _error={ERROR_MSG} _label="Passwort (Disabled)" />
+			<KolInputPassword {...props} _disabled _error={ERROR_MSG} _label="Passwort (Disabled)" _touched />
 			<KolInputPassword {...props} _readOnly _label="Passwort (Readonly)" />
 			<KolInputPassword
 				{...props}

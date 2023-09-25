@@ -2,16 +2,16 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { OptionsWithOptgroupPropType, validateOptionsWithOptgroup } from '../../types/props/options';
 import { RowsPropType, validateRows } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchJsonArrayString, watchString } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
 import { Props, Watches } from './types';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
-import { a11yHint } from '../../utils/a11y.tipps';
 
 export class SelectController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

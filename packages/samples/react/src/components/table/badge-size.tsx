@@ -48,4 +48,4 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
-export const TableBadgeSize: FC = () => <KolTable _caption="Sort a date column" _data={DATA} _headers={HEADERS} />;
+export const TableBadgeSize: FC = () => <KolTable _caption="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />;

@@ -1,10 +1,10 @@
 import { Generic } from '@a11y-ui/core';
 
-import { watchBoolean, watchString } from '../../utils/prop.validators';
+import { watchString } from '../../utils/prop.validators';
 
 /* types */
 
-export type DownloadPropType = boolean | string;
+export type DownloadPropType = string;
 
 /**
  * Tells the browser that the link contains a file. Optionally sets the filename.
@@ -15,6 +15,5 @@ export type PropDownload = {
 
 /* validator */
 export const validateDownload = (component: Generic.Element.Component, value?: DownloadPropType): void => {
-	if (typeof value === 'boolean') watchBoolean(component, '_download', value);
-	else watchString(component, '_download', value);
+	watchString(component, '_download', value);
 };

@@ -1,10 +1,11 @@
-import path from 'path';
-import pug from 'pug';
-import { Props, States } from '../types';
-import { mixMembers } from 'stencil-awesome-test';
 import { readFileSync } from 'fs';
 import { render } from 'mustache';
+import path from 'path';
+import pug from 'pug';
+import { mixMembers } from 'stencil-awesome-test';
 import { twig } from 'twig';
+
+import { Props, States } from '../types';
 
 const getState = (props: Props): States =>
 	mixMembers<Props, States>(

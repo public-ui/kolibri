@@ -19,7 +19,7 @@ executeTests<Props>(
 	{
 		_icon: ['codicon codicon-home'],
 		_hideLabel: [true, false],
-		_label: ['Text', false, ''],
+		_label: ['Text', ''],
 	},
 	getSpanWcHtml,
 	{
@@ -39,7 +39,7 @@ executeTests<Props>(
 	{
 		_icon: ['codicon codicon-home'],
 		_hideLabel: [true, false],
-		_label: ['Text', false, ''],
+		_label: ['Text', ''],
 	},
 	getSpanHtml,
 	{

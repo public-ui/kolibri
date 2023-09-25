@@ -1,9 +1,10 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { HrefPropType } from '../../types/props/href';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
-import { API, States, KoliBriQuoteVariant } from './types';
-import { HrefPropType } from '../../types/props/href';
+import { showExpertSlot } from '../../utils/reuse';
+import { API, KoliBriQuoteVariant, States } from './types';
 
 @Component({
 	tag: 'kol-quote',
@@ -82,7 +83,7 @@ export class KolQuote implements API {
 	}
 
 	public render(): JSX.Element {
-		const hideExpertSlot = this.state._quote !== '';
+		const hasExpertSlot = showExpertSlot(this.state._quote); // _quote instead of _caption as _label
 		return (
 			<Host>
 				<figure
@@ -93,14 +94,14 @@ export class KolQuote implements API {
 					{this.state._variant === 'block' ? (
 						<blockquote cite={this.state._href}>
 							{this.state._quote}
-							<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
+							<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
 								<slot name="expert" />
 							</span>
 						</blockquote>
 					) : (
 						<q cite={this.state._href}>
 							{this.state._quote}
-							<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
+							<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
 								<slot name="expert" />
 							</span>
 						</q>

@@ -15,5 +15,5 @@ export type PropTooltipAlign = {
 
 /* validator */
 export const validateTooltipAlign = (component: Generic.Element.Component, value?: TooltipAlignPropType): void => {
-	validateAlignment(component, '_align', value);
+	validateAlignment(component, '_tooltipAlign', value);
 };

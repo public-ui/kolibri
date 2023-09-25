@@ -11,9 +11,9 @@ import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-lab
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { API, States } from './types';
 import { watchNavLinks } from './validation';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 /**
  * @deprecated Removed in v2
@@ -162,7 +162,7 @@ export class KolNav implements API {
 						<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
-						<div class="mt-2 w-full compact">
+						<div class="compact">
 							<kol-button
 								_ariaControls="nav"
 								_ariaExpanded={!hideLabel}
