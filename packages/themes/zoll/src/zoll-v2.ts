@@ -328,13 +328,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	th[data-sort="sort-NOS"] kol-button::part(icon)::before,
 	th[data-sort="sort-undefined"] kol-button::part(icon)::before {
-		content: "\f0dc";
+		content: "\\f0dc";
 	}
 	th[data-sort="sort-ASC"] kol-button::part(icon)::before {
-		content: "\f0de";
+		content: "\\f0de";
 	}
 	th[data-sort="sort-DESC"] kol-button::part(icon)::before {
-		content: "\f0dd";
+		content: "\\f0dd";
 	}`,
 	'KOL-ACCORDION': `:host > div {
 		border-color: var(--border-color);
