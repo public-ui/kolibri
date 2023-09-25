@@ -11,7 +11,7 @@ export const getHeadingWcHtml = (
 ): string => {
 	const state = mixMembers<Props, States>(
 		{
-			_label: false, // ⚠ required
+			_label: '', // ⚠ required
 			_level: 1,
 		},
 		props
@@ -21,7 +21,7 @@ export const getHeadingWcHtml = (
 	return `
 		<kol-heading-wc${additionalAttrs}>
 			<${tag} class="headline">
-				${typeof state._label === 'string' ? state._label : ''}
+				${state._label}
 				${typeof slots.default === 'string' ? slots.default : `<slot />`}
 			</${tag}>
 		</kol-heading-wc>`;

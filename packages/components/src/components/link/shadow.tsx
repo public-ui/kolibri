@@ -1,18 +1,18 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { LinkUseCase } from '../../types/button-link';
-import { LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
-import { AriaCurrentPropType } from '../../types/props/aria-current';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { propagateFocus } from '../../utils/reuse';
-import { DownloadPropType } from '../../types/props/download';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { LinkTargetPropType } from '../../types/props/link-target';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
+import { DownloadPropType } from '../../types/props/download';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { LinkOnCallbacksPropType } from '../../types/props/link-on-callbacks';
+import { LinkTargetPropType } from '../../types/props/link-target';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { propagateFocus } from '../../utils/reuse';
+import { LinkProps } from '../link/types';
 
 @Component({
 	tag: 'kol-link',
@@ -115,7 +115,7 @@ export class KolLink implements LinkProps {
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: DownloadPropType = false;
+	@Prop() public _download?: DownloadPropType;
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.

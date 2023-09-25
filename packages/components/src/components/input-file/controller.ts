@@ -1,10 +1,10 @@
 import { Generic } from '@a11y-ui/core';
 
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
-import { a11yHint } from '../../utils/a11y.tipps';
 
 export class InputFileController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

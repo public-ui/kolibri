@@ -1,11 +1,11 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
 import { API, States } from './types';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 @Component({
 	tag: 'kol-skip-nav',

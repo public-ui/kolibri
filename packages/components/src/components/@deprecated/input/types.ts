@@ -1,9 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 
-import { Props as ButtonProps } from '../../button/types';
 import { Stringified } from '../../../types/common';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../../types/props/label';
+import { Props as ButtonProps } from '../../button/types';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = PropLabelWithExpertSlot & {

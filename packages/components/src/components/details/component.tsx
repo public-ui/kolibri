@@ -4,8 +4,8 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { validateOpen } from '../../types/props/open';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { setState } from '../../utils/prop.validators';
-import { API, EventCallbacks, States } from './types';
 import DetailsAnimationController from './DetailsAnimationController';
+import { API, EventCallbacks, States } from './types';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.

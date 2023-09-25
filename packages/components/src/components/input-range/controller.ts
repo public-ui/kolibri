@@ -2,13 +2,13 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnOff, Option } from '../../types/input/types';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
-import { a11yHint } from '../../utils/a11y.tipps';
 
 export class InputRangeController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

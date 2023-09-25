@@ -2,13 +2,13 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { CheckedPropType, validateChecked } from '../../types/props/checked';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { IndeterminatePropType, validateIndeterminate } from '../../types/props/indeterminate';
 import { StencilUnknown } from '../../types/unknown';
 import { a11yHint, devHint } from '../../utils/a11y.tipps';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { InputCheckboxIconProp, InputCheckboxIconState, InputCheckboxVariant, Props, Watches } from './types';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {

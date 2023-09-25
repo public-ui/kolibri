@@ -4,16 +4,16 @@ import { Stringified } from '../../types/common';
 import { AnyIconFontClass } from '../../types/icon';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { PropChecked } from '../../types/props/checked';
+import { PropDisabled } from '../../types/props/disabled';
+import { PropHideError } from '../../types/props/hide-error';
+import { PropHideLabel } from '../../types/props/hide-label';
 import { PropIndeterminate } from '../../types/props/indeterminate';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { StencilUnknown } from '../../types/unknown';
-import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
-import { PropDisabled } from '../../types/props/disabled';
-import { PropHideLabel } from '../../types/props/hide-label';
 import { PropName } from '../../types/props/name';
 import { PropRequired } from '../../types/props/required';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTouched } from '../../types/props/touched';
-import { PropHideError } from '../../types/props/hide-error';
+import { StencilUnknown } from '../../types/unknown';
 
 export type InputCheckboxVariant =
 	| 'button'

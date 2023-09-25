@@ -1,10 +1,10 @@
 import { Generic } from '@a11y-ui/core';
 
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { MultiplePropType, validateMultiple } from '../../types/props/multiple';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { InputTextEmailController } from '../input-text/controller';
 import { Props, Watches } from './types';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
-import { a11yHint } from '../../utils/a11y.tipps';
 
 export class InputEmailController extends InputTextEmailController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

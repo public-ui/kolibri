@@ -9,9 +9,9 @@ import { devHint } from '../../utils/a11y.tipps';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 import {
+	API,
 	KoliBriSortDirection,
 	KoliBriSortFunction,
-	API,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,

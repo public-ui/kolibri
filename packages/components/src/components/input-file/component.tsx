@@ -1,21 +1,21 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault } from '../../types/input/types';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { NamePropType } from '../../types/props/name';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
+import { Props as ButtonProps } from '../button/types';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
 import { API, States } from './types';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { IdPropType } from '../../types/props/id';
-import { NamePropType } from '../../types/props/name';
-import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -38,7 +38,7 @@ export class KolInputFile implements API {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host>
@@ -216,7 +216,7 @@ export class KolInputFile implements API {
 	@State() public state: States = {
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 	};
 
 	public constructor() {

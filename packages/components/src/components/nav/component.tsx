@@ -11,9 +11,9 @@ import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-lab
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { API, States } from './types';
 import { watchNavLinks } from './validation';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 /**
  * @deprecated Removed in v2

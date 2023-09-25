@@ -4,13 +4,13 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { AlignPropType, validateAlign } from '../../types/props/align';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
 import { API, KoliBriTabsCallbacks, States, TabButtonProps } from './types';
-import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 

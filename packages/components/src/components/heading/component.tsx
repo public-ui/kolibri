@@ -30,7 +30,7 @@ export class KolHeadingWc implements API {
 	@Prop() public _secondaryHeadline?: string;
 
 	@State() public state: States = {
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_level: 1,
 	};
 

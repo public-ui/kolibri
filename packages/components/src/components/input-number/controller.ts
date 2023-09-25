@@ -3,12 +3,12 @@ import { Generic } from '@a11y-ui/core';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnOff } from '../../types/input/types';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
-import { a11yHint } from '../../utils/a11y.tipps';
 
 export class InputNumberController extends InputIconController implements Watches {
 	/**

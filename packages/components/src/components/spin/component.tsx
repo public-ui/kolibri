@@ -1,9 +1,9 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
+import { ShowPropType, validateShow } from '../../types/props/show';
 import { SpinVariantPropType, validateSpinVariant } from '../../types/props/variant/spin';
 import { API, States } from './types';
-import { ShowPropType, validateShow } from '../../types/props/show';
 
 function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {

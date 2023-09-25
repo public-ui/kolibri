@@ -1,31 +1,31 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { States as ButtonStates } from '../../components/button/types';
-import { API } from './types';
 import { Stringified } from '../../types/common';
 import { AlignPropType } from '../../types/props/align';
+import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
+import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
+import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
+import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
+import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { IconPropType, validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
-import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
-import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
-import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
-import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
-import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
+import { API } from './types';
 
 /**
  * @internal
@@ -71,7 +71,7 @@ export class KolButtonWc implements API {
 	};
 
 	public render(): JSX.Element {
-		const hasExpertSlot: boolean = this.state._label === false;
+		const hasExpertSlot = showExpertSlot(this.state._label);
 		return (
 			<Host>
 				<button
@@ -98,7 +98,7 @@ export class KolButtonWc implements API {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? false : this.state._label}>
+					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
@@ -244,7 +244,7 @@ export class KolButtonWc implements API {
 
 	@State() public state: ButtonStates = {
 		_icon: {}, // ⚠ required
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button', // ⚠ required
 		_variant: 'normal', // ⚠ required

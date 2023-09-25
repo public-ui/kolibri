@@ -1,15 +1,15 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { HeadingLevel } from '../../types/heading-level';
 import { Orientation } from '../../types/orientation';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
-import { watchHeadingLevel } from '../heading/validation';
-import { watchNavLinks } from '../nav/validation';
-import { API, States, ListStyleType } from './types';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+import { watchHeadingLevel } from '../heading/validation';
+import { LinkProps } from '../link/types';
+import { watchNavLinks } from '../nav/validation';
+import { API, ListStyleType, States } from './types';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];

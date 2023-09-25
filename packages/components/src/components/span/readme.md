@@ -25,7 +25,7 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 | `_hideLabel`          | `_hide-label` | Hides the label and shows the description in a Tooltip instead.                                                                                              | `boolean \| undefined`                                               | `false`     |
 | `_icon`               | `_icon`       | Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).                                                                                               | `KoliBriHorizontalIcon & KoliBriVerticalIcon \| string \| undefined` | `undefined` |
 | `_iconOnly`           | `_icon-only`  | <span style="color:red">**[DEPRECATED]**</span> use \_hide-label<br/><br/>Deprecated: Hides the label and shows the description in a Tooltip instead.        | `boolean \| undefined`                                               | `undefined` |
-| `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `boolean \| string`                                                  | `undefined` |
+| `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                             | `undefined` |
 
 ## Dependencies
 
