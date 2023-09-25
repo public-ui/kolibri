@@ -4,7 +4,7 @@ import { watchBoolean, watchString } from '../../utils/prop.validators';
 
 /* types */
 
-export type DownloadPropType = boolean | string;
+export type DownloadPropType = true | string;
 
 /**
  * Tells the browser that the link contains a file. Optionally sets the filename.
