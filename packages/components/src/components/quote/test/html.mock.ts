@@ -23,7 +23,7 @@ export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
 		<figure class="${state._variant}">
 			<${state._variant === 'block' ? 'blockquote' : 'q'} cite="${state._href}">
 			${state._quote}
-				<span${hasExpertSlot && typeof slots.expert === 'string' ? ` aria-hidden="true" hidden=""` : ``}>
+				<span${hasExpertSlot && typeof slots.expert === 'string' ? `` : ` aria-hidden="true" hidden=""`}>
 					<slot name="expert">
 						${hasExpertSlot && typeof slots.expert === 'string' ? slots.expert : ``}
 					</slot>
