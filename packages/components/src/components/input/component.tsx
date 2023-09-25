@@ -96,7 +96,7 @@ export class KolInput implements Props {
 						class="input-tooltip"
 						_align={this._tooltipAlign}
 						_id={this._hideLabel ? `${this._id}-label` : undefined}
-						_label={this._label as string}
+						_label={this._label}
 					></kol-tooltip-wc>
 				)}
 				{hasError && (
