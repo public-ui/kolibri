@@ -24,7 +24,7 @@ executeTests<LinkProps>(
 		_target: ['_self', '_blank', 'egal'],
 		_targetDescription: ['Der Link wird in einem neuen Tab geöffnet.'],
 		_tooltipAlign: ['top', 'right', 'bottom', 'left'],
-		_download: [false, true, undefined, 'download-file.zip'],
+		_download: [false, true, 'download-file.zip'],
 	},
 	getLinkHtml,
 	{
