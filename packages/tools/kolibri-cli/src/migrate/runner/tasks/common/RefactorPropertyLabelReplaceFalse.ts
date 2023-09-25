@@ -4,7 +4,7 @@ import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS, MARKUP_EXTEN
 import { MODIFIED_FILES, filterFilesByExt } from '../../../shares/reuse';
 import { AbstractTask } from '../../abstract-task';
 
-export class RefactorPropertyType extends AbstractTask {
+export class RefactorPropertyLabelReplaceFalse extends AbstractTask {
 	private readonly componentRegExp = /_label={false}/g;
 	private readonly customElementRegExp = /_label="false"/g;
 
@@ -12,12 +12,12 @@ export class RefactorPropertyType extends AbstractTask {
 		super(`refactor-property-label-replace-false`, `Refactor property "_label" - replace "false" with ""`, MARKUP_EXTENSIONS, '>=1.6 <=1.7');
 	}
 
-	public static getInstance(): RefactorPropertyType {
+	public static getInstance(): RefactorPropertyLabelReplaceFalse {
 		const identifier = `refact-property-label-replace-false`;
 		if (!this.instances.has(identifier)) {
-			this.instances.set(identifier, new RefactorPropertyType());
+			this.instances.set(identifier, new RefactorPropertyLabelReplaceFalse());
 		}
-		return this.instances.get(identifier) as RefactorPropertyType;
+		return this.instances.get(identifier) as RefactorPropertyLabelReplaceFalse;
 	}
 
 	public run(baseDir: string): void {

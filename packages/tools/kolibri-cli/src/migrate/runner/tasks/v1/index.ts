@@ -1,7 +1,7 @@
 import { AbstractTask } from '../../abstract-task';
 import { LabelExpertSlot } from '../common/LabelExpertSlot';
 import { MarkRemovedSlotTask } from '../common/MarkRemovedSlotTask';
-import { RefactorPropertyType } from '../common/RefactorPropertyType';
+import { RefactorPropertyLabelReplaceFalse } from '../common/RefactorPropertyLabelReplaceFalse';
 import { RenameSlotNameTask } from '../common/RenameSlotNameTask';
 import { AbbrRenamePropertyTitleToLabel } from './abbr';
 import { AccordionRenamePropertyHeadingToLabel } from './accordion';
@@ -162,4 +162,4 @@ v1Tasks.push(MarkRemovedSlotTask.getInstance('kol-card', 'header', '^1'));
 v1Tasks.push(RenameSlotNameTask.getInstance('kol-accordion', 'content', '', '^1'));
 v1Tasks.push(RenameSlotNameTask.getInstance('kol-card', 'content', '', '^1'));
 
-v1Tasks.push(RefactorPropertyType.getInstance());
+v1Tasks.push(RefactorPropertyLabelReplaceFalse.getInstance());
