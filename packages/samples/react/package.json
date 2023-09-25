@@ -24,7 +24,7 @@
 		"@public-ui/components": "1.7.0-rc.13",
 		"@public-ui/react": "1.7.0-rc.13",
 		"@public-ui/themes": "1.7.0-rc.13",
-		"@types/node": "20.6.3",
+		"@types/node": "20.6.5",
 		"@types/react": "18.2.22",
 		"@types/react-dom": "18.2.7",
 		"@unocss/preset-uno": "0.56.1",
