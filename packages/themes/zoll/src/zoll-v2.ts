@@ -755,27 +755,18 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		padding: 0.75rem 1rem;
 		text-decoration: underline;
 	}`,
-	'KOL-TOAST': `:host > div {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
-	}
-	:host > div > kol-alert {
-		display: block;
-		margin: auto;
-		padding: 1rem;
-		max-width: 750px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		margin: auto;
-		width: 1em;
+	'KOL-TOAST-CONTAINER': `:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
 	}`,
+	'KOL-TOAST': `
+		.toast {
+			background: #fff;
+			margin-top: 1rem;
+		}
+	`,
 	'KOL-PROGRESS': `svg line:first-child,
 	svg circle:first-child {
 		stroke: var(--color-neutral);

@@ -44,6 +44,7 @@ export enum TagEnum {
 	'tabs',
 	'textarea',
 	'toast',
+	'toast-container',
 	'toolbar', // TODO: github pr link
 	'tooltip',
 }

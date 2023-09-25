@@ -1496,4 +1496,19 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-SPLIT-BUTTON': `.popover {
 		background: #fff;
 	}`,
+	'KOL-TOAST-CONTAINER': `:host {
+		top: 1rem;
+		right: 1rem;
+		width: 440px;
+	}`,
+	'KOL-TOAST': `:host {
+		display: block;
+	}
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
+	}
+	.alert {
+		display: block;
+	}`,
 });

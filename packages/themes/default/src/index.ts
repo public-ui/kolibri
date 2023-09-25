@@ -1945,27 +1945,16 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			padding-left: 0;
 		}
 	`,
+	'KOL-TOAST-CONTAINER': css`
+		:host {
+			top: 1rem;
+			right: 1rem;
+			width: 440px;
+		}
+	`,
 	'KOL-TOAST': css`
-		:host > div {
-			position: fixed;
-			top: 0;
-			right: 0;
-			width: 100%;
-			height: 0;
-			z-index: 200;
-		}
-		:host > div > kol-alert {
-			display: block;
-			margin-left: auto;
-			margin-right: unset;
-			padding: 2rem;
-			max-width: 750px;
-		}
-		:host > div > kol-button-wc {
-			top: 0;
-			position: relative;
-			display: block;
-			width: 1rem;
+		.toast {
+			margin-top: 1rem;
 		}
 	`,
 	'KOL-TABS': css`
