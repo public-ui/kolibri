@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui-/theme-bzst",
-	"version": "1.7.0-rc.13",
+	"version": "1.7.0-rc.14",
 	"private": true,
 	"scripts": {
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
@@ -10,12 +10,12 @@
 		"test-update": "THEME_MODULE=src/index THEME_EXPORT=BZSt kolibri-visual-test --update-snapshots"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "1.7.0-rc.13",
-		"@public-ui/visual-tests": "1.7.0-rc.13",
+		"@public-ui/schema": "1.7.0-rc.14",
+		"@public-ui/visual-tests": "1.7.0-rc.14",
 		"@types/node": "ts5.2",
 		"typescript": "5.2.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.0-rc.13"
+		"@public-ui/components": "1.7.0-rc.14"
 	}
 }
