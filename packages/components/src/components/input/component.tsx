@@ -9,7 +9,7 @@ import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { W3CInputValue } from '../../types/w3c';
-import { handleSlotContent } from '../../utils/reuse';
+import { handleSlotContent, showExpertSlot } from '../../utils/reuse';
 import { Props as ButtonProps } from '../button/types';
 import { Props } from './types';
 
@@ -35,7 +35,7 @@ export class KolInput implements Props {
 
 	public render(): JSX.Element {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
-		const hasExpertSlot = this._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 		const useTooltopInsteadOfLabel = !hasExpertSlot && this._hideLabel;
 
