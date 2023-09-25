@@ -27,3 +27,10 @@ export const handleSlotContent = (hostRef: HTMLElement, slotRef: HTMLElement, sl
 		}
 	}
 };
+
+/**
+ * This function is used to check if a label is an empty string.
+ * @param label The label of the slot
+ * @returns  True if the label is an empty string
+ */
+export const showExpertSlot = (label: unknown) => label === '';

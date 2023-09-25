@@ -53,7 +53,7 @@ export type LabelPropType = string;
 /**
  * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
  */
-export type LabelWithExpertSlotPropType = LabelPropType | false;
+export type LabelWithExpertSlotPropType = LabelPropType | '';
 
 /**
  * The label property is used to label different elements:
@@ -104,23 +104,8 @@ export const validateLabel = (component: Generic.Element.Component, value?: Labe
 	watchValidator(component, '_label', (value) => typeof value === 'string', LABEL_VALUES, value, getValidationOptions(options));
 };
 
-const LABEL_WITH_EXPERT_SLOT_VALUES = new Set(['string', 'false']);
-export const validateLabelWithExpertSlot = (
-	component: Generic.Element.Component,
-	value?: LabelWithExpertSlotPropType,
-	options: WatchStringOptions = {}
-): void => {
-	if (value === '' || value === 'false') {
-		value = false; // TODO: remove this workaround in v2
-	}
-	watchValidator(
-		component,
-		'_label',
-		(value) => value === false || typeof value === 'string',
-		LABEL_WITH_EXPERT_SLOT_VALUES,
-		value,
-		getValidationOptions(options)
-	);
-};
-
-// TODO: Validation for labelWithExpertSlot
+/**
+ * This method name helps to differentiate between the label
+ * and the label with expert slot usage.
+ */
+export const validateLabelWithExpertSlot = validateLabel;

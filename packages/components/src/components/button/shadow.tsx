@@ -2,19 +2,19 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { AlignPropType } from '../../types/props/align';
-import { AriaCurrentPropType } from '../../types/props/aria-current';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { StencilUnknown } from '../../types/unknown';
-import { propagateFocus } from '../../utils/reuse';
-import { CustomClassPropType } from '../../types/props/custom-class';
-import { IconPropType } from '../../types/props/icon';
-import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { Props } from './types';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { ButtonTypePropType } from '../../types/props/button-type';
 import { ButtonVariantPropType } from '../../types/props/button-variant';
+import { CustomClassPropType } from '../../types/props/custom-class';
+import { IconPropType } from '../../types/props/icon';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { StencilUnknown } from '../../types/unknown';
+import { propagateFocus } from '../../utils/reuse';
+import { Props } from './types';
 
 @Component({
 	tag: 'kol-button',

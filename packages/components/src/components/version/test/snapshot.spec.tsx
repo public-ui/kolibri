@@ -17,7 +17,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_label: [undefined, '1.0.0'],
+		_label: ['1.0.0'],
 	},
 	(props) => getVersionHtml(props),
 	{

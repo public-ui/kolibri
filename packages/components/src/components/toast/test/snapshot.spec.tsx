@@ -3,9 +3,9 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
+import { KolToast } from '../component';
 import { Props } from '../types';
 import { getToastHtml } from './html.mock';
-import { KolToast } from '../component';
 
 executeTests<Props>(
 	'Toast',

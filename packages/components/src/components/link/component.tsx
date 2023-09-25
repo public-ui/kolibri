@@ -20,7 +20,7 @@ import { validateStealth } from '../../types/props/stealth';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
 import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { States as LinkStates } from '../link/types';
 import { API } from './types';
@@ -101,7 +101,7 @@ export class KolLinkWc implements API {
 
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
-		const hasExpertSlot: boolean = this.state._label === false;
+		const hasExpertSlot = showExpertSlot(this.state._label);
 		return (
 			<Host>
 				<a
@@ -127,7 +127,7 @@ export class KolLinkWc implements API {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? false : this.state._label || this.state._href}>
+					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label || this.state._href}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
@@ -285,8 +285,6 @@ export class KolLinkWc implements API {
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
 		_icon: {}, // ⚠ required
-		_label: false, // TODO: version 1
-		// _label: '', // TODO: version 2
 	};
 
 	/**

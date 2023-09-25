@@ -1,8 +1,8 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { getBadgeHtml } from '../../badge/test/html.mock';
-import { Props } from '../types';
 import { SpanOptions } from '../../span/test/html.mock';
+import { Props } from '../types';
 
 export const getVersionHtml = (props: Props, options?: SpanOptions): string => {
 	props = mixMembers(

@@ -5,9 +5,10 @@ import { KoliBriIconProp } from '../../types/icon';
 import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 import { validateIcon } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
-import { API, States } from './types';
-import { watchBoolean } from '../../utils/prop.validators';
 import { md } from '../../utils/markdown';
+import { watchBoolean } from '../../utils/prop.validators';
+import { showExpertSlot } from '../../utils/reuse';
+import { API, States } from './types';
 
 /**
  * @internal
@@ -18,7 +19,7 @@ import { md } from '../../utils/markdown';
 })
 export class KolSpanWc implements API {
 	public render(): JSX.Element {
-		const hideExpertSlot: boolean = typeof this.state._label === 'string';
+		const hideExpertSlot = !showExpertSlot(this.state._label);
 		return (
 			<Host
 				class={{
@@ -30,10 +31,10 @@ export class KolSpanWc implements API {
 				<span>
 					{this.state._icon.left && <kol-icon class="icon left" style={this.state._icon.left.style} _label="" _icon={this.state._icon.left.icon} />}
 					{!this.state._hideLabel && hideExpertSlot ? (
-						this.state._allowMarkdown && this.state._label ? (
+						this.state._allowMarkdown && typeof this.state._label === 'string' && this.state._label.length > 0 ? (
 							<span class="span-label md" innerHTML={md(this.state._label)} />
 						) : (
-							<span class="span-label">{this.state._label}</span>
+							<span class="span-label">{this.state._label ?? ''}</span>
 						)
 					) : (
 						''
@@ -79,7 +80,7 @@ export class KolSpanWc implements API {
 		_allowMarkdown: false,
 		_hideLabel: false,
 		_icon: {},
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 	};
 
 	@Watch('_allowMarkdown')

@@ -2,9 +2,10 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
 import { mapIconProp2State } from '../../../types/props/icon';
+import { md } from '../../../utils/markdown';
+import { showExpertSlot } from '../../../utils/reuse';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { Props, States } from '../types';
-import { md } from '../../../utils/markdown';
 
 type Slots = {
 	''?: string;
@@ -25,14 +26,17 @@ export const getSpanWcHtml = (
 			_allowMarkdown: false,
 			_icon: {},
 			_hideLabel: false,
-			_label: false, // ⚠ required
+			_label: '', // ⚠ required
 		},
 		props
 	);
-	if (state._label === '') {
-		state._label = false; // TODO: remove this workaround in v2
-	}
-	const hideExpertSlot: boolean = typeof state._label === 'string';
+
+	/**
+	 * @todo: This covers the case where the label is undefined or null. But why?
+	 */
+	state._label = state._label ?? '';
+
+	const hideExpertSlot = !showExpertSlot(state._label);
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
 <kol-span-wc${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${options?.additionalAttrs ?? ''}>
@@ -58,9 +62,9 @@ export const getSpanWcHtml = (
 		}
 		${
 			!state._hideLabel && hideExpertSlot
-				? state._allowMarkdown
-					? `<span class="span-label md">${md(state._label as string)}</span>`
-					: `<span class="span-label">${state._label as string}</span>`
+				? state._allowMarkdown && typeof state._label === 'string' && state._label.length > 0
+					? `<span class="span-label md">${md(state._label)}</span>`
+					: `<span class="span-label">${state._label ?? ''}</span>`
 				: ``
 		}
 		<span class="span-label" ${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>

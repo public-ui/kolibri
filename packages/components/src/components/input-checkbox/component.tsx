@@ -2,21 +2,21 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
+import { CheckedPropType } from '../../types/props/checked';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
+import { IndeterminatePropType } from '../../types/props/indeterminate';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { NamePropType } from '../../types/props/name';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { API, InputCheckboxIconProp, InputCheckboxVariant, States } from './types';
-import { CheckedPropType } from '../../types/props/checked';
-import { IndeterminatePropType } from '../../types/props/indeterminate';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { IdPropType } from '../../types/props/id';
-import { NamePropType } from '../../types/props/name';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -39,7 +39,7 @@ export class KolInputCheckbox implements API {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host>
@@ -239,7 +239,7 @@ export class KolInputCheckbox implements API {
 		},
 		_id: `id-${nonce()}`,
 		_indeterminate: false,
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_value: true,
 		_variant: 'default',
 	};

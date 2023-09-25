@@ -3,19 +3,19 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, SelectOption } from '../../types/input/types';
-import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { PropOptionsWithOptgroup } from '../../types/props/options';
-import { PropRows } from '../../types/props/rows';
-import { W3CInputValue } from '../../types/w3c';
-import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropDisabled } from '../../types/props/disabled';
+import { PropHideError } from '../../types/props/hide-error';
 import { PropHideLabel } from '../../types/props/hide-label';
+import { PropId } from '../../types/props/id';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropMultiple } from '../../types/props/multiple';
 import { PropName } from '../../types/props/name';
+import { PropOptionsWithOptgroup } from '../../types/props/options';
 import { PropRequired } from '../../types/props/required';
+import { PropRows } from '../../types/props/rows';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTouched } from '../../types/props/touched';
-import { PropId } from '../../types/props/id';
-import { PropHideError } from '../../types/props/hide-error';
+import { W3CInputValue } from '../../types/w3c';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {

@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { PropLabel } from '../../types/props/label';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { AlertType } from '../alert/types';

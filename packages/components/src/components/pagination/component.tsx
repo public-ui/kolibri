@@ -3,15 +3,15 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { nonce } from '../../utils/dev.utils';
-import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
-import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';
-import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { nonce } from '../../utils/dev.utils';
+import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+import { STATE_CHANGE_EVENT } from '../../utils/validator';
+import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',

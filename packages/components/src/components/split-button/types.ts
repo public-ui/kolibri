@@ -6,8 +6,8 @@ import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { PropButtonVariant } from '../../types/props/button-variant';
 import { PropIcon } from '../../types/props/icon';
 import { PropLabel } from '../../types/props/label';
-import { PropTooltipAlign } from '../../types/props/tooltip-align';
 import { PropShow } from '../../types/props/show';
+import { PropTooltipAlign } from '../../types/props/tooltip-align';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {

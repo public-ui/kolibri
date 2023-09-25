@@ -1,8 +1,8 @@
 import { Generic } from '@a11y-ui/core';
 
+import { EventValueOrEventCallback } from '../../types/callbacks';
 import { PropLabel } from '../../types/props/label';
 import { PropOpen } from '../../types/props/open';
-import { EventValueOrEventCallback } from '../../types/callbacks';
 
 export type EventCallbacks = {
 	onToggle?: EventValueOrEventCallback<Event, boolean>;

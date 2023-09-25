@@ -4,10 +4,10 @@ import { Events } from '../../enums/events';
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { PropTooltipAlign } from '../../types/props/tooltip-align';
 import { PropButtonVariant } from '../../types/props/button-variant';
 import { PropCustomClass } from '../../types/props/custom-class';
 import { PropLabel } from '../../types/props/label';
+import { PropTooltipAlign } from '../../types/props/tooltip-align';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, number>;
