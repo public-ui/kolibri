@@ -1,4 +1,12 @@
 import React, { FC } from 'react';
-import { InputCheckboxVariant } from './partials/variants';
+import { FocusInput } from '../FocusInput';
+import { InputCheckboxVariants } from './partials/variants';
 
-export const InputCheckboxButton: FC = () => <InputCheckboxVariant variant="button" />;
+export const InputCheckboxButton: FC = () => (
+	<FocusInput
+		RefInput={InputCheckboxVariants}
+		props={{
+			_variant: 'button',
+		}}
+	/>
+);

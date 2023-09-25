@@ -75,16 +75,15 @@ Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe
 ### Depends on
 
 - kol-input
-- [kol-tooltip-wc](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-input-password --> kol-input
-  kol-input-password --> kol-tooltip-wc
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc

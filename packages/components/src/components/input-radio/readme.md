@@ -113,7 +113,6 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 ### Depends on
 
 - kol-input
-- [kol-tooltip-wc](../tooltip)
 - [kol-alert](../alert)
 
 ### Graph
@@ -121,10 +120,10 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 ```mermaid
 graph TD;
   kol-input-radio --> kol-input
-  kol-input-radio --> kol-tooltip-wc
   kol-input-radio --> kol-alert
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc

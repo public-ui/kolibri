@@ -25,7 +25,7 @@ export const CardSelection: FC = () => (
 			</div>
 			<div slot="footer">
 				<div style={STYLE}>
-					<KolInputCheckbox _id="article-0">Auswählen</KolInputCheckbox>
+					<KolInputCheckbox>Auswählen</KolInputCheckbox>
 					<KolButton _variant="primary" _label="Öffnen"></KolButton>
 				</div>
 			</div>
@@ -43,7 +43,7 @@ export const CardSelection: FC = () => (
 			</div>
 			<div slot="footer">
 				<div style={STYLE}>
-					<KolInputCheckbox _id="article-1">Auswählen</KolInputCheckbox>
+					<KolInputCheckbox>Auswählen</KolInputCheckbox>
 					<KolButton _variant="primary" _label="Öffnen"></KolButton>
 				</div>
 			</div>
@@ -61,7 +61,7 @@ export const CardSelection: FC = () => (
 			</div>
 			<div slot="footer">
 				<div style={STYLE}>
-					<KolInputCheckbox _id="article-2">Auswählen</KolInputCheckbox>
+					<KolInputCheckbox>Auswählen</KolInputCheckbox>
 					<KolButton _variant="primary" _label="Öffnen"></KolButton>
 				</div>
 			</div>

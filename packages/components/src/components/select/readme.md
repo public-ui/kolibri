@@ -130,16 +130,15 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 ### Depends on
 
 - kol-input
-- [kol-tooltip-wc](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-select --> kol-input
-  kol-select --> kol-tooltip-wc
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc

@@ -15,7 +15,7 @@ export const InputTextFocus: FC = () => {
 	return (
 		<KolForm>
 			<div className="grid gap-4">
-				<KolInputText ref={ref} _id="vorname" _label="Vorname" />
+				<KolInputText ref={ref} _label="Vorname" />
 				<KolInputText _label="Nachname" />
 				<div>
 					<KolButton _label="Submit"></KolButton>

@@ -55,8 +55,10 @@ export class KolInputColor implements API {
 					_icon={this.state._icon}
 					_hideError={this.state._hideError}
 					_id={this.state._id}
+					_label={this.state._label}
 					_suggestions={this.state._suggestions}
 					_smartButton={this.state._smartButton}
+					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
@@ -82,17 +84,6 @@ export class KolInputColor implements API {
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 						/>
-						<kol-tooltip-wc
-							/**
-							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-							 */
-							aria-hidden="true"
-							class="input-tooltip"
-							hidden={hasExpertSlot || !this.state._hideLabel}
-							_align={this._tooltipAlign}
-							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip-wc>
 					</div>
 				</kol-input>
 			</Host>

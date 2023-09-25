@@ -813,6 +813,10 @@ export namespace Components {
          */
         "_id": IdPropType;
         /**
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+         */
+        "_label": LabelWithExpertSlotPropType;
+        /**
           * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
@@ -842,6 +846,10 @@ export namespace Components {
           * Suggestions to provide for the input.
          */
         "_suggestions"?: SuggestionsPropType;
+        /**
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
+         */
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Shows if the input was touched by a user.
           * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
@@ -4194,6 +4202,10 @@ declare namespace LocalJSX {
          */
         "_id": IdPropType;
         /**
+          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+         */
+        "_label": LabelWithExpertSlotPropType;
+        /**
           * Defines the maximum number of input characters.
          */
         "_maxLength"?: number;
@@ -4223,6 +4235,10 @@ declare namespace LocalJSX {
           * Suggestions to provide for the input.
          */
         "_suggestions"?: SuggestionsPropType;
+        /**
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
+         */
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Shows if the input was touched by a user.
           * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.

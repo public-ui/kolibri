@@ -31,14 +31,12 @@ const HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Aktion (react)',
 				key: 'order',
-				render: (el, cell, tupel) => {
+				render: (el) => {
 					// https://reactjs.org/docs/portals.html
 					getRoot(el).render(
 						<>
 							<KolButton _label={'Speichern'} />
-							<KolInputText _id="test" style={{ display: 'block' }}>
-								Eingabe
-							</KolInputText>
+							<KolInputText _label="Eingabe" />
 						</>,
 					);
 				},

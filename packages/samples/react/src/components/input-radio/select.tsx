@@ -13,6 +13,6 @@ const options = [
 
 export const InputRadioSelect: FC = () => (
 	<KolForm className="grid gap-4">
-		<KolInputRadio _id="anrede-radio" _error={ERROR_MSG} _name="anrede" _options={options} _label="Anrede" />
+		<KolInputRadio _error={ERROR_MSG} _options={options} _label="Anrede" />
 	</KolForm>
 );

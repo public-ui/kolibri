@@ -153,9 +153,9 @@ graph TD;
   kol-pagination --> kol-select
   kol-pagination --> kol-button-wc
   kol-select --> kol-input
-  kol-select --> kol-tooltip-wc
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-alert --> kol-alert-wc
   kol-alert-wc --> kol-heading-wc

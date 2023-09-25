@@ -37,10 +37,10 @@
 graph TD;
   kol-input-radio-group --> kol-input-radio
   kol-input-radio --> kol-input
-  kol-input-radio --> kol-tooltip-wc
   kol-input-radio --> kol-alert
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc

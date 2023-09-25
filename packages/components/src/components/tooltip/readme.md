@@ -36,19 +36,8 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 - [kol-abbr](../abbr)
 - kol-button-wc
-- [kol-input-checkbox](../input-checkbox)
-- [kol-input-color](../input-color)
-- [kol-input-date](../input-date)
-- [kol-input-email](../input-email)
-- [kol-input-file](../input-file)
-- [kol-input-number](../input-number)
-- [kol-input-password](../input-password)
-- [kol-input-radio](../input-radio)
-- [kol-input-range](../input-range)
-- [kol-input-text](../input-text)
+- kol-input
 - kol-link-wc
-- [kol-select](../select)
-- [kol-textarea](../textarea)
 
 ### Depends on
 
@@ -62,19 +51,8 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-abbr --> kol-tooltip-wc
   kol-button-wc --> kol-tooltip-wc
-  kol-input-checkbox --> kol-tooltip-wc
-  kol-input-color --> kol-tooltip-wc
-  kol-input-date --> kol-tooltip-wc
-  kol-input-email --> kol-tooltip-wc
-  kol-input-file --> kol-tooltip-wc
-  kol-input-number --> kol-tooltip-wc
-  kol-input-password --> kol-tooltip-wc
-  kol-input-radio --> kol-tooltip-wc
-  kol-input-range --> kol-tooltip-wc
-  kol-input-text --> kol-tooltip-wc
+  kol-input --> kol-tooltip-wc
   kol-link-wc --> kol-tooltip-wc
-  kol-select --> kol-tooltip-wc
-  kol-textarea --> kol-tooltip-wc
   style kol-tooltip-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
