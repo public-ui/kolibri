@@ -85,7 +85,7 @@
 		"@types/markdown-it": "13.0.1",
 		"@types/mustache": "4.2.2",
 		"@types/node": "ts5.1",
-		"@types/pug": "2.0.6",
+		"@types/pug": "2.0.7",
 		"@types/twig": "1.12.12",
 		"@types/wcag-contrast": "3.0.0",
 		"@typescript-eslint/eslint-plugin": "6.7.2",
