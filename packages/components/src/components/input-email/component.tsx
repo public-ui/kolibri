@@ -1,24 +1,24 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { MultiplePropType } from '../../types/props/multiple';
+import { NamePropType } from '../../types/props/name';
 import { SuggestionsPropType } from '../../types/props/suggestions';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
+import { Props as ButtonProps } from '../button/types';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { API, States } from './types';
-import { MultiplePropType } from '../../types/props/multiple';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { IdPropType } from '../../types/props/id';
-import { NamePropType } from '../../types/props/name';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.

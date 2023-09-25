@@ -2,18 +2,18 @@ import { Generic } from '@a11y-ui/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { PropAdjustHeight } from '../../types/props/adjust-height';
-import { PropHasCounter } from '../../types/props/has-counter';
-import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { PropRows } from '../../types/props/rows';
-import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropDisabled } from '../../types/props/disabled';
+import { PropHasCounter } from '../../types/props/has-counter';
+import { PropHideError } from '../../types/props/hide-error';
 import { PropHideLabel } from '../../types/props/hide-label';
+import { PropId } from '../../types/props/id';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropName } from '../../types/props/name';
 import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
+import { PropRows } from '../../types/props/rows';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTouched } from '../../types/props/touched';
-import { PropId } from '../../types/props/id';
-import { PropHideError } from '../../types/props/hide-error';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 

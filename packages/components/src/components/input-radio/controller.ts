@@ -3,17 +3,17 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { OptionsPropType, validateOptions } from '../../types/props/options';
 import { validateRequired } from '../../types/props/required';
 import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { mapString2Unknown, setState, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
-import { a11yHint } from '../../utils/a11y.tipps';
 
 export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, options: SelectOption<T>[], preKey = ''): void => {
 	options.forEach((option, index) => {

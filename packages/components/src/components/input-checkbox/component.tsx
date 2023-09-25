@@ -2,7 +2,14 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
+import { CheckedPropType } from '../../types/props/checked';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
+import { IndeterminatePropType } from '../../types/props/indeterminate';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { NamePropType } from '../../types/props/name';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
@@ -10,13 +17,6 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { API, InputCheckboxIconProp, InputCheckboxVariant, States } from './types';
-import { CheckedPropType } from '../../types/props/checked';
-import { IndeterminatePropType } from '../../types/props/indeterminate';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { IdPropType } from '../../types/props/id';
-import { NamePropType } from '../../types/props/name';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Beschriftung der Checkbox.

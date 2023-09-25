@@ -3,21 +3,21 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { NamePropType } from '../../types/props/name';
 import { OptionsWithOptgroupPropType } from '../../types/props/options';
 import { RowsPropType } from '../../types/props/rows';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { API, States } from './types';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { IdPropType } from '../../types/props/id';
-import { NamePropType } from '../../types/props/name';
-import { HideErrorPropType } from '../../types/props/hide-error';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);

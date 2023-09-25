@@ -1,4 +1,5 @@
 import { Component, h, Host, JSX, State } from '@stencil/core';
+
 import { API, States } from './types';
 
 /**

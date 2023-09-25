@@ -1,12 +1,12 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
-import { watchNavLinks } from '../nav/validation';
-import { BreadcrumbLinkProps, API, States } from './types';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+import { LinkProps } from '../link/types';
+import { watchNavLinks } from '../nav/validation';
+import { API, BreadcrumbLinkProps, States } from './types';
 
 @Component({
 	tag: 'kol-breadcrumb',

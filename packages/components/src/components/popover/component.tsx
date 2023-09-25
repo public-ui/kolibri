@@ -1,4 +1,6 @@
-import { arrow, computePosition, flip, MiddlewareData, offset, Placement, shift } from '@floating-ui/dom';
+import {
+    arrow, computePosition, flip, MiddlewareData, offset, Placement, shift
+} from '@floating-ui/dom';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { AlignPropType, validateAlign } from '../../types/props/align';

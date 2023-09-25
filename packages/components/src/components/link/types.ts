@@ -1,22 +1,23 @@
-import { PropHref } from '../../types/props/href';
-import { PropDownload } from '../../types/props/download';
-import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { PropAriaCurrent, PropListenAriaCurrent } from '../../types/props/aria-current';
-import { PropStealth } from '../../types/props/stealth';
-import { PropLinkTarget } from '../../types/props/link-target';
 import { Generic } from '@a11y-ui/core';
+
 import { LinkUseCase } from '../../types/button-link';
-import { PropTooltipAlign } from '../../types/props/tooltip-align';
-import { PropAriaExpanded } from '../../types/props/aria-expanded';
 import { AlignPropType } from '../../types/props/align';
-import { PropAriaLabel } from '../../types/props/aria-label';
-import { PropHideLabel } from '../../types/props/hide-label';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { PropDisabled } from '../../types/props/disabled';
 import { PropAriaControls } from '../../types/props/aria-controls';
+import { PropAriaCurrent, PropListenAriaCurrent } from '../../types/props/aria-current';
+import { PropAriaExpanded } from '../../types/props/aria-expanded';
+import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropAriaSelected } from '../../types/props/aria-selected';
+import { PropDisabled } from '../../types/props/disabled';
+import { PropDownload } from '../../types/props/download';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropHref } from '../../types/props/href';
 import { PropIcon } from '../../types/props/icon';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropLinkOnCallbacks } from '../../types/props/link-on-callbacks';
+import { PropLinkTarget } from '../../types/props/link-target';
+import { PropStealth } from '../../types/props/stealth';
+import { PropTooltipAlign } from '../../types/props/tooltip-align';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg

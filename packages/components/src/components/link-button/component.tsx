@@ -1,19 +1,19 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { AriaCurrentPropType } from '../../types/props/aria-current';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { propagateFocus } from '../../utils/reuse';
-import { DownloadPropType } from '../../types/props/download';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { ButtonVariantPropType } from '../../types/props/button-variant';
-import { LinkTargetPropType } from '../../types/props/link-target';
-import { Props } from './types';
 import { CustomClassPropType } from '../../types/props/custom-class';
+import { DownloadPropType } from '../../types/props/download';
 import { HrefPropType } from '../../types/props/href';
 import { IconPropType } from '../../types/props/icon';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { LinkOnCallbacksPropType } from '../../types/props/link-on-callbacks';
+import { LinkTargetPropType } from '../../types/props/link-target';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { propagateFocus } from '../../utils/reuse';
+import { Props } from './types';
 
 @Component({
 	tag: 'kol-link-button',

@@ -6,21 +6,14 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { devHint } from '../../utils/a11y.tipps';
-import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
+import {
+    emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator
+} from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 import {
-	KoliBriSortDirection,
-	KoliBriSortFunction,
-	API,
-	KoliBriTableCell,
-	KoliBriTableDataType,
-	KoliBriTableHeaderCell,
-	KoliBriTableHeaderCellAndData,
-	KoliBriTableHeaders,
-	KoliBriTablePaginationProps,
-	KoliBriTableRender,
-	KoliBriTableSelectedHead,
-	States,
+    API, KoliBriSortDirection, KoliBriSortFunction, KoliBriTableCell, KoliBriTableDataType,
+    KoliBriTableHeaderCell, KoliBriTableHeaderCellAndData, KoliBriTableHeaders,
+    KoliBriTablePaginationProps, KoliBriTableRender, KoliBriTableSelectedHead, States
 } from './types';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];

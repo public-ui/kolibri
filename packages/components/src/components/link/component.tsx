@@ -5,21 +5,30 @@ import { LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
-import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
+import {
+    AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole
+} from '../../types/props/alternative-button-link-role';
 import { validateAriaControls } from '../../types/props/aria-controls';
-import { AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
+import {
+    AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent
+} from '../../types/props/aria-current';
 import { validateAriaSelected } from '../../types/props/aria-selected';
 import { DownloadPropType, validateDownload } from '../../types/props/download';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { validateHref } from '../../types/props/href';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
-import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
+import {
+    LinkOnCallbacksPropType, validateLinkCallbacks
+} from '../../types/props/link-on-callbacks';
 import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
 import { validateStealth } from '../../types/props/stealth';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
-import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
+import {
+    ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean,
+    watchString
+} from '../../utils/prop.validators';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { States as LinkStates } from '../link/types';

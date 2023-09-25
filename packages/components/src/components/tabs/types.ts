@@ -6,10 +6,10 @@ import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType, PropAlign } from '../../types/props/align';
 import { PropAriaLabel } from '../../types/props/aria-label';
+import { PropDisabled } from '../../types/props/disabled';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
-import { PropDisabled } from '../../types/props/disabled';
 
 export type KoliBriTabsCallbacks = {
 	onCreate?:

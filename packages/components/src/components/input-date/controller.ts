@@ -3,13 +3,13 @@ import { Generic } from '@a11y-ui/core';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { ReadOnlyPropType, validateReadOnly } from '../../types/props/read-only';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
-import { a11yHint } from '../../utils/a11y.tipps';
 
 export class InputDateController extends InputIconController implements Watches {
 	// test: https://regex101.com/r/NTVh4L/1

@@ -1,7 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
+import {
+    ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps
+} from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
@@ -11,9 +13,9 @@ import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-lab
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { API, States } from './types';
 import { watchNavLinks } from './validation';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 /**
  * @deprecated Removed in v2

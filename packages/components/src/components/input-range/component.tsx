@@ -3,20 +3,20 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { NamePropType } from '../../types/props/name';
 import { SuggestionsPropType } from '../../types/props/suggestions';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
 import { API, States } from './types';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { IdPropType } from '../../types/props/id';
-import { NamePropType } from '../../types/props/name';
-import { HideErrorPropType } from '../../types/props/hide-error';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
