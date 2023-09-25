@@ -34,6 +34,7 @@
 		"@babel/eslint-parser": "7.22.15",
 		"@babel/plugin-syntax-import-attributes": "7.22.5",
 		"@babel/preset-env": "7.22.20",
+		"axe-playwright": "1.2.3",
 		"depcheck": "1.4.6",
 		"eslint": "8.49.0",
 		"eslint-plugin-no-loops": "0.3.0",

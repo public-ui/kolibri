@@ -4,6 +4,7 @@ import { ROUTES } from './sample-app.routes.js';
 // https://github.com/microsoft/playwright/issues/7575#issuecomment-1288164474
 export const configureSnapshotPath =
 	() =>
+	// eslint-disable-next-line no-empty-pattern
 	({}, testInfo) => {
 		const originalSnapshotPath = testInfo.snapshotPath;
 		testInfo.snapshotPath = (snapshotName) => {
