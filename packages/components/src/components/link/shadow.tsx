@@ -115,7 +115,7 @@ export class KolLink implements LinkProps {
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: DownloadPropType = false;
+	@Prop() public _download?: DownloadPropType;
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.
