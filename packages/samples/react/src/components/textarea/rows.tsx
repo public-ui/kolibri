@@ -5,6 +5,6 @@ import { FC } from 'react';
 
 export const TextareaRows: FC = () => (
 	<KolForm>
-		<KolTextarea _id="text" _rows={10} _label="Texteingabe" />
+		<KolTextarea _rows={10} _label="Texteingabe" />
 	</KolForm>
 );

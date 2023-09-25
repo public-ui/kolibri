@@ -75,16 +75,15 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 ### Depends on
 
 - kol-input
-- [kol-tooltip-wc](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-input-file --> kol-input
-  kol-input-file --> kol-tooltip-wc
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc

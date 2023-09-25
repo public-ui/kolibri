@@ -89,16 +89,15 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 ### Depends on
 
 - kol-input
-- [kol-tooltip-wc](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-textarea --> kol-input
-  kol-textarea --> kol-tooltip-wc
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc

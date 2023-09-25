@@ -94,7 +94,6 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 - kol-input
 - [kol-icon](../icon)
-- [kol-tooltip-wc](../tooltip)
 
 ### Graph
 
@@ -102,9 +101,9 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 graph TD;
   kol-input-checkbox --> kol-input
   kol-input-checkbox --> kol-icon
-  kol-input-checkbox --> kol-tooltip-wc
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc

@@ -86,16 +86,15 @@ Um eine fehlgeschlagene Validierung anzuzeigen, setzen Sie das Attrbut **`_error
 ### Depends on
 
 - kol-input
-- [kol-tooltip-wc](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-input-email --> kol-input
-  kol-input-email --> kol-tooltip-wc
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc

@@ -37,7 +37,7 @@ export class KolInput implements Props {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
 		const hasExpertSlot = this._label === false; // _label="" or _label
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
-		const useTooltopInsteadOfLabel = !hasExpertSlot && !this._hideLabel;
+		const useTooltopInsteadOfLabel = !hasExpertSlot && this._hideLabel;
 
 		return (
 			<Host
@@ -50,7 +50,7 @@ export class KolInput implements Props {
 					'hidden-error': this._hideError === true,
 				}}
 			>
-				<label id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={!useTooltopInsteadOfLabel} htmlFor={this._id}>
+				<label id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltopInsteadOfLabel} htmlFor={this._id}>
 					{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 					<span>
 						{/* INFO: label comes with any html tag or as plain text! */}

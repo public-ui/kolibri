@@ -13,10 +13,10 @@ sit amet.`;
 export const TextareaAdjustHeight: FC = () => (
 	<KolForm className="row">
 		<div className="col-sm-6">
-			<KolTextarea _adjustHeight={true} _id="text-vertical" _resize="vertical" _value={VALUE} _label="Texteingabe (horizontal)" />
+			<KolTextarea _adjustHeight={true} _resize="vertical" _value={VALUE} _label="Texteingabe (horizontal)" />
 		</div>
 		<div className="col-sm-6">
-			<KolTextarea _adjustHeight={true} _id="text-none" _resize="none" _value={VALUE} _label="Texteingabe (none)" />
+			<KolTextarea _adjustHeight={true} _resize="none" _value={VALUE} _label="Texteingabe (none)" />
 		</div>
 	</KolForm>
 );

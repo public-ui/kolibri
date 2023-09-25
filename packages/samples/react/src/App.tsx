@@ -85,6 +85,8 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 const ROUTE_LIST = getRouteList(ROUTES);
 const ROUTE_TREE = getRouteTree(ROUTES);
 
+console.log('ROUTE_LIST', ROUTE_LIST);
+
 const componentList: Map<string, Option<string>> = new Map();
 ROUTE_LIST.forEach((route) => {
 	const routeSplit = route.split('/');
