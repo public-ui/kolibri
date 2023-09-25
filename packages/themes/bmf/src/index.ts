@@ -1608,7 +1608,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	td.right > div {
 		display: flex;
-		justify-content: end;t
+		justify-content: end;
 	}
 	th[aria-sort="ascending"],
 	th[aria-sort="descending"] {

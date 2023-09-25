@@ -25,7 +25,6 @@ export const InputCheckboxVariant: FC<Props> = ({ variant }) => {
 				_variant={variant}
 				_label="Nicht ausgewählt"
 				_value={false}
-				class="block"
 			/>
 			<KolInputCheckbox
 				_icon={{
@@ -35,7 +34,6 @@ export const InputCheckboxVariant: FC<Props> = ({ variant }) => {
 				_label="Unbestimmt (Indeterminate)"
 				_value={null}
 				_indeterminate
-				class="block"
 			/>
 			<KolInputCheckbox
 				_icon={{
@@ -45,7 +43,6 @@ export const InputCheckboxVariant: FC<Props> = ({ variant }) => {
 				_label="Ausgewählt"
 				_value={true}
 				_checked
-				class="block"
 			/>
 			<KolInputCheckbox
 				_icon={{
@@ -56,7 +53,6 @@ export const InputCheckboxVariant: FC<Props> = ({ variant }) => {
 				_value={true}
 				_hint="Hint Hinweis Text"
 				_disabled
-				class="block"
 			/>
 			<KolInputCheckbox
 				ref={ref}
@@ -69,7 +65,6 @@ export const InputCheckboxVariant: FC<Props> = ({ variant }) => {
 				_error={ERROR_MSG}
 				_hint="Hint Hinweis Text"
 				_touched
-				class="block"
 			/>
 		</fieldset>
 	);
