@@ -155,7 +155,7 @@ export class KolInput implements Props {
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Defines the error message text.
@@ -172,13 +172,14 @@ export class KolInput implements Props {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideError?: boolean = false;
+	@Prop() public _hideError?: boolean;
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Defines the hint text.
@@ -214,18 +215,18 @@ export class KolInput implements Props {
 	 * Makes the input element read only.
 	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _readOnly?: boolean = false;
+	@Prop() public _readOnly?: boolean;
 
 	/**
 	 * Gibt an, ob die Komponente kein Label rendern soll.
 	 */
-	@Prop() public _renderNoLabel?: boolean = false;
+	@Prop() public _renderNoLabel?: boolean;
 
 	/**
 	 * Makes the input element required.
 	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines Shadow DOMs existieren würden.
@@ -252,5 +253,5 @@ export class KolInput implements Props {
 	 * Shows if the input was touched by a user.
 	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _touched?: boolean = false;
+	@Prop() public _touched?: boolean;
 }

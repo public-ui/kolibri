@@ -111,13 +111,13 @@ export class KolAlertWc implements API {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop() public _alert?: boolean = false;
+	@Prop() public _alert?: boolean;
 
 	/**
 	 * Defines whether the element can be closed.
 	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: boolean;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
