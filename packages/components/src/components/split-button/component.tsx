@@ -158,14 +158,12 @@ export class KolSplitButton implements API {
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
@@ -210,8 +208,7 @@ export class KolSplitButton implements API {
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
 	/**
-	 * Deprecated: Defines whether to show the dropdown menu.
-	 * @deprecated use _show instead
+	 * Defines whether to show the dropdown menu.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _showDropdown?: boolean = false;
 

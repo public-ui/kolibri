@@ -146,7 +146,7 @@ export class KolPopover implements API {
 	}
 
 	/**
-	 * Defines the alignment of the tooltip, popover or tabs in relation to the element.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
 	 */
 	@Prop() public _align?: AlignPropType = 'top';
 

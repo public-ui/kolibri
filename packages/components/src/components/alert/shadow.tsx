@@ -36,13 +36,13 @@ export class KolAlert implements Props {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop() public _alert?: boolean;
+	@Prop() public _alert?: boolean = false;
 
 	/**
-	 * Defines whether the element can be closed.
+	 * Defines whether the card has a close button.
 	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCloser?: boolean;
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Deprecated: Gibt die Beschriftung der Komponente an.

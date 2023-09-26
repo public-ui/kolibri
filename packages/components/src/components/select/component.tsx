@@ -186,8 +186,7 @@ export class KolSelect implements API {
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
+	 * Hides the label.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
@@ -222,7 +221,7 @@ export class KolSelect implements API {
 	 * Makes the input accept multiple inputs.
 	 * @TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _multiple?: boolean;
+	@Prop() public _multiple?: boolean = false;
 
 	/**
 	 * Defines the technical name of an input field.
