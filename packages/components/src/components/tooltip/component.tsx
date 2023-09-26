@@ -148,7 +148,7 @@ export class KolTooltip implements API {
 	}
 
 	/**
-	 * Defines the alignment of the tooltip, popover or tabs in relation to the element.
+	 * Defines the alignment of the tooltip in relation to the parent element.
 	 */
 	@Prop() public _align?: AlignPropType = 'top';
 
