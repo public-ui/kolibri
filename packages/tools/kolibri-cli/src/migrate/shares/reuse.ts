@@ -96,7 +96,7 @@ function readPackageJson(offsetPath: string): PackageJson {
  * @returns {string} The package manager install command
  */
 export function getPackageManagerInstallCommand(baseDir: string = process.cwd()) {
-	if (fs.existsSync(path.resolve(baseDir, 'pnpm-lock.yaml'))) return 'pnpm i';
+	if (fs.existsSync(path.resolve(baseDir, 'pnpm-lock.yaml'))) return 'pnpm i --prefer-offline';
 	if (fs.existsSync(path.resolve(baseDir, 'yarn.lock'))) return 'yarn';
 	if (fs.existsSync(path.resolve(baseDir, 'package-lock.json'))) return 'npm i';
 	baseDir = path.resolve(baseDir, '..');

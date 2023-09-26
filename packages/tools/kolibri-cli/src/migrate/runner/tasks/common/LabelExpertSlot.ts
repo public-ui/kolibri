@@ -46,8 +46,8 @@ export class LabelExpertSlot extends AbstractTask {
 		this.componentRegExp = new RegExp(`(<${tagCapitalCase}[^>]*)>([^<]+(\\n\\s*)*)(<\\/${tagCapitalCase}>)`, 'g');
 		this.customElementRegExp = new RegExp(`(<${tag}[^>]*)>([^<]+(\\n\\s*)*)(<\\/${tag}>)`, 'g');
 
-		this.componentRegExp = new RegExp(`(<${tagCapitalCase}[^>]+)>([^<>]+)(<\\/${tagCapitalCase}>)`, 'g');
-		this.customElementRegExp = new RegExp(`(<${tag}[^>]+)>([^<>]+)(<\\/${tag}>)`, 'g');
+		this.componentRegExp = new RegExp(`(<${tagCapitalCase}[^>]*)>([^<>]+)(<\\/${tagCapitalCase}>)`, 'g');
+		this.customElementRegExp = new RegExp(`(<${tag}[^>]*)>([^<>]+)(<\\/${tag}>)`, 'g');
 	}
 
 	public static getInstance(
