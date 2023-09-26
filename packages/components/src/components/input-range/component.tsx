@@ -178,7 +178,7 @@ export class KolInputRange implements API {
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Defines the error message text.
@@ -192,10 +192,11 @@ export class KolInputRange implements API {
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
-	 * Hides the label.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Defines the hint text.

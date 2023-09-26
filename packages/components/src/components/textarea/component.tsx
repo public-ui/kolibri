@@ -129,7 +129,7 @@ export class KolTextarea implements API {
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Defines the error message text.
@@ -140,7 +140,7 @@ export class KolTextarea implements API {
 	 * Shows the character count on the lower border of the input.
 	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCounter?: boolean;
+	@Prop() public _hasCounter?: boolean = false;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -149,10 +149,11 @@ export class KolTextarea implements API {
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
-	 * Hides the label.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Defines the hint text.
@@ -193,7 +194,7 @@ export class KolTextarea implements API {
 	 * Makes the input element read only.
 	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _readOnly?: boolean;
+	@Prop() public _readOnly?: boolean = false;
 
 	/**
 	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
@@ -204,7 +205,7 @@ export class KolTextarea implements API {
 	 * Makes the input element required.
 	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Defines how many rows of text should be visible at the same time.
