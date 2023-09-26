@@ -55,7 +55,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Defines the error message text.
@@ -67,7 +67,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Defines the hint text.
@@ -107,7 +107,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -117,7 +117,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop() public _touched?: boolean;
+	@Prop() public _touched?: boolean = false;
 
 	/**
 	 * Defines the value of the input.

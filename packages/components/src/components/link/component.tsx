@@ -186,7 +186,7 @@ export class KolLinkWc implements API {
 	 *
 	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
@@ -198,7 +198,7 @@ export class KolLinkWc implements API {
 	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Sets the target URI of the link or citation source.

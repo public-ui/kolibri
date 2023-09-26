@@ -54,7 +54,7 @@ export class KolKolibri implements API {
 	/**
 	 * Gibt an, ob das Bild-Logo farblich animiert werden soll.
 	 */
-	@Prop() public _animate?: boolean;
+	@Prop() public _animate?: boolean = false;
 
 	/**
 	 * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.

@@ -128,7 +128,7 @@ export class KolInputCheckbox implements API {
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Defines the error message text.
@@ -140,7 +140,7 @@ export class KolInputCheckbox implements API {
 	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Defines the hint text.
@@ -187,7 +187,7 @@ export class KolInputCheckbox implements API {
 	 * Makes the input element required.
 	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
