@@ -260,7 +260,7 @@ export class KolLinkWc implements API {
 	 *
 	 * @deprecated will be removed in v2
 	 */
-	@Prop() public _stealth?: boolean;
+	@Prop() public _stealth?: boolean = false;
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
