@@ -80,7 +80,7 @@ export class KolBadge implements API {
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 * @deprecated Will be removed in the next major version.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).

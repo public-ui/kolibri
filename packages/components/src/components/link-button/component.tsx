@@ -111,7 +111,7 @@ export class KolLinkButton implements Props {
 	 *
 	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
@@ -119,10 +119,11 @@ export class KolLinkButton implements Props {
 	@Prop() public _download?: DownloadPropType;
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Defines the target URI of the link.
