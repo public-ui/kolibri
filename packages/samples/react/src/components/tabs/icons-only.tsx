@@ -3,23 +3,23 @@ import { KolTabs } from '@public-ui/react';
 
 const tabs = [
 	{
-		_icon: 'codicon codicon-pie-chart',
+		_icons: 'codicon codicon-pie-chart',
 		_label: 'Erster Tab',
 		_hideLabel: true,
 	},
 	{
-		_icon: 'codicon codicon-calendar',
+		_icons: 'codicon codicon-calendar',
 		_label: 'Zweites Tab',
 		_hideLabel: true,
 	},
 	{
 		_disabled: true,
-		_icon: 'codicon codicon-briefcase',
+		_icons: 'codicon codicon-briefcase',
 		_label: 'Deaktiviertes Tab',
 		_hideLabel: true,
 	},
 	{
-		_icon: 'codicon codicon-telescope',
+		_icons: 'codicon codicon-telescope',
 		_label: 'Letzter Tab',
 		_hideLabel: true,
 	},
