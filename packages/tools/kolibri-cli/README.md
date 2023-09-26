@@ -92,7 +92,8 @@ kolibri migrate <path>
 | Option                         | Description                                    |         Type         | Default  |
 | ------------------------------ | ---------------------------------------------- | :------------------: | :------: |
 | `--format`                     | Try to format the modified files with prettier |       boolean        |   true   |
-| `--ignore-uncommitted-changes` | Allows execution with unconfirmed changes      |       boolean        |  false   |
+| `--ignore-greater-version`     | Allows execution with greater versions         |       boolean        |  false   |
+| `--ignore-uncommitted-changes` | Allows execution with uncommitted changes      |       boolean        |  false   |
 | `--remove-mode`                | Prefix property name or delete property        | `delete` \| `prefix` | `prefix` |
 
 #### Configuration
