@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { PropHideLabel } from './props/hide-label';
 import { PropHref } from './props/href';
-import { PropIcon } from './props/icon';
+import { IconsPropType, PropIcons } from './props/icons';
 import { PropLabel } from './props/label';
 import { StencilUnknown } from './unknown';
 import { PropButtonCallbacks } from './props/button-callbacks';
@@ -23,7 +23,11 @@ type OptionalButtonOrLinkOrTextProps = PropHideLabel & {
 	// tabIndex: number; // possible, but sensible ?! -> Ticket?
 	// tooltipAlign: Alignment; // possible, but sensible ?! -> Ticket?
 	targetDescription: string;
-} & PropIcon &
+	/**
+	 * @deprecated
+	 */
+	icon: IconsPropType;
+} & PropIcons &
 	PropLinkTarget;
 type OptionalButtonProps = OptionalButtonOrLinkOrTextProps & {
 	disabled: boolean;

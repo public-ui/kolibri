@@ -10,7 +10,7 @@ import { watchHeadingLevel } from '../heading/validation';
 import { AlertType, AlertVariant, API, KoliBriAlertEventCallbacks, States } from './types';
 
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return <kol-icon class="heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
+	return <kol-icon class="heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
 };
 
 const AlertIcon = (props: { label?: string; type?: AlertType }) => {
@@ -88,7 +88,7 @@ export class KolAlertWc implements API {
 						<kol-button-wc
 							class="close"
 							_hideLabel
-							_icon={{
+							_icons={{
 								left: {
 									icon: 'codicon codicon-close',
 								},

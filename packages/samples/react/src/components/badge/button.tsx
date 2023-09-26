@@ -6,7 +6,7 @@ import { FC } from 'react';
 const PROPS = {
 	_label: 'Label',
 	_smartButton: {
-		_icon: 'codicon codicon-close',
+		_icons: 'codicon codicon-close',
 		_label: 'Entfernen',
 		_on: {
 			onClick: () => alert('clicked'),

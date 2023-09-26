@@ -6,7 +6,7 @@ import { Props, States } from '../types';
 export const getButtonLinkHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
 		{
-			_icon: {},
+			_icons: {},
 			_label: '', // ⚠ required
 			_on: {},
 			_type: 'button',

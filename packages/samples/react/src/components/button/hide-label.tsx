@@ -4,7 +4,7 @@ import { KolButton } from '@public-ui/react';
 import { FC } from 'react';
 
 const ARGS = {
-	_icon: 'codicon codicon-home',
+	_icons: 'codicon codicon-home',
 	_hideLabel: true,
 	_on: {
 		onClick: (_event, _value) => alert('Klick!'),

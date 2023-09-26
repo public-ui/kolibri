@@ -18,7 +18,7 @@ export const getButtonWcHtml = (
 ): string => {
 	const state = mixMembers<Props, States>(
 		{
-			_icon: {},
+			_icons: {},
 			_label: '', // ⚠ required
 			_type: 'button',
 			_variant: 'normal',
@@ -64,7 +64,7 @@ export const getButtonWcHtml = (
 export const getButtonHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
 		{
-			_icon: {},
+			_icons: {},
 			_label: '', // ⚠ required
 			_type: 'button',
 			_variant: 'normal',

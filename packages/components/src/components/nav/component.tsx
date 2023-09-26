@@ -86,7 +86,7 @@ export class KolNav implements API {
 				class="expand-button"
 				_ariaExpanded={expanded}
 				_disabled={!collapsible}
-				_icon={'codicon codicon-' + (expanded ? 'remove' : 'add')}
+				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
 				_hideLabel
 				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
@@ -166,7 +166,7 @@ export class KolNav implements API {
 							<kol-button
 								_ariaControls="nav"
 								_ariaExpanded={!hideLabel}
-								_icon={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
+								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_hideLabel
 								_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_on={{
@@ -354,16 +354,16 @@ export class KolNav implements API {
 
 // console.log(
 //   stringifyJson([
-//     { _label: '1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed', _target: 'asdasd' },
-//     { _label: '2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed' },
+//     { _label: '1 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed', _target: 'asdasd' },
+//     { _label: '2 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed' },
 //     {
 //       _active: true,
 //       _label: '3 Navigationspunkt',
 //       _href: '#abc',
-//       _icon: 'codicon codicon-folder-closed',
+//       _icons: 'codicon codicon-folder-closed',
 //       _children: [
-//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed' },
-//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed', _target: 'asdasd' },
+//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed' },
+//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed', _target: 'asdasd' },
 //         {
 //           _active: true,
 //           _label: '3.3 Navigationspunkt',

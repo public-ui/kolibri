@@ -7,18 +7,18 @@ export type KoliBriCustomIcon = {
 
 type IconOrIconClass = AnyIconFontClass | KoliBriCustomIcon;
 
-export type KoliBriHorizontalIcon = {
+export type KoliBriHorizontalIcons = {
 	right?: IconOrIconClass;
 	left?: IconOrIconClass;
 };
 
-type KoliBriVerticalIcon = {
+type KoliBriVerticalIcons = {
 	top?: IconOrIconClass;
 	bottom?: IconOrIconClass;
 };
 
-export type KoliBriAllIcon = KoliBriHorizontalIcon & KoliBriVerticalIcon;
+export type KoliBriAllIcons = KoliBriHorizontalIcons & KoliBriVerticalIcons;
 
-export type KoliBriIconProp = AnyIconFontClass | KoliBriAllIcon;
+export type KoliBriIconsProp = AnyIconFontClass | KoliBriAllIcons;
 
-export type KoliBriIconState = KoliBriAllIcon;
+export type KoliBriIconsState = KoliBriAllIcons;

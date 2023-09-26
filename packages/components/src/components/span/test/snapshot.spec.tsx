@@ -17,7 +17,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_icon: ['codicon codicon-home'],
+		_icons: ['codicon codicon-home'],
 		_hideLabel: [true, false],
 		_label: ['Text', ''],
 	},
@@ -37,7 +37,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_icon: ['codicon codicon-home'],
+		_icons: ['codicon codicon-home'],
 		_hideLabel: [true, false],
 		_label: ['Text', ''],
 	},

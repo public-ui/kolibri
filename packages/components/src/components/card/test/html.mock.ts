@@ -42,7 +42,7 @@ export const getCardHtml = (props: Props): string => {
 					? getButtonWcHtml(
 							{
 								_hideLabel: true,
-								_icon: {
+								_icons: {
 									left: {
 										icon: 'codicon codicon-close',
 									},

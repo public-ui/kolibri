@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
-import { mapIconProp2State } from '../../../types/props/icon';
+import { KoliBriCustomIcon, KoliBriIconsProp } from '../../../types/icons';
+import { mapIconProp2State } from '../../../types/props/icons';
 import { md } from '../../../utils/markdown';
 import { showExpertSlot } from '../../../utils/reuse';
 import { getIconHtml } from '../../icon/test/html.mock';
@@ -24,7 +24,7 @@ export const getSpanWcHtml = (
 	const state = mixMembers<Props, States>(
 		{
 			_allowMarkdown: false,
-			_icon: {},
+			_icons: {},
 			_hideLabel: false,
 			_label: '', // ⚠ required
 		},
@@ -37,14 +37,14 @@ export const getSpanWcHtml = (
 	state._label = state._label ?? '';
 
 	const hideExpertSlot = !showExpertSlot(state._label);
-	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
+	const icon = mapIconProp2State(state._icons as KoliBriIconsProp);
 	return `
 <kol-span-wc${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${options?.additionalAttrs ?? ''}>
 	${
 		icon.top
 			? getIconHtml({
 					_label: '',
-					_icon: (icon.top as KoliBriCustomIcon).icon,
+					_icons: (icon.top as KoliBriCustomIcon).icon,
 			  })
 			: ''
 	}
@@ -54,7 +54,7 @@ export const getSpanWcHtml = (
 				? getIconHtml(
 						{
 							_label: '',
-							_icon: (icon.left as KoliBriCustomIcon).icon,
+							_icons: (icon.left as KoliBriCustomIcon).icon,
 						},
 						` class="icon left"`
 				  )
@@ -75,7 +75,7 @@ export const getSpanWcHtml = (
 				? getIconHtml(
 						{
 							_label: '',
-							_icon: (icon.right as KoliBriCustomIcon).icon,
+							_icons: (icon.right as KoliBriCustomIcon).icon,
 						},
 						` class="icon right"`
 				  )
@@ -86,7 +86,7 @@ export const getSpanWcHtml = (
 		icon.bottom
 			? getIconHtml({
 					_label: '',
-					_icon: (icon.bottom as KoliBriCustomIcon).icon,
+					_icons: (icon.bottom as KoliBriCustomIcon).icon,
 			  })
 			: ''
 	}

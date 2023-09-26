@@ -7,7 +7,7 @@ import { ButtonVariantPropType } from '../../types/props/button-variant';
 import { CustomClassPropType } from '../../types/props/custom-class';
 import { DownloadPropType } from '../../types/props/download';
 import { HrefPropType } from '../../types/props/href';
-import { IconPropType } from '../../types/props/icon';
+import { IconsPropType } from '../../types/props/icons';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { LinkOnCallbacksPropType } from '../../types/props/link-on-callbacks';
 import { LinkTargetPropType } from '../../types/props/link-target';
@@ -131,9 +131,9 @@ export class KolLinkButton implements Props {
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icon?: IconPropType;
+	@Prop() public _icon?: IconsPropType;
 
 	/**
 	 * Deprecated: Hides the label and shows the description in a Tooltip instead.

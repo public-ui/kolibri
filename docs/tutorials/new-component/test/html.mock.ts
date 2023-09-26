@@ -12,14 +12,14 @@ export const getNewComponentHtml = (
 		header?: string;
 		content?: string;
 		footer?: string;
-	} = {}
+	} = {},
 ): string => {
 	props = mixMembers(
 		{
 			_heading: '…', // ⚠ required
 			_level: 1,
 		},
-		props
+		props,
 	);
 	const open = props._open === true;
 	return `<kol-new-component${open ? ' _open' : ''}>
@@ -34,10 +34,10 @@ export const getNewComponentHtml = (
 					default: `${getButtonWcHtml({
 						_ariaControls: 'nonce',
 						_ariaExpanded: open,
-						_icon: `codicon codicon-${open ? 'chrome-minimize' : 'add'}`,
+						_icons: `codicon codicon-${open ? 'chrome-minimize' : 'add'}`,
 						_label: props._heading,
 					})}`,
-				}
+				},
 			)}
       <div class="content" id="nonce" ${open ? '' : 'aria-hidden="true" hidden style="display: none; height: 0; visibility: hidden;"'}>
         <slot name="content"></slot>

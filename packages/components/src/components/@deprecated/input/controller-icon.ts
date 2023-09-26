@@ -1,23 +1,23 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../../types/common';
-import { KoliBriHorizontalIcon } from '../../../types/icon';
-import { isIcon } from '../../../types/props/icon';
+import { KoliBriHorizontalIcons } from '../../../types/icons';
+import { isIcon } from '../../../types/props/icons';
 import { objectObjectHandler, parseJson, watchValidator } from '../../../utils/prop.validators';
 import { isString } from '../../../utils/validator';
 import { InputController } from './controller';
 import { Props, Watches } from './types-icon';
 
-const beforePatchIcon = (value: unknown, nextState: Map<string, unknown>): void => {
-	const icon = value as KoliBriHorizontalIcon;
-	if (typeof icon === 'object' && icon !== null) {
-		if (isString(icon.right, 1)) {
-			icon.right = { icon: icon.right as string };
+const beforePatchIcons = (value: unknown, nextState: Map<string, unknown>): void => {
+	const icons = value as KoliBriHorizontalIcons;
+	if (typeof icons === 'object' && icons !== null) {
+		if (isString(icons.right, 1)) {
+			icons.right = { icon: icons.right as string };
 		}
-		if (isString(icon.left, 1)) {
-			icon.left = { icon: icon.left as string };
+		if (isString(icons.left, 1)) {
+			icons.left = { icon: icons.left as string };
 		}
-		nextState.set('_icon', icon);
+		nextState.set('_icons', icons);
 	}
 };
 
@@ -29,17 +29,21 @@ export class InputIconController extends InputController implements Watches {
 		this.component = component;
 	}
 
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
+	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
+		this.validateIcons(value);
+	}
+
+	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
 		objectObjectHandler(value, () => {
 			try {
-				value = parseJson<KoliBriHorizontalIcon>(value as string);
+				value = parseJson<KoliBriHorizontalIcons>(value as string);
 				// eslint-disable-next-line no-empty
 			} catch (e) {
 				// value behält den ursprünglichen Wert
 			}
 			watchValidator(
 				this.component,
-				'_icon',
+				'_icons',
 				(value): boolean => {
 					return (
 						typeof value === 'object' && value !== null && (isString(value.left, 1) || isIcon(value.left) || isString(value.right, 1) || isIcon(value.right))
@@ -49,7 +53,7 @@ export class InputIconController extends InputController implements Watches {
 				value,
 				{
 					hooks: {
-						beforePatch: beforePatchIcon,
+						beforePatch: beforePatchIcons,
 					},
 					required: true,
 				}
@@ -59,6 +63,6 @@ export class InputIconController extends InputController implements Watches {
 
 	public componentWillLoad(): void {
 		super.componentWillLoad();
-		this.validateIcon(this.component._icon);
+		this.validateIcons(this.component._icons || this.component._icon);
 	}
 }

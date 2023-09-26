@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { AnyIconFontClass } from '../../types/icon';
+import { AnyIconFontClass } from '../../types/icons';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { PropChecked } from '../../types/props/checked';
 import { PropDisabled } from '../../types/props/disabled';
@@ -21,7 +21,7 @@ export type InputCheckboxVariant =
 	| 'default'
 	| 'switch';
 
-export type InputCheckboxIconProp =
+export type InputCheckboxIconsProp =
 	| {
 			checked: AnyIconFontClass;
 			indeterminate?: AnyIconFontClass;
@@ -38,7 +38,7 @@ export type InputCheckboxIconProp =
 			unchecked: AnyIconFontClass;
 	  };
 
-export type InputCheckboxIconState = {
+export type InputCheckboxIconsState = {
 	checked: AnyIconFontClass;
 	indeterminate: AnyIconFontClass;
 	unchecked: AnyIconFontClass;
@@ -50,7 +50,8 @@ type OptionalProps = {
 	alert: boolean;
 	error: string;
 	hint: string;
-	icon: Stringified<InputCheckboxIconProp>;
+	icon: Stringified<InputCheckboxIconsProp>;
+	icons: Stringified<InputCheckboxIconsProp>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
 	/**
@@ -72,7 +73,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	icon: InputCheckboxIconState;
+	icons: InputCheckboxIconsState;
 	id: string;
 	value: StencilUnknown;
 	variant: InputCheckboxVariant;

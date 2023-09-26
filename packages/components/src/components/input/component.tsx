@@ -3,7 +3,7 @@ import { Component, Element, Fragment, h, Host, JSX, Prop } from '@stencil/core'
 
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
-import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriCustomIcon, KoliBriHorizontalIcons } from '../../types/icons';
 import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
@@ -32,6 +32,10 @@ export class KolInput implements Props {
 	private catchInputSlot = (slot?: HTMLDivElement): void => {
 		handleSlotContent(this.host!, slot!, this.slotName);
 	};
+
+	private getIconsProp(): KoliBriHorizontalIcons | undefined {
+		return this._icons || this._icon;
+	}
 
 	public render(): JSX.Element {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
@@ -65,17 +69,17 @@ export class KolInput implements Props {
 				<div
 					class={{
 						input: true,
-						'icon-left': typeof this._icon?.left === 'object',
-						'icon-right': typeof this._icon?.right === 'object',
+						'icon-left': typeof this.getIconsProp()?.left === 'object',
+						'icon-right': typeof this.getIconsProp()?.right === 'object',
 					}}
 				>
-					{this._icon?.left && <kol-icon _ariaLabel="" _icon={(this._icon.left as KoliBriCustomIcon).icon}></kol-icon>}
+					{this.getIconsProp()?.left && <kol-icon _ariaLabel="" _icons={(this.getIconsProp()?.left as KoliBriCustomIcon).icon}></kol-icon>}
 					<div ref={this.catchInputSlot} id={this.slotName} class="input-slot"></div>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
 							_customClass={this._smartButton._customClass}
 							_disabled={this._smartButton._disabled}
-							_icon={this._smartButton._icon}
+							_icons={this._smartButton._icons}
 							_hideLabel={true}
 							_id={this._smartButton._id}
 							_label={this._smartButton._label}
@@ -84,7 +88,7 @@ export class KolInput implements Props {
 							_variant={this._smartButton._variant}
 						></kol-button-wc>
 					)}
-					{this._icon?.right && <kol-icon _ariaLabel="" _icon={(this._icon.right as KoliBriCustomIcon).icon}></kol-icon>}
+					{this.getIconsProp()?.right && <kol-icon _ariaLabel="" _icons={(this.getIconsProp()?.right as KoliBriCustomIcon).icon}></kol-icon>}
 				</div>
 				{useTooltopInsteadOfLabel && (
 					<kol-tooltip-wc
@@ -183,9 +187,14 @@ export class KolInput implements Props {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: KoliBriHorizontalIcon;
+	@Prop() public _icon?: KoliBriHorizontalIcons;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: KoliBriHorizontalIcons;
 
 	/**
 	 * Defines the internal ID of the primary component element.

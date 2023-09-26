@@ -21,11 +21,11 @@ export class KolBreadcrumb implements API {
 		const hideLabel = link._iconOnly || link._hideLabel;
 		return (
 			<li key={index}>
-				{index !== 0 && <kol-icon _label="" _icon="codicon codicon-chevron-right" />}
+				{index !== 0 && <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
 					<span>
 						{hideLabel ? (
-							<kol-icon _label={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+							<kol-icon _label={link._label} _icons={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
 						) : (
 							<Fragment>{link._label}</Fragment>
 						)}
@@ -44,7 +44,7 @@ export class KolBreadcrumb implements API {
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
-								<kol-icon _label="" _icon="codicon codicon-home" />…
+								<kol-icon _label="" _icons="codicon codicon-home" />…
 							</li>
 						)}
 						{this.state._links.map(this.renderLink)}
