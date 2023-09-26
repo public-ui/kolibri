@@ -3,7 +3,7 @@ import { LabelExpertSlot } from '../common/LabelExpertSlot';
 import { MarkRemovedSlotTask } from '../common/MarkRemovedSlotTask';
 import { RefactorPropertyLabelReplaceFalse } from '../common/RefactorPropertyLabelReplaceFalse';
 import { RenameSlotNameTask } from '../common/RenameSlotNameTask';
-import { AbbrRenamePropertyTitleToLabel } from './abbr';
+import { AbbrRenamePropertyAlignToTooltipAlign, AbbrRenamePropertyTitleToLabel } from './abbr';
 import { AccordionRenamePropertyHeadingToLabel } from './accordion';
 import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel } from './badge';
 import { BreadcrumbRenamePropertyAriaLabelToLabel } from './breadcrumb';
@@ -69,6 +69,7 @@ import { ToastRemovePropertyNameShowDuration, ToastRenamePropertyHeadingToLabel 
 import { VersionRenamePropertyVersionToLabel } from './version';
 
 export const v1Tasks: AbstractTask[] = [];
+v1Tasks.push(AbbrRenamePropertyAlignToTooltipAlign);
 v1Tasks.push(AbbrRenamePropertyTitleToLabel);
 v1Tasks.push(AccordionRenamePropertyHeadingToLabel);
 v1Tasks.push(BadgeRemovePropertyHideLabel);
