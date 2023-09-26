@@ -162,7 +162,7 @@ export class KolInput implements Props {
 	 * Shows the character count on the lower border of the input.
 	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCounter?: boolean;
+	@Prop() public _hasCounter?: boolean = false;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -171,7 +171,8 @@ export class KolInput implements Props {
 	@Prop() public _hideError?: boolean = false;
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;

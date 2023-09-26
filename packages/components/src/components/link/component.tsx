@@ -11,7 +11,7 @@ import { AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent } f
 import { validateAriaSelected } from '../../types/props/aria-selected';
 import { DownloadPropType, validateDownload } from '../../types/props/download';
 import { validateHideLabel } from '../../types/props/hide-label';
-import { validateHref } from '../../types/props/href';
+import { HrefPropType, validateHref } from '../../types/props/href';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
@@ -194,14 +194,16 @@ export class KolLinkWc implements API {
 	@Prop() public _download?: DownloadPropType;
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Defines the target URI of the link.
+	 * Sets the target URI of the link or citation source.
 	 */
-	@Prop() public _href!: string;
+	@Prop() public _href!: HrefPropType;
 
 	/**
 	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).

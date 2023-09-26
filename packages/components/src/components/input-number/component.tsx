@@ -136,7 +136,7 @@ export class KolInputNumber implements API {
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Defines the error message text.
@@ -150,10 +150,11 @@ export class KolInputNumber implements API {
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
-	 * Hides the label.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Defines the hint text.
@@ -210,13 +211,13 @@ export class KolInputNumber implements API {
 	 * Makes the input element read only.
 	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _readOnly?: boolean;
+	@Prop() public _readOnly?: boolean = false;
 
 	/**
 	 * Makes the input element required.
 	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
