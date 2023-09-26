@@ -13,7 +13,7 @@ export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.Kol
 				_hint={HINT_MSG}
 				_error={ERROR_MSG}
 				_placeholder="Mit Icons"
-				_icon={{
+				_icons={{
 					left: 'codicon codicon-arrow-left',
 					right: {
 						icon: 'codicon codicon-arrow-right',

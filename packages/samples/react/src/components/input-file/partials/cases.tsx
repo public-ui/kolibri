@@ -13,7 +13,7 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 				_required
 				_error={ERROR_MSG}
 				_label="Datei hochladen"
-				_icon={{
+				_icons={{
 					left: {
 						icon: 'codicon codicon-save',
 					},

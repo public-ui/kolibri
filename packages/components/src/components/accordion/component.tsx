@@ -48,7 +48,7 @@ export class KolAccordion implements API {
 							// slot="expert"
 							_ariaControls={this.nonce}
 							_ariaExpanded={this.state._open}
-							_icon={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
+							_icons={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
 							_label={this.state._label}
 							_on={{ onClick: this.onClick }}
 						></kol-button-wc>

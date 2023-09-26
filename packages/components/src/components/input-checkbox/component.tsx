@@ -16,7 +16,7 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
-import { API, InputCheckboxIconProp, InputCheckboxVariant, States } from './types';
+import { API, InputCheckboxIconsProp, InputCheckboxVariant, States } from './types';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -71,7 +71,9 @@ export class KolInputCheckbox implements API {
 						<kol-icon
 							class="icon"
 							onClick={this.handleIconClick.bind(this)}
-							_icon={this.state._indeterminate ? this.state._icon.indeterminate : this.state._checked ? this.state._icon.checked : this.state._icon.unchecked}
+							_icons={
+								this.state._indeterminate ? this.state._icons.indeterminate : this.state._checked ? this.state._icons.checked : this.state._icons.unchecked
+							}
 							_label=""
 						/>
 						<input
@@ -145,9 +147,14 @@ export class KolInputCheckbox implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: Stringified<InputCheckboxIconProp>;
+	@Prop() public _icon?: Stringified<InputCheckboxIconsProp>;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: Stringified<InputCheckboxIconsProp>;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -223,7 +230,7 @@ export class KolInputCheckbox implements API {
 	@State() public state: States = {
 		_checked: false,
 		_hideError: false,
-		_icon: {
+		_icons: {
 			checked: 'codicon codicon-check',
 			indeterminate: 'codicon codicon-remove',
 			unchecked: 'codicon codicon-add',
@@ -280,8 +287,13 @@ export class KolInputCheckbox implements API {
 	}
 
 	@Watch('_icon')
-	public validateIcon(value?: Stringified<InputCheckboxIconProp>): void {
-		this.controller.validateIcon(value);
+	public validateIcon(value?: Stringified<InputCheckboxIconsProp>): void {
+		this.validateIcons(value);
+	}
+
+	@Watch('_icons')
+	public validateIcons(value?: Stringified<InputCheckboxIconsProp>): void {
+		this.controller.validateIcons(value);
 	}
 
 	@Watch('_id')

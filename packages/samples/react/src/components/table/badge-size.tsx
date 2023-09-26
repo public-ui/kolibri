@@ -38,7 +38,7 @@ const HEADERS: KoliBriTableHeaders = {
 								backgroundColor: 'red',
 								width: '80%',
 							}}
-							_icon="codicon codicon-location"
+							_icons="codicon codicon-location"
 							_label={'Speichern'}
 						/>,
 					);

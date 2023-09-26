@@ -9,7 +9,7 @@ import { a11yHint, devHint } from '../../utils/a11y.tipps';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
-import { InputCheckboxIconProp, InputCheckboxIconState, InputCheckboxVariant, Props, Watches } from './types';
+import { InputCheckboxIconsProp, InputCheckboxIconsState, InputCheckboxVariant, Props, Watches } from './types';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -44,10 +44,14 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		});
 	}
 
-	public validateIcon(value?: Stringified<InputCheckboxIconProp>): void {
+	public validateIcon(value?: Stringified<InputCheckboxIconsProp>): void {
+		this.validateIcons(value);
+	}
+
+	public validateIcons(value?: Stringified<InputCheckboxIconsProp>): void {
 		watchValidator(
 			this.component,
-			'_icon',
+			'_icons',
 			(value): boolean => {
 				return typeof value === 'object' && value !== null && (isString(value.checked, 1) || isString(value.indeterminate, 1) || isString(value.unchecked, 1));
 			},
@@ -56,9 +60,9 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 			{
 				hooks: {
 					beforePatch: (nextValue: unknown, nextState: Map<string, unknown>, component: Generic.Element.Component) => {
-						nextState.set('_icon', {
-							...(component.state._icon as InputCheckboxIconState),
-							...(nextValue as InputCheckboxIconProp),
+						nextState.set('_icons', {
+							...(component.state._icons as InputCheckboxIconsState),
+							...(nextValue as InputCheckboxIconsProp),
 						});
 					},
 				},
@@ -102,7 +106,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		super.componentWillLoad();
 		this.validateChecked(this.component._checked);
 		this.validateHideError(this.component._hideError);
-		this.validateIcon(this.component._icon);
+		this.validateIcons(this.component._icons || this.component._icon);
 		this.validateIndeterminate(this.component._indeterminate);
 		this.validateValue(this.component._value);
 		this.validateVariant(this.component._variant || this.component._type);

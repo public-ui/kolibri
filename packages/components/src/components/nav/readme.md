@@ -20,14 +20,14 @@ noch die Icons ausgegeben.
 	_links="[
 	{
 		_href: 'startseite',
-		_icon: 'codicon codicon-home',
+		_icons: 'codicon codicon-home',
 		_label: 'Startseite',
 		_children: [
-			{ _href: 'startseite/1-untermenuepunkt', _icon: 'codicon codicon-home', _label: '1. Untermenüpunkt' },
-			{ _href: 'startseite/2-untermenuepunkt', _icon: 'codicon codicon-home', _label: '2. Untermenüpunkt' },
+			{ _href: 'startseite/1-untermenuepunkt', _icons: 'codicon codicon-home', _label: '1. Untermenüpunkt' },
+			{ _href: 'startseite/2-untermenuepunkt', _icons: 'codicon codicon-home', _label: '2. Untermenüpunkt' },
 		],
 	},
-	{ _href: 'unterseite', _icon: 'codicon codicon-home', _label: '2. Menüpunkt' },
+	{ _href: 'unterseite', _icons: 'codicon codicon-home', _label: '2. Menüpunkt' },
 ]"
 	_has-compact-button
 ></kol-nav>
@@ -48,14 +48,14 @@ Um Untermenüpunkte zu erzeugen, erweitern Sie die JSON-Struktur um das zusätzl
 [
 	{
 		_href: 'startseite',
-		_icon: 'codicon codicon-home',
+		_icons: 'codicon codicon-home',
 		_label: 'Startseite',
 		_children: [
-			{ _href: 'startseite/1-untermenuepunkt', _icon: 'codicon codicon-home', _label: '1. Untermenüpunkt' },
-			{ _href: 'startseite/2-untermenuepunkt', _icon: 'codicon codicon-home', _label: '2. Untermenüpunkt' },
+			{ _href: 'startseite/1-untermenuepunkt', _icons: 'codicon codicon-home', _label: '1. Untermenüpunkt' },
+			{ _href: 'startseite/2-untermenuepunkt', _icons: 'codicon codicon-home', _label: '2. Untermenüpunkt' },
 		],
 	},
-	{ _href: 'unterseite', _icon: 'codicon codicon-home', _label: '2. Menüpunkt' },
+	{ _href: 'unterseite', _icons: 'codicon codicon-home', _label: '2. Menüpunkt' },
 ];
 ```
 

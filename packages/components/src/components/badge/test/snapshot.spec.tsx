@@ -18,7 +18,7 @@ executeTests<Props>(
 	},
 	{
 		_color: ['#000000'],
-		_icon: ['codicon codicon-home'],
+		_icons: ['codicon codicon-home'],
 		_label: ['Text', '**Te**xt'],
 	},
 	(props) => getBadgeHtml(props),

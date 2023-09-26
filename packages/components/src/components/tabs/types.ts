@@ -3,7 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { Events } from '../../enums/events';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
+import { KoliBriIconsProp } from '../../types/icons';
 import { AlignPropType, PropAlign } from '../../types/props/align';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropDisabled } from '../../types/props/disabled';
@@ -24,7 +24,11 @@ export type KoliBriTabsCallbacks = {
 
 type RequiredTabButtonProps = PropLabel;
 type OptionalTabButtonProps = {
-	icon: Stringified<KoliBriIconProp>;
+	/**
+	 * @deprecated Use _icons.
+	 */
+	icon: Stringified<KoliBriIconsProp>;
+	icons: Stringified<KoliBriIconsProp>;
 	/**
 	 * @deprecated use _hide-label
 	 */

@@ -21,7 +21,7 @@ export const InputPasswordShowPassword: FC = () => {
 				_label="Passwort"
 				ref={passwordRef}
 				_smartButton={{
-					_icon: {
+					_icons: {
 						left: {
 							icon: 'codicon codicon-eye',
 						},

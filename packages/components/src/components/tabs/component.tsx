@@ -91,7 +91,7 @@ export class KolTabs implements API {
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<kol-button-wc
 						_disabled={button._disabled}
-						_icon={button._icon}
+						_icons={button._icons || button._icon}
 						_hideLabel={button._hideLabel || button._iconOnly}
 						_label={button._label} // TODO: ariaLabel-Konzept prüfen
 						_on={this.callbacks as ButtonCallbacksPropType<StencilUnknown>}

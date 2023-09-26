@@ -24,7 +24,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 					index !== 0
 						? getIconHtml({
 								_label: '',
-								_icon: 'codicon codicon-chevron-right',
+								_icons: 'codicon codicon-chevron-right',
 						  })
 						: ''
 				}
@@ -34,7 +34,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 									link._hideLabel
 										? getIconHtml({
 												_label: link._label,
-												_icon: link._icon as Icofont,
+												_icons: link._icon as Icofont,
 										  })
 										: link._label
 							  }</span>`
@@ -53,7 +53,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 					state._links.length === 0
 						? `<li>${getIconHtml({
 								_label: '',
-								_icon: 'codicon codicon-home',
+								_icons: 'codicon codicon-home',
 						  })}…</li>`
 						: ''
 				}

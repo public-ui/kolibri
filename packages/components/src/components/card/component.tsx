@@ -57,7 +57,7 @@ export class KolCard implements API {
 						<kol-button-wc
 							class="close"
 							_hideLabel
-							_icon={{
+							_icons={{
 								left: {
 									icon: 'codicon codicon-close',
 								},

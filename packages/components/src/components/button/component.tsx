@@ -13,7 +13,7 @@ import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
-import { IconPropType, validateIcon, watchIconAlign } from '../../types/props/icon';
+import { IconsPropType, validateIcons, watchIconAlign } from '../../types/props/icons';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
@@ -98,7 +98,7 @@ export class KolButtonWc implements API {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label}>
+					<kol-span-wc _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
@@ -168,9 +168,14 @@ export class KolButtonWc implements API {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: IconPropType;
+	@Prop() public _icon?: IconsPropType;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: IconsPropType;
 
 	/**
 	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
@@ -243,7 +248,7 @@ export class KolButtonWc implements API {
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: ButtonStates = {
-		_icon: {}, // ⚠ required
+		_icons: {}, // ⚠ required
 		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button', // ⚠ required
@@ -303,8 +308,13 @@ export class KolButtonWc implements API {
 	}
 
 	@Watch('_icon')
-	public validateIcon(value?: IconPropType): void {
-		validateIcon(this, value);
+	public validateIcon(value?: IconsPropType): void {
+		validateIcons(this, value);
+	}
+
+	@Watch('_icons')
+	public validateIcons(value?: IconsPropType): void {
+		validateIcons(this, value);
 	}
 
 	@Watch('_iconAlign')
@@ -382,7 +392,7 @@ export class KolButtonWc implements API {
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
 		this.validateHideLabel(this._hideLabel || this._iconOnly);
-		this.validateIcon(this._icon);
+		this.validateIcons(this._icons || this._icon);
 		this.validateIconAlign(this._iconAlign);
 		this.validateId(this._id);
 		this.validateLabel(this._label || this._ariaLabel);

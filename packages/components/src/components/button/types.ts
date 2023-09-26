@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriAllIcon } from '../../types/icon';
+import { KoliBriAllIcons } from '../../types/icons';
 import { AlignPropType } from '../../types/props/align';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { PropAriaControls } from '../../types/props/aria-controls';
@@ -15,7 +15,7 @@ import { PropButtonVariant } from '../../types/props/button-variant';
 import { PropCustomClass } from '../../types/props/custom-class';
 import { PropDisabled } from '../../types/props/disabled';
 import { PropHideLabel } from '../../types/props/hide-label';
-import { PropIcon } from '../../types/props/icon';
+import { IconsPropType, PropIcons } from '../../types/props/icons';
 import { PropId } from '../../types/props/id';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropName } from '../../types/props/name';
@@ -39,6 +39,10 @@ export type OptionalButtonProps = {
 	 * @deprecated
 	 */
 	iconOnly: boolean;
+	/**
+	 * @deprecated Use _icons.
+	 */
+	icon: IconsPropType;
 } & PropAlternativeButtonLinkRole &
 	PropAriaControls &
 	PropAriaCurrent &
@@ -51,7 +55,7 @@ export type OptionalButtonProps = {
 	PropCustomClass &
 	PropDisabled &
 	PropHideLabel &
-	PropIcon &
+	PropIcons &
 	PropId &
 	PropName &
 	PropSyncValueBySelector &
@@ -61,7 +65,7 @@ export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalB
 export type RequiredButtonStates = RequiredButtonProps &
 	PropButtonType &
 	PropButtonVariant & {
-		icon: KoliBriAllIcon;
+		icons: KoliBriAllIcons;
 	};
 export type OptionalButtonStates = Omit<RequiredButtonProps & OptionalButtonProps, keyof RequiredButtonStates>;
 

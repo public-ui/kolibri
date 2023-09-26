@@ -10,7 +10,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 		<div className="grid gap-4">
 			<KolInputCheckbox
 				{...props}
-				_icon={{
+				_icons={{
 					unchecked: 'codicon codicon-close',
 				}}
 				_label="Nicht ausgewählt"
@@ -18,7 +18,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 			/>
 			<KolInputCheckbox
 				{...props}
-				_icon={{
+				_icons={{
 					unchecked: 'codicon codicon-close',
 				}}
 				_label="Unbestimmt (Indeterminate)"
@@ -29,7 +29,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 				{...props}
 				ref={ref}
 				_checked
-				_icon={{
+				_icons={{
 					unchecked: 'codicon codicon-close',
 				}}
 				_label="Ausgewählt"
@@ -39,7 +39,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 			<KolInputCheckbox
 				{...props}
 				_disabled
-				_icon={{
+				_icons={{
 					unchecked: 'codicon codicon-close',
 				}}
 				_label="Disabled"
@@ -49,7 +49,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 			<KolInputCheckbox
 				{...props}
 				_error={ERROR_MSG}
-				_icon={{
+				_icons={{
 					unchecked: 'codicon codicon-close',
 				}}
 				_label="Mit Fehler"

@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriHorizontalIcons } from '../../types/icons';
 import { InputTypeOnDefault, SelectOption } from '../../types/input/types';
 import { PropDisabled } from '../../types/props/disabled';
 import { PropHideError } from '../../types/props/hide-error';
@@ -27,7 +27,8 @@ type OptionalProps = {
 	 */
 	height: string;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcon>;
+	icon: Stringified<KoliBriHorizontalIcons>;
+	icons: Stringified<KoliBriHorizontalIcons>;
 	/**
 	 * @deprecated Use options.
 	 */
@@ -69,7 +70,7 @@ type OptionalStates = {
 	 */
 	height: string;
 	hint: string;
-	icon: KoliBriHorizontalIcon;
+	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	/**
 	 * @deprecated Use _rows instead.

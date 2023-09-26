@@ -3,7 +3,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { translate } from '../../i18n';
 import { LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
+import { KoliBriIconsProp } from '../../types/icons';
 import { AlignPropType } from '../../types/props/align';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { validateAriaControls } from '../../types/props/aria-controls';
@@ -12,7 +12,7 @@ import { validateAriaSelected } from '../../types/props/aria-selected';
 import { DownloadPropType, validateDownload } from '../../types/props/download';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { validateHref } from '../../types/props/href';
-import { validateIcon, watchIconAlign } from '../../types/props/icon';
+import { validateIcons, watchIconAlign } from '../../types/props/icons';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
 import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
@@ -127,10 +127,10 @@ export class KolLinkWc implements API {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label || this.state._href}>
+					<kol-span-wc _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label || this.state._href}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
-					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
+					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icons={'codicon codicon-link-external'} />}
 				</a>
 				<kol-tooltip-wc
 					/**
@@ -204,9 +204,14 @@ export class KolLinkWc implements API {
 	@Prop() public _href!: string;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: Stringified<KoliBriIconsProp>;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 
 	/**
 	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
@@ -284,7 +289,7 @@ export class KolLinkWc implements API {
 
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
-		_icon: {}, // ⚠ required
+		_icons: {}, // ⚠ required
 	};
 
 	/**
@@ -353,8 +358,13 @@ export class KolLinkWc implements API {
 	}
 
 	@Watch('_icon')
-	public validateIcon(value?: KoliBriIconProp): void {
-		validateIcon(this, value);
+	public validateIcon(value?: KoliBriIconsProp): void {
+		this.validateIcons(value);
+	}
+
+	@Watch('_icons')
+	public validateIcons(value?: KoliBriIconsProp): void {
+		validateIcons(this, value);
 	}
 
 	/**
@@ -454,7 +464,7 @@ export class KolLinkWc implements API {
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel || this._iconOnly);
 		this.validateHref(this._href);
-		this.validateIcon(this._icon);
+		this.validateIcon(this._icons || this._icon);
 		this.validateIconAlign(this._iconAlign);
 		this.validateLabel(this._label || this._ariaLabel);
 		this.validateListenAriaCurrent(this._listenAriaCurrent);

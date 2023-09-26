@@ -222,7 +222,7 @@ export class KolLinkGroup implements API {
 
 // console.log(
 //   stringifyJson([
-//     { _label: 'Fehler 1', _id: '#anschrift_anschrift_adresse_strasse', _icon: 'error' },
-//     { _label: 'Fehler 2', _id: '#anschrift_anschrift_adresse_hausnummer', _icon: 'error' },
+//     { _label: 'Fehler 1', _id: '#anschrift_anschrift_adresse_strasse', _icons: 'error' },
+//     { _label: 'Fehler 2', _id: '#anschrift_anschrift_adresse_hausnummer', _icons: 'error' },
 //   ])
 // );

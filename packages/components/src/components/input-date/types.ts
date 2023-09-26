@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriHorizontalIcons } from '../../types/icons';
 import { InputDateType, OptionalInputProps } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
@@ -45,7 +45,7 @@ type OptionalStates = {
 	alert: boolean;
 	error: string;
 	hint: string;
-	icon: KoliBriHorizontalIcon;
+	icons: KoliBriHorizontalIcons;
 	max: Iso8601;
 	min: Iso8601;
 	on: InputTypeOnDefault;

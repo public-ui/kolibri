@@ -46,7 +46,7 @@ export const FocusInput: FC<Props> = ({ RefInput, props }) => {
 			<div className="grid gap-4">
 				<RefInput ref={ref} {...props} />
 				<div className="flex gap-4">
-					<KolButton _label="Submit" _icon="codicon codicon-arrow-right" _type="submit" _variant="primary" />
+					<KolButton _label="Submit" _icons="codicon codicon-arrow-right" _type="submit" _variant="primary" />
 					<KolButton _label="Reset" _type="reset" _variant="tertiary" />
 					<KolButton _label="Help" _type="button" _variant="ghost" />
 				</div>

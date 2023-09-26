@@ -6,7 +6,7 @@ import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { ButtonTypePropType } from '../../types/props/button-type';
 import { ButtonVariantPropType } from '../../types/props/button-variant';
 import { CustomClassPropType } from '../../types/props/custom-class';
-import { IconPropType } from '../../types/props/icon';
+import { IconsPropType } from '../../types/props/icons';
 import { LabelPropType } from '../../types/props/label';
 import { validateShow } from '../../types/props/show';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
@@ -92,7 +92,7 @@ export class KolSplitButton implements API {
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
-					_icon={this._icon}
+					_icons={this._icons || this._icon}
 					_hideLabel={this._hideLabel}
 					_label={this._label}
 					_name={this._name}
@@ -110,7 +110,7 @@ export class KolSplitButton implements API {
 					class="secondary-button"
 					_disabled={this._disabled}
 					_hideLabel
-					_icon="codicon codicon-triangle-down"
+					_icons="codicon codicon-triangle-down"
 					_label={`dropdown ${this.state._show ? 'schließen' : 'öffnen'}`} // @todo: translate
 					_on={this.clickToggleHandler}
 				></kol-button-wc>
@@ -166,9 +166,14 @@ export class KolSplitButton implements API {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: IconPropType;
+	@Prop() public _icon?: IconsPropType;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: IconsPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.

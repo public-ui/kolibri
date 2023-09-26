@@ -4,22 +4,22 @@ import { objectObjectHandler, parseJson, watchValidator } from '../../utils/prop
 import { isObject, isString, isStyle } from '../../utils/validator';
 import { States as ButtonStates } from '../../components/button/types';
 import { Stringified } from '../common';
-import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../icon';
+import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconsProp, KoliBriIconsState } from '../icons';
 import { AlignPropType } from './align';
 
 /* types */
-export type IconPropType = Stringified<KoliBriIconProp>;
+export type IconsPropType = Stringified<KoliBriIconsProp>;
 
 /**
  * Defines the icon classnames.
  */
-export type PropIcon = {
-	icon: IconPropType;
+export type PropIcons = {
+	icons: IconsPropType;
 };
 
 /* validator */
 
-const mapCustomIcon = (state: KoliBriIconState, alignment: AlignPropType, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
+const mapCustomIcon = (state: KoliBriIconsState, alignment: AlignPropType, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
 		state[alignment] = icon as KoliBriCustomIcon;
 	} else if (isString(icon, 1)) {
@@ -29,8 +29,8 @@ const mapCustomIcon = (state: KoliBriIconState, alignment: AlignPropType, icon?:
 	}
 };
 
-export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: AlignPropType): KoliBriIconState => {
-	let state: KoliBriIconState = {};
+export const mapIconProp2State = (icon: KoliBriIconsProp, iconAlign?: AlignPropType): KoliBriIconsState => {
+	let state: KoliBriIconsState = {};
 	if (isString(icon, 1)) {
 		switch (iconAlign) {
 			case 'right':
@@ -57,15 +57,15 @@ export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: AlignPropTy
 };
 
 const beforePatchIcon = (component: Generic.Element.Component): void => {
-	if (component.nextState?.has('_icon')) {
-		const icon = component.nextState?.get('_icon') as KoliBriIconProp;
+	if (component.nextState?.has('_icons')) {
+		const icon = component.nextState?.get('_icons') as KoliBriIconsProp;
 		const iconAlign = (component.nextState?.get('_iconAlign') as AlignPropType) || (component.state as ButtonStates)._iconAlign;
-		component.nextState?.set('_icon', mapIconProp2State(icon, iconAlign));
+		component.nextState?.set('_icons', mapIconProp2State(icon, iconAlign));
 	} else if (component.nextState?.has('_iconAlign')) {
 		const lastIconAlign = (component.state as ButtonStates)._iconAlign as AlignPropType;
-		component.nextState?.set('_icon', {
+		component.nextState?.set('_icons', {
 			[lastIconAlign]: undefined,
-			[component.nextState?.get('_iconAlign') as AlignPropType]: (component.state as ButtonStates)._icon[lastIconAlign],
+			[component.nextState?.get('_iconAlign') as AlignPropType]: (component.state as ButtonStates)._icons[lastIconAlign],
 		});
 	}
 };
@@ -76,16 +76,16 @@ export const isIcon = (value?: unknown): boolean =>
 	(typeof (value as KoliBriCustomIcon).style === 'undefined' || isStyle((value as KoliBriCustomIcon).style)) &&
 	isString((value as KoliBriCustomIcon).icon, 1);
 
-export const validateIcon = (component: Generic.Element.Component, value?: IconPropType): void => {
+export const validateIcons = (component: Generic.Element.Component, value?: IconsPropType): void => {
 	objectObjectHandler(value, () => {
 		try {
-			value = parseJson<KoliBriIconProp>(value as string);
+			value = parseJson<KoliBriIconsProp>(value as string);
 		} catch (e) {
 			// value behält den ursprünglichen Wert
 		}
 		watchValidator(
 			component,
-			'_icon',
+			'_icons',
 			(value): boolean => {
 				return (
 					value === null ||
@@ -108,7 +108,7 @@ export const validateIcon = (component: Generic.Element.Component, value?: IconP
 				hooks: {
 					beforePatch: (nextValue: unknown, nextState: Map<string, unknown>) => {
 						if (nextValue === null) {
-							nextState.set('_icon', {});
+							nextState.set('_icons', {});
 						}
 						beforePatchIcon(component);
 					},
