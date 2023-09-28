@@ -1,49 +1,53 @@
 # Contributing
 
-Wir würden uns freuen, wenn Sie etwas zu **KoliBri** beitragen und dabei helfen würden, es noch besser zu machen, als es heute ist! Als Mitwirkender bitten wir Sie, die folgenden Richtlinien zu befolgen:
+We would love for you to contribute to **KoliBri**and help make it even better than it is today! As a contributor, we ask that you follow the following guidelines:
 
 - [Contributing](#contributing)
   - [Code of Conduct](#code-of-conduct)
-  - [Fragen und Probleme](#fragen-und-probleme)
-  - [Fehler melden](#fehler-melden)
-  - [Weiterentwicklung](#weiterentwicklung)
+  - [Questions and Problems](#questions-and-problems)
+  - [Report bug](#report-bug)
+  - [Further development](#further-development)
 
 ## Code of Conduct
 
-Helfen Sie uns, **KoliBri** offen und integrativ zu halten. Bitte lesen und folgen Sie unserer [Code of Conduct](CODE_OF_CONDUCT.md).
+Help us keep **KoliBri** open and inclusive. Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Fragen und Probleme
+## Questions and problems
 
-Bitte erstellen Sie keine Issue-Tickets für allgemeine Supportfragen. Wir möchten das Ticketsystem für die Nachverfolgung von Fehlerberichten und Funktionsanfragen verwenden.
+Please do not create issue tickets for general support questions. We want to use the ticket system for tracking bug reports and feature requests.
 
-Stattdessen empfehlen wir als erstes bei [Stack Overflow](https://stackoverflow.com/questions/tagged/kolibri) nachzuschauen, ob jemand anderes die Frage oder das Problem schon gelöst hat. Gerne können dort auch neue Fragen mit dem Tag `kolibri` erstellt werden.
+Instead, we recommend first checking [Stack Overflow](https://stackoverflow.com/questions/tagged/kolibri) to see whether someone else has already solved the question or problem. You can also create new questions with the tag “hummingbird”.
+To save your time and ours, we will close all general questions in the ticket system and redirect those asking to Stack Overflow.
 
-Um Ihre und unsere Zeit zu sparen, werden wir alle allgemeinen Fragen im Ticketsystem schließen und die Fragenden an Stack Overflow weiterleiten.
+If you would like to contact us, please send us an email to [kolibri@itzbund.de](kolibri@itzbund.de).
 
-Wenn Sie gerne mit uns Kontakt aufnehmen wollen, dann schreiben Sie uns entweder eine E-Mail an [kolibri@itzbund.de](kolibri@itzbund.de).
+## Report an error
 
-## Fehler melden
+If you find an error in the source code, you can report it to our ticket system.
 
-Wenn Sie einen Fehler im Quellcode finden, dann können Sie diesen an unser Ticketsystem melden.
+It would be even better if you suggested a solution to us as a pull request.
 
-Noch besser wäre es, wenn Sie uns eine Lösung als Pull Request vorschlagen.
+## Further development
 
-## Weiterentwicklung
+You can request new features by submitting an issue to our ticket system. If you would like to implement a new function, please note the following steps for further action:
 
-Sie können neue Funktionen anfordern, indem Sie ein Problem an unser Ticketsystem senden. Wenn Sie gerne eine neue Funktion implementieren möchten, dann beachten Sie bitte die folgenden Schritte für das weitere Vorgehen:
+- It is helpful to read the KoliBri [architecture concept](https://public-ui.github.io/docs/concepts/architecture) before implementing.
+- For major innovations, please create a ticket with the description of the new function.
+- For small innovations, you can offer and justify the implementation directly as a pull request.
 
-- Es ist hilfreich vor dem Implementieren das [Architekturkonzept](https://public-ui.github.io/docs/concepts/architecture) zu KoliBri zu lesen.
-- Bei größeren Neuerungen legen Sie bitte ein Ticket mit der Beschreibung der neuen Funktion an.
-- Bei kleinen Neuerungen können Sie die Implementierung direkt als Pull Request anbieten und begründen.
+### Git flow
 
-### Git-Flow
+We work according to the Git flow: https://medium.com/android-news/gitflow-with-github-c675aa4f606a
 
-Wir arbeiten nach dem Git-Flow: https://medium.com/android-news/gitflow-with-github-c675aa4f606a
+### Developing
 
-### Änder-/Neuerungen implementieren
-
-- [pnpm installieren](https://pnpm.io/installation)
-- Konsole im Projekt root öffnen
-- Alle Pakete installieren mit "pnpm i"
-- in gewüschtes Projekt wechseln
-- Projekt starten mit "pnpm start"
+1. For contributing, you need a [GitHub account](https://github.com/login)
+2. Fork [our repository](https://github.com/public-ui/kolibri) on GitHub
+3. Open your preferred command line interface
+4. Clone the forked repository to your local machine
+5. Navigate the project root directory
+6. Create a new branch for your changes
+7. [Install PNPM](https://pnpm.io/installation) on you local machine
+8. Install all packages with `pnpm i`
+9. Navigate to the desired package in our monorepo
+10. Start the project with “pnpm start”

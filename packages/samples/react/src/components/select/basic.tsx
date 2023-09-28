@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { FocusInput } from '../FocusInput';
+import { FormWrap } from '../FormWrap';
 import { SelectVariants } from './partials/variants';
 
-export const SelectBasic: FC = () => <FocusInput RefInput={SelectVariants} />;
+export const SelectBasic: FC = () => <FormWrap RefComponent={SelectVariants} />;

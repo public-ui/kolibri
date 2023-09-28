@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { FocusInput } from '../FocusInput';
+import { FormWrap } from '../FormWrap';
 import { InputRadioVariants } from './partials/variants';
 
-export const InputRadioBasic: FC = () => <FocusInput RefInput={InputRadioVariants} />;
+export const InputRadioBasic: FC = () => <FormWrap RefComponent={InputRadioVariants} />;
