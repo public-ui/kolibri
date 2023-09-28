@@ -45,10 +45,10 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
+import { HrefPropType } from "./types/props/href";
 import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
 import { LinkUseCase } from "./types/button-link";
-import { HrefPropType } from "./types/props/href";
 import { ListStyleType } from "./components/link-group/types";
 import { LinkProps } from "./components/link/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
@@ -104,10 +104,10 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
+export { HrefPropType } from "./types/props/href";
 export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
 export { LinkUseCase } from "./types/button-link";
-export { HrefPropType } from "./types/props/href";
 export { ListStyleType } from "./components/link-group/types";
 export { LinkProps } from "./components/link/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
@@ -169,7 +169,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -262,7 +262,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * @deprecated Use icons.
+          * @deprecated Use _icons.
          */
         "_icon"?: Stringified<KoliBriIconsProp>;
         /**
@@ -335,7 +335,8 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -440,7 +441,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -543,7 +544,8 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -816,7 +818,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -914,7 +916,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1015,7 +1017,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1110,7 +1112,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1233,7 +1235,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1356,7 +1358,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1452,7 +1454,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1583,7 +1585,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1691,7 +1693,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1777,7 +1779,8 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1853,7 +1856,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -1962,7 +1965,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -2109,13 +2112,14 @@ export namespace Components {
          */
         "_download"?: DownloadPropType;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the target URI of the link.
+          * Sets the target URI of the link or citation source.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
           * @deprecated Use _icons.
          */
@@ -2222,7 +2226,7 @@ export namespace Components {
          */
         "_download"?: DownloadPropType;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -2349,13 +2353,14 @@ export namespace Components {
          */
         "_download"?: DownloadPropType;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the target URI of the link.
+          * Sets the target URI of the link or citation source.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
           * @deprecated Use _icons.
          */
@@ -2482,7 +2487,7 @@ export namespace Components {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -2510,7 +2515,7 @@ export namespace Components {
          */
         "_boundaryCount"?: number;
         /**
-          * Defines the custom class attribute for the buttons.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
         /**
@@ -2556,7 +2561,7 @@ export namespace Components {
     }
     interface KolPopover {
         /**
-          * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
+          * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */
         "_align"?: AlignPropType;
         /**
@@ -2599,7 +2604,7 @@ export namespace Components {
          */
         "_caption"?: string;
         /**
-          * Defines the link to the source of the quote.
+          * Sets the target URI of the link or citation source.
          */
         "_href": HrefPropType;
         /**
@@ -2644,7 +2649,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -2742,7 +2747,7 @@ export namespace Components {
     }
     interface KolSpan {
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -2770,7 +2775,7 @@ export namespace Components {
          */
         "_allowMarkdown"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -2834,7 +2839,8 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2871,7 +2877,8 @@ export namespace Components {
          */
         "_show"?: boolean;
         /**
-          * Defines whether to show the dropdown menu.
+          * Deprecated: Defines whether to show the dropdown menu.
+          * @deprecated use _show instead
          */
         "_showDropdown"?: boolean;
         /**
@@ -3011,7 +3018,7 @@ export namespace Components {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -3106,7 +3113,7 @@ export namespace Components {
     }
     interface KolTooltipWc {
         /**
-          * Defines the alignment of the tooltip in relation to the parent element.
+          * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */
         "_align"?: AlignPropType;
         /**
@@ -3636,7 +3643,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the element can be closed.
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
@@ -3729,7 +3736,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * @deprecated Use icons.
+          * @deprecated Use _icons.
          */
         "_icon"?: Stringified<KoliBriIconsProp>;
         /**
@@ -3802,7 +3809,8 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3907,7 +3915,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4010,7 +4018,8 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4283,7 +4292,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4381,7 +4390,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4482,7 +4491,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4577,7 +4586,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4700,7 +4709,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4823,7 +4832,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -4919,7 +4928,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5050,7 +5059,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5158,7 +5167,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5244,7 +5253,8 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5320,7 +5330,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5429,7 +5439,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5576,13 +5586,14 @@ declare namespace LocalJSX {
          */
         "_download"?: DownloadPropType;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the target URI of the link.
+          * Sets the target URI of the link or citation source.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
           * @deprecated Use _icons.
          */
@@ -5689,7 +5700,7 @@ declare namespace LocalJSX {
          */
         "_download"?: DownloadPropType;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5816,13 +5827,14 @@ declare namespace LocalJSX {
          */
         "_download"?: DownloadPropType;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the target URI of the link.
+          * Sets the target URI of the link or citation source.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
           * @deprecated Use _icons.
          */
@@ -5949,7 +5961,7 @@ declare namespace LocalJSX {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -5977,7 +5989,7 @@ declare namespace LocalJSX {
          */
         "_boundaryCount"?: number;
         /**
-          * Defines the custom class attribute for the buttons.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
         /**
@@ -6023,7 +6035,7 @@ declare namespace LocalJSX {
     }
     interface KolPopover {
         /**
-          * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
+          * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */
         "_align"?: AlignPropType;
         /**
@@ -6066,7 +6078,7 @@ declare namespace LocalJSX {
          */
         "_caption"?: string;
         /**
-          * Defines the link to the source of the quote.
+          * Sets the target URI of the link or citation source.
          */
         "_href": HrefPropType;
         /**
@@ -6111,7 +6123,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -6209,7 +6221,7 @@ declare namespace LocalJSX {
     }
     interface KolSpan {
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -6237,7 +6249,7 @@ declare namespace LocalJSX {
          */
         "_allowMarkdown"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -6301,7 +6313,8 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -6338,7 +6351,8 @@ declare namespace LocalJSX {
          */
         "_show"?: boolean;
         /**
-          * Defines whether to show the dropdown menu.
+          * Deprecated: Defines whether to show the dropdown menu.
+          * @deprecated use _show instead
          */
         "_showDropdown"?: boolean;
         /**
@@ -6478,7 +6492,7 @@ declare namespace LocalJSX {
          */
         "_hideError"?: boolean;
         /**
-          * Hides the label.
+          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
@@ -6572,7 +6586,7 @@ declare namespace LocalJSX {
     }
     interface KolTooltipWc {
         /**
-          * Defines the alignment of the tooltip in relation to the parent element.
+          * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */
         "_align"?: AlignPropType;
         /**
