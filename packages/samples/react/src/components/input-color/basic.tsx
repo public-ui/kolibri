@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { FocusInput } from '../FocusInput';
+import { FormWrap } from '../FormWrap';
 import { InputColorVariants } from './partials/variants';
 
-export const InputColorBasic: FC = () => <FocusInput RefInput={InputColorVariants} />;
+export const InputColorBasic: FC = () => <FormWrap RefComponent={InputColorVariants} />;

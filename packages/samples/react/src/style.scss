@@ -1,3 +1,11 @@
+* {
+	font-family: Verdana;
+}
+
+body {
+	margin: 0;
+}
+
 dl,
 hr {
 	margin: 0;
@@ -19,10 +27,6 @@ hr {
 	grid-template-columns: auto auto;
 }
 
-.app-sidebar {
-	font-family: sans-serif;
-}
-
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
@@ -36,6 +40,7 @@ hr {
 }
 
 @media print {
+
 	.no-print,
 	.no-print * {
 		display: none !important;
