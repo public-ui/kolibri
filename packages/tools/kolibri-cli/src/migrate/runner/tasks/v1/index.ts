@@ -59,7 +59,7 @@ import {
 } from './link-group';
 import { LogoRenamePropertyAbbrToOrg } from './logo';
 import { ModalRenamePropertyAriaLabelToLabel } from './modal';
-import { NavRemovePropertyHasCompactButton, NavRemovePropertyVariant, NavRenamePropertyAriaLabelToLabel, NavRenamePropertyCompactToHideLabel } from './nav';
+import { NavRemovePropertyVariant, NavRenamePropertyAriaLabelToLabel, NavRenamePropertyCompactToHideLabel } from './nav';
 import { PaginationRenamePropertyCountToTotal } from './pagination';
 import { ProgressRenamePropertyTypeToVariant } from './progress';
 import { QuoteRenamePropertyCaptionToLabel } from './quote';
@@ -136,7 +136,7 @@ v1Tasks.push(LinkRenamePropertyAriaCurrentToListenAriaCurrent);
 v1Tasks.push(LinkRenamePropertyIconOnlyToHideLabel);
 v1Tasks.push(LogoRenamePropertyAbbrToOrg);
 v1Tasks.push(ModalRenamePropertyAriaLabelToLabel);
-v1Tasks.push(NavRemovePropertyHasCompactButton);
+// v1Tasks.push(NavRemovePropertyHasCompactButton);
 v1Tasks.push(NavRemovePropertyVariant);
 v1Tasks.push(NavRenamePropertyAriaLabelToLabel);
 v1Tasks.push(NavRenamePropertyCompactToHideLabel);
