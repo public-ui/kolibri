@@ -48,7 +48,7 @@
 	"devDependencies": {
 		"@public-ui/components": "1.7.0-rc.16",
 		"@types/minimatch": "5.1.2",
-		"@types/minimist": "1.2.2",
+		"@types/minimist": "1.2.3",
 		"@types/node": "ts5.1",
 		"@types/normalize-package-data": "2.4.2",
 		"solid-js": "1.7.12",
