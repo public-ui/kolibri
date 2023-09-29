@@ -50,7 +50,7 @@ export type KoliBriTablePaginationProps = Generic.Element.Members<
 type KoliBriTablePaginationStates = Generic.Element.Members<
 	{
 		page: number;
-		total: number;
+		max: number;
 	},
 	KoliBriPaginationProps
 >;

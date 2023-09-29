@@ -55,6 +55,7 @@ import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
+import { MaxPropType } from "./types/props/max";
 import { KoliBriProgressVariantType } from "./types/progress";
 import { KoliBriQuoteVariant } from "./components/quote/types";
 import { RowsPropType } from "./types/props/rows";
@@ -114,6 +115,7 @@ export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
+export { MaxPropType } from "./types/props/max";
 export { KoliBriProgressVariantType } from "./types/progress";
 export { KoliBriQuoteVariant } from "./components/quote/types";
 export { RowsPropType } from "./types/props/rows";
@@ -2527,6 +2529,10 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
+          * Defines the maximum number of pages.
+         */
+        "_max"?: MaxPropType;
+        /**
           * Gibt an, auf welche Callback-Events reagiert werden.
          */
         "_on": KoliBriPaginationButtonCallbacks;
@@ -2552,8 +2558,9 @@ export namespace Components {
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
+          * @deprecated Use _max.
          */
-        "_total": number;
+        "_total"?: number;
         /**
           * Defines which variant should be used for presentation.
          */
@@ -6001,6 +6008,10 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
+          * Defines the maximum number of pages.
+         */
+        "_max"?: MaxPropType;
+        /**
           * Gibt an, auf welche Callback-Events reagiert werden.
          */
         "_on": KoliBriPaginationButtonCallbacks;
@@ -6026,8 +6037,9 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
+          * @deprecated Use _max.
          */
-        "_total": number;
+        "_total"?: number;
         /**
           * Defines which variant should be used for presentation.
          */
