@@ -22,37 +22,149 @@ ROUTES.set('handout/basic', {
 	},
 	waitForTimeout: 500,
 });
-ROUTES.set('abbr/basic', null);
+ROUTES.set('abbr/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('accordion/basic', null);
-ROUTES.set('accordion/header', null);
-ROUTES.set('accordion/headlines', null);
-ROUTES.set('accordion/list', null);
-ROUTES.set('alert/basic', null);
-ROUTES.set('alert/card-msg', null);
-ROUTES.set('alert/html', null);
-ROUTES.set('avatar/basic', null);
+ROUTES.set('accordion/header', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('accordion/headlines', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('accordion/list', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('alert/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('alert/card-msg', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('alert/html', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('avatar/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('badge/basic', null);
 ROUTES.set('badge/button', null);
-ROUTES.set('breadcrumb/basic', null);
-ROUTES.set('button-group/basic', null);
-ROUTES.set('button-link/basic', null);
-ROUTES.set('button-link/icons', null);
-ROUTES.set('button-link/image', null);
-ROUTES.set('button/basic', null);
-ROUTES.set('button/hide-label', null);
-ROUTES.set('button/icons', null);
-ROUTES.set('button/width', null);
-ROUTES.set('card/basic', null);
-ROUTES.set('card/confirm', null);
-ROUTES.set('card/flex', null);
-ROUTES.set('card/selection', null);
-ROUTES.set('details/basic', null);
-ROUTES.set('heading/badge', null);
-ROUTES.set('heading/basic', null);
-ROUTES.set('heading/paragraph', null);
-ROUTES.set('icon/basic', null);
-ROUTES.set('image/basic', null);
-ROUTES.set('indented-text/basic', null);
+ROUTES.set('breadcrumb/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button-group/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button-link/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button-link/icons', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button-link/image', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button/hide-label', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button/icons', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button/width', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('card/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('card/confirm', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('card/flex', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('card/selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('details/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('heading/badge', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('heading/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('heading/paragraph', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('icon/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('image/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('indented-text/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('input-checkbox/basic', null);
 ROUTES.set('input-checkbox/button', null);
 ROUTES.set('input-checkbox/switch', null);
@@ -70,46 +182,206 @@ ROUTES.set('input-range/basic', null);
 ROUTES.set('input-text/basic', null);
 ROUTES.set('input-text/blur', null);
 ROUTES.set('input-text/focus', null);
-ROUTES.set('kolibri/animated', null);
-ROUTES.set('kolibri/basic', null);
-ROUTES.set('kolibri/no-label', null);
-ROUTES.set('link-button/basic', null);
-ROUTES.set('link-group/basic', null);
-ROUTES.set('link-group/horizontal', null);
-ROUTES.set('link/basic', null);
-ROUTES.set('link/icons', null);
-ROUTES.set('link/image', null);
-ROUTES.set('link/target', null);
-ROUTES.set('logo/basic', null);
-ROUTES.set('modal/basic', null);
-ROUTES.set('nav/active', null);
-ROUTES.set('nav/aria-current', null);
+ROUTES.set('kolibri/animated', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('kolibri/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('kolibri/no-label', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('link-button/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('link-group/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('link-group/horizontal', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('link/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('link/icons', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('link/image', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('link/target', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('logo/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('modal/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('nav/active', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('nav/aria-current', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('nav/basic', null);
-ROUTES.set('nav/horizontal', null);
-ROUTES.set('pagination/basic', null);
-ROUTES.set('popover/basic', null);
-ROUTES.set('progress/basic', null);
-ROUTES.set('quote/basic', null);
-ROUTES.set('quote/block', null);
+ROUTES.set('nav/horizontal', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('pagination/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('popover/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('progress/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('quote/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('quote/block', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('select/basic', null);
-ROUTES.set('skip-nav/basic', null);
-ROUTES.set('spin/basic', null);
-ROUTES.set('spin/custom', null);
-ROUTES.set('spin/cycle', null);
-ROUTES.set('split-button/basic', null);
-ROUTES.set('table/badge-size', null);
-ROUTES.set('table/render-cell', null);
-ROUTES.set('table/sort-data', null);
-ROUTES.set('tabs/basic', null);
-ROUTES.set('tabs/icons-only', null);
-ROUTES.set('textarea/adjust-height', null);
+ROUTES.set('skip-nav/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('spin/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('spin/custom', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('spin/cycle', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('split-button/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/badge-size', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/render-cell', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/sort-data', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('tabs/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('tabs/icons-only', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('textarea/adjust-height', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('textarea/basic', null);
-ROUTES.set('textarea/disabled', null);
-ROUTES.set('textarea/placeholder', null);
-ROUTES.set('textarea/readonly', null);
-ROUTES.set('textarea/resize', null);
-ROUTES.set('textarea/rows', null);
-ROUTES.set('textarea/with-counter', null);
-ROUTES.set('toast/basic', null);
-ROUTES.set('version/basic', null);
-ROUTES.set('version/context', null);
+ROUTES.set('textarea/disabled', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('textarea/placeholder', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('textarea/readonly', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('textarea/resize', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('textarea/rows', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('textarea/with-counter', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('toast/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('version/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('version/context', {
+	axe: {
+		skipFailures: false,
+	},
+});

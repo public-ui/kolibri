@@ -68,7 +68,7 @@
 		"@angular/core": "15.2.9",
 		"@public-ui/components": "1.7.0-rc.16",
 		"@types/minimatch": "5.1.2",
-		"@types/minimist": "1.2.2",
+		"@types/minimist": "1.2.3",
 		"@types/node": "ts4.9",
 		"@types/normalize-package-data": "2.4.2",
 		"prettier": "3.0.3",

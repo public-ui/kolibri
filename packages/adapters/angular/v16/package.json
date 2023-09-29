@@ -63,12 +63,12 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/compiler": "16.2.6",
-		"@angular/compiler-cli": "16.2.6",
-		"@angular/core": "16.2.6",
+		"@angular/compiler": "16.2.7",
+		"@angular/compiler-cli": "16.2.7",
+		"@angular/core": "16.2.7",
 		"@public-ui/components": "1.7.0-rc.16",
 		"@types/minimatch": "5.1.2",
-		"@types/minimist": "1.2.2",
+		"@types/minimist": "1.2.3",
 		"@types/node": "ts5.1",
 		"@types/normalize-package-data": "2.4.2",
 		"prettier": "3.0.3",

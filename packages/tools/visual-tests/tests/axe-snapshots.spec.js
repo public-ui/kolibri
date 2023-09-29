@@ -70,7 +70,7 @@ ROUTES.forEach((options, route) => {
 					html: true,
 				},
 			},
-			true,
+			options?.axe?.skipFailures ?? true,
 			'html',
 			{
 				outputDirPath: outputPath.replace(/\/[^/]+$/, ''),

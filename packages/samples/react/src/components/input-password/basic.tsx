@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { FocusInput } from '../FocusInput';
+import { FormWrap } from '../FormWrap';
 import { InputPasswordVariants } from './partials/variants';
 
-export const InputPasswordBasic: FC = () => <FocusInput RefInput={InputPasswordVariants} />;
+export const InputPasswordBasic: FC = () => <FormWrap RefComponent={InputPasswordVariants} />;
