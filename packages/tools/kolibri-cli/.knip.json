@@ -1,7 +1,7 @@
 {
 	"entry": ["src/index.ts"],
 	"ignoreBinaries": [],
-	"ignoreDependencies": ["@public-ui/components", "deepmerge", "loglevel", "mocha"],
+	"ignoreDependencies": ["@public-ui/components", "loglevel", "mocha"],
 	"project": ["src/**/*.ts"],
 	"rules": {
 		"classMembers": "warn"

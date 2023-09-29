@@ -1,17 +1,20 @@
-import child_process from 'node:child_process';
+import chalk from 'chalk';
 import { exec } from 'child_process';
 import { Command, Option } from 'commander';
 import fs from 'fs';
+import child_process from 'node:child_process';
 import path from 'path';
 import semver from 'semver';
 
 import { Configuration } from '../types';
 import { TaskRunner } from './runner/task-runner';
+import { commonTasks } from './runner/tasks';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
+import { getAssetTasks } from './runner/tasks/v1/assets';
 import {
 	getContentOfProjectPkgJson,
-	getPackageManagerInstallCommand,
+	getPackageManagerCommand,
 	getVersionOfPublicUiComponents,
 	getVersionOfPublicUiKoliBriCli,
 	logAndCreateError,
@@ -19,7 +22,6 @@ import {
 	setRemoveMode,
 } from './shares/reuse';
 import { REMOVE_MODE, RemoveMode } from './types';
-import { commonTasks } from './runner/tasks';
 
 type MigrateOption = {
 	format: boolean;
@@ -83,6 +85,7 @@ Source folder to migrate: ${baseDir}
 				const runner = new TaskRunner(baseDir, versionOfPublicUiKoliBriCli, versionOfPublicUiComponents, config);
 				runner.registerTasks(commonTasks);
 				runner.registerTasks(v1Tasks);
+				runner.registerTasks(getAssetTasks(baseDir));
 
 				if (options.testTasks) {
 					runner.registerTasks(testTasks);
@@ -103,7 +106,7 @@ Source folder to migrate: ${baseDir}
 						runner.setProjectVersion(version);
 
 						console.log(`- Update @public-ui/* to version ${version}`);
-						exec(getPackageManagerInstallCommand(), (err) => {
+						exec(getPackageManagerCommand('install'), (err) => {
 							if (err) {
 								console.error(`exec error: ${err.message}`);
 								return;
@@ -118,7 +121,7 @@ Source folder to migrate: ${baseDir}
 						runner.setProjectVersion(version);
 
 						console.log(`- Update @public-ui/* to version ${version}`);
-						exec(getPackageManagerInstallCommand(), (err) => {
+						exec(getPackageManagerCommand('install'), (err) => {
 							if (err) {
 								console.error(`exec error: ${err.message}`);
 								return;
@@ -146,9 +149,10 @@ Modified files: ${MODIFIED_FILES.size}`);
 						console.log(`- ${file}`);
 					});
 
-					if (options.format) {
+					if (MODIFIED_FILES.size > 0 && options.format) {
 						console.log(`
 We try to format the modified files with prettier...`);
+
 						try {
 							child_process.execFileSync('npx', ['prettier', '-w', ...Array.from(MODIFIED_FILES)], {
 								encoding: 'utf-8',
@@ -160,14 +164,27 @@ We try to format the modified files with prettier...`);
 						console.log();
 					}
 
-					console.log(`
-After migrating the code, the formatting of the code may no longer be as desired. Therefore, reformat your code afterwards if necessary: npx prettier ${baseDir} -w
+					console.log(
+						chalk.cyan(`
+${chalk.bold.bgCyan(`The migration is complete.`)} Please check the modified files and commit them if necessary.`),
+					);
 
-When migrating the labels, the text (innerText) is assigned 1 to 1 to the _label property. There could be the following situation, where manual corrections have to be made: _label={\`I am {count} years old.\`} -> _label={\`I am \${count} years old.\`} (add a $)
+					console.log(
+						chalk.magenta(`
+Despite the best possible preparation of migration steps, we will certainly not be able to fully migrate every individual source code in the project. After running the migration tool, please see where you may still need to help yourself and feel free to provide feedback on what we can improve.
+
+After all the changes are made, the modified files are formatted using Prettier.
+
+When migrating the labels, the text (innerText) is assigned 1 to 1 to the _label property. There could be the following situation, where manual corrections have to be made: ${chalk.italic.white(
+							`_label={\`I am {count} years old.\`}`,
+						)} -> ${chalk.italic.white(`_label={\`I am \${count} years old.\`}`)} (add a $)
 
 Afterwards, it may be that functions or themes have changed or are no longer included in newer major versions. This should be checked finally and corrected manually if necessary.
 
-If something is wrong, the migration can be stopped with "git reset --hard HEAD~1" or by discarding the affected files. For more information, read the troubleshooting section in the README.`);
+If something is wrong, the migration can be reverted with ${chalk.italic.white(
+							`git reset --hard HEAD~1`,
+						)} or by discarding the affected files. For more information, read the troubleshooting section in the README.`),
+					);
 				}
 
 				const status = runner.getStatus();

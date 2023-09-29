@@ -18,11 +18,14 @@ import { ButtonLinkRemovePropertyAriaCurrent, ButtonLinkRemovePropertyAriaLabel,
 import { CardRenamePropertyHeadingToLabel, CardRenamePropertyHeadlineToLabel } from './card';
 import { DetailsRenamePropertySummaryToLabel } from './details';
 import { IconRemovePropertyPart, IconRenamePropertyAriaLabelToLabel, IconRenamePropertyIconToIcons } from './icon';
+import { InputRenamePropertyIconToIcons } from './input';
 import { InputCheckboxRenamePropertyIconToIcons, InputCheckboxRenamePropertyTypeToVariant } from './input-checkbox';
 import { InputColorRenamePropertyIconToIcons, InputColorRenamePropertyListToSuggestions } from './input-color';
 import { InputDateRenamePropertyIconToIcons, InputDateRenamePropertyListToSuggestions } from './input-date';
 import { InputEmailRenamePropertyIconToIcons, InputEmailRenamePropertyListToSuggestions } from './input-email';
+import { InputFileRenamePropertyIconToIcons } from './input-file';
 import { InputNumberRenamePropertyIconToIcons, InputNumberRenamePropertyListToSuggestions } from './input-number';
+import { InputPasswordRenamePropertyIconToIcons } from './input-password';
 import { InputRadioRenamePropertyListToSuggestions } from './input-radio';
 import { InputRangeRenamePropertyIconToIcons, InputRangeRenamePropertyListToSuggestions } from './input-range';
 import { InputTextRenamePropertyIconToIcons, InputTextRenamePropertyListToSuggestions } from './input-text';
@@ -68,9 +71,6 @@ import { TableRenamePropertyCaptionToLabel } from './table';
 import { TabsRenamePropertyAriaLabelToLabel, TabsRenamePropertyIconToIcons, TabsRenamePropertyTabAlignToAlign } from './tabs';
 import { ToastRemovePropertyNameShowDuration, ToastRenamePropertyHeadingToLabel } from './toast';
 import { VersionRenamePropertyVersionToLabel } from './version';
-import { InputRenamePropertyIconToIcons } from './input';
-import { InputFileRenamePropertyIconToIcons } from './input-file';
-import { InputPasswordRenamePropertyIconToIcons } from './input-password';
 
 export const v1Tasks: AbstractTask[] = [];
 v1Tasks.push(AbbrRenamePropertyAlignToTooltipAlign);
