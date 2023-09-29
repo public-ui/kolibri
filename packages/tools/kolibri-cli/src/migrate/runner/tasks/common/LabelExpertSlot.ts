@@ -75,6 +75,7 @@ export class LabelExpertSlot extends AbstractTask {
 			const newContent = content
 				// Replacements
 				.replace(this.componentRegExp, removeLineBreaksAndSpaces)
+				// @todo: We could add a $ before all { inside the innerText ($2)
 				.replace(this.componentRegExp, `$1 ${this.propertyInCamelCase}={\`$2\`}/>`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
@@ -89,6 +90,7 @@ export class LabelExpertSlot extends AbstractTask {
 			const newContent = content
 				// Replacements
 				.replace(this.customElementRegExp, removeLineBreaksAndSpaces)
+				// @todo: We could add a $ before all { inside the innerText ($2)
 				.replace(this.customElementRegExp, `$1 ${this.property}={\`$2\`}/>`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);

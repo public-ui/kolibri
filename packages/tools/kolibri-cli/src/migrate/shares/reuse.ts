@@ -90,20 +90,23 @@ function readPackageJson(offsetPath: string): PackageJson {
 	return json as PackageJson;
 }
 
+export type PackageManagerCommand = 'add' | 'install' | 'remove';
+
 /**
  * This function is used to get the package manager install command.
+ * @param {PackageManagerCommand} command The package manager command
  * @param {string} baseDir The base directory to start searching for the package manager
  * @returns {string} The package manager install command
  */
-export function getPackageManagerInstallCommand(baseDir: string = process.cwd()) {
-	if (fs.existsSync(path.resolve(baseDir, 'pnpm-lock.yaml'))) return 'pnpm i --prefer-offline';
-	if (fs.existsSync(path.resolve(baseDir, 'yarn.lock'))) return 'yarn';
-	if (fs.existsSync(path.resolve(baseDir, 'package-lock.json'))) return 'npm i';
+export function getPackageManagerCommand(command: PackageManagerCommand, baseDir: string = process.cwd()) {
+	if (fs.existsSync(path.resolve(baseDir, 'pnpm-lock.yaml'))) return `pnpm ${command}`;
+	if (fs.existsSync(path.resolve(baseDir, 'yarn.lock'))) return `yarn ${command}`;
+	if (fs.existsSync(path.resolve(baseDir, 'package-lock.json'))) return `npm ${command}`;
 	baseDir = path.resolve(baseDir, '..');
 	if (baseDir === '/') {
 		throw logAndCreateError('Package manager could not detected.');
 	}
-	return getPackageManagerInstallCommand(baseDir);
+	return getPackageManagerCommand(command, baseDir);
 }
 
 export const isKebabCaseRegExp = /^((data-removed-)?[a-z]+(-[a-z]+)*)?$/;
@@ -180,4 +183,19 @@ export const getVersionOfPublicUiKoliBriCli = (): string => {
 			'Install the package with: npm i -g @public-ui/kolibri-cli',
 		);
 	}
+};
+
+const INDEX_HTML_LOCATIONS = ['./', 'public'];
+
+const resolvePath = (paths: string[], offset = process.cwd()) => path.resolve(offset, ...paths);
+
+export const resolveIndexHtmlPath = (paths: string[]) => resolvePath([...paths, 'index.html']);
+
+const existsIndexHtml = (location: string) => fs.existsSync(resolveIndexHtmlPath([location]));
+
+export const findIndexHtml = (baseDir: string) => {
+	if (existsIndexHtml(baseDir)) {
+		return baseDir;
+	}
+	return INDEX_HTML_LOCATIONS.find(existsIndexHtml);
 };

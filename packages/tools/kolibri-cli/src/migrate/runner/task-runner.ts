@@ -59,6 +59,10 @@ export class TaskRunner {
 
 	public registerTasks(tasks: AbstractTask[]): void {
 		tasks.forEach((task) => {
+			const dependentTasks = task.getDependentTasks();
+			if (dependentTasks.length > 0) {
+				this.registerTasks(dependentTasks);
+			}
 			if (
 				semver.gtr(this.projectVersion, task.getVersionRange(), {
 					includePrerelease: true,
