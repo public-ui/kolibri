@@ -12,6 +12,7 @@ import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '..
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';
+import { MaxPropType, validateMax } from '../../types/props/max';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -38,7 +39,7 @@ export class KolPagination implements API {
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
 
-	private readonly getCount = (): number => this.calcCount(this.state._total, this.state._pageSize);
+	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
 
 	public render(): JSX.Element {
 		let ellipsis = false;
@@ -208,8 +209,14 @@ export class KolPagination implements API {
 
 	/**
 	 * Setzt die Gesamtanzahl der Seiten.
+	 * @deprecated Use _max.
 	 */
-	@Prop() public _total!: number;
+	@Prop() public _total?: number;
+
+	/**
+	 * Defines the maximum number of pages.
+	 */
+	@Prop() public _max?: MaxPropType;
 
 	/**
 	 * Defines which variant should be used for presentation.
@@ -232,7 +239,7 @@ export class KolPagination implements API {
 		_pageSize: 1,
 		_pageSizeOptions: [],
 		_siblingCount: 1,
-		_total: 0,
+		_max: 0,
 		_variant: 'normal',
 	};
 
@@ -411,7 +418,7 @@ export class KolPagination implements API {
 			hooks: {
 				beforePatch: (_nextValue: unknown, nextState: Map<string, unknown>) => {
 					const pageSize = nextState.has('_pageSize') ? (nextState.get('_pageSize') as number) : this.state._pageSize;
-					const total = nextState.has('_total') ? (nextState.get('_total') as number) : this.state._total;
+					const total = nextState.has('_max') ? (nextState.get('_max') as number) : this.state._max;
 					this.syncPage(nextState, _nextValue as number, pageSize, total);
 				},
 			},
@@ -431,7 +438,7 @@ export class KolPagination implements API {
 			nextState.set('_pageSize', pageSize);
 		}
 		const page = nextState.has('_page') ? (nextState.get('_page') as number) : this.state._page;
-		const total = nextState.has('_total') ? (nextState.get('_total') as number) : this.state._total;
+		const total = nextState.has('_max') ? (nextState.get('_max') as number) : this.state._max;
 		this.syncPage(nextState, page, nextState.get('_pageSize') as number, total);
 	};
 
@@ -492,7 +499,12 @@ export class KolPagination implements API {
 
 	@Watch('_total')
 	public validateTotal(value?: number): void {
-		watchNumber(this, '_total', value, {
+		this.validateMax(value);
+	}
+
+	@Watch('_max')
+	public validateMax(value?: MaxPropType): void {
+		validateMax(this, value, {
 			hooks: {
 				beforePatch: (_nextValue: unknown, nextState: Map<string, unknown>) => {
 					const page = nextState.has('_page') ? (nextState.get('_page') as number) : this.state._page;
@@ -524,7 +536,7 @@ export class KolPagination implements API {
 		this.validatePageSizeOptions(this._pageSizeOptions);
 		this.validateSiblingCount(this._siblingCount);
 		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateTotal(this._total);
+		this.validateMax(this._max || this._total);
 		this.validateVariant(this._variant);
 
 		/**

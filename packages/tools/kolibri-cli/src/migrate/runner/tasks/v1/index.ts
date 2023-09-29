@@ -60,7 +60,7 @@ import {
 import { LogoRenamePropertyAbbrToOrg } from './logo';
 import { ModalRenamePropertyAriaLabelToLabel } from './modal';
 import { NavRemovePropertyVariant, NavRenamePropertyAriaLabelToLabel, NavRenamePropertyCompactToHideLabel } from './nav';
-import { PaginationRenamePropertyCountToTotal } from './pagination';
+import { PaginationRenamePropertyCountToTotal, PaginationRenamePropertyTotalToMax } from './pagination';
 import { ProgressRenamePropertyTypeToVariant } from './progress';
 import { QuoteRenamePropertyCaptionToLabel } from './quote';
 import { SelectRenamePropertyHeightToRows, SelectRenamePropertyIconToIcons, SelectRenamePropertyListToOptions } from './select';
@@ -140,8 +140,8 @@ v1Tasks.push(ModalRenamePropertyAriaLabelToLabel);
 v1Tasks.push(NavRemovePropertyVariant);
 v1Tasks.push(NavRenamePropertyAriaLabelToLabel);
 v1Tasks.push(NavRenamePropertyCompactToHideLabel);
-v1Tasks.push(NavRenamePropertyCompactToHideLabel);
 v1Tasks.push(PaginationRenamePropertyCountToTotal);
+v1Tasks.push(PaginationRenamePropertyTotalToMax);
 v1Tasks.push(ProgressRenamePropertyTypeToVariant);
 v1Tasks.push(QuoteRenamePropertyCaptionToLabel);
 v1Tasks.push(SelectRenamePropertyHeightToRows);
