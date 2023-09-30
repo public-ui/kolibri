@@ -199,3 +199,9 @@ export const findIndexHtml = (baseDir: string) => {
 	}
 	return INDEX_HTML_LOCATIONS.find(existsIndexHtml);
 };
+
+type PostMessage = {
+	message: string;
+	type: 'log' | 'warn' | 'error';
+};
+export const POST_MESSAGES = new Set<PostMessage>();

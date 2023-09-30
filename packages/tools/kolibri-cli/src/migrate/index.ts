@@ -19,6 +19,7 @@ import {
 	getVersionOfPublicUiKoliBriCli,
 	logAndCreateError,
 	MODIFIED_FILES,
+	POST_MESSAGES,
 	setRemoveMode,
 } from './shares/reuse';
 import { REMOVE_MODE, RemoveMode } from './types';
@@ -94,40 +95,56 @@ Source folder to migrate: ${baseDir}
 				let version = versionOfPublicUiComponents;
 
 				/**
+				 * Creates a replacer function for the package.json file.
+				 * @param version The version to replace
+				 * @returns The replacer function
+				 */
+				function createVersionReplacer(version: string) {
+					return (...args: string[]) => {
+						if (args[1] === '@public-ui/kolibri-cli') {
+							return `"${args[1]}": "${args[2]}"`;
+						}
+						return `"${args[1]}": "${version}"`;
+					};
+				}
+
+				/**
+				 * Sets the version of the @public-ui/* packages in the package.json file.
+				 * @param version Version to set
+				 * @param cb Callback function
+				 */
+				function setVersionOfPublicUiPackages(version: string, cb: () => void) {
+					let packageJson = getContentOfProjectPkgJson();
+					packageJson = packageJson.replace(/"(@public-ui\/[^"]+)":\s*"(.*)"/g, createVersionReplacer(version));
+					fs.writeFileSync(path.resolve(process.cwd(), 'package.json'), packageJson);
+					runner.setProjectVersion(version);
+					console.log(`- Update @public-ui/* to version ${version}`);
+					exec(getPackageManagerCommand('install'), (err) => {
+						if (err) {
+							console.error(`exec error: ${err.message}`);
+							return;
+						}
+						cb();
+					});
+				}
+
+				/**
 				 * Runs the task runner in a loop until all tasks are completed.
 				 */
 				function runLoop() {
 					runner.run();
 					if (version !== runner.getPendingMinVersion()) {
+						// Tasks
 						version = runner.getPendingMinVersion();
-						let packageJson = getContentOfProjectPkgJson();
-						packageJson = packageJson.replace(/"(@public-ui\/[^"]+)":\s*".*"/g, `"$1": "${version}"`);
-						fs.writeFileSync(path.resolve(process.cwd(), 'package.json'), packageJson);
-						runner.setProjectVersion(version);
-
-						console.log(`- Update @public-ui/* to version ${version}`);
-						exec(getPackageManagerCommand('install'), (err) => {
-							if (err) {
-								console.error(`exec error: ${err.message}`);
-								return;
-							}
-							runLoop();
-						});
+						setVersionOfPublicUiPackages(version, runLoop);
+					} else if (semver.lt(version, versionOfPublicUiKoliBriCli)) {
+						// CLI
+						version = versionOfPublicUiKoliBriCli;
+						setVersionOfPublicUiPackages(version, finish);
 					} else if (semver.lt(version, versionOfPublicUiComponents)) {
+						// Components
 						version = versionOfPublicUiComponents;
-						let packageJson = getContentOfProjectPkgJson();
-						packageJson = packageJson.replace(/"(@public-ui\/[^"]+)":\s*".*"/g, `"$1": "${version}"`);
-						fs.writeFileSync(path.resolve(process.cwd(), 'package.json'), packageJson);
-						runner.setProjectVersion(version);
-
-						console.log(`- Update @public-ui/* to version ${version}`);
-						exec(getPackageManagerCommand('install'), (err) => {
-							if (err) {
-								console.error(`exec error: ${err.message}`);
-								return;
-							}
-							finish();
-						});
+						setVersionOfPublicUiPackages(version, finish);
 					} else {
 						finish();
 					}
@@ -168,6 +185,24 @@ We try to format the modified files with prettier...`);
 						chalk.cyan(`
 ${chalk.bold.bgCyan(`The migration is complete.`)} Please check the modified files and commit them if necessary.`),
 					);
+
+					if (POST_MESSAGES.size > 0) {
+						console.log(`
+${chalk.bold.bgYellow(`Additional information:`)}`);
+						POST_MESSAGES.forEach((message) => {
+							switch (message.type) {
+								case 'error':
+									console.log(chalk.red(`- ${message.message}`));
+									break;
+								case 'warn':
+									console.log(chalk.yellow(`- ${message.message}`));
+									break;
+								default:
+									console.log(chalk.blue(`- ${message.message}`));
+									break;
+							}
+						});
+					}
 
 					console.log(
 						chalk.magenta(`
