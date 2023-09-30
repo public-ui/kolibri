@@ -46,8 +46,8 @@ export class LabelExpertSlot extends AbstractTask {
 		this.componentRegExp = new RegExp(`(<${tagCapitalCase}[^>]*)>([^<]+(\\n\\s*)*)(<\\/${tagCapitalCase}>)`, 'g');
 		this.customElementRegExp = new RegExp(`(<${tag}[^>]*)>([^<]+(\\n\\s*)*)(<\\/${tag}>)`, 'g');
 
-		this.componentRegExp = new RegExp(`(<${tagCapitalCase}[^>]*)>([^<>]+)(<\\/${tagCapitalCase}>)`, 'g');
-		this.customElementRegExp = new RegExp(`(<${tag}[^>]*)>([^<>]+)(<\\/${tag}>)`, 'g');
+		this.componentRegExp = new RegExp(`<(${tagCapitalCase}[^>]*)>([^<>]+)(<\\/${tagCapitalCase}>)`, 'g');
+		this.customElementRegExp = new RegExp(`<(${tag}[^>]*)>([^<>]+)(<\\/${tag}>)`, 'g');
 	}
 
 	public static getInstance(
@@ -76,7 +76,12 @@ export class LabelExpertSlot extends AbstractTask {
 				// Replacements
 				.replace(this.componentRegExp, removeLineBreaksAndSpaces)
 				// @todo: We could add a $ before all { inside the innerText ($2)
-				.replace(this.componentRegExp, `$1 ${this.propertyInCamelCase}={\`$2\`}/>`);
+				.replace(this.componentRegExp, (...args) => {
+					if (typeof args[2] === 'string' && args[2].includes('{')) {
+						args[2] = args[2].replace(/\{/g, '${');
+					}
+					return `<${args[1]} ${this.propertyInCamelCase}={\`${args[2]}\`} />`;
+				});
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
@@ -91,7 +96,7 @@ export class LabelExpertSlot extends AbstractTask {
 				// Replacements
 				.replace(this.customElementRegExp, removeLineBreaksAndSpaces)
 				// @todo: We could add a $ before all { inside the innerText ($2)
-				.replace(this.customElementRegExp, `$1 ${this.property}={\`$2\`}/>`);
+				.replace(this.customElementRegExp, `<$1 ${this.property}="$2"></$1>`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);

@@ -120,7 +120,8 @@
       "package.json-reconfigure-scripts.postinstall": true,
       "merge-html-codicon-in-index.html": true,
       "remove-public/assets/codicons": true,
-      "exec-npx cpy \"node_modules/@public-ui/components/assets/**/*\" \"test/assets\" --dot": true
+      "exec-npx cpy \"node_modules/@public-ui/components/assets/**/*\" \"test/assets\" --dot": true,
+      "kol-pagination-rename-property-_total-to-_max": true
     }
   }
 }
