@@ -9,14 +9,14 @@ importers:
   .:
     devDependencies:
       '@commitlint/cli':
-        specifier: 17.7.1
-        version: 17.7.1
+        specifier: 17.7.2
+        version: 17.7.2
       '@commitlint/config-conventional':
         specifier: 17.7.0
         version: 17.7.0
       '@types/node':
         specifier: ts5.1
-        version: 20.7.1
+        version: 20.7.2
       cross-env:
         specifier: 7.0.3
         version: 7.0.3
@@ -42,8 +42,8 @@ importers:
         specifier: 4.1.5
         version: 4.1.5
       pnpm:
-        specifier: 8.7.6
-        version: 8.7.6
+        specifier: 8.8.0
+        version: 8.8.0
       prettier:
         specifier: 3.0.3
         version: 3.0.3
@@ -52,7 +52,7 @@ importers:
         version: 3.0.2
       ts-node:
         specifier: 10.9.1
-        version: 10.9.1(@types/node@20.7.1)(typescript@5.2.2)
+        version: 10.9.1(@types/node@20.7.2)(typescript@5.2.2)
       ts-prune:
         specifier: 0.10.3
         version: 0.10.3
@@ -72,7 +72,7 @@ importers:
         specifier: 11.2.14
         version: 11.2.14(rxjs@6.5.5)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -117,7 +117,7 @@ importers:
         specifier: 12.2.17
         version: 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -162,7 +162,7 @@ importers:
         specifier: 13.4.0
         version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -172,7 +172,7 @@ importers:
         version: 1.2.3
       '@types/node':
         specifier: ts4.6
-        version: 20.7.1
+        version: 20.7.2
       '@types/normalize-package-data':
         specifier: 2.4.2
         version: 2.4.2
@@ -207,7 +207,7 @@ importers:
         specifier: 14.3.0
         version: 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -217,7 +217,7 @@ importers:
         version: 1.2.3
       '@types/node':
         specifier: ts4.8
-        version: 20.7.1
+        version: 20.7.2
       '@types/normalize-package-data':
         specifier: 2.4.2
         version: 2.4.2
@@ -252,7 +252,7 @@ importers:
         specifier: 15.2.9
         version: 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -262,7 +262,7 @@ importers:
         version: 1.2.3
       '@types/node':
         specifier: ts4.9
-        version: 20.7.1
+        version: 20.7.2
       '@types/normalize-package-data':
         specifier: 2.4.2
         version: 2.4.2
@@ -297,7 +297,7 @@ importers:
         specifier: 16.2.7
         version: 16.2.7(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -307,7 +307,7 @@ importers:
         version: 1.2.3
       '@types/node':
         specifier: ts5.1
-        version: 20.7.1
+        version: 20.7.2
       '@types/normalize-package-data':
         specifier: 2.4.2
         version: 2.4.2
@@ -333,7 +333,7 @@ importers:
   packages/adapters/hydrate:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
       rimraf:
         specifier: 3.0.2
@@ -342,14 +342,14 @@ importers:
   packages/adapters/preact:
     dependencies:
       '@public-ui/react':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../react
       preact:
         specifier: '>=10.11.3'
         version: 10.11.3
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
       react:
         specifier: 18.2.0
@@ -367,7 +367,7 @@ importers:
   packages/adapters/react:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -377,7 +377,7 @@ importers:
         version: 1.2.3
       '@types/node':
         specifier: ts5.1
-        version: 20.7.1
+        version: 20.7.2
       '@types/normalize-package-data':
         specifier: 2.4.2
         version: 2.4.2
@@ -403,7 +403,7 @@ importers:
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
       react:
         specifier: '>=16.14.0'
@@ -413,7 +413,7 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@public-ui/react':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../react
       cpy-cli:
         specifier: 5.0.0
@@ -425,7 +425,7 @@ importers:
   packages/adapters/solid:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -435,7 +435,7 @@ importers:
         version: 1.2.3
       '@types/node':
         specifier: ts5.1
-        version: 20.7.1
+        version: 20.7.2
       '@types/normalize-package-data':
         specifier: 2.4.2
         version: 2.4.2
@@ -455,7 +455,7 @@ importers:
         specifier: 7.23.0
         version: 7.23.0
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -465,7 +465,7 @@ importers:
         version: 1.2.3
       '@types/node':
         specifier: ts5.1
-        version: 20.7.1
+        version: 20.7.2
       '@types/normalize-package-data':
         specifier: 2.4.2
         version: 2.4.2
@@ -488,7 +488,7 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       '@public-ui/schema':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../schema
       i18next:
         specifier: 23.5.1
@@ -529,7 +529,7 @@ importers:
         version: 4.2.3
       '@types/node':
         specifier: ts5.1
-        version: 20.7.1
+        version: 20.7.2
       '@types/pug':
         specifier: 2.0.7
         version: 2.0.7
@@ -668,7 +668,7 @@ importers:
     devDependencies:
       '@types/node':
         specifier: ts5.1
-        version: 20.7.1
+        version: 20.7.2
       cross-env:
         specifier: 7.0.3
         version: 7.0.3
@@ -683,7 +683,7 @@ importers:
         version: 3.0.2
       ts-node:
         specifier: 10.9.1
-        version: 10.9.1(@types/node@20.7.1)(typescript@5.2.2)
+        version: 10.9.1(@types/node@20.7.2)(typescript@5.2.2)
       ts-prune:
         specifier: 0.10.3
         version: 0.10.3
@@ -700,13 +700,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../components
       '@public-ui/solid':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../adapters/solid
       '@public-ui/themes':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../themes
       monaco-editor:
         specifier: 0.43.0
@@ -800,17 +800,17 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
       '@public-ui/react':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../adapters/react
       '@public-ui/themes':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../themes
       '@types/node':
-        specifier: 20.7.1
-        version: 20.7.1
+        specifier: 20.8.0
+        version: 20.8.0
       '@types/react':
         specifier: 18.2.23
         version: 18.2.23
@@ -877,7 +877,7 @@ importers:
     devDependencies:
       '@types/node':
         specifier: ts5.1
-        version: 20.7.1
+        version: 20.7.2
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.3
         version: 6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2)
@@ -900,15 +900,15 @@ importers:
   packages/themes:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../schema
       '@types/node':
         specifier: ts5.1
-        version: 20.7.1
+        version: 20.7.2
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.3
         version: 6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2)
@@ -934,18 +934,18 @@ importers:
   packages/themes/bmf:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
-        version: 20.7.1
+        version: 20.7.2
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -953,18 +953,18 @@ importers:
   packages/themes/bzst:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
-        version: 20.7.1
+        version: 20.7.2
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -972,18 +972,18 @@ importers:
   packages/themes/default:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
-        version: 20.7.1
+        version: 20.7.2
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -991,18 +991,18 @@ importers:
   packages/themes/ecl:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
-        version: 20.7.1
+        version: 20.7.2
       npm-run-all:
         specifier: 4.1.5
         version: 4.1.5
@@ -1013,18 +1013,18 @@ importers:
   packages/themes/itzbund:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
-        version: 20.7.1
+        version: 20.7.2
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -1032,18 +1032,18 @@ importers:
   packages/themes/mfm:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
-        version: 20.7.1
+        version: 20.7.2
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -1051,18 +1051,18 @@ importers:
   packages/themes/zoll:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
-        version: 20.7.1
+        version: 20.7.2
       npm-run-all:
         specifier: 4.1.5
         version: 4.1.5
@@ -1095,14 +1095,14 @@ importers:
         version: 7.5.4
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../components
       '@types/gradient-string':
         specifier: 1.1.3
         version: 1.1.3
       '@types/node':
-        specifier: 20.7.1
-        version: 20.7.1
+        specifier: 20.8.0
+        version: 20.8.0
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.3
         version: 6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2)
@@ -1153,7 +1153,7 @@ importers:
         version: 3.0.2
       ts-node:
         specifier: 10.9.1
-        version: 10.9.1(@types/node@20.7.1)(typescript@5.2.2)
+        version: 10.9.1(@types/node@20.8.0)(typescript@5.2.2)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -1164,7 +1164,7 @@ importers:
         specifier: 1.38.1
         version: 1.38.1
       '@public-ui/sample-react':
-        specifier: 1.7.0-rc.17
+        specifier: 1.7.0
         version: link:../../samples/react
       portfinder:
         specifier: 1.0.32
@@ -1824,7 +1824,7 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       debug: 4.3.4(supports-color@8.1.1)
       lodash.debounce: 4.0.8
-      resolve: 1.22.4
+      resolve: 1.22.6
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1839,7 +1839,7 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       debug: 4.3.4(supports-color@8.1.1)
       lodash.debounce: 4.0.8
-      resolve: 1.22.4
+      resolve: 1.22.6
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1854,7 +1854,7 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       debug: 4.3.4(supports-color@8.1.1)
       lodash.debounce: 4.0.8
-      resolve: 1.22.4
+      resolve: 1.22.6
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4930,14 +4930,14 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@commitlint/cli@17.7.1:
-    resolution: {integrity: sha512-BCm/AT06SNCQtvFv921iNhudOHuY16LswT0R3OeolVGLk8oP+Rk9TfQfgjH7QPMjhvp76bNqGFEcpKojxUNW1g==}
+  /@commitlint/cli@17.7.2:
+    resolution: {integrity: sha512-t3N7TZq7lOeqTOyEgfGcaltHqEJf7YDlPg75MldeVPPyz14jZq/+mbGF9tueDLFX8R6RwdymrN6D+U5XwZ8Iwg==}
     engines: {node: '>=v14'}
     hasBin: true
     dependencies:
       '@commitlint/format': 17.4.4
       '@commitlint/lint': 17.7.0
-      '@commitlint/load': 17.7.1
+      '@commitlint/load': 17.7.2
       '@commitlint/read': 17.5.1
       '@commitlint/types': 17.4.4
       execa: 5.1.1
@@ -5008,23 +5008,23 @@ packages:
       '@commitlint/types': 17.4.4
     dev: true
 
-  /@commitlint/load@17.7.1:
-    resolution: {integrity: sha512-S/QSOjE1ztdogYj61p6n3UbkUvweR17FQ0zDbNtoTLc+Hz7vvfS7ehoTMQ27hPSjVBpp7SzEcOQu081RLjKHJQ==}
+  /@commitlint/load@17.7.2:
+    resolution: {integrity: sha512-XA7WTnsjHZ4YH6ZYsrnxgLdXzriwMMq+utZUET6spbOEEIPBCDLdOQXS26P+v3TTO4hUHOEhzUquaBv3jbBixw==}
     engines: {node: '>=v14'}
     dependencies:
       '@commitlint/config-validator': 17.6.7
       '@commitlint/execute-rule': 17.4.0
       '@commitlint/resolve-extends': 17.6.7
       '@commitlint/types': 17.4.4
-      '@types/node': 20.4.7
+      '@types/node': 20.5.1
       chalk: 4.1.2
       cosmiconfig: 8.3.6(typescript@5.2.2)
-      cosmiconfig-typescript-loader: 4.4.0(@types/node@20.4.7)(cosmiconfig@8.3.6)(ts-node@10.9.1)(typescript@5.2.2)
+      cosmiconfig-typescript-loader: 4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6)(ts-node@10.9.1)(typescript@5.2.2)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
       resolve-from: 5.0.0
-      ts-node: 10.9.1(@types/node@20.4.7)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@20.5.1)(typescript@5.2.2)
       typescript: 5.2.2
     transitivePeerDependencies:
       - '@swc/core'
@@ -6007,7 +6007,7 @@ packages:
     engines: {node: '>= 10.14.2'}
     dependencies:
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       chalk: 4.1.2
       jest-message-util: 26.6.2
       jest-util: 26.6.2
@@ -6023,7 +6023,7 @@ packages:
       '@jest/test-result': 26.6.2
       '@jest/transform': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       exit: 0.1.2
@@ -6060,7 +6060,7 @@ packages:
     dependencies:
       '@jest/fake-timers': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       jest-mock: 26.6.2
     dev: true
 
@@ -6070,7 +6070,7 @@ packages:
     dependencies:
       '@jest/types': 26.6.2
       '@sinonjs/fake-timers': 6.0.1
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       jest-message-util: 26.6.2
       jest-mock: 26.6.2
       jest-util: 26.6.2
@@ -6191,7 +6191,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       '@types/yargs': 15.0.15
       chalk: 4.1.2
     dev: true
@@ -6369,7 +6369,7 @@ packages:
     engines: {node: ^14.17.0 || >=16.0.0}
     dependencies:
       chalk: 4.1.2
-      execa: 5.0.0
+      execa: 5.1.1
       strong-log-transformer: 2.1.0
     dev: true
 
@@ -6975,7 +6975,7 @@ packages:
       builtin-modules: 3.3.0
       deepmerge: 4.3.1
       is-module: 1.0.0
-      resolve: 1.22.4
+      resolve: 1.22.6
       rollup: 2.79.1
     dev: true
 
@@ -6993,7 +6993,7 @@ packages:
       deepmerge: 4.3.1
       is-builtin-module: 3.2.1
       is-module: 1.0.0
-      resolve: 1.22.4
+      resolve: 1.22.6
       rollup: 3.28.1
     dev: true
 
@@ -7461,12 +7461,12 @@ packages:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
 
   /@types/bonjour@3.5.10:
     resolution: {integrity: sha512-p7ienRMiS41Nu2/igbJxxLDWrSZ0WxM8UQgCeO9KhoVF7cOVFkrKsiDr1EsJIla8vV3oEEjGcz11jc5yimhzZw==}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
 
   /@types/chai@4.3.6:
     resolution: {integrity: sha512-VOVRLM1mBxIRxydiViqPcKn6MIxZytrbMpd6RJLIWKxUNr3zux8no0Oc7kJx0WAPIitgZ0gkrDS+btlqQpubpw==}
@@ -7485,12 +7485,12 @@ packages:
     resolution: {integrity: sha512-4x5FkPpLipqwthjPsF7ZRbOv3uoLUFkTA9G9v583qi4pACvq0uTELrB8OLUzPWUI4IJIyvM85vzkV1nyiI2Lig==}
     dependencies:
       '@types/express-serve-static-core': 4.17.36
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
 
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
 
   /@types/eslint-scope@3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
@@ -7514,7 +7514,7 @@ packages:
   /@types/express-serve-static-core@4.17.36:
     resolution: {integrity: sha512-zbivROJ0ZqLAtMzgzIUC4oNqDG9iF0lSsAqpOD9kbs5xcIM3dTiyuHvBc7R8MtWBp3AAWGaovJa+wzWPjLYW7Q==}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
       '@types/send': 0.17.1
@@ -7530,7 +7530,7 @@ packages:
   /@types/graceful-fs@4.1.6:
     resolution: {integrity: sha512-Sig0SNORX9fdW+bQuTEovKj3uHcUL6LQKbCrrqb1X7J6/ReAbhCXRAhc+SMejhLELFj2QcyuxmUooZ4bt5ReSw==}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
     dev: true
 
   /@types/gradient-string@1.1.3:
@@ -7549,7 +7549,7 @@ packages:
   /@types/http-proxy@1.17.11:
     resolution: {integrity: sha512-HC8G7c1WmaF2ekqpnFq626xd3Zz0uvaqFmBJNRZCGEZCXkvSdJoNFn/8Ygbd9fKNQj8UzLdCETaI0UWPAjK7IA==}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
 
   /@types/istanbul-lib-coverage@2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
@@ -7624,16 +7624,20 @@ packages:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
     dev: true
 
-  /@types/node@20.4.7:
-    resolution: {integrity: sha512-bUBrPjEry2QUTsnuEjzjbS7voGWCc30W0qzgMf90GPeDGFRakvrz47ju+oqDAKCXLUCe39u57/ORMl/O/04/9g==}
+  /@types/node@20.5.1:
+    resolution: {integrity: sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==}
     dev: true
 
   /@types/node@20.6.0:
     resolution: {integrity: sha512-najjVq5KN2vsH2U/xyh2opaSEz6cZMR2SetLIlxlj08nOcmPOemJmUK2o4kUzfLqfrWE0PIrNeE16XhYDd3nqg==}
     dev: true
 
-  /@types/node@20.7.1:
-    resolution: {integrity: sha512-LT+OIXpp2kj4E2S/p91BMe+VgGX2+lfO+XTpfXhh+bCk2LkQtHZSub8ewFBMGP5ClysPjTDFa4sMI8Q3n4T0wg==}
+  /@types/node@20.7.2:
+    resolution: {integrity: sha512-RcdC3hOBOauLP+r/kRt27NrByYtDjsXyAuSbR87O6xpsvi763WI+5fbSIvYJrXnt9w4RuxhV6eAXfIs7aaf/FQ==}
+    dev: true
+
+  /@types/node@20.8.0:
+    resolution: {integrity: sha512-LzcWltT83s1bthcvjBmiBvGJiiUe84NWRHkw+ZV6Fr41z2FbIzvc815dk2nQ3RAKMuN2fkenM/z3Xv2QzEpYxQ==}
 
   /@types/normalize-package-data@2.4.2:
     resolution: {integrity: sha512-lqa4UEhhv/2sjjIQgjX8B+RBjj47eo0mzGasklVJ78UKGQY1r0VpB9XHDaZZO9qzEFDdy4MrXLuEaSmPrPSe/A==}
@@ -7674,7 +7678,7 @@ packages:
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
     dev: true
 
   /@types/resolve@1.20.2:
@@ -7694,7 +7698,7 @@ packages:
     resolution: {integrity: sha512-Cwo8LE/0rnvX7kIIa3QHCkcuF21c05Ayb0ZfxPiv0W8VRiZiNW/WuRupHKpqqGVGf7SUA44QSOUKaEd9lIrd/Q==}
     dependencies:
       '@types/mime': 1.3.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
 
   /@types/serve-index@1.9.1:
     resolution: {integrity: sha512-d/Hs3nWDxNL2xAczmOVZNj92YZCS6RGxfBPjKzuu/XirCgXdpKEb88dYNbrYGint6IVWLNP+yonwVAuRC0T2Dg==}
@@ -7706,7 +7710,7 @@ packages:
     dependencies:
       '@types/http-errors': 2.0.1
       '@types/mime': 3.0.1
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
 
   /@types/sinon@10.0.16:
     resolution: {integrity: sha512-j2Du5SYpXZjJVJtXBokASpPRj+e2z+VUhCPHmM6WMfe3dpHu6iVKJMU6AiBcMp/XTAYnEj6Wc1trJUWwZ0QaAQ==}
@@ -7719,7 +7723,7 @@ packages:
   /@types/sockjs@0.3.33:
     resolution: {integrity: sha512-f0KEEe05NvUnat+boPTZ0dgaLZ4SfSouXUgv5noUiefG2ajgKjmETo9ZJyuqsl7dfl2aHlLJUiki6B4ZYldiiw==}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
 
   /@types/stack-utils@2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
@@ -7743,7 +7747,7 @@ packages:
   /@types/ws@8.5.5:
     resolution: {integrity: sha512-lwhs8hktwxSjf9UaZ9tG5M03PGogvFaH8gUgLNbN9HKIg0dvv6q+gkSuJ8HN4/VbyxkuLzCjlN7GquQ0gUJfIg==}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
 
   /@types/yargs-interactive@2.1.3:
     resolution: {integrity: sha512-bYB8ah0JPR6/lpHlxUzeHsrb3RK5OW7N8Hnth2nefnr6zQ5KFoDQ6wM5x58dTLEDYrwikFy3EPTf/O0HKLNaIg==}
@@ -7770,7 +7774,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
     optional: true
 
   /@typescript-eslint/eslint-plugin@6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.49.0)(typescript@5.2.2):
@@ -9632,7 +9636,7 @@ packages:
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 2.0.1
@@ -10223,7 +10227,7 @@ packages:
   /core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
-  /cosmiconfig-typescript-loader@4.4.0(@types/node@20.4.7)(cosmiconfig@8.3.6)(ts-node@10.9.1)(typescript@5.2.2):
+  /cosmiconfig-typescript-loader@4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6)(ts-node@10.9.1)(typescript@5.2.2):
     resolution: {integrity: sha512-BabizFdC3wBHhbI4kJh0VkQP9GkBfoHPydD0COMce1nJ1kJAB3F2TmJ/I7diULBKtmEWSwEbuN/KDtgnmUUVmw==}
     engines: {node: '>=v14.21.3'}
     peerDependencies:
@@ -10232,9 +10236,9 @@ packages:
       ts-node: '>=10'
       typescript: '>=4'
     dependencies:
-      '@types/node': 20.4.7
+      '@types/node': 20.5.1
       cosmiconfig: 8.3.6(typescript@5.2.2)
-      ts-node: 10.9.1(@types/node@20.4.7)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@20.5.1)(typescript@5.2.2)
       typescript: 5.2.2
     dev: true
 
@@ -11826,9 +11830,9 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       cross-spawn: 7.0.3
-      get-stream: 6.0.0
+      get-stream: 6.0.1
       human-signals: 2.1.0
-      is-stream: 2.0.0
+      is-stream: 2.0.1
       merge-stream: 2.0.0
       npm-run-path: 4.0.1
       onetime: 5.1.2
@@ -14125,7 +14129,7 @@ packages:
       jest-validate: 26.6.2
       micromatch: 4.0.5
       pretty-format: 26.6.2
-      ts-node: 10.9.1(@types/node@20.7.1)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@20.7.2)(typescript@5.2.2)
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -14178,7 +14182,7 @@ packages:
       '@jest/environment': 26.6.2
       '@jest/fake-timers': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       jest-mock: 26.6.2
       jest-util: 26.6.2
       jsdom: 16.7.0
@@ -14196,7 +14200,7 @@ packages:
       '@jest/environment': 26.6.2
       '@jest/fake-timers': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       jest-mock: 26.6.2
       jest-util: 26.6.2
     dev: true
@@ -14217,7 +14221,7 @@ packages:
     dependencies:
       '@jest/types': 26.6.2
       '@types/graceful-fs': 4.1.6
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -14243,7 +14247,7 @@ packages:
       '@jest/source-map': 26.6.2
       '@jest/test-result': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       chalk: 4.1.2
       co: 4.6.0
       expect: 26.6.2
@@ -14302,7 +14306,7 @@ packages:
     engines: {node: '>= 10.14.2'}
     dependencies:
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
     dev: true
 
   /jest-pnp-resolver@1.2.3(jest-resolve@26.6.2):
@@ -14355,7 +14359,7 @@ packages:
       '@jest/environment': 26.6.2
       '@jest/test-result': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       chalk: 4.1.2
       emittery: 0.7.2
       exit: 0.1.2
@@ -14423,7 +14427,7 @@ packages:
     resolution: {integrity: sha512-S5wqyz0DXnNJPd/xfIzZ5Xnp1HrJWBczg8mMfMpN78OJ5eDxXyf+Ygld9wX1DnUWbIbhM1YDY95NjR4CBXkb2g==}
     engines: {node: '>= 10.14.2'}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       graceful-fs: 4.2.11
     dev: true
 
@@ -14456,7 +14460,7 @@ packages:
     engines: {node: '>= 10.14.2'}
     dependencies:
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       chalk: 4.1.2
       graceful-fs: 4.2.11
       is-ci: 2.0.0
@@ -14481,7 +14485,7 @@ packages:
     dependencies:
       '@jest/test-result': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       jest-util: 26.6.2
@@ -14492,7 +14496,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: true
@@ -14501,7 +14505,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -16402,7 +16406,7 @@ packages:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
     dependencies:
       hosted-git-info: 2.8.9
-      resolve: 1.22.4
+      resolve: 1.22.6
       semver: 5.7.2
       validate-npm-package-license: 3.0.4
 
@@ -17382,8 +17386,8 @@ packages:
       semver-compare: 1.0.0
     dev: true
 
-  /pnpm@8.7.6:
-    resolution: {integrity: sha512-ZJ/LpDy+IGYpCPYo2INfnw2MopUOTHQ3HcnhbiSqVLtV5rTmsrbFHe4i35ITLpcgvIWptWbzUTZ8efDYXWpFew==}
+  /pnpm@8.8.0:
+    resolution: {integrity: sha512-eY5rMiZpzmPI2oVr1irR97bzb036oKwCWvK91wDQndXcqUPlytPtrF0bO668Syw/uA+7hTf5NnM8Mr4ux4BRRA==}
     engines: {node: '>=16.14'}
     hasBin: true
     dev: true
@@ -17488,7 +17492,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.1.0
-      ts-node: 10.9.1(@types/node@20.7.1)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@20.7.2)(typescript@5.2.2)
       yaml: 2.3.1
     dev: true
 
@@ -18009,7 +18013,7 @@ packages:
       jstransformer: 1.0.0
       pug-error: 2.0.0
       pug-walk: 2.0.0
-      resolve: 1.22.4
+      resolve: 1.22.6
     dev: true
 
   /pug-lexer@5.0.1:
@@ -18372,7 +18376,7 @@ packages:
     resolution: {integrity: sha512-/njmZ8s1wVeR6pjTZ+0nCnv8SpZNRMT2D1RLOJQESlYFDBvwpTA4KWJpZ+sBJ4+vhjILRcK7JIFdGCdxEAAitg==}
     engines: {node: '>= 0.10'}
     dependencies:
-      resolve: 1.22.4
+      resolve: 1.22.6
 
   /recursive-readdir@2.2.3:
     resolution: {integrity: sha512-8HrF5ZsXk5FAH9dgsx3BlUer73nIhuj+9OrQwEbLTPOBzGkL1lsFCR01am+v+0m2Cmbs1nP12hLDl5FA7EszKA==}
@@ -18590,14 +18594,6 @@ packages:
     deprecated: https://github.com/lydell/resolve-url#deprecated
     dev: true
 
-  /resolve@1.22.4:
-    resolution: {integrity: sha512-PXNdCiPqDqeUou+w1C2eTQbNfxKSuMxqTCuvlmmMsk1NWHL5fRrhY6Pl0qEYYc6+QqGClco1Qj8XnjPego4wfg==}
-    hasBin: true
-    dependencies:
-      is-core-module: 2.13.0
-      path-parse: 1.0.7
-      supports-preserve-symlinks-flag: 1.0.0
-
   /resolve@1.22.6:
     resolution: {integrity: sha512-njhxM7mV12JfufShqGy3Rz8j11RPdLy4xi15UurGJeoHLfJpVXKdh3ueuOqbYUcDZnffr6X739JBo5LzyahEsw==}
     hasBin: true
@@ -18605,7 +18601,6 @@ packages:
       is-core-module: 2.13.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
-    dev: true
 
   /resolve@2.0.0-next.4:
     resolution: {integrity: sha512-iMDbmAWtfU+MHpxt/I5iWI7cY6YVEZUQ3MBgPQ++XD1PELuJHIl82xBmObyP2KyQmkNB2dsqF7seoQQiAn5yDQ==}
@@ -19464,7 +19459,7 @@ packages:
     resolution: {integrity: sha512-DI7/OuAUD+GMpR6dmu8lliO2Wg5zfeh+/xsdyJZCzd8o5JgFUjCeLsBDuZjIQJdwXS3J0L/uZYrELKYqx+PXog==}
     engines: {node: '>=8.0'}
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.8.0
       image-ssim: 0.2.0
       jpeg-js: 0.4.4
     dev: true
@@ -20232,7 +20227,7 @@ packages:
       '@ts-morph/common': 0.12.3
       code-block-writer: 11.0.3
 
-  /ts-node@10.9.1(@types/node@20.4.7)(typescript@5.2.2):
+  /ts-node@10.9.1(@types/node@20.5.1)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -20251,7 +20246,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.4.7
+      '@types/node': 20.5.1
       acorn: 8.10.0
       acorn-walk: 8.2.0
       arg: 4.1.3
@@ -20263,7 +20258,7 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-node@10.9.1(@types/node@20.7.1)(typescript@5.2.2):
+  /ts-node@10.9.1(@types/node@20.7.2)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -20282,7 +20277,38 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.7.1
+      '@types/node': 20.7.2
+      acorn: 8.10.0
+      acorn-walk: 8.2.0
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 5.2.2
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
+    dev: true
+
+  /ts-node@10.9.1(@types/node@20.8.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@tsconfig/node10': 1.0.9
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.4
+      '@types/node': 20.8.0
       acorn: 8.10.0
       acorn-walk: 8.2.0
       arg: 4.1.3
@@ -20880,13 +20906,13 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.7.12
       solid-refresh: 0.5.3(solid-js@1.7.12)
-      vite: 4.4.9(@types/node@20.7.1)(less@4.2.0)
+      vite: 4.4.9(@types/node@20.7.2)(less@4.2.0)
       vitefu: 0.2.4(vite@4.4.9)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite@4.4.9(@types/node@20.7.1)(less@4.2.0):
+  /vite@4.4.9(@types/node@20.7.2)(less@4.2.0):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -20914,7 +20940,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.7.1
+      '@types/node': 20.7.2
       esbuild: 0.18.20
       less: 4.2.0
       postcss: 8.4.31
@@ -20931,7 +20957,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.9(@types/node@20.7.1)(less@4.2.0)
+      vite: 4.4.9(@types/node@20.7.2)(less@4.2.0)
     dev: true
 
   /vlq@0.2.3:
