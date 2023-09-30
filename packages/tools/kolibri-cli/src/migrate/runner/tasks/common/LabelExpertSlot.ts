@@ -18,7 +18,9 @@ const removeLineBreaksAndSpaces = (match: string) => {
 
 export class LabelExpertSlot extends AbstractTask {
 	private readonly componentRegExp: RegExp;
+	private readonly componentNoLabelPropRegExp: RegExp;
 	private readonly customElementRegExp: RegExp;
+	private readonly customElementNoLabelPropRegExp: RegExp;
 	private readonly propertyInCamelCase: string;
 
 	private constructor(
@@ -48,6 +50,9 @@ export class LabelExpertSlot extends AbstractTask {
 
 		this.componentRegExp = new RegExp(`<(${tagCapitalCase}[^>]*)>([^<>]+)(<\\/${tagCapitalCase}>)`, 'g');
 		this.customElementRegExp = new RegExp(`<(${tag}[^>]*)>([^<>]+)(<\\/${tag}>)`, 'g');
+
+		this.componentNoLabelPropRegExp = new RegExp(`<${tagCapitalCase}[^>]*>`, 'g');
+		this.customElementNoLabelPropRegExp = new RegExp(`<${tag}[^>]*>`, 'g');
 	}
 
 	public static getInstance(
@@ -69,19 +74,26 @@ export class LabelExpertSlot extends AbstractTask {
 		this.transpileCustomElementFileDelete(baseDir);
 	}
 
+	private addMissingEmptyLabelToActivateExpertSlot(substring: string): string {
+		if (!substring.endsWith('=>') && !substring.includes(`_label`)) {
+			return substring.replace(/(\/?>)/, ` _label=""$1`);
+		}
+		return substring;
+	}
+
 	private transpileComponentFileDelete(baseDir: string): void {
 		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
 			const newContent = content
 				// Replacements
 				.replace(this.componentRegExp, removeLineBreaksAndSpaces)
-				// @todo: We could add a $ before all { inside the innerText ($2)
 				.replace(this.componentRegExp, (...args) => {
 					if (typeof args[2] === 'string' && args[2].includes('{')) {
 						args[2] = args[2].replace(/\{/g, '${');
 					}
 					return `<${args[1]} ${this.propertyInCamelCase}={\`${args[2]}\`} />`;
-				});
+				})
+				.replace(this.componentNoLabelPropRegExp, this.addMissingEmptyLabelToActivateExpertSlot.bind(this));
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
@@ -95,8 +107,8 @@ export class LabelExpertSlot extends AbstractTask {
 			const newContent = content
 				// Replacements
 				.replace(this.customElementRegExp, removeLineBreaksAndSpaces)
-				// @todo: We could add a $ before all { inside the innerText ($2)
-				.replace(this.customElementRegExp, `<$1 ${this.property}="$2"></$1>`);
+				.replace(this.customElementRegExp, `<$1 ${this.property}="$2"></$1>`)
+				.replace(this.componentNoLabelPropRegExp, this.addMissingEmptyLabelToActivateExpertSlot.bind(this));
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
