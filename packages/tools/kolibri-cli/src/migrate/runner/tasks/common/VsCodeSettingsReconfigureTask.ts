@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { MODIFIED_FILES, logAndCreateError } from '../../../shares/reuse';
+import { MODIFIED_FILES, POST_MESSAGES, logAndCreateError } from '../../../shares/reuse';
 import { AbstractTask, TaskOptions } from '../../abstract-task';
 
 export class VsCodeSettingsReconfigureTask extends AbstractTask {
@@ -50,7 +50,10 @@ export class VsCodeSettingsReconfigureTask extends AbstractTask {
 				fs.writeFileSync(settingsPath, JSON.stringify(fileContent, null, 2));
 				MODIFIED_FILES.add(settingsPath);
 			} catch (e) {
-				console.log(`Advice: Your .vscode/settings.json file is not valid JSON.`);
+				POST_MESSAGES.add({
+					message: `Your .vscode/settings.json file is not valid JSON.`,
+					type: 'warn',
+				});
 			}
 		} else {
 			fs.mkdirSync(path.dirname(settingsPath), { recursive: true });
