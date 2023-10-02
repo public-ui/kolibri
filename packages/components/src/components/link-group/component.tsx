@@ -108,7 +108,7 @@ export class KolLinkGroup implements API {
 	 * Deprecated: Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
 	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
 	 */
-	@Prop() public _ordered?: boolean;
+	@Prop() public _ordered?: boolean = false;
 
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.

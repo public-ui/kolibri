@@ -111,7 +111,7 @@ export class KolLink implements LinkProps {
 	 *
 	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
@@ -123,7 +123,7 @@ export class KolLink implements LinkProps {
 	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Sets the target URI of the link or citation source.
@@ -180,7 +180,7 @@ export class KolLink implements LinkProps {
 	 *
 	 * @deprecated will be removed in v2
 	 */
-	@Prop() public _stealth?: boolean;
+	@Prop() public _stealth?: boolean = false;
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
