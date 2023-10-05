@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { EventCallback } from '@public-ui/components/src/types/callbacks';
+import { ErrorList } from './ErrorList';
 
 const LOCATION_OPTIONS = [
 	{
@@ -27,37 +27,47 @@ const LOCATION_OPTIONS = [
 	},
 ];
 
-export type DistrictFormProps = {
-	onSubmit: EventCallback<Event>;
-};
-export function DistrictForm({ onSubmit }: DistrictFormProps) {
+export function DistrictForm() {
 	const form = useFormikContext<FormValues>();
+	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus"></KolHeading>
-			is validating? {String(form.isValidating)}
-			<KolForm _on={{ onSubmit }}>
+
+			{sectionSubmitted && Object.keys(form.errors).length ? (
+				<div className="mt-2">
+					<ErrorList errors={form.errors} />
+				</div>
+			) : null}
+
+			<KolForm
+				_on={{
+					onSubmit: () => {
+						void form.submitForm();
+						setSectionSubmitted(true);
+					},
+				}}
+			>
 				<Field name="district">
 					{({ field }: FieldProps<FormValues['district']>) => (
-						<>
-							<KolSelect
-								_label="Stadtteil"
-								_options={[{ label: 'Bitte wählen…', value: '', disabled: true }, ...LOCATION_OPTIONS]}
-								_value={[field.value]}
-								_on={{
-									onChange: (event, values: unknown) => {
-										if (event.target) {
-											const [value] = values as [FormValues['district']];
-											void form.setFieldValue('district', value);
-											void form.setTouched({ district: true });
-										}
-									},
-								}}
-								_error={form.errors.district}
-								_touched={form.touched.district}
-							/>
-						</>
+						<KolSelect
+							id="field-district"
+							_label="Stadtteil"
+							_options={[{ label: 'Bitte wählen…', value: '' }, ...LOCATION_OPTIONS]}
+							_value={[field.value]}
+							_error={form.errors.district}
+							_touched={form.touched.district}
+							_on={{
+								onChange: (event, values: unknown) => {
+									if (event.target) {
+										const [value] = values as [FormValues['district']];
+										void form.setFieldTouched('district', true);
+										void form.setFieldValue('district', value, true);
+									}
+								},
+							}}
+						/>
 					)}
 				</Field>
 
