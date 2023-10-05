@@ -6,7 +6,8 @@ import { PersonalInformationForm } from './PersonalInformationForm';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
-import { Iso8601 } from '@public-ui/components'import { checkAppointmentAvailability } from './appointmentService';
+import { Iso8601 } from '@public-ui/components';
+import { checkAppointmentAvailability } from './appointmentService';
 
 export interface FormProps {}
 export interface FormValues {
