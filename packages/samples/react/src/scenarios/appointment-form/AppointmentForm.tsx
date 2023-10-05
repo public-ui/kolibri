@@ -12,9 +12,11 @@ import { checkAppointmentAvailability } from './appointmentService';
 export interface FormProps {}
 export interface FormValues {
 	district: string;
-	name: string;
 	date: Iso8601;
 	time: Iso8601;
+	salutation: string;
+	name: string;
+	company: string;
 }
 
 enum FormSection {
@@ -25,19 +27,26 @@ enum FormSection {
 }
 
 export function AppointmentForm() {
-	const [activeFormSection, setActiveFormSection] = useState(FormSection.AVAILABLE_APPOINTMENTS); // @todo revert to District
+	const [activeFormSection, setActiveFormSection] = useState(FormSection.PERSONAL_INFORMATION); // @todo revert to District
 	const initialValues: FormValues = {
 		district: '',
-		name: '',
 		date: '' as Iso8601,
 		time: '' as Iso8601,
+		salutation: '',
+		name: '',
+		company: '',
 	};
 
 	const districtSchema = {
 		district: Yup.string().required('Bitte Stadtteil wählen.'),
 	};
 	const personalInformationSchema = {
+		salutation: Yup.string().required('Bitte Anrede auswählen.'),
 		name: Yup.string().required('Bitte Name eingeben.'),
+		company: Yup.string().when('salutation', {
+			is: (salutation: string) => salutation === 'Firma',
+			then: (schema) => schema.required('Bitte Firmenname angeben.'),
+		}),
 	};
 	const availableAppointmentsSchema = {
 		date: Yup.string().required('Bitte Datum eingeben.'),
