@@ -17,7 +17,7 @@ const getRandomTimes = () => {
 	while (times.size !== amount) {
 		times.add(getRandomIntInclusive(earliest, latest));
 	}
-	return [...times].sort((timeA, timeB) => timeA - timeB).map((hours) => `${padHours(hours)}:00`);
+	return [...times].sort((timeA, timeB) => timeA - timeB).flatMap((hours) => [`${padHours(hours)}:00`, `${padHours(hours)}:30`]);
 };
 
 const sleep = (timeout: number) => {
@@ -29,4 +29,9 @@ export const fetchAvailableTimes = async (): Promise<Option<string>[]> => {
 		label: time,
 		value: time,
 	}));
+};
+
+export const checkAppointmentAvailability = async (time?: string): Promise<boolean> => {
+	await sleep(500);
+	return time?.endsWith(':30') ?? false;
 };

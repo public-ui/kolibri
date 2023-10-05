@@ -6,7 +6,7 @@ import { PersonalInformationForm } from './PersonalInformationForm';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
-import { Iso8601 } from '@public-ui/components';
+import { Iso8601 } from '@public-ui/components'import { checkAppointmentAvailability } from './appointmentService';
 
 export interface FormProps {}
 export interface FormValues {
@@ -40,6 +40,9 @@ export function AppointmentForm() {
 	};
 	const availableAppointmentsSchema = {
 		date: Yup.string().required('Bitte Datum eingeben.'),
+		time: Yup.string().test('checkTimeAvailability', 'Termin leider nicht mehr verfügbar.', async (time?: string) => {
+			return await checkAppointmentAvailability(time);
+		}),
 	};
 
 	const validationSchema = Yup.object().shape({
