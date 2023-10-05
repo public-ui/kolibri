@@ -44,8 +44,8 @@ export function AppointmentForm() {
 
 	const validationSchema = Yup.object().shape({
 		...(activeFormSection === FormSection.DISTRICT ? districtSchema : {}),
-		...(activeFormSection === FormSection.PERSONAL_INFORMATION ? personalInformationSchema : {}),
 		...(activeFormSection === FormSection.AVAILABLE_APPOINTMENTS ? availableAppointmentsSchema : {}),
+		...(activeFormSection === FormSection.PERSONAL_INFORMATION ? personalInformationSchema : {}),
 	});
 
 	const handleSubmit = () => {

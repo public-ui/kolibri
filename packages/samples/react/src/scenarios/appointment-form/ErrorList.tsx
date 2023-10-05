@@ -1,4 +1,4 @@
-import React, { PointerEvent } from 'react';
+import React from 'react';
 import { KolAlert, KolLink } from '@public-ui/react';
 
 export type ErrorListPropType = {
@@ -6,12 +6,12 @@ export type ErrorListPropType = {
 };
 
 export function ErrorList({ errors }: ErrorListPropType) {
-	const handleLinkClick = (event: PointerEvent) => {
+	const handleLinkClick = (event: Event) => {
 		const href = (event.target as HTMLAnchorElement | undefined)?.href;
 		if (href) {
 			const hrefUrl = new URL(href);
 
-			const targetElement = document.querySelector(hrefUrl.hash);
+			const targetElement = document.querySelector<HTMLElement>(hrefUrl.hash);
 			if (targetElement && typeof targetElement.focus === 'function') {
 				targetElement.focus();
 			}
