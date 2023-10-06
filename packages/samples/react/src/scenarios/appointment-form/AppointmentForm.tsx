@@ -29,7 +29,7 @@ enum FormSection {
 }
 
 export function AppointmentForm() {
-	const [activeFormSection, setActiveFormSection] = useState(FormSection.PERSONAL_INFORMATION); // @todo revert to District
+	const [activeFormSection, setActiveFormSection] = useState(FormSection.DISTRICT);
 	const initialValues: FormValues = {
 		district: '',
 		date: '' as Iso8601,

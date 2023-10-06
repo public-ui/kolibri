@@ -22,6 +22,7 @@ export function AvailableAppointmentsForm() {
 					if (!ignoreResponse) {
 						setAvailableTimes(times);
 						void form.setFieldValue('time', times[0].value);
+						void form.setFieldTouched('time');
 					}
 				},
 				() => {},
