@@ -28,38 +28,41 @@ enum FormSection {
 	SUMMARY,
 }
 
+const formSectionSequence = [FormSection.DISTRICT, FormSection.AVAILABLE_APPOINTMENTS, FormSection.PERSONAL_INFORMATION, FormSection.SUMMARY] as const;
+
+const initialValues: FormValues = {
+	district: '',
+	date: '' as Iso8601,
+	time: '' as Iso8601,
+	salutation: '',
+	name: '',
+	company: '',
+	email: '',
+	phone: '',
+};
+
+const districtSchema = {
+	district: Yup.string().required('Bitte Stadtteil wählen.'),
+};
+const personalInformationSchema = {
+	salutation: Yup.string().required('Bitte Anrede auswählen.'),
+	name: Yup.string().required('Bitte Name eingeben.'),
+	company: Yup.string().when('salutation', {
+		is: (salutation: string) => salutation === 'Firma',
+		then: (schema) => schema.required('Bitte Firmenname angeben.'),
+	}),
+	email: Yup.string().required('Bitte E-Mail-Adresse eingeben.'),
+};
+const availableAppointmentsSchema = {
+	date: Yup.string().required('Bitte Datum eingeben.'),
+	time: Yup.string().when('date', {
+		is: (date: string) => Boolean(date), // only validate time when date is already set
+		then: (schema) => schema.test('checkTimeAvailability', 'Termin leider nicht mehr verfügbar.', checkAppointmentAvailability),
+	}),
+};
+
 export function AppointmentForm() {
 	const [activeFormSection, setActiveFormSection] = useState(FormSection.DISTRICT);
-	const initialValues: FormValues = {
-		district: '',
-		date: '' as Iso8601,
-		time: '' as Iso8601,
-		salutation: '',
-		name: '',
-		company: '',
-		email: '',
-		phone: '',
-	};
-
-	const districtSchema = {
-		district: Yup.string().required('Bitte Stadtteil wählen.'),
-	};
-	const personalInformationSchema = {
-		salutation: Yup.string().required('Bitte Anrede auswählen.'),
-		name: Yup.string().required('Bitte Name eingeben.'),
-		company: Yup.string().when('salutation', {
-			is: (salutation: string) => salutation === 'Firma',
-			then: (schema) => schema.required('Bitte Firmenname angeben.'),
-		}),
-		email: Yup.string().required('Bitte E-Mail-Adresse eingeben.'),
-	};
-	const availableAppointmentsSchema = {
-		date: Yup.string().required('Bitte Datum eingeben.'),
-		time: Yup.string().when('date', {
-			is: (date: string) => Boolean(date), // only validate time when date is already set
-			then: (schema) => schema.test('checkTimeAvailability', 'Termin leider nicht mehr verfügbar.', checkAppointmentAvailability),
-		}),
-	};
 
 	const validationSchema = Yup.object().shape({
 		...(activeFormSection === FormSection.DISTRICT ? districtSchema : {}),
@@ -68,7 +71,11 @@ export function AppointmentForm() {
 	});
 
 	const handleSubmit = () => {
-		setActiveFormSection(activeFormSection + 1); //@todo
+		const currentSectionIndex = formSectionSequence.indexOf(activeFormSection);
+		const nextSection = formSectionSequence[currentSectionIndex + 1];
+		if (nextSection) {
+			setActiveFormSection(nextSection);
+		}
 	};
 
 	return (
