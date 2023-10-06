@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { KolButton, KolForm, KolHeading, KolInputText, KolSelect } from '@public-ui/react';
+import { KolButton, KolForm, KolHeading, KolInputEmail, KolInputText, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
 
@@ -47,6 +47,7 @@ export function PersonalInformationForm() {
 								_error={form.errors.salutation}
 								_touched={form.touched.salutation}
 								_options={[{ label: 'Bitte wählen…', value: '' }, ...SALUTATION_OPTIONS]}
+								_required
 								_on={{
 									onChange: (event, values: unknown) => {
 										if (event.target) {
@@ -64,12 +65,13 @@ export function PersonalInformationForm() {
 				{form.values.salutation === 'Firma' && (
 					<Field name="company">
 						{({ field }: FieldProps<FormValues['company']>) => (
-							<>
+							<div className="block mt-2">
 								<KolInputText
 									_label="Firma"
 									_value={field.value}
 									_error={form.errors.company}
 									_touched={form.touched.company}
+									_required
 									_on={{
 										onChange: (event, value: unknown) => {
 											if (event.target) {
@@ -79,19 +81,20 @@ export function PersonalInformationForm() {
 										},
 									}}
 								/>
-							</>
+							</div>
 						)}
 					</Field>
 				)}
 
 				<Field name="name">
 					{({ field }: FieldProps<FormValues['name']>) => (
-						<>
+						<div className="block mt-2">
 							<KolInputText
 								_label="Vor- und Zuname"
 								_value={field.value}
 								_error={form.errors.name}
 								_touched={form.touched.name}
+								_required
 								_on={{
 									onChange: (event, value: unknown) => {
 										if (event.target) {
@@ -101,7 +104,51 @@ export function PersonalInformationForm() {
 									},
 								}}
 							/>
-						</>
+						</div>
+					)}
+				</Field>
+
+				<Field name="email">
+					{({ field }: FieldProps<FormValues['email']>) => (
+						<div className="block mt-2">
+							<KolInputEmail
+								_label="E-Mail"
+								_value={field.value}
+								_error={form.errors.email}
+								_touched={form.touched.email}
+								_required
+								_on={{
+									onChange: (event, value: unknown) => {
+										if (event.target) {
+											void form.setFieldTouched('email', true);
+											void form.setFieldValue('email', value, true);
+										}
+									},
+								}}
+							/>
+						</div>
+					)}
+				</Field>
+
+				<Field name="phone">
+					{({ field }: FieldProps<FormValues['phone']>) => (
+						<div className="block mt-2">
+							<KolInputText
+								_type="tel"
+								_label="Telefonnumer"
+								_value={field.value}
+								_error={form.errors.phone}
+								_touched={form.touched.phone}
+								_on={{
+									onChange: (event, value: unknown) => {
+										if (event.target) {
+											void form.setFieldTouched('phone', true);
+											void form.setFieldValue('phone', value, true);
+										}
+									},
+								}}
+							/>
+						</div>
 					)}
 				</Field>
 

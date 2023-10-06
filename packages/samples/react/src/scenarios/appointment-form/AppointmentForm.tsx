@@ -17,6 +17,8 @@ export interface FormValues {
 	salutation: string;
 	name: string;
 	company: string;
+	email: string;
+	phone: string;
 }
 
 enum FormSection {
@@ -35,6 +37,8 @@ export function AppointmentForm() {
 		salutation: '',
 		name: '',
 		company: '',
+		email: '',
+		phone: '',
 	};
 
 	const districtSchema = {
@@ -47,11 +51,13 @@ export function AppointmentForm() {
 			is: (salutation: string) => salutation === 'Firma',
 			then: (schema) => schema.required('Bitte Firmenname angeben.'),
 		}),
+		email: Yup.string().required('Bitte E-Mail-Adresse eingeben.'),
 	};
 	const availableAppointmentsSchema = {
 		date: Yup.string().required('Bitte Datum eingeben.'),
-		time: Yup.string().test('checkTimeAvailability', 'Termin leider nicht mehr verfügbar.', async (time?: string) => {
-			return await checkAppointmentAvailability(time);
+		time: Yup.string().when('date', {
+			is: (date: string) => Boolean(date), // only validate time when date is already set
+			then: (schema) => schema.test('checkTimeAvailability', 'Termin leider nicht mehr verfügbar.', checkAppointmentAvailability),
 		}),
 	};
 

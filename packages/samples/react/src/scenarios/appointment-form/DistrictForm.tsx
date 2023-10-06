@@ -58,6 +58,7 @@ export function DistrictForm() {
 							_value={[field.value]}
 							_error={form.errors.district}
 							_touched={form.touched.district}
+							_required
 							_on={{
 								onChange: (event, values: unknown) => {
 									if (event.target) {

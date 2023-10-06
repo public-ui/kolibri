@@ -58,6 +58,7 @@ export function AvailableAppointmentsForm() {
 							_value={field.value}
 							_error={form.errors.date}
 							_touched={form.touched.date}
+							_required
 							_on={{
 								onChange: (event: Event, value: unknown): void => {
 									if (event.target) {
@@ -86,6 +87,7 @@ export function AvailableAppointmentsForm() {
 											_value={field.value}
 											_error={form.errors.time}
 											_touched={form.touched.time}
+											_required
 											_on={{
 												onChange: (event: Event, value: unknown): void => {
 													if (event.target) {
