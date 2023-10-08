@@ -46,7 +46,7 @@ import { TEXTAREA_ROUTES } from '../components/textarea/routes';
 import { TOAST_ROUTES } from '../components/toast/routes';
 import { VERSION_ROUTES } from '../components/version/routes';
 import { SCENARIO_ROUTES } from '../scenarios/routes';
-import { Routes } from './typ	es';
+import { Routes } from './types';
 
 export const ROUTES: Routes = {
 	...HANDOUT_ROUTES,
