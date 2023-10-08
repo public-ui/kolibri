@@ -99,7 +99,7 @@ export const setState = <T>(component: Generic.Element.Component, propName: stri
 	if (component.nextState === undefined) {
 		component.nextState = new Map();
 	}
-	if (component.nextState.get(propName) !== value || value === undefined) {
+	if (component.nextState.get(propName) !== value) {
 		const nextHooks = component.nextHooks.get(propName);
 		if (nextHooks instanceof Map === false) {
 			component.nextHooks.set(propName, new Map());

@@ -44,7 +44,7 @@ export function PersonalInformationForm() {
 							<KolSelect
 								_label="Anrede"
 								_value={[field.value]}
-								_error={form.errors.salutation}
+								_error={form.errors.salutation || ''}
 								_touched={form.touched.salutation}
 								_options={[{ label: 'Bitte wählen…', value: '' }, ...SALUTATION_OPTIONS]}
 								_required
@@ -69,7 +69,7 @@ export function PersonalInformationForm() {
 								<KolInputText
 									_label="Firma"
 									_value={field.value}
-									_error={form.errors.company}
+									_error={form.errors.company || ''}
 									_touched={form.touched.company}
 									_required
 									_on={{
@@ -92,7 +92,7 @@ export function PersonalInformationForm() {
 							<KolInputText
 								_label="Vor- und Zuname"
 								_value={field.value}
-								_error={form.errors.name}
+								_error={form.errors.name || ''}
 								_touched={form.touched.name}
 								_required
 								_on={{
@@ -114,7 +114,7 @@ export function PersonalInformationForm() {
 							<KolInputEmail
 								_label="E-Mail"
 								_value={field.value}
-								_error={form.errors.email}
+								_error={form.errors.email || ''}
 								_touched={form.touched.email}
 								_required
 								_on={{
@@ -137,7 +137,7 @@ export function PersonalInformationForm() {
 								_type="tel"
 								_label="Telefonnumer"
 								_value={field.value}
-								_error={form.errors.phone}
+								_error={form.errors.phone || ''}
 								_touched={form.touched.phone}
 								_on={{
 									onChange: (event, value: unknown) => {

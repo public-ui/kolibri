@@ -57,7 +57,7 @@ export function AvailableAppointmentsForm() {
 							id="field-date"
 							_label="Datum"
 							_value={field.value}
-							_error={form.errors.date}
+							_error={form.errors.date || ''}
 							_touched={form.touched.date}
 							_required
 							_on={{
@@ -86,7 +86,7 @@ export function AvailableAppointmentsForm() {
 											_orientation="horizontal"
 											_options={availableTimes}
 											_value={field.value}
-											_error={form.errors.time}
+											_error={form.errors.time || ''}
 											_touched={form.touched.time}
 											_required
 											_on={{

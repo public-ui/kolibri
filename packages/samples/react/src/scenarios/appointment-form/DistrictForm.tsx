@@ -56,7 +56,7 @@ export function DistrictForm() {
 							_label="Stadtteil"
 							_options={[{ label: 'Bitte wählen…', value: '' }, ...LOCATION_OPTIONS]}
 							_value={[field.value]}
-							_error={form.errors.district}
+							_error={form.errors.district || ''}
 							_touched={form.touched.district}
 							_required
 							_on={{
