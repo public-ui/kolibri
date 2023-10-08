@@ -3,7 +3,7 @@ import { KolTabs } from '@public-ui/react';
 import { DistrictForm } from './DistrictForm';
 import { Summary } from './Summary';
 import { PersonalInformationForm } from './PersonalInformationForm';
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
 import { Iso8601 } from '@public-ui/components';
@@ -70,10 +70,11 @@ export function AppointmentForm() {
 		...(activeFormSection === FormSection.PERSONAL_INFORMATION ? personalInformationSchema : {}),
 	});
 
-	const handleSubmit = () => {
+	const handleSubmit = async (_values: FormValues, formik: FormikHelpers<FormValues>) => {
 		const currentSectionIndex = formSectionSequence.indexOf(activeFormSection);
 		const nextSection = formSectionSequence[currentSectionIndex + 1];
-		if (nextSection) {
+		if (nextSection !== undefined) {
+			await formik.setTouched({});
 			setActiveFormSection(nextSection);
 		}
 	};
