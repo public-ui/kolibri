@@ -138,7 +138,7 @@ export class KolLinkWc implements API {
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 					 */
 					aria-hidden="true"
-					hidden={hasExpertSlot || !this.state._hideLabel}
+					hidden={hasExpertSlot || !this.state._hideLabel || this.state._disabled}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
 				></kol-tooltip-wc>

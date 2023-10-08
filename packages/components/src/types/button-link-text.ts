@@ -24,7 +24,7 @@ type OptionalButtonOrLinkOrTextProps = PropHideLabel & {
 	// tooltipAlign: Alignment; // possible, but sensible ?! -> Ticket?
 	targetDescription: string;
 	/**
-	 * @deprecated
+	 * @deprecated Use _icons instead.
 	 */
 	icon: IconsPropType;
 } & PropIcons &

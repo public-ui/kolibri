@@ -45,7 +45,7 @@ export type OptionalProps = {
 	 */
 	useCase: LinkUseCase;
 	/**
-	 * @deprecated
+	 * @deprecated Use _icons instead.
 	 */
 	icon: IconsPropType;
 } & PropAlternativeButtonLinkRole &

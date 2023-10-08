@@ -97,6 +97,7 @@ export class KolInput implements Props {
 						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 						 */
 						aria-hidden="true"
+						hidden={this._disabled}
 						class="input-tooltip"
 						_align={this._tooltipAlign}
 						_id={this._hideLabel ? `${this._id}-label` : undefined}

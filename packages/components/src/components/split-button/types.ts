@@ -17,7 +17,7 @@ type OptionalProps = {
 	 */
 	showDropdown: boolean;
 	/**
-	 * @deprecated
+	 * @deprecated Use _icons instead.
 	 */
 	icon: IconsPropType;
 } & PropAlternativeButtonLinkRole &

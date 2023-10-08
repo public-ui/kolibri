@@ -108,7 +108,7 @@ export class KolButtonWc implements API {
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 					 */
 					aria-hidden="true"
-					hidden={hasExpertSlot || !this.state._hideLabel}
+					hidden={hasExpertSlot || !this.state._hideLabel || this.state._disabled}
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></kol-tooltip-wc>
