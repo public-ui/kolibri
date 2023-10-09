@@ -1,6 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconsProp } from '../../types/icons';
 import { AlignPropType } from '../../types/props/align';
@@ -57,7 +56,6 @@ export class KolLink implements LinkProps {
 					_target={this._target}
 					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
-					_useCase={this._useCase}
 				>
 					{/*
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
@@ -206,11 +204,4 @@ export class KolLink implements LinkProps {
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
-
-	/**
-	 * Deprecated: Gibt den Verwendungsfall des Links an.
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _useCase?: LinkUseCase = 'text';
 }

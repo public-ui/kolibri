@@ -48,7 +48,6 @@ import { DownloadPropType } from "./types/props/download";
 import { HrefPropType } from "./types/props/href";
 import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
-import { LinkUseCase } from "./types/button-link";
 import { ListStyleType } from "./components/link-group/types";
 import { LinkProps } from "./components/link/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
@@ -108,7 +107,6 @@ export { DownloadPropType } from "./types/props/download";
 export { HrefPropType } from "./types/props/href";
 export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
-export { LinkUseCase } from "./types/button-link";
 export { ListStyleType } from "./components/link-group/types";
 export { LinkProps } from "./components/link/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
@@ -2182,11 +2180,6 @@ export namespace Components {
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
-        /**
-          * Deprecated: Gibt den Verwendungsfall des Links an.
-          * @deprecated will be removed in v2
-         */
-        "_useCase"?: LinkUseCase;
     }
     interface KolLinkButton {
         /**
@@ -2423,11 +2416,6 @@ export namespace Components {
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
-        /**
-          * Deprecated: Gibt den Verwendungsfall des Links an.
-          * @deprecated will be removed in v2
-         */
-        "_useCase"?: LinkUseCase;
     }
     interface KolLogo {
         /**
@@ -5661,11 +5649,6 @@ declare namespace LocalJSX {
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
-        /**
-          * Deprecated: Gibt den Verwendungsfall des Links an.
-          * @deprecated will be removed in v2
-         */
-        "_useCase"?: LinkUseCase;
     }
     interface KolLinkButton {
         /**
@@ -5902,11 +5885,6 @@ declare namespace LocalJSX {
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
-        /**
-          * Deprecated: Gibt den Verwendungsfall des Links an.
-          * @deprecated will be removed in v2
-         */
-        "_useCase"?: LinkUseCase;
     }
     interface KolLogo {
         /**

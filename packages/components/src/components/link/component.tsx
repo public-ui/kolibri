@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconsProp } from '../../types/icons';
 import { AlignPropType } from '../../types/props/align';
@@ -93,8 +92,8 @@ export class KolLinkWc implements API {
 			download: typeof this.state._download === 'string' ? this.state._download : undefined,
 		};
 
-		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !this.state._label) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der _hide-label gesetzt ist.`);
+		if (this.state._hideLabel === true && !this.state._label) {
+			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden _hide-label gesetzt ist.`);
 		}
 		return { isExternal, tagAttrs, goToProps };
 	};
@@ -282,13 +281,6 @@ export class KolLinkWc implements API {
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
-	/**
-	 * Deprecated: Gibt den Verwendungsfall des Links an.
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _useCase?: LinkUseCase = 'text';
-
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
 		_icons: {}, // ⚠ required
@@ -444,19 +436,6 @@ export class KolLinkWc implements API {
 		validateTooltipAlign(this, value);
 	}
 
-	/**
-	 * @deprecated
-	 */
-	@Watch('_useCase')
-	public validateUseCase(value?: LinkUseCase): void {
-		if (typeof value === 'string') {
-			this.state = {
-				...this.state,
-				_useCase: value,
-			};
-		}
-	}
-
 	public componentWillLoad(): void {
 		this.validateAriaControls(this._ariaControls);
 		this.validateAriaCurrent(this._ariaCurrent);
@@ -478,7 +457,6 @@ export class KolLinkWc implements API {
 		this.validateTarget(this._target);
 		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateUseCase(this._useCase);
 	}
 
 	private unsubscribeAriaCurrentSubject = ariaCurrentSubject.subscribe((event) => {

@@ -1,6 +1,5 @@
 import { Generic } from '@a11y-ui/core';
 
-import { LinkUseCase } from '../../types/button-link';
 import { AlignPropType } from '../../types/props/align';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { PropAriaControls } from '../../types/props/aria-controls';
@@ -40,10 +39,7 @@ export type OptionalProps = {
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	selector: string;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	useCase: LinkUseCase;
+
 	/**
 	 * @deprecated
 	 */
