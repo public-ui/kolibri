@@ -634,10 +634,6 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: KoliBriHorizontalIcons;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: KoliBriHorizontalIcons;
@@ -727,10 +723,6 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<InputCheckboxIconsProp>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<InputCheckboxIconsProp>;
@@ -777,11 +769,6 @@ export namespace Components {
           * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
-        /**
-          * Deprecated: Defines which variant should be used for presentation.
-          * @deprecated Verwende stattdessen das Attribute _variant.
-         */
-        "_type"?: InputCheckboxVariant;
         /**
           * Defines the value of the input.
          */
@@ -3800,10 +3787,6 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: KoliBriHorizontalIcons;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: KoliBriHorizontalIcons;
@@ -3893,10 +3876,6 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<InputCheckboxIconsProp>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<InputCheckboxIconsProp>;
@@ -3943,11 +3922,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
-        /**
-          * Deprecated: Defines which variant should be used for presentation.
-          * @deprecated Verwende stattdessen das Attribute _variant.
-         */
-        "_type"?: InputCheckboxVariant;
         /**
           * Defines the value of the input.
          */
