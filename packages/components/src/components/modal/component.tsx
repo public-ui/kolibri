@@ -119,6 +119,14 @@ export class KolModal implements API {
 	public validateActiveElement(value?: HTMLElement | null): void {
 		watchValidator(this, '_activeElement', (value): boolean => typeof value === 'object' || value === null, new Set(['HTMLElement', 'null']), value, {
 			defaultValue: null,
+			hooks: {
+				afterPatch: () => {
+					/* Call onClose event in the _activeElement watcher because activeElement can be set internally and from the outside and closes the modal when set to null. */
+					if (this._activeElement === null && this.state._on?.onClose) {
+						this.state._on.onClose();
+					}
+				},
+			},
 		});
 	}
 
