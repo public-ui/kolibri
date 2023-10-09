@@ -11,7 +11,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 ```html
 <div class="grid gap-2">
 	<kol-accordion _label="Element 1">
-		<div slot="content">
+		<div>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -19,7 +19,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 		</div>
 	</kol-accordion>
 	<kol-accordion _label="Element 2">
-		<div slot="content">
+		<div>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -33,7 +33,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 
 <div class="grid gap-2">
 	<kol-accordion _label="Element 1">
-		<div slot="content">
+		<div>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -41,7 +41,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 		</div>
 	</kol-accordion>
 	<kol-accordion _label="Element 2">
-		<div slot="content">
+		<div>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -62,9 +62,9 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 
 ### Inhalt des Accordion
 
-Der Hauptinhalt des Accordions wird über einen eigenen Slot übergeben.
+Der Hauptinhalt des Accordions wird über deb Slot übergeben.
 
-**`<div slot="content">Inhalt im Kopfbereich</div>`**
+**`<kol-accordion _label="Element 1">Accordion-Inhalt</kol-accordion>`**
 
 ### Accordion geöffnet anzeigen
 

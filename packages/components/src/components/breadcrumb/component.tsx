@@ -55,16 +55,9 @@ export class KolBreadcrumb implements API {
 	}
 
 	/**
-	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Defines the list of links combined with their labels to render.
@@ -75,14 +68,6 @@ export class KolBreadcrumb implements API {
 		_label: '…', // ⚠ required
 		_links: [],
 	};
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
@@ -100,7 +85,7 @@ export class KolBreadcrumb implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._ariaLabel, undefined, true);
+		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
 	}
 

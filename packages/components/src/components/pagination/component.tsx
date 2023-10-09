@@ -81,7 +81,7 @@ export class KolPagination implements API {
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
-									_icon={leftDoubleArrowIcon}
+									_icons={leftDoubleArrowIcon}
 									_hideLabel
 									_label={translate('kol-page-first')}
 									_on={this.onGoToFirst}
@@ -97,7 +97,7 @@ export class KolPagination implements API {
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
-									_icon={leftSingleArrow}
+									_icons={leftSingleArrow}
 									_hideLabel
 									_label={translate('kol-page-back')}
 									_on={this.onGoBackward}
@@ -114,7 +114,7 @@ export class KolPagination implements API {
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
-									_icon={rightSingleArrowIcon}
+									_icons={rightSingleArrowIcon}
 									_hideLabel
 									_label={translate('kol-page-next')}
 									_on={this.onGoForward}
@@ -130,7 +130,7 @@ export class KolPagination implements API {
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
-									_icon={rightDoubleArrowIcon}
+									_icons={rightDoubleArrowIcon}
 									_hideLabel
 									_label={translate('kol-page-last')}
 									_on={this.onGoToEnd}
@@ -320,7 +320,6 @@ export class KolPagination implements API {
 					key={`${this.nonce}-selected`}
 					_customClass={this.state._customClass}
 					_disabled={true}
-					_ariaCurrent={true}
 					_label={`${page}`}
 					_variant={this.state._variant}
 				/>

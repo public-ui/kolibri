@@ -32,17 +32,13 @@ Die Angabe der gewünschten Hintergrundfarbe erfolgt in hexadezimaler Schreibwei
 
 Die Textfarbe wird automatisch als Kontrastfarbe zur gewählten Hintergrundfarbe errechnet.
 
-### Icon
+### Icons
 
 Ein Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objekt.
 Als String übergeben Sie die Iconklasse (z.B.: `_icons="codicon codicon-home`), das Icon wird links vom Text angezeigt.
 Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 
 <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Übersicht Codicons"></kol-link>
-
-### Nur Icon anzeigen
-
-Mit dem Attribut **`_hide-label`** kann festgelegt werden, dass nur das mit dem Attribut **`_icon`** gewählte Icon angezeigt wird. Der Wert im Attribut **`_label`** wird in diesem Fall ignoriert.
 
 ### Schriftschnitt
 

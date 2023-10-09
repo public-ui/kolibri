@@ -16,10 +16,8 @@ import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
 import { ButtonProps } from "./components/button/types";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
-import { AriaCurrentPropType } from "./types/props/aria-current";
 import { CustomClassPropType } from "./types/props/custom-class";
 import { IconsPropType } from "./types/props/icons";
-import { AlignPropType } from "./types/props/align";
 import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 import { StencilUnknown } from "./types/unknown";
 import { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
@@ -44,8 +42,10 @@ import { W3CInputValue } from "./types/w3c";
 import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
+import { AriaCurrentPropType } from "./types/props/aria-current";
 import { DownloadPropType } from "./types/props/download";
 import { HrefPropType } from "./types/props/href";
+import { AlignPropType } from "./types/props/align";
 import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
 import { ListStyleType } from "./components/link-group/types";
@@ -75,10 +75,8 @@ export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
 export { ButtonProps } from "./components/button/types";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
-export { AriaCurrentPropType } from "./types/props/aria-current";
 export { CustomClassPropType } from "./types/props/custom-class";
 export { IconsPropType } from "./types/props/icons";
-export { AlignPropType } from "./types/props/align";
 export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 export { StencilUnknown } from "./types/unknown";
 export { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
@@ -103,8 +101,10 @@ export { W3CInputValue } from "./types/w3c";
 export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
+export { AriaCurrentPropType } from "./types/props/aria-current";
 export { DownloadPropType } from "./types/props/download";
 export { HrefPropType } from "./types/props/href";
+export { AlignPropType } from "./types/props/align";
 export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
 export { ListStyleType } from "./components/link-group/types";
@@ -128,12 +128,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
-        /**
-          * Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
-          * @deprecated Use _label.
-         */
-        "_title"?: string;
+        "_label": LabelPropType;
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
@@ -141,14 +136,9 @@ export namespace Components {
     }
     interface KolAccordion {
         /**
-          * Deprecated: Gibt die Beschriftung der Komponente an.
-          * @deprecated Use _label.
-         */
-        "_heading"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
@@ -173,11 +163,6 @@ export namespace Components {
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
-        /**
-          * Deprecated: Gibt die Beschriftung der Komponente an.
-          * @deprecated Use _label.
-         */
-        "_heading"?: string;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -256,21 +241,6 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Deprecated: ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
-          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-          * @deprecated Will be removed in the next major version.
-         */
-        "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
@@ -285,14 +255,9 @@ export namespace Components {
     }
     interface KolBreadcrumb {
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Defines the list of links combined with their labels to render.
          */
@@ -300,28 +265,13 @@ export namespace Components {
     }
     interface KolButton {
         /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-          * @deprecated
-         */
-        "_accessKey"?: string;
-        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
           * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
         /**
           * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
@@ -339,20 +289,6 @@ export namespace Components {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: IconsPropType;
-        /**
-          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-          * @deprecated
-         */
-        "_iconAlign"?: AlignPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -408,28 +344,14 @@ export namespace Components {
     }
     interface KolButtonLink {
         /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-         */
-        "_accessKey"?: string;
-        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
-        /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @TODO : Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
          */
         "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
         /**
           * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
           * @TODO : Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved.
@@ -445,15 +367,6 @@ export namespace Components {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: IconsPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -510,27 +423,13 @@ export namespace Components {
     }
     interface KolButtonWc {
         /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-         */
-        "_accessKey"?: string;
-        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
           * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
         /**
           * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
@@ -548,20 +447,6 @@ export namespace Components {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: IconsPropType;
-        /**
-          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-          * @deprecated
-         */
-        "_iconAlign"?: AlignPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -2806,6 +2691,7 @@ export namespace Components {
     interface KolSplitButton {
         /**
           * Defines which key combination can be used to trigger or focus the interactive element of the component.
+          * @deprecated
          */
         "_accessKey"?: string;
         /**
@@ -3597,12 +3483,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
-        /**
-          * Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
-          * @deprecated Use _label.
-         */
-        "_title"?: string;
+        "_label": LabelPropType;
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
@@ -3610,14 +3491,9 @@ declare namespace LocalJSX {
     }
     interface KolAccordion {
         /**
-          * Deprecated: Gibt die Beschriftung der Komponente an.
-          * @deprecated Use _label.
-         */
-        "_heading"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
@@ -3642,11 +3518,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
-        /**
-          * Deprecated: Gibt die Beschriftung der Komponente an.
-          * @deprecated Use _label.
-         */
-        "_heading"?: string;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -3725,21 +3596,6 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Deprecated: ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
-          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-          * @deprecated Will be removed in the next major version.
-         */
-        "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
@@ -3754,14 +3610,9 @@ declare namespace LocalJSX {
     }
     interface KolBreadcrumb {
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Defines the list of links combined with their labels to render.
          */
@@ -3769,28 +3620,13 @@ declare namespace LocalJSX {
     }
     interface KolButton {
         /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-          * @deprecated
-         */
-        "_accessKey"?: string;
-        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
           * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
         /**
           * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
@@ -3808,20 +3644,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: IconsPropType;
-        /**
-          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-          * @deprecated
-         */
-        "_iconAlign"?: AlignPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -3877,28 +3699,14 @@ declare namespace LocalJSX {
     }
     interface KolButtonLink {
         /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-         */
-        "_accessKey"?: string;
-        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
-        /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @TODO : Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
          */
         "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
         /**
           * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
           * @TODO : Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved.
@@ -3914,15 +3722,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: IconsPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -3979,27 +3778,13 @@ declare namespace LocalJSX {
     }
     interface KolButtonWc {
         /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-         */
-        "_accessKey"?: string;
-        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
           * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
         /**
           * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
@@ -4017,20 +3802,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: IconsPropType;
-        /**
-          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-          * @deprecated
-         */
-        "_iconAlign"?: AlignPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -6275,6 +6046,7 @@ declare namespace LocalJSX {
     interface KolSplitButton {
         /**
           * Defines which key combination can be used to trigger or focus the interactive element of the component.
+          * @deprecated
          */
         "_accessKey"?: string;
         /**

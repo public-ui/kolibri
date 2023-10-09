@@ -2,7 +2,6 @@ import { Generic } from '@a11y-ui/core';
 
 import { objectObjectHandler, parseJson, watchValidator } from '../../utils/prop.validators';
 import { isObject, isString, isStyle } from '../../utils/validator';
-import { States as ButtonStates } from '../../components/button/types';
 import { Stringified } from '../common';
 import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconsProp, KoliBriIconsState } from '../icons';
 import { AlignPropType } from './align';
@@ -29,24 +28,14 @@ const mapCustomIcon = (state: KoliBriIconsState, alignment: AlignPropType, icon?
 	}
 };
 
-export const mapIconProp2State = (icon: KoliBriIconsProp, iconAlign?: AlignPropType): KoliBriIconsState => {
+export const mapIconProp2State = (icon: KoliBriIconsProp): KoliBriIconsState => {
 	let state: KoliBriIconsState = {};
 	if (isString(icon, 1)) {
-		switch (iconAlign) {
-			case 'right':
-				state = {
-					right: {
-						icon: icon as AnyIconFontClass,
-					},
-				};
-				break;
-			default:
-				state = {
-					left: {
-						icon: icon as AnyIconFontClass,
-					},
-				};
-		}
+		state = {
+			left: {
+				icon: icon as AnyIconFontClass,
+			},
+		};
 	} else if (typeof icon === 'object' && icon !== null) {
 		mapCustomIcon(state, 'top', icon.top);
 		mapCustomIcon(state, 'right', icon.right);
@@ -58,15 +47,8 @@ export const mapIconProp2State = (icon: KoliBriIconsProp, iconAlign?: AlignPropT
 
 const beforePatchIcon = (component: Generic.Element.Component): void => {
 	if (component.nextState?.has('_icons')) {
-		const icon = component.nextState?.get('_icons') as KoliBriIconsProp;
-		const iconAlign = (component.nextState?.get('_iconAlign') as AlignPropType) || (component.state as ButtonStates)._iconAlign;
-		component.nextState?.set('_icons', mapIconProp2State(icon, iconAlign));
-	} else if (component.nextState?.has('_iconAlign')) {
-		const lastIconAlign = (component.state as ButtonStates)._iconAlign as AlignPropType;
-		component.nextState?.set('_icons', {
-			[lastIconAlign]: undefined,
-			[component.nextState?.get('_iconAlign') as AlignPropType]: (component.state as ButtonStates)._icons[lastIconAlign],
-		});
+		const icons = component.nextState?.get('_icons') as KoliBriIconsProp;
+		component.nextState?.set('_icons', mapIconProp2State(icons));
 	}
 };
 

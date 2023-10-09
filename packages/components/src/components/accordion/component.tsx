@@ -21,8 +21,6 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 /**
  *
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
- * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
- * @slot header - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.
  */
 @Component({
 	tag: 'kol-accordion',
@@ -53,13 +51,9 @@ export class KolAccordion implements API {
 							_on={{ onClick: this.onClick }}
 						></kol-button-wc>
 					</kol-heading-wc>
-					<div class="header">
-						<slot name="header"></slot>
-					</div>
 					<div class="wrapper">
 						<div class="animation-wrapper">
 							<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
-								<slot name="content"></slot> {/* Deprecated for version 2 */}
 								<slot />
 							</div>
 						</div>
@@ -70,15 +64,9 @@ export class KolAccordion implements API {
 	}
 
 	/**
-	 * Deprecated: Gibt die Beschriftung der Komponente an.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _heading?: string;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
@@ -100,11 +88,6 @@ export class KolAccordion implements API {
 		_label: '…', // ⚠ required
 		_level: 1,
 	};
-
-	@Watch('_heading')
-	public validateHeading(value?: string): void {
-		this.validateLabel(value);
-	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
@@ -129,7 +112,7 @@ export class KolAccordion implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._heading);
+		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateOpen(this._open);

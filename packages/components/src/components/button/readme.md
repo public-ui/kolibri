@@ -43,9 +43,9 @@ Disabled
 Für die eindeutige Beschriftung des Buttons nutzen Sie das Attribut **`_label`**.
 `_label="Schaltflächenbeschriftung"`
 
-### Icon
+### Icons
 
-Ein Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objekt.
+Icons (**`_icons`**) kann entweder als String angegeben werden, oder als Objekt.
 Als String übergeben Sie die Iconklasse (z.B.: `_icons="codicon codicon-home`), das Icon wird links vom Text angezeigt.
 Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 

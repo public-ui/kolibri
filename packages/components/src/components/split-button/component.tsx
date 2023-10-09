@@ -86,7 +86,6 @@ export class KolSplitButton implements API {
 						[this._variant as string]: this._variant !== 'custom',
 						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 					}}
-					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}
 					_ariaExpanded={this._ariaExpanded}
 					_ariaSelected={this._ariaSelected}
@@ -125,6 +124,7 @@ export class KolSplitButton implements API {
 
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * @deprecated
 	 */
 	@Prop() public _accessKey?: string;
 

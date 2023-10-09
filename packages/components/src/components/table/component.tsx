@@ -573,7 +573,7 @@ export class KolTable implements API {
 						{!this.disableSort && typeof headerCell.sort === 'function' && (
 							<kol-button
 								exportparts="icon"
-								_icon={sortButtonIcon}
+								_icons={sortButtonIcon}
 								_hideLabel
 								_label={translate('kol-change-order', { placeholders: { colLabel: headerCell.label } })}
 								_on={{
@@ -744,7 +744,7 @@ export class KolTable implements API {
 															{!this.disableSort && typeof headerCell.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"
-																	_icon={sortButtonIcon}
+																	_icons={sortButtonIcon}
 																	_hideLabel
 																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_on={{
