@@ -13,18 +13,16 @@ Die Komponente **Icon** wird über das HTML-Tag `kol-icon` erzeugt.
 ### Code
 
 ```html
-<kol-icon _label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
+<kol-icon _label="Zu Hause" _icons="codicon codicon-home"></kol-icon>
 ```
 
 ### Beispiel
 
-<kol-icon _label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
+<kol-icon _label="Zu Hause" _icons="codicon codicon-home"></kol-icon>
 
-### Icon
+### Icons
 
-Das Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objekt.
-Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
-Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
+Die Property `_icons` erwartet einen String mit den Klassennamen der zu zeigenden Icons (z.B.: `_icons="codicon codicon-home`).
 
 <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Übersicht Codicons"></kol-link>
 
@@ -32,11 +30,11 @@ Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlü
 
 Wichtig ist bei Kontext-relevanten Grafiken, dass sie beschriftet werden.
 
-- <kol-link _href="" _label=""></kol-link>https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/"></kol-link>
 
-### Aria-Label
+### Label
 
-Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschriftet werden.
+Mittels der Property `_label` muss ein Kontext-relevantes Icon beschriftet werden.
 
 ## Links und Referenzen
 

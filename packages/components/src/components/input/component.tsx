@@ -73,7 +73,7 @@ export class KolInput implements Props {
 						'icon-right': typeof this.getIconsProp()?.right === 'object',
 					}}
 				>
-					{this.getIconsProp()?.left && <kol-icon _ariaLabel="" _icons={(this.getIconsProp()?.left as KoliBriCustomIcon).icon}></kol-icon>}
+					{this.getIconsProp()?.left && <kol-icon _label="" _icons={(this.getIconsProp()?.left as KoliBriCustomIcon).icon}></kol-icon>}
 					<div ref={this.catchInputSlot} id={this.slotName} class="input-slot"></div>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
@@ -88,7 +88,7 @@ export class KolInput implements Props {
 							_variant={this._smartButton._variant}
 						></kol-button-wc>
 					)}
-					{this.getIconsProp()?.right && <kol-icon _ariaLabel="" _icons={(this.getIconsProp()?.right as KoliBriCustomIcon).icon}></kol-icon>}
+					{this.getIconsProp()?.right && <kol-icon _label="" _icons={(this.getIconsProp()?.right as KoliBriCustomIcon).icon}></kol-icon>}
 				</div>
 				{useTooltopInsteadOfLabel && (
 					<kol-tooltip-wc

@@ -49,7 +49,7 @@ export class KolDetails implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Defines the callback functions for details.
@@ -61,12 +61,6 @@ export class KolDetails implements API {
 	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
-
-	/**
-	 * Deprecated: Gibt die Zusammenfassung der Detailbeschreibung an.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _summary?: string;
 
 	@State() public state: States = {
 		_label: '…', // '⚠'
@@ -90,13 +84,8 @@ export class KolDetails implements API {
 		validateOpen(this, value);
 	}
 
-	@Watch('_summary')
-	public validateSummary(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._summary);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateOpen(this._open);
 	}

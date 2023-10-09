@@ -34,11 +34,11 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-breadcrumb _label="" _links={[]}></kol-breadcrumb>
 				<kol-button _label="Label" _on={{}}></kol-button>
 				<kol-button-group></kol-button-group>
-				<kol-card _heading=""></kol-card>
-				<kol-details _summary=""></kol-details>
+				<kol-card _label=""></kol-card>
+				<kol-details _label=""></kol-details>
 				<kol-form _on={{}}></kol-form>
 				<kol-heading _label=""></kol-heading>
-				<kol-icon _ariaLabel="" _icons="codicon codicon-home"></kol-icon>
+				<kol-icon _label="" _icons="codicon codicon-home"></kol-icon>
 				<kol-icon-font-awesome _ariaLabel="" _icon="500px" _prefix="fab"></kol-icon-font-awesome>
 				<kol-icon-icofont _ariaLabel="" _icon="home"></kol-icon-icofont>
 				<kol-indented-text></kol-indented-text>

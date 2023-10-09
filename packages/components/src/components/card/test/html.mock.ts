@@ -24,19 +24,10 @@ export const getCardHtml = (props: Props): string => {
 						default: '',
 					}
 				)}
-				<slot name="header"></slot>
 			</div>
 			<div class="content">
-				<slot name="content"></slot>
 				<slot />
 			</div>
-			${
-				props._hasFooter
-					? `<div class="footer">
-							<slot name="footer"></slot>
-						</div>`
-					: ''
-			}
 			${
 				props._hasCloser
 					? getButtonWcHtml(
