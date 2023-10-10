@@ -18,14 +18,13 @@ import { API, BreadcrumbLinkProps, States } from './types';
 export class KolBreadcrumb implements API {
 	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
-		const hideLabel = link._iconOnly || link._hideLabel;
 		return (
 			<li key={index}>
 				{index !== 0 && <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
 					<span>
-						{hideLabel ? (
-							<kol-icon _label={link._label} _icons={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+						{link._hideLabel ? (
+							<kol-icon _label={link._label} _icons={typeof link._icons === 'string' ? link._icons : 'codicon codicon-symbol-event'} />
 						) : (
 							<Fragment>{link._label}</Fragment>
 						)}

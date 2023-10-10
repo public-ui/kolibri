@@ -33,10 +33,6 @@ Die auszugebenden Links werden als JSON-Objekt an das Attribut **`_links`** übe
 ];
 ```
 
-### Überschrift
-
-Die Überschrift der LinkGroup wird über das Attribut **`_heading`** übergeben.
-
 ### Ausrichtung
 
 Über das Attribut **`_orientation`** kann die Ausrichtung der LinkGroup bestimmt werden. Mögliche Werte sind `horizontal` und `vertical` (Standard).

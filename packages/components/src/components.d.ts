@@ -40,10 +40,9 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { W3CInputValue } from "./types/w3c";
 import { InputTextType } from "./types/input/control/text";
-import { AriaCurrentPropType } from "./types/props/aria-current";
 import { DownloadPropType } from "./types/props/download";
 import { HrefPropType } from "./types/props/href";
-import { AlignPropType } from "./types/props/align";
+import { AriaCurrentPropType } from "./types/props/aria-current";
 import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
 import { ListStyleType } from "./components/link-group/types";
@@ -53,6 +52,7 @@ import { KoliBriModalEventCallbacks } from "./types/modal";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { MaxPropType } from "./types/props/max";
+import { AlignPropType } from "./types/props/align";
 import { KoliBriProgressVariantType } from "./types/progress";
 import { KoliBriQuoteVariant } from "./components/quote/types";
 import { RowsPropType } from "./types/props/rows";
@@ -97,10 +97,9 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { W3CInputValue } from "./types/w3c";
 export { InputTextType } from "./types/input/control/text";
-export { AriaCurrentPropType } from "./types/props/aria-current";
 export { DownloadPropType } from "./types/props/download";
 export { HrefPropType } from "./types/props/href";
-export { AlignPropType } from "./types/props/align";
+export { AriaCurrentPropType } from "./types/props/aria-current";
 export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
 export { ListStyleType } from "./components/link-group/types";
@@ -110,6 +109,7 @@ export { KoliBriModalEventCallbacks } from "./types/modal";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { MaxPropType } from "./types/props/max";
+export { AlignPropType } from "./types/props/align";
 export { KoliBriProgressVariantType } from "./types/progress";
 export { KoliBriQuoteVariant } from "./components/quote/types";
 export { RowsPropType } from "./types/props/rows";
@@ -1719,36 +1719,6 @@ export namespace Components {
     }
     interface KolLink {
         /**
-          * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated will be removed in v2
-         */
-        "_ariaControls"?: string;
-        /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated use _listen-aria-current instead
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
-          * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated will be removed in v2
-         */
-        "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
-          * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated will be removed in v2
-         */
-        "_ariaSelected"?: boolean;
-        /**
-          * Deprecated: Makes the element not focusable and ignore all events.
-          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
-         */
-        "_disabled"?: boolean;
-        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1762,20 +1732,6 @@ export namespace Components {
          */
         "_href": HrefPropType;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
-         */
-        "_iconAlign"?: AlignPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
@@ -1784,7 +1740,7 @@ export namespace Components {
          */
         "_label"?: LabelWithExpertSlotPropType;
         /**
-          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
@@ -1795,16 +1751,6 @@ export namespace Components {
           * Defines the role of the components primary element.
          */
         "_role"?: AlternativeButtonLinkRolePropType;
-        /**
-          * Deprecated: Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated will be removed in v2
-         */
-        "_selector"?: string;
-        /**
-          * Deprecated: Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated will be removed in v2
-         */
-        "_stealth"?: boolean;
         /**
           * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1824,39 +1770,9 @@ export namespace Components {
     }
     interface KolLinkButton {
         /**
-          * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated will be removed in v2
-         */
-        "_ariaControls"?: string;
-        /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated use _listen-aria-current instead
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
-          * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated will be removed in v2
-         */
-        "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
-          * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated will be removed in v2
-         */
-        "_ariaSelected"?: boolean;
-        /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
-        /**
-          * Deprecated: Makes the element not focusable and ignore all events.
-          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
-         */
-        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -1873,18 +1789,13 @@ export namespace Components {
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
-        "_icon"?: IconsPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
+        "_icons"?: IconsPropType;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
@@ -1918,23 +1829,9 @@ export namespace Components {
     }
     interface KolLinkGroup {
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
-          * Deprecated: Gibt die optionale Überschrift zur Link-Gruppe an.
-          * @deprecated remove in the next major version
-         */
-        "_heading"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
-        /**
-          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
-         */
-        "_level"?: HeadingLevel;
+        "_label": LabelPropType;
         /**
           * Defines the list of links to render.
          */
@@ -1944,46 +1841,11 @@ export namespace Components {
          */
         "_listStyleType"?: ListStyleType;
         /**
-          * Deprecated: Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
-          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
-         */
-        "_ordered"?: boolean;
-        /**
           * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
     }
     interface KolLinkWc {
-        /**
-          * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated will be removed in v2
-         */
-        "_ariaControls"?: string;
-        /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated use _listen-aria-current instead
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
-          * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated will be removed in v2
-         */
-        "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
-          * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated will be removed in v2
-         */
-        "_ariaSelected"?: boolean;
-        /**
-          * Deprecated: Makes the element not focusable and ignore all events.
-          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
-         */
-        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -1998,20 +1860,6 @@ export namespace Components {
          */
         "_href": HrefPropType;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
-         */
-        "_iconAlign"?: AlignPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
@@ -2020,7 +1868,7 @@ export namespace Components {
          */
         "_label"?: LabelWithExpertSlotPropType;
         /**
-          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
@@ -2031,16 +1879,6 @@ export namespace Components {
           * Defines the role of the components primary element.
          */
         "_role"?: AlternativeButtonLinkRolePropType;
-        /**
-          * Deprecated: Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated will be removed in v2
-         */
-        "_selector"?: string;
-        /**
-          * Deprecated: Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated will be removed in v2
-         */
-        "_stealth"?: boolean;
         /**
           * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4794,36 +4632,6 @@ declare namespace LocalJSX {
     }
     interface KolLink {
         /**
-          * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated will be removed in v2
-         */
-        "_ariaControls"?: string;
-        /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated use _listen-aria-current instead
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
-          * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated will be removed in v2
-         */
-        "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
-          * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated will be removed in v2
-         */
-        "_ariaSelected"?: boolean;
-        /**
-          * Deprecated: Makes the element not focusable and ignore all events.
-          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
-         */
-        "_disabled"?: boolean;
-        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4837,20 +4645,6 @@ declare namespace LocalJSX {
          */
         "_href": HrefPropType;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
-         */
-        "_iconAlign"?: AlignPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
@@ -4859,7 +4653,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelWithExpertSlotPropType;
         /**
-          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
@@ -4870,16 +4664,6 @@ declare namespace LocalJSX {
           * Defines the role of the components primary element.
          */
         "_role"?: AlternativeButtonLinkRolePropType;
-        /**
-          * Deprecated: Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated will be removed in v2
-         */
-        "_selector"?: string;
-        /**
-          * Deprecated: Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated will be removed in v2
-         */
-        "_stealth"?: boolean;
         /**
           * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4899,39 +4683,9 @@ declare namespace LocalJSX {
     }
     interface KolLinkButton {
         /**
-          * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated will be removed in v2
-         */
-        "_ariaControls"?: string;
-        /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated use _listen-aria-current instead
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
-          * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated will be removed in v2
-         */
-        "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
-          * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated will be removed in v2
-         */
-        "_ariaSelected"?: boolean;
-        /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
-        /**
-          * Deprecated: Makes the element not focusable and ignore all events.
-          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
-         */
-        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -4948,18 +4702,13 @@ declare namespace LocalJSX {
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
-        "_icon"?: IconsPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
+        "_icons"?: IconsPropType;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
@@ -4993,23 +4742,9 @@ declare namespace LocalJSX {
     }
     interface KolLinkGroup {
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
-          * Deprecated: Gibt die optionale Überschrift zur Link-Gruppe an.
-          * @deprecated remove in the next major version
-         */
-        "_heading"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
-        /**
-          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
-         */
-        "_level"?: HeadingLevel;
+        "_label": LabelPropType;
         /**
           * Defines the list of links to render.
          */
@@ -5019,46 +4754,11 @@ declare namespace LocalJSX {
          */
         "_listStyleType"?: ListStyleType;
         /**
-          * Deprecated: Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
-          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
-         */
-        "_ordered"?: boolean;
-        /**
           * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
     }
     interface KolLinkWc {
-        /**
-          * Deprecated: Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated will be removed in v2
-         */
-        "_ariaControls"?: string;
-        /**
-          * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-          * @deprecated use _listen-aria-current instead
-         */
-        "_ariaCurrent"?: AriaCurrentPropType;
-        /**
-          * Deprecated: Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated will be removed in v2
-         */
-        "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
-          * Deprecated: Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated will be removed in v2
-         */
-        "_ariaSelected"?: boolean;
-        /**
-          * Deprecated: Makes the element not focusable and ignore all events.
-          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
-         */
-        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -5073,20 +4773,6 @@ declare namespace LocalJSX {
          */
         "_href": HrefPropType;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
-         */
-        "_iconAlign"?: AlignPropType;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
@@ -5095,7 +4781,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelWithExpertSlotPropType;
         /**
-          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
         "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
@@ -5106,16 +4792,6 @@ declare namespace LocalJSX {
           * Defines the role of the components primary element.
          */
         "_role"?: AlternativeButtonLinkRolePropType;
-        /**
-          * Deprecated: Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated will be removed in v2
-         */
-        "_selector"?: string;
-        /**
-          * Deprecated: Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated will be removed in v2
-         */
-        "_stealth"?: boolean;
         /**
           * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
