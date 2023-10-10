@@ -20,18 +20,7 @@ export type ColorPair = {
 	foregroundColor: Stringified<CharacteristicColors>;
 };
 
-/**
- * @deprecated
- */
-type DeprecatedColorPair = {
-	backgroundColor: string;
-	/**
-	 * @deprecated Please use `foregroundColor` instead of `color`.
-	 */
-	color: string;
-};
-
-export type PropColor = ColorPair | DeprecatedColorPair;
+export type PropColor = ColorPair;
 
 type typeOfColorType = 'string' | 'ColorPair' | 'DeprecatedColorPair' | null;
 
@@ -45,7 +34,6 @@ function isColorObjectString(value: string): { type: typeOfColorType; value: Pro
 		try {
 			const parsed = JSON.parse(value) as unknown;
 			if (isValidColorPair(parsed as ColorPair)) return { type: 'ColorPair', value: parsed as ColorPair };
-			if (isValidDeprecatedColorPair(parsed as DeprecatedColorPair)) return { type: 'DeprecatedColorPair', value: parsed as DeprecatedColorPair };
 		} catch (error) {
 			return { type: null, value: null };
 		}
@@ -64,8 +52,6 @@ function typeOfColor(value?: unknown): { type: typeOfColorType; valid: boolean; 
 		} else {
 			const asColorPair = value as ColorPair;
 			if (isValidColorPair(asColorPair)) return { type: 'ColorPair', valid: true, value: asColorPair };
-			const asDeprecatedColorPair = value as DeprecatedColorPair;
-			if (isValidDeprecatedColorPair(asDeprecatedColorPair)) return { type: 'DeprecatedColorPair', valid: true, value: asDeprecatedColorPair };
 		}
 	}
 	return { type: null, valid: false, value: '' };
@@ -83,9 +69,6 @@ function isValidColorPair(value: ColorPair): boolean {
 				typeof value.foregroundColor.secondary === 'string' &&
 				typeof value.foregroundColor.neutral === 'string'))
 	);
-}
-function isValidDeprecatedColorPair(value: DeprecatedColorPair): boolean {
-	return typeof value === 'object' && value && typeof value.backgroundColor === 'string' && typeof value.color === 'string';
 }
 
 function validatorFunction(value?: Stringified<PropColor>): boolean {
@@ -115,13 +98,9 @@ export const handleColorChange = (value: unknown): ColorPair => {
 		case 'ColorPair':
 		case 'DeprecatedColorPair': {
 			const asColorPair = valueType.value as ColorPair;
-			const asDeprecatedColorPair = valueType.value as DeprecatedColorPair;
 			let foreground = '';
-			if (asDeprecatedColorPair.color) foreground = asDeprecatedColorPair.color;
-			else {
-				if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
-				else if (asColorPair.foregroundColor?.primary) foreground = asColorPair.foregroundColor.primary;
-			}
+			if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
+			else if (asColorPair.foregroundColor?.primary) foreground = asColorPair.foregroundColor.primary;
 			if (!foreground || typeof foreground !== 'string') foreground = '#fff';
 			colorContrast = createContrastColorPair({
 				background: asColorPair.backgroundColor,
