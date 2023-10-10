@@ -31,7 +31,7 @@ export const getAccordionHtml = (
 						_ariaControls: 'nonce',
 						_ariaExpanded: props._open === true,
 						_icons: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
-						_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
+						_label: props._label,
 					})}`,
 				}
 			)}
