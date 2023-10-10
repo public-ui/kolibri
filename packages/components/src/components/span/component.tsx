@@ -23,7 +23,6 @@ export class KolSpanWc implements API {
 		return (
 			<Host
 				class={{
-					'icon-only': !!this.state._hideLabel, // @deprecated in v2
 					'hide-label': !!this.state._hideLabel,
 				}}
 			>
@@ -62,20 +61,9 @@ export class KolSpanWc implements API {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * @deprecated Use _labels.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriIconsProp>;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
-
-	/**
-	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
-	 * @deprecated use _hide-label
-	 */
-	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
@@ -101,22 +89,9 @@ export class KolSpanWc implements API {
 		validateHideLabel(this, value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: KoliBriIconsProp): void {
-		this.validateIcons(value);
-	}
-
 	@Watch('_icons')
 	public validateIcons(value?: KoliBriIconsProp): void {
 		validateIcons(this, value);
-	}
-
-	/**
-	 * @deprecated use _hide-label
-	 */
-	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
-		this.validateHideLabel(value);
 	}
 
 	@Watch('_label')
@@ -126,8 +101,8 @@ export class KolSpanWc implements API {
 
 	public componentWillLoad(): void {
 		this.validateAllowMarkdown(this._allowMarkdown);
-		this.validateHideLabel(this._hideLabel || this._iconOnly);
-		this.validateIcons(this._icons || this._icon);
+		this.validateHideLabel(this._hideLabel);
+		this.validateIcons(this._icons);
 		this.validateLabel(this._label);
 	}
 }

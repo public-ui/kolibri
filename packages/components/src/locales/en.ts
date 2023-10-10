@@ -22,8 +22,6 @@ export default {
 	'page-current': 'Page {{page}}',
 	'page-selected': 'Page {{page}} is selected',
 	'page-per-site': '{{entries}} entries per page',
-	'nav-maximize': 'Maximize',
-	'nav-minimize': 'Minimize',
 	'logo-description': 'Logo {{orgShort}}. Federal eagle with flag staff and lettering {{orgLong}}',
 	'open-link-in-tab': 'The link will open in a new tab.',
 	'kolibri-logo': 'KoliBri logo',

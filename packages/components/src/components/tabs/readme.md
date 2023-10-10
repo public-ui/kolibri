@@ -12,7 +12,7 @@ Die Zuordnung der Daten im Attribut **`_tabs`** zu den Div-Elementen erfolgt aut
 ### Code
 
 ```html
-<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icon":"codicon codicon-home"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
+<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icons":"codicon codicon-home"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
 	<div>Inhalt von Tab 1</div>
 	<div>Inhalt von Tab 2</div>
 	<div>Inhalt von Tab 3</div>
@@ -21,7 +21,7 @@ Die Zuordnung der Daten im Attribut **`_tabs`** zu den Div-Elementen erfolgt aut
 
 ### Beispiel
 
-<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icon":"codicon codicon-home"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
+<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1","_icons":"codicon codicon-home"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
   <div>Inhalt von Tab 1</div>
   <div>Inhalt von Tab 2</div>
   <div>Inhalt von Tab 3</div>
@@ -34,7 +34,7 @@ Die Zuordnung der Daten im Attribut **`_tabs`** zu den Div-Elementen erfolgt aut
 Die Daten für die Registerkarten können als Objekte oder JSON-String an das Attribut **`_tabs`** übergeben werden.
 
 ```json
-[{ "_label": "Tab 1", "_icon": "codicon codicon-home" }, { "_label": "Tab 2", "_on": { "onClose": true } }, { "_label": "Tab 3" }]
+[{ "_label": "Tab 1", "_icons": "codicon codicon-home" }, { "_label": "Tab 2", "_on": { "onClose": true } }, { "_label": "Tab 3" }]
 ```
 
 ### Registerkarte deaktivieren

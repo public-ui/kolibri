@@ -8,9 +8,9 @@ Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte I
 
 ```html
 <div>
-	<kol-pagination _total="100" _page="6"></kol-pagination>
-	<kol-pagination _total="100" _page="6" _sibling-count="2"></kol-pagination>
-	<kol-pagination _total="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
+	<kol-pagination _max="100" _page="6"></kol-pagination>
+	<kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
+	<kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
 </div>
 ```
 
@@ -18,18 +18,18 @@ Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte I
 
 <div class="grid gap-2">
   <kol-heading _level="3" _label="Standardausgabe nur mit aktuellem Element"></kol-heading>
-  <kol-pagination _total="100" _page="6" _has-buttons="false"></kol-pagination>
+  <kol-pagination _max="100" _page="6" _has-buttons="false"></kol-pagination>
   <kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts dem aktuellen Element (_sibling)"></kol-heading>
-  <kol-pagination _total="100" _page="6" _sibling-count="2"></kol-pagination>
+  <kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
   <kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts (_boundary-count)"></kol-heading>
-  <kol-pagination _total="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
+  <kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
 </div>
 
 ## Verwendung
 
 Die **Paginierung**-Komponente kann über Ihre Properties konfiguriert werden.
 
-- Das Attribut **`_total`** bestimmt die Gesamtanzahl der Elemente.
+- Das Attribut **`_max`** bestimmt die Gesamtanzahl der Elemente.
 - Über das Attribut **`boundary-count`** wird die Anzahl von Elementen bestimmt, die in der **Paginierung**-Komponente rechts und links angezeigt werden, während die übrigen Elemente
 - Das Attribut **`_page`** legt das gerade aktive Element fest. Dieses wird farblich hervorgehoben dargestellt.
 - Über das Attribut **`_sibling-count`** kann festgelegt werden, wie viele Elemente jeweils links und rechts des Aktuellen angezeigt werden sollen.

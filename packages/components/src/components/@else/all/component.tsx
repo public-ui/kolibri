@@ -21,12 +21,6 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<kol-input-adapter-leanup>
-					<kol-input-text _label=""></kol-input-text>
-				</kol-input-adapter-leanup>
-				<kol-input-adapter-leanup>
-					<kol-input-text _label=""></kol-input-text>
-				</kol-input-adapter-leanup>
 				<kol-abbr _label=""></kol-abbr>
 				<kol-accordion _label=""></kol-accordion>
 				<kol-alert></kol-alert>
@@ -54,18 +48,18 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-link _href="" _label="Label"></kol-link>
 				<kol-link-group _label="" _links={[]}></kol-link-group>
 				<kol-logo _org={Bundesministerium['Auswärtiges Amt']}></kol-logo>
-				<kol-modal _ariaLabel=""></kol-modal>
-				<kol-nav _ariaLabel="" _links={[]}></kol-nav>
-				<kol-pagination _on={{}} _page={1} _total={11}></kol-pagination>
+				<kol-modal _label=""></kol-modal>
+				<kol-nav _label="" _links={[]}></kol-nav>
+				<kol-pagination _on={{}} _page={1} _max={11}></kol-pagination>
 				<kol-progress _max={10} _value={5}></kol-progress>
 				<kol-select _label="" _options={[]}></kol-select>
-				<kol-skip-nav _ariaLabel="" _links={[]}></kol-skip-nav>
+				<kol-skip-nav _label="" _links={[]}></kol-skip-nav>
 				<kol-spin></kol-spin>
-				<kol-table _caption="" _data={[]} _headers={{}}></kol-table>
-				<kol-tabs _ariaLabel="" _tabs={[]}></kol-tabs>
+				<kol-table _label="" _data={[]} _headers={{}}></kol-table>
+				<kol-tabs _label="" _tabs={[]}></kol-tabs>
 				<kol-textarea _label=""></kol-textarea>
 				<kol-tooltip-wc _label="Label"></kol-tooltip-wc>
-				<kol-version _version=""></kol-version>
+				<kol-version _label=""></kol-version>
 			</Host>
 		);
 	}

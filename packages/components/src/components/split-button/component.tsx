@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
@@ -8,11 +8,10 @@ import { ButtonVariantPropType } from '../../types/props/button-variant';
 import { CustomClassPropType } from '../../types/props/custom-class';
 import { IconsPropType } from '../../types/props/icons';
 import { LabelPropType } from '../../types/props/label';
-import { validateShow } from '../../types/props/show';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
-import { API, States } from './types';
+import { Props, States } from './types';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
@@ -24,7 +23,7 @@ import { API, States } from './types';
 	},
 	shadow: true,
 })
-export class KolSplitButton implements API {
+export class KolSplitButton implements Props {
 	private dropdown: HTMLDivElement | undefined;
 	private dropdownContent: HTMLDivElement | undefined;
 
@@ -57,21 +56,12 @@ export class KolSplitButton implements API {
 		if (openIt) this.openDropdown();
 		else this.closeDropdown();
 	};
-	private forceCounter = 100; // because the dropdown could be empty
-	private readonly forceOpenDropdown = () => {
-		if (this.forceCounter > 0) {
-			if (this.dropdownContent?.clientHeight) this.openDropdown();
-			else setTimeout(this.forceOpenDropdown, 10);
-			this.forceCounter--;
-		}
-	};
 
 	private readonly catchDropdownElements = (e?: HTMLDivElement | null) => {
 		if (e) {
 			this.dropdown = e;
 			setTimeout(() => {
 				this.dropdownContent = e.firstChild as HTMLDivElement;
-				if (this._show) this.forceOpenDropdown();
 			});
 		}
 	};
@@ -91,7 +81,7 @@ export class KolSplitButton implements API {
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
-					_icons={this._icons || this._icon}
+					_icons={this._icons}
 					_hideLabel={this._hideLabel}
 					_label={this._label}
 					_name={this._name}
@@ -123,12 +113,6 @@ export class KolSplitButton implements API {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
-	 * @deprecated
-	 */
-	@Prop() public _accessKey?: string;
-
-	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
@@ -137,13 +121,6 @@ export class KolSplitButton implements API {
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop() public _ariaExpanded?: boolean;
-
-	/**
-	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -166,11 +143,6 @@ export class KolSplitButton implements API {
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: IconsPropType;
 
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
@@ -209,18 +181,6 @@ export class KolSplitButton implements API {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Makes the element show up.
-	 * @TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
-
-	/**
-	 * Deprecated: Defines whether to show the dropdown menu.
-	 * @deprecated use _show instead
-	 */
-	@Prop({ mutable: true, reflect: true }) public _showDropdown?: boolean = false;
-
-	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
@@ -248,27 +208,4 @@ export class KolSplitButton implements API {
 	@State() public state: States = {
 		_show: false,
 	};
-
-	/**
-	 * @deprecated will be removed in the next major version
-	 */
-	@Watch('_show')
-	public validateShowDropdown(value?: boolean): void {
-		this.validateShow(value);
-	}
-
-	@Watch('_show')
-	public validateShow(value?: boolean): void {
-		validateShow(this, value, {
-			hooks: {
-				afterPatch: (value) => {
-					this.toggleDropdown(!!value);
-				},
-			},
-		});
-	}
-
-	public componentWillLoad(): void {
-		this.validateShow(this._show || this._show);
-	}
 }

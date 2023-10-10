@@ -33,7 +33,7 @@ import { KoliBriFormCallbacks } from "./components/form/types";
 import { Loading } from "./utils/validators/loading";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
-import { InputTypeOnDefault, InputTypeOnOff, SelectOption } from "./types/input/types";
+import { InputTypeOnDefault, InputTypeOnOff } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType } from "./types/input/control/number";
 import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
@@ -49,7 +49,6 @@ import { ListStyleType } from "./components/link-group/types";
 import { LinkProps } from "./components/link/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
-import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { MaxPropType } from "./types/props/max";
 import { AlignPropType } from "./types/props/align";
@@ -90,7 +89,7 @@ export { KoliBriFormCallbacks } from "./components/form/types";
 export { Loading } from "./utils/validators/loading";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
-export { InputTypeOnDefault, InputTypeOnOff, SelectOption } from "./types/input/types";
+export { InputTypeOnDefault, InputTypeOnOff } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType } from "./types/input/control/number";
 export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
@@ -106,7 +105,6 @@ export { ListStyleType } from "./components/link-group/types";
 export { LinkProps } from "./components/link/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
-export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { MaxPropType } from "./types/props/max";
 export { AlignPropType } from "./types/props/align";
@@ -1898,11 +1896,6 @@ export namespace Components {
     }
     interface KolLogo {
         /**
-          * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
-          * @deprecated Verwende stattdessen das Property _org.
-         */
-        "_abbr"?: Bundesministerium | Bundesamt | Bundesanstalt;
-        /**
           * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
          */
         "_org": Bundesministerium | Bundesamt | Bundesanstalt;
@@ -1913,14 +1906,9 @@ export namespace Components {
          */
         "_activeElement"?: HTMLElement | null;
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Gibt die EventCallback-Function für das Schließen des Modals an.
          */
@@ -1936,25 +1924,10 @@ export namespace Components {
          */
         "_ariaCurrentValue": AriaCurrentPropType;
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines if navigation nodes can be collapsed or not. Enabled by default.
           * @TODO : Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
          */
         "_collapsible"?: boolean;
-        /**
-          * Deprecated: Gibt an, ob die Navigation kompakt angezeigt wird.
-          * @deprecated Use _hide-label
-         */
-        "_compact"?: boolean;
-        /**
-          * Deprecated: Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
-          * @deprecated Version 2
-         */
-        "_hasCompactButton"?: boolean;
         /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -1963,7 +1936,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Defines the list of links, buttons or texts to render.
          */
@@ -1972,11 +1945,6 @@ export namespace Components {
           * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
-        /**
-          * Deprecated: Defines which variant should be used for presentation.
-          * @deprecated This property is deprecated and will be removed in the next major version.
-         */
-        "_variant"?: KoliBriNavVariant;
     }
     interface KolPagination {
         /**
@@ -1998,7 +1966,7 @@ export namespace Components {
         /**
           * Defines the maximum number of pages.
          */
-        "_max"?: MaxPropType;
+        "_max": MaxPropType;
         /**
           * Gibt an, auf welche Callback-Events reagiert werden.
          */
@@ -2023,11 +1991,6 @@ export namespace Components {
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
-        /**
-          * Setzt die Gesamtanzahl der Seiten.
-          * @deprecated Use _max.
-         */
-        "_total"?: number;
         /**
           * Defines which variant should be used for presentation.
          */
@@ -2054,11 +2017,6 @@ export namespace Components {
          */
         "_max": number;
         /**
-          * Defines which variant should be used for presentation.
-          * @deprecated will be removed in v2, use _variant
-         */
-        "_type"?: KoliBriProgressVariantType;
-        /**
           * Defines the unit of the step values (not shown).
          */
         "_unit"?: string;
@@ -2072,11 +2030,6 @@ export namespace Components {
         "_variant"?: KoliBriProgressVariantType;
     }
     interface KolQuote {
-        /**
-          * Deprecated: Defines the visible caption of the component.
-          * @deprecated Use _label.
-         */
-        "_caption"?: string;
         /**
           * Sets the target URI of the link or citation source.
          */
@@ -2113,11 +2066,6 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Deprecated: Defines an individual height.
-          * @deprecated Use _rows instead.
-         */
-        "_height"?: string;
-        /**
           * Hides the error message but leaves it in the DOM for the input's aria-describedby.
           * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
          */
@@ -2132,10 +2080,6 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -2147,11 +2091,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Options the user can choose from, also supporting Optgroup.
-          * @deprecated use _options
-         */
-        "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
           * Makes the input accept multiple inputs.
           * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
@@ -2179,10 +2118,6 @@ export namespace Components {
          */
         "_rows"?: RowsPropType;
         /**
-          * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
-         */
-        "_size"?: number;
-        /**
           * Selector for synchronizing the value with another input element.
          */
         "_syncValueBySelector"?: SyncValueBySelectorPropType;
@@ -2206,14 +2141,9 @@ export namespace Components {
     }
     interface KolSkipNav {
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Defines the list of links combined with their labels to render.
          */
@@ -2226,16 +2156,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
-        /**
-          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+          * Defines the g classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
         /**
@@ -2253,15 +2174,6 @@ export namespace Components {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _labels.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -2284,11 +2196,6 @@ export namespace Components {
     }
     interface KolSplitButton {
         /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-          * @deprecated
-         */
-        "_accessKey"?: string;
-        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
@@ -2296,11 +2203,6 @@ export namespace Components {
           * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
         /**
           * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
@@ -2318,10 +2220,6 @@ export namespace Components {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: IconsPropType;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -2346,16 +2244,6 @@ export namespace Components {
           * Defines the role of the components primary element.
          */
         "_role"?: AlternativeButtonLinkRolePropType;
-        /**
-          * Makes the element show up.
-          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
-         */
-        "_show"?: boolean;
-        /**
-          * Deprecated: Defines whether to show the dropdown menu.
-          * @deprecated use _show instead
-         */
-        "_showDropdown"?: boolean;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -2383,25 +2271,15 @@ export namespace Components {
     }
     interface KolSymbol {
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label
-         */
-        "_ariaLabel"?: string;
-        /**
           * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Dieses Property gibt den String an der angezeigt werden soll.
          */
         "_symbol": string;
     }
     interface KolTable {
-        /**
-          * Deprecated: Defines the visible caption of the component.
-          * @deprecated Use _label.
-         */
-        "_caption"?: string;
         /**
           * Defines the primary table data.
          */
@@ -2417,7 +2295,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Defines the table min-width.
          */
@@ -2433,14 +2311,9 @@ export namespace Components {
          */
         "_align"?: AlignPropType;
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
@@ -2453,11 +2326,6 @@ export namespace Components {
           * Defines the tab captions.
          */
         "_tabs": Stringified<TabButtonProps[]>;
-        /**
-          * Deprecated: Setzt die Position der Registrierkarten.
-          * @deprecated Use _align.
-         */
-        "_tabsAlign"?: AlignPropType;
     }
     interface KolTextarea {
         /**
@@ -2604,12 +2472,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
-        /**
-          * Deprecated: Gibt die Versionsnummer als Text an.
-          * @deprecated use _label instead
-         */
-        "_version"?: string;
+        "_label": LabelPropType;
     }
 }
 declare global {
@@ -4811,11 +4674,6 @@ declare namespace LocalJSX {
     }
     interface KolLogo {
         /**
-          * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
-          * @deprecated Verwende stattdessen das Property _org.
-         */
-        "_abbr"?: Bundesministerium | Bundesamt | Bundesanstalt;
-        /**
           * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
          */
         "_org": Bundesministerium | Bundesamt | Bundesanstalt;
@@ -4826,14 +4684,9 @@ declare namespace LocalJSX {
          */
         "_activeElement"?: HTMLElement | null;
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Gibt die EventCallback-Function für das Schließen des Modals an.
          */
@@ -4849,25 +4702,10 @@ declare namespace LocalJSX {
          */
         "_ariaCurrentValue"?: AriaCurrentPropType;
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines if navigation nodes can be collapsed or not. Enabled by default.
           * @TODO : Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
          */
         "_collapsible"?: boolean;
-        /**
-          * Deprecated: Gibt an, ob die Navigation kompakt angezeigt wird.
-          * @deprecated Use _hide-label
-         */
-        "_compact"?: boolean;
-        /**
-          * Deprecated: Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
-          * @deprecated Version 2
-         */
-        "_hasCompactButton"?: boolean;
         /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -4876,7 +4714,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Defines the list of links, buttons or texts to render.
          */
@@ -4885,11 +4723,6 @@ declare namespace LocalJSX {
           * Defines whether the orientation of the component is horizontal or vertical.
          */
         "_orientation"?: Orientation;
-        /**
-          * Deprecated: Defines which variant should be used for presentation.
-          * @deprecated This property is deprecated and will be removed in the next major version.
-         */
-        "_variant"?: KoliBriNavVariant;
     }
     interface KolPagination {
         /**
@@ -4911,7 +4744,7 @@ declare namespace LocalJSX {
         /**
           * Defines the maximum number of pages.
          */
-        "_max"?: MaxPropType;
+        "_max": MaxPropType;
         /**
           * Gibt an, auf welche Callback-Events reagiert werden.
          */
@@ -4936,11 +4769,6 @@ declare namespace LocalJSX {
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
-        /**
-          * Setzt die Gesamtanzahl der Seiten.
-          * @deprecated Use _max.
-         */
-        "_total"?: number;
         /**
           * Defines which variant should be used for presentation.
          */
@@ -4967,11 +4795,6 @@ declare namespace LocalJSX {
          */
         "_max": number;
         /**
-          * Defines which variant should be used for presentation.
-          * @deprecated will be removed in v2, use _variant
-         */
-        "_type"?: KoliBriProgressVariantType;
-        /**
           * Defines the unit of the step values (not shown).
          */
         "_unit"?: string;
@@ -4985,11 +4808,6 @@ declare namespace LocalJSX {
         "_variant"?: KoliBriProgressVariantType;
     }
     interface KolQuote {
-        /**
-          * Deprecated: Defines the visible caption of the component.
-          * @deprecated Use _label.
-         */
-        "_caption"?: string;
         /**
           * Sets the target URI of the link or citation source.
          */
@@ -5026,11 +4844,6 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Deprecated: Defines an individual height.
-          * @deprecated Use _rows instead.
-         */
-        "_height"?: string;
-        /**
           * Hides the error message but leaves it in the DOM for the input's aria-describedby.
           * @TODO : Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
          */
@@ -5045,10 +4858,6 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -5060,11 +4869,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Options the user can choose from, also supporting Optgroup.
-          * @deprecated use _options
-         */
-        "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
           * Makes the input accept multiple inputs.
           * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
@@ -5092,10 +4896,6 @@ declare namespace LocalJSX {
          */
         "_rows"?: RowsPropType;
         /**
-          * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
-         */
-        "_size"?: number;
-        /**
           * Selector for synchronizing the value with another input element.
          */
         "_syncValueBySelector"?: SyncValueBySelectorPropType;
@@ -5119,14 +4919,9 @@ declare namespace LocalJSX {
     }
     interface KolSkipNav {
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Defines the list of links combined with their labels to render.
          */
@@ -5139,16 +4934,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
-        /**
-          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+          * Defines the g classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
         /**
@@ -5166,15 +4952,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _labels.
-         */
-        "_icon"?: Stringified<KoliBriIconsProp>;
-        /**
-          * Deprecated: Hides the label and shows the description in a Tooltip instead.
-          * @deprecated use _hide-label
-         */
-        "_iconOnly"?: boolean;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -5197,11 +4974,6 @@ declare namespace LocalJSX {
     }
     interface KolSplitButton {
         /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-          * @deprecated
-         */
-        "_accessKey"?: string;
-        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
@@ -5209,11 +4981,6 @@ declare namespace LocalJSX {
           * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
-        /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
         /**
           * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
@@ -5231,10 +4998,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: IconsPropType;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -5259,16 +5022,6 @@ declare namespace LocalJSX {
           * Defines the role of the components primary element.
          */
         "_role"?: AlternativeButtonLinkRolePropType;
-        /**
-          * Makes the element show up.
-          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
-         */
-        "_show"?: boolean;
-        /**
-          * Deprecated: Defines whether to show the dropdown menu.
-          * @deprecated use _show instead
-         */
-        "_showDropdown"?: boolean;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -5296,25 +5049,15 @@ declare namespace LocalJSX {
     }
     interface KolSymbol {
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label
-         */
-        "_ariaLabel"?: string;
-        /**
           * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Dieses Property gibt den String an der angezeigt werden soll.
          */
         "_symbol": string;
     }
     interface KolTable {
-        /**
-          * Deprecated: Defines the visible caption of the component.
-          * @deprecated Use _label.
-         */
-        "_caption"?: string;
         /**
           * Defines the primary table data.
          */
@@ -5330,7 +5073,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Defines the table min-width.
          */
@@ -5346,14 +5089,9 @@ declare namespace LocalJSX {
          */
         "_align"?: AlignPropType;
         /**
-          * Deprecated: Setzt die semantische Beschriftung der Komponente.
-          * @deprecated use _label instead
-         */
-        "_ariaLabel"?: string;
-        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
+        "_label": LabelPropType;
         /**
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
@@ -5366,11 +5104,6 @@ declare namespace LocalJSX {
           * Defines the tab captions.
          */
         "_tabs": Stringified<TabButtonProps[]>;
-        /**
-          * Deprecated: Setzt die Position der Registrierkarten.
-          * @deprecated Use _align.
-         */
-        "_tabsAlign"?: AlignPropType;
     }
     interface KolTextarea {
         /**
@@ -5516,12 +5249,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label"?: LabelPropType;
-        /**
-          * Deprecated: Gibt die Versionsnummer als Text an.
-          * @deprecated use _label instead
-         */
-        "_version"?: string;
+        "_label": LabelPropType;
     }
     interface IntrinsicElements {
         "kol-abbr": KolAbbr;

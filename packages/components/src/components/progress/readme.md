@@ -20,7 +20,7 @@ Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine opt
 
 ## Verwendung
 
-Verwenden Sie das Attribut **`_type`**, um die optische Ausgabe der Komponente zu steuern. Mögliche Werte sind:
+Verwenden Sie das Attribut **`_variant`**, um die optische Ausgabe der Komponente zu steuern. Mögliche Werte sind:
 
 - `bar`: für eine Ausgabe als horizontaler Fortschrittsbalken
 - `cycle`: für eine Ausgabe als kreisförmiger Fortschrittsbalken

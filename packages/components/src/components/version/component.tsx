@@ -17,13 +17,7 @@ export class KolVersion implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
-
-	/**
-	 * Deprecated: Gibt die Versionsnummer als Text an.
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _version?: string;
+	@Prop() public _label!: LabelPropType;
 
 	@State() public state: States = {
 		_label: '0.0.0-alpha.0',
@@ -34,12 +28,7 @@ export class KolVersion implements API {
 		validateLabel(this, value);
 	}
 
-	@Watch('_version')
-	public validateVersion(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._version);
+		this.validateLabel(this._label);
 	}
 }

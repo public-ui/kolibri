@@ -74,8 +74,7 @@ export class KolTextarea implements API {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
 					<div slot="input">
 						<textarea
 							ref={this.catchRef}

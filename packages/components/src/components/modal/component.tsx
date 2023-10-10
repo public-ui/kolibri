@@ -88,16 +88,9 @@ export class KolModal implements API {
 	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
 
 	/**
-	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Gibt die EventCallback-Function für das Schließen des Modals an.
@@ -120,14 +113,6 @@ export class KolModal implements API {
 		watchValidator(this, '_activeElement', (value): boolean => typeof value === 'object' || value === null, new Set(['HTMLElement', 'null']), value, {
 			defaultValue: null,
 		});
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
 	}
 
 	@Watch('_label')
@@ -156,7 +141,7 @@ export class KolModal implements API {
 
 	public componentWillLoad(): void {
 		this.validateActiveElement(this._activeElement);
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateWidth(this._width);
 	}
