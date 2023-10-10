@@ -26,21 +26,11 @@ type OptionalProps = {
 	autoComplete: InputTypeOnOff;
 	error: string;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcons>;
 	icons: Stringified<KoliBriHorizontalIcons>;
-
-	/**
-	 * @deprecated Use suggestions instead.
-	 */
-	list: Stringified<string[]>;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
 	placeholder: string;
-	/**
-	 * @deprecated
-	 */
-	size: number;
 	smartButton: Stringified<ButtonProps>;
 	tabIndex: number;
 	value: string;
@@ -77,10 +67,6 @@ type OptionalStates = {
 	on: InputTypeOnDefault;
 	pattern: string;
 	placeholder: string;
-	/**
-	 * @deprecated
-	 */
-	size: number;
 	smartButton: ButtonProps;
 	tabIndex: number;
 	value: string;

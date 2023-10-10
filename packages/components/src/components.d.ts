@@ -33,12 +33,12 @@ import { KoliBriFormCallbacks } from "./components/form/types";
 import { Loading } from "./utils/validators/loading";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
-import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
+import { InputTypeOnDefault, InputTypeOnOff, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
-import { InputDateType, InputNumberType } from "./types/input/control/number";
-import { W3CInputValue } from "./types/w3c";
+import { InputDateType } from "./types/input/control/number";
 import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 import { Orientation } from "./types/orientation";
+import { W3CInputValue } from "./types/w3c";
 import { InputTextType } from "./types/input/control/text";
 import { AriaCurrentPropType } from "./types/props/aria-current";
 import { DownloadPropType } from "./types/props/download";
@@ -90,12 +90,12 @@ export { KoliBriFormCallbacks } from "./components/form/types";
 export { Loading } from "./utils/validators/loading";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
-export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
+export { InputTypeOnDefault, InputTypeOnOff, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
-export { InputDateType, InputNumberType } from "./types/input/control/number";
-export { W3CInputValue } from "./types/w3c";
+export { InputDateType } from "./types/input/control/number";
 export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 export { Orientation } from "./types/orientation";
+export { W3CInputValue } from "./types/w3c";
 export { InputTextType } from "./types/input/control/text";
 export { AriaCurrentPropType } from "./types/props/aria-current";
 export { DownloadPropType } from "./types/props/download";
@@ -815,10 +815,6 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -830,11 +826,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagswörter an.
-          * @deprecated Use _suggestions instead.
-         */
-        "_list"?: SuggestionsPropType;
         /**
           * Defines the technical name of an input field.
          */
@@ -910,9 +901,8 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
@@ -922,11 +912,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagszahlen an.
-          * @deprecated Use _suggestions instead.
-         */
-        "_list"?: Stringified<string[]>;
         /**
           * Defines the largest possible input value.
          */
@@ -1033,9 +1018,8 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
@@ -1045,11 +1029,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagswörter an.
-          * @deprecated Use _suggestions.
-         */
-        "_list"?: Stringified<string[]>;
         /**
           * Defines the maximum number of input characters.
          */
@@ -1085,10 +1064,6 @@ export namespace Components {
           * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
-        /**
-          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
-         */
-        "_size"?: number;
         /**
           * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
@@ -1155,10 +1130,6 @@ export namespace Components {
           * Defines the hint text.
          */
         "_hint"?: string;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -1252,10 +1223,6 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -1267,11 +1234,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagszahlen an.
-          * @deprecated Use _suggestions intead.
-         */
-        "_list"?: Stringified<string[]>;
         /**
           * Defines the largest possible input value.
          */
@@ -1332,11 +1294,6 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Deprecated: Defines either the type of the component or of the components interactive element.
-          * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
-         */
-        "_type"?: InputNumberType;
-        /**
           * Defines the value of the input.
          */
         "_value"?: number | Iso8601 | null;
@@ -1383,10 +1340,6 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -1428,10 +1381,6 @@ export namespace Components {
           * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
-        /**
-          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
-         */
-        "_size"?: number;
         /**
           * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
@@ -1498,11 +1447,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.
-          * @deprecated Use _options.
-         */
-        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Defines the technical name of an input field.
          */
@@ -1584,10 +1528,6 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -1599,11 +1539,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagswörter an.
-          * @deprecated Use _suggestions.
-         */
-        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Defines the largest possible input value.
          */
@@ -1693,10 +1628,6 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -1708,11 +1639,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagswörter an.
-          * @deprecated Use _suggestions.
-         */
-        "_list"?: Stringified<string[]>;
         /**
           * Defines the maximum number of input characters.
          */
@@ -1743,10 +1669,6 @@ export namespace Components {
           * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
-        /**
-          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
-         */
-        "_size"?: number;
         /**
           * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
@@ -3968,10 +3890,6 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -3983,11 +3901,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagswörter an.
-          * @deprecated Use _suggestions instead.
-         */
-        "_list"?: SuggestionsPropType;
         /**
           * Defines the technical name of an input field.
          */
@@ -4063,9 +3976,8 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
@@ -4075,11 +3987,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagszahlen an.
-          * @deprecated Use _suggestions instead.
-         */
-        "_list"?: Stringified<string[]>;
         /**
           * Defines the largest possible input value.
          */
@@ -4186,9 +4093,8 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
@@ -4198,11 +4104,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagswörter an.
-          * @deprecated Use _suggestions.
-         */
-        "_list"?: Stringified<string[]>;
         /**
           * Defines the maximum number of input characters.
          */
@@ -4238,10 +4139,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
-        /**
-          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
-         */
-        "_size"?: number;
         /**
           * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
@@ -4308,10 +4205,6 @@ declare namespace LocalJSX {
           * Defines the hint text.
          */
         "_hint"?: string;
-        /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
@@ -4405,10 +4298,6 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -4420,11 +4309,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagszahlen an.
-          * @deprecated Use _suggestions intead.
-         */
-        "_list"?: Stringified<string[]>;
         /**
           * Defines the largest possible input value.
          */
@@ -4485,11 +4369,6 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Deprecated: Defines either the type of the component or of the components interactive element.
-          * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
-         */
-        "_type"?: InputNumberType;
-        /**
           * Defines the value of the input.
          */
         "_value"?: number | Iso8601 | null;
@@ -4536,10 +4415,6 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -4581,10 +4456,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
-        /**
-          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
-         */
-        "_size"?: number;
         /**
           * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
@@ -4651,11 +4522,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.
-          * @deprecated Use _options.
-         */
-        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Defines the technical name of an input field.
          */
@@ -4737,10 +4603,6 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -4752,11 +4614,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagswörter an.
-          * @deprecated Use _suggestions.
-         */
-        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Defines the largest possible input value.
          */
@@ -4846,10 +4703,6 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * @deprecated Use _icons.
-         */
-        "_icon"?: Stringified<KoliBriHorizontalIcons>;
-        /**
           * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
         "_icons"?: Stringified<KoliBriHorizontalIcons>;
@@ -4861,11 +4714,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Deprecated: Gibt die Liste der Vorschlagswörter an.
-          * @deprecated Use _suggestions.
-         */
-        "_list"?: Stringified<string[]>;
         /**
           * Defines the maximum number of input characters.
          */
@@ -4896,10 +4744,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
-        /**
-          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
-         */
-        "_size"?: number;
         /**
           * Allows to add a button with an arbitrary action within the element (_hide-label only).
          */
