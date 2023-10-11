@@ -5,16 +5,23 @@ import { RefactorPropertyLabelReplaceFalse } from '../common/RefactorPropertyLab
 import { RenameSlotNameTask } from '../common/RenameSlotNameTask';
 import { AbbrRenamePropertyAlignToTooltipAlign, AbbrRenamePropertyTitleToLabel } from './abbr';
 import { AccordionRenamePropertyHeadingToLabel } from './accordion';
-import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel } from './badge';
+import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel, BadgeRenamePropertyIconToIcons } from './badge';
 import { BreadcrumbRenamePropertyAriaLabelToLabel } from './breadcrumb';
 import {
+	ButtonRemovePropertyAccessKey,
 	ButtonRemovePropertyAriaCurrent,
 	ButtonRemovePropertyAriaLabel,
 	ButtonRemovePropertyIconAlign,
 	ButtonRenamePropertyIconOnlyToHideLabel,
 	ButtonRenamePropertyIconToIcons,
 } from './button';
-import { ButtonLinkRemovePropertyAriaCurrent, ButtonLinkRemovePropertyAriaLabel, ButtonLinkRenamePropertyIconOnlyToHideLabel } from './button-link';
+import {
+	ButtonLinkRemovePropertyAccessKey,
+	ButtonLinkRemovePropertyAriaCurrent,
+	ButtonLinkRemovePropertyAriaLabel,
+	ButtonLinkRenamePropertyIconOnlyToHideLabel,
+	ButtonLinkRenamePropertyIconToIcons,
+} from './button-link';
 import { CardRenamePropertyHeadingToLabel, CardRenamePropertyHeadlineToLabel } from './card';
 import { DetailsRenamePropertySummaryToLabel } from './details';
 import { IconRemovePropertyPart, IconRenamePropertyAriaLabelToLabel, IconRenamePropertyIconToIcons } from './icon';
@@ -22,15 +29,15 @@ import { InputRenamePropertyIconToIcons } from './input';
 import { InputCheckboxRenamePropertyIconToIcons, InputCheckboxRenamePropertyTypeToVariant } from './input-checkbox';
 import { InputColorRenamePropertyIconToIcons, InputColorRenamePropertyListToSuggestions } from './input-color';
 import { InputDateRenamePropertyIconToIcons, InputDateRenamePropertyListToSuggestions } from './input-date';
-import { InputEmailRenamePropertyIconToIcons, InputEmailRenamePropertyListToSuggestions } from './input-email';
+import { InputEmailRemovePropertySize, InputEmailRenamePropertyIconToIcons, InputEmailRenamePropertyListToSuggestions } from './input-email';
 import { InputFileRenamePropertyIconToIcons } from './input-file';
-import { InputNumberRenamePropertyIconToIcons, InputNumberRenamePropertyListToSuggestions } from './input-number';
-import { InputPasswordRenamePropertyIconToIcons } from './input-password';
-import { InputRadioRenamePropertyListToSuggestions } from './input-radio';
+import { InputNumberRemovePropertyType, InputNumberRenamePropertyIconToIcons, InputNumberRenamePropertyListToSuggestions } from './input-number';
+import { InputPasswordRemovePropertySize, InputPasswordRenamePropertyIconToIcons } from './input-password';
+import { InputRadioRenamePropertyListToOptions } from './input-radio';
 import { InputRangeRenamePropertyIconToIcons, InputRangeRenamePropertyListToSuggestions } from './input-range';
-import { InputTextRenamePropertyIconToIcons, InputTextRenamePropertyListToSuggestions } from './input-text';
+import { InputTextRemovePropertySize, InputTextRenamePropertyIconToIcons, InputTextRenamePropertyListToSuggestions } from './input-text';
 import {
-	LinkRemovePropertyAriaControl,
+	LinkRemovePropertyAriaControls,
 	LinkRemovePropertyAriaExpanded,
 	LinkRemovePropertyAriaLabel,
 	LinkRemovePropertyAriaSelected,
@@ -41,15 +48,17 @@ import {
 	LinkRemovePropertyUseCase,
 	LinkRenamePropertyAriaCurrentToListenAriaCurrent,
 	LinkRenamePropertyIconOnlyToHideLabel,
+	LinkRenamePropertyIconToIcons,
 } from './link';
 import {
-	LinkButtonRemovePropertyAriaControl,
+	LinkButtonRemovePropertyAriaControls,
 	LinkButtonRemovePropertyAriaExpanded,
 	LinkButtonRemovePropertyAriaLabel,
 	LinkButtonRemovePropertyAriaSelected,
 	LinkButtonRemovePropertyDisabled,
 	LinkButtonRenamePropertyAriaCurrentToListenAriaCurrent,
 	LinkButtonRenamePropertyIconOnlyToHideLabel,
+	LinkButtonRenamePropertyIconToIcons,
 } from './link-button';
 import {
 	LinkGroupRemovePropertyHeading,
@@ -63,26 +72,38 @@ import { NavRemovePropertyVariant, NavRenamePropertyAriaLabelToLabel, NavRenameP
 import { PaginationRenamePropertyCountToTotal, PaginationRenamePropertyTotalToMax } from './pagination';
 import { ProgressRenamePropertyTypeToVariant } from './progress';
 import { QuoteRenamePropertyCaptionToLabel } from './quote';
-import { SelectRenamePropertyHeightToRows, SelectRenamePropertyIconToIcons, SelectRenamePropertyListToOptions } from './select';
+import { SelectRemovePropertySize, SelectRenamePropertyHeightToRows, SelectRenamePropertyIconToIcons, SelectRenamePropertyListToOptions } from './select';
 import { SkipNavButtonRenamePropertyAriaLabelToLabel } from './skip-nav';
 import { SpanRenamePropertyIconOnlyToHideLabel, SpanRenamePropertyIconToIcons } from './span';
-import { SplitButtonRemovePropertyAriaLabel, SplitButtonRenamePropertyShowDropdownToShow } from './split-button';
+import {
+	SplitButtonRemovePropertyAccessKey,
+	SplitButtonRemovePropertyAriaLabel,
+	SplitButtonRemovePropertyShowDropdown,
+	SplitButtonRenamePropertyShow,
+} from './split-button';
 import { TableRenamePropertyCaptionToLabel } from './table';
 import { TabsRenamePropertyAriaLabelToLabel, TabsRenamePropertyIconToIcons, TabsRenamePropertyTabAlignToAlign } from './tabs';
 import { ToastRemovePropertyNameShowDuration, ToastRenamePropertyHeadingToLabel } from './toast';
 import { VersionRenamePropertyVersionToLabel } from './version';
+import { AlertRenamePropertyHeadingToLabel } from './alert';
+import { SymbolRenamePropertyAriaLabelToLabel } from './symbol';
 
 export const v1Tasks: AbstractTask[] = [];
 v1Tasks.push(AbbrRenamePropertyAlignToTooltipAlign);
 v1Tasks.push(AbbrRenamePropertyTitleToLabel);
 v1Tasks.push(AccordionRenamePropertyHeadingToLabel);
+v1Tasks.push(AlertRenamePropertyHeadingToLabel);
 v1Tasks.push(BadgeRemovePropertyHideLabel);
 v1Tasks.push(BadgeRemovePropertyIconOnly);
 v1Tasks.push(BadgeRenamePropertyIconOnlyToHideLabel);
+v1Tasks.push(BadgeRenamePropertyIconToIcons);
 v1Tasks.push(BreadcrumbRenamePropertyAriaLabelToLabel);
+v1Tasks.push(ButtonLinkRemovePropertyAccessKey);
 v1Tasks.push(ButtonLinkRemovePropertyAriaCurrent);
 v1Tasks.push(ButtonLinkRemovePropertyAriaLabel);
 v1Tasks.push(ButtonLinkRenamePropertyIconOnlyToHideLabel);
+v1Tasks.push(ButtonLinkRenamePropertyIconToIcons);
+v1Tasks.push(ButtonRemovePropertyAccessKey);
 v1Tasks.push(ButtonRemovePropertyAriaCurrent);
 v1Tasks.push(ButtonRemovePropertyAriaLabel);
 v1Tasks.push(ButtonRemovePropertyIconAlign);
@@ -102,28 +123,33 @@ v1Tasks.push(InputDateRenamePropertyIconToIcons);
 v1Tasks.push(InputDateRenamePropertyListToSuggestions);
 v1Tasks.push(InputEmailRenamePropertyIconToIcons);
 v1Tasks.push(InputEmailRenamePropertyListToSuggestions);
+v1Tasks.push(InputEmailRemovePropertySize);
 v1Tasks.push(InputFileRenamePropertyIconToIcons);
 v1Tasks.push(InputNumberRenamePropertyIconToIcons);
 v1Tasks.push(InputNumberRenamePropertyListToSuggestions);
+v1Tasks.push(InputNumberRemovePropertyType);
 v1Tasks.push(InputPasswordRenamePropertyIconToIcons);
-v1Tasks.push(InputRadioRenamePropertyListToSuggestions);
+v1Tasks.push(InputPasswordRemovePropertySize);
+v1Tasks.push(InputRadioRenamePropertyListToOptions);
 v1Tasks.push(InputRangeRenamePropertyIconToIcons);
 v1Tasks.push(InputRangeRenamePropertyListToSuggestions);
 v1Tasks.push(InputRenamePropertyIconToIcons);
 v1Tasks.push(InputTextRenamePropertyIconToIcons);
 v1Tasks.push(InputTextRenamePropertyListToSuggestions);
-v1Tasks.push(LinkButtonRemovePropertyAriaControl);
+v1Tasks.push(InputTextRemovePropertySize);
+v1Tasks.push(LinkButtonRemovePropertyAriaControls);
 v1Tasks.push(LinkButtonRemovePropertyAriaExpanded);
 v1Tasks.push(LinkButtonRemovePropertyAriaLabel);
 v1Tasks.push(LinkButtonRemovePropertyAriaSelected);
 v1Tasks.push(LinkButtonRemovePropertyDisabled);
 v1Tasks.push(LinkButtonRenamePropertyAriaCurrentToListenAriaCurrent);
 v1Tasks.push(LinkButtonRenamePropertyIconOnlyToHideLabel);
+v1Tasks.push(LinkButtonRenamePropertyIconToIcons);
 v1Tasks.push(LinkGroupRemovePropertyHeading);
 v1Tasks.push(LinkGroupRemovePropertyOrdered);
 v1Tasks.push(LinkGroupRenamePropertyAriaLabelToLabel);
 v1Tasks.push(LinkGroupRenamePropertyHeadingToLabel);
-v1Tasks.push(LinkRemovePropertyAriaControl);
+v1Tasks.push(LinkRemovePropertyAriaControls);
 v1Tasks.push(LinkRemovePropertyAriaExpanded);
 v1Tasks.push(LinkRemovePropertyAriaLabel);
 v1Tasks.push(LinkRemovePropertyAriaSelected);
@@ -134,6 +160,7 @@ v1Tasks.push(LinkRemovePropertyStealth);
 v1Tasks.push(LinkRemovePropertyUseCase);
 v1Tasks.push(LinkRenamePropertyAriaCurrentToListenAriaCurrent);
 v1Tasks.push(LinkRenamePropertyIconOnlyToHideLabel);
+v1Tasks.push(LinkRenamePropertyIconToIcons);
 v1Tasks.push(LogoRenamePropertyAbbrToOrg);
 v1Tasks.push(ModalRenamePropertyAriaLabelToLabel);
 // v1Tasks.push(NavRemovePropertyHasCompactButton);
@@ -147,11 +174,15 @@ v1Tasks.push(QuoteRenamePropertyCaptionToLabel);
 v1Tasks.push(SelectRenamePropertyHeightToRows);
 v1Tasks.push(SelectRenamePropertyIconToIcons);
 v1Tasks.push(SelectRenamePropertyListToOptions);
+v1Tasks.push(SelectRemovePropertySize);
 v1Tasks.push(SkipNavButtonRenamePropertyAriaLabelToLabel);
 v1Tasks.push(SpanRenamePropertyIconOnlyToHideLabel);
 v1Tasks.push(SpanRenamePropertyIconToIcons);
 v1Tasks.push(SplitButtonRemovePropertyAriaLabel);
-v1Tasks.push(SplitButtonRenamePropertyShowDropdownToShow);
+v1Tasks.push(SplitButtonRemovePropertyAccessKey);
+v1Tasks.push(SplitButtonRemovePropertyShowDropdown);
+v1Tasks.push(SplitButtonRenamePropertyShow);
+v1Tasks.push(SymbolRenamePropertyAriaLabelToLabel);
 v1Tasks.push(TableRenamePropertyCaptionToLabel);
 v1Tasks.push(TabsRenamePropertyAriaLabelToLabel);
 v1Tasks.push(TabsRenamePropertyIconToIcons);
