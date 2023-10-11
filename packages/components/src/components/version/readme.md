@@ -8,17 +8,17 @@ Die **Version**-Komponente stellt kurze Inhalte auf einem farbigen Hintergrund d
 
 ```html
 <div>
-	<kol-version _version="1.44.0"></kol-version>
+	<kol-version _label="1.44.0"></kol-version>
 </div>
 ```
 
 ### Beispiel
 
-<kol-version _version="1.44.0"></kol-version>
+<kol-version _label="1.44.0"></kol-version>
 
 ## Verwendung
 
-Für die Konfiguration steht das Attribut **`_version`** zur Verfügung und nimmt einen beliebigen Text auf, dem in der Komponente ein `v` vorgestellt wird.
+Für die Konfiguration steht das Attribut **`_label`** zur Verfügung und nimmt einen beliebigen Text auf, dem in der Komponente ein `v` vorgestellt wird.
 
 Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 

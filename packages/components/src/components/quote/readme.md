@@ -56,11 +56,11 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 
 ## References
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _target="_blank"></kol-link>
-- <kol-link _href="https://www.mediaevent.de/html/quote.html" _label="https://www.mediaevent.de/html/quote.html" _target="_blank"></kol-link>
-- <kol-link _href="https://www.mediaevent.de/html/cite.html" _label="https://www.mediaevent.de/html/cite.html" _target="_blank"></kol-link>
-- <kol-link _href="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _label="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _target="_blank"></kol-link>
+- <kol-link _href="https://www.mediaevent.de/html/quote.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.mediaevent.de/html/cite.html" _target="_blank"></kol-link>
+- <kol-link _href="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

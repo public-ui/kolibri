@@ -51,8 +51,8 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#checkbox" _label="https://www.w3.org/TR/wai-aria-practices/#checkbox" _target="_blank"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#checkbox" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

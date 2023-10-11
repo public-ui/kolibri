@@ -30,7 +30,7 @@ Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe
 
 ## Links und Referenzen
 
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

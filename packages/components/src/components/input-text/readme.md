@@ -17,7 +17,7 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 <kol-input-text
 	_type="text"
 	_label="Mit Button"
-	_smart-button='{"_icon": "codicon codicon-chrome-close", "_hideLabel": true, "_label": "Löschen"}'
+	_smart-button='{"_icons": "codicon codicon-chrome-close", "_hideLabel": true, "_label": "Löschen"}'
 ></kol-input-text>
 ```
 
@@ -29,7 +29,7 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 <kol-input-text
 	_type="text"
 	_label="Mit Button"
-	_smart-button='{"_icon": "codicon codicon-chrome-close", "_hideLabel": true, "_label": "Löschen"}'></kol-input-text>
+	_smart-button='{"_icons": "codicon codicon-chrome-close", "_hideLabel": true, "_label": "Löschen"}'></kol-input-text>
 
 ## Verwendung
 
@@ -48,8 +48,8 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 
 ## Links und Referenzen
 
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
-- <kol-link _href="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/" _label="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

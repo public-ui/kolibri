@@ -36,7 +36,7 @@ Das gesamte JSON-Objekt muss in eckigen Klammern an das Attribut **`_links`** ü
 <b>Folgende Eigenschaften stehen zur Verfügung:</b>
 
 - **`_href`** übergibt den Link, der für dieses Element verwendet werden soll.
-- **`_icon`** (optional) übergibt den Namen des Icon, wenn zusätzlich zum Text des Elements noch ein Icon angezeigt werden soll. Es stehen die <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Codicons"></kol-link> zur Verfügung
+- **`_icon`** (optional) übergibt den Namen des Icon, wenn zusätzlich zum Text des Elements noch ein Icon angezeigt werden soll. Es stehen die <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Codicons"></kol-link> zur Verfügung
 - **`_hide-label`** (optional). Wenn der Wert auf **true** gesetzt wird, erscheint im Link ausschließlich das Icon, ohne weiteren Text. Die Eigenschaft `_icon` muss gesetzt werden.
 - **`_label`** übergibt den Text, der für dieses Element angezeigt werden soll.
 
@@ -44,13 +44,13 @@ Beispiel für ein JSON-Objekt, das an das Attribut **`_links`** übergeben wird:
 
 ```JSON
 [
-  { '_label': 'Startseite', '_href': '#/', '_icon': 'codicon codicon-home', '_hide-label': true },
+  { '_label': 'Startseite', '_href': '#/', '_icons': 'codicon codicon-home', '_hide-label': true },
   { '_label': '1. Unterseite', '_href': '/unterseite_eins' },
   { '_label': '2. Unterseite', '_href': '/unterseite_zwei' }
 ]
 ```
 
-<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/","_icon":"codicon codicon-home","hide-label": "true"},{"_label":"1. Unterseite","_href":"#/1_unterseite"},{"_label":"2. Unterseite","_href":"#/2_unterseite"}]'></kol-breadcrumb>
+<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/","_icons":"codicon codicon-home","hide-label": "true"},{"_label":"1. Unterseite","_href":"#/1_unterseite"},{"_label":"2. Unterseite","_href":"#/2_unterseite"}]'></kol-breadcrumb>
 
 ### Best practices
 
@@ -81,7 +81,7 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb" _label="https://www.w3.org/TR/wai-aria-practices/#breadcrumb" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
