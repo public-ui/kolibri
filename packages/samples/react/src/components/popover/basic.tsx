@@ -28,8 +28,8 @@ export const PopoverBasic: FC = () => {
 			</KolPopover>
 			<KolButton _label="PR starten" _icons="codicon codicon-git-pull-request" _variant="normal" _on={{ onClick: () => setLogin(!login) }}></KolButton>
 			<KolPopover _show={login}>
-				<KolInputText>Benutzername</KolInputText>
-				<KolInputPassword>Passwort</KolInputPassword>
+				<KolInputText _label={`Benutzername`} />
+				<KolInputPassword _label={`Passwort`} />
 			</KolPopover>
 		</div>
 	);
