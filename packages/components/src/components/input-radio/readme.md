@@ -87,7 +87,6 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 | `_hint`         | `_hint`          | Defines the hint text.                                                                                                                                       | `string \| undefined`                                                                    | `''`         |
 | `_id`           | `_id`            | Defines the internal ID of the primary component element.                                                                                                    | `string \| undefined`                                                                    | `undefined`  |
 | `_label`        | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string \| undefined`                                                                    | `undefined`  |
-| `_list`         | `_list`          | <span style="color:red">**[DEPRECATED]**</span> Use \_options.<br/><br/>Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.                      | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
 | `_name`         | `_name`          | Defines the technical name of an input field.                                                                                                                | `string \| undefined`                                                                    | `undefined`  |
 | `_on`           | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                    | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined` | `undefined`  |
 | `_options`      | `_options`       | Options the user can choose from.                                                                                                                            | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
@@ -105,10 +104,6 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 |      | Die Legende/Überschrift der Radiobuttons. |
 
 ## Dependencies
-
-### Used by
-
-- [kol-input-radio-group](../input-radio-group)
 
 ### Depends on
 
@@ -133,7 +128,6 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  kol-input-radio-group --> kol-input-radio
   style kol-input-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

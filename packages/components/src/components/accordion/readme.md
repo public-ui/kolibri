@@ -109,21 +109,18 @@ Standardansicht gelegt.
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                | Type                                                                                 | Default     |
-| ---------- | ---------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- |
-| `_heading` | `_heading` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string \| undefined`                                                                | `undefined` |
-| `_label`   | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).         | `string \| undefined`                                                                | `undefined` |
-| `_level`   | `_level`   | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                          | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
-| `_on`      | --         | Gibt die EventCallback-Funktionen an.                                                                                      | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
-| `_open`    | `_open`    | If set (to true) opens/expands the element, closes if not set (or set to false).                                           | `boolean \| undefined`                                                               | `false`     |
+| Property              | Attribute | Description                                                                                                        | Type                                                                                 | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ----------- |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                             | `undefined` |
+| `_level`              | `_level`  | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                  | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
+| `_on`                 | --        | Gibt die EventCallback-Funktionen an.                                                                              | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
+| `_open`               | `_open`   | If set (to true) opens/expands the element, closes if not set (or set to false).                                   | `boolean \| undefined`                                                               | `false`     |
 
 ## Slots
 
-| Slot        | Description                                                                                            |
-| ----------- | ------------------------------------------------------------------------------------------------------ |
-|             | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.                        |
-| `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.                        |
-| `"header"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions. |
+| Slot | Description                                                                     |
+| ---- | ------------------------------------------------------------------------------- |
+|      | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions. |
 
 ## Dependencies
 

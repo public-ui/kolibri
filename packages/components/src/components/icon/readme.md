@@ -46,13 +46,10 @@ Mittels der Property `_label` muss ein Kontext-relevantes Icon beschriftet werde
 
 ## Properties
 
-| Property     | Attribute     | Description                                                                                                                                                                                                                                       | Type                  | Default     |
-| ------------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `_ariaLabel` | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente.                                                                                                       | `string \| undefined` | `undefined` |
-| `_icon`      | `_icon`       | <span style="color:red">**[DEPRECATED]**</span> Use \_icons.<br/><br/>                                                                                                                                                                            | `string \| undefined` | `undefined` |
-| `_icons`     | `_icons`      | Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).                                                                                                                                                                                   | `string \| undefined` | `undefined` |
-| `_label`     | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                                                                                                                | `string \| undefined` | `undefined` |
-| `_part`      | `_part`       | <span style="color:red">**[DEPRECATED]**</span> Das Styling sollte stets über CSS erfolgen.<br/><br/>Deprecated: Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) | `string \| undefined` | `undefined` |
+| Property              | Attribute | Description                                                                                                        | Type     | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | -------- | ----------- |
+| `_icons` _(required)_ | `_icons`  | Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).                                                    | `string` | `undefined` |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string` | `undefined` |
 
 ## Shadow Parts
 
@@ -67,8 +64,6 @@ Mittels der Property `_label` muss ein Kontext-relevantes Icon beschriftet werde
 - [kol-alert-wc](../alert)
 - [kol-breadcrumb](../breadcrumb)
 - [kol-details](../details)
-- [kol-icon-font-awesome](../icon-font-awesome)
-- [kol-icon-icofont](../icon-icofont)
 - kol-input
 - [kol-input-checkbox](../input-checkbox)
 - kol-link-wc
@@ -81,8 +76,6 @@ graph TD;
   kol-alert-wc --> kol-icon
   kol-breadcrumb --> kol-icon
   kol-details --> kol-icon
-  kol-icon-font-awesome --> kol-icon
-  kol-icon-icofont --> kol-icon
   kol-input --> kol-icon
   kol-input-checkbox --> kol-icon
   kol-link-wc --> kol-icon
