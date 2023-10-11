@@ -18,12 +18,13 @@ import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/to
 import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
+import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchString } from '../../utils/prop.validators';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { API } from './types';
+import { validateAriaSelected } from '../../types/props/aria-selected';
 
 /**
  * @internal
@@ -231,7 +232,7 @@ export class KolButtonWc implements API {
 
 	@Watch('_ariaSelected')
 	public validateAriaSelected(value?: boolean): void {
-		watchBoolean(this, '_ariaSelected', value);
+		validateAriaSelected(this, value);
 	}
 
 	@Watch('_customClass')

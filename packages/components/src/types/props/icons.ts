@@ -100,13 +100,3 @@ export const validateIcons = (component: Generic.Element.Component, value?: Icon
 		);
 	});
 };
-
-export const watchIconAlign = (component: Generic.Element.Component, value?: AlignPropType): void => {
-	watchValidator(component, '_iconAlign', (value) => value === 'left' || value === 'right', new Set(['Alignment {left, right, top, bottom}']), value, {
-		hooks: {
-			beforePatch: () => {
-				beforePatchIcon(component);
-			},
-		},
-	});
-};
