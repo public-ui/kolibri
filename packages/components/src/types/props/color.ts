@@ -22,13 +22,13 @@ export type ColorPair = {
 
 export type PropColor = ColorPair;
 
-type typeOfColorType = 'string' | 'ColorPair' | 'DeprecatedColorPair' | null;
+type typeOfColorType = 'string' | 'ColorPair' | null;
 
 const HEX_REGEX = /^#((\d|[a-f]){8}|(\d|[a-f]){6}|(\d|[a-f]){3,4})$/i;
 function isHexString(value: string): boolean {
 	return HEX_REGEX.test(value);
 }
-/* checks if the string is valid JSON and if the resulting object is a valid ColorPair or DeprecatedColorPair and returns it, or null if invalid. */
+/* checks if the string is valid JSON and if the resulting object is a valid ColorPair and returns it, or null if invalid. */
 function isColorObjectString(value: string): { type: typeOfColorType; value: PropColor | null } {
 	if (value.startsWith('{')) {
 		try {
@@ -78,7 +78,6 @@ function validatorFunction(value?: Stringified<PropColor>): boolean {
 			return false;
 		case 'string':
 		case 'ColorPair':
-		case 'DeprecatedColorPair':
 			return valueType.valid;
 	}
 }
@@ -95,8 +94,7 @@ export const handleColorChange = (value: unknown): ColorPair => {
 		case 'string':
 			colorContrast = createContrastColorPair(valueType.value as string);
 			break;
-		case 'ColorPair':
-		case 'DeprecatedColorPair': {
+		case 'ColorPair': {
 			const asColorPair = valueType.value as ColorPair;
 			let foreground = '';
 			if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
