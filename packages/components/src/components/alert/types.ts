@@ -28,4 +28,4 @@ type OptionalAlertStates = OptionalAlertProps;
 
 export type Props = Generic.Element.Members<RequiredAlertProps, OptionalAlertProps>;
 export type States = Generic.Element.Members<RequiredAlertStates, OptionalAlertStates>;
-export type API = Generic.Element.ComponentApi<RequiredAlertProps, OptionalAlertProps, RequiredAlertStates, OptionalAlertStates>; // deprecated prop omitted
+export type API = Generic.Element.ComponentApi<RequiredAlertProps, OptionalAlertProps, RequiredAlertStates, OptionalAlertStates>;
