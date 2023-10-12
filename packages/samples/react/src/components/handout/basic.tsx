@@ -3,7 +3,6 @@ import {
 	KolAbbr,
 	KolAccordion,
 	KolAlert,
-	KolBadge,
 	KolBreadcrumb,
 	KolButton,
 	KolButtonLink,
@@ -11,9 +10,6 @@ import {
 	KolDetails,
 	KolForm,
 	KolHeading,
-	KolIcon,
-	KolImage,
-	KolIndentedText,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -27,22 +23,15 @@ import {
 	KolKolibri,
 	KolLink,
 	KolLinkButton,
-	KolLinkGroup,
 	KolLogo,
-	KolModal,
 	KolNav,
-	KolPagination,
 	KolProgress,
-	KolQuote,
 	KolSelect,
-	KolSkipNav,
-	KolSpin,
 	KolTable,
 	KolTabs,
 	KolTextarea,
 	KolVersion,
 } from '@public-ui/react';
-import PackageJson from '../../../package.json';
 import React, { FC } from 'react';
 import { getTheme, getThemeName } from '../../shares/store';
 
@@ -882,17 +871,17 @@ export const HandoutBasic: FC = () => (
 			</KolCard>
 			<KolCard className="col-span-3" _label="Alert" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
-					<KolAlert _heading="Default message" _type="default">
+					<KolAlert _label="Default message" _type="default">
 						This is the text of the alert.
 					</KolAlert>
 					<KolAlert _type="success">Success message text</KolAlert>
 					<KolAlert _type="error" _hasCloser>
 						This is a error message text.
 					</KolAlert>
-					<KolAlert _heading="Info card" _type="info" _variant="card">
+					<KolAlert _label="Info card" _type="info" _variant="card">
 						This is the text of the alert.
 					</KolAlert>
-					<KolAlert _heading="Warning card" _type="warning" _hasCloser _variant="card">
+					<KolAlert _label="Warning card" _type="warning" _hasCloser _variant="card">
 						This is the text of the alert.
 					</KolAlert>
 				</div>
@@ -983,7 +972,7 @@ export const HandoutBasic: FC = () => (
 						<KolInputRadio className="herr-frau" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1" _label={`Anrede`} />
 						<div className="grid gap-4">
 							<KolInputRadio _orientation="horizontal" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="0" _label={`Anrede`} />
-							<KolInputCheckbox _variant="checkbox" _label="">
+							<KolInputCheckbox _label="">
 								Ich akzeptiere die <KolAbbr _label="Allgemeine Geschäftsbedingungen">AGB</KolAbbr>.
 							</KolInputCheckbox>
 						</div>
