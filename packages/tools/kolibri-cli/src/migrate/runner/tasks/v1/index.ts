@@ -82,7 +82,12 @@ import {
 	SplitButtonRenamePropertyShow,
 } from './split-button';
 import { TableRenamePropertyCaptionToLabel } from './table';
-import { TabsRenamePropertyAriaLabelToLabel, TabsRenamePropertyIconToIcons, TabsRenamePropertyTabAlignToAlign } from './tabs';
+import {
+	TabsRenamePropertyAriaLabelToLabel,
+	TabsRenamePropertyIconOnlyToHideLabel,
+	TabsRenamePropertyIconToIcons,
+	TabsRenamePropertyTabAlignToAlign,
+} from './tabs';
 import { ToastRemovePropertyNameShowDuration, ToastRenamePropertyHeadingToLabel } from './toast';
 import { VersionRenamePropertyVersionToLabel } from './version';
 import { AlertRenamePropertyHeadingToLabel } from './alert';
@@ -187,6 +192,7 @@ v1Tasks.push(TableRenamePropertyCaptionToLabel);
 v1Tasks.push(TabsRenamePropertyAriaLabelToLabel);
 v1Tasks.push(TabsRenamePropertyIconToIcons);
 v1Tasks.push(TabsRenamePropertyTabAlignToAlign);
+v1Tasks.push(TabsRenamePropertyIconOnlyToHideLabel);
 v1Tasks.push(ToastRemovePropertyNameShowDuration);
 v1Tasks.push(ToastRenamePropertyHeadingToLabel);
 v1Tasks.push(VersionRenamePropertyVersionToLabel);
