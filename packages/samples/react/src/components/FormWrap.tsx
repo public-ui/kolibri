@@ -17,7 +17,7 @@ export const FormWrap: FC<FormWrapProps> = (props) => (
 					_label="Bunte Icons"
 					_icons={{
 						left: { icon: 'codicon codicon-heart-filled', style: { color: '#cc006e' } },
-						right: { icon: 'codicon codicon-squirrel', style: { color: '#b41b1b', fontSize: '24px' } },
+						right: { icon: 'codicon codicon-squirrel', style: { color: '#b41b1b' } },
 					}}
 					_type="submit"
 					_variant="secondary"
