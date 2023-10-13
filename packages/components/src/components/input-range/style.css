@@ -45,3 +45,10 @@ input[type='range']::-moz-range-thumb {
 .error.hidden {
 	display: none;
 }
+
+/* Fix missing outline in Chromium-based browsers on Windows in high contrast mode. */
+@media (prefers-contrast: more) {
+	::-webkit-slider-thumb {
+		outline: 1px solid currentColor;
+	}
+}
