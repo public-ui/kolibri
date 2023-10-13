@@ -1,12 +1,18 @@
 import { KoliBri } from '@public-ui/schema';
 
 /**
- * No-op tag function to help with CSS syntax highlighting and provide Prettier support
+ * Tag-function serves two purposes:
+ * 1) By being named `css`, it provides developer support with syntax highlighting and Prettier support
+ * 2) It wraps the styles in a CSS layer
  */
-const css = (input: TemplateStringsArray): string => input.join(``);
+const cssWithCustomLayerName =
+	(layerName: string) =>
+	(input: TemplateStringsArray): string =>
+		`@layer ${layerName} { ${input.join(``)} }`;
+const css = (input: TemplateStringsArray): string => cssWithCustomLayerName('kol-theme-component')(input);
 
 export const DEFAULT = KoliBri.createTheme('default', {
-	GLOBAL: css`
+	GLOBAL: cssWithCustomLayerName('kol-theme-global')`
 		:host {
 			--border-radius: var(--kolibri-border-radius, 5px);
 			--font-family: var(--kolibri-font-family, BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif);
@@ -2416,7 +2422,9 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			cursor: pointer;
 		}
 	`,
-	'KOL-SPLIT-BUTTON': `.popover {
-		background: #fff;
-	}`,
+	'KOL-SPLIT-BUTTON': css`
+		.popover {
+			background: #fff;
+		}
+	`,
 });
