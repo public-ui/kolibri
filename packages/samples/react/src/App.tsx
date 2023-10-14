@@ -10,6 +10,7 @@ import PackageJson from '@public-ui/components/package.json';
 import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
 import { Sidebar } from './components/Sidebar';
 import { useLocation } from 'react-router';
+import { HideMenusContext } from './shares/HideMenusContext';
 
 setStorage(localStorage);
 
@@ -116,24 +117,26 @@ export const App: FC = () => {
 	};
 
 	return (
-		<div className={!hideMenus ? 'app-container' : ''} data-theme={theme}>
-			{!hideMenus && (
-				<Sidebar
-					version={PackageJson.version}
-					theme={theme}
-					sample={routerLocation.pathname}
-					routes={ROUTES}
-					routeList={ROUTE_LIST}
-					onThemeChange={handleThemeChange}
-				/>
-			)}
+		<HideMenusContext.Provider value={hideMenus}>
+			<div className={!hideMenus ? 'app-container' : ''} data-theme={theme}>
+				{!hideMenus && (
+					<Sidebar
+						version={PackageJson.version}
+						theme={theme}
+						sample={routerLocation.pathname}
+						routes={ROUTES}
+						routeList={ROUTE_LIST}
+						onThemeChange={handleThemeChange}
+					/>
+				)}
 
-			<div className="p-4" id="route-container">
-				<Routes>
-					{ROUTE_TREE}
-					<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
-				</Routes>
+				<div className="p-4" id="route-container">
+					<Routes>
+						{ROUTE_TREE}
+						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
+					</Routes>
+				</div>
 			</div>
-		</div>
+		</HideMenusContext.Provider>
 	);
 };
