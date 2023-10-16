@@ -72,7 +72,7 @@ importers:
         specifier: 11.2.14
         version: 11.2.14(rxjs@6.5.5)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -117,7 +117,7 @@ importers:
         specifier: 12.2.17
         version: 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -162,7 +162,7 @@ importers:
         specifier: 13.4.0
         version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -207,7 +207,7 @@ importers:
         specifier: 14.3.0
         version: 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -252,7 +252,7 @@ importers:
         specifier: 15.2.9
         version: 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -297,7 +297,7 @@ importers:
         specifier: 16.2.7
         version: 16.2.7(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -333,7 +333,7 @@ importers:
   packages/adapters/hydrate:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       rimraf:
         specifier: 3.0.2
@@ -342,14 +342,14 @@ importers:
   packages/adapters/preact:
     dependencies:
       '@public-ui/react':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../react
       preact:
         specifier: '>=10.11.3'
         version: 10.11.3
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       react:
         specifier: 18.2.0
@@ -367,7 +367,7 @@ importers:
   packages/adapters/react:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -403,7 +403,7 @@ importers:
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       react:
         specifier: '>=16.14.0'
@@ -413,7 +413,7 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@public-ui/react':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../react
       cpy-cli:
         specifier: 5.0.0
@@ -425,7 +425,7 @@ importers:
   packages/adapters/solid:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -455,7 +455,7 @@ importers:
         specifier: 7.23.0
         version: 7.23.0
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -488,7 +488,7 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../schema
       i18next:
         specifier: 23.5.1
@@ -541,10 +541,10 @@ importers:
         version: 3.0.1
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.3
-        version: 6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2)
+        version: 6.7.3(@typescript-eslint/parser@6.7.5)(eslint@8.50.0)(typescript@5.2.2)
       '@typescript-eslint/parser':
-        specifier: 6.7.3
-        version: 6.7.3(eslint@8.50.0)(typescript@5.2.2)
+        specifier: 6.7.5
+        version: 6.7.5(eslint@8.50.0)(typescript@5.2.2)
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.31)
@@ -700,13 +700,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../components
       '@public-ui/solid':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../adapters/solid
       '@public-ui/themes':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../themes
       monaco-editor:
         specifier: 0.43.0
@@ -800,13 +800,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@public-ui/react':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../adapters/react
       '@public-ui/themes':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../themes
       '@types/node':
         specifier: 20.8.0
@@ -880,10 +880,10 @@ importers:
         version: 20.7.2
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.3
-        version: 6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2)
+        version: 6.7.3(@typescript-eslint/parser@6.7.5)(eslint@8.50.0)(typescript@5.2.2)
       '@typescript-eslint/parser':
-        specifier: 6.7.3
-        version: 6.7.3(eslint@8.50.0)(typescript@5.2.2)
+        specifier: 6.7.5
+        version: 6.7.5(eslint@8.50.0)(typescript@5.2.2)
       eslint:
         specifier: 8.50.0
         version: 8.50.0
@@ -900,21 +900,21 @@ importers:
   packages/themes:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../schema
       '@types/node':
         specifier: ts5.1
         version: 20.7.2
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.3
-        version: 6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2)
+        version: 6.7.3(@typescript-eslint/parser@6.7.5)(eslint@8.50.0)(typescript@5.2.2)
       '@typescript-eslint/parser':
-        specifier: 6.7.3
-        version: 6.7.3(eslint@8.50.0)(typescript@5.2.2)
+        specifier: 6.7.5
+        version: 6.7.5(eslint@8.50.0)(typescript@5.2.2)
       eslint:
         specifier: 8.50.0
         version: 8.50.0
@@ -934,14 +934,14 @@ importers:
   packages/themes/bmf:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -953,14 +953,14 @@ importers:
   packages/themes/bzst:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -972,14 +972,14 @@ importers:
   packages/themes/default:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -991,14 +991,14 @@ importers:
   packages/themes/ecl:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1013,14 +1013,14 @@ importers:
   packages/themes/itzbund:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1032,14 +1032,14 @@ importers:
   packages/themes/mfm:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1051,14 +1051,14 @@ importers:
   packages/themes/zoll:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1095,7 +1095,7 @@ importers:
         version: 7.5.4
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@types/gradient-string':
         specifier: 1.1.3
@@ -1105,10 +1105,10 @@ importers:
         version: 20.8.0
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.3
-        version: 6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2)
+        version: 6.7.3(@typescript-eslint/parser@6.7.5)(eslint@8.50.0)(typescript@5.2.2)
       '@typescript-eslint/parser':
-        specifier: 6.7.3
-        version: 6.7.3(eslint@8.50.0)(typescript@5.2.2)
+        specifier: 6.7.5
+        version: 6.7.5(eslint@8.50.0)(typescript@5.2.2)
       cpy-cli:
         specifier: 5.0.0
         version: 5.0.0
@@ -1164,7 +1164,7 @@ importers:
         specifier: 1.38.1
         version: 1.38.1
       '@public-ui/sample-react':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../samples/react
       portfinder:
         specifier: 1.0.32
@@ -7805,7 +7805,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@typescript-eslint/eslint-plugin@6.7.3(@typescript-eslint/parser@6.7.3)(eslint@8.50.0)(typescript@5.2.2):
+  /@typescript-eslint/eslint-plugin@6.7.3(@typescript-eslint/parser@6.7.5)(eslint@8.50.0)(typescript@5.2.2):
     resolution: {integrity: sha512-vntq452UHNltxsaaN+L9WyuMch8bMd9CqJ3zhzTPXXidwbf5mqqKCVXEuvRZUqLJSTLeWE65lQwyXsRGnXkCTA==}
     engines: {node: ^16.0.0 || >=18.0.0}
     peerDependencies:
@@ -7817,7 +7817,7 @@ packages:
         optional: true
     dependencies:
       '@eslint-community/regexpp': 4.8.1
-      '@typescript-eslint/parser': 6.7.3(eslint@8.50.0)(typescript@5.2.2)
+      '@typescript-eslint/parser': 6.7.5(eslint@8.50.0)(typescript@5.2.2)
       '@typescript-eslint/scope-manager': 6.7.3
       '@typescript-eslint/type-utils': 6.7.3(eslint@8.50.0)(typescript@5.2.2)
       '@typescript-eslint/utils': 6.7.3(eslint@8.50.0)(typescript@5.2.2)
@@ -7854,8 +7854,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@typescript-eslint/parser@6.7.3(eslint@8.50.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-TlutE+iep2o7R8Lf+yoer3zU6/0EAUc8QIBB3GYBc1KGz4c4TRm83xwXUZVPlZ6YCLss4r77jbu6j3sendJoiQ==}
+  /@typescript-eslint/parser@6.7.5(eslint@8.50.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-bIZVSGx2UME/lmhLcjdVc7ePBwn7CLqKarUBL4me1C5feOd663liTGjMBGVcGr+BhnSLeP4SgwdvNnnkbIdkCw==}
     engines: {node: ^16.0.0 || >=18.0.0}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
@@ -7864,10 +7864,10 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/scope-manager': 6.7.3
-      '@typescript-eslint/types': 6.7.3
-      '@typescript-eslint/typescript-estree': 6.7.3(typescript@5.2.2)
-      '@typescript-eslint/visitor-keys': 6.7.3
+      '@typescript-eslint/scope-manager': 6.7.5
+      '@typescript-eslint/types': 6.7.5
+      '@typescript-eslint/typescript-estree': 6.7.5(typescript@5.2.2)
+      '@typescript-eslint/visitor-keys': 6.7.5
       debug: 4.3.4(supports-color@8.1.1)
       eslint: 8.50.0
       typescript: 5.2.2
@@ -7888,6 +7888,14 @@ packages:
     dependencies:
       '@typescript-eslint/types': 6.7.3
       '@typescript-eslint/visitor-keys': 6.7.3
+    dev: true
+
+  /@typescript-eslint/scope-manager@6.7.5:
+    resolution: {integrity: sha512-GAlk3eQIwWOJeb9F7MKQ6Jbah/vx1zETSDw8likab/eFcqkjSD7BI75SDAeC5N2L0MmConMoPvTsmkrg71+B1A==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    dependencies:
+      '@typescript-eslint/types': 6.7.5
+      '@typescript-eslint/visitor-keys': 6.7.5
     dev: true
 
   /@typescript-eslint/type-utils@6.7.0(eslint@8.49.0)(typescript@5.2.2):
@@ -7938,6 +7946,11 @@ packages:
     engines: {node: ^16.0.0 || >=18.0.0}
     dev: true
 
+  /@typescript-eslint/types@6.7.5:
+    resolution: {integrity: sha512-WboQBlOXtdj1tDFPyIthpKrUb+kZf2VroLZhxKa/VlwLlLyqv/PwUNgL30BlTVZV1Wu4Asu2mMYPqarSO4L5ZQ==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    dev: true
+
   /@typescript-eslint/typescript-estree@6.7.0(typescript@5.2.2):
     resolution: {integrity: sha512-dPvkXj3n6e9yd/0LfojNU8VMUGHWiLuBZvbM6V6QYD+2qxqInE7J+J/ieY2iGwR9ivf/R/haWGkIj04WVUeiSQ==}
     engines: {node: ^16.0.0 || >=18.0.0}
@@ -7969,6 +7982,27 @@ packages:
     dependencies:
       '@typescript-eslint/types': 6.7.3
       '@typescript-eslint/visitor-keys': 6.7.3
+      debug: 4.3.4(supports-color@8.1.1)
+      globby: 11.1.0
+      is-glob: 4.0.3
+      semver: 7.5.4
+      ts-api-utils: 1.0.2(typescript@5.2.2)
+      typescript: 5.2.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@typescript-eslint/typescript-estree@6.7.5(typescript@5.2.2):
+    resolution: {integrity: sha512-NhJiJ4KdtwBIxrKl0BqG1Ur+uw7FiOnOThcYx9DpOGJ/Abc9z2xNzLeirCG02Ig3vkvrc2qFLmYSSsaITbKjlg==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/types': 6.7.5
+      '@typescript-eslint/visitor-keys': 6.7.5
       debug: 4.3.4(supports-color@8.1.1)
       globby: 11.1.0
       is-glob: 4.0.3
@@ -8028,6 +8062,14 @@ packages:
     engines: {node: ^16.0.0 || >=18.0.0}
     dependencies:
       '@typescript-eslint/types': 6.7.3
+      eslint-visitor-keys: 3.4.3
+    dev: true
+
+  /@typescript-eslint/visitor-keys@6.7.5:
+    resolution: {integrity: sha512-3MaWdDZtLlsexZzDSdQWsFQ9l9nL8B80Z4fImSpyllFC/KLqWQRdEcB+gGGO+N3Q2uL40EsG66wZLsohPxNXvg==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    dependencies:
+      '@typescript-eslint/types': 6.7.5
       eslint-visitor-keys: 3.4.3
     dev: true
 
