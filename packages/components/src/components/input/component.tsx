@@ -3,7 +3,7 @@ import { Component, Element, Fragment, h, Host, JSX, Prop } from '@stencil/core'
 
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
-import { KoliBriCustomIcon, KoliBriHorizontalIcons } from '../../types/icons';
+import { AnyIconFontClass, KoliBriCustomIcon, KoliBriHorizontalIcons } from '../../types/icons';
 import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
@@ -35,6 +35,10 @@ export class KolInput implements Props {
 
 	private getIconsProp(): KoliBriHorizontalIcons | undefined {
 		return this._icons || this._icon;
+	}
+
+	private getIconStyles(icon?: AnyIconFontClass | KoliBriCustomIcon): Record<string, string> {
+		return icon && typeof icon === 'object' && icon.style ? icon.style : {};
 	}
 
 	public render(): JSX.Element {
@@ -73,7 +77,13 @@ export class KolInput implements Props {
 						'icon-right': typeof this.getIconsProp()?.right === 'object',
 					}}
 				>
-					{this.getIconsProp()?.left && <kol-icon _ariaLabel="" _icons={(this.getIconsProp()?.left as KoliBriCustomIcon).icon}></kol-icon>}
+					{this.getIconsProp()?.left && (
+						<kol-icon
+							_ariaLabel=""
+							_icons={(this.getIconsProp()?.left as KoliBriCustomIcon).icon}
+							style={this.getIconStyles(this.getIconsProp()?.left)}
+						></kol-icon>
+					)}
 					<div ref={this.catchInputSlot} id={this.slotName} class="input-slot"></div>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
@@ -88,7 +98,13 @@ export class KolInput implements Props {
 							_variant={this._smartButton._variant}
 						></kol-button-wc>
 					)}
-					{this.getIconsProp()?.right && <kol-icon _ariaLabel="" _icons={(this.getIconsProp()?.right as KoliBriCustomIcon).icon}></kol-icon>}
+					{this.getIconsProp()?.right && (
+						<kol-icon
+							_ariaLabel=""
+							_icons={(this.getIconsProp()?.right as KoliBriCustomIcon).icon}
+							style={this.getIconStyles(this.getIconsProp()?.right)}
+						></kol-icon>
+					)}
 				</div>
 				{useTooltopInsteadOfLabel && (
 					<kol-tooltip-wc
