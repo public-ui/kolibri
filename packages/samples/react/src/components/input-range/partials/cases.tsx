@@ -14,7 +14,7 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, Components.K
 				_max={50}
 				_error={ERROR_MSG}
 				_label="Schieberegler"
-				_icon={{
+				_icons={{
 					left: {
 						icon: 'codicon codicon-arrow-left',
 					},

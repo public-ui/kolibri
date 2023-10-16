@@ -15,7 +15,7 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 				_touched
 				_placeholder="Mit Icons"
 				_label="Zahleneingabe"
-				_icon={{
+				_icons={{
 					left: {
 						icon: 'codicon codicon-arrow-left',
 					},

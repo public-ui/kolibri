@@ -5,7 +5,7 @@ import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative
 import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { ButtonTypePropType } from '../../types/props/button-type';
-import { IconPropType } from '../../types/props/icon';
+import { IconsPropType } from '../../types/props/icons';
 import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { NamePropType } from '../../types/props/name';
@@ -43,7 +43,7 @@ export class KolButtonLink implements Props {
 					_ariaLabel={this._ariaLabel}
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
-					_icon={this._icon}
+					_icons={this._icons || this._icon}
 					_hideLabel={this._hideLabel || this._iconOnly}
 					_id={this._id}
 					_label={this._label}
@@ -112,9 +112,14 @@ export class KolButtonLink implements Props {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: IconPropType;
+	@Prop() public _icon?: IconsPropType;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: IconsPropType;
 
 	/**
 	 * Deprecated: Hides the label and shows the description in a Tooltip instead.

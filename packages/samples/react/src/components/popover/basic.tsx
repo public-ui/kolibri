@@ -12,21 +12,21 @@ export const PopoverBasic: FC = () => {
 
 	return (
 		<div className="grid gap-4 max-w-[400px] mx-auto pt-8">
-			<KolButton _label="Oben" _icon="codicon codicon-arrow-up" _variant="primary" _on={{ onClick: () => setTop(!top) }}></KolButton>
+			<KolButton _label="Oben" _icons="codicon codicon-arrow-up" _variant="primary" _on={{ onClick: () => setTop(!top) }}></KolButton>
 			<KolPopover _show={top}>Ich bin oberhalb</KolPopover>
-			<KolButton _label="Rechts" _icon="codicon codicon-arrow-right" _variant="danger" _on={{ onClick: () => setRight(!right) }}></KolButton>
+			<KolButton _label="Rechts" _icons="codicon codicon-arrow-right" _variant="danger" _on={{ onClick: () => setRight(!right) }}></KolButton>
 			<KolPopover _align="right" _show={right}>
 				Ich bin rechts
 			</KolPopover>
-			<KolButton _label="Unten" _icon="codicon codicon-arrow-down" _variant="secondary" _on={{ onClick: () => setBottom(!bottom) }}></KolButton>
+			<KolButton _label="Unten" _icons="codicon codicon-arrow-down" _variant="secondary" _on={{ onClick: () => setBottom(!bottom) }}></KolButton>
 			<KolPopover _align="bottom" _show={bottom}>
 				Ich bin unterhalb
 			</KolPopover>
-			<KolButton _label="Links" _icon="codicon codicon-arrow-left" _variant="normal" _on={{ onClick: () => setLeft(!left) }}></KolButton>
+			<KolButton _label="Links" _icons="codicon codicon-arrow-left" _variant="normal" _on={{ onClick: () => setLeft(!left) }}></KolButton>
 			<KolPopover _align="left" _show={left}>
 				Ich bin links
 			</KolPopover>
-			<KolButton _label="PR starten" _icon="codicon codicon-git-pull-request" _variant="normal" _on={{ onClick: () => setLogin(!login) }}></KolButton>
+			<KolButton _label="PR starten" _icons="codicon codicon-git-pull-request" _variant="normal" _on={{ onClick: () => setLogin(!login) }}></KolButton>
 			<KolPopover _show={login}>
 				<KolInputText>Benutzername</KolInputText>
 				<KolInputPassword>Passwort</KolInputPassword>

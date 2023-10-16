@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
+import { KoliBriIconsProp } from '../../types/icons';
 import { AlignPropType } from '../../types/props/align';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
@@ -45,7 +45,7 @@ export class KolLink implements LinkProps {
 					_download={this._download}
 					_hideLabel={this._hideLabel}
 					_href={this._href}
-					_icon={this._icon}
+					_icons={this._icons || this._icon}
 					_iconAlign={this._iconAlign}
 					_label={this._label}
 					_listenAriaCurrent={this._listenAriaCurrent}
@@ -131,9 +131,14 @@ export class KolLink implements LinkProps {
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: Stringified<KoliBriIconsProp>;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 
 	/**
 	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.

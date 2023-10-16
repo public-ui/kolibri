@@ -11,7 +11,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		{
 			_href: '…', // ⚠ required
 			_hideLabel: false,
-			_icon: {},
+			_icons: {},
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
@@ -46,7 +46,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 					? getIconHtml(
 							{
 								_label: 'Der Link wird in einem neuen Tab geöffnet.',
-								_icon: 'codicon codicon-link-external',
+								_icons: 'codicon codicon-link-external',
 							},
 							' class="external-link-icon"'
 					  )

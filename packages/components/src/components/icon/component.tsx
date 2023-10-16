@@ -29,7 +29,7 @@ export class KolIcon implements API {
 					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
 					 */
 					aria-label={ariaShow ? this.state._label : undefined}
-					class={this.state._icon}
+					class={this.state._icons}
 					part="icon"
 					role="img"
 				></i>
@@ -44,9 +44,14 @@ export class KolIcon implements API {
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon!: string;
+	@Prop() public _icon?: string;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: string;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -61,7 +66,7 @@ export class KolIcon implements API {
 	@Prop() public _part?: string;
 
 	@State() public state: States = {
-		_icon: 'codicon codicon-home',
+		_icons: 'codicon codicon-home',
 		// _label: '', // ⚠ required TODO: required in v2
 	};
 
@@ -75,7 +80,12 @@ export class KolIcon implements API {
 
 	@Watch('_icon')
 	public validateIcon(value?: string): void {
-		watchString(this, '_icon', value, { required: true });
+		this.validateIcons(value);
+	}
+
+	@Watch('_icons')
+	public validateIcons(value?: string): void {
+		watchString(this, '_icons', value);
 	}
 
 	@Watch('_label')
@@ -94,7 +104,7 @@ export class KolIcon implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateIcon(this._icon);
+		this.validateIcons(this._icons || this._icon);
 		this.validateLabel(this._label || this._ariaLabel);
 		this.validatePart(this._part);
 	}

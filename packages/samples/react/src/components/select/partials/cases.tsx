@@ -49,7 +49,7 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				_options={SALUTATION_OPTIONS}
 				_error={ERROR_MSG}
 				_label="Anrede"
-				_icon={{
+				_icons={{
 					left: {
 						icon: 'codicon codicon-arrow-left',
 					},

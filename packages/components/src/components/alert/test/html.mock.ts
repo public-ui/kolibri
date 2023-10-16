@@ -34,7 +34,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 								: props._type === 'info'
 								? 'kol-info'
 								: 'kol-message',
-						_icon:
+						_icons:
 							props._type === 'success'
 								? 'codicon codicon-pass'
 								: props._type === 'error'
@@ -74,7 +74,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 						? getButtonWcHtml(
 								{
 									_hideLabel: true,
-									_icon: {
+									_icons: {
 										left: {
 											icon: 'codicon codicon-close',
 										},

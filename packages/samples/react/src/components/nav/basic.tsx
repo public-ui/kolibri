@@ -9,7 +9,7 @@ export const NavBasic: FC = () => (
 		_links={[
 			{
 				_label: 'Homepage',
-				_icon: 'fa-solid fa-house',
+				_icons: 'fa-solid fa-house',
 				_href: '#/',
 			},
 			{
@@ -34,7 +34,7 @@ export const NavBasic: FC = () => (
 						_active: true,
 						_label: '3.3 Navigation point',
 						_href: '#abc',
-						_icon: 'fa-solid fa-cat',
+						_icons: 'fa-solid fa-cat',
 						_children: [
 							{
 								_active: true,

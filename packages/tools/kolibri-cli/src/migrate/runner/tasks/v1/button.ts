@@ -6,3 +6,4 @@ export const ButtonRemovePropertyAriaLabel = RemovePropertyNameTask.getInstance(
 // @todo: handle _icon-align in _icon
 export const ButtonRemovePropertyIconAlign = RemovePropertyNameTask.getInstance('kol-button', '_icon-align', '^1');
 export const ButtonRenamePropertyIconOnlyToHideLabel = RenamePropertyNameTask.getInstance('kol-button', '_icon-only', '_hide-label', '^1');
+export const ButtonRenamePropertyIconToIcons = RenamePropertyNameTask.getInstance('kol-button', '_icon', '_icons', '^1');

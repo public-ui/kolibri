@@ -13,12 +13,12 @@ import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./component
 import { ImageSourcePropType } from "./types/props/image-source";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
-import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
+import { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
 import { ButtonProps } from "./components/button/types";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrentPropType } from "./types/props/aria-current";
 import { CustomClassPropType } from "./types/props/custom-class";
-import { IconPropType } from "./types/props/icon";
+import { IconsPropType } from "./types/props/icons";
 import { AlignPropType } from "./types/props/align";
 import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 import { StencilUnknown } from "./types/unknown";
@@ -36,7 +36,7 @@ import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { SuggestionsPropType } from "./types/props/suggestions";
-import { InputCheckboxIconProp, InputCheckboxVariant } from "./components/input-checkbox/types";
+import { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
@@ -55,6 +55,7 @@ import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
+import { MaxPropType } from "./types/props/max";
 import { KoliBriProgressVariantType } from "./types/progress";
 import { KoliBriQuoteVariant } from "./components/quote/types";
 import { RowsPropType } from "./types/props/rows";
@@ -72,12 +73,12 @@ export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./component
 export { ImageSourcePropType } from "./types/props/image-source";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
-export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
+export { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
 export { ButtonProps } from "./components/button/types";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrentPropType } from "./types/props/aria-current";
 export { CustomClassPropType } from "./types/props/custom-class";
-export { IconPropType } from "./types/props/icon";
+export { IconsPropType } from "./types/props/icons";
 export { AlignPropType } from "./types/props/align";
 export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 export { StencilUnknown } from "./types/unknown";
@@ -95,7 +96,7 @@ export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { SuggestionsPropType } from "./types/props/suggestions";
-export { InputCheckboxIconProp, InputCheckboxVariant } from "./components/input-checkbox/types";
+export { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
@@ -114,6 +115,7 @@ export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
+export { MaxPropType } from "./types/props/max";
 export { KoliBriProgressVariantType } from "./types/progress";
 export { KoliBriQuoteVariant } from "./components/quote/types";
 export { RowsPropType } from "./types/props/rows";
@@ -262,14 +264,18 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -336,9 +342,9 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -349,6 +355,10 @@ export namespace Components {
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: IconsPropType;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -438,14 +448,18 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: IconsPropType;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -537,9 +551,9 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -550,6 +564,10 @@ export namespace Components {
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: IconsPropType;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -694,9 +712,13 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon": string;
+        "_icon"?: string;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: string;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -807,9 +829,13 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: KoliBriHorizontalIcon;
+        "_icon"?: KoliBriHorizontalIcons;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: KoliBriHorizontalIcons;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -901,9 +927,13 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<InputCheckboxIconProp>;
+        "_icon"?: Stringified<InputCheckboxIconsProp>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<InputCheckboxIconsProp>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -998,9 +1028,13 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -1089,9 +1123,10 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -1211,9 +1246,10 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -1333,9 +1369,13 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -1425,9 +1465,13 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -1552,9 +1596,13 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -1819,9 +1867,13 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -1924,9 +1976,13 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -2067,9 +2123,9 @@ export namespace Components {
          */
         "_href": HrefPropType;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -2080,6 +2136,10 @@ export namespace Components {
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
@@ -2177,9 +2237,9 @@ export namespace Components {
          */
         "_href": HrefPropType;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
@@ -2304,9 +2364,9 @@ export namespace Components {
          */
         "_href": HrefPropType;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -2317,6 +2377,10 @@ export namespace Components {
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
@@ -2465,6 +2529,10 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
+          * Defines the maximum number of pages.
+         */
+        "_max"?: MaxPropType;
+        /**
           * Gibt an, auf welche Callback-Events reagiert werden.
          */
         "_on": KoliBriPaginationButtonCallbacks;
@@ -2490,8 +2558,9 @@ export namespace Components {
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
+          * @deprecated Use _max.
          */
-        "_total": number;
+        "_total"?: number;
         /**
           * Defines which variant should be used for presentation.
          */
@@ -2596,9 +2665,13 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -2686,14 +2759,18 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
@@ -2710,14 +2787,18 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _labels.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
@@ -2770,9 +2851,13 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: IconsPropType;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -3658,14 +3743,18 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -3732,9 +3821,9 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -3745,6 +3834,10 @@ declare namespace LocalJSX {
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: IconsPropType;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -3834,14 +3927,18 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: IconsPropType;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -3933,9 +4030,9 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -3946,6 +4043,10 @@ declare namespace LocalJSX {
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: IconsPropType;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -4090,9 +4191,13 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon": string;
+        "_icon"?: string;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: string;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -4203,9 +4308,13 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: KoliBriHorizontalIcon;
+        "_icon"?: KoliBriHorizontalIcons;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: KoliBriHorizontalIcons;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -4297,9 +4406,13 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<InputCheckboxIconProp>;
+        "_icon"?: Stringified<InputCheckboxIconsProp>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<InputCheckboxIconsProp>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -4394,9 +4507,13 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -4485,9 +4602,10 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -4607,9 +4725,10 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -4729,9 +4848,13 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -4821,9 +4944,13 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -4948,9 +5075,13 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -5215,9 +5346,13 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -5320,9 +5455,13 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -5463,9 +5602,9 @@ declare namespace LocalJSX {
          */
         "_href": HrefPropType;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -5476,6 +5615,10 @@ declare namespace LocalJSX {
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
@@ -5573,9 +5716,9 @@ declare namespace LocalJSX {
          */
         "_href": HrefPropType;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
@@ -5700,9 +5843,9 @@ declare namespace LocalJSX {
          */
         "_href": HrefPropType;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -5713,6 +5856,10 @@ declare namespace LocalJSX {
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
@@ -5861,6 +6008,10 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
+          * Defines the maximum number of pages.
+         */
+        "_max"?: MaxPropType;
+        /**
           * Gibt an, auf welche Callback-Events reagiert werden.
          */
         "_on": KoliBriPaginationButtonCallbacks;
@@ -5886,8 +6037,9 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
+          * @deprecated Use _max.
          */
-        "_total": number;
+        "_total"?: number;
         /**
           * Defines which variant should be used for presentation.
          */
@@ -5992,9 +6144,13 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriHorizontalIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcons>;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriHorizontalIcons>;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -6082,14 +6238,18 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
@@ -6106,14 +6266,18 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _labels.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: Stringified<KoliBriIconsProp>;
         /**
           * Deprecated: Hides the label and shows the description in a Tooltip instead.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: Stringified<KoliBriIconsProp>;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
@@ -6166,9 +6330,13 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+          * @deprecated Use _icons.
          */
-        "_icon"?: IconPropType;
+        "_icon"?: IconsPropType;
+        /**
+          * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+         */
+        "_icons"?: IconsPropType;
         /**
           * Defines the internal ID of the primary component element.
          */

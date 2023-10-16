@@ -22,7 +22,7 @@ export const getDetailsHtml = (
 			<summary>
 				${getIconHtml({
 					_label: '',
-					_icon: props._open ? 'codicon codicon-chevron-down' : 'codicon codicon-chevron-right',
+					_icons: props._open ? 'codicon codicon-chevron-down' : 'codicon codicon-chevron-right',
 				})}
 				<span>
 					${props._label! /* TODO v2: Remove non-null assertion after label was converted to required prop */}

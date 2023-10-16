@@ -18,7 +18,7 @@ export const NavActive: FC = () => {
 		setLinks([
 			{
 				_label: 'Main',
-				_icon: 'fa-solid fa-house',
+				_icons: 'fa-solid fa-house',
 				_on: {
 					onClick: () => handleLinks('Main'),
 				},
@@ -44,7 +44,7 @@ export const NavActive: FC = () => {
 				_children: [
 					{
 						_label: 'Main',
-						_icon: 'fa-solid fa-house',
+						_icons: 'fa-solid fa-house',
 						_on: {
 							onClick: () => handleLinks('/'),
 						},

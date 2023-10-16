@@ -11,7 +11,7 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, Components.K
 			<KolInputColor
 				{...props}
 				_error={ERROR_MSG}
-				_icon={{
+				_icons={{
 					left: 'codicon codicon-symbol-color',
 				}}
 				_label="Color"

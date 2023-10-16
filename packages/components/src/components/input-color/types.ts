@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriHorizontalIcons } from '../../types/icons';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropDisabled } from '../../types/props/disabled';
 import { PropHideError } from '../../types/props/hide-error';
@@ -21,7 +21,8 @@ type OptionalProps = {
 	autoComplete: InputTypeOnOff;
 	error: string;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcon>;
+	icon: Stringified<KoliBriHorizontalIcons>;
+	icons: Stringified<KoliBriHorizontalIcons>;
 	/**
 	 * @deprecated Use _suggestions instead.
 	 */
@@ -51,7 +52,7 @@ type OptionalStates = {
 	alert: boolean;
 	error: string;
 	hint: string;
-	icon: KoliBriHorizontalIcon;
+	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
 	tabIndex: number;

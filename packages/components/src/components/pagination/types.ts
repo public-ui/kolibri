@@ -8,6 +8,7 @@ import { PropButtonVariant } from '../../types/props/button-variant';
 import { PropCustomClass } from '../../types/props/custom-class';
 import { PropLabel } from '../../types/props/label';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
+import { PropMax } from '../../types/props/max';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, number>;
@@ -41,7 +42,6 @@ export type PaginationHasButton = {
 type RequiredProps = {
 	on: KoliBriPaginationButtonCallbacks;
 	page: number;
-	total: number;
 };
 type OptionalProps = {
 	boundaryCount: number;
@@ -49,9 +49,14 @@ type OptionalProps = {
 	pageSize: number;
 	pageSizeOptions: Stringified<number[]>;
 	siblingCount: number;
-} & PropCustomClass &
-	PropButtonVariant &
+	/**
+	 * @deprecated Use _max.
+	 */
+	total: number;
+} & PropButtonVariant &
+	PropCustomClass &
 	PropLabel &
+	PropMax & // @todo V2: Make max required.
 	PropTooltipAlign;
 
 export type KoliBriPaginationProps = RequiredProps & OptionalProps;
@@ -64,9 +69,9 @@ type RequiredStates = {
 	pageSizeOptions: Option<number>[];
 	on: KoliBriPaginationButtonCallbacks;
 	siblingCount: number;
-	total: number;
 } & PropButtonVariant &
-	PropLabel;
+	PropLabel &
+	PropMax;
 
 type OptionalStates = PropCustomClass & PropTooltipAlign;
 

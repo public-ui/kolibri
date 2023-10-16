@@ -1,16 +1,20 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
+import { KoliBriCustomIcon, KoliBriIconsProp } from '../../types/icons';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	allowMarkdown: boolean;
-	icon: Stringified<KoliBriIconProp>;
 	/**
-	 * @deprecated use _hide-label
+	 * @deprecated Use _icons.
+	 */
+	icon: Stringified<KoliBriIconsProp>;
+	icons: Stringified<KoliBriIconsProp>;
+	/**
+	 * @deprecated use _hide-label.
 	 */
 	iconOnly: boolean;
 } & PropHideLabel;
@@ -18,7 +22,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	allowMarkdown: boolean;
-	icon: {
+	icons: {
 		top?: KoliBriCustomIcon;
 		right?: KoliBriCustomIcon;
 		bottom?: KoliBriCustomIcon;

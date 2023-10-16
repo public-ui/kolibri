@@ -5,7 +5,7 @@ import { FC } from 'react';
 
 export const ButtonIcons: FC = () => (
 	<KolButton
-		_icon={{
+		_icons={{
 			bottom: 'codicon codicon-arrow-down',
 			left: {
 				icon: 'codicon codicon-arrow-left',

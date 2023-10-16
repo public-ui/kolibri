@@ -93,7 +93,7 @@ export class KolTable implements API {
 		_pagination: {
 			_page: 1,
 			_pageSize: 10,
-			_total: 0,
+			_max: 0,
 		},
 		_sortedData: [],
 	};
@@ -648,7 +648,7 @@ export class KolTable implements API {
 					<div class="pagination">
 						<span>
 							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
-							{this.state._pagination._total || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
+							{this.state._pagination._max || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
 						</span>
 						<div>
 							<kol-pagination
@@ -660,7 +660,7 @@ export class KolTable implements API {
 								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
 								_siblingCount={this.state._pagination._siblingCount}
 								_tooltipAlign="bottom"
-								_total={this.state._pagination._total || this.state._data.length}
+								_max={this.state._pagination._max || this.state._pagination._total || this.state._data.length}
 								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
 							></kol-pagination>
 						</div>

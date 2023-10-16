@@ -41,7 +41,7 @@ Im einfachsten Fall besteht die **ButtonGroup**-Komponente aus einer Liste besch
 
 ### ButtonGroup mit Text, Icon und Text mit Icon
 
-Über das Attribut **`_icon="xxx"`** wird festgelegt, ob und welches Icon verwendet werden soll.
+Über das Attribut **`_icons="xxx"`** wird festgelegt, ob und welches Icon verwendet werden soll.
 
 Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie <kol-link _href="https://icofont.com/icons" _label="https://icofont.com/icons" _target="_blank" _label="hier"></kol-link>.
 

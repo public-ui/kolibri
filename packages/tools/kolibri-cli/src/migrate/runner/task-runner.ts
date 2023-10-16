@@ -7,6 +7,8 @@ import { Configuration } from '../../types';
 import { logAndCreateError } from '../shares/reuse';
 import { AbstractTask } from './abstract-task';
 
+const MIN_VERSION_OF_PUBLIC_UI = '1.4.2';
+
 export class TaskRunner {
 	private readonly tasks: Map<string, AbstractTask> = new Map();
 	private baseDir: string = '/';
@@ -59,6 +61,10 @@ export class TaskRunner {
 
 	public registerTasks(tasks: AbstractTask[]): void {
 		tasks.forEach((task) => {
+			const dependentTasks = task.getDependentTasks();
+			if (dependentTasks.length > 0) {
+				this.registerTasks(dependentTasks);
+			}
 			if (
 				semver.gtr(this.projectVersion, task.getVersionRange(), {
 					includePrerelease: true,
@@ -137,7 +143,7 @@ export class TaskRunner {
 				}
 			}
 		});
-		return version;
+		return semver.maxSatisfying([version], `>=${MIN_VERSION_OF_PUBLIC_UI}`) ?? MIN_VERSION_OF_PUBLIC_UI;
 	}
 
 	public getStatus(outline = false): {

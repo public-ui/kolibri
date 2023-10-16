@@ -17,7 +17,7 @@ export const getVersionHtml = (props: Props, options?: SpanOptions): string => {
     ${getBadgeHtml(
 			{
 				_color: '#BEC5C9',
-				_icon: 'codicon codicon-versions',
+				_icons: 'codicon codicon-versions',
 				_label: `v${props._label || '0.0.0-alpha.0'}`,
 			},
 			options

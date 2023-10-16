@@ -1,12 +1,5 @@
 import React, { FC } from 'react';
-import { FocusInput } from '../FocusInput';
+import { FormWrap } from '../FormWrap';
 import { InputCheckboxVariants } from './partials/variants';
 
-export const InputCheckboxButton: FC = () => (
-	<FocusInput
-		RefInput={InputCheckboxVariants}
-		props={{
-			_variant: 'button',
-		}}
-	/>
-);
+export const InputCheckboxButton: FC = () => <FormWrap RefComponent={InputCheckboxVariants} _variant="button" />;

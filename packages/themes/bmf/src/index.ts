@@ -1963,27 +1963,37 @@ export const BMF = KoliBri.createTheme('bmf', {
 			height: 1.25em;
 			left: 2px;
 			color: #000;
+			&::part(icon) {
+				font-family: "Font Awesome 6 Free";
+				font-weight: 900;
+			}
+			&::part(icon)::before {
+				content: "\\2b";
+			}
 		}
 		&:has(input:checked) .icon {
 			transform: translate(2em, -50%);
+			&::part(icon)::before {
+				content: "\\f00c";
+			}
 		}
 		&:has(input:indeterminate) .icon {
 			transform: translate(1em, -50%);
+			&::part(icon)::before {
+				content: "\\f068";
+			}
 		}
 	}
 	:host .disabled {
 		opacity: 0.33;
 	}
-
 	:host kol-input.button {
 		row-gap: 0.5rem;
 	}
-
 	:host kol-input.button.checked > .input,
 	:host kol-input.button.checked > label {
 		background-color: var(--color-ice);
 	}
-
 	:host kol-input.button > label {
 		background-color: var(--color-silver);
 		border-top-right-radius: var(--border-radius);
@@ -1994,7 +2004,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		padding-right: 12px;
 		width: 100%;
 	}
-
 	:host kol-input.button > .input {
 		background-color: var(--color-silver);
 		border-top-left-radius: var(--border-radius);
@@ -2003,15 +2012,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 		min-width: 32px;
 		place-content: center;
 	}
-
 	:host kol-input.button > .input > div {
 		display: flex;
 	}
-
 	:host kol-input.button .icon {
 		height: auto;
-	}
-`,
+	}`,
 	'KOL-INPUT-RADIO': `/* INPUT */
 	kol-input {
 		display: grid;

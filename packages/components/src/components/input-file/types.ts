@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriHorizontalIcons } from '../../types/icons';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { PropDisabled } from '../../types/props/disabled';
 import { PropHideError } from '../../types/props/hide-error';
@@ -22,7 +22,8 @@ type OptionalProps = {
 	accessKey: string;
 	error: string;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcon>;
+	icon: Stringified<KoliBriHorizontalIcons>;
+	icons: Stringified<KoliBriHorizontalIcons>;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
 	tabIndex: number;
@@ -45,7 +46,7 @@ type OptionalStates = {
 	accessKey: string;
 	error: string;
 	hint: string;
-	icon: KoliBriHorizontalIcon;
+	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
 	tabIndex: number;

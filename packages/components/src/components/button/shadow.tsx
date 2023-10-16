@@ -8,7 +8,7 @@ import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { ButtonTypePropType } from '../../types/props/button-type';
 import { ButtonVariantPropType } from '../../types/props/button-variant';
 import { CustomClassPropType } from '../../types/props/custom-class';
-import { IconPropType } from '../../types/props/icon';
+import { IconsPropType } from '../../types/props/icons';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
@@ -51,7 +51,7 @@ export class KolButton implements Props {
 					_customClass={this._customClass}
 					_disabled={this._disabled}
 					_hideLabel={this._hideLabel || this._iconOnly}
-					_icon={this._icon}
+					_icons={this._icons || this._icon}
 					_iconAlign={this._iconAlign}
 					_id={this._id}
 					_label={this._label}
@@ -125,9 +125,14 @@ export class KolButton implements Props {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: IconPropType;
+	@Prop() public _icon?: IconsPropType;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: IconsPropType;
 
 	/**
 	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.

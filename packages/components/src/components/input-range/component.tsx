@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriHorizontalIcons } from '../../types/icons';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
 import { HideErrorPropType } from '../../types/props/hide-error';
 import { IdPropType } from '../../types/props/id';
@@ -80,7 +80,7 @@ export class KolInputRange implements API {
 					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
-					_icon={this.state._icon}
+					_icons={this.state._icons}
 					_id={this.state._id}
 					_label={this.state._label}
 					_tooltipAlign={this._tooltipAlign}
@@ -204,9 +204,14 @@ export class KolInputRange implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
+	@Prop() public _icon?: Stringified<KoliBriHorizontalIcons>;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -334,8 +339,13 @@ export class KolInputRange implements API {
 	}
 
 	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
-		this.controller.validateIcon(value);
+	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
+		this.validateIcons(value);
+	}
+
+	@Watch('_icons')
+	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+		this.controller.validateIcons(value);
 	}
 
 	@Watch('_id')

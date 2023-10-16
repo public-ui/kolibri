@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
+import { KoliBriIconsProp } from '../../types/icons';
 import { handleColorChange, PropColor, validateColor } from '../../types/props/color';
 import { LabelPropType } from '../../types/props/label';
 import { featureHint } from '../../utils/a11y.tipps';
@@ -31,7 +31,7 @@ export class KolBadge implements API {
 				_customClass={props._customClass}
 				_disabled={props._disabled}
 				_hideLabel={true}
-				_icon={props._icon}
+				_icons={props._icons || props._icon}
 				_id={props._id}
 				_label={props._label}
 				_on={props._on}
@@ -58,7 +58,7 @@ export class KolBadge implements API {
 						id={hasSmartButton ? this.id : undefined}
 						_allowMarkdown
 						_hideLabel={this._hideLabel || this._iconOnly}
-						_icon={this._icon}
+						_icons={this._icons || this._icon}
 						_label={this._label}
 					></kol-span-wc>
 					{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
@@ -83,9 +83,14 @@ export class KolBadge implements API {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icon="fa-solid fa-user"`).
+	 * @deprecated Use _icons.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: Stringified<KoliBriIconsProp>;
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 
 	/**
 	 * Deprecated: Hides the label and shows the description in a Tooltip instead.

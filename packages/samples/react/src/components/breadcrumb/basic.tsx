@@ -21,7 +21,7 @@ export const BreadcrumbBasic: FC = () => (
 			_links={[
 				{
 					_label: 'Startseite',
-					_icon: 'codicon codicon-home',
+					_icons: 'codicon codicon-home',
 					_hideLabel: true,
 					_href: '#/',
 				},
@@ -38,7 +38,7 @@ export const BreadcrumbBasic: FC = () => (
 		<KolBreadcrumb
 			_ariaLabel="Breadcrumb aus Icons- und Text-Links"
 			_links={[
-				{ _label: 'Startseite', _icon: 'codicon codicon-home', _href: '#/' },
+				{ _label: 'Startseite', _icons: 'codicon codicon-home', _href: '#/' },
 				{
 					_label: 'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 					_href: '#/unterseite',

@@ -17,7 +17,7 @@ export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.K
 				_label="E-Mail (Liste)"
 				_error={ERROR_MSG}
 				_touched
-				_icon={{
+				_icons={{
 					left: {
 						icon: 'codicon codicon-arrow-left',
 					},

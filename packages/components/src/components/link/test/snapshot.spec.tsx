@@ -18,7 +18,7 @@ executeTests<LinkProps>(
 	},
 	{
 		_href: ['https://google.de'],
-		_icon: ['codicon codicon-home'],
+		_icons: ['codicon codicon-home'],
 		_hideLabel: [false, true],
 		_label: ['Label'],
 		_target: ['_self', '_blank', 'egal'],

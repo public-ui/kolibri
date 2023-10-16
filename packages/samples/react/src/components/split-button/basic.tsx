@@ -7,7 +7,7 @@ export const SplitButtonBasic: FC = () => {
 			<KolSplitButton _label="Nur der Pfeil öffnet" _on={{ onClick: console.log }}>
 				Drowndown-Inhalt
 			</KolSplitButton>
-			<KolSplitButton _label="ohne label" _hide-label _icon="codicon codicon-git-pull-request">
+			<KolSplitButton _label="ohne label" _hide-label _icons="codicon codicon-git-pull-request">
 				Drowndown-Inhalt
 			</KolSplitButton>
 			<KolSplitButton _label="schon offen" _show>

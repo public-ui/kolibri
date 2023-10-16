@@ -17,7 +17,7 @@ export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, Compon
 				_error={ERROR_MSG}
 				_placeholder="Mit Icons"
 				_label="Passwort"
-				_icon={{
+				_icons={{
 					left: {
 						icon: 'codicon codicon-arrow-left',
 					},
