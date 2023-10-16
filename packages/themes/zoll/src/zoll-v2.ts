@@ -1035,6 +1035,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			width: calc(6 * var(--spacing));
 			border-color: var(--color-grau-30);
 		}
+		kol-input:not(.disabled):hover input[type='radio'] {
+			border-color: var(--color-neutral-dark);
+		}
 		fieldset div input[type='radio']:checked:before {
 			box-shadow: 0 0 0.1rem black;
 			background-color: var(--color-blau);
