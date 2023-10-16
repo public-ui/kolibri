@@ -46,7 +46,9 @@
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild",
-		"dev": "nodemon --ignore dist -e ts,tsx  --exec 'pnpm build'"
+		"dev": "nodemon --ignore dist -e ts,tsx  --exec 'pnpm build'",
+		"test-all": "pnpm -r --workspace-concurrency=1 test-update",
+		"test-update-all": "pnpm -r --workspace-concurrency=1 test"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "1.7.1",

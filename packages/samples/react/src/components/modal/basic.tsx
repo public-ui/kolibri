@@ -6,7 +6,7 @@ export const ModalBasic: FC = () => {
 
 	return (
 		<div>
-			<KolModal _ariaLabel="" _width="80%" ref={modalElement}>
+			<KolModal _ariaLabel="" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }}>
 				<KolCard _heading="Ich bin ein Modal" style={{ width: '100%' }}>
 					<div slot="content">
 						<KolButton
