@@ -581,7 +581,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		:host > kol-link-wc.primary > a > kol-span-wc {
 			background-color: var(--color-akzent);
 			border-color: var(--color-akzent);
-			color: white;
+			color: var(--color-neutral-dark-correct);
 		}
 		:host > kol-button-wc.primary > button:not(:disabled):focus > kol-span-wc,
 		:host > kol-button-wc.primary > button:not(:disabled):hover > kol-span-wc,
@@ -681,7 +681,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		:host > kol-link-wc.primary > a > kol-span-wc {
 			background-color: var(--color-akzent);
 			border-color: var(--color-akzent);
-			color: white;
+			color: var(--color-neutral-dark-correct);
 		}
 		:host > kol-button-wc.primary > button:not(:disabled):focus > kol-span-wc,
 		:host > kol-button-wc.primary > button:not(:disabled):hover > kol-span-wc,
