@@ -55,6 +55,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			outline-style: solid;
 			outline-width: 0.125rem;
 			transition: outline-offset 0.25s linear;
+			border-radius: var(--border-radius);
 		}
 		*:not(i) {
 			font-family: var(--font-family);
