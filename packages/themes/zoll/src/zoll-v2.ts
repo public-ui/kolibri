@@ -830,6 +830,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		kol-input:not(.disabled):focus-within label {
 			text-decoration: underline;
 		}
+		kol-input:not(.disabled):hover input {
+			border-color: var(--color-neutral-dark-correct);
+		}
 		:host kol-input:not(.disabled) :is(.input, label) {
 			cursor: pointer;
 		}
