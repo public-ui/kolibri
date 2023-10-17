@@ -1,7 +1,7 @@
 import React from 'react';
 import { KolAlert, KolLink } from '@public-ui/react';
 
-export type ErrorListPropType = {
+type ErrorListPropType = {
 	errors: Record<string, string>;
 };
 

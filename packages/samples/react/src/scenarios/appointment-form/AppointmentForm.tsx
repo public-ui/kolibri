@@ -9,7 +9,7 @@ import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
 import { Iso8601 } from '@public-ui/components';
 import { checkAppointmentAvailability } from './appointmentService';
 
-export interface FormProps {}
+// export interface FormProps {}
 export interface FormValues {
 	district: string;
 	date: Iso8601;
