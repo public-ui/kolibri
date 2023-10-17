@@ -637,7 +637,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		:host > kol-link-wc.ghost > a:hover > kol-span-wc {
 			color: var(--color-blau-dark);
 		}
-		:host > kol-button-wc > button:not(:disabeld):hover,
+		:host > kol-button-wc > button:not(:disabled):hover,
 		:host > kol-link-wc > a:hover {
 			outline-color: var(--color-blau-dark);
 			outline-offset: 0.125rem;
@@ -737,7 +737,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		:host > kol-link-wc.ghost > a:hover > kol-span-wc {
 			color: var(--color-blau-dark);
 		}
-		:host > kol-button-wc > button:not(:disabeld):hover,
+		:host > kol-button-wc > button:not(:disabled):hover,
 		:host > kol-link-wc > a:hover {
 			outline-color: var(--color-blau-dark);
 			outline-offset: 0.125rem;
