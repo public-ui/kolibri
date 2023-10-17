@@ -1091,6 +1091,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			gap: var(--gap);
 			overflow: hidden;
 		}
+		.error .input {
+			border-color: var(--color-rot);
+		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
 			border-color: var(--color-grau-60);
@@ -1138,6 +1141,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			padding: 0px 0.75em;
 			gap: var(--gap);
 			overflow: hidden;
+		}
+		.error .input {
+			border-color: var(--color-rot);
 		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
@@ -1187,6 +1193,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			gap: var(--gap);
 			overflow: hidden;
 		}
+		.error .input {
+			border-color: var(--color-rot);
+		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
 			border-color: var(--color-grau-60);
@@ -1234,6 +1243,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			padding: 0px 0.75em;
 			gap: var(--gap);
 			overflow: hidden;
+		}
+		.error .input {
+			border-color: var(--color-rot);
 		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
@@ -1283,6 +1295,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			gap: var(--gap);
 			overflow: hidden;
 		}
+		.error .input {
+			border-color: var(--color-rot);
+		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
 			border-color: var(--color-grau-60);
@@ -1331,6 +1346,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			gap: var(--gap);
 			overflow: hidden;
 		}
+		.error .input {
+			border-color: var(--color-rot);
+		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
 			border-color: var(--color-grau-60);
@@ -1378,6 +1396,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			gap: var(--gap);
 			overflow: hidden;
 			padding: 0 0.75em;
+		}
+		.error .input {
+			border-color: var(--color-rot);
 		}
 		select:not([multiple]) {
 			appearance: none;
@@ -1433,6 +1454,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			padding: 0px 0.75em;
 			gap: var(--gap);
 			overflow: hidden;
+		}
+		.error .input {
+			border-color: var(--color-rot);
 		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
@@ -1746,6 +1770,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			gap: var(--gap);
 			overflow: hidden;
 		}
+		.error .input {
+			border-color: var(--color-rot);
+		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
 			border-color: var(--color-grau-60);
@@ -1793,6 +1820,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			padding: 0px 0.75em;
 			gap: var(--gap);
 			overflow: hidden;
+		}
+		.error .input {
+			border-color: var(--color-rot);
 		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
