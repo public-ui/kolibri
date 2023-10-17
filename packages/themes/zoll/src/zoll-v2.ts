@@ -20,6 +20,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			--color-akzent-light: #f5ba6c;
 			--color-neutral: #e3e3e3;
 			--color-neutral-dark: #646464;
+			--color-neutral-dark-correct: #333333;
 			--color-neutral-light: #f7f7f7;
 			--color-rot: #ce3033;
 			--color-gelb: #f6cd35;
@@ -1366,16 +1367,23 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			gap: var(--gap);
 		}
 		kol-input .input {
-			border-color: var(--color-grau-30);
-			border-width: 2px;
+			border-color: var(--color-grau-50);
 			border-style: solid;
-			padding: 0px 0.75em;
+			border-width: 2px;
 			gap: var(--gap);
 			overflow: hidden;
+			padding: 0 0.75em;
+		}
+		select:not([multiple]) {
+			appearance: none;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2308335e' viewBox='0 0 512 512'%3E%3Cpath d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3E%3C/svg%3E");
+			background-position: right center;
+			background-repeat: no-repeat;
+			background-size: 14px auto;
 		}
 		kol-input:not(.disabled) .input:focus-within,
 		kol-input:not(.disabled) .input:hover {
-			border-color: var(--color-grau-60);
+			border-color: var(--color-neutral-dark-correct);
 		}
 		kol-input:not(.select, .textarea) .input {
 			height: calc(var(--a11y-min-size) - 4px);
