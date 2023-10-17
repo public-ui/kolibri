@@ -61,6 +61,7 @@ export function DistrictForm() {
 							_required
 							_on={{
 								onChange: (event, values: unknown) => {
+									// Select und Radio setzen den Wert immer initial.
 									if (event.target) {
 										const [value] = values as [FormValues['district']];
 										void form.setFieldTouched('district', true);

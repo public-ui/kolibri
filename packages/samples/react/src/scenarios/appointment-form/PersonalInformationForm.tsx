@@ -40,25 +40,23 @@ export function PersonalInformationForm() {
 			>
 				<Field name="salutation">
 					{({ field }: FieldProps<FormValues['salutation']>) => (
-						<>
-							<KolSelect
-								_label="Anrede"
-								_value={[field.value]}
-								_error={form.errors.salutation || ''}
-								_touched={form.touched.salutation}
-								_options={[{ label: 'Bitte wählen…', value: '' }, ...SALUTATION_OPTIONS]}
-								_required
-								_on={{
-									onChange: (event, values: unknown) => {
-										if (event.target) {
-											const [value] = values as [FormValues['salutation']];
-											void form.setFieldTouched('salutation', true);
-											void form.setFieldValue('salutation', value, true);
-										}
-									},
-								}}
-							/>
-						</>
+						<KolSelect
+							_label="Anrede"
+							_value={[field.value]}
+							_error={form.errors.salutation || ''}
+							_touched={form.touched.salutation}
+							_options={[{ label: 'Bitte wählen…', value: '' }, ...SALUTATION_OPTIONS]}
+							_required
+							_on={{
+								onChange: (event, values: unknown) => {
+									if (event.target) {
+										const [value] = values as [FormValues['salutation']];
+										void form.setFieldTouched('salutation', true);
+										void form.setFieldValue('salutation', value, true);
+									}
+								},
+							}}
+						/>
 					)}
 				</Field>
 

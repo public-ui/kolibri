@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { KolTabs } from '@public-ui/react';
 import { DistrictForm } from './DistrictForm';
 import { Summary } from './Summary';
@@ -63,6 +63,7 @@ const availableAppointmentsSchema = {
 
 export function AppointmentForm() {
 	const [activeFormSection, setActiveFormSection] = useState(FormSection.DISTRICT);
+	const [selectedTab, setSelectedTab] = useState(activeFormSection);
 
 	const validationSchema = Yup.object().shape({
 		...(activeFormSection === FormSection.DISTRICT ? districtSchema : {}),
@@ -70,17 +71,22 @@ export function AppointmentForm() {
 		...(activeFormSection === FormSection.PERSONAL_INFORMATION ? personalInformationSchema : {}),
 	});
 
+	useEffect(() => {
+		setSelectedTab(activeFormSection);
+	}, [activeFormSection]);
+
 	const handleSubmit = async (_values: FormValues, formik: FormikHelpers<FormValues>) => {
+		console.log(_values, formik);
 		const currentSectionIndex = formSectionSequence.indexOf(activeFormSection);
 		const nextSection = formSectionSequence[currentSectionIndex + 1];
 		if (nextSection !== undefined) {
 			await formik.setTouched({});
-			setActiveFormSection(nextSection);
+			setTimeout(() => setActiveFormSection(nextSection), 1000);
 		}
 	};
 
 	return (
-		<Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+		<Formik<FormValues> initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
 			<KolTabs
 				_tabs={[
 					{
@@ -88,16 +94,19 @@ export function AppointmentForm() {
 					},
 					{
 						_label: '2. Freie Termine',
+						_disabled: activeFormSection < FormSection.AVAILABLE_APPOINTMENTS,
 					},
 					{
 						_label: '3. Persönliche Daten',
+						_disabled: activeFormSection < FormSection.PERSONAL_INFORMATION,
 					},
 					{
 						_label: 'Zusammenfassung',
+						_disabled: activeFormSection < FormSection.SUMMARY,
 					},
 				]}
 				_label="Formular-Navigation"
-				_selected={activeFormSection}
+				_selected={selectedTab}
 				_on={{ onSelect: (_event, selectedTab) => setActiveFormSection(selectedTab) }}
 			>
 				<div>
