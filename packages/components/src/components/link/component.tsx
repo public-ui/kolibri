@@ -468,7 +468,7 @@ export class KolLinkWc implements API {
 		this.validateHref(this._href);
 		this.validateIcon(this._icons || this._icon);
 		this.validateIconAlign(this._iconAlign);
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label ?? this._ariaLabel); // explicitly allow empty string labels
 		this.validateListenAriaCurrent(this._listenAriaCurrent);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
