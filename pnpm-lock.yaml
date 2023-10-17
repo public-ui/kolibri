@@ -72,7 +72,7 @@ importers:
         specifier: 11.2.14
         version: 11.2.14(rxjs@6.5.5)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -117,7 +117,7 @@ importers:
         specifier: 12.2.17
         version: 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -162,7 +162,7 @@ importers:
         specifier: 13.4.0
         version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -207,7 +207,7 @@ importers:
         specifier: 14.3.0
         version: 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -252,7 +252,7 @@ importers:
         specifier: 15.2.9
         version: 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -297,7 +297,7 @@ importers:
         specifier: 16.2.7
         version: 16.2.7(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -333,7 +333,7 @@ importers:
   packages/adapters/hydrate:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       rimraf:
         specifier: 3.0.2
@@ -342,14 +342,14 @@ importers:
   packages/adapters/preact:
     dependencies:
       '@public-ui/react':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../react
       preact:
         specifier: '>=10.11.3'
         version: 10.11.3
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       react:
         specifier: 18.2.0
@@ -367,7 +367,7 @@ importers:
   packages/adapters/react:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -403,7 +403,7 @@ importers:
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       react:
         specifier: '>=16.14.0'
@@ -413,7 +413,7 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@public-ui/react':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../react
       cpy-cli:
         specifier: 5.0.0
@@ -425,7 +425,7 @@ importers:
   packages/adapters/solid:
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -455,7 +455,7 @@ importers:
         specifier: 7.23.0
         version: 7.23.0
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -488,7 +488,7 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../schema
       i18next:
         specifier: 23.5.1
@@ -700,13 +700,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../components
       '@public-ui/solid':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../adapters/solid
       '@public-ui/themes':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../themes
       monaco-editor:
         specifier: 0.43.0
@@ -800,13 +800,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@public-ui/react':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../adapters/react
       '@public-ui/themes':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../themes
       '@types/node':
         specifier: 20.8.0
@@ -838,6 +838,9 @@ importers:
       eslint-plugin-react:
         specifier: 7.33.2
         version: 7.33.2(eslint@8.50.0)
+      formik:
+        specifier: 2.4.5
+        version: 2.4.5(react@18.2.0)
       nightwatch-axe-verbose:
         specifier: 2.2.2
         version: 2.2.2
@@ -868,6 +871,9 @@ importers:
       world_countries_lists:
         specifier: 2.8.2
         version: 2.8.2
+      yup:
+        specifier: 1.3.1
+        version: 1.3.1
 
   packages/schema:
     dependencies:
@@ -900,11 +906,11 @@ importers:
   packages/themes:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../schema
       '@types/node':
         specifier: ts5.1
@@ -934,14 +940,14 @@ importers:
   packages/themes/bmf:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -953,14 +959,14 @@ importers:
   packages/themes/bzst:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -972,14 +978,14 @@ importers:
   packages/themes/default:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -991,14 +997,14 @@ importers:
   packages/themes/ecl:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1013,14 +1019,14 @@ importers:
   packages/themes/itzbund:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1032,14 +1038,14 @@ importers:
   packages/themes/mfm:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1051,14 +1057,14 @@ importers:
   packages/themes/zoll:
     dependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1095,7 +1101,7 @@ importers:
         version: 7.5.4
     devDependencies:
       '@public-ui/components':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../components
       '@types/gradient-string':
         specifier: 1.1.3
@@ -1164,7 +1170,7 @@ importers:
         specifier: 1.38.1
         version: 1.38.1
       '@public-ui/sample-react':
-        specifier: 1.7.0
+        specifier: 1.7.1
         version: link:../../samples/react
       portfinder:
         specifier: 1.0.32
@@ -7539,6 +7545,13 @@ packages:
       '@types/tinycolor2': 1.4.3
     dev: true
 
+  /@types/hoist-non-react-statics@3.3.3:
+    resolution: {integrity: sha512-Wny3a2UXn5FEA1l7gc6BbpoV5mD1XijZqgkp4TRgDCDL5r3B5ieOFGUX5h3n78Tr1MEG7BfvoM8qeztdvNU0fw==}
+    dependencies:
+      '@types/react': 18.2.23
+      hoist-non-react-statics: 3.3.2
+    dev: false
+
   /@types/http-cache-semantics@4.0.2:
     resolution: {integrity: sha512-FD+nQWA2zJjh4L9+pFXqWOi0Hs1ryBCfI+985NjluQ1p8EYtoLvjLOKidXBtZ4/IcxDX4o8/E8qDS3540tNliw==}
     dev: true
@@ -10696,6 +10709,11 @@ packages:
   /deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
 
+  /deepmerge@2.2.1:
+    resolution: {integrity: sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
@@ -12337,6 +12355,22 @@ packages:
       combined-stream: 1.0.8
       mime-types: 2.1.35
 
+  /formik@2.4.5(react@18.2.0):
+    resolution: {integrity: sha512-Gxlht0TD3vVdzMDHwkiNZqJ7Mvg77xQNfmBRrNtvzcHZs72TJppSTDKHpImCMJZwcWPBJ8jSQQ95GJzXFf1nAQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      '@types/hoist-non-react-statics': 3.3.3
+      deepmerge: 2.2.1
+      hoist-non-react-statics: 3.3.2
+      lodash: 4.17.21
+      lodash-es: 4.17.21
+      react: 18.2.0
+      react-fast-compare: 2.0.4
+      tiny-warning: 1.0.3
+      tslib: 2.6.2
+    dev: false
+
   /forwarded@0.2.0:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
     engines: {node: '>= 0.6'}
@@ -13035,6 +13069,12 @@ packages:
   /he@1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
+
+  /hoist-non-react-statics@3.3.2:
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
+    dependencies:
+      react-is: 16.13.1
+    dev: false
 
   /homedir-polyfill@1.0.3:
     resolution: {integrity: sha512-eSmmWE5bZTK2Nou4g0AI3zZ9rswp7GRKoKXS1BLUkvPviOqs4YTN1djQIqrXy9k5gEtdLPy86JjRwsNM9tnDcA==}
@@ -15275,6 +15315,10 @@ packages:
     resolution: {integrity: sha512-pGfl6Hb/1mXLzrX5kl5lH7gz25ey0vwQssZp8Qo2CEF59di6KrAgdFm+0pW8ghLnvNzzJGj5tlWhhv2QbK3jeQ==}
     engines: {node: '>= 10'}
     dev: true
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash._arraycopy@3.0.0:
     resolution: {integrity: sha512-RHShTDnPKP7aWxlvXKiDT6IX2jCs6YZLCtNhOru/OX2Q/tzX295vVBK5oX1ECtN+2r86S0Ogy8ykP1sgCZAN0A==}
@@ -17930,6 +17974,10 @@ packages:
       object-assign: 4.1.1
       react-is: 16.13.1
 
+  /property-expr@2.0.6:
+    resolution: {integrity: sha512-SVtmxhRE/CGkn3eZY1T6pC8Nln6Fr/lu1mKSgRud0eC73whjGfoAogbn78LkD8aFL0zz3bAFerKSnOl7NlErBA==}
+    dev: false
+
   /proto-list@1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
     dev: true
@@ -18241,6 +18289,10 @@ packages:
   /react-error-overlay@6.0.11:
     resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
     dev: true
+
+  /react-fast-compare@2.0.4:
+    resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
+    dev: false
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -20065,6 +20117,14 @@ packages:
       next-tick: 1.1.0
     dev: false
 
+  /tiny-case@1.0.3:
+    resolution: {integrity: sha512-Eet/eeMhkO6TX8mnUteS9zgPbUMQa4I6Kkp5ORiBD5476/m+PIRiumP5tmh5ioJpH7k51Kehawy2UDfsnxxY8Q==}
+    dev: false
+
+  /tiny-warning@1.0.3:
+    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
+    dev: false
+
   /tinycolor2@1.6.0:
     resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
     dev: false
@@ -20150,6 +20210,10 @@ packages:
   /token-stream@1.0.0:
     resolution: {integrity: sha512-VSsyNPPW74RpHwR8Fc21uubwHY7wMDeJLys2IX5zJNih+OnAnaifKHo+1LHT7DAdloQ7apeaaWg8l7qnf/TnEg==}
     dev: true
+
+  /toposort@2.0.2:
+    resolution: {integrity: sha512-0a5EOkAUp8D4moMi2W8ZF8jcga7BgZd91O/yabJCFY8az+XSzeGyTKs0Aoo897iV1Nj6guFq8orWDS96z91oGg==}
+    dev: false
 
   /touch@3.1.0:
     resolution: {integrity: sha512-WBx8Uy5TLtOSRtIq+M03/sKDrXCLHxwDcquSP2c43Le03/9serjQBIztjRz6FkJez9D/hleyAXTBGLwwZUw9lA==}
@@ -21907,6 +21971,15 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  /yup@1.3.1:
+    resolution: {integrity: sha512-2stNyEF96SnPUxzRL99kt1bEHWytnvC2stwmTTqjoFXZRf63JtYK2pQt2AJvWcQvkrAzr/pcXvc6c5vrqsBzDg==}
+    dependencies:
+      property-expr: 2.0.6
+      tiny-case: 1.0.3
+      toposort: 2.0.2
+      type-fest: 2.19.0
+    dev: false
 
   /zod-validation-error@1.5.0(zod@3.22.2):
     resolution: {integrity: sha512-/7eFkAI4qV0tcxMBB/3+d2c1P6jzzZYdYSlBuAklzMuCrJu5bzJfHS0yVAS87dRHVlhftd6RFJDIvv03JgkSbw==}

@@ -397,7 +397,7 @@ export class KolButtonWc implements API {
 		this.validateIcons(this._icons || this._icon);
 		this.validateIconAlign(this._iconAlign);
 		this.validateId(this._id);
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label ?? this._ariaLabel); // explicitly allow empty string labels
 		this.validateName(this._name);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
