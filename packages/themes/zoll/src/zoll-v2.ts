@@ -176,6 +176,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		button:active,
 		button:focus,
 		button:hover {
+			color: var(--color-blau-dark);
 			outline-width: 0;
 			text-decoration-line: underline;
 			text-decoration-thickness: 0.1rem !important;
@@ -218,6 +219,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		button:active,
 		button:focus,
 		button:hover {
+			color: var(--color-blau-dark);
 			outline-width: 0;
 			text-decoration-line: underline;
 			text-decoration-thickness: 0.1rem !important;
