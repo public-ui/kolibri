@@ -13,14 +13,14 @@ export class ScheduleForm extends FormControl {
 			new InputControl('schedule', {
 				label: 'Datum',
 				mandatory: true,
-			})
+			}),
 		);
 
 		this.addControl(
 			new InputControl('time', {
 				label: 'Uhrzeit',
 				mandatory: true,
-			})
+			}),
 		);
 
 		const validationHandler = new ValidationHandler();
