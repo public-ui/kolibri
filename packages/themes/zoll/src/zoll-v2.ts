@@ -438,9 +438,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		.warning {
 			background-color: var(--color-gelb);
 			border-color: var(--color-gelb);
+			color: var(--color-neutral-dark-correct);
 		}
 		.card.warning .heading {
-			color: var(--color-neutral-dark);
 		}
 		.error {
 			border-color: var(--color-rot);
@@ -502,7 +502,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			color: var(--color-blau);
 		}
 		.msg.warning {
-			color: var(--color-neutral-dark);
+			color: var(--color-neutral-dark-correct);
 		}
 		.msg.success {
 			color: var(--color-gruen);
