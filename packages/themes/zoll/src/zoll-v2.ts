@@ -335,7 +335,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 		td,
 		th {
-			color: var(--color-neutral-dark);
+			color: var(--color-neutral-dark-correct);
 			border-color: var(--color-neutral);
 			border-style: solid;
 			border-width: 0;
