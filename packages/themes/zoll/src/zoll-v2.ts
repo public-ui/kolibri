@@ -408,7 +408,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			color: var(--color-neutral-dark);
 		}
 		kol-alert-wc .content {
-			font-style: italic;
 			font-size: 0.8rem;
 		}
 		.card {
@@ -430,10 +429,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			color: var(--color-neutral-dark);
 		}
 		.info {
-			border-color: var(--color-blau);
+			border-color: var(--color-blau-light);
 		}
 		.card.info .heading {
-			color: var(--color-blau);
+			color: var(--color-blau-light);
 		}
 		.warning {
 			background-color: var(--color-gelb);
@@ -478,7 +477,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		.info .heading kol-icon.heading-icon {
 			display: grid;
 			place-items: center;
-			background-color: var(--color-blau);
+			background-color: var(--color-blau-light);
 			border-radius: 100%;
 			min-width: 2em;
 			min-height: 2em;
@@ -499,7 +498,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			color: var(--color-rot);
 		}
 		.msg.info {
-			color: var(--color-blau);
+			color: var(--color-blau-light);
 		}
 		.msg.warning {
 			color: var(--color-neutral-dark-correct);
@@ -516,7 +515,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			min-width: 44px;
 			background-color: var(--color-neutral);
 			padding: 0.75rem;
-			color: var(--color-blau);
+			color: var(--color-blau-light);
 		}
 		.card .close button {
 			transform: translateX(1.5rem) translateY(-1.5rem);
