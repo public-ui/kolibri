@@ -3,7 +3,7 @@ import { Component, Element, Fragment, h, Host, JSX, Prop } from '@stencil/core'
 
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
-import { KoliBriCustomIcon, KoliBriHorizontalIcons } from '../../types/icons';
+import { AnyIconFontClass, KoliBriCustomIcon, KoliBriHorizontalIcons } from '../../types/icons';
 import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
@@ -32,6 +32,10 @@ export class KolInput implements Props {
 	private catchInputSlot = (slot?: HTMLDivElement): void => {
 		handleSlotContent(this.host!, slot!, this.slotName);
 	};
+
+	private getIconStyles(icon?: AnyIconFontClass | KoliBriCustomIcon): Record<string, string> {
+		return icon && typeof icon === 'object' && icon.style ? icon.style : {};
+	}
 
 	public render(): JSX.Element {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
@@ -69,7 +73,9 @@ export class KolInput implements Props {
 						'icon-right': typeof this._icons?.right === 'object',
 					}}
 				>
-					{this._icons?.left && <kol-icon _label="" _icons={(this._icons?.left as KoliBriCustomIcon).icon}></kol-icon>}
+					{this._icons?.left && (
+						<kol-icon _label="" _icons={(this._icons?.left as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.left)}></kol-icon>
+					)}
 					<div ref={this.catchInputSlot} id={this.slotName} class="input-slot"></div>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
@@ -84,7 +90,9 @@ export class KolInput implements Props {
 							_variant={this._smartButton._variant}
 						></kol-button-wc>
 					)}
-					{this._icons?.right && <kol-icon _label="" _icons={(this._icons?.right as KoliBriCustomIcon).icon}></kol-icon>}
+					{this._icons?.right && (
+						<kol-icon _label="" _icons={(this._icons?.right as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.right)}></kol-icon>
+					)}
 				</div>
 				{useTooltopInsteadOfLabel && (
 					<kol-tooltip-wc

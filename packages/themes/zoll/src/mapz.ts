@@ -1552,6 +1552,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	:host kol-button-group-wc {
 		border-radius: 0.25rem 0.25rem 0 0;
 		background-color: var(--kolibri-color-normal);
+		padding: 2px;
 	}
 	:host kol-button-group-wc > div {
 		display: inline-flex;

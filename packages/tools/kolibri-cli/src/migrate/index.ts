@@ -98,8 +98,8 @@ Source folder to migrate: ${baseDir}
 
 				/**
 				 * Creates a replacer function for the package.json file.
-				 * @param version The version to replace
-				 * @returns The replacer function
+				 * @param {string} version Version to set
+				 * @returns {string} The replacer function
 				 */
 				function createVersionReplacer(version: string) {
 					return (...args: string[]) => {
@@ -112,8 +112,8 @@ Source folder to migrate: ${baseDir}
 
 				/**
 				 * Sets the version of the @public-ui/* packages in the package.json file.
-				 * @param version Version to set
-				 * @param cb Callback function
+				 * @param {string} version Version to set
+				 * @param {function} cb Callback function
 				 */
 				function setVersionOfPublicUiPackages(version: string, cb: () => void) {
 					let packageJson = getContentOfProjectPkgJson();
