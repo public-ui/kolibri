@@ -559,6 +559,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 	`,
 	'KOL-BUTTON': css`
+		:host > kol-button-wc > button {
+			border-radius: var(--border-radius);
+		}
+
 		:host > kol-button-wc > button > kol-span-wc,
 		:host > kol-link-wc > a > kol-span-wc {
 			border-radius: var(--border-radius);
@@ -666,6 +670,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			border-width: 2px;
 			gap: 0.5rem;
 			line-height: 1rem;
+		}
+		:host > kol-link-wc > a {
+			border-radius: var(--border-radius);
 		}
 		:host > kol-button-wc > button > kol-span-wc:not(.hide-label),
 		:host > kol-link-wc > a > kol-span-wc:not(.hide-label) {
