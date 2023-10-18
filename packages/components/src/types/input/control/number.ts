@@ -14,9 +14,7 @@ export type OptionalInputProps<T> = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcons>;
 	icons: Stringified<KoliBriHorizontalIcons>;
-	list: Stringified<string[]>;
 	max: T;
 	min: T;
 	name: string;

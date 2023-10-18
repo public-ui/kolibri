@@ -15,7 +15,7 @@ import { Props } from './types';
 export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-span-wc _icons={this._icons || this._icon} _hideLabel={this._hideLabel} _label={this._label}>
+			<kol-span-wc _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label}>
 				<slot name="expert" slot="expert"></slot>
 			</kol-span-wc>
 		);
@@ -29,20 +29,9 @@ export class KolSpan implements Props {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriIconsProp>;
-
-	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the g classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
-
-	/**
-	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
-	 * @deprecated use _hide-label
-	 */
-	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.

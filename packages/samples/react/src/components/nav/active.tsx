@@ -84,5 +84,5 @@ export const NavActive: FC = () => {
 		]);
 	}, []);
 
-	return <KolNav _ariaLabel="Main navigation" _links={links} />;
+	return <KolNav _label="Main navigation" _links={links} />;
 };

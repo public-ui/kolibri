@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { KoliBriHorizontalIcons } from '../../types/icons';
-import { InputNumberType, OptionalInputProps } from '../../types/input/control/number';
+import { OptionalInputProps } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropDisabled } from '../../types/props/disabled';
@@ -12,7 +12,7 @@ import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropName } from '../../types/props/name';
 import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
-import { PropSuggestions, SuggestionsPropType } from '../../types/props/suggestions';
+import { PropSuggestions } from '../../types/props/suggestions';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTouched } from '../../types/props/touched';
 import { W3CInputValue } from '../../types/w3c';
@@ -21,11 +21,6 @@ import { Props as ButtonProps } from '../button/types';
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	placeholder: string;
-	type: InputNumberType;
-	/**
-	 * @deprecated Use _suggestions instead.
-	 */
-	list: SuggestionsPropType;
 } & OptionalInputProps<number | Iso8601> &
 	PropHideError &
 	PropLabelWithExpertSlot &
@@ -35,7 +30,6 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
-	type: InputNumberType;
 } & PropId &
 	PropHideError &
 	PropLabelWithExpertSlot;

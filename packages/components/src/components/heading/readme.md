@@ -57,7 +57,6 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 - [kol-alert-wc](../alert)
 - [kol-card](../card)
 - [kol-heading](.)
-- [kol-link-group](../link-group)
 
 ### Graph
 
@@ -67,7 +66,6 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-card --> kol-heading-wc
   kol-heading --> kol-heading-wc
-  kol-link-group --> kol-heading-wc
   style kol-heading-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

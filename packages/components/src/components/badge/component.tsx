@@ -31,7 +31,7 @@ export class KolBadge implements API {
 				_customClass={props._customClass}
 				_disabled={props._disabled}
 				_hideLabel={true}
-				_icons={props._icons || props._icon}
+				_icons={props._icons}
 				_id={props._id}
 				_label={props._label}
 				_on={props._on}
@@ -54,13 +54,7 @@ export class KolBadge implements API {
 						color: this.colorStr,
 					}}
 				>
-					<kol-span-wc
-						id={hasSmartButton ? this.id : undefined}
-						_allowMarkdown
-						_hideLabel={this._hideLabel || this._iconOnly}
-						_icons={this._icons || this._icon}
-						_label={this._label}
-					></kol-span-wc>
+					<kol-span-wc id={hasSmartButton ? this.id : undefined} _allowMarkdown _icons={this._icons} _label={this._label}></kol-span-wc>
 					{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
 				</span>
 			</Host>
@@ -73,31 +67,9 @@ export class KolBadge implements API {
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
-	 * Deprecated:
-	 * ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
-	 *   since it would not be accessible without visible labeling. A separate tooltip
-	 *   is not planed, because a badge is not an interactive element.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 * @deprecated Will be removed in the next major version.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriIconsProp>;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
-
-	/**
-	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
-	 *
-	 * @deprecated use _hide-label
-	 */
-	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).

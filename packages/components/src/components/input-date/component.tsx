@@ -78,8 +78,7 @@ export class KolInputDate implements ComponentApi {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
 					<div slot="input">
 						<input
 							ref={this.catchRef}
@@ -158,10 +157,6 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcons>; /**
-
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
@@ -175,12 +170,6 @@ export class KolInputDate implements ComponentApi {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
-
-	/**
-	 * Deprecated: Gibt die Liste der Vorschlagszahlen an.
-	 * @deprecated Use _suggestions instead.
-	 */
-	@Prop() public _list?: Stringified<string[]>;
 
 	/**
 	 * Defines the largest possible input value.
@@ -315,11 +304,6 @@ export class KolInputDate implements ComponentApi {
 		this.controller.validateHint(value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
-		this.validateIcons(value);
-	}
-
 	@Watch('_icons')
 	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
 		this.controller.validateIcons(value);
@@ -333,11 +317,6 @@ export class KolInputDate implements ComponentApi {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
-	}
-
-	@Watch('_list')
-	public validateList(value?: Stringified<string[]>): void {
-		this.validateSuggestions(value);
 	}
 
 	@Watch('_max')

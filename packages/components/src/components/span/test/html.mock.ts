@@ -39,7 +39,7 @@ export const getSpanWcHtml = (
 	const hideExpertSlot = !showExpertSlot(state._label);
 	const icon = mapIconProp2State(state._icons as KoliBriIconsProp);
 	return `
-<kol-span-wc${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${options?.additionalAttrs ?? ''}>
+<kol-span-wc${state._hideLabel === true ? ` class="hide-label"` : ``}${options?.additionalAttrs ?? ''}>
 	${
 		icon.top
 			? getIconHtml({
