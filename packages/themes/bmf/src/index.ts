@@ -103,7 +103,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 	kol-span-wc > span {
 		gap: 0.5em;
 	}`,
-	'KOL-BUTTON': `:is(a, button):focus {
+	'KOL-BUTTON': `:is(a, button) {
+		font-size: 1.125em;
+	}
+	:is(a, button):focus {
 		outline: none;
 	}
 	:is(a, button):focus kol-span-wc {
@@ -2434,7 +2437,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-color: var(--color-granite);
 		color: var(--color-black);
 	}`,
-	'KOL-LINK-BUTTON': `:is(a, button):focus {
+	'KOL-LINK-BUTTON': `:is(a, button) {
+  		font-size: 1.125em;
+	}
+	:is(a, button):focus {
 		outline: none;
 	}
 	:is(a, button):focus kol-span-wc {
