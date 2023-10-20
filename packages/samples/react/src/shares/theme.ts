@@ -14,7 +14,8 @@ export type Theme =
 	| 'mapz'
 	| 'th'
 	| 'unstyled'
-	| 'zoll-v2';
+	| 'zoll-v2'
+	| 'zoll-v3';
 
 export const isTheme = (value: unknown) => {
 	return (
@@ -32,7 +33,8 @@ export const isTheme = (value: unknown) => {
 			value === 'itzbund' ||
 			value === 'mapz' ||
 			value === 'th' ||
-			value === 'zoll-v2')
+			value === 'zoll-v2' ||
+			value === 'zoll-v3')
 	);
 };
 
