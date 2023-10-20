@@ -1187,6 +1187,9 @@ importers:
       '@public-ui/sample-react':
         specifier: 1.7.2
         version: link:../../samples/react
+      axe-playwright:
+        specifier: 1.2.3
+        version: 1.2.3(playwright@1.38.1)
       portfinder:
         specifier: 1.0.32
         version: 1.0.32
@@ -1203,9 +1206,6 @@ importers:
       '@babel/preset-env':
         specifier: 7.22.20
         version: 7.22.20(@babel/core@7.22.20)
-      axe-playwright:
-        specifier: 1.2.3
-        version: 1.2.3(playwright@1.38.1)
       depcheck:
         specifier: 1.4.6
         version: 1.4.6
@@ -8938,7 +8938,6 @@ packages:
   /axe-core@4.8.1:
     resolution: {integrity: sha512-9l850jDDPnKq48nbad8SiEelCv4OrUWrKab/cPj0GScVg6cb6NbCCt/Ulk26QEq5jP9NnGr04Bit1BHyV6r5CQ==}
     engines: {node: '>=4'}
-    dev: true
 
   /axe-html-reporter@2.2.3(axe-core@4.8.1):
     resolution: {integrity: sha512-io8aCEt4fJvv43W+33n3zEa8rdplH5Ti2v5fOnth3GBKLhLHarNs7jj46xGfpnGnpaNrz23/tXPHC3HbwTzwwA==}
@@ -8949,7 +8948,7 @@ packages:
       axe-core: 4.8.1
       mustache: 4.2.0
       rimraf: 3.0.2
-    dev: true
+    dev: false
 
   /axe-playwright@1.2.3(playwright@1.38.1):
     resolution: {integrity: sha512-bTxCTNp3kx6sQRMjmuLv8pG3+v+kOCvFXATim1+XUXzW6ykulbbuJdQfgB+vQPNAF9uvYbW2qrv9pg81ZSFV/A==}
@@ -8960,7 +8959,7 @@ packages:
       axe-html-reporter: 2.2.3(axe-core@4.8.1)
       picocolors: 1.0.0
       playwright: 1.38.1
-    dev: true
+    dev: false
 
   /axios@1.5.0:
     resolution: {integrity: sha512-D4DdjDo5CY50Qms0qGQTTw6Q44jl7zRwY7bthds06pUGfChBCTcQs+N743eFWGEd6pRTMd6A+I87aWyFV5wiZQ==}
@@ -16176,7 +16175,6 @@ packages:
   /mustache@4.2.0:
     resolution: {integrity: sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==}
     hasBin: true
-    dev: true
 
   /mute-stream@0.0.8:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
