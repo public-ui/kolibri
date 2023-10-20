@@ -62,8 +62,7 @@ export class KolInputColor implements API {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
 					<div slot="input">
 						<input
 							ref={this.catchRef}
@@ -137,11 +136,6 @@ export class KolInputColor implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcons>;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
@@ -155,12 +149,6 @@ export class KolInputColor implements API {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
-
-	/**
-	 * Deprecated: Gibt die Liste der Vorschlagswörter an.
-	 * @deprecated Use _suggestions instead.
-	 */
-	@Prop() public _list?: SuggestionsPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -261,11 +249,6 @@ export class KolInputColor implements API {
 		this.controller.validateHint(value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
-		this.validateIcons(value);
-	}
-
 	@Watch('_icons')
 	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
 		this.controller.validateIcons(value);
@@ -279,11 +262,6 @@ export class KolInputColor implements API {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
-	}
-
-	@Watch('_list')
-	public validateList(value?: SuggestionsPropType): void {
-		this.validateSuggestions(value);
 	}
 
 	@Watch('_name')

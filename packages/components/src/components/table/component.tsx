@@ -1,5 +1,5 @@
-import { Generic } from '@a11y-ui/core';
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
@@ -47,12 +47,6 @@ export class KolTable implements API {
 	private ariaLive = '';
 
 	/**
-	 * Deprecated: Defines the visible caption of the component.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _caption?: string;
-
-	/**
 	 * Defines the primary table data.
 	 */
 	@Prop() public _data!: Stringified<KoliBriTableDataType[]>;
@@ -70,7 +64,7 @@ export class KolTable implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Defines the table min-width.
@@ -97,11 +91,6 @@ export class KolTable implements API {
 		},
 		_sortedData: [],
 	};
-
-	@Watch('_caption')
-	public validateCaption(value?: string): void {
-		this.validateLabel(value);
-	}
 
 	@Watch('_data')
 	public validateData(value?: Stringified<KoliBriTableDataType[]>): void {
@@ -285,7 +274,7 @@ export class KolTable implements API {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);
-		this.validateLabel(this._label || this._caption);
+		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
 	}
@@ -573,7 +562,7 @@ export class KolTable implements API {
 						{!this.disableSort && typeof headerCell.sort === 'function' && (
 							<kol-button
 								exportparts="icon"
-								_icon={sortButtonIcon}
+								_icons={sortButtonIcon}
 								_hideLabel
 								_label={translate('kol-change-order', { placeholders: { colLabel: headerCell.label } })}
 								_on={{
@@ -660,7 +649,7 @@ export class KolTable implements API {
 								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
 								_siblingCount={this.state._pagination._siblingCount}
 								_tooltipAlign="bottom"
-								_max={this.state._pagination._max || this.state._pagination._total || this.state._data.length}
+								_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
 								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
 							></kol-pagination>
 						</div>
@@ -744,7 +733,7 @@ export class KolTable implements API {
 															{!this.disableSort && typeof headerCell.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"
-																	_icon={sortButtonIcon}
+																	_icons={sortButtonIcon}
 																	_hideLabel
 																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_on={{

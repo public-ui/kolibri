@@ -5,7 +5,7 @@ import { FC } from 'react';
 
 export const NavBasic: FC = () => (
 	<KolNav
-		_ariaLabel="Main navigation"
+		_label="Main navigation"
 		_links={[
 			{
 				_label: 'Homepage',

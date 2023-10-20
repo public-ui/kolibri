@@ -91,8 +91,7 @@ export class KolSelect implements API {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
 					<div slot="input">
 						<select
 							ref={this.catchRef}
@@ -109,9 +108,6 @@ export class KolSelect implements API {
 							required={this.state._required}
 							size={this.state._rows}
 							spellcheck="false"
-							style={{
-								height: this.state._height,
-							}}
 							{...{
 								onClick: this.controller.onFacade.onClick,
 								onBlur: this.controller.onFacade.onBlur,
@@ -173,13 +169,6 @@ export class KolSelect implements API {
 	@Prop() public _error?: string;
 
 	/**
-	 * Deprecated: Defines an individual height.
-	 *
-	 * @deprecated Use _rows instead.
-	 */
-	@Prop() public _height?: string;
-
-	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
@@ -198,11 +187,6 @@ export class KolSelect implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcons>;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
@@ -216,12 +200,6 @@ export class KolSelect implements API {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
-
-	/**
-	 * Deprecated: Options the user can choose from, also supporting Optgroup.
-	 * @deprecated use _options
-	 */
-	@Prop() public _list?: Stringified<SelectOption<W3CInputValue>[]>;
 
 	/**
 	 * Makes the input accept multiple inputs.
@@ -256,11 +234,6 @@ export class KolSelect implements API {
 	@Prop() public _rows?: RowsPropType;
 
 	/**
-	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
-	 */
-	@Prop() public _size?: number;
-
-	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
@@ -289,7 +262,6 @@ export class KolSelect implements API {
 
 	@State() public state: States = {
 		_hasValue: false,
-		_height: '',
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: '', // ⚠ required
@@ -322,11 +294,6 @@ export class KolSelect implements API {
 		this.controller.validateError(value);
 	}
 
-	@Watch('_height')
-	public validateHeight(value?: string): void {
-		this.controller.validateHeight(value);
-	}
-
 	@Watch('_hideError')
 	public validateHideError(value?: HideErrorPropType): void {
 		this.controller.validateHideError(value);
@@ -342,11 +309,6 @@ export class KolSelect implements API {
 		this.controller.validateHint(value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
-		this.validateIcons(value);
-	}
-
 	@Watch('_icons')
 	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
 		this.controller.validateIcons(value);
@@ -360,11 +322,6 @@ export class KolSelect implements API {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
-	}
-
-	@Watch('_list')
-	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
-		this.validateOptions(value);
 	}
 
 	@Watch('_multiple')
@@ -394,11 +351,6 @@ export class KolSelect implements API {
 
 	@Watch('_rows')
 	public validateRows(value?: RowsPropType): void {
-		this.controller.validateRows(value);
-	}
-
-	@Watch('_size')
-	public validateSize(value?: number): void {
 		this.controller.validateRows(value);
 	}
 

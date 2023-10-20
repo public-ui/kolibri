@@ -22,7 +22,6 @@ type OptionalProps = {
 	currentLength: number;
 	error: string;
 	hint: string;
-	icon: KoliBriHorizontalIcons;
 	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	slotName: string;

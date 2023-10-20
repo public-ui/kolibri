@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcons } from '../../types/icons';
-import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
+import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropDisabled } from '../../types/props/disabled';
 import { PropHideError } from '../../types/props/hide-error';
 import { PropHideLabel } from '../../types/props/hide-label';
@@ -21,12 +21,7 @@ type OptionalProps = {
 	autoComplete: InputTypeOnOff;
 	error: string;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcons>;
 	icons: Stringified<KoliBriHorizontalIcons>;
-	/**
-	 * @deprecated Use suggestions instead.
-	 */
-	list: Stringified<Option<W3CInputValue>[]>;
 	max: number;
 	min: number;
 	on: InputTypeOnDefault;

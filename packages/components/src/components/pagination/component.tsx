@@ -81,7 +81,7 @@ export class KolPagination implements API {
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
-									_icon={leftDoubleArrowIcon}
+									_icons={leftDoubleArrowIcon}
 									_hideLabel
 									_label={translate('kol-page-first')}
 									_on={this.onGoToFirst}
@@ -97,7 +97,7 @@ export class KolPagination implements API {
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
-									_icon={leftSingleArrow}
+									_icons={leftSingleArrow}
 									_hideLabel
 									_label={translate('kol-page-back')}
 									_on={this.onGoBackward}
@@ -114,7 +114,7 @@ export class KolPagination implements API {
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
-									_icon={rightSingleArrowIcon}
+									_icons={rightSingleArrowIcon}
 									_hideLabel
 									_label={translate('kol-page-next')}
 									_on={this.onGoForward}
@@ -130,7 +130,7 @@ export class KolPagination implements API {
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
-									_icon={rightDoubleArrowIcon}
+									_icons={rightDoubleArrowIcon}
 									_hideLabel
 									_label={translate('kol-page-last')}
 									_on={this.onGoToEnd}
@@ -146,7 +146,7 @@ export class KolPagination implements API {
 						_hideLabel
 						_id={`pagination-size-${this.nonce}`}
 						_label={translate('kol-entries-per-site')}
-						_list={this.state._pageSizeOptions}
+						_options={this.state._pageSizeOptions}
 						_on={{
 							onChange: this.onChangePageSize,
 						}}
@@ -208,15 +208,9 @@ export class KolPagination implements API {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt die Gesamtanzahl der Seiten.
-	 * @deprecated Use _max.
-	 */
-	@Prop() public _total?: number;
-
-	/**
 	 * Defines the maximum number of pages.
 	 */
-	@Prop() public _max?: MaxPropType;
+	@Prop() public _max!: MaxPropType;
 
 	/**
 	 * Defines which variant should be used for presentation.
@@ -320,7 +314,6 @@ export class KolPagination implements API {
 					key={`${this.nonce}-selected`}
 					_customClass={this.state._customClass}
 					_disabled={true}
-					_ariaCurrent={true}
 					_label={`${page}`}
 					_variant={this.state._variant}
 				/>
@@ -497,11 +490,6 @@ export class KolPagination implements API {
 		watchNumber(this, '_siblingCount', Math.max(0, value ?? 1));
 	}
 
-	@Watch('_total')
-	public validateTotal(value?: number): void {
-		this.validateMax(value);
-	}
-
 	@Watch('_max')
 	public validateMax(value?: MaxPropType): void {
 		validateMax(this, value, {
@@ -536,7 +524,7 @@ export class KolPagination implements API {
 		this.validatePageSizeOptions(this._pageSizeOptions);
 		this.validateSiblingCount(this._siblingCount);
 		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateMax(this._max || this._total);
+		this.validateMax(this._max);
 		this.validateVariant(this._variant);
 
 		/**

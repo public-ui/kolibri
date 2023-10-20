@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
-import { InputTypeOnDefault, Option } from '../../types/input/types';
+import { InputTypeOnDefault } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { HideErrorPropType } from '../../types/props/hide-error';
 import { IdPropType } from '../../types/props/id';
@@ -57,8 +57,7 @@ export class KolInputRadio implements API {
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}
-							{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-							<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+							<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
 						</span>
 					</legend>
 					{this.state._options.map((option, index) => {
@@ -183,12 +182,6 @@ export class KolInputRadio implements API {
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
-	 * Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.
-	 * @deprecated Use _options.
-	 */
-	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
-
-	/**
 	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: NamePropType;
@@ -297,11 +290,6 @@ export class KolInputRadio implements API {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
-	}
-
-	@Watch('_list')
-	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
-		this.validateOptions(value);
 	}
 
 	@Watch('_name')

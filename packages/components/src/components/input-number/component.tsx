@@ -2,7 +2,6 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcons } from '../../types/icons';
-import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { HideErrorPropType } from '../../types/props/hide-error';
@@ -63,7 +62,7 @@ export class KolInputNumber implements API {
 			>
 				<kol-input
 					class={{
-						[this.state._type]: true,
+						number: true,
 						'hide-label': !!this.state._hideLabel,
 					}}
 					_disabled={this.state._disabled}
@@ -81,8 +80,7 @@ export class KolInputNumber implements API {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
 					<div slot="input">
 						<input
 							ref={this.catchRef}
@@ -104,7 +102,7 @@ export class KolInputNumber implements API {
 							placeholder={this.state._placeholder}
 							step={this.state._step}
 							spellcheck="false"
-							type={this.state._type}
+							type="number"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 							onKeyUp={this.onKeyUp}
@@ -162,11 +160,6 @@ export class KolInputNumber implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcons>;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
@@ -180,12 +173,6 @@ export class KolInputNumber implements API {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
-
-	/**
-	 * Deprecated: Gibt die Liste der Vorschlagszahlen an.
-	 * @deprecated Use _suggestions intead.
-	 */
-	@Prop() public _list?: Stringified<string[]>;
 
 	/**
 	 * Defines the largest possible input value.
@@ -262,13 +249,6 @@ export class KolInputNumber implements API {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Deprecated: Defines either the type of the component or of the components interactive element.
-	 *
-	 * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
-	 */
-	@Prop() public _type?: InputNumberType = 'number';
-
-	/**
 	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: number | Iso8601 | null;
@@ -280,7 +260,6 @@ export class KolInputNumber implements API {
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: '', // ⚠ required
 		_suggestions: [],
-		_type: 'number',
 	};
 
 	public constructor() {
@@ -327,11 +306,6 @@ export class KolInputNumber implements API {
 		this.controller.validateHint(value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
-		this.validateIcons(value);
-	}
-
 	@Watch('_icons')
 	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
 		this.controller.validateIcons(value);
@@ -345,11 +319,6 @@ export class KolInputNumber implements API {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
-	}
-
-	@Watch('_list')
-	public validateList(value?: Stringified<string[]>): void {
-		this.validateSuggestions(value);
 	}
 
 	@Watch('_max')
@@ -415,15 +384,6 @@ export class KolInputNumber implements API {
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
 		this.controller.validateTouched(value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 * @deprecated
-	 */
-	@Watch('_type')
-	public validateType(value?: InputNumberType): void {
-		this.controller.validateType(value);
 	}
 
 	@Watch('_value')

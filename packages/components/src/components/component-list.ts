@@ -17,12 +17,9 @@ import { KolDetails } from './details/component';
 import { KolForm } from './form/component';
 import { KolHeadingWc } from './heading/component';
 import { KolHeading } from './heading/shadow';
-import { KolIconFontAwesome } from './icon-font-awesome/component';
-import { KolIconIcofont } from './icon-icofont/component';
 import { KolIcon } from './icon/component';
 import { KolImage } from './image/shadow';
 import { KolIndentedText } from './indented-text/component';
-import { KolInputAdapterLeanup } from './input-adapter-leanup/component';
 import { KolInputCheckbox } from './input-checkbox/component';
 import { KolInputColor } from './input-color/component';
 import { KolInputDate } from './input-date/component';
@@ -30,7 +27,6 @@ import { KolInputEmail } from './input-email/component';
 import { KolInputFile } from './input-file/component';
 import { KolInputNumber } from './input-number/component';
 import { KolInputPassword } from './input-password/component';
-import { KolInputRadioGroup } from './input-radio-group/component';
 import { KolInputRadio } from './input-radio/component';
 import { KolInputRange } from './input-range/component';
 import { KolInputText } from './input-text/component';
@@ -83,12 +79,9 @@ export const COMPONENTS = [
 	KolHeading,
 	KolHeadingWc,
 	KolIcon,
-	KolIconFontAwesome,
-	KolIconIcofont,
 	KolImage,
 	KolIndentedText,
 	KolInput,
-	KolInputAdapterLeanup,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -97,7 +90,6 @@ export const COMPONENTS = [
 	KolInputNumber,
 	KolInputPassword,
 	KolInputRadio,
-	KolInputRadioGroup,
 	KolInputRange,
 	KolInputText,
 	KolKolibri,

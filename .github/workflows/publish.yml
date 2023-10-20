@@ -169,14 +169,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
 
-      # deprecated packages
-      - name: Build and publish core
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
-        working-directory: packages/core
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-
   publish-page:
     needs: publish
     uses: public-ui/kolibri/.github/workflows/publish-page.yml@develop
