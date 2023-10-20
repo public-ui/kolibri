@@ -54,7 +54,7 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		value: 'itzbund',
 	},
 	{
-		label: '',
+		label: '.',
 		value: 'mapz',
 	},
 	{
@@ -62,11 +62,11 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		value: 'th',
 	},
 	{
-		label: '',
+		label: '..',
 		value: 'zoll-v2',
 	},
 	{
-		label: '',
+		label: '...',
 		value: 'zoll-v3',
 	},
 ];
