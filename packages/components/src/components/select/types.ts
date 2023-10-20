@@ -22,22 +22,9 @@ type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
 	error: string;
-	/**
-	 * @deprecated Use _rows instead.
-	 */
-	height: string;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcons>;
 	icons: Stringified<KoliBriHorizontalIcons>;
-	/**
-	 * @deprecated Use options.
-	 */
-	list: Stringified<SelectOption<W3CInputValue>[]>;
 	on: InputTypeOnDefault;
-	/**
-	 * @deprecated Use _rows instead.
-	 */
-	size: number;
 	tabIndex: number;
 	value: Stringified<W3CInputValue[]>;
 } & PropDisabled &
@@ -65,17 +52,9 @@ type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
 	error: string;
-	/**
-	 * @deprecated Use _rows instead.
-	 */
-	height: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
-	/**
-	 * @deprecated Use _rows instead.
-	 */
-	size: number;
 	tabIndex: number;
 } & PropDisabled &
 	PropHideLabel &
@@ -87,6 +66,6 @@ type OptionalStates = {
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
-export type Watches = Generic.Element.Watchers<RequiredProps, Omit<OptionalProps, 'size' | 'list'>>; // deprecated props omitted
+export type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

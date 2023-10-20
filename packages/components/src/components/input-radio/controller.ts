@@ -142,7 +142,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		};
 
 		this.validateOrientation(this.component._orientation);
-		this.validateOptions(this.component._options || this.component._list);
+		this.validateOptions(this.component._options);
 		this.validateHideError(this.component._hideError);
 		this.validateValue(this.component._value);
 	}

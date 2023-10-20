@@ -47,17 +47,16 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 
 ## Links und Referenzen
 
-- <kol-link _href="https://webaim.org/techniques/skipnav/" _label="https://webaim.org/techniques/skipnav/" _target="_blank"></kol-link>
+- <kol-link _href="https://webaim.org/techniques/skipnav/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property              | Attribute     | Description                                                                                                                                 | Type                    | Default     |
-| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
-| `_ariaLabel`          | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string \| undefined`   | `undefined` |
-| `_label`              | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                          | `string \| undefined`   | `undefined` |
-| `_links` _(required)_ | `_links`      | Defines the list of links combined with their labels to render.                                                                             | `LinkProps[] \| string` | `undefined` |
+| Property              | Attribute | Description                                                                                                        | Type                    | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------- | ----------- |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                | `undefined` |
+| `_links` _(required)_ | `_links`  | Defines the list of links combined with their labels to render.                                                    | `LinkProps[] \| string` | `undefined` |
 
 ## Dependencies
 

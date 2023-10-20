@@ -22,8 +22,6 @@ export default {
 	'page-current': 'Seite {{page}}',
 	'page-selected': 'Seite {{page}} ist ausgewählt',
 	'page-per-site': '{{entries}} Einträge pro Seite',
-	'nav-maximize': 'Navigation maximieren',
-	'nav-minimize': 'Navigation minimieren',
 	'logo-description': 'Logo {{orgShort}}. Bundesadler mit Flaggenstab und Schriftzug {{orgLong}}',
 	'open-link-in-tab': 'Der Link wird in einem neuen Tab geöffnet.',
 	'kolibri-logo': 'Logo von KoliBri',

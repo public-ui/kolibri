@@ -12,7 +12,7 @@ export const SkipNavBasic: FC = () => (
 			</p>
 		</SampleDescription>
 		<KolSkipNav
-			_ariaLabel="Versteckte Navigation"
+			_label="Versteckte Navigation"
 			_links={[
 				{
 					_label: 'Zum Anfang',

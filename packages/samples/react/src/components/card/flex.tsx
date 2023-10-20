@@ -5,40 +5,30 @@ import { FC } from 'react';
 
 export const CardFlex: FC = () => (
 	<div className="grid grid-cols-2 gap-4">
-		<KolCard _heading="Titel" _hasFooter>
-			<div slot="header">Zusätzlicher Header</div>
-			<div slot="content">Inhalt</div>
-			<div slot="footer">Fusszeile</div>
+		<KolCard _label="Titel">
+			<div>Inhalt</div>
 		</KolCard>
-		<KolCard _heading="Titel" _hasFooter>
-			<div slot="header">Zusätzlicher Header</div>
-			<div slot="content">
+		<KolCard _label="Titel">
+			<div>
 				Inhalt
 				<br />
 				Inhalt
 			</div>
-			<div slot="footer">Fusszeile</div>
 		</KolCard>
-		<KolCard _heading="Titel" _hasFooter>
-			<div slot="header">Zusätzlicher Header</div>
-			<div slot="content">
+		<KolCard _label="Titel">
+			<div>
 				Inhalt
 				<br />
 				Inhalt
 				<br />
 				Inhalt
 			</div>
-			<div slot="footer">Fusszeile</div>
 		</KolCard>
-		<KolCard _heading="Titel" _hasFooter>
-			<div slot="header">Zusätzlicher Header</div>
-			<div slot="content">Inhalt</div>
-			<div slot="footer">Fusszeile</div>
+		<KolCard _label="Titel">
+			<div>Inhalt</div>
 		</KolCard>
-		<KolCard _heading="Titel" _hasFooter>
-			<div slot="header">Zusätzlicher Header</div>
-			<div slot="content">Inhalt</div>
-			<div slot="footer">Fusszeile</div>
+		<KolCard _label="Titel">
+			<div>Inhalt</div>
 		</KolCard>
 	</div>
 );

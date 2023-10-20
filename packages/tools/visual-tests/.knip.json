@@ -1,5 +1,6 @@
 {
 	"entry": ["src/index.ts"],
+	"ignore": ["playwright.config.js"],
 	"ignoreBinaries": [],
 	"ignoreDependencies": ["@public-ui/sample-react", "serve"],
 	"project": ["src/**/*.ts"],

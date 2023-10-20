@@ -1,7 +1,7 @@
 import { RemovePropertyNameTask } from '../common/RemovePropertyNameTask';
 import { RenamePropertyNameTask } from '../common/RenamePropertyNameTask';
 
-export const LinkButtonRemovePropertyAriaControl = RemovePropertyNameTask.getInstance('kol-link-button', '_aria-control', '^1');
+export const LinkButtonRemovePropertyAriaControls = RemovePropertyNameTask.getInstance('kol-link-button', '_aria-controls', '^1');
 export const LinkButtonRenamePropertyAriaCurrentToListenAriaCurrent = RenamePropertyNameTask.getInstance(
 	'kol-link-button',
 	'_aria-current',
@@ -12,4 +12,5 @@ export const LinkButtonRemovePropertyAriaExpanded = RemovePropertyNameTask.getIn
 export const LinkButtonRemovePropertyAriaLabel = RemovePropertyNameTask.getInstance('kol-link-button', '_aria-label', '^1');
 export const LinkButtonRemovePropertyAriaSelected = RemovePropertyNameTask.getInstance('kol-link-button', '_aria-selected', '^1');
 export const LinkButtonRemovePropertyDisabled = RemovePropertyNameTask.getInstance('kol-link-button', '_disabled', '^1');
+export const LinkButtonRenamePropertyIconToIcons = RenamePropertyNameTask.getInstance('kol-link-button', '_icon', '_icons', '^1');
 export const LinkButtonRenamePropertyIconOnlyToHideLabel = RenamePropertyNameTask.getInstance('kol-link-button', '_icon-only', '_hide-label', '^1');

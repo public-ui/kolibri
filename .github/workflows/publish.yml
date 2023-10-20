@@ -144,6 +144,12 @@ jobs:
         working-directory: packages/tools/kolibri-cli
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+      - name: Build and publish theme default
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
+        working-directory: packages/themes/default
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish themes
         continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
@@ -160,14 +166,6 @@ jobs:
         continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/tools/visual-tests
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-
-      # deprecated packages
-      - name: Build and publish core
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
-        working-directory: packages/core
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
 

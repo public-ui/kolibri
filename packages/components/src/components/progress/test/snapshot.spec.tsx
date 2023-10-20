@@ -120,7 +120,7 @@ describe('test Progress', () => {
 	it('render Progress of Type Cycle', async () => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-progress {...DEFAULT_PROPS} _type={'cycle'}></kol-progress>,
+			template: () => <kol-progress {...DEFAULT_PROPS} _variant={'cycle'}></kol-progress>,
 		});
 		expect(page.root).toEqualHtml(
 			`<kol-progress>

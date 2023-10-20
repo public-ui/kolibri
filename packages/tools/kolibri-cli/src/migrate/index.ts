@@ -11,6 +11,7 @@ import { TaskRunner } from './runner/task-runner';
 import { commonTasks } from './runner/tasks';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
+import { v2Tasks } from './runner/tasks/v2';
 import { getAssetTasks } from './runner/tasks/v1/assets';
 import {
 	getContentOfProjectPkgJson,
@@ -86,6 +87,7 @@ Source folder to migrate: ${baseDir}
 				const runner = new TaskRunner(baseDir, versionOfPublicUiKoliBriCli, versionOfPublicUiComponents, config);
 				runner.registerTasks(commonTasks);
 				runner.registerTasks(v1Tasks);
+				runner.registerTasks(v2Tasks);
 				runner.registerTasks(getAssetTasks(baseDir));
 
 				if (options.testTasks) {
@@ -96,8 +98,8 @@ Source folder to migrate: ${baseDir}
 
 				/**
 				 * Creates a replacer function for the package.json file.
-				 * @param version The version to replace
-				 * @returns The replacer function
+				 * @param {string} version Version to set
+				 * @returns {string} The replacer function
 				 */
 				function createVersionReplacer(version: string) {
 					return (...args: string[]) => {
@@ -110,8 +112,8 @@ Source folder to migrate: ${baseDir}
 
 				/**
 				 * Sets the version of the @public-ui/* packages in the package.json file.
-				 * @param version Version to set
-				 * @param cb Callback function
+				 * @param {string} version Version to set
+				 * @param {function} cb Callback function
 				 */
 				function setVersionOfPublicUiPackages(version: string, cb: () => void) {
 					let packageJson = getContentOfProjectPkgJson();

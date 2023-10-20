@@ -91,8 +91,8 @@ export class KolTabs implements API {
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<kol-button-wc
 						_disabled={button._disabled}
-						_icons={button._icons || button._icon}
-						_hideLabel={button._hideLabel || button._iconOnly}
+						_icons={button._icons}
+						_hideLabel={button._hideLabel}
 						_label={button._label} // TODO: ariaLabel-Konzept prüfen
 						_on={this.callbacks as ButtonCallbacksPropType<StencilUnknown>}
 						_tabIndex={this.state._selected === index ? 0 : -1}
@@ -149,16 +149,9 @@ export class KolTabs implements API {
 	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
-	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
@@ -174,12 +167,6 @@ export class KolTabs implements API {
 	 * Defines the tab captions.
 	 */
 	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
-
-	/**
-	 * Deprecated: Setzt die Position der Registrierkarten.
-	 * @deprecated Use _align.
-	 */
-	@Prop() public _tabsAlign?: AlignPropType = 'top';
 
 	@State() public state: States = {
 		_align: 'top',
@@ -238,14 +225,6 @@ export class KolTabs implements API {
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType) {
 		validateAlign(this, value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
 	}
 
 	@Watch('_label')
@@ -322,14 +301,9 @@ export class KolTabs implements API {
 		uiUxHintMillerscheZahl('KolTabs', this.state._tabs.length);
 	}
 
-	@Watch('_tabsAlign')
-	public validateTabsAlign(value?: AlignPropType): void {
-		this.validateAlign(value);
-	}
-
 	public componentWillLoad(): void {
-		this.validateAlign(this._align || this._tabsAlign);
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateAlign(this._align);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);

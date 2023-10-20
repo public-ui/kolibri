@@ -61,8 +61,7 @@ export class KolInputFile implements API {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
 					<div slot="input">
 						<input
 							ref={this.catchRef}
@@ -135,11 +134,6 @@ export class KolInputFile implements API {
 	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
-
-	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcons>;
 
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
@@ -258,11 +252,6 @@ export class KolInputFile implements API {
 	@Watch('_hint')
 	public validateHint(value?: string): void {
 		this.controller.validateHint(value);
-	}
-
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
-		this.validateIcons(value);
 	}
 
 	@Watch('_icons')

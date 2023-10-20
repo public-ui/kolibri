@@ -15,12 +15,6 @@ import { API, KoliBriQuoteVariant, States } from './types';
 })
 export class KolQuote implements API {
 	/**
-	 * Deprecated: Defines the visible caption of the component.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _caption?: string;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: string;
@@ -45,11 +39,6 @@ export class KolQuote implements API {
 		_quote: '…', // ⚠ required
 		_variant: 'inline',
 	};
-
-	@Watch('_caption')
-	public validateCaption(value?: string): void {
-		this.validateLabel(value);
-	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
@@ -77,7 +66,7 @@ export class KolQuote implements API {
 
 	public componentWillLoad(): void {
 		this.validateHref(this._href);
-		this.validateLabel(this._label || this._caption);
+		this.validateLabel(this._label);
 		this.validateQuote(this._quote);
 		this.validateVariant(this._variant);
 	}

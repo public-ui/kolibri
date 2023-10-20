@@ -1,6 +1,4 @@
 import { Generic } from '@a11y-ui/core';
-
-import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnOff } from '../../types/input/types';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
@@ -46,12 +44,6 @@ export class InputNumberController extends InputIconController implements Watche
 			},
 		});
 	}
-
-	/**
-	 * @deprecated remains to satisfy `Watches` interface
-	 */
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	public validateList(): void {}
 
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		validateSuggestions(this.component, value);
@@ -124,22 +116,6 @@ export class InputNumberController extends InputIconController implements Watche
 		watchNumber(this.component, '_step', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 * @deprecated
-	 */
-	public validateType(value?: InputNumberType): void {
-		watchValidator(
-			this.component,
-			'_type',
-			(value): boolean =>
-				typeof value === 'string' &&
-				(value === 'date' || value === 'datetime-local' || value === 'month' || value === 'number' || value === 'time' || value === 'week'),
-			new Set(['String {date, datetime-local, month, number, time, week}']),
-			value
-		);
-	}
-
 	public validateValue(value?: number | Iso8601 | null): void {
 		this.validateValueEx(value);
 	}
@@ -158,12 +134,11 @@ export class InputNumberController extends InputIconController implements Watche
 		this.validateHideError(this.component._hideError);
 		this.validateMax(this.component._max);
 		this.validateMin(this.component._min);
-		this.validateSuggestions(this.component._suggestions || this.component._list);
+		this.validateSuggestions(this.component._suggestions);
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);
 		this.validateStep(this.component._step);
-		this.validateType(this.component._type);
 		this.validateValue(this.component._value);
 	}
 }

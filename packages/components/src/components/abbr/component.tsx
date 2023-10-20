@@ -35,18 +35,12 @@ export class KolAbbr implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-
-	/**
-	 * Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _title?: string;
 
 	/**
 	 * Die State-Parameter repräsentieren den inneren State
@@ -72,18 +66,13 @@ export class KolAbbr implements API {
 		validateLabel(this, value);
 	}
 
-	@Watch('_title')
-	public validateTitle(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this, value);
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._title);
+		this.validateLabel(this._label);
 		this.validateTooltipAlign(this._tooltipAlign);
 	}
 }

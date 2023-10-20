@@ -2,10 +2,9 @@
 
 Um einzelne Bereiche Ihrer Webseite optisch hervorzuheben, bietet sich die **Card**-Komponente an. Mit ihrer Hilfe können Sie Ihre Inhalte sehr einfach strukturieren.
 
-Die **Card**-Komponente besteht aus einem **_Titel-Bereich_**, einem **_Inhalts-Bereich_** und einem **_Fuß-Bereich_**.
+Die **Card**-Komponente besteht aus einem **_Titel-Bereich_**, einem **_Inhalts-Bereich_**.
 
 Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der **Inhalts-Bereich** ist optisch durch eine horizontale Trennlinie unterhalb des Titel-Bereichs abgetrennt und wird in der Standardschrift ausgegeben.
-Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktiviert und stellt dann Platz für weitere Inhalte, z.B. eine **Button**-Komponente bereit. Der Fuß-Bereich ist optisch durch eine horizontale Trennlinie vom Inhalts-Bereich abgetrennt.
 
 ## Konstruktion
 
@@ -13,7 +12,7 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 
 ```html
 <kol-card _label="Testtitel">
-	<div slot="content">
+	<div>
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 		At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
 		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
@@ -25,7 +24,7 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 ### Beispiel
 
 <kol-card _label="Testtitel">
-	<div slot="content">
+	<div>
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 		At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
 		dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
@@ -48,13 +47,13 @@ Die Überschriftenebene des Titels wird durch das Attribut **`_level`** übergeb
 
 ### Inhalts-Container
 
-Die Inhalte im Header/Content/Footer-Bereich der Card bestimmen Sie durch Einfügen eines **Inhalts-Containers** innerhalb des `<kol-card></kol-card>-Elements`. Der Container muss als Attribut **slot="header/coontent/footer"** enthalten. Hier können Sie beliebigen **HTML-Code** einfügen.
+Die Inhalte im Content-Bereich der Card bestimmen Sie durch Einfügen eines **Inhalts-Containers** innerhalb des `<kol-card></kol-card>-Elements`. Hier können Sie beliebigen **HTML-Code** einfügen.
 
 Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container verwenden können, es aber empfohlen wird ein `<div></div>`-Tag zu verwenden.
 
 ```html
 <kol-card _label="Beispiel" _level="1">
-	<div slot="content">Text im Inhalts-Bereich</div>
+	<div>Text im Inhalts-Bereich</div>
 </kol-card>
 ```
 
@@ -69,24 +68,18 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 ## Properties
 
-| Property     | Attribute     | Description                                                                                                                                                | Type                                                            | Default     |
-| ------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
-| `_hasCloser` | `_has-closer` | Defines whether the element can be closed.                                                                                                                 | `boolean \| undefined`                                          | `false`     |
-| `_hasFooter` | `_has-footer` | Shows the slot="footer".                                                                                                                                   | `boolean \| undefined`                                          | `false`     |
-| `_heading`   | `_heading`    | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an.                                 | `string \| undefined`                                           | `undefined` |
-| `_headline`  | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string \| undefined`                                           | `undefined` |
-| `_label`     | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                         | `string \| undefined`                                           | `undefined` |
-| `_level`     | `_level`      | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                                                          | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                  | `1`         |
-| `_on`        | --            | Defines the event callback functions for the component.                                                                                                    | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
+| Property              | Attribute     | Description                                                                                                        | Type                                                            | Default     |
+| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ----------- |
+| `_hasCloser`          | `_has-closer` | Defines whether the element can be closed.                                                                         | `boolean \| undefined`                                          | `false`     |
+| `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                        | `undefined` |
+| `_level`              | `_level`      | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                  | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                  | `1`         |
+| `_on`                 | --            | Defines the event callback functions for the component.                                                            | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
 
 ## Slots
 
-| Slot        | Description                                                                                                                |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------- |
-|             | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.                                                  |
-| `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.                                                  |
-| `"footer"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.                            |
-| `"header"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card. |
+| Slot | Description                                                               |
+| ---- | ------------------------------------------------------------------------- |
+|      | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card. |
 
 ## Dependencies
 
