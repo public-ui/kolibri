@@ -20,9 +20,9 @@
 		"update": "ncu -t minor -u && ncu"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.7.2",
-		"@public-ui/schema": "1.7.2",
-		"@public-ui/visual-tests": "1.7.2",
+		"@public-ui/components": "1.7.3",
+		"@public-ui/schema": "1.7.3",
+		"@public-ui/visual-tests": "1.7.3",
 		"@typescript-eslint/eslint-plugin": "6.8.0",
 		"@typescript-eslint/parser": "6.8.0",
 		"depcheck": "1.4.7",
@@ -38,7 +38,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.2"
+		"@public-ui/components": "1.7.3"
 	},
 	"sideEffects": false,
 	"type": "module",
