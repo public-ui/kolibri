@@ -771,21 +771,13 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			"hint hint"
 			"error error";
 	}
-	kol-input > .input {
-		order: 2;
-	}
-	kol-input > label {
-		order: 3;
-	}
 	kol-alert {
 		color: var(--color-red);
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-2xs));
-		order: 1;
 	}
 	.hint {
 		font-size: 0.875rem;
-		order: 4;
 	}`,
 	'KOL-INPUT-COLOR': `kol-input {
 		color: var(--color-grey);

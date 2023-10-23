@@ -1037,7 +1037,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		display: grid;
 		gap: 0.25em;
 	}
-	.radio-input-wrapper {
+	.radio-input-wrapper, .input {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -1046,13 +1046,13 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		align-items: center;
 		position: relative;
 	}
-	.radio-input-wrapper label {
+	.radio-label {
 		cursor: pointer;
 		display: flex;
 		padding-left: 0.25em;
 		width: 100%;
 	}
-	.radio-input-wrapper label span {
+	.radio-label span {
 		margin-top: 0.125em;
 	}
 	.radio-input-wrapper input[type="radio"] {

@@ -1454,7 +1454,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		width: 100%;
 		line-height: 1.5em;
 	}
-	.radio-input-wrapper {
+	.radio-input-wrapper, .input {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -1464,12 +1464,12 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		align-items: center;
 		position: relative;
 	}
-	.radio-input-wrapper label {
+	.radio-label {
 		cursor: pointer;
 		display: flex;
 		width: 100%;
 	}
-	.radio-input-wrapper label span {
+	.radio-label span {
 		margin-top: 0.125em;
 	}
 	.radio-input-wrapper input[type="radio"] {
