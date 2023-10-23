@@ -1,4 +1,6 @@
-img {
-	max-height: 100%;
-	max-width: 100%;
+@layer kol-component {
+	img {
+		max-height: 100%;
+		max-width: 100%;
+	}
 }

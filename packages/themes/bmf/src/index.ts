@@ -1181,70 +1181,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	details kol-icon::part(icon):before {
 		content: "\\f054";
-	}
-	`,
-	'KOL-SPIN': `.spin {
-		display: inline-block;
-		height: 1rem;
-		position: relative;
-		width: 3rem;
-	}
-	.spin span {
-		animation-timing-function: cubic-bezier(0, 1, 1, 0);
-		border: 0.1rem solid rgb(255, 255, 255);
-		border-radius: 50%;
-		height: 0.8rem;
-		width: 0.8rem;
-		top: 0.1rem;
-		position: absolute;
-	}
-	.spin span:nth-child(1) {
-		background-color: #fc0;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin1;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(2) {
-		background-color: #f00;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(3) {
-		background-color: #000;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 1.1rem;
-	}
-	.spin span:nth-child(4) {
-		background-color: #666;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin3;
-		left: 2.1rem;
-	}
-	@keyframes spin1 {
-		0% {
-			transform: scale(0);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-	@keyframes spin2 {
-		0% {
-			transform: translate(0px, 0px);
-		}
-		100% {
-			transform: translate(1rem, 0px);
-		}
-	}
-	@keyframes spin3 {
-		0% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(0);
-		}
+	}`,
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
+			}
 	}`,
 	'KOL-PROGRESS': `.bar > div {
 		flex-direction: column;
@@ -1380,9 +1322,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	select option:disabled {
 		cursor: not-allowed;
@@ -2063,7 +2007,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: grid;
 		gap: 0.25em;
 	}
-	fieldset div {
+	.radio-input-wrapper {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -2073,16 +2017,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		margin: 0;
 		gap: 0.5rem;
 	}
-	fieldset div label {
+	.radio-input-wrapper label {
 		cursor: pointer;
 		display: flex;
 		padding-left: 0.25em;
 		width: 100%;
 	}
-	fieldset div label span {
+	.radio-input-wrapper label span {
 		margin-top: 0.125em;
 	}
-	fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -2090,16 +2034,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
 	}
-	fieldset div input[type="radio"]:before {
+	.radio-input-wrapper input[type="radio"]:before {
 		content: "";
 		cursor: pointer;
 		border-radius: 100%;
 		display: block;
 	}
-	fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		background-color: var(--color-midnight);
 	}
-	fieldset div input[type="radio"]:disabled {
+	.radio-input-wrapper input[type="radio"]:disabled {
 		cursor: not-allowed;
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
@@ -2147,7 +2091,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	fieldset .input-slot {
 		gap: 0.5rem;
 	}
-	fieldset div label {
+	.radio-input-wrapper label {
 		padding-left: 0;
 	}`,
 	'KOL-TOAST-CONTAINER': `:host {

@@ -1,7 +1,10 @@
 @import url(../style.css);
-.navigation-list {
-	list-style: none;
-}
-.separator:before {
-	content: '•••';
+@layer kol-component {
+	.navigation-list {
+		list-style: none;
+	}
+
+	.separator:before {
+		content: '•••';
+	}
 }

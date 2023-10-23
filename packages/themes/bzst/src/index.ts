@@ -163,14 +163,15 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	input,
 	option,
 	select,
-	summary,
 	textarea {
-		-ms-hyphens: auto;
-		-webkit-hyphens: auto;
 		hyphens: auto;
 		letter-spacing: inherit;
 		display: block;
 	} /* a,button,caption,input,option,select,summary,table,textarea {font-size: 1rem;} */
+	summary {
+		hyphens: auto;
+		letter-spacing: inherit;
+	}
 	*[tabindex]:focus,
 	kol-input:not(.checkbox, .radio) .input:focus-within,
 	kol-input:is(.checkbox, .radio) input:focus,
@@ -1179,8 +1180,6 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		width: 100%;
 	}
 	summary {
-		cursor: pointer;
-		display: flow-root;
 		margin: 0;
 		padding: 0;
 	}
@@ -1194,68 +1193,11 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	details > kol-indented-text {
 		margin: 0.25em 0 0 0.6em;
 	}`,
-	'KOL-SPIN': `.spin {
-		display: inline-block;
-		height: 1rem;
-		position: relative;
-		width: 3rem;
-	}
-	.spin span {
-		animation-timing-function: cubic-bezier(0, 1, 1, 0);
-		border: 0.1rem solid rgb(255, 255, 255);
-		border-radius: 50%;
-		height: 0.8rem;
-		width: 0.8rem;
-		top: 0.1rem;
-		position: absolute;
-	}
-	.spin span:nth-child(1) {
-		background-color: #fc0;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin1;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(2) {
-		background-color: #f00;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(3) {
-		background-color: #000;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 1.1rem;
-	}
-	.spin span:nth-child(4) {
-		background-color: #666;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin3;
-		left: 2.1rem;
-	}
-	@keyframes spin1 {
-		0% {
-		transform: scale(0);
-		}
-		100% {
-		transform: scale(1);
-		}
-	}
-	@keyframes spin2 {
-		0% {
-		transform: translate(0px, 0px);
-		}
-		100% {
-		transform: translate(1rem, 0px);
-		}
-	}
-	@keyframes spin3 {
-		0% {
-		transform: scale(1);
-		}
-		100% {
-		transform: scale(0);
-		}
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
+			}
 	}`,
 	'KOL-PROGRESS': `:host progress,
 	:host span {
@@ -1315,11 +1257,13 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	.required label > span::after {
 		content: "*";

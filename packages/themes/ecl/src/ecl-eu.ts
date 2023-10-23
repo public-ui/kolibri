@@ -771,21 +771,13 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			"hint hint"
 			"error error";
 	}
-	kol-input > .input {
-		order: 2;
-	}
-	kol-input > label {
-		order: 3;
-	}
 	kol-alert {
 		color: var(--color-red);
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-2xs));
-		order: 1;
 	}
 	.hint {
 		font-size: 0.875rem;
-		order: 4;
 	}`,
 	'KOL-INPUT-COLOR': `kol-input {
 		color: var(--color-grey);
@@ -1397,17 +1389,11 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	button:hover {
 		color: var(--color-blue-130);
 	}`,
-	'KOL-SPIN': `.spin span:nth-child(1) {
-		background-color: var(--color-blue-80);
-	}
-	.spin span:nth-child(2) {
-		background-color: var(--color-blue);
-	}
-	.spin span:nth-child(3) {
-		background-color: var(--color-blue-130);
-	}
-	.spin span:nth-child(4) {
-		background-color: var(--color-grey-20);
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: var(--color-blue-80);
+			}
 	}`,
 	'KOL-INPUT-RADIO': `fieldset {
 		border: 0;

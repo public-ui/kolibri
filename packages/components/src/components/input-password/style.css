@@ -1,4 +1,6 @@
 @import url(../input-line.css);
-.error.hidden {
-	display: none;
+@layer kol-component {
+	.error.hidden {
+		display: none;
+	}
 }
