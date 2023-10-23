@@ -1258,11 +1258,13 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	.required label > span::after {
 		content: "*";

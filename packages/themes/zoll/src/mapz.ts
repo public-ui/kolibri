@@ -1243,12 +1243,14 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	option:active:not(:disabled),
 	option:checked:not(:disabled),

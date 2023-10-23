@@ -1325,9 +1325,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	select option:disabled {
 		cursor: not-allowed;

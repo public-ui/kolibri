@@ -948,6 +948,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	}
 	option {
 		height: 2em;
+	}
+	select:not([multiple]) option {
 		padding: 0.5em;
 	}
 	kol-alert {
