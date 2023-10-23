@@ -32,7 +32,7 @@ export class KolButtonLinkTextSwitch implements Props {
 
 	private button = (button: ButtonWithChildrenProps): JSX.Element => <kol-button-wc {...button}></kol-button-wc>;
 
-	private link = (link: LinkWithChildrenProps): JSX.Element => <kol-link-wc {...link}></kol-link-wc>;
+	private link = (link: LinkWithChildrenProps): JSX.Element => <kol-link-wc _label={link._href} {...link}></kol-link-wc>;
 
 	private text = (text: TextWithChildrenProps): JSX.Element => <kol-span-wc {...text}></kol-span-wc>;
 

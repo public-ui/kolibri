@@ -15,7 +15,7 @@ import { PropHideLabel } from '../../types/props/hide-label';
  * https://mui.com/material-ui/react-link/#accessibility
  * https://mui.com/material-ui/react-button/#text-button
  */
-export type RequiredProps = PropHref;
+export type RequiredProps = PropHref & PropLabelWithExpertSlot;
 export type OptionalProps = {
 	targetDescription: string;
 	tabIndex: number;
@@ -23,7 +23,6 @@ export type OptionalProps = {
 	PropDownload &
 	PropHideLabel &
 	PropIcons &
-	PropLabelWithExpertSlot &
 	PropLinkOnCallbacks &
 	PropLinkTarget &
 	PropListenAriaCurrent &
