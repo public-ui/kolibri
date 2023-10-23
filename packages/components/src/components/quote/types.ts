@@ -9,10 +9,6 @@ type RequiredProps = {
 	quote: string;
 } & PropHref; // URL to the source of the quote (cite)
 type OptionalProps = {
-	/**
-	 * @deprecated use label.
-	 */
-	caption: string;
 	variant: KoliBriQuoteVariant;
 } & PropLabel;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

@@ -7,7 +7,7 @@ const ARGS = {
 	_icons: 'codicon codicon-home',
 	_hideLabel: true,
 	_on: {
-		onClick: (_event, _value) => alert('Klick!'),
+		onClick: () => alert('Klick!'),
 	},
 };
 

@@ -4,14 +4,14 @@ import rgba from 'rgba-convert';
 import { Subject } from 'rxjs';
 import { hex, score } from 'wcag-contrast';
 
-import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
+import { Generic, patchTheme } from '@a11y-ui/core';
 
 import { Stringified } from '../types/common';
 import { AriaCurrentPropType } from '../types/props/aria-current';
 import { PropHref } from '../types/props/href';
 import { StencilUnknown } from '../types/unknown';
 import { devHint } from './a11y.tipps';
-import { getDocument, getExperimentalMode, getWindow, Log } from './dev.utils';
+import { getDocument, getExperimentalMode, Log } from './dev.utils';
 
 // https://regex101.com/r/lSYLO9/1
 /**
@@ -413,41 +413,6 @@ export const koliBriQuerySelectorColors = (selector: string, a11yColorContrast: 
 	}
 };
 
-const scrollByHTMLElement = (element: HTMLElement, parentElement: Window | HTMLElement = window): void => {
-	if (element instanceof HTMLElement) {
-		parentElement.scrollTo({
-			behavior: 'smooth',
-			top: element.getBoundingClientRect().top + getWindow().pageYOffset - 50,
-		});
-		element.focus();
-	} else {
-		devHint(`Das HTMLElement ist nicht valide, zu dem gescrollt werden soll.`);
-	}
-};
-export const scrollBySelector = (selector: string, document?: Document | HTMLElement | ShadowRoot): void => {
-	if (
-		((selector as unknown) instanceof Document || (selector as unknown) instanceof HTMLElement || (selector as unknown) instanceof ShadowRoot) &&
-		typeof document === 'string'
-	) {
-		devHint(
-			`Bei der Methode querySelectorAll wurden die Parameter document, selector in selector, document getauscht, da der Parameter selector nicht, allerdings der Parameter document optional sein kann.`
-		);
-		const temp = `${document as unknown as string}`;
-		document = selector as unknown as Document;
-		selector = temp;
-	}
-	if (typeof selector === 'string') {
-		const element: HTMLElement | null = koliBriQuerySelector<HTMLElement>(selector, document);
-		if (element instanceof HTMLElement) {
-			scrollByHTMLElement(element);
-		} else {
-			devHint(`Es konnte kein HTMLElement mit dem Selector (${selector}) gefunden werden, zu dem gescrollt werden soll.`);
-		}
-	} else {
-		devHint(`Der Selector ist nicht valide, zu dem gescrollt werden soll.`);
-	}
-};
-
 export class KoliBriUtils {
 	private static executionLock = false;
 	private static cache = new Map<Element, A11yColorContrast>();
@@ -520,12 +485,8 @@ type AriaCurrentEventType = {
 export const ariaCurrentSubject = new Subject<AriaCurrentEventType>();
 
 export class KoliBriDevHelper {
-	public static readonly ariaCurrentSubject = ariaCurrentSubject;
 	public static readonly patchTheme = patchTheme;
-	public static readonly patchThemeTag = patchThemeTag;
 	public static readonly querySelector = koliBriQuerySelector;
 	public static readonly querySelectorAll = koliBriQuerySelectorAll;
-	public static readonly scrollByHTMLElement = scrollByHTMLElement;
-	public static readonly scrollBySelector = scrollBySelector;
 	public static readonly stringifyJson = stringifyJson;
 }

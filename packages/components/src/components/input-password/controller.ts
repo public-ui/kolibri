@@ -65,12 +65,6 @@ export class InputPasswordController extends InputIconController implements Watc
 		watchBoolean(this.component, '_required', value);
 	}
 
-	public validateSize(value?: number): void {
-		watchNumber(this.component, '_size', value, {
-			min: 1,
-		});
-	}
-
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
 		this.setFormAssociatedValue(this.component.state._value as string);
@@ -86,7 +80,6 @@ export class InputPasswordController extends InputIconController implements Watc
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);
-		this.validateSize(this.component._size);
 		this.validateValue(this.component._value);
 	}
 

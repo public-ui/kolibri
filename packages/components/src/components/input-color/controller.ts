@@ -26,12 +26,6 @@ export class InputColorController extends InputIconController implements Watches
 		);
 	}
 
-	/**
-	 * @deprecated remains to satisfy `Watches` interface
-	 */
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	public validateList(): void {}
-
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		validateSuggestions(this.component, value);
 	}
@@ -57,7 +51,7 @@ export class InputColorController extends InputIconController implements Watches
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
 		this.validateHideError(this.component._hideError);
-		this.validateSuggestions(this.component._suggestions || this.component._list);
+		this.validateSuggestions(this.component._suggestions);
 		this.validateValue(this.component._value);
 	}
 }

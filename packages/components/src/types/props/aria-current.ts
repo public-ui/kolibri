@@ -9,13 +9,8 @@ import { watchValidator } from '../../utils/prop.validators';
  */
 export type AriaCurrentPropType = 'date' | 'location' | 'page' | 'step' | 'time' | boolean;
 
-/**
- * @deprecated use `PropListenAriaCurrent` instead
- */
 export type PropAriaCurrent = {
-	/**
-	 * @deprecated use `listenAriaCurrent` instead
-	 */
+	// only used for state
 	ariaCurrent: AriaCurrentPropType;
 };
 

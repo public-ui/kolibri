@@ -50,12 +50,6 @@ export class InputDateController extends InputIconController implements Watches 
 		});
 	}
 
-	/**
-	 * @deprecated remains to satisfy `Watches` interface
-	 */
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	public validateList(): void {}
-
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		validateSuggestions(this.component, value);
 	}
@@ -223,7 +217,7 @@ export class InputDateController extends InputIconController implements Watches 
 		this.validateMin(this.component._min);
 		this.validateHideError(this.component._hideError);
 		this.validateLabel(this.component._label);
-		this.validateSuggestions(this.component._suggestions || this.component._list);
+		this.validateSuggestions(this.component._suggestions);
 		this.validateOn(this.component._on);
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);

@@ -1,14 +1,13 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropLabel } from '../../types/props/label';
 import { LinkProps } from '../link/types';
 
 type RequiredProps = {
 	links: Stringified<LinkProps[]>;
-};
-type OptionalProps = PropAriaLabel & PropLabel;
+} & PropLabel;
+type OptionalProps = NonNullable<unknown>;
 
 type RequiredStates = {
 	links: LinkProps[];

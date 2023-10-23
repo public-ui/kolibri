@@ -8,15 +8,10 @@ export type EventCallbacks = {
 	onToggle?: EventValueOrEventCallback<Event, boolean>;
 };
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabel;
 type OptionalProps = {
-	/**
-	 * @deprecated Use label.
-	 */
-	summary: string;
 	on: EventCallbacks;
-} & PropOpen &
-	PropLabel; // TODO v2: PropLabel will become required
+} & PropOpen;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;

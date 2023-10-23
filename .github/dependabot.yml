@@ -168,10 +168,3 @@ updates:
   #   schedule:
   #     interval: weekly
 
-  # deprecated
-  # - package-ecosystem: npm
-  #   directory: /packages/core/
-  #   labels:
-  #     - dependabot
-  #   schedule:
-  #     interval: weekly

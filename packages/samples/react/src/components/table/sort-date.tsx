@@ -30,4 +30,4 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
-export const TableSortTable: FC = () => <KolTable _caption="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />;
+export const TableSortTable: FC = () => <KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />;

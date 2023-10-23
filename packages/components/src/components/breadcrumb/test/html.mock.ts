@@ -34,7 +34,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 									link._hideLabel
 										? getIconHtml({
 												_label: link._label,
-												_icons: link._icon as Icofont,
+												_icons: link._icons as Icofont,
 										  })
 										: link._label
 							  }</span>`
