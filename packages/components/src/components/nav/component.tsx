@@ -1,12 +1,15 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+
+import { translate } from '../../i18n';
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { CollapsiblePropType, validateCollapsible } from '../../types/props/collapsible';
+import { validateHasCompactButton } from '../../types/props/has-compact-button';
 import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { a11yHintLabelingLandmarks, devHint } from '../../utils/a11y.tipps';
+import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { API, States } from './types';
@@ -133,6 +136,11 @@ export class KolNav implements API {
 	};
 
 	public render(): JSX.Element {
+		let hasCompactButton = this.state._hasCompactButton;
+		if (this.state._orientation === 'horizontal' && this.state._hasCompactButton === true) {
+			hasCompactButton = false;
+			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
+		}
 		const collapsible = this.state._collapsible === true;
 		const hideLabel = this.state._hideLabel === true;
 		const orientation = this.state._orientation;
@@ -146,6 +154,27 @@ export class KolNav implements API {
 					<nav aria-label={this.state._label} id="nav">
 						<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
+					{hasCompactButton && (
+						<div class="compact">
+							<kol-button
+								_ariaControls="nav"
+								_ariaExpanded={!hideLabel}
+								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
+								_hideLabel
+								_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
+								_on={{
+									onClick: (): void => {
+										this.state = {
+											...this.state,
+											_hideLabel: this.state._hideLabel === false,
+										};
+									},
+								}}
+								_tooltipAlign="right"
+								_variant="ghost"
+							></kol-button>
+						</div>
+					)}
 				</div>
 			</Host>
 		);
@@ -161,6 +190,11 @@ export class KolNav implements API {
 	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _collapsible?: boolean = true;
+
+	/**
+	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+	 */
+	@Prop() public _hasCompactButton?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -187,6 +221,7 @@ export class KolNav implements API {
 	@State() public state: States = {
 		_ariaCurrentValue: false,
 		_collapsible: true,
+		_hasCompactButton: false,
 		_hideLabel: false,
 		_label: '…', // ⚠ required
 		_links: [],
@@ -207,6 +242,11 @@ export class KolNav implements API {
 	@Watch('_collapsible')
 	public validateCollapsible(value?: CollapsiblePropType): void {
 		validateCollapsible(this, value);
+	}
+
+	@Watch('_hasCompactButton')
+	public validateHasCompactButton(value?: boolean): void {
+		validateHasCompactButton(this, value);
 	}
 
 	@Watch('_hideLabel')
@@ -248,6 +288,7 @@ export class KolNav implements API {
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateCollapsible(this._collapsible);
 		this.validateHideLabel(this._hideLabel);
+		this.validateHasCompactButton(this._hasCompactButton);
 		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);

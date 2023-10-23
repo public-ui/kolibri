@@ -5,6 +5,7 @@ import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { PropCollapsible } from '../../types/props/collapsible';
+import { PropHasCompactButton } from '../../types/props/has-compact-button';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
 
@@ -15,6 +16,7 @@ type OptionalProps = {
 	ariaCurrentValue: AriaCurrentPropType;
 	orientation: Orientation;
 } & PropCollapsible &
+	PropHasCompactButton &
 	PropHideLabel;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -23,6 +25,7 @@ type RequiredStates = {
 	links: ButtonOrLinkOrTextWithChildrenProps[];
 	orientation: Orientation;
 } & PropCollapsible &
+	PropHasCompactButton &
 	PropLabel &
 	PropHideLabel;
 type OptionalStates = NonNullable<unknown>;
