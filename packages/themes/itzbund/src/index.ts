@@ -1452,7 +1452,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		width: 100%;
 		line-height: 1.5em;
 	}
-	fieldset div {
+	.radio-input-wrapper {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -1462,15 +1462,15 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		align-items: center;
 		position: relative;
 	}
-	fieldset div label {
+	.radio-input-wrapper label {
 		cursor: pointer;
 		display: flex;
 		width: 100%;
 	}
-	fieldset div label span {
+	.radio-input-wrapper label span {
 		margin-top: 0.125em;
 	}
-	fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -1478,11 +1478,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		min-width: calc(6 * 2 * var(--spacing));
 		width: calc(6 * 2 * var(--spacing));
 	}
-	fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--color-petrol);
 	}
-	fieldset div input[type="radio"]:disabled {
+	.radio-input-wrapper input[type="radio"]:disabled {
 		background-color: var(--color-input-bg-default);
 		border-color: #999;
 		cursor: not-allowed;

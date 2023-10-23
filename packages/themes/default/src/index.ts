@@ -1799,7 +1799,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			display: grid;
 			gap: 0.25em;
 		}
-		fieldset div {
+		.radio-input-wrapper {
 			align-items: center;
 			cursor: pointer;
 			display: flex;
@@ -1809,16 +1809,16 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			min-height: var(--a11y-min-size);
 			position: relative;
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			cursor: pointer;
 			display: flex;
 			padding-left: calc(var(--spacing) / 2);
 			width: 100%;
 		}
-		fieldset div label span {
+		.radio-input-wrapper label span {
 			margin-top: 0.125em;
 		}
-		fieldset div input[type='radio'] {
+		.radio-input-wrapper input[type='radio'] {
 			appearance: none;
 			transition: 0.5s;
 			border-radius: 100%;
@@ -1826,16 +1826,16 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			min-width: calc(6 * 0.25rem);
 			width: calc(6 * 0.25rem);
 		}
-		fieldset div input[type='radio']:before {
+		.radio-input-wrapper input[type='radio']:before {
 			content: '';
 			cursor: pointer;
 			border-radius: 100%;
 			display: block;
 		}
-		fieldset div input[type='radio']:checked:before {
+		.radio-input-wrapper input[type='radio']:checked:before {
 			background-color: var(--color-primary);
 		}
-		fieldset div input[type='radio']:disabled {
+		.radio-input-wrapper input[type='radio']:disabled {
 			cursor: not-allowed;
 			background-color: var(--color-mute-variant);
 		}
@@ -1882,7 +1882,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		fieldset .input-slot {
 			gap: var(--spacing);
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			padding-left: 0;
 		}
 	`,

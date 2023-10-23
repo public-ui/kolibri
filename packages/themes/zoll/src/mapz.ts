@@ -1037,7 +1037,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		display: grid;
 		gap: 0.25em;
 	}
-	fieldset div {
+	.radio-input-wrapper {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -1046,16 +1046,16 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		align-items: center;
 		position: relative;
 	}
-	fieldset div label {
+	.radio-input-wrapper label {
 		cursor: pointer;
 		display: flex;
 		padding-left: 0.25em;
 		width: 100%;
 	}
-	fieldset div label span {
+	.radio-input-wrapper label span {
 		margin-top: 0.125em;
 	}
-	fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -1063,7 +1063,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
 	} /* fieldset div input[type="radio"]:before {content: "";cursor: pointer;left: calc(1.5 * var(--spacing) - 2px);top: calc(1.5 * var(--spacing) - 2px);position: relative;border-radius: 100%;display: block;height: calc(3 * var(--spacing));width: calc(3 * var(--spacing));}*/
-	fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--kolibri-color-primary);
 	}

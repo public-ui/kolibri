@@ -1907,7 +1907,7 @@ export const MFM = KoliBri.createTheme('mfm', {
 			display: grid;
 			gap: 0.25em;
 		}
-		fieldset div {
+		.radio-input-wrapper {
 			cursor: pointer;
 			display: flex;
 			flex-direction: row;
@@ -1916,16 +1916,16 @@ export const MFM = KoliBri.createTheme('mfm', {
 			min-height: 44px;
 			margin: 0;
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			cursor: pointer;
 			display: flex;
 			padding-left: 0.25em;
 			width: 100%;
 		}
-		fieldset div label span {
+		.radio-input-wrapper label span {
 			margin-top: 0.125em;
 		}
-		fieldset div input[type="radio"] {
+		.radio-input-wrapper input[type="radio"] {
 			appearance: none;
 			transition: 0.5s;
 			border-radius: 100%;
@@ -1933,16 +1933,16 @@ export const MFM = KoliBri.createTheme('mfm', {
 			min-width: calc(6 * var(--spacing));
 			width: calc(6 * var(--spacing));
 		}
-		fieldset div input[type="radio"]:before {
+		.radio-input-wrapper input[type="radio"]:before {
 			content: "";
 			cursor: pointer;
 			border-radius: 100%;
 			display: block;
 		}
-		fieldset div input[type="radio"]:checked:before {
+		.radio-input-wrapper input[type="radio"]:checked:before {
 			background-color: var(--color-midnight);
 		}
-		fieldset div input[type="radio"]:disabled {
+		.radio-input-wrapper input[type="radio"]:disabled {
 			cursor: not-allowed;
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
@@ -1990,7 +1990,7 @@ export const MFM = KoliBri.createTheme('mfm', {
 		fieldset .input-slot {
 			gap: 0.5rem;
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			padding-left: 0;
 		}`,
 	'KOL-TOAST': `:host > div {
