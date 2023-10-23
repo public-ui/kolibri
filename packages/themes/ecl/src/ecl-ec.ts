@@ -517,17 +517,11 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	progress {
 		display: none;
 	}`,
-	'KOL-SPIN': `.spin span:nth-child(1) {
-		background-color: var(--color-blue-75);
-	}
-	.spin span:nth-child(2) {
-		background-color: var(--color-blue);
-	}
-	.spin span:nth-child(3) {
-		background-color: var(--color-blue-130);
-	}
-	.spin span:nth-child(4) {
-		background-color: var(--color-grey-25);
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: var(--color-blue-75);
+			}
 	}`,
 	'KOL-PAGINATION': `:host {
 		display: grid;
@@ -644,21 +638,13 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 			"hint hint"
 			"error error";
 	}
-	kol-input > .input {
-		order: 2;
-	}
-	kol-input > label {
-		order: 3;
-	}
 	kol-alert {
 		color: var(--color-red);
 		font-size: 0.875em;
 		margin-left: calc(-1 * var(--spacing-2xs));
-		order: 1;
 	}
 	.hint {
 		font-size: 0.875rem;
-		order: 4;
 	}`,
 	'KOL-INPUT-COLOR': `kol-input {
 		color: var(--color-grey);

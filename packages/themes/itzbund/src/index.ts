@@ -884,68 +884,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-weight: bold;
 		/* text-transform: uppercase; */
 	}`,
-	'KOL-SPIN': `.spin {
-		display: inline-block;
-		height: 1rem;
-		position: relative;
-		width: 3rem;
-	}
-	.spin span {
-		animation-timing-function: cubic-bezier(0, 1, 1, 0);
-		border: 0.1rem solid rgb(255, 255, 255);
-		border-radius: 50%;
-		height: 0.8rem;
-		width: 0.8rem;
-		top: 0.1rem;
-		position: absolute;
-	}
-	.spin span:nth-child(1) {
-		background-color: #fc0;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin1;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(2) {
-		background-color: #f00;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(3) {
-		background-color: #000;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 1.1rem;
-	}
-	.spin span:nth-child(4) {
-		background-color: #666;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin3;
-		left: 2.1rem;
-	}
-	@keyframes spin1 {
-		0% {
-			transform: scale(0);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-	@keyframes spin2 {
-		0% {
-			transform: translate(0px, 0px);
-		}
-		100% {
-			transform: translate(1rem, 0px);
-		}
-	}
-	@keyframes spin3 {
-		0% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(0);
-		}
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
+			}
 	}`,
 	'KOL-PROGRESS': `:host progress,
 	:host span {
@@ -1005,6 +948,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	}
 	option {
 		height: 2em;
+	}
+	select:not([multiple]) option {
 		padding: 0.5em;
 	}
 	kol-alert {
@@ -1509,7 +1454,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		width: 100%;
 		line-height: 1.5em;
 	}
-	fieldset div {
+	.radio-input-wrapper, .input {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -1519,15 +1464,15 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		align-items: center;
 		position: relative;
 	}
-	fieldset div label {
+	.radio-label {
 		cursor: pointer;
 		display: flex;
 		width: 100%;
 	}
-	fieldset div label span {
+	.radio-label span {
 		margin-top: 0.125em;
 	}
-	fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -1535,11 +1480,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		min-width: calc(6 * 2 * var(--spacing));
 		width: calc(6 * 2 * var(--spacing));
 	}
-	fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--color-petrol);
 	}
-	fieldset div input[type="radio"]:disabled {
+	.radio-input-wrapper input[type="radio"]:disabled {
 		background-color: var(--color-input-bg-default);
 		border-color: #999;
 		cursor: not-allowed;

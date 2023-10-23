@@ -1037,7 +1037,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		display: grid;
 		gap: 0.25em;
 	}
-	fieldset div {
+	.radio-input-wrapper, .input {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -1046,16 +1046,16 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		align-items: center;
 		position: relative;
 	}
-	fieldset div label {
+	.radio-label {
 		cursor: pointer;
 		display: flex;
 		padding-left: 0.25em;
 		width: 100%;
 	}
-	fieldset div label span {
+	.radio-label span {
 		margin-top: 0.125em;
 	}
-	fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -1063,7 +1063,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
 	} /* fieldset div input[type="radio"]:before {content: "";cursor: pointer;left: calc(1.5 * var(--spacing) - 2px);top: calc(1.5 * var(--spacing) - 2px);position: relative;border-radius: 100%;display: block;height: calc(3 * var(--spacing));width: calc(3 * var(--spacing));}*/
-	fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--kolibri-color-primary);
 	}
@@ -1152,68 +1152,11 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		left: unset;
 		position: unset;
 	}`,
-	'KOL-SPIN': `.spin {
-		display: inline-block;
-		height: 1rem;
-		position: relative;
-		width: 3rem;
-	}
-	.spin span {
-		animation-timing-function: cubic-bezier(0, 1, 1, 0);
-		border: 0.1rem solid rgb(255, 255, 255);
-		border-radius: 50%;
-		height: 0.8rem;
-		width: 0.8rem;
-		top: 0.1rem;
-		position: absolute;
-	}
-	.spin span:nth-child(1) {
-		background-color: #fc0;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin1;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(2) {
-		background-color: #f00;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(3) {
-		background-color: #000;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 1.1rem;
-	}
-	.spin span:nth-child(4) {
-		background-color: #666;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin3;
-		left: 2.1rem;
-	}
-	@keyframes spin1 {
-		0% {
-			transform: scale(0);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-	@keyframes spin2 {
-		0% {
-			transform: translate(0px, 0px);
-		}
-		100% {
-			transform: translate(1rem, 0px);
-		}
-	}
-	@keyframes spin3 {
-		0% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(0);
-		}
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
+			}
 	}`,
 	'KOL-PROGRESS': `:host progress,
 	:host span {
@@ -1300,12 +1243,14 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	option:active:not(:disabled),
 	option:checked:not(:disabled),
