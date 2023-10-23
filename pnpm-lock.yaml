@@ -63,16 +63,16 @@ importers:
   packages/adapters/angular/v11:
     devDependencies:
       '@angular/compiler':
-        specifier: 11.2.14
-        version: 11.2.14
+        specifier: 16.2.10
+        version: 16.2.10(@angular/core@11.2.14)
       '@angular/compiler-cli':
         specifier: 11.2.14
-        version: 11.2.14(@angular/compiler@11.2.14)(typescript@4.1.2)
+        version: 11.2.14(@angular/compiler@16.2.10)(typescript@4.1.2)
       '@angular/core':
         specifier: 11.2.14
         version: 11.2.14(rxjs@6.5.5)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -108,16 +108,16 @@ importers:
   packages/adapters/angular/v12:
     devDependencies:
       '@angular/compiler':
-        specifier: 12.2.17
-        version: 12.2.17
+        specifier: 16.2.10
+        version: 16.2.10(@angular/core@12.2.17)
       '@angular/compiler-cli':
         specifier: 12.2.17
-        version: 12.2.17(@angular/compiler@12.2.17)(typescript@4.3.2)
+        version: 12.2.17(@angular/compiler@16.2.10)(typescript@4.3.2)
       '@angular/core':
         specifier: 12.2.17
         version: 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -153,16 +153,16 @@ importers:
   packages/adapters/angular/v13:
     devDependencies:
       '@angular/compiler':
-        specifier: 13.4.0
-        version: 13.4.0
+        specifier: 16.2.10
+        version: 16.2.10(@angular/core@13.4.0)
       '@angular/compiler-cli':
         specifier: 13.4.0
-        version: 13.4.0(@angular/compiler@13.4.0)(typescript@4.6.2)
+        version: 13.4.0(@angular/compiler@16.2.10)(typescript@4.6.2)
       '@angular/core':
         specifier: 13.4.0
         version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -198,16 +198,16 @@ importers:
   packages/adapters/angular/v14:
     devDependencies:
       '@angular/compiler':
-        specifier: 14.3.0
-        version: 14.3.0(@angular/core@14.3.0)
+        specifier: 16.2.10
+        version: 16.2.10(@angular/core@14.3.0)
       '@angular/compiler-cli':
         specifier: 14.3.0
-        version: 14.3.0(@angular/compiler@14.3.0)(typescript@4.8.4)
+        version: 14.3.0(@angular/compiler@16.2.10)(typescript@4.8.4)
       '@angular/core':
         specifier: 14.3.0
         version: 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -243,16 +243,16 @@ importers:
   packages/adapters/angular/v15:
     devDependencies:
       '@angular/compiler':
-        specifier: 15.2.10
-        version: 15.2.10(@angular/core@15.2.10)
+        specifier: 16.2.10
+        version: 16.2.10(@angular/core@15.2.10)
       '@angular/compiler-cli':
         specifier: 15.2.10
-        version: 15.2.10(@angular/compiler@15.2.10)(typescript@4.9.5)
+        version: 15.2.10(@angular/compiler@16.2.10)(typescript@4.9.5)
       '@angular/core':
         specifier: 15.2.10
         version: 15.2.10(rxjs@7.8.1)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -297,7 +297,7 @@ importers:
         specifier: 16.2.10
         version: 16.2.10(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -333,7 +333,7 @@ importers:
   packages/adapters/hydrate:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
       rimraf:
         specifier: 3.0.2
@@ -342,14 +342,14 @@ importers:
   packages/adapters/preact:
     dependencies:
       '@public-ui/react':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../react
       preact:
         specifier: '>=10.11.3'
         version: 10.11.3
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
       react:
         specifier: 18.2.0
@@ -367,7 +367,7 @@ importers:
   packages/adapters/react:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -403,7 +403,7 @@ importers:
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
       react:
         specifier: '>=16.14.0'
@@ -413,7 +413,7 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@public-ui/react':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../react
       cpy-cli:
         specifier: 5.0.0
@@ -425,7 +425,7 @@ importers:
   packages/adapters/solid:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -455,7 +455,7 @@ importers:
         specifier: 7.23.0
         version: 7.23.0
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -488,7 +488,7 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       '@public-ui/schema':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../schema
       i18next:
         specifier: 23.6.0
@@ -700,13 +700,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../components
       '@public-ui/solid':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../adapters/solid
       '@public-ui/themes':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../themes
       monaco-editor:
         specifier: 0.44.0
@@ -800,13 +800,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
       '@public-ui/react':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../adapters/react
       '@public-ui/themes':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../themes
       '@types/node':
         specifier: 20.8.7
@@ -906,11 +906,11 @@ importers:
   packages/themes:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../schema
       '@types/node':
         specifier: ts5.1
@@ -940,14 +940,14 @@ importers:
   packages/themes/bmf:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -959,14 +959,14 @@ importers:
   packages/themes/bzst:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -978,14 +978,14 @@ importers:
   packages/themes/default:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1012,14 +1012,14 @@ importers:
   packages/themes/ecl:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1034,14 +1034,14 @@ importers:
   packages/themes/itzbund:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1053,14 +1053,14 @@ importers:
   packages/themes/mfm:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1072,14 +1072,14 @@ importers:
   packages/themes/zoll:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.2
@@ -1116,7 +1116,7 @@ importers:
         version: 7.5.4
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../components
       '@types/gradient-string':
         specifier: 1.1.4
@@ -1185,7 +1185,7 @@ importers:
         specifier: 1.39.0
         version: 1.39.0
       '@public-ui/sample-react':
-        specifier: 2.0.0-rc.2
+        specifier: 2.0.0-rc.3
         version: link:../../samples/react
       axe-playwright:
         specifier: 1.2.3
@@ -1248,7 +1248,7 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.19
 
-  /@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.1.2):
+  /@angular/compiler-cli@11.2.14(@angular/compiler@16.2.10)(typescript@4.1.2):
     resolution: {integrity: sha512-A7ltnCp03/EVqK/Q3tVUDsokgz5GHW3dSPGl0Csk7Ys5uBB9ibHTmVt4eiXA4jt0+6Bk+mKxwe5BEDqLvwYFAg==}
     engines: {node: '>=10.0'}
     hasBin: true
@@ -1256,7 +1256,7 @@ packages:
       '@angular/compiler': 11.2.14
       typescript: '>=4.0 <4.2'
     dependencies:
-      '@angular/compiler': 11.2.14
+      '@angular/compiler': 16.2.10(@angular/core@11.2.14)
       '@babel/core': 7.22.11
       '@babel/types': 7.22.11
       canonical-path: 1.0.0
@@ -1277,7 +1277,7 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler-cli@12.2.17(@angular/compiler@12.2.17)(typescript@4.3.2):
+  /@angular/compiler-cli@12.2.17(@angular/compiler@16.2.10)(typescript@4.3.2):
     resolution: {integrity: sha512-gJJlnDr8Fhs6z0hH0Y/5GC1YAgHY+sRh2BUrbDu+nIUubyyOVYSyQdL1jwEfCSIZl1GSg+4b4thU7pp7HtmX8g==}
     engines: {node: ^12.14.1 || >=14.0.0}
     hasBin: true
@@ -1285,7 +1285,7 @@ packages:
       '@angular/compiler': 12.2.17
       typescript: '>=4.2.3 <4.4'
     dependencies:
-      '@angular/compiler': 12.2.17
+      '@angular/compiler': 16.2.10(@angular/core@12.2.17)
       '@babel/core': 7.22.11
       '@babel/types': 7.22.11
       canonical-path: 1.0.0
@@ -1305,7 +1305,7 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler-cli@13.4.0(@angular/compiler@13.4.0)(typescript@4.6.2):
+  /@angular/compiler-cli@13.4.0(@angular/compiler@16.2.10)(typescript@4.6.2):
     resolution: {integrity: sha512-OQD0w9aZXbpcyWDEaozoHH/n3eYDLhBsmJcIBVqUN8Awx8m17v2u2R6m7DIEpVRbBzYtTscAMTKONNVwsTolHA==}
     engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0}
     hasBin: true
@@ -1313,7 +1313,7 @@ packages:
       '@angular/compiler': 13.4.0
       typescript: '>=4.4.2 <4.7'
     dependencies:
-      '@angular/compiler': 13.4.0
+      '@angular/compiler': 16.2.10(@angular/core@13.4.0)
       '@babel/core': 7.22.11
       chokidar: 3.5.3
       convert-source-map: 1.9.0
@@ -1329,7 +1329,7 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler-cli@14.3.0(@angular/compiler@14.3.0)(typescript@4.8.4):
+  /@angular/compiler-cli@14.3.0(@angular/compiler@16.2.10)(typescript@4.8.4):
     resolution: {integrity: sha512-eoKpKdQ2X6axMgzcPUMZVYl3bIlTMzMeTo5V29No4BzgiUB+QoOTYGNJZkGRyqTNpwD9uSBJvmT2vG9+eC4ghQ==}
     engines: {node: ^14.15.0 || >=16.10.0}
     hasBin: true
@@ -1337,7 +1337,7 @@ packages:
       '@angular/compiler': 14.3.0
       typescript: '>=4.6.2 <4.9'
     dependencies:
-      '@angular/compiler': 14.3.0(@angular/core@14.3.0)
+      '@angular/compiler': 16.2.10(@angular/core@14.3.0)
       '@babel/core': 7.22.11
       chokidar: 3.5.3
       convert-source-map: 1.9.0
@@ -1353,7 +1353,7 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10)(typescript@4.9.5):
+  /@angular/compiler-cli@15.2.10(@angular/compiler@16.2.10)(typescript@4.9.5):
     resolution: {integrity: sha512-mCFIxrs60XicKfA2o42hA7LrQvhybi9BQveWuZn/2iIEOXx7R62Iemz8E21pLWftAZHGxEW3NECfBrY1d3gVmA==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     hasBin: true
@@ -1361,7 +1361,7 @@ packages:
       '@angular/compiler': 15.2.10
       typescript: '>=4.8.2 <5.0'
     dependencies:
-      '@angular/compiler': 15.2.10(@angular/core@15.2.10)
+      '@angular/compiler': 16.2.10(@angular/core@15.2.10)
       '@babel/core': 7.19.3
       '@jridgewell/sourcemap-codec': 1.4.15
       chokidar: 3.5.3
@@ -1399,31 +1399,50 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler@11.2.14:
-    resolution: {integrity: sha512-XBOK3HgA+/y6Cz7kOX4zcJYmgJ264XnfcbXUMU2cD7Ac+mbNhLPKohWrEiSWalfcjnpf5gRfufQrQP7lpAGu0A==}
-    dependencies:
-      tslib: 2.6.2
-    dev: true
-
-  /@angular/compiler@12.2.17:
-    resolution: {integrity: sha512-dxM1CxzvEJPk6ShJngkW5j5BejBloxQNi+fJi+F8P/GN/Rj7vJUf0JxL+TUt1+Iv575V4NidJDKKikk6K485CA==}
-    engines: {node: ^12.14.1 || >=14.0.0}
-    dependencies:
-      tslib: 2.6.2
-    dev: true
-
-  /@angular/compiler@13.4.0:
-    resolution: {integrity: sha512-tPWoq2RC/VIrJtynEnMRWQZemBIC/ypuVfuUf3p8IIXCZHjuGnibdlZTtFYkexc4/sR1ug9xk1cJWvbOPwilng==}
-    engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0}
-    dependencies:
-      tslib: 2.6.2
-    dev: true
-
-  /@angular/compiler@14.3.0(@angular/core@14.3.0):
-    resolution: {integrity: sha512-E15Rh0t3vA+bctbKnBCaDmLvc3ix+ZBt6yFZmhZalReQ+KpOlvOJv+L9oiFEgg+rYVl2QdvN7US1fvT0PqswLw==}
-    engines: {node: ^14.15.0 || >=16.10.0}
+  /@angular/compiler@16.2.10(@angular/core@11.2.14):
+    resolution: {integrity: sha512-ty6SfqkZlV2bLU/SSi3wmxrEFgPrK+WVslCNIr3FlTnCBdqpIbadHN2QB3A1d9XaNc7c4Tq5DQKh34cwMwNbuw==}
+    engines: {node: ^16.14.0 || >=18.10.0}
     peerDependencies:
-      '@angular/core': 14.3.0
+      '@angular/core': 16.2.10
+    peerDependenciesMeta:
+      '@angular/core':
+        optional: true
+    dependencies:
+      '@angular/core': 11.2.14(rxjs@6.5.5)(zone.js@0.11.8)
+      tslib: 2.6.2
+    dev: true
+
+  /@angular/compiler@16.2.10(@angular/core@12.2.17):
+    resolution: {integrity: sha512-ty6SfqkZlV2bLU/SSi3wmxrEFgPrK+WVslCNIr3FlTnCBdqpIbadHN2QB3A1d9XaNc7c4Tq5DQKh34cwMwNbuw==}
+    engines: {node: ^16.14.0 || >=18.10.0}
+    peerDependencies:
+      '@angular/core': 16.2.10
+    peerDependenciesMeta:
+      '@angular/core':
+        optional: true
+    dependencies:
+      '@angular/core': 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
+      tslib: 2.6.2
+    dev: true
+
+  /@angular/compiler@16.2.10(@angular/core@13.4.0):
+    resolution: {integrity: sha512-ty6SfqkZlV2bLU/SSi3wmxrEFgPrK+WVslCNIr3FlTnCBdqpIbadHN2QB3A1d9XaNc7c4Tq5DQKh34cwMwNbuw==}
+    engines: {node: ^16.14.0 || >=18.10.0}
+    peerDependencies:
+      '@angular/core': 16.2.10
+    peerDependenciesMeta:
+      '@angular/core':
+        optional: true
+    dependencies:
+      '@angular/core': 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
+      tslib: 2.6.2
+    dev: true
+
+  /@angular/compiler@16.2.10(@angular/core@14.3.0):
+    resolution: {integrity: sha512-ty6SfqkZlV2bLU/SSi3wmxrEFgPrK+WVslCNIr3FlTnCBdqpIbadHN2QB3A1d9XaNc7c4Tq5DQKh34cwMwNbuw==}
+    engines: {node: ^16.14.0 || >=18.10.0}
+    peerDependencies:
+      '@angular/core': 16.2.10
     peerDependenciesMeta:
       '@angular/core':
         optional: true
@@ -1432,11 +1451,11 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@angular/compiler@15.2.10(@angular/core@15.2.10):
-    resolution: {integrity: sha512-M0XkeU0O73UlJZwDvOyp8/apetz9UKj78eTFDseMYJDLcxe6MpkbkxqpsGZnKYDj7LIep8PmCAKEkhtenE82zw==}
-    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
+  /@angular/compiler@16.2.10(@angular/core@15.2.10):
+    resolution: {integrity: sha512-ty6SfqkZlV2bLU/SSi3wmxrEFgPrK+WVslCNIr3FlTnCBdqpIbadHN2QB3A1d9XaNc7c4Tq5DQKh34cwMwNbuw==}
+    engines: {node: ^16.14.0 || >=18.10.0}
     peerDependencies:
-      '@angular/core': 15.2.10
+      '@angular/core': 16.2.10
     peerDependenciesMeta:
       '@angular/core':
         optional: true
