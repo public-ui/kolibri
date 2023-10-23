@@ -1179,12 +1179,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-weight: 900;
 		margin-right: 0.5rem;
 	}
-	details[open] kol-icon::part(icon):before {
-		content: "\\f078";
-	}
-	details:not([open]) kol-icon::part(icon):before {
+	details kol-icon::part(icon):before {
 		content: "\\f054";
-	}`,
+	}
+	`,
 	'KOL-SPIN': `.spin {
 		display: inline-block;
 		height: 1rem;

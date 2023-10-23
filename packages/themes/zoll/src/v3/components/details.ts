@@ -18,14 +18,13 @@ export default css`
 	details > summary > kol-icon {
 		display: block;
 		font-size: 1.125rem;
-		transform: rotate(90deg);
 
 		&::part(icon) {
 			font-weight: 700;
 		}
 	}
-	details[open] > summary > kol-icon {
-		transform: rotate(180deg);
+	details > summary > kol-icon:not(.is-open)::part(icon) {
+		transform: rotate(-90deg);
 	}
 	details > summary > span {
 		border-bottom: 0;
