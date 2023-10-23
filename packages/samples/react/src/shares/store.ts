@@ -76,7 +76,7 @@ export const getTheme = (): Theme => {
 	return `${STORE.theme}`;
 };
 
-export const getThemeName = (theme: Theme): string => {
+export const getThemeName = (theme: Theme) => {
 	if (isTheme(theme)) {
 		return THEME_OPTIONS.find((option) => (option as Option<Theme>).value === theme)?.label;
 	} else {

@@ -15,6 +15,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 				}}
 				_label="Nicht ausgewählt"
 				_value={false}
+				_required
 			/>
 			<KolInputCheckbox
 				{...props}
