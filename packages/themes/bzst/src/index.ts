@@ -163,14 +163,15 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	input,
 	option,
 	select,
-	summary,
 	textarea {
-		-ms-hyphens: auto;
-		-webkit-hyphens: auto;
 		hyphens: auto;
 		letter-spacing: inherit;
 		display: block;
 	} /* a,button,caption,input,option,select,summary,table,textarea {font-size: 1rem;} */
+	summary {
+		hyphens: auto;
+		letter-spacing: inherit;
+	}
 	*[tabindex]:focus,
 	kol-input:not(.checkbox, .radio) .input:focus-within,
 	kol-input:is(.checkbox, .radio) input:focus,
@@ -1179,8 +1180,6 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		width: 100%;
 	}
 	summary {
-		cursor: pointer;
-		display: flow-root;
 		margin: 0;
 		padding: 0;
 	}
