@@ -1185,68 +1185,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 	details:not([open]) kol-icon::part(icon):before {
 		content: "\\f054";
 	}`,
-	'KOL-SPIN': `.spin {
-		display: inline-block;
-		height: 1rem;
-		position: relative;
-		width: 3rem;
-	}
-	.spin span {
-		animation-timing-function: cubic-bezier(0, 1, 1, 0);
-		border: 0.1rem solid rgb(255, 255, 255);
-		border-radius: 50%;
-		height: 0.8rem;
-		width: 0.8rem;
-		top: 0.1rem;
-		position: absolute;
-	}
-	.spin span:nth-child(1) {
-		background-color: #fc0;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin1;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(2) {
-		background-color: #f00;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 0.1rem;
-	}
-	.spin span:nth-child(3) {
-		background-color: #000;
-		z-index: 1;
-		animation: 2s ease 0s infinite normal none running spin2;
-		left: 1.1rem;
-	}
-	.spin span:nth-child(4) {
-		background-color: #666;
-		z-index: 0;
-		animation: 2s ease 0s infinite normal none running spin3;
-		left: 2.1rem;
-	}
-	@keyframes spin1 {
-		0% {
-			transform: scale(0);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-	@keyframes spin2 {
-		0% {
-			transform: translate(0px, 0px);
-		}
-		100% {
-			transform: translate(1rem, 0px);
-		}
-	}
-	@keyframes spin3 {
-		0% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(0);
-		}
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
+			}
 	}`,
 	'KOL-PROGRESS': `.bar > div {
 		flex-direction: column;

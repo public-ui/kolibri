@@ -1397,17 +1397,11 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	button:hover {
 		color: var(--color-blue-130);
 	}`,
-	'KOL-SPIN': `.spin span:nth-child(1) {
-		background-color: var(--color-blue-80);
-	}
-	.spin span:nth-child(2) {
-		background-color: var(--color-blue);
-	}
-	.spin span:nth-child(3) {
-		background-color: var(--color-blue-130);
-	}
-	.spin span:nth-child(4) {
-		background-color: var(--color-grey-20);
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: var(--color-blue-80);
+			}
 	}`,
 	'KOL-INPUT-RADIO': `fieldset {
 		border: 0;

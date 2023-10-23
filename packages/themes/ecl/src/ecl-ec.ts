@@ -517,17 +517,11 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	progress {
 		display: none;
 	}`,
-	'KOL-SPIN': `.spin span:nth-child(1) {
-		background-color: var(--color-blue-75);
-	}
-	.spin span:nth-child(2) {
-		background-color: var(--color-blue);
-	}
-	.spin span:nth-child(3) {
-		background-color: var(--color-blue-130);
-	}
-	.spin span:nth-child(4) {
-		background-color: var(--color-grey-25);
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: var(--color-blue-75);
+			}
 	}`,
 	'KOL-PAGINATION': `:host {
 		display: grid;
