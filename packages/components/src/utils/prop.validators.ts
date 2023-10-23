@@ -4,7 +4,7 @@ import rgba from 'rgba-convert';
 import { Subject } from 'rxjs';
 import { hex, score } from 'wcag-contrast';
 
-import { Generic, patchTheme } from '@a11y-ui/core';
+import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
 
 import { Stringified } from '../types/common';
 import { AriaCurrentPropType } from '../types/props/aria-current';
@@ -486,6 +486,7 @@ export const ariaCurrentSubject = new Subject<AriaCurrentEventType>();
 
 export class KoliBriDevHelper {
 	public static readonly patchTheme = patchTheme;
+	public static readonly patchThemeTag = patchThemeTag;
 	public static readonly querySelector = koliBriQuerySelector;
 	public static readonly querySelectorAll = koliBriQuerySelectorAll;
 	public static readonly stringifyJson = stringifyJson;
