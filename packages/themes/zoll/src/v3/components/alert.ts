@@ -1,4 +1,4 @@
-import { css } from "../cssTag";
+import { css } from '../cssTag';
 
 export default css`
 	kol-alert-wc {
@@ -151,31 +151,31 @@ export default css`
 	}
 
 	kol-icon::part(icon) {
-		font-family: "Font Awesome 6 Free";
+		font-family: 'Font Awesome 6 Free';
 		font-weight: 900;
 	}
 
 	.default kol-icon::part(icon)::before {
-		content: "\\f05a";
+		content: '\\f05a';
 	}
 
 	.error kol-icon::part(icon)::before {
-		content: "\\f06a";
+		content: '\\f06a';
 	}
 
 	.info kol-icon::part(icon)::before {
-		content: "\\f0eb";
+		content: '\\f0eb';
 	}
 
 	.success kol-icon::part(icon)::before {
-		content: "\\f058";
+		content: '\\f058';
 	}
 
 	.warning kol-icon::part(icon)::before {
-		content: "\\f071";
+		content: '\\f071';
 	}
 
 	.close button kol-icon::part(icon)::before {
-		content: "\\f00d";
+		content: '\\f00d';
 	}
 `;

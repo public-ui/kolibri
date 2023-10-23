@@ -1,4 +1,4 @@
-import { css } from "../cssTag";
+import { css } from '../cssTag';
 
 export default css`
 	/* ALL INPUT, SELECT, TEXTAREA */
@@ -24,7 +24,7 @@ export default css`
 		text-decoration: underline;
 	}
 	.required legend > span::after {
-		content: "*";
+		content: '*';
 		padding-left: 0.125em;
 	}
 	input {
@@ -58,7 +58,7 @@ export default css`
 		align-items: center;
 		gap: 0.75rem;
 	}
-	fieldset div input[type="radio"] {
+	fieldset div input[type='radio'] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100% !important; /* important to enforce during shared :focus style */
@@ -67,14 +67,14 @@ export default css`
 		width: calc(6 * var(--spacing));
 		border-color: var(--color-grau-30);
 	}
-	kol-input:not(.disabled):hover input[type="radio"],
-	kol-input:focus-within input[type="radio"] {
+	kol-input:not(.disabled):hover input[type='radio'],
+	kol-input:focus-within input[type='radio'] {
 		border-color: var(--color-neutral-dark-correct);
 	}
-	.error input[type="radio"] {
+	.error input[type='radio'] {
 		border-color: var(--color-rot);
 	}
-	fieldset div input[type="radio"]:checked:before {
+	fieldset div input[type='radio']:checked:before {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--color-blau);
 	}

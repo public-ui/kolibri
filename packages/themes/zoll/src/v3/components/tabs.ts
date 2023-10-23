@@ -1,4 +1,4 @@
-import { css } from "../cssTag";
+import { css } from '../cssTag';
 
 export default css`
 	kol-button-group-wc {
@@ -19,7 +19,7 @@ export default css`
 		}
 	}
 	kol-button-wc button.selected,
-	kol-button-wc[aria-selected="true"] button {
+	kol-button-wc[aria-selected='true'] button {
 		border-bottom-color: var(--color-blau);
 	}
 	button:disabled {

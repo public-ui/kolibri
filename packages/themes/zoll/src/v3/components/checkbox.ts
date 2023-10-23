@@ -1,4 +1,4 @@
-import { css } from "../cssTag";
+import { css } from '../cssTag';
 
 export default css`
 	:host {
@@ -26,7 +26,7 @@ export default css`
 		color: var(--color-rot);
 	}
 	kol-input.required label > span::after {
-		content: "*";
+		content: '*';
 		padding-left: 0.125em;
 	}
 	.input {
@@ -37,10 +37,10 @@ export default css`
 		background-color: white;
 		margin: 0;
 		&:before {
-			content: "";
+			content: '';
 		}
 	}
-	kol-input.error input[type="checkbox"] {
+	kol-input.error input[type='checkbox'] {
 		border: 2px solid var(--color-rot);
 	}
 	kol-input:not(.disabled) :is(.input, label) {
@@ -74,7 +74,7 @@ export default css`
 	kol-input.default {
 		grid-template-columns: calc(6 * var(--spacing)) auto;
 	}
-	.default input[type="checkbox"] {
+	.default input[type='checkbox'] {
 		border-radius: 0.25em;
 		border: 2px solid var(--color-neutral-dark);
 		height: calc(6 * var(--spacing));
@@ -112,7 +112,7 @@ export default css`
 	kol-input.switch {
 		grid-template-columns: calc(13 * var(--spacing)) auto;
 	}
-	.switch input[type="checkbox"] {
+	.switch input[type='checkbox'] {
 		background: var(--color-grau-50);
 		border-color: transparent;
 		border-radius: var(--a11y-min-size);
@@ -122,7 +122,7 @@ export default css`
 		transition: outline-offset 0.25s linear;
 		width: 3.2em;
 	}
-	.switch input[type="checkbox"]::before {
+	.switch input[type='checkbox']::before {
 		background-color: white;
 		border-radius: 50%;
 		height: 1.2em;
@@ -131,18 +131,18 @@ export default css`
 		top: calc(0.25em - 2px);
 		width: 1.2em;
 	}
-	.switch:not(.disabled):hover input[type="checkbox"],
-	.switch:not(.disabled):focus-within input[type="checkbox"] {
+	.switch:not(.disabled):hover input[type='checkbox'],
+	.switch:not(.disabled):focus-within input[type='checkbox'] {
 		outline: 0.125rem solid var(--color-blau-dark);
 		outline-offset: 0.125rem;
 	}
-	.switch input[type="checkbox"]:checked {
+	.switch input[type='checkbox']:checked {
 		background: var(--color-blau);
 	}
-	.switch input[type="checkbox"]:checked::before {
+	.switch input[type='checkbox']:checked::before {
 		transform: translateX(1.5em);
 	}
-	.switch input[type="checkbox"]:indeterminate:before {
+	.switch input[type='checkbox']:indeterminate:before {
 		transform: translateX(0.75em);
 	}
 	.switch .icon {
@@ -153,12 +153,12 @@ export default css`
 			font-weight: 700;
 		}
 	}
-	.switch:has(input[type="checkbox"]:not(:checked, :indeterminate)) .icon {
+	.switch:has(input[type='checkbox']:not(:checked, :indeterminate)) .icon {
 		opacity: 0; /* Avoid display: none because it breaks the transform-animation */
 	}
 
 	/* BUTTON */
 	kol-input.button {
-		grid-template-areas: "input label" "error error" "hint hint";
+		grid-template-areas: 'input label' 'error error' 'hint hint';
 	}
 `;
