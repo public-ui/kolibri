@@ -20,10 +20,13 @@ export const getDetailsHtml = (
 	<mock:shadow-root>
 		<details${props._open ? ` style="height: 0px;"` : ``}>
 			<summary>
-				${getIconHtml({
-					_label: '',
-					_icons: props._open ? 'codicon codicon-chevron-down' : 'codicon codicon-chevron-right',
-				})}
+				${getIconHtml(
+					{
+						_label: '',
+						_icons: 'codicon codicon-chevron-right',
+					},
+					`class="icon${props._open ? ' is-open' : ''}"`
+				)}
 				<span>
 					${props._label}
 				</span>
