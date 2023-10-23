@@ -33,7 +33,7 @@ export class KolDetails implements API {
 					onToggle={this.handleToggle}
 				>
 					<summary ref={(element) => (this.summaryElement = element)}>
-						{this.state._open ? <kol-icon _label="" _icons="codicon codicon-chevron-down" /> : <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
+						<kol-icon _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
 						<span>{this.state._label}</span>
 					</summary>
 					<div class="content" ref={(element) => (this.contentElement = element)}>
