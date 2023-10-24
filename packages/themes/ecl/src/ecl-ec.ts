@@ -592,6 +592,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 			border-color: var(--color-blue);
 			color: var(--color-white);
 			opacity: 1 !important;
+			text-decoration: underline;
 		}
 	`,
 	'KOL-INPUT-CHECKBOX': css`
