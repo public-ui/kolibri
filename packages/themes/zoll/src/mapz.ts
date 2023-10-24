@@ -1496,44 +1496,37 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		}
 	`,
 	'KOL-PAGINATION': css`
-		:host {
-			display: grid;
-			gap: 1rem;
-		}
-		:host .navigation-list {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 0.5em;
-		}
-		:host .selected button {
-			min-width: 44px;
-			min-height: 44px;
-			box-sizing: border-box;
-			line-height: 1.25em;
-			font-size: inherit;
-			cursor: pointer;
-			border-width: 2px;
-			box-shadow: 0 0 0.25em gray;
-			font-family: var(--kolibri-font-family);
-			width: inherit;
+		.button {
 			border-radius: var(--kolibri-border-radius);
-			border-style: solid;
-			padding: calc(2 * var(--kolibri-spacing));
-			display: grid;
-			gap: 0.25em;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
 		}
-		:host .selected button {
+		.button-inner {
+			background-color: var(--kolibri-color-normal);
+			border: 2px solid var(--kolibri-color-normal);
+			border-radius: var(--kolibri-border-radius);
+			color: white;
+			font-family: var(--kolibri-font-family);
+			font-size: inherit;
+			line-height: 1.25em;
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			padding: calc(2 * var(--kolibri-spacing));
+		}
+		.button:not(:disabled):hover .button-inner,
+		.button:focus .button-inner {
+			background-color: white;
+			border-color: var(--kolibri-color-normal);
+			color: var(--kolibri-color-normal);
+		}
+		.button:disabled .button-inner {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+		.selected .button-inner {
 			background-color: var(--kolibri-color-primary);
 			border-color: var(--kolibri-color-primary);
 			color: white;
-			cursor: not-allowed;
 			font-weight: 700;
+			opacity: 1 !important;
 			text-decoration: underline;
 		}
 	`,
