@@ -1,4 +1,4 @@
-import { css } from '../cssTag';
+import { css } from '../../cssTag';
 
 export default css`
 	:host {

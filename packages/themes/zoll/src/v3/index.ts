@@ -5,7 +5,7 @@ import checkboxStyles from './components/checkbox';
 import detailsStyles from './components/details';
 import radioStyles from './components/radio';
 import tabsStyles from './components/tabs';
-import { css } from './cssTag';
+import { css } from '../cssTag';
 
 // Design System Zoll (v3)
 export const ZOLLv3 = KoliBri.createTheme('zoll-v3', {

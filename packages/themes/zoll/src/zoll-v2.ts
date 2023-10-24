@@ -1,9 +1,5 @@
 import { KoliBri } from '@public-ui/schema';
-
-/**
- * No-op tag function to help with CSS syntax highlighting and provide Prettier support
- */
-const css = (input: TemplateStringsArray): string => input.join(``);
+import { css } from './cssTag';
 
 // Design System Zoll (v2)
 export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
