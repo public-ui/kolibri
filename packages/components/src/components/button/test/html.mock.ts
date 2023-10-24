@@ -42,7 +42,7 @@ export const getButtonWcHtml = (
 	}
 	${state._hideLabel && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''}
 	${state._role ? `role="${state._role}"` : ''}
-)	class="button ${classNames.join(' ')}" type="${type}">
+	class="button ${classNames.join(' ')}" type="${type}">
 		${getSpanWcHtml(
 			{
 				...props,
