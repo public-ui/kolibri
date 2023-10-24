@@ -313,30 +313,43 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		}
 	`,
 	'KOL-PAGINATION': css`
-		:host {
-			display: grid;
-			gap: 1rem;
+		.button {
+			border-radius: 2rem;
+			font-family: var(--font-family-sans);
 		}
-		:host .navigation-list {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 0.5em;
+		.button-inner {
+			background-color: var(--color-weiss);
+			border-radius: 2rem;
+			border: var(--spacing) solid var(--color-anthrazit);
+			color: var(--color-anthrazit);
+			font-size: inherit;
+			gap: 0.25em;
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			padding: 0 1rem;
+			transition-duration: 0.5s;
+			transition-property: background, color, border-color;
+			transition-timing-function: ease-in-out;
 		}
-		button > kol-span-wc {
+		.hide-label .button-inner {
+			padding: 0 0.5rem;
+		}
+		.button:not(:disabled):hover .button-inner,
+		.button:focus .button-inner {
+			background-color: var(--color-anthrazit);
+			border-color: var(--color-anthrazit);
+			color: var(--color-weiss);
+		}
+		.button:disabled .button-inner {
 			cursor: not-allowed;
+			opacity: 0.5;
+		}
+		.selected .button-inner {
 			background-color: var(--color-achat);
 			border-color: var(--color-achat);
-			border-radius: 2rem;
-			border-style: solid;
 			color: var(--color-weiss);
-			min-width: 44px;
-			min-height: 44px;
-			border-width: var(--spacing);
-			font-size: inherit;
 			font-weight: bold;
-			line-height: 1.25em;
-			padding: calc(4 * var(--spacing));
+			opacity: 1 !important;
 			text-decoration: underline;
 		}
 	`,
