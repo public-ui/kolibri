@@ -2138,48 +2138,76 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		}
 	`,
 	'KOL-PAGINATION': css`
-		:host {
-			align-items: center;
-			display: flex;
-			gap: 1rem;
-		}
-		.navigation-list {
-			align-items: center;
-			display: inline-flex;
-			flex-wrap: wrap;
-			gap: 0.5rem;
-			justify-content: center;
-			margin: 0;
-			padding: 0;
-		}
 		.navigation-list > li {
 			min-width: var(--a11y-min-size);
 			text-align: center;
 		}
-		.selected button {
-			cursor: not-allowed;
-			font-weight: 700;
-			border-radius: 1.5em;
-			border: none;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			color: var(--color-midnight);
-		}
-		kol-button::part(icon)::before {
+		.icon::part(icon) {
 			font-family: 'Font Awesome 6 Free';
 			font-weight: 900;
 		}
-		kol-button.first::part(icon)::before {
+		.first .icon::part(icon)::before {
 			content: '\\f100';
 		}
-		kol-button.previous::part(icon)::before {
+		.previous .icon::part(icon)::before {
 			content: '\\f104';
 		}
-		kol-button.next::part(icon)::before {
+		.next .icon::part(icon)::before {
 			content: '\\f105';
 		}
-		kol-button.last::part(icon)::before {
+		.last .icon::part(icon)::before {
 			content: '\\f101';
+		}
+		.button {
+			--background-color: var(--color-gruen-dunkel);
+			--border-color: var(--color-gruen-dunkel);
+			--border-size: 1px;
+			--min-size: 2.75rem;
+			align-items: center;
+			background-color: var(--color-weiss);
+			border: var(--border-size) solid var(--color-gruen-hell);
+			color: var(--color-grau-dunkel);
+			cursor: pointer;
+			display: grid;
+			font-family: var(--font-family);
+			font-size: var(--text-size);
+			font-style: normal;
+			gap: 0.25em;
+			justify-content: center;
+			line-height: 1.5;
+			min-height: var(--min-size);
+			min-width: var(--min-size);
+			padding: 0.5rem 0.875rem;
+			text-align: center;
+			text-transform: uppercase;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+			&:hover:enabled {
+				text-decoration: underline;
+			}
+			&:focus {
+				outline: var(--color-focus) solid 2px;
+			}
+			&:disabled,
+			&:disabled:hover {
+				opacity: 0.5;
+				background-color: var(--color-weiss);
+				border-color: var(--color-grau-hell);
+				color: var(--color-disabled);
+				cursor: not-allowed;
+			}
+			& .icon {
+				display: inline-block;
+				width: 1.5em;
+				height: 1.5em;
+			}
+		}
+		.selected button {
+			border-radius: 1.5em;
+			border: none;
+			color: var(--color-midnight) !important;
+			font-weight: 700;
+			line-height: normal;
 		}
 	`,
 	'KOL-INPUT-RANGE': css`
