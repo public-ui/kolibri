@@ -559,33 +559,39 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-PAGINATION': css`
 		:host {
 			display: grid;
-			gap: var(--spacing-m);
 		}
-		:host .navigation-list {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: var(--spacing-xs);
+		.button {
+			appearance: none;
+			background: none;
+			outline: none;
+			text-decoration: none;
 		}
-		.selected button {
-			min-width: 44px;
-			min-height: 44px;
-			display: grid;
-			line-height: 1.5rem;
-			font-family: var(--font-family);
+		.button-inner {
+			background-color: var(--color-yellow);
+			border: 2px solid var(--color-yellow);
+			color: var(--color-black);
+			font-weight: var(--font-weight-bold);
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			padding: 0.25em 0.75em;
+		}
+		.button:not(:disabled):hover .button-inner {
+			background-color: var(--color-yellow-120);
+			border-color: var(--color-yellow-120);
+		}
+		.button:focus .button-inner {
+			outline-offset: -4px;
+			outline: 2px solid var(--color-black);
+		}
+		.button:disabled .button-inner {
 			cursor: not-allowed;
-			font-weight: 700;
-			padding: 10px 12px;
-			border: none;
-			font-size: 16px;
-			font-style: normal;
-			text-align: center;
-			text-decoration: underline;
-			text-transform: uppercase;
-			width: inherit;
-			color: var(--color-white);
+			opacity: 0.5;
+		}
+		.selected .button-inner {
 			background-color: var(--color-blue);
 			border-color: var(--color-blue);
+			color: var(--color-white);
+			opacity: 1 !important;
 		}
 	`,
 	'KOL-INPUT-CHECKBOX': css`
