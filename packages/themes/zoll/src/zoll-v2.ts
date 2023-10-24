@@ -712,27 +712,41 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 	`,
 	'KOL-PAGINATION': css`
-		:host {
-			display: grid;
-			gap: 1rem;
+		.button {
+			border-radius: var(--border-radius);
+			transition: outline-offset 0.2s linear;
+			&:not(:disabled):hover,
+			&:focus {
+				outline-offset: 0.125rem;
+				outline: 0.125rem solid var(--color-blau-dark);
+			}
 		}
-		:host .navigation-list {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 0.5em;
+		.button-inner {
+			background-color: var(--color-blau);
+			border-radius: var(--border-radius);
+			border: 2px solid var(--color-blau);
+			color: white;
+			line-height: 1rem;
+			&.hide-label {
+				padding: 0.75rem;
+			}
+			&:not(.hide-label) {
+				padding: 0.75rem 1rem;
+			}
 		}
-		:host .selected button > kol-span-wc {
+		.button:not(:disabled):hover .button-inner,
+		.button:focus .button-inner {
+			background-color: var(--color-blau-dark);
+		}
+		.button:disabled .button-inner {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+		.selected .button-inner {
 			background-color: var(--color-akzent);
 			border-color: var(--color-akzent-dark);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			color: white;
-			cursor: not-allowed;
+			opacity: 1 !important;
 			font-weight: 700;
-			line-height: 1rem;
-			padding: 0.75rem 1rem;
 			text-decoration: underline;
 		}
 	`,
