@@ -533,33 +533,50 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-PAGINATION': css`
 		:host {
 			display: grid;
-			gap: var(--spacing-m);
 		}
-		:host .navigation-list {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: var(--spacing-xs);
+		.button {
+			--kolibri-spacing: 0.25rem;
+			border-radius: 4px;
+			&:focus {
+				outline: none;
+			}
 		}
-		.selected button {
-			min-width: 44px;
-			min-height: 44px;
-			display: grid;
-			line-height: 1.5rem;
-			font-family: var(--font-family);
+		.button-inner {
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			border-radius: 4px;
+			font:
+				normal normal 400 1rem/1.25rem Arial,
+				sans-serif;
+			padding: 0.75rem;
+			background-color: #fc0;
+			color: #171a22;
+		}
+		.button:focus-visible .button-inner {
+			outline-offset: -4px;
+			outline: 2px solid var(--color-black);
+		}
+		button:not(:disabled):active .button-inner,
+		button:not(:disabled):hover .button-inner {
+			background-color: #fc0;
+			border-color: #fc0;
+			box-shadow:
+				0 2px 4px rgb(9 49 142 / 8%),
+				0 0 10px rgb(9 49 142 / 4%),
+				0 4px 5px rgb(9 49 142 / 4%),
+				0 -4px 4px rgb(9 49 142 / 4%);
+		}
+		.button:disabled .button-inner {
+			opacity: 0.5;
 			cursor: not-allowed;
-			font-weight: 700;
-			padding: 10px 12px;
-			border: none;
-			font-size: 16px;
-			font-style: normal;
-			text-align: center;
-			text-decoration: underline;
-			text-transform: uppercase;
-			width: inherit;
-			color: var(--color-white);
+		}
+		.selected .button-inner {
 			background-color: var(--color-blue);
 			border-color: var(--color-blue);
+			color: var(--color-white);
+			font-weight: bold;
+			text-decoration: underline;
+			opacity: 1 !important;
 		}
 	`,
 	'KOL-NAV': css`
