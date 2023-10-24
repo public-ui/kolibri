@@ -2287,59 +2287,61 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-PAGINATION': css`
-		:host {
-			display: grid;
-			grid-template-columns: 1fr auto;
-			gap: 1rem;
-			align-items: center;
-		}
-		:host .navigation-list {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 0.5em;
-		}
-		:host .selected button {
-			min-width: 44px;
-			min-height: 44px;
-			display: grid;
-			line-height: 1.5rem;
-			font-family: var(--font-family);
-			cursor: not-allowed;
-			font-weight: 700;
-			padding: 10px 12px;
-			border-radius: 1.5em;
-			border: none;
-			font-size: 16px;
-			font-style: normal;
-			text-align: center;
-			width: inherit;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			color: var(--color-midnight);
-			background-color: var(--color-ice);
-			border-color: var(--color-ice);
-		}
-		:host > div > span {
-			align-self: flex-end;
-			padding-bottom: 0.5rem;
-			color: var(--color-midnight);
-		}
-		kol-button::part(icon) {
+		.icon::part(icon) {
 			font-family: 'Font Awesome 6 Free';
 			font-weight: 900;
 		}
-		kol-button.first::part(icon):before {
+		.first .icon::part(icon)::before {
 			content: '\\f100';
 		}
-		kol-button.previous::part(icon):before {
+		.previous .icon::part(icon)::before {
 			content: '\\f104';
 		}
-		kol-button.next::part(icon):before {
+		.next .icon::part(icon)::before {
 			content: '\\f105';
 		}
-		kol-button.last::part(icon):before {
+		.last .icon::part(icon)::before {
 			content: '\\f101';
+		}
+		.button:focus {
+			outline: none;
+		}
+		.button-inner {
+			background-color: var(--color-white);
+			border-radius: var(--a11y-min-size);
+			border: 2px solid var(--color-midnight);
+			color: var(--color-midnight);
+			font-weight: 700;
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			padding: 8px;
+			text-align: center;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+		}
+		.button:focus .button-inner {
+			outline-offset: 2px;
+			outline: 3px solid var(--color-ocean);
+			transition: outline-offset 0.2s linear;
+		}
+		.button:is(:active, :hover):not(:disabled) .button-inner {
+			background-color: var(--color-ocean);
+			border-color: var(--color-ocean);
+			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+			color: var(--color-white);
+		}
+		.button:active .button-inner {
+			border-color: var(--color-white);
+			outline: none;
+		}
+		.button:disabled .button-inner {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+		.selected .button-inner {
+			background-color: var(--color-ice);
+			border-color: var(--color-ice);
+			opacity: 1 !important;
 		}
 	`,
 	'KOL-INPUT-RANGE': css`
