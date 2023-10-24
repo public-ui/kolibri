@@ -1995,10 +1995,6 @@ export namespace Components {
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
-        /**
-          * Defines which variant should be used for presentation.
-         */
-        "_variant"?: ButtonVariantPropType;
     }
     interface KolPopover {
         /**
@@ -4777,10 +4773,6 @@ declare namespace LocalJSX {
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
-        /**
-          * Defines which variant should be used for presentation.
-         */
-        "_variant"?: ButtonVariantPropType;
     }
     interface KolPopover {
         /**

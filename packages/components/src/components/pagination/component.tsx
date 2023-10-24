@@ -3,7 +3,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
@@ -76,7 +75,7 @@ export class KolPagination implements API {
 					<ul class="navigation-list">
 						{this.state._hasButtons.first && (
 							<li>
-								<kol-button
+								<kol-button-wc
 									class="first"
 									exportparts="icon"
 									_customClass={this.state._customClass}
@@ -85,14 +84,13 @@ export class KolPagination implements API {
 									_hideLabel
 									_label={translate('kol-page-first')}
 									_on={this.onGoToFirst}
-									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></kol-button-wc>
 							</li>
 						)}
 						{this.state._hasButtons.previous && (
 							<li>
-								<kol-button
+								<kol-button-wc
 									class="previous"
 									exportparts="icon"
 									_customClass={this.state._customClass}
@@ -101,15 +99,14 @@ export class KolPagination implements API {
 									_hideLabel
 									_label={translate('kol-page-back')}
 									_on={this.onGoBackward}
-									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></kol-button-wc>
 							</li>
 						)}
 						{pageButtons}
 						{this.state._hasButtons.next && (
 							<li>
-								<kol-button
+								<kol-button-wc
 									class="next"
 									exportparts="icon"
 									_customClass={this.state._customClass}
@@ -118,14 +115,13 @@ export class KolPagination implements API {
 									_hideLabel
 									_label={translate('kol-page-next')}
 									_on={this.onGoForward}
-									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></kol-button-wc>
 							</li>
 						)}
 						{this.state._hasButtons.last && (
 							<li>
-								<kol-button
+								<kol-button-wc
 									class="last"
 									exportparts="icon"
 									_customClass={this.state._customClass}
@@ -134,9 +130,8 @@ export class KolPagination implements API {
 									_hideLabel
 									_label={translate('kol-page-last')}
 									_on={this.onGoToEnd}
-									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></kol-button-wc>
 							</li>
 						)}
 					</ul>
@@ -212,11 +207,6 @@ export class KolPagination implements API {
 	 */
 	@Prop() public _max!: MaxPropType;
 
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
-
 	@State() public state: States = {
 		_boundaryCount: 1,
 		_label: translate('kol-pagination'),
@@ -234,7 +224,6 @@ export class KolPagination implements API {
 		_pageSizeOptions: [],
 		_siblingCount: 1,
 		_max: 0,
-		_variant: 'normal',
 	};
 
 	private onClick = (event: Event, page: number) => {
@@ -290,7 +279,7 @@ export class KolPagination implements API {
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
 			<li>
-				<kol-button
+				<kol-button-wc
 					exportparts="icon"
 					key={`${this.nonce}-${page}`}
 					_customClass={this.state._customClass}
@@ -300,8 +289,7 @@ export class KolPagination implements API {
 							this.onClick(event, page);
 						},
 					}}
-					_variant={this.state._variant}
-				></kol-button>
+				></kol-button-wc>
 			</li>
 		);
 	}
@@ -309,14 +297,7 @@ export class KolPagination implements API {
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
 			<li>
-				<kol-button-wc
-					class="selected"
-					key={`${this.nonce}-selected`}
-					_customClass={this.state._customClass}
-					_disabled={true}
-					_label={`${page}`}
-					_variant={this.state._variant}
-				/>
+				<kol-button-wc class="selected" key={`${this.nonce}-selected`} _customClass={this.state._customClass} _disabled={true} _label={`${page}`} />
 			</li>
 		);
 	}
@@ -508,11 +489,6 @@ export class KolPagination implements API {
 		validateTooltipAlign(this, value);
 	}
 
-	@Watch('_variant')
-	public validateVariant(value?: ButtonVariantPropType): void {
-		validateButtonVariant(this, value);
-	}
-
 	public componentWillLoad(): void {
 		this.validateBoundaryCount(this._boundaryCount);
 		this.validateCustomClass(this._customClass);
@@ -525,7 +501,6 @@ export class KolPagination implements API {
 		this.validateSiblingCount(this._siblingCount);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateMax(this._max);
-		this.validateVariant(this._variant);
 
 		/**
 		 * Die Seite muss als letztes gesetzt werden, da sonst die Seite
