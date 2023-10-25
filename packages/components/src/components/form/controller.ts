@@ -6,6 +6,7 @@ import { Props } from './types';
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimentalMode()) {
 		devHint(`↓ Search form element start.`);
+		console.log(el);
 	}
 	while (el instanceof HTMLElement && el.tagName !== 'FORM' && el.tagName !== 'KOL-FORM') {
 		try {
@@ -25,10 +26,8 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 		}
 		if (getExperimentalMode()) {
 			console.log(el);
+			devHint(`↑ Search form element finished.`);
 		}
-	}
-	if (getExperimentalMode()) {
-		devHint(`↑ Search form element finished.`);
 	}
 	return el;
 };
@@ -65,7 +64,6 @@ export const propagateSubmitEventToForm = (
 	} = {}
 ): void => {
 	const form = searchFormElement(options.form);
-	console.log('propagateSubmitEventToForm', form);
 	if (form instanceof HTMLElement) {
 		const event = new SubmitEvent('submit', {
 			bubbles: true,
@@ -84,7 +82,6 @@ export const propagateSubmitEventToForm = (
 		 */
 		if (form.tagName === 'FORM') {
 			setEventTarget(event, form);
-			console.log('FROM');
 			form.dispatchEvent(event);
 			(form as HTMLFormElement).submit();
 		} else if (form.tagName === 'KOL-FORM') {
