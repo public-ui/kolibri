@@ -8,8 +8,16 @@ import { processEnv } from '../utils/reuse';
 // ts-prune-ignore-next
 export default async (): Promise<void> => {
 	setMode((elm) => {
-		if (elm.shadowRoot instanceof ShadowRoot) {
-			setThemeStyle(elm, getThemeDetails(elm));
+		try {
+			if (elm.shadowRoot instanceof ShadowRoot) {
+				setThemeStyle(elm, getThemeDetails(elm));
+			}
+		} catch (error) {
+			/**
+			 * Try is needed for SSR.
+			 * - no HTMLElement is available
+			 * - no ShadowRoot is available
+			 */
 		}
 		return 'default';
 	});
