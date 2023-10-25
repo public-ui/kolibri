@@ -1683,13 +1683,11 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		width: 750px;
 		left: 50%;
 		transform: translateX(-50%);
+	}
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
 	}`,
-	'KOL-TOAST': `
-		.toast {
-			background: #fff;
-			margin-top: 1rem;
-		}
-	`,
 	'KOL-NAV': `:host > div {
 		gap: var(--spacing);
 	}

@@ -747,8 +747,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			left: 50%;
 			transform: translateX(-50%);
 		}
-	`,
-	'KOL-TOAST': css`
 		.toast {
 			background: #fff;
 			margin-top: 1rem;

@@ -54,7 +54,6 @@ import { KolTable } from './table/component';
 import { KolTabs } from './tabs/component';
 import { KolTextarea } from './textarea/component';
 import { KolToastContainer } from './toast-container/component';
-import { KolToast } from './toast/component';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/component';
 
@@ -114,7 +113,6 @@ export const COMPONENTS = [
 	KolTable,
 	KolTabs,
 	KolTextarea,
-	KolToast,
 	KolToastContainer,
 	KolTooltip,
 	KolVersion,

@@ -7,7 +7,8 @@ export const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
 export type ToastStatus = (typeof toastStatusOptions)[number];
 
 export type Toast = {
-	description: string;
+	description?: string;
+	render?: (nodeRef: HTMLElement, options: { close: () => void }) => void;
 	label: LabelPropType;
 	type: AlertType;
 };

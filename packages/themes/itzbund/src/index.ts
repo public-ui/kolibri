@@ -1497,13 +1497,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		width: 750px;
 		left: 50%;
 		transform: translateX(-50%);
+	}
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
 	}`,
-	'KOL-TOAST': `
-		.toast {
-			background: #fff;
-			margin-top: 1rem;
-		}
-	`,
 	'KOL-TABS': `:host > div {
 		display: block;
 		width: 100%;
