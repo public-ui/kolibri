@@ -33,6 +33,12 @@ export class ToasterService {
 	}
 
 	public async enqueue(toast: Toast) {
-		await this.toastContainerElement?.enqueue(toast);
+		/**
+		 * We need this condition for SSR. The toast container is not rendered on the server,
+		 * so we can't enqueue toasts.
+		 */
+		if (this.toastContainerElement && typeof this.toastContainerElement.enqueue === 'function') {
+			await this.toastContainerElement.enqueue(toast);
+		}
 	}
 }

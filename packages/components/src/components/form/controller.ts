@@ -6,15 +6,22 @@ import { Props } from './types';
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimentalMode()) {
 		devHint(`↓ Search form element start.`);
-		console.log(el);
 	}
 	while (el instanceof HTMLElement && el.tagName !== 'FORM' && el.tagName !== 'KOL-FORM') {
-		if (el.parentElement instanceof HTMLElement) {
-			el = el.parentElement;
-		} else if (el.parentNode instanceof ShadowRoot) {
-			el = el.parentNode.host;
-		} else {
-			el = null;
+		try {
+			if (el.parentElement instanceof HTMLElement) {
+				el = el.parentElement;
+			} else if (el.parentNode instanceof ShadowRoot) {
+				el = el.parentNode.host;
+			} else {
+				el = null;
+			}
+		} catch (error) {
+			/**
+			 * Try is needed for SSR.
+			 * - no HTMLElement is available
+			 * - no ShadowRoot is available
+			 */
 		}
 		if (getExperimentalMode()) {
 			console.log(el);
@@ -58,6 +65,7 @@ export const propagateSubmitEventToForm = (
 	} = {}
 ): void => {
 	const form = searchFormElement(options.form);
+	console.log('propagateSubmitEventToForm', form);
 	if (form instanceof HTMLElement) {
 		const event = new SubmitEvent('submit', {
 			bubbles: true,
@@ -76,7 +84,9 @@ export const propagateSubmitEventToForm = (
 		 */
 		if (form.tagName === 'FORM') {
 			setEventTarget(event, form);
+			console.log('FROM');
 			form.dispatchEvent(event);
+			(form as HTMLFormElement).submit();
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as Props;
