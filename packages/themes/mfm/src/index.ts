@@ -1938,26 +1938,15 @@ export const MFM = KoliBri.createTheme('mfm', {
 		.radio-input-wrapper label {
 			padding-left: 0;
 		}`,
-	'KOL-TOAST': `:host > div {
-			position: fixed;
-			top: 0;
-			right: 0;
-			width: 100%;
-			height: 0;
-			z-index: 200;
+	'KOL-TOAST': `:host {
+			top: 1rem;
+			width: 750px;
+			left: 50%;
+			transform: translateX(-50%);
 		}
-		:host > div > kol-alert {
-			display: block;
-			margin-left: auto;
-			margin-right: unset;
-			padding: 2rem;
-			max-width: 750px;
-		}
-		:host > div > kol-button-wc {
-			top: 0;
-			position: relative;
-			display: block;
-			width: 1em;
+		.toast {
+			background: #fff;
+			margin-top: 1rem;
 		}`,
 	'KOL-TABS': `button:disabled {
 			opacity: 0.5;
