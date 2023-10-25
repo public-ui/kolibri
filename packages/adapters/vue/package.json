@@ -54,7 +54,7 @@
 		"@types/normalize-package-data": "2.4.3",
 		"typescript": "5.2.2",
 		"unbuild": "1.2.1",
-		"vue": "3.3.4"
+		"vue": "3.3.7"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "2.0.0-rc.3",

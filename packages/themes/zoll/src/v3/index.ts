@@ -5,7 +5,7 @@ import checkboxStyles from './components/checkbox';
 import detailsStyles from './components/details';
 import radioStyles from './components/radio';
 import tabsStyles from './components/tabs';
-import { css } from './cssTag';
+import { css } from '../cssTag';
 
 // Design System Zoll (v3)
 export const ZOLLv3 = KoliBri.createTheme('zoll-v3', {
@@ -386,46 +386,65 @@ export const ZOLLv3 = KoliBri.createTheme('zoll-v3', {
 		}
 	`,
 	'KOL-PAGINATION': css`
-		:host {
-			display: grid;
-			gap: 1rem;
-		}
-		:host .navigation-list {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 1rem;
-		}
-		:host .selected button > kol-span-wc {
-			background-color: var(--color-akzent);
-			border-color: var(--color-akzent-dark);
+		.button {
 			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			color: white;
-			cursor: not-allowed;
+			font-size: var(--font-size-buttons);
 			font-weight: 700;
+			transition: outline-offset 0.2s linear;
+			&:not(:disabled):hover,
+			&:focus {
+				outline: 0.125rem solid var(--color-blau);
+				outline-offset: 0.125rem;
+			}
+		}
+		.button-inner {
+			background: white;
+			border-radius: var(--border-radius);
+			border: 2px solid var(--color-blau);
+			color: var(--color-blau);
 			line-height: 1rem;
-			padding: 0.75rem 1rem;
-			text-decoration: underline;
+
+			&:not(.hide-label) {
+				padding: 0.75rem 1rem;
+			}
+			&.hide-label {
+				padding: 0.75rem;
+			}
+		}
+		.button:disabled .button-inner {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+		.selected .button-inner,
+		.hide-label .button-inner {
+			background-color: var(--color-blau);
+			color: white;
+		}
+		.selected .button-inner {
+			opacity: 1 !important;
+		}
+		.button.hide-label:not(:disabled):hover .button-inner,
+		.button.hide-label:focus .button-inner {
+			background-color: var(--color-blau-dark);
+			border-color: var(--color-blau-dark);
 		}
 		kol-button::part(icon) {
 			width: unset;
 			height: unset;
 		}
-		kol-button::part(icon)::before {
+		.icon::part(icon) {
 			font-family: 'FontAwesome';
 		}
-		.first::part(icon)::before {
+		.first .icon::part(icon)::before {
 			content: '\\f100';
 		}
-		.previous::part(icon)::before {
+		.previous .icon::part(icon)::before {
 			content: '\\f053';
 		}
-		.next::part(icon)::before {
+		.next .icon::part(icon)::before {
 			content: '\\f054';
 		}
-		.last::part(icon)::before {
+		.last .icon::part(icon)::before {
 			content: '\\f101';
 		}
 	`,

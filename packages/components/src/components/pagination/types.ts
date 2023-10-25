@@ -4,11 +4,10 @@ import { Events } from '../../enums/events';
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { PropButtonVariant } from '../../types/props/button-variant';
-import { PropCustomClass } from '../../types/props/custom-class';
 import { PropLabel } from '../../types/props/label';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
 import { PropMax } from '../../types/props/max';
+import { PropCustomClass } from '../../types/props/custom-class';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, number>;
@@ -49,8 +48,7 @@ type OptionalProps = {
 	pageSize: number;
 	pageSizeOptions: Stringified<number[]>;
 	siblingCount: number;
-} & PropButtonVariant &
-	PropCustomClass &
+} & PropCustomClass &
 	PropLabel &
 	PropTooltipAlign;
 
@@ -64,8 +62,7 @@ type RequiredStates = {
 	pageSizeOptions: Option<number>[];
 	on: KoliBriPaginationButtonCallbacks;
 	siblingCount: number;
-} & PropButtonVariant &
-	PropLabel &
+} & PropLabel &
 	PropMax;
 
 type OptionalStates = PropCustomClass & PropTooltipAlign;

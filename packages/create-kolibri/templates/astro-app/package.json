@@ -20,7 +20,6 @@
 		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot",
 		"test": "cross-env NODE_ENV=test mocha --exit",
-		"update": "ncu -t minor -u && ncu",
 		"unused": "ts-prune -e src"
 	},
 	"devDependencies": {

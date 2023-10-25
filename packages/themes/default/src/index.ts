@@ -2033,38 +2033,46 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		}
 	`,
 	'KOL-PAGINATION': css`
-		:host {
-			display: grid;
-			gap: 1rem;
+		.button:focus {
+			outline: none;
 		}
-		:host .navigation-list {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 0.5rem;
-		}
-		:host .selected button {
-			min-width: var(--a11y-min-size);
-			min-height: var(--a11y-min-size);
-			display: grid;
-			place-items: center;
-			font-family: var(--font-family);
-			cursor: not-allowed;
+		.button-inner {
+			background-color: var(--color-light);
+			border-radius: var(--border-radius);
+			border: 1px solid var(--color-primary);
+			color: var(--color-primary);
 			font-weight: 700;
-			border-radius: 50%;
-			border: none;
-			font-style: normal;
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			padding: 8px;
 			text-align: center;
-			width: inherit;
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
-			color: var(--color-primary);
-			background-color: var(--color-mute-variant);
 		}
-		:host > div > span {
-			align-self: flex-end;
-			padding-bottom: 0.5rem;
-			color: var(--color-primary);
+		.button:focus .button-inner {
+			outline-offset: 2px;
+			outline: 2px solid var(--color-primary-variant);
+			transition: outline-offset 0.2s linear;
+		}
+		.button:is(:active, :hover):not(:disabled) .button-inner {
+			background-color: var(--color-primary-variant);
+			border-color: var(--color-primary-variant);
+			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+			color: var(--color-light);
+		}
+		.button:active .button-inner {
+			color: var(--color-light);
+			outline: none;
+		}
+		.button:disabled .button-inner {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+		.selected .button-inner {
+			background-color: var(--color-mute-variant);
+			border-radius: var(--a11y-min-size);
+			border: 0;
+			opacity: 1 !important;
 		}
 	`,
 	'KOL-INPUT-RANGE': css`
