@@ -41,7 +41,7 @@
 		"react-dom": "18.2.0",
 		"react-router": "6.17.0",
 		"react-router-dom": "6.17.0",
-		"rimraf": "3.0.2",
+		"rimraf": "5.0.5",
 		"ts-prune": "0.10.3",
 		"typescript": "5.2.2",
 		"world_countries_lists": "2.8.2",

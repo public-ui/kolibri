@@ -48,8 +48,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       ts-node:
         specifier: 10.9.1
         version: 10.9.1(@types/node@20.7.2)(typescript@5.2.2)
@@ -90,8 +90,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       rxjs:
         specifier: 6.5.5
         version: 6.5.5
@@ -135,8 +135,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       rxjs:
         specifier: 7.6.0
         version: 7.6.0
@@ -180,8 +180,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       rxjs:
         specifier: 7.6.0
         version: 7.6.0
@@ -225,8 +225,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       rxjs:
         specifier: 7.6.0
         version: 7.6.0
@@ -270,8 +270,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       rxjs:
         specifier: 7.8.1
         version: 7.8.1
@@ -315,8 +315,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       rxjs:
         specifier: 7.8.1
         version: 7.8.1
@@ -336,8 +336,8 @@ importers:
         specifier: 2.0.0-rc.3
         version: link:../../components
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
 
   packages/adapters/preact:
     dependencies:
@@ -419,8 +419,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
 
   packages/adapters/solid:
     devDependencies:
@@ -621,8 +621,8 @@ importers:
         specifier: 0.3.0
         version: 0.3.0
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       rxjs:
         specifier: 7.8.1
         version: 7.8.1
@@ -679,8 +679,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       ts-node:
         specifier: 10.9.1
         version: 10.9.1(@types/node@20.7.2)(typescript@5.2.2)
@@ -776,8 +776,8 @@ importers:
         specifier: 12.0.1
         version: 12.0.1(eslint@8.52.0)(typescript@5.2.2)(webpack@5.89.0)
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       ts-prune:
         specifier: 0.10.3
         version: 0.10.3
@@ -860,8 +860,8 @@ importers:
         specifier: 6.17.0
         version: 6.17.0(react-dom@18.2.0)(react@18.2.0)
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       ts-prune:
         specifier: 0.10.3
         version: 0.10.3
@@ -909,8 +909,8 @@ importers:
         specifier: 4.1.5
         version: 4.1.5
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       ts-node:
         specifier: 10.9.1
         version: 10.9.1(@types/node@20.8.8)(typescript@4.6.2)
@@ -1210,8 +1210,8 @@ importers:
         specifier: 3.0.1
         version: 3.0.1
       rimraf:
-        specifier: 3.0.2
-        version: 3.0.2
+        specifier: 5.0.5
+        version: 5.0.5
       ts-node:
         specifier: 10.9.1
         version: 10.9.1(@types/node@20.8.8)(typescript@5.2.2)
@@ -6211,7 +6211,6 @@ packages:
       strip-ansi-cjs: /strip-ansi@6.0.1
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: /wrap-ansi@7.0.0
-    dev: true
 
   /@istanbuljs/load-nyc-config@1.1.0:
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==}
@@ -7053,7 +7052,6 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
     requiresBuild: true
-    dev: true
 
   /@playwright/test@1.39.0:
     resolution: {integrity: sha512-3u1iFqgzl7zr004bGPYiN/5EZpRUSFddQBra8Rqll5N0/vfpqlP9I9EXqAoGacuAbX6c9Ulg/Cjqglp5VkK6UQ==}
@@ -12838,7 +12836,6 @@ packages:
     dependencies:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
-    dev: true
 
   /fork-ts-checker-webpack-plugin@6.5.3(eslint@8.52.0)(typescript@5.2.2)(webpack@5.89.0):
     resolution: {integrity: sha512-SbH/l9ikmMWycd5puHJKTkZJKddF4iRLyW3DeZ08HTI7NGyLS38MXd/KGgeWumQO7YNQbW2u/NtPT2YowbPaGQ==}
@@ -13242,7 +13239,6 @@ packages:
       minimatch: 9.0.3
       minipass: 7.0.3
       path-scurry: 1.10.1
-    dev: true
 
   /glob@7.1.4:
     resolution: {integrity: sha512-hkLPepehmnKk41pUGm3sYxoFs/umurYfYJCerbXEyFIWcAzvpipAgVkBqqT9RBKMGjnq6kMuyYwha6csxbiM1A==}
@@ -14644,7 +14640,6 @@ packages:
       '@isaacs/cliui': 8.0.2
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
-    dev: true
 
   /jake@10.8.7:
     resolution: {integrity: sha512-ZDi3aP+fG/LchyBzUM804VjddnwfSfsdeYkwt8NcbKRvo4rFkjhs456iLFn3k2ZUWvNe4i48WACDbza8fhq2+w==}
@@ -16065,7 +16060,6 @@ packages:
   /lru-cache@10.0.1:
     resolution: {integrity: sha512-IJ4uwUTi2qCccrioU6g9g/5rvvVl13bsdczUUcqbciD9iLr095yj8DQKdObriEvuNSx325N1rV1O0sJFszx75g==}
     engines: {node: 14 || >=16.14}
-    dev: true
 
   /lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -16485,7 +16479,6 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
-    dev: true
 
   /minimist-options@4.1.0:
     resolution: {integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==}
@@ -16568,7 +16561,6 @@ packages:
   /minipass@7.0.3:
     resolution: {integrity: sha512-LhbbwCfz3vsb12j/WkWQPZfKTsgqIe1Nf/ti1pKjYESGLHIVjWU96G9/ljLH4F9mWNVhlQOm0VySdAWzf05dpg==}
     engines: {node: '>=16 || 14 >=14.17'}
-    dev: true
 
   /minizlib@2.1.2:
     resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
@@ -17954,7 +17946,6 @@ packages:
     dependencies:
       lru-cache: 10.0.1
       minipass: 7.0.3
-    dev: true
 
   /path-temp@2.1.0:
     resolution: {integrity: sha512-cMMJTAZlion/RWRRC48UbrDymEIt+/YSD/l8NqjneyDw2rDOBQcP5yRkMB4CYGn47KMhZvbblBP7Z79OsMw72w==}
@@ -19394,7 +19385,6 @@ packages:
     hasBin: true
     dependencies:
       glob: 10.3.10
-    dev: true
 
   /robots-parser@3.0.1:
     resolution: {integrity: sha512-s+pyvQeIKIZ0dx5iJiQk1tPLJAWln39+MI5jtM8wnyws+G5azk+dMnMX0qfbqNetKKNgcWWOdi0sfm+FbQbgdQ==}
@@ -19897,7 +19887,6 @@ packages:
   /signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
-    dev: true
 
   /sigstore@1.9.0:
     resolution: {integrity: sha512-0Zjz0oe37d08VeOtBIuB6cRriqXse2e8w+7yIy2XSXjshRKxbc2KkhXjL229jXSxEm7UbcjS76wcJDGQddVI9A==}
