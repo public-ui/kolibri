@@ -1938,7 +1938,7 @@ export const MFM = KoliBri.createTheme('mfm', {
 		.radio-input-wrapper label {
 			padding-left: 0;
 		}`,
-	'KOL-TOAST': `:host {
+	'KOL-TOAST-CONTAINER': `:host {
 			top: 1rem;
 			width: 750px;
 			left: 50%;
