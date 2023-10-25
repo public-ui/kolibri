@@ -1736,7 +1736,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
@@ -1864,7 +1864,7 @@ export namespace Components {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
@@ -4518,7 +4518,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
@@ -4646,7 +4646,7 @@ declare namespace LocalJSX {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
-        "_label": LabelWithExpertSlotPropType;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
