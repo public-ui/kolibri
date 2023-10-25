@@ -6,7 +6,7 @@ type Props = {
 	onClose: () => void;
 	key: string;
 };
-export const ToastFC = ({ toastState, onClose, key }: Props) => {
+export const InternalToast = ({ toastState, onClose, key }: Props) => {
 	const handleRef = (element?: HTMLDivElement) => {
 		if (typeof toastState.toast.render === 'function' && element) {
 			toastState.toast.render(element, { close: () => onClose() });

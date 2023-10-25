@@ -3,7 +3,7 @@ import { Component, Fragment, h, JSX, Method, State } from '@stencil/core';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { API, States, Toast, ToastState } from './types';
-import { ToastFC } from './ToastFC';
+import { InternalToast } from './InternalToast';
 
 const TRANSITION_TIMEOUT = 300;
 
@@ -91,7 +91,7 @@ export class KolToastContainer implements API {
 					<kol-button _label={translate('kol-toast-close-all')} class="close-all" _on={{ onClick: this.handleCloseAllClick.bind(this) }}></kol-button>
 				)}
 				{this.state._toastStates.map((toastState) => (
-					<ToastFC toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />
+					<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />
 				))}
 			</Fragment>
 		);
