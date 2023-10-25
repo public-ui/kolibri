@@ -19,7 +19,6 @@
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map --no-hot",
 		"start": "npm run serve -- --open",
 		"test": "cross-env NODE_ENV=test mocha --exit",
-		"update": "ncu -t minor -u && ncu",
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {

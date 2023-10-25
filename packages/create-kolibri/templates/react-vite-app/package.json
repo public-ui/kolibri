@@ -11,8 +11,7 @@
 		"build": "tsc && vite build",
 		"dev": "vite",
 		"preview": "vite preview",
-		"start": "npm run dev",
-		"update": "ncu -t minor -u && ncu"
+		"start": "npm run dev"
 	},
 	"dependencies": {
 		"@public-ui/components": "2.0.0-rc.3",

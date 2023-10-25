@@ -16,8 +16,7 @@
 		"prepack": "unbuild",
 		"test": "THEME_MODULE=src/index THEME_EXPORT={{capital name}} kolibri-visual-test",
 		"test-update": "THEME_MODULE=src/index THEME_EXPORT={{capital name}} kolibri-visual-test --update-snapshots",
-		"unused": "knip",
-		"update": "ncu -t minor -u && ncu"
+		"unused": "knip"
 	},
 	"devDependencies": {
 		"@public-ui/components": "2.0.0-rc.3",
