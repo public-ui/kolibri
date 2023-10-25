@@ -53,9 +53,9 @@
 	"devDependencies": {
 		"@public-ui/schema": "2.0.0-rc.3",
 		"@types/node": "ts5.1",
-		"@typescript-eslint/eslint-plugin": "6.8.0",
-		"@typescript-eslint/parser": "6.8.0",
-		"eslint": "8.51.0",
+		"@typescript-eslint/eslint-plugin": "6.9.0",
+		"@typescript-eslint/parser": "6.9.0",
+		"eslint": "8.52.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.0.1",
 		"typescript": "5.2.2",
