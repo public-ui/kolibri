@@ -1497,11 +1497,9 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		top: 1rem;
 		right: 1rem;
 		width: 440px;
-	}`,
-	'KOL-TOAST': `:host {
-		display: block;
 	}
 	.toast {
+		display: block;
 		background: #fff;
 		margin-top: 1rem;
 	}

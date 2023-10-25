@@ -1,4 +1,4 @@
-import { Toast } from '../toast-container/types';
+import { Toast } from './types';
 
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();

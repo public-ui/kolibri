@@ -3,11 +3,12 @@ import { Generic } from '@a11y-ui/core';
 import { LabelPropType } from '../../types/props/label';
 import { AlertType } from '../alert/types';
 
-export const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
-export type ToastStatus = (typeof toastStatusOptions)[number];
+const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
+type ToastStatus = (typeof toastStatusOptions)[number];
 
 export type Toast = {
-	description: string;
+	description?: string;
+	render?: (nodeRef: HTMLElement, options: { close: () => void }) => void;
 	label: LabelPropType;
 	type: AlertType;
 };
