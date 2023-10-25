@@ -15,20 +15,19 @@ Type: `Promise<void>`
 ### Depends on
 
 - [kol-button](../button)
-- [kol-toast](../toast)
+- [kol-alert](../alert)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-toast-container --> kol-button
-  kol-toast-container --> kol-toast
+  kol-toast-container --> kol-alert
   kol-button --> kol-button-wc
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
-  kol-toast --> kol-alert
   kol-alert --> kol-alert-wc
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
