@@ -1608,37 +1608,6 @@ export const components: Record<string, Component> = {
 			/>
 		</div>
 	),
-	'KOL-TOAST': () => (
-		<div
-			class="grid gap-6"
-			ref={(elm) => {
-				if (elm instanceof HTMLElement) {
-					const toasts = elm.querySelectorAll('kol-toast');
-					toasts.forEach((toast) => toast.setAttribute('_show', 'false'));
-					if (toasts.length > 0) {
-						toasts[0].setAttribute('_show', 'true');
-					}
-				}
-			}}
-		>
-			<KolToast _type="error" _label="Fehler" _status="settled">
-				Hier wird der Fehler näher beschrieben.
-			</KolToast>
-			<KolToast _type="info" _label="Hinweis" _status="settled">
-				Hier wird der Hinweis näher beschrieben.
-			</KolToast>
-			<KolToast _type="success" _label="Erfolg" _status="settled">
-				Hier wird der Erfolg näher beschrieben.
-			</KolToast>
-			<KolToast _type="warning" _label="Warnung" _status="settled">
-				Hier wird die Warnung näher beschrieben.
-			</KolToast>
-			{/* <KolToast _type="error">Hier wird der Fehler kurz beschrieben.</KolToast>
-      <KolToast _type="info">Hier wird der Hinweis kurz beschrieben.</KolToast>
-      <KolToast _type="success">Hier wird der Erfolg kurz beschrieben.</KolToast>
-      <KolToast _type="warning">Hier wird die Warnung kurz beschrieben.</KolToast> */}
-		</div>
-	),
 	'KOL-TOAST-CONTAINER': () => (
 		<div class="grid gap-1">
 			{['default', 'info', 'success', 'warning', 'error'].map((type) => (

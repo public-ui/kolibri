@@ -1900,8 +1900,6 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			right: 1rem;
 			width: 440px;
 		}
-	`,
-	'KOL-TOAST': css`
 		.toast {
 			margin-top: 1rem;
 		}

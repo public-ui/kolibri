@@ -1603,12 +1603,8 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			right: 1rem;
 			width: 440px;
 		}
-	`,
-	'KOL-TOAST': css`
-		:host {
-			display: block;
-		}
 		.toast {
+			display: block;
 			background: #fff;
 			margin-top: 1rem;
 		}

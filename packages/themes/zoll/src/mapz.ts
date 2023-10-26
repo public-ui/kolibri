@@ -1730,8 +1730,6 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 			left: 50%;
 			transform: translateX(-50%);
 		}
-	`,
-	'KOL-TOAST': css`
 		.toast {
 			background: #fff;
 			margin-top: 1rem;
