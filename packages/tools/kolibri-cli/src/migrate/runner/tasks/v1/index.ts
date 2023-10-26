@@ -8,7 +8,6 @@ import { AccordionRenamePropertyHeadingToLabel } from './accordion';
 import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel, BadgeRenamePropertyIconToIcons } from './badge';
 import { BreadcrumbRenamePropertyAriaLabelToLabel } from './breadcrumb';
 import {
-	ButtonRemovePropertyAccessKey,
 	ButtonRemovePropertyAriaCurrent,
 	ButtonRemovePropertyAriaLabel,
 	ButtonRemovePropertyIconAlign,
@@ -16,7 +15,6 @@ import {
 	ButtonRenamePropertyIconToIcons,
 } from './button';
 import {
-	ButtonLinkRemovePropertyAccessKey,
 	ButtonLinkRemovePropertyAriaCurrent,
 	ButtonLinkRemovePropertyAriaLabel,
 	ButtonLinkRenamePropertyIconOnlyToHideLabel,
@@ -103,12 +101,10 @@ v1Tasks.push(BadgeRemovePropertyIconOnly);
 v1Tasks.push(BadgeRenamePropertyIconOnlyToHideLabel);
 v1Tasks.push(BadgeRenamePropertyIconToIcons);
 v1Tasks.push(BreadcrumbRenamePropertyAriaLabelToLabel);
-v1Tasks.push(ButtonLinkRemovePropertyAccessKey);
 v1Tasks.push(ButtonLinkRemovePropertyAriaCurrent);
 v1Tasks.push(ButtonLinkRemovePropertyAriaLabel);
 v1Tasks.push(ButtonLinkRenamePropertyIconOnlyToHideLabel);
 v1Tasks.push(ButtonLinkRenamePropertyIconToIcons);
-v1Tasks.push(ButtonRemovePropertyAccessKey);
 v1Tasks.push(ButtonRemovePropertyAriaCurrent);
 v1Tasks.push(ButtonRemovePropertyAriaLabel);
 v1Tasks.push(ButtonRemovePropertyIconAlign);
