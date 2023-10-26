@@ -2319,6 +2319,12 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			left: unset;
 			position: unset;
 		}
+		.access-key-hint {
+			background: var(--color-mute-variant);
+			border-radius: 3px;
+			color: var(--color-text);
+			padding: 0 0.3em;
+		}
 	`,
 	'KOL-ABBR': css`
 		abbr {

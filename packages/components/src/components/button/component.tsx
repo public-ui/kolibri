@@ -98,15 +98,16 @@ export class KolButtonWc implements API {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc class="button-inner" _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label}>
+					<kol-span-wc
+						class="button-inner"
+						_icons={this.state._icons}
+						_hideLabel={this.state._hideLabel}
+						_label={hasExpertSlot ? '' : this.state._label}
+						_accessKey={this.state._accessKey}
+					>
 						<div slot="expert">
 							<slot name="expert"></slot>
 						</div>
-						{this.state._accessKey && (
-							<span slot="label-extra" class="access-key-hint" aria-hidden>
-								{this.state._accessKey}
-							</span>
-						)}
 					</kol-span-wc>
 				</button>
 				<kol-tooltip-wc
@@ -116,6 +117,7 @@ export class KolButtonWc implements API {
 					 */
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
+					_accessKey={this._accessKey}
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></kol-tooltip-wc>

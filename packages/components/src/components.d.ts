@@ -342,6 +342,10 @@ export namespace Components {
     }
     interface KolButtonLink {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
@@ -2159,6 +2163,10 @@ export namespace Components {
     }
     interface KolSpan {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -2173,6 +2181,10 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Allows to use markdown in the label. Defaults to `false`.
          */
@@ -2445,6 +2457,10 @@ export namespace Components {
         "enqueue": (toast: Toast) => Promise<void>;
     }
     interface KolTooltipWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */
@@ -3102,6 +3118,10 @@ declare namespace LocalJSX {
     interface KolButtonGroupWc {
     }
     interface KolButtonLink {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
@@ -4920,6 +4940,10 @@ declare namespace LocalJSX {
     }
     interface KolSpan {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -4934,6 +4958,10 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Allows to use markdown in the label. Defaults to `false`.
          */
@@ -5205,6 +5233,10 @@ declare namespace LocalJSX {
     interface KolToastContainer {
     }
     interface KolTooltipWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */

@@ -9,6 +9,8 @@ import { md } from '../../utils/markdown';
 import { watchBoolean } from '../../utils/prop.validators';
 import { showExpertSlot } from '../../utils/reuse';
 import { API, States } from './types';
+import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
+import { InternalUnderlinedAccessKey } from './InternalUnderlinedAccessKey';
 
 /**
  * @internal
@@ -33,7 +35,13 @@ export class KolSpanWc implements API {
 						this.state._allowMarkdown && typeof this.state._label === 'string' && this.state._label.length > 0 ? (
 							<span class="span-label md" innerHTML={md(this.state._label)} />
 						) : (
-							<span class="span-label">{this.state._label ?? ''}</span>
+							<span class="span-label">
+								{this.state._accessKey && this.state._label.length ? (
+									<InternalUnderlinedAccessKey label={this.state._label} accessKey={this.state._accessKey} />
+								) : (
+									this.state._label ?? ''
+								)}
+							</span>
 						)
 					) : (
 						''
@@ -41,13 +49,22 @@ export class KolSpanWc implements API {
 					<span aria-hidden={hideExpertSlot ? 'true' : undefined} class="span-label" hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
-					<slot name="label-extra" />
+					{this.state._accessKey && (
+						<span class="access-key-hint" aria-hidden>
+							{this.state._accessKey}
+						</span>
+					)}
 					{this.state._icons.right && <kol-icon class="icon right" style={this.state._icons.right.style} _label="" _icons={this.state._icons.right.icon} />}
 				</span>
 				{this.state._icons.bottom && <kol-icon class="icon bottom" style={this.state._icons.bottom.style} _label="" _icons={this.state._icons.bottom.icon} />}
 			</Host>
 		);
 	}
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Allows to use markdown in the label. Defaults to `false`.
@@ -76,7 +93,13 @@ export class KolSpanWc implements API {
 		_hideLabel: false,
 		_icons: {},
 		_label: '', // ⚠ required
+		_accessKey: '',
 	};
+
+	@Watch('_accessKey')
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this, value);
+	}
 
 	@Watch('_allowMarkdown')
 	public validateAllowMarkdown(value?: boolean): void {
@@ -101,6 +124,7 @@ export class KolSpanWc implements API {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAccessKey(this._accessKey);
 		this.validateAllowMarkdown(this._allowMarkdown);
 		this.validateHideLabel(this._hideLabel);
 		this.validateIcons(this._icons);

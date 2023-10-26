@@ -4,6 +4,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriIconsProp } from '../../types/icons';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { Props } from './types';
+import { AccessKeyPropType } from '../../types/props/access-key';
 
 @Component({
 	tag: 'kol-span',
@@ -15,12 +16,17 @@ import { Props } from './types';
 export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-span-wc _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label}>
+			<kol-span-wc _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey}>
 				<slot name="expert" slot="expert"></slot>
 				<slot name="label-extra" slot="label-extra"></slot>
 			</kol-span-wc>
 		);
 	}
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
