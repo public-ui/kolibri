@@ -16,6 +16,7 @@ import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
 import { ButtonProps } from "./components/button/types";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
+import { AccessKeyPropType } from "./types/props/access-key";
 import { CustomClassPropType } from "./types/props/custom-class";
 import { IconsPropType } from "./types/props/icons";
 import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
@@ -72,6 +73,7 @@ export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
 export { ButtonProps } from "./components/button/types";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
+export { AccessKeyPropType } from "./types/props/access-key";
 export { CustomClassPropType } from "./types/props/custom-class";
 export { IconsPropType } from "./types/props/icons";
 export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
@@ -259,6 +261,10 @@ export namespace Components {
     }
     interface KolButton {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
@@ -416,6 +422,10 @@ export namespace Components {
         "_link": ButtonOrLinkOrTextWithChildrenProps;
     }
     interface KolButtonWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
@@ -3037,6 +3047,10 @@ declare namespace LocalJSX {
     }
     interface KolButton {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
@@ -3194,6 +3208,10 @@ declare namespace LocalJSX {
         "_link": ButtonOrLinkOrTextWithChildrenProps;
     }
     interface KolButtonWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */

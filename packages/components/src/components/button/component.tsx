@@ -25,6 +25,7 @@ import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/c
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { API } from './types';
 import { validateAriaSelected } from '../../types/props/aria-selected';
+import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 
 /**
  * @internal
@@ -75,6 +76,7 @@ export class KolButtonWc implements API {
 			<Host>
 				<button
 					ref={this.catchRef}
+					accessKey={this.state._accessKey || undefined}
 					aria-controls={this.state._ariaControls}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
@@ -97,7 +99,14 @@ export class KolButtonWc implements API {
 					type={this.state._type}
 				>
 					<kol-span-wc class="button-inner" _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label}>
-						<slot name="expert" slot="expert"></slot>
+						<div slot="expert">
+							<slot name="expert"></slot>
+						</div>
+						{this.state._accessKey && (
+							<span slot="label-extra" class="access-key-hint" aria-hidden>
+								{this.state._accessKey}
+							</span>
+						)}
 					</kol-span-wc>
 				</button>
 				<kol-tooltip-wc
@@ -115,6 +124,11 @@ export class KolButtonWc implements API {
 	}
 
 	private readonly controller: AssociatedInputController;
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
@@ -215,10 +229,16 @@ export class KolButtonWc implements API {
 		_on: {},
 		_type: 'button', // ⚠ required
 		_variant: 'normal', // ⚠ required
+		_accessKey: '',
 	};
 
 	public constructor() {
 		this.controller = new AssociatedInputController(this, 'button', this.host);
+	}
+
+	@Watch('_accessKey')
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this, value);
 	}
 
 	@Watch('_ariaControls')
@@ -316,6 +336,7 @@ export class KolButtonWc implements API {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAccessKey(this._accessKey);
 		this.validateAriaControls(this._ariaControls);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaSelected(this._ariaSelected);
