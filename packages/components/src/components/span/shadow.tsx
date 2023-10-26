@@ -18,7 +18,6 @@ export class KolSpan implements Props {
 		return (
 			<kol-span-wc _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey}>
 				<slot name="expert" slot="expert"></slot>
-				<slot name="label-extra" slot="label-extra"></slot>
 			</kol-span-wc>
 		);
 	}

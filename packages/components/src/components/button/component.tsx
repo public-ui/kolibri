@@ -105,9 +105,7 @@ export class KolButtonWc implements API {
 						_label={hasExpertSlot ? '' : this.state._label}
 						_accessKey={this.state._accessKey}
 					>
-						<div slot="expert">
-							<slot name="expert"></slot>
-						</div>
+						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
 				<kol-tooltip-wc
