@@ -92,7 +92,7 @@ export class KolInputEmail implements API {
 						) : typeof this.state._accessKey === 'string' ? (
 							<span>
 								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />
-								<span class="access-key-hint" aria-hidden>
+								<span class="access-key-hint" aria-hidden="true">
 									{this.state._accessKey}
 								</span>
 							</span>
