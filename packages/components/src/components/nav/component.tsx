@@ -65,6 +65,7 @@ export class KolNav implements API {
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
 				<kol-button-link-text-switch
+					class="button-link-text-switch"
 					_link={{
 						...link,
 						_hideLabel: hideLabel,

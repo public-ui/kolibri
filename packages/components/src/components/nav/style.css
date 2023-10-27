@@ -24,9 +24,7 @@
 		display: flex;
 	}
 
-	.entry kol-button-wc:first-child,
-	.entry kol-link-wc,
-	.entry kol-span-wc {
+	.button-link-text-switch {
 		flex-grow: 1;
 	}
 
