@@ -169,7 +169,6 @@ export class KolTooltip implements API {
 	@Prop() public _label!: LabelPropType;
 
 	@State() public state: States = {
-		_accessKey: '',
 		_align: 'top',
 		_id: nonce(),
 		_label: '…', // ⚠ required

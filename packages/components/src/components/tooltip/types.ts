@@ -9,7 +9,7 @@ type RequiredProps = PropLabel;
 type OptionalProps = PropAlign & PropId & PropAccessKey;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps & OptionalProps;
+type RequiredStates = RequiredProps & PropAlign & PropId;
 type OptionalStates = NonNullable<unknown>;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;

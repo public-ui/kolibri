@@ -229,7 +229,6 @@ export class KolButtonWc implements API {
 		_on: {},
 		_type: 'button', // ⚠ required
 		_variant: 'normal', // ⚠ required
-		_accessKey: '',
 	};
 
 	public constructor() {
