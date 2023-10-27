@@ -105,6 +105,11 @@ ROUTES.set('button/width', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('button/access-key', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('card/basic', {
 	axe: {
 		skipFailures: false,

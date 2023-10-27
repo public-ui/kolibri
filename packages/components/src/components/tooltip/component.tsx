@@ -8,6 +8,7 @@ import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { processEnv } from '../../utils/reuse';
 import { API, States } from './types';
+import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 
 @Component({
 	tag: 'kol-tooltip-wc',
@@ -140,12 +141,17 @@ export class KolTooltip implements API {
 				{this.state._label !== '' && (
 					<div class="tooltip-floating" ref={this.catchTooltipElement}>
 						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
-						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _label={this.state._label}></kol-span-wc>
+						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _label={this.state._label} _accessKey={this._accessKey}></kol-span-wc>
 					</div>
 				)}
 			</Host>
 		);
 	}
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Defines the alignment of the tooltip, popover or tabs in relation to the element.
@@ -167,6 +173,11 @@ export class KolTooltip implements API {
 		_id: nonce(),
 		_label: '…', // ⚠ required
 	};
+
+	@Watch('_accessKey')
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this, value);
+	}
 
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
@@ -209,6 +220,7 @@ export class KolTooltip implements API {
 	};
 
 	public componentWillLoad(): void {
+		this.validateAccessKey(this._accessKey);
 		this.validateAlign(this._align);
 		this.validateId(this._id);
 		this.validateLabel(this._label);

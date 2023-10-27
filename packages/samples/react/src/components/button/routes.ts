@@ -7,6 +7,7 @@ import { ButtonIconOnly } from './hide-label';
 import { ButtonIcons } from './icons';
 
 import { ButtonWidth } from './width';
+import { ButtonAccessKey } from './access-key';
 
 export const BUTTON_ROUTES: Routes = {
 	button: {
@@ -14,5 +15,6 @@ export const BUTTON_ROUTES: Routes = {
 		'hide-label': ButtonIconOnly,
 		icons: ButtonIcons,
 		width: ButtonWidth,
+		'access-key': ButtonAccessKey,
 	},
 };
