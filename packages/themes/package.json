@@ -47,8 +47,8 @@
 		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild",
 		"dev": "nodemon --ignore dist -e ts,tsx  --exec 'pnpm build'",
-		"test-all": "pnpm -r --workspace-concurrency=1 test-update",
-		"test-update-all": "pnpm -r --workspace-concurrency=1 test"
+		"test-all": "pnpm -r --workspace-concurrency=1 test",
+		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "1.7.3",
