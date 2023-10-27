@@ -12,6 +12,7 @@ export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.K
 			<KolInputEmail
 				{...props}
 				ref={ref}
+				_accessKey="M"
 				_placeholder="elke@mustermann.de"
 				_suggestions="['test1@mail.de', 'test2@mail.de', 'test3@mail.de']"
 				_label="E-Mail (Liste)"

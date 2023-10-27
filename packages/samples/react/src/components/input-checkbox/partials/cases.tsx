@@ -29,6 +29,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 			<KolInputCheckbox
 				{...props}
 				ref={ref}
+				_accessKey="A"
 				_checked
 				_icons={{
 					unchecked: 'codicon codicon-close',

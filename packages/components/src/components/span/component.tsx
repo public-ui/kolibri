@@ -50,7 +50,7 @@ export class KolSpanWc implements API {
 						<slot name="expert" />
 					</span>
 					{this.state._accessKey && (
-						<span class="access-key-hint" aria-hidden>
+						<span class="access-key-hint" aria-hidden="true">
 							{this.state._accessKey}
 						</span>
 					)}

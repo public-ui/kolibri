@@ -141,7 +141,7 @@ export class KolTooltip implements API {
 				{this.state._label !== '' && (
 					<div class="tooltip-floating" ref={this.catchTooltipElement}>
 						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
-						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _label={this.state._label} _accessKey={this._accessKey}></kol-span-wc>
+						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _accessKey={this._accessKey} _label={this.state._label}></kol-span-wc>
 					</div>
 				)}
 			</Host>

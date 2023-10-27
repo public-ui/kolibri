@@ -100,10 +100,10 @@ export class KolButtonWc implements API {
 				>
 					<kol-span-wc
 						class="button-inner"
+						_accessKey={this.state._accessKey}
 						_icons={this.state._icons}
 						_hideLabel={this.state._hideLabel}
 						_label={hasExpertSlot ? '' : this.state._label}
-						_accessKey={this.state._accessKey}
 					>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>

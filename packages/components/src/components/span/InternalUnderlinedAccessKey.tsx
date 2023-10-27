@@ -1,10 +1,10 @@
 import { h } from '@stencil/core';
 
 type Props = {
-	label: string;
 	accessKey: string;
+	label: string;
 };
-export const InternalUnderlinedAccessKey = ({ label, accessKey }: Props) => {
+export const InternalUnderlinedAccessKey = ({ accessKey, label }: Props) => {
 	/* Prefer capitalization as defined in the access key, try uppercase/lowercase when there's no match. */
 	let [first, ...rest] = label.split(accessKey);
 	if (rest.length === 0) {
