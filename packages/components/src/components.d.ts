@@ -64,7 +64,6 @@ import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps 
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-import { Toast, ToastState, ToastStatus } from "./components/toast-container/types";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { TooltipAlignPropType } from "./types/props/tooltip-align";
 export { HeadingLevel } from "./types/heading-level";
@@ -124,7 +123,6 @@ export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps 
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
 export { KoliBriToastEventCallbacks } from "./types/toast";
-export { Toast, ToastState, ToastStatus } from "./components/toast-container/types";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -3097,26 +3095,51 @@ export namespace Components {
          */
         "_value"?: string;
     }
+    /**
+     * @deprecated - Use ToastService - see toaster
+     */
     interface KolToast {
+        /**
+          * Defines whether the screen-readers should read out the notification.
+         */
+        "_alert"?: boolean;
+        /**
+          * Defines whether the element can be closed.
+          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
+         */
+        "_hasCloser"?: boolean;
+        /**
+          * Deprecated: Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
+         */
+        "_heading"?: string;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label": LabelPropType;
+        "_label"?: LabelPropType;
         /**
-          * Defines the event callback functions for the component.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+         */
+        "_level"?: HeadingLevel;
+        /**
+          * Gibt die EventCallback-Function für das Schließen des Toasts an.
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Defines the current toast status.
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
          */
-        "_status": ToastStatus;
+        "_show"?: boolean;
+        /**
+          * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
+         */
+        "_showDuration"?: number;
         /**
           * Defines either the type of the component or of the components interactive element.
          */
         "_type"?: AlertType;
     }
     interface KolToastContainer {
-        "enqueue": (toast: Toast) => Promise<void>;
     }
     interface KolTooltipWc {
         /**
@@ -3514,6 +3537,9 @@ declare global {
         prototype: HTMLKolTextareaElement;
         new (): HTMLKolTextareaElement;
     };
+    /**
+     * @deprecated - Use ToastService - see toaster
+     */
     interface HTMLKolToastElement extends Components.KolToast, HTMLStencilElement {
     }
     var HTMLKolToastElement: {
@@ -6576,19 +6602,45 @@ declare namespace LocalJSX {
          */
         "_value"?: string;
     }
+    /**
+     * @deprecated - Use ToastService - see toaster
+     */
     interface KolToast {
+        /**
+          * Defines whether the screen-readers should read out the notification.
+         */
+        "_alert"?: boolean;
+        /**
+          * Defines whether the element can be closed.
+          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
+         */
+        "_hasCloser"?: boolean;
+        /**
+          * Deprecated: Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
+         */
+        "_heading"?: string;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
-        "_label": LabelPropType;
+        "_label"?: LabelPropType;
         /**
-          * Defines the event callback functions for the component.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+         */
+        "_level"?: HeadingLevel;
+        /**
+          * Gibt die EventCallback-Function für das Schließen des Toasts an.
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Defines the current toast status.
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
          */
-        "_status": ToastStatus;
+        "_show"?: boolean;
+        /**
+          * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
+         */
+        "_showDuration"?: number;
         /**
           * Defines either the type of the component or of the components interactive element.
          */
@@ -6765,6 +6817,9 @@ declare module "@stencil/core" {
             "kol-table": LocalJSX.KolTable & JSXBase.HTMLAttributes<HTMLKolTableElement>;
             "kol-tabs": LocalJSX.KolTabs & JSXBase.HTMLAttributes<HTMLKolTabsElement>;
             "kol-textarea": LocalJSX.KolTextarea & JSXBase.HTMLAttributes<HTMLKolTextareaElement>;
+            /**
+             * @deprecated - Use ToastService - see toaster
+             */
             "kol-toast": LocalJSX.KolToast & JSXBase.HTMLAttributes<HTMLKolToastElement>;
             "kol-toast-container": LocalJSX.KolToastContainer & JSXBase.HTMLAttributes<HTMLKolToastContainerElement>;
             "kol-tooltip-wc": LocalJSX.KolTooltipWc & JSXBase.HTMLAttributes<HTMLKolTooltipWcElement>;
