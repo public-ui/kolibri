@@ -18,8 +18,8 @@ export const InternalUnderlinedAccessKey = ({ accessKey, label }: Props) => {
 	return (
 		<span>
 			{first}
-			<u>{accessKey}</u>
-			{rest.join(accessKey)}
+			{rest.length ? <u>{accessKey}</u> : null}
+			{rest.length ? rest.join(accessKey) : null}
 		</span>
 	);
 };

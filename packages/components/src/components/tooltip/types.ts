@@ -6,11 +6,11 @@ import { PropLabel } from '../../types/props/label';
 import { PropAccessKey } from '../../types/props/access-key';
 
 type RequiredProps = PropLabel;
-type OptionalProps = PropAlign & PropId & PropAccessKey;
+type OptionalProps = PropAccessKey & PropAlign & PropId;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
+type RequiredStates = PropLabel & PropAlign & PropId;
+type OptionalStates = PropAccessKey;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
