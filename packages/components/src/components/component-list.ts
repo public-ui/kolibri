@@ -53,7 +53,7 @@ import { KolSymbol } from './symbol/component';
 import { KolTable } from './table/component';
 import { KolTabs } from './tabs/component';
 import { KolTextarea } from './textarea/component';
-import { KolToastContainer } from './toast-container/component';
+import { KolToastContainer } from './toaster/component';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/component';
 
