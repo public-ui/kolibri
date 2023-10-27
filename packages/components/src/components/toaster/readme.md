@@ -1,4 +1,4 @@
-# Toast
+# Toaster
 
 Mit dem **Toast**-Service geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird am Kopf des Browserfenster
 angezeigt, bis sie geschlossen wird. Werden mehrere Toasts geöffnet, ohne das die bisherigen geschlossen wurden, so werden diese untereinander angezeigt.
@@ -32,6 +32,21 @@ Verwenden Sie das Attribut **`_label`**, um die Überschrift des Toasts zu besti
 ### Inhalt
 
 Verwenden Sie das Attribut **`_description`**, um den Text-Inhalt des Toasts zu bestimmen.
+
+Alternativ zur statischen Description können Sie über das Attribut **`_render`** eine eigene Render-Funktion definieren. Diese wird mit einer Referenz zum
+HTMLElement der Toast-Komponente aufgerufen. Zudem wird auch ein Objekt übergeben, das eine `close`-Funktion zum Schließen des Toasts bereitstellt.
+
+```ts
+void toaster.enqueue({
+	render: (element: HTMLElement, { close }) => {
+		element.textContent = 'Mein Inhalt';
+		const customCloseButton = document.createElement('button');
+		customCloseButton.textContent = 'Toast schließen';
+		element.appendChild(customCloseButton);
+		customCloseButton.addEventListener('click', close, { once: true });
+	},
+});
+```
 
 ### Anzeigetyp des Toast
 
