@@ -18,6 +18,7 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { API, States } from './types';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -57,7 +58,15 @@ export class KolInputRadio implements API {
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}
-							<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
+							<span slot="label">
+								{hasExpertSlot ? (
+									<slot name="expert"></slot>
+								) : typeof this._accessKey === 'string' ? (
+									<InternalUnderlinedAccessKey accessKey={this._accessKey} label={this._label} />
+								) : (
+									this._label
+								)}
+							</span>
 						</span>
 					</legend>
 					{this.state._options.map((option, index) => {
@@ -72,6 +81,7 @@ export class KolInputRadio implements API {
 							<kol-input
 								class="radio"
 								key={customId}
+								_accessKey={this.state._accessKey} // by radio?!
 								_disabled={this.state._disabled || option.disabled}
 								_hideLabel={this.state._hideLabel}
 								_hint={this.state._hint}

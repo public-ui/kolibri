@@ -610,6 +610,10 @@ export namespace Components {
     }
     interface KolInput {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Defines whether the screen-readers should read out the notification.
           * @TODO : Change type back to `AlertPropType` after Stencil#4663 has been resolved.
          */
@@ -1729,6 +1733,10 @@ export namespace Components {
     }
     interface KolLink {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1779,6 +1787,10 @@ export namespace Components {
         "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolLinkButton {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
@@ -1856,6 +1868,10 @@ export namespace Components {
         "_orientation"?: Orientation;
     }
     interface KolLinkWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -3387,6 +3403,10 @@ declare namespace LocalJSX {
     }
     interface KolInput {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Defines whether the screen-readers should read out the notification.
           * @TODO : Change type back to `AlertPropType` after Stencil#4663 has been resolved.
          */
@@ -4506,6 +4526,10 @@ declare namespace LocalJSX {
     }
     interface KolLink {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4556,6 +4580,10 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolLinkButton {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
@@ -4633,6 +4661,10 @@ declare namespace LocalJSX {
         "_orientation"?: Orientation;
     }
     interface KolLinkWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */

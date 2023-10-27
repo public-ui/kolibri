@@ -14,6 +14,7 @@ import { LinkTargetPropType } from '../../types/props/link-target';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { propagateFocus } from '../../utils/reuse';
 import { Props } from './types';
+import { AccessKeyPropType } from '../../types/props/access-key';
 
 @Component({
 	tag: 'kol-link-button',
@@ -41,6 +42,7 @@ export class KolLinkButton implements Props {
 						[this._variant as string]: this._variant !== 'custom',
 						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 					}}
+					_accessKey={this._accessKey}
 					_download={this._download}
 					_hideLabel={this._hideLabel}
 					_href={this._href}
@@ -59,6 +61,11 @@ export class KolLinkButton implements Props {
 			</Host>
 		);
 	}
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.

@@ -14,6 +14,7 @@ import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { TextareaController } from './controller';
 import { API, CSSResize, States } from './types';
 
@@ -57,6 +58,7 @@ export class KolTextarea implements API {
 			<Host class={{ 'has-value': this.state._hasValue }}>
 				<kol-input
 					class={{ textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
+					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
@@ -74,7 +76,20 @@ export class KolTextarea implements API {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' ? (
+							<span>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />
+								<span class="access-key-hint" aria-hidden>
+									{this.state._accessKey}
+								</span>
+							</span>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
 					<div slot="input">
 						<textarea
 							ref={this.catchRef}

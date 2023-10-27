@@ -93,7 +93,6 @@ export class KolSpanWc implements API {
 		_hideLabel: false,
 		_icons: {},
 		_label: '', // ⚠ required
-		_accessKey: '',
 	};
 
 	@Watch('_accessKey')

@@ -19,6 +19,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { API, States } from './types';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -64,6 +65,7 @@ export class KolInputEmail implements API {
 			>
 				<kol-input
 					class={{ email: true, 'hide-label': !!this.state._hideLabel }}
+					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
@@ -84,7 +86,20 @@ export class KolInputEmail implements API {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' ? (
+							<span>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />
+								<span class="access-key-hint" aria-hidden>
+									{this.state._accessKey}
+								</span>
+							</span>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
 					<div slot="input">
 						<input
 							ref={this.catchRef}

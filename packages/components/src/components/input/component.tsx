@@ -4,6 +4,7 @@ import { Component, Element, Fragment, h, Host, JSX, Prop } from '@stencil/core'
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { AnyIconFontClass, KoliBriCustomIcon, KoliBriHorizontalIcons } from '../../types/icons';
+import { AccessKeyPropType } from '../../types/props/access-key';
 import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
@@ -102,6 +103,7 @@ export class KolInput implements Props {
 						 */
 						aria-hidden="true"
 						class="input-tooltip"
+						_accessKey={this._accessKey}
 						_align={this._tooltipAlign}
 						_id={this._hideLabel ? `${this._id}-label` : undefined}
 						_label={this._label}
@@ -143,6 +145,11 @@ export class KolInput implements Props {
 			</Host>
 		);
 	}
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.

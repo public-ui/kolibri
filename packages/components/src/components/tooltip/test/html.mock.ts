@@ -7,7 +7,6 @@ import { Props, States } from '../types';
 export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 	const state: States = mixMembers<Props, States>(
 		{
-			_accessKey: '',
 			_align: 'top',
 			_id: nonce(),
 			_label: '…', // ⚠ required

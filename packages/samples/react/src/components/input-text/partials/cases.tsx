@@ -34,7 +34,7 @@ export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.Kol
 				_touched
 				_label="Suche"
 			/>
-			<KolInputText {...props} ref={ref} _placeholder="Placeholder" _label="Vorname (text)" _required />
+			<KolInputText {...props} ref={ref} _accessKey="V" _placeholder="Placeholder" _label="Vorname (text)" _required />
 			<KolInputText {...props} _placeholder="Placeholder" _label="Suche (search)" _type="search" />
 			<KolInputText {...props} _placeholder="Placeholder" _error={ERROR_MSG} _touched _type="url" _label="URL (url)" />
 			<KolInputText {...props} _placeholder="Placeholder" _type="tel" _label="Telefon (tel)" />

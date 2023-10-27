@@ -17,6 +17,7 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { API, InputCheckboxIconsProp, InputCheckboxVariant, States } from './types';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
  * @slot expert - Die Beschriftung der Checkbox.
@@ -53,6 +54,7 @@ export class KolInputCheckbox implements API {
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
 					tabIndex={this.state._variant === 'button' ? 0 : undefined}
+					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -65,7 +67,20 @@ export class KolInputCheckbox implements API {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 				>
-					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' ? (
+							<span>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />
+								<span class="access-key-hint" aria-hidden>
+									{this.state._accessKey}
+								</span>
+							</span>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
 					<div slot="input">
 						<kol-icon
 							class="icon"
