@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { InputNumberType } from '../../types/input/control/number';
+import { InputDateType, inputDateTypeOptions } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
@@ -186,14 +186,12 @@ export class InputDateController extends InputIconController implements Watches 
 		watchNumber(this.component, '_step', value);
 	}
 
-	public validateType(value?: InputNumberType): void {
+	public validateType(value?: InputDateType): void {
 		watchValidator(
 			this.component,
 			'_type',
-			(value): boolean =>
-				typeof value === 'string' &&
-				(value === 'date' || value === 'datetime-local' || value === 'month' || value === 'number' || value === 'time' || value === 'week'),
-			new Set(['String {date, datetime-local, month, number, time, week}']),
+			(value): boolean => typeof value === 'string' && inputDateTypeOptions.includes(value),
+			new Set([`String {${inputDateTypeOptions.join(', ')}`]),
 			value
 		);
 	}

@@ -6,7 +6,7 @@ import { RowsPropType, validateRows } from '../../types/props/rows';
 import { a11yHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
-import { CSSResize, Props, Watches } from './types';
+import { CSSResize, cssResizeOptions, Props, Watches } from './types';
 
 export class TextareaController extends InputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -63,8 +63,8 @@ export class TextareaController extends InputController implements Watches {
 		watchValidator(
 			this.component,
 			'_resize',
-			(value) => typeof value === 'string' && (value === 'both' || value === 'horizontal' || value === 'none' || value === 'vertical'),
-			new Set('String {both, horizontal, vertical, none}'),
+			(value) => typeof value === 'string' && cssResizeOptions.includes(value),
+			new Set(`String {${cssResizeOptions.join(', ')}`),
 			value
 		);
 	}

@@ -3,8 +3,8 @@ import { Stringified } from '../../common';
 import { KoliBriHorizontalIcons } from '../../icons';
 import { InputTypeOnDefault, InputTypeOnOff } from '../types';
 
-export type InputDateType = 'date' | 'datetime-local' | 'month' | 'time' | 'week';
-export type InputNumberType = 'number' | InputDateType;
+export const inputDateTypeOptions = ['date', 'datetime-local', 'month', 'time', 'week'] as const;
+export type InputDateType = (typeof inputDateTypeOptions)[number];
 
 export type OptionalInputProps<T> = {
 	accessKey: string;

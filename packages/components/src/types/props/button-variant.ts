@@ -2,7 +2,8 @@
 import { Generic } from '@a11y-ui/core';
 import { watchValidator } from '../../utils/prop.validators';
 
-export type ButtonVariantPropType = 'primary' | 'secondary' | 'normal' | 'tertiary' | 'danger' | 'ghost' | 'custom';
+export const buttonVariantPropTypeOptions = ['primary', 'secondary', 'normal', 'tertiary', 'danger', 'ghost', 'custom'] as const;
+export type ButtonVariantPropType = (typeof buttonVariantPropTypeOptions)[number];
 
 /**
  * Defines which variant should be used for presentation.
@@ -16,8 +17,8 @@ export const validateButtonVariant = (component: Generic.Element.Component, valu
 	watchValidator(
 		component,
 		`_variant`,
-		(value) => value === 'primary' || value === 'secondary' || value === 'normal' || value === 'danger' || value === 'ghost' || value === 'custom',
-		new Set(['KoliBriButtonVariant {primary, secondary, normal, danger, ghost, custom}']),
+		(value) => typeof value === 'string' && buttonVariantPropTypeOptions.includes(value),
+		new Set([`KoliBriButtonVariant {${buttonVariantPropTypeOptions.join(', ')}`]),
 		value,
 		{
 			defaultValue: 'normal',

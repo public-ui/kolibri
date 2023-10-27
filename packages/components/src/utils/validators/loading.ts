@@ -2,9 +2,9 @@ import { Generic } from '@a11y-ui/core';
 
 import { watchValidator } from '../prop.validators';
 
-export type Loading = 'eager' | 'lazy';
+export const loadingOptions = ['eager', 'lazy'] as const;
+export type Loading = (typeof loadingOptions)[number];
 
-const AVAILABLE_LOADING_VALUES = new Set(['"eager", "lazy"']);
 export function validateLoading(component: Generic.Element.Component, value?: Loading): void {
-	watchValidator<Loading>(component, '_loading', (value) => value === 'eager' || value === 'lazy', AVAILABLE_LOADING_VALUES, value);
+	watchValidator<Loading>(component, '_loading', (value) => typeof value === 'string' && loadingOptions.includes(value), new Set(loadingOptions), value);
 }

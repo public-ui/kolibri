@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
-import { Orientation } from '../../types/orientation';
+import { Orientation, orientationOptions } from '../../types/orientation';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { OptionsPropType, validateOptions } from '../../types/props/options';
@@ -103,8 +103,8 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		watchValidator(
 			this.component,
 			'_orientation',
-			(value): boolean => value === 'horizontal' || value === 'vertical',
-			new Set(['Orientation {horizontal, vertical}']),
+			(value): boolean => typeof value === 'string' && orientationOptions.includes(value),
+			new Set([`Orientation {${orientationOptions.join(', ')}`]),
 			value,
 			{
 				defaultValue: 'vertical',
