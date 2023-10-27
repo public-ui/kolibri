@@ -59,7 +59,7 @@ import { SpinVariantPropType } from "./types/props/variant/spin";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
-import { Toast, ToastState } from "./components/toast-container/types";
+import { Toast, ToastState } from "./components/toaster/types";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { TooltipAlignPropType } from "./types/props/tooltip-align";
 export { HeadingLevel } from "./types/heading-level";
@@ -114,7 +114,7 @@ export { SpinVariantPropType } from "./types/props/variant/spin";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
-export { Toast, ToastState } from "./components/toast-container/types";
+export { Toast, ToastState } from "./components/toaster/types";
 export namespace Components {
     interface KolAbbr {
         /**
