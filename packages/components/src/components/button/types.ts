@@ -19,6 +19,7 @@ import { PropName } from '../../types/props/name';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
+import { PropAccessKey } from '../../types/props/access-key';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
@@ -38,7 +39,8 @@ export type OptionalButtonProps = {
 	PropId &
 	PropName &
 	PropSyncValueBySelector &
-	PropTooltipAlign;
+	PropTooltipAlign &
+	PropAccessKey;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 export type RequiredButtonStates = RequiredButtonProps &

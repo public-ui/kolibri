@@ -19,6 +19,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 import { States as LinkStates } from '../link/types';
 import { API } from './types';
 import { validateHideLabel } from '../../types/props/hide-label';
+import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 
 /**
  * @internal
@@ -88,6 +89,7 @@ export class KolLinkWc implements API {
 				<a
 					ref={this.catchRef}
 					{...tagAttrs}
+					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					class={{
@@ -101,7 +103,12 @@ export class KolLinkWc implements API {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label || this.state._href}>
+					<kol-span-wc
+						_accessKey={this.state._accessKey}
+						_icons={this.state._icons}
+						_hideLabel={this.state._hideLabel}
+						_label={hasExpertSlot ? '' : this.state._label || this.state._href}
+					>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icons={'codicon codicon-link-external'} />}
@@ -113,12 +120,18 @@ export class KolLinkWc implements API {
 					 */
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
+					_accessKey={this.state._accessKey}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
 				></kol-tooltip-wc>
 			</Host>
 		);
 	}
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
@@ -187,6 +200,11 @@ export class KolLinkWc implements API {
 		_icons: {}, // ⚠ required
 	};
 
+	@Watch('_accessKey')
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this, value);
+	}
+
 	private validateAriaCurrent(value?: AriaCurrentPropType): void {
 		validateAriaCurrent(this, value);
 	}
@@ -252,6 +270,7 @@ export class KolLinkWc implements API {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAccessKey(this._accessKey);
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel);
 		this.validateHref(this._href);

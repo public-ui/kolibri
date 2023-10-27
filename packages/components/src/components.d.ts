@@ -16,6 +16,7 @@ import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
 import { ButtonProps } from "./components/button/types";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
+import { AccessKeyPropType } from "./types/props/access-key";
 import { CustomClassPropType } from "./types/props/custom-class";
 import { IconsPropType } from "./types/props/icons";
 import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
@@ -71,6 +72,7 @@ export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
 export { ButtonProps } from "./components/button/types";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
+export { AccessKeyPropType } from "./types/props/access-key";
 export { CustomClassPropType } from "./types/props/custom-class";
 export { IconsPropType } from "./types/props/icons";
 export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
@@ -257,6 +259,10 @@ export namespace Components {
     }
     interface KolButton {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
@@ -336,6 +342,10 @@ export namespace Components {
     }
     interface KolButtonLink {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
@@ -414,6 +424,10 @@ export namespace Components {
         "_link": ButtonOrLinkOrTextWithChildrenProps;
     }
     interface KolButtonWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
@@ -595,6 +609,10 @@ export namespace Components {
     interface KolIndentedText {
     }
     interface KolInput {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines whether the screen-readers should read out the notification.
           * @TODO : Change type back to `AlertPropType` after Stencil#4663 has been resolved.
@@ -1715,6 +1733,10 @@ export namespace Components {
     }
     interface KolLink {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1765,6 +1787,10 @@ export namespace Components {
         "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolLinkButton {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
@@ -1842,6 +1868,10 @@ export namespace Components {
         "_orientation"?: Orientation;
     }
     interface KolLinkWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -2149,6 +2179,10 @@ export namespace Components {
     }
     interface KolSpan {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -2163,6 +2197,10 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Allows to use markdown in the label. Defaults to `false`.
          */
@@ -2435,6 +2473,10 @@ export namespace Components {
         "enqueue": (toast: Toast) => Promise<void>;
     }
     interface KolTooltipWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */
@@ -3010,6 +3052,10 @@ declare namespace LocalJSX {
     }
     interface KolButton {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
@@ -3089,6 +3135,10 @@ declare namespace LocalJSX {
     }
     interface KolButtonLink {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
@@ -3167,6 +3217,10 @@ declare namespace LocalJSX {
         "_link": ButtonOrLinkOrTextWithChildrenProps;
     }
     interface KolButtonWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
@@ -3348,6 +3402,10 @@ declare namespace LocalJSX {
     interface KolIndentedText {
     }
     interface KolInput {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines whether the screen-readers should read out the notification.
           * @TODO : Change type back to `AlertPropType` after Stencil#4663 has been resolved.
@@ -4468,6 +4526,10 @@ declare namespace LocalJSX {
     }
     interface KolLink {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4518,6 +4580,10 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolLinkButton {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
@@ -4595,6 +4661,10 @@ declare namespace LocalJSX {
         "_orientation"?: Orientation;
     }
     interface KolLinkWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -4902,6 +4972,10 @@ declare namespace LocalJSX {
     }
     interface KolSpan {
         /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
+        /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
@@ -4916,6 +4990,10 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Allows to use markdown in the label. Defaults to `false`.
          */
@@ -5187,6 +5265,10 @@ declare namespace LocalJSX {
     interface KolToastContainer {
     }
     interface KolTooltipWc {
+        /**
+          * Defines the elements access key.
+         */
+        "_accessKey"?: AccessKeyPropType;
         /**
           * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */

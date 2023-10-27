@@ -13,6 +13,7 @@ import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
 import { Props } from './types';
+import { AccessKeyPropType } from '../../types/props/access-key';
 
 @Component({
 	tag: 'kol-button-link',
@@ -35,6 +36,7 @@ export class KolButtonLink implements Props {
 			<Host>
 				<kol-button-wc
 					ref={this.catchRef}
+					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}
 					_ariaExpanded={this._ariaExpanded}
 					_ariaSelected={this._ariaSelected}
@@ -57,6 +59,11 @@ export class KolButtonLink implements Props {
 			</Host>
 		);
 	}
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)

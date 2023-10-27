@@ -12,6 +12,7 @@ import { LinkTargetPropType } from '../../types/props/link-target';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { propagateFocus } from '../../utils/reuse';
 import { LinkProps } from './types';
+import { AccessKeyPropType } from '../../types/props/access-key';
 
 @Component({
 	tag: 'kol-link',
@@ -34,6 +35,7 @@ export class KolLink implements LinkProps {
 			<Host>
 				<kol-link-wc
 					ref={this.catchRef}
+					_accessKey={this._accessKey}
 					_download={this._download}
 					_hideLabel={this._hideLabel}
 					_href={this._href}
@@ -56,6 +58,11 @@ export class KolLink implements LinkProps {
 			</Host>
 		);
 	}
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.

@@ -17,6 +17,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
 import { API, States } from './types';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -75,6 +76,7 @@ export class KolInputRange implements API {
 						range: true,
 						'hide-label': !!this.state._hideLabel,
 					}}
+					_accessKey={this.state._accessKey}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
 					_hideError={this.state._hideError}
@@ -86,7 +88,20 @@ export class KolInputRange implements API {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 				>
-					<span slot="label">{hasExpertSlot ? <slot name="expert"></slot> : this.state._label}</span>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' ? (
+							<span>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />
+								<span class="access-key-hint" aria-hidden="true">
+									{this.state._accessKey}
+								</span>
+							</span>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
 					<div slot="input">
 						<div
 							class="inputs-wrapper"
