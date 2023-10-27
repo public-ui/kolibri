@@ -64,6 +64,7 @@ import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps 
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
+import { Toast, ToastState } from "./components/toaster/types";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { TooltipAlignPropType } from "./types/props/tooltip-align";
 export { HeadingLevel } from "./types/heading-level";
@@ -123,6 +124,7 @@ export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps 
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
 export { KoliBriToastEventCallbacks } from "./types/toast";
+export { Toast, ToastState } from "./components/toaster/types";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -3140,6 +3142,7 @@ export namespace Components {
         "_type"?: AlertType;
     }
     interface KolToastContainer {
+        "enqueue": (toast: Toast) => Promise<void>;
     }
     interface KolTooltipWc {
         /**

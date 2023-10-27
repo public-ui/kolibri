@@ -11,6 +11,9 @@ type Toast = {
 	type: AlertType;
 };
 
+/**
+ * @deprecated Use toast/toaster.tsx
+ */
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();
 
