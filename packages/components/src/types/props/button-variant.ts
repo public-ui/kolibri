@@ -2,7 +2,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchValidator } from '../../utils/prop.validators';
 
-export const buttonVariantPropTypeOptions = ['primary', 'secondary', 'normal', 'tertiary', 'danger', 'ghost', 'custom'] as const;
+const buttonVariantPropTypeOptions = ['primary', 'secondary', 'normal', 'tertiary', 'danger', 'ghost', 'custom'] as const;
 export type ButtonVariantPropType = (typeof buttonVariantPropTypeOptions)[number];
 
 /**

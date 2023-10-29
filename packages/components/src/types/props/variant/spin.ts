@@ -7,7 +7,7 @@ import { watchValidator } from '../../../utils/prop.validators';
  * Loading-spinner
  * - https://github.com/vineethtrv/css-loader
  */
-export const spinVariantPropTypeOptions = ['cycle', 'dot', 'none'] as const;
+const spinVariantPropTypeOptions = ['cycle', 'dot', 'none'] as const;
 export type SpinVariantPropType = (typeof spinVariantPropTypeOptions)[number];
 
 /**
