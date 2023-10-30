@@ -4,7 +4,7 @@ import { HrefPropType } from '../../types/props/href';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { showExpertSlot } from '../../utils/reuse';
-import { API, KoliBriQuoteVariant, States } from './types';
+import { API, KoliBriQuoteVariant, koliBriQuoteVariantOptions, States } from './types';
 
 @Component({
 	tag: 'kol-quote',
@@ -61,7 +61,13 @@ export class KolQuote implements API {
 
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriQuoteVariant): void {
-		watchValidator(this, '_variant', (value) => value === 'block' || value === 'inline', new Set(['block', 'inline']), value);
+		watchValidator(
+			this,
+			'_variant',
+			(value) => typeof value === 'string' && koliBriQuoteVariantOptions.includes(value),
+			new Set(koliBriQuoteVariantOptions),
+			value
+		);
 	}
 
 	public componentWillLoad(): void {

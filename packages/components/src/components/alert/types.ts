@@ -6,8 +6,11 @@ import { PropAlert } from '../../types/props/alert';
 import { PropHasCloser } from '../../types/props/has-closer';
 import { PropLabel } from '../../types/props/label';
 
-export type AlertType = 'default' | 'info' | 'success' | 'warning' | 'error';
-export type AlertVariant = 'card' | 'msg';
+export const alertTypeOptions = ['default', 'info', 'success', 'warning', 'error'] as const;
+export type AlertType = (typeof alertTypeOptions)[number];
+
+export const alertVariantOptions = ['card', 'msg'] as const;
+export type AlertVariant = (typeof alertVariantOptions)[number];
 
 export type KoliBriAlertEventCallbacks = {
 	onClose?: EventCallback<Event>;

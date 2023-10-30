@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { InputTypeOnOff } from '../../types/input/types';
+import { InputTypeOnOff, inputTypeOnOffOptions } from '../../types/input/types';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 import { a11yHint } from '../../utils/a11y.tipps';
@@ -20,8 +20,8 @@ export class InputColorController extends InputIconController implements Watches
 		watchValidator(
 			this.component,
 			'_autoComplete',
-			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
-			new Set(['on | off']),
+			(value): boolean => typeof value === 'string' && inputTypeOnOffOptions.includes(value),
+			new Set(inputTypeOnOffOptions),
 			value
 		);
 	}

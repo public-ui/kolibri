@@ -1,5 +1,5 @@
 import { Generic } from '@a11y-ui/core';
-import { InputTextType } from '../../types/input/control/text';
+import { InputTextType, inputTextTypeOptions } from '../../types/input/control/text';
 import { validateHasCounter } from '../../types/props/has-counter';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
@@ -61,8 +61,8 @@ export class InputTextController extends InputTextEmailController implements Inp
 		watchValidator(
 			this.component,
 			'_type',
-			(value): boolean => typeof value === 'string' && (value === 'text' || value === 'search' || value === 'url' || value === 'tel'),
-			new Set(['String {text, search, url, tel}']),
+			(value): boolean => typeof value === 'string' && inputTextTypeOptions.includes(value),
+			new Set([`String {${inputTextTypeOptions.join(', ')}`]),
 			value
 		);
 	}
