@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { AdjustHeightPropType } from '../../types/props/adjust-height';
@@ -80,12 +80,12 @@ export class KolTextarea implements API {
 						{hasExpertSlot ? (
 							<slot name="expert"></slot>
 						) : typeof this.state._accessKey === 'string' ? (
-							<span>
-								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />
+							<>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />{' '}
 								<span class="access-key-hint" aria-hidden="true">
 									{this.state._accessKey}
 								</span>
-							</span>
+							</>
 						) : (
 							<span>{this.state._label}</span>
 						)}

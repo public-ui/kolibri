@@ -9,7 +9,7 @@ import { a11yHint } from '../../utils/a11y.tipps';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
-import { InputCheckboxIconsProp, InputCheckboxIconsState, InputCheckboxVariant, Props, Watches } from './types';
+import { InputCheckboxIconsProp, InputCheckboxIconsState, InputCheckboxVariant, inputCheckboxVariantOptions, Props, Watches } from './types';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -79,8 +79,8 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		watchValidator(
 			this.component,
 			'_variant',
-			(value): boolean => typeof value === 'string' && (value === 'button' || value === 'default' || value === 'switch'),
-			new Set(['String {button, default, switch}']),
+			(value): boolean => typeof value === 'string' && inputCheckboxVariantOptions.includes(value),
+			new Set([`String {${inputCheckboxVariantOptions.join(', ')}`]),
 			value
 		);
 	}

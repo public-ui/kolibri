@@ -86,14 +86,14 @@ export class KolToastContainer implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Fragment>
+			<>
 				{this.state._toastStates.length > 1 && (
 					<kol-button _label={translate('kol-toast-close-all')} class="close-all" _on={{ onClick: this.handleCloseAllClick.bind(this) }}></kol-button>
 				)}
 				{this.state._toastStates.map((toastState) => (
 					<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />
 				))}
-			</Fragment>
+			</>
 		);
 	}
 }

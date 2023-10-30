@@ -1,1 +1,2 @@
-export type InputTextType = 'text' | 'search' | 'url' | 'tel';
+export const inputTextTypeOptions = ['text', 'search', 'url', 'tel'] as const;
+export type InputTextType = (typeof inputTextTypeOptions)[number];
