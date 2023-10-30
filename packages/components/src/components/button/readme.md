@@ -124,7 +124,7 @@ Probleme mit Disabled-Status
 
 - [kol-nav](../nav)
 - [kol-table](../table)
-- [kol-toast-container](../toast-container)
+- [kol-toast-container](../toaster)
 
 ### Depends on
 
