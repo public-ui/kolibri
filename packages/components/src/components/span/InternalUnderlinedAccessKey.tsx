@@ -1,4 +1,4 @@
-import { h } from '@stencil/core';
+import { Fragment, h } from '@stencil/core';
 
 type Props = {
 	accessKey: string;
@@ -16,10 +16,14 @@ export const InternalUnderlinedAccessKey = ({ accessKey, label }: Props) => {
 		[first, ...rest] = label.split(accessKey);
 	}
 	return (
-		<span>
+		<>
 			{first}
-			{rest.length ? <u>{accessKey}</u> : null}
-			{rest.length ? rest.join(accessKey) : null}
-		</span>
+			{rest.length ? (
+				<>
+					<u>{accessKey}</u>
+					{rest.join(accessKey)}
+				</>
+			) : null}
+		</>
 	);
 };

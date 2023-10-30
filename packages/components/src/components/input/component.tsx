@@ -132,12 +132,12 @@ export class KolInput implements Props {
 					<span class="counter" aria-atomic="true" aria-live="polite">
 						{this._currentLength}
 						{this._maxLength && (
-							<Fragment>
+							<>
 								<span aria-label={translate('kol-of')} role="img">
 									/
 								</span>
 								{this._maxLength}
-							</Fragment>
+							</>
 						)}{' '}
 						<span>{translate('kol-characters')}</span>
 					</span>

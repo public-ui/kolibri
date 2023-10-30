@@ -26,7 +26,7 @@ export class KolBreadcrumb implements API {
 						{link._hideLabel ? (
 							<kol-icon _label={link._label} _icons={typeof link._icons === 'string' ? link._icons : 'codicon codicon-symbol-event'} />
 						) : (
-							<Fragment>{link._label}</Fragment>
+							<>{link._label}</>
 						)}
 					</span>
 				) : (
