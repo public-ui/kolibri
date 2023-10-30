@@ -218,7 +218,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 				content: '\\200B';
 			}
 		}
-		button > kol-span-wc {
+		:is(button, a) > kol-span-wc {
 			border-width: var(--border-size);
 			border-style: solid;
 			min-width: var(--min-size);
@@ -239,41 +239,41 @@ export const BZSt = KoliBri.createTheme('bzst', {
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
 		}
-		button:hover:enabled > kol-span-wc {
+		:is(button, a):hover:enabled > kol-span-wc {
 			text-decoration: underline;
 		}
-		button:focus > kol-span-wc {
+		:is(button, a):focus > kol-span-wc {
 			outline: var(--color-focus) solid 2px;
 		}
-		button.primary > kol-span-wc,
-		button.primary:active > kol-span-wc,
-		button.primary:hover > kol-span-wc {
+		.primary :is(button, a) > kol-span-wc,
+		.primary :is(button, a):active > kol-span-wc,
+		.primary :is(button, a):hover > kol-span-wc {
 			background-color: var(--background-color);
 			border-color: var(--border-color);
 			color: var(--color-weiss);
 		}
-		button.secondary > kol-span-wc,
-		button.danger > kol-span-wc,
-		button.normal > kol-span-wc,
-		button.ghost > kol-span-wc {
+		.secondary :is(button, a) > kol-span-wc,
+		.danger :is(button, a) > kol-span-wc,
+		.normal :is(button, a) > kol-span-wc,
+		.ghost :is(button, a) > kol-span-wc {
 			background-color: var(--color-weiss);
 			border-color: var(--color-gruen-hell);
 			color: var(--color-grau-dunkel);
 		}
-		button.ghost > kol-span-wc {
+		.ghost :is(button, a) > kol-span-wc {
 			background-color: transparent;
 			color: inherit;
 			border: calc(var(--border-size) * 2) solid transparent;
 		}
-		button.secondary:active > kol-span-wc,
-		button.secondary:hover > kol-span-wc {
+		.secondary :is(button, a):active > kol-span-wc,
+		.secondary :is(button, a):hover > kol-span-wc {
 			background-color: var(--background-color);
 			border-color: var(--background-color);
 			border-width: var(--border-size);
 			color: var(--color-weiss);
 		}
-		button:disabled > kol-span-wc,
-		button:disabled:hover > kol-span-wc {
+		:is(button, a):disabled > kol-span-wc,
+		:is(button, a):disabled:hover > kol-span-wc {
 			background-color: var(--color-weiss);
 			border-color: var(--color-grau-hell);
 			color: var(--color-disabled);
@@ -2328,21 +2328,32 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	`,
 	'KOL-LINK-BUTTON': css`
 		:host {
+			--background-color: var(--color-gruen-dunkel);
+			--border-color: var(--color-gruen-dunkel);
+			--border-size: 1px;
+			--min-size: 2.75rem;
 			display: inline-block;
-		} /*-----------*/
-		a {
-			border-width: 1px;
+		}
+		:is(button, a) {
+			outline: none;
+			&::before {
+				/* Render zero-width character as first element to set the baseline correctly. */
+				content: '\\200B';
+			}
+		}
+		:is(button, a) > kol-span-wc {
+			border-width: var(--border-size);
 			border-style: solid;
-			min-width: 44px;
-			min-height: 44px;
+			min-width: var(--min-size);
+			min-height: var(--min-size);
 			display: grid;
 			gap: 0.25em;
-			line-height: 1.5rem;
+			line-height: 1.5;
 			font-family: var(--font-family);
-			font-weight: 700;
 			cursor: pointer;
+			font-size: var(--text-size);
 			align-items: center;
-			padding: 8px 14px;
+			padding: 0.5rem 0.875rem !important;
 			justify-content: center;
 			font-style: normal;
 			text-align: center;
@@ -2351,55 +2362,45 @@ export const BZSt = KoliBri.createTheme('bzst', {
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
 		}
-		a:hover:enabled {
+		:is(button, a):hover:enabled > kol-span-wc {
 			text-decoration: underline;
 		}
-		.primary a,
-		.primary a:active,
-		.primary a:hover {
-			background-color: var(--color-gruen-dunkel);
-			border-color: var(--color-gruen-dunkel);
+		:is(button, a):focus > kol-span-wc {
+			outline: var(--color-focus) solid 2px;
+		}
+		.primary :is(button, a) > kol-span-wc,
+		.primary :is(button, a):active > kol-span-wc,
+		.primary :is(button, a):hover > kol-span-wc {
+			background-color: var(--background-color);
+			border-color: var(--border-color);
 			color: var(--color-weiss);
 		}
-		.secondary a,
-		.danger a,
-		.normal a,
-		.ghost a {
+		.secondary :is(button, a) > kol-span-wc,
+		.danger :is(button, a) > kol-span-wc,
+		.normal :is(button, a) > kol-span-wc,
+		.ghost :is(button, a) > kol-span-wc {
 			background-color: var(--color-weiss);
 			border-color: var(--color-gruen-hell);
 			color: var(--color-grau-dunkel);
 		}
-		.secondary a:active,
-		.secondary a:hover {
-			background-color: var(--color-gruen-dunkel);
-			border-color: var(--color-gruen-dunkel);
-			border-width: 1px;
+		.ghost :is(button, a) > kol-span-wc {
+			background-color: transparent;
+			color: inherit;
+			border: calc(var(--border-size) * 2) solid transparent;
+		}
+		.secondary :is(button, a):active > kol-span-wc,
+		.secondary :is(button, a):hover > kol-span-wc {
+			background-color: var(--background-color);
+			border-color: var(--background-color);
+			border-width: var(--border-size);
 			color: var(--color-weiss);
 		}
-		a:disabled,
-		a:disabled:hover {
+		:is(button, a):disabled > kol-span-wc,
+		:is(button, a):disabled:hover > kol-span-wc {
 			background-color: var(--color-weiss);
 			border-color: var(--color-grau-hell);
-			color: var(--color-graublau);
+			color: var(--color-disabled);
 			cursor: not-allowed;
-		}
-		a > span {
-			display: flex;
-			gap: 0.5em;
-			margin: auto;
-			align-items: center;
-			justify-content: center;
-		}
-		a.icon-only {
-			padding: 8px;
-		}
-		a.icon-only kol-icon {
-			display: inline-block;
-			width: 1.5em;
-			height: 1.5em;
-		}
-		a.loading kol-icon {
-			animation: spin 5s infinite linear;
 		}
 	`,
 	'KOL-BUTTON-LINK': css`
