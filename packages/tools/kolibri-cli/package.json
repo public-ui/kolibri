@@ -40,7 +40,7 @@
 	"devDependencies": {
 		"@public-ui/components": "2.0.0-rc.5",
 		"@types/gradient-string": "1.1.4",
-		"@types/node": "20.8.8",
+		"@types/node": "20.8.9",
 		"@typescript-eslint/eslint-plugin": "6.9.0",
 		"@typescript-eslint/parser": "6.9.0",
 		"cpy-cli": "5.0.0",
@@ -53,7 +53,7 @@
 		"eslint-plugin-jsx-a11y": "6.7.1",
 		"eslint-plugin-no-loops": "0.3.0",
 		"eslint-plugin-react": "7.33.2",
-		"knip": "2.38.1",
+		"knip": "2.38.4",
 		"mocha": "10.2.0",
 		"nodemon": "3.0.1",
 		"rimraf": "3.0.2",
