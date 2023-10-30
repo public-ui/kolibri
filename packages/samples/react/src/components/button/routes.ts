@@ -8,7 +8,7 @@ import { ButtonIcons } from './icons';
 
 import { ButtonWidth } from './width';
 import { ButtonAccessKey } from './access-key';
-import { ButtonBaselined } from './button-baselined';
+import { ButtonBaselined } from './baselined';
 
 export const BUTTON_ROUTES: Routes = {
 	button: {
@@ -17,6 +17,6 @@ export const BUTTON_ROUTES: Routes = {
 		icons: ButtonIcons,
 		width: ButtonWidth,
 		'access-key': ButtonAccessKey,
-		'button-baselined': ButtonBaselined,
+		baselined: ButtonBaselined,
 	},
 };

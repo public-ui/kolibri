@@ -165,7 +165,6 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		textarea {
 			hyphens: auto;
 			letter-spacing: inherit;
-			display: block;
 		} /* a,button,caption,input,option,select,summary,table,textarea {font-size: 1rem;} */
 		summary {
 			hyphens: auto;
@@ -212,7 +211,14 @@ export const BZSt = KoliBri.createTheme('bzst', {
 			--min-size: 2.75rem;
 			display: inline-block;
 		}
-		button {
+		:is(button, a) {
+			outline: none;
+			&::before {
+				/* Render zero-width character as first element to set the baseline correctly. */
+				content: '\\200B';
+			}
+		}
+		button > kol-span-wc {
 			border-width: var(--border-size);
 			border-style: solid;
 			min-width: var(--min-size);
@@ -233,63 +239,45 @@ export const BZSt = KoliBri.createTheme('bzst', {
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
 		}
-		button:hover:enabled {
+		button:hover:enabled > kol-span-wc {
 			text-decoration: underline;
 		}
-		button:focus {
+		button:focus > kol-span-wc {
 			outline: var(--color-focus) solid 2px;
 		}
-		button.primary,
-		button.primary:active,
-		button.primary:hover {
+		button.primary > kol-span-wc,
+		button.primary:active > kol-span-wc,
+		button.primary:hover > kol-span-wc {
 			background-color: var(--background-color);
 			border-color: var(--border-color);
 			color: var(--color-weiss);
 		}
-		button.secondary,
-		button.danger,
-		button.normal,
-		button.ghost {
+		button.secondary > kol-span-wc,
+		button.danger > kol-span-wc,
+		button.normal > kol-span-wc,
+		button.ghost > kol-span-wc {
 			background-color: var(--color-weiss);
 			border-color: var(--color-gruen-hell);
 			color: var(--color-grau-dunkel);
 		}
-		button.ghost {
+		button.ghost > kol-span-wc {
 			background-color: transparent;
 			color: inherit;
 			border: calc(var(--border-size) * 2) solid transparent;
 		}
-		button.secondary:active,
-		button.secondary:hover {
+		button.secondary:active > kol-span-wc,
+		button.secondary:hover > kol-span-wc {
 			background-color: var(--background-color);
 			border-color: var(--background-color);
 			border-width: var(--border-size);
 			color: var(--color-weiss);
 		}
-		button:disabled,
-		button:disabled:hover {
+		button:disabled > kol-span-wc,
+		button:disabled:hover > kol-span-wc {
 			background-color: var(--color-weiss);
 			border-color: var(--color-grau-hell);
 			color: var(--color-disabled);
 			cursor: not-allowed;
-		}
-		button > span {
-			display: flex;
-			gap: 0.5em;
-			margin: auto;
-			align-items: center;
-			justify-content: center;
-		}
-		button.icon-only {
-			padding: 0.5rem;
-		}
-		button.icon-only kol-icon {
-			display: inline-block;
-			width: 1.5em;
-			height: 1.5em;
-		}
-		button.loading kol-icon {
-			animation: spin 5s infinite linear;
 		}
 	`,
 	'KOL-INPUT-TEXT': css`
