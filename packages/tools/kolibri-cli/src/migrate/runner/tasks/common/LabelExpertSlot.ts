@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { COMPONENT_FILE_EXTENSIONS, MARKUP_EXTENSIONS } from '../../../../types';
+import { COMPONENT_FILE_EXTENSIONS, CUSTOM_ELEMENT_FILE_EXTENSIONS, MARKUP_EXTENSIONS } from '../../../../types';
 import {
 	filterFilesByExt,
 	isPropertyKebabCaseRegExp,
@@ -25,8 +25,8 @@ export class LabelExpertSlot extends AbstractTask {
 
 	private constructor(
 		identifier: string,
-		tag: string,
-		private readonly property: string,
+		private readonly tag: string,
+		readonly property: string,
 		versionRange: string,
 		dependentTasks: AbstractTask[],
 		options: TaskOptions,
@@ -91,7 +91,7 @@ export class LabelExpertSlot extends AbstractTask {
 					if (typeof args[2] === 'string' && args[2].includes('{')) {
 						args[2] = args[2].replace(/\{/g, '${');
 					}
-					return `<${args[1]} ${this.propertyInCamelCase}={\`${args[2]}\`} />`;
+					return `<${args[1]} ${this.propertyInCamelCase}={\`${args[2]}\`}/>`;
 				})
 				.replace(this.componentNoLabelPropRegExp, this.addMissingEmptyLabelToActivateExpertSlot.bind(this));
 			if (content !== newContent) {
@@ -102,13 +102,18 @@ export class LabelExpertSlot extends AbstractTask {
 	}
 
 	private transpileCustomElementFileDelete(baseDir: string): void {
-		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
+		filterFilesByExt(baseDir, CUSTOM_ELEMENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
 			const newContent = content
 				// Replacements
 				.replace(this.customElementRegExp, removeLineBreaksAndSpaces)
-				.replace(this.customElementRegExp, `<$1 ${this.property}="$2"></$1>`)
-				.replace(this.componentNoLabelPropRegExp, this.addMissingEmptyLabelToActivateExpertSlot.bind(this));
+				.replace(this.customElementRegExp, (...args) => {
+					if (typeof args[2] === 'string' && args[2].includes('{')) {
+						args[2] = args[2].replace(/\{/g, '${');
+					}
+					return `<${args[1]} ${this.propertyInCamelCase}="${args[2]}"></${this.tag}>`;
+				})
+				.replace(this.customElementNoLabelPropRegExp, this.addMissingEmptyLabelToActivateExpertSlot.bind(this));
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
