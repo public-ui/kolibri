@@ -71,7 +71,7 @@ export class TaskRunner {
 				})
 			) {
 				console.log(
-					`Task "${task.getTitle()}" will be excluded. The current version (${
+					`Task "${task.getTitle()}" will ${chalk.red.underline('NOT')} be excluded. The current version (${
 						this.projectVersion
 					}) is greater than the task version range (${task.getVersionRange()}).`,
 				);
@@ -82,7 +82,7 @@ export class TaskRunner {
 				})
 			) {
 				console.log(
-					`Task "${task.getTitle()}" will be excluded. The target version (${
+					`Task "${task.getTitle()}" will ${chalk.red.underline('NOT')} be excluded. The target version (${
 						this.cliVersion
 					}) is lower than the task version range (${task.getVersionRange()}).`,
 				);

@@ -34,8 +34,12 @@ type MigrateOption = {
 	removeMode: RemoveMode;
 	testTasks: boolean;
 };
+
 const currentVersionOfPublicUi = getVersionOfPublicUiComponents();
 const targetVersionOfPublicUi = getVersionOfPublicUiKoliBriCli();
+
+// https://regex101.com/delete/3U7cR3eMbLvjLLv1WkKyEGkr2gGPagdqCdBZ
+const versionReplaceRegex = /"(@public-ui\/[^"]+)":\s"([^"]+)"/g;
 
 /**
  * This function is used to register the migrate command.
@@ -139,7 +143,7 @@ Source folder to migrate: ${baseDir}
 				 */
 				function setVersionOfPublicUiPackages(version: string, cb: () => void) {
 					let packageJson = getContentOfProjectPkgJson();
-					packageJson = packageJson.replace(/"(@public-ui\/[^"]+)":\s*"(.*)"/g, createVersionReplacer(version));
+					packageJson = packageJson.replace(versionReplaceRegex, createVersionReplacer(version));
 					fs.writeFileSync(path.resolve(process.cwd(), 'package.json'), packageJson);
 					runner.setProjectVersion(version);
 					console.log(`- Update @public-ui/* to version ${version}`);
