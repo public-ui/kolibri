@@ -2312,7 +2312,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-radius: var(--a11y-min-size);
 			border: 2px solid var(--color-midnight);
 			color: var(--color-midnight);
-			font-weight: 700;
 			min-height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
 			padding: 8px;
@@ -2343,6 +2342,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			background-color: var(--color-ice);
 			border-color: var(--color-ice);
 			opacity: 1 !important;
+			font-weight: 700;
 		}
 	`,
 	'KOL-INPUT-RANGE': css`
