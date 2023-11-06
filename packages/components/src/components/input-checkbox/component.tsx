@@ -53,7 +53,7 @@ export class KolInputCheckbox implements API {
 					}}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
-					tabIndex={this.state._variant === 'button' ? 0 : undefined}
+					tabIndex={this.state._variant === 'button' && !this.state._disabled ? 0 : undefined}
 					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
