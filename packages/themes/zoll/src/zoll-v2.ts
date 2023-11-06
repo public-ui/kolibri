@@ -1512,6 +1512,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		.expanded > div > .expand-button kol-icon::part(icon)::before {
 			content: '\\eab4';
 		}
+		.vertical li.active {
+			border-right: 0.375em solid var(--color-akzent);
+		}
 	`,
 	'KOL-TABS': css`
 		:host > div {

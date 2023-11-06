@@ -1753,7 +1753,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		.list.horizontal > li:not(:first-child) {
 			border-left: 0.1em dotted white;
 		}
-		.vertical li.has-children.selected {
+		.vertical li.active {
 			border-right: 0.375em solid var(--kolibri-color-accent);
 		}
 		.entry {
