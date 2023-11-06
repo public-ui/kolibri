@@ -2,14 +2,14 @@ import React from 'react';
 import { KolNav } from '@public-ui/react';
 
 import { FC, useEffect, useState } from 'react';
-
-import { useNavigate } from 'react-router';
+import { ButtonOrLinkOrTextWithChildrenProps } from '@public-ui/components';
 
 export const NavActive: FC = () => {
-	const [links, setLinks] = useState([]);
+	const [links, setLinks] = useState<ButtonOrLinkOrTextWithChildrenProps[]>([]);
 
 	const handleLinks = (route: string) => {
 		const link = links.find((link) => link._label === route);
+		if (!link) return;
 		link._active = !link._active;
 		setLinks(links);
 	};
@@ -18,7 +18,7 @@ export const NavActive: FC = () => {
 		setLinks([
 			{
 				_label: 'Main',
-				_icons: 'fa-solid fa-house',
+				_icons: 'codicon codicon-home',
 				_on: {
 					onClick: () => handleLinks('Main'),
 				},
@@ -36,7 +36,7 @@ export const NavActive: FC = () => {
 				},
 			},
 			{
-				_active: false,
+				_active: true,
 				_label: 'Alert',
 				_on: {
 					onClick: () => handleLinks('Alert'),
@@ -44,12 +44,13 @@ export const NavActive: FC = () => {
 				_children: [
 					{
 						_label: 'Main',
-						_icons: 'fa-solid fa-house',
+						_icons: 'codicon codicon-home',
 						_on: {
 							onClick: () => handleLinks('/'),
 						},
 					},
 					{
+						_active: true,
 						_label: 'Abbr',
 						_href: '/abbr',
 						_on: {

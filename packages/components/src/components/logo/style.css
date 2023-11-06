@@ -1,6 +1,6 @@
 @import url(../style.css);
 :host {
-	display: block;
+	display: inline-block;
 }
 text {
 	font-size: 16px;
