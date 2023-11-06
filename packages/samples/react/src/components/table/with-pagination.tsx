@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 
 import { KolTable } from '@public-ui/react';
-import { KoliBriTableHeaders } from '@public-ui/components';
-import { KoliBriTablePaginationProps } from '@public-ui/components/src';
+import { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-ui/components';
 import { DATA } from './test-data';
 
 const HEADERS: KoliBriTableHeaders = {
@@ -13,7 +12,7 @@ const HEADERS: KoliBriTableHeaders = {
 		],
 	],
 };
-const PAGINATION: KoliBriTablePaginationProps = { _page: 2, _total: 1 };
+const PAGINATION: KoliBriTablePaginationProps = { _page: 2, _max: 1 };
 
 export const TableWithPagination: FC = () => (
 	<div>

@@ -1,21 +1,21 @@
 {
 	"name": "@public-ui/theme-mfm",
-	"version": "2.0.0-rc.7",
+	"version": "2.0.0-rc.8",
 	"private": true,
 	"scripts": {
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"-test": "THEME_MODULE=src/index THEME_EXPORT=MFM kolibri-visual-test",
-		"test-update": "THEME_MODULE=src/index THEME_EXPORT=MFM kolibri-visual-test --update-snapshots"
+		"test-update": "THEME_MODULE=src/index THEME_EXPORT=MFM kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.0-rc.7",
-		"@public-ui/visual-tests": "2.0.0-rc.7",
+		"@public-ui/schema": "2.0.0-rc.8",
+		"@public-ui/visual-tests": "2.0.0-rc.8",
 		"@types/node": "ts5.2",
 		"typescript": "5.2.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.0-rc.7"
+		"@public-ui/components": "2.0.0-rc.8"
 	}
 }
