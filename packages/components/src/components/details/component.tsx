@@ -39,7 +39,7 @@ export class KolDetails implements API {
 					onToggle={this.handleToggle}
 				>
 					<summary ref={this.catchRef}>
-						{this.state._open ? <kol-icon _label="" _icons="codicon codicon-chevron-down" /> : <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
+						<kol-icon _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
 						<span>{this.state._label}</span>
 					</summary>
 					<div class="content" ref={(element) => (this.contentElement = element)}>
@@ -55,7 +55,7 @@ export class KolDetails implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Defines the callback functions for details.
@@ -67,12 +67,6 @@ export class KolDetails implements API {
 	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
-
-	/**
-	 * Deprecated: Gibt die Zusammenfassung der Detailbeschreibung an.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _summary?: string;
 
 	@State() public state: States = {
 		_label: '…', // '⚠'
@@ -96,13 +90,8 @@ export class KolDetails implements API {
 		validateOpen(this, value);
 	}
 
-	@Watch('_summary')
-	public validateSummary(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._summary);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateOpen(this._open);
 	}

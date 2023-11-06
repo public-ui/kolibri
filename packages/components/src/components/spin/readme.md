@@ -79,7 +79,7 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 ```
 
 <kol-alert _heading="Reduce Motion" _level="4" _type="warning">Wenn möglich sollte stets auf Animationen verzichtet werden. Wenn Animationen genutzt werden, sollte immer darauf geachtet werden, eine Variante mit reduzierter Animationsgeschwindigkeit anzubieten. Mehr Informationen dazu findet sich hier:
-<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _label="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _target="_blank"></kol-link></kol-alert>
+<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _target="_blank"></kol-link></kol-alert>
 
 ### Beispiel
 
@@ -87,9 +87,9 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 <kol-spin _show _variant="cycle"></kol-spin>
 <kol-spin _show _variant="none"><span className="loader" slot="expert"></span></kol-spin>
 
-<kol-details _summary="CSS Loaders & Spinners" _open>
+<kol-details _label="CSS Loaders & Spinners" _open>
 Es gibt im Internet viele verschiedene CSS Loaders und Spinners. Beispielsweise bietet _Vineeth_ eine ganze Reihe interessanter CSS Loaders an. Diese können auch in der KoliBri Bibliothek genutzt werden. Dazu muss lediglich der Link zu der entsprechenden CSS Datei in den Head der HTML Datei eingebunden werden. Anschließend kann die gewünschte Animation über den Expert-Slot in die KoliBri-Komponente eingebunden werden. Hier sind einige Beispiele (ohne reduzierte Animationsgeschwindigkeit):
-<kol-link _href="https://github.com/vineethtrv/css-loader" _label="https://github.com/vineethtrv/css-loader" _target="_blank" _target="_blank"></kol-link>
+<kol-link _href="https://github.com/vineethtrv/css-loader" _target="_blank" _target="_blank"></kol-link>
 </kol-details>
 
 ## Verwendung

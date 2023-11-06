@@ -20,12 +20,15 @@ export const getDetailsHtml = (
 	<mock:shadow-root>
 		<details${props._open ? ` style="height: 0px;"` : ``}>
 			<summary>
-				${getIconHtml({
-					_label: '',
-					_icons: props._open ? 'codicon codicon-chevron-down' : 'codicon codicon-chevron-right',
-				})}
+				${getIconHtml(
+					{
+						_label: '',
+						_icons: 'codicon codicon-chevron-right',
+					},
+					`class="icon${props._open ? ' is-open' : ''}"`
+				)}
 				<span>
-					${props._label! /* TODO v2: Remove non-null assertion after label was converted to required prop */}
+					${props._label}
 				</span>
 			</summary>
 			<div class="content">

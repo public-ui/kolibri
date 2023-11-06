@@ -3,7 +3,6 @@ import {
 	KolAbbr,
 	KolAccordion,
 	KolAlert,
-	KolBadge,
 	KolBreadcrumb,
 	KolButton,
 	KolButtonLink,
@@ -11,9 +10,6 @@ import {
 	KolDetails,
 	KolForm,
 	KolHeading,
-	KolIcon,
-	KolImage,
-	KolIndentedText,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -27,22 +23,15 @@ import {
 	KolKolibri,
 	KolLink,
 	KolLinkButton,
-	KolLinkGroup,
 	KolLogo,
-	KolModal,
 	KolNav,
-	KolPagination,
 	KolProgress,
-	KolQuote,
 	KolSelect,
-	KolSkipNav,
-	KolSpin,
 	KolTable,
 	KolTabs,
 	KolTextarea,
 	KolVersion,
 } from '@public-ui/react';
-import PackageJson from '../../../package.json';
 import React, { FC } from 'react';
 import { getTheme, getThemeName } from '../../shares/store';
 
@@ -702,7 +691,7 @@ export const HandoutBasic: FC = () => (
 			<KolHeading _label="" _level={1}>
 				Kolibri-Handout <small>for {getThemeName(getTheme())}</small>
 			</KolHeading>
-			<KolDetails _summary="Abstract" _open>
+			<KolDetails _label="Abstract" _open>
 				The handout shows a selection of KoliBri components in the style of <strong>{getThemeName(getTheme())}</strong>. Since KoliBri offers self-contained,
 				accessible web components that can be customized to your own corporate design using theming, you don&#39;t have to develop these components yourself.
 				For more information read our documentation and follow us (
@@ -711,8 +700,8 @@ export const HandoutBasic: FC = () => (
 			</KolDetails>
 		</div>
 		<div className="grid gap-4 grid-cols-12">
-			<KolCard className="col-span-2" _heading="Heading" _level={2}>
-				<div slot="content" className="grid gap-2 p-2">
+			<KolCard className="col-span-2" _label="Heading" _level={2}>
+				<div slot="" className="grid gap-2 p-2">
 					<KolHeading _label="Überschrift Stufe 1" _level={1}></KolHeading>
 					<KolHeading _label="Überschrift Stufe 2" _level={2}></KolHeading>
 					<KolHeading _label="Überschrift Stufe 3" _level={3}></KolHeading>
@@ -722,54 +711,54 @@ export const HandoutBasic: FC = () => (
 					<KolHeading _label="Überschrift Stufe 6" _secondaryHeadline="Unterüberricht" _level={6}></KolHeading>
 				</div>
 			</KolCard>
-			{/* <KolCard className="col-span-3" _heading="Accordion" _level={2}>
-				<div slot="content" className="grid gap-2 p-2">
-					<KolAccordion _heading="Überschrift Level 1" _level={1} _open>
-						<div slot="content">Inhalt Accordion Tab 1</div>
+			{/* <KolCard className="col-span-3" _label="Accordion" _level={2}>
+				<div slot="" className="grid gap-2 p-2">
+					<KolAccordion _label="Überschrift Level 1" _level={1} _open>
+						<div slot="">Inhalt Accordion Tab 1</div>
 					</KolAccordion>
-					<KolAccordion _heading="Überschrift Level 2" _level={2}>
-						<div slot="content">Inhalt Accordion Tab 2</div>
+					<KolAccordion _label="Überschrift Level 2" _level={2}>
+						<div slot="">Inhalt Accordion Tab 2</div>
 					</KolAccordion>
-					<KolAccordion _heading="Überschrift Level 3" _level={3}>
-						<div slot="content">Inhalt Accordion Tab 3</div>
+					<KolAccordion _label="Überschrift Level 3" _level={3}>
+						<div slot="">Inhalt Accordion Tab 3</div>
 					</KolAccordion>
-					<KolAccordion _heading="Überschrift Level 4" _level={4}>
-						<div slot="content">Inhalt Accordion Tab 4</div>
+					<KolAccordion _label="Überschrift Level 4" _level={4}>
+						<div slot="">Inhalt Accordion Tab 4</div>
 					</KolAccordion>
-					<KolAccordion _heading="Überschrift Level 5" _level={5}>
-						<div slot="content">Inhalt Accordion Tab 5</div>
+					<KolAccordion _label="Überschrift Level 5" _level={5}>
+						<div slot="">Inhalt Accordion Tab 5</div>
 					</KolAccordion>
-					<KolAccordion _heading="Überschrift Level 6" _level={6}>
-						<div slot="content">Inhalt Accordion Tab 6</div>
+					<KolAccordion _label="Überschrift Level 6" _level={6}>
+						<div slot="">Inhalt Accordion Tab 6</div>
 					</KolAccordion>
 				</div>
 			</KolCard> */}
-			<KolCard className="col-span-2" _heading="Abbreviation and Progress" _level={2}>
-				<div slot="content" className="grid gap-2 p-2">
+			<KolCard className="col-span-2" _label="Abbreviation and Progress" _level={2}>
+				<div slot="" className="grid gap-2 p-2">
 					<p>
 						Ich bin eine{' '}
-						<KolAbbr _title="Ausführliche Beschreibung" _tooltipAlign="top">
+						<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="top">
 							ABB
 						</KolAbbr>{' '}
 						mit Tooltip oben
 					</p>
 					<p>
 						Ich bin eine{' '}
-						<KolAbbr _title="Ausführliche Beschreibung" _tooltipAlign="right">
+						<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="right">
 							ABB
 						</KolAbbr>{' '}
 						mit Tooltip rechts
 					</p>
 					<p>
 						Ich bin eine{' '}
-						<KolAbbr _title="Ausführliche Beschreibung" _tooltipAlign="bottom">
+						<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="bottom">
 							ABB
 						</KolAbbr>{' '}
 						mit Tooltip unten
 					</p>
 					<p>
 						Ich bin eine{' '}
-						<KolAbbr _title="Ausführliche Beschreibung" _tooltipAlign="left">
+						<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="left">
 							ABB
 						</KolAbbr>{' '}
 						mit Tooltip links
@@ -780,9 +769,9 @@ export const HandoutBasic: FC = () => (
 					</div>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-3" _heading="Button, LinkButton and Tab" _level={2}>
-				<div slot="content" className="grid gap-2 p-2">
-					<KolTabs _ariaLabel="" _selected={0} _tabs={[{ _label: 'Button' }, { _label: 'LinkButton' }, { _label: 'Disabled Tab', _disabled: true }]}>
+			<KolCard className="col-span-3" _label="Button, LinkButton and Tab" _level={2}>
+				<div slot="" className="grid gap-2 p-2">
+					<KolTabs _label="" _selected={0} _tabs={[{ _label: 'Button' }, { _label: 'LinkButton' }, { _label: 'Disabled Tab', _disabled: true }]}>
 						<div className="grid gap-2 py-2">
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolButton _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolButton>
@@ -813,37 +802,37 @@ export const HandoutBasic: FC = () => (
 						<div className="grid gap-2 py-2">
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
-								<KolLinkButton _href="#" _disabled _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
+								<KolLinkButton _href="#" _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
 								<KolLinkButton _href="#" _hideLabel _icons="codicon codicon-arrow-left" _label="primary" _variant="primary"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
-								<KolLinkButton _href="#" _disabled _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
+								<KolLinkButton _href="#" _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
 								<KolLinkButton _href="#" _hideLabel _icons="codicon codicon-arrow-right" _label="secondary" _variant="secondary"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
-								<KolLinkButton _href="#" _disabled _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
+								<KolLinkButton _href="#" _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
 								<KolLinkButton _href="#" _hideLabel _icons="codicon codicon-arrow-up" _label="danger" _variant="danger"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
-								<KolLinkButton _href="#" _disabled _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
+								<KolLinkButton _href="#" _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
 								<KolLinkButton _href="#" _hideLabel _icons="codicon codicon-arrow-down" _label="normal" _variant="normal"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _label="ghost" _variant="ghost"></KolLinkButton>
-								<KolLinkButton _href="#" _disabled _label="ghost" _variant="ghost"></KolLinkButton>
+								<KolLinkButton _href="#" _label="ghost" _variant="ghost"></KolLinkButton>
 								<KolLinkButton _href="#" _icons="codicon codicon-home" _hideLabel _label="ghost" _variant="ghost"></KolLinkButton>
 							</div>
 						</div>
 					</KolTabs>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-2" _heading="Accordion, Link and ButtonLink" _level={2}>
-				<div slot="content" className="grid gap-2 p-2">
-					<KolAccordion _heading="Links" _level={3} _open>
-						<div className="grid gap-2" slot="content">
+			<KolCard className="col-span-2" _label="Accordion, Link and ButtonLink" _level={2}>
+				<div slot="" className="grid gap-2 p-2">
+					<KolAccordion _label="Links" _level={3} _open>
+						<div className="grid gap-2" slot="">
 							<KolLink _href="#" _label="Linktext"></KolLink>
 							<KolLink _href="#" _icons="codicon codicon-home" _label="Linktext mit Icon"></KolLink>
 							<KolLink _href="#" _icons="codicon codicon-home" _hideLabel _label="Linktext nur mit Icon"></KolLink>
@@ -851,20 +840,20 @@ export const HandoutBasic: FC = () => (
 							<p>
 								Ich bin ein <KolLink _href="#" _label="externer Link" _target="w3c"></KolLink> im Fließtext.
 							</p>
-							<KolLink _ariaLabel="Zurück zur Startseite" _href="#" _label="">
+							<KolLink _href="#" _label="">
 								<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
 							</KolLink>
 						</div>
 					</KolAccordion>
-					<KolAccordion _heading="ButtonLinks" _level={3}>
-						<div className="grid gap-2" slot="content">
+					<KolAccordion _label="ButtonLinks" _level={3}>
+						<div className="grid gap-2" slot="">
 							<KolButtonLink _label="Linktext"></KolButtonLink>
 							<KolButtonLink _icons="codicon codicon-home" _label="Linktext mit Icon"></KolButtonLink>
 							<KolButtonLink _icons="codicon codicon-home" _hideLabel _label="Linktext nur mit Icon"></KolButtonLink>
 							<p>
 								Ich bin ein <KolButtonLink _label="Link"></KolButtonLink> im Fließtext.
 							</p>
-							<KolButtonLink _ariaLabel="Zurück zur Startseite" _label="">
+							<KolButtonLink _label="">
 								<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
 							</KolButtonLink>
 							<KolButtonLink
@@ -880,28 +869,28 @@ export const HandoutBasic: FC = () => (
 					</KolAccordion>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-3" _heading="Alert" _level={2}>
-				<div slot="content" className="grid gap-2 p-2">
-					<KolAlert _heading="Default message" _type="default">
+			<KolCard className="col-span-3" _label="Alert" _level={2}>
+				<div slot="" className="grid gap-2 p-2">
+					<KolAlert _label="Default message" _type="default">
 						This is the text of the alert.
 					</KolAlert>
 					<KolAlert _type="success">Success message text</KolAlert>
 					<KolAlert _type="error" _hasCloser>
 						This is a error message text.
 					</KolAlert>
-					<KolAlert _heading="Info card" _type="info" _variant="card">
+					<KolAlert _label="Info card" _type="info" _variant="card">
 						This is the text of the alert.
 					</KolAlert>
-					<KolAlert _heading="Warning card" _type="warning" _hasCloser _variant="card">
+					<KolAlert _label="Warning card" _type="warning" _hasCloser _variant="card">
 						This is the text of the alert.
 					</KolAlert>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-2" _heading="Nav and Breadcrumb" _level={2}>
-				<div slot="content" className="grid gap-2 p-2">
+			<KolCard className="col-span-2" _label="Nav and Breadcrumb" _level={2}>
+				<div slot="" className="grid gap-2 p-2">
 					<div>
 						<KolNav
-							_ariaLabel="Main navigation"
+							_label="Main navigation"
 							_links={[
 								{
 									_label: 'Homepage',
@@ -952,10 +941,10 @@ export const HandoutBasic: FC = () => (
 						/>
 					</div>
 					{/* <KolSkipNav></KolSkipNav> */}
-					{/* <KolLinkGroup></KolLinkGroup> */}
+					{/* <KolLinkGroup _label=""></KolLinkGroup> */}
 					<div>
 						<KolBreadcrumb
-							_ariaLabel="Breadcrumb aus Text-Links"
+							_label="Breadcrumb aus Text-Links"
 							_links={[
 								{ _label: 'Startseite', _href: '#/' },
 								{ _label: 'Unterseite der Startseite', _href: '#/unterseite' },
@@ -968,45 +957,37 @@ export const HandoutBasic: FC = () => (
 					</div>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-5" _heading="Input" _level={2}>
-				<KolForm slot="content">
+			<KolCard className="col-span-5" _label="Input" _level={2}>
+				<KolForm slot="">
 					<div className="grid gap-4 grid-cols-3 p-2">
-						<KolInputColor>Farbe</KolInputColor>
-						<KolInputFile>Datei hochladen</KolInputFile>
-						<KolInputNumber>Zahleneingabe</KolInputNumber>
-						<KolInputDate _type="date">Datum</KolInputDate>
-						<KolInputEmail _icons="{'left': 'codicon codicon-home'}" _error="Test einer Fehlermeldung" _touched>
-							E-Mail-Adresse
-						</KolInputEmail>
-						<KolInputText _hint="Ich bin ein Hinweis.">Vorname</KolInputText>
-						<KolInputPassword>Passwort</KolInputPassword>
-						<KolSelect _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung</KolSelect>
-						<KolInputRange _min={0} _max={50} _value={25}>
-							Schieberegler
-						</KolInputRange>
-						<KolInputRadio className="herr-frau" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1">
-							Anrede
-						</KolInputRadio>
+						<KolInputColor _label={`Farbe`} />
+						<KolInputFile _label={`Datei hochladen`} />
+						<KolInputNumber _label={`Zahleneingabe`} />
+						<KolInputDate _type="date" _label={`Datum`} />
+						<KolInputEmail _icons="{'left': 'codicon codicon-home'}" _error="Test einer Fehlermeldung" _touched _label={`E-Mail-Adresse`} />
+						<KolInputText _hint="Ich bin ein Hinweis." _label={`Vorname`} />
+						<KolInputPassword _label={`Passwort`} />
+						<KolSelect _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _label={`Stimmung`} />
+						<KolInputRange _min={0} _max={50} _value={25} _label={`Schieberegler`} />
+						<KolInputRadio className="herr-frau" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1" _label={`Anrede`} />
 						<div className="grid gap-4">
-							<KolInputRadio _orientation="horizontal" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="0">
-								Anrede
-							</KolInputRadio>
-							<KolInputCheckbox _variant="checkbox">
-								Ich akzeptiere die <KolAbbr _title="Allgemeine Geschäftsbedingungen">AGB</KolAbbr>.
+							<KolInputRadio _orientation="horizontal" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="0" _label={`Anrede`} />
+							<KolInputCheckbox _label="">
+								Ich akzeptiere die <KolAbbr _label="Allgemeine Geschäftsbedingungen">AGB</KolAbbr>.
 							</KolInputCheckbox>
 						</div>
-						<KolTextarea _rows={4}>Textarea</KolTextarea>
+						<KolTextarea _rows={4} _label={`Textarea`} />
 					</div>
 				</KolForm>
 			</KolCard>
-			<KolCard className="col-span-5" _heading="Table with Pagination" _level={2}>
-				<div slot="content" className="grid gap-2 p-2">
-					<KolTable _caption="Tabelle" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTable>
+			<KolCard className="col-span-5" _label="Table with Pagination" _level={2}>
+				<div slot="" className="grid gap-2 p-2">
+					<KolTable _label="Tabelle" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTable>
 				</div>
 			</KolCard>
 		</div>
-		<KolVersion _version="5.0.2-test.2"></KolVersion>
-		{/* <KolImage _src="assets/images/abgrenzung.jpg" _alt="KoliBri Darstellung"></KolImage> */}
+		<KolVersion _label="5.0.2-test.2"></KolVersion>
+		{/* <KolImage _src="/abgrenzung.jpg" _alt="KoliBri Darstellung"></KolImage> */}
 		{/* <KolIndentedText></KolIndentedText> */}
 		{/* <KolQuote></KolQuote> */}
 	</div>

@@ -58,16 +58,12 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 type RequiredProps = {
 	data: Stringified<KoliBriTableDataType[]>;
 	headers: Stringified<KoliBriTableHeaders>;
-};
+} & PropLabel;
 type OptionalProps = {
-	/**
-	 * @deprecated use label
-	 */
-	caption: string;
 	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-} & PropLabel;
+};
 
 type RequiredStates = {
 	data: KoliBriTableDataType[];

@@ -22,7 +22,6 @@ type OptionalProps = {
 	accessKey: string;
 	error: string;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcons>;
 	icons: Stringified<KoliBriHorizontalIcons>;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;

@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcons } from '../../types/icons';
@@ -16,6 +16,7 @@ import { Props as ButtonProps } from '../button/types';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
 import { API, States } from './types';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -47,6 +48,7 @@ export class KolInputFile implements API {
 						file: true,
 						'hide-label': !!this.state._hideLabel,
 					}}
+					_accessKey={this.state._accessKey}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
 					_hideError={this.state._hideError}
@@ -61,8 +63,20 @@ export class KolInputFile implements API {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' ? (
+							<>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />{' '}
+								<span class="access-key-hint" aria-hidden="true">
+									{this.state._accessKey}
+								</span>
+							</>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
 					<div slot="input">
 						<input
 							ref={this.catchRef}
@@ -137,11 +151,6 @@ export class KolInputFile implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcons>;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
@@ -154,7 +163,7 @@ export class KolInputFile implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
-	@Prop() public _label?: LabelWithExpertSlotPropType;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Makes the input accept multiple inputs.
@@ -258,11 +267,6 @@ export class KolInputFile implements API {
 	@Watch('_hint')
 	public validateHint(value?: string): void {
 		this.controller.validateHint(value);
-	}
-
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
-		this.validateIcons(value);
 	}
 
 	@Watch('_icons')

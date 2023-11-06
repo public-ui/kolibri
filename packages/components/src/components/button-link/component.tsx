@@ -2,7 +2,6 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { ButtonTypePropType } from '../../types/props/button-type';
 import { IconsPropType } from '../../types/props/icons';
@@ -14,6 +13,7 @@ import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
 import { Props } from './types';
+import { AccessKeyPropType } from '../../types/props/access-key';
 
 @Component({
 	tag: 'kol-button-link',
@@ -36,13 +36,11 @@ export class KolButtonLink implements Props {
 					ref={this.catchRef}
 					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}
-					_ariaCurrent={this._ariaCurrent}
 					_ariaExpanded={this._ariaExpanded}
-					_ariaLabel={this._ariaLabel}
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
-					_icons={this._icons || this._icon}
-					_hideLabel={this._hideLabel || this._iconOnly}
+					_icons={this._icons}
+					_hideLabel={this._hideLabel}
 					_id={this._id}
 					_label={this._label}
 					_name={this._name}
@@ -61,9 +59,9 @@ export class KolButtonLink implements Props {
 	}
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the elements access key.
 	 */
-	@Prop() public _accessKey?: string;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
@@ -71,24 +69,10 @@ export class KolButtonLink implements Props {
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-	 *
-	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-	 */
-	@Prop() public _ariaCurrent?: AriaCurrentPropType;
-
-	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 * @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _ariaExpanded?: boolean;
-
-	/**
-	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -110,20 +94,9 @@ export class KolButtonLink implements Props {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: IconsPropType;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsPropType;
-
-	/**
-	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
-	 * @deprecated use _hide-label
-	 */
-	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Defines the internal ID of the primary component element.

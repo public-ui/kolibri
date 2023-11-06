@@ -2,6 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcons } from '../../types/icons';
+import { PropAccessKey } from '../../types/props/access-key';
 import { PropAlert } from '../../types/props/alert';
 import { PropDisabled } from '../../types/props/disabled';
 import { PropHasCounter } from '../../types/props/has-counter';
@@ -22,12 +23,12 @@ type OptionalProps = {
 	currentLength: number;
 	error: string;
 	hint: string;
-	icon: KoliBriHorizontalIcons;
 	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	slotName: string;
 	smartButton: Stringified<ButtonProps>;
-} & PropAlert &
+} & PropAccessKey &
+	PropAlert &
 	PropDisabled &
 	PropHasCounter &
 	PropHideError &

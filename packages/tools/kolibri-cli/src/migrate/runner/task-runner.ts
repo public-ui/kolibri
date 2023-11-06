@@ -24,7 +24,7 @@ export class TaskRunner {
 		this.setBaseDir(baseDir);
 		this.setCliVersion(cliVersion);
 		this.setProjectVersion(projectVersion);
-		this.setConfig(config);
+		this.setConfig({ ...config }); // clone config
 	}
 
 	private setBaseDir(baseDir: string): void {

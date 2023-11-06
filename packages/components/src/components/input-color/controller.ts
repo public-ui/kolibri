@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { InputTypeOnOff } from '../../types/input/types';
+import { InputTypeOnOff, inputTypeOnOffOptions } from '../../types/input/types';
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 import { a11yHint } from '../../utils/a11y.tipps';
@@ -20,17 +20,11 @@ export class InputColorController extends InputIconController implements Watches
 		watchValidator(
 			this.component,
 			'_autoComplete',
-			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
-			new Set(['on | off']),
+			(value): boolean => typeof value === 'string' && inputTypeOnOffOptions.includes(value),
+			new Set(inputTypeOnOffOptions),
 			value
 		);
 	}
-
-	/**
-	 * @deprecated remains to satisfy `Watches` interface
-	 */
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	public validateList(): void {}
 
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		validateSuggestions(this.component, value);
@@ -57,7 +51,7 @@ export class InputColorController extends InputIconController implements Watches
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
 		this.validateHideError(this.component._hideError);
-		this.validateSuggestions(this.component._suggestions || this.component._list);
+		this.validateSuggestions(this.component._suggestions);
 		this.validateValue(this.component._value);
 	}
 }

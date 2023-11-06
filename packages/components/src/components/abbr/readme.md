@@ -38,17 +38,16 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 
 ## Links und Referenzen
 
-- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _label="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property        | Attribute        | Description                                                                                                                                                | Type                                                  | Default     |
-| --------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
-| `_label`        | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                         | `string \| undefined`                                 | `undefined` |
-| `_title`        | `_title`         | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an. | `string \| undefined`                                 | `undefined` |
-| `_tooltipAlign` | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                  | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
+| Property              | Attribute        | Description                                                                                                        | Type                                                  | Default     |
+| --------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
+| `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
+| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                          | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
 
 ## Slots
 
