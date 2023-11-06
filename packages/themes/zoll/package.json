@@ -10,8 +10,8 @@
 		"test:mapz": "THEME_MODULE=src/index THEME_EXPORT=MAPZ kolibri-visual-test",
 		"test:zoll-v2": "THEME_MODULE=src/index THEME_EXPORT=ZOLLv2 kolibri-visual-test",
 		"test-update": "npm-run-all test-update:*",
-		"test-update:mapz": "THEME_MODULE=src/index THEME_EXPORT=MAPZ kolibri-visual-test --update-snapshots",
-		"test-update:zoll-v2": "THEME_MODULE=src/index THEME_EXPORT=ZOLLv2 kolibri-visual-test --update-snapshots"
+		"test-update:mapz": "THEME_MODULE=src/index THEME_EXPORT=MAPZ kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"test-update:zoll-v2": "THEME_MODULE=src/index THEME_EXPORT=ZOLLv2 kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "1.7.4",

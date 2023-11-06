@@ -44,7 +44,7 @@
 		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild",
 		"-test": "THEME_MODULE=src/index THEME_EXPORT=DEFAULT kolibri-visual-test",
-		"test-update": "THEME_MODULE=src/index THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots"
+		"test-update": "THEME_MODULE=src/index THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "1.7.4",
