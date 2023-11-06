@@ -2470,7 +2470,8 @@ export namespace Components {
         "_value"?: string;
     }
     interface KolToastContainer {
-        "enqueue": (toast: Toast) => Promise<void>;
+        "closeAll": () => Promise<void>;
+        "enqueue": (toast: Toast) => Promise<() => void>;
     }
     interface KolTooltipWc {
         /**
