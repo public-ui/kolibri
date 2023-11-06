@@ -1,7 +1,7 @@
 @import url(../style.css);
 @layer kol-component {
 	:host {
-		display: block;
+		display: inline-block;
 	}
 
 	text {

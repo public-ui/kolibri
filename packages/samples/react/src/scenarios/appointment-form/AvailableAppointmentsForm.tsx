@@ -4,7 +4,7 @@ import { FormValues } from './AppointmentForm';
 import { ErrorList } from './ErrorList';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { fetchAvailableTimes } from './appointmentService';
-import { Option } from '@public-ui/components/src';
+import { Option } from '@public-ui/components';
 
 export function AvailableAppointmentsForm() {
 	const form = useFormikContext<FormValues>();
