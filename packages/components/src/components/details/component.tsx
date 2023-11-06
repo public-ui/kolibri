@@ -36,7 +36,7 @@ export class KolDetails implements API {
 						<kol-icon _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
 						<span>{this.state._label}</span>
 					</summary>
-					<div class="content" ref={(element) => (this.contentElement = element)}>
+					<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" ref={(element) => (this.contentElement = element)}>
 						<kol-indented-text>
 							<slot />
 						</kol-indented-text>
