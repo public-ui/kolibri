@@ -9,7 +9,7 @@ export const NavBasic: FC = () => (
 		_links={[
 			{
 				_label: 'Homepage',
-				_icons: 'fa-solid fa-house',
+				_icons: 'codicon codicon-home',
 				_href: '#/',
 			},
 			{
