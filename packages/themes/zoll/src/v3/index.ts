@@ -967,6 +967,9 @@ export const ZOLLv3 = KoliBri.createTheme('zoll-v3', {
 		.expanded > div > .expand-button kol-icon::part(icon)::before {
 			content: '\\eab4';
 		}
+		.vertical li.active {
+			border-right: 0.375em solid var(--color-akzent);
+		}
 	`,
 	'KOL-TABS': tabsStyles,
 	'KOL-BREADCRUMB': css`
