@@ -23,11 +23,9 @@ import { AccessKeyPropType } from '../../types/props/access-key';
 })
 export class KolLink implements LinkProps {
 	@Element() private readonly host?: HTMLKolLinkElement;
-	private ref?: HTMLKolLinkWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propagateFocus(this.host, ref);
 	};
 
 	public render(): JSX.Element {
