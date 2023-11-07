@@ -50,7 +50,7 @@
 		"eslint-plugin-html": "7.1.0",
 		"eslint-plugin-jsdoc": "46.8.2",
 		"eslint-plugin-json": "3.1.0",
-		"eslint-plugin-jsx-a11y": "6.7.1",
+		"eslint-plugin-jsx-a11y": "6.8.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"eslint-plugin-react": "7.33.2",
 		"knip": "2.38.4",
