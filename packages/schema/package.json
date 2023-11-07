@@ -48,13 +48,13 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@a11y-ui/core": "1.0.7"
+		"@a11y-ui/core": "1.1.0"
 	},
 	"devDependencies": {
 		"@types/node": "ts5.1",
-		"@typescript-eslint/eslint-plugin": "6.9.0",
-		"@typescript-eslint/parser": "6.9.0",
-		"eslint": "8.52.0",
+		"@typescript-eslint/eslint-plugin": "6.10.0",
+		"@typescript-eslint/parser": "6.10.0",
+		"eslint": "8.53.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "5.2.2",
 		"unbuild": "1.2.1"
