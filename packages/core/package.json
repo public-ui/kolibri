@@ -54,13 +54,13 @@
 		"@public-ui/components": "1.7.5"
 	},
 	"devDependencies": {
-		"@a11y-ui/core": "1.0.7",
+		"@a11y-ui/core": "1.1.0",
 		"@types/node": "ts5.1",
-		"@typescript-eslint/eslint-plugin": "6.4.1",
-		"@typescript-eslint/parser": "6.4.1",
-		"eslint": "8.47.0",
+		"@typescript-eslint/eslint-plugin": "6.10.0",
+		"@typescript-eslint/parser": "6.10.0",
+		"eslint": "8.53.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"prettier": "3.0.2",
+		"prettier": "3.0.3",
 		"ts-prune": "0.10.3",
 		"typescript": "5.2.2",
 		"unbuild": "1.2.1"
