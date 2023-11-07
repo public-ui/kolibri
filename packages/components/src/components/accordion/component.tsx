@@ -52,7 +52,7 @@ export class KolAccordion implements API {
 					<kol-heading-wc _label="" _level={this.state._level}>
 						<kol-button-wc
 							ref={this.catchRef}
-							slot="expert"
+							// slot="expert"
 							_ariaControls={this.nonce}
 							_ariaExpanded={this.state._open}
 							_icons={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
