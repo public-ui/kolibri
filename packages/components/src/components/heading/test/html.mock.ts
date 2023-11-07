@@ -20,9 +20,10 @@ export const getHeadingWcHtml = (
 
 	return `
 		<kol-heading-wc${additionalAttrs}>
+			${typeof slots.default === 'string' ? `` : `<slot hidden=""></slot>`}
 			<${tag} class="headline">
 				${state._label}
-				${typeof slots.default === 'string' ? slots.default : `<slot />`}
+				${typeof slots.default === 'string' ? slots.default : ``}
 			</${tag}>
 		</kol-heading-wc>`;
 };
