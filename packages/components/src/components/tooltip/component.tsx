@@ -1,4 +1,4 @@
-import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
+import { autoUpdate } from '@floating-ui/dom';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { AlignPropType, validateAlign } from '../../types/props/align';
@@ -6,9 +6,9 @@ import { IdPropType, validateId } from '../../types/props/id';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
-import { processEnv } from '../../utils/reuse';
 import { API, States } from './types';
 import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
+import { alignFloatingElements } from '../../utils/align-floating-elements';
 
 @Component({
 	tag: 'kol-tooltip-wc',
@@ -24,45 +24,16 @@ export class KolTooltip implements API {
 
 	private cleanupAutoPositioning?: () => void;
 
-	private alignTooltip = (): void => {
-		if (processEnv !== 'test' && this.previousSibling /* SSR instanceof HTMLElement */ && this.tooltipElement /* SSR instanceof HTMLElement */) {
-			const target = this.previousSibling;
-			const tooltipEl = this.tooltipElement;
-			const arrowEl = this.arrowElement;
-
-			const middleware = [offset(arrowEl?.offsetHeight ?? 10), flip(), shift()];
-			if (arrowEl) {
-				middleware.push(arrow({ element: arrowEl }));
-			}
-
-			void computePosition(target, tooltipEl, {
-				placement: this.state._align,
-				middleware: middleware,
-			}).then(({ x, y, middlewareData, placement }) => {
-				Object.assign(tooltipEl.style, {
-					left: `${x}px`,
-					top: `${y}px`,
-					visibility: 'visible',
-				});
-
-				if (arrowEl) {
-					if (middlewareData.arrow?.x) {
-						Object.assign(arrowEl.style, {
-							left: `${middlewareData.arrow.x}px`,
-							top: placement === 'bottom' ? `${-arrowEl.offsetHeight / 2}px` : '',
-							bottom: placement === 'top' ? `${-arrowEl.offsetHeight / 2}px` : '',
-						});
-					} else if (middlewareData.arrow?.y) {
-						Object.assign(arrowEl.style, {
-							left: placement === 'right' ? `${-arrowEl.offsetWidth / 2}px` : '',
-							right: placement === 'left' ? `${-arrowEl.offsetWidth / 2}px` : '',
-							top: `${middlewareData.arrow.y}px`,
-						});
-					}
-				}
+	private async alignTooltip(): Promise<void> {
+		if (this.tooltipElement && this.previousSibling) {
+			await alignFloatingElements({
+				align: this._align,
+				referenceElement: this.previousSibling,
+				arrowElement: this.arrowElement,
+				floatingElement: this.tooltipElement,
 			});
 		}
-	};
+	}
 
 	private showTooltip = (): void => {
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
@@ -72,7 +43,7 @@ export class KolTooltip implements API {
 
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;
-			this.cleanupAutoPositioning = autoUpdate(target, tooltipEl, this.alignTooltip);
+			this.cleanupAutoPositioning = autoUpdate(target, tooltipEl, this.alignTooltip.bind(this));
 		}
 	};
 
