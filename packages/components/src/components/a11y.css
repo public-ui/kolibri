@@ -1,20 +1,23 @@
+/*
+ * This file contains all rules for accessibility.
+ */
 @layer kol-global {
-	/*
-	 * This file contains all rules for accessibility.
-	 */
 	:host {
 		/*
 		 * Minimum size of interactive elements.
 		 */
 		--a11y-min-size: 44px;
-		font-size: inherit;
-	}
-
-	* {
 		/*
 		 * Verdana is an accessible font that can be used without requiring additional loading time.
 		 */
 		font-family: Verdana;
+		/*
+		 * Allows to adjust the font size from the parent element.
+		 */
+		font-size: inherit;
+	}
+
+	* {
 		/*
 		 * This rule enables the word dividing for all texts. That is important for high zoom levels.
 		 */
