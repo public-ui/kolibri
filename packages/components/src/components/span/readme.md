@@ -9,23 +9,23 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 ### Code
 
 ```html
-<kol-span _icon="codicon codicon-home" _label="Text inside the span."></kol-span>
+<kol-span _icons="codicon codicon-home" _label="Text inside the span."></kol-span>
 ```
 
 ### Beispiel
 
-<kol-span _icon="codicon codicon-home" _label="Text inside the span."></kol-span>
+<kol-span _icons="codicon codicon-home" _label="Text inside the span."></kol-span>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property              | Attribute     | Description                                                                                                                                                         | Type                                                                 | Default     |
-| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ----------- |
-| `_hideLabel`          | `_hide-label` | Hides the label and shows the description in a Tooltip instead.s                                                                                                    | `boolean \| undefined`                                               | `false`     |
-| `_icon`               | `_icon`       | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                                                                                         | `KoliBriHorizontalIcon & KoliBriVerticalIcon \| string \| undefined` | `undefined` |
-| `_iconOnly`           | `_icon-only`  | <span style="color:red">**[DEPRECATED]**</span> use \_hide-label<br/><br/>Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an. | `boolean \| undefined`                                               | `undefined` |
-| `_label` _(required)_ | `_label`      | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                         | `boolean \| string`                                                  | `undefined` |
+| Property              | Attribute     | Description                                                                                                                                                  | Type                                                                   | Default     |
+| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- | ----------- |
+| `_accessKey`          | `_access-key` | Defines the elements access key.                                                                                                                             | `string \| undefined`                                                  | `undefined` |
+| `_hideLabel`          | `_hide-label` | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.                   | `boolean \| undefined`                                                 | `false`     |
+| `_icons`              | `_icons`      | Defines the g classnames (e.g. `_icons="fa-solid fa-user"`).                                                                                                 | `KoliBriHorizontalIcons & KoliBriVerticalIcons \| string \| undefined` | `undefined` |
+| `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                               | `undefined` |
 
 ## Dependencies
 

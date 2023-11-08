@@ -5,7 +5,7 @@ import { AlignPropType, validateAlign } from '../../types/props/align';
 import { ShowPropType, validateShow } from '../../types/props/show';
 import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
-import { KoliBriPopoverAPI, KoliBriPopoverStates } from './types';
+import { API, States } from './types';
 
 /**
  * @slot - Der Inhalt des Popover.
@@ -15,7 +15,7 @@ import { KoliBriPopoverAPI, KoliBriPopoverStates } from './types';
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolPopover implements KoliBriPopoverAPI {
+export class KolPopover implements API {
 	private arrowElement?: HTMLDivElement;
 	private popoverElement?: HTMLDivElement;
 	private triggerElement?: HTMLElement | null;
@@ -146,16 +146,17 @@ export class KolPopover implements KoliBriPopoverAPI {
 	}
 
 	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
+	 * Defines the alignment of the tooltip, popover or tabs in relation to the element.
 	 */
 	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
 	 * Makes the element show up.
+	 * @TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _show?: ShowPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
-	@State() public state: KoliBriPopoverStates = {
+	@State() public state: States = {
 		_align: 'top',
 		_show: false,
 		_visible: false,

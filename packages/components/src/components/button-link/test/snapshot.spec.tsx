@@ -4,11 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
+import { Props } from '../types';
 import { getButtonLinkHtml } from './html.mock';
 
-import { ButtonLinkProps } from '../../../types/button-link';
-
-executeTests<ButtonLinkProps>(
+executeTests<Props>(
 	'ButtonLink',
 	async (props): Promise<SpecPage> => {
 		return await newSpecPage({

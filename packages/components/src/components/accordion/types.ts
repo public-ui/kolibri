@@ -10,16 +10,11 @@ export type KoliBriAccordionCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;
 };
 
-type RequiredProps = unknown;
+type RequiredProps = PropLabel;
 type OptionalProps = {
-	/**
-	 * @deprecated Use label.
-	 */
-	heading: string;
 	level: HeadingLevel;
 	on: KoliBriAccordionCallbacks;
-} & PropOpen &
-	PropLabel; // PropLabel will become required in v2.
+} & PropOpen;
 
 type RequiredStates = RequiredProps & PropLabel;
 type OptionalStates = OptionalProps;

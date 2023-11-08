@@ -84,17 +84,17 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html" _label="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                               | Type                   | Default     |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
-| `_label`   | `_label`   | Defines the summary label.                                                                                                | `string \| undefined`  | `undefined` |
-| `_open`    | `_open`    | Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.                                                        | `boolean \| undefined` | `false`     |
-| `_summary` | `_summary` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Zusammenfassung der Detailbeschreibung an. | `string \| undefined`  | `undefined` |
+| Property              | Attribute | Description                                                                                                        | Type                                                                                  | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------- |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                              | `undefined` |
+| `_on`                 | --        | Defines the callback functions for details.                                                                        | `undefined \| { onToggle?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
+| `_open`               | `_open`   | If set (to true) opens/expands the element, closes if not set (or set to false).                                   | `boolean \| undefined`                                                                | `false`     |
 
 ## Slots
 

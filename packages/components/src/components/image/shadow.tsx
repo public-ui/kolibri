@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
 import { watchString } from '../../utils/prop.validators';
 import { Loading, validateLoading } from '../../utils/validators/loading';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-image',
@@ -12,19 +12,19 @@ import { ComponentApi, States } from './types';
 	},
 	shadow: true,
 })
-export class KolImage implements ComponentApi {
+export class KolImage implements API {
 	/**
 	 * Setzt den alternativen Text.
 	 */
 	@Prop() public _alt!: string;
 
 	/**
-	 * Setzt den Lademodus.
+	 * Defines the loading mode for the image.
 	 */
 	@Prop() public _loading?: Loading = 'lazy';
 
 	/**
-	 * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
+	 * Defines the image sizes for different screen resolutions, supporting _srcset.
 	 */
 	@Prop() public _sizes?: string;
 

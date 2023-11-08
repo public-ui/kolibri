@@ -3,13 +3,13 @@ import { KoliBri } from '@public-ui/schema';
 // GZD Design System (Desy v2)
 export const DESYv2 = KoliBri.createTheme('desy-v2', {
 	GLOBAL: `
-	kol-tooltip .tooltip-area {
+	kol-tooltip-wc .tooltip-area {
 		background-color:#f2f2f2;
 	}
-	kol-tooltip .tooltip-arrow {
+	kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip .tooltip-content {
+	kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -744,7 +744,7 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -1127,6 +1127,19 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		-ms-transform: translateX(1em);
 		transform: translateX(1em);
 	}
+	.switch {
+		& .icon {
+			width: 1.25em;
+			height: 1.25em;
+			left: 2px;
+		}
+		&:has(input:checked) .icon {
+			transform: translate(2em, -50%);
+		}
+		&:has(input:indeterminate) .icon {
+			transform: translate(1em, -50%);
+		}
+	}
 	.disabled {
 		opacity: 0.33;
 	}`,
@@ -1378,12 +1391,14 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	option:active:not(:disabled),
 	option:checked:not(:disabled),
@@ -1407,10 +1422,13 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		background-color: white;
 		border-radius: 0.3125rem;
 	}
+	kol-input .counter {
+		order: 3;
+	}
 	kol-input kol-alert.error {
 		margin-bottom: 0.4em;
 		margin-top: 0.2em;
-		order: 3;
+		order: 4;
 	}
 	input,
 	select,
@@ -2619,26 +2637,15 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 	:host li > kol-link > kol-link-wc > a {
 		color: red !important;
 	}`,
-	'KOL-TOAST': `:host > div {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
+	'KOL-TOAST-CONTAINER': `:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
 	}
-	:host > div > kol-alert {
-		display: block;
-		margin: auto;
-		padding: 1rem;
-		max-width: 750px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		margin: auto;
-		width: 1em;
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
 	}`,
 	'KOL-LINK-BUTTON': `a {
 		min-width: 44px;

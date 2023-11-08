@@ -10,34 +10,34 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-          # ref: 'main'
 
       # - uses: pnpm/action-setup@v2.2.4
       #   with:
       #     run_install: false
       #     version: 7
-      # - uses: actions/setup-node@v3
+      # - uses: actions/setup-node@v4
       #   with:
       #     cache: pnpm
       #     node-version: 16
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           # cache: pnpm
-          node-version: 16
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
+          node-version: 18
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -47,23 +47,30 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store # -${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store
           restore-keys: |
             ${{ runner.os }}-pnpm-store
 
       - name: Install
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm i --no-frozen-lockfile
       - name: Unused
-        run: npm run ts-prune
+        run: pnpm -r unused
       - name: Depcheck
-        if: always()
-        run: npm run depcheck
+        run: pnpm -r depcheck
       - name: Format
-        if: always()
-        run: npm run format
+        run: pnpm -r format
+      - name: Build
+        run: pnpm -r build
       - name: Lint
-        run: npm run lint
+        run: pnpm -r lint
       - name: Test
-        run: npx lerna run test
-      - name: 'Pack'
-        run: npx lerna exec --stream -- npm pack
+        run: pnpm -r --workspace-concurrency=1 test # https://pnpm.io/configuring
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        name: Upload theme test reports
+        with:
+          name: reports
+          path: |
+            packages/themes/**/test-results/**/*.png
+            !**/node_modules

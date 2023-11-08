@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { koliBriCardProps } from '../types';
+import { Props } from '../types';
 import { getCardHtml } from './html.mock';
 
-executeTests<koliBriCardProps>(
+executeTests<Props>(
 	'Card',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
@@ -18,7 +18,6 @@ executeTests<koliBriCardProps>(
 	},
 	{
 		_hasCloser: [false, true],
-		_hasFooter: [false, true],
 		_label: ['Überschrift'],
 		_level: [1, 2, 3, 4, 5, 6],
 	},

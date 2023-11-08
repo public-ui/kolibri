@@ -1,4 +1,10 @@
 @import url(../input-line.css);
-div.input {
-	cursor: pointer;
+@layer kol-component {
+	div.input {
+		cursor: pointer;
+	}
+
+	.error.hidden {
+		display: none;
+	}
 }

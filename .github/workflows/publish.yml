@@ -2,22 +2,11 @@ name: Publish
 
 env:
   access: public
-  github-registry: https://npm.pkg.github.com
-  github-token: ${{ secrets.GITHUB_TOKEN }}
-  npmjs-registry: https://registry.npmjs.org
-  npmjs-token: ${{ secrets.NPMJS_TOKEN }}
-  npmjs-tag: next
+  registry: https://registry.npmjs.org
+  token: ${{ secrets.NPMJS_GRANULAR_TOKEN }}
+  tag: next
 
 on:
-  # pull_request:
-  #   branches:
-  #     - main
-  # push:
-  #   branches:
-  #     - main
-  # release:
-  #   types:
-  #     - released
   workflow_dispatch:
 
 jobs:
@@ -25,149 +14,161 @@ jobs:
     if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-          # ref: 'main'
-      # - uses: pnpm/action-setup@v2.2.2
-      #   with:
-      #     version: 7
-      - uses: actions/setup-node@v3
+
+      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          # cache: pnpm
-          node-version: 16
-          registry-url: '${{env.npmjs-registry}}'
+          node-version: 18
+          registry-url: '${{env.registry}}'
           scope: '@public-ui'
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store
+
+      - name: Install
+        run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
+
+      - name: Build
+        run: pnpm -r build
+
       - name: Build and publish schema
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/schema
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish components
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/components
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      - name: Build and publish themes
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/themes
-        env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v11
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/angular/v11
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v12
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/angular/v12
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v13
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/angular/v13
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v14
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/angular/v14
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v15
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/angular/v15
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v16
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/angular/v16
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter react
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/react
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
+      - name: Build and publish adapter react-standalone
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
+        working-directory: packages/adapters/react-standalone
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter solid
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/solid
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      # - name: Build and publish adapter svelte
-      #   run: |
-      #     npm i
-      #     npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-      #   working-directory: packages/adapters/svelte
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter vue
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/vue
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter preact
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/preact
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter hydrate
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/adapters/hydrate
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish create-kolibri
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/create-kolibri
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-
-      # deprecated packages
-      - name: Build and publish core
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/core
+          NODE_AUTH_TOKEN: ${{env.token}}
+      - name: Build and publish tools kolibri-cli
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
+        working-directory: packages/tools/kolibri-cli
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      - name: Build and publish schema
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/schema
+          NODE_AUTH_TOKEN: ${{env.token}}
+      - name: Build and publish theme default
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
+        working-directory: packages/themes/default
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+          NODE_AUTH_TOKEN: ${{env.token}}
+      - name: Build and publish themes
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
+        working-directory: packages/themes
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+      - name: Build and publish sample react
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
+        working-directory: packages/samples/react
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+      - name: Build and publish tools visual-tests
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
+        working-directory: packages/tools/visual-tests
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
 
   publish-page:
     needs: publish
-    uses: public-ui/kolibri/.github/workflows/publish-page.yml@main
+    uses: public-ui/kolibri/.github/workflows/publish-page.yml@develop

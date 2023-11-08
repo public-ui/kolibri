@@ -1,15 +1,17 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { AlignPropType } from '../../types/props/align';
+import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
+import { LabelPropType, validateLabel } from '../../types/props/label';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
-import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { watchButtonVariant } from '../button/controller';
-import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
+import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';
+import { MaxPropType, validateMax } from '../../types/props/max';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -31,12 +33,12 @@ const rightDoubleArrowIcon = {
 	},
 	shadow: true,
 })
-export class KolPagination implements KoliBriPaginationAPI {
+export class KolPagination implements API {
 	private readonly nonce = nonce();
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
 
-	private readonly getCount = (): number => this.calcCount(this.state._total, this.state._pageSize);
+	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
 
 	public render(): JSX.Element {
 		let ellipsis = false;
@@ -57,7 +59,11 @@ export class KolPagination implements KoliBriPaginationAPI {
 					}
 				} else if (ellipsis === true) {
 					ellipsis = false;
-					return <span class="separator" key={`${this.nonce}-el-${page}`}></span>;
+					return (
+						<li>
+							<span class="separator" key={`${this.nonce}-el-${page}`} aria-hidden="true"></span>
+						</li>
+					);
 				} else {
 					return null;
 				}
@@ -65,71 +71,77 @@ export class KolPagination implements KoliBriPaginationAPI {
 
 		return (
 			<Host>
-				<div>
-					{this.state._hasButtons.first && (
-						<kol-button
-							class="first"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={this.state._page <= 1}
-							_icon={leftDoubleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-first')}
-							_on={this.onGoToFirst}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{this.state._hasButtons.previous && (
-						<kol-button
-							class="previous"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={this.state._page <= 1}
-							_icon={leftSingleArrow}
-							_hideLabel
-							_label={translate('kol-page-back')}
-							_on={this.onGoBackward}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{pageButtons}
-					{this.state._hasButtons.next && (
-						<kol-button
-							class="next"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={count <= this.state._page}
-							_icon={rightSingleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-next')}
-							_on={this.onGoForward}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-					{this.state._hasButtons.last && (
-						<kol-button
-							class="last"
-							exportparts="icon"
-							_customClass={this.state._customClass}
-							_disabled={count <= this.state._page}
-							_icon={rightDoubleArrowIcon}
-							_hideLabel
-							_label={translate('kol-page-last')}
-							_on={this.onGoToEnd}
-							_variant={this.state._variant}
-							_tooltipAlign={this.state._tooltipAlign}
-						></kol-button>
-					)}
-				</div>
+				<nav aria-label={this.state._label}>
+					<ul class="navigation-list">
+						{this.state._hasButtons.first && (
+							<li>
+								<kol-button-wc
+									class="first"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={this.state._page <= 1}
+									_icons={leftDoubleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-first')}
+									_on={this.onGoToFirst}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button-wc>
+							</li>
+						)}
+						{this.state._hasButtons.previous && (
+							<li>
+								<kol-button-wc
+									class="previous"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={this.state._page <= 1}
+									_icons={leftSingleArrow}
+									_hideLabel
+									_label={translate('kol-page-back')}
+									_on={this.onGoBackward}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button-wc>
+							</li>
+						)}
+						{pageButtons}
+						{this.state._hasButtons.next && (
+							<li>
+								<kol-button-wc
+									class="next"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={count <= this.state._page}
+									_icons={rightSingleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-next')}
+									_on={this.onGoForward}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button-wc>
+							</li>
+						)}
+						{this.state._hasButtons.last && (
+							<li>
+								<kol-button-wc
+									class="last"
+									exportparts="icon"
+									_customClass={this.state._customClass}
+									_disabled={count <= this.state._page}
+									_icons={rightDoubleArrowIcon}
+									_hideLabel
+									_label={translate('kol-page-last')}
+									_on={this.onGoToEnd}
+									_tooltipAlign={this.state._tooltipAlign}
+								></kol-button-wc>
+							</li>
+						)}
+					</ul>
+				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
 					<kol-select
 						_hideLabel
 						_id={`pagination-size-${this.nonce}`}
 						_label={translate('kol-entries-per-site')}
-						_list={this.state._pageSizeOptions}
+						_options={this.state._pageSizeOptions}
 						_on={{
 							onChange: this.onChangePageSize,
 						}}
@@ -141,32 +153,37 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	/**
-	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
+	 * Defines the amount of pages to show next to the outer arrow buttons.
 	 */
 	@Prop() public _boundaryCount?: number = 1;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
-	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label?: LabelPropType;
+
+	/**
+	 * Defines which navigation buttons to render (first, last, next, previous buttons).
 	 */
 	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
 
 	/**
-	 * Gibt an, welche Seite aktuell ausgewählt ist.
+	 * Defines the current page.
 	 */
 	@Prop() public _page!: number;
 
 	/**
-	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
+	 * Defines the amount of entries to show per page.
 	 */
 	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
 
 	/**
-	 * Setzt die Optionen für das Seitenlängenselect.
+	 * Defines the options for the page-size-select.
 	 */
 	@Prop() public _pageSizeOptions: Stringified<number[]> = [];
 
@@ -176,27 +193,23 @@ export class KolPagination implements KoliBriPaginationAPI {
 	@Prop() public _on!: KoliBriPaginationButtonCallbacks;
 
 	/**
-	 * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
+	 * Defines the amount of pages to show next to the current page.
 	 */
 	@Prop() public _siblingCount?: number = 1;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt die Gesamtanzahl der Seiten.
+	 * Defines the maximum number of pages.
 	 */
-	@Prop() public _total!: number;
+	@Prop() public _max!: MaxPropType;
 
-	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
-	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
-
-	@State() public state: KoliBriPaginationStates = {
+	@State() public state: States = {
 		_boundaryCount: 1,
+		_label: translate('kol-pagination'),
 		_hasButtons: {
 			first: true,
 			last: true,
@@ -210,8 +223,7 @@ export class KolPagination implements KoliBriPaginationAPI {
 		_pageSize: 1,
 		_pageSizeOptions: [],
 		_siblingCount: 1,
-		_total: 0,
-		_variant: 'normal',
+		_max: 0,
 	};
 
 	private onClick = (event: Event, page: number) => {
@@ -266,32 +278,27 @@ export class KolPagination implements KoliBriPaginationAPI {
 
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
-			<kol-button
-				exportparts="icon"
-				key={`${this.nonce}-${page}`}
-				_customClass={this.state._customClass}
-				_label={`${page}`}
-				_on={{
-					onClick: (event: Event) => {
-						this.onClick(event, page);
-					},
-				}}
-				_variant={this.state._variant}
-			></kol-button>
+			<li>
+				<kol-button-wc
+					exportparts="icon"
+					key={`${this.nonce}-${page}`}
+					_customClass={this.state._customClass}
+					_label={`${page}`}
+					_on={{
+						onClick: (event: Event) => {
+							this.onClick(event, page);
+						},
+					}}
+				></kol-button-wc>
+			</li>
 		);
 	}
 
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
-			<kol-button-wc
-				class="selected"
-				key={`${this.nonce}-selected`}
-				_customClass={this.state._customClass}
-				_disabled={true}
-				_ariaCurrent={true}
-				_label={`${page}`}
-				_variant={this.state._variant}
-			/>
+			<li>
+				<kol-button-wc class="selected" key={`${this.nonce}-selected`} _customClass={this.state._customClass} _disabled={true} _label={`${page}`} />
+			</li>
 		);
 	}
 
@@ -301,10 +308,17 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	@Watch('_customClass')
-	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, {
-			defaultValue: undefined,
-		});
+	public validateCustomClass(value?: CustomClassPropType): void {
+		validateCustomClass(this, value);
+	}
+
+	@Watch('_label')
+	public validateLabel(label?: LabelPropType, _oldValue?: LabelPropType, initial = false) {
+		if (!initial) {
+			removeNavLabel(this.state._label);
+		}
+		validateLabel(this, label);
+		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_hasButtons')
@@ -378,7 +392,7 @@ export class KolPagination implements KoliBriPaginationAPI {
 			hooks: {
 				beforePatch: (_nextValue: unknown, nextState: Map<string, unknown>) => {
 					const pageSize = nextState.has('_pageSize') ? (nextState.get('_pageSize') as number) : this.state._pageSize;
-					const total = nextState.has('_total') ? (nextState.get('_total') as number) : this.state._total;
+					const total = nextState.has('_max') ? (nextState.get('_max') as number) : this.state._max;
 					this.syncPage(nextState, _nextValue as number, pageSize, total);
 				},
 			},
@@ -398,7 +412,7 @@ export class KolPagination implements KoliBriPaginationAPI {
 			nextState.set('_pageSize', pageSize);
 		}
 		const page = nextState.has('_page') ? (nextState.get('_page') as number) : this.state._page;
-		const total = nextState.has('_total') ? (nextState.get('_total') as number) : this.state._total;
+		const total = nextState.has('_max') ? (nextState.get('_max') as number) : this.state._max;
 		this.syncPage(nextState, page, nextState.get('_pageSize') as number, total);
 	};
 
@@ -457,9 +471,9 @@ export class KolPagination implements KoliBriPaginationAPI {
 		watchNumber(this, '_siblingCount', Math.max(0, value ?? 1));
 	}
 
-	@Watch('_total')
-	public validateTotal(value?: number): void {
-		watchNumber(this, '_total', value, {
+	@Watch('_max')
+	public validateMax(value?: MaxPropType): void {
+		validateMax(this, value, {
 			hooks: {
 				beforePatch: (_nextValue: unknown, nextState: Map<string, unknown>) => {
 					const page = nextState.has('_page') ? (nextState.get('_page') as number) : this.state._page;
@@ -471,32 +485,31 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
-	}
-
-	@Watch('_variant')
-	public validateVariant(value?: KoliBriButtonVariant): void {
-		watchButtonVariant(this, '_variant', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	public componentWillLoad(): void {
 		this.validateBoundaryCount(this._boundaryCount);
 		this.validateCustomClass(this._customClass);
 		this.validateHasButtons(this._hasButtons);
+		this.validateLabel(this._label, undefined, true);
 		this.validateOn(this._on);
 		this.validatePage(this._page);
 		this.validatePageSize(this._pageSize);
 		this.validatePageSizeOptions(this._pageSizeOptions);
 		this.validateSiblingCount(this._siblingCount);
 		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateTotal(this._total);
-		this.validateVariant(this._variant);
+		this.validateMax(this._max);
 
 		/**
 		 * Die Seite muss als letztes gesetzt werden, da sonst die Seite
 		 * nicht korrekt berechnet wird.
 		 */
 		this.validatePage(this._page);
+	}
+
+	public disconnectedCallback(): void {
+		removeNavLabel(this.state._label);
 	}
 }

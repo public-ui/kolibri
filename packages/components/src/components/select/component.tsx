@@ -1,19 +1,24 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriHorizontalIcons } from '../../types/icons';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
-import { AlignPropType } from '../../types/props/align';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { NamePropType } from '../../types/props/name';
 import { OptionsWithOptgroupPropType } from '../../types/props/options';
 import { RowsPropType } from '../../types/props/rows';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { SelectController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -29,7 +34,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	},
 	shadow: true,
 })
-export class KolSelect implements ComponentApi {
+export class KolSelect implements API {
 	@Element() private readonly host?: HTMLKolSelectElement;
 	private ref?: HTMLSelectElement;
 
@@ -65,7 +70,7 @@ export class KolSelect implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host class={{ 'has-value': this.state._hasValue }}>
@@ -74,18 +79,34 @@ export class KolSelect implements ComponentApi {
 						'hide-label': !!this.state._hideLabel,
 						select: true,
 					}}
+					_accessKey={this.state._accessKey}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
+					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
-					_icon={this.state._icon}
+					_icons={this.state._icons}
 					_id={this.state._id}
+					_label={this.state._label}
 					_required={this.state._required}
+					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' ? (
+							<>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />{' '}
+								<span class="access-key-hint" aria-hidden="true">
+									{this.state._accessKey}
+								</span>
+							</>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
 					<div slot="input">
 						<select
 							ref={this.catchRef}
@@ -102,9 +123,6 @@ export class KolSelect implements ComponentApi {
 							required={this.state._required}
 							size={this.state._rows}
 							spellcheck="false"
-							style={{
-								height: this.state._height,
-							}}
 							{...{
 								onClick: this.controller.onFacade.onClick,
 								onBlur: this.controller.onFacade.onBlur,
@@ -136,16 +154,6 @@ export class KolSelect implements ComponentApi {
 								}
 							})}
 						</select>
-						<kol-tooltip
-							/**
-							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-							 */
-							aria-hidden="true"
-							hidden={hasExpertSlot || !this.state._hideLabel}
-							_align={this._tooltipAlign}
-							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip>
 					</div>
 				</kol-input>
 			</Host>
@@ -155,72 +163,69 @@ export class KolSelect implements ComponentApi {
 	private readonly controller: SelectController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
-	 * Gibt an, ob eine individuelle Höhe übergeben werden soll.
-	 *
-	 * @deprecated Use _rows instead.
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _height?: string;
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
+	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Options the user can choose from, also supporting Optgroup.
-	 * @deprecated use _options
-	 */
-	@Prop() public _list?: Stringified<SelectOption<W3CInputValue>[]>;
-
-	/**
-	 * Gibt an, ob mehrere Werte eingegeben werden können.
+	 * Makes the input accept multiple inputs.
+	 * @TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _multiple?: boolean = false;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -233,9 +238,10 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _options?: OptionsWithOptgroupPropType;
 
 	/**
-	 * Macht das Eingabeelementzu einem Pflichtfeld.
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Defines how many rows of options should be visible at the same time.
@@ -243,43 +249,39 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _rows?: RowsPropType;
 
 	/**
-	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
-	 */
-	@Prop() public _size?: number;
-
-	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
 
 	@State() public state: States = {
 		_hasValue: false,
-		_height: '',
+		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: false, // ⚠ required
-		_options: [],
+		_label: '', // ⚠ required
 		_multiple: false,
+		_options: [],
 		_value: [],
 	};
 
@@ -307,9 +309,9 @@ export class KolSelect implements ComponentApi {
 		this.controller.validateError(value);
 	}
 
-	@Watch('_height')
-	public validateHeight(value?: string): void {
-		this.controller.validateHeight(value);
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
 	}
 
 	@Watch('_hideLabel')
@@ -322,9 +324,9 @@ export class KolSelect implements ComponentApi {
 		this.controller.validateHint(value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
-		this.controller.validateIcon(value);
+	@Watch('_icons')
+	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+		this.controller.validateIcons(value);
 	}
 
 	@Watch('_id')
@@ -335,11 +337,6 @@ export class KolSelect implements ComponentApi {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
-	}
-
-	@Watch('_list')
-	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
-		this.validateOptions(value);
 	}
 
 	@Watch('_multiple')
@@ -372,13 +369,8 @@ export class KolSelect implements ComponentApi {
 		this.controller.validateRows(value);
 	}
 
-	@Watch('_size')
-	public validateSize(value?: number): void {
-		this.controller.validateRows(value);
-	}
-
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

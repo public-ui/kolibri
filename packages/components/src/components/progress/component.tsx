@@ -3,12 +3,12 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { KoliBriProgressVariantEnum, KoliBriProgressVariantType } from '../../types/progress';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
-import { KoliBriProgressAPI, KoliBriProgressStates } from './types';
+import { API, States } from './types';
 
 const VALID_VARIANTS = Object.keys(KoliBriProgressVariantEnum);
 
 // https://css-tricks.com/html5-progress-element/
-const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
+const createProgressSVG = (state: States): JSX.Element => {
 	const fullCircle = 342;
 	const textPositionTop = '43%';
 	const textPositionBottom = '57%';
@@ -90,7 +90,7 @@ const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
 	},
 	shadow: true,
 })
-export class KolProcess implements KoliBriProgressAPI {
+export class KolProcess implements API {
 	private interval?: number;
 
 	// https://dequeuniversity.com/library/aria/progress-bar-bounded
@@ -107,37 +107,31 @@ export class KolProcess implements KoliBriProgressAPI {
 	}
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
+	 * Defines at which value the progress display is completed.
 	 */
 	@Prop() public _max!: number;
 
 	/**
-	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
-	 * @deprecated will be removed in v2, use _variant
-	 */
-	@Prop() public _type?: KoliBriProgressVariantType;
-
-	/**
-	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
+	 * Defines the unit of the step values (not shown).
 	 */
 	@Prop() public _unit?: string = '%';
 
 	/**
-	 * Gibt an, wie weit die Anzeige fortgeschritten ist.
+	 * Defines the progress.
 	 */
 	@Prop() public _value!: number;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: KoliBriProgressVariantType;
 
-	@State() public state: KoliBriProgressStates = {
+	@State() public state: States = {
 		_max: 100,
 		_unit: '%',
 		_value: 0,
@@ -158,12 +152,6 @@ export class KolProcess implements KoliBriProgressAPI {
 		watchNumber(this, '_max', value, {
 			required: true,
 		});
-	}
-
-	// @deprecated remove with v2
-	@Watch('_type')
-	public validateType(value?: KoliBriProgressVariantType): void {
-		this.validateVariant(value);
 	}
 
 	@Watch('_unit')
@@ -192,7 +180,7 @@ export class KolProcess implements KoliBriProgressAPI {
 		this.validateMax(this._max);
 		this.validateUnit(this._unit);
 		this.validateValue(this._value);
-		this.validateVariant(this._variant || this._type);
+		this.validateVariant(this._variant);
 
 		this.interval = setInterval(() => {
 			if (this.state._liveValue !== this.state._value) {

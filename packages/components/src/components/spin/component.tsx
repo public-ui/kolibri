@@ -1,9 +1,9 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { SpinVariantPropType, validateSpinVariant } from '../../types/props/variant/spin';
-import { KoliBriSpinAPI, KoliBriSpinStates } from './types';
 import { ShowPropType, validateShow } from '../../types/props/show';
+import { SpinVariantPropType, validateSpinVariant } from '../../types/props/variant/spin';
+import { API, States } from './types';
 
 function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {
@@ -13,12 +13,12 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 			return <slot name="expert"></slot>;
 		default:
 			return (
-				<Fragment>
+				<>
 					<span class="bg-spin-1"></span>
 					<span class="bg-spin-2"></span>
 					<span class="bg-spin-3"></span>
 					<span class="bg-neutral"></span>
-				</Fragment>
+				</>
 			);
 	}
 }
@@ -30,7 +30,7 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	},
 	shadow: true,
 })
-export class KolSpin implements KoliBriSpinAPI {
+export class KolSpin implements API {
 	private showToggled = false;
 
 	public render(): JSX.Element {
@@ -59,15 +59,16 @@ export class KolSpin implements KoliBriSpinAPI {
 
 	/**
 	 * Makes the element show up.
+	 * @TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _show?: ShowPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
 	/**
-	 * Defines the variant of spin navigation.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: SpinVariantPropType = 'dot';
 
-	@State() public state: KoliBriSpinStates = {
+	@State() public state: States = {
 		_variant: 'dot',
 	};
 

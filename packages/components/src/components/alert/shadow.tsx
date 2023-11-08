@@ -21,7 +21,7 @@ export class KolAlert implements Props {
 				<kol-alert-wc
 					_alert={this._alert}
 					_hasCloser={this._hasCloser}
-					_label={this._label || this._heading}
+					_label={this._label}
 					_level={this._level}
 					_on={this._on}
 					_type={this._type}
@@ -34,28 +34,23 @@ export class KolAlert implements Props {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop() public _alert?: boolean = false;
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
+	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _heading?: string;
-
-	/**
-	 * Defines the description of the component.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -65,12 +60,12 @@ export class KolAlert implements Props {
 	@Prop() public _on?: KoliBriAlertEventCallbacks;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 

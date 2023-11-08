@@ -1,4 +1,10 @@
 @import url(../input-line.css);
-kol-input-number {
-	display: block;
+@layer kol-component {
+	kol-input-number {
+		display: block;
+	}
+
+	.error.hidden {
+		display: none;
+	}
 }

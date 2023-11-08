@@ -1,24 +1,25 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { ButtonProps, ButtonStates } from '../../../types/button-link';
+import { showExpertSlot } from '../../../utils/reuse';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
+import { Props, States } from '../types';
 
 type Slots = {
 	expert?: string;
 };
 
 export const getButtonWcHtml = (
-	props: ButtonProps,
+	props: Props,
 	slots: Slots = {
 		expert: undefined,
 	},
 	additionalAttrs = ''
 ): string => {
-	const state = mixMembers<ButtonProps, ButtonStates>(
+	const state = mixMembers<Props, States>(
 		{
-			_icon: {},
-			_label: false, // ⚠ required
+			_icons: {},
+			_label: '', // ⚠ required
 			_type: 'button',
 			_variant: 'normal',
 		},
@@ -26,7 +27,7 @@ export const getButtonWcHtml = (
 	);
 	const ariaControls = typeof state._ariaControls === 'string' ? state._ariaControls : undefined;
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
-	const hasExpertSlot: boolean = state._label === false;
+	const hasExpertSlot = showExpertSlot(state._label);
 	const type = typeof state._type === 'string' ? state._type : 'button';
 	const variant = typeof state._variant === 'string' ? state._variant : 'normal';
 	const classNames: string[] = [variant];
@@ -41,30 +42,31 @@ export const getButtonWcHtml = (
 	}
 	${state._hideLabel && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''}
 	${state._role ? `role="${state._role}"` : ''}
-	class="${classNames.join(' ')}" type="${type}">
+	class="button ${classNames.join(' ')}" type="${type}">
 		${getSpanWcHtml(
 			{
 				...props,
-				_label: hasExpertSlot ? false : state._label,
+				_label: state._label,
 			},
-			slots
+			slots,
+			{ additionalClassNames: ['button-inner'] }
 		)}
 	</button>
 	${getTooltipHtml(
 		{
 			_align: state._tooltipAlign,
-			_label: typeof state._label === 'string' ? state._label : '',
+			_label: state._label,
 		},
 		` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
 	)}
 </kol-button-wc>`;
 };
 
-export const getButtonHtml = (props: ButtonProps): string => {
-	const state = mixMembers<ButtonProps, ButtonStates>(
+export const getButtonHtml = (props: Props): string => {
+	const state = mixMembers<Props, States>(
 		{
-			_icon: {},
-			_label: false, // ⚠ required
+			_icons: {},
+			_label: '', // ⚠ required
 			_type: 'button',
 			_variant: 'normal',
 		},

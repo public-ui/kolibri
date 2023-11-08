@@ -730,7 +730,7 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		display: grid;
 		gap: 1rem;
 	}
-	:host > div {
+	:host .navigation-list {
 		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -1134,14 +1134,14 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		line-height: 24px;
 		font-size: 16px;
 	}
-	:host fieldset div input[type="radio"]:hover {
+	.radio-input-wrapper input[type="radio"]:hover {
 		border-color: var(--color-midnight);
 		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
 	}
-	:host fieldset div input[type="radio"]:focus:hover {
+	.radio-input-wrapper input[type="radio"]:focus:hover {
 		box-shadow: none;
 	}
-	:host fieldset div input[type="radio"]:active {
+	.radio-input-wrapper input[type="radio"]:active {
 		box-shadow: none;
 	}
 	kol-alert {
@@ -1160,7 +1160,7 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		display: grid;
 		gap: 0.25em;
 	}
-	:host fieldset div {
+	.radio-input-wrapper {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -1168,16 +1168,16 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		position: relative;
 		min-height: 44px;
 	}
-	:host fieldset div label {
+	.radio-input-wrapper label {
 		cursor: pointer;
 		display: flex;
 		padding-left: 0.25em;
 		width: 100%;
 	}
-	:host fieldset div label span {
+	.radio-input-wrapper label span {
 		margin-top: 0.125em;
 	}
-	:host fieldset div input[type="radio"] {
+	.radio-input-wrapper input[type="radio"] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -1185,7 +1185,7 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		min-width: 1rem;
 		width: 1rem;
 	}
-	:host fieldset div input[type="radio"]:before {
+	.radio-input-wrapper input[type="radio"]:before {
 		content: "";
 		cursor: pointer;
 		left: calc(1 * var(--spacing) - 1px);
@@ -1196,10 +1196,10 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		height: calc(2 * var(--spacing));
 		width: calc(2 * var(--spacing));
 	}
-	:host fieldset div input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type="radio"]:checked:before {
 		background-color: var(--color-primary-20);
 	}
-	:host fieldset div input[type="radio"]:disabled {
+	.radio-input-wrapper input[type="radio"]:disabled {
 		cursor: not-allowed;
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
@@ -1364,12 +1364,14 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	option:active:not(:disabled),
 	option:checked:not(:disabled),
@@ -2605,26 +2607,15 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 	:host li > kol-link > kol-link-wc > a {
 		color: red !important;
 	}`,
-	'KOL-TOAST': `:host > div {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
+	'KOL-TOAST-CONTAINER': `:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
 	}
-	:host > div > kol-alert {
-		display: block;
-		margin: auto;
-		padding: 1rem;
-		max-width: 750px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		margin: auto;
-		width: 1em;
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
 	}`,
 	'KOL-LINK-BUTTON': `a {
 		min-width: 44px;

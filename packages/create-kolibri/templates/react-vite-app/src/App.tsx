@@ -5,9 +5,37 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<p>Hello Vite + React!</p>
-				<p>
-					<KolButton _label="Test" _variant="primary" />
+				<p>Hello Vite + React + KoliBri!</p>
+				<p className="flex gap-4">
+					<KolButton
+						_label="Primary"
+						_on=\{{
+							onClick: () => {
+								console.log('Clicked primary');
+							},
+						}}
+						_variant="primary"
+					/>
+					<KolButton
+						_label="Secondary"
+						_on=\{{
+							onClick: () => {
+								console.log('Clicked secondary');
+							},
+						}}
+						_variant="secondary"
+					/>
+					<KolButton
+						_hideLabel
+						_label="Danger"
+						_icon="codicon codicon-trash"
+						_on=\{{
+							onClick: () => {
+								console.log('Clicked danger');
+							},
+						}}
+						_variant="danger"
+					/>
 				</p>
 			</header>
 		</div>

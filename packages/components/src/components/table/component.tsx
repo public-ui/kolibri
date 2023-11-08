@@ -1,5 +1,5 @@
-import { Generic } from '@a11y-ui/core';
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
@@ -9,9 +9,9 @@ import { devHint } from '../../utils/a11y.tipps';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 import {
+	API,
 	KoliBriSortDirection,
 	KoliBriSortFunction,
-	KoliBriTableAPI,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -20,7 +20,7 @@ import {
 	KoliBriTablePaginationProps,
 	KoliBriTableRender,
 	KoliBriTableSelectedHead,
-	KoliBriTableStates,
+	States,
 } from './types';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -34,7 +34,7 @@ const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	},
 	shadow: true,
 })
-export class KolTable implements KoliBriTableAPI {
+export class KolTable implements API {
 	private horizontal = true;
 	private sortFunction?: KoliBriSortFunction;
 	private sortDirections: Map<KoliBriSortFunction, KoliBriSortDirection> = new Map();
@@ -47,42 +47,36 @@ export class KolTable implements KoliBriTableAPI {
 	private ariaLive = '';
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _caption?: string;
-
-	/**
-	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
+	 * Defines the primary table data.
 	 */
 	@Prop() public _data!: Stringified<KoliBriTableDataType[]>;
 
 	/**
-	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+	 * Defines the data for the table footer.
 	 */
 	@Prop() public _dataFoot?: Stringified<KoliBriTableDataType[]>;
 
 	/**
-	 * Gibt die horizontalen und vertikalen Header für die Tabelle an.
+	 * Defines the horizontal and vertical table headers.
 	 */
 	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
 
 	/**
-	 * Defines the table caption.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
-	 * Gibt an, die minimale Breite der Tabelle an.
+	 * Defines the table min-width.
 	 */
 	@Prop() public _minWidth?: string;
 
 	/**
-	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
+	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
-	@State() public state: KoliBriTableStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_data: [],
 		_dataFoot: [],
@@ -93,15 +87,10 @@ export class KolTable implements KoliBriTableAPI {
 		_pagination: {
 			_page: 1,
 			_pageSize: 10,
-			_total: 0,
+			_max: 0,
 		},
 		_sortedData: [],
 	};
-
-	@Watch('_caption')
-	public validateCaption(value?: string): void {
-		this.validateLabel(value);
-	}
 
 	@Watch('_data')
 	public validateData(value?: Stringified<KoliBriTableDataType[]>): void {
@@ -285,7 +274,7 @@ export class KolTable implements KoliBriTableAPI {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);
-		this.validateLabel(this._label || this._caption);
+		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
 	}
@@ -573,7 +562,7 @@ export class KolTable implements KoliBriTableAPI {
 						{!this.disableSort && typeof headerCell.sort === 'function' && (
 							<kol-button
 								exportparts="icon"
-								_icon={sortButtonIcon}
+								_icons={sortButtonIcon}
 								_hideLabel
 								_label={translate('kol-change-order', { placeholders: { colLabel: headerCell.label } })}
 								_on={{
@@ -648,7 +637,7 @@ export class KolTable implements KoliBriTableAPI {
 					<div class="pagination">
 						<span>
 							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
-							{this.state._pagination._total || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
+							{this.state._pagination._max || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
 						</span>
 						<div>
 							<kol-pagination
@@ -660,7 +649,8 @@ export class KolTable implements KoliBriTableAPI {
 								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
 								_siblingCount={this.state._pagination._siblingCount}
 								_tooltipAlign="bottom"
-								_total={this.state._pagination._total || this.state._data.length}
+								_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
 							></kol-pagination>
 						</div>
 					</div>
@@ -743,7 +733,7 @@ export class KolTable implements KoliBriTableAPI {
 															{!this.disableSort && typeof headerCell.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"
-																	_icon={sortButtonIcon}
+																	_icons={sortButtonIcon}
 																	_hideLabel
 																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_on={{

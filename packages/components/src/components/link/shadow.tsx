@@ -1,13 +1,18 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { AlternativButtonLinkRole, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
-import { AlignPropType } from '../../types/props/align';
+import { KoliBriIconsProp } from '../../types/icons';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { propagateFocus } from '../../utils/reuse';
 import { DownloadPropType } from '../../types/props/download';
+import { HrefPropType } from '../../types/props/href';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { LinkOnCallbacksPropType } from '../../types/props/link-on-callbacks';
+import { LinkTargetPropType } from '../../types/props/link-target';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { propagateFocus } from '../../utils/reuse';
+import { LinkProps } from './types';
+import { AccessKeyPropType } from '../../types/props/access-key';
 
 @Component({
 	tag: 'kol-link',
@@ -18,11 +23,9 @@ import { DownloadPropType } from '../../types/props/download';
 })
 export class KolLink implements LinkProps {
 	@Element() private readonly host?: HTMLKolLinkElement;
-	private ref?: HTMLKolLinkWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propagateFocus(this.host, ref);
 	};
 
 	public render(): JSX.Element {
@@ -30,175 +33,94 @@ export class KolLink implements LinkProps {
 			<Host>
 				<kol-link-wc
 					ref={this.catchRef}
-					_ariaControls={this._ariaControls}
-					_ariaCurrent={this._ariaCurrent}
-					_ariaExpanded={this._ariaExpanded}
-					_ariaLabel={this._ariaLabel}
-					_ariaSelected={this._ariaSelected}
-					_disabled={this._disabled}
+					_accessKey={this._accessKey}
 					_download={this._download}
 					_hideLabel={this._hideLabel}
 					_href={this._href}
-					_icon={this._icon}
-					_iconAlign={this._iconAlign}
+					_icons={this._icons}
 					_label={this._label}
 					_listenAriaCurrent={this._listenAriaCurrent}
 					_on={this._on}
 					_role={this._role}
-					_selector={this._selector}
-					_stealth={this._stealth}
 					_tabIndex={this._tabIndex}
 					_target={this._target}
 					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
-					_useCase={this._useCase}
 				>
 					{/*
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
 						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
 					*/}
 					<slot name="expert" slot="expert"></slot>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<slot slot="expert" />
 				</kol-link-wc>
 			</Host>
 		);
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-	 *
-	 * @deprecated will be removed in v2
+	 * Defines the elements access key.
 	 */
-	@Prop() public _ariaControls?: string;
-
-	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-	 *
-	 * @deprecated use _listen-aria-current instead
-	 */
-	@Prop() public _ariaCurrent?: AriaCurrentPropType;
-
-	/**
-	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _ariaExpanded?: boolean;
-
-	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
-	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _ariaSelected?: boolean;
-
-	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-	 *
-	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
-	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: DownloadPropType = false;
+	@Prop() public _download?: DownloadPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Gibt die Ziel-Url des Links an.
+	 * Sets the target URI of the link or citation source.
 	 */
-	@Prop() public _href!: string;
+	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 
 	/**
-	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 *
-	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
-	 */
-	@Prop() public _iconAlign?: AlignPropType;
-	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-	 * @deprecated use _hide-label
-	 */
-	@Prop() public _iconOnly?: boolean;
-
-	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
-	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
 	 */
 	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für den Link an.
-	 *
-	 * @deprecated will be removed in v2
+	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkOnCallbacks;
+	@Prop() public _on?: LinkOnCallbacksPropType;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _selector?: string;
-
-	/**
-	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _stealth?: boolean = false;
-
-	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTarget;
+	@Prop() public _target?: LinkTargetPropType;
 
 	/**
-	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+	 * Defines the description to use when the link is going to be opened in another application.
 	 */
 	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'right';
-
-	/**
-	 * Gibt den Verwendungsfall des Links an.
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _useCase?: LinkUseCase = 'text';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 }

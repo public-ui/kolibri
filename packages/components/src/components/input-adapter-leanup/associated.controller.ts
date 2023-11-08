@@ -1,17 +1,17 @@
 import { Generic } from '@a11y-ui/core';
 
 import { NamePropType, validateName } from '../../types/props/name';
+import { PropSyncValueBySelector, SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { StencilUnknown } from '../../types/unknown';
 import { devHint, devWarning } from '../../utils/a11y.tipps';
 import { getExperimentalMode } from '../../utils/dev.utils';
 
 const EXPERIMENTAL_MODE = getExperimentalMode();
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	name: string;
-	syncValueBySelector: string;
-};
+} & PropSyncValueBySelector;
 type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
@@ -167,7 +167,7 @@ export class AssociatedInputController implements Watches {
 		}
 	}
 
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		if (EXPERIMENTAL_MODE && typeof value === 'string') {
 			const input = document.querySelector(value) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 			if (input /* SSR instanceof HTMLInputElement */) {

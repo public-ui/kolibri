@@ -2,7 +2,8 @@ import { Generic } from '@a11y-ui/core';
 
 import { InputTypeOnOff } from '../../types/input/types';
 import { validateHasCounter } from '../../types/props/has-counter';
-import { devHint } from '../../utils/a11y.tipps';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
@@ -15,15 +16,6 @@ export class InputPasswordController extends InputIconController implements Watc
 		super(component, name, host);
 		this.component = component;
 	}
-
-	private handleHiddenLabelAndRequired = (): void => {
-		if (this.component.state._hideLabel === true && this.component.state._required === true) {
-			devHint(`[KolInput*] Wenn man das Label ausblendet, dann kann der sehende Nutzer:in nicht mehr erkennen, ob die Eingabe erforderlich ist.`);
-			this.hideLabel = false;
-		} else {
-			this.hideLabel = this.component.state._hideLabel === true;
-		}
-	};
 
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		watchValidator(
@@ -39,10 +31,14 @@ export class InputPasswordController extends InputIconController implements Watc
 		validateHasCounter(this.component, value);
 	}
 
-	public validateHideLabel(value?: boolean): void {
-		watchBoolean(this.component, '_hideLabel', value, {
+	public validateHideError(value?: HideErrorPropType): void {
+		validateHideError(this.component, value, {
 			hooks: {
-				afterPatch: this.handleHiddenLabelAndRequired,
+				afterPatch: () => {
+					if (this.component.state._hideError) {
+						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
+					}
+				},
 			},
 		});
 	}
@@ -66,17 +62,7 @@ export class InputPasswordController extends InputIconController implements Watc
 	}
 
 	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value, {
-			hooks: {
-				afterPatch: this.handleHiddenLabelAndRequired,
-			},
-		});
-	}
-
-	public validateSize(value?: number): void {
-		watchNumber(this.component, '_size', value, {
-			min: 1,
-		});
+		watchBoolean(this.component, '_required', value);
 	}
 
 	public validateValue(value?: string): void {
@@ -88,12 +74,12 @@ export class InputPasswordController extends InputIconController implements Watc
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
 		this.validateHasCounter(this.component._hasCounter);
+		this.validateHideError(this.component._hideError);
 		this.validateMaxLength(this.component._maxLength);
 		this.validatePattern(this.component._pattern);
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);
-		this.validateSize(this.component._size);
 		this.validateValue(this.component._value);
 	}
 

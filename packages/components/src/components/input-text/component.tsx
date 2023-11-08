@@ -1,23 +1,27 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriHorizontalIcons } from '../../types/icons';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { AlertPropType, validateAlert } from '../../types/props/alert';
-import { AlignPropType } from '../../types/props/align';
-import { validateHideLabel } from '../../types/props/hide-label';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { NamePropType } from '../../types/props/name';
 import { SuggestionsPropType } from '../../types/props/suggestions';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
+import { Props as ButtonProps } from '../button/types';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputTextController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
@@ -31,7 +35,7 @@ featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 	},
 	shadow: true,
 })
-export class KolInputText implements ComponentApi {
+export class KolInputText implements API {
 	@Element() private readonly host?: HTMLKolInputTextElement;
 	private ref?: HTMLInputElement;
 	private oldValue?: string;
@@ -65,7 +69,7 @@ export class KolInputText implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host
@@ -78,24 +82,40 @@ export class KolInputText implements ComponentApi {
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
 					}}
+					_accessKey={this.state._accessKey}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
+					_hideError={this.state._hideError}
 					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
-					_icon={this.state._icon}
+					_icons={this.state._icons}
 					_id={this.state._id}
+					_label={this.state._label}
 					_suggestions={this.state._suggestions}
 					_maxLength={this.state._maxLength}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
+					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' ? (
+							<>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />{' '}
+								<span class="access-key-hint" aria-hidden="true">
+									{this.state._accessKey}
+								</span>
+							</>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
 					<div slot="input">
 						<input
 							ref={this.catchRef}
@@ -115,7 +135,6 @@ export class KolInputText implements ComponentApi {
 							placeholder={this.state._placeholder}
 							readOnly={this.state._readOnly}
 							required={this.state._required}
-							size={this.state._size}
 							spellcheck="false"
 							type={this.state._type}
 							value={this.state._value as string}
@@ -123,16 +142,6 @@ export class KolInputText implements ComponentApi {
 							// onInput={this.controller.onFacade.onChange}
 							onKeyUp={this.onKeyUp}
 						/>
-						<kol-tooltip
-							/**
-							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-							 */
-							aria-hidden="true"
-							hidden={hasExpertSlot || !this.state._hideLabel}
-							_align={this._tooltipAlign}
-							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip>
 					</div>
 				</kol-input>
 			</Host>
@@ -142,75 +151,80 @@ export class KolInputText implements ComponentApi {
 	private readonly controller: InputTextController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
+	 * @TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: AlertPropType = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
+	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCounter?: boolean;
+	@Prop() public _hasCounter?: boolean = false;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	/**
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
+	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Vorschlagswörter an.
-	 * @deprecated Use _suggestions.
-	 */
-	@Prop() public _list?: Stringified<string[]>;
-
-	/**
-	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -218,29 +232,26 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
+	 * Defines a validation pattern for the input field.
 	 */
 	@Prop() public _pattern?: string;
 
 	/**
-	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _readOnly?: boolean;
+	@Prop() public _readOnly?: boolean = false;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean;
-
-	/**
-	 * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
-	 */
-	@Prop() public _size?: number;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Suggestions to provide for the input.
@@ -248,7 +259,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _suggestions?: SuggestionsPropType;
 
 	/**
-	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
@@ -256,39 +267,41 @@ export class KolInputText implements ComponentApi {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: InputTextType = 'text';
 
 	/**
-	 * Gibt den Wert des Eingabefeldes an.
+	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: string;
 
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_currentLength: 0,
-		_id: `id-${nonce()}`, // ⚠ required
 		_hasValue: false,
-		_label: false, // ⚠ required
+		_hideError: false,
+		_id: `id-${nonce()}`, // ⚠ required
+		_label: '', // ⚠ required
 		_suggestions: [],
 		_type: 'text',
 	};
@@ -327,9 +340,14 @@ export class KolInputText implements ComponentApi {
 		this.controller.validateHasCounter(value);
 	}
 
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
+	}
+
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
-		validateHideLabel(this, value);
+		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
@@ -337,9 +355,9 @@ export class KolInputText implements ComponentApi {
 		this.controller.validateHint(value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
-		this.controller.validateIcon(value);
+	@Watch('_icons')
+	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+		this.controller.validateIcons(value);
 	}
 
 	@Watch('_id')
@@ -350,11 +368,6 @@ export class KolInputText implements ComponentApi {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
-	}
-
-	@Watch('_list')
-	public validateList(value?: SuggestionsPropType): void {
-		this.validateSuggestions(value);
 	}
 
 	@Watch('_maxLength')
@@ -392,14 +405,6 @@ export class KolInputText implements ComponentApi {
 		this.controller.validateRequired(value);
 	}
 
-	/**
-	 * @deprecated
-	 */
-	@Watch('_size')
-	public validateSize(value?: number): void {
-		this.controller.validateSize(value);
-	}
-
 	@Watch('_suggestions')
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		this.controller.validateSuggestions(value);
@@ -411,7 +416,7 @@ export class KolInputText implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

@@ -4,9 +4,9 @@ import { Icofont } from '../../../types/icofont';
 import { LabelPropType } from '../../../types/props/label';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
-import { BreadcrumbLinkProps, KoliBriBreadcrumbProps } from '../types';
+import { BreadcrumbLinkProps, Props } from '../types';
 
-export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
+export const getBreadcrumbHtml = (props: Props): string => {
 	const state = mixMembers(
 		{
 			_label: '…', // ⚠ required
@@ -24,7 +24,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 					index !== 0
 						? getIconHtml({
 								_label: '',
-								_icon: 'codicon codicon-chevron-right',
+								_icons: 'codicon codicon-chevron-right',
 						  })
 						: ''
 				}
@@ -34,7 +34,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 									link._hideLabel
 										? getIconHtml({
 												_label: link._label,
-												_icon: link._icon as Icofont,
+												_icons: link._icons as Icofont,
 										  })
 										: link._label
 							  }</span>`
@@ -53,7 +53,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 					state._links.length === 0
 						? `<li>${getIconHtml({
 								_label: '',
-								_icon: 'codicon codicon-home',
+								_icons: 'codicon codicon-home',
 						  })}…</li>`
 						: ''
 				}

@@ -7,10 +7,10 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { Log } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
-import { AlertType, AlertVariant, API, KoliBriAlertEventCallbacks, States } from './types';
+import { AlertType, alertTypeOptions, AlertVariant, alertVariantOptions, API, KoliBriAlertEventCallbacks, States } from './types';
 
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return <kol-icon class="heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
+	return <kol-icon class="heading-icon" _label={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
 };
 
 const AlertIcon = (props: { label?: string; type?: AlertType }) => {
@@ -88,7 +88,7 @@ export class KolAlertWc implements API {
 						<kol-button-wc
 							class="close"
 							_hideLabel
-							_icon={{
+							_icons={{
 								left: {
 									icon: 'codicon codicon-close',
 								},
@@ -109,22 +109,23 @@ export class KolAlertWc implements API {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop() public _alert?: boolean = false;
 
 	/**
 	 * Defines whether the element can be closed.
+	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCloser?: HasCloserPropType = false;
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Defines the description of the component.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -134,12 +135,12 @@ export class KolAlertWc implements API {
 	@Prop() public _on?: KoliBriAlertEventCallbacks;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 
@@ -199,15 +200,21 @@ export class KolAlertWc implements API {
 		watchValidator(
 			this,
 			'_type',
-			(value) => typeof value === 'string' && (value === 'default' || value === 'error' || value === 'info' || value === 'success' || value === 'warning'),
-			new Set('String {success, info, warning, error}'),
+			(value?) => typeof value === 'string' && alertTypeOptions.includes(value),
+			new Set(`String {${alertTypeOptions.join(', ')}`),
 			value
 		);
 	}
 
 	@Watch('_variant')
 	public validateVariant(value?: AlertVariant): void {
-		watchValidator(this, '_variant', (value) => value === 'card' || value === 'msg', new Set('AlertVariant {card, msg}'), value);
+		watchValidator(
+			this,
+			'_variant',
+			(value?) => typeof value === 'string' && alertVariantOptions.includes(value),
+			new Set(`AlertVariant {${alertVariantOptions.join(', ')}`),
+			value
+		);
 	}
 
 	public componentWillLoad(): void {

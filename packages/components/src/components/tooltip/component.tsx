@@ -1,24 +1,27 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchTooltipAlignment } from '../../types/button-link';
-import { AlignPropType } from '../../types/props/align';
+import { AlignPropType, validateAlign } from '../../types/props/align';
 import { IdPropType, validateId } from '../../types/props/id';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { processEnv } from '../../utils/reuse';
-import { KoliBriTooltipAPI, KoliBriTooltipStates } from './types';
+import { API, States } from './types';
+import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 
 @Component({
-	tag: 'kol-tooltip',
+	tag: 'kol-tooltip-wc',
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolTooltip implements KoliBriTooltipAPI {
-	private previousSibling?: HTMLElement | null;
-	private tooltipElement?: HTMLDivElement;
+export class KolTooltip implements API {
+	@Element() private host!: HTMLKolTooltipWcElement;
+
 	private arrowElement?: HTMLDivElement;
+	private previousSibling?: Element | null;
+	private tooltipElement?: HTMLDivElement;
+
 	private cleanupAutoPositioning?: () => void;
 
 	private alignTooltip = (): void => {
@@ -95,36 +98,38 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	private addListeners = (el: Element): void => {
 		el.addEventListener('mouseover', this.incrementOverFocusCount);
 		el.addEventListener('focus', this.incrementOverFocusCount);
+		el.addEventListener('focusin', this.incrementOverFocusCount);
 		el.addEventListener('mouseout', this.decrementOverFocusCount);
 		el.addEventListener('blur', this.decrementOverFocusCount);
+		el.addEventListener('focusout', this.decrementOverFocusCount);
 	};
 
 	private removeListeners = (el: Element): void => {
 		el.removeEventListener('mouseover', this.incrementOverFocusCount);
 		el.removeEventListener('focus', this.incrementOverFocusCount);
+		el.removeEventListener('focusin', this.incrementOverFocusCount);
 		el.removeEventListener('mouseout', this.decrementOverFocusCount);
 		el.removeEventListener('blur', this.decrementOverFocusCount);
+		el.addEventListener('focusout', this.decrementOverFocusCount);
 	};
 
-	private resyncListeners = (el: Element): void => {
-		this.removeListeners(el);
-		this.addListeners(el);
-	};
-
-	private catchHostElement = (el: HTMLElement | null): void => {
-		if (el /* SSR instanceof HTMLElement */) {
-			this.previousSibling = el.previousElementSibling as HTMLElement | null;
-			if (this.previousSibling /* SSR instanceof HTMLElement */) {
-				this.resyncListeners(this.previousSibling);
+	private resyncListeners = (last?: Element | null, next?: Element | null, replacePreviousSibling = false): void => {
+		if (last) {
+			this.removeListeners(last);
+		}
+		if (next) {
+			/**
+			 * This makes the next element to the last element for the next resync cycle.
+			 */
+			if (replacePreviousSibling) {
+				this.previousSibling = next;
 			}
+			this.addListeners(next);
 		}
 	};
 
 	private catchTooltipElement = (el?: HTMLDivElement): void => {
 		this.tooltipElement = el;
-		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-			this.resyncListeners(this.tooltipElement);
-		}
 	};
 	private catchArrowElement = (element?: HTMLDivElement): void => {
 		this.arrowElement = element;
@@ -132,11 +137,11 @@ export class KolTooltip implements KoliBriTooltipAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host ref={this.catchHostElement}>
+			<Host>
 				{this.state._label !== '' && (
 					<div class="tooltip-floating" ref={this.catchTooltipElement}>
 						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
-						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _label={this.state._label}></kol-span-wc>
+						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _accessKey={this._accessKey} _label={this.state._label}></kol-span-wc>
 					</div>
 				)}
 			</Host>
@@ -144,7 +149,12 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	}
 
 	/**
-	 * Defines the alignment of the tooltip in relation to the parent element.
+	 * Defines the elements access key.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
+
+	/**
+	 * Defines the alignment of the tooltip, popover or tabs in relation to the element.
 	 */
 	@Prop() public _align?: AlignPropType = 'top';
 
@@ -154,19 +164,24 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
 
-	@State() public state: KoliBriTooltipStates = {
+	@State() public state: States = {
 		_align: 'top',
 		_id: nonce(),
 		_label: '…', // ⚠ required
 	};
 
+	@Watch('_accessKey')
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this, value);
+	}
+
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_align', value);
+		validateAlign(this, value);
 	}
 
 	@Watch('_id')
@@ -205,9 +220,24 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	};
 
 	public componentWillLoad(): void {
+		this.validateAccessKey(this._accessKey);
 		this.validateAlign(this._align);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
+	}
+
+	private handleEventListeners(): void {
+		this.resyncListeners(this.previousSibling, this.host?.previousElementSibling, true);
+		this.resyncListeners(this.tooltipElement, this.tooltipElement);
+	}
+
+	public connectedCallback(): void {
+		this.previousSibling = this.host?.previousElementSibling;
+		this.handleEventListeners();
+	}
+
+	public componentDidRender(): void {
+		this.handleEventListeners();
 	}
 
 	/**
@@ -216,6 +246,7 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	public disconnectedCallback(): void {
 		if (this.previousSibling /* SSR instanceof HTMLElement */) {
 			this.removeListeners(this.previousSibling);
+			this.previousSibling = undefined;
 		}
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			this.removeListeners(this.tooltipElement);

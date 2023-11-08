@@ -1,5 +1,5 @@
 import { isTheme, Store, Theme } from './theme';
-import PackageJson from '../../node_modules/@public-ui/components/package.json';
+import PackageJson from '@public-ui/components/package.json';
 import { THEME_OPTIONS } from './theme';
 import { Option } from '@public-ui/components';
 
@@ -19,7 +19,7 @@ class StaticStorage {
 
 const STORE: Store = {
 	darkMode: false,
-	theme: 'itzbund',
+	theme: 'default',
 };
 
 let STORAGE: Storage;
@@ -28,13 +28,11 @@ export function setStorage(storage: Storage) {
 	const RESTORE = STORAGE.getItem(STORE_IDENTIFIER);
 	try {
 		const store = JSON.parse(RESTORE as string) as Store;
-		console.log('RESTORE', store);
 		if (typeof store === 'object' && store !== null) {
 			STORE.darkMode = store.darkMode === true;
 			if (isTheme(store.theme)) {
 				STORE.theme = store.theme;
 			}
-			console.log('getTheme', getTheme());
 		}
 	} catch (e) {
 		/* empty */
@@ -78,7 +76,7 @@ export const getTheme = (): Theme => {
 	return `${STORE.theme}`;
 };
 
-export const getThemeName = (theme: Theme): string => {
+export const getThemeName = (theme: Theme) => {
 	if (isTheme(theme)) {
 		return THEME_OPTIONS.find((option) => (option as Option<Theme>).value === theme)?.label;
 	} else {

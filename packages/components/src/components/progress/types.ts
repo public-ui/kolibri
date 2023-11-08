@@ -8,10 +8,6 @@ type RequiredProps = {
 	value: number;
 };
 type OptionalProps = {
-	/**
-	 * @deprecated
-	 */
-	type: KoliBriProgressVariantType;
 	unit: string;
 	variant: KoliBriProgressVariantType;
 } & PropLabel;
@@ -24,5 +20,5 @@ type OptionalStates = {
 	variant: KoliBriProgressVariantType;
 } & PropLabel;
 
-export type KoliBriProgressStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriProgressAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

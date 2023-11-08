@@ -8,9 +8,9 @@ Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte I
 
 ```html
 <div>
-	<kol-pagination _total="100" _page="6"></kol-pagination>
-	<kol-pagination _total="100" _page="6" _sibling-count="2"></kol-pagination>
-	<kol-pagination _total="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
+	<kol-pagination _max="100" _page="6"></kol-pagination>
+	<kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
+	<kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
 </div>
 ```
 
@@ -18,18 +18,18 @@ Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte I
 
 <div class="grid gap-2">
   <kol-heading _level="3" _label="Standardausgabe nur mit aktuellem Element"></kol-heading>
-  <kol-pagination _total="100" _page="6" _has-buttons="false"></kol-pagination>
+  <kol-pagination _max="100" _page="6" _has-buttons="false"></kol-pagination>
   <kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts dem aktuellen Element (_sibling)"></kol-heading>
-  <kol-pagination _total="100" _page="6" _sibling-count="2"></kol-pagination>
+  <kol-pagination _max="100" _page="6" _sibling-count="2"></kol-pagination>
   <kol-heading _level="3" _label="Ausgabe 2 Elemente links und rechts (_boundary-count)"></kol-heading>
-  <kol-pagination _total="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
+  <kol-pagination _max="100" _page="6" _sibling-count="0" _boundary-count="2"></kol-pagination>
 </div>
 
 ## Verwendung
 
 Die **Paginierung**-Komponente kann über Ihre Properties konfiguriert werden.
 
-- Das Attribut **`_total`** bestimmt die Gesamtanzahl der Elemente.
+- Das Attribut **`_max`** bestimmt die Gesamtanzahl der Elemente.
 - Über das Attribut **`boundary-count`** wird die Anzahl von Elementen bestimmt, die in der **Paginierung**-Komponente rechts und links angezeigt werden, während die übrigen Elemente
 - Das Attribut **`_page`** legt das gerade aktive Element fest. Dieses wird farblich hervorgehoben dargestellt.
 - Über das Attribut **`_sibling-count`** kann festgelegt werden, wie viele Elemente jeweils links und rechts des Aktuellen angezeigt werden sollen.
@@ -45,19 +45,19 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 
 ## Properties
 
-| Property              | Attribute            | Description                                                                                    | Type                                                                                                                                                                                                                   | Default     |
-| --------------------- | -------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_boundaryCount`      | `_boundary-count`    | Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen. | `number \| undefined`                                                                                                                                                                                                  | `1`         |
-| `_customClass`        | `_custom-class`      | Gibt an, welche Custom-Class übergeben werden soll, wenn \_variant="custom" gesetzt ist.       | `string \| undefined`                                                                                                                                                                                                  | `undefined` |
-| `_hasButtons`         | `_has-buttons`       | Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.                            | `boolean \| string \| undefined \| { first: boolean; last: boolean; next: boolean; previous: boolean; }`                                                                                                               | `true`      |
-| `_on` _(required)_    | --                   | Gibt an, auf welche Callback-Events reagiert werden.                                           | `{ onChangePage?: EventValueOrEventCallback<Event, number> \| undefined; onChangePageSize?: EventValueOrEventCallback<Event, number> \| undefined; onClick?: EventValueOrEventCallback<Event, number> \| undefined; }` | `undefined` |
-| `_page` _(required)_  | `_page`              | Gibt an, welche Seite aktuell ausgewählt ist.                                                  | `number`                                                                                                                                                                                                               | `undefined` |
-| `_pageSize`           | `_page-size`         | Gibt an, wie viele Einträge pro Seite angezeigt werden.                                        | `number`                                                                                                                                                                                                               | `1`         |
-| `_pageSizeOptions`    | `_page-size-options` | Setzt die Optionen für das Seitenlängenselect.                                                 | `number[] \| string`                                                                                                                                                                                                   | `[]`        |
-| `_siblingCount`       | `_sibling-count`     | Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.                     | `number \| undefined`                                                                                                                                                                                                  | `1`         |
-| `_tooltipAlign`       | `_tooltip-align`     | Defines where to show the Tooltip preferably: top, right, bottom or left.                      | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                  | `'top'`     |
-| `_total` _(required)_ | `_total`             | Setzt die Gesamtanzahl der Seiten.                                                             | `number`                                                                                                                                                                                                               | `undefined` |
-| `_variant`            | `_variant`           | Gibt an, welche Variante der Darstellung genutzt werden soll.                                  | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined`                                                                                                                   | `'normal'`  |
+| Property             | Attribute            | Description                                                                                                        | Type                                                                                                                                                                                                                   | Default     |
+| -------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_boundaryCount`     | `_boundary-count`    | Defines the amount of pages to show next to the outer arrow buttons.                                               | `number \| undefined`                                                                                                                                                                                                  | `1`         |
+| `_customClass`       | `_custom-class`      | Defines the custom class attribute if \_variant="custom" is set.                                                   | `string \| undefined`                                                                                                                                                                                                  | `undefined` |
+| `_hasButtons`        | `_has-buttons`       | Defines which navigation buttons to render (first, last, next, previous buttons).                                  | `boolean \| string \| undefined \| { first: boolean; last: boolean; next: boolean; previous: boolean; }`                                                                                                               | `true`      |
+| `_label`             | `_label`             | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string \| undefined`                                                                                                                                                                                                  | `undefined` |
+| `_max` _(required)_  | `_max`               | Defines the maximum number of pages.                                                                               | `number`                                                                                                                                                                                                               | `undefined` |
+| `_on` _(required)_   | --                   | Gibt an, auf welche Callback-Events reagiert werden.                                                               | `{ onChangePage?: EventValueOrEventCallback<Event, number> \| undefined; onChangePageSize?: EventValueOrEventCallback<Event, number> \| undefined; onClick?: EventValueOrEventCallback<Event, number> \| undefined; }` | `undefined` |
+| `_page` _(required)_ | `_page`              | Defines the current page.                                                                                          | `number`                                                                                                                                                                                                               | `undefined` |
+| `_pageSize`          | `_page-size`         | Defines the amount of entries to show per page.                                                                    | `number`                                                                                                                                                                                                               | `1`         |
+| `_pageSizeOptions`   | `_page-size-options` | Defines the options for the page-size-select.                                                                      | `number[] \| string`                                                                                                                                                                                                   | `[]`        |
+| `_siblingCount`      | `_sibling-count`     | Defines the amount of pages to show next to the current page.                                                      | `number \| undefined`                                                                                                                                                                                                  | `1`         |
+| `_tooltipAlign`      | `_tooltip-align`     | Defines where to show the Tooltip preferably: top, right, bottom or left.                                          | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                  | `'top'`     |
 
 ## Dependencies
 
@@ -67,26 +67,23 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 
 ### Depends on
 
-- [kol-button](../button)
-- [kol-select](../select)
 - kol-button-wc
+- [kol-select](../select)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-pagination --> kol-button
-  kol-pagination --> kol-select
   kol-pagination --> kol-button-wc
-  kol-button --> kol-button-wc
+  kol-pagination --> kol-select
   kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   kol-select --> kol-input
-  kol-select --> kol-tooltip
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-alert --> kol-alert-wc
   kol-alert-wc --> kol-heading-wc

@@ -17,12 +17,9 @@ import { KolDetails } from './details/component';
 import { KolForm } from './form/component';
 import { KolHeadingWc } from './heading/component';
 import { KolHeading } from './heading/shadow';
-import { KolIconFontAwesome } from './icon-font-awesome/component';
-import { KolIconIcofont } from './icon-icofont/component';
 import { KolIcon } from './icon/component';
 import { KolImage } from './image/shadow';
 import { KolIndentedText } from './indented-text/component';
-import { KolInputAdapterLeanup } from './input-adapter-leanup/component';
 import { KolInputCheckbox } from './input-checkbox/component';
 import { KolInputColor } from './input-color/component';
 import { KolInputDate } from './input-date/component';
@@ -30,7 +27,6 @@ import { KolInputEmail } from './input-email/component';
 import { KolInputFile } from './input-file/component';
 import { KolInputNumber } from './input-number/component';
 import { KolInputPassword } from './input-password/component';
-import { KolInputRadioGroup } from './input-radio-group/component';
 import { KolInputRadio } from './input-radio/component';
 import { KolInputRange } from './input-range/component';
 import { KolInputText } from './input-text/component';
@@ -57,7 +53,7 @@ import { KolSymbol } from './symbol/component';
 import { KolTable } from './table/component';
 import { KolTabs } from './tabs/component';
 import { KolTextarea } from './textarea/component';
-import { KolToast } from './toast/component';
+import { KolToastContainer } from './toaster/component';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/component';
 
@@ -71,39 +67,35 @@ export const COMPONENTS = [
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,
-	KolButtonWc,
-	KolButtonGroupWc,
 	KolButtonGroup,
+	KolButtonGroupWc,
 	KolButtonLink,
 	KolButtonLinkTextSwitch,
+	KolButtonWc,
 	KolCard,
-	KolInputAdapterLeanup,
 	KolDetails,
 	KolForm,
 	KolHeading,
 	KolHeadingWc,
 	KolIcon,
-	KolIconFontAwesome,
-	KolIconIcofont,
 	KolImage,
 	KolIndentedText,
 	KolInput,
 	KolInputCheckbox,
 	KolInputColor,
-	KolInputEmail,
 	KolInputDate,
+	KolInputEmail,
 	KolInputFile,
 	KolInputNumber,
 	KolInputPassword,
 	KolInputRadio,
-	KolInputRadioGroup,
 	KolInputRange,
 	KolInputText,
 	KolKolibri,
 	KolLink,
 	KolLinkButton,
-	KolLinkWc,
 	KolLinkGroup,
+	KolLinkWc,
 	KolLogo,
 	KolModal,
 	KolNav,
@@ -121,7 +113,7 @@ export const COMPONENTS = [
 	KolTable,
 	KolTabs,
 	KolTextarea,
-	KolToast,
+	KolToastContainer,
 	KolTooltip,
 	KolVersion,
 ];

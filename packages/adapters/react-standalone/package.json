@@ -1,0 +1,70 @@
+{
+	"name": "@public-ui/react-standalone",
+	"version": "2.0.0-rc.8",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": "https://github.com/public-ui/kolibri",
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"description": "React framework standalone adapter for KoliBri - The accessible HTML-Standard.",
+	"keywords": [
+		"accessibility",
+		"accessible",
+		"bitv",
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"webcomponents",
+		"aria",
+		"wai",
+		"axe",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag",
+		"react"
+	],
+	"scripts": {
+		"build": "pnpm postinstall && node scripts/make-standalone.js",
+		"postinstall": "rimraf dist && cpy \"node_modules/@public-ui/react/dist/*.mjs\" dist --dot",
+		"prepack": "pnpm build"
+	},
+	"devDependencies": {
+		"@public-ui/react": "2.0.0-rc.8",
+		"cpy-cli": "5.0.0",
+		"rimraf": "3.0.2"
+	},
+	"peerDependencies": {
+		"@public-ui/components": "2.0.0-rc.8",
+		"react": ">=16.14.0",
+		"react-dom": ">=16.14.0"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs"
+		}
+	},
+	"module": "./dist/index.mjs",
+	"files": [
+		"dist"
+	]
+}

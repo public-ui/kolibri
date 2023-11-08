@@ -1,20 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Component, Fragment, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
+import { AnyIconFontClass, KoliBriCustomIcon, KoliBriHorizontalIcons } from '../../types/icons';
+import { AccessKeyPropType } from '../../types/props/access-key';
+import { IdPropType } from '../../types/props/id';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { W3CInputValue } from '../../types/w3c';
+import { handleSlotContent, showExpertSlot } from '../../utils/reuse';
+import { Props as ButtonProps } from '../button/types';
 import { Props } from './types';
-import { AlertPropType } from '../../types/props/alert';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HasCounterPropType } from '../../types/props/has-counter';
-import { HideLabelPropType } from '../../types/props/hide-label';
-import { ReadOnlyPropType } from '../../types/props/read-only';
-import { RequiredPropType } from '../../types/props/required';
-import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * @internal
@@ -24,11 +22,27 @@ import { TouchedPropType } from '../../types/props/touched';
 	shadow: false,
 })
 export class KolInput implements Props {
+	@Element() private readonly host?: HTMLElement;
+
+	private slotName: string = 'input';
+
+	public componentWillRender(): void {
+		this.slotName = this._slotName ? this._slotName : 'input';
+	}
+
+	private catchInputSlot = (slot?: HTMLDivElement): void => {
+		handleSlotContent(this.host!, slot!, this.slotName);
+	};
+
+	private getIconStyles(icon?: AnyIconFontClass | KoliBriCustomIcon): Record<string, string> {
+		return icon && typeof icon === 'object' && icon.style ? icon.style : {};
+	}
+
 	public render(): JSX.Element {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
+		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
-		const hideLabel = this._hideLabel === true && this._required !== true;
-		const slotName = this._slotName ? this._slotName : 'input';
+		const useTooltopInsteadOfLabel = !hasExpertSlot && this._hideLabel;
 
 		return (
 			<Host
@@ -38,17 +52,16 @@ export class KolInput implements Props {
 					'read-only': this._readOnly === true,
 					required: this._required === true,
 					touched: this._touched === true,
+					'hidden-error': this._hideError === true,
 				}}
 			>
-				{this._renderNoLabel === false && (
-					<label id={`${this._id}-label`} hidden={hideLabel} htmlFor={this._id}>
-						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
-						<span>
-							{/* INFO: label comes with any html tag or as plain text! */}
-							<slot name="label"></slot>
-						</span>
-					</label>
-				)}
+				<label id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltopInsteadOfLabel} htmlFor={this._id}>
+					{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
+					<span>
+						{/* INFO: label comes with any html tag or as plain text! */}
+						<slot name="label"></slot>
+					</span>
+				</label>
 				{hasHint && (
 					<span class="hint" id={`${this._id}-hint`}>
 						{this._hint}
@@ -57,17 +70,19 @@ export class KolInput implements Props {
 				<div
 					class={{
 						input: true,
-						'icon-left': typeof this._icon?.left === 'object',
-						'icon-right': typeof this._icon?.right === 'object',
+						'icon-left': typeof this._icons?.left === 'object',
+						'icon-right': typeof this._icons?.right === 'object',
 					}}
 				>
-					{this._icon?.left && <kol-icon _ariaLabel="" _icon={(this._icon.left as KoliBriCustomIcon).icon}></kol-icon>}
-					<slot name={slotName}></slot>
+					{this._icons?.left && (
+						<kol-icon _label="" _icons={(this._icons?.left as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.left)}></kol-icon>
+					)}
+					<div ref={this.catchInputSlot} id={this.slotName} class="input-slot"></div>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
 							_customClass={this._smartButton._customClass}
 							_disabled={this._smartButton._disabled}
-							_icon={this._smartButton._icon}
+							_icons={this._smartButton._icons}
 							_hideLabel={true}
 							_id={this._smartButton._id}
 							_label={this._smartButton._label}
@@ -76,10 +91,33 @@ export class KolInput implements Props {
 							_variant={this._smartButton._variant}
 						></kol-button-wc>
 					)}
-					{this._icon?.right && <kol-icon _ariaLabel="" _icon={(this._icon.right as KoliBriCustomIcon).icon}></kol-icon>}
+					{this._icons?.right && (
+						<kol-icon _label="" _icons={(this._icons?.right as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.right)}></kol-icon>
+					)}
 				</div>
+				{useTooltopInsteadOfLabel && (
+					<kol-tooltip-wc
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						aria-hidden="true"
+						class="input-tooltip"
+						_accessKey={this._accessKey}
+						_align={this._tooltipAlign}
+						_id={this._hideLabel ? `${this._id}-label` : undefined}
+						_label={this._label}
+					></kol-tooltip-wc>
+				)}
 				{hasError && (
-					<kol-alert class="error" id={`${this._id}-error`} _alert={this._alert} _type="error" _variant="msg">
+					<kol-alert
+						_alert={this._alert}
+						_type="error"
+						_variant="msg"
+						aria-hidden={this._hideError}
+						class={`error${this._hideError ? ' hidden' : ''}`}
+						id={`${this._id}-error`}
+					>
 						{this._error}
 					</kol-alert>
 				)}
@@ -91,15 +129,15 @@ export class KolInput implements Props {
 					</datalist>
 				)}
 				{this._hasCounter && (
-					<span aria-atomic="true" aria-live="polite">
+					<span class="counter" aria-atomic="true" aria-live="polite">
 						{this._currentLength}
 						{this._maxLength && (
-							<Fragment>
+							<>
 								<span aria-label={translate('kol-of')} role="img">
 									/
 								</span>
 								{this._maxLength}
-							</Fragment>
+							</>
 						)}{' '}
 						<span>{translate('kol-characters')}</span>
 					</span>
@@ -109,9 +147,15 @@ export class KolInput implements Props {
 	}
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
+	 * Defines the elements access key.
 	 */
-	@Prop() public _alert?: AlertPropType = true;
+	@Prop() public _accessKey?: AccessKeyPropType;
+
+	/**
+	 * Defines whether the screen-readers should read out the notification.
+	 * @TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _alert?: boolean = true;
 
 	/**
 	 * @internal
@@ -120,48 +164,64 @@ export class KolInput implements Props {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string = '';
 
 	/**
 	 * Shows the character count on the lower border of the input.
+	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCounter?: HasCounterPropType;
+	@Prop() public _hasCounter?: boolean = false;
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _hideError?: boolean = false;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	/**
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icon?: KoliBriHorizontalIcon;
+	@Prop() public _icons?: KoliBriHorizontalIcons;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id!: IdPropType;
 
 	/**
-	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
 
 	/**
 	 * Makes the input element read only.
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType = false;
+	@Prop() public _readOnly?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Komponente kein Label rendern soll.
@@ -170,8 +230,9 @@ export class KolInput implements Props {
 
 	/**
 	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines Shadow DOMs existieren würden.
@@ -185,12 +246,18 @@ export class KolInput implements Props {
 	@Prop() public _suggestions?: SuggestionsPropType;
 
 	/**
-	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
-	 * Shows if the input was touched by a user.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _touched?: TouchedPropType = false;
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _touched?: boolean = false;
 }

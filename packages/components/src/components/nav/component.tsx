@@ -11,30 +11,9 @@ import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-lab
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
-import { KoliBriNavAPI, KoliBriNavStates } from './types';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+import { API, States } from './types';
 import { watchNavLinks } from './validation';
-
-/**
- * @deprecated Removed in v2
- */
-export type KoliBriNavVariant = 'primary' | 'secondary';
-
-/**
- * There can be several navigations on one page (e.g. main navigation, subnavigation, breadcrumbs).
- * The navigations must be clearly named for accessibility reasons. To ensure this, all Aria labels are
- * stored in a set and checked for uniqueness.
- */
-const UNIQUE_ARIA_LABEL: Set<string> = new Set();
-function addAriaLabel(ariaLabel: string): void {
-	if (UNIQUE_ARIA_LABEL.has(ariaLabel)) {
-		console.error(`There already is a kol-nav with the label "${ariaLabel}"`);
-	} else {
-		UNIQUE_ARIA_LABEL.add(ariaLabel);
-	}
-}
-function removeAriaLabel(ariaLabel: string): void {
-	UNIQUE_ARIA_LABEL.delete(ariaLabel);
-}
 
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
@@ -60,7 +39,7 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	},
 	shadow: true,
 })
-export class KolNav implements KoliBriNavAPI {
+export class KolNav implements API {
 	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
@@ -84,8 +63,9 @@ export class KolNav implements KoliBriNavAPI {
 		expanded: boolean
 	): JSX.Element {
 		return (
-			<div class="entry">
+			<div class={{ entry: true, 'hide-label': hideLabel }}>
 				<kol-button-link-text-switch
+					class="button-link-text-switch"
 					_link={{
 						...link,
 						_hideLabel: hideLabel,
@@ -102,7 +82,7 @@ export class KolNav implements KoliBriNavAPI {
 				class="expand-button"
 				_ariaExpanded={expanded}
 				_disabled={!collapsible}
-				_icon={'codicon codicon-' + (expanded ? 'remove' : 'add')}
+				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
 				_hideLabel
 				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
@@ -127,7 +107,6 @@ export class KolNav implements KoliBriNavAPI {
 					active,
 					expanded,
 					'has-children': hasChildren,
-					selected: expanded, // TODO: remove in v2
 				}}
 				key={index}
 			>
@@ -171,18 +150,17 @@ export class KolNav implements KoliBriNavAPI {
 				<div
 					class={{
 						[orientation]: true,
-						[this.state._variant]: true,
 					}}
 				>
 					<nav aria-label={this.state._label} id="nav">
 						<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
-						<div class="mt-2 w-full compact">
+						<div class="compact">
 							<kol-button
 								_ariaControls="nav"
 								_ariaExpanded={!hideLabel}
-								_icon={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
+								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_hideLabel
 								_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_on={{
@@ -204,62 +182,44 @@ export class KolNav implements KoliBriNavAPI {
 	}
 
 	/**
-	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+	 * Defines the value of aria-current to be used with the current context within the navigation.
 	 */
 	@Prop() public _ariaCurrentValue: AriaCurrentPropType = false;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
+	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _collapsible?: CollapsiblePropType = true;
-
-	/**
-	 * Gibt an, ob die Navigation kompakt angezeigt wird.
-	 * @deprecated Use _hide-label
-	 */
-	@Prop() public _compact?: boolean = false;
+	@Prop() public _collapsible?: boolean = true;
 
 	/**
 	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
-	 * @deprecated Version 2
 	 */
 	@Prop() public _hasCompactButton?: boolean = false;
 
 	/**
-	 * Defines if navigation labels should be hidden.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
+	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links, buttons or texts to render.
 	 */
 	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
-	 *
-	 * @deprecated This property is deprecated and will be removed in the next major version.
-	 */
-	@Prop() public _variant?: KoliBriNavVariant = 'primary';
-
-	@State() public state: KoliBriNavStates = {
+	@State() public state: States = {
 		_ariaCurrentValue: false,
 		_collapsible: true,
 		_hasCompactButton: false,
@@ -267,7 +227,6 @@ export class KolNav implements KoliBriNavAPI {
 		_label: '…', // ⚠ required
 		_links: [],
 		_orientation: 'vertical',
-		_variant: 'primary',
 	};
 
 	@Watch('_ariaCurrentValue')
@@ -281,27 +240,11 @@ export class KolNav implements KoliBriNavAPI {
 		);
 	}
 
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_collapsible')
 	public validateCollapsible(value?: CollapsiblePropType): void {
 		validateCollapsible(this, value);
 	}
 
-	@Watch('_compact')
-	public validateCompact(value?: boolean): void {
-		this.validateHideLabel(value);
-	}
-
-	/**
-	 * @deprecated Version 2
-	 */
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
 		validateHasCompactButton(this, value);
@@ -313,11 +256,13 @@ export class KolNav implements KoliBriNavAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
-		removeAriaLabel(this.state._label); // remove the current
+	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
+		if (!initial) {
+			removeNavLabel(this.state._label); // remove the current
+		}
 		validateLabel(this, value);
 		a11yHintLabelingLandmarks(value);
-		addAriaLabel(this.state._label); // add the new; not value, because that could be invalid and not set as new label
+		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_links')
@@ -340,41 +285,33 @@ export class KolNav implements KoliBriNavAPI {
 		);
 	}
 
-	@Watch('_variant')
-	public validateVariant(value?: KoliBriNavVariant): void {
-		watchValidator(this, '_variant', (value) => value === 'primary' || value === 'secondary', new Set(['KoliBriNavVariant {primary, secondary}']), value, {
-			defaultValue: 'primary',
-		});
-	}
-
 	public componentWillLoad(): void {
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateCollapsible(this._collapsible);
-		this.validateHideLabel(this._hideLabel || this._compact);
+		this.validateHideLabel(this._hideLabel);
 		this.validateHasCompactButton(this._hasCompactButton);
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
-		this.validateVariant(this._variant);
 	}
 
 	public disconnectedCallback(): void {
-		removeAriaLabel(this.state._label);
+		removeNavLabel(this.state._label);
 	}
 }
 
 // console.log(
 //   stringifyJson([
-//     { _label: '1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed', _target: 'asdasd' },
-//     { _label: '2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed' },
+//     { _label: '1 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed', _target: 'asdasd' },
+//     { _label: '2 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed' },
 //     {
 //       _active: true,
 //       _label: '3 Navigationspunkt',
 //       _href: '#abc',
-//       _icon: 'codicon codicon-folder-closed',
+//       _icons: 'codicon codicon-folder-closed',
 //       _children: [
-//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed' },
-//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed', _target: 'asdasd' },
+//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed' },
+//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icons: 'codicon codicon-folder-closed', _target: 'asdasd' },
 //         {
 //           _active: true,
 //           _label: '3.3 Navigationspunkt',

@@ -1,11 +1,12 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
-import { BreadcrumbLinkProps, KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
+import { API, BreadcrumbLinkProps, States } from './types';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -14,19 +15,18 @@ import { BreadcrumbLinkProps, KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } fr
 	},
 	shadow: true,
 })
-export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
+export class KolBreadcrumb implements API {
 	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
-		const hideLabel = link._iconOnly || link._hideLabel;
 		return (
 			<li key={index}>
-				{index !== 0 && <kol-icon _label="" _icon="codicon codicon-chevron-right" />}
+				{index !== 0 && <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
 					<span>
-						{hideLabel ? (
-							<kol-icon _label={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+						{link._hideLabel ? (
+							<kol-icon _label={link._label} _icons={typeof link._icons === 'string' ? link._icons : 'codicon codicon-symbol-event'} />
 						) : (
-							<Fragment>{link._label}</Fragment>
+							<>{link._label}</>
 						)}
 					</span>
 				) : (
@@ -43,7 +43,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
-								<kol-icon _label="" _icon="codicon codicon-home" />…
+								<kol-icon _label="" _icons="codicon codicon-home" />…
 							</li>
 						)}
 						{this.state._links.map(this.renderLink)}
@@ -54,39 +54,28 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 *
-	 * @deprecated use _label instead
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _ariaLabel?: string;
+	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
-
-	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links combined with their labels to render.
 	 */
 	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
 
-	@State() public state: KoliBriBreadcrumbStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_links: [],
 	};
 
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
+	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
+		if (!initial) {
+			removeNavLabel(this.state._label); // remove the current
+		}
 		validateLabel(this, value);
 		a11yHintLabelingLandmarks(value);
+		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_links')
@@ -95,7 +84,11 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
+	}
+
+	public disconnectedCallback(): void {
+		removeNavLabel(this.state._label);
 	}
 }

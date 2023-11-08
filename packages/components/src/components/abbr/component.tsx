@@ -1,8 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchTooltipAlignment } from '../../types/button-link';
-import { AlignPropType } from '../../types/props/align';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
 import { API, States } from './types';
 
@@ -28,26 +27,20 @@ export class KolAbbr implements API {
 						<slot />
 					</span>
 				</abbr>
-				<kol-tooltip _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip>
+				<kol-tooltip-wc _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip-wc>
 			</Host>
 		);
 	}
 
 	/**
-	 * Defines the abbreviation title and tooltip content
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
-
-	/**
-	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _title?: string;
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Die State-Parameter repräsentieren den inneren State
@@ -73,18 +66,13 @@ export class KolAbbr implements API {
 		validateLabel(this, value);
 	}
 
-	@Watch('_title')
-	public validateTitle(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._title);
+		this.validateLabel(this._label);
 		this.validateTooltipAlign(this._tooltipAlign);
 	}
 }

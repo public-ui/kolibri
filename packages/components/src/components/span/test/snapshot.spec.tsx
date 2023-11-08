@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { KolibriSpanProps } from '../types';
+import { Props } from '../types';
 import { getSpanHtml, getSpanWcHtml } from './html.mock';
 
-executeTests<KolibriSpanProps>(
+executeTests<Props>(
 	'SpanWc',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
@@ -17,9 +17,9 @@ executeTests<KolibriSpanProps>(
 		return page;
 	},
 	{
-		_icon: ['codicon codicon-home'],
+		_icons: ['codicon codicon-home'],
 		_hideLabel: [true, false],
-		_label: ['Text', false, ''],
+		_label: ['Text', ''],
 	},
 	getSpanWcHtml,
 	{
@@ -27,7 +27,7 @@ executeTests<KolibriSpanProps>(
 	}
 );
 
-executeTests<KolibriSpanProps>(
+executeTests<Props>(
 	'Span',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
@@ -37,9 +37,9 @@ executeTests<KolibriSpanProps>(
 		return page;
 	},
 	{
-		_icon: ['codicon codicon-home'],
+		_icons: ['codicon codicon-home'],
 		_hideLabel: [true, false],
-		_label: ['Text', false, ''],
+		_label: ['Text', ''],
 	},
 	getSpanHtml,
 	{

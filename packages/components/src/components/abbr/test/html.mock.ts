@@ -22,7 +22,7 @@ export const getAbbrHtml = (props: Props): string => {
     ${getTooltipHtml({
 			_align: props._tooltipAlign,
 			_id: 'nonce',
-			_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop
+			_label: props._label,
 		})}
   </mock:shadow-root>
 </kol-abbr>`;

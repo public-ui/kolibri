@@ -1,10 +1,10 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
+import { KoliBriIconsProp } from '../../types/icons';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { KolibriSpanProps } from './types';
-import { HideLabelPropType } from '../../types/props/hide-label';
+import { Props } from './types';
+import { AccessKeyPropType } from '../../types/props/access-key';
 
 @Component({
 	tag: 'kol-span',
@@ -13,33 +13,34 @@ import { HideLabelPropType } from '../../types/props/hide-label';
 	},
 	shadow: true,
 })
-export class KolSpan implements KolibriSpanProps {
+export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this._label}>
+			<kol-span-wc _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey}>
 				<slot name="expert" slot="expert"></slot>
 			</kol-span-wc>
 		);
 	}
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.s
+	 * Defines the elements access key.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-	 * @deprecated use _hide-label
+	 * Defines the g classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _iconOnly?: boolean;
+	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 }

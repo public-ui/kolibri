@@ -1,9 +1,10 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { HrefPropType } from '../../types/props/href';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
-import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './types';
-import { HrefPropType } from '../../types/props/href';
+import { showExpertSlot } from '../../utils/reuse';
+import { API, KoliBriQuoteVariant, koliBriQuoteVariantOptions, States } from './types';
 
 @Component({
 	tag: 'kol-quote',
@@ -12,43 +13,32 @@ import { HrefPropType } from '../../types/props/href';
 	},
 	shadow: true,
 })
-export class KolQuote implements KoliBriQuoteApi {
+export class KolQuote implements API {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _caption?: string;
-
-	/**
-	 * Defines the label of the citation link.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label?: string;
 
 	/**
-	 * Defines the link the source of the quote.
+	 * Sets the target URI of the link or citation source.
 	 */
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Setzt den Text, also das Zitat selbst.
+	 * Defines the text of the quote.
 	 */
 	@Prop() public _quote!: string;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 
-	@State() public state: KoliBriQuoteStates = {
+	@State() public state: States = {
 		_href: '…', // ⚠ required
 		_quote: '…', // ⚠ required
 		_variant: 'inline',
 	};
-
-	@Watch('_caption')
-	public validateCaption(value?: string): void {
-		this.validateLabel(value);
-	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
@@ -71,18 +61,24 @@ export class KolQuote implements KoliBriQuoteApi {
 
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriQuoteVariant): void {
-		watchValidator(this, '_variant', (value) => value === 'block' || value === 'inline', new Set(['block', 'inline']), value);
+		watchValidator(
+			this,
+			'_variant',
+			(value) => typeof value === 'string' && koliBriQuoteVariantOptions.includes(value),
+			new Set(koliBriQuoteVariantOptions),
+			value
+		);
 	}
 
 	public componentWillLoad(): void {
 		this.validateHref(this._href);
-		this.validateLabel(this._label || this._caption);
+		this.validateLabel(this._label);
 		this.validateQuote(this._quote);
 		this.validateVariant(this._variant);
 	}
 
 	public render(): JSX.Element {
-		const hideExpertSlot = this.state._quote !== '';
+		const hasExpertSlot = showExpertSlot(this.state._quote); // _quote instead of _caption as _label
 		return (
 			<Host>
 				<figure
@@ -93,14 +89,14 @@ export class KolQuote implements KoliBriQuoteApi {
 					{this.state._variant === 'block' ? (
 						<blockquote cite={this.state._href}>
 							{this.state._quote}
-							<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
+							<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
 								<slot name="expert" />
 							</span>
 						</blockquote>
 					) : (
 						<q cite={this.state._href}>
 							{this.state._quote}
-							<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
+							<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
 								<slot name="expert" />
 							</span>
 						</q>

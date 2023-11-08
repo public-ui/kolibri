@@ -1,34 +1,29 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
+import { KoliBriCustomIcon, KoliBriIconsProp } from '../../types/icons';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { PropAccessKey } from '../../types/props/access-key';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	icon: Stringified<KoliBriIconProp>;
-	/**
-	 * @deprecated use _hide-label
-	 */
-	iconOnly: boolean;
-} & PropHideLabel;
-export type KolibriSpanProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+	allowMarkdown: boolean;
+	icons: Stringified<KoliBriIconsProp>;
+} & PropHideLabel &
+	PropAccessKey;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	icon: {
+	allowMarkdown: boolean;
+	icons: {
 		top?: KoliBriCustomIcon;
 		right?: KoliBriCustomIcon;
 		bottom?: KoliBriCustomIcon;
 		left?: KoliBriCustomIcon;
 	};
 } & PropLabelWithExpertSlot;
-type OptionalStates = {
-	/**
-	 * @deprecated use _hide-label
-	 */
-	iconOnly: boolean;
-} & PropHideLabel;
+type OptionalStates = PropHideLabel & PropAccessKey;
 
-export type KolibriSpanStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KolibriSpanAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

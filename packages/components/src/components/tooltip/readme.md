@@ -18,17 +18,18 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 ## Links und Referenzen
 
-- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _label="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank"></kol-link>
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property              | Attribute | Description                                                                                                     | Type                                                  | Default     |
-| --------------------- | --------- | --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
-| `_align`              | `_align`  | Defines the alignment of the tooltip in relation to the parent element.                                         | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
-| `_id`                 | `_id`     | Defines the internal ID of the primary component element.                                                       | `string \| undefined`                                 | `undefined` |
-| `_label` _(required)_ | `_label`  | Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.). | `string`                                              | `undefined` |
+| Property              | Attribute     | Description                                                                                                        | Type                                                  | Default     |
+| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
+| `_accessKey`          | `_access-key` | Defines the elements access key.                                                                                   | `string \| undefined`                                 | `undefined` |
+| `_align`              | `_align`      | Defines the alignment of the tooltip, popover or tabs in relation to the element.                                  | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
+| `_id`                 | `_id`         | Defines the internal ID of the primary component element.                                                          | `string \| undefined`                                 | `undefined` |
+| `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
 
 ## Dependencies
 
@@ -36,19 +37,8 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 - [kol-abbr](../abbr)
 - kol-button-wc
-- [kol-input-checkbox](../input-checkbox)
-- [kol-input-color](../input-color)
-- [kol-input-date](../input-date)
-- [kol-input-email](../input-email)
-- [kol-input-file](../input-file)
-- [kol-input-number](../input-number)
-- [kol-input-password](../input-password)
-- [kol-input-radio](../input-radio)
-- [kol-input-range](../input-range)
-- [kol-input-text](../input-text)
+- kol-input
 - kol-link-wc
-- [kol-select](../select)
-- [kol-textarea](../textarea)
 
 ### Depends on
 
@@ -58,24 +48,13 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 ```mermaid
 graph TD;
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   kol-span-wc --> kol-icon
-  kol-abbr --> kol-tooltip
-  kol-button-wc --> kol-tooltip
-  kol-input-checkbox --> kol-tooltip
-  kol-input-color --> kol-tooltip
-  kol-input-date --> kol-tooltip
-  kol-input-email --> kol-tooltip
-  kol-input-file --> kol-tooltip
-  kol-input-number --> kol-tooltip
-  kol-input-password --> kol-tooltip
-  kol-input-radio --> kol-tooltip
-  kol-input-range --> kol-tooltip
-  kol-input-text --> kol-tooltip
-  kol-link-wc --> kol-tooltip
-  kol-select --> kol-tooltip
-  kol-textarea --> kol-tooltip
-  style kol-tooltip fill:#f9f,stroke:#333,stroke-width:4px
+  kol-abbr --> kol-tooltip-wc
+  kol-button-wc --> kol-tooltip-wc
+  kol-input --> kol-tooltip-wc
+  kol-link-wc --> kol-tooltip-wc
+  style kol-tooltip-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ---

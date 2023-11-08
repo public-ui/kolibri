@@ -7,7 +7,7 @@ import { featureHint } from '../../utils/a11y.tipps';
 import { getKoliBri } from '../../utils/dev.utils';
 import { setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { ModalService } from './service';
-import { KoliBriModalAPI, KoliBriModalStates } from './types';
+import { API, States } from './types';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -24,7 +24,7 @@ import { KoliBriModalAPI, KoliBriModalStates } from './types';
 	},
 	shadow: true,
 })
-export class KolModal implements KoliBriModalAPI {
+export class KolModal implements API {
 	private hostElement?: HTMLElement;
 
 	public componentDidRender(): void {
@@ -88,16 +88,9 @@ export class KolModal implements KoliBriModalAPI {
 	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 *
-	 * @deprecated use _label instead
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
-	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Gibt die EventCallback-Function für das Schließen des Modals an.
@@ -105,11 +98,11 @@ export class KolModal implements KoliBriModalAPI {
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
 	/**
-	 * Setzt die Breite des Modals. (max-width: 100%).
+	 * Defines the width of the modal. (max-width: 100%)
 	 */
 	@Prop() public _width?: string = '100%';
 
-	@State() public state: KoliBriModalStates = {
+	@State() public state: States = {
 		_activeElement: null,
 		_label: '…', // ⚠ required
 		_width: '100%',
@@ -119,15 +112,15 @@ export class KolModal implements KoliBriModalAPI {
 	public validateActiveElement(value?: HTMLElement | null): void {
 		watchValidator(this, '_activeElement', (value): boolean => typeof value === 'object' || value === null, new Set(['HTMLElement', 'null']), value, {
 			defaultValue: null,
+			hooks: {
+				afterPatch: () => {
+					/* Call onClose event in the _activeElement watcher because activeElement can be set internally and from the outside and closes the modal when set to null. */
+					if (this._activeElement === null && this.state._on?.onClose) {
+						this.state._on.onClose();
+					}
+				},
+			},
 		});
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
 	}
 
 	@Watch('_label')
@@ -156,7 +149,7 @@ export class KolModal implements KoliBriModalAPI {
 
 	public componentWillLoad(): void {
 		this.validateActiveElement(this._activeElement);
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateWidth(this._width);
 	}

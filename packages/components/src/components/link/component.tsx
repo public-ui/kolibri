@@ -1,23 +1,25 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
-import { AlignPropType } from '../../types/props/align';
-import { validateAriaControls } from '../../types/props/aria-controls';
+import { KoliBriIconsProp } from '../../types/icons';
+import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
-import { validateAriaSelected } from '../../types/props/aria-selected';
 import { DownloadPropType, validateDownload } from '../../types/props/download';
-import { validateHideLabel } from '../../types/props/hide-label';
-import { validateHref } from '../../types/props/href';
-import { validateIcon, watchIconAlign } from '../../types/props/icon';
+import { HrefPropType, validateHref } from '../../types/props/href';
+import { validateIcons } from '../../types/props/icons';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
-import { validateStealth } from '../../types/props/stealth';
-import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
-import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
-import { propagateFocus } from '../../utils/reuse';
+import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
+import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { devHint, devWarning } from '../../utils/a11y.tipps';
+import { ariaCurrentSubject, setEventTarget, watchString } from '../../utils/prop.validators';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
+import { States as LinkStates } from '../link/types';
+import { API } from './types';
+import { validateHideLabel } from '../../types/props/hide-label';
+import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 
 /**
  * @internal
@@ -26,7 +28,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements KoliBriLinkAPI {
+export class KolLinkWc implements API {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private ref?: HTMLAnchorElement;
 
@@ -64,274 +66,147 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		// }
 
 		// ROBUSTHEIT durch Validierung
-		let goToProps = {};
-		if (typeof this.state._selector === 'string') {
-			goToProps = {
-				role: 'link',
-				tabIndex: 0,
-				onClick: () => {
-					scrollBySelector(this.state._selector as string);
-				},
-				onKeyPress: () => {
-					scrollBySelector(this.state._selector as string);
-				},
-			};
-		}
-
 		const isExternal = typeof this.state._target === 'string' && this.state._target !== '_self';
 
 		const tagAttrs = {
 			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0);',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: isExternal ? 'noopener' : undefined,
+			download: typeof this.state._download === 'string' ? this.state._download : undefined,
 		};
 
-		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !this.state._label) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der _hide-label gesetzt ist.`);
+		if (this.state._hideLabel === true && !this.state._label) {
+			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden _hide-label gesetzt ist.`);
 		}
-		return { isExternal, tagAttrs, goToProps };
+		return { isExternal, tagAttrs };
 	};
 
 	public render(): JSX.Element {
-		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
-		const hasExpertSlot: boolean = this.state._label === false;
+		const { isExternal, tagAttrs } = this.getRenderValues();
+		const hasExpertSlot = showExpertSlot(this.state._label);
 		return (
 			<Host>
 				<a
 					ref={this.catchRef}
 					{...tagAttrs}
-					aria-controls={this.state._ariaControls}
+					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
-					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
-						disabled: this.state._disabled === true,
-						'skip ': this.state._stealth !== false,
-						'icon-only': this.state._hideLabel === true, // @deprecated in v2
-						'hide-label': this.state._hideLabel === true,
 						'external-link': isExternal,
+						'hide-label': this.state._hideLabel === true,
 					}}
 					{...this.state._on}
 					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
 					onClick={this.onClick}
 					onKeyPress={this.onClick}
-					{...goToProps}
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? false : this.state._label || this.state._href}>
+					<kol-span-wc
+						_accessKey={this.state._accessKey}
+						_icons={this.state._icons}
+						_hideLabel={this.state._hideLabel}
+						_label={hasExpertSlot ? '' : this.state._label || this.state._href}
+					>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
-					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
+					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icons={'codicon codicon-link-external'} />}
 				</a>
-				<kol-tooltip
+				<kol-tooltip-wc
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 					 */
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
+					_accessKey={this.state._accessKey}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
-				></kol-tooltip>
+				></kol-tooltip-wc>
 			</Host>
 		);
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-	 *
-	 * @deprecated will be removed in v2
+	 * Defines the elements access key.
 	 */
-	@Prop() public _ariaControls?: string;
-
-	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-	 *
-	 * @deprecated use _listen-aria-current instead
-	 */
-	@Prop() public _ariaCurrent?: AriaCurrentPropType;
-
-	/**
-	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _ariaExpanded?: boolean;
-
-	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
-	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _ariaSelected?: boolean;
-
-	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-	 *
-	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
-	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: DownloadPropType = false;
+	@Prop() public _download?: DownloadPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Gibt die Ziel-Url des Links an.
+	 * Sets the target URI of the link or citation source.
 	 */
-	@Prop() public _href!: string;
+	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 
 	/**
-	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 *
-	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
-	 */
-	@Prop() public _iconAlign?: AlignPropType;
-
-	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-	 * @deprecated use _hide-label
-	 */
-	@Prop() public _iconOnly?: boolean;
-
-	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
-	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
 	 */
 	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für den Link an.
-	 *
-	 * @deprecated will be removed in v2
+	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkOnCallbacks;
+	@Prop() public _on?: LinkOnCallbacksPropType;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
-	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _selector?: string;
-
-	/**
-	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _stealth?: boolean = false;
-
-	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTarget;
+	@Prop() public _target?: LinkTargetPropType;
 
 	/**
-	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+	 * Defines the description to use when the link is going to be opened in another application.
 	 */
 	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'right';
-
-	/**
-	 * Gibt den Verwendungsfall des Links an.
-	 *
-	 * @deprecated will be removed in v2
-	 */
-	@Prop() public _useCase?: LinkUseCase = 'text';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
-		_icon: {},
-		_label: false, // TODO: version 1
-		// _label: '', // TODO: version 2
+		_icons: {}, // ⚠ required
 	};
 
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaControls')
-	public validateAriaControls(value?: string): void {
-		validateAriaControls(this, value);
+	@Watch('_accessKey')
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this, value);
 	}
 
-	/**
-	 * @deprecated use aria-current only in state
-	 */
-	@Watch('_ariaCurrent')
-	public validateAriaCurrent(value?: AriaCurrentPropType): void {
+	private validateAriaCurrent(value?: AriaCurrentPropType): void {
 		validateAriaCurrent(this, value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaExpanded')
-	public validateAriaExpanded(value?: boolean): void {
-		watchBoolean(this, '_ariaExpanded', value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaSelected')
-	public validateAriaSelected(value?: boolean): void {
-		validateAriaSelected(this, value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
-		watchBoolean(this, '_disabled', value);
-		if (value === true) {
-			a11yHintDisabled();
-		}
 	}
 
 	@Watch('_download')
@@ -349,25 +224,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		validateHref(this, value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: KoliBriIconProp): void {
-		validateIcon(this, value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_iconAlign')
-	public validateIconAlign(value?: AlignPropType): void {
-		watchIconAlign(this, value);
-	}
-
-	/**
-	 * @deprecated use _hide-label
-	 */
-	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
-		this.validateHideLabel(value);
+	@Watch('_icons')
+	public validateIcons(value?: KoliBriIconsProp): void {
+		validateIcons(this, value);
 	}
 
 	@Watch('_label')
@@ -380,38 +239,14 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		validateListenAriaCurrent(this, value);
 	}
 
-	/**
-	 * @deprecated
-	 */
 	@Watch('_on')
-	public validateOn(value?: LinkOnCallbacks): void {
-		if (typeof value === 'object' && typeof value?.onClick === 'function') {
-			this.state = {
-				...this.state,
-				_on: value,
-			};
-		}
+	public validateOn(value?: LinkOnCallbacksPropType): void {
+		validateLinkCallbacks(this, value);
 	}
 
 	@Watch('_role')
-	public validateRole(value?: AlternativButtonLinkRole): void {
-		watchString(this, '_role', value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_selector')
-	public validateSelector(value?: string): void {
-		watchString(this, '_selector', value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_stealth')
-	public validateStealth(value?: boolean): void {
-		validateStealth(this, value);
+	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
+		validateAlternativeButtonLinkRole(this, value);
 	}
 
 	@Watch('_tabIndex')
@@ -420,8 +255,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_target')
-	public validateTarget(value?: LinkTarget): void {
-		watchString(this, '_target', value);
+	public validateTarget(value?: LinkTargetPropType): void {
+		validateLinkTarget(this, value);
 	}
 
 	@Watch('_targetDescription')
@@ -430,45 +265,24 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_useCase')
-	public validateUseCase(value?: LinkUseCase): void {
-		if (typeof value === 'string') {
-			this.state = {
-				...this.state,
-				_useCase: value,
-			};
-		}
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	public componentWillLoad(): void {
-		this.validateAriaControls(this._ariaControls);
-		this.validateAriaCurrent(this._ariaCurrent);
-		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaSelected(this._ariaSelected);
-		this.validateDisabled(this._disabled);
+		this.validateAccessKey(this._accessKey);
 		this.validateDownload(this._download);
-		this.validateHideLabel(this._hideLabel || this._iconOnly);
+		this.validateHideLabel(this._hideLabel);
 		this.validateHref(this._href);
-		this.validateIcon(this._icon);
-		this.validateIconAlign(this._iconAlign);
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateIcons(this._icons);
+		this.validateLabel(this._label);
 		this.validateListenAriaCurrent(this._listenAriaCurrent);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
-		this.validateSelector(this._selector);
-		this.validateStealth(this._stealth);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
 		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateUseCase(this._useCase);
 	}
 
 	private unsubscribeAriaCurrentSubject = ariaCurrentSubject.subscribe((event) => {

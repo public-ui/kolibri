@@ -19,8 +19,8 @@ export enum TagEnum {
 	'input-checkbox',
 	'input-color',
 	'input-date',
-	'input-file',
 	'input-email',
+	'input-file',
 	'input-number',
 	'input-password',
 	'input-radio',
@@ -38,11 +38,12 @@ export enum TagEnum {
 	'separator', // TODO: github pr link
 	'skip-nav',
 	'spin',
+	'split-button',
 	'symbol',
 	'table',
 	'tabs',
 	'textarea',
-	'toast',
+	'toast-container',
 	'toolbar', // TODO: github pr link
 	'tooltip',
 }

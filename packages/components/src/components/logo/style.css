@@ -1,6 +1,16 @@
 @import url(../style.css);
-text {
-	font-size: 16px;
-	letter-spacing: normal;
-	word-spacing: normal;
+@layer kol-component {
+	:host {
+		display: inline-block;
+	}
+
+	text {
+		font-size: 16px;
+		letter-spacing: normal;
+		word-spacing: normal;
+	}
+
+	svg {
+		max-height: 100%;
+	}
 }

@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { KoliBriBadgeProps } from '../types';
+import { Props } from '../types';
 import { getBadgeHtml } from './html.mock';
 
-executeTests<KoliBriBadgeProps>(
+executeTests<Props>(
 	'Badge',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
@@ -18,10 +18,10 @@ executeTests<KoliBriBadgeProps>(
 	},
 	{
 		_color: ['#000000'],
-		_icon: ['codicon codicon-home'],
-		_label: ['Text'],
+		_icons: ['codicon codicon-home'],
+		_label: ['Text', '**Te**xt'],
 	},
-	getBadgeHtml,
+	(props) => getBadgeHtml(props),
 	{
 		execMode: 'default', // ready
 	}

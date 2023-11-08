@@ -3,11 +3,12 @@ import { Generic } from '@a11y-ui/core';
 import { Events } from '../../enums/events';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
-import { AlignPropType, PropAlign } from '../../types/props/align';
-import { PropAriaLabel } from '../../types/props/aria-label';
+import { KoliBriIconsProp } from '../../types/icons';
+import { PropAlign } from '../../types/props/align';
+import { PropDisabled } from '../../types/props/disabled';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
+import { PropTooltipAlign } from '../../types/props/tooltip-align';
 
 export type KoliBriTabsCallbacks = {
 	onCreate?:
@@ -22,29 +23,19 @@ export type KoliBriTabsCallbacks = {
 
 type RequiredTabButtonProps = PropLabel;
 type OptionalTabButtonProps = {
-	disabled: boolean;
-	icon: Stringified<KoliBriIconProp>;
-	/**
-	 * @deprecated use _hide-label
-	 */
-	iconOnly: boolean;
-	tooltipAlign: AlignPropType;
-} & PropHideLabel;
+	icons: Stringified<KoliBriIconsProp>;
+} & PropDisabled &
+	PropHideLabel &
+	PropTooltipAlign;
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
 type RequiredProps = {
 	tabs: Stringified<TabButtonProps[]>;
-};
+} & PropLabel;
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
-	/**
-	 * @deprecated Use align.
-	 */
-	tabsAlign: AlignPropType;
 	selected: number;
-} & PropAriaLabel &
-	PropLabel &
-	PropAlign;
+} & PropAlign;
 
 type RequiredStates = {
 	selected: number;
@@ -55,5 +46,5 @@ type OptionalStates = {
 	on: KoliBriTabsCallbacks;
 };
 
-export type KoliBriTabsStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriTabsAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

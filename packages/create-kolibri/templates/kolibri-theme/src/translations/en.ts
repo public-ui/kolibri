@@ -1,3 +1,3 @@
-import { KoliBri } from '@public-ui/components';
+import { KoliBri } from '@public-ui/schema';
 
 export const EN = KoliBri.createTranslation('en', {});

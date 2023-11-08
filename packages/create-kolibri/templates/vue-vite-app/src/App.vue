@@ -1,23 +1,43 @@
 <template>
-	<div class="itzbund container">
-		<header>
-			<div class="logo_grid">
-				<KolKolibri class="logo" :_labeled="false"></KolKolibri>
-				<!-- <img class="logo" src="./assets/logo.svg" alt="VueJS Logo" /> -->
+	<div class="itzbund container mx-auto my-10 max-w-800px">
+		<header class="text-center">
+			<div class="grid grid-cols-2 items-center">
+				<div class="block m-auto w-40">
+					<KolKolibri :_labeled="false"></KolKolibri>
+				</div>
+				<div>
+					<img
+						class="block m-auto h-25"
+						src="./assets/logo.vue.png"
+						alt="Logo vom React Framework"
+					/>
+				</div>
 			</div>
-			<strong>Willkommen zu KoliBri</strong>
+			<strong class="text-2xl">Willkommen zu KoliBri</strong>
 		</header>
-		<main>
-			<KolAlert
-				v-for="alert in alerts"
-				:key="alert.text"
-				:_type="alert.type"
-				:_heading="alert.heading"
-				_variant="card"
-				:_level="2"
-			>
-				<KolLink :_href="alert.link" :_label="alert.text" _target="_blank">
-					<KolIcon _ariaLabel="" :_icon="alert.icon" />
+		<main class="grid md:grid-cols-2 gap-6 p-12">
+			<KolAlert :_type="'success'" _heading="Dokumentation" _variant="card" :_level="2">
+				<KolLink _href="https://public-ui.github.io/" _label="" _target="_blank">
+					<KolIcon _ariaLabel="" _icon="fa-sharp fa-solid fa-book" /> Dokumentation öffnen
+				</KolLink>
+			</KolAlert>
+			<KolAlert :_type="'info'" _heading="Theming" _variant="card" :_level="2">
+				<KolLink
+					_href="https://public-ui.github.io/docs/concepts/styling/designer"
+					_label=""
+					_target="_blank"
+				>
+					<KolIcon _ariaLabel="" _icon="fa-solid fa-palette" /> KoliBri-Designer öffnen
+				</KolLink>
+			</KolAlert>
+			<KolAlert :_type="'warning'" _heading="Mitwirken" _variant="card" :_level="2">
+				<KolLink _href="https://github.com/public-ui/kolibri/" _label="" _target="_blank">
+					<KolIcon _ariaLabel="" _icon="fa-brands fa-github" /> GitHub öffnen
+				</KolLink>
+			</KolAlert>
+			<KolAlert :_type="'error'" _heading="Kontakt" _variant="card" :_level="2">
+				<KolLink _href="mailto:kolibri@itzbund.de" _label="" _target="_blank">
+					<KolIcon _ariaLabel="" _icon="fa-solid fa-envelope" /> E-Mail schreiben
 				</KolLink>
 			</KolAlert>
 		</main>
@@ -26,82 +46,21 @@
 
 <script lang="ts">
 import { KolKolibri, KolIcon, KolLink, KolAlert } from '@public-ui/vue'
-import { defineComponent } from 'vue'
 
-export default defineComponent({
+export default {
 	components: {
 		KolKolibri,
 		KolIcon,
 		KolLink,
 		KolAlert
 	},
-	data() {
+	setup() {
 		return {
-			alerts: [
-				{
-					heading: 'Dokumentation',
-					icon: 'fa-sharp fa-solid fa-book',
-					link: 'https://public-ui.github.io/',
-					text: 'Dokumentation öffnen',
-					type: 'success'
-				},
-				{
-					heading: 'Theming',
-					icon: 'fa-solid fa-palette',
-					link: 'https://public-ui.github.io/docs/concepts/styling/designer',
-					text: 'KoliBri-Designer öffnen',
-					type: 'info'
-				},
-				{
-					heading: 'Mitwirken',
-					icon: 'fa-brands fa-github',
-					link: 'https://github.com/public-ui/kolibri/',
-					text: 'Github öffnen',
-					type: 'warning'
-				},
-				{
-					heading: 'Kontakt',
-					icon: 'fa-solid fa-envelope',
-					link: 'mailto:kolibri@itzbund.de',
-					text: 'E-Mail schreiben',
-					type: 'error'
-				}
-			]
+			label: 'My Button',
+			on: {
+				onClick: console.log
+			}
 		}
 	}
-})
+}
 </script>
-
-<style scoped lang="scss">
-.container {
-	margin: 2.5rem auto;
-	max-width: 800px;
-}
-header {
-	text-align: center;
-	strong {
-		font-size: 1.5rem;
-		line-height: 2rem;
-	}
-}
-.logo_grid {
-	display: grid;
-	place-items: center;
-
-	@media (min-width: 768px) {
-		grid-template-columns: 1fr 1fr;
-	}
-	.logo {
-		width: 10rem;
-	}
-}
-main {
-	display: grid;
-	gap: 1.5rem;
-	padding: 3rem;
-
-	@media (min-width: 768px) {
-		grid-template-columns: 1fr 1fr;
-	}
-}
-</style>

@@ -1,17 +1,16 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { handleColorChange } from '../../../types/props/color';
-import { getSpanWcHtml } from '../../span/test/html.mock';
-import { KoliBriBadgeProps, KoliBriBadgeStates } from '../types';
+import { getSpanWcHtml, SpanOptions } from '../../span/test/html.mock';
+import { Props, States } from '../types';
 
-export const getBadgeHtml = (props: KoliBriBadgeProps, additionalAttrs = ''): string => {
-	const state = mixMembers<KoliBriBadgeProps, KoliBriBadgeStates>(
+export const getBadgeHtml = (props: Props, options?: SpanOptions): string => {
+	const state = mixMembers<Props, States>(
 		{
 			_color: {
 				backgroundColor: '#000',
 				foregroundColor: '#fff',
 			},
-			_label: '…', // ⚠ required
 		},
 		props
 	);
@@ -19,10 +18,13 @@ export const getBadgeHtml = (props: KoliBriBadgeProps, additionalAttrs = ''): st
 	state._color = handleColorChange(props._color || '#000');
 
 	const hasSmartButton = typeof state._smartButton === 'object' && state._smartButton !== null;
-	return `<kol-badge${additionalAttrs}>
+	return `<kol-badge${options?.additionalAttrs ?? ''}>
 	<mock:shadow-root>
 		<span style="background-color: ${state._color.backgroundColor}; color: ${state._color.foregroundColor as string};">
-			${getSpanWcHtml(state, undefined, `${hasSmartButton ? ' id="nonce"' : ''}`)}
+			${getSpanWcHtml({ ...state, _label: props._label, _allowMarkdown: true }, undefined, {
+				...options,
+				additionalAttrs: `${hasSmartButton ? ' id="nonce"' : ''}` + (options?.additionalAttrs ?? ''),
+			})}
 		</span>
 	</mock:shadow-root>
 </kol-badge>`;

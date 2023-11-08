@@ -52,9 +52,8 @@ Das Attribut **`_org`** wird für die Definition des gewünschten Logos verwende
 
 ## Properties
 
-| Property            | Attribute | Description                                                                                                                                                                      | Type                                                           | Default     |
-| ------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ----------- |
-| `_abbr`             | `_abbr`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_org.<br/><br/>Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an. | `Bundesamt \| Bundesanstalt \| Bundesministerium \| undefined` | `undefined` |
-| `_org` _(required)_ | `_org`    | Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.                                                                                                   | `Bundesamt \| Bundesanstalt \| Bundesministerium`              | `undefined` |
+| Property            | Attribute | Description                                                                    | Type                                              | Default     |
+| ------------------- | --------- | ------------------------------------------------------------------------------ | ------------------------------------------------- | ----------- |
+| `_org` _(required)_ | `_org`    | Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an. | `Bundesamt \| Bundesanstalt \| Bundesministerium` | `undefined` |
 
 ---

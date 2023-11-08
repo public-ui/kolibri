@@ -11,16 +11,12 @@ Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und
 ### Code
 
 ```html
-<kol-input-radio
-	_id="anrede"
-	_name="anrede"
-	_options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'
-></kol-input-radio>
+<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
 ```
 
 ### Beispiel
 
-<kol-input-radio _id="anrede" _name="anrede" _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
+<kol-input-radio _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
 
 ## Verwendung
 
@@ -45,8 +41,6 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 ```jsx
 <kol-input-radio
-	_id="anrede"
-	_name="anrede"
 	_options={[
 		{ label: 'Herr', value: 'Herr' },
 		{ label: 'Frau', value: 'Frau' },
@@ -59,7 +53,7 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 ### Best practices
 
 - Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
-- Es wird immer mindestens ein Wert ausgewählt. Ähnlich dem Verhalten einer Select-Auswahl. (<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default" _target="_blank"></kol-link>)
+- Es wird immer mindestens ein Wert ausgewählt. Ähnlich dem Verhalten einer Select-Auswahl. (<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default" _target="_blank"></kol-link>)
 
 ## Barrierefreiheit
 
@@ -73,35 +67,35 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#radiobutton" _label="https://www.w3.org/TR/wai-aria-practices/#radiobutton" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3schools.com/tags/att_input_type_radio.asp" _label="https://www.w3schools.com/tags/att_input_type_radio.asp" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio" _target="_blank"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#radiobutton" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3schools.com/tags/att_input_type_radio.asp" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property              | Attribute        | Description                                                                                                                                          | Type                                                                                     | Default      |
-| --------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------ |
-| `_accessKey`          | `_access-key`    | Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.                                    | `string \| undefined`                                                                    | `undefined`  |
-| `_alert`              | `_alert`         | Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.                                                                                        | `boolean \| undefined`                                                                   | `true`       |
-| `_disabled`           | `_disabled`      | Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.                                                      | `boolean \| undefined`                                                                   | `undefined`  |
-| `_error`              | `_error`         | Gibt den Text für eine Fehlermeldung an.                                                                                                             | `string \| undefined`                                                                    | `undefined`  |
-| `_hideLabel`          | `_hide-label`    | Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.                                                            | `boolean \| undefined`                                                                   | `undefined`  |
-| `_hint`               | `_hint`          | Gibt den Hinweistext an.                                                                                                                             | `string \| undefined`                                                                    | `''`         |
-| `_id`                 | `_id`            | Gibt die interne ID des primären Elements in der Komponente an.                                                                                      | `string \| undefined`                                                                    | `undefined`  |
-| `_label` _(required)_ | `_label`         | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                          | `boolean \| string`                                                                      | `undefined`  |
-| `_list`               | `_list`          | <span style="color:red">**[DEPRECATED]**</span> Use \_options.<br/><br/>Gibt die Liste der Optionen für das Eingabefeld an.                          | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
-| `_name`               | `_name`          | Gibt den technischen Namen des Eingabefeldes an.                                                                                                     | `string \| undefined`                                                                    | `undefined`  |
-| `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                            | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined` | `undefined`  |
-| `_options`            | `_options`       | Options the user can choose from.                                                                                                                    | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
-| `_orientation`        | `_orientation`   | Gibt die horizontale oder vertikale Ausrichtung der Komponente an.                                                                                   | `"horizontal" \| "vertical" \| undefined`                                                | `'vertical'` |
-| `_required`           | `_required`      | Macht das Eingabeelement zu einem Pflichtfeld.                                                                                                       | `boolean \| undefined`                                                                   | `undefined`  |
-| `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                    | `undefined`  |
-| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                            | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
-| `_touched`            | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                        | `boolean \| undefined`                                                                   | `false`      |
-| `_value`              | `_value`         | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)                                                           | `number \| string \| undefined`                                                          | `undefined`  |
+| Property              | Attribute        | Description                                                                                                                                                  | Type                                                                                     | Default      |
+| --------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ------------ |
+| `_accessKey`          | `_access-key`    | Defines which key combination can be used to trigger or focus the interactive element of the component.                                                      | `string \| undefined`                                                                    | `undefined`  |
+| `_alert`              | `_alert`         | Defines whether the screen-readers should read out the notification.                                                                                         | `boolean \| undefined`                                                                   | `true`       |
+| `_disabled`           | `_disabled`      | Makes the element not focusable and ignore all events.                                                                                                       | `boolean \| undefined`                                                                   | `false`      |
+| `_error`              | `_error`         | Defines the error message text.                                                                                                                              | `string \| undefined`                                                                    | `undefined`  |
+| `_hideError`          | `_hide-error`    | Hides the error message but leaves it in the DOM for the input's aria-describedby.                                                                           | `boolean \| undefined`                                                                   | `false`      |
+| `_hideLabel`          | `_hide-label`    | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.                   | `boolean \| undefined`                                                                   | `false`      |
+| `_hint`               | `_hint`          | Defines the hint text.                                                                                                                                       | `string \| undefined`                                                                    | `''`         |
+| `_id`                 | `_id`            | Defines the internal ID of the primary component element.                                                                                                    | `string \| undefined`                                                                    | `undefined`  |
+| `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                                                 | `undefined`  |
+| `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                | `string \| undefined`                                                                    | `undefined`  |
+| `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                    | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined` | `undefined`  |
+| `_options`            | `_options`       | Options the user can choose from.                                                                                                                            | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
+| `_orientation`        | `_orientation`   | Defines whether the orientation of the component is horizontal or vertical.                                                                                  | `"horizontal" \| "vertical" \| undefined`                                                | `'vertical'` |
+| `_required`           | `_required`      | Makes the input element required.                                                                                                                            | `boolean \| undefined`                                                                   | `false`      |
+| `_tabIndex`           | `_tab-index`     | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)             | `number \| undefined`                                                                    | `undefined`  |
+| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
+| `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                   | `false`      |
+| `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `number \| string \| undefined`                                                          | `undefined`  |
 
 ## Slots
 
@@ -111,14 +105,9 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 ## Dependencies
 
-### Used by
-
-- [kol-input-radio-group](../input-radio-group)
-
 ### Depends on
 
 - kol-input
-- [kol-tooltip](../tooltip)
 - [kol-alert](../alert)
 
 ### Graph
@@ -126,20 +115,19 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 ```mermaid
 graph TD;
   kol-input-radio --> kol-input
-  kol-input-radio --> kol-tooltip
   kol-input-radio --> kol-alert
   kol-input --> kol-icon
   kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
   kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-span-wc
+  kol-tooltip-wc --> kol-span-wc
   kol-alert --> kol-alert-wc
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  kol-input-radio-group --> kol-input-radio
   style kol-input-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

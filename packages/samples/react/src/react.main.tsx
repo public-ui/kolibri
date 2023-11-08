@@ -3,37 +3,54 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { register } from '@public-ui/core';
-import { BAMF, BZSt, BMF, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2 } from '@public-ui/themes';
+import type { Generic } from '@a11y-ui/core';
+import { register } from '@public-ui/components';
+import { BAMF, BMF, BZSt, DEFAULT, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3 } from '@public-ui/themes';
 import { TH } from '@public-oss/kolibri-themes';
-import { KoliBriDevHelper } from '@public-ui/components';
 import { App } from './App';
 
-register([BAMF, BMF, BZSt, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, TH], defineCustomElements, {
-	theme: {
-		detect: 'auto',
-	},
-})
-	.then(() => {
-		/**
-		 * You should patch the theme after the components and your default theme are registered.
-		 *
-		 * ↓ That is a tiny sample!
-		 */
-		KoliBriDevHelper.patchTheme('my-theme', {
-			'KOL-BUTTON': 'button{border:2px solid red;}',
-		});
+type Theme = Generic.Theming.RegisterPatch<string, string, string>;
 
-		const htmlDivElement = document.querySelector('div#app');
-		if (htmlDivElement instanceof HTMLDivElement) {
-			const root = createRoot(htmlDivElement);
-			root.render(
-				<StrictMode>
-					<Router>
-						<App />
-					</Router>
-				</StrictMode>
-			);
+void (async () => {
+	if (process.env.THEME_MODULE) {
+		/* Visual regression testing mode: Themes are overridden with a certain theme module, that should be used instead. */
+		const { [(process.env.THEME_EXPORT as string) ?? 'default']: theme } = (await import(process.env.THEME_MODULE)) as Record<string, Theme>;
+		try {
+			await register([theme], defineCustomElements);
+		} catch (error) {
+			console.warn('Theme registration failed:', error);
 		}
-	})
-	.catch(console.warn);
+	} else {
+		/* Regular mode: Register all known themes. */
+		try {
+			await register([BAMF, BMF, DEFAULT, BZSt, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3, TH], defineCustomElements, {
+				theme: {
+					detect: 'auto',
+				},
+			});
+		} catch (error) {
+			console.warn('Theme registration failed:', error);
+		}
+	}
+
+	/**
+	 * You should patch the theme after the components and your default theme are registered.
+	 *
+	 * ↓ That is a tiny sample!
+	 */
+	// KoliBriDevHelper.patchTheme('my-theme', {
+	// 	'KOL-BUTTON': 'button{border:2px solid red;}',
+	// });
+
+	const htmlDivElement = document.querySelector('div#app');
+	if (htmlDivElement instanceof HTMLDivElement) {
+		const root = createRoot(htmlDivElement);
+		root.render(
+			<StrictMode>
+				<Router>
+					<App />
+				</Router>
+			</StrictMode>,
+		);
+	}
+})();

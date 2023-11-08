@@ -2,10 +2,12 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { OptionsWithOptgroupPropType, validateOptionsWithOptgroup } from '../../types/props/options';
 import { RowsPropType, validateRows } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
-import { watchBoolean, watchJsonArrayString, watchString } from '../../utils/prop.validators';
+import { a11yHint } from '../../utils/a11y.tipps';
+import { watchBoolean, watchJsonArrayString } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
@@ -65,12 +67,16 @@ export class SelectController extends InputIconController implements Watches {
 		}
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 * @deprecated Use _size instead.
-	 */
-	public validateHeight(value?: string): void {
-		watchString(this.component, '_height', value);
+	public validateHideError(value?: HideErrorPropType): void {
+		validateHideError(this.component, value, {
+			hooks: {
+				afterPatch: () => {
+					if (this.component.state._hideError) {
+						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
+					}
+				},
+			},
+		});
 	}
 
 	public validateOptions(value?: OptionsWithOptgroupPropType): void {
@@ -124,11 +130,11 @@ export class SelectController extends InputIconController implements Watches {
 			}
 		};
 
-		this.validateHeight(this.component._height);
-		this.validateOptions(this.component._options || this.component._list);
+		this.validateHideError(this.component._hideError);
+		this.validateOptions(this.component._options);
 		this.validateMultiple(this.component._multiple);
 		this.validateRequired(this.component._required);
-		this.validateRows(this.component._rows || this.component._size);
+		this.validateRows(this.component._rows);
 		this.validateValue(this.component._value);
 	}
 }

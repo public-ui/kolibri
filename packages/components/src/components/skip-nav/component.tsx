@@ -1,10 +1,11 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
-import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-skip-nav',
@@ -13,7 +14,7 @@ import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
 	},
 	shadow: true,
 })
-export class KolSkipNav implements KoliBriSkipNavAPI {
+export class KolSkipNav implements API {
 	public render(): JSX.Element {
 		return (
 			<nav aria-label={this.state._label}>
@@ -31,38 +32,27 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 *
-	 * @deprecated use _label instead
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _ariaLabel?: string;
+	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
-	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
-
-	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links combined with their labels to render.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
-	@State() public state: KoliBriSkipNavStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_links: [],
 	};
 
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
+	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
+		if (!initial) {
+			removeNavLabel(this.state._label); // remove the current
+		}
 		validateLabel(this, value);
+		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_links')
@@ -71,7 +61,11 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
+	}
+
+	public disconnectedCallback(): void {
+		removeNavLabel(this.state._label);
 	}
 }

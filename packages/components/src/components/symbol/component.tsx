@@ -3,13 +3,13 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString } from '../../utils/prop.validators';
-import { KoliBriSymbolAPI, KoliBriSymbolStates } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-symbol',
 	shadow: false,
 })
-export class KolSymbol implements KoliBriSymbolAPI {
+export class KolSymbol implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -21,34 +21,19 @@ export class KolSymbol implements KoliBriSymbolAPI {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 * @deprecated use _label
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
 	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 */
-	// TODO v2: make required
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Dieses Property gibt den String an der angezeigt werden soll.
 	 */
 	@Prop() public _symbol!: string;
 
-	@State() public state: KoliBriSymbolStates = {
+	@State() public state: States = {
 		_label: translate('kol-warning'),
 		_symbol: '…', // ⚠ required
 	};
-
-	/**
-	 * @deprecated use _label
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
@@ -63,7 +48,7 @@ export class KolSymbol implements KoliBriSymbolAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._ariaLabel);
+		this.validateLabel(this._label);
 		this.validateSymbol(this._symbol);
 	}
 }

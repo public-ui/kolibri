@@ -7,15 +7,11 @@ import { watchValidator } from '../../utils/prop.validators';
  * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`.
  *  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
  */
-export type AriaCurrentPropType = 'date' | 'location' | 'page' | 'step' | 'time' | boolean;
+const ariaCurrentPropTypeOptions = ['date', 'location', 'page', 'step', 'time', true, false] as const;
+export type AriaCurrentPropType = (typeof ariaCurrentPropTypeOptions)[number];
 
-/**
- * @deprecated use `PropListenAriaCurrent` instead
- */
 export type PropAriaCurrent = {
-	/**
-	 * @deprecated use `listenAriaCurrent` instead
-	 */
+	// only used for state
 	ariaCurrent: AriaCurrentPropType;
 };
 
@@ -28,8 +24,8 @@ const validate = (component: Generic.Element.Component, propName: string, value?
 	watchValidator(
 		component,
 		propName,
-		(value) => value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time' || value === true || value === false,
-		new Set(['String {data, location, page, step, time}', 'boolean']),
+		(value?) => (typeof value === 'string' || typeof value === 'boolean') && ariaCurrentPropTypeOptions.includes(value),
+		new Set([`String {${ariaCurrentPropTypeOptions.filter((option) => typeof option === 'string').join(', ')}`, 'true', 'false']),
 		value
 	);
 };

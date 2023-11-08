@@ -1,11 +1,13 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Events } from '../../enums/events';
-import { KoliBriButtonCustomClassPropState, KoliBriButtonVariantPropState } from '../../types/button-link';
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { AlignPropType } from '../../types/props/align';
+import { PropLabel } from '../../types/props/label';
+import { PropTooltipAlign } from '../../types/props/tooltip-align';
+import { PropMax } from '../../types/props/max';
+import { PropCustomClass } from '../../types/props/custom-class';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, number>;
@@ -39,17 +41,16 @@ export type PaginationHasButton = {
 type RequiredProps = {
 	on: KoliBriPaginationButtonCallbacks;
 	page: number;
-	total: number;
-};
+} & PropMax;
 type OptionalProps = {
 	boundaryCount: number;
 	hasButtons: boolean | Stringified<PaginationHasButton>;
 	pageSize: number;
 	pageSizeOptions: Stringified<number[]>;
 	siblingCount: number;
-	tooltipAlign: AlignPropType;
-} & KoliBriButtonCustomClassPropState &
-	KoliBriButtonVariantPropState;
+} & PropCustomClass &
+	PropLabel &
+	PropTooltipAlign;
 
 export type KoliBriPaginationProps = RequiredProps & OptionalProps;
 
@@ -61,12 +62,10 @@ type RequiredStates = {
 	pageSizeOptions: Option<number>[];
 	on: KoliBriPaginationButtonCallbacks;
 	siblingCount: number;
-	total: number;
-} & KoliBriButtonVariantPropState;
+} & PropLabel &
+	PropMax;
 
-type OptionalStates = {
-	tooltipAlign: AlignPropType;
-} & KoliBriButtonCustomClassPropState;
+type OptionalStates = PropCustomClass & PropTooltipAlign;
 
-export type KoliBriPaginationStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriPaginationAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -50,7 +50,7 @@ export type KoliBriTablePaginationProps = Generic.Element.Members<
 type KoliBriTablePaginationStates = Generic.Element.Members<
 	{
 		page: number;
-		total: number;
+		max: number;
 	},
 	KoliBriPaginationProps
 >;
@@ -58,16 +58,12 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 type RequiredProps = {
 	data: Stringified<KoliBriTableDataType[]>;
 	headers: Stringified<KoliBriTableHeaders>;
-};
+} & PropLabel;
 type OptionalProps = {
-	/**
-	 * @deprecated use label
-	 */
-	caption: string;
 	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-} & PropLabel;
+};
 
 type RequiredStates = {
 	data: KoliBriTableDataType[];
@@ -81,5 +77,5 @@ type OptionalStates = {
 	sortDirection: KoliBriSortDirection;
 };
 
-export type KoliBriTableStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriTableAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -2,66 +2,78 @@ import { Generic } from '@a11y-ui/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { PropAdjustHeight } from '../../types/props/adjust-height';
+import { PropDisabled } from '../../types/props/disabled';
 import { PropHasCounter } from '../../types/props/has-counter';
+import { PropHideError } from '../../types/props/hide-error';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropId } from '../../types/props/id';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { PropName } from '../../types/props/name';
+import { PropReadOnly } from '../../types/props/read-only';
+import { PropRequired } from '../../types/props/required';
 import { PropRows } from '../../types/props/rows';
-import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
+import { PropTouched } from '../../types/props/touched';
 
-export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
+export const cssResizeOptions = ['both', 'horizontal', 'vertical', 'none'] as const;
+export type CSSResize = (typeof cssResizeOptions)[number];
 
-type RequiredProps = InputRequiredProps;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
 	maxLength: number;
-	name: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
-	readOnly: boolean;
 	resize: CSSResize;
-	required: boolean;
-	syncValueBySelector: string;
 	tabIndex: number;
-	touched: boolean;
 	value: string;
 } & PropAdjustHeight &
+	PropDisabled &
 	PropHasCounter &
-	PropRows;
+	PropHideError &
+	PropHideLabel &
+	PropLabelWithExpertSlot &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropRows &
+	PropSyncValueBySelector &
+	PropTouched;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	adjustHeight: boolean;
 	currentLength: number;
-	id: string;
 	hasValue: boolean;
 	resize: CSSResize;
-} & PropAdjustHeight &
+} & PropId &
+	PropAdjustHeight &
+	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
 	maxLength: number;
-	name: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
-	readOnly: boolean;
-	required: boolean;
 	tabIndex: number;
-	touched: boolean;
 	value: string;
-} & PropHasCounter &
-	PropRows;
+} & PropDisabled &
+	PropHasCounter &
+	PropHideLabel &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropRows &
+	PropTouched;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 export type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
-export type ComponentApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

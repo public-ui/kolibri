@@ -10,13 +10,12 @@ jobs:
     if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'main'
+          ref: 'develop'
       - name: git-sync
         run: |
           git remote add opencode https://OC000005112572:${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}@gitlab.opencode.de/OC000005112572/kolibri.git
-          # git pull opencode main
           git push opencode -f

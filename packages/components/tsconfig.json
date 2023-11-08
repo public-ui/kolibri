@@ -12,6 +12,7 @@
 		"noUnusedParameters": true,
 		"jsx": "react",
 		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment",
 		"forceConsistentCasingInFileNames": true,
 		"importHelpers": true,
 		"removeComments": true,

@@ -1,10 +1,10 @@
-import { ButtonProps } from '../../button-link';
+import { Props as ButtonProps } from '../../../components/button/types';
 import { Stringified } from '../../common';
-import { KoliBriHorizontalIcon } from '../../icon';
+import { KoliBriHorizontalIcons } from '../../icons';
 import { InputTypeOnDefault, InputTypeOnOff } from '../types';
 
-export type InputDateType = 'date' | 'datetime-local' | 'month' | 'time' | 'week';
-export type InputNumberType = 'number' | InputDateType;
+export const inputDateTypeOptions = ['date', 'datetime-local', 'month', 'time', 'week'] as const;
+export type InputDateType = (typeof inputDateTypeOptions)[number];
 
 export type OptionalInputProps<T> = {
 	accessKey: string;
@@ -14,8 +14,7 @@ export type OptionalInputProps<T> = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcon>;
-	list: Stringified<string[]>;
+	icons: Stringified<KoliBriHorizontalIcons>;
 	max: T;
 	min: T;
 	name: string;

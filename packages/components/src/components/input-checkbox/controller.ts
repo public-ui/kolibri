@@ -2,13 +2,14 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { CheckedPropType, validateChecked } from '../../types/props/checked';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { IndeterminatePropType, validateIndeterminate } from '../../types/props/indeterminate';
 import { StencilUnknown } from '../../types/unknown';
-import { devHint } from '../../utils/a11y.tipps';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
-import { InputCheckboxIcon, InputCheckboxVariant, Props, Watches } from './types';
+import { InputCheckboxIconsProp, InputCheckboxIconsState, InputCheckboxVariant, inputCheckboxVariantOptions, Props, Watches } from './types';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -31,7 +32,19 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.setFormAssociatedCheckboxValue(this.component.state._value as StencilUnknown);
 	}
 
-	public validateIcon(value?: Stringified<InputCheckboxIcon>): void {
+	public validateHideError(value?: HideErrorPropType): void {
+		validateHideError(this.component, value, {
+			hooks: {
+				afterPatch: () => {
+					if (this.component.state._hideError) {
+						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
+					}
+				},
+			},
+		});
+	}
+
+	public validateIcons(value?: Stringified<InputCheckboxIconsProp>): void {
 		watchValidator(
 			this.component,
 			'_icons',
@@ -39,21 +52,22 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 				return typeof value === 'object' && value !== null && (isString(value.checked, 1) || isString(value.indeterminate, 1) || isString(value.unchecked, 1));
 			},
 			new Set(['InputCheckboxIcons']),
-			value
+			value,
+			{
+				hooks: {
+					beforePatch: (nextValue: unknown, nextState: Map<string, unknown>, component: Generic.Element.Component) => {
+						nextState.set('_icons', {
+							...(component.state._icons as InputCheckboxIconsState),
+							...(nextValue as InputCheckboxIconsProp),
+						});
+					},
+				},
+			}
 		);
 	}
 
 	public validateIndeterminate(value?: IndeterminatePropType): void {
 		validateIndeterminate(this.component, value);
-	}
-
-	/**
-	 * @deprecated
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	public validateType(value?: InputCheckboxVariant): void {
-		devHint(`The "_type" prop is deprecated. Use "_variant" instead.`);
-		this.validateVariant(value);
 	}
 
 	public validateValue(value?: Stringified<StencilUnknown>): void {
@@ -62,15 +76,11 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	}
 
 	public validateVariant(value?: InputCheckboxVariant): void {
-		if (value === 'checkbox') {
-			devHint(`[KolCheckbox] The "_variant" value 'checkbox' is deprecated. Use the new value 'default' instead.`);
-			value = 'default';
-		}
 		watchValidator(
 			this.component,
 			'_variant',
-			(value): boolean => typeof value === 'string' && (value === 'button' || value === 'default' || value === 'switch'),
-			new Set(['String {button, default, switch}']),
+			(value): boolean => typeof value === 'string' && inputCheckboxVariantOptions.includes(value),
+			new Set([`String {${inputCheckboxVariantOptions.join(', ')}`]),
 			value
 		);
 	}
@@ -78,9 +88,10 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateChecked(this.component._checked);
-		this.validateIcon(this.component._icon);
+		this.validateHideError(this.component._hideError);
+		this.validateIcons(this.component._icons);
 		this.validateIndeterminate(this.component._indeterminate);
 		this.validateValue(this.component._value);
-		this.validateVariant(this.component._variant || this.component._type);
+		this.validateVariant(this.component._variant);
 	}
 }

@@ -1,19 +1,24 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
-import { InputTypeOnDefault, Option } from '../../types/input/types';
+import { InputTypeOnDefault } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
-import { AlignPropType } from '../../types/props/align';
+import { HideErrorPropType } from '../../types/props/hide-error';
+import { IdPropType } from '../../types/props/id';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { NamePropType } from '../../types/props/name';
 import { OptionsPropType } from '../../types/props/options';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus } from '../../utils/reuse';
+import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -25,18 +30,16 @@ import { ComponentApi, States } from './types';
 	},
 	shadow: true,
 })
-export class KolInputRadio implements ComponentApi {
+export class KolInputRadio implements API {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
-	private ref?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propagateFocus(this.host, ref);
 	};
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
-		const hasExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
 			<Host>
@@ -45,6 +48,7 @@ export class KolInputRadio implements ComponentApi {
 						disabled: this.state._disabled === true,
 						error: hasError === true,
 						required: this.state._required === true,
+						'hidden-error': this._hideError === true,
 						[this.state._orientation]: true,
 					}}
 				>
@@ -52,8 +56,15 @@ export class KolInputRadio implements ComponentApi {
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}
-							{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-							<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+							<span slot="label">
+								{hasExpertSlot ? (
+									<slot name="expert"></slot>
+								) : typeof this._accessKey === 'string' ? (
+									<InternalUnderlinedAccessKey accessKey={this._accessKey} label={this._label} />
+								) : (
+									this._label
+								)}
+							</span>
 						</span>
 					</legend>
 					{this.state._options.map((option, index) => {
@@ -68,16 +79,19 @@ export class KolInputRadio implements ComponentApi {
 							<kol-input
 								class="radio"
 								key={customId}
+								_accessKey={this.state._accessKey} // by radio?!
 								_disabled={this.state._disabled || option.disabled}
 								_hideLabel={this.state._hideLabel}
 								_hint={this.state._hint}
 								_id={customId}
+								_label={option.label as string}
 								_renderNoLabel={true}
 								_required={this.state._required}
 								_slotName={slotName}
+								_tooltipAlign={this._tooltipAlign}
 								_touched={this.state._touched}
 							>
-								<div slot={slotName}>
+								<div slot={slotName} class="radio-input-wrapper">
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
 										title=""
@@ -96,22 +110,14 @@ export class KolInputRadio implements ComponentApi {
 										onChange={this.onChange}
 										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 									/>
-									<kol-tooltip
-										/**
-										 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-										 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-										 */
-										aria-hidden="true"
-										hidden={hasExpertSlot || !this.state._hideLabel}
-										_label={typeof this.state._label === 'string' ? this.state._label : ''}
-									></kol-tooltip>
 									<label
+										class="radio-label"
 										htmlFor={`${customId}`}
 										style={{
-											height: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
-											margin: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
-											padding: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
-											visibility: this.state._hideLabel && this.state._required !== true ? 'hidden' : undefined,
+											height: this.state._hideLabel ? '0' : undefined,
+											margin: this.state._hideLabel ? '0' : undefined,
+											padding: this.state._hideLabel ? '0' : undefined,
+											visibility: this.state._hideLabel ? 'hidden' : undefined,
 										}}
 									>
 										<span>
@@ -123,7 +129,7 @@ export class KolInputRadio implements ComponentApi {
 						);
 					})}
 					{hasError && (
-						<kol-alert id="error" _alert={true} _type="error" _variant="msg">
+						<kol-alert id="error" _alert={true} _type="error" _variant="msg" aria-hidden={this._hideError} class={`error${this._hideError ? ' hidden' : ''}`}>
 							{this.state._error}
 						</kol-alert>
 					)}
@@ -135,55 +141,58 @@ export class KolInputRadio implements ComponentApi {
 	private readonly controller: InputRadioController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Gibt den Text für eine Fehlermeldung an.
+	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
-	 * Gibt den Hinweistext an.
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	/**
+	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Optionen für das Eingabefeld an.
-	 * @deprecated Use _options.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
-
-	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
-	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -196,44 +205,48 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _options?: OptionsPropType;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
+	 * Defines the value of the input.
+	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
 	 */
 	@Prop() public _value?: Stringified<W3CInputValue>;
 
 	@State() public state: States = {
+		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: false, // ⚠ required
+		_label: '', // ⚠ required
 		_options: [],
 		_orientation: 'vertical',
 	};
@@ -267,6 +280,11 @@ export class KolInputRadio implements ComponentApi {
 		this.controller.validateHideLabel(value);
 	}
 
+	@Watch('_hideError')
+	public validateHideError(value?: HideErrorPropType): void {
+		this.controller.validateHideError(value);
+	}
+
 	@Watch('_hint')
 	public validateHint(value?: string): void {
 		this.controller.validateHint(value);
@@ -280,11 +298,6 @@ export class KolInputRadio implements ComponentApi {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
-	}
-
-	@Watch('_list')
-	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
-		this.validateOptions(value);
 	}
 
 	@Watch('_name')
@@ -313,7 +326,7 @@ export class KolInputRadio implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

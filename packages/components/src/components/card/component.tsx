@@ -3,18 +3,14 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { HeadingLevel } from '../../types/heading-level';
 import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
-import { HasFooterPropType, validateHasFooter } from '../../types/props/has-footer';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { setState } from '../../utils/prop.validators';
 import { KoliBriAlertEventCallbacks } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
-import { KoliBriCardAPI, KoliBriCardEventCallbacks, KoliBriCardStates } from './types';
+import { API, KoliBriCardEventCallbacks, States } from './types';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
- * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
- * @slot header - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card.
- * @slot footer - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.
  */
 @Component({
 	tag: 'kol-card',
@@ -23,7 +19,7 @@ import { KoliBriCardAPI, KoliBriCardEventCallbacks, KoliBriCardStates } from './
 	},
 	shadow: true,
 })
-export class KolCard implements KoliBriCardAPI {
+export class KolCard implements API {
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
 			this._on.onClose(new Event('Close'));
@@ -38,28 +34,17 @@ export class KolCard implements KoliBriCardAPI {
 		return (
 			<Host>
 				<div class="card">
-					<div class="content-container">
-						<div class="header">
-							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
-							<slot name="header"></slot>
-						</div>
-						<div class="content">
-							<slot name="content"></slot>
-							{/* Deprecated for version 2 */}
-							<slot />
-						</div>
-						{this.state._hasFooter && (
-							<div class="footer">
-								<slot name="footer"></slot>
-							</div>
-						)}
+					<div class="header">
+						<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
 					</div>
-
+					<div class="content">
+						<slot />
+					</div>
 					{this.state._hasCloser && (
 						<kol-button-wc
 							class="close"
 							_hideLabel
-							_icon={{
+							_icons={{
 								left: {
 									icon: 'codicon codicon-close',
 								},
@@ -80,36 +65,22 @@ export class KolCard implements KoliBriCardAPI {
 	@Prop() public _on?: KoliBriCardEventCallbacks;
 
 	/**
-	 * Defines whether the card has a close button.
+	 * Defines whether the element can be closed.
+	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCloser?: HasCloserPropType;
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Shows the slot="footer".
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _hasFooter?: HasFooterPropType = false;
+	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _heading?: string;
-
-	/**
-	 * Gibt die Beschriftung der Komponente an.
-	 *
-	 * @deprecated Verwende stattdessen das Property _heading.
-	 */
-	@Prop() public _headline?: string;
-
-	@Prop() public _label?: LabelPropType;
-
-	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
-	@State() public state: KoliBriCardStates = {
+	@State() public state: States = {
 		_label: '…', // '⚠'
 	};
 
@@ -130,25 +101,6 @@ export class KolCard implements KoliBriCardAPI {
 		validateHasCloser(this, value);
 	}
 
-	@Watch('_hasFooter')
-	public validateHasFooter(value?: HasFooterPropType): void {
-		validateHasFooter(this, value);
-	}
-
-	@Watch('_heading')
-	public validateHeading(value?: string): void {
-		this.validateLabel(value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 * @deprecated
-	 */
-	@Watch('_headline')
-	public validateHeadline(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
@@ -161,8 +113,7 @@ export class KolCard implements KoliBriCardAPI {
 
 	public componentWillLoad(): void {
 		this.validateHasCloser(this._hasCloser);
-		this.validateHasFooter(this._hasFooter);
-		this.validateLabel(this._label || this._heading || this._headline);
+		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 	}

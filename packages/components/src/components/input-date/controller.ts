@@ -1,10 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 
-import { InputNumberType } from '../../types/input/control/number';
+import { InputDateType, inputDateTypeOptions } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { ReadOnlyPropType, validateReadOnly } from '../../types/props/read-only';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
+import { a11yHint } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
@@ -36,11 +38,17 @@ export class InputDateController extends InputIconController implements Watches 
 		);
 	}
 
-	/**
-	 * @deprecated remains to satisfy `Watches` interface
-	 */
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	public validateList(): void {}
+	public validateHideError(value?: HideErrorPropType): void {
+		validateHideError(this.component, value, {
+			hooks: {
+				afterPatch: () => {
+					if (this.component.state._hideError) {
+						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
+					}
+				},
+			},
+		});
+	}
 
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		validateSuggestions(this.component, value);
@@ -178,14 +186,12 @@ export class InputDateController extends InputIconController implements Watches 
 		watchNumber(this.component, '_step', value);
 	}
 
-	public validateType(value?: InputNumberType): void {
+	public validateType(value?: InputDateType): void {
 		watchValidator(
 			this.component,
 			'_type',
-			(value): boolean =>
-				typeof value === 'string' &&
-				(value === 'date' || value === 'datetime-local' || value === 'month' || value === 'number' || value === 'time' || value === 'week'),
-			new Set(['String {date, datetime-local, month, number, time, week}']),
+			(value): boolean => typeof value === 'string' && inputDateTypeOptions.includes(value),
+			new Set([`String {${inputDateTypeOptions.join(', ')}`]),
 			value
 		);
 	}
@@ -207,8 +213,9 @@ export class InputDateController extends InputIconController implements Watches 
 		this.validateAutoComplete(this.component._autoComplete);
 		this.validateMax(this.component._max);
 		this.validateMin(this.component._min);
+		this.validateHideError(this.component._hideError);
 		this.validateLabel(this.component._label);
-		this.validateSuggestions(this.component._suggestions || this.component._list);
+		this.validateSuggestions(this.component._suggestions);
 		this.validateOn(this.component._on);
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);

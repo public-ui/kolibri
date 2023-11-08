@@ -1,42 +1,53 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
-import { mapIconProp2State } from '../../../types/props/icon';
+import { KoliBriCustomIcon, KoliBriIconsProp } from '../../../types/icons';
+import { mapIconProp2State } from '../../../types/props/icons';
+import { md } from '../../../utils/markdown';
+import { showExpertSlot } from '../../../utils/reuse';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { KolibriSpanProps, KolibriSpanStates } from '../types';
+import { Props, States } from '../types';
 
 type Slots = {
 	''?: string;
 	expert?: string;
 } & Record<string, undefined | string>;
-
+export type SpanOptions = {
+	additionalAttrs?: string;
+	additionalClassNames?: string[];
+};
 export const getSpanWcHtml = (
-	props: KolibriSpanProps,
+	props: Props,
 	slots: Slots = {
 		expert: undefined,
 	},
-	additionalAttrs = ''
+	options?: SpanOptions
 ): string => {
-	const state = mixMembers<KolibriSpanProps, KolibriSpanStates>(
+	const state = mixMembers<Props, States>(
 		{
-			_icon: {},
+			_allowMarkdown: false,
+			_icons: {},
 			_hideLabel: false,
-			_label: false, // ⚠ required
+			_label: '', // ⚠ required
 		},
 		props
 	);
-	if (state._label === '') {
-		state._label = false; // TODO: remove this workaround in v2
-	}
-	const hideExpertSlot: boolean = typeof state._label === 'string';
-	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
+
+	/**
+	 * @todo: This covers the case where the label is undefined or null. But why?
+	 */
+	state._label = state._label ?? '';
+
+	const hideExpertSlot = !showExpertSlot(state._label);
+	const icon = mapIconProp2State(state._icons as KoliBriIconsProp);
+	const classNames: string[] = [...(state._hideLabel === true ? [`hide-label`] : []), ...(options?.additionalClassNames ?? [])];
+
 	return `
-<kol-span-wc${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${additionalAttrs}>
+<kol-span-wc${classNames.length ? ` class="${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
 	${
 		icon.top
 			? getIconHtml({
 					_label: '',
-					_icon: (icon.top as KoliBriCustomIcon).icon,
+					_icons: (icon.top as KoliBriCustomIcon).icon,
 			  })
 			: ''
 	}
@@ -46,14 +57,20 @@ export const getSpanWcHtml = (
 				? getIconHtml(
 						{
 							_label: '',
-							_icon: (icon.left as KoliBriCustomIcon).icon,
+							_icons: (icon.left as KoliBriCustomIcon).icon,
 						},
 						` class="icon left"`
 				  )
 				: ''
 		}
-		${!state._hideLabel && hideExpertSlot ? `<span>${state._label as string}</span>` : ``}
-		<span${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
+		${
+			!state._hideLabel && hideExpertSlot
+				? state._allowMarkdown && typeof state._label === 'string' && state._label.length > 0
+					? `<span class="span-label md">${md(state._label)}</span>`
+					: `<span class="span-label">${state._label ?? ''}</span>`
+				: ``
+		}
+		<span class="span-label" ${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
 			${slots.expert ? slots.expert : ``}
 		</span>
 		${
@@ -61,7 +78,7 @@ export const getSpanWcHtml = (
 				? getIconHtml(
 						{
 							_label: '',
-							_icon: (icon.right as KoliBriCustomIcon).icon,
+							_icons: (icon.right as KoliBriCustomIcon).icon,
 						},
 						` class="icon right"`
 				  )
@@ -72,7 +89,7 @@ export const getSpanWcHtml = (
 		icon.bottom
 			? getIconHtml({
 					_label: '',
-					_icon: (icon.bottom as KoliBriCustomIcon).icon,
+					_icons: (icon.bottom as KoliBriCustomIcon).icon,
 			  })
 			: ''
 	}
@@ -80,7 +97,7 @@ export const getSpanWcHtml = (
 };
 
 export const getSpanHtml = (
-	props: KolibriSpanProps,
+	props: Props,
 	slots: Slots = {
 		expert: `<slot name="expert" slot="expert"></slot>`,
 	}

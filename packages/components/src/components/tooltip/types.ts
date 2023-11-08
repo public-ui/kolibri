@@ -1,17 +1,16 @@
 import { Generic } from '@a11y-ui/core';
 
-import { AlignPropType } from '../../types/props/align';
+import { PropAlign } from '../../types/props/align';
 import { PropId } from '../../types/props/id';
 import { PropLabel } from '../../types/props/label';
+import { PropAccessKey } from '../../types/props/access-key';
 
 type RequiredProps = PropLabel;
-type OptionalProps = {
-	align: AlignPropType;
-} & PropId;
-export type KoliBriTooltipProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+type OptionalProps = PropAccessKey & PropAlign & PropId;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps & OptionalProps;
-type OptionalStates = unknown;
+type RequiredStates = PropLabel & PropAlign & PropId;
+type OptionalStates = PropAccessKey;
 
-export type KoliBriTooltipStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriTooltipAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

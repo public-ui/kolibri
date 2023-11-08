@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { KoliBriIconProps } from '../types';
+import { Props } from '../types';
 import { getIconHtml } from './html.mock';
 
-executeTests<KoliBriIconProps>(
+executeTests<Props>(
 	'Icon',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
@@ -18,7 +18,7 @@ executeTests<KoliBriIconProps>(
 	},
 	{
 		_label: ['Aria-Label'],
-		_icon: ['codicon codicon-home'],
+		_icons: ['codicon codicon-home'],
 	},
 	getIconHtml,
 	{

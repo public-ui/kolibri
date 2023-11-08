@@ -3,8 +3,8 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
-import { LinkProps } from '../../../types/button-link';
 import { COMPONENTS } from '../../component-list';
+import { LinkProps } from '../../link/types';
 import { getLinkHtml } from './html.mock';
 
 executeTests<LinkProps>(
@@ -18,12 +18,13 @@ executeTests<LinkProps>(
 	},
 	{
 		_href: ['https://google.de'],
-		_icon: ['codicon codicon-home'],
+		_icons: ['codicon codicon-home'],
 		_hideLabel: [false, true],
 		_label: ['Label'],
 		_target: ['_self', '_blank', 'egal'],
 		_targetDescription: ['Der Link wird in einem neuen Tab geöffnet.'],
 		_tooltipAlign: ['top', 'right', 'bottom', 'left'],
+		_download: ['', 'download-file.zip'],
 	},
 	getLinkHtml,
 	{

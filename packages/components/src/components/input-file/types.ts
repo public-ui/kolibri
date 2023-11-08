@@ -1,58 +1,64 @@
 import { Generic } from '@a11y-ui/core';
 
-import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriHorizontalIcons } from '../../types/icons';
 import { InputTypeOnDefault } from '../../types/input/types';
+import { PropDisabled } from '../../types/props/disabled';
+import { PropHideError } from '../../types/props/hide-error';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropId } from '../../types/props/id';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { InputRequiredProps } from '../input/types';
+import { PropMultiple } from '../../types/props/multiple';
+import { PropName } from '../../types/props/name';
+import { PropRequired } from '../../types/props/required';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
+import { PropTouched } from '../../types/props/touched';
+import { Props as ButtonProps } from '../button/types';
 
-type RequiredProps = InputRequiredProps;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accept: string;
 	alert: boolean;
 	accessKey: string;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcon>;
-	multiple: boolean;
-	name: string;
+	icons: Stringified<KoliBriHorizontalIcons>;
 	on: InputTypeOnDefault;
-	required: boolean;
 	smartButton: Stringified<ButtonProps>;
-	syncValueBySelector: string;
-	touched: boolean;
 	tabIndex: number;
 	value: string;
-};
+} & PropDisabled &
+	PropHideError &
+	PropHideLabel &
+	PropLabelWithExpertSlot &
+	PropMultiple &
+	PropName &
+	PropRequired &
+	PropSyncValueBySelector &
+	PropTouched;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = {
-	id: string;
-} & PropLabelWithExpertSlot;
+type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideError;
 type OptionalStates = {
 	accept: string;
 	alert: boolean;
 	accessKey: string;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
-	icon: KoliBriHorizontalIcon;
-	multiple: boolean;
-	name: string;
+	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
-	required: boolean;
 	smartButton: ButtonProps;
-	touched: boolean;
 	tabIndex: number;
 	value: string;
-};
+} & PropDisabled &
+	PropHideLabel &
+	PropMultiple &
+	PropName &
+	PropRequired &
+	PropTouched;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 export type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
-export type ComponentApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -16,14 +16,13 @@
 		"start": "next dev",
 		"postinstall": "npm-run-all postinstall:*",
 		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
-		"update": "ncu -t minor -u && ncu"
+		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot"
 	},
 	"dependencies": {
 		"@leanup/stack": "1.3.39",
-		"@public-ui/components": "1.6.0-rc.23",
-		"@public-ui/react": "1.6.0-rc.23",
-		"@public-ui/themes": "1.6.0-rc.23",
+		"@public-ui/components": "2.0.0-rc.8",
+		"@public-ui/react": "2.0.0-rc.8",
+		"@public-ui/themes": "2.0.0-rc.8",
 		"@stencil/core": "2.20.0",
 		"next": "13.0.7",
 		"react": "18.2.0",
@@ -39,7 +38,7 @@
 		"cpy-cli": "5.0.0",
 		"eslint": "8.30.0",
 		"eslint-config-airbnb-base": "15.0.0",
-		"eslint-config-prettier": "8.5.0",
+		"eslint-config-prettier": "9.0.0",
 		"eslint-plugin-import": "2.26.0",
 		"eslint-plugin-prettier": "4.2.1",
 		"eslint-plugin-react": "7.31.11",

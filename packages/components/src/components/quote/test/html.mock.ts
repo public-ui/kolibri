@@ -1,14 +1,15 @@
 import { mixMembers } from 'stencil-awesome-test';
 
+import { showExpertSlot } from '../../../utils/reuse';
 import { getLinkHtml } from '../../link/test/html.mock';
-import { KoliBriQuoteProps, KoliBriQuoteStates } from '../types';
+import { Props, States } from '../types';
 
 type Slot = {
 	expert?: string;
 };
 
-export const getQuoteHtml = (props: KoliBriQuoteProps, slots: Slot = {}): string => {
-	const state = mixMembers<KoliBriQuoteProps, KoliBriQuoteStates>(
+export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
+	const state = mixMembers<Props, States>(
 		{
 			_href: '…', // ⚠ required
 			_quote: '…', // ⚠ required
@@ -16,7 +17,7 @@ export const getQuoteHtml = (props: KoliBriQuoteProps, slots: Slot = {}): string
 		},
 		props
 	);
-	const hasExpertSlot = state._quote === '';
+	const hasExpertSlot = showExpertSlot(state._quote); // _quote instead of _caption as _label
 	return `<kol-quote>
   <mock:shadow-root>
 		<figure class="${state._variant}">

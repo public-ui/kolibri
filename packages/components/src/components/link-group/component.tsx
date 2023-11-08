@@ -1,14 +1,13 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { HeadingLevel } from '../../types/heading-level';
 import { Orientation } from '../../types/orientation';
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
-import { watchHeadingLevel } from '../heading/validation';
+import { watchValidator } from '../../utils/prop.validators';
+import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
-import { KoliBriLinkGroupAPI, KoliBriLinkGroupStates, ListStyleType } from './types';
+import { API, ListStyleType, States } from './types';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
@@ -40,7 +39,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 	},
 	shadow: true,
 })
-export class KolLinkGroup implements KoliBriLinkGroupAPI {
+export class KolLinkGroup implements API {
 	public render(): JSX.Element {
 		return (
 			<nav
@@ -50,10 +49,6 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 					horizontal: this.state._orientation === 'horizontal',
 				}}
 			>
-				{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
-					<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
-				)}
-
 				{this.isUl === false ? (
 					<ol>
 						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
@@ -70,76 +65,39 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	private isUl = true;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
 	 * Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet
 	 */
 	@Prop() public _listStyleType?: ListStyleType;
 
 	/**
-	 * Gibt die optionale Überschrift zur Link-Gruppe an.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _heading?: string;
+	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
-	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
-
-	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
-	 */
-	@Prop() public _level?: HeadingLevel;
-
-	/**
-	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
+	 * Defines the list of links to render.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	/**
-	 * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
-	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
-	 */
-	@Prop() public _ordered?: boolean;
-
-	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	@State() public state: KoliBriLinkGroupStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_listStyleType: 'disc',
 		_links: [],
 		_orientation: 'vertical',
 	};
 
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-
-	@Watch('_heading')
-	public validateHeading(value?: string): void {
-		watchString(this, '_heading', value);
-	}
-
 	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
+	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
+		if (!initial) {
+			removeNavLabel(this.state._label); // remove the current
+		}
 		validateLabel(this, value);
-	}
-
-	@Watch('_level')
-	public validateLevel(value?: HeadingLevel): void {
-		watchHeadingLevel(this, value);
+		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_listStyleType')
@@ -180,11 +138,6 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 		watchNavLinks('KolLinkGroup', this, value);
 	}
 
-	@Watch('_ordered')
-	public validateOrdered(value?: boolean): void {
-		watchBoolean(this, '_ordered', value);
-	}
-
 	@Watch('_orientation')
 	public validateOrientation(value?: Orientation): void {
 		watchValidator(
@@ -200,18 +153,20 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateHeading(this._heading);
-		this.validateLabel(this._label || this._ariaLabel);
-		this.validateLevel(this._level);
+		this.validateLabel(this._label, undefined, true);
 		this.validateListStyleType(this._listStyleType);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
+	}
+
+	public disconnectedCallback(): void {
+		removeNavLabel(this.state._label);
 	}
 }
 
 // console.log(
 //   stringifyJson([
-//     { _label: 'Fehler 1', _id: '#anschrift_anschrift_adresse_strasse', _icon: 'error' },
-//     { _label: 'Fehler 2', _id: '#anschrift_anschrift_adresse_hausnummer', _icon: 'error' },
+//     { _label: 'Fehler 1', _id: '#anschrift_anschrift_adresse_strasse', _icons: 'error' },
+//     { _label: 'Fehler 2', _id: '#anschrift_anschrift_adresse_hausnummer', _icons: 'error' },
 //   ])
 // );

@@ -127,9 +127,7 @@ export const AppComponent: Component = () => {
 		<div class="font-sans grid gap-2">
 			<div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end default">
 				<div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">
-					<KolInputText class="w-full" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search">
-						Theme
-					</KolInputText>
+					<KolInputText class="w-full" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search" _label={`Theme`} />
 					<KolInputCheckbox
 						_id="scope switch"
 						_on={{
@@ -138,10 +136,9 @@ export const AppComponent: Component = () => {
 							},
 						}}
 						_checked={getPropsStyle()}
-						_type="switch"
-					>
-						Global-Properties / Component-Style
-					</KolInputCheckbox>
+						_variant="switch"
+						_label="Global-Properties / Component-Style"
+					/>
 				</div>
 				<div class="w-full grid gap-2 md:grid-cols-2 md:col-span-2 justify-items-center items-end">
 					<Switch
@@ -164,7 +161,7 @@ export const AppComponent: Component = () => {
 					<div class="flex gap-2 items-end">
 						<KolButton
 							_label="Zurück"
-							_icon="codicon codicon-arrow-left"
+							_icons="codicon codicon-arrow-left"
 							_hideLabel
 							_on={{
 								onClick: (event: MouseEvent) => {
@@ -180,22 +177,22 @@ export const AppComponent: Component = () => {
 						></KolButton>
 						<KolSelect
 							_id="component-select"
-							_list={TAG_NAME_LIST}
+							_options={TAG_NAME_LIST}
 							_on={{
 								onChange: (_event, value) => {
 									setComponent((value as string[])[0]);
 									sessionStorage.setItem('kolibri-component', getComponent());
 								},
 							}}
-							ref={(el) => {
-								select = el;
+							ref={(el: HTMLElement) => {
+								select = el as HTMLKolSelectElement;
 							}}
 						>
 							Komponenten
 						</KolSelect>
 						<KolButton
 							_label="Weiter"
-							_icon="codicon codicon-arrow-right"
+							_icons="codicon codicon-arrow-right"
 							_hideLabel
 							_on={{
 								onClick: (event: MouseEvent) => {
@@ -227,9 +224,7 @@ export const AppComponent: Component = () => {
 								<KolButton class="w-full sm:w-auto" _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
 							</div>
 							<div class="flex gap-2">
-								<KolInputFile _id="theme-upload-input" _on={onChangeUpload}>
-									Theme laden
-								</KolInputFile>
+								<KolInputFile _id="theme-upload-input" _on={onChangeUpload} _label={`Theme laden`} />
 							</div>
 						</div>
 					</>

@@ -9,24 +9,24 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'main'
+          ref: 'develop'
 
       # - uses: pnpm/action-setup@v2.2.4
       #   with:
       #     run_install: false
       #     version: 7
-      # - uses: actions/setup-node@v3
+      # - uses: actions/setup-node@v4
       #   with:
       #     cache: pnpm
       #     node-version: 16
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           # cache: pnpm
           node-version: 16
@@ -61,7 +61,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add **/package.json **/pnpm-lock.yaml
+          git add **/package.json pnpm-lock.yaml
           git status
           git commit -m "chore: auto dependency update"
 
