@@ -27,7 +27,7 @@ export const getAccordionHtml = (
 					_level: props._level,
 				},
 				{
-					default: `${getButtonWcHtml(
+					expert: `${getButtonWcHtml(
 						{
 							_ariaControls: 'nonce',
 							_ariaExpanded: props._open === true,

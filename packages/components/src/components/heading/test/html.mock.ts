@@ -5,7 +5,7 @@ import { Props, States } from '../types';
 export const getHeadingWcHtml = (
 	props: Props,
 	slots: {
-		default?: string;
+		expert?: string;
 	} = {},
 	additionalAttrs = ''
 ): string => {
@@ -20,10 +20,9 @@ export const getHeadingWcHtml = (
 
 	return `
 		<kol-heading-wc${additionalAttrs}>
-			${typeof slots.default === 'string' ? `` : `<slot hidden=""></slot>`}
 			<${tag} class="headline">
 				${state._label}
-				${typeof slots.default === 'string' ? slots.default : ``}
+				${slots.expert !== undefined ? slots.expert : '<slot name="expert" slot="expert"></slot>'}
 			</${tag}>
 		</kol-heading-wc>`;
 };
@@ -31,7 +30,7 @@ export const getHeadingWcHtml = (
 export const getHeadingHtml = (
 	props: Props,
 	slots: {
-		default?: string;
+		expert?: string;
 	} = {}
 ): string => {
 	return `
@@ -39,6 +38,6 @@ export const getHeadingHtml = (
 	<mock:shadow-root>
 		${getHeadingWcHtml(props)}
 	</mock:shadow-root>
-	${slots.default !== undefined ? slots.default : ''}
+	${slots.expert !== undefined ? slots.expert : ''}
 </kol-heading>`;
 };
