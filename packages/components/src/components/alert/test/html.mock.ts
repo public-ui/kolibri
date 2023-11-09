@@ -56,7 +56,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 										_level: props._level,
 									},
 									{
-										default: props._label,
+										expert: props._label,
 									}
 							  )
 							: ''
