@@ -33,15 +33,6 @@
 		cursor: pointer;
 	}
 
-	/* font-family is NOT inherited all HTML elements. */
-	button,
-	input,
-	option,
-	select,
-	textarea {
-		font-family: inherit;
-	}
-
 	/* This is the text label. */
 	.icon-only > kol-span-wc > span > span {
 		display: none;

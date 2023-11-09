@@ -18,7 +18,7 @@ export class KolHeading implements Props {
 	public render(): JSX.Element {
 		return (
 			<kol-heading-wc _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline}>
-				<slot />
+				<slot name="expert" slot="expert" />
 			</kol-heading-wc>
 		);
 	}
