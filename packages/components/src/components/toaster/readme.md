@@ -23,6 +23,11 @@ toaster.enqueue({
 });
 ```
 
+### Weitere Service-Methoden
+
+- `closeAll`: Schließt alle Toasts
+- `dispose`: Entfernt den Toast Container. Die Toaster-Instanz kann nicht weiter genutzt werden.
+
 ## Verwendung
 
 ### Überschrift
@@ -37,7 +42,7 @@ Alternativ zur statischen Description können Sie über das Attribut **`_render`
 HTMLElement der Toast-Komponente aufgerufen. Zudem wird auch ein Objekt übergeben, das eine `close`-Funktion zum Schließen des Toasts bereitstellt.
 
 ```ts
-void toaster.enqueue({
+const closeToast = toaster.enqueue({
 	render: (element: HTMLElement, { close }) => {
 		element.textContent = 'Mein Inhalt';
 		const customCloseButton = document.createElement('button');
@@ -46,6 +51,8 @@ void toaster.enqueue({
 		customCloseButton.addEventListener('click', close, { once: true });
 	},
 });
+
+/* Optional: Toast wieder schließen mit `closeToast()` */
 ```
 
 ### Anzeigetyp des Toast
