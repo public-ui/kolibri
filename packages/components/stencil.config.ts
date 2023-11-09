@@ -43,7 +43,6 @@ const TAGS = [
 	'kol-modal',
 	'kol-nav',
 	'kol-pagination',
-	'kol-popover',
 	'kol-progress',
 	'kol-quote',
 	'kol-select',
@@ -60,8 +59,8 @@ const TAGS = [
 ];
 const EXCLUDE_TAGS = [
 	'kol-alert-wc',
-	'kol-avatar-wc',
 	'kol-all',
+	'kol-avatar-wc',
 	'kol-button-group-wc',
 	'kol-button-link-text-switch',
 	'kol-button-wc',
@@ -70,6 +69,7 @@ const EXCLUDE_TAGS = [
 	'kol-heading-wc',
 	'kol-input',
 	'kol-link-wc',
+	'kol-popover-wc',
 	'kol-span-wc',
 	'kol-tooltip-wc',
 ];
