@@ -56,13 +56,21 @@ export class KolPopover implements API {
 		const body = getDocument().body;
 		body.addEventListener('keyup', this.hidePopoverByEscape);
 		body.addEventListener('click', this.hidePopoverByClickOutside);
-		document.scrollingElement?.addEventListener('scroll', this.showPopover.bind(this), { passive: true });
+		document.scrollingElement?.addEventListener(
+			'scroll',
+			() => {
+				void this.showPopover();
+			},
+			{ passive: true }
+		);
 	}
 	private removeListenersToBody(): void {
 		const body = getDocument().body;
 		body.removeEventListener('keyup', this.hidePopoverByEscape);
 		body.removeEventListener('click', this.hidePopoverByClickOutside);
-		document.scrollingElement?.removeEventListener('scroll', this.showPopover.bind(this));
+		document.scrollingElement?.removeEventListener('scroll', () => {
+			void this.showPopover();
+		});
 	}
 
 	/* catchElement functions */

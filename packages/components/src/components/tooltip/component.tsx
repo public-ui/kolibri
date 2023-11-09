@@ -43,7 +43,9 @@ export class KolTooltip implements API {
 
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;
-			this.cleanupAutoPositioning = autoUpdate(target, tooltipEl, this.alignTooltip.bind(this));
+			this.cleanupAutoPositioning = autoUpdate(target, tooltipEl, () => {
+				void this.alignTooltip();
+			});
 		}
 	};
 
