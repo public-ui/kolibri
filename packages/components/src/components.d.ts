@@ -3142,7 +3142,8 @@ export namespace Components {
         "_type"?: AlertType;
     }
     interface KolToastContainer {
-        "enqueue": (toast: Toast) => Promise<void>;
+        "closeAll": () => Promise<void>;
+        "enqueue": (toast: Toast) => Promise<() => void>;
     }
     interface KolTooltipWc {
         /**

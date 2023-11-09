@@ -22,7 +22,7 @@ export class KolToastContainer implements API {
 	// Stencil requires async function:
 	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
-	async enqueue(toast: Toast) {
+	public async enqueue(toast: Toast) {
 		const newToastState: ToastState = {
 			toast,
 			status: 'adding',
@@ -37,7 +37,7 @@ export class KolToastContainer implements API {
 			this.state = {
 				...this.state,
 				_toastStates: this.state._toastStates.map((localToastState) =>
-					localToastState === newToastState
+					localToastState.id === newToastState.id
 						? {
 								...localToastState,
 								status: 'settled',
@@ -46,13 +46,17 @@ export class KolToastContainer implements API {
 				),
 			};
 		}, TRANSITION_TIMEOUT);
+
+		return () => {
+			this.handleClose(newToastState);
+		};
 	}
 
 	private handleClose(toastState: ToastState) {
 		this.state = {
 			...this.state,
 			_toastStates: this.state._toastStates.map((localToastState) => {
-				if (localToastState === toastState) {
+				if (localToastState.id === toastState.id) {
 					localToastState.status = 'removing';
 				}
 				return localToastState;
@@ -62,12 +66,14 @@ export class KolToastContainer implements API {
 		setTimeout(() => {
 			this.state = {
 				...this.state,
-				_toastStates: this.state._toastStates.filter((localToastState) => localToastState !== toastState),
+				_toastStates: this.state._toastStates.filter((localToastState) => localToastState.id !== toastState.id),
 			};
 		}, TRANSITION_TIMEOUT);
 	}
 
-	private handleCloseAllClick() {
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Method()
+	public async closeAll() {
 		this.state = {
 			...this.state,
 			_toastStates: this.state._toastStates.map((localToastState) => ({
@@ -88,7 +94,15 @@ export class KolToastContainer implements API {
 		return (
 			<Fragment>
 				{this.state._toastStates.length > 1 && (
-					<kol-button _label={translate('kol-toast-close-all')} class="close-all" _on={{ onClick: this.handleCloseAllClick.bind(this) }}></kol-button>
+					<kol-button
+						_label={translate('kol-toast-close-all')}
+						class="close-all"
+						_on={{
+							onClick: () => {
+								void this.closeAll();
+							},
+						}}
+					></kol-button>
 				)}
 				{this.state._toastStates.map((toastState) => (
 					<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />
