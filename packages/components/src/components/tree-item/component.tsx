@@ -23,10 +23,12 @@ export class KolTreeItemWc implements API {
 		return (
 			<Host>
 				<li>
-					<kol-link _label="false" _href={this.state._href} ref={(element) => (this.linkElement = element!)}>
-						{this.state._hasChildren &&
-							(this.state._open ? <span onClick={this.collapse.bind(this)}>-</span> : <span onClick={this.expand.bind(this)}>+</span>)}{' '}
-						{this.state._label}
+					<kol-link _label="" _href={this.state._href} ref={(element) => (this.linkElement = element!)}>
+						<span slot="expert">
+							{this.state._hasChildren &&
+								(this.state._open ? <span onClick={this.collapse.bind(this)}>-</span> : <span onClick={this.expand.bind(this)}>+</span>)}{' '}
+							{this.state._label}
+						</span>
 					</kol-link>
 					<ul hidden={!this.state._hasChildren || !this.state._open}>
 						<slot />
@@ -96,11 +98,11 @@ export class KolTreeItemWc implements API {
 		};
 	}
 
-	@Method() focus() {
+	@Method() async focusLink() {
 		this.linkElement.focus();
 	}
 
-	@Method() expand() {
+	@Method() async expand() {
 		if (this.state._hasChildren) {
 			this.state = {
 				...this.state,
@@ -109,7 +111,7 @@ export class KolTreeItemWc implements API {
 		}
 	}
 
-	@Method() collapse() {
+	@Method() async collapse() {
 		if (this.state._hasChildren) {
 			this.state = {
 				...this.state,

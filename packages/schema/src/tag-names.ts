@@ -46,4 +46,6 @@ export enum TagEnum {
 	'toast-container',
 	'toolbar', // TODO: github pr link
 	'tooltip',
+	'tree',
+	'tree-item',
 }

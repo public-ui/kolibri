@@ -93,11 +93,11 @@ export class KolTreeWc implements API {
 
 		switch (event.key) {
 			case 'ArrowDown': {
-				await visibleItems[currentIndex + 1]?.focus();
+				await visibleItems[currentIndex + 1]?.focusLink();
 				break;
 			}
 			case 'ArrowUp': {
-				await visibleItems[currentIndex - 1]?.focus();
+				await visibleItems[currentIndex - 1]?.focusLink();
 				break;
 			}
 			case 'ArrowRight': {

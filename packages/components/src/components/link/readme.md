@@ -89,6 +89,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 - [kol-breadcrumb](../breadcrumb)
 - [kol-link-group](../link-group)
 - [kol-quote](../quote)
+- [kol-tree-item](../tree-item)
 
 ### Depends on
 
@@ -107,6 +108,7 @@ graph TD;
   kol-breadcrumb --> kol-link
   kol-link-group --> kol-link
   kol-quote --> kol-link
+  kol-tree-item --> kol-link
   style kol-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

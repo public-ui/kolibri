@@ -2509,7 +2509,7 @@ export namespace Components {
         "_open"?: OpenPropType;
         "collapse": () => Promise<void>;
         "expand": () => Promise<void>;
-        "focus": () => Promise<void>;
+        "focusLink": () => Promise<void>;
     }
     interface KolTreeWc {
     }
