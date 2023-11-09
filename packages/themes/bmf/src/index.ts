@@ -107,6 +107,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-BUTTON': css`
+		:is(a, button) {
+			font-size: 1.125em;
+		}
 		:is(a, button):focus {
 			outline: none;
 		}
@@ -2419,6 +2422,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-LINK-BUTTON': css`
+		:is(a, button) {
+			font-size: 1.125em;
+		}
 		:is(a, button):focus {
 			outline: none;
 		}
