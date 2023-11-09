@@ -69,11 +69,17 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 ## Methods
 
-### `enqueue(toast: Toast) => Promise<void>`
+### `closeAll() => Promise<void>`
 
 #### Returns
 
 Type: `Promise<void>`
+
+### `enqueue(toast: Toast) => Promise<() => void>`
+
+#### Returns
+
+Type: `Promise<() => void>`
 
 ## Dependencies
 
