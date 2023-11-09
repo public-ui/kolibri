@@ -21,7 +21,7 @@ export const getCardHtml = (props: Props): string => {
 						_level: props._level,
 					},
 					{
-						default: '',
+						expert: '',
 					}
 				)}
 			</div>

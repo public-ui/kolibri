@@ -61,49 +61,49 @@ export class KolHeadingWc implements API {
 				return (
 					<h1 class="headline">
 						{headline}
-						<slot />
+						<slot name="expert" />
 					</h1>
 				);
 			case 2:
 				return (
 					<h2 class="headline">
 						{headline}
-						<slot />
+						<slot name="expert" />
 					</h2>
 				);
 			case 3:
 				return (
 					<h3 class="headline">
 						{headline}
-						<slot />
+						<slot name="expert" />
 					</h3>
 				);
 			case 4:
 				return (
 					<h4 class="headline">
 						{headline}
-						<slot />
+						<slot name="expert" />
 					</h4>
 				);
 			case 5:
 				return (
 					<h5 class="headline">
 						{headline}
-						<slot />
+						<slot name="expert" />
 					</h5>
 				);
 			case 6:
 				return (
 					<h6 class="headline">
 						{headline}
-						<slot />
+						<slot name="expert" />
 					</h6>
 				);
 			default:
 				return (
 					<strong class="headline">
 						{headline}
-						<slot />
+						<slot name="expert" />
 					</strong>
 				);
 		}

@@ -689,7 +689,9 @@ export const HandoutBasic: FC = () => (
 		<div className="grid gap-4 grid-cols-[auto_1fr_1fr] items-center">
 			<KolKolibri className="block w-75px" _labeled={false}></KolKolibri>
 			<KolHeading _label="" _level={1}>
-				Kolibri-Handout <small>for {getThemeName(getTheme())}</small>
+				<span slot="expert">
+					Kolibri-Handout <small>for {getThemeName(getTheme())}</small>
+				</span>
 			</KolHeading>
 			<KolDetails _label="Abstract" _open>
 				The handout shows a selection of KoliBri components in the style of <strong>{getThemeName(getTheme())}</strong>. Since KoliBri offers self-contained,
