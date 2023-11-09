@@ -280,3 +280,7 @@ version:
 
 - prop `_label` now required
 - prop `_version` removed (use `_label` instead)
+
+kol-heading:
+
+- slot `default` renamed to `expert`
