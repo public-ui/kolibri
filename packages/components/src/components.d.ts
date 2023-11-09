@@ -2566,7 +2566,7 @@ export namespace Components {
          */
         "_variant"?: ButtonVariantPropType;
     }
-    interface KolPopover {
+    interface KolPopoverWc {
         /**
           * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */
@@ -3463,11 +3463,11 @@ declare global {
         prototype: HTMLKolPaginationElement;
         new (): HTMLKolPaginationElement;
     };
-    interface HTMLKolPopoverElement extends Components.KolPopover, HTMLStencilElement {
+    interface HTMLKolPopoverWcElement extends Components.KolPopoverWc, HTMLStencilElement {
     }
-    var HTMLKolPopoverElement: {
-        prototype: HTMLKolPopoverElement;
-        new (): HTMLKolPopoverElement;
+    var HTMLKolPopoverWcElement: {
+        prototype: HTMLKolPopoverWcElement;
+        new (): HTMLKolPopoverWcElement;
     };
     interface HTMLKolProgressElement extends Components.KolProgress, HTMLStencilElement {
     }
@@ -3615,7 +3615,7 @@ declare global {
         "kol-modal": HTMLKolModalElement;
         "kol-nav": HTMLKolNavElement;
         "kol-pagination": HTMLKolPaginationElement;
-        "kol-popover": HTMLKolPopoverElement;
+        "kol-popover-wc": HTMLKolPopoverWcElement;
         "kol-progress": HTMLKolProgressElement;
         "kol-quote": HTMLKolQuoteElement;
         "kol-select": HTMLKolSelectElement;
@@ -6075,7 +6075,7 @@ declare namespace LocalJSX {
          */
         "_variant"?: ButtonVariantPropType;
     }
-    interface KolPopover {
+    interface KolPopoverWc {
         /**
           * Defines the alignment of the tooltip, popover or tabs in relation to the element.
          */
@@ -6724,7 +6724,7 @@ declare namespace LocalJSX {
         "kol-modal": KolModal;
         "kol-nav": KolNav;
         "kol-pagination": KolPagination;
-        "kol-popover": KolPopover;
+        "kol-popover-wc": KolPopoverWc;
         "kol-progress": KolProgress;
         "kol-quote": KolQuote;
         "kol-select": KolSelect;
@@ -6808,7 +6808,7 @@ declare module "@stencil/core" {
             "kol-modal": LocalJSX.KolModal & JSXBase.HTMLAttributes<HTMLKolModalElement>;
             "kol-nav": LocalJSX.KolNav & JSXBase.HTMLAttributes<HTMLKolNavElement>;
             "kol-pagination": LocalJSX.KolPagination & JSXBase.HTMLAttributes<HTMLKolPaginationElement>;
-            "kol-popover": LocalJSX.KolPopover & JSXBase.HTMLAttributes<HTMLKolPopoverElement>;
+            "kol-popover-wc": LocalJSX.KolPopoverWc & JSXBase.HTMLAttributes<HTMLKolPopoverWcElement>;
             "kol-progress": LocalJSX.KolProgress & JSXBase.HTMLAttributes<HTMLKolProgressElement>;
             "kol-quote": LocalJSX.KolQuote & JSXBase.HTMLAttributes<HTMLKolQuoteElement>;
             "kol-select": LocalJSX.KolSelect & JSXBase.HTMLAttributes<HTMLKolSelectElement>;

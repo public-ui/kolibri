@@ -11,7 +11,7 @@ import { API, States } from './types';
  * @slot - Der Inhalt des Popover.
  */
 @Component({
-	tag: 'kol-popover',
+	tag: 'kol-popover-wc',
 	styleUrl: './style.css',
 	shadow: false,
 })
