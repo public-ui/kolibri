@@ -14,7 +14,7 @@
 		"ncu:minor": "ncu -t minor -u -x rimraf && pnpm -r exec ncu -t minor -u -x rimraf,rxjs,typescript,zone.js",
 		"ncu:patch": "ncu -t patch -u -x rimraf && pnpm -r exec ncu -t patch -u -x rimraf",
 		"pack": "pnpm -r exec pnpm pack",
-		"postinstall": "pnpm exec playwright install",
+		"postinstall": "pnpm exec playwright install && echo \"Don't forget to build all packages once: pnpm -r build\"",
 		"prepare:husky": "rimraf .husky && husky install && npm-run-all prepare:husky:*",
 		"prepare:husky:commitlint": "husky add .husky/commit-msg \"npx commitlint --edit $1\"",
 		"prepare:husky:depcheck": "husky add .husky/pre-push \"pnpm -r depcheck\"",
