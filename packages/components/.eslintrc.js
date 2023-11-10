@@ -49,6 +49,13 @@ config.overrides.push({
 	rules: {
 		'jsx-a11y/no-access-key': 'off',
 		// 'react/no-unused-state': 'error',
+
+		'jsx-a11y/label-has-associated-control': [
+			2,
+			{
+				depth: 3, // allow labels deeply nested into spans
+			},
+		],
 	},
 });
 config.overrides.push({
