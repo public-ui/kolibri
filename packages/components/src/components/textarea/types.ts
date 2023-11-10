@@ -15,7 +15,8 @@ import { PropRows } from '../../types/props/rows';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTouched } from '../../types/props/touched';
 
-export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
+export const cssResizeOptions = ['both', 'horizontal', 'vertical', 'none'] as const;
+export type CSSResize = (typeof cssResizeOptions)[number];
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {

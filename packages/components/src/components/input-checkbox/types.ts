@@ -15,11 +15,8 @@ import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selecto
 import { PropTouched } from '../../types/props/touched';
 import { StencilUnknown } from '../../types/unknown';
 
-export type InputCheckboxVariant =
-	| 'button'
-	| 'checkbox' //deprecated
-	| 'default'
-	| 'switch';
+export const inputCheckboxVariantOptions = ['button', 'default', 'switch'] as const;
+export type InputCheckboxVariant = (typeof inputCheckboxVariantOptions)[number];
 
 export type InputCheckboxIconsProp =
 	| {
@@ -50,14 +47,9 @@ type OptionalProps = {
 	alert: boolean;
 	error: string;
 	hint: string;
-	icon: Stringified<InputCheckboxIconsProp>;
 	icons: Stringified<InputCheckboxIconsProp>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
-	/**
-	 * @deprecated
-	 */
-	type: InputCheckboxVariant;
 	value: Stringified<StencilUnknown>;
 	variant: InputCheckboxVariant;
 } & PropChecked &

@@ -4,20 +4,14 @@ import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon, KoliBriIconsProp } from '../../types/icons';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { PropAccessKey } from '../../types/props/access-key';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	allowMarkdown: boolean;
-	/**
-	 * @deprecated Use _icons.
-	 */
-	icon: Stringified<KoliBriIconsProp>;
 	icons: Stringified<KoliBriIconsProp>;
-	/**
-	 * @deprecated use _hide-label.
-	 */
-	iconOnly: boolean;
-} & PropHideLabel;
+} & PropHideLabel &
+	PropAccessKey;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -29,12 +23,7 @@ type RequiredStates = {
 		left?: KoliBriCustomIcon;
 	};
 } & PropLabelWithExpertSlot;
-type OptionalStates = {
-	/**
-	 * @deprecated use _hide-label
-	 */
-	iconOnly: boolean;
-} & PropHideLabel;
+type OptionalStates = PropHideLabel & PropAccessKey;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

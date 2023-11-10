@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcons } from '../../types/icons';
@@ -19,6 +19,7 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { Props as ButtonProps } from '../button/types';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputTextController } from './controller';
 import { API, States } from './types';
 
@@ -81,6 +82,7 @@ export class KolInputText implements API {
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
 					}}
+					_accessKey={this.state._accessKey}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -100,8 +102,20 @@ export class KolInputText implements API {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' ? (
+							<>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />{' '}
+								<span class="access-key-hint" aria-hidden="true">
+									{this.state._accessKey}
+								</span>
+							</>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
 					<div slot="input">
 						<input
 							ref={this.catchRef}
@@ -121,7 +135,6 @@ export class KolInputText implements API {
 							placeholder={this.state._placeholder}
 							readOnly={this.state._readOnly}
 							required={this.state._required}
-							size={this.state._size}
 							spellcheck="false"
 							type={this.state._type}
 							value={this.state._value as string}
@@ -189,11 +202,6 @@ export class KolInputText implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<KoliBriHorizontalIcons>;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
@@ -206,13 +214,7 @@ export class KolInputText implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
-	@Prop() public _label?: LabelWithExpertSlotPropType;
-
-	/**
-	 * Deprecated: Gibt die Liste der Vorschlagswörter an.
-	 * @deprecated Use _suggestions.
-	 */
-	@Prop() public _list?: Stringified<string[]>;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Defines the maximum number of input characters.
@@ -250,11 +252,6 @@ export class KolInputText implements API {
 	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean = false;
-
-	/**
-	 * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
-	 */
-	@Prop() public _size?: number;
 
 	/**
 	 * Suggestions to provide for the input.
@@ -358,11 +355,6 @@ export class KolInputText implements API {
 		this.controller.validateHint(value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
-		this.validateIcons(value);
-	}
-
 	@Watch('_icons')
 	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
 		this.controller.validateIcons(value);
@@ -376,11 +368,6 @@ export class KolInputText implements API {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
-	}
-
-	@Watch('_list')
-	public validateList(value?: SuggestionsPropType): void {
-		this.validateSuggestions(value);
 	}
 
 	@Watch('_maxLength')
@@ -416,14 +403,6 @@ export class KolInputText implements API {
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_size')
-	public validateSize(value?: number): void {
-		this.controller.validateSize(value);
 	}
 
 	@Watch('_suggestions')

@@ -1155,69 +1155,12 @@ export const MFM = KoliBri.createTheme('mfm', {
 		details:not([open]) kol-icon::part(icon):before {
 			content: "\\f054";
 		}`,
-	'KOL-SPIN': `.spin {
-			display: inline-block;
-			height: 1rem;
-			position: relative;
-			width: 3rem;
-		}
-		.spin span {
-			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border: 0.1rem solid rgb(255, 255, 255);
-			border-radius: 50%;
-			height: 0.8rem;
-			width: 0.8rem;
-			top: 0.1rem;
-			position: absolute;
-		}
-		.spin span:nth-child(1) {
-			background-color: #fc0;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin1;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(2) {
-			background-color: #f00;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(3) {
-			background-color: #000;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 1.1rem;
-		}
-		.spin span:nth-child(4) {
-			background-color: #666;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin3;
-			left: 2.1rem;
-		}
-		@keyframes spin1 {
-			0% {
-				transform: scale(0);
+	'KOL-SPIN': `.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
 			}
-			100% {
-				transform: scale(1);
-			}
-		}
-		@keyframes spin2 {
-			0% {
-				transform: translate(0px, 0px);
-			}
-			100% {
-				transform: translate(1rem, 0px);
-			}
-		}
-		@keyframes spin3 {
-			0% {
-				transform: scale(1);
-			}
-			100% {
-				transform: scale(0);
-			}
-		}`,
+	}`,
 	'KOL-PROGRESS': `:host progress,
 		:host span {
 			display: block;
@@ -1318,13 +1261,15 @@ export const MFM = KoliBri.createTheme('mfm', {
 		}
 		select option {
 			margin: 1px 0;
-			padding: 0.5em;
 			border-radius: 0.25em;
 			cursor: pointer;
 		}
 		select option:disabled {
 			cursor: not-allowed;
 		}
+		select:not([multiple]) option {
+		padding: 0.5em;
+	}
 		option:active:not(:disabled),
 		option:checked:not(:disabled),
 		option:focus:not(:disabled),
@@ -1907,7 +1852,7 @@ export const MFM = KoliBri.createTheme('mfm', {
 			display: grid;
 			gap: 0.25em;
 		}
-		fieldset div {
+		.radio-input-wrapper {
 			cursor: pointer;
 			display: flex;
 			flex-direction: row;
@@ -1916,16 +1861,16 @@ export const MFM = KoliBri.createTheme('mfm', {
 			min-height: 44px;
 			margin: 0;
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			cursor: pointer;
 			display: flex;
 			padding-left: 0.25em;
 			width: 100%;
 		}
-		fieldset div label span {
+		.radio-input-wrapper label span {
 			margin-top: 0.125em;
 		}
-		fieldset div input[type="radio"] {
+		.radio-input-wrapper input[type="radio"] {
 			appearance: none;
 			transition: 0.5s;
 			border-radius: 100%;
@@ -1933,16 +1878,16 @@ export const MFM = KoliBri.createTheme('mfm', {
 			min-width: calc(6 * var(--spacing));
 			width: calc(6 * var(--spacing));
 		}
-		fieldset div input[type="radio"]:before {
+		.radio-input-wrapper input[type="radio"]:before {
 			content: "";
 			cursor: pointer;
 			border-radius: 100%;
 			display: block;
 		}
-		fieldset div input[type="radio"]:checked:before {
+		.radio-input-wrapper input[type="radio"]:checked:before {
 			background-color: var(--color-midnight);
 		}
-		fieldset div input[type="radio"]:disabled {
+		.radio-input-wrapper input[type="radio"]:disabled {
 			cursor: not-allowed;
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
@@ -1990,29 +1935,18 @@ export const MFM = KoliBri.createTheme('mfm', {
 		fieldset .input-slot {
 			gap: 0.5rem;
 		}
-		fieldset div label {
+		.radio-input-wrapper label {
 			padding-left: 0;
 		}`,
-	'KOL-TOAST': `:host > div {
-			position: fixed;
-			top: 0;
-			right: 0;
-			width: 100%;
-			height: 0;
-			z-index: 200;
+	'KOL-TOAST-CONTAINER': `:host {
+			top: 1rem;
+			width: 750px;
+			left: 50%;
+			transform: translateX(-50%);
 		}
-		:host > div > kol-alert {
-			display: block;
-			margin-left: auto;
-			margin-right: unset;
-			padding: 2rem;
-			max-width: 750px;
-		}
-		:host > div > kol-button-wc {
-			top: 0;
-			position: relative;
-			display: block;
-			width: 1em;
+		.toast {
+			background: #fff;
+			margin-top: 1rem;
 		}`,
 	'KOL-TABS': `button:disabled {
 			opacity: 0.5;

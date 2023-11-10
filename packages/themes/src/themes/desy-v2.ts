@@ -1391,12 +1391,14 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 	}
 	select option {
 		margin: 1px 0;
-		padding: 0.5em;
 		border-radius: 0.25em;
 		cursor: pointer;
 	}
 	select option:disabled {
 		cursor: not-allowed;
+	}
+	select:not([multiple]) option {
+		padding: 0.5em;
 	}
 	option:active:not(:disabled),
 	option:checked:not(:disabled),
@@ -2635,26 +2637,15 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 	:host li > kol-link > kol-link-wc > a {
 		color: red !important;
 	}`,
-	'KOL-TOAST': `:host > div {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		z-index: 200;
+	'KOL-TOAST-CONTAINER': `:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
 	}
-	:host > div > kol-alert {
-		display: block;
-		margin: auto;
-		padding: 1rem;
-		max-width: 750px;
-	}
-	:host > div > kol-button-wc {
-		top: 0;
-		position: relative;
-		display: block;
-		margin: auto;
-		width: 1em;
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
 	}`,
 	'KOL-LINK-BUTTON': `a {
 		min-width: 44px;

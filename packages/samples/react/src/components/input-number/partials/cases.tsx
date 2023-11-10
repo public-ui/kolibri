@@ -24,7 +24,7 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 					},
 				}}
 			/>
-			<KolInputNumber {...props} ref={ref} _max={10} _min={-10} _step={2} _label="Zahleneingabe (-10 bis 10 in 2er Schritten)" />
+			<KolInputNumber {...props} ref={ref} _accessKey="Z" _max={10} _min={-10} _step={2} _label="Zahleneingabe (-10 bis 10 in 2er Schritten)" />
 			<KolInputNumber {...props} _readOnly _label="Zahleneingabe (Readonly)" />
 			<KolInputNumber {...props} _disabled _label="Zahleneingabe (Disabled)" />
 		</div>

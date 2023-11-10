@@ -3,7 +3,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { HeadingLevel } from '../../types/heading-level';
 import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
-import { HasFooterPropType, validateHasFooter } from '../../types/props/has-footer';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { setState } from '../../utils/prop.validators';
 import { KoliBriAlertEventCallbacks } from '../alert/types';
@@ -12,9 +11,6 @@ import { API, KoliBriCardEventCallbacks, States } from './types';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
- * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
- * @slot header - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card.
- * @slot footer - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.
  */
 @Component({
 	tag: 'kol-card',
@@ -40,19 +36,10 @@ export class KolCard implements API {
 				<div class="card">
 					<div class="header">
 						<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
-						<slot name="header"></slot>
 					</div>
 					<div class="content">
-						<slot name="content"></slot>
-						{/* Deprecated for version 2 */}
 						<slot />
 					</div>
-					{this.state._hasFooter && (
-						<div class="footer">
-							<slot name="footer"></slot>
-						</div>
-					)}
-
 					{this.state._hasCloser && (
 						<kol-button-wc
 							class="close"
@@ -84,28 +71,9 @@ export class KolCard implements API {
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Shows the slot="footer".
-	 * @TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hasFooter?: boolean = false;
-
-	/**
-	 * Deprecated: Gibt die Beschriftung der Komponente an.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _heading?: string;
-
-	/**
-	 * Deprecated: Gibt die Beschriftung der Komponente an.
-	 *
-	 * @deprecated Verwende stattdessen das Property _heading.
-	 */
-	@Prop() public _headline?: string;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
@@ -133,25 +101,6 @@ export class KolCard implements API {
 		validateHasCloser(this, value);
 	}
 
-	@Watch('_hasFooter')
-	public validateHasFooter(value?: HasFooterPropType): void {
-		validateHasFooter(this, value);
-	}
-
-	@Watch('_heading')
-	public validateHeading(value?: string): void {
-		this.validateLabel(value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 * @deprecated
-	 */
-	@Watch('_headline')
-	public validateHeadline(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
@@ -164,8 +113,7 @@ export class KolCard implements API {
 
 	public componentWillLoad(): void {
 		this.validateHasCloser(this._hasCloser);
-		this.validateHasFooter(this._hasFooter);
-		this.validateLabel(this._label || this._heading || this._headline);
+		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 	}

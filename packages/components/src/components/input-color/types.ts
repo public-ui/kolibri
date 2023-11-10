@@ -8,7 +8,7 @@ import { PropHideError } from '../../types/props/hide-error';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropName } from '../../types/props/name';
-import { PropSuggestions, SuggestionsPropType } from '../../types/props/suggestions';
+import { PropSuggestions } from '../../types/props/suggestions';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTouched } from '../../types/props/touched';
 import { W3CInputValue } from '../../types/w3c';
@@ -21,12 +21,7 @@ type OptionalProps = {
 	autoComplete: InputTypeOnOff;
 	error: string;
 	hint: string;
-	icon: Stringified<KoliBriHorizontalIcons>;
 	icons: Stringified<KoliBriHorizontalIcons>;
-	/**
-	 * @deprecated Use _suggestions instead.
-	 */
-	list: SuggestionsPropType;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
 	tabIndex: number;

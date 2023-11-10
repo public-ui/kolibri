@@ -92,13 +92,6 @@ c1.57,2.48,2.8,2.44,4.65,2.44c-1.2-0.97-2.21-2.14-3-3.46l-2.99-4.7c0.16-0.29,0.2
 })
 export class KolLogo implements API {
 	/**
-	 * Deprecated: Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
-	 *
-	 * @deprecated Verwende stattdessen das Property _org.
-	 */
-	@Prop() public _abbr?: Bundesministerium | Bundesamt | Bundesanstalt;
-
-	/**
 	 * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
 	 */
 	@Prop() public _org!: Bundesministerium | Bundesamt | Bundesanstalt;
@@ -106,11 +99,6 @@ export class KolLogo implements API {
 	@State() public state: States = {
 		_org: Bundesanstalt['Informationstechnikzentrum Bund'],
 	};
-
-	@Watch('_abbr')
-	public validateAbbr(value?: Bundesministerium | Bundesamt | Bundesanstalt): void {
-		this.validateOrg(value);
-	}
 
 	@Watch('_org')
 	public validateOrg(value?: Bundesministerium | Bundesamt | Bundesanstalt): void {
@@ -122,7 +110,7 @@ export class KolLogo implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateOrg(this._org || this._abbr);
+		this.validateOrg(this._org);
 	}
 
 	public render(): JSX.Element {
