@@ -179,4 +179,4 @@ jobs:
 
   publish-page:
     needs: publish
-    uses: public-ui/kolibri/.github/workflows/publish-page.yml@develop
+    uses: public-ui/kolibri/.github/workflows/publish-page.yml@release/1.7

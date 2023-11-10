@@ -28,7 +28,7 @@ export const getDetailsHtml = (
 					${props._label! /* TODO v2: Remove non-null assertion after label was converted to required prop */}
 				</span>
 			</summary>
-			<div class="content">
+			<div${props._open ? `` : ` aria-hidden="true"`} class="content">
 				${getIndentedTextHtml(props, slots)}
 			</div>
 		</details>

@@ -8,11 +8,11 @@ const PROPS = {
 };
 
 export const BadgeBasic: FC = () => (
-	<div className="d-flex gap-2">
+	<div className="flex gap-2">
 		<KolBadge {...PROPS}></KolBadge>
-		<KolBadge _color="#B22222" {...PROPS}></KolBadge>
-		<KolBadge _color="#4682B4" {...PROPS}></KolBadge>
-		<KolBadge _color="#228B22" {...PROPS}></KolBadge>
-		<KolBadge _color="#8B008B" {...PROPS}></KolBadge>
+		<KolBadge _color="#86ffc6" {...PROPS}></KolBadge>
+		<KolBadge _color="#06539e" {...PROPS}></KolBadge>
+		<KolBadge _color="#ae0000" {...PROPS}></KolBadge>
+		<KolBadge _color="#8b008b" {...PROPS}></KolBadge>
 	</div>
 );
