@@ -12,7 +12,6 @@ export default class DetailsAnimationController {
 	private handleSummaryClick(event: MouseEvent) {
 		event.preventDefault();
 
-		this.detailsElement.style.overflow = 'hidden';
 		if (this.isClosing || !this.detailsElement.open) {
 			this.open();
 		} else if (this.isExpanding || this.detailsElement.open) {
@@ -21,33 +20,37 @@ export default class DetailsAnimationController {
 	}
 
 	public open() {
-		/**
-		 * The Jest test framework does not support the `offsetHeight` property on the `details` element.
-		 * This is a workaround to make the tests pass (?? 0).
-		 */
-		this.detailsElement.style.height = `${this.detailsElement.offsetHeight ?? 0}px`;
 		this.detailsElement.open = true;
 		window.requestAnimationFrame(this.expand.bind(this));
 	}
 
 	private expand() {
 		this.isExpanding = true;
-		this.animateDetailsHeight(this.summaryElement.offsetHeight + this.contentElement.offsetHeight, 'expand');
+		this.animateContentHeight('expand');
 	}
 
 	private collapse() {
 		this.isClosing = true;
-		this.animateDetailsHeight(this.summaryElement.offsetHeight, 'collapse');
+		this.animateContentHeight('collapse');
 	}
 
-	private animateDetailsHeight(endHeight: number, direction: 'expand' | 'collapse') {
-		const startHeight = this.detailsElement.offsetHeight;
+	private animateContentHeight(direction: 'expand' | 'collapse') {
+		let startHeight = direction === 'expand' ? 0 : this.contentElement.offsetHeight;
+		let endHeight = direction === 'expand' ? this.contentElement.offsetHeight : 0;
 
+		/**
+		 * Override start and end height, when an animation is ongoing. During the animation, offsetHeight reflects the actual current height as it's being animated.
+		 * After canceling the animation, it reverts to the full height of the content container.
+		 */
 		if (this.animation) {
+			startHeight = this.contentElement.offsetHeight;
 			this.animation.cancel();
+			if (direction === 'expand') {
+				endHeight = this.contentElement.offsetHeight;
+			}
 		}
 
-		this.animation = this.detailsElement.animate(
+		this.animation = this.contentElement.animate(
 			{
 				height: [`${startHeight}px`, `${endHeight}px`],
 			},
@@ -82,7 +85,5 @@ export default class DetailsAnimationController {
 		this.animation = undefined;
 		this.isClosing = false;
 		this.isExpanding = false;
-		this.detailsElement.style.removeProperty('height');
-		this.detailsElement.style.removeProperty('overview');
 	}
 }
