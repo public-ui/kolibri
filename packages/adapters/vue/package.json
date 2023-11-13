@@ -51,7 +51,7 @@
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.4",
 		"@types/node": "ts5.1",
-		"@types/normalize-package-data": "2.4.3",
+		"@types/normalize-package-data": "2.4.4",
 		"typescript": "5.2.2",
 		"unbuild": "1.2.1",
 		"vue": "3.3.8"
