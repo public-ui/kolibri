@@ -534,8 +534,8 @@ importers:
         specifier: 2.0.8
         version: 2.0.8
       '@types/twig':
-        specifier: 1.12.14
-        version: 1.12.14
+        specifier: 1.12.15
+        version: 1.12.15
       '@types/wcag-contrast':
         specifier: 3.0.2
         version: 3.0.2
@@ -8113,8 +8113,8 @@ packages:
     resolution: {integrity: sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==}
     dev: true
 
-  /@types/twig@1.12.14:
-    resolution: {integrity: sha512-dD/ygsUEfqAstJ0nDnz1f362zjcqUeeGxlwQQ61DuJX7llYZSq8o4wQGozm+b2GLVLd13rF3rDgG273MFrAesQ==}
+  /@types/twig@1.12.15:
+    resolution: {integrity: sha512-h51l5nVK4/TGeRaQ5pDQO0gJqjP4WyhkbJluOnMcumqWZPoIDgH009OH44d+SOQ6b1sc1JYX6lc1OIxbwUgsxg==}
     dev: true
 
   /@types/wcag-contrast@3.0.2:
