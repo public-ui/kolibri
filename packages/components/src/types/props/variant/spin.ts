@@ -7,7 +7,8 @@ import { watchValidator } from '../../../utils/prop.validators';
  * Loading-spinner
  * - https://github.com/vineethtrv/css-loader
  */
-export type SpinVariantPropType = 'cycle' | 'dot' | 'none';
+const spinVariantPropTypeOptions = ['cycle', 'dot', 'none'] as const;
+export type SpinVariantPropType = (typeof spinVariantPropTypeOptions)[number];
 
 /**
  * Defines the variant of spin navigation.
@@ -18,5 +19,11 @@ export type PropSpinVariant = {
 
 /* validator */
 export const validateSpinVariant = (component: Generic.Element.Component, value?: SpinVariantPropType): void => {
-	watchValidator(component, '_variant', (value) => value === 'cycle' || value === 'dot' || value === 'none', new Set(['cycle', 'dot', 'none']), value);
+	watchValidator(
+		component,
+		'_variant',
+		(value) => typeof value === 'string' && spinVariantPropTypeOptions.includes(value),
+		new Set(spinVariantPropTypeOptions),
+		value
+	);
 };

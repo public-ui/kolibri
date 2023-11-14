@@ -15,11 +15,6 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { API, States } from './types';
 import { watchNavLinks } from './validation';
 
-/**
- * @deprecated Removed in v2
- */
-export type KoliBriNavVariant = 'primary' | 'secondary';
-
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
 		if (Array.isArray(link._children)) {
@@ -70,6 +65,7 @@ export class KolNav implements API {
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
 				<kol-button-link-text-switch
+					class="button-link-text-switch"
 					_link={{
 						...link,
 						_hideLabel: hideLabel,
@@ -111,7 +107,6 @@ export class KolNav implements API {
 					active,
 					expanded,
 					'has-children': hasChildren,
-					selected: expanded, // TODO: remove in v2
 				}}
 				key={index}
 			>
@@ -155,7 +150,6 @@ export class KolNav implements API {
 				<div
 					class={{
 						[orientation]: true,
-						[this.state._variant]: true,
 					}}
 				>
 					<nav aria-label={this.state._label} id="nav">
@@ -193,27 +187,13 @@ export class KolNav implements API {
 	@Prop() public _ariaCurrentValue: AriaCurrentPropType = false;
 
 	/**
-	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _collapsible?: boolean = true;
 
 	/**
-	 * Deprecated: Gibt an, ob die Navigation kompakt angezeigt wird.
-	 * @deprecated Use _hide-label
-	 */
-	@Prop() public _compact?: boolean = false;
-
-	/**
-	 * Deprecated: Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
-	 * @deprecated Version 2
+	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
 	 */
 	@Prop() public _hasCompactButton?: boolean = false;
 
@@ -227,7 +207,7 @@ export class KolNav implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Defines the list of links, buttons or texts to render.
@@ -239,13 +219,6 @@ export class KolNav implements API {
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	/**
-	 * Deprecated: Defines which variant should be used for presentation.
-	 *
-	 * @deprecated This property is deprecated and will be removed in the next major version.
-	 */
-	@Prop() public _variant?: KoliBriNavVariant = 'primary';
-
 	@State() public state: States = {
 		_ariaCurrentValue: false,
 		_collapsible: true,
@@ -254,7 +227,6 @@ export class KolNav implements API {
 		_label: '…', // ⚠ required
 		_links: [],
 		_orientation: 'vertical',
-		_variant: 'primary',
 	};
 
 	@Watch('_ariaCurrentValue')
@@ -268,27 +240,11 @@ export class KolNav implements API {
 		);
 	}
 
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_collapsible')
 	public validateCollapsible(value?: CollapsiblePropType): void {
 		validateCollapsible(this, value);
 	}
 
-	@Watch('_compact')
-	public validateCompact(value?: boolean): void {
-		this.validateHideLabel(value);
-	}
-
-	/**
-	 * @deprecated Version 2
-	 */
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
 		validateHasCompactButton(this, value);
@@ -329,22 +285,14 @@ export class KolNav implements API {
 		);
 	}
 
-	@Watch('_variant')
-	public validateVariant(value?: KoliBriNavVariant): void {
-		watchValidator(this, '_variant', (value) => value === 'primary' || value === 'secondary', new Set(['KoliBriNavVariant {primary, secondary}']), value, {
-			defaultValue: 'primary',
-		});
-	}
-
 	public componentWillLoad(): void {
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateCollapsible(this._collapsible);
-		this.validateHideLabel(this._hideLabel || this._compact);
+		this.validateHideLabel(this._hideLabel);
 		this.validateHasCompactButton(this._hasCompactButton);
-		this.validateLabel(this._label || this._ariaLabel, undefined, true);
+		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
-		this.validateVariant(this._variant);
 	}
 
 	public disconnectedCallback(): void {

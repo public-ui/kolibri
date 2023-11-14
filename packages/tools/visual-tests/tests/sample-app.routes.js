@@ -28,11 +28,6 @@ ROUTES.set('abbr/basic', {
 	},
 });
 ROUTES.set('accordion/basic', null);
-ROUTES.set('accordion/header', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('accordion/headlines', {
 	axe: {
 		skipFailures: false,
@@ -106,6 +101,16 @@ ROUTES.set('button/icons', {
 	},
 });
 ROUTES.set('button/width', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button/access-key', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('button/baselined', {
 	axe: {
 		skipFailures: false,
 	},
@@ -263,11 +268,6 @@ ROUTES.set('pagination/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('popover/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('progress/basic', {
 	axe: {
 		skipFailures: false,
@@ -320,6 +320,11 @@ ROUTES.set('table/render-cell', {
 	},
 });
 ROUTES.set('table/sort-data', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/with-pagination', {
 	axe: {
 		skipFailures: false,
 	},
@@ -381,6 +386,16 @@ ROUTES.set('version/basic', {
 	},
 });
 ROUTES.set('version/context', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('scenarios/complex-form', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('scenarios/appointment-form', {
 	axe: {
 		skipFailures: false,
 	},

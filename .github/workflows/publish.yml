@@ -21,7 +21,7 @@ jobs:
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           registry-url: '${{env.registry}}'
@@ -166,14 +166,6 @@ jobs:
         continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
         working-directory: packages/tools/visual-tests
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-
-      # deprecated packages
-      - name: Build and publish core
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
-        working-directory: packages/core
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
 

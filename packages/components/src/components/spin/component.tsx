@@ -13,12 +13,12 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 			return <slot name="expert"></slot>;
 		default:
 			return (
-				<Fragment>
+				<>
 					<span class="bg-spin-1"></span>
 					<span class="bg-spin-2"></span>
 					<span class="bg-spin-3"></span>
 					<span class="bg-neutral"></span>
-				</Fragment>
+				</>
 			);
 	}
 }
