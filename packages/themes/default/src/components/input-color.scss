@@ -1,0 +1,5 @@
+@import "../mixins";
+
+@layer kol-theme-component {
+	@include input;
+}

@@ -1,0 +1,110 @@
+@mixin input {
+	.input {
+		gap: 0.25rem;
+
+		&--error {
+			border-left: 3px solid var(--color-danger);
+			padding-left: 1rem;
+		}
+
+		&__error {
+			order: 1;
+			color: var(--color-danger);
+			font-weight: 700;
+		}
+
+		&__label {
+			order: 2;
+
+			@at-root .input--disabled & {
+				opacity: 1;
+			}
+		}
+
+		&__input-container {
+			order: 3;
+			background-color: var(--color-light);
+			border-color: var(--color-subtle);
+			border-radius: var(--border-radius);
+			border-style: solid;
+			border-width: 2px;
+			padding: 0 0.5rem;
+
+			@at-root .input--disabled & {
+				background-color: var(--color-mute);
+				border-color: var(--color-mute-variant);
+				color: var(--color-text);
+			}
+
+			&:hover {
+				border-color: var(--color-primary);
+			}
+
+			@at-root .input--error &:focus-within {
+				outline-color: var(--color-danger) !important;
+			}
+		}
+
+		&__input-element {
+			border: none;
+
+			@at-root .input--color & {
+				border: none;
+				min-height: 40px !important;
+				background-color: transparent;
+			}
+
+			@at-root .input--disabled & {
+				opacity: 1;
+				background-color: var(--color-mute);
+				border-color: var(--color-mute-variant);
+				color: var(--color-text);
+			}
+
+			&::placeholder {
+				color: var(--color-subtle);
+			}
+
+			@at-root .input--has-icon-left &, .input--has-icon-right & {
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+			}
+
+			&:first-child {
+				padding-left: var(--spacing);
+			}
+			&:last-child {
+				padding-right: var(--spacing);
+			}
+
+			&:read-only,
+			&:disabled {
+				cursor: not-allowed;
+			}
+		}
+
+		&__hint {
+			order: 4;
+			font-size: 0.9rem;
+			font-style: italic;
+		}
+
+		&__icon {
+			width: 1rem;
+
+		}
+
+		&--has-icon-left,
+		&--has-icon-right {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+
+		&__label-text {
+			@at-root .input--required &::after {
+				content: '*';
+				padding-left: 0.125em;
+			}
+		}
+	}
+}

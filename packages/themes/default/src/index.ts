@@ -14,7 +14,7 @@ import headingCss from './components/heading.css';
 import iconCss from './components/icon.css';
 import indentedTextCss from './components/indented-text.css';
 import inputCheckboxCss from './components/input-checkbox.css';
-import inputColorCss from './components/input-color.css';
+import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.css';
 import inputEmailCss from './components/input-email.css';
 import inputFileCss from './components/input-file.css';
