@@ -34,7 +34,7 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		value: 'bmf',
 	},
 	{
-		label: 'Bundesamt für Zoll und Steuern',
+		label: 'Bundeszentralamt für Steuern',
 		value: 'bzst',
 	},
 	{
