@@ -65,7 +65,8 @@
 				color: var(--color-subtle);
 			}
 
-			@at-root .input--has-icon-left &, .input--has-icon-right & {
+			@at-root .input--has-icon-left &,
+				.input--has-icon-right & {
 				padding-left: 0.5rem;
 				padding-right: 0.5rem;
 			}
@@ -91,7 +92,6 @@
 
 		&__icon {
 			width: 1rem;
-
 		}
 
 		&--has-icon-left,
