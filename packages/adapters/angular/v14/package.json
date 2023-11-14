@@ -64,7 +64,7 @@
 	},
 	"devDependencies": {
 		"@angular/compiler": "14.3.0",
-		"@angular/compiler-cli": "14.3.0",
+		"@angular/compiler-cli": "17.0.2",
 		"@angular/core": "14.3.0",
 		"@public-ui/components": "2.0.0-rc.10",
 		"@types/minimatch": "5.1.2",
