@@ -11,7 +11,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 ```html
 <div class="grid gap-2">
 	<kol-accordion _label="Element 1">
-		<div slot="content">
+		<div>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -19,7 +19,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 		</div>
 	</kol-accordion>
 	<kol-accordion _label="Element 2">
-		<div slot="content">
+		<div>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -33,7 +33,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 
 <div class="grid gap-2">
 	<kol-accordion _label="Element 1">
-		<div slot="content">
+		<div>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -41,7 +41,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 		</div>
 	</kol-accordion>
 	<kol-accordion _label="Element 2">
-		<div slot="content">
+		<div>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -62,9 +62,9 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 
 ### Inhalt des Accordion
 
-Der Hauptinhalt des Accordions wird über einen eigenen Slot übergeben.
+Der Hauptinhalt des Accordions wird über deb Slot übergeben.
 
-**`<div slot="content">Inhalt im Kopfbereich</div>`**
+**`<kol-accordion _label="Element 1">Accordion-Inhalt</kol-accordion>`**
 
 ### Accordion geöffnet anzeigen
 
@@ -103,27 +103,24 @@ Standardansicht gelegt.
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion" _label="https://www.w3.org/TR/wai-aria-practices/#accordion" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                | Type                                                                                 | Default     |
-| ---------- | ---------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- |
-| `_heading` | `_heading` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string \| undefined`                                                                | `undefined` |
-| `_label`   | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).         | `string \| undefined`                                                                | `undefined` |
-| `_level`   | `_level`   | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                          | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
-| `_on`      | --         | Gibt die EventCallback-Funktionen an.                                                                                      | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
-| `_open`    | `_open`    | If set (to true) opens/expands the element, closes if not set (or set to false).                                           | `boolean \| undefined`                                                               | `false`     |
+| Property              | Attribute | Description                                                                                                        | Type                                                                                 | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ----------- |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                             | `undefined` |
+| `_level`              | `_level`  | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                  | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
+| `_on`                 | --        | Gibt die EventCallback-Funktionen an.                                                                              | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
+| `_open`               | `_open`   | If set (to true) opens/expands the element, closes if not set (or set to false).                                   | `boolean \| undefined`                                                               | `false`     |
 
 ## Slots
 
-| Slot        | Description                                                                                            |
-| ----------- | ------------------------------------------------------------------------------------------------------ |
-|             | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.                        |
-| `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.                        |
-| `"header"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions. |
+| Slot | Description                                                                     |
+| ---- | ------------------------------------------------------------------------------- |
+|      | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions. |
 
 ## Dependencies
 

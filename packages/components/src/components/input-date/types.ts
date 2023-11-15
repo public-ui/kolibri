@@ -12,7 +12,7 @@ import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropName } from '../../types/props/name';
 import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
-import { PropSuggestions, SuggestionsPropType } from '../../types/props/suggestions';
+import { PropSuggestions } from '../../types/props/suggestions';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTouched } from '../../types/props/touched';
 import { W3CInputValue } from '../../types/w3c';
@@ -21,11 +21,6 @@ import { Props as ButtonProps } from '../button/types';
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	type: InputDateType;
-
-	/**
-	 * @deprecated Use _suggestions instead.
-	 */
-	list: SuggestionsPropType;
 } & OptionalInputProps<Iso8601 | Date> &
 	PropHideError &
 	PropLabelWithExpertSlot &

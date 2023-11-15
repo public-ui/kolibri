@@ -8,10 +8,6 @@ type RequiredProps = {
 	value: number;
 };
 type OptionalProps = {
-	/**
-	 * @deprecated
-	 */
-	type: KoliBriProgressVariantType;
 	unit: string;
 	variant: KoliBriProgressVariantType;
 } & PropLabel;

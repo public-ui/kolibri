@@ -3,4 +3,4 @@ import { KolVersion } from '@public-ui/react';
 
 import { FC } from 'react';
 
-export const VersionBasic: FC = () => <KolVersion _version="1.1.1" />;
+export const VersionBasic: FC = () => <KolVersion _label="1.1.1" />;

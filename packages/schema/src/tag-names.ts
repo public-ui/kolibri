@@ -32,7 +32,6 @@ export enum TagEnum {
 	'modal',
 	'nav',
 	'pagination',
-	'popover',
 	'progress',
 	'select',
 	'separator', // TODO: github pr link
@@ -43,7 +42,6 @@ export enum TagEnum {
 	'table',
 	'tabs',
 	'textarea',
-	'toast',
 	'toast-container',
 	'toolbar', // TODO: github pr link
 	'tooltip',

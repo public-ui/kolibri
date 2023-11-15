@@ -11,13 +11,12 @@
 		"build": "tsc && vite build",
 		"dev": "vite",
 		"preview": "vite preview",
-		"start": "npm run dev",
-		"update": "ncu -t minor -u && ncu"
+		"start": "npm run dev"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.2",
-		"@public-ui/themes": "1.7.2",
-		"@public-ui/vue": "1.7.2",
+		"@public-ui/components": "2.0.0-rc.10",
+		"@public-ui/themes": "2.0.0-rc.10",
+		"@public-ui/vue": "2.0.0-rc.10",
 		"vue": "3.3.4"
 	},
 	"devDependencies": {

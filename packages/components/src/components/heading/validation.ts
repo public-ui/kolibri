@@ -1,15 +1,16 @@
 import { Generic } from '@a11y-ui/core';
 
 import { watchValidator } from '../../utils/prop.validators';
+import { HeadingLevel, headingLevelOptions } from '../../types/heading-level';
 
-export const watchHeadingLevel = (component: Generic.Element.Component, value?: number): void => {
+export const watchHeadingLevel = (component: Generic.Element.Component, value?: HeadingLevel): void => {
 	watchValidator(
 		component,
 		'_level',
-		(value): boolean => {
-			return typeof value === 'number' && 0 <= value && value <= 6;
+		(value?: HeadingLevel): boolean => {
+			return typeof value === 'number' && headingLevelOptions.includes(value);
 		},
-		new Set(['Number {0, 1, 2, 3, 4, 5, 6}']),
+		new Set([`Number {${headingLevelOptions.join(', ')}`]),
 		value,
 		{
 			// TODO: options not in the validator
