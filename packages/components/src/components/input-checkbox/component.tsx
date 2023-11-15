@@ -30,11 +30,9 @@ import { API, InputCheckboxIconsProp, InputCheckboxVariant, States } from './typ
 })
 export class KolInputCheckbox implements API {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
-	private ref?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propagateFocus(this.host, ref);
 	};
 
 	public render(): JSX.Element {
@@ -52,7 +50,7 @@ export class KolInputCheckbox implements API {
 					}}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
-					tabIndex={this.state._variant === 'button' ? 0 : undefined}
+					tabIndex={this.state._variant === 'button' && !this.state._disabled ? 0 : undefined}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}

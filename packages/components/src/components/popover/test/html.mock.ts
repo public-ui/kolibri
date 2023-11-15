@@ -17,10 +17,10 @@ export const getPopoverHtml = (
 		props
 	);
 	return `
-  <kol-popover>
+  <kol-popover-wc>
 		<div class="popover hidden">
 			<div class="arrow ${state._align}"></div>
 			${slots.default !== undefined ? slots.default : ''}
 		</div>
-  </kol-popover>`;
+  </kol-popover-wc>`;
 };

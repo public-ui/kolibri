@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "1.7.2",
+	"version": "1.7.6-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -47,22 +47,22 @@
 		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild",
 		"dev": "nodemon --ignore dist -e ts,tsx  --exec 'pnpm build'",
-		"test-all": "pnpm -r --workspace-concurrency=1 test-update",
-		"test-update-all": "pnpm -r --workspace-concurrency=1 test"
+		"test-all": "pnpm -r --workspace-concurrency=1 test",
+		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "1.7.2",
+		"@public-ui/schema": "1.7.6-rc.1",
 		"@types/node": "ts5.1",
-		"@typescript-eslint/eslint-plugin": "6.7.3",
-		"@typescript-eslint/parser": "6.7.3",
-		"eslint": "8.50.0",
+		"@typescript-eslint/eslint-plugin": "6.10.0",
+		"@typescript-eslint/parser": "6.10.0",
+		"eslint": "8.53.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.0.1",
 		"typescript": "5.2.2",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.2"
+		"@public-ui/components": "1.7.6-rc.1"
 	},
 	"sideEffects": false,
 	"type": "module",
