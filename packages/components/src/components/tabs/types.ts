@@ -4,8 +4,7 @@ import { Events } from '../../enums/events';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { KoliBriIconsProp } from '../../types/icons';
-import { AlignPropType, PropAlign } from '../../types/props/align';
-import { PropAriaLabel } from '../../types/props/aria-label';
+import { PropAlign } from '../../types/props/align';
 import { PropDisabled } from '../../types/props/disabled';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
@@ -24,15 +23,7 @@ export type KoliBriTabsCallbacks = {
 
 type RequiredTabButtonProps = PropLabel;
 type OptionalTabButtonProps = {
-	/**
-	 * @deprecated Use _icons.
-	 */
-	icon: Stringified<KoliBriIconsProp>;
 	icons: Stringified<KoliBriIconsProp>;
-	/**
-	 * @deprecated use _hide-label
-	 */
-	iconOnly: boolean;
 } & PropDisabled &
 	PropHideLabel &
 	PropTooltipAlign;
@@ -40,17 +31,11 @@ export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, Opt
 
 type RequiredProps = {
 	tabs: Stringified<TabButtonProps[]>;
-};
+} & PropLabel;
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
-	/**
-	 * @deprecated Use align.
-	 */
-	tabsAlign: AlignPropType;
 	selected: number;
-} & PropAriaLabel &
-	PropLabel &
-	PropAlign;
+} & PropAlign;
 
 type RequiredStates = {
 	selected: number;

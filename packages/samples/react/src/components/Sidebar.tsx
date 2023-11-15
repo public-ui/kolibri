@@ -58,10 +58,10 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 		<aside className="app-sidebar p-4">
 			<div className="flex flex-justify-between flex-items-center">
 				<KolHeading _label="KoliBri React"></KolHeading>
-				<KolVersion _version={version}></KolVersion>
+				<KolVersion _label={version}></KolVersion>
 			</div>
 
-			<KolSelect _label="Theme wählen" _list={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={[theme]} class="mt"></KolSelect>
+			<KolSelect _label="Theme wählen" _options={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={[theme]} class="mt"></KolSelect>
 
 			<KolHeading _label="Komponenten" _level={2} className="block mt"></KolHeading>
 			<div className="flex flex-justify-between flex-items-center mt">

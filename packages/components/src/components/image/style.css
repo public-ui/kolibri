@@ -1,4 +1,9 @@
-img {
-	max-height: 100%;
-	max-width: 100%;
+@layer kol-component {
+	:host {
+		display: inline-block;
+	}
+	img {
+		max-height: 100%;
+		max-width: 100%;
+	}
 }

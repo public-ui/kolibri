@@ -4,7 +4,7 @@ import { HrefPropType } from '../../types/props/href';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { showExpertSlot } from '../../utils/reuse';
-import { API, KoliBriQuoteVariant, States } from './types';
+import { API, KoliBriQuoteVariant, koliBriQuoteVariantOptions, States } from './types';
 
 @Component({
 	tag: 'kol-quote',
@@ -14,12 +14,6 @@ import { API, KoliBriQuoteVariant, States } from './types';
 	shadow: true,
 })
 export class KolQuote implements API {
-	/**
-	 * Deprecated: Defines the visible caption of the component.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _caption?: string;
-
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
@@ -46,11 +40,6 @@ export class KolQuote implements API {
 		_variant: 'inline',
 	};
 
-	@Watch('_caption')
-	public validateCaption(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
@@ -72,12 +61,18 @@ export class KolQuote implements API {
 
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriQuoteVariant): void {
-		watchValidator(this, '_variant', (value) => value === 'block' || value === 'inline', new Set(['block', 'inline']), value);
+		watchValidator(
+			this,
+			'_variant',
+			(value) => typeof value === 'string' && koliBriQuoteVariantOptions.includes(value),
+			new Set(koliBriQuoteVariantOptions),
+			value
+		);
 	}
 
 	public componentWillLoad(): void {
 		this.validateHref(this._href);
-		this.validateLabel(this._label || this._caption);
+		this.validateLabel(this._label);
 		this.validateQuote(this._quote);
 		this.validateVariant(this._variant);
 	}

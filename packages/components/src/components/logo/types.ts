@@ -5,9 +5,7 @@ import { Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';
 type RequiredProps = {
 	org: Bundesministerium | Bundesamt | Bundesanstalt;
 };
-type OptionalProps = {
-	abbr: Bundesministerium | Bundesamt | Bundesanstalt;
-};
+type OptionalProps = NonNullable<unknown>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;

@@ -19,8 +19,8 @@ type Zeiten = {
 export const TerminComponent: FC = () => (
 	<>
 		<div className="grid sm:grid-cols-1 gap-2 my-3">
-			<KolHeading>Terminreservierung</KolHeading>
-			<KolHeading _level={2}>Termine für Einwohnermelde- (incl. Pass- und Ausweisangelegenheiten) und Kraftfahrzeugangelegenheiten</KolHeading>
+			<KolHeading _label="Terminreservierung" />
+			<KolHeading _label="Termine für Einwohnermelde- (incl. Pass- und Ausweisangelegenheiten) und Kraftfahrzeugangelegenheiten" _level={2} />
 			<div style={{ fontFamily: 'Arial' }}>
 				<p className="py-2">Derzeit kann generell nur mit vorheriger Terminvereinbarung bei den Bürgerdiensten vorgesprochen werden.</p>
 				<p className="py-2">
@@ -141,22 +141,22 @@ export const TerminComponent: FC = () => (
 				]}
 			>
 				<div>
-					<KolHeading _level={2}>Wählen Sie einen Stadtteil aus</KolHeading>
+					<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus" />
 					<TerminLocationComponent onSubmitted={() => {}} />
 				</div>
 				<div>
-					<KolHeading _level={2}>Wählen Sie einen Termin aus</KolHeading>
+					<KolHeading _level={2} _label="Wählen Sie einen Termin aus" />
 					<TerminScheduleComponent onSubmitted={() => {}} />
 				</div>
 				<div>
-					<KolHeading _level={2}>Geben Sie Ihre Kontaktdaten ein</KolHeading>
+					<KolHeading _level={2} _label="Geben Sie Ihre Kontaktdaten ein" />
 					<TerminKopfdatenComponent onSubmitted={() => {}} />
 				</div>
 			</KolTabs>
 		</div>
 		<div className="grid sm:grid-cols-1 gap-2">
 			<div className="border-top"></div>
-			<KolHeading _level={3}>Fortschritt</KolHeading>
+			<KolHeading _level={3} _label="Fortschritt" />
 			<KolProgress _value={0} _max={100} _unit="Prozent des Formulars"></KolProgress>
 		</div>
 	</>

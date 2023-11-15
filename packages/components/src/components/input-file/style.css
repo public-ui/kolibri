@@ -1,16 +1,22 @@
 @import url(../input-line.css);
-label input[type='file']::-webkit-file-upload-button {
-	display: none;
-}
-label input[type='file']:before {
-	content: 'Datei auswählen';
-}
-label input[multiple]:before {
-	content: 'Dateien auswählen';
-}
-div.input {
-	cursor: pointer;
-}
-.error.hidden {
-	display: none;
+@layer kol-component {
+	label input[type='file']::-webkit-file-upload-button {
+		display: none;
+	}
+
+	label input[type='file']:before {
+		content: 'Datei auswählen';
+	}
+
+	label input[multiple]:before {
+		content: 'Dateien auswählen';
+	}
+
+	div.input {
+		cursor: pointer;
+	}
+
+	.error.hidden {
+		display: none;
+	}
 }

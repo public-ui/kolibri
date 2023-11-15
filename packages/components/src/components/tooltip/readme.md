@@ -18,17 +18,18 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 ## Links und Referenzen
 
-- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _label="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank"></kol-link>
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property              | Attribute | Description                                                                                                        | Type                                                  | Default     |
-| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
-| `_align`              | `_align`  | Defines the alignment of the tooltip, popover or tabs in relation to the element.                                  | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
-| `_id`                 | `_id`     | Defines the internal ID of the primary component element.                                                          | `string \| undefined`                                 | `undefined` |
-| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
+| Property              | Attribute     | Description                                                                                                        | Type                                                  | Default     |
+| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
+| `_accessKey`          | `_access-key` | Defines the elements access key.                                                                                   | `string \| undefined`                                 | `undefined` |
+| `_align`              | `_align`      | Defines the alignment of the tooltip, popover or tabs in relation to the element.                                  | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
+| `_id`                 | `_id`         | Defines the internal ID of the primary component element.                                                          | `string \| undefined`                                 | `undefined` |
+| `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
 
 ## Dependencies
 
