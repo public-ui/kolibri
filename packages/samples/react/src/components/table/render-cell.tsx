@@ -5,6 +5,7 @@ import { KolButton, KolInputText, KolTable } from '@public-ui/react';
 import { getRoot } from '../../shares/react-roots';
 import { KoliBriTableHeaders } from '@public-ui/components';
 import { DATA, Data } from './test-data';
+import { SampleDescription } from '../SampleDescription';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
@@ -20,7 +21,9 @@ const HEADERS: KoliBriTableHeaders = {
 				label: 'Datum (string)',
 				key: 'date',
 				textAlign: 'center',
-				render: (_el, _cell, tupel) => `<strong>${DATE_FORMATTER.format((tupel as Data).date)}</strong>`,
+				render: (el, _cell, tupel) => {
+					getRoot(el).render(<>{DATE_FORMATTER.format((tupel as Data).date)}</>);
+				},
 				sort: (data: Data[]) =>
 					data.sort((data0, data1) => {
 						if (data0.date < data1.date) return -1;
@@ -45,4 +48,11 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
-export const TableRenderCell: FC = () => <KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />;
+export const TableRenderCell: FC = () => (
+	<>
+		<SampleDescription>
+			<p>This sample simulates the usage of React render functions for the table column contents.</p>
+		</SampleDescription>
+		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />
+	</>
+);
