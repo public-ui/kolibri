@@ -1,3 +1,4 @@
+export { setCurrentLocation } from './components/link/ariaCurrentService';
 export * from './components.d';
 export { register } from './core';
 export * from './enums/bund';

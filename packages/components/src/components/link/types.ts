@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { PropAriaCurrent, PropListenAriaCurrent } from '../../types/props/aria-current';
+import { PropAriaCurrent } from '../../types/props/aria-current';
 import { PropDownload } from '../../types/props/download';
 import { PropHref } from '../../types/props/href';
 import { PropIcons } from '../../types/props/icons';
@@ -28,7 +28,6 @@ export type OptionalProps = {
 	PropLabelWithExpertSlot &
 	PropLinkOnCallbacks &
 	PropLinkTarget &
-	PropListenAriaCurrent &
 	PropTooltipAlign;
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 

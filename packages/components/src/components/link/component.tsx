@@ -4,7 +4,6 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { KoliBriIconsProp } from '../../types/icons';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
 import { DownloadPropType, validateDownload } from '../../types/props/download';
 import { HrefPropType, validateHref } from '../../types/props/href';
 import { validateIcons } from '../../types/props/icons';
@@ -12,14 +11,15 @@ import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../
 import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
 import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
-import { devHint, devWarning } from '../../utils/a11y.tipps';
-import { ariaCurrentSubject, setEventTarget, watchString } from '../../utils/prop.validators';
+import { devHint } from '../../utils/a11y.tipps';
+import { setEventTarget, watchString } from '../../utils/prop.validators';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { States as LinkStates } from '../link/types';
 import { API } from './types';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
+import { onLocationChange, UnsubscribeFunction } from './ariaCurrentService';
 
 /**
  * @internal
@@ -31,6 +31,7 @@ import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-k
 export class KolLinkWc implements API {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private ref?: HTMLAnchorElement;
+	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
 		this.ref = ref;
@@ -161,11 +162,6 @@ export class KolLinkWc implements API {
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
-	 * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-	 */
-	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
-
-	/**
 	 * Defines the callback functions for links.
 	 */
 	@Prop() public _on?: LinkOnCallbacksPropType;
@@ -205,10 +201,6 @@ export class KolLinkWc implements API {
 		validateAccessKey(this, value);
 	}
 
-	private validateAriaCurrent(value?: AriaCurrentPropType): void {
-		validateAriaCurrent(this, value);
-	}
-
 	@Watch('_download')
 	public validateDownload(value?: DownloadPropType): void {
 		validateDownload(this, value);
@@ -232,11 +224,6 @@ export class KolLinkWc implements API {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabelWithExpertSlot(this, value);
-	}
-
-	@Watch('_listenAriaCurrent')
-	public validateListenAriaCurrent(value?: AriaCurrentPropType): void {
-		validateListenAriaCurrent(this, value);
 	}
 
 	@Watch('_on')
@@ -276,30 +263,20 @@ export class KolLinkWc implements API {
 		this.validateHref(this._href);
 		this.validateIcons(this._icons);
 		this.validateLabel(this._label);
-		this.validateListenAriaCurrent(this._listenAriaCurrent);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
 		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);
+		this.unsubscribeOnLocationChange = onLocationChange((location) => {
+			this.state._ariaCurrent = location === this.state._href ? 'page' : undefined;
+		});
 	}
 
-	private unsubscribeAriaCurrentSubject = ariaCurrentSubject.subscribe((event) => {
-		try {
-			if (this.state._listenAriaCurrent && this.state._listenAriaCurrent === event.ariaCurrent) {
-				if (this.state._href === event.href) {
-					this.validateAriaCurrent(event.ariaCurrent);
-				} else {
-					this.validateAriaCurrent(false);
-				}
-			}
-		} catch (e) {
-			devWarning(`The aria-current event is not valid.`);
-		}
-	});
-
 	public disconnectedCallback(): void {
-		this.unsubscribeAriaCurrentSubject.unsubscribe();
+		if (this.unsubscribeOnLocationChange) {
+			this.unsubscribeOnLocationChange();
+		}
 	}
 }

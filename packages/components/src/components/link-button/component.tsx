@@ -46,7 +46,6 @@ export class KolLinkButton implements Props {
 					_href={this._href}
 					_icons={this._icons}
 					_label={this._label}
-					_listenAriaCurrent={this._listenAriaCurrent}
 					_on={this._on}
 					_role="button"
 					_tabIndex={this._tabIndex}

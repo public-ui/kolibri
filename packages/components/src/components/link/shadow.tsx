@@ -3,7 +3,6 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { Stringified } from '../../types/common';
 import { KoliBriIconsProp } from '../../types/icons';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { DownloadPropType } from '../../types/props/download';
 import { HrefPropType } from '../../types/props/href';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
@@ -39,7 +38,6 @@ export class KolLink implements LinkProps {
 					_href={this._href}
 					_icons={this._icons}
 					_label={this._label}
-					_listenAriaCurrent={this._listenAriaCurrent}
 					_on={this._on}
 					_role={this._role}
 					_tabIndex={this._tabIndex}
@@ -88,11 +86,6 @@ export class KolLink implements LinkProps {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
-
-	/**
-	 * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-	 */
-	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Defines the callback functions for links.

@@ -43,9 +43,9 @@ import { W3CInputValue } from "./types/w3c";
 import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
 import { HrefPropType } from "./types/props/href";
-import { AriaCurrentPropType } from "./types/props/aria-current";
 import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
+import { AriaCurrentPropType } from "./types/props/aria-current";
 import { ListStyleType } from "./components/link-group/types";
 import { LinkProps } from "./components/link/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
@@ -99,9 +99,9 @@ export { W3CInputValue } from "./types/w3c";
 export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
 export { HrefPropType } from "./types/props/href";
-export { AriaCurrentPropType } from "./types/props/aria-current";
 export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
+export { AriaCurrentPropType } from "./types/props/aria-current";
 export { ListStyleType } from "./components/link-group/types";
 export { LinkProps } from "./components/link/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
@@ -1758,10 +1758,6 @@ export namespace Components {
          */
         "_label"?: LabelWithExpertSlotPropType;
         /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
-        /**
           * Defines the callback functions for links.
          */
         "_on"?: LinkOnCallbacksPropType;
@@ -1893,10 +1889,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -4552,10 +4544,6 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelWithExpertSlotPropType;
         /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
-        /**
           * Defines the callback functions for links.
          */
         "_on"?: LinkOnCallbacksPropType;
@@ -4687,10 +4675,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
