@@ -83,7 +83,9 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'dienstag',
 				label: 'Dienstag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#060" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => {
+					el.innerHTML = `<kol-badge _color="#060" _label="${data.label}"></kol-badge>`;
+				},
 				sort: (data) => {
 					return data.sort((first, second) => {
 						if (first.dienstag < second.dienstag) {
@@ -100,27 +102,37 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'mittwoch',
 				label: 'Mittwoch',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#006" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => {
+					el.innerHTML = `<kol-badge _color="#006" _label="${data.label}"></kol-badge>`;
+				},
 			},
 			{
 				key: 'donnerstag',
 				label: 'Donnerstag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#600" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => {
+					el.innerHTML = `<kol-badge _color="#600" _label="${data.label}"></kol-badge>`;
+				},
 			},
 			{
 				key: 'freitag',
 				label: 'Freitag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#303" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => {
+					el.innerHTML = `<kol-badge _color="#303" _label="${data.label}"></kol-badge>`;
+				},
 			},
 			{
 				key: 'samstag',
 				label: 'Samstag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#330" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => {
+					el.innerHTML = `<kol-badge _color="#330" _label="${data.label}"></kol-badge>`;
+				},
 			},
 			{
 				key: 'sonntag',
 				label: 'Sonntag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#033" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => {
+					el.innerHTML = `<kol-badge _color="#033" _label="${data.label}"></kol-badge>`;
+				},
 			},
 		],
 	],
