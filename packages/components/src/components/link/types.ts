@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { PropAriaCurrent } from '../../types/props/aria-current';
+import { PropAriaCurrentValue } from '../../types/props/aria-current-value';
 import { PropDownload } from '../../types/props/download';
 import { PropHref } from '../../types/props/href';
 import { PropIcons } from '../../types/props/icons';
@@ -21,6 +21,7 @@ export type OptionalProps = {
 	targetDescription: string;
 	tabIndex: number;
 } & PropAccessKey &
+	PropAriaCurrentValue &
 	PropAlternativeButtonLinkRole &
 	PropDownload &
 	PropHideLabel &
@@ -31,8 +32,8 @@ export type OptionalProps = {
 	PropTooltipAlign;
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = PropIcons & PropHref;
-type OptionalStates = PropAriaCurrent & Omit<RequiredProps & OptionalProps, keyof RequiredStates> & PropLabelWithExpertSlot;
+type RequiredStates = PropAriaCurrentValue & PropIcons & PropHref;
+type OptionalStates = { ariaCurrent: string } & Omit<RequiredProps & OptionalProps, keyof RequiredStates>;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

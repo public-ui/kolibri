@@ -20,6 +20,7 @@ import { API } from './types';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 import { onLocationChange, UnsubscribeFunction } from './ariaCurrentService';
+import { AriaCurrentValuePropType, validateAriaCurrentValue } from '../../types/props/aria-current-value';
 
 /**
  * @internal
@@ -135,6 +136,11 @@ export class KolLinkWc implements API {
 	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
+	 * Defines the value for the aria-current attribute.
+	 */
+	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
 	@Prop() public _download?: DownloadPropType;
@@ -194,11 +200,17 @@ export class KolLinkWc implements API {
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
 		_icons: {}, // ⚠ required
+		_ariaCurrentValue: 'page', // ⚠ required
 	};
 
 	@Watch('_accessKey')
 	public validateAccessKey(value?: AccessKeyPropType): void {
 		validateAccessKey(this, value);
+	}
+
+	@Watch('_ariaCurrentValue')
+	public validateAriaCurrentValue(value?: AriaCurrentValuePropType): void {
+		validateAriaCurrentValue(this, value);
 	}
 
 	@Watch('_download')
@@ -258,6 +270,7 @@ export class KolLinkWc implements API {
 
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
+		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel);
 		this.validateHref(this._href);
@@ -270,7 +283,7 @@ export class KolLinkWc implements API {
 		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
-			this.state._ariaCurrent = location === this.state._href ? 'page' : undefined;
+			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
 		});
 	}
 
