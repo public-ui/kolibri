@@ -189,21 +189,20 @@ export class KolTable implements API {
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
 						beforePatch: (nextValue: unknown) => {
+							const applySort = (headers: KoliBriTableHeaderCell[]) => {
+								headers.forEach((cell, i) => {
+									const sortDirection = cell.sortDirection;
+									if (typeof cell.sort === 'function' && (sortDirection === 'ASC' || sortDirection === 'DESC')) {
+										this.setSortDirection(cell.sort, sortDirection);
+										setTimeout(() => this.updateSortedData({ key: cell.key || `cell-${i}`, label: cell.label, sortDirection }));
+									}
+								});
+							};
+
 							const headers: KoliBriTableHeaders = nextValue as KoliBriTableHeaders;
-							headers.horizontal?.forEach((header) => {
-								header.forEach((cell) => {
-									if (typeof cell.sort === 'function' && typeof cell.sortDirection === 'string') {
-										this.setSortDirection(cell.sort, cell.sortDirection);
-									}
-								});
-							});
-							headers.vertical?.forEach((header) => {
-								header.forEach((cell) => {
-									if (typeof cell.sort === 'function' && typeof cell.sortDirection === 'string') {
-										this.setSortDirection(cell.sort, cell.sortDirection);
-									}
-								});
-							});
+							headers.horizontal?.forEach(applySort);
+							headers.vertical?.forEach(applySort);
+
 							if (headers.horizontal && headers.vertical && headers.horizontal?.length > 0 && headers.vertical?.length > 0) {
 								this.disableSort = true;
 								devHint(
