@@ -46,6 +46,20 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
   facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
 </p>
 
+## `aria-current` Service
+
+Damit die Link-Komponente automatisch ein [`aria-current`-Tag](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+setzen kann, muss ihr über den ariaCurrent-Service mitgeteilt werden, welche Seite gerade aktiv ist:
+
+```typescript
+import { setCurrentLocation } from '@public-ui/components';
+
+/* Bei jedem Seitenwechsel aufrufen: */
+setCurrentLocation('/path/to/page');
+```
+
+Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links entsprechen.
+
 <!--### Best practices
 
 ### Anwendungsfälle-->
