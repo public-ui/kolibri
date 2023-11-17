@@ -116,7 +116,6 @@
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",
 		"rimraf": "3.0.2",
-		"rxjs": "7.8.1",
 		"stencil-awesome-test": "1.0.6",
 		"terser": "5.24.0",
 		"tslib": "2.6.2",

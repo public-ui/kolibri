@@ -11,6 +11,7 @@ import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
 import { Sidebar } from './components/Sidebar';
 import { useLocation } from 'react-router';
 import { HideMenusContext } from './shares/HideMenusContext';
+import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
 
 setStorage(localStorage);
 
@@ -107,6 +108,7 @@ export const App: FC = () => {
 	const hideMenus = searchParams.has('hideMenus');
 
 	setTheme(theme as Theme); // set for `getTheme` usages within the application
+	useSetCurrentLocation();
 
 	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
 	document.body.setAttribute('class', theme);

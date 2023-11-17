@@ -41,9 +41,9 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { W3CInputValue } from "./types/w3c";
 import { InputTextType } from "./types/input/control/text";
+import { AriaCurrentValuePropType } from "./types/props/aria-current-value";
 import { DownloadPropType } from "./types/props/download";
 import { HrefPropType } from "./types/props/href";
-import { AriaCurrentPropType } from "./types/props/aria-current";
 import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
 import { ListStyleType } from "./components/link-group/types";
@@ -97,9 +97,9 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { W3CInputValue } from "./types/w3c";
 export { InputTextType } from "./types/input/control/text";
+export { AriaCurrentValuePropType } from "./types/props/aria-current-value";
 export { DownloadPropType } from "./types/props/download";
 export { HrefPropType } from "./types/props/href";
-export { AriaCurrentPropType } from "./types/props/aria-current";
 export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
 export { ListStyleType } from "./components/link-group/types";
@@ -1737,6 +1737,10 @@ export namespace Components {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1757,10 +1761,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -1792,6 +1792,10 @@ export namespace Components {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
@@ -1816,10 +1820,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label": LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -1873,6 +1873,10 @@ export namespace Components {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1893,10 +1897,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -1947,10 +1947,6 @@ export namespace Components {
         "_width"?: string;
     }
     interface KolNav {
-        /**
-          * Defines the value of aria-current to be used with the current context within the navigation.
-         */
-        "_ariaCurrentValue": AriaCurrentPropType;
         /**
           * Defines if navigation nodes can be collapsed or not. Enabled by default.
           * @TODO : Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
@@ -4531,6 +4527,10 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4551,10 +4551,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -4586,6 +4582,10 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
@@ -4610,10 +4610,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label": LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -4667,6 +4663,10 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4687,10 +4687,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -4741,10 +4737,6 @@ declare namespace LocalJSX {
         "_width"?: string;
     }
     interface KolNav {
-        /**
-          * Defines the value of aria-current to be used with the current context within the navigation.
-         */
-        "_ariaCurrentValue"?: AriaCurrentPropType;
         /**
           * Defines if navigation nodes can be collapsed or not. Enabled by default.
           * @TODO : Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
