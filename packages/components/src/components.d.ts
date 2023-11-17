@@ -791,6 +791,7 @@ export namespace Components {
           * Defines which variant should be used for presentation.
          */
         "_variant"?: InputCheckboxVariant;
+        "getValue": () => Promise<boolean | undefined>;
     }
     interface KolInputColor {
         /**
@@ -877,6 +878,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputDate {
         /**
@@ -989,6 +991,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: Iso8601 | Date | null;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputEmail {
         /**
@@ -1107,6 +1110,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputFile {
         /**
@@ -1199,6 +1203,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<FileList | null | undefined>;
     }
     interface KolInputNumber {
         /**
@@ -1311,6 +1316,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: number | Iso8601 | null;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputPassword {
         /**
@@ -1420,6 +1426,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputRadio {
         /**
@@ -1504,6 +1511,7 @@ export namespace Components {
           * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
          */
         "_value"?: Stringified<W3CInputValue>;
+        "getValue": () => Promise<W3CInputValue | undefined>;
     }
     interface KolInputRange {
         /**
@@ -1598,6 +1606,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: number;
+        "getValue": () => Promise<number | undefined>;
     }
     interface KolInputText {
         /**
@@ -1716,6 +1725,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolKolibri {
         /**
@@ -2166,6 +2176,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: Stringified<W3CInputValue[]>;
+        "getValue": () => Promise<Stringified<W3CInputValue[]> | undefined>;
     }
     interface KolSkipNav {
         /**
@@ -2468,6 +2479,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolToastContainer {
         "closeAll": () => Promise<void>;

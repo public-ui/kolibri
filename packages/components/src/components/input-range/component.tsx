@@ -1,4 +1,4 @@
-import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcons } from '../../types/icons';
@@ -43,13 +43,32 @@ export class KolInputRange implements API {
 		}
 	};
 
+	private getSanitizedFloatValue(value: string): number {
+		const floatValue = parseFloat(value);
+		if (this.state._max && floatValue > this.state._max) {
+			return this.state._max;
+		}
+		if (this.state._min && floatValue < this.state._min) {
+			return this.state._min;
+		}
+		return floatValue;
+	}
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Method()
+	public async getValue(): Promise<number | undefined> {
+		if (this.ref !== undefined) {
+			const value = this.ref.value;
+			return this.getSanitizedFloatValue(value);
+		}
+	}
+
 	private readonly onChange = (event: Event) => {
-		let value = parseFloat((event.target as HTMLInputElement).value);
-		if (this.state._max && value > this.state._max) value = this.state._max;
-		if (this.state._min && value < this.state._min) value = this.state._min;
-		this.validateValue(value);
+		const value = (event.target as HTMLInputElement).value;
+		const floatValue = this.getSanitizedFloatValue(value);
+		this.validateValue(floatValue);
 		if (typeof this.state._on?.onChange === 'function') {
-			this.state._on?.onChange(event, value);
+			this.state._on?.onChange(event, floatValue);
 		}
 	};
 
