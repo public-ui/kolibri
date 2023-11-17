@@ -24,6 +24,15 @@ const TABLE_HEADERS_H = {
 					el.innerHTML = '';
 					el.appendChild(button);
 				},
+				compareFn: (first, second) => {
+					if (first.montag < second.montag) {
+						return -1;
+					}
+					if (first.montag > second.montag) {
+						return 1;
+					}
+					return 0;
+				},
 				sort: (data) => {
 					return data.sort((first, second) => {
 						if (first.montag < second.montag) {
@@ -42,8 +51,7 @@ const TABLE_HEADERS_H = {
 				key: 'dienstag',
 				label: 'Dienstag',
 				render: (el, data) => (el.innerHTML = `<kol-badge _color="#060" _label="${data.label}"></kol-badge>`),
-				sort: (data) => {
-					return data.sort((first, second) => {
+				compareFn: (first, second) => {
 						if (first.dienstag < second.dienstag) {
 							return -1;
 						}
@@ -51,13 +59,22 @@ const TABLE_HEADERS_H = {
 							return 1;
 						}
 						return 0;
-					});
 				},
 				sortDirection: 'DESC',
 			},
 			{
 				key: 'mittwoch',
 				label: 'Mittwoch',
+				compareFn: (first, second) => {
+					if (first.mittwoch < second.mittwoch) {
+						return -1;
+					}
+					if (first.mittwoch > second.mittwoch) {
+						return 1;
+					}
+					return 0;
+				},
+				sortDirection: 'NOC',
 				render: (el, data) => (el.innerHTML = `<kol-badge _color="#006" _label="${data.label}"></kol-badge>`),
 			},
 			{
