@@ -27,7 +27,7 @@ type Props = {
 };
 const Scenario = (props: Props) => {
 	const ref = useRef<HTMLStencilElement & { getValue: () => Promise<any> }>();
-	const [value, setValue] = useState();
+	const [value, setValue] = useState<unknown>(undefined);
 	const formatter = props.formatter || JSON.stringify;
 	const eventTarget = useContext(EventTargetContext);
 
@@ -70,8 +70,8 @@ export const InputsGetValue: FC = () => {
 			<EventTargetContext.Provider value={eventTarget}>
 				<SampleDescription>
 					<p>
-						This sample show how the input components <code>getValue()</code> method works. It's called when clicking the "getValue()" button and prints the
-						current value right next to itself.
+						This sample show how the input components <code>getValue()</code> method works. It&apos;s called when clicking the &quout;getValue()&quout; button
+						and prints the current value right next to itself.
 					</p>
 				</SampleDescription>
 
@@ -84,7 +84,13 @@ export const InputsGetValue: FC = () => {
 					<Scenario
 						InputComponent={KolInputFile}
 						inputProps={{ _label: 'KolInputFile' }}
-						formatter={(value) => (value instanceof FileList ? `FileList{${[...value].map((file) => file.name).join(', ')}}` : JSON.stringify(value))}
+						formatter={(value) =>
+							value instanceof FileList
+								? `FileList{${Array.from(value)
+										.map((file: File) => file.name)
+										.join(', ')}}`
+								: JSON.stringify(value)
+						}
 					/>
 					<Scenario InputComponent={KolInputNumber} inputProps={{ _label: 'KolInputNumber' }} />
 					<Scenario InputComponent={KolInputPassword} inputProps={{ _label: 'KolInputPassword' }} />
