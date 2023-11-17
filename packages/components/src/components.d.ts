@@ -335,6 +335,7 @@ export namespace Components {
           * Defines which variant should be used for presentation.
          */
         "_variant"?: ButtonVariantPropType;
+        "getValue": () => Promise<Stringified<StencilUnknown> | undefined>;
     }
     interface KolButtonGroup {
     }
@@ -413,6 +414,7 @@ export namespace Components {
           * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
+        "getValue": () => Promise<Stringified<StencilUnknown> | undefined>;
     }
     /**
      * Internal component that renders an action or text component like a button or a link.

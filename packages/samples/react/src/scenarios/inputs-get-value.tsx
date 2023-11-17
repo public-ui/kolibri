@@ -14,6 +14,7 @@ import {
 	KolInputText,
 	KolSelect,
 	KolTextarea,
+	KolButtonLink,
 } from '@public-ui/react';
 import { SampleDescription } from '../components/SampleDescription';
 
@@ -118,6 +119,22 @@ export const InputsGetValue: FC = () => {
 							_label: 'KolTextarea',
 						}}
 					/>
+					<Scenario
+						InputComponent={KolButton}
+						inputProps={{
+							_label: 'KolButton',
+							_variant: 'ghost',
+							_value: 'KolButton value',
+						}}
+					/>
+					<Scenario
+						InputComponent={KolButtonLink}
+						inputProps={{
+							_label: 'KolButtonLink',
+							_value: 'KolButtonLink value',
+						}}
+					/>
+
 					<div className="grid grid-cols-3 gap-4">
 						<div></div>
 						<KolButton
