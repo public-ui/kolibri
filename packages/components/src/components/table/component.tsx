@@ -64,6 +64,8 @@ export class KolTable implements API {
 	private sortedColumnHead: KoliBriTableSelectedHead = { label: '', key: '', sortDirection: 'NOS' };
 	private ariaLive = '';
 
+	@Prop() public _allowMultiSort?: boolean;
+
 	/**
 	 * Defines the primary table data.
 	 */
@@ -95,6 +97,7 @@ export class KolTable implements API {
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
 	@State() public state: States = {
+		_allowMultiSort: false,
 		_label: '…', // ⚠ required
 		_data: [],
 		_dataFoot: [],
@@ -109,6 +112,13 @@ export class KolTable implements API {
 		},
 		_sortedData: [],
 	};
+
+	@Watch('_allowMultiSort')
+	public validateAllowMultiSort(value?: boolean): void {
+		watchValidator(this, '_allowMultiSort', () => true, new Set(['boolean']), value, {
+			defaultValue: false,
+		});
+	}
 
 	@Watch('_data')
 	public validateData(value?: Stringified<KoliBriTableDataType[]>): void {
@@ -178,6 +188,11 @@ export class KolTable implements API {
 
 	private changeCellSort(headerCell: KoliBriTableHeaderCell) {
 		if (typeof headerCell.compareFn === 'function') {
+			if (!this.state._allowMultiSort && headerCell.key != this.sortData[0]?.key) {
+				// clear when another column is sorted and multi sort is not allowed
+				this.sortData = [];
+			}
+
 			const index = this.sortData.findIndex((value) => value.key === headerCell.key);
 			if (index >= 0) {
 				const settings = this.sortData[index];
@@ -251,7 +266,9 @@ export class KolTable implements API {
 									const sortDirection = cell.sortDirection;
 									if (sortDirection === 'ASC' || sortDirection === 'DESC') {
 										if (typeof cell.compareFn === 'function') {
-											this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
+											if (this.state._allowMultiSort || this.sortData.length === 0) {
+												this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
+											}
 											hasSortedCells = true;
 										} else if (typeof cell.sort === 'function') {
 											this.setSortDirection(cell.sort, sortDirection);
@@ -346,6 +363,7 @@ export class KolTable implements API {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);

@@ -66,12 +66,14 @@ type RequiredProps = {
 	headers: Stringified<KoliBriTableHeaders>;
 } & PropLabel;
 type OptionalProps = {
+	allowMultiSort: boolean;
 	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
 };
 
 type RequiredStates = {
+	allowMultiSort: boolean;
 	data: KoliBriTableDataType[];
 	dataFoot: KoliBriTableDataType[];
 	headers: KoliBriTableHeaders;
