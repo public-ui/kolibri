@@ -32,7 +32,7 @@
 		"serve": "14.2.1"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.22.15",
+		"@babel/eslint-parser": "7.23.3",
 		"@babel/plugin-syntax-import-attributes": "7.22.5",
 		"@babel/preset-env": "7.23.2",
 		"depcheck": "1.4.7",
