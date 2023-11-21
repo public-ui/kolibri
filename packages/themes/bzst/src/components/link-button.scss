@@ -1,87 +1,75 @@
-@layer kol-theme-component {
-	:host {
-		--background-color: var(--color-gruen-dunkel);
-		--border-color: var(--color-gruen-dunkel);
-		--border-size: 1px;
-		--min-size: 2.75rem;
-		display: inline-block;
+:host {
+	--background-color: var(--color-gruen-dunkel);
+	--border-color: var(--color-gruen-dunkel);
+	--border-size: 1px;
+	--min-size: 2.75rem;
+	display: inline-block;
+}
+:is(button, a) {
+	outline: none;
+	&::before {
+		/* Render zero-width character as first element to set the baseline correctly. */
+		content: '\200B';
 	}
-
-	:is(button, a) {
-		outline: none;
-
-		&::before {
-			/* Render zero-width character as first element to set the baseline correctly. */
-			content: '\200B';
-		}
-	}
-
-	:is(button, a) > kol-span-wc {
-		border-width: var(--border-size);
-		border-style: solid;
-		min-width: var(--min-size);
-		min-height: var(--min-size);
-		display: grid;
-		gap: 0.25em;
-		line-height: 1.5;
-		font-family: var(--font-family);
-		cursor: pointer;
-		font-size: var(--text-size);
-		align-items: center;
-		padding: 0.5rem 0.875rem !important;
-		justify-content: center;
-		font-style: normal;
-		text-align: center;
-		text-transform: uppercase;
-		width: inherit;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
-	}
-
-	:is(button, a):hover:enabled > kol-span-wc {
-		text-decoration: underline;
-	}
-
-	:is(button, a):focus > kol-span-wc {
-		outline: var(--color-focus) solid 2px;
-	}
-
-	.primary :is(button, a) > kol-span-wc,
-	.primary :is(button, a):active > kol-span-wc,
-	.primary :is(button, a):hover > kol-span-wc {
-		background-color: var(--background-color);
-		border-color: var(--border-color);
-		color: var(--color-weiss);
-	}
-
-	.secondary :is(button, a) > kol-span-wc,
-	.danger :is(button, a) > kol-span-wc,
-	.normal :is(button, a) > kol-span-wc,
-	.ghost :is(button, a) > kol-span-wc {
-		background-color: var(--color-weiss);
-		border-color: var(--color-gruen-hell);
-		color: var(--color-grau-dunkel);
-	}
-
-	.ghost :is(button, a) > kol-span-wc {
-		background-color: transparent;
-		color: inherit;
-		border: calc(var(--border-size) * 2) solid transparent;
-	}
-
-	.secondary :is(button, a):active > kol-span-wc,
-	.secondary :is(button, a):hover > kol-span-wc {
-		background-color: var(--background-color);
-		border-color: var(--background-color);
-		border-width: var(--border-size);
-		color: var(--color-weiss);
-	}
-
-	:is(button, a):disabled > kol-span-wc,
-	:is(button, a):disabled:hover > kol-span-wc {
-		background-color: var(--color-weiss);
-		border-color: var(--color-grau-hell);
-		color: var(--color-disabled);
-		cursor: not-allowed;
-	}
+}
+:is(button, a) > kol-span-wc {
+	border-width: var(--border-size);
+	border-style: solid;
+	min-width: var(--min-size);
+	min-height: var(--min-size);
+	display: grid;
+	gap: 0.25em;
+	line-height: 1.5;
+	font-family: var(--font-family);
+	cursor: pointer;
+	font-size: var(--text-size);
+	align-items: center;
+	padding: 0.5rem 0.875rem !important;
+	justify-content: center;
+	font-style: normal;
+	text-align: center;
+	text-transform: uppercase;
+	width: inherit;
+	transition-duration: 0.5s;
+	transition-property: background-color, color, border-color;
+}
+:is(button, a):hover:enabled > kol-span-wc {
+	text-decoration: underline;
+}
+:is(button, a):focus > kol-span-wc {
+	outline: var(--color-focus) solid 2px;
+}
+.primary :is(button, a) > kol-span-wc,
+.primary :is(button, a):active > kol-span-wc,
+.primary :is(button, a):hover > kol-span-wc {
+	background-color: var(--background-color);
+	border-color: var(--border-color);
+	color: var(--color-weiss);
+}
+.secondary :is(button, a) > kol-span-wc,
+.danger :is(button, a) > kol-span-wc,
+.normal :is(button, a) > kol-span-wc,
+.ghost :is(button, a) > kol-span-wc {
+	background-color: var(--color-weiss);
+	border-color: var(--color-gruen-hell);
+	color: var(--color-grau-dunkel);
+}
+.ghost :is(button, a) > kol-span-wc {
+	background-color: transparent;
+	color: inherit;
+	border: calc(var(--border-size) * 2) solid transparent;
+}
+.secondary :is(button, a):active > kol-span-wc,
+.secondary :is(button, a):hover > kol-span-wc {
+	background-color: var(--background-color);
+	border-color: var(--background-color);
+	border-width: var(--border-size);
+	color: var(--color-weiss);
+}
+:is(button, a):disabled > kol-span-wc,
+:is(button, a):disabled:hover > kol-span-wc {
+	background-color: var(--color-weiss);
+	border-color: var(--color-grau-hell);
+	color: var(--color-disabled);
+	cursor: not-allowed;
 }

@@ -1,198 +1,229 @@
 /* NOTE: Alle ':root' CSS properties sollten in KoliBri zu ':host' kopiert werden und umgekehrt. Damit vereinheitlicht man alle Variablen auf beiden Seiten und kann diese dann individuell nutzen.*/ /* colors */
-:root,
-:host {
-  /* token */
-  --color-bleached-silk: #f2f2f2;
-  --color-carbon: #333;
-  --color-chilled-lemonade: #ffe695;
-  --color-green: #4d7f6f;
-  --color-green-light: #a7c0b8;
-  --color-green-dark: #23614e;
-  --color-heroic-blue: #126dff;
-  --color-mercury: #ebebeb;
-  --color-red-epiphyllum: #d00000;
-  --color-speedwell: #595f73;
-  --color-tropic-sea: #007194;
-  --color-white: #fff; /* template */ /* general */
-  --colorDark: var(--color-carbon);
-  --colorLight: var(--color-white); /* primary color */
-  --colorPrimary: var(--color-green-dark);
-  --colorPrimaryFront: var(--color-white);
-  --colorPrimarySuccess: var(--color-green);
-  --colorPrimarySuccessFront: var(--color-white);
-  --colorPrimaryActive: var(--color-green-light);
-  --colorPrimaryActiveFront: var(--color-carbon); /* secondary color */
-  --colorSecondary: var(--color-white);
-  --colorSecondaryFront: var(--color-carbon);
-  --colorSecondarySuccess: var(--color-bleached-silk);
-  --colorSecondarySuccessFront: var(--color-carbon);
-  --colorSecondaryActive: var(--color-mercury);
-  --colorSecondaryActiveFront: var(--color-carbon); /* text */
-  --colorText: var(--color-carbon);
-  --colorTextBg: var(--color-white);
-  --colorTextLight: var(--color-white);
-  --colorTextLightBg: var(--color-carbon);
-  --colorTextDisabled: var(--color-speedwell);
-  --colorTextDisabledBg: var(--color-mercury);
-  --colorTextActive: var(--color-green-dark);
-  --colorTextActiveBg: var(--color-white); /* signal */
-  --colorSignal: var(--color-tropic-sea);
-  --colorSignalFront: var(--color-white); /* colorSignalFocus hat keine Frontfarbe */
-  --colorSignalFocus: var(--color-heroic-blue);
-  --colorSignalSuccess: var(--color-green);
-  --colorSignalSuccessFront: var(--color-white);
-  --colorSignalWarn: var(--color-chilled-lemonade);
-  --colorSignalWarnFront: var(--color-carbon);
-  --colorSignalError: var(--color-red-epiphyllum);
-  --colorSignalErrorFront: var(--color-white); /* disabled */
-  --colorDisabled: var(--color-mercury);
-} /* font, headline, text */
-:root,
-:host {
-  /* token */
-  --font-family: 'BundesSans Web', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-  'Helvetica Neue', sans-serif; /* Basis-Größe: html, rem */
-  --font-size: 100%;
-  --line-height: 1.6875rem; /* template */ /* h1 */
-  --headline1FontSize: 2.5rem;
-  --headline1LineHeight: 2.8125rem; /* h2 */
-  --headline2FontSize: 2rem;
-  --headline2LineHeight: 2.5rem; /* h3 */
-  --headline3FontSize: 1.3125rem;
-  --headline3LineHeight: 1.6875rem; /* h4 */
-  --headline4FontSize: 1rem;
-  --headline4LineHeight: 1.6875rem; /* text */
-  --textFont: var(--font-family);
-  --textFontColor: var(--colorText);
-  --textFontSerif: 'BundesSerif Web', var(--textFont);
-  --textFontSize: 1rem;
-  --textFontLineHeight: 1.6875rem;
-  --textFontWeight: normal;
-} /* Abstände */
-:root,
-:host {
-  /* template */
-  --gap: 2rem;
-  --gapDouble: calc(var(--gap) * 2);
-  --gapSmall: 1.25rem; /* TODO: benötigt nur außerhalb KoliBri Komponenten? */
-  --gapSmallest: 0.625rem;
-  --gapLarge: 2.5rem;
-} /* formular */
-:root,
-:host {
-  /* template */
-  --formBorderWidthAndStyle: 1px solid; /* TODO: eigentlich --color-green sein, aber im Styleguide ist der Wert: #23614E */
-  --formBorder: var(--formBorderWidthAndStyle) var(--colorPrimarySuccess);
-  --formBorderHover: var(--formBorderWidthAndStyle) var(--colorPrimaryActive);
-  --formBorderDisabled: var(--formBorderWidthAndStyle) var(--colorDisabled);
-  --formBorderInvalid: var(--formBorderWidthAndStyle) var(--colorSignalError);
-  --focusOutline: var(--colorSignalFocus) solid 2px;
-  --formFieldBackground: var(--colorLight); /*Select option */
-  --formFieldBackgroundHover: var(--colorPrimary); /* Select options */
-  --formFieldBackgroundEven: var(--formFieldBackground); /* Select options */
-  --formFieldBackgroundOdd: var(--colorSecondaryActive);
-  --formFieldBackgroundDisabled: var(--colorSecondarySuccess);
-  --formFieldTextColorDisabled: var(--colorTextDisabled);
-} /* ********************************* */ /* ********************************* */ /* ********************************* */ /* ********************************* */
-:host {
-  /* Primärfarbe und Abstufungen */
-  --color-gruen-dunkel: var(--colorPrimary);
-  --color-gruen: var(--colorPrimarySuccess);
-  --color-gruen-hell: var(--colorPrimaryActive); /* Sekundärfarben */
-  --color-weiss: var(--colorSecondary);
-  --color-grau-dunkel: var(--colorSecondaryFront);
-  --color-grau-hell: var(--colorSecondaryActive);
-  --color-grau-weiss: var(--colorSecondarySuccess); /* Textfarben */
-  --color-graublau: var(--colorTextDisabled); /* Signalfarben */
-  --color-blau: var(--colorSignalFocus);
-  --color-blau-dunkel: var(--colorSignal);
-  --color-gelb: var(--colorSignalWarn);
-  --color-rot: var(--colorSignalError);
-  --color-disabled: var(--colorTextDisabled);
-  --text-size: var(--textFontSize);
-  --color-focus: var(--color-blau);
-  --spacing: 4px;
-  --color-text: var(--color-grau-dunkel);
-}
-:host {
-  color: var(--color-black);
-  font-family: var(--font-family);
-}
-:host * {
-  box-sizing: border-box;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--textFontSerif);
-}
-h1,
-h2 {
-  font-weight: var(--textFontWeight);
-}
-h1 {
-  font-size: var(--headline1FontSize);
-  line-height: var(--headline1LineHeight);
-}
-h2 {
-  font-size: var(--headline2FontSize);
-  line-height: var(--headline2LineHeight);
-}
-h3 {
-  font-size: var(--headline3FontSize);
-  line-height: var(--headline3LineHeight);
-}
-h4,
-h5,
-h6 {
-  font-size: var(--headline4FontSize);
-  line-height: var(--headline4LineHeight);
-}
-a,
-button,
-input,
-option,
-select,
-textarea {
-  hyphens: auto;
-  letter-spacing: inherit;
-} /* a,button,caption,input,option,select,summary,table,textarea {font-size: 1rem;} */
-summary {
-  hyphens: auto;
-  letter-spacing: inherit;
-}
-*[tabindex]:focus,
-kol-input:not(.checkbox, .radio) .input:focus-within,
-kol-input:is(.checkbox, .radio) input:focus,
-summary:focus {
-  outline: var(--focusOutline);
-  outline-offset: 2px;
-  transition: outline-offset 0.2s linear;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-kol-tooltip .area {
-  background-color: var(--colorDark);
-  color: var(--colorLight);
-}
-kol-tooltip kol-span-wc {
-  line-height: 1.5em;
-  padding: 0.5rem 0.75rem;
-}
-kol-span-wc,
-kol-span-wc > span {
-  gap: 0.5em;
-}
-kol-span-wc,
-kol-span-wc > span {
-  gap: 0.3em;
+@layer kol-theme-global {
+	:root,
+	:host {
+		/* token */
+		--color-bleached-silk: #f2f2f2;
+		--color-carbon: #333;
+		--color-chilled-lemonade: #ffe695;
+		--color-green: #4d7f6f;
+		--color-green-light: #a7c0b8;
+		--color-green-dark: #23614e;
+		--color-heroic-blue: #126dff;
+		--color-mercury: #ebebeb;
+		--color-red-epiphyllum: #d00000;
+		--color-speedwell: #595f73;
+		--color-tropic-sea: #007194;
+		--color-white: #fff; /* template */
+		/* general */
+		--colorDark: var(--color-carbon);
+		--colorLight: var(--color-white); /* primary color */
+		--colorPrimary: var(--color-green-dark);
+		--colorPrimaryFront: var(--color-white);
+		--colorPrimarySuccess: var(--color-green);
+		--colorPrimarySuccessFront: var(--color-white);
+		--colorPrimaryActive: var(--color-green-light);
+		--colorPrimaryActiveFront: var(--color-carbon); /* secondary color */
+		--colorSecondary: var(--color-white);
+		--colorSecondaryFront: var(--color-carbon);
+		--colorSecondarySuccess: var(--color-bleached-silk);
+		--colorSecondarySuccessFront: var(--color-carbon);
+		--colorSecondaryActive: var(--color-mercury);
+		--colorSecondaryActiveFront: var(--color-carbon); /* text */
+		--colorText: var(--color-carbon);
+		--colorTextBg: var(--color-white);
+		--colorTextLight: var(--color-white);
+		--colorTextLightBg: var(--color-carbon);
+		--colorTextDisabled: var(--color-speedwell);
+		--colorTextDisabledBg: var(--color-mercury);
+		--colorTextActive: var(--color-green-dark);
+		--colorTextActiveBg: var(--color-white); /* signal */
+		--colorSignal: var(--color-tropic-sea);
+		--colorSignalFront: var(--color-white); /* colorSignalFocus hat keine Frontfarbe */
+		--colorSignalFocus: var(--color-heroic-blue);
+		--colorSignalSuccess: var(--color-green);
+		--colorSignalSuccessFront: var(--color-white);
+		--colorSignalWarn: var(--color-chilled-lemonade);
+		--colorSignalWarnFront: var(--color-carbon);
+		--colorSignalError: var(--color-red-epiphyllum);
+		--colorSignalErrorFront: var(--color-white); /* disabled */
+		--colorDisabled: var(--color-mercury);
+	}
+
+	/* font, headline, text */
+	:root,
+	:host {
+		/* token */
+		--font-family: 'BundesSans Web', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+		'Helvetica Neue', sans-serif; /* Basis-Größe: html, rem */
+		--font-size: 100%;
+		--line-height: 1.6875rem; /* template */
+		/* h1 */
+		--headline1FontSize: 2.5rem;
+		--headline1LineHeight: 2.8125rem; /* h2 */
+		--headline2FontSize: 2rem;
+		--headline2LineHeight: 2.5rem; /* h3 */
+		--headline3FontSize: 1.3125rem;
+		--headline3LineHeight: 1.6875rem; /* h4 */
+		--headline4FontSize: 1rem;
+		--headline4LineHeight: 1.6875rem; /* text */
+		--textFont: var(--font-family);
+		--textFontColor: var(--colorText);
+		--textFontSerif: 'BundesSerif Web', var(--textFont);
+		--textFontSize: 1rem;
+		--textFontLineHeight: 1.6875rem;
+		--textFontWeight: normal;
+	}
+
+	/* Abstände */
+	:root,
+	:host {
+		/* template */
+		--gap: 2rem;
+		--gapDouble: calc(var(--gap) * 2);
+		--gapSmall: 1.25rem; /* TODO: benötigt nur außerhalb KoliBri Komponenten? */
+		--gapSmallest: 0.625rem;
+		--gapLarge: 2.5rem;
+	}
+
+	/* formular */
+	:root,
+	:host {
+		/* template */
+		--formBorderWidthAndStyle: 1px solid; /* TODO: eigentlich --color-green sein, aber im Styleguide ist der Wert: #23614E */
+		--formBorder: var(--formBorderWidthAndStyle) var(--colorPrimarySuccess);
+		--formBorderHover: var(--formBorderWidthAndStyle) var(--colorPrimaryActive);
+		--formBorderDisabled: var(--formBorderWidthAndStyle) var(--colorDisabled);
+		--formBorderInvalid: var(--formBorderWidthAndStyle) var(--colorSignalError);
+		--focusOutline: var(--colorSignalFocus) solid 2px;
+		--formFieldBackground: var(--colorLight); /*Select option */
+		--formFieldBackgroundHover: var(--colorPrimary); /* Select options */
+		--formFieldBackgroundEven: var(--formFieldBackground); /* Select options */
+		--formFieldBackgroundOdd: var(--colorSecondaryActive);
+		--formFieldBackgroundDisabled: var(--colorSecondarySuccess);
+		--formFieldTextColorDisabled: var(--colorTextDisabled);
+	}
+
+	/* ********************************* */
+	/* ********************************* */
+	/* ********************************* */
+	/* ********************************* */
+	:host {
+		/* Primärfarbe und Abstufungen */
+		--color-gruen-dunkel: var(--colorPrimary);
+		--color-gruen: var(--colorPrimarySuccess);
+		--color-gruen-hell: var(--colorPrimaryActive); /* Sekundärfarben */
+		--color-weiss: var(--colorSecondary);
+		--color-grau-dunkel: var(--colorSecondaryFront);
+		--color-grau-hell: var(--colorSecondaryActive);
+		--color-grau-weiss: var(--colorSecondarySuccess); /* Textfarben */
+		--color-graublau: var(--colorTextDisabled); /* Signalfarben */
+		--color-blau: var(--colorSignalFocus);
+		--color-blau-dunkel: var(--colorSignal);
+		--color-gelb: var(--colorSignalWarn);
+		--color-rot: var(--colorSignalError);
+		--color-disabled: var(--colorTextDisabled);
+		--text-size: var(--textFontSize);
+		--color-focus: var(--color-blau);
+		--spacing: 4px;
+		--color-text: var(--color-grau-dunkel);
+	}
+
+	:host {
+		color: var(--color-black);
+		font-family: var(--font-family);
+	}
+
+	:host * {
+		box-sizing: border-box;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--textFontSerif);
+	}
+
+	h1,
+	h2 {
+		font-weight: var(--textFontWeight);
+	}
+
+	h1 {
+		font-size: var(--headline1FontSize);
+		line-height: var(--headline1LineHeight);
+	}
+
+	h2 {
+		font-size: var(--headline2FontSize);
+		line-height: var(--headline2LineHeight);
+	}
+
+	h3 {
+		font-size: var(--headline3FontSize);
+		line-height: var(--headline3LineHeight);
+	}
+
+	h4,
+	h5,
+	h6 {
+		font-size: var(--headline4FontSize);
+		line-height: var(--headline4LineHeight);
+	}
+
+	a,
+	button,
+	input,
+	option,
+	select,
+	textarea {
+		hyphens: auto;
+		letter-spacing: inherit;
+	}
+
+	/* a,button,caption,input,option,select,summary,table,textarea {font-size: 1rem;} */
+	summary {
+		hyphens: auto;
+		letter-spacing: inherit;
+	}
+
+	*[tabindex]:focus,
+	kol-input:not(.checkbox, .radio) .input:focus-within,
+	kol-input:is(.checkbox, .radio) input:focus,
+	summary:focus {
+		outline: var(--focusOutline);
+		outline-offset: 2px;
+		transition: outline-offset 0.2s linear;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+	kol-tooltip .area {
+		background-color: var(--colorDark);
+		color: var(--colorLight);
+	}
+
+	kol-tooltip kol-span-wc {
+		line-height: 1.5em;
+		padding: 0.5rem 0.75rem;
+	}
+
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.5em;
+	}
+
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.3em;
+	}
 }

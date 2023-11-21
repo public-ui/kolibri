@@ -1,201 +1,160 @@
-@layer kol-theme-component {
-	:host > div {
-		background-color: white;
-		border-width: 2px;
-		border-style: solid;
-		border-radius: 0.25rem;
-		display: flex;
-		overflow: unset;
-	}
-
-	:host > div.default {
-		border-color: var(--color-grau-dunkel);
-	}
-
-	:host > div.default > .icon {
-		background-color: var(--color-grau-dunkel);
-	}
-
-	:host > div.error {
-		border-color: var(--color-rot);
-	}
-
-	:host > div.error > .icon {
-		background-color: var(--color-rot);
-	}
-
-	:host > div.info {
-		border-color: var(--color-blau);
-	}
-
-	:host > div.info > .icon {
-		background-color: var(--color-blau);
-	}
-
-	:host > div.success {
-		border-color: var(--color-gruen);
-	}
-
-	:host > div.success > .icon {
-		background-color: var(--color-gruen);
-	}
-
-	:host > div.warning {
-		border-color: var(--color-gelb);
-	}
-
-	:host > div.warning > .icon {
-		background-color: var(--color-gelb);
-	}
-
-	:host > div.msg > .icon {
-		color: white;
-		padding: 0.5em;
-		align-items: center;
-		display: inline-flex;
-	}
-
-	:host > div.msg.warning > .icon {
-		color: black;
-	}
-
-	:host > div.card.default .heading .icon {
-		background-color: var(--color-grau-dunkel);
-	}
-
-	:host > div.card.error .heading .icon {
-		background-color: var(--color-rot);
-	}
-
-	:host > div.card.info .heading .icon {
-		background-color: var(--color-blau);
-	}
-
-	:host > div.card.success .heading .icon {
-		background-color: var(--color-gruen);
-	}
-
-	:host > div.card.warning .heading .icon {
-		background-color: var(--color-gelb);
-	}
-
-	:host > div.card .heading .icon {
-		color: white;
-		padding: 0.5em;
-		align-items: center;
-		display: inline-flex;
-	}
-
-	:host > div.card.warning .heading .icon {
-		color: black;
-	}
-
-	:host > div kol-heading-wc .icon {
-		margin-right: 0.5em;
-	}
-
-	:host > div.card .heading .icon {
-		border-radius: 0 0 0.25rem 0;
-	}
-
-	:host > div.msg > div {
-		padding: 0.25em;
-	}
-
-	:host > div.msg > div > .heading {
-		padding: 0.25em;
-		display: inline-block;
-	}
-
-	:host > div .content {
-		padding: 0.25em;
-	}
-
-	:host > div > div {
-		display: grid;
-		grid-template-columns: 1fr auto;
-	}
-
-	:host > div > div > .content {
-		grid-row: 2;
-		grid-column: 1;
-	}
-
-	:host > div > div > .close {
-		grid-row: 1 / span 2;
-		display: flex;
-	}
-
-	:host > div.msg > div > .close > * {
-		margin: auto;
-	}
-
-	:host > div.msg.default .close .icon {
-		color: var(--color-grau-dunkel);
-	}
-
-	:host > div.msg.error .close .icon {
-		color: var(--color-rot);
-	}
-
-	:host > div.msg.info .close .icon {
-		color: var(--color-blau);
-	}
-
-	:host > div.msg.success .close .icon {
-		color: var(--color-gruen);
-	}
-
-	:host > div.msg.warning .close .icon {
-		color: var(--color-gelb);
-	}
-
-	:host > div.card > div > .heading {
-		width: 100%;
-	}
-
-	.close > button {
-		min-width: 44px;
-		min-height: 44px;
-		display: grid;
-		gap: 0.25em;
-		line-height: 1.5rem;
-		font-family: var(--font-family);
-		font-weight: 700;
-		cursor: pointer;
-		border-radius: 1.5em;
-		border-style: solid;
-		border-width: 2px;
-		font-size: 1rem;
-		align-items: center;
-		padding: 8px 14px;
-		justify-content: center;
-		font-style: normal;
-		text-align: center;
-		text-transform: uppercase;
-		width: inherit;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
-		background-color: rgba(0, 0, 0, 0);
-		border-color: rgba(0, 0, 0, 0);
-	}
-
-	.close > button.icon-only {
-		padding: 8px;
-	}
-
-	.close > button.icon-only kol-icon {
-		display: inline-block;
-		width: 1.5em;
-		height: 1.5em;
-	}
-
-	.close > button:active {
-		box-shadow: none;
-		outline: none;
-	}
-
-	.close kol-icon::part(icon)::before {
-		content: '\f00d';
-	}
+:host > div {
+	background-color: white;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 0.25rem;
+	display: flex;
+	overflow: unset;
+}
+:host > div.default {
+	border-color: var(--color-grau-dunkel);
+}
+:host > div.default > .icon {
+	background-color: var(--color-grau-dunkel);
+}
+:host > div.error {
+	border-color: var(--color-rot);
+}
+:host > div.error > .icon {
+	background-color: var(--color-rot);
+}
+:host > div.info {
+	border-color: var(--color-blau);
+}
+:host > div.info > .icon {
+	background-color: var(--color-blau);
+}
+:host > div.success {
+	border-color: var(--color-gruen);
+}
+:host > div.success > .icon {
+	background-color: var(--color-gruen);
+}
+:host > div.warning {
+	border-color: var(--color-gelb);
+}
+:host > div.warning > .icon {
+	background-color: var(--color-gelb);
+}
+:host > div.msg > .icon {
+	color: white;
+	padding: 0.5em;
+	align-items: center;
+	display: inline-flex;
+}
+:host > div.msg.warning > .icon {
+	color: black;
+}
+:host > div.card.default .heading .icon {
+	background-color: var(--color-grau-dunkel);
+}
+:host > div.card.error .heading .icon {
+	background-color: var(--color-rot);
+}
+:host > div.card.info .heading .icon {
+	background-color: var(--color-blau);
+}
+:host > div.card.success .heading .icon {
+	background-color: var(--color-gruen);
+}
+:host > div.card.warning .heading .icon {
+	background-color: var(--color-gelb);
+}
+:host > div.card .heading .icon {
+	color: white;
+	padding: 0.5em;
+	align-items: center;
+	display: inline-flex;
+}
+:host > div.card.warning .heading .icon {
+	color: black;
+}
+:host > div kol-heading-wc .icon {
+	margin-right: 0.5em;
+}
+:host > div.card .heading .icon {
+	border-radius: 0 0 0.25rem 0;
+}
+:host > div.msg > div {
+	padding: 0.25em;
+}
+:host > div.msg > div > .heading {
+	padding: 0.25em;
+	display: inline-block;
+}
+:host > div .content {
+	padding: 0.25em;
+}
+:host > div > div {
+	display: grid;
+	grid-template-columns: 1fr auto;
+}
+:host > div > div > .content {
+	grid-row: 2;
+	grid-column: 1;
+}
+:host > div > div > .close {
+	grid-row: 1 / span 2;
+	display: flex;
+}
+:host > div.msg > div > .close > * {
+	margin: auto;
+}
+:host > div.msg.default .close .icon {
+	color: var(--color-grau-dunkel);
+}
+:host > div.msg.error .close .icon {
+	color: var(--color-rot);
+}
+:host > div.msg.info .close .icon {
+	color: var(--color-blau);
+}
+:host > div.msg.success .close .icon {
+	color: var(--color-gruen);
+}
+:host > div.msg.warning .close .icon {
+	color: var(--color-gelb);
+}
+:host > div.card > div > .heading {
+	width: 100%;
+}
+.close > button {
+	min-width: 44px;
+	min-height: 44px;
+	display: grid;
+	gap: 0.25em;
+	line-height: 1.5rem;
+	font-family: var(--font-family);
+	font-weight: 700;
+	cursor: pointer;
+	border-radius: 1.5em;
+	border-style: solid;
+	border-width: 2px;
+	font-size: 1rem;
+	align-items: center;
+	padding: 8px 14px;
+	justify-content: center;
+	font-style: normal;
+	text-align: center;
+	text-transform: uppercase;
+	width: inherit;
+	transition-duration: 0.5s;
+	transition-property: background-color, color, border-color;
+	background-color: rgba(0, 0, 0, 0);
+	border-color: rgba(0, 0, 0, 0);
+}
+.close > button.icon-only {
+	padding: 8px;
+}
+.close > button.icon-only kol-icon {
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+}
+.close > button:active {
+	box-shadow: none;
+	outline: none;
+}
+.close kol-icon::part(icon)::before {
+	content: '\f00d';
 }

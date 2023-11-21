@@ -1,6 +1,8 @@
-:host > div {
-	width: 100%;
-	padding: 15px;
-	background: var(--color-grau-weiss);
-	box-shadow: -4px 0px 0px var(--color-gruen);
+@layer kol-theme-component {
+	:host > div {
+		width: 100%;
+		padding: 15px;
+		background: var(--color-grau-weiss);
+		box-shadow: -4px 0px 0px var(--color-gruen);
+	}
 }
