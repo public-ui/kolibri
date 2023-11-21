@@ -1,3 +1,5 @@
-:host {
-	--kolibri-font-size: var(--textFontSize);
+@layer kol-theme-component {
+	:host {
+		--kolibri-font-size: var(--textFontSize);
+	}
 }
