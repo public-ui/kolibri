@@ -74,6 +74,14 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                  | `false`     |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `number \| undefined`                                                                                   | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<number | undefined>`
+
+#### Returns
+
+Type: `Promise<number | undefined>`
+
 ## Slots
 
 | Slot | Description                           |

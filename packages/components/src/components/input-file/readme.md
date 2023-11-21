@@ -64,6 +64,14 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`     |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<FileList | null | undefined>`
+
+#### Returns
+
+Type: `Promise<FileList | null | undefined>`
+
 ## Slots
 
 | Slot | Description                         |

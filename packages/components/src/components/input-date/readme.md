@@ -104,6 +104,14 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 | `_type`               | `_type`          | Defines either the type of the component or of the components interactive element.                                                                           | `"date" \| "datetime-local" \| "month" \| "time" \| "week"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `'date'`    |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `Date \| `${number}-${number}-${number}T${number}:${number}:${number}`\|`${number}-${number}-${number}T${number}:${number}` \| `${number}-${number}-${number}`\|`${number}-${number}`\|`${number}-W${number}`\|`${number}:${number}:${number}` \| `${number}:${number}` \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<string | undefined>`
+
+#### Returns
+
+Type: `Promise<string | undefined>`
+
 ## Slots
 
 | Slot | Description                         |
