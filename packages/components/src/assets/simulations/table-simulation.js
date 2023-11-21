@@ -52,13 +52,13 @@ const TABLE_HEADERS_H = {
 				label: 'Dienstag',
 				render: (el, data) => (el.innerHTML = `<kol-badge _color="#060" _label="${data.label}"></kol-badge>`),
 				compareFn: (first, second) => {
-						if (first.dienstag < second.dienstag) {
-							return -1;
-						}
-						if (first.dienstag > second.dienstag) {
-							return 1;
-						}
-						return 0;
+					if (first.dienstag < second.dienstag) {
+						return -1;
+					}
+					if (first.dienstag > second.dienstag) {
+						return 1;
+					}
+					return 0;
 				},
 				sortDirection: 'DESC',
 			},
