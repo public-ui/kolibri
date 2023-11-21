@@ -1,0 +1,10 @@
+kol-input label {
+	font-weight: 700;
+	margin-bottom: var(--gapSmallest);
+}
+input {
+	border: var(--formBorder);
+}
+input:hover {
+	border: var(--formBorderHover);
+}

@@ -1,0 +1,74 @@
+kol-input {
+	gap: 0.4em;
+}
+kol-input .error {
+	order: 3;
+}
+kol-input label {
+	font-weight: 700;
+	order: 1;
+}
+kol-input .input {
+	order: 2;
+}
+kol-input .hint {
+	order: 4;
+	font-size: 0.875em;
+	font-style: italic;
+}
+input,
+select,
+textarea {
+	border: none;
+}
+.input {
+	color: var(--colorText);
+	border: var(--formBorder);
+	font-size: var(--textFontSize);
+	line-height: 1.5;
+	padding: 0 0.5em;
+	width: 100%;
+}
+.input > kol-icon {
+	width: 1.5em;
+}
+.input > input:first-child {
+	padding-left: 0.375em;
+}
+.input > input:last-child {
+	padding-right: 0.375em;
+}
+.input:hover {
+	border-color: var(--color-gruen-hell);
+}
+input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	cursor: not-allowed;
+}
+.required label > span::after {
+	content: '*';
+	padding-left: 0.125em;
+}
+kol-input.error {
+	border-left: 3px solid var(--color-rot);
+	padding-left: 1em;
+}
+kol-input.error .input:focus-within {
+	outline-color: var(--color-rot) !important;
+}
+kol-input.error kol-alert.error {
+	color: var(--color-rot);
+	font-weight: 700;
+}
+.disabled {
+	opacity: 0.33;
+}
+label {
+	color: var(--color-text);
+	line-height: 1.5;
+}
+.input {
+}
+.required label > span::after {
+	content: '*';
+	padding-left: 0.125em;
+}

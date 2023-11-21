@@ -46,7 +46,7 @@
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild",
-		"dev": "nodemon --ignore dist -e ts,tsx  --exec 'pnpm build'",
+		"dev": "nodemon --ignore dist -e ts,tsx,scss  --exec 'pnpm build'",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
 	},
@@ -58,6 +58,9 @@
 		"eslint": "8.53.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.0.1",
+		"postcss": "8.4.31",
+		"rollup-plugin-postcss": "4.0.2",
+		"sass": "1.69.2",
 		"typescript": "5.2.2",
 		"unbuild": "1.2.1"
 	},
