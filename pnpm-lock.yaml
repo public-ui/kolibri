@@ -1097,6 +1097,25 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
 
+  packages/themes/bzst-v2:
+    dependencies:
+      '@public-ui/components':
+        specifier: 2.0.0-rc.10
+        version: link:../../components
+    devDependencies:
+      '@public-ui/schema':
+        specifier: 2.0.0-rc.10
+        version: link:../../schema
+      '@public-ui/visual-tests':
+        specifier: 2.0.0-rc.10
+        version: link:../../tools/visual-tests
+      '@types/node':
+        specifier: ts5.2
+        version: 20.9.0
+      typescript:
+        specifier: 5.2.2
+        version: 5.2.2
+
   packages/themes/default:
     dependencies:
       '@public-ui/components':
