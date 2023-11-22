@@ -796,42 +796,42 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			line-height: 1em;
 			margin: 0;
 			padding: 0;
 		}
-		h1 {
+		.headline-h1 {
 			font-family: var(--font-family-serif);
 			font-size: 54px;
 			font-weight: bold;
 		}
-		h2 {
+		.headline-h2 {
 			font-family: var(--font-family-serif);
 			font-size: 32px;
 			font-weight: bold;
 		}
-		h3 {
+		.headline-h3 {
 			font-family: var(--font-family-serif);
 			font-size: 26px;
 			font-weight: bold;
 		}
-		h4 {
+		.headline-h4 {
 			font-family: var(--font-family-serif);
 			font-size: 20px;
 			font-weight: normal;
 		}
-		h5 {
+		.headline-h5 {
 			font-family: var(--font-family-serif);
 			font-size: 17px;
 			font-weight: bold;
 		}
-		h6 {
+		.headline-h6 {
 			font-family: var(--font-family-sans);
 			font-size: 17px;
 			font-weight: normal;

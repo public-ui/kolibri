@@ -179,35 +179,35 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			font-weight: var(--font-weight-bold);
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 2.625rem;
 			line-height: 3.25rem;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 2.25rem;
 			line-height: 2.75rem;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 2rem;
 			line-height: 2.5rem;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.75rem;
 			line-height: 2rem;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
-		h6 {
+		.headline-h6 {
 			font-size: 1.25rem;
 			line-height: 1.75rem;
 		}
