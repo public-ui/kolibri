@@ -2,6 +2,22 @@
 @layer kol-theme-global {
 	:root,
 	:host {
+		--color-primary: #005c45;
+		--color-primary-60: #00854a;
+		--color-primary-40: #99beb5;
+		--color-primary-20: #ccdeda;
+		--color-secondary: #576164;
+		--color-secondary-40: #e5e8e9;
+		--color-secondary-20: #f2f3f4;
+		--color-secondary-0: #ffffff;
+		--color-text-black: #000000;
+		--color-text-white: #ffffff;
+		--color-blue: #0077b6;
+		--color-petrol: #007194;
+		--color-green: #00854a;
+		--color-yellow: #f9e03a;
+		--color-red: #c0003c;
+
 		/* token */
 		--color-bleached-silk: #f2f2f2;
 		--color-carbon: #333;
@@ -13,7 +29,7 @@
 		--color-mercury: #ebebeb;
 		--color-red-epiphyllum: #d00000;
 		--color-speedwell: #595f73;
-		--color-tropic-sea: #007194;
+		--color-tropic-sea: #007194; /* replace by petrol */
 		--color-white: #fff; /* template */
 		/* general */
 		--colorDark: var(--color-carbon);
