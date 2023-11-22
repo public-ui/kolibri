@@ -1,14 +1,1 @@
 @import url(../style.css);
-@layer kol-component {
-	:host > kol-heading-wc {
-		display: grid;
-	}
-
-	:host > kol-heading-wc > .overline {
-		order: 1;
-	}
-
-	:host > kol-heading-wc > .headline {
-		order: 2;
-	}
-}
