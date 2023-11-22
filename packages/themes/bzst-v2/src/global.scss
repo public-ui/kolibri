@@ -1,3 +1,5 @@
+@import "functions";
+
 /* NOTE: Alle ':root' CSS properties sollten in KoliBri zu ':host' kopiert werden und umgekehrt. Damit vereinheitlicht man alle Variablen auf beiden Seiten und kann diese dann individuell nutzen.*/ /* colors */
 @layer kol-theme-global {
 	:root,
@@ -223,14 +225,21 @@
 			transform: rotate(360deg);
 		}
 	}
-	kol-tooltip .area {
-		background-color: var(--colorDark);
-		color: var(--colorLight);
-	}
 
-	kol-tooltip kol-span-wc {
-		line-height: 1.5em;
-		padding: 0.5rem 0.75rem;
+	kol-tooltip-wc {
+		font-size: rem(18);
+
+		.tooltip-area {
+			background-color: var(--color-white);
+		}
+		.tooltip-arrow {
+			background-color: var(--color-primary);
+		}
+		.tooltip-content {
+			padding: rem(8);
+			border: 2px solid var(--color-primary);
+			box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+		}
 	}
 
 	kol-span-wc,
