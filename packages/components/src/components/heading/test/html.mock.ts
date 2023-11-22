@@ -20,7 +20,7 @@ export const getHeadingWcHtml = (
 
 	return `
 		<kol-heading-wc${additionalAttrs}>
-			<${tag} class="headline">
+			<${tag} class="headline headline-${props._variant || tag}">
 				${state._label}
 				${slots.expert !== undefined ? slots.expert : '<slot name="expert" slot="expert"></slot>'}
 			</${tag}>

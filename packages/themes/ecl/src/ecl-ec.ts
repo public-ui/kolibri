@@ -101,27 +101,27 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1 {
+		.headline-h1 {
 			font-size: 2rem;
 			line-height: 2.5rem;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 1.75rem;
 			line-height: 2rem;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.25rem;
 			line-height: 1.75rem;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1rem;
 			line-height: 1.5rem;
 		}
-		h6 {
+		.headline-h6 {
 			color: rgb(234, 0, 255);
 		}
 	`,

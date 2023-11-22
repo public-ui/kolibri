@@ -31,6 +31,7 @@ import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { EventCallbacks } from "./components/details/types";
 import { KoliBriFormCallbacks } from "./components/form/types";
+import { HeadingVariantPropType } from "./types/props/heading-variant";
 import { Loading } from "./utils/validators/loading";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -87,6 +88,7 @@ export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { EventCallbacks } from "./components/details/types";
 export { KoliBriFormCallbacks } from "./components/form/types";
+export { HeadingVariantPropType } from "./types/props/heading-variant";
 export { Loading } from "./utils/validators/loading";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -561,6 +563,10 @@ export namespace Components {
           * Defines the text of the secondary headline.
          */
         "_secondaryHeadline"?: string;
+        /**
+          * Defines which variant should be used for presentation.
+         */
+        "_variant"?: HeadingVariantPropType;
     }
     interface KolHeadingWc {
         /**
@@ -575,6 +581,10 @@ export namespace Components {
           * Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.
          */
         "_secondaryHeadline"?: string;
+        /**
+          * Defines which variant should be used for presentation.
+         */
+        "_variant"?: HeadingVariantPropType;
     }
     interface KolIcon {
         /**
@@ -3363,6 +3373,10 @@ declare namespace LocalJSX {
           * Defines the text of the secondary headline.
          */
         "_secondaryHeadline"?: string;
+        /**
+          * Defines which variant should be used for presentation.
+         */
+        "_variant"?: HeadingVariantPropType;
     }
     interface KolHeadingWc {
         /**
@@ -3377,6 +3391,10 @@ declare namespace LocalJSX {
           * Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.
          */
         "_secondaryHeadline"?: string;
+        /**
+          * Defines which variant should be used for presentation.
+         */
+        "_variant"?: HeadingVariantPropType;
     }
     interface KolIcon {
         /**

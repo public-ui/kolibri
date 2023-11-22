@@ -123,39 +123,39 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			font-weight: var(--font-weight-bold);
 			margin: 0;
 			padding: 1rem 0;
 			text-align: left;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 2.5rem;
 			line-height: 1.2;
 			padding: 0 0 1rem 0;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 2rem;
 			line-height: 1.25;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.75rem;
 			line-height: 1.29;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.5rem;
 			line-height: 1.33;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1.25rem;
 			line-height: 1.4;
 		}
-		h6 {
+		.headline-h6 {
 			font-size: 1rem;
 			line-height: 1.5;
 		}
