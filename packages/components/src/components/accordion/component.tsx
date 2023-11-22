@@ -47,8 +47,9 @@ export class KolAccordion implements API {
 						open: this.state._open === true,
 					}}
 				>
-					<kol-heading-wc _label="" _level={this.state._level}>
+					<kol-heading-wc _label="" _level={this.state._level} class="accordion-heading">
 						<kol-button-wc
+							class="accordion-button"
 							ref={this.catchRef}
 							slot="expert"
 							_ariaControls={this.nonce}
