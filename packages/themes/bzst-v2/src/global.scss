@@ -156,42 +156,6 @@
 		box-sizing: border-box;
 	}
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-family: var(--textFontSerif);
-	}
-
-	h1,
-	h2 {
-		font-weight: var(--textFontWeight);
-	}
-
-	h1 {
-		font-size: var(--headline1FontSize);
-		line-height: var(--headline1LineHeight);
-	}
-
-	h2 {
-		font-size: var(--headline2FontSize);
-		line-height: var(--headline2LineHeight);
-	}
-
-	h3 {
-		font-size: var(--headline3FontSize);
-		line-height: var(--headline3LineHeight);
-	}
-
-	h4,
-	h5,
-	h6 {
-		font-size: var(--headline4FontSize);
-		line-height: var(--headline4LineHeight);
-	}
-
 	a,
 	button,
 	input,
