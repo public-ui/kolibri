@@ -1,8 +1,9 @@
+@import '../functions';
+
 @layer kol-theme-component {
 	:host > div {
-		width: 100%;
-		padding: 15px;
-		background: var(--color-grau-weiss);
-		box-shadow: -4px 0px 0px var(--color-gruen);
+		padding: rem(15);
+		background-color: var(--color-secondary-20);
+		border-left: 6px solid var(--color-primary);
 	}
 }
