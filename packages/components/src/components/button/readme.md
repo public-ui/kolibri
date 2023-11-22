@@ -118,6 +118,14 @@ Probleme mit Disabled-Status
 | `_value`              | `_value`         | Defines the value that the button emits on click.                                                                                                                                | `boolean \| null \| number \| object \| string \| undefined`                                                                                           | `undefined` |
 | `_variant`            | `_variant`       | Defines which variant should be used for presentation.                                                                                                                           | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined`                                                   | `'normal'`  |
 
+## Methods
+
+### `getValue() => Promise<Stringified<StencilUnknown> | undefined>`
+
+#### Returns
+
+Type: `Promise<Stringified<StencilUnknown>>`
+
 ## Dependencies
 
 ### Used by

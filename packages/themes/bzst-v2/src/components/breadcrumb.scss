@@ -1,0 +1,41 @@
+@layer kol-theme-component {
+	nav {
+		width: 100%;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	kol-link {
+		display: inline;
+	}
+
+	:host kol-icon[exportparts*='separator'] {
+		padding: 0 0.5rem;
+	}
+
+	:host kol-icon::part(icon) {
+		font-family: 'Font Awesome 6 Free';
+		font-weight: 900;
+		font-size: 0.875rem !important;
+	}
+
+	:host kol-icon::part(icon)::before {
+		color: currentColor;
+		font-family: 'Font Awesome 6 Free';
+	}
+
+	:host ul > li:not(:first-child) kol-icon::part(icon)::before {
+		content: '\f105';
+	}
+
+	:host li > kol-link > kol-link-wc > a {
+		color: red !important;
+	}
+}

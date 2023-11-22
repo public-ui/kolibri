@@ -81,6 +81,14 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `boolean \| null \| number \| object \| string \| undefined`                                                                                                                                                                                                                                                    | `true`      |
 | `_variant`            | `_variant`       | Defines which variant should be used for presentation.                                                                                                       | `"button" \| "default" \| "switch" \| undefined`                                                                                                                                                                                                                                                                | `'default'` |
 
+## Methods
+
+### `getValue() => Promise<boolean | undefined>`
+
+#### Returns
+
+Type: `Promise<boolean | undefined>`
+
 ## Slots
 
 | Slot       | Description                    |

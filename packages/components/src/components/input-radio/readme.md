@@ -97,6 +97,14 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                   | `false`      |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `number \| string \| undefined`                                                          | `undefined`  |
 
+## Methods
+
+### `getValue() => Promise<W3CInputValue | undefined>`
+
+#### Returns
+
+Type: `Promise<W3CInputValue | undefined>`
+
 ## Slots
 
 | Slot | Description                               |

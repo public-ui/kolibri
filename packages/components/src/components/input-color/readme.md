@@ -68,6 +68,14 @@ Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgef
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`     |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<string | undefined>`
+
+#### Returns
+
+Type: `Promise<string | undefined>`
+
 ## Slots
 
 | Slot | Description                         |
