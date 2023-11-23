@@ -5,12 +5,7 @@ import { KolButton, KolInputText, KolTable } from '@public-ui/react';
 import { getRoot } from '../../shares/react-roots';
 import { KoliBriTableHeaders } from '@public-ui/components';
 import { DATA, Data } from './test-data';
-
-const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
-	day: '2-digit',
-	month: '2-digit',
-	year: 'numeric',
-});
+import { DATE_FORMATTER } from './formatter';
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
