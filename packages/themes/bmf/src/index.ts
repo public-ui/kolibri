@@ -2415,7 +2415,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
