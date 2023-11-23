@@ -24,7 +24,6 @@
 		--color-bleached-silk: #f2f2f2;
 		--color-carbon: #333;
 		--color-chilled-lemonade: #ffe695;
-		--color-green: #4d7f6f;
 		--color-green-light: #a7c0b8;
 		--color-green-dark: #23614e;
 		--color-heroic-blue: #126dff;
@@ -38,7 +37,7 @@
 		--colorLight: var(--color-white); /* primary color */
 		--colorPrimary: var(--color-green-dark);
 		--colorPrimaryFront: var(--color-white);
-		--colorPrimarySuccess: var(--color-green);
+		--colorPrimarySuccess: #4d7f6f;
 		--colorPrimarySuccessFront: var(--color-white);
 		--colorPrimaryActive: var(--color-green-light);
 		--colorPrimaryActiveFront: var(--color-carbon); /* secondary color */
@@ -59,7 +58,7 @@
 		--colorSignal: var(--color-tropic-sea);
 		--colorSignalFront: var(--color-white); /* colorSignalFocus hat keine Frontfarbe */
 		--colorSignalFocus: var(--color-heroic-blue);
-		--colorSignalSuccess: var(--color-green);
+		--colorSignalSuccess: #4d7f6f;
 		--colorSignalSuccessFront: var(--color-white);
 		--colorSignalWarn: var(--color-chilled-lemonade);
 		--colorSignalWarnFront: var(--color-carbon);
