@@ -13,13 +13,16 @@ Die Toast-Komponenten werden nicht direkt verwendet, sondern immer über den Toa
 import { ToasterService } from '@public-ui/components';
 
 // Get the toaster instance for the current HTML document.
-const toaster = ToasterService.getInstance(document);
+const toaster = ToasterService.getInstance(document, {
+  defaultAlertType: 'msg', // Standard: 'card'
+}});
 
 // Enqueue a new toast to the toaster to display:
 toaster.enqueue({
 	label: 'This is the title',
 	description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
 	type: 'info',
+	alertType: 'msg', // Standard: 'card'
 });
 ```
 
