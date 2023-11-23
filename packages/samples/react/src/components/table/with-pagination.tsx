@@ -12,7 +12,7 @@ const HEADERS: KoliBriTableHeaders = {
 		],
 	],
 };
-const PAGINATION: KoliBriTablePaginationProps = { _page: 2, _max: 1 };
+const PAGINATION: KoliBriTablePaginationProps = { _page: 2 };
 
 export const TableWithPagination: FC = () => (
 	<div>
