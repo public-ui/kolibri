@@ -87,7 +87,7 @@ export class KolTabs implements API {
 
 	private renderButtonGroup() {
 		return (
-			<kol-button-group-wc role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
+			<kol-button-group-wc class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<kol-button-wc
 						_disabled={button._disabled}
@@ -137,7 +137,9 @@ export class KolTabs implements API {
 					}}
 				>
 					{this.renderButtonGroup()}
-					<div ref={this.catchTabPanelHost}>{/* <slot /> */}</div>
+					<div class="tabs-content" ref={this.catchTabPanelHost}>
+						{/* <slot /> */}
+					</div>
 				</div>
 			</Host>
 		);
