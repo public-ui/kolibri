@@ -1,7 +1,8 @@
+@import '../functions';
+
 @layer kol-theme-component {
 	:host * {
 		hyphens: var(--hyphens);
-		line-height: var(--textFontLineHeight);
 	}
 
 	:host > div:first-child {
@@ -34,7 +35,7 @@
 	tr,
 	th,
 	td {
-		border: 0 solid var(--color-weiss);
+		border: 0 solid var(--color-white);
 	}
 
 	tr {
@@ -42,17 +43,17 @@
 	}
 
 	th {
-		background-color: var(--color-gruen);
-		color: var(--color-weiss);
-		font-weight: normal;
+		background-color: var(--color-primary);
+		color: var(--color-white);
+		font-size: rem(24);
 	}
 
 	tbody > tr:nth-child(odd) {
-		background-color: #f2f2f2;
+		background-color: var(--color-secondary-20);
 	}
 
 	tbody > tr:hover {
-		background-color: var(--color-gruen-dunkel);
+		background-color: var(--color-primary);
 		color: var(--color-weiss);
 	}
 
@@ -71,7 +72,7 @@
 
 	.pagination {
 		padding: 0.5em;
-		font-size: var(--textFontSize);
+
 		gap: 1rem;
 	}
 
@@ -83,6 +84,7 @@
 	[data-sort] kol-button::part(icon)::before {
 		font-family: 'Font Awesome 6 Free';
 		font-weight: 900;
+		color: var(--color-white);
 		content: '\f0dc';
 	}
 
