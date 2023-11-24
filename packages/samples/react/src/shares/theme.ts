@@ -1,6 +1,6 @@
 import { SelectOption } from '@public-ui/components';
 
-export type Theme = 'bmf' | 'bzst' | 'bzst-v2' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'mapz' | 'th' | 'unstyled' | 'zoll-v2' | 'zoll-v3';
+export type Theme = 'bmf' | 'bzst' | 'bzst-v1' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'mapz' | 'th' | 'unstyled' | 'zoll-v2' | 'zoll-v3';
 
 export const isTheme = (value: unknown) => {
 	return (
@@ -8,7 +8,7 @@ export const isTheme = (value: unknown) => {
 		(value === 'unstyled' ||
 			value === 'bmf' ||
 			value === 'bzst' ||
-			value === 'bzst-v2' ||
+			value === 'bzst-v1' ||
 			value === 'default' ||
 			value === 'ecl-ec' ||
 			value === 'ecl-eu' ||
@@ -40,7 +40,7 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	},
 	{
 		label: 'Bundeszentralamt für Steuern v2',
-		value: 'bzst-v2',
+		value: 'bzst-v1',
 	},
 	{
 		label: 'Default',

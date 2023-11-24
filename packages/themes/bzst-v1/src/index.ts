@@ -38,7 +38,7 @@ import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
 
 // Bundeszentralamt für Steuern
-export const BZStv2 = KoliBri.createTheme('bzst-v2', {
+export const BZStv1 = KoliBri.createTheme('bzst-v1', {
 	GLOBAL: globalCss,
 	'KOL-ACCORDION': accordionCss,
 	'KOL-ALERT': alertCss,
