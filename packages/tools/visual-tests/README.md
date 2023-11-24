@@ -23,7 +23,7 @@ Add the following npm scripts to the theme's `package.json`:
 {
 	"scripts": {
 		"test": "THEME_MODULE=src/index THEME_EXPORT=THEME_NAME kolibri-visual-test",
-		"test-update": "THEME_MODULE=src/index THEME_EXPORT=THEME_NAME kolibri-visual-test --update-snapshots"
+		"test-update": "THEME_MODULE=src/index THEME_EXPORT=THEME_NAME kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	}
 }
 ```

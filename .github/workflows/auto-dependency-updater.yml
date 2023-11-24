@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'develop'
+          ref: 'release/1.7'
 
       # - uses: pnpm/action-setup@v2.2.4
       #   with:
@@ -50,7 +50,7 @@ jobs:
             ${{ runner.os }}-pnpm-store
 
       - name: Create new branch
-        run: git checkout -b chore/auto-update-deps
+        run: git checkout -b chore/auto-update-deps-v1
       - name: Install tools
         run: npm i lerna npm-check-updates --no-save
       - name: Update dependencies
@@ -68,5 +68,5 @@ jobs:
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'chore/auto-update-deps'
+          branch: 'chore/auto-update-deps-v1'
           force: true

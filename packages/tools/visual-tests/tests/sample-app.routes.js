@@ -263,11 +263,6 @@ ROUTES.set('pagination/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('popover/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('progress/basic', {
 	axe: {
 		skipFailures: false,
