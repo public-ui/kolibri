@@ -48,7 +48,8 @@ export const getButtonWcHtml = (
 				...props,
 				_label: state._label,
 			},
-			slots
+			slots,
+			{ additionalClassNames: ['button-inner'] }
 		)}
 	</button>
 	${getTooltipHtml(

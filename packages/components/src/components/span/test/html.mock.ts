@@ -13,6 +13,7 @@ type Slots = {
 } & Record<string, undefined | string>;
 export type SpanOptions = {
 	additionalAttrs?: string;
+	additionalClassNames?: string[];
 };
 export const getSpanWcHtml = (
 	props: Props,
@@ -38,8 +39,9 @@ export const getSpanWcHtml = (
 
 	const hideExpertSlot = !showExpertSlot(state._label);
 	const icon = mapIconProp2State(state._icons as KoliBriIconsProp);
+	const classNames: string[] = [...(state._hideLabel === true ? [`icon-only hide-label`] : []), ...(options?.additionalClassNames ?? [])];
 	return `
-<kol-span-wc${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${options?.additionalAttrs ?? ''}>
+<kol-span-wc${classNames.length ? ` class="${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
 	${
 		icon.top
 			? getIconHtml({

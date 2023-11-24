@@ -15,7 +15,7 @@ type Country = {
 
 const SALUTATION_OPTIONS: SelectOption<string>[] = [
 	{
-		label: '- Keine Auswahl',
+		label: 'Keine Auswahl',
 		value: '',
 		disabled: true,
 	},
@@ -59,6 +59,7 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				}}
 				_touched
 			/>
+			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Disabled" _disabled />
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Anrede mit Fehler" _error={ERROR_MSG} _touched />
 			<KolSelect {...props} _options={COUNTRY_OPTIONS} _label="Mehrfachauswahl" _multiple />
 			<KolSelect {...props} _options={COUNTRY_OPTIONS} _label="Mehrfachauswahl mit Fehler" _multiple _required _error={ERROR_MSG} _touched />
