@@ -173,7 +173,7 @@
 
 	*[tabindex]:focus,
 	kol-input:not(.checkbox, .radio) .input:focus-within,
-	kol-input:is(.checkbox, .radio) input:focus,
+	kol-input.radio input:focus,
 	summary:focus {
 		outline: var(--focusOutline);
 		outline-offset: 2px;

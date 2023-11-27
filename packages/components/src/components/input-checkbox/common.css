@@ -62,13 +62,13 @@
 		transition: 0.5s;
 	}
 
-	input[type='checkbox'].kol-disabled:before {
-		cursor: not-allowed;
-	}
-
 	input[type='checkbox']:before {
 		content: '';
 		cursor: pointer;
+	}
+
+	input[type='checkbox']:disabled:before {
+		cursor: not-allowed;
 	}
 
 	.default kol-icon {
