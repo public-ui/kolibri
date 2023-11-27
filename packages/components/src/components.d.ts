@@ -2312,6 +2312,9 @@ export namespace Components {
         "_symbol": string;
     }
     interface KolTable {
+        /**
+          * Defines whether to allow multi sort.
+         */
         "_allowMultiSort"?: boolean;
         /**
           * Defines the primary table data.
@@ -5103,6 +5106,9 @@ declare namespace LocalJSX {
         "_symbol": string;
     }
     interface KolTable {
+        /**
+          * Defines whether to allow multi sort.
+         */
         "_allowMultiSort"?: boolean;
         /**
           * Defines the primary table data.
