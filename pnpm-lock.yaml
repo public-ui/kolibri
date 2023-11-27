@@ -342,8 +342,8 @@ importers:
         specifier: 17.0.4
         version: 17.0.4(rxjs@7.8.1)(zone.js@0.14.2)
       '@public-ui/components':
-        specifier: 1.7.2
-        version: 1.7.2
+        specifier: 1.7.6-rc.2
+        version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
         version: 5.1.2
@@ -3337,7 +3337,7 @@ packages:
       '@babel/helper-annotate-as-pure': 7.22.5
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
+      '@babel/helper-function-name': 7.22.5
       '@babel/helper-optimise-call-expression': 7.22.5
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/helper-replace-supers': 7.22.9(@babel/core@7.22.17)
@@ -7237,10 +7237,6 @@ packages:
       '@public-ui/components': link:packages/components
       '@public-ui/schema': 1.1.15
     dev: false
-
-  /@public-ui/components@1.7.2:
-    resolution: {integrity: sha512-bnJ/NeylbVqbynaZjIw74cT6qDiSkDTuPjLtFglnPnduT28OLXTSF0wyNovXu7x0kRd26jAg5bVjjuKHS8b/Ww==}
-    dev: true
 
   /@public-ui/core@1.1.15:
     resolution: {integrity: sha512-la537grID2UqyP/Wsaf/Rp80TrbRzAy1KDKn8wpeEnIakZSBJLwMU/O8lDNZ0LJ7vcvxcQsJFNQMpVeyvpKZjg==}
