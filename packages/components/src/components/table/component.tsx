@@ -769,9 +769,9 @@ export class KolTable implements API {
 
 		return (
 			<Host>
-				<span style={{ height: '0', width: '0', overflow: 'hidden' }} aria-live="assertive">
+				<div style={{ height: '0', width: '0', overflow: 'hidden' }} aria-live="assertive">
 					{this.ariaLive}
-				</span>
+				</div>
 				{this.pageEndSlice > 0 && this.showPagination && (
 					<div class="pagination">
 						<span>
