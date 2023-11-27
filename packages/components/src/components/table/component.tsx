@@ -64,6 +64,9 @@ export class KolTable implements API {
 	private sortedColumnHead: KoliBriTableSelectedHead = { label: '', key: '', sortDirection: 'NOS' };
 	private ariaLive = '';
 
+	/**
+	 * Defines whether to allow multi sort.
+	 */
 	@Prop() public _allowMultiSort?: boolean;
 
 	/**
