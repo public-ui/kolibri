@@ -48,7 +48,7 @@
 		"@types/node": "ts4.9",
 		"@types/normalize-package-data": "2.4.1",
 		"vue": "3.3.4",
-		"typescript": "5.2.2",
+		"typescript": "5.3.2",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {

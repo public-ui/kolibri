@@ -49,10 +49,10 @@
 		"@public-ui/components": "1.7.6-rc.1",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
-		"@types/node": "ts5.1",
+		"@types/node": "ts5.3",
 		"@types/normalize-package-data": "2.4.4",
-		"solid-js": "1.8.5",
-		"typescript": "5.2.2",
+		"solid-js": "1.8.6",
+		"typescript": "5.3.2",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
