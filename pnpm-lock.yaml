@@ -842,8 +842,8 @@ importers:
         specifier: 17.0.2
         version: 17.0.2(rxjs@7.8.1)(zone.js@0.14.2)
       '@angular/forms':
-        specifier: 17.0.2
-        version: 17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2)(rxjs@7.8.1)
+        specifier: 17.0.4
+        version: 17.0.4(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2)(rxjs@7.8.1)
       '@angular/platform-browser':
         specifier: 17.0.2
         version: 17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)
@@ -1824,13 +1824,13 @@ packages:
       zone.js: 0.14.2
     dev: true
 
-  /@angular/forms@17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2)(rxjs@7.8.1):
-    resolution: {integrity: sha512-w1QKifaVG4daxUktcBNZqBtOH1vn8t0YiwDR3woEdUYt0XYKMipfDzQfyIK+6fIVPOJUd42pRns1nbWJQHOInA==}
+  /@angular/forms@17.0.4(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2)(rxjs@7.8.1):
+    resolution: {integrity: sha512-R5J87dfJNWwi5SESD7tRkZnqG4u8KNAT4vImX4oG70/6vWioKUSWpLoSp1gpzy9UW51E85AKb8DNvIex7LclSg==}
     engines: {node: ^18.13.0 || >=20.9.0}
     peerDependencies:
-      '@angular/common': 17.0.2
-      '@angular/core': 17.0.2
-      '@angular/platform-browser': 17.0.2
+      '@angular/common': 17.0.4
+      '@angular/core': 17.0.4
+      '@angular/platform-browser': 17.0.4
       rxjs: ^6.5.3 || ^7.4.0
     dependencies:
       '@angular/common': 17.0.2(@angular/core@17.0.2)(rxjs@7.8.1)
