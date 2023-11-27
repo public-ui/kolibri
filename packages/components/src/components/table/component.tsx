@@ -594,6 +594,7 @@ export class KolTable implements API {
 	 */
 	private updateSortedData = (cell: KoliBriTableSelectedHead = this.sortedColumnHead) => {
 		if (this.disableSort) {
+			setState(this, '_sortedData', this.state._data);
 			return;
 		}
 
