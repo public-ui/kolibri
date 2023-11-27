@@ -609,7 +609,7 @@ export class KolTable implements API {
 
 			if (this.sortData.length === 1) {
 				this.ariaLive = translate(`kol-sort-${this.sortData[0].direction === 'ASC' ? 'ascending' : 'descending'}`, {
-					placeholders: { column: this.sortData[0].label },
+					placeholders: { column: this.sortData[0].label, multi: '' },
 				});
 			} else {
 				let sortText = '';
