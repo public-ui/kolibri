@@ -96,6 +96,12 @@ jobs:
         working-directory: packages/adapters/angular/v16
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+      - name: Build and publish adapter angular v17
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
+        working-directory: packages/adapters/angular/v17
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter react
         continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.tag}}
