@@ -54,6 +54,12 @@ updates:
   #   schedule:
   #     interval: weekly
   # - package-ecosystem: npm
+  #   directory: /packages/adapters/angular/v17/
+  #   labels:
+  #     - dependabot
+  #   schedule:
+  #     interval: weekly
+  # - package-ecosystem: npm
   #   directory: /packages/adapters/hydrate/
   #   labels:
   #     - dependabot
