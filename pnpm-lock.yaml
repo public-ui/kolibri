@@ -798,13 +798,13 @@ importers:
         version: 17.0.2(rxjs@7.8.1)(zone.js@0.14.2)
       '@angular/forms':
         specifier: 17.0.2
-        version: 17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2)(rxjs@7.8.1)
+        version: 17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.4)(rxjs@7.8.1)
       '@angular/platform-browser':
-        specifier: 17.0.2
-        version: 17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)
+        specifier: 17.0.4
+        version: 17.0.4(@angular/common@17.0.2)(@angular/core@17.0.2)
       '@angular/platform-browser-dynamic':
         specifier: 17.0.2
-        version: 17.0.2(@angular/common@17.0.2)(@angular/compiler@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2)
+        version: 17.0.2(@angular/common@17.0.2)(@angular/compiler@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.4)
       '@public-ui/angular-v16':
         specifier: 2.0.0-rc.10
         version: link:../../adapters/angular/v16
@@ -986,7 +986,7 @@ importers:
         version: 3.0.2
       ts-node:
         specifier: 10.9.1
-        version: 10.9.1(@types/node@20.9.0)(typescript@4.6.2)
+        version: 10.9.1(@types/node@20.10.0)(typescript@4.6.2)
 
   packages/schema:
     dependencies:
@@ -1732,7 +1732,7 @@ packages:
       tslib: 2.6.2
       zone.js: 0.14.2
 
-  /@angular/forms@17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2)(rxjs@7.8.1):
+  /@angular/forms@17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.4)(rxjs@7.8.1):
     resolution: {integrity: sha512-w1QKifaVG4daxUktcBNZqBtOH1vn8t0YiwDR3woEdUYt0XYKMipfDzQfyIK+6fIVPOJUd42pRns1nbWJQHOInA==}
     engines: {node: ^18.13.0 || >=20.9.0}
     peerDependencies:
@@ -1743,12 +1743,12 @@ packages:
     dependencies:
       '@angular/common': 17.0.2(@angular/core@17.0.2)(rxjs@7.8.1)
       '@angular/core': 17.0.2(rxjs@7.8.1)(zone.js@0.14.2)
-      '@angular/platform-browser': 17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)
+      '@angular/platform-browser': 17.0.4(@angular/common@17.0.2)(@angular/core@17.0.2)
       rxjs: 7.8.1
       tslib: 2.6.2
     dev: false
 
-  /@angular/platform-browser-dynamic@17.0.2(@angular/common@17.0.2)(@angular/compiler@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.2):
+  /@angular/platform-browser-dynamic@17.0.2(@angular/common@17.0.2)(@angular/compiler@17.0.2)(@angular/core@17.0.2)(@angular/platform-browser@17.0.4):
     resolution: {integrity: sha512-clcHqHcfD00/TlTixDbJ3q4EQxpm0t2ZFG76rRFmGrmE5tKYUPfaofIa3hQCxy3q269MAYuF16wALhUtrEWyUA==}
     engines: {node: ^18.13.0 || >=20.9.0}
     peerDependencies:
@@ -1760,17 +1760,17 @@ packages:
       '@angular/common': 17.0.2(@angular/core@17.0.2)(rxjs@7.8.1)
       '@angular/compiler': 17.0.2(@angular/core@17.0.2)
       '@angular/core': 17.0.2(rxjs@7.8.1)(zone.js@0.14.2)
-      '@angular/platform-browser': 17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2)
+      '@angular/platform-browser': 17.0.4(@angular/common@17.0.2)(@angular/core@17.0.2)
       tslib: 2.6.2
     dev: false
 
-  /@angular/platform-browser@17.0.2(@angular/common@17.0.2)(@angular/core@17.0.2):
-    resolution: {integrity: sha512-eTnPILEA/eAMkVUR/+g6fWhhMTmnmOzcZSGX/bBgQcvOhayZrDDxA6/Qf+jIB4RwC0wd3KA9zT5BCMmNojoUsg==}
+  /@angular/platform-browser@17.0.4(@angular/common@17.0.2)(@angular/core@17.0.2):
+    resolution: {integrity: sha512-lApUzVPfCEz/4aot77qzWUNg7yQgT0JSzy3BrBm95+2TbgH894J9Fswhig0sEN9jxGSkc3A5Yp5fs1HJcPqUiw==}
     engines: {node: ^18.13.0 || >=20.9.0}
     peerDependencies:
-      '@angular/animations': 17.0.2
-      '@angular/common': 17.0.2
-      '@angular/core': 17.0.2
+      '@angular/animations': 17.0.4
+      '@angular/common': 17.0.4
+      '@angular/core': 17.0.4
     peerDependenciesMeta:
       '@angular/animations':
         optional: true
@@ -8267,6 +8267,12 @@ packages:
 
   /@types/node@18.11.9:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
+    dev: true
+
+  /@types/node@20.10.0:
+    resolution: {integrity: sha512-D0WfRmU9TQ8I9PFx9Yc+EBHw+vSpIub4IDvQivcp26PtPrdMGAq5SDcpXEo/epqa/DXotVpekHiLNTg3iaKXBQ==}
+    dependencies:
+      undici-types: 5.26.5
     dev: true
 
   /@types/node@20.6.0:
@@ -22384,6 +22390,37 @@ packages:
       '@ts-morph/common': 0.12.3
       code-block-writer: 11.0.3
 
+  /ts-node@10.9.1(@types/node@20.10.0)(typescript@4.6.2):
+    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@tsconfig/node10': 1.0.9
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.4
+      '@types/node': 20.10.0
+      acorn: 8.10.0
+      acorn-walk: 8.2.0
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 4.6.2
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
+    dev: true
+
   /ts-node@10.9.1(@types/node@20.7.2)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
@@ -22442,37 +22479,6 @@ packages:
       diff: 4.0.2
       make-error: 1.3.6
       typescript: 5.2.2
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-    dev: true
-
-  /ts-node@10.9.1(@types/node@20.9.0)(typescript@4.6.2):
-    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.9
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.4
-      '@types/node': 20.9.0
-      acorn: 8.10.0
-      acorn-walk: 8.2.0
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 4.6.2
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
