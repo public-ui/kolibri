@@ -24,7 +24,7 @@
 
 	input {
 		border-width: 1px;
-		opacity: 1; /* Override conflicting component styles */
+		opacity: 1; // Override conflicting component styles
 
 		&:enabled {
 			border-color: var(--color-primary);
@@ -55,7 +55,7 @@
 		font-size: rem(18);
 		font-weight: bold;
 		padding-left: rem(12);
-		opacity: 1; /* Override conflicting component styles */
+		opacity: 1; // Override conflicting component styles
 
 		.disabled & {
 			color: var(--color-speedwell);

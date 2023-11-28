@@ -29,7 +29,7 @@
 	label {
 		font-size: rem(18);
 		font-weight: bold;
-		opacity: 1; /* Override conflicting component styles */
+		opacity: 1; // Override conflicting component styles
 
 		kol-input.disabled & {
 			color: var(--color-speedwell);
@@ -44,9 +44,9 @@
 	input {
 		appearance: none;
 		background-color: var(--color-white);
-		opacity: 1; /* Override conflicting component styles */
+		opacity: 1; // Override conflicting component styles
 		outline: none;
-		transition: none;  /* Override conflicting component styles */
+		transition: none;  // Override conflicting component styles
 	}
 
 	.required label > span::after {

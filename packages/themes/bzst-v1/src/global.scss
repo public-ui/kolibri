@@ -112,7 +112,7 @@
 		--formBorderHover: var(--formBorderWidthAndStyle) var(--colorPrimaryActive);
 		--formBorderDisabled: var(--formBorderWidthAndStyle) var(--colorDisabled);
 		--formBorderInvalid: var(--formBorderWidthAndStyle) var(--colorSignalError);
-		--focusOutline: var(--colorSignalFocus) solid 2px;
+		--focusOutline: var(--color-blue) solid 2px;
 		--formFieldBackground: var(--colorLight); /*Select option */
 		--formFieldBackgroundHover: var(--colorPrimary); /* Select options */
 		--formFieldBackgroundEven: var(--formFieldBackground); /* Select options */
