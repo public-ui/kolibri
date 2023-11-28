@@ -96,6 +96,7 @@ export class KolInputCheckbox implements API {
 							_label=""
 						/>
 						<input
+							class={this.state._variant === 'button' ? 'visually-hidden' : undefined}
 							ref={this.catchRef}
 							title=""
 							accessKey={this.state._accessKey} // by checkbox?!
