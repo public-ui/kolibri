@@ -7,8 +7,7 @@ import { Props } from '../types';
 export const getAccordionHtml = (
 	props: Props,
 	slots: {
-		header?: string;
-		content?: string;
+		default?: string;
 		footer?: string;
 	} = {}
 ): string => {
@@ -28,29 +27,28 @@ export const getAccordionHtml = (
 					_level: props._level,
 				},
 				{
-					default: `${getButtonWcHtml({
-						_ariaControls: 'nonce',
-						_ariaExpanded: props._open === true,
-						_icons: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
-						_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
-					})}`,
+					expert: `${getButtonWcHtml(
+						{
+							_ariaControls: 'nonce',
+							_ariaExpanded: props._open === true,
+							_icons: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
+							_label: props._label,
+						},
+						undefined,
+						' slot="expert"'
+					)}`,
 				}
 			)}
-      <div class="header">
-        <slot name="header"></slot>
-      </div>
 			<div class="wrapper">
 				<div class="animation-wrapper">
 					<div class="content" id="nonce" ${props._open ? '' : 'aria-hidden="true"'}>
-						<slot name="content"></slot>
 						<slot />
 					</div>
 				</div>
 			</div=>
     </div>
   </mock:shadow-root>
-  ${slots.header !== undefined ? slots.header : ''}
-  ${slots.content !== undefined ? slots.content : ''}
+  ${slots.default !== undefined ? slots.default : ''}
   ${slots.footer !== undefined ? slots.footer : ''}
 </kol-accordion>`;
 };

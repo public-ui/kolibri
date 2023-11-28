@@ -1,7 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { PropAriaLabel } from '../../types/props/aria-label';
 import { LabelProp, PropLabel } from '../../types/props/label';
 import { LinkProps } from '../link/types';
 
@@ -13,8 +12,8 @@ export type BreadcrumbLinkProps = LinkProps & LabelProp;
 
 type RequiredProps = {
 	links: Stringified<BreadcrumbLinkProps[]>;
-};
-type OptionalProps = PropAriaLabel & PropLabel;
+} & PropLabel;
+type OptionalProps = NonNullable<unknown>;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {

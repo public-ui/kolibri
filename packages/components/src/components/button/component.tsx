@@ -2,10 +2,8 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 
 import { States as ButtonStates } from '../../components/button/types';
 import { Stringified } from '../../types/common';
-import { AlignPropType } from '../../types/props/align';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { validateAriaControls } from '../../types/props/aria-controls';
-import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
 import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
 import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
@@ -13,19 +11,21 @@ import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
-import { IconsPropType, validateIcons, watchIconAlign } from '../../types/props/icons';
+import { IconsPropType, validateIcons } from '../../types/props/icons';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
+import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchString } from '../../utils/prop.validators';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { API } from './types';
+import { validateAriaSelected } from '../../types/props/aria-selected';
+import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 
 /**
  * @internal
@@ -76,17 +76,17 @@ export class KolButtonWc implements API {
 			<Host>
 				<button
 					ref={this.catchRef}
-					accessKey={this.state._accessKey}
+					accessKey={this.state._accessKey || undefined}
 					aria-controls={this.state._ariaControls}
-					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
+						button: true,
 						[this.state._variant as string]: this.state._variant !== 'custom',
 						[this.state._customClass as string]:
 							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
-						'icon-only': this.state._hideLabel === true, // @deprecated in v2
+						'icon-only': this.state._hideLabel === true,
 						'hide-label': this.state._hideLabel === true,
 					}}
 					disabled={this.state._disabled}
@@ -98,7 +98,13 @@ export class KolButtonWc implements API {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label}>
+					<kol-span-wc
+						class="button-inner"
+						_accessKey={this.state._accessKey}
+						_icons={this.state._icons}
+						_hideLabel={this.state._hideLabel}
+						_label={hasExpertSlot ? '' : this.state._label}
+					>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
@@ -109,6 +115,7 @@ export class KolButtonWc implements API {
 					 */
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
+					_accessKey={this._accessKey}
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></kol-tooltip-wc>
@@ -119,9 +126,9 @@ export class KolButtonWc implements API {
 	private readonly controller: AssociatedInputController;
 
 	/**
-	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
+	 * Defines the elements access key.
 	 */
-	@Prop() public _accessKey?: string;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
@@ -129,23 +136,9 @@ export class KolButtonWc implements API {
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Deprecated: Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-	 *
-	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-	 */
-	@Prop() public _ariaCurrent?: AriaCurrentPropType;
-
-	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop() public _ariaExpanded?: boolean;
-
-	/**
-	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -170,28 +163,9 @@ export class KolButtonWc implements API {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: IconsPropType;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsPropType;
-
-	/**
-	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 *
-	 * @deprecated
-	 */
-	@Prop() public _iconAlign?: AlignPropType;
-
-	/**
-	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
-	 *
-	 * @deprecated use _hide-label
-	 */
-	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -262,8 +236,8 @@ export class KolButtonWc implements API {
 	}
 
 	@Watch('_accessKey')
-	public validateAccessKey(value?: string): void {
-		watchString(this, '_accessKey', value);
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this, value);
 	}
 
 	@Watch('_ariaControls')
@@ -271,24 +245,14 @@ export class KolButtonWc implements API {
 		validateAriaControls(this, value);
 	}
 
-	@Watch('_ariaCurrent')
-	public validateAriaCurrent(value?: AriaCurrentPropType): void {
-		validateAriaCurrent(this, value);
-	}
-
 	@Watch('_ariaExpanded')
 	public validateAriaExpanded(value?: boolean): void {
 		validateAriaExpanded(this, value);
 	}
 
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-
 	@Watch('_ariaSelected')
 	public validateAriaSelected(value?: boolean): void {
-		watchBoolean(this, '_ariaSelected', value);
+		validateAriaSelected(this, value);
 	}
 
 	@Watch('_customClass')
@@ -309,24 +273,9 @@ export class KolButtonWc implements API {
 		validateHideLabel(this, value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: IconsPropType): void {
-		validateIcons(this, value);
-	}
-
 	@Watch('_icons')
 	public validateIcons(value?: IconsPropType): void {
 		validateIcons(this, value);
-	}
-
-	@Watch('_iconAlign')
-	public validateIconAlign(value?: AlignPropType): void {
-		watchIconAlign(this, value);
-	}
-
-	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
-		this.validateHideLabel(value);
 	}
 
 	@Watch('_id')
@@ -388,16 +337,14 @@ export class KolButtonWc implements API {
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaControls(this._ariaControls);
-		this.validateAriaCurrent(this._ariaCurrent);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
-		this.validateHideLabel(this._hideLabel || this._iconOnly);
-		this.validateIcons(this._icons || this._icon);
-		this.validateIconAlign(this._iconAlign);
+		this.validateHideLabel(this._hideLabel);
+		this.validateIcons(this._icons);
 		this.validateId(this._id);
-		this.validateLabel(this._label ?? this._ariaLabel); // explicitly allow empty string labels
+		this.validateLabel(this._label);
 		this.validateName(this._name);
 		this.validateOn(this._on);
 		this.validateRole(this._role);

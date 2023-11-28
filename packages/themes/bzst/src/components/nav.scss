@@ -1,0 +1,27 @@
+ul {
+	list-style: none;
+}
+a {
+	color: var(--colorText);
+	display: block;
+	padding: 0.3rem 0.5rem;
+	text-decoration: none;
+	transition-duration: 0.5s;
+	transition-property: background-color, color, border-color;
+}
+a:hover {
+	background-color: var(--colorPrimarySuccess);
+	color: var(--colorLight);
+}
+a:focus,
+button:focus {
+	outline: var(--focusOutline);
+	outline-offset: 2px;
+	transition: outline-offset 0.2s linear;
+}
+.list[data-deep='0'] {
+	font-family: var(--textFontSerif);
+}
+.horizontal {
+	gap: var(--gap);
+}

@@ -1,7 +1,5 @@
-import React from 'react';
-import { KolAccordion, KolButton } from '@public-ui/react';
-
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { KolAccordion } from '@public-ui/react';
 
 const LIST = [
 	{
@@ -21,11 +19,8 @@ const LIST = [
 export const AccordionList: FC = () => (
 	<div className="grid gap-4">
 		{LIST.map(({ heading, content }, index) => (
-			<KolAccordion _heading={heading} _level={1} _open={index === 1} key={index}>
-				<p slot="header">
-					<KolButton _label={'Bearbeiten'} />
-				</p>
-				<p slot="content">{content}</p>
+			<KolAccordion _label={heading} _level={1} _open={index === 1} key={index}>
+				<p>{content}</p>
 			</KolAccordion>
 		))}
 	</div>

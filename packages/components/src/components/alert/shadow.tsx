@@ -21,7 +21,7 @@ export class KolAlert implements Props {
 				<kol-alert-wc
 					_alert={this._alert}
 					_hasCloser={this._hasCloser}
-					_label={this._label || this._heading}
+					_label={this._label}
 					_level={this._level}
 					_on={this._on}
 					_type={this._type}
@@ -43,12 +43,6 @@ export class KolAlert implements Props {
 	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
-
-	/**
-	 * Deprecated: Gibt die Beschriftung der Komponente an.
-	 * @deprecated Use _label.
-	 */
-	@Prop() public _heading?: string;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).

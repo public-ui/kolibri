@@ -26,6 +26,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 			<KolInputRadio
 				{...props}
 				ref={ref}
+				_accessKey="A"
 				_orientation="horizontal"
 				_required
 				_value="Firma"

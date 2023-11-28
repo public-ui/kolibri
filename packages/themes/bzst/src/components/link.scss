@@ -1,0 +1,42 @@
+:is(a, button) {
+	/* color: var(--color-midnight); */
+	color: var(--external-link-color, var(--color-gruen));
+	font-style: normal;
+	font-weight: 400;
+	padding: var(--external-link-padding, 0);
+	text-decoration-line: none;
+}
+:is(a, button):focus {
+	/* outline: var(--color-focus) solid 2px; */
+	outline: none;
+}
+:is(a, button):hover {
+	/* text-decoration-thickness: 0.25em; */
+	box-shadow: inset 0 -1px 0 0 var(--external-link-color, var(--color-gruen));
+}
+.hidden {
+	display: none;
+	visibility: hidden;
+} /*************************/ /* kol-link-wc {display: inline-block;} */ /* kol-icon {padding: 0 0.25rem;} */
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+.skip {
+	left: -99999px;
+	overflow: hidden;
+	position: absolute;
+	z-index: 9999999;
+	line-height: 1em;
+}
+.skip:focus {
+	background: white;
+	left: unset;
+	position: unset;
+}
+.icon-only {
+	padding-bottom: 0.2rem;
+}
+:is(a) kol-span-wc > span {
+	gap: var(--gapSmallest);
+}

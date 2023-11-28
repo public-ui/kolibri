@@ -1,3 +1,5 @@
-:host {
-	display: block;
+@layer kol-component {
+	:host {
+		display: block;
+	}
 }

@@ -14,8 +14,8 @@ const Toaster = ToasterService.getInstance(document);
 export const createTsEditor = (ref: HTMLElement, theme: string, code: string) => {
 	const css = formatReadableCssJson(code).replace(/\\/g, '\\\\');
 	copyToClipboard(css);
-	Toaster.enqueue({
-		heading: 'CSS code block copied to clipboard',
+	void Toaster.enqueue({
+		label: 'CSS code block copied to clipboard',
 		description: 'You can now paste it in your javascript or typescript theme file.',
 		type: 'info',
 	});

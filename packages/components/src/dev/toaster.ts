@@ -1,4 +1,4 @@
-import { ToasterService } from '../components/toast/toaster';
+import { ToasterService } from '../components/toaster/toaster';
 
 const toaster = ToasterService.getInstance(document);
 

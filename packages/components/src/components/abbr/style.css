@@ -1,4 +1,6 @@
 @import url(../style.css);
-:host > abbr {
-	cursor: help;
+@layer kol-component {
+	:host > abbr {
+		cursor: help;
+	}
 }

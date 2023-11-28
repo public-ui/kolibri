@@ -1,38 +1,46 @@
-.button {
-	display: grid;
-	grid-template-columns: var(--a11y-min-size) auto;
-	grid-template-areas: 'error error' 'input label' 'hint hint';
-}
-.button:focus-within {
-	/* override global `[tabindex]:focus` style */
-	cursor: inherit;
-	outline-color: black;
-	outline-style: solid;
-}
-.button input {
-	border: none !important;
-	height: 0 !important;
-	outline: none !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	width: 0 !important;
-}
-.button > .error {
-	grid-area: error;
-}
-.button > label {
-	grid-area: label;
-}
-.button > .input {
-	grid-area: input;
-}
-.button > .hint {
-	grid-area: hint;
-}
-.button .icon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: var(--a11y-min-size);
-	height: var(--a11y-min-size);
+@layer kol-component {
+	.button {
+		display: grid;
+		grid-template-columns: var(--a11y-min-size) auto;
+		grid-template-areas: 'error error' 'input label' 'hint hint';
+	}
+	.button:focus-within {
+		/* override global `[tabindex]:focus` style */
+		cursor: inherit;
+		outline-color: black;
+		outline-style: solid;
+	}
+
+	.button input {
+		border: none !important;
+		height: 0 !important;
+		outline: none !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		width: 0 !important;
+	}
+
+	.button > .error {
+		grid-area: error;
+	}
+
+	.button > label {
+		grid-area: label;
+	}
+
+	.button > .input {
+		grid-area: input;
+	}
+
+	.button > .hint {
+		grid-area: hint;
+	}
+
+	.button .icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--a11y-min-size);
+		height: var(--a11y-min-size);
+	}
 }

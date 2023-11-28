@@ -10,6 +10,8 @@ import PackageJson from '@public-ui/components/package.json';
 import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
 import { Sidebar } from './components/Sidebar';
 import { useLocation } from 'react-router';
+import { HideMenusContext } from './shares/HideMenusContext';
+import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
 
 setStorage(localStorage);
 
@@ -44,7 +46,10 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 						element={
 							<div className="d-grid gap-4">
 								{THEME_OPTIONS.filter(
-									(theme) => ['bmf', 'default', 'ecl-ec', 'ecl-eu', 'itzbund', 'mapz', 'zoll-v2'].indexOf((theme as Option<Theme>).value) >= 0,
+									(theme) =>
+										['bmf', 'default', 'bzst', 'bzst-v2', 'ecl-ec', 'ecl-eu', 'itzbund', 'mapz', 'zoll-v2', 'zoll-v3'].indexOf(
+											(theme as Option<Theme>).value,
+										) >= 0,
 								).map((theme) => (
 									<div className="d-grid gap-2" key={(theme as Option<Theme>).value} data-theme={(theme as Option<Theme>).value}>
 										<div className="mt-4">
@@ -105,6 +110,7 @@ export const App: FC = () => {
 	const hideMenus = searchParams.has('hideMenus');
 
 	setTheme(theme as Theme); // set for `getTheme` usages within the application
+	useSetCurrentLocation();
 
 	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
 	document.body.setAttribute('class', theme);
@@ -116,24 +122,26 @@ export const App: FC = () => {
 	};
 
 	return (
-		<div className={!hideMenus ? 'app-container' : ''} data-theme={theme}>
-			{!hideMenus && (
-				<Sidebar
-					version={PackageJson.version}
-					theme={theme}
-					sample={routerLocation.pathname}
-					routes={ROUTES}
-					routeList={ROUTE_LIST}
-					onThemeChange={handleThemeChange}
-				/>
-			)}
+		<HideMenusContext.Provider value={hideMenus}>
+			<div className={!hideMenus ? 'app-container' : ''} data-theme={theme}>
+				{!hideMenus && (
+					<Sidebar
+						version={PackageJson.version}
+						theme={theme}
+						sample={routerLocation.pathname}
+						routes={ROUTES}
+						routeList={ROUTE_LIST}
+						onThemeChange={handleThemeChange}
+					/>
+				)}
 
-			<div className="p-4" id="route-container">
-				<Routes>
-					{ROUTE_TREE}
-					<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
-				</Routes>
+				<div className="p-4" id="route-container">
+					<Routes>
+						{ROUTE_TREE}
+						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
+					</Routes>
+				</div>
 			</div>
-		</div>
+		</HideMenusContext.Provider>
 	);
 };
