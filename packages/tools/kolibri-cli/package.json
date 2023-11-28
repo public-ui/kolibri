@@ -1,5 +1,5 @@
 {
-	"name": "@public-ui/kolibri-cli",
+	"name": "@public-ui/visual-tests",
 	"version": "1.7.6-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -12,55 +12,38 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"bin": {
-		"kolibri": "dist/index.js"
-	},
-	"description": "CLI for executing some helpful commands for KoliBri projects.",
+	"type": "module",
+	"sideEffects": false,
+	"description": "Provides utility to run visual regression tests for themes.",
 	"scripts": {
-		"reset": "pnpm i @public-ui/components@1.1.7",
-		"depcheck": "depcheck --ignores=\"@public-ui/components,deepmerge,loglevel,mocha\"",
-		"format": "prettier -c src",
-		"lint": "eslint src && tsc --noEmit",
-		"prepack": "tsc",
-		"start": "rimraf test && cpy \"../../samples/react/src/components\" test/src && cpy \"../../samples/react/public/*.html\" test/ && ts-node src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
-		"restart": "pnpm reset && pnpm start",
-		"unused": "knip",
-		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test"
+		"depcheck": "depcheck --ignores=@babel/plugin-syntax-import-attributes,@babel/preset-env,@public-ui/sample-react,portfinder,serve",
+		"format": "prettier --check src",
+		"lint": "eslint src",
+		"unused": "knip"
 	},
-	"type": "commonjs",
+	"bin": {
+		"kolibri-visual-test": "src/index.js"
+	},
 	"dependencies": {
-		"chalk": "4.1.2",
-		"commander": "11.1.0",
-		"deepmerge": "4.3.1",
-		"gradient-string": "2.0.2",
-		"loglevel": "1.8.1",
-		"prettier": "3.1.0",
-		"semver": "7.5.4"
+		"@playwright/test": "1.40.0",
+		"@public-ui/sample-react": "1.7.6-rc.2",
+		"axe-playwright": "1.2.3",
+		"portfinder": "1.0.32",
+		"serve": "14.2.1"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.7.6-rc.2",
-		"@types/gradient-string": "1.1.5",
-		"@types/node": "20.10.0",
-		"@typescript-eslint/eslint-plugin": "6.12.0",
-		"@typescript-eslint/parser": "6.12.0",
-		"cpy-cli": "5.0.0",
+		"@babel/eslint-parser": "7.23.3",
+		"@babel/plugin-syntax-import-attributes": "7.23.3",
+		"@babel/preset-env": "7.23.3",
 		"depcheck": "1.4.7",
 		"eslint": "8.54.0",
-		"eslint-config-prettier": "9.0.0",
-		"eslint-plugin-html": "7.1.0",
-		"eslint-plugin-jsdoc": "46.9.0",
-		"eslint-plugin-json": "3.1.0",
-		"eslint-plugin-jsx-a11y": "6.8.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"eslint-plugin-react": "7.33.2",
-		"knip": "2.43.0",
-		"mocha": "10.2.0",
-		"nodemon": "3.0.1",
-		"rimraf": "3.0.2",
-		"ts-node": "10.9.1",
-		"typescript": "5.3.2"
+		"knip": "3.0.2",
+		"prettier": "3.1.0"
 	},
 	"files": [
-		"dist"
+		"playwright.config.js",
+		"src",
+		"tests"
 	]
 }
