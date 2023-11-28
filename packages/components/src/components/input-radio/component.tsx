@@ -52,6 +52,7 @@ export class KolInputRadio implements API {
 			<Host>
 				<fieldset
 					class={{
+						fieldset: true,
 						disabled: this.state._disabled === true,
 						error: hasError === true,
 						required: this.state._required === true,
@@ -128,7 +129,7 @@ export class KolInputRadio implements API {
 										}}
 									>
 										<span>
-											<span>{option.label}</span>
+											<span class="radio-label-span-inner">{option.label}</span>
 										</span>
 									</label>
 								</div>
