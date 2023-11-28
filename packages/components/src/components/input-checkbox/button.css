@@ -9,14 +9,6 @@
 	outline-color: black;
 	outline-style: solid;
 }
-.button input {
-	border: none !important;
-	height: 0 !important;
-	outline: none !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	width: 0 !important;
-}
 .button > .error {
 	grid-area: error;
 }
