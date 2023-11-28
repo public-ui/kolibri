@@ -1467,6 +1467,13 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			order: 3;
 			padding: 0 var(--spacing);
 		}
+		.button:focus-within {
+			border-radius: 2rem;
+			outline-color: var(--color-achat) !important;
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
+		}
 	`,
 	'KOL-INPUT-RADIO': `/* INPUT */
 	:host input:focus {

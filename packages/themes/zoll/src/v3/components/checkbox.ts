@@ -161,4 +161,9 @@ export default css`
 	kol-input.button {
 		grid-template-areas: 'input label' 'error error' 'hint hint';
 	}
+
+	.button:focus-within {
+		outline: 0.125rem solid var(--color-blau);
+		outline-offset: 0.125rem;
+	}
 `;

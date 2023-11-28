@@ -160,4 +160,8 @@
 	.disabled {
 		opacity: 0.33;
 	}
+
+	.button:focus-within {
+		outline: var(--color-focus) solid 2px;
+	}
 }
