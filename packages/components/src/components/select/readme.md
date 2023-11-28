@@ -112,6 +112,14 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                  | `false`     |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `W3CInputValue[] \| string \| undefined`                                                                | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<Stringified<W3CInputValue[]> | undefined>`
+
+#### Returns
+
+Type: `Promise<Stringified<W3CInputValue[]> | undefined>`
+
 ## Slots
 
 | Slot | Description                         |

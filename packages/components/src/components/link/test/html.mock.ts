@@ -14,6 +14,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_icons: {},
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
+			_ariaCurrentValue: 'page',
 		},
 		props
 	);

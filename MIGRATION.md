@@ -166,7 +166,7 @@ kol-input-text:
 kol-link:
 
 - prop `_ariaControls` removed
-- prop `_ariaCurrent` removed (use `_listenAriaCurrent` instead)
+- prop `_ariaCurrent` removed (Use ariaCurrentService instead)
 - prop `_ariaExpanded` removed
 - prop `_ariaLabel` removed
 - prop `_ariaSelected` removed
@@ -209,6 +209,7 @@ kol-modal:
 
 kol-nav:
 
+- prop `_ariaCurrentValue` removed
 - prop `_ariaLabel` removed (use `_label` instead)
 - prop `_compact` removed (use `_hideLabel` instead)
 - prop `_hasCompactButton` removed

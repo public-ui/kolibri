@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { KolLink } from '@public-ui/react';
-
-import { FC } from 'react';
 
 export const LinkBasic: FC = () => (
 	<div className="grid gap-4">

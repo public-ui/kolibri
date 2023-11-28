@@ -1,14 +1,11 @@
 import { querySelectorAll } from 'query-selector-all-shadow-root';
 import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
-import { Subject } from 'rxjs';
 import { hex, score } from 'wcag-contrast';
 
 import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
 
 import { Stringified } from '../types/common';
-import { AriaCurrentPropType } from '../types/props/aria-current';
-import { PropHref } from '../types/props/href';
 import { StencilUnknown } from '../types/unknown';
 import { devHint } from './a11y.tipps';
 import { getDocument, getExperimentalMode, Log } from './dev.utils';
@@ -478,11 +475,6 @@ export class KoliBriUtils {
 		return returnValue;
 	}
 }
-
-type AriaCurrentEventType = {
-	ariaCurrent: AriaCurrentPropType;
-} & PropHref;
-export const ariaCurrentSubject = new Subject<AriaCurrentEventType>();
 
 export class KoliBriDevHelper {
 	public static readonly patchTheme = patchTheme;

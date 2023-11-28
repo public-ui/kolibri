@@ -4,7 +4,6 @@ import { translate } from '../../i18n';
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
-import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { CollapsiblePropType, validateCollapsible } from '../../types/props/collapsible';
 import { validateHasCompactButton } from '../../types/props/has-compact-button';
 import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
@@ -182,11 +181,6 @@ export class KolNav implements API {
 	}
 
 	/**
-	 * Defines the value of aria-current to be used with the current context within the navigation.
-	 */
-	@Prop() public _ariaCurrentValue: AriaCurrentPropType = false;
-
-	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
@@ -220,7 +214,6 @@ export class KolNav implements API {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	@State() public state: States = {
-		_ariaCurrentValue: false,
 		_collapsible: true,
 		_hasCompactButton: false,
 		_hideLabel: false,
@@ -228,17 +221,6 @@ export class KolNav implements API {
 		_links: [],
 		_orientation: 'vertical',
 	};
-
-	@Watch('_ariaCurrentValue')
-	public validateAriaCurrentValue(value?: AriaCurrentPropType): void {
-		watchValidator(
-			this,
-			'_ariaCurrentValue',
-			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
-			new Set(['boolean', 'String {data, location, page, step, time}']),
-			value
-		);
-	}
 
 	@Watch('_collapsible')
 	public validateCollapsible(value?: CollapsiblePropType): void {
@@ -286,7 +268,6 @@ export class KolNav implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateCollapsible(this._collapsible);
 		this.validateHideLabel(this._hideLabel);
 		this.validateHasCompactButton(this._hasCompactButton);

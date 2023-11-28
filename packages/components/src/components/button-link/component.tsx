@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
@@ -28,6 +28,12 @@ export class KolButtonLink implements Props {
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
 		propagateFocus(this.host, ref);
 	};
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Method()
+	public async getValue(): Promise<Stringified<StencilUnknown> | undefined> {
+		return this._value;
+	}
 
 	public render(): JSX.Element {
 		return (

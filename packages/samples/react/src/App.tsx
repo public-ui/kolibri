@@ -11,6 +11,7 @@ import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
 import { Sidebar } from './components/Sidebar';
 import { useLocation } from 'react-router';
 import { HideMenusContext } from './shares/HideMenusContext';
+import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
 
 setStorage(localStorage);
 
@@ -46,7 +47,9 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 							<div className="d-grid gap-4">
 								{THEME_OPTIONS.filter(
 									(theme) =>
-										['bmf', 'default', 'bzst', 'ecl-ec', 'ecl-eu', 'itzbund', 'mapz', 'zoll-v2', 'zoll-v3'].indexOf((theme as Option<Theme>).value) >= 0,
+										['bmf', 'default', 'bzst', 'bzst-v2', 'ecl-ec', 'ecl-eu', 'itzbund', 'mapz', 'zoll-v2', 'zoll-v3'].indexOf(
+											(theme as Option<Theme>).value,
+										) >= 0,
 								).map((theme) => (
 									<div className="d-grid gap-2" key={(theme as Option<Theme>).value} data-theme={(theme as Option<Theme>).value}>
 										<div className="mt-4">
@@ -107,6 +110,7 @@ export const App: FC = () => {
 	const hideMenus = searchParams.has('hideMenus');
 
 	setTheme(theme as Theme); // set for `getTheme` usages within the application
+	useSetCurrentLocation();
 
 	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
 	document.body.setAttribute('class', theme);

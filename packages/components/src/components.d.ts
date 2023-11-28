@@ -31,6 +31,7 @@ import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { EventCallbacks } from "./components/details/types";
 import { KoliBriFormCallbacks } from "./components/form/types";
+import { HeadingVariantPropType } from "./types/props/heading-variant";
 import { Loading } from "./utils/validators/loading";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -41,9 +42,9 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { W3CInputValue } from "./types/w3c";
 import { InputTextType } from "./types/input/control/text";
+import { AriaCurrentValuePropType } from "./types/props/aria-current-value";
 import { DownloadPropType } from "./types/props/download";
 import { HrefPropType } from "./types/props/href";
-import { AriaCurrentPropType } from "./types/props/aria-current";
 import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 import { LinkTargetPropType } from "./types/props/link-target";
 import { ListStyleType } from "./components/link-group/types";
@@ -87,6 +88,7 @@ export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { EventCallbacks } from "./components/details/types";
 export { KoliBriFormCallbacks } from "./components/form/types";
+export { HeadingVariantPropType } from "./types/props/heading-variant";
 export { Loading } from "./utils/validators/loading";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -97,9 +99,9 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { W3CInputValue } from "./types/w3c";
 export { InputTextType } from "./types/input/control/text";
+export { AriaCurrentValuePropType } from "./types/props/aria-current-value";
 export { DownloadPropType } from "./types/props/download";
 export { HrefPropType } from "./types/props/href";
-export { AriaCurrentPropType } from "./types/props/aria-current";
 export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
 export { LinkTargetPropType } from "./types/props/link-target";
 export { ListStyleType } from "./components/link-group/types";
@@ -335,6 +337,7 @@ export namespace Components {
           * Defines which variant should be used for presentation.
          */
         "_variant"?: ButtonVariantPropType;
+        "getValue": () => Promise<Stringified<StencilUnknown> | undefined>;
     }
     interface KolButtonGroup {
     }
@@ -413,6 +416,7 @@ export namespace Components {
           * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
+        "getValue": () => Promise<Stringified<StencilUnknown> | undefined>;
     }
     /**
      * Internal component that renders an action or text component like a button or a link.
@@ -559,6 +563,10 @@ export namespace Components {
           * Defines the text of the secondary headline.
          */
         "_secondaryHeadline"?: string;
+        /**
+          * Defines which variant should be used for presentation.
+         */
+        "_variant"?: HeadingVariantPropType;
     }
     interface KolHeadingWc {
         /**
@@ -573,6 +581,10 @@ export namespace Components {
           * Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.
          */
         "_secondaryHeadline"?: string;
+        /**
+          * Defines which variant should be used for presentation.
+         */
+        "_variant"?: HeadingVariantPropType;
     }
     interface KolIcon {
         /**
@@ -791,6 +803,7 @@ export namespace Components {
           * Defines which variant should be used for presentation.
          */
         "_variant"?: InputCheckboxVariant;
+        "getValue": () => Promise<boolean | undefined>;
     }
     interface KolInputColor {
         /**
@@ -877,6 +890,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputDate {
         /**
@@ -989,6 +1003,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: Iso8601 | Date | null;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputEmail {
         /**
@@ -1107,6 +1122,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputFile {
         /**
@@ -1199,6 +1215,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<FileList | null | undefined>;
     }
     interface KolInputNumber {
         /**
@@ -1311,6 +1328,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: number | Iso8601 | null;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputPassword {
         /**
@@ -1420,6 +1438,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolInputRadio {
         /**
@@ -1504,6 +1523,7 @@ export namespace Components {
           * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
          */
         "_value"?: Stringified<W3CInputValue>;
+        "getValue": () => Promise<W3CInputValue | undefined>;
     }
     interface KolInputRange {
         /**
@@ -1598,6 +1618,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: number;
+        "getValue": () => Promise<number | undefined>;
     }
     interface KolInputText {
         /**
@@ -1716,6 +1737,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolKolibri {
         /**
@@ -1737,6 +1759,10 @@ export namespace Components {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1757,10 +1783,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -1792,6 +1814,10 @@ export namespace Components {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
@@ -1816,10 +1842,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label": LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -1873,6 +1895,10 @@ export namespace Components {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1893,10 +1919,6 @@ export namespace Components {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -1947,10 +1969,6 @@ export namespace Components {
         "_width"?: string;
     }
     interface KolNav {
-        /**
-          * Defines the value of aria-current to be used with the current context within the navigation.
-         */
-        "_ariaCurrentValue": AriaCurrentPropType;
         /**
           * Defines if navigation nodes can be collapsed or not. Enabled by default.
           * @TODO : Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
@@ -2166,6 +2184,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: Stringified<W3CInputValue[]>;
+        "getValue": () => Promise<Stringified<W3CInputValue[]> | undefined>;
     }
     interface KolSkipNav {
         /**
@@ -2316,6 +2335,10 @@ export namespace Components {
         "_symbol": string;
     }
     interface KolTable {
+        /**
+          * Defines whether to allow multi sort.
+         */
+        "_allowMultiSort"?: boolean;
         /**
           * Defines the primary table data.
          */
@@ -2468,6 +2491,7 @@ export namespace Components {
           * Defines the value of the input.
          */
         "_value"?: string;
+        "getValue": () => Promise<string | undefined>;
     }
     interface KolToastContainer {
         "closeAll": () => Promise<void>;
@@ -3353,6 +3377,10 @@ declare namespace LocalJSX {
           * Defines the text of the secondary headline.
          */
         "_secondaryHeadline"?: string;
+        /**
+          * Defines which variant should be used for presentation.
+         */
+        "_variant"?: HeadingVariantPropType;
     }
     interface KolHeadingWc {
         /**
@@ -3367,6 +3395,10 @@ declare namespace LocalJSX {
           * Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.
          */
         "_secondaryHeadline"?: string;
+        /**
+          * Defines which variant should be used for presentation.
+         */
+        "_variant"?: HeadingVariantPropType;
     }
     interface KolIcon {
         /**
@@ -4531,6 +4563,10 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4551,10 +4587,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -4586,6 +4618,10 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
@@ -4610,10 +4646,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label": LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -4667,6 +4699,10 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: AccessKeyPropType;
         /**
+          * Defines the value for the aria-current attribute.
+         */
+        "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4687,10 +4723,6 @@ declare namespace LocalJSX {
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-         */
-        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Defines the callback functions for links.
          */
@@ -4741,10 +4773,6 @@ declare namespace LocalJSX {
         "_width"?: string;
     }
     interface KolNav {
-        /**
-          * Defines the value of aria-current to be used with the current context within the navigation.
-         */
-        "_ariaCurrentValue"?: AriaCurrentPropType;
         /**
           * Defines if navigation nodes can be collapsed or not. Enabled by default.
           * @TODO : Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
@@ -5110,6 +5138,10 @@ declare namespace LocalJSX {
         "_symbol": string;
     }
     interface KolTable {
+        /**
+          * Defines whether to allow multi sort.
+         */
+        "_allowMultiSort"?: boolean;
         /**
           * Defines the primary table data.
          */

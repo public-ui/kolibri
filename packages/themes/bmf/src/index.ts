@@ -278,7 +278,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -357,7 +357,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -436,7 +436,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -515,7 +515,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -595,7 +595,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -681,7 +681,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -773,7 +773,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -1084,31 +1084,31 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			color: inherit;
 			font-style: normal;
 			margin: 0;
 			padding: 0;
 		}
-		h1,
-		h2,
-		h3 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3 {
 			font-weight: 700;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 1.25rem;
 			line-height: 1.75rem;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.125rem;
 			line-height: 1.5rem;
 		}
@@ -1340,7 +1340,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -1447,7 +1447,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -1790,7 +1790,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			padding-top: 0.25em;
 			grid-column: span 2 / auto;
 		}
-		:host kol-input.error {
+		:host kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -2401,7 +2401,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}

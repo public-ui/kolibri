@@ -852,32 +852,32 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			line-height: 1.25em;
 			margin: 0;
 			padding: 0;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 1.5rem !important;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 1.4rem !important;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.3rem !important;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.2rem !important;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1.1rem !important;
 		}
-		h6 {
+		.headline-h6 {
 			font-size: 1rem !important;
 		}
 	`,

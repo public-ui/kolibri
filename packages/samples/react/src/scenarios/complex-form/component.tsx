@@ -40,48 +40,48 @@ export const TerminComponent: FC = () => (
 		</div>
 		<div className="grid sm:grid-cols-1 gap-2">
 			<KolTable
-				_caption="Öffnungszeiten"
+				_label="Öffnungszeiten"
 				_data={
 					[
 						{
 							stadtteil: 'Brackel',
-							montag: '08:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '08:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '08:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '08:00 - 12:00<br/>14:00 - 18:00',
+							montag: '08:00 - 12:00, 14:00 - 16:00',
+							dienstag: '08:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '08:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '08:00 - 12:00, 14:00 - 18:00',
 							freitag: '08:00 - 12:00',
 						},
 						{
 							stadtteil: 'Dorstfeld',
-							montag: '09:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '09:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '09:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '09:00 - 12:00<br/>14:00 - 18:00',
+							montag: '09:00 - 12:00, 14:00 - 16:00',
+							dienstag: '09:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '09:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '09:00 - 12:00, 14:00 - 18:00',
 							freitag: '09:00 - 12:00',
 						},
 						{
 							stadtteil: 'Aplerbeck',
-							montag: '08:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '08:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '08:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '08:00 - 12:00<br/>14:00 - 18:00',
+							montag: '08:00 - 12:00, 14:00 - 16:00',
+							dienstag: '08:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '08:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '08:00 - 12:00, 14:00 - 18:00',
 							freitag: '08:00 - 12:00',
 						},
 						{
 							stadtteil: 'Innenstadt Ost',
-							montag: '07:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '07:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '07:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '07:00 - 12:00<br/>14:00 - 18:00',
-							freitag: '07:00 - 12:00<br/>13:00 - 16:00',
+							montag: '07:00 - 12:00, 14:00 - 16:00',
+							dienstag: '07:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '07:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '07:00 - 12:00, 14:00 - 18:00',
+							freitag: '07:00 - 12:00, 13:00 - 16:00',
 						},
 						{
 							stadtteil: 'Innenstadt West',
-							montag: '07:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '07:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '07:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '07:00 - 12:00<br/>14:00 - 18:00',
-							freitag: '07:00 - 12:00<br/>13:00 - 16:00',
+							montag: '07:00 - 12:00, 14:00 - 16:00',
+							dienstag: '07:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '07:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '07:00 - 12:00, 14:00 - 18:00',
+							freitag: '07:00 - 12:00, 13:00 - 16:00',
 							/*render: (el, data) => {
 						el.innerHTML = `<kol-badge _color="#ff0000" _label="NIX"></kol-badge>`;
 					  },*/
