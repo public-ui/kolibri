@@ -109,16 +109,6 @@
 		/* template */
 		--formBorderWidthAndStyle: 1px solid; /* TODO: eigentlich --color-green sein, aber im Styleguide ist der Wert: #23614E */
 		--formBorder: var(--formBorderWidthAndStyle) var(--colorPrimarySuccess);
-		--formBorderHover: var(--formBorderWidthAndStyle) var(--colorPrimaryActive);
-		--formBorderDisabled: var(--formBorderWidthAndStyle) var(--colorDisabled);
-		--formBorderInvalid: var(--formBorderWidthAndStyle) var(--colorSignalError);
-		--focusOutline: var(--color-blue) solid 2px;
-		--formFieldBackground: var(--colorLight); /*Select option */
-		--formFieldBackgroundHover: var(--colorPrimary); /* Select options */
-		--formFieldBackgroundEven: var(--formFieldBackground); /* Select options */
-		--formFieldBackgroundOdd: var(--colorSecondaryActive);
-		--formFieldBackgroundDisabled: var(--colorSecondarySuccess);
-		--formFieldTextColorDisabled: var(--colorTextDisabled);
 	}
 
 	/* ********************************* */
@@ -134,7 +124,6 @@
 		--color-grau-dunkel: var(--colorSecondaryFront);
 		--color-grau-hell: var(--colorSecondaryActive);
 		--color-grau-weiss: var(--colorSecondarySuccess); /* Textfarben */
-		--color-graublau: var(--colorTextDisabled); /* Signalfarben */
 		--color-blau: var(--colorSignalFocus);
 		--color-blau-dunkel: var(--colorSignal);
 		--color-gelb: var(--colorSignalWarn);
@@ -174,7 +163,7 @@
 	*[tabindex]:focus,
 	kol-input:not(.checkbox, .radio) .input:focus-within,
 	summary:focus {
-		outline: var(--focusOutline);
+		outline: 2px solid var(--color-blue);
 		outline-offset: 2px;
 		transition: outline-offset 0.2s linear;
 	}

@@ -19,7 +19,7 @@
 
 	a:focus,
 	button:focus {
-		outline: var(--focusOutline);
+		outline: 2px solid var(--color-blue);
 		outline-offset: 2px;
 		transition: outline-offset 0.2s linear;
 	}
