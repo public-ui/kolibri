@@ -1,9 +1,0 @@
-:host {
-	display: flex;
-	flex-direction: column;
-	position: fixed;
-	z-index: 200;
-}
-.close-all {
-	align-self: flex-end;
-}

@@ -30,7 +30,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			--color-grau-80: hsl(0 0% 20%);
 			--color-grau-70: hsl(0 0% 30%);
 			--color-grau-60: hsl(0 0% 40%);
-			--color-grau-50: hsl(0 0% 50%);
+			--color-grau-50: #8b8b8b;
 			--color-grau-40: hsl(0 0% 60%);
 			--color-grau-30: hsl(0 0% 70%);
 			--color-grau-20: hsl(0 0% 80%);
@@ -1560,6 +1560,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 		.expanded > div > .expand-button kol-icon::part(icon)::before {
 			content: '\\eab4';
+		}
+		.vertical li.active {
+			border-right: 0.375em solid var(--color-akzent);
 		}
 	`,
 	'KOL-TABS': css`

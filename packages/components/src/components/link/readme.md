@@ -33,22 +33,18 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 
 ### Link innerhalb eines Fließtextes mit Icon und Text
 
-  <p>
-    <kol-link _icon="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link><br/>
-    <kol-link _icon="codicon codicon-home" _icon-align="right">
-      Ich bin ein Link mit Icon rechts
-    </kol-link>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
-    nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
-    <kol-link _icon="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link>. Lorem, ipsum dolor sit amet consectetur adipisicing
-    elit. Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi<kol-link
-      _icon="codicon codicon-home"
-      _icon-align="right"
-    >
-      Ich bin ein Link mit Icon rechts
-    </kol-link>
-    facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
-  </p>
+<p>
+  <kol-link _icons="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link><br/>
+  <kol-link _icons="codicon codicon-home">
+    Ich bin ein Link mit Icon rechts
+  </kol-link>
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
+  nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
+  <kol-link _icons="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link>. Lorem, ipsum dolor sit amet consectetur adipisicing
+  elit. Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi
+  <kol-link _icons="codicon codicon-home">Ich bin ein Link mit Icon rechts</kol-link>
+  facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
+</p>
 
 <!--### Best practices
 
