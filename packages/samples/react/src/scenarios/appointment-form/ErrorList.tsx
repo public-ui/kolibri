@@ -19,7 +19,7 @@ export function ErrorList({ errors }: ErrorListPropType) {
 	};
 
 	return (
-		<KolAlert _type="error" _variant="msg">
+		<KolAlert _type="error">
 			Bitte korrigieren Sie folgende Fehler:
 			<nav aria-label="Fehlerliste">
 				<ul>
