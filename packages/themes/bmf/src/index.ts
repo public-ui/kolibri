@@ -2020,6 +2020,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	:host kol-input.button .icon {
 		height: auto;
+	}
+	.button:focus-within {
+		border-radius: var(--a11y-min-size);
+		outline-color: var(--color-ocean);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
 	}`,
 	'KOL-INPUT-RADIO': `/* INPUT */
 	kol-input {

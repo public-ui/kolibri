@@ -999,6 +999,13 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	}
 	.disabled {
 		opacity: 0.33;
+	}
+	.button:focus-within {
+		border-radius: var(--kolibri-border-radius);
+		outline-color: var(--kolibri-color-outline);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
 	}`,
 	'KOL-INPUT-RADIO': `label {
 		cursor: pointer;
