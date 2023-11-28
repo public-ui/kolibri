@@ -31,7 +31,7 @@
 		"eslint-plugin-jsdoc": "46.8.2",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "2.35.0",
+		"knip": "3.0.2",
 		"npm-check-updates": "16.14.6",
 		"prettier": "3.0.3",
 		"unbuild": "1.2.1"
