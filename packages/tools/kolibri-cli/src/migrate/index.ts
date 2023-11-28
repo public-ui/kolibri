@@ -135,7 +135,7 @@ Source folder to migrate: ${baseDir}
 				/**
 				 * Sets the version of the @public-ui/* packages in the package.json file.
 				 * @param {string} version Version to set
-				 * @param {function} cb Callback function
+				 * @param {Function} cb Callback function
 				 */
 				function setVersionOfPublicUiPackages(version: string, cb: () => void) {
 					let packageJson = getContentOfProjectPkgJson();
