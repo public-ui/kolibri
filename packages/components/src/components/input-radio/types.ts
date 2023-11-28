@@ -1,6 +1,4 @@
 import { Generic } from '@a11y-ui/core';
-
-import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { PropDisabled } from '../../types/props/disabled';
@@ -21,10 +19,6 @@ type OptionalProps = {
 	alert: boolean;
 	error: string;
 	hint: string;
-	/**
-	 * @deprecated Use options.
-	 */
-	list: Stringified<Option<W3CInputValue>[]>;
 	on: InputTypeOnDefault;
 	orientation: Orientation;
 	tabIndex: number;
@@ -62,6 +56,6 @@ type OptionalStates = {
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
-export type Watches = Generic.Element.Watchers<RequiredProps, Omit<OptionalProps, 'list'>>; // deprecated prop omitted
+export type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

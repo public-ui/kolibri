@@ -18,16 +18,15 @@ import { API, BreadcrumbLinkProps, States } from './types';
 export class KolBreadcrumb implements API {
 	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
-		const hideLabel = link._iconOnly || link._hideLabel;
 		return (
 			<li key={index}>
 				{index !== 0 && <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
 					<span>
-						{hideLabel ? (
-							<kol-icon _label={link._label} _icons={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+						{link._hideLabel ? (
+							<kol-icon _label={link._label} _icons={typeof link._icons === 'string' ? link._icons : 'codicon codicon-symbol-event'} />
 						) : (
-							<Fragment>{link._label}</Fragment>
+							<>{link._label}</>
 						)}
 					</span>
 				) : (
@@ -55,16 +54,9 @@ export class KolBreadcrumb implements API {
 	}
 
 	/**
-	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
-	 *
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Defines the list of links combined with their labels to render.
@@ -75,14 +67,6 @@ export class KolBreadcrumb implements API {
 		_label: '…', // ⚠ required
 		_links: [],
 	};
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
@@ -100,7 +84,7 @@ export class KolBreadcrumb implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._ariaLabel, undefined, true);
+		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
 	}
 

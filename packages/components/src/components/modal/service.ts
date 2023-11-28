@@ -55,14 +55,22 @@ export class ModalService {
 	}
 
 	private lockFocus(hostElement: HTMLElement | ShadowRoot | null, excludeElement?: HTMLElement) {
-		if (hostElement !== excludeElement && (hostElement instanceof HTMLElement || hostElement instanceof ShadowRoot)) {
-			if (hostElement instanceof HTMLElement) {
-				this.lockElement(hostElement);
-				this.lockFocus(hostElement.shadowRoot, excludeElement);
+		try {
+			if (hostElement !== excludeElement && (hostElement instanceof HTMLElement || hostElement instanceof ShadowRoot)) {
+				if (hostElement instanceof HTMLElement) {
+					this.lockElement(hostElement);
+					this.lockFocus(hostElement.shadowRoot, excludeElement);
+				}
+				for (let i = 0; i < hostElement.children.length; i++) {
+					this.lockFocus(hostElement.children[i] as HTMLElement, excludeElement);
+				}
 			}
-			for (let i = 0; i < hostElement.children.length; i++) {
-				this.lockFocus(hostElement.children[i] as HTMLElement, excludeElement);
-			}
+		} catch (error) {
+			/**
+			 * Try is needed for SSR.
+			 * - no HTMLElement is available
+			 * - no ShadowRoot is available
+			 */
 		}
 	}
 

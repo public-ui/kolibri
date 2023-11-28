@@ -11,6 +11,7 @@ import { TaskRunner } from './runner/task-runner';
 import { commonTasks } from './runner/tasks';
 import { testTasks } from './runner/tasks/test';
 import { v1Tasks } from './runner/tasks/v1';
+import { v2Tasks } from './runner/tasks/v2';
 import { getAssetTasks } from './runner/tasks/v1/assets';
 import {
 	getContentOfProjectPkgJson,
@@ -28,9 +29,13 @@ type MigrateOption = {
 	format: boolean;
 	ignoreGreaterVersion: boolean;
 	ignoreUncommittedChanges: boolean;
+	overwriteCurrentVersion: string;
+	overwriteTargetVersion: string;
 	removeMode: RemoveMode;
 	testTasks: boolean;
 };
+const currentVersionOfPublicUi = getVersionOfPublicUiComponents();
+const targetVersionOfPublicUi = getVersionOfPublicUiKoliBriCli();
 
 /**
  * This function is used to register the migrate command.
@@ -42,6 +47,14 @@ export default function (program: Command): void {
 		.description('This command migrates KoliBri code to the current version.')
 		.argument('[string]', 'Source code folder to migrate', 'src')
 		.addOption(new Option('--format', 'Try to format the modified files with prettier').default(true))
+		.addOption(
+			new Option('--overwrite-current-version <version>', 'Migrate from this current version instead of the installed version of KoliBri').default(
+				currentVersionOfPublicUi,
+			),
+		)
+		.addOption(
+			new Option('--overwrite-target-version <version>', 'Migrate to this target version instead of the version of the CLI').default(targetVersionOfPublicUi),
+		)
 		.addOption(new Option('--ignore-greater-version', 'Allows execution with greater versions').default(false))
 		.addOption(new Option('--ignore-uncommitted-changes', 'Allows execution with uncommitted changes').default(false))
 		.addOption(new Option('--remove-mode <mode>', 'Prefix property name or delete property').choices(REMOVE_MODE).default('prefix'))
@@ -53,21 +66,31 @@ export default function (program: Command): void {
 					return;
 				}
 
+				if (!semver.valid(options.overwriteCurrentVersion)) {
+					throw logAndCreateError('Please specify a valid version for the --overwrite-current-version option.');
+				}
+
+				if (!semver.valid(options.overwriteTargetVersion)) {
+					throw logAndCreateError('Please specify a valid version for the --overwrite-target-version option.');
+				}
+
+				if (!baseDir) {
+					throw logAndCreateError('Please specify the source code folder to migrate.');
+				}
+
 				if (!options.ignoreUncommittedChanges && stdout) {
-					throw logAndCreateError('There are uncommitted changes');
+					throw logAndCreateError('There are uncommitted changes', 'If you want to ignore this, use the --ignore-uncommitted-changes option.');
 				}
 
 				setRemoveMode(options.removeMode);
 
-				const versionOfPublicUiComponents = getVersionOfPublicUiComponents();
-				const versionOfPublicUiKoliBriCli = getVersionOfPublicUiKoliBriCli();
-
 				console.log(`
-Current version of @public-ui/components: ${versionOfPublicUiComponents}
+Current version of @public-ui/*: ${options.overwriteCurrentVersion}
+Target version of @public-ui/*: ${options.overwriteTargetVersion}
 Source folder to migrate: ${baseDir}
 `);
 
-				if (!options.ignoreGreaterVersion && semver.lt(versionOfPublicUiKoliBriCli, versionOfPublicUiComponents)) {
+				if (!options.ignoreGreaterVersion && semver.lt(options.overwriteTargetVersion, options.overwriteCurrentVersion)) {
 					throw logAndCreateError(
 						'Your current version of @public-ui/components is greater than the version of @public-ui/kolibri-cli. Please update @public-ui/kolibri-cli or force the migration with --ignore-greater-version.',
 					);
@@ -83,16 +106,17 @@ Source folder to migrate: ${baseDir}
 					}
 				}
 
-				const runner = new TaskRunner(baseDir, versionOfPublicUiKoliBriCli, versionOfPublicUiComponents, config);
+				const runner = new TaskRunner(baseDir, options.overwriteTargetVersion, options.overwriteCurrentVersion, config);
 				runner.registerTasks(commonTasks);
 				runner.registerTasks(v1Tasks);
+				runner.registerTasks(v2Tasks);
 				runner.registerTasks(getAssetTasks(baseDir));
 
 				if (options.testTasks) {
 					runner.registerTasks(testTasks);
 				}
 
-				let version = versionOfPublicUiComponents;
+				let version = options.overwriteCurrentVersion;
 
 				/**
 				 * Creates a replacer function for the package.json file.
@@ -137,13 +161,13 @@ Source folder to migrate: ${baseDir}
 						// Tasks
 						version = runner.getPendingMinVersion();
 						setVersionOfPublicUiPackages(version, runLoop);
-					} else if (semver.lt(version, versionOfPublicUiKoliBriCli)) {
+					} else if (semver.lt(version, options.overwriteTargetVersion)) {
 						// CLI
-						version = versionOfPublicUiKoliBriCli;
+						version = options.overwriteTargetVersion;
 						setVersionOfPublicUiPackages(version, finish);
-					} else if (semver.lt(version, versionOfPublicUiComponents)) {
+					} else if (semver.lt(version, options.overwriteCurrentVersion)) {
 						// Components
-						version = versionOfPublicUiComponents;
+						version = options.overwriteCurrentVersion;
 						setVersionOfPublicUiPackages(version, finish);
 					} else {
 						finish();
@@ -158,7 +182,18 @@ Source folder to migrate: ${baseDir}
 Status of all executed Tasks:`);
 
 					const status = runner.getStatus(true);
-					fs.writeFileSync(configFile, JSON.stringify(status.config, null, 2));
+
+					// Merge config with current config of Runner
+					config = {
+						migrate: {
+							tasks: {
+								...status.config.migrate?.tasks,
+								...config.migrate?.tasks,
+							},
+						},
+					};
+
+					fs.writeFileSync(configFile, JSON.stringify(config, null, 2));
 
 					console.log(`
 Modified files: ${MODIFIED_FILES.size}`);

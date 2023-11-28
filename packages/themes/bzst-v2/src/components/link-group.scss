@@ -1,0 +1,36 @@
+@layer kol-theme-component {
+	ul {
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	nav.horizontal ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	nav.horizontal li {
+		list-style: none;
+		margin-left: 1.25rem;
+		margin-right: 0.25rem;
+	}
+
+	nav.horizontal li:first-child {
+		margin-left: 0;
+	}
+
+	nav.horizontal li:last-child {
+		margin-right: 0;
+	}
+
+	nav.vertical li {
+		margin-left: 1.75rem;
+		margin-right: 0.5rem;
+	}
+
+	li.list-none {
+		list-style-type: none !important;
+		margin-left: 0;
+	}
+}

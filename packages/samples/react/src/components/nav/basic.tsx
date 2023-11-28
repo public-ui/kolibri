@@ -5,11 +5,11 @@ import { FC } from 'react';
 
 export const NavBasic: FC = () => (
 	<KolNav
-		_ariaLabel="Main navigation"
+		_label="Main navigation"
 		_links={[
 			{
 				_label: 'Homepage',
-				_icons: 'fa-solid fa-house',
+				_icons: 'codicon codicon-home',
 				_href: '#/',
 			},
 			{

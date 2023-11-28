@@ -3,7 +3,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
@@ -76,67 +75,63 @@ export class KolPagination implements API {
 					<ul class="navigation-list">
 						{this.state._hasButtons.first && (
 							<li>
-								<kol-button
+								<kol-button-wc
 									class="first"
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
-									_icon={leftDoubleArrowIcon}
+									_icons={leftDoubleArrowIcon}
 									_hideLabel
 									_label={translate('kol-page-first')}
 									_on={this.onGoToFirst}
-									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></kol-button-wc>
 							</li>
 						)}
 						{this.state._hasButtons.previous && (
 							<li>
-								<kol-button
+								<kol-button-wc
 									class="previous"
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
-									_icon={leftSingleArrow}
+									_icons={leftSingleArrow}
 									_hideLabel
 									_label={translate('kol-page-back')}
 									_on={this.onGoBackward}
-									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></kol-button-wc>
 							</li>
 						)}
 						{pageButtons}
 						{this.state._hasButtons.next && (
 							<li>
-								<kol-button
+								<kol-button-wc
 									class="next"
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
-									_icon={rightSingleArrowIcon}
+									_icons={rightSingleArrowIcon}
 									_hideLabel
 									_label={translate('kol-page-next')}
 									_on={this.onGoForward}
-									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></kol-button-wc>
 							</li>
 						)}
 						{this.state._hasButtons.last && (
 							<li>
-								<kol-button
+								<kol-button-wc
 									class="last"
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
-									_icon={rightDoubleArrowIcon}
+									_icons={rightDoubleArrowIcon}
 									_hideLabel
 									_label={translate('kol-page-last')}
 									_on={this.onGoToEnd}
-									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></kol-button-wc>
 							</li>
 						)}
 					</ul>
@@ -146,7 +141,7 @@ export class KolPagination implements API {
 						_hideLabel
 						_id={`pagination-size-${this.nonce}`}
 						_label={translate('kol-entries-per-site')}
-						_list={this.state._pageSizeOptions}
+						_options={this.state._pageSizeOptions}
 						_on={{
 							onChange: this.onChangePageSize,
 						}}
@@ -208,20 +203,9 @@ export class KolPagination implements API {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt die Gesamtanzahl der Seiten.
-	 * @deprecated Use _max.
-	 */
-	@Prop() public _total?: number;
-
-	/**
 	 * Defines the maximum number of pages.
 	 */
-	@Prop() public _max?: MaxPropType;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _max!: MaxPropType;
 
 	@State() public state: States = {
 		_boundaryCount: 1,
@@ -240,7 +224,6 @@ export class KolPagination implements API {
 		_pageSizeOptions: [],
 		_siblingCount: 1,
 		_max: 0,
-		_variant: 'normal',
 	};
 
 	private onClick = (event: Event, page: number) => {
@@ -296,7 +279,7 @@ export class KolPagination implements API {
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
 			<li>
-				<kol-button
+				<kol-button-wc
 					exportparts="icon"
 					key={`${this.nonce}-${page}`}
 					_customClass={this.state._customClass}
@@ -306,8 +289,7 @@ export class KolPagination implements API {
 							this.onClick(event, page);
 						},
 					}}
-					_variant={this.state._variant}
-				></kol-button>
+				></kol-button-wc>
 			</li>
 		);
 	}
@@ -315,15 +297,7 @@ export class KolPagination implements API {
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
 			<li>
-				<kol-button-wc
-					class="selected"
-					key={`${this.nonce}-selected`}
-					_customClass={this.state._customClass}
-					_disabled={true}
-					_ariaCurrent={true}
-					_label={`${page}`}
-					_variant={this.state._variant}
-				/>
+				<kol-button-wc class="selected" key={`${this.nonce}-selected`} _customClass={this.state._customClass} _disabled={true} _label={`${page}`} />
 			</li>
 		);
 	}
@@ -497,11 +471,6 @@ export class KolPagination implements API {
 		watchNumber(this, '_siblingCount', Math.max(0, value ?? 1));
 	}
 
-	@Watch('_total')
-	public validateTotal(value?: number): void {
-		this.validateMax(value);
-	}
-
 	@Watch('_max')
 	public validateMax(value?: MaxPropType): void {
 		validateMax(this, value, {
@@ -520,11 +489,6 @@ export class KolPagination implements API {
 		validateTooltipAlign(this, value);
 	}
 
-	@Watch('_variant')
-	public validateVariant(value?: ButtonVariantPropType): void {
-		validateButtonVariant(this, value);
-	}
-
 	public componentWillLoad(): void {
 		this.validateBoundaryCount(this._boundaryCount);
 		this.validateCustomClass(this._customClass);
@@ -536,8 +500,7 @@ export class KolPagination implements API {
 		this.validatePageSizeOptions(this._pageSizeOptions);
 		this.validateSiblingCount(this._siblingCount);
 		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateMax(this._max || this._total);
-		this.validateVariant(this._variant);
+		this.validateMax(this._max);
 
 		/**
 		 * Die Seite muss als letztes gesetzt werden, da sonst die Seite

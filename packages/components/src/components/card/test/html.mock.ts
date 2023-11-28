@@ -17,26 +17,17 @@ export const getCardHtml = (props: Props): string => {
 			<div class="header">
 				${getHeadingWcHtml(
 					{
-						_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
+						_label: props._label,
 						_level: props._level,
 					},
 					{
-						default: '',
+						expert: '',
 					}
 				)}
-				<slot name="header"></slot>
 			</div>
 			<div class="content">
-				<slot name="content"></slot>
 				<slot />
 			</div>
-			${
-				props._hasFooter
-					? `<div class="footer">
-							<slot name="footer"></slot>
-						</div>`
-					: ''
-			}
 			${
 				props._hasCloser
 					? getButtonWcHtml(

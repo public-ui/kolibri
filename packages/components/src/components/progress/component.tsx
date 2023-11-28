@@ -117,12 +117,6 @@ export class KolProcess implements API {
 	@Prop() public _max!: number;
 
 	/**
-	 * Defines which variant should be used for presentation.
-	 * @deprecated will be removed in v2, use _variant
-	 */
-	@Prop() public _type?: KoliBriProgressVariantType;
-
-	/**
 	 * Defines the unit of the step values (not shown).
 	 */
 	@Prop() public _unit?: string = '%';
@@ -160,12 +154,6 @@ export class KolProcess implements API {
 		});
 	}
 
-	// @deprecated remove with v2
-	@Watch('_type')
-	public validateType(value?: KoliBriProgressVariantType): void {
-		this.validateVariant(value);
-	}
-
 	@Watch('_unit')
 	public validateUnit(value?: string): void {
 		watchString(this, '_unit', value);
@@ -192,7 +180,7 @@ export class KolProcess implements API {
 		this.validateMax(this._max);
 		this.validateUnit(this._unit);
 		this.validateValue(this._value);
-		this.validateVariant(this._variant || this._type);
+		this.validateVariant(this._variant);
 
 		this.interval = setInterval(() => {
 			if (this.state._liveValue !== this.state._value) {

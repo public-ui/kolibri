@@ -1,0 +1,19 @@
+@layer kol-theme-component {
+	:host {
+		display: inline-block;
+	}
+
+	kol-span-wc {
+		align-items: center;
+		border-radius: 0.3125rem;
+		display: grid;
+		gap: 0.5rem;
+		line-height: 1.25rem;
+		padding: 0.25rem 0.75rem;
+	}
+
+	kol-span-wc span {
+		display: flex;
+		gap: 0.25rem;
+	}
+}

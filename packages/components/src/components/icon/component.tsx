@@ -1,7 +1,6 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { devHint } from '../../utils/a11y.tipps';
 import { watchString } from '../../utils/prop.validators';
 import { API, States } from './types';
 
@@ -17,7 +16,7 @@ import { API, States } from './types';
 })
 export class KolIcon implements API {
 	public render(): JSX.Element {
-		const ariaShow = typeof this.state._label === 'string' && this.state._label.length > 0;
+		const ariaShow = this.state._label.length > 0;
 		return (
 			<Host exportparts="icon">
 				<i
@@ -38,50 +37,19 @@ export class KolIcon implements API {
 	}
 
 	/**
-	 * Deprecated: Setzt die semantische Beschriftung der Komponente.
-	 * @deprecated use _label instead
-	 */
-	@Prop() public _ariaLabel?: string;
-
-	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: string;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: string;
+	@Prop() public _icons!: string;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType; // TODO: required in v2
-
-	/**
-	 * Deprecated: Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	@Prop() public _part?: string;
+	@Prop() public _label!: LabelPropType;
 
 	@State() public state: States = {
 		_icons: 'codicon codicon-home',
-		// _label: '', // ⚠ required TODO: required in v2
+		_label: '', // ⚠ required
 	};
-
-	/**
-	 * @deprecated
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-
-	@Watch('_icon')
-	public validateIcon(value?: string): void {
-		this.validateIcons(value);
-	}
 
 	@Watch('_icons')
 	public validateIcons(value?: string): void {
@@ -93,19 +61,8 @@ export class KolIcon implements API {
 		validateLabel(this, value);
 	}
 
-	/**
-	 * @deprecated
-	 */
-	@Watch('_part')
-	public validatePart(value?: string): void {
-		if (value) {
-			devHint(`ICON: The usage of the part attribute is deprecated and has no effect.`);
-		}
-	}
-
 	public componentWillLoad(): void {
-		this.validateIcons(this._icons || this._icon);
-		this.validateLabel(this._label || this._ariaLabel);
-		this.validatePart(this._part);
+		this.validateIcons(this._icons);
+		this.validateLabel(this._label);
 	}
 }
