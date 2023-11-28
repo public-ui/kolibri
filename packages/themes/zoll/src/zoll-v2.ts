@@ -980,6 +980,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		.disabled {
 			opacity: 0.33;
 		}
+		.button:focus-within {
+			border-radius: var(--border-radius);
+			outline-color: var(--color-blau-dark);
+			outline-offset: 0.125rem;
+			outline-style: solid;
+			outline-width: 0.125rem;
+		}
 	`,
 	'KOL-INPUT-RADIO': css`
 		/* ALL INPUT, SELECT, TEXTAREA */
