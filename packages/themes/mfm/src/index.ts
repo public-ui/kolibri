@@ -1811,7 +1811,8 @@ export const MFM = KoliBri.createTheme('mfm', {
 			outline-offset: 2px;
 			outline-style: solid;
 			outline-width: 3px;
-		}`,
+		}
+	`,
 	'KOL-INPUT-RADIO': `/* INPUT */
 		kol-input {
 			display: grid;

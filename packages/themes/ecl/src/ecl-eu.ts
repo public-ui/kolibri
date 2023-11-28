@@ -839,6 +839,11 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		.hint {
 			font-size: 0.875rem;
 		}
+		.button:focus-within {
+			outline-color: var(--color-blue-130);
+			outline-style: solid;
+			outline-width: 2px;
+		}
 	`,
 	'KOL-INPUT-COLOR': css`
 		kol-input {
