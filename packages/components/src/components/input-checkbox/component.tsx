@@ -15,9 +15,9 @@ import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputCheckboxController } from './controller';
 import { API, InputCheckboxIconsProp, InputCheckboxVariant, States } from './types';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
  * @slot expert - Die Beschriftung der Checkbox.
