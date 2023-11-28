@@ -36,6 +36,8 @@ const HEADERS: KoliBriTableHeaders = {
 				label: 'Aktion (react)',
 				key: 'order',
 				render: (el) => {
+					el.setAttribute('role', 'presentation');
+
 					// https://reactjs.org/docs/portals.html
 					getRoot(el).render(
 						<>
