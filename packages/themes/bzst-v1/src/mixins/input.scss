@@ -1,6 +1,7 @@
-/* Common styles for all type of inputs */
 @import "../functions";
-@mixin input {
+
+/* Common styles for all type of inputs */
+@mixin input($element-selector: "input") {
 	kol-input {
 		gap: rem(10);
 
@@ -48,7 +49,7 @@
 		font-style: italic;
 	}
 
-	input {
+	#{$element-selector} {
 		border: none;
 		opacity: 1; // Override conflicting component styles
 		background: transparent; // Override user-agent styles for :disabled state
