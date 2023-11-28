@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import semver from 'semver';
 
-import { Configuration } from '../../types';
+import { Configuration, Migrate } from '../../types';
 import { logAndCreateError } from '../shares/reuse';
 import { AbstractTask } from './abstract-task';
 
@@ -101,7 +101,7 @@ export class TaskRunner {
 		if (this.config.migrate?.tasks[task.getIdentifier()] === false) {
 			task.setStatus('skipped');
 		} else {
-			this.config.migrate!.tasks[task.getIdentifier()] = true;
+			(this.config.migrate as unknown as Migrate).tasks[task.getIdentifier()] = true;
 			if (
 				task.getStatus() === 'pending' &&
 				semver.satisfies(this.projectVersion, task.getVersionRange(), {
