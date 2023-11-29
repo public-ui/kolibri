@@ -110,14 +110,7 @@ export class KolInput implements Props {
 					></kol-tooltip-wc>
 				)}
 				{hasError && (
-					<kol-alert
-						_alert={this._alert}
-						_type="error"
-						_variant="msg"
-						aria-hidden={this._hideError}
-						class={`error${this._hideError ? ' hidden' : ''}`}
-						id={`${this._id}-error`}
-					>
+					<kol-alert _alert={this._alert} _type="error" class={`error${this._hideError ? ' hidden' : ''}`} id={`${this._id}-error`}>
 						{this._error}
 					</kol-alert>
 				)}

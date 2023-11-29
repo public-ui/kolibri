@@ -1764,6 +1764,13 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		:host .disabled {
 			opacity: 0.33;
 		}
+		.button:focus-within {
+			border-radius: var(--border-radius);
+			outline-color: var(--color-primary-variant);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: calc(var(--border-width) * 2);
+		}
 	`,
 	'KOL-INPUT-RADIO': css`
 		label {

@@ -2336,6 +2336,10 @@ export namespace Components {
     }
     interface KolTable {
         /**
+          * Defines whether to allow multi sort.
+         */
+        "_allowMultiSort"?: boolean;
+        /**
           * Defines the primary table data.
          */
         "_data": Stringified<KoliBriTableDataType[]>;
@@ -5134,6 +5138,10 @@ declare namespace LocalJSX {
         "_symbol": string;
     }
     interface KolTable {
+        /**
+          * Defines whether to allow multi sort.
+         */
+        "_allowMultiSort"?: boolean;
         /**
           * Defines the primary table data.
          */

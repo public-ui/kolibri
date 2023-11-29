@@ -4,14 +4,11 @@
 		grid-template-columns: var(--a11y-min-size) auto;
 		grid-template-areas: 'error error' 'input label' 'hint hint';
 	}
-
-	.button[tabindex]:focus {
+	.button:focus-within {
 		/* override global `[tabindex]:focus` style */
 		cursor: inherit;
-	}
-
-	.button input {
-		display: none;
+		outline-color: black;
+		outline-style: solid;
 	}
 
 	.button > .error {

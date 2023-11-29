@@ -133,3 +133,7 @@ input[type='checkbox']:checked {
 .disabled {
 	opacity: 0.33;
 }
+.button:focus-within {
+	outline: var(--focusOutline);
+	outline-offset: 2px;
+}
