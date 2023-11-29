@@ -20,17 +20,6 @@
 		padding: 0 rem(32);
 	}
 
-	.accordion-button kol-icon::part(icon) {
-		font-family: 'FontAwesome';
-
-		&::before {
-			content: '\2b';
-		}
-	}
-	.accordion.open .accordion-button kol-icon::part(icon)::before {
-		content: '\f068';
-	}
-
 	.content {
 		padding: rem(32) rem(32) rem(40);
 	}
