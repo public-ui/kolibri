@@ -19,5 +19,8 @@ export const ButtonLinkBasic: FC = () => (
 			<KolButtonLink style={{ display: 'block' }} _label="Simple Link" />
 			Daher gehe ich über die ganze Breite des Eltern-Elements erzeuge so einen Zeilenumbruch.
 		</p>
+		<p>
+			<KolButtonLink _label="Disabled ButtonLink" _disabled />
+		</p>
 	</div>
 );
