@@ -17,7 +17,7 @@ const HEADERS: KoliBriTableHeaders = {
 				textAlign: 'center',
 				render: (el, tupel) => {
 					// https://reactjs.org/docs/portals.html
-					getRoot(el).render(<strong>{DATE_FORMATTER.format((tupel as Data).date)}</strong>);
+					getRoot(el).render(<strong>{DATE_FORMATTER.format(tupel.label as unknown as Date)}</strong>);
 				},
 				sort: (data: Data[]) =>
 					data.sort((data0, data1) => {
