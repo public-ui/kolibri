@@ -6,19 +6,18 @@
 		gap: rem(10);
 
 		&.error {
-			border-left: 3px solid var(--color-rot);
+			border-left: 3px solid var(--color-red);
 			padding-left: rem(16);
 		}
 	}
 
 	kol-alert.error {
-		color: var(--color-rot);
+		color: var(--color-red);
 		font-weight: 700;
 		order: 3;
 	}
 
 	.input-label {
-		color: var(--color-text);
 		font-weight: 700;
 		opacity: 1; // Override conflicting component styles
 		order: 1;
@@ -38,7 +37,7 @@
 		}
 
 		kol-input.disabled & {
-			border-color: var(--color-speedwell);
+			border-color: var(--color-disabled-gray);
 			background: var(--color-secondary-40);
 		}
 	}

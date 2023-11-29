@@ -32,7 +32,7 @@
 		opacity: 1; // Override conflicting component styles
 
 		kol-input.disabled & {
-			color: var(--color-speedwell);
+			color: var(--color-disabled-gray);
 		}
 	}
 
@@ -80,7 +80,7 @@
 			}
 
 			&:disabled {
-				border-color: var(--color-speedwell);
+				border-color: var(--color-disabled-gray);
 				background-color: var(--color-secondary-40);
 			}
 
@@ -108,7 +108,7 @@
 				border-color: var(--color-primary-60);
 			}
 			&:checked:disabled::before {
-				border-color: var(--color-speedwell);
+				border-color: var(--color-disabled-gray);
 			}
 
 			&:indeterminate::before {
@@ -123,7 +123,7 @@
 				background-color: var(--color-primary-60);
 			}
 			&:indeterminate:disabled::before {
-				background-color: var(--color-speedwell);
+				background-color: var(--color-disabled-gray);
 			}
 		}
 	}

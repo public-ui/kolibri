@@ -36,7 +36,7 @@
 			border-color: var(--color-primary-60);
 		}
 		&:disabled {
-			border-color: var(--color-speedwell);
+			border-color: var(--color-disabled-gray);
 			background: var(--color-secondary-40);
 		}
 
@@ -44,7 +44,7 @@
 			background-color: var(--color-primary);
 		}
 		&:checked:disabled::before {
-			background-color: var(--color-speedwell);
+			background-color: var(--color-disabled-gray);
 		}
 		&:checked:enabled:hover::before {
 			background-color: var(--color-primary-60);
@@ -58,7 +58,7 @@
 		opacity: 1; // Override conflicting component styles
 
 		.disabled & {
-			color: var(--color-speedwell);
+			color: var(--color-disabled-gray);
 		}
 	}
 

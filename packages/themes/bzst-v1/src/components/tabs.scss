@@ -10,7 +10,7 @@
 	.button {
 		color: var(--color-primary);
 		padding: 0 rem(15);
-		font-family: var(--textFontSerif);
+		font-family: var(--font-family-serif);
 
 		&.selected {
 			background: var(--color-primary);
@@ -29,7 +29,7 @@
 		}
 
 		&:disabled {
-			color: var(--color-disabled);
+			color: var(--color-disabled-gray);
 			cursor: not-allowed;
 		}
 	}

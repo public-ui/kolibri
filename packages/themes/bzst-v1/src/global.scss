@@ -12,127 +12,21 @@
 		--color-secondary-40: #e5e8e9;
 		--color-secondary-20: #f2f3f4;
 		--color-secondary-0: #ffffff;
-		--color-text-black: #000000;
-		--color-text-white: #ffffff;
 		--color-blue: #0077b6;
 		--color-petrol: #007194;
 		--color-green: #00854a;
 		--color-yellow: #f9e03a;
 		--color-red: #c0003c;
-
-		/* token */
-		--color-bleached-silk: #f2f2f2;
-		--color-carbon: #333;
-		--color-chilled-lemonade: #ffe695;
-		--color-green-light: #a7c0b8;
-		--color-green-dark: #23614e;
-		--color-heroic-blue: #126dff;
-		--color-mercury: #ebebeb;
-		--color-red-epiphyllum: #d00000;
-		--color-speedwell: #595f73;
-		--color-tropic-sea: #007194; /* replace by petrol */
-		--color-white: #fff; /* template */
-		/* general */
-		--colorDark: var(--color-carbon);
-		--colorLight: var(--color-white); /* primary color */
-		--colorPrimary: var(--color-green-dark);
-		--colorPrimaryFront: var(--color-white);
-		--colorPrimarySuccess: #4d7f6f;
-		--colorPrimarySuccessFront: var(--color-white);
-		--colorPrimaryActive: var(--color-green-light);
-		--colorPrimaryActiveFront: var(--color-carbon); /* secondary color */
-		--colorSecondary: var(--color-white);
-		--colorSecondaryFront: var(--color-carbon);
-		--colorSecondarySuccess: var(--color-bleached-silk);
-		--colorSecondarySuccessFront: var(--color-carbon);
-		--colorSecondaryActive: var(--color-mercury);
-		--colorSecondaryActiveFront: var(--color-carbon); /* text */
-		--colorText: var(--color-carbon);
-		--colorTextBg: var(--color-white);
-		--colorTextLight: var(--color-white);
-		--colorTextLightBg: var(--color-carbon);
-		--colorTextDisabled: var(--color-speedwell);
-		--colorTextDisabledBg: var(--color-mercury);
-		--colorTextActive: var(--color-green-dark);
-		--colorTextActiveBg: var(--color-white); /* signal */
-		--colorSignal: var(--color-tropic-sea);
-		--colorSignalFront: var(--color-white); /* colorSignalFocus hat keine Frontfarbe */
-		--colorSignalFocus: var(--color-heroic-blue);
-		--colorSignalSuccess: #4d7f6f;
-		--colorSignalSuccessFront: var(--color-white);
-		--colorSignalWarn: var(--color-chilled-lemonade);
-		--colorSignalWarnFront: var(--color-carbon);
-		--colorSignalError: var(--color-red-epiphyllum);
-		--colorSignalErrorFront: var(--color-white); /* disabled */
-		--colorDisabled: var(--color-mercury);
+		--color-disabled-gray: #595f73;
+		--color-black: #000;
+		--color-white: #fff;
 	}
 
-	/* font, headline, text */
 	:root,
 	:host {
-		/* token */
 		--font-family: 'BundesSans Web', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-			sans-serif; /* Basis-Größe: html, rem */
-		--font-size: 100%;
-		--line-height: 1.6875rem; /* template */
-		/* h1 */
-		--headline1FontSize: 2.5rem;
-		--headline1LineHeight: 2.8125rem; /* h2 */
-		--headline2FontSize: 2rem;
-		--headline2LineHeight: 2.5rem; /* h3 */
-		--headline3FontSize: 1.3125rem;
-		--headline3LineHeight: 1.6875rem; /* h4 */
-		--headline4FontSize: 1rem;
-		--headline4LineHeight: 1.6875rem; /* text */
-		--textFont: var(--font-family);
-		--textFontColor: var(--colorText);
-		--textFontSerif: 'BundesSerif Web', var(--textFont);
-		--textFontSize: 1rem;
-		--textFontLineHeight: 1.6875rem;
-		--textFontWeight: normal;
-	}
-
-	/* Abstände */
-	:root,
-	:host {
-		/* template */
-		--gap: 2rem;
-		--gapDouble: calc(var(--gap) * 2);
-		--gapSmall: 1.25rem; /* TODO: benötigt nur außerhalb KoliBri Komponenten? */
-		--gapSmallest: 0.625rem;
-		--gapLarge: 2.5rem;
-	}
-
-	/* formular */
-	:root,
-	:host {
-		/* template */
-		--formBorderWidthAndStyle: 1px solid; /* TODO: eigentlich --color-green sein, aber im Styleguide ist der Wert: #23614E */
-		--formBorder: var(--formBorderWidthAndStyle) var(--colorPrimarySuccess);
-	}
-
-	/* ********************************* */
-	/* ********************************* */
-	/* ********************************* */
-	/* ********************************* */
-	:host {
-		/* Primärfarbe und Abstufungen */
-		--color-gruen-dunkel: var(--colorPrimary);
-		--color-gruen: var(--colorPrimarySuccess);
-		--color-gruen-hell: var(--colorPrimaryActive); /* Sekundärfarben */
-		--color-weiss: var(--colorSecondary);
-		--color-grau-dunkel: var(--colorSecondaryFront);
-		--color-grau-hell: var(--colorSecondaryActive);
-		--color-grau-weiss: var(--colorSecondarySuccess); /* Textfarben */
-		--color-blau: var(--colorSignalFocus);
-		--color-blau-dunkel: var(--colorSignal);
-		--color-gelb: var(--colorSignalWarn);
-		--color-rot: var(--colorSignalError);
-		--color-disabled: var(--colorTextDisabled);
-		--text-size: var(--textFontSize);
-		--color-focus: var(--color-blau);
-		--spacing: 4px;
-		--color-text: var(--color-grau-dunkel);
+			sans-serif;
+		--font-family-serif: 'BundesSerif Web', var(--font-family);
 	}
 
 	:host {
@@ -154,7 +48,6 @@
 		letter-spacing: inherit;
 	}
 
-	/* a,button,caption,input,option,select,summary,table,textarea {font-size: 1rem;} */
 	summary {
 		hyphens: auto;
 		letter-spacing: inherit;

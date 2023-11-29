@@ -5,7 +5,7 @@
 	@include link('button');
 
 	button:disabled {
-		color: var(--color-speedwell);
+		color: var(--color-disabled-gray);
 		cursor: not-allowed;
 	}
 }

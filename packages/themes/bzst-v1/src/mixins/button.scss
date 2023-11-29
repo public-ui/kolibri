@@ -59,10 +59,10 @@
 	}
 
 	:is(.primary, .secondary, .ghost) #{$element-selector}:disabled > kol-span-wc {
-		color: var(--color-speedwell);
+		color: var(--color-disabled-gray);
 	}
 	:is(.primary, .secondary) #{$element-selector}:disabled > kol-span-wc {
 		background: var(--color-secondary-40);
-		border-color: var(--color-speedwell);
+		border-color: var(--color-disabled-gray);
 	}
 }
