@@ -1,4 +1,4 @@
-@import "../functions";
+@import '../functions';
 
 @mixin link($element-selector) {
 	#{$element-selector} {
@@ -6,7 +6,8 @@
 		text-decoration-thickness: 1px; // Override component styles
 		text-decoration: none;
 
-		&:not(:disabled):hover, &:focus {
+		&:not(:disabled):hover,
+		&:focus {
 			text-decoration: underline;
 		}
 

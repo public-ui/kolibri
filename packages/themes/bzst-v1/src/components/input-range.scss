@@ -1,7 +1,7 @@
 /* https://www.cssportal.com/style-input-range/ */
 
-@import "../mixins/input";
-@import "../functions";
+@import '../mixins/input';
+@import '../functions';
 
 @layer kol-theme-component {
 	@include input;

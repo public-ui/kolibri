@@ -46,7 +46,7 @@
 		background-color: var(--color-white);
 		opacity: 1; // Override conflicting component styles
 		outline: none;
-		transition: none;  // Override conflicting component styles
+		transition: none; // Override conflicting component styles
 	}
 
 	.required label > span::after {
@@ -134,10 +134,12 @@
 			border-radius: 1.7em;
 			border-width: 1px;
 			border-color: var(--color-primary);
-			transition: 0.5s background-color, border-color;
+			transition:
+				0.5s background-color,
+				border-color;
 
 			&:enabled:hover {
-				border-color: var(--color-primary-60)
+				border-color: var(--color-primary-60);
 			}
 			&:is(:checked, :indeterminate):enabled {
 				background: var(--color-primary);
@@ -169,7 +171,7 @@
 				transform: translateX(calc(100% - 4px));
 			}
 			&:enabled:hover::before {
-				border-color: var(--color-primary-60)
+				border-color: var(--color-primary-60);
 			}
 			&:disabled::before {
 				background: var(--color-secondary-40);

@@ -33,14 +33,14 @@
 	h5 {
 		color: red;
 		&:after {
-			content: " (H5 is not part of the design system.)"
+			content: ' (H5 is not part of the design system.)';
 		}
 	}
 
 	h6 {
 		color: red;
 		&:after {
-			content: " (H6 is not part of the design system.)"
+			content: ' (H6 is not part of the design system.)';
 		}
 	}
 }

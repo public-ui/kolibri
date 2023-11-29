@@ -1,7 +1,7 @@
-@import "../functions";
+@import '../functions';
 
 /* Common styles for all type of inputs */
-@mixin input($element-selector: "input") {
+@mixin input($element-selector: 'input') {
 	kol-input {
 		gap: rem(10);
 

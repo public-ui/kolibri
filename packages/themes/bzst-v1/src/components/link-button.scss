@@ -1,5 +1,5 @@
 @import '../mixins/button';
 
 @layer kol-theme-component {
-	@include button('a')
+	@include button('a');
 }

@@ -7,7 +7,6 @@
 			min-width: var(--a11y-min-size);
 			text-align: center;
 		}
-
 	}
 
 	.icon::part(icon) {
@@ -37,7 +36,7 @@
 		height: rem(44);
 		width: rem(44);
 		outline: none;
-		
+
 		> kol-span-wc {
 			margin: auto;
 			display: flex;
