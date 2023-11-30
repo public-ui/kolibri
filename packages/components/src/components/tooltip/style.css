@@ -1,5 +1,9 @@
 @import url(../style.css);
 @layer kol-component {
+	kol-tooltip-wc {
+		display: contents;
+	}
+
 	kol-tooltip-wc .tooltip-floating {
 		animation-duration: 0.5s;
 		animation-iteration-count: 1;
