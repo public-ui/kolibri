@@ -48,6 +48,8 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 				_value={true}
 				_hint="Hint text"
 			/>
+			<KolInputCheckbox {...props} _checked _disabled _label="Checked and disabled" />
+			<KolInputCheckbox {...props} _indeterminate _disabled _label="Indeterminate and disabled" />
 			<KolInputCheckbox
 				{...props}
 				_error={ERROR_MSG}

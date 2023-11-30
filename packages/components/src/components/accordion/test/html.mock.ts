@@ -35,9 +35,10 @@ export const getAccordionHtml = (
 							_label: props._label,
 						},
 						undefined,
-						' slot="expert"'
+						' class="accordion-button" slot="expert"'
 					)}`,
-				}
+				},
+				` class="accordion-heading"`
 			)}
 			<div class="wrapper">
 				<div class="animation-wrapper">

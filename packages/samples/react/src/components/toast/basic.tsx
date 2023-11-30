@@ -14,6 +14,15 @@ export const ToastBasic: FC = () => {
 		});
 	};
 
+	const handleButtonClickVariantMessage = () => {
+		void toaster.enqueue({
+			description: 'Toasty',
+			label: `Toast with variant 'msg'`,
+			type: 'warning',
+			alertVariant: 'msg',
+		});
+	};
+
 	const handleButtonClickComplex = () => {
 		void toaster.enqueue({
 			render: (element: HTMLElement, { close }) => {
@@ -54,7 +63,8 @@ export const ToastBasic: FC = () => {
 
 	return (
 		<div>
-			<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>
+			<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>{' '}
+			<KolButton _label="Show toast with alert variant 'msg'" _on={{ onClick: handleButtonClickVariantMessage }}></KolButton>{' '}
 			<KolButton _label="Show complex toast" _on={{ onClick: handleButtonClickComplex }}></KolButton>
 			<br />
 			<br />

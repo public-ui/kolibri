@@ -314,11 +314,6 @@ ROUTES.set('table/badge-size', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('table/render-cell', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('table/sort-data', {
 	axe: {
 		skipFailures: false,

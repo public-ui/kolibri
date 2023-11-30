@@ -5,13 +5,8 @@ import { KolButton, KolInputText, KolTable } from '@public-ui/react';
 import { getRoot } from '../../shares/react-roots';
 import { KoliBriTableHeaders } from '@public-ui/components';
 import { DATA, Data } from './test-data';
+import { DATE_FORMATTER } from './formatter';
 import { SampleDescription } from '../SampleDescription';
-
-const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
-	day: '2-digit',
-	month: '2-digit',
-	year: 'numeric',
-});
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
@@ -23,7 +18,7 @@ const HEADERS: KoliBriTableHeaders = {
 				textAlign: 'center',
 				render: (el, tupel) => {
 					// https://reactjs.org/docs/portals.html
-					getRoot(el).render(<strong>{DATE_FORMATTER.format((tupel as Data).date)}</strong>);
+					getRoot(el).render(<strong>{DATE_FORMATTER.format(tupel.label as unknown as Date)}</strong>);
 				},
 				sort: (data: Data[]) =>
 					data.sort((data0, data1) => {

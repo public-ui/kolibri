@@ -1142,25 +1142,6 @@ importers:
         specifier: 5.3.2
         version: 5.3.2
 
-  packages/themes/bzst-v2:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.0-rc.11
-        version: link:../../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.0-rc.11
-        version: link:../../schema
-      '@public-ui/visual-tests':
-        specifier: 2.0.0-rc.11
-        version: link:../../tools/visual-tests
-      '@types/node':
-        specifier: ts5.3
-        version: 20.10.0
-      typescript:
-        specifier: 5.3.2
-        version: 5.3.2
-
   packages/themes/default:
     dependencies:
       '@public-ui/components':
