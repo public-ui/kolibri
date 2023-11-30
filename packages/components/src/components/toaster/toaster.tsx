@@ -1,11 +1,11 @@
-import { Toast } from './types';
+import { Toast, ToasterOptions } from './types';
 
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();
 
 	private toastContainerElement?: HTMLKolToastContainerElement;
 
-	private constructor(private readonly document: Document) {
+	private constructor(private readonly document: Document, private readonly options?: ToasterOptions) {
 		this.toastContainerElement = this.document.createElement('kol-toast-container');
 		this.document.body.prepend(this.toastContainerElement);
 	}
@@ -13,10 +13,10 @@ export class ToasterService {
 	/**
 	 * Get a toaster for the specified document environment. Each environment has exactly one instance of the service.
 	 */
-	public static getInstance(document: Document) {
+	public static getInstance(document: Document, options?: ToasterOptions): ToasterService {
 		let instance = this.instances.get(document);
 		if (!instance) {
-			instance = new ToasterService(document);
+			instance = new ToasterService(document, options);
 			this.instances.set(document, instance);
 		}
 		return instance;
@@ -38,6 +38,10 @@ export class ToasterService {
 		 * so we can't enqueue toasts.
 		 */
 		if (this.toastContainerElement && typeof this.toastContainerElement.enqueue === 'function') {
+			if (!toast.alertVariant && this.options?.defaultAlertVariant) {
+				toast.alertVariant = this.options?.defaultAlertVariant;
+			}
+
 			return this.toastContainerElement.enqueue(toast);
 		}
 	}

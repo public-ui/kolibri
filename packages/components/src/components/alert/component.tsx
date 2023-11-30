@@ -66,6 +66,7 @@ export class KolAlertWc implements API {
 		return (
 			<Host
 				class={{
+					alert: true,
 					[this.state._type as string]: true,
 					[this.state._variant as string]: true,
 					hasCloser: !!this.state._hasCloser,
@@ -74,7 +75,7 @@ export class KolAlertWc implements API {
 			>
 				<div class="heading">
 					<AlertIcon label={this.state._label} type={this.state._type} />
-					<div>
+					<div class="heading-content">
 						{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
 							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
 						)}

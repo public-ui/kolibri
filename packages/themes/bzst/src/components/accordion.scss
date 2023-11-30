@@ -1,69 +1,26 @@
-:host > div {
-	font-family: var(--font-family);
-	padding: 0 0.5rem 0 0;
-}
-:host > div > kol-heading-wc {
-	font-weight: 700;
-	font-size: 1.25rem;
-	line-height: 1.75rem;
-}
-:host > div > kol-heading-wc button {
-	cursor: pointer;
-	width: 100%;
-	margin: 0;
-	display: flex;
-	gap: 0.5em;
-	border: 0;
-	align-items: center;
-	overflow: hidden;
-	font-size: inherit;
-	line-height: 1.5em;
-	background-color: transparent;
-	padding: 0.5em;
-	padding-left: 0;
-}
-:host > div[part*='open'] > kol-heading-wc button {
-	padding: 0.5em;
-	padding-left: 0;
-}
-:host > div > kol-heading-wc button kol-icon::part(icon) {
-	font-family: 'Font Awesome 6 Free';
-	font-weight: 900;
-	color: var(--color-midnight);
-}
-.accordion > kol-heading-wc button kol-icon::part(icon)::before {
-	content: '\2b';
-}
-.accordion.open > kol-heading-wc button kol-icon::part(icon)::before {
-	content: '\f068';
-}
-.accordion {
-	width: 100%;
-	height: 100%;
-	display: grid;
-}
-.accordion[part*='open'] div[part='header'] {
-	padding-left: 2em;
-}
-.accordion[part*='open'] div[part='content'] {
-	padding-top: 1rem;
-}
-button {
-	font-weight: inherit;
-	font-size: inherit;
-	line-height: inherit;
-}
-.accordion {
-	background: var(--color-white);
-}
-.accordion[part*='open'] {
-	padding-bottom: 1em;
-} /* .accordion > [part="header"] {height: 0;} */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0;
+@import '../functions';
+
+@layer kol-theme-component {
+	.accordion {
+		display: grid;
+		background: var(--color-white);
+	}
+
+	.accordion-heading {
+		border: 1px solid var(--color-primary-60);
+		font-size: rem(21); /* h3 font-size */
+	}
+
+	.headline {
+		margin: 0;
+		font-weight: normal;
+	}
+
+	.accordion-button .button {
+		padding: 0 rem(32);
+	}
+
+	.content {
+		padding: rem(32) rem(32) rem(40);
+	}
 }

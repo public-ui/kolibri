@@ -1,12 +1,9 @@
-kol-link-wc > a > kol-span-wc {
-	border-radius: var(--a11y-min-size);
-	border-style: solid;
-	border-width: 2px;
-	gap: 0.5rem;
-	line-height: 1rem;
-	padding: 8px 14px;
-	background-color: var(--color-ocean);
-	border-color: var(--color-ocean);
-	color: var(--color-white);
-	cursor: pointer;
+@import '../mixins/link';
+
+@layer kol-theme-component {
+	@include link('a');
+
+	a {
+		display: block;
+	}
 }

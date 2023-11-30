@@ -8,7 +8,7 @@ export const CardFlex: FC = () => (
 		<KolCard _label="Titel">
 			<div>Inhalt</div>
 		</KolCard>
-		<KolCard _label="Titel">
+		<KolCard _label="Titel" _hasCloser>
 			<div>
 				Inhalt
 				<br />

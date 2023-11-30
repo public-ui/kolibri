@@ -1,53 +1,5 @@
-:host {
-	--color: var(--colorText); /* --color: blue; */
+@import '../mixins/input';
+
+@layer kol-theme-component {
+	@include input('select');
 }
-kol-input {
-	color: var(--color);
-	font-size: var(--textFontSize);
-	gap: var(--gapSmallest);
-}
-label {
-	font-weight: 700;
-	order: 1;
-}
-.input {
-	order: 2;
-}
-kol-alert.error {
-	color: var(--colorSignalError);
-	order: 3;
-}
-select {
-	background-color: var(--colorLight);
-	line-height: 1.5;
-	color: var(--color);
-	border: var(--formBorder);
-	padding: 0.5em 0.75em;
-}
-select:hover,
-select:focus {
-	border-color: var(--colorPrimaryActive);
-}
-select:disabled {
-	cursor: not-allowed;
-}
-select[multiple] {
-	overflow: auto;
-}
-select option {
-	margin: 1px 0;
-	cursor: pointer;
-}
-select option:disabled {
-	cursor: not-allowed;
-}
-select:not([multiple]) option {
-	padding: 0.5em;
-}
-.required label > span::after {
-	content: '*';
-	padding-left: 0.125em;
-} /* kol-input.error select:invalid { */
-kol-input.error select {
-	border-color: var(--colorSignalError);
-} /* option:active:not(:disabled),option:focus:not(:disabled),option:hover:not(:disabled) {color: white;} */
