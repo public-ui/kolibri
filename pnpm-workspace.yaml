@@ -15,7 +15,6 @@ packages:
   - 'packages/themes'
   - 'packages/themes/bmf'
   - 'packages/themes/bzst'
-  - 'packages/themes/bzst-v1'
   - 'packages/themes/default'
   - 'packages/themes/ecl'
   - 'packages/themes/itzbund'

@@ -1,5 +1,4 @@
 import { KoliBri } from '@public-ui/schema';
-import abbrCss from './components/abbr.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
 import badgeCss from './components/badge.scss';
@@ -11,7 +10,6 @@ import cardCss from './components/card.scss';
 import detailsCss from './components/details.scss';
 import globalCss from './global.scss';
 import headingCss from './components/heading.scss';
-import iconCss from './components/icon.scss';
 import indentedTextCss from './components/indented-text.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
@@ -37,12 +35,10 @@ import tableCss from './components/table.scss';
 import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
-import tooltipCss from './components/tooltip.scss';
 
 // Bundeszentralamt für Steuern
-export const BZSt = KoliBri.createTheme('bzst', {
+export const BZStv1 = KoliBri.createTheme('bzst-v1', {
 	GLOBAL: globalCss,
-	'KOL-ABBR': abbrCss,
 	'KOL-ACCORDION': accordionCss,
 	'KOL-ALERT': alertCss,
 	'KOL-BADGE': badgeCss,
@@ -53,7 +49,6 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	'KOL-CARD': cardCss,
 	'KOL-DETAILS': detailsCss,
 	'KOL-HEADING': headingCss,
-	'KOL-ICON': iconCss,
 	'KOL-INDENTED-TEXT': indentedTextCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,
@@ -79,5 +74,4 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	'KOL-TABS': tabsCss,
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
-	'KOL-TOOLTIP': tooltipCss,
 });

@@ -1,27 +1,25 @@
-ul {
-	list-style: none;
-}
-a {
-	color: var(--colorText);
-	display: block;
-	padding: 0.3rem 0.5rem;
-	text-decoration: none;
-	transition-duration: 0.5s;
-	transition-property: background-color, color, border-color;
-}
-a:hover {
-	background-color: var(--colorPrimarySuccess);
-	color: var(--colorLight);
-}
-a:focus,
-button:focus {
-	outline: var(--focusOutline);
-	outline-offset: 2px;
-	transition: outline-offset 0.2s linear;
-}
-.list[data-deep='0'] {
-	font-family: var(--textFontSerif);
-}
-.horizontal {
-	gap: var(--gap);
+@import '../functions';
+
+@layer kol-theme-component {
+	:host {
+		font-size: rem(21); /* h3 font-size */
+	}
+
+	:is(a, button) {
+		color: var(--color-black);
+		display: block;
+		margin-left: rem(12);
+		padding: rem(5);
+		text-decoration: none;
+
+		&:hover {
+			background-color: var(--color-primary);
+			color: var(--color-white);
+		}
+
+		&:focus {
+			outline: 2px solid var(--color-blue);
+			outline-offset: 2px;
+		}
+	}
 }
