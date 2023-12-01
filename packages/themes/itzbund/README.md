@@ -28,6 +28,6 @@ register(ITZBund, defineCustomElements)
 		/* KoliBri ready */
 	})
 	.catch((error) => {
-    /* Handle errors */
-  }
+		/* Handle errors */
+	});
 ```

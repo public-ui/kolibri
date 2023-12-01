@@ -28,6 +28,6 @@ register(BMF, defineCustomElements)
 		/* KoliBri ready */
 	})
 	.catch((error) => {
-    /* Handle errors */
-  }
+		/* Handle errors */
+	});
 ```

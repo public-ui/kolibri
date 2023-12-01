@@ -26,16 +26,17 @@ import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { BAMF, BMF, BZStv1, DEFAULT, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3 } from '@public-ui/themes';
 
 register(
-  DEFAULT
-  // or provide an array to register multiple themes:
-  // [BAMF, BMF, DEFAULT, BZStv1, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3, TH]
-, defineCustomElements)
+	DEFAULT,
+	// or provide an array to register multiple themes:
+	// [BAMF, BMF, DEFAULT, BZStv1, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3, TH]
+	defineCustomElements,
+)
 	.then(() => {
 		/* KoliBri ready */
 	})
 	.catch((error) => {
-    /* Handle errors */
-  }
+		/* Handle errors */
+	});
 ```
 
 ## Important settings

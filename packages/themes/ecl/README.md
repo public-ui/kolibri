@@ -27,12 +27,12 @@ import {
 
 register(
 	ECL_EC, // or ECL_EU
-	defineCustomElements
+	defineCustomElements,
 )
 	.then(() => {
 		/* KoliBri ready */
 	})
 	.catch((error) => {
-    /* Handle errors */
-  }
+		/* Handle errors */
+	});
 ```

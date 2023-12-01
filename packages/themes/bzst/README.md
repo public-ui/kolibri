@@ -28,6 +28,6 @@ register(BZStv1, defineCustomElements)
 		/* KoliBri ready */
 	})
 	.catch((error) => {
-    /* Handle errors */
-  }
+		/* Handle errors */
+	});
 ```

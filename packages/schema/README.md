@@ -1,7 +1,31 @@
-# Schema
+# KoliBri - Schema
 
-Das **Schema**-Modul beinhaltet die konkrete Spezifikation der Komponenten-Bibliothek. Dazu gehört u.a. die Liste der Tag-Names und Translation-Keys.
+The **Schema** module contains the concrete specification of the component library. This includes the list of tag names and translation keys.
 
-Mehr zur **Modularisierung** kann im [Architekturkonzept](https://public-ui.github.io/docs/concepts/architecture) nachgelesen werden.
+More information on **modularization** can be found in the [architecture concept](https://public-ui.github.io/docs/concepts/architecture).  
+More about the **project** can be found in the [documentation](https://public-ui.github.io/docs).
 
-Mehr zum **Projekt** kann in der [README](https://public-ui.github.io/docs) nachgelesen werden.
+## Installation
+
+You can install the KoliBri schema with `npm`, `pnpm` or `yarn`:
+
+```bash
+npm i -g @public-ui/schema
+pnpm i -g @public-ui/schema
+yarn add -g @public-ui/schema
+```
+
+## Usage
+
+The `KoliBri` object can be used to register themes and translations:
+
+```typescript
+import { KoliBri } from '@public-ui/schema';
+
+KoliBri.createTranslation('de', {
+	/* translations */
+});
+KoliBri.createTheme('default', {
+	/* component definitions */
+});
+```

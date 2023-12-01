@@ -27,12 +27,12 @@ import {
 
 register(
 	ZOLLv3, // or ZOLLv2 or MAPZ
-	defineCustomElements
+	defineCustomElements,
 )
 	.then(() => {
 		/* KoliBri ready */
 	})
 	.catch((error) => {
-    /* Handle errors */
-  }
+		/* Handle errors */
+	});
 ```
