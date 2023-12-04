@@ -53,11 +53,11 @@
 	"devDependencies": {
 		"@public-ui/schema": "1.7.6",
 		"@types/node": "ts5.3",
-		"@typescript-eslint/eslint-plugin": "6.13.0",
-		"@typescript-eslint/parser": "6.13.0",
-		"eslint": "8.54.0",
+		"@typescript-eslint/eslint-plugin": "6.13.1",
+		"@typescript-eslint/parser": "6.13.1",
+		"eslint": "8.55.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"nodemon": "3.0.1",
+		"nodemon": "3.0.2",
 		"typescript": "5.3.2",
 		"unbuild": "1.2.1"
 	},

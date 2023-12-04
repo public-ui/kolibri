@@ -63,9 +63,9 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/compiler": "17.0.4",
-		"@angular/compiler-cli": "17.0.4",
-		"@angular/core": "17.0.4",
+		"@angular/compiler": "17.0.5",
+		"@angular/compiler-cli": "17.0.5",
+		"@angular/core": "17.0.5",
 		"@public-ui/components": "1.7.6",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
