@@ -33,7 +33,7 @@ register(DEFAULT, defineCustomElements)
 	.catch(console.warn);
 ```
 
-Then, you can import any component from `@public-ui/solid` and render it within React components:
+Then, you can import any component from `@public-ui/solid` and render it within components:
 
 ```tsx
 import { Component } from 'solid-js';

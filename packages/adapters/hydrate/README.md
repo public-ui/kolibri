@@ -4,7 +4,7 @@
 
 Provide an adapter for Server Side Rendering of KoliBri components.
 
-Hydrate support is currently considered experimental.
+⚠️ Hydrate support is currently considered experimental.
 
 ## Installation
 
