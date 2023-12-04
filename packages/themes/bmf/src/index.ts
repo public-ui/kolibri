@@ -94,7 +94,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		kol-tooltip-wc .tooltip-area {
 			background-color: var(--color-white);
-			color: var(--color-metal);
+			color: var(--color-black);
 		}
 		kol-tooltip-wc .tooltip-content {
 			border-radius: var(--border-radius);
@@ -156,6 +156,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-red);
 			color: var(--color-white);
 		}
+		.success :is(a, button) > kol-span-wc,
+		.success :is(a, button):disabled:hover > kol-span-wc {
+			background-color: var(--color-green);
+			border-color: var(--color-green);
+			color: var(--color-white);
+		}
 		.ghost :is(a, button) > kol-span-wc,
 		.ghost :is(a, button):disabled:hover > kol-span-wc {
 			border-color: var(--color-white);
@@ -171,6 +177,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.normal :is(a, button):hover > kol-span-wc,
 		.danger :is(a, button):active > kol-span-wc,
 		.danger :is(a, button):hover > kol-span-wc,
+		.success :is(a, button):active > kol-span-wc,
+		.success :is(a, button):hover > kol-span-wc,
 		.ghost :is(a, button):active > kol-span-wc,
 		.ghost :is(a, button):hover > kol-span-wc {
 			background-color: var(--color-ocean);
@@ -191,6 +199,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.secondary :is(a, button):active > kol-span-wc,
 		.normal :is(a, button):active > kol-span-wc,
 		.danger :is(a, button):active > kol-span-wc,
+		.success :is(a, button):active > kol-span-wc,
 		.ghost :is(a, button):active > kol-span-wc {
 			border-color: var(--color-white);
 			box-shadow: none;
@@ -216,6 +225,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		:is(a, button).transparent > kol-span-wc {
 			background-color: transparent;
 			border-color: transparent;
+		}
+		/** CUSTOM_CLASS */
+		:is(a, button).icon-only > kol-span-wc {
+			padding: 8px;
+			width: unset;
+		}
+		:is(a, button).icon-only > kol-span-wc > span > span {
+			display: block;
 		}
 	`,
 	'KOL-INPUT-TEXT': css`

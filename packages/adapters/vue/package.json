@@ -46,7 +46,7 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.23.4",
+		"@babel/types": "7.23.5",
 		"@public-ui/components": "2.0.0-rc.12",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
