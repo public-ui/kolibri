@@ -86,17 +86,16 @@ export class KolInputCheckbox implements API {
 							<span>{this.state._label}</span>
 						)}
 					</span>
-					<div slot="input">
+					<label slot="input">
 						<kol-icon
 							class="icon"
-							onClick={this.handleIconClick.bind(this)}
 							_icons={
 								this.state._indeterminate ? this.state._icons.indeterminate : this.state._checked ? this.state._icons.checked : this.state._icons.unchecked
 							}
 							_label=""
 						/>
 						<input
-							class={this.state._variant === 'button' ? 'visually-hidden' : undefined}
+							class={this.state._variant !== 'switch' ? 'visually-hidden' : undefined}
 							ref={this.catchRef}
 							title=""
 							accessKey={this.state._accessKey} // by checkbox?!
@@ -114,7 +113,7 @@ export class KolInputCheckbox implements API {
 							onChange={this.onChange}
 							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 						/>
-					</div>
+					</label>
 				</kol-input>
 			</Host>
 		);
@@ -359,12 +358,6 @@ export class KolInputCheckbox implements API {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-	}
-
-	private handleIconClick(event: Event): void {
-		if (!this.state._disabled) {
-			this.onChange(event);
-		}
 	}
 
 	private onChange = (event: Event): void => {
