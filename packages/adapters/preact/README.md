@@ -1,7 +1,5 @@
-# Preact-Adapter (experimentell)
+# KoliBri - Preact-Adapter
 
-Das [**Preact**](https://preactjs.com)-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.
+The [Preact](https://github.com/preactjs/preact) adapter is a wrapper around the React adapter. Please refer to the [React adapter documentation](../react/README.md) for more information.
 
-Mehr zur **Modularisierung** kann im [Architekturkonzept](https://public-ui.github.io/docs/concepts/architecture) nachgelesen werden.
-
-Mehr zum **Projekt** kann in der [README](https://public-ui.github.io/docs) nachgelesen werden.
+⚠️ Preact support is currently considered experimental.
