@@ -2003,6 +2003,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			min-width: 32px;
 			place-content: center;
 		}
+		:host kol-input.button.hide-label > .input {
+			border-top-right-radius: var(--border-radius);
+			border-bottom-right-radius: var(--border-radius);
+		}
 		:host kol-input.button > .input > div {
 			display: flex;
 		}
