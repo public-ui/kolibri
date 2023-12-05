@@ -1,11 +1,43 @@
-# Angular-Adapter
+# KoliBri - Angular 14-Adapter
 
-Das [**Angular**](https://angular.io)-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.
+## Motivation
 
-Mehr zur **Modularisierung** kann im [Architekturkonzept](https://public-ui.github.io/docs/concepts/architecture) nachgelesen werden.
+Provide an adapter for [Angular](https://angular.dev/) version 14 to use the KoliBri components.
 
-Mehr zum **Projekt** kann in der [README](https://public-ui.github.io/docs) nachgelesen werden.
+## Installation
 
-## Referenzen
+You can install the adapter with `npm`, `pnpm` or `yarn`:
 
-- <https://entwickler.de/angular/der-teufel-steckt-im-detail-001/>
+```bash
+npm i -g https://www.npmjs.com/package/@public-ui/angular-v14
+pnpm i -g https://www.npmjs.com/package/@public-ui/angular-v14
+yarn add -g https://www.npmjs.com/package/@public-ui/angular-v14
+```
+
+## Usage
+
+First, register KoliBri with a [theme](https://github.com/public-ui/kolibri/tree/develop/packages/themes):
+
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { KoliBriModule } from '@public-ui/angular-v14';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { register } from '@public-ui/components';
+import { DEFAULT } from '@public-ui/themes';
+
+@NgModule({
+	imports: [BrowserModule, KoliBriModule],
+})
+export class AppModule {
+	public constructor() {
+		register(DEFAULT, defineCustomElements).catch(/* Handle errors */);
+	}
+}
+```
+
+Then, you can use any KoliBri component within your templates:
+
+```html
+<kol-button _label="Hello World" />
+```

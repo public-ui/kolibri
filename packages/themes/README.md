@@ -1,10 +1,43 @@
-# Themes
+# KoliBri - Themes
 
-Das **Themes**-Modul beinhaltet zahlreiche Themes (Styleguides) zur Komponenten-Bibliothek. Sie können in Kombination mit dem Components-Modul geladen werden.
+The **Themes** module contains numerous themes (style guides) for the component library. They can be loaded in combination with the Components module.
 
-Mehr zur **Modularisierung** kann im [Architekturkonzept](https://public-ui.github.io/docs/concepts/architecture) nachgelesen werden.
+You can read more about **modularization** in the [architecture concept](https://public-ui.github.io/docs/concepts/architecture).
 
-Mehr zum **Projekt** kann in der [README](https://public-ui.github.io/docs) nachgelesen werden.
+More about the **project** can be found in the [documentation](https://public-ui.github.io/docs).
+
+## Installation
+
+You can install the KoliBri themes with `npm`, `pnpm` or `yarn`:
+
+```bash
+npm i -g @public-ui/themes
+pnpm i -g @public-ui/themes
+yarn add -g @public-ui/themes
+```
+
+## Usage
+
+Register the themes like this:
+
+```tsx
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { BAMF, BMF, BZStv1, DEFAULT, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3 } from '@public-ui/themes';
+
+register(
+	DEFAULT,
+	// or provide an array to register multiple themes:
+	// [BAMF, BMF, DEFAULT, BZStv1, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3, TH]
+	defineCustomElements,
+)
+	.then(() => {
+		/* KoliBri ready */
+	})
+	.catch((error) => {
+		/* Handle errors */
+	});
+```
 
 ## Important settings
 
