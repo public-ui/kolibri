@@ -39,7 +39,7 @@ export class KolTooltip implements API {
 		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			showOverlay(this.tooltipElement);
 			this.tooltipElement.style.setProperty('display', 'block');
-			getDocument().addEventListener('keyup', this.hideTooltipByEscape, { once: true });
+			getDocument().addEventListener('keyup', this.hideTooltipByEscape);
 
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;
@@ -59,6 +59,7 @@ export class KolTooltip implements API {
 				this.cleanupAutoPositioning = undefined;
 			}
 		}
+		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
 	};
 
 	private hideTooltipByEscape = (event: KeyboardEvent): void => {
