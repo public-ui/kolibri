@@ -1,24 +1,27 @@
 @layer kol-component {
 	.default {
-		& label[slot='input'] {
+		& .checkbox-container {
 			align-items: center;
 			display: flex;
 			height: var(--a11y-min-size);
 			justify-content: center;
+			position: relative;
 			width: var(--a11y-min-size);
 		}
 
 		& .icon {
-			align-items: center;
-			border: 1px solid;
-			display: flex;
-			height: 22px;
-			justify-content: center;
-			width: 22px;
+			display: block;
+			inset: auto;
+			position: absolute;
+			z-index: 1;
+		}
+		&:has(.checkbox-input-element:not(:checked):not(:indeterminate)) .icon::part(icon) {
+			display: none;
 		}
 
-		&:has(input[type='checkbox']:not(:checked):not(:indeterminate)) .icon::part(icon) {
-			display: none;
+		& .checkbox-input-element {
+			width: 22px;
+			height: 22px;
 		}
 	}
 }

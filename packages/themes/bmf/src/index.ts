@@ -1777,11 +1777,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 			width: 100%;
 			min-height: 44px;
 		}
-		:host kol-input.default {
+		:host kol-input.default:not(.hide-label) {
 			grid-template-columns: 1.5rem auto;
 			gap: 0.4em;
 		}
-		:host kol-input.switch {
+		:host kol-input.switch:not(.hide-label) {
 			grid-template-columns: 3.5rem auto;
 			gap: 0.4em;
 		}
@@ -1826,7 +1826,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-grey);
 			border-width: 2px;
 			border-style: solid;
-			border-radius: 5px; /* padding: 10px 14px; */
+			border-radius: 5px;
 			line-height: 24px;
 			font-size: 1rem;
 		}
@@ -1863,48 +1863,40 @@ export const BMF = KoliBri.createTheme('bmf', {
 			background-color: var(--color-midnight);
 			border-color: var(--color-midnight);
 		}
+		:host kol-input.default .checkbox-container {
+			justify-content: flex-start;
+		}
+		:host kol-input.default input[type='checkbox']:indeterminate {
+			background-color: var(--color-midnight);
+			border-color: var(--color-midnight);
+		}
+		:host kol-input.default .icon {
+			color: var(--color-white);
+			margin-left: 0.25rem;
+		}
 		:host kol-input.default input[type='checkbox'] {
 			border-radius: var(--border-radius);
 			height: calc(6 * var(--spacing));
 			min-width: calc(6 * var(--spacing));
 			width: calc(6 * var(--spacing));
 		}
-		:host kol-input.default input[type='checkbox']:before {
-			border-radius: 1.5em;
-			background-color: transparent;
-			display: block;
-			height: calc(6 * var(--spacing));
-			position: relative;
-			width: calc(6 * var(--spacing));
-		}
-		:host kol-input.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * var(--spacing) - 2px);
-			top: calc(2.85 * var(--spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * var(--spacing));
-			width: calc(1.5 * var(--spacing));
-		}
-		:host kol-input.default input[type='checkbox']:indeterminate {
-			--tw-bg-opacity: 1;
-			background-color: var(--color-midnight);
-		}
-		:host kol-input.default input[type='checkbox']:indeterminate:before {
-			background-color: var(--color-white);
-			height: 0.125rem;
-			top: 0.6rem;
-			left: 0.25rem;
-			width: calc(3 * var(--spacing));
-			transform: inherit;
-		}
-		:host kol-input.default input[type='checkbox']:checked:indeterminate:before {
-			border-width: 0px 1px 1px 0px;
+		.default {
+			.icon::part(icon) {
+				font-family: 'Font Awesome 6 Free';
+				font-weight: 900;
+			}
+
+			&:has(input:checked) .icon {
+				&::part(icon)::before {
+					content: '\\f00c';
+				}
+			}
+
+			&:has(input:indeterminate) .icon {
+				&::part(icon)::before {
+					content: '\\f068';
+				}
+			}
 		}
 		:host kol-input.switch input[type='checkbox'] {
 			min-width: 3.5em;
@@ -1913,13 +1905,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-width: 0;
 			height: 1.5em;
 			border-radius: 1.25em;
-			display: inline-block;
 			position: relative;
 		}
 		:host kol-input.switch input[type='checkbox']:before {
-			-webkit-transition: 0.5s;
-			-moz-transition: 0.5s;
-			-ms-transition: 0.5s;
 			transition: 0.5;
 			width: 1.25em;
 			height: 1.25em;
@@ -1933,9 +1921,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			background-color: var(--color-midnight);
 		}
 		:host kol-input.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(2em);
-			-moz-transform: translateX(2em);
-			-ms-transform: translateX(2em);
 			transform: translateX(2em);
 			--tw-bg-opacity: 1;
 		}
@@ -1943,12 +1928,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 			--tw-bg-opacity: 1;
 		}
 		:host kol-input.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(1em);
-			-moz-transform: translateX(1em);
-			-ms-transform: translateX(1em);
 			transform: translateX(1em);
 		}
 		.switch {
+			& .checkbox-input-element {
+				display: block;
+			}
 			& .icon {
 				width: 1.25em;
 				height: 1.25em;

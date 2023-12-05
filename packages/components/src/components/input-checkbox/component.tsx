@@ -86,7 +86,7 @@ export class KolInputCheckbox implements API {
 							<span>{this.state._label}</span>
 						)}
 					</span>
-					<label slot="input">
+					<label slot="input" class="checkbox-container">
 						<kol-icon
 							class="icon"
 							_icons={
@@ -95,7 +95,7 @@ export class KolInputCheckbox implements API {
 							_label=""
 						/>
 						<input
-							class={this.state._variant !== 'switch' ? 'visually-hidden' : undefined}
+							class={`checkbox-input-element${this.state._variant === 'button' ? ' visually-hidden' : ''}`}
 							ref={this.catchRef}
 							title=""
 							accessKey={this.state._accessKey} // by checkbox?!
