@@ -1,6 +1,6 @@
 import { defineBuildConfig } from 'unbuild';
-import { Plugin } from 'rollup';
 import postcss from 'rollup-plugin-postcss';
+import type { Plugin } from 'rollup';
 
 export default defineBuildConfig({
 	entries: ['src/index'],
@@ -9,11 +9,14 @@ export default defineBuildConfig({
 	externals: [],
 	rollup: {
 		emitCJS: true,
+    esbuild: {
+      minify: true,
+    },
 		inlineDependencies: true,
 	},
 	hooks: {
 		'rollup:options'(_buildContext, options) {
-			options.plugins = (options.plugins ?? []) as Plugin[];
+			options.plugins = Array.isArray(options.plugins) ? options.plugins : [];
 			options.plugins = options.plugins.filter((plugin) => (plugin as Plugin).name !== 'unbuild-raw');
 			options.plugins.push(
 				postcss({
