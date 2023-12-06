@@ -7,6 +7,13 @@
 	 */
 	--a11y-min-size: 44px;
 	/*
+	 * No element should be used without a background and font color whose contrast ratio has
+	 * not been checked. By initially setting the background color to white and the font color
+	 * to black, the contrast ratio is ensured and explicit adjustment is forced.
+	 */
+	background-color: white;
+	color: black;
+	/*
 	 * Verdana is an accessible font that can be used without requiring additional loading time.
 	 */
 	font-family: Verdana;
