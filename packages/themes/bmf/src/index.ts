@@ -1872,7 +1872,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		:host kol-input.default .icon {
 			color: var(--color-white);
-			margin-left: 0.25rem;
+			margin: -0.125rem 0 0 0.25rem; /* visually align */
 		}
 		:host kol-input.default input[type='checkbox'] {
 			border-radius: var(--border-radius);
