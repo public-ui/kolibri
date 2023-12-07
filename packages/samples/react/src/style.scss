@@ -29,7 +29,10 @@ hr {
 	flex-wrap: wrap;
 	max-width: 100vm;
 }
-
+.table-container {
+	overflow-x: auto !important;
+	min-width: 75rem;
+}
 
 @media (min-width: 1024px) {
 	.app-container {

@@ -51,6 +51,8 @@ export const TableRenderCell: FC = () => (
 		<SampleDescription>
 			<p>This sample simulates the usage of React render functions for the table column contents.</p>
 		</SampleDescription>
-		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />
+		<div className='table-container'>
+			<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />
+		</div>
 	</>
 );

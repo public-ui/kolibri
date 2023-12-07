@@ -25,12 +25,19 @@
 	div.pagination {
 		order: 2;
 	}
+    
+	div.pagination kol-pagination  {
+		display: flex;
+		flex-wrap: wrap;
+		overflow-x: auto;
+		padding: 10px;
+	}
 
 	div.pagination,
 	div.pagination > div:last-child {
 		display: grid;
 		place-items: center;
-	}
+		}
 
 	@media (min-width: 1024px) {
 		div.pagination,
