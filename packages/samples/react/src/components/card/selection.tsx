@@ -9,9 +9,8 @@ const STYLE = {
 	alignItems: 'center',
 	gap: '.5rem',
 };
-
 export const CardSelection: FC = () => (
-	<div className="flex gap-2">
+	<div className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
 		<KolCard _label="DEBTI-25437/17-1">
 			<div>
 				<div>
