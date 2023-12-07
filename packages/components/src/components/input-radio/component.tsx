@@ -376,9 +376,6 @@ export class KolInputRadio implements API {
 					this.state._on.onChange(event, option.value);
 				}
 
-				// TODO: Prüfen, was setValue noch genau macht, wir syncValue ja jetzt.
-				this.controller.setValue(event, option.value as string); // TODO: fix type
-
 				this.currentValue = option.value;
 			}
 		}
