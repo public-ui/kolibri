@@ -880,9 +880,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			position: absolute;
 		}
 		.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(1.5em);
-			-moz-transform: translateX(1.5em);
-			-ms-transform: translateX(1.5em);
 			transform: translateX(1.5em);
 			background-color: white;
 		}
@@ -890,13 +887,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			background-color: var(--color-blau);
 		}
 		.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(0.75em);
-			-moz-transform: translateX(0.75em);
-			-ms-transform: translateX(0.75em);
 			transform: translateX(0.75em);
 			background-color: white;
 		}
-		.switch:has(input:not(:checked, :indeterminate)) .icon {
+		.switch:not(.checked):not(.indeterminate) .icon {
 			color: #fff;
 		}
 		.disabled {
@@ -924,12 +918,12 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			border-width: 2px;
 			border-style: solid;
 		}
-		kol-input:has(input:disabled) input,
-		kol-input:has(input:disabled) label {
+		kol-input.disabled input,
+		kol-input.disabled label {
 			cursor: not-allowed !important;
 			opacity: 0.5;
 		}
-		kol-input:hover:has(input:not(:disabled)) label,
+		kol-input:hover:not(.disabled) label,
 		kol-input:focus-within {
 			text-decoration: underline;
 		}

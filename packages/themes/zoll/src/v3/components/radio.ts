@@ -14,12 +14,12 @@ export default css`
 		border-width: 2px;
 		border-style: solid;
 	}
-	kol-input:has(input:disabled) input,
-	kol-input:has(input:disabled) label {
+	kol-input.disabled input,
+	kol-input.disabled label {
 		cursor: not-allowed !important;
 		opacity: 0.5;
 	}
-	kol-input:hover:has(input:not(:disabled)) label,
+	kol-input:hover:not(.disabled) label,
 	kol-input:focus-within {
 		text-decoration: underline;
 	}

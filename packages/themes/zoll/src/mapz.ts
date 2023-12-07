@@ -955,10 +955,10 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		.default .icon {
 			margin-left: 0.25rem;
 		}
-		.default:has(input[type='checkbox']:checked) .icon {
+		.default.checked .icon {
 			color: #fff;
 		}
-		.default:has(input[type='checkbox']:indeterminate) .icon {
+		.default.indeterminate .icon {
 			color: var(--kolibri-color-normal);
 		}
 		.switch input[type='checkbox'] {
@@ -996,7 +996,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 			transform: translateX(0.75em);
 			background-color: var(--kolibri-color-primary);
 		}
-		.switch:has(input:not(:checked), input:indeterminate) .icon {
+		.switch:is(.checked, .indeterminate) .icon {
 			color: #fff;
 		}
 		.disabled {

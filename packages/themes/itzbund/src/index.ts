@@ -1373,7 +1373,6 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			border-color: var(--color-petrol);
 		}
 		.default input[type='checkbox'] {
-			/* border-radius: 0.25em; */
 			height: calc(6 * 2 * var(--spacing));
 			min-width: calc(6 * 2 * var(--spacing));
 			width: calc(6 * 2 * var(--spacing));
@@ -1382,7 +1381,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		.default .icon {
 			margin-left: 0.25rem;
 		}
-		.default:has(input[type='checkbox']:checked) .icon {
+		.default.checked .icon {
 			color: var(--color-weiss);
 		}
 
@@ -1407,20 +1406,14 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			position: absolute;
 		}
 		.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(1.5em);
-			-moz-transform: translateX(1.5em);
-			-ms-transform: translateX(1.5em);
 			transform: translateX(1.5em);
 			background-color: white;
 		}
 		.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(0.75em);
-			-moz-transform: translateX(0.75em);
-			-ms-transform: translateX(0.75em);
 			transform: translateX(0.75em);
 			background-color: var(--color-petrol);
 		}
-		.switch:has(input:not(:checked), input:indeterminate) .icon {
+		.switch:is(:not(.checked), .indeterminate) .icon {
 			color: #fff;
 		}
 		.disabled {

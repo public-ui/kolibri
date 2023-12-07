@@ -15,7 +15,7 @@
 			position: absolute;
 			z-index: 1;
 		}
-		&:has(.checkbox-input-element:not(:checked):not(:indeterminate)) .icon::part(icon) {
+		&:not(.checked):not(.indeterminate) .icon::part(icon) {
 			display: none;
 		}
 

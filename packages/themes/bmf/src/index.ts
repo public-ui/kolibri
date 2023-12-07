@@ -1886,16 +1886,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 				font-weight: 900;
 			}
 
-			&:has(input:checked) .icon {
-				&::part(icon)::before {
-					content: '\\f00c';
-				}
+			&.checked .icon::part(icon)::before {
+				content: '\\f00c';
 			}
 
-			&:has(input:indeterminate) .icon {
-				&::part(icon)::before {
-					content: '\\f068';
-				}
+			&.indeterminate .icon::part(icon)::before {
+				content: '\\f068';
 			}
 		}
 		:host kol-input.switch input[type='checkbox'] {
@@ -1947,13 +1943,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 					content: '\\2b';
 				}
 			}
-			&:has(input:checked) .icon {
+			&.checked .icon {
 				transform: translate(2em, -50%);
 				&::part(icon)::before {
 					content: '\\f00c';
 				}
 			}
-			&:has(input:indeterminate) .icon {
+			&.indeterminate .icon {
 				transform: translate(1em, -50%);
 				&::part(icon)::before {
 					content: '\\f068';

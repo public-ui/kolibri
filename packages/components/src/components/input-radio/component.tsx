@@ -85,7 +85,10 @@ export class KolInputRadio implements API {
 						const slotName = `radio-${index}`;
 						return (
 							<kol-input
-								class="radio"
+								class={{
+									radio: true,
+									disabled: Boolean(this.state._disabled || option.disabled),
+								}}
 								key={customId}
 								_accessKey={this.state._accessKey} // by radio?!
 								_disabled={this.state._disabled || option.disabled}

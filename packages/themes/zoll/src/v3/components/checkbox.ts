@@ -136,8 +136,8 @@ export default css`
 			font-weight: 700;
 		}
 	}
-	.switch:has(input[type='checkbox']:not(:checked, :indeterminate)) .icon {
-		opacity: 0; /* Avoid display: none because it breaks the transform-animation */
+	.switch:not(.checked, .indeterminate) .icon {
+		opacity: 0; /* Avoid display: none because it breaks the 'transform' animation */
 	}
 
 	/* BUTTON */

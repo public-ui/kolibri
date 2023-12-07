@@ -20,7 +20,7 @@
 			grid-template-columns: calc(13 * var(--spacing)) auto;
 		}
 
-		&:has(input:focus) {
+		&:focus-within {
 			outline: 2px solid var(--color-blue);
 			outline-offset: 2px;
 		}
@@ -87,21 +87,20 @@
 				border-color: var(--color-disabled-gray);
 				background-color: var(--color-secondary-40);
 			}
-
-			&:enabled:hover {
-				outline: 1px solid var(--color-primary); /* Increase visual border-width without shifting contents */
-			}
-			&:enabled:hover:is(:checked, :indeterminate) {
-				background: var(--color-white);
-				outline-color: var(--color-primary-60);
-				border-color: var(--color-primary-60);
-			}
+		}
+		&:not(.disabled):hover .checkbox-input-element {
+			outline: 1px solid var(--color-primary); /* Increase visual border-width without shifting contents */
+		}
+		&:not(.disabled):hover:is(.checked, .indeterminate) .checkbox-input-element {
+			background: var(--color-white);
+			outline-color: var(--color-primary-60);
+			border-color: var(--color-primary-60);
 		}
 
 		.icon {
 			margin-left: rem(4); // visually align
 		}
-		&:has(.checkbox-input-element:indeterminate) .icon::part(icon) {
+		&.indeterminate .icon::part(icon) {
 			transform: translateY(rem(-3)); // visually align
 
 			&::before {
@@ -109,13 +108,13 @@
 				font-family: var(--font-family);
 			}
 		}
-		&:has(.checkbox-input-element:is(:checked, :indeterminate)) .icon {
+		&:is(.checked, .indeterminate) .icon {
 			color: var(--color-white);
 		}
-		&:has(.checkbox-input-element:is(:checked, :indeterminate):enabled:hover) .icon {
+		&:is(.checked, .indeterminate):not(.disabled):hover .icon {
 			color: var(--color-primary-60);
 		}
-		&:has(.checkbox-input-element:is(:checked, :indeterminate):disabled) .icon {
+		&:is(.checked, .indeterminate).disabled .icon {
 			color: var(--color-disabled-gray);
 		}
 	}

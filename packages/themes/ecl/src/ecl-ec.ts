@@ -648,7 +648,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		.default .icon {
 			margin-left: 0.2rem;
 		}
-		.default:has(input[type='checkbox']:checked) .icon {
+		.default.checked .icon {
 			color: var(--color-white);
 		}
 

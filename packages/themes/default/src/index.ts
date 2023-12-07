@@ -1721,11 +1721,11 @@ export const DEFAULT = KoliBri.createTheme('default', {
 				left: 2px;
 			}
 
-			&:has(input:checked) .icon {
+			&.checked .icon {
 				transform: translate(2em, -50%);
 			}
 
-			&:has(input:indeterminate) .icon {
+			&.indeterminate .icon {
 				transform: translate(1em, -50%);
 			}
 		}
