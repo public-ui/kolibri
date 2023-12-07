@@ -659,6 +659,12 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.hint {
 		font-size: 0.875rem;
 		order: 4;
+	}
+	.button:focus-within {
+		outline-color: var(--color-blue);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 2px;
 	}`,
 	'KOL-INPUT-COLOR': `kol-input {
 		color: var(--color-grey);

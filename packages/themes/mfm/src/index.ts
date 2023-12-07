@@ -1859,6 +1859,13 @@ export const MFM = KoliBri.createTheme('mfm', {
 		}
 		:host .disabled {
 			opacity: 0.33;
+		}
+		.button:focus-within {
+			border-radius: 0.25rem;
+			outline-color: var(--color-ocean);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
 		}`,
 	'KOL-INPUT-RADIO': `/* INPUT */
 		kol-input {

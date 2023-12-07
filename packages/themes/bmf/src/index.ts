@@ -92,7 +92,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	kol-tooltip-wc .tooltip-area {
 		background-color: var(--color-white);
-		color: var(--color-metal);
+		color: var(--color-black);
 	}
 	kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
@@ -103,7 +103,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 	kol-span-wc > span {
 		gap: 0.5em;
 	}`,
-	'KOL-BUTTON': `:is(a, button):focus {
+	'KOL-BUTTON': `:is(a, button) {
+		font-size: 1.125em;
+	}
+	:is(a, button):focus {
 		outline: none;
 	}
 	:is(a, button):focus kol-span-wc {
@@ -149,6 +152,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-color: var(--color-red);
 		color: var(--color-white);
 	}
+	.success :is(a, button) > kol-span-wc,
+	.success :is(a, button):disabled:hover > kol-span-wc {
+		background-color: var(--color-green);
+		border-color: var(--color-green);
+		color: var(--color-white);
+	}
 	.ghost :is(a, button) > kol-span-wc,
 	.ghost :is(a, button):disabled:hover > kol-span-wc {
 		border-color: var(--color-white);
@@ -164,6 +173,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.normal :is(a, button):hover > kol-span-wc,
 	.danger :is(a, button):active > kol-span-wc,
 	.danger :is(a, button):hover > kol-span-wc,
+	.success :is(a, button):active > kol-span-wc,
+	.success :is(a, button):hover > kol-span-wc,
 	.ghost :is(a, button):active > kol-span-wc,
 	.ghost :is(a, button):hover > kol-span-wc {
 		background-color: var(--color-ocean);
@@ -184,6 +195,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.secondary :is(a, button):active > kol-span-wc,
 	.normal :is(a, button):active > kol-span-wc,
 	.danger :is(a, button):active > kol-span-wc,
+	.success :is(a, button):active > kol-span-wc,
 	.ghost :is(a, button):active > kol-span-wc {
 		border-color: var(--color-white);
 		box-shadow: none;
@@ -209,6 +221,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:is(a, button).transparent > kol-span-wc {
 		background-color: transparent;
 		border-color: transparent;
+	}
+	/** CUSTOM_CLASS */
+	:is(a, button).icon-only > kol-span-wc {
+		padding: 8px;
+		width: unset;
+	}
+	:is(a, button).icon-only > kol-span-wc > span > span {
+		display: block;
 	}`,
 	'KOL-INPUT-TEXT': `kol-input {
 		gap: 0.25em;
@@ -269,7 +289,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -346,7 +366,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -423,7 +443,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -500,7 +520,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -578,7 +598,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -662,7 +682,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -752,7 +772,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -1359,7 +1379,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -1462,7 +1482,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -1816,7 +1836,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		padding-top: 0.25em;
 		grid-column: span 2 / auto;
 	}
-	:host kol-input.error {
+	:host kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -2017,6 +2037,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	:host kol-input.button .icon {
 		height: auto;
+	}
+	.button:focus-within {
+		border-radius: var(--a11y-min-size);
+		outline-color: var(--color-ocean);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
 	}`,
 	'KOL-INPUT-RADIO': `/* INPUT */
 	kol-input {
@@ -2415,7 +2442,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	kol-input.error {
+	kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
@@ -2434,7 +2461,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-color: var(--color-granite);
 		color: var(--color-black);
 	}`,
-	'KOL-LINK-BUTTON': `:is(a, button):focus {
+	'KOL-LINK-BUTTON': `:is(a, button) {
+		font-size: 1.125em;
+	}
+	:is(a, button):focus {
 		outline: none;
 	}
 	:is(a, button):focus kol-span-wc {
