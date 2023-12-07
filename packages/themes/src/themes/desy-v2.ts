@@ -2639,7 +2639,8 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 	}`,
 	'KOL-TOAST-CONTAINER': `:host {
 		top: 1rem;
-		width: 750px;
+		max-width: 750px;
+		width:100%;
 		left: 50%;
 		transform: translateX(-50%);
 	}
