@@ -24,6 +24,13 @@ hr {
 	grid-template-columns: auto auto;
 }
 
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 100vm;
+}
+
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
