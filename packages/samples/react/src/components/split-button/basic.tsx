@@ -10,9 +10,6 @@ export const SplitButtonBasic: FC = () => {
 			<KolSplitButton _label="ohne label" _hide-label _icons="codicon codicon-git-pull-request">
 				Drowndown-Inhalt
 			</KolSplitButton>
-			<KolSplitButton _label="schon offen" _show>
-				Dropdown initial sichtbar
-			</KolSplitButton>
 		</div>
 	);
 };

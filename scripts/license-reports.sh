@@ -5,14 +5,15 @@ npx license-report --output=html --package=packages/adapters/angular/v13/package
 npx license-report --output=html --package=packages/adapters/angular/v14/package.json >> license-reports/adapter-angular-v14.html
 npx license-report --output=html --package=packages/adapters/angular/v15/package.json >> license-reports/adapter-angular-v15.html
 npx license-report --output=html --package=packages/adapters/angular/v16/package.json >> license-reports/adapter-angular-v15.html
+npx license-report --output=html --package=packages/adapters/angular/v17/package.json >> license-reports/adapter-angular-v15.html
 npx license-report --output=html --package=packages/adapters/hydrate/package.json >> license-reports/adapter-hydrate.html
 npx license-report --output=html --package=packages/adapters/preact/package.json >> license-reports/adapter-preact.html
 npx license-report --output=html --package=packages/adapters/react/package.json >> license-reports/adapter-react.html
 npx license-report --output=html --package=packages/adapters/solid/package.json >> license-reports/adapter-solid.html
 npx license-report --output=html --package=packages/adapters/vue/package.json >> license-reports/adapter-vue.html
-npx license-report --output=html --package=packages/core/package.json >> license-reports/core.html
 npx license-report --output=html --package=packages/library/package.json >> license-reports/library.html
 npx license-report --output=html --package=packages/schema/package.json >> license-reports/schema.html
 npx license-report --output=html --package=packages/themes/package.json >> license-reports/themes.html
+npx license-report --output=html --package=packages/theme-default/package.json >> license-reports/theme-default.html
 npx license-report --output=html --package=packages/tools/kolibri-cli/package.json >> license-reports/themes.html
 npx license-report --output=html --package=packages/tools/visual-tests/package.json >> license-reports/themes.html

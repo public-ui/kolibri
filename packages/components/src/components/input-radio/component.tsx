@@ -1,7 +1,7 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
-import { InputTypeOnDefault, Option } from '../../types/input/types';
+import { InputTypeOnDefault } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { HideErrorPropType } from '../../types/props/hide-error';
 import { IdPropType } from '../../types/props/id';
@@ -18,6 +18,7 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { API, States } from './types';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -31,12 +32,17 @@ import { API, States } from './types';
 })
 export class KolInputRadio implements API {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
-	private ref?: HTMLInputElement;
+	private currentValue?: W3CInputValue;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propagateFocus(this.host, ref);
 	};
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Method()
+	public async getValue(): Promise<W3CInputValue | undefined> {
+		return this.currentValue;
+	}
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
@@ -46,6 +52,7 @@ export class KolInputRadio implements API {
 			<Host>
 				<fieldset
 					class={{
+						fieldset: true,
 						disabled: this.state._disabled === true,
 						error: hasError === true,
 						required: this.state._required === true,
@@ -57,8 +64,15 @@ export class KolInputRadio implements API {
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}
-							{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-							<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+							<span slot="label">
+								{hasExpertSlot ? (
+									<slot name="expert"></slot>
+								) : typeof this._accessKey === 'string' ? (
+									<InternalUnderlinedAccessKey accessKey={this._accessKey} label={this._label} />
+								) : (
+									this._label
+								)}
+							</span>
 						</span>
 					</legend>
 					{this.state._options.map((option, index) => {
@@ -73,6 +87,7 @@ export class KolInputRadio implements API {
 							<kol-input
 								class="radio"
 								key={customId}
+								_accessKey={this.state._accessKey} // by radio?!
 								_disabled={this.state._disabled || option.disabled}
 								_hideLabel={this.state._hideLabel}
 								_hint={this.state._hint}
@@ -114,7 +129,7 @@ export class KolInputRadio implements API {
 										}}
 									>
 										<span>
-											<span>{option.label}</span>
+											<span class="radio-label-span-inner">{option.label}</span>
 										</span>
 									</label>
 								</div>
@@ -122,7 +137,7 @@ export class KolInputRadio implements API {
 						);
 					})}
 					{hasError && (
-						<kol-alert id="error" _alert={true} _type="error" _variant="msg" aria-hidden={this._hideError} class={`error${this._hideError ? ' hidden' : ''}`}>
+						<kol-alert id="error" _alert={true} _type="error" class={`error${this._hideError ? ' hidden' : ''}`}>
 							{this.state._error}
 						</kol-alert>
 					)}
@@ -180,13 +195,7 @@ export class KolInputRadio implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
-	@Prop() public _label?: LabelWithExpertSlotPropType;
-
-	/**
-	 * Deprecated: Gibt die Liste der Optionen für das Eingabefeld an.
-	 * @deprecated Use _options.
-	 */
-	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -299,11 +308,6 @@ export class KolInputRadio implements API {
 		this.controller.validateLabel(value);
 	}
 
-	@Watch('_list')
-	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
-		this.validateOptions(value);
-	}
-
 	@Watch('_name')
 	public validateName(value?: string): void {
 		this.controller.validateName(value);
@@ -352,6 +356,7 @@ export class KolInputRadio implements API {
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
+		this.currentValue = this._value;
 		this.controller.componentWillLoad(this.onChange);
 	}
 
@@ -373,6 +378,8 @@ export class KolInputRadio implements API {
 
 				// TODO: Prüfen, was setValue noch genau macht, wir syncValue ja jetzt.
 				this.controller.setValue(event, option.value as string); // TODO: fix type
+
+				this.currentValue = option.value;
 			}
 		}
 	};

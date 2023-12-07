@@ -3,9 +3,10 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { Props } from './types';
+import { HeadingVariantPropType } from '../../types/props/heading-variant';
 
 /**
- * @slot - Inhalt der Überschrift.
+ * @slot headline - Content of the headline.
  */
 @Component({
 	tag: 'kol-heading',
@@ -17,8 +18,8 @@ import { Props } from './types';
 export class KolHeading implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-heading-wc _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline}>
-				<slot />
+			<kol-heading-wc _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline} _variant={this._variant}>
+				<slot name="expert" slot="expert" />
 			</kol-heading-wc>
 		);
 	}
@@ -37,4 +38,9 @@ export class KolHeading implements Props {
 	 * Defines the text of the secondary headline.
 	 */
 	@Prop() public _secondaryHeadline?: string;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: HeadingVariantPropType;
 }

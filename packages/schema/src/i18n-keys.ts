@@ -21,8 +21,6 @@ export enum KeyEnum {
 	'page-current',
 	'page-selected',
 	'page-per-site',
-	'nav-maximize',
-	'nav-minimize',
 	'logo-description',
 	'open-link-in-tab',
 	'kolibri-logo',

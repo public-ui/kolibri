@@ -1,9 +1,11 @@
+export { setCurrentLocation } from './components/link/ariaCurrentService';
 export * from './components.d';
 export { register } from './core';
 export * from './enums/bund';
 export { translations } from './i18n';
 export * from './kolibri';
-export { ToasterService } from './components/toast/toaster';
+export { ToasterService } from './components/toaster/toaster';
+export type { Toast, ToasterOptions } from './components/toaster/types';
 export { Optgroup, Option, SelectOption } from './types/input/types';
 export { configKoliBri } from './utils/dev.utils';
 export { KoliBriDevHelper } from './utils/prop.validators';

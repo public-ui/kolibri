@@ -1,0 +1,5 @@
+{
+  "html.customData": [
+    "./node_modules/@public-ui/components/vscode-custom-data.json"
+  ]
+}

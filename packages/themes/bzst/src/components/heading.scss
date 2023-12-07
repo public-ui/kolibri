@@ -1,0 +1,46 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	.headline {
+		margin-top: 0;
+		letter-spacing: 0.5;
+	}
+
+	h1 {
+		font-size: rem(40);
+		line-height: rem(45);
+		font-weight: normal;
+	}
+
+	h2 {
+		font-size: rem(32);
+		line-height: rem(37);
+		font-weight: normal;
+	}
+
+	h3 {
+		font-size: rem(21);
+		line-height: rem(27);
+		font-weight: bold;
+	}
+
+	h4 {
+		font-size: rem(18);
+		line-height: rem(27);
+		font-weight: bold;
+	}
+
+	h5 {
+		color: red;
+		&:after {
+			content: ' (H5 is not part of the design system.)';
+		}
+	}
+
+	h6 {
+		color: red;
+		&:after {
+			content: ' (H6 is not part of the design system.)';
+		}
+	}
+}

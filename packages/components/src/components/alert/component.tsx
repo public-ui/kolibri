@@ -7,10 +7,10 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { Log } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
-import { AlertType, AlertVariant, API, KoliBriAlertEventCallbacks, States } from './types';
+import { AlertType, alertTypeOptions, AlertVariant, alertVariantOptions, API, KoliBriAlertEventCallbacks, States } from './types';
 
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return <kol-icon class="heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
+	return <kol-icon class="heading-icon" _label={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
 };
 
 const AlertIcon = (props: { label?: string; type?: AlertType }) => {
@@ -66,6 +66,7 @@ export class KolAlertWc implements API {
 		return (
 			<Host
 				class={{
+					alert: true,
 					[this.state._type as string]: true,
 					[this.state._variant as string]: true,
 					hasCloser: !!this.state._hasCloser,
@@ -74,7 +75,7 @@ export class KolAlertWc implements API {
 			>
 				<div class="heading">
 					<AlertIcon label={this.state._label} type={this.state._type} />
-					<div>
+					<div class="heading-content">
 						{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
 							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
 						)}
@@ -200,15 +201,21 @@ export class KolAlertWc implements API {
 		watchValidator(
 			this,
 			'_type',
-			(value) => typeof value === 'string' && (value === 'default' || value === 'error' || value === 'info' || value === 'success' || value === 'warning'),
-			new Set('String {success, info, warning, error}'),
+			(value?) => typeof value === 'string' && alertTypeOptions.includes(value),
+			new Set(`String {${alertTypeOptions.join(', ')}`),
 			value
 		);
 	}
 
 	@Watch('_variant')
 	public validateVariant(value?: AlertVariant): void {
-		watchValidator(this, '_variant', (value) => value === 'card' || value === 'msg', new Set('AlertVariant {card, msg}'), value);
+		watchValidator(
+			this,
+			'_variant',
+			(value?) => typeof value === 'string' && alertVariantOptions.includes(value),
+			new Set(`AlertVariant {${alertVariantOptions.join(', ')}`),
+			value
+		);
 	}
 
 	public componentWillLoad(): void {

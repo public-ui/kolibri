@@ -41,3 +41,5 @@ Thumbs.db
 /public/assets/
 
 !itzbund-interne-kolibri-themes-0.0.0.tgz
+
+.kolibri.migrate.json

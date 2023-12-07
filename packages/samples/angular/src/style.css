@@ -1,0 +1,127 @@
+*,
+::before,
+::after {
+	--un-rotate: 0;
+	--un-rotate-x: 0;
+	--un-rotate-y: 0;
+	--un-rotate-z: 0;
+	--un-scale-x: 1;
+	--un-scale-y: 1;
+	--un-scale-z: 1;
+	--un-skew-x: 0;
+	--un-skew-y: 0;
+	--un-translate-x: 0;
+	--un-translate-y: 0;
+	--un-translate-z: 0;
+	--un-ring-offset-shadow: 0 0 rgba(0, 0, 0, 0);
+	--un-ring-shadow: 0 0 rgba(0, 0, 0, 0);
+	--un-shadow-inset: ;
+	--un-shadow: 0 0 rgba(0, 0, 0, 0);
+	--un-ring-inset: ;
+	--un-ring-offset-width: 0px;
+	--un-ring-offset-color: #fff;
+	--un-ring-width: 0px;
+	--un-ring-color: rgba(147, 197, 253, 0.5);
+}
+::backdrop {
+	--un-rotate: 0;
+	--un-rotate-x: 0;
+	--un-rotate-y: 0;
+	--un-rotate-z: 0;
+	--un-scale-x: 1;
+	--un-scale-y: 1;
+	--un-scale-z: 1;
+	--un-skew-x: 0;
+	--un-skew-y: 0;
+	--un-translate-x: 0;
+	--un-translate-y: 0;
+	--un-translate-z: 0;
+	--un-ring-offset-shadow: 0 0 rgba(0, 0, 0, 0);
+	--un-ring-shadow: 0 0 rgba(0, 0, 0, 0);
+	--un-shadow-inset: ;
+	--un-shadow: 0 0 rgba(0, 0, 0, 0);
+	--un-ring-inset: ;
+	--un-ring-offset-width: 0px;
+	--un-ring-offset-color: #fff;
+	--un-ring-width: 0px;
+	--un-ring-color: rgba(147, 197, 253, 0.5);
+}
+.p-12 {
+	padding: 3rem;
+}
+.m-auto {
+	margin: auto;
+}
+.mx-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+.my-10 {
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+}
+.block {
+	display: block;
+}
+.text-2xl {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+.text-center {
+	text-align: center;
+}
+.grid {
+	display: grid;
+}
+.grid-cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.gap-6 {
+	grid-gap: 1.5rem;
+	gap: 1.5rem;
+}
+.h-10 {
+	height: 2.5rem;
+}
+.h-24 {
+	height: 6rem;
+}
+.h-25 {
+	height: 6.25rem;
+}
+.h-30 {
+	height: 7.5rem;
+}
+.max-w-800px {
+	max-width: 800px;
+}
+.w-40 {
+	width: 10rem;
+}
+.items-center {
+	align-items: center;
+}
+@media (min-width: 768px) {
+	.md\:grid-cols-2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+* {
+	font-family: var(--font-family-sans);
+}
+
+p {
+	margin: 0;
+}
+
+kol-kolibri {
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+}
+
+kol-link::after,
+kol-link::before {
+	content: ' ';
+}

@@ -1,0 +1,10 @@
+@import '../mixins/input';
+@import '../functions';
+
+@layer kol-theme-component {
+	@include input;
+
+	input {
+		padding-top: rem(10); // visually align within container
+	}
+}

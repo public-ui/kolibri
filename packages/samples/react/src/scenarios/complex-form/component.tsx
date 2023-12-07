@@ -19,8 +19,8 @@ type Zeiten = {
 export const TerminComponent: FC = () => (
 	<>
 		<div className="grid sm:grid-cols-1 gap-2 my-3">
-			<KolHeading>Terminreservierung</KolHeading>
-			<KolHeading _level={2}>Termine für Einwohnermelde- (incl. Pass- und Ausweisangelegenheiten) und Kraftfahrzeugangelegenheiten</KolHeading>
+			<KolHeading _label="Terminreservierung" />
+			<KolHeading _label="Termine für Einwohnermelde- (incl. Pass- und Ausweisangelegenheiten) und Kraftfahrzeugangelegenheiten" _level={2} />
 			<div style={{ fontFamily: 'Arial' }}>
 				<p className="py-2">Derzeit kann generell nur mit vorheriger Terminvereinbarung bei den Bürgerdiensten vorgesprochen werden.</p>
 				<p className="py-2">
@@ -40,48 +40,48 @@ export const TerminComponent: FC = () => (
 		</div>
 		<div className="grid sm:grid-cols-1 gap-2">
 			<KolTable
-				_caption="Öffnungszeiten"
+				_label="Öffnungszeiten"
 				_data={
 					[
 						{
 							stadtteil: 'Brackel',
-							montag: '08:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '08:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '08:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '08:00 - 12:00<br/>14:00 - 18:00',
+							montag: '08:00 - 12:00, 14:00 - 16:00',
+							dienstag: '08:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '08:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '08:00 - 12:00, 14:00 - 18:00',
 							freitag: '08:00 - 12:00',
 						},
 						{
 							stadtteil: 'Dorstfeld',
-							montag: '09:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '09:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '09:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '09:00 - 12:00<br/>14:00 - 18:00',
+							montag: '09:00 - 12:00, 14:00 - 16:00',
+							dienstag: '09:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '09:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '09:00 - 12:00, 14:00 - 18:00',
 							freitag: '09:00 - 12:00',
 						},
 						{
 							stadtteil: 'Aplerbeck',
-							montag: '08:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '08:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '08:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '08:00 - 12:00<br/>14:00 - 18:00',
+							montag: '08:00 - 12:00, 14:00 - 16:00',
+							dienstag: '08:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '08:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '08:00 - 12:00, 14:00 - 18:00',
 							freitag: '08:00 - 12:00',
 						},
 						{
 							stadtteil: 'Innenstadt Ost',
-							montag: '07:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '07:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '07:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '07:00 - 12:00<br/>14:00 - 18:00',
-							freitag: '07:00 - 12:00<br/>13:00 - 16:00',
+							montag: '07:00 - 12:00, 14:00 - 16:00',
+							dienstag: '07:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '07:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '07:00 - 12:00, 14:00 - 18:00',
+							freitag: '07:00 - 12:00, 13:00 - 16:00',
 						},
 						{
 							stadtteil: 'Innenstadt West',
-							montag: '07:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '07:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '07:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '07:00 - 12:00<br/>14:00 - 18:00',
-							freitag: '07:00 - 12:00<br/>13:00 - 16:00',
+							montag: '07:00 - 12:00, 14:00 - 16:00',
+							dienstag: '07:00 - 12:00, 14:00 - 15:00',
+							mittwoch: '07:00 - 12:00, 14:00 - 15:00',
+							donnerstag: '07:00 - 12:00, 14:00 - 18:00',
+							freitag: '07:00 - 12:00, 13:00 - 16:00',
 							/*render: (el, data) => {
 						el.innerHTML = `<kol-badge _color="#ff0000" _label="NIX"></kol-badge>`;
 					  },*/
@@ -141,22 +141,22 @@ export const TerminComponent: FC = () => (
 				]}
 			>
 				<div>
-					<KolHeading _level={2}>Wählen Sie einen Stadtteil aus</KolHeading>
+					<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus" />
 					<TerminLocationComponent onSubmitted={() => {}} />
 				</div>
 				<div>
-					<KolHeading _level={2}>Wählen Sie einen Termin aus</KolHeading>
+					<KolHeading _level={2} _label="Wählen Sie einen Termin aus" />
 					<TerminScheduleComponent onSubmitted={() => {}} />
 				</div>
 				<div>
-					<KolHeading _level={2}>Geben Sie Ihre Kontaktdaten ein</KolHeading>
+					<KolHeading _level={2} _label="Geben Sie Ihre Kontaktdaten ein" />
 					<TerminKopfdatenComponent onSubmitted={() => {}} />
 				</div>
 			</KolTabs>
 		</div>
 		<div className="grid sm:grid-cols-1 gap-2">
 			<div className="border-top"></div>
-			<KolHeading _level={3}>Fortschritt</KolHeading>
+			<KolHeading _level={3} _label="Fortschritt" />
 			<KolProgress _value={0} _max={100} _unit="Prozent des Formulars"></KolProgress>
 		</div>
 	</>

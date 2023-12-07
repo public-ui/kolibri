@@ -1,0 +1,23 @@
+@import '../functions';
+
+@mixin link($element-selector) {
+	#{$element-selector} {
+		color: var(--color-primary);
+		text-decoration-thickness: 1px; // Override component styles
+		text-decoration: none;
+
+		&:not(:disabled):hover,
+		&:focus {
+			text-decoration: underline;
+		}
+
+		&:focus-within {
+			outline: 2px solid var(--color-blue);
+			outline-offset: 2px;
+		}
+	}
+
+	.external-link-icon {
+		margin-left: rem(4);
+	}
+}

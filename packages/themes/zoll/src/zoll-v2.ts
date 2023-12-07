@@ -1,9 +1,5 @@
 import { KoliBri } from '@public-ui/schema';
-
-/**
- * No-op tag function to help with CSS syntax highlighting and provide Prettier support
- */
-const css = (input: TemplateStringsArray): string => input.join(``);
+import { css } from './cssTag';
 
 // Design System Zoll (v2)
 export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
@@ -30,7 +26,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			--color-grau-80: hsl(0 0% 20%);
 			--color-grau-70: hsl(0 0% 30%);
 			--color-grau-60: hsl(0 0% 40%);
-			--color-grau-50: hsl(0 0% 50%);
+			--color-grau-50: #8b8b8b;
 			--color-grau-40: hsl(0 0% 60%);
 			--color-grau-30: hsl(0 0% 70%);
 			--color-grau-20: hsl(0 0% 80%);
@@ -127,39 +123,39 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			font-weight: var(--font-weight-bold);
 			margin: 0;
 			padding: 1rem 0;
 			text-align: left;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 2.5rem;
 			line-height: 1.2;
 			padding: 0 0 1rem 0;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 2rem;
 			line-height: 1.25;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.75rem;
 			line-height: 1.29;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.5rem;
 			line-height: 1.33;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1.25rem;
 			line-height: 1.4;
 		}
-		h6 {
+		.headline-h6 {
 			font-size: 1rem;
 			line-height: 1.5;
 		}
@@ -251,67 +247,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 	`,
 	'KOL-SPIN': css`
-		.spin {
-			display: inline-block;
-			height: 1rem;
-			position: relative;
-			width: 3rem;
-		}
-		.spin span {
-			animation-timing-function: cubic-bezier(0, 1, 1, 0);
-			border: 0.1rem solid rgb(255, 255, 255);
-			border-radius: 50%;
-			height: 0.8rem;
-			width: 0.8rem;
-			top: 0.1rem;
-			position: absolute;
-		}
-		.spin span:nth-child(1) {
-			background-color: #fc0;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin1;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(2) {
-			background-color: #f00;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 0.1rem;
-		}
-		.spin span:nth-child(3) {
-			background-color: #000;
-			z-index: 1;
-			animation: 2s ease 0s infinite normal none running spin2;
-			left: 1.1rem;
-		}
-		.spin span:nth-child(4) {
-			background-color: #666;
-			z-index: 0;
-			animation: 2s ease 0s infinite normal none running spin3;
-			left: 2.1rem;
-		}
-		@keyframes spin1 {
-			0% {
-				transform: scale(0);
-			}
-			100% {
-				transform: scale(1);
-			}
-		}
-		@keyframes spin2 {
-			0% {
-				transform: translate(0px, 0px);
-			}
-			100% {
-				transform: translate(1rem, 0px);
-			}
-		}
-		@keyframes spin3 {
-			0% {
-				transform: scale(1);
-			}
-			100% {
-				transform: scale(0);
+		.cycle {
+			padding: 0.125rem;
+			& span {
+				background-color: #fc0;
 			}
 		}
 	`,
@@ -773,27 +712,41 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 	`,
 	'KOL-PAGINATION': css`
-		:host {
-			display: grid;
-			gap: 1rem;
+		.button {
+			border-radius: var(--border-radius);
+			transition: outline-offset 0.2s linear;
+			&:not(:disabled):hover,
+			&:focus {
+				outline-offset: 0.125rem;
+				outline: 0.125rem solid var(--color-blau-dark);
+			}
 		}
-		:host .navigation-list {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 0.5em;
+		.button-inner {
+			background-color: var(--color-blau);
+			border-radius: var(--border-radius);
+			border: 2px solid var(--color-blau);
+			color: white;
+			line-height: 1rem;
+			&.hide-label {
+				padding: 0.75rem;
+			}
+			&:not(.hide-label) {
+				padding: 0.75rem 1rem;
+			}
 		}
-		:host .selected button > kol-span-wc {
+		.button:not(:disabled):hover .button-inner,
+		.button:focus .button-inner {
+			background-color: var(--color-blau-dark);
+		}
+		.button:disabled .button-inner {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+		.selected .button-inner {
 			background-color: var(--color-akzent);
 			border-color: var(--color-akzent-dark);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 2px;
-			color: white;
-			cursor: not-allowed;
+			opacity: 1 !important;
 			font-weight: 700;
-			line-height: 1rem;
-			padding: 0.75rem 1rem;
 			text-decoration: underline;
 		}
 	`,
@@ -804,8 +757,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			left: 50%;
 			transform: translateX(-50%);
 		}
-	`,
-	'KOL-TOAST': css`
 		.toast {
 			background: #fff;
 			margin-top: 1rem;
@@ -979,6 +930,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 		.disabled {
 			opacity: 0.33;
+		}
+		.button:focus-within {
+			border-radius: var(--border-radius);
+			outline-color: var(--color-blau-dark);
+			outline-offset: 0.125rem;
+			outline-style: solid;
+			outline-width: 0.125rem;
 		}
 	`,
 	'KOL-INPUT-RADIO': css`
@@ -1560,6 +1518,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 		.expanded > div > .expand-button kol-icon::part(icon)::before {
 			content: '\\eab4';
+		}
+		.vertical li.active {
+			border-right: 0.375em solid var(--color-akzent);
 		}
 	`,
 	'KOL-TABS': css`

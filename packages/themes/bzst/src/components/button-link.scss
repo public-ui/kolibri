@@ -1,0 +1,11 @@
+@import '../functions';
+@import '../mixins/link';
+
+@layer kol-theme-component {
+	@include link('button');
+
+	button:disabled {
+		color: var(--color-disabled-gray);
+		cursor: not-allowed;
+	}
+}

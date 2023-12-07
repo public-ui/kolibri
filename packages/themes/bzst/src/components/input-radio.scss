@@ -1,0 +1,69 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	kol-input:has(input:focus) {
+		outline: 2px solid var(--color-blue);
+		outline-offset: 2px;
+	}
+
+	.radio-input-wrapper {
+		align-items: center;
+		display: flex;
+		min-height: var(--a11y-min-size);
+	}
+
+	.fieldset.horizontal {
+		display: flex;
+		flex-wrap: wrap;
+		gap: rem(4) rem(12);
+	}
+
+	.error {
+		width: 100%;
+	}
+
+	input {
+		border-width: 1px;
+		opacity: 1; // Override conflicting component styles
+
+		&:enabled {
+			border-color: var(--color-primary);
+		}
+		&:enabled:hover {
+			border-width: 2px;
+		}
+		&:checked:enabled:hover {
+			border-color: var(--color-primary-60);
+		}
+		&:disabled {
+			border-color: var(--color-disabled-gray);
+			background: var(--color-secondary-40);
+		}
+
+		&:checked:enabled::before {
+			background-color: var(--color-primary);
+		}
+		&:checked:disabled::before {
+			background-color: var(--color-disabled-gray);
+		}
+		&:checked:enabled:hover::before {
+			background-color: var(--color-primary-60);
+		}
+	}
+
+	.radio-label {
+		font-size: rem(18);
+		font-weight: bold;
+		padding-left: rem(12);
+		opacity: 1; // Override conflicting component styles
+
+		.disabled & {
+			color: var(--color-disabled-gray);
+		}
+	}
+
+	.required .radio-label-span-inner::after {
+		content: '*';
+		padding-left: 0.125em;
+	}
+}

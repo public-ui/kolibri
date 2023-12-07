@@ -3,16 +3,13 @@ import { Generic } from '@a11y-ui/core';
 import { PropHref } from '../../types/props/href';
 import { PropLabel } from '../../types/props/label';
 
-export type KoliBriQuoteVariant = 'block' | 'inline';
+export const koliBriQuoteVariantOptions = ['block', 'inline'] as const;
+export type KoliBriQuoteVariant = (typeof koliBriQuoteVariantOptions)[number];
 
 type RequiredProps = {
 	quote: string;
 } & PropHref; // URL to the source of the quote (cite)
 type OptionalProps = {
-	/**
-	 * @deprecated use label.
-	 */
-	caption: string;
 	variant: KoliBriQuoteVariant;
 } & PropLabel;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

@@ -11,6 +11,7 @@ const getState = (props: Props): States =>
 	mixMembers<Props, States>(
 		{
 			_icons: 'codicon codicon-home',
+			_label: '',
 		},
 		props
 	);

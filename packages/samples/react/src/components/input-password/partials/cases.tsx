@@ -13,6 +13,7 @@ export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, Compon
 			<KolInputPassword
 				{...props}
 				ref={ref}
+				_accessKey="P"
 				_required
 				_error={ERROR_MSG}
 				_placeholder="Mit Icons"

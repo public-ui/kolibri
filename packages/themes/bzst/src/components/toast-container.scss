@@ -1,0 +1,14 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	:host {
+		top: rem(70);
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.toast {
+		background: #fff;
+		margin-top: rem(12);
+	}
+}

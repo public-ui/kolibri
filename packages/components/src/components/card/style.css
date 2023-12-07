@@ -1,10 +1,13 @@
 @import url(../style.css);
-:host > div.card {
-	height: 100%;
-	position: relative;
-}
-.close {
-	position: absolute;
-	top: 0;
-	right: 0;
+@layer kol-component {
+	:host > div.card {
+		height: 100%;
+		position: relative;
+	}
+
+	.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
 }

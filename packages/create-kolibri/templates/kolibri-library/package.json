@@ -20,13 +20,12 @@
 		"prepare:husky:format": "husky add .husky/pre-push \"pnpm -r format\"",
 		"prepare:husky:lint": "husky add .husky/pre-commit \"pnpm -r lint\"",
 		"prepare:husky:unused": "husky add .husky/pre-push \"pnpm -r unused\"",
-		"reinstall": "pnpm clean:pnpm && pnpm i",
-		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
+		"reinstall": "pnpm clean:pnpm && pnpm i"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "17.7.1",
-		"@commitlint/config-conventional": "17.7.0",
-		"@types/node": "ts5.1",
+		"@commitlint/cli": "18.2.0",
+		"@commitlint/config-conventional": "18.1.0",
+		"@types/node": "ts5.3",
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.6",
 		"husky": "8.0.3",
@@ -40,6 +39,6 @@
 		"rimraf": "3.0.2",
 		"ts-node": "10.9.1",
 		"ts-prune": "0.10.3",
-		"typescript": "5.2.2"
+		"typescript": "5.3.2"
 	}
 }

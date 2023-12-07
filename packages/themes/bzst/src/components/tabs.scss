@@ -1,0 +1,40 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	.tabs-button-group {
+		border-bottom: 1px solid var(--color-primary);
+		gap: rem(32);
+		padding: 0 rem(32);
+	}
+
+	.button {
+		color: var(--color-primary);
+		padding: 0 rem(15);
+		font-family: var(--font-family-serif);
+
+		&.selected {
+			background: var(--color-primary);
+			color: var(--color-white);
+		}
+
+		&:not(:disabled):hover {
+			background: var(--color-primary);
+			color: var(--color-white);
+			text-decoration: underline;
+		}
+
+		&:focus {
+			outline: 2px solid var(--color-blue);
+			outline-offset: 2px;
+		}
+
+		&:disabled {
+			color: var(--color-disabled-gray);
+			cursor: not-allowed;
+		}
+	}
+
+	.tabs-content {
+		padding: rem(32) rem(32) rem(40); /* Card paddings */
+	}
+}

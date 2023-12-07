@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
@@ -17,9 +17,10 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { API, InputCheckboxIconsProp, InputCheckboxVariant, States } from './types';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
- * @slot - Die Beschriftung der Checkbox.
+ * @slot expert - Die Beschriftung der Checkbox.
  */
 @Component({
 	tag: 'kol-input-checkbox',
@@ -34,8 +35,14 @@ export class KolInputCheckbox implements API {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propagateFocus(this.host, ref);
 	};
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Method()
+	public async getValue(): Promise<boolean | undefined> {
+		return this.ref?.checked;
+	}
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -52,7 +59,7 @@ export class KolInputCheckbox implements API {
 					}}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
-					tabIndex={this.state._variant === 'button' ? 0 : undefined}
+					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -65,8 +72,20 @@ export class KolInputCheckbox implements API {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 				>
-					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<span slot="label">
+						{hasExpertSlot ? (
+							<slot name="expert"></slot>
+						) : typeof this.state._accessKey === 'string' ? (
+							<>
+								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />{' '}
+								<span class="access-key-hint" aria-hidden="true">
+									{this.state._accessKey}
+								</span>
+							</>
+						) : (
+							<span>{this.state._label}</span>
+						)}
+					</span>
 					<div slot="input">
 						<kol-icon
 							class="icon"
@@ -77,6 +96,7 @@ export class KolInputCheckbox implements API {
 							_label=""
 						/>
 						<input
+							class={this.state._variant === 'button' ? 'visually-hidden' : undefined}
 							ref={this.catchRef}
 							title=""
 							accessKey={this.state._accessKey} // by checkbox?!
@@ -148,11 +168,6 @@ export class KolInputCheckbox implements API {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * @deprecated Use _icons.
-	 */
-	@Prop() public _icon?: Stringified<InputCheckboxIconsProp>;
-
-	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: Stringified<InputCheckboxIconsProp>;
@@ -171,7 +186,7 @@ export class KolInputCheckbox implements API {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
-	@Prop() public _label?: LabelWithExpertSlotPropType;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -212,13 +227,6 @@ export class KolInputCheckbox implements API {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Deprecated: Defines which variant should be used for presentation.
-	 *
-	 * @deprecated Verwende stattdessen das Attribute _variant.
-	 */
-	@Prop() public _type?: InputCheckboxVariant;
-
-	/**
 	 * Defines the value of the input.
 	 */
 	@Prop() public _value?: Stringified<StencilUnknown> = true;
@@ -226,7 +234,7 @@ export class KolInputCheckbox implements API {
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: InputCheckboxVariant; // TODO: = 'default'; in v2 setzen
+	@Prop() public _variant?: InputCheckboxVariant = 'default';
 
 	@State() public state: States = {
 		_checked: false,
@@ -287,11 +295,6 @@ export class KolInputCheckbox implements API {
 		this.controller.validateHint(value);
 	}
 
-	@Watch('_icon')
-	public validateIcon(value?: Stringified<InputCheckboxIconsProp>): void {
-		this.validateIcons(value);
-	}
-
 	@Watch('_icons')
 	public validateIcons(value?: Stringified<InputCheckboxIconsProp>): void {
 		this.controller.validateIcons(value);
@@ -340,11 +343,6 @@ export class KolInputCheckbox implements API {
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
 		this.controller.validateTouched(value);
-	}
-
-	@Watch('_type')
-	public validateType(value?: InputCheckboxVariant): void {
-		this.controller.validateType(value);
 	}
 
 	@Watch('_value')

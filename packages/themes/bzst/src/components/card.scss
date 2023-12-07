@@ -1,0 +1,25 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	.card {
+		background-color: var(--color-white);
+		border: 1px solid var(--color-primary); /* Not part of the design system, necessary because box-shadow alone is not accessible. */
+		box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+		margin: rem(32) 0;
+	}
+
+	.header {
+		border-bottom: 1px solid var(--color-primary);
+		padding: rem(21) rem(32); /* vertical padding copied from h3 */
+
+		.headline {
+			font-size: rem(21); /* h3 font-size */
+			font-weight: normal;
+			margin: 0;
+		}
+	}
+
+	.content {
+		padding: rem(32) rem(32) rem(40);
+	}
+}

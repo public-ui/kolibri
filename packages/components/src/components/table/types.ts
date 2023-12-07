@@ -11,6 +11,7 @@ export type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCel
 type KoliBriTableSort = <T>(data: T[]) => T[];
 export type KoliBriSortDirection = 'ASC' | 'DESC' | 'NOS';
 export type KoliBriSortFunction = (data: KoliBriTableDataType[]) => KoliBriTableDataType[];
+export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType) => number;
 
 export type KoliBriTableDataType = Record<string, unknown>;
 
@@ -25,9 +26,14 @@ export type KoliBriTableCell = {
 	textAlign?: KoliBriTableCellTextAlign;
 	width?: string;
 };
+
 export type KoliBriTableHeaderCell = {
 	asTd?: boolean;
 	key?: string;
+	compareFn?: KoliBriDataCompareFn;
+	/**
+	 * @deprecated use `compareFn` instead
+	 */
 	sort?: KoliBriTableSort;
 	sortDirection?: KoliBriSortDirection;
 	textAlign?: KoliBriTableCellTextAlign;
@@ -58,18 +64,16 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 type RequiredProps = {
 	data: Stringified<KoliBriTableDataType[]>;
 	headers: Stringified<KoliBriTableHeaders>;
-};
+} & PropLabel;
 type OptionalProps = {
-	/**
-	 * @deprecated use label
-	 */
-	caption: string;
+	allowMultiSort: boolean;
 	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-} & PropLabel;
+};
 
 type RequiredStates = {
+	allowMultiSort: boolean;
 	data: KoliBriTableDataType[];
 	dataFoot: KoliBriTableDataType[];
 	headers: KoliBriTableHeaders;

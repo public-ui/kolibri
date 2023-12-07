@@ -1,0 +1,98 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	:host * {
+		hyphens: var(--hyphens);
+	}
+
+	:host > div:first-child {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	table {
+		border-collapse: collapse;
+	}
+
+	caption {
+		height: auto;
+		text-align: left;
+	}
+
+	/* visuell verstecken */
+	caption {
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		height: 1px;
+		width: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+	}
+
+	table,
+	tr,
+	th,
+	td {
+		border: 0 solid var(--color-white);
+	}
+
+	tr {
+		border-top-width: 2px;
+	}
+
+	th {
+		background-color: var(--color-primary);
+		color: var(--color-white);
+		font-size: rem(24);
+	}
+
+	tbody > tr:nth-child(odd) {
+		background-color: var(--color-secondary-20);
+	}
+
+	tbody > tr:hover {
+		background-color: var(--color-primary);
+		color: var(--color-white);
+	}
+
+	th,
+	td {
+		border-right-width: 2px;
+		padding: 0.25em 0.5em;
+	}
+
+	th > div {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		gap: 0.25em;
+	}
+
+	.pagination {
+		padding: 0.5em;
+
+		gap: 1rem;
+	}
+
+	th kol-button button {
+		padding: 0.5rem;
+	}
+
+	/* default: [aria-sort="none"] */
+	[data-sort] kol-button::part(icon)::before {
+		font-family: 'Font Awesome 6 Free';
+		font-weight: 900;
+		color: var(--color-white);
+		content: '\f0dc';
+	}
+
+	[data-sort='sort-ASC'] kol-button::part(icon)::before {
+		content: '\f0de';
+	}
+
+	[data-sort='sort-DESC'] kol-button::part(icon)::before {
+		content: '\f0dd';
+	}
+}

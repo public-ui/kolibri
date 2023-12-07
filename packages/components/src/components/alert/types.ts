@@ -6,8 +6,11 @@ import { PropAlert } from '../../types/props/alert';
 import { PropHasCloser } from '../../types/props/has-closer';
 import { PropLabel } from '../../types/props/label';
 
-export type AlertType = 'default' | 'info' | 'success' | 'warning' | 'error';
-export type AlertVariant = 'card' | 'msg';
+export const alertTypeOptions = ['default', 'info', 'success', 'warning', 'error'] as const;
+export type AlertType = (typeof alertTypeOptions)[number];
+
+export const alertVariantOptions = ['card', 'msg'] as const;
+export type AlertVariant = (typeof alertVariantOptions)[number];
 
 export type KoliBriAlertEventCallbacks = {
 	onClose?: EventCallback<Event>;
@@ -15,10 +18,6 @@ export type KoliBriAlertEventCallbacks = {
 
 type RequiredAlertProps = NonNullable<unknown>;
 type OptionalAlertProps = {
-	/**
-	 * @deprecated Use label.
-	 */
-	heading: string;
 	level: HeadingLevel;
 	on: KoliBriAlertEventCallbacks;
 	type: AlertType;
@@ -28,8 +27,8 @@ type OptionalAlertProps = {
 	PropHasCloser;
 
 type RequiredAlertStates = RequiredAlertProps;
-type OptionalAlertStates = Omit<OptionalAlertProps, 'heading'>;
+type OptionalAlertStates = OptionalAlertProps;
 
 export type Props = Generic.Element.Members<RequiredAlertProps, OptionalAlertProps>;
 export type States = Generic.Element.Members<RequiredAlertStates, OptionalAlertStates>;
-export type API = Generic.Element.ComponentApi<RequiredAlertProps, Omit<OptionalAlertProps, 'heading'>, RequiredAlertStates, OptionalAlertStates>; // deprecated prop omitted
+export type API = Generic.Element.ComponentApi<RequiredAlertProps, OptionalAlertProps, RequiredAlertStates, OptionalAlertStates>;

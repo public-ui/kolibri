@@ -1,0 +1,68 @@
+@import '../functions';
+
+/* Common styles for all type of inputs */
+@mixin input($element-selector: 'input') {
+	kol-input {
+		gap: rem(10);
+
+		&.error {
+			border-left: 3px solid var(--color-red);
+			padding-left: rem(16);
+		}
+	}
+
+	kol-alert.error {
+		color: var(--color-red);
+		font-weight: 700;
+		order: 3;
+	}
+
+	.input-label {
+		font-weight: 700;
+		opacity: 1; // Override conflicting component styles
+		order: 1;
+	}
+
+	.input {
+		border: 1px solid var(--color-primary);
+		order: 2;
+		padding: 0 rem(8);
+
+		&:hover {
+			border-color: var(--color-primary-60);
+		}
+
+		kol-input.error & {
+			border-color: var(--color-red);
+		}
+
+		kol-input.disabled & {
+			border-color: var(--color-disabled-gray);
+			background: var(--color-secondary-40);
+		}
+	}
+
+	.hint {
+		order: 4;
+		font-size: rem(14);
+		font-style: italic;
+	}
+
+	#{$element-selector} {
+		border: none;
+		opacity: 1; // Override conflicting component styles
+		background: transparent; // Override user-agent styles for :disabled state
+
+		&:first-child {
+			padding-left: rem(6);
+		}
+
+		&:last-child {
+			padding-right: rem(6);
+		}
+	}
+
+	.input > kol-icon {
+		width: rem(24);
+	}
+}

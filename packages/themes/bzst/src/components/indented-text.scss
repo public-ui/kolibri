@@ -1,0 +1,9 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	:host > div {
+		padding: rem(15);
+		background-color: var(--color-secondary-20);
+		border-left: 6px solid var(--color-primary);
+	}
+}
