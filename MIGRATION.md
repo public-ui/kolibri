@@ -1,5 +1,14 @@
 # Breaking Changes for version 2.0.0
 
+- Assets
+- Update auf neuest v1
+- Upgrade mit Tool
+- Alle "Sonder"-Slots wurden in v2 entfernt
+- _accessKey ist nicht entfernt
+- V1 nur noch Patches
+- V2 Features und Patches
+  - Neues Theme Z3 und B1
+
 ## Removed Components
 
 The following components have been removed entirely:
