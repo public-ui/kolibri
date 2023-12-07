@@ -451,7 +451,8 @@ export const ZOLLv3 = KoliBri.createTheme('zoll-v3', {
 	'KOL-TOAST-CONTAINER': css`
 		:host {
 			top: 1rem;
-			width: 750px;
+			max-width: 750px;
+			width:100%;
 			left: 50%;
 			transform: translateX(-50%);
 		}
