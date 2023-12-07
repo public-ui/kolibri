@@ -29,6 +29,9 @@ export default css`
 		content: '*';
 		padding-left: 0.125em;
 	}
+	.checkbox-container {
+		justify-content: flex-start;
+	}
 	.input {
 		display: inline-flex;
 	}
@@ -79,33 +82,13 @@ export default css`
 		border: 2px solid var(--color-neutral-dark);
 		height: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
-		&::before {
-			display: block;
-			height: calc(6 * var(--spacing));
-			width: calc(6 * var(--spacing));
-		}
-		&:checked::before {
-			left: calc(1.5 * var(--spacing) - 2px);
-			top: calc(2.85 * var(--spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			border-width: 0 3px 3px 0;
-			border-color: var(--color-blau);
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * var(--spacing));
-			width: calc(1.5 * var(--spacing));
-		}
-		&:indeterminate::before {
-			background-color: var(--color-blau);
-			height: 0.6rem;
-			left: 0.325rem;
-			top: 0.325rem;
-			width: 0.6rem;
-		}
 	}
 	kol-input.default:not(.disabled):hover input,
 	kol-input.default:focus-within input {
 		border-color: var(--color-neutral-dark-correct);
+	}
+	.default .icon {
+		margin-left: 0.25rem;
 	}
 
 	/* SWITCH */
@@ -113,10 +96,10 @@ export default css`
 		grid-template-columns: calc(13 * var(--spacing)) auto;
 	}
 	.switch input[type='checkbox'] {
+		display: block;
 		background: var(--color-grau-50);
 		border-color: transparent;
 		border-radius: var(--a11y-min-size);
-		display: inline-block;
 		height: 1.7em;
 		position: relative;
 		transition: outline-offset 0.25s linear;

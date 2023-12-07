@@ -123,9 +123,10 @@
 	/* variant switch */
 	.switch {
 		input[type='checkbox'] {
+			border-color: var(--color-primary);
 			border-radius: 1.7em;
 			border-width: 1px;
-			border-color: var(--color-primary);
+			display: block;
 			transition:
 				0.5s background-color,
 				border-color;
