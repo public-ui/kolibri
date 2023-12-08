@@ -9,9 +9,10 @@ const STYLE = {
 	alignItems: 'center',
 	gap: '.5rem',
 };
+
 export const CardSelection: FC = () => (
-	<div className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-		<KolCard _label="DEBTI-25437/17-1">
+	<div className="flex flex-wrap gap-2">
+		<KolCard _label="DEBTI-25437/17-1" className="lg:w-[calc(33.33%-16px)] md:w-[calc(50%-16px)] sm:w-full">
 			<div>
 				<div>
 					TeCorp Endplatte
@@ -31,7 +32,7 @@ export const CardSelection: FC = () => (
 				</div>
 			</div>
 		</KolCard>
-		<KolCard _label="DEBTI-25437/17-1">
+		<KolCard _label="DEBTI-25437/17-1" className="lg:w-[calc(33.33%-16px)] md:w-[calc(50%-16px)] sm:w-full">
 			<div>
 				<div>
 					TeCorp Endplatte
@@ -51,7 +52,7 @@ export const CardSelection: FC = () => (
 				</div>
 			</div>
 		</KolCard>
-		<KolCard _label="DEBTI-25437/17-1">
+		<KolCard _label="DEBTI-25437/17-1" className="lg:w-[calc(33.33%-16px)] md:w-[calc(50%-16px)] sm:w-full">
 			<div>
 				<div>
 					TeCorp Endplatte

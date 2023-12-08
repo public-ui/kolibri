@@ -11,10 +11,11 @@ import { SampleDescription } from '../SampleDescription';
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: '#', key: 'order', textAlign: 'center' },
+			{ label: '#', key: 'order', textAlign: 'center', width: '10em' },
 			{
 				label: 'Datum (string)',
 				key: 'date',
+				width: '20em',
 				textAlign: 'center',
 				render: (el, tupel) => {
 					// https://reactjs.org/docs/portals.html
@@ -51,8 +52,6 @@ export const TableRenderCell: FC = () => (
 		<SampleDescription>
 			<p>This sample simulates the usage of React render functions for the table column contents.</p>
 		</SampleDescription>
-		<div className='table-container'>
-			<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />
-		</div>
+		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
 	</>
 );
