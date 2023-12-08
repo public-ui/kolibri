@@ -35,13 +35,14 @@ Dies bedeutet, dass ggf. Komponenten, Eigenschaften oder Funktionalitäten entfe
 
 5. **Vereinfachte Registrierung beachten:**<br/>
    Wir haben in Version 1 und für Version 2 die Modularisierung von KoliBri vereinfacht. Das Modul `@public-ui/core` wurde entfernt und die Funktionalitäten in das Modul `@public-ui/components` verschoben.
-   ```diff
-     - import { register } from '@public-ui/core';
-     + import { register } from '@public-ui/components';
-     import { defineCustomElements } from '@public-ui/components/dist/loader';
-     import { MyTheme } from '...';
-     await register(MyTheme, defineCustomElements);
-   ```
+
+```diff
+  - import { register } from '@public-ui/core';
+  + import { register } from '@public-ui/components';
+  import { defineCustomElements } from '@public-ui/components/dist/loader';
+  import { MyTheme } from '...';
+  await register(MyTheme, defineCustomElements);
+```
 
 ### Breaking Changes für Version 2
 
