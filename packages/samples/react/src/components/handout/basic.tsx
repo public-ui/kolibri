@@ -1018,7 +1018,7 @@ export const HandoutBasic: FC = () => (
 			</KolCard>
 		</div>
 		<KolVersion _version="5.0.2-test.2"></KolVersion>
-		{/* <KolImage _src="/abgrenzung.jpg" _alt="KoliBri Darstellung"></KolImage> */}
+		{/* <KolImage _src="abgrenzung.jpg" _alt="KoliBri Darstellung"></KolImage> */}
 		{/* <KolIndentedText></KolIndentedText> */}
 		{/* <KolQuote></KolQuote> */}
 	</div>
