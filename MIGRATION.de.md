@@ -57,17 +57,9 @@ Mehr Informationen zu Breaking Changes finden Sie in der Dokumentation [BREAKING
 
 1. **Vorbereitung:**<br/>
    Das Projekt ist auf einer früheren Version, alle Abhängigkeiten sind installiert, das Projekt ist lauffähig und alle Änderungen sind eingecheckt und sicher gepusht.
-2. **Migrationstool installieren:**<br/>
-   Führen Sie den folgenden Befehl aus, um das Migrationstool zu installieren:
-   ```bash
-   npm install -g @public-ui/kolibri-cli
-   ```
-3. **Migration ausführen:**<br/>
-   Führen Sie den folgenden Befehl aus, um das Migration auszuführen:
-   ```bash
-   kolibri migrate src
-   ```
-4. **Migration prüfen:**<br/>
+2. **Migration ausführen:**<br/>
+   Führen Sie den folgenden Befehl aus, um das Migration auszuführen: `npx @public-ui/kolibri-cli migrate src`
+3. **Migration prüfen:**<br/>
    Prüfen Sie die Änderungen und führen Sie die Anwendung aus, um sicherzustellen, dass alles wie erwartet funktioniert.
 
 ### Migration manuell durchführen

@@ -57,17 +57,9 @@ You can find more information about Breaking Changes in the documentation [BREAK
 
 1. **Preparation:**<br/>
    The project is on an earlier version, all dependencies are installed, the project is executable and all changes are checked in and safely pushed.
-2. **Install the migration tool:**<br/>
-   Execute the following command to install the migration tool:
-   ```bash
-   npm install -g @public-ui/kolibri-cli
-   ```
-3. **Execute migration:**<br/>
-   Execute the following command to perform the migration:
-   ```bash
-   kolibri migrate src
-   ```
-4. **Check migration:**<br/>
+2. **Execute migration:**<br/>
+   Execute the following command to perform the migration: `npx @public-ui/kolibri-cli migrate src`
+3. **Check migration:**<br/>
    Check the changes and run the application to make sure everything works as expected.
 
 ### Perform migration manually
