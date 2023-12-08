@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-default",
-	"version": "2.0.0-rc.12",
+	"version": "2.0.0-rc.13",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -47,8 +47,8 @@
 		"test-update": "THEME_MODULE=src/index THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.0-rc.12",
-		"@public-ui/visual-tests": "2.0.0-rc.12",
+		"@public-ui/schema": "2.0.0-rc.13",
+		"@public-ui/visual-tests": "2.0.0-rc.13",
 		"@types/node": "ts5.3",
 		"@typescript-eslint/eslint-plugin": "6.13.1",
 		"@typescript-eslint/parser": "6.13.1",
@@ -58,7 +58,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.0-rc.12"
+		"@public-ui/components": "2.0.0-rc.13"
 	},
 	"sideEffects": false,
 	"type": "module",
