@@ -125,6 +125,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			--spacing-2xs: 4px; /* ?! */
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			display: inline-block;
 			font-family: var(--font-family);
 		}
