@@ -194,13 +194,6 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	public setValue(event: Event, value: string | number | boolean): void {
-		this.setFormAssociatedValue(value as string);
-		if (typeof this.component._on?.onChange === 'function') {
-			this.component._on.onChange(event, value);
-		}
-	}
-
 	public addValueChangeListener(listener: ValueChangeListener) {
 		this.valueChangeListeners.push(listener);
 	}

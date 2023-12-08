@@ -85,7 +85,10 @@ export class KolInputRadio implements API {
 						const slotName = `radio-${index}`;
 						return (
 							<kol-input
-								class="radio"
+								class={{
+									radio: true,
+									disabled: Boolean(this.state._disabled || option.disabled),
+								}}
 								key={customId}
 								_accessKey={this.state._accessKey} // by radio?!
 								_disabled={this.state._disabled || option.disabled}
@@ -375,9 +378,6 @@ export class KolInputRadio implements API {
 				if (typeof this.state._on?.onChange === 'function') {
 					this.state._on.onChange(event, option.value);
 				}
-
-				// TODO: Prüfen, was setValue noch genau macht, wir syncValue ja jetzt.
-				this.controller.setValue(event, option.value as string); // TODO: fix type
 
 				this.currentValue = option.value;
 			}

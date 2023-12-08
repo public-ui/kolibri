@@ -776,12 +776,15 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		:host {
 			--spacing: 0.25rem;
 		}
+		.checkbox-container {
+			justify-content: flex-start;
+		}
 		input {
 			border-color: var(--color-neutral-dark);
 			border-width: 2px;
 			border-style: solid;
 		}
-		label {
+		.input-label {
 			padding-left: 0.75rem;
 		}
 		kol-input:not(.disabled):hover label,
@@ -793,10 +796,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 		:host kol-input:not(.disabled) :is(.input, label) {
 			cursor: pointer;
-		}
-		:host kol-input.disabled :is(.input, label),
-		:host kol-input.disabled input[type='checkbox']::before {
-			cursor: not-allowed;
 		}
 		.required label > span::after {
 			content: '*';
@@ -841,9 +840,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			background-color: white;
 			transition: 0.5s;
 		}
-		input[type='checkbox']:before {
-			content: '';
-		}
 		input[type='checkbox']:checked,
 		input[type='checkbox']:indeterminate {
 			background-color: var(--color-blau);
@@ -855,44 +851,19 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			min-width: calc(6 * var(--spacing));
 			width: calc(6 * var(--spacing));
 		}
-		.default input[type='checkbox']:before {
-			border-radius: 0.25em;
-			background-color: transparent;
-			display: block;
-			height: calc(6 * var(--spacing));
-			position: relative;
-			width: calc(6 * var(--spacing));
-		}
-		.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * var(--spacing) - 2px);
-			top: calc(2.85 * var(--spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * var(--spacing));
-			width: calc(1.5 * var(--spacing));
-		}
 		.default input[type='checkbox']:indeterminate {
 			background-color: var(--color-blau);
 		}
-		.default input[type='checkbox']:indeterminate:before {
-			background-color: white;
-			height: 0.25rem;
-			top: 0.5rem;
-			left: 0.25rem;
-			width: 0.75rem;
+		.default .icon {
+			color: #fff;
+			margin-left: 0.25rem;
 		}
 		.switch input[type='checkbox'] {
+			display: block;
 			min-width: 3.2em;
 			width: 3.2em;
 			height: 1.7em;
 			border-radius: 0.25em;
-			display: inline-block;
 			position: relative;
 		}
 		.switch input[type='checkbox']:before {
@@ -909,9 +880,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			position: absolute;
 		}
 		.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(1.5em);
-			-moz-transform: translateX(1.5em);
-			-ms-transform: translateX(1.5em);
 			transform: translateX(1.5em);
 			background-color: white;
 		}
@@ -919,13 +887,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			background-color: var(--color-blau);
 		}
 		.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(0.75em);
-			-moz-transform: translateX(0.75em);
-			-ms-transform: translateX(0.75em);
 			transform: translateX(0.75em);
 			background-color: white;
 		}
-		.switch:has(input:not(:checked, :indeterminate)) .icon {
+		.switch:not(.checked):not(.indeterminate) .icon {
 			color: #fff;
 		}
 		.disabled {
@@ -953,12 +918,12 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			border-width: 2px;
 			border-style: solid;
 		}
-		kol-input:has(input:disabled) input,
-		kol-input:has(input:disabled) label {
+		kol-input.disabled input,
+		kol-input.disabled label {
 			cursor: not-allowed !important;
 			opacity: 0.5;
 		}
-		kol-input:hover:has(input:not(:disabled)) label,
+		kol-input:hover:not(.disabled) label,
 		kol-input:focus-within {
 			text-decoration: underline;
 		}
