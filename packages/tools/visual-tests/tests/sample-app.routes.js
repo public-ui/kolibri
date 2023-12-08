@@ -304,11 +304,6 @@ ROUTES.set('split-button/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('table/badge-size', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('table/render-cell', {
 	axe: {
 		skipFailures: false,
