@@ -29,7 +29,6 @@
 	div.pagination kol-pagination  {
 		display: flex;
 		flex-wrap: wrap;
-		overflow-x: auto;
 		padding: 10px;
 	}
 
