@@ -8,12 +8,12 @@ export const LinkImage: FC = () => (
 		<KolLink _href="#" _label="Ich bin ein Link, der als Text gerendert wird" />
 		<br />
 		<KolLink _href="#" _label="">
-			<img alt="Darstellung des KoliBri-Theming" slot="expert" src="/abgrenzung.jpg" width="300" />
+			<img alt="Darstellung des KoliBri-Theming" slot="expert" src="abgrenzung.jpg" width="300" />
 			<KolKolibri style={{ width: '300px' }}></KolKolibri>
 		</KolLink>
 		<br />
 		<KolLink _href="#" _label="">
-			<img alt="Darstellung des KoliBri-Theming" slot="expert" src="/abgrenzung.jpg" width="300" />
+			<img alt="Darstellung des KoliBri-Theming" slot="expert" src="abgrenzung.jpg" width="300" />
 		</KolLink>
 	</div>
 );
