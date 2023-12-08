@@ -12,7 +12,7 @@ executeTests<Props>(
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-popover {...props} />,
+			template: () => <kol-popover-wc {...props} />,
 		});
 		return page;
 	},

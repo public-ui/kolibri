@@ -14,10 +14,14 @@ export type PackageJson = {
 	peerDependencies?: { [key: string]: string };
 };
 
+type Tasks = {
+	[identifier: string]: boolean;
+};
+
+export type Migrate = {
+	tasks: Tasks;
+};
+
 export type Configuration = {
-	migrate?: {
-		tasks: {
-			[identifier: string]: boolean;
-		};
-	};
+	migrate?: Migrate;
 };

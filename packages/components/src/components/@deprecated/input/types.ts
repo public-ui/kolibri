@@ -11,6 +11,7 @@ type OptionalProps = PropLabelWithExpertSlot & {
 	adjustHeight: boolean;
 	disabled: boolean;
 	error: string;
+	hideError: boolean;
 	hideLabel: boolean;
 	hint: string;
 	id: string;

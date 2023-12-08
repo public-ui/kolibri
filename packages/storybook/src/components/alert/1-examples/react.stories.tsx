@@ -103,13 +103,11 @@ export const CardIcon = (args: any) => (
 
 export const Msg = (args: any) => (
 	<div>
-		<KolAlert _heading="Das ist die Überschrift des Alert." _type="warning" _variant="msg">
+		<KolAlert _heading="Das ist die Überschrift des Alert." _type="warning">
 			Das ist der Text des Alert.
 		</KolAlert>
 		<br />
-		<KolAlert _type="warning" _variant="msg">
-			In diesem Alert wird nur der Text ohne Überschrift verwendet.
-		</KolAlert>
+		<KolAlert _type="warning">In diesem Alert wird nur der Text ohne Überschrift verwendet.</KolAlert>
 	</div>
 );
 

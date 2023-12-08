@@ -1,6 +1,6 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { LabelPropType, validateLabel } from '../../types/props/label';
@@ -8,6 +8,7 @@ import { OpenPropType, validateOpen } from '../../types/props/open';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
+import { propagateFocus } from '../../utils/reuse';
 import { watchHeadingLevel } from '../heading/validation';
 import { API, KoliBriAccordionCallbacks, States } from './types';
 
@@ -32,7 +33,12 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 	shadow: true,
 })
 export class KolAccordion implements API {
+	@Element() private readonly host?: HTMLKolDetailsElement;
 	private readonly nonce = nonce();
+
+	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
+		propagateFocus(this.host, ref);
+	};
 
 	public render(): JSX.Element {
 		return (
@@ -45,6 +51,7 @@ export class KolAccordion implements API {
 				>
 					<kol-heading-wc _label="" _level={this.state._level}>
 						<kol-button-wc
+							ref={this.catchRef}
 							// slot="expert"
 							_ariaControls={this.nonce}
 							_ariaExpanded={this.state._open}
