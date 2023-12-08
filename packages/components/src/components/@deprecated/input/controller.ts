@@ -147,7 +147,6 @@ export class InputController extends ControlledInputController implements Watche
 		const value = (event.target as HTMLInputElement).value;
 
 		// Event handling
-		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, value);
 
 		// Static form handling
