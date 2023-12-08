@@ -1809,6 +1809,10 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	}
 	.disabled {
 		opacity: 0.33;
+	}
+	.button:focus-within {
+		outline: var(--focusOutline);
+		outline-offset: 2px;
 	}`,
 	'KOL-INPUT-RADIO': `:host {
 		--border-width: 1px;

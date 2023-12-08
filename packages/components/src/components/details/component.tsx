@@ -6,6 +6,7 @@ import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { setState } from '../../utils/prop.validators';
 import DetailsAnimationController from './DetailsAnimationController';
 import { API, EventCallbacks, States } from './types';
+import { propagateFocus } from '../../utils/reuse';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -23,6 +24,11 @@ export class KolDetails implements API {
 	private summaryElement?: HTMLElement;
 	private contentElement?: HTMLElement;
 
+	private readonly catchRef = (ref?: HTMLElement) => {
+		this.summaryElement = ref;
+		propagateFocus(this.host, this.summaryElement);
+	};
+
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -32,11 +38,11 @@ export class KolDetails implements API {
 					}}
 					onToggle={this.handleToggle}
 				>
-					<summary ref={(element) => (this.summaryElement = element)}>
+					<summary ref={this.catchRef}>
 						{this.state._open ? <kol-icon _label="" _icons="codicon codicon-chevron-down" /> : <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
 						<span>{this.state._label}</span>
 					</summary>
-					<div class="content" ref={(element) => (this.contentElement = element)}>
+					<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" ref={(element) => (this.contentElement = element)}>
 						<kol-indented-text>
 							<slot />
 						</kol-indented-text>

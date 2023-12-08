@@ -46,7 +46,6 @@ const TAGS = [
 	'kol-modal',
 	'kol-nav',
 	'kol-pagination',
-	'kol-popover',
 	'kol-progress',
 	'kol-quote',
 	'kol-select',
@@ -63,8 +62,8 @@ const TAGS = [
 ];
 const EXCLUDE_TAGS = [
 	'kol-alert-wc',
-	'kol-avatar-wc',
 	'kol-all',
+	'kol-avatar-wc',
 	'kol-button-group-wc',
 	'kol-button-link-text-switch',
 	'kol-button-wc',
@@ -74,6 +73,7 @@ const EXCLUDE_TAGS = [
 	'kol-input',
 	'kol-input-radio-group',
 	'kol-link-wc',
+	'kol-popover-wc',
 	'kol-span-wc',
 	'kol-tooltip-wc',
 ];
@@ -210,6 +210,11 @@ if (process.env.NODE_ENV === 'production') {
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v16/src/components.ts',
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v17/src/components.ts',
 		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',

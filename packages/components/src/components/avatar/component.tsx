@@ -19,7 +19,7 @@ export class KolAvatarWc implements API {
 						<img alt="" aria-hidden="true" class="image" src={this.state._src} />
 					) : (
 						<span aria-hidden="true" class="initials">
-							{formatLabelAsInitials(this.state._label)}
+							{formatLabelAsInitials(this.state._label.trim())}
 						</span>
 					)}
 				</div>

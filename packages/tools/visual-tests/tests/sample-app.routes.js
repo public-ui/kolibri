@@ -263,11 +263,6 @@ ROUTES.set('pagination/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('popover/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('progress/basic', {
 	axe: {
 		skipFailures: false,
@@ -305,11 +300,6 @@ ROUTES.set('spin/cycle', {
 	},
 });
 ROUTES.set('split-button/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/badge-size', {
 	axe: {
 		skipFailures: false,
 	},
