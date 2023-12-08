@@ -2,14 +2,12 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
-import { Orientation } from '../../types/orientation';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
+import { Orientation, orientationOptions } from '../../types/orientation';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { OptionsPropType, validateOptions } from '../../types/props/options';
 import { validateRequired } from '../../types/props/required';
 import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
-import { a11yHint } from '../../utils/a11y.tipps';
 import { mapString2Unknown, setState, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
@@ -41,18 +39,6 @@ export class InputCheckboxRadioController extends InputController implements Inp
 	public constructor(component: Generic.Element.Component & InputCheckboxRadioProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
-	}
-
-	public validateHideError(value?: HideErrorPropType): void {
-		validateHideError(this.component, value, {
-			hooks: {
-				afterPatch: () => {
-					if (this.component.state._hideError) {
-						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
-					}
-				},
-			},
-		});
 	}
 
 	public validateRequired(value?: boolean): void {
@@ -103,8 +89,8 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		watchValidator(
 			this.component,
 			'_orientation',
-			(value): boolean => value === 'horizontal' || value === 'vertical',
-			new Set(['Orientation {horizontal, vertical}']),
+			(value): boolean => typeof value === 'string' && orientationOptions.includes(value),
+			new Set([`Orientation {${orientationOptions.join(', ')}`]),
 			value,
 			{
 				defaultValue: 'vertical',
@@ -142,8 +128,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		};
 
 		this.validateOrientation(this.component._orientation);
-		this.validateOptions(this.component._options || this.component._list);
-		this.validateHideError(this.component._hideError);
+		this.validateOptions(this.component._options);
 		this.validateValue(this.component._value);
 	}
 }

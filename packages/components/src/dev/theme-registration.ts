@@ -1536,8 +1536,6 @@ top: 1rem;
 right: 1rem;
 width: 30rem;
 }
-`,
-	'KOL-TOAST': `
 .toast {
 display: block;
 margin-top: 1rem;
@@ -1553,7 +1551,6 @@ opacity: 0.5;
 .removing & {
 background: rgba(255, 0, 0, .7);
 opacity: 0.5;
-}
 }
 `,
 	'KOL-TABS': `:host > div {

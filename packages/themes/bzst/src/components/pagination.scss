@@ -1,0 +1,90 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	.navigation-list {
+		gap: unset;
+		> li {
+			min-width: var(--a11y-min-size);
+			text-align: center;
+		}
+	}
+
+	.icon::part(icon) {
+		font-family: 'Font Awesome 6 Free';
+		font-weight: 900;
+	}
+
+	.first .icon::part(icon)::before {
+		content: '\f100';
+	}
+
+	.previous .icon::part(icon)::before {
+		content: '\f104';
+	}
+
+	.next .icon::part(icon)::before {
+		content: '\f105';
+	}
+
+	.last .icon::part(icon)::before {
+		content: '\f101';
+	}
+
+	.button {
+		cursor: pointer;
+		display: flex;
+		height: rem(44);
+		width: rem(44);
+		outline: none;
+
+		> kol-span-wc {
+			margin: auto;
+			display: flex;
+			background-color: var(--color-white);
+			border: 1px solid var(--color-primary);
+			color: var(--color-black);
+			font-size: rem(18);
+			font-weight: normal;
+			height: rem(30);
+			width: rem(30);
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+
+			> * {
+				margin: auto;
+			}
+
+			& .icon {
+				width: 1.5em;
+				height: 1.5em;
+			}
+		}
+
+		&:hover:enabled > kol-span-wc {
+			background-color: var(--color-primary-20);
+			border-color: var(--color-primary-60);
+			color: var(--color-black);
+		}
+
+		&:focus > kol-span-wc {
+			outline: var(--color-blue) solid 2px;
+			outline-offset: 2px;
+		}
+
+		&:disabled > kol-span-wc,
+		&:disabled:hover > kol-span-wc {
+			background-color: var(--color-secondary-40);
+			border-color: var(--color-secondary);
+			color: var(--color-secondary);
+			cursor: not-allowed;
+		}
+	}
+
+	.selected button {
+		border-radius: 1.5em;
+		border: none;
+		color: var(--color-midnight) !important;
+		font-weight: 700;
+		line-height: normal;
+	}
+}

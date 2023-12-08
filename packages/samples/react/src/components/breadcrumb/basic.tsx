@@ -6,7 +6,7 @@ import { FC } from 'react';
 export const BreadcrumbBasic: FC = () => (
 	<div className="grid gap-4">
 		<KolBreadcrumb
-			_ariaLabel="Breadcrumb aus Text-Links"
+			_label="Breadcrumb aus Text-Links"
 			_links={[
 				{ _label: 'Startseite', _href: '#/' },
 				{ _label: 'Unterseite der Startseite', _href: '#/unterseite' },
@@ -17,7 +17,7 @@ export const BreadcrumbBasic: FC = () => (
 			]}
 		></KolBreadcrumb>
 		<KolBreadcrumb
-			_ariaLabel="Breadcrumb aus Icons- oder Text-Links"
+			_label="Breadcrumb aus Icons- oder Text-Links"
 			_links={[
 				{
 					_label: 'Startseite',
@@ -36,7 +36,7 @@ export const BreadcrumbBasic: FC = () => (
 			]}
 		></KolBreadcrumb>
 		<KolBreadcrumb
-			_ariaLabel="Breadcrumb aus Icons- und Text-Links"
+			_label="Breadcrumb aus Icons- und Text-Links"
 			_links={[
 				{ _label: 'Startseite', _icons: 'codicon codicon-home', _href: '#/' },
 				{

@@ -1,0 +1,25 @@
+@layer kol-theme-component {
+	:host progress,
+	:host span {
+		display: block;
+		height: 0px;
+		overflow: hidden;
+		width: 0px;
+	}
+
+	svg line:first-child,
+	svg circle:first-child {
+		fill: transparent;
+		stroke: var(--color-ice);
+	}
+
+	svg line:last-child,
+	svg circle:last-child {
+		stroke: var(--color-midnight);
+		fill: transparent;
+	}
+
+	progress {
+		display: none;
+	}
+}

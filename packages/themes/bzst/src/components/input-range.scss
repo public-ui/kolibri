@@ -1,0 +1,23 @@
+/* https://www.cssportal.com/style-input-range/ */
+
+@import '../mixins/input';
+@import '../functions';
+
+@layer kol-theme-component {
+	@include input;
+
+	input {
+		border: 1px solid var(--color-primary);
+
+		&:focus {
+			outline: none;
+		}
+		&:hover {
+			border-color: var(--color-primary-60);
+		}
+	}
+
+	.inputs-wrapper {
+		gap: rem(8);
+	}
+}

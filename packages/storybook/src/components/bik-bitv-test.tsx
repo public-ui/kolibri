@@ -127,7 +127,7 @@ export class BikBitvTest extends Component<Props, State> {
 							},
 							{
 								label: 'BZSt-Styleguide',
-								value: 'bzst',
+								value: 'bzst-v1',
 							},
 							{
 								label: 'ITZBund-Styleguide',

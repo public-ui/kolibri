@@ -18,7 +18,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 	props._variant = props._variant || 'msg';
 	return `<kol-alert${additionalHTML}>
   <mock:shadow-root>
-    <kol-alert-wc class="${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}"${props._alert === true ? ' role="alert"' : ''}>
+    <kol-alert-wc class="alert ${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}"${props._alert === true ? ' role="alert"' : ''}>
 			<div class="heading">
 				${getIconHtml(
 					{
@@ -47,7 +47,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 					},
 					` class="heading-icon"`
 				)}
-				<div>
+				<div class="heading-content">
 					${
 						typeof props._label === 'string' && props._label.length > 0
 							? getHeadingWcHtml(
@@ -56,7 +56,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 										_level: props._level,
 									},
 									{
-										default: props._label,
+										expert: props._label,
 									}
 							  )
 							: ''

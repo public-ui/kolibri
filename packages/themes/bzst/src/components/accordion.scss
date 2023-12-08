@@ -1,0 +1,26 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	.accordion {
+		display: grid;
+		background: var(--color-white);
+	}
+
+	.accordion-heading {
+		border: 1px solid var(--color-primary-60);
+		font-size: rem(21); /* h3 font-size */
+	}
+
+	.headline {
+		margin: 0;
+		font-weight: normal;
+	}
+
+	.accordion-button .button {
+		padding: 0 rem(32);
+	}
+
+	.content {
+		padding: rem(32) rem(32) rem(40);
+	}
+}

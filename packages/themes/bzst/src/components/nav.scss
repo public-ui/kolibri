@@ -1,0 +1,25 @@
+@import '../functions';
+
+@layer kol-theme-component {
+	:host {
+		font-size: rem(21); /* h3 font-size */
+	}
+
+	:is(a, button) {
+		color: var(--color-black);
+		display: block;
+		margin-left: rem(12);
+		padding: rem(5);
+		text-decoration: none;
+
+		&:hover {
+			background-color: var(--color-primary);
+			color: var(--color-white);
+		}
+
+		&:focus {
+			outline: 2px solid var(--color-blue);
+			outline-offset: 2px;
+		}
+	}
+}

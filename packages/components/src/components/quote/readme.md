@@ -56,23 +56,22 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 
 ## References
 
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _target="_blank"></kol-link>
-- <kol-link _href="https://www.mediaevent.de/html/quote.html" _label="https://www.mediaevent.de/html/quote.html" _target="_blank"></kol-link>
-- <kol-link _href="https://www.mediaevent.de/html/cite.html" _label="https://www.mediaevent.de/html/cite.html" _target="_blank"></kol-link>
-- <kol-link _href="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _label="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _target="_blank"></kol-link>
+- <kol-link _href="https://www.mediaevent.de/html/quote.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.mediaevent.de/html/cite.html" _target="_blank"></kol-link>
+- <kol-link _href="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property              | Attribute  | Description                                                                                                                     | Type                               | Default     |
-| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------- |
-| `_caption`            | `_caption` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Defines the visible caption of the component. | `string \| undefined`              | `undefined` |
-| `_href` _(required)_  | `_href`    | Sets the target URI of the link or citation source.                                                                             | `string`                           | `undefined` |
-| `_label`              | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).              | `string \| undefined`              | `undefined` |
-| `_quote` _(required)_ | `_quote`   | Defines the text of the quote.                                                                                                  | `string`                           | `undefined` |
-| `_variant`            | `_variant` | Defines which variant should be used for presentation.                                                                          | `"block" \| "inline" \| undefined` | `'inline'`  |
+| Property              | Attribute  | Description                                                                                                        | Type                               | Default     |
+| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------- | ----------- |
+| `_href` _(required)_  | `_href`    | Sets the target URI of the link or citation source.                                                                | `string`                           | `undefined` |
+| `_label`              | `_label`   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string \| undefined`              | `undefined` |
+| `_quote` _(required)_ | `_quote`   | Defines the text of the quote.                                                                                     | `string`                           | `undefined` |
+| `_variant`            | `_variant` | Defines which variant should be used for presentation.                                                             | `"block" \| "inline" \| undefined` | `'inline'`  |
 
 ## Dependencies
 

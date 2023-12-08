@@ -3,8 +3,11 @@ import { Generic } from '@a11y-ui/core';
 import { validateAlignment } from '../../utils/validators/alignment';
 
 /* types */
-type HorizontalAlign = 'left' | 'right';
-type VerticalAlign = 'top' | 'bottom';
+const horizontalAlignOptions = ['left', 'right'] as const;
+type HorizontalAlign = (typeof horizontalAlignOptions)[number];
+const verticalAlignOptions = ['top', 'bottom'] as const;
+type VerticalAlign = (typeof verticalAlignOptions)[number];
+export const alignPropTypeOptions = [...horizontalAlignOptions, ...verticalAlignOptions] as const;
 export type AlignPropType = HorizontalAlign | VerticalAlign;
 
 /**

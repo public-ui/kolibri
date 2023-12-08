@@ -93,12 +93,14 @@ kolibri migrate <path>
 
 #### Options
 
-| Option                         | Description                                    |         Type         | Default  |
-| ------------------------------ | ---------------------------------------------- | :------------------: | :------: |
-| `--format`                     | Try to format the modified files with prettier |       boolean        |   true   |
-| `--ignore-greater-version`     | Allows execution with greater versions         |       boolean        |  false   |
-| `--ignore-uncommitted-changes` | Allows execution with uncommitted changes      |       boolean        |  false   |
-| `--remove-mode`                | Prefix property name or delete property        | `delete` \| `prefix` | `prefix` |
+| Option                         | Description                                                        |         Type         |          Default          |
+| ------------------------------ | ------------------------------------------------------------------ | :------------------: | :-----------------------: |
+| `--format`                     | Try to format the modified files with prettier                     |       boolean        |           true            |
+| `--overwrite-current-version`  | Migrate from this current version instead of the installed version |       version        | current installed version |
+| `--overwrite-target-version`   | Migrate to this target version instead of the version of the CLI   |       version        |    version of the CLI     |
+| `--ignore-greater-version`     | Allows execution with greater versions                             |       boolean        |           false           |
+| `--ignore-uncommitted-changes` | Allows execution with uncommitted changes                          |       boolean        |           false           |
+| `--remove-mode`                | Prefix property name or delete property                            | `delete` \| `prefix` |         `prefix`          |
 
 #### Configuration
 
@@ -111,25 +113,21 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 	"migrate": {
 		"tasks": {
 			".gitignore-add-rule-.kolibri.migrate.json": true,
-			"vscode-settings-reconfigure-html.customData": true,
-			"tsconfig-reconfigure-compilerOptions.types": true,
-			"remove--cpy-cli,rimraf": true,
-			"add--cpy-cli,rimraf": true,
-			"package.json-reconfigure-scripts.postinstall": true,
-			"merge-html-codicon-in-index.html": true,
-			"remove-public/assets/codicons": true,
-			"exec-npx cpy \"node_modules/@public-ui/components/assets/**/*\" \"public/assets\" --dot": true,
 			".npmrc-add-rule-save-exact=true": true,
+			"vscode-settings-reconfigure-html.customData": true,
 			"kol-abbr-rename-property-_align-to-_tooltip-align": true,
 			"kol-abbr-rename-property-_title-to-_label": true,
 			"kol-accordion-rename-property-_heading-to-_label": true,
+			"kol-alert-rename-property-_heading-to-_label": true,
 			"kol-badge-rename-property-_icon-only-to-_hide-label": true,
 			"kol-badge-remove-property-_hide-label": true,
 			"kol-badge-remove-property-_icon-only": true,
+			"kol-badge-rename-property-_icon-to-_icons": true,
 			"kol-breadcrumb-rename-property-_aria-label-to-_label": true,
 			"kol-button-link-remove-property-_aria-current": true,
 			"kol-button-link-remove-property-_aria-label": true,
 			"kol-button-link-rename-property-_icon-only-to-_hide-label": true,
+			"kol-button-link-rename-property-_icon-to-_icons": true,
 			"kol-button-remove-property-_aria-current": true,
 			"kol-button-remove-property-_aria-label": true,
 			"kol-button-remove-property-_icon-align": true,
@@ -149,28 +147,33 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 			"kol-date-rename-property-_list-to-_suggestions": true,
 			"kol-input-email-rename-property-_icon-to-_icons": true,
 			"kol-input-email-rename-property-_list-to-_suggestions": true,
+			"kol-input-email-remove-property-_size": true,
 			"kol-input-file-rename-property-_icon-to-_icons": true,
 			"kol-input-number-rename-property-_icon-to-_icons": true,
 			"kol-input-number-rename-property-_list-to-_suggestions": true,
+			"kol-input-number-remove-property-_type": true,
 			"kol-input-password-rename-property-_icon-to-_icons": true,
+			"kol-input-password-remove-property-_size": true,
 			"kol-input-radio-rename-property-_list-to-_options": true,
 			"kol-input-range-rename-property-_icon-to-_icons": true,
 			"kol-input-range-rename-property-_list-to-_suggestions": true,
 			"kol-input-rename-property-_icon-to-_icons": true,
 			"kol-input-text-rename-property-_icon-to-_icons": true,
 			"kol-input-text-rename-property-_list-to-_suggestions": true,
-			"kol-link-button-remove-property-_aria-control": true,
+			"kol-input-text-remove-property-_size": true,
+			"kol-link-button-remove-property-_aria-controls": true,
 			"kol-link-button-remove-property-_aria-expanded": true,
 			"kol-link-button-remove-property-_aria-label": true,
 			"kol-link-button-remove-property-_aria-selected": true,
 			"kol-link-button-remove-property-_disabled": true,
 			"kol-link-button-rename-property-_aria-current-to-_listen-aria-current": true,
 			"kol-link-button-rename-property-_icon-only-to-_hide-label": true,
+			"kol-link-button-rename-property-_icon-to-_icons": true,
 			"kol-link-group-rename-property-_heading-to-_label": true,
 			"kol-link-group-remove-property-_heading": true,
 			"kol-link-group-remove-property-_ordered": true,
 			"kol-link-group-rename-property-_aria-label-to-_label": true,
-			"kol-link-remove-property-_aria-control": true,
+			"kol-link-remove-property-_aria-controls": true,
 			"kol-link-remove-property-_aria-expanded": true,
 			"kol-link-remove-property-_aria-label": true,
 			"kol-link-remove-property-_aria-selected": true,
@@ -181,6 +184,7 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 			"kol-link-remove-property-_use-case": true,
 			"kol-link-rename-property-_aria-current-to-_listen-aria-current": true,
 			"kol-link-rename-property-_icon-only-to-_hide-label": true,
+			"kol-link-rename-property-_icon-to-_icons": true,
 			"kol-logo-rename-property-_abbr-to-_org": true,
 			"kol-modal-rename-property-_aria-label-to-_label": true,
 			"kol-nav-remove-property-_variant": true,
@@ -193,15 +197,20 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 			"kol-select-rename-property-_height-to-_rows": true,
 			"kol-select-rename-property-_icon-to-_icons": true,
 			"kol-select-rename-property-_list-to-_options": true,
+			"kol-select-remove-property-_size": true,
 			"kol-skip-nav-rename-property-_aria-label-to-_label": true,
 			"kol-span-rename-property-_icon-only-to-_hide-label": true,
 			"kol-span-rename-property-_icon-to-_icons": true,
 			"kol-split-button-remove-property-_aria-label": true,
-			"kol-split-button-rename-property-_show-dropdown-to-_show": true,
+			"kol-split-button-remove-property-_access-key": true,
+			"kol-split-button-remove-property-_show-dropdown": true,
+			"kol-split-button-remove-property-_show": true,
+			"kol-symbol-rename-property-_aria-label-to-_label": true,
 			"kol-table-rename-property-_caption-to-_label": true,
 			"kol-tabs-rename-property-_aria-label-to-_label": true,
 			"kol-tabs-rename-property-_icon-to-_icons": true,
 			"kol-tabs-rename-property-_tab-align-to-_align": true,
+			"kol-tabs-rename-property-_icon-only-to-_hide-label": true,
 			"kol-toast-remove-property-_show-duration": true,
 			"kol-toast-rename-property-_heading-to-_label": true,
 			"kol-version-rename-property-_version-to-_label": true,
@@ -224,7 +233,17 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 			"kol-card-mark-removed-slot-header": true,
 			"kol-accordion-rename-slot-content-to-": true,
 			"kol-card-rename-slot-content-to-": true,
-			"refactor-property-label-replace-false": true
+			"refactor-property-label-replace-false": true,
+			"kol-card-remove-property-_has-footer": true,
+			"kol-link-group-remove-property-_level": true,
+			"remove--cpy-cli,rimraf": true,
+			"add--cpy-cli,rimraf": true,
+			"package.json-reconfigure-scripts.postinstall": true,
+			"remove-public/assets/codicons": true,
+			"exec-npx cpy \"node_modules/@public-ui/components/assets/**/*\" \"undefined/assets\" --dot": true,
+			"kol-button-link-remove-property-_access-key": true,
+			"kol-button-remove-property-_access-key": true,
+			"kol-nav-remove-property-_has-compact-button": true
 		}
 	}
 }
@@ -235,6 +254,8 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 If the migration failed, you can reset the migration with `git reset --hard HEAD~1`.
 
 Use the configuration (`.kolibri.config.json`) to exclude some tasks.
+
+If your project is already on a newer version of KoliBri, but you want to repeat the migration from a previous version, you can use this `--overwrite-current-version` option. It overwrites the offset version from which the migration originally starts, instead of using the installed version.
 
 If there are multiple obsolete properties that have been migrated to just one new property, the new property may appear multiple times in the tag. You can then decide which variant to use and remove all other variants accordingly.
 
@@ -249,13 +270,3 @@ You have always the possibility of a dry run. Because before the migration will 
 After the migration you can check the result with `git status` and `git diff`.
 
 Is anything wrong, you can reset the migration with `git reset --hard HEAD~1` or by discarding the affected files.
-
-## Changelog
-
-### 1.7.1
-
-- Fix version handling by adding the absolut min version 1.4.2
-- Add post message feature for more details
-- Add `${` support by `_label` migration
-- Activate Expert-Slot refactoring for `_label` migration
-- Prevents `@public-ui/kolibri-cli` from being changed by the update process

@@ -1,0 +1,6 @@
+@import '../functions';
+@import '../mixins/link';
+
+@layer kol-theme-component {
+	@include link('a');
+}

@@ -1,36 +1,45 @@
 @import url(../style.css);
 @import url(../host-display-block.css);
-:host {
-	display: grid;
-}
-:host > div.table {
-	max-width: 100%;
-	order: 1;
-	overflow-x: auto;
-	overflow-y: hidden;
-}
-:host > div.table table {
-	width: 100%;
-}
-th > div {
-	display: grid;
-	grid-template-columns: 1fr auto;
-	place-items: center;
-}
-div.pagination {
-	order: 2;
-}
-div.pagination,
-div.pagination > div:last-child {
-	display: grid;
-	place-items: center;
-}
-@media (min-width: 1024px) {
+@layer kol-component {
+	:host {
+		display: grid;
+	}
+
+	:host > div.table {
+		max-width: 100%;
+		order: 1;
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	:host > div.table table {
+		width: 100%;
+	}
+
+	th > div {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		place-items: center;
+	}
+
+	div.pagination {
+		order: 2;
+	}
+
 	div.pagination,
 	div.pagination > div:last-child {
-		grid-auto-flow: column;
+		display: grid;
+		place-items: center;
 	}
-	div.pagination kol-pagination {
-		display: flex;
+
+	@media (min-width: 1024px) {
+		div.pagination,
+		div.pagination > div:last-child {
+			grid-auto-flow: column;
+		}
+
+		div.pagination kol-pagination {
+			display: flex;
+		}
 	}
 }

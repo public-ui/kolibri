@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { KolLink } from '@public-ui/react';
-
-import { FC } from 'react';
 
 export const LinkBasic: FC = () => (
 	<div className="grid gap-4">
@@ -12,8 +10,8 @@ export const LinkBasic: FC = () => (
 		</p>
 		<p>
 			In diesem Absatz wird ein Link gesetzt, der einmal als inline-block-Element ausgegeben wird.{' '}
-			<KolLink class="d-inline-block" _href="#" _label="Simple Link" />. Damit kann man mir per CSS-Styles eine Breite, eine Höhe und andere Eigenschaften
-			zuweisen.
+			<KolLink class="d-inline-block" _accessKey="S" _href="#" _label="Simple Link" />. Damit kann man mir per CSS-Styles eine Breite, eine Höhe und andere
+			Eigenschaften zuweisen.
 			<br />
 			<br />
 			Danach folgt ein Link, der als block-Element ausgegeben wird.

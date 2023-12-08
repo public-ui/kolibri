@@ -7,13 +7,13 @@ Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie be
 ### Code
 
 ```html
-<kol-alert _label="Überschrift im Alert" _level="1" _type="success" _variant="msg">Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="1" _type="success">Textbereich im Alert</kol-alert>
 <kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
 ```
 
 ### Beispiel
 
-<kol-alert _label="Überschrift im Alert" _level="1" _type="success" _variant="msg">Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="1" _type="success" >Textbereich im Alert</kol-alert>
 <kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
 
 ## Verwendung
@@ -73,7 +73,7 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#alert" _label="https://www.w3.org/TR/wai-aria-practices/#alert" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#alert" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

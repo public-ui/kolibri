@@ -1,0 +1,9 @@
+@import '../mixins/link';
+
+@layer kol-theme-component {
+	@include link('a');
+
+	a {
+		display: block;
+	}
+}
