@@ -4,7 +4,7 @@ env:
   access: public
   registry: https://registry.npmjs.org
   token: ${{ secrets.NPMJS_GRANULAR_TOKEN }}
-  tag: next
+  tag: latest
 
 on:
   workflow_dispatch:
