@@ -47,7 +47,7 @@ Commands:
 
 With the `migrate` command you can migrate your project to the latest version of `KoliBri`.
 
-Actually the following migrations are available:
+Actually the following migration tasks from version 1 to version 2 are available:
 
 - Component renaming ✓
 - Component removal (no one yet)
@@ -67,6 +67,7 @@ Actually the following migrations are available:
 - Copy and integrate new assets ✓
 - Handles `_icon-align` with a refactoring tasks ([#5397](https://github.com/public-ui/kolibri/issues/5397)) ⏰
 - Detection of `_iconOnly` in TSX is not stable ([#5404](https://github.com/public-ui/kolibri/issues/5404)) ⏰
+- Handle the remove `@public-ui/core` package ([#???](https://github.com/public-ui/kolibri/issues/????)) ⏰
 
 #### How does it work?
 
