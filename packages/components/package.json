@@ -71,7 +71,7 @@
 		"@floating-ui/dom": "1.5.3",
 		"@public-ui/schema": "2.0.0",
 		"i18next": "23.7.7",
-		"markdown-it": "13.0.2"
+		"markdown-it": "14.0.0"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.8.3",
