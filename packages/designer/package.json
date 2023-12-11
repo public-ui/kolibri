@@ -40,7 +40,7 @@
 		"@public-ui/components": "2.0.0",
 		"@public-ui/solid": "2.0.0",
 		"@public-ui/themes": "2.0.0",
-		"monaco-editor": "0.44.0",
+		"monaco-editor": "0.45.0",
 		"monaco-editor-webpack-plugin": "7.1.0",
 		"prettier": "2.8.8",
 		"register-service-worker": "1.7.2",
