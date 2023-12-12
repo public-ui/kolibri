@@ -1,4 +1,4 @@
-import { Theme } from '@a11y-ui/core';
+import { Theme } from 'adopted-style-sheets';
 
 enum TagEnum {
 	'form-login',

@@ -1,4 +1,4 @@
-import { patchTheme } from '@a11y-ui/core';
+import { patchTheme } from 'adopted-style-sheets';
 
 patchTheme('demo', {
 	GLOBAL: `:host {

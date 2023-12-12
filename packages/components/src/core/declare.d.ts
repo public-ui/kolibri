@@ -1,4 +1,4 @@
-import type { Generic, ThemeDetails } from '@a11y-ui/core';
+import type { Generic, ThemeDetails } from 'adopted-style-sheets';
 
 declare global {
 	interface Window {
