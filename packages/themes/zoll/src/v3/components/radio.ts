@@ -82,7 +82,7 @@ export default css`
 		order: 1;
 		display: contents;
 	}
-	fieldset #error {
+	kol-alert.error {
 		margin: 0.4em 0;
 		order: 2;
 	}
