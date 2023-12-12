@@ -42,6 +42,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 			--font-size: 16px;
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			font-family: var(--font-family); /* font-size: var(--font-size); */
 		}
 		* {

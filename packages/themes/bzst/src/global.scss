@@ -30,7 +30,7 @@
 	}
 
 	:host {
-		color: var(--color-black);
+		background-color: transparent; /* Reset global background-color defined by components */
 		font-family: var(--font-family);
 	}
 

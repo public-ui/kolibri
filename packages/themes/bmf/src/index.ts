@@ -45,6 +45,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		:host {
 			font-family: var(--font-family); /* font-size: var(--font-size); */
+			background-color: transparent; /* Reset global background-color defined by components */
 		}
 		* {
 			box-sizing: border-box;
