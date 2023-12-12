@@ -66,6 +66,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		--spacing-2xs: 4px; /* ?! */
 	}
 	:host {
+		background-color: transparent; /* Reset global background-color defined by components */
 		display: inline-block;
 		font-family: var(--font-family);
 	}
