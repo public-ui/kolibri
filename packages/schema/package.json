@@ -48,7 +48,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@a11y-ui/core": "1.1.0"
+		"adopted-style-sheets": "1.1.2"
 	},
 	"devDependencies": {
 		"@types/node": "ts5.3",

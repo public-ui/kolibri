@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { KoliBriModalEventCallbacks } from '../../types/modal';
 import { PropAriaLabel } from '../../types/props/aria-label';

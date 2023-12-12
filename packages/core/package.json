@@ -54,7 +54,7 @@
 		"@public-ui/components": "1.7.6"
 	},
 	"devDependencies": {
-		"@a11y-ui/core": "1.1.0",
+		"adopted-style-sheets": "1.1.2",
 		"@types/node": "ts5.3",
 		"@typescript-eslint/eslint-plugin": "6.13.1",
 		"@typescript-eslint/parser": "6.13.1",

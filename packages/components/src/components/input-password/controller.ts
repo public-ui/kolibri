@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { InputTypeOnOff } from '../../types/input/types';
 import { validateHasCounter } from '../../types/props/has-counter';
