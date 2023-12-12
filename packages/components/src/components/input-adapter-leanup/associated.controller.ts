@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { NamePropType, validateName } from '../../types/props/name';
 import { PropSyncValueBySelector, SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';

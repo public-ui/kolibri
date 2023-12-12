@@ -1,5 +1,5 @@
 /* types */
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 import { watchValidator } from '../../utils/prop.validators';
 
 const buttonVariantPropTypeOptions = ['primary', 'secondary', 'normal', 'tertiary', 'danger', 'ghost', 'custom'] as const;

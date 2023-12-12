@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';
 

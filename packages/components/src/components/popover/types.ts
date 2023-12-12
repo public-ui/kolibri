@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { PropAlign } from '../../types/props/align';
 import { PropShow } from '../../types/props/show';

@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';

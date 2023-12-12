@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { OptionalButtonProps, OptionalButtonStates, RequiredButtonProps, RequiredButtonStates } from '../button/types';

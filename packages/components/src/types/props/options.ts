@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { watchJsonArrayString, WatchOptions } from '../../utils/prop.validators';
 import { validateInputSelectOptions } from '../../utils/validators/options';

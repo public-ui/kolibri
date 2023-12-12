@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { objectObjectHandler, parseJson, watchValidator } from '../../utils/prop.validators';
 import { isObject, isString, isStyle } from '../../utils/validator';

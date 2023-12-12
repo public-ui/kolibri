@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';

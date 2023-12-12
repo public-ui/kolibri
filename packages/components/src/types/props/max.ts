@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { watchNumber, WatchNumberOptions } from '../../utils/prop.validators';
 import { RowsPropType } from './rows';

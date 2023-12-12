@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { PropLabel } from '../../types/props/label';

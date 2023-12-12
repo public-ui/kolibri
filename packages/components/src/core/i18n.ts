@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 interface ITranslationOptions {
 	/**

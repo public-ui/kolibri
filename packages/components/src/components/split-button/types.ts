@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { StencilUnknown } from '../../components';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';

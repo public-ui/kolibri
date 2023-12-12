@@ -1,5 +1,5 @@
 /* types */
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 import { watchValidator } from '../../utils/prop.validators';
 
 const headingVariantPropTypeOptions = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong'] as const;

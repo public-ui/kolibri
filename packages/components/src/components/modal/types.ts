@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { KoliBriModalEventCallbacks } from '../../types/modal';
 import { PropLabel } from '../../types/props/label';

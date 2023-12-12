@@ -1,7 +1,7 @@
 /* types */
 
 // https://www.w3schools.com/tags/att_a_target.asp
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 import { watchString } from '../../utils/prop.validators';
 
 export type LinkTargetPropType = '_blank' | '_parent' | '_self' | '_top' | string;
