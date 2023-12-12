@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { a11yHint } from '../../utils/a11y.tipps';

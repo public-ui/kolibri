@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { a11yHint } from '../a11y.tipps';
 import { watchNumber, WatchNumberOptions } from '../prop.validators';

@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 

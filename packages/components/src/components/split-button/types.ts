@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { IconsPropType, StencilUnknown } from '../../components';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';

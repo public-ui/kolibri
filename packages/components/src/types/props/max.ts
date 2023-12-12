@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { watchNumber, WatchNumberOptions } from '../../utils/prop.validators';
 import { RowsPropType } from './rows';

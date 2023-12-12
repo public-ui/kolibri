@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { PropImageSource } from '../../types/props/image-source';
 import { Loading } from '../../utils/validators/loading';

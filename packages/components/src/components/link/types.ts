@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { LinkUseCase } from '../../types/button-link';
 import { AlignPropType } from '../../types/props/align';

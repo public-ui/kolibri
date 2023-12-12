@@ -4,7 +4,7 @@ import rgba from 'rgba-convert';
 import { Subject } from 'rxjs';
 import { hex, score } from 'wcag-contrast';
 
-import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
+import { Generic, patchTheme, patchThemeTag } from 'adopted-style-sheets';
 
 import { Stringified } from '../types/common';
 import { AriaCurrentPropType } from '../types/props/aria-current';

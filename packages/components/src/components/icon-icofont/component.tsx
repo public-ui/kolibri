@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 import { Component, h, JSX, Prop } from '@stencil/core';
 
 import { Icofont } from '../../types/icofont';
