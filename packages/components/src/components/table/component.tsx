@@ -189,21 +189,20 @@ export class KolTable implements API {
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
 						beforePatch: (nextValue: unknown) => {
+							const applySort = (headers: KoliBriTableHeaderCell[]) => {
+								headers.forEach((cell, i) => {
+									const sortDirection = cell.sortDirection;
+									if (typeof cell.sort === 'function' && (sortDirection === 'ASC' || sortDirection === 'DESC')) {
+										this.setSortDirection(cell.sort, sortDirection);
+										setTimeout(() => this.updateSortedData({ key: cell.key || `cell-${i}`, label: cell.label, sortDirection }));
+									}
+								});
+							};
+
 							const headers: KoliBriTableHeaders = nextValue as KoliBriTableHeaders;
-							headers.horizontal?.forEach((header) => {
-								header.forEach((cell) => {
-									if (typeof cell.sort === 'function' && typeof cell.sortDirection === 'string') {
-										this.setSortDirection(cell.sort, cell.sortDirection);
-									}
-								});
-							});
-							headers.vertical?.forEach((header) => {
-								header.forEach((cell) => {
-									if (typeof cell.sort === 'function' && typeof cell.sortDirection === 'string') {
-										this.setSortDirection(cell.sort, cell.sortDirection);
-									}
-								});
-							});
+							headers.horizontal?.forEach(applySort);
+							headers.vertical?.forEach(applySort);
+
 							if (headers.horizontal && headers.vertical && headers.horizontal?.length > 0 && headers.vertical?.length > 0) {
 								this.disableSort = true;
 								devHint(
@@ -496,7 +495,7 @@ export class KolTable implements API {
 						this.state._data
 					);
 					if (typeof html === 'string') {
-						el.innerHTML = html;
+						el.textContent = html;
 					}
 				})
 			);
@@ -567,9 +566,10 @@ export class KolTable implements API {
 								'w-full': true,
 								[headerCell.textAlign as string]: typeof headerCell.textAlign === 'string' && headerCell.textAlign.length > 0,
 							}}
-							innerHTML={headerCell.label}
 							style={{ textAlign: headerCell.textAlign }}
-						></div>
+						>
+							{headerCell.label}
+						</div>
 						{!this.disableSort && typeof headerCell.sort === 'function' && (
 							<kol-button
 								exportparts="icon"
@@ -620,8 +620,9 @@ export class KolTable implements API {
 							  }
 							: undefined
 					}
-					innerHTML={typeof cell.render !== 'function' ? cell.label : ''}
-				></td>
+				>
+					{typeof cell.render !== 'function' ? cell.label : ''}
+				</td>
 			);
 		}
 	};
@@ -698,8 +699,9 @@ export class KolTable implements API {
 																  }
 																: undefined
 														}
-														innerHTML={typeof col.render !== 'function' ? col.label : ''}
-													></td>
+													>
+														{typeof col.render !== 'function' ? col.label : ''}
+													</td>
 												);
 											} else {
 												const headerCell: KoliBriTableHeaderCell = col;
@@ -736,11 +738,12 @@ export class KolTable implements API {
 																	'w-full': true,
 																	[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
 																}}
-																innerHTML={col.label}
 																style={{
 																	textAlign: col.textAlign,
 																}}
-															></div>
+															>
+																{col.label}
+															</div>
 															{!this.disableSort && typeof headerCell.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"

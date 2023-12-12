@@ -12,7 +12,7 @@ export const register = async (
 	options?: RegisterOptions
 ): Promise<void[]> => {
 	if (STORE.I18n === undefined) {
-		const i18n = await I18nextService.getInstance(options?.translation?.name ?? 'de', options?.translations);
+		const i18n = await I18nextService.createInstance(options?.translation?.name ?? 'de', options?.translations);
 		Object.defineProperty(STORE, 'I18n', {
 			value: i18n,
 			writable: false,

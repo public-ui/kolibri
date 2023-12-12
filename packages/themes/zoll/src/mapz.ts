@@ -999,6 +999,13 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	}
 	.disabled {
 		opacity: 0.33;
+	}
+	.button:focus-within {
+		border-radius: var(--kolibri-border-radius);
+		outline-color: var(--kolibri-color-outline);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
 	}`,
 	'KOL-INPUT-RADIO': `label {
 		cursor: pointer;
@@ -1762,7 +1769,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	.list.horizontal > li:not(:first-child) {
 		border-left: 0.1em dotted white;
 	}
-	.vertical li.has-children.selected {
+	.vertical li.active {
 		border-right: 0.375em solid var(--kolibri-color-accent);
 	}
 	.entry {

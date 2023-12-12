@@ -14,7 +14,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'develop'
+          ref: 'release/1.7'
       - name: git-sync
         run: |
           git remote add opencode https://OC000005112572:${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}@gitlab.opencode.de/OC000005112572/kolibri.git

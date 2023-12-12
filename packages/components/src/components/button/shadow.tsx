@@ -25,11 +25,9 @@ import { Props } from './types';
 })
 export class KolButton implements Props {
 	@Element() private readonly host?: HTMLKolButtonElement;
-	private ref?: HTMLKolButtonWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propagateFocus(this.host, ref);
 	};
 
 	public render(): JSX.Element {

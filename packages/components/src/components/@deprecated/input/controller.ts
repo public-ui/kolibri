@@ -2,6 +2,7 @@ import { Generic } from 'adopted-style-sheets';
 
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { AdjustHeightPropType, validateAdjustHeight } from '../../../types/props/adjust-height';
+import { HideErrorPropType, validateHideError } from '../../../types/props/hide-error';
 import { validateHideLabel } from '../../../types/props/hide-label';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../../types/props/label';
 import { a11yHint, a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
@@ -42,6 +43,18 @@ export class InputController extends ControlledInputController implements Watche
 
 	public validateError(value?: string): void {
 		watchString(this.component, '_error', value);
+	}
+
+	public validateHideError(value?: HideErrorPropType): void {
+		validateHideError(this.component, value, {
+			hooks: {
+				afterPatch: () => {
+					if (this.component.state._hideError) {
+						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
+					}
+				},
+			},
+		});
 	}
 
 	public validateHideLabel(value?: boolean): void {
@@ -106,6 +119,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateAdjustHeight(this.component._adjustHeight);
 		this.validateError(this.component._error);
 		this.validateDisabled(this.component._disabled);
+		this.validateHideError(this.component._hideError);
 		this.validateHideLabel(this.component._hideLabel);
 		this.validateHint(this.component._hint);
 		this.validateId(this.component._id);
@@ -133,7 +147,6 @@ export class InputController extends ControlledInputController implements Watche
 		const value = (event.target as HTMLInputElement).value;
 
 		// Event handling
-		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, value);
 
 		// Static form handling

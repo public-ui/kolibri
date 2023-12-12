@@ -2,11 +2,9 @@ import { Generic } from 'adopted-style-sheets';
 
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { OptionsWithOptgroupPropType, validateOptionsWithOptgroup } from '../../types/props/options';
 import { RowsPropType, validateRows } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
-import { a11yHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchJsonArrayString, watchString } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -66,18 +64,6 @@ export class SelectController extends InputIconController implements Watches {
 			}
 		}
 	};
-
-	public validateHideError(value?: HideErrorPropType): void {
-		validateHideError(this.component, value, {
-			hooks: {
-				afterPatch: () => {
-					if (this.component.state._hideError) {
-						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
-					}
-				},
-			},
-		});
-	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
@@ -139,7 +125,6 @@ export class SelectController extends InputIconController implements Watches {
 		};
 
 		this.validateHeight(this.component._height);
-		this.validateHideError(this.component._hideError);
 		this.validateOptions(this.component._options || this.component._list);
 		this.validateMultiple(this.component._multiple);
 		this.validateRequired(this.component._required);

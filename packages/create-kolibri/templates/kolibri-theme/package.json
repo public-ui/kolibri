@@ -1,57 +1,49 @@
 {
-	"name": "{{kebab name}}",
-	"version": "0.0.0",
-	"description": "{{description}}",
-	"author": {
-		"name": "{{author}}",
-		"email": "{{email}}"
-	},
+	"name": "@public-ui/visual-tests",
+	"version": "1.7.6",
 	"license": "EUPL-1.2",
-	"private": false,
+	"homepage": "https://public-ui.github.io",
+	"repository": "https://github.com/public-ui/kolibri",
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"type": "module",
+	"sideEffects": false,
+	"description": "Provides utility to run visual regression tests for themes.",
 	"scripts": {
-		"build": "unbuild",
-		"depcheck": "depcheck",
+		"depcheck": "depcheck --ignores=@babel/plugin-syntax-import-attributes,@babel/preset-env,@public-ui/sample-react,portfinder,serve",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
-		"prepack": "unbuild",
-		"test": "THEME_MODULE=src/index THEME_EXPORT={{capital name}} kolibri-visual-test",
-		"test-update": "THEME_MODULE=src/index THEME_EXPORT={{capital name}} kolibri-visual-test --update-snapshots",
-		"unused": "knip",
-		"update": "ncu -t minor -u && ncu"
+		"lint": "eslint src",
+		"unused": "knip"
+	},
+	"bin": {
+		"kolibri-visual-test": "src/index.js"
+	},
+	"dependencies": {
+		"@playwright/test": "1.40.0",
+		"@public-ui/sample-react": "1.7.6",
+		"axe-playwright": "1.2.3",
+		"portfinder": "1.0.32",
+		"serve": "14.2.1"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.7.2",
-		"@public-ui/schema": "1.7.2",
-		"@public-ui/visual-tests": "1.7.2",
-		"@types/node": "ts5.2",
-		"@typescript-eslint/eslint-plugin": "6.7.0",
-		"@typescript-eslint/parser": "6.7.0",
-		"depcheck": "1.4.6",
-		"eslint": "8.49.0",
+		"@babel/eslint-parser": "7.23.3",
+		"@babel/plugin-syntax-import-attributes": "7.23.3",
+		"@babel/preset-env": "7.23.3",
+		"depcheck": "1.4.7",
+		"eslint": "8.54.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "2.24.1",
-		"npm-check-updates":"16.14.4",
-		"prettier":"3.0.3",
-		"typescript": "5.2.2",
-		"unbuild": "1.2.1"
+		"knip": "3.0.2",
+		"prettier": "3.1.0"
 	},
-	"peerDependencies": {
-		"@public-ui/components": "1.7.2"
-	},
-	"sideEffects": false,
-	"type": "module",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs"
-		}
-	},
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
 	"files": [
-		"assets",
-		"dist"
+		"playwright.config.js",
+		"src",
+		"tests"
 	]
 }
