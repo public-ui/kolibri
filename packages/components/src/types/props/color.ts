@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { ColorContrast, createContrastColorPair } from '../../components/badge/contrast';
 import { a11yHint } from '../../utils/a11y.tipps';

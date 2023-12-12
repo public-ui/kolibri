@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { LinkUseCase } from '../../types/button-link';
 import { AlignPropType } from '../../types/props/align';

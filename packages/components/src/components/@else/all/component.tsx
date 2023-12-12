@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 import { h, Host, JSX, State } from '@stencil/core';
 
 import { Bundesministerium } from '../../../enums/bund';

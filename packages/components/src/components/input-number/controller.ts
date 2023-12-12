@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';

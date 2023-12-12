@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 import { Component, h, JSX, Prop } from '@stencil/core';
 
 import { FontAwesome, FontAwesomeOssPrefix } from '../../enums/font-awesome';

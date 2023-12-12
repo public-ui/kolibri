@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { PropHideLabel } from './props/hide-label';
 import { PropHref } from './props/href';

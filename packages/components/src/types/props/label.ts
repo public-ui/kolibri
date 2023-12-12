@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { a11yHint, uiUxHint } from '../../utils/a11y.tipps';
 import { WatchStringOptions, watchValidator } from '../../utils/prop.validators';

@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';

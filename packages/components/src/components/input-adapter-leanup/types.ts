@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {

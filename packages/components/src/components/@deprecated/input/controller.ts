@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { AdjustHeightPropType, validateAdjustHeight } from '../../../types/props/adjust-height';

@@ -1,6 +1,6 @@
 import { Events } from '../../enums/events';
 import { EventCallback, EventValueOrEventCallback } from '../callbacks';
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 import { watchValidator } from '../../utils/prop.validators';
 import { StencilUnknown } from '../unknown';
 

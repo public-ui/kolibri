@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { PropLabelWithExpertSlot } from '../../types/props/label';

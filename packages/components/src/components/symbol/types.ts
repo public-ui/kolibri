@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropLabel } from '../../types/props/label';

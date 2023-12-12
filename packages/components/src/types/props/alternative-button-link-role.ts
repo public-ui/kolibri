@@ -1,5 +1,5 @@
 /* types */
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 import { watchString } from '../../utils/prop.validators';
 
 export type AlternativeButtonLinkRolePropType = 'button' | 'link' | 'tab';

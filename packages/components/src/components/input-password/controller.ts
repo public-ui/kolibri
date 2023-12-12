@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { InputTypeOnOff } from '../../types/input/types';
 import { validateHasCounter } from '../../types/props/has-counter';

@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { LabelPropType } from '../../types/props/label';
 import { AlertType } from '../alert/types';

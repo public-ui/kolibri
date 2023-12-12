@@ -1,4 +1,4 @@
-import { Generic } from 'adopted-style-sheets';
+import type { Generic } from 'adopted-style-sheets';
 
 import { validateTouched } from '../../types/props/touched';
 import { watchBoolean } from '../../utils/prop.validators';
