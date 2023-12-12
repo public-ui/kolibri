@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { PropAdjustHeight } from '../../types/props/adjust-height';

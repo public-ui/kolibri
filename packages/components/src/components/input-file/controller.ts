@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';

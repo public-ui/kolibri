@@ -3,7 +3,7 @@ import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
-import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
+import { Generic, patchTheme, patchThemeTag } from 'adopted-style-sheets';
 
 import { Stringified } from '../types/common';
 import { StencilUnknown } from '../types/unknown';

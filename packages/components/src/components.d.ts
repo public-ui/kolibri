@@ -32,12 +32,10 @@ import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { EventCallbacks } from "./components/details/types";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { HeadingVariantPropType } from "./types/props/heading-variant";
-import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
-import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
-import { InputTypeOnDefault, InputTypeOnOff, Option } from "./types/input/types";
+import { InputTypeOnDefault, InputTypeOnOff } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType } from "./types/input/control/number";
 import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
@@ -63,7 +61,6 @@ import { SpinVariantPropType } from "./types/props/variant/spin";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
-import { KoliBriToastEventCallbacks } from "./types/toast";
 import { Toast, ToastState } from "./components/toaster/types";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { TooltipAlignPropType } from "./types/props/tooltip-align";
@@ -92,12 +89,10 @@ export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { EventCallbacks } from "./components/details/types";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { HeadingVariantPropType } from "./types/props/heading-variant";
-export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
-export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
-export { InputTypeOnDefault, InputTypeOnOff, Option } from "./types/input/types";
+export { InputTypeOnDefault, InputTypeOnOff } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType } from "./types/input/control/number";
 export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
@@ -123,7 +118,6 @@ export { SpinVariantPropType } from "./types/props/variant/spin";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
-export { KoliBriToastEventCallbacks } from "./types/toast";
 export { Toast, ToastState } from "./components/toaster/types";
 export namespace Components {
     interface KolAbbr {
@@ -602,46 +596,6 @@ export namespace Components {
          */
         "_label": LabelPropType;
     }
-    /**
-     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
-     */
-    interface KolIconFontAwesome {
-        /**
-          * Setzt die semantische Beschriftung der Komponente.
-         */
-        "_ariaLabel": string;
-        /**
-          * Gibt einen Identifier eines Font Awesome Icons an. (https://fontawesome.com/v5.15/icons)
-         */
-        "_icon": FontAwesome;
-        /**
-          * Deprecated: Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_part"?: string;
-        /**
-          * Gibt den Prefix der Font Awesome Icons an. (https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use)
-         */
-        "_prefix": FontAwesomeOssPrefix;
-    }
-    /**
-     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
-     */
-    interface KolIconIcofont {
-        /**
-          * Setzt die semantische Beschriftung der Komponente.
-         */
-        "_ariaLabel": string;
-        /**
-          * Gibt einen Identifier eines Icofont Icons an. (https://icofont.com/icons)
-         */
-        "_icon": Icofont;
-        /**
-          * Deprecated: Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_part"?: string;
-    }
     interface KolImage {
         /**
           * Setzt den alternativen Text.
@@ -756,11 +710,6 @@ export namespace Components {
           * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
-    }
-    /**
-     * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
-     */
-    interface KolInputAdapterLeanup {
     }
     interface KolInputCheckbox {
         /**
@@ -1575,76 +1524,6 @@ export namespace Components {
          */
         "_value"?: Stringified<W3CInputValue>;
         "getValue": () => Promise<W3CInputValue | undefined>;
-    }
-    /**
-     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
-     */
-    interface KolInputRadioGroup {
-        /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-         */
-        "_accessKey"?: string;
-        /**
-          * Defines whether the screen-readers should read out the notification.
-         */
-        "_alert"?: boolean;
-        /**
-          * Makes the element not focusable and ignore all events.
-         */
-        "_disabled"?: boolean;
-        /**
-          * Defines the error message text.
-         */
-        "_error"?: string;
-        /**
-          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
-          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-         */
-        "_hideLabel"?: boolean;
-        /**
-          * Defines the hint text.
-         */
-        "_hint"?: string;
-        /**
-          * Defines the internal ID of the primary component element.
-         */
-        "_id"?: string;
-        /**
-          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-         */
-        "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Gibt die Liste der Optionen für das Eingabefeld an.
-         */
-        "_list": Stringified<Option<W3CInputValue>[]>;
-        /**
-          * Defines the technical name of an input field.
-         */
-        "_name"?: string;
-        /**
-          * Gibt die EventCallback-Funktionen für das Input-Event an.
-         */
-        "_on"?: InputTypeOnDefault;
-        /**
-          * Defines whether the orientation of the component is horizontal or vertical.
-         */
-        "_orientation"?: Orientation;
-        /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
-         */
-        "_required"?: boolean;
-        /**
-          * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
-         */
-        "_tabIndex"?: number;
-        /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
-         */
-        "_touched"?: boolean;
-        /**
-          * Defines the value of the input.
-         */
-        "_value"?: W3CInputValue;
     }
     interface KolInputRange {
         /**
@@ -2614,50 +2493,6 @@ export namespace Components {
         "_value"?: string;
         "getValue": () => Promise<string | undefined>;
     }
-    /**
-     * @deprecated - Use ToastService - see toaster
-     */
-    interface KolToast {
-        /**
-          * Defines whether the screen-readers should read out the notification.
-         */
-        "_alert"?: boolean;
-        /**
-          * Defines whether the element can be closed.
-          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
-         */
-        "_hasCloser"?: boolean;
-        /**
-          * Deprecated: Gibt die Beschriftung der Komponente an.
-          * @deprecated Use _label.
-         */
-        "_heading"?: string;
-        /**
-          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-         */
-        "_label"?: LabelPropType;
-        /**
-          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
-         */
-        "_level"?: HeadingLevel;
-        /**
-          * Gibt die EventCallback-Function für das Schließen des Toasts an.
-         */
-        "_on"?: KoliBriToastEventCallbacks;
-        /**
-          * Makes the element show up.
-          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
-         */
-        "_show"?: boolean;
-        /**
-          * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
-         */
-        "_showDuration"?: number;
-        /**
-          * Defines either the type of the component or of the components interactive element.
-         */
-        "_type"?: AlertType;
-    }
     interface KolToastContainer {
         "closeAll": () => Promise<void>;
         "enqueue": (toast: Toast) => Promise<() => void>;
@@ -2811,24 +2646,6 @@ declare global {
         prototype: HTMLKolIconElement;
         new (): HTMLKolIconElement;
     };
-    /**
-     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
-     */
-    interface HTMLKolIconFontAwesomeElement extends Components.KolIconFontAwesome, HTMLStencilElement {
-    }
-    var HTMLKolIconFontAwesomeElement: {
-        prototype: HTMLKolIconFontAwesomeElement;
-        new (): HTMLKolIconFontAwesomeElement;
-    };
-    /**
-     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
-     */
-    interface HTMLKolIconIcofontElement extends Components.KolIconIcofont, HTMLStencilElement {
-    }
-    var HTMLKolIconIcofontElement: {
-        prototype: HTMLKolIconIcofontElement;
-        new (): HTMLKolIconIcofontElement;
-    };
     interface HTMLKolImageElement extends Components.KolImage, HTMLStencilElement {
     }
     var HTMLKolImageElement: {
@@ -2846,15 +2663,6 @@ declare global {
     var HTMLKolInputElement: {
         prototype: HTMLKolInputElement;
         new (): HTMLKolInputElement;
-    };
-    /**
-     * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
-     */
-    interface HTMLKolInputAdapterLeanupElement extends Components.KolInputAdapterLeanup, HTMLStencilElement {
-    }
-    var HTMLKolInputAdapterLeanupElement: {
-        prototype: HTMLKolInputAdapterLeanupElement;
-        new (): HTMLKolInputAdapterLeanupElement;
     };
     interface HTMLKolInputCheckboxElement extends Components.KolInputCheckbox, HTMLStencilElement {
     }
@@ -2903,15 +2711,6 @@ declare global {
     var HTMLKolInputRadioElement: {
         prototype: HTMLKolInputRadioElement;
         new (): HTMLKolInputRadioElement;
-    };
-    /**
-     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
-     */
-    interface HTMLKolInputRadioGroupElement extends Components.KolInputRadioGroup, HTMLStencilElement {
-    }
-    var HTMLKolInputRadioGroupElement: {
-        prototype: HTMLKolInputRadioGroupElement;
-        new (): HTMLKolInputRadioGroupElement;
     };
     interface HTMLKolInputRangeElement extends Components.KolInputRange, HTMLStencilElement {
     }
@@ -3057,15 +2856,6 @@ declare global {
         prototype: HTMLKolTextareaElement;
         new (): HTMLKolTextareaElement;
     };
-    /**
-     * @deprecated - Use ToastService - see toaster
-     */
-    interface HTMLKolToastElement extends Components.KolToast, HTMLStencilElement {
-    }
-    var HTMLKolToastElement: {
-        prototype: HTMLKolToastElement;
-        new (): HTMLKolToastElement;
-    };
     interface HTMLKolToastContainerElement extends Components.KolToastContainer, HTMLStencilElement {
     }
     var HTMLKolToastContainerElement: {
@@ -3105,12 +2895,9 @@ declare global {
         "kol-heading": HTMLKolHeadingElement;
         "kol-heading-wc": HTMLKolHeadingWcElement;
         "kol-icon": HTMLKolIconElement;
-        "kol-icon-font-awesome": HTMLKolIconFontAwesomeElement;
-        "kol-icon-icofont": HTMLKolIconIcofontElement;
         "kol-image": HTMLKolImageElement;
         "kol-indented-text": HTMLKolIndentedTextElement;
         "kol-input": HTMLKolInputElement;
-        "kol-input-adapter-leanup": HTMLKolInputAdapterLeanupElement;
         "kol-input-checkbox": HTMLKolInputCheckboxElement;
         "kol-input-color": HTMLKolInputColorElement;
         "kol-input-date": HTMLKolInputDateElement;
@@ -3119,7 +2906,6 @@ declare global {
         "kol-input-number": HTMLKolInputNumberElement;
         "kol-input-password": HTMLKolInputPasswordElement;
         "kol-input-radio": HTMLKolInputRadioElement;
-        "kol-input-radio-group": HTMLKolInputRadioGroupElement;
         "kol-input-range": HTMLKolInputRangeElement;
         "kol-input-text": HTMLKolInputTextElement;
         "kol-kolibri": HTMLKolKolibriElement;
@@ -3144,7 +2930,6 @@ declare global {
         "kol-table": HTMLKolTableElement;
         "kol-tabs": HTMLKolTabsElement;
         "kol-textarea": HTMLKolTextareaElement;
-        "kol-toast": HTMLKolToastElement;
         "kol-toast-container": HTMLKolToastContainerElement;
         "kol-tooltip-wc": HTMLKolTooltipWcElement;
         "kol-version": HTMLKolVersionElement;
@@ -3625,46 +3410,6 @@ declare namespace LocalJSX {
          */
         "_label": LabelPropType;
     }
-    /**
-     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
-     */
-    interface KolIconFontAwesome {
-        /**
-          * Setzt die semantische Beschriftung der Komponente.
-         */
-        "_ariaLabel": string;
-        /**
-          * Gibt einen Identifier eines Font Awesome Icons an. (https://fontawesome.com/v5.15/icons)
-         */
-        "_icon": FontAwesome;
-        /**
-          * Deprecated: Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_part"?: string;
-        /**
-          * Gibt den Prefix der Font Awesome Icons an. (https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use)
-         */
-        "_prefix": FontAwesomeOssPrefix;
-    }
-    /**
-     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
-     */
-    interface KolIconIcofont {
-        /**
-          * Setzt die semantische Beschriftung der Komponente.
-         */
-        "_ariaLabel": string;
-        /**
-          * Gibt einen Identifier eines Icofont Icons an. (https://icofont.com/icons)
-         */
-        "_icon": Icofont;
-        /**
-          * Deprecated: Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_part"?: string;
-    }
     interface KolImage {
         /**
           * Setzt den alternativen Text.
@@ -3779,11 +3524,6 @@ declare namespace LocalJSX {
           * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
-    }
-    /**
-     * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
-     */
-    interface KolInputAdapterLeanup {
     }
     interface KolInputCheckbox {
         /**
@@ -4590,76 +4330,6 @@ declare namespace LocalJSX {
           * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
          */
         "_value"?: Stringified<W3CInputValue>;
-    }
-    /**
-     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
-     */
-    interface KolInputRadioGroup {
-        /**
-          * Defines which key combination can be used to trigger or focus the interactive element of the component.
-         */
-        "_accessKey"?: string;
-        /**
-          * Defines whether the screen-readers should read out the notification.
-         */
-        "_alert"?: boolean;
-        /**
-          * Makes the element not focusable and ignore all events.
-         */
-        "_disabled"?: boolean;
-        /**
-          * Defines the error message text.
-         */
-        "_error"?: string;
-        /**
-          * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
-          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-         */
-        "_hideLabel"?: boolean;
-        /**
-          * Defines the hint text.
-         */
-        "_hint"?: string;
-        /**
-          * Defines the internal ID of the primary component element.
-         */
-        "_id"?: string;
-        /**
-          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-         */
-        "_label"?: LabelWithExpertSlotPropType;
-        /**
-          * Gibt die Liste der Optionen für das Eingabefeld an.
-         */
-        "_list": Stringified<Option<W3CInputValue>[]>;
-        /**
-          * Defines the technical name of an input field.
-         */
-        "_name"?: string;
-        /**
-          * Gibt die EventCallback-Funktionen für das Input-Event an.
-         */
-        "_on"?: InputTypeOnDefault;
-        /**
-          * Defines whether the orientation of the component is horizontal or vertical.
-         */
-        "_orientation"?: Orientation;
-        /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
-         */
-        "_required"?: boolean;
-        /**
-          * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
-         */
-        "_tabIndex"?: number;
-        /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
-         */
-        "_touched"?: boolean;
-        /**
-          * Defines the value of the input.
-         */
-        "_value"?: W3CInputValue;
     }
     interface KolInputRange {
         /**
@@ -5625,50 +5295,6 @@ declare namespace LocalJSX {
          */
         "_value"?: string;
     }
-    /**
-     * @deprecated - Use ToastService - see toaster
-     */
-    interface KolToast {
-        /**
-          * Defines whether the screen-readers should read out the notification.
-         */
-        "_alert"?: boolean;
-        /**
-          * Defines whether the element can be closed.
-          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
-         */
-        "_hasCloser"?: boolean;
-        /**
-          * Deprecated: Gibt die Beschriftung der Komponente an.
-          * @deprecated Use _label.
-         */
-        "_heading"?: string;
-        /**
-          * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-         */
-        "_label"?: LabelPropType;
-        /**
-          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
-         */
-        "_level"?: HeadingLevel;
-        /**
-          * Gibt die EventCallback-Function für das Schließen des Toasts an.
-         */
-        "_on"?: KoliBriToastEventCallbacks;
-        /**
-          * Makes the element show up.
-          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
-         */
-        "_show"?: boolean;
-        /**
-          * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
-         */
-        "_showDuration"?: number;
-        /**
-          * Defines either the type of the component or of the components interactive element.
-         */
-        "_type"?: AlertType;
-    }
     interface KolToastContainer {
     }
     interface KolTooltipWc {
@@ -5716,12 +5342,9 @@ declare namespace LocalJSX {
         "kol-heading": KolHeading;
         "kol-heading-wc": KolHeadingWc;
         "kol-icon": KolIcon;
-        "kol-icon-font-awesome": KolIconFontAwesome;
-        "kol-icon-icofont": KolIconIcofont;
         "kol-image": KolImage;
         "kol-indented-text": KolIndentedText;
         "kol-input": KolInput;
-        "kol-input-adapter-leanup": KolInputAdapterLeanup;
         "kol-input-checkbox": KolInputCheckbox;
         "kol-input-color": KolInputColor;
         "kol-input-date": KolInputDate;
@@ -5730,7 +5353,6 @@ declare namespace LocalJSX {
         "kol-input-number": KolInputNumber;
         "kol-input-password": KolInputPassword;
         "kol-input-radio": KolInputRadio;
-        "kol-input-radio-group": KolInputRadioGroup;
         "kol-input-range": KolInputRange;
         "kol-input-text": KolInputText;
         "kol-kolibri": KolKolibri;
@@ -5755,7 +5377,6 @@ declare namespace LocalJSX {
         "kol-table": KolTable;
         "kol-tabs": KolTabs;
         "kol-textarea": KolTextarea;
-        "kol-toast": KolToast;
         "kol-toast-container": KolToastContainer;
         "kol-tooltip-wc": KolTooltipWc;
         "kol-version": KolVersion;
@@ -5788,21 +5409,9 @@ declare module "@stencil/core" {
             "kol-heading": LocalJSX.KolHeading & JSXBase.HTMLAttributes<HTMLKolHeadingElement>;
             "kol-heading-wc": LocalJSX.KolHeadingWc & JSXBase.HTMLAttributes<HTMLKolHeadingWcElement>;
             "kol-icon": LocalJSX.KolIcon & JSXBase.HTMLAttributes<HTMLKolIconElement>;
-            /**
-             * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
-             */
-            "kol-icon-font-awesome": LocalJSX.KolIconFontAwesome & JSXBase.HTMLAttributes<HTMLKolIconFontAwesomeElement>;
-            /**
-             * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
-             */
-            "kol-icon-icofont": LocalJSX.KolIconIcofont & JSXBase.HTMLAttributes<HTMLKolIconIcofontElement>;
             "kol-image": LocalJSX.KolImage & JSXBase.HTMLAttributes<HTMLKolImageElement>;
             "kol-indented-text": LocalJSX.KolIndentedText & JSXBase.HTMLAttributes<HTMLKolIndentedTextElement>;
             "kol-input": LocalJSX.KolInput & JSXBase.HTMLAttributes<HTMLKolInputElement>;
-            /**
-             * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
-             */
-            "kol-input-adapter-leanup": LocalJSX.KolInputAdapterLeanup & JSXBase.HTMLAttributes<HTMLKolInputAdapterLeanupElement>;
             "kol-input-checkbox": LocalJSX.KolInputCheckbox & JSXBase.HTMLAttributes<HTMLKolInputCheckboxElement>;
             "kol-input-color": LocalJSX.KolInputColor & JSXBase.HTMLAttributes<HTMLKolInputColorElement>;
             "kol-input-date": LocalJSX.KolInputDate & JSXBase.HTMLAttributes<HTMLKolInputDateElement>;
@@ -5811,10 +5420,6 @@ declare module "@stencil/core" {
             "kol-input-number": LocalJSX.KolInputNumber & JSXBase.HTMLAttributes<HTMLKolInputNumberElement>;
             "kol-input-password": LocalJSX.KolInputPassword & JSXBase.HTMLAttributes<HTMLKolInputPasswordElement>;
             "kol-input-radio": LocalJSX.KolInputRadio & JSXBase.HTMLAttributes<HTMLKolInputRadioElement>;
-            /**
-             * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
-             */
-            "kol-input-radio-group": LocalJSX.KolInputRadioGroup & JSXBase.HTMLAttributes<HTMLKolInputRadioGroupElement>;
             "kol-input-range": LocalJSX.KolInputRange & JSXBase.HTMLAttributes<HTMLKolInputRangeElement>;
             "kol-input-text": LocalJSX.KolInputText & JSXBase.HTMLAttributes<HTMLKolInputTextElement>;
             "kol-kolibri": LocalJSX.KolKolibri & JSXBase.HTMLAttributes<HTMLKolKolibriElement>;
@@ -5839,10 +5444,6 @@ declare module "@stencil/core" {
             "kol-table": LocalJSX.KolTable & JSXBase.HTMLAttributes<HTMLKolTableElement>;
             "kol-tabs": LocalJSX.KolTabs & JSXBase.HTMLAttributes<HTMLKolTabsElement>;
             "kol-textarea": LocalJSX.KolTextarea & JSXBase.HTMLAttributes<HTMLKolTextareaElement>;
-            /**
-             * @deprecated - Use ToastService - see toaster
-             */
-            "kol-toast": LocalJSX.KolToast & JSXBase.HTMLAttributes<HTMLKolToastElement>;
             "kol-toast-container": LocalJSX.KolToastContainer & JSXBase.HTMLAttributes<HTMLKolToastContainerElement>;
             "kol-tooltip-wc": LocalJSX.KolTooltipWc & JSXBase.HTMLAttributes<HTMLKolTooltipWcElement>;
             "kol-version": LocalJSX.KolVersion & JSXBase.HTMLAttributes<HTMLKolVersionElement>;

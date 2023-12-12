@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { OptionalProps as LinkOptionalProps, RequiredProps as LinkRequiredProps } from '../link/types';

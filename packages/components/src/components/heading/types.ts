@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { PropLabelWithExpertSlot } from '../../types/props/label';

@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { KoliBriHorizontalIcons } from '../../types/icons';
 import { OptionalInputProps } from '../../types/input/control/number';

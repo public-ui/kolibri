@@ -67,7 +67,7 @@
 		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js"
 	},
 	"dependencies": {
-		"@a11y-ui/core": "1.1.0",
+		"adopted-style-sheets": "1.1.2",
 		"@floating-ui/dom": "1.5.3",
 		"@public-ui/schema": "2.0.0",
 		"i18next": "23.7.7",

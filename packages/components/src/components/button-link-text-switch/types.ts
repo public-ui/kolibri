@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 
 import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
 import { PropHideLabel } from '../../types/props/hide-label';
