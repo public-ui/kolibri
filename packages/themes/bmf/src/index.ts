@@ -304,9 +304,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
-		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
 			font-weight: 700;
@@ -386,9 +383,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -470,9 +464,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
-		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
 			font-weight: 700;
@@ -552,9 +543,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -636,9 +624,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -726,9 +711,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -822,9 +804,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -1394,9 +1373,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
-		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
 			font-weight: 700;
@@ -1504,9 +1480,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -2454,9 +2427,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
