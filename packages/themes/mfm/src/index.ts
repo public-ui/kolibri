@@ -42,6 +42,7 @@ export const MFM = KoliBri.createTheme('mfm', {
 			--spacing: 0.25em;
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			font-family: var(--font-family); /* font-size: var(--font-size); */
 		}
 		* {

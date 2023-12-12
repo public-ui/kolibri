@@ -25,6 +25,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			font-family: var(--font-family);
 			font-size: var(--font-size);
 		}

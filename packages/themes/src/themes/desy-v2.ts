@@ -39,7 +39,7 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		--spacing: 0.25em;
 	}
 	:host {
-		color: var(--color-black);
+		background-color: transparent; /* Reset global background-color defined by components */
 	}
 	:host * {
 		box-sizing: border-box;

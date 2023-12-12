@@ -39,6 +39,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		--kolibri-spacing: calc(2 * var(--spacing));
 	}
 	:host {
+		background-color: transparent; /* Reset global background-color defined by components */
 		font-family: var(--font-family); /* font-size: var(--font-size); */
 	}
 	* {
