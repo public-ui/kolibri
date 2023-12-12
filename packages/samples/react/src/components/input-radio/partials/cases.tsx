@@ -10,7 +10,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 		<div className="grid gap-4">
 			<KolInputRadio
 				{...props}
-				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
+				_options="[{'disabled':true,'label':'Frau','value':'Frau'},{'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
 				_label="Anrede"
 			/>
 			<KolInputRadio
