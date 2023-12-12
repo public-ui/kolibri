@@ -2092,7 +2092,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
 		}
-		fieldset #error {
+		kol-alert.error {
 			order: 1;
 		}
 		fieldset legend {
@@ -2103,12 +2103,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			order: 3;
 		}
 		fieldset.error {
-			padding-left: 1em;
 			border-left: 3px solid var(--color-red);
-		}
-		fieldset kol-alert#error {
 			color: var(--color-red);
 			font-weight: 700;
+			padding-left: 1em;
 		}
 		fieldset.error input:focus,
 		fieldset.error select:focus,
