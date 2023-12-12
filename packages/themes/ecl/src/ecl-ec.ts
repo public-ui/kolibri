@@ -560,7 +560,11 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		background-color: var(--color-blue);
 		border-color: var(--color-blue);
 	}`,
-	'KOL-INPUT-CHECKBOX': `input[type="checkbox"] {
+	'KOL-INPUT-CHECKBOX': `
+	.checkbox-container {
+		justify-content: flex-start;
+	}
+	input[type="checkbox"] {
 		background-color: var(--color-white);
 		border-width: 2px;
 		border-style: solid;
@@ -588,12 +592,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		background-color: var(--color-blue-130);
 		border-color: var(--color-blue-130);
 	}
-	input[type="checkbox"]:checked::before {
-		border-color: var(--color-white);
-	}
-	input[type="checkbox"]:indeterminate:hover::before {
-		background-color: var(--color-blue-130);
-	}
 	.error input[type="checkbox"] {
 		border-color: var(--color-red);
 	}
@@ -608,11 +606,17 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		background-color: var(--color-red-1xx);
 		border-color: var(--color-red-1xx);
 	}
-	.error input[type="checkbox"]:indeterminate:hover::before {
-		background-color: var(--color-red-1xx);
-	}
 	.error.required label > span::after {
 		color: var(--color-red);
+	}
+	.default .icon {
+		margin-left: 0.2rem;
+	}
+	.default.checked .icon {
+		color: var(--color-white);
+	}
+	.switch input[type='checkbox'] {
+		display: block;
 	}
 	.switch input[type="checkbox"]::before,
 	.switch input[type="checkbox"]:indeterminate::before {

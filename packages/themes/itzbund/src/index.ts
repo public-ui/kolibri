@@ -1304,7 +1304,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		border-top-color: var(--color-achat);
 		border-top-width: 1px;
 	}`,
-	'KOL-INPUT-CHECKBOX': `/* ALL INPUT, SELECT, TEXTAREA */
+	'KOL-INPUT-CHECKBOX': `
+	.checkbox-container {
+		justify-content: flex-start;
+	}
+	/* ALL INPUT, SELECT, TEXTAREA */
 	label {
 		cursor: pointer;
 	}
@@ -1364,13 +1368,6 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		cursor: pointer;
 		transition: 0.5s;
 	}
-	input[type="checkbox"].kol-disabled:before {
-		cursor: not-allowed;
-	}
-	input[type="checkbox"]:before {
-		content: "";
-		cursor: pointer;
-	}
 	input[type="checkbox"]:checked {
 		background-color: var(--color-petrol);
 		border-color: var(--color-petrol);
@@ -1381,41 +1378,17 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		min-width: calc(6 * 2 * var(--spacing));
 		width: calc(6 * 2 * var(--spacing));
 	}
-	.default input[type="checkbox"]:before {
-		/* border-radius: 0.25em; */
-		background-color: transparent;
-		display: block;
-		height: calc(6 * 2 * var(--spacing));
-		position: relative;
-		width: calc(6 * 2 * var(--spacing));
+	.default .icon {
+		margin-left: 0.25rem;
 	}
-	.default input[type="checkbox"]:checked:before {
-		border-right-width: 3px;
-		border-bottom-width: 3px;
-		left: calc(1.5 * 2 * var(--spacing) - 2px);
-		top: calc(2.85 * 2 * var(--spacing) - 2px);
-		transform: rotate(40deg) translate(-50%, -50%);
-		background-color: transparent;
-		border-width: 0px 3px 3px 0px;
-		border-color: white;
-		border-radius: 1px;
-		border-style: solid;
-		height: calc(3 * 2 * var(--spacing));
-		width: calc(1.5 * 2 * var(--spacing));
-	}
-	.default input[type="checkbox"]:indeterminate:before {
-		background-color: var(--kolibri-color-normal);
-		height: 0.375rem;
-		top: 0.45rem;
-		left: 0.15rem;
-		width: calc(4 * 2 * var(--spacing));
+	.default.checked .icon {
+		color: var(--color-weiss);
 	}
 	.switch input[type="checkbox"] {
-		/* border-radius: 0.25em; */
+		display: block;
 		min-width: 3.2em;
 		width: 3.2em;
 		height: 1.7em;
-		display: inline-block;
 		position: relative;
 	}
 	.switch input[type="checkbox"]:before {
@@ -1445,14 +1418,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		transform: translateX(0.75em);
 		background-color: var(--color-petrol);
 	}
-	.switch:has(input:not(:checked), input:indeterminate) .icon {
+	.switch:is(:not(.checked), .indeterminate) .icon {
 		color: #fff;
 	}
 	.disabled {
 		opacity: 0.33;
-	}
-	.default kol-icon {
-		display: none;
 	}
 	kol-input span.hint {
 		grid-column: span 2;

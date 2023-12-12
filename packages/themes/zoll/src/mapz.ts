@@ -874,6 +874,9 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		content: "*";
 		padding-left: 0.125em;
 	}
+	.checkbox-container {
+		justify-content: flex-start;
+	}
 	input:hover {
 		border-color: var(--kolibri-color-primary);
 	} /* NEU */
@@ -914,13 +917,6 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		cursor: pointer;
 		transition: 0.5s;
 	}
-	input[type="checkbox"].kol-disabled:before {
-		cursor: not-allowed;
-	}
-	input[type="checkbox"]:before {
-		content: "";
-		cursor: pointer;
-	}
 	input[type="checkbox"]:checked {
 		background-color: var(--kolibri-color-primary);
 		border-color: var(--kolibri-color-primary);
@@ -931,41 +927,21 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		min-width: calc(6 * var(--kolibri-spacing));
 		width: calc(6 * var(--kolibri-spacing));
 	}
-	.default input[type="checkbox"]:before {
-		border-radius: 0.25em;
-		background-color: transparent;
-		display: block;
-		height: calc(6 * var(--kolibri-spacing));
-		position: relative;
-		width: calc(6 * var(--kolibri-spacing));
+	.default .icon {
+		margin-left: 0.25rem;
 	}
-	.default input[type="checkbox"]:checked:before {
-		border-right-width: 3px;
-		border-bottom-width: 3px;
-		left: calc(1.5 * var(--kolibri-spacing) - 2px);
-		top: calc(2.85 * var(--kolibri-spacing) - 2px);
-		transform: rotate(40deg) translate(-50%, -50%);
-		background-color: transparent;
-		border-width: 0px 3px 3px 0px;
-		border-color: white;
-		border-radius: 1px;
-		border-style: solid;
-		height: calc(3 * var(--kolibri-spacing));
-		width: calc(1.5 * var(--kolibri-spacing));
+	.default.checked .icon {
+		color: #fff;
 	}
-	.default input[type="checkbox"]:indeterminate:before {
-		background-color: var(--kolibri-color-normal);
-		height: 0.375rem;
-		top: 0.45rem;
-		left: 0.15rem;
-		width: calc(4 * var(--kolibri-spacing));
+	.default.indeterminate .icon {
+		color: var(--kolibri-color-normal);
 	}
 	.switch input[type="checkbox"] {
+		display: block;
 		min-width: 3.2em;
 		width: 3.2em;
 		height: 1.7em;
 		border-radius: 0.25em;
-		display: inline-block;
 		position: relative;
 	}
 	.switch input[type="checkbox"]:before {
@@ -995,7 +971,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		transform: translateX(0.75em);
 		background-color: var(--kolibri-color-primary);
 	}
-	.switch:has(input:not(:checked), input:indeterminate) .icon {
+	.switch:is(.checked, .indeterminate) .icon {
 		color: #fff;
 	}
 	.disabled {
