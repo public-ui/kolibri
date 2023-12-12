@@ -4,7 +4,6 @@ import { KolBadge } from '@public-ui/react';
 import { FC } from 'react';
 
 const PROPS = {
-	_label: 'Label',
 	_smartButton: {
 		_icons: 'codicon codicon-close',
 		_label: 'Entfernen',
@@ -16,10 +15,10 @@ const PROPS = {
 
 export const BadgeButton: FC = () => (
 	<div className="flex gap-2">
-		<KolBadge {...PROPS}></KolBadge>
-		<KolBadge _color="#86ffc6" {...PROPS}></KolBadge>
-		<KolBadge _color="#06539e" {...PROPS}></KolBadge>
-		<KolBadge _color="#ae0000" {...PROPS}></KolBadge>
-		<KolBadge _color="#8b008b" {...PROPS}></KolBadge>
+		<KolBadge _label="schwarz" {...PROPS}></KolBadge>
+		<KolBadge _label="türkis" _color="#86ffc6" {...PROPS}></KolBadge>
+		<KolBadge _label="blau" _color="#06539e" {...PROPS}></KolBadge>
+		<KolBadge _label="rot" _color="#ae0000" {...PROPS}></KolBadge>
+		<KolBadge _label="lila" _color="#8b008b" {...PROPS}></KolBadge>
 	</div>
 );
