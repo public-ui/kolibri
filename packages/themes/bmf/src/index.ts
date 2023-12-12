@@ -296,6 +296,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
@@ -374,6 +378,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.required label > span::after {
 			content: '*';
 			padding-left: 0.125em;
+		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
 		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
@@ -454,6 +462,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
@@ -532,6 +544,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.required label > span::after {
 			content: '*';
 			padding-left: 0.125em;
+		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
 		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
@@ -612,6 +628,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.required label > span::after {
 			content: '*';
 			padding-left: 0.125em;
+		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
 		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
@@ -698,6 +718,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.required label > span::after {
 			content: '*';
 			padding-left: 0.125em;
+		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
 		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
@@ -790,6 +814,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.required label > span::after {
 			content: '*';
 			padding-left: 0.125em;
+		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
 		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
@@ -1358,6 +1386,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
@@ -1464,6 +1496,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.required label > span::after {
 			content: '*';
 			padding-left: 0.125em;
+		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
 		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
@@ -2410,6 +2446,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.required label > span::after {
 			content: '*';
 			padding-left: 0.125em;
+		}
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
 		}
 		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
