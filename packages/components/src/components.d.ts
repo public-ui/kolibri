@@ -1741,11 +1741,7 @@ export namespace Components {
     }
     interface KolKolibri {
         /**
-          * Gibt an, ob das Bild-Logo farblich animiert werden soll.
-         */
-        "_animate"?: boolean;
-        /**
-          * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
+          * Defines the color of the logo and label.
          */
         "_color"?: Stringified<PropColor>;
         /**
@@ -4545,11 +4541,7 @@ declare namespace LocalJSX {
     }
     interface KolKolibri {
         /**
-          * Gibt an, ob das Bild-Logo farblich animiert werden soll.
-         */
-        "_animate"?: boolean;
-        /**
-          * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
+          * Defines the color of the logo and label.
          */
         "_color"?: Stringified<PropColor>;
         /**

@@ -11,14 +11,6 @@ const DEFAULT_PATH_TAGS = `<path d="M353 322L213 304V434L353 322Z"></path>
 <path d="M391 286L565 272L421 252L391 286Z"></path>`;
 
 describe('Test KolKolibri', () => {
-	beforeAll(() => {
-		jest.useFakeTimers();
-	});
-
-	beforeEach(() => {
-		jest.clearAllTimers();
-	});
-
 	it('render default', async () => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
@@ -29,23 +21,6 @@ describe('Test KolKolibri', () => {
     <svg ${DEFAULT_HTML_SVG_PROPS} fill="rgb(0,60,120)">
       ${DEFAULT_PATH_TAGS}
       <text fill="rgb(0,60,120)" x="250" y="525">
-        KoliBri
-      </text>
-    </svg>
-  </mock:shadow-root>
-</kol-kolibri>`);
-	});
-
-	it('render animate', async () => {
-		const page = await newSpecPage({
-			components: COMPONENTS,
-			html: `<kol-kolibri _animate></kol-kolibri>`,
-		});
-		expect(page.root).toEqualHtml(`<kol-kolibri _animate="">
-  <mock:shadow-root>
-    <svg ${DEFAULT_HTML_SVG_PROPS} fill="rgb(225,169,56)">
-      ${DEFAULT_PATH_TAGS}
-      <text fill="rgb(225,169,56)" x="250" y="525">
         KoliBri
       </text>
     </svg>
