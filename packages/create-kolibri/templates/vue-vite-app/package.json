@@ -14,9 +14,9 @@
 		"start": "npm run dev"
 	},
 	"dependencies": {
-		"@public-ui/components": "2.0.0-rc.12",
-		"@public-ui/themes": "2.0.0-rc.12",
-		"@public-ui/vue": "2.0.0-rc.12",
+		"@public-ui/components": "2.0.0",
+		"@public-ui/themes": "2.0.0",
+		"@public-ui/vue": "2.0.0",
 		"vue": "3.3.4"
 	},
 	"devDependencies": {
