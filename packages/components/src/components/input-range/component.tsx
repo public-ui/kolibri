@@ -31,15 +31,15 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 })
 export class KolInputRange implements API {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
-	private ref?: HTMLInputElement;
+	private refInputNumber?: HTMLInputElement;
 	private refInputRange?: HTMLInputElement;
 
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
-			this.ref = element;
+			this.refInputNumber = element;
 			propagateFocus(this.host, element);
-			if (!this._value && this.ref?.value) {
-				this.validateValue(parseFloat(this.ref.value));
+			if (!this._value && this.refInputNumber?.value) {
+				this.validateValue(parseFloat(this.refInputNumber.value));
 			}
 		}
 	};
@@ -65,8 +65,8 @@ export class KolInputRange implements API {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
 	public async getValue(): Promise<number | undefined> {
-		if (this.ref !== undefined) {
-			const value = this.ref.value;
+		if (this.refInputNumber !== undefined) {
+			const value = this.refInputNumber.value;
 			return this.getSanitizedFloatValue(value);
 		}
 	}
@@ -84,7 +84,7 @@ export class KolInputRange implements API {
 		if (event.code === 'Enter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.ref,
+				ref: this.refInputNumber,
 			});
 		} else {
 			this.onChange(event);
