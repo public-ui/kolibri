@@ -1051,7 +1051,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--kolibri-color-primary);
 	}
-	fieldset #error {
+	kol-alert.error {
 		margin: 0.4em 0;
 		order: 3;
 	}

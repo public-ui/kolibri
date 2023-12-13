@@ -1036,7 +1036,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			box-shadow: 0 0 0.1rem black;
 			background-color: var(--color-blau);
 		}
-		fieldset #error {
+		kol-alert.error {
 			margin: 0.4em 0;
 			order: 3;
 		}
