@@ -32,6 +32,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 export class KolInputRange implements API {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
 	private ref?: HTMLInputElement;
+	private refInputange?: HTMLInputElement;
 
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
@@ -39,6 +40,16 @@ export class KolInputRange implements API {
 			propagateFocus(this.host, element);
 			if (!this._value && this.ref?.value) {
 				this.validateValue(parseFloat(this.ref.value));
+			}
+		}
+	};
+
+	private readonly catchInputRangeRef = (element?: HTMLInputElement) => {
+		if (element) {
+			this.refInputange = element;
+			propagateFocus(this.host, element);
+			if (!this._value && this.refInputange?.value) {
+				this.validateValue(parseFloat(this.refInputange.value));
 			}
 		}
 	};
@@ -82,6 +93,14 @@ export class KolInputRange implements API {
 			this.onChange(event);
 		}
 	};
+
+	componentDidLoad() {
+		if (this.refInputange) {
+			if (!this._value) {
+				this._value = parseFloat(this.refInputange.value);
+			}
+		}
+	}
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -129,10 +148,12 @@ export class KolInputRange implements API {
 							}}
 						>
 							<input
+								ref={this.catchInputRangeRef}
 								title=""
 								accessKey={this.state._accessKey}
 								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+								aria-hidden="true"
 								autoCapitalize="off"
 								autoComplete={this.state._autoComplete}
 								autoCorrect="off"
