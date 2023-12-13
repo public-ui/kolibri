@@ -1873,7 +1873,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			cursor: not-allowed;
 			background-color: var(--color-mute-variant);
 		}
-		fieldset #error {
+		kol-alert.error {
 			order: 1;
 		}
 		fieldset legend {
@@ -1887,7 +1887,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			padding-left: 1rem;
 			border-left: 3px solid var(--color-danger);
 		}
-		fieldset kol-alert#error {
+		kol-alert.error {
 			color: var(--color-danger);
 			font-weight: 700;
 		}
