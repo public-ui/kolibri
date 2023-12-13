@@ -140,7 +140,7 @@ export class KolInputRadio implements API {
 						);
 					})}
 					{hasError && (
-						<kol-alert id="error" _alert={true} _type="error" class={`error${this._hideError ? ' hidden' : ''}`}>
+						<kol-alert id={`${this.state._id}-error`} _alert={true} _type="error" class={`error${this._hideError ? ' hidden' : ''}`}>
 							{this.state._error}
 						</kol-alert>
 					)}

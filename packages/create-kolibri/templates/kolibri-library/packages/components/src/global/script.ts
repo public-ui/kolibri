@@ -1,4 +1,4 @@
-import { register } from '@a11y-ui/core';
+import { register } from 'adopted-style-sheets';
 import { KoliBri } from '@public-ui/schema';
 
 // ts-prune-ignore-next

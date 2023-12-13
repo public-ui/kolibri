@@ -17,7 +17,7 @@ We use **pnpm** as package manager and there is a tiny typing issue with the def
 We got a type annotation error in TypeScript.
 
 ```bash
-The inferred type of 'THEME' cannot be named without a reference to '.pnpm/@a11y-ui+core@***/node_modules/@a11y-ui/core/types/theming'. This is likely not portable. A type annotation is necessary.ts(2742)
+The inferred type of 'THEME' cannot be named without a reference to '.pnpm/@a11y-ui+core@***/node_modules/adopted-style-sheets/types/theming'. This is likely not portable. A type annotation is necessary.ts(2742)
 ```
 
 **What does we know?**

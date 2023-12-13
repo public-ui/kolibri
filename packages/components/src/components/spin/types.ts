@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { PropShow } from '../../types/props/show';
 import { PropSpinVariant } from '../../types/props/variant/spin';

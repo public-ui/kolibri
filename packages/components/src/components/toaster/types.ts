@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { LabelPropType } from '../../types/props/label';
 import { AlertType, AlertVariant } from '../alert/types';
