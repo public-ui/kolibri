@@ -16,13 +16,13 @@
 		"express": "4.18.2"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "6.13.1",
-		"@typescript-eslint/parser": "6.13.1",
+		"@typescript-eslint/eslint-plugin": "6.14.0",
+		"@typescript-eslint/parser": "6.14.0",
 		"cpy-cli": "5.0.0",
 		"eslint": "8.55.0",
 		"nodemon": "3.0.2",
 		"npm-run-all": "4.1.5",
 		"rimraf": "3.0.2",
-		"ts-node": "10.9.1"
+		"ts-node": "10.9.2"
 	}
 }

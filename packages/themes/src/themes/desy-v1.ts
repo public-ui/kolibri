@@ -1204,7 +1204,7 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
 	}
-	:host fieldset #error {
+	kol-alert.error {
 		order: 3;
 	}
 	:host fieldset legend {
@@ -1214,7 +1214,7 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 	:host fieldset kol-input {
 		order: 2;
 	}
-	:host fieldset kol-alert#error {
+	kol-alert.error {
 		padding-left: 0.5em;
 		color: var(--color-warning);
 	}

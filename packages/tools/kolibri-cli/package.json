@@ -34,15 +34,15 @@
 		"deepmerge": "4.3.1",
 		"gradient-string": "2.0.2",
 		"loglevel": "1.8.1",
-		"prettier": "3.1.0",
+		"prettier": "3.1.1",
 		"semver": "7.5.4"
 	},
 	"devDependencies": {
 		"@public-ui/components": "2.0.0",
 		"@types/gradient-string": "1.1.5",
-		"@types/node": "20.10.3",
-		"@typescript-eslint/eslint-plugin": "6.13.1",
-		"@typescript-eslint/parser": "6.13.1",
+		"@types/node": "20.10.4",
+		"@typescript-eslint/eslint-plugin": "6.14.0",
+		"@typescript-eslint/parser": "6.14.0",
 		"cpy-cli": "5.0.0",
 		"depcheck": "1.4.7",
 		"eslint": "8.55.0",
@@ -53,12 +53,12 @@
 		"eslint-plugin-jsx-a11y": "6.8.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"eslint-plugin-react": "7.33.2",
-		"knip": "3.4.0",
+		"knip": "3.7.0",
 		"mocha": "10.2.0",
 		"nodemon": "3.0.2",
 		"rimraf": "3.0.2",
-		"ts-node": "10.9.1",
-		"typescript": "5.3.2"
+		"ts-node": "10.9.2",
+		"typescript": "5.3.3"
 	},
 	"files": [
 		"dist"
