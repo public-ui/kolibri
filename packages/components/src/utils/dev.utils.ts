@@ -115,7 +115,7 @@ const initMeta = (): void => {
 	}
 };
 
-let KoliBri: Record<string, unknown> = {};
+const KoliBri: Record<string, unknown> = {};
 Object.defineProperty(window, 'KoliBri', {
 	get: function () {
 		return KoliBri;
