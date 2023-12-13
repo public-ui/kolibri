@@ -32,7 +32,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 export class KolInputRange implements API {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
 	private ref?: HTMLInputElement;
-	private refInputange?: HTMLInputElement;
+	private refInputRange?: HTMLInputElement;
 
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
@@ -46,11 +46,8 @@ export class KolInputRange implements API {
 
 	private readonly catchInputRangeRef = (element?: HTMLInputElement) => {
 		if (element) {
-			this.refInputange = element;
+			this.refInputRange = element;
 			propagateFocus(this.host, element);
-			if (!this._value && this.refInputange?.value) {
-				this.validateValue(parseFloat(this.refInputange.value));
-			}
 		}
 	};
 
@@ -95,10 +92,8 @@ export class KolInputRange implements API {
 	};
 
 	componentDidLoad() {
-		if (this.refInputange) {
-			if (!this._value) {
-				this._value = parseFloat(this.refInputange.value);
-			}
+		if (!this._value && this.refInputRange?.value) {
+			this.validateValue(parseFloat(this.refInputRange.value));
 		}
 	}
 
