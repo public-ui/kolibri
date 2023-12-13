@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/designer",
-	"version": "2.0.0-rc.12",
+	"version": "2.0.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -37,10 +37,10 @@
 	},
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",
-		"@public-ui/components": "2.0.0-rc.12",
-		"@public-ui/solid": "2.0.0-rc.12",
-		"@public-ui/themes": "2.0.0-rc.12",
-		"monaco-editor": "0.44.0",
+		"@public-ui/components": "2.0.0",
+		"@public-ui/solid": "2.0.0",
+		"@public-ui/themes": "2.0.0",
+		"monaco-editor": "0.45.0",
 		"monaco-editor-webpack-plugin": "7.1.0",
 		"prettier": "2.8.8",
 		"register-service-worker": "1.7.2",
@@ -55,7 +55,7 @@
 		"@unocss/preset-mini": "0.58.0",
 		"@unocss/webpack": "0.58.0",
 		"ajv": "8.12.0",
-		"chromedriver": "119.0.1",
+		"chromedriver": "120.0.0",
 		"cpy-cli": "5.0.0",
 		"depcheck": "1.4.7",
 		"eslint-plugin-jsx-a11y": "6.8.0",
@@ -66,7 +66,7 @@
 		"react-dev-utils": "12.0.1",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
-		"typescript": "5.3.2"
+		"typescript": "5.3.3"
 	},
 	"files": [
 		"dist"

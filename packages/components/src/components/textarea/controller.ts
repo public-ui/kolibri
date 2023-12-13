@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { HasCounterPropType } from '../../types/props/has-counter';
 import { RowsPropType, validateRows } from '../../types/props/rows';

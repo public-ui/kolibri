@@ -1,6 +1,6 @@
 /* Hier kommen alle Typen rein, die von der Komponente verwendet werden; 'States' und 'Props' werden in der Komponente mindestens benötigt. */
 
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 import { Events } from '../../enums/events';
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';

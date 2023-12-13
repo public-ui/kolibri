@@ -2,7 +2,7 @@ import { editor, KeyCode } from 'monaco-editor';
 import { format } from 'prettier';
 import parserCss from 'prettier/esm/parser-postcss.mjs';
 // import { KoliBriDevHelper } from '@public-ui/components';
-import { Generic, patchThemeTag } from '@a11y-ui/core';
+import { Generic, patchThemeTag } from 'adopted-style-sheets';
 import { storeThemes } from '../../shares/theme';
 
 /**

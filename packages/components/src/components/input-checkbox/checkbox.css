@@ -1,32 +1,27 @@
 @layer kol-component {
-	.default input[type='checkbox'] {
-		height: 1.5em;
-		width: 1.5em;
-	}
+	.default {
+		& .checkbox-container {
+			align-items: center;
+			display: flex;
+			height: var(--a11y-min-size);
+			justify-content: center;
+			position: relative;
+			width: var(--a11y-min-size);
+		}
 
-	.default input[type='checkbox']:before {
-		display: block;
-		height: 1.5em;
-		position: relative;
-		width: 1.5em;
-	}
+		& .icon {
+			display: block;
+			inset: auto;
+			position: absolute;
+			z-index: 1;
+		}
+		&:not(.checked):not(.indeterminate) .icon::part(icon) {
+			display: none;
+		}
 
-	.default input[type='checkbox']:checked:before {
-		border-radius: 1px;
-		border-style: solid;
-		border-width: 0 3px 3px 0;
-		height: 0.75em;
-		left: calc(0.375em - 2px);
-		transform: rotate(40deg) translate(-50%, -50%);
-		top: calc(0.7125em - 2px);
-		width: 0.375em;
-	}
-
-	.default input[type='checkbox']:indeterminate:before {
-		background-color: #000;
-		height: 0.2em;
-		left: 0.24em;
-		top: 0.575em;
-		width: 0.8em;
+		& .checkbox-input-element {
+			width: 22px;
+			height: 22px;
+		}
 	}
 }

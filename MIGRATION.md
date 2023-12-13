@@ -1,287 +1,70 @@
-# Breaking Changes for version 2.0.0
+# Migration
 
-## Removed Components
+## Introduction
 
-The following components have been removed entirely:
+New major versions of KoliBri are developed with the aim of simplifying maintenance and support and promoting further development.
 
-- kol-icon-font-awesome
-- kol-icon-icofont
-- kol-input-adapter-leanup
-- kol-input-radio-group
+This means that components, features or functionalities may be removed and technological prerequisites created to promote future innovative change.
 
-## Data Structures
+- **Maintenance and care strategy:**<br/>
+  We will always maintain the latest and previous major version of KoliBri. This means that we will fix bugs and close security gaps for these versions. For all other versions, we will no longer provide bug fixes or security updates without further notice.
+- **Further development:**<br/>
+  We will always continue to develop the latest major version of KoliBri. This means that we will provide new features and functionalities for these versions. For all other versions, we will no longer provide any new features or functionalities without further ado.
+- **Save an executable version before migration:**<br/>
+  Before the migration takes place, we recommend checking in an executable version so that there are no uncommitted changes to the source code to be migrated. This means that all changes can be easily tracked and checked during and after the migration.
+- **Migrationstool:**<br/>
+  We provide a migration tool that generally supports the migration of source code with KoliBri. This tool is able to migrate most breaking changes automatically. Further information can be found in the [Tool-Dokumentation (EN)](https://www.npmjs.com/package/@public-ui/kolibri-cli).
+- **Help and feedback:**<br/>
+  If there are any problems with the migration, we are happy to help. Please open an [Issue on GitHub](https://github.com/public-ui/kolibri/issues/new/choose).
 
-1. `Link` objects now longer support the `_icon` property, only `_icon`. The object shape remains the same.
+## Migration from version 1 to version 2
 
-Affected components:
+### Notes on upgrading to version 2
 
-- kol-breadcrumb
-- kol-button-link-text-switch
-- kol-link-group
-- kol-nav
-- kol-skip-nav
+1. **New features in version 2 already available from version 1.7:**<br/>
+   Most of the new features introduced in version 2 are already available from version 1.7 and higher. This means that applications based on version 1.7 or higher may already have the necessary functions to enable a smooth migration.
 
-2. `ColorPair` objects no longer support the `color` property, only the more explicit `foregroundColor`.
+2. **Removed properties, components and functionalities were already marked as obsolete in version 1.7 and higher:**<br/>
+   All features, components and functionalities that were removed in version 2 were already marked as deprecated in version 1.7 and higher. So if you have regularly updated your code base, you should already be prepared to replace these elements.
 
-Affected components:
+3. **Migration from version 1.7 minimizes potential changes:**<br/>
+   A migration from version 1.7 and higher to version 2.0.0 will probably require the least adjustments. The likelihood of incompatibilities is low, as most changes and removals have already been marked as obsolete in previous versions.
 
-- kol-badge
-- kol-kolibri
+4. **Migration from version 1.4 is possible:**<br/>
+   Although a migration from version 1.7 is recommended, it is also possible to migrate from version 1.4 to version 2.0.0. Please note, however, that this may require additional adjustments, as some of the necessary functions may only be available from version 1.7.
 
-## Component Properties And Slots
+5. **Note simplified registration:**<br/>
+   We have simplified the modularization of KoliBri in version 1 and for version 2. The module `@public-ui/core` has been removed and the functionalities moved to the module `@public-ui/components`.
 
-kol-abbr:
+```diff
+  - import { register } from '@public-ui/core';
+  + import { register } from '@public-ui/components';
+  import { defineCustomElements } from '@public-ui/components/dist/loader';
+  import { MyTheme } from '...';
+  await register(MyTheme, defineCustomElements);
+```
 
-- prop `_label` now required
-- prop `_title` removed (use `_label` instead)
+### Breaking changes for version 2
 
-kol-accordion:
+You can find more information about Breaking Changes in the documentation [BREAKING_CHANGES.v2.md (EN)](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v2.md).
 
-- prop `_heading` removed (use `_label` instead)
-- prop `_label` now required
-- slot `content` removed (use `default` instead)
-- slot `header` removed
+## Perform migration
 
-kol-alert:
+> [!TIP]
+> We recommend carrying out the migration with the migration tool. This tool is able to migrate most breaking changes automatically. Further information can be found in the [Tool-Dokumentation (EN)](https://www.npmjs.com/package/@public-ui/kolibri-cli).
 
-- prop `_heading` removed (use `_label` instead)
+### Migration with migration tool
 
-kol-badge:
+1. **Preparation:**<br/>
+   The project is on an earlier version, all dependencies are installed, the project is executable and all changes are checked in and safely pushed.
+2. **Execute migration:**<br/>
+   Execute the following command to perform the migration: `npx @public-ui/kolibri-cli migrate src`
+3. **Check migration:**<br/>
+   Check the changes and run the application to make sure everything works as expected.
 
-- prop `_hideLabel` removed
-- prop `_icon` removed (use `_icons` instead)
-- prop `_iconOnly` removed
+### Perform migration manually
 
-kol-breadcrumb:
-
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_label` now required
-
-kol-button:
-
-- prop `_accessKey` removed
-- prop `_ariaCurrent` removed
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_icon` removed (use `_icons` instead)
-- prop `_iconAlign` removed (use `_icons` instead)
-- prop `_iconOnly` removed (use `_hideLabel` instead)
-
-kol-button-link:
-
-- prop `_accessKey` removed
-- prop `_ariaCurrent` removed
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_icon` removed (use `_icons` instead)
-- prop `_iconOnly` removed (use `_hideLabel` instead)
-
-kol-card:
-
-- prop `_hasFooter` removed
-- prop `_heading` removed (use `_label` instead)
-- prop `_headline` removed (use `_label` instead)
-- prop `_label` now required
-- slot `content` removed (use `default` instead)
-- slot `footer` removed
-- slot `header` removed
-
-kol-details:
-
-- prop `_label` now required
-- prop `_summary` removed (use `_label` instead)
-
-kol-icon:
-
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_icon` removed (use `_icons` instead)
-- prop `_icons` now required
-- prop `_label` now required
-- prop `_part` removed
-
-kol-input:
-
-- prop `_icon` removed (use `_icons` instead)
-
-kol-input-checkbox:
-
-- prop `_icon` removed (use `_icons` instead)
-- prop `_type` removed (use `_variant` instead)
-- prop `_variant` option: `'checkbox'` removed, `'default'` is the default value
-- slot `default` renamed to `expert`
-
-kol-input-color:
-
-- prop `_icon` removed (use `_icons` instead)
-- prop `_list` removed (use `_suggestions` instead)
-- slot `default` renamed to `expert`
-
-kol-input-date:
-
-- prop `_icon` removed (use `_icons` instead)
-- prop `_list` removed (use `_suggestions` instead)
-- slot `default` renamed to `expert`
-
-kol-input-email:
-
-- prop `_icon` removed (use `_icons` instead)
-- prop `_list` removed (use `_suggestions` instead)
-- prop `_size` removed
-- slot `default` renamed to `expert`
-
-kol-input-file:
-
-- prop `_icon` removed (use `_icons` instead)
-- slot `default` renamed to `expert`
-
-kol-input-number:
-
-- prop `_icon` removed (use `_icons` instead)
-- prop `_list` removed (use `_suggestions` instead)
-- prop `_type` removed (defaults to `'number'` now)
-- slot `default` renamed to `expert`
-
-kol-input-password:
-
-- prop `_icon` removed (use `_icons` instead)
-- prop `_size` removed
-- slot `default` renamed to `expert`
-
-kol-input-radio:
-
-- prop `_list` removed (use `_options` instead)
-- slot `default` renamed to `expert`
-
-kol-input-range:
-
-- prop `_icon` removed (use `_icons` instead)
-- prop `_list` removed (use `_suggestions` instead)
-- slot `default` renamed to `expert`
-
-kol-input-text:
-
-- prop `_icon` removed (use `_icons` instead)
-- prop `_list` removed (use `_suggestions` instead)
-- prop `_size` removed
-- slot `default` renamed to `expert`
-
-kol-link:
-
-- prop `_ariaControls` removed
-- prop `_ariaCurrent` removed (Use ariaCurrentService instead)
-- prop `_ariaExpanded` removed
-- prop `_ariaLabel` removed
-- prop `_ariaSelected` removed
-- prop `_disabled` removed
-- prop `_icon` removed (use `_icons` instead)
-- prop `_iconAlign` removed (use `_icons` instead)
-- prop `_iconOnly` removed (use `_hideLabel` instead)
-- prop `_selector` removed
-- prop `_stealth` removed
-- prop `_useCase` removed
-- slot `default` removed (use `expert` instead)
-
-kol-link-button:
-
-- prop `_ariaControls` removed
-- prop `_ariaCurrent` removed (use `_listenAriaCurrent` instead)
-- prop `_ariaExpanded` removed
-- prop `_ariaLabel` removed
-- prop `_ariaSelected` removed
-- prop `_disabled` removed
-- prop `_icon` renamed to `_icons`
-- prop `_iconOnly` removed
-
-kol-link-group:
-
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_heading` removed
-- prop `_label` now required
-- prop `_level` removed
-- prop `_ordered` removed
-
-kol-logo:
-
-- prop `_abbr` removed (use `_org` instead)
-
-kol-modal:
-
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_label` now required
-
-kol-nav:
-
-- prop `_ariaCurrentValue` removed
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_compact` removed (use `_hideLabel` instead)
-- prop `_hasCompactButton` removed
-- prop `_label` now required
-- prop `_variant` removed
-
-kol-pagination:
-
-- prop `_max` now required
-- prop `_total` removed (use `_max` instead)
-
-kol-progress:
-
-- prop `_type` removed (use `_variant` instead)
-
-kol-quote:
-
-- prop `_caption` removed (use `_label` instead)
-
-kol-select:
-
-- prop `_height` removed (use `_rows` instead)
-- prop `_icon` removed (use `_icons` instead)
-- prop `_list` removed (use `_options` instead)
-- prop `_size` removed (use `_rows` instead)
-- slot `default` renamed to `expert`
-
-kol-skip-nav:
-
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_label` now required
-
-kol-span:
-
-- prop `_icon` removed (use `_icons` instead)
-- prop `_iconOnly` removed (use `_hideLabel` instead)
-
-kol-split-button:
-
-- prop `_accessKey` removed
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_icon` removed (use `_icons` instead)
-- prop `_show` removed
-- prop `_showDropdown` removed
-
-kol-symbol:
-
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_label` now required
-
-kol-table:
-
-- prop `_caption` removed (use `_label` instead)
-- prop `_label` now required
-
-kol-tabs:
-
-- prop `_ariaLabel` removed (use `_label` instead)
-- prop `_icon` removed (use `_icons` instead)
-- prop `_iconOnly` removed (use `_hideLabel` instead)
-- prop `_label` now required
-- prop `_tabsAlign` removed (use `_align` instead)
-
-kol-textarea:
-
-- slot `default` renamed to `expert`
-
-version:
-
-- prop `_label` now required
-- prop `_version` removed (use `_label` instead)
-
-kol-heading:
-
-- slot `default` renamed to `expert`
+1. **Preparation:**<br/>
+   The project is on an earlier version, all dependencies are installed, the project is executable and all changes are checked in and safely pushed.
+2. **Perform migration:**<br/>
+   Carry out the migration by making the breaking changes in the respective documentation.
