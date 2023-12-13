@@ -70,8 +70,8 @@ export const InputsGetValue: FC = () => {
 			<EventTargetContext.Provider value={eventTarget}>
 				<SampleDescription>
 					<p>
-						This sample show how the input components <code>getValue()</code> method works. It&apos;s called when clicking the &quout;getValue()&quout; button
-						and prints the current value right next to itself.
+						This sample show how the input components <code>getValue()</code> method works. It&apos;s called when clicking the &quot;getValue()&quot; button and
+						prints the current value right next to itself.
 					</p>
 				</SampleDescription>
 
