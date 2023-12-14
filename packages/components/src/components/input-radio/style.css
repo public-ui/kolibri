@@ -39,6 +39,11 @@
 	input:checked:before {
 		background-color: #000;
 	}
+	@media (forced-colors: active) {
+		input:checked:before {
+			background: highlight !important; /* Give it a visible background in forced colors mode */
+		}
+	}
 
 	fieldset {
 		display: flex;
