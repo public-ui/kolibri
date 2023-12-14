@@ -47,7 +47,6 @@ export class KolInputRange implements API {
 	private readonly catchInputRangeRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputRange = element;
-			propagateFocus(this.host, element);
 		}
 	};
 
