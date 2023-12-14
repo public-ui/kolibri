@@ -1,17 +1,15 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { Stringified } from '../../types/common';
 import { PropColor } from '../../types/props/color';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
-	animate: boolean;
 	color: Stringified<PropColor>;
 	labeled: boolean;
 };
 
 type RequiredStates = {
-	animate: boolean;
 	color: {
 		red: number;
 		green: number;

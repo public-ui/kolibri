@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { KoliBriProgressVariantType } from '../../types/progress';
 import { PropLabel } from '../../types/props/label';

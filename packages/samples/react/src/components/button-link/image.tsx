@@ -8,7 +8,7 @@ export const ButtonLinkImage: FC = () => (
 		<KolButtonLink _label="Ich bin ein Link, der als Text gerendert wird" />
 		<br />
 		<KolButtonLink _label="">
-			<img alt="Darstellung des KoliBri-Theming" slot="expert" src="/abgrenzung.jpg" width="300" />
+			<img alt="Darstellung des KoliBri-Theming" slot="expert" src="abgrenzung.jpg" width="300" />
 		</KolButtonLink>
 	</div>
 );

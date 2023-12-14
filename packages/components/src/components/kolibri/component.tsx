@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
@@ -9,14 +9,6 @@ import { watchBoolean } from '../../utils/prop.validators';
 import { colorRgba } from '../badge/color-rgba';
 import { API, States } from './types';
 
-const max = 360;
-function degreeToRadians(degree: number): number {
-	return (degree * Math.PI) / 180;
-}
-function getColorNumber(degree: number): number {
-	return Math.round(((Math.cos(degreeToRadians(degree)) + 1) / 2) * 225);
-}
-
 @Component({
 	tag: 'kol-kolibri',
 	styleUrls: {
@@ -26,10 +18,7 @@ function getColorNumber(degree: number): number {
 })
 export class KolKolibri implements API {
 	public render(): JSX.Element {
-		const fillColor: string =
-			this.state._animate === true
-				? `rgb(${getColorNumber(this.state._color.red)},${getColorNumber(this.state._color.green)},${getColorNumber(this.state._color.blue)})`
-				: `rgb(${this.state._color.red},${this.state._color.green},${this.state._color.blue})`;
+		const fillColor = `rgb(${this.state._color.red},${this.state._color.green},${this.state._color.blue})`;
 		return (
 			<Host>
 				<svg role="img" aria-label={translate('kol-kolibri-logo')} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill={fillColor}>
@@ -49,15 +38,8 @@ export class KolKolibri implements API {
 		);
 	}
 
-	private interval?: number;
-
 	/**
-	 * Gibt an, ob das Bild-Logo farblich animiert werden soll.
-	 */
-	@Prop() public _animate?: boolean = false;
-
-	/**
-	 * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
+	 * Defines the color of the logo and label.
 	 */
 	@Prop() public _color?: Stringified<PropColor> = '#003c78';
 
@@ -67,7 +49,6 @@ export class KolKolibri implements API {
 	@Prop() public _labeled?: boolean;
 
 	@State() public state: States = {
-		_animate: false,
 		_color: {
 			red: 0,
 			green: 60,
@@ -75,11 +56,6 @@ export class KolKolibri implements API {
 		},
 		_labeled: true,
 	};
-
-	@Watch('_animate')
-	public validateAnimate(value?: boolean): void {
-		watchBoolean(this, '_animate', value);
-	}
 
 	private handleColorChange: Generic.Element.NextStateHooksCallback = (nextValue: unknown, nextState: Map<string, unknown>): void => {
 		if (typeof nextValue === 'string') {
@@ -110,28 +86,7 @@ export class KolKolibri implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateAnimate(this._animate);
 		this.validateColor(this._color);
 		this.validateLabeled(this._labeled);
-	}
-
-	public componentDidRender(): void {
-		clearInterval(this.interval);
-		if (this.state._animate) {
-			this.interval = setInterval(() => {
-				this.state = {
-					...this.state,
-					_color: {
-						red: (this.state._color.red + 1) % max,
-						green: (this.state._color.green + 2) % max,
-						blue: (this.state._color.blue + 3) % max,
-					},
-				};
-			}, 50) as unknown as number;
-		}
-	}
-
-	public disconnectedCallback(): void {
-		clearInterval(this.interval);
 	}
 }

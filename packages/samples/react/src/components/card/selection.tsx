@@ -21,7 +21,7 @@ export const CardSelection: FC = () => (
 				</div>
 				<div>
 					<div>
-						<img alt="Darstellung des KoliBri-Theming" src="/abgrenzung.jpg" width="100%" />
+						<img alt="Darstellung des KoliBri-Theming" src="abgrenzung.jpg" width="100%" />
 					</div>
 				</div>
 				<div>
@@ -41,7 +41,7 @@ export const CardSelection: FC = () => (
 				</div>
 				<div>
 					<div>
-						<img alt="Darstellung des KoliBri-Theming" src="/abgrenzung.jpg" width="100%" />
+						<img alt="Darstellung des KoliBri-Theming" src="abgrenzung.jpg" width="100%" />
 					</div>
 				</div>
 				<div>
@@ -61,7 +61,7 @@ export const CardSelection: FC = () => (
 				</div>
 				<div>
 					<div>
-						<img alt="Darstellung des KoliBri-Theming" src="/abgrenzung.jpg" width="100%" />
+						<img alt="Darstellung des KoliBri-Theming" src="abgrenzung.jpg" width="100%" />
 					</div>
 				</div>
 				<div>
