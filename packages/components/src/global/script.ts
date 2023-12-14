@@ -1,4 +1,4 @@
-import { getThemeDetails, setThemeStyle } from '@a11y-ui/core';
+import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
 import { setMode } from '@stencil/core';
 
 import { register } from '../core';

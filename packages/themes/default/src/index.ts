@@ -31,6 +31,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			font-family: var(--font-family);
 			font-size: var(--font-size);
 		}
@@ -1597,6 +1598,9 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		:host kol-input.button {
 			gap: 0.4rem 0;
 		}
+		.checkbox-container {
+			justify-content: flex-start;
+		}
 		:host kol-input > div.input {
 			display: inherit;
 			min-height: var(--a11y-min-size);
@@ -1665,13 +1669,6 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			cursor: pointer;
 			transition: 0.5s;
 		}
-		:host kol-input input[type='checkbox'].kol-disabled:before {
-			cursor: not-allowed;
-		}
-		:host kol-input input[type='checkbox']:before {
-			content: '';
-			cursor: pointer;
-		}
 		:host kol-input input[type='checkbox']:checked {
 			background-color: var(--color-primary);
 			border-color: var(--color-primary);
@@ -1682,51 +1679,23 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			min-width: calc(6 * 0.25rem);
 			width: calc(6 * 0.25rem);
 		}
-		:host kol-input.default input[type='checkbox']:before {
-			border-radius: 1.5em;
-			background-color: transparent;
-			display: block;
-			height: calc(6 * 0.25rem);
-			position: relative;
-			width: calc(6 * 0.25rem);
-		}
-		:host kol-input.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * 0.25rem - 2px);
-			top: calc(2.85 * 0.25rem - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * 0.25rem);
-			width: calc(1.5 * 0.25rem);
-		}
 		:host kol-input.default input[type='checkbox']:indeterminate {
 			background-color: var(--color-primary);
 		}
-		:host kol-input.default input[type='checkbox']:indeterminate:before {
-			background-color: var(--color-light);
-			height: 0.125rem;
-			top: 0.6rem;
-			left: 0.25rem;
-			width: calc(3 * 0.25rem);
-			transform: inherit;
+		:host kol-input.default .icon {
+			color: var(--color-light);
+			margin-left: 0.25rem;
 		}
-		:host kol-input.default input[type='checkbox']:checked:indeterminate:before {
-			border-width: 0px 1px 1px 0px;
-		}
+
 		:host kol-input.switch input[type='checkbox'] {
-			min-width: 3.5em;
-			width: 3.5em;
 			background-color: var(--color-subtle);
-			border-width: 0;
-			height: 1.5em;
 			border-radius: 1.25em;
-			display: inline-block;
+			border-width: 0;
+			display: block;
+			height: 1.5em;
+			min-width: 3.5em;
 			position: relative;
+			width: 3.5em;
 		}
 		:host kol-input.switch input[type='checkbox']:before {
 			width: 1.25em;
@@ -1753,11 +1722,11 @@ export const DEFAULT = KoliBri.createTheme('default', {
 				left: 2px;
 			}
 
-			&:has(input:checked) .icon {
+			&.checked .icon {
 				transform: translate(2em, -50%);
 			}
 
-			&:has(input:indeterminate) .icon {
+			&.indeterminate .icon {
 				transform: translate(1em, -50%);
 			}
 		}
@@ -1854,7 +1823,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			cursor: not-allowed;
 			background-color: var(--color-mute-variant);
 		}
-		fieldset #error {
+		kol-alert.error {
 			order: 1;
 		}
 		fieldset legend {
@@ -1865,12 +1834,10 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			order: 3;
 		}
 		fieldset.error {
-			padding-left: 1rem;
 			border-left: 3px solid var(--color-danger);
-		}
-		fieldset kol-alert#error {
 			color: var(--color-danger);
 			font-weight: 700;
+			padding-left: 1rem;
 		}
 		fieldset.error input:focus,
 		fieldset.error select:focus,

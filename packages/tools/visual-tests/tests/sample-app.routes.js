@@ -187,17 +187,7 @@ ROUTES.set('input-range/basic', null);
 ROUTES.set('input-text/basic', null);
 ROUTES.set('input-text/blur', null);
 ROUTES.set('input-text/focus', null);
-ROUTES.set('kolibri/animated', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('kolibri/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('kolibri/no-label', {
 	axe: {
 		skipFailures: false,
 	},
@@ -305,11 +295,6 @@ ROUTES.set('spin/cycle', {
 	},
 });
 ROUTES.set('split-button/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('table/badge-size', {
 	axe: {
 		skipFailures: false,
 	},

@@ -115,11 +115,14 @@ const initMeta = (): void => {
 	}
 };
 
-let KoliBri: Record<string, unknown> | null = null;
-export const getKoliBri = (): Record<string, unknown> => KoliBri || {};
+const KoliBri: Record<string, unknown> = {};
+Object.defineProperty(window, 'KoliBri', {
+	get: function () {
+		return KoliBri;
+	},
+});
 export const initKoliBri = (): void => {
-	if (KoliBri === null) {
-		KoliBri = getWindow().KoliBri || {};
+	if (KoliBri.Modal === undefined) {
 		const Modal = new ModalService();
 		Object.defineProperty(KoliBri, 'Modal', {
 			get: function (): ModalService {
@@ -134,7 +137,7 @@ export const initKoliBri = (): void => {
 	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.0-rc.12
+	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.0
 		`,
 			{
 				forceLog: true,
@@ -154,7 +157,7 @@ export const renderDevAdvice = (): void => {
 			},
 		});
 	}
-	if (getKoliBri().adviceShown !== true) {
+	if (KoliBri.adviceShown !== true) {
 		Object.defineProperty(KoliBri, 'adviceShown', {
 			get: function () {
 				return true;

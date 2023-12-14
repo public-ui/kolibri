@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { AdjustHeightPropType, validateAdjustHeight } from '../../../types/props/adjust-height';
@@ -191,13 +191,6 @@ export class InputController extends ControlledInputController implements Watche
 		// Callback
 		if (typeof this.component._on?.onFocus === 'function') {
 			this.component._on.onFocus(event);
-		}
-	}
-
-	public setValue(event: Event, value: string | number | boolean): void {
-		this.setFormAssociatedValue(value as string);
-		if (typeof this.component._on?.onChange === 'function') {
-			this.component._on.onChange(event, value);
 		}
 	}
 

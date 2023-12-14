@@ -39,6 +39,7 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		--spacing: 0.25em;
 	}
 	:host {
+		background-color: transparent; /* Reset global background-color defined by components */
 		color: var(--color-black);
 	}
 	:host * {
@@ -1133,10 +1134,10 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 			height: 1.25em;
 			left: 2px;
 		}
-		&:has(input:checked) .icon {
+		&.checked .icon {
 			transform: translate(2em, -50%);
 		}
-		&:has(input:indeterminate) .icon {
+		&.indeterminate .icon {
 			transform: translate(1em, -50%);
 		}
 	}
@@ -1231,7 +1232,7 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
 	}
-	:host fieldset #error {
+	kol-alert.error {
 		order: 3;
 	}
 	:host fieldset legend {
@@ -1241,7 +1242,7 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 	:host fieldset kol-input {
 		order: 2;
 	}
-	:host fieldset kol-alert#error {
+	kol-alert.error {
 		padding-left: 0.5em;
 		color: var(--color-warning);
 	}

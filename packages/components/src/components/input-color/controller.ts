@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { InputTypeOnOff, inputTypeOnOffOptions } from '../../types/input/types';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';

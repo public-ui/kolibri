@@ -71,10 +71,6 @@
 		cursor: not-allowed;
 	}
 
-	.default kol-icon {
-		display: none;
-	}
-
 	kol-input.required .tooltip-content .span-label::after {
 		content: '*';
 	}

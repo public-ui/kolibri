@@ -13,4 +13,8 @@
 	kol-alert-wc .heading > div {
 		flex-grow: 1;
 	}
+
+	.close {
+		outline: transparent solid 1px; /* Visible with forced colors */
+	}
 }
