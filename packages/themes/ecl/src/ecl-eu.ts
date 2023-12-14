@@ -1606,8 +1606,8 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		:host {
 			top: 1rem;
 			right: 1rem;
-			max-width: 440px;
-			width:100%;
+			width: 440px;
+			max-width: 100%;
 		}
 		.toast {
 			display: block;

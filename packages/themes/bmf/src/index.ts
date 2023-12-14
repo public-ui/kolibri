@@ -2158,6 +2158,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			top: 1rem;
 			right: 1rem;
 			width: 440px;
+			max-width: 100%;
 		}
 		.toast {
 			margin-top: 1rem;

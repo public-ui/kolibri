@@ -1905,8 +1905,8 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		:host {
 			top: 1rem;
 			right: 1rem;
-			max-width: 440px;
-			width:100%;
+			width: 440px;
+			max-width: 100%;
 		}
 		.toast {
 			margin-top: 1rem;

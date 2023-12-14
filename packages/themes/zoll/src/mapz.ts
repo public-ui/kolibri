@@ -1733,8 +1733,8 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	'KOL-TOAST-CONTAINER': css`
 		:host {
 			top: 1rem;
-			max-width: 750px;
-			width:100%;
+			width: 750px;
+			max-width: 100%;
 			left: 50%;
 			transform: translateX(-50%);
 		}
