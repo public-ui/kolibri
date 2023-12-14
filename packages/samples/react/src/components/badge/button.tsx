@@ -3,7 +3,7 @@ import { KolBadge, KolHeading } from '@public-ui/react';
 
 import { FC } from 'react';
 
-const createBadgeProps = (label: String) => ({
+const createBadgeProps = (label: string) => ({
 	_smartButton: {
 		_icons: 'codicon codicon-close',
 		_label: `Entfernen von ${label}`,
