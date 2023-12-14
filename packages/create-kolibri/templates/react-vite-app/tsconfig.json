@@ -15,7 +15,6 @@
 		"isolatedModules": true,
 		"noEmit": true,
 		"jsx": "react-jsx",
-		"types": ["@public-ui/components", "react", "react-dom"],
 		"typeRoots": ["node_modules/@types", "src/types"],
 	},
 	"include": ["./src"]
