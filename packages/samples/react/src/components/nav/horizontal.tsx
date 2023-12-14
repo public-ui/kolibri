@@ -16,7 +16,6 @@ export const NavHorizontal: FC = () => (
 				_href: '#/nav/horizontal',
 			},
 			{
-				_active: true,
 				_label: '3 Navigation point',
 				_href: '#/nav/horizontal',
 				_children: [
@@ -29,12 +28,10 @@ export const NavHorizontal: FC = () => (
 						_target: 'asdasd',
 					},
 					{
-						_active: true,
 						_label: '3.3 Navigation point',
 						_href: '#/nav/horizontal',
 						_children: [
 							{
-								_active: true,
 								_label: '3.3.1 Navigation point (active)',
 								_href: '#abc',
 							},

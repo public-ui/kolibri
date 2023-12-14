@@ -5,6 +5,7 @@ import { FC } from 'react';
 
 export const NavBasic: FC = () => (
 	<KolNav
+		class="block w-sm"
 		_label="Main navigation"
 		_links={[
 			{
@@ -17,7 +18,6 @@ export const NavBasic: FC = () => (
 				_href: '#/untermenu',
 			},
 			{
-				_active: true,
 				_label: '3 Navigation point',
 				_href: '#abc',
 				_children: [
@@ -31,13 +31,11 @@ export const NavBasic: FC = () => (
 						_target: 'asdasd',
 					},
 					{
-						_active: true,
 						_label: '3.3 Navigation point',
 						_href: '#abc',
 						_icons: 'fa-solid fa-cat',
 						_children: [
 							{
-								_active: true,
 								_label: '3.3.1 Navigation point (active)',
 								_href: '#abc',
 							},
