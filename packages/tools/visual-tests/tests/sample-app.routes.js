@@ -237,11 +237,6 @@ ROUTES.set('modal/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('nav/active', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('nav/aria-current', {
 	axe: {
 		skipFailures: false,
