@@ -114,7 +114,7 @@ const initMeta = (): void => {
 		console.warn(`You can only initialize DEV_MODE and COLOR_CONTRAST_ANALYSIS once.`);
 	}
 };
-
+// bls
 const KoliBri: Record<string, unknown> = {};
 Object.defineProperty(window, 'KoliBri', {
 	get: function () {
