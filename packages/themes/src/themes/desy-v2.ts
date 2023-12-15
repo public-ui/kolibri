@@ -557,12 +557,6 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 	th {
 		background-color: var(--color-gray-70);
 	}
-	th > div {
-		display: grid;
-		grid-template-columns: 1fr auto;
-		align-items: center;
-		gap: 0.25em;
-	}
 	:host > div:last-child {
 		padding: 0.5em;
 	}

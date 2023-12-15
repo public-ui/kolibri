@@ -292,22 +292,27 @@ export const ZOLLv3 = KoliBri.createTheme('zoll-v3', {
 			border-bottom-width: 1px;
 			padding: 0.75rem 1rem;
 		}
-		th[data-sort] kol-button {
-			margin: -0.8rem 0; /* Avoid increasing the thead height while keeping the button size large */
-		}
-		th[data-sort] kol-button::part(icon)::before {
-			color: var(--color-neutral-dark-correct);
+		.table-sort-button .icon::part(icon)::before {
 			font-family: 'FontAwesome';
+			color: var(--color-neutral-dark-correct);
 		}
-		th[data-sort='sort-NOS'] kol-button::part(icon)::before,
-		th[data-sort='sort-undefined'] kol-button::part(icon)::before {
+		th[data-sort='sort-NOS'] .table-sort-button .icon::part(icon)::before,
+		th[data-sort='sort-undefined'] .table-sort-button .icon::part(icon)::before {
 			content: '\\f0dc';
 		}
-		th[data-sort='sort-ASC'] kol-button::part(icon)::before {
+		th[data-sort='sort-ASC'] .table-sort-button .icon::part(icon)::before {
 			content: '\\f0de';
 		}
-		th[data-sort='sort-DESC'] kol-button::part(icon)::before {
+		th[data-sort='sort-DESC'] .table-sort-button .icon::part(icon)::before {
 			content: '\\f0dd';
+		}
+		.table-sort-button {
+			/* Avoid increasing the thead height while keeping the button size large */
+			display: block;
+			margin: -0.8rem 0;
+		}
+		.table-sort-button .button {
+			font-weight: bold;
 		}
 	`,
 	'KOL-ACCORDION': css`

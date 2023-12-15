@@ -869,43 +869,31 @@ export class KolTable implements API {
 													}
 												}
 												return (
-													<th // role="columnheader"
+													<th
+														class={col.textAlign ? `align-${col.textAlign}` : undefined}
 														key={`thead-${rowIndex}-${colIndex}-${headerCell.label}`}
 														scope={typeof headerCell.colSpan === 'number' && headerCell.colSpan > 1 ? 'colgroup' : 'col'}
 														colSpan={headerCell.colSpan}
 														rowSpan={headerCell.rowSpan}
 														style={{
-															textAlign: col.textAlign,
 															width: col.width,
 														}}
 														aria-sort={sortDirection}
 														data-sort={`sort-${shortSortDirection}`}
 													>
-														<div class="w-full flex gap-1 items-center">
-															<div
-																class={{
-																	'w-full': true,
-																	[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+														{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') ? (
+															<kol-button-wc
+																class="table-sort-button"
+																exportparts="icon"
+																_icons={{ right: sortButtonIcon }}
+																_label={col.label}
+																_on={{
+																	onClick: () => this.changeCellSort(headerCell),
 																}}
-																style={{
-																	textAlign: col.textAlign,
-																}}
-															>
-																{col.label}
-															</div>
-															{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') && (
-																<kol-button
-																	exportparts="icon"
-																	_icons={sortButtonIcon}
-																	_hideLabel
-																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																	_on={{
-																		onClick: () => this.changeCellSort(headerCell),
-																	}}
-																	_variant="ghost"
-																></kol-button>
-															)}
-														</div>
+															></kol-button-wc>
+														) : (
+															col.label
+														)}
 													</th>
 												);
 											}

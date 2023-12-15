@@ -1814,11 +1814,8 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		:host th {
 			background-color: #eee;
 		}
-		:host th > div {
-			display: grid;
-			grid-template-columns: 1fr auto;
-			align-items: center;
-			gap: 0.25em;
+		.table-sort-button .button {
+			font-weight: 700;
 		}
 		:host > div.pagination {
 			padding: 0.5em;
