@@ -24,7 +24,8 @@ Stellen Sie die Default-Farbe über das Attribut `_value` ein. Verwenden Sie hie
 
 ## Barrierefreiheit
 
-Beachten Sie, dass die **InputColor**-Komponente nicht vollständig barrierefrei ist. Die Auswahl einer Farbe ist über Tastatursteuerung möglich. Die Ausgabe der gewählten Farbe über Screenreader ist jedoch technisch eingeschränkt.
+Beachten Sie, dass die **InputColor**-Komponente nicht vollständig barrierefrei ist. Die Auswahl einer Farbe ist über Tastatursteuerung möglich. Die Ausgabe der gewählten Farbe über Screenreader ist jedoch technisch eingeschränkt.  
+Siehe auch: [https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md#input-color](Known Issues).
 
 Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgefertigten Farbauswahlliste, z.B. über Checkboxen oder Select-Felder.
 

@@ -17,6 +17,23 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
 <kol-badge _label="Beispieltext" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
 <kol-badge _label="Beispieltext" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
 
+## Kontext für Badges
+
+Um die Benutzerfreundlichkeit und die Zugänglichkeit zu verbessern, sollten Badges
+immer im Kontext einer aussagekräftigen Überschrift verwendet werden.
+
+Stellen Sie sicher, dass jede Gruppe von Badges durch eine Überschrift ergänzt wird, die den gemeinsamen Kontext oder das Thema beschreibt. Vermeiden Sie es, Badges ohne solche beschreibenden Überschriften zu präsentieren.
+
+### Beispiel
+
+```html
+<kol-heading _label="Beispielüberschrift" _level="2"></kol-heading>
+<div>
+	<kol-badge _label="Beispieltext" _color="#b7e4b4" _icons="codicon codicon-home"></kol-badge>
+	<kol-badge _label="Beispieltext" _color="#0c8703" _icons="codicon codicon-home"></kol-badge>
+</div>
+```
+
 ## Verwendung
 
 ### Label im Badge
