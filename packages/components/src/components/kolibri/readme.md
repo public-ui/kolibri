@@ -21,10 +21,9 @@ Diese Komponente implementiert das Logo von KoliBri.
 
 ## Properties
 
-| Property   | Attribute  | Description                                                              | Type                                                                                                      | Default     |
-| ---------- | ---------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | ----------- |
-| `_animate` | `_animate` | Gibt an, ob das Bild-Logo farblich animiert werden soll.                 | `boolean \| undefined`                                                                                    | `false`     |
-| `_color`   | `_color`   | Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll. | `string \| undefined \| { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }` | `'#003c78'` |
-| `_labeled` | `_labeled` | Defines whether the component has a label.                               | `boolean \| undefined`                                                                                    | `undefined` |
+| Property   | Attribute  | Description                                | Type                                                                                                      | Default     |
+| ---------- | ---------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------- | ----------- |
+| `_color`   | `_color`   | Defines the color of the logo and label.   | `string \| undefined \| { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }` | `'#003c78'` |
+| `_labeled` | `_labeled` | Defines whether the component has a label. | `boolean \| undefined`                                                                                    | `undefined` |
 
 ---
