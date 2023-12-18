@@ -28,10 +28,10 @@ This means that components, features or functionalities may be removed and techn
    All features, components and functionalities that were removed in version 2 were already marked as deprecated in version 1.7 and higher. So if you have regularly updated your code base, you should already be prepared to replace these elements.
 
 3. **Migration from version 1.7 minimizes potential changes:**<br/>
-   A migration from version 1.7 and higher to version 2.0.0 will probably require the least adjustments. The likelihood of incompatibilities is low, as most changes and removals have already been marked as obsolete in previous versions.
+   A migration from version 1.7 and higher to version 2 will probably require the least adjustments. The likelihood of incompatibilities is low, as most changes and removals have already been marked as obsolete in previous versions.
 
 4. **Migration from version 1.4 is possible:**<br/>
-   Although a migration from version 1.7 is recommended, it is also possible to migrate from version 1.4 to version 2.0.0. Please note, however, that this may require additional adjustments, as some of the necessary functions may only be available from version 1.7.
+   Although a migration from version 1.7 is recommended, it is also possible to migrate from version 1.4 to version 2. Please note, however, that this may require additional adjustments, as some of the necessary functions may only be available from version 1.7.
 
 5. **Note simplified registration:**<br/>
    We have simplified the modularization of KoliBri in version 1 and for version 2. The module `@public-ui/core` has been removed and the functionalities moved to the module `@public-ui/components`.
