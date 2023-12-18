@@ -4,7 +4,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { AlignPropType, validateAlign } from '../../types/props/align';
 import { IdPropType, validateId } from '../../types/props/id';
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { getDocument, nonce } from '../../utils/dev.utils';
+import { getDocument } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { processEnv } from '../../utils/reuse';
 import { API, States } from './types';
@@ -164,7 +164,6 @@ export class KolTooltip implements API {
 
 	@State() public state: States = {
 		_align: 'top',
-		_id: nonce(),
 		_label: '…', // ⚠ required
 	};
 

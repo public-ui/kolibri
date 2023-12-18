@@ -65,6 +65,7 @@ const patchState = (component: Generic.Element.Component): void => {
 			beforePatch(component.nextState?.get(key), component.nextState as Map<string, unknown>, component, key);
 		}
 	});
+	console.log('patchState', 'before', component.state, component.nextState, component);
 	/**
 	 * Wenn in beforePatch Methoden die Änderung verworfen wird,
 	 * muss auch nicht der State aktualisiert und neu gerendert
@@ -75,6 +76,7 @@ const patchState = (component: Generic.Element.Component): void => {
 			...component.state,
 			...Object.fromEntries(component.nextState as Map<string, unknown>),
 		};
+		console.log('patchState', 'after', component.state, component);
 		delete component.nextState;
 
 		component.nextHooks?.forEach((hooks, key) => {
@@ -115,11 +117,11 @@ export const setState = <T>(component: Generic.Element.Component, propName: stri
 	 * Tooltip nicht korrekt ausgerichtet wird.
 	 */
 	// if (component.hydrated === true || processEnv !== 'test') {
-	// clearTimeout(component.timeout as NodeJS.Timeout);
-	// component.timeout = setTimeout(() => {
-	// 	clearTimeout(component.timeout as NodeJS.Timeout);
-	// 	patchState(component);
-	// }, 50);
+	// 	clearTimeout(component.timeout);
+	// 	component.timeout = setTimeout(() => {
+	// 		clearTimeout(component.timeout);
+	// 		patchState(component);
+	// 	}, 25);
 	// } else {
 	patchState(component);
 	// }

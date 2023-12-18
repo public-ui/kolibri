@@ -77,12 +77,15 @@ export const isIcon = (value?: unknown): boolean =>
 	isString((value as KoliBriCustomIcon).icon, 1);
 
 export const validateIcons = (component: Generic.Element.Component, value?: IconsPropType): void => {
+	console.log('value', value);
 	objectObjectHandler(value, () => {
+		console.log('value', value);
 		try {
 			value = parseJson<KoliBriIconsProp>(value as string);
 		} catch (e) {
 			// value behält den ursprünglichen Wert
 		}
+		console.log('value', value);
 		watchValidator(
 			component,
 			'_icons',
@@ -105,15 +108,19 @@ export const validateIcons = (component: Generic.Element.Component, value?: Icon
 			new Set(['KoliBriIcon']),
 			value,
 			{
+				defaultValue: {},
 				hooks: {
-					beforePatch: (nextValue: unknown, nextState: Map<string, unknown>) => {
-						if (nextValue === null) {
-							nextState.set('_icons', {});
-						}
-						beforePatchIcon(component);
+					beforePatch: (nextValue: unknown) => {
+						console.log('nextValue', nextValue);
+						// if (nextValue === null) {
+						// 	nextState.set('_icons', {});
+						// }
+						// beforePatchIcon(component);
+					},
+					afterPatch: (value: unknown, state: Record<string, unknown>, component: Generic.Element.Component, key: string) => {
+						console.log(value, state);
 					},
 				},
-				required: true,
 			}
 		);
 	});
