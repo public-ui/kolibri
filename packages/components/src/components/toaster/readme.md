@@ -77,6 +77,12 @@ Type: `Promise<void>`
 
 ### `enqueue(toast: Toast) => Promise<() => void>`
 
+#### Parameters
+
+| Name    | Type                                                                                                                                                              | Description |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `toast` | `{ description?: string \| undefined; render?: ((nodeRef: HTMLElement, options: { close: () => void; }) => void) \| undefined; label: string; type: AlertType; }` |             |
+
 #### Returns
 
 Type: `Promise<() => void>`
