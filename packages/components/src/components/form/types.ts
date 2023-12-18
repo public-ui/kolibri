@@ -12,6 +12,7 @@ type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	on: KoliBriFormCallbacks;
 	requiredText: string | boolean;
+	errors: Record<string, string>;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 

@@ -42,6 +42,7 @@ export function DistrictForm() {
 			) : null}
 
 			<KolForm
+				_errors={form.errors}
 				_on={{
 					onSubmit: () => {
 						void form.submitForm();

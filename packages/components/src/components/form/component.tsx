@@ -28,9 +28,35 @@ export class KolForm implements API {
 		}
 	};
 
+	private readonly handleLinkClick = (event: Event) => {
+		const href = (event.target as HTMLAnchorElement | undefined)?.href;
+		if (href) {
+			const hrefUrl = new URL(href);
+
+			const targetElement = document.querySelector<HTMLElement>(hrefUrl.hash);
+			if (targetElement && typeof targetElement.focus === 'function') {
+				targetElement.focus();
+			}
+		}
+	};
+
 	public render(): JSX.Element {
 		return (
 			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
+				{this._errors && (
+					<kol-alert _type="error">
+						Bitte korrigieren Sie folgende Fehler:
+						<nav aria-label="Fehlerliste">
+							<ul>
+								{Object.entries(this._errors).map(([field, error]) => (
+									<li key={field}>
+										<kol-link _href={`#field-${field}`} _label={error} _on={{ onClick: this.handleLinkClick }} />
+									</li>
+								))}
+							</ul>
+						</nav>
+					</kol-alert>
+				)}
 				{this.state._requiredText === true ? (
 					<p>
 						<kol-indented-text>{translate('kol-form-description')}</kol-indented-text>
@@ -55,6 +81,8 @@ export class KolForm implements API {
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
 
+	@Prop() public _errors?: Record<string, string>;
+
 	@State() public state: States = {};
 
 	@Watch('_on')
@@ -76,8 +104,18 @@ export class KolForm implements API {
 		}
 	}
 
+	@Watch('_errors')
+	public validateErrors(value?: Record<string, string>): void {
+		if (typeof value === 'object' && value !== null) {
+			this.state = {
+				...this.state,
+				_errors: value,
+			};
+		}
+	}
 	public componentWillLoad(): void {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
+		this.validateErrors(this._errors);
 	}
 }

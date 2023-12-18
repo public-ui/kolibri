@@ -541,6 +541,7 @@ export namespace Components {
         "_open"?: boolean;
     }
     interface KolForm {
+        "_errors"?: Record<string, string>;
         /**
           * Gibt die EventCallback-Funktionen für die Form-Events an.
          */
@@ -3351,6 +3352,7 @@ declare namespace LocalJSX {
         "_open"?: boolean;
     }
     interface KolForm {
+        "_errors"?: Record<string, string>;
         /**
           * Gibt die EventCallback-Funktionen für die Form-Events an.
          */
