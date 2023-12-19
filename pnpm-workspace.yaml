@@ -11,6 +11,7 @@ packages:
   - 'packages/samples/angular'
   - 'packages/samples/react'
   - 'packages/samples/ssr'
+  - 'packages/samples/vite'
   - 'packages/schema'
   - 'packages/themes'
   - 'packages/themes/bmf'
