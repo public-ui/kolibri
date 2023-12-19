@@ -4,11 +4,7 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { API, KoliBriFormCallbacks, States } from './types';
-
-type ErrorListPropType = {
-	message: string;
-	selector: string;
-};
+import { ErrorListProps } from '../../types/props/error-list';
 
 /**
  * @slot - Inhalt der Form.
@@ -88,7 +84,7 @@ export class KolForm implements API {
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
 
-	@Prop() public _errors?: ErrorListPropType[];
+	@Prop() public _errors?: ErrorListProps[];
 
 	@State() public state: States = {};
 
@@ -112,7 +108,7 @@ export class KolForm implements API {
 	}
 
 	@Watch('_errors')
-	public validateErrors(value?: ErrorListPropType[]): void {
+	public validateErrors(value?: ErrorListProps[]): void {
 		if (typeof value === 'object' && value !== null) {
 			this.state = {
 				...this.state,

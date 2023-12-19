@@ -2,20 +2,16 @@ import type { Generic } from 'adopted-style-sheets';
 
 import { Events } from '../../enums/events';
 import { EventCallback } from '../../types/callbacks';
+import { ErrorListProps } from '../../types/props/error-list';
 
 export type KoliBriFormCallbacks = {
 	[Events.onSubmit]?: EventCallback<Event>;
 	[Events.onReset]?: EventCallback<Event>;
 };
 
-type ErrorListType = {
-	message: string;
-	selector: string;
-};
-
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
-	errors: ErrorListType[];
+	errors: ErrorListProps[];
 	on: KoliBriFormCallbacks;
 	requiredText: string | boolean;
 };

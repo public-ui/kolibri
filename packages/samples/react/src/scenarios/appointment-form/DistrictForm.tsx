@@ -34,7 +34,7 @@ type ErrorListPropType = {
 
 export function DistrictForm() {
 	const form = useFormikContext<FormValues>();
-	const [sectionSubmitted, setSectionSubmitted] = useState(false);
+	const errorList = createErrorList(form.errors);
 
 	function createErrorList(formikErros: Record<string, string>): ErrorListPropType[] {
 		return Object.keys(formikErros).map((fieldName) => ({
@@ -43,18 +43,14 @@ export function DistrictForm() {
 		}));
 	}
 
-	const errorList = createErrorList(form.errors);
-
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus"></KolHeading>
 			<KolForm
-				_errorMessage="Wählen Sie einen Stadtteil aus"
 				_errors={errorList}
 				_on={{
 					onSubmit: () => {
 						void form.submitForm();
-						setSectionSubmitted(true);
 					},
 				}}
 			>
