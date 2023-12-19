@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -69,8 +69,8 @@
 	"dependencies": {
 		"adopted-style-sheets": "1.1.2",
 		"@floating-ui/dom": "1.5.3",
-		"@public-ui/schema": "2.0.0",
-		"i18next": "23.7.8",
+		"@public-ui/schema": "2.0.1",
+		"i18next": "23.7.11",
 		"markdown-it": "13.0.2"
 	},
 	"devDependencies": {
@@ -95,11 +95,11 @@
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
 		"cross-env": "7.0.3",
-		"cssnano": "6.0.1",
-		"eslint": "8.55.0",
+		"cssnano": "6.0.2",
+		"eslint": "8.56.0",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-html": "7.1.0",
-		"eslint-plugin-jsdoc": "46.9.0",
+		"eslint-plugin-jsdoc": "46.9.1",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.8.0",
 		"eslint-plugin-no-loops": "0.3.0",
