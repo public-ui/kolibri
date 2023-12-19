@@ -27,22 +27,30 @@ const LOCATION_OPTIONS = [
 	},
 ];
 
+type ErrorListPropType = {
+	message: string;
+	selector: string;
+};
+
 export function DistrictForm() {
 	const form = useFormikContext<FormValues>();
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 
+	function createErrorList(formikErros: Record<string, string>): ErrorListPropType[] {
+		return Object.keys(formikErros).map((fieldName) => ({
+			message: formikErros[fieldName],
+			selector: `#field-${fieldName}`,
+		}));
+	}
+
+	const errorList = createErrorList(form.errors);
+
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus"></KolHeading>
-
-			{sectionSubmitted && Object.keys(form.errors).length ? (
-				<div className="mt-2">
-					<ErrorList errors={form.errors} />
-				</div>
-			) : null}
-
 			<KolForm
-				_errors={form.errors}
+				_errorMessage="Wählen Sie einen Stadtteil aus"
+				_errors={errorList}
 				_on={{
 					onSubmit: () => {
 						void form.submitForm();
@@ -73,7 +81,6 @@ export function DistrictForm() {
 						/>
 					)}
 				</Field>
-
 				<KolButton _label="Weiter" _type="submit" className="mt-2" />
 			</KolForm>
 		</div>

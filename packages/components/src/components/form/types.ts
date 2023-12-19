@@ -8,11 +8,16 @@ export type KoliBriFormCallbacks = {
 	[Events.onReset]?: EventCallback<Event>;
 };
 
+type ErrorListType = {
+	message: string;
+	selector: string;
+};
+
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
+	errors: ErrorListType[];
 	on: KoliBriFormCallbacks;
 	requiredText: string | boolean;
-	errors: Record<string, string>;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 

@@ -5,6 +5,11 @@ import { Stringified } from '../../types/common';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { API, KoliBriFormCallbacks, States } from './types';
 
+type ErrorListPropType = {
+	message: string;
+	selector: string;
+};
+
 /**
  * @slot - Inhalt der Form.
  */
@@ -35,6 +40,7 @@ export class KolForm implements API {
 
 			const targetElement = document.querySelector<HTMLElement>(hrefUrl.hash);
 			if (targetElement && typeof targetElement.focus === 'function') {
+				targetElement.scrollIntoView({ behavior: 'smooth' });
 				targetElement.focus();
 			}
 		}
@@ -43,14 +49,15 @@ export class KolForm implements API {
 	public render(): JSX.Element {
 		return (
 			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
-				{this._errors && (
+				{this._errors && Object.keys(this._errors).length > 0 && (
 					<kol-alert _type="error">
 						Bitte korrigieren Sie folgende Fehler:
 						<nav aria-label="Fehlerliste">
 							<ul>
 								{Object.entries(this._errors).map(([field, error]) => (
 									<li key={field}>
-										<kol-link _href={`#field-${field}`} _label={error} _on={{ onClick: this.handleLinkClick }} />
+										{' '}
+										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />{' '}
 									</li>
 								))}
 							</ul>
@@ -81,7 +88,7 @@ export class KolForm implements API {
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
 
-	@Prop() public _errors?: Record<string, string>;
+	@Prop() public _errors?: ErrorListPropType[];
 
 	@State() public state: States = {};
 
@@ -105,7 +112,7 @@ export class KolForm implements API {
 	}
 
 	@Watch('_errors')
-	public validateErrors(value?: Record<string, string>): void {
+	public validateErrors(value?: ErrorListPropType[]): void {
 		if (typeof value === 'object' && value !== null) {
 			this.state = {
 				...this.state,
@@ -113,6 +120,7 @@ export class KolForm implements API {
 			};
 		}
 	}
+
 	public componentWillLoad(): void {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
