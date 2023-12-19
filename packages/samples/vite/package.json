@@ -7,7 +7,8 @@
 		"dev": "vite",
 		"preview": "vite preview",
 		"start": "npm run dev",
-		"test": "playwright test -c playwright-ct.config.ts --ui",
+		"test": "playwright test -c playwright-ct.config.ts",
+		"test:ui": "npm run test -- --ui",
 		"update": "ncu -t minor -u && pnpm i"
 	},
 	"type": "module",
