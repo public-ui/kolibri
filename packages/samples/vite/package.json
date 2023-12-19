@@ -1,0 +1,36 @@
+{
+	"name": "@public-ui/sample-vite",
+	"version": "2.0.1",
+	"private": true,
+	"scripts": {
+		"build": "tsc && vite build",
+		"dev": "vite",
+		"preview": "vite preview",
+		"start": "npm run dev",
+		"test": "playwright test -c playwright-ct.config.ts",
+		"test:ui": "npm run test -- --ui",
+		"update": "ncu -t minor -u && pnpm i"
+	},
+	"type": "module",
+	"dependencies": {
+		"@public-ui/components": "2.0.1",
+		"@public-ui/react": "2.0.1",
+		"@public-ui/themes": "2.0.1",
+		"react": "18.2.0",
+		"react-dom": "18.2.0"
+	},
+	"devDependencies": {
+		"@leanup/stack": "1.3.48",
+		"@playwright/experimental-ct-react": "1.40.1",
+		"@types/node": "20.10.5",
+		"@types/react": "18.2.45",
+		"@types/react-dom": "18.2.18",
+		"@unocss/preset-mini": "0.58.0",
+		"@vitejs/plugin-react": "4.2.1",
+		"npm-check-updates": "16.14.12",
+		"prettier": "3.1.1",
+		"typescript": "5.3.3",
+		"unocss": "0.58.0",
+		"vite": "5.0.10"
+	}
+}
