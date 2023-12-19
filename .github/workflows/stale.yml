@@ -8,6 +8,7 @@ on:
 
 jobs:
   stale:
+    if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/stale@v8
