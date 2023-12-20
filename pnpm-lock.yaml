@@ -72,7 +72,7 @@ importers:
         specifier: 11.2.14
         version: 11.2.14(rxjs@6.5.5)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -117,7 +117,7 @@ importers:
         specifier: 12.2.17
         version: 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -162,7 +162,7 @@ importers:
         specifier: 13.4.0
         version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -207,7 +207,7 @@ importers:
         specifier: 14.3.0
         version: 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -252,7 +252,7 @@ importers:
         specifier: 15.2.10
         version: 15.2.10(rxjs@7.8.1)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -297,7 +297,7 @@ importers:
         specifier: 16.2.12
         version: 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -342,7 +342,7 @@ importers:
         specifier: 17.0.7
         version: 17.0.7(rxjs@7.8.1)(zone.js@0.14.2)
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -378,7 +378,7 @@ importers:
   packages/adapters/hydrate:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       rimraf:
         specifier: 3.0.2
@@ -387,14 +387,14 @@ importers:
   packages/adapters/preact:
     dependencies:
       '@public-ui/react':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../react
       preact:
         specifier: '>=10.11.3'
         version: 10.11.3
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       react:
         specifier: 18.2.0
@@ -412,7 +412,7 @@ importers:
   packages/adapters/react:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -448,7 +448,7 @@ importers:
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       react:
         specifier: '>=16.14.0'
@@ -458,7 +458,7 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@public-ui/react':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../react
       cpy-cli:
         specifier: 5.0.0
@@ -470,7 +470,7 @@ importers:
   packages/adapters/solid:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -500,7 +500,7 @@ importers:
         specifier: 7.23.6
         version: 7.23.6
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -530,7 +530,7 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       '@public-ui/schema':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../schema
       adopted-style-sheets:
         specifier: 1.1.2
@@ -742,13 +742,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../components
       '@public-ui/solid':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../adapters/solid
       '@public-ui/themes':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../themes
       monaco-editor:
         specifier: 0.45.0
@@ -851,13 +851,13 @@ importers:
         specifier: 17.0.7
         version: 17.0.7(@angular/common@17.0.7)(@angular/compiler@17.0.7)(@angular/core@17.0.7)(@angular/platform-browser@17.0.7)
       '@public-ui/angular-v17':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../adapters/angular/v17
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       '@public-ui/themes':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../themes
       zone.js:
         specifier: 0.14.2
@@ -918,13 +918,13 @@ importers:
         specifier: 0.0.3
         version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       '@public-ui/react':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../adapters/react
       '@public-ui/themes':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../themes
       '@types/node':
         specifier: 20.10.5
@@ -996,13 +996,13 @@ importers:
   packages/samples/ssr:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       '@public-ui/hydrate':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../adapters/hydrate
       '@public-ui/theme-default':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../themes/default
       express:
         specifier: 4.18.2
@@ -1036,13 +1036,13 @@ importers:
   packages/samples/vite:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       '@public-ui/react':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../adapters/react
       '@public-ui/theme-default':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../themes/default
       react:
         specifier: 18.2.0
@@ -1116,11 +1116,11 @@ importers:
   packages/themes:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../schema
       '@types/node':
         specifier: ts5.3
@@ -1159,14 +1159,14 @@ importers:
   packages/themes/bmf:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.3
@@ -1178,14 +1178,14 @@ importers:
   packages/themes/bzst:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.3
@@ -1197,14 +1197,14 @@ importers:
   packages/themes/default:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.3
@@ -1231,14 +1231,14 @@ importers:
   packages/themes/ecl:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.3
@@ -1253,14 +1253,14 @@ importers:
   packages/themes/itzbund:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.3
@@ -1272,14 +1272,14 @@ importers:
   packages/themes/mfm:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.3
@@ -1291,14 +1291,14 @@ importers:
   packages/themes/zoll:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.3
@@ -1335,7 +1335,7 @@ importers:
         version: 7.5.4
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../components
       '@types/gradient-string':
         specifier: 1.1.5
@@ -1404,7 +1404,7 @@ importers:
         specifier: 1.40.1
         version: 1.40.1
       '@public-ui/sample-react':
-        specifier: 2.0.1
+        specifier: 2.0.2
         version: link:../../samples/react
       axe-playwright:
         specifier: 1.2.3
@@ -2153,6 +2153,18 @@ packages:
       '@babel/helper-replace-supers': 7.22.20(@babel/core@7.23.6)
       '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
       '@babel/helper-split-export-declaration': 7.22.6
+      semver: 6.3.1
+    dev: true
+
+  /@babel/helper-create-regexp-features-plugin@7.22.15(@babel/core@7.22.11):
+    resolution: {integrity: sha512-29FkPLFjn4TPEa3RE7GpW+qbE8tlsu3jntNYNfcGsc49LphF1PQIiD+vMZ1z1xVOKt+93khA9tc2JBs3kBjA7w==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    dependencies:
+      '@babel/core': 7.22.11
+      '@babel/helper-annotate-as-pure': 7.22.5
+      regexpu-core: 5.3.2
       semver: 6.3.1
     dev: true
 
@@ -3119,7 +3131,7 @@ packages:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.22.11
-      '@babel/helper-create-regexp-features-plugin': 7.22.9(@babel/core@7.22.11)
+      '@babel/helper-create-regexp-features-plugin': 7.22.15(@babel/core@7.22.11)
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
 
