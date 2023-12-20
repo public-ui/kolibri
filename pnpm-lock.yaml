@@ -6582,7 +6582,7 @@ packages:
     dependencies:
       '@leanup/cli-core-babel': 1.3.48(webpack@5.89.0)
       '@snowpack/plugin-babel': 2.1.7
-      babel-preset-solid: 1.7.7(@babel/core@7.23.2)
+      babel-preset-solid: 1.7.8(@babel/core@7.23.2)
       solid-js: 1.8.7
       vite-plugin-solid: 2.7.0(solid-js@1.8.7)(vite@4.4.9)
     transitivePeerDependencies:
@@ -9917,7 +9917,7 @@ packages:
       babel-preset-current-node-syntax: 1.0.1(@babel/core@7.23.2)
     dev: true
 
-  /babel-preset-solid@1.7.7(@babel/core@7.23.2):
+  /babel-preset-solid@1.7.8(@babel/core@7.23.2):
     resolution: {integrity: sha512-tdxVzx3kgcIjNXAOmGRbzIhFBPeJjSakiN9yM+IYdL/+LtXNnbGqb0Va5tJb8Sjbk+QVEriovCyuzB5T7jeTvg==}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -22369,7 +22369,7 @@ packages:
       '@babel/core': 7.23.2
       '@babel/preset-typescript': 7.22.15(@babel/core@7.23.2)
       '@types/babel__core': 7.20.1
-      babel-preset-solid: 1.7.7(@babel/core@7.23.2)
+      babel-preset-solid: 1.7.8(@babel/core@7.23.2)
       merge-anything: 5.1.7
       solid-js: 1.8.7
       solid-refresh: 0.5.3(solid-js@1.8.7)
