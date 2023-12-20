@@ -1,15 +1,6 @@
 import { SelectOption } from '@public-ui/components';
 
-export type Theme =
-	| 'bmf'
-	| 'default'
-	| 'ecl-ec'
-	| 'ecl-eu'
-	| 'itzbund'
-	| 'mapz'
-	| 'th'
-	| 'unstyled'
-	| 'zoll-v2';
+export type Theme = 'bmf' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'mapz' | 'th' | 'unstyled' | 'zoll-v2';
 
 export const isTheme = (value: unknown) => {
 	return (
