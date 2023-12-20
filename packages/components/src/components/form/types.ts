@@ -11,10 +11,9 @@ export type KoliBriFormCallbacks = {
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
-	errors: PropErrorList[];
 	on: KoliBriFormCallbacks;
 	requiredText: string | boolean;
-};
+} & PropErrorList;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;

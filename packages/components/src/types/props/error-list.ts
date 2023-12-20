@@ -1,5 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
-import { watchString } from '../../utils/prop.validators';
+import { watchValidator } from '../../utils/prop.validators';
 
 /* types */
 export type ErrorListPropType = {
@@ -8,5 +8,10 @@ export type ErrorListPropType = {
 };
 
 export type PropErrorList = {
-	errorList: ErrorListPropType;
+	errorList: ErrorListPropType[];
+};
+
+/* validator */
+export const validateAccessKey = (component: Generic.Element.Component, value?: ErrorListPropType): void => {
+	watchValidator(component, 'errorList', (value): boolean => typeof value === 'object', new Set(['Object']), value);
 };

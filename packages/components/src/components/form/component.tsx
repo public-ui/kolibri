@@ -4,7 +4,7 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { API, KoliBriFormCallbacks, States } from './types';
-import { PropErrorList } from '../../types/props/error-list';
+import { ErrorListPropType } from '../../types/props/error-list';
 
 /**
  * @slot - Inhalt der Form.
@@ -45,13 +45,13 @@ export class KolForm implements API {
 	public render(): JSX.Element {
 		return (
 			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
-				{this._errors && Object.keys(this._errors).length > 0 && (
+				{this._errorList && this._errorList.length > 0 && (
 					<kol-alert _type="error">
-						Bitte korrigieren Sie folgende Fehler:
-						<nav aria-label="Fehlerliste">
+						{translate('kol-error-list-message')}
+						<nav aria-label={translate('kol-error-list')}>
 							<ul>
-								{Object.entries(this._errors).map(([field, error]) => (
-									<li key={field}>
+								{this._errorList.map((error, index) => (
+									<li key={index}>
 										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />
 									</li>
 								))}
@@ -82,8 +82,11 @@ export class KolForm implements API {
 	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
-
-	@Prop() public _errors?: PropErrorList[];
+	/**
+	 * A list of error objects that each describe an issue encountered in the form.
+	 * Each error object contains a message and a selector for identifying the form element related to the error.
+	 */
+	@Prop() public _errorList?: ErrorListPropType[];
 
 	@State() public state: States = {};
 
@@ -106,12 +109,12 @@ export class KolForm implements API {
 		}
 	}
 
-	@Watch('_errors')
-	public validateErrors(value?: PropErrorList[]): void {
+	@Watch('_errorList')
+	public validateErrorList(value?: ErrorListPropType[]): void {
 		if (typeof value === 'object' && value !== null) {
 			this.state = {
 				...this.state,
-				_errors: value,
+				_errorList: value,
 			};
 		}
 	}
@@ -119,6 +122,6 @@ export class KolForm implements API {
 	public componentWillLoad(): void {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
-		this.validateErrors(this._errors);
+		this.validateErrorList(this._errorList);
 	}
 }
