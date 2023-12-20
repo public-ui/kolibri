@@ -7,15 +7,14 @@
 		"dev": "vite",
 		"preview": "vite preview",
 		"start": "npm run dev",
-		"test": "playwright test -c playwright-ct.config.ts",
-		"test:ui": "npm run test -- --ui",
-		"update": "ncu -t minor -u && pnpm i"
+		"test:ct": "playwright test -c playwright-ct.config.ts",
+		"test:ct-ui": "npm run test -- --ui"
 	},
 	"type": "module",
 	"dependencies": {
 		"@public-ui/components": "2.0.1",
 		"@public-ui/react": "2.0.1",
-		"@public-ui/themes": "2.0.1",
+		"@public-ui/theme-default": "2.0.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},
@@ -27,7 +26,6 @@
 		"@types/react-dom": "18.2.18",
 		"@unocss/preset-mini": "0.58.0",
 		"@vitejs/plugin-react": "4.2.1",
-		"npm-check-updates": "16.14.12",
 		"prettier": "3.1.1",
 		"typescript": "5.3.3",
 		"unocss": "0.58.0",
