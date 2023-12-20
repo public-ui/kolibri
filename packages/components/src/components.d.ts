@@ -31,7 +31,7 @@ import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { EventCallbacks } from "./components/details/types";
 import { KoliBriFormCallbacks } from "./components/form/types";
-import { ErrorListProps } from "./types/props/error-list";
+import { PropErrorList } from "./types/props/error-list";
 import { HeadingVariantPropType } from "./types/props/heading-variant";
 import { Loading } from "./utils/validators/loading";
 import { SuggestionsPropType } from "./types/props/suggestions";
@@ -89,7 +89,7 @@ export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { EventCallbacks } from "./components/details/types";
 export { KoliBriFormCallbacks } from "./components/form/types";
-export { ErrorListProps } from "./types/props/error-list";
+export { PropErrorList } from "./types/props/error-list";
 export { HeadingVariantPropType } from "./types/props/heading-variant";
 export { Loading } from "./utils/validators/loading";
 export { SuggestionsPropType } from "./types/props/suggestions";
@@ -543,7 +543,7 @@ export namespace Components {
         "_open"?: boolean;
     }
     interface KolForm {
-        "_errors"?: ErrorListProps[];
+        "_errors"?: PropErrorList[];
         /**
           * Gibt die EventCallback-Funktionen für die Form-Events an.
          */
@@ -3354,7 +3354,7 @@ declare namespace LocalJSX {
         "_open"?: boolean;
     }
     interface KolForm {
-        "_errors"?: ErrorListProps[];
+        "_errors"?: PropErrorList[];
         /**
           * Gibt die EventCallback-Funktionen für die Form-Events an.
          */

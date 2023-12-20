@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { ErrorList } from './ErrorList';
 
 const LOCATION_OPTIONS = [
 	{
@@ -36,9 +35,9 @@ export function DistrictForm() {
 	const form = useFormikContext<FormValues>();
 	const errorList = createErrorList(form.errors);
 
-	function createErrorList(formikErros: Record<string, string>): ErrorListPropType[] {
-		return Object.keys(formikErros).map((fieldName) => ({
-			message: formikErros[fieldName],
+	function createErrorList(formikErrors: Record<string, string>): ErrorListPropType[] {
+		return Object.keys(formikErrors).map((fieldName) => ({
+			message: formikErrors[fieldName],
 			selector: `#field-${fieldName}`,
 		}));
 	}
@@ -77,6 +76,7 @@ export function DistrictForm() {
 						/>
 					)}
 				</Field>
+
 				<KolButton _label="Weiter" _type="submit" className="mt-2" />
 			</KolForm>
 		</div>

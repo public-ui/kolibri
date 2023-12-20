@@ -4,7 +4,7 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { API, KoliBriFormCallbacks, States } from './types';
-import { ErrorListProps } from '../../types/props/error-list';
+import { PropErrorList } from '../../types/props/error-list';
 
 /**
  * @slot - Inhalt der Form.
@@ -52,8 +52,7 @@ export class KolForm implements API {
 							<ul>
 								{Object.entries(this._errors).map(([field, error]) => (
 									<li key={field}>
-										{' '}
-										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />{' '}
+										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />
 									</li>
 								))}
 							</ul>
@@ -84,7 +83,7 @@ export class KolForm implements API {
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
 
-	@Prop() public _errors?: ErrorListProps[];
+	@Prop() public _errors?: PropErrorList[];
 
 	@State() public state: States = {};
 
@@ -108,7 +107,7 @@ export class KolForm implements API {
 	}
 
 	@Watch('_errors')
-	public validateErrors(value?: ErrorListProps[]): void {
+	public validateErrors(value?: PropErrorList[]): void {
 		if (typeof value === 'object' && value !== null) {
 			this.state = {
 				...this.state,
