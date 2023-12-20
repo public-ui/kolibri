@@ -18,6 +18,7 @@ export const alignFloatingElements = async ({ floatingElement, referenceElement,
 		const { x, y, middlewareData, placement } = await computePosition(referenceElement, floatingElement, {
 			placement: align,
 			middleware: middleware,
+			strategy: 'fixed',
 		});
 
 		Object.assign(floatingElement.style, {

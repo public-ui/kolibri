@@ -115,16 +115,22 @@ const initMeta = (): void => {
 	}
 };
 
-const KoliBri: Record<string, unknown> = {};
-Object.defineProperty(window, 'KoliBri', {
-	get: function () {
-		return KoliBri;
-	},
-});
+const getKoliBri = (): Record<string, unknown> => {
+	let kolibri = getWindow().KoliBri;
+	if (kolibri === undefined) {
+		kolibri = {};
+		Object.defineProperty(getWindow(), 'KoliBri', {
+			value: kolibri,
+			writable: false,
+		});
+	}
+	return kolibri;
+};
+
 export const initKoliBri = (): void => {
-	if (KoliBri.Modal === undefined) {
+	if (getKoliBri().Modal === undefined) {
 		const Modal = new ModalService();
-		Object.defineProperty(KoliBri, 'Modal', {
+		Object.defineProperty(getKoliBri(), 'Modal', {
 			get: function (): ModalService {
 				return Modal;
 			},
@@ -137,7 +143,7 @@ export const initKoliBri = (): void => {
 	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.1
+	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.2
 		`,
 			{
 				forceLog: true,
@@ -147,18 +153,11 @@ export const initKoliBri = (): void => {
 		console.warn(`You can only initialize KoliBri once.`);
 	}
 };
-export { KoliBri };
+export { getKoliBri };
 
 export const renderDevAdvice = (): void => {
-	if (getWindow().KoliBri === undefined) {
-		Object.defineProperty(window, 'KoliBri', {
-			get: function () {
-				return KoliBri;
-			},
-		});
-	}
-	if (KoliBri.adviceShown !== true) {
-		Object.defineProperty(KoliBri, 'adviceShown', {
+	if (getKoliBri().adviceShown !== true) {
+		Object.defineProperty(getKoliBri(), 'adviceShown', {
 			get: function () {
 				return true;
 			},
