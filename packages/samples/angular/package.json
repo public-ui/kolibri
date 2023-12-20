@@ -30,9 +30,9 @@
 	},
 	"devDependencies": {
 		"adopted-style-sheets": "1.1.2",
-		"@leanup/stack-angular": "1.3.48",
-		"@leanup/stack": "1.3.46",
-		"@leanup/stack-webpack": "1.3.48",
+		"@leanup/stack-angular": "1.3.49",
+		"@leanup/stack": "1.3.49",
+		"@leanup/stack-webpack": "1.3.49",
 		"@ngtools/webpack": "17.0.7",
 		"chromedriver": "120.0.0",
 		"cpy-cli": "5.0.0",
