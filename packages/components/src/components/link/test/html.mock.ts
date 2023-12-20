@@ -7,13 +7,14 @@ import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
+	const targetDescription = props._targetDescription || 'kol-open-link-in-tab';
 	const state = mixMembers<LinkProps, States>(
 		{
 			_href: '…', // ⚠ required
 			_hideLabel: false,
 			_icons: {},
 			_tooltipAlign: 'right',
-			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
+			_targetDescription: targetDescription,
 			_ariaCurrentValue: 'page',
 		},
 		props
@@ -23,7 +24,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 <kol-link>
   <mock:shadow-root>
   <kol-link-wc>
-<a${state._hideLabel === true && !hasExpertSlot && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''} class="${
+<a${state._hideLabel === true && !hasExpertSlot && typeof state._label === 'string' ? ` aria-label="${state._label} (${targetDescription})"` : ''} class="${
 		state._hideLabel === true ? ' hide-label' : ''
 	}${typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''}" href="${
 		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
@@ -46,10 +47,10 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				typeof state._target === 'string' && state._target !== '_self'
 					? getIconHtml(
 							{
-								_label: 'Der Link wird in einem neuen Tab geöffnet.',
+								_label: targetDescription,
 								_icons: 'codicon codicon-link-external',
 							},
-							' class="external-link-icon"'
+							` class="external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`
 					  )
 					: ''
 			}
