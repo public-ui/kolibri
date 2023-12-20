@@ -11,4 +11,4 @@ The component InputColor is a wrapper for the native HTML element `<input type="
 
 For full accessibility, consider using predefined colors lists, e.g. using KolSelect or KolCheckbox.
 
-[🐞 GitHub issue #5549](https://github.com/public-ui/kolibri/issues/5549).
+[🐞 GitHub issue #5549](https://github.com/public-ui/kolibri/issues/5549)
