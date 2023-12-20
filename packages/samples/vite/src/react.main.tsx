@@ -1,13 +1,13 @@
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/components';
-import { BMF } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/theme-default';
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 
 try {
-	await register(BMF, defineCustomElements);
+	await register(DEFAULT, defineCustomElements);
 } catch (error) {
 	console.error(error);
 }
