@@ -7,17 +7,12 @@ Diese Komponente implementiert das Logo von KoliBri.
 ### Code
 
 ```html
-<kol-kolibri />
-<kol-kolibri _animate />
-<kol-kolibri _animate _labeled="false" />
-<kol-kolibri _labeled="false" />
+<kol-kolibri /> <kol-kolibri _labeled="false" />
 ```
 
 ## Beispiele
 
 <kol-kolibri />
-<kol-kolibri _animate />
-<kol-kolibri _animate _labeled="false" /> 
 <kol-kolibri _labeled="false" />
 
 ## Barrierefreiheit
