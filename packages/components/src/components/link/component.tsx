@@ -78,7 +78,7 @@ export class KolLinkWc implements API {
 		};
 
 		if (this.state._hideLabel === true && !this.state._label) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden _hide-label gesetzt ist.`);
+			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden wenn _hide-label gesetzt ist.`);
 		}
 		return { isExternal, tagAttrs };
 	};
@@ -93,7 +93,9 @@ export class KolLinkWc implements API {
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
-					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+					aria-label={
+						this.state._hideLabel && typeof this.state._label === 'string' ? `${this.state._label} (${this.state._targetDescription as string})` : undefined
+					}
 					class={{
 						'external-link': isExternal,
 						'hide-label': this.state._hideLabel === true,
@@ -113,7 +115,14 @@ export class KolLinkWc implements API {
 					>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
-					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icons={'codicon codicon-link-external'} />}
+					{isExternal && (
+						<kol-icon
+							class="external-link-icon"
+							_label={this.state._targetDescription as string}
+							_icons={'codicon codicon-link-external'}
+							aria-hidden={this.state._hideLabel}
+						/>
+					)}
 				</a>
 				<kol-tooltip-wc
 					/**

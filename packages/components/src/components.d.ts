@@ -1798,7 +1798,7 @@ export namespace Components {
         /**
           * Defines the description to use when the link is going to be opened in another application.
          */
-        "_targetDescription"?: string;
+        "_targetDescription": string;
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
