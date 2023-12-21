@@ -40,7 +40,7 @@ describe('test Progress', () => {
              </div>
            </div>
            <progress aria-busy="true" max="100" value="0"></progress>
-           <span ${DEFAULT_HTML_SPAN_PROPS} hidden>
+           <span ${DEFAULT_HTML_SPAN_PROPS} class="visually-hidden">
              0 von 100 %
            </span>
          </mock:shadow-root>
@@ -70,7 +70,7 @@ describe('test Progress', () => {
              </div>
            </div>
            <progress aria-busy="true" max="${DEFAULT_PROPS._max}" value="${DEFAULT_PROPS._value}"></progress>
-           <span ${DEFAULT_HTML_SPAN_PROPS} hidden>
+           <span ${DEFAULT_HTML_SPAN_PROPS} class="visually-hidden">
              0 von ${DEFAULT_PROPS._max} %
            </span>
          </mock:shadow-root>
@@ -109,7 +109,7 @@ describe('test Progress', () => {
              </div>
            </div>
            <progress aria-busy="false" max="${DEFAULT_PROPS._max}" value="${DEFAULT_PROPS._max}"></progress>
-           <span ${DEFAULT_HTML_SPAN_PROPS} hidden>
+           <span ${DEFAULT_HTML_SPAN_PROPS} class="visually-hidden">
              0 von ${DEFAULT_PROPS._max} %
            </span>
          </mock:shadow-root>
@@ -137,7 +137,7 @@ describe('test Progress', () => {
              </text>
            </svg>
            <progress ${DEFAULT_HTML_PROGRESS_PROPS}></progress>
-           <span ${DEFAULT_HTML_SPAN_PROPS} hidden>0 von ${DEFAULT_PROPS._max} %</span>
+           <span ${DEFAULT_HTML_SPAN_PROPS} class="visually-hidden">0 von ${DEFAULT_PROPS._max} %</span>
          </mock:shadow-root>
        </kol-progress>`
 		);
