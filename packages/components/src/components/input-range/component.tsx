@@ -30,15 +30,22 @@ import { API, States } from './types';
 })
 export class KolInputRange implements API {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
-	private ref?: HTMLInputElement;
+	private refInputNumber?: HTMLInputElement;
+	private refInputRange?: HTMLInputElement;
 
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
-			this.ref = element;
+			this.refInputNumber = element;
 			propagateFocus(this.host, element);
-			if (!this._value && this.ref?.value) {
-				this.validateValue(parseFloat(this.ref.value));
+			if (!this._value && this.refInputNumber?.value) {
+				this.validateValue(parseFloat(this.refInputNumber.value));
 			}
+		}
+	};
+
+	private readonly catchInputRangeRef = (element?: HTMLInputElement) => {
+		if (element) {
+			this.refInputRange = element;
 		}
 	};
 
@@ -56,12 +63,18 @@ export class KolInputRange implements API {
 		if (event.code === 'Enter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.ref,
+				ref: this.refInputRange,
 			});
 		} else {
 			this.onChange(event);
 		}
 	};
+
+	componentDidLoad() {
+		if (!this._value && this.refInputRange?.value) {
+			this.validateValue(parseFloat(this.refInputRange.value));
+		}
+	}
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -96,10 +109,12 @@ export class KolInputRange implements API {
 							}}
 						>
 							<input
+								ref={this.catchInputRangeRef}
 								title=""
 								accessKey={this.state._accessKey}
 								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+								aria-hidden="true"
 								autoCapitalize="off"
 								autoComplete={this.state._autoComplete}
 								autoCorrect="off"
