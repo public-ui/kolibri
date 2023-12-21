@@ -1,6 +1,4 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-
-import { translate } from '../../i18n';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { ButtonVariantPropType } from '../../types/props/button-variant';
 import { CustomClassPropType } from '../../types/props/custom-class';
@@ -51,7 +49,6 @@ export class KolLinkButton implements Props {
 					_role="button"
 					_tabIndex={this._tabIndex}
 					_target={this._target}
-					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
 					<slot name="expert" slot="expert"></slot>
@@ -121,11 +118,6 @@ export class KolLinkButton implements Props {
 	 * Defines where to open the link.
 	 */
 	@Prop() public _target?: LinkTargetPropType;
-
-	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
