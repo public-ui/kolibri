@@ -1175,25 +1175,6 @@ importers:
         specifier: 5.3.3
         version: 5.3.3
 
-  packages/themes/bzst:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.2
-        version: link:../../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.2
-        version: link:../../schema
-      '@public-ui/visual-tests':
-        specifier: 2.0.2
-        version: link:../../tools/visual-tests
-      '@types/node':
-        specifier: ts5.3
-        version: 20.10.4
-      typescript:
-        specifier: 5.3.3
-        version: 5.3.3
-
   packages/themes/default:
     dependencies:
       '@public-ui/components':
@@ -1265,47 +1246,6 @@ importers:
       '@types/node':
         specifier: ts5.3
         version: 20.10.4
-      typescript:
-        specifier: 5.3.3
-        version: 5.3.3
-
-  packages/themes/mfm:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.2
-        version: link:../../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.2
-        version: link:../../schema
-      '@public-ui/visual-tests':
-        specifier: 2.0.2
-        version: link:../../tools/visual-tests
-      '@types/node':
-        specifier: ts5.3
-        version: 20.10.4
-      typescript:
-        specifier: 5.3.3
-        version: 5.3.3
-
-  packages/themes/zoll:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.2
-        version: link:../../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.2
-        version: link:../../schema
-      '@public-ui/visual-tests':
-        specifier: 2.0.2
-        version: link:../../tools/visual-tests
-      '@types/node':
-        specifier: ts5.3
-        version: 20.10.4
-      npm-run-all:
-        specifier: 4.1.5
-        version: 4.1.5
       typescript:
         specifier: 5.3.3
         version: 5.3.3
