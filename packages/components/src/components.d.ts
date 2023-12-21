@@ -1796,10 +1796,6 @@ export namespace Components {
          */
         "_target"?: LinkTargetPropType;
         /**
-          * Defines the description to use when the link is going to be opened in another application.
-         */
-        "_targetDescription"?: string;
-        /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
@@ -1854,10 +1850,6 @@ export namespace Components {
           * Defines where to open the link.
          */
         "_target"?: LinkTargetPropType;
-        /**
-          * Defines the description to use when the link is going to be opened in another application.
-         */
-        "_targetDescription"?: string;
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
@@ -1931,10 +1923,6 @@ export namespace Components {
           * Defines where to open the link.
          */
         "_target"?: LinkTargetPropType;
-        /**
-          * Defines the description to use when the link is going to be opened in another application.
-         */
-        "_targetDescription"?: string;
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
@@ -4596,10 +4584,6 @@ declare namespace LocalJSX {
          */
         "_target"?: LinkTargetPropType;
         /**
-          * Defines the description to use when the link is going to be opened in another application.
-         */
-        "_targetDescription"?: string;
-        /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: TooltipAlignPropType;
@@ -4654,10 +4638,6 @@ declare namespace LocalJSX {
           * Defines where to open the link.
          */
         "_target"?: LinkTargetPropType;
-        /**
-          * Defines the description to use when the link is going to be opened in another application.
-         */
-        "_targetDescription"?: string;
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
@@ -4731,10 +4711,6 @@ declare namespace LocalJSX {
           * Defines where to open the link.
          */
         "_target"?: LinkTargetPropType;
-        /**
-          * Defines the description to use when the link is going to be opened in another application.
-         */
-        "_targetDescription"?: string;
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
