@@ -13,7 +13,6 @@ import { propagateFocus } from '../../utils/reuse';
 import { LinkProps } from './types';
 import { AccessKeyPropType } from '../../types/props/access-key';
 import { AriaCurrentValuePropType } from '../../types/props/aria-current-value';
-import { translate } from '../../i18n';
 
 @Component({
 	tag: 'kol-link',
@@ -45,7 +44,6 @@ export class KolLink implements LinkProps {
 					_role={this._role}
 					_tabIndex={this._tabIndex}
 					_target={this._target}
-					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
 					{/*
@@ -114,11 +112,6 @@ export class KolLink implements LinkProps {
 	 * Defines where to open the link.
 	 */
 	@Prop() public _target?: LinkTargetPropType;
-
-	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription: string = translate('kol-open-link-in-tab');
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.

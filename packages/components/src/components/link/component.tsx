@@ -12,7 +12,7 @@ import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/prop
 import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { devHint } from '../../utils/a11y.tipps';
-import { setEventTarget, watchString } from '../../utils/prop.validators';
+import { setEventTarget } from '../../utils/prop.validators';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { States as LinkStates } from '../link/types';
@@ -94,7 +94,7 @@ export class KolLinkWc implements API {
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-label={
-						this.state._hideLabel && typeof this.state._label === 'string' ? `${this.state._label} (${this.state._targetDescription as string})` : undefined
+						this.state._hideLabel && typeof this.state._label === 'string' ? `${this.state._label} (${translate('kol-open-link-in-tab')})` : undefined
 					}
 					class={{
 						'external-link': isExternal,
@@ -118,7 +118,7 @@ export class KolLinkWc implements API {
 					{isExternal && (
 						<kol-icon
 							class="external-link-icon"
-							_label={this.state._targetDescription as string}
+							_label={translate('kol-open-link-in-tab')}
 							_icons={'codicon codicon-link-external'}
 							aria-hidden={this.state._hideLabel}
 						/>
@@ -197,11 +197,6 @@ export class KolLinkWc implements API {
 	@Prop() public _target?: LinkTargetPropType;
 
 	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
-
-	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
@@ -267,11 +262,6 @@ export class KolLinkWc implements API {
 		validateLinkTarget(this, value);
 	}
 
-	@Watch('_targetDescription')
-	public validateTargetDescription(value?: string): void {
-		watchString(this, '_targetDescription', value);
-	}
-
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this, value);
@@ -289,7 +279,6 @@ export class KolLinkWc implements API {
 		this.validateRole(this._role);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
-		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
