@@ -78,7 +78,7 @@ export class KolLinkWc implements API {
 		};
 
 		if (this.state._hideLabel === true && !this.state._label) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden wenn _hide-label gesetzt ist.`);
+			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn _hide-label gesetzt ist.`);
 		}
 		return { isExternal, tagAttrs };
 	};
