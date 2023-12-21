@@ -11,7 +11,7 @@
 		animation-timing-function: ease-in;
 		box-sizing: border-box;
 		display: none;
-		position: absolute;
+		position: fixed;
 		visibility: hidden;
 		/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
 		top: 0;
@@ -29,7 +29,7 @@
 
 	kol-tooltip-wc .tooltip-arrow {
 		height: 10px;
-		position: absolute;
+		position: fixed;
 		transform: rotate(45deg);
 		width: 10px;
 		z-index: 999;

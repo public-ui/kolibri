@@ -2,7 +2,7 @@ import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-she
 import { register as coreRegister } from 'adopted-style-sheets';
 
 import { I18nextService, II18nService } from './i18n';
-import { KoliBri } from '../utils/dev.utils';
+import { getKoliBri } from '../utils/dev.utils';
 
 export const register = async (
 	themes:
@@ -12,8 +12,8 @@ export const register = async (
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
 	options?: RegisterOptions
 ): Promise<void[]> => {
-	if (KoliBri.I18n === undefined) {
-		Object.defineProperty(KoliBri, 'I18n', {
+	if (getKoliBri().I18n === undefined) {
+		Object.defineProperty(getKoliBri(), 'I18n', {
 			value: await I18nextService.createInstance(options?.translation?.name ?? 'de', options?.translations),
 			writable: false,
 		});
@@ -21,4 +21,4 @@ export const register = async (
 	return await coreRegister(themes, loaders, options);
 };
 
-export const getI18nService: () => II18nService | undefined = () => KoliBri.I18n as II18nService;
+export const getI18nService: () => II18nService | undefined = () => getKoliBri().I18n as II18nService;

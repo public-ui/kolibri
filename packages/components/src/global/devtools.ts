@@ -1,4 +1,4 @@
-import { getColorContrastAnalysis, getDevMode, getDocument, getExperimentalMode, initKoliBri, KoliBri, Log, renderDevAdvice } from '../utils/dev.utils';
+import { Log, getColorContrastAnalysis, getDevMode, getDocument, getExperimentalMode, getKoliBri, initKoliBri, renderDevAdvice } from '../utils/dev.utils';
 import {
 	koliBriA11yColorContrast,
 	koliBriQuerySelector,
@@ -11,7 +11,7 @@ import {
 
 function prototypeKoliBri<T>(name: string, cb: T) {
 	try {
-		Object.defineProperty(KoliBri, name, {
+		Object.defineProperty(getKoliBri(), name, {
 			get: function () {
 				return cb;
 			},

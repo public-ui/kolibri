@@ -18,8 +18,8 @@
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot"
 	},
 	"dependencies": {
-		"@public-ui/components": "2.0.1",
-		"@public-ui/themes": "2.0.1"
+		"@public-ui/components": "2.0.2",
+		"@public-ui/themes": "2.0.2"
 	},
 	"devDependencies": {
 		"@stencil-community/router": "1.0.2",
