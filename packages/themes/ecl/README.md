@@ -1,17 +1,17 @@
-# KoliBri - Themes ECL
+# KoliBri - ECL-Themes
 
 ## Motivation
 
-The ECL themes provide styling according to the Styleguides of the European Commission and European Union for KoliBri-components.
+The ECL themes provide styling according to the Styleguides of the European Commission and European Union for KoliBri-Components.
 
 ## Installation
 
 You can install the KoliBri themes with `npm`, `pnpm` or `yarn`:
 
 ```bash
-npm i -g @public-ui/themes
-pnpm i -g @public-ui/themes
-yarn add -g @public-ui/themes
+npm i -g @public-ui/theme-ecl
+pnpm i -g @public-ui/theme-ecl
+yarn add -g @public-ui/theme-ecl
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import {
 	ECL_EC, // or ECL_EU
-} from '@public-ui/themes';
+} from '@public-ui/theme-ecl';
 
 register(
 	ECL_EC, // or ECL_EU
