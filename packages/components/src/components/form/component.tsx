@@ -4,7 +4,7 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { API, KoliBriFormCallbacks, States } from './types';
-import { ErrorListPropType } from '../../types/props/error-list';
+import { ErrorListPropType, validateErrorList } from '../../types/props/error-list';
 
 /**
  * @slot - Inhalt der Form.
@@ -111,12 +111,7 @@ export class KolForm implements API {
 
 	@Watch('_errorList')
 	public validateErrorList(value?: ErrorListPropType[]): void {
-		if (typeof value === 'object' && value !== null) {
-			this.state = {
-				...this.state,
-				_errorList: value,
-			};
-		}
+		validateErrorList(this, value);
 	}
 
 	public componentWillLoad(): void {

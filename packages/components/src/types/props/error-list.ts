@@ -12,6 +12,6 @@ export type PropErrorList = {
 };
 
 /* validator */
-export const validateAccessKey = (component: Generic.Element.Component, value?: ErrorListPropType): void => {
+export const validateErrorList = (component: Generic.Element.Component, value?: ErrorListPropType[]): void => {
 	watchValidator(component, 'errorList', (value): boolean => typeof value === 'object', new Set(['Object']), value);
 };
