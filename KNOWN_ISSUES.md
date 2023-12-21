@@ -14,10 +14,12 @@ For full accessibility, consider using predefined colors lists, e.g. using KolSe
 [🐞 GitHub issue #5549](https://github.com/public-ui/kolibri/issues/5549)
 [🐞 NVDA issue #8132](https://github.com/nvaccess/nvda/issues/8132)
 
-## input-number 'readonly' not announced in NVDA
+## input-number and input-date 'readonly' not announced in NVDA
 
-The component InputNumber renders the native HTML element `<input type="number">` which supports the attribute `readonly`.  
+The components InputNumber and InputDate render their respective native HTML elements `<input type="number">` and `<input type="date">` which both support the
+attribute `readonly`.  
 When focusing the element, it's expected that the `readonly` attribute is announced as part of the element description. This isn't the case for NVDA.
 
-[🐞 GitHub issue #5554](https://github.com/public-ui/kolibri/issues/5554)
+[🐞 GitHub issue #5554](https://github.com/public-ui/kolibri/issues/5554) (For number)
+[🐞 GitHub issue #5749](https://github.com/public-ui/kolibri/issues/5749) (For date)
 [🐞 NVDA issue #13672](https://github.com/nvaccess/nvda/issues/13672)
