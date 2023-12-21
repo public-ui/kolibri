@@ -14,12 +14,12 @@ export const SplitButtonBasic: FC = () => {
 	};
 
 	return (
-		<div className="grid gap-4">
-			<KolSplitButton _label="Nur der Pfeil öffnet" className="w-200px" _on={{ onClick: handleButtonClick }}>
-				Drowndown-Inhalt
+		<div className="flex gap-4">
+			<KolSplitButton _label="Nur der Pfeil öffnet" _on={{ onClick: handleButtonClick }}>
+				Dropdown-Inhalt
 			</KolSplitButton>
-			<KolSplitButton _label="ohne label" _hide-label _icons="codicon codicon-git-pull-request" className="w-200px">
-				Drowndown-Inhalt
+			<KolSplitButton _label="Schalter ohne sichtbares Label" _hideLabel _icons="codicon codicon-git-pull-request">
+				Dropdown-Inhalt
 			</KolSplitButton>
 		</div>
 	);
