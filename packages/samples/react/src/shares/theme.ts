@@ -2,6 +2,10 @@ import { SelectOption } from '@public-ui/components';
 
 export type Theme = 'bmf' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'mapz' | 'th' | 'unstyled' | 'zoll-v2';
 
+const drafts: Theme[] = ['ecl-ec', 'ecl-eu', 'itzbund', 'th'];
+
+export const isDraftTheme = (theme: Theme) => drafts.includes(theme);
+
 export const isTheme = (value: unknown) => {
 	return (
 		typeof value === 'string' &&

@@ -3,9 +3,9 @@ import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 import { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
 import { Option } from '@public-ui/components';
-import { KolAlert } from '@public-ui/react';
+import { KolAlert, KolBadge } from '@public-ui/react';
 import { ROUTES } from './shares/routes';
-import { Theme, THEME_OPTIONS } from './shares/theme';
+import { isDraftTheme, Theme, THEME_OPTIONS } from './shares/theme';
 import PackageJson from '@public-ui/components/package.json';
 import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
 import { Sidebar } from './components/Sidebar';
@@ -101,7 +101,7 @@ ROUTE_LIST.forEach((route) => {
 export const App: FC = () => {
 	const routerLocation = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
-	const theme = searchParams.get('theme') ?? getTheme();
+	const theme: Theme = (searchParams.get('theme') as Theme) ?? getTheme();
 	const hideMenus = searchParams.has('hideMenus');
 
 	setTheme(theme as Theme); // set for `getTheme` usages within the application
@@ -129,6 +129,7 @@ export const App: FC = () => {
 			)}
 
 			<div className="p-4" id="route-container">
+				{!hideMenus && isDraftTheme(theme) && <KolBadge className="mb-3" _label="DRAFT" _color="#db5461" />}
 				<Routes>
 					{ROUTE_TREE}
 					<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
