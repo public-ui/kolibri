@@ -36,8 +36,8 @@
 	},
 	"dependencies": {
 		"adopted-style-sheets": "1.1.2",
-		"@public-ui/components": "2.0.1",
-		"@public-ui/schema": "2.0.1"
+		"@public-ui/components": "2.0.2",
+		"@public-ui/schema": "2.0.2"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.5.0",
@@ -46,7 +46,7 @@
 		"@stencil/react-output-target": "0.4.0",
 		"@stencil/vue-output-target": "0.7.0",
 		"@stencil/sass": "2.0.3",
-		"@types/color-convert": "2.0.1",
+		"@types/color-convert": "2.0.2",
 		"@types/jest": "26.0.24",
 		"@types/node": "ts4.9",
 		"@types/puppeteer": "7.0.4",
