@@ -38,6 +38,6 @@ export default {
 	'table-pagination-label': 'Pagination for table {{label}}',
 	'avatar-alt': 'Avatar of {{name}}',
 	'toast-close-all': 'Close all',
-	'error-list': 'Error List',
+	'error-list': 'Error list',
 	'error-list-message': 'Please correct the following errors',
 };
