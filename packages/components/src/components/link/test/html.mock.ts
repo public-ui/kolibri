@@ -13,7 +13,6 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_hideLabel: false,
 			_icons: {},
 			_tooltipAlign: 'right',
-			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 			_ariaCurrentValue: 'page',
 		},
 		props
@@ -23,7 +22,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 <kol-link>
   <mock:shadow-root>
   <kol-link-wc>
-<a${state._hideLabel === true && !hasExpertSlot && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''} class="${
+<a${state._hideLabel === true && !hasExpertSlot && typeof state._label === 'string' ? ` aria-label="${state._label} (kol-open-link-in-tab)"` : ''} class="${
 		state._hideLabel === true ? ' hide-label' : ''
 	}${typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''}" href="${
 		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
@@ -46,10 +45,10 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				typeof state._target === 'string' && state._target !== '_self'
 					? getIconHtml(
 							{
-								_label: 'Der Link wird in einem neuen Tab geöffnet.',
+								_label: 'kol-open-link-in-tab',
 								_icons: 'codicon codicon-link-external',
 							},
-							' class="external-link-icon"'
+							` class="external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`
 					  )
 					: ''
 			}

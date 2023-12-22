@@ -154,7 +154,7 @@ graph TD;
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
   kol-pagination --> kol-select
-  style kol-select fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-select stroke:#333,stroke-width:4px
 ```
 
 ---

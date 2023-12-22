@@ -16,10 +16,27 @@
 		width: 100%;
 	}
 
-	th > div {
-		display: grid;
-		grid-template-columns: 1fr auto;
-		place-items: center;
+	.table-sort-button .button {
+		color: inherit;
+	}
+
+	th.align-left {
+		text-align: left;
+		& .table-sort-button .button-inner {
+			justify-items: start;
+		}
+	}
+	th.align-center {
+		text-align: center;
+		& .table-sort-button .button-inner {
+			justify-items: center;
+		}
+	}
+	th.align-right {
+		text-align: right;
+		& .table-sort-button .button-inner {
+			justify-items: end;
+		}
 	}
 
 	div.pagination {

@@ -1398,26 +1398,12 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			grid-template-columns: 1fr auto;
 			align-items: center;
 		}
-		th div.center {
-			justify-content: center;
-		}
-		th div.right {
-			justify-content: end;
-		}
 		tbody tr:nth-child(odd) {
 			background-color: var(--color-grey-10);
 		}
 		th,
 		td {
 			padding: 0.5em;
-		}
-		td.center > div {
-			display: flex;
-			justify-content: center;
-		}
-		td.right > div {
-			display: flex;
-			justify-content: end;
 		}
 		th[aria-sort='ascending'],
 		th[aria-sort='descending'] {

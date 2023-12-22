@@ -62,7 +62,6 @@ export class KolTable implements API {
 	 * @deprecated only for backward compatibility
 	 */
 	private sortedColumnHead: KoliBriTableSelectedHead = { label: '', key: '', sortDirection: 'NOS' };
-	private ariaLive = '';
 
 	/**
 	 * Defines whether to allow multi sort.
@@ -610,44 +609,21 @@ export class KolTable implements API {
 				}
 				return 0;
 			});
-
-			if (this.sortData.length === 1) {
-				this.ariaLive = translate(`kol-sort-${this.sortData[0].direction === 'ASC' ? 'ascending' : 'descending'}`, {
-					placeholders: { column: this.sortData[0].label, multi: '' },
-				});
-			} else {
-				let sortText = '';
-				for (let index = 1; index < this.sortData.length - 1; index++) {
-					const data = this.sortData[index];
-					sortText += translate(`kol-sort-then-${data.direction === 'ASC' ? 'ascending' : 'descending'}`, { placeholders: { column: data.label } });
-				}
-				sortText += translate(`kol-sort-then-last-${this.sortData[this.sortData.length - 1].direction === 'ASC' ? 'ascending' : 'descending'}`, {
-					placeholders: { column: this.sortData[this.sortData.length - 1].label },
-				});
-				this.ariaLive = translate(`kol-sort-${this.sortData[0].direction === 'ASC' ? 'ascending' : 'descending'}`, {
-					placeholders: { column: this.sortData[0].label, multi: sortText },
-				});
-			}
 		} else if (typeof this.sortFunction === 'function') {
 			switch (this.sortDirections.get(this.sortFunction)) {
 				case 'ASC':
 					sortedData = this.sortFunction([...this.state._data]);
-					this.ariaLive = translate('kol-sort-ascending', { placeholders: { column: cell.label } });
 					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'ASC' };
 					break;
 				case 'DESC':
 					sortedData = this.sortFunction([...this.state._data]).reverse();
-					this.ariaLive = translate('kol-sort-descending', { placeholders: { column: cell.label } });
 					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'DESC' };
 					break;
 				case 'NOS':
 				default:
 					sortedData = [...this.state._data];
 					this.sortedColumnHead = { label: '', key: '', sortDirection: 'NOS' };
-					this.ariaLive = translate('kol-sort-none', { placeholders: { column: cell.label } });
 			}
-		} else {
-			this.ariaLive = translate('kol-table-sort-none');
 		}
 		setState(this, '_sortedData', sortedData);
 	};
@@ -773,9 +749,6 @@ export class KolTable implements API {
 
 		return (
 			<Host>
-				<div style={{ height: '0', width: '0', overflow: 'hidden' }} aria-live="assertive">
-					{this.ariaLive}
-				</div>
 				{this.pageEndSlice > 0 && this.showPagination && (
 					<div class="pagination">
 						<span>
@@ -869,43 +842,31 @@ export class KolTable implements API {
 													}
 												}
 												return (
-													<th // role="columnheader"
+													<th
+														class={col.textAlign ? `align-${col.textAlign}` : undefined}
 														key={`thead-${rowIndex}-${colIndex}-${headerCell.label}`}
 														scope={typeof headerCell.colSpan === 'number' && headerCell.colSpan > 1 ? 'colgroup' : 'col'}
 														colSpan={headerCell.colSpan}
 														rowSpan={headerCell.rowSpan}
 														style={{
-															textAlign: col.textAlign,
 															width: col.width,
 														}}
 														aria-sort={sortDirection}
 														data-sort={`sort-${shortSortDirection}`}
 													>
-														<div class="w-full flex gap-1 items-center">
-															<div
-																class={{
-																	'w-full': true,
-																	[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+														{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') ? (
+															<kol-button-wc
+																class="table-sort-button"
+																exportparts="icon"
+																_icons={{ right: sortButtonIcon }}
+																_label={col.label}
+																_on={{
+																	onClick: () => this.changeCellSort(headerCell),
 																}}
-																style={{
-																	textAlign: col.textAlign,
-																}}
-															>
-																{col.label}
-															</div>
-															{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') && (
-																<kol-button
-																	exportparts="icon"
-																	_icons={sortButtonIcon}
-																	_hideLabel
-																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																	_on={{
-																		onClick: () => this.changeCellSort(headerCell),
-																	}}
-																	_variant="ghost"
-																></kol-button>
-															)}
-														</div>
+															></kol-button-wc>
+														) : (
+															col.label
+														)}
 													</th>
 												);
 											}

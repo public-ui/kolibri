@@ -115,7 +115,7 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 graph TD;
   kol-details --> kol-icon
   kol-details --> kol-indented-text
-  style kol-details fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-details stroke:#333,stroke-width:4px
 ```
 
 ---
