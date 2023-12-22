@@ -1,4 +1,4 @@
-@layer kol-component {
+@layer kol-theme-component {
 	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
 		font-size: 0.75rem;
 		color: var(--color-subtle);
