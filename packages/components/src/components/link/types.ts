@@ -18,7 +18,6 @@ import { PropAccessKey } from '../../types/props/access-key';
  */
 export type RequiredProps = PropHref;
 export type OptionalProps = {
-	targetDescription: string;
 	tabIndex: number;
 } & PropAccessKey &
 	PropAriaCurrentValue &

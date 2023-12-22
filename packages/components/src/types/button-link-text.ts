@@ -22,7 +22,6 @@ type OptionalButtonOrLinkOrTextProps = PropHideLabel & {
 	active: boolean; // TODO: realy needed?
 	// tabIndex: number; // possible, but sensible ?! -> Ticket?
 	// tooltipAlign: Alignment; // possible, but sensible ?! -> Ticket?
-	targetDescription: string;
 } & PropIcons &
 	PropLinkTarget;
 type OptionalButtonProps = OptionalButtonOrLinkOrTextProps & {

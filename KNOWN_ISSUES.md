@@ -20,3 +20,14 @@ For unknown reasons, this sometime does not happen in NVDA.
 
 [🐞 GitHub issue (PR) #5780](https://github.com/public-ui/kolibri/pull/5780)
 [🐞 NVDA issue #10890](https://github.com/nvaccess/nvda/issues/10890)
+[🐞 NVDA issue #8132](https://github.com/nvaccess/nvda/issues/8132)
+
+## input-number and input-date 'readonly' not announced in NVDA
+
+The components InputNumber and InputDate render their respective native HTML elements `<input type="number">` and `<input type="date">` which both support the
+attribute `readonly`.  
+When focusing the element, it's expected that the `readonly` attribute is announced as part of the element description. This isn't the case for NVDA.
+
+[🐞 GitHub issue #5554](https://github.com/public-ui/kolibri/issues/5554) (For number)
+[🐞 GitHub issue #5749](https://github.com/public-ui/kolibri/issues/5749) (For date)
+[🐞 NVDA issue #13672](https://github.com/nvaccess/nvda/issues/13672)

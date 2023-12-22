@@ -99,7 +99,7 @@ export class KolProcess implements API {
 			<Host>
 				{createProgressSVG(this.state)}
 				<progress aria-busy={this.state._value < this.state._max ? 'true' : 'false'} max={this.state._max} value={this.state._value}></progress>
-				<span aria-live="polite" aria-relevant="removals text" hidden>
+				<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 					{this.state._liveValue} von {this.state._max} {this.state._unit}
 				</span>
 			</Host>

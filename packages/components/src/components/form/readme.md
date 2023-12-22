@@ -46,7 +46,7 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 ```mermaid
 graph TD;
   kol-form --> kol-indented-text
-  style kol-form fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-form stroke:#333,stroke-width:4px
 ```
 
 ---
