@@ -30,4 +30,6 @@ export default {
 	'table-pagination-label': 'Paginierung für die Tabelle {{label}}',
 	'avatar-alt': 'Avatar von {{name}}',
 	'toast-close-all': 'Alle schließen',
+	'error-list': 'Fehlerliste',
+	'error-list-message': 'Bitte korrigieren Sie folgende Fehler:',
 };
