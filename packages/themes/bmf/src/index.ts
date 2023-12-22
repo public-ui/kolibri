@@ -1594,15 +1594,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 			grid-template-columns: 1fr auto;
 			align-items: center;
 		}
-		th div.center {
-			justify-content: center;
-		}
-		th div.right {
-			justify-content: end;
-		}
 		th,
 		td {
-			vertical-align: top;
 			border-bottom: 1px solid var(--color-granite);
 			height: 1.25rem;
 		}
@@ -1612,22 +1605,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		tbody th,
 		td {
 			padding: 1em 0;
+			vertical-align: top;
 		}
 		th kol-button,
 		td kol-button {
 			margin-top: -0.75rem;
 			margin-bottom: -0.75rem;
 		}
-		td.center > div {
-			display: flex;
-			justify-content: center;
-		}
-		td.right > div {
-			display: flex;
-			justify-content: end;
-		}
-		th[aria-sort='ascending'],
-		th[aria-sort='descending'] {
+		.table-sort-button .button {
 			font-weight: 700;
 		}
 		:host > div:last-child,
