@@ -1,0 +1,11 @@
+# https://github.com/ionic-team/bot
+
+tasks:
+  - name: remove-label
+    on:
+      issue_comment:
+        types: [created]
+    condition: 'payload.issue.number === 1'
+    config:
+      label: needs-reply
+      exclude-labeler: true
