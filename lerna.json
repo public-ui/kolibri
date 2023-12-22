@@ -21,12 +21,9 @@
 		"packages/schema",
 		"packages/themes",
 		"packages/themes/bmf",
-		"packages/themes/bzst",
 		"packages/themes/default",
 		"packages/themes/ecl",
 		"packages/themes/itzbund",
-		"packages/themes/mfm",
-		"packages/themes/zoll",
 		"packages/tools/kolibri-cli",
 		"packages/tools/visual-tests"
 	],
