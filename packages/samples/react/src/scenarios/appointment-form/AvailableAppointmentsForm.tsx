@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { KolButton, KolForm, KolHeading, KolInputDate, KolInputRadio, KolSpin } from '@public-ui/react';
 import { FormValues } from './AppointmentForm';
-import { ErrorList } from './ErrorList';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { fetchAvailableTimes } from './appointmentService';
 import { Option } from '@public-ui/components';
+import { ErrorListPropType } from '@public-ui/components';
 
 export function AvailableAppointmentsForm() {
 	const form = useFormikContext<FormValues>();
 
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const [availableTimes, setAvailableTimes] = useState<Option<string>[] | null>(null);
+
+	const errorList = createErrorList(form.errors);
+
+	function createErrorList(formikErrors: Record<string, string>): ErrorListPropType[] {
+		return Object.keys(formikErrors).map((fieldName) => ({
+			message: formikErrors[fieldName],
+			selector: `#field-${fieldName}`,
+		}));
+	}
 
 	useEffect(() => {
 		let ignoreResponse = false;
@@ -36,18 +45,12 @@ export function AvailableAppointmentsForm() {
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Termin aus"></KolHeading>
-
-			{sectionSubmitted && Object.keys(form.errors).length ? (
-				<div className="mt-2">
-					<ErrorList errors={form.errors} />
-				</div>
-			) : null}
-
 			<KolForm
+				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
 					onSubmit: () => {
-						void form.submitForm();
 						setSectionSubmitted(true);
+						void form.submitForm();
 					},
 				}}
 			>
@@ -81,7 +84,7 @@ export function AvailableAppointmentsForm() {
 								<Field name="time">
 									{({ field }: FieldProps<FormValues['time']>) => (
 										<KolInputRadio
-											id="field-date"
+											id="field-time"
 											_label="Zeit"
 											_orientation="horizontal"
 											_options={availableTimes}
