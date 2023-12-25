@@ -868,13 +868,13 @@ importers:
         version: 1.3.49(chromedriver@120.0.0)(esbuild@0.19.3)(typescript@5.2.2)
       '@leanup/stack-angular':
         specifier: 1.3.49
-        version: 1.3.49(@angular/compiler-cli@17.0.7)(@angular/core@17.0.7)(@babel/core@7.23.6)(@leanup/stack-webpack@1.3.49)(@ngtools/webpack@17.0.7)(webpack@5.89.0)
+        version: 1.3.49(@angular/compiler-cli@17.0.7)(@angular/core@17.0.7)(@babel/core@7.23.6)(@leanup/stack-webpack@1.3.49)(@ngtools/webpack@17.0.8)(webpack@5.89.0)
       '@leanup/stack-webpack':
         specifier: 1.3.49
         version: 1.3.49(@leanup/stack@1.3.49)(esbuild@0.19.3)(less@4.2.0)(postcss@8.4.32)
       '@ngtools/webpack':
-        specifier: 17.0.7
-        version: 17.0.7(@angular/compiler-cli@17.0.7)(typescript@5.2.2)(webpack@5.89.0)
+        specifier: 17.0.8
+        version: 17.0.8(@angular/compiler-cli@17.0.7)(typescript@5.2.2)(webpack@5.89.0)
       adopted-style-sheets:
         specifier: 1.1.3
         version: 1.1.3
@@ -5909,7 +5909,7 @@ packages:
       - webpack
     dev: true
 
-  /@leanup/stack-angular@1.3.49(@angular/compiler-cli@17.0.7)(@angular/core@17.0.7)(@babel/core@7.23.6)(@leanup/stack-webpack@1.3.49)(@ngtools/webpack@17.0.7)(webpack@5.89.0):
+  /@leanup/stack-angular@1.3.49(@angular/compiler-cli@17.0.7)(@angular/core@17.0.7)(@babel/core@7.23.6)(@leanup/stack-webpack@1.3.49)(@ngtools/webpack@17.0.8)(webpack@5.89.0):
     resolution: {integrity: sha512-+IwgMj3iUVGpPKhq58DxP6ESIE7wVDLY97TDUDesa3M5LTZAqwKiY54v9wxvlykRdPPx3XE/EAuWUybEdwFMmA==}
     peerDependencies:
       '@angular/compiler-cli': ^16
@@ -5920,7 +5920,7 @@ packages:
       '@angular/compiler-cli': 17.0.7(@angular/compiler@17.0.7)(typescript@5.2.2)
       '@angular/core': 17.0.7(rxjs@7.8.1)(zone.js@0.14.2)
       '@leanup/stack-webpack': 1.3.49(@leanup/stack@1.3.49)(esbuild@0.19.3)(less@4.2.0)(postcss@8.4.32)
-      '@ngtools/webpack': 17.0.7(@angular/compiler-cli@17.0.7)(typescript@5.2.2)(webpack@5.89.0)
+      '@ngtools/webpack': 17.0.8(@angular/compiler-cli@17.0.7)(typescript@5.2.2)(webpack@5.89.0)
       babel-loader: 9.1.3(@babel/core@7.23.6)(webpack@5.89.0)
     transitivePeerDependencies:
       - '@babel/core'
@@ -6158,8 +6158,8 @@ packages:
       - typescript
     dev: true
 
-  /@ngtools/webpack@17.0.7(@angular/compiler-cli@17.0.7)(typescript@5.2.2)(webpack@5.89.0):
-    resolution: {integrity: sha512-gwhUhpwXn0trwwKdSu9WlJbEcLt+s/2fPwoD9lZ0y3wXfrOogsfcNBJKeO5BZf1h+A3AWt7ePmgrZXSJM+865Q==}
+  /@ngtools/webpack@17.0.8(@angular/compiler-cli@17.0.7)(typescript@5.2.2)(webpack@5.89.0):
+    resolution: {integrity: sha512-wx0XBMrbpDeailK2uIhp/ZVMC3GK3BWwJjUu5SbT4BFrcoi2Zd9/9m0RCBAY54UXLBCqKd+ih7pJ6JSvprZmWw==}
     engines: {node: ^18.13.0 || >=20.9.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
       '@angular/compiler-cli': ^17.0.0
@@ -8824,14 +8824,6 @@ packages:
       acorn: 7.4.1
       acorn-walk: 7.2.0
 
-  /acorn-import-assertions@1.9.0(acorn@8.10.0):
-    resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
-    peerDependencies:
-      acorn: ^8
-    dependencies:
-      acorn: 8.10.0
-    dev: true
-
   /acorn-import-assertions@1.9.0(acorn@8.11.2):
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
     peerDependencies:
@@ -8859,12 +8851,6 @@ packages:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-
-  /acorn@8.10.0:
-    resolution: {integrity: sha512-F0SAmZ8iUtS//m8DmCTA0jlh6TDKkHQyK6xc6V4KDTyZKA9dnvX9/3sRTVQrWm79glUAZbnmmNcdYwUIHWVybw==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
 
   /acorn@8.11.2:
     resolution: {integrity: sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==}
@@ -23071,9 +23057,9 @@ packages:
       '@webassemblyjs/ast': 1.11.6
       '@webassemblyjs/wasm-edit': 1.11.6
       '@webassemblyjs/wasm-parser': 1.11.6
-      acorn: 8.10.0
-      acorn-import-assertions: 1.9.0(acorn@8.10.0)
-      browserslist: 4.21.10
+      acorn: 8.11.2
+      acorn-import-assertions: 1.9.0(acorn@8.11.2)
+      browserslist: 4.22.2
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.15.0
       es-module-lexer: 1.3.0

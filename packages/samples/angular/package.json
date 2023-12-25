@@ -33,7 +33,7 @@
 		"@leanup/stack-angular": "1.3.49",
 		"@leanup/stack": "1.3.49",
 		"@leanup/stack-webpack": "1.3.49",
-		"@ngtools/webpack": "17.0.7",
+		"@ngtools/webpack": "17.0.8",
 		"chromedriver": "120.0.0",
 		"cpy-cli": "5.0.0",
 		"nightwatch-axe-verbose": "2.2.3",
