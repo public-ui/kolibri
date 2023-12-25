@@ -55,7 +55,7 @@
 		"@unocss/preset-mini": "0.58.0",
 		"@unocss/webpack": "0.58.0",
 		"ajv": "8.12.0",
-		"chromedriver": "120.0.0",
+		"chromedriver": "120.0.1",
 		"cpy-cli": "5.0.0",
 		"depcheck": "1.4.7",
 		"eslint-plugin-jsx-a11y": "6.8.0",
