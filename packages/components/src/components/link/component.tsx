@@ -94,7 +94,9 @@ export class KolLinkWc implements API {
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-label={
-						this.state._hideLabel && typeof this.state._label === 'string' ? `${this.state._label} (${translate('kol-open-link-in-tab')})` : undefined
+						isExternal && this.state._hideLabel && typeof this.state._label === 'string'
+							? `${this.state._label} (${translate('kol-open-link-in-tab')})`
+							: undefined
 					}
 					class={{
 						'external-link': isExternal,
