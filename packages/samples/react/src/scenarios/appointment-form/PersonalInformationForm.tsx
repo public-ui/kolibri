@@ -50,8 +50,8 @@ export function PersonalInformationForm() {
 				<Field name="salutation">
 					{({ field }: FieldProps<FormValues['salutation']>) => (
 						<KolSelect
-							onKeyDown={(event) => {
-								if (event.key === 'Tab') void form.setFieldTouched('salutation', true);
+							onBlur={() => {
+								void form.setFieldTouched('salutation', true);
 							}}
 							id="field-salutation"
 							_label="Anrede"
@@ -78,8 +78,8 @@ export function PersonalInformationForm() {
 						{({ field }: FieldProps<FormValues['company']>) => (
 							<div className="block mt-2">
 								<KolInputText
-									onKeyDown={(event) => {
-										if (event.key === 'Tab') void form.setFieldTouched('company', true);
+									onBlur={() => {
+										void form.setFieldTouched('company', true);
 									}}
 									id="field-company"
 									_label="Firma"
@@ -105,8 +105,8 @@ export function PersonalInformationForm() {
 					{({ field }: FieldProps<FormValues['name']>) => (
 						<div className="block mt-2">
 							<KolInputText
-								onKeyDown={(event) => {
-									if (event.key === 'Tab') void form.setFieldTouched('name', true);
+								onBlur={() => {
+									void form.setFieldTouched('name', true);
 								}}
 								id="field-name"
 								_label="Vor- und Zuname"
@@ -131,8 +131,8 @@ export function PersonalInformationForm() {
 					{({ field }: FieldProps<FormValues['email']>) => (
 						<div className="block mt-2">
 							<KolInputEmail
-								onKeyDown={(event) => {
-									if (event.key === 'Tab') void form.setFieldTouched('email', true);
+								onBlur={() => {
+									void form.setFieldTouched('email', true);
 								}}
 								id="field-email"
 								_label="E-Mail"
