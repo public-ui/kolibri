@@ -39,19 +39,17 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	shadow: true,
 })
 export class KolNav implements API {
-	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
-		link._active = !link._active;
-		this.state = {
-			...this.state,
-		};
-	};
+	private readonly handleExpandCollapseClick = (children?: ButtonOrLinkOrTextWithChildrenProps[]): void => {
+		if (children) {
+			const expandedChildren = this.state._expandedChildren.includes(children)
+				? this.state._expandedChildren.filter((searchChildren) => searchChildren != children)
+				: [...this.state._expandedChildren, children];
 
-	private readonly hasActiveChild = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
-		if (Array.isArray(link._children) && link._children.length > 0) {
-			return link._children.some(this.hasActiveChild);
+			this.state = {
+				...this.state,
+				_expandedChildren: expandedChildren,
+			};
 		}
-
-		return false;
 	};
 
 	private entry(
@@ -61,6 +59,8 @@ export class KolNav implements API {
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean
 	): JSX.Element {
+		const icons = link._icons || (this.state._hideLabel ? 'codicon codicon-primitive-square' : undefined); // @todo change to undefined doesn't work
+
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
 				<kol-button-link-text-switch
@@ -68,6 +68,7 @@ export class KolNav implements API {
 					_link={{
 						...link,
 						_hideLabel: hideLabel,
+						_icons: icons,
 					}}
 				/>
 				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, expanded) : ''}
@@ -84,7 +85,7 @@ export class KolNav implements API {
 				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
 				_hideLabel
 				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
-				_on={{ onClick: () => this.onClick(link) }}
+				_on={{ onClick: () => this.handleExpandCollapseClick(link._children) }}
 			></kol-button-wc>
 		);
 	}
@@ -99,7 +100,7 @@ export class KolNav implements API {
 	): JSX.Element {
 		const active = !!link._active;
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
-		const expanded = hasChildren && active;
+		const expanded = Boolean(link._children && this.state._expandedChildren.includes(link._children));
 		return (
 			<li
 				class={{
@@ -109,12 +110,8 @@ export class KolNav implements API {
 				}}
 				key={index}
 			>
-				{this.entry(collapsible, hideLabel, hasChildren, link, active)}
-				{expanded ? (
-					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} orientation={orientation} />
-				) : (
-					''
-				)}
+				{this.entry(collapsible, hideLabel, hasChildren, link, expanded)}
+				{expanded && <this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} orientation={orientation} />}
 			</li>
 		);
 	}
@@ -220,6 +217,7 @@ export class KolNav implements API {
 		_label: '…', // ⚠ required
 		_links: [],
 		_orientation: 'vertical',
+		_expandedChildren: [],
 	};
 
 	@Watch('_collapsible')

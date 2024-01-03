@@ -31,15 +31,12 @@
 		padding-left: 1rem;
 	}
 
-	.active {
-		outline: 1px dotted red;
-	}
-
 	.active a {
 		font-weight: bold;
 	}
 	.active .list a {
 		font-weight: normal;
+		border-left-color: transparent;
 	}
 
 	.expand-button {
