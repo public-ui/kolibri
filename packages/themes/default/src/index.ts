@@ -1426,26 +1426,12 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			grid-template-columns: 1fr auto;
 			align-items: center;
 		}
-		th div.center {
-			justify-content: center;
-		}
-		th div.right {
-			justify-content: end;
-		}
 		tr:nth-child(even) {
 			background-color: var(--color-mute);
 		}
 		th,
 		td {
 			padding: 0.5rem;
-		}
-		td.center > div {
-			display: flex;
-			justify-content: center;
-		}
-		td.right > div {
-			display: flex;
-			justify-content: end;
 		}
 		th[aria-sort='ascending'],
 		th[aria-sort='descending'] {

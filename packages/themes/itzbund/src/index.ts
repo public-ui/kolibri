@@ -1165,11 +1165,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		th {
 			background-color: #eee;
 		}
-		th > div {
-			display: grid;
-			grid-template-columns: 1fr auto;
-			align-items: center;
-			gap: 0.25em;
+		.table-sort-button .button {
+			font-weight: bold;
 		}
 		:host > div.pagination {
 			padding: 0.5em;

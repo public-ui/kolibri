@@ -137,6 +137,7 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 - [kol-button](../button)
 - [kol-pagination](../pagination)
+- kol-button-wc
 
 ### Graph
 
@@ -144,6 +145,7 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 graph TD;
   kol-table --> kol-button
   kol-table --> kol-pagination
+  kol-table --> kol-button-wc
   kol-button --> kol-button-wc
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip-wc
@@ -160,7 +162,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-table fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-table stroke:#333,stroke-width:4px
 ```
 
 ---

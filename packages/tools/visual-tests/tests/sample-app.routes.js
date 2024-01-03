@@ -294,6 +294,11 @@ ROUTES.set('split-button/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('table/column-alignment', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('table/sort-data', {
 	axe: {
 		skipFailures: false,
