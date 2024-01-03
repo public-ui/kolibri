@@ -4,7 +4,7 @@ import { FormValues } from './AppointmentForm';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { fetchAvailableTimes } from './appointmentService';
 import { Option } from '@public-ui/components';
-import { createErrorList } from './formUtils';
+import { createErrorList, useFocusErrorField } from './formUtils';
 
 export function AvailableAppointmentsForm() {
 	const form = useFormikContext<FormValues>();
@@ -13,6 +13,8 @@ export function AvailableAppointmentsForm() {
 	const [availableTimes, setAvailableTimes] = useState<Option<string>[] | null>(null);
 
 	const errorList = createErrorList(form.errors);
+
+	useFocusErrorField(errorList);
 
 	useEffect(() => {
 		let ignoreResponse = false;
