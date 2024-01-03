@@ -20,9 +20,11 @@ export const NavBasic: FC = () => (
 			{
 				_label: '3 Navigation point',
 				_href: '#abc',
+				_icons: 'codicon codicon-home',
 				_children: [
 					{
 						_label: '3.1 Navigation point',
+						_icons: 'codicon codicon-home',
 						_href: '#/',
 					},
 					{
@@ -33,7 +35,6 @@ export const NavBasic: FC = () => (
 					{
 						_label: '3.3 Navigation point',
 						_href: '#abc',
-						_icons: 'fa-solid fa-cat',
 						_children: [
 							{
 								_label: '3.3.1 Navigation point (active)',
@@ -45,6 +46,7 @@ export const NavBasic: FC = () => (
 					{
 						_label: '3.4 Navigation point',
 						_href: '#abc',
+						_active: true,
 						_children: [
 							{ _label: '3.4.1 Navigation point', _href: '#abc' },
 							{ _label: '3.4.2 Navigation point', _href: '#abc' },
