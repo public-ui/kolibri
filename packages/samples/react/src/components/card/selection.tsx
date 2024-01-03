@@ -11,8 +11,8 @@ const STYLE = {
 };
 
 export const CardSelection: FC = () => (
-	<div className="flex gap-2">
-		<KolCard _label="DEBTI-25437/17-1">
+	<div className="flex flex-wrap gap-2">
+		<KolCard _label="DEBTI-25437/17-1" className="lg:w-[calc(33.33%-16px)] md:w-[calc(50%-16px)] sm:w-full">
 			<div>
 				<div>
 					TeCorp Endplatte
@@ -32,7 +32,7 @@ export const CardSelection: FC = () => (
 				</div>
 			</div>
 		</KolCard>
-		<KolCard _label="DEBTI-25437/17-1">
+		<KolCard _label="DEBTI-25437/17-1" className="lg:w-[calc(33.33%-16px)] md:w-[calc(50%-16px)] sm:w-full">
 			<div>
 				<div>
 					TeCorp Endplatte
@@ -52,7 +52,7 @@ export const CardSelection: FC = () => (
 				</div>
 			</div>
 		</KolCard>
-		<KolCard _label="DEBTI-25437/17-1">
+		<KolCard _label="DEBTI-25437/17-1" className="lg:w-[calc(33.33%-16px)] md:w-[calc(50%-16px)] sm:w-full">
 			<div>
 				<div>
 					TeCorp Endplatte
