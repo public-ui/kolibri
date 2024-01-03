@@ -4,7 +4,7 @@ import { FormValues } from './AppointmentForm';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { fetchAvailableTimes } from './appointmentService';
 import { Option } from '@public-ui/components';
-import { ErrorListPropType } from '@public-ui/components';
+import { createErrorList } from './formUtils';
 
 export function AvailableAppointmentsForm() {
 	const form = useFormikContext<FormValues>();
@@ -13,13 +13,6 @@ export function AvailableAppointmentsForm() {
 	const [availableTimes, setAvailableTimes] = useState<Option<string>[] | null>(null);
 
 	const errorList = createErrorList(form.errors);
-
-	function createErrorList(formikErrors: Record<string, string>): ErrorListPropType[] {
-		return Object.keys(formikErrors).map((fieldName) => ({
-			message: formikErrors[fieldName],
-			selector: `#field-${fieldName}`,
-		}));
-	}
 
 	useEffect(() => {
 		let ignoreResponse = false;

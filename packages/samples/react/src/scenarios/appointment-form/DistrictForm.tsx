@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { ErrorListPropType } from '@public-ui/components';
+import { createErrorList } from './formUtils';
 
 const LOCATION_OPTIONS = [
 	{
@@ -31,13 +31,6 @@ export function DistrictForm() {
 	const form = useFormikContext<FormValues>();
 	const errorList = createErrorList(form.errors);
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
-
-	function createErrorList(formikErrors: Record<string, string>): ErrorListPropType[] {
-		return Object.keys(formikErrors).map((fieldName) => ({
-			message: formikErrors[fieldName],
-			selector: `#field-${fieldName}`,
-		}));
-	}
 
 	return (
 		<div className="p-2">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { KolButton, KolForm, KolHeading, KolInputEmail, KolInputText, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { ErrorListPropType } from '@public-ui/components';
+import { createErrorList } from './formUtils';
 
 const SALUTATION_OPTIONS = [
 	{
@@ -27,13 +27,6 @@ export function PersonalInformationForm() {
 	const form = useFormikContext<FormValues>();
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const errorList = createErrorList(form.errors);
-
-	function createErrorList(formikErrors: Record<string, string>): ErrorListPropType[] {
-		return Object.keys(formikErrors).map((fieldName) => ({
-			message: formikErrors[fieldName],
-			selector: `#field-${fieldName}`,
-		}));
-	}
 
 	return (
 		<div className="p-2">
