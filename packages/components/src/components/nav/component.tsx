@@ -39,16 +39,26 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	shadow: true,
 })
 export class KolNav implements API {
-	private readonly handleExpandCollapseClick = (children?: ButtonOrLinkOrTextWithChildrenProps[]): void => {
-		if (children) {
-			const expandedChildren = this.state._expandedChildren.includes(children)
-				? this.state._expandedChildren.filter((searchChildren) => searchChildren != children)
-				: [...this.state._expandedChildren, children];
+	private expandChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
+		this.state = {
+			...this.state,
+			_expandedChildren: [...this.state._expandedChildren, children],
+		};
+	}
+	private collapseChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
+		this.state = {
+			...this.state,
+			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren != children),
+		};
+	}
 
-			this.state = {
-				...this.state,
-				_expandedChildren: expandedChildren,
-			};
+	private readonly handleToggleExpansionClick = (children?: ButtonOrLinkOrTextWithChildrenProps[]): void => {
+		if (children) {
+			if (this.state._expandedChildren.includes(children)) {
+				this.collapseChildren(children);
+			} else {
+				this.expandChildren(children);
+			}
 		}
 	};
 
@@ -85,7 +95,7 @@ export class KolNav implements API {
 				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
 				_hideLabel
 				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
-				_on={{ onClick: () => this.handleExpandCollapseClick(link._children) }}
+				_on={{ onClick: () => this.handleToggleExpansionClick(link._children) }}
 			></kol-button-wc>
 		);
 	}
@@ -131,6 +141,30 @@ export class KolNav implements API {
 			</ul>
 		);
 	};
+
+	private initializeExpandedChildren() {
+		/**
+		 * Recursively process branches and expand branches which are active or have active children somewhere in the tree.
+		 * @param {ButtonOrLinkOrTextWithChildrenProps} branch
+		 * @return boolean - true indicates that the current branch or a child branch is active
+		 */
+		const handleBranch = (branch: ButtonOrLinkOrTextWithChildrenProps) => {
+			if (branch._active) {
+				if (branch._children) {
+					this.expandChildren(branch._children);
+				}
+				return true;
+			} else if (branch._children) {
+				for (const childBranch of branch._children) {
+					if (handleBranch(childBranch)) {
+						this.expandChildren(branch._children!);
+						return true;
+					}
+				}
+			}
+		};
+		this.state._links.forEach(handleBranch);
+	}
 
 	public render(): JSX.Element {
 		let hasCompactButton = this.state._hasCompactButton;
@@ -272,6 +306,7 @@ export class KolNav implements API {
 		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
+		this.initializeExpandedChildren();
 	}
 
 	public disconnectedCallback(): void {

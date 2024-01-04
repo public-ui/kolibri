@@ -37,7 +37,7 @@ export const NavBasic: FC = () => (
 						_href: '#abc',
 						_children: [
 							{
-								_label: '3.3.1 Navigation point (active)',
+								_label: '3.3.1 Navigation point',
 								_href: '#abc',
 							},
 							{ _label: '3.3.2 Navigation point', _href: '#abc' },
@@ -46,9 +46,15 @@ export const NavBasic: FC = () => (
 					{
 						_label: '3.4 Navigation point',
 						_href: '#abc',
-						_active: true,
 						_children: [
-							{ _label: '3.4.1 Navigation point', _href: '#abc' },
+							{
+								_label: '3.4.1 Navigation point',
+								_href: '#abc',
+								_children: [
+									{ _label: '3.4.1.1 Navigation point', _href: '#abc' },
+									{ _label: '3.4.1.2 Navigation point (active)', _href: '#abc', _active: true },
+								],
+							},
 							{ _label: '3.4.2 Navigation point', _href: '#abc' },
 						],
 					},
