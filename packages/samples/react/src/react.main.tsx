@@ -5,8 +5,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import type { Generic } from 'adopted-style-sheets';
 import { register } from '@public-ui/components';
-import { BAMF, BMF, BZStv1, DEFAULT, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3 } from '@public-ui/themes';
-import { TH } from '@public-oss/kolibri-themes';
+import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 import { App } from './App';
 
 type Theme = Generic.Theming.RegisterPatch<string, string, string>;
@@ -23,7 +22,7 @@ void (async () => {
 	} else {
 		/* Regular mode: Register all known themes. */
 		try {
-			await register([BAMF, BMF, DEFAULT, BZStv1, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3, TH], defineCustomElements, {
+			await register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund], defineCustomElements, {
 				theme: {
 					detect: 'auto',
 				},

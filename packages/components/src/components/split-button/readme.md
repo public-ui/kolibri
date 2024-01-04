@@ -68,7 +68,7 @@ graph TD;
   kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
-  style kol-split-button fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-split-button stroke:#333,stroke-width:4px
 ```
 
 ---

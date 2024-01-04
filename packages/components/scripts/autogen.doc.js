@@ -30,17 +30,32 @@ const reverseString = (str) => {
 	return str.split('').reverse().join('');
 };
 
+/**
+ * Common readme content modifications
+ */
+const modifyReadmeContent = (contents) =>
+	contents
+		/**
+		 * Hack to remove background-color from the current component in the Mermaid chart, which has insufficient contrast.
+		 * Might become obsolete when this ticket gets addressed: https://github.com/ionic-team/stencil/issues/2876
+		 */
+		.replace(/style (.*) fill:#f9f,stroke:#333,stroke-width:4px/, 'style $1 stroke:#333,stroke-width:4px');
+
+/**
+ * Readme content modifications only for the docs folder
+ */
+const modifyReadmeContentForDocsFolder = (contents) => contents.replace('style="color:red"', 'class="text-red-500"').replace(/ \\\| /g, '` \\| `');
+
 rimraf('doc/*.md', () => {
 	README_PATHS.forEach((readmePath) => {
 		const name = reverseString(reverseString(path.dirname(readmePath)).replace(/(\/|\\).+/g, ''));
-		fs.writeFileSync(
-			`${DOC_FOLDER}/${name}.md`,
-			fs
-				.readFileSync(readmePath, 'utf-8')
-				.replace('style="color:red"', 'class="text-red-500"')
-				.replace(/ \\\| /g, '` \\| `'),
-			'utf-8'
-		);
-		console.log(`Generated ${name}.md`);
+		const contents = fs.readFileSync(readmePath, 'utf-8');
+		const contentsForComponentsReadme = modifyReadmeContent(contents);
+		const contentsForDocsReadme = modifyReadmeContentForDocsFolder(contentsForComponentsReadme);
+
+		fs.writeFileSync(readmePath, contentsForComponentsReadme, 'utf-8'); // Replace original Readme file
+		fs.writeFileSync(`${DOC_FOLDER}/${name}.md`, contentsForDocsReadme, 'utf-8'); // Store Readme file in docs/ folder additionally
+
+		console.log(`Autogen: Processed ${name}.md`);
 	});
 });

@@ -2,7 +2,7 @@ import { KolButton } from '@public-ui/react';
 import React, { FC } from 'react';
 
 export const ButtonAccessKey: FC = () => (
-	<div className="flex gap-4">
+	<div className="flex flex-wrap gap-4">
 		<KolButton _label="Mit S access key" _accessKey="S"></KolButton>
 		<KolButton _label="Sehr kleines s" _accessKey="s"></KolButton>
 		<KolButton _label="Access key kommt nicht in label vor" _accessKey="x"></KolButton>
