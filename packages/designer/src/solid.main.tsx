@@ -2,11 +2,10 @@ import { render } from 'solid-js/web';
 
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
-import { TH } from '@public-oss/kolibri-themes';
 import { AppComponent } from './components/app/component.solid';
 import { register } from '@public-ui/components';
 
-register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund, TH], defineCustomElements, {
+register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund], defineCustomElements, {
 	theme: {
 		detect: 'auto',
 	},
