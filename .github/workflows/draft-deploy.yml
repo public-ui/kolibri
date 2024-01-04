@@ -38,7 +38,7 @@ jobs:
         run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
 
       - name: Build
-        run: pnpm -r build
+        run: pnpm --filter @public-ui/sample-react... build
 
       - name: Netlify Deploy
         uses: netlify/actions/cli@master
@@ -47,7 +47,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
-           args: deploy --filter=@public-ui/sample-react
+          args: deploy --filter=@public-ui/sample-react
 
       - name: Find comment
         uses: peter-evans/find-comment@v2
