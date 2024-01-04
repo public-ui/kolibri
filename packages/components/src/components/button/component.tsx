@@ -225,7 +225,7 @@ export class KolButtonWc implements API {
 
 	@State() public state: ButtonStates = {
 		_icons: {}, // ⚠ required
-		_label: '', // ⚠ required
+		_label: '…', // ⚠ required
 		_on: {},
 		_type: 'button', // ⚠ required
 		_variant: 'normal', // ⚠ required

@@ -25,7 +25,9 @@ export class KolVersion implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	public componentWillLoad(): void {

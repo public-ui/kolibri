@@ -36,7 +36,7 @@ export class KolHeadingWc implements API {
 	@Prop() public _variant?: HeadingVariantPropType;
 
 	@State() public state: States = {
-		_label: '', // ⚠ required
+		_label: '…', // ⚠ required
 		_level: 1,
 	};
 

@@ -48,7 +48,7 @@ export class KolIcon implements API {
 
 	@State() public state: States = {
 		_icons: 'codicon codicon-home',
-		_label: '', // ⚠ required
+		_label: '…', // ⚠ required
 	};
 
 	@Watch('_icons')

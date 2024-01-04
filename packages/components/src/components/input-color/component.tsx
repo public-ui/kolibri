@@ -222,7 +222,7 @@ export class KolInputColor implements API {
 		_autoComplete: 'off',
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: '', // ⚠ required
+		_label: '…', // ⚠ required
 		_suggestions: [],
 	};
 

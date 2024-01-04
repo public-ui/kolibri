@@ -277,7 +277,7 @@ export class KolInputPassword implements API {
 		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: '', // ⚠ required
+		_label: '…', // ⚠ required
 	};
 
 	public constructor() {

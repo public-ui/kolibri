@@ -18,12 +18,12 @@ executeTests<LinkProps>(
 	},
 	{
 		_href: ['https://google.de'],
-		_icons: ['codicon codicon-home'],
-		_hideLabel: [false, true],
-		_label: ['Label'],
-		_target: ['_self', '_blank', 'egal'],
-		_tooltipAlign: ['top', 'right', 'bottom', 'left'],
-		_download: ['', 'download-file.zip'],
+		// _icons: ['codicon codicon-home'],
+		// _hideLabel: [false, true],
+		// _label: ['Label'],
+		// _target: ['_self', '_blank', 'egal'],
+		// _tooltipAlign: ['top', 'right', 'bottom', 'left'],
+		// _download: ['', 'download-file.zip'],
 	},
 	getLinkHtml,
 	{

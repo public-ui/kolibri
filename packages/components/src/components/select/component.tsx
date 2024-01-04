@@ -285,7 +285,7 @@ export class KolSelect implements API {
 		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: '', // ⚠ required
+		_label: '…', // ⚠ required
 		_multiple: false,
 		_options: [],
 		_value: [],

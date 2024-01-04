@@ -27,7 +27,7 @@ export const getSpanWcHtml = (
 			_allowMarkdown: false,
 			_icons: {},
 			_hideLabel: false,
-			_label: '', // ⚠ required
+			_label: '…', // ⚠ required
 		},
 		props
 	);
