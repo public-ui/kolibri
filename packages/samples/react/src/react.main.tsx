@@ -2,7 +2,6 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 
-import { TH } from '@public-oss/kolibri-themes';
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
@@ -23,7 +22,7 @@ void (async () => {
 	} else {
 		/* Regular mode: Register all known themes. */
 		try {
-			await register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund, TH], defineCustomElements, {
+			await register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund], defineCustomElements, {
 				theme: {
 					detect: 'auto',
 				},
