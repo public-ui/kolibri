@@ -103,7 +103,9 @@ export class KolCard implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			defaultValue: '…', // ⚠ required
+		});
 	}
 
 	@Watch('_level')

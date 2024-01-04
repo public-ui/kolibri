@@ -225,7 +225,9 @@ export class KolLinkWc implements API {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		validateHref(this, value);
+		validateHref(this, value, {
+			defaultValue: '…', // ⚠ required
+		});
 	}
 
 	@Watch('_icons')

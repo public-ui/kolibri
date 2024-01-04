@@ -37,9 +37,6 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot>`,
-				},
-				{
-					additionalAttrs: '',
 				}
 			)}
 			${
