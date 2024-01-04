@@ -778,9 +778,6 @@ importers:
 
   packages/designer:
     dependencies:
-      '@public-oss/kolibri-themes':
-        specifier: 0.0.3
-        version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
         specifier: 1.7.8
         version: link:../components
@@ -881,9 +878,6 @@ importers:
       '@leanup/stack-webpack':
         specifier: 1.3.49
         version: 1.3.49(@leanup/stack@1.3.49)(esbuild@0.19.3)(less@4.2.0)(postcss@8.4.32)
-      '@public-oss/kolibri-themes':
-        specifier: 0.0.3
-        version: 0.0.3(@public-ui/components@packages+components)
       '@public-ui/components':
         specifier: 1.7.8
         version: link:../../components
@@ -1248,13 +1242,6 @@ importers:
         version: 3.1.1
 
 packages:
-
-  /@a11y-ui/core@1.0.1-rc.6:
-    resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
-    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
-    dependencies:
-      loglevel: 1.8.1
-    dev: false
 
   /@aashutoshrathi/word-wrap@1.2.6:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
@@ -6432,31 +6419,9 @@ packages:
       - domexception
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@packages+components):
-    resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
-    peerDependencies:
-      '@public-ui/components': '>=1.1.13'
-    dependencies:
-      '@public-ui/components': link:packages/components
-      '@public-ui/schema': 1.1.15
-    dev: false
-
   /@public-ui/components@2.0.2:
     resolution: {integrity: sha512-K4l4r+VJY6aU7SdFbsF6E+NVIOQxF0OdLefTrZJD2raR227BGHYw1ToCm5qh+Och/CJxVDW0qkDPtVsROuKv6A==}
     dev: true
-
-  /@public-ui/core@1.1.15:
-    resolution: {integrity: sha512-la537grID2UqyP/Wsaf/Rp80TrbRzAy1KDKn8wpeEnIakZSBJLwMU/O8lDNZ0LJ7vcvxcQsJFNQMpVeyvpKZjg==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.6
-      rxjs: 7.8.0
-    dev: false
-
-  /@public-ui/schema@1.1.15:
-    resolution: {integrity: sha512-1I1QM2xHyaXSBwHV4mlsAX6fi8vjLkcDsFrkxNl3gNl5qtZF8vP9kveOWYNqr1jKG4ZoRDFZ+/1/xP+Lu2a/dw==}
-    dependencies:
-      '@public-ui/core': 1.1.15
-    dev: false
 
   /@puppeteer/browsers@1.9.0:
     resolution: {integrity: sha512-QwguOLy44YBGC8vuPP2nmpX4MUN2FzWbsnvZJtiCzecU3lHmVZkaC1tq6rToi9a200m8RzlVtDyxCS0UIDrxUg==}
@@ -19012,12 +18977,6 @@ packages:
     dependencies:
       tslib: 2.6.2
     dev: true
-
-  /rxjs@7.8.0:
-    resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
-    dependencies:
-      tslib: 2.6.2
-    dev: false
 
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
