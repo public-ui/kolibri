@@ -184,6 +184,7 @@ export class KolNav implements API {
 				<div
 					class={{
 						[orientation]: true,
+						'is-compact': this.state._hideLabel,
 					}}
 				>
 					<nav aria-label={this.state._label} id="nav">

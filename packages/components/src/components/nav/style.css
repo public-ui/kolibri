@@ -5,7 +5,7 @@
 		place-items: center;
 	}
 
-	nav {
+	:not(.is-compact) nav {
 		width: 100%;
 	}
 

@@ -5,7 +5,7 @@ import { FC } from 'react';
 
 export const NavBasic: FC = () => (
 	<KolNav
-		class="block w-sm"
+		class="block w-fit"
 		_label="Main navigation"
 		_links={[
 			{
