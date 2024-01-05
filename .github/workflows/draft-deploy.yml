@@ -1,0 +1,69 @@
+name: Netlify Draft Deploy
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store
+      - name: Install
+        run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
+
+      - name: Build
+        run: pnpm --filter @public-ui/sample-react... build
+
+      - name: Netlify Deploy
+        uses: netlify/actions/cli@master
+        id: netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --filter=@public-ui/sample-react
+
+      - name: Find comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Netlify Draft Deployment
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Netlify Draft Deployment
+            URL: ${{ steps.netlify.outputs.NETLIFY_URL }}
+            Logs: ${{ steps.netlify.outputs.NETLIFY_LOGS_URL }}
+          edit-mode: replace

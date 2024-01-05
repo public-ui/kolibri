@@ -2,10 +2,9 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 
-import { TH } from '@public-oss/kolibri-themes';
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { BAMF, BMF, BZSt, DEFAULT, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2 } from '@public-ui/themes';
+import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 import type { Generic } from 'adopted-style-sheets';
 import { App } from './App';
 
@@ -23,7 +22,7 @@ void (async () => {
 	} else {
 		/* Regular mode: Register all known themes. */
 		try {
-			await register([BAMF, BMF, DEFAULT, BZSt, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, TH], defineCustomElements, {
+			await register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund], defineCustomElements, {
 				theme: {
 					detect: 'auto',
 				},
