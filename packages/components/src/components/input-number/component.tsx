@@ -278,7 +278,7 @@ export class KolInputNumber implements API {
 		_autoComplete: 'off',
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
 	};

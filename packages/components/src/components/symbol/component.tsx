@@ -32,13 +32,14 @@ export class KolSymbol implements API {
 
 	@State() public state: States = {
 		_label: translate('kol-warning'),
-		_symbol: '…', // ⚠ required
+		_symbol: '', // ⚠ required
 	};
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value, {
 			defaultValue: translate('kol-warning'),
+			required: true,
 		});
 	}
 

@@ -63,7 +63,9 @@ export class KolAbbr implements API {
 	 */
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_tooltipAlign')

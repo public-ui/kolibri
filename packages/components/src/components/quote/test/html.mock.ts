@@ -11,8 +11,8 @@ type Slot = {
 export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
 	const state = mixMembers<Props, States>(
 		{
-			_href: '…', // ⚠ required
-			_quote: '…', // ⚠ required
+			_href: '', // ⚠ required
+			_quote: '', // ⚠ required
 			_variant: 'inline',
 		},
 		props

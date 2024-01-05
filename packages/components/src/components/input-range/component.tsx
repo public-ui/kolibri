@@ -326,7 +326,7 @@ export class KolInputRange implements API {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
 	};

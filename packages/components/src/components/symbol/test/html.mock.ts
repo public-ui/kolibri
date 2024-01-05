@@ -7,7 +7,7 @@ export const getSymbolHtml = (props: Props): string => {
 	props = mixMembers(
 		{
 			_label: translate('kol-warning'),
-			_symbol: '…', // ⚠ required
+			_symbol: '', // ⚠ required
 		},
 		props
 	);
