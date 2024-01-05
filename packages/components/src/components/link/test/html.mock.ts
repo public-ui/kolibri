@@ -25,7 +25,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
   <kol-link-wc>
 <a${isExternal && state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label} (kol-open-link-in-tab)"` : ''} class="${
 		state._hideLabel === true ? ' hide-label' : ''
-	}${isExternal ? ' external-link' : ''}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'}"${
+	}${isExternal ? ' external-link' : ''}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0);'}"${
 		typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
 	}${typeof state._download === 'string' ? ` download="${state._download}"` : ''}>
 			${getSpanWcHtml(
