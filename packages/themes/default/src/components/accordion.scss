@@ -1,3 +1,5 @@
+@import '../mixins/focus-outline';
+
 @layer kol-theme-component {
 	kol-span-wc > span {
 		display: flex;
@@ -39,12 +41,7 @@
 		outline: none;
 	}
 	:host > .accordion:focus-within {
-		border-radius: var(--border-radius);
+		@include focus-outline;
 		cursor: pointer;
-		outline-color: var(--color-primary-variant);
-		outline-offset: 2px;
-		outline-style: solid;
-		outline-width: 3px;
-		transition: outline-offset 0.2s linear;
 	}
 }

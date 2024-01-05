@@ -1,13 +1,11 @@
+@import '../mixins/focus-outline';
+
 @layer kol-theme-component {
 	:is(a, button):focus {
 		outline: none;
 	}
 	:is(a, button):focus kol-span-wc {
-		outline-color: var(--color-primary-variant);
-		outline-offset: 2px;
-		outline-style: solid;
-		outline-width: calc(var(--border-width) * 2);
-		transition: outline-offset 0.2s linear;
+		@include focus-outline;
 	}
 	:is(a, button) > kol-span-wc {
 		font-weight: 700;

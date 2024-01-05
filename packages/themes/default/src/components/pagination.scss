@@ -1,3 +1,5 @@
+@import '../mixins/focus-outline';
+
 @layer kol-theme-component {
 	.button:focus {
 		outline: none;
@@ -16,9 +18,7 @@
 		transition-property: background-color, color, border-color;
 	}
 	.button:focus .button-inner {
-		outline-offset: 2px;
-		outline: 2px solid var(--color-primary-variant);
-		transition: outline-offset 0.2s linear;
+		@include focus-outline;
 	}
 	.button:is(:active, :hover):not(:disabled) .button-inner {
 		background-color: var(--color-primary-variant);
