@@ -13,15 +13,22 @@
 	.entry-item a,
 	.entry-item .button {
 		align-items: center;
-		border-left: 2px solid transparent;
 		color: var(--color-primary);
 		display: flex;
 		gap: 0.5rem;
 		min-height: var(--a11y-min-size);
-		padding-left: 0.5rem;
 		text-decoration: none;
 
-		.active & {
+		.vertical & {
+			border-left: 2px solid transparent;
+			padding-left: 0.5rem;
+		}
+
+		.horizontal & {
+			padding: 0 1rem;
+		}
+
+		.vertical .active & {
 			border-left-color: var(--color-primary);
 		}
 		&:focus-visible {
@@ -37,15 +44,19 @@
 		padding-left: 1rem;
 	}
 
-	.active a {
+	.active .entry-item a,
+	.active .entry-item .button {
 		font-weight: bold;
 	}
-	.active .list a {
+	.active .list .entry-item a,
+	.active .list .entry-item .button {
 		font-weight: normal;
 		border-left-color: transparent;
 	}
 
 	.expand-button {
+		margin-left: 0.5rem;
+
 		.button {
 			&:hover {
 				background-color: var(--color-primary);
@@ -60,16 +71,4 @@
 			justify-content: center;
 		}
 	}
-
-	/** Compact mode */
-	//.entry.compact :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-	//	place-items: center;
-	//}
-	//.entry.compact > kol-span-wc > span {
-	//	flex-direction: column;
-	//}
-	//.entry.compact > kol-span-wc > span,
-	//.entry.compact :is(a, button) {
-	//	padding-left: 0;
-	//}
 }
