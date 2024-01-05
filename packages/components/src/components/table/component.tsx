@@ -28,6 +28,8 @@ const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 
+const paginationValidator = (value: unknown) => value === true || value === '' /* true */ || (typeof value === 'object' && value !== null);
+
 type SortData = {
 	label: string;
 	key: string;
@@ -347,7 +349,7 @@ export class KolTable implements API {
 
 	private readonly beforePatchPagination: Generic.Element.NextStateHooksCallback = (nextValue, _nextState, _component, key): void => {
 		if (key === '_pagination') {
-			this.showPagination = nextValue === true || nextValue === '' /* true */ || (typeof nextValue === 'object' && nextValue !== null);
+			this.showPagination = paginationValidator(nextValue);
 		}
 	};
 
@@ -362,11 +364,15 @@ export class KolTable implements API {
 		watchValidator<boolean | Stringified<KoliBriTablePaginationProps>>(
 			this,
 			'_pagination',
-			(value) => value === true || (typeof value === 'object' && value !== null),
+			paginationValidator,
 			new Set(['boolean', 'KoliBriTablePagination']),
 			value,
 			{
-				defaultValue: false,
+				defaultValue: {
+					_page: 1,
+					_pageSize: 10,
+					_max: 0,
+				},
 				hooks: {
 					beforePatch: this.beforePatchPagination,
 				},
