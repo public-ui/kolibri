@@ -85,7 +85,7 @@ export class KolLinkGroup implements API {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	@State() public state: States = {
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_listStyleType: 'disc',
 		_links: [],
 		_orientation: 'vertical',
@@ -96,7 +96,9 @@ export class KolLinkGroup implements API {
 		if (!initial) {
 			removeNavLabel(this.state._label); // remove the current
 		}
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 

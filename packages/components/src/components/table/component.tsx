@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import type { Generic } from 'adopted-style-sheets';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
@@ -27,6 +26,8 @@ import {
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+
+const paginationValidator = (value: unknown) => value === true || value === '' /* true */ || (typeof value === 'object' && value !== null);
 
 type SortData = {
 	label: string;
@@ -100,7 +101,7 @@ export class KolTable implements API {
 
 	@State() public state: States = {
 		_allowMultiSort: false,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_data: [],
 		_dataFoot: [],
 		_headers: {
@@ -302,7 +303,9 @@ export class KolTable implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_minWidth')
@@ -343,25 +346,31 @@ export class KolTable implements API {
 		},
 	};
 
-	private readonly beforePatchPagination: Generic.Element.NextStateHooksCallback = (nextValue, _nextState, _component, key): void => {
-		if (key === '_pagination') {
-			this.showPagination = nextValue === true || nextValue === '' /* true */ || (typeof nextValue === 'object' && nextValue !== null);
-		}
-	};
-
 	@Watch('_pagination')
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
 		try {
-			value = parseJson<KoliBriTablePaginationProps>(value);
+			value = parseJson<boolean | KoliBriTablePaginationProps>(value);
 			// eslint-disable-next-line no-empty
 		} catch (e) {
 			// value behält den ursprünglichen Wert
 		}
-		watchValidator(this, '_pagination', () => true, new Set(['boolean', 'KoliBriTablePagination']), value, {
-			hooks: {
-				beforePatch: this.beforePatchPagination,
-			},
-		});
+
+		this.showPagination = paginationValidator(value);
+
+		watchValidator<boolean | Stringified<KoliBriTablePaginationProps>>(
+			this,
+			'_pagination',
+			paginationValidator,
+			new Set(['boolean', 'KoliBriTablePagination']),
+			value,
+			{
+				defaultValue: {
+					_page: 1,
+					_pageSize: 10,
+					_max: 0,
+				},
+			}
+		);
 	}
 
 	public componentWillLoad(): void {

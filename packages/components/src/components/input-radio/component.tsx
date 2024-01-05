@@ -256,7 +256,7 @@ export class KolInputRadio implements API {
 
 	@State() public state: States = {
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
 		_orientation: 'vertical',

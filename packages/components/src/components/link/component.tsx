@@ -204,9 +204,9 @@ export class KolLinkWc implements API {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	@State() public state: LinkStates = {
-		_href: '…', // ⚠ required
-		_icons: {}, // ⚠ required
-		_ariaCurrentValue: 'page', // ⚠ required
+		_ariaCurrentValue: 'page',
+		_href: '', // ⚠ required
+		_icons: {},
 	};
 
 	@Watch('_accessKey')
@@ -231,7 +231,9 @@ export class KolLinkWc implements API {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		validateHref(this, value);
+		validateHref(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_icons')

@@ -104,7 +104,7 @@ export class KolModal implements API {
 
 	@State() public state: States = {
 		_activeElement: null,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_width: '100%',
 	};
 
@@ -125,7 +125,9 @@ export class KolModal implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_on')
