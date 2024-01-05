@@ -69,7 +69,7 @@ export class KolNav implements API {
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean
 	): JSX.Element {
-		const icons = link._icons || (this.state._hideLabel ? 'codicon codicon-primitive-square' : undefined); // @todo change to undefined doesn't work
+		const icons = link._icons || (this.state._hideLabel ? 'codicon codicon-primitive-square' : undefined);
 
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
