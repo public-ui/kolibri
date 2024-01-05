@@ -73,14 +73,18 @@ export class KolNav implements API {
 
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
-				<kol-button-link-text-switch
-					class="button-link-text-switch"
-					_link={{
-						...link,
-						_hideLabel: hideLabel,
-						_icons: icons,
-					}}
-				/>
+				{'_href' in link ? (
+					<kol-link-wc class="entry-item" {...link} _hideLabel={hideLabel} _icons={icons} />
+				) : (
+					<kol-button-wc
+						class="entry-item"
+						_label={link._label}
+						_hideLabel={hideLabel}
+						_icons={icons}
+						_on={{ onClick: () => this.handleToggleExpansionClick(link._children) }}
+					/>
+				)}
+
 				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, expanded) : ''}
 			</div>
 		);

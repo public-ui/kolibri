@@ -52,7 +52,7 @@ export const NavBasic: FC = () => (
 								_href: '#abc',
 								_children: [
 									{ _label: '3.4.1.1 Navigation point', _href: '#abc' },
-									{ _label: '3.4.1.2 Navigation point (active)', _href: '#abc', _active: true },
+									{ _label: '3.4.1.2 Navigation point (active)', _href: '#abc' },
 								],
 							},
 							{ _label: '3.4.2 Navigation point', _href: '#abc' },
@@ -62,6 +62,26 @@ export const NavBasic: FC = () => (
 				],
 			},
 			{ _label: '4 Navigation point', _href: '#abc' },
+			{
+				_label: '5 Keine eigene Seite, nur Kategorie',
+				_active: true,
+				_children: [
+					{
+						_label: '5.1 Verschachtelter Link',
+						_href: '#abc',
+					},
+				],
+			},
+			{
+				_label: '6 Keine eigene Seite, mit Icon',
+				_icons: 'codicon codicon-squirrel',
+				_children: [
+					{
+						_label: '6.1 Verschachtelter Link',
+						_href: '#abc',
+					},
+				],
+			},
 		]}
 		_hasCompactButton
 	/>

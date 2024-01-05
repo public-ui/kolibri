@@ -8,7 +8,8 @@
 	kol-link-wc {
 		display: flex;
 	}
-	a {
+	.entry-item a,
+	.entry-item .button {
 		align-items: center;
 		border-left: 2px solid transparent;
 		color: var(--color-primary);
@@ -21,9 +22,9 @@
 		.active & {
 			border-left-color: var(--color-primary);
 		}
-		&:hover {
-			text-decoration: underline;
-		}
+	}
+	.entry-item a:hover {
+		text-decoration: underline;
 	}
 
 	// nested lists
