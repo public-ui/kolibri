@@ -82,6 +82,7 @@ export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
 
 function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 	return {
+		...options,
 		hooks: {
 			afterPatch: (value, state, component, key) => {
 				if (typeof options.hooks?.afterPatch === 'function') {

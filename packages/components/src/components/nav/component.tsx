@@ -252,7 +252,7 @@ export class KolNav implements API {
 		_collapsible: true,
 		_hasCompactButton: false,
 		_hideLabel: false,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_links: [],
 		_orientation: 'vertical',
 		_expandedChildren: [],
@@ -278,7 +278,9 @@ export class KolNav implements API {
 		if (!initial) {
 			removeNavLabel(this.state._label); // remove the current
 		}
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}

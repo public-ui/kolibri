@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { objectObjectHandler, parseJson, watchValidator } from '../../utils/prop.validators';
+import { WatchOptions, objectObjectHandler, parseJson, watchValidator } from '../../utils/prop.validators';
 import { isObject, isString, isStyle } from '../../utils/validator';
 import { Stringified } from '../common';
 import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconsProp, KoliBriIconsState } from '../icons';
@@ -58,7 +58,7 @@ export const isIcon = (value?: unknown): boolean =>
 	(typeof (value as KoliBriCustomIcon).style === 'undefined' || isStyle((value as KoliBriCustomIcon).style)) &&
 	isString((value as KoliBriCustomIcon).icon, 1);
 
-export const validateIcons = (component: Generic.Element.Component, value?: IconsPropType): void => {
+export const validateIcons = (component: Generic.Element.Component, value?: IconsPropType, options: WatchOptions = {}): void => {
 	objectObjectHandler(value, () => {
 		try {
 			value = parseJson<KoliBriIconsProp>(value as string);
@@ -87,15 +87,17 @@ export const validateIcons = (component: Generic.Element.Component, value?: Icon
 			new Set(['KoliBriIcon']),
 			value,
 			{
+				...options,
+				defaultValue: {},
 				hooks: {
-					beforePatch: (nextValue: unknown, nextState: Map<string, unknown>) => {
-						if (nextValue === null) {
-							nextState.set('_icons', {});
+					afterPatch: options.hooks?.afterPatch,
+					beforePatch: (nextValue, nextState, component, key) => {
+						if (typeof options.hooks?.beforePatch === 'function') {
+							options.hooks?.beforePatch(nextValue, nextState, component, key);
 						}
 						beforePatchIcon(component);
 					},
 				},
-				required: true,
 			}
 		);
 	});

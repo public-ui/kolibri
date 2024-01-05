@@ -35,8 +35,8 @@ export class KolQuote implements API {
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 
 	@State() public state: States = {
-		_href: '…', // ⚠ required
-		_quote: '…', // ⚠ required
+		_href: '', // ⚠ required
+		_quote: '', // ⚠ required
 		_variant: 'inline',
 	};
 

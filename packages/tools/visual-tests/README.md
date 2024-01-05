@@ -19,16 +19,16 @@
 		"unused": "knip"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.2-rc.7",
-		"@public-ui/schema": "2.0.2-rc.7",
-		"@public-ui/visual-tests": "2.0.2-rc.7",
+		"@public-ui/components": "2.0.3",
+		"@public-ui/schema": "2.0.3",
+		"@public-ui/visual-tests": "2.0.3",
 		"@typescript-eslint/eslint-plugin": "6.8.0",
 		"@typescript-eslint/parser": "6.8.0",
 		"depcheck": "1.4.7",
 		"eslint": "8.51.0",
-		"eslint-config-prettier": "9.0.0",
+		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-html": "7.1.0",
-		"eslint-plugin-jsdoc": "46.8.2",
+		"eslint-plugin-jsdoc": "48.0.2",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"knip": "2.35.0",
@@ -37,7 +37,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.2-rc.7"
+		"@public-ui/components": "2.0.3"
 	},
 	"sideEffects": false,
 	"type": "module",

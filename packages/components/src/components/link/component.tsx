@@ -94,7 +94,9 @@ export class KolLinkWc implements API {
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-label={
-						this.state._hideLabel && typeof this.state._label === 'string' ? `${this.state._label} (${translate('kol-open-link-in-tab')})` : undefined
+						isExternal && this.state._hideLabel && typeof this.state._label === 'string'
+							? `${this.state._label} (${translate('kol-open-link-in-tab')})`
+							: undefined
 					}
 					class={{
 						'external-link': isExternal,
@@ -202,9 +204,9 @@ export class KolLinkWc implements API {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	@State() public state: LinkStates = {
-		_href: '…', // ⚠ required
-		_icons: {}, // ⚠ required
-		_ariaCurrentValue: 'page', // ⚠ required
+		_ariaCurrentValue: 'page',
+		_href: '', // ⚠ required
+		_icons: {},
 	};
 
 	@Watch('_accessKey')
@@ -229,7 +231,9 @@ export class KolLinkWc implements API {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		validateHref(this, value);
+		validateHref(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_icons')
