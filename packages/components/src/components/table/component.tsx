@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import type { Generic } from 'adopted-style-sheets';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
@@ -347,12 +346,6 @@ export class KolTable implements API {
 		},
 	};
 
-	private readonly beforePatchPagination: Generic.Element.NextStateHooksCallback = (nextValue, _nextState, _component, key): void => {
-		if (key === '_pagination') {
-			this.showPagination = paginationValidator(nextValue);
-		}
-	};
-
 	@Watch('_pagination')
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
 		try {
@@ -361,6 +354,9 @@ export class KolTable implements API {
 		} catch (e) {
 			// value behält den ursprünglichen Wert
 		}
+
+		this.showPagination = paginationValidator(value);
+
 		watchValidator<boolean | Stringified<KoliBriTablePaginationProps>>(
 			this,
 			'_pagination',
@@ -368,21 +364,10 @@ export class KolTable implements API {
 			new Set(['boolean', 'KoliBriTablePagination']),
 			value,
 			{
-				/**
-				 * The visibility of the pagination was implicitly set by the
-				 * pagination property. This is necessary because the pagination
-				 * property can be a boolean or an object.
-				 */
-				defaultValue:
-					value === true
-						? {
-								_page: 1,
-								_pageSize: 10,
-								_max: 0,
-						  }
-						: false,
-				hooks: {
-					beforePatch: this.beforePatchPagination,
+				defaultValue: {
+					_page: 1,
+					_pageSize: 10,
+					_max: 0,
 				},
 			}
 		);
