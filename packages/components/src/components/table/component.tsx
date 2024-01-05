@@ -354,16 +354,24 @@ export class KolTable implements API {
 	@Watch('_pagination')
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
 		try {
-			value = parseJson<KoliBriTablePaginationProps>(value);
+			value = parseJson<boolean | KoliBriTablePaginationProps>(value);
 			// eslint-disable-next-line no-empty
 		} catch (e) {
 			// value behält den ursprünglichen Wert
 		}
-		watchValidator(this, '_pagination', () => true, new Set(['boolean', 'KoliBriTablePagination']), value, {
-			hooks: {
-				beforePatch: this.beforePatchPagination,
-			},
-		});
+		watchValidator<boolean | Stringified<KoliBriTablePaginationProps>>(
+			this,
+			'_pagination',
+			(value) => value === true || (typeof value === 'object' && value !== null),
+			new Set(['boolean', 'KoliBriTablePagination']),
+			value,
+			{
+				defaultValue: false,
+				hooks: {
+					beforePatch: this.beforePatchPagination,
+				},
+			}
+		);
 	}
 
 	public componentWillLoad(): void {
