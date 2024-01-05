@@ -1,3 +1,5 @@
+@import '../mixins/focus-outline';
+
 @layer kol-theme-component {
 	nav {
 		background-color: var(--color-mute);
@@ -22,6 +24,9 @@
 		.active & {
 			border-left-color: var(--color-primary);
 		}
+		&:focus-visible {
+			@include focus-outline;
+		}
 	}
 	.entry-item a:hover {
 		text-decoration: underline;
@@ -41,6 +46,16 @@
 	}
 
 	.expand-button {
+		.button {
+			&:hover {
+				background-color: var(--color-primary);
+				color: var(--color-light);
+			}
+			&:focus-visible {
+				@include focus-outline;
+			}
+		}
+
 		.button-inner {
 			justify-content: center;
 		}
