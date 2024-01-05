@@ -143,7 +143,7 @@ export class KolTooltip implements API {
 
 	@State() public state: States = {
 		_align: 'top',
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 	};
 
 	@Watch('_accessKey')
@@ -163,7 +163,9 @@ export class KolTooltip implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	private overFocusCount = 0;

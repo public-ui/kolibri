@@ -217,7 +217,7 @@ export class KolNav implements API {
 		_collapsible: true,
 		_hasCompactButton: false,
 		_hideLabel: false,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_links: [],
 		_orientation: 'vertical',
 	};

@@ -7,7 +7,7 @@ export const getAvatarHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
 		{
 			_src: '',
-			_label: '…', // ⚠ required
+			_label: '', // ⚠ required
 		},
 		props
 	);

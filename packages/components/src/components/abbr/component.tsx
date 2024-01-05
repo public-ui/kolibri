@@ -49,7 +49,7 @@ export class KolAbbr implements API {
 	 * @see: https://stenciljs.com/docs/state
 	 */
 	@State() public state: States = {
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_tooltipAlign: 'top',
 	};
 

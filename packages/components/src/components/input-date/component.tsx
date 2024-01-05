@@ -276,7 +276,7 @@ export class KolInputDate implements ComponentApi {
 		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`, // ⚠ required
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_suggestions: [],
 		_type: 'datetime-local',
 	};

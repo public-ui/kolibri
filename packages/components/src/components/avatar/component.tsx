@@ -39,7 +39,7 @@ export class KolAvatarWc implements API {
 
 	@State() public state: States = {
 		_src: '',
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 	};
 
 	@Watch('_src')

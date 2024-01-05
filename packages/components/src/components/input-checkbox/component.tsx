@@ -246,7 +246,7 @@ export class KolInputCheckbox implements API {
 		},
 		_id: `id-${nonce()}`,
 		_indeterminate: false,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_value: true,
 		_variant: 'default',
 	};

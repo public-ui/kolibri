@@ -85,7 +85,7 @@ export class KolLinkGroup implements API {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	@State() public state: States = {
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_listStyleType: 'disc',
 		_links: [],
 		_orientation: 'vertical',

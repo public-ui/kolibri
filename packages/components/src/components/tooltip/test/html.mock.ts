@@ -7,7 +7,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 	const state: States = mixMembers<Props, States>(
 		{
 			_align: 'top',
-			_label: '…', // ⚠ required
+			_label: '', // ⚠ required
 		},
 		props
 	);

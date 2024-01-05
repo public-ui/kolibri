@@ -93,7 +93,7 @@ export class KolAccordion implements API {
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	@State() public state: States = {
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_level: 1,
 	};
 

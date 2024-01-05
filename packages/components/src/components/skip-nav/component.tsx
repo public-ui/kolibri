@@ -42,7 +42,7 @@ export class KolSkipNav implements API {
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	@State() public state: States = {
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_links: [],
 	};
 

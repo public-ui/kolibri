@@ -81,7 +81,7 @@ export class KolSpanWc implements API {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
+	@Prop() public _icons?: Stringified<KoliBriIconsProp> = {};
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
@@ -92,7 +92,7 @@ export class KolSpanWc implements API {
 		_allowMarkdown: false,
 		_hideLabel: false,
 		_icons: {},
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 	};
 
 	@Watch('_accessKey')
@@ -109,7 +109,9 @@ export class KolSpanWc implements API {
 
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: HideLabelPropType): void {
-		validateHideLabel(this, value);
+		validateHideLabel(this, value, {
+			defaultValue: false,
+		});
 	}
 
 	@Watch('_icons')
@@ -119,7 +121,9 @@ export class KolSpanWc implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this, value);
+		validateLabelWithExpertSlot(this, value, {
+			required: true,
+		});
 	}
 
 	public componentWillLoad(): void {

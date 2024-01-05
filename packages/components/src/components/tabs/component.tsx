@@ -172,7 +172,7 @@ export class KolTabs implements API {
 
 	@State() public state: States = {
 		_align: 'top',
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_selected: 0,
 		_tabs: [],
 	};

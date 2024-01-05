@@ -100,7 +100,7 @@ export class KolTable implements API {
 
 	@State() public state: States = {
 		_allowMultiSort: false,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_data: [],
 		_dataFoot: [],
 		_headers: {

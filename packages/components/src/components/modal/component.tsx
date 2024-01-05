@@ -104,7 +104,7 @@ export class KolModal implements API {
 
 	@State() public state: States = {
 		_activeElement: null,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_width: '100%',
 	};
 

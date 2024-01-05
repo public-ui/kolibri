@@ -48,17 +48,21 @@ export class KolIcon implements API {
 
 	@State() public state: States = {
 		_icons: 'codicon codicon-home',
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 	};
 
 	@Watch('_icons')
 	public validateIcons(value?: string): void {
-		watchString(this, '_icons', value);
+		watchString(this, '_icons', value, {
+			required: true,
+		});
 	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	public componentWillLoad(): void {
