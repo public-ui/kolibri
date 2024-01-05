@@ -368,11 +368,19 @@ export class KolTable implements API {
 			new Set(['boolean', 'KoliBriTablePagination']),
 			value,
 			{
-				defaultValue: {
-					_page: 1,
-					_pageSize: 10,
-					_max: 0,
-				},
+				/**
+				 * The visibility of the pagination was implicitly set by the
+				 * pagination property. This is necessary because the pagination
+				 * property can be a boolean or an object.
+				 */
+				defaultValue:
+					value === true
+						? {
+								_page: 1,
+								_pageSize: 10,
+								_max: 0,
+						  }
+						: false,
 				hooks: {
 					beforePatch: this.beforePatchPagination,
 				},
