@@ -44,7 +44,6 @@ export class KolTable implements API {
 	private disableSort = false;
 
 	private sortedColumnHead: KoliBriTableSelectedHead = { label: '', key: '', sortDirection: 'NOS' };
-	private ariaLive = '';
 
 	/**
 	 * Deprecated: Defines the visible caption of the component.
@@ -508,19 +507,16 @@ export class KolTable implements API {
 			switch (this.sortDirections.get(this.sortFunction)) {
 				case 'ASC':
 					sortedData = this.sortFunction([...this.state._data]);
-					this.ariaLive = translate('kol-sort-ascending', { placeholders: { column: cell.label } });
 					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'ASC' };
 					break;
 				case 'DESC':
 					sortedData = this.sortFunction([...this.state._data]).reverse();
-					this.ariaLive = translate('kol-sort-descending', { placeholders: { column: cell.label } });
 					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'DESC' };
 					break;
 				case 'NOS':
 				default:
 					sortedData = [...this.state._data];
 					this.sortedColumnHead = { label: '', key: '', sortDirection: 'NOS' };
-					this.ariaLive = translate('kol-sort-none', { placeholders: { column: cell.label } });
 			}
 		}
 		setState(this, '_sortedData', sortedData);
@@ -642,9 +638,6 @@ export class KolTable implements API {
 
 		return (
 			<Host>
-				<span style={{ height: '0', width: '0', overflow: 'hidden' }} aria-live="assertive">
-					{this.ariaLive}
-				</span>
 				{this.pageEndSlice > 0 && this.showPagination && (
 					<div class="pagination">
 						<span>
@@ -720,7 +713,7 @@ export class KolTable implements API {
 													}
 												}
 												return (
-													<th // role="columnheader"
+													<th
 														key={`thead-${rowIndex}-${colIndex}-${headerCell.label}`}
 														scope={typeof headerCell.colSpan === 'number' && headerCell.colSpan > 1 ? 'colgroup' : 'col'}
 														colSpan={headerCell.colSpan}
