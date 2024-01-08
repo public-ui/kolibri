@@ -172,7 +172,7 @@ export class KolTabs implements API {
 
 	@State() public state: States = {
 		_align: 'top',
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_selected: 0,
 		_tabs: [],
 	};
@@ -231,7 +231,9 @@ export class KolTabs implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_on')

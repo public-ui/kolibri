@@ -25,8 +25,8 @@ export const getSpanWcHtml = (
 	const state = mixMembers<Props, States>(
 		{
 			_allowMarkdown: false,
-			_icons: {},
 			_hideLabel: false,
+			_icons: {},
 			_label: '', // ⚠ required
 		},
 		props

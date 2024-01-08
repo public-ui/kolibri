@@ -13,7 +13,7 @@ export const getAccordionHtml = (
 ): string => {
 	props = mixMembers(
 		{
-			_label: '…', // ⚠ required
+			_label: '', // ⚠ required
 			_level: 1,
 		},
 		props

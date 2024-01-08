@@ -15,11 +15,12 @@ const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'order', key: 'order', textAlign: 'center' },
+			{ label: 'order', key: 'order', textAlign: 'center', width: '10em' },
 			{
 				label: 'date',
 				key: 'date',
 				textAlign: 'center',
+				width: '20em',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				sort: (data: Data[]) =>
 					data.sort((data0, data1) => {
@@ -48,4 +49,4 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
-export const TableBadgeSize: FC = () => <KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />;
+export const TableBadgeSize: FC = () => <KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />;

@@ -4,6 +4,9 @@ switch (location.pathname) {
 	case '/dev/toaster.html':
 		import('./toaster');
 		break;
+	case '/dev/input-error.html':
+		import('./input-error');
+		break;
 	case '/dev/reprod-accordion-does-not-toggle-with-open.html':
 		import('./reprod-accordion-does-not-toggle-with-open');
 		break;

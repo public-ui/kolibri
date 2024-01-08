@@ -284,7 +284,7 @@ export class KolSelect implements API {
 	@State() public state: States = {
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_multiple: false,
 		_options: [],

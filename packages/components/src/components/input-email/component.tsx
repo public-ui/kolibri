@@ -290,7 +290,7 @@ export class KolInputEmail implements API {
 		_currentLength: 0,
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
 	};
