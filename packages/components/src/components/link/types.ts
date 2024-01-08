@@ -26,7 +26,6 @@ import { PropTooltipAlign } from '../../types/props/tooltip-align';
  */
 export type RequiredProps = PropHref;
 export type OptionalProps = {
-	targetDescription: string;
 	tabIndex: number;
 	/**
 	 * @deprecated
