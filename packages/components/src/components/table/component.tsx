@@ -714,57 +714,45 @@ export class KolTable implements API {
 												}
 												return (
 													<th
+														class={col.textAlign ? `align-${col.textAlign}` : undefined}
 														key={`thead-${rowIndex}-${colIndex}-${headerCell.label}`}
 														scope={typeof headerCell.colSpan === 'number' && headerCell.colSpan > 1 ? 'colgroup' : 'col'}
 														colSpan={headerCell.colSpan}
 														rowSpan={headerCell.rowSpan}
 														style={{
-															textAlign: col.textAlign,
 															width: col.width,
 														}}
 														aria-sort={sortDirection}
 														data-sort={sortDirection ? `sort-${this.sortedColumnHead.sortDirection}` : 'sort-NOS'}
 													>
-														<div class="w-full flex gap-1 items-center">
-															<div
-																class={{
-																	'w-full': true,
-																	[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
-																}}
-																style={{
-																	textAlign: col.textAlign,
-																}}
-															>
-																{col.label}
-															</div>
-															{!this.disableSort && typeof headerCell.sort === 'function' && (
-																<kol-button
-																	exportparts="icon"
-																	_icon={sortButtonIcon}
-																	_hideLabel
-																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																	_on={{
-																		onClick: () => {
-																			if (typeof headerCell.sort === 'function') {
-																				this.sortFunction = headerCell.sort;
-																				switch (this.sortDirections.get(this.sortFunction)) {
-																					case 'ASC':
-																						this.setSortDirection(this.sortFunction, 'DESC');
-																						break;
-																					case 'DESC':
-																						this.setSortDirection(this.sortFunction, 'NOS');
-																						break;
-																					default:
-																						this.setSortDirection(this.sortFunction, 'ASC');
-																				}
-																				this.updateSortedData(headerCell as KoliBriTableSelectedHead);
+														{!this.disableSort && typeof headerCell.sort === 'function' ? (
+															<kol-button-wc
+																class="table-sort-button"
+																exportparts="icon"
+																_icons={{ right: sortButtonIcon }}
+																_label={col.label}
+																_on={{
+																	onClick: () => {
+																		if (typeof headerCell.sort === 'function') {
+																			this.sortFunction = headerCell.sort;
+																			switch (this.sortDirections.get(this.sortFunction)) {
+																				case 'ASC':
+																					this.setSortDirection(this.sortFunction, 'DESC');
+																					break;
+																				case 'DESC':
+																					this.setSortDirection(this.sortFunction, 'NOS');
+																					break;
+																				default:
+																					this.setSortDirection(this.sortFunction, 'ASC');
 																			}
-																		},
-																	}}
-																	_variant="ghost"
-																></kol-button>
-															)}
-														</div>
+																			this.updateSortedData(headerCell as KoliBriTableSelectedHead);
+																		}
+																	},
+																}}
+															></kol-button-wc>
+														) : (
+															col.label
+														)}
 													</th>
 												);
 											}

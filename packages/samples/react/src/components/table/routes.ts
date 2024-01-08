@@ -1,17 +1,17 @@
 import { Routes } from '../../shares/types';
 
 import { TableBadgeSize } from './badge-size';
-
 import { TableRenderCell } from './render-cell';
-
-import { TableSortTable } from './sort-date';
+import { TableSortData } from './sort-date';
 import { TableWithPagination } from './with-pagination';
+import { TableColumnAlignment } from './column-alignment';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
 		'badge-size': TableBadgeSize,
+		'column-alignment': TableColumnAlignment,
 		'render-cell': TableRenderCell,
-		'sort-data': TableSortTable,
+		'sort-data': TableSortData,
 		'with-pagination': TableWithPagination,
 	},
 };
