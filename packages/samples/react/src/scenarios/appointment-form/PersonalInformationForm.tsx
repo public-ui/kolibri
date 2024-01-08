@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { KolButton, KolForm, KolHeading, KolInputEmail, KolInputText, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { createErrorList, useFocusErrorField } from './formUtils';
+import { createErrorList } from './formUtils';
 
 const SALUTATION_OPTIONS = [
 	{
@@ -27,8 +27,6 @@ export function PersonalInformationForm() {
 	const form = useFormikContext<FormValues>();
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const errorList = createErrorList(form.errors);
-
-	useFocusErrorField(errorList);
 
 	return (
 		<div className="p-2">

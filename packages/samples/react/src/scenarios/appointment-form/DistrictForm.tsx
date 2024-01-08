@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { createErrorList, useFocusErrorField } from './formUtils';
+import { createErrorList } from './formUtils';
 
 const LOCATION_OPTIONS = [
 	{
@@ -31,8 +31,6 @@ export function DistrictForm() {
 	const form = useFormikContext<FormValues>();
 	const errorList = createErrorList(form.errors);
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
-
-	useFocusErrorField(errorList);
 
 	return (
 		<div className="p-2">

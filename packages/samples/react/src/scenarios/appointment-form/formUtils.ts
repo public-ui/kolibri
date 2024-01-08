@@ -7,14 +7,3 @@ export function createErrorList(formikErrors: Record<string, string>): ErrorList
 		selector: `#field-${fieldName}`,
 	}));
 }
-
-export function useFocusErrorField(errorList: ErrorListPropType[]) {
-	useEffect(() => {
-		if (errorList.length > 0) {
-			const errorListElement = document.querySelector(errorList[0].selector) as HTMLElement;
-			if (errorListElement) {
-				errorListElement.focus();
-			}
-		}
-	}, [errorList]);
-}

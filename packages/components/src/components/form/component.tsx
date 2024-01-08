@@ -1,4 +1,4 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, JSX, Prop, State, Watch, Element } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
@@ -52,7 +52,12 @@ export class KolForm implements API {
 							<ul>
 								{this._errorList.map((error, index) => (
 									<li key={index}>
-										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />
+										<kol-link
+											_href={error.selector}
+											_label={error.message}
+											_on={{ onClick: this.handleLinkClick }}
+											id={index === 0 ? 'first-error-element' : undefined}
+										/>
 									</li>
 								))}
 							</ul>
@@ -72,6 +77,8 @@ export class KolForm implements API {
 			</form>
 		);
 	}
+
+	@Element() hostElement?: HTMLElement;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Form-Events an.
@@ -118,5 +125,14 @@ export class KolForm implements API {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
 		this.validateErrorList(this._errorList);
+	}
+
+	public componentDidRender() {
+		if (this._errorList && this._errorList.length > 0) {
+			const errorElements = this.hostElement && this.hostElement.shadowRoot?.querySelector<HTMLElement>('#first-error-element');
+			if (errorElements) {
+				errorElements.focus();
+			}
+		}
 	}
 }
