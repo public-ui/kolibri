@@ -81,6 +81,14 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `boolean \| null \| number \| object \| string \| undefined`                                                                                                                                                                                                                                                    | `true`      |
 | `_variant`            | `_variant`       | Defines which variant should be used for presentation.                                                                                                       | `"button" \| "default" \| "switch" \| undefined`                                                                                                                                                                                                                                                                | `'default'` |
 
+## Methods
+
+### `getValue() => Promise<boolean | undefined>`
+
+#### Returns
+
+Type: `Promise<boolean | undefined>`
+
 ## Slots
 
 | Slot       | Description                    |
@@ -112,7 +120,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-input-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-input-checkbox stroke:#333,stroke-width:4px
 ```
 
 ---

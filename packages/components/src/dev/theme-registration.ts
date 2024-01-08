@@ -1,4 +1,4 @@
-import { patchTheme } from '@a11y-ui/core';
+import { patchTheme } from 'adopted-style-sheets';
 
 patchTheme('demo', {
 	GLOBAL: `:host {
@@ -1160,12 +1160,6 @@ padding: 0.25em 0.5em;
 }
 th {
 background-color: #eee;
-}
-th > div {
-display: grid;
-grid-template-columns: 1fr auto;
-align-items: center;
-gap: 0.25em;
 }
 :host > div.pagination {
 padding: 0.5em;

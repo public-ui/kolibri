@@ -9,7 +9,7 @@ import { BreadcrumbLinkProps, Props } from '../types';
 export const getBreadcrumbHtml = (props: Props): string => {
 	const state = mixMembers(
 		{
-			_label: '…', // ⚠ required
+			_label: '', // ⚠ required
 			_links: [],
 		},
 		props

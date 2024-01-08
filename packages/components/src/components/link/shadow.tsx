@@ -3,7 +3,6 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { Stringified } from '../../types/common';
 import { KoliBriIconsProp } from '../../types/icons';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { DownloadPropType } from '../../types/props/download';
 import { HrefPropType } from '../../types/props/href';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
@@ -13,6 +12,7 @@ import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { propagateFocus } from '../../utils/reuse';
 import { LinkProps } from './types';
 import { AccessKeyPropType } from '../../types/props/access-key';
+import { AriaCurrentValuePropType } from '../../types/props/aria-current-value';
 
 @Component({
 	tag: 'kol-link',
@@ -34,17 +34,16 @@ export class KolLink implements LinkProps {
 				<kol-link-wc
 					ref={this.catchRef}
 					_accessKey={this._accessKey}
+					_ariaCurrentValue={this._ariaCurrentValue}
 					_download={this._download}
 					_hideLabel={this._hideLabel}
 					_href={this._href}
 					_icons={this._icons}
 					_label={this._label}
-					_listenAriaCurrent={this._listenAriaCurrent}
 					_on={this._on}
 					_role={this._role}
 					_tabIndex={this._tabIndex}
 					_target={this._target}
-					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
 					{/*
@@ -61,6 +60,11 @@ export class KolLink implements LinkProps {
 	 * Defines the elements access key.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
+
+	/**
+	 * Defines the value for the aria-current attribute.
+	 */
+	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
@@ -90,11 +94,6 @@ export class KolLink implements LinkProps {
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
-	 * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-	 */
-	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
-
-	/**
 	 * Defines the callback functions for links.
 	 */
 	@Prop() public _on?: LinkOnCallbacksPropType;
@@ -113,11 +112,6 @@ export class KolLink implements LinkProps {
 	 * Defines where to open the link.
 	 */
 	@Prop() public _target?: LinkTargetPropType;
-
-	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.

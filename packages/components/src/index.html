@@ -81,10 +81,10 @@
 									_variant="normal"
 									:_on="{ onClick: ()=> showLogin = !showLogin }"
 								></kol-button>
-								<kol-popover :_show="showLogin">
+								<kol-popover-wc :_show="showLogin">
 									<kol-input-text>Benutzername</kol-input-text>
 									<kol-input-password>Passwort</kol-input-password>
-								</kol-popover>
+								</kol-popover-wc>
 								<kol-button _label="ghost" _variant="ghost" onclick="createAndShowToast()"></kol-button>
 								<kol-button _label="custom" _variant="custom" onclick="createAndShowToast()"></kol-button>
 								<kol-split-button _label="kick me">
@@ -238,7 +238,7 @@
 					<div style="display: flex; gap: 2rem; justify-content: space-between">
 						<kol-pagination _total="9" _page="3" class="bordered p-i"></kol-pagination>
 
-						<kol-version _version="2.0.0-rc.8-rc.0"></kol-version>
+						<kol-version _version="2.0.3"></kol-version>
 					</div>
 					<kol-image _src="/assets/images/abgrenzung.jpg" _alt="KoliBri Darstellung"></kol-image>
 				</div>
@@ -1534,18 +1534,18 @@
 						</div>
 						<div class="gap-2 col-12 d-grid justify-content-center">
 							<kol-button id="popover-button-top" _label="Oben" _icons="codicon codicon-arrow-up" _variant="primary"></kol-button>
-							<kol-popover id="popover-top">Ich bin oberhalb</kol-popover>
+							<kol-popover-wc id="popover-top">Ich bin oberhalb</kol-popover-wc>
 							<kol-button id="popover-button-right" _label="Rechts" _icons="codicon codicon-arrow-right" _variant="danger"></kol-button>
-							<kol-popover id="popover-right" _align="right">Ich bin rechts</kol-popover>
+							<kol-popover-wc id="popover-right" _align="right">Ich bin rechts</kol-popover-wc>
 							<kol-button id="popover-button-bottom" _label="Unten" _icons="codicon codicon-arrow-down" _variant="secondary"></kol-button>
-							<kol-popover id="popover-bottom" _align="bottom">Ich bin unterhalb</kol-popover>
+							<kol-popover-wc id="popover-bottom" _align="bottom">Ich bin unterhalb</kol-popover-wc>
 							<kol-button id="popover-button-left" _label="Links" _icons="codicon codicon-arrow-left" _variant="normal"></kol-button>
-							<kol-popover id="popover-left" _align="left">Ich bin links</kol-popover>
+							<kol-popover-wc id="popover-left" _align="left">Ich bin links</kol-popover-wc>
 							<kol-button id="popover-button-login" _label="PR starten" _icons="codicon codicon-git-pull-request" _variant="normal"></kol-button>
-							<kol-popover id="popover-login">
+							<kol-popover-wc id="popover-login">
 								<kol-input-text>Benutzername</kol-input-text>
 								<kol-input-password>Passwort</kol-input-password>
-							</kol-popover>
+							</kol-popover-wc>
 						</div>
 					</div>
 				</div>
@@ -2188,8 +2188,8 @@
 						</div>
 						<div class="col-12">
 							<div class="gap-2 d-flex">
-								<kol-version _version="2.0.0-rc.8-rc.0"></kol-version>
-								<kol-version _label="2.0.0-rc.8-rc.0"></kol-version>
+								<kol-version _version="2.0.3"></kol-version>
+								<kol-version _label="2.0.3"></kol-version>
 							</div>
 						</div>
 					</div>

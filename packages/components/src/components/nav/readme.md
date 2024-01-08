@@ -98,21 +98,20 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 
 ## Properties
 
-| Property              | Attribute             | Description                                                                                                                                | Type                                                            | Default      |
-| --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ------------ |
-| `_ariaCurrentValue`   | `_aria-current-value` | Defines the value of aria-current to be used with the current context within the navigation.                                               | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
-| `_collapsible`        | `_collapsible`        | Defines if navigation nodes can be collapsed or not. Enabled by default.                                                                   | `boolean \| undefined`                                          | `true`       |
-| `_hasCompactButton`   | `_has-compact-button` | Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.                             | `boolean \| undefined`                                          | `false`      |
-| `_hideLabel`          | `_hide-label`         | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. | `boolean \| undefined`                                          | `false`      |
-| `_label` _(required)_ | `_label`              | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                         | `string`                                                        | `undefined`  |
-| `_links` _(required)_ | `_links`              | Defines the list of links, buttons or texts to render.                                                                                     | `ButtonOrLinkOrTextWithChildrenProps[] \| string`               | `undefined`  |
-| `_orientation`        | `_orientation`        | Defines whether the orientation of the component is horizontal or vertical.                                                                | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
+| Property              | Attribute             | Description                                                                                                                                | Type                                              | Default      |
+| --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- | ------------ |
+| `_collapsible`        | `_collapsible`        | Defines if navigation nodes can be collapsed or not. Enabled by default.                                                                   | `boolean \| undefined`                            | `true`       |
+| `_hasCompactButton`   | `_has-compact-button` | Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.                             | `boolean \| undefined`                            | `false`      |
+| `_hideLabel`          | `_hide-label`         | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. | `boolean \| undefined`                            | `false`      |
+| `_label` _(required)_ | `_label`              | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                         | `string`                                          | `undefined`  |
+| `_links` _(required)_ | `_links`              | Defines the list of links, buttons or texts to render.                                                                                     | `ButtonOrLinkOrTextWithChildrenProps[] \| string` | `undefined`  |
+| `_orientation`        | `_orientation`        | Defines whether the orientation of the component is horizontal or vertical.                                                                | `"horizontal" \| "vertical" \| undefined`         | `'vertical'` |
 
 ## Dependencies
 
 ### Depends on
 
-- kol-button-link-text-switch
+- kol-link-wc
 - kol-button-wc
 - [kol-button](../button)
 
@@ -120,21 +119,18 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 
 ```mermaid
 graph TD;
-  kol-nav --> kol-button-link-text-switch
+  kol-nav --> kol-link-wc
   kol-nav --> kol-button-wc
   kol-nav --> kol-button
-  kol-button-link-text-switch --> kol-button-wc
-  kol-button-link-text-switch --> kol-link-wc
-  kol-button-link-text-switch --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip-wc
+  kol-span-wc --> kol-icon
+  kol-tooltip-wc --> kol-span-wc
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip-wc
   kol-button --> kol-button-wc
-  style kol-nav fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-nav stroke:#333,stroke-width:4px
 ```
 
 ---

@@ -47,6 +47,14 @@ Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `seconda
 | `_type`               | `_type`          | Defines either the type of the component or of the components interactive element.                                                                                               | `"button" \| "reset" \| "submit" \| undefined`                                                                                                         | `'button'`  |
 | `_value`              | `_value`         | Defines the value that the button emits on click.                                                                                                                                | `boolean \| null \| number \| object \| string \| undefined`                                                                                           | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<Stringified<StencilUnknown> | undefined>`
+
+#### Returns
+
+Type: `Promise<Stringified<StencilUnknown>>`
+
 ## Dependencies
 
 ### Depends on
@@ -62,7 +70,7 @@ graph TD;
   kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
-  style kol-button-link fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-button-link stroke:#333,stroke-width:4px
 ```
 
 ---

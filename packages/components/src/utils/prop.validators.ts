@@ -1,14 +1,11 @@
 import { querySelectorAll } from 'query-selector-all-shadow-root';
 import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
-import { Subject } from 'rxjs';
 import { hex, score } from 'wcag-contrast';
 
-import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
+import { Generic, patchTheme, patchThemeTag } from 'adopted-style-sheets';
 
 import { Stringified } from '../types/common';
-import { AriaCurrentPropType } from '../types/props/aria-current';
-import { PropHref } from '../types/props/href';
 import { StencilUnknown } from '../types/unknown';
 import { devHint } from './a11y.tipps';
 import { getDocument, getExperimentalMode, Log } from './dev.utils';
@@ -99,32 +96,30 @@ export const setState = <T>(component: Generic.Element.Component, propName: stri
 	if (component.nextState === undefined) {
 		component.nextState = new Map();
 	}
-	if (component.nextState.get(propName) !== value) {
-		const nextHooks = component.nextHooks.get(propName);
-		if (nextHooks instanceof Map === false) {
-			component.nextHooks.set(propName, new Map());
-		}
-		if (typeof hooks.afterPatch === 'function') {
-			component.nextHooks.get(propName)?.set('afterPatch', hooks.afterPatch);
-		}
-		if (typeof hooks.beforePatch === 'function') {
-			component.nextHooks.get(propName)?.set('beforePatch', hooks.beforePatch);
-		}
-		component.nextState.set(propName, value);
-		/**
-		 * Muss erstmal in sync bleiben, da sonst der
-		 * Tooltip nicht korrekt ausgerichtet wird.
-		 */
-		// if (component.hydrated === true || processEnv !== 'test') {
-		// clearTimeout(component.timeout as NodeJS.Timeout);
-		// component.timeout = setTimeout(() => {
-		// 	clearTimeout(component.timeout as NodeJS.Timeout);
-		// 	patchState(component);
-		// }, 50);
-		// } else {
-		patchState(component);
-		// }
+	const nextHooks = component.nextHooks.get(propName);
+	if (nextHooks instanceof Map === false) {
+		component.nextHooks.set(propName, new Map());
 	}
+	if (typeof hooks.afterPatch === 'function') {
+		component.nextHooks.get(propName)?.set('afterPatch', hooks.afterPatch);
+	}
+	if (typeof hooks.beforePatch === 'function') {
+		component.nextHooks.get(propName)?.set('beforePatch', hooks.beforePatch);
+	}
+	component.nextState.set(propName, value);
+	/**
+	 * Muss erstmal in sync bleiben, da sonst der
+	 * Tooltip nicht korrekt ausgerichtet wird.
+	 */
+	// if (component.hydrated === true || processEnv !== 'test') {
+	// clearTimeout(component.timeout as NodeJS.Timeout);
+	// component.timeout = setTimeout(() => {
+	// 	clearTimeout(component.timeout as NodeJS.Timeout);
+	// 	patchState(component);
+	// }, 50);
+	// } else {
+	patchState(component);
+	// }
 };
 
 const logWarn = (component: Generic.Element.Component, propName: string, value: unknown, requiredGeneric: Set<string | null | undefined>): void => {
@@ -478,11 +473,6 @@ export class KoliBriUtils {
 		return returnValue;
 	}
 }
-
-type AriaCurrentEventType = {
-	ariaCurrent: AriaCurrentPropType;
-} & PropHref;
-export const ariaCurrentSubject = new Subject<AriaCurrentEventType>();
 
 export class KoliBriDevHelper {
 	public static readonly patchTheme = patchTheme;

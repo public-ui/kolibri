@@ -33,6 +33,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			--kolibri-spacing: calc(2 * var(--spacing));
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			font-family: var(--font-family); /* font-size: var(--font-size); */
 		}
 		* {
@@ -796,42 +797,42 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			line-height: 1em;
 			margin: 0;
 			padding: 0;
 		}
-		h1 {
+		.headline-h1 {
 			font-family: var(--font-family-serif);
 			font-size: 54px;
 			font-weight: bold;
 		}
-		h2 {
+		.headline-h2 {
 			font-family: var(--font-family-serif);
 			font-size: 32px;
 			font-weight: bold;
 		}
-		h3 {
+		.headline-h3 {
 			font-family: var(--font-family-serif);
 			font-size: 26px;
 			font-weight: bold;
 		}
-		h4 {
+		.headline-h4 {
 			font-family: var(--font-family-serif);
 			font-size: 20px;
 			font-weight: normal;
 		}
-		h5 {
+		.headline-h5 {
 			font-family: var(--font-family-serif);
 			font-size: 17px;
 			font-weight: bold;
 		}
-		h6 {
+		.headline-h6 {
 			font-family: var(--font-family-sans);
 			font-size: 17px;
 			font-weight: normal;
@@ -1164,11 +1165,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		th {
 			background-color: #eee;
 		}
-		th > div {
-			display: grid;
-			grid-template-columns: 1fr auto;
-			align-items: center;
-			gap: 0.25em;
+		.table-sort-button .button {
+			font-weight: bold;
 		}
 		:host > div.pagination {
 			padding: 0.5em;
@@ -1309,9 +1307,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		}
 	`,
 	'KOL-INPUT-CHECKBOX': css`
-		/* ALL INPUT, SELECT, TEXTAREA */
-		label {
-			cursor: pointer;
+		.checkbox-container {
+			justify-content: flex-start;
 		}
 		input {
 			color: var(--default-letter);
@@ -1369,58 +1366,28 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			cursor: pointer;
 			transition: 0.5s;
 		}
-		input[type='checkbox'].kol-disabled:before {
-			cursor: not-allowed;
-		}
-		input[type='checkbox']:before {
-			content: '';
-			cursor: pointer;
-		}
 		input[type='checkbox']:checked {
 			background-color: var(--color-petrol);
 			border-color: var(--color-petrol);
 		}
 		.default input[type='checkbox'] {
-			/* border-radius: 0.25em; */
 			height: calc(6 * 2 * var(--spacing));
 			min-width: calc(6 * 2 * var(--spacing));
 			width: calc(6 * 2 * var(--spacing));
 		}
-		.default input[type='checkbox']:before {
-			/* border-radius: 0.25em; */
-			background-color: transparent;
-			display: block;
-			height: calc(6 * 2 * var(--spacing));
-			position: relative;
-			width: calc(6 * 2 * var(--spacing));
+
+		.default .icon {
+			margin-left: 0.25rem;
 		}
-		.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * 2 * var(--spacing) - 2px);
-			top: calc(2.85 * 2 * var(--spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * 2 * var(--spacing));
-			width: calc(1.5 * 2 * var(--spacing));
+		.default.checked .icon {
+			color: var(--color-weiss);
 		}
-		.default input[type='checkbox']:indeterminate:before {
-			background-color: var(--kolibri-color-normal);
-			height: 0.375rem;
-			top: 0.45rem;
-			left: 0.15rem;
-			width: calc(4 * 2 * var(--spacing));
-		}
+
 		.switch input[type='checkbox'] {
-			/* border-radius: 0.25em; */
+			display: block;
 			min-width: 3.2em;
 			width: 3.2em;
 			height: 1.7em;
-			display: inline-block;
 			position: relative;
 		}
 		.switch input[type='checkbox']:before {
@@ -1437,27 +1404,18 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			position: absolute;
 		}
 		.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(1.5em);
-			-moz-transform: translateX(1.5em);
-			-ms-transform: translateX(1.5em);
 			transform: translateX(1.5em);
 			background-color: white;
 		}
 		.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(0.75em);
-			-moz-transform: translateX(0.75em);
-			-ms-transform: translateX(0.75em);
 			transform: translateX(0.75em);
 			background-color: var(--color-petrol);
 		}
-		.switch:has(input:not(:checked), input:indeterminate) .icon {
+		.switch:is(:not(.checked), .indeterminate) .icon {
 			color: #fff;
 		}
 		.disabled {
 			opacity: 0.33;
-		}
-		.default kol-icon {
-			display: none;
 		}
 		kol-input span.hint {
 			grid-column: span 2;
@@ -1466,6 +1424,13 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			display: block;
 			order: 3;
 			padding: 0 var(--spacing);
+		}
+		.button:focus-within {
+			border-radius: 2rem;
+			outline-color: var(--color-achat) !important;
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
 		}
 	`,
 	'KOL-INPUT-RADIO': `/* INPUT */
@@ -1557,6 +1522,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-TOAST-CONTAINER': `:host {
 		top: 1rem;
 		width: 750px;
+		max-width: 100%;
 		left: 50%;
 		transform: translateX(-50%);
 	}

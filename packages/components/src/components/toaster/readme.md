@@ -13,15 +13,23 @@ Die Toast-Komponenten werden nicht direkt verwendet, sondern immer über den Toa
 import { ToasterService } from '@public-ui/components';
 
 // Get the toaster instance for the current HTML document.
-const toaster = ToasterService.getInstance(document);
+const toaster = ToasterService.getInstance(document, {
+  defaultAlertType: 'msg', // Standard: 'card'
+}});
 
 // Enqueue a new toast to the toaster to display:
 toaster.enqueue({
 	label: 'This is the title',
 	description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
 	type: 'info',
+	alertType: 'msg', // Standard: 'card'
 });
 ```
+
+### Weitere Service-Methoden
+
+- `closeAll`: Schließt alle Toasts
+- `dispose`: Entfernt den Toast Container. Die Toaster-Instanz kann nicht weiter genutzt werden.
 
 ## Verwendung
 
@@ -37,7 +45,7 @@ Alternativ zur statischen Description können Sie über das Attribut **`_render`
 HTMLElement der Toast-Komponente aufgerufen. Zudem wird auch ein Objekt übergeben, das eine `close`-Funktion zum Schließen des Toasts bereitstellt.
 
 ```ts
-void toaster.enqueue({
+const closeToast = toaster.enqueue({
 	render: (element: HTMLElement, { close }) => {
 		element.textContent = 'Mein Inhalt';
 		const customCloseButton = document.createElement('button');
@@ -46,6 +54,8 @@ void toaster.enqueue({
 		customCloseButton.addEventListener('click', close, { once: true });
 	},
 });
+
+/* Optional: Toast wieder schließen mit `closeToast()` */
 ```
 
 ### Anzeigetyp des Toast
@@ -62,11 +72,23 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 ## Methods
 
-### `enqueue(toast: Toast) => Promise<void>`
+### `closeAll() => Promise<void>`
 
 #### Returns
 
 Type: `Promise<void>`
+
+### `enqueue(toast: Toast) => Promise<() => void>`
+
+#### Parameters
+
+| Name    | Type                                                                                                                                                                                                                                                          | Description |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `toast` | `{ description?: string \| undefined; render?: ((nodeRef: HTMLElement, options: { close: () => void; }) => void) \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; alertVariant?: "card" \| "msg" \| undefined; }` |             |
+
+#### Returns
+
+Type: `Promise<() => void>`
 
 ## Dependencies
 
@@ -90,7 +112,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-toast-container fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-toast-container stroke:#333,stroke-width:4px
 ```
 
 ---

@@ -1,4 +1,4 @@
-import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcons } from '../../types/icons';
@@ -36,6 +36,12 @@ export class KolInputFile implements API {
 		this.ref = ref;
 		propagateFocus(this.host, this.ref);
 	};
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Method()
+	public async getValue(): Promise<FileList | null | undefined> {
+		return this.ref?.files;
+	}
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -221,7 +227,7 @@ export class KolInputFile implements API {
 
 	@State() public state: States = {
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 	};
 

@@ -1,4 +1,4 @@
-import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcons } from '../../types/icons';
@@ -42,6 +42,12 @@ export class KolSelect implements API {
 		this.ref = ref;
 		propagateFocus(this.host, this.ref);
 	};
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Method()
+	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
+		return this._value;
+	}
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
 		return (
@@ -278,7 +284,7 @@ export class KolSelect implements API {
 	@State() public state: States = {
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_multiple: false,
 		_options: [],

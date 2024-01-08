@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { a11yHint, uiUxHint } from '../../utils/a11y.tipps';
 import { WatchStringOptions, watchValidator } from '../../utils/prop.validators';
@@ -82,6 +82,7 @@ export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
 
 function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 	return {
+		...options,
 		hooks: {
 			afterPatch: (value, state, component, key) => {
 				if (typeof options.hooks?.afterPatch === 'function') {

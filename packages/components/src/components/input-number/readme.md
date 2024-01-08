@@ -63,6 +63,14 @@ Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`     |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | ``${number}-${number}-${number}T${number}:${number}:${number}` \| `${number}-${number}-${number}T${number}:${number}` \| `${number}-${number}-${number}` \| `${number}-${number}` \| `${number}-W${number}` \| `${number}:${number}:${number}` \| `${number}:${number}` \| null \| number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<string | undefined>`
+
+#### Returns
+
+Type: `Promise<string | undefined>`
+
 ## Slots
 
 | Slot | Description                         |
@@ -92,7 +100,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-input-number fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-input-number stroke:#333,stroke-width:4px
 ```
 
 ---

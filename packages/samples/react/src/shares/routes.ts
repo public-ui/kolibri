@@ -33,7 +33,6 @@ import { LOGO_ROUTES } from '../components/logo/routes';
 import { MODAL_ROUTES } from '../components/modal/routes';
 import { NAV_ROUTES } from '../components/nav/routes';
 import { PAGINATION_ROUTES } from '../components/pagination/routes';
-import { POPOVER_ROUTES } from '../components/popover/routes';
 import { PROGRESS_ROUTES } from '../components/progress/routes';
 import { QUOTE_ROUTES } from '../components/quote/routes';
 import { SELECT_ROUTES } from '../components/select/routes';
@@ -85,7 +84,6 @@ export const ROUTES: Routes = {
 	...MODAL_ROUTES,
 	...NAV_ROUTES,
 	...PAGINATION_ROUTES,
-	...POPOVER_ROUTES,
 	...PROGRESS_ROUTES,
 	...QUOTE_ROUTES,
 	...SELECT_ROUTES,

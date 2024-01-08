@@ -104,6 +104,14 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 | `_type`               | `_type`          | Defines either the type of the component or of the components interactive element.                                                                           | `"date" \| "datetime-local" \| "month" \| "time" \| "week"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `'date'`    |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `Date \| `${number}-${number}-${number}T${number}:${number}:${number}`\|`${number}-${number}-${number}T${number}:${number}` \| `${number}-${number}-${number}`\|`${number}-${number}`\|`${number}-W${number}`\|`${number}:${number}:${number}` \| `${number}:${number}` \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<string | undefined>`
+
+#### Returns
+
+Type: `Promise<string | undefined>`
+
 ## Slots
 
 | Slot | Description                         |
@@ -133,7 +141,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-input-date fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-input-date stroke:#333,stroke-width:4px
 ```
 
 ---

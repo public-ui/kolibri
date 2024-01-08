@@ -64,6 +64,14 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`     |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<FileList | null | undefined>`
+
+#### Returns
+
+Type: `Promise<FileList | null | undefined>`
+
 ## Slots
 
 | Slot | Description                         |
@@ -93,7 +101,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-input-file fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-input-file stroke:#333,stroke-width:4px
 ```
 
 ---

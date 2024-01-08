@@ -3,10 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import type { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 import { register } from '@public-ui/components';
-import { BAMF, BMF, BZSt, DEFAULT, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3 } from '@public-ui/themes';
-import { TH } from '@public-oss/kolibri-themes';
+import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 import { App } from './App';
 
 type Theme = Generic.Theming.RegisterPatch<string, string, string>;
@@ -23,7 +22,7 @@ void (async () => {
 	} else {
 		/* Regular mode: Register all known themes. */
 		try {
-			await register([BAMF, BMF, DEFAULT, BZSt, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, ZOLLv3, TH], defineCustomElements, {
+			await register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund], defineCustomElements, {
 				theme: {
 					detect: 'auto',
 				},
@@ -35,12 +34,18 @@ void (async () => {
 
 	/**
 	 * You should patch the theme after the components and your default theme are registered.
-	 *
+	 **
 	 * ↓ That is a tiny sample!
 	 */
-	// KoliBriDevHelper.patchTheme('my-theme', {
-	// 	'KOL-BUTTON': 'button{border:2px solid red;}',
-	// });
+	// KoliBriDevHelper.patchTheme(
+	// 	'default',
+	// 	{
+	// 		'KOL-BUTTON': 'button{border:2px solid red;}',
+	// 	},
+	// 	{
+	// 		append: true,
+	// 	},
+	// );
 
 	const htmlDivElement = document.querySelector('div#app');
 	if (htmlDivElement instanceof HTMLDivElement) {

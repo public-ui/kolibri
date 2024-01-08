@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { watchJsonArrayString, WatchOptions } from '../../utils/prop.validators';
 import { validateInputSelectOptions } from '../../utils/validators/options';

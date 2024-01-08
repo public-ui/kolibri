@@ -118,6 +118,14 @@ Probleme mit Disabled-Status
 | `_value`              | `_value`         | Defines the value that the button emits on click.                                                                                                                                | `boolean \| null \| number \| object \| string \| undefined`                                                                                           | `undefined` |
 | `_variant`            | `_variant`       | Defines which variant should be used for presentation.                                                                                                                           | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined`                                                   | `'normal'`  |
 
+## Methods
+
+### `getValue() => Promise<Stringified<StencilUnknown> | undefined>`
+
+#### Returns
+
+Type: `Promise<Stringified<StencilUnknown>>`
+
 ## Dependencies
 
 ### Used by
@@ -142,7 +150,7 @@ graph TD;
   kol-nav --> kol-button
   kol-table --> kol-button
   kol-toast-container --> kol-button
-  style kol-button fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-button stroke:#333,stroke-width:4px
 ```
 
 ---

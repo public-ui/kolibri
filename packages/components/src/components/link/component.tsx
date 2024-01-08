@@ -4,7 +4,6 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { KoliBriIconsProp } from '../../types/icons';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
 import { DownloadPropType, validateDownload } from '../../types/props/download';
 import { HrefPropType, validateHref } from '../../types/props/href';
 import { validateIcons } from '../../types/props/icons';
@@ -12,14 +11,16 @@ import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../
 import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
 import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
-import { devHint, devWarning } from '../../utils/a11y.tipps';
-import { ariaCurrentSubject, setEventTarget, watchString } from '../../utils/prop.validators';
+import { devHint } from '../../utils/a11y.tipps';
+import { setEventTarget } from '../../utils/prop.validators';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { States as LinkStates } from '../link/types';
 import { API } from './types';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
+import { onLocationChange, UnsubscribeFunction } from './ariaCurrentService';
+import { AriaCurrentValuePropType, validateAriaCurrentValue } from '../../types/props/aria-current-value';
 
 /**
  * @internal
@@ -31,6 +32,7 @@ import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-k
 export class KolLinkWc implements API {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private ref?: HTMLAnchorElement;
+	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
 		this.ref = ref;
@@ -76,7 +78,7 @@ export class KolLinkWc implements API {
 		};
 
 		if (this.state._hideLabel === true && !this.state._label) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden _hide-label gesetzt ist.`);
+			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn _hide-label gesetzt ist.`);
 		}
 		return { isExternal, tagAttrs };
 	};
@@ -91,7 +93,11 @@ export class KolLinkWc implements API {
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
-					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+					aria-label={
+						isExternal && this.state._hideLabel && typeof this.state._label === 'string'
+							? `${this.state._label} (${translate('kol-open-link-in-tab')})`
+							: undefined
+					}
 					class={{
 						'external-link': isExternal,
 						'hide-label': this.state._hideLabel === true,
@@ -111,7 +117,14 @@ export class KolLinkWc implements API {
 					>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
-					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icons={'codicon codicon-link-external'} />}
+					{isExternal && (
+						<kol-icon
+							class="external-link-icon"
+							_label={translate('kol-open-link-in-tab')}
+							_icons={'codicon codicon-link-external'}
+							aria-hidden={this.state._hideLabel}
+						/>
+					)}
 				</a>
 				<kol-tooltip-wc
 					/**
@@ -132,6 +145,11 @@ export class KolLinkWc implements API {
 	 * Defines the elements access key.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
+
+	/**
+	 * Defines the value for the aria-current attribute.
+	 */
+	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
@@ -161,11 +179,6 @@ export class KolLinkWc implements API {
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
-	 * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-	 */
-	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
-
-	/**
 	 * Defines the callback functions for links.
 	 */
 	@Prop() public _on?: LinkOnCallbacksPropType;
@@ -186,18 +199,14 @@ export class KolLinkWc implements API {
 	@Prop() public _target?: LinkTargetPropType;
 
 	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
-
-	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	@State() public state: LinkStates = {
-		_href: '…', // ⚠ required
-		_icons: {}, // ⚠ required
+		_ariaCurrentValue: 'page',
+		_href: '', // ⚠ required
+		_icons: {},
 	};
 
 	@Watch('_accessKey')
@@ -205,8 +214,9 @@ export class KolLinkWc implements API {
 		validateAccessKey(this, value);
 	}
 
-	private validateAriaCurrent(value?: AriaCurrentPropType): void {
-		validateAriaCurrent(this, value);
+	@Watch('_ariaCurrentValue')
+	public validateAriaCurrentValue(value?: AriaCurrentValuePropType): void {
+		validateAriaCurrentValue(this, value);
 	}
 
 	@Watch('_download')
@@ -221,7 +231,9 @@ export class KolLinkWc implements API {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		validateHref(this, value);
+		validateHref(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_icons')
@@ -232,11 +244,6 @@ export class KolLinkWc implements API {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabelWithExpertSlot(this, value);
-	}
-
-	@Watch('_listenAriaCurrent')
-	public validateListenAriaCurrent(value?: AriaCurrentPropType): void {
-		validateListenAriaCurrent(this, value);
 	}
 
 	@Watch('_on')
@@ -259,11 +266,6 @@ export class KolLinkWc implements API {
 		validateLinkTarget(this, value);
 	}
 
-	@Watch('_targetDescription')
-	public validateTargetDescription(value?: string): void {
-		watchString(this, '_targetDescription', value);
-	}
-
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this, value);
@@ -271,35 +273,25 @@ export class KolLinkWc implements API {
 
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
+		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel);
 		this.validateHref(this._href);
 		this.validateIcons(this._icons);
 		this.validateLabel(this._label);
-		this.validateListenAriaCurrent(this._listenAriaCurrent);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
-		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);
+		this.unsubscribeOnLocationChange = onLocationChange((location) => {
+			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
+		});
 	}
 
-	private unsubscribeAriaCurrentSubject = ariaCurrentSubject.subscribe((event) => {
-		try {
-			if (this.state._listenAriaCurrent && this.state._listenAriaCurrent === event.ariaCurrent) {
-				if (this.state._href === event.href) {
-					this.validateAriaCurrent(event.ariaCurrent);
-				} else {
-					this.validateAriaCurrent(false);
-				}
-			}
-		} catch (e) {
-			devWarning(`The aria-current event is not valid.`);
-		}
-	});
-
 	public disconnectedCallback(): void {
-		this.unsubscribeAriaCurrentSubject.unsubscribe();
+		if (this.unsubscribeOnLocationChange) {
+			this.unsubscribeOnLocationChange();
+		}
 	}
 }

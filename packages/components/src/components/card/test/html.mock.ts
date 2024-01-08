@@ -7,7 +7,7 @@ import { Props } from '../types';
 export const getCardHtml = (props: Props): string => {
 	props = mixMembers(
 		{
-			_label: '…',
+			_label: '', // ⚠ required
 		},
 		props
 	);
@@ -21,7 +21,7 @@ export const getCardHtml = (props: Props): string => {
 						_level: props._level,
 					},
 					{
-						default: '',
+						expert: '',
 					}
 				)}
 			</div>

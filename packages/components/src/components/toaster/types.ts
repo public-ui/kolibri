@@ -1,7 +1,7 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { LabelPropType } from '../../types/props/label';
-import { AlertType } from '../alert/types';
+import { AlertType, AlertVariant } from '../alert/types';
 
 const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
 type ToastStatus = (typeof toastStatusOptions)[number];
@@ -11,12 +11,17 @@ export type Toast = {
 	render?: (nodeRef: HTMLElement, options: { close: () => void }) => void;
 	label: LabelPropType;
 	type: AlertType;
+	alertVariant?: AlertVariant;
 };
 
 export type ToastState = {
 	toast: Toast;
 	status: ToastStatus;
 	id: string;
+};
+
+export type ToasterOptions = {
+	defaultAlertVariant: AlertVariant;
 };
 
 type RequiredProps = NonNullable<unknown>;

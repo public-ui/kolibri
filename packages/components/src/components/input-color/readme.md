@@ -24,7 +24,8 @@ Stellen Sie die Default-Farbe über das Attribut `_value` ein. Verwenden Sie hie
 
 ## Barrierefreiheit
 
-Beachten Sie, dass die **InputColor**-Komponente nicht vollständig barrierefrei ist. Die Auswahl einer Farbe ist über Tastatursteuerung möglich. Die Ausgabe der gewählten Farbe über Screenreader ist jedoch technisch eingeschränkt.
+Beachten Sie, dass die **InputColor**-Komponente nicht vollständig barrierefrei ist. Die Auswahl einer Farbe ist über Tastatursteuerung möglich. Die Ausgabe der gewählten Farbe über Screenreader ist jedoch technisch eingeschränkt.  
+Siehe auch: [https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md#input-color](Known Issues).
 
 Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgefertigten Farbauswahlliste, z.B. über Checkboxen oder Select-Felder.
 
@@ -68,6 +69,14 @@ Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgef
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`     |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
 
+## Methods
+
+### `getValue() => Promise<string | undefined>`
+
+#### Returns
+
+Type: `Promise<string | undefined>`
+
 ## Slots
 
 | Slot | Description                         |
@@ -97,7 +106,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-input-color fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-input-color stroke:#333,stroke-width:4px
 ```
 
 ---

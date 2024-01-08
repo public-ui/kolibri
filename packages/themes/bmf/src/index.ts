@@ -45,6 +45,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		:host {
 			font-family: var(--font-family); /* font-size: var(--font-size); */
+			background-color: transparent; /* Reset global background-color defined by components */
 		}
 		* {
 			box-sizing: border-box;
@@ -94,7 +95,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		kol-tooltip-wc .tooltip-area {
 			background-color: var(--color-white);
-			color: var(--color-metal);
+			color: var(--color-black);
 		}
 		kol-tooltip-wc .tooltip-content {
 			border-radius: var(--border-radius);
@@ -107,6 +108,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-BUTTON': css`
+		:is(a, button) {
+			font-size: 1.125em;
+		}
 		:is(a, button):focus {
 			outline: none;
 		}
@@ -153,6 +157,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-red);
 			color: var(--color-white);
 		}
+		.success :is(a, button) > kol-span-wc,
+		.success :is(a, button):disabled:hover > kol-span-wc {
+			background-color: var(--color-green);
+			border-color: var(--color-green);
+			color: var(--color-white);
+		}
 		.ghost :is(a, button) > kol-span-wc,
 		.ghost :is(a, button):disabled:hover > kol-span-wc {
 			border-color: var(--color-white);
@@ -168,6 +178,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.normal :is(a, button):hover > kol-span-wc,
 		.danger :is(a, button):active > kol-span-wc,
 		.danger :is(a, button):hover > kol-span-wc,
+		.success :is(a, button):active > kol-span-wc,
+		.success :is(a, button):hover > kol-span-wc,
 		.ghost :is(a, button):active > kol-span-wc,
 		.ghost :is(a, button):hover > kol-span-wc {
 			background-color: var(--color-ocean);
@@ -188,6 +200,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.secondary :is(a, button):active > kol-span-wc,
 		.normal :is(a, button):active > kol-span-wc,
 		.danger :is(a, button):active > kol-span-wc,
+		.success :is(a, button):active > kol-span-wc,
 		.ghost :is(a, button):active > kol-span-wc {
 			border-color: var(--color-white);
 			box-shadow: none;
@@ -213,6 +226,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		:is(a, button).transparent > kol-span-wc {
 			background-color: transparent;
 			border-color: transparent;
+		}
+		/** CUSTOM_CLASS */
+		:is(a, button).icon-only > kol-span-wc {
+			padding: 8px;
+			width: unset;
+		}
+		:is(a, button).icon-only > kol-span-wc > span > span {
+			display: block;
 		}
 	`,
 	'KOL-INPUT-TEXT': css`
@@ -275,12 +296,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -354,12 +376,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -433,12 +456,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -512,12 +536,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -592,12 +617,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -678,12 +704,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -770,12 +797,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -1081,31 +1109,31 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			color: inherit;
 			font-style: normal;
 			margin: 0;
 			padding: 0;
 		}
-		h1,
-		h2,
-		h3 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3 {
 			font-weight: 700;
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 1.25rem;
 			line-height: 1.75rem;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 1.125rem;
 			line-height: 1.5rem;
 		}
@@ -1337,12 +1365,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -1444,12 +1473,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -1564,15 +1594,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 			grid-template-columns: 1fr auto;
 			align-items: center;
 		}
-		th div.center {
-			justify-content: center;
-		}
-		th div.right {
-			justify-content: end;
-		}
 		th,
 		td {
-			vertical-align: top;
 			border-bottom: 1px solid var(--color-granite);
 			height: 1.25rem;
 		}
@@ -1582,22 +1605,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		tbody th,
 		td {
 			padding: 1em 0;
+			vertical-align: top;
 		}
 		th kol-button,
 		td kol-button {
 			margin-top: -0.75rem;
 			margin-bottom: -0.75rem;
 		}
-		td.center > div {
-			display: flex;
-			justify-content: center;
-		}
-		td.right > div {
-			display: flex;
-			justify-content: end;
-		}
-		th[aria-sort='ascending'],
-		th[aria-sort='descending'] {
+		.table-sort-button .button {
 			font-weight: 700;
 		}
 		:host > div:last-child,
@@ -1636,88 +1651,45 @@ export const BMF = KoliBri.createTheme('bmf', {
 		ul {
 			list-style: none;
 		}
-		kol-link-wc,
-		a {
-			height: 100%;
-			min-height: 44px;
-			display: flex;
-			place-items: center;
-		}
-		.entry > kol-button-link-text-switch {
-			width: 100%;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-white);
-			text-decoration: none;
-			color: var(--color-midnight);
-			width: 100%;
-			display: flex;
+		.entry-item :is(a, .button) {
 			align-items: center;
-			font-style: normal;
-			line-height: 1.5rem;
-			min-height: 44px;
-			min-width: 44px;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			letter-spacing: 0.175px;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc):first-child:is(a, button) {
-			color: var(--color-midnight);
-			text-decoration: none;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			border-left-color: var(--color-ocean);
-			background-color: var(--color-ocean);
-			letter-spacing: unset;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover > :is(a, button, span) {
-			color: var(--color-white);
-			background-color: var(--color-ocean);
-			font-weight: 700;
-			letter-spacing: unset;
-		}
-		:is(.active, .selected).list.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-smoke);
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-ice);
-			color: var(--color-midnight);
-			font-weight: 700;
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child > :is(a, button, span) {
-			font-weight: 700;
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			color: var(--color-white);
-			letter-spacing: unset;
-		}
-		.entry > kol-button-link-text-switch > kol-span-wc > span,
-		.entry :is(a, button) {
+			background-color: var(--color-white);
 			border-left-color: transparent;
 			border-left-style: solid;
 			border-left-width: 0.5rem;
-			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
-		}
-		:is(.active, .selected) kol-button-link-text-switch :is(a, button),
-		[exportparts*='selected'] a {
-			border-left-color: var(--color-midnight);
-		}
-		:is(kol-button-wc button, kol-link-wc a) {
 			color: var(--color-midnight);
-		}
-		kol-link-wc a {
+			display: flex;
+			font-style: normal;
+			letter-spacing: 0.175px;
+			line-height: 1.5rem;
+			min-height: 44px;
+			min-width: 44px;
+			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
+			place-items: center;
 			text-decoration: none;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+			width: 100%;
 		}
-		kol-link-wc kol-icon {
+		.vertical .active .entry-item :is(a, .button) {
+			background-color: var(--color-ice);
+			border-left-color: var(--color-midnight);
+			color: var(--color-midnight);
+			font-weight: 700;
+		}
+		.entry-item :is(a, .button):hover,
+		.vertical .active .entry-item :is(a, .button):hover {
+			background-color: var(--color-ocean);
+			border-left-color: var(--color-ocean);
+			color: var(--color-white);
+			font-weight: 700;
+		}
+		.nav:not(.is-compact) .entry-item .icon {
 			display: none;
 		}
 		/** Compact mode */
-		.entry.hide-label :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			place-items: center;
-		}
-		.entry.hide-label :is(a, button) {
-			padding: 0;
-			border-left: 0;
+		.entry.hide-label .entry-item :is(a, .button) {
+			justify-content: center;
 		}
 	`,
 	'KOL-CARD': css`
@@ -1757,11 +1729,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 			width: 100%;
 			min-height: 44px;
 		}
-		:host kol-input.default {
+		:host kol-input.default:not(.hide-label) {
 			grid-template-columns: 1.5rem auto;
 			gap: 0.4em;
 		}
-		:host kol-input.switch {
+		:host kol-input.switch:not(.hide-label) {
 			grid-template-columns: 3.5rem auto;
 			gap: 0.4em;
 		}
@@ -1787,7 +1759,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			padding-top: 0.25em;
 			grid-column: span 2 / auto;
 		}
-		:host kol-input.error {
+		:host kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
 		}
@@ -1806,7 +1778,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-grey);
 			border-width: 2px;
 			border-style: solid;
-			border-radius: 5px; /* padding: 10px 14px; */
+			border-radius: 5px;
 			line-height: 24px;
 			font-size: 1rem;
 		}
@@ -1843,48 +1815,36 @@ export const BMF = KoliBri.createTheme('bmf', {
 			background-color: var(--color-midnight);
 			border-color: var(--color-midnight);
 		}
+		:host kol-input.default .checkbox-container {
+			justify-content: flex-start;
+		}
+		:host kol-input.default input[type='checkbox']:indeterminate {
+			background-color: var(--color-midnight);
+			border-color: var(--color-midnight);
+		}
+		:host kol-input.default .icon {
+			color: var(--color-white);
+			margin: -0.125rem 0 0 0.25rem; /* visually align */
+		}
 		:host kol-input.default input[type='checkbox'] {
 			border-radius: var(--border-radius);
 			height: calc(6 * var(--spacing));
 			min-width: calc(6 * var(--spacing));
 			width: calc(6 * var(--spacing));
 		}
-		:host kol-input.default input[type='checkbox']:before {
-			border-radius: 1.5em;
-			background-color: transparent;
-			display: block;
-			height: calc(6 * var(--spacing));
-			position: relative;
-			width: calc(6 * var(--spacing));
-		}
-		:host kol-input.default input[type='checkbox']:checked:before {
-			border-right-width: 3px;
-			border-bottom-width: 3px;
-			left: calc(1.5 * var(--spacing) - 2px);
-			top: calc(2.85 * var(--spacing) - 2px);
-			transform: rotate(40deg) translate(-50%, -50%);
-			background-color: transparent;
-			border-width: 0px 3px 3px 0px;
-			border-color: white;
-			border-radius: 1px;
-			border-style: solid;
-			height: calc(3 * var(--spacing));
-			width: calc(1.5 * var(--spacing));
-		}
-		:host kol-input.default input[type='checkbox']:indeterminate {
-			--tw-bg-opacity: 1;
-			background-color: var(--color-midnight);
-		}
-		:host kol-input.default input[type='checkbox']:indeterminate:before {
-			background-color: var(--color-white);
-			height: 0.125rem;
-			top: 0.6rem;
-			left: 0.25rem;
-			width: calc(3 * var(--spacing));
-			transform: inherit;
-		}
-		:host kol-input.default input[type='checkbox']:checked:indeterminate:before {
-			border-width: 0px 1px 1px 0px;
+		.default {
+			.icon::part(icon) {
+				font-family: 'Font Awesome 6 Free';
+				font-weight: 900;
+			}
+
+			&.checked .icon::part(icon)::before {
+				content: '\\f00c';
+			}
+
+			&.indeterminate .icon::part(icon)::before {
+				content: '\\f068';
+			}
 		}
 		:host kol-input.switch input[type='checkbox'] {
 			min-width: 3.5em;
@@ -1893,13 +1853,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-width: 0;
 			height: 1.5em;
 			border-radius: 1.25em;
-			display: inline-block;
 			position: relative;
 		}
 		:host kol-input.switch input[type='checkbox']:before {
-			-webkit-transition: 0.5s;
-			-moz-transition: 0.5s;
-			-ms-transition: 0.5s;
 			transition: 0.5;
 			width: 1.25em;
 			height: 1.25em;
@@ -1913,9 +1869,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			background-color: var(--color-midnight);
 		}
 		:host kol-input.switch input[type='checkbox']:checked:before {
-			-webkit-transform: translateX(2em);
-			-moz-transform: translateX(2em);
-			-ms-transform: translateX(2em);
 			transform: translateX(2em);
 			--tw-bg-opacity: 1;
 		}
@@ -1923,12 +1876,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 			--tw-bg-opacity: 1;
 		}
 		:host kol-input.switch input[type='checkbox']:indeterminate:before {
-			-webkit-transform: translateX(1em);
-			-moz-transform: translateX(1em);
-			-ms-transform: translateX(1em);
 			transform: translateX(1em);
 		}
 		.switch {
+			& .checkbox-input-element {
+				display: block;
+			}
 			& .icon {
 				width: 1.25em;
 				height: 1.25em;
@@ -1942,13 +1895,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 					content: '\\2b';
 				}
 			}
-			&:has(input:checked) .icon {
+			&.checked .icon {
 				transform: translate(2em, -50%);
 				&::part(icon)::before {
 					content: '\\f00c';
 				}
 			}
-			&:has(input:indeterminate) .icon {
+			&.indeterminate .icon {
 				transform: translate(1em, -50%);
 				&::part(icon)::before {
 					content: '\\f068';
@@ -1983,11 +1936,22 @@ export const BMF = KoliBri.createTheme('bmf', {
 			min-width: 32px;
 			place-content: center;
 		}
+		:host kol-input.button.hide-label > .input {
+			border-top-right-radius: var(--border-radius);
+			border-bottom-right-radius: var(--border-radius);
+		}
 		:host kol-input.button > .input > div {
 			display: flex;
 		}
 		:host kol-input.button .icon {
 			height: auto;
+		}
+		.button:focus-within {
+			border-radius: var(--a11y-min-size);
+			outline-color: var(--color-ocean);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
 		}
 	`,
 	'KOL-INPUT-RADIO': css`
@@ -2079,7 +2043,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
 		}
-		fieldset #error {
+		kol-alert.error {
 			order: 1;
 		}
 		fieldset legend {
@@ -2090,12 +2054,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			order: 3;
 		}
 		fieldset.error {
-			padding-left: 1em;
 			border-left: 3px solid var(--color-red);
-		}
-		fieldset kol-alert#error {
 			color: var(--color-red);
 			font-weight: 700;
+			padding-left: 1em;
 		}
 		fieldset.error input:focus,
 		fieldset.error select:focus,
@@ -2131,6 +2093,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			top: 1rem;
 			right: 1rem;
 			width: 440px;
+			max-width: 100%;
 		}
 		.toast {
 			margin-top: 1rem;
@@ -2398,12 +2361,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '*';
 			padding-left: 0.125em;
 		}
-		kol-input.error {
+		kol-input.error .input {
+			border-color: var(--color-red);
+			border-width: 3px;
+		}
+		kol-input.error:not(.hidden-error) {
 			border-left: 3px solid var(--color-red);
 			padding-left: 1em;
-		}
-		kol-input.error .input:focus-within {
-			outline-color: var(--color-red) !important;
 		}
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
@@ -2419,6 +2383,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-LINK-BUTTON': css`
+		:is(a, button) {
+			font-size: 1.125em;
+		}
 		:is(a, button):focus {
 			outline: none;
 		}

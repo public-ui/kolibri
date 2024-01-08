@@ -3,16 +3,12 @@ import { KolBadge } from '@public-ui/react';
 
 import { FC } from 'react';
 
-const PROPS = {
-	_label: 'Label',
-};
-
 export const BadgeBasic: FC = () => (
-	<div className="d-flex gap-2">
-		<KolBadge {...PROPS}></KolBadge>
-		<KolBadge _color="#B22222" {...PROPS}></KolBadge>
-		<KolBadge _color="#4682B4" {...PROPS}></KolBadge>
-		<KolBadge _color="#228B22" {...PROPS}></KolBadge>
-		<KolBadge _color="#8B008B" {...PROPS}></KolBadge>
+	<div className="flex gap-2">
+		<KolBadge _label="schwarz"></KolBadge>
+		<KolBadge _color="#86ffc6" _label="türkis"></KolBadge>
+		<KolBadge _color="#06539e" _label="blau"></KolBadge>
+		<KolBadge _color="#ae0000" _label="rot"></KolBadge>
+		<KolBadge _color="#8b008b" _label="lila"></KolBadge>
 	</div>
 );

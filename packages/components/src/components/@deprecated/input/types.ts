@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { Stringified } from '../../../types/common';
 import { InputTypeOnDefault } from '../../../types/input/types';
@@ -11,6 +11,7 @@ type OptionalProps = PropLabelWithExpertSlot & {
 	adjustHeight: boolean;
 	disabled: boolean;
 	error: string;
+	hideError: boolean;
 	hideLabel: boolean;
 	hint: string;
 	id: string;

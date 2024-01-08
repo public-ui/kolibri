@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
@@ -32,10 +32,17 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 })
 export class KolInputRadio implements API {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
+	private currentValue?: W3CInputValue;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		propagateFocus(this.host, ref);
 	};
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Method()
+	public async getValue(): Promise<W3CInputValue | undefined> {
+		return this.currentValue;
+	}
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
@@ -45,6 +52,7 @@ export class KolInputRadio implements API {
 			<Host>
 				<fieldset
 					class={{
+						fieldset: true,
 						disabled: this.state._disabled === true,
 						error: hasError === true,
 						required: this.state._required === true,
@@ -77,7 +85,10 @@ export class KolInputRadio implements API {
 						const slotName = `radio-${index}`;
 						return (
 							<kol-input
-								class="radio"
+								class={{
+									radio: true,
+									disabled: Boolean(this.state._disabled || option.disabled),
+								}}
 								key={customId}
 								_accessKey={this.state._accessKey} // by radio?!
 								_disabled={this.state._disabled || option.disabled}
@@ -121,7 +132,7 @@ export class KolInputRadio implements API {
 										}}
 									>
 										<span>
-											<span>{option.label}</span>
+											<span class="radio-label-span-inner">{option.label}</span>
 										</span>
 									</label>
 								</div>
@@ -129,7 +140,7 @@ export class KolInputRadio implements API {
 						);
 					})}
 					{hasError && (
-						<kol-alert id="error" _alert={true} _type="error" _variant="msg" aria-hidden={this._hideError} class={`error${this._hideError ? ' hidden' : ''}`}>
+						<kol-alert id={`${this.state._id}-error`} _alert={true} _type="error" class={`error${this._hideError ? ' hidden' : ''}`}>
 							{this.state._error}
 						</kol-alert>
 					)}
@@ -245,7 +256,7 @@ export class KolInputRadio implements API {
 
 	@State() public state: States = {
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
 		_orientation: 'vertical',
@@ -348,6 +359,7 @@ export class KolInputRadio implements API {
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
+		this.currentValue = this._value;
 		this.controller.componentWillLoad(this.onChange);
 	}
 
@@ -367,8 +379,7 @@ export class KolInputRadio implements API {
 					this.state._on.onChange(event, option.value);
 				}
 
-				// TODO: Prüfen, was setValue noch genau macht, wir syncValue ja jetzt.
-				this.controller.setValue(event, option.value as string); // TODO: fix type
+				this.currentValue = option.value;
 			}
 		}
 	};

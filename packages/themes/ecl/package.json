@@ -1,26 +1,26 @@
 {
 	"name": "@public-ui-/theme-ecl",
-	"version": "2.0.0-rc.8",
+	"version": "2.0.3",
 	"private": true,
 	"scripts": {
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
-		"-test": "npm-run-all test:*",
+		"xtest": "npm-run-all test:*",
 		"test:ecl-ec": "THEME_MODULE=src/index THEME_EXPORT=ECL_EC kolibri-visual-test",
 		"test:ecl-eu": "THEME_MODULE=src/index THEME_EXPORT=ECL_EU kolibri-visual-test",
-		"test-update": "npm-run-all test-update:*",
+		"xtest-update": "npm-run-all test-update:*",
 		"test-update:ecl-ec": "THEME_MODULE=src/index THEME_EXPORT=ECL_EC kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"test-update:ecl-eu": "THEME_MODULE=src/index THEME_EXPORT=ECL_EU kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.0-rc.8",
-		"@public-ui/visual-tests": "2.0.0-rc.8",
-		"@types/node": "ts5.2",
+		"@public-ui/schema": "2.0.3",
+		"@public-ui/visual-tests": "2.0.3",
+		"@types/node": "ts5.3",
 		"npm-run-all": "4.1.5",
-		"typescript": "5.2.2"
+		"typescript": "5.3.3"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.0-rc.8"
+		"@public-ui/components": "2.0.3"
 	}
 }

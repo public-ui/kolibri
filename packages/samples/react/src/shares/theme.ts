@@ -1,21 +1,15 @@
 import { SelectOption } from '@public-ui/components';
 
-export type Theme = 'bmf' | 'bzst' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'mapz' | 'th' | 'unstyled' | 'zoll-v2' | 'zoll-v3';
+export type Theme = 'bmf' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'unstyled';
+
+const drafts: Theme[] = ['ecl-ec', 'ecl-eu', 'itzbund'];
+
+export const isDraftTheme = (theme: Theme) => drafts.includes(theme);
 
 export const isTheme = (value: unknown) => {
 	return (
 		typeof value === 'string' &&
-		(value === 'unstyled' ||
-			value === 'bmf' ||
-			value === 'bzst' ||
-			value === 'default' ||
-			value === 'ecl-ec' ||
-			value === 'ecl-eu' ||
-			value === 'itzbund' ||
-			value === 'mapz' ||
-			value === 'th' ||
-			value === 'zoll-v2' ||
-			value === 'zoll-v3')
+		(value === 'bmf' || value === 'default' || value === 'ecl-ec' || value === 'ecl-eu' || value === 'itzbund' || value === 'unstyled')
 	);
 };
 
@@ -26,47 +20,27 @@ export type Store = {
 
 export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	{
-		label: 'Unstyled',
+		label: 'Unstyled (Uncolored)',
 		value: 'unstyled',
 	},
 	{
-		label: 'Bundesministerium der Finanzen',
+		label: 'Bundesministerium der Finanzen (Tested)',
 		value: 'bmf',
 	},
 	{
-		label: 'Bundesamt für Zoll und Steuern',
-		value: 'bzst',
-	},
-	{
-		label: 'Default',
+		label: 'Default (Tested)',
 		value: 'default',
 	},
 	{
-		label: 'European Commission (ECL)',
+		label: 'European Commission (Draft)',
 		value: 'ecl-ec',
 	},
 	{
-		label: 'European Union (ECL)',
+		label: 'European Union (Draft)',
 		value: 'ecl-eu',
 	},
 	{
-		label: 'Informationstechnikzentrum Bund',
+		label: 'Informationstechnikzentrum Bund (Draft)',
 		value: 'itzbund',
-	},
-	{
-		label: '.',
-		value: 'mapz',
-	},
-	{
-		label: 'Freistaat Thüringen',
-		value: 'th',
-	},
-	{
-		label: '..',
-		value: 'zoll-v2',
-	},
-	{
-		label: '...',
-		value: 'zoll-v3',
 	},
 ];

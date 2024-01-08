@@ -47,8 +47,9 @@ export class KolAccordion implements API {
 						open: this.state._open === true,
 					}}
 				>
-					<kol-heading-wc _label="" _level={this.state._level}>
+					<kol-heading-wc _label="" _level={this.state._level} class="accordion-heading">
 						<kol-button-wc
+							class="accordion-button"
 							ref={this.catchRef}
 							slot="expert"
 							_ariaControls={this.nonce}
@@ -92,13 +93,15 @@ export class KolAccordion implements API {
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	@State() public state: States = {
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_level: 1,
 	};
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_level')

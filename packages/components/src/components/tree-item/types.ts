@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 import { PropLabel } from '../../types/props/label';
 import { PropOpen } from '../../types/props/open';
 import { PropHref } from '../../types/props/href';

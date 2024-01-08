@@ -125,6 +125,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			--spacing-2xs: 4px; /* ?! */
 		}
 		:host {
+			background-color: transparent; /* Reset global background-color defined by components */
 			display: inline-block;
 			font-family: var(--font-family);
 		}
@@ -179,35 +180,35 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-HEADING': css`
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		.headline-h1,
+		.headline-h2,
+		.headline-h3,
+		.headline-h4,
+		.headline-h5,
+		.headline-h6 {
 			font-weight: var(--font-weight-bold);
 		}
-		h1 {
+		.headline-h1 {
 			font-size: 2.625rem;
 			line-height: 3.25rem;
 		}
-		h2 {
+		.headline-h2 {
 			font-size: 2.25rem;
 			line-height: 2.75rem;
 		}
-		h3 {
+		.headline-h3 {
 			font-size: 2rem;
 			line-height: 2.5rem;
 		}
-		h4 {
+		.headline-h4 {
 			font-size: 1.75rem;
 			line-height: 2rem;
 		}
-		h5 {
+		.headline-h5 {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
-		h6 {
+		.headline-h6 {
 			font-size: 1.25rem;
 			line-height: 1.75rem;
 		}
@@ -746,6 +747,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-CHECKBOX': css`
+		.checkbox-container {
+			justify-content: flex-start;
+		}
 		input[type='checkbox'] {
 			background-color: var(--color-white);
 			border-width: 2px;
@@ -774,12 +778,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			background-color: var(--color-blue-130);
 			border-color: var(--color-blue-130);
 		}
-		input[type='checkbox']:checked::before {
-			border-color: var(--color-white);
-		}
-		input[type='checkbox']:indeterminate:hover::before {
-			background-color: var(--color-blue-130);
-		}
 		.error input[type='checkbox'] {
 			border-color: var(--color-red);
 		}
@@ -794,11 +792,18 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			background-color: var(--color-red-1xx);
 			border-color: var(--color-red-1xx);
 		}
-		.error input[type='checkbox']:indeterminate:hover::before {
-			background-color: var(--color-red-1xx);
-		}
 		.error.required label > span::after {
 			color: var(--color-red);
+		}
+		.default .icon {
+			margin-left: 0.2rem;
+		}
+		.default.checked .icon {
+			color: var(--color-white);
+		}
+
+		.switch input[type='checkbox'] {
+			display: block;
 		}
 		.switch input[type='checkbox']::before,
 		.switch input[type='checkbox']:indeterminate::before {
@@ -838,6 +843,11 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 		.hint {
 			font-size: 0.875rem;
+		}
+		.button:focus-within {
+			outline-color: var(--color-blue-130);
+			outline-style: solid;
+			outline-width: 2px;
 		}
 	`,
 	'KOL-INPUT-COLOR': css`
@@ -1388,26 +1398,12 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			grid-template-columns: 1fr auto;
 			align-items: center;
 		}
-		th div.center {
-			justify-content: center;
-		}
-		th div.right {
-			justify-content: end;
-		}
 		tbody tr:nth-child(odd) {
 			background-color: var(--color-grey-10);
 		}
 		th,
 		td {
 			padding: 0.5em;
-		}
-		td.center > div {
-			display: flex;
-			justify-content: center;
-		}
-		td.right > div {
-			display: flex;
-			justify-content: end;
 		}
 		th[aria-sort='ascending'],
 		th[aria-sort='descending'] {
@@ -1602,6 +1598,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			top: 1rem;
 			right: 1rem;
 			width: 440px;
+			max-width: 100%;
 		}
 		.toast {
 			display: block;

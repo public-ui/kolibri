@@ -1,9 +1,8 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
-import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { PropCollapsible } from '../../types/props/collapsible';
 import { PropHasCompactButton } from '../../types/props/has-compact-button';
 import { PropHideLabel } from '../../types/props/hide-label';
@@ -13,7 +12,6 @@ type RequiredProps = {
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 } & PropLabel;
 type OptionalProps = {
-	ariaCurrentValue: AriaCurrentPropType;
 	orientation: Orientation;
 } & PropCollapsible &
 	PropHasCompactButton &
@@ -21,9 +19,9 @@ type OptionalProps = {
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	ariaCurrentValue: AriaCurrentPropType;
 	links: ButtonOrLinkOrTextWithChildrenProps[];
 	orientation: Orientation;
+	expandedChildren: ButtonOrLinkOrTextWithChildrenProps[][];
 } & PropCollapsible &
 	PropHasCompactButton &
 	PropLabel &

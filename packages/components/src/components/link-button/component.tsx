@@ -1,8 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-
-import { translate } from '../../i18n';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { ButtonVariantPropType } from '../../types/props/button-variant';
 import { CustomClassPropType } from '../../types/props/custom-class';
 import { DownloadPropType } from '../../types/props/download';
@@ -15,6 +12,7 @@ import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { propagateFocus } from '../../utils/reuse';
 import { Props } from './types';
 import { AccessKeyPropType } from '../../types/props/access-key';
+import { AriaCurrentValuePropType } from '../../types/props/aria-current-value';
 
 @Component({
 	tag: 'kol-link-button',
@@ -41,17 +39,16 @@ export class KolLinkButton implements Props {
 						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 					}}
 					_accessKey={this._accessKey}
+					_ariaCurrentValue={this._ariaCurrentValue}
 					_download={this._download}
 					_hideLabel={this._hideLabel}
 					_href={this._href}
 					_icons={this._icons}
 					_label={this._label}
-					_listenAriaCurrent={this._listenAriaCurrent}
 					_on={this._on}
 					_role="button"
 					_tabIndex={this._tabIndex}
 					_target={this._target}
-					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
 					<slot name="expert" slot="expert"></slot>
@@ -64,6 +61,11 @@ export class KolLinkButton implements Props {
 	 * Defines the elements access key.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
+
+	/**
+	 * Defines the value for the aria-current attribute.
+	 */
+	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
@@ -98,11 +100,6 @@ export class KolLinkButton implements Props {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Listen on an aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
-	 */
-	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
-
-	/**
 	 * Defines the callback functions for links.
 	 */
 	@Prop() public _on?: LinkOnCallbacksPropType;
@@ -121,11 +118,6 @@ export class KolLinkButton implements Props {
 	 * Defines where to open the link.
 	 */
 	@Prop() public _target?: LinkTargetPropType;
-
-	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.

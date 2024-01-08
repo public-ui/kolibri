@@ -45,11 +45,11 @@
 		color: #000;
 	}
 
-	.switch:has(input:checked) .icon {
+	.switch.checked .icon {
 		transform: translate(1.5em, -50%);
 	}
 
-	.switch:has(input:indeterminate) .icon {
+	.switch.indeterminate .icon {
 		transform: translate(0.75em, -50%);
 	}
 }

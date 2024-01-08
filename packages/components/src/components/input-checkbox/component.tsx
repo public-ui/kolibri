@@ -1,4 +1,4 @@
-import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
@@ -31,10 +31,18 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 })
 export class KolInputCheckbox implements API {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
+	private ref?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
 		propagateFocus(this.host, ref);
 	};
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Method()
+	public async getValue(): Promise<boolean | undefined> {
+		return this.ref?.checked;
+	}
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -48,10 +56,10 @@ export class KolInputCheckbox implements API {
 						[this.state._variant]: true,
 						'hide-label': !!this.state._hideLabel,
 						checked: this.state._checked,
+						indeterminate: this.state._indeterminate,
 					}}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
-					tabIndex={this.state._variant === 'button' && !this.state._disabled ? 0 : undefined}
 					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
@@ -79,16 +87,16 @@ export class KolInputCheckbox implements API {
 							<span>{this.state._label}</span>
 						)}
 					</span>
-					<div slot="input">
+					<label slot="input" class="checkbox-container">
 						<kol-icon
 							class="icon"
-							onClick={this.handleIconClick.bind(this)}
 							_icons={
 								this.state._indeterminate ? this.state._icons.indeterminate : this.state._checked ? this.state._icons.checked : this.state._icons.unchecked
 							}
 							_label=""
 						/>
 						<input
+							class={`checkbox-input-element${this.state._variant === 'button' ? ' visually-hidden' : ''}`}
 							ref={this.catchRef}
 							title=""
 							accessKey={this.state._accessKey} // by checkbox?!
@@ -106,7 +114,7 @@ export class KolInputCheckbox implements API {
 							onChange={this.onChange}
 							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 						/>
-					</div>
+					</label>
 				</kol-input>
 			</Host>
 		);
@@ -351,12 +359,6 @@ export class KolInputCheckbox implements API {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-	}
-
-	private handleIconClick(event: Event): void {
-		if (!this.state._disabled) {
-			this.onChange(event);
-		}
 	}
 
 	private onChange = (event: Event): void => {

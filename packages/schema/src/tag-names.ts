@@ -32,7 +32,6 @@ export enum TagEnum {
 	'modal',
 	'nav',
 	'pagination',
-	'popover',
 	'progress',
 	'select',
 	'separator', // TODO: github pr link

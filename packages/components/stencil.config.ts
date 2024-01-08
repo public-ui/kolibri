@@ -43,7 +43,6 @@ const TAGS = [
 	'kol-modal',
 	'kol-nav',
 	'kol-pagination',
-	'kol-popover',
 	'kol-progress',
 	'kol-quote',
 	'kol-select',
@@ -62,8 +61,8 @@ const TAGS = [
 ];
 const EXCLUDE_TAGS = [
 	'kol-alert-wc',
-	'kol-avatar-wc',
 	'kol-all',
+	'kol-avatar-wc',
 	'kol-button-group-wc',
 	'kol-button-link-text-switch',
 	'kol-button-wc',
@@ -72,6 +71,7 @@ const EXCLUDE_TAGS = [
 	'kol-heading-wc',
 	'kol-input',
 	'kol-link-wc',
+	'kol-popover-wc',
 	'kol-span-wc',
 	'kol-tooltip-wc',
 ];
@@ -209,6 +209,11 @@ if (process.env.NODE_ENV === 'production') {
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v16/src/components.ts',
 		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v17/src/components.ts',
+		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
@@ -264,16 +269,18 @@ if (process.env.NODE_ENV === 'production') {
 
 export const config: Config = {
 	// buildEs5: true,
-	// extras: {
-	//   cssVarsShim: true,
-	//   dynamicImportShim: true,
-	//   shadowDomShim: true,
-	//   safari10: true,
-	//   scriptDataOpts: true,
-	//   appendChildSlotFix: false,
-	//   cloneNodeFix: false,
-	//   slotChildNodesFix: true,
-	// },
+	// https://stenciljs.com/docs/config-extras
+	extras: {
+		// appendChildSlotFix: true,
+		// cloneNodeFix: true,
+		enableImportInjection: true,
+		// initializeNextTick: true,
+		// lifecycleDOMEvents: true,
+		// scopedSlotTextContentFix: true,
+		// scriptDataOpts: true,
+		// slotChildNodesFix: true,
+		// tagNameTransform: true,
+	},
 	// enableCache: true,
 	invisiblePrehydration: true,
 	hashFileNames: false,

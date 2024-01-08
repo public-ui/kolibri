@@ -20,7 +20,7 @@ export function logAndCreateError(msg: string, hint?: string) {
 				hint,
 				`
 `,
-		  )
+			)
 		: '';
 	console.log(
 		chalk.red(

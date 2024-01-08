@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { PropHideLabel } from './props/hide-label';
 import { PropHref } from './props/href';
@@ -22,7 +22,6 @@ type OptionalButtonOrLinkOrTextProps = PropHideLabel & {
 	active: boolean; // TODO: realy needed?
 	// tabIndex: number; // possible, but sensible ?! -> Ticket?
 	// tooltipAlign: Alignment; // possible, but sensible ?! -> Ticket?
-	targetDescription: string;
 } & PropIcons &
 	PropLinkTarget;
 type OptionalButtonProps = OptionalButtonOrLinkOrTextProps & {
@@ -40,6 +39,6 @@ type OptionalButtonWithChildrenProps = OptionalButtonProps & {
 	children: ButtonOrLinkOrTextWithChildrenProps[];
 };
 export type ButtonWithChildrenProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonWithChildrenProps>;
-export type LinkWithChildrenProps = Generic.Element.Members<RequiredLinkProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
-export type TextWithChildrenProps = Generic.Element.Members<RequiredTextProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
+type LinkWithChildrenProps = Generic.Element.Members<RequiredLinkProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
+type TextWithChildrenProps = Generic.Element.Members<RequiredTextProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
 export type ButtonOrLinkOrTextWithChildrenProps = ButtonWithChildrenProps | LinkWithChildrenProps | TextWithChildrenProps;

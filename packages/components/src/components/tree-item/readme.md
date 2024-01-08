@@ -47,7 +47,7 @@ graph TD;
   kol-link-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
-  style kol-tree-item fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-tree-item stroke:#333,stroke-width:4px
 ```
 
 ---

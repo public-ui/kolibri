@@ -13,7 +13,7 @@ export const getAccordionHtml = (
 ): string => {
 	props = mixMembers(
 		{
-			_label: '…', // ⚠ required
+			_label: '', // ⚠ required
 			_level: 1,
 		},
 		props
@@ -27,13 +27,18 @@ export const getAccordionHtml = (
 					_level: props._level,
 				},
 				{
-					default: `${getButtonWcHtml({
-						_ariaControls: 'nonce',
-						_ariaExpanded: props._open === true,
-						_icons: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
-						_label: props._label,
-					})}`,
-				}
+					expert: `${getButtonWcHtml(
+						{
+							_ariaControls: 'nonce',
+							_ariaExpanded: props._open === true,
+							_icons: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
+							_label: props._label,
+						},
+						undefined,
+						' class="accordion-button" slot="expert"'
+					)}`,
+				},
+				` class="accordion-heading"`
 			)}
 			<div class="wrapper">
 				<div class="animation-wrapper">

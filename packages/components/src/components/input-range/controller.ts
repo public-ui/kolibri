@@ -1,8 +1,6 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 import { InputTypeOnOff } from '../../types/input/types';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
-import { a11yHint } from '../../utils/a11y.tipps';
 import { watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
@@ -23,18 +21,6 @@ export class InputRangeController extends InputIconController implements Watches
 			new Set(['on | off']),
 			value
 		);
-	}
-
-	public validateHideError(value?: HideErrorPropType): void {
-		validateHideError(this.component, value, {
-			hooks: {
-				afterPatch: () => {
-					if (this.component.state._hideError) {
-						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
-					}
-				},
-			},
-		});
 	}
 
 	public validateMax(value?: number): void {
@@ -61,7 +47,6 @@ export class InputRangeController extends InputIconController implements Watches
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
-		this.validateHideError(this.component._hideError);
 		this.validateMax(this.component._max);
 		this.validateMin(this.component._min);
 		this.validateStep(this.component._step);

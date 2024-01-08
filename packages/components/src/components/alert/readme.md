@@ -7,13 +7,13 @@ Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie be
 ### Code
 
 ```html
-<kol-alert _label="Überschrift im Alert" _level="1" _type="success" _variant="msg">Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="1" _type="success">Textbereich im Alert</kol-alert>
 <kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
 ```
 
 ### Beispiel
 
-<kol-alert _label="Überschrift im Alert" _level="1" _type="success" _variant="msg">Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="1" _type="success" >Textbereich im Alert</kol-alert>
 <kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
 
 ## Verwendung
@@ -119,7 +119,7 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
   kol-alert --> kol-alert-wc
-  style kol-alert-wc fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-alert-wc stroke:#333,stroke-width:4px
 ```
 
 ---

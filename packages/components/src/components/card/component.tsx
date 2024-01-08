@@ -81,7 +81,7 @@ export class KolCard implements API {
 	@Prop() public _level?: HeadingLevel = 1;
 
 	@State() public state: States = {
-		_label: '…', // '⚠'
+		_label: '', // ⚠ required
 	};
 
 	private validateOnValue = (value: unknown): boolean =>
@@ -103,7 +103,9 @@ export class KolCard implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_level')

@@ -5,22 +5,22 @@ import { KolButton, KolInputText, KolTable } from '@public-ui/react';
 import { getRoot } from '../../shares/react-roots';
 import { KoliBriTableHeaders } from '@public-ui/components';
 import { DATA, Data } from './test-data';
-
-const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
-	day: '2-digit',
-	month: '2-digit',
-	year: 'numeric',
-});
+import { DATE_FORMATTER } from './formatter';
+import { SampleDescription } from '../SampleDescription';
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: '#', key: 'order', textAlign: 'center' },
+			{ label: '#', key: 'order', textAlign: 'center', width: '10em' },
 			{
 				label: 'Datum (string)',
 				key: 'date',
+				width: '20em',
 				textAlign: 'center',
-				render: (_el, _cell, tupel) => `<strong>${DATE_FORMATTER.format((tupel as Data).date)}</strong>`,
+				render: (el, tupel) => {
+					// https://reactjs.org/docs/portals.html
+					getRoot(el).render(<strong>{DATE_FORMATTER.format(tupel.label as unknown as Date)}</strong>);
+				},
 				sort: (data: Data[]) =>
 					data.sort((data0, data1) => {
 						if (data0.date < data1.date) return -1;
@@ -32,6 +32,8 @@ const HEADERS: KoliBriTableHeaders = {
 				label: 'Aktion (react)',
 				key: 'order',
 				render: (el) => {
+					el.setAttribute('role', 'presentation');
+
 					// https://reactjs.org/docs/portals.html
 					getRoot(el).render(
 						<>
@@ -45,4 +47,11 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
-export const TableRenderCell: FC = () => <KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />;
+export const TableRenderCell: FC = () => (
+	<>
+		<SampleDescription>
+			<p>This sample simulates the usage of React render functions for the table column contents.</p>
+		</SampleDescription>
+		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
+	</>
+);

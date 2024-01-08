@@ -1,5 +1,5 @@
 /* types */
-import { Generic } from '@a11y-ui/core';
+import { Generic } from 'adopted-style-sheets';
 import { watchBoolean } from '../../utils/prop.validators';
 
 export type HasChildrenPropType = boolean;

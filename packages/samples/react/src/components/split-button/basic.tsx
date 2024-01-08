@@ -1,14 +1,25 @@
+import { ToasterService } from '@public-ui/components';
 import React, { FC } from 'react';
 import { KolSplitButton } from '@public-ui/react';
 
+const toaster = ToasterService.getInstance(document);
+
 export const SplitButtonBasic: FC = () => {
+	const handleButtonClick = () => {
+		void toaster.enqueue({
+			description: 'The Button has been clicked.',
+			label: `Button Clicked`,
+			type: 'info',
+		});
+	};
+
 	return (
-		<div className="grid gap-4">
-			<KolSplitButton _label="Nur der Pfeil öffnet" _on={{ onClick: console.log }}>
-				Drowndown-Inhalt
+		<div className="flex gap-4">
+			<KolSplitButton _label="Nur der Pfeil öffnet" _on={{ onClick: handleButtonClick }}>
+				Dropdown-Inhalt
 			</KolSplitButton>
-			<KolSplitButton _label="ohne label" _hide-label _icons="codicon codicon-git-pull-request">
-				Drowndown-Inhalt
+			<KolSplitButton _label="Schalter ohne sichtbares Label" _hideLabel _icons="codicon codicon-git-pull-request">
+				Dropdown-Inhalt
 			</KolSplitButton>
 		</div>
 	);

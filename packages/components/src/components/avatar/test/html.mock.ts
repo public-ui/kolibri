@@ -6,8 +6,8 @@ import { Props, States } from '../types';
 export const getAvatarHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
 		{
-			_src: ``,
-			_label: ``, // ⚠ required
+			_src: '',
+			_label: '', // ⚠ required
 		},
 		props
 	);

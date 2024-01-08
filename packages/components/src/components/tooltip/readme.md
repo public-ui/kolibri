@@ -16,6 +16,17 @@ Die Tooltip-Komponente wird bei Fokus oder bei Bewegen der Maus über dem Refere
 Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange zudem von der Entwicklung sichergestellt wurde, dass der Tooltip-Text auch in gleicher Weise vom Screenreader vorgelesen wird.
 </kol-alert>
 
+## Breite
+
+Die Breite des Tooltips richtet sich normalerweise nach ihrem Inhalt.
+Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container eine [CSS-Custom-Property](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) wie folgt definiert werden:
+
+```css
+.container {
+  --kol-tooltip-width': '40rem';
+}
+```
+
 ## Links und Referenzen
 
 - <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank"></kol-link>
@@ -54,7 +65,7 @@ graph TD;
   kol-button-wc --> kol-tooltip-wc
   kol-input --> kol-tooltip-wc
   kol-link-wc --> kol-tooltip-wc
-  style kol-tooltip-wc fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-tooltip-wc stroke:#333,stroke-width:4px
 ```
 
 ---

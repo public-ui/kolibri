@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 interface ITranslationOptions {
 	/**
@@ -32,10 +32,11 @@ export interface II18nService {
 
 export class I18nextService implements II18nService {
 	private static instance: II18nService;
+	private static namespace = 'KoliBri';
 
 	private constructor() {}
 
-	public static async getInstance(
+	public static async createInstance(
 		lng: Generic.I18n.Locale.ISO_639_1,
 		translations?:
 			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
@@ -50,9 +51,14 @@ export class I18nextService implements II18nService {
 
 		I18nextService.instance = new I18nextService();
 
-		await i18next.init({
-			lng,
-		});
+		if (!i18next.isInitialized) {
+			await i18next.init({
+				ns: [I18nextService.namespace],
+				lng,
+			});
+		} else {
+			await i18next.loadNamespaces(I18nextService.namespace);
+		}
 
 		if (translations !== undefined) {
 			translations.forEach((t) =>
@@ -67,7 +73,7 @@ export class I18nextService implements II18nService {
 	}
 
 	public static addResourceBundle(lng: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<string, string>) {
-		i18next.addResourceBundle(lng, 'translation', translationMap, true);
+		i18next.addResourceBundle(lng, I18nextService.namespace, translationMap, true);
 	}
 
 	public addResourceBundle(lng: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<string, string>) {
@@ -76,6 +82,7 @@ export class I18nextService implements II18nService {
 
 	public translate(key: string, options?: ITranslationOptions) {
 		return i18next.t(key, {
+			ns: I18nextService.namespace,
 			count: options?.count,
 			...options?.placeholders,
 		});

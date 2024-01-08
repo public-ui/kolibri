@@ -6,9 +6,8 @@ import { FC } from 'react';
 export const AlertHtml: FC = () => (
 	<div>
 		<KolAlert _label="Ausgabe von HTML-Code im Alert" _type="info">
-			{' '}
 			<h2 className="mt-2 mb-3">Hier wird eine H2-Überschrift ausgegeben</h2>
-			<div style={{ display: 'grid', gridAutoFlow: 'column', gap: '1rem' }}>
+			<div className="grid gap-4 sm:grid-cols-2">
 				<div>
 					<h4>Text in einer linken Spalte</h4>
 					<p>

@@ -1,15 +1,13 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { Stringified } from '../../types/common';
 import { CheckedPropType, validateChecked } from '../../types/props/checked';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { IndeterminatePropType, validateIndeterminate } from '../../types/props/indeterminate';
 import { StencilUnknown } from '../../types/unknown';
-import { a11yHint } from '../../utils/a11y.tipps';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
-import { InputCheckboxIconsProp, InputCheckboxIconsState, InputCheckboxVariant, inputCheckboxVariantOptions, Props, Watches } from './types';
+import { InputCheckboxIconsProp, InputCheckboxIconsState, InputCheckboxVariant, Props, Watches, inputCheckboxVariantOptions } from './types';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -30,18 +28,6 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	public validateChecked(value?: CheckedPropType): void {
 		validateChecked(this.component, value);
 		this.setFormAssociatedCheckboxValue(this.component.state._value as StencilUnknown);
-	}
-
-	public validateHideError(value?: HideErrorPropType): void {
-		validateHideError(this.component, value, {
-			hooks: {
-				afterPatch: () => {
-					if (this.component.state._hideError) {
-						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
-					}
-				},
-			},
-		});
 	}
 
 	public validateIcons(value?: Stringified<InputCheckboxIconsProp>): void {
@@ -88,7 +74,6 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateChecked(this.component._checked);
-		this.validateHideError(this.component._hideError);
 		this.validateIcons(this.component._icons);
 		this.validateIndeterminate(this.component._indeterminate);
 		this.validateValue(this.component._value);

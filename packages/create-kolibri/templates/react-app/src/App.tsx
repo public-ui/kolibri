@@ -28,7 +28,7 @@ function App() {
 					<KolButton
 						_hideLabel
 						_label="Danger"
-						_icon="codicon codicon-trash"
+						_icons="codicon codicon-trash"
 						_on=\{{
 							onClick: () => {
 								console.log('Clicked danger');

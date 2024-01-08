@@ -78,8 +78,10 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 </div>
 ```
 
-<kol-alert _heading="Reduce Motion" _level="4" _type="warning">Wenn möglich sollte stets auf Animationen verzichtet werden. Wenn Animationen genutzt werden, sollte immer darauf geachtet werden, eine Variante mit reduzierter Animationsgeschwindigkeit anzubieten. Mehr Informationen dazu findet sich hier:
-<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _target="_blank"></kol-link></kol-alert>
+<kol-alert _label_="Reduce Motion" _level="4" _type="warning">
+Wenn möglich sollte stets auf Animationen verzichtet werden. Wenn Animationen genutzt werden, sollte immer darauf geachtet werden, eine Variante mit reduzierter Animationsgeschwindigkeit anzubieten. Mehr Informationen dazu findet sich hier:
+<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _label="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" _target="_blank"></kol-link>
+</kol-alert>
 
 ### Beispiel
 

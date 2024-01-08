@@ -51,3 +51,52 @@ We work according to the Git flow: https://medium.com/android-news/gitflow-with-
 8. Install all packages with `pnpm i`
 9. Navigate to the desired package in our monorepo
 10. Start the project with “pnpm start”
+
+### Switching between branches
+
+When changing the current working branch, it is important to reinstall all dependencies, as these may have changed. It is very important that all packages are built when working on dependents. This is because the packages always use the built state of the referenced packages in the mono repo.
+To avoid unexpected problems, it is therefore always advisable to build all packages once. This can be done with these steps:
+
+- Reinstall all dependencies: `pnpm i`
+- Build all packages: `pnpm -r build`
+- You can then switch to the package to be processed and start it with `pnpm start`.
+
+If it is also necessary to edit dependent packages such as `@public-ui/components`, these must be rebuilt for each change. Such packages offer the `dev` script for this purpose. This automatically rebuilds the package after each change.
+
+### Back porting to older Major-Versions
+
+By default, development is carried out in the `development` branch for the following version. However, if it becomes necessary to provide an issue for an older major release, such as version 1.7.x, the code change must also be merged into the corresponding release branch. In this case, it would be the `release/1.7` branch. It is important that the branch that was created from the `develop` is not merged into the release branch, as otherwise the next patch version will receive all the changes from the current development status.
+The simplest procedure is therefore to create a new branch from the release branch (e.g. `release/1.7`) and transfer the individual commits of the feature branch from the `develop` to the new branch using cherry-picking. This branch can then be merged into the release branch as normal with a new pull request.
+
+### Snapshot Testing for Visual Changes
+
+The Continuous Integration (CI) pipeline incorporates automated visual regression testing using the React sample app across all available themes.
+
+When introducing visual modifications to components, themes, or the React sample app, initial test failures are expected. To address this, the
+`update-snapshots` action on GitHub should be executed, followed by a **careful review** of the changes.
+
+#### How to Update Snapshots
+
+1. **GitHub website:**
+
+   - Execute the `update-snapshots` action on GitHub.
+   - The action prompts for a branch selection.
+   - It checks out the specified branch, updates all snapshot files, and commits the changes to that branch.
+
+2. **Terminal Command:**
+
+   - For terminal convenience, the [GitHub CLI (gh)](https://cli.github.com/) needs to be installed.
+   - Run the following command within the project directory:
+
+     ```bash
+     # Replace $YOUR_BRANCH with the desired branch name
+     gh workflow run update-snapshots.yml -f target_branch=$YOUR_BRANCH
+     ```
+
+     Alternatively, to run the action on the current branch:
+
+     ```bash
+     gh workflow run update-snapshots.yml -f target_branch=`git rev-parse --abbrev-ref HEAD`
+     ```
+
+These steps ensure that visual snapshots are updated systematically, maintaining the integrity of the testing process.

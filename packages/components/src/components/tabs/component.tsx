@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
@@ -87,7 +87,7 @@ export class KolTabs implements API {
 
 	private renderButtonGroup() {
 		return (
-			<kol-button-group-wc role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
+			<kol-button-group-wc class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<kol-button-wc
 						_disabled={button._disabled}
@@ -137,7 +137,9 @@ export class KolTabs implements API {
 					}}
 				>
 					{this.renderButtonGroup()}
-					<div ref={this.catchTabPanelHost}>{/* <slot /> */}</div>
+					<div class="tabs-content" ref={this.catchTabPanelHost}>
+						{/* <slot /> */}
+					</div>
 				</div>
 			</Host>
 		);
@@ -170,7 +172,7 @@ export class KolTabs implements API {
 
 	@State() public state: States = {
 		_align: 'top',
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_selected: 0,
 		_tabs: [],
 	};
@@ -229,7 +231,9 @@ export class KolTabs implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_on')

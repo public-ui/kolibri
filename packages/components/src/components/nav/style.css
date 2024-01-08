@@ -5,7 +5,7 @@
 		place-items: center;
 	}
 
-	nav {
+	:not(.is-compact) nav {
 		width: 100%;
 	}
 
@@ -24,11 +24,7 @@
 		display: flex;
 	}
 
-	.button-link-text-switch {
+	.entry-item {
 		flex-grow: 1;
-	}
-
-	.entry kol-span-wc {
-		justify-items: start;
 	}
 }

@@ -1,12 +1,10 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { HasCounterPropType } from '../../types/props/has-counter';
-import { HideErrorPropType, validateHideError } from '../../types/props/hide-error';
 import { RowsPropType, validateRows } from '../../types/props/rows';
-import { a11yHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
-import { CSSResize, cssResizeOptions, Props, Watches } from './types';
+import { CSSResize, Props, Watches, cssResizeOptions } from './types';
 
 export class TextareaController extends InputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -26,18 +24,6 @@ export class TextareaController extends InputController implements Watches {
 		watchBoolean(this.component, '_hasCounter', value, {
 			hooks: {
 				afterPatch: this.afterSyncCharCounter,
-			},
-		});
-	}
-
-	public validateHideError(value?: HideErrorPropType): void {
-		validateHideError(this.component, value, {
-			hooks: {
-				afterPatch: () => {
-					if (this.component.state._hideError) {
-						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
-					}
-				},
 			},
 		});
 	}
@@ -89,7 +75,6 @@ export class TextareaController extends InputController implements Watches {
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateHasCounter(this.component._hasCounter);
-		this.validateHideError(this.component._hideError);
 		this.validateMaxLength(this.component._maxLength);
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateReadOnly(this.component._readOnly);

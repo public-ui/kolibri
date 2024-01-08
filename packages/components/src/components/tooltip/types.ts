@@ -1,4 +1,4 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { PropAlign } from '../../types/props/align';
 import { PropId } from '../../types/props/id';
@@ -9,8 +9,8 @@ type RequiredProps = PropLabel;
 type OptionalProps = PropAccessKey & PropAlign & PropId;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = PropLabel & PropAlign & PropId;
-type OptionalStates = PropAccessKey;
+type RequiredStates = PropLabel & PropAlign;
+type OptionalStates = PropAccessKey & PropId;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

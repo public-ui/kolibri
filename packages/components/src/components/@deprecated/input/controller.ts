@@ -1,7 +1,8 @@
-import { Generic } from '@a11y-ui/core';
+import type { Generic } from 'adopted-style-sheets';
 
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { AdjustHeightPropType, validateAdjustHeight } from '../../../types/props/adjust-height';
+import { HideErrorPropType, validateHideError } from '../../../types/props/hide-error';
 import { validateHideLabel } from '../../../types/props/hide-label';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../../types/props/label';
 import { a11yHint, a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
@@ -44,6 +45,18 @@ export class InputController extends ControlledInputController implements Watche
 		watchString(this.component, '_error', value);
 	}
 
+	public validateHideError(value?: HideErrorPropType): void {
+		validateHideError(this.component, value, {
+			hooks: {
+				afterPatch: () => {
+					if (this.component.state._hideError) {
+						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
+					}
+				},
+			},
+		});
+	}
+
 	public validateHideLabel(value?: boolean): void {
 		validateHideLabel(this.component, value, {
 			hooks: {
@@ -75,7 +88,9 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this.component, value);
+		validateLabelWithExpertSlot(this.component, value, {
+			required: true,
+		});
 	}
 
 	public validateOn(value?: InputTypeOnDefault): void {
@@ -106,6 +121,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateAdjustHeight(this.component._adjustHeight);
 		this.validateError(this.component._error);
 		this.validateDisabled(this.component._disabled);
+		this.validateHideError(this.component._hideError);
 		this.validateHideLabel(this.component._hideLabel);
 		this.validateHint(this.component._hint);
 		this.validateId(this.component._id);
@@ -133,7 +149,6 @@ export class InputController extends ControlledInputController implements Watche
 		const value = (event.target as HTMLInputElement).value;
 
 		// Event handling
-		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, value);
 
 		// Static form handling
@@ -178,13 +193,6 @@ export class InputController extends ControlledInputController implements Watche
 		// Callback
 		if (typeof this.component._on?.onFocus === 'function') {
 			this.component._on.onFocus(event);
-		}
-	}
-
-	public setValue(event: Event, value: string | number | boolean): void {
-		this.setFormAssociatedValue(value as string);
-		if (typeof this.component._on?.onChange === 'function') {
-			this.component._on.onChange(event, value);
 		}
 	}
 

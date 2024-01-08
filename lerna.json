@@ -6,6 +6,7 @@
 		"packages/adapters/angular/v14",
 		"packages/adapters/angular/v15",
 		"packages/adapters/angular/v16",
+		"packages/adapters/angular/v17",
 		"packages/adapters/hydrate",
 		"packages/adapters/preact",
 		"packages/adapters/react",
@@ -15,19 +16,19 @@
 		"packages/components",
 		"packages/create-kolibri",
 		"packages/designer",
+		"packages/samples/angular",
 		"packages/samples/react",
+		"packages/samples/ssr",
+		"packages/samples/vite",
 		"packages/schema",
 		"packages/themes",
 		"packages/themes/bmf",
-		"packages/themes/bzst",
 		"packages/themes/default",
 		"packages/themes/ecl",
 		"packages/themes/itzbund",
-		"packages/themes/mfm",
-		"packages/themes/zoll",
 		"packages/tools/kolibri-cli",
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "2.0.0-rc.8"
+	"version": "2.0.3"
 }
