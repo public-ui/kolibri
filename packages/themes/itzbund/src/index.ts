@@ -744,7 +744,6 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		textarea::placeholder {
 			color: var(--default-border);
 		}
-		textarea:read-only,
 		textarea:disabled {
 			cursor: not-allowed;
 			border-color: var(--border-default);
