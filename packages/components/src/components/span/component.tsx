@@ -27,9 +27,13 @@ export class KolSpanWc implements API {
 					'hide-label': !!this.state._hideLabel,
 				}}
 			>
-				{this.state._icons.top && <kol-icon class="icon top" style={this.state._icons.top.style} _label="" _icons={this.state._icons.top.icon} />}
+				{this.state._icons.top && (
+					<kol-icon class="icon top" style={this.state._icons.top.style} _label={this.state._icons.top.label ?? ''} _icons={this.state._icons.top.icon} />
+				)}
 				<span>
-					{this.state._icons.left && <kol-icon class="icon left" style={this.state._icons.left.style} _label="" _icons={this.state._icons.left.icon} />}
+					{this.state._icons.left && (
+						<kol-icon class="icon left" style={this.state._icons.left.style} _label={this.state._icons.left.label ?? ''} _icons={this.state._icons.left.icon} />
+					)}
 					{!this.state._hideLabel && hideExpertSlot ? (
 						this.state._allowMarkdown && typeof this.state._label === 'string' && this.state._label.length > 0 ? (
 							<span class="span-label md" innerHTML={md(this.state._label)} />
@@ -42,9 +46,23 @@ export class KolSpanWc implements API {
 					<span aria-hidden={hideExpertSlot ? 'true' : undefined} class="span-label" hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
-					{this.state._icons.right && <kol-icon class="icon right" style={this.state._icons.right.style} _label="" _icons={this.state._icons.right.icon} />}
+					{this.state._icons.right && (
+						<kol-icon
+							class="icon right"
+							style={this.state._icons.right.style}
+							_label={this.state._icons.right.label ?? ''}
+							_icons={this.state._icons.right.icon}
+						/>
+					)}
 				</span>
-				{this.state._icons.bottom && <kol-icon class="icon bottom" style={this.state._icons.bottom.style} _label="" _icons={this.state._icons.bottom.icon} />}
+				{this.state._icons.bottom && (
+					<kol-icon
+						class="icon bottom"
+						style={this.state._icons.bottom.style}
+						_label={this.state._icons.bottom.label ?? ''}
+						_icons={this.state._icons.bottom.icon}
+					/>
+				)}
 			</Host>
 		);
 	}
