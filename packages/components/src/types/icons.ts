@@ -2,6 +2,7 @@ export type AnyIconFontClass = string;
 
 export type KoliBriCustomIcon = {
 	icon: AnyIconFontClass;
+	label?: string;
 	style?: Record<string, string>;
 };
 
