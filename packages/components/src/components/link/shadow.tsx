@@ -53,7 +53,6 @@ export class KolLink implements LinkProps {
 					_stealth={this._stealth}
 					_tabIndex={this._tabIndex}
 					_target={this._target}
-					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 					_useCase={this._useCase}
 				>
@@ -194,11 +193,6 @@ export class KolLink implements LinkProps {
 	 * Defines where to open the link.
 	 */
 	@Prop() public _target?: LinkTargetPropType;
-
-	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.

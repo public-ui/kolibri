@@ -25,7 +25,7 @@ export default {
 	'nav-maximize': 'Maximize',
 	'nav-minimize': 'Minimize',
 	'logo-description': 'Logo {{orgShort}}. Federal eagle with flag staff and lettering {{orgLong}}',
-	'open-link-in-tab': 'The link will open in a new tab.',
+	'open-link-in-tab': 'Opens in new tab.',
 	'kolibri-logo': 'KoliBri logo',
 	'table-pagination-label': 'Pagination for table {{label}}',
 	'avatar-alt': 'Avatar of {{name}}',
