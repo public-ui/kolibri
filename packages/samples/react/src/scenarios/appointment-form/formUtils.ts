@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { ErrorListPropType } from '@public-ui/components';
 
 export function createErrorList(formikErrors: Record<string, string>): ErrorListPropType[] {
