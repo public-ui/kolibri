@@ -746,6 +746,9 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		}
 		textarea:disabled {
 			cursor: not-allowed;
+		}
+		textarea:disabled,
+		textarea:read-only {
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
 		}
