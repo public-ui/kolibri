@@ -20,7 +20,7 @@ export class KolVersion implements API {
 				_icons={{
 					left: { icon: 'codicon codicon-versions', label: translate('kol-version') },
 				}}
-				_label={`v${this.state._label}`}
+				_label={this.state._label}
 			/>
 		);
 	}
