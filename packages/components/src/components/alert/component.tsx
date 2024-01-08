@@ -79,7 +79,7 @@ export class KolAlertWc implements API {
 						{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
 							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
 						)}
-						{this._variant === 'msg' && (
+						{this.state._variant === 'msg' && (
 							<div class="content">
 								<slot />
 							</div>
