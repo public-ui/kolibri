@@ -69,8 +69,10 @@ export const validateIcons = (component: Generic.Element.Component, value?: Icon
 			component,
 			'_icons',
 			(value): boolean => {
+				const valueIsEmptyObject = typeof value === 'object' && value !== null && Object.keys(value).length === 0;
 				return (
 					value === null ||
+					valueIsEmptyObject ||
 					isString(value, 1) ||
 					(typeof value === 'object' &&
 						value !== null &&

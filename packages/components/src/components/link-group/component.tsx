@@ -131,7 +131,8 @@ export class KolLinkGroup implements API {
 				}
 			},
 			new Set(['https://www.w3schools.com/tags/tag_ol.asp']),
-			value
+			value,
+			{ defaultValue: 'disc' }
 		);
 	}
 
