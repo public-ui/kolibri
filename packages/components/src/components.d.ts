@@ -27,7 +27,6 @@ import { ButtonTypePropType } from "./types/props/button-type";
 import { ButtonVariantPropType } from "./types/props/button-variant";
 import { IdPropType } from "./types/props/id";
 import { NamePropType } from "./types/props/name";
-import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { EventCallbacks } from "./components/details/types";
 import { KoliBriFormCallbacks } from "./components/form/types";
@@ -52,6 +51,7 @@ import { ListStyleType } from "./components/link-group/types";
 import { LinkProps } from "./components/link/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
+import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { MaxPropType } from "./types/props/max";
 import { AlignPropType } from "./types/props/align";
@@ -85,7 +85,6 @@ export { ButtonTypePropType } from "./types/props/button-type";
 export { ButtonVariantPropType } from "./types/props/button-variant";
 export { IdPropType } from "./types/props/id";
 export { NamePropType } from "./types/props/name";
-export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { EventCallbacks } from "./components/details/types";
 export { KoliBriFormCallbacks } from "./components/form/types";
@@ -110,6 +109,7 @@ export { ListStyleType } from "./components/link-group/types";
 export { LinkProps } from "./components/link/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
+export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { MaxPropType } from "./types/props/max";
 export { AlignPropType } from "./types/props/align";
@@ -419,15 +419,6 @@ export namespace Components {
          */
         "_value"?: Stringified<StencilUnknown>;
         "getValue": () => Promise<Stringified<StencilUnknown> | undefined>;
-    }
-    /**
-     * Internal component that renders an action or text component like a button or a link.
-     */
-    interface KolButtonLinkTextSwitch {
-        /**
-          * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
-         */
-        "_link": ButtonOrLinkOrTextWithChildrenProps;
     }
     interface KolButtonWc {
         /**
@@ -2585,15 +2576,6 @@ declare global {
         prototype: HTMLKolButtonLinkElement;
         new (): HTMLKolButtonLinkElement;
     };
-    /**
-     * Internal component that renders an action or text component like a button or a link.
-     */
-    interface HTMLKolButtonLinkTextSwitchElement extends Components.KolButtonLinkTextSwitch, HTMLStencilElement {
-    }
-    var HTMLKolButtonLinkTextSwitchElement: {
-        prototype: HTMLKolButtonLinkTextSwitchElement;
-        new (): HTMLKolButtonLinkTextSwitchElement;
-    };
     interface HTMLKolButtonWcElement extends Components.KolButtonWc, HTMLStencilElement {
     }
     var HTMLKolButtonWcElement: {
@@ -2877,7 +2859,6 @@ declare global {
         "kol-button-group": HTMLKolButtonGroupElement;
         "kol-button-group-wc": HTMLKolButtonGroupWcElement;
         "kol-button-link": HTMLKolButtonLinkElement;
-        "kol-button-link-text-switch": HTMLKolButtonLinkTextSwitchElement;
         "kol-button-wc": HTMLKolButtonWcElement;
         "kol-card": HTMLKolCardElement;
         "kol-details": HTMLKolDetailsElement;
@@ -3221,15 +3202,6 @@ declare namespace LocalJSX {
           * Defines the value that the button emits on click.
          */
         "_value"?: Stringified<StencilUnknown>;
-    }
-    /**
-     * Internal component that renders an action or text component like a button or a link.
-     */
-    interface KolButtonLinkTextSwitch {
-        /**
-          * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
-         */
-        "_link": ButtonOrLinkOrTextWithChildrenProps;
     }
     interface KolButtonWc {
         /**
@@ -5312,7 +5284,6 @@ declare namespace LocalJSX {
         "kol-button-group": KolButtonGroup;
         "kol-button-group-wc": KolButtonGroupWc;
         "kol-button-link": KolButtonLink;
-        "kol-button-link-text-switch": KolButtonLinkTextSwitch;
         "kol-button-wc": KolButtonWc;
         "kol-card": KolCard;
         "kol-details": KolDetails;
@@ -5376,10 +5347,6 @@ declare module "@stencil/core" {
             "kol-button-group": LocalJSX.KolButtonGroup & JSXBase.HTMLAttributes<HTMLKolButtonGroupElement>;
             "kol-button-group-wc": LocalJSX.KolButtonGroupWc & JSXBase.HTMLAttributes<HTMLKolButtonGroupWcElement>;
             "kol-button-link": LocalJSX.KolButtonLink & JSXBase.HTMLAttributes<HTMLKolButtonLinkElement>;
-            /**
-             * Internal component that renders an action or text component like a button or a link.
-             */
-            "kol-button-link-text-switch": LocalJSX.KolButtonLinkTextSwitch & JSXBase.HTMLAttributes<HTMLKolButtonLinkTextSwitchElement>;
             "kol-button-wc": LocalJSX.KolButtonWc & JSXBase.HTMLAttributes<HTMLKolButtonWcElement>;
             "kol-card": LocalJSX.KolCard & JSXBase.HTMLAttributes<HTMLKolCardElement>;
             "kol-details": LocalJSX.KolDetails & JSXBase.HTMLAttributes<HTMLKolDetailsElement>;

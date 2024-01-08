@@ -21,6 +21,7 @@ type OptionalProps = {
 type RequiredStates = {
 	links: ButtonOrLinkOrTextWithChildrenProps[];
 	orientation: Orientation;
+	expandedChildren: ButtonOrLinkOrTextWithChildrenProps[][];
 } & PropCollapsible &
 	PropHasCompactButton &
 	PropLabel &
