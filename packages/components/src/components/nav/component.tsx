@@ -166,6 +166,7 @@ export class KolNav implements API {
 					}
 				}
 			}
+			return false;
 		};
 		this.state._links.forEach(handleBranch);
 	}
@@ -183,6 +184,7 @@ export class KolNav implements API {
 			<Host>
 				<div
 					class={{
+						nav: true,
 						[orientation]: true,
 						'is-compact': this.state._hideLabel,
 					}}
