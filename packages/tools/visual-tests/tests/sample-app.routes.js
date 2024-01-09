@@ -299,6 +299,11 @@ ROUTES.set('table/render-cell', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('table/column-alignment', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('table/sort-data', {
 	axe: {
 		skipFailures: false,

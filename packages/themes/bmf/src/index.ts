@@ -1560,7 +1560,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}`,
 	'KOL-TABLE': `:host * {
 		hyphens: var(--kolibri-hyphens);
-		font-family: var(--kolibri-font-family);
+		font-family: var(font-family);
 		line-height: var(--kolibri-line-height);
 		word-break: break-word;
 	}
@@ -1599,15 +1599,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 		grid-template-columns: 1fr auto;
 		align-items: center;
 	}
-	th div.center {
-		justify-content: center;
-	}
-	th div.right {
-		justify-content: end;
-	}
 	th,
 	td {
-		vertical-align: top;
 		border-bottom: 1px solid var(--color-granite);
 		height: 1.25rem;
 	}
@@ -1623,16 +1616,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		margin-top: -0.75rem;
 		margin-bottom: -0.75rem;
 	}
-	td.center > div {
-		display: flex;
-		justify-content: center;
-	}
-	td.right > div {
-		display: flex;
-		justify-content: end;
-	}
-	th[aria-sort="ascending"],
-	th[aria-sort="descending"] {
+	.table-sort-button .button {
 		font-weight: 700;
 	}
 	:host > div:last-child,
