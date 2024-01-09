@@ -16,7 +16,7 @@ export const NavAriaCurrent: FC = () => (
 		<KolNav
 			class="block w-sm"
 			_label="Main navigation"
-			_links={[
+			_links={JSON.stringify([
 				{
 					_label: 'Homepage',
 					_href: '#/',
@@ -26,7 +26,7 @@ export const NavAriaCurrent: FC = () => (
 					_href: '#/nav/aria-current',
 					_active: true,
 				},
-			]}
+			])}
 		/>
 	</>
 );

@@ -4,4 +4,4 @@ import { KolNav } from '@public-ui/react';
 import { FC } from 'react';
 import { LINKS } from './links';
 
-export const NavHorizontal: FC = () => <KolNav _label="Main navigation" _links={LINKS} _orientation="horizontal" />;
+export const NavHorizontal: FC = () => <KolNav _label="Main navigation" _links={JSON.stringify(LINKS)} _orientation="horizontal" />;
