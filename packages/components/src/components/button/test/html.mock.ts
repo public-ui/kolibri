@@ -30,7 +30,7 @@ export const getButtonWcHtml = (
 	const hasExpertSlot = showExpertSlot(state._label);
 	const type = typeof state._type === 'string' ? state._type : 'button';
 	const variant = typeof state._variant === 'string' ? state._variant : 'normal';
-	const classNames: string[] = [variant];
+	const classNames: string[] = ['button', variant];
 
 	if (state._hideLabel) {
 		classNames.push('icon-only', 'hide-label');
@@ -48,7 +48,8 @@ export const getButtonWcHtml = (
 				...props,
 				_label: state._label,
 			},
-			slots
+			slots,
+			{ additionalClassNames: ['button-inner'] }
 		)}
 	</button>
 	${getTooltipHtml(
