@@ -23,8 +23,8 @@ import inputPasswordCss from './components/input-password.scss';
 import inputRadioCss from './components/input-radio.scss';
 import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
-import linkCss from './components/link.scss';
 import linkButtonCss from './components/link-button.scss';
+import linkCss from './components/link.scss';
 import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
@@ -36,6 +36,7 @@ import tableCss from './components/table.scss';
 import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
+import treeItemCss from './components/tree-item.scss';
 
 export const DEFAULT = KoliBri.createTheme('default', {
 	GLOBAL: globalCss,
@@ -75,4 +76,6 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-TABS': tabsCss,
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
+	'KOL-TREE': `kol-tree { outline: 1px solid blue }`,
+	'KOL-TREE-ITEM': treeItemCss,
 });

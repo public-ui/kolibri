@@ -55,6 +55,8 @@ import { KolTextarea } from './textarea/component';
 import { KolToastContainer } from './toaster/component';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/component';
+import { KolTree } from './tree/shadow';
+import { KolTreeItem } from './tree-item/component';
 
 export const COMPONENTS = [
 	KolAbbr,
@@ -113,5 +115,7 @@ export const COMPONENTS = [
 	KolTextarea,
 	KolToastContainer,
 	KolTooltip,
+	KolTree,
+	KolTreeItem,
 	KolVersion,
 ];

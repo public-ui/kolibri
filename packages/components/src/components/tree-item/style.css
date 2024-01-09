@@ -1,12 +1,2 @@
-:host {
-	font: 14px Arial !important;
-}
-
-ul {
-	/*list-style: disc inside !important;*/
-	/*outline: 1px solid red;*/
-	border-left: 2px solid;
-	padding-left: 0.4rem !important;
-	margin-left: 2rem !important;
-	margin-top: 0.4rem !important;
+@layer kol-component {
 }

@@ -13,7 +13,7 @@ import { TREE_ITEM_TAG_NAME } from '../tree/constants';
 		default: './style.css',
 	},
 })
-export class KolTreeItemWc implements API {
+export class KolTreeItem implements API {
 	private observer?: MutationObserver;
 	private linkElement!: HTMLKolLinkWcElement;
 
@@ -26,7 +26,15 @@ export class KolTreeItemWc implements API {
 					<kol-link _label="" _href={this.state._href} ref={(element) => (this.linkElement = element!)}>
 						<span slot="expert">
 							{this.state._hasChildren &&
-								(this.state._open ? <span onClick={this.collapse.bind(this)}>-</span> : <span onClick={this.expand.bind(this)}>+</span>)}{' '}
+								(this.state._open ? (
+									<span class="toggle-button" onClick={this.collapse.bind(this)}>
+										-
+									</span>
+								) : (
+									<span class="toggle-button" onClick={this.expand.bind(this)}>
+										+
+									</span>
+								))}{' '}
 							{this.state._label}
 						</span>
 					</kol-link>
