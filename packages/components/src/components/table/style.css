@@ -43,6 +43,13 @@
 		order: 2;
 	}
 
+	div.pagination-top {
+		order: -1;
+	}
+	div.pagination-bottom {
+		order: 1;
+	}
+
 	div.pagination kol-pagination {
 		display: flex;
 		flex-wrap: wrap;

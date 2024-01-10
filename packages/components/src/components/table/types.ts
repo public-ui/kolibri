@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import { Stringified } from '../../types/common';
 import { PropLabel } from '../../types/props/label';
 import { KoliBriPaginationProps } from '../pagination/types';
+import { PropPaginationPosition } from '../../types/props/pagination-position';
 
 export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
 
@@ -70,7 +71,7 @@ type OptionalProps = {
 	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-};
+} & PropPaginationPosition;
 
 type RequiredStates = {
 	allowMultiSort: boolean;
@@ -79,7 +80,8 @@ type RequiredStates = {
 	headers: KoliBriTableHeaders;
 	pagination: KoliBriTablePaginationStates;
 	sortedData: KoliBriTableDataType[];
-} & PropLabel;
+} & PropLabel &
+	PropPaginationPosition;
 type OptionalStates = {
 	minWidth: string;
 	sortDirection: KoliBriSortDirection;

@@ -60,6 +60,7 @@ import { KoliBriQuoteVariant } from "./components/quote/types";
 import { RowsPropType } from "./types/props/rows";
 import { SpinVariantPropType } from "./types/props/variant/spin";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
+import { PaginationPositionPropType } from "./types/props/pagination-position";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
 import { Toast, ToastState } from "./components/toaster/types";
@@ -118,6 +119,7 @@ export { KoliBriQuoteVariant } from "./components/quote/types";
 export { RowsPropType } from "./types/props/rows";
 export { SpinVariantPropType } from "./types/props/variant/spin";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
+export { PaginationPositionPropType } from "./types/props/pagination-position";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
 export { Toast, ToastState } from "./components/toaster/types";
@@ -2344,6 +2346,10 @@ export namespace Components {
           * Defines whether to show the data distributed over multiple pages.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Controls the position of the pagination.
+         */
+        "_paginationPosition"?: PaginationPositionPropType;
     }
     interface KolTabs {
         /**
@@ -5116,6 +5122,10 @@ declare namespace LocalJSX {
           * Defines whether to show the data distributed over multiple pages.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Controls the position of the pagination.
+         */
+        "_paginationPosition"?: PaginationPositionPropType;
     }
     interface KolTabs {
         /**
