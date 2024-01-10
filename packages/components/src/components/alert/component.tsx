@@ -100,7 +100,7 @@ export class KolAlertWc implements API {
 						></kol-button-wc>
 					)}
 				</div>
-				{this._variant === 'card' && (
+				{this.state._variant === 'card' && (
 					<div class="content">
 						<slot />
 					</div>
