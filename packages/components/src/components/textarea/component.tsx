@@ -31,6 +31,11 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	return nextRows;
 };
 
+const resetTextareaHeight = (el: HTMLTextAreaElement, rows: number) => {
+	el.style.overflow = 'hidden';
+	el.rows = rows;
+};
+
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -116,6 +121,7 @@ export class KolTextarea implements API {
 							spellcheck="false"
 							{...this.controller.onFacade}
 							onKeyUp={this.onKeyUp}
+							onBlur={this.onBlur}
 							style={{
 								resize: this.state._resize,
 							}}
@@ -269,6 +275,8 @@ export class KolTextarea implements API {
 		_resize: 'vertical',
 	};
 
+	private _initialRows?: number;
+
 	public constructor() {
 		this.controller = new TextareaController(this, 'textarea', this.host);
 	}
@@ -391,6 +399,7 @@ export class KolTextarea implements API {
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
+		this._initialRows = this._rows && this._rows;
 		this.controller.componentWillLoad();
 
 		this.state._hasValue = !!this.state._value;
@@ -403,6 +412,12 @@ export class KolTextarea implements API {
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.ref);
 			}
+		}
+	};
+
+	private readonly onBlur = () => {
+		if (this.ref instanceof HTMLTextAreaElement) {
+			resetTextareaHeight(this.ref, this._initialRows ? this._initialRows : 2);
 		}
 	};
 }
