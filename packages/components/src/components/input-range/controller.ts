@@ -1,14 +1,13 @@
-import type { Generic } from 'adopted-style-sheets';
-import { InputTypeOnOff } from '../../types/input/types';
-import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
-import { watchNumber, watchValidator } from '../../utils/prop.validators';
+import type { InputRangeProps, InputRangeWatches, InputTypeOnOff, SuggestionsPropType } from '@public-ui/schema';
+import { validateSuggestions, watchNumber, watchValidator } from '@public-ui/schema';
+
 import { InputIconController } from '../@deprecated/input/controller-icon';
-import { Props, Watches } from './types';
 
-export class InputRangeController extends InputIconController implements Watches {
-	protected readonly component: Generic.Element.Component & Props;
+import type { Generic } from 'adopted-style-sheets';
+export class InputRangeController extends InputIconController implements InputRangeWatches {
+	protected readonly component: Generic.Element.Component & InputRangeProps;
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & InputRangeProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}

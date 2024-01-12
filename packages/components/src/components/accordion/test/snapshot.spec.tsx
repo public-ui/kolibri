@@ -1,13 +1,15 @@
 import { executeTests } from 'stencil-awesome-test';
 
 import { h } from '@stencil/core';
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { Props } from '../types';
 import { getAccordionHtml } from './html.mock';
 
-executeTests<Props>(
+import type { AccordionProps } from '@public-ui/schema';
+import type { SpecPage } from '@stencil/core/testing';
+
+executeTests<AccordionProps>(
 	'Accordion',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({

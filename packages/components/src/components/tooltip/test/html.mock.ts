@@ -1,10 +1,10 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { getSpanWcHtml } from '../../span/test/html.mock';
-import { Props, States } from '../types';
 
-export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
-	const state: States = mixMembers<Props, States>(
+import type { TooltipProps, TooltipStates } from '@public-ui/schema';
+export const getTooltipHtml = (props: TooltipProps, additionalAttrs = ''): string => {
+	const state = mixMembers<TooltipProps, TooltipStates>(
 		{
 			_align: 'top',
 			_label: '', // ⚠ required

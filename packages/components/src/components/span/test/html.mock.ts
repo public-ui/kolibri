@@ -1,11 +1,10 @@
+import type { KoliBriCustomIcon, KoliBriIconsProp, SpanProps, SpanStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 
-import { KoliBriCustomIcon, KoliBriIconsProp } from '../../../types/icons';
-import { mapIconProp2State } from '../../../types/props/icons';
+import { mapIconProp2State, showExpertSlot } from '@public-ui/schema';
+
 import { md } from '../../../utils/markdown';
-import { showExpertSlot } from '../../../utils/reuse';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { Props, States } from '../types';
 
 type Slots = {
 	''?: string;
@@ -16,13 +15,13 @@ export type SpanOptions = {
 	additionalClassNames?: string[];
 };
 export const getSpanWcHtml = (
-	props: Props,
+	props: SpanProps,
 	slots: Slots = {
 		expert: undefined,
 	},
 	options?: SpanOptions
 ): string => {
-	const state = mixMembers<Props, States>(
+	const state = mixMembers<SpanProps, SpanStates>(
 		{
 			_allowMarkdown: false,
 			_hideLabel: false,
@@ -97,7 +96,7 @@ export const getSpanWcHtml = (
 };
 
 export const getSpanHtml = (
-	props: Props,
+	props: SpanProps,
 	slots: Slots = {
 		expert: `<slot name="expert" slot="expert"></slot>`,
 	}

@@ -1,13 +1,11 @@
-import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { BreadcrumbAPI, BreadcrumbLinkProps, BreadcrumbStates, LabelPropType, LinkProps, Stringified } from '@public-ui/schema';
+import { a11yHintLabelingLandmarks, validateLabel } from '@public-ui/schema';
+import { Component, Fragment, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
-import { API, BreadcrumbLinkProps, States } from './types';
 
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-breadcrumb',
 	styleUrls: {
@@ -15,7 +13,7 @@ import { API, BreadcrumbLinkProps, States } from './types';
 	},
 	shadow: true,
 })
-export class KolBreadcrumb implements API {
+export class KolBreadcrumb implements BreadcrumbAPI {
 	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
 		return (
@@ -63,7 +61,7 @@ export class KolBreadcrumb implements API {
 	 */
 	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
 
-	@State() public state: States = {
+	@State() public state: BreadcrumbStates = {
 		_label: '', // ⚠ required
 		_links: [],
 	};
