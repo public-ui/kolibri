@@ -12,7 +12,7 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
@@ -368,16 +368,16 @@ export class KolInputCheckbox implements API {
 		const value = this._checked ? this.state._value : null;
 
 		// Event handling
-		stopPropagation(event);
+		// stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, value);
 
 		// Static form handling
-		this.controller.setFormAssociatedValue(value);
-		this.controller.setFormAssociatedCheckboxValue;
+		// this.controller.setFormAssociatedValue(value);
+		this.controller.setFormAssociatedCheckboxValue(value);
 
 		// Callback
-		if (typeof this.state._on?.onChange === 'function') {
-			this.state._on.onChange(event, value);
+		if (typeof this._on?.onChange === 'function') {
+			this._on.onChange(event, value);
 		}
 	};
 }
