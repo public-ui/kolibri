@@ -16,15 +16,16 @@ import type {
 	TooltipAlignPropType,
 } from '@public-ui/schema';
 import { propagateFocus, showExpertSlot } from '@public-ui/schema';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputCheckboxController } from './controller';
 
 import type { JSX } from '@stencil/core';
+
 /**
  * @slot expert - Die Beschriftung der Checkbox.
  */
@@ -374,16 +375,16 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 		const value = this._checked ? this.state._value : null;
 
 		// Event handling
-		stopPropagation(event);
+		// stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, value);
 
 		// Static form handling
-		this.controller.setFormAssociatedValue(value);
-		this.controller.setFormAssociatedCheckboxValue;
+		// this.controller.setFormAssociatedValue(value);
+		this.controller.setFormAssociatedCheckboxValue(value);
 
 		// Callback
-		if (typeof this.state._on?.onChange === 'function') {
-			this.state._on.onChange(event, value);
+		if (typeof this._on?.onChange === 'function') {
+			this._on.onChange(event, value);
 		}
 	};
 }
