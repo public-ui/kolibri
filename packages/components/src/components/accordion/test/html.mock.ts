@@ -2,10 +2,11 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { getButtonWcHtml } from '../../button/test/html.mock';
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
-import { Props } from '../types';
+
+import type { AccordionProps } from '@public-ui/schema';
 
 export const getAccordionHtml = (
-	props: Props,
+	props: AccordionProps,
 	slots: {
 		default?: string;
 		footer?: string;

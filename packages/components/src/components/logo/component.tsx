@@ -1,11 +1,11 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { devHint, setState } from '@public-ui/schema';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import { BUND_LOGO_TEXT_MAP, Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';
 import { translate } from '../../i18n';
-import { devHint } from '../../utils/a11y.tipps';
-import { setState } from '../../utils/prop.validators';
-import { API, States } from './types';
 
+import type { API, States } from './types';
 function enumToArray(enumeration: Record<string, string>, enumAsMap: Map<string, string> = new Map()): Map<string, string> {
 	Object.entries(enumeration).map(([key, value]) => {
 		enumAsMap.set(value, key);

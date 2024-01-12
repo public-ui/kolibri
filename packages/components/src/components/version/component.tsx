@@ -1,8 +1,10 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { API, States } from './types';
+import type { LabelPropType, VersionAPI, VersionStates } from '@public-ui/schema';
+import { validateLabel } from '@public-ui/schema';
+import { Component, Prop, State, Watch, h } from '@stencil/core';
+
 import { translate } from '../../i18n';
 
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-version',
 	styleUrls: {
@@ -10,7 +12,7 @@ import { translate } from '../../i18n';
 	},
 	shadow: true,
 })
-export class KolVersion implements API {
+export class KolVersion implements VersionAPI {
 	public render(): JSX.Element {
 		return (
 			<kol-badge
@@ -28,7 +30,7 @@ export class KolVersion implements API {
 	 */
 	@Prop() public _label!: LabelPropType;
 
-	@State() public state: States = {
+	@State() public state: VersionStates = {
 		_label: '0.0.0-alpha.0',
 	};
 

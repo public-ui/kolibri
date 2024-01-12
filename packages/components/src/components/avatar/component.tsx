@@ -1,16 +1,16 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { validateImageSource, validateLabel } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 import { formatLabelAsInitials } from './controller';
-import { API, States } from './types';
 
+import type { AvatarAPI, AvatarStates, ImageSourcePropType, LabelPropType } from '@public-ui/schema';
 @Component({
 	tag: 'kol-avatar-wc',
 	shadow: false,
 })
-export class KolAvatarWc implements API {
+export class KolAvatarWc implements AvatarAPI {
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -37,7 +37,7 @@ export class KolAvatarWc implements API {
 	 */
 	@Prop() public _label!: LabelPropType;
 
-	@State() public state: States = {
+	@State() public state: AvatarStates = {
 		_src: '',
 		_label: '', // ⚠ required
 	};
