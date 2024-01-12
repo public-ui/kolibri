@@ -3,6 +3,7 @@ import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 import { Farbspektrum } from '../../enums/color';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { API, States } from './types';
+import { translate } from '../../i18n';
 
 @Component({
 	tag: 'kol-version',
@@ -13,7 +14,15 @@ import { API, States } from './types';
 })
 export class KolVersion implements API {
 	public render(): JSX.Element {
-		return <kol-badge _color={Farbspektrum.Hellgrau} _icon="codicon codicon-versions" _label={`v${this.state._label}`} />;
+		return (
+			<kol-badge
+				_color={Farbspektrum.Hellgrau}
+				_icons={{
+					left: { icon: 'codicon codicon-versions', label: translate('kol-version') },
+				}}
+				_label={this.state._label}
+			/>
+		);
 	}
 
 	/**

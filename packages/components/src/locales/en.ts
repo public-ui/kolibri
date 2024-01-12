@@ -30,4 +30,5 @@ export default {
 	'table-pagination-label': 'Pagination for table {{label}}',
 	'avatar-alt': 'Avatar of {{name}}',
 	'toast-close-all': 'Close all',
+	version: 'Version number',
 };
