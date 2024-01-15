@@ -65,11 +65,7 @@ export class KolTreeWc implements API {
 	 * Returns array of all TreeItem elements in the order they appear
 	 */
 	private getTreeItemElements(): HTMLKolTreeItemElement[] {
-		const topLevelTreeItems: HTMLKolTreeItemElement[] = (this.host.querySelector('slot')?.assignedNodes() as Element[]).filter(
-			(node) => node.tagName === TREE_ITEM_TAG_NAME.toUpperCase()
-		) as HTMLKolTreeItemElement[];
-
-		return topLevelTreeItems.reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
+		return this.getTopLevelTreeItems().reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
 			const children = currentValue.querySelectorAll(TREE_ITEM_TAG_NAME);
 
 			return [...accumulator, currentValue, ...children];
