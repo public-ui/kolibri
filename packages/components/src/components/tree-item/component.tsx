@@ -10,14 +10,13 @@ import { HrefPropType, validateHref } from '../../types/props/href';
 	shadow: false,
 })
 export class KolTreeItemWc implements API {
-	private observer?: MutationObserver;
 	private linkElement!: HTMLKolLinkWcElement;
 
 	@Element() host!: HTMLElement;
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host onSlotchange={this.handleSlotchange.bind(this)}>
 				<li class="tree-item">
 					<kol-link _label="" _href={this.state._href} ref={(element) => (this.linkElement = element!)}>
 						<span slot="expert">
@@ -81,21 +80,14 @@ export class KolTreeItemWc implements API {
 		this.validateOpen(this._open);
 		this.validateHref(this._href);
 
-		this.observeChildListMutations();
 		this.checkForChildren();
 	}
 
-	public disconnectedCallback(): void {
-		this.observer?.disconnect();
+	private handleSlotchange() {
+		this.checkForChildren();
 	}
 
-	observeChildListMutations() {
-		this.observer = new MutationObserver(this.checkForChildren.bind(this));
-
-		this.observer.observe(this.host, { childList: true });
-	}
-
-	checkForChildren() {
+	private checkForChildren() {
 		this.state = {
 			...this.state,
 			_hasChildren: Boolean(this.host.querySelector('slot')?.assignedElements().length),
