@@ -56,7 +56,7 @@ import { KolToastContainer } from './toaster/component';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/component';
 import { KolTree } from './tree/shadow';
-import { KolTreeItem } from './tree-item/component';
+import { KolTreeItem } from './tree-item/shadow';
 
 export const COMPONENTS = [
 	KolAbbr,

@@ -2516,6 +2516,25 @@ export namespace Components {
         "collapse": () => Promise<void>;
         "expand": () => Promise<void>;
         "focusLink": () => Promise<void>;
+        "isOpen": () => Promise<boolean>;
+    }
+    interface KolTreeItemWc {
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+        "collapse": () => Promise<void>;
+        "expand": () => Promise<void>;
+        "focusLink": () => Promise<void>;
+        "isOpen": () => Promise<boolean | undefined>;
     }
     interface KolTreeWc {
     }
@@ -2875,6 +2894,12 @@ declare global {
         prototype: HTMLKolTreeItemElement;
         new (): HTMLKolTreeItemElement;
     };
+    interface HTMLKolTreeItemWcElement extends Components.KolTreeItemWc, HTMLStencilElement {
+    }
+    var HTMLKolTreeItemWcElement: {
+        prototype: HTMLKolTreeItemWcElement;
+        new (): HTMLKolTreeItemWcElement;
+    };
     interface HTMLKolTreeWcElement extends Components.KolTreeWc, HTMLStencilElement {
     }
     var HTMLKolTreeWcElement: {
@@ -2946,6 +2971,7 @@ declare global {
         "kol-tooltip-wc": HTMLKolTooltipWcElement;
         "kol-tree": HTMLKolTreeElement;
         "kol-tree-item": HTMLKolTreeItemElement;
+        "kol-tree-item-wc": HTMLKolTreeItemWcElement;
         "kol-tree-wc": HTMLKolTreeWcElement;
         "kol-version": HTMLKolVersionElement;
     }
@@ -5325,6 +5351,20 @@ declare namespace LocalJSX {
          */
         "_open"?: OpenPropType;
     }
+    interface KolTreeItemWc {
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+    }
     interface KolTreeWc {
     }
     interface KolVersion {
@@ -5392,6 +5432,7 @@ declare namespace LocalJSX {
         "kol-tooltip-wc": KolTooltipWc;
         "kol-tree": KolTree;
         "kol-tree-item": KolTreeItem;
+        "kol-tree-item-wc": KolTreeItemWc;
         "kol-tree-wc": KolTreeWc;
         "kol-version": KolVersion;
     }
@@ -5458,6 +5499,7 @@ declare module "@stencil/core" {
             "kol-tooltip-wc": LocalJSX.KolTooltipWc & JSXBase.HTMLAttributes<HTMLKolTooltipWcElement>;
             "kol-tree": LocalJSX.KolTree & JSXBase.HTMLAttributes<HTMLKolTreeElement>;
             "kol-tree-item": LocalJSX.KolTreeItem & JSXBase.HTMLAttributes<HTMLKolTreeItemElement>;
+            "kol-tree-item-wc": LocalJSX.KolTreeItemWc & JSXBase.HTMLAttributes<HTMLKolTreeItemWcElement>;
             "kol-tree-wc": LocalJSX.KolTreeWc & JSXBase.HTMLAttributes<HTMLKolTreeWcElement>;
             "kol-version": LocalJSX.KolVersion & JSXBase.HTMLAttributes<HTMLKolVersionElement>;
         }

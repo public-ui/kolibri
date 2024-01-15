@@ -16,7 +16,7 @@ export class KolTreeWc implements API {
 	public render(): JSX.Element {
 		return (
 			<Host onSlotchange={this.handleSlotchange.bind(this)}>
-				<nav aria-label="YYY">
+				<nav class="tree" aria-label="YYY">
 					<ul class="treeview-navigation" role="tree" aria-label="YYY">
 						<slot />
 					</ul>
@@ -76,28 +76,50 @@ export class KolTreeWc implements API {
 		}, []);
 	}
 
-	private getVisibleTreeItemElements(): HTMLKolTreeItemElement[] | undefined {
-		return this.treeItemElements?.filter((element) => !element.hasAttribute('hidden') && !element.closest('[hidden]'));
+	private async getOpenTreeItemElements(): Promise<HTMLKolTreeItemElement[] | undefined> {
+		if (!this.treeItemElements) {
+			return [];
+		}
+
+		const elementsWithInclude = await Promise.all(
+			this.treeItemElements.map(async (element) => {
+				let include;
+				if (element.parentElement?.tagName !== TREE_ITEM_TAG_NAME.toUpperCase()) {
+					// parent is tree itself, top level is always open
+					include = true;
+				} else {
+					const parent = element.parentElement as HTMLKolTreeItemElement;
+					include = await parent.isOpen();
+				}
+
+				return {
+					value: element,
+					include,
+				};
+			})
+		);
+
+		return elementsWithInclude.filter((element) => element.include).map((element) => element.value);
 	}
 
 	@Listen('keydown')
 	public async handleKeyDown(event: KeyboardEvent) {
-		const visibleItems = this.getVisibleTreeItemElements();
+		const openItems = await this.getOpenTreeItemElements();
 		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(TREE_ITEM_TAG_NAME);
 
-		if (!visibleItems || !currentTreeItem) {
+		if (!openItems || !currentTreeItem) {
 			return;
 		}
 
-		const currentIndex = visibleItems?.findIndex((elem) => elem === currentTreeItem);
+		const currentIndex = openItems?.findIndex((elem) => elem === currentTreeItem);
 
 		switch (event.key) {
 			case 'ArrowDown': {
-				await visibleItems[currentIndex + 1]?.focusLink();
+				await openItems[currentIndex + 1]?.focusLink();
 				break;
 			}
 			case 'ArrowUp': {
-				await visibleItems[currentIndex - 1]?.focusLink();
+				await openItems[currentIndex - 1]?.focusLink();
 				break;
 			}
 			case 'ArrowRight': {

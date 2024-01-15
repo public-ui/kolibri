@@ -4,16 +4,12 @@ import { API, States } from './types';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { OpenPropType, validateOpen } from '../../types/props/open';
 import { HrefPropType, validateHref } from '../../types/props/href';
-import { TREE_ITEM_TAG_NAME } from '../tree/constants';
 
 @Component({
-	tag: `kol-tree-item`, // keep in sync with const TREE_ITEM_TAG_NAME
+	tag: `kol-tree-item-wc`, // keep in sync with const TREE_ITEM_TAG_NAME
 	shadow: false,
-	styleUrls: {
-		default: './style.css',
-	},
 })
-export class KolTreeItem implements API {
+export class KolTreeItemWc implements API {
 	private observer?: MutationObserver;
 	private linkElement!: HTMLKolLinkWcElement;
 
@@ -22,7 +18,7 @@ export class KolTreeItem implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<li>
+				<li class="tree-item">
 					<kol-link _label="" _href={this.state._href} ref={(element) => (this.linkElement = element!)}>
 						<span slot="expert">
 							{this.state._hasChildren &&
@@ -102,7 +98,7 @@ export class KolTreeItem implements API {
 	checkForChildren() {
 		this.state = {
 			...this.state,
-			_hasChildren: this.host.querySelector(TREE_ITEM_TAG_NAME) !== null,
+			_hasChildren: Boolean(this.host.querySelector('slot')?.assignedElements().length),
 		};
 	}
 
@@ -126,5 +122,9 @@ export class KolTreeItem implements API {
 				_open: false,
 			};
 		}
+	}
+
+	@Method() async isOpen() {
+		return this.state._open;
 	}
 }
