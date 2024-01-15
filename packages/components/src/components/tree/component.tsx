@@ -25,7 +25,7 @@ export class KolTreeWc implements API {
 		);
 	}
 
-	private isTreeItem(element?: HTMLElement | null): element is HTMLKolTreeItemElement {
+	private static isTreeItem(this: void, element?: HTMLElement | null): element is HTMLKolTreeItemElement {
 		return element?.tagName === TREE_ITEM_TAG_NAME.toUpperCase();
 	}
 
@@ -57,7 +57,7 @@ export class KolTreeWc implements API {
 	}
 
 	private getTopLevelTreeItems(): HTMLKolTreeItemElement[] {
-		return (this.host.querySelector('slot')?.assignedNodes() as HTMLElement[]).filter((element) => this.isTreeItem(element)) as HTMLKolTreeItemElement[];
+		return (this.host.querySelector('slot')?.assignedNodes() as HTMLElement[]).filter(KolTreeWc.isTreeItem);
 	}
 
 	private updateTreeItemElements(): void {
@@ -77,24 +77,23 @@ export class KolTreeWc implements API {
 
 	private async getOpenTreeItemElements(): Promise<HTMLKolTreeItemElement[] | undefined> {
 		if (!this.treeItemElements) {
-			return [];
+			return;
 		}
 
-		const elementsWithInclude = await Promise.all(
-			this.treeItemElements.map(async (element) => {
-				let include;
-				if (!this.isTreeItem(element.parentElement)) {
-					// parent is tree itself, top level is always open
-					include = true;
-				} else {
-					include = await element.parentElement.isOpen();
-				}
+		const areElementAndAllParentsOpen = async (element: HTMLKolTreeItemElement): Promise<boolean> => {
+			if (!KolTreeWc.isTreeItem(element.parentElement)) {
+				// parent is tree itself, top level is always open
+				return true;
+			} else {
+				return (await element.parentElement.isOpen()) && (await areElementAndAllParentsOpen(element.parentElement));
+			}
+		};
 
-				return {
-					value: element,
-					include,
-				};
-			})
+		const elementsWithInclude = await Promise.all(
+			this.treeItemElements.map(async (element) => ({
+				value: element,
+				include: await areElementAndAllParentsOpen(element),
+			}))
 		);
 
 		return elementsWithInclude.filter((element) => element.include).map((element) => element.value);
