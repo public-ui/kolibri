@@ -25,6 +25,10 @@ export class KolTreeWc implements API {
 		);
 	}
 
+	private isTreeItem(element?: HTMLElement | null): element is HTMLKolTreeItemElement {
+		return element?.tagName === TREE_ITEM_TAG_NAME.toUpperCase();
+	}
+
 	@State() public state: States = {};
 
 	public componentWillLoad(): void {
@@ -53,9 +57,7 @@ export class KolTreeWc implements API {
 	}
 
 	private getTopLevelTreeItems(): HTMLKolTreeItemElement[] {
-		return (this.host.querySelector('slot')?.assignedNodes() as Element[]).filter(
-			(node) => node.tagName === TREE_ITEM_TAG_NAME.toUpperCase()
-		) as HTMLKolTreeItemElement[];
+		return (this.host.querySelector('slot')?.assignedNodes() as HTMLElement[]).filter((element) => this.isTreeItem(element)) as HTMLKolTreeItemElement[];
 	}
 
 	private updateTreeItemElements(): void {
@@ -81,12 +83,11 @@ export class KolTreeWc implements API {
 		const elementsWithInclude = await Promise.all(
 			this.treeItemElements.map(async (element) => {
 				let include;
-				if (element.parentElement?.tagName !== TREE_ITEM_TAG_NAME.toUpperCase()) {
+				if (!this.isTreeItem(element.parentElement)) {
 					// parent is tree itself, top level is always open
 					include = true;
 				} else {
-					const parent = element.parentElement as HTMLKolTreeItemElement;
-					include = await parent.isOpen();
+					include = await element.parentElement.isOpen();
 				}
 
 				return {
