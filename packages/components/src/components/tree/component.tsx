@@ -43,6 +43,7 @@ export class KolTreeWc implements API {
 
 	private handleSlotchange() {
 		this.observeTopLevelItems();
+		this.updateTreeItemElements();
 	}
 
 	private observeTopLevelItems() {
