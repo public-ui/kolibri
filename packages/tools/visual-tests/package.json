@@ -27,7 +27,7 @@
 	"dependencies": {
 		"@playwright/test": "1.40.1",
 		"@public-ui/sample-react": "2.0.3",
-		"axe-playwright": "1.2.3",
+		"axe-playwright": "2.0.1",
 		"portfinder": "1.0.32",
 		"serve": "14.2.1"
 	},
