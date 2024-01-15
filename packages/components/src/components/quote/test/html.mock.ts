@@ -1,15 +1,16 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { showExpertSlot } from '../../../utils/reuse';
-import { getLinkHtml } from '../../link/test/html.mock';
-import { Props, States } from '../types';
+import { showExpertSlot } from '@public-ui/schema';
 
+import { getLinkHtml } from '../../link/test/html.mock';
+
+import type { QuoteProps, QuoteStates } from '@public-ui/schema';
 type Slot = {
 	expert?: string;
 };
 
-export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
-	const state = mixMembers<Props, States>(
+export const getQuoteHtml = (props: QuoteProps, slots: Slot = {}): string => {
+	const state = mixMembers<QuoteProps, QuoteStates>(
 		{
 			_href: '', // ⚠ required
 			_quote: '', // ⚠ required

@@ -1,5 +1,6 @@
+import { processEnv } from '@public-ui/schema';
+
 import { ModalService } from '../components/modal/service';
-import { processEnv } from './reuse';
 
 let WINDOW: Window | null = null;
 let DOCUMENT: Document | null = null;
