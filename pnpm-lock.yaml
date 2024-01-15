@@ -70,7 +70,7 @@ importers:
         version: 11.2.14(@angular/compiler@11.2.14)(typescript@4.1.2)
       '@angular/core':
         specifier: 11.2.14
-        version: 11.2.14(rxjs@6.5.5)(zone.js@0.11.8)
+        version: 11.2.14(rxjs@6.5.5)(zone.js@0.14.3)
       '@public-ui/components':
         specifier: 2.0.3
         version: link:../../../components
@@ -102,8 +102,8 @@ importers:
         specifier: '4.1'
         version: 4.1.2
       zone.js:
-        specifier: 0.11.8
-        version: 0.11.8
+        specifier: 0.14.3
+        version: 0.14.3
 
   packages/adapters/angular/v12:
     devDependencies:
@@ -115,7 +115,7 @@ importers:
         version: 12.2.17(@angular/compiler@12.2.17)(typescript@4.3.2)
       '@angular/core':
         specifier: 12.2.17
-        version: 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
+        version: 12.2.17(rxjs@7.6.0)(zone.js@0.14.3)
       '@public-ui/components':
         specifier: 2.0.3
         version: link:../../../components
@@ -147,8 +147,8 @@ importers:
         specifier: '4.3'
         version: 4.3.2
       zone.js:
-        specifier: 0.11.8
-        version: 0.11.8
+        specifier: 0.14.3
+        version: 0.14.3
 
   packages/adapters/angular/v13:
     devDependencies:
@@ -160,7 +160,7 @@ importers:
         version: 13.4.0(@angular/compiler@13.4.0)(typescript@4.6.2)
       '@angular/core':
         specifier: 13.4.0
-        version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
+        version: 13.4.0(rxjs@7.6.0)(zone.js@0.14.3)
       '@public-ui/components':
         specifier: 2.0.3
         version: link:../../../components
@@ -192,8 +192,8 @@ importers:
         specifier: '4.6'
         version: 4.6.2
       zone.js:
-        specifier: 0.11.8
-        version: 0.11.8
+        specifier: 0.14.3
+        version: 0.14.3
 
   packages/adapters/angular/v14:
     devDependencies:
@@ -205,7 +205,7 @@ importers:
         version: 14.3.0(@angular/compiler@14.3.0)(typescript@4.8.4)
       '@angular/core':
         specifier: 14.3.0
-        version: 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
+        version: 14.3.0(rxjs@7.6.0)(zone.js@0.14.3)
       '@public-ui/components':
         specifier: 2.0.3
         version: link:../../../components
@@ -237,8 +237,8 @@ importers:
         specifier: 4.8.4
         version: 4.8.4
       zone.js:
-        specifier: 0.12.0
-        version: 0.12.0
+        specifier: 0.14.3
+        version: 0.14.3
 
   packages/adapters/angular/v15:
     devDependencies:
@@ -250,7 +250,7 @@ importers:
         version: 15.2.10(@angular/compiler@15.2.10)(typescript@4.9.5)
       '@angular/core':
         specifier: 15.2.10
-        version: 15.2.10(rxjs@7.8.1)(zone.js@0.12.0)
+        version: 15.2.10(rxjs@7.8.1)(zone.js@0.14.3)
       '@public-ui/components':
         specifier: 2.0.3
         version: link:../../../components
@@ -282,8 +282,8 @@ importers:
         specifier: 4.9.5
         version: 4.9.5
       zone.js:
-        specifier: 0.12.0
-        version: 0.12.0
+        specifier: 0.14.3
+        version: 0.14.3
 
   packages/adapters/angular/v16:
     devDependencies:
@@ -295,7 +295,7 @@ importers:
         version: 16.2.12(@angular/compiler@16.2.12)(typescript@5.1.6)
       '@angular/core':
         specifier: 16.2.12
-        version: 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
+        version: 16.2.12(rxjs@7.8.1)(zone.js@0.14.3)
       '@public-ui/components':
         specifier: 2.0.3
         version: link:../../../components
@@ -327,8 +327,8 @@ importers:
         specifier: 5.1.6
         version: 5.1.6
       zone.js:
-        specifier: 0.13.3
-        version: 0.13.3
+        specifier: 0.14.3
+        version: 0.14.3
 
   packages/adapters/angular/v17:
     devDependencies:
@@ -1013,7 +1013,7 @@ importers:
         version: 3.0.2
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@types/node@20.11.0)(typescript@4.6.2)
+        version: 10.9.2(@types/node@20.11.1)(typescript@4.6.2)
 
   packages/samples/vite:
     dependencies:
@@ -1376,7 +1376,7 @@ importers:
         version: 0.3.0(eslint@8.56.0)
       knip:
         specifier: 3.13.2
-        version: 3.13.2(@types/node@20.11.0)(typescript@5.3.3)
+        version: 3.13.2(@types/node@20.11.1)(typescript@5.3.3)
       prettier:
         specifier: 3.1.1
         version: 3.1.1
@@ -1607,7 +1607,7 @@ packages:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
+      '@angular/core': 14.3.0(rxjs@7.6.0)(zone.js@0.14.3)
       tslib: 2.6.2
     dev: true
 
@@ -1620,7 +1620,7 @@ packages:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 15.2.10(rxjs@7.8.1)(zone.js@0.12.0)
+      '@angular/core': 15.2.10(rxjs@7.8.1)(zone.js@0.14.3)
       tslib: 2.6.2
     dev: true
 
@@ -1633,7 +1633,7 @@ packages:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
+      '@angular/core': 16.2.12(rxjs@7.8.1)(zone.js@0.14.3)
       tslib: 2.6.2
     dev: true
 
@@ -1649,7 +1649,7 @@ packages:
       '@angular/core': 17.0.9(rxjs@7.8.1)(zone.js@0.14.3)
       tslib: 2.6.2
 
-  /@angular/core@11.2.14(rxjs@6.5.5)(zone.js@0.11.8):
+  /@angular/core@11.2.14(rxjs@6.5.5)(zone.js@0.14.3):
     resolution: {integrity: sha512-vpR4XqBGitk1Faph37CSpemwIYTmJ3pdIVNoHKP6jLonpWu+0azkchf0f7oD8/2ivj2F81opcIw0tcsy/D/5Vg==}
     peerDependencies:
       rxjs: ^6.5.3
@@ -1657,10 +1657,10 @@ packages:
     dependencies:
       rxjs: 6.5.5
       tslib: 2.6.2
-      zone.js: 0.11.8
+      zone.js: 0.14.3
     dev: true
 
-  /@angular/core@12.2.17(rxjs@7.6.0)(zone.js@0.11.8):
+  /@angular/core@12.2.17(rxjs@7.6.0)(zone.js@0.14.3):
     resolution: {integrity: sha512-XUvTgU0D8XqNH5Y7UlTMk/XjUQaEGC0kZxhw/QSSQr65WrXtXmcD4d8Cg84TJ52uGXmf7IAruKvtbvu1Mbmvug==}
     engines: {node: ^12.14.1 || >=14.0.0}
     peerDependencies:
@@ -1669,10 +1669,10 @@ packages:
     dependencies:
       rxjs: 7.6.0
       tslib: 2.6.2
-      zone.js: 0.11.8
+      zone.js: 0.14.3
     dev: true
 
-  /@angular/core@13.4.0(rxjs@7.6.0)(zone.js@0.11.8):
+  /@angular/core@13.4.0(rxjs@7.6.0)(zone.js@0.14.3):
     resolution: {integrity: sha512-RE9KL7pRj+3lkJjdSR2uKmqiG0gqjnoVCMbSLG93pWrmzNIhElmlkiDaK39aMHGl836dc68Usv9CEisyVnRqHQ==}
     engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0}
     peerDependencies:
@@ -1681,10 +1681,10 @@ packages:
     dependencies:
       rxjs: 7.6.0
       tslib: 2.6.2
-      zone.js: 0.11.8
+      zone.js: 0.14.3
     dev: true
 
-  /@angular/core@14.3.0(rxjs@7.6.0)(zone.js@0.12.0):
+  /@angular/core@14.3.0(rxjs@7.6.0)(zone.js@0.14.3):
     resolution: {integrity: sha512-wYiwItc0Uyn4FWZ/OAx/Ubp2/WrD3EgUJ476y1XI7yATGPF8n9Ld5iCXT08HOvc4eBcYlDfh90kTXR6/MfhzdQ==}
     engines: {node: ^14.15.0 || >=16.10.0}
     peerDependencies:
@@ -1693,10 +1693,10 @@ packages:
     dependencies:
       rxjs: 7.6.0
       tslib: 2.6.2
-      zone.js: 0.12.0
+      zone.js: 0.14.3
     dev: true
 
-  /@angular/core@15.2.10(rxjs@7.8.1)(zone.js@0.12.0):
+  /@angular/core@15.2.10(rxjs@7.8.1)(zone.js@0.14.3):
     resolution: {integrity: sha512-meGGidnitQJGDxYd9/LrqYiVlId+vGaLoiLgJdKBz+o2ZO6OmXQGuNw2VBqf17/Cc0/UjzrOY7+kILNFKkk/WQ==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
@@ -1705,10 +1705,10 @@ packages:
     dependencies:
       rxjs: 7.8.1
       tslib: 2.6.2
-      zone.js: 0.12.0
+      zone.js: 0.14.3
     dev: true
 
-  /@angular/core@16.2.12(rxjs@7.8.1)(zone.js@0.13.3):
+  /@angular/core@16.2.12(rxjs@7.8.1)(zone.js@0.14.3):
     resolution: {integrity: sha512-GLLlDeke/NjroaLYOks0uyzFVo6HyLl7VOm0K1QpLXnYvW63W9Ql/T3yguRZa7tRkOAeFZ3jw+1wnBD4O8MoUA==}
     engines: {node: ^16.14.0 || >=18.10.0}
     peerDependencies:
@@ -1717,7 +1717,7 @@ packages:
     dependencies:
       rxjs: 7.8.1
       tslib: 2.6.2
-      zone.js: 0.13.3
+      zone.js: 0.14.3
     dev: true
 
   /@angular/core@17.0.9(rxjs@7.8.1)(zone.js@0.14.3):
@@ -7720,6 +7720,12 @@ packages:
     resolution: {integrity: sha512-o9bjXmDNcF7GbM4CNQpmi+TutCgap/K3w1JyKgxAjqx41zp9qlIAVFi0IhCNsJcXolEqLWhbFbEeL0PvYm4pcQ==}
     dependencies:
       undici-types: 5.26.5
+
+  /@types/node@20.11.1:
+    resolution: {integrity: sha512-DsXojJUES2M+FE8CpptJTKpg+r54moV9ZEncPstni1WHFmTcCzeFLnMFfyhCVS8XNOy/OQG+8lVxRLRrVHmV5A==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
 
   /@types/node@20.6.0:
     resolution: {integrity: sha512-najjVq5KN2vsH2U/xyh2opaSEz6cZMR2SetLIlxlj08nOcmPOemJmUK2o4kUzfLqfrWE0PIrNeE16XhYDd3nqg==}
@@ -15795,6 +15801,41 @@ packages:
       - domexception
     dev: true
 
+  /knip@3.13.2(@types/node@20.11.1)(typescript@5.3.3):
+    resolution: {integrity: sha512-izf5dvW+7fG0OfeZKyJTdhmrgQE1ltoxhPnNxYUKnPEBUMDEb61N2LD6SESKEpt4b6Mmbj4h9Tr4/14zcb7PSA==}
+    engines: {node: '>=18.6.0'}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>=18'
+      typescript: '>=5.0.4'
+    dependencies:
+      '@ericcornelissen/bash-parser': 0.5.2
+      '@npmcli/map-workspaces': 3.0.4
+      '@npmcli/package-json': 5.0.0
+      '@pkgjs/parseargs': 0.11.0
+      '@pnpm/logger': 5.0.0
+      '@pnpm/workspace.pkgs-graph': 2.0.13(@pnpm/logger@5.0.0)
+      '@snyk/github-codeowners': 1.1.0
+      '@types/node': 20.11.1
+      easy-table: 1.2.0
+      fast-glob: 3.3.2
+      globby: 14.0.0
+      jiti: 1.21.0
+      js-yaml: 4.1.0
+      micromatch: 4.0.5
+      minimist: 1.2.8
+      picocolors: 1.0.0
+      pretty-ms: 8.0.0
+      strip-json-comments: 5.0.1
+      summary: 2.1.0
+      typescript: 5.3.3
+      zod: 3.22.4
+      zod-validation-error: 2.1.0(zod@3.22.4)
+    transitivePeerDependencies:
+      - bluebird
+      - domexception
+    dev: true
+
   /kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
     dev: true
@@ -22036,37 +22077,6 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-node@10.9.2(@types/node@20.11.0)(typescript@4.6.2):
-    resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.9
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.4
-      '@types/node': 20.11.0
-      acorn: 8.11.2
-      acorn-walk: 8.2.0
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 4.6.2
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-    dev: true
-
   /ts-node@10.9.2(@types/node@20.11.0)(typescript@5.3.3):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
@@ -22094,6 +22104,37 @@ packages:
       diff: 4.0.2
       make-error: 1.3.6
       typescript: 5.3.3
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
+    dev: true
+
+  /ts-node@10.9.2(@types/node@20.11.1)(typescript@4.6.2):
+    resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@tsconfig/node10': 1.0.9
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.4
+      '@types/node': 20.11.1
+      acorn: 8.11.2
+      acorn-walk: 8.2.0
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 4.6.2
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -23881,24 +23922,6 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
-    dev: true
-
-  /zone.js@0.11.8:
-    resolution: {integrity: sha512-82bctBg2hKcEJ21humWIkXRlLBBmrc3nN7DFh5LGGhcyycO2S7FN8NmdvlcKaGFDNVL4/9kFLmwmInTavdJERA==}
-    dependencies:
-      tslib: 2.6.2
-    dev: true
-
-  /zone.js@0.12.0:
-    resolution: {integrity: sha512-XtC+I5dXU14HrzidAKBNMqneIVUykLEAA1x+v4KVrd6AUPWlwYORF8KgsVqvgdHiKZ4BkxxjvYi/ksEixTPR0Q==}
-    dependencies:
-      tslib: 2.6.2
-    dev: true
-
-  /zone.js@0.13.3:
-    resolution: {integrity: sha512-MKPbmZie6fASC/ps4dkmIhaT5eonHkEt6eAy80K42tAm0G2W+AahLJjbfi6X9NPdciOE9GRFTTM8u2IiF6O3ww==}
-    dependencies:
-      tslib: 2.6.2
     dev: true
 
   /zone.js@0.14.3:
