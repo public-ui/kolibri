@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { TreeItemAPI, TreeItemStates } from '@public-ui/schema';
-import { HrefPropType, LabelPropType, OpenPropType, validateHref, validateLabel, validateOpen } from '@public-ui/schema';
+import type { HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '@public-ui/schema';
+import { validateHref, validateLabel, validateOpen } from '@public-ui/schema';
 
 @Component({
 	tag: `kol-tree-item-wc`, // keep in sync with const TREE_ITEM_TAG_NAME

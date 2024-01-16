@@ -1,7 +1,6 @@
 import { Component, h, JSX, Method, Prop } from '@stencil/core';
 
-import type { TreeItemProps } from '@public-ui/schema';
-import { HrefPropType, LabelPropType, OpenPropType } from '@public-ui/schema';
+import type { HrefPropType, LabelPropType, OpenPropType, TreeItemProps } from '@public-ui/schema';
 
 @Component({
 	tag: 'kol-tree-item',
