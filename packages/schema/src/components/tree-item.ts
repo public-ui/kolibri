@@ -1,7 +1,7 @@
-import { Generic } from 'adopted-style-sheets';
-import { PropLabel } from '../props/label';
-import { PropOpen } from '../props/open';
-import { PropHref } from '../props/href';
+import type { Generic } from 'adopted-style-sheets';
+import type { PropHref } from '../props/href';
+import type { PropLabel } from '../props/label';
+import type { PropOpen } from '../props/open';
 
 type RequiredProps = PropLabel & PropHref;
 type OptionalProps = PropOpen;

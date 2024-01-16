@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import type { HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '@public-ui/schema';
 import { validateHref, validateLabel, validateOpen } from '@public-ui/schema';
@@ -20,11 +20,13 @@ export class KolTreeItemWc implements TreeItemAPI {
 						<span slot="expert">
 							{this.state._hasChildren &&
 								(this.state._open ? (
-									<span class="toggle-button" onClick={this.collapse.bind(this)}>
+									// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
+									<span class="toggle-button" onClick={() => void this.collapse()}>
 										-
 									</span>
 								) : (
-									<span class="toggle-button" onClick={this.expand.bind(this)}>
+									// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
+									<span class="toggle-button" onClick={() => void this.expand()}>
 										+
 									</span>
 								))}{' '}
@@ -92,10 +94,12 @@ export class KolTreeItemWc implements TreeItemAPI {
 		};
 	}
 
+	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method() async focusLink() {
 		this.linkElement.focus();
 	}
 
+	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method() async expand() {
 		if (this.state._hasChildren) {
 			this.state = {
@@ -105,6 +109,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 		}
 	}
 
+	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method() async collapse() {
 		if (this.state._hasChildren) {
 			this.state = {
@@ -114,6 +119,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 		}
 	}
 
+	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method() async isOpen() {
 		return this.state._open ?? false;
 	}
