@@ -5,7 +5,8 @@
 	"scripts": {
 		"lint": "tsc --noemit",
 		"postinstall": "rimraf assets && npm-run-all postinstall:*",
-		"postinstall:assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot"
+		"postinstall:assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
+		"start": "nodemon index.ts"
 	},
 	"author": "",
 	"license": "ISC",
