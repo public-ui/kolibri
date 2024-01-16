@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
+import type { PropLabel } from '../props';
 
-type RequiredProps = unknown;
+type RequiredProps = PropLabel;
 type OptionalProps = unknown;
 
 type RequiredStates = RequiredProps;

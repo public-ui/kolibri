@@ -14,7 +14,7 @@ export const TreeBasic: FC = () => {
 
 	return (
 		<>
-			<KolTree>
+			<KolTree _label="Sitemap">
 				<KolTreeItem _label={homeLabel} _href={href}></KolTreeItem>
 				<KolTreeItem _label="2 About (open initially)" _href={href} _open>
 					<KolTreeItem _label="2.1 Team" _href={href}>

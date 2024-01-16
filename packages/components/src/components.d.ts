@@ -2385,6 +2385,10 @@ export namespace Components {
         "_label": LabelPropType;
     }
     interface KolTree {
+        /**
+          * Defines the label of the tree.
+         */
+        "_label": LabelPropType;
     }
     interface KolTreeItem {
         /**
@@ -2423,6 +2427,10 @@ export namespace Components {
         "isOpen": () => Promise<boolean>;
     }
     interface KolTreeWc {
+        /**
+          * Defines the label of the tree.
+         */
+        "_label": LabelPropType;
     }
     interface KolVersion {
         /**
@@ -5222,6 +5230,10 @@ declare namespace LocalJSX {
         "_label": LabelPropType;
     }
     interface KolTree {
+        /**
+          * Defines the label of the tree.
+         */
+        "_label": LabelPropType;
     }
     interface KolTreeItem {
         /**
@@ -5252,6 +5264,10 @@ declare namespace LocalJSX {
         "_open"?: OpenPropType;
     }
     interface KolTreeWc {
+        /**
+          * Defines the label of the tree.
+         */
+        "_label": LabelPropType;
     }
     interface KolVersion {
         /**

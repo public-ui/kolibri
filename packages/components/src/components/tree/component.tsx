@@ -1,6 +1,8 @@
-import { Component, Element, h, Host, JSX, Listen, State } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 
-import type { TreeAPI, TreeStates } from '@public-ui/schema';
+import type { LabelPropType, TreeAPI, TreeStates } from '@public-ui/schema';
+import { validateLabel } from '@public-ui/schema';
 import { TREE_ITEM_TAG_NAME } from './constants';
 
 @Component({
@@ -10,15 +12,26 @@ import { TREE_ITEM_TAG_NAME } from './constants';
 export class KolTreeWc implements TreeAPI {
 	@Element() host!: HTMLElement;
 
-	@State() public state: TreeStates = {};
+	@State() public state: TreeStates = {
+		_label: '',
+	};
 	private observer?: MutationObserver;
 	private treeItemElements?: HTMLKolTreeItemElement[];
+
+	/**
+	 * Defines the label of the tree.
+	 */
+	@Prop() _label!: LabelPropType;
+
+	@Watch('_label') validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
+	}
 
 	public render(): JSX.Element {
 		return (
 			<Host onSlotchange={this.handleSlotchange.bind(this)}>
-				<nav class="tree" aria-label="YYY">
-					<ul class="treeview-navigation" role="tree" aria-label="YYY">
+				<nav class="tree" aria-label={this.state._label}>
+					<ul class="treeview-navigation" role="tree" aria-label={this.state._label}>
 						<slot />
 					</ul>
 				</nav>
@@ -31,6 +44,8 @@ export class KolTreeWc implements TreeAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.validateLabel(this._label);
+
 		this.updateTreeItemElements();
 		this.observeChildListMutations();
 	}
