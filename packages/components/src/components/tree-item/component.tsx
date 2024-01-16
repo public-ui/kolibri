@@ -31,7 +31,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 							{this.state._label}
 						</span>
 					</kol-link>
-					<ul hidden={!this.state._hasChildren || !this.state._open}>
+					<ul hidden={!this.state._hasChildren || !this.state._open} role="group">
 						<slot />
 					</ul>
 				</li>
