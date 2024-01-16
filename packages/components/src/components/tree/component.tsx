@@ -130,7 +130,9 @@ export class KolTreeWc implements API {
 			case '*': {
 				const siblings = currentTreeItem.closest('kol-tree')?.querySelectorAll(TREE_ITEM_TAG_NAME);
 				if (siblings) {
-					siblings.forEach((element) => element.expand());
+					siblings.forEach((element) => {
+						void element.expand();
+					});
 				}
 				break;
 			}
