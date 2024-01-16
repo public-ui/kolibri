@@ -115,6 +115,6 @@ export class KolTreeItemWc implements TreeItemAPI {
 	}
 
 	@Method() async isOpen() {
-		return this.state._open;
+		return this.state._open ?? false;
 	}
 }
