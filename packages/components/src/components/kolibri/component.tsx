@@ -1,5 +1,7 @@
-import { colorRgba, devHint, validateColor, watchBoolean } from '@public-ui/schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { devHint, validateColor, watchBoolean } from '@public-ui/schema';
+import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
+
+import rgba from 'color-rgba';
 
 import { translate } from '../../i18n';
 
@@ -58,11 +60,11 @@ export class KolKolibri implements KolibriAPI {
 
 	private handleColorChange: Generic.Element.NextStateHooksCallback = (nextValue: unknown, nextState: Map<string, unknown>): void => {
 		if (typeof nextValue === 'string') {
-			const rgba = colorRgba(nextValue);
+			const colors = rgba(nextValue);
 			nextState.set('_color', {
-				red: rgba[0],
-				green: rgba[1],
-				blue: rgba[2],
+				red: colors[0],
+				green: colors[1],
+				blue: colors[2],
 			});
 		} else {
 			devHint(`[KolKolibri] You used the complex color schema. For the KoliBri we use need the color as hex string.`);
