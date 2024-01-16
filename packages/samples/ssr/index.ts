@@ -1,30 +1,30 @@
 import { renderToString } from '@public-ui/hydrate';
-import fs from 'fs';
-import path from 'path';
 import express from 'express';
 
-function ssr(html: string) {
-	return renderToString(html, {
+async function ssr(html: string): Promise<string> {
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+	const doc = (await renderToString(html, {
 		// https://stenciljs.com/docs/hydrate-app#rendertostring-options
 		prettyHtml: true, // default: false
-	}).then((doc) => {
-		const cutBody = /(.*\n)*.*<body>([\s\S]*?)<\/body>(\n.*)*/;
-		doc.html = doc.html.replace(cutBody, '$2');
-		const removeToastContainer = /(.*\n)*.*<\/kol-toast-container>/;
-		doc.html = doc.html.replace(removeToastContainer, '');
-		const removeIDs = /(c|s)-(id|mode)="[^"]+"/g;
-		doc.html = doc.html.replace(removeIDs, '');
-		const removeHtmlComments = /<!--[^>]*-->/g;
-		doc.html = doc.html.replace(removeHtmlComments, '');
-		const removeEmptyLines = /[\r\n]+/g;
-		doc.html = doc.html.replace(removeEmptyLines, '');
-		const removeHtmlSpaces = /[\s]+/g;
-		doc.html = doc.html.replace(removeHtmlSpaces, ' ');
-		const removeSpace = /\> \</g;
-		doc.html = doc.html.replace(removeSpace, '><');
-		doc.html = doc.html.replace(/hydrated/g, '');
-		return doc.html.trim();
-	});
+	})) as { html: string };
+
+	const cutBody = /(.*\n)*.*<body>([\s\S]*?)<\/body>(\n.*)*/;
+	doc.html = doc.html.replace(cutBody, '$2');
+	const removeToastContainer = /(.*\n)*.*<\/kol-toast-container>/;
+	doc.html = doc.html.replace(removeToastContainer, '');
+	const removeIDs = /(c|s)-(id|mode)="[^"]+"/g;
+	doc.html = doc.html.replace(removeIDs, '');
+	const removeHtmlComments = /<!--[^>]*-->/g;
+	doc.html = doc.html.replace(removeHtmlComments, '');
+	const removeEmptyLines = /[\r\n]+/g;
+	doc.html = doc.html.replace(removeEmptyLines, '');
+	const removeHtmlSpaces = /[\s]+/g;
+	doc.html = doc.html.replace(removeHtmlSpaces, ' ');
+	const removeSpace = /\> \</g;
+	doc.html = doc.html.replace(removeSpace, '><');
+	doc.html = doc.html.replace(/hydrated/g, '');
+
+	return doc.html.trim();
 }
 
 const app = express();
@@ -34,9 +34,19 @@ app.use('/assets', express.static('assets'));
 app.use('/node_modules', express.static('node_modules'));
 app.use('/favicon.ico', express.static('favicon.ico'));
 
-app.get('/', (req, res) => {
-	ssr(`<kol-button _icons="codicon codicon-home" _hide-label _label="Submit" _tooltip-align="right" _type="submit"></kol-button>`).then((buttonHTML) => {
-		console.log(buttonHTML);
+app.get('/', (_req, res) => {
+	const webComponents: Promise<string>[] = [
+		ssr(`<kol-kolibri class="block h-40"></kol-kolibri>`),
+		ssr(`<kol-heading _label="SSR + CSR"></kol-heading>`),
+		ssr(`
+	<kol-input-text _label="Name" _name="name" _placeholder="Enter your name" _required></kol-input-text>
+	<div class="flex flex-wrap gap-4">
+		<kol-button _icons="codicon codicon-play" _hide-label _label="Submit" _type="submit" _variant="primary"></kol-button>
+		<kol-button _label="Reset" _type="reset" _variant="danger"></kol-button>
+	</div>`),
+	];
+	void Promise.all(webComponents).then((htmls) => {
+		console.log(htmls);
 		res.send(`
 		<!DOCTYPE html>
 <html lang="de" dir="ltr">
@@ -54,14 +64,18 @@ app.get('/', (req, res) => {
 			register(DEFAULT, defineCustomElements)
 					.catch(console.warn);
 		</script>
+		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
-	<body>
-		<form action="/" method="GET">
-			<input type="text" name="name" value="Martin" />
-			${buttonHTML.replace('style', '')}
-			<noscript>Diese Webseite erfordert, dass Sie JavaScript aktivieren.</noscript>
-			<button>Submit</button>
-		</form>
+	<body class="container mx-auto p-4 grid gap-4">
+		<header>
+			${htmls[0]}
+			${htmls[1]}
+		</header>
+		<main>
+			<form action="/" method="GET" class="grid gap-4">
+				${htmls[2]}
+			</form>
+		</main>
 	</body>
 </html>`);
 	});
