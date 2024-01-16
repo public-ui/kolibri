@@ -10,6 +10,7 @@ import { TREE_ITEM_TAG_NAME } from './constants';
 export class KolTreeWc implements TreeAPI {
 	@Element() host!: HTMLElement;
 
+	@State() public state: TreeStates = {};
 	private observer?: MutationObserver;
 	private treeItemElements?: HTMLKolTreeItemElement[];
 
@@ -28,8 +29,6 @@ export class KolTreeWc implements TreeAPI {
 	private static isTreeItem(this: void, element?: HTMLElement | null): element is HTMLKolTreeItemElement {
 		return element?.tagName === TREE_ITEM_TAG_NAME.toUpperCase();
 	}
-
-	@State() public state: TreeStates = {};
 
 	public componentWillLoad(): void {
 		this.updateTreeItemElements();
@@ -52,7 +51,7 @@ export class KolTreeWc implements TreeAPI {
 
 	private observeTopLevelItems() {
 		this.getTopLevelTreeItems().forEach((treeItem) => {
-			this.observer!.observe(treeItem, { childList: true, subtree: true });
+			this.observer?.observe(treeItem, { childList: true, subtree: true });
 		});
 	}
 

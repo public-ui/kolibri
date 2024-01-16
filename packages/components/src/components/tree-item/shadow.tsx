@@ -3,7 +3,7 @@ import { Component, h, JSX, Method, Prop } from '@stencil/core';
 import type { HrefPropType, LabelPropType, OpenPropType, TreeItemProps } from '@public-ui/schema';
 
 @Component({
-	tag: 'kol-tree-item',
+	tag: 'kol-tree-item', // keep in sync with `const TREE_ITEM_TAG_NAME`
 	styleUrls: {
 		default: './style.css',
 	},

@@ -4,7 +4,7 @@ import type { HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemSt
 import { validateHref, validateLabel, validateOpen } from '@public-ui/schema';
 
 @Component({
-	tag: `kol-tree-item-wc`, // keep in sync with const TREE_ITEM_TAG_NAME
+	tag: `kol-tree-item-wc`,
 	shadow: false,
 })
 export class KolTreeItemWc implements TreeItemAPI {
