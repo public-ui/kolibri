@@ -1,13 +1,13 @@
 import { Component, Element, h, Host, JSX, Listen, State } from '@stencil/core';
 
-import { API, States } from './types';
+import type { TreeAPI, TreeStates } from '@public-ui/schema';
 import { TREE_ITEM_TAG_NAME } from './constants';
 
 @Component({
 	tag: 'kol-tree-wc',
 	shadow: false,
 })
-export class KolTreeWc implements API {
+export class KolTreeWc implements TreeAPI {
 	@Element() host!: HTMLElement;
 
 	private observer?: MutationObserver;
@@ -29,7 +29,7 @@ export class KolTreeWc implements API {
 		return element?.tagName === TREE_ITEM_TAG_NAME.toUpperCase();
 	}
 
-	@State() public state: States = {};
+	@State() public state: TreeStates = {};
 
 	public componentWillLoad(): void {
 		this.updateTreeItemElements();

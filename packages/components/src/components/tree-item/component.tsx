@@ -1,15 +1,13 @@
 import { Component, Element, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
-import { API, States } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { OpenPropType, validateOpen } from '../../types/props/open';
-import { HrefPropType, validateHref } from '../../types/props/href';
+import type { TreeItemAPI, TreeItemStates } from '@public-ui/schema';
+import { HrefPropType, LabelPropType, OpenPropType, validateHref, validateLabel, validateOpen } from '@public-ui/schema';
 
 @Component({
 	tag: `kol-tree-item-wc`, // keep in sync with const TREE_ITEM_TAG_NAME
 	shadow: false,
 })
-export class KolTreeItemWc implements API {
+export class KolTreeItemWc implements TreeItemAPI {
 	private linkElement!: HTMLKolLinkWcElement;
 
 	@Element() host!: HTMLElement;
@@ -41,7 +39,7 @@ export class KolTreeItemWc implements API {
 		);
 	}
 
-	@State() public state: States = {
+	@State() public state: TreeItemStates = {
 		_label: '',
 		_open: false,
 		_hasChildren: false,

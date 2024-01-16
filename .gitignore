@@ -1,11 +1,7 @@
 /.husky/
 /license-reports/*.html
 /packages/**/pnpm-lock.yaml
-cjs/
 dist/
-esm/
-umd/
-types/
 node_modules/
 
 package-lock.json

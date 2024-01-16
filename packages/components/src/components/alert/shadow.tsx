@@ -1,8 +1,6 @@
-import { Component, h, Host, JSX, Prop, State } from '@stencil/core';
-
-import { HeadingLevel } from '../../types/heading-level';
-import { LabelPropType } from '../../types/props/label';
-import { AlertType, AlertVariant, KoliBriAlertEventCallbacks, Props, States } from './types';
+import type { AlertProps, AlertStates, AlertType, AlertVariant, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
+import { Component, h, Host, Prop, State } from '@stencil/core';
 
 /**
  * @slot - Der Inhalt der Meldung.
@@ -14,7 +12,7 @@ import { AlertType, AlertVariant, KoliBriAlertEventCallbacks, Props, States } fr
 	},
 	shadow: true,
 })
-export class KolAlert implements Props {
+export class KolAlert implements AlertProps {
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -69,7 +67,7 @@ export class KolAlert implements Props {
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 
-	@State() public state: States = {
+	@State() public state: AlertStates = {
 		_level: 1,
 	};
 }

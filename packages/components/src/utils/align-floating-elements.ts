@@ -1,7 +1,7 @@
-import { processEnv } from './reuse';
 import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { AlignPropType } from '../types/props/align';
+import { processEnv } from '@public-ui/schema';
 
+import type { AlignPropType } from '@public-ui/schema';
 type Arguments = {
 	floatingElement: HTMLElement;
 	referenceElement: Element;

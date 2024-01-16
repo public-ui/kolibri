@@ -1,14 +1,13 @@
-import type { Generic } from 'adopted-style-sheets';
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { devHint, validateColor, watchBoolean } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
+import { colorRgba } from '../../../../schema/src/utils/contrast/color-rgba';
 import { translate } from '../../i18n';
-import { Stringified } from '../../types/common';
-import { PropColor, validateColor } from '../../types/props/color';
-import { devHint } from '../../utils/a11y.tipps';
-import { watchBoolean } from '../../utils/prop.validators';
-import { colorRgba } from '../badge/color-rgba';
-import { API, States } from './types';
 
+import type { Generic } from 'adopted-style-sheets';
+
+import type { KolibriAPI, KolibriStates, PropColor, Stringified } from '@public-ui/schema';
 @Component({
 	tag: 'kol-kolibri',
 	styleUrls: {
@@ -16,7 +15,7 @@ import { API, States } from './types';
 	},
 	shadow: true,
 })
-export class KolKolibri implements API {
+export class KolKolibri implements KolibriAPI {
 	public render(): JSX.Element {
 		const fillColor = `rgb(${this.state._color.red},${this.state._color.green},${this.state._color.blue})`;
 		return (
@@ -48,7 +47,7 @@ export class KolKolibri implements API {
 	 */
 	@Prop() public _labeled?: boolean = true;
 
-	@State() public state: States = {
+	@State() public state: KolibriStates = {
 		_color: {
 			red: 0,
 			green: 60,

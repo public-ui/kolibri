@@ -1,6 +1,6 @@
-import { Component, h, Host, JSX, State } from '@stencil/core';
-
-import { API, States } from './types';
+import type { IndentedTextAPI, IndentedTextStates } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
+import { Component, h, Host, State } from '@stencil/core';
 
 /**
  * @slot - Der Text.
@@ -12,8 +12,8 @@ import { API, States } from './types';
 	},
 	shadow: true,
 })
-export class KolIndentedText implements API {
-	@State() public state: States = {};
+export class KolIndentedText implements IndentedTextAPI {
+	@State() public state: IndentedTextStates = {};
 
 	public render(): JSX.Element {
 		return (

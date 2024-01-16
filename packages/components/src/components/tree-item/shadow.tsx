@@ -1,9 +1,7 @@
 import { Component, h, JSX, Method, Prop } from '@stencil/core';
 
-import { Props } from './types';
-import { LabelPropType } from '../../types/props/label';
-import { OpenPropType } from '../../types/props/open';
-import { HrefPropType } from '../../types/props/href';
+import type { TreeItemProps } from '@public-ui/schema';
+import { HrefPropType, LabelPropType, OpenPropType } from '@public-ui/schema';
 
 @Component({
 	tag: 'kol-tree-item',
@@ -12,7 +10,7 @@ import { HrefPropType } from '../../types/props/href';
 	},
 	shadow: true,
 })
-export class KolTreeItem implements Props {
+export class KolTreeItem implements TreeItemProps {
 	private element?: HTMLKolTreeItemWcElement;
 
 	/**

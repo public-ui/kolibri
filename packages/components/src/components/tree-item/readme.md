@@ -30,7 +30,17 @@ Type: `Promise<void>`
 
 Type: `Promise<void>`
 
+### `isOpen() => Promise<boolean | undefined>`
+
+#### Returns
+
+Type: `Promise<boolean | undefined>`
+
 ## Dependencies
+
+### Used by
+
+- [kol-tree-item](.)
 
 ### Depends on
 
@@ -40,14 +50,15 @@ Type: `Promise<void>`
 
 ```mermaid
 graph TD;
-  kol-tree-item --> kol-link
+  kol-tree-item-wc --> kol-link
   kol-link --> kol-link-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
-  style kol-tree-item stroke:#333,stroke-width:4px
+  kol-tree-item --> kol-tree-item-wc
+  style kol-tree-item-wc stroke:#333,stroke-width:4px
 ```
 
 ---

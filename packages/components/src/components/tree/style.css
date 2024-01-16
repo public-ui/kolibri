@@ -1,3 +1,6 @@
 @import url(../style.css);
 @layer kol-component {
+	.tree {
+		/*border: 1px solid blue;*/
+	}
 }

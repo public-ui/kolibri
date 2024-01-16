@@ -1,19 +1,31 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type {
+	ButtonOrLinkOrTextWithChildrenProps,
+	ButtonWithChildrenProps,
+	CollapsiblePropType,
+	HideLabelPropType,
+	LabelPropType,
+	NavAPI,
+	NavStates,
+	Orientation,
+	Stringified,
+} from '@public-ui/schema';
+import {
+	a11yHintLabelingLandmarks,
+	devHint,
+	devWarning,
+	validateCollapsible,
+	validateHasCompactButton,
+	validateHideLabel,
+	validateLabel,
+	watchValidator,
+} from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
-import { Stringified } from '../../types/common';
-import { Orientation } from '../../types/orientation';
-import { CollapsiblePropType, validateCollapsible } from '../../types/props/collapsible';
-import { validateHasCompactButton } from '../../types/props/has-compact-button';
-import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
-import { watchValidator } from '../../utils/prop.validators';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { API, States } from './types';
 import { watchNavLinks } from './validation';
 
+import type { JSX } from '@stencil/core';
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
 		if (Array.isArray(link._children)) {
@@ -38,7 +50,7 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	},
 	shadow: true,
 })
-export class KolNav implements API {
+export class KolNav implements NavAPI {
 	private expandChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
 			...this.state,
@@ -251,7 +263,7 @@ export class KolNav implements API {
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	@State() public state: States = {
+	@State() public state: NavStates = {
 		_collapsible: true,
 		_hasCompactButton: false,
 		_hideLabel: false,

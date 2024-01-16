@@ -1,6 +1,6 @@
 import { Component, h, JSX } from '@stencil/core';
 
-import { Props } from './types';
+import type { TreeProps } from '@public-ui/schema';
 
 @Component({
 	tag: 'kol-tree',
@@ -9,7 +9,7 @@ import { Props } from './types';
 	},
 	shadow: true,
 })
-export class KolTree implements Props {
+export class KolTree implements TreeProps {
 	public render(): JSX.Element {
 		return (
 			<kol-tree-wc>
