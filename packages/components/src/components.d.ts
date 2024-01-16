@@ -2420,7 +2420,7 @@ export namespace Components {
         "collapse": () => Promise<void>;
         "expand": () => Promise<void>;
         "focusLink": () => Promise<void>;
-        "isOpen": () => Promise<boolean | undefined>;
+        "isOpen": () => Promise<boolean>;
     }
     interface KolTreeWc {
     }

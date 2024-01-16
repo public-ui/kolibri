@@ -30,11 +30,11 @@ Type: `Promise<void>`
 
 Type: `Promise<void>`
 
-### `isOpen() => Promise<boolean | undefined>`
+### `isOpen() => Promise<boolean>`
 
 #### Returns
 
-Type: `Promise<boolean | undefined>`
+Type: `Promise<boolean>`
 
 ## Dependencies
 
