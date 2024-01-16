@@ -1,5 +1,5 @@
-import type { Stringified } from '../../../../../schema/src/types/common';
-import type { KoliBriHorizontalIcons } from '../../../../../schema/src/types/icons';
+import type { Stringified } from '../../common';
+import type { KoliBriHorizontalIcons } from '../../icons';
 import type { ButtonProps } from '../../../components';
 import type { InputTypeOnDefault, InputTypeOnOff } from '../types';
 

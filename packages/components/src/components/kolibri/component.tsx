@@ -1,13 +1,11 @@
 import type { JSX } from '@stencil/core';
-import { devHint, validateColor, watchBoolean } from '@public-ui/schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
-
-import { colorRgba } from '../../../../schema/src/utils/contrast/color-rgba';
+import type { KolibriAPI, KolibriStates, PropColor, Stringified } from '@public-ui/schema';
+import { colorRgba, devHint, validateColor, watchBoolean } from '@public-ui/schema';
 import { translate } from '../../i18n';
 
 import type { Generic } from 'adopted-style-sheets';
 
-import type { KolibriAPI, KolibriStates, PropColor, Stringified } from '@public-ui/schema';
 @Component({
 	tag: 'kol-kolibri',
 	styleUrls: {
