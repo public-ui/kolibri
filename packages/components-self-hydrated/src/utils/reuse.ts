@@ -10,7 +10,7 @@ const PROCESS_ENVS = ['development', 'production', 'test'] as const;
 type ProcessEnv = (typeof PROCESS_ENVS)[number];
 export let processEnv: ProcessEnv = 'development';
 try {
-	processEnv = process?.env?.NODE_ENV as ProcessEnv;
+	processEnv = process.env.NODE_ENV as ProcessEnv;
 } catch (e) {
 	processEnv = 'production';
 }

@@ -1,0 +1,81 @@
+{
+	"name": "@public-ui/hyd-react",
+	"version": "2.0.3",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": "https://github.com/public-ui/kolibri",
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"description": "React framework adapter for KoliBri - The accessible HTML-Standard.",
+	"keywords": [
+		"accessibility",
+		"accessible",
+		"bitv",
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"webcomponents",
+		"aria",
+		"wai",
+		"axe",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag",
+		"react"
+	],
+	"scripts": {
+		"build": "unbuild",
+		"prepack": "unbuild"
+	},
+	"devDependencies": {
+		"@public-ui/self-hydrated-components": "2.0.3",
+		"@types/minimatch": "5.1.2",
+		"@types/minimist": "1.2.5",
+		"@types/node": "ts5.3",
+		"@types/normalize-package-data": "2.4.4",
+		"@types/react": "18.2.47",
+		"@types/react-dom": "18.2.18",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"typescript": "5.3.3",
+		"unbuild": "1.2.1"
+	},
+	"peerDependencies": {
+		"@public-ui/self-hydrated-components": "2.0.3",
+		"react": ">=16.14.0",
+		"react-dom": ">=16.14.0"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	]
+}

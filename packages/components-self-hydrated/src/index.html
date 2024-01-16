@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<title>BIK BITV-Test | KoliBri</title>
+		<meta name="description" content="Auf der Seite werden alle KoliBri-Komponenten für den BIK BITV-Test dargestellt." />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script type="module">
+			import('./build/index.esm.js')
+				.then((module) => {
+					module.KoliBriDevHelper.patchTheme('demo', {});
+				})
+				.catch(console.warn);
+		</script>
+		<script type="module" src="build/kolibri.esm.js"></script>
+		<script nomodule src="build/kolibri.js"></script>
+
+		<meta name="robots" content="noindex" />
+		<meta name="kolibri" content="dev-mode=true,experimental-mode=true,color-contrast-analysis=false" />
+
+		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
+
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<link rel="stylesheet" href="assets/codicons/codicon.css" />
+		<link rel="stylesheet" href="assets/style.css" />
+		<link rel="stylesheet" href="assets/loader.css" />
+	</head>
+	<script type="module">
+		import { createApp } from 'https://unpkg.com/petite-vue?module';
+
+		createApp({
+			showDropdown: false,
+			showLogin: false,
+		}).mount();
+	</script>
+	<body v-scope>
+		<main class="container">
+			<kol-hyd-spin _show></kol-hyd-spin>
+			<kol-hyd-spin _show _variant="cycle"></kol-hyd-spin>
+			<kol-hyd-spin _show _variant="none">
+				<span class="loader" slot="expert"></span>
+			</kol-hyd-spin>
+		</main>
+	</body>
+</html>
