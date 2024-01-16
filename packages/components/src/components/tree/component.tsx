@@ -131,12 +131,10 @@ export class KolTreeWc implements TreeAPI {
 				break;
 			}
 			case '*': {
-				const siblings = currentTreeItem.closest('kol-tree')?.querySelectorAll(TREE_ITEM_TAG_NAME);
-				if (siblings) {
-					siblings.forEach((element) => {
-						void element.expand();
-					});
-				}
+				const siblings = currentTreeItem.parentElement?.querySelectorAll(TREE_ITEM_TAG_NAME);
+				siblings?.forEach((element) => {
+					void element.expand();
+				});
 				break;
 			}
 		}
