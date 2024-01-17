@@ -29,7 +29,7 @@ const HEADERS: KoliBriTableHeaders = {
 				label: '#',
 				key: 'order',
 
-				/* Example 1: Use render return value to format date */
+				/* Example 1: Use render return value to format data */
 				render: (_el, cell: KoliBriTableCell) => `Index: ${cell.label}`,
 			},
 			{

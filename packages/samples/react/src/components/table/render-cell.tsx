@@ -39,7 +39,7 @@ const HEADERS: KoliBriTableHeaders = {
 				textAlign: 'center',
 				width: '10em',
 
-				/* Example 1: Use render return value to format date */
+				/* Example 1: Use render return value to format data */
 				render: (_el, cell) => `Index: ${cell.label}`,
 			},
 			{
