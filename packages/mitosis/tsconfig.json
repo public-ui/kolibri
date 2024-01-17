@@ -1,0 +1,7 @@
+{
+	"compilerOptions": {
+		"jsx": "preserve",
+		"jsxImportSource": "@builder.io/mitosis"
+	},
+	"include": ["src"]
+}

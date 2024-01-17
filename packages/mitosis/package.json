@@ -1,0 +1,41 @@
+{
+	"name": "@public-ui/components-mitosis",
+	"version": "2.0.3",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": "https://github.com/public-ui/kolibri",
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"contributors": [
+		{
+			"name": "Martin Oppitz",
+			"email": "martin.oppitz@itzbund.de"
+		}
+	],
+	"description": "",
+	"keywords": [],
+	"scripts": {
+		"build": "mitosis build",
+		"format": "prettier -c src",
+		"lint": "eslint src && tsc --noEmit",
+		"xunused": "knip"
+	},
+	"devDependencies": {
+		"@builder.io/eslint-plugin-mitosis": "0.0.15",
+		"@builder.io/mitosis": "0.0.141",
+		"@builder.io/mitosis-cli": "0.0.100",
+		"@public-ui/schema": "2.0.3",
+		"@typescript-eslint/eslint-plugin": "6.19.0",
+		"@typescript-eslint/parser": "6.19.0",
+		"eslint": "8.56.0",
+		"knip": "3.13.2",
+		"prettier": "3.2.2"
+	},
+	"files": []
+}
