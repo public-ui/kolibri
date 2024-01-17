@@ -51,7 +51,14 @@ export class KolForm implements FormAPI {
 							<ul>
 								{this._errorList.map((error, index) => (
 									<li key={index}>
-										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />
+										<kol-link
+											_href={error.selector}
+											_label={error.message}
+											_on={{ onClick: this.handleLinkClick }}
+											ref={(el) => {
+												if (index === 0) this.errorListElement = el as HTMLElement;
+											}}
+										/>
 									</li>
 								))}
 							</ul>
@@ -71,6 +78,8 @@ export class KolForm implements FormAPI {
 			</form>
 		);
 	}
+
+	errorListElement!: HTMLElement;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Form-Events an.
@@ -117,5 +126,13 @@ export class KolForm implements FormAPI {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
 		this.validateErrorList(this._errorList);
+	}
+
+	public componentDidRender() {
+		if (this._errorList && this._errorList.length > 0) {
+			if (this.errorListElement) {
+				this.errorListElement.focus();
+			}
+		}
 	}
 }
