@@ -11,30 +11,38 @@ import { SampleDescription } from '../SampleDescription';
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: '#', key: 'order', textAlign: 'center', width: '10em' },
+			{
+				label: '#',
+				key: 'order',
+				textAlign: 'center',
+				width: '10em',
+
+				/* Example 1: Simple render function using textContent */
+				render: (el, cell) => {
+					el.textContent = `Index: ${cell.label}`;
+				},
+			},
 			{
 				label: 'Datum (string)',
 				key: 'date',
 				width: '20em',
 				textAlign: 'center',
-				render: (el, tupel) => {
-					// https://reactjs.org/docs/portals.html
-					getRoot(el).render(<strong>{DATE_FORMATTER.format(tupel.label as unknown as Date)}</strong>);
+
+				/* Example 2: Render function using innerHTML. ⚠️Make sure to sanitize data to avoid XSS. */
+				render: (el, cell) => {
+					el.innerHTML = `<strong>${DATE_FORMATTER.format(cell.label as unknown as Date)}</strong>`;
 				},
-				sort: (data: Data[]) =>
-					data.sort((data0, data1) => {
-						if (data0.date < data1.date) return -1;
-						else if (data1.date < data0.date) return 1;
-						else return 0;
-					}),
+				sort: (data: Data[]) => data.sort((data0, data1) => data0.date.getTime() - data1.date.getTime()),
 			},
 			{
 				label: 'Aktion (react)',
 				key: 'order',
+
+				/* Example 3: Render function using React */
 				render: (el) => {
 					el.setAttribute('role', 'presentation');
 
-					// https://reactjs.org/docs/portals.html
+					/* https://react.dev/reference/react-dom/client/createRoot */
 					getRoot(el).render(
 						<>
 							<KolButton _label={'Speichern'} />
