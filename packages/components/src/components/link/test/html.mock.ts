@@ -1,13 +1,14 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { showExpertSlot } from '../../../utils/reuse';
+import { showExpertSlot } from '@public-ui/schema';
+
 import { getIconHtml } from '../../icon/test/html.mock';
-import { LinkProps, States } from '../types';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
+import type { LinkProps, LinkStates } from '@public-ui/schema';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
-	const state = mixMembers<LinkProps, States>(
+	const state = mixMembers<LinkProps, LinkStates>(
 		{
 			_href: '', // ⚠ required
 			_hideLabel: false,

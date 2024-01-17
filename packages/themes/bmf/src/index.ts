@@ -288,7 +288,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -368,7 +367,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -609,7 +607,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -696,7 +693,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -789,7 +785,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		textarea:read-only,
 		textarea:disabled {
 			cursor: not-allowed;
 		}
@@ -2353,7 +2348,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}

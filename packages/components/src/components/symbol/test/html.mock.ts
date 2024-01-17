@@ -1,9 +1,9 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { translate } from '../../../i18n';
-import { Props } from '../types';
 
-export const getSymbolHtml = (props: Props): string => {
+import type { SymbolProps } from '@public-ui/schema';
+export const getSymbolHtml = (props: SymbolProps): string => {
 	props = mixMembers(
 		{
 			_label: translate('kol-warning'),
