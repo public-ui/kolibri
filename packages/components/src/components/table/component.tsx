@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import type { JSX } from '@stencil/core';
+import { devHint, emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+
+import { translate } from '../../i18n';
 
 import type {
 	KoliBriDataCompareFn,
@@ -20,9 +23,6 @@ import type {
 	TableAPI,
 	TableStates,
 } from '@public-ui/schema';
-import { devHint, emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
-import { translate } from '../../i18n';
-
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();

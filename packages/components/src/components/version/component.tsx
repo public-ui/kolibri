@@ -1,10 +1,11 @@
 import type { LabelPropType, VersionAPI, VersionStates } from '@public-ui/schema';
 import { validateLabel } from '@public-ui/schema';
-import { Component, Prop, State, Watch, h } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
 import type { JSX } from '@stencil/core';
+
 @Component({
 	tag: 'kol-version',
 	styleUrls: {
