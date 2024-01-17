@@ -13,4 +13,7 @@ switch (location.pathname) {
 	case '/dev/details-synced-open-state.html':
 		import('./details-synced-open-state');
 		break;
+	case '/dev/table-render-function.html':
+		import('./table-render-function');
+		break;
 }
