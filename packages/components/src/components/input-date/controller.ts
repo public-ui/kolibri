@@ -116,8 +116,8 @@ export class InputDateController extends InputIconController implements Watches 
 		);
 	};
 
-	protected onChange(event: Event): void {
-		super.onChange(event);
+	protected onBlur(event: Event): void {
+		super.onBlur(event);
 
 		// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
 		if (!!(event.target as HTMLInputElement).value !== !!this.component._value) {

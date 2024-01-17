@@ -74,6 +74,7 @@ export const isIcon = (value?: unknown): boolean =>
 	typeof value === 'object' &&
 	value !== null &&
 	(typeof (value as KoliBriCustomIcon).style === 'undefined' || isStyle((value as KoliBriCustomIcon).style)) &&
+	(typeof (value as KoliBriCustomIcon).label === 'undefined' || isString((value as KoliBriCustomIcon).label)) &&
 	isString((value as KoliBriCustomIcon).icon, 1);
 
 export const validateIcons = (component: Generic.Element.Component, value?: IconsPropType): void => {
