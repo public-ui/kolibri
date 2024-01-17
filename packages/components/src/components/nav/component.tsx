@@ -173,7 +173,7 @@ export class KolNav implements NavAPI {
 			} else if (branch._children) {
 				for (const childBranch of branch._children) {
 					if (handleBranch(childBranch)) {
-						this.expandChildren(branch._children!);
+						this.expandChildren(branch._children);
 						return true;
 					}
 				}
