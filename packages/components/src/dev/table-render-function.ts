@@ -1,4 +1,4 @@
-import type { KoliBriTableHeaders, KoliBriTableCell } from '@public-ui/schema';
+import type { KoliBriTableCell, KoliBriTableHeaders } from '@public-ui/schema';
 
 type Data = {
 	order: number;
@@ -53,8 +53,7 @@ const HEADERS: KoliBriTableHeaders = {
 				render: (el, cell) => {
 					el.innerHTML = `<strong>${Intl.DateTimeFormat('de-DE').format(cell.label as unknown as Date)}</strong>`;
 				},
-				// @ts-ignore
-				sort: (data: Data[]) => data.sort((data0, data1) => data0.date.getTime() - data1.date.getTime()),
+				sort: (data) => data.sort((data0, data1) => (data0 as Data).date.getTime() - (data1 as Data).date.getTime()),
 			},
 		],
 	],
