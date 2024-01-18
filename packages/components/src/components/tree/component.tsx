@@ -154,4 +154,36 @@ export class KolTreeWc implements TreeAPI {
 			}
 		}
 	}
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	@Listen('focusout')
+	public async handleFocusOut(event: FocusEvent) {
+		const findActiveItem = (): HTMLKolTreeItemElement | undefined => {
+			const rootNodes = (this.host.querySelector('slot')?.assignedNodes() as HTMLElement[]).filter(KolTreeWc.isTreeItem);
+			for (const rootNode of rootNodes) {
+				if (rootNode._active) {
+					return rootNode;
+				}
+				const childMatch = rootNode.querySelector('kol-tree-item[_active="true"]');
+				if (childMatch && (childMatch as HTMLKolTreeItemElement)._active) {
+					return childMatch as HTMLKolTreeItemElement;
+				}
+			}
+		};
+
+		const expandParentElements = (element: HTMLKolTreeItemElement) => {
+			if (KolTreeWc.isTreeItem(element.parentElement)) {
+				void element.parentElement.expand();
+				expandParentElements(element.parentElement);
+			}
+		};
+
+		if (event.relatedTarget && !(event.relatedTarget as Element).closest('kol-tree')) {
+			/* Tree lost focus */
+			const target = findActiveItem();
+			if (target) {
+				expandParentElements(target);
+			}
+		}
+	}
 }
