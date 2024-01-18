@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '@public-ui/schema';
-import { validateHref, validateLabel, validateOpen } from '@public-ui/schema';
+import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '@public-ui/schema';
+import { validateActive, validateHref, validateLabel, validateOpen } from '@public-ui/schema';
 
 @Component({
 	tag: `kol-tree-item-wc`,
@@ -16,7 +16,16 @@ export class KolTreeItemWc implements TreeItemAPI {
 		return (
 			<Host onSlotchange={this.handleSlotchange.bind(this)}>
 				<li class="tree-item">
-					<kol-link _label="" _href={this.state._href} ref={(element) => (this.linkElement = element!)}>
+					<kol-link
+						class={{
+							'tree-link': true,
+							active: Boolean(this.state._active),
+						}}
+						_label=""
+						_href={this.state._href}
+						ref={(element) => (this.linkElement = element!)}
+						_tabIndex={this.state._active ? 0 : -1}
+					>
 						<span slot="expert">
 							{this.state._hasChildren &&
 								(this.state._open ? (
@@ -42,11 +51,17 @@ export class KolTreeItemWc implements TreeItemAPI {
 	}
 
 	@State() public state: TreeItemStates = {
-		_label: '',
-		_open: false,
+		_active: false,
 		_hasChildren: false,
 		_href: '',
+		_label: '',
+		_open: false,
 	};
+
+	/**
+	 * If set (to true) the tree item is the active one.
+	 */
+	@Prop() _active?: OpenPropType;
 
 	/**
 	 * Defines the label of the link.
@@ -63,6 +78,10 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 */
 	@Prop() _href!: HrefPropType;
 
+	@Watch('_active') validateActive(value?: ActivePropType): void {
+		validateActive(this, value || false);
+	}
+
 	@Watch('_label') validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
@@ -76,6 +95,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.validateActive(this._active);
 		this.validateLabel(this._label);
 		this.validateOpen(this._open);
 		this.validateHref(this._href);

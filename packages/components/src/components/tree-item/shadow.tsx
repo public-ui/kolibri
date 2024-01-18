@@ -13,6 +13,11 @@ export class KolTreeItem implements TreeItemProps {
 	private element?: HTMLKolTreeItemWcElement;
 
 	/**
+	 * If set (to true) the tree item is the active one.
+	 */
+	@Prop() _active?: OpenPropType;
+
+	/**
 	 * Defines the label of the link.
 	 */
 	@Prop() _label!: LabelPropType;
@@ -51,7 +56,13 @@ export class KolTreeItem implements TreeItemProps {
 
 	public render(): JSX.Element {
 		return (
-			<kol-tree-item-wc _label={this._label} _open={this._open} _href={this._href} ref={(element?: HTMLKolTreeItemWcElement) => (this.element = element)}>
+			<kol-tree-item-wc
+				_active={this._active}
+				_label={this._label}
+				_open={this._open}
+				_href={this._href}
+				ref={(element?: HTMLKolTreeItemWcElement) => (this.element = element)}
+			>
 				<slot />
 			</kol-tree-item-wc>
 		);

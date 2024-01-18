@@ -1,4 +1,5 @@
 export * from './access-key';
+export * from './active';
 export * from './adjust-height';
 export * from './alert';
 export * from './align';

@@ -4,6 +4,6 @@ import { TreeBasic } from './basic';
 
 export const TREE_ROUTES: Routes = {
 	tree: {
-		basic: TreeBasic,
+		'basic/:subPage': TreeBasic,
 	},
 };

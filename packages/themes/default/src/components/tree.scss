@@ -1,5 +1,7 @@
 @layer kol-theme-component {
 	.tree {
-		//outline: 1px dotted blue;
+		&:focus-within {
+			outline: 1px solid var(--color-primary);
+		}
 	}
 }

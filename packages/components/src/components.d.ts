@@ -2392,6 +2392,10 @@ export namespace Components {
     }
     interface KolTreeItem {
         /**
+          * If set (to true) the tree item is the active one.
+         */
+        "_active"?: OpenPropType;
+        /**
           * This property is used for a link from a reference to the target URL.
          */
         "_href": HrefPropType;
@@ -2409,6 +2413,10 @@ export namespace Components {
         "isOpen": () => Promise<boolean>;
     }
     interface KolTreeItemWc {
+        /**
+          * If set (to true) the tree item is the active one.
+         */
+        "_active"?: OpenPropType;
         /**
           * This property is used for a link from a reference to the target URL.
          */
@@ -5237,6 +5245,10 @@ declare namespace LocalJSX {
     }
     interface KolTreeItem {
         /**
+          * If set (to true) the tree item is the active one.
+         */
+        "_active"?: OpenPropType;
+        /**
           * This property is used for a link from a reference to the target URL.
          */
         "_href": HrefPropType;
@@ -5250,6 +5262,10 @@ declare namespace LocalJSX {
         "_open"?: OpenPropType;
     }
     interface KolTreeItemWc {
+        /**
+          * If set (to true) the tree item is the active one.
+         */
+        "_active"?: OpenPropType;
         /**
           * This property is used for a link from a reference to the target URL.
          */
