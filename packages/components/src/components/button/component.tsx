@@ -1,32 +1,52 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type {
+	AccessKeyPropType,
+	AlternativeButtonLinkRolePropType,
+	ButtonAPI,
+	ButtonCallbacksPropType,
+	ButtonStates,
+	ButtonTypePropType,
+	ButtonVariantPropType,
+	CustomClassPropType,
+	DisabledPropType,
+	IconsPropType,
+	LabelWithExpertSlotPropType,
+	StencilUnknown,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import {
+	a11yHintDisabled,
+	mapBoolean2String,
+	mapStringOrBoolean2String,
+	propagateFocus,
+	setEventTarget,
+	setState,
+	showExpertSlot,
+	validateAccessKey,
+	validateAlternativeButtonLinkRole,
+	validateAriaControls,
+	validateAriaExpanded,
+	validateAriaSelected,
+	validateButtonCallbacks,
+	validateButtonType,
+	validateButtonVariant,
+	validateCustomClass,
+	validateDisabled,
+	validateHideLabel,
+	validateIcons,
+	validateLabelWithExpertSlot,
+	validateTabIndex,
+	validateTooltipAlign,
+	watchString,
+} from '@public-ui/schema';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { States as ButtonStates } from '../../components/button/types';
-import { Stringified } from '../../types/common';
-import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { validateAriaControls } from '../../types/props/aria-controls';
-import { validateAriaExpanded } from '../../types/props/aria-expanded';
-import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
-import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
-import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
-import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
-import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
-import { validateHideLabel } from '../../types/props/hide-label';
-import { IconsPropType, validateIcons } from '../../types/props/icons';
-import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
-import { StencilUnknown } from '../../types/unknown';
-import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchString } from '../../utils/prop.validators';
-import { propagateFocus, showExpertSlot } from '../../utils/reuse';
-import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
-import { API } from './types';
-import { validateAriaSelected } from '../../types/props/aria-selected';
-import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 
+import type { JSX } from '@stencil/core';
 /**
  * @internal
  */
@@ -34,7 +54,7 @@ import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-k
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements API {
+export class KolButtonWc implements ButtonAPI {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private ref?: HTMLButtonElement;
 
@@ -224,11 +244,11 @@ export class KolButtonWc implements API {
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: ButtonStates = {
-		_icons: {}, // ⚠ required
+		_icons: {},
 		_label: '', // ⚠ required
 		_on: {},
-		_type: 'button', // ⚠ required
-		_variant: 'normal', // ⚠ required
+		_type: 'button',
+		_variant: 'normal',
 	};
 
 	public constructor() {
@@ -285,7 +305,9 @@ export class KolButtonWc implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this, value);
+		validateLabelWithExpertSlot(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_name')

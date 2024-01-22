@@ -1,27 +1,43 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type {
+	AccessKeyPropType,
+	AlternativeButtonLinkRolePropType,
+	AriaCurrentValuePropType,
+	DownloadPropType,
+	HrefPropType,
+	KoliBriIconsProp,
+	LabelWithExpertSlotPropType,
+	LinkAPI,
+	LinkOnCallbacksPropType,
+	LinkStates,
+	LinkTargetPropType,
+	Stringified,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import {
+	devHint,
+	propagateFocus,
+	setEventTarget,
+	showExpertSlot,
+	validateAccessKey,
+	validateAlternativeButtonLinkRole,
+	validateAriaCurrentValue,
+	validateDownload,
+	validateHideLabel,
+	validateHref,
+	validateIcons,
+	validateLabelWithExpertSlot,
+	validateLinkCallbacks,
+	validateLinkTarget,
+	validateTabIndex,
+	validateTooltipAlign,
+} from '@public-ui/schema';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { Stringified } from '../../types/common';
-import { KoliBriIconsProp } from '../../types/icons';
-import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { DownloadPropType, validateDownload } from '../../types/props/download';
-import { HrefPropType, validateHref } from '../../types/props/href';
-import { validateIcons } from '../../types/props/icons';
-import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
-import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
-import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
-import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
-import { devHint } from '../../utils/a11y.tipps';
-import { setEventTarget } from '../../utils/prop.validators';
-import { propagateFocus, showExpertSlot } from '../../utils/reuse';
-import { validateTabIndex } from '../../utils/validators/tab-index';
-import { States as LinkStates } from '../link/types';
-import { API } from './types';
-import { validateHideLabel } from '../../types/props/hide-label';
-import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
-import { onLocationChange, UnsubscribeFunction } from './ariaCurrentService';
-import { AriaCurrentValuePropType, validateAriaCurrentValue } from '../../types/props/aria-current-value';
+import { onLocationChange } from './ariaCurrentService';
 
+import type { JSX } from '@stencil/core';
+import type { UnsubscribeFunction } from './ariaCurrentService';
 /**
  * @internal
  */
@@ -29,7 +45,7 @@ import { AriaCurrentValuePropType, validateAriaCurrentValue } from '../../types/
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements API {
+export class KolLinkWc implements LinkAPI {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private ref?: HTMLAnchorElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
@@ -204,9 +220,9 @@ export class KolLinkWc implements API {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	@State() public state: LinkStates = {
-		_href: '…', // ⚠ required
-		_icons: {}, // ⚠ required
-		_ariaCurrentValue: 'page', // ⚠ required
+		_ariaCurrentValue: 'page',
+		_href: '', // ⚠ required
+		_icons: {},
 	};
 
 	@Watch('_accessKey')
@@ -231,7 +247,9 @@ export class KolLinkWc implements API {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		validateHref(this, value);
+		validateHref(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_icons')

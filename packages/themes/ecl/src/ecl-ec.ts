@@ -1495,6 +1495,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		top: 1rem;
 		right: 1rem;
 		width: 440px;
+		max-width: 100%;
 	}
 	.toast {
 		display: block;

@@ -1,9 +1,8 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { IconAPI, IconStates, LabelPropType } from '@public-ui/schema';
+import { validateLabel, watchString } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { watchString } from '../../utils/prop.validators';
-import { API, States } from './types';
-
+import type { JSX } from '@stencil/core';
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
  */
@@ -14,7 +13,7 @@ import { API, States } from './types';
 	},
 	shadow: true,
 })
-export class KolIcon implements API {
+export class KolIcon implements IconAPI {
 	public render(): JSX.Element {
 		const ariaShow = this.state._label.length > 0;
 		return (
@@ -46,19 +45,23 @@ export class KolIcon implements API {
 	 */
 	@Prop() public _label!: LabelPropType;
 
-	@State() public state: States = {
+	@State() public state: IconStates = {
 		_icons: 'codicon codicon-home',
 		_label: '', // ⚠ required
 	};
 
 	@Watch('_icons')
 	public validateIcons(value?: string): void {
-		watchString(this, '_icons', value);
+		watchString(this, '_icons', value, {
+			required: true,
+		});
 	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	public componentWillLoad(): void {

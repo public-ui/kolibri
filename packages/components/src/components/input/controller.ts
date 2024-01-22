@@ -1,4 +1,4 @@
-import { TouchedPropType } from '../../types/props/touched';
+import type { TouchedPropType } from '@public-ui/schema';
 
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die

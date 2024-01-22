@@ -1,18 +1,27 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { InputTypeOnDefault } from '../../../types/input/types';
-import { AdjustHeightPropType, validateAdjustHeight } from '../../../types/props/adjust-height';
-import { HideErrorPropType, validateHideError } from '../../../types/props/hide-error';
-import { validateHideLabel } from '../../../types/props/hide-label';
-import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../../types/props/label';
-import { a11yHint, a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
+import type { AdjustHeightPropType, ButtonProps, HideErrorPropType, InputTypeOnDefault, LabelWithExpertSlotPropType } from '@public-ui/schema';
+import {
+	a11yHint,
+	a11yHintDisabled,
+	devHint,
+	objectObjectHandler,
+	parseJson,
+	setState,
+	validateAdjustHeight,
+	validateHideError,
+	validateHideLabel,
+	validateLabelWithExpertSlot,
+	validateTabIndex,
+	watchBoolean,
+	watchString,
+} from '@public-ui/schema';
+
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../../utils/events';
-import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
-import { validateTabIndex } from '../../../utils/validators/tab-index';
-import { Props as ButtonProps } from '../../button/types';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
-import { Props as AdapterProps } from '../../input-adapter-leanup/types';
-import { Props, Watches } from './types';
+
+import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
+import type { Props, Watches } from './types';
 
 type ValueChangeListener = (value: string) => void;
 
@@ -88,7 +97,9 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this.component, value);
+		validateLabelWithExpertSlot(this.component, value, {
+			required: true,
+		});
 	}
 
 	public validateOn(value?: InputTypeOnDefault): void {

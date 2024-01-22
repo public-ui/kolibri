@@ -1,15 +1,14 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { Icofont } from '../../../types/icofont';
-import { LabelPropType } from '../../../types/props/label';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
-import { BreadcrumbLinkProps, Props } from '../types';
 
-export const getBreadcrumbHtml = (props: Props): string => {
+import type { AnyIconFontClass, BreadcrumbLinkProps, BreadcrumbProps, LabelPropType } from '@public-ui/schema';
+
+export const getBreadcrumbHtml = (props: BreadcrumbProps): string => {
 	const state = mixMembers(
 		{
-			_label: '…', // ⚠ required
+			_label: '', // ⚠ required
 			_links: [],
 		},
 		props
@@ -34,7 +33,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 									link._hideLabel
 										? getIconHtml({
 												_label: link._label,
-												_icons: link._icons as Icofont,
+												_icons: link._icons as AnyIconFontClass,
 										  })
 										: link._label
 							  }</span>`

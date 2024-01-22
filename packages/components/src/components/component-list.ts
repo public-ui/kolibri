@@ -8,7 +8,6 @@ import { KolBadge } from './badge/component';
 import { KolBreadcrumb } from './breadcrumb/component';
 import { KolButtonGroupWc } from './button-group/component';
 import { KolButtonGroup } from './button-group/shadow';
-import { KolButtonLinkTextSwitch } from './button-link-text-switch/component';
 import { KolButtonLink } from './button-link/component';
 import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
@@ -70,7 +69,6 @@ export const COMPONENTS = [
 	KolButtonGroup,
 	KolButtonGroupWc,
 	KolButtonLink,
-	KolButtonLinkTextSwitch,
 	KolButtonWc,
 	KolCard,
 	KolDetails,

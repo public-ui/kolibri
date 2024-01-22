@@ -1,13 +1,14 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { MultiplePropType, validateMultiple } from '../../types/props/multiple';
+import type { InputEmailProps, InputEmailWatches, MultiplePropType } from '@public-ui/schema';
+import { validateMultiple } from '@public-ui/schema';
+
 import { InputTextEmailController } from '../input-text/controller';
-import { Props, Watches } from './types';
 
-export class InputEmailController extends InputTextEmailController implements Watches {
-	protected readonly component: Generic.Element.Component & Props;
+export class InputEmailController extends InputTextEmailController implements InputEmailWatches {
+	protected readonly component: Generic.Element.Component & InputEmailProps;
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & InputEmailProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}

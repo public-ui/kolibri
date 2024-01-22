@@ -1,14 +1,11 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import type { LabelPropType, LinkGroupAPI, LinkGroupStates, LinkProps, ListStyleType, Orientation, Stringified } from '@public-ui/schema';
+import { validateLabel, watchValidator } from '@public-ui/schema';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { Orientation } from '../../types/orientation';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { watchValidator } from '../../utils/prop.validators';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
-import { API, ListStyleType, States } from './types';
 
+import type { JSX } from '@stencil/core';
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
 	props.links.map((link, index: number) => {
@@ -39,7 +36,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 	},
 	shadow: true,
 })
-export class KolLinkGroup implements API {
+export class KolLinkGroup implements LinkGroupAPI {
 	public render(): JSX.Element {
 		return (
 			<nav
@@ -84,8 +81,8 @@ export class KolLinkGroup implements API {
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	@State() public state: States = {
-		_label: '…', // ⚠ required
+	@State() public state: LinkGroupStates = {
+		_label: '', // ⚠ required
 		_listStyleType: 'disc',
 		_links: [],
 		_orientation: 'vertical',
@@ -96,7 +93,9 @@ export class KolLinkGroup implements API {
 		if (!initial) {
 			removeNavLabel(this.state._label); // remove the current
 		}
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
@@ -129,7 +128,8 @@ export class KolLinkGroup implements API {
 				}
 			},
 			new Set(['https://www.w3schools.com/tags/tag_ol.asp']),
-			value
+			value,
+			{ defaultValue: 'disc' }
 		);
 	}
 

@@ -744,9 +744,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		textarea::placeholder {
 			color: var(--default-border);
 		}
-		textarea:read-only,
 		textarea:disabled {
 			cursor: not-allowed;
+		}
+		textarea:disabled,
+		textarea:read-only {
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
 		}
@@ -1522,6 +1524,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-TOAST-CONTAINER': `:host {
 		top: 1rem;
 		width: 750px;
+		max-width: 100%;
 		left: 50%;
 		transform: translateX(-50%);
 	}
