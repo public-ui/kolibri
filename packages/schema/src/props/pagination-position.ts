@@ -21,7 +21,7 @@ export const validatePaginationPosition = (component: Generic.Element.Component,
 		new Set([`PaginationPositionPropType {${paginationPositionPropTypeOptions.join(', ')}`]),
 		value,
 		{
-			defaultValue: 'both',
+			defaultValue: 'bottom',
 		},
 	);
 };

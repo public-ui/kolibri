@@ -764,7 +764,7 @@ export class KolTable implements TableAPI {
 		return (
 			<div class="pagination">
 				<span>
-					{translate('kol-entries-display-label', {
+					{translate('kol-table-visible-range', {
 						placeholders: {
 							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
 							end: this.pageEndSlice.toString(),

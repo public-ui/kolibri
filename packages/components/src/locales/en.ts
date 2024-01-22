@@ -33,5 +33,5 @@ export default {
 	'error-list': 'Error list',
 	'error-list-message': 'Please correct the following errors',
 	version: 'Version number',
-	'entries-display-label': 'Entries {{start}} to {{end}} of {{total}}',
+	'table-visible-range': 'Entries {{start}} to {{end}} of {{total}}',
 };
