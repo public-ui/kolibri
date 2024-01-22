@@ -800,8 +800,8 @@ importers:
         specifier: 4.1.5
         version: 4.1.5
       playwright:
-        specifier: 1.40.1
-        version: 1.40.1
+        specifier: 1.41.1
+        version: 1.41.1
       react-dev-utils:
         specifier: 12.0.1
         version: 12.0.1(eslint@8.56.0)(typescript@5.3.3)(webpack@5.89.0)
@@ -1016,7 +1016,7 @@ importers:
         version: 3.0.2
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@types/node@20.11.3)(typescript@4.6.2)
+        version: 10.9.2(@types/node@20.11.5)(typescript@4.6.2)
 
   packages/samples/vite:
     dependencies:
@@ -1351,7 +1351,7 @@ importers:
         version: link:../../samples/react
       axe-playwright:
         specifier: 1.2.3
-        version: 1.2.3(playwright@1.40.1)
+        version: 1.2.3(playwright@1.41.1)
       portfinder:
         specifier: 1.0.32
         version: 1.0.32
@@ -1379,7 +1379,7 @@ importers:
         version: 0.3.0(eslint@8.56.0)
       knip:
         specifier: 3.13.2
-        version: 3.13.2(@types/node@20.11.3)(typescript@5.3.3)
+        version: 3.13.2(@types/node@20.11.5)(typescript@5.3.3)
       prettier:
         specifier: 3.1.1
         version: 3.1.1
@@ -7724,8 +7724,8 @@ packages:
     dependencies:
       undici-types: 5.26.5
 
-  /@types/node@20.11.3:
-    resolution: {integrity: sha512-nrlmbvGPNGaj84IJZXMPhQuCMEVTT/hXZMJJG/aIqVL9fKxqk814sGGtJA4GI6hpJSLQjpi6cn0Qx9eOf9SDVg==}
+  /@types/node@20.11.5:
+    resolution: {integrity: sha512-g557vgQjUUfN76MZAN/dt1z3dzcUsimuysco0KeluHgrPdJXkP/XdAURgyO2W9fZWHRtRBiVKzKn8vyOAwlG+w==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -9515,7 +9515,7 @@ packages:
       rimraf: 3.0.2
     dev: false
 
-  /axe-playwright@1.2.3(playwright@1.40.1):
+  /axe-playwright@1.2.3(playwright@1.41.1):
     resolution: {integrity: sha512-bTxCTNp3kx6sQRMjmuLv8pG3+v+kOCvFXATim1+XUXzW6ykulbbuJdQfgB+vQPNAF9uvYbW2qrv9pg81ZSFV/A==}
     peerDependencies:
       playwright: '>1.0.0'
@@ -9523,7 +9523,7 @@ packages:
       axe-core: 4.8.1
       axe-html-reporter: 2.2.3(axe-core@4.8.1)
       picocolors: 1.0.0
-      playwright: 1.40.1
+      playwright: 1.41.1
     dev: false
 
   /axios@1.6.2:
@@ -15801,7 +15801,7 @@ packages:
       - domexception
     dev: true
 
-  /knip@3.13.2(@types/node@20.11.3)(typescript@5.3.3):
+  /knip@3.13.2(@types/node@20.11.5)(typescript@5.3.3):
     resolution: {integrity: sha512-izf5dvW+7fG0OfeZKyJTdhmrgQE1ltoxhPnNxYUKnPEBUMDEb61N2LD6SESKEpt4b6Mmbj4h9Tr4/14zcb7PSA==}
     engines: {node: '>=18.6.0'}
     hasBin: true
@@ -15816,7 +15816,7 @@ packages:
       '@pnpm/logger': 5.0.0
       '@pnpm/workspace.pkgs-graph': 2.0.13(@pnpm/logger@5.0.0)
       '@snyk/github-codeowners': 1.1.0
-      '@types/node': 20.11.3
+      '@types/node': 20.11.5
       easy-table: 1.2.0
       fast-glob: 3.3.2
       globby: 14.0.0
@@ -18608,12 +18608,26 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
+  /playwright-core@1.41.1:
+    resolution: {integrity: sha512-/KPO5DzXSMlxSX77wy+HihKGOunh3hqndhqeo/nMxfigiKzogn8kfL0ZBDu0L1RKgan5XHCPmn6zXd2NUJgjhg==}
+    engines: {node: '>=16'}
+    hasBin: true
+
   /playwright@1.40.1:
     resolution: {integrity: sha512-2eHI7IioIpQ0bS1Ovg/HszsN/XKNwEG1kbzSDDmADpclKc7CyqkHw7Mg2JCz/bbCxg25QUPcjksoMW7JcIFQmw==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
       playwright-core: 1.40.1
+    optionalDependencies:
+      fsevents: 2.3.2
+
+  /playwright@1.41.1:
+    resolution: {integrity: sha512-gdZAWG97oUnbBdRL3GuBvX3nDDmUOuqzV/D24dytqlKt+eI5KbwusluZRGljx1YoJKZ2NRPaeWiFTeGZO7SosQ==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.41.1
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -22108,7 +22122,7 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-node@10.9.2(@types/node@20.11.3)(typescript@4.6.2):
+  /ts-node@10.9.2(@types/node@20.11.5)(typescript@4.6.2):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -22127,7 +22141,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.11.3
+      '@types/node': 20.11.5
       acorn: 8.11.2
       acorn-walk: 8.2.0
       arg: 4.1.3
