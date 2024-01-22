@@ -19,15 +19,15 @@ noch die Icons ausgegeben.
 	_label="Navigation"
 	_links="[
 		{
-			_href: 'startseite',
-			_icons: 'codicon codicon-home',
-			_label: 'Startseite',
-			_children: [
-				{ _href: 'startseite/1-untermenuepunkt', _icons: 'codicon codicon-home', _label: '1. Untermenüpunkt' },
-				{ _href: 'startseite/2-untermenuepunkt', _icons: 'codicon codicon-home', _label: '2. Untermenüpunkt' },
+			'_href': 'startseite',
+			'_icons': 'codicon codicon-home',
+			'_label': 'Startseite',
+			'_children': [
+				{ '_href': 'startseite/1-untermenuepunkt', _icons: 'codicon codicon-home', _label: '1. Untermenüpunkt' },
+				{ '_href': 'startseite/2-untermenuepunkt', _icons: 'codicon codicon-home', _label: '2. Untermenüpunkt' },
 			],
 		},
-		{ _href: 'unterseite', _icons: 'codicon codicon-home', _label: '2. Menüpunkt' },
+		{ '_href': 'unterseite', _icons: 'codicon codicon-home', _label: '2. Menüpunkt' },
 	]"
 ></kol-nav>
 ```
