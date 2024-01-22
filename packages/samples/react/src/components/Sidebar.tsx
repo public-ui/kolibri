@@ -81,7 +81,12 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 								<ul className="list-inside ml p0">
 									{Object.keys(children).map((childName) => (
 										<li key={`${parentName}/${childName}`}>
-											<KolLink _label={childName} _href={`#/${parentName}/${childName}`} _on={{ onClick: handleLinkClick }} />
+											{/* Handle special case for nested routes in tree example - this might need a proper refactoring in the future  */}
+											{parentName === 'tree' && childName === 'basic/:subPage' ? (
+												<KolLink _label="basic" _href={`#/${parentName}/basic/home`} _on={{ onClick: handleLinkClick }} />
+											) : (
+												<KolLink _label={childName} _href={`#/${parentName}/${childName}`} _on={{ onClick: handleLinkClick }} />
+											)}
 										</li>
 									))}
 								</ul>
