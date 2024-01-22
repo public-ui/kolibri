@@ -1,15 +1,19 @@
-import type { Generic } from 'adopted-style-sheets';
+import type {
+	InputDateProps,
+	InputDateType,
+	InputDateWatches,
+	InputTypeOnDefault,
+	InputTypeOnOff,
+	Iso8601,
+	ReadOnlyPropType,
+	SuggestionsPropType,
+} from '@public-ui/schema';
+import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchNumber, watchValidator } from '@public-ui/schema';
 
-import { InputDateType, inputDateTypeOptions } from '../../types/input/control/number';
-import { Iso8601 } from '../../types/input/iso8601';
-import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { ReadOnlyPropType, validateReadOnly } from '../../types/props/read-only';
-import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
-import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
-import { Props, Watches } from './types';
 
-export class InputDateController extends InputIconController implements Watches {
+import type { Generic } from 'adopted-style-sheets';
+export class InputDateController extends InputIconController implements InputDateWatches {
 	// test: https://regex101.com/r/NTVh4L/1
 	private static readonly isoDateRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/;
 	private static readonly isoLocalDateTimeRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])[T ][0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
@@ -19,9 +23,9 @@ export class InputDateController extends InputIconController implements Watches 
 
 	private static readonly DEFAULT_MAX_DATE = new Date(9999, 11, 31, 23, 59, 59);
 
-	protected readonly component: Generic.Element.Component & Props;
+	protected readonly component: Generic.Element.Component & InputDateProps;
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & InputDateProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
@@ -110,8 +114,8 @@ export class InputDateController extends InputIconController implements Watches 
 		);
 	};
 
-	protected onChange(event: Event): void {
-		super.onChange(event);
+	protected onBlur(event: Event): void {
+		super.onBlur(event);
 
 		// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
 		if (!!(event.target as HTMLInputElement).value !== !!this.component._value) {

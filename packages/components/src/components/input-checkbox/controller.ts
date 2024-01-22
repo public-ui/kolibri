@@ -1,18 +1,23 @@
-import type { Generic } from 'adopted-style-sheets';
+import type {
+	CheckedPropType,
+	IndeterminatePropType,
+	InputCheckboxIconsProp,
+	InputCheckboxIconsState,
+	InputCheckboxProps,
+	InputCheckboxVariant,
+	InputCheckboxWatches,
+	StencilUnknown,
+	Stringified,
+} from '@public-ui/schema';
+import { inputCheckboxVariantOptions, isString, setState, validateChecked, validateIndeterminate, watchValidator } from '@public-ui/schema';
 
-import { Stringified } from '../../types/common';
-import { CheckedPropType, validateChecked } from '../../types/props/checked';
-import { IndeterminatePropType, validateIndeterminate } from '../../types/props/indeterminate';
-import { StencilUnknown } from '../../types/unknown';
-import { setState, watchValidator } from '../../utils/prop.validators';
-import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
-import { InputCheckboxIconsProp, InputCheckboxIconsState, InputCheckboxVariant, Props, Watches, inputCheckboxVariantOptions } from './types';
 
-export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
-	protected readonly component: Generic.Element.Component & Props;
+import type { Generic } from 'adopted-style-sheets';
+export class InputCheckboxController extends InputCheckboxRadioController implements InputCheckboxWatches {
+	protected readonly component: Generic.Element.Component & InputCheckboxProps;
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & InputCheckboxProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
