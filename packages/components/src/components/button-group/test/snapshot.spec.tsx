@@ -1,13 +1,15 @@
 import { executeTests } from 'stencil-awesome-test';
 
 import { h } from '@stencil/core';
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { Props } from '../types';
 import { getButtonGroupHtml } from './html.mock';
 
-executeTests<Props>(
+import type { SpecPage } from '@stencil/core/testing';
+import type { ButtonGroupProps } from '@public-ui/schema';
+
+executeTests<ButtonGroupProps>(
 	'ButtonGroup',
 	async (props): Promise<SpecPage> => {
 		return await newSpecPage({

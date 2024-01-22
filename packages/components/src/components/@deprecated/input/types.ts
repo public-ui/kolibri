@@ -1,9 +1,5 @@
+import type { ButtonProps, InputTypeOnDefault, PropLabelWithExpertSlot, Stringified } from '@public-ui/schema';
 import type { Generic } from 'adopted-style-sheets';
-
-import { Stringified } from '../../../types/common';
-import { InputTypeOnDefault } from '../../../types/input/types';
-import { PropLabelWithExpertSlot } from '../../../types/props/label';
-import { Props as ButtonProps } from '../../button/types';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = PropLabelWithExpertSlot & {

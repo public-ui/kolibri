@@ -1,10 +1,11 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { getBadgeHtml } from '../../badge/test/html.mock';
-import { SpanOptions } from '../../span/test/html.mock';
-import { Props } from '../types';
 
-export const getVersionHtml = (props: Props, options?: SpanOptions): string => {
+import type { SpanOptions } from '../../span/test/html.mock';
+import type { VersionProps } from '@public-ui/schema';
+
+export const getVersionHtml = (props: VersionProps, options?: SpanOptions): string => {
 	props = mixMembers(
 		{
 			_label: '0.0.0-alpha.0',
@@ -17,8 +18,8 @@ export const getVersionHtml = (props: Props, options?: SpanOptions): string => {
     ${getBadgeHtml(
 			{
 				_color: '#BEC5C9',
-				_icons: 'codicon codicon-versions',
-				_label: `v${props._label || '0.0.0-alpha.0'}`,
+				_icons: { left: { icon: 'codicon codicon-versions', label: 'kol-version' } },
+				_label: props._label || '0.0.0-alpha.0',
 			},
 			options
 		)}
