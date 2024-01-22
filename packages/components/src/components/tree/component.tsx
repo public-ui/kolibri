@@ -46,7 +46,7 @@ export class KolTreeWc implements TreeAPI {
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 
-		this.updateTreeItemElements();
+		this.handleTreeChange();
 		this.observeChildListMutations();
 	}
 
@@ -55,13 +55,13 @@ export class KolTreeWc implements TreeAPI {
 	}
 
 	private observeChildListMutations() {
-		this.observer = new MutationObserver(this.updateTreeItemElements.bind(this));
+		this.observer = new MutationObserver(this.handleTreeChange.bind(this));
 		this.observeTopLevelItems();
 	}
 
 	private handleSlotchange() {
 		this.observeTopLevelItems();
-		this.updateTreeItemElements();
+		this.handleTreeChange();
 	}
 
 	private observeTopLevelItems() {
@@ -74,8 +74,9 @@ export class KolTreeWc implements TreeAPI {
 		return (this.host.querySelector('slot')?.assignedNodes() as HTMLElement[]).filter(KolTreeWc.isTreeItem);
 	}
 
-	private updateTreeItemElements(): void {
+	private handleTreeChange(): void {
 		this.treeItemElements = this.getTreeItemElements();
+		void this.ensureActiveItemVisibility();
 	}
 
 	/**
@@ -155,9 +156,16 @@ export class KolTreeWc implements TreeAPI {
 		}
 	}
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Listen('focusout')
 	public async handleFocusOut(event: FocusEvent) {
+		if (event.relatedTarget && !(event.relatedTarget as Element).closest('kol-tree')) {
+			/* Tree lost focus */
+			await this.ensureActiveItemVisibility();
+		}
+	}
+
+	// eslint-disable-next-line @typescript-eslint/require-await
+	private async ensureActiveItemVisibility() {
 		const findActiveItem = (): HTMLKolTreeItemElement | undefined => {
 			const rootNodes = (this.host.querySelector('slot')?.assignedNodes() as HTMLElement[]).filter(KolTreeWc.isTreeItem);
 			for (const rootNode of rootNodes) {
@@ -178,12 +186,9 @@ export class KolTreeWc implements TreeAPI {
 			}
 		};
 
-		if (event.relatedTarget && !(event.relatedTarget as Element).closest('kol-tree')) {
-			/* Tree lost focus */
-			const target = findActiveItem();
-			if (target) {
-				expandParentElements(target);
-			}
+		const target = findActiveItem();
+		if (target) {
+			expandParentElements(target);
 		}
 	}
 }
