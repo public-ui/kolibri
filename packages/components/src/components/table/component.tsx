@@ -760,12 +760,22 @@ export class KolTable implements TableAPI {
 		return <tfoot>{rows.map(this.renderTableRow)}</tfoot>;
 	};
 
-	private renderPagination(position: 'pagination-top' | 'pagination-bottom'): JSX.Element {
+	private renderPagination(): JSX.Element {
 		return (
-			<div class={`pagination ${position}`}>
+			<div class="pagination">
 				<span>
-					Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
-					{this.state._pagination._max || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
+					{translate('kol-entries-display-label', {
+						placeholders: {
+							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
+							end: this.pageEndSlice.toString(),
+							total:
+								this.state._pagination && this.state._pagination._max > 0
+									? this.state._pagination._max.toString()
+									: Array.isArray(this.state._data)
+									? this.state._data.length.toString()
+									: '0',
+						},
+					})}
 				</span>
 				<div>
 					<kol-pagination
@@ -792,8 +802,8 @@ export class KolTable implements TableAPI {
 			this.state._pagination._page || 1
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
-		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination('pagination-top') : null;
-		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('pagination-bottom') : null;
+		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination() : null;
+		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination() : null;
 
 		return (
 			<Host>

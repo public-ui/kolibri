@@ -17,6 +17,6 @@ const PAGINATION: KoliBriTablePaginationProps = { _page: 2 };
 
 export const TableWithPagination: FC = () => (
 	<div>
-		<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="bottom"></KolTable>
+		<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTable>
 	</div>
 );

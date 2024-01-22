@@ -18,7 +18,7 @@ export const validatePaginationPosition = (component: Generic.Element.Component,
 		component,
 		`_paginationPosition`,
 		(value) => typeof value === 'string' && paginationPositionPropTypeOptions.includes(value),
-		new Set([`KoliBripaginationPosition {${paginationPositionPropTypeOptions.join(', ')}`]),
+		new Set([`PaginationPositionPropType {${paginationPositionPropTypeOptions.join(', ')}`]),
 		value,
 		{
 			defaultValue: 'both',
