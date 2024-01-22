@@ -89,7 +89,7 @@
 		"@types/twig": "1.12.16",
 		"@types/wcag-contrast": "3.0.3",
 		"@typescript-eslint/eslint-plugin": "6.18.1",
-		"@typescript-eslint/parser": "6.18.1",
+		"@typescript-eslint/parser": "6.19.0",
 		"autoprefixer": "10.4.16",
 		"clean-css": "5.3.3",
 		"color-rgba": "2.4.0",
