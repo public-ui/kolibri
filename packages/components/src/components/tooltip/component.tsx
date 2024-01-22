@@ -1,21 +1,18 @@
 import { autoUpdate } from '@floating-ui/dom';
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { getDocument, validateAccessKey, validateAlign, validateId, validateLabel } from '@public-ui/schema';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
-import { AlignPropType, validateAlign } from '../../types/props/align';
-import { IdPropType, validateId } from '../../types/props/id';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
-import { getDocument } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
-import { API, States } from './types';
 
+import type { AccessKeyPropType, AlignPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-tooltip-wc',
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolTooltip implements API {
+export class KolTooltip implements TooltipAPI {
 	@Element() private host!: HTMLKolTooltipWcElement;
 
 	private arrowElement?: HTMLDivElement;
@@ -141,7 +138,7 @@ export class KolTooltip implements API {
 	 */
 	@Prop() public _label!: LabelPropType;
 
-	@State() public state: States = {
+	@State() public state: TooltipStates = {
 		_align: 'top',
 		_label: '', // ⚠ required
 	};

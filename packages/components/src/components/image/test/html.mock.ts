@@ -1,9 +1,8 @@
+import type { ImageProps, ImageStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 
-import { Props, States } from '../types';
-
-export const getImageHtml = (props: Props, additionalAttrs = ''): string => {
-	const state = mixMembers<Props, States>(
+export const getImageHtml = (props: ImageProps, additionalAttrs = ''): string => {
+	const state = mixMembers<ImageProps, ImageStates>(
 		{
 			_alt: '', // ⚠ required
 			_loading: 'lazy',

@@ -1,17 +1,32 @@
-import type { Generic } from 'adopted-style-sheets';
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type {
+	AlignPropType,
+	ButtonCallbacksPropType,
+	KoliBriTabsCallbacks,
+	LabelPropType,
+	StencilUnknown,
+	Stringified,
+	TabButtonProps,
+	TabsAPI,
+	TabsStates,
+} from '@public-ui/schema';
+import {
+	devHint,
+	featureHint,
+	koliBriQuerySelector,
+	Log,
+	setState,
+	uiUxHintMillerscheZahl,
+	validateAlign,
+	validateLabel,
+	watchJsonArrayString,
+	watchNumber,
+} from '@public-ui/schema';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { Stringified } from '../../types/common';
-import { AlignPropType, validateAlign } from '../../types/props/align';
-import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { StencilUnknown } from '../../types/unknown';
-import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
-import { Log } from '../../utils/dev.utils';
-import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
-import { API, KoliBriTabsCallbacks, States, TabButtonProps } from './types';
 
+import type { JSX } from '@stencil/core';
+import type { Generic } from 'adopted-style-sheets';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 @Component({
@@ -21,7 +36,7 @@ import { API, KoliBriTabsCallbacks, States, TabButtonProps } from './types';
 	},
 	shadow: true,
 })
-export class KolTabs implements API {
+export class KolTabs implements TabsAPI {
 	@Element() private readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
@@ -170,7 +185,7 @@ export class KolTabs implements API {
 	 */
 	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
 
-	@State() public state: States = {
+	@State() public state: TabsStates = {
 		_align: 'top',
 		_label: '', // ⚠ required
 		_selected: 0,

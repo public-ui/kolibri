@@ -1,10 +1,6 @@
-import { Component, h, JSX, Prop } from '@stencil/core';
-
-import { Stringified } from '../../types/common';
-import { KoliBriIconsProp } from '../../types/icons';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { Props } from './types';
-import { AccessKeyPropType } from '../../types/props/access-key';
+import type { AccessKeyPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanProps, Stringified } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
 	tag: 'kol-span',
@@ -13,7 +9,7 @@ import { AccessKeyPropType } from '../../types/props/access-key';
 	},
 	shadow: true,
 })
-export class KolSpan implements Props {
+export class KolSpan implements SpanProps {
 	public render(): JSX.Element {
 		return (
 			<kol-span-wc _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey}>

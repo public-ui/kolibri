@@ -1,13 +1,14 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { watchBoolean, watchString } from '../../utils/prop.validators';
+import type { InputFileProps, InputFileWatches } from '@public-ui/schema';
+import { watchBoolean, watchString } from '@public-ui/schema';
+
 import { InputIconController } from '../@deprecated/input/controller-icon';
-import { Props, Watches } from './types';
 
-export class InputFileController extends InputIconController implements Watches {
-	protected readonly component: Generic.Element.Component & Props;
+export class InputFileController extends InputIconController implements InputFileWatches {
+	protected readonly component: Generic.Element.Component & InputFileProps;
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & InputFileProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
