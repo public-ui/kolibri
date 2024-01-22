@@ -23,6 +23,7 @@ import type {
 	TableAPI,
 	TableStates,
 } from '@public-ui/schema';
+import { validatePaginationPosition, PaginationPositionPropType } from '@public-ui/schema';
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
@@ -98,6 +99,10 @@ export class KolTable implements TableAPI {
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
+	/**
+	 * Controls the position of the pagination.
+	 */
+	@Prop() public _paginationPosition?: PaginationPositionPropType = 'bottom';
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
@@ -114,6 +119,7 @@ export class KolTable implements TableAPI {
 			_max: 0,
 		},
 		_sortedData: [],
+		_paginationPosition: 'bottom',
 	};
 
 	@Watch('_allowMultiSort')
@@ -170,6 +176,11 @@ export class KolTable implements TableAPI {
 				}
 			});
 		});
+	}
+
+	@Watch('_paginationPosition')
+	public validatePaginationPosition(value?: PaginationPositionPropType): void {
+		validatePaginationPosition(this, value);
 	}
 
 	/**
@@ -381,6 +392,7 @@ export class KolTable implements TableAPI {
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
+		this.validatePaginationPosition(this._paginationPosition);
 	}
 
 	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[]): number {
@@ -748,6 +760,41 @@ export class KolTable implements TableAPI {
 		return <tfoot>{rows.map(this.renderTableRow)}</tfoot>;
 	};
 
+	private renderPagination(): JSX.Element {
+		return (
+			<div class="pagination">
+				<span>
+					{translate('kol-table-visible-range', {
+						placeholders: {
+							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
+							end: this.pageEndSlice.toString(),
+							total:
+								this.state._pagination && this.state._pagination._max > 0
+									? this.state._pagination._max.toString()
+									: Array.isArray(this.state._data)
+									? this.state._data.length.toString()
+									: '0',
+						},
+					})}
+				</span>
+				<div>
+					<kol-pagination
+						_boundaryCount={this.state._pagination._boundaryCount}
+						_customClass={this.state._pagination._customClass}
+						_on={this.handlePagination}
+						_page={this.state._pagination._page}
+						_pageSize={this.state._pagination._pageSize}
+						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
+						_siblingCount={this.state._pagination._siblingCount}
+						_tooltipAlign="bottom"
+						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+						_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
+					></kol-pagination>
+				</div>
+			</div>
+		);
+	}
+
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
@@ -755,31 +802,12 @@ export class KolTable implements TableAPI {
 			this.state._pagination._page || 1
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
+		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination() : null;
+		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination() : null;
 
 		return (
 			<Host>
-				{this.pageEndSlice > 0 && this.showPagination && (
-					<div class="pagination">
-						<span>
-							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
-							{this.state._pagination._max || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
-						</span>
-						<div>
-							<kol-pagination
-								_boundaryCount={this.state._pagination._boundaryCount}
-								_customClass={this.state._pagination._customClass}
-								_on={this.handlePagination}
-								_page={this.state._pagination._page}
-								_pageSize={this.state._pagination._pageSize}
-								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
-								_siblingCount={this.state._pagination._siblingCount}
-								_tooltipAlign="bottom"
-								_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
-								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
-							></kol-pagination>
-						</div>
-					</div>
-				)}
+				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<div class="table" tabindex="0">
 					<table
 						style={{
@@ -888,6 +916,7 @@ export class KolTable implements TableAPI {
 						{this.state._dataFoot.length > 0 ? this.renderFoot() : ''}
 					</table>
 				</div>
+				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
 		);
 	}

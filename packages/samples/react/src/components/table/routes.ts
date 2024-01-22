@@ -5,6 +5,7 @@ import { TableColumnAlignment } from './column-alignment';
 import { TableRenderCell } from './render-cell';
 import { TableSortData } from './sort-data';
 import { TableWithPagination } from './with-pagination';
+import { PaginationPosition } from './pagination-position';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
@@ -13,5 +14,6 @@ export const TABLE_ROUTES: Routes = {
 		'render-cell': TableRenderCell,
 		'sort-data': TableSortData,
 		'with-pagination': TableWithPagination,
+		'pagination-position': PaginationPosition,
 	},
 };
