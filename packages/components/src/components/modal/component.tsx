@@ -1,13 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '@public-ui/schema';
+import { featureHint, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { KoliBriModalEventCallbacks } from '../../types/modal';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { featureHint } from '../../utils/a11y.tipps';
 import { getKoliBri } from '../../utils/dev.utils';
-import { setState, watchString, watchValidator } from '../../utils/prop.validators';
-import { ModalService } from './service';
-import { API, States } from './types';
+
+import type { JSX } from '@stencil/core';
+import type { ModalService } from './service';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -24,7 +23,7 @@ import { API, States } from './types';
 	},
 	shadow: true,
 })
-export class KolModal implements API {
+export class KolModal implements ModalAPI {
 	private hostElement?: HTMLElement;
 
 	public componentDidRender(): void {
@@ -102,9 +101,9 @@ export class KolModal implements API {
 	 */
 	@Prop() public _width?: string = '100%';
 
-	@State() public state: States = {
+	@State() public state: ModalStates = {
 		_activeElement: null,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_width: '100%',
 	};
 
@@ -125,7 +124,9 @@ export class KolModal implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_on')

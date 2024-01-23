@@ -6,7 +6,6 @@ import { defineCustomElements } from '@public-ui/components/dist/loader';
 import type { Generic } from 'adopted-style-sheets';
 import { register } from '@public-ui/components';
 import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
-import { TH } from '@public-oss/kolibri-themes';
 import { App } from './App';
 
 type Theme = Generic.Theming.RegisterPatch<string, string, string>;
@@ -23,7 +22,7 @@ void (async () => {
 	} else {
 		/* Regular mode: Register all known themes. */
 		try {
-			await register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund, TH], defineCustomElements, {
+			await register([BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund], defineCustomElements, {
 				theme: {
 					detect: 'auto',
 				},

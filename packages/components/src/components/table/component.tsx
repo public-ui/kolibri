@@ -1,16 +1,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import type { Generic } from 'adopted-style-sheets';
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { devHint, emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { Stringified } from '../../types/common';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { devHint } from '../../utils/a11y.tipps';
-import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
-import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
-import {
-	API,
+
+import type {
 	KoliBriDataCompareFn,
+	KoliBriPaginationButtonCallbacks,
 	KoliBriSortDirection,
 	KoliBriSortFunction,
 	KoliBriTableCell,
@@ -21,12 +18,17 @@ import {
 	KoliBriTablePaginationProps,
 	KoliBriTableRender,
 	KoliBriTableSelectedHead,
-	States,
-} from './types';
-
+	LabelPropType,
+	Stringified,
+	TableAPI,
+	TableStates,
+} from '@public-ui/schema';
+import { validatePaginationPosition, PaginationPositionPropType } from '@public-ui/schema';
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+
+const paginationValidator = (value: unknown) => value === true || value === '' /* true */ || (typeof value === 'object' && value !== null);
 
 type SortData = {
 	label: string;
@@ -42,7 +44,7 @@ type SortData = {
 	},
 	shadow: true,
 })
-export class KolTable implements API {
+export class KolTable implements TableAPI {
 	private horizontal = true;
 	/**
 	 * @deprecated only for backward compatibility
@@ -97,10 +99,14 @@ export class KolTable implements API {
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
+	/**
+	 * Controls the position of the pagination.
+	 */
+	@Prop() public _paginationPosition?: PaginationPositionPropType = 'bottom';
 
-	@State() public state: States = {
+	@State() public state: TableStates = {
 		_allowMultiSort: false,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_data: [],
 		_dataFoot: [],
 		_headers: {
@@ -113,6 +119,7 @@ export class KolTable implements API {
 			_max: 0,
 		},
 		_sortedData: [],
+		_paginationPosition: 'bottom',
 	};
 
 	@Watch('_allowMultiSort')
@@ -169,6 +176,11 @@ export class KolTable implements API {
 				}
 			});
 		});
+	}
+
+	@Watch('_paginationPosition')
+	public validatePaginationPosition(value?: PaginationPositionPropType): void {
+		validatePaginationPosition(this, value);
 	}
 
 	/**
@@ -302,7 +314,9 @@ export class KolTable implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_minWidth')
@@ -343,25 +357,31 @@ export class KolTable implements API {
 		},
 	};
 
-	private readonly beforePatchPagination: Generic.Element.NextStateHooksCallback = (nextValue, _nextState, _component, key): void => {
-		if (key === '_pagination') {
-			this.showPagination = nextValue === true || nextValue === '' /* true */ || (typeof nextValue === 'object' && nextValue !== null);
-		}
-	};
-
 	@Watch('_pagination')
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
 		try {
-			value = parseJson<KoliBriTablePaginationProps>(value);
+			value = parseJson<boolean | KoliBriTablePaginationProps>(value);
 			// eslint-disable-next-line no-empty
 		} catch (e) {
 			// value behält den ursprünglichen Wert
 		}
-		watchValidator(this, '_pagination', () => true, new Set(['boolean', 'KoliBriTablePagination']), value, {
-			hooks: {
-				beforePatch: this.beforePatchPagination,
-			},
-		});
+
+		this.showPagination = paginationValidator(value);
+
+		watchValidator<boolean | Stringified<KoliBriTablePaginationProps>>(
+			this,
+			'_pagination',
+			paginationValidator,
+			new Set(['boolean', 'KoliBriTablePagination']),
+			value,
+			{
+				defaultValue: {
+					_page: 1,
+					_pageSize: 10,
+					_max: 0,
+				},
+			}
+		);
 	}
 
 	public componentWillLoad(): void {
@@ -372,6 +392,7 @@ export class KolTable implements API {
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
+		this.validatePaginationPosition(this._paginationPosition);
 	}
 
 	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[]): number {
@@ -739,6 +760,41 @@ export class KolTable implements API {
 		return <tfoot>{rows.map(this.renderTableRow)}</tfoot>;
 	};
 
+	private renderPagination(): JSX.Element {
+		return (
+			<div class="pagination">
+				<span>
+					{translate('kol-table-visible-range', {
+						placeholders: {
+							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
+							end: this.pageEndSlice.toString(),
+							total:
+								this.state._pagination && this.state._pagination._max > 0
+									? this.state._pagination._max.toString()
+									: Array.isArray(this.state._data)
+									? this.state._data.length.toString()
+									: '0',
+						},
+					})}
+				</span>
+				<div>
+					<kol-pagination
+						_boundaryCount={this.state._pagination._boundaryCount}
+						_customClass={this.state._pagination._customClass}
+						_on={this.handlePagination}
+						_page={this.state._pagination._page}
+						_pageSize={this.state._pagination._pageSize}
+						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
+						_siblingCount={this.state._pagination._siblingCount}
+						_tooltipAlign="bottom"
+						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+						_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
+					></kol-pagination>
+				</div>
+			</div>
+		);
+	}
+
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
@@ -746,31 +802,12 @@ export class KolTable implements API {
 			this.state._pagination._page || 1
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
+		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination() : null;
+		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination() : null;
 
 		return (
 			<Host>
-				{this.pageEndSlice > 0 && this.showPagination && (
-					<div class="pagination">
-						<span>
-							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
-							{this.state._pagination._max || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
-						</span>
-						<div>
-							<kol-pagination
-								_boundaryCount={this.state._pagination._boundaryCount}
-								_customClass={this.state._pagination._customClass}
-								_on={this.handlePagination}
-								_page={this.state._pagination._page}
-								_pageSize={this.state._pagination._pageSize}
-								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
-								_siblingCount={this.state._pagination._siblingCount}
-								_tooltipAlign="bottom"
-								_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
-								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
-							></kol-pagination>
-						</div>
-					</div>
-				)}
+				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<div class="table" tabindex="0">
 					<table
 						style={{
@@ -879,6 +916,7 @@ export class KolTable implements API {
 						{this.state._dataFoot.length > 0 ? this.renderFoot() : ''}
 					</table>
 				</div>
+				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
 		);
 	}

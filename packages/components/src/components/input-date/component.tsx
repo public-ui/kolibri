@@ -1,27 +1,32 @@
-import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { propagateFocus, showExpertSlot } from '@public-ui/schema';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcons } from '../../types/icons';
-import { InputDateType } from '../../types/input/control/number';
-import { Iso8601 } from '../../types/input/iso8601';
-import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { HideErrorPropType } from '../../types/props/hide-error';
-import { IdPropType } from '../../types/props/id';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { NamePropType } from '../../types/props/name';
-import { ReadOnlyPropType } from '../../types/props/read-only';
-import { SuggestionsPropType } from '../../types/props/suggestions';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
-import { propagateFocus, showExpertSlot } from '../../utils/reuse';
-import { Props as ButtonProps } from '../button/types';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
-import { InputDateController } from './controller';
-import { ComponentApi, States } from './types';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
+import { InputDateController } from './controller';
 
+import type {
+	ButtonProps,
+	HideErrorPropType,
+	IdPropType,
+	InputDateAPI,
+	InputDateStates,
+	InputDateType,
+	InputTypeOnDefault,
+	InputTypeOnOff,
+	Iso8601,
+	KoliBriHorizontalIcons,
+	LabelWithExpertSlotPropType,
+	NamePropType,
+	ReadOnlyPropType,
+	Stringified,
+	SuggestionsPropType,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -32,7 +37,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 	},
 	shadow: true,
 })
-export class KolInputDate implements ComponentApi {
+export class KolInputDate implements InputDateAPI {
 	@Element() private readonly host?: HTMLKolInputDateElement;
 	private ref?: HTMLInputElement;
 
@@ -271,11 +276,11 @@ export class KolInputDate implements ComponentApi {
 	 */
 	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
 
-	@State() public state: States = {
+	@State() public state: InputDateStates = {
 		_autoComplete: 'off',
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
 		_type: 'datetime-local',

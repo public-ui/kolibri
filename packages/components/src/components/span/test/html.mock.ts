@@ -1,11 +1,10 @@
+import type { KoliBriCustomIcon, KoliBriIconsProp, SpanProps, SpanStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 
-import { KoliBriCustomIcon, KoliBriIconsProp } from '../../../types/icons';
-import { mapIconProp2State } from '../../../types/props/icons';
+import { mapIconProp2State, showExpertSlot } from '@public-ui/schema';
+
 import { md } from '../../../utils/markdown';
-import { showExpertSlot } from '../../../utils/reuse';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { Props, States } from '../types';
 
 type Slots = {
 	''?: string;
@@ -16,17 +15,17 @@ export type SpanOptions = {
 	additionalClassNames?: string[];
 };
 export const getSpanWcHtml = (
-	props: Props,
+	props: SpanProps,
 	slots: Slots = {
 		expert: undefined,
 	},
 	options?: SpanOptions
 ): string => {
-	const state = mixMembers<Props, States>(
+	const state = mixMembers<SpanProps, SpanStates>(
 		{
 			_allowMarkdown: false,
-			_icons: {},
 			_hideLabel: false,
+			_icons: {},
 			_label: '', // ⚠ required
 		},
 		props
@@ -46,7 +45,7 @@ export const getSpanWcHtml = (
 	${
 		icon.top
 			? getIconHtml({
-					_label: '',
+					_label: (icon.top as KoliBriCustomIcon).label ?? '',
 					_icons: (icon.top as KoliBriCustomIcon).icon,
 			  })
 			: ''
@@ -56,7 +55,7 @@ export const getSpanWcHtml = (
 			icon.left
 				? getIconHtml(
 						{
-							_label: '',
+							_label: (icon.left as KoliBriCustomIcon).label ?? '',
 							_icons: (icon.left as KoliBriCustomIcon).icon,
 						},
 						` class="icon left"`
@@ -77,7 +76,7 @@ export const getSpanWcHtml = (
 			icon.right
 				? getIconHtml(
 						{
-							_label: '',
+							_label: (icon.right as KoliBriCustomIcon).label ?? '',
 							_icons: (icon.right as KoliBriCustomIcon).icon,
 						},
 						` class="icon right"`
@@ -88,7 +87,7 @@ export const getSpanWcHtml = (
 	${
 		icon.bottom
 			? getIconHtml({
-					_label: '',
+					_label: (icon.bottom as KoliBriCustomIcon).label ?? '',
 					_icons: (icon.bottom as KoliBriCustomIcon).icon,
 			  })
 			: ''
@@ -97,7 +96,7 @@ export const getSpanWcHtml = (
 };
 
 export const getSpanHtml = (
-	props: Props,
+	props: SpanProps,
 	slots: Slots = {
 		expert: `<slot name="expert" slot="expert"></slot>`,
 	}

@@ -1,23 +1,27 @@
-import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	AdjustHeightPropType,
+	CSSResize,
+	HasCounterPropType,
+	HideErrorPropType,
+	IdPropType,
+	InputTypeOnDefault,
+	LabelWithExpertSlotPropType,
+	NamePropType,
+	RowsPropType,
+	SyncValueBySelectorPropType,
+	TextareaAPI,
+	TextareaStates,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import { propagateFocus, setState, showExpertSlot } from '@public-ui/schema';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { InputTypeOnDefault } from '../../types/input/types';
-import { AdjustHeightPropType } from '../../types/props/adjust-height';
-import { HasCounterPropType } from '../../types/props/has-counter';
-import { HideErrorPropType } from '../../types/props/hide-error';
-import { IdPropType } from '../../types/props/id';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { NamePropType } from '../../types/props/name';
-import { RowsPropType } from '../../types/props/rows';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
-import { setState } from '../../utils/prop.validators';
-import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { TextareaController } from './controller';
-import { API, CSSResize, States } from './types';
 
+import type { JSX } from '@stencil/core';
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
  */
@@ -41,7 +45,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	},
 	shadow: true,
 })
-export class KolTextarea implements API {
+export class KolTextarea implements TextareaAPI {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 	private ref?: HTMLTextAreaElement;
 
@@ -259,12 +263,12 @@ export class KolTextarea implements API {
 	 */
 	@Prop() public _value?: string;
 
-	@State() public state: States = {
+	@State() public state: TextareaStates = {
 		_adjustHeight: false,
 		_currentLength: 0,
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_resize: 'vertical',
 	};

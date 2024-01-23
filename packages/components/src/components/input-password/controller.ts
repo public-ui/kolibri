@@ -1,16 +1,14 @@
-import type { Generic } from 'adopted-style-sheets';
+import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff } from '@public-ui/schema';
+import { validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '@public-ui/schema';
 
-import { InputTypeOnOff } from '../../types/input/types';
-import { validateHasCounter } from '../../types/props/has-counter';
-import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
-import { Props, Watches } from './types';
 
-export class InputPasswordController extends InputIconController implements Watches {
-	protected readonly component: Generic.Element.Component & Props;
+import type { Generic } from 'adopted-style-sheets';
+export class InputPasswordController extends InputIconController implements InputPasswordWatches {
+	protected readonly component: Generic.Element.Component & InputPasswordProps;
 	private placeholderCache?: string;
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & InputPasswordProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}

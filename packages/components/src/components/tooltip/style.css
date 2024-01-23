@@ -29,7 +29,7 @@
 
 	kol-tooltip-wc .tooltip-arrow {
 		height: 10px;
-		position: fixed;
+		position: absolute;
 		transform: rotate(45deg);
 		width: 10px;
 		z-index: 999;

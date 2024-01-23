@@ -1,15 +1,15 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { LabelPropType, SymbolAPI, SymbolStates } from '@public-ui/schema';
+import { validateLabel, watchString } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { watchString } from '../../utils/prop.validators';
-import { API, States } from './types';
 
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-symbol',
 	shadow: false,
 })
-export class KolSymbol implements API {
+export class KolSymbol implements SymbolAPI {
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -30,14 +30,16 @@ export class KolSymbol implements API {
 	 */
 	@Prop() public _symbol!: string;
 
-	@State() public state: States = {
+	@State() public state: SymbolStates = {
 		_label: translate('kol-warning'),
-		_symbol: '…', // ⚠ required
+		_symbol: '', // ⚠ required
 	};
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_symbol')

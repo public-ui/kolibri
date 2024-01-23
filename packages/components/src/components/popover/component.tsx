@@ -1,11 +1,10 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { AlignPropType, PopoverAPI, PopoverStates, ShowPropType } from '@public-ui/schema';
+import { getDocument, validateAlign, validateShow } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { AlignPropType, validateAlign } from '../../types/props/align';
-import { ShowPropType, validateShow } from '../../types/props/show';
-import { getDocument } from '../../utils/dev.utils';
-import { API, States } from './types';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 
+import type { JSX } from '@stencil/core';
 /**
  * @slot - Der Inhalt des Popover.
  */
@@ -14,7 +13,7 @@ import { alignFloatingElements } from '../../utils/align-floating-elements';
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolPopover implements API {
+export class KolPopover implements PopoverAPI {
 	private arrowElement?: HTMLDivElement;
 	private popoverElement?: HTMLDivElement;
 	private triggerElement?: HTMLElement | null;
@@ -109,7 +108,7 @@ export class KolPopover implements API {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
-	@State() public state: States = {
+	@State() public state: PopoverStates = {
 		_align: 'top',
 		_show: false,
 		_visible: false,

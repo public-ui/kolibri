@@ -1,15 +1,16 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { showExpertSlot } from '../../../utils/reuse';
+import { showExpertSlot } from '@public-ui/schema';
+
 import { getIconHtml } from '../../icon/test/html.mock';
-import { LinkProps, States } from '../types';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
+import type { LinkProps, LinkStates } from '@public-ui/schema';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
-	const state = mixMembers<LinkProps, States>(
+	const state = mixMembers<LinkProps, LinkStates>(
 		{
-			_href: '…', // ⚠ required
+			_href: '', // ⚠ required
 			_hideLabel: false,
 			_icons: {},
 			_tooltipAlign: 'right',
@@ -25,7 +26,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
   <kol-link-wc>
 <a${isExternal && state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label} (kol-open-link-in-tab)"` : ''} class="${
 		state._hideLabel === true ? ' hide-label' : ''
-	}${isExternal ? ' external-link' : ''}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'}"${
+	}${isExternal ? ' external-link' : ''}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0);'}"${
 		typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
 	}${typeof state._download === 'string' ? ` download="${state._download}"` : ''}>
 			${getSpanWcHtml(
@@ -35,9 +36,6 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot>`,
-				},
-				{
-					additionalAttrs: '',
 				}
 			)}
 			${

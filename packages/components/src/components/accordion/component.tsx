@@ -1,17 +1,13 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { featureHint, propagateFocus, setState, validateLabel, validateOpen } from '@public-ui/schema';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { HeadingLevel } from '../../types/heading-level';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { OpenPropType, validateOpen } from '../../types/props/open';
-import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { setState } from '../../utils/prop.validators';
-import { propagateFocus } from '../../utils/reuse';
 import { watchHeadingLevel } from '../heading/validation';
-import { API, KoliBriAccordionCallbacks, States } from './types';
 
+import type { AccordionAPI, AccordionStates, HeadingLevel, KoliBriAccordionCallbacks, LabelPropType, OpenPropType } from '@public-ui/schema';
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
 - onClick auf der KolAccordion anwenden
@@ -30,7 +26,7 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 	},
 	shadow: true,
 })
-export class KolAccordion implements API {
+export class KolAccordion implements AccordionAPI {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 	private readonly nonce = nonce();
 
@@ -92,14 +88,16 @@ export class KolAccordion implements API {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
-	@State() public state: States = {
-		_label: '…', // ⚠ required
+	@State() public state: AccordionStates = {
+		_label: '', // ⚠ required
 		_level: 1,
 	};
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_level')

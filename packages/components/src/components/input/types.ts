@@ -1,22 +1,24 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcons } from '../../types/icons';
-import { PropAccessKey } from '../../types/props/access-key';
-import { PropAlert } from '../../types/props/alert';
-import { PropDisabled } from '../../types/props/disabled';
-import { PropHasCounter } from '../../types/props/has-counter';
-import { PropHideError } from '../../types/props/hide-error';
-import { PropHideLabel } from '../../types/props/hide-label';
-import { PropId } from '../../types/props/id';
-import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { PropReadOnly } from '../../types/props/read-only';
-import { PropRequired } from '../../types/props/required';
-import { PropSuggestions } from '../../types/props/suggestions';
-import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
-import { PropTooltipAlign } from '../../types/props/tooltip-align';
-import { PropTouched } from '../../types/props/touched';
-import { Props as ButtonProps } from '../button/types';
+import type {
+	ButtonProps,
+	KoliBriHorizontalIcons,
+	PropAccessKey,
+	PropAlert,
+	PropDisabled,
+	PropHasCounter,
+	PropHideError,
+	PropHideLabel,
+	PropId,
+	PropLabelWithExpertSlot,
+	PropReadOnly,
+	PropRequired,
+	PropSuggestions,
+	PropSyncValueBySelector,
+	PropTooltipAlign,
+	PropTouched,
+	Stringified,
+} from '@public-ui/schema';
 
 type RequiredProps = PropId & PropLabelWithExpertSlot;
 type OptionalProps = {
