@@ -85,6 +85,7 @@ export class KolTextarea implements TextareaAPI {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
+					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
 						{hasExpertSlot ? (
