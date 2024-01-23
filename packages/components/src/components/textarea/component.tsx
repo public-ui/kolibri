@@ -35,11 +35,6 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	return nextRows;
 };
 
-const resetTextareaHeight = (el: HTMLTextAreaElement, rows: number) => {
-	el.style.overflow = 'hidden';
-	el.rows = rows;
-};
-
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -58,6 +53,17 @@ export class KolTextarea implements TextareaAPI {
 		this.ref = ref;
 		propagateFocus(this.host, this.ref);
 	};
+
+	adjustTextareaHeight() {
+		setTimeout(() => {
+			const textarea = this.ref;
+			if (textarea) {
+				textarea.style.overflow = 'hidden';
+				textarea.style.height = 'auto';
+				textarea.style.height = `${textarea.scrollHeight}px`;
+			}
+		}, 0);
+	}
 
 	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
@@ -125,7 +131,6 @@ export class KolTextarea implements TextareaAPI {
 							spellcheck="false"
 							{...this.controller.onFacade}
 							onKeyUp={this.onKeyUp}
-							onBlur={this.onBlur}
 							style={{
 								resize: this.state._resize,
 							}}
@@ -279,8 +284,6 @@ export class KolTextarea implements TextareaAPI {
 		_resize: 'vertical',
 	};
 
-	private _initialRows?: number;
-
 	public constructor() {
 		this.controller = new TextareaController(this, 'textarea', this.host);
 	}
@@ -400,12 +403,14 @@ export class KolTextarea implements TextareaAPI {
 		this.controller.validateValue(value);
 	}
 
+	public componentDidLoad(): void {
+		this.adjustTextareaHeight();
+	}
+
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
-		this._initialRows = this._rows && this._rows;
 		this.controller.componentWillLoad();
-
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
@@ -416,12 +421,6 @@ export class KolTextarea implements TextareaAPI {
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.ref);
 			}
-		}
-	};
-
-	private readonly onBlur = () => {
-		if (this.ref instanceof HTMLTextAreaElement) {
-			resetTextareaHeight(this.ref, this._initialRows ? this._initialRows : 2);
 		}
 	};
 }
