@@ -14,7 +14,7 @@ import type {
 	TooltipAlignPropType,
 } from '@public-ui/schema';
 import { propagateFocus, setState, showExpertSlot } from '@public-ui/schema';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { getRenderStates } from '../input/controller';
@@ -53,17 +53,6 @@ export class KolTextarea implements TextareaAPI {
 		this.ref = ref;
 		propagateFocus(this.host, this.ref);
 	};
-
-	adjustTextareaHeight() {
-		setTimeout(() => {
-			const textarea = this.ref;
-			if (textarea) {
-				textarea.style.overflow = 'hidden';
-				textarea.style.height = 'auto';
-				textarea.style.height = `${textarea.scrollHeight}px`;
-			}
-		}, 0);
-	}
 
 	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
@@ -403,8 +392,19 @@ export class KolTextarea implements TextareaAPI {
 		this.controller.validateValue(value);
 	}
 
+	@Listen('input')
+	handleInput() {
+		if (this.ref instanceof HTMLTextAreaElement) {
+			this._rows = increaseTextareaHeight(this.ref);
+		}
+	}
+
 	public componentDidLoad(): void {
-		this.adjustTextareaHeight();
+		setTimeout(() => {
+			if (this.ref instanceof HTMLTextAreaElement) {
+				this._rows = increaseTextareaHeight(this.ref);
+			}
+		}, 0);
 	}
 
 	public componentWillLoad(): void {
