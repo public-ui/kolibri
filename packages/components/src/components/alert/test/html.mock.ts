@@ -4,9 +4,9 @@ import { translate } from '../../../i18n';
 import { getButtonWcHtml } from '../../button/test/html.mock';
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { Props } from '../types';
 
-export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''): string => {
+import type { AlertProps } from '@public-ui/schema';
+export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML = ''): string => {
 	props = mixMembers(
 		{
 			_level: 1,

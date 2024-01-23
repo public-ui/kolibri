@@ -1,9 +1,10 @@
 import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
+
+import { processEnv } from '@public-ui/schema';
 import { setMode } from '@stencil/core';
 
 import { register } from '../core';
 import { Log } from '../utils/dev.utils';
-import { processEnv } from '../utils/reuse';
 
 // ts-prune-ignore-next
 export default async (): Promise<void> => {

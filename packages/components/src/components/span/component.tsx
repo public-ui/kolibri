@@ -1,17 +1,11 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { AccessKeyPropType, HideLabelPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanAPI, SpanStates, Stringified } from '@public-ui/schema';
+import { showExpertSlot, validateAccessKey, validateHideLabel, validateIcons, validateLabelWithExpertSlot, watchBoolean } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { KoliBriIconsProp } from '../../types/icons';
-import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
-import { validateIcons } from '../../types/props/icons';
-import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { md } from '../../utils/markdown';
-import { watchBoolean } from '../../utils/prop.validators';
-import { showExpertSlot } from '../../utils/reuse';
-import { API, States } from './types';
-import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 import { InternalUnderlinedAccessKey } from './InternalUnderlinedAccessKey';
 
+import type { JSX } from '@stencil/core';
 /**
  * @internal
  */
@@ -19,7 +13,7 @@ import { InternalUnderlinedAccessKey } from './InternalUnderlinedAccessKey';
 	tag: 'kol-span-wc',
 	shadow: false,
 })
-export class KolSpanWc implements API {
+export class KolSpanWc implements SpanAPI {
 	public render(): JSX.Element {
 		const hideExpertSlot = !showExpertSlot(this.state._label);
 		return (
@@ -106,7 +100,7 @@ export class KolSpanWc implements API {
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
-	@State() public state: States = {
+	@State() public state: SpanStates = {
 		_allowMarkdown: false,
 		_hideLabel: false,
 		_icons: {},

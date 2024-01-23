@@ -5,122 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
-import { TooltipAlignPropType } from "./types/props/tooltip-align";
-import { HeadingLevel } from "./types/heading-level";
-import { KoliBriAccordionCallbacks } from "./components/accordion/types";
-import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-import { ImageSourcePropType } from "./types/props/image-source";
-import { Stringified } from "./types/common";
-import { PropColor } from "./types/props/color";
-import { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
-import { ButtonProps } from "./components/button/types";
-import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
-import { AccessKeyPropType } from "./types/props/access-key";
-import { CustomClassPropType } from "./types/props/custom-class";
-import { IconsPropType } from "./types/props/icons";
-import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
-import { StencilUnknown } from "./types/unknown";
-import { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
-import { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
-import { ButtonTypePropType } from "./types/props/button-type";
-import { ButtonVariantPropType } from "./types/props/button-variant";
-import { IdPropType } from "./types/props/id";
-import { NamePropType } from "./types/props/name";
-import { KoliBriCardEventCallbacks } from "./components/card/types";
-import { EventCallbacks } from "./components/details/types";
-import { KoliBriFormCallbacks } from "./components/form/types";
-import { ErrorListPropType } from "./types/props/error-list";
-import { HeadingVariantPropType } from "./types/props/heading-variant";
-import { Loading } from "./utils/validators/loading";
-import { SuggestionsPropType } from "./types/props/suggestions";
-import { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
-import { InputTypeOnDefault, InputTypeOnOff } from "./types/input/types";
-import { Iso8601 } from "./types/input/iso8601";
-import { InputDateType } from "./types/input/control/number";
-import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
-import { Orientation } from "./types/orientation";
-import { W3CInputValue } from "./types/w3c";
-import { InputTextType } from "./types/input/control/text";
-import { AriaCurrentValuePropType } from "./types/props/aria-current-value";
-import { DownloadPropType } from "./types/props/download";
-import { HrefPropType } from "./types/props/href";
-import { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
-import { LinkTargetPropType } from "./types/props/link-target";
-import { ListStyleType } from "./components/link-group/types";
-import { LinkProps } from "./components/link/types";
+import { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PaginationPositionPropType, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
-import { KoliBriModalEventCallbacks } from "./types/modal";
-import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
-import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
-import { MaxPropType } from "./types/props/max";
-import { AlignPropType } from "./types/props/align";
-import { KoliBriProgressVariantType } from "./types/progress";
-import { KoliBriQuoteVariant } from "./components/quote/types";
-import { RowsPropType } from "./types/props/rows";
-import { SpinVariantPropType } from "./types/props/variant/spin";
-import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
-import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
-import { CSSResize } from "./components/textarea/types";
-import { Toast, ToastState } from "./components/toaster/types";
-export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
-export { TooltipAlignPropType } from "./types/props/tooltip-align";
-export { HeadingLevel } from "./types/heading-level";
-export { KoliBriAccordionCallbacks } from "./components/accordion/types";
-export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-export { ImageSourcePropType } from "./types/props/image-source";
-export { Stringified } from "./types/common";
-export { PropColor } from "./types/props/color";
-export { KoliBriHorizontalIcons, KoliBriIconsProp } from "./types/icons";
-export { ButtonProps } from "./components/button/types";
-export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
-export { AccessKeyPropType } from "./types/props/access-key";
-export { CustomClassPropType } from "./types/props/custom-class";
-export { IconsPropType } from "./types/props/icons";
-export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
-export { StencilUnknown } from "./types/unknown";
-export { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
-export { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
-export { ButtonTypePropType } from "./types/props/button-type";
-export { ButtonVariantPropType } from "./types/props/button-variant";
-export { IdPropType } from "./types/props/id";
-export { NamePropType } from "./types/props/name";
-export { KoliBriCardEventCallbacks } from "./components/card/types";
-export { EventCallbacks } from "./components/details/types";
-export { KoliBriFormCallbacks } from "./components/form/types";
-export { ErrorListPropType } from "./types/props/error-list";
-export { HeadingVariantPropType } from "./types/props/heading-variant";
-export { Loading } from "./utils/validators/loading";
-export { SuggestionsPropType } from "./types/props/suggestions";
-export { InputCheckboxIconsProp, InputCheckboxVariant } from "./components/input-checkbox/types";
-export { InputTypeOnDefault, InputTypeOnOff } from "./types/input/types";
-export { Iso8601 } from "./types/input/iso8601";
-export { InputDateType } from "./types/input/control/number";
-export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
-export { Orientation } from "./types/orientation";
-export { W3CInputValue } from "./types/w3c";
-export { InputTextType } from "./types/input/control/text";
-export { AriaCurrentValuePropType } from "./types/props/aria-current-value";
-export { DownloadPropType } from "./types/props/download";
-export { HrefPropType } from "./types/props/href";
-export { LinkOnCallbacksPropType } from "./types/props/link-on-callbacks";
-export { LinkTargetPropType } from "./types/props/link-target";
-export { ListStyleType } from "./components/link-group/types";
-export { LinkProps } from "./components/link/types";
+export { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PaginationPositionPropType, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
-export { KoliBriModalEventCallbacks } from "./types/modal";
-export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
-export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
-export { MaxPropType } from "./types/props/max";
-export { AlignPropType } from "./types/props/align";
-export { KoliBriProgressVariantType } from "./types/progress";
-export { KoliBriQuoteVariant } from "./components/quote/types";
-export { RowsPropType } from "./types/props/rows";
-export { SpinVariantPropType } from "./types/props/variant/spin";
-export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
-export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
-export { CSSResize } from "./components/textarea/types";
-export { Toast, ToastState } from "./components/toaster/types";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -2344,6 +2232,10 @@ export namespace Components {
           * Defines whether to show the data distributed over multiple pages.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Controls the position of the pagination.
+         */
+        "_paginationPosition"?: PaginationPositionPropType;
     }
     interface KolTabs {
         /**
@@ -5116,6 +5008,10 @@ declare namespace LocalJSX {
           * Defines whether to show the data distributed over multiple pages.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Controls the position of the pagination.
+         */
+        "_paginationPosition"?: PaginationPositionPropType;
     }
     interface KolTabs {
         /**

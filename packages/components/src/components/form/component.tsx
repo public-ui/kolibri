@@ -1,11 +1,10 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { validateErrorList, watchBoolean, watchString } from '@public-ui/schema';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { Stringified } from '../../types/common';
-import { watchBoolean, watchString } from '../../utils/prop.validators';
-import { API, KoliBriFormCallbacks, States } from './types';
-import { ErrorListPropType, validateErrorList } from '../../types/props/error-list';
 
+import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '@public-ui/schema';
 /**
  * @slot - Inhalt der Form.
  */
@@ -13,7 +12,7 @@ import { ErrorListPropType, validateErrorList } from '../../types/props/error-li
 	tag: 'kol-form',
 	shadow: true,
 })
-export class KolForm implements API {
+export class KolForm implements FormAPI {
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
 		event.stopPropagation();
@@ -88,7 +87,7 @@ export class KolForm implements API {
 	 */
 	@Prop() public _errorList?: ErrorListPropType[];
 
-	@State() public state: States = {};
+	@State() public state: FormStates = {};
 
 	@Watch('_on')
 	public validateOn(value?: KoliBriFormCallbacks): void {

@@ -13,6 +13,16 @@ const config = {
 	],
 	rules: {
 		/**
+		 * Import types with `import type` instead of `import`.
+		 */
+		'@typescript-eslint/consistent-type-imports': 'warn',
+		/**
+		 * This rule is disabled because it is not possible to use the
+		 * `no-unsafe-assignment` rule without breaking the build.
+		 */
+		'@typescript-eslint/no-unsafe-assignment': 'warn',
+
+		/**
 		 * This setting is necessary because required and optional properties
 		 * and states build on each other in API design. If duplicate or redundant
 		 * types were not used, changes to base types would not be propagated

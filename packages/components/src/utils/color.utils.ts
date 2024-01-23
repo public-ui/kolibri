@@ -1,7 +1,7 @@
 import colorConvert from 'color-convert';
-import { CMYK } from 'color-convert/conversions';
 import { hex as hexContrast, score } from 'wcag-contrast';
 
+import type { CMYK } from 'color-convert/conversions';
 // ts-prune-ignore-next
 export const cmykSaturation = (cmyk: number[], saturation = 1): CMYK => {
 	return [cmyk[0] * saturation, cmyk[1] * saturation, cmyk[2] * saturation, cmyk[3] * saturation];

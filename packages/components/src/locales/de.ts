@@ -33,4 +33,5 @@ export default {
 	'error-list': 'Fehlerliste',
 	'error-list-message': 'Bitte korrigieren Sie folgende Fehler:',
 	version: 'Versionsnummer',
+	'table-visible-range': 'Einträge {{start}} bis {{end}} von {{total}}',
 };
