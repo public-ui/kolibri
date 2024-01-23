@@ -7,7 +7,6 @@
 
 	:host > div.table {
 		max-width: 100%;
-		order: 1;
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
@@ -37,10 +36,6 @@
 		& .table-sort-button .button-inner {
 			justify-items: end;
 		}
-	}
-
-	div.pagination {
-		order: 2;
 	}
 
 	div.pagination kol-pagination {
