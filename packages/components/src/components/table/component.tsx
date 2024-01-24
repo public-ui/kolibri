@@ -42,8 +42,12 @@ export class KolTable implements API {
 	private pageStartSlice = 0;
 	private pageEndSlice = 10;
 	private disableSort = false;
-
+	private tableDivElement?: HTMLDivElement;
+	private tableDivElementResizeObserver?: ResizeObserver;
 	private sortedColumnHead: KoliBriTableSelectedHead = { label: '', key: '', sortDirection: 'NOS' };
+
+	@State()
+	private tableDivElementHasScrollbar = false;
 
 	/**
 	 * Deprecated: Defines the visible caption of the component.
@@ -286,6 +290,27 @@ export class KolTable implements API {
 		this.validateLabel(this._label || this._caption);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
+	}
+
+	public componentDidRender(): void {
+		this.checkDivElementScrollbar();
+	}
+
+	public componentDidLoad() {
+		if (this.tableDivElement) {
+			this.tableDivElementResizeObserver = new ResizeObserver(this.checkDivElementScrollbar.bind(this));
+			this.tableDivElementResizeObserver.observe(this.tableDivElement);
+		}
+	}
+
+	public disconnectedCallback() {
+		this.tableDivElementResizeObserver?.disconnect();
+	}
+
+	private checkDivElementScrollbar() {
+		if (this.tableDivElement) {
+			this.tableDivElementHasScrollbar = this.tableDivElement.scrollWidth > this.tableDivElement.clientWidth;
+		}
 	}
 
 	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[]): number {
@@ -668,6 +693,7 @@ export class KolTable implements API {
 				 */}
 				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
 				<div
+					ref={(element) => (this.tableDivElement = element)}
 					class="table"
 					tabindex="-1"
 					onMouseDown={(event) => {
@@ -679,7 +705,7 @@ export class KolTable implements API {
 							minWidth: this.state._minWidth,
 						}}
 					>
-						<caption tabindex="0">{this.state._label}</caption>
+						<caption tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>{this.state._label}</caption>
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
 								{this.state._headers.horizontal.map((cols, rowIndex) => (
