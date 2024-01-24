@@ -5,6 +5,7 @@ import { getIconHtml } from '../../icon/test/html.mock';
 import { LinkProps, States } from '../../link/types';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
+import { translate } from '../../../i18n';
 
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	const state = mixMembers<LinkProps, States>(
@@ -23,7 +24,9 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
   <mock:shadow-root>
   <kol-link-wc>
 <a${
-		isExternal && state._hideLabel === true && !hasExpertSlot && typeof state._label === 'string' ? ` aria-label="${state._label} (kol-open-link-in-tab)"` : ''
+		state._hideLabel === true && !hasExpertSlot && typeof state._label === 'string'
+			? ` aria-label="${state._label}${isExternal ? ' (kol-open-link-in-tab)' : ''}"`
+			: ''
 	} class="${state._hideLabel === true ? ' icon-only hide-label' : ''}${
 		typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''
 	}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'}"${
@@ -47,7 +50,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				typeof state._target === 'string' && state._target !== '_self'
 					? getIconHtml(
 							{
-								_label: 'kol-open-link-in-tab',
+								_label: state._hideLabel ? '' : translate('kol-open-link-in-tab'),
 								_icons: 'codicon codicon-link-external',
 							},
 							` class="external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`
