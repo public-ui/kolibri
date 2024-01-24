@@ -82,6 +82,7 @@ export class KolInputPassword implements API {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
+					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
