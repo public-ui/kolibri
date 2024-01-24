@@ -69,7 +69,7 @@ export class KolDetails implements API {
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	@State() public state: States = {
-		_label: '…', // '⚠'
+		_label: '', // ⚠ required
 		_on: {},
 	};
 

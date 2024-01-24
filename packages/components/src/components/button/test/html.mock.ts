@@ -20,6 +20,7 @@ export const getButtonWcHtml = (
 		{
 			_icons: {},
 			_label: '', // ⚠ required
+			_on: {},
 			_type: 'button',
 			_variant: 'normal',
 		},
@@ -37,9 +38,8 @@ export const getButtonWcHtml = (
 	}
 
 	return `<kol-button-wc${additionalAttrs}>
-	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
-		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
-	}
+	<button${ariaControls ? ' aria-controls="nonce"' : ''}${typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
+		}
 	${state._hideLabel && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''}
 	${state._role ? `role="${state._role}"` : ''}
 	class="button ${classNames.join(' ')}" type="${type}">
@@ -53,12 +53,12 @@ export const getButtonWcHtml = (
 		)}
 	</button>
 	${getTooltipHtml(
-		{
-			_align: state._tooltipAlign,
-			_label: state._label,
-		},
-		` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
-	)}
+			{
+				_align: state._tooltipAlign,
+				_label: state._label,
+			},
+			` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
+		)}
 </kol-button-wc>`;
 };
 
@@ -75,12 +75,12 @@ export const getButtonHtml = (props: Props): string => {
 	return `<kol-button>
   <mock:shadow-root>
     ${getButtonWcHtml(
-			props,
-			{
-				expert: `<slot name="expert" slot="expert"></slot>`,
-			},
-			` class="button ${state._variant}"`
-		)}
+		props,
+		{
+			expert: `<slot name="expert" slot="expert"></slot>`,
+		},
+		` class="button ${state._variant}"`
+	)}
   </mock:shadow-root>
 </kol-button>`;
 };

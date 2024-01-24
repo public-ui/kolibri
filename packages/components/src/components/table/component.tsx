@@ -101,13 +101,13 @@ export class KolTable implements API {
 
 	@State() public state: States = {
 		_allowMultiSort: false,
-		_label: '', // ⚠ required
 		_data: [],
 		_dataFoot: [],
 		_headers: {
 			horizontal: [],
 			vertical: [],
 		},
+		_label: '', // ⚠ required
 		_pagination: {
 			_page: 1,
 			_pageSize: 10,
@@ -732,8 +732,8 @@ export class KolTable implements API {
 					ref={
 						typeof cell.render === 'function'
 							? (el) => {
-									this.cellRender(cell as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
-							  }
+								this.cellRender(cell as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
+							}
 							: undefined
 					}
 				>
@@ -808,8 +808,8 @@ export class KolTable implements API {
 														ref={
 															typeof col.render === 'function'
 																? (el) => {
-																		this.cellRender(col as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
-																  }
+																	this.cellRender(col as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
+																}
 																: undefined
 														}
 													>

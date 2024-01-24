@@ -12,7 +12,7 @@ export const getDetailsHtml = (
 ): string => {
 	props = mixMembers(
 		{
-			_label: '…',
+			_label: '', // ⚠ required
 		},
 		props
 	);
@@ -21,12 +21,12 @@ export const getDetailsHtml = (
 		<details>
 			<summary>
 				${getIconHtml(
-					{
-						_label: '',
-						_icons: 'codicon codicon-chevron-right',
-					},
-					`class="icon${props._open ? ' is-open' : ''}"`
-				)}
+		{
+			_label: '',
+			_icons: 'codicon codicon-chevron-right',
+		},
+		`class="icon${props._open ? ' is-open' : ''}"`
+	)}
 				<span>
 					${props._label}
 				</span>
