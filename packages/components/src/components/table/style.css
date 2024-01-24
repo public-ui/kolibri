@@ -12,6 +12,9 @@
 :host > div.table table {
 	width: 100%;
 }
+caption {
+	text-align: start;
+}
 th > div {
 	display: grid;
 	grid-template-columns: 1fr auto;
