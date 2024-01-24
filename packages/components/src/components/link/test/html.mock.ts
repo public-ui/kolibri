@@ -22,28 +22,31 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 <kol-link>
   <mock:shadow-root>
   <kol-link-wc>
-<a${isExternal && state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label} (kol-open-link-in-tab)"` : ''} class="${state._hideLabel === true ? ' hide-label' : ''
-		}${isExternal ? ' external-link' : ''}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0);'}"${typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
-		}${typeof state._download === 'string' ? ` download="${state._download}"` : ''}>
+<a${isExternal && state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label} (kol-open-link-in-tab)"` : ''} class="${
+		state._hideLabel === true ? ' hide-label' : ''
+	}${isExternal ? ' external-link' : ''}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0);'}"${
+		typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
+	}${typeof state._download === 'string' ? ` download="${state._download}"` : ''}>
 			${getSpanWcHtml(
-			{
-				...state,
-				_label: state._label || state._href,
-			},
-			{
-				expert: `<slot name="expert" slot="expert"></slot>`,
-			}
-		)}
-			${typeof state._target === 'string' && state._target !== '_self'
-			? getIconHtml(
 				{
-					_label: 'kol-open-link-in-tab',
-					_icons: 'codicon codicon-link-external',
+					...state,
+					_label: state._label || state._href,
 				},
-				` class="external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`
-			)
-			: ''
-		}
+				{
+					expert: `<slot name="expert" slot="expert"></slot>`,
+				}
+			)}
+			${
+				typeof state._target === 'string' && state._target !== '_self'
+					? getIconHtml(
+							{
+								_label: 'kol-open-link-in-tab',
+								_icons: 'codicon codicon-link-external',
+							},
+							` class="external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`
+					  )
+					: ''
+			}
     </a>
 		${getTooltipHtml(
 			{

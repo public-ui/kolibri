@@ -744,8 +744,8 @@ export class KolTable implements TableAPI {
 					ref={
 						typeof cell.render === 'function'
 							? (el) => {
-								this.cellRender(cell as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
-							}
+									this.cellRender(cell as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
+							  }
 							: undefined
 					}
 				>
@@ -836,8 +836,8 @@ export class KolTable implements TableAPI {
 														ref={
 															typeof col.render === 'function'
 																? (el) => {
-																	this.cellRender(col as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
-																}
+																		this.cellRender(col as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
+																  }
 																: undefined
 														}
 													>
