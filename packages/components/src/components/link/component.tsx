@@ -111,8 +111,8 @@ export class KolLinkWc implements API {
 					aria-current={this.state._ariaCurrent}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-label={
-						isExternal && this.state._hideLabel && typeof this.state._label === 'string'
-							? `${this.state._label} (${translate('kol-open-link-in-tab')})`
+						this.state._hideLabel && typeof this.state._label === 'string'
+							? `${this.state._label}${isExternal ? ` (${translate('kol-open-link-in-tab')})` : ''}`
 							: undefined
 					}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
@@ -137,7 +137,7 @@ export class KolLinkWc implements API {
 					{isExternal && (
 						<kol-icon
 							class="external-link-icon"
-							_label={translate('kol-open-link-in-tab')}
+							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
 							_icons={'codicon codicon-link-external'}
 							aria-hidden={this.state._hideLabel}
 						/>
