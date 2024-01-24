@@ -1,11 +1,13 @@
 import { executeTests } from 'stencil-awesome-test';
 
 import { h } from '@stencil/core';
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { LinkProps } from '../../link/types';
 import { getLinkHtml } from './html.mock';
+
+import type { SpecPage } from '@stencil/core/testing';
+import type { LinkProps } from '@public-ui/schema';
 
 executeTests<LinkProps>(
 	'Link',

@@ -43,17 +43,20 @@
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild",
-		"test": "THEME_MODULE=src/index THEME_EXPORT=DEFAULT kolibri-visual-test",
-		"test-update": "THEME_MODULE=src/index THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
+		"test": "THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test",
+		"test-update": "THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"pretest": "pnpm build",
+		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "2.0.3",
 		"@public-ui/visual-tests": "2.0.3",
 		"@types/node": "ts5.3",
-		"@typescript-eslint/eslint-plugin": "6.17.0",
-		"@typescript-eslint/parser": "6.17.0",
+		"@typescript-eslint/eslint-plugin": "6.18.1",
+		"@typescript-eslint/parser": "6.18.1",
 		"eslint": "8.56.0",
 		"eslint-plugin-no-loops": "0.3.0",
+		"rollup-plugin-postcss": "4.0.2",
 		"typescript": "5.3.3",
 		"unbuild": "1.2.1"
 	},

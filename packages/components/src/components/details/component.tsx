@@ -1,13 +1,11 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { DetailsAPI, DetailsStates, EventCallbacks, LabelPropType } from '@public-ui/schema';
+import { propagateFocus, setState, validateLabel, validateOpen } from '@public-ui/schema';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { validateOpen } from '../../types/props/open';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
-import { setState } from '../../utils/prop.validators';
 import DetailsAnimationController from './DetailsAnimationController';
-import { API, EventCallbacks, States } from './types';
-import { propagateFocus } from '../../utils/reuse';
 
+import type { JSX } from '@stencil/core';
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
  */
@@ -18,7 +16,7 @@ import { propagateFocus } from '../../utils/reuse';
 	},
 	shadow: true,
 })
-export class KolDetails implements API {
+export class KolDetails implements DetailsAPI {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 	private detailsElement?: HTMLDetailsElement;
 	private summaryElement?: HTMLElement;
@@ -68,7 +66,7 @@ export class KolDetails implements API {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
-	@State() public state: States = {
+	@State() public state: DetailsStates = {
 		_label: '', // ⚠ required
 		_on: {},
 	};

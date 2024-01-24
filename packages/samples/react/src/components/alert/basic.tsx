@@ -1,10 +1,8 @@
 import React from 'react';
 import { KolAlert } from '@public-ui/react';
 
-import { HeadingLevel } from '@public-ui/components/dist/types/types/heading-level';
-
 import { FC } from 'react';
-import { AlertType, AlertVariant } from '@public-ui/components';
+import { AlertType, AlertVariant, HeadingLevel } from '@public-ui/components';
 
 type PropsByType = {
 	level: HeadingLevel;
@@ -32,7 +30,7 @@ const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 	</>
 );
 
-export const AlertBasic: FC<PropsBasic> = ({ variant }) => (
+export const AlertBasic: FC<PropsBasic> = ({ variant = 'msg' }) => (
 	<div className="grid gap-4">
 		<AlertByType level={1} type="default" variant={variant} />
 		<AlertByType level={2} type="error" variant={variant} />

@@ -1,9 +1,6 @@
-import { Component, h, JSX, Prop } from '@stencil/core';
-
-import { HeadingLevel } from '../../types/heading-level';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { Props } from './types';
-import { HeadingVariantPropType } from '../../types/props/heading-variant';
+import type { HeadingLevel, HeadingProps, HeadingVariantPropType, LabelWithExpertSlotPropType } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 /**
  * @slot headline - Content of the headline.
@@ -15,7 +12,7 @@ import { HeadingVariantPropType } from '../../types/props/heading-variant';
 	},
 	shadow: true,
 })
-export class KolHeading implements Props {
+export class KolHeading implements HeadingProps {
 	public render(): JSX.Element {
 		return (
 			<kol-heading-wc _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline} _variant={this._variant}>

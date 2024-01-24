@@ -309,6 +309,11 @@ ROUTES.set('table/with-pagination', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('table/pagination-position', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('tabs/basic', {
 	axe: {
 		skipFailures: false,
