@@ -106,13 +106,13 @@ export class KolTable implements TableAPI {
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
-		_label: '', // ⚠ required
 		_data: [],
 		_dataFoot: [],
 		_headers: {
 			horizontal: [],
 			vertical: [],
 		},
+		_label: '', // ⚠ required
 		_pagination: {
 			_page: 1,
 			_pageSize: 10,

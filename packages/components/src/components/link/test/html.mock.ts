@@ -10,11 +10,9 @@ import type { LinkProps, LinkStates } from '@public-ui/schema';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	const state = mixMembers<LinkProps, LinkStates>(
 		{
-			_href: '', // ⚠ required
-			_hideLabel: false,
-			_icons: {},
-			_tooltipAlign: 'right',
 			_ariaCurrentValue: 'page',
+			_href: '', // ⚠ required
+			_icons: {},
 		},
 		props
 	);
