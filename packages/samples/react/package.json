@@ -10,7 +10,7 @@
 		"format": "prettier --check src",
 		"lint": "eslint \"{src,tests}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map",
-		"start": "npm run serve",
+		"start": "npm run serve -- --open",
 		"unused": "ts-prune -e src",
 		"postinstall": "npm-run-all postinstall:*",
 		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
