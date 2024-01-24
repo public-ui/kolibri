@@ -1324,9 +1324,18 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border-style: solid;
 		border-color: var(--color-ice);
 	}
+	.table {
+		padding: 0.5em;
+	}
 	table {
 		width: 100%;
 		border-spacing: 0;
+	}
+	table:has(caption:focus) {
+		outline-color: var(--color-blue);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 2px;
 	}
 	table,
 	:host table thead tr:last-child th,
@@ -1356,16 +1365,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	th[aria-sort="ascending"],
 	th[aria-sort="descending"] {
 		font-weight: 700;
-	}
-	:host > div:last-child {
-		padding: 0.5em;
-	}
-	:host > div:last-child,
-	:host > div:last-child > div:last-child {
-		display: grid;
-		align-items: center;
-		justify-items: center;
-		gap: 1em;
 	}
 	@media (min-width: 1024px) {
 		:host > div:last-child,
