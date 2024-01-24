@@ -10,7 +10,8 @@ import { Props, States } from '../types';
 const getState = (props: Props): States =>
 	mixMembers<Props, States>(
 		{
-			_icons: 'codicon codicon-home',
+			_icons: 'codicon codicon-home', // ⚠ required
+			// _label: '…', // ⚠ required TODO: required in v2
 		},
 		props
 	);

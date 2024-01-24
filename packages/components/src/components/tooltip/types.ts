@@ -8,8 +8,8 @@ type RequiredProps = PropLabel;
 type OptionalProps = PropAlign & PropId;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps & OptionalProps;
-type OptionalStates = NonNullable<unknown>;
+type RequiredStates = PropLabel & PropAlign;
+type OptionalStates = PropId;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

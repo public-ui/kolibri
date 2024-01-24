@@ -9,10 +9,8 @@ import { getTooltipHtml } from '../../tooltip/test/html.mock';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	const state = mixMembers<LinkProps, States>(
 		{
-			_href: '…', // ⚠ required
-			_hideLabel: false,
-			_icons: {},
-			_tooltipAlign: 'right',
+			_href: '', // ⚠ required
+			_icons: {}, // ⚠ required
 		},
 		props
 	);
@@ -26,7 +24,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		isExternal && state._hideLabel === true && !hasExpertSlot && typeof state._label === 'string' ? ` aria-label="${state._label} (kol-open-link-in-tab)"` : ''
 	} class="${state._hideLabel === true ? ' icon-only hide-label' : ''}${
 		typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''
-	}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'}"${
+	}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0);'}"${
 		typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''
 	}${typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''}${
 		typeof state._download === 'string' ? ` download="${state._download}"` : ''
@@ -38,9 +36,6 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
-				},
-				{
-					additionalAttrs: '',
 				}
 			)}
 			${

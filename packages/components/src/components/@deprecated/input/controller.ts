@@ -88,7 +88,9 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this.component, value);
+		validateLabelWithExpertSlot(this.component, value, {
+			required: true,
+		});
 	}
 
 	public validateOn(value?: InputTypeOnDefault): void {

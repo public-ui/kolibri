@@ -1,11 +1,12 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { getI18nService } from './core';
 /**
  * Issue #2456: Don't use json files
  * - https://github.com/public-ui/kolibri/issues/2456
  * - use instead ts files
  */
+
+import { getI18nService } from './core';
 import locale_de from './locales/de';
 import locale_en from './locales/en';
 import { devHint } from './utils/a11y.tipps';

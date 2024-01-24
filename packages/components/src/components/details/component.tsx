@@ -75,13 +75,15 @@ export class KolDetails implements API {
 	@Prop() public _summary?: string;
 
 	@State() public state: States = {
-		_label: '…', // '⚠'
+		_label: '…', // ⚠ required
 		_on: {},
 	};
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_on')

@@ -11,7 +11,7 @@ export const getHeadingWcHtml = (
 ): string => {
 	const state = mixMembers<Props, States>(
 		{
-			_label: '', // ⚠ required
+			_label: '…', // ⚠ required
 			_level: 1,
 		},
 		props

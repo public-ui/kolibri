@@ -97,8 +97,7 @@ export class KolCard implements API {
 
 	/**
 	 * Deprecated: Gibt die Beschriftung der Komponente an.
-	 *
-	 * @deprecated Verwende stattdessen das Property _heading.
+	 * @deprecated Use _label.
 	 */
 	@Prop() public _headline?: string;
 
@@ -113,7 +112,7 @@ export class KolCard implements API {
 	@Prop() public _level?: HeadingLevel = 1;
 
 	@State() public state: States = {
-		_label: '…', // '⚠'
+		_label: '…', // ⚠ required
 	};
 
 	private validateOnValue = (value: unknown): boolean =>
@@ -138,13 +137,15 @@ export class KolCard implements API {
 		validateHasFooter(this, value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
 		this.validateLabel(value);
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
 	 * @deprecated
 	 */
 	@Watch('_headline')
@@ -154,7 +155,9 @@ export class KolCard implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			defaultValue: '…',
+		});
 	}
 
 	@Watch('_level')

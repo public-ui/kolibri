@@ -46,7 +46,7 @@ export class KolKolibri implements API {
 	/**
 	 * Defines whether the component has a label.
 	 */
-	@Prop() public _labeled?: boolean;
+	@Prop() public _labeled?: boolean = true;
 
 	@State() public state: States = {
 		_color: {
@@ -82,7 +82,9 @@ export class KolKolibri implements API {
 
 	@Watch('_labeled')
 	public validateLabeled(value?: boolean): void {
-		watchBoolean(this, '_labeled', value);
+		watchBoolean(this, '_labeled', value, {
+			defaultValue: true,
+		});
 	}
 
 	public componentWillLoad(): void {
