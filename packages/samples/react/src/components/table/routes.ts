@@ -6,11 +6,13 @@ import { TableRenderCell } from './render-cell';
 import { TableSortData } from './sort-data';
 import { TableWithPagination } from './with-pagination';
 import { PaginationPosition } from './pagination-position';
+import { TableHorizontalScrollbar } from './horizontal-scrollbar';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
 		'badge-size': TableBadgeSize,
 		'column-alignment': TableColumnAlignment,
+		'horizontal-scrollbar': TableHorizontalScrollbar,
 		'render-cell': TableRenderCell,
 		'sort-data': TableSortData,
 		'with-pagination': TableWithPagination,
