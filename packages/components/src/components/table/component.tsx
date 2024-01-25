@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import type { JSX } from '@stencil/core';
 import { devHint, emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
@@ -19,11 +19,12 @@ import type {
 	KoliBriTableRender,
 	KoliBriTableSelectedHead,
 	LabelPropType,
+	PaginationPositionPropType,
 	Stringified,
 	TableAPI,
 	TableStates,
 } from '@public-ui/schema';
-import { validatePaginationPosition, PaginationPositionPropType } from '@public-ui/schema';
+import { validatePaginationPosition } from '@public-ui/schema';
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
