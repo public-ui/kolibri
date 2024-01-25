@@ -21,6 +21,7 @@ export const getButtonWcHtml = (
 		{
 			_icons: {},
 			_label: '', // ⚠ required
+			_on: {},
 			_type: 'button',
 			_variant: 'normal',
 		},

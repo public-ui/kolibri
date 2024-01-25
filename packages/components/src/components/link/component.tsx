@@ -110,8 +110,8 @@ export class KolLinkWc implements LinkAPI {
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-label={
-						isExternal && this.state._hideLabel && typeof this.state._label === 'string'
-							? `${this.state._label} (${translate('kol-open-link-in-tab')})`
+						this.state._hideLabel && typeof this.state._label === 'string'
+							? `${this.state._label}${isExternal ? ` (${translate('kol-open-link-in-tab')})` : ''}`
 							: undefined
 					}
 					class={{
@@ -136,7 +136,7 @@ export class KolLinkWc implements LinkAPI {
 					{isExternal && (
 						<kol-icon
 							class="external-link-icon"
-							_label={translate('kol-open-link-in-tab')}
+							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
 							_icons={'codicon codicon-link-external'}
 							aria-hidden={this.state._hideLabel}
 						/>
