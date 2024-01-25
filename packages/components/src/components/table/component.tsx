@@ -297,7 +297,7 @@ export class KolTable implements API {
 	}
 
 	public componentDidLoad() {
-		if (this.tableDivElement) {
+		if (this.tableDivElement && ResizeObserver) {
 			this.tableDivElementResizeObserver = new ResizeObserver(this.checkDivElementScrollbar.bind(this));
 			this.tableDivElementResizeObserver.observe(this.tableDivElement);
 		}
