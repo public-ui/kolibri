@@ -14,7 +14,7 @@ import type {
 	TooltipAlignPropType,
 } from '@public-ui/schema';
 import { propagateFocus, setState, showExpertSlot } from '@public-ui/schema';
-import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { getRenderStates } from '../input/controller';
@@ -392,17 +392,10 @@ export class KolTextarea implements TextareaAPI {
 		this.controller.validateValue(value);
 	}
 
-	@Listen('input')
-	handleInput() {
-		if (this.ref instanceof HTMLTextAreaElement) {
-			this._rows = increaseTextareaHeight(this.ref);
-		}
-	}
-
 	public componentDidLoad(): void {
 		setTimeout(() => {
 			if (this.ref instanceof HTMLTextAreaElement) {
-				this._rows = increaseTextareaHeight(this.ref);
+				this._rows = this.state?._rows && this.state._rows > increaseTextareaHeight(this.ref) ? this.state._rows : increaseTextareaHeight(this.ref);
 			}
 		}, 0);
 	}
