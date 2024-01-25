@@ -55,7 +55,7 @@ jobs:
         run: pnpm i --no-frozen-lockfile
 
       - name: Build
-        run: pnpm --filter @public-ui/virtual-tests... build
+        run: pnpm -r build
 
       - name: Purge existing snapshots
         if: ${{ github.event.inputs.purge_snapshots == 'true' }}
