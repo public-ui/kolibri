@@ -1568,8 +1568,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
+	.table:has(caption:focus) {
+		outline-color: var(--color-ocean);
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
+	}
 	caption {
-		position: absolute;
 		width: 1px;
 		height: 1px;
 		padding: 0;

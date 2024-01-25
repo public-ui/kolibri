@@ -1140,6 +1140,16 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		border-width: 1px;
 		border-color: var(--border-color);
 	}
+	.table {
+		padding: 0.5em;
+	}
+	.table:has(caption:focus) {
+		outline-color: var(--color-petrol);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
+	}
 	table {
 		width: 100%;
 		border-collapse: collapse;
@@ -1167,16 +1177,6 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	}
 	.table-sort-button .button {
 		font-weight: bold;
-	}
-	:host > div.pagination {
-		padding: 0.5em;
-	}
-	:host > div.pagination,
-	:host > div.pagination > div:last-child {
-		display: grid;
-		align-items: center;
-		justify-items: center;
-		gap: 0.5em;
 	}
 	@media (min-width: 1024px) {
 		:host > div.pagination,

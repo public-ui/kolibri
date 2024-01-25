@@ -1455,6 +1455,16 @@ export const DEFAULT = KoliBri.createTheme('default', {
 			border-style: solid;
 			border-color: var(--color-primary-variant);
 		}
+		.table {
+			padding: 0.5rem;
+		}
+		.table:has(caption:focus) {
+			outline-color: var(--color-primary-variant);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
+			transition: outline-offset 0.2s linear;
+		}
 		table {
 			width: 100%;
 			border-spacing: 0;
@@ -1488,17 +1498,6 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		th[aria-sort='descending'] {
 			font-weight: 700;
 		}
-		:host > div:last-child {
-			padding: 0.5rem;
-		}
-		:host > div:last-child,
-		:host > div:last-child > div:last-child {
-			display: grid;
-			align-items: center;
-			justify-items: center;
-			gap: 1rem;
-		}
-
 		@media (min-width: 1024px) {
 			div.pagination kol-pagination {
 				display: flex;
