@@ -1327,15 +1327,15 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.table {
 		padding: 0.5em;
 	}
-	table {
-		width: 100%;
-		border-spacing: 0;
-	}
-	table:has(caption:focus) {
+	.table:has(caption:focus) {
 		outline-color: var(--color-blue);
 		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 2px;
+	}
+	table {
+		width: 100%;
+		border-spacing: 0;
 	}
 	table,
 	:host table thead tr:last-child th,

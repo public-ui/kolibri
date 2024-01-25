@@ -1458,16 +1458,16 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		.table {
 			padding: 0.5rem;
 		}
-		table {
-			width: 100%;
-			border-spacing: 0;
-		}
-		table:has(caption:focus) {
+		.table:has(caption:focus) {
 			outline-color: var(--color-primary-variant);
 			outline-offset: 2px;
 			outline-style: solid;
 			outline-width: 3px;
 			transition: outline-offset 0.2s linear;
+		}
+		table {
+			width: 100%;
+			border-spacing: 0;
 		}
 		table,
 		:host table thead tr:last-child th,

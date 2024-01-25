@@ -1143,17 +1143,17 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	.table {
 		padding: 0.5em;
 	}
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		border-spacing: 0;
-	}
-	table:has(caption:focus) {
+	.table:has(caption:focus) {
 		outline-color: var(--color-petrol);
 		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 3px;
 		transition: outline-offset 0.2s linear;
+	}
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		border-spacing: 0;
 	}
 	table,
 	tr,
