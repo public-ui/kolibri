@@ -245,7 +245,9 @@ export class KolTabs implements API {
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_label')

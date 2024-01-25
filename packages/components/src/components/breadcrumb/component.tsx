@@ -40,7 +40,7 @@ export class KolBreadcrumb implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<nav aria-label={this.state._label}>
+				<nav aria-label={this.state._label ?? ''}>
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
@@ -72,7 +72,7 @@ export class KolBreadcrumb implements API {
 	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
 
 	@State() public state: States = {
-		_label: '…', // ⚠ required
+		_label: '…',
 		_links: [],
 	};
 
@@ -89,7 +89,9 @@ export class KolBreadcrumb implements API {
 		if (!initial) {
 			removeNavLabel(this.state._label); // remove the current
 		}
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			defaultValue: '…',
+		});
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}

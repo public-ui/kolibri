@@ -4,9 +4,9 @@ import { Props } from '../schema';
 export const getFormLoginWcHtml = (props: Props, additionalAttrs = ''): string => {
 	props = mixMembers(
 		{
-			_heading: '',
+			_heading: '…', // ⚠ required,
 		},
-		props
+		props,
 	);
 	return `
 <my-form-login-wc${additionalAttrs}>
@@ -17,9 +17,9 @@ export const getFormLoginWcHtml = (props: Props, additionalAttrs = ''): string =
 export const getFormLoginHtml = (props: Props, additionalAttrs = ''): string => {
 	props = mixMembers(
 		{
-			_heading: '',
+			_heading: '…', // ⚠ required,
 		},
-		props
+		props,
 	);
 	return `
 <my-form-login${additionalAttrs}>

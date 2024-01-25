@@ -213,8 +213,8 @@ export class KolInputFile implements API {
 
 	@State() public state: States = {
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
-		_label: '', // ⚠ required
+		_id: `id-${nonce()}`,
+		_label: '…', // ⚠ required
 	};
 
 	public constructor() {

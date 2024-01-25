@@ -25,9 +25,9 @@ export const getSpanWcHtml = (
 	const state = mixMembers<Props, States>(
 		{
 			_allowMarkdown: false,
-			_icons: {},
 			_hideLabel: false,
-			_label: '', // ⚠ required
+			_icons: {},
+			_label: '…', // ⚠ required
 		},
 		props
 	);
@@ -35,29 +35,29 @@ export const getSpanWcHtml = (
 	/**
 	 * @todo: This covers the case where the label is undefined or null. But why?
 	 */
-	state._label = state._label ?? '';
+	state._label = state._label ?? '…';
 
 	const hideExpertSlot = !showExpertSlot(state._label);
-	const icon = mapIconProp2State(state._icons as KoliBriIconsProp);
+	const icons = mapIconProp2State(state._icons as KoliBriIconsProp);
 	const classNames: string[] = [...(state._hideLabel === true ? ['icon-only', 'hide-label'] : []), ...(options?.additionalClassNames ?? [])];
 
 	return `
 <kol-span-wc${classNames.length ? ` class="${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
 	${
-		icon.top
+		icons.top
 			? getIconHtml({
-					_label: (icon.top as KoliBriCustomIcon).label ?? '',
-					_icons: (icon.top as KoliBriCustomIcon).icon,
+					_label: (icons.top as KoliBriCustomIcon).label ?? '',
+					_icons: (icons.top as KoliBriCustomIcon).icon,
 			  })
 			: ''
 	}
 	<span>
 		${
-			icon.left
+			icons.left
 				? getIconHtml(
 						{
-							_label: (icon.left as KoliBriCustomIcon).label ?? '',
-							_icons: (icon.left as KoliBriCustomIcon).icon,
+							_label: (icons.left as KoliBriCustomIcon).label ?? '',
+							_icons: (icons.left as KoliBriCustomIcon).icon,
 						},
 						` class="icon left"`
 				  )
@@ -74,11 +74,11 @@ export const getSpanWcHtml = (
 			${slots.expert ? slots.expert : ``}
 		</span>
 		${
-			icon.right
+			icons.right
 				? getIconHtml(
 						{
-							_label: (icon.right as KoliBriCustomIcon).label ?? '',
-							_icons: (icon.right as KoliBriCustomIcon).icon,
+							_label: (icons.right as KoliBriCustomIcon).label ?? '',
+							_icons: (icons.right as KoliBriCustomIcon).icon,
 						},
 						` class="icon right"`
 				  )
@@ -86,10 +86,10 @@ export const getSpanWcHtml = (
 		}
 	</span>
 	${
-		icon.bottom
+		icons.bottom
 			? getIconHtml({
-					_label: (icon.bottom as KoliBriCustomIcon).label ?? '',
-					_icons: (icon.bottom as KoliBriCustomIcon).icon,
+					_label: (icons.bottom as KoliBriCustomIcon).label ?? '',
+					_icons: (icons.bottom as KoliBriCustomIcon).icon,
 			  })
 			: ''
 	}

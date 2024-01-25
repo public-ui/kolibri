@@ -251,11 +251,11 @@ export class KolButtonWc implements API {
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: ButtonStates = {
-		_icons: {}, // ⚠ required
-		_label: '', // ⚠ required
+		_icons: {},
+		_label: '…', // ⚠ required
 		_on: {},
-		_type: 'button', // ⚠ required
-		_variant: 'normal', // ⚠ required
+		_type: 'button',
+		_variant: 'normal',
 	};
 
 	public constructor() {
@@ -337,7 +337,9 @@ export class KolButtonWc implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this, value);
+		validateLabelWithExpertSlot(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_name')

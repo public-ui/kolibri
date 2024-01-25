@@ -631,7 +631,7 @@ export namespace Components {
         "_heading"?: string;
         /**
           * Deprecated: Gibt die Beschriftung der Komponente an.
-          * @deprecated Verwende stattdessen das Property _heading.
+          * @deprecated Use _label.
          */
         "_headline"?: string;
         /**
@@ -4124,7 +4124,7 @@ declare namespace LocalJSX {
         "_heading"?: string;
         /**
           * Deprecated: Gibt die Beschriftung der Komponente an.
-          * @deprecated Verwende stattdessen das Property _heading.
+          * @deprecated Use _label.
          */
         "_headline"?: string;
         /**

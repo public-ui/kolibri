@@ -38,8 +38,8 @@ export class KolAvatarWc implements API {
 	@Prop() public _label!: LabelPropType;
 
 	@State() public state: States = {
-		_src: ``,
-		_label: ``, // ⚠ required
+		_src: '',
+		_label: '…', // ⚠ required
 	};
 
 	@Watch('_src')
@@ -49,7 +49,9 @@ export class KolAvatarWc implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	public componentWillLoad(): void {

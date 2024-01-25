@@ -87,7 +87,7 @@ export class KolSpanWc implements API {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
+	@Prop() public _icons?: Stringified<KoliBriIconsProp> = {};
 
 	/**
 	 * Deprecated: Hides the label and shows the description in a Tooltip instead.
@@ -104,7 +104,7 @@ export class KolSpanWc implements API {
 		_allowMarkdown: false,
 		_hideLabel: false,
 		_icons: {},
-		_label: '', // ⚠ required
+		_label: '…', // ⚠ required
 	};
 
 	@Watch('_allowMarkdown')
@@ -116,7 +116,9 @@ export class KolSpanWc implements API {
 
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: HideLabelPropType): void {
-		validateHideLabel(this, value);
+		validateHideLabel(this, value, {
+			defaultValue: false,
+		});
 	}
 
 	@Watch('_icon')
@@ -139,7 +141,9 @@ export class KolSpanWc implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this, value);
+		validateLabelWithExpertSlot(this, value, {
+			required: true,
+		});
 	}
 
 	public componentWillLoad(): void {
