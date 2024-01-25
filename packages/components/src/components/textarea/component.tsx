@@ -120,7 +120,7 @@ export class KolTextarea implements TextareaAPI {
 							placeholder={this.state._placeholder}
 							spellcheck="false"
 							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
+							onInput={this.onInput}
 							style={{
 								resize: this.state._resize,
 							}}
@@ -409,7 +409,7 @@ export class KolTextarea implements TextareaAPI {
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 
-	private readonly onKeyUp = () => {
+	private readonly onInput = () => {
 		if (this.ref instanceof HTMLTextAreaElement) {
 			setState(this, '_currentLength', this.ref.value.length);
 			if (this.state._adjustHeight) {
