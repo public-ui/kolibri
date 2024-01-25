@@ -55,13 +55,11 @@ jobs:
         run: pnpm i --no-frozen-lockfile
 
       - name: Build
-        run: pnpm -r build
+        run: pnpm --filter @public-ui/virtual-tests... build
 
       - name: Purge existing snapshots
         if: ${{ github.event.inputs.purge_snapshots == 'true' }}
-        run: |
-          rm packages/themes/**/snapshots/**/*.png
-          git status
+        run: rm packages/themes/**/snapshots/**/*.png
 
       - name: Display git status (before test-update)
         run: git status
