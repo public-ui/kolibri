@@ -46,12 +46,12 @@ const districtSchema = {
 };
 const personalInformationSchema = {
 	salutation: Yup.string().required('Bitte Anrede auswählen.'),
-	name: Yup.string().required('Bitte Name eingeben.'),
+	name: Yup.string().required('Bitte Vor- und Zuname eingeben.'),
 	company: Yup.string().when('salutation', {
 		is: (salutation: string) => salutation === 'Firma',
-		then: (schema) => schema.required('Bitte Firmenname angeben.'),
+		then: (schema) => schema.required('Bitte Firma angeben.'),
 	}),
-	email: Yup.string().required('Bitte E-Mail-Adresse eingeben.'),
+	email: Yup.string().required('Bitte E-Mail eingeben.'),
 };
 const availableAppointmentsSchema = {
 	date: Yup.string().required('Bitte Datum eingeben.'),
