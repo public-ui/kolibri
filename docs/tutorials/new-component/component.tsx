@@ -1,12 +1,13 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 
-import { Component, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
 
-import { HeadingLevel } from '../../types/heading-level';
+import type { HeadingLevel } from '@public-ui/schema';
 import { nonce } from '../../utils/dev.utils';
-import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
+import { setState, watchBoolean, watchString } from '@public-ui/schema';
 import { watchHeadingLevel } from '../heading/validation';
-import { NewComponentAPI } from './styles';
+import { KoliBriNewComponentCallbacks, NewComponentAPI, NewComponentStates } from './types';
+
 
 /**
  * @class NewComponent - Ermöglicht das Stylen des äußeren Container des NewComponents.
@@ -35,7 +36,7 @@ export class KolNewComponent implements NewComponentAPI {
 				<div
 					class={{
 						'new-component': true,
-						open: this.state._open,
+						open: this.state._open  || false,
 						close: !this.state._open,
 					}}
 				>
@@ -85,7 +86,7 @@ export class KolNewComponent implements NewComponentAPI {
 	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
-	@State() public state: States = {
+	@State() public state: NewComponentStates = {
 		_heading: '…', // ⚠ required
 		_level: 1,
 	};
@@ -148,7 +149,7 @@ export class KolNewComponent implements NewComponentAPI {
 		const timeout = setTimeout(() => {
 			clearTimeout(timeout);
 			if (typeof this.state._on?.onClick === 'function') {
-				this.state._on.onClick(event, this._open);
+				this.state._on.onClick(event, this._open || false);
 			}
 		});
 	};

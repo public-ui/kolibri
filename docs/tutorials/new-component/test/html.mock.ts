@@ -4,7 +4,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { getButtonWcHtml } from '../../button/test/html.mock';
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
-import { Props } from '../component';
+import { Props } from '../types';
 
 export const getNewComponentHtml = (
 	props: Props,
@@ -27,16 +27,8 @@ export const getNewComponentHtml = (
     <div class="new-component ${open ? 'open' : 'close'}">
       ${getHeadingWcHtml(
 				{
-					_headline: '',
+					_label: '',
 					_level: props._level,
-				},
-				{
-					default: `${getButtonWcHtml({
-						_ariaControls: 'nonce',
-						_ariaExpanded: open,
-						_icons: `codicon codicon-${open ? 'chrome-minimize' : 'add'}`,
-						_label: props._heading,
-					})}`,
 				},
 			)}
       <div class="content" id="nonce" ${open ? '' : 'aria-hidden="true" hidden style="display: none; height: 0; visibility: hidden;"'}>
