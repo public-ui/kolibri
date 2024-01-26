@@ -19,7 +19,8 @@ export const getButtonWcHtml = (
 	const state = mixMembers<Props, States>(
 		{
 			_icons: {},
-			_label: '', // ⚠ required
+			_label: '…', // ⚠ required
+			_on: {},
 			_type: 'button',
 			_variant: 'normal',
 		},
@@ -49,13 +50,15 @@ export const getButtonWcHtml = (
 				_label: state._label,
 			},
 			slots,
-			{ additionalClassNames: ['button-inner'] }
+			{
+				additionalClassNames: ['button-inner'],
+			}
 		)}
 	</button>
 	${getTooltipHtml(
 		{
 			_align: state._tooltipAlign,
-			_label: state._label,
+			_label: typeof state._label === 'string' ? state._label : '',
 		},
 		` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
 	)}
@@ -66,7 +69,7 @@ export const getButtonHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
 		{
 			_icons: {},
-			_label: '', // ⚠ required
+			_label: '…', // ⚠ required
 			_type: 'button',
 			_variant: 'normal',
 		},

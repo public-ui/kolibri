@@ -43,7 +43,7 @@ export class {{capital name}}FormLoginWc implements Generic.Element.ComponentApi
 	@Prop() public _heading!: string;
 
 	@State() public state: States = {
-		_heading: '',
+		_heading: '…', // ⚠ required,
 	};
 
 	@Watch('_heading')

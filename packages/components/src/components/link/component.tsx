@@ -296,7 +296,7 @@ export class KolLinkWc implements API {
 	@Prop() public _useCase?: LinkUseCase = 'text';
 
 	@State() public state: LinkStates = {
-		_href: '…', // ⚠ required
+		_href: '', // ⚠ required
 		_icons: {}, // ⚠ required
 	};
 
@@ -362,7 +362,9 @@ export class KolLinkWc implements API {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		validateHref(this, value);
+		validateHref(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_icon')

@@ -1,15 +1,14 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { Icofont } from '../../../types/icofont';
-import { LabelPropType } from '../../../types/props/label';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
-import { BreadcrumbLinkProps, Props } from '../types';
+import { Props, States } from '../types';
 
 export const getBreadcrumbHtml = (props: Props): string => {
-	const state = mixMembers(
+	const state = mixMembers<Props, States>(
 		{
-			_label: '…', // ⚠ required
+			_label: '…',
 			_links: [],
 		},
 		props
@@ -17,7 +16,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 
 	const lastIndex = state._links.length - 1;
 	let list = '';
-	(state._links as BreadcrumbLinkProps[]).forEach((link, index) => {
+	state._links.forEach((link, index) => {
 		list += `
 				<li>
 				${
@@ -47,7 +46,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 	return `
 <kol-breadcrumb>
   <mock:shadow-root>
-		<nav aria-label="${state._label as unknown as LabelPropType}">
+		<nav aria-label="${state._label}">
 			<ul>
 				${
 					state._links.length === 0

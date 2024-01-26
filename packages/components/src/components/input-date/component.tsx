@@ -265,8 +265,8 @@ export class KolInputDate implements ComponentApi {
 		_autoComplete: 'off',
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
-		_label: '', // ⚠ required
+		_id: `id-${nonce()}`,
+		_label: '…', // ⚠ required
 		_suggestions: [],
 		_type: 'datetime-local',
 	};

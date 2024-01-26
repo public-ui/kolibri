@@ -1,6 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { nonce } from '../../../utils/dev.utils';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { Props, States } from '../types';
 
@@ -8,17 +7,21 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 	const state: States = mixMembers<Props, States>(
 		{
 			_align: 'top',
-			_id: nonce(),
 			_label: '…', // ⚠ required
 		},
 		props
 	);
+
+	/**
+	 * @todo: This covers the case where the label is undefined or null. But why?
+	 */
+	state._label = state._label ?? '…';
+
 	return `
 <kol-tooltip-wc${additionalAttrs}>
 	${
-		state._label === ''
-			? ''
-			: `<div class="tooltip-floating">
+		state._label !== ''
+			? `<div class="tooltip-floating">
 			<div class="tooltip-area tooltip-arrow"></div>
 			${getSpanWcHtml(
 				{
@@ -28,10 +31,12 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 					expert: undefined,
 				},
 				{
-					additionalAttrs: ` class="tooltip-area tooltip-content" id="${state._id}"`,
+					additionalAttrs: typeof state._id === 'string' ? ` id="${state._id}"` : undefined,
+					additionalClassNames: ['tooltip-area', 'tooltip-content'],
 				}
 			)}
 		</div>`
+			: ''
 	}
 </kol-tooltip-wc>`;
 };

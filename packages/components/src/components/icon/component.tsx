@@ -66,8 +66,8 @@ export class KolIcon implements API {
 	@Prop() public _part?: string;
 
 	@State() public state: States = {
-		_icons: 'codicon codicon-home',
-		// _label: '', // ⚠ required TODO: required in v2
+		_icons: 'codicon codicon-home', // ⚠ required
+		// _label: '…', // ⚠ required TODO: required in v2
 	};
 
 	/**
@@ -78,6 +78,9 @@ export class KolIcon implements API {
 		this.validateLabel(value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_icon')
 	public validateIcon(value?: string): void {
 		this.validateIcons(value);
@@ -85,7 +88,9 @@ export class KolIcon implements API {
 
 	@Watch('_icons')
 	public validateIcons(value?: string): void {
-		watchString(this, '_icons', value);
+		watchString(this, '_icons', value, {
+			defaultValue: 'codicon codicon-home',
+		});
 	}
 
 	@Watch('_label')

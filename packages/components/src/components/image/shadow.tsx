@@ -39,9 +39,9 @@ export class KolImage implements API {
 	@Prop() public _srcset?: string;
 
 	@State() public state: States = {
-		_alt: '…', // ⚠ required
+		_alt: '', // ⚠ required
 		_loading: 'lazy',
-		_src: '…', // ⚠ required
+		_src: '', // ⚠ required
 	};
 
 	@Watch('_alt')

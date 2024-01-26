@@ -30,13 +30,15 @@ export class KolHeadingWc implements API {
 	@Prop() public _secondaryHeadline?: string;
 
 	@State() public state: States = {
-		_label: '', // ⚠ required
+		_label: '…', // ⚠ required
 		_level: 1,
 	};
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this, value);
+		validateLabelWithExpertSlot(this, value, {
+			defaultValue: '…',
+		});
 	}
 
 	@Watch('_level')

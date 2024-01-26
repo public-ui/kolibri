@@ -52,7 +52,7 @@ export class KolNewComponent implements NewComponentAPI {
 										display: 'none',
 										height: '0',
 										visibility: 'hidden',
-								  }
+									}
 						}
 					>
 						<slot name="content" />

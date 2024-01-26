@@ -69,15 +69,15 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 ## Properties
 
-| Property     | Attribute     | Description                                                                                                                                                | Type                                                            | Default     |
-| ------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
-| `_hasCloser` | `_has-closer` | Defines whether the element can be closed.                                                                                                                 | `boolean \| undefined`                                          | `false`     |
-| `_hasFooter` | `_has-footer` | Shows the slot="footer".                                                                                                                                   | `boolean \| undefined`                                          | `false`     |
-| `_heading`   | `_heading`    | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an.                                 | `string \| undefined`                                           | `undefined` |
-| `_headline`  | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string \| undefined`                                           | `undefined` |
-| `_label`     | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                         | `string \| undefined`                                           | `undefined` |
-| `_level`     | `_level`      | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                                                          | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                  | `1`         |
-| `_on`        | --            | Defines the event callback functions for the component.                                                                                                    | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
+| Property     | Attribute     | Description                                                                                                                | Type                                                            | Default     |
+| ------------ | ------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
+| `_hasCloser` | `_has-closer` | Defines whether the element can be closed.                                                                                 | `boolean \| undefined`                                          | `false`     |
+| `_hasFooter` | `_has-footer` | Shows the slot="footer".                                                                                                   | `boolean \| undefined`                                          | `false`     |
+| `_heading`   | `_heading`    | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string \| undefined`                                           | `undefined` |
+| `_headline`  | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Deprecated: Gibt die Beschriftung der Komponente an. | `string \| undefined`                                           | `undefined` |
+| `_label`     | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).         | `string \| undefined`                                           | `undefined` |
+| `_level`     | `_level`      | Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.                          | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                  | `1`         |
+| `_on`        | --            | Defines the event callback functions for the component.                                                                    | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
 
 ## Slots
 

@@ -52,7 +52,9 @@ export class KolSymbol implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			defaultValue: translate('kol-warning'),
+		});
 	}
 
 	@Watch('_symbol')

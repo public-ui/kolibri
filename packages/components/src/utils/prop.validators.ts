@@ -99,32 +99,30 @@ export const setState = <T>(component: Generic.Element.Component, propName: stri
 	if (component.nextState === undefined) {
 		component.nextState = new Map();
 	}
-	if (component.nextState.get(propName) !== value) {
-		const nextHooks = component.nextHooks.get(propName);
-		if (nextHooks instanceof Map === false) {
-			component.nextHooks.set(propName, new Map());
-		}
-		if (typeof hooks.afterPatch === 'function') {
-			component.nextHooks.get(propName)?.set('afterPatch', hooks.afterPatch);
-		}
-		if (typeof hooks.beforePatch === 'function') {
-			component.nextHooks.get(propName)?.set('beforePatch', hooks.beforePatch);
-		}
-		component.nextState.set(propName, value);
-		/**
-		 * Muss erstmal in sync bleiben, da sonst der
-		 * Tooltip nicht korrekt ausgerichtet wird.
-		 */
-		// if (component.hydrated === true || processEnv !== 'test') {
-		// clearTimeout(component.timeout as NodeJS.Timeout);
-		// component.timeout = setTimeout(() => {
-		// 	clearTimeout(component.timeout as NodeJS.Timeout);
-		// 	patchState(component);
-		// }, 50);
-		// } else {
-		patchState(component);
-		// }
+	const nextHooks = component.nextHooks.get(propName);
+	if (nextHooks instanceof Map === false) {
+		component.nextHooks.set(propName, new Map());
 	}
+	if (typeof hooks.afterPatch === 'function') {
+		component.nextHooks.get(propName)?.set('afterPatch', hooks.afterPatch);
+	}
+	if (typeof hooks.beforePatch === 'function') {
+		component.nextHooks.get(propName)?.set('beforePatch', hooks.beforePatch);
+	}
+	component.nextState.set(propName, value);
+	/**
+	 * Muss erstmal in sync bleiben, da sonst der
+	 * Tooltip nicht korrekt ausgerichtet wird.
+	 */
+	// if (component.hydrated === true || processEnv !== 'test') {
+	// clearTimeout(component.timeout as NodeJS.Timeout);
+	// component.timeout = setTimeout(() => {
+	// 	clearTimeout(component.timeout as NodeJS.Timeout);
+	// 	patchState(component);
+	// }, 50);
+	// } else {
+	patchState(component);
+	// }
 };
 
 const logWarn = (component: Generic.Element.Component, propName: string, value: unknown, requiredGeneric: Set<string | null | undefined>): void => {
@@ -170,7 +168,7 @@ export function watchValidator<T>(
 		 * Triff zu, wenn der Wert VALIDE ist.
 		 */
 		setState(component, propName, value, options.hooks);
-	} else if ((value === undefined || value === null) && !options.required) {
+	} else if (value === undefined && options.required !== true && validationFunction(options.defaultValue as T)) {
 		/**
 		 * Triff zu, wenn der Wert entweder ...
 		 * - UNDEFINED oder NULL
