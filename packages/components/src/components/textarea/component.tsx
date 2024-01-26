@@ -371,7 +371,7 @@ export class KolTextarea implements API {
 
 	public componentDidLoad(): void {
 		setTimeout(() => {
-			if (this.ref instanceof HTMLTextAreaElement) {
+			if (this.ref /* SSR instanceof HTMLTextAreaElement */) {
 				this._rows = this.state?._rows && this.state._rows > increaseTextareaHeight(this.ref) ? this.state._rows : increaseTextareaHeight(this.ref);
 			}
 		}, 0);
