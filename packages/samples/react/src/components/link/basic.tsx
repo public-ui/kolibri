@@ -14,8 +14,8 @@ export const LinkBasic: FC = () => (
 			Eigenschaften zuweisen.
 			<br />
 			<br />
-			Danach folgt ein Link, der als block-Element ausgegeben wird.
-			<KolLink class="d-block" _href="#" _label="Simple Link" />, daher gehe ich über die ganze Breite des Eltern-Elements erzeuge so einen Zeilenumbruch.
+			Danach folgt ein Link, der als block-Element ausgegeben wird. <KolLink class="d-block" _href="#" _label="Simple Link" />, daher gehe ich über die ganze
+			Breite des Eltern-Elements erzeuge so einen Zeilenumbruch.
 		</p>
 	</div>
 );
