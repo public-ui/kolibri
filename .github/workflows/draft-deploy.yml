@@ -6,6 +6,7 @@ on:
 
 jobs:
   deploy:
+    if: ${{ env.BASE_REPO == env.PR_HEAD_REPO }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
