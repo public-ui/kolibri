@@ -60,6 +60,11 @@ export class KolTable implements TableAPI {
 	private pageStartSlice = 0;
 	private pageEndSlice = 10;
 	private disableSort = false;
+	private tableDivElement?: HTMLDivElement;
+	private tableDivElementResizeObserver?: ResizeObserver;
+
+	@State()
+	private tableDivElementHasScrollbar = false;
 
 	/**
 	 * @deprecated only for backward compatibility
@@ -383,6 +388,27 @@ export class KolTable implements TableAPI {
 				},
 			}
 		);
+	}
+
+	public componentDidRender(): void {
+		this.checkDivElementScrollbar();
+	}
+
+	public componentDidLoad() {
+		if (this.tableDivElement && ResizeObserver) {
+			this.tableDivElementResizeObserver = new ResizeObserver(this.checkDivElementScrollbar.bind(this));
+			this.tableDivElementResizeObserver.observe(this.tableDivElement);
+		}
+	}
+
+	public disconnectedCallback() {
+		this.tableDivElementResizeObserver?.disconnect();
+	}
+
+	private checkDivElementScrollbar() {
+		if (this.tableDivElement) {
+			this.tableDivElementHasScrollbar = this.tableDivElement.scrollWidth > this.tableDivElement.clientWidth;
+		}
 	}
 
 	public componentWillLoad(): void {
@@ -809,13 +835,27 @@ export class KolTable implements TableAPI {
 		return (
 			<Host>
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
-				<div class="table" tabindex="0">
+
+				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
+				 * <caption> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements:
+				 *   tabindex="-1" prevents keyboard-focus,
+				 *   catching the mouseDown event prevents click-focus
+				 */}
+				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+				<div
+					ref={(element) => (this.tableDivElement = element)}
+					class="table"
+					tabindex="-1"
+					onMouseDown={(event) => {
+						event.preventDefault();
+					}}
+				>
 					<table
 						style={{
 							minWidth: this.state._minWidth,
 						}}
 					>
-						<caption>{this.state._label}</caption>
+						<caption tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>{this.state._label}</caption>
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
 								{this.state._headers.horizontal.map((cols, rowIndex) => (
