@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   pull_request:
 
+env:
+  BASE_REPO: ${{ github.event.pull_request.base.repo.clone_url }}
+  PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.clone_url }}
+
 jobs:
   deploy:
     if: ${{ env.BASE_REPO == env.PR_HEAD_REPO }}
