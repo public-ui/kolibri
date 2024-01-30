@@ -12,6 +12,7 @@ import { Sidebar } from './components/Sidebar';
 import { useLocation } from 'react-router';
 import { HideMenusContext } from './shares/HideMenusContext';
 import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
+import { HomePage } from './components/breadcrumb/home-page';
 
 setStorage(localStorage);
 
@@ -137,6 +138,7 @@ export const App: FC = () => {
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
+						<Route path="breadcrumb/home-page" element={<HomePage />} />
 					</Routes>
 				</div>
 			</div>
