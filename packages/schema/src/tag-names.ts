@@ -30,6 +30,7 @@ export enum TagEnum {
 	'link',
 	'link-button',
 	'link-group',
+	'logo',
 	'modal',
 	'nav',
 	'pagination',
