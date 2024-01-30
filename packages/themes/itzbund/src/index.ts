@@ -34,13 +34,9 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		}
 		:host {
 			background-color: transparent; /* Reset global background-color defined by components */
-			font-family: var(--font-family); /* font-size: var(--font-size); */
 		}
 		* {
 			box-sizing: border-box;
-		}
-		*:not(i) {
-			font-family: var(--font-family);
 		}
 		h1,
 		h2,
@@ -843,6 +839,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-BADGE': css`
 		:host {
 			display: inline-block;
+			font-family: inherit;
 		}
 		:host > span {
 			border-radius: 0.3125rem;
