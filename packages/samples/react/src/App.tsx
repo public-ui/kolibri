@@ -133,7 +133,7 @@ export const App: FC = () => {
 				)}
 
 				<div className="p-4" id="route-container">
-					{!hideMenus && isDraftTheme(theme) && <KolBadge className="mb-3" _label="DRAFT" _color="#db5461" />}
+					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="DRAFT" _color="#db5461" />}
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
