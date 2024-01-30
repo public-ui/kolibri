@@ -1,12 +1,13 @@
-name: Netlify Draft Deploy
+name: Netlify Test Deploy - Deploy stable branches under fixed aliases
 
 on:
-  workflow_dispatch:
-  pull_request:
+  push:
+    branches:
+      - 'develop'
+      - 'release/*'
 
 jobs:
   deploy:
-    if: ${{ github.event.pull_request.base.repo.clone_url == github.event.pull_request.head.repo.clone_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -48,23 +49,4 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
-          args: deploy --filter=@public-ui/sample-react
-
-      - name: Find comment
-        uses: peter-evans/find-comment@v2
-        id: fc
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: Netlify Draft Deployment
-
-      - name: Create or update comment
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            Netlify Draft Deployment
-            URL: ${{ steps.netlify.outputs.NETLIFY_URL }}
-            Logs: ${{ steps.netlify.outputs.NETLIFY_LOGS_URL }}
-          edit-mode: replace
+          args: deploy --filter=@public-ui/sample-react --alias="$GITHUB_REF_NAME" # Netlify conveniently sanitizes the alias for us. E.g. `release/1.7` becomes `release-1-7`
