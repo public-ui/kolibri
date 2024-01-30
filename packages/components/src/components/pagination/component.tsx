@@ -309,8 +309,7 @@ export class KolPagination implements API {
 					_variant={this.state._variant}
 				>
 					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-page')} &nbsp; </span>
-						{page}
+						<span class="visually-hidden">{translate('kol-page')}&nbsp;</span> {page}
 					</span>
 				</kol-button>
 			</li>
@@ -330,8 +329,7 @@ export class KolPagination implements API {
 					_variant={this.state._variant}
 				>
 					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-current-page')} &nbsp; </span>
-						{page}
+						<span class="visually-hidden">{translate('kol-page')}&nbsp;</span> {page}
 					</span>
 				</kol-button-wc>
 			</li>
