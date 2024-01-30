@@ -138,7 +138,7 @@ export const App: FC = () => {
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
-						<Route path="breadcrumb/sample-page" element={<SamplePage />} />
+						<Route path="sample-page" element={<SamplePage />} />
 					</Routes>
 				</div>
 			</div>
