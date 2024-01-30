@@ -12,19 +12,19 @@ Folgende Grundprinzipien gelten für das Schreiben von Quellcode:
 
 ## Checkliste
 
-| Schritt | Kurzbeschreibung                                                                                                                        |
-|:-------:| --------------------------------------------------------------------------------------------------------------------------------------- |
-|    0    | Name im Schema hinterlegen                                                                                                              |
-|    1    | Name im Schema hinterlegen                                                                                                              |
+| Schritt | Kurzbeschreibung                                                                                                                         |
+|:-------:|------------------------------------------------------------------------------------------------------------------------------------------|
+|    0    | Projekt starten                                                                                                                          |
+|    1    | Name im Schema hinterlegen                                                                                                               |
 |    2    | Verzeichnis anlegen<br>- component.tsx(optional)<br>- readme.md<br>- shadow.tsx: Komponente mit Shadow DOM<br>- styles.css<br>- types.ts |
-|    3    | API spezifizieren                                                                                                                       |
-|    4    | Klasse zur API implementieren<br>- Props<br>- State<br>- Watcher<br>- Initialer Hook<br>- Render-Methode                                |
-|    5    | Styling anlegen                                                                                                                         |
-|    6    | Beispiele in `index.html` aufnehmen                                                                                                     |
-|    7    | readme.md vervollständigen                                                                                                              |
-|   ...   | ...                                                                                                                                     |
-|   ...   | Klasse in Komponenten-Liste für Tests aufnehmen (packages/components/src/components/component-list.ts)                                  |
-|   ...   | Alle autogeneierten Daten zur Komponente mit einchecken                                                                                |
+|    3    | API spezifizieren                                                                                                                        |
+|    4    | Klasse zur API implementieren<br>- Props<br>- State<br>- Watcher<br>- Initialer Hook<br>- Render-Methode                                 |
+|    5    | Styling anlegen                                                                                                                          |
+|    6    | Beispiele in `index.html` aufnehmen                                                                                                      |
+|    7    | readme.md vervollständigen                                                                                                               |
+|   ...   | ...                                                                                                                                      |
+|   ...   | Klasse in Komponenten-Liste für Tests aufnehmen (packages/components/src/components/component-list.ts)                                   |
+|   ...   | Alle autogeneierten Daten zur Komponente mit einchecken                                                                                  |
 
 ## Schritt 0
 

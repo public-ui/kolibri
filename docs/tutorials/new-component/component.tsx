@@ -1,13 +1,13 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 
-import { Component, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import type { HeadingLevel } from '@public-ui/schema';
 import { nonce } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchString } from '@public-ui/schema';
 import { watchHeadingLevel } from '../heading/validation';
-import { KoliBriNewComponentCallbacks, NewComponentAPI, NewComponentStates } from './types';
-
+import type { KoliBriNewComponentCallbacks, NewComponentAPI, NewComponentStates } from './types';
 
 /**
  * @class NewComponent - Ermöglicht das Stylen des äußeren Container des NewComponents.
@@ -36,10 +36,11 @@ export class KolNewComponent implements NewComponentAPI {
 				<div
 					class={{
 						'new-component': true,
-						open: this.state._open  || false,
+						open: !!this.state._open,
 						close: !this.state._open,
 					}}
 				>
+					<kol-button _label="Toggle" _on={{ onClick: this.toggle }}></kol-button>
 					<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
 					<div
 						aria-hidden={this.state._open ? undefined : 'true'}
@@ -136,8 +137,7 @@ export class KolNewComponent implements NewComponentAPI {
 		this.validateOn(this._on);
 		this.validateOpen(this._open);
 	}
-
-	private onClick = (event: Event) => {
+	private toggle = (event: Event) => {
 		this._open = !this._open;
 
 		/**
@@ -149,7 +149,7 @@ export class KolNewComponent implements NewComponentAPI {
 		const timeout = setTimeout(() => {
 			clearTimeout(timeout);
 			if (typeof this.state._on?.onClick === 'function') {
-				this.state._on.onClick(event, this._open || false);
+				this.state._on.onClick(event, !!this._open);
 			}
 		});
 	};

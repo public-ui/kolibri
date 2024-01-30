@@ -1,10 +1,10 @@
 /* Hier kommen alle Typen rein, die von der Komponente verwendet werden; 'States' und 'Props' werden in der Komponente mindestens benötigt. */
 
 import type { Generic } from 'adopted-style-sheets';
-import type { HeadingLevel, EventValueOrEventCallback } from '@public-ui/schema';
+import type { HeadingLevel, EventValueOrEventCallback, Events } from '@public-ui/schema';
 
 export type KoliBriNewComponentCallbacks = {
-	onClick?: EventValueOrEventCallback<Event, boolean>;
+	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;
 };
 
 /**
