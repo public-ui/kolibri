@@ -165,7 +165,7 @@ export function watchValidator<T>(
 		 * Triff zu, wenn der Wert VALIDE ist.
 		 */
 		setState(component, propName, value, options.hooks);
-	} else if ((value === undefined || value === null) && !options.required) {
+	} else if (value === undefined && options.required !== true && validationFunction(options.defaultValue as T)) {
 		/**
 		 * Triff zu, wenn der Wert entweder ...
 		 * - UNDEFINED oder NULL

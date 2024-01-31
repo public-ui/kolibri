@@ -13,7 +13,7 @@ export const getDetailsHtml = (
 ): string => {
 	props = mixMembers(
 		{
-			_label: '…',
+			_label: '', // ⚠ required
 		},
 		props
 	);

@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OpenPropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
+import { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OpenPropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PaginationPositionPropType, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
-export { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OpenPropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
+export { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OpenPropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PaginationPositionPropType, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export namespace Components {
     interface KolAbbr {
@@ -2232,6 +2232,10 @@ export namespace Components {
           * Defines whether to show the data distributed over multiple pages.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Controls the position of the pagination.
+         */
+        "_paginationPosition"?: PaginationPositionPropType;
     }
     interface KolTabs {
         /**
@@ -2410,7 +2414,7 @@ export namespace Components {
         "collapse": () => Promise<void>;
         "expand": () => Promise<void>;
         "focusLink": () => Promise<void>;
-        "isOpen": () => Promise<boolean>;
+        "isOpen": () => Promise<any>;
     }
     interface KolTreeItemWc {
         /**
@@ -5088,6 +5092,10 @@ declare namespace LocalJSX {
           * Defines whether to show the data distributed over multiple pages.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Controls the position of the pagination.
+         */
+        "_paginationPosition"?: PaginationPositionPropType;
     }
     interface KolTabs {
         /**

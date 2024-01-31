@@ -76,10 +76,13 @@ const HEADERS: KoliBriTableHeaders = {
 
 				/* Example 4: Render function using React */
 				render: (el) => {
-					el.setAttribute('role', 'presentation');
+					const renderElement = document.createElement('div');
+					renderElement.setAttribute('role', 'presentation');
+					el.innerHTML = '';
+					el.appendChild(renderElement);
 
 					/* https://react.dev/reference/react-dom/client/createRoot */
-					getRoot(el).render(
+					getRoot(renderElement).render(
 						<div
 							style={{
 								display: `grid`,
