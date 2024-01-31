@@ -30,12 +30,12 @@ export class KolTreeItemWc implements TreeItemAPI {
 							{this.state._hasChildren &&
 								(this.state._open ? (
 									// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
-									<span class="toggle-button" onClick={() => void this.collapse()}>
+									<span class="toggle-button" onClick={(event) => void this.handleCollapseClick(event)}>
 										-
 									</span>
 								) : (
 									// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
-									<span class="toggle-button" onClick={() => void this.expand()}>
+									<span class="toggle-button" onClick={(event) => void this.handleExpandClick(event)}>
 										+
 									</span>
 								))}{' '}
@@ -119,6 +119,12 @@ export class KolTreeItemWc implements TreeItemAPI {
 		this.linkElement.focus();
 	}
 
+	private async handleExpandClick(event: MouseEvent) {
+		event.preventDefault();
+		this.linkElement.focus();
+		await this.expand();
+	}
+
 	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method() async expand() {
 		if (this.state._hasChildren) {
@@ -127,6 +133,12 @@ export class KolTreeItemWc implements TreeItemAPI {
 				_open: true,
 			};
 		}
+	}
+
+	private async handleCollapseClick(event: MouseEvent) {
+		event.preventDefault();
+		this.linkElement.focus();
+		await this.collapse();
 	}
 
 	// eslint-disable-next-line @typescript-eslint/require-await
