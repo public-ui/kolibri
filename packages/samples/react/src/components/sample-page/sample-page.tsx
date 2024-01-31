@@ -9,13 +9,15 @@ export const SamplePage: FC = () => (
 			<KolHeading _label="This is the example page" _level={2} />
 		</div>
 		<p>You followed an example link.</p>
-		<KolButton
-			_label="Go Back"
-			_on={{
-				onClick: () => {
-					history.back();
-				},
-			}}
-		/>
+		{history.length > 1 && (
+			<KolButton
+				_label="Go Back"
+				_on={{
+					onClick: () => {
+						history.back();
+					},
+				}}
+			/>
+		)}
 	</>
 );

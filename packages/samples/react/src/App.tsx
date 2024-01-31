@@ -12,7 +12,7 @@ import { Sidebar } from './components/Sidebar';
 import { useLocation } from 'react-router';
 import { HideMenusContext } from './shares/HideMenusContext';
 import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
-import { SamplePage } from './components/breadcrumb/sample-page';
+import { SamplePage } from './components/sample-page/sample-page';
 
 setStorage(localStorage);
 
