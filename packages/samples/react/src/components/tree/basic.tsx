@@ -1,5 +1,5 @@
 import React, { FC, useContext, useState } from 'react';
-import { KolButton, KolTree, KolTreeItem } from '@public-ui/react';
+import { KolBadge, KolButton, KolTree, KolTreeItem } from '@public-ui/react';
 import { getRandomEmoji } from '../../shares/randomEmoji';
 import { useParams } from 'react-router';
 import { HideMenusContext } from '../../shares/HideMenusContext';
@@ -24,6 +24,8 @@ export const TreeBasic: FC = () => {
 
 	return (
 		<>
+			<KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />
+
 			<KolTree _label="Sitemap" class="block w-fit">
 				<KolTreeItem _label={homeLabel} {...getItemProps('home')}></KolTreeItem>
 				<KolTreeItem _label="2 About (open initially)" {...getItemProps('about')} _open>

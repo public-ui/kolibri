@@ -1,4 +1,8 @@
-# kol-tree-wc
+# Tree
+
+<kol-alert _type="warning">
+  Komponente ist ein Entwurf - Vorläufig nicht in Produktion verwenden.
+</kol-alert>
 
 <!-- Auto Generated Below -->
 
