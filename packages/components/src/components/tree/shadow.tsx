@@ -1,4 +1,5 @@
-import { Component, h, JSX, Prop } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 import type { LabelPropType, TreeProps } from '@public-ui/schema';
 
