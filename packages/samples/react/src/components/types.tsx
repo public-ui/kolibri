@@ -1,17 +1,18 @@
 import { FormWrap } from './FormWrap';
-import { ButtonVariants } from './button/partials/variants';
-import { InputCheckboxVariants } from './input-checkbox/partials/variants';
-import { InputColorVariants } from './input-color/partials/variants';
-import { InputDateVariants } from './input-date/partials/variants';
-import { InputEmailVariants } from './input-email/partials/variants';
-import { InputFileVariants } from './input-file/partials/variants';
-import { InputNumberVariants } from './input-number/partials/variants';
-import { InputPasswordVariants } from './input-password/partials/variants';
-import { InputRadioVariants } from './input-radio/partials/variants';
-import { InputRangeVariants } from './input-range/partials/variants';
-import { InputTextVariants } from './input-text/partials/variants';
-import { SelectVariants } from './select/partials/variants';
-import { TextareaVariants } from './textarea/partials/variants';
+
+import type { ButtonVariants } from './button/partials/variants';
+import type { InputCheckboxVariants } from './input-checkbox/partials/variants';
+import type { InputColorVariants } from './input-color/partials/variants';
+import type { InputDateVariants } from './input-date/partials/variants';
+import type { InputEmailVariants } from './input-email/partials/variants';
+import type { InputFileVariants } from './input-file/partials/variants';
+import type { InputNumberVariants } from './input-number/partials/variants';
+import type { InputPasswordVariants } from './input-password/partials/variants';
+import type { InputRadioVariants } from './input-radio/partials/variants';
+import type { InputRangeVariants } from './input-range/partials/variants';
+import type { InputTextVariants } from './input-text/partials/variants';
+import type { SelectVariants } from './select/partials/variants';
+import type { TextareaVariants } from './textarea/partials/variants';
 
 export type RefFormComponent =
 	| typeof InputCheckboxVariants

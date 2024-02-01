@@ -1,5 +1,4 @@
 import { Routes } from '../../shares/types';
-
 import { TabsBasic } from './basic';
 import { TabsIconsOnly } from './icons-only';
 

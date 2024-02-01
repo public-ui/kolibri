@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { KolAlert, KolLink } from '@public-ui/react';
 
 type ErrorListPropType = {

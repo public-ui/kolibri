@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
+
 import { FormWrap } from '../FormWrap';
-import { InputNumberVariants } from './partials/variants';
 import { SampleDescription } from '../SampleDescription';
+import { InputNumberVariants } from './partials/variants';
 
 export const InputNumberBasic: FC = () => (
 	<>
