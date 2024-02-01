@@ -1,7 +1,9 @@
-import React, { createContext, FC, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { HTMLStencilElement } from '@stencil/core/internal';
+import type { FC } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
+
 import {
 	KolButton,
+	KolButtonLink,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -14,10 +16,11 @@ import {
 	KolInputText,
 	KolSelect,
 	KolTextarea,
-	KolButtonLink,
 } from '@public-ui/react';
+
 import { SampleDescription } from '../components/SampleDescription';
 
+import type { HTMLStencilElement } from '@stencil/core/internal';
 const EventTargetContext = createContext<EventTarget | undefined>(undefined);
 
 type Props = {

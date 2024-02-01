@@ -1,9 +1,10 @@
 import React from 'react';
+
 import { KolNav } from '@public-ui/react';
 
-import { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
+import type { FC } from 'react';
 export const NavAriaCurrent: FC = () => (
 	<>
 		<SampleDescription>

@@ -1,14 +1,17 @@
+import { Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
-import { KolTabs } from '@public-ui/react';
-import { DistrictForm } from './DistrictForm';
-import { Summary } from './Summary';
-import { PersonalInformationForm } from './PersonalInformationForm';
-import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
-import { Iso8601 } from '@public-ui/components';
-import { checkAppointmentAvailability } from './appointmentService';
 
+import { KolTabs } from '@public-ui/react';
+
+import { checkAppointmentAvailability } from './appointmentService';
+import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
+import { DistrictForm } from './DistrictForm';
+import { PersonalInformationForm } from './PersonalInformationForm';
+import { Summary } from './Summary';
+
+import type { FormikHelpers } from 'formik';
+import type { Iso8601 } from '@public-ui/components';
 // export interface FormProps {}
 export interface FormValues {
 	district: string;

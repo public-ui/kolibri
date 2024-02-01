@@ -1,5 +1,4 @@
 import { Routes } from '../../shares/types';
-
 import { SpinBasic } from './basic';
 import { SpinCustom } from './custom';
 import { SpinCycle } from './cycle';

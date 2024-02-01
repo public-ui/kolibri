@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolBadge, KolHeading } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 const createBadgeProps = (label: string) => ({
 	_smartButton: {
