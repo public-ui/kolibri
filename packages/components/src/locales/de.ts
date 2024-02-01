@@ -19,6 +19,7 @@ export default {
 	'page-next': 'Eine Seite weiter',
 	'page-last': 'Direkt zur letzten Seite',
 	'entries-per-site': 'Einträge pro Seite',
+	page: 'Seite',
 	'page-current': 'Seite {{page}}',
 	'page-selected': 'Seite {{page}} ist ausgewählt',
 	'page-per-site': '{{entries}} Einträge pro Seite',

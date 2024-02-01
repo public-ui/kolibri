@@ -300,14 +300,18 @@ export class KolPagination implements API {
 					exportparts="icon"
 					key={`${this.nonce}-${page}`}
 					_customClass={this.state._customClass}
-					_label={`${page}`}
+					_label=""
 					_on={{
 						onClick: (event: Event) => {
 							this.onClick(event, page);
 						},
 					}}
 					_variant={this.state._variant}
-				></kol-button>
+				>
+					<span slot="expert">
+						<span class="visually-hidden">{translate('kol-page')}</span> {page}
+					</span>
+				</kol-button>
 			</li>
 		);
 	}
@@ -321,9 +325,13 @@ export class KolPagination implements API {
 					_customClass={this.state._customClass}
 					_disabled={true}
 					_ariaCurrent={true}
-					_label={`${page}`}
+					_label=""
 					_variant={this.state._variant}
-				/>
+				>
+					<span slot="expert">
+						<span class="visually-hidden">{translate('kol-page')}</span> {page}
+					</span>
+				</kol-button-wc>
 			</li>
 		);
 	}
