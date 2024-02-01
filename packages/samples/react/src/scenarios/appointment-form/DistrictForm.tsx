@@ -1,8 +1,11 @@
+import { Field, useFormikContext } from 'formik';
 import React from 'react';
+
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
-import { Field, FieldProps, useFormikContext } from 'formik';
-import { FormValues } from './AppointmentForm';
-import { ErrorListPropType } from '@public-ui/components';
+
+import type { FieldProps } from 'formik';
+import type { FormValues } from './AppointmentForm';
+import type { ErrorListPropType } from '@public-ui/components';
 
 const LOCATION_OPTIONS = [
 	{

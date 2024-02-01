@@ -1,5 +1,8 @@
-import React, { FC } from 'react';
-import { KolKolibri, KolHeading } from '@public-ui/react';
+import type { FC } from 'react';
+import React from 'react';
+
+import { KolHeading, KolKolibri } from '@public-ui/react';
+
 import { SampleDescription } from '../SampleDescription';
 
 export const KolibriBasic: FC = () => (

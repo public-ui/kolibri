@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 
 import { KolButton, KolSelect, KolSpin } from '@public-ui/react';
-import { LOCATION_OPTIONS } from './location.form';
-import { FormProps } from '../common/form/types';
+
 import { FromComponent } from '../common/form/component';
+import { FormProps } from '../common/form/types';
+import { LOCATION_OPTIONS } from './location.form';
 
 export const TerminLocationComponent: FC<FormProps> = () => (
 	<FromComponent submitted={true} onSubmit={() => {}}>

@@ -1,12 +1,13 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
 import { KolButton, KolInputText, KolTable } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
-import { KoliBriTableHeaders } from '@public-ui/components';
-import { DATE_FORMATTER } from './formatter';
 import { SampleDescription } from '../SampleDescription';
+import { DATE_FORMATTER } from './formatter';
 
+import type { KoliBriTableHeaders } from '@public-ui/components';
 type Data = {
 	order: number;
 	date: Date;
