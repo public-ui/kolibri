@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react';
-
-import { Components, SelectOption } from '@public-ui/components';
-import { KolSelect } from '@public-ui/react';
-import { ERROR_MSG } from '../../../shares/constants';
-
 import countries from 'world_countries_lists/data/countries/de/countries.json';
 
+import { KolSelect } from '@public-ui/react';
+
+import { ERROR_MSG } from '../../../shares/constants';
+
+import type { Components, SelectOption } from '@public-ui/components';
 type Country = {
 	id: number;
 	alpha2: string;

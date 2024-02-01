@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolAlert } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const AlertHtml: FC = () => (
 	<div>
