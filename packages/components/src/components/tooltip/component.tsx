@@ -109,7 +109,7 @@ export class KolTooltip implements API {
 		el.removeEventListener('focusin', this.incrementOverFocusCount);
 		el.removeEventListener('mouseleave', this.decrementOverFocusCount);
 		el.removeEventListener('blur', this.decrementOverFocusCount);
-		el.addEventListener('focusout', this.decrementOverFocusCount);
+		el.removeEventListener('focusout', this.decrementOverFocusCount); //?
 	};
 
 	private resyncListeners = (last?: Element | null, next?: Element | null, replacePreviousSibling = false): void => {
