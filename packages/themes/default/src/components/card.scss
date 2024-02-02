@@ -1,4 +1,8 @@
 @layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
 	/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 	:host > div {
 		display: grid;
