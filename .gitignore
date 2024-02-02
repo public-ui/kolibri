@@ -1,13 +1,12 @@
 /.husky/
+/.idea/
+/.nx/
 /license-reports/*.html
 /packages/**/pnpm-lock.yaml
-dist/
-.idea/
-node_modules/
 
-package-lock.json
-.DS_Store
-.nx/
-CHANGELOG.*
+# in all sub folders
+.DS_Store/
+dist/
+node_modules/
 *.log
 *.tgz
