@@ -1,6 +1,8 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
-import { KolTable, KolHeading } from '@public-ui/react';
+import { KolHeading, KolTable } from '@public-ui/react';
+
 import { SampleDescription } from '../SampleDescription';
 
 const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Example' }];

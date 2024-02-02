@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react';
 
 import { KolInputNumber } from '@public-ui/react';
 
-import { Components } from '@public-ui/components';
 import { ERROR_MSG } from '../../../shares/constants';
 
+import type { Components } from '@public-ui/components';
 export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components.KolInputNumber>(function InputNumberCases(props, ref) {
 	return (
 		<div className="grid gap-4">

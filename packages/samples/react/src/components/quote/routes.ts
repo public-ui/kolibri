@@ -1,5 +1,4 @@
 import { Routes } from '../../shares/types';
-
 import { QuoteBasic } from './basic';
 import { QuoteBlock } from './block';
 

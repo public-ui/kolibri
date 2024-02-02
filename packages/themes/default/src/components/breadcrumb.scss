@@ -1,4 +1,7 @@
 @layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
 	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
 		font-size: 0.75rem;
 		color: var(--color-subtle);
@@ -12,5 +15,8 @@
 	}
 	ul li:last-child > span {
 		color: var(--color-subtle);
+	}
+	kol-link {
+		font-family: var(--font-family);
 	}
 }

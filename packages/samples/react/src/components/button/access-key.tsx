@@ -1,6 +1,8 @@
-import { KolButton } from '@public-ui/react';
-import React, { FC } from 'react';
+import React from 'react';
 
+import { KolButton } from '@public-ui/react';
+
+import type { FC } from 'react';
 export const ButtonAccessKey: FC = () => (
 	<div className="flex flex-wrap gap-4">
 		<KolButton _label="Mit S access key" _accessKey="S"></KolButton>

@@ -1,6 +1,9 @@
 @import '../mixins/focus-outline';
 
 @layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
 	:host kol-input {
 		display: grid;
 		align-items: center;
