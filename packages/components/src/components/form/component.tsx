@@ -13,6 +13,8 @@ import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stri
 	shadow: true,
 })
 export class KolForm implements FormAPI {
+	errorListElement?: HTMLElement;
+
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
 		event.stopPropagation();
@@ -79,8 +81,6 @@ export class KolForm implements FormAPI {
 		);
 	}
 
-	errorListElement!: HTMLElement;
-
 	/**
 	 * Gibt die EventCallback-Funktionen für die Form-Events an.
 	 */
@@ -130,9 +130,7 @@ export class KolForm implements FormAPI {
 
 	public componentDidRender() {
 		if (this._errorList && this._errorList.length > 0) {
-			if (this.errorListElement) {
-				this.errorListElement.focus();
-			}
+			this.errorListElement?.focus();
 		}
 	}
 }
