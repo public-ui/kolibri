@@ -298,13 +298,17 @@ export class KolPagination implements PaginationAPI {
 					exportparts="icon"
 					key={`${this.nonce}-${page}`}
 					_customClass={this.state._customClass}
-					_label={`${page}`}
+					_label=""
 					_on={{
 						onClick: (event: Event) => {
 							this.onClick(event, page);
 						},
 					}}
-				></kol-button-wc>
+				>
+					<span slot="expert">
+						<span class="visually-hidden">{translate('kol-page')}</span> {page}
+					</span>
+				</kol-button-wc>
 			</li>
 		);
 	}
@@ -312,7 +316,11 @@ export class KolPagination implements PaginationAPI {
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
 			<li>
-				<kol-button-wc class="selected" key={`${this.nonce}-selected`} _customClass={this.state._customClass} _disabled={true} _label={`${page}`} />
+				<kol-button-wc class="selected" key={`${this.nonce}-selected`} _customClass={this.state._customClass} _disabled={true} _label="">
+					<span slot="expert">
+						<span class="visually-hidden">{translate('kol-page')}</span> {page}
+					</span>
+				</kol-button-wc>
 			</li>
 		);
 	}
