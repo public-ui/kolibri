@@ -222,7 +222,6 @@ export class KolTooltip implements API {
 
 	public connectedCallback(): void {
 		this.previousSibling = this.host?.previousElementSibling;
-		this.handleEventListeners();
 	}
 
 	public componentDidRender(): void {
