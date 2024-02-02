@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react';
 
 import { KolInputEmail } from '@public-ui/react';
 
-import { Components } from '@public-ui/components';
 import { ERROR_MSG } from '../../../shares/constants';
 
+import type { Components } from '@public-ui/components';
 export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.KolInputEmail>(function InputEmailCases(props, ref) {
 	return (
 		<div className="grid gap-4">

@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolLinkButton } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 const ARGS = {
 	_href: '#/sample-page',

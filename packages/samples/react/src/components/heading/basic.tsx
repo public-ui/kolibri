@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolHeading } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const HeadingBasic: FC = () => (
 	<div className="grid gap-4">

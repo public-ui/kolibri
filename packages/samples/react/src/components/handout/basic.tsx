@@ -1,4 +1,7 @@
-import { Bundesanstalt, KoliBriTableHeaders } from '@public-ui/components';
+import type { KoliBriTableHeaders } from '@public-ui/components';
+import React from 'react';
+
+import { Bundesanstalt } from '@public-ui/components';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -32,9 +35,10 @@ import {
 	KolTextarea,
 	KolVersion,
 } from '@public-ui/react';
-import React, { FC } from 'react';
+
 import { getTheme, getThemeName } from '../../shares/store';
 
+import type { FC } from 'react';
 const TABLE_HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[

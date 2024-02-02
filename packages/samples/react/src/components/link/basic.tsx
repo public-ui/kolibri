@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
+
 import { KolLink } from '@public-ui/react';
 
 export const LinkBasic: FC = () => (
@@ -14,9 +16,8 @@ export const LinkBasic: FC = () => (
 			andere Eigenschaften zuweisen.
 			<br />
 			<br />
-			Danach folgt ein Link, der als block-Element ausgegeben wird.
-			<KolLink class="d-block" _href="#/sample-page" _label="Simple Link" />, daher gehe ich über die ganze Breite des Eltern-Elements erzeuge so einen
-			Zeilenumbruch.
+			Danach folgt ein Link, der als block-Element ausgegeben wird. <KolLink class="d-block" _href="#/sample-page" _label="Simple Link" />, daher gehe ich über
+			die ganze Breite des Eltern-Elements erzeuge so einen Zeilenumbruch.
 		</p>
 	</div>
 );

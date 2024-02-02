@@ -1,7 +1,11 @@
+import React from 'react';
+
 import { KolButton, KolForm } from '@public-ui/react';
-import React, { FC } from 'react';
+
 import { FocusElement } from './FocusInput';
-import { RefFormComponent } from './types';
+
+import type { FC } from 'react';
+import type { RefFormComponent } from './types';
 
 type FormWrapProps = {
 	RefComponent: RefFormComponent;

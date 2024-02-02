@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { KolAlert } from '@public-ui/react';
 
-import { FC } from 'react';
-import { AlertType, AlertVariant, HeadingLevel } from '@public-ui/components';
+import type { FC } from 'react';
+import type { AlertType, AlertVariant, HeadingLevel } from '@public-ui/components';
 
 type PropsByType = {
 	level: HeadingLevel;

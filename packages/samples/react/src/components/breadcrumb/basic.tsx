@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolBreadcrumb } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const BreadcrumbBasic: FC = () => (
 	<div className="grid gap-4">
