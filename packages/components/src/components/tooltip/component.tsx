@@ -95,19 +95,19 @@ export class KolTooltip implements API {
 	};
 
 	private addListeners = (el: Element): void => {
-		el.addEventListener('mouseover', this.incrementOverFocusCount);
+		el.addEventListener('mouseenter', this.incrementOverFocusCount);
 		el.addEventListener('focus', this.incrementOverFocusCount);
 		el.addEventListener('focusin', this.incrementOverFocusCount);
-		el.addEventListener('mouseout', this.decrementOverFocusCount);
+		el.addEventListener('mouseleave', () => this.decrementOverFocusCount);
 		el.addEventListener('blur', this.decrementOverFocusCount);
 		el.addEventListener('focusout', this.decrementOverFocusCount);
 	};
 
 	private removeListeners = (el: Element): void => {
-		el.removeEventListener('mouseover', this.incrementOverFocusCount);
+		el.removeEventListener('mouseenter', this.incrementOverFocusCount);
 		el.removeEventListener('focus', this.incrementOverFocusCount);
 		el.removeEventListener('focusin', this.incrementOverFocusCount);
-		el.removeEventListener('mouseout', this.decrementOverFocusCount);
+		el.removeEventListener('mouseleave', this.decrementOverFocusCount);
 		el.removeEventListener('blur', this.decrementOverFocusCount);
 		el.addEventListener('focusout', this.decrementOverFocusCount);
 	};
