@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import type { JSX } from '@stencil/core';
 import { devHint, emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
@@ -19,10 +19,12 @@ import type {
 	KoliBriTableRender,
 	KoliBriTableSelectedHead,
 	LabelPropType,
+	PaginationPositionPropType,
 	Stringified,
 	TableAPI,
 	TableStates,
 } from '@public-ui/schema';
+import { validatePaginationPosition } from '@public-ui/schema';
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
@@ -58,6 +60,11 @@ export class KolTable implements TableAPI {
 	private pageStartSlice = 0;
 	private pageEndSlice = 10;
 	private disableSort = false;
+	private tableDivElement?: HTMLDivElement;
+	private tableDivElementResizeObserver?: ResizeObserver;
+
+	@State()
+	private tableDivElementHasScrollbar = false;
 
 	/**
 	 * @deprecated only for backward compatibility
@@ -98,22 +105,27 @@ export class KolTable implements TableAPI {
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
+	/**
+	 * Controls the position of the pagination.
+	 */
+	@Prop() public _paginationPosition?: PaginationPositionPropType = 'bottom';
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
-		_label: '', // ⚠ required
 		_data: [],
 		_dataFoot: [],
 		_headers: {
 			horizontal: [],
 			vertical: [],
 		},
+		_label: '', // ⚠ required
 		_pagination: {
 			_page: 1,
 			_pageSize: 10,
 			_max: 0,
 		},
 		_sortedData: [],
+		_paginationPosition: 'bottom',
 	};
 
 	@Watch('_allowMultiSort')
@@ -170,6 +182,11 @@ export class KolTable implements TableAPI {
 				}
 			});
 		});
+	}
+
+	@Watch('_paginationPosition')
+	public validatePaginationPosition(value?: PaginationPositionPropType): void {
+		validatePaginationPosition(this, value);
 	}
 
 	/**
@@ -373,6 +390,27 @@ export class KolTable implements TableAPI {
 		);
 	}
 
+	public componentDidRender(): void {
+		this.checkDivElementScrollbar();
+	}
+
+	public componentDidLoad() {
+		if (this.tableDivElement && ResizeObserver) {
+			this.tableDivElementResizeObserver = new ResizeObserver(this.checkDivElementScrollbar.bind(this));
+			this.tableDivElementResizeObserver.observe(this.tableDivElement);
+		}
+	}
+
+	public disconnectedCallback() {
+		this.tableDivElementResizeObserver?.disconnect();
+	}
+
+	private checkDivElementScrollbar() {
+		if (this.tableDivElement) {
+			this.tableDivElementHasScrollbar = this.tableDivElement.scrollWidth > this.tableDivElement.clientWidth;
+		}
+	}
+
 	public componentWillLoad(): void {
 		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
@@ -381,6 +419,7 @@ export class KolTable implements TableAPI {
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
+		this.validatePaginationPosition(this._paginationPosition);
 	}
 
 	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[]): number {
@@ -748,6 +787,41 @@ export class KolTable implements TableAPI {
 		return <tfoot>{rows.map(this.renderTableRow)}</tfoot>;
 	};
 
+	private renderPagination(): JSX.Element {
+		return (
+			<div class="pagination">
+				<span>
+					{translate('kol-table-visible-range', {
+						placeholders: {
+							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
+							end: this.pageEndSlice.toString(),
+							total:
+								this.state._pagination && this.state._pagination._max > 0
+									? this.state._pagination._max.toString()
+									: Array.isArray(this.state._data)
+									? this.state._data.length.toString()
+									: '0',
+						},
+					})}
+				</span>
+				<div>
+					<kol-pagination
+						_boundaryCount={this.state._pagination._boundaryCount}
+						_customClass={this.state._pagination._customClass}
+						_on={this.handlePagination}
+						_page={this.state._pagination._page}
+						_pageSize={this.state._pagination._pageSize}
+						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
+						_siblingCount={this.state._pagination._siblingCount}
+						_tooltipAlign="bottom"
+						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+						_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
+					></kol-pagination>
+				</div>
+			</div>
+		);
+	}
+
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
@@ -755,38 +829,33 @@ export class KolTable implements TableAPI {
 			this.state._pagination._page || 1
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
+		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination() : null;
+		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination() : null;
 
 		return (
 			<Host>
-				{this.pageEndSlice > 0 && this.showPagination && (
-					<div class="pagination">
-						<span>
-							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
-							{this.state._pagination._max || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
-						</span>
-						<div>
-							<kol-pagination
-								_boundaryCount={this.state._pagination._boundaryCount}
-								_customClass={this.state._pagination._customClass}
-								_on={this.handlePagination}
-								_page={this.state._pagination._page}
-								_pageSize={this.state._pagination._pageSize}
-								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
-								_siblingCount={this.state._pagination._siblingCount}
-								_tooltipAlign="bottom"
-								_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
-								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
-							></kol-pagination>
-						</div>
-					</div>
-				)}
-				<div class="table" tabindex="0">
+				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
+
+				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
+				 * <caption> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements:
+				 *   tabindex="-1" prevents keyboard-focus,
+				 *   catching the mouseDown event prevents click-focus
+				 */}
+				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+				<div
+					ref={(element) => (this.tableDivElement = element)}
+					class="table"
+					tabindex="-1"
+					onMouseDown={(event) => {
+						event.preventDefault();
+					}}
+				>
 					<table
 						style={{
 							minWidth: this.state._minWidth,
 						}}
 					>
-						<caption>{this.state._label}</caption>
+						<caption tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>{this.state._label}</caption>
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
 								{this.state._headers.horizontal.map((cols, rowIndex) => (
@@ -888,6 +957,7 @@ export class KolTable implements TableAPI {
 						{this.state._dataFoot.length > 0 ? this.renderFoot() : ''}
 					</table>
 				</div>
+				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
 		);
 	}

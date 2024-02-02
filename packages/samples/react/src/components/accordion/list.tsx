@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
+
 import { KolAccordion } from '@public-ui/react';
 
 const LIST = [

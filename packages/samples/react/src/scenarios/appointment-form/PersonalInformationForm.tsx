@@ -1,7 +1,10 @@
+import { Field, useFormikContext } from 'formik';
 import React, { useState } from 'react';
+
 import { KolButton, KolForm, KolHeading, KolInputEmail, KolInputText, KolSelect } from '@public-ui/react';
-import { Field, FieldProps, useFormikContext } from 'formik';
-import { FormValues } from './AppointmentForm';
+
+import type { FieldProps } from 'formik';
+import type { FormValues } from './AppointmentForm';
 import { createErrorList } from './formUtils';
 
 const SALUTATION_OPTIONS = [

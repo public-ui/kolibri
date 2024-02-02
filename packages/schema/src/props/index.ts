@@ -46,3 +46,4 @@ export * from './sync-value-by-selector';
 export * from './tooltip-align';
 export * from './touched';
 export * from './variant/spin';
+export * from './pagination-position';

@@ -1,7 +1,8 @@
 import React from 'react';
-import { FC } from 'react';
+
 import { KolAbbr } from '@public-ui/react';
 
+import type { FC } from 'react';
 export const AbbrBasic: FC = () => (
 	<>
 		<p>

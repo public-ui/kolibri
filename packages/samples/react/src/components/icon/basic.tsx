@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolIcon } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const IconBasic: FC = () => (
 	<div className="grid gap-4">

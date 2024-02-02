@@ -1,8 +1,11 @@
+import React from 'react';
+
 import { ToasterService } from '@public-ui/components';
 import { KolButton } from '@public-ui/react';
-import React, { FC } from 'react';
+
 import { getRoot } from '../../shares/react-roots';
 
+import type { FC } from 'react';
 const toaster = ToasterService.getInstance(document);
 
 export const ToastBasic: FC = () => {

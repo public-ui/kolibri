@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react';
 
 import { KolInputText } from '@public-ui/react';
 
-import { Components } from '@public-ui/components';
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 
+import type { Components } from '@public-ui/components';
 export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.KolInputText>(function InputTextCases(props, ref) {
 	return (
 		<div className="grid gap-4">

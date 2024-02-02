@@ -1,12 +1,13 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
 import { KolButton, KolInputText, KolTable } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
-import { KoliBriTableHeaders } from '@public-ui/components';
-import { DATE_FORMATTER } from './formatter';
 import { SampleDescription } from '../SampleDescription';
+import { DATE_FORMATTER } from './formatter';
 
+import type { KoliBriTableHeaders } from '@public-ui/components';
 type Data = {
 	order: number;
 	date: Date;
@@ -76,10 +77,13 @@ const HEADERS: KoliBriTableHeaders = {
 
 				/* Example 4: Render function using React */
 				render: (el) => {
-					el.setAttribute('role', 'presentation');
+					const renderElement = document.createElement('div');
+					renderElement.setAttribute('role', 'presentation');
+					el.innerHTML = '';
+					el.appendChild(renderElement);
 
 					/* https://react.dev/reference/react-dom/client/createRoot */
-					getRoot(el).render(
+					getRoot(renderElement).render(
 						<div
 							style={{
 								display: `grid`,

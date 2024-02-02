@@ -14,7 +14,8 @@ config.overrides.push({
 		},
 	},
 	rules: {
-		'@typescript-eslint/no-unsafe-member-access': 'warn',
+		'@typescript-eslint/consistent-type-imports': 'error',
+		'@typescript-eslint/no-unsafe-member-access': 'error',
 		'react/no-unused-state': 'error',
 	},
 });

@@ -1,4 +1,7 @@
 @layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
 	:host progress,
 	:host span {
 		display: block;

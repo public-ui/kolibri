@@ -1,14 +1,10 @@
 import { Routes } from '../../shares/types';
-
-import { ButtonBasic } from './basic';
-
-import { ButtonIconOnly } from './hide-label';
-
-import { ButtonIcons } from './icons';
-
-import { ButtonWidth } from './width';
 import { ButtonAccessKey } from './access-key';
 import { ButtonBaselined } from './baselined';
+import { ButtonBasic } from './basic';
+import { ButtonIconOnly } from './hide-label';
+import { ButtonIcons } from './icons';
+import { ButtonWidth } from './width';
 
 export const BUTTON_ROUTES: Routes = {
 	button: {
