@@ -81,7 +81,7 @@ export class KolNav implements NavAPI {
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean
 	): JSX.Element {
-		const icons = link._icons || (this.state._hideLabel ? 'codicon codicon-primitive-square' : undefined);
+		const icons = link._icons || (this.state._hideLabel ? 'codicon codicon-symbol-method' : undefined);
 
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
