@@ -68,24 +68,29 @@ export class InputRadioController extends InputCheckboxRadioController implement
 	public readonly getOptionByKey = (key: string): Option<W3CInputValue> | undefined => this.keyOptionMap.get(key);
 
 	private readonly isValueInOptions = (value: unknown, options: Option<W3CInputValue>[]): boolean => {
-		return options.find((option) => option.value === value) !== undefined;
+		return options.find((option) => option.value === value as string) !== undefined || options.find((option) => option.value == value) !== undefined;
 	};
 
 	protected readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
+
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
 			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
+
 			if (this.isValueInOptions(value, options as Option<W3CInputValue>[]) === false) {
 				const newValue = (
 					options[0] as {
 						value: string;
 					}
 				).value;
-				nextState.set('_value', newValue);
-				this.onStateChange();
+
+				nextState.set('_value', String(newValue));
+			} else {
+				nextState.set('_value', String(value));
 			}
+			this.onStateChange();
 		}
 	};
 

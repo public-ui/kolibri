@@ -18,8 +18,17 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_required
 				_error={ERROR_MSG}
 				_touched
-				_value="Firma"
-				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)','value':'Herr'},{'label':'Firma','value':'Firma'}]"
+				_value="Firma1"
+				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)','value':'Herr'},{'label':'Firma','value':'Firma1'}]"
+				_label="Anrede (mit Fehler)"
+			/>
+			<KolInputRadio
+				{...props}
+				_id='test'
+				_required
+				_touched
+				_value="124"
+				_options="[{'label':'Frau1','value':'123'},{'label':'Herr2','value':'124'},{'label':'Firma3','value':'125'}]"
 				_label="Anrede (mit Fehler)"
 			/>
 			<KolInputRadio
