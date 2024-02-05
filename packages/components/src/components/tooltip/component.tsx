@@ -1,12 +1,12 @@
 import { autoUpdate } from '@floating-ui/dom';
+import type { AccessKeyPropType, AlignPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '@public-ui/schema';
 import { getDocument, validateAccessKey, validateAlign, validateId, validateLabel } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 
-import type { AccessKeyPropType, AlignPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '@public-ui/schema';
-import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-tooltip-wc',
 	styleUrl: './style.css',
@@ -18,6 +18,8 @@ export class KolTooltip implements TooltipAPI {
 	private arrowElement?: HTMLDivElement;
 	private previousSibling?: Element | null;
 	private tooltipElement?: HTMLDivElement;
+	private hasFocusIn = false;
+	private hasMouseIn = false;
 
 	private cleanupAutoPositioning?: () => void;
 
@@ -65,22 +67,35 @@ export class KolTooltip implements TooltipAPI {
 		}
 	};
 
+	private handleMouseEnter() {
+		this.hasMouseIn = true;
+		this.showOrHideTooltip();
+	}
+	private handleMouseleave() {
+		this.hasMouseIn = false;
+		this.showOrHideTooltip();
+	}
+	private handleFocusIn() {
+		this.hasFocusIn = true;
+		this.showOrHideTooltip();
+	}
+	private handleFocusout() {
+		this.hasFocusIn = false;
+		this.showOrHideTooltip();
+	}
+
 	private addListeners = (el: Element): void => {
-		el.addEventListener('mouseover', this.incrementOverFocusCount);
-		el.addEventListener('focus', this.incrementOverFocusCount);
-		el.addEventListener('focusin', this.incrementOverFocusCount);
-		el.addEventListener('mouseout', this.decrementOverFocusCount);
-		el.addEventListener('blur', this.decrementOverFocusCount);
-		el.addEventListener('focusout', this.decrementOverFocusCount);
+		el.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
+		el.addEventListener('mouseleave', this.handleMouseleave.bind(this));
+		el.addEventListener('focusin', this.handleFocusIn.bind(this));
+		el.addEventListener('focusout', this.handleFocusout.bind(this));
 	};
 
 	private removeListeners = (el: Element): void => {
-		el.removeEventListener('mouseover', this.incrementOverFocusCount);
-		el.removeEventListener('focus', this.incrementOverFocusCount);
-		el.removeEventListener('focusin', this.incrementOverFocusCount);
-		el.removeEventListener('mouseout', this.decrementOverFocusCount);
-		el.removeEventListener('blur', this.decrementOverFocusCount);
-		el.addEventListener('focusout', this.decrementOverFocusCount);
+		el.removeEventListener('mouseenter', this.handleMouseEnter.bind(this));
+		el.removeEventListener('mouseleave', this.handleMouseleave.bind(this));
+		el.removeEventListener('focusin', this.handleFocusIn.bind(this));
+		el.removeEventListener('focusout', this.handleFocusout.bind(this));
 	};
 
 	private resyncListeners = (last?: Element | null, next?: Element | null, replacePreviousSibling = false): void => {
@@ -165,24 +180,12 @@ export class KolTooltip implements TooltipAPI {
 		});
 	}
 
-	private overFocusCount = 0;
 	private overFocusTimeout?: ReturnType<typeof setTimeout>;
-
-	private incrementOverFocusCount = (): void => {
-		this.overFocusCount++;
-		this.showOrHideTooltip();
-	};
-
-	private decrementOverFocusCount = (): void => {
-		this.overFocusCount--;
-		this.showOrHideTooltip();
-	};
 
 	private showOrHideTooltip = (): void => {
 		clearTimeout(this.overFocusTimeout);
 		this.overFocusTimeout = setTimeout(() => {
-			clearTimeout(this.overFocusTimeout);
-			if (this.overFocusCount > 0) {
+			if (this.hasMouseIn || this.hasFocusIn) {
 				this.showTooltip();
 			} else {
 				this.hideTooltip();
@@ -204,7 +207,6 @@ export class KolTooltip implements TooltipAPI {
 
 	public connectedCallback(): void {
 		this.previousSibling = this.host?.previousElementSibling;
-		this.handleEventListeners();
 	}
 
 	public componentDidRender(): void {
