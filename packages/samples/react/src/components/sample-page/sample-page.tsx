@@ -1,7 +1,7 @@
 import { KolButton, KolHeading } from '@public-ui/react';
 import React from 'react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const SamplePage: FC = () => (
 	<>
