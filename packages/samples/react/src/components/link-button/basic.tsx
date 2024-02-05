@@ -5,9 +5,7 @@ import { KolLinkButton } from '@public-ui/react';
 import type { FC } from 'react';
 
 const ARGS = {
-	_on: {
-		onClick: (_event, _value) => alert('Klick!'),
-	},
+	_href: '#/sample-page',
 };
 
 export const LinkButtonBasic: FC = () => (

@@ -20,7 +20,7 @@ export const NavAriaCurrent: FC = () => (
 			_links={[
 				{
 					_label: 'Homepage',
-					_href: '#/',
+					_href: '#/sample-page',
 				},
 				{
 					_label: 'Nav - aria-current (Aktuelle Seite)',
