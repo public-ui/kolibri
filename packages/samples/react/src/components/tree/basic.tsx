@@ -25,7 +25,7 @@ export const TreeBasic: FC = () => {
 
 	return (
 		<>
-			<KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />
+			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 
 			<KolTree _label="Sitemap" class="block w-fit">
 				<KolTreeItem _label={homeLabel} {...getItemProps('home')}></KolTreeItem>

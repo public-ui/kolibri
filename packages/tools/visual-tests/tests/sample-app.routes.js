@@ -365,7 +365,7 @@ ROUTES.set('toast/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('tree/basic', {
+ROUTES.set('tree/basic/home', {
 	axe: {
 		skipFailures: false,
 	},
