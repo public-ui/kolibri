@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { KolTable } from '@public-ui/react';
 import { KoliBriTableHeaders } from '@public-ui/components';
 import { DATA, Data } from './test-data';
+import { SampleDescription } from '../SampleDescription';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
@@ -30,4 +31,14 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
-export const TableSortTable: FC = () => <KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />;
+export const TableSortTable: FC = () => (
+	<>
+		<SampleDescription>
+			<p>
+				Hier ist eine Tabelle, die durch anklicken des Knopfes sortiert werden kann. Entweder nach der Reihenfolge, nach dem ältesten Datum oder nach dem
+				jüngsten Datum.
+			</p>
+		</SampleDescription>
+		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />
+	</>
+);

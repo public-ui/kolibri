@@ -2,6 +2,7 @@ import React from 'react';
 import { KolButton, KolCard, KolInputCheckbox } from '@public-ui/react';
 
 import { FC } from 'react';
+import { SampleDescription } from '../SampleDescription';
 
 const STYLE = {
 	display: 'flex',
@@ -11,66 +12,71 @@ const STYLE = {
 };
 
 export const CardSelection: FC = () => (
-	<div className="flex gap-2">
-		<KolCard _label="DEBTI-25437/17-1">
-			<div>
-				<div>
-					TeCorp Endplatte
-					<br />
-					VZTA
-				</div>
+	<>
+		<SampleDescription>
+			<p>Hier werden drei Beispielbilder nach klicken auf &apos;Öffnen&apos; angezeigt. Die Checkboxen &apos;Auswählen&apos; können an und abgewählt werden.</p>
+		</SampleDescription>
+		<div className="flex gap-2">
+			<KolCard _label="DEBTI-25437/17-1">
 				<div>
 					<div>
-						<img alt="Darstellung des KoliBri-Theming" src="abgrenzung.jpg" width="100%" />
+						TeCorp Endplatte
+						<br />
+						VZTA
+					</div>
+					<div>
+						<div>
+							<img alt="Darstellung des KoliBri-Theming" src="abgrenzung.jpg" width="100%" />
+						</div>
+					</div>
+					<div>
+						<div style={STYLE}>
+							<KolInputCheckbox _label={`Auswählen`} />
+							<KolButton _variant="primary" _label="Öffnen"></KolButton>
+						</div>
 					</div>
 				</div>
-				<div>
-					<div style={STYLE}>
-						<KolInputCheckbox _label={`Auswählen`} />
-						<KolButton _variant="primary" _label="Öffnen"></KolButton>
-					</div>
-				</div>
-			</div>
-		</KolCard>
-		<KolCard _label="DEBTI-25437/17-1">
-			<div>
-				<div>
-					TeCorp Endplatte
-					<br />
-					VZTA
-				</div>
+			</KolCard>
+			<KolCard _label="DEBTI-25437/17-1">
 				<div>
 					<div>
-						<img alt="Darstellung des KoliBri-Theming" src="abgrenzung.jpg" width="100%" />
+						TeCorp Endplatte
+						<br />
+						VZTA
+					</div>
+					<div>
+						<div>
+							<img alt="Darstellung des KoliBri-Theming" src="abgrenzung.jpg" width="100%" />
+						</div>
+					</div>
+					<div>
+						<div style={STYLE}>
+							<KolInputCheckbox _label={`Auswählen`} />
+							<KolButton _variant="primary" _label="Öffnen"></KolButton>
+						</div>
 					</div>
 				</div>
-				<div>
-					<div style={STYLE}>
-						<KolInputCheckbox _label={`Auswählen`} />
-						<KolButton _variant="primary" _label="Öffnen"></KolButton>
-					</div>
-				</div>
-			</div>
-		</KolCard>
-		<KolCard _label="DEBTI-25437/17-1">
-			<div>
-				<div>
-					TeCorp Endplatte
-					<br />
-					VZTA
-				</div>
+			</KolCard>
+			<KolCard _label="DEBTI-25437/17-1">
 				<div>
 					<div>
-						<img alt="Darstellung des KoliBri-Theming" src="abgrenzung.jpg" width="100%" />
+						TeCorp Endplatte
+						<br />
+						VZTA
+					</div>
+					<div>
+						<div>
+							<img alt="Darstellung des KoliBri-Theming" src="abgrenzung.jpg" width="100%" />
+						</div>
+					</div>
+					<div>
+						<div style={STYLE}>
+							<KolInputCheckbox _label={`Auswählen`} />
+							<KolButton _variant="primary" _label="Öffnen"></KolButton>
+						</div>
 					</div>
 				</div>
-				<div>
-					<div style={STYLE}>
-						<KolInputCheckbox _label={`Auswählen`} />
-						<KolButton _variant="primary" _label="Öffnen"></KolButton>
-					</div>
-				</div>
-			</div>
-		</KolCard>
-	</div>
+			</KolCard>
+		</div>
+	</>
 );

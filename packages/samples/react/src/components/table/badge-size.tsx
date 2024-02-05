@@ -5,6 +5,7 @@ import { KolBadge, KolTable } from '@public-ui/react';
 import { getRoot } from '../../shares/react-roots';
 import { KoliBriTableHeaders } from '@public-ui/components';
 import { DATA, Data } from './test-data';
+import { SampleDescription } from '../SampleDescription';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
@@ -48,4 +49,14 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
-export const TableBadgeSize: FC = () => <KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />;
+export const TableBadgeSize: FC = () => (
+	<>
+		<SampleDescription>
+			<p>
+				Hier ist eine Tabelle, die durch anklicken des Knopfes sortiert werden kann. Entweder nach der Reihenfolge, nach dem ältesten Datum oder nach dem
+				jüngsten Datum.
+			</p>
+		</SampleDescription>
+		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />
+	</>
+);

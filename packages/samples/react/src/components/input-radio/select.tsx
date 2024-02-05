@@ -4,6 +4,7 @@ import { KolForm, KolInputRadio } from '@public-ui/react';
 import { FC } from 'react';
 
 import { ERROR_MSG } from '../../shares/constants';
+import { SampleDescription } from '../SampleDescription';
 
 const options = [
 	{ label: 'Frau', value: 'Frau' },
@@ -12,7 +13,12 @@ const options = [
 ];
 
 export const InputRadioSelect: FC = () => (
-	<KolForm className="grid gap-4">
-		<KolInputRadio _error={ERROR_MSG} _options={options} _label="Anrede" />
-	</KolForm>
+	<>
+		<SampleDescription>
+			<p>Hier verstehe ich Fehlermeldung nicht. Hier ist ein Beispiel Radio-Button. Nur eine gleichzeitige Auswahl ist möglich. </p>
+		</SampleDescription>
+		<KolForm className="grid gap-4">
+			<KolInputRadio _error={ERROR_MSG} _options={options} _label="Anrede" />
+		</KolForm>
+	</>
 );

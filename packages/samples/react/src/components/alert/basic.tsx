@@ -5,7 +5,7 @@ import { HeadingLevel } from '@public-ui/components/dist/types/types/heading-lev
 
 import { FC } from 'react';
 import { AlertType, AlertVariant } from '@public-ui/components';
-
+import { SampleDescription } from '../SampleDescription';
 type PropsByType = {
 	level: HeadingLevel;
 	type: AlertType;
@@ -33,11 +33,19 @@ const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 );
 
 export const AlertBasic: FC<PropsBasic> = ({ variant }) => (
-	<div className="grid gap-4">
-		<AlertByType level={1} type="default" variant={variant} />
-		<AlertByType level={2} type="error" variant={variant} />
-		<AlertByType level={3} type="info" variant={variant} />
-		<AlertByType level={4} type="success" variant={variant} />
-		<AlertByType level={5} type="warning" variant={variant} />
-	</div>
+	<>
+		<SampleDescription>
+			<p>
+				Hier werden verschiedene Alerts gezeigt. Beim klicken auf das X soll das Schließen-Event ausgelöst werden. In diesem Beispiel erscheint eine Textbox mit
+				Inhalt Schließen.
+			</p>
+		</SampleDescription>
+		<div className="grid gap-4">
+			<AlertByType level={1} type="default" variant={variant} />
+			<AlertByType level={2} type="error" variant={variant} />
+			<AlertByType level={3} type="info" variant={variant} />
+			<AlertByType level={4} type="success" variant={variant} />
+			<AlertByType level={5} type="warning" variant={variant} />
+		</div>
+	</>
 );
