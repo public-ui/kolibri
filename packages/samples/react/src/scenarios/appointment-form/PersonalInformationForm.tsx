@@ -60,7 +60,6 @@ export function PersonalInformationForm() {
 								onChange: (event, values: unknown) => {
 									if (event.target) {
 										const [value] = values as [FormValues['salutation']];
-										void form.setFieldTouched('salutation', true);
 										void form.setFieldValue('salutation', value, true);
 									}
 								},
@@ -86,7 +85,6 @@ export function PersonalInformationForm() {
 									_on={{
 										onChange: (event, value: unknown) => {
 											if (event.target) {
-												void form.setFieldTouched('company', true);
 												void form.setFieldValue('company', value, true);
 											}
 										},
@@ -113,7 +111,6 @@ export function PersonalInformationForm() {
 								_on={{
 									onChange: (event, value: unknown) => {
 										if (event.target) {
-											void form.setFieldTouched('name', true);
 											void form.setFieldValue('name', value, true);
 										}
 									},
@@ -139,7 +136,6 @@ export function PersonalInformationForm() {
 								_on={{
 									onChange: (event, value: unknown) => {
 										if (event.target) {
-											void form.setFieldTouched('email', true);
 											void form.setFieldValue('email', value, true);
 										}
 									},
