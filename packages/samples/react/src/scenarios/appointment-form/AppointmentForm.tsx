@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { KolTabs } from '@public-ui/react';
-import { DistrictForm } from './DistrictForm';
-import { Summary } from './Summary';
-import { PersonalInformationForm } from './PersonalInformationForm';
-import { Formik, FormikHelpers } from 'formik';
+import { Formik } from 'formik';
+import React, { useEffect, useState, useRef } from 'react';
 import * as Yup from 'yup';
-import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
-import { Iso8601 } from '@public-ui/components';
-import { checkAppointmentAvailability } from './appointmentService';
 
+import { KolTabs } from '@public-ui/react';
+
+import { checkAppointmentAvailability } from './appointmentService';
+import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
+import { DistrictForm } from './DistrictForm';
+import { PersonalInformationForm } from './PersonalInformationForm';
+import { Summary } from './Summary';
+
+import type { FormikHelpers, FormikProps } from 'formik';
+import type { Iso8601 } from '@public-ui/components';
 // export interface FormProps {}
 export interface FormValues {
 	district: string;
@@ -64,6 +67,7 @@ const availableAppointmentsSchema = {
 export function AppointmentForm() {
 	const [activeFormSection, setActiveFormSection] = useState(FormSection.DISTRICT);
 	const [selectedTab, setSelectedTab] = useState(activeFormSection);
+	const formikRef = useRef<FormikProps<FormValues>>(null);
 
 	const validationSchema = Yup.object().shape({
 		...(activeFormSection === FormSection.DISTRICT ? districtSchema : {}),
@@ -86,7 +90,7 @@ export function AppointmentForm() {
 	};
 
 	return (
-		<Formik<FormValues> initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+		<Formik<FormValues> innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
 			<KolTabs
 				_tabs={[
 					{
@@ -107,7 +111,12 @@ export function AppointmentForm() {
 				]}
 				_label="Formular-Navigation"
 				_selected={selectedTab}
-				_on={{ onSelect: (_event, selectedTab) => setActiveFormSection(selectedTab) }}
+				_on={{
+					onSelect: (_event, selectedTab) => {
+						setActiveFormSection(selectedTab);
+						formikRef.current?.setErrors({});
+					},
+				}}
 			>
 				<div>
 					<DistrictForm />

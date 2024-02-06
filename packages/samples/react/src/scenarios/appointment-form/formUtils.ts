@@ -1,4 +1,4 @@
-import { ErrorListPropType } from '@public-ui/components';
+import type { ErrorListPropType } from '@public-ui/components';
 
 export function createErrorList(formikErrors: Record<string, string>): ErrorListPropType[] {
 	return Object.keys(formikErrors).map((fieldName) => ({

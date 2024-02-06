@@ -1844,9 +1844,13 @@ export namespace Components {
          */
         "_collapsible"?: boolean;
         /**
-          * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+          * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Shows icons next to the navigation item labels, even when the navigation is not collapsed.
+         */
+        "_hasIconsWhenExpanded"?: boolean;
         /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -4621,9 +4625,13 @@ declare namespace LocalJSX {
          */
         "_collapsible"?: boolean;
         /**
-          * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+          * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Shows icons next to the navigation item labels, even when the navigation is not collapsed.
+         */
+        "_hasIconsWhenExpanded"?: boolean;
         /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.

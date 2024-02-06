@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react';
 
 import { KolInputRadio } from '@public-ui/react';
 
-import { Components } from '@public-ui/components';
 import { ERROR_MSG } from '../../../shares/constants';
 
+import type { Components } from '@public-ui/components';
 export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.KolInputRadio>(function InputRadioCases(props, ref) {
 	return (
 		<div className="grid gap-4">
