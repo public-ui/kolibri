@@ -1,10 +1,7 @@
 {
-	"entry": ["src/index.ts"],
+	"entry": ["src/index.js", "tests/**/*.js"],
 	"ignore": ["playwright.config.js"],
 	"ignoreBinaries": [],
 	"ignoreDependencies": ["@public-ui/sample-react", "serve"],
-	"project": ["src/**/*.ts"],
-	"rules": {
-		"classMembers": "warn"
-	}
+	"project": ["src/**/*.ts"]
 }
