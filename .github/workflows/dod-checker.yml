@@ -3,6 +3,11 @@ on:
   pull_request:
     types: [opened, edited]
 
+
+concurrency:
+  group: ci-{{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check-dod:
     runs-on: ubuntu-20.04
