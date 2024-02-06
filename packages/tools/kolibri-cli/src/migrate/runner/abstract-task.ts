@@ -36,10 +36,6 @@ export abstract class AbstractTask {
 		return this.dependentTasks;
 	}
 
-	public getDescription(): string | undefined {
-		return this.description;
-	}
-
 	public getIdentifier(): string {
 		return this.identifier;
 	}

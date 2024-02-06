@@ -36,18 +36,24 @@ export default defineConfig({
 
 	/* Configure projects for major browsers */
 	projects: [
-		// {
-		// 	name: 'chrome',
-		// 	use: { ...devices['Desktop Chrome'] },
-		// },
+		{
+			/**
+			 * Special browser configurations for forced colors, media, and reduced motion
+			 * does only work in Chromium-based browsers.
+			 *
+			 * See https://playwright.dev/docs/api/class-page#page-emulate-media
+			 */
+			name: 'chrome',
+			use: { ...devices['Desktop Chrome'] },
+		},
 		// {
 		// 	name: 'edge',
 		// 	use: { ...devices['Desktop Edge'] },
 		// },
-		{
-			name: 'firefox',
-			use: { ...devices['Desktop Firefox'] },
-		},
+		// {
+		// 	name: 'firefox',
+		// 	use: { ...devices['Desktop Firefox'] },
+		// },
 	],
 
 	/* Run your local dev server before starting the tests */
