@@ -71,8 +71,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		if (value === undefined) {
 			return false;
 		}
-		const values = options.map(option => option.value);
-		return values.includes(value) !== undefined;
+		return options.map(option => option.value).includes(value) !== undefined;
 	};
 
 	protected readonly beforePatchOptions = (_value: W3CInputValue, nextState: Map<string, W3CInputValue>): void => {
@@ -81,6 +80,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
 			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
+
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
 
 			if (this.isValueInOptions(value, options as Option<W3CInputValue>[]) === false) {
