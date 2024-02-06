@@ -14,10 +14,11 @@ import { inputCheckboxVariantOptions, isString, setState, validateChecked, valid
 import { InputCheckboxRadioController } from '../input-radio/controller';
 
 import type { Generic } from 'adopted-style-sheets';
+import { KolInputRadio } from '../input-radio/component';
 export class InputCheckboxController extends InputCheckboxRadioController implements InputCheckboxWatches {
-	protected readonly component: Generic.Element.Component & InputCheckboxProps;
+	protected readonly component: Generic.Element.Component & InputCheckboxProps & KolInputRadio;
 
-	public constructor(component: Generic.Element.Component & InputCheckboxProps, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & InputCheckboxProps & KolInputRadio, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
