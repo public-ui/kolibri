@@ -16,6 +16,7 @@ import type {
 import { mapString2Unknown, orientationOptions, setState, STATE_CHANGE_EVENT, validateOptions, validateRequired, watchValidator } from '@public-ui/schema';
 
 import { InputController } from '../@deprecated/input/controller';
+import { KolInputRadio } from './component';
 
 export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, options: SelectOption<T>[], preKey = ''): void => {
 	options.forEach((option, index) => {
@@ -34,13 +35,12 @@ type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	required: boolean;
 } & PropLabelWithExpertSlot;
-type InputCheckboxRadioProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 type InputCheckboxRadioWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
 export class InputCheckboxRadioController extends InputController implements InputCheckboxRadioWatches {
-	protected readonly component: Generic.Element.Component & InputCheckboxRadioProps;
+	protected readonly component: KolInputRadio;
 
-	public constructor(component: Generic.Element.Component & InputCheckboxRadioProps, name: string, host?: HTMLElement) {
+	public constructor(component: KolInputRadio, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
@@ -56,22 +56,26 @@ export class InputCheckboxRadioController extends InputController implements Inp
 }
 
 export class InputRadioController extends InputCheckboxRadioController implements InputRadioWatches {
-	protected readonly component: Generic.Element.Component & InputRadioProps;
+	protected readonly component: KolInputRadio;
 	private onStateChange!: () => void;
 	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();
 
-	public constructor(component: Generic.Element.Component & InputRadioProps, name: string, host?: HTMLElement) {
+	public constructor(component: KolInputRadio, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
 
 	public readonly getOptionByKey = (key: string): Option<W3CInputValue> | undefined => this.keyOptionMap.get(key);
 
-	private readonly isValueInOptions = (value: unknown, options: Option<W3CInputValue>[]): boolean => {
-		return options.find((option) => option.value === value as string) !== undefined || options.find((option) => option.value == value) !== undefined;
+	private readonly isValueInOptions = (value: W3CInputValue | undefined, options: Option<W3CInputValue>[]): boolean => {
+		if (value === undefined) {
+			return false;
+		}
+		const values = options.map(option => option.value);
+		return values.includes(value) !== undefined;
 	};
 
-	protected readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
+	protected readonly beforePatchOptions = (_value: W3CInputValue, nextState: Map<string, W3CInputValue>): void => {
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 
 		if (Array.isArray(options) && options.length > 0) {
