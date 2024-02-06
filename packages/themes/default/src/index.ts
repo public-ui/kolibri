@@ -1458,7 +1458,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		.table {
 			padding: 0.5rem;
 		}
-		.table:has(caption:focus) {
+		.table:has(.focus-element:focus) {
 			outline-color: var(--color-primary-variant);
 			outline-offset: 2px;
 			outline-style: solid;

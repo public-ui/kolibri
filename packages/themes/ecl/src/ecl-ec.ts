@@ -1327,7 +1327,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.table {
 		padding: 0.5em;
 	}
-	.table:has(caption:focus) {
+	.table:has(.focus-element:focus) {
 		outline-color: var(--color-blue);
 		outline-offset: 2px;
 		outline-style: solid;
