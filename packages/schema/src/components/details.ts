@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropLabel, PropOpen } from '../props';
+import type { PropDisabled, PropLabel, PropOpen } from '../props';
 import type { EventValueOrEventCallback } from '../types';
 
 export type EventCallbacks = {
@@ -10,7 +10,8 @@ export type EventCallbacks = {
 type RequiredProps = PropLabel;
 type OptionalProps = {
 	on: EventCallbacks;
-} & PropOpen;
+} & PropDisabled &
+	PropOpen;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;

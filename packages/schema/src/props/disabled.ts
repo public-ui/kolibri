@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { watchBoolean } from '../utils';
+import { a11yHintDisabled, watchBoolean } from '../utils';
 
 /* types */
 export type DisabledPropType = boolean;
@@ -14,5 +14,13 @@ export type PropDisabled = {
 
 /* validator */
 export const validateDisabled = (component: Generic.Element.Component, value?: DisabledPropType): void => {
-	watchBoolean(component, '_disabled', value);
+	watchBoolean(component, '_disabled', value, {
+		hooks: {
+			afterPatch: (value) => {
+				if (value === true) {
+					a11yHintDisabled();
+				}
+			},
+		},
+	});
 };

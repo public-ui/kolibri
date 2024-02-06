@@ -2,6 +2,8 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { showExpertSlot } from '@public-ui/schema';
 
+import clsx from 'clsx';
+
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
@@ -32,19 +34,22 @@ export const getButtonWcHtml = (
 	const hasExpertSlot = showExpertSlot(state._label);
 	const type = typeof state._type === 'string' ? state._type : 'button';
 	const variant = typeof state._variant === 'string' ? state._variant : 'normal';
-	const classNames: string[] = [variant];
 
-	if (state._hideLabel) {
-		classNames.push('icon-only', 'hide-label');
-	}
+	const classNames = clsx({
+		button: true,
+		disabled: state._disabled,
+		'hide-label': state._hideLabel,
+		[variant]: true,
+	});
 
 	return `<kol-button-wc${additionalAttrs}>
 	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
 	}
 	${state._hideLabel && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''}
-	${state._role ? `role="${state._role}"` : ''}
-	class="button ${classNames.join(' ')}" type="${type}">
+	class="${classNames}"
+	${state._disabled ? `disabled` : ''}
+	${state._role ? `role="${state._role}"` : ''} type="${type}">
 		${getSpanWcHtml(
 			{
 				...props,

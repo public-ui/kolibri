@@ -20,7 +20,7 @@
 		"reset": "pnpm i @public-ui/components@1.1.7",
 		"depcheck": "depcheck --ignores=\"@public-ui/components,deepmerge,loglevel,mocha\"",
 		"format": "prettier -c src",
-		"lint": "eslint src && tsc --noEmit",
+		"lint": "tsc --noemit && eslint src",
 		"prepack": "tsc",
 		"start": "rimraf test && cpy \"../../samples/react/src/components\" test/src && cpy \"../../samples/react/public/*.html\" test/ && ts-node src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
 		"restart": "pnpm reset && pnpm start",

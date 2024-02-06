@@ -5,7 +5,7 @@
 	"scripts": {
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"xtest": "THEME_MODULE=src/index THEME_EXPORT=ITZBund kolibri-visual-test",
 		"xtest-update": "THEME_MODULE=src/index THEME_EXPORT=ITZBund kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},

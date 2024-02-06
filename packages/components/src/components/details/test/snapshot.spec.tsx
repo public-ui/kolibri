@@ -19,6 +19,7 @@ executeTests<DetailsProps>(
 		return page;
 	},
 	{
+		_disabled: [true, false],
 		_label: ['Zusammenfassung'],
 		_open: [false, true],
 	},

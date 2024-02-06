@@ -3,6 +3,7 @@ import type {
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
 	PropAriaCurrentValue,
+	PropDisabled,
 	PropDownload,
 	PropHideLabel,
 	PropHref,
@@ -22,8 +23,9 @@ export type RequiredProps = PropHref;
 export type OptionalProps = {
 	tabIndex: number;
 } & PropAccessKey &
-	PropAriaCurrentValue &
 	PropAlternativeButtonLinkRole &
+	PropAriaCurrentValue &
+	PropDisabled &
 	PropDownload &
 	PropHideLabel &
 	PropIcons &

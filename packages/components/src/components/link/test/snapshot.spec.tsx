@@ -19,6 +19,7 @@ executeTests<LinkProps>(
 		return page;
 	},
 	{
+		_disabled: [true, false],
 		_href: ['https://google.de'],
 		_icons: ['codicon codicon-home'],
 		_hideLabel: [false, true],

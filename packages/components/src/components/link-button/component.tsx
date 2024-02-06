@@ -43,6 +43,7 @@ export class KolLinkButton implements LinkButtonProps {
 					}}
 					_accessKey={this._accessKey}
 					_ariaCurrentValue={this._ariaCurrentValue}
+					_disabled={this._disabled}
 					_download={this._download}
 					_hideLabel={this._hideLabel}
 					_href={this._href}
@@ -74,6 +75,11 @@ export class KolLinkButton implements LinkButtonProps {
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 */
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.

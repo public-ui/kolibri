@@ -34,7 +34,16 @@
 	}
 
 	/* This is the text label. */
-	.icon-only > kol-span-wc > span > span {
+	.hide-label > kol-span-wc > span > span {
 		display: none;
+	}
+
+	.disabled label,
+	[aria-disabled='true'],
+	[disabled],
+	:disabled {
+		cursor: not-allowed !important;
+		opacity: 0.5;
+		outline: none !important;
 	}
 }

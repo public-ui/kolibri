@@ -7,6 +7,7 @@ import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
 import type { LinkProps, LinkStates } from '@public-ui/schema';
+import clsx from 'clsx';
 import { translate } from '../../../i18n';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	const state = mixMembers<LinkProps, LinkStates>(
@@ -19,17 +20,31 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	);
 	const hasExpertSlot = showExpertSlot(state._label);
 	const isExternal = typeof state._target === 'string' && state._target !== '_self';
+
+	const classNames = clsx({
+		disabled: state._disabled,
+		'hide-label': state._hideLabel,
+		'external-link': isExternal,
+	});
+
 	return `
 <kol-link>
   <mock:shadow-root>
   <kol-link-wc>
-<a${
-		state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label}${isExternal ? ' (kol-open-link-in-tab)' : ''}"` : ''
-	} class="${state._hideLabel === true ? ' hide-label' : ''}${isExternal ? ' external-link' : ''}" href="${
-		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0);'
-	}"${typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''}${
-		typeof state._download === 'string' ? ` download="${state._download}"` : ''
-	}>
+		<a
+			${state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label}${isExternal ? ' (kol-open-link-in-tab)' : ''}"` : ''}
+			class="${classNames}"
+			href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0);'}"
+			${
+				typeof state._target === 'string'
+					? `${state._target === '_self' ? '' : 'rel="noopener"'}
+			target="${state._target}"`
+					: ''
+			}
+			${typeof state._download === 'string' ? ` download="${state._download}"` : ''}
+			${props._disabled ? `aria-disabled="true"` : ''}
+			${props._disabled ? `tabindex="-1"` : ''}
+		>
 			${getSpanWcHtml(
 				{
 					...state,

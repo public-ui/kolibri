@@ -1,11 +1,15 @@
 import type { DetailsAPI, DetailsStates, EventCallbacks, LabelPropType } from '@public-ui/schema';
 import { propagateFocus, setState, validateLabel, validateOpen } from '@public-ui/schema';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
-import DetailsAnimationController from './DetailsAnimationController';
+import { DetailsAnimationController } from './DetailsAnimationController';
 
+import type { DisabledPropType } from '@public-ui/schema';
+import { validateDisabled } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
+import { preventDefault } from '../../utils/events';
+
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
  */
@@ -22,21 +26,32 @@ export class KolDetails implements DetailsAPI {
 	private summaryElement?: HTMLElement;
 	private contentElement?: HTMLElement;
 
+	private readonly catchDetails = (ref?: HTMLElement) => {
+		this.detailsElement = ref as HTMLDetailsElement;
+	};
+
 	private readonly catchRef = (ref?: HTMLElement) => {
 		this.summaryElement = ref;
 		propagateFocus(this.host, this.summaryElement);
+		/* Handle disabled, because the toogle event is to late. */
+		if (this.state._disabled === true) {
+			this.summaryElement?.removeEventListener('click', preventDefault);
+			this.summaryElement?.addEventListener('click', preventDefault);
+		}
 	};
 
 	public render(): JSX.Element {
 		return (
 			<Host>
 				<details
-					ref={(el) => {
-						this.detailsElement = el as HTMLDetailsElement;
+					class={{
+						disabled: this.state._disabled === true,
+						open: this.state._open === true,
 					}}
+					ref={this.catchDetails}
 					onToggle={this.handleToggle}
 				>
-					<summary ref={this.catchRef}>
+					<summary aria-disabled={this.state._disabled ? 'true' : undefined} tabIndex={this.state._disabled ? -1 : undefined} ref={this.catchRef}>
 						<kol-icon _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
 						<span>{this.state._label}</span>
 					</summary>
@@ -49,6 +64,11 @@ export class KolDetails implements DetailsAPI {
 			</Host>
 		);
 	}
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 */
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -71,6 +91,11 @@ export class KolDetails implements DetailsAPI {
 		_on: {},
 	};
 
+	@Watch('_disabled')
+	public validateDisabled(value?: DisabledPropType): void {
+		validateDisabled(this, value);
+	}
+
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value, {
@@ -91,6 +116,7 @@ export class KolDetails implements DetailsAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.validateDisabled(this._disabled);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateOpen(this._open);

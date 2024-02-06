@@ -1,13 +1,13 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 
+import { featureHint, propagateFocus, setState, validateDisabled, validateLabel, validateOpen } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
-import { featureHint, propagateFocus, setState, validateLabel, validateOpen } from '@public-ui/schema';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
 
-import type { AccordionAPI, AccordionStates, HeadingLevel, KoliBriAccordionCallbacks, LabelPropType, OpenPropType } from '@public-ui/schema';
+import type { AccordionAPI, AccordionStates, DisabledPropType, HeadingLevel, KoliBriAccordionCallbacks, LabelPropType, OpenPropType } from '@public-ui/schema';
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
 - onClick auf der KolAccordion anwenden
@@ -40,6 +40,7 @@ export class KolAccordion implements AccordionAPI {
 				<div
 					class={{
 						accordion: true,
+						disabled: this.state._disabled === true,
 						open: this.state._open === true,
 					}}
 				>
@@ -50,6 +51,7 @@ export class KolAccordion implements AccordionAPI {
 							slot="expert"
 							_ariaControls={this.nonce}
 							_ariaExpanded={this.state._open}
+							_disabled={this.state._disabled}
 							_icons={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
 							_label={this.state._label}
 							_on={{ onClick: this.onClick }}
@@ -66,6 +68,11 @@ export class KolAccordion implements AccordionAPI {
 			</Host>
 		);
 	}
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 */
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -93,6 +100,11 @@ export class KolAccordion implements AccordionAPI {
 		_level: 1,
 	};
 
+	@Watch('_disabled')
+	public validateDisabled(value?: DisabledPropType): void {
+		validateDisabled(this, value);
+	}
+
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value, {
@@ -118,6 +130,7 @@ export class KolAccordion implements AccordionAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.validateDisabled(this._disabled);
 		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
