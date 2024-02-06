@@ -2,6 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 import { h, Host, JSX, State } from '@stencil/core';
 
 import { Bundesministerium } from '../../../enums/bund';
+import { nonce } from '../../../utils/dev.utils';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = NonNullable<unknown>;
@@ -64,7 +65,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-table _caption="" _data={[]} _headers={{}}></kol-table>
 				<kol-tabs _ariaLabel="" _tabs={[]}></kol-tabs>
 				<kol-textarea _label=""></kol-textarea>
-				<kol-tooltip-wc _label="Label"></kol-tooltip-wc>
+				<kol-tooltip-wc _id={nonce()} _label="Label"></kol-tooltip-wc>
 				<kol-version _version=""></kol-version>
 			</Host>
 		);

@@ -4,7 +4,7 @@ import { Component, Element, Host, JSX, Prop, State, Watch, h } from '@stencil/c
 import { AlignPropType, validateAlign } from '../../types/props/align';
 import { IdPropType, validateId } from '../../types/props/id';
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { getDocument } from '../../utils/dev.utils';
+import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { processEnv } from '../../utils/reuse';
 import { API, States } from './types';
@@ -138,9 +138,13 @@ export class KolTooltip implements API {
 		return (
 			<Host>
 				{this.state._label !== '' && (
-					<div class="tooltip-floating" ref={this.catchTooltipElement}>
+					/**
+					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+					 */
+					<div aria-hidden="true" class="tooltip-floating" id={`${this.state._id}-tooltip`} ref={this.catchTooltipElement} role="tooltip">
 						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
-						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _label={this.state._label}></kol-span-wc>
+						<kol-span-wc class="tooltip-area tooltip-content" _label={this.state._label}></kol-span-wc>
 					</div>
 				)}
 			</Host>
@@ -155,7 +159,7 @@ export class KolTooltip implements API {
 	/**
 	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: IdPropType;
+	@Prop() public _id!: IdPropType;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -164,6 +168,7 @@ export class KolTooltip implements API {
 
 	@State() public state: States = {
 		_align: 'top',
+		_id: nonce(), // ⚠️ required
 		_label: '…', // ⚠ required
 	};
 
@@ -174,7 +179,9 @@ export class KolTooltip implements API {
 
 	@Watch('_id')
 	public validateId(value?: IdPropType): void {
-		validateId(this, value);
+		validateId(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_label')

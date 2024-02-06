@@ -16,18 +16,18 @@ import { API, States } from './types';
 	shadow: true,
 })
 export class KolAbbr implements API {
-	private readonly nonce = nonce();
+	private readonly id = nonce();
 
 	public render(): JSX.Element {
 		return (
 			<Host>
 				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._label}>
+				<abbr aria-describedby={`${this.id}-tooltip`} aria-label={this.state._label} role="definition" tabindex="0" title={this.state._label}>
 					<span title="">
 						<slot />
 					</span>
 				</abbr>
-				<kol-tooltip-wc _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip-wc>
+				<kol-tooltip-wc _align={this.state._tooltipAlign} _id={this.id} _label={this.state._label}></kol-tooltip-wc>
 			</Host>
 		);
 	}

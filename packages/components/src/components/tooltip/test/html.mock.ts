@@ -2,11 +2,13 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { Props, States } from '../types';
+import { nonce } from '../../../utils/dev.utils';
 
 export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 	const state: States = mixMembers<Props, States>(
 		{
 			_align: 'top',
+			_id: nonce(), // ⚠ required
 			_label: '…', // ⚠ required
 		},
 		props
@@ -21,7 +23,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 <kol-tooltip-wc${additionalAttrs}>
 	${
 		state._label !== ''
-			? `<div class="tooltip-floating">
+			? `<div aria-hidden="true" class="tooltip-floating" id="${state._id}-tooltip" role="tooltip">
 			<div class="tooltip-area tooltip-arrow"></div>
 			${getSpanWcHtml(
 				{
@@ -31,7 +33,6 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 					expert: undefined,
 				},
 				{
-					additionalAttrs: typeof state._id === 'string' ? ` id="${state._id}"` : undefined,
 					additionalClassNames: ['tooltip-area', 'tooltip-content'],
 				}
 			)}

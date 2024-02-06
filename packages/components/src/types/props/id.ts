@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { watchString } from '../../utils/prop.validators';
+import { WatchStringOptions, watchString } from '../../utils/prop.validators';
 
 /* types */
 export type IdPropType = string;
@@ -13,6 +13,6 @@ export type PropId = {
 };
 
 /* validator */
-export const validateId = (component: Generic.Element.Component, value?: IdPropType): void => {
-	watchString(component, '_id', value);
+export const validateId = (component: Generic.Element.Component, value?: IdPropType, options?: WatchStringOptions): void => {
+	watchString(component, '_id', value, options);
 };

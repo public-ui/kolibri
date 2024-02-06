@@ -51,8 +51,8 @@ export class KolInputPassword implements API {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
+		const { ariaDescribedBy } = getRenderStates(this.state, hasExpertSlot);
 
 		return (
 			<Host
@@ -268,7 +268,7 @@ export class KolInputPassword implements API {
 		_currentLength: 0,
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`,
+		_id: nonce(),
 		_label: '…', // ⚠ required
 	};
 

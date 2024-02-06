@@ -58,7 +58,7 @@ export class KolInput implements Props {
 					'hidden-error': this._hideError === true,
 				}}
 			>
-				<label class="input-label" id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltopInsteadOfLabel} htmlFor={this._id}>
+				<label class="input-label" id={`${this._id}-label`} hidden={useTooltopInsteadOfLabel} htmlFor={this._id}>
 					{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 					<span>
 						{/* INFO: label comes with any html tag or as plain text! */}
@@ -107,17 +107,7 @@ export class KolInput implements Props {
 					)}
 				</div>
 				{useTooltopInsteadOfLabel && (
-					<kol-tooltip-wc
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						class="input-tooltip"
-						_align={this._tooltipAlign}
-						_id={this._hideLabel ? `${this._id}-label` : undefined}
-						_label={this._label}
-					></kol-tooltip-wc>
+					<kol-tooltip-wc class="input-tooltip" _align={this._tooltipAlign} _id={`${this._id}`} _label={this._label}></kol-tooltip-wc>
 				)}
 				{hasError && (
 					<kol-alert _alert={this._alert} _type="error" class={`error${this._hideError ? ' hidden' : ''}`} id={`${this._id}-error`}>

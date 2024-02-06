@@ -1,16 +1,18 @@
 import { mixMembers } from 'stencil-awesome-test';
 
+import { translate } from '../../../i18n';
+import { nonce } from '../../../utils/dev.utils';
 import { showExpertSlot } from '../../../utils/reuse';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { LinkProps, States } from '../../link/types';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
-import { translate } from '../../../i18n';
 
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	const state = mixMembers<LinkProps, States>(
 		{
 			_href: '', // ⚠ required
+			_id: nonce(), // ⚠ required
 			_icons: {}, // ⚠ required
 		},
 		props
@@ -25,13 +27,19 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		state._hideLabel === true && !hasExpertSlot && typeof state._label === 'string'
 			? ` aria-label="${state._label}${isExternal ? ' (kol-open-link-in-tab)' : ''}"`
 			: ''
-	} class="${state._hideLabel === true ? ' icon-only hide-label' : ''}${
+	}
+	${!hasExpertSlot && state._hideLabel ? ` aria-describedby="${state._id}-tooltip"` : ''}
+	class="${state._hideLabel === true ? ' icon-only hide-label' : ''}${
 		typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''
-	}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0);'}"${
-		typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''
-	}${typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''}${
-		typeof state._download === 'string' ? ` download="${state._download}"` : ''
-	}>
+	}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0);'}"
+	id="${state._id}"
+	${typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''}
+	${
+		typeof state._target === 'string'
+			? `${state._target === '_self' ? '' : 'rel="noopener"'}
+	target="${state._target}"`
+			: ''
+	}${typeof state._download === 'string' ? ` download="${state._download}"` : ''}>
 			${getSpanWcHtml(
 				{
 					...state,
@@ -56,9 +64,10 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		${getTooltipHtml(
 			{
 				_align: state._tooltipAlign,
+				_id: state._id,
 				_label: state._label || state._href,
 			},
-			` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
+			`${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
 		)}
     </kol-link-wc>
   </mock:shadow-root>

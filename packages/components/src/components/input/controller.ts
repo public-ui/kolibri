@@ -7,12 +7,16 @@ import { TouchedPropType } from '../../types/props/touched';
  * @param state State der Component
  * @returns Render-States
  */
-export const getRenderStates = (state: {
-	_error?: string;
-	_hint?: string;
-	_id: string;
-	_touched?: TouchedPropType;
-}): {
+export const getRenderStates = (
+	state: {
+		_error?: string;
+		_hideLabel?: boolean;
+		_hint?: string;
+		_id: string;
+		_touched?: TouchedPropType;
+	},
+	hasExpertSlot: boolean
+): {
 	hasError: boolean;
 	hasHint: boolean;
 	ariaDescribedBy: string[];
@@ -26,6 +30,9 @@ export const getRenderStates = (state: {
 	}
 	if (hasHint === true) {
 		ariaDescribedBy.push(`${state._id}-hint`);
+	}
+	if (!hasExpertSlot && !!state._hideLabel) {
+		ariaDescribedBy.push(`${state._id}-tooltip`);
 	}
 	return { hasError, hasHint, ariaDescribedBy };
 };

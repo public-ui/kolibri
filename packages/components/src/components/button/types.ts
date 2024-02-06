@@ -64,7 +64,8 @@ export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalB
 
 export type RequiredButtonStates = RequiredButtonProps &
 	PropButtonType &
-	PropButtonVariant & {
+	PropButtonVariant &
+	PropId & {
 		icons: KoliBriAllIcons;
 	};
 export type OptionalButtonStates = Omit<RequiredButtonProps & OptionalButtonProps, keyof RequiredButtonStates>;

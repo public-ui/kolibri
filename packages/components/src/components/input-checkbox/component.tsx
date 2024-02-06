@@ -36,8 +36,8 @@ export class KolInputCheckbox implements API {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
+		const { ariaDescribedBy } = getRenderStates(this.state, hasExpertSlot);
 
 		return (
 			<Host>
@@ -234,7 +234,7 @@ export class KolInputCheckbox implements API {
 			indeterminate: 'codicon codicon-remove',
 			unchecked: 'codicon codicon-add',
 		},
-		_id: `id-${nonce()}`,
+		_id: nonce(),
 		_indeterminate: false,
 		_label: '…', // ⚠ required
 		_value: true,
