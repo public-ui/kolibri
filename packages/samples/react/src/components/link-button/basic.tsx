@@ -4,7 +4,7 @@ import { KolLinkButton } from '@public-ui/react';
 import { FC } from 'react';
 
 const ARGS = {
-	_href: '#/sample-page',
+	_href: '#/back-page',
 };
 
 export const LinkButtonBasic: FC = () => (

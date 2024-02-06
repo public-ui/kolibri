@@ -11,7 +11,7 @@ import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
 import { Sidebar } from './components/Sidebar';
 import { useLocation } from 'react-router';
 
-import { SamplePage } from './components/sample-page/sample-page';
+import { BackPage } from './components/BackPage';
 
 setStorage(localStorage);
 
@@ -135,7 +135,7 @@ export const App: FC = () => {
 				<Routes>
 					{ROUTE_TREE}
 					<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
-					<Route path="sample-page" element={<SamplePage />} />
+					<Route path="back-page" element={<BackPage />} />
 				</Routes>
 			</div>
 		</div>
