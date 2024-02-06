@@ -1,7 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
-
 import type {
-	InputRadioProps,
 	InputRadioWatches,
 	Optgroup,
 	Option,
@@ -16,7 +14,7 @@ import type {
 import { mapString2Unknown, orientationOptions, setState, STATE_CHANGE_EVENT, validateOptions, validateRequired, watchValidator } from '@public-ui/schema';
 
 import { InputController } from '../@deprecated/input/controller';
-import { KolInputRadio } from './component';
+import type { KolInputRadio } from './component';
 
 export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, options: SelectOption<T>[], preKey = ''): void => {
 	options.forEach((option, index) => {
@@ -71,10 +69,10 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		if (value === undefined) {
 			return false;
 		}
-		return options.map(option => option.value).includes(value) !== undefined;
+		return options.map((option) => option.value).includes(value) !== undefined;
 	};
 
-	protected readonly beforePatchOptions = (_value: W3CInputValue, nextState: Map<string, W3CInputValue>): void => {
+	protected readonly beforePatchOptions: Generic.Element.NextStateHooksCallback = (_value: unknown, nextState: Map<string, unknown>): void => {
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 
 		if (Array.isArray(options) && options.length > 0) {
@@ -83,7 +81,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
 
-			if (this.isValueInOptions(value, options as Option<W3CInputValue>[]) === false) {
+			if (!this.isValueInOptions(value as W3CInputValue, options as Option<W3CInputValue>[])) {
 				const newValue = (
 					options[0] as {
 						value: string;
