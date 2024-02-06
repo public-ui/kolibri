@@ -1,8 +1,4 @@
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	kol-input {
 		gap: 0.25rem;
 	}
@@ -76,6 +72,7 @@
 		border-color: var(--color-primary);
 	}
 
+	input:read-only,
 	input:disabled {
 		cursor: not-allowed;
 	}

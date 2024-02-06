@@ -1,0 +1,14 @@
+@layer kol-theme-component {
+	:host {
+		display: block;
+	}
+
+	.toast {
+		background: #fff;
+		margin-top: 1rem;
+	}
+
+	.alert {
+		display: block;
+	}
+}

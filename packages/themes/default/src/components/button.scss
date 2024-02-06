@@ -1,16 +1,16 @@
 @import '../mixins/focus-outline';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	:is(a, button):focus {
 		outline: none;
 	}
 
 	:is(a, button):focus kol-span-wc {
-		@include focus-outline;
+		outline-color: var(--color-primary-variant);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: calc(var(--border-width) * 2);
+		transition: outline-offset 0.2s linear;
 	}
 
 	:is(a, button)>kol-span-wc {
@@ -144,12 +144,5 @@
 	:is(a, button).transparent>kol-span-wc {
 		background-color: transparent;
 		border-color: transparent;
-	}
-
-	.access-key-hint {
-		background: var(--color-mute-variant);
-		border-radius: 3px;
-		color: var(--color-text);
-		padding: 0 0.3em;
 	}
 }

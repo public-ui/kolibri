@@ -26,7 +26,6 @@ export enum TagEnum {
 	'input-radio',
 	'input-range',
 	'input-text',
-	'kolibri',
 	'link',
 	'link-button',
 	'link-group',
