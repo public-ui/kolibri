@@ -20,8 +20,6 @@ export const TableHorizontalScrollbar: FC = () => {
 		<>
 			<KolHeading _label="Table with scrollbar" _level={2} />
 
-			<button>just here for the :focus</button>
-
 			<KolTable
 				_label="Table for demonstration purposes with horizontal scrollbar."
 				_minWidth={hasWidthRestriction ? '600px' : 'auto'}
