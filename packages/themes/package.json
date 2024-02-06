@@ -58,6 +58,7 @@
 		"eslint": "8.56.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.0.3",
+		"rollup-plugin-postcss": "4.0.2",
 		"typescript": "5.3.3",
 		"unbuild": "1.2.1"
 	},
