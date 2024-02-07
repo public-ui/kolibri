@@ -1,85 +1,105 @@
 @import '../mixins/focus-outline';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
+	* {
+		margin: 0;
+		padding: 0;
 	}
 
 	nav {
+		font-family: var(--font-family);
+		font-size: var(--font-size);
 		background-color: var(--color-mute);
+		width: 100%;
 	}
 
 	ul {
 		list-style: none;
 	}
 
-	kol-link-wc {
-		display: flex;
-	}
-
-	.entry-item a,
-	.entry-item .button {
-		align-items: center;
-		color: var(--color-primary);
-		display: flex;
-		gap: 0.5rem;
+	kol-link-wc,
+	a {
+		height: 100%;
 		min-height: var(--a11y-min-size);
+		display: flex;
+		place-items: center;
+	}
+
+	.entry>kol-span-wc>span {
+		width: 100%;
+	}
+
+	.entry> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+		background-color: var(--color-light);
 		text-decoration: none;
-
-		.vertical & {
-			border-left: 2px solid transparent;
-			padding-left: 0.5rem;
-		}
-
-		.horizontal & {
-			padding: 0 1rem;
-		}
-
-		.vertical .active & {
-			border-left-color: var(--color-primary);
-		}
-
-		&:focus-visible {
-			@include focus-outline;
-		}
+		color: var(--color-primary);
+		width: 100%;
+		display: flex;
+		align-items: center;
+		font-style: normal;
+		line-height: 1.5rem;
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		transition-duration: 0.5s;
+		transition-property: background-color, color, border-color;
+		letter-spacing: 0.175px;
 	}
 
-	.entry-item a:hover {
-		text-decoration: underline;
+	.entry> :is(kol-link-wc, kol-button-wc):first-child :is(a, button) {
+		color: var(--color-primary);
+		text-decoration: none;
 	}
 
-	// nested lists
-	.list .list {
-		padding-left: 1rem;
+	.entry> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
+		border-left-color: var(--color-primary-variant);
+		background-color: var(--color-primary-variant);
 	}
 
-	.active .entry-item a,
-	.active .entry-item .button {
-		font-weight: bold;
+	.entry> :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover> :is(a, button, span) {
+		color: var(--color-primary-variant);
+		font-weight: 700;
+		letter-spacing: unset;
 	}
 
-	.active .list .entry-item a,
-	.active .list .entry-item .button {
-		font-weight: normal;
+	.selected> :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+		background-color: var(--color-primary-variant);
+		color: var(--color-primary);
+		font-weight: 700;
+	}
+
+	.selected> :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child> :is(a, button, span) {
+		font-weight: 700;
+	}
+
+	.selected :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
+		color: var(--color-primary-variant);
+		letter-spacing: unset;
+	}
+
+	.entry>kol-span-wc>span,
+	.entry :is(a, button) {
 		border-left-color: transparent;
+		border-left-style: solid;
+		border-left-width: 0.5rem;
+		padding: 0.75rem 0.5rem 0.75rem 0.25rem;
 	}
 
-	.expand-button {
-		margin-left: 0.5rem;
+	.selected :is(a, button),
+	[exportparts*='selected'] a {
+		border-left-color: var(--color-primary);
+	}
 
-		.button {
-			&:hover {
-				background-color: var(--color-primary);
-				color: var(--color-light);
-			}
+	/** Compact mode */
+	.entry.compact :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+		place-items: center;
+	}
 
-			&:focus-visible {
-				@include focus-outline;
-			}
-		}
+	.entry.compact>kol-span-wc>span {
+		flex-direction: column;
+	}
 
-		.button-inner {
-			justify-content: center;
-		}
+	.entry.compact>kol-span-wc>span,
+	.entry.compact :is(a, button) {
+		padding-left: 0;
 	}
 }

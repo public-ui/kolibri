@@ -1,8 +1,4 @@
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	button:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
@@ -38,20 +34,12 @@
 		color: var(--color-primary);
 	}
 
-	button:not(.selected) kol-span-wc>span {
-		border-bottom: 0.25em solid transparent;
-	}
-
-	button.selected kol-span-wc>span {
+	button kol-span-wc>span {
 		border-bottom: 0.25em solid;
 	}
 
 	button kol-span-wc>span {
 		gap: 0.5rem;
-	}
-
-	kol-icon {
-		font-size: 1rem;
 	}
 
 	:host>div>div {

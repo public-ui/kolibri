@@ -31,6 +31,7 @@ import paginationCss from './components/pagination.scss';
 import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
 import skipNavCss from './components/skip-nav.scss';
+import spinCss from './components/spin.scss';
 import splitButtonCss from './components/split-button.scss';
 import tableCss from './components/table.scss';
 import tabsCss from './components/tabs.scss';
@@ -70,6 +71,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-PROGRESS': progressCss,
 	'KOL-SELECT': selectCss,
 	'KOL-SKIP-NAV': skipNavCss,
+	'KOL-SPIN': spinCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-TABLE': tableCss,
 	'KOL-TABS': tabsCss,

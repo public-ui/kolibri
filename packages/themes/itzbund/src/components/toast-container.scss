@@ -1,0 +1,8 @@
+@layer kol-theme-component {
+	:host {
+		top: 1rem;
+		width: 750px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}

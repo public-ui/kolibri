@@ -1,7 +1,6 @@
 @layer kol-theme-component {
 	details>summary {
 		border-radius: var(--border-radius);
-		font-family: var(--font-family);
 	}
 
 	details kol-indented-text {
