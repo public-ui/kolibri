@@ -1,129 +1,111 @@
 @layer kol-theme-component {
 	:host {
+		--kolibri-spacing: 0.25rem;
 		font-family: var(--font-family);
 	}
-	:is(a, button):focus {
+	a,
+	button {
+		appearance: none;
+		border-radius: 4px;
+		text-decoration: none;
+	}
+	a:focus,
+	button:focus {
 		outline: none;
 	}
-	:is(a, button):focus kol-span-wc {
-		outline-color: var(--color-primary-variant);
-		outline-offset: 2px;
+	a > kol-span-wc,
+	button > kol-span-wc {
+		min-height: 44px;
+		min-width: 44px;
+		border-radius: 4px;
+		font:
+			normal normal 400 1rem/1.25rem arial,
+			sans-serif;
+		font-weight: 400;
+		margin: 0;
+		padding: 0.75rem;
+	}
+	a:focus-visible > kol-span-wc,
+	button:focus-visible > kol-span-wc {
+		outline-offset: -4px;
 		outline-style: solid;
-		outline-width: calc(var(--border-width) * 2);
-		transition: outline-offset 0.2s linear;
+		outline-width: 2px;
 	}
-	:is(a, button) > kol-span-wc {
-		font-weight: 700;
-		border-radius: var(--a11y-min-size);
-		border-style: solid;
-		outline-width: calc(var(--border-width) * 2);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: 8px 14px;
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
+	a:active > kol-span-wc,
+	button:active > kol-span-wc,
+	a:hover > kol-span-wc,
+	button:hover > kol-span-wc {
+		box-shadow:
+			0 2px 4px rgb(9 49 142 / 8%),
+			0 0 10px rgb(9 49 142 / 4%),
+			0 4px 5px rgb(9 49 142 / 4%),
+			0 -4px 4px rgb(9 49 142 / 4%);
 	}
-	:is(a, button):disabled > kol-span-wc {
-		cursor: not-allowed;
-		opacity: 0.5;
+	.primary a > kol-span-wc,
+	.primary button > kol-span-wc {
+		background-color: #0e47cb;
+		color: #fff;
 	}
-	.primary :is(a, button) > kol-span-wc,
-	.primary :is(a, button):disabled:hover > kol-span-wc {
-		background-color: var(--color-primary);
-		border-color: var(--color-primary);
-		color: var(--color-light);
+	.primary a:focus-visible > kol-span-wc,
+	.primary button:focus-visible > kol-span-wc {
+		outline-color: #fff;
 	}
-	.secondary :is(a, button) > kol-span-wc,
-	.secondary :is(a, button):disabled:hover > kol-span-wc,
-	.normal :is(a, button) > kol-span-wc,
-	.normal :is(a, button):disabled:hover > kol-span-wc {
-		background-color: var(--color-light);
-		border-color: var(--color-primary);
-		color: var(--color-primary);
+	.primary a:hover > kol-span-wc,
+	.primary button:hover > kol-span-wc {
+		background-color: #3e6cd5;
 	}
-	.danger :is(a, button) > kol-span-wc,
-	.danger :is(a, button):disabled:hover > kol-span-wc {
-		background-color: var(--color-danger);
-		border-color: var(--color-danger);
-		color: var(--color-light);
+	.secondary a > kol-span-wc,
+	.secondary button > kol-span-wc {
+		background-color: #fff;
+		border: 2px solid #0e47cb;
+		color: #0e47cb;
+		padding: calc(0.75rem - 2px) calc(1rem - 2px);
 	}
-	.ghost :is(a, button) > kol-span-wc,
-	.ghost :is(a, button):disabled:hover > kol-span-wc {
-		border-color: var(--color-light);
-		background-color: var(--color-light);
-		box-shadow: none;
-		color: var(--color-primary);
-	} /*-----------*/
-	.primary :is(a, button):active > kol-span-wc,
-	.primary :is(a, button):hover > kol-span-wc,
-	.secondary :is(a, button):active > kol-span-wc,
-	.secondary :is(a, button):hover > kol-span-wc,
-	.normal :is(a, button):active > kol-span-wc,
-	.normal :is(a, button):hover > kol-span-wc,
-	.danger :is(a, button):active > kol-span-wc,
-	.danger :is(a, button):hover > kol-span-wc,
-	.ghost :is(a, button):active > kol-span-wc,
-	.ghost :is(a, button):hover > kol-span-wc {
-		background-color: var(--color-primary-variant);
-		border-color: var(--color-primary-variant);
-		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-		color: var(--color-light);
+	.secondary a:focus-visible > kol-span-wc,
+	.secondary button:focus-visible > kol-span-wc {
+		box-shadow: inset 0 0 0 4px #0e47cb;
+		outline-color: #fff;
 	}
-	.danger :is(a, button):active > kol-span-wc,
-	.danger :is(a, button):hover > kol-span-wc {
-		background-color: var(--color-danger);
-		border-color: var(--color-danger);
+	.secondary a:hover > kol-span-wc,
+	.secondary button:hover > kol-span-wc {
+		border-color: #0e47cb;
+		color: #0e47cb;
 	}
-	:is(a, button):disabled:hover > kol-span-wc,
-	:is(a, button):focus:hover > kol-span-wc {
-		box-shadow: none;
+	.normal a > kol-span-wc,
+	.normal button > kol-span-wc {
+		background-color: #fc0;
+		color: #171a22;
 	}
-	.primary :is(a, button):active > kol-span-wc,
-	.secondary :is(a, button):active > kol-span-wc,
-	.normal :is(a, button):active > kol-span-wc,
-	.danger :is(a, button):active > kol-span-wc,
-	.ghost :is(a, button):active > kol-span-wc {
-		border-color: var(--color-light);
-		box-shadow: none;
-		outline: none;
+	.normal a:focus-visible > kol-span-wc,
+	.normal button:focus-visible > kol-span-wc {
+		outline-color: #000;
 	}
-	:is(a, button).hide-label > kol-span-wc {
-		padding: 0.8rem;
-		width: unset;
+	.normal a:hover > kol-span-wc,
+	.normal button:hover > kol-span-wc {
+		background-color: #fc0;
+		border-color: #fc0;
 	}
-	:is(a, button).hide-label > kol-span-wc > span > span {
-		display: none;
+	.danger a kol-span-wc,
+	.danger button kol-span-wc {
+		background-color: var(--color-red);
+		border-color: var(--color-red);
+		color: var(--color-white);
 	}
-	:is(a, button).loading > kol-span-wc kol-icon {
-		animation: spin 5s infinite linear;
+	.danger a:hover kol-span-wc,
+	.danger button:hover kol-span-wc {
+		background-color: var(--color-red);
+		border-color: var(--color-red);
 	}
-	/** small ghost button */
-	.ghost :is(a, button).small > kol-span-wc {
-		border: none;
-		background-color: transparent;
-		box-shadow: none;
+	.ghost a > kol-span-wc,
+	.ghost button > kol-span-wc {
+		color: #0e47cb;
 	}
-	.ghost :is(a, button).small > kol-span-wc > span {
-		border-radius: 1.5em;
-		border-style: solid;
-		border-width: var(--border-width);
-		border-color: var(--color-light);
-		background-color: var(--color-light);
+	.ghost a:focus-visible > kol-span-wc,
+	.ghost button:focus-visible > kol-span-wc {
+		outline-color: #0e47cb;
 	}
-	.ghost :is(a, button).small:active > kol-span-wc > span,
-	.ghost :is(a, button).small:hover > kol-span-wc > span,
-	.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
-	.ghost :is(a, button).small.transparent:hover > kol-span-wc > span {
-		background-color: var(--color-primary-variant);
-		border-color: var(--color-primary-variant);
-		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-		color: var(--color-light);
-	} /** :is(a,button) with transparent background */
-	:is(a, button).transparent > kol-span-wc > span,
-	.ghost :is(a, button).small.transparent > kol-span-wc > span,
-	:is(a, button).transparent > kol-span-wc {
-		background-color: transparent;
-		border-color: transparent;
+	.ghost a:hover > kol-span-wc,
+	.ghost button:hover > kol-span-wc {
+		color: #0e47cb;
 	}
 }

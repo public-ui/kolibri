@@ -2,45 +2,51 @@
 
 @layer kol-theme-component {
 	:host {
+		display: grid;
 		font-family: var(--font-family);
 	}
-	.button:focus {
-		outline: none;
+	.button {
+		--kolibri-spacing: 0.25rem;
+		border-radius: 4px;
+		&:focus {
+			outline: none;
+		}
 	}
 	.button-inner {
-		background-color: var(--color-light);
-		border-radius: var(--border-radius);
-		border: 1px solid var(--color-primary);
-		color: var(--color-primary);
-		font-weight: 700;
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
-		padding: 8px;
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
+		border-radius: 4px;
+		font:
+			normal normal 400 1rem/1.25rem Arial,
+			sans-serif;
+		padding: 0.75rem;
+		background-color: #fc0;
+		color: #171a22;
 	}
-	.button:focus .button-inner {
-		@include focus-outline;
+	.button:focus-visible .button-inner {
+		outline-offset: -4px;
+		outline: 2px solid var(--color-black);
 	}
-	.button:is(:active, :hover):not(:disabled) .button-inner {
-		background-color: var(--color-primary-variant);
-		border-color: var(--color-primary-variant);
-		box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
-		color: var(--color-light);
-	}
-	.button:active .button-inner {
-		color: var(--color-light);
-		outline: none;
+	button:not(:disabled):active .button-inner,
+	button:not(:disabled):hover .button-inner {
+		background-color: #fc0;
+		border-color: #fc0;
+		box-shadow:
+			0 2px 4px rgb(9 49 142 / 8%),
+			0 0 10px rgb(9 49 142 / 4%),
+			0 4px 5px rgb(9 49 142 / 4%),
+			0 -4px 4px rgb(9 49 142 / 4%);
 	}
 	.button:disabled .button-inner {
-		cursor: not-allowed;
 		opacity: 0.5;
+		cursor: not-allowed;
 	}
 	.selected .button-inner {
-		background-color: var(--color-mute-variant);
-		border-radius: var(--a11y-min-size);
-		border: 0;
+		background-color: var(--color-blue);
+		border-color: var(--color-blue);
+		color: var(--color-white);
+		font-weight: bold;
+		text-decoration: underline;
 		opacity: 1 !important;
 	}
 }

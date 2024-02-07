@@ -1,179 +1,37 @@
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		--kolibri-spacing: 0.25rem;
 	}
-
-	button:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
+	kol-button-group-wc {
+		border-bottom: 1px solid var(--color-grey-25);
+		margin-bottom: -1px;
 	}
-
-	:host kol-button-group-wc {
-		display: inline-flex;
-		gap: 2rem;
-		flex-wrap: wrap;
-	}
-
-	button {
-		box-sizing: border-box;
-		background-color: transparent;
-		border: 0;
-		border-radius: var(--border-radius);
-		font-style: normal;
-		font-weight: 700;
-		font-size: 18px;
-		line-height: 22px;
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		color: var(--color-subtle);
-		padding: 0;
-	}
-
-	button:hover {
-		color: var(--color-primary);
-	}
-
-	button.primary,
-	button.selected {
-		color: var(--color-primary);
-	}
-
-	button:not(.selected) kol-span-wc > span {
-		border-bottom: 0.25em solid transparent;
-	}
-
-	button.selected kol-span-wc > span {
-		border-bottom: 0.25em solid;
-	}
-
-	button kol-span-wc > span {
-		gap: 0.5rem;
-	}
-
-	kol-icon {
-		font-size: 1rem;
-	}
-
-	:host > div > div {
-		padding: 0.25em 0;
-	}
-
-	div[role='tabpanel'] {
-		height: 100%;
-	}
-
-	div.grid {
-		height: 100%;
-	}
-
-	:host > .tabs-align-right {
-		display: grid;
-		grid-template-columns: 1fr auto;
-	}
-
-	:host > .tabs-align-right kol-button-group-wc {
-		display: grid;
-		order: 2;
-	}
-
-	:host > .tabs-align-left {
-		display: grid;
-		grid-template-columns: auto 1fr;
-	}
-
-	:host > .tabs-align-left kol-button-group-wc {
-		display: grid;
-		order: 0;
-	}
-
-	:host > .tabs-align-bottom {
-		display: grid;
-		grid-template-rows: 1fr auto;
-	}
-
-	:host > .tabs-align-bottom kol-button-group-wc {
-		order: 2;
-	}
-
-	:host > .tabs-align-bottom kol-button-group-wc > div {
-		display: flex;
-	}
-
-	:host > .tabs-align-bottom > kol-button-group-wc > div > div:first-child {
-		margin: 0px 1rem 0px 0px;
-	}
-
-	:host > .tabs-align-bottom > kol-button-group-wc > div > div {
-		margin: 0px 1rem;
-	}
-
-	:host > .tabs-align-top {
-		display: grid;
-		grid-template-rows: auto 1fr;
-	}
-
-	:host > .tabs-align-top kol-button-group-wc {
-		order: 0;
-	}
-
-	:host > .tabs-align-top kol-button-group-wc > div {
-		display: flex;
-	}
-
-	:host > .tabs-align-top > kol-button-group-wc > div > div:first-child {
-		margin: 0px 1rem 0px 0px;
-	}
-
-	:host > .tabs-align-top > kol-button-group-wc > div > div {
-		margin: 0px 1rem;
-	}
-
-	:host > div {
-		display: grid;
-	}
-
-	:host > div.tabs-align-left {
-		grid-template-columns: auto 1fr;
-	}
-
-	:host > div.tabs-align-right {
-		grid-template-columns: 1fr auto;
-	}
-
-	:host > .tabs-align-left kol-button-group-wc,
-	:host > .tabs-align-top kol-button-group-wc {
-		order: 0;
-	}
-
-	:host > .tabs-align-bottom kol-button-group-wc,
-	:host > .tabs-align-right kol-button-group-wc {
-		order: 1;
-	}
-
-	:host > .tabs-align-left kol-button-group-wc,
-	:host > .tabs-align-right kol-button-group-wc {
-		gap: inherit;
-	}
-
-	:host > div.tabs-align-left kol-button-group-wc > div,
-	:host > div.tabs-align-left kol-button-group-wc > div > div,
-	:host > div.tabs-align-right kol-button-group-wc > div,
-	:host > div.tabs-align-right kol-button-group-wc > div > div {
-		display: grid;
-	}
-
-	:host > div.tabs-align-left kol-button-group-wc > div > div kol-button-wc,
-	:host > div.tabs-align-right kol-button-group-wc > div > div kol-button-wc {
-		width: 100%;
-	}
-
-	:host > div.tabs-align-bottom kol-button-group-wc div,
-	:host > div.tabs-align-top kol-button-group-wc div {
-		display: flex;
-		flex-wrap: wrap;
-	}
-
-	:host kol-button-group-wc button {
+	kol-button-group-wc button {
 		border: none;
+		margin-bottom: -1px;
+	}
+	kol-button-group-wc button kol-span-wc {
+		padding: 0.5rem;
+		min-height: 44px;
+		min-width: 44px;
+	}
+	kol-button-group-wc button.selected kol-span-wc {
+		border-color: var(--color-grey-25);
+		border-style: solid;
+		border-width: 1px;
+		border-bottom-color: white;
+		border-top-color: var(--color-blue);
+		box-shadow: 0 -3px var(--color-blue);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-blue);
+	}
+	kol-button-group-wc button:hover:not(:disabled) kol-span-wc {
+		color: var(--color-blue-130);
+	}
+	kol-button-group-wc button:focus kol-span-wc {
+		outline-color: var(--color-blue-130);
+		outline-style: solid;
+		outline-width: 2px;
 	}
 }
