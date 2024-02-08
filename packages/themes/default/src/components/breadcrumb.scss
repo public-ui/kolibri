@@ -1,4 +1,3 @@
-@layer kol-theme-component {
 	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
 		font-size: 0.75rem;
 		color: var(--color-subtle);
@@ -16,4 +15,3 @@
 	ul li:last-child>span {
 		color: var(--color-subtle);
 	}
-}

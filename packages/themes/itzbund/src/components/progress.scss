@@ -1,26 +1,23 @@
-@layer kol-theme-component {
+:host progress,
+:host span {
+	display: block;
+	height: 0px;
+	overflow: hidden;
+	width: 0px;
+}
 
-	:host progress,
-	:host span {
-		display: block;
-		height: 0px;
-		overflow: hidden;
-		width: 0px;
-	}
+svg line:first-child,
+svg circle:first-child {
+	fill: transparent;
+	stroke: var(--color-fluorit);
+}
 
-	svg line:first-child,
-	svg circle:first-child {
-		fill: transparent;
-		stroke: var(--color-fluorit);
-	}
+svg line:last-child,
+svg circle:last-child {
+	stroke: var(--color-achat);
+	fill: transparent;
+}
 
-	svg line:last-child,
-	svg circle:last-child {
-		stroke: var(--color-achat);
-		fill: transparent;
-	}
-
-	progress {
-		display: none;
-	}
+progress {
+	display: none;
 }

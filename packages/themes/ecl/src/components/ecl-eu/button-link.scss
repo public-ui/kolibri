@@ -1,14 +1,11 @@
-@layer kol-theme-component {
+a,
+button {
+	appearance: none;
+	color: var(--color-blue);
+	text-decoration: underline;
+}
 
-	a,
-	button {
-		appearance: none;
-		color: var(--color-blue);
-		text-decoration: underline;
-	}
-
-	a:hover,
-	button:hover {
-		color: var(--color-blue-130);
-	}
+a:hover,
+button:hover {
+	color: var(--color-blue-130);
 }

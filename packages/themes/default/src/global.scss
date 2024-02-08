@@ -1,4 +1,3 @@
-@layer kol-theme-global {
 	:host {
 		--border-radius: var(--kolibri-border-radius, 5px);
 		--font-family: var(--kolibri-font-family, BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif);
@@ -91,4 +90,3 @@
 			transform: rotate(360deg);
 		}
 	}
-}

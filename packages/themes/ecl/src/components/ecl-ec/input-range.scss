@@ -1,4 +1,3 @@
-@layer kol-theme-component {
 	kol-input {
 		color: var(--color-grey);
 		gap: var(--spacing-xs);
@@ -60,4 +59,3 @@
 	.error .input {
 		border-color: var(--color-red);
 	}
-}

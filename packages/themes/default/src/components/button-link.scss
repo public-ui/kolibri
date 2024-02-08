@@ -1,4 +1,3 @@
-@layer kol-theme-component {
 	:is(a, button) {
 		color: var(--color-primary);
 		font-style: normal;
@@ -41,4 +40,3 @@
 		left: unset;
 		position: unset;
 	}
-}
