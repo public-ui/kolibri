@@ -1,0 +1,144 @@
+:is(a, button):focus {
+	outline: none;
+}
+
+:is(a, button):focus kol-span-wc {
+	outline-color: var(--color-primary-variant);
+	outline-offset: 2px;
+	outline-style: solid;
+	outline-width: calc(var(--border-width) * 2);
+	transition: outline-offset 0.2s linear;
+}
+
+:is(a, button) > kol-span-wc {
+	font-weight: 700;
+	border-radius: var(--border-radius);
+	border-style: solid;
+	border-width: var(--border-width);
+	min-height: var(--a11y-min-size);
+	min-width: var(--a11y-min-size);
+	padding: 8px 14px;
+	text-align: center;
+	transition-duration: 0.5s;
+	transition-property: background-color, color, border-color;
+}
+
+:is(a, button):disabled > kol-span-wc {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+.primary :is(a, button) > kol-span-wc,
+.primary :is(a, button):disabled:hover > kol-span-wc {
+	background-color: var(--color-primary);
+	border-color: var(--color-primary);
+	color: var(--color-light);
+}
+
+.secondary :is(a, button) > kol-span-wc,
+.secondary :is(a, button):disabled:hover > kol-span-wc,
+.normal :is(a, button) > kol-span-wc,
+.normal :is(a, button):disabled:hover > kol-span-wc {
+	background-color: var(--color-light);
+	border-color: var(--color-primary);
+	color: var(--color-primary);
+}
+
+.danger :is(a, button) > kol-span-wc,
+.danger :is(a, button):disabled:hover > kol-span-wc {
+	background-color: var(--color-danger);
+	border-color: var(--color-danger);
+	color: var(--color-light);
+}
+
+.ghost :is(a, button) > kol-span-wc,
+.ghost :is(a, button):disabled:hover > kol-span-wc {
+	border-color: var(--color-light);
+	background-color: var(--color-light);
+	box-shadow: none;
+	color: var(--color-primary);
+}
+
+/*-----------*/
+.primary :is(a, button):active > kol-span-wc,
+.primary :is(a, button):hover > kol-span-wc,
+.secondary :is(a, button):active > kol-span-wc,
+.secondary :is(a, button):hover > kol-span-wc,
+.normal :is(a, button):active > kol-span-wc,
+.normal :is(a, button):hover > kol-span-wc,
+.danger :is(a, button):active > kol-span-wc,
+.danger :is(a, button):hover > kol-span-wc,
+.ghost :is(a, button):active > kol-span-wc,
+.ghost :is(a, button):hover > kol-span-wc {
+	background-color: var(--color-primary-variant);
+	border-color: var(--color-primary-variant);
+	box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+	color: var(--color-light);
+}
+
+.danger :is(a, button):active > kol-span-wc,
+.danger :is(a, button):hover > kol-span-wc {
+	background-color: var(--color-danger);
+	border-color: var(--color-danger);
+}
+
+:is(a, button):disabled:hover > kol-span-wc,
+:is(a, button):focus:hover > kol-span-wc {
+	box-shadow: none;
+}
+
+.primary :is(a, button):active > kol-span-wc,
+.secondary :is(a, button):active > kol-span-wc,
+.normal :is(a, button):active > kol-span-wc,
+.danger :is(a, button):active > kol-span-wc,
+.ghost :is(a, button):active > kol-span-wc {
+	border-color: var(--color-light);
+	box-shadow: none;
+	outline: none;
+}
+
+:is(a, button).hide-label > kol-span-wc {
+	padding: 0.8rem;
+	width: unset;
+}
+
+:is(a, button).hide-label > kol-span-wc > span > span {
+	display: none;
+}
+
+:is(a, button).loading > kol-span-wc kol-icon {
+	animation: spin 5s infinite linear;
+}
+
+/** small ghost button */
+.ghost :is(a, button).small > kol-span-wc {
+	border: none;
+	background-color: transparent;
+	box-shadow: none;
+}
+
+.ghost :is(a, button).small > kol-span-wc > span {
+	border-radius: 1.5em;
+	border-style: solid;
+	border-width: var(--border-width);
+	border-color: var(--color-light);
+	background-color: var(--color-light);
+}
+
+.ghost :is(a, button).small:active > kol-span-wc > span,
+.ghost :is(a, button).small:hover > kol-span-wc > span,
+.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
+.ghost :is(a, button).small.transparent:hover > kol-span-wc > span {
+	background-color: var(--color-primary-variant);
+	border-color: var(--color-primary-variant);
+	box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+	color: var(--color-light);
+}
+
+/** :is(a,button) with transparent background */
+:is(a, button).transparent > kol-span-wc > span,
+.ghost :is(a, button).small.transparent > kol-span-wc > span,
+:is(a, button).transparent > kol-span-wc {
+	background-color: transparent;
+	border-color: transparent;
+}

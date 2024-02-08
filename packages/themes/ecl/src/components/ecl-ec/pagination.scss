@@ -1,0 +1,32 @@
+:host {
+	display: grid;
+	gap: var(--spacing-m);
+}
+
+:host .navigation-list {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--spacing-xs);
+}
+
+.selected button {
+	min-width: 44px;
+	min-height: 44px;
+	display: grid;
+	line-height: 1.5rem;
+	font-family: var(--font-family);
+	cursor: not-allowed;
+	font-weight: 700;
+	padding: 10px 12px;
+	border: none;
+	font-size: 16px;
+	font-style: normal;
+	text-align: center;
+	text-decoration: underline;
+	text-transform: uppercase;
+	width: inherit;
+	color: var(--color-white);
+	background-color: var(--color-blue);
+	border-color: var(--color-blue);
+}

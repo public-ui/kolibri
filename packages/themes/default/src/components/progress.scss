@@ -1,0 +1,23 @@
+:host progress,
+:host span {
+	display: block;
+	height: 0px;
+	overflow: hidden;
+	width: 0px;
+}
+
+:host svg line:first-child,
+:host svg circle:first-child {
+	fill: transparent;
+	stroke: var(--color-mute-variant);
+}
+
+:host svg line:last-child,
+:host svg circle:last-child {
+	fill: transparent;
+	stroke: var(--color-primary);
+}
+
+.cycle .progress {
+	stroke: var(--color-primary-variant);
+}
