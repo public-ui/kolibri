@@ -8,11 +8,11 @@ export const BreadcrumbBasic: FC = () => (
 		<KolBreadcrumb
 			_ariaLabel="Breadcrumb aus Text-Links"
 			_links={[
-				{ _label: 'Startseite', _href: '#/' },
-				{ _label: 'Unterseite der Startseite', _href: '#/unterseite' },
+				{ _label: 'Startseite', _href: '#/back-page' },
+				{ _label: 'Unterseite der Startseite', _href: '#/back-page' },
 				{
 					_label: 'Unterseite der Unterseite',
-					_href: '#/unterseite/unterseite',
+					_href: '#/back-page',
 				},
 			]}
 		></KolBreadcrumb>
@@ -23,29 +23,29 @@ export const BreadcrumbBasic: FC = () => (
 					_label: 'Startseite',
 					_icons: 'codicon codicon-home',
 					_hideLabel: true,
-					_href: '#/',
+					_href: '#/back-page',
 				},
 				{
 					_label: 'Unterseite der Startseite mit sehr langem Link-Test',
-					_href: '#/unterseite',
+					_href: '#/back-page',
 				},
 				{
 					_label: 'Unterseite der Unterseite',
-					_href: '#/unterseite/unterseite',
+					_href: '#/back-page',
 				},
 			]}
 		></KolBreadcrumb>
 		<KolBreadcrumb
 			_ariaLabel="Breadcrumb aus Icons- und Text-Links"
 			_links={[
-				{ _label: 'Startseite', _icons: 'codicon codicon-home', _href: '#/' },
+				{ _label: 'Startseite', _icons: 'codicon codicon-home', _href: '#/back-page' },
 				{
 					_label: 'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
-					_href: '#/unterseite',
+					_href: '#/back-page',
 				},
 				{
 					_label: 'Unterseite der Unterseite',
-					_href: '#/unterseite/unterseite',
+					_href: '#/back-page',
 				},
 			]}
 		></KolBreadcrumb>
