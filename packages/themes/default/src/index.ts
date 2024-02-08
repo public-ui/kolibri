@@ -38,6 +38,8 @@ import tableCss from './components/table.scss';
 import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
+import treeItemCss from './components/tree-item.scss';
+import treeCss from './components/tree.scss';
 
 export const DEFAULT = KoliBri.createTheme('default', {
 	GLOBAL: globalCss,
@@ -79,4 +81,6 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-TABS': tabsCss,
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
+	'KOL-TREE': treeCss,
+	'KOL-TREE-ITEM': treeItemCss,
 });
