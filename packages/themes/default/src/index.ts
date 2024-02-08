@@ -1948,7 +1948,10 @@ export const DEFAULT = KoliBri.createTheme('default', {
 		button.selected {
 			color: var(--color-primary);
 		}
-		button kol-span-wc > span {
+		button:not(.selected) kol-span-wc > span {
+			border-bottom: 0.25em solid transparent;
+		}
+		button.selected kol-span-wc > span {
 			border-bottom: 0.25em solid;
 		}
 		button kol-span-wc > span {
