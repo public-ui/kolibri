@@ -97,6 +97,7 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 - [kol-form](../form)
 - [kol-link-group](../link-group)
 - [kol-quote](../quote)
+- [kol-tree-item-wc](../tree-item)
 
 ### Depends on
 
@@ -116,6 +117,7 @@ graph TD;
   kol-form --> kol-link
   kol-link-group --> kol-link
   kol-quote --> kol-link
+  kol-tree-item-wc --> kol-link
   style kol-link stroke:#333,stroke-width:4px
 ```
 
