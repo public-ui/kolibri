@@ -36,7 +36,7 @@ kol-alert {
 }
 
 .kol-required span::after {
-	content: "*";
+	content: '*';
 }
 
 /* RADIO */
@@ -78,7 +78,7 @@ fieldset div label span {
 	margin-top: 0.125em;
 }
 
-fieldset div input[type="radio"] {
+fieldset div input[type='radio'] {
 	appearance: none;
 	transition: 0.5s;
 	border-radius: 100%;
@@ -87,17 +87,17 @@ fieldset div input[type="radio"] {
 	width: calc(6 * 2 * var(--spacing));
 }
 
-fieldset div input[type="radio"]:checked:before {
+fieldset div input[type='radio']:checked:before {
 	box-shadow: 0 0 0.1rem black;
 	background-color: var(--color-petrol);
 }
 
-fieldset div input[type="radio"]:disabled {
+fieldset div input[type='radio']:disabled {
 	background-color: var(--color-input-bg-default);
 	border-color: #999;
 	cursor: not-allowed;
 }
 
 kol-alert {
-	width: 100%,
+	width: 100%;
 }

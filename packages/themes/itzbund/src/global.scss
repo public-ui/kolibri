@@ -15,16 +15,12 @@
 		--color-warn: #f0541e;
 		--color-blut: var(--color-rotton);
 		--color-input-bg-default: #e8edf2;
-		--gradient-petrol-achat: linear-gradient(67deg,
-				var(--color-petrol),
-				var(--color-achat));
+		--gradient-petrol-achat: linear-gradient(67deg, var(--color-petrol), var(--color-achat));
 		--color-citrin: #d4c912;
 		--color-umber: #494500;
 		--color-gelb: #fff443;
 		--color-lichtgelb: #eeff6c;
-		--gradient-gelb-citrin: linear-gradient(67deg,
-				var(--color-gelb),
-				var(--color-citrin));
+		--gradient-gelb-citrin: linear-gradient(67deg, var(--color-gelb), var(--color-citrin));
 		--font-family-sans: BundesSans Web;
 		--font-family-serif: BundesSerif Web;
 		--font-size: 16px;
@@ -75,7 +71,7 @@
 	}
 
 	kol-span-wc,
-	kol-span-wc>span {
+	kol-span-wc > span {
 		gap: 0.25em;
 	}
 

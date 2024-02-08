@@ -47,8 +47,8 @@ kol-span-wc {
 	height: 100%;
 }
 
-li>ul,
-li+li {
+li > ul,
+li + li {
 	border-color: var(--color-blue-75);
 	border-style: solid;
 	border-width: 0;
@@ -68,10 +68,10 @@ a {
 	text-decoration: underline;
 }
 
-div>.expand-button kol-icon::part(icon)::before {
-	content: "\eab6";
+div > .expand-button kol-icon::part(icon)::before {
+	content: '\eab6';
 }
 
-.expanded>div>.expand-button kol-icon::part(icon)::before {
-	content: "\eab4";
+.expanded > div > .expand-button kol-icon::part(icon)::before {
+	content: '\eab4';
 }

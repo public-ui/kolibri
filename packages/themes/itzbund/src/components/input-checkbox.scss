@@ -16,8 +16,8 @@ input {
 	font-size: 16px;
 }
 
-.required label>span::after {
-	content: "*";
+.required label > span::after {
+	content: '*';
 	padding-left: 0.125em;
 }
 
@@ -44,45 +44,45 @@ kol-input.default {
 .button {
 	gap: 0.5rem 0;
 	grid-template-areas:
-		"input label"
-		"hint hint"
-		"error error";
+		'input label'
+		'hint hint'
+		'error error';
 }
 
-kol-input>div.input {
+kol-input > div.input {
 	display: inline-flex;
 	order: 1;
 }
 
-kol-input>div.input input {
+kol-input > div.input input {
 	margin: 0px;
 }
 
-kol-input>label {
+kol-input > label {
 	order: 2;
 	padding-left: calc(2 * 2 * var(--spacing));
 }
 
-kol-input>kol-alert.error {
+kol-input > kol-alert.error {
 	order: 3;
 	padding-top: 0.25em;
 	grid-column: span 2 / auto;
 }
 
 /* CHECKBOX */
-input[type="checkbox"] {
+input[type='checkbox'] {
 	appearance: none;
 	background-color: white;
 	cursor: pointer;
 	transition: 0.5s;
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
 	background-color: var(--color-petrol);
 	border-color: var(--color-petrol);
 }
 
-.default input[type="checkbox"] {
+.default input[type='checkbox'] {
 	/* border-radius: 0.25em; */
 	height: calc(6 * 2 * var(--spacing));
 	min-width: calc(6 * 2 * var(--spacing));
@@ -97,7 +97,7 @@ input[type="checkbox"]:checked {
 	color: var(--color-weiss);
 }
 
-.switch input[type="checkbox"] {
+.switch input[type='checkbox'] {
 	display: block;
 	min-width: 3.2em;
 	width: 3.2em;
@@ -105,7 +105,7 @@ input[type="checkbox"]:checked {
 	position: relative;
 }
 
-.switch input[type="checkbox"]:before {
+.switch input[type='checkbox']:before {
 	/* border-radius: 0.25em; */
 	-webkit-transition: 0.5s;
 	-moz-transition: 0.5s;
@@ -119,7 +119,7 @@ input[type="checkbox"]:checked {
 	position: absolute;
 }
 
-.switch input[type="checkbox"]:checked:before {
+.switch input[type='checkbox']:checked:before {
 	-webkit-transform: translateX(1.5em);
 	-moz-transform: translateX(1.5em);
 	-ms-transform: translateX(1.5em);
@@ -127,7 +127,7 @@ input[type="checkbox"]:checked {
 	background-color: white;
 }
 
-.switch input[type="checkbox"]:indeterminate:before {
+.switch input[type='checkbox']:indeterminate:before {
 	-webkit-transform: translateX(0.75em);
 	-moz-transform: translateX(0.75em);
 	-ms-transform: translateX(0.75em);

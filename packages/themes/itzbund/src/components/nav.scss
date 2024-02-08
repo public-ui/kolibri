@@ -2,7 +2,7 @@
 	display: none;
 }
 
-:host>div>nav ul {
+:host > div > nav ul {
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
@@ -10,41 +10,41 @@
 	background-color: var(--color-petrol);
 }
 
-:host>div>nav ul>li {
+:host > div > nav ul > li {
 	border-radius: var(--border-radius);
 	overflow: hidden;
 	padding: 0.125em;
 }
 
-:host>div>nav ul>li[part*="vertical"]+li {
+:host > div > nav ul > li[part*='vertical'] + li {
 	border-radius: 0;
 	border-top: 0.1em dotted white;
 }
 
-:host>div>nav ul>li[part*="vertical selected"] {
+:host > div > nav ul > li[part*='vertical selected'] {
 	border-right: 0.375em solid var(--color-citrin);
 }
 
-:host>div>nav ul>li[part*="horizontal"]+li {
+:host > div > nav ul > li[part*='horizontal'] + li {
 	border-radius: 0;
 	border-left: 0.1em dotted white;
 }
 
-:host>div>nav ul>li[part*="horizontal selected"] {
+:host > div > nav ul > li[part*='horizontal selected'] {
 	border-bottom: 0.375em solid var(--color-citrin);
 }
 
-:host>div>nav ul>li>div {
+:host > div > nav ul > li > div {
 	height: 100%;
 }
 
-:host>div>nav kol-link-wc {
+:host > div > nav kol-link-wc {
 	width: 100%;
 	/*height: 100%;font-weight: 600;*/
 	display: block;
 }
 
-:host>div>nav kol-link-wc a {
+:host > div > nav kol-link-wc a {
 	border-radius: var(--border-radius);
 	background-color: var(--color-petrol);
 	border: 1px solid transparent;
@@ -60,34 +60,34 @@
 	text-decoration: inherit;
 }
 
-:host>div>nav kol-link-wc[exportparts*="selected"] a {
+:host > div > nav kol-link-wc[exportparts*='selected'] a {
 	background-color: var(--color-achat);
 	font-weight: 700;
 }
 
-:host>div>nav kol-link-wc a kol-icon.mr-2 {
+:host > div > nav kol-link-wc a kol-icon.mr-2 {
 	margin-right: calc(2 * 2 * var(--spacing));
 }
 
-:host>div>nav kol-link-wc a kol-icon.ml-2 {
+:host > div > nav kol-link-wc a kol-icon.ml-2 {
 	margin-left: calc(2 * 2 * var(--spacing));
 }
 
-:host>div>nav kol-link-wc a:focus,
-:host>div>nav kol-link-wc a:hover {
+:host > div > nav kol-link-wc a:focus,
+:host > div > nav kol-link-wc a:hover {
 	border: 1px solid white;
 	background-color: var(--color-fluorit);
 	color: var(--color-anthrazit);
 }
 
 /* compact button */
-:host>div>div:last-child {
+:host > div > div:last-child {
 	margin-top: 0.5em;
 	width: 100%;
 	text-align: center;
 }
 
-:host>div>nav kol-link-wc a.text-center {
+:host > div > nav kol-link-wc a.text-center {
 	display: grid;
 	align-items: center;
 	justify-items: center;
@@ -98,7 +98,7 @@ ul.flex {
 	display: flex;
 }
 
-li>div>div.absolute {
+li > div > div.absolute {
 	position: absolute;
 }
 

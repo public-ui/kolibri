@@ -2,7 +2,7 @@
 	justify-content: flex-start;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
 	background-color: var(--color-white);
 	border-width: 2px;
 	border-style: solid;
@@ -11,50 +11,50 @@ input[type="checkbox"] {
 	font-size: 1rem;
 }
 
-input[type="checkbox"]:focus {
+input[type='checkbox']:focus {
 	outline-color: var(--color-blue);
 	outline-offset: 2px;
 	outline-style: solid;
 	outline-width: 2px;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
 	border-color: var(--color-grey-75);
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
 	background-color: var(--color-blue);
 	border-color: var(--color-blue);
 }
 
-input[type="checkbox"]:hover {
+input[type='checkbox']:hover {
 	border-color: var(--color-blue);
 }
 
-input[type="checkbox"]:checked:hover {
+input[type='checkbox']:checked:hover {
 	background-color: var(--color-blue-130);
 	border-color: var(--color-blue-130);
 }
 
-.error input[type="checkbox"] {
+.error input[type='checkbox'] {
 	border-color: var(--color-red);
 }
 
-.error input[type="checkbox"]:checked {
+.error input[type='checkbox']:checked {
 	background-color: var(--color-red);
 	border-color: var(--color-red);
 }
 
-.error input[type="checkbox"]:hover {
+.error input[type='checkbox']:hover {
 	border-color: var(--color-red);
 }
 
-.error input[type="checkbox"]:checked:hover {
+.error input[type='checkbox']:checked:hover {
 	background-color: var(--color-red-1xx);
 	border-color: var(--color-red-1xx);
 }
 
-.error.required label>span::after {
+.error.required label > span::after {
 	color: var(--color-red);
 }
 
@@ -70,30 +70,30 @@ input[type="checkbox"]:checked:hover {
 	display: block;
 }
 
-.switch input[type="checkbox"]::before,
-.switch input[type="checkbox"]:indeterminate::before {
+.switch input[type='checkbox']::before,
+.switch input[type='checkbox']:indeterminate::before {
 	background-color: var(--color-grey-75);
 }
 
-.switch input[type="checkbox"]:hover::before,
-.switch input[type="checkbox"]:indeterminate:hover::before {
+.switch input[type='checkbox']:hover::before,
+.switch input[type='checkbox']:indeterminate:hover::before {
 	background-color: var(--color-blue);
 }
 
-.switch input[type="checkbox"]:checked::before,
-.switch input[type="checkbox"]:checked:hover::before {
+.switch input[type='checkbox']:checked::before,
+.switch input[type='checkbox']:checked:hover::before {
 	background-color: var(--color-white);
 }
 
-.switch.error input[type="checkbox"]::before {
+.switch.error input[type='checkbox']::before {
 	background-color: var(--color-red);
 }
 
-.switch.error input[type="checkbox"]:checked::before {
+.switch.error input[type='checkbox']:checked::before {
 	background-color: var(--color-white);
 }
 
-.switch.error input[type="checkbox"]:indeterminate:hover::before {
+.switch.error input[type='checkbox']:indeterminate:hover::before {
 	background-color: var(--color-red-1xx);
 }
 
@@ -104,16 +104,16 @@ kol-input {
 .button {
 	gap: var(--spacing-xs) 0;
 	grid-template-areas:
-		"input label"
-		"hint hint"
-		"error error";
+		'input label'
+		'hint hint'
+		'error error';
 }
 
-kol-input>.input {
+kol-input > .input {
 	order: 2;
 }
 
-kol-input>label {
+kol-input > label {
 	order: 3;
 }
 
