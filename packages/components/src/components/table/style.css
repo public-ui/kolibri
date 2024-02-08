@@ -16,6 +16,9 @@ caption {
 	text-align: start;
 }
 
+.focus-element {
+	font-size: 0;
+}
 .focus-element:focus {
 	outline: 0 !important;
 }
