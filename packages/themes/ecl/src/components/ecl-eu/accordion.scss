@@ -58,11 +58,12 @@ div[part*="open"] .headline button {
 }
 
 .open .headline button kol-icon::part(icon)::before {
-	content: "\\f077";
+	content: "\f077";
 }
 
 :not(.open) .headline button kol-icon::part(icon)::before {
-	content: "\\f078";
+	content: "\f078";
+
 }
 
 .content,
