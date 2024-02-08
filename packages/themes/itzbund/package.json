@@ -6,8 +6,10 @@
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
-		"xtest": "THEME_MODULE=src/index THEME_EXPORT=ITZBund kolibri-visual-test",
-		"test-update": "THEME_MODULE=src/index THEME_EXPORT=ITZBund kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
+		"xtest": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test",
+		"test-update": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"pretest": "pnpm build",
+		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "1.7.10",

@@ -1,0 +1,36 @@
+:host {
+	display: grid;
+	gap: 1rem;
+}
+
+:host .navigation-list {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+:host .selected button {
+	min-width: var(--a11y-min-size);
+	min-height: var(--a11y-min-size);
+	display: grid;
+	place-items: center;
+	font-family: var(--font-family);
+	cursor: not-allowed;
+	font-weight: 700;
+	border-radius: 50%;
+	border: none;
+	font-style: normal;
+	text-align: center;
+	width: inherit;
+	transition-duration: 0.5s;
+	transition-property: background-color, color, border-color;
+	color: var(--color-primary);
+	background-color: var(--color-mute-variant);
+}
+
+:host > div > span {
+	align-self: flex-end;
+	padding-bottom: 0.5rem;
+	color: var(--color-primary);
+}
