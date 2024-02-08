@@ -13,7 +13,7 @@ zur **Button**-Komponente.
 
 ```html
 <kol-button-group>
- 	<kol-button _label="Speichern" _variant="primary"></kol-button>
+	<kol-button _label="Speichern" _variant="primary"></kol-button>
 	<kol-button _label="Speichern & Schließen" _variant="normal"></kol-button>
 	<kol-button _label="Abbrechen" _variant="secondary"></kol-button>
 	<kol-button _label="Löschen" _variant="danger"></kol-button>
