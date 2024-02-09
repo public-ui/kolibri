@@ -32,6 +32,7 @@ import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { EventCallbacks } from "./components/details/types";
 import { KoliBriFormCallbacks } from "./components/form/types";
+import { ErrorListPropType } from "./types/props/error-list";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
@@ -92,6 +93,7 @@ export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { EventCallbacks } from "./components/details/types";
 export { KoliBriFormCallbacks } from "./components/form/types";
+export { ErrorListPropType } from "./types/props/error-list";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
@@ -668,6 +670,10 @@ export namespace Components {
         "_summary"?: string;
     }
     interface KolForm {
+        /**
+          * A list of error objects that each describe an issue encountered in the form. Each error object contains a message and a selector for identifying the form element related to the error.
+         */
+        "_errorList"?: ErrorListPropType[];
         /**
           * Gibt die EventCallback-Funktionen für die Form-Events an.
          */
@@ -4161,6 +4167,10 @@ declare namespace LocalJSX {
         "_summary"?: string;
     }
     interface KolForm {
+        /**
+          * A list of error objects that each describe an issue encountered in the form. Each error object contains a message and a selector for identifying the form element related to the error.
+         */
+        "_errorList"?: ErrorListPropType[];
         /**
           * Gibt die EventCallback-Funktionen für die Form-Events an.
          */
