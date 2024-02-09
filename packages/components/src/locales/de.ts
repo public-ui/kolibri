@@ -32,4 +32,6 @@ export default {
 	'avatar-alt': 'Avatar von {{name}}',
 	'toast-close-all': 'Alle schließen',
 	version: 'Versionsnummer',
+	'error-list': 'Fehlerliste',
+	'error-list-message': 'Bitte korrigieren Sie folgende Fehler:',
 };
