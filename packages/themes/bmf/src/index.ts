@@ -2201,7 +2201,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-midnight);
 	}
 	button:not(.selected) kol-span-wc > span {
-		border-bottom: 0.25em solid transparent;
+		padding-bottom: 0.25em;
 	}
 	button.selected kol-span-wc > span {
 		border-bottom: 0.25em solid;
