@@ -46,6 +46,7 @@ import { TOAST_ROUTES } from '../components/toast/routes';
 import { VERSION_ROUTES } from '../components/version/routes';
 import { SCENARIO_ROUTES } from '../scenarios/routes';
 import { Routes } from './types';
+import { TREE_ROUTES } from '../components/tree/routes';
 
 export const ROUTES: Routes = {
 	...HANDOUT_ROUTES,
@@ -94,6 +95,7 @@ export const ROUTES: Routes = {
 	...TABS_ROUTES,
 	...TEXTAREA_ROUTES,
 	...TOAST_ROUTES,
+	...TREE_ROUTES,
 	...VERSION_ROUTES,
 	...SCENARIO_ROUTES,
 };

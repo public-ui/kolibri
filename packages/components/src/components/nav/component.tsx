@@ -15,6 +15,7 @@ import {
 	devWarning,
 	validateCollapsible,
 	validateHasCompactButton,
+	validateHasIconsWhenExpanded,
 	validateHideLabel,
 	validateLabel,
 	watchValidator,
@@ -81,7 +82,10 @@ export class KolNav implements NavAPI {
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean
 	): JSX.Element {
-		const icons = link._icons || (this.state._hideLabel ? 'codicon codicon-primitive-square' : undefined);
+		const icons =
+			this.state._hasIconsWhenExpanded || this.state._hideLabel
+				? link._icons || (this.state._hideLabel ? 'codicon codicon-symbol-method' : undefined)
+				: undefined;
 
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
@@ -237,9 +241,14 @@ export class KolNav implements NavAPI {
 	@Prop() public _collapsible?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+	 * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
 	 */
 	@Prop() public _hasCompactButton?: boolean = false;
+
+	/**
+	 * Shows icons next to the navigation item labels, even when the navigation is not collapsed.
+	 */
+	@Prop() public _hasIconsWhenExpanded?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -266,6 +275,7 @@ export class KolNav implements NavAPI {
 	@State() public state: NavStates = {
 		_collapsible: true,
 		_hasCompactButton: false,
+		_hasIconsWhenExpanded: false,
 		_hideLabel: false,
 		_label: '', // ⚠ required
 		_links: [],
@@ -281,6 +291,11 @@ export class KolNav implements NavAPI {
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
 		validateHasCompactButton(this, value);
+	}
+
+	@Watch('_hasIconsWhenExpanded')
+	public validateHasIconsWhenExpanded(value?: boolean): void {
+		validateHasIconsWhenExpanded(this, value);
 	}
 
 	@Watch('_hideLabel')
@@ -324,6 +339,7 @@ export class KolNav implements NavAPI {
 		this.validateCollapsible(this._collapsible);
 		this.validateHideLabel(this._hideLabel);
 		this.validateHasCompactButton(this._hasCompactButton);
+		this.validateHasIconsWhenExpanded(this._hasIconsWhenExpanded);
 		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);

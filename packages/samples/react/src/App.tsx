@@ -12,6 +12,7 @@ import { HideMenusContext } from './shares/HideMenusContext';
 import { ROUTES } from './shares/routes';
 import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
 import { isDraftTheme, THEME_OPTIONS } from './shares/theme';
+import { SamplePage } from './components/sample-page/sample-page';
 
 import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
@@ -141,6 +142,7 @@ export const App: FC = () => {
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
+						<Route path="sample-page" element={<SamplePage />} />
 					</Routes>
 				</div>
 			</div>
