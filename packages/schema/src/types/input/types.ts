@@ -1,5 +1,5 @@
-import type { EventCallback, EventValueOrEventCallback } from '../../../../schema/src/types/callbacks';
-import type { Events } from '../../enums/events';
+import type { EventCallback, EventValueOrEventCallback } from '../callbacks';
+import type { Events } from '../../enums';
 
 export const inputTypeOnOffOptions = ['on', 'off'] as const;
 export type InputTypeOnOff = (typeof inputTypeOnOffOptions)[number];
