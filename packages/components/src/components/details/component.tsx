@@ -30,13 +30,21 @@ export class KolDetails implements DetailsAPI {
 		this.detailsElement = ref as HTMLDetailsElement;
 	};
 
-	private readonly catchRef = (ref?: HTMLElement) => {
+	private readonly catchSummary = (ref?: HTMLElement) => {
 		this.summaryElement = ref;
 		propagateFocus(this.host, this.summaryElement);
-		/* Handle disabled, because the toogle event is to late. */
 		if (this.state._disabled === true) {
-			this.summaryElement?.removeEventListener('click', preventDefault);
-			this.summaryElement?.addEventListener('click', preventDefault);
+			this.summaryElement?.removeEventListener('click', this.preventToggleIfDisabled);
+			this.summaryElement?.addEventListener('click', this.preventToggleIfDisabled);
+		}
+	};
+
+	/**
+	 * Handle disabled, because the toggle event is to late.
+	 */
+	private readonly preventToggleIfDisabled = (event: Event) => {
+		if (this.state._disabled === true) {
+			preventDefault(event);
 		}
 	};
 
@@ -44,14 +52,19 @@ export class KolDetails implements DetailsAPI {
 		return (
 			<Host>
 				<details
+					ref={this.catchDetails}
 					class={{
 						disabled: this.state._disabled === true,
 						open: this.state._open === true,
 					}}
-					ref={this.catchDetails}
 					onToggle={this.handleToggle}
 				>
-					<summary aria-disabled={this.state._disabled ? 'true' : undefined} tabIndex={this.state._disabled ? -1 : undefined} ref={this.catchRef}>
+					<summary
+						ref={this.catchSummary}
+						aria-disabled={this.state._disabled ? 'true' : undefined}
+						// onClick={this.preventToggleIfDisabled} jsx-a11y/click-events-have-key-events
+						tabIndex={this.state._disabled ? -1 : undefined}
+					>
 						<kol-icon _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
 						<span>{this.state._label}</span>
 					</summary>

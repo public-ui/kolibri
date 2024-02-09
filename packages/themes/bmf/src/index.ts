@@ -1209,6 +1209,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		:is(a, button):hover {
 			text-decoration-thickness: 0.25em;
 		}
+		:is(a, button):is(:focus, :hover):is(:disabled, [aria-disabled], [disabled]) {
+			text-decoration-thickness: unset;
+		}
 		:is(a, button):visited {
 			color: var(--visited);
 		}
@@ -2553,6 +2556,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		:is(a, button):hover {
 			text-decoration-thickness: 0.25em;
+		}
+		:is(a, button):is(:disabled, [disabled]) {
+			text-decoration-thickness: unset;
 		}
 		:is(a, button):visited {
 			color: var(--visited);
