@@ -1,0 +1,97 @@
+@layer kol-theme-global {
+	kol-tooltip-wc .tooltip-area {
+		background-color: #f2f2f2;
+	}
+	kol-tooltip-wc .tooltip-arrow {
+		background-color: #626262;
+	}
+	kol-tooltip-wc .tooltip-content {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid #626262;
+	}
+	:host {
+		--color-blue: #004494;
+		--color-yellow: #ffd617;
+		--color-grey: #404040;
+		--color-blue-130: #002f67;
+		--color-blue-120: #003776;
+		--color-blue-110: #003d84;
+		--color-blue-100: var(--color-blue);
+		--color-blue-75: #4073af;
+		--color-blue-50: #bfd0e4;
+		--color-blue-25: #bfd0e4;
+		--color-blue-5: #f2f5f9;
+		--color-yellow-120: #f8ae21;
+		--color-yellow-110: #fbc11d;
+		--color-yellow-100: var(--color-yellow);
+		--color-yellow-75: #ffde39;
+		--color-yellow-50: #ffe879;
+		--color-yellow-25: #fff4bb;
+		--color-grey-100: var(--color-grey);
+		--color-grey-75: #707070;
+		--color-grey-50: #9f9f9f;
+		--color-grey-25: #cfcfcf;
+		--color-grey-20: #d9d9d9;
+		--color-grey-15: #e3e3e3;
+		--color-grey-10: #ebebeb;
+		--color-grey-5: #f5f5f5;
+		--color-grey-3: #f9f9f9;
+		--color-blue-n: #006fb4;
+		--color-orange: #f29527;
+		--color-green: #467a39;
+		--color-red: #da2131;
+		--color-red-1xx: #981722;
+		--color-black: #000;
+		--color-white: #fff;
+		--font-family: Arial, sans-serif;
+		--font-size: 16px;
+		--font-weight: 400;
+		--font-weight-bold: 600;
+		--line-height: 1.5em;
+		--line-height-heading: 1.2em; /* ?! */
+		--spacing-4xl: 64px;
+		--spacing-3xl: 48px;
+		--spacing-2xl: 40px;
+		--spacing-xl: 32px;
+		--spacing-l: 24px;
+		--spacing-m: 16px;
+		--spacing-s: 12px;
+		--spacing-xs: 8px;
+		--spacing-2xs: 4px; /* ?! */
+	}
+	:host {
+		background-color: transparent; /* Reset global background-color defined by components */
+		display: inline-block;
+	}
+	a,
+	button {
+		font-size: var(--font-size);
+		outline: none;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-heading);
+		margin: 0;
+		padding: 0;
+	}
+	p {
+		font-weight: var(--font-weight);
+	}
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.5em;
+	}
+	.required label span::after,
+	.required legend span::after {
+		color: var(--color-red);
+		padding-left: 0.25em;
+	}
+}

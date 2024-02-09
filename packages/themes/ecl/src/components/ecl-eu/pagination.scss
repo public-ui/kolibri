@@ -1,0 +1,50 @@
+@layer kol-theme-component {
+	:host {
+		display: grid;
+		font-family: var(--font-family);
+	}
+	.button {
+		--kolibri-spacing: 0.25rem;
+		border-radius: 4px;
+		&:focus {
+			outline: none;
+		}
+	}
+	.button-inner {
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		border-radius: 4px;
+		font:
+			normal normal 400 1rem/1.25rem Arial,
+			sans-serif;
+		padding: 0.75rem;
+		background-color: #fc0;
+		color: #171a22;
+	}
+	.button:focus-visible .button-inner {
+		outline-offset: -4px;
+		outline: 2px solid var(--color-black);
+	}
+	button:not(:disabled):active .button-inner,
+	button:not(:disabled):hover .button-inner {
+		background-color: #fc0;
+		border-color: #fc0;
+		box-shadow:
+			0 2px 4px rgb(9 49 142 / 8%),
+			0 0 10px rgb(9 49 142 / 4%),
+			0 4px 5px rgb(9 49 142 / 4%),
+			0 -4px 4px rgb(9 49 142 / 4%);
+	}
+	.button:disabled .button-inner {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+	.selected .button-inner {
+		background-color: var(--color-blue);
+		border-color: var(--color-blue);
+		color: var(--color-white);
+		font-weight: bold;
+		text-decoration: underline;
+		opacity: 1 !important;
+	}
+}

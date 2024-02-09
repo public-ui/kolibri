@@ -1,0 +1,97 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+	a,
+	button {
+		appearance: none;
+		background: none;
+		outline: none;
+		text-decoration: none;
+	}
+	a kol-span-wc,
+	button kol-span-wc {
+		border-radius: 0;
+		border-style: solid;
+		border-width: 2px;
+		font-weight: var(--font-weight-bold);
+		margin: 0;
+		min-height: 44px;
+		min-width: 44px;
+		padding: 0.25em 0.75em;
+	}
+	a:focus kol-span-wc,
+	button:focus kol-span-wc {
+		outline-offset: -4px;
+		outline-width: 2px;
+		outline-style: solid;
+	}
+	button.ghost:focus kol-span-wc {
+		outline-offset: -2px;
+	}
+	.primary a kol-span-wc,
+	.primary button kol-span-wc {
+		background-color: var(--color-blue);
+		border-color: var(--color-blue);
+		color: var(--color-white);
+	}
+	.primary a:focus kol-span-wc,
+	.primary button:focus kol-span-wc {
+		outline-color: var(--color-white);
+	}
+	.primary a:hover kol-span-wc,
+	.primary button:hover kol-span-wc {
+		background-color: var(--color-blue-130);
+		border-color: var(--color-blue-130);
+	}
+	.secondary a kol-span-wc,
+	.secondary button kol-span-wc {
+		background-color: var(--color-white);
+		border-color: var(--color-blue);
+		color: var(--color-blue);
+	}
+	.secondary a:focus kol-span-wc,
+	.secondary button:focus kol-span-wc {
+		outline-color: var(--color-blue);
+		outline-offset: -6px;
+	}
+	.secondary a:hover kol-span-wc,
+	.secondary button:hover kol-span-wc {
+		border-color: var(--color-blue-130);
+		color: var(--color-blue-130);
+	}
+	.normal a kol-span-wc, /* CTA */.normal button kol-span-wc {
+		background-color: var(--color-yellow);
+		border-color: var(--color-yellow);
+		color: var(--color-black);
+	}
+	.normal a:hover kol-span-wc, /* CTA */.normal button:hover kol-span-wc {
+		background-color: var(--color-yellow-120);
+		border-color: var(--color-yellow-120);
+	}
+	.danger a kol-span-wc,
+	.danger button kol-span-wc {
+		background-color: var(--color-red);
+		border-color: var(--color-red);
+		color: var(--color-white);
+	}
+	.danger a:hover kol-span-wc,
+	.danger button:hover kol-span-wc {
+		background-color: var(--color-red);
+		border-color: var(--color-red);
+	}
+	.ghost a kol-span-wc,
+	.ghost button kol-span-wc {
+		background-color: transparent;
+		border-color: transparent;
+		color: var(--color-blue);
+	}
+	.ghost a:focus kol-span-wc,
+	.ghost button:focus kol-span-wc {
+		outline-color: var(--color-blue);
+	}
+	.ghost a:hover kol-span-wc,
+	.ghost button:hover kol-span-wc {
+		color: var(--color-blue-130);
+	}
+}

@@ -1,0 +1,8 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+	.popover {
+		background: #fff;
+	}
+}

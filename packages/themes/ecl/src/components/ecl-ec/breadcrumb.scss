@@ -1,0 +1,22 @@
+@layer kol-theme-component {
+	:host {
+		font:
+			normal normal 400 0.875rem/1rem arial,
+			sans-serif;
+		font-weight: var(--font-weight-bold);
+	}
+	kol-icon::part(icon separator)::before {
+		color: var(--color-blue);
+	}
+	li:last-child {
+		color: var(--color-grey-75);
+	}
+	kol-icon[exportparts*='separator'] {
+		margin-inline-end: 0.5rem;
+		margin-inline-start: 0.5rem;
+		padding: 0;
+	}
+	kol-link {
+		font-family: var(--font-family);
+	}
+}
