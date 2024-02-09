@@ -30,7 +30,7 @@
 		width: 100%;
 	}
 	.kol-required span::after {
-		content: "*";
+		content: '*';
 	} /* RADIO */
 	fieldset {
 		border: 0px;
@@ -46,7 +46,8 @@
 		width: 100%;
 		line-height: 1.5em;
 	}
-	.radio-input-wrapper, .input {
+	.radio-input-wrapper,
+	.input {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
@@ -64,7 +65,7 @@
 	.radio-label span {
 		margin-top: 0.125em;
 	}
-	.radio-input-wrapper input[type="radio"] {
+	.radio-input-wrapper input[type='radio'] {
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
@@ -72,11 +73,11 @@
 		min-width: calc(6 * 2 * var(--spacing));
 		width: calc(6 * 2 * var(--spacing));
 	}
-	.radio-input-wrapper input[type="radio"]:checked:before {
+	.radio-input-wrapper input[type='radio']:checked:before {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--color-petrol);
 	}
-	.radio-input-wrapper input[type="radio"]:disabled {
+	.radio-input-wrapper input[type='radio']:disabled {
 		background-color: var(--color-input-bg-default);
 		border-color: #999;
 		cursor: not-allowed;

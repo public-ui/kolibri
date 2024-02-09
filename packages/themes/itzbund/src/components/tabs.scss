@@ -37,7 +37,7 @@
 		transition-property: background-color, color, border-color;
 	}
 	kol-button-wc button.selected,
-	kol-button-wc[aria-selected="true"] button {
+	kol-button-wc[aria-selected='true'] button {
 		background-color: white;
 		border-bottom-width: 0.25em !important;
 		border-bottom-style: solid;
