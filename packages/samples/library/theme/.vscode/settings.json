@@ -1,0 +1,40 @@
+{
+	"editor.formatOnSave": true,
+	"editor.renderWhitespace": "all",
+	// Configure glob patterns for excluding files and folders.
+	// For example, the files explorer decides which files and folders to show
+	// or hide based on this setting.
+	// Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true
+	},
+	// Configure glob patterns of file paths to exclude from file watching.
+	// Patterns must match on absolute paths
+	// (i.e. prefix with ** or the full path to match properly).
+	// Changing this setting requires a restart.
+	// When you experience Code consuming lots of cpu time on startup,
+	// you can exclude large folders to reduce the initial load.
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/node_modules/**": true,
+		"**/tmp/**": true,
+		"**/bower_components/**": true,
+		"**/dist/**": true
+	},
+	// Configure glob patterns for excluding files and folders in searches.
+	// Inherits all glob patterns from the `files.exclude` setting.
+	// Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/bower_components": true
+	},
+	"javascript.preferences.importModuleSpecifier": "relative",
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.preferences.importModuleSpecifier": "relative",
+	"typescript.updateImportsOnFileMove.enabled": "always"
+}

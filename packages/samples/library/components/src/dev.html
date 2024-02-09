@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<title>BIK BITV-Test | KoliBri</title>
+		<meta name="description" content="Auf der Seite werden alle KoliBri-Komponenten für den BIK BITV-Test dargestellt." />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script type="module" src="build/kolibri.esm.js"></script>
+		<script nomodule src="build/kolibri.js"></script>
+
+		<meta name="robots" content="noindex" />
+		<meta name="kolibri" content="dev-mode=true,experimental-mode=true,color-contrast-analysis=false" />
+
+		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
+
+		<script defer src="assets/simulations/alert-simulation.js"></script>
+		<script defer src="assets/simulations/modal-simulation.js"></script>
+		<script defer src="assets/simulations/nav-simulation.js"></script>
+		<script defer src="assets/simulations/pagination-simulation.js"></script>
+		<script defer src="assets/simulations/popover-simulation.js"></script>
+		<script defer src="assets/simulations/progress-simulation.js"></script>
+		<script defer src="assets/simulations/smart-button-simulation.js"></script>
+		<script defer src="assets/simulations/spin-simulation.js"></script>
+		<script defer src="assets/simulations/table-simulation.js"></script>
+		<script defer src="assets/simulations/tabs-simulation.js"></script>
+		<script defer src="assets/simulations/toast-simulation.js"></script>
+
+		<script src="https://unpkg.com/petite-vue" defer init></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<link rel="stylesheet" href="assets/codicons/codicon.css" />
+		<link rel="stylesheet" href="assets/style.css" />
+		<link rel="stylesheet" href="assets/loader.css" />
+	</head>
+	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
+		<main class="container" style="padding-top: 100px">
+			<kol-select _label="q test" _options="[ { 'value': 'a', 'label': 'a' }, { 'value': 'b', 'label': 'b' } ]" _value="b"></kol-select>
+		</main>
+	</body>
+</html>

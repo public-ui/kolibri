@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"allowUnreachableCode": false,
+		"declaration": false,
+		"experimentalDecorators": true,
+		"lib": ["dom", "ES2017"],
+		"moduleResolution": "node",
+		"module": "ESNext",
+		"target": "ES2017",
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"jsx": "react",
+		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment",
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"removeComments": true,
+		"types": ["node", "jest"],
+		"typeRoots": ["node_modules/@types"],
+		"strict": true,
+		"skipLibCheck": true
+	},
+	"include": ["declare.d.ts", "src"],
+	"exclude": ["node_modules"]
+}
