@@ -34,7 +34,7 @@
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.7",
 		"husky": "9.0.10",
-		"lerna": "8.0.2",
+		"lerna": "8.1.2",
 		"license-report": "6.5.0",
 		"lint-staged": "15.2.1",
 		"npm-check-updates": "16.14.14",
