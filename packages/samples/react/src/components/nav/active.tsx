@@ -52,21 +52,21 @@ export const NavActive: FC = () => {
 					{
 						_active: true,
 						_label: 'Abbr',
-						_href: '/abbr',
+						_href: '#/back-page',
 						_on: {
 							onClick: () => handleLinks('/abbr'),
 						},
 					},
 					{
 						_label: 'Accordion',
-						_href: '/accordion',
+						_href: '#/back-page',
 						_on: {
 							onClick: () => handleLinks('/accordion'),
 						},
 					},
 					{
 						_label: 'Alert',
-						_href: '/alert',
+						_href: '#/back-page',
 					},
 					{
 						_label: 'Badget',
