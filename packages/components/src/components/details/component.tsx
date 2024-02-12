@@ -8,7 +8,7 @@ import { DetailsAnimationController } from './DetailsAnimationController';
 import type { DisabledPropType } from '@public-ui/schema';
 import { validateDisabled } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
-import { preventDefault } from '../../utils/events';
+import { preventDefaultAndStopPropagation } from '../../utils/events';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -40,7 +40,7 @@ export class KolDetails implements DetailsAPI {
 	 */
 	private readonly preventToggleIfDisabled = (event: Event) => {
 		if (this.state._disabled === true) {
-			preventDefault(event);
+			preventDefaultAndStopPropagation(event);
 		}
 	};
 

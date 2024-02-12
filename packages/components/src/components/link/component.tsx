@@ -40,7 +40,7 @@ import { onLocationChange } from './ariaCurrentService';
 import { validateDisabled } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
-import { preventDefault } from '../../utils/events';
+import { preventDefaultAndStopPropagation } from '../../utils/events';
 /**
  * @internal
  */
@@ -60,7 +60,7 @@ export class KolLinkWc implements LinkAPI {
 
 	private readonly onClick = (event: Event) => {
 		if (this.state._disabled === true) {
-			preventDefault(event);
+			preventDefaultAndStopPropagation(event);
 		} else if (typeof this.state._on?.onClick === 'function') {
 			event.preventDefault();
 			event.stopPropagation();
