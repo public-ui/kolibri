@@ -27,8 +27,6 @@
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"postinstall": "cpy \"node_modules/@public-ui/components/dist/kolibri/**/*\" \"src/assets/kolibri\" --dot",
-		"postpack": "mv package.bak.json package.json",
-		"prepack": "npm run build && cp package.json package.bak.json && node scripts/anonymous.js && node scripts/minify.js",
 		"xunused": "knip"
 	},
 	"dependencies": {
