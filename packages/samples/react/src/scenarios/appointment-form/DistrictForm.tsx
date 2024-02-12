@@ -61,12 +61,14 @@ export function DistrictForm() {
 							_error={form.errors.district || ''}
 							_touched={form.touched.district}
 							_required
+							onBlur={() => {
+								void form.setFieldTouched('district', true);
+							}}
 							_on={{
 								onChange: (event, values: unknown) => {
 									// Select und Radio setzen den Wert immer initial.
 									if (event.target) {
 										const [value] = values as [FormValues['district']];
-										void form.setFieldTouched('district', true);
 										void form.setFieldValue('district', value, true);
 									}
 								},

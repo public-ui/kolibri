@@ -47,11 +47,13 @@ export function PersonalInformationForm() {
 							_touched={form.touched.salutation}
 							_options={[{ label: 'Bitte wählen…', value: '' }, ...SALUTATION_OPTIONS]}
 							_required
+							onBlur={() => {
+								void form.setFieldTouched('salutation', true);
+							}}
 							_on={{
 								onChange: (event, values: unknown) => {
 									if (event.target) {
 										const [value] = values as [FormValues['salutation']];
-										void form.setFieldTouched('salutation', true);
 										void form.setFieldValue('salutation', value, true);
 									}
 								},
@@ -70,10 +72,12 @@ export function PersonalInformationForm() {
 									_error={form.errors.company || ''}
 									_touched={form.touched.company}
 									_required
+									onBlur={() => {
+										void form.setFieldTouched('company', true);
+									}}
 									_on={{
 										onChange: (event, value: unknown) => {
 											if (event.target) {
-												void form.setFieldTouched('company', true);
 												void form.setFieldValue('company', value, true);
 											}
 										},
@@ -93,10 +97,12 @@ export function PersonalInformationForm() {
 								_error={form.errors.name || ''}
 								_touched={form.touched.name}
 								_required
+								onBlur={() => {
+									void form.setFieldTouched('name', true);
+								}}
 								_on={{
 									onChange: (event, value: unknown) => {
 										if (event.target) {
-											void form.setFieldTouched('name', true);
 											void form.setFieldValue('name', value, true);
 										}
 									},
@@ -115,10 +121,12 @@ export function PersonalInformationForm() {
 								_error={form.errors.email || ''}
 								_touched={form.touched.email}
 								_required
+								onBlur={() => {
+									void form.setFieldTouched('email', true);
+								}}
 								_on={{
 									onChange: (event, value: unknown) => {
 										if (event.target) {
-											void form.setFieldTouched('email', true);
 											void form.setFieldValue('email', value, true);
 										}
 									},
