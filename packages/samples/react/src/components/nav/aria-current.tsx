@@ -24,7 +24,7 @@ export const NavAriaCurrent: FC = () => (
 				},
 				{
 					_label: 'Nav - aria-current (Aktuelle Seite)',
-					_href: '#/nav/aria-current',
+					_href: '#/back-page',
 					_active: true,
 				},
 			]}
