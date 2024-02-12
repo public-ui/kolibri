@@ -12,7 +12,8 @@
 		text-decoration-line: underline;
 	}
 
-	:is(a, button):is(:focus, :hover):not([aria-disabled], [disabled]) {
+	a:is(:focus, :hover):not([aria-disabled]),
+	button:is(:focus, :hover):not([disabled]) {
 		text-decoration-thickness: 0.2em;
 	}
 
