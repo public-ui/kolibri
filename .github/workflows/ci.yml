@@ -34,7 +34,7 @@ jobs:
           # cache: pnpm
           node-version: 20
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
         id: pnpm-install
         with:
           version: 8
