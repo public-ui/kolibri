@@ -109,7 +109,7 @@
 		"mustache": "4.2.0",
 		"postcss": "8.4.33",
 		"postcss-sorting": "8.0.2",
-		"prettier": "2.8.8",
+		"prettier": "3.2.5",
 		"pug": "3.0.2",
 		"rimraf": "3.0.2",
 		"stencil-awesome-test": "1.0.6",
