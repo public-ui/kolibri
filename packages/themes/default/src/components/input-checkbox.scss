@@ -23,22 +23,22 @@
 	justify-content: flex-start;
 }
 
-:host kol-input > div.input {
+:host kol-input>div.input {
 	display: inherit;
 	min-height: var(--a11y-min-size);
 	order: 2;
 }
 
-:host kol-input > div.input input {
+:host kol-input>div.input input {
 	margin: 0px;
 }
 
-:host kol-input > label {
+:host kol-input>label {
 	cursor: pointer;
 	order: 3;
 }
 
-:host kol-input > kol-alert.error {
+:host kol-input>kol-alert.error {
 	order: 1;
 	padding-top: calc(var(--spacing) / 2);
 	grid-column: span 2 / auto;
@@ -95,7 +95,7 @@ kol-input.error textarea:focus {
 	margin-top: 0.125rem;
 }
 
-:host .required label > span::after {
+:host .required label>span::after {
 	content: '*';
 	padding-left: 0.125em;
 }
@@ -137,6 +137,7 @@ kol-input.error textarea:focus {
 	min-width: 3.5em;
 	position: relative;
 	width: 3.5em;
+	border: 1px solid transparent;
 }
 
 :host kol-input.switch input[type='checkbox']:before {
