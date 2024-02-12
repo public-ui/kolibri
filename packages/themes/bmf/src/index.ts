@@ -1206,7 +1206,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-radius: var(--border-radius);
 			outline: 2px solid;
 		}
-		:is(a, button):hover {
+		a:hover:not([aria-disabled]),
+		button:hover:not([disabled]) {
 			text-decoration-thickness: 0.25em;
 		}
 		:is(a, button):visited {
@@ -2551,7 +2552,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-radius: var(--border-radius);
 			outline: 2px solid;
 		}
-		:is(a, button):hover {
+		a:hover:not([aria-disabled]),
+		button:hover:not([disabled]) {
 			text-decoration-thickness: 0.25em;
 		}
 		:is(a, button):visited {

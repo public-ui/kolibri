@@ -15,7 +15,8 @@
 		outline: var(--border-width) solid;
 	}
 
-	:is(a, button):hover {
+	a:hover:not([aria-disabled]),
+	button:hover:not([disabled]) {
 		text-decoration-thickness: 0.25em;
 	}
 
