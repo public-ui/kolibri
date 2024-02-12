@@ -33,10 +33,6 @@ export class KolDetails implements DetailsAPI {
 	private readonly catchSummary = (ref?: HTMLElement) => {
 		this.summaryElement = ref;
 		propagateFocus(this.host, this.summaryElement);
-		if (this.state._disabled === true) {
-			this.summaryElement?.removeEventListener('click', this.preventToggleIfDisabled);
-			this.summaryElement?.addEventListener('click', this.preventToggleIfDisabled);
-		}
 	};
 
 	/**
@@ -59,10 +55,12 @@ export class KolDetails implements DetailsAPI {
 					}}
 					onToggle={this.handleToggle}
 				>
+					{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
 					<summary
 						ref={this.catchSummary}
 						aria-disabled={this.state._disabled ? 'true' : undefined}
-						// onClick={this.preventToggleIfDisabled} jsx-a11y/click-events-have-key-events
+						onClick={this.preventToggleIfDisabled}
+						onKeyPress={this.preventToggleIfDisabled}
 						tabIndex={this.state._disabled ? -1 : undefined}
 					>
 						<kol-icon _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
