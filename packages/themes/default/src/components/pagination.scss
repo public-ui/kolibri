@@ -7,6 +7,7 @@
 	.button:focus {
 		outline: none;
 	}
+
 	.button-inner {
 		background-color: var(--color-light);
 		border-radius: var(--border-radius);
@@ -20,27 +21,26 @@
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
 	}
+
 	.button:focus .button-inner {
 		@include focus-outline;
 	}
+
 	.button:is(:active, :hover):not(:disabled) .button-inner {
 		background-color: var(--color-primary-variant);
 		border-color: var(--color-primary-variant);
 		box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
 		color: var(--color-light);
 	}
+
 	.button:active .button-inner {
 		color: var(--color-light);
 		outline: none;
 	}
-	.button:disabled .button-inner {
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
+
 	.selected .button-inner {
 		background-color: var(--color-mute-variant);
 		border-radius: var(--a11y-min-size);
 		border: 0;
-		opacity: 1 !important;
 	}
 }

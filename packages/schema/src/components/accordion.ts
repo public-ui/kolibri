@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 import type { Events } from '../enums';
-import type { HeadingLevel, PropLabel, PropOpen } from '../props';
+import type { HeadingLevel, PropDisabled, PropLabel, PropOpen } from '../props';
 import type { EventValueOrEventCallback } from '../types';
 
 export type KoliBriAccordionCallbacks = {
@@ -11,7 +11,8 @@ type RequiredProps = PropLabel;
 type OptionalProps = {
 	level: HeadingLevel;
 	on: KoliBriAccordionCallbacks;
-} & PropOpen;
+} & PropDisabled &
+	PropOpen;
 
 type RequiredStates = RequiredProps & PropLabel;
 type OptionalStates = OptionalProps;
