@@ -7,6 +7,9 @@ switch (location.pathname) {
 	case '/dev/input-error.html':
 		import('./input-error');
 		break;
+	case '/dev/option-prop-value-type.html':
+		import('./option-prop-value-type');
+		break;
 	case '/dev/reprod-accordion-does-not-toggle-with-open.html':
 		import('./reprod-accordion-does-not-toggle-with-open');
 		break;

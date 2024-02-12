@@ -85,6 +85,8 @@ export class KolSelect implements SelectAPI {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
+		console.log(`Select(${this.state._label}) -> this.state._options`, JSON.parse(JSON.stringify(this.state._options)));
+
 		return (
 			<Host class={{ 'has-value': this.state._hasValue }}>
 				<kol-input
