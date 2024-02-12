@@ -1,0 +1,20 @@
+name: Definition of Done
+on:
+  pull_request:
+    types: [opened, edited]
+
+concurrency:
+  group: ci-{{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-dod:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v3
+      - name: Check DoD
+        uses: platisd/definition-of-done@master
+        with:
+          dod_yaml: '.github/dod.yml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
