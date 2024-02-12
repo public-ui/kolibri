@@ -22,7 +22,7 @@
 		"forceConsistentCasingInFileNames": false,
 		"importHelpers": false,
 		"strict": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
 	},
 	"compileOnSave": false,
 	"buildOnSave": false,
