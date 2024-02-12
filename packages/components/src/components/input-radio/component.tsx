@@ -40,6 +40,8 @@ export class KolInputRadio implements API {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
+		console.log(`Radio(${this.state._label}) -> this.state._options`, JSON.parse(JSON.stringify(this.state._options)));
+
 		return (
 			<Host>
 				<fieldset
