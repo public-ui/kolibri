@@ -42,8 +42,8 @@
 	[aria-disabled='true'],
 	[disabled],
 	:disabled {
-		cursor: not-allowed !important;
+		cursor: not-allowed;
 		opacity: 0.5;
-		outline: none !important;
+		outline: none;
 	}
 }
