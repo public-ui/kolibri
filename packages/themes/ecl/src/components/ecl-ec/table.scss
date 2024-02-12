@@ -1,0 +1,84 @@
+:host > div {
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+caption {
+	padding: 0.5em;
+}
+
+th {
+	font-weight: normal;
+	color: var(--color-midnight);
+}
+
+:host table thead tr:first-child th,
+:host table thead tr:first-child td {
+	border-width: 0;
+	border-top-width: 2px;
+	border-style: solid;
+	border-color: var(--color-ice);
+}
+
+.table {
+	padding: 0.5em;
+}
+
+.table:has(.focus-element:focus) {
+	outline-color: var(--color-blue);
+	outline-offset: 2px;
+	outline-style: solid;
+	outline-width: 2px;
+}
+
+table {
+	width: 100%;
+	border-spacing: 0;
+}
+
+table,
+:host table thead tr:last-child th,
+:host table thead tr:last-child td {
+	border-width: 0;
+	border-bottom-width: 2px;
+	border-style: solid;
+	border-color: var(--color-ice);
+}
+
+th {
+	background-color: var(--color-white);
+}
+
+th div {
+	width: 100%;
+	display: flex;
+	gap: 0.5em;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: var(--color-grey-10);
+}
+
+th,
+td {
+	padding: 0.5em;
+}
+
+th[aria-sort='ascending'],
+th[aria-sort='descending'] {
+	font-weight: 700;
+}
+
+@media (min-width: 1024px) {
+	:host > div:last-child,
+	:host > div:last-child > div:last-child {
+		grid-auto-flow: column;
+	}
+
+	:host > div:last-child kol-pagination {
+		display: flex;
+		gap: 1rem;
+	}
+}

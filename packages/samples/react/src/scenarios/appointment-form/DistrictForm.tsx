@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { ErrorList } from './ErrorList';
+import { ErrorListPropType } from '@public-ui/components';
 
 const LOCATION_OPTIONS = [
 	{
@@ -30,18 +30,20 @@ const LOCATION_OPTIONS = [
 export function DistrictForm() {
 	const form = useFormikContext<FormValues>();
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
+	const errorList = createErrorList(form.errors);
+
+	function createErrorList(formikErrors: Record<string, string>): ErrorListPropType[] {
+		return Object.keys(formikErrors).map((fieldName) => ({
+			message: formikErrors[fieldName],
+			selector: `#field-${fieldName}`,
+		}));
+	}
 
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus"></KolHeading>
-
-			{sectionSubmitted && Object.keys(form.errors).length ? (
-				<div className="mt-2">
-					<ErrorList errors={form.errors} />
-				</div>
-			) : null}
-
 			<KolForm
+				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
 					onSubmit: () => {
 						void form.submitForm();

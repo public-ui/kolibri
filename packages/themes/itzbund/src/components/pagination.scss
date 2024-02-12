@@ -1,0 +1,28 @@
+:host {
+	display: grid;
+	gap: 1rem;
+}
+
+:host .navigation-list {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5em;
+}
+
+button > kol-span-wc {
+	cursor: not-allowed;
+	background-color: var(--color-achat);
+	border-color: var(--color-achat);
+	border-radius: 2rem;
+	border-style: solid;
+	color: var(--color-weiss);
+	min-width: 44px;
+	min-height: 44px;
+	border-width: var(--spacing);
+	font-size: inherit;
+	font-weight: bold;
+	line-height: 1.25em;
+	padding: calc(4 * var(--spacing));
+	text-decoration: underline;
+}

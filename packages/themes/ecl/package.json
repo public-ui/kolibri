@@ -7,11 +7,15 @@
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"xtest": "npm-run-all test:*",
-		"test:ecl-ec": "THEME_MODULE=src/index THEME_EXPORT=ECL_EC kolibri-visual-test",
-		"test:ecl-eu": "THEME_MODULE=src/index THEME_EXPORT=ECL_EU kolibri-visual-test",
+		"test:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test",
+		"test:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test",
 		"test-update": "npm-run-all test-update:*",
-		"test-update:ecl-ec": "THEME_MODULE=src/index THEME_EXPORT=ECL_EC kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
-		"test-update:ecl-eu": "THEME_MODULE=src/index THEME_EXPORT=ECL_EU kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
+		"test-update:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"test-update:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"pretest:ecl-ec": "pnpm build",
+		"pretest-update:ecl-ec": "pnpm build",
+		"pretest:ecl-eu": "pnpm build",
+		"pretest-update:ecl-eu": "pnpm build"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "1.7.10",

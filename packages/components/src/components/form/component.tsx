@@ -4,7 +4,7 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { API, KoliBriFormCallbacks, States } from './types';
-
+import { ErrorListPropType, validateErrorList } from '../../types/props/error-list';
 /**
  * @slot - Inhalt der Form.
  */
@@ -28,9 +28,37 @@ export class KolForm implements API {
 		}
 	};
 
+	private readonly handleLinkClick = (event: Event) => {
+		const href = (event.target as HTMLAnchorElement | undefined)?.href;
+		if (href) {
+			const hrefUrl = new URL(href);
+
+			const targetElement = document.querySelector<HTMLElement>(hrefUrl.hash);
+			if (targetElement && typeof targetElement.focus === 'function') {
+				targetElement.scrollIntoView({ behavior: 'smooth' });
+				targetElement.focus();
+			}
+		}
+	};
+
 	public render(): JSX.Element {
+		console.log(this._errorList);
 		return (
 			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
+				{this._errorList && this._errorList.length > 0 && (
+					<kol-alert _type="error">
+						{translate('kol-error-list-message')}
+						<nav aria-label={translate('kol-error-list')}>
+							<ul>
+								{this._errorList.map((error, index) => (
+									<li key={index}>
+										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />
+									</li>
+								))}
+							</ul>
+						</nav>
+					</kol-alert>
+				)}
 				{this.state._requiredText === true ? (
 					<p>
 						<kol-indented-text>{translate('kol-form-description')}</kol-indented-text>
@@ -54,6 +82,11 @@ export class KolForm implements API {
 	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
+	/**
+	 * A list of error objects that each describe an issue encountered in the form.
+	 * Each error object contains a message and a selector for identifying the form element related to the error.
+	 */
+	@Prop() public _errorList?: ErrorListPropType[];
 
 	@State() public state: States = {};
 
@@ -76,8 +109,14 @@ export class KolForm implements API {
 		}
 	}
 
+	@Watch('_errorList')
+	public validateErrorList(value?: ErrorListPropType[]): void {
+		validateErrorList(this, value);
+	}
+
 	public componentWillLoad(): void {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
+		this.validateErrorList(this._errorList);
 	}
 }

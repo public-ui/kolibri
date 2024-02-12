@@ -94,6 +94,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 ### Used by
 
 - [kol-breadcrumb](../breadcrumb)
+- [kol-form](../form)
 - [kol-input-adapter-leanup](../input-adapter-leanup)
 - [kol-link-group](../link-group)
 - [kol-quote](../quote)
@@ -113,6 +114,7 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
   kol-breadcrumb --> kol-link
+  kol-form --> kol-link
   kol-input-adapter-leanup --> kol-link
   kol-link-group --> kol-link
   kol-quote --> kol-link

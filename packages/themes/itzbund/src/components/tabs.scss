@@ -1,0 +1,188 @@
+:host > div {
+	display: block;
+	width: 100%;
+}
+
+:host kol-button-group-wc {
+	display: flex;
+	background-color: var(--color-petrol);
+}
+
+:host kol-button-group-wc > div {
+	display: inline-flex;
+}
+
+:host kol-button-group-wc > div + div {
+	margin-left: 0.25em;
+}
+
+:host > div > div {
+	padding: 0.25em;
+	border: 1px solid var(--border-color);
+}
+
+button {
+	box-sizing: border-box;
+	font-size: inherit;
+	line-height: 1.25em;
+	cursor: pointer;
+	border-width: 2px;
+	box-shadow: 0 0 0.25em gray;
+	width: inherit;
+	overflow: hidden;
+	border-style: solid;
+	padding: calc(4 * var(--spacing));
+	display: grid;
+	gap: 0.25em;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	transition-duration: 0.5s;
+	transition-property: background-color, color, border-color;
+}
+
+kol-button-wc button.selected,
+kol-button-wc[aria-selected='true'] button {
+	background-color: white;
+	border-bottom-width: 0.25em !important;
+	border-bottom-style: solid;
+	border-bottom-color: var(--color-citrin) !important;
+}
+
+button > kol-span-wc span {
+	display: flex;
+	gap: 0.25em;
+	align-items: center;
+	justify-content: center;
+}
+
+button:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+button.primary,
+button.primary:disabled:hover {
+	background-color: var(--kolibri-color-primary);
+	border-color: var(--kolibri-color-primary);
+	color: white;
+}
+
+button.primary:hover,
+button.primary:focus {
+	color: var(--kolibri-color-primary);
+}
+
+button.secondary,
+button.secondary:disabled:hover {
+	background-color: var(--kolibri-color-secondary);
+	border-color: var(--kolibri-color-secondary);
+	color: white;
+}
+
+button.secondary:hover,
+button.secondary:focus {
+	color: var(--kolibri-color-secondary);
+}
+
+button.normal,
+button.normal:disabled:hover {
+	background-color: var(--color-petrol);
+	border-color: var(--color-petrol);
+	color: white;
+}
+
+button.normal:hover,
+button.normal:focus {
+	color: var(--color-petrol);
+}
+
+button.danger,
+button.danger:disabled:hover {
+	background-color: var(--kolibri-color-danger);
+	border-color: var(--kolibri-color-danger);
+	color: white;
+}
+
+button.danger:hover,
+button.danger:focus {
+	color: var(--kolibri-color-danger);
+}
+
+button.ghost,
+button.ghost:disabled:hover {
+	background-color: white;
+	border-color: var(--kolibri-color-ghost);
+	color: var(--kolibri-color-ghost);
+}
+
+button.ghost:hover,
+button.ghost:focus {
+	background-color: var(--kolibri-color-ghost);
+	color: white;
+}
+
+button:hover,
+button:focus {
+	background-color: white;
+	box-shadow: 0 0 0.25em black;
+}
+
+button:active {
+	outline: 0 !important;
+	box-shadow: none !important;
+}
+
+.close-button {
+	font-size: 25%;
+	height: fit-content;
+	width: 0;
+}
+
+.close-button button {
+	width: 1rem;
+	position: relative;
+	height: 1rem;
+	left: -4.25em;
+	top: 0.25em;
+}
+
+:host > div {
+	display: grid;
+}
+
+:host > div.tabs-align-left {
+	grid-template-columns: auto 1fr;
+}
+
+:host > div.tabs-align-right {
+	grid-template-columns: 1fr auto;
+}
+
+:host > .tabs-align-left kol-button-group-wc,
+:host > .tabs-align-top kol-button-group-wc {
+	order: 0;
+}
+
+:host > .tabs-align-bottom kol-button-group-wc,
+:host > .tabs-align-right kol-button-group-wc {
+	order: 1;
+}
+
+:host > div.tabs-align-left kol-button-group-wc > div,
+:host > div.tabs-align-left kol-button-group-wc > div > div,
+:host > div.tabs-align-right kol-button-group-wc > div,
+:host > div.tabs-align-right kol-button-group-wc > div > div {
+	display: grid;
+}
+
+:host > div.tabs-align-left kol-button-group-wc > div > div kol-button-wc,
+:host > div.tabs-align-right kol-button-group-wc > div > div kol-button-wc {
+	width: 100%;
+}
+
+:host > div.tabs-align-bottom kol-button-group-wc div,
+:host > div.tabs-align-top kol-button-group-wc div {
+	display: flex;
+	flex-wrap: wrap;
+}
