@@ -18,17 +18,30 @@ noch die Icons ausgegeben.
 <kol-nav
 	_label="Navigation"
 	_links="[
-		{
-			'_href': 'startseite',
-			'_icons': 'codicon codicon-home',
-			'_label': 'Startseite',
-			'_children': [
-				{ '_href': 'startseite/1-untermenuepunkt', _icons: 'codicon codicon-home', _label: '1. Untermenüpunkt' },
-				{ '_href': 'startseite/2-untermenuepunkt', _icons: 'codicon codicon-home', _label: '2. Untermenüpunkt' },
-			],
-		},
-		{ '_href': 'unterseite', _icons: 'codicon codicon-home', _label: '2. Menüpunkt' },
-	]"
+    {
+      '_href': 'startseite',
+      '_icons': 'codicon codicon-home',
+      '_label': 'Startseite2',
+      '_children': [
+        {
+          '_href': 'startseite/1-untermenuepunkt',
+          '_icons': 'codicon codicon-home',
+          '_label': '1. Untermenüpunkt'
+        },
+        {
+          '_href': 'startseite/2-untermenuepunkt',
+          '_icons': 'codicon codicon-home',
+          '_label': '2. Untermenüpunkt'
+        }
+      ]
+    },
+    {
+      '_href': 'unterseite',
+      '_icons': 'codicon codicon-home',
+      '_label': '2. Menüpunkt'
+    }
+  ]"
+	_has-compact-button
 ></kol-nav>
 ```
 
@@ -98,14 +111,15 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 
 ## Properties
 
-| Property              | Attribute             | Description                                                                                                                                | Type                                              | Default      |
-| --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- | ------------ |
-| `_collapsible`        | `_collapsible`        | Defines if navigation nodes can be collapsed or not. Enabled by default.                                                                   | `boolean \| undefined`                            | `true`       |
-| `_hasCompactButton`   | `_has-compact-button` | Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.                             | `boolean \| undefined`                            | `false`      |
-| `_hideLabel`          | `_hide-label`         | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. | `boolean \| undefined`                            | `false`      |
-| `_label` _(required)_ | `_label`              | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                         | `string`                                          | `undefined`  |
-| `_links` _(required)_ | `_links`              | Defines the list of links, buttons or texts to render.                                                                                     | `ButtonOrLinkOrTextWithChildrenProps[] \| string` | `undefined`  |
-| `_orientation`        | `_orientation`        | Defines whether the orientation of the component is horizontal or vertical.                                                                | `"horizontal" \| "vertical" \| undefined`         | `'vertical'` |
+| Property                | Attribute                  | Description                                                                                                                                | Type                                              | Default      |
+| ----------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- | ------------ |
+| `_collapsible`          | `_collapsible`             | Defines if navigation nodes can be collapsed or not. Enabled by default.                                                                   | `boolean \| undefined`                            | `true`       |
+| `_hasCompactButton`     | `_has-compact-button`      | Creates a button below the navigation, that toggles \_collapsible. Only available for \_orientation="vertical".                            | `boolean \| undefined`                            | `false`      |
+| `_hasIconsWhenExpanded` | `_has-icons-when-expanded` | Shows icons next to the navigation item labels, even when the navigation is not collapsed.                                                 | `boolean \| undefined`                            | `false`      |
+| `_hideLabel`            | `_hide-label`              | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. | `boolean \| undefined`                            | `false`      |
+| `_label` _(required)_   | `_label`                   | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                         | `string`                                          | `undefined`  |
+| `_links` _(required)_   | `_links`                   | Defines the list of links, buttons or texts to render.                                                                                     | `ButtonOrLinkOrTextWithChildrenProps[] \| string` | `undefined`  |
+| `_orientation`          | `_orientation`             | Defines whether the orientation of the component is horizontal or vertical.                                                                | `"horizontal" \| "vertical" \| undefined`         | `'vertical'` |
 
 ## Dependencies
 

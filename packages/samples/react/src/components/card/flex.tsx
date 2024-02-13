@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolCard } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const CardFlex: FC = () => (
 	<div className="grid grid-cols-2 gap-4">

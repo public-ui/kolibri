@@ -4,64 +4,64 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_label: 'Homepage',
 		_icons: 'codicon codicon-home',
-		_href: '#/',
+		_href: '#/back-page',
 	},
 	{
 		_label: '2 Navigation point',
-		_href: '#/untermenu',
+		_href: '#/back-page',
 	},
 	{
 		_label: '3 Navigation point',
-		_href: '#abc',
+		_href: '#/back-page',
 		_icons: 'codicon codicon-home',
 		_children: [
 			{
 				_label: '3.1 Navigation point',
 				_icons: 'codicon codicon-home',
-				_href: '#/',
+				_href: '#/back-page',
 			},
 			{
 				_label: '3.2 Navigation point',
-				_href: '#abc',
+				_href: '#/back-page',
 				_target: 'asdasd',
 			},
 			{
 				_label: '3.3 Navigation point',
-				_href: '#abc',
+				_href: '#/back-page',
 				_children: [
 					{
 						_label: '3.3.1 Navigation point',
-						_href: '#abc',
+						_href: '#/back-page',
 					},
-					{ _label: '3.3.2 Navigation point', _href: '#abc' },
+					{ _label: '3.3.2 Navigation point', _href: '#/back-page' },
 				],
 			},
 			{
 				_label: '3.4 Navigation point',
-				_href: '#abc',
+				_href: '#/back-page',
 				_children: [
 					{
 						_label: '3.4.1 Navigation point',
-						_href: '#abc',
+						_href: '#/back-page',
 						_children: [
-							{ _label: '3.4.1.1 Navigation point', _href: '#abc' },
-							{ _label: '3.4.1.2 Navigation point (active)', _href: '#abc' },
+							{ _label: '3.4.1.1 Navigation point', _href: '#/back-page' },
+							{ _label: '3.4.1.2 Navigation point (active)', _href: '#/back-page' },
 						],
 					},
-					{ _label: '3.4.2 Navigation point', _href: '#abc' },
+					{ _label: '3.4.2 Navigation point', _href: '#/back-page' },
 				],
 			},
-			{ _label: '3.5 Navigation point', _href: '#abc' },
+			{ _label: '3.5 Navigation point', _href: '#/back-page' },
 		],
 	},
-	{ _label: '4 Navigation point', _href: '#abc' },
+	{ _label: '4 Navigation point', _href: '#/back-page' },
 	{
 		_label: '5 Keine eigene Seite, nur Kategorie',
 		_active: true,
 		_children: [
 			{
 				_label: '5.1 Verschachtelter Link',
-				_href: '#abc',
+				_href: '#/back-page',
 			},
 		],
 	},
@@ -71,7 +71,7 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 		_children: [
 			{
 				_label: '6.1 Verschachtelter Link',
-				_href: '#abc',
+				_href: '#/back-page',
 			},
 		],
 	},

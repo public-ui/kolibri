@@ -46,4 +46,6 @@ export * from './tabs';
 export * from './textarea';
 export * from './toaster';
 export * from './tooltip';
+export * from './tree';
+export * from './tree-item';
 export * from './version';

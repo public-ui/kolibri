@@ -1,7 +1,6 @@
 @layer kol-theme-component {
-	button:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
+	:host {
+		font-family: var(--font-family);
 	}
 
 	:host kol-button-group-wc {
@@ -44,6 +43,10 @@
 
 	button kol-span-wc > span {
 		gap: 0.5rem;
+	}
+
+	kol-icon {
+		font-size: 1rem;
 	}
 
 	:host > div > div {

@@ -54,8 +54,8 @@ export class KolTextarea implements TextareaAPI {
 		propagateFocus(this.host, this.ref);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.ref?.value;
 	}
@@ -395,7 +395,7 @@ export class KolTextarea implements TextareaAPI {
 
 	public componentDidLoad(): void {
 		setTimeout(() => {
-			if (this.ref instanceof HTMLTextAreaElement) {
+			if (this.ref /* SSR instanceof HTMLTextAreaElement */) {
 				this._rows = this.state?._rows && this.state._rows > increaseTextareaHeight(this.ref) ? this.state._rows : increaseTextareaHeight(this.ref);
 			}
 		}, 0);

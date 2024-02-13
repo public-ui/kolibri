@@ -1,6 +1,8 @@
-import { KolForm, KolInputText } from '@public-ui/react';
-import React, { FC } from 'react';
+import React from 'react';
 
+import { KolForm, KolInputText } from '@public-ui/react';
+
+import type { FC } from 'react';
 export const InputTextBlur: FC = () => (
 	<KolForm>
 		<KolInputText

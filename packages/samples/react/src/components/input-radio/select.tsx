@@ -1,9 +1,10 @@
 import React from 'react';
+
 import { KolForm, KolInputRadio } from '@public-ui/react';
 
-import { FC } from 'react';
-
 import { ERROR_MSG } from '../../shares/constants';
+
+import type { FC } from 'react';
 
 const options = [
 	{ label: 'Frau', value: 'Frau' },

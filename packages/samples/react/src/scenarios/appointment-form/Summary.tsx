@@ -1,7 +1,9 @@
-import React from 'react';
 import { useFormikContext } from 'formik';
+import React from 'react';
+
 import { KolHeading } from '@public-ui/react';
-import { FormValues } from './AppointmentForm';
+
+import type { FormValues } from './AppointmentForm';
 
 const ValueFallback = () => <i>Nicht angegeben</i>;
 const ValueWithFallback = ({ value }: { value: string }) => (value ? value : <ValueFallback />);

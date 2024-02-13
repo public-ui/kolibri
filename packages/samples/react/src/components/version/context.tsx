@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolVersion } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const VersionContext: FC = () => (
 	<p>

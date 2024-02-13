@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 
 import { KolAbbr, KolButton, KolInputEmail, KolInputRadio, KolInputText, KolSpin } from '@public-ui/react';
-import { FormProps } from '../common/form/types';
+
 import { FromComponent } from '../common/form/component';
+import { FormProps } from '../common/form/types';
 
 export const TerminKopfdatenComponent: FC<FormProps> = (props) => (
 	<FromComponent submitted={true} onSubmit={() => {}}>

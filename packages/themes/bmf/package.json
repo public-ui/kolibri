@@ -1,21 +1,21 @@
 {
 	"name": "@public-ui/theme-bmf",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"private": true,
 	"scripts": {
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"test": "THEME_MODULE=src/index THEME_EXPORT=BMF kolibri-visual-test",
 		"test-update": "THEME_MODULE=src/index THEME_EXPORT=BMF kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.3",
-		"@public-ui/visual-tests": "2.0.3",
+		"@public-ui/schema": "2.0.4",
+		"@public-ui/visual-tests": "2.0.4",
 		"@types/node": "ts5.3",
 		"typescript": "5.3.3"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.3"
+		"@public-ui/components": "2.0.4"
 	}
 }

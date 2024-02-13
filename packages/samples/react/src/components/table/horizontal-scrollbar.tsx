@@ -1,9 +1,11 @@
-import React, { FC, useState } from 'react';
+import type { FC } from 'react';
+import React, { useState } from 'react';
 
 import { KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react';
-import { KoliBriTableHeaders } from '@public-ui/components/src';
+
 import { SampleDescription } from '../SampleDescription';
 
+import type { KoliBriTableHeaders } from '@public-ui/components/src';
 const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [

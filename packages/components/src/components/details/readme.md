@@ -90,11 +90,12 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 
 ## Properties
 
-| Property              | Attribute | Description                                                                                                        | Type                                                                                  | Default     |
-| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------- |
-| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                              | `undefined` |
-| `_on`                 | --        | Defines the callback functions for details.                                                                        | `undefined \| { onToggle?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
-| `_open`               | `_open`   | If set (to true) opens/expands the element, closes if not set (or set to false).                                   | `boolean \| undefined`                                                                | `false`     |
+| Property              | Attribute   | Description                                                                                                        | Type                                                                                  | Default     |
+| --------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------- |
+| `_disabled`           | `_disabled` | Makes the element not focusable and ignore all events.                                                             | `boolean \| undefined`                                                                | `false`     |
+| `_label` _(required)_ | `_label`    | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                              | `undefined` |
+| `_on`                 | --          | Defines the callback functions for details.                                                                        | `undefined \| { onToggle?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
+| `_open`               | `_open`     | If set (to true) opens/expands the element, closes if not set (or set to false).                                   | `boolean \| undefined`                                                                | `false`     |
 
 ## Slots
 

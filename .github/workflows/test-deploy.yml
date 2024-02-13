@@ -1,0 +1,52 @@
+name: Netlify Test Deploy - Deploy stable branches under fixed aliases
+
+on:
+  push:
+    branches:
+      - 'develop'
+      - 'release/*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        id: pnpm-install
+        with:
+          version: 8
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store
+      - name: Install
+        run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
+
+      - name: Build
+        run: pnpm --filter @public-ui/sample-react... build
+
+      - name: Netlify Deploy
+        uses: netlify/actions/cli@master
+        id: netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --filter=@public-ui/sample-react --alias="$GITHUB_REF_NAME" # Netlify conveniently sanitizes the alias for us. E.g. `release/1.7` becomes `release-1-7`

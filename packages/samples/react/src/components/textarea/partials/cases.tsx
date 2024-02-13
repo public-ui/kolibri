@@ -1,9 +1,10 @@
 import React, { forwardRef } from 'react';
 
-import { Components } from '@public-ui/components';
 import { KolTextarea } from '@public-ui/react';
+
 import { ERROR_MSG } from '../../../shares/constants';
 
+import type { Components } from '@public-ui/components';
 export const TextareaCases = forwardRef<HTMLKolTextareaElement, Components.KolTextarea>(function TextareaCases(props, ref) {
 	return (
 		<div className="grid gap-4">

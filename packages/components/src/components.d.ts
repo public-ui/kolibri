@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PaginationPositionPropType, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
+import { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OpenPropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PaginationPositionPropType, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
-export { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PaginationPositionPropType, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
+export { AccessKeyPropType, AlertType, AlertVariant, AlignPropType, AlternativeButtonLinkRolePropType, AriaCurrentValuePropType, BreadcrumbLinkProps, ButtonCallbacksPropType, ButtonOrLinkOrTextWithChildrenProps, ButtonProps, ButtonTypePropType, ButtonVariantPropType, CSSResize, CustomClassPropType, DownloadPropType, ErrorListPropType, EventCallbacks, HeadingLevel, HeadingVariantPropType, HrefPropType, IconsPropType, IdPropType, ImageSourcePropType, InputCheckboxIconsProp, InputCheckboxVariant, InputDateType, InputTextType, InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriAccordionCallbacks, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, KoliBriFormCallbacks, KoliBriHorizontalIcons, KoliBriIconsProp, KoliBriModalEventCallbacks, KoliBriPaginationButtonCallbacks, KoliBriProgressVariantType, KoliBriQuoteVariant, KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTabsCallbacks, LabelPropType, LabelWithExpertSlotPropType, LinkOnCallbacksPropType, LinkProps, LinkTargetPropType, ListStyleType, Loading, MaxPropType, NamePropType, OpenPropType, OptionsPropType, OptionsWithOptgroupPropType, Orientation, PaginationHasButton, PaginationPositionPropType, PropColor, RowsPropType, SpinVariantPropType, StencilUnknown, Stringified, SuggestionsPropType, SyncValueBySelectorPropType, TabButtonProps, Toast, ToastState, TooltipAlignPropType, W3CInputValue } from "@public-ui/schema";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export namespace Components {
     interface KolAbbr {
@@ -21,6 +21,10 @@ export namespace Components {
         "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolAccordion {
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -407,6 +411,10 @@ export namespace Components {
         "_on"?: KoliBriCardEventCallbacks;
     }
     interface KolDetails {
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -1644,6 +1652,10 @@ export namespace Components {
          */
         "_ariaCurrentValue"?: AriaCurrentValuePropType;
         /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1698,6 +1710,10 @@ export namespace Components {
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -1772,6 +1788,10 @@ export namespace Components {
          */
         "_ariaCurrentValue"?: AriaCurrentValuePropType;
         /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1844,9 +1864,13 @@ export namespace Components {
          */
         "_collapsible"?: boolean;
         /**
-          * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+          * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Shows icons next to the navigation item labels, even when the navigation is not collapsed.
+         */
+        "_hasIconsWhenExpanded"?: boolean;
         /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -2388,6 +2412,62 @@ export namespace Components {
          */
         "_label": LabelPropType;
     }
+    interface KolTree {
+        /**
+          * Defines the label of the tree.
+         */
+        "_label": LabelPropType;
+    }
+    interface KolTreeItem {
+        /**
+          * If set (to true) the tree item is the active one.
+         */
+        "_active"?: OpenPropType;
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+        "collapse": () => Promise<void>;
+        "expand": () => Promise<void>;
+        "focusLink": () => Promise<void>;
+        "isOpen": () => Promise<boolean>;
+    }
+    interface KolTreeItemWc {
+        /**
+          * If set (to true) the tree item is the active one.
+         */
+        "_active"?: OpenPropType;
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+        "collapse": () => Promise<void>;
+        "expand": () => Promise<void>;
+        "focusLink": () => Promise<void>;
+        "isOpen": () => Promise<boolean>;
+    }
+    interface KolTreeWc {
+        /**
+          * Defines the label of the tree.
+         */
+        "_label": LabelPropType;
+    }
     interface KolVersion {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -2732,6 +2812,30 @@ declare global {
         prototype: HTMLKolTooltipWcElement;
         new (): HTMLKolTooltipWcElement;
     };
+    interface HTMLKolTreeElement extends Components.KolTree, HTMLStencilElement {
+    }
+    var HTMLKolTreeElement: {
+        prototype: HTMLKolTreeElement;
+        new (): HTMLKolTreeElement;
+    };
+    interface HTMLKolTreeItemElement extends Components.KolTreeItem, HTMLStencilElement {
+    }
+    var HTMLKolTreeItemElement: {
+        prototype: HTMLKolTreeItemElement;
+        new (): HTMLKolTreeItemElement;
+    };
+    interface HTMLKolTreeItemWcElement extends Components.KolTreeItemWc, HTMLStencilElement {
+    }
+    var HTMLKolTreeItemWcElement: {
+        prototype: HTMLKolTreeItemWcElement;
+        new (): HTMLKolTreeItemWcElement;
+    };
+    interface HTMLKolTreeWcElement extends Components.KolTreeWc, HTMLStencilElement {
+    }
+    var HTMLKolTreeWcElement: {
+        prototype: HTMLKolTreeWcElement;
+        new (): HTMLKolTreeWcElement;
+    };
     interface HTMLKolVersionElement extends Components.KolVersion, HTMLStencilElement {
     }
     var HTMLKolVersionElement: {
@@ -2795,6 +2899,10 @@ declare global {
         "kol-textarea": HTMLKolTextareaElement;
         "kol-toast-container": HTMLKolToastContainerElement;
         "kol-tooltip-wc": HTMLKolTooltipWcElement;
+        "kol-tree": HTMLKolTreeElement;
+        "kol-tree-item": HTMLKolTreeItemElement;
+        "kol-tree-item-wc": HTMLKolTreeItemWcElement;
+        "kol-tree-wc": HTMLKolTreeWcElement;
         "kol-version": HTMLKolVersionElement;
     }
 }
@@ -2810,6 +2918,10 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolAccordion {
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -3194,6 +3306,10 @@ declare namespace LocalJSX {
         "_on"?: KoliBriCardEventCallbacks;
     }
     interface KolDetails {
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -4421,6 +4537,10 @@ declare namespace LocalJSX {
          */
         "_ariaCurrentValue"?: AriaCurrentValuePropType;
         /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4475,6 +4595,10 @@ declare namespace LocalJSX {
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -4549,6 +4673,10 @@ declare namespace LocalJSX {
          */
         "_ariaCurrentValue"?: AriaCurrentValuePropType;
         /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4621,9 +4749,13 @@ declare namespace LocalJSX {
          */
         "_collapsible"?: boolean;
         /**
-          * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+          * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Shows icons next to the navigation item labels, even when the navigation is not collapsed.
+         */
+        "_hasIconsWhenExpanded"?: boolean;
         /**
           * Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.
           * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -5161,6 +5293,54 @@ declare namespace LocalJSX {
          */
         "_label": LabelPropType;
     }
+    interface KolTree {
+        /**
+          * Defines the label of the tree.
+         */
+        "_label": LabelPropType;
+    }
+    interface KolTreeItem {
+        /**
+          * If set (to true) the tree item is the active one.
+         */
+        "_active"?: OpenPropType;
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+    }
+    interface KolTreeItemWc {
+        /**
+          * If set (to true) the tree item is the active one.
+         */
+        "_active"?: OpenPropType;
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+    }
+    interface KolTreeWc {
+        /**
+          * Defines the label of the tree.
+         */
+        "_label": LabelPropType;
+    }
     interface KolVersion {
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -5224,6 +5404,10 @@ declare namespace LocalJSX {
         "kol-textarea": KolTextarea;
         "kol-toast-container": KolToastContainer;
         "kol-tooltip-wc": KolTooltipWc;
+        "kol-tree": KolTree;
+        "kol-tree-item": KolTreeItem;
+        "kol-tree-item-wc": KolTreeItemWc;
+        "kol-tree-wc": KolTreeWc;
         "kol-version": KolVersion;
     }
 }
@@ -5287,6 +5471,10 @@ declare module "@stencil/core" {
             "kol-textarea": LocalJSX.KolTextarea & JSXBase.HTMLAttributes<HTMLKolTextareaElement>;
             "kol-toast-container": LocalJSX.KolToastContainer & JSXBase.HTMLAttributes<HTMLKolToastContainerElement>;
             "kol-tooltip-wc": LocalJSX.KolTooltipWc & JSXBase.HTMLAttributes<HTMLKolTooltipWcElement>;
+            "kol-tree": LocalJSX.KolTree & JSXBase.HTMLAttributes<HTMLKolTreeElement>;
+            "kol-tree-item": LocalJSX.KolTreeItem & JSXBase.HTMLAttributes<HTMLKolTreeItemElement>;
+            "kol-tree-item-wc": LocalJSX.KolTreeItemWc & JSXBase.HTMLAttributes<HTMLKolTreeItemWcElement>;
+            "kol-tree-wc": LocalJSX.KolTreeWc & JSXBase.HTMLAttributes<HTMLKolTreeWcElement>;
             "kol-version": LocalJSX.KolVersion & JSXBase.HTMLAttributes<HTMLKolVersionElement>;
         }
     }

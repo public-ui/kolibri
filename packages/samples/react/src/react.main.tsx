@@ -2,12 +2,13 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 
-import { defineCustomElements } from '@public-ui/components/dist/loader';
-import type { Generic } from 'adopted-style-sheets';
 import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
+
 import { App } from './App';
 
+import type { Generic } from 'adopted-style-sheets';
 type Theme = Generic.Theming.RegisterPatch<string, string, string>;
 
 void (async () => {

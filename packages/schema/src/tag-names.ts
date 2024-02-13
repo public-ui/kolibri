@@ -26,9 +26,11 @@ export enum TagEnum {
 	'input-radio',
 	'input-range',
 	'input-text',
+	'kolibri',
 	'link',
 	'link-button',
 	'link-group',
+	'logo',
 	'modal',
 	'nav',
 	'pagination',
@@ -45,4 +47,6 @@ export enum TagEnum {
 	'toast-container',
 	'toolbar', // TODO: github pr link
 	'tooltip',
+	'tree',
+	'tree-item',
 }

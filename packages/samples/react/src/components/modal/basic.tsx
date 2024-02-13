@@ -1,4 +1,6 @@
-import React, { FC, useRef } from 'react';
+import type { FC } from 'react';
+import React, { useRef } from 'react';
+
 import { KolButton, KolCard, KolModal } from '@public-ui/react';
 
 export const ModalBasic: FC = () => {

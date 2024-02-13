@@ -1,12 +1,11 @@
 import { Routes } from '../../shares/types';
-
 import { TableBadgeSize } from './badge-size';
 import { TableColumnAlignment } from './column-alignment';
+import { TableHorizontalScrollbar } from './horizontal-scrollbar';
+import { PaginationPosition } from './pagination-position';
 import { TableRenderCell } from './render-cell';
 import { TableSortData } from './sort-data';
 import { TableWithPagination } from './with-pagination';
-import { PaginationPosition } from './pagination-position';
-import { TableHorizontalScrollbar } from './horizontal-scrollbar';
 
 export const TABLE_ROUTES: Routes = {
 	table: {

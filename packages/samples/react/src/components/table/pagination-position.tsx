@@ -1,10 +1,14 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
 import { KolTable } from '@public-ui/react';
-import { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-ui/components';
-import { Data, DATA } from './test-data';
-import { DATE_FORMATTER } from './formatter';
+
 import { SampleDescription } from '../SampleDescription';
+import { DATE_FORMATTER } from './formatter';
+import { DATA } from './test-data';
+
+import type { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-ui/components';
+import type { Data } from './test-data';
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[

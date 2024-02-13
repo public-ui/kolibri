@@ -1,12 +1,11 @@
 import React from 'react';
+
 import { KolLinkButton } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 const ARGS = {
-	_on: {
-		onClick: (_event, _value) => alert('Klick!'),
-	},
+	_href: '#/back-page',
 };
 
 export const LinkButtonBasic: FC = () => (

@@ -45,8 +45,8 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 		propagateFocus(this.host, ref);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<boolean | undefined> {
 		return this.ref?.checked;
 	}

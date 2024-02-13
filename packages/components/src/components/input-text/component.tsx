@@ -67,8 +67,8 @@ export class KolInputText implements InputTextAPI {
 		}
 	};
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.ref?.value;
 	}

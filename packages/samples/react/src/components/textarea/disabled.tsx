@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolForm, KolTextarea } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const TextareaDisabled: FC = () => (
 	<KolForm>

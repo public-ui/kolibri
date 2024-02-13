@@ -16,7 +16,6 @@ import type {
 	TooltipAlignPropType,
 } from '@public-ui/schema';
 import {
-	a11yHintDisabled,
 	mapBoolean2String,
 	mapStringOrBoolean2String,
 	propagateFocus,
@@ -40,7 +39,7 @@ import {
 	validateTooltipAlign,
 	watchString,
 } from '@public-ui/schema';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
@@ -103,10 +102,10 @@ export class KolButtonWc implements ButtonAPI {
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
 						button: true,
+						disabled: this.state._disabled === true,
 						[this.state._variant as string]: this.state._variant !== 'custom',
 						[this.state._customClass as string]:
 							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
-						'icon-only': this.state._hideLabel === true,
 						'hide-label': this.state._hideLabel === true,
 					}}
 					disabled={this.state._disabled}
@@ -283,9 +282,6 @@ export class KolButtonWc implements ButtonAPI {
 	@Watch('_disabled')
 	public validateDisabled(value?: DisabledPropType): void {
 		validateDisabled(this, value);
-		if (value === true) {
-			a11yHintDisabled();
-		}
 	}
 
 	@Watch('_hideLabel')

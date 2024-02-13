@@ -13,6 +13,8 @@ import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stri
 	shadow: true,
 })
 export class KolForm implements FormAPI {
+	errorListElement?: HTMLElement;
+
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
 		event.stopPropagation();
@@ -51,7 +53,14 @@ export class KolForm implements FormAPI {
 							<ul>
 								{this._errorList.map((error, index) => (
 									<li key={index}>
-										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />
+										<kol-link
+											_href={error.selector}
+											_label={error.message}
+											_on={{ onClick: this.handleLinkClick }}
+											ref={(el) => {
+												if (index === 0) this.errorListElement = el as HTMLElement;
+											}}
+										/>
 									</li>
 								))}
 							</ul>
@@ -117,5 +126,11 @@ export class KolForm implements FormAPI {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
 		this.validateErrorList(this._errorList);
+	}
+
+	public componentDidRender() {
+		if (this._errorList && this._errorList.length > 0) {
+			this.errorListElement?.focus();
+		}
 	}
 }

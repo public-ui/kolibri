@@ -127,7 +127,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		:host {
 			background-color: transparent; /* Reset global background-color defined by components */
 			display: inline-block;
-			font-family: var(--font-family);
 		}
 		a,
 		button {
@@ -180,6 +179,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-HEADING': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.headline-h1,
 		.headline-h2,
 		.headline-h3,
@@ -214,6 +216,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-ACCORDION': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.accordion,
 		div[part*='accordion'] {
 			border-radius: 8px;
@@ -294,6 +299,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INDENTED-TEXT': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		:host > div {
 			-webkit-border-start: 8px solid #0e47cb;
 			-webkit-padding-start: 1.5rem;
@@ -309,6 +317,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-BUTTON': css`
 		:host {
 			--kolibri-spacing: 0.25rem;
+			font-family: var(--font-family);
 		}
 		a,
 		button {
@@ -419,6 +428,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-LINK-BUTTON': css`
 		:host {
 			--kolibri-spacing: 0.25rem;
+			font-family: var(--font-family);
 		}
 		a,
 		button {
@@ -534,6 +544,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-PAGINATION': css`
 		:host {
 			display: grid;
+			font-family: var(--font-family);
 		}
 		.button {
 			--kolibri-spacing: 0.25rem;
@@ -580,7 +591,15 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			opacity: 1 !important;
 		}
 	`,
+	'KOL-PROGRESS': css`
+		:host {
+			font-family: var(--font-family);
+		}
+	`,
 	'KOL-NAV': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.list {
 			display: flex;
 			list-style: none;
@@ -646,6 +665,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-BADGE': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		:host > span {
 			font: normal normal var(--font-weight) 0.875rem/1em var(--font-family);
 			padding: calc(0.5rem - 1px) calc(0.75rem - 1px);
@@ -653,6 +675,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-ALERT': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		:host > div {
 			background-color: var(--color-white);
 		}
@@ -717,6 +742,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-CARD': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		:host > div {
 			display: grid;
 			width: 100%;
@@ -747,6 +775,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-CHECKBOX': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.checkbox-container {
 			justify-content: flex-start;
 		}
@@ -851,6 +882,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-COLOR': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			color: var(--color-grey);
 			gap: var(--spacing-xs);
@@ -907,6 +941,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-FILE': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			color: var(--color-grey);
 			gap: var(--spacing-xs);
@@ -963,6 +1000,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-EMAIL': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			color: var(--color-grey);
 			gap: var(--spacing-xs);
@@ -1019,6 +1059,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-NUMBER': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			color: var(--color-grey);
 			gap: var(--spacing-xs);
@@ -1075,6 +1118,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-DATE': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			color: var(--color-grey);
 			gap: var(--spacing-xs);
@@ -1131,6 +1177,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-PASSWORD': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			color: var(--color-grey);
 			gap: var(--spacing-xs);
@@ -1187,6 +1236,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-TEXT': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			color: var(--color-grey);
 			gap: var(--spacing-xs);
@@ -1242,7 +1294,15 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			border-color: var(--color-red);
 		}
 	`,
+	'KOL-KOLIBRI': css`
+		:host {
+			font-family: var(--font-family);
+		}
+	`,
 	'KOL-SELECT': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			color: var(--color-grey);
 			gap: var(--spacing-xs);
@@ -1299,6 +1359,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-TEXTAREA': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			color: var(--color-grey);
 			gap: var(--spacing-xs);
@@ -1358,6 +1421,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-TABLE': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		:host > div {
 			overflow-x: auto;
 			overflow-y: hidden;
@@ -1429,8 +1495,14 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			}
 		}
 	`,
+	'KOL-AVATAR': css`
+		:host {
+			font-family: var(--font-family);
+		}
+	`,
 	'KOL-TABS': css`
 		:host {
+			font-family: var(--font-family);
 			--kolibri-spacing: 0.25rem;
 		}
 		kol-button-group-wc {
@@ -1489,6 +1561,17 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 			color: var(--color-blue-130);
 		}
 	`,
+	'KOL-BREADCRUMB': css`
+		:host,
+		kol-link {
+			font-family: var(--font-family);
+		}
+	`,
+	'KOL-DETAILS': css`
+		:host {
+			font-family: var(--font-family);
+		}
+	`,
 	'KOL-SPIN': css`
 		.cycle {
 			padding: 0.125rem;
@@ -1498,6 +1581,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-RADIO': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		fieldset {
 			border: 0;
 			gap: 0.5rem;
@@ -1572,11 +1658,17 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-INPUT-RANGE': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.inputs-wrapper {
 			gap: 1rem;
 		}
 	`,
 	'KOL-SKIP-NAV': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-link-wc > a > kol-span-wc {
 			border-radius: 4px;
 			gap: 0.5rem;
@@ -1588,6 +1680,9 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		}
 	`,
 	'KOL-SPLIT-BUTTON': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.popover {
 			background: #fff;
 		}

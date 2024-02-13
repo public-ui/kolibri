@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react';
 
 import { KolInputColor } from '@public-ui/react';
 
-import { Components } from '@public-ui/components';
 import { ERROR_MSG } from '../../../shares/constants';
 
+import type { Components } from '@public-ui/components';
 export const InputColorCases = forwardRef<HTMLKolInputColorElement, Components.KolInputColor>(function InputColorCases(props, ref) {
 	return (
 		<div className="grid gap-4">

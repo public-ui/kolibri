@@ -1,7 +1,9 @@
+import React from 'react';
+
 import { ToasterService } from '@public-ui/components';
-import React, { FC } from 'react';
 import { KolSplitButton } from '@public-ui/react';
 
+import type { FC } from 'react';
 const toaster = ToasterService.getInstance(document);
 
 export const SplitButtonBasic: FC = () => {

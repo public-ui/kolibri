@@ -1,9 +1,10 @@
 import React from 'react';
+
 import { KolNav } from '@public-ui/react';
 
-import { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
+import type { FC } from 'react';
 export const NavAriaCurrent: FC = () => (
 	<>
 		<SampleDescription>
@@ -19,11 +20,11 @@ export const NavAriaCurrent: FC = () => (
 			_links={[
 				{
 					_label: 'Homepage',
-					_href: '#/',
+					_href: '#/back-page',
 				},
 				{
 					_label: 'Nav - aria-current (Aktuelle Seite)',
-					_href: '#/nav/aria-current',
+					_href: '#/back-page',
 					_active: true,
 				},
 			]}

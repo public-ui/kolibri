@@ -37,6 +37,7 @@ export class KolLink implements LinkProps {
 					ref={this.catchRef}
 					_accessKey={this._accessKey}
 					_ariaCurrentValue={this._ariaCurrentValue}
+					_disabled={this._disabled}
 					_download={this._download}
 					_hideLabel={this._hideLabel}
 					_href={this._href}
@@ -67,6 +68,11 @@ export class KolLink implements LinkProps {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 */
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.

@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropCollapsible, PropHasCompactButton, PropHideLabel, PropLabel } from '../props';
+import type { PropCollapsible, PropHasCompactButton, PropHasIconsWhenExpanded, PropHideLabel, PropLabel } from '../props';
 import type { ButtonOrLinkOrTextWithChildrenProps, Orientation, Stringified } from '../types';
 
 type RequiredProps = {
@@ -10,7 +10,8 @@ type OptionalProps = {
 	orientation: Orientation;
 } & PropCollapsible &
 	PropHasCompactButton &
-	PropHideLabel;
+	PropHideLabel &
+	PropHasIconsWhenExpanded;
 
 type RequiredStates = {
 	links: ButtonOrLinkOrTextWithChildrenProps[];
@@ -19,7 +20,8 @@ type RequiredStates = {
 } & PropCollapsible &
 	PropHasCompactButton &
 	PropLabel &
-	PropHideLabel;
+	PropHideLabel &
+	PropHasIconsWhenExpanded;
 type OptionalStates = NonNullable<unknown>;
 
 export type NavProps = Generic.Element.Members<RequiredProps, OptionalProps>;

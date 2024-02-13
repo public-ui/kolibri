@@ -1,6 +1,7 @@
 @layer kol-theme-component {
 	:host {
 		display: inline-block;
+		font-family: var(--font-family);
 		font-size: inherit;
 	}
 	:host > span {

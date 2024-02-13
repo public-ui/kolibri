@@ -1,18 +1,23 @@
-import React, { FC } from 'react';
-import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
-import { Route as MyRoute, Routes as MyRoutes } from './shares/types';
-
-import { Option } from '@public-ui/components';
-import { KolAlert, KolBadge } from '@public-ui/react';
-import { ROUTES } from './shares/routes';
-import { isDraftTheme, Theme, THEME_OPTIONS } from './shares/theme';
-import PackageJson from '@public-ui/components/package.json';
-import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
-import { Sidebar } from './components/Sidebar';
+import type { FC } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router';
-import { HideMenusContext } from './shares/HideMenusContext';
-import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
+import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 
+import PackageJson from '@public-ui/components/package.json';
+import { KolAlert, KolBadge } from '@public-ui/react';
+
+import { Sidebar } from './components/Sidebar';
+import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
+import { HideMenusContext } from './shares/HideMenusContext';
+import { ROUTES } from './shares/routes';
+import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
+import { isDraftTheme, THEME_OPTIONS } from './shares/theme';
+import { BackPage } from './components/BackPage';
+
+import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
+
+import type { Option } from '@public-ui/components';
+import type { Theme } from './shares/theme';
 setStorage(localStorage);
 
 const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
@@ -133,10 +138,11 @@ export const App: FC = () => {
 				)}
 
 				<div className="p-4" id="route-container">
-					{!hideMenus && isDraftTheme(theme) && <KolBadge className="mb-3" _label="DRAFT" _color="#db5461" />}
+					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="DRAFT" _color="#db5461" />}
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
+						<Route path="back-page" element={<BackPage />} />
 					</Routes>
 				</div>
 			</div>

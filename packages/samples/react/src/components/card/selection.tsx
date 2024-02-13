@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolButton, KolCard, KolInputCheckbox } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 const STYLE = {
 	display: 'flex',

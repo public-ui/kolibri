@@ -7,9 +7,9 @@ on:
         description: 'Target branch'
         required: true
       purge_snapshots:
-          description: 'Delete all snapshots before regenerating them'
-          type: boolean
-          default: false
+        description: 'Delete all snapshots before regenerating them'
+        type: boolean
+        default: false
 
 jobs:
   update-snapshots:
@@ -32,7 +32,7 @@ jobs:
           node-version: 20
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
         id: pnpm-install
         with:
           version: 8
@@ -44,7 +44,7 @@ jobs:
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store

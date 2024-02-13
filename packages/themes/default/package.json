@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-default",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -41,7 +41,7 @@
 		"build": "unbuild",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"prepack": "unbuild",
 		"test": "THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test",
 		"test-update": "THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
@@ -49,11 +49,11 @@
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.3",
-		"@public-ui/visual-tests": "2.0.3",
+		"@public-ui/schema": "2.0.4",
+		"@public-ui/visual-tests": "2.0.4",
 		"@types/node": "ts5.3",
-		"@typescript-eslint/eslint-plugin": "6.19.1",
-		"@typescript-eslint/parser": "6.19.1",
+		"@typescript-eslint/eslint-plugin": "7.0.1",
+		"@typescript-eslint/parser": "7.0.1",
 		"eslint": "8.56.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"rollup-plugin-postcss": "4.0.2",
@@ -61,7 +61,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.3"
+		"@public-ui/components": "2.0.4"
 	},
 	"sideEffects": false,
 	"type": "module",

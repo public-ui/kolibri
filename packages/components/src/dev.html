@@ -33,8 +33,67 @@
 		<link rel="stylesheet" href="assets/loader.css" />
 	</head>
 	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
-		<main class="container" style="padding-top: 100px">
-			<kol-select _label="q test" _options="[ { 'value': 'a', 'label': 'a' }, { 'value': 'b', 'label': 'b' } ]" _value="b"></kol-select>
+		<main class="container">
+			<kol-tree _label="Überschrift" id="tree">
+				<kol-tree-item _label="Home" _href="#home" id="treeitemHome"></kol-tree-item>
+				<kol-tree-item _label="About (open initially)" _href="#about" _open>
+					<kol-tree-item _label="Overview" _href="#overview"></kol-tree-item>
+					<kol-tree-item _label="Administration" _href="#administration" id="treeitemAdmin"></kol-tree-item>
+
+					<kol-tree-item _label="Facts" _href="#facts">
+						<div id="treeitemFacts">
+							<kol-tree-item _label="History" _href="#history"></kol-tree-item>
+						</div>
+					</kol-tree-item>
+
+					<kol-tree-item _label="Campus Tour" _href="#campus-tour">
+						<kol-tree-item _label="For Alumni" _href="#alumni"></kol-tree-item>
+					</kol-tree-item>
+				</kol-tree-item>
+			</kol-tree>
+
+			<div class="flex flex-row gap-2">
+				<kol-button _label="Manipulate Home" id="buttonManipulate"></kol-button>
+				<kol-button _label="Add to Facts" id="buttonAddFact"></kol-button>
+				<kol-button _label="Add to Administration" id="buttonAddAdmin"></kol-button>
+				<kol-button _label="Add two levels to Administration" id="buttonAddAdminDeep"></kol-button>
+				<kol-button _label="Add top level" id="buttonAddTopLevel"></kol-button>
+			</div>
+
+			<script>
+				const id = () => crypto.randomUUID().substring(0, 6);
+				const makeItem = (label) => {
+					const treeItem = document.createElement('kol-tree-item');
+					treeItem.setAttribute('_label', `${label} ${id()}`);
+					treeItem.setAttribute('_href', `#generated-item-${id()}`);
+					return treeItem;
+				};
+
+				buttonManipulate.addEventListener('kol-click', () => {
+					treeitemHome.setAttribute('_label', `${treeitemHome._label} ${id()}`);
+					treeitemHome.setAttribute('_href', `${treeitemHome._href}-${id()}`);
+				});
+
+				buttonAddFact.addEventListener('kol-click', () => {
+					treeitemFacts.appendChild(makeItem('Future'));
+				});
+
+				buttonAddAdmin.addEventListener('kol-click', () => {
+					treeitemAdmin.appendChild(makeItem('Admin Sub'));
+				});
+
+				buttonAddAdminDeep.addEventListener('kol-click', () => {
+					const treeItem1 = makeItem('Admin Sub');
+					const treeItem2 = makeItem('Admin Sub Sub');
+
+					treeItem1.appendChild(treeItem2);
+					treeitemAdmin.appendChild(treeItem1);
+				});
+
+				buttonAddTopLevel.addEventListener('kol-click', () => {
+					tree.appendChild(makeItem('Top Level'));
+				});
+			</script>
 		</main>
 	</body>
 </html>

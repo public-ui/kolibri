@@ -34,13 +34,9 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		}
 		:host {
 			background-color: transparent; /* Reset global background-color defined by components */
-			font-family: var(--font-family); /* font-size: var(--font-size); */
 		}
 		* {
 			box-sizing: border-box;
-		}
-		*:not(i) {
-			font-family: var(--font-family);
 		}
 		h1,
 		h2,
@@ -341,16 +337,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			border-color: var(--color-anthrazit);
 			color: var(--color-weiss);
 		}
-		.button:disabled .button-inner {
-			cursor: not-allowed;
-			opacity: 0.5;
-		}
 		.selected .button-inner {
 			background-color: var(--color-achat);
 			border-color: var(--color-achat);
 			color: var(--color-weiss);
 			font-weight: bold;
-			opacity: 1 !important;
 			text-decoration: underline;
 		}
 	`,
@@ -843,6 +834,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-BADGE': css`
 		:host {
 			display: inline-block;
+			font-family: inherit;
 		}
 		:host > span {
 			border-radius: 0.3125rem;
@@ -1416,9 +1408,6 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		.switch:is(:not(.checked), .indeterminate) .icon {
 			color: #fff;
 		}
-		.disabled {
-			opacity: 0.33;
-		}
 		kol-input span.hint {
 			grid-column: span 2;
 			font-style: italic;
@@ -1581,10 +1570,6 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		gap: 0.25em;
 		align-items: center;
 		justify-content: center;
-	}
-	button:disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
 	}
 	button.primary,
 	button.primary:disabled:hover {

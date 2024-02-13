@@ -1,6 +1,9 @@
 @import '../mixins/focus-outline';
 
 @layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
 	kol-span-wc > span {
 		display: flex;
 		place-items: baseline center;
@@ -22,6 +25,7 @@
 	}
 	:host > div > kol-heading-wc button kol-icon {
 		color: var(--color-primary);
+		font-size: 1rem;
 	}
 	:host > div {
 		width: 100%;

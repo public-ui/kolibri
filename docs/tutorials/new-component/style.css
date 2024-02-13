@@ -9,6 +9,7 @@
 /* Außer ':host' verlässt kein Selektor den shadow-DOM, diese Regel gilt also nur für Elemente innerhalb der Komponente */
 * {
 	display: flex;
+	flex-direction: column;
 }
 
 /* Komponenten sollten keine Farben oder Abstände definieren, ein Zurücksetzen auf 0 ist erlaubt. */

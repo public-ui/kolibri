@@ -42,8 +42,8 @@ export class KolInputRadio implements InputRadioAPI {
 		propagateFocus(this.host, ref);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<W3CInputValue | undefined> {
 		return this.currentValue;
 	}

@@ -2,9 +2,6 @@
 
 Die **Link**-Komponente rendert einen auf Barrierefreiheit optimierten Link, der als Text, als Icon oder auch in Kombination ausgegeben werden kann.
 
-Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
-Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.
-
 ## Konstruktion
 
 ### Code
@@ -81,6 +78,7 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 | -------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ----------- |
 | `_accessKey`         | `_access-key`         | Defines the elements access key.                                                                                                                             | `string \| undefined`                                                                  | `undefined` |
 | `_ariaCurrentValue`  | `_aria-current-value` | Defines the value for the aria-current attribute.                                                                                                            | `"date" \| "false" \| "location" \| "page" \| "step" \| "time" \| "true" \| undefined` | `undefined` |
+| `_disabled`          | `_disabled`           | Makes the element not focusable and ignore all events.                                                                                                       | `boolean \| undefined`                                                                 | `false`     |
 | `_download`          | `_download`           | Tells the browser that the link contains a file. Optionally sets the filename.                                                                               | `string \| undefined`                                                                  | `undefined` |
 | `_hideLabel`         | `_hide-label`         | Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.                   | `boolean \| undefined`                                                                 | `false`     |
 | `_href` _(required)_ | `_href`               | Sets the target URI of the link or citation source.                                                                                                          | `string`                                                                               | `undefined` |
@@ -100,6 +98,7 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 - [kol-form](../form)
 - [kol-link-group](../link-group)
 - [kol-quote](../quote)
+- [kol-tree-item-wc](../tree-item)
 
 ### Depends on
 
@@ -119,6 +118,7 @@ graph TD;
   kol-form --> kol-link
   kol-link-group --> kol-link
   kol-quote --> kol-link
+  kol-tree-item-wc --> kol-link
   style kol-link stroke:#333,stroke-width:4px
 ```
 

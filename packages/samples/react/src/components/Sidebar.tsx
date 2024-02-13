@@ -1,9 +1,12 @@
-import React, { FC, PropsWithChildren, useState } from 'react';
-import { KolAccordion, KolButton, KolHeading, KolLink, KolSelect, KolVersion } from '@public-ui/react';
-import { THEME_OPTIONS } from '../shares/theme';
-import { Routes } from '../shares/types';
-import { useMobile } from '../hooks/useMobile';
+import type { FC, PropsWithChildren } from 'react';
+import React, { useState } from 'react';
 
+import { KolAccordion, KolButton, KolHeading, KolLink, KolSelect, KolVersion } from '@public-ui/react';
+
+import { useMobile } from '../hooks/useMobile';
+import { THEME_OPTIONS } from '../shares/theme';
+
+import type { Routes } from '../shares/types';
 type Props = {
 	version: string;
 	theme: string;
@@ -81,7 +84,12 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 								<ul className="list-inside ml p0">
 									{Object.keys(children).map((childName) => (
 										<li key={`${parentName}/${childName}`}>
-											<KolLink _label={childName} _href={`#/${parentName}/${childName}`} _on={{ onClick: handleLinkClick }} />
+											{/* Handle special case for nested routes in tree example - this might need a proper refactoring in the future  */}
+											{parentName === 'tree' && childName === 'basic/:subPage' ? (
+												<KolLink _label="basic" _href={`#/${parentName}/basic/home`} _on={{ onClick: handleLinkClick }} />
+											) : (
+												<KolLink _label={childName} _href={`#/${parentName}/${childName}`} _on={{ onClick: handleLinkClick }} />
+											)}
 										</li>
 									))}
 								</ul>

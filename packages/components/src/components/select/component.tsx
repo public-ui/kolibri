@@ -50,8 +50,8 @@ export class KolSelect implements SelectAPI {
 		propagateFocus(this.host, this.ref);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
 		return this._value;
 	}
