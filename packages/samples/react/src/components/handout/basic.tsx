@@ -819,29 +819,29 @@ export const HandoutBasic: FC = () => (
 						</div>
 						<div className="grid gap-2 py-2">
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-								<KolLinkButton _href="#" _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
-								<KolLinkButton _href="#" _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
-								<KolLinkButton _href="#" _hideLabel _icons="codicon codicon-arrow-left" _label="primary" _variant="primary"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _icons={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _hideLabel _icons="codicon codicon-arrow-left" _label="primary" _variant="primary"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-								<KolLinkButton _href="#" _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
-								<KolLinkButton _href="#" _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
-								<KolLinkButton _href="#" _hideLabel _icons="codicon codicon-arrow-right" _label="secondary" _variant="secondary"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _icons={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _hideLabel _icons="codicon codicon-arrow-right" _label="secondary" _variant="secondary"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-								<KolLinkButton _href="#" _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
-								<KolLinkButton _href="#" _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
-								<KolLinkButton _href="#" _hideLabel _icons="codicon codicon-arrow-up" _label="danger" _variant="danger"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _icons={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _hideLabel _icons="codicon codicon-arrow-up" _label="danger" _variant="danger"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-								<KolLinkButton _href="#" _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
-								<KolLinkButton _href="#" _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
-								<KolLinkButton _href="#" _hideLabel _icons="codicon codicon-arrow-down" _label="normal" _variant="normal"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _icons={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _hideLabel _icons="codicon codicon-arrow-down" _label="normal" _variant="normal"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
-								<KolLinkButton _href="#" _label="ghost" _variant="ghost"></KolLinkButton>
-								<KolLinkButton _href="#" _label="ghost" _variant="ghost"></KolLinkButton>
-								<KolLinkButton _href="#" _icons="codicon codicon-home" _hideLabel _label="ghost" _variant="ghost"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _label="ghost" _variant="ghost"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _label="ghost" _variant="ghost"></KolLinkButton>
+								<KolLinkButton _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="ghost" _variant="ghost"></KolLinkButton>
 							</div>
 						</div>
 					</KolTabs>
@@ -851,14 +851,14 @@ export const HandoutBasic: FC = () => (
 				<div slot="" className="grid gap-2 p-2">
 					<KolAccordion _label="Links" _level={3} _open>
 						<div className="grid gap-2" slot="">
-							<KolLink _href="#" _label="Linktext"></KolLink>
-							<KolLink _href="#" _icons="codicon codicon-home" _label="Linktext mit Icon"></KolLink>
-							<KolLink _href="#" _icons="codicon codicon-home" _hideLabel _label="Linktext nur mit Icon"></KolLink>
+							<KolLink _href="#/back-page" _label="Linktext"></KolLink>
+							<KolLink _href="#/back-page" _icons="codicon codicon-home" _label="Linktext mit Icon"></KolLink>
+							<KolLink _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="Linktext nur mit Icon"></KolLink>
 							<KolLink _href="/" _label="Besuchter Link"></KolLink>
 							<p>
-								Ich bin ein <KolLink _href="#" _label="externer Link" _target="w3c"></KolLink> im Fließtext.
+								Ich bin ein <KolLink _href="#/back-page" _label="externer Link" _target="w3c"></KolLink> im Fließtext.
 							</p>
-							<KolLink _href="#" _label="">
+							<KolLink _href="#/back-page" _label="">
 								<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
 							</KolLink>
 						</div>
@@ -913,47 +913,47 @@ export const HandoutBasic: FC = () => (
 								{
 									_label: 'Homepage',
 									_icons: 'codicon codicon-home',
-									_href: '#/',
+									_href: '#/back-page',
 								},
 								{
 									_label: '2 Navigation point',
 									_icons: 'codicon codicon-home',
-									_href: '#/untermenu',
+									_href: '#/back-page',
 								},
 								{
 									_active: true,
 									_label: '3 Navigation point',
-									_href: '#abc',
+									_href: '#/back-page',
 									_icons: 'codicon codicon-home',
 									_children: [
 										{
 											_label: '3.1 Navigation point',
 											_icons: 'codicon codicon-home',
-											_href: '#/',
+											_href: '#/back-page',
 										},
 										{
 											_label: '3.2 External navigation point',
 											_icons: 'codicon codicon-home',
-											_href: '#abc',
+											_href: '#/back-page',
 											_target: '_blank',
 										},
 										{
 											_label: '3.3 Navigation point',
-											_href: '#abc',
+											_href: '#/back-page',
 											_icons: 'codicon codicon-home',
 											_children: [
 												{
 													_active: true,
 													_label: '3.3.1 Navigation point (active)',
 													_icons: 'codicon codicon-home',
-													_href: '#abc',
+													_href: '#/back-page',
 												},
-												{ _label: '3.3.2 Navigation point', _icons: 'codicon codicon-home', _href: '#abc' },
+												{ _label: '3.3.2 Navigation point', _icons: 'codicon codicon-home', _href: '#/back-page' },
 											],
 										},
 									],
 								},
-								{ _label: '3 Navigation point', _icons: 'codicon codicon-home', _href: '#abc' },
+								{ _label: '3 Navigation point', _icons: 'codicon codicon-home', _href: '#/back-page' },
 							]}
 							_hasCompactButton
 						/>
@@ -964,11 +964,11 @@ export const HandoutBasic: FC = () => (
 						<KolBreadcrumb
 							_label="Breadcrumb aus Text-Links"
 							_links={[
-								{ _label: 'Startseite', _href: '#/' },
-								{ _label: 'Unterseite der Startseite', _href: '#/unterseite' },
+								{ _label: 'Startseite', _href: '#/back-page' },
+								{ _label: 'Unterseite der Startseite', _href: '#/back-page' },
 								{
 									_label: 'Unterseite der Unterseite',
-									_href: '#/unterseite/unterseite',
+									_href: '#/back-page',
 								},
 							]}
 						></KolBreadcrumb>
