@@ -75,7 +75,7 @@
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.8.4",
-		"@stencil/core": "4.11.0",
+		"@stencil/core": "4.12.2",
 		"@stencil/postcss": "2.1.0",
 		"@stencil/react-output-target": "0.5.3",
 		"@stencil/solid-output-target": "file:node_martin/stencil-solid-output-target-0.0.1.tgz",
