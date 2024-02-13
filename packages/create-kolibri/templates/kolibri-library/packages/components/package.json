@@ -61,7 +61,7 @@
 		"cross-env": "7.0.3",
 		"eslint": "8.33.0",
 		"eslint-config-prettier": "9.1.0",
-		"eslint-plugin-html": "7.1.0",
+		"eslint-plugin-html": "8.0.0",
 		"eslint-plugin-jsdoc": "48.0.2",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.8.0",

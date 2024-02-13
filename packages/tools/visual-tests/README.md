@@ -27,7 +27,7 @@
 		"depcheck": "1.4.7",
 		"eslint": "8.51.0",
 		"eslint-config-prettier": "9.1.0",
-		"eslint-plugin-html": "7.1.0",
+		"eslint-plugin-html": "8.0.0",
 		"eslint-plugin-jsdoc": "48.0.2",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-no-loops": "0.3.0",
