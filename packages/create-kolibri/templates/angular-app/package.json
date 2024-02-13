@@ -29,9 +29,9 @@
 		"@angular/forms": "16.2.2",
 		"@angular/platform-browser": "16.2.2",
 		"@angular/platform-browser-dynamic": "16.2.2",
-		"@public-ui/angular-v16": "2.0.4",
-		"@public-ui/components": "2.0.4",
-		"@public-ui/themes": "2.0.4",
+		"@public-ui/angular-v16": "2.0.5",
+		"@public-ui/components": "2.0.5",
+		"@public-ui/themes": "2.0.5",
 		"zone.js": "0.13.1"
 	},
 	"devDependencies": {

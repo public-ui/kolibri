@@ -26,9 +26,9 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "2.0.4",
-		"@public-ui/preact": "2.0.4",
-		"@public-ui/themes": "2.0.4",
+		"@public-ui/components": "2.0.5",
+		"@public-ui/preact": "2.0.5",
+		"@public-ui/themes": "2.0.5",
 		"preact": "10.11.3"
 	},
 	"devDependencies": {
@@ -40,7 +40,7 @@
 		"chromedriver": "121.0.0",
 		"cpy-cli": "4.2.0",
 		"eslint-plugin-jsx-a11y": "6.6.1",
-		"nightwatch-axe-verbose": "2.0.4",
+		"nightwatch-axe-verbose": "2.0.5",
 		"npm-check-updates": "16.6.0",
 		"npm-run-all": "4.1.5",
 		"rimraf": "3.0.2",
