@@ -1,0 +1,62 @@
+{
+	"name": "@public-ui/library-theme",
+	"description": "",
+	"version": "0.0.0",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"build": "unbuild",
+		"clear": "git clean -fdx",
+		"dev": "nodemon --exec unbuild --ext css,js,json,scss,ts --watch src",
+		"lint": "eslint src && tsc --noemit",
+		"format": "prettier --check src",
+		"postinstall": "cd \"node_modules/@public-ui/sample-react/\" && npx playwright install",
+		"prepack": "unbuild",
+		"start": "npm-run-all --parallel build:watch serve",
+		"serve": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=DEMO npm --prefix \"node_modules/@public-ui/sample-react/\" start",
+		"xtest": "THEME_MODULE=src THEME_EXPORT=DEMO kolibri-visual-test",
+		"xtest-update": "THEME_MODULE=src THEME_EXPORT=DEMO kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"unused": "knip",
+		"update": "ncu -t minor -u -x rimraf,unbuild && ncu -x rimraf,unbuild"
+	},
+	"dependencies": {
+		"@public-ui/schema": "2.0.4"
+	},
+	"devDependencies": {
+		"@public-ui/sample-react": "2.0.4",
+		"@public-ui/visual-tests": "2.0.4",
+		"@types/node": "ts5.3",
+		"@typescript-eslint/eslint-plugin": "6.19.1",
+		"@typescript-eslint/parser": "6.19.1",
+		"cross-env": "7.0.3",
+		"eslint": "8.56.0",
+		"nodemon": "3.0.3",
+		"npm-check-updates": "16.14.12",
+		"npm-run-all": "4.1.5",
+		"knip": "4.2.1",
+		"prettier": "3.2.4",
+		"rollup": "4.9.6",
+		"rollup-plugin-postcss": "4.0.2",
+		"typescript": "5.3.3",
+		"unbuild": "1.2.1"
+	},
+	"peerDependencies": {
+		"@public-ui/components": "^2.0.4"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"assets",
+		"dist"
+	]
+}
