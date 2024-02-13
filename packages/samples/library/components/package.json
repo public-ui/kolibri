@@ -37,7 +37,7 @@
 	"devDependencies": {
 		"@public-ui/components": "2.0.4",
 		"@stencil/angular-output-target": "0.8.4",
-		"@stencil/core": "4.12.2",
+		"@stencil/core": "4.11.0",
 		"@stencil/react-output-target": "0.5.3",
 		"@stencil/vue-output-target": "0.8.7",
 		"@types/jest": "26.0.24",
