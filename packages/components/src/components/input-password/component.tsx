@@ -43,7 +43,7 @@ export class KolInputPassword implements InputPasswordAPI {
 	};
 
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await-disable-next-line @typescript-eslint/require-await
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.ref?.value;
 	}
