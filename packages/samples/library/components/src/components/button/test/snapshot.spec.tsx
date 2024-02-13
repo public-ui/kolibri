@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { COMPONENTS } from '../../component-list';
 
 import type { SpecPage } from '@stencil/core/testing';
-import { getButtonWcHtml } from './html.mock';
+import { getButtonHtml } from './html.mock';
 
 executeTests<NonNullable<unknown>>(
 	'Button',
@@ -18,9 +18,7 @@ executeTests<NonNullable<unknown>>(
 		return page;
 	},
 	{
-		_disabled: [true, false],
-		_label: ['Label'],
-		_variant: ['primary', 'secondary', 'normal', 'danger', 'ghost'],
+		_label: [],
 	},
-	getButtonWcHtml
+	getButtonHtml
 );

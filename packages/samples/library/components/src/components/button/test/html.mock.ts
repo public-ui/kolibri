@@ -1,5 +1,7 @@
 export const getButtonWcHtml = (): string => {
-	return `<demo-button-wc></demo-button-wc>`;
+	return `<demo-button-wc>
+		<kol-button _label="Test"></kol-button>
+	</demo-button-wc>`;
 };
 
 export const getButtonHtml = (): string => {
