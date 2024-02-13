@@ -12,6 +12,7 @@ import type {
 	LinkTargetPropType,
 	Stringified,
 	TooltipAlignPropType,
+	DisabledPropType,
 } from '@public-ui/schema';
 import {
 	devHint,
@@ -31,13 +32,15 @@ import {
 	validateTabIndex,
 	validateTooltipAlign,
 } from '@public-ui/schema';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { onLocationChange } from './ariaCurrentService';
 
+import { validateDisabled } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
+import { preventDefaultAndStopPropagation } from '../../utils/events';
 /**
  * @internal
  */
@@ -56,7 +59,9 @@ export class KolLinkWc implements LinkAPI {
 	};
 
 	private readonly onClick = (event: Event) => {
-		if (typeof this.state._on?.onClick === 'function') {
+		if (this.state._disabled === true) {
+			preventDefaultAndStopPropagation(event);
+		} else if (typeof this.state._on?.onClick === 'function') {
 			event.preventDefault();
 			event.stopPropagation();
 			setEventTarget(event, this.ref);
@@ -109,12 +114,14 @@ export class KolLinkWc implements LinkAPI {
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
+					aria-disabled={this.state._disabled ? 'true' : undefined}
 					aria-label={
 						this.state._hideLabel && typeof this.state._label === 'string'
 							? `${this.state._label}${isExternal ? ` (${translate('kol-open-link-in-tab')})` : ''}`
 							: undefined
 					}
 					class={{
+						disabled: this.state._disabled === true,
 						'external-link': isExternal,
 						'hide-label': this.state._hideLabel === true,
 					}}
@@ -123,7 +130,7 @@ export class KolLinkWc implements LinkAPI {
 					onClick={this.onClick}
 					onKeyPress={this.onClick}
 					role={this.state._role}
-					tabIndex={this.state._tabIndex}
+					tabIndex={this.state._disabled ? -1 : this.state._tabIndex}
 				>
 					<kol-span-wc
 						_accessKey={this.state._accessKey}
@@ -166,6 +173,11 @@ export class KolLinkWc implements LinkAPI {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 */
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
@@ -235,6 +247,11 @@ export class KolLinkWc implements LinkAPI {
 		validateAriaCurrentValue(this, value);
 	}
 
+	@Watch('_disabled')
+	public validateDisabled(value?: DisabledPropType): void {
+		validateDisabled(this, value);
+	}
+
 	@Watch('_download')
 	public validateDownload(value?: DownloadPropType): void {
 		validateDownload(this, value);
@@ -290,6 +307,7 @@ export class KolLinkWc implements LinkAPI {
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
+		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel);
 		this.validateHref(this._href);

@@ -4,6 +4,7 @@ import { getIconHtml } from '../../icon/test/html.mock';
 import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
 
 import type { DetailsProps } from '@public-ui/schema';
+import clsx from 'clsx';
 
 export const getDetailsHtml = (
 	props: DetailsProps,
@@ -17,10 +18,19 @@ export const getDetailsHtml = (
 		},
 		props
 	);
+
+	const classNames = clsx({
+		disabled: props._disabled,
+		open: props._open,
+	});
+
 	return `<kol-details${props._open ? ' _open' : ''}>
 	<mock:shadow-root>
-		<details>
-			<summary>
+		<details class="${classNames}">
+			<summary
+				${props._disabled ? `aria-disabled="true"` : ''}
+				${props._disabled ? `tabindex="-1"` : ''}
+			>
 				${getIconHtml(
 					{
 						_label: '',

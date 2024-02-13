@@ -44,7 +44,7 @@
 		"build": "unbuild",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@public-ui/schema,@types/*",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"prepack": "unbuild",
 		"dev": "nodemon --ignore dist -e ts,tsx,scss  --exec \"pnpm build\"",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",

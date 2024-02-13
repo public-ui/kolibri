@@ -6,6 +6,9 @@ import { KolLink } from '@public-ui/react';
 export const LinkBasic: FC = () => (
 	<div className="grid gap-4">
 		<KolLink _href="#/back-page" _label="Simple Link" />
+		<KolLink _disabled _href="#/back-page" _label="Simple Link (deaktiviert)" />
+		<KolLink _hideLabel _icons="codicon codicon-home" _href="#/back-page" _label="Icon Link" />
+		<KolLink _disabled _hideLabel _icons="codicon codicon-home" _href="#/back-page" _label="Icon Link (deaktiviert)" />
 		<p>
 			In diesem Absatz wird ein Link gesetzt, der keine weiteren Attribute enthält. <KolLink _href="#/back-page" _label="Simple Link" /> Er wird standardmäßig
 			als <strong>inline-Element</strong> ausgegeben.

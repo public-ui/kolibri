@@ -132,10 +132,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
 		}
-		:is(a, button):disabled > kol-span-wc {
-			cursor: not-allowed;
-			opacity: 0.5;
-		}
 		.primary :is(a, button) > kol-span-wc,
 		.primary :is(a, button):disabled:hover > kol-span-wc {
 			background-color: var(--color-midnight);
@@ -227,11 +223,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: transparent;
 		}
 		/** CUSTOM_CLASS */
-		:is(a, button).icon-only > kol-span-wc {
+		:is(a, button).hide-label > kol-span-wc {
 			padding: 8px;
 			width: unset;
 		}
-		:is(a, button).icon-only > kol-span-wc > span > span {
+		:is(a, button).hide-label > kol-span-wc > span > span {
 			display: block;
 		}
 	`,
@@ -308,9 +304,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
 			font-weight: 700;
-		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
 		}
 		kol-input.disabled :is(input, .input) {
 			background-color: var(--color-smoke);
@@ -390,9 +383,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
 			font-weight: 700;
-		}
-		kol-input.disabled :is(button, input, label, option, select, textarea) {
-			opacity: 1;
 		}
 		kol-input.disabled :is(input, select, textarea, .input) {
 			background-color: var(--color-smoke);
@@ -474,9 +464,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
-		}
 		kol-input.disabled :is(input, .input) {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
@@ -557,9 +544,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
-		}
 		kol-input.disabled :is(input, .input) {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
@@ -639,9 +623,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
 			font-weight: 700;
-		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
 		}
 		kol-input.disabled :is(input, .input) {
 			background-color: var(--color-smoke);
@@ -728,9 +709,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
 			font-weight: 700;
-		}
-		kol-input.disabled :is(button, input, label, option, select, textarea) {
-			opacity: 1;
 		}
 		kol-input.disabled :is(input, select, textarea, .input) {
 			background-color: var(--color-smoke);
@@ -823,9 +801,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
 			font-weight: 700;
-		}
-		.disabled {
-			opacity: 0.33;
 		}
 		select[multiple],
 		textarea {
@@ -1231,7 +1206,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-radius: var(--border-radius);
 			outline: 2px solid;
 		}
-		:is(a, button):hover {
+		a:hover:not([aria-disabled]),
+		button:hover:not([disabled]) {
 			text-decoration-thickness: 0.25em;
 		}
 		:is(a, button):visited {
@@ -1411,9 +1387,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(select, label, option) {
-			opacity: 1;
-		}
 		kol-input.disabled :is(select, .input) {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
@@ -1521,9 +1494,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		kol-input.error kol-alert.error {
 			color: var(--color-red);
 			font-weight: 700;
-		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
 		}
 		kol-input.disabled :is(input, .input) {
 			background-color: var(--color-smoke);
@@ -1964,9 +1934,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 				}
 			}
 		}
-		:host .disabled {
-			opacity: 0.33;
-		}
 		:host kol-input.button {
 			row-gap: 0.5rem;
 		}
@@ -2128,9 +2095,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		.disabled {
-			opacity: 0.33;
-		}
 		fieldset.horizontal {
 			display: flex;
 			flex-wrap: wrap;
@@ -2161,10 +2125,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-TABS': css`
 		:host {
 			font-family: var(--font-family);
-		}
-		button:disabled {
-			opacity: 0.5;
-			cursor: not-allowed;
 		}
 		:host kol-button-group-wc {
 			display: inline-flex;
@@ -2362,14 +2322,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-white);
 			outline: none;
 		}
-		.button:disabled .button-inner {
-			cursor: not-allowed;
-			opacity: 0.5;
-		}
 		.selected .button-inner {
 			background-color: var(--color-ice);
 			border-color: var(--color-ice);
-			opacity: 1 !important;
 			font-weight: 700;
 		}
 	`,
@@ -2443,9 +2398,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, label) {
-			opacity: 1;
-		}
 		kol-input.disabled :is(.input) {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
@@ -2485,10 +2437,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			text-align: center;
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
-		}
-		:is(a, button):disabled > kol-span-wc {
-			cursor: not-allowed;
-			opacity: 0.5;
 		}
 		.primary :is(a, button) > kol-span-wc,
 		.primary :is(a, button):disabled:hover > kol-span-wc {
@@ -2604,7 +2552,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-radius: var(--border-radius);
 			outline: 2px solid;
 		}
-		:is(a, button):hover {
+		a:hover:not([aria-disabled]),
+		button:hover:not([disabled]) {
 			text-decoration-thickness: 0.25em;
 		}
 		:is(a, button):visited {

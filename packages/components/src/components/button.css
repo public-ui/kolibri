@@ -19,8 +19,4 @@
 		margin: auto;
 		width: 100%;
 	}
-	:is(button):disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
 }
