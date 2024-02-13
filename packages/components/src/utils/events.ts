@@ -25,7 +25,7 @@ export function tryToDispatchKoliBriEvent<T>(type: KoliBriEventType, target?: Ev
 	target && dispatchKoliBriEvent(target, type, detail);
 }
 
-export function preventDefault(event: Event) {
+export function preventDefaultAndStopPropagation(event: Event) {
 	event.preventDefault();
 	stopPropagation(event);
 }
