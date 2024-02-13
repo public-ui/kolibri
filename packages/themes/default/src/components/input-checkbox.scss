@@ -137,7 +137,7 @@ kol-input.error textarea:focus {
 	min-width: 3.5em;
 	position: relative;
 	width: 3.5em;
-	border: 1px solid transparent;
+	outline: transparent solid 1px;
 }
 
 :host kol-input.switch input[type='checkbox']:before {
