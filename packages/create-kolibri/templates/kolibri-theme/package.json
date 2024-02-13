@@ -38,7 +38,7 @@
 		"depcheck": "1.4.7",
 		"eslint": "8.54.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "4.0.1",
+		"knip": "5.0.1",
 		"prettier": "3.1.0"
 	},
 	"files": [
