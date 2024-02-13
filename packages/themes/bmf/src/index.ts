@@ -210,10 +210,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		:is(a, button).loading > kol-span-wc kol-icon {
 			animation: spin 5s infinite linear;
-		} /** button with inline focus */
+		}
+		/** button with inline focus */
 		:is(a, button).focus-inline:focus > kol-span-wc {
 			outline-offset: -2px;
-		} /** :is(a,button) with transparent background */
+		}
+		/** :is(a,button) with transparent background */
 		:is(a, button).transparent > kol-span-wc > span,
 		.ghost :is(a, button).transparent > kol-span-wc > span,
 		:is(a, button).transparent > kol-span-wc {
@@ -284,7 +286,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -364,7 +365,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -605,7 +605,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -692,7 +691,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -785,7 +783,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		textarea:read-only,
 		textarea:disabled {
 			cursor: not-allowed;
 		}
@@ -1671,81 +1668,43 @@ export const BMF = KoliBri.createTheme('bmf', {
 		ul {
 			list-style: none;
 		}
-		kol-link-wc,
-		a {
-			height: 100%;
-			min-height: 44px;
-			display: flex;
-			place-items: center;
-		}
-		.entry > kol-button-link-text-switch {
-			width: 100%;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-white);
-			text-decoration: none;
-			color: var(--color-midnight);
-			width: 100%;
-			display: flex;
+		.entry-item :is(a, .button) {
 			align-items: center;
-			font-style: normal;
-			line-height: 1.5rem;
-			min-height: 44px;
-			min-width: 44px;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			letter-spacing: 0.175px;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc):first-child:is(a, button) {
-			color: var(--color-midnight);
-			text-decoration: none;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			border-left-color: var(--color-ocean);
-			background-color: var(--color-ocean);
-			letter-spacing: unset;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover > :is(a, button, span) {
-			color: var(--color-white);
-			background-color: var(--color-ocean);
-			font-weight: 700;
-			letter-spacing: unset;
-		}
-		:is(.active, .selected).list.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-smoke);
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-ice);
-			color: var(--color-midnight);
-			font-weight: 700;
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child > :is(a, button, span) {
-			font-weight: 700;
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			color: var(--color-white);
-			letter-spacing: unset;
-		}
-		.entry > kol-button-link-text-switch > kol-span-wc > span,
-		.entry :is(a, button) {
+			background-color: var(--color-white);
 			border-left-color: transparent;
 			border-left-style: solid;
 			border-left-width: 0.5rem;
-			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
-		}
-		:is(.active, .selected) kol-button-link-text-switch :is(a, button),
-		[exportparts*='selected'] a {
-			border-left-color: var(--color-midnight);
-		}
-		:is(kol-button-wc button, kol-link-wc a) {
 			color: var(--color-midnight);
-		}
-		kol-link-wc a {
+			display: flex;
+			font-style: normal;
+			letter-spacing: 0.175px;
+			line-height: 1.5rem;
+			min-height: 44px;
+			min-width: 44px;
+			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
+			place-items: center;
 			text-decoration: none;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+			width: 100%;
 		}
-		kol-link-wc kol-icon {
+		.vertical .active .entry-item :is(a, .button) {
+			background-color: var(--color-ice);
+			border-left-color: var(--color-midnight);
+			color: var(--color-midnight);
+			font-weight: 700;
+		}
+		.entry-item :is(a, .button):hover,
+		.vertical .active .entry-item :is(a, .button):hover {
+			background-color: var(--color-ocean);
+			border-left-color: var(--color-ocean);
+			color: var(--color-white);
+			font-weight: 700;
+		}
+		.nav:not(.is-compact) .entry-item .icon {
 			display: none;
-		} /** Compact mode */
+		}
+		/** Compact mode */
 		.entry.hide-label :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 			place-items: center;
 		}
@@ -2421,7 +2380,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -2550,7 +2508,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		:is(a, button).loading > kol-span-wc kol-icon {
 			animation: spin 5s infinite linear;
-		} /** small ghost button */
+		}
+		/** small ghost button */
 		.ghost :is(a, button).small > kol-span-wc {
 			border: none;
 			background-color: transparent;
