@@ -407,7 +407,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
 
   packages/adapters/react:
     devDependencies:
@@ -443,7 +443,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
 
   packages/adapters/react-standalone:
     dependencies:
@@ -492,7 +492,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
 
   packages/adapters/vue:
     devDependencies:
@@ -519,7 +519,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
       vue:
         specifier: 3.4.18
         version: 3.4.18(typescript@5.3.3)
@@ -544,22 +544,22 @@ importers:
     devDependencies:
       '@stencil/angular-output-target':
         specifier: 0.8.4
-        version: 0.8.4(@stencil/core@4.12.2)
+        version: 0.8.4(@stencil/core@4.11.0)
       '@stencil/core':
-        specifier: 4.12.2
-        version: 4.12.2
+        specifier: 4.11.0
+        version: 4.11.0
       '@stencil/postcss':
         specifier: 2.1.0
-        version: 2.1.0(@stencil/core@4.12.2)
+        version: 2.1.0(@stencil/core@4.11.0)
       '@stencil/react-output-target':
         specifier: 0.5.3
-        version: 0.5.3(@stencil/core@4.12.2)
+        version: 0.5.3(@stencil/core@4.11.0)
       '@stencil/solid-output-target':
         specifier: file:node_martin/stencil-solid-output-target-0.0.1.tgz
-        version: file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz(@stencil/core@4.12.2)
+        version: file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz(@stencil/core@4.11.0)
       '@stencil/vue-output-target':
         specifier: 0.8.7
-        version: 0.8.7(@stencil/core@4.12.2)
+        version: 0.8.7(@stencil/core@4.11.0)
       '@types/jest':
         specifier: 26.0.24
         version: 26.0.24
@@ -649,7 +649,7 @@ importers:
         version: 3.0.2
       stencil-awesome-test:
         specifier: 1.0.6
-        version: 1.0.6(@stencil/core@4.12.2)
+        version: 1.0.6(@stencil/core@4.11.0)
       terser:
         specifier: 5.27.0
         version: 5.27.0
@@ -1145,7 +1145,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
 
   packages/samples/library/components/adapters/vue:
     devDependencies:
@@ -1172,7 +1172,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
       vue:
         specifier: 3.4.18
         version: 3.4.18(typescript@5.3.3)
@@ -1206,7 +1206,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
 
   packages/samples/library/theme:
     dependencies:
@@ -1264,7 +1264,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
 
   packages/samples/react:
     dependencies:
@@ -1498,7 +1498,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
 
   packages/themes:
     dependencies:
@@ -1597,7 +1597,7 @@ importers:
         version: 5.3.3
       unbuild:
         specifier: 1.2.1
-        version: 1.2.1
+        version: 1.2.1(sass@1.70.0)
 
   packages/themes/ecl:
     dependencies:
@@ -7535,6 +7535,14 @@ packages:
       p-map: 4.0.0
     dev: true
 
+  /@stencil/angular-output-target@0.8.4(@stencil/core@4.11.0):
+    resolution: {integrity: sha512-QvmHTueXXs5vB9W2L12uEzFmAuR8sqATJV2b+SCFmYsjJSaymiSqR3dKo2wnr0tZiTgU1t16BWaUKiSh3wPXpw==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
+    dependencies:
+      '@stencil/core': 4.11.0
+    dev: true
+
   /@stencil/angular-output-target@0.8.4(@stencil/core@4.12.2):
     resolution: {integrity: sha512-QvmHTueXXs5vB9W2L12uEzFmAuR8sqATJV2b+SCFmYsjJSaymiSqR3dKo2wnr0tZiTgU1t16BWaUKiSh3wPXpw==}
     peerDependencies:
@@ -7543,21 +7551,35 @@ packages:
       '@stencil/core': 4.12.2
     dev: true
 
+  /@stencil/core@4.11.0:
+    resolution: {integrity: sha512-zsKhgIkTGo+s7IthitxR/MKiMS3Ck1yIypOdXr0aE6ofboKqe9NdffTcxZ0vel0wD2bZYOb6WfPMzuhRKk6+FA==}
+    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+    hasBin: true
+    dev: true
+
   /@stencil/core@4.12.2:
     resolution: {integrity: sha512-WEMpoqwMV4hY/ab2z9NxRhSeZwuKEugjyn6Vd+qA9xqZh6VNUL27QbP8vCa7IeqD4Zql4JBtKu3lVuBHutWE6w==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
     dev: true
 
-  /@stencil/postcss@2.1.0(@stencil/core@4.12.2):
+  /@stencil/postcss@2.1.0(@stencil/core@4.11.0):
     resolution: {integrity: sha512-/e4TYEXErGaHxH0ocg620YqEMLuMLpK/Wg4MJsiJglrLZCZhU4XCX1N0SwxaIOUbEZ1Zh+AqQ++yMI92ilndEA==}
     deprecated: '@stencil/postcss has been deprecated. Please see the community-driven package, ''@stencil-community/postcss'''
     peerDependencies:
       '@stencil/core': '>=2.0.0'
     dependencies:
-      '@stencil/core': 4.12.2
+      '@stencil/core': 4.11.0
       autoprefixer: 10.4.17(postcss@8.3.11)
       postcss: 8.3.11
+    dev: true
+
+  /@stencil/react-output-target@0.5.3(@stencil/core@4.11.0):
+    resolution: {integrity: sha512-68jwRp35CjAcwhTJ9yFD/3n+jrHOqvEH2jreVuPVvZK+4tkhPlYlwz0d1E1RlF3jyifUSfdkWUGgXIEy8Fo3yw==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
+    dependencies:
+      '@stencil/core': 4.11.0
     dev: true
 
   /@stencil/react-output-target@0.5.3(@stencil/core@4.12.2):
@@ -7566,6 +7588,14 @@ packages:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
       '@stencil/core': 4.12.2
+    dev: true
+
+  /@stencil/vue-output-target@0.8.7(@stencil/core@4.11.0):
+    resolution: {integrity: sha512-hgOzbKKgLdCFrhLpmaw/qQrPSXl6hZ09K+j3p/iWh3esq6sxnwuW1PJKLniwkT4Z/JlDIk6stGPGQYi+WE5I2Q==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
+    dependencies:
+      '@stencil/core': 4.11.0
     dev: true
 
   /@stencil/vue-output-target@0.8.7(@stencil/core@4.12.2):
@@ -17275,30 +17305,6 @@ packages:
       typescript: 5.3.3
     dev: true
 
-  /mkdist@1.3.0(typescript@5.3.3):
-    resolution: {integrity: sha512-ZQrUvcL7LkRdzMREpDyg9AT18N9Tl5jc2qeKAUeEw0KGsgykbHbuRvysGAzTuGtwuSg0WQyNit5jh/k+Er3JEg==}
-    hasBin: true
-    peerDependencies:
-      sass: ^1.63.6
-      typescript: '>=5.1.6'
-    peerDependenciesMeta:
-      sass:
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      citty: 0.1.3
-      defu: 6.1.2
-      esbuild: 0.18.20
-      fs-extra: 11.1.1
-      globby: 13.2.2
-      jiti: 1.21.0
-      mlly: 1.4.1
-      mri: 1.2.0
-      pathe: 1.1.1
-      typescript: 5.3.3
-    dev: true
-
   /mlly@1.4.1:
     resolution: {integrity: sha512-SCDs78Q2o09jiZiE2WziwVBEqXQ02XkGdUy45cbJf+BpYRIjArXRJ1Wbowxkb+NaM9DWvS3UC9GiO/6eqvQ/pg==}
     dependencies:
@@ -21519,6 +21525,14 @@ packages:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
 
+  /stencil-awesome-test@1.0.6(@stencil/core@4.11.0):
+    resolution: {integrity: sha512-k/tCbR1Kw8ketuoPlXYNLpeqyoD6AWC22qBxNQDrQIcaXqxcIaoMACtB3x7LEVhMPXsHhPSH6Y4H/Haazvhvdg==}
+    peerDependencies:
+      '@stencil/core': '>=2'
+    dependencies:
+      '@stencil/core': 4.11.0
+    dev: true
+
   /stencil-awesome-test@1.0.6(@stencil/core@4.12.2):
     resolution: {integrity: sha512-k/tCbR1Kw8ketuoPlXYNLpeqyoD6AWC22qBxNQDrQIcaXqxcIaoMACtB3x7LEVhMPXsHhPSH6Y4H/Haazvhvdg==}
     peerDependencies:
@@ -22648,40 +22662,6 @@ packages:
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
-
-  /unbuild@1.2.1:
-    resolution: {integrity: sha512-J4efk69Aye43tWcBPCsLK7TIRppGrEN4pAlDzRKo3HSE6MgTSTBxSEuE3ccx7ixc62JvGQ/CoFXYqqF2AHozow==}
-    hasBin: true
-    dependencies:
-      '@rollup/plugin-alias': 5.0.0(rollup@3.28.1)
-      '@rollup/plugin-commonjs': 24.1.0(rollup@3.28.1)
-      '@rollup/plugin-json': 6.0.0(rollup@3.28.1)
-      '@rollup/plugin-node-resolve': 15.2.1(rollup@3.28.1)
-      '@rollup/plugin-replace': 5.0.2(rollup@3.28.1)
-      '@rollup/pluginutils': 5.0.4(rollup@3.28.1)
-      chalk: 5.3.0
-      consola: 3.2.3
-      defu: 6.1.2
-      esbuild: 0.17.19
-      globby: 13.2.2
-      hookable: 5.5.3
-      jiti: 1.19.3
-      magic-string: 0.30.3
-      mkdist: 1.3.0(typescript@5.3.3)
-      mlly: 1.4.1
-      mri: 1.2.0
-      pathe: 1.1.1
-      pkg-types: 1.0.3
-      pretty-bytes: 6.1.1
-      rollup: 3.28.1
-      rollup-plugin-dts: 5.3.1(rollup@3.28.1)(typescript@5.3.3)
-      scule: 1.0.0
-      typescript: 5.3.3
-      untyped: 1.4.0
-    transitivePeerDependencies:
-      - sass
-      - supports-color
-    dev: true
 
   /unbuild@1.2.1(sass@1.70.0):
     resolution: {integrity: sha512-J4efk69Aye43tWcBPCsLK7TIRppGrEN4pAlDzRKo3HSE6MgTSTBxSEuE3ccx7ixc62JvGQ/CoFXYqqF2AHozow==}
@@ -24068,7 +24048,7 @@ packages:
     dependencies:
       tslib: 2.6.2
 
-  file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz(@stencil/core@4.12.2):
+  file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz(@stencil/core@4.11.0):
     resolution: {integrity: sha512-leO/+AmnieoDOB2Pv3sSk6QOI3htP7ENTnaCW3u1GEdK6OKB6c0VBJkjbklQHh2EtOx2tXWlvXI6ne5iYdIXNg==, tarball: file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz}
     id: file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz
     name: '@stencil/solid-output-target'
@@ -24076,5 +24056,5 @@ packages:
     peerDependencies:
       '@stencil/core': '>=1.8.0'
     dependencies:
-      '@stencil/core': 4.12.2
+      '@stencil/core': 4.11.0
     dev: true
