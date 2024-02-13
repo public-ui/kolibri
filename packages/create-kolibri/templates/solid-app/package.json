@@ -27,9 +27,9 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.10",
-		"@public-ui/solid": "1.7.10",
-		"@public-ui/themes": "1.7.10",
+		"@public-ui/components": "1.7.11",
+		"@public-ui/solid": "1.7.11",
+		"@public-ui/themes": "1.7.11",
 		"solid-js": "1.6.6"
 	},
 	"devDependencies": {

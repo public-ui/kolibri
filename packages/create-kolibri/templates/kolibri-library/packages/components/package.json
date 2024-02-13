@@ -36,8 +36,8 @@
 	},
 	"dependencies": {
 		"adopted-style-sheets": "1.1.2",
-		"@public-ui/components": "1.7.10",
-		"@public-ui/schema": "1.7.10"
+		"@public-ui/components": "1.7.11",
+		"@public-ui/schema": "1.7.11"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.5.0",
