@@ -66,8 +66,8 @@ export class KolInputRange implements InputRangeAPI {
 		return floatValue;
 	}
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<number | undefined> {
 		if (this.refInputNumber !== undefined) {
 			const value = this.refInputNumber.value;

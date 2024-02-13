@@ -31,8 +31,8 @@ export class KolButtonLink implements ButtonLinkProps {
 		propagateFocus(this.host, ref);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<StencilUnknown> | undefined> {
 		return this._value;
 	}

@@ -42,8 +42,8 @@ export class KolInputPassword implements InputPasswordAPI {
 		propagateFocus(this.host, this.ref);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.ref?.value;
 	}
