@@ -3,8 +3,6 @@ import { devHint, devWarning, getExperimentalMode, validateName } from '@public-
 
 import type { Generic } from 'adopted-style-sheets';
 
-const EXPERIMENTAL_MODE = getExperimentalMode();
-
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	name: string;
@@ -13,6 +11,8 @@ type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
 export class AssociatedInputController implements Watches {
+	private readonly experimentalMode = getExperimentalMode();
+
 	protected readonly component: Generic.Element.Component & Props;
 	protected readonly name: string;
 	protected readonly host?: HTMLElement;
@@ -25,7 +25,7 @@ export class AssociatedInputController implements Watches {
 		this.host = this.findHostWithShadowRoot(host);
 		this.name = name;
 
-		if (EXPERIMENTAL_MODE) {
+		if (this.experimentalMode) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
 				this.host?.removeChild(el);
 			});
@@ -67,7 +67,7 @@ export class AssociatedInputController implements Watches {
 	}
 
 	protected setAttribute(qualifiedName: string, element?: HTMLElement, value?: string | number | boolean) {
-		if (EXPERIMENTAL_MODE) {
+		if (this.experimentalMode) {
 			try {
 				value = typeof value === 'object' && value !== null ? JSON.stringify(value) : value;
 				if (typeof value === 'boolean' || typeof value === 'number' || typeof value === 'string') {
@@ -165,7 +165,7 @@ export class AssociatedInputController implements Watches {
 	}
 
 	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		if (EXPERIMENTAL_MODE && typeof value === 'string') {
+		if (this.experimentalMode && typeof value === 'string') {
 			const input = document.querySelector(value) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 			if (input /* SSR instanceof HTMLInputElement */) {
 				this.syncToOwnInput = input;

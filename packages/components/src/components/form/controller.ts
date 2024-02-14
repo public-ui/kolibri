@@ -1,7 +1,5 @@
 import type { FormProps } from '@public-ui/schema';
-import { devHint, KoliBriDevHelper, setEventTarget } from '@public-ui/schema';
-
-import { getExperimentalMode } from '../../utils/dev.utils';
+import { devHint, getExperimentalMode, KoliBriDevHelper, setEventTarget } from '@public-ui/schema';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimentalMode()) {

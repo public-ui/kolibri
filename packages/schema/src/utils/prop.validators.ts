@@ -5,11 +5,11 @@ import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
-import { devHint, Log } from './a11y.tipps';
-import { getDocument, getExperimentalMode } from './dev.utils';
+import { Log, getDocument, getExperimentalMode } from './dev.utils';
 
 import type { Stringified } from '../types/common';
 import type { StencilUnknown } from '../types/unknown';
+import { devHint } from './a11y.tipps';
 // https://regex101.com/r/lSYLO9/1
 /**
  * Bei Stencil kann es vorkommen, dass bei der Übergabe eines komplexer Objekte
