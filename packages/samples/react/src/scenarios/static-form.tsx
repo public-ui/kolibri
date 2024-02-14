@@ -28,11 +28,11 @@ export const StaticForm: FC = () => {
 						<code className="bg-gray-200">&lt;meta name=&quot;kolibri&quot; content=&quot;dev-mode=false;experimental-mode=true;&quot; /&gt;</code>
 					</li>
 					<li>
-						Actually you have to use a native <code>form</code> element:{' '}
+						Currently you have to use a native <code>form</code> element:{' '}
 						<code className="bg-gray-200">&lt;form method=&quot;GET&quot;&gt;...&lt;/form&gt;</code>
 					</li>
 					<li>
-						It is important in static usage to give every input a <code>name</code> attribute, because the form data will be sent as a query string:{' '}
+						It is important in static usage to give every input a <code>name</code> attribute:{' '}
 						<code className="bg-gray-200">&lt;KolInputColor _name=&quot;color&quot; _label=&quot;Color&quot; /&gt;</code>
 					</li>
 					<li>
