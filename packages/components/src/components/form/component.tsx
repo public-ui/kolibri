@@ -60,7 +60,7 @@ export class KolForm implements API {
 											ref={(el) => {
 												if (index === 0) this.errorListElement = el as HTMLElement;
 											}}
-                      class="kol-link" 
+											class="kol-link"
 										/>
 									</li>
 								))}
