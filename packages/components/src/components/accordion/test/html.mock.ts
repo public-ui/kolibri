@@ -21,7 +21,7 @@ export const getAccordionHtml = (
 	);
 	return `<kol-accordion${props._open ? ' _open' : ''}>
   <mock:shadow-root>
-    <div class="accordion ${props._open ? 'open' : ''}">
+    <div class="accordion${props._disabled ? ' disabled' : ''}${props._open ? ' open' : ''}">
       ${getHeadingWcHtml(
 				{
 					_label: '',
@@ -32,7 +32,8 @@ export const getAccordionHtml = (
 						{
 							_ariaControls: 'nonce',
 							_ariaExpanded: props._open === true,
-							_icons: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
+							_disabled: props._disabled,
+							_icons: `codicon codicon-${props._open ? 'remove' : 'add'}`,
 							_label: props._label,
 						},
 						undefined,

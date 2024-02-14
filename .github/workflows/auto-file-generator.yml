@@ -15,10 +15,10 @@ jobs:
           persist-credentials: false
           ref: 'develop'
 
-      # - uses: pnpm/action-setup@v2.2.4
+      # - uses: pnpm/action-setup@v3
       #   with:
       #     run_install: false
-      #     version: 7
+      #     version: 8
       # - uses: actions/setup-node@v4
       #   with:
       #     cache: pnpm
@@ -30,18 +30,18 @@ jobs:
         with:
           # cache: pnpm
           node-version: 20
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}

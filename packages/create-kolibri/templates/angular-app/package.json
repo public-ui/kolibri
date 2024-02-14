@@ -29,9 +29,9 @@
 		"@angular/forms": "16.2.2",
 		"@angular/platform-browser": "16.2.2",
 		"@angular/platform-browser-dynamic": "16.2.2",
-		"@public-ui/angular-v16": "2.0.4",
-		"@public-ui/components": "2.0.4",
-		"@public-ui/themes": "2.0.4",
+		"@public-ui/angular-v16": "2.0.5",
+		"@public-ui/components": "2.0.5",
+		"@public-ui/themes": "2.0.5",
 		"zone.js": "0.13.1"
 	},
 	"devDependencies": {
@@ -40,7 +40,7 @@
 		"@leanup/stack": "1.3.44",
 		"@leanup/stack-webpack": "1.3.44",
 		"@ngtools/webpack": "16.2.0",
-		"chromedriver": "118.0.1",
+		"chromedriver": "121.0.0",
 		"cpy-cli": "5.0.0",
 		"nightwatch-axe-verbose": "2.2.2",
 		"npm-check-updates": "16.13.1",

@@ -1,0 +1,8 @@
+dod:
+  - 'Meaningful title and valuable description in pull request'
+  - 'Pull request linked to one or more issues'
+  - '➡️Acceptance criteria of the linked issue satisfied'
+  - '➡️All changes relates to the issue'
+  - 'All tests passed'
+  - '➡️Code changes tested manually if not covered by automated tests'
+  - '➡️A11y tests successful carried out'

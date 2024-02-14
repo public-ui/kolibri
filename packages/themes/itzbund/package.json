@@ -1,23 +1,23 @@
 {
 	"name": "@public-ui/theme-itzbund",
-	"version": "2.0.4",
+	"version": "2.0.5",
 	"private": true,
 	"scripts": {
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"xtest": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test",
 		"xtest-update": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.4",
-		"@public-ui/visual-tests": "2.0.4",
+		"@public-ui/schema": "2.0.5",
+		"@public-ui/visual-tests": "2.0.5",
 		"@types/node": "ts5.3",
 		"typescript": "5.3.3"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.4"
+		"@public-ui/components": "2.0.5"
 	}
 }

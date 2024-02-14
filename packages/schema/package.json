@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/schema",
-	"version": "2.0.4",
+	"version": "2.0.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -45,7 +45,7 @@
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"dev": "nodemon --exec unbuild --ext js,json,ts --watch src",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"prepack": "unbuild"
 	},
 	"dependencies": {
@@ -54,12 +54,15 @@
 		"color-rgba": "2.4.0",
 		"rgba-convert": "0.3.0",
 		"query-selector-all-shadow-root": "0.0.3",
-		"query-selector-shadow-root": "0.0.3"
+		"query-selector-shadow-root": "0.0.3",
+		"wcag-contrast": "3.0.0"
 	},
 	"devDependencies": {
+		"@types/color-convert": "2.0.3",
 		"@types/node": "ts5.3",
-		"@typescript-eslint/eslint-plugin": "6.19.1",
-		"@typescript-eslint/parser": "6.19.1",
+		"@types/wcag-contrast": "3.0.3",
+		"@typescript-eslint/eslint-plugin": "7.0.1",
+		"@typescript-eslint/parser": "7.0.1",
 		"eslint": "8.56.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.0.3",

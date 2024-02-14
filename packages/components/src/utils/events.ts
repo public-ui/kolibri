@@ -24,3 +24,8 @@ function dispatchKoliBriEvent<T>(target: EventTarget, type: KoliBriEventType, de
 export function tryToDispatchKoliBriEvent<T>(type: KoliBriEventType, target?: EventTarget, detail?: T): void {
 	target && dispatchKoliBriEvent(target, type, detail);
 }
+
+export function preventDefaultAndStopPropagation(event: Event) {
+	event.preventDefault();
+	stopPropagation(event);
+}

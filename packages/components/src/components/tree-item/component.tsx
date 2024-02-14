@@ -125,8 +125,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		await this.expand();
 	}
 
+	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	@Method() async expand() {
+	public async expand() {
 		if (this.state._hasChildren) {
 			this.state = {
 				...this.state,
@@ -141,8 +142,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		await this.collapse();
 	}
 
+	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	@Method() async collapse() {
+	public async collapse() {
 		if (this.state._hasChildren) {
 			this.state = {
 				...this.state,
@@ -151,8 +153,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		}
 	}
 
+	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	@Method() async isOpen() {
+	public async isOpen() {
 		return this.state._open ?? false;
 	}
 }

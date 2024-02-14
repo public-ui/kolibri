@@ -24,7 +24,7 @@
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*,@public-ui/*,@stencil/*,eslint-*,postcss-windicss,tslib,workbox-build",
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"unused": "ts-prune src -e",
 		"start": "cross-env NODE_ENV=development stencil build --dev --serve --watch --no-open",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile jest-test-results.json",
@@ -36,8 +36,8 @@
 	},
 	"dependencies": {
 		"adopted-style-sheets": "1.1.2",
-		"@public-ui/components": "2.0.4",
-		"@public-ui/schema": "2.0.4"
+		"@public-ui/components": "2.0.5",
+		"@public-ui/schema": "2.0.5"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.5.0",
@@ -61,7 +61,7 @@
 		"cross-env": "7.0.3",
 		"eslint": "8.33.0",
 		"eslint-config-prettier": "9.1.0",
-		"eslint-plugin-html": "7.1.0",
+		"eslint-plugin-html": "8.0.0",
 		"eslint-plugin-jsdoc": "48.0.2",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.8.0",

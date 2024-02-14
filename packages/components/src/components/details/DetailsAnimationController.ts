@@ -1,6 +1,6 @@
 /* Heavily inspired by: https://codepen.io/Mamboleoo/pen/QWEpLqm  */
 
-export default class DetailsAnimationController {
+export class DetailsAnimationController {
 	private animation?: Animation;
 	private isClosing = false;
 	private isExpanding = false;

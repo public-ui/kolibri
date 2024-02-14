@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-ssr",
-	"version": "2.0.4",
+	"version": "2.0.5",
 	"private": true,
 	"scripts": {
 		"lint": "tsc --noemit",
@@ -11,14 +11,14 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@public-ui/components": "2.0.4",
-		"@public-ui/hydrate": "2.0.4",
-		"@public-ui/theme-default": "2.0.4",
+		"@public-ui/components": "2.0.5",
+		"@public-ui/hydrate": "2.0.5",
+		"@public-ui/theme-default": "2.0.5",
 		"express": "4.18.2"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "6.19.1",
-		"@typescript-eslint/parser": "6.19.1",
+		"@typescript-eslint/eslint-plugin": "7.0.1",
+		"@typescript-eslint/parser": "7.0.1",
 		"cpy-cli": "5.0.0",
 		"eslint": "8.56.0",
 		"nodemon": "3.0.3",
