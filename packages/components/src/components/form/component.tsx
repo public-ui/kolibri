@@ -13,6 +13,8 @@ import { ErrorListPropType, validateErrorList } from '../../types/props/error-li
 	shadow: true,
 })
 export class KolForm implements API {
+	errorListElement?: HTMLElement;
+
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
 		event.stopPropagation();
@@ -42,7 +44,6 @@ export class KolForm implements API {
 	};
 
 	public render(): JSX.Element {
-		console.log(this._errorList);
 		return (
 			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 				{this._errorList && this._errorList.length > 0 && (
@@ -52,7 +53,14 @@ export class KolForm implements API {
 							<ul>
 								{this._errorList.map((error, index) => (
 									<li key={index}>
-										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />
+										<kol-link
+											_href={error.selector}
+											_label={error.message}
+											_on={{ onClick: this.handleLinkClick }}
+											ref={(el) => {
+												if (index === 0) this.errorListElement = el as HTMLElement;
+											}}
+										/>
 									</li>
 								))}
 							</ul>
@@ -118,5 +126,11 @@ export class KolForm implements API {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
 		this.validateErrorList(this._errorList);
+	}
+
+	public componentDidRender() {
+		if (this._errorList && this._errorList.length > 0) {
+			this.errorListElement?.focus();
+		}
 	}
 }
