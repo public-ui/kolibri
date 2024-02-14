@@ -1919,6 +1919,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		height: 1.5em;
 		border-radius: 1.25em;
 		position: relative;
+		outline: transparent solid 1px; /* Visible with forced colors */
 	}
 	:host kol-input.switch input[type="checkbox"]:before {
 		-webkit-transition: 0.5s;
