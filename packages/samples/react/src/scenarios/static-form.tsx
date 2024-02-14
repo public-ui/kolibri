@@ -1,12 +1,10 @@
-import type { FC } from 'react';
-import React from 'react';
-import { SampleDescription } from '../components/SampleDescription';
 import {
 	KolButton,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
 	KolInputEmail,
+	KolInputFile,
 	KolInputNumber,
 	KolInputPassword,
 	KolInputRadio,
@@ -15,6 +13,9 @@ import {
 	KolSelect,
 	KolTextarea,
 } from '@public-ui/react';
+import type { FC } from 'react';
+import React from 'react';
+import { SampleDescription } from '../components/SampleDescription';
 
 export const StaticForm: FC = () => {
 	return (
@@ -45,10 +46,9 @@ export const StaticForm: FC = () => {
 				<KolInputColor _name="color" _label="Color" />
 				<KolInputDate _name="date" _label="Date" />
 				<KolInputEmail _name="email" _label="Email" />
+				<KolInputFile _name="file" _label="File" />
 				<KolInputNumber _name="number" _label="Number" />
 				<KolInputPassword _name="password" _label="Password" />
-				<KolInputRange _name="range" _label="Range" />
-				<KolInputText _name="text" _label="Text" />
 				<KolInputRadio
 					_name="radio"
 					_label="Radio"
@@ -57,6 +57,8 @@ export const StaticForm: FC = () => {
 						{ label: 'Option B', value: 'B' },
 					]}
 				/>
+				<KolInputRange _name="range" _label="Range" />
+				<KolInputText _name="text" _label="Text" />
 				<KolSelect
 					_name="select"
 					_label="Select"
