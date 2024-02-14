@@ -15,9 +15,9 @@
 		"update": "ncu -t minor -u && ncu"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.10",
-		"@public-ui/react": "1.7.10",
-		"@public-ui/themes": "1.7.10",
+		"@public-ui/components": "1.7.11",
+		"@public-ui/react": "1.7.11",
+		"@public-ui/themes": "1.7.11",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},

@@ -21,9 +21,9 @@
 	},
 	"dependencies": {
 		"@leanup/stack": "1.3.39",
-		"@public-ui/components": "1.7.10",
-		"@public-ui/react": "1.7.10",
-		"@public-ui/themes": "1.7.10",
+		"@public-ui/components": "1.7.11",
+		"@public-ui/react": "1.7.11",
+		"@public-ui/themes": "1.7.11",
 		"@stencil/core": "2.20.0",
 		"next": "13.0.7",
 		"react": "18.2.0",
@@ -33,8 +33,8 @@
 	"devDependencies": {
 		"@types/node": "ts4.9",
 		"@types/react": "18.0.26",
-		"@typescript-eslint/eslint-plugin": "6.1.0",
-		"@typescript-eslint/parser": "6.1.0",
+		"@typescript-eslint/eslint-plugin": "7.0.1",
+		"@typescript-eslint/parser": "7.0.1",
 		"babel-eslint": "10.1.0",
 		"cpy-cli": "5.0.0",
 		"eslint": "8.30.0",

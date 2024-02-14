@@ -67,6 +67,12 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		return options.find((option) => option.value === value) !== undefined;
 	};
 
+	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
+		if (key === '_value') {
+			this.setFormAssociatedValue(value as string);
+		}
+	};
+
 	protected readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
@@ -74,12 +80,14 @@ export class InputRadioController extends InputCheckboxRadioController implement
 			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
 			if (this.isValueInOptions(value, options as Option<W3CInputValue>[]) === false) {
-				const newValue = (
-					options[0] as {
-						value: string;
-					}
-				).value;
-				nextState.set('_value', newValue);
+				nextState.set(
+					'_value',
+					(
+						options[0] as {
+							value: string;
+						}
+					).value
+				);
 				this.onStateChange();
 			}
 		}
@@ -101,6 +109,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 	public validateOptions(value?: OptionsPropType): void {
 		validateOptions(this.component, value, {
 			hooks: {
+				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,
 			},
 		});
@@ -110,9 +119,9 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		value = mapString2Unknown(value);
 		value = Array.isArray(value) ? (value[0] as StencilUnknown) : value;
 		setState(this.component, '_value', value, {
+			afterPatch: this.afterPatchOptions,
 			beforePatch: this.beforePatchOptions,
 		});
-		this.setFormAssociatedValue(this.component._value as string);
 	}
 
 	public componentWillLoad(onChange?: (event: Event) => void): void {
