@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/solid",
-	"version": "1.7.10",
+	"version": "1.7.11",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -46,17 +46,17 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.7.10",
+		"@public-ui/components": "1.7.11",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.3",
 		"@types/normalize-package-data": "2.4.4",
-		"solid-js": "1.8.12",
+		"solid-js": "1.8.14",
 		"typescript": "5.3.3",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.10",
+		"@public-ui/components": "1.7.11",
 		"solid-js": ">=1.2.0"
 	},
 	"sideEffects": false,

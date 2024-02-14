@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { KolButton, KolForm, KolHeading, KolInputEmail, KolInputText, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
+import { createErrorList } from './formUtils';
 
 const SALUTATION_OPTIONS = [
 	{
@@ -25,12 +26,14 @@ const SALUTATION_OPTIONS = [
 export function PersonalInformationForm() {
 	const form = useFormikContext<FormValues>();
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
+	const errorList = createErrorList(form.errors);
 
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Geben Sie Ihre Kontaktdaten ein"></KolHeading>
 			<ul>{sectionSubmitted && Object.entries(form.errors).map(([field, error]) => <li key={field}>{error}</li>)}</ul>
 			<KolForm
+				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
 					onSubmit: () => {
 						void form.submitForm();
@@ -41,6 +44,10 @@ export function PersonalInformationForm() {
 				<Field name="salutation">
 					{({ field }: FieldProps<FormValues['salutation']>) => (
 						<KolSelect
+							onBlur={() => {
+								void form.setFieldTouched('salutation', true);
+							}}
+							id="field-salutation"
 							_label="Anrede"
 							_value={[field.value]}
 							_error={form.errors.salutation || ''}
@@ -65,6 +72,10 @@ export function PersonalInformationForm() {
 						{({ field }: FieldProps<FormValues['company']>) => (
 							<div className="block mt-2">
 								<KolInputText
+									onBlur={() => {
+										void form.setFieldTouched('company', true);
+									}}
+									id="field-company"
 									_label="Firma"
 									_value={field.value}
 									_error={form.errors.company || ''}
@@ -88,6 +99,10 @@ export function PersonalInformationForm() {
 					{({ field }: FieldProps<FormValues['name']>) => (
 						<div className="block mt-2">
 							<KolInputText
+								onBlur={() => {
+									void form.setFieldTouched('name', true);
+								}}
+								id="field-name"
 								_label="Vor- und Zuname"
 								_value={field.value}
 								_error={form.errors.name || ''}
@@ -110,6 +125,10 @@ export function PersonalInformationForm() {
 					{({ field }: FieldProps<FormValues['email']>) => (
 						<div className="block mt-2">
 							<KolInputEmail
+								onBlur={() => {
+									void form.setFieldTouched('email', true);
+								}}
+								id="field-email"
 								_label="E-Mail"
 								_value={field.value}
 								_error={form.errors.email || ''}
@@ -132,6 +151,7 @@ export function PersonalInformationForm() {
 					{({ field }: FieldProps<FormValues['phone']>) => (
 						<div className="block mt-2">
 							<KolInputText
+								id="field-phone"
 								_type="tel"
 								_label="Telefonnumer"
 								_value={field.value}
