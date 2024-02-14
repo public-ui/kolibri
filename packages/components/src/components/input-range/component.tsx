@@ -85,6 +85,7 @@ export class KolInputRange implements API {
 			<Host>
 				<kol-input
 					class={{
+						'kol-input': true,
 						range: true,
 						'hide-label': !!this.state._hideLabel,
 					}}

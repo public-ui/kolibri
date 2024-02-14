@@ -81,6 +81,7 @@ export class KolSplitButton implements API {
 			<Host>
 				<kol-button-wc
 					class={{
+						'kol-button-wc': true,
 						'main-button': true,
 						button: true,
 						[this._variant as string]: this._variant !== 'custom',
@@ -107,7 +108,7 @@ export class KolSplitButton implements API {
 				></kol-button-wc>
 				<div class="horizontal-line"></div>
 				<kol-button-wc
-					class="secondary-button"
+					class="kol-button-wc secondary-button"
 					_disabled={this._disabled}
 					_hideLabel
 					_icons="codicon codicon-triangle-down"

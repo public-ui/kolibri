@@ -60,6 +60,7 @@ export class KolInputDate implements ComponentApi {
 			<Host class={{ 'has-value': this.state._hasValue }}>
 				<kol-input
 					class={{
+						'kol-input': true,
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
 					}}

@@ -10,12 +10,12 @@
 	width: 100%;
 	z-index: 200;
 }
-:host > div > kol-alert {
+:host > div > .kol-alert {
 	display: block;
 	margin: auto;
 	max-width: 750px;
 }
-:host > div > kol-button-wc {
+:host > div > .kol-button-wc {
 	display: block;
 	margin: auto;
 	position: relative;

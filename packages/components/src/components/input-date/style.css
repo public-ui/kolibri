@@ -1,5 +1,5 @@
 @import url(../input-line.css);
-kol-input-number {
+.kol-input-number {
 	display: block;
 }
 .error.hidden {

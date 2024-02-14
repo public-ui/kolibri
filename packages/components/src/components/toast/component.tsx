@@ -185,6 +185,7 @@ export class KolToast implements API {
 							_variant="card"
 							// tabindex="0"
 							_on={this.on}
+							class="kol-alert"
 						>
 							<slot />
 						</kol-alert>

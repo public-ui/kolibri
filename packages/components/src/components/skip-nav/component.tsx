@@ -22,7 +22,7 @@ export class KolSkipNav implements API {
 					{this.state._links.map((link: LinkProps, index: number) => {
 						return (
 							<li key={index}>
-								<kol-link-wc {...link}></kol-link-wc>
+								<kol-link-wc {...link} class="kol-link-wc"></kol-link-wc>
 							</li>
 						);
 					})}

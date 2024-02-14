@@ -63,7 +63,7 @@ export class KolInputEmail implements API {
 				}}
 			>
 				<kol-input
-					class={{ email: true, 'hide-label': !!this.state._hideLabel }}
+					class={{ 'kol-input': true, email: true, 'hide-label': !!this.state._hideLabel }}
 					_alert={this.state._alert}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}

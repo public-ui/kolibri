@@ -29,6 +29,6 @@
 	padding: 1em;
 	position: unset;
 }
-kol-icon.external-link-icon {
+.kol-icon.external-link-icon {
 	display: inline-flex;
 }

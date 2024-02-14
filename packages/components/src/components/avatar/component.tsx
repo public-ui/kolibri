@@ -14,7 +14,7 @@ export class KolAvatarWc implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<div aria-label={translate('kol-avatar-alt', { placeholders: { name: this.state._label } })} class="container" role="img">
+				<div aria-label={translate('kol-avatar-alt', { placeholders: { name: this.state._label } })} class="kol-avatar-wc container" role="img">
 					{this.state._src ? (
 						<img alt="" aria-hidden="true" class="image" src={this.state._src} />
 					) : (

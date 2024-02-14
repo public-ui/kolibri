@@ -18,11 +18,11 @@ nav {
 .entry {
 	display: flex;
 }
-.entry kol-button-wc:first-child,
-.entry kol-link-wc,
-.entry kol-span-wc {
+.entry .kol-button-wc:first-child,
+.entry .kol-link-wc,
+.entry .kol-span-wc {
 	flex-grow: 1;
 }
-.entry kol-span-wc {
+.entry .kol-span-wc {
 	justify-items: start;
 }

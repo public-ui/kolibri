@@ -78,6 +78,7 @@ export class KolInputText implements API {
 			>
 				<kol-input
 					class={{
+						'kol-input': true,
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
 					}}

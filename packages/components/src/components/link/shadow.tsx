@@ -55,6 +55,7 @@ export class KolLink implements LinkProps {
 					_target={this._target}
 					_tooltipAlign={this._tooltipAlign}
 					_useCase={this._useCase}
+					class="kol-link-wc"
 				>
 					{/*
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,

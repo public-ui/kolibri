@@ -46,13 +46,13 @@ export class KolForm implements API {
 		return (
 			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 				{this._errorList && this._errorList.length > 0 && (
-					<kol-alert _type="error">
+					<kol-alert _type="error" class="kol-alert">
 						{translate('kol-error-list-message')}
 						<nav aria-label={translate('kol-error-list')}>
 							<ul>
 								{this._errorList.map((error, index) => (
 									<li key={index}>
-										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} />
+										<kol-link _href={error.selector} _label={error.message} _on={{ onClick: this.handleLinkClick }} class="kol-link" />
 									</li>
 								))}
 							</ul>
@@ -61,11 +61,11 @@ export class KolForm implements API {
 				)}
 				{this.state._requiredText === true ? (
 					<p>
-						<kol-indented-text>{translate('kol-form-description')}</kol-indented-text>
+						<kol-indented-text class="kol-indented-text">{translate('kol-form-description')}</kol-indented-text>
 					</p>
 				) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
 					<p>
-						<kol-indented-text>{this.state._requiredText}</kol-indented-text>
+						<kol-indented-text class="kol-indented-text">{this.state._requiredText}</kol-indented-text>
 					</p>
 				) : null}
 				<slot />

@@ -75,6 +75,7 @@ export class KolSelect implements API {
 			<Host class={{ 'has-value': this.state._hasValue }}>
 				<kol-input
 					class={{
+						'kol-input': true,
 						'hide-label': !!this.state._hideLabel,
 						select: true,
 					}}

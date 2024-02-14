@@ -77,7 +77,7 @@ export class KolPagination implements API {
 						{this.state._hasButtons.first && (
 							<li>
 								<kol-button
-									class="first"
+									class="kol-button first"
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
@@ -93,7 +93,7 @@ export class KolPagination implements API {
 						{this.state._hasButtons.previous && (
 							<li>
 								<kol-button
-									class="previous"
+									class="kol-button previous"
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={this.state._page <= 1}
@@ -110,7 +110,7 @@ export class KolPagination implements API {
 						{this.state._hasButtons.next && (
 							<li>
 								<kol-button
-									class="next"
+									class="kol-button next"
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
@@ -126,7 +126,7 @@ export class KolPagination implements API {
 						{this.state._hasButtons.last && (
 							<li>
 								<kol-button
-									class="last"
+									class="kol-button last"
 									exportparts="icon"
 									_customClass={this.state._customClass}
 									_disabled={count <= this.state._page}
@@ -151,6 +151,7 @@ export class KolPagination implements API {
 							onChange: this.onChangePageSize,
 						}}
 						_value={[this.state._pageSize]}
+						class="kol-select"
 					></kol-select>
 				)}
 			</Host>

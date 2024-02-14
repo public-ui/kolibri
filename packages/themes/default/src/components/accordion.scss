@@ -1,27 +1,27 @@
-kol-span-wc > span {
+.kol-span-wc > span {
 	display: flex;
 	place-items: baseline center;
 	text-align: left;
 }
 
-:host > div > kol-heading-wc button {
+:host > div > .kol-heading-wc button {
 	border-radius: var(--border-radius);
 	min-height: 2.2rem;
 	padding: 12px 8px;
 }
 
-:host > div > kol-heading-wc button kol-span-wc {
+:host > div > .kol-heading-wc button .kol-span-wc {
 	font-weight: 700;
 	font-size: 1.125rem;
 	line-height: 20px;
 	gap: 0.5rem;
 }
 
-:host > div > kol-heading-wc button kol-span-wc > span {
+:host > div > .kol-heading-wc button .kol-span-wc > span {
 	gap: 0.5em;
 }
 
-:host > div > kol-heading-wc button kol-icon {
+:host > div > .kol-heading-wc button .kol-icon {
 	color: var(--color-primary);
 }
 

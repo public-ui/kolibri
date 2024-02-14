@@ -74,6 +74,7 @@ export class KolNav implements API {
 						...link,
 						_hideLabel: hideLabel,
 					}}
+					class="kol-button-link-text-switch"
 				/>
 				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, expanded) : ''}
 			</div>
@@ -83,7 +84,7 @@ export class KolNav implements API {
 	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, expanded: boolean): JSX.Element {
 		return (
 			<kol-button-wc
-				class="expand-button"
+				class="kol-button-wc expand-button"
 				_ariaExpanded={expanded}
 				_disabled={!collapsible}
 				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
@@ -179,6 +180,7 @@ export class KolNav implements API {
 								}}
 								_tooltipAlign="right"
 								_variant="ghost"
+								class="kol-button"
 							></kol-button>
 						</div>
 					)}

@@ -70,20 +70,20 @@
 		transition: outline-offset 0.2s linear;
 	}
 
-	kol-span-wc,
-	kol-span-wc > span {
+	.kol-span-wc,
+	.kol-span-wc > span {
 		gap: 0.25em;
 	}
 
-	kol-tooltip-wc .tooltip-area {
+	.kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
 
-	kol-tooltip-wc .tooltip-arrow {
+	.kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
 
-	kol-tooltip-wc .tooltip-content {
+	.kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;

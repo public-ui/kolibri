@@ -77,7 +77,7 @@ th[aria-sort='descending'] {
 		grid-auto-flow: column;
 	}
 
-	:host > div:last-child kol-pagination {
+	:host > div:last-child .kol-pagination {
 		display: flex;
 		gap: 1rem;
 	}

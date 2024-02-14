@@ -22,12 +22,12 @@ export class KolAbbr implements API {
 		return (
 			<Host>
 				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._label}>
+				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._label} class="kol-abbr">
 					<span title="">
 						<slot />
 					</span>
 				</abbr>
-				<kol-tooltip-wc _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip-wc>
+				<kol-tooltip-wc _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label} class="kol-tooltip-wc"></kol-tooltip-wc>
 			</Host>
 		);
 	}

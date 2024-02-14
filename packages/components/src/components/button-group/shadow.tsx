@@ -13,7 +13,7 @@ export class KolButtonGroup implements Props {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<kol-button-group-wc>
+				<kol-button-group-wc class="kol-button-group-wc">
 					<slot />
 				</kol-button-group-wc>
 			</Host>

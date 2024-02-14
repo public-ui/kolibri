@@ -1,8 +1,8 @@
 @import url(input.css);
-kol-input {
+.kol-input {
 	display: grid;
 }
-kol-input .input-slot {
+.kol-input .input-slot {
 	flex-grow: 1;
 }
 input:not([type='checkbox'], [type='radio']),
@@ -19,11 +19,11 @@ textarea:focus {
 	display: flex;
 	align-items: center;
 }
-.input > kol-icon {
+.input > .kol-icon {
 	display: grid;
 	height: var(--a11y-min-size);
 	place-items: center;
 }
-kol-input.required .input-tooltip .span-label::after {
+.kol-input.required .input-tooltip .span-label::after {
 	content: '*';
 }

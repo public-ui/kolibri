@@ -131,12 +131,17 @@ export class KolLinkWc implements API {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label || this.state._href}>
+					<kol-span-wc
+						_icons={this.state._icons}
+						_hideLabel={this.state._hideLabel}
+						_label={hasExpertSlot ? '' : this.state._label || this.state._href}
+						class="kol-span-wc"
+					>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && (
 						<kol-icon
-							class="external-link-icon"
+							class="kol-icon external-link-icon"
 							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
 							_icons={'codicon codicon-link-external'}
 							aria-hidden={this.state._hideLabel}
@@ -152,6 +157,7 @@ export class KolLinkWc implements API {
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
+					class="kol-tooltip-wc"
 				></kol-tooltip-wc>
 			</Host>
 		);

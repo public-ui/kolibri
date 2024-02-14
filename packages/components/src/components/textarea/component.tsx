@@ -56,7 +56,7 @@ export class KolTextarea implements API {
 		return (
 			<Host class={{ 'has-value': this.state._hasValue }}>
 				<kol-input
-					class={{ textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
+					class={{ 'kol-input': true, textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
 					_alert={this.state._alert}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}

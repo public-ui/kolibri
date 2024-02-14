@@ -9,11 +9,11 @@ ul {
 	flex-wrap: wrap;
 	place-items: center;
 }
-kol-icon::part(separator) {
+.kol-icon::part(separator) {
 	font-weight: 900;
 	font-size: 0.7em;
 }
-kol-icon::part(separator):before {
+.kol-icon::part(separator):before {
 	content: '\f054';
 	font-family: 'Font Awesome 6 Free';
 }

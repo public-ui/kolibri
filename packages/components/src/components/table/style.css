@@ -64,7 +64,7 @@ div.pagination > div:last-child {
 	div.pagination > div:last-child {
 		grid-auto-flow: column;
 	}
-	div.pagination kol-pagination {
+	div.pagination .kol-pagination {
 		display: flex;
 	}
 }

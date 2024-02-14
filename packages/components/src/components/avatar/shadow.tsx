@@ -13,7 +13,7 @@ export class KolAvatar implements Props {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<kol-avatar-wc _src={this._src} _label={this._label}></kol-avatar-wc>
+				<kol-avatar-wc _src={this._src} _label={this._label} class="kol-avatar"></kol-avatar-wc>
 			</Host>
 		);
 	}

@@ -62,6 +62,7 @@ export class KolInputPassword implements API {
 			>
 				<kol-input
 					class={{
+						'kol-input': true,
 						'hide-label': !!this.state._hideLabel,
 						password: true,
 					}}

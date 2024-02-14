@@ -82,6 +82,7 @@ export class KolInput implements Props {
 							_ariaLabel=""
 							_icons={(this.getIconsProp()?.left as KoliBriCustomIcon).icon}
 							style={this.getIconStyles(this.getIconsProp()?.left)}
+							class="kol-icon"
 						></kol-icon>
 					)}
 					<div ref={this.catchInputSlot} id={this.slotName} class="input-slot"></div>
@@ -96,6 +97,7 @@ export class KolInput implements Props {
 							_on={this._smartButton._on}
 							_tooltipAlign={this._smartButton._tooltipAlign}
 							_variant={this._smartButton._variant}
+							class="kol-button-wc"
 						></kol-button-wc>
 					)}
 					{this.getIconsProp()?.right && (
@@ -103,6 +105,7 @@ export class KolInput implements Props {
 							_ariaLabel=""
 							_icons={(this.getIconsProp()?.right as KoliBriCustomIcon).icon}
 							style={this.getIconStyles(this.getIconsProp()?.right)}
+							class="kol-icon"
 						></kol-icon>
 					)}
 				</div>
@@ -113,14 +116,14 @@ export class KolInput implements Props {
 						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 						 */
 						aria-hidden="true"
-						class="input-tooltip"
+						class="kol-tooltip-wc input-tooltip"
 						_align={this._tooltipAlign}
 						_id={this._hideLabel ? `${this._id}-label` : undefined}
 						_label={this._label}
 					></kol-tooltip-wc>
 				)}
 				{hasError && (
-					<kol-alert _alert={this._alert} _type="error" class={`error${this._hideError ? ' hidden' : ''}`} id={`${this._id}-error`}>
+					<kol-alert _alert={this._alert} _type="error" class={`kol-alert error${this._hideError ? ' hidden' : ''}`} id={`${this._id}-error`}>
 						{this._error}
 					</kol-alert>
 				)}

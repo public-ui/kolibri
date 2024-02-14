@@ -14,12 +14,12 @@
 	box-sizing: border-box;
 }
 /* KolSpan is a layout component with icons in all directions and a label text in the middle. */
-kol-span-wc {
+.kol-span-wc {
 	display: grid;
 	place-items: center;
 }
 /* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
-kol-span-wc > span {
+.kol-span-wc > span {
 	display: flex;
 	place-items: center;
 }
@@ -28,6 +28,6 @@ button {
 	cursor: pointer;
 }
 /* This is the text label. */
-.icon-only > kol-span-wc > span > span {
+.icon-only > .kol-span-wc > span > span {
 	display: none;
 }

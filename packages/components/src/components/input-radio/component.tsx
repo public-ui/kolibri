@@ -70,6 +70,7 @@ export class KolInputRadio implements API {
 						return (
 							<kol-input
 								class={{
+									'kol-input': true,
 									radio: true,
 									disabled: Boolean(this.state._disabled || option.disabled),
 								}}

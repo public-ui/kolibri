@@ -97,7 +97,7 @@ input[type='checkbox']:checked:hover {
 	background-color: var(--color-red-1xx);
 }
 
-kol-input {
+.kol-input {
 	gap: var(--spacing-xs);
 }
 
@@ -109,15 +109,15 @@ kol-input {
 		'error error';
 }
 
-kol-input > .input {
+.kol-input > .input {
 	order: 2;
 }
 
-kol-input > label {
+.kol-input > label {
 	order: 3;
 }
 
-kol-alert {
+.kol-alert {
 	color: var(--color-red);
 	font-size: 0.875em;
 	margin-left: calc(-1 * var(--spacing-2xs));

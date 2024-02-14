@@ -45,6 +45,7 @@ export class KolInputColor implements API {
 			<Host>
 				<kol-input
 					class={{
+						'kol-input': true,
 						color: true,
 						'hide-label': !!this.state._hideLabel,
 					}}

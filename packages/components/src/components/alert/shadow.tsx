@@ -26,6 +26,7 @@ export class KolAlert implements Props {
 					_on={this._on}
 					_type={this._type}
 					_variant={this._variant}
+					class="kol-alert-wc"
 				>
 					<slot />
 				</kol-alert-wc>

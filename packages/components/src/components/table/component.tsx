@@ -625,6 +625,7 @@ export class KolTable implements API {
 									},
 								}}
 								_variant="ghost"
+								class="kol-button"
 							></kol-button>
 						)}
 					</div>

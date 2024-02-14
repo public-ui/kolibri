@@ -27,6 +27,7 @@ export class KolIconFontAwesome implements Generic.Element.Members<RequiredProps
 				exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
 				_ariaLabel={this._ariaLabel}
 				_icon={typeof this._prefix === 'string' && typeof this._icon === 'string' ? `${this._prefix} fa-${this._icon}` : (undefined as unknown as string)}
+				class="kol-icon"
 			/>
 		);
 	}

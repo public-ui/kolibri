@@ -44,6 +44,7 @@ export class KolInputFile implements API {
 			<Host>
 				<kol-input
 					class={{
+						'kol-input': true,
 						file: true,
 						'hide-label': !!this.state._hideLabel,
 					}}

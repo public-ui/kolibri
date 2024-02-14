@@ -49,7 +49,7 @@ export class KolAccordion implements API {
 						open: this.state._open === true,
 					}}
 				>
-					<kol-heading-wc _label="" _level={this.state._level}>
+					<kol-heading-wc _label="" _level={this.state._level} class="kol-heading-wc">
 						<kol-button-wc
 							ref={this.catchRef}
 							// slot="expert"
@@ -58,6 +58,7 @@ export class KolAccordion implements API {
 							_icons={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
 							_label={this.state._label}
 							_on={{ onClick: this.onClick }}
+							class="kol-button-wc"
 						></kol-button-wc>
 					</kol-heading-wc>
 					<div class="header">

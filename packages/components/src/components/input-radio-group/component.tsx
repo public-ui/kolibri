@@ -36,6 +36,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 				_tabIndex={this._tabIndex}
 				_touched={this._touched}
 				_value={this._value}
+				class="kol-input-radio"
 			>
 				<slot />
 			</kol-input-radio>

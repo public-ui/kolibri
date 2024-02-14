@@ -14,7 +14,7 @@ ul {
 	list-style: none;
 }
 
-kol-link-wc,
+.kol-link-wc,
 a {
 	height: 100%;
 	min-height: var(--a11y-min-size);
@@ -22,11 +22,11 @@ a {
 	place-items: center;
 }
 
-.entry > kol-span-wc > span {
+.entry > .kol-span-wc > span {
 	width: 100%;
 }
 
-.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+.entry > :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child {
 	background-color: var(--color-light);
 	text-decoration: none;
 	color: var(--color-primary);
@@ -42,38 +42,38 @@ a {
 	letter-spacing: 0.175px;
 }
 
-.entry > :is(kol-link-wc, kol-button-wc):first-child :is(a, button) {
+.entry > :is(.kol-link-wc, .kol-button-wc):first-child :is(a, button) {
 	color: var(--color-primary);
 	text-decoration: none;
 }
 
-.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
+.entry > :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child:hover {
 	border-left-color: var(--color-primary-variant);
 	background-color: var(--color-primary-variant);
 }
 
-.entry > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover > :is(a, button, span) {
+.entry > :is(.kol-link-wc, .kol-button-wc, .kol-span-wc):first-child:hover > :is(a, button, span) {
 	color: var(--color-primary-variant);
 	font-weight: 700;
 	letter-spacing: unset;
 }
 
-.selected > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+.selected > :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child {
 	background-color: var(--color-primary-variant);
 	color: var(--color-primary);
 	font-weight: 700;
 }
 
-.selected > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child > :is(a, button, span) {
+.selected > :is(.kol-link-wc, .kol-button-wc, .kol-span-wc):first-child > :is(a, button, span) {
 	font-weight: 700;
 }
 
-.selected :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
+.selected :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child:hover {
 	color: var(--color-primary-variant);
 	letter-spacing: unset;
 }
 
-.entry > kol-span-wc > span,
+.entry > .kol-span-wc > span,
 .entry :is(a, button) {
 	border-left-color: transparent;
 	border-left-style: solid;
@@ -87,15 +87,15 @@ a {
 }
 
 /** Compact mode */
-.entry.compact :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+.entry.compact :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child {
 	place-items: center;
 }
 
-.entry.compact > kol-span-wc > span {
+.entry.compact > .kol-span-wc > span {
 	flex-direction: column;
 }
 
-.entry.compact > kol-span-wc > span,
+.entry.compact > .kol-span-wc > span,
 .entry.compact :is(a, button) {
 	padding-left: 0;
 }

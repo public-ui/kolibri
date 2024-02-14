@@ -33,6 +33,7 @@ export class KolLinkButton implements Props {
 				<kol-link-wc
 					ref={this.catchRef}
 					class={{
+						'kol-link-wc': true,
 						button: true,
 						[this._variant as string]: this._variant !== 'custom',
 						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
