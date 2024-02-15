@@ -22,7 +22,7 @@ export class KolAbbr implements API {
 		return (
 			<Host>
 				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._label} class="kol-abbr">
+				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._label} class="kol-abbr-wc">
 					<span title="">
 						<slot />
 					</span>

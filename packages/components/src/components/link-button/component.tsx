@@ -30,34 +30,36 @@ export class KolLinkButton implements Props {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<kol-link-wc
-					ref={this.catchRef}
-					class={{
-						'kol-link-wc': true,
-						button: true,
-						[this._variant as string]: this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
-					}}
-					_ariaControls={this._ariaControls}
-					_ariaCurrent={this._ariaCurrent}
-					_ariaExpanded={this._ariaExpanded}
-					_ariaLabel={this._ariaLabel}
-					_ariaSelected={this._ariaSelected}
-					_disabled={this._disabled}
-					_download={this._download}
-					_hideLabel={this._hideLabel}
-					_href={this._href}
-					_icon={this._icon}
-					_label={this._label}
-					_listenAriaCurrent={this._listenAriaCurrent}
-					_on={this._on}
-					_role="button"
-					_tabIndex={this._tabIndex}
-					_target={this._target}
-					_tooltipAlign={this._tooltipAlign}
-				>
-					<slot name="expert" slot="expert"></slot>
-				</kol-link-wc>
+				<div class="kol-link-wc">
+					<kol-link-wc
+						ref={this.catchRef}
+						class={{
+							'kol-link-wc': true,
+							button: true,
+							[this._variant as string]: this._variant !== 'custom',
+							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
+						}}
+						_ariaControls={this._ariaControls}
+						_ariaCurrent={this._ariaCurrent}
+						_ariaExpanded={this._ariaExpanded}
+						_ariaLabel={this._ariaLabel}
+						_ariaSelected={this._ariaSelected}
+						_disabled={this._disabled}
+						_download={this._download}
+						_hideLabel={this._hideLabel}
+						_href={this._href}
+						_icon={this._icon}
+						_label={this._label}
+						_listenAriaCurrent={this._listenAriaCurrent}
+						_on={this._on}
+						_role="button"
+						_tabIndex={this._tabIndex}
+						_target={this._target}
+						_tooltipAlign={this._tooltipAlign}
+					>
+						<slot name="expert" slot="expert"></slot>
+					</kol-link-wc>
+				</div>
 			</Host>
 		);
 	}

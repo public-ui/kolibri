@@ -59,7 +59,7 @@ export class KolModal implements API {
 				{this.state._activeElement /* SSR instanceof HTMLElement */ && (
 					<div class="overlay">
 						<div
-							class="modal"
+							class="kol-modal-wc modal"
 							style={{
 								width: this.state._width,
 							}}

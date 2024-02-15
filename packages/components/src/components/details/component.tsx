@@ -33,6 +33,7 @@ export class KolDetails implements API {
 		return (
 			<Host>
 				<details
+					class="kol-details-wc"
 					ref={(el) => {
 						this.detailsElement = el as HTMLDetailsElement;
 					}}

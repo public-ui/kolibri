@@ -131,6 +131,7 @@ export class KolLogo implements API {
 				aria-label={translate('kol-logo-description', { placeholders: { orgShort: this.state._org, orgLong: getAriaLabel(this.state._org) } })}
 				role="img"
 				viewBox="0 0 225 100"
+				class="kol-logo-wc"
 			>
 				<rect width="100%" height="100%" fill="white"></rect>
 				<svg x="0" y="4" height="75">

@@ -17,7 +17,7 @@ import { API, States } from './types';
 export class KolSkipNav implements API {
 	public render(): JSX.Element {
 		return (
-			<nav aria-label={this.state._label}>
+			<nav aria-label={this.state._label} class="kol-skip-nav">
 				<ul>
 					{this.state._links.map((link: LinkProps, index: number) => {
 						return (

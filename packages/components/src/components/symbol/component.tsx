@@ -13,7 +13,7 @@ export class KolSymbol implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<span aria-label={this.state._label} role="term">
+				<span aria-label={this.state._label} role="term" class="kol-symbol">
 					{this.state._symbol}
 				</span>
 			</Host>

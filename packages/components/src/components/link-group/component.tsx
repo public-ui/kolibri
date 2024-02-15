@@ -47,6 +47,7 @@ export class KolLinkGroup implements API {
 			<nav
 				aria-label={this.state._label}
 				class={{
+					'kol-link-group-wc': true,
 					vertical: this.state._orientation === 'vertical',
 					horizontal: this.state._orientation === 'horizontal',
 				}}

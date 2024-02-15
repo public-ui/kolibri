@@ -88,6 +88,7 @@ export class KolQuote implements API {
 			<Host>
 				<figure
 					class={{
+						'kol-quote': true,
 						[this.state._variant]: true,
 					}}
 				>

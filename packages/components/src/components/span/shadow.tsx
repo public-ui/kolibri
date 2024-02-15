@@ -15,7 +15,7 @@ import { Props } from './types';
 export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-span-wc _icons={this._icons || this._icon} _hideLabel={this._hideLabel} _label={this._label} class="kol-span-wc">
+			<kol-span-wc _icons={this._icons || this._icon} _hideLabel={this._hideLabel} _label={this._label} class="kol-span">
 				<slot name="expert" slot="expert"></slot>
 			</kol-span-wc>
 		);

@@ -97,11 +97,13 @@ export class KolProcess implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				{createProgressSVG(this.state)}
-				<progress aria-busy={this.state._value < this.state._max ? 'true' : 'false'} max={this.state._max} value={this.state._value}></progress>
-				<span aria-live="polite" aria-relevant="removals text" hidden>
-					{this.state._liveValue} von {this.state._max} {this.state._unit}
-				</span>
+				<div class="kol-progress-wc">
+					{createProgressSVG(this.state)}
+					<progress aria-busy={this.state._value < this.state._max ? 'true' : 'false'} max={this.state._max} value={this.state._value}></progress>
+					<span aria-live="polite" aria-relevant="removals text" hidden>
+						{this.state._liveValue} von {this.state._max} {this.state._unit}
+					</span>
+				</div>
 			</Host>
 		);
 	}

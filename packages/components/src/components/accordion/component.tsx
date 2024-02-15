@@ -45,6 +45,7 @@ export class KolAccordion implements API {
 			<Host>
 				<div
 					class={{
+						'kol-accordion-wc': true,
 						accordion: true,
 						open: this.state._open === true,
 					}}

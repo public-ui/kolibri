@@ -37,7 +37,7 @@ export class KolCard implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<div class="card">
+				<div class="kol-card-wc card">
 					<div class="header">
 						<kol-heading-wc _label={this.state._label} _level={this.state._level} class="kol-heading-wc"></kol-heading-wc>
 						<slot name="header"></slot>

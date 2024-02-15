@@ -40,7 +40,7 @@ export class KolBreadcrumb implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<nav aria-label={this.state._label ?? ''}>
+				<nav aria-label={this.state._label ?? ''} class="kol-breadcrumb-wc">
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>

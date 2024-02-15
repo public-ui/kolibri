@@ -29,7 +29,7 @@ export class KolIcon implements API {
 					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
 					 */
 					aria-label={ariaShow ? this.state._label : undefined}
-					class={this.state._icons}
+					class={`kol-icon-wc ${this.state._icons}`}
 					part="icon"
 					role="img"
 				></i>

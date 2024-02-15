@@ -50,6 +50,7 @@ export class KolInput implements Props {
 		return (
 			<Host
 				class={{
+					'kol-input': true,
 					disabled: this._disabled === true,
 					error: hasError === true,
 					'read-only': this._readOnly === true,
@@ -72,6 +73,7 @@ export class KolInput implements Props {
 				)}
 				<div
 					class={{
+						'kol-input-wc': true,
 						input: true,
 						'icon-left': typeof this.getIconsProp()?.left === 'object',
 						'icon-right': typeof this.getIconsProp()?.right === 'object',

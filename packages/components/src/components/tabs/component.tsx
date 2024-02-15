@@ -134,6 +134,7 @@ export class KolTabs implements API {
 						this.tabPanelsElement = el as HTMLElement;
 					}}
 					class={{
+						'kol-tabs-wc': true,
 						[`tabs-align-${this.state._align}`]: true,
 					}}
 				>

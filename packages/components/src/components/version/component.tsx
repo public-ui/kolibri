@@ -15,13 +15,16 @@ import { translate } from '../../i18n';
 export class KolVersion implements API {
 	public render(): JSX.Element {
 		return (
-			<kol-badge
-				_color={Farbspektrum.Hellgrau}
-				_icons={{
-					left: { icon: 'codicon codicon-versions', label: translate('kol-version') },
-				}}
-				_label={this.state._label}
-			/>
+			<div class="kol-version-wc">
+				<kol-badge
+					_color={Farbspektrum.Hellgrau}
+					_icons={{
+						left: { icon: 'codicon codicon-versions', label: translate('kol-version') },
+					}}
+					_label={this.state._label}
+					class="kol-badge"
+				/>
+			</div>
 		);
 	}
 

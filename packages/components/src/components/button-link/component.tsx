@@ -32,31 +32,33 @@ export class KolButtonLink implements Props {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<kol-button-wc
-					ref={this.catchRef}
-					_accessKey={this._accessKey}
-					_ariaControls={this._ariaControls}
-					_ariaCurrent={this._ariaCurrent}
-					_ariaExpanded={this._ariaExpanded}
-					_ariaLabel={this._ariaLabel}
-					_ariaSelected={this._ariaSelected}
-					_disabled={this._disabled}
-					_icons={this._icons || this._icon}
-					_hideLabel={this._hideLabel || this._iconOnly}
-					_id={this._id}
-					_label={this._label}
-					_name={this._name}
-					_on={this._on}
-					_role="link"
-					_syncValueBySelector={this._syncValueBySelector}
-					_tabIndex={this._tabIndex}
-					_tooltipAlign={this._tooltipAlign}
-					_type={this._type}
-					_value={this._value}
-					class="kol-button-wc"
-				>
-					<slot name="expert" slot="expert"></slot>
-				</kol-button-wc>
+				<div class="kol-button-link-wc">
+					<kol-button-wc
+						ref={this.catchRef}
+						_accessKey={this._accessKey}
+						_ariaControls={this._ariaControls}
+						_ariaCurrent={this._ariaCurrent}
+						_ariaExpanded={this._ariaExpanded}
+						_ariaLabel={this._ariaLabel}
+						_ariaSelected={this._ariaSelected}
+						_disabled={this._disabled}
+						_icons={this._icons || this._icon}
+						_hideLabel={this._hideLabel || this._iconOnly}
+						_id={this._id}
+						_label={this._label}
+						_name={this._name}
+						_on={this._on}
+						_role="link"
+						_syncValueBySelector={this._syncValueBySelector}
+						_tabIndex={this._tabIndex}
+						_tooltipAlign={this._tooltipAlign}
+						_type={this._type}
+						_value={this._value}
+						class="kol-button-wc"
+					>
+						<slot name="expert" slot="expert"></slot>
+					</kol-button-wc>
+				</div>
 			</Host>
 		);
 	}

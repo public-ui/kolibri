@@ -78,7 +78,7 @@ export class KolSplitButton implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="split-button">
 				<kol-button-wc
 					class={{
 						'kol-button-wc': true,

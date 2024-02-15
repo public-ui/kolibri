@@ -83,6 +83,7 @@ export class KolButtonWc implements API {
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
+						'kol-button-wc': true,
 						button: true,
 						[this.state._variant as string]: this.state._variant !== 'custom',
 						[this.state._customClass as string]:

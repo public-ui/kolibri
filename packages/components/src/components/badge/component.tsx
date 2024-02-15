@@ -48,6 +48,7 @@ export class KolBadge implements API {
 			<Host>
 				<span
 					class={{
+						'kol-badge-wc': true,
 						'smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,
 					}}
 					style={{

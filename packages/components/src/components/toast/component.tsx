@@ -175,7 +175,7 @@ export class KolToast implements API {
 		return (
 			<Host>
 				{this.state._show && (
-					<div>
+					<div class="kol-toast-wc">
 						<kol-alert
 							_alert={this.state._alert}
 							_label={this.state._label}

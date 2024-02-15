@@ -155,6 +155,7 @@ export class KolNav implements API {
 			<Host>
 				<div
 					class={{
+						'kol-nav-wc': true,
 						[orientation]: true,
 						[this.state._variant]: true,
 					}}

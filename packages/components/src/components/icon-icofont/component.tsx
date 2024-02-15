@@ -26,7 +26,7 @@ export class KolIconIcofont implements Generic.Element.Members<RequiredProps, Op
 				exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
 				_ariaLabel={this._ariaLabel}
 				_icon={typeof this._icon === 'string' ? `icofont-${this._icon}` : (undefined as unknown as string)}
-				class="kol-icon"
+				class="kol-icon-wc"
 			/>
 		);
 	}
