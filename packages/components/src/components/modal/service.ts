@@ -1,4 +1,4 @@
-import { getDocument, Log } from '../../utils/dev.utils';
+import { Log, getDocument } from '@public-ui/schema';
 
 type ModalContext = {
 	activeElement?: HTMLElement;

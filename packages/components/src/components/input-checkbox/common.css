@@ -45,10 +45,6 @@
 		order: 4;
 	}
 
-	.error.hidden {
-		display: none;
-	}
-
 	input {
 		border-style: solid;
 		border-width: 2px;

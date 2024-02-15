@@ -1,9 +1,8 @@
 import type { JSX } from '@stencil/core';
-import { alertTypeOptions, alertVariantOptions, setState, validateHasCloser, validateLabel, watchBoolean, watchValidator } from '@public-ui/schema';
+import { Log, alertTypeOptions, alertVariantOptions, setState, validateHasCloser, validateLabel, watchBoolean, watchValidator } from '@public-ui/schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { Log } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
 
 import type {
