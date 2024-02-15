@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import type { JSX } from '@stencil/core';
 import { handleSlotContent, showExpertSlot } from '@public-ui/schema';
-import { Component, Element, Fragment, h, Host, Prop } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
@@ -18,6 +18,7 @@ import type {
 	TooltipAlignPropType,
 	W3CInputValue,
 } from '@public-ui/schema';
+import { FormFieldMsg } from '../@shared/form-field-msg';
 import type { Props } from './types';
 
 /**
@@ -115,11 +116,7 @@ export class KolInput implements Props {
 						_label={this._label}
 					></kol-tooltip-wc>
 				)}
-				{hasError && (
-					<kol-alert _alert={this._alert} _type="error" class={`error${this._hideError ? ' hidden' : ''}`} id={`${this._id}-error`}>
-						{this._error}
-					</kol-alert>
-				)}
+				{hasError && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _error={this._error} _id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (

@@ -370,10 +370,6 @@ a > kol-span-wc,
 button > kol-span-wc {
 gap: 0.25em;
 }
-.hidden {
-display: none;
-visibility: hidden;
-}
 a.skip {
 left: -99999px;
 overflow: hidden;
@@ -864,10 +860,6 @@ a > kol-span-wc,
 button > kol-span-wc {
 gap: 0.25em;
 }
-.hidden {
-display: none;
-visibility: hidden;
-}
 a.skip {
 left: -99999px;
 overflow: hidden;
@@ -1181,9 +1173,7 @@ display: flex;
 gap: 1rem;
 }
 }`,
-	'KOL-NAV': `:host .hidden {
-display: none;
-}
+	'KOL-NAV': `
 :host > div > nav ul {
 list-style: none;
 margin: 0px;

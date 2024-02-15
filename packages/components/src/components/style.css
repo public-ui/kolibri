@@ -33,6 +33,11 @@
 		cursor: pointer;
 	}
 
+	.hidden {
+		display: none;
+		visibility: hidden;
+	}
+
 	/* This is the text label. */
 	.hide-label > kol-span-wc > span > span {
 		display: none;
