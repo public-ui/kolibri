@@ -19,7 +19,7 @@ export const getHeadingWcHtml = (
 	const tag = state._level === 0 ? 'strong' : `h${state._level || 1}`;
 
 	return `
-		<kol-heading-wc${additionalAttrs}  class="kol-heading">
+		<kol-heading-wc${additionalAttrs}>
 			<div class="kol-heading-wc">
 				<${tag} class="headline">
 					${state._label}
@@ -38,7 +38,7 @@ export const getHeadingHtml = (
 	return `
 <kol-heading>
 	<mock:shadow-root>
-		${getHeadingWcHtml(props)}
+		${getHeadingWcHtml(props, {}, ` class="kol-heading"`)}
 	</mock:shadow-root>
 	${slots.default !== undefined ? slots.default : ''}
 </kol-heading>`;
