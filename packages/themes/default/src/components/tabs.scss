@@ -33,7 +33,11 @@ button.selected {
 	color: var(--color-primary);
 }
 
-button kol-span-wc > span {
+button:not(.selected) kol-span-wc > span {
+	padding-bottom: 0.25em;
+}
+
+button.selected kol-span-wc > span {
 	border-bottom: 0.25em solid;
 }
 

@@ -7,7 +7,7 @@
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"xtest": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test",
-		"test-update": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"xtest-update": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest-update": "pnpm build"
 	},
