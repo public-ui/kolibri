@@ -31,3 +31,7 @@ button {
 .icon-only > .kol-span-wc > span > span {
 	display: none;
 }
+.hidden {
+	display: none;
+	visibility: hidden;
+}

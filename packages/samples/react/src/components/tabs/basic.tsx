@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
+
 import { KolTabs } from '@public-ui/react';
 
 const tabs = [
@@ -20,11 +22,26 @@ const tabs = [
 		_label: 'Letzter Tab',
 	},
 ];
+
+const tabsWithoutIcons = tabs.map((tab) => ({
+	...tab,
+	_icons: undefined,
+}));
+
 export const TabsBasic: FC = () => (
-	<KolTabs _tabs={tabs}>
-		<div slot="tab-0">Inhalte von Tab 1</div>
-		<div slot="tab-1">Inhalte von Tab 2</div>
-		<div slot="tab-2">Inhalte von Tab 3</div>
-		<div slot="tab-3">Inhalte von Tab 4</div>
-	</KolTabs>
+	<>
+		<KolTabs _tabs={tabsWithoutIcons} _label="Regular tabs">
+			<div slot="tab-0">Inhalte von Tab 1</div>
+			<div slot="tab-1">Inhalte von Tab 2</div>
+			<div slot="tab-2">Inhalte von Tab 3</div>
+			<div slot="tab-3">Inhalte von Tab 4</div>
+		</KolTabs>
+
+		<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with icons">
+			<div slot="tab-0">Inhalte von Tab 1</div>
+			<div slot="tab-1">Inhalte von Tab 2</div>
+			<div slot="tab-2">Inhalte von Tab 3</div>
+			<div slot="tab-3">Inhalte von Tab 4</div>
+		</KolTabs>
+	</>
 );

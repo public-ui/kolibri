@@ -52,6 +52,3 @@ fieldset .input-slot {
 .required label > span::after {
 	content: '';
 }
-.error.hidden {
-	display: none;
-}

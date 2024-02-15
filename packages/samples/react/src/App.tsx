@@ -3,13 +3,14 @@ import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 import { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
 import { Option } from '@public-ui/components';
-import { KolAlert, KolBadge } from '@public-ui/react';
-import { ROUTES } from './shares/routes';
-import { isDraftTheme, Theme, THEME_OPTIONS } from './shares/theme';
 import PackageJson from '@public-ui/components/package.json';
-import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
-import { Sidebar } from './components/Sidebar';
+import { KolAlert, KolBadge } from '@public-ui/react';
+import { HideMenusContext } from './shares/HideMenusContext';
 import { useLocation } from 'react-router';
+import { Sidebar } from './components/Sidebar';
+import { ROUTES } from './shares/routes';
+import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
+import { THEME_OPTIONS, Theme, isDraftTheme } from './shares/theme';
 
 import { BackPage } from './components/BackPage';
 
@@ -118,26 +119,28 @@ export const App: FC = () => {
 	};
 
 	return (
-		<div className={!hideMenus ? 'app-container' : ''} data-theme={theme}>
-			{!hideMenus && (
-				<Sidebar
-					version={PackageJson.version}
-					theme={theme}
-					sample={routerLocation.pathname}
-					routes={ROUTES}
-					routeList={ROUTE_LIST}
-					onThemeChange={handleThemeChange}
-				/>
-			)}
+		<HideMenusContext.Provider value={hideMenus}>
+			<div className={!hideMenus ? 'app-container' : ''} data-theme={theme}>
+				{!hideMenus && (
+					<Sidebar
+						version={PackageJson.version}
+						theme={theme}
+						sample={routerLocation.pathname}
+						routes={ROUTES}
+						routeList={ROUTE_LIST}
+						onThemeChange={handleThemeChange}
+					/>
+				)}
 
-			<div className="p-4" id="route-container">
-				{!hideMenus && isDraftTheme(theme) && <KolBadge className="mb-3" _label="DRAFT" _color="#db5461" />}
-				<Routes>
-					{ROUTE_TREE}
-					<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
-					<Route path="back-page" element={<BackPage />} />
-				</Routes>
+				<div className="p-4" id="route-container">
+					{!hideMenus && isDraftTheme(theme) && <KolBadge className="mb-3" _label="DRAFT" _color="#db5461" />}
+					<Routes>
+						{ROUTE_TREE}
+						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
+						<Route path="back-page" element={<BackPage />} />
+					</Routes>
+				</div>
 			</div>
-		</div>
+		</HideMenusContext.Provider>
 	);
 };

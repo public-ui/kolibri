@@ -10,6 +10,7 @@ import { SuggestionsPropType } from '../../types/props/suggestions';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { W3CInputValue } from '../../types/w3c';
 import { handleSlotContent, showExpertSlot } from '../../utils/reuse';
+import { FormFieldMsg } from '../@shared/form-field-msg';
 import { Props as ButtonProps } from '../button/types';
 import { Props } from './types';
 
@@ -124,11 +125,7 @@ export class KolInput implements Props {
 						_label={this._label}
 					></kol-tooltip-wc>
 				)}
-				{hasError && (
-					<kol-alert _alert={this._alert} _type="error" class={`kol-alert error${this._hideError ? ' hidden' : ''}`} id={`${this._id}-error`}>
-						{this._error}
-					</kol-alert>
-				)}
+				{hasError && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _error={this._error} _id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (

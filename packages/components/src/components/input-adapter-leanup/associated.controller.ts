@@ -6,8 +6,6 @@ import { StencilUnknown } from '../../types/unknown';
 import { devHint, devWarning } from '../../utils/a11y.tipps';
 import { getExperimentalMode } from '../../utils/dev.utils';
 
-const EXPERIMENTAL_MODE = getExperimentalMode();
-
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	name: string;
@@ -28,7 +26,7 @@ export class AssociatedInputController implements Watches {
 		this.host = this.findHostWithShadowRoot(host);
 		this.name = name;
 
-		if (EXPERIMENTAL_MODE) {
+		if (getExperimentalMode()) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
 				this.host?.removeChild(el);
 			});
@@ -70,7 +68,7 @@ export class AssociatedInputController implements Watches {
 	}
 
 	protected setAttribute(qualifiedName: string, element?: HTMLElement, value?: string | number | boolean) {
-		if (EXPERIMENTAL_MODE) {
+		if (getExperimentalMode()) {
 			try {
 				value = typeof value === 'object' && value !== null ? JSON.stringify(value) : value;
 				if (typeof value === 'boolean' || typeof value === 'number' || typeof value === 'string') {
@@ -168,7 +166,7 @@ export class AssociatedInputController implements Watches {
 	}
 
 	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		if (EXPERIMENTAL_MODE && typeof value === 'string') {
+		if (getExperimentalMode() && typeof value === 'string') {
 			const input = document.querySelector(value) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 			if (input /* SSR instanceof HTMLInputElement */) {
 				this.syncToOwnInput = input;
