@@ -10,9 +10,6 @@ kol-popover .popover {
 	opacity: 0;
 	position: absolute;
 }
-kol-popover .hidden {
-	display: none;
-}
 kol-popover .show {
 	animation: 0.3s ease-in forwards fadeInOpacity;
 }

@@ -15,6 +15,7 @@ import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
+import { FormFieldMsg } from '../@shared/form-field-msg';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { API, States } from './types';
@@ -122,11 +123,7 @@ export class KolInputRadio implements API {
 							</kol-input>
 						);
 					})}
-					{hasError && (
-						<kol-alert id={`${this.state._id}-error`} _alert={true} _type="error" class={`error${this._hideError ? ' hidden' : ''}`}>
-							{this.state._error}
-						</kol-alert>
-					)}
+					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _error={this.state._error} _id={this.state._id} />}
 				</fieldset>
 			</Host>
 		);
