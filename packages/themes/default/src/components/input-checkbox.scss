@@ -4,6 +4,7 @@
 	:host {
 		font-family: var(--font-family);
 	}
+
 	:host kol-input {
 		display: grid;
 		align-items: center;
@@ -143,6 +144,7 @@
 		min-width: 3.5em;
 		position: relative;
 		width: 3.5em;
+		outline: transparent solid 1px;
 	}
 
 	:host kol-input.switch input[type='checkbox']:before {
