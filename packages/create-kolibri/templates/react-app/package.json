@@ -27,9 +27,9 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.11",
-		"@public-ui/react": "1.7.11",
-		"@public-ui/themes": "1.7.11",
+		"@public-ui/components": "1.7.12",
+		"@public-ui/react": "1.7.12",
+		"@public-ui/themes": "1.7.12",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},

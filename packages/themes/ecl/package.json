@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui-/theme-ecl",
-	"version": "1.7.11",
+	"version": "1.7.12",
 	"private": true,
 	"scripts": {
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
@@ -18,13 +18,13 @@
 		"pretest-update:ecl-eu": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "1.7.11",
-		"@public-ui/visual-tests": "1.7.11",
+		"@public-ui/schema": "1.7.12",
+		"@public-ui/visual-tests": "1.7.12",
 		"@types/node": "ts5.3",
 		"npm-run-all": "4.1.5",
 		"typescript": "5.3.3"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.11"
+		"@public-ui/components": "1.7.12"
 	}
 }

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/hydrate",
-	"version": "1.7.11",
+	"version": "1.7.12",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -46,11 +46,11 @@
 		"prepack": "npm run build"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.7.11",
+		"@public-ui/components": "1.7.12",
 		"rimraf": "3.0.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.11"
+		"@public-ui/components": "1.7.12"
 	},
 	"sideEffects": false,
 	"type": "commonjs",
