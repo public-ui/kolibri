@@ -18,7 +18,8 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 	props._variant = props._variant || 'msg';
 	return `<kol-alert${additionalHTML}>
   <mock:shadow-root>
-    <kol-alert-wc class="${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}"${props._alert === true ? ' role="alert"' : ''}>
+    <kol-alert-wc class="kol-alert"${props._alert === true ? ' role="alert"' : ''}>
+		<div class="kol-alert-wc ${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}">
 			<div class="heading">
 				${getIconHtml(
 					{
@@ -36,16 +37,16 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 								: 'kol-message',
 						_icons:
 							props._type === 'success'
-								? 'codicon codicon-pass'
+								? 'kol-icon-wc codicon codicon-pass'
 								: props._type === 'error'
-								? 'codicon codicon-error'
+								? 'kol-icon-wc codicon codicon-error'
 								: props._type === 'warning'
-								? 'codicon codicon-warning'
+								? 'kol-icon-wc codicon codicon-warning'
 								: props._type === 'info'
-								? 'codicon codicon-info'
-								: 'codicon codicon-comment',
+								? 'kol-icon-wc codicon codicon-info'
+								: 'kol-icon-wc codicon codicon-comment',
 					},
-					` class="heading-icon"`
+					` class="heading-icon kol-icon"`
 				)}
 				<div>
 					${
@@ -57,7 +58,8 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 									},
 									{
 										default: props._label,
-									}
+									},
+									` class="kol-heading-wc"`
 							  )
 							: ''
 					}
@@ -76,14 +78,14 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 									_hideLabel: true,
 									_icons: {
 										left: {
-											icon: 'codicon codicon-close',
+											icon: 'kol-icon-wc codicon codicon-close',
 										},
 									},
 									_label: translate('kol-close'),
 									_tooltipAlign: 'left',
 								},
 								{},
-								` class="close"`
+								` class="kol-button-wc close"`
 						  )
 						: ''
 				}
@@ -97,5 +99,6 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
     </kol-alert-wc>
   </mock:shadow-root>
  ${innerHTML}
+ </div>
 </kol-alert>`;
 };
