@@ -10,9 +10,7 @@ import { watchHeadingLevel } from '../heading/validation';
 import { AlertType, AlertVariant, API, KoliBriAlertEventCallbacks, States } from './types';
 
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return (
-		<kol-icon class="kol-icon heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />
-	);
+	return <kol-icon class="heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
 };
 
 const AlertIcon = (props: { label?: string; type?: AlertType }) => {
@@ -79,7 +77,7 @@ export class KolAlertWc implements API {
 						<AlertIcon label={this.state._label} type={this.state._type} />
 						<div>
 							{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
-								<kol-heading-wc class="kol-heading-wc" _label={this.state._label} _level={this.state._level}></kol-heading-wc>
+								<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
 							)}
 							{this.state._variant === 'msg' && (
 								<div class="content">
@@ -89,7 +87,7 @@ export class KolAlertWc implements API {
 						</div>
 						{this.state._hasCloser && (
 							<kol-button-wc
-								class="kol-button-wc close"
+								class="close"
 								_hideLabel
 								_icons={{
 									left: {

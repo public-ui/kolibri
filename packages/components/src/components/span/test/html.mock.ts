@@ -42,7 +42,7 @@ export const getSpanWcHtml = (
 	const classNames: string[] = [...(state._hideLabel === true ? ['icon-only', 'hide-label'] : []), ...(options?.additionalClassNames ?? [])];
 
 	return `
-<kol-span-wc${classNames.length ? ` class="${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
+<kol-span-wc${classNames.length ? ` class="kol-span-wc ${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
 	${
 		icons.top
 			? getIconHtml({

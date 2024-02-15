@@ -21,7 +21,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 <kol-tooltip-wc${additionalAttrs}>
 	${
 		state._label !== ''
-			? `<div class="tooltip-floating">
+			? `<div class="kol-tooltip-wc tooltip-floating">
 			<div class="tooltip-area tooltip-arrow"></div>
 			${getSpanWcHtml(
 				{
