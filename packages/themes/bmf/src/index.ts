@@ -2602,7 +2602,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		ul li > :is(span, kol-link) {
 			line-height: 1.25rem;
-			height: 20px;
 		}
 		ul li:last-child > span {
 			color: var(--color-grey);
