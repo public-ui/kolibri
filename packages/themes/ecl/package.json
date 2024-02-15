@@ -9,7 +9,7 @@
 		"xtest": "npm-run-all test:*",
 		"test:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test",
 		"test:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test",
-		"test-update": "npm-run-all test-update:*",
+		"xtest-update": "npm-run-all test-update:*",
 		"test-update:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"test-update:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"pretest:ecl-ec": "pnpm build",
