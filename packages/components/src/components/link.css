@@ -17,11 +17,6 @@
 		text-decoration-thickness: 0.2em;
 	}
 
-	.hidden {
-		display: none;
-		visibility: hidden;
-	}
-
 	.skip {
 		left: -99999px;
 		overflow: hidden;

@@ -15,7 +15,7 @@ import type {
 	W3CInputValue,
 } from '@public-ui/schema';
 import { propagateFocus, showExpertSlot } from '@public-ui/schema';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
@@ -24,6 +24,8 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputRadioController } from './controller';
 
 import type { JSX } from '@stencil/core';
+import { FormFieldMsg } from '../@shared/form-field-msg';
+
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
  */
@@ -143,11 +145,7 @@ export class KolInputRadio implements InputRadioAPI {
 							</kol-input>
 						);
 					})}
-					{hasError && (
-						<kol-alert id={`${this.state._id}-error`} _alert={true} _type="error" class={`error${this._hideError ? ' hidden' : ''}`}>
-							{this.state._error}
-						</kol-alert>
-					)}
+					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _error={this.state._error} _id={this.state._id} />}
 				</fieldset>
 			</Host>
 		);

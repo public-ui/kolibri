@@ -15,8 +15,4 @@
 	div.input {
 		cursor: pointer;
 	}
-
-	.error.hidden {
-		display: none;
-	}
 }
