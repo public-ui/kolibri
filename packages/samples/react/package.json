@@ -4,9 +4,8 @@
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"scripts": {
-		"clean": "git clean -f -d -X",
-		"clean:locks": "rimraf package-lock.json pnpm-lock.yaml && npm run clean",
 		"build": "rimraf dist && cross-env NODE_ENV=production webpack",
+		"build:deps": "pnpm --filter @public-ui/sample-react^... build",
 		"format": "prettier --check src",
 		"lint": "eslint \"{src,tests}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map",

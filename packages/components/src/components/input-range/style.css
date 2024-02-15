@@ -42,9 +42,6 @@ input[type='range']::-moz-range-thumb {
 	cursor: pointer;
 	-moz-appearance: none;
 }
-.error.hidden {
-	display: none;
-}
 
 /* Fix missing outline in Chromium-based browsers on Windows in high contrast mode. */
 @media (prefers-contrast: more) {
