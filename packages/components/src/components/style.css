@@ -33,8 +33,21 @@
 		cursor: pointer;
 	}
 
-	/* This is the text label. */
-	.icon-only > kol-span-wc > span > span {
+	.hidden {
 		display: none;
+		visibility: hidden;
+	}
+
+	/* This is the text label. */
+	.hide-label > kol-span-wc > span > span {
+		display: none;
+	}
+
+	.disabled label,
+	[aria-disabled='true'],
+	[disabled] {
+		cursor: not-allowed;
+		opacity: 0.5;
+		outline: none;
 	}
 }

@@ -19,7 +19,9 @@ executeTests<ButtonProps>(
 		return page;
 	},
 	{
+		_disabled: [true, false],
 		_label: ['Label'],
+		_variant: ['primary', 'secondary', 'normal', 'danger', 'ghost'],
 	},
 	getButtonHtml
 );

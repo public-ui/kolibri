@@ -22,6 +22,10 @@ export namespace Components {
     }
     interface KolAccordion {
         /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
+        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label": string;
@@ -407,6 +411,10 @@ export namespace Components {
         "_on"?: KoliBriCardEventCallbacks;
     }
     interface KolDetails {
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -1644,6 +1652,10 @@ export namespace Components {
          */
         "_ariaCurrentValue"?: AriaCurrentValuePropType;
         /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -1698,6 +1710,10 @@ export namespace Components {
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -1771,6 +1787,10 @@ export namespace Components {
           * Defines the value for the aria-current attribute.
          */
         "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -2899,6 +2919,10 @@ declare namespace LocalJSX {
     }
     interface KolAccordion {
         /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
+        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
         "_label": string;
@@ -3282,6 +3306,10 @@ declare namespace LocalJSX {
         "_on"?: KoliBriCardEventCallbacks;
     }
     interface KolDetails {
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -4509,6 +4537,10 @@ declare namespace LocalJSX {
          */
         "_ariaCurrentValue"?: AriaCurrentValuePropType;
         /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
+        /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
         "_download"?: DownloadPropType;
@@ -4563,6 +4595,10 @@ declare namespace LocalJSX {
           * Defines the custom class attribute if _variant="custom" is set.
          */
         "_customClass"?: CustomClassPropType;
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */
@@ -4636,6 +4672,10 @@ declare namespace LocalJSX {
           * Defines the value for the aria-current attribute.
          */
         "_ariaCurrentValue"?: AriaCurrentValuePropType;
+        /**
+          * Makes the element not focusable and ignore all events.
+         */
+        "_disabled"?: boolean;
         /**
           * Tells the browser that the link contains a file. Optionally sets the filename.
          */

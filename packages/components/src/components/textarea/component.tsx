@@ -54,8 +54,8 @@ export class KolTextarea implements TextareaAPI {
 		propagateFocus(this.host, this.ref);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.ref?.value;
 	}

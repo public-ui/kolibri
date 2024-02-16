@@ -3,11 +3,6 @@
 		font-family: var(--font-family);
 	}
 
-	button:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
-	}
-
 	:host kol-button-group-wc {
 		display: inline-flex;
 		gap: 2rem;

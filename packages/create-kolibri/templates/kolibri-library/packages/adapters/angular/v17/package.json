@@ -61,7 +61,7 @@
 		"@angular/compiler": "17.0.4",
 		"@angular/compiler-cli": "17.0.4",
 		"@angular/core": "17.0.4",
-		"@public-ui/components": "2.0.4",
+		"@public-ui/components": "2.0.6",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.2",
@@ -70,13 +70,13 @@
 		"rimraf": "3.0.2",
 		"rxjs": "7.8.1",
 		"tslib": "2.6.2",
-		"typescript": "5.2.2",
+		"typescript": "5.3.3",
 		"zone.js": "0.14.2"
 	},
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
 		"@angular/core": "^17",
-		"@public-ui/components": "2.0.4"
+		"@public-ui/components": "2.0.6"
 	},
 	"files": [
 		"dist"

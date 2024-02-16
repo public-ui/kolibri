@@ -6,7 +6,7 @@ import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 const ARGS = {
-	_href: '#/sample-page',
+	_href: '#/back-page',
 };
 
 export const LinkButtonBasic: FC = () => (

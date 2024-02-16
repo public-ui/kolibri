@@ -17,7 +17,7 @@
 	},
 	"devDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
-		"@public-ui/components": "2.0.4",
+		"@public-ui/components": "2.0.6",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.8",
@@ -31,7 +31,7 @@
 	},
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
-		"@public-ui/components": "2.0.4",
+		"@public-ui/components": "2.0.6",
 		"react": ">=16.14.0",
 		"react-dom": ">=16.14.0"
 	},
