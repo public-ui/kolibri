@@ -17,6 +17,7 @@ import { propagateFocus } from '@public-ui/schema';
 import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
+import {transformTagName} from "../../utils/transform-tag-name";
 @Component({
 	tag: 'kol-button',
 	styleUrls: {
@@ -38,9 +39,11 @@ export class KolButton implements ButtonProps {
 	}
 
 	public render(): JSX.Element {
+		const KolButtonWc = transformTagName('kol-button-wc', 'kol-button', this.host!);
+
 		return (
 			<Host>
-				<kol-button-wc
+				<KolButtonWc
 					ref={this.catchRef}
 					class={{
 						button: true,
@@ -68,7 +71,7 @@ export class KolButton implements ButtonProps {
 					_variant={this._variant}
 				>
 					<slot name="expert" slot="expert"></slot>
-				</kol-button-wc>
+				</KolButtonWc>
 			</Host>
 		);
 	}
