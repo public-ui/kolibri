@@ -66,7 +66,7 @@ export class KolAlertWc implements API {
 		}
 
 		return (
-			<Host role={this.state._alert ? 'alert' : undefined}>
+			<Host class="kol-heading-wc" role={this.state._alert ? 'alert' : undefined}>
 				<div
 					class={{
 						'kol-alert-wc': true,

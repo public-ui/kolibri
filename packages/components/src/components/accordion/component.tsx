@@ -42,10 +42,9 @@ export class KolAccordion implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-accordion">
 				<div
 					class={{
-						'kol-accordion': true,
 						accordion: true,
 						open: this.state._open === true,
 					}}
