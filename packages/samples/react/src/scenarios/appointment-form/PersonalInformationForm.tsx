@@ -31,7 +31,6 @@ export function PersonalInformationForm() {
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Geben Sie Ihre Kontaktdaten ein"></KolHeading>
-			<ul>{sectionSubmitted && Object.entries(form.errors).map(([field, error]) => <li key={field}>{error}</li>)}</ul>
 			<KolForm
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
