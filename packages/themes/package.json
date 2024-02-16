@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "1.7.10",
+	"version": "1.7.12",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -51,10 +51,10 @@
 		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "1.7.10",
+		"@public-ui/schema": "1.7.12",
 		"@types/node": "ts5.3",
-		"@typescript-eslint/eslint-plugin": "6.20.0",
-		"@typescript-eslint/parser": "6.20.0",
+		"@typescript-eslint/eslint-plugin": "7.0.1",
+		"@typescript-eslint/parser": "7.0.1",
 		"eslint": "8.56.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.0.3",
@@ -63,7 +63,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.10"
+		"@public-ui/components": "1.7.12"
 	},
 	"sideEffects": false,
 	"type": "module",

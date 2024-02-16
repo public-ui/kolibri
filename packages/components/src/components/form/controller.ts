@@ -77,6 +77,7 @@ export const propagateSubmitEventToForm = (
 		if (form.tagName === 'FORM') {
 			setEventTarget(event, form);
 			form.dispatchEvent(event);
+			(form as HTMLFormElement).submit();
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as Props;
