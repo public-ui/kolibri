@@ -1,4 +1,4 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
@@ -80,6 +80,12 @@ export class KolForm implements API {
 			</form>
 		);
 	}
+	@Method()
+	focusErrorList(): void {
+		if (this._errorList && this._errorList.length > 0) {
+			this.errorListElement?.focus();
+		}
+	}
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Form-Events an.
@@ -126,11 +132,5 @@ export class KolForm implements API {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
 		this.validateErrorList(this._errorList);
-	}
-
-	public componentDidRender() {
-		if (this._errorList && this._errorList.length > 0) {
-			this.errorListElement?.focus();
-		}
 	}
 }

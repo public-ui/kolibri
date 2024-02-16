@@ -682,6 +682,7 @@ export namespace Components {
           * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
          */
         "_requiredText"?: Stringified<boolean>;
+        "focusErrorList": () => Promise<void>;
     }
     interface KolHeading {
         /**
