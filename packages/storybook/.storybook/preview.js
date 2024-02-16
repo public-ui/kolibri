@@ -19,14 +19,12 @@ import { THEME } from './theme';
 import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/components';
-import { TH } from '@public-oss/kolibri-themes';
 import { ITZBund } from '@public-ui/themes';
 
 const AVAILABLE_THEMES = [
 	{ name: 'ECL-EC-Styleguide (untested)', class: 'ecl-ec', color: '#326cae' },
 	{ name: 'ECL-EU-Styleguide (untested)', class: 'ecl-eu', color: '#326cae' },
 	{ name: 'ITZBund-Styleguide (untested)', class: 'itzbund', color: '#007a89' },
-	{ name: 'Styleguide des Freistaates Thüringen (untested)', class: 'th', color: '#0089C1' },
 ];
 const CACHED_SELECTED_THEME = localStorage.getItem('kolibri-storybook-theme');
 

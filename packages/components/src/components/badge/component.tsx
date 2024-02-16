@@ -1,15 +1,10 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { BadgeAPI, BadgeStates, ButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '@public-ui/schema';
+import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { KoliBriIconsProp } from '../../types/icons';
-import { handleColorChange, PropColor, validateColor } from '../../types/props/color';
-import { LabelPropType } from '../../types/props/label';
-import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
-import { ButtonProps } from '../button/types';
-import { API, States } from './types';
 
+import type { JSX } from '@stencil/core';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 @Component({
@@ -19,7 +14,7 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	},
 	shadow: true,
 })
-export class KolBadge implements API {
+export class KolBadge implements BadgeAPI {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
@@ -81,7 +76,7 @@ export class KolBadge implements API {
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
-	@State() public state: States = {
+	@State() public state: BadgeStates = {
 		_color: {
 			backgroundColor: '#000',
 			foregroundColor: '#fff',

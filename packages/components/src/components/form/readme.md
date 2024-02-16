@@ -24,10 +24,11 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 
 ## Properties
 
-| Property        | Attribute        | Description                                                                                     | Type                                                                                                          | Default     |
-| --------------- | ---------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_on`           | --               | Gibt die EventCallback-Funktionen für die Form-Events an.                                       | `undefined \| { onSubmit?: EventCallback<Event> \| undefined; onReset?: EventCallback<Event> \| undefined; }` | `undefined` |
-| `_requiredText` | `_required-text` | Defines whether the mandatory-fields-hint should be shown. A string overrides the default text. | `boolean \| string \| undefined`                                                                              | `true`      |
+| Property        | Attribute        | Description                                                                                                                                                                             | Type                                                                                                          | Default     |
+| --------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_errorList`    | --               | A list of error objects that each describe an issue encountered in the form. Each error object contains a message and a selector for identifying the form element related to the error. | `ErrorListPropType[] \| undefined`                                                                            | `undefined` |
+| `_on`           | --               | Gibt die EventCallback-Funktionen für die Form-Events an.                                                                                                                               | `undefined \| { onSubmit?: EventCallback<Event> \| undefined; onReset?: EventCallback<Event> \| undefined; }` | `undefined` |
+| `_requiredText` | `_required-text` | Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.                                                                                         | `boolean \| string \| undefined`                                                                              | `true`      |
 
 ## Slots
 
@@ -39,14 +40,30 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 
 ### Depends on
 
+- [kol-alert](../alert)
+- [kol-link](../link)
 - [kol-indented-text](../indented-text)
 
 ### Graph
 
 ```mermaid
 graph TD;
+  kol-form --> kol-alert
+  kol-form --> kol-link
   kol-form --> kol-indented-text
-  style kol-form fill:#f9f,stroke:#333,stroke-width:4px
+  kol-alert --> kol-alert-wc
+  kol-alert-wc --> kol-heading-wc
+  kol-alert-wc --> kol-button-wc
+  kol-alert-wc --> kol-icon
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip-wc
+  kol-span-wc --> kol-icon
+  kol-tooltip-wc --> kol-span-wc
+  kol-link --> kol-link-wc
+  kol-link-wc --> kol-span-wc
+  kol-link-wc --> kol-icon
+  kol-link-wc --> kol-tooltip-wc
+  style kol-form stroke:#333,stroke-width:4px
 ```
 
 ---

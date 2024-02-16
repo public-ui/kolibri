@@ -80,7 +80,7 @@ graph TD;
   kol-input-checkbox --> kol-icon
   kol-link-wc --> kol-icon
   kol-span-wc --> kol-icon
-  style kol-icon fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-icon stroke:#333,stroke-width:4px
 ```
 
 ---

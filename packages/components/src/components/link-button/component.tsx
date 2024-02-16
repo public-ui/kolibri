@@ -1,21 +1,22 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import type {
+	AccessKeyPropType,
+	AlternativeButtonLinkRolePropType,
+	AriaCurrentValuePropType,
+	ButtonVariantPropType,
+	CustomClassPropType,
+	DownloadPropType,
+	HrefPropType,
+	IconsPropType,
+	LabelWithExpertSlotPropType,
+	LinkButtonProps,
+	LinkOnCallbacksPropType,
+	LinkTargetPropType,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import { propagateFocus } from '@public-ui/schema';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 
-import { translate } from '../../i18n';
-import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { ButtonVariantPropType } from '../../types/props/button-variant';
-import { CustomClassPropType } from '../../types/props/custom-class';
-import { DownloadPropType } from '../../types/props/download';
-import { HrefPropType } from '../../types/props/href';
-import { IconsPropType } from '../../types/props/icons';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { LinkOnCallbacksPropType } from '../../types/props/link-on-callbacks';
-import { LinkTargetPropType } from '../../types/props/link-target';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { propagateFocus } from '../../utils/reuse';
-import { Props } from './types';
-import { AccessKeyPropType } from '../../types/props/access-key';
-import { AriaCurrentValuePropType } from '../../types/props/aria-current-value';
-
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {
@@ -23,7 +24,7 @@ import { AriaCurrentValuePropType } from '../../types/props/aria-current-value';
 	},
 	shadow: true,
 })
-export class KolLinkButton implements Props {
+export class KolLinkButton implements LinkButtonProps {
 	@Element() private readonly host?: HTMLKolLinkButtonElement;
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
@@ -51,7 +52,6 @@ export class KolLinkButton implements Props {
 					_role="button"
 					_tabIndex={this._tabIndex}
 					_target={this._target}
-					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
 					<slot name="expert" slot="expert"></slot>
@@ -121,11 +121,6 @@ export class KolLinkButton implements Props {
 	 * Defines where to open the link.
 	 */
 	@Prop() public _target?: LinkTargetPropType;
-
-	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.

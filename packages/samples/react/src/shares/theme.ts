@@ -1,11 +1,15 @@
 import { SelectOption } from '@public-ui/components';
 
-export type Theme = 'bmf' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'th' | 'unstyled';
+export type Theme = 'bmf' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'unstyled';
+
+const drafts: Theme[] = ['ecl-ec', 'ecl-eu', 'itzbund'];
+
+export const isDraftTheme = (theme: Theme) => drafts.includes(theme);
 
 export const isTheme = (value: unknown) => {
 	return (
 		typeof value === 'string' &&
-		(value === 'bmf' || value === 'default' || value === 'ecl-ec' || value === 'ecl-eu' || value === 'itzbund' || value === 'th' || value === 'unstyled')
+		(value === 'bmf' || value === 'default' || value === 'ecl-ec' || value === 'ecl-eu' || value === 'itzbund' || value === 'unstyled')
 	);
 };
 
@@ -38,9 +42,5 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	{
 		label: 'Informationstechnikzentrum Bund (Draft)',
 		value: 'itzbund',
-	},
-	{
-		label: 'Freistaat Thüringen (Draft)',
-		value: 'th',
 	},
 ];

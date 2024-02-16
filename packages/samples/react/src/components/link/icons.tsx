@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolLink } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 export const LinkIcons: FC = () => (
@@ -10,24 +11,27 @@ export const LinkIcons: FC = () => (
 			<p>Hier sind verschiedene Darstellungsweisen von Links mit Icons.</p>
 		</SampleDescription>
 		<div className="grid gap-4">
-			<KolLink _icons="codicon codicon-home" _label="Ich bin ein Link mit Icon links" />
+			<KolLink _icons="codicon codicon-home" _label="Ich bin ein Link mit Icon links" _href="#/sample-page" />
 			<KolLink
 				_icons={{
 					right: 'codicon codicon-home',
 				}}
 				_label="Ich bin ein Link mit Icon rechts"
+				_href="#/sample-page"
 			/>
 			<KolLink
 				_icons={{
 					top: 'codicon codicon-home',
 				}}
 				_label="Ich bin ein Link mit Icon oben"
+				_href="#/sample-page"
 			/>
 			<KolLink
 				_icons={{
 					bottom: 'codicon codicon-home',
 				}}
 				_label="Ich bin ein Link mit Icon unten"
+				_href="#/sample-page"
 			/>
 			<KolLink
 				_icons={{
@@ -37,6 +41,7 @@ export const LinkIcons: FC = () => (
 					left: 'codicon codicon-home',
 				}}
 				_label="Ich bin ein Link mit allen Icons"
+				_href="#/sample-page"
 			/>
 		</div>
 	</>

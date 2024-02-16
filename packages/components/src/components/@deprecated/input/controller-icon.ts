@@ -1,12 +1,11 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { Stringified } from '../../../types/common';
-import { KoliBriHorizontalIcons } from '../../../types/icons';
-import { isIcon } from '../../../types/props/icons';
-import { objectObjectHandler, parseJson, watchValidator } from '../../../utils/prop.validators';
-import { isString } from '../../../utils/validator';
+import type { KoliBriHorizontalIcons, Stringified } from '@public-ui/schema';
+import { isIcon, isString, objectObjectHandler, parseJson, watchValidator } from '@public-ui/schema';
+
 import { InputController } from './controller';
-import { Props, Watches } from './types-icon';
+
+import type { Props, Watches } from './types-icon';
 
 const beforePatchIcons = (value: unknown, nextState: Map<string, unknown>): void => {
 	const icons = value as KoliBriHorizontalIcons;

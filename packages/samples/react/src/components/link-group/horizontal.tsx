@@ -1,11 +1,13 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
+
 import { KolLinkGroup } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 const links = [
-	{ _label: 'Link 1', _href: 'https://www.w3.org' },
-	{ _label: 'Link 2', _href: 'https://www.w3.org' },
-	{ _label: 'Link 3', _href: 'https://www.w3.org' },
+	{ _label: 'Link 1', _href: '#/sample-page' },
+	{ _label: 'Link 2', _href: '#/sample-page' },
+	{ _label: 'Link 3', _href: '#/sample-page' },
 ];
 export const LinkGroupHorizontal: FC = () => (
 	<>

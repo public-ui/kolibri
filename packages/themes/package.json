@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "2.0.2",
+	"version": "2.0.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -46,26 +46,26 @@
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild",
-		"dev": "nodemon --ignore dist -e ts,tsx,scss  --exec 'pnpm build'",
+		"dev": "nodemon --ignore dist -e ts,tsx,scss  --exec \"pnpm build\"",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.2",
+		"@public-ui/schema": "2.0.4",
 		"@types/node": "ts5.3",
-		"@typescript-eslint/eslint-plugin": "6.15.0",
-		"@typescript-eslint/parser": "6.15.0",
+		"@typescript-eslint/eslint-plugin": "6.19.1",
+		"@typescript-eslint/parser": "6.19.1",
 		"eslint": "8.56.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"nodemon": "3.0.2",
-		"postcss": "8.4.32",
+		"nodemon": "3.0.3",
+		"postcss": "8.4.33",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.69.5",
+		"sass": "1.70.0",
 		"typescript": "5.3.3",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.2"
+		"@public-ui/components": "2.0.4"
 	},
 	"sideEffects": false,
 	"type": "module",

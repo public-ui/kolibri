@@ -49,8 +49,13 @@ We work according to the Git flow: https://medium.com/android-news/gitflow-with-
 6. Create a new branch for your changes
 7. [Install PNPM](https://pnpm.io/installation) on you local machine
 8. Install all packages with `pnpm i`
-9. Navigate to the desired package in our monorepo
-10. Start the project with “pnpm start”
+9. Build all packages within the mono repository `pnpm -r build`
+10. Navigate to the desired package in our monorepo
+11. When you want to start the project navigate to `packages/components/` and run pnpm start
+
+### Develop new component
+
+Refer to [new component](docs/tutorials/NEW_COMPONENT.md) tutorial.
 
 ### Switching between branches
 

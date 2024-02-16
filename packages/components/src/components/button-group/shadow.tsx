@@ -1,6 +1,6 @@
-import { Component, h, Host, JSX } from '@stencil/core';
-
-import { Props } from './types';
+import type { ButtonGroupProps } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
+import { Component, h, Host } from '@stencil/core';
 
 @Component({
 	tag: 'kol-button-group',
@@ -9,7 +9,7 @@ import { Props } from './types';
 	},
 	shadow: true,
 })
-export class KolButtonGroup implements Props {
+export class KolButtonGroup implements ButtonGroupProps {
 	public render(): JSX.Element {
 		return (
 			<Host>

@@ -1,9 +1,10 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister } from 'adopted-style-sheets';
 
-import { I18nextService, II18nService } from './i18n';
 import { getKoliBri } from '../utils/dev.utils';
+import { I18nextService } from './i18n';
 
+import type { II18nService } from './i18n';
 export const register = async (
 	themes:
 		| Generic.Theming.RegisterPatch<string, string, string>

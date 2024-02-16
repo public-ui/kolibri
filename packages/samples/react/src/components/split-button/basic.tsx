@@ -1,8 +1,10 @@
+import React from 'react';
+
 import { ToasterService } from '@public-ui/components';
-import React, { FC } from 'react';
 import { KolSplitButton } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
+import type { FC } from 'react';
 const toaster = ToasterService.getInstance(document);
 
 export const SplitButtonBasic: FC = () => {
@@ -22,12 +24,12 @@ export const SplitButtonBasic: FC = () => {
 					Beispiel kann durch drücken auf das Icon und des Pfeils das Menü geöffnet und geschlossen werden.
 				</p>
 			</SampleDescription>
-			<div className="grid gap-4">
-				<KolSplitButton _label="Nur der Pfeil öffnet" className="w-200px" _on={{ onClick: handleButtonClick }}>
-					Drowndown-Inhalt
+			<div className="flex gap-4">
+				<KolSplitButton _label="Nur der Pfeil öffnet" _on={{ onClick: handleButtonClick }}>
+					Dropdown-Inhalt
 				</KolSplitButton>
-				<KolSplitButton _label="ohne label" _hide-label _icons="codicon codicon-git-pull-request" className="w-200px">
-					Drowndown-Inhalt
+				<KolSplitButton _label="Schalter ohne sichtbares Label" _hideLabel _icons="codicon codicon-git-pull-request">
+					Dropdown-Inhalt
 				</KolSplitButton>
 			</div>
 		</>

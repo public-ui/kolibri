@@ -1,9 +1,11 @@
-import React, { FC, useState } from 'react';
+import type { FC } from 'react';
+import React, { useState } from 'react';
 
-import { Orientation } from '@public-ui/components';
 import { KolButton, KolForm, KolInputCheckbox, KolInputRadio } from '@public-ui/react';
+
 import { SampleDescription } from '../SampleDescription';
 
+import type { Orientation } from '@public-ui/components';
 export const InputRadioHorizontal: FC = () => {
 	const [show, setShow] = useState(true);
 	const [orientation, setOrientation] = useState<Orientation>('horizontal');

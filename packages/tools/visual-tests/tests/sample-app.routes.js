@@ -294,12 +294,22 @@ ROUTES.set('split-button/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('table/column-alignment', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('table/sort-data', {
 	axe: {
 		skipFailures: false,
 	},
 });
 ROUTES.set('table/with-pagination', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/pagination-position', {
 	axe: {
 		skipFailures: false,
 	},
@@ -351,6 +361,11 @@ ROUTES.set('textarea/with-counter', {
 	},
 });
 ROUTES.set('toast/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('tree/basic/home', {
 	axe: {
 		skipFailures: false,
 	},

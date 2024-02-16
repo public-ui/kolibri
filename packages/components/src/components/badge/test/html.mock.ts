@@ -1,11 +1,14 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { handleColorChange } from '../../../types/props/color';
-import { getSpanWcHtml, SpanOptions } from '../../span/test/html.mock';
-import { Props, States } from '../types';
+import { handleColorChange } from '@public-ui/schema';
 
-export const getBadgeHtml = (props: Props, options?: SpanOptions): string => {
-	const state = mixMembers<Props, States>(
+import { getSpanWcHtml } from '../../span/test/html.mock';
+
+import type { BadgeProps, BadgeStates } from '@public-ui/schema';
+import type { SpanOptions } from '../../span/test/html.mock';
+
+export const getBadgeHtml = (props: BadgeProps, options?: SpanOptions): string => {
+	const state = mixMembers<BadgeProps, BadgeStates>(
 		{
 			_color: {
 				backgroundColor: '#000',

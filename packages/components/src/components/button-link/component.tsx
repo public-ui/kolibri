@@ -1,20 +1,22 @@
-import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
+import type {
+	AccessKeyPropType,
+	AlternativeButtonLinkRolePropType,
+	ButtonCallbacksPropType,
+	ButtonLinkProps,
+	ButtonTypePropType,
+	IconsPropType,
+	IdPropType,
+	LabelWithExpertSlotPropType,
+	NamePropType,
+	StencilUnknown,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import { propagateFocus } from '@public-ui/schema';
+import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
-import { ButtonTypePropType } from '../../types/props/button-type';
-import { IconsPropType } from '../../types/props/icons';
-import { IdPropType } from '../../types/props/id';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { NamePropType } from '../../types/props/name';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { StencilUnknown } from '../../types/unknown';
-import { propagateFocus } from '../../utils/reuse';
-import { Props } from './types';
-import { AccessKeyPropType } from '../../types/props/access-key';
-
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-button-link',
 	styleUrls: {
@@ -22,7 +24,7 @@ import { AccessKeyPropType } from '../../types/props/access-key';
 	},
 	shadow: true,
 })
-export class KolButtonLink implements Props {
+export class KolButtonLink implements ButtonLinkProps {
 	@Element() private readonly host?: HTMLKolButtonLinkElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {

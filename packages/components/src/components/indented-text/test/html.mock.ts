@@ -1,7 +1,7 @@
-import { Props } from '../types';
+import type { IndentedTextProps } from '@public-ui/schema';
 
 export const getIndentedTextHtml = (
-	props: Props,
+	props: IndentedTextProps,
 	slots: {
 		default?: string;
 	} = {}

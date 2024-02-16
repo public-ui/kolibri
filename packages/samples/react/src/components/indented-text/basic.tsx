@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolIndentedText } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 export const IndentedTextBasic: FC = () => (

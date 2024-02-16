@@ -1,14 +1,21 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { alertTypeOptions, alertVariantOptions, setState, validateHasCloser, validateLabel, watchBoolean, watchValidator } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { HeadingLevel } from '../../types/heading-level';
-import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 import { Log } from '../../utils/dev.utils';
-import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
-import { AlertType, alertTypeOptions, AlertVariant, alertVariantOptions, API, KoliBriAlertEventCallbacks, States } from './types';
 
+import type {
+	AlertAPI,
+	AlertStates,
+	AlertType,
+	AlertVariant,
+	HasCloserPropType,
+	HeadingLevel,
+	KoliBriAlertEventCallbacks,
+	LabelPropType,
+} from '@public-ui/schema';
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
 	return <kol-icon class="heading-icon" _label={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
 };
@@ -35,7 +42,7 @@ const AlertIcon = (props: { label?: string; type?: AlertType }) => {
 	tag: 'kol-alert-wc',
 	shadow: false,
 })
-export class KolAlertWc implements API {
+export class KolAlertWc implements AlertAPI {
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
 			this._on.onClose(new Event('Close'));
@@ -79,7 +86,7 @@ export class KolAlertWc implements API {
 						{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
 							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
 						)}
-						{this._variant === 'msg' && (
+						{this.state._variant === 'msg' && (
 							<div class="content">
 								<slot />
 							</div>
@@ -100,7 +107,7 @@ export class KolAlertWc implements API {
 						></kol-button-wc>
 					)}
 				</div>
-				{this._variant === 'card' && (
+				{this.state._variant === 'card' && (
 					<div class="content">
 						<slot />
 					</div>
@@ -145,7 +152,7 @@ export class KolAlertWc implements API {
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 
-	@State() public state: States = {
+	@State() public state: AlertStates = {
 		_level: 1,
 	};
 

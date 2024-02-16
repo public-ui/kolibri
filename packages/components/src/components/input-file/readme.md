@@ -101,7 +101,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-input-file fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-input-file stroke:#333,stroke-width:4px
 ```
 
 ---

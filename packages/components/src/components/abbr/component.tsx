@@ -1,9 +1,10 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { validateLabel, validateTooltipAlign } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
-import { API, States } from './types';
+
+import type { AbbrAPI, AbbrStates, LabelPropType, TooltipAlignPropType } from '@public-ui/schema';
 
 /**
  * @slot - Der Begriff, der erläutert werden soll.
@@ -15,7 +16,7 @@ import { API, States } from './types';
 	},
 	shadow: true,
 })
-export class KolAbbr implements API {
+export class KolAbbr implements AbbrAPI {
 	private readonly nonce = nonce();
 
 	public render(): JSX.Element {
@@ -48,8 +49,8 @@ export class KolAbbr implements API {
 	 *
 	 * @see: https://stenciljs.com/docs/state
 	 */
-	@State() public state: States = {
-		_label: '…', // ⚠ required
+	@State() public state: AbbrStates = {
+		_label: '', // ⚠ required
 		_tooltipAlign: 'top',
 	};
 
@@ -63,7 +64,9 @@ export class KolAbbr implements API {
 	 */
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_tooltipAlign')

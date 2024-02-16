@@ -1,11 +1,12 @@
+import type { ToastState } from '@public-ui/schema';
 import { h } from '@stencil/core';
-import { ToastState } from './types';
 
 type Props = {
 	toastState: ToastState;
 	onClose: () => void;
 	key: string;
 };
+
 export const InternalToast = ({ toastState, onClose, key }: Props) => {
 	const handleRef = (element?: HTMLDivElement) => {
 		if (typeof toastState.toast.render === 'function' && element) {

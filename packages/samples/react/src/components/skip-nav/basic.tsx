@@ -1,5 +1,8 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
+
 import { KolSkipNav } from '@public-ui/react';
+
 import { SampleDescription } from '../SampleDescription';
 
 export const SkipNavBasic: FC = () => (

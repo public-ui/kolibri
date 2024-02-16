@@ -1,11 +1,8 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { HrefPropType, KoliBriQuoteVariant, LabelPropType, QuoteAPI, QuoteStates } from '@public-ui/schema';
+import { koliBriQuoteVariantOptions, showExpertSlot, validateLabel, watchString, watchValidator } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { HrefPropType } from '../../types/props/href';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { watchString, watchValidator } from '../../utils/prop.validators';
-import { showExpertSlot } from '../../utils/reuse';
-import { API, KoliBriQuoteVariant, koliBriQuoteVariantOptions, States } from './types';
-
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-quote',
 	styleUrls: {
@@ -13,7 +10,7 @@ import { API, KoliBriQuoteVariant, koliBriQuoteVariantOptions, States } from './
 	},
 	shadow: true,
 })
-export class KolQuote implements API {
+export class KolQuote implements QuoteAPI {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
@@ -34,9 +31,9 @@ export class KolQuote implements API {
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 
-	@State() public state: States = {
-		_href: '…', // ⚠ required
-		_quote: '…', // ⚠ required
+	@State() public state: QuoteStates = {
+		_href: '', // ⚠ required
+		_quote: '', // ⚠ required
 		_variant: 'inline',
 	};
 

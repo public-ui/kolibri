@@ -1,12 +1,11 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import type { LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '@public-ui/schema';
+import { validateLabel } from '@public-ui/schema';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
-import { API, States } from './types';
 
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-skip-nav',
 	styleUrls: {
@@ -14,7 +13,7 @@ import { API, States } from './types';
 	},
 	shadow: true,
 })
-export class KolSkipNav implements API {
+export class KolSkipNav implements SkipNavAPI {
 	public render(): JSX.Element {
 		return (
 			<nav aria-label={this.state._label}>
@@ -41,8 +40,8 @@ export class KolSkipNav implements API {
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
-	@State() public state: States = {
-		_label: '…', // ⚠ required
+	@State() public state: SkipNavStates = {
+		_label: '', // ⚠ required
 		_links: [],
 	};
 
@@ -51,7 +50,9 @@ export class KolSkipNav implements API {
 		if (!initial) {
 			removeNavLabel(this.state._label); // remove the current
 		}
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 

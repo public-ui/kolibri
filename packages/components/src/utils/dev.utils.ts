@@ -1,5 +1,6 @@
+import { processEnv } from '@public-ui/schema';
+
 import { ModalService } from '../components/modal/service';
-import { processEnv } from './reuse';
 
 let WINDOW: Window | null = null;
 let DOCUMENT: Document | null = null;
@@ -143,7 +144,7 @@ export const initKoliBri = (): void => {
 	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.2
+	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.4
 		`,
 			{
 				forceLog: true,

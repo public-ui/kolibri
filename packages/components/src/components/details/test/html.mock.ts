@@ -2,17 +2,18 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
-import { Props } from '../types';
+
+import type { DetailsProps } from '@public-ui/schema';
 
 export const getDetailsHtml = (
-	props: Props,
+	props: DetailsProps,
 	slots: {
 		default?: string;
 	} = {}
 ): string => {
 	props = mixMembers(
 		{
-			_label: '…',
+			_label: '', // ⚠ required
 		},
 		props
 	);

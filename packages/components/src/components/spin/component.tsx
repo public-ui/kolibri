@@ -1,10 +1,10 @@
-import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { validateShow, validateSpinVariant } from '@public-ui/schema';
+import { Component, Fragment, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { ShowPropType, validateShow } from '../../types/props/show';
-import { SpinVariantPropType, validateSpinVariant } from '../../types/props/variant/spin';
-import { API, States } from './types';
 
+import type { ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '@public-ui/schema';
 function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {
 		case 'cycle':
@@ -30,7 +30,7 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	},
 	shadow: true,
 })
-export class KolSpin implements API {
+export class KolSpin implements SpinAPI {
 	private showToggled = false;
 
 	public render(): JSX.Element {
@@ -68,7 +68,7 @@ export class KolSpin implements API {
 	 */
 	@Prop() public _variant?: SpinVariantPropType = 'dot';
 
-	@State() public state: States = {
+	@State() public state: SpinStates = {
 		_variant: 'dot',
 	};
 

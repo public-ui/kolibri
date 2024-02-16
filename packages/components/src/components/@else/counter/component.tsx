@@ -1,4 +1,5 @@
-import { h, Host, JSX, State } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { h, Host, State } from '@stencil/core';
 
 // https://webcomponents.dev/blog/all-the-ways-to-make-a-web-component/
 

@@ -42,4 +42,3 @@ UserInterfaceState.xcuserstate
 
 # Allow
 !/node_martin/*.tgz
-!/src/types/

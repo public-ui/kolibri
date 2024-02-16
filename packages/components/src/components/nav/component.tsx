@@ -1,19 +1,32 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type {
+	ButtonOrLinkOrTextWithChildrenProps,
+	ButtonWithChildrenProps,
+	CollapsiblePropType,
+	HideLabelPropType,
+	LabelPropType,
+	NavAPI,
+	NavStates,
+	Orientation,
+	Stringified,
+} from '@public-ui/schema';
+import {
+	a11yHintLabelingLandmarks,
+	devHint,
+	devWarning,
+	validateCollapsible,
+	validateHasCompactButton,
+	validateHasIconsWhenExpanded,
+	validateHideLabel,
+	validateLabel,
+	watchValidator,
+} from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
-import { Stringified } from '../../types/common';
-import { Orientation } from '../../types/orientation';
-import { CollapsiblePropType, validateCollapsible } from '../../types/props/collapsible';
-import { validateHasCompactButton } from '../../types/props/has-compact-button';
-import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
-import { watchValidator } from '../../utils/prop.validators';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { API, States } from './types';
 import { watchNavLinks } from './validation';
 
+import type { JSX } from '@stencil/core';
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
 		if (Array.isArray(link._children)) {
@@ -38,20 +51,28 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	},
 	shadow: true,
 })
-export class KolNav implements API {
-	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
-		link._active = !link._active;
+export class KolNav implements NavAPI {
+	private expandChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
 			...this.state,
+			_expandedChildren: [...this.state._expandedChildren, children],
 		};
-	};
+	}
+	private collapseChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
+		this.state = {
+			...this.state,
+			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren != children),
+		};
+	}
 
-	private readonly hasActiveChild = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
-		if (Array.isArray(link._children) && link._children.length > 0) {
-			return link._children.some(this.hasActiveChild);
+	private readonly handleToggleExpansionClick = (children?: ButtonOrLinkOrTextWithChildrenProps[]): void => {
+		if (children) {
+			if (this.state._expandedChildren.includes(children)) {
+				this.collapseChildren(children);
+			} else {
+				this.expandChildren(children);
+			}
 		}
-
-		return false;
 	};
 
 	private entry(
@@ -61,15 +82,25 @@ export class KolNav implements API {
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean
 	): JSX.Element {
+		const icons =
+			this.state._hasIconsWhenExpanded || this.state._hideLabel
+				? link._icons || (this.state._hideLabel ? 'codicon codicon-symbol-method' : undefined)
+				: undefined;
+
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
-				<kol-button-link-text-switch
-					class="button-link-text-switch"
-					_link={{
-						...link,
-						_hideLabel: hideLabel,
-					}}
-				/>
+				{'_href' in link ? (
+					<kol-link-wc class="entry-item" {...link} _hideLabel={hideLabel} _icons={icons} />
+				) : (
+					<kol-button-wc
+						class="entry-item"
+						_label={link._label}
+						_hideLabel={hideLabel}
+						_icons={icons}
+						_on={{ onClick: () => this.handleToggleExpansionClick(link._children) }}
+					/>
+				)}
+
 				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, expanded) : ''}
 			</div>
 		);
@@ -84,7 +115,7 @@ export class KolNav implements API {
 				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
 				_hideLabel
 				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
-				_on={{ onClick: () => this.onClick(link) }}
+				_on={{ onClick: () => this.handleToggleExpansionClick(link._children) }}
 			></kol-button-wc>
 		);
 	}
@@ -99,7 +130,7 @@ export class KolNav implements API {
 	): JSX.Element {
 		const active = !!link._active;
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
-		const expanded = hasChildren && active;
+		const expanded = Boolean(link._children && this.state._expandedChildren.includes(link._children));
 		return (
 			<li
 				class={{
@@ -109,12 +140,8 @@ export class KolNav implements API {
 				}}
 				key={index}
 			>
-				{this.entry(collapsible, hideLabel, hasChildren, link, active)}
-				{expanded ? (
-					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} orientation={orientation} />
-				) : (
-					''
-				)}
+				{this.entry(collapsible, hideLabel, hasChildren, link, expanded)}
+				{expanded && <this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} orientation={orientation} />}
 			</li>
 		);
 	}
@@ -135,6 +162,31 @@ export class KolNav implements API {
 		);
 	};
 
+	private initializeExpandedChildren() {
+		/**
+		 * Recursively process branches and expand branches which are active or have active children somewhere in the tree.
+		 * @param {ButtonOrLinkOrTextWithChildrenProps} branch
+		 * @return boolean - true indicates that the current branch or a child branch is active
+		 */
+		const handleBranch = (branch: ButtonOrLinkOrTextWithChildrenProps) => {
+			if (branch._active) {
+				if (branch._children) {
+					this.expandChildren(branch._children);
+				}
+				return true;
+			} else if (branch._children) {
+				for (const childBranch of branch._children) {
+					if (handleBranch(childBranch)) {
+						this.expandChildren(branch._children);
+						return true;
+					}
+				}
+			}
+			return false;
+		};
+		this.state._links.forEach(handleBranch);
+	}
+
 	public render(): JSX.Element {
 		let hasCompactButton = this.state._hasCompactButton;
 		if (this.state._orientation === 'horizontal' && this.state._hasCompactButton === true) {
@@ -148,7 +200,9 @@ export class KolNav implements API {
 			<Host>
 				<div
 					class={{
+						nav: true,
 						[orientation]: true,
+						'is-compact': this.state._hideLabel,
 					}}
 				>
 					<nav aria-label={this.state._label} id="nav">
@@ -187,9 +241,14 @@ export class KolNav implements API {
 	@Prop() public _collapsible?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+	 * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
 	 */
 	@Prop() public _hasCompactButton?: boolean = false;
+
+	/**
+	 * Shows icons next to the navigation item labels, even when the navigation is not collapsed.
+	 */
+	@Prop() public _hasIconsWhenExpanded?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -213,13 +272,15 @@ export class KolNav implements API {
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	@State() public state: States = {
+	@State() public state: NavStates = {
 		_collapsible: true,
 		_hasCompactButton: false,
+		_hasIconsWhenExpanded: false,
 		_hideLabel: false,
-		_label: '…', // ⚠ required
+		_label: '', // ⚠ required
 		_links: [],
 		_orientation: 'vertical',
+		_expandedChildren: [],
 	};
 
 	@Watch('_collapsible')
@@ -232,6 +293,11 @@ export class KolNav implements API {
 		validateHasCompactButton(this, value);
 	}
 
+	@Watch('_hasIconsWhenExpanded')
+	public validateHasIconsWhenExpanded(value?: boolean): void {
+		validateHasIconsWhenExpanded(this, value);
+	}
+
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: HideLabelPropType) {
 		validateHideLabel(this, value);
@@ -242,7 +308,9 @@ export class KolNav implements API {
 		if (!initial) {
 			removeNavLabel(this.state._label); // remove the current
 		}
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
@@ -271,9 +339,11 @@ export class KolNav implements API {
 		this.validateCollapsible(this._collapsible);
 		this.validateHideLabel(this._hideLabel);
 		this.validateHasCompactButton(this._hasCompactButton);
+		this.validateHasIconsWhenExpanded(this._hasIconsWhenExpanded);
 		this.validateLabel(this._label, undefined, true);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
+		this.initializeExpandedChildren();
 	}
 
 	public disconnectedCallback(): void {

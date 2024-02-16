@@ -8,7 +8,6 @@ import { KolBadge } from './badge/component';
 import { KolBreadcrumb } from './breadcrumb/component';
 import { KolButtonGroupWc } from './button-group/component';
 import { KolButtonGroup } from './button-group/shadow';
-import { KolButtonLinkTextSwitch } from './button-link-text-switch/component';
 import { KolButtonLink } from './button-link/component';
 import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
@@ -45,8 +44,8 @@ import { KolProcess } from './progress/component';
 import { KolQuote } from './quote/shadow';
 import { KolSelect } from './select/component';
 import { KolSkipNav } from './skip-nav/component';
-import { KolSpanWc } from './span/component';
 import { KolSpan } from './span/shadow';
+import { KolSpanWc } from './span/component';
 import { KolSpin } from './spin/component';
 import { KolSplitButton } from './split-button/component';
 import { KolSymbol } from './symbol/component';
@@ -56,6 +55,10 @@ import { KolTextarea } from './textarea/component';
 import { KolToastContainer } from './toaster/component';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/component';
+import { KolTree } from './tree/shadow';
+import { KolTreeItem } from './tree-item/shadow';
+import { KolTreeItemWc } from './tree-item/component';
+import { KolTreeWc } from './tree/component';
 
 export const COMPONENTS = [
 	KolAbbr,
@@ -70,7 +73,6 @@ export const COMPONENTS = [
 	KolButtonGroup,
 	KolButtonGroupWc,
 	KolButtonLink,
-	KolButtonLinkTextSwitch,
 	KolButtonWc,
 	KolCard,
 	KolDetails,
@@ -115,5 +117,9 @@ export const COMPONENTS = [
 	KolTextarea,
 	KolToastContainer,
 	KolTooltip,
+	KolTree,
+	KolTreeItem,
+	KolTreeItemWc,
+	KolTreeWc,
 	KolVersion,
 ];

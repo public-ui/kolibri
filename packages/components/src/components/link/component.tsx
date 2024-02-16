@@ -1,27 +1,43 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type {
+	AccessKeyPropType,
+	AlternativeButtonLinkRolePropType,
+	AriaCurrentValuePropType,
+	DownloadPropType,
+	HrefPropType,
+	KoliBriIconsProp,
+	LabelWithExpertSlotPropType,
+	LinkAPI,
+	LinkOnCallbacksPropType,
+	LinkStates,
+	LinkTargetPropType,
+	Stringified,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import {
+	devHint,
+	propagateFocus,
+	setEventTarget,
+	showExpertSlot,
+	validateAccessKey,
+	validateAlternativeButtonLinkRole,
+	validateAriaCurrentValue,
+	validateDownload,
+	validateHideLabel,
+	validateHref,
+	validateIcons,
+	validateLabelWithExpertSlot,
+	validateLinkCallbacks,
+	validateLinkTarget,
+	validateTabIndex,
+	validateTooltipAlign,
+} from '@public-ui/schema';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { Stringified } from '../../types/common';
-import { KoliBriIconsProp } from '../../types/icons';
-import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { DownloadPropType, validateDownload } from '../../types/props/download';
-import { HrefPropType, validateHref } from '../../types/props/href';
-import { validateIcons } from '../../types/props/icons';
-import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
-import { LinkOnCallbacksPropType, validateLinkCallbacks } from '../../types/props/link-on-callbacks';
-import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
-import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
-import { devHint } from '../../utils/a11y.tipps';
-import { setEventTarget, watchString } from '../../utils/prop.validators';
-import { propagateFocus, showExpertSlot } from '../../utils/reuse';
-import { validateTabIndex } from '../../utils/validators/tab-index';
-import { States as LinkStates } from '../link/types';
-import { API } from './types';
-import { validateHideLabel } from '../../types/props/hide-label';
-import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
-import { onLocationChange, UnsubscribeFunction } from './ariaCurrentService';
-import { AriaCurrentValuePropType, validateAriaCurrentValue } from '../../types/props/aria-current-value';
+import { onLocationChange } from './ariaCurrentService';
 
+import type { JSX } from '@stencil/core';
+import type { UnsubscribeFunction } from './ariaCurrentService';
 /**
  * @internal
  */
@@ -29,7 +45,7 @@ import { AriaCurrentValuePropType, validateAriaCurrentValue } from '../../types/
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements API {
+export class KolLinkWc implements LinkAPI {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private ref?: HTMLAnchorElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
@@ -78,7 +94,7 @@ export class KolLinkWc implements API {
 		};
 
 		if (this.state._hideLabel === true && !this.state._label) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden _hide-label gesetzt ist.`);
+			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn _hide-label gesetzt ist.`);
 		}
 		return { isExternal, tagAttrs };
 	};
@@ -93,7 +109,11 @@ export class KolLinkWc implements API {
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
-					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+					aria-label={
+						this.state._hideLabel && typeof this.state._label === 'string'
+							? `${this.state._label}${isExternal ? ` (${translate('kol-open-link-in-tab')})` : ''}`
+							: undefined
+					}
 					class={{
 						'external-link': isExternal,
 						'hide-label': this.state._hideLabel === true,
@@ -113,7 +133,14 @@ export class KolLinkWc implements API {
 					>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
-					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icons={'codicon codicon-link-external'} />}
+					{isExternal && (
+						<kol-icon
+							class="external-link-icon"
+							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
+							_icons={'codicon codicon-link-external'}
+							aria-hidden={this.state._hideLabel}
+						/>
+					)}
 				</a>
 				<kol-tooltip-wc
 					/**
@@ -188,19 +215,14 @@ export class KolLinkWc implements API {
 	@Prop() public _target?: LinkTargetPropType;
 
 	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
-
-	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	@State() public state: LinkStates = {
-		_href: '…', // ⚠ required
-		_icons: {}, // ⚠ required
-		_ariaCurrentValue: 'page', // ⚠ required
+		_ariaCurrentValue: 'page',
+		_href: '', // ⚠ required
+		_icons: {},
 	};
 
 	@Watch('_accessKey')
@@ -225,7 +247,9 @@ export class KolLinkWc implements API {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		validateHref(this, value);
+		validateHref(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_icons')
@@ -258,11 +282,6 @@ export class KolLinkWc implements API {
 		validateLinkTarget(this, value);
 	}
 
-	@Watch('_targetDescription')
-	public validateTargetDescription(value?: string): void {
-		watchString(this, '_targetDescription', value);
-	}
-
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this, value);
@@ -280,7 +299,6 @@ export class KolLinkWc implements API {
 		this.validateRole(this._role);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
-		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;

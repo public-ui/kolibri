@@ -1,4 +1,4 @@
-import { Toast, ToasterOptions } from './types';
+import type { Toast, ToasterOptions } from '@public-ui/schema';
 
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();

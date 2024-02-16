@@ -14,9 +14,9 @@
 		"start": "npm run dev"
 	},
 	"dependencies": {
-		"@public-ui/components": "2.0.2",
-		"@public-ui/react": "2.0.2",
-		"@public-ui/themes": "2.0.2",
+		"@public-ui/components": "2.0.4",
+		"@public-ui/react": "2.0.4",
+		"@public-ui/themes": "2.0.4",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},

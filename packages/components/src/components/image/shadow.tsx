@@ -1,10 +1,8 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { ImageAPI, ImageSourcePropType, ImageStates, Loading } from '@public-ui/schema';
+import { validateImageSource, validateLoading, watchString } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
-import { watchString } from '../../utils/prop.validators';
-import { Loading, validateLoading } from '../../utils/validators/loading';
-import { API, States } from './types';
-
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-image',
 	styleUrls: {
@@ -12,7 +10,7 @@ import { API, States } from './types';
 	},
 	shadow: true,
 })
-export class KolImage implements API {
+export class KolImage implements ImageAPI {
 	/**
 	 * Setzt den alternativen Text.
 	 */
@@ -38,10 +36,10 @@ export class KolImage implements API {
 	 */
 	@Prop() public _srcset?: string;
 
-	@State() public state: States = {
-		_alt: '…', // ⚠ required
+	@State() public state: ImageStates = {
+		_alt: '', // ⚠ required
 		_loading: 'lazy',
-		_src: '…', // ⚠ required
+		_src: '', // ⚠ required
 	};
 
 	@Watch('_alt')

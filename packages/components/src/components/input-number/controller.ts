@@ -1,12 +1,10 @@
-import type { Generic } from 'adopted-style-sheets';
-import { Iso8601 } from '../../types/input/iso8601';
-import { InputTypeOnOff } from '../../types/input/types';
-import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
-import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
-import { InputIconController } from '../@deprecated/input/controller-icon';
-import { Props, Watches } from './types';
+import type { InputNumberProps, InputNumberWatches, InputTypeOnOff, Iso8601, SuggestionsPropType } from '@public-ui/schema';
+import { validateSuggestions, watchBoolean, watchNumber, watchString, watchValidator } from '@public-ui/schema';
 
-export class InputNumberController extends InputIconController implements Watches {
+import { InputIconController } from '../@deprecated/input/controller-icon';
+
+import type { Generic } from 'adopted-style-sheets';
+export class InputNumberController extends InputIconController implements InputNumberWatches {
 	/**
 	 * Regex to check whether a string is a number or a date in ISO-8601 format.
 	 * Test the regex here: https://regex101.com/r/ddGR4V/1
@@ -14,9 +12,9 @@ export class InputNumberController extends InputIconController implements Watche
 	private readonly numberOrIsoDateRegex =
 		/^\d+$|(^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?([+-][0-2]\d:[0-5]\d|Z)?)?$)|(^[0-2]\d:[0-5]\d(:[0-5]\d)?$)/;
 
-	protected readonly component: Generic.Element.Component & Props;
+	protected readonly component: Generic.Element.Component & InputNumberProps;
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & InputNumberProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}

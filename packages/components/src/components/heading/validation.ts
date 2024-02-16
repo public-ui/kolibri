@@ -1,7 +1,7 @@
-import type { Generic } from 'adopted-style-sheets';
+import type { HeadingLevel } from '@public-ui/schema';
+import { headingLevelOptions, watchValidator } from '@public-ui/schema';
 
-import { watchValidator } from '../../utils/prop.validators';
-import { HeadingLevel, headingLevelOptions } from '../../types/heading-level';
+import type { Generic } from 'adopted-style-sheets';
 
 export const watchHeadingLevel = (component: Generic.Element.Component, value?: HeadingLevel): void => {
 	watchValidator(

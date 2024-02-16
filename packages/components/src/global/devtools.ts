@@ -1,4 +1,3 @@
-import { Log, getColorContrastAnalysis, getDevMode, getDocument, getExperimentalMode, getKoliBri, initKoliBri, renderDevAdvice } from '../utils/dev.utils';
 import {
 	koliBriA11yColorContrast,
 	koliBriQuerySelector,
@@ -7,7 +6,9 @@ import {
 	KoliBriUtils,
 	parseJson,
 	stringifyJson,
-} from '../utils/prop.validators';
+} from '@public-ui/schema';
+
+import { getColorContrastAnalysis, getDevMode, getDocument, getExperimentalMode, getKoliBri, initKoliBri, Log, renderDevAdvice } from '../utils/dev.utils';
 
 function prototypeKoliBri<T>(name: string, cb: T) {
 	try {

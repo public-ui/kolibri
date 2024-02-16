@@ -1,25 +1,27 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { showExpertSlot } from '../../../utils/reuse';
+import { showExpertSlot } from '@public-ui/schema';
+
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
-import { Props, States } from '../types';
 
+import type { ButtonProps, ButtonStates } from '@public-ui/schema';
 type Slots = {
 	expert?: string;
 };
 
 export const getButtonWcHtml = (
-	props: Props,
+	props: ButtonProps,
 	slots: Slots = {
 		expert: undefined,
 	},
 	additionalAttrs = ''
 ): string => {
-	const state = mixMembers<Props, States>(
+	const state = mixMembers<ButtonProps, ButtonStates>(
 		{
 			_icons: {},
 			_label: '', // ⚠ required
+			_on: {},
 			_type: 'button',
 			_variant: 'normal',
 		},
@@ -62,8 +64,8 @@ export const getButtonWcHtml = (
 </kol-button-wc>`;
 };
 
-export const getButtonHtml = (props: Props): string => {
-	const state = mixMembers<Props, States>(
+export const getButtonHtml = (props: ButtonProps): string => {
+	const state = mixMembers<ButtonProps, ButtonStates>(
 		{
 			_icons: {},
 			_label: '', // ⚠ required

@@ -1,17 +1,20 @@
-import { Component, h, Host, JSX, Prop, State } from '@stencil/core';
-
-import { Stringified } from '../../types/common';
-import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
-import { ButtonTypePropType } from '../../types/props/button-type';
-import { ButtonVariantPropType } from '../../types/props/button-variant';
-import { CustomClassPropType } from '../../types/props/custom-class';
-import { IconsPropType } from '../../types/props/icons';
-import { LabelPropType } from '../../types/props/label';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { StencilUnknown } from '../../types/unknown';
-import { Props, States } from './types';
+import type {
+	AlternativeButtonLinkRolePropType,
+	ButtonCallbacksPropType,
+	ButtonTypePropType,
+	ButtonVariantPropType,
+	CustomClassPropType,
+	IconsPropType,
+	LabelPropType,
+	SplitButtonProps,
+	SplitButtonStates,
+	StencilUnknown,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
+import { Component, h, Host, Prop, State } from '@stencil/core';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
@@ -23,7 +26,7 @@ import { Props, States } from './types';
 	},
 	shadow: true,
 })
-export class KolSplitButton implements Props {
+export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	private dropdown: HTMLDivElement | undefined;
 	private dropdownContent: HTMLDivElement | undefined;
 
@@ -205,7 +208,7 @@ export class KolSplitButton implements Props {
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
-	@State() public state: States = {
+	@State() public state: SplitButtonStates = {
 		_show: false,
 	};
 }

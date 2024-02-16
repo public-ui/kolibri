@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { KolBadge } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const BadgeBasic: FC = () => (
 	<>

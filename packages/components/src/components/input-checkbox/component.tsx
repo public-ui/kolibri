@@ -1,23 +1,30 @@
-import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	CheckedPropType,
+	HideErrorPropType,
+	IdPropType,
+	IndeterminatePropType,
+	InputCheckboxAPI,
+	InputCheckboxIconsProp,
+	InputCheckboxStates,
+	InputCheckboxVariant,
+	InputTypeOnDefault,
+	LabelWithExpertSlotPropType,
+	NamePropType,
+	StencilUnknown,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import { propagateFocus, showExpertSlot } from '@public-ui/schema';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { InputTypeOnDefault } from '../../types/input/types';
-import { CheckedPropType } from '../../types/props/checked';
-import { HideErrorPropType } from '../../types/props/hide-error';
-import { IdPropType } from '../../types/props/id';
-import { IndeterminatePropType } from '../../types/props/indeterminate';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { NamePropType } from '../../types/props/name';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus, showExpertSlot } from '../../utils/reuse';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
-import { InputCheckboxController } from './controller';
-import { API, InputCheckboxIconsProp, InputCheckboxVariant, States } from './types';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
+import { InputCheckboxController } from './controller';
+
+import type { JSX } from '@stencil/core';
 
 /**
  * @slot expert - Die Beschriftung der Checkbox.
@@ -29,7 +36,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 	},
 	shadow: true,
 })
-export class KolInputCheckbox implements API {
+export class KolInputCheckbox implements InputCheckboxAPI {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
 	private ref?: HTMLInputElement;
 
@@ -236,7 +243,7 @@ export class KolInputCheckbox implements API {
 	 */
 	@Prop() public _variant?: InputCheckboxVariant = 'default';
 
-	@State() public state: States = {
+	@State() public state: InputCheckboxStates = {
 		_checked: false,
 		_hideError: false,
 		_icons: {
@@ -368,16 +375,16 @@ export class KolInputCheckbox implements API {
 		const value = this._checked ? this.state._value : null;
 
 		// Event handling
-		stopPropagation(event);
+		// stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, value);
 
 		// Static form handling
-		this.controller.setFormAssociatedValue(value);
-		this.controller.setFormAssociatedCheckboxValue;
+		// this.controller.setFormAssociatedValue(value);
+		this.controller.setFormAssociatedCheckboxValue(value);
 
 		// Callback
-		if (typeof this.state._on?.onChange === 'function') {
-			this.state._on.onChange(event, value);
+		if (typeof this._on?.onChange === 'function') {
+			this._on.onChange(event, value);
 		}
 	};
 }

@@ -1,18 +1,33 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type {
+	CustomClassPropType,
+	KoliBriPaginationButtonCallbacks,
+	LabelPropType,
+	MaxPropType,
+	Option,
+	PaginationAPI,
+	PaginationHasButton,
+	PaginationStates,
+	Stringified,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import {
+	parseJson,
+	STATE_CHANGE_EVENT,
+	validateCustomClass,
+	validateLabel,
+	validateMax,
+	validateTooltipAlign,
+	watchJsonArrayString,
+	watchNumber,
+	watchValidator,
+} from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { Stringified } from '../../types/common';
-import { Option } from '../../types/input/types';
-import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
-import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';
-import { MaxPropType, validateMax } from '../../types/props/max';
 
+import type { JSX } from '@stencil/core';
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
 };
@@ -33,7 +48,7 @@ const rightDoubleArrowIcon = {
 	},
 	shadow: true,
 })
-export class KolPagination implements API {
+export class KolPagination implements PaginationAPI {
 	private readonly nonce = nonce();
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
@@ -207,7 +222,7 @@ export class KolPagination implements API {
 	 */
 	@Prop() public _max!: MaxPropType;
 
-	@State() public state: States = {
+	@State() public state: PaginationStates = {
 		_boundaryCount: 1,
 		_label: translate('kol-pagination'),
 		_hasButtons: {
@@ -283,13 +298,17 @@ export class KolPagination implements API {
 					exportparts="icon"
 					key={`${this.nonce}-${page}`}
 					_customClass={this.state._customClass}
-					_label={`${page}`}
+					_label=""
 					_on={{
 						onClick: (event: Event) => {
 							this.onClick(event, page);
 						},
 					}}
-				></kol-button-wc>
+				>
+					<span slot="expert">
+						<span class="visually-hidden">{translate('kol-page')}</span> {page}
+					</span>
+				</kol-button-wc>
 			</li>
 		);
 	}
@@ -297,7 +316,11 @@ export class KolPagination implements API {
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
 			<li>
-				<kol-button-wc class="selected" key={`${this.nonce}-selected`} _customClass={this.state._customClass} _disabled={true} _label={`${page}`} />
+				<kol-button-wc class="selected" key={`${this.nonce}-selected`} _customClass={this.state._customClass} _disabled={true} _label="">
+					<span slot="expert">
+						<span class="visually-hidden">{translate('kol-page')}</span> {page}
+					</span>
+				</kol-button-wc>
 			</li>
 		);
 	}

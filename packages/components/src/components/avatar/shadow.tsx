@@ -1,6 +1,7 @@
-import { Component, h, Host, JSX, Prop } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 
-import { Props } from './types';
+import type { AvatarProps } from '@public-ui/schema';
 
 @Component({
 	tag: 'kol-avatar',
@@ -9,7 +10,7 @@ import { Props } from './types';
 	},
 	shadow: true,
 })
-export class KolAvatar implements Props {
+export class KolAvatar implements AvatarProps {
 	public render(): JSX.Element {
 		return (
 			<Host>

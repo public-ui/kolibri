@@ -1,30 +1,31 @@
-import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	AlertPropType,
+	ButtonProps,
+	HideErrorPropType,
+	IdPropType,
+	InputTextAPI,
+	InputTextStates,
+	InputTextType,
+	InputTypeOnDefault,
+	InputTypeOnOff,
+	KoliBriHorizontalIcons,
+	LabelWithExpertSlotPropType,
+	NamePropType,
+	Stringified,
+	SuggestionsPropType,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import { propagateFocus, setState, showExpertSlot, validateAlert } from '@public-ui/schema';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcons } from '../../types/icons';
-import { InputTextType } from '../../types/input/control/text';
-import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { AlertPropType, validateAlert } from '../../types/props/alert';
-import { HideErrorPropType } from '../../types/props/hide-error';
-import { IdPropType } from '../../types/props/id';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { NamePropType } from '../../types/props/name';
-import { SuggestionsPropType } from '../../types/props/suggestions';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { setState } from '../../utils/prop.validators';
-import { propagateFocus, showExpertSlot } from '../../utils/reuse';
-import { Props as ButtonProps } from '../button/types';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputTextController } from './controller';
-import { API, States } from './types';
 
-featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
-
+import type { JSX } from '@stencil/core';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -35,7 +36,7 @@ featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 	},
 	shadow: true,
 })
-export class KolInputText implements API {
+export class KolInputText implements InputTextAPI {
 	@Element() private readonly host?: HTMLKolInputTextElement;
 	private ref?: HTMLInputElement;
 	private oldValue?: string;
@@ -107,6 +108,7 @@ export class KolInputText implements API {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
+					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
 						{hasExpertSlot ? (
@@ -301,12 +303,12 @@ export class KolInputText implements API {
 	 */
 	@Prop({ mutable: true }) public _value?: string;
 
-	@State() public state: States = {
+	@State() public state: InputTextStates = {
 		_autoComplete: 'off',
 		_currentLength: 0,
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
 		_type: 'text',

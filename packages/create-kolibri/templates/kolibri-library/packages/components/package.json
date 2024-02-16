@@ -36,8 +36,8 @@
 	},
 	"dependencies": {
 		"adopted-style-sheets": "1.1.2",
-		"@public-ui/components": "2.0.2",
-		"@public-ui/schema": "2.0.2"
+		"@public-ui/components": "2.0.4",
+		"@public-ui/schema": "2.0.4"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.5.0",
@@ -46,7 +46,7 @@
 		"@stencil/react-output-target": "0.4.0",
 		"@stencil/vue-output-target": "0.7.0",
 		"@stencil/sass": "2.0.3",
-		"@types/color-convert": "2.0.2",
+		"@types/color-convert": "2.0.3",
 		"@types/jest": "26.0.24",
 		"@types/node": "ts4.9",
 		"@types/puppeteer": "7.0.4",
@@ -60,12 +60,12 @@
 		"cpy-cli": "4.2.0",
 		"cross-env": "7.0.3",
 		"eslint": "8.33.0",
-		"eslint-config-prettier": "9.0.0",
+		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-html": "7.1.0",
-		"eslint-plugin-jsdoc": "39.8.0",
+		"eslint-plugin-jsdoc": "48.0.2",
 		"eslint-plugin-json": "3.1.0",
-		"eslint-plugin-jsx-a11y": "6.7.1",
-		"eslint-plugin-react": "7.32.2",
+		"eslint-plugin-jsx-a11y": "6.8.0",
+		"eslint-plugin-react": "7.33.2",
 		"jest": "26.6.3",
 		"jest-cli": "26.6.3",
 		"lighthouse": "11.0.0",

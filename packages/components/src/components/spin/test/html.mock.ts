@@ -1,9 +1,8 @@
+import type { SpinProps, SpinStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 
-import { Props, States } from '../types';
-
-export const getSpinHtml = (props: Props): string => {
-	const state = mixMembers<Props, States>(
+export const getSpinHtml = (props: SpinProps): string => {
+	const state = mixMembers<SpinProps, SpinStates>(
 		{
 			_variant: 'dot',
 		},

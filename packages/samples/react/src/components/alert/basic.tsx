@@ -1,11 +1,9 @@
 import React from 'react';
 import { KolAlert } from '@public-ui/react';
-
-import { HeadingLevel } from '@public-ui/components/dist/types/types/heading-level';
-
-import { FC } from 'react';
-import { AlertType, AlertVariant } from '@public-ui/components';
+import type { FC } from 'react';
+import type { AlertType, AlertVariant, HeadingLevel } from '@public-ui/components';
 import { SampleDescription } from '../SampleDescription';
+
 type PropsByType = {
 	level: HeadingLevel;
 	type: AlertType;
@@ -32,7 +30,7 @@ const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 	</>
 );
 
-export const AlertBasic: FC<PropsBasic> = ({ variant }) => (
+export const AlertBasic: FC<PropsBasic> = ({ variant = 'msg' }) => (
 	<>
 		<SampleDescription>
 			<p>

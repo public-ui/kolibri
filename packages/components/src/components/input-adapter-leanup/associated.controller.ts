@@ -1,10 +1,7 @@
-import type { Generic } from 'adopted-style-sheets';
+import type { NamePropType, PropSyncValueBySelector, StencilUnknown, SyncValueBySelectorPropType } from '@public-ui/schema';
+import { devHint, devWarning, getExperimentalMode, validateName } from '@public-ui/schema';
 
-import { NamePropType, validateName } from '../../types/props/name';
-import { PropSyncValueBySelector, SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { StencilUnknown } from '../../types/unknown';
-import { devHint, devWarning } from '../../utils/a11y.tipps';
-import { getExperimentalMode } from '../../utils/dev.utils';
+import type { Generic } from 'adopted-style-sheets';
 
 const EXPERIMENTAL_MODE = getExperimentalMode();
 

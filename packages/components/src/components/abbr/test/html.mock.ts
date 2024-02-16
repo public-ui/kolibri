@@ -1,12 +1,13 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
-import { Props } from '../types';
 
-export const getAbbrHtml = (props: Props): string => {
+import type { AbbrProps } from '@public-ui/schema';
+
+export const getAbbrHtml = (props: AbbrProps): string => {
 	props = mixMembers(
 		{
-			_label: '…', // ⚠ required
+			_label: '', // ⚠ required
 			_tooltipAlign: 'top',
 		},
 		props

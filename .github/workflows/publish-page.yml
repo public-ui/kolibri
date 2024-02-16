@@ -1,4 +1,4 @@
-name: Publish Page
+name: 02 - Publish Page
 
 env:
   access: public
@@ -22,7 +22,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
           registry-url: '${{env.npmjs-registry}}'
           scope: '${{env.scope}}'
       - name: Build designer
@@ -40,7 +40,7 @@ jobs:
       #   working-directory: packages/storybook
       - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
           registry-url: '${{env.github-registry}}'
           scope: '${{env.scope}}'
       - name: Publish designer

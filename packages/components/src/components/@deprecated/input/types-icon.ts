@@ -1,8 +1,5 @@
+import type { KoliBriHorizontalIcons, PropLabelWithExpertSlot, Stringified } from '@public-ui/schema';
 import type { Generic } from 'adopted-style-sheets';
-
-import { Stringified } from '../../../types/common';
-import { KoliBriHorizontalIcons } from '../../../types/icons';
-import { PropLabelWithExpertSlot } from '../../../types/props/label';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = PropLabelWithExpertSlot & {

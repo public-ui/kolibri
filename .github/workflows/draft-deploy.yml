@@ -6,6 +6,7 @@ on:
 
 jobs:
   deploy:
+    if: ${{ github.event.pull_request.base.repo.clone_url == github.event.pull_request.head.repo.clone_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +18,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         id: pnpm-install
@@ -38,7 +39,7 @@ jobs:
         run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
 
       - name: Build
-        run: pnpm -r build
+        run: pnpm --filter @public-ui/sample-react... build
 
       - name: Netlify Deploy
         uses: netlify/actions/cli@master
@@ -47,7 +48,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
-           args: deploy --filter=@public-ui/sample-react
+          args: deploy --filter=@public-ui/sample-react
 
       - name: Find comment
         uses: peter-evans/find-comment@v2

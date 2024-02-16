@@ -1,10 +1,11 @@
-import { Component, Fragment, h, JSX, Method, State } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Fragment, h, Method, State } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
-import { API, States, Toast, ToastState } from './types';
 import { InternalToast } from './InternalToast';
 
+import type { Toast, ToasterAPI, ToasterStates, ToastState } from '@public-ui/schema';
 const TRANSITION_TIMEOUT = 300;
 
 @Component({
@@ -14,8 +15,8 @@ const TRANSITION_TIMEOUT = 300;
 	},
 	shadow: true,
 })
-export class KolToastContainer implements API {
-	@State() public state: States = {
+export class KolToastContainer implements ToasterAPI {
+	@State() public state: ToasterStates = {
 		_toastStates: [],
 	};
 

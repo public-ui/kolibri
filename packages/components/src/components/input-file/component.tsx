@@ -1,23 +1,27 @@
-import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	ButtonProps,
+	HideErrorPropType,
+	IdPropType,
+	InputFileAPI,
+	InputFileStates,
+	InputTypeOnDefault,
+	KoliBriHorizontalIcons,
+	LabelWithExpertSlotPropType,
+	NamePropType,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import { propagateFocus, showExpertSlot } from '@public-ui/schema';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcons } from '../../types/icons';
-import { InputTypeOnDefault } from '../../types/input/types';
-import { HideErrorPropType } from '../../types/props/hide-error';
-import { IdPropType } from '../../types/props/id';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { NamePropType } from '../../types/props/name';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus, showExpertSlot } from '../../utils/reuse';
-import { Props as ButtonProps } from '../button/types';
 import { getRenderStates } from '../input/controller';
-import { InputFileController } from './controller';
-import { API, States } from './types';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
+import { InputFileController } from './controller';
 
+import type { JSX } from '@stencil/core';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -28,7 +32,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 	},
 	shadow: true,
 })
-export class KolInputFile implements API {
+export class KolInputFile implements InputFileAPI {
 	@Element() private readonly host?: HTMLKolInputFileElement;
 	private ref?: HTMLInputElement;
 
@@ -68,6 +72,7 @@ export class KolInputFile implements API {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
+					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
 						{hasExpertSlot ? (
@@ -225,9 +230,9 @@ export class KolInputFile implements API {
 	 */
 	@Prop() public _value?: string;
 
-	@State() public state: States = {
+	@State() public state: InputFileStates = {
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 	};
 

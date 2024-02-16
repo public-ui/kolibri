@@ -1,15 +1,13 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { nonce } from '../../../utils/dev.utils';
 import { getSpanWcHtml } from '../../span/test/html.mock';
-import { Props, States } from '../types';
 
-export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
-	const state: States = mixMembers<Props, States>(
+import type { TooltipProps, TooltipStates } from '@public-ui/schema';
+export const getTooltipHtml = (props: TooltipProps, additionalAttrs = ''): string => {
+	const state = mixMembers<TooltipProps, TooltipStates>(
 		{
 			_align: 'top',
-			_id: nonce(),
-			_label: '…', // ⚠ required
+			_label: '', // ⚠ required
 		},
 		props
 	);
@@ -28,7 +26,8 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 					expert: undefined,
 				},
 				{
-					additionalAttrs: ` class="tooltip-area tooltip-content" id="${state._id}"`,
+					additionalAttrs: typeof state._id === 'string' ? ` id="${state._id}"` : undefined,
+					additionalClassNames: ['tooltip-area', 'tooltip-content'],
 				}
 			)}
 		</div>`

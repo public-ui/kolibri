@@ -1,4 +1,4 @@
-name: Publish
+name: 01 - Publish
 
 env:
   access: public
@@ -11,7 +11,7 @@ on:
       tag:
         type: choice
         description: Which NPM tag should be assigned?
-        options: 
+        options:
           - next
           - latest
 
@@ -29,7 +29,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           registry-url: '${{env.registry}}'
           scope: '@public-ui'
       - name: Install pnpm

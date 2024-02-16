@@ -1,12 +1,14 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
 import { KolBadge, KolTable } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
-import { KoliBriTableHeaders } from '@public-ui/components';
-import { DATA, Data } from './test-data';
+import { DATA } from './test-data';
 import { SampleDescription } from '../SampleDescription';
 
+import type { KoliBriTableHeaders } from '@public-ui/components';
+import type { Data } from './test-data';
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
 	month: '2-digit',
@@ -16,11 +18,12 @@ const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'order', key: 'order', textAlign: 'center' },
+			{ label: 'order', key: 'order', textAlign: 'center', width: '10em' },
 			{
 				label: 'date',
 				key: 'date',
 				textAlign: 'center',
+				width: '20em',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
 				sort: (data: Data[]) =>
 					data.sort((data0, data1) => {
@@ -57,6 +60,6 @@ export const TableBadgeSize: FC = () => (
 				jüngsten Datum.
 			</p>
 		</SampleDescription>
-		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />
+		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
 	</>
 );

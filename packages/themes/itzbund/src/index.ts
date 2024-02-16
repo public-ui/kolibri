@@ -34,13 +34,9 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		}
 		:host {
 			background-color: transparent; /* Reset global background-color defined by components */
-			font-family: var(--font-family); /* font-size: var(--font-size); */
 		}
 		* {
 			box-sizing: border-box;
-		}
-		*:not(i) {
-			font-family: var(--font-family);
 		}
 		h1,
 		h2,
@@ -744,9 +740,11 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		textarea::placeholder {
 			color: var(--default-border);
 		}
-		textarea:read-only,
 		textarea:disabled {
 			cursor: not-allowed;
+		}
+		textarea:disabled,
+		textarea:read-only {
 			border-color: var(--border-default);
 			background-color: var(--background-light-grey);
 		}
@@ -841,6 +839,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-BADGE': css`
 		:host {
 			display: inline-block;
+			font-family: inherit;
 		}
 		:host > span {
 			border-radius: 0.3125rem;
@@ -1140,6 +1139,16 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 			border-width: 1px;
 			border-color: var(--border-color);
 		}
+		.table {
+			padding: 0.5em;
+		}
+		.table:has(caption:focus) {
+			outline-color: var(--color-petrol);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
+			transition: outline-offset 0.2s linear;
+		}
 		table {
 			width: 100%;
 			border-collapse: collapse;
@@ -1165,21 +1174,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		th {
 			background-color: #eee;
 		}
-		th > div {
-			display: grid;
-			grid-template-columns: 1fr auto;
-			align-items: center;
-			gap: 0.25em;
-		}
-		:host > div.pagination {
-			padding: 0.5em;
-		}
-		:host > div.pagination,
-		:host > div.pagination > div:last-child {
-			display: grid;
-			align-items: center;
-			justify-items: center;
-			gap: 0.5em;
+		.table-sort-button .button {
+			font-weight: bold;
 		}
 		@media (min-width: 1024px) {
 			:host > div.pagination,
@@ -1525,6 +1521,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-TOAST-CONTAINER': `:host {
 		top: 1rem;
 		width: 750px;
+		max-width: 100%;
 		left: 50%;
 		transform: translateX(-50%);
 	}

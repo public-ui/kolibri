@@ -1,10 +1,7 @@
-import type { Generic } from 'adopted-style-sheets';
+import type { HrefProp, LabelProp, Stringified } from '@public-ui/schema';
+import { uiUxHintMillerscheZahl, watchJsonArrayString } from '@public-ui/schema';
 
-import { Stringified } from '../../types/common';
-import { HrefProp } from '../../types/props/href';
-import { LabelProp } from '../../types/props/label';
-import { uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
-import { watchJsonArrayString } from '../../utils/prop.validators';
+import type { Generic } from 'adopted-style-sheets';
 
 type HrefOrLabelProp = HrefProp | LabelProp;
 

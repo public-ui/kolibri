@@ -119,7 +119,7 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
   kol-alert --> kol-alert-wc
-  style kol-alert-wc fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-alert-wc stroke:#333,stroke-width:4px
 ```
 
 ---

@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { KolForm, KolTextarea } from '@public-ui/react';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 //Umrandung im Reactsample wird nicht angepasst bei Anpassung des Textfelds. Bug?.
 export const TextareaResize: FC = () => (

@@ -1,18 +1,23 @@
-import React, { FC } from 'react';
-import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
-import { Route as MyRoute, Routes as MyRoutes } from './shares/types';
-
-import { Option } from '@public-ui/components';
-import { KolAlert } from '@public-ui/react';
-import { ROUTES } from './shares/routes';
-import { Theme, THEME_OPTIONS } from './shares/theme';
-import PackageJson from '@public-ui/components/package.json';
-import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
-import { Sidebar } from './components/Sidebar';
+import type { FC } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router';
-import { HideMenusContext } from './shares/HideMenusContext';
-import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
+import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 
+import PackageJson from '@public-ui/components/package.json';
+import { KolAlert, KolBadge } from '@public-ui/react';
+
+import { Sidebar } from './components/Sidebar';
+import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
+import { HideMenusContext } from './shares/HideMenusContext';
+import { ROUTES } from './shares/routes';
+import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
+import { isDraftTheme, THEME_OPTIONS } from './shares/theme';
+import { SamplePage } from './components/sample-page/sample-page';
+
+import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
+
+import type { Option } from '@public-ui/components';
+import type { Theme } from './shares/theme';
 setStorage(localStorage);
 
 const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
@@ -45,20 +50,19 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 						path={`${path}/all`}
 						element={
 							<div className="d-grid gap-4">
-								{THEME_OPTIONS.filter(
-									(theme) =>
-										['bmf', 'default', 'bzst-v1', 'ecl-ec', 'ecl-eu', 'itzbund', 'mapz', 'zoll-v2', 'zoll-v3'].indexOf((theme as Option<Theme>).value) >= 0,
-								).map((theme) => (
-									<div className="d-grid gap-2" key={(theme as Option<Theme>).value} data-theme={(theme as Option<Theme>).value}>
-										<div className="mt-4">
-											<strong>{theme.label}</strong>
+								{THEME_OPTIONS.filter((theme) => ['bmf', 'default', 'ecl-ec', 'ecl-eu', 'itzbund'].indexOf((theme as Option<Theme>).value) >= 0).map(
+									(theme) => (
+										<div className="d-grid gap-2" key={(theme as Option<Theme>).value} data-theme={(theme as Option<Theme>).value}>
+											<div className="mt-4">
+												<strong>{theme.label}</strong>
+											</div>
+											<div className="my-2">
+												<ThisRoute />
+											</div>
+											<hr aria-hidden="true" />
 										</div>
-										<div className="my-2">
-											<ThisRoute />
-										</div>
-										<hr aria-hidden="true" />
-									</div>
-								))}
+									),
+								)}
 							</div>
 						}
 					/>,
@@ -104,7 +108,7 @@ ROUTE_LIST.forEach((route) => {
 export const App: FC = () => {
 	const routerLocation = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
-	const theme = searchParams.get('theme') ?? getTheme();
+	const theme: Theme = (searchParams.get('theme') as Theme) ?? getTheme();
 	const hideMenus = searchParams.has('hideMenus');
 
 	setTheme(theme as Theme); // set for `getTheme` usages within the application
@@ -134,9 +138,11 @@ export const App: FC = () => {
 				)}
 
 				<div className="p-4" id="route-container">
+					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="DRAFT" _color="#db5461" />}
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
+						<Route path="sample-page" element={<SamplePage />} />
 					</Routes>
 				</div>
 			</div>

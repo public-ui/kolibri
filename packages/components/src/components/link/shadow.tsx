@@ -1,19 +1,21 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import type {
+	AccessKeyPropType,
+	AlternativeButtonLinkRolePropType,
+	AriaCurrentValuePropType,
+	DownloadPropType,
+	HrefPropType,
+	KoliBriIconsProp,
+	LabelWithExpertSlotPropType,
+	LinkOnCallbacksPropType,
+	LinkProps,
+	LinkTargetPropType,
+	Stringified,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
+import { propagateFocus } from '@public-ui/schema';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { KoliBriIconsProp } from '../../types/icons';
-import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
-import { DownloadPropType } from '../../types/props/download';
-import { HrefPropType } from '../../types/props/href';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { LinkOnCallbacksPropType } from '../../types/props/link-on-callbacks';
-import { LinkTargetPropType } from '../../types/props/link-target';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { propagateFocus } from '../../utils/reuse';
-import { LinkProps } from './types';
-import { AccessKeyPropType } from '../../types/props/access-key';
-import { AriaCurrentValuePropType } from '../../types/props/aria-current-value';
-
+import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
@@ -44,7 +46,6 @@ export class KolLink implements LinkProps {
 					_role={this._role}
 					_tabIndex={this._tabIndex}
 					_target={this._target}
-					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
 					{/*
@@ -113,11 +114,6 @@ export class KolLink implements LinkProps {
 	 * Defines where to open the link.
 	 */
 	@Prop() public _target?: LinkTargetPropType;
-
-	/**
-	 * Defines the description to use when the link is going to be opened in another application.
-	 */
-	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.

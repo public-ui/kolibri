@@ -1,6 +1,7 @@
 import { KolForm, KolInputText } from '@public-ui/react';
-import React, { FC } from 'react';
+import React from 'react';
 import { SampleDescription } from '../SampleDescription';
+import type { FC } from 'react';
 
 export const InputTextBlur: FC = () => (
 	<>

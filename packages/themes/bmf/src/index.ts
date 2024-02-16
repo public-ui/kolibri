@@ -44,14 +44,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			--spacing: 0.25em;
 		}
 		:host {
-			font-family: var(--font-family); /* font-size: var(--font-size); */
 			background-color: transparent; /* Reset global background-color defined by components */
 		}
 		* {
 			box-sizing: border-box;
-		}
-		*:not(i) {
-			font-family: var(--font-family);
 		}
 		h1,
 		h2,
@@ -108,6 +104,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-BUTTON': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		:is(a, button) {
 			font-size: 1.125em;
 		}
@@ -237,6 +236,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-TEXT': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 		}
@@ -288,7 +290,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -317,6 +318,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-PASSWORD': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 		}
@@ -368,7 +372,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -398,6 +401,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-NUMBER': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 		}
@@ -478,6 +484,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-DATE': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 		}
@@ -558,6 +567,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-EMAIL': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 		}
@@ -609,7 +621,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -639,6 +650,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-FILE': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 		}
@@ -696,7 +710,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -726,6 +739,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-TEXTAREA': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 			display: grid;
@@ -789,7 +805,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		textarea:read-only,
 		textarea:disabled {
 			cursor: not-allowed;
 		}
@@ -830,6 +845,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-ALERT': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.msg,
 		.msg {
 			border-width: 0;
@@ -1108,6 +1126,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 			outline: none;
 		}
 	`,
+	'KOL-AVATAR': css`
+		:host {
+			font-family: var(--font-family);
+		}
+	`,
 	'KOL-HEADING': css`
 		.headline-h1,
 		.headline-h2,
@@ -1141,6 +1164,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-BADGE': css`
 		:host {
 			display: inline-block;
+			font-family: var(--font-family);
 		}
 		:host > span {
 			border-radius: 0.3125rem;
@@ -1182,6 +1206,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INDENTED-TEXT': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		:host > div {
 			background-color: var(--color-white);
 			border-left: none;
@@ -1230,6 +1257,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-DETAILS': css`
 		details > summary {
 			border-radius: var(--border-radius);
+			font-family: var(--font-family);
 		}
 		details kol-indented-text {
 			margin: 0.25em 0px 0px 0.65em;
@@ -1252,6 +1280,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-PROGRESS': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.bar > div {
 			flex-direction: column;
 			gap: 0.5rem !important;
@@ -1305,6 +1336,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-SELECT': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 		}
@@ -1407,6 +1441,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-COLOR': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 		}
@@ -1495,6 +1532,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-ACCORDION': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-span-wc > span {
 			display: flex;
 			place-items: baseline center;
@@ -1553,6 +1593,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-TABLE': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		:host * {
 			hyphens: var(--kolibri-hyphens);
 			font-family: var(--kolibri-font-family);
@@ -1563,8 +1606,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 			overflow-x: auto;
 			overflow-y: hidden;
 		}
+
+		.table:has(caption:focus) {
+			outline-color: var(--color-ocean);
+			outline-style: solid;
+			outline-width: 3px;
+			transition: outline-offset 0.2s linear;
+		}
 		caption {
-			position: absolute;
 			width: 1px;
 			height: 1px;
 			padding: 0;
@@ -1594,15 +1643,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 			grid-template-columns: 1fr auto;
 			align-items: center;
 		}
-		th div.center {
-			justify-content: center;
-		}
-		th div.right {
-			justify-content: end;
-		}
 		th,
 		td {
-			vertical-align: top;
 			border-bottom: 1px solid var(--color-granite);
 			height: 1.25rem;
 		}
@@ -1612,22 +1654,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		tbody th,
 		td {
 			padding: 1em 0;
+			vertical-align: top;
 		}
 		th kol-button,
 		td kol-button {
 			margin-top: -0.75rem;
 			margin-bottom: -0.75rem;
 		}
-		td.center > div {
-			display: flex;
-			justify-content: center;
-		}
-		td.right > div {
-			display: flex;
-			justify-content: end;
-		}
-		th[aria-sort='ascending'],
-		th[aria-sort='descending'] {
+		.table-sort-button .button {
 			font-weight: 700;
 		}
 		:host > div:last-child,
@@ -1666,91 +1700,52 @@ export const BMF = KoliBri.createTheme('bmf', {
 		ul {
 			list-style: none;
 		}
-		kol-link-wc,
-		a {
-			height: 100%;
-			min-height: 44px;
-			display: flex;
-			place-items: center;
-		}
-		.entry > kol-button-link-text-switch {
-			width: 100%;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-white);
-			text-decoration: none;
-			color: var(--color-midnight);
-			width: 100%;
-			display: flex;
+		.entry-item :is(a, .button) {
 			align-items: center;
-			font-style: normal;
-			line-height: 1.5rem;
-			min-height: 44px;
-			min-width: 44px;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			letter-spacing: 0.175px;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc):first-child:is(a, button) {
-			color: var(--color-midnight);
-			text-decoration: none;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			border-left-color: var(--color-ocean);
-			background-color: var(--color-ocean);
-			letter-spacing: unset;
-		}
-		.entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover > :is(a, button, span) {
-			color: var(--color-white);
-			background-color: var(--color-ocean);
-			font-weight: 700;
-			letter-spacing: unset;
-		}
-		:is(.active, .selected).list.entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-smoke);
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			background-color: var(--color-ice);
-			color: var(--color-midnight);
-			font-weight: 700;
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child > :is(a, button, span) {
-			font-weight: 700;
-		}
-		:is(.active, .selected) > .entry > kol-button-link-text-switch > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
-			color: var(--color-white);
-			letter-spacing: unset;
-		}
-		.entry > kol-button-link-text-switch > kol-span-wc > span,
-		.entry :is(a, button) {
+			background-color: var(--color-white);
 			border-left-color: transparent;
 			border-left-style: solid;
 			border-left-width: 0.5rem;
-			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
-		}
-		:is(.active, .selected) kol-button-link-text-switch :is(a, button),
-		[exportparts*='selected'] a {
-			border-left-color: var(--color-midnight);
-		}
-		:is(kol-button-wc button, kol-link-wc a) {
 			color: var(--color-midnight);
-		}
-		kol-link-wc a {
+			display: flex;
+			font-style: normal;
+			letter-spacing: 0.175px;
+			line-height: 1.5rem;
+			min-height: 44px;
+			min-width: 44px;
+			padding: 0.75rem 0.5rem 0.75rem 0.25rem;
+			place-items: center;
 			text-decoration: none;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+			width: 100%;
 		}
-		kol-link-wc kol-icon {
+		.vertical .active .entry-item :is(a, .button) {
+			background-color: var(--color-ice);
+			border-left-color: var(--color-midnight);
+			color: var(--color-midnight);
+			font-weight: 700;
+		}
+		.entry-item :is(a, .button):hover,
+		.vertical .active .entry-item :is(a, .button):hover {
+			background-color: var(--color-ocean);
+			border-left-color: var(--color-ocean);
+			color: var(--color-white);
+			font-weight: 700;
+		}
+		.nav:not(.is-compact) .entry-item .icon {
 			display: none;
 		}
 		/** Compact mode */
-		.entry.hide-label :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-			place-items: center;
-		}
-		.entry.hide-label :is(a, button) {
-			padding: 0;
-			border-left: 0;
+		.entry.hide-label .entry-item :is(a, .button) {
+			justify-content: center;
 		}
 	`,
 	'KOL-CARD': css`
+		:host {
+			font-family: var(--font-family);
+		}
+
 		/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 		:host > div {
 			display: grid;
@@ -1779,6 +1774,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-CHECKBOX': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		/* INPUT */
 		:host kol-input {
 			display: grid;
@@ -2013,6 +2011,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-RADIO': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		/* INPUT */
 		kol-input {
 			display: grid;
@@ -2151,12 +2152,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 			top: 1rem;
 			right: 1rem;
 			width: 440px;
+			max-width: 100%;
 		}
 		.toast {
 			margin-top: 1rem;
 		}
 	`,
 	'KOL-TABS': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		button:disabled {
 			opacity: 0.5;
 			cursor: not-allowed;
@@ -2188,7 +2193,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			/* border-bottom: 0.025rem solid var(--color-midnight); */
 			color: var(--color-midnight);
 		}
-		button kol-span-wc > span {
+		button:not(.selected) kol-span-wc > span {
+			border-bottom: 0.25em solid transparent;
+		}
+		button.selected kol-span-wc > span {
 			border-bottom: 0.25em solid;
 		}
 		button kol-span-wc > span {
@@ -2305,6 +2313,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-PAGINATION': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.icon::part(icon) {
 			font-family: 'Font Awesome 6 Free';
 			font-weight: 900;
@@ -2363,6 +2374,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-INPUT-RANGE': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		kol-input {
 			gap: 0.25em;
 		}
@@ -2410,7 +2424,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.input:hover {
 			border-color: var(--color-midnight);
 		}
-		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -2439,7 +2452,15 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-black);
 		}
 	`,
+	'KOL-KOLIBRI': css`
+		:host {
+			font-family: var(--font-family);
+		}
+	`,
 	'KOL-LINK-BUTTON': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		:is(a, button) {
 			font-size: 1.125em;
 		}
@@ -2612,6 +2633,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-BREADCRUMB': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
 			font-size: 0.75rem;
 		}
@@ -2632,6 +2656,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		ul li:last-child > span {
 			color: var(--color-grey);
+		}
+		kol-link {
+			font-family: var(--font-family);
 		}
 	`,
 	'KOL-MODAL': css`
@@ -9644,6 +9671,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 	`,
 	'KOL-SPLIT-BUTTON': css`
+		:host {
+			font-family: var(--font-family);
+		}
 		.popover {
 			background: #fff;
 		}

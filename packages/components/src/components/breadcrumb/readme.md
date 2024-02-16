@@ -111,7 +111,7 @@ graph TD;
   kol-link-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
-  style kol-breadcrumb fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-breadcrumb stroke:#333,stroke-width:4px
 ```
 
 ---

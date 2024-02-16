@@ -67,7 +67,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-card --> kol-heading-wc
   kol-heading --> kol-heading-wc
-  style kol-heading-wc fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-heading-wc stroke:#333,stroke-width:4px
 ```
 
 ---

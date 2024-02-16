@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
 
-import { Components } from '@public-ui/components';
 import { TextareaCases } from './cases';
 
+import type { Components } from '@public-ui/components';
 export const TextareaVariants = forwardRef<HTMLKolTextareaElement, Components.KolTextarea>(function TextareaVariant(props, ref) {
 	return (
 		<div className="grid md:grid-cols-2 gap-4">

@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
 
-import { Components } from '@public-ui/components';
 import { InputFileCases } from './cases';
 
+import type { Components } from '@public-ui/components';
 export const InputFileVariants = forwardRef<HTMLKolInputFileElement, Components.KolInputFile>(function InputFileVariant(props, ref) {
 	return (
 		<div className="grid md:grid-cols-2 gap-4">

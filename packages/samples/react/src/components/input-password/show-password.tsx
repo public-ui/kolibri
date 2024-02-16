@@ -1,4 +1,6 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import type { FC } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
 import { KolForm, KolInputPassword } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 

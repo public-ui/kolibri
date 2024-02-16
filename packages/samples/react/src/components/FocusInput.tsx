@@ -1,5 +1,7 @@
-import React, { FC, useRef } from 'react';
-import { RefComponent } from './types';
+import type { FC } from 'react';
+import React, { useRef } from 'react';
+
+import type { RefComponent } from './types';
 
 type FokusElementProps = {
 	RefComponent: RefComponent;

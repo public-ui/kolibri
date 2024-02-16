@@ -1,8 +1,8 @@
+import type { Generic } from 'adopted-style-sheets';
+import { patchThemeTag } from 'adopted-style-sheets';
 import { editor, KeyCode } from 'monaco-editor';
 import { format } from 'prettier';
 import parserCss from 'prettier/esm/parser-postcss.mjs';
-// import { KoliBriDevHelper } from '@public-ui/components';
-import { Generic, patchThemeTag } from 'adopted-style-sheets';
 import { storeThemes } from '../../shares/theme';
 
 /**
@@ -40,7 +40,6 @@ export const createCssEditor = (model: editor.ITextModel, ref: HTMLElement, tagN
 				model.updateOptions({
 					tabSize: 2,
 				});
-				// KoliBriDevHelper.patchThemeTag(theme, tagName, css);
 				patchThemeTag(theme, tagName as Generic.Theming.Props<string, string>, css);
 				storeThemes();
 				setSignal(() => false);

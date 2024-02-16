@@ -1,25 +1,32 @@
-import { Component, Element, Fragment, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	HideErrorPropType,
+	IdPropType,
+	InputTypeOnDefault,
+	KoliBriHorizontalIcons,
+	LabelWithExpertSlotPropType,
+	NamePropType,
+	Optgroup,
+	Option,
+	OptionsWithOptgroupPropType,
+	RowsPropType,
+	SelectAPI,
+	SelectOption,
+	SelectStates,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	W3CInputValue,
+} from '@public-ui/schema';
+import { propagateFocus, showExpertSlot } from '@public-ui/schema';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { KoliBriHorizontalIcons } from '../../types/icons';
-import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
-import { HideErrorPropType } from '../../types/props/hide-error';
-import { IdPropType } from '../../types/props/id';
-import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { NamePropType } from '../../types/props/name';
-import { OptionsWithOptgroupPropType } from '../../types/props/options';
-import { RowsPropType } from '../../types/props/rows';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { SelectController } from './controller';
-import { API, States } from './types';
 
+import type { JSX } from '@stencil/core';
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
 };
@@ -34,7 +41,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	},
 	shadow: true,
 })
-export class KolSelect implements API {
+export class KolSelect implements SelectAPI {
 	@Element() private readonly host?: HTMLKolSelectElement;
 	private ref?: HTMLSelectElement;
 
@@ -98,6 +105,7 @@ export class KolSelect implements API {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
+					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
 						{hasExpertSlot ? (
@@ -281,10 +289,10 @@ export class KolSelect implements API {
 	 */
 	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
 
-	@State() public state: States = {
+	@State() public state: SelectStates = {
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`, // ⚠ required
+		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_multiple: false,
 		_options: [],

@@ -1,5 +1,6 @@
 import { KolAvatar } from '@public-ui/react';
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 export const AvatarBasic: FC = () => (

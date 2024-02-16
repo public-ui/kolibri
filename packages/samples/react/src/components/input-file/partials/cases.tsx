@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react';
 
 import { KolInputFile } from '@public-ui/react';
 
-import { Components } from '@public-ui/components';
 import { ERROR_MSG } from '../../../shares/constants';
 
+import type { Components } from '@public-ui/components';
 export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.KolInputFile>(function InputFileCases(props, ref) {
 	return (
 		<div className="grid gap-4">

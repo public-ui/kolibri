@@ -1,5 +1,4 @@
 import { Routes } from '../../shares/types';
-
 import { InputTextBasic } from './basic';
 import { InputTextBlur } from './blur';
 import { InputTextFocus } from './focus';

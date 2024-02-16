@@ -1,3 +1,4 @@
+import type { IconProps, IconStates } from '@public-ui/schema';
 import { readFileSync } from 'fs';
 import { render } from 'mustache';
 import path from 'path';
@@ -5,10 +6,8 @@ import pug from 'pug';
 import { mixMembers } from 'stencil-awesome-test';
 import { twig } from 'twig';
 
-import { Props, States } from '../types';
-
-const getState = (props: Props): States =>
-	mixMembers<Props, States>(
+const getState = (props: IconProps): IconStates =>
+	mixMembers<IconProps, IconStates>(
 		{
 			_icons: 'codicon codicon-home',
 			_label: '',
@@ -16,7 +15,7 @@ const getState = (props: Props): States =>
 		props
 	);
 
-const getIconHtmlTwig = (props: Props, additionalAttrs = ''): string => {
+const getIconHtmlTwig = (props: IconProps, additionalAttrs = ''): string => {
 	const state = getState(props);
 	const context = { additionalAttrs, ...state, mode: 'csr' };
 
@@ -25,7 +24,7 @@ const getIconHtmlTwig = (props: Props, additionalAttrs = ''): string => {
 
 /* eslint-disable @typescript-eslint/no-unused-vars,@typescript-eslint/ban-ts-comment */
 // @ts-ignore
-const getIconHtmlMustache = (props: Props, additionalAttrs = ''): string => {
+const getIconHtmlMustache = (props: IconProps, additionalAttrs = ''): string => {
 	const state = getState(props);
 	const template = readFileSync(path.join(__dirname, 'icon.mustache'), { encoding: 'utf-8' });
 
@@ -38,7 +37,7 @@ const getIconHtmlMustache = (props: Props, additionalAttrs = ''): string => {
 };
 
 // @ts-ignore
-const getIconHtmlPug = (props: Props, additionalAttrs = ''): string => {
+const getIconHtmlPug = (props: IconProps, additionalAttrs = ''): string => {
 	const compiledFunction = pug.compileFile(path.join(__dirname, 'icon.pug'));
 	const state = getState(props);
 
@@ -52,7 +51,7 @@ const getIconHtmlPug = (props: Props, additionalAttrs = ''): string => {
 
 /* eslint-enable @typescript-eslint/no-unused-vars,@typescript-eslint/ban-ts-comment */
 
-export const getIconHtml = (props: Props, additionalAttrs = ''): string => {
+export const getIconHtml = (props: IconProps, additionalAttrs = ''): string => {
 	return getIconHtmlTwig(props, additionalAttrs);
 	// return getIconHtmlMustache(props, additionalAttrs);
 	// return getIconHtmlPug(props, additionalAttrs);

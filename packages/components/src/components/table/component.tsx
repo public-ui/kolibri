@@ -1,16 +1,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import type { Generic } from 'adopted-style-sheets';
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { devHint, emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
+import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { Stringified } from '../../types/common';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { devHint } from '../../utils/a11y.tipps';
-import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
-import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
-import {
-	API,
+
+import type {
 	KoliBriDataCompareFn,
+	KoliBriPaginationButtonCallbacks,
 	KoliBriSortDirection,
 	KoliBriSortFunction,
 	KoliBriTableCell,
@@ -21,12 +18,18 @@ import {
 	KoliBriTablePaginationProps,
 	KoliBriTableRender,
 	KoliBriTableSelectedHead,
-	States,
-} from './types';
-
+	LabelPropType,
+	PaginationPositionPropType,
+	Stringified,
+	TableAPI,
+	TableStates,
+} from '@public-ui/schema';
+import { validatePaginationPosition } from '@public-ui/schema';
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+
+const paginationValidator = (value: unknown) => value === true || value === '' /* true */ || (typeof value === 'object' && value !== null);
 
 type SortData = {
 	label: string;
@@ -42,7 +45,7 @@ type SortData = {
 	},
 	shadow: true,
 })
-export class KolTable implements API {
+export class KolTable implements TableAPI {
 	private horizontal = true;
 	/**
 	 * @deprecated only for backward compatibility
@@ -57,12 +60,16 @@ export class KolTable implements API {
 	private pageStartSlice = 0;
 	private pageEndSlice = 10;
 	private disableSort = false;
+	private tableDivElement?: HTMLDivElement;
+	private tableDivElementResizeObserver?: ResizeObserver;
+
+	@State()
+	private tableDivElementHasScrollbar = false;
 
 	/**
 	 * @deprecated only for backward compatibility
 	 */
 	private sortedColumnHead: KoliBriTableSelectedHead = { label: '', key: '', sortDirection: 'NOS' };
-	private ariaLive = '';
 
 	/**
 	 * Defines whether to allow multi sort.
@@ -98,22 +105,27 @@ export class KolTable implements API {
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
+	/**
+	 * Controls the position of the pagination.
+	 */
+	@Prop() public _paginationPosition?: PaginationPositionPropType = 'bottom';
 
-	@State() public state: States = {
+	@State() public state: TableStates = {
 		_allowMultiSort: false,
-		_label: '…', // ⚠ required
 		_data: [],
 		_dataFoot: [],
 		_headers: {
 			horizontal: [],
 			vertical: [],
 		},
+		_label: '', // ⚠ required
 		_pagination: {
 			_page: 1,
 			_pageSize: 10,
 			_max: 0,
 		},
 		_sortedData: [],
+		_paginationPosition: 'bottom',
 	};
 
 	@Watch('_allowMultiSort')
@@ -170,6 +182,11 @@ export class KolTable implements API {
 				}
 			});
 		});
+	}
+
+	@Watch('_paginationPosition')
+	public validatePaginationPosition(value?: PaginationPositionPropType): void {
+		validatePaginationPosition(this, value);
 	}
 
 	/**
@@ -303,7 +320,9 @@ export class KolTable implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_minWidth')
@@ -344,25 +363,52 @@ export class KolTable implements API {
 		},
 	};
 
-	private readonly beforePatchPagination: Generic.Element.NextStateHooksCallback = (nextValue, _nextState, _component, key): void => {
-		if (key === '_pagination') {
-			this.showPagination = nextValue === true || nextValue === '' /* true */ || (typeof nextValue === 'object' && nextValue !== null);
-		}
-	};
-
 	@Watch('_pagination')
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
 		try {
-			value = parseJson<KoliBriTablePaginationProps>(value);
+			value = parseJson<boolean | KoliBriTablePaginationProps>(value);
 			// eslint-disable-next-line no-empty
 		} catch (e) {
 			// value behält den ursprünglichen Wert
 		}
-		watchValidator(this, '_pagination', () => true, new Set(['boolean', 'KoliBriTablePagination']), value, {
-			hooks: {
-				beforePatch: this.beforePatchPagination,
-			},
-		});
+
+		this.showPagination = paginationValidator(value);
+
+		watchValidator<boolean | Stringified<KoliBriTablePaginationProps>>(
+			this,
+			'_pagination',
+			paginationValidator,
+			new Set(['boolean', 'KoliBriTablePagination']),
+			value,
+			{
+				defaultValue: {
+					_page: 1,
+					_pageSize: 10,
+					_max: 0,
+				},
+			}
+		);
+	}
+
+	public componentDidRender(): void {
+		this.checkDivElementScrollbar();
+	}
+
+	public componentDidLoad() {
+		if (this.tableDivElement && ResizeObserver) {
+			this.tableDivElementResizeObserver = new ResizeObserver(this.checkDivElementScrollbar.bind(this));
+			this.tableDivElementResizeObserver.observe(this.tableDivElement);
+		}
+	}
+
+	public disconnectedCallback() {
+		this.tableDivElementResizeObserver?.disconnect();
+	}
+
+	private checkDivElementScrollbar() {
+		if (this.tableDivElement) {
+			this.tableDivElementHasScrollbar = this.tableDivElement.scrollWidth > this.tableDivElement.clientWidth;
+		}
 	}
 
 	public componentWillLoad(): void {
@@ -373,6 +419,7 @@ export class KolTable implements API {
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
+		this.validatePaginationPosition(this._paginationPosition);
 	}
 
 	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[]): number {
@@ -610,44 +657,21 @@ export class KolTable implements API {
 				}
 				return 0;
 			});
-
-			if (this.sortData.length === 1) {
-				this.ariaLive = translate(`kol-sort-${this.sortData[0].direction === 'ASC' ? 'ascending' : 'descending'}`, {
-					placeholders: { column: this.sortData[0].label, multi: '' },
-				});
-			} else {
-				let sortText = '';
-				for (let index = 1; index < this.sortData.length - 1; index++) {
-					const data = this.sortData[index];
-					sortText += translate(`kol-sort-then-${data.direction === 'ASC' ? 'ascending' : 'descending'}`, { placeholders: { column: data.label } });
-				}
-				sortText += translate(`kol-sort-then-last-${this.sortData[this.sortData.length - 1].direction === 'ASC' ? 'ascending' : 'descending'}`, {
-					placeholders: { column: this.sortData[this.sortData.length - 1].label },
-				});
-				this.ariaLive = translate(`kol-sort-${this.sortData[0].direction === 'ASC' ? 'ascending' : 'descending'}`, {
-					placeholders: { column: this.sortData[0].label, multi: sortText },
-				});
-			}
 		} else if (typeof this.sortFunction === 'function') {
 			switch (this.sortDirections.get(this.sortFunction)) {
 				case 'ASC':
 					sortedData = this.sortFunction([...this.state._data]);
-					this.ariaLive = translate('kol-sort-ascending', { placeholders: { column: cell.label } });
 					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'ASC' };
 					break;
 				case 'DESC':
 					sortedData = this.sortFunction([...this.state._data]).reverse();
-					this.ariaLive = translate('kol-sort-descending', { placeholders: { column: cell.label } });
 					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'DESC' };
 					break;
 				case 'NOS':
 				default:
 					sortedData = [...this.state._data];
 					this.sortedColumnHead = { label: '', key: '', sortDirection: 'NOS' };
-					this.ariaLive = translate('kol-sort-none', { placeholders: { column: cell.label } });
 			}
-		} else {
-			this.ariaLive = translate('kol-table-sort-none');
 		}
 		setState(this, '_sortedData', sortedData);
 	};
@@ -763,6 +787,41 @@ export class KolTable implements API {
 		return <tfoot>{rows.map(this.renderTableRow)}</tfoot>;
 	};
 
+	private renderPagination(): JSX.Element {
+		return (
+			<div class="pagination">
+				<span>
+					{translate('kol-table-visible-range', {
+						placeholders: {
+							start: this.pageEndSlice > 0 ? (this.pageStartSlice + 1).toString() : '0',
+							end: this.pageEndSlice.toString(),
+							total:
+								this.state._pagination && this.state._pagination._max > 0
+									? this.state._pagination._max.toString()
+									: Array.isArray(this.state._data)
+									? this.state._data.length.toString()
+									: '0',
+						},
+					})}
+				</span>
+				<div>
+					<kol-pagination
+						_boundaryCount={this.state._pagination._boundaryCount}
+						_customClass={this.state._pagination._customClass}
+						_on={this.handlePagination}
+						_page={this.state._pagination._page}
+						_pageSize={this.state._pagination._pageSize}
+						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
+						_siblingCount={this.state._pagination._siblingCount}
+						_tooltipAlign="bottom"
+						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+						_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
+					></kol-pagination>
+				</div>
+			</div>
+		);
+	}
+
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
@@ -770,41 +829,33 @@ export class KolTable implements API {
 			this.state._pagination._page || 1
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
+		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination() : null;
+		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination() : null;
 
 		return (
 			<Host>
-				<div style={{ height: '0', width: '0', overflow: 'hidden' }} aria-live="assertive">
-					{this.ariaLive}
-				</div>
-				{this.pageEndSlice > 0 && this.showPagination && (
-					<div class="pagination">
-						<span>
-							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
-							{this.state._pagination._max || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
-						</span>
-						<div>
-							<kol-pagination
-								_boundaryCount={this.state._pagination._boundaryCount}
-								_customClass={this.state._pagination._customClass}
-								_on={this.handlePagination}
-								_page={this.state._pagination._page}
-								_pageSize={this.state._pagination._pageSize}
-								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
-								_siblingCount={this.state._pagination._siblingCount}
-								_tooltipAlign="bottom"
-								_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
-								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
-							></kol-pagination>
-						</div>
-					</div>
-				)}
-				<div class="table" tabindex="0">
+				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
+
+				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
+				 * <caption> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements:
+				 *   tabindex="-1" prevents keyboard-focus,
+				 *   catching the mouseDown event prevents click-focus
+				 */}
+				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+				<div
+					ref={(element) => (this.tableDivElement = element)}
+					class="table"
+					tabindex="-1"
+					onMouseDown={(event) => {
+						event.preventDefault();
+					}}
+				>
 					<table
 						style={{
 							minWidth: this.state._minWidth,
 						}}
 					>
-						<caption>{this.state._label}</caption>
+						<caption tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>{this.state._label}</caption>
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
 								{this.state._headers.horizontal.map((cols, rowIndex) => (
@@ -869,43 +920,31 @@ export class KolTable implements API {
 													}
 												}
 												return (
-													<th // role="columnheader"
+													<th
+														class={col.textAlign ? `align-${col.textAlign}` : undefined}
 														key={`thead-${rowIndex}-${colIndex}-${headerCell.label}`}
 														scope={typeof headerCell.colSpan === 'number' && headerCell.colSpan > 1 ? 'colgroup' : 'col'}
 														colSpan={headerCell.colSpan}
 														rowSpan={headerCell.rowSpan}
 														style={{
-															textAlign: col.textAlign,
 															width: col.width,
 														}}
 														aria-sort={sortDirection}
 														data-sort={`sort-${shortSortDirection}`}
 													>
-														<div class="w-full flex gap-1 items-center">
-															<div
-																class={{
-																	'w-full': true,
-																	[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+														{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') ? (
+															<kol-button-wc
+																class="table-sort-button"
+																exportparts="icon"
+																_icons={{ right: sortButtonIcon }}
+																_label={col.label}
+																_on={{
+																	onClick: () => this.changeCellSort(headerCell),
 																}}
-																style={{
-																	textAlign: col.textAlign,
-																}}
-															>
-																{col.label}
-															</div>
-															{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') && (
-																<kol-button
-																	exportparts="icon"
-																	_icons={sortButtonIcon}
-																	_hideLabel
-																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																	_on={{
-																		onClick: () => this.changeCellSort(headerCell),
-																	}}
-																	_variant="ghost"
-																></kol-button>
-															)}
-														</div>
+															></kol-button-wc>
+														) : (
+															col.label
+														)}
 													</th>
 												);
 											}
@@ -918,6 +957,7 @@ export class KolTable implements API {
 						{this.state._dataFoot.length > 0 ? this.renderFoot() : ''}
 					</table>
 				</div>
+				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
 		);
 	}

@@ -1,14 +1,19 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type {
+	CardAPI,
+	CardStates,
+	HasCloserPropType,
+	HeadingLevel,
+	KoliBriAlertEventCallbacks,
+	KoliBriCardEventCallbacks,
+	LabelPropType,
+} from '@public-ui/schema';
+import { setState, validateHasCloser, validateLabel } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { HeadingLevel } from '../../types/heading-level';
-import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { setState } from '../../utils/prop.validators';
-import { KoliBriAlertEventCallbacks } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
-import { API, KoliBriCardEventCallbacks, States } from './types';
 
+import type { JSX } from '@stencil/core';
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
  */
@@ -19,7 +24,7 @@ import { API, KoliBriCardEventCallbacks, States } from './types';
 	},
 	shadow: true,
 })
-export class KolCard implements API {
+export class KolCard implements CardAPI {
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
 			this._on.onClose(new Event('Close'));
@@ -80,8 +85,8 @@ export class KolCard implements API {
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
-	@State() public state: States = {
-		_label: '…', // '⚠'
+	@State() public state: CardStates = {
+		_label: '', // ⚠ required
 	};
 
 	private validateOnValue = (value: unknown): boolean =>
@@ -103,7 +108,9 @@ export class KolCard implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
+		validateLabel(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_level')

@@ -84,7 +84,7 @@ Type: `Promise<void>`
 
 | Name    | Type                                                                                                                                                                                                                                                          | Description |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string \| undefined; render?: ((nodeRef: HTMLElement, options: { close: () => void; }) => void) \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; alertVariant?: "card" \| "msg" \| undefined; }` |             |
+| `toast` | `{ description?: string \| undefined; render?: ((nodeRef: HTMLElement, options: { close: () => void; }) => void) \| undefined; label: string; type: "error" \| "warning" \| "info" \| "success" \| "default"; alertVariant?: "card" \| "msg" \| undefined; }` |             |
 
 #### Returns
 
@@ -112,7 +112,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-toast-container fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-toast-container stroke:#333,stroke-width:4px
 ```
 
 ---

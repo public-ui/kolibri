@@ -1,5 +1,6 @@
-import { Components } from '@public-ui/components';
+import type { Components } from '@public-ui/components';
 import React, { forwardRef } from 'react';
+
 import { ButtonCases } from './cases';
 
 export const ButtonVariants = forwardRef<HTMLKolButtonElement, Components.KolButton>(function InputCheckboxVariant(props, ref) {

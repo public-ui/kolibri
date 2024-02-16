@@ -1,13 +1,14 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { formatLabelAsInitials } from '../controller';
-import { Props, States } from '../types';
 
-export const getAvatarHtml = (props: Props): string => {
-	const state = mixMembers<Props, States>(
+import type { AvatarProps, AvatarStates } from '@public-ui/schema';
+
+export const getAvatarHtml = (props: AvatarProps): string => {
+	const state = mixMembers<AvatarProps, AvatarStates>(
 		{
-			_src: ``,
-			_label: ``, // ⚠ required
+			_src: '',
+			_label: '', // ⚠ required
 		},
 		props
 	);

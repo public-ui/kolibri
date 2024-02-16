@@ -1,4 +1,4 @@
-name: Update Snapshots
+name: 03 - Update Snapshots
 
 on:
   workflow_dispatch:
@@ -29,7 +29,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -61,10 +61,13 @@ jobs:
         if: ${{ github.event.inputs.purge_snapshots == 'true' }}
         run: rm packages/themes/**/snapshots/**/*.png
 
+      - name: Display git status (before test-update)
+        run: git status
+
       - name: Run test-update in all packages
         run: pnpm -r --workspace-concurrency=1 test-update
 
-      - name: Display git status
+      - name: Display git status (after test-update)
         run: git status
 
       - name: Commit and push changes

@@ -1,12 +1,10 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { HeadingAPI, HeadingLevel, HeadingStates, HeadingVariantPropType, LabelWithExpertSlotPropType } from '@public-ui/schema';
+import { validateHeadingVariant, validateLabelWithExpertSlot, watchString } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { HeadingLevel } from '../../types/heading-level';
-import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
-import { watchString } from '../../utils/prop.validators';
-import { API, States } from './types';
 import { watchHeadingLevel } from './validation';
-import { HeadingVariantPropType, validateHeadingVariant } from '../../types/props/heading-variant';
 
+import type { JSX } from '@stencil/core';
 /**
  * @slot - Inhalt der Überschrift.
  */
@@ -14,7 +12,7 @@ import { HeadingVariantPropType, validateHeadingVariant } from '../../types/prop
 	tag: 'kol-heading-wc',
 	shadow: false,
 })
-export class KolHeadingWc implements API {
+export class KolHeadingWc implements HeadingAPI {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
@@ -35,7 +33,7 @@ export class KolHeadingWc implements API {
 	 */
 	@Prop() public _variant?: HeadingVariantPropType;
 
-	@State() public state: States = {
+	@State() public state: HeadingStates = {
 		_label: '', // ⚠ required
 		_level: 1,
 	};

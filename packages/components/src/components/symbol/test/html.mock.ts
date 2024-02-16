@@ -1,17 +1,17 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { Props } from '../types';
+import { translate } from '../../../i18n';
 
-export const getSymbolHtml = (props: Props): string => {
+import type { SymbolProps } from '@public-ui/schema';
+export const getSymbolHtml = (props: SymbolProps): string => {
 	props = mixMembers(
 		{
-			_label: 'kol-warning',
-			_symbol: '…', // ⚠ required
+			_label: translate('kol-warning'),
+			_symbol: '', // ⚠ required
 		},
 		props
 	);
 	return `<kol-symbol>
-	${/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */ ''}
-		<span aria-label="${props._label!}" role="term">${props._symbol}</span>
+		<span aria-label="${props._label}" role="term">${props._symbol}</span>
 	</kol-symbol>`;
 };

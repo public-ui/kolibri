@@ -39,7 +39,7 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 graph TD;
   kol-span --> kol-span-wc
   kol-span-wc --> kol-icon
-  style kol-span fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-span stroke:#333,stroke-width:4px
 ```
 
 ---

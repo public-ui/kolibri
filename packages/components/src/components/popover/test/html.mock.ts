@@ -1,14 +1,13 @@
+import type { PopoverProps, PopoverStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 
-import { Props, States } from '../types';
-
 export const getPopoverHtml = (
-	props: Props,
+	props: PopoverProps,
 	slots: {
 		default?: string;
 	} = {}
 ): string => {
-	const state: States = mixMembers<Props, States>(
+	const state = mixMembers<PopoverProps, PopoverStates>(
 		{
 			_align: 'top',
 			_show: false,

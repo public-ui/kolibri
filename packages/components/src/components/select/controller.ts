@@ -1,22 +1,26 @@
-import type { Generic } from 'adopted-style-sheets';
+import type {
+	Optgroup,
+	Option,
+	OptionsWithOptgroupPropType,
+	RowsPropType,
+	SelectOption,
+	SelectProps,
+	SelectWatches,
+	Stringified,
+	W3CInputValue,
+} from '@public-ui/schema';
+import { STATE_CHANGE_EVENT, validateOptionsWithOptgroup, validateRows, watchBoolean, watchJsonArrayString } from '@public-ui/schema';
 
-import { Stringified } from '../../types/common';
-import { Optgroup, Option, SelectOption } from '../../types/input/types';
-import { OptionsWithOptgroupPropType, validateOptionsWithOptgroup } from '../../types/props/options';
-import { RowsPropType, validateRows } from '../../types/props/rows';
-import { W3CInputValue } from '../../types/w3c';
-import { watchBoolean, watchJsonArrayString } from '../../utils/prop.validators';
-import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
-import { Props, Watches } from './types';
 
-export class SelectController extends InputIconController implements Watches {
-	protected readonly component: Generic.Element.Component & Props;
+import type { Generic } from 'adopted-style-sheets';
+export class SelectController extends InputIconController implements SelectWatches {
+	protected readonly component: Generic.Element.Component & SelectProps;
 	private onStateChange!: () => void;
 	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & SelectProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}

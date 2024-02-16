@@ -1,17 +1,11 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import type { AccessKeyPropType, HideLabelPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanAPI, SpanStates, Stringified } from '@public-ui/schema';
+import { showExpertSlot, validateAccessKey, validateHideLabel, validateIcons, validateLabelWithExpertSlot, watchBoolean } from '@public-ui/schema';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { Stringified } from '../../types/common';
-import { KoliBriIconsProp } from '../../types/icons';
-import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
-import { validateIcons } from '../../types/props/icons';
-import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { md } from '../../utils/markdown';
-import { watchBoolean } from '../../utils/prop.validators';
-import { showExpertSlot } from '../../utils/reuse';
-import { API, States } from './types';
-import { AccessKeyPropType, validateAccessKey } from '../../types/props/access-key';
 import { InternalUnderlinedAccessKey } from './InternalUnderlinedAccessKey';
 
+import type { JSX } from '@stencil/core';
 /**
  * @internal
  */
@@ -19,7 +13,7 @@ import { InternalUnderlinedAccessKey } from './InternalUnderlinedAccessKey';
 	tag: 'kol-span-wc',
 	shadow: false,
 })
-export class KolSpanWc implements API {
+export class KolSpanWc implements SpanAPI {
 	public render(): JSX.Element {
 		const hideExpertSlot = !showExpertSlot(this.state._label);
 		return (
@@ -28,9 +22,13 @@ export class KolSpanWc implements API {
 					'hide-label': !!this.state._hideLabel,
 				}}
 			>
-				{this.state._icons.top && <kol-icon class="icon top" style={this.state._icons.top.style} _label="" _icons={this.state._icons.top.icon} />}
+				{this.state._icons.top && (
+					<kol-icon class="icon top" style={this.state._icons.top.style} _label={this.state._icons.top.label ?? ''} _icons={this.state._icons.top.icon} />
+				)}
 				<span>
-					{this.state._icons.left && <kol-icon class="icon left" style={this.state._icons.left.style} _label="" _icons={this.state._icons.left.icon} />}
+					{this.state._icons.left && (
+						<kol-icon class="icon left" style={this.state._icons.left.style} _label={this.state._icons.left.label ?? ''} _icons={this.state._icons.left.icon} />
+					)}
 					{!this.state._hideLabel && hideExpertSlot ? (
 						this.state._allowMarkdown && typeof this.state._label === 'string' && this.state._label.length > 0 ? (
 							<span class="span-label md" innerHTML={md(this.state._label)} />
@@ -54,9 +52,23 @@ export class KolSpanWc implements API {
 							{this.state._accessKey}
 						</span>
 					)}
-					{this.state._icons.right && <kol-icon class="icon right" style={this.state._icons.right.style} _label="" _icons={this.state._icons.right.icon} />}
+					{this.state._icons.right && (
+						<kol-icon
+							class="icon right"
+							style={this.state._icons.right.style}
+							_label={this.state._icons.right.label ?? ''}
+							_icons={this.state._icons.right.icon}
+						/>
+					)}
 				</span>
-				{this.state._icons.bottom && <kol-icon class="icon bottom" style={this.state._icons.bottom.style} _label="" _icons={this.state._icons.bottom.icon} />}
+				{this.state._icons.bottom && (
+					<kol-icon
+						class="icon bottom"
+						style={this.state._icons.bottom.style}
+						_label={this.state._icons.bottom.label ?? ''}
+						_icons={this.state._icons.bottom.icon}
+					/>
+				)}
 			</Host>
 		);
 	}
@@ -81,14 +93,14 @@ export class KolSpanWc implements API {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
+	@Prop() public _icons?: Stringified<KoliBriIconsProp> = {};
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
-	@State() public state: States = {
+	@State() public state: SpanStates = {
 		_allowMarkdown: false,
 		_hideLabel: false,
 		_icons: {},
@@ -109,7 +121,9 @@ export class KolSpanWc implements API {
 
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: HideLabelPropType): void {
-		validateHideLabel(this, value);
+		validateHideLabel(this, value, {
+			defaultValue: false,
+		});
 	}
 
 	@Watch('_icons')
@@ -119,7 +133,9 @@ export class KolSpanWc implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this, value);
+		validateLabelWithExpertSlot(this, value, {
+			required: true,
+		});
 	}
 
 	public componentWillLoad(): void {

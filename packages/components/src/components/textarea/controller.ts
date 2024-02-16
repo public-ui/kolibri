@@ -1,15 +1,13 @@
-import type { Generic } from 'adopted-style-sheets';
+import type { CSSResize, HasCounterPropType, RowsPropType, TextareaProps, TextareaWatches } from '@public-ui/schema';
+import { cssResizeOptions, validateRows, watchBoolean, watchNumber, watchString, watchValidator } from '@public-ui/schema';
 
-import { HasCounterPropType } from '../../types/props/has-counter';
-import { RowsPropType, validateRows } from '../../types/props/rows';
-import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
-import { CSSResize, Props, Watches, cssResizeOptions } from './types';
 
-export class TextareaController extends InputController implements Watches {
-	protected readonly component: Generic.Element.Component & Props;
+import type { Generic } from 'adopted-style-sheets';
+export class TextareaController extends InputController implements TextareaWatches {
+	protected readonly component: Generic.Element.Component & TextareaProps;
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & TextareaProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}

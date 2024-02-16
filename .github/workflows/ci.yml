@@ -6,6 +6,7 @@ on:
     branches:
       - 'develop'
       - 'main'
+      - 'release/*'
   workflow_dispatch:
 
 jobs:
@@ -24,14 +25,14 @@ jobs:
       # - uses: actions/setup-node@v4
       #   with:
       #     cache: pnpm
-      #     node-version: 16
+      #     node-version: 20
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           # cache: pnpm
-          node-version: 18
+          node-version: 20
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         id: pnpm-install

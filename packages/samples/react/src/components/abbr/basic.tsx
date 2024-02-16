@@ -1,8 +1,9 @@
 import React from 'react';
-import { FC } from 'react';
+
 import { KolAbbr } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
+import type { FC } from 'react';
 export const AbbrBasic: FC = () => (
 	<>
 		<SampleDescription>

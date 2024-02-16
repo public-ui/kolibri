@@ -99,7 +99,7 @@ Bei Verwendung der **ButtonGroup**-Komponente sind keine besonderen Maßnahmen i
 graph TD;
   kol-button-group --> kol-button-group-wc
   kol-tabs --> kol-button-group-wc
-  style kol-button-group-wc fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-button-group-wc stroke:#333,stroke-width:4px
 ```
 
 ---

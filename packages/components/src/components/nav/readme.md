@@ -18,17 +18,30 @@ noch die Icons ausgegeben.
 <kol-nav
 	_label="Navigation"
 	_links="[
-		{
-			_href: 'startseite',
-			_icons: 'codicon codicon-home',
-			_label: 'Startseite',
-			_children: [
-				{ _href: 'startseite/1-untermenuepunkt', _icons: 'codicon codicon-home', _label: '1. Untermenüpunkt' },
-				{ _href: 'startseite/2-untermenuepunkt', _icons: 'codicon codicon-home', _label: '2. Untermenüpunkt' },
-			],
-		},
-		{ _href: 'unterseite', _icons: 'codicon codicon-home', _label: '2. Menüpunkt' },
-	]"
+    {
+      '_href': 'startseite',
+      '_icons': 'codicon codicon-home',
+      '_label': 'Startseite2',
+      '_children': [
+        {
+          '_href': 'startseite/1-untermenuepunkt',
+          '_icons': 'codicon codicon-home',
+          '_label': '1. Untermenüpunkt'
+        },
+        {
+          '_href': 'startseite/2-untermenuepunkt',
+          '_icons': 'codicon codicon-home',
+          '_label': '2. Untermenüpunkt'
+        }
+      ]
+    },
+    {
+      '_href': 'unterseite',
+      '_icons': 'codicon codicon-home',
+      '_label': '2. Menüpunkt'
+    }
+  ]"
+	_has-compact-button
 ></kol-nav>
 ```
 
@@ -111,7 +124,7 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 
 ### Depends on
 
-- kol-button-link-text-switch
+- kol-link-wc
 - kol-button-wc
 - [kol-button](../button)
 
@@ -119,21 +132,18 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 
 ```mermaid
 graph TD;
-  kol-nav --> kol-button-link-text-switch
+  kol-nav --> kol-link-wc
   kol-nav --> kol-button-wc
   kol-nav --> kol-button
-  kol-button-link-text-switch --> kol-button-wc
-  kol-button-link-text-switch --> kol-link-wc
-  kol-button-link-text-switch --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip-wc
+  kol-span-wc --> kol-icon
+  kol-tooltip-wc --> kol-span-wc
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip-wc
   kol-button --> kol-button-wc
-  style kol-nav fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-nav stroke:#333,stroke-width:4px
 ```
 
 ---
