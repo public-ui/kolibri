@@ -719,7 +719,7 @@ export class KolTable implements API {
 						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
 						 * prevent screen readers from just reading "blank".
 						 */}
-						<div class="focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-labelledby="caption">
+						<div class="focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
 							&nbsp;
 						</div>
 
