@@ -717,7 +717,7 @@ export const HandoutBasic: FC = () => (
 				).
 			</KolDetails>
 		</div>
-		<div className="grid gap-4 grid-cols-12">
+		<div className="grid gap-4 grid-cols-12 sm:flex sm:flex-wrap">
 			<KolCard className="col-span-2" _label="Heading" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
 					<KolHeading _label="Überschrift Stufe 1" _level={1}></KolHeading>
