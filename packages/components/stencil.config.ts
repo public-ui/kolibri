@@ -279,7 +279,7 @@ export const config: Config = {
 		// scopedSlotTextContentFix: true,
 		// scriptDataOpts: true,
 		// slotChildNodesFix: true,
-		// tagNameTransform: true,
+		tagNameTransform: true,
 	},
 	// enableCache: true,
 	invisiblePrehydration: true,
