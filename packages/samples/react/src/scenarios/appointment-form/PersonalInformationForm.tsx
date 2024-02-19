@@ -31,7 +31,6 @@ export function PersonalInformationForm() {
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Geben Sie Ihre Kontaktdaten ein"></KolHeading>
-			<ul>{sectionSubmitted && Object.entries(form.errors).map(([field, error]) => <li key={field}>{error}</li>)}</ul>
 			<KolForm
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
@@ -74,9 +73,6 @@ export function PersonalInformationForm() {
 						{({ field }: FieldProps<FormValues['company']>) => (
 							<div className="block mt-2">
 								<KolInputText
-									onBlur={() => {
-										void form.setFieldTouched('company', true);
-									}}
 									id="field-company"
 									_label="Firma"
 									_value={field.value}
@@ -103,9 +99,6 @@ export function PersonalInformationForm() {
 					{({ field }: FieldProps<FormValues['name']>) => (
 						<div className="block mt-2">
 							<KolInputText
-								onBlur={() => {
-									void form.setFieldTouched('name', true);
-								}}
 								id="field-name"
 								_label="Vor- und Zuname"
 								_value={field.value}
