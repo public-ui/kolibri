@@ -17,7 +17,7 @@ import { AlertType, AlertVariant, KoliBriAlertEventCallbacks, Props, States } fr
 export class KolAlert implements Props {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-alert">
 				<kol-alert-wc
 					_alert={this._alert}
 					_hasCloser={this._hasCloser}
@@ -26,7 +26,6 @@ export class KolAlert implements Props {
 					_on={this._on}
 					_type={this._type}
 					_variant={this._variant}
-					class="kol-alert"
 				>
 					<slot />
 				</kol-alert-wc>
