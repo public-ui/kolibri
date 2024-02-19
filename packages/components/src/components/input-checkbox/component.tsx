@@ -242,7 +242,7 @@ export class KolInputCheckbox implements API {
 	};
 
 	public constructor() {
-		this.controller = new InputCheckboxController(this, 'input-checkbox', this.host);
+		this.controller = new InputCheckboxController(this, 'checkbox', this.host);
 	}
 
 	@Watch('_accessKey')

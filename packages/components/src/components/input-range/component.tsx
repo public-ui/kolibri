@@ -310,7 +310,7 @@ export class KolInputRange implements API {
 	};
 
 	public constructor() {
-		this.controller = new InputRangeController(this, 'input-range', this.host);
+		this.controller = new InputRangeController(this, 'range', this.host);
 	}
 
 	@Watch('_accessKey')
