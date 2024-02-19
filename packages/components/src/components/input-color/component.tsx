@@ -233,7 +233,7 @@ export class KolInputColor implements InputColorAPI {
 	};
 
 	public constructor() {
-		this.controller = new InputColorController(this, 'input-color', this.host);
+		this.controller = new InputColorController(this, 'color', this.host);
 	}
 
 	@Watch('_accessKey')

@@ -289,7 +289,7 @@ export class KolInputNumber implements InputNumberAPI {
 	};
 
 	public constructor() {
-		this.controller = new InputNumberController(this, 'input-number', this.host);
+		this.controller = new InputNumberController(this, 'number', this.host);
 	}
 
 	@Watch('_accessKey')
