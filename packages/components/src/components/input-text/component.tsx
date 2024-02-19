@@ -312,7 +312,7 @@ export class KolInputText implements API {
 	};
 
 	public constructor() {
-		this.controller = new InputTextController(this, 'input-text', this.host);
+		this.controller = new InputTextController(this, 'text', this.host);
 	}
 
 	@Watch('_accessKey')

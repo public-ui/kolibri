@@ -274,7 +274,7 @@ export class KolInputPassword implements API {
 	};
 
 	public constructor() {
-		this.controller = new InputPasswordController(this, 'input-password', this.host);
+		this.controller = new InputPasswordController(this, 'password', this.host);
 	}
 
 	@Watch('_accessKey')
