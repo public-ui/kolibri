@@ -39,6 +39,12 @@ export class SelectController extends InputIconController implements Watches {
 		return values.filter((value) => this.isValueInOptions(value, options) !== undefined);
 	};
 
+	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
+		if (key === '_value') {
+			this.setFormAssociatedValue(value as string);
+		}
+	};
+
 	private readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
@@ -76,6 +82,7 @@ export class SelectController extends InputIconController implements Watches {
 	public validateOptions(value?: OptionsWithOptgroupPropType): void {
 		validateOptionsWithOptgroup(this.component, value, {
 			hooks: {
+				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,
 			},
 		});
@@ -84,6 +91,7 @@ export class SelectController extends InputIconController implements Watches {
 	public validateMultiple(value?: boolean): void {
 		watchBoolean(this.component, '_multiple', value, {
 			hooks: {
+				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,
 			},
 		});
@@ -106,10 +114,10 @@ export class SelectController extends InputIconController implements Watches {
 	public validateValue(value?: Stringified<W3CInputValue[]>): void {
 		watchJsonArrayString(this.component, '_value', () => true, value, undefined, {
 			hooks: {
+				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,
 			},
 		});
-		this.setFormAssociatedValue(this.component._value as string);
 	}
 
 	public componentWillLoad(onChange?: (event: Event) => void): void {

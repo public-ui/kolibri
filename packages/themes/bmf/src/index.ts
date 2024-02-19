@@ -1919,6 +1919,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		height: 1.5em;
 		border-radius: 1.25em;
 		position: relative;
+		outline: transparent solid 1px; /* Visible with forced colors */
 	}
 	:host kol-input.switch input[type="checkbox"]:before {
 		-webkit-transition: 0.5s;
@@ -2200,7 +2201,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		/* border-bottom: 0.025rem solid var(--color-midnight); */
 		color: var(--color-midnight);
 	}
-	button kol-span-wc > span {
+	button:not(.selected) kol-span-wc > span {
+		padding-bottom: 0.25em;
+	}
+	button.selected kol-span-wc > span {
 		border-bottom: 0.25em solid;
 	}
 	button kol-span-wc > span {

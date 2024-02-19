@@ -20,8 +20,8 @@ export class KolToastContainer implements API {
 	};
 
 	// Stencil requires async function:
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async enqueue(toast: Toast) {
 		const newToastState: ToastState = {
 			toast,
@@ -71,8 +71,8 @@ export class KolToastContainer implements API {
 		}, TRANSITION_TIMEOUT);
 	}
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeAll() {
 		this.state = {
 			...this.state,

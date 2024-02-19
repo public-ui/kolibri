@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "1.7.10",
+	"version": "1.7.12",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -26,7 +26,7 @@
 	},
 	"dependencies": {
 		"@playwright/test": "1.40.0",
-		"@public-ui/sample-react": "1.7.10",
+		"@public-ui/sample-react": "1.7.12",
 		"axe-playwright": "2.0.1",
 		"portfinder": "1.0.32",
 		"serve": "14.2.1"
@@ -38,7 +38,7 @@
 		"depcheck": "1.4.7",
 		"eslint": "8.54.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "4.0.1",
+		"knip": "5.0.1",
 		"prettier": "3.1.0"
 	},
 	"files": [
