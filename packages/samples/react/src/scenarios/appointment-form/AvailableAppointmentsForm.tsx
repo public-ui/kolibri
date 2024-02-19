@@ -4,20 +4,24 @@ import { FormValues } from './AppointmentForm';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { fetchAvailableTimes } from './appointmentService';
 import { Option } from '@public-ui/components/src';
-import { createErrorList } from './formUtils';
+import { createErrorList, focusErrorList } from './formUtils';
 
 export function AvailableAppointmentsForm() {
 	const form = useFormikContext<FormValues>();
 
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const [availableTimes, setAvailableTimes] = useState<Option<string>[] | null>(null);
+	const [schouldFocusErrorList, setSchouldFocusErrorList] = useState(true);
 	const errorList = createErrorList(form.errors);
 	const formikRef = useRef(null);
 
 	useEffect(() => {
 		let ignoreResponse = false;
 		setAvailableTimes(null);
-
+		if (schouldFocusErrorList && sectionSubmitted) {
+			focusErrorList(errorList, formikRef);
+			setSchouldFocusErrorList(false);
+		}
 		if (form.values.date) {
 			fetchAvailableTimes().then(
 				(times) => {
@@ -33,7 +37,7 @@ export function AvailableAppointmentsForm() {
 		return () => {
 			ignoreResponse = true;
 		};
-	}, [form.values.date]);
+	}, [form.values.date, sectionSubmitted]);
 
 	return (
 		<div className="p-2">
@@ -45,12 +49,7 @@ export function AvailableAppointmentsForm() {
 					onSubmit: () => {
 						void form.submitForm();
 						setSectionSubmitted(true);
-						if (errorList.length > 0) {
-							console.log('TERMA');
-							if (formikRef && formikRef.current) {
-								formikRef.current.focusErrorList();
-							}
-						}
+						focusErrorList(errorList, formikRef);
 					},
 				}}
 			>

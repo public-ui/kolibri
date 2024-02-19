@@ -80,11 +80,15 @@ export class KolForm implements API {
 			</form>
 		);
 	}
+
 	@Method()
-	focusErrorList(): void {
-		if (this._errorList && this._errorList.length > 0) {
-			this.errorListElement?.focus();
-		}
+	async focusErrorList(): Promise<void> {
+		setTimeout(() => {
+			if (this._errorList && this._errorList.length > 0) {
+				this.errorListElement?.focus();
+			}
+		}, 300);
+		return Promise.resolve();
 	}
 
 	/**

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { createErrorList } from './formUtils';
+import { createErrorList, focusErrorList } from './formUtils';
 
 const LOCATION_OPTIONS = [
 	{
@@ -33,6 +33,10 @@ export function DistrictForm() {
 	const errorList = createErrorList(form.errors);
 	const formikRef = useRef(null);
 
+	useEffect(() => {
+		focusErrorList(errorList, formikRef);
+	}, [sectionSubmitted]);
+
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus"></KolHeading>
@@ -43,9 +47,7 @@ export function DistrictForm() {
 					onSubmit: () => {
 						void form.submitForm();
 						setSectionSubmitted(true);
-						if (errorList.length > 0 && formikRef && formikRef.current) {
-							formikRef.current.focusErrorList();
-						}
+						focusErrorList(errorList, formikRef);
 					},
 				}}
 			>
