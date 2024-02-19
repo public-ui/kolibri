@@ -132,17 +132,15 @@ export class KolHeadingWc implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<div class="kol-heading-wc">
-					{typeof this.state._secondaryHeadline === 'string' && this.state._secondaryHeadline.length > 0 ? (
-						<hgroup>
-							{this.renderHeadline(this.state._label, this.state._level)}
-							{this.state._secondaryHeadline && this.renderSecondaryHeadline(this.state._secondaryHeadline, this.state._level + 1)}
-						</hgroup>
-					) : (
-						this.renderHeadline(this.state._label, this.state._level)
-					)}
-				</div>
+			<Host class="kol-heading-wc">
+				{typeof this.state._secondaryHeadline === 'string' && this.state._secondaryHeadline.length > 0 ? (
+					<hgroup>
+						{this.renderHeadline(this.state._label, this.state._level)}
+						{this.state._secondaryHeadline && this.renderSecondaryHeadline(this.state._secondaryHeadline, this.state._level + 1)}
+					</hgroup>
+				) : (
+					this.renderHeadline(this.state._label, this.state._level)
+				)}
 			</Host>
 		);
 	}

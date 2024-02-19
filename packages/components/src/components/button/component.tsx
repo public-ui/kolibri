@@ -73,7 +73,7 @@ export class KolButtonWc implements API {
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		return (
-			<Host>
+			<Host class="kol-button-wc">
 				<button
 					ref={this.catchRef}
 					accessKey={this.state._accessKey}
@@ -83,7 +83,6 @@ export class KolButtonWc implements API {
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
-						'kol-button-wc': true,
 						button: true,
 						[this.state._variant as string]: this.state._variant !== 'custom',
 						[this.state._customClass as string]:
@@ -100,12 +99,7 @@ export class KolButtonWc implements API {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc
-						class="kol-span-wc button-inner"
-						_icons={this.state._icons}
-						_hideLabel={this.state._hideLabel}
-						_label={hasExpertSlot ? '' : this.state._label}
-					>
+					<kol-span-wc class="button-inner" _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
@@ -118,7 +112,6 @@ export class KolButtonWc implements API {
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
-					class="kol-tooltip-wc"
 				></kol-tooltip-wc>
 			</Host>
 		);

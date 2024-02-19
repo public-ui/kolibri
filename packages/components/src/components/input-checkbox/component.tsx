@@ -40,10 +40,9 @@ export class KolInputCheckbox implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-checkbox">
 				<kol-input
 					class={{
-						'kol-input': true,
 						checkbox: true,
 						[this.state._variant]: true,
 						'hide-label': !!this.state._hideLabel,
@@ -68,7 +67,7 @@ export class KolInputCheckbox implements API {
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
 					<label slot="input" class="checkbox-container">
 						<kol-icon
-							class="kol-icon icon"
+							class="icon"
 							_icons={
 								this.state._indeterminate ? this.state._icons.indeterminate : this.state._checked ? this.state._icons.checked : this.state._icons.unchecked
 							}

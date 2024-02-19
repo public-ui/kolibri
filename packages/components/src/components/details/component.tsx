@@ -31,24 +31,19 @@ export class KolDetails implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-details">
 				<details
-					class="kol-details-wc"
 					ref={(el) => {
 						this.detailsElement = el as HTMLDetailsElement;
 					}}
 					onToggle={this.handleToggle}
 				>
 					<summary ref={this.catchRef}>
-						{this.state._open ? (
-							<kol-icon _label="" _icons="codicon codicon-chevron-down" class="kol-icon" />
-						) : (
-							<kol-icon _label="" _icons="codicon codicon-chevron-right" class="kol-icon" />
-						)}
+						{this.state._open ? <kol-icon _label="" _icons="codicon codicon-chevron-down" /> : <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
 						<span>{this.state._label}</span>
 					</summary>
 					<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" ref={(element) => (this.contentElement = element)}>
-						<kol-indented-text class="kol-indented-text">
+						<kol-indented-text>
 							<slot />
 						</kol-indented-text>
 					</div>

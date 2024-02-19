@@ -39,10 +39,13 @@ export const getSpanWcHtml = (
 
 	const hideExpertSlot = !showExpertSlot(state._label);
 	const icons = mapIconProp2State(state._icons as KoliBriIconsProp);
-	const classNames: string[] = [...(state._hideLabel === true ? ['icon-only', 'hide-label'] : []), ...(options?.additionalClassNames ?? [])];
+	const classNames: string[] = [
+		...(state._hideLabel === true ? ['icon-only kol-span kol-span-wc', 'hide-label'] : []),
+		...(options?.additionalClassNames ?? []),
+	];
 
 	return `
-<kol-span-wc${classNames.length ? ` class="kol-span-wc ${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
+<kol-span-wc${classNames.length ? ` class="${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
 	${
 		icons.top
 			? getIconHtml({
@@ -59,7 +62,7 @@ export const getSpanWcHtml = (
 							_label: (icons.left as KoliBriCustomIcon).label ?? '',
 							_icons: (icons.left as KoliBriCustomIcon).icon,
 						},
-						` class="icon left"`
+						` class="kol-icon icon left"`
 				  )
 				: ''
 		}
@@ -105,7 +108,7 @@ export const getSpanHtml = (
 	return `
 <kol-span>
 	<mock:shadow-root>
-		${getSpanWcHtml(props, slots)}
+		${getSpanWcHtml(props, slots, { additionalAttrs: ` class="kol-span kol-span-wc" ` })}
 	</mock:shadow-root>
 </kol-span>`;
 };

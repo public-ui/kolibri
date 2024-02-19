@@ -17,14 +17,13 @@ export class KolInputAdapterLeanup {
 	}
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<kol-alert _type="warning" class="kol-alert-wc">
+			<Host class="kol-input-adapter-leanup">
+				<kol-alert _type="warning">
 					Die Komponente <code>kol-input-adapter-leanup</code> ist umgezogen. Lesen Sie hier, wie Sie sie migrieren:{' '}
 					<kol-link
 						_href="https://public-ui.github.io/docs/changelog#118---07102022"
 						_label="https://public-ui.github.io/docs/changelog#118---07102022"
 						_target="documentation"
-						class="kol-link"
 					></kol-link>
 				</kol-alert>
 			</Host>

@@ -16,10 +16,9 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 	const type: string = props._type !== undefined ? props._type : 'default';
 	props._type = props._type || 'default';
 	props._variant = props._variant || 'msg';
-	return `<kol-alert${additionalHTML}>
+	return `<kol-alert${additionalHTML} class="kol-alert">
   <mock:shadow-root>
-    <kol-alert-wc class="kol-alert"${props._alert === true ? ' role="alert"' : ''}>
-		<div class="kol-alert-wc ${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}">
+		<kol-alert-wc class="kol-alert-wc ${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}"${props._alert === true ? ' role="alert"' : ''}>
 			<div class="heading">
 				${getIconHtml(
 					{
@@ -37,14 +36,14 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 								: 'kol-message',
 						_icons:
 							props._type === 'success'
-								? 'kol-icon-wc codicon codicon-pass'
+								? 'codicon codicon-pass'
 								: props._type === 'error'
-								? 'kol-icon-wc codicon codicon-error'
+								? 'codicon codicon-error'
 								: props._type === 'warning'
-								? 'kol-icon-wc codicon codicon-warning'
+								? 'codicon codicon-warning'
 								: props._type === 'info'
-								? 'kol-icon-wc codicon codicon-info'
-								: 'kol-icon-wc codicon codicon-comment',
+								? 'codicon codicon-info'
+								: 'codicon codicon-comment',
 					},
 					` class="heading-icon kol-icon"`
 				)}
@@ -78,14 +77,14 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 									_hideLabel: true,
 									_icons: {
 										left: {
-											icon: 'kol-icon-wc codicon codicon-close',
+											icon: 'codicon codicon-close',
 										},
 									},
 									_label: translate('kol-close'),
 									_tooltipAlign: 'left',
 								},
 								{},
-								` class="kol-button-wc close"`
+								` class="close"`
 						  )
 						: ''
 				}
@@ -99,6 +98,5 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
     </kol-alert-wc>
   </mock:shadow-root>
  ${innerHTML}
- </div>
 </kol-alert>`;
 };

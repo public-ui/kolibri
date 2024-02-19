@@ -52,6 +52,7 @@ export class KolModal implements API {
 	public render(): JSX.Element {
 		return (
 			<Host
+				class="kol-modal"
 				ref={(el) => {
 					this.hostElement = el as HTMLElement;
 				}}
@@ -59,7 +60,7 @@ export class KolModal implements API {
 				{this.state._activeElement /* SSR instanceof HTMLElement */ && (
 					<div class="overlay">
 						<div
-							class="kol-modal-wc modal"
+							class="modal"
 							style={{
 								width: this.state._width,
 							}}

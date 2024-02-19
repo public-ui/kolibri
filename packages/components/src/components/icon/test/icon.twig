@@ -5,9 +5,9 @@
     <template shadowrootmode="open">
   {% endif %}
   {% if _label|length > 0 %}
-    <i aria-label="{{ _label }}" class="kol-icon {{ _icons }}" part="icon" role="img"></i>
+    <i aria-label="{{ _label }}" class="{{ _icons }}" part="icon" role="img"></i>
   {% else %}
-    <i aria-hidden="true" class="kol-icon {{ _icons }}" part="icon" role="img"></i>
+    <i aria-hidden="true" class="{{ _icons }}" part="icon" role="img"></i>
   {% endif %}
   {% if mode == 'csr' %}
     </mock:shadow-root>

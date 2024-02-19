@@ -26,7 +26,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 						listStyleType: props.listStyleType,
 					}}
 				>
-					<kol-link {...link} class="kol-link"></kol-link>
+					<kol-link {...link}></kol-link>
 				</li>
 			) as JSX.Element
 		);
@@ -47,14 +47,14 @@ export class KolLinkGroup implements API {
 			<nav
 				aria-label={this.state._label}
 				class={{
-					'kol-link-group-wc': true,
+					'kol-link-group': true,
 					vertical: this.state._orientation === 'vertical',
 					horizontal: this.state._orientation === 'horizontal',
 				}}
 			>
 				{/* @deprecated remove in the next major version */}
 				{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
-					<kol-heading-wc _label={this.state._heading} _level={this.state._level} class="kol-heading-wc"></kol-heading-wc>
+					<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
 				)}
 
 				{this.isUl === false ? (

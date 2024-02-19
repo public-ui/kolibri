@@ -54,9 +54,9 @@ export class KolTextarea implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host class={{ 'kol-textarea-wc': true, 'has-value': this.state._hasValue }}>
+			<Host class={{ 'kol-textarea': true, 'has-value': this.state._hasValue }}>
 				<kol-input
-					class={{ 'kol-input': true, textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
+					class={{ textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
 					_alert={this.state._alert}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}

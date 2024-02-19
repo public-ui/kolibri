@@ -83,15 +83,8 @@ export class KolImage implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<img
-					alt={this.state._alt}
-					loading={this.state._loading}
-					sizes={this.state._sizes}
-					src={this.state._src}
-					srcset={this.state._srcset}
-					class="kol-image"
-				></img>
+			<Host class="kol-image">
+				<img alt={this.state._alt} loading={this.state._loading} sizes={this.state._sizes} src={this.state._src} srcset={this.state._srcset}></img>
 			</Host>
 		);
 	}

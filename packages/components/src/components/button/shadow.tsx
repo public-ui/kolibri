@@ -32,12 +32,11 @@ export class KolButton implements Props {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-button">
 				<kol-button-wc
 					ref={this.catchRef}
 					class={{
 						button: true,
-						'kol-button': true,
 						[this._variant as string]: this._variant !== 'custom',
 						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 					}}

@@ -57,12 +57,12 @@ export class KolInputPassword implements API {
 		return (
 			<Host
 				class={{
+					'kol-input-password': true,
 					'has-value': this.state._hasValue,
 				}}
 			>
 				<kol-input
 					class={{
-						'kol-input': true,
 						'hide-label': !!this.state._hideLabel,
 						password: true,
 					}}

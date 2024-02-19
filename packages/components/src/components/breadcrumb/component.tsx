@@ -20,7 +20,7 @@ export class KolBreadcrumb implements API {
 		const lastIndex = this.state._links.length - 1;
 		const hideLabel = link._iconOnly || link._hideLabel;
 		return (
-			<li key={index}>
+			<li key={index} class="kol-breadcrumb">
 				{index !== 0 && <kol-icon class="kol-icon" _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
 					<span>

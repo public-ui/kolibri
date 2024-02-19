@@ -173,9 +173,9 @@ export class KolToast implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-toast">
 				{this.state._show && (
-					<div class="kol-toast-wc">
+					<div>
 						<kol-alert
 							_alert={this.state._alert}
 							_label={this.state._label}

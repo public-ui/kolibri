@@ -87,7 +87,7 @@ export class KolTabs implements API {
 
 	private renderButtonGroup() {
 		return (
-			<kol-button-group-wc role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown} class="kol-button-group-wc ">
+			<kol-button-group-wc role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown} class="kol-tabs">
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<kol-button-wc
 						_disabled={button._disabled}
@@ -104,12 +104,11 @@ export class KolTabs implements API {
 						_id={`${this.state._label.replace(/\s/g, '-')}-tab-${index}`}
 						_role="tab"
 						_value={index}
-						class="kol-button-wc"
 					></kol-button-wc>
 				))}
 				{this.showCreateTab && (
 					<kol-button-wc
-						class="kol-button-wc create-button"
+						class="create-button"
 						_label={this.onCreateLabel}
 						_on={{
 							onClick: this.onCreate,

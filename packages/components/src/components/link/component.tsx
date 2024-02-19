@@ -103,7 +103,7 @@ export class KolLinkWc implements API {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		return (
-			<Host>
+			<Host class="kol-link-wc">
 				<a
 					ref={this.catchRef}
 					{...tagAttrs}
@@ -117,7 +117,6 @@ export class KolLinkWc implements API {
 					}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
-						'kol-link-wc': true,
 						disabled: this.state._disabled === true,
 						'skip ': this.state._stealth !== false,
 						'icon-only': this.state._hideLabel === true, // @deprecated in v2
@@ -132,17 +131,12 @@ export class KolLinkWc implements API {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc
-						_icons={this.state._icons}
-						_hideLabel={this.state._hideLabel}
-						_label={hasExpertSlot ? '' : this.state._label || this.state._href}
-						class="kol-span-wc"
-					>
+					<kol-span-wc _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label || this.state._href}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && (
 						<kol-icon
-							class="kol-icon external-link-icon"
+							class="external-link-icon"
 							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
 							_icons={'codicon codicon-link-external'}
 							aria-hidden={this.state._hideLabel}
@@ -158,7 +152,6 @@ export class KolLinkWc implements API {
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
-					class="kol-tooltip-wc"
 				></kol-tooltip-wc>
 			</Host>
 		);

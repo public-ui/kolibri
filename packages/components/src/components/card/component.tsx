@@ -36,10 +36,10 @@ export class KolCard implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<div class="kol-card-wc card">
+			<Host class="kol-card">
+				<div class="card">
 					<div class="header">
-						<kol-heading-wc _label={this.state._label} _level={this.state._level} class="kol-heading-wc"></kol-heading-wc>
+						<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
 						<slot name="header"></slot>
 					</div>
 					<div class="content">
@@ -55,7 +55,7 @@ export class KolCard implements API {
 
 					{this.state._hasCloser && (
 						<kol-button-wc
-							class="kol-button-wc close"
+							class="close"
 							_hideLabel
 							_icons={{
 								left: {

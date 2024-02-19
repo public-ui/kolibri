@@ -57,10 +57,9 @@ export class KolInputDate implements ComponentApi {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host class={{ 'has-value': this.state._hasValue }}>
+			<Host class={{ 'kol-input-date': true, 'has-value': this.state._hasValue }}>
 				<kol-input
 					class={{
-						'kol-input': true,
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
 					}}

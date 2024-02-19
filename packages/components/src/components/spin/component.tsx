@@ -35,26 +35,24 @@ export class KolSpin implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<div class="kol-spin-wc">
-					{this.state._show ? (
-						<span
-							aria-busy="true"
-							aria-label={translate('kol-action-running')}
-							aria-live="polite"
-							class={{
-								spin: true,
-								[this.state._variant]: true,
-								/* [`spin--${this.state._variant}`]: true, witch benefit have this notation? */
-							}}
-							role="alert"
-						>
-							{renderSpin(this.state._variant)}
-						</span>
-					) : (
-						this.showToggled && <span aria-label={translate('kol-action-done')} aria-busy="false" aria-live="polite" role="alert"></span>
-					)}
-				</div>
+			<Host class="kol-spin">
+				{this.state._show ? (
+					<span
+						aria-busy="true"
+						aria-label={translate('kol-action-running')}
+						aria-live="polite"
+						class={{
+							spin: true,
+							[this.state._variant]: true,
+							/* [`spin--${this.state._variant}`]: true, witch benefit have this notation? */
+						}}
+						role="alert"
+					>
+						{renderSpin(this.state._variant)}
+					</span>
+				) : (
+					this.showToggled && <span aria-label={translate('kol-action-done')} aria-busy="false" aria-live="polite" role="alert"></span>
+				)}
 			</Host>
 		);
 	}

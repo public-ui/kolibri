@@ -13,10 +13,10 @@ export const getAvatarHtml = (props: Props): string => {
 	);
 
 	return `
-<kol-avatar>
+<kol-avatar class="kol-avatar">
   <mock:shadow-root>
-		<kol-avatar-wc class="kol-avatar">
-			<div aria-label="kol-avatar-alt" class="container kol-avatar-wc" role="img">
+		<kol-avatar-wc class="kol-avatar-wc">
+			<div aria-label="kol-avatar-alt" class="container" role="img">
 				${
 					state._src
 						? `<img alt="" aria-hidden="true" class="image" src="${state._src}" />`

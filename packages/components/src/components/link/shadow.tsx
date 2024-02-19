@@ -31,7 +31,7 @@ export class KolLink implements LinkProps {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-link">
 				<kol-link-wc
 					ref={this.catchRef}
 					_ariaControls={this._ariaControls}
@@ -55,7 +55,6 @@ export class KolLink implements LinkProps {
 					_target={this._target}
 					_tooltipAlign={this._tooltipAlign}
 					_useCase={this._useCase}
-					class="kol-link"
 				>
 					{/*
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
