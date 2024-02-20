@@ -14,6 +14,7 @@ export const getVersionHtml = (props: Props, options?: SpanOptions): string => {
 	return `
 <kol-version${options?.additionalAttrs ?? ''}>
   <mock:shadow-root>
+	<div class="kol-version">
     ${getBadgeHtml(
 			{
 				_color: '#BEC5C9',
@@ -22,6 +23,7 @@ export const getVersionHtml = (props: Props, options?: SpanOptions): string => {
 			},
 			options
 		)}
+		</div>
   </mock:shadow-root>
 </kol-version>`;
 };

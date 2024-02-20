@@ -52,7 +52,7 @@ export const getCardHtml = (props: Props): string => {
 								_tooltipAlign: 'left',
 							},
 							undefined,
-							' class="close"'
+							' class=" kol-button-wc close"'
 					  )
 					: ``
 			}
