@@ -1,4 +1,4 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { HeadingLevel } from '../../types/heading-level';
@@ -44,29 +44,30 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 export class KolLinkGroup implements API {
 	public render(): JSX.Element {
 		return (
-			<nav
-				aria-label={this.state._label}
-				class={{
-					'kol-link-group': true,
-					vertical: this.state._orientation === 'vertical',
-					horizontal: this.state._orientation === 'horizontal',
-				}}
-			>
-				{/* @deprecated remove in the next major version */}
-				{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
-					<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
-				)}
+			<Host class="kol-link-group">
+				<nav
+					aria-label={this.state._label}
+					class={{
+						vertical: this.state._orientation === 'vertical',
+						horizontal: this.state._orientation === 'horizontal',
+					}}
+				>
+					{/* @deprecated remove in the next major version */}
+					{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
+						<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
+					)}
 
-				{this.isUl === false ? (
-					<ol>
-						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
-					</ol>
-				) : (
-					<ul>
-						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
-					</ul>
-				)}
-			</nav>
+					{this.isUl === false ? (
+						<ol>
+							<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
+						</ol>
+					) : (
+						<ul>
+							<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
+						</ul>
+					)}
+				</nav>
+			</Host>
 		);
 	}
 

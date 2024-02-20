@@ -1,4 +1,4 @@
-import { Component, Fragment, h, JSX, Method, State } from '@stencil/core';
+import { Component, Fragment, h, Host, JSX, Method, State } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
@@ -92,8 +92,8 @@ export class KolToastContainer implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Fragment>
-				<div class="kol-toast-container">
+			<Host class="kol-toast-container">
+				<Fragment>
 					{this.state._toastStates.length > 1 && (
 						<kol-button
 							_label={translate('kol-toast-close-all')}
@@ -108,8 +108,8 @@ export class KolToastContainer implements API {
 					{this.state._toastStates.map((toastState) => (
 						<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />
 					))}
-				</div>
-			</Fragment>
+				</Fragment>
+			</Host>
 		);
 	}
 }

@@ -1,5 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
-import { Component, h, JSX, Prop } from '@stencil/core';
+import { Component, h, Host, JSX, Prop } from '@stencil/core';
 
 import { FontAwesome, FontAwesomeOssPrefix } from '../../enums/font-awesome';
 import { PropAriaLabel } from '../../types/props/aria-label';
@@ -23,12 +23,13 @@ type OptionalProps = {
 export class KolIconFontAwesome implements Generic.Element.Members<RequiredProps, OptionalProps> {
 	public render(): JSX.Element {
 		return (
-			<kol-icon
-				exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
-				_ariaLabel={this._ariaLabel}
-				_icon={typeof this._prefix === 'string' && typeof this._icon === 'string' ? `${this._prefix} fa-${this._icon}` : (undefined as unknown as string)}
-				class="kol-icon-font-awesome"
-			/>
+			<Host class="kol-icon-font-awesome">
+				<kol-icon
+					exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
+					_ariaLabel={this._ariaLabel}
+					_icon={typeof this._prefix === 'string' && typeof this._icon === 'string' ? `${this._prefix} fa-${this._icon}` : (undefined as unknown as string)}
+				/>
+			</Host>
 		);
 	}
 
