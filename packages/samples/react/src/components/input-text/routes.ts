@@ -2,6 +2,7 @@ import { Routes } from '../../shares/types';
 
 import { InputTextBasic } from './basic';
 import { InputTextBlur } from './blur';
+import { InputTextHideErrors } from './hide-errors';
 import { InputTextFocus } from './focus';
 
 export const INPUT_TEXT_ROUTES: Routes = {
@@ -9,5 +10,6 @@ export const INPUT_TEXT_ROUTES: Routes = {
 		basic: InputTextBasic,
 		blur: InputTextBlur,
 		focus: InputTextFocus,
+		'hide-errors': InputTextHideErrors,
 	},
 };

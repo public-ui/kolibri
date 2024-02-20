@@ -61,7 +61,7 @@
 		"@angular/compiler-cli": "16.0.0",
 		"@angular/compiler": "16.0.0",
 		"@angular/core": "16.0.0",
-		"@public-ui/components": "1.7.10",
+		"@public-ui/components": "1.7.12",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts5.1",
@@ -76,7 +76,7 @@
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
 		"@angular/core": "^16",
-		"@public-ui/components": "1.7.10"
+		"@public-ui/components": "1.7.12"
 	},
 	"files": [
 		"dist"
