@@ -1,5 +1,5 @@
 dod:
-  - Meaningful title and valuable description in the pull request
+  - Meaningful title for the release notes
   - Pull request is linked to an issue
   - All changes relate to the issue
   - A11y tests performed successfully
