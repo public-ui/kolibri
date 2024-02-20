@@ -24,6 +24,7 @@ export const getBadgeHtml = (props: Props, options?: SpanOptions): string => {
 			${getSpanWcHtml({ ...state, _label: props._label, _allowMarkdown: true }, undefined, {
 				...options,
 				additionalAttrs: `${hasSmartButton ? ' id="nonce"' : ''}` + (options?.additionalAttrs ?? ''),
+				additionalClassNames: ['kol-span-wc'],
 			})}
 		</span>
 	</mock:shadow-root>

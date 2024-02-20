@@ -53,7 +53,6 @@ export class KolButtonLink implements Props {
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
 					_value={this._value}
-					class="kol-button-wc"
 				>
 					<slot name="expert" slot="expert"></slot>
 				</kol-button-wc>
