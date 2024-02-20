@@ -46,7 +46,7 @@ import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/c
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 
 import type { JSX } from '@stencil/core';
-import {transformTagName} from "../../utils/transform-tag-name";
+import { transformTagName } from '../../utils/transform-tag-name';
 /**
  * @internal
  */
