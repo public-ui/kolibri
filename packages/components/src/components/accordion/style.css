@@ -38,5 +38,5 @@
  * So we have to align the text to the left.
  */
 .accordion .kol-heading-wc .kol-button-wc button .kol-span-wc {
-	justify-items: start !important;
+	justify-items: start;
 }
