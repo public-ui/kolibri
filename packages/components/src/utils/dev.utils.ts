@@ -128,6 +128,7 @@ const getKoliBri = (): Record<string, unknown> => {
 };
 
 export const initKoliBri = (): void => {
+	initMeta();
 	if (getKoliBri() === undefined) {
 		if (getKoliBri().Modal === undefined) {
 			const Modal = new ModalService();
@@ -136,7 +137,6 @@ export const initKoliBri = (): void => {
 					return Modal;
 				},
 			});
-			initMeta();
 		}
 		Log.debug(
 			`
