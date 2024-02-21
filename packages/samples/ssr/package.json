@@ -4,8 +4,8 @@
 	"private": true,
 	"scripts": {
 		"lint": "tsc --noemit",
-		"postinstall": "rimraf assets && npm-run-all postinstall:*",
-		"postinstall:assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
+		"prepare": "rimraf assets && npm-run-all prepare:*",
+		"prepare:assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"start": "nodemon index.ts"
 	},
 	"author": "",

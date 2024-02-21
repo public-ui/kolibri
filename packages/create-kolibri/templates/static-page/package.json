@@ -9,10 +9,10 @@
 	"license": "UNLICENSED",
 	"private": true,
 	"scripts": {
-		"start": "serve",
-		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" assets --dot"
+		"prepare": "npm-run-all prepare:*",
+		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
+		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" assets --dot",
+		"start": "serve"
 	},
 	"devDependencies": {
 		"@public-ui/components": "2.0.6",
