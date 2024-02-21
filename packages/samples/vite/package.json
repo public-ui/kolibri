@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-vite",
-	"version": "2.0.6",
+	"version": "2.0.7",
 	"private": true,
 	"scripts": {
 		"build": "tsc && vite build",
@@ -12,9 +12,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@public-ui/components": "2.0.6",
-		"@public-ui/react": "2.0.6",
-		"@public-ui/theme-default": "2.0.6",
+		"@public-ui/components": "2.0.7",
+		"@public-ui/react": "2.0.7",
+		"@public-ui/theme-default": "2.0.7",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},
