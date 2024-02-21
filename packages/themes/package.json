@@ -53,14 +53,14 @@
 	"devDependencies": {
 		"@public-ui/schema": "2.0.6",
 		"@types/node": "ts5.3",
-		"@typescript-eslint/eslint-plugin": "7.0.1",
-		"@typescript-eslint/parser": "7.0.1",
+		"@typescript-eslint/eslint-plugin": "7.0.2",
+		"@typescript-eslint/parser": "7.0.2",
 		"eslint": "8.56.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.0.3",
 		"postcss": "8.4.35",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.70.0",
+		"sass": "1.71.1",
 		"typescript": "5.3.3",
 		"unbuild": "1.2.1"
 	},
