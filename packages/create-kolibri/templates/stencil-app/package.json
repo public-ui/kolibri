@@ -13,9 +13,9 @@
 		"test": "stencil test --spec --e2e",
 		"test.watch": "stencil test --spec --e2e --watchAll",
 		"generate": "stencil generate",
-		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot"
+		"prepare": "npm-run-all prepare:*",
+		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
+		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot"
 	},
 	"dependencies": {
 		"@public-ui/components": "2.0.6",

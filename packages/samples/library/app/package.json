@@ -9,12 +9,12 @@
 		"build:deps": "pnpm --filter @public-ui/library-app^... build",
 		"format": "prettier --check src",
 		"lint": "eslint \"{src,tests}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
+		"prepare": "npm-run-all prepare:*",
+		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
+		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map",
 		"start": "npm run serve -- --open",
-		"unused": "ts-prune -e src",
-		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot"
+		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
 		"@leanup/stack": "1.3.49",

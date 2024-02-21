@@ -42,9 +42,9 @@
 		"react"
 	],
 	"scripts": {
-		"build": "pnpm postinstall && node scripts/make-standalone.js",
-		"postinstall": "rimraf dist && cpy \"node_modules/@public-ui/react/dist/*.mjs\" dist --dot",
-		"prepack": "pnpm build"
+		"build": "pnpm prepare && node scripts/make-standalone.js",
+		"prepack": "pnpm build",
+		"prepare": "rimraf dist && cpy \"node_modules/@public-ui/react/dist/*.mjs\" dist --dot"
 	},
 	"devDependencies": {
 		"@public-ui/react": "2.0.6",
