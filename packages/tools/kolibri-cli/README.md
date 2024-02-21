@@ -115,7 +115,7 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 			"tsconfig-reconfigure-compilerOptions.types": true,
 			"remove--cpy-cli,rimraf": true,
 			"add--cpy-cli,rimraf": true,
-			"package.json-reconfigure-scripts.postinstall": true,
+			"package.json-reconfigure-scripts.prepare": true,
 			"merge-html-codicon-in-index.html": true,
 			"remove-public/assets/codicons": true,
 			"exec-npx cpy \"node_modules/@public-ui/components/assets/**/*\" \"public/assets\" --dot": true,
