@@ -128,14 +128,16 @@ const getKoliBri = (): Record<string, unknown> => {
 };
 
 export const initKoliBri = (): void => {
-	if (getKoliBri().Modal === undefined) {
-		const Modal = new ModalService();
-		Object.defineProperty(getKoliBri(), 'Modal', {
-			get: function (): ModalService {
-				return Modal;
-			},
-		});
-		initMeta();
+	initMeta();
+	if (getKoliBri() === undefined) {
+		if (getKoliBri().Modal === undefined) {
+			const Modal = new ModalService();
+			Object.defineProperty(getKoliBri(), 'Modal', {
+				get: function (): ModalService {
+					return Modal;
+				},
+			});
+		}
 		Log.debug(
 			`
 	,--. ,--.         ,--. ,--. ,-----.           ,--.
