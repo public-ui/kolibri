@@ -35,7 +35,7 @@
 		"postinstall:components-lib": "cpy \"node_modules/@public-ui/components/dist/kolibri/**/*\" src/assets/kolibri/ --dot"
 	},
 	"dependencies": {
-		"adopted-style-sheets": "1.1.2",
+		"adopted-style-sheets": "1.1.4-dev.0",
 		"@public-ui/components": "2.0.6",
 		"@public-ui/schema": "2.0.6"
 	},

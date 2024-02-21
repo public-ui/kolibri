@@ -13,7 +13,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"adopted-style-sheets": "1.1.3"
+		"adopted-style-sheets": "1.1.4-dev.0"
 	},
 	"devDependencies": {
 		"@types/node": "ts5.3",

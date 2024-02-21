@@ -32,7 +32,7 @@
 	"dependencies": {
 		"@public-ui/library-schema": "0.0.0",
 		"@public-ui/library-theme": "0.0.0",
-		"adopted-style-sheets": "1.1.3"
+		"adopted-style-sheets": "1.1.4-dev.0"
 	},
 	"devDependencies": {
 		"@public-ui/components": "2.0.6",
