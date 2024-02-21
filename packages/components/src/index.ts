@@ -1,8 +1,8 @@
 export { setCurrentLocation } from './components/link/ariaCurrentService';
 export * from './components.d';
-export { register } from './core';
+export { register } from '../../core/src';
 export * from './enums/bund';
-export { translations } from './i18n';
+export { translations } from './core';
 export * from './kolibri';
 export { ToasterService } from './components/toaster/toaster';
 export type { Toast, ToasterOptions } from '@public-ui/schema';

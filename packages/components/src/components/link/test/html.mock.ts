@@ -8,7 +8,7 @@ import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
 import type { LinkProps, LinkStates } from '@public-ui/schema';
 import clsx from 'clsx';
-import { translate } from '../../../i18n';
+import { translate } from '@public-ui/core';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	const state = mixMembers<LinkProps, LinkStates>(
 		{

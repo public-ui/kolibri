@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { translate } from '../../../i18n';
+import { translate } from '@public-ui/core';
 import { getButtonWcHtml } from '../../button/test/html.mock';
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { getIconHtml } from '../../icon/test/html.mock';

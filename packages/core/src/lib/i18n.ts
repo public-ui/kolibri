@@ -7,9 +7,10 @@ import type { Generic } from 'adopted-style-sheets';
  */
 import { devHint } from '@public-ui/schema';
 
-import { getI18nService } from './core';
-import locale_de from './locales/de';
-import locale_en from './locales/en';
+import { getI18nService } from '..';
+
+import locale_de from '../locales/de';
+import locale_en from '../locales/en';
 
 type ResourcePrefix = 'Kol';
 type ComponentKeys = keyof typeof locale_de;
@@ -42,7 +43,7 @@ export const translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<Compone
 			t((l, t) => {
 				i18n.addResourceBundle(l, t);
 				return l;
-			})
+			}),
 		);
 
 		text = i18n.translate(key, options);

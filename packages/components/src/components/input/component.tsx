@@ -3,7 +3,7 @@ import { handleSlotContent, showExpertSlot } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 
 import type {
 	AccessKeyPropType,

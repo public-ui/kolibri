@@ -21,6 +21,14 @@
 		"strict": true,
 		"skipLibCheck": true
 	},
-	"include": ["declare.d.ts", "src"],
+	"include": [
+		"declare.d.ts",
+		"src",
+		"../core/src/lib/i18n.ts",
+		"../core/src/i18n.ts",
+		"../core/src/index.ts",
+		"../core/src/declare.d.ts",
+		"../core/src/locales"
+	],
 	"exclude": ["node_modules"]
 }

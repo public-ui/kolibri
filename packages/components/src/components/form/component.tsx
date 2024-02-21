@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { validateErrorList, watchBoolean, watchString } from '@public-ui/schema';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '@public-ui/schema';
 /**

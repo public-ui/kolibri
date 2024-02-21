@@ -13,6 +13,7 @@ npx license-report --output=html --package=packages/adapters/react-standalone/pa
 npx license-report --output=html --package=packages/adapters/solid/package.json >> license-reports/adapter-solid.html
 npx license-report --output=html --package=packages/adapters/vue/package.json >> license-reports/adapter-vue.html
 npx license-report --output=html --package=packages/components/package.json >> license-reports/components.html
+npx license-report --output=html --package=packages/core/package.json >> license-reports/components.html
 npx license-report --output=html --package=packages/create-kolibri/package.json >> license-reports/create-kolibri.html
 npx license-report --output=html --package=packages/designer/package.json >> license-reports/designer.html
 npx license-report --output=html --package=packages/samples/angular/package.json >> license-reports/sample-angular.html

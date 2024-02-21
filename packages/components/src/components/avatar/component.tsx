@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { validateImageSource, validateLabel } from '@public-ui/schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 import { formatLabelAsInitials } from './controller';
 
 import type { AvatarAPI, AvatarStates, ImageSourcePropType, LabelPropType } from '@public-ui/schema';

@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Fragment, h, Method, State } from '@stencil/core';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 import { nonce } from '../../utils/dev.utils';
 import { InternalToast } from './InternalToast';
 

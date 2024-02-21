@@ -10,7 +10,7 @@ import type {
 import { setState, validateHasCloser, validateLabel } from '@public-ui/schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 import { watchHeadingLevel } from '../heading/validation';
 
 import type { JSX } from '@stencil/core';
