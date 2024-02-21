@@ -3,7 +3,7 @@ import { devHint, emptyStringByArrayHandler, objectObjectHandler, parseJson, set
 import type { JSX } from '@stencil/core';
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 
 import type {
 	KoliBriDataCompareFn,

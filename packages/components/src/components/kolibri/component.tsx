@@ -3,7 +3,7 @@ import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { colorRgba } from './color-rgba';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 
 import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';

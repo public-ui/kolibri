@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { validateShow, validateSpinVariant } from '@public-ui/schema';
 import { Component, Fragment, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 
 import type { ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '@public-ui/schema';
 function renderSpin(variant: SpinVariantPropType): JSX.Element {

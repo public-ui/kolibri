@@ -13,6 +13,7 @@ npm deprecate @public-ui/react-standalone@$1 "Wir empfehlen die Verwendung einer
 npm deprecate @public-ui/solid@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/vue@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/components@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
+npm deprecate @public-ui/core@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/schema@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/themes@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."
 npm deprecate @public-ui/theme-default@$1 "Wir empfehlen die Verwendung einer neueren Version (>=$2)."

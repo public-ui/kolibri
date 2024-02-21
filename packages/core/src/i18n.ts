@@ -1,6 +1,5 @@
-import i18next from 'i18next';
-
 import type { Generic } from 'adopted-style-sheets';
+import i18next from 'i18next';
 
 interface ITranslationOptions {
 	/**
@@ -41,7 +40,7 @@ export class I18nextService implements II18nService {
 		translations?:
 			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
 			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
-			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>
+			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>,
 	): Promise<II18nService> {
 		if (Array.isArray(translations)) {
 			translations = new Set(translations);
@@ -65,7 +64,7 @@ export class I18nextService implements II18nService {
 				t((l, t) => {
 					I18nextService.instance.addResourceBundle(l, t);
 					return l;
-				})
+				}),
 			);
 		}
 

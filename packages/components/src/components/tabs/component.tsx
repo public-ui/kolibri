@@ -23,7 +23,7 @@ import {
 } from '@public-ui/schema';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 
 import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';

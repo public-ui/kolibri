@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { translate } from '../../../i18n';
+import { translate } from '@public-ui/core';
 
 import type { SymbolProps } from '@public-ui/schema';
 export const getSymbolHtml = (props: SymbolProps): string => {

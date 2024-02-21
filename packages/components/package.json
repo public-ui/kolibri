@@ -68,9 +68,8 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.3",
+		"@public-ui/core": "2.0.6",
 		"@public-ui/schema": "2.0.6",
-		"adopted-style-sheets": "1.1.3",
-		"i18next": "23.8.2",
 		"markdown-it": "14.0.0"
 	},
 	"devDependencies": {

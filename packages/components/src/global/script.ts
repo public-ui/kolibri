@@ -3,8 +3,6 @@ import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
 import { Log, processEnv } from '@public-ui/schema';
 import { setMode } from '@stencil/core';
 
-import { register } from '../core';
-
 // ts-prune-ignore-next
 export default async (): Promise<void> => {
 	setMode((elm) => {
@@ -21,8 +19,6 @@ export default async (): Promise<void> => {
 		}
 		return 'default';
 	});
-
-	await register([], []);
 
 	import('./devtools')
 		.then((devTools) => {

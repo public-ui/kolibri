@@ -34,7 +34,7 @@ import {
 } from '@public-ui/schema';
 import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 
-import { translate } from '../../i18n';
+import { translate } from '@public-ui/core';
 import { onLocationChange } from './ariaCurrentService';
 
 import { validateDisabled } from '@public-ui/schema';
