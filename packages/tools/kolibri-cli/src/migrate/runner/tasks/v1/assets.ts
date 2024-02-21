@@ -32,10 +32,10 @@ export const getAssetTasks = (baseDir: string) => {
 	);
 
 	const addScript = JsonTask.getInstance(
-		'scripts.postinstall',
+		'scripts.prepare',
 		{
 			scripts: {
-				postinstall: `cpy "node_modules/@public-ui/components/assets/**/*" "${indexHtml}/assets" --dot`,
+				prepare: `cpy "node_modules/@public-ui/components/assets/**/*" "${indexHtml}/assets" --dot`,
 			},
 		},
 		'^1',

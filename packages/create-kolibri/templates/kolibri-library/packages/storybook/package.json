@@ -18,17 +18,13 @@
 		"remove:lock": "rimraf package-lock.json node_modules",
 		"remove": "npm run remove:lock && git clean -f -d -X",
 		"npm:install": "cross-env CYPRESS_INSTALL_BINARY=0 npm i",
-		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot",
+		"prepare": "npm-run-all prepare:*",
+		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
+		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot",
 		"reinstall": "npm run remove && npm i",
 		"reinstall:kolibri": "npm cache clear -f && rimraf node_modules/@a11y-ui node_modules/@public-ui package-lock.json && npm update @a11y-ui/* @public-ui/*",
 		":sync": "rimraf node_modules/@public-ui && npm update @public-ui/*",
-		"changelog": "auto-changelog && auto-changelog --output ../../CHANGELOG.json --template json",
-		":install": "pnpm i && pnpm update",
-		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
-		":republish": "npm run :unpublish && npm run :publish",
-		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
+		"changelog": "auto-changelog && auto-changelog --output ../../CHANGELOG.json --template json"
 	},
 	"auto-changelog": {
 		"commitLimit": false,
