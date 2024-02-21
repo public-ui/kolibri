@@ -35,6 +35,7 @@ const getKoliBri = (): Record<string, unknown> => {
 };
 
 export const initKoliBri = (): void => {
+	initMeta();
 	if (getKoliBri().Modal === undefined) {
 		const Modal = new ModalService();
 		Object.defineProperty(getKoliBri(), 'Modal', {
@@ -42,7 +43,6 @@ export const initKoliBri = (): void => {
 				return Modal;
 			},
 		});
-		initMeta();
 	}
 	Log.debug(
 		`
