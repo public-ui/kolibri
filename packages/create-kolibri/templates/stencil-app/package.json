@@ -9,18 +9,18 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "stencil build",
+		"prepare": "npm-run-all prepare:*",
+		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
+		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot",
 		"start": "stencil build --dev --watch --serve",
 		"test": "stencil test --spec --e2e",
 		"test.watch": "stencil test --spec --e2e --watchAll",
 		"generate": "stencil generate",
-		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot",
 		"update": "ncu -t patch -u && ncu -t minor -u -x @stencil/core && ncu"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.12",
-		"@public-ui/themes": "1.7.12"
+		"@public-ui/components": "1.7.13",
+		"@public-ui/themes": "1.7.13"
 	},
 	"devDependencies": {
 		"@stencil-community/router": "1.0.2",

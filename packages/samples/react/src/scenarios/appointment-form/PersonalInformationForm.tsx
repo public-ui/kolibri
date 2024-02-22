@@ -36,7 +36,6 @@ export function PersonalInformationForm() {
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Geben Sie Ihre Kontaktdaten ein"></KolHeading>
-			<ul>{sectionSubmitted && Object.entries(form.errors).map(([field, error]) => <li key={field}>{error}</li>)}</ul>
 			<KolForm
 				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
@@ -62,10 +61,12 @@ export function PersonalInformationForm() {
 							_options={[{ label: 'Bitte wählen…', value: '' }, ...SALUTATION_OPTIONS]}
 							_required
 							_on={{
+								onBlur: () => {
+									void form.setFieldTouched('salutation', true);
+								},
 								onChange: (event, values: unknown) => {
 									if (event.target) {
 										const [value] = values as [FormValues['salutation']];
-										void form.setFieldTouched('salutation', true);
 										void form.setFieldValue('salutation', value, true);
 									}
 								},
@@ -79,9 +80,6 @@ export function PersonalInformationForm() {
 						{({ field }: FieldProps<FormValues['company']>) => (
 							<div className="block mt-2">
 								<KolInputText
-									onBlur={() => {
-										void form.setFieldTouched('company', true);
-									}}
 									id="field-company"
 									_label="Firma"
 									_value={field.value}
@@ -89,9 +87,11 @@ export function PersonalInformationForm() {
 									_touched={form.touched.company}
 									_required
 									_on={{
+										onBlur: () => {
+											void form.setFieldTouched('company', true);
+										},
 										onChange: (event, value: unknown) => {
 											if (event.target) {
-												void form.setFieldTouched('company', true);
 												void form.setFieldValue('company', value, true);
 											}
 										},
@@ -106,9 +106,6 @@ export function PersonalInformationForm() {
 					{({ field }: FieldProps<FormValues['name']>) => (
 						<div className="block mt-2">
 							<KolInputText
-								onBlur={() => {
-									void form.setFieldTouched('name', true);
-								}}
 								id="field-name"
 								_label="Vor- und Zuname"
 								_value={field.value}
@@ -116,9 +113,11 @@ export function PersonalInformationForm() {
 								_touched={form.touched.name}
 								_required
 								_on={{
+									onBlur: () => {
+										void form.setFieldTouched('name', true);
+									},
 									onChange: (event, value: unknown) => {
 										if (event.target) {
-											void form.setFieldTouched('name', true);
 											void form.setFieldValue('name', value, true);
 										}
 									},
@@ -142,9 +141,11 @@ export function PersonalInformationForm() {
 								_touched={form.touched.email}
 								_required
 								_on={{
+									onBlur: () => {
+										void form.setFieldTouched('email', true);
+									},
 									onChange: (event, value: unknown) => {
 										if (event.target) {
-											void form.setFieldTouched('email', true);
 											void form.setFieldValue('email', value, true);
 										}
 									},
@@ -165,9 +166,11 @@ export function PersonalInformationForm() {
 								_error={form.errors.phone || ''}
 								_touched={form.touched.phone}
 								_on={{
+									onBlur: () => {
+										void form.setFieldTouched('phone', true);
+									},
 									onChange: (event, value: unknown) => {
 										if (event.target) {
-											void form.setFieldTouched('phone', true);
 											void form.setFieldValue('phone', value, true);
 										}
 									},

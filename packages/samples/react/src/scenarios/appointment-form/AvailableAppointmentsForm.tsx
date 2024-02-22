@@ -94,9 +94,11 @@ export function AvailableAppointmentsForm() {
 											_on={{
 												onChange: (event: Event, value: unknown): void => {
 													if (event.target) {
-														void form.setFieldTouched('time', true);
 														void form.setFieldValue('time', value, true);
 													}
+												},
+												onBlur: () => {
+													void form.setFieldTouched('time', true);
 												},
 											}}
 										/>

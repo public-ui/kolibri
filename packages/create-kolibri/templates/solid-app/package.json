@@ -16,20 +16,19 @@
 		"e2e": "nightwatch",
 		"format": "prettier --check {src,tests}/**",
 		"lint": "eslint \"{src,tests}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
-		":prepare": "rimraf .husky && husky install && husky add .husky/commit-msg \"npx commitlint --edit $1\" && husky add .husky/pre-commit \"npm run lint\" && husky add .husky/pre-commit \"npm run format\" && husky add .husky/pre-commit \"npm run unused\"",
+		"prepare": "npm-run-all prepare:*",
+		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
+		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map --no-hot",
 		"start": "npm run serve -- --open",
 		"test": "cross-env NODE_ENV=test mocha --exit",
-		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
 		"update": "ncu -t minor -u && ncu",
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.12",
-		"@public-ui/solid": "1.7.12",
-		"@public-ui/themes": "1.7.12",
+		"@public-ui/components": "1.7.13",
+		"@public-ui/solid": "1.7.13",
+		"@public-ui/themes": "1.7.13",
 		"solid-js": "1.6.6"
 	},
 	"devDependencies": {

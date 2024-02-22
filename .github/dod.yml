@@ -1,8 +1,7 @@
 dod:
-  - 'Meaningful title and valuable description in pull request'
-  - 'Pull request linked to one or more issues'
-  - '➡️Acceptance criteria of the linked issue satisfied'
-  - '➡️All changes relates to the issue'
-  - 'All tests passed'
-  - '➡️Code changes tested manually if not covered by automated tests'
-  - '➡️A11y tests successful carried out'
+  - Meaningful title for the release notes
+  - Pull request is linked to an issue
+  - All changes relate to the issue
+  - A11y tests performed successfully
+  - Code review carried out successfully
+  - Manual test performed successfully
