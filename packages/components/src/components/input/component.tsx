@@ -46,7 +46,7 @@ export class KolInput implements Props {
 	}
 
 	public render(): JSX.Element {
-		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
+		const hasError = !this._readOnly && typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
 		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 		const useTooltopInsteadOfLabel = !hasExpertSlot && this._hideLabel;
