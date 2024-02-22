@@ -722,8 +722,8 @@ export const HandoutBasic: FC = () => (
 				).
 			</KolDetails>
 		</div>
-		<div className="grid gap-4 grid-cols-12">
-			<KolCard className="col-span-2" _heading="Heading" _level={2}>
+		<div className="grid gap-4 sm:grid-cols-6 md:grid-cols-6  xl:grid-cols-12">
+			<KolCard className="col-span-6 sm:col-span-6 md:col-span-3 xl:col-span-2" _heading="Heading" _level={2}>
 				<div slot="content" className="grid gap-2 p-2">
 					<KolHeading _label="Überschrift Stufe 1" _level={1}></KolHeading>
 					<KolHeading _label="Überschrift Stufe 2" _level={2}></KolHeading>
@@ -756,7 +756,7 @@ export const HandoutBasic: FC = () => (
 					</KolAccordion>
 				</div>
 			</KolCard> */}
-			<KolCard className="col-span-2" _heading="Abbreviation and Progress" _level={2}>
+			<KolCard className="col-span-6 sm:col-span-6 md:col-span-3 xl:col-span-2" _heading="Abbreviation and Progress" _level={2}>
 				<div slot="content" className="grid gap-2 p-2">
 					<p>
 						Ich bin eine{' '}
@@ -792,7 +792,7 @@ export const HandoutBasic: FC = () => (
 					</div>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-3" _heading="Button, LinkButton and Tab" _level={2}>
+			<KolCard className="col-span-6 sm:col-span-6 md:col-span-6 xl:col-span-3" _heading="Button, LinkButton and Tab" _level={2}>
 				<div slot="content" className="grid gap-2 p-2">
 					<KolTabs _ariaLabel="" _selected={0} _tabs={[{ _label: 'Button' }, { _label: 'LinkButton' }, { _label: 'Disabled Tab', _disabled: true }]}>
 						<div className="grid gap-2 py-2">
@@ -870,7 +870,7 @@ export const HandoutBasic: FC = () => (
 					</KolTabs>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-2" _heading="Accordion, Link and ButtonLink" _level={2}>
+			<KolCard className="col-span-6 sm:col-span-6 md:col-span-2 xl:col-span-2" _heading="Accordion, Link and ButtonLink" _level={2}>
 				<div slot="content" className="grid gap-2 p-2">
 					<KolAccordion _heading="Links" _level={3} _open>
 						<div className="grid gap-2" slot="content">
@@ -910,7 +910,7 @@ export const HandoutBasic: FC = () => (
 					</KolAccordion>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-3" _heading="Alert" _level={2}>
+			<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-3" _heading="Alert" _level={2}>
 				<div slot="content" className="grid gap-2 p-2">
 					<KolAlert _heading="Default message" _type="default">
 						This is the text of the alert.
@@ -927,7 +927,7 @@ export const HandoutBasic: FC = () => (
 					</KolAlert>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-2" _heading="Nav and Breadcrumb" _level={2}>
+			<KolCard className="col-span-6 sm:col-span-6 md:col-span-2 xl:col-span-2" _heading="Nav and Breadcrumb" _level={2}>
 				<div slot="content" className="grid gap-2 p-2">
 					<div>
 						<KolNav
@@ -998,7 +998,7 @@ export const HandoutBasic: FC = () => (
 					</div>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-5" _heading="Input" _level={2}>
+			<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _heading="Input" _level={2}>
 				<KolForm slot="content">
 					<div className="grid gap-4 grid-cols-3 p-2">
 						<KolInputColor>Farbe</KolInputColor>
@@ -1029,7 +1029,7 @@ export const HandoutBasic: FC = () => (
 					</div>
 				</KolForm>
 			</KolCard>
-			<KolCard className="col-span-5" _heading="Table with Pagination" _level={2}>
+			<KolCard className="col-span-6 sm:col-span-6 md:col-span-6 xl:col-span-5" _heading="Table with Pagination" _level={2}>
 				<div slot="content" className="grid gap-2 p-2">
 					<KolTable _caption="Tabelle" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTable>
 				</div>
