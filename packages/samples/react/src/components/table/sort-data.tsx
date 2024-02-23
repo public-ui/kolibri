@@ -2,8 +2,9 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { KolTable } from '@public-ui/react';
-import { KoliBriTableHeaders } from '@public-ui/components';
-import { DATA, Data } from './test-data';
+import type { KoliBriTableHeaders } from '@public-ui/components';
+import { DATA } from './test-data';
+import type { Data } from './test-data';
 import { SampleDescription } from '../SampleDescription';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
@@ -32,7 +33,7 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
-export const TableSortTable: FC = () => (
+export const TableSortData: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
