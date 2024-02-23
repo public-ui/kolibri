@@ -1,20 +1,6 @@
 import { Log, getDocument, processEnv, setColorContrastAnalysis, setDevMode, setExperimentalMode } from '@public-ui/schema';
 
-import { getWindow, setDocument, setWindow } from '@public-ui/schema';
-import { ModalService } from '../components/modal/service';
-
-export const configKoliBri = (window: Window): void => {
-	if (window instanceof Window) {
-		setWindow(window);
-		if (getWindow().document instanceof Document) {
-			setDocument(window.document);
-		} else {
-			console.warn(`The given Window has no valid Document.`);
-		}
-	} else {
-		console.warn(`The given Window is not valid.`);
-	}
-};
+import { getWindow } from '@public-ui/schema';
 
 const initMeta = (): void => {
 	const meta = getDocument().querySelector('meta[name="kolibri"]');

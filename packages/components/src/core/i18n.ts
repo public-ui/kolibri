@@ -88,3 +88,21 @@ export class I18nextService implements II18nService {
 		});
 	}
 }
+
+let I18n: I18nextService;
+
+export const configI18n = async (
+	lng: Generic.I18n.Locale.ISO_639_1,
+	translations?:
+		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
+		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
+		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>
+): Promise<void> => {
+	setI18nService(await I18nextService.createInstance(lng ?? 'de', translations));
+};
+
+const setI18nService = (i18n: I18nextService) => {
+	I18n = i18n;
+};
+
+export const getI18nService = () => I18n;

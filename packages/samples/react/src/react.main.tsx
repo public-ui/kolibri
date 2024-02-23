@@ -8,10 +8,14 @@ import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
 import { App } from './App';
 
+import { configKoliBri } from '@public-ui/components/src';
 import type { Generic } from 'adopted-style-sheets';
+
 type Theme = Generic.Theming.RegisterPatch<string, string, string>;
 
 void (async () => {
+	await configKoliBri({});
+
 	if (process.env.THEME_MODULE) {
 		/* Visual regression testing mode: Themes are overridden with a certain theme module, that should be used instead. */
 		const { [(process.env.THEME_EXPORT as string) ?? 'default']: theme } = (await import(process.env.THEME_MODULE)) as Record<string, Theme>;

@@ -7,9 +7,9 @@ import type { Generic } from 'adopted-style-sheets';
  */
 import { devHint } from '@public-ui/schema';
 
-import { getI18nService } from './core';
 import locale_de from './locales/de';
 import locale_en from './locales/en';
+import { getI18nService } from './core/i18n';
 
 type ResourcePrefix = 'Kol';
 type ComponentKeys = keyof typeof locale_de;
