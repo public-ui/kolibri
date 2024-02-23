@@ -16,7 +16,7 @@ const options = [
 export const InputRadioSelect: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier verstehe ich Fehlermeldung nicht. Hier ist ein Beispiel Radio-Button. Nur eine gleichzeitige Auswahl ist möglich. </p>
+			<p>Hier ist ein Beispiel Radio-Button. Nur eine gleichzeitige Auswahl ist möglich. </p>
 		</SampleDescription>
 		<KolForm className="grid gap-4">
 			<KolInputRadio _error={ERROR_MSG} _options={options} _label="Anrede" />

@@ -20,7 +20,7 @@ export const BadgeButton: FC = () => (
 		<SampleDescription>
 			<p>
 				Hier werden verschiedenfarbige Badges mit X Button angezeigt. Beim klicken auf das X soll das Schließen-Event ausgelöst werden. In diesem Beispiel
-				erscheint eine Textbox mit Inhalt Entfernen von &apos;label&apos; und ein alert als Popup .{' '}
+				erscheint eine Textbox mit Inhalt.{' '}
 			</p>
 		</SampleDescription>
 		<>

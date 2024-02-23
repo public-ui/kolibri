@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 export const InputRangeBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier verstehe ich Fehlermeldung bei Standard nicht. Hier ist ein Schieberegler mit Schalter am Rand. Der Wert kann von 0 bis 50 verändert werden.</p>
+			<p>Hier ist ein Schieberegler mit Schalter am Rand. Der Wert kann von 0 bis 50 verändert werden.</p>
 		</SampleDescription>
 		<FormWrap RefComponent={InputRangeVariants} />
 	</>

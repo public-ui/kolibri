@@ -8,10 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 export const InputPasswordBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier verstehe ich die Fehlermeldungen nicht!. Hier sind Passwort Eingabefelder dargestellt. Im Feld &apos;Passwort P&apos; eingegebene Zeichen werden
-				verdeckt angezeigt.
-			</p>
+			<p>Hier sind Passwort Eingabefelder dargestellt. Im Feld &apos;Passwort P&apos; eingegebene Zeichen werden verdeckt angezeigt.</p>
 		</SampleDescription>
 		<FormWrap RefComponent={InputPasswordVariants} />
 	</>

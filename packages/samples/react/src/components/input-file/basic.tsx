@@ -9,8 +9,8 @@ export const InputFileBasic: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				Hier verstehe ich Fehlermeldung bei Standard nicht. Hier können einzelne oder mehrere Files ausgewählt werden. Bei &apos;Datei hochladen&apos; wird der
-				Name der ausgewählten Datei angezeigt. Bei &apos;Datei hochladen (Multiple)&apos; werden die Anzahl der ausgewählten Dateien angezeigt.
+				Hier können einzelne oder mehrere Files ausgewählt werden. Bei &apos;Datei hochladen&apos; wird der Name der ausgewählten Datei angezeigt. Bei
+				&apos;Datei hochladen (Multiple)&apos; werden die Anzahl der ausgewählten Dateien angezeigt.
 			</p>
 		</SampleDescription>
 		<FormWrap RefComponent={InputFileVariants} />

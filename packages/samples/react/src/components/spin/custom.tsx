@@ -10,7 +10,7 @@ import type { FC } from 'react';
 export const SpinCustom: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier ist ein Beispiel für Custom Animation.</p>
+			<p>Hier ist ein Beispiel für eine Custom Animation.</p>
 		</SampleDescription>
 		<KolSpin _show _variant="none">
 			<span slot="expert" className="loader"></span>

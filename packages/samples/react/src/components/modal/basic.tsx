@@ -11,7 +11,7 @@ export const ModalBasic: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					Hier ist ein Beispiel für ein Modal. Es läst sich öffnen. Dadurch erscheint ein Popup mit Text und &apos;Schließen&apos; Button. Durch anklicken des
+					Hier ist ein Beispiel für ein Modal. Es lässt sich öffnen. Dadurch erscheint ein Popup mit Text und &apos;Schließen&apos; Button. Durch anklicken des
 					&apos;Schließen&apos; Button, schließt sich das Modal wieder.
 				</p>
 			</SampleDescription>
