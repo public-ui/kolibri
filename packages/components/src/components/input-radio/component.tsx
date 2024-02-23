@@ -265,7 +265,7 @@ export class KolInputRadio implements InputRadioAPI {
 	};
 
 	public constructor() {
-		this.controller = new InputRadioController(this, 'input-radio', this.host);
+		this.controller = new InputRadioController(this, 'radio', this.host);
 	}
 
 	@Watch('_accessKey')

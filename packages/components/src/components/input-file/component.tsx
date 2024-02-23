@@ -237,7 +237,7 @@ export class KolInputFile implements InputFileAPI {
 	};
 
 	public constructor() {
-		this.controller = new InputFileController(this, 'input-file', this.host);
+		this.controller = new InputFileController(this, 'file', this.host);
 	}
 
 	@Watch('_accept')

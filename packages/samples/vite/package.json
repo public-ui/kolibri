@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-vite",
-	"version": "2.0.6",
+	"version": "2.0.7",
 	"private": true,
 	"scripts": {
 		"build": "tsc && vite build",
@@ -12,23 +12,23 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@public-ui/components": "2.0.6",
-		"@public-ui/react": "2.0.6",
-		"@public-ui/theme-default": "2.0.6",
+		"@public-ui/components": "2.0.7",
+		"@public-ui/react": "2.0.7",
+		"@public-ui/theme-default": "2.0.7",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},
 	"devDependencies": {
 		"@leanup/stack": "1.3.49",
 		"@playwright/experimental-ct-react": "1.41.2",
-		"@types/node": "20.11.17",
-		"@types/react": "18.2.55",
+		"@types/node": "20.11.19",
+		"@types/react": "18.2.57",
 		"@types/react-dom": "18.2.19",
 		"@unocss/preset-mini": "0.58.5",
 		"@vitejs/plugin-react": "4.2.1",
 		"prettier": "3.2.5",
 		"typescript": "5.3.3",
 		"unocss": "0.58.5",
-		"vite": "5.1.1"
+		"vite": "5.1.3"
 	}
 }
