@@ -7,5 +7,5 @@ export * from './kolibri';
 export { ToasterService } from './components/toaster/toaster';
 export type { Toast, ToasterOptions } from '@public-ui/schema';
 export { Optgroup, Option, SelectOption } from '@public-ui/schema';
-export { configKoliBri } from './utils/dev.utils';
+export { configKoliBri } from './core/config';
 export { KoliBriDevHelper } from '@public-ui/schema';
