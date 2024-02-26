@@ -804,9 +804,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}`,
 	'KOL-ALERT': `.msg,
-	.msg {
-		border-width: 0;
-	}
 	.kol-alert-wc {
 		border-width: 2px;
 		border-style: solid;
@@ -816,6 +813,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		overflow: unset;
 		border-color: transparent;
 		background-color: white;
+	}
+	.msg {
+		border-width: 0;
 	}
 	.kol-alert-wc > .heading {
 		display: flex;
