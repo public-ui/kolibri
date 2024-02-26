@@ -37,8 +37,8 @@ export class KolInputFile implements API {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
+		const { ariaDescribedBy } = getRenderStates(this.state, hasExpertSlot);
 
 		return (
 			<Host>
@@ -213,7 +213,7 @@ export class KolInputFile implements API {
 
 	@State() public state: States = {
 		_hideError: false,
-		_id: `id-${nonce()}`,
+		_id: nonce(),
 		_label: '…', // ⚠ required
 	};
 

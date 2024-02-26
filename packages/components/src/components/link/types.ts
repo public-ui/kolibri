@@ -13,6 +13,7 @@ import { PropDownload } from '../../types/props/download';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropHref } from '../../types/props/href';
 import { IconsPropType, PropIcons } from '../../types/props/icons';
+import { PropId } from '../../types/props/id';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropLinkOnCallbacks } from '../../types/props/link-on-callbacks';
 import { PropLinkTarget } from '../../types/props/link-target';
@@ -57,6 +58,7 @@ export type OptionalProps = {
 	PropDownload &
 	PropHideLabel &
 	PropIcons &
+	PropId &
 	PropLabelWithExpertSlot &
 	PropLinkOnCallbacks &
 	PropLinkTarget &
@@ -65,7 +67,7 @@ export type OptionalProps = {
 	PropTooltipAlign;
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = PropIcons & PropHref;
+type RequiredStates = PropId & PropIcons & PropHref;
 type OptionalStates = Omit<RequiredProps & OptionalProps, keyof RequiredStates> & PropLabelWithExpertSlot;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;

@@ -1,5 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
+import { nonce } from '../../../utils/dev.utils';
 import { getButtonWcHtml } from '../../button/test/html.mock';
 import { Props, States } from '../types';
 
@@ -7,6 +8,7 @@ export const getButtonLinkHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
 		{
 			_icons: {},
+			_id: nonce(), // ⚠ required
 			_label: '…', // ⚠ required
 			_on: {},
 			_type: 'button',

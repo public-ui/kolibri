@@ -52,9 +52,9 @@ export class KolInputDate implements ComponentApi {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
 		const hasExpertSlot = showExpertSlot(this.state._label);
+		const { ariaDescribedBy } = getRenderStates(this.state, hasExpertSlot);
 
 		return (
 			<Host class={{ 'has-value': this.state._hasValue }}>
@@ -265,7 +265,7 @@ export class KolInputDate implements ComponentApi {
 		_autoComplete: 'off',
 		_hasValue: false,
 		_hideError: false,
-		_id: `id-${nonce()}`,
+		_id: nonce(),
 		_label: '…', // ⚠ required
 		_suggestions: [],
 		_type: 'datetime-local',

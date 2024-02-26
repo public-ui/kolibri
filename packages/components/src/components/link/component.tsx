@@ -19,6 +19,7 @@ import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-t
 import { validateStealth } from '../../types/props/stealth';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
+import { nonce } from '../../utils/dev.utils';
 import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
@@ -109,6 +110,7 @@ export class KolLinkWc implements API {
 					{...tagAttrs}
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}
+					aria-describedby={!hasExpertSlot && this.state._hideLabel ? `${this.state._id}-tooltip` : undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-label={
 						this.state._hideLabel && typeof this.state._label === 'string'
@@ -123,6 +125,7 @@ export class KolLinkWc implements API {
 						'hide-label': this.state._hideLabel === true,
 						'external-link': isExternal,
 					}}
+					id={this.state._id}
 					{...this.state._on}
 					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
 					onClick={this.onClick}
@@ -144,13 +147,9 @@ export class KolLinkWc implements API {
 					)}
 				</a>
 				<kol-tooltip-wc
-					/**
-					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-					 */
-					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
+					_id={this.state._id}
 					_label={this.state._label || this.state._href}
 				></kol-tooltip-wc>
 			</Host>
@@ -240,6 +239,11 @@ export class KolLinkWc implements API {
 	@Prop() public _iconOnly?: boolean;
 
 	/**
+	 * Defines the internal ID of the primary component element.
+	 */
+	@Prop() public _id?: string;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
@@ -297,6 +301,7 @@ export class KolLinkWc implements API {
 
 	@State() public state: LinkStates = {
 		_href: '', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_icons: {}, // ⚠ required
 	};
 
@@ -393,6 +398,11 @@ export class KolLinkWc implements API {
 		this.validateHideLabel(value);
 	}
 
+	@Watch('_id')
+	public validateId(value?: string): void {
+		watchString(this, '_id', value);
+	}
+
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabelWithExpertSlot(this, value);
@@ -471,6 +481,7 @@ export class KolLinkWc implements API {
 		this.validateHref(this._href);
 		this.validateIcon(this._icons || this._icon);
 		this.validateIconAlign(this._iconAlign);
+		this.validateId(this._id);
 		this.validateLabel(this._label ?? this._ariaLabel); // explicitly allow empty string labels
 		this.validateListenAriaCurrent(this._listenAriaCurrent);
 		this.validateOn(this._on);

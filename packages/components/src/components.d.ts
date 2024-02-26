@@ -2376,6 +2376,10 @@ export namespace Components {
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
         /**
+          * Defines the internal ID of the primary component element.
+         */
+        "_id"?: string;
+        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
@@ -3143,7 +3147,7 @@ export namespace Components {
         /**
           * Defines the internal ID of the primary component element.
          */
-        "_id"?: IdPropType;
+        "_id": IdPropType;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
@@ -5873,6 +5877,10 @@ declare namespace LocalJSX {
          */
         "_icons"?: Stringified<KoliBriIconsProp>;
         /**
+          * Defines the internal ID of the primary component element.
+         */
+        "_id"?: string;
+        /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
          */
         "_label"?: LabelWithExpertSlotPropType;
@@ -6638,7 +6646,7 @@ declare namespace LocalJSX {
         /**
           * Defines the internal ID of the primary component element.
          */
-        "_id"?: IdPropType;
+        "_id": IdPropType;
         /**
           * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
          */
