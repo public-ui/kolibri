@@ -1192,7 +1192,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-DETAILS': `details > summary {
 		border-radius: var(--border-radius);
 	}
-	details .kol-indented-text {
+	details .kol-indented-text-wc {
 		margin: 0.25em 0px 0px 0.65em;
 	}
 	.kol-icon::part(icon) {
