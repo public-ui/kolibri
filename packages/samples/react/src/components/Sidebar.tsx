@@ -44,7 +44,7 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 
 	const handlePreviousClick = () => {
 		const currentIndex = getIndexOfSample();
-		const nextIndex = currentIndex === 0 || currentIndex < 0 ? routeList.length - 1 : currentIndex - 1;
+		const nextIndex = currentIndex <= 0 ? routeList.length - 1 : currentIndex - 1;
 		location.replace(`#${routeList[nextIndex]}`);
 	};
 
