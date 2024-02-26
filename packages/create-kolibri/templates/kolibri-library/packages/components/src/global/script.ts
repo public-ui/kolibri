@@ -1,7 +1,6 @@
 import { register } from 'adopted-style-sheets';
 import { KoliBri } from '@public-ui/schema';
 
-// ts-prune-ignore-next
 export default (): void => {
 	register(
 		[
@@ -19,6 +18,6 @@ export default (): void => {
 				detect: 'fixed',
 				name: '{{kebab name}}',
 			},
-		}
+		},
 	).catch(console.warn);
 };
