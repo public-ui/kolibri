@@ -3,7 +3,7 @@ import { Log, getDocument, processEnv, setColorContrastAnalysis, setDevMode, set
 import { getWindow, setDocument, setWindow } from '@public-ui/schema';
 import { ModalService } from '../components/modal/service';
 
-const kolibriInstance = {};
+const KOLIBRI = {};
 
 export const configKoliBri = (window: Window): void => {
 	if (window instanceof Window) {
@@ -31,17 +31,19 @@ const initMeta = (): void => {
 };
 
 const getKoliBri = (): Record<string, unknown> => {
-	return kolibriInstance;
+	return KOLIBRI;
 };
 
 export const initKoliBri = (): void => {
-	const Modal = new ModalService();
-	Object.defineProperty(getKoliBri(), 'Modal', {
-		get: function (): ModalService {
-			return Modal;
-		},
-	});
 	initMeta();
+	if (getKoliBri().Modal === undefined) {
+		const Modal = new ModalService();
+		Object.defineProperty(getKoliBri(), 'Modal', {
+			get: function (): ModalService {
+				return Modal;
+			},
+		});
+	}
 	Log.debug(
 		`
 	,--. ,--.         ,--. ,--. ,-----.           ,--.
