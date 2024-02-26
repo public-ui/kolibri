@@ -2,9 +2,10 @@ import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-she
 import { register as coreRegister } from 'adopted-style-sheets';
 
 import { getKoliBri } from '../utils/dev.utils';
-import { I18nextService } from './i18n';
-
 import type { II18nService } from './i18n';
+import { I18nextService } from './i18n';
+import { setCustomTagNames } from './component-names';
+
 export const register = async (
 	themes:
 		| Generic.Theming.RegisterPatch<string, string, string>
@@ -19,6 +20,11 @@ export const register = async (
 			writable: false,
 		});
 	}
+
+	if (options?.transformTagName) {
+		setCustomTagNames(options.transformTagName);
+	}
+
 	return await coreRegister(themes, loaders, options);
 };
 

@@ -39,14 +39,14 @@ import {
 	validateTooltipAlign,
 	watchString,
 } from '@public-ui/schema';
-import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
+import { KolSpanWc, KolTooltipWc } from '../../core/component-names';
 
-import type { JSX } from '@stencil/core';
-import { transformTagName } from '../../utils/transform-tag-name';
 /**
  * @internal
  */
@@ -91,8 +91,6 @@ export class KolButtonWc implements ButtonAPI {
 	};
 
 	public render(): JSX.Element {
-		const KolSpanWc = transformTagName('kol-span-wc', 'kol-button-wc', this.host!);
-		const KolTooltipWc = transformTagName('kol-tooltip-wc', 'kol-button-wc', this.host!);
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
