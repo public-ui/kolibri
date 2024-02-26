@@ -32,7 +32,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 @Component({
 	tag: 'kol-link-group',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

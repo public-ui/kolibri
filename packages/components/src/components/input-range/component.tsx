@@ -30,7 +30,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-input-range',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

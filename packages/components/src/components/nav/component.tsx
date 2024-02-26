@@ -47,7 +47,7 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 @Component({
 	tag: 'kol-nav',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

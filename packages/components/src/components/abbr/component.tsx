@@ -12,7 +12,7 @@ import type { AbbrAPI, AbbrStates, LabelPropType, TooltipAlignPropType } from '@
 @Component({
 	tag: 'kol-abbr',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

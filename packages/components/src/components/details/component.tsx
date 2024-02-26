@@ -16,7 +16,7 @@ import { preventDefaultAndStopPropagation } from '../../utils/events';
 @Component({
 	tag: 'kol-details',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
