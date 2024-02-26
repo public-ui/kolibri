@@ -17,7 +17,7 @@ import { propagateFocus } from '@public-ui/schema';
 import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
-import {transformTagName} from "../../utils/transform-tag-name";
+import { transformTagName } from '../../utils/transform-tag-name';
 @Component({
 	tag: 'kol-button',
 	styleUrls: {
