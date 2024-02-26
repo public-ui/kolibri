@@ -11,6 +11,7 @@ export const a11yHint = (msg: string, options?: HintOptions): void => {
 		a11yCache.add(msg);
 		Log.debug(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `✋ a11y`,
+			forceLog: !!options?.force,
 			overwriteStyle: '; background-color: #09f',
 		});
 	}
@@ -22,6 +23,7 @@ export const deprecatedHint = (msg: string, options?: HintOptions): void => {
 		deprecatedCache.add(msg);
 		Log.warn(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `🔥 deprecated`,
+			forceLog: !!options?.force,
 			overwriteStyle: '; background-color: #f00',
 		});
 	}
@@ -33,6 +35,7 @@ export const devHint = (msg: string, options?: HintOptions): void => {
 		devCache.add(msg);
 		Log.debug(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `💻 dev`,
+			forceLog: !!options?.force,
 			overwriteStyle: '; background-color: #f09',
 		});
 	}
@@ -41,7 +44,8 @@ export const devWarning = (msg: string, options?: HintOptions): void => {
 	if (devCache.has(msg) === false || !!options?.force) {
 		devCache.add(msg);
 		Log.warn(([msg] as unknown[]).concat(options?.details || []), {
-			classifier: `💻 dev`,
+			classifier: `⚠️ dev`,
+			forceLog: !!options?.force,
 			overwriteStyle: '; background-color: #f09',
 		});
 	}
@@ -54,6 +58,7 @@ export const featureHint = (msg: string, done = false, options?: HintOptions): v
 		msg += done === true ? ' ✅' : '';
 		Log.debug(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `🌟 feature`,
+			forceLog: !!options?.force,
 			overwriteStyle: '; background-color: #309',
 		});
 	}
@@ -68,6 +73,7 @@ export const uiUxHint = (msg: string, options?: HintOptions): void => {
 		uiUxCache.add(msg);
 		Log.debug(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `📑 ui/ux`,
+			forceLog: !!options?.force,
 			overwriteStyle: '; background-color: #060;',
 		});
 	}

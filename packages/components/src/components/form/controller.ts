@@ -77,7 +77,16 @@ export const propagateSubmitEventToForm = (
 		if (form.tagName === 'FORM') {
 			setEventTarget(event, form);
 			form.dispatchEvent(event);
-			(form as HTMLFormElement).submit();
+			if (getExperimentalMode() && (form as HTMLFormElement).noValidate === false) {
+				devHint(`If you have not focusable or hidden form fields in your form, you should enable noValidate for your form.`, {
+					force: true,
+				});
+				// (form as HTMLFormElement).noValidate = true; do not make this implicit
+			}
+			if (typeof (form as HTMLFormElement).requestSubmit === 'function') {
+				// See https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit
+				(form as HTMLFormElement).requestSubmit();
+			}
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as Props;
