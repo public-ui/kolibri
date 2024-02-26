@@ -19,7 +19,7 @@
 		"start": "next dev"
 	},
 	"dependencies": {
-		"@leanup/stack": "1.3.39",
+		"@leanup/stack": "1.3.49",
 		"@public-ui/components": "2.0.7",
 		"@public-ui/react": "2.0.7",
 		"@public-ui/themes": "2.0.7",

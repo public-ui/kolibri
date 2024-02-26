@@ -22,25 +22,25 @@
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map --no-hot",
 		"start": "npm run serve -- --open",
 		"test": "cross-env NODE_ENV=test mocha --exit",
-		"unused": "ts-prune -e src"
+		"unused": "knip"
 	},
 	"dependencies": {
 		"@public-ui/components": "2.0.7",
 		"@public-ui/themes": "2.0.7",
 		"@public-ui/vue": "2.0.7",
-		"vue": "3.3.4"
+		"vue": "3.4.20"
 	},
 	"devDependencies": {
-		"@leanup/stack": "1.3.41",
-		"@leanup/stack-webpack": "1.3.41",
-		"@leanup/stack-vue3": "1.3.41",
-		"@unocss/preset-mini": "0.45.29",
-		"@unocss/webpack": "0.45.29",
-		"chromedriver": "121.0.0",
+		"@leanup/stack": "1.3.49",
+		"@leanup/stack-webpack": "1.3.49",
+		"@leanup/stack-vue3": "1.3.49",
+		"@unocss/preset-mini": "0.58.5",
+		"@unocss/webpack": "0.58.5",
+		"chromedriver": "122.0.3",
 		"cpy-cli": "5.0.0",
-		"npm-check-updates": "16.6.2",
+		"npm-check-updates": "16.14.15",
 		"npm-run-all": "4.1.5",
-		"typescript": "4.9.4"
+		"typescript": "5.3.3"
 	},
 	"files": [
 		"dist"
