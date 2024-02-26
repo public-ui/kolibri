@@ -25,7 +25,6 @@ export const FormFieldMsg: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _
 		_type="error"
 		class={{
 			error: true,
-			'kol-alert': true,
 			'visually-hidden': _hideError === true,
 		}}
 	>
