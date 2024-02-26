@@ -1,7 +1,5 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"entry": ["src/index.ts"],
-	"ignoreBinaries": ["playwright", "pwd"],
-	"ignoreDependencies": ["@public-ui/sample-react"],
 	"project": ["src/**/*.ts"]
 }

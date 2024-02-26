@@ -71,9 +71,6 @@
 		"format:solid": "prettier --check templates/solid-app -w",
 		"format:vue": "prettier --check templates/vue-app -w",
 		"format:vue-vite": "prettier --check templates/vue-vite-app -w",
-		"ncu:major": "ncu",
-		"ncu:minor": "ncu -t minor -u",
-		"ncu:patch": "ncu -t patch -u",
 		"prepack": "git clean -f -d -X templates/ && npm run build",
 		"prepare": "npm-run-all prepare:*",
 		"prepare:angular": "cpy \"defaults/**/*\" \"!defaults/unocss.config.ts\" templates/angular-app/ --dot",
@@ -89,8 +86,8 @@
 		"prepare:static": "cpy \"defaults/{public/**/*,**/.npmrc,**/gitignore}\" \"!defaults/public/index.html\" templates/static-page --dot",
 		"prepare:vue": "cpy \"defaults/**/*\" templates/vue-app/ --dot",
 		"prepare:vue-vite": "cpy \"defaults/**/*\" templates/vue-vite-app/ --dot",
-		"unused": "ts-prune src -e",
-		"test": "npm run clean && pnpm i && npm run build && rimraf my-* && node dist/cli.js"
+		"unused": "knip",
+		"test": "npm run build && rimraf my-* && node dist/cli.js"
 	},
 	"bin": "dist/cli.js",
 	"dependencies": {
@@ -101,12 +98,9 @@
 	},
 	"devDependencies": {
 		"@types/node": "ts5.3",
-		"cross-env": "7.0.3",
-		"depcheck": "1.4.7",
+		"knip": "5.0.2",
 		"prettier": "3.2.5",
 		"rimraf": "3.0.2",
-		"ts-node": "10.9.2",
-		"ts-prune": "0.10.3",
 		"tsup": "8.0.2",
 		"typescript": "5.3.3"
 	},
