@@ -41,7 +41,7 @@ export const StaticForm: FC = () => {
 					</li>
 				</ol>
 			</SampleDescription>
-			<form className="grid gap-4" method="get">
+			<form className="grid gap-4" method="get" noValidate>
 				<KolInputCheckbox _name="checkbox" _label="Checkbox" />
 				<KolInputColor _name="color" _label="Color" />
 				<KolInputDate _name="date" _label="Date" />
