@@ -3,6 +3,7 @@
 /loader/
 /public/
 /screenshot/
+/src/components.d.ts
 /www/
 custom-elements.json
 lighthouse.report.html
