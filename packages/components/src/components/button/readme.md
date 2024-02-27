@@ -134,19 +134,10 @@ Type: `Promise<Stringified<StencilUnknown>>`
 - [kol-table](../table)
 - [kol-toast-container](../toaster)
 
-### Depends on
-
-- kol-button-wc
-
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-button --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
   kol-nav --> kol-button
   kol-table --> kol-button
   kol-toast-container --> kol-button

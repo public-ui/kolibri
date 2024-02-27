@@ -1,0 +1,11 @@
+@import '../style';
+@import 'cycle';
+@import 'dot';
+
+@layer kol-component {
+	.spin {
+		display: block;
+		padding: 0.125rem;
+		position: relative;
+	}
+}

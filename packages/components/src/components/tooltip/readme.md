@@ -47,7 +47,6 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 ### Used by
 
 - [kol-abbr](../abbr)
-- kol-button-wc
 - kol-input
 - kol-link-wc
 
@@ -62,7 +61,6 @@ graph TD;
   kol-tooltip-wc --> kol-span-wc
   kol-span-wc --> kol-icon
   kol-abbr --> kol-tooltip-wc
-  kol-button-wc --> kol-tooltip-wc
   kol-input --> kol-tooltip-wc
   kol-link-wc --> kol-tooltip-wc
   style kol-tooltip-wc stroke:#333,stroke-width:4px

@@ -136,10 +136,6 @@ Standardansicht gelegt.
 graph TD;
   kol-accordion --> kol-heading-wc
   kol-accordion --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
   style kol-accordion stroke:#333,stroke-width:4px
 ```
 

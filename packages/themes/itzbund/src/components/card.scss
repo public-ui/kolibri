@@ -1,0 +1,29 @@
+@layer kol-theme-component {
+	:host > div {
+		background-color: white;
+		border-color: var(--border-color);
+		border-style: solid;
+		border-width: 1px;
+		border-radius: calc(2 * var(--border-radius));
+		width: 100%;
+		height: 100%;
+	}
+	kol-heading {
+		padding: 0.5rem;
+		display: block;
+		border-bottom-style: solid;
+		border-bottom-color: var(--border-color);
+		border-bottom-width: 1px;
+	}
+	:host > div > div {
+		display: block;
+		padding: 0.5rem;
+	}
+	:host > div > div:last-child {
+		display: block;
+		padding: 0.5rem;
+		border-top-style: solid;
+		border-top-color: var(--color-achat);
+		border-top-width: 1px;
+	}
+}

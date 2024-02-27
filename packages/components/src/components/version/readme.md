@@ -43,10 +43,7 @@ graph TD;
   kol-version --> kol-badge
   kol-badge --> kol-button-wc
   kol-badge --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
   style kol-version stroke:#333,stroke-width:4px
 ```
 

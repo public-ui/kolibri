@@ -141,9 +141,6 @@ graph TD;
   kol-link-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-button --> kol-button-wc
   style kol-nav stroke:#333,stroke-width:4px
 ```
 

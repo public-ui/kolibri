@@ -8,7 +8,7 @@ import { Component, h, Host, Prop, State } from '@stencil/core';
 @Component({
 	tag: 'kol-alert',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

@@ -201,11 +201,6 @@ graph TD;
   kol-table --> kol-button
   kol-table --> kol-pagination
   kol-table --> kol-button-wc
-  kol-button --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
   kol-pagination --> kol-button-wc
   kol-pagination --> kol-select
   kol-select --> kol-input
@@ -213,6 +208,8 @@ graph TD;
   kol-input --> kol-button-wc
   kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
+  kol-tooltip-wc --> kol-span-wc
+  kol-span-wc --> kol-icon
   kol-alert --> kol-alert-wc
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc

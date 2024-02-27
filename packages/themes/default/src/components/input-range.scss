@@ -2,6 +2,7 @@
 	:host {
 		font-family: var(--font-family);
 	}
+
 	.inputs-wrapper {
 		gap: 1rem;
 	}
@@ -58,7 +59,7 @@
 		padding-right: 1rem;
 	}
 
-	.input:hover {
+	:not(.disabled) .input:hover {
 		border-color: var(--color-primary);
 	}
 
@@ -85,7 +86,7 @@
 		font-weight: 700;
 	}
 
-	kol-input.disabled :is(.input) {
+	kol-input.disabled .input {
 		background-color: var(--color-mute);
 		border-color: var(--color-mute-variant);
 		color: var(--color-text);

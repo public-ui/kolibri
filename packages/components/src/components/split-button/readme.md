@@ -64,10 +64,6 @@ dem sich weitere Aktionen verbergen.
 ```mermaid
 graph TD;
   kol-split-button --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
   style kol-split-button stroke:#333,stroke-width:4px
 ```
 

@@ -123,10 +123,7 @@ Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hie
 graph TD;
   kol-badge --> kol-button-wc
   kol-badge --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
   kol-version --> kol-badge
   style kol-badge stroke:#333,stroke-width:4px
 ```

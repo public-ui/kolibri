@@ -5,7 +5,8 @@ import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
 import { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil/postcss';
-import { reactOutputTarget } from 'kolibri-react-output-target';
+import { sass } from '@stencil/sass';
+import { reactOutputTarget } from 'sdvg-react-output-target';
 import { solidOutputTarget } from '@stencil/solid-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
@@ -290,7 +291,7 @@ export const config: Config = {
 	namespace: 'kolibri',
 	preamble: 'KoliBri - The accessible HTML-Standard',
 	outputTargets: outputTargets,
-	plugins: [postcss()],
+	plugins: [sass(), postcss()],
 	rollupPlugins: {
 		before: [],
 		after: [],

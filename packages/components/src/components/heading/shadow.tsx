@@ -8,7 +8,7 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
 	tag: 'kol-heading',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

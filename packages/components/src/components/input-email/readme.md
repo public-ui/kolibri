@@ -102,10 +102,8 @@ graph TD;
   kol-input --> kol-button-wc
   kol-input --> kol-tooltip-wc
   kol-input --> kol-alert
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
+  kol-span-wc --> kol-icon
   kol-alert --> kol-alert-wc
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc

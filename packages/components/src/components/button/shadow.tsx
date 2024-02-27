@@ -21,7 +21,7 @@ import { transformTagName } from '../../utils/transform-tag-name';
 @Component({
 	tag: 'kol-button',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

@@ -1,0 +1,54 @@
+@import 'label';
+@import 'host-display-block';
+
+@layer kol-component {
+	input,
+	textarea {
+		cursor: text;
+	}
+
+	input[type='checkbox'],
+	input[type='color'],
+	input[type='file'],
+	input[type='radio'],
+	input[type='range'],
+	label,
+	option,
+	select {
+		cursor: pointer;
+	}
+
+	/* input[type='checkbox'], */
+	/* input[type='radio'], */
+	/* input[type='range'], */
+	input[type='color'],
+	input[type='date'],
+	input[type='datetime-local'],
+	input[type='email'],
+	input[type='file'],
+	input[type='month'],
+	input[type='number'],
+	input[type='password'],
+	input[type='search'],
+	input[type='tel'],
+	input[type='text'],
+	input[type='time'],
+	input[type='url'],
+	input[type='week'],
+	select,
+	select[multiple] option,
+	textarea {
+		font-size: 1rem;
+		width: 100%;
+	}
+
+	/* needed hack for vertical alignment */
+	input[type='file'] {
+		padding: calc((var(--a11y-min-size) - 1rem) / 10) 0.5em;
+	}
+
+	/* needed hack for vertical alignment */
+	select[multiple] option {
+		padding: calc((var(--a11y-min-size) - 1rem) / 2) 0.5em;
+	}
+}

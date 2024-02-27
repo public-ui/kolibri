@@ -13,7 +13,7 @@ import type { KolibriAPI, KolibriStates, PropColor, Stringified } from '@public-
 @Component({
 	tag: 'kol-kolibri',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

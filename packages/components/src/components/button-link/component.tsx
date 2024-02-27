@@ -20,7 +20,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-button-link',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

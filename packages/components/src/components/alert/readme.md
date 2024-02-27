@@ -114,10 +114,6 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
   kol-alert --> kol-alert-wc
   style kol-alert-wc stroke:#333,stroke-width:4px
 ```

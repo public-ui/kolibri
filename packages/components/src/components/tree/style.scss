@@ -1,0 +1,10 @@
+@import '../style';
+
+@layer kol-component {
+	.tree {
+		&:focus-within {
+			outline: 1px solid;
+			outline-offset: 2px;
+		}
+	}
+}
