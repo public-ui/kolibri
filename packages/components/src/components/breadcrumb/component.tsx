@@ -11,7 +11,7 @@ import { API, BreadcrumbLinkProps, States } from './types';
 @Component({
 	tag: 'kol-breadcrumb',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

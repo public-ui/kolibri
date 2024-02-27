@@ -17,7 +17,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-toast',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

@@ -1,0 +1,15 @@
+@import '../style';
+@import '../host-display-block';
+
+kol-alert-wc {
+	display: grid;
+}
+
+kol-alert-wc .heading {
+	display: flex;
+	place-items: center;
+}
+
+kol-alert-wc .heading > div {
+	flex-grow: 1;
+}

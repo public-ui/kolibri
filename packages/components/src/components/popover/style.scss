@@ -1,0 +1,41 @@
+@import '../style';
+
+kol-popover {
+	height: 0;
+	position: absolute;
+}
+
+kol-popover .popover {
+	background-color: #fff;
+	min-height: max-content;
+	min-width: max-content;
+	opacity: 0;
+	position: absolute;
+}
+
+kol-popover .show {
+	animation: 0.3s ease-in forwards fadeInOpacity;
+}
+
+kol-popover .disappear {
+	animation: 0.3s ease-in backwards fadeInOpacity;
+}
+
+kol-popover .arrow {
+	background-color: inherit;
+	height: var(--font-size);
+	position: absolute;
+	rotate: 0.125turn;
+	width: var(--font-size);
+	z-index: -1;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

@@ -12,7 +12,7 @@ import { API, States } from './types';
  */
 @Component({
 	tag: 'kol-popover-wc',
-	styleUrl: './style.css',
+	styleUrl: './style.scss',
 	shadow: false,
 })
 export class KolPopover implements API {

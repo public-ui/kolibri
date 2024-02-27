@@ -1,0 +1,6 @@
+@import '../style';
+
+:host > kol-button-group-wc {
+	display: flex;
+	flex-wrap: wrap;
+}

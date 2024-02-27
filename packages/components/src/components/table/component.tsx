@@ -31,7 +31,7 @@ const paginationValidator = (value: unknown) => value === true || value === '' /
 @Component({
 	tag: 'kol-table',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

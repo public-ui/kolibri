@@ -1,0 +1,12 @@
+@import '../style';
+
+:host > div.card {
+	height: 100%;
+	position: relative;
+}
+
+.close {
+	position: absolute;
+	top: 0;
+	right: 0;
+}

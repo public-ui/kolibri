@@ -12,7 +12,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-kolibri',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

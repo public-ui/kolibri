@@ -17,7 +17,7 @@ import { API, KoliBriTabsCallbacks, States, TabButtonProps } from './types';
 @Component({
 	tag: 'kol-tabs',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
