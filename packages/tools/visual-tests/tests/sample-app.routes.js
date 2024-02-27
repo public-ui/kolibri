@@ -390,3 +390,13 @@ ROUTES.set('scenarios/appointment-form', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('scenarios/static-form', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('scenarios/disabled-interactive-scenario', {
+	axe: {
+		skipFailures: false,
+	},
+});
