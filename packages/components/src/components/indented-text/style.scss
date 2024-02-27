@@ -1,0 +1,7 @@
+@import '../style';
+@import '../host-display-block';
+
+:host > div {
+	border-left-style: solid;
+	padding-left: 0.5em;
+}

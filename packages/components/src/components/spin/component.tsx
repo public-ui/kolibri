@@ -26,7 +26,7 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 @Component({
 	tag: 'kol-spin',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

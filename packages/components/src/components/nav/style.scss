@@ -1,0 +1,35 @@
+@import '../style';
+
+:host > div {
+	display: grid;
+	place-items: center;
+}
+
+nav {
+	width: 100%;
+}
+
+.list {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.list.vertical {
+	flex-direction: column;
+}
+
+.entry {
+	display: flex;
+}
+
+.entry kol-button-wc:first-child,
+.entry kol-link-wc,
+.entry kol-span-wc {
+	flex-grow: 1;
+}
+
+.entry kol-span-wc {
+	justify-items: start;
+}

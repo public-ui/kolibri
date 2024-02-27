@@ -11,7 +11,7 @@ const COLOR_NAMES = Object.keys(Farbspektrum) as FarbspektrumNames[];
 // @Component({
 // 	tag: 'kol-color',
 // 	styleUrls: {
-// 		default: '../../style.css',
+// 		default: '../../style.scss',
 // 	},
 // 	shadow: true,
 // })

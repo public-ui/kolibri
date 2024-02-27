@@ -20,7 +20,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-split-button',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

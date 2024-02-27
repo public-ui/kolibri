@@ -30,7 +30,7 @@ featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 @Component({
 	tag: 'kol-input-text',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

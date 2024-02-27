@@ -20,7 +20,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-modal',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
