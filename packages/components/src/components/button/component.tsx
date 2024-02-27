@@ -129,7 +129,6 @@ export class KolButtonWc implements ButtonAPI {
 						<slot name="expert" slot="expert"></slot>
 					</KolSpanWc>
 				</button>
-				<small>(v2 button component)</small>
 				<KolTooltipWc
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
