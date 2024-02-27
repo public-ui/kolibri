@@ -15,6 +15,7 @@
 			position: absolute;
 			z-index: 1;
 		}
+
 		&:not(.checked):not(.indeterminate) .icon::part(icon) {
 			display: none;
 		}
