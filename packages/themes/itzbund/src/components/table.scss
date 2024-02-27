@@ -1,0 +1,59 @@
+@layer kol-theme-component {
+	:host > div {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+	:host > div:last-child {
+		border-style: solid;
+		border-width: 1px;
+		border-color: var(--border-color);
+	}
+	.table {
+		padding: 0.5em;
+	}
+	.table:has(caption:focus) {
+		outline-color: var(--color-petrol);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
+	}
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	table,
+	tr,
+	th,
+	td {
+		border: 0 solid var(--border-color);
+	}
+	tr {
+		border-top-width: 1px;
+	}
+	tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+	th,
+	td {
+		border-right-width: 1px;
+		padding: 0.25em 0.5em;
+	}
+	th {
+		background-color: #eee;
+	}
+	.table-sort-button .button {
+		font-weight: bold;
+	}
+	@media (min-width: 1024px) {
+		:host > div.pagination,
+		:host > div.pagination > div:last-child {
+			grid-auto-flow: column;
+		}
+		:host > div.pagination kol-pagination {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+}

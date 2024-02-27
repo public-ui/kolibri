@@ -1,0 +1,7 @@
+@layer kol-theme-component {
+	:host > span {
+		font: normal normal var(--font-weight) 1em var(--font-family);
+		padding: calc(0.5rem - 1px) calc(0.75rem - 1px);
+		text-transform: uppercase;
+	}
+}
