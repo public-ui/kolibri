@@ -14,8 +14,8 @@ kol-tooltip-wc .tooltip-floating {
 	left: 0;
 	max-width: 90vw;
 	max-height: 90vh;
-	width: var(--kol-tooltip-width);
 	/* Can be used to specify the tooltip-width from the outside. Unset by default.  */
+	width: var(--kol-tooltip-width);
 }
 
 /* Shared between content and arrow */

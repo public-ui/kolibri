@@ -42,8 +42,8 @@ input:checked:before {
 
 @media (forced-colors: active) {
 	input:checked:before {
-		background: highlight !important;
 		/* Give it a visible background in forced colors mode */
+		background: highlight !important;
 	}
 }
 
@@ -61,6 +61,6 @@ fieldset .input-slot {
 }
 
 /* required star is on fieldset legend */
-.required label > span::after {
+.required label>span::after {
 	content: '';
 }
