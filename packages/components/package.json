@@ -69,7 +69,7 @@
 	"dependencies": {
 		"@floating-ui/dom": "1.6.3",
 		"@public-ui/schema": "2.0.8",
-		"adopted-style-sheets": "link:../../../a11y-ui/packages/adopted-style-sheets",
+		"adopted-style-sheets": "1.1.4-dev.1",
 		"i18next": "23.9.0",
 		"markdown-it": "14.0.0"
 	},

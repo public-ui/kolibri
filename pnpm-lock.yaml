@@ -533,8 +533,8 @@ importers:
         specifier: 2.0.8
         version: link:../schema
       adopted-style-sheets:
-        specifier: link:../../../a11y-ui/packages/adopted-style-sheets
-        version: link:../../../a11y-ui/packages/adopted-style-sheets
+        specifier: 1.1.4-dev.1
+        version: 1.1.4-dev.1
       i18next:
         specifier: 23.9.0
         version: 23.9.0
@@ -1407,7 +1407,7 @@ importers:
     devDependencies:
       '@leanup/stack':
         specifier: 1.3.49
-        version: 1.3.49(chromedriver@121.0.0)(esbuild@0.19.3)(typescript@5.3.3)
+        version: 1.3.49(chromedriver@121.0.2)(esbuild@0.19.3)(typescript@5.3.3)
       '@playwright/experimental-ct-react':
         specifier: 1.41.2
         version: 1.41.2(@types/node@20.11.19)(vite@5.1.3)
@@ -1732,7 +1732,7 @@ importers:
         version: link:../../samples/react
       axe-playwright:
         specifier: 2.0.1
-        version: 2.0.1(playwright@1.39.0)
+        version: 2.0.1(playwright@1.41.2)
       portfinder:
         specifier: 1.0.32
         version: 1.0.32
@@ -6330,49 +6330,6 @@ packages:
       - utf-8-validate
       - webpack-bundle-analyzer
 
-  /@leanup/stack@1.3.49(chromedriver@121.0.0)(esbuild@0.19.3)(typescript@5.3.3):
-    resolution: {integrity: sha512-NWGmqmk9oapxjDm8dcIuC/MCVHpYEvamCwrNw/XvumXhMZl1TFEwQ4xj97eXYo0mDCS47N98Po6xaTrCVpctTw==}
-    peerDependencies:
-      chromedriver: '*'
-      esbuild: ^0
-      typescript: ^5 || ^4
-    dependencies:
-      '@types/chai': 4.3.11
-      '@types/mocha': 9.1.1
-      '@types/nightwatch': 1.3.4
-      '@types/sinon': 10.0.20
-      '@typescript-eslint/eslint-plugin': 6.15.0(@typescript-eslint/parser@6.15.0)(eslint@8.56.0)(typescript@5.3.3)
-      '@typescript-eslint/parser': 6.15.0(eslint@8.56.0)(typescript@5.3.3)
-      chai: 4.3.10
-      chromedriver: 121.0.0
-      cross-env: 7.0.3
-      esbuild: 0.19.3
-      esbuild-register: 3.5.0(esbuild@0.19.3)
-      eslint: 8.56.0
-      eslint-plugin-html: 7.1.0
-      eslint-plugin-json: 3.1.0
-      jsdom: 22.1.0
-      jsdom-global: 3.0.2(jsdom@22.1.0)
-      less: 4.2.0
-      mocha: 9.2.2
-      mock-local-storage: 1.1.24
-      nightwatch: 2.6.24(chromedriver@121.0.0)
-      nyc: 15.1.0
-      postcss: 8.4.32
-      prettier: 2.8.8
-      sass: 1.69.5
-      sinon: 13.0.2
-      tslib: 2.6.2
-      typescript: 5.3.3
-    transitivePeerDependencies:
-      - '@cucumber/cucumber'
-      - bufferutil
-      - canvas
-      - geckodriver
-      - supports-color
-      - utf-8-validate
-    dev: true
-
   /@leanup/stack@1.3.49(chromedriver@121.0.2)(esbuild@0.19.3)(typescript@5.2.2):
     resolution: {integrity: sha512-NWGmqmk9oapxjDm8dcIuC/MCVHpYEvamCwrNw/XvumXhMZl1TFEwQ4xj97eXYo0mDCS47N98Po6xaTrCVpctTw==}
     peerDependencies:
@@ -9429,6 +9386,12 @@ packages:
     dependencies:
       loglevel: 1.8.1
 
+  /adopted-style-sheets@1.1.4-dev.1:
+    resolution: {integrity: sha512-TQmsZ10riuNyz3rPwVzNrRaNVWO5Gim904cU2wgXMfAWxiwfvv4FkPWTuiYZ0Zf2phFj3ZVqYe6T463Oy4bxiw==}
+    dependencies:
+      loglevel: 1.9.1
+    dev: false
+
   /agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
@@ -9960,7 +9923,7 @@ packages:
       rimraf: 3.0.2
     dev: false
 
-  /axe-playwright@2.0.1(playwright@1.39.0):
+  /axe-playwright@2.0.1(playwright@1.41.2):
     resolution: {integrity: sha512-MHjNjGARulF9XzqSfspmNjw+tpBz4x9o1VlTuLWEUW9fqzhn+xWa1qEpuOIQPbsRWQiLfooDjQAunLeE0PM5AQ==}
     peerDependencies:
       playwright: '>1.0.0'
@@ -9970,7 +9933,7 @@ packages:
       axe-html-reporter: 2.2.3(axe-core@4.8.3)
       junit-report-builder: 3.1.0
       picocolors: 1.0.0
-      playwright: 1.39.0
+      playwright: 1.41.2
     dev: false
 
   /axios@1.6.5:
@@ -10704,24 +10667,6 @@ packages:
   /chrome-trace-event@1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
     engines: {node: '>=6.0'}
-
-  /chromedriver@121.0.0:
-    resolution: {integrity: sha512-ZIKEdZrQAfuzT/RRofjl8/EZR99ghbdBXNTOcgJMKGP6N/UL6lHUX4n6ONWBV18pDvDFfQJ0x58h5AdOaXIOMw==}
-    engines: {node: '>=18'}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      '@testim/chrome-version': 1.1.4
-      axios: 1.6.5
-      compare-versions: 6.1.0
-      extract-zip: 2.0.1
-      https-proxy-agent: 5.0.1
-      proxy-from-env: 1.1.0
-      tcp-port-used: 1.0.2
-    transitivePeerDependencies:
-      - debug
-      - supports-color
-    dev: true
 
   /chromedriver@121.0.2:
     resolution: {integrity: sha512-58MUSCEE3oB3G3Y/Jo3URJ2Oa1VLHcVBufyYt7vNfGrABSJm7ienQLF9IQ8LPDlPVgLUXt2OBfggK3p2/SlEBg==}
@@ -17839,62 +17784,6 @@ packages:
     dependencies:
       axe-core: 4.8.3
 
-  /nightwatch@2.6.24(chromedriver@121.0.0):
-    resolution: {integrity: sha512-XRLlmZLWv/a35ZZ0Ev1FVizqx+d5K4aDv/vV1++I1JJzyBu/vftx4ALKCrR0nmNqqQfBBO+p/h10r+ayyU9TRw==}
-    engines: {node: '>= 12.0.0'}
-    hasBin: true
-    peerDependencies:
-      '@cucumber/cucumber': '*'
-      chromedriver: '*'
-      geckodriver: '*'
-    peerDependenciesMeta:
-      '@cucumber/cucumber':
-        optional: true
-      chromedriver:
-        optional: true
-      geckodriver:
-        optional: true
-    dependencies:
-      '@nightwatch/chai': 5.0.2
-      '@nightwatch/html-reporter-template': 0.2.1
-      ansi-to-html: 0.7.2
-      assertion-error: 1.1.0
-      boxen: 5.1.2
-      chai-nightwatch: 0.5.3
-      chromedriver: 121.0.0
-      ci-info: 3.3.0
-      cli-table3: 0.6.3
-      didyoumean: 1.2.2
-      dotenv: 10.0.0
-      ejs: 3.1.8
-      envinfo: 7.8.1
-      fs-extra: 10.1.0
-      glob: 7.2.3
-      jsdom: 19.0.0
-      lodash.clone: 3.0.3
-      lodash.defaultsdeep: 4.6.1
-      lodash.escape: 4.0.1
-      lodash.merge: 4.6.2
-      lodash.pick: 4.4.0
-      minimatch: 3.1.2
-      minimist: 1.2.6
-      mocha: 9.2.2
-      nightwatch-axe-verbose: 2.3.0
-      open: 8.4.0
-      ora: 5.4.1
-      selenium-webdriver: 4.6.1
-      semver: 7.3.5
-      stacktrace-parser: 0.1.10
-      strip-ansi: 6.0.1
-      untildify: 4.0.0
-      uuid: 8.3.2
-    transitivePeerDependencies:
-      - bufferutil
-      - canvas
-      - supports-color
-      - utf-8-validate
-    dev: true
-
   /nightwatch@2.6.24(chromedriver@121.0.2):
     resolution: {integrity: sha512-XRLlmZLWv/a35ZZ0Ev1FVizqx+d5K4aDv/vV1++I1JJzyBu/vftx4ALKCrR0nmNqqQfBBO+p/h10r+ayyU9TRw==}
     engines: {node: '>= 12.0.0'}
@@ -19223,26 +19112,10 @@ packages:
     dependencies:
       find-up: 3.0.0
 
-  /playwright-core@1.39.0:
-    resolution: {integrity: sha512-+k4pdZgs1qiM+OUkSjx96YiKsXsmb59evFoqv8SKO067qBA+Z2s/dCzJij/ZhdQcs2zlTAgRKfeiiLm8PQ2qvw==}
-    engines: {node: '>=16'}
-    hasBin: true
-    dev: false
-
   /playwright-core@1.41.2:
     resolution: {integrity: sha512-VaTvwCA4Y8kxEe+kfm2+uUUw5Lubf38RxF7FpBxLPmGe5sdNkSg5e3ChEigaGrX7qdqT3pt2m/98LiyvU2x6CA==}
     engines: {node: '>=16'}
     hasBin: true
-
-  /playwright@1.39.0:
-    resolution: {integrity: sha512-naE5QT11uC/Oiq0BwZ50gDmy8c8WLPRTEWuSSFVG2egBka/1qMoSqYQcROMT9zLwJ86oPofcTH2jBY/5wWOgIw==}
-    engines: {node: '>=16'}
-    hasBin: true
-    dependencies:
-      playwright-core: 1.39.0
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: false
 
   /playwright@1.41.2:
     resolution: {integrity: sha512-v0bOa6H2GJChDL8pAeLa/LZC4feoAMbSQm1/jF/ySsWWoaNItvrMP7GEkvEEFyCTUYKMxjQKaTSg5up7nR6/8A==}
