@@ -1,6 +1,7 @@
 import { SelectOption } from '@public-ui/components';
 
-export type Theme = 'bmf' | 'default' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'unstyled';
+export const THEMES = ['bmf', 'default', 'ecl-ec', 'ecl-eu', 'itzbund'] as const;
+export type Theme = (typeof THEMES)[number] | 'unstyled';
 
 const drafts: Theme[] = ['ecl-ec', 'ecl-eu', 'itzbund'];
 

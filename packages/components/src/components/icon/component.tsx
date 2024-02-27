@@ -11,7 +11,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-icon',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

@@ -1,0 +1,9 @@
+@import '../style';
+@import 'cycle';
+@import 'dot';
+
+.spin {
+	display: block;
+	padding: 0.125rem;
+	position: relative;
+}

@@ -31,7 +31,7 @@ const paginationValidator = (value: unknown) => value === true || value === '' /
 @Component({
 	tag: 'kol-table',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -696,7 +696,7 @@ export class KolTable implements API {
 				)}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-				 * <caption> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements:
+				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements:
 				 *   tabindex="-1" prevents keyboard-focus,
 				 *   catching the mouseDown event prevents click-focus
 				 */}
@@ -714,7 +714,17 @@ export class KolTable implements API {
 							minWidth: this.state._minWidth,
 						}}
 					>
-						<caption tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>{this.state._label}</caption>
+						{/*
+						 * The following element allows the table to receive focus without providing redundant content to screen readers.
+						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
+						 * prevent screen readers from just reading "blank".
+						 */}
+						<div class="focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
+							&nbsp;
+						</div>
+
+						<caption id="caption">{this.state._label}</caption>
+
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
 								{this.state._headers.horizontal.map((cols, rowIndex) => (

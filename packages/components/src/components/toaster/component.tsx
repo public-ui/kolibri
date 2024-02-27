@@ -10,7 +10,7 @@ const TRANSITION_TIMEOUT = 300;
 @Component({
 	tag: 'kol-toast-container',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

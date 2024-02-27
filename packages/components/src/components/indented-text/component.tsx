@@ -8,7 +8,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-indented-text',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

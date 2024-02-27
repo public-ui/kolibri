@@ -16,7 +16,7 @@ import { Props } from './types';
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

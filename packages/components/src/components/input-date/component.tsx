@@ -27,7 +27,7 @@ import { ComponentApi, States } from './types';
 @Component({
 	tag: 'kol-input-date',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

@@ -1,0 +1,23 @@
+@import 'style';
+
+:host {
+	display: inline-block;
+}
+
+:is(a, button) {
+	display: inline-flex;
+	place-items: center;
+	text-align: center;
+	text-decoration-line: none;
+}
+
+/* TODO: Why we need this? */
+:is(a, button) > kol-span-wc {
+	margin: auto;
+	width: 100%;
+}
+
+:is(button):disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}

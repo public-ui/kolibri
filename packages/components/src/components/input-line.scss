@@ -1,0 +1,36 @@
+@import 'input';
+
+.kol-input {
+	display: grid;
+}
+
+.kol-input .input-slot {
+	flex-grow: 1;
+}
+
+input:not([type='checkbox'], [type='radio']),
+select:not([multiple], [size]) {
+	height: 2.75em;
+}
+
+input:focus,
+option:focus,
+select:focus,
+textarea:focus {
+	outline: 0;
+}
+
+.input {
+	display: flex;
+	align-items: center;
+}
+
+.input > kol-icon {
+	display: grid;
+	height: var(--a11y-min-size);
+	place-items: center;
+}
+
+.kol-input.required .input-tooltip .span-label::after {
+	content: '*';
+}

@@ -30,7 +30,7 @@ const rightDoubleArrowIcon = {
 @Component({
 	tag: 'kol-pagination',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

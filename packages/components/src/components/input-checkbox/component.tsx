@@ -24,7 +24,7 @@ import { API, InputCheckboxIconsProp, InputCheckboxVariant, States } from './typ
 @Component({
 	tag: 'kol-input-checkbox',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

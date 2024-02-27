@@ -36,7 +36,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 @Component({
 	tag: 'kol-textarea',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

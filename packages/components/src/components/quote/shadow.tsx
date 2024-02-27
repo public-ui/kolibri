@@ -9,7 +9,7 @@ import { API, KoliBriQuoteVariant, States } from './types';
 @Component({
 	tag: 'kol-quote',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

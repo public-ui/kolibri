@@ -1,0 +1,15 @@
+@import '../style';
+
+:host {
+	display: inline-block;
+}
+
+text {
+	font-size: 90px;
+	letter-spacing: normal;
+	word-spacing: normal;
+}
+
+svg {
+	max-height: 100%;
+}

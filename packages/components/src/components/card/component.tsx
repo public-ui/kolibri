@@ -19,7 +19,7 @@ import { API, KoliBriCardEventCallbacks, States } from './types';
 @Component({
 	tag: 'kol-card',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

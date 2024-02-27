@@ -1,8 +1,0 @@
-@import url(../style.css);
-:host > span {
-	display: inline-flex;
-	place-items: center;
-}
-:host > span > .kol-button-wc button {
-	color: inherit;
-}

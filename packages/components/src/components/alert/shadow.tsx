@@ -10,7 +10,7 @@ import { AlertType, AlertVariant, KoliBriAlertEventCallbacks, Props, States } fr
 @Component({
 	tag: 'kol-alert',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

@@ -18,7 +18,7 @@ import { LinkProps } from '../link/types';
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

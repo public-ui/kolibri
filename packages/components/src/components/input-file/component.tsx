@@ -23,7 +23,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-input-file',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

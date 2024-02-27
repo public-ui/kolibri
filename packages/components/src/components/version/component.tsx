@@ -8,7 +8,7 @@ import { translate } from '../../i18n';
 @Component({
 	tag: 'kol-version',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

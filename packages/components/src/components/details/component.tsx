@@ -14,7 +14,7 @@ import { propagateFocus } from '../../utils/reuse';
 @Component({
 	tag: 'kol-details',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
