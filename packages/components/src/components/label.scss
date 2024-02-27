@@ -1,0 +1,8 @@
+@import 'style';
+
+@layer kol-component {
+	.required label > span::after,
+	.required legend > span::after {
+		content: '*';
+	}
+}

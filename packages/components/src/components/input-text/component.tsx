@@ -32,7 +32,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-input-text',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

@@ -554,6 +554,9 @@ importers:
       '@stencil/react-output-target':
         specifier: 0.5.3
         version: 0.5.3(@stencil/core@4.12.3)
+      '@stencil/sass':
+        specifier: 3.0.9
+        version: 3.0.9(@stencil/core@4.12.3)
       '@stencil/solid-output-target':
         specifier: file:node_martin/stencil-solid-output-target-0.0.1.tgz
         version: file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz(@stencil/core@4.12.3)
@@ -681,9 +684,6 @@ importers:
       '@types/node':
         specifier: ts5.3
         version: 20.10.4
-      cross-env:
-        specifier: 7.0.3
-        version: 7.0.3
       knip:
         specifier: 5.0.2
         version: 5.0.2(@types/node@20.10.4)(typescript@5.3.3)
@@ -693,9 +693,6 @@ importers:
       rimraf:
         specifier: 3.0.2
         version: 3.0.2
-      ts-node:
-        specifier: 10.9.2
-        version: 10.9.2(@types/node@20.10.4)(typescript@5.3.3)
       tsup:
         specifier: 8.0.2
         version: 8.0.2(ts-node@10.9.2)(typescript@5.3.3)
@@ -7714,6 +7711,15 @@ packages:
     resolution: {integrity: sha512-68jwRp35CjAcwhTJ9yFD/3n+jrHOqvEH2jreVuPVvZK+4tkhPlYlwz0d1E1RlF3jyifUSfdkWUGgXIEy8Fo3yw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
+    dependencies:
+      '@stencil/core': 4.12.3
+    dev: true
+
+  /@stencil/sass@3.0.9(@stencil/core@4.12.3):
+    resolution: {integrity: sha512-GtPMjf5r4/BVBCO3LvcoMSIfOa6T+0wq+SrTGEilC4NCZpuZdAlZffWxXi80caZ1jDclwdzJ2qGwEgCAfvGoNA==}
+    engines: {node: '>=12.0.0', npm: '>=6.0.0'}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
       '@stencil/core': 4.12.3
     dev: true

@@ -1,0 +1,54 @@
+@import '../style';
+
+@layer kol-component {
+	kol-tooltip-wc {
+		display: contents;
+	}
+
+	kol-tooltip-wc .tooltip-floating {
+		animation-duration: 0.5s;
+		animation-iteration-count: 1;
+		animation-name: fadeInOpacity;
+		animation-timing-function: ease-in;
+		box-sizing: border-box;
+		display: none;
+		position: fixed;
+		visibility: hidden;
+		/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
+		top: 0;
+		left: 0;
+		max-width: 90vw;
+		max-height: 90vh;
+		/* Can be used to specify the tooltip-width from the outside. Unset by default.  */
+		width: var(--kol-tooltip-width);
+	}
+
+	/* Shared between content and arrow */
+	kol-tooltip-wc .tooltip-area {
+		background-color: #fff;
+		color: #000;
+	}
+
+	kol-tooltip-wc .tooltip-arrow {
+		height: 10px;
+		position: absolute;
+		transform: rotate(45deg);
+		width: 10px;
+		z-index: 999;
+	}
+
+	kol-tooltip-wc .tooltip-content {
+		position: relative;
+		z-index: 1000;
+	}
+
+	@keyframes fadeInOpacity {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+}

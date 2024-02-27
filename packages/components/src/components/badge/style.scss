@@ -1,0 +1,14 @@
+@import '../style';
+
+@layer kol-component {
+	:host > span {
+		display: inline-flex;
+		place-items: center;
+		/* Visible with forced colors  */
+		outline: transparent solid 1px;
+	}
+
+	:host > span > kol-button-wc button {
+		color: inherit;
+	}
+}

@@ -22,7 +22,7 @@ import { Component, h, Host, Prop, State } from '@stencil/core';
 @Component({
 	tag: 'kol-split-button',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
