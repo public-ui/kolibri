@@ -70,6 +70,7 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolBadge = transformTagName(KolBadge);
 	KolBreadcrumb = transformTagName(KolBreadcrumb);
 	KolButton = transformTagName(KolButton);
+	KolButtonWc = transformTagName(KolButtonWc);
 	KolButtonGroup = transformTagName(KolButtonGroup);
 	KolButtonGroupWc = transformTagName(KolButtonGroupWc);
 	KolButtonLink = transformTagName(KolButtonLink);
@@ -107,6 +108,7 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolSelect = transformTagName(KolSelect);
 	KolSkipNav = transformTagName(KolSkipNav);
 	KolSpan = transformTagName(KolSpan);
+	KolSpanWc = transformTagName(KolSpanWc);
 	KolSpin = transformTagName(KolSpin);
 	KolSplitButton = transformTagName(KolSplitButton);
 	KolSymbol = transformTagName(KolSymbol);
