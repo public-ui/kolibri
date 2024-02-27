@@ -1,7 +1,7 @@
 @import '../style';
 
 @layer kol-component {
-	:host>div.card {
+	:host > div.card {
 		height: 100%;
 		position: relative;
 		/* Visible with forced colors  */
