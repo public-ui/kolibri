@@ -32,7 +32,7 @@ import { FormFieldMsg } from '../@shared/form-field-msg';
 @Component({
 	tag: 'kol-input-radio',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

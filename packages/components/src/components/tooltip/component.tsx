@@ -9,7 +9,7 @@ import { hideOverlay, showOverlay } from '../../utils/overlay';
 
 @Component({
 	tag: 'kol-tooltip-wc',
-	styleUrl: './style.css',
+	styleUrl: './style.scss',
 	shadow: false,
 })
 export class KolTooltip implements TooltipAPI {

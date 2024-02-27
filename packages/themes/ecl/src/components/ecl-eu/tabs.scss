@@ -1,0 +1,37 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		--kolibri-spacing: 0.25rem;
+	}
+	kol-button-group-wc {
+		border-bottom: 1px solid var(--color-grey-25);
+		margin-bottom: -1px;
+	}
+	kol-button-group-wc button {
+		border: none;
+		margin-bottom: -1px;
+	}
+	kol-button-group-wc button kol-span-wc {
+		padding: 0.5rem;
+		min-height: 44px;
+		min-width: 44px;
+	}
+	kol-button-group-wc button.selected kol-span-wc {
+		border-color: var(--color-grey-25);
+		border-style: solid;
+		border-width: 1px;
+		border-bottom-color: white;
+		border-top-color: var(--color-blue);
+		box-shadow: 0 -3px var(--color-blue);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-blue);
+	}
+	kol-button-group-wc button:hover:not(:disabled) kol-span-wc {
+		color: var(--color-blue-130);
+	}
+	kol-button-group-wc button:focus kol-span-wc {
+		outline-color: var(--color-blue-130);
+		outline-style: solid;
+		outline-width: 2px;
+	}
+}

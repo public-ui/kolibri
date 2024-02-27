@@ -9,7 +9,6 @@
 		"format": "pnpm -r format",
 		"lint": "pnpm -r lint",
 		"unused": "pnpm -r unused",
-		"ts-prune": "git clean -f -d -X packages/adapters/**/src && pnpm -r exec npx ts-prune src -e",
 		"ncu:major": "ncu -x rimraf && pnpm -r exec ncu -x rimraf",
 		"ncu:minor": "ncu -t minor -u -x rimraf && pnpm -r exec ncu -t minor -u -x rimraf,rxjs,typescript,zone.js",
 		"ncu:patch": "ncu -t patch -u -x rimraf && pnpm -r exec ncu -t patch -u -x rimraf",
@@ -38,7 +37,7 @@
 		"prettier": "3.0.3",
 		"rimraf": "3.0.2",
 		"ts-node": "10.9.1",
-		"ts-prune": "0.10.3",
+		"knip": "5.0.2",
 		"typescript": "5.3.2"
 	}
 }

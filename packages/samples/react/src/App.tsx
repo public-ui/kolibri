@@ -6,13 +6,13 @@ import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 import PackageJson from '@public-ui/components/package.json';
 import { KolAlert, KolBadge } from '@public-ui/react';
 
+import { BackPage } from './components/BackPage';
 import { Sidebar } from './components/Sidebar';
 import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
 import { HideMenusContext } from './shares/HideMenusContext';
 import { ROUTES } from './shares/routes';
 import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
-import { isDraftTheme, THEME_OPTIONS } from './shares/theme';
-import { BackPage } from './components/BackPage';
+import { THEMES, THEME_OPTIONS, isDraftTheme } from './shares/theme';
 
 import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
@@ -50,19 +50,17 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 						path={`${path}/all`}
 						element={
 							<div className="d-grid gap-4">
-								{THEME_OPTIONS.filter((theme) => ['bmf', 'default', 'ecl-ec', 'ecl-eu', 'itzbund'].indexOf((theme as Option<Theme>).value) >= 0).map(
-									(theme) => (
-										<div className="d-grid gap-2" key={(theme as Option<Theme>).value} data-theme={(theme as Option<Theme>).value}>
-											<div className="mt-4">
-												<strong>{theme.label}</strong>
-											</div>
-											<div className="my-2">
-												<ThisRoute />
-											</div>
-											<hr aria-hidden="true" />
+								{THEME_OPTIONS.filter((theme) => THEMES.indexOf((theme as Option<Theme>).value) >= 0).map((theme) => (
+									<div className="d-grid gap-2" key={(theme as Option<Theme>).value} data-theme={(theme as Option<Theme>).value}>
+										<div className="mt-4">
+											<strong>{theme.label}</strong>
 										</div>
-									),
-								)}
+										<div className="my-2">
+											<ThisRoute />
+										</div>
+										<hr aria-hidden="true" />
+									</div>
+								))}
 							</div>
 						}
 					/>,
@@ -137,14 +135,14 @@ export const App: FC = () => {
 					/>
 				)}
 
-				<div className="p-4" id="route-container">
+				<main className="p-4" id="route-container">
 					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="DRAFT" _color="#db5461" />}
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<KolAlert _type="info">This code example has not been migrated yet - it&#39;s coming soon!</KolAlert>} />
 						<Route path="back-page" element={<BackPage />} />
 					</Routes>
-				</div>
+				</main>
 			</div>
 		</HideMenusContext.Provider>
 	);

@@ -28,7 +28,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-input-file',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

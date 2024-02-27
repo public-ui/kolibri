@@ -14,7 +14,6 @@ export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.Kol
 				_error={ERROR_MSG}
 				_placeholder="Mit Icons"
 				_icons={{
-					left: 'codicon codicon-arrow-left',
 					right: {
 						icon: 'codicon codicon-arrow-right',
 						style: {
@@ -28,13 +27,13 @@ export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.Kol
 					onClick: console.log,
 					onFocus: console.log,
 				}}
-				_hideLabel
 				_required
 				_type="search"
 				_touched
-				_label="Suche"
+				_label="Vorname (text)"
+				_accessKey="V"
+				ref={ref}
 			/>
-			<KolInputText {...props} ref={ref} _accessKey="V" _placeholder="Placeholder" _label="Vorname (text)" _required />
 			<KolInputText {...props} _placeholder="Placeholder" _label="Suche (search)" _type="search" />
 			<KolInputText {...props} _placeholder="Placeholder" _error={ERROR_MSG} _touched _type="url" _label="URL (url)" />
 			<KolInputText {...props} _placeholder="Placeholder" _type="tel" _label="Telefon (tel)" />

@@ -1,6 +1,0 @@
-@import url(../input-line.css);
-@layer kol-component {
-	div.input {
-		cursor: pointer;
-	}
-}

@@ -41,7 +41,7 @@ type SortData = {
 @Component({
 	tag: 'kol-table',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

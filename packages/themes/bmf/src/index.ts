@@ -305,9 +305,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, .input) {
+		kol-input.disabled .input {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
+			color: var(--color-black);
 		}
 	`,
 	'KOL-INPUT-PASSWORD': css`
@@ -384,7 +385,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, select, textarea, .input) {
+		kol-input.disabled .input {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
 			color: var(--color-black);
@@ -464,7 +465,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, .input) {
+		kol-input.disabled .input {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
 			color: var(--color-black);
@@ -544,7 +545,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, .input) {
+		kol-input.disabled .input {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
 			color: var(--color-black);
@@ -624,7 +625,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, .input) {
+		kol-input.disabled .input {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
 			color: var(--color-black);
@@ -710,7 +711,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, select, textarea, .input) {
+		kol-input.disabled .input {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
 			color: var(--color-black);
@@ -1382,9 +1383,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(select, .input) {
+		kol-input.disabled .input {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
+			color: var(--color-black);
 		}
 		select[multiple] {
 			overflow: auto;
@@ -1490,7 +1492,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(input, .input) {
+		kol-input.disabled .input {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
 			color: var(--color-black);
@@ -1776,7 +1778,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		:host kol-input:not(.disabled) :is(.input, label) {
 			cursor: pointer;
 		}
-		:host kol-input.disabled :is(.input, label) {
+		:host kol-input.disabled .input {
 			cursor: not-allowed;
 		}
 		:host kol-input > label {
@@ -2402,7 +2404,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			color: var(--color-red);
 			font-weight: 700;
 		}
-		kol-input.disabled :is(.input) {
+		kol-input.disabled .input {
 			background-color: var(--color-smoke);
 			border-color: var(--color-granite);
 			color: var(--color-black);
