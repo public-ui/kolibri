@@ -61,6 +61,6 @@ fieldset .input-slot {
 }
 
 /* required star is on fieldset legend */
-.required label>span::after {
+.required label > span::after {
 	content: '';
 }
