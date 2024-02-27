@@ -7,6 +7,7 @@ export let KolAvatarWc = 'kol-avatar-wc';
 export let KolBadge = 'kol-badge';
 export let KolBreadcrumb = 'kol-breadcrumb';
 export let KolButton = 'kol-button';
+export let KolButtonWc = 'kol-button-wc';
 export let KolButtonGroup = 'kol-button-group';
 export let KolButtonGroupWc = 'kol-button-group-wc';
 export let KolButtonLink = 'kol-button-link';
