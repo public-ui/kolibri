@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-angular",
-	"version": "2.0.7",
+	"version": "2.0.8",
 	"private": true,
 	"scripts": {
 		"clean": "git clean -f -d -X",
@@ -23,9 +23,9 @@
 		"@angular/forms": "17.2.1",
 		"@angular/platform-browser": "17.2.1",
 		"@angular/platform-browser-dynamic": "17.2.1",
-		"@public-ui/angular-v17": "2.0.7",
-		"@public-ui/components": "2.0.7",
-		"@public-ui/themes": "2.0.7",
+		"@public-ui/angular-v17": "2.0.8",
+		"@public-ui/components": "2.0.8",
+		"@public-ui/themes": "2.0.8",
 		"zone.js": "0.14.4"
 	},
 	"devDependencies": {

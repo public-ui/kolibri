@@ -18,8 +18,8 @@
 		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot"
 	},
 	"dependencies": {
-		"@public-ui/components": "2.0.7",
-		"@public-ui/themes": "2.0.7"
+		"@public-ui/components": "2.0.8",
+		"@public-ui/themes": "2.0.8"
 	},
 	"devDependencies": {
 		"@stencil-community/router": "1.0.2",

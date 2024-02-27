@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-ssr",
-	"version": "2.0.7",
+	"version": "2.0.8",
 	"private": true,
 	"scripts": {
 		"lint": "tsc --noemit",
@@ -11,9 +11,9 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@public-ui/components": "2.0.7",
-		"@public-ui/hydrate": "2.0.7",
-		"@public-ui/theme-default": "2.0.7",
+		"@public-ui/components": "2.0.8",
+		"@public-ui/hydrate": "2.0.8",
+		"@public-ui/theme-default": "2.0.8",
 		"express": "4.18.2"
 	},
 	"devDependencies": {

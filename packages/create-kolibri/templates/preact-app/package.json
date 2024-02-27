@@ -25,9 +25,9 @@
 		"unused": "knip"
 	},
 	"dependencies": {
-		"@public-ui/components": "2.0.7",
-		"@public-ui/preact": "2.0.7",
-		"@public-ui/themes": "2.0.7",
+		"@public-ui/components": "2.0.8",
+		"@public-ui/preact": "2.0.8",
+		"@public-ui/themes": "2.0.8",
 		"preact": "10.19.6"
 	},
 	"devDependencies": {
