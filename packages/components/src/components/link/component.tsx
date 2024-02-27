@@ -41,6 +41,7 @@ import { validateDisabled } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { preventDefaultAndStopPropagation } from '../../utils/events';
+import { KolIcon, KolSpanWc, KolTooltipWc } from '../../core/component-names';
 /**
  * @internal
  */
@@ -132,16 +133,16 @@ export class KolLinkWc implements LinkAPI {
 					role={this.state._role}
 					tabIndex={this.state._disabled ? -1 : this.state._tabIndex}
 				>
-					<kol-span-wc
+					<KolSpanWc
 						_accessKey={this.state._accessKey}
 						_icons={this.state._icons}
 						_hideLabel={this.state._hideLabel}
 						_label={hasExpertSlot ? '' : this.state._label || this.state._href}
 					>
 						<slot name="expert" slot="expert"></slot>
-					</kol-span-wc>
+					</KolSpanWc>
 					{isExternal && (
-						<kol-icon
+						<KolIcon
 							class="external-link-icon"
 							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
 							_icons={'codicon codicon-link-external'}
@@ -149,7 +150,7 @@ export class KolLinkWc implements LinkAPI {
 						/>
 					)}
 				</a>
-				<kol-tooltip-wc
+				<KolTooltipWc
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -159,7 +160,7 @@ export class KolLinkWc implements LinkAPI {
 					_accessKey={this.state._accessKey}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
-				></kol-tooltip-wc>
+				></KolTooltipWc>
 			</Host>
 		);
 	}

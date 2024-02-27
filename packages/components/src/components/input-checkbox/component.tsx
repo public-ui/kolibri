@@ -25,6 +25,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputCheckboxController } from './controller';
 
 import type { JSX } from '@stencil/core';
+import { KolIcon, KolInput } from '../../core/component-names';
 
 /**
  * @slot expert - Die Beschriftung der Checkbox.
@@ -57,7 +58,7 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 
 		return (
 			<Host>
-				<kol-input
+				<KolInput
 					class={{
 						checkbox: true,
 						[this.state._variant]: true,
@@ -95,7 +96,7 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 						)}
 					</span>
 					<label slot="input" class="checkbox-container">
-						<kol-icon
+						<KolIcon
 							class="icon"
 							_icons={
 								this.state._indeterminate ? this.state._icons.indeterminate : this.state._checked ? this.state._icons.checked : this.state._icons.unchecked
@@ -122,7 +123,7 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 						/>
 					</label>
-				</kol-input>
+				</KolInput>
 			</Host>
 		);
 	}

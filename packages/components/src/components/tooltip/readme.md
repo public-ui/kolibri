@@ -42,28 +42,4 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 | `_id`                 | `_id`         | Defines the internal ID of the primary component element.                                                          | `string \| undefined`                                 | `undefined` |
 | `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
 
-## Dependencies
-
-### Used by
-
-- [kol-abbr](../abbr)
-- kol-input
-- kol-link-wc
-
-### Depends on
-
-- kol-span-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-tooltip-wc --> kol-span-wc
-  kol-span-wc --> kol-icon
-  kol-abbr --> kol-tooltip-wc
-  kol-input --> kol-tooltip-wc
-  kol-link-wc --> kol-tooltip-wc
-  style kol-tooltip-wc stroke:#333,stroke-width:4px
-```
-
 ---

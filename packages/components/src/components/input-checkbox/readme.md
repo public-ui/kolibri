@@ -95,30 +95,4 @@ Type: `Promise<boolean | undefined>`
 | ---------- | ------------------------------ |
 | `"expert"` | Die Beschriftung der Checkbox. |
 
-## Dependencies
-
-### Depends on
-
-- kol-input
-- [kol-icon](../icon)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-input-checkbox --> kol-input
-  kol-input-checkbox --> kol-icon
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert
-  kol-tooltip-wc --> kol-span-wc
-  kol-span-wc --> kol-icon
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  style kol-input-checkbox stroke:#333,stroke-width:4px
-```
-
 ---

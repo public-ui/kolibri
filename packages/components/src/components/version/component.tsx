@@ -5,6 +5,7 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 
 import type { JSX } from '@stencil/core';
+import { KolBadge } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-version',
@@ -16,7 +17,7 @@ import type { JSX } from '@stencil/core';
 export class KolVersion implements VersionAPI {
 	public render(): JSX.Element {
 		return (
-			<kol-badge
+			<KolBadge
 				_color="#bec5c9"
 				_icons={{
 					left: { icon: 'codicon codicon-versions', label: translate('kol-version') },

@@ -123,20 +123,4 @@ Standardansicht gelegt.
 | ---- | ------------------------------------------------------------------------------- |
 |      | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions. |
 
-## Dependencies
-
-### Depends on
-
-- [kol-heading-wc](../heading)
-- kol-button-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-accordion --> kol-heading-wc
-  kol-accordion --> kol-button-wc
-  style kol-accordion stroke:#333,stroke-width:4px
-```
-
 ---

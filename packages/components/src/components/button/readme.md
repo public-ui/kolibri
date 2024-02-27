@@ -126,22 +126,4 @@ Probleme mit Disabled-Status
 
 Type: `Promise<Stringified<StencilUnknown>>`
 
-## Dependencies
-
-### Used by
-
-- [kol-nav](../nav)
-- [kol-table](../table)
-- [kol-toast-container](../toaster)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-nav --> kol-button
-  kol-table --> kol-button
-  kol-toast-container --> kol-button
-  style kol-button stroke:#333,stroke-width:4px
-```
-
 ---

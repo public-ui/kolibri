@@ -121,27 +121,4 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 | `_links` _(required)_   | `_links`                   | Defines the list of links, buttons or texts to render.                                                                                     | `ButtonOrLinkOrTextWithChildrenProps[] \| string` | `undefined`  |
 | `_orientation`          | `_orientation`             | Defines whether the orientation of the component is horizontal or vertical.                                                                | `"horizontal" \| "vertical" \| undefined`         | `'vertical'` |
 
-## Dependencies
-
-### Depends on
-
-- kol-link-wc
-- kol-button-wc
-- [kol-button](../button)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-nav --> kol-link-wc
-  kol-nav --> kol-button-wc
-  kol-nav --> kol-button
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-nav stroke:#333,stroke-width:4px
-```
-
 ---

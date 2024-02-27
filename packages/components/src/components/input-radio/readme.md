@@ -115,25 +115,13 @@ Type: `Promise<W3CInputValue | undefined>`
 
 ### Depends on
 
-- kol-input
 - [kol-alert](../alert)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-input-radio --> kol-input
   kol-input-radio --> kol-alert
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert
-  kol-tooltip-wc --> kol-span-wc
-  kol-span-wc --> kol-icon
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
   style kol-input-radio stroke:#333,stroke-width:4px
 ```
 

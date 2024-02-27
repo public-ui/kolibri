@@ -95,27 +95,4 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 | ---- | ----------------------- |
 |      | Der Inhalt der Meldung. |
 
-## Dependencies
-
-### Used by
-
-- [kol-alert](.)
-
-### Depends on
-
-- [kol-heading-wc](../heading)
-- kol-button-wc
-- [kol-icon](../icon)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  kol-alert --> kol-alert-wc
-  style kol-alert-wc stroke:#333,stroke-width:4px
-```
-
 ---

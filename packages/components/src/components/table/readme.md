@@ -186,35 +186,4 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 | `_pagination`           | `_pagination`          | Defines whether to show the data distributed over multiple pages.                                                  | `boolean \| string \| undefined \| { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks \| undefined; _page?: number \| undefined; _max?: number \| undefined; _boundaryCount?: number \| undefined; _hasButtons?: boolean \| Stringified<PaginationHasButton> \| undefined; _pageSize?: number \| undefined; _pageSizeOptions?: Stringified<number[]> \| undefined; _siblingCount?: number \| undefined; _customClass?: string \| undefined; _label?: string \| undefined; _tooltipAlign?: AlignPropType \| undefined; }` | `undefined` |
 | `_paginationPosition`   | `_pagination-position` | Controls the position of the pagination.                                                                           | `"both" \| "bottom" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `'bottom'`  |
 
-## Dependencies
-
-### Depends on
-
-- [kol-button](../button)
-- [kol-pagination](../pagination)
-- kol-button-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-table --> kol-button
-  kol-table --> kol-pagination
-  kol-table --> kol-button-wc
-  kol-pagination --> kol-button-wc
-  kol-pagination --> kol-select
-  kol-select --> kol-input
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert
-  kol-tooltip-wc --> kol-span-wc
-  kol-span-wc --> kol-icon
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  style kol-table stroke:#333,stroke-width:4px
-```
-
 ---

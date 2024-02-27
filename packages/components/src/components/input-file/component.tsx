@@ -22,6 +22,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputFileController } from './controller';
 
 import type { JSX } from '@stencil/core';
+import { KolInput } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -53,7 +54,7 @@ export class KolInputFile implements InputFileAPI {
 
 		return (
 			<Host>
-				<kol-input
+				<KolInput
 					class={{
 						file: true,
 						'hide-label': !!this.state._hideLabel,
@@ -110,7 +111,7 @@ export class KolInputFile implements InputFileAPI {
 							onChange={this.onChange}
 						/>
 					</div>
-				</kol-input>
+				</KolInput>
 			</Host>
 		);
 	}

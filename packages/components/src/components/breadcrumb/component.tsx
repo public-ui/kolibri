@@ -6,6 +6,8 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
+import { KolIcon, KolLink } from '../../core/component-names';
+
 @Component({
 	tag: 'kol-breadcrumb',
 	styleUrls: {
@@ -18,17 +20,17 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 		const lastIndex = this.state._links.length - 1;
 		return (
 			<li key={index}>
-				{index !== 0 && <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
+				{index !== 0 && <KolIcon _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
 					<span>
 						{link._hideLabel ? (
-							<kol-icon _label={link._label} _icons={typeof link._icons === 'string' ? link._icons : 'codicon codicon-symbol-event'} />
+							<KolIcon _label={link._label} _icons={typeof link._icons === 'string' ? link._icons : 'codicon codicon-symbol-event'} />
 						) : (
 							<>{link._label}</>
 						)}
 					</span>
 				) : (
-					<kol-link {...link}></kol-link>
+					<KolLink {...link}></KolLink>
 				)}
 			</li>
 		);

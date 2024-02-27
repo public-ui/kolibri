@@ -94,19 +94,13 @@ Type: `Promise<() => void>`
 
 ### Depends on
 
-- [kol-button](../button)
 - [kol-alert](../alert)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-toast-container --> kol-button
   kol-toast-container --> kol-alert
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
   style kol-toast-container stroke:#333,stroke-width:4px
 ```
 

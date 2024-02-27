@@ -5,6 +5,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { nonce } from '../../utils/dev.utils';
 
 import type { JSX } from '@stencil/core';
+import { KolButtonWc } from '../../core/component-names';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 @Component({
@@ -21,7 +22,7 @@ export class KolBadge implements BadgeAPI {
 
 	private renderSmartButton(props: ButtonProps): JSX.Element {
 		return (
-			<kol-button-wc
+			<KolButtonWc
 				_ariaControls={this.id}
 				_customClass={props._customClass}
 				_disabled={props._disabled}
@@ -32,7 +33,7 @@ export class KolBadge implements BadgeAPI {
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
 				_variant={props._variant}
-			></kol-button-wc>
+			></KolButtonWc>
 		);
 	}
 

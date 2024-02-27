@@ -17,6 +17,7 @@ import { propagateFocus } from '@public-ui/schema';
 import { Component, Element, h, Host, Prop } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
+import { KolLinkWc } from '../../core/component-names';
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {
@@ -34,7 +35,7 @@ export class KolLinkButton implements LinkButtonProps {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<kol-link-wc
+				<KolLinkWc
 					ref={this.catchRef}
 					class={{
 						button: true,
@@ -56,7 +57,7 @@ export class KolLinkButton implements LinkButtonProps {
 					_tooltipAlign={this._tooltipAlign}
 				>
 					<slot name="expert" slot="expert"></slot>
-				</kol-link-wc>
+				</KolLinkWc>
 			</Host>
 		);
 	}

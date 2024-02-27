@@ -6,6 +6,7 @@ import { nonce } from '../../utils/dev.utils';
 import { InternalToast } from './InternalToast';
 
 import type { Toast, ToasterAPI, ToasterStates, ToastState } from '@public-ui/schema';
+import { KolButton } from '../../core/component-names';
 const TRANSITION_TIMEOUT = 300;
 
 @Component({
@@ -95,7 +96,7 @@ export class KolToastContainer implements ToasterAPI {
 		return (
 			<>
 				{this.state._toastStates.length > 1 && (
-					<kol-button
+					<KolButton
 						_label={translate('kol-toast-close-all')}
 						class="close-all"
 						_on={{
@@ -103,7 +104,7 @@ export class KolToastContainer implements ToasterAPI {
 								void this.closeAll();
 							},
 						}}
-					></kol-button>
+					></KolButton>
 				)}
 				{this.state._toastStates.map((toastState) => (
 					<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />

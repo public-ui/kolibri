@@ -4,6 +4,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { watchHeadingLevel } from '../heading/validation';
+import { KolIcon, KolHeadingWc, KolButtonWc } from '../../core/component-names';
 
 import type {
 	AlertAPI,
@@ -16,7 +17,7 @@ import type {
 	LabelPropType,
 } from '@public-ui/schema';
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return <kol-icon class="heading-icon" _label={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
+	return <KolIcon class="heading-icon" _label={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
 };
 
 const AlertIcon = (props: { label?: string; type?: AlertType }) => {
@@ -83,7 +84,7 @@ export class KolAlertWc implements AlertAPI {
 					<AlertIcon label={this.state._label} type={this.state._type} />
 					<div class="heading-content">
 						{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
-							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
+							<KolHeadingWc _label={this.state._label} _level={this.state._level}></KolHeadingWc>
 						)}
 						{this.state._variant === 'msg' && (
 							<div class="content">
@@ -92,7 +93,7 @@ export class KolAlertWc implements AlertAPI {
 						)}
 					</div>
 					{this.state._hasCloser && (
-						<kol-button-wc
+						<KolButtonWc
 							class="close"
 							_hideLabel
 							_icons={{
@@ -103,7 +104,7 @@ export class KolAlertWc implements AlertAPI {
 							_label={translate('kol-close')}
 							_on={this.on}
 							_tooltipAlign="left"
-						></kol-button-wc>
+						></KolButtonWc>
 					)}
 				</div>
 				{this.state._variant === 'card' && (

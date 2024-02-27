@@ -1,6 +1,7 @@
 import type { ButtonGroupProps } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host } from '@stencil/core';
+import { KolButtonGroupWc } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-button-group',
@@ -13,9 +14,9 @@ export class KolButtonGroup implements ButtonGroupProps {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<kol-button-group-wc>
+				<KolButtonGroupWc>
 					<slot />
-				</kol-button-group-wc>
+				</KolButtonGroupWc>
 			</Host>
 		);
 	}
