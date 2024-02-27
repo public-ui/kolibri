@@ -26,8 +26,8 @@
 		line-height: 1.5em;
 		padding: 0;
 		margin: 0;
-		width: 0;
 		/* Design-Hack - related with flex-grow */
+		width: 0;
 	}
 
 	input[type='range']::-webkit-slider-thumb {
