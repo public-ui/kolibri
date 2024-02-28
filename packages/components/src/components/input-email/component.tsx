@@ -39,9 +39,9 @@ export class KolInputEmail implements API {
 		propagateFocus(this.host, this.ref);
 	};
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
-		if (event.code === 'Enter') {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
@@ -112,7 +112,7 @@ export class KolInputEmail implements API {
 							type="email"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
 				</kol-input>
