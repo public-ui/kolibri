@@ -1,0 +1,24 @@
+@import '../style';
+@import '../host-display-block';
+
+@mixin kol-alert-styles {
+	@layer kol-component {
+		kol-alert-wc {
+			display: grid;
+		}
+
+		kol-alert-wc .heading {
+			display: flex;
+			place-items: center;
+		}
+
+		kol-alert-wc .heading > div {
+			flex-grow: 1;
+		}
+
+		.close {
+			/* Visible with forced colors */
+			outline: transparent solid 1px;
+		}
+	}
+}

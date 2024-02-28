@@ -1,3 +1,5 @@
+@import '../mixins/alert-wc.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -34,12 +36,11 @@
 		border-color: var(--color-primary);
 	}
 
-	kol-alert {
-		display: block;
-		width: 100%;
+	kol-alert-wc {
+		@include kol-alert-wc;
 	}
 
-	.required legend > span::after {
+	.required legend>span::after {
 		content: '*';
 		padding-left: 0.125em;
 	}
@@ -100,7 +101,7 @@
 		background-color: var(--color-mute-variant);
 	}
 
-	kol-alert.error {
+	kol-alert-wc.error {
 		order: 1;
 	}
 
@@ -126,10 +127,9 @@
 		outline-color: var(--color-danger) !important;
 	}
 
-	fieldset.error kol-alert.error {
+	fieldset.error kol-alert-wc.error {
 		margin-left: -0.25em;
-		color: var(--color-danger);
-		font-weight: 700;
+		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 	}
 
 	fieldset.horizontal {

@@ -1,0 +1,9 @@
+@mixin kol-alert-wc {
+	display: block;
+	width: 100%;
+}
+
+@mixin kol-input-error-with-kol-alert-wc-error($color: null) {
+	color: var($color);
+	font-weight: 700;
+}

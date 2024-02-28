@@ -1,4 +1,5 @@
 @import '../mixins/focus-outline';
+@import '../mixins/alert-wc.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -30,22 +31,22 @@
 		justify-content: flex-start;
 	}
 
-	:host kol-input > div.input {
+	:host kol-input>div.input {
 		display: inherit;
 		min-height: var(--a11y-min-size);
 		order: 2;
 	}
 
-	:host kol-input > div.input input {
+	:host kol-input>div.input input {
 		margin: 0px;
 	}
 
-	:host kol-input > label {
+	:host kol-input>label {
 		cursor: pointer;
 		order: 3;
 	}
 
-	:host kol-input > kol-alert.error {
+	:host kol-input>kol-alert-wc.error {
 		order: 1;
 		padding-top: calc(var(--spacing) / 2);
 		grid-column: span 2 / auto;
@@ -62,9 +63,8 @@
 		outline-color: var(--color-danger) !important;
 	}
 
-	:host kol-input.error kol-alert.error {
-		color: var(--color-danger);
-		font-weight: 700;
+	:host kol-input.error kol-alert-wc.error {
+		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 	}
 
 	:host input {
@@ -92,9 +92,8 @@
 		box-shadow: none;
 	}
 
-	:host kol-alert {
-		display: block;
-		width: 100%;
+	:host kol-alert-wc {
+		@include kol-alert-wc;
 	}
 
 	/* CHECKBOX */
@@ -102,7 +101,7 @@
 		margin-top: 0.125rem;
 	}
 
-	:host .required label > span::after {
+	:host .required label>span::after {
 		content: '*';
 		padding-left: 0.125em;
 	}

@@ -26,6 +26,9 @@ import type { Props } from './types';
  */
 @Component({
 	tag: 'kol-input',
+	styleUrls: {
+		default: './style.scss',
+	},
 	shadow: false,
 })
 export class KolInput implements Props {
