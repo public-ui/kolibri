@@ -2,9 +2,6 @@
 /license-reports/*.html
 /packages/**/pnpm-lock.yaml
 
-# Library  sample doesn't exist in 1.7
-/packages/samples/library/
-
 cjs/
 dist/
 esm/
