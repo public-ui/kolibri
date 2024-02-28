@@ -1577,7 +1577,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			overflow-y: hidden;
 		}
 
-		.table:has(caption:focus) {
+		.table:has(.focus-element:focus) {
 			outline-color: var(--color-ocean);
 			outline-style: solid;
 			outline-width: 3px;
