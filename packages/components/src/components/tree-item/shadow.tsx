@@ -5,7 +5,7 @@ import type { HrefPropType, LabelPropType, OpenPropType, TreeItemProps } from '@
 @Component({
 	tag: 'kol-tree-item', // keep in sync with `const TREE_ITEM_TAG_NAME`
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

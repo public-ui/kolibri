@@ -6,7 +6,7 @@ import type { LabelPropType, TreeProps } from '@public-ui/schema';
 @Component({
 	tag: 'kol-tree',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

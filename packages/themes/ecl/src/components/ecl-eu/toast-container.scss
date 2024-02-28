@@ -1,0 +1,16 @@
+@layer kol-theme-component {
+	:host {
+		top: 1rem;
+		right: 1rem;
+		width: 440px;
+		max-width: 100%;
+	}
+	.toast {
+		display: block;
+		background: #fff;
+		margin-top: 1rem;
+	}
+	.alert {
+		display: block;
+	}
+}

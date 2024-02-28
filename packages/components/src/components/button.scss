@@ -1,0 +1,25 @@
+@import 'style';
+
+@layer kol-component {
+	:host {
+		display: inline-block;
+	}
+
+	:is(a, button) {
+		display: inline-flex;
+		place-items: center;
+		text-align: center;
+		text-decoration-line: none;
+
+		&::before {
+			/* Render zero-width character as first element to set the baseline correctly. */
+			content: '\200B';
+		}
+	}
+
+	/* TODO: Why we need this? */
+	:is(a, button) > kol-span-wc {
+		margin: auto;
+		width: 100%;
+	}
+}

@@ -19,7 +19,7 @@ const modalService = new ModalService();
 @Component({
 	tag: 'kol-modal',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

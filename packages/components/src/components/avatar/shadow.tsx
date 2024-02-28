@@ -6,7 +6,7 @@ import type { AvatarProps } from '@public-ui/schema';
 @Component({
 	tag: 'kol-avatar',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
