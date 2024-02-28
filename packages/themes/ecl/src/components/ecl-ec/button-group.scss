@@ -1,5 +1,5 @@
 :host > .kol-button-group-wc {
-	display: flex;
+	display: inline-flex;
 	flex-wrap: wrap;
-	gap: var(--spacing);
+	gap: var(--spacing-2xs);
 }

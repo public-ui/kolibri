@@ -44,7 +44,7 @@ export class KolBadge implements API {
 	public render(): JSX.Element {
 		const hasSmartButton = typeof this.state._smartButton === 'object' && this.state._smartButton !== null;
 		return (
-			<Host>
+			<Host class="kol-badge">
 				<span
 					class={{
 						'smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,

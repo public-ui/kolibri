@@ -73,6 +73,7 @@ export class KolInputText implements API {
 		return (
 			<Host
 				class={{
+					'kol-input-text': true,
 					'has-value': this.state._hasValue,
 				}}
 			>

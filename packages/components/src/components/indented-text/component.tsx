@@ -17,7 +17,7 @@ export class KolIndentedText implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-indented-text-wc">
 				<div>
 					{/* TODO: Für was wird dieses div benötigt? */}
 					<slot />

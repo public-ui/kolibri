@@ -66,6 +66,7 @@ export class KolAlertWc implements API {
 		return (
 			<Host
 				class={{
+					'kol-alert-wc': true,
 					[this.state._type as string]: true,
 					[this.state._variant as string]: true,
 					hasCloser: !!this.state._hasCloser,

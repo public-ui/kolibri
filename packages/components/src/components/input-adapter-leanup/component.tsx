@@ -17,7 +17,7 @@ export class KolInputAdapterLeanup {
 	}
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-input-adapter-leanup">
 				<kol-alert _type="warning">
 					Die Komponente <code>kol-input-adapter-leanup</code> ist umgezogen. Lesen Sie hier, wie Sie sie migrieren:{' '}
 					<kol-link

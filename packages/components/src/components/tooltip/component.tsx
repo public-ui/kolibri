@@ -151,7 +151,7 @@ export class KolTooltip implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-tooltip-wc">
 				{this.state._label !== '' && (
 					<div class="tooltip-floating" ref={this.catchTooltipElement}>
 						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />

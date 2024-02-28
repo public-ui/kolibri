@@ -103,7 +103,7 @@ export class KolLinkWc implements API {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		return (
-			<Host>
+			<Host class="kol-link-wc">
 				<a
 					ref={this.catchRef}
 					{...tagAttrs}

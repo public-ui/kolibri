@@ -1,4 +1,4 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
@@ -45,39 +45,41 @@ export class KolForm implements API {
 
 	public render(): JSX.Element {
 		return (
-			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
-				{this._errorList && this._errorList.length > 0 && (
-					<kol-alert _type="error">
-						{translate('kol-error-list-message')}
-						<nav aria-label={translate('kol-error-list')}>
-							<ul>
-								{this._errorList.map((error, index) => (
-									<li key={index}>
-										<kol-link
-											_href={error.selector}
-											_label={error.message}
-											_on={{ onClick: this.handleLinkClick }}
-											ref={(el) => {
-												if (index === 0) this.errorListElement = el as HTMLElement;
-											}}
-										/>
-									</li>
-								))}
-							</ul>
-						</nav>
-					</kol-alert>
-				)}
-				{this.state._requiredText === true ? (
-					<p>
-						<kol-indented-text>{translate('kol-form-description')}</kol-indented-text>
-					</p>
-				) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
-					<p>
-						<kol-indented-text>{this.state._requiredText}</kol-indented-text>
-					</p>
-				) : null}
-				<slot />
-			</form>
+			<Host class="kol-form">
+				<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
+					{this._errorList && this._errorList.length > 0 && (
+						<kol-alert _type="error">
+							{translate('kol-error-list-message')}
+							<nav aria-label={translate('kol-error-list')}>
+								<ul>
+									{this._errorList.map((error, index) => (
+										<li key={index}>
+											<kol-link
+												_href={error.selector}
+												_label={error.message}
+												_on={{ onClick: this.handleLinkClick }}
+												ref={(el) => {
+													if (index === 0) this.errorListElement = el as HTMLElement;
+												}}
+											/>
+										</li>
+									))}
+								</ul>
+							</nav>
+						</kol-alert>
+					)}
+					{this.state._requiredText === true ? (
+						<p>
+							<kol-indented-text>{translate('kol-form-description')}</kol-indented-text>
+						</p>
+					) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
+						<p>
+							<kol-indented-text>{this.state._requiredText}</kol-indented-text>
+						</p>
+					) : null}
+					<slot />
+				</form>
+			</Host>
 		);
 	}
 

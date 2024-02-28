@@ -12,7 +12,7 @@ import { Props } from './types';
 export class KolAvatar implements Props {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-avatar">
 				<kol-avatar-wc _src={this._src} _label={this._label}></kol-avatar-wc>
 			</Host>
 		);

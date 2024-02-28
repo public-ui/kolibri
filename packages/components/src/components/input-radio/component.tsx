@@ -42,7 +42,7 @@ export class KolInputRadio implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-radio">
 				<fieldset
 					class={{
 						disabled: this.state._disabled === true,

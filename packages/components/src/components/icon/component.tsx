@@ -19,7 +19,7 @@ export class KolIcon implements API {
 	public render(): JSX.Element {
 		const ariaShow = typeof this.state._label === 'string' && this.state._label.length > 0;
 		return (
-			<Host exportparts="icon">
+			<Host exportparts="icon" class="kol-icon">
 				<i
 					aria-hidden={ariaShow ? undefined : 'true'}
 					/**
@@ -29,7 +29,7 @@ export class KolIcon implements API {
 					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
 					 */
 					aria-label={ariaShow ? this.state._label : undefined}
-					class={this.state._icons}
+					class={`${this.state._icons}`}
 					part="icon"
 					role="img"
 				></i>

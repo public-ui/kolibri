@@ -11,7 +11,7 @@
 	border: none;
 }
 
-:host .msg .heading kol-icon {
+:host .msg .heading .kol-icon {
 	font-size: 1.5em;
 	margin: var(--spacing-2xs);
 }
@@ -35,7 +35,7 @@
 	margin-left: 2.5rem;
 }
 
-:host .card .heading kol-icon {
+:host .card .heading .kol-icon {
 	font-size: 2rem;
 }
 
@@ -43,7 +43,7 @@
 	border-color: var(--color-grey);
 }
 
-:host .default .heading kol-icon {
+:host .default .heading .kol-icon {
 	color: var(--color-grey);
 }
 
@@ -51,7 +51,7 @@
 	border-color: var(--color-red);
 }
 
-:host .error .heading kol-icon {
+:host .error .heading .kol-icon {
 	color: var(--color-red);
 }
 
@@ -59,7 +59,7 @@
 	border-color: var(--color-blue);
 }
 
-:host .info .heading kol-icon {
+:host .info .heading .kol-icon {
 	color: var(--color-blue);
 }
 
@@ -67,7 +67,7 @@
 	border-color: var(--color-green);
 }
 
-:host .success .heading kol-icon {
+:host .success .heading .kol-icon {
 	color: var(--color-green);
 }
 
@@ -75,6 +75,6 @@
 	border-color: var(--color-orange);
 }
 
-:host .warning .heading kol-icon {
+:host .warning .heading .kol-icon {
 	color: var(--color-orange);
 }

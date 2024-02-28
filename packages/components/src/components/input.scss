@@ -51,7 +51,7 @@ select[multiple] option {
 	padding: calc((var(--a11y-min-size) - 1rem) / 2) 0.5em;
 }
 
-kol-input.disabled :is(button, input, option, select, textarea, .input-label) {
+.kol-input.disabled :is(button, input, option, select, textarea, .input-label) {
 	cursor: not-allowed;
 	opacity: 0.5;
 }

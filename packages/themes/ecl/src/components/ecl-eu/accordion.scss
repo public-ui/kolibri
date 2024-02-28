@@ -52,21 +52,21 @@ div[part*='open'] .headline button {
 	width: 32px;
 }
 
-.headline button kol-icon {
+.headline button .kol-icon {
 	margin-right: 0.75rem;
 }
 
-.headline button kol-icon::part(icon)::before {
+.headline button .kol-icon::part(icon)::before {
 	color: #0e47cb;
 	font-weight: 900;
 	font-family: 'Font Awesome 6 Free';
 }
 
-.open .headline button kol-icon::part(icon)::before {
+.open .headline button .kol-icon::part(icon)::before {
 	content: '\f077';
 }
 
-:not(.open) .headline button kol-icon::part(icon)::before {
+:not(.open) .headline button .kol-icon::part(icon)::before {
 	content: '\f078';
 }
 
@@ -84,6 +84,6 @@ div[part='content'] {
 	padding: 1.5rem;
 }
 
-kol-span-wc > span {
+.kol-span-wc > span {
 	align-items: baseline;
 }

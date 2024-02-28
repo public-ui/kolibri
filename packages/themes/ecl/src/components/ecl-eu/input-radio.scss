@@ -4,7 +4,7 @@ fieldset {
 	flex-wrap: wrap;
 }
 
-fieldset kol-alert {
+fieldset .kol-alert {
 	order: 1;
 }
 
@@ -12,11 +12,11 @@ fieldset .hint {
 	order: 2;
 }
 
-fieldset kol-alert {
+fieldset .kol-alert {
 	order: 3;
 }
 
-fieldset kol-input {
+fieldset .kol-input {
 	order: 4;
 }
 
@@ -77,7 +77,7 @@ legend {
 	border-color: var(--color-red-1xx);
 }
 
-kol-alert {
+.kol-alert {
 	color: var(--color-red);
 	font-size: 0.875em;
 	margin-left: calc(-1 * var(--spacing-xs));

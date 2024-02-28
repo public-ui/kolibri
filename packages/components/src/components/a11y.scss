@@ -45,7 +45,7 @@
 /* textarea, */
 [role='button'],
 button:not([role='link']),
-kol-input .input {
+.kol-input .input {
 	min-height: var(--a11y-min-size);
 	min-width: var(--a11y-min-size);
 }

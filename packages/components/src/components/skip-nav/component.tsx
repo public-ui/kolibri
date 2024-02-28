@@ -1,4 +1,4 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
@@ -17,17 +17,19 @@ import { API, States } from './types';
 export class KolSkipNav implements API {
 	public render(): JSX.Element {
 		return (
-			<nav aria-label={this.state._label}>
-				<ul>
-					{this.state._links.map((link: LinkProps, index: number) => {
-						return (
-							<li key={index}>
-								<kol-link-wc {...link}></kol-link-wc>
-							</li>
-						);
-					})}
-				</ul>
-			</nav>
+			<Host class="kol-skip-nav">
+				<nav aria-label={this.state._label}>
+					<ul>
+						{this.state._links.map((link: LinkProps, index: number) => {
+							return (
+								<li key={index}>
+									<kol-link-wc {...link}></kol-link-wc>
+								</li>
+							);
+						})}
+					</ul>
+				</nav>
+			</Host>
 		);
 	}
 

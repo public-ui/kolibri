@@ -87,7 +87,7 @@ export class KolTabs implements API {
 
 	private renderButtonGroup() {
 		return (
-			<kol-button-group-wc role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
+			<kol-button-group-wc role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown} class="kol-tabs">
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<kol-button-wc
 						_disabled={button._disabled}
@@ -133,6 +133,7 @@ export class KolTabs implements API {
 						this.tabPanelsElement = el as HTMLElement;
 					}}
 					class={{
+						'kol-tabs-wc': true,
 						[`tabs-align-${this.state._align}`]: true,
 					}}
 				>

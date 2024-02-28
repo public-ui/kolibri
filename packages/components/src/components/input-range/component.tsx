@@ -82,7 +82,7 @@ export class KolInputRange implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-range">
 				<kol-input
 					class={{
 						range: true,

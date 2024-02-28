@@ -42,7 +42,7 @@ export class KolInputColor implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-color">
 				<kol-input
 					class={{
 						color: true,

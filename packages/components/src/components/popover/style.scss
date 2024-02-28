@@ -1,11 +1,11 @@
 @import '../style';
 
-kol-popover {
+.kol-popover {
 	height: 0;
 	position: absolute;
 }
 
-kol-popover .popover {
+.kol-popover .popover {
 	background-color: #fff;
 	min-height: max-content;
 	min-width: max-content;
@@ -13,15 +13,15 @@ kol-popover .popover {
 	position: absolute;
 }
 
-kol-popover .show {
+.kol-popover .show {
 	animation: 0.3s ease-in forwards fadeInOpacity;
 }
 
-kol-popover .disappear {
+.kol-popover .disappear {
 	animation: 0.3s ease-in backwards fadeInOpacity;
 }
 
-kol-popover .arrow {
+.kol-popover .arrow {
 	background-color: inherit;
 	height: var(--font-size);
 	position: absolute;

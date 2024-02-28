@@ -1,37 +1,37 @@
 label {
 	cursor: pointer;
 }
-kol-input {
+.kol-input {
 	align-items: center;
 	display: grid;
 	justify-items: left;
 }
-kol-input.default,
-kol-input.switch {
+.kol-input.default,
+.kol-input.switch {
 	grid-template-columns: auto 1fr;
 }
-kol-input .input {
+.kol-input .input {
 	align-items: center;
 	display: grid;
 	order: 1;
 }
-kol-input .input div {
+.kol-input .input div {
 	display: inline-flex;
 }
-kol-input .input input {
+.kol-input .input input {
 	margin: 0;
 }
-kol-input label {
+.kol-input label {
 	order: 2;
 }
-kol-input .hint,
-kol-input.error > kol-alert {
+.kol-input .hint,
+.kol-input.error > .kol-alert {
 	grid-column: span 2;
 }
-kol-input kol-alert.error {
+.kol-input .kol-alert.error {
 	order: 3;
 }
-kol-input .hint {
+.kol-input .hint {
 	order: 4;
 }
 
@@ -53,6 +53,6 @@ input[type='checkbox']:before {
 	content: '';
 	cursor: pointer;
 }
-kol-input.required .tooltip-content .span-label::after {
+.kol-input.required .tooltip-content .span-label::after {
 	content: '*';
 }

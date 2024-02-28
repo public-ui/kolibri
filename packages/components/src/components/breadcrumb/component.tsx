@@ -39,7 +39,7 @@ export class KolBreadcrumb implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-breadcrumb">
 				<nav aria-label={this.state._label ?? ''}>
 					<ul>
 						{this.state._links.length === 0 && (

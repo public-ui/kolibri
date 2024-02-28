@@ -173,7 +173,7 @@ export class KolToast implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-toast">
 				{this.state._show && (
 					<div>
 						<kol-alert
@@ -185,6 +185,7 @@ export class KolToast implements API {
 							_variant="card"
 							// tabindex="0"
 							_on={this.on}
+							class="kol-alert"
 						>
 							<slot />
 						</kol-alert>

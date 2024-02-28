@@ -38,13 +38,13 @@
 	height: 100%;
 }
 
-:host > div > nav kol-link-wc {
+:host > div > nav .kol-link-wc {
 	width: 100%;
 	/*height: 100%;font-weight: 600;*/
 	display: block;
 }
 
-:host > div > nav kol-link-wc a {
+:host > div > nav .kol-link-wc a {
 	border-radius: var(--border-radius);
 	background-color: var(--color-petrol);
 	border: 1px solid transparent;
@@ -60,21 +60,21 @@
 	text-decoration: inherit;
 }
 
-:host > div > nav kol-link-wc[exportparts*='selected'] a {
+:host > div > nav .kol-link-wc[exportparts*='selected'] a {
 	background-color: var(--color-achat);
 	font-weight: 700;
 }
 
-:host > div > nav kol-link-wc a kol-icon.mr-2 {
+:host > div > nav .kol-link-wc a .kol-icon.mr-2 {
 	margin-right: calc(2 * 2 * var(--spacing));
 }
 
-:host > div > nav kol-link-wc a kol-icon.ml-2 {
+:host > div > nav .kol-link-wc a .kol-icon.ml-2 {
 	margin-left: calc(2 * 2 * var(--spacing));
 }
 
-:host > div > nav kol-link-wc a:focus,
-:host > div > nav kol-link-wc a:hover {
+:host > div > nav .kol-link-wc a:focus,
+:host > div > nav .kol-link-wc a:hover {
 	border: 1px solid white;
 	background-color: var(--color-fluorit);
 	color: var(--color-anthrazit);
@@ -87,7 +87,7 @@
 	text-align: center;
 }
 
-:host > div > nav kol-link-wc a.text-center {
+:host > div > nav .kol-link-wc a.text-center {
 	display: grid;
 	align-items: center;
 	justify-items: center;
@@ -102,6 +102,6 @@ li > div > div.absolute {
 	position: absolute;
 }
 
-kol-span-wc {
+.kol-span-wc {
 	justify-items: baseline;
 }

@@ -29,7 +29,7 @@ export class KolLinkButton implements Props {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-link-button">
 				<kol-link-wc
 					ref={this.catchRef}
 					class={{

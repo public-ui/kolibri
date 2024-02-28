@@ -16,7 +16,7 @@ export const InternalToast = ({ toastState, onClose, key }: Props) => {
 	return (
 		<div class={`toast ${toastState.status}`} key={key}>
 			<kol-alert
-				class="alert"
+				class="kol-alert alert"
 				_alert={true}
 				_label={toastState.toast.label}
 				_level={0}

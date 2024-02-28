@@ -1,4 +1,4 @@
-kol-input {
+.kol-input {
 	color: var(--color-grey);
 	gap: var(--spacing-xs);
 }
@@ -26,7 +26,7 @@ label {
 	order: 2;
 }
 
-kol-alert {
+.kol-alert {
 	color: var(--color-red);
 	font-size: 0.875em;
 	margin-left: calc(-1 * var(--spacing-2xs));

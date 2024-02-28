@@ -52,6 +52,7 @@ export class KolModal implements API {
 	public render(): JSX.Element {
 		return (
 			<Host
+				class="kol-modal"
 				ref={(el) => {
 					this.hostElement = el as HTMLElement;
 				}}

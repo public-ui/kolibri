@@ -12,7 +12,7 @@ import { Props } from './types';
 export class KolButtonGroup implements Props {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-button-group">
 				<kol-button-group-wc>
 					<slot />
 				</kol-button-group-wc>

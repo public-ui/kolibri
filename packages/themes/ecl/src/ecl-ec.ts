@@ -5,6 +5,7 @@ import alertCss from './components/ecl-ec/alert.scss';
 import badgeCss from './components/ecl-ec/badge.scss';
 import breadcrumbCss from './components/ecl-ec/breadcrumb.scss';
 import buttonCss from './components/ecl-ec/button.scss';
+import buttonGroupCss from './components/ecl-ec/button-group.scss';
 import buttonLinkCss from './components/ecl-ec/button-link.scss';
 import cardCss from './components/ecl-ec/card.scss';
 import detailsCss from './components/ecl-ec/details.scss';
@@ -30,6 +31,7 @@ import selectCss from './components/ecl-ec/select.scss';
 import skipNavCss from './components/ecl-ec/skip-nav.scss';
 import splitButtonCss from './components/ecl-ec/split-button.scss';
 import tableCss from './components/ecl-ec/table.scss';
+import tabsCss from './components/ecl-ec/tabs.scss';
 import textareaCss from './components/ecl-ec/textarea.scss';
 import toastContainerCss from './components/ecl-ec/toast-container.scss';
 import spinCss from './components/ecl-ec/spin.scss';
@@ -45,7 +47,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-BADGE': badgeCss,
 	'KOL-ALERT': alertCss,
-	'KOL-TABS': tableCss,
+	'KOL-TABS': tabsCss,
 	'KOL-LINK': linkCss,
 	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
@@ -56,7 +58,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-CARD': cardCss,
-	'KOL-BUTTON-GROUP': buttonCss,
+	'KOL-BUTTON-GROUP': buttonGroupCss,
 	'KOL-INPUT-RADIO': inputRadioCss,
 	'KOL-INPUT-RANGE': inputRangeCss,
 	'KOL-INPUT-TEXT': inputTextCss,
