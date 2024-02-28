@@ -33,7 +33,7 @@ import type {
 @Component({
 	tag: 'kol-input-date',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -287,7 +287,7 @@ export class KolInputDate implements InputDateAPI {
 	};
 
 	public constructor() {
-		this.controller = new InputDateController(this, 'input-date', this.host);
+		this.controller = new InputDateController(this, 'date', this.host);
 	}
 
 	@Watch('_accessKey')

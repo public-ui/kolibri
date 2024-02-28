@@ -1,0 +1,16 @@
+@import '../style';
+
+@layer kol-component {
+	:host > div.card {
+		height: 100%;
+		position: relative;
+		/* Visible with forced colors  */
+		outline: transparent solid 1px;
+	}
+
+	.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+}

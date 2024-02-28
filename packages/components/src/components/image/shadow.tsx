@@ -6,7 +6,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-image',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

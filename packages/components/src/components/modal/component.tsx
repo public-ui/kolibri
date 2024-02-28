@@ -19,7 +19,7 @@ import type { ModalService } from './service';
 @Component({
 	tag: 'kol-modal',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

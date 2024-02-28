@@ -16,32 +16,31 @@
 		"e2e": "nightwatch",
 		"format": "prettier --check {src,tests}/**",
 		"lint": "eslint \"{src,tests}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
-		":prepare": "rimraf .husky && husky install && husky add .husky/commit-msg \"npx commitlint --edit $1\" && husky add .husky/pre-commit \"npm run lint\" && husky add .husky/pre-commit \"npm run format\" && husky add .husky/pre-commit \"npm run unused\"",
+		"prepare": "npm-run-all prepare:*",
+		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
+		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map --no-hot",
 		"start": "npm run serve -- --open",
 		"test": "cross-env NODE_ENV=test mocha --exit",
-		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
-		"unused": "ts-prune -e src"
+		"unused": "knip"
 	},
 	"dependencies": {
-		"@public-ui/components": "2.0.6",
-		"@public-ui/themes": "2.0.6",
-		"@public-ui/vue": "2.0.6",
-		"vue": "3.3.4"
+		"@public-ui/components": "2.0.8",
+		"@public-ui/themes": "2.0.8",
+		"@public-ui/vue": "2.0.8",
+		"vue": "3.4.20"
 	},
 	"devDependencies": {
-		"@leanup/stack": "1.3.41",
-		"@leanup/stack-webpack": "1.3.41",
-		"@leanup/stack-vue3": "1.3.41",
-		"@unocss/preset-mini": "0.45.29",
-		"@unocss/webpack": "0.45.29",
-		"chromedriver": "121.0.0",
+		"@leanup/stack": "1.3.49",
+		"@leanup/stack-webpack": "1.3.49",
+		"@leanup/stack-vue3": "1.3.49",
+		"@unocss/preset-mini": "0.58.5",
+		"@unocss/webpack": "0.58.5",
+		"chromedriver": "122.0.3",
 		"cpy-cli": "5.0.0",
-		"npm-check-updates": "16.6.2",
+		"npm-check-updates": "16.14.15",
 		"npm-run-all": "4.1.5",
-		"typescript": "4.9.4"
+		"typescript": "5.3.3"
 	},
 	"files": [
 		"dist"

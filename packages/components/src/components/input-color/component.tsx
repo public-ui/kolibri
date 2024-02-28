@@ -29,7 +29,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-input-color',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -233,7 +233,7 @@ export class KolInputColor implements InputColorAPI {
 	};
 
 	public constructor() {
-		this.controller = new InputColorController(this, 'input-color', this.host);
+		this.controller = new InputColorController(this, 'color', this.host);
 	}
 
 	@Watch('_accessKey')

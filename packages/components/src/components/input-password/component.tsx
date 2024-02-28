@@ -29,7 +29,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-input-password',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -285,7 +285,7 @@ export class KolInputPassword implements InputPasswordAPI {
 	};
 
 	public constructor() {
-		this.controller = new InputPasswordController(this, 'input-password', this.host);
+		this.controller = new InputPasswordController(this, 'password', this.host);
 	}
 
 	@Watch('_accessKey')

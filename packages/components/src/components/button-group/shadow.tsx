@@ -5,7 +5,7 @@ import { Component, h, Host } from '@stencil/core';
 @Component({
 	tag: 'kol-button-group',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

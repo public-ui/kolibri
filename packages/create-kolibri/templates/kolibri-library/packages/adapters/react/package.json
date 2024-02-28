@@ -9,15 +9,11 @@
 	"description": "Das React-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
 	"scripts": {
 		"build": "unbuild",
-		"prepack": "unbuild",
-		":install": "pnpm i && pnpm update",
-		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
-		":republish": "npm run :unpublish && npm run :publish",
-		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
+		"prepack": "unbuild"
 	},
 	"devDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
-		"@public-ui/components": "2.0.6",
+		"@public-ui/components": "2.0.8",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.8",
@@ -31,7 +27,7 @@
 	},
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
-		"@public-ui/components": "2.0.6",
+		"@public-ui/components": "2.0.8",
 		"react": ">=16.14.0",
 		"react-dom": ">=16.14.0"
 	},
