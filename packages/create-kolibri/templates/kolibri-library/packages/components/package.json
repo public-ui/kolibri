@@ -25,19 +25,19 @@
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
 		"lint": "tsc --noemit && eslint src",
-		"unused": "ts-prune src -e",
+		"unused": "knip",
 		"start": "cross-env NODE_ENV=development stencil build --dev --serve --watch --no-open",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"prepack": "npm run build",
-		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets/ --dot",
-		"postinstall:components-lib": "cpy \"node_modules/@public-ui/components/dist/kolibri/**/*\" src/assets/kolibri/ --dot"
+		"prepare": "npm-run-all prepare:*",
+		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets/ --dot",
+		"prepare:components-lib": "cpy \"node_modules/@public-ui/components/dist/kolibri/**/*\" src/assets/kolibri/ --dot"
 	},
 	"dependencies": {
 		"adopted-style-sheets": "1.1.2",
-		"@public-ui/components": "2.0.6",
-		"@public-ui/schema": "2.0.6"
+		"@public-ui/components": "2.0.8",
+		"@public-ui/schema": "2.0.8"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.5.0",
@@ -68,6 +68,7 @@
 		"eslint-plugin-react": "7.33.2",
 		"jest": "26.6.3",
 		"jest-cli": "26.6.3",
+		"knip": "5.0.2",
 		"lighthouse": "11.0.0",
 		"mathjs": "11.5.1",
 		"npm-run-all": "4.1.5",

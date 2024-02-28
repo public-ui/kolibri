@@ -9,7 +9,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-version',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

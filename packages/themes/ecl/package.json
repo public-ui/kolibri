@@ -1,26 +1,30 @@
 {
 	"name": "@public-ui-/theme-ecl",
-	"version": "2.0.6",
+	"version": "2.0.8",
 	"private": true,
 	"scripts": {
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
 		"xtest": "npm-run-all test:*",
-		"test:ecl-ec": "THEME_MODULE=src/index THEME_EXPORT=ECL_EC kolibri-visual-test",
-		"test:ecl-eu": "THEME_MODULE=src/index THEME_EXPORT=ECL_EU kolibri-visual-test",
+		"test:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test",
+		"test:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test",
 		"xtest-update": "npm-run-all test-update:*",
-		"test-update:ecl-ec": "THEME_MODULE=src/index THEME_EXPORT=ECL_EC kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
-		"test-update:ecl-eu": "THEME_MODULE=src/index THEME_EXPORT=ECL_EU kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
+		"test-update:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"test-update:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"pretest:ecl-ec": "pnpm build",
+		"pretest-update:ecl-ec": "pnpm build",
+		"pretest:ecl-eu": "pnpm build",
+		"pretest-update:ecl-eu": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.6",
-		"@public-ui/visual-tests": "2.0.6",
+		"@public-ui/schema": "2.0.8",
+		"@public-ui/visual-tests": "2.0.8",
 		"@types/node": "ts5.3",
 		"npm-run-all": "4.1.5",
 		"typescript": "5.3.3"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.6"
+		"@public-ui/components": "2.0.8"
 	}
 }

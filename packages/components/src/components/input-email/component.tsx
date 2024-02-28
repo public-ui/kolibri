@@ -31,7 +31,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-input-email',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -301,7 +301,7 @@ export class KolInputEmail implements InputEmailAPI {
 	};
 
 	public constructor() {
-		this.controller = new InputEmailController(this, 'input-email', this.host);
+		this.controller = new InputEmailController(this, 'email', this.host);
 	}
 
 	@Watch('_accessKey')

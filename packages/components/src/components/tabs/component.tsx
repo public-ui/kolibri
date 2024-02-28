@@ -32,7 +32,7 @@ import type { Generic } from 'adopted-style-sheets';
 @Component({
 	tag: 'kol-tabs',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })

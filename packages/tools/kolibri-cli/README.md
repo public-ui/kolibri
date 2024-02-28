@@ -238,7 +238,7 @@ You can configure the migration with the `.kolibri.config.json` file in your pro
 			"kol-link-group-remove-property-_level": true,
 			"remove--cpy-cli,rimraf": true,
 			"add--cpy-cli,rimraf": true,
-			"package.json-reconfigure-scripts.postinstall": true,
+			"package.json-reconfigure-scripts.prepare": true,
 			"remove-public/assets/codicons": true,
 			"exec-npx cpy \"node_modules/@public-ui/components/assets/**/*\" \"undefined/assets\" --dot": true,
 			"kol-button-link-remove-property-_access-key": true,

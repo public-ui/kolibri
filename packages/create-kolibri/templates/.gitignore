@@ -14,6 +14,7 @@
 /static-page/robots.txt
 .editorconfig
 .eslintignore
+.knip.json
 .mocharc.js
 .npmrc
 .prettierignore

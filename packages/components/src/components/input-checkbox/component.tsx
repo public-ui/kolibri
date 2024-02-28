@@ -32,7 +32,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-input-checkbox',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -259,7 +259,7 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 	};
 
 	public constructor() {
-		this.controller = new InputCheckboxController(this, 'input-checkbox', this.host);
+		this.controller = new InputCheckboxController(this, 'checkbox', this.host);
 	}
 
 	@Watch('_accessKey')

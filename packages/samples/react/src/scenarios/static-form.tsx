@@ -41,12 +41,13 @@ export const StaticForm: FC = () => {
 					</li>
 				</ol>
 			</SampleDescription>
-			<form className="grid gap-4" method="get">
+			<form className="grid gap-4" method="get" noValidate>
 				<KolInputCheckbox _name="checkbox" _label="Checkbox" />
 				<KolInputColor _name="color" _label="Color" />
 				<KolInputDate _name="date" _label="Date" />
 				<KolInputEmail _name="email" _label="Email" />
 				<KolInputFile _name="file" _label="File" />
+				<KolInputFile _name="file" _label="Files (multiple)" _multiple />
 				<KolInputNumber _name="number" _label="Number" />
 				<KolInputPassword _name="password" _label="Password" />
 				<KolInputRadio
@@ -67,7 +68,17 @@ export const StaticForm: FC = () => {
 						{ label: 'Option B', value: 'B' },
 					]}
 				/>
-				<KolTextarea _name="textarea" _label="Textarea" />
+				<KolSelect
+					_name="select"
+					_label="Select (multiple)"
+					_multiple
+					_options={[
+						{ label: 'Option A', value: 'A' },
+						{ label: 'Option B', value: 'B' },
+					]}
+					_rows={2}
+				/>
+				<KolTextarea _name="textarea" _label="Textarea" _rows={5} />
 				<div className="flex flex-wrap gap-4">
 					<KolButton _label="Submit" _type="submit" _variant="primary" />
 					<KolButton _label="Reset" _type="reset" />

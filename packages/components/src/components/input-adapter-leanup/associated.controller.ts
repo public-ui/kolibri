@@ -10,28 +10,57 @@ type OptionalProps = {
 type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
+type HTMLInputFileElement = HTMLInputElement & {
+	files: FileList;
+};
+
+const isAssociatedTagName = (name?: string): boolean =>
+	name === 'KOL-BUTTON' ||
+	name === 'KOL-INPUT-CHECKBOX' ||
+	name === 'KOL-INPUT-COLOR' ||
+	name === 'KOL-INPUT-DATE' ||
+	name === 'KOL-INPUT-EMAIL' ||
+	name === 'KOL-INPUT-FILE' ||
+	name === 'KOL-INPUT-NUMBER' ||
+	name === 'KOL-INPUT-PASSWORD' ||
+	name === 'KOL-INPUT-RADIO' ||
+	name === 'KOL-INPUT-RANGE' ||
+	name === 'KOL-INPUT-TEXT' ||
+	name === 'KOL-SELECT' ||
+	name === 'KOL-TEXTAREA';
+
 export class AssociatedInputController implements Watches {
 	private readonly experimentalMode = getExperimentalMode();
 
 	protected readonly component: Generic.Element.Component & Props;
-	protected readonly name: string;
+	protected readonly type: string;
 	protected readonly host?: HTMLElement;
 
 	public readonly formAssociated?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 	public syncToOwnInput?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
-	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & Props, type: string, host?: HTMLElement) {
 		this.component = component;
 		this.host = this.findHostWithShadowRoot(host);
-		this.name = name;
+		this.type = type;
 
-		if (this.experimentalMode) {
+		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName)) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
 				this.host?.removeChild(el);
 			});
-			switch (this.name) {
+			switch (this.type) {
 				case 'button':
-					this.formAssociated = document.createElement('button');
+				case 'color':
+				case 'date':
+				case 'email':
+				case 'file':
+				case 'number':
+				case 'password':
+				case 'radio':
+				case 'range':
+				case 'text':
+					this.formAssociated = document.createElement('input');
+					this.formAssociated.setAttribute('type', this.type);
 					break;
 				case 'select':
 					this.formAssociated = document.createElement('select');
@@ -40,10 +69,10 @@ export class AssociatedInputController implements Watches {
 				case 'textarea':
 					this.formAssociated = document.createElement('textarea');
 					break;
+				case 'checkbox': // Checkbox use default case
 				default:
 					this.formAssociated = document.createElement('input');
 					this.formAssociated.setAttribute('type', 'hidden');
-					break;
 			}
 			this.formAssociated.setAttribute('aria-hidden', 'true');
 			this.formAssociated.setAttribute('data-form-associated', '');
@@ -107,7 +136,7 @@ export class AssociatedInputController implements Watches {
 	public readonly setFormAssociatedValue = (rawValue: StencilUnknown) => {
 		const name = this.formAssociated?.getAttribute('name');
 		if (name === null || name === '') {
-			devHint(` The form field (${this.name}) must have a name attribute to be form-associated. Please define the _name attribute.`);
+			devHint(` The form field (${this.type}) must have a name attribute to be form-associated. Please define the _name attribute.`);
 		}
 		const strValue = this.tryToStringifyValue(rawValue);
 		this.syncValue(rawValue, strValue, this.formAssociated);
@@ -120,7 +149,10 @@ export class AssociatedInputController implements Watches {
 		associatedElement?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
 	) {
 		if (associatedElement) {
-			switch (this.name) {
+			switch (this.type) {
+				case 'file':
+					(associatedElement as HTMLInputFileElement).files = rawValue as FileList;
+					break;
 				case 'select':
 					(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
 						(associatedElement as HTMLSelectElement).removeChild(el);
