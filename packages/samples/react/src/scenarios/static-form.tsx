@@ -18,7 +18,7 @@ import React from 'react';
 import { SampleDescription } from '../components/SampleDescription';
 
 export const StaticForm: FC = () => {
-	const { searchParams } = new URL(location);
+	const { searchParams } = new URL(location.href);
 
 	return (
 		<>
