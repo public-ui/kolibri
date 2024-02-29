@@ -23,7 +23,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputColorController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolInput } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -56,7 +56,7 @@ export class KolInputColor implements InputColorAPI {
 
 		return (
 			<Host>
-				<KolInput
+				<KolInputTag
 					class={{
 						color: true,
 						'hide-label': !!this.state._hideLabel,
@@ -112,7 +112,7 @@ export class KolInputColor implements InputColorAPI {
 							{...this.controller.onFacade}
 						/>
 					</div>
-				</KolInput>
+				</KolInputTag>
 			</Host>
 		);
 	}

@@ -6,7 +6,7 @@ import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
-import { KolHeadingWc, KolButtonWc } from '../../core/component-names';
+import { KolHeadingWcTag, KolButtonWcTag } from '../../core/component-names';
 
 import type { AccordionAPI, AccordionStates, DisabledPropType, HeadingLevel, KoliBriAccordionCallbacks, LabelPropType, OpenPropType } from '@public-ui/schema';
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
@@ -45,8 +45,8 @@ export class KolAccordion implements AccordionAPI {
 						open: this.state._open === true,
 					}}
 				>
-					<KolHeadingWc _label="" _level={this.state._level} class="accordion-heading">
-						<KolButtonWc
+					<KolHeadingWcTag _label="" _level={this.state._level} class="accordion-heading">
+						<KolButtonWcTag
 							class="accordion-button"
 							ref={this.catchRef}
 							slot="expert"
@@ -56,8 +56,8 @@ export class KolAccordion implements AccordionAPI {
 							_icons={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
 							_label={this.state._label}
 							_on={{ onClick: this.onClick }}
-						></KolButtonWc>
-					</KolHeadingWc>
+						></KolButtonWcTag>
+					</KolHeadingWcTag>
 					<div class="wrapper">
 						<div class="animation-wrapper">
 							<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>

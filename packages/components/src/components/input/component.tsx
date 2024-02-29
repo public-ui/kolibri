@@ -20,7 +20,7 @@ import type {
 } from '@public-ui/schema';
 import { FormFieldMsg } from '../@shared/form-field-msg';
 import type { Props } from './types';
-import { KolButtonWc, KolIcon, KolTooltipWc } from '../../core/component-names';
+import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 
 /**
  * @internal
@@ -83,11 +83,11 @@ export class KolInput implements Props {
 					}}
 				>
 					{this._icons?.left && (
-						<KolIcon _label="" _icons={(this._icons?.left as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.left)}></KolIcon>
+						<KolIconTag _label="" _icons={(this._icons?.left as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.left)}></KolIconTag>
 					)}
 					<div ref={this.catchInputSlot} id={this.slotName} class="input-slot"></div>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
-						<KolButtonWc
+						<KolButtonWcTag
 							_customClass={this._smartButton._customClass}
 							_disabled={this._smartButton._disabled}
 							_icons={this._smartButton._icons}
@@ -97,14 +97,14 @@ export class KolInput implements Props {
 							_on={this._smartButton._on}
 							_tooltipAlign={this._smartButton._tooltipAlign}
 							_variant={this._smartButton._variant}
-						></KolButtonWc>
+						></KolButtonWcTag>
 					)}
 					{this._icons?.right && (
-						<KolIcon _label="" _icons={(this._icons?.right as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.right)}></KolIcon>
+						<KolIconTag _label="" _icons={(this._icons?.right as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.right)}></KolIconTag>
 					)}
 				</div>
 				{useTooltopInsteadOfLabel && (
-					<KolTooltipWc
+					<KolTooltipWcTag
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -115,7 +115,7 @@ export class KolInput implements Props {
 						_align={this._tooltipAlign}
 						_id={this._hideLabel ? `${this._id}-label` : undefined}
 						_label={this._label}
-					></KolTooltipWc>
+					></KolTooltipWcTag>
 				)}
 				{hasError && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _error={this._error} _id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (

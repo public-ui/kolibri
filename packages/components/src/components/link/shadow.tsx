@@ -16,7 +16,7 @@ import { propagateFocus } from '@public-ui/schema';
 import { Component, Element, h, Host, Prop } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
-import { KolLinkWc } from '../../core/component-names';
+import { KolLinkWcTag } from '../../core/component-names';
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
@@ -34,7 +34,7 @@ export class KolLink implements LinkProps {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<KolLinkWc
+				<KolLinkWcTag
 					ref={this.catchRef}
 					_accessKey={this._accessKey}
 					_ariaCurrentValue={this._ariaCurrentValue}
@@ -55,7 +55,7 @@ export class KolLink implements LinkProps {
 						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
 					*/}
 					<slot name="expert" slot="expert"></slot>
-				</KolLinkWc>
+				</KolLinkWcTag>
 			</Host>
 		);
 	}

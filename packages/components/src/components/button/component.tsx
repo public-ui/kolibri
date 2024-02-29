@@ -45,7 +45,7 @@ import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
-import { KolSpanWc, KolTooltipWc } from '../../core/component-names';
+import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 
 /**
  * @internal
@@ -119,7 +119,7 @@ export class KolButtonWc implements ButtonAPI {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<KolSpanWc
+					<KolSpanWcTag
 						class="button-inner"
 						_accessKey={this.state._accessKey}
 						_icons={this.state._icons}
@@ -127,9 +127,9 @@ export class KolButtonWc implements ButtonAPI {
 						_label={hasExpertSlot ? '' : this.state._label}
 					>
 						<slot name="expert" slot="expert"></slot>
-					</KolSpanWc>
+					</KolSpanWcTag>
 				</button>
-				<KolTooltipWc
+				<KolTooltipWcTag
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -139,7 +139,7 @@ export class KolButtonWc implements ButtonAPI {
 					_accessKey={this._accessKey}
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
-				></KolTooltipWc>
+				></KolTooltipWcTag>
 			</Host>
 		);
 	}

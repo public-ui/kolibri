@@ -27,7 +27,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '@public-ui/schema';
-import { KolInput } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -71,7 +71,7 @@ export class KolInputDate implements InputDateAPI {
 
 		return (
 			<Host class={{ 'has-value': this.state._hasValue }}>
-				<KolInput
+				<KolInputTag
 					class={{
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
@@ -132,7 +132,7 @@ export class KolInputDate implements InputDateAPI {
 							onKeyUp={this.onKeyUp}
 						/>
 					</div>
-				</KolInput>
+				</KolInputTag>
 			</Host>
 		);
 	}

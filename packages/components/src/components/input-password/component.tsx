@@ -23,7 +23,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputPasswordController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolInput } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -71,7 +71,7 @@ export class KolInputPassword implements InputPasswordAPI {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<KolInput
+				<KolInputTag
 					class={{
 						'hide-label': !!this.state._hideLabel,
 						password: true,
@@ -135,7 +135,7 @@ export class KolInputPassword implements InputPasswordAPI {
 							onKeyUp={this.onKeyUp}
 						/>
 					</div>
-				</KolInput>
+				</KolInputTag>
 			</Host>
 		);
 	}

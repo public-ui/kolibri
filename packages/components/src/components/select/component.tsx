@@ -27,7 +27,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { SelectController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolInput } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
 };
@@ -88,7 +88,7 @@ export class KolSelect implements SelectAPI {
 
 		return (
 			<Host class={{ 'has-value': this.state._hasValue }}>
-				<KolInput
+				<KolInputTag
 					class={{
 						'hide-label': !!this.state._hideLabel,
 						select: true,
@@ -170,7 +170,7 @@ export class KolSelect implements SelectAPI {
 							})}
 						</select>
 					</div>
-				</KolInput>
+				</KolInputTag>
 			</Host>
 		);
 	}

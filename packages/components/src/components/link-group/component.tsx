@@ -6,7 +6,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
-import { KolLink } from '../../core/component-names';
+import { KolLinkTag } from '../../core/component-names';
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
 	props.links.map((link, index: number) => {
@@ -22,7 +22,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 						listStyleType: props.listStyleType,
 					}}
 				>
-					<KolLink {...link}></KolLink>
+					<KolLinkTag {...link}></KolLinkTag>
 				</li>
 			) as JSX.Element
 		);

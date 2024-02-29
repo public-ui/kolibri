@@ -15,7 +15,7 @@ import type {
 } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State } from '@stencil/core';
-import { KolButtonWc } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
@@ -73,7 +73,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<KolButtonWc
+				<KolButtonWcTag
 					class={{
 						'main-button': true,
 						button: true,
@@ -97,16 +97,16 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 					_type={this._type}
 					_value={this._value}
 					_variant={this._variant}
-				></KolButtonWc>
+				></KolButtonWcTag>
 				<div class="horizontal-line"></div>
-				<KolButtonWc
+				<KolButtonWcTag
 					class="secondary-button"
 					_disabled={this._disabled}
 					_hideLabel
 					_icons="codicon codicon-triangle-down"
 					_label={`dropdown ${this.state._show ? 'schließen' : 'öffnen'}`} // @todo: translate
 					_on={this.clickToggleHandler}
-				></KolButtonWc>
+				></KolButtonWcTag>
 				<div class="popover" ref={this.catchDropdownElements}>
 					<div class="popover-content">
 						<slot />

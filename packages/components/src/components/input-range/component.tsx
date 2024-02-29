@@ -24,7 +24,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputRangeController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolInput } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabeelements.
  */
@@ -109,7 +109,7 @@ export class KolInputRange implements InputRangeAPI {
 
 		return (
 			<Host>
-				<KolInput
+				<KolInputTag
 					class={{
 						range: true,
 						'hide-label': !!this.state._hideLabel,
@@ -206,7 +206,7 @@ export class KolInputRange implements InputRangeAPI {
 							// </ul>,
 						]}
 					</div>
-				</KolInput>
+				</KolInputTag>
 			</Host>
 		);
 	}

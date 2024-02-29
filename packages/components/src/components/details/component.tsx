@@ -9,7 +9,7 @@ import type { DisabledPropType } from '@public-ui/schema';
 import { validateDisabled } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { preventDefaultAndStopPropagation } from '../../utils/events';
-import { KolIcon, KolIndentedText } from '../../core/component-names';
+import { KolIconTag, KolIndentedTextTag } from '../../core/component-names';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -64,13 +64,13 @@ export class KolDetails implements DetailsAPI {
 						onKeyPress={this.preventToggleIfDisabled}
 						tabIndex={this.state._disabled ? -1 : undefined}
 					>
-						<KolIcon _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
+						<KolIconTag _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
 						<span>{this.state._label}</span>
 					</summary>
 					<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" ref={(element) => (this.contentElement = element)}>
-						<KolIndentedText>
+						<KolIndentedTextTag>
 							<slot />
-						</KolIndentedText>
+						</KolIndentedTextTag>
 					</div>
 				</details>
 			</Host>

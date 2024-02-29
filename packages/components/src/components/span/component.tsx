@@ -6,7 +6,7 @@ import { md } from '../../utils/markdown';
 import { InternalUnderlinedAccessKey } from './InternalUnderlinedAccessKey';
 
 import type { JSX } from '@stencil/core';
-import { KolIcon } from '../../core/component-names';
+import { KolIconTag } from '../../core/component-names';
 /**
  * @internal
  */
@@ -24,11 +24,16 @@ export class KolSpanWc implements SpanAPI {
 				}}
 			>
 				{this.state._icons.top && (
-					<KolIcon class="icon top" style={this.state._icons.top.style} _label={this.state._icons.top.label ?? ''} _icons={this.state._icons.top.icon} />
+					<KolIconTag class="icon top" style={this.state._icons.top.style} _label={this.state._icons.top.label ?? ''} _icons={this.state._icons.top.icon} />
 				)}
 				<span>
 					{this.state._icons.left && (
-						<KolIcon class="icon left" style={this.state._icons.left.style} _label={this.state._icons.left.label ?? ''} _icons={this.state._icons.left.icon} />
+						<KolIconTag
+							class="icon left"
+							style={this.state._icons.left.style}
+							_label={this.state._icons.left.label ?? ''}
+							_icons={this.state._icons.left.icon}
+						/>
 					)}
 					{!this.state._hideLabel && hideExpertSlot ? (
 						this.state._allowMarkdown && typeof this.state._label === 'string' && this.state._label.length > 0 ? (
@@ -54,7 +59,7 @@ export class KolSpanWc implements SpanAPI {
 						</span>
 					)}
 					{this.state._icons.right && (
-						<KolIcon
+						<KolIconTag
 							class="icon right"
 							style={this.state._icons.right.style}
 							_label={this.state._icons.right.label ?? ''}
@@ -63,7 +68,7 @@ export class KolSpanWc implements SpanAPI {
 					)}
 				</span>
 				{this.state._icons.bottom && (
-					<KolIcon
+					<KolIconTag
 						class="icon bottom"
 						style={this.state._icons.bottom.style}
 						_label={this.state._icons.bottom.label ?? ''}

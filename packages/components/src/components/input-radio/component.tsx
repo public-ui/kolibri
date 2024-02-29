@@ -25,7 +25,7 @@ import { InputRadioController } from './controller';
 
 import type { JSX } from '@stencil/core';
 import { FormFieldMsg } from '../@shared/form-field-msg';
-import { KolInput } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -91,7 +91,7 @@ export class KolInputRadio implements InputRadioAPI {
 						const customId = `${this.state._id}-${index}`;
 						const slotName = `radio-${index}`;
 						return (
-							<KolInput
+							<KolInputTag
 								class={{
 									radio: true,
 									disabled: Boolean(this.state._disabled || option.disabled),
@@ -143,7 +143,7 @@ export class KolInputRadio implements InputRadioAPI {
 										</span>
 									</label>
 								</div>
-							</KolInput>
+							</KolInputTag>
 						);
 					})}
 					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _error={this.state._error} _id={this.state._id} />}

@@ -27,7 +27,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
 
 import type { JSX } from '@stencil/core';
-import { KolButton, KolButtonWc, KolLinkWc } from '../../core/component-names';
+import { KolButtonTag, KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
 		if (Array.isArray(link._children)) {
@@ -91,9 +91,9 @@ export class KolNav implements NavAPI {
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
 				{'_href' in link ? (
-					<KolLinkWc class="entry-item" {...link} _hideLabel={hideLabel} _icons={icons} />
+					<KolLinkWcTag class="entry-item" {...link} _hideLabel={hideLabel} _icons={icons} />
 				) : (
-					<KolButtonWc
+					<KolButtonWcTag
 						class="entry-item"
 						_label={link._label}
 						_hideLabel={hideLabel}
@@ -109,7 +109,7 @@ export class KolNav implements NavAPI {
 
 	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, expanded: boolean): JSX.Element {
 		return (
-			<KolButtonWc
+			<KolButtonWcTag
 				class="expand-button"
 				_ariaExpanded={expanded}
 				_disabled={!collapsible}
@@ -117,7 +117,7 @@ export class KolNav implements NavAPI {
 				_hideLabel
 				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.handleToggleExpansionClick(link._children) }}
-			></KolButtonWc>
+			></KolButtonWcTag>
 		);
 	}
 
@@ -211,7 +211,7 @@ export class KolNav implements NavAPI {
 					</nav>
 					{hasCompactButton && (
 						<div class="compact">
-							<KolButton
+							<KolButtonTag
 								_ariaControls="nav"
 								_ariaExpanded={!hideLabel}
 								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
@@ -227,7 +227,7 @@ export class KolNav implements NavAPI {
 								}}
 								_tooltipAlign="right"
 								_variant="ghost"
-							></KolButton>
+							></KolButtonTag>
 						</div>
 					)}
 				</div>

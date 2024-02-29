@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop } from '@stencil/core';
 
 import type { AvatarProps } from '@public-ui/schema';
-import { KolAvatarWc } from '../../core/component-names';
+import { KolAvatarWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-avatar',
@@ -15,7 +15,7 @@ export class KolAvatar implements AvatarProps {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<KolAvatarWc _src={this._src} _label={this._label}></KolAvatarWc>
+				<KolAvatarWcTag _src={this._src} _label={this._label}></KolAvatarWcTag>
 			</Host>
 		);
 	}

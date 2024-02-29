@@ -2,7 +2,7 @@ import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } fro
 
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '@public-ui/schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '@public-ui/schema';
-import { KolLink } from '../../core/component-names';
+import { KolLinkTag } from '../../core/component-names';
 
 @Component({
 	tag: `kol-tree-item-wc`,
@@ -17,7 +17,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 		return (
 			<Host onSlotchange={this.handleSlotchange.bind(this)}>
 				<li class="tree-item">
-					<KolLink
+					<KolLinkTag
 						class={{
 							'tree-link': true,
 							active: Boolean(this.state._active),
@@ -42,7 +42,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 								))}{' '}
 							{this.state._label}
 						</span>
-					</KolLink>
+					</KolLinkTag>
 					<ul hidden={!this.state._hasChildren || !this.state._open} role="group">
 						<slot />
 					</ul>

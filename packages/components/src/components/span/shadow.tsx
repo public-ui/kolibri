@@ -1,7 +1,7 @@
 import type { AccessKeyPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanProps, Stringified } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
-import { KolSpanWc } from '../../core/component-names';
+import { KolSpanWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-span',
@@ -13,9 +13,9 @@ import { KolSpanWc } from '../../core/component-names';
 export class KolSpan implements SpanProps {
 	public render(): JSX.Element {
 		return (
-			<KolSpanWc _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey}>
+			<KolSpanWcTag _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey}>
 				<slot name="expert" slot="expert"></slot>
-			</KolSpanWc>
+			</KolSpanWcTag>
 		);
 	}
 

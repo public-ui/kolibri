@@ -3,7 +3,7 @@ import { koliBriQuoteVariantOptions, showExpertSlot, validateLabel, watchString,
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
-import { KolLink } from '../../core/component-names';
+import { KolLinkTag } from '../../core/component-names';
 @Component({
 	tag: 'kol-quote',
 	styleUrls: {
@@ -102,7 +102,7 @@ export class KolQuote implements QuoteAPI {
 					{typeof this.state._label === 'string' && this.state._label.length > 0 && (
 						<figcaption>
 							<cite>
-								<KolLink _href={this.state._href} _label={this.state._label} _target="_blank" />
+								<KolLinkTag _href={this.state._href} _label={this.state._label} _target="_blank" />
 							</cite>
 						</figcaption>
 					)}
