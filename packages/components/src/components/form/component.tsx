@@ -58,7 +58,7 @@ export class KolForm implements FormAPI {
 											_href={error.selector}
 											_label={error.message}
 											_on={{ onClick: this.handleLinkClick }}
-											ref={(el: HTMLElement) => {
+											ref={(el?: HTMLKolLinkElement) => {
 												if (index === 0) this.errorListElement = el;
 											}}
 										/>
