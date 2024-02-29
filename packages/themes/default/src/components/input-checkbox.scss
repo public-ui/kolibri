@@ -144,6 +144,8 @@
 		min-width: 3.5em;
 		position: relative;
 		width: 3.5em;
+		/* Visible with forced colors  */
+		outline: transparent solid 1px;
 	}
 
 	:host kol-input.switch input[type='checkbox']:before {
