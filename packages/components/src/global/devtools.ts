@@ -3,6 +3,7 @@ import {
 	getDevMode,
 	getDocument,
 	getExperimentalMode,
+	getWindow,
 	koliBriA11yColorContrast,
 	koliBriQuerySelector,
 	koliBriQuerySelectorAll,
@@ -12,7 +13,19 @@ import {
 	parseJson,
 	stringifyJson,
 } from '@public-ui/schema';
-import { getKoliBri, initKoliBri, renderDevAdvice } from '../utils/dev.utils';
+import { initKoliBri, renderDevAdvice } from '../utils/dev.utils';
+
+const getKoliBri = (): Record<string, unknown> => {
+	let kolibri = getWindow().KoliBri;
+	if (kolibri === undefined) {
+		kolibri = {};
+		Object.defineProperty(getWindow(), 'KoliBri', {
+			value: kolibri,
+			writable: false,
+		});
+	}
+	return kolibri;
+};
 
 function prototypeKoliBri<T>(name: string, cb: T) {
 	try {
