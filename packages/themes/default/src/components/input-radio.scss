@@ -3,6 +3,7 @@
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		@include kol-alert-theme;
 	}
 
 	label {
@@ -40,7 +41,7 @@
 		@include kol-alert-wc;
 	}
 
-	.required legend>span::after {
+	.required legend > span::after {
 		content: '*';
 		padding-left: 0.125em;
 	}

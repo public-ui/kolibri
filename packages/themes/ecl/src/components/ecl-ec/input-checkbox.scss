@@ -1,10 +1,15 @@
+@import '../mixins-ec/alert-wc.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		@include kol-alert-theme;
 	}
+
 	.checkbox-container {
 		justify-content: flex-start;
 	}
+
 	input[type='checkbox'] {
 		background-color: var(--color-white);
 		border-width: 2px;
@@ -13,40 +18,50 @@
 		line-height: 1.5em;
 		font-size: 1rem;
 	}
+
 	input[type='checkbox']:focus {
 		outline-color: var(--color-blue);
 		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 2px;
 	}
+
 	input[type='checkbox'] {
 		border-color: var(--color-grey-75);
 	}
+
 	input[type='checkbox']:checked {
 		background-color: var(--color-blue);
 		border-color: var(--color-blue);
 	}
+
 	input[type='checkbox']:hover {
 		border-color: var(--color-blue);
 	}
+
 	input[type='checkbox']:checked:hover {
 		background-color: var(--color-blue-130);
 		border-color: var(--color-blue-130);
 	}
+
 	.error input[type='checkbox'] {
 		border-color: var(--color-red);
 	}
+
 	.error input[type='checkbox']:checked {
 		background-color: var(--color-red);
 		border-color: var(--color-red);
 	}
+
 	.error input[type='checkbox']:hover {
 		border-color: var(--color-red);
 	}
+
 	.error input[type='checkbox']:checked:hover {
 		background-color: var(--color-red-1xx);
 		border-color: var(--color-red-1xx);
 	}
+
 	.error.required label > span::after {
 		color: var(--color-red);
 	}
@@ -54,6 +69,7 @@
 	.default .icon {
 		margin-left: 0.2rem;
 	}
+
 	.default.checked .icon {
 		color: var(--color-white);
 	}
@@ -61,30 +77,38 @@
 	.switch input[type='checkbox'] {
 		display: block;
 	}
+
 	.switch input[type='checkbox']::before,
 	.switch input[type='checkbox']:indeterminate::before {
 		background-color: var(--color-grey-75);
 	}
+
 	.switch input[type='checkbox']:hover::before,
 	.switch input[type='checkbox']:indeterminate:hover::before {
 		background-color: var(--color-blue);
 	}
+
 	.switch input[type='checkbox']:checked::before,
 	.switch input[type='checkbox']:checked:hover::before {
 		background-color: var(--color-white);
 	}
+
 	.switch.error input[type='checkbox']::before {
 		background-color: var(--color-red);
 	}
+
 	.switch.error input[type='checkbox']:checked::before {
 		background-color: var(--color-white);
 	}
+
 	.switch.error input[type='checkbox']:indeterminate:hover::before {
 		background-color: var(--color-red-1xx);
 	}
+
 	kol-input {
 		gap: var(--spacing-xs);
 	}
+
 	.button {
 		gap: var(--spacing-xs) 0;
 		grid-template-areas:
@@ -92,14 +116,24 @@
 			'hint hint'
 			'error error';
 	}
-	kol-alert {
-		color: var(--color-red);
-		font-size: 0.875em;
-		margin-left: calc(-1 * var(--spacing-2xs));
+
+	kol-input kol-alert-wc.error {
+		order: 3;
 	}
+
+	kol-input .hint,
+	kol-input.error > kol-alert-wc {
+		grid-column: span 2;
+	}
+
+	kol-alert-wc {
+		@include kol-alert-wc(--color-red);
+	}
+
 	.hint {
 		font-size: 0.875rem;
 	}
+
 	.button:focus-within {
 		outline-color: var(--color-blue);
 		outline-offset: 2px;

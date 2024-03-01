@@ -1,4 +1,10 @@
+@import '../mixins/alert-wc.scss';
+
 @layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+
 	select:hover,
 	select:focus {
 		border-color: var(--default-border-hover);
@@ -7,6 +13,7 @@
 		outline-style: solid;
 		outline-width: 1px;
 	}
+
 	label {
 		color: var(--default-letter);
 		font-size: 14px;
@@ -15,10 +22,12 @@
 		width: 100%;
 		font-weight: bold;
 	}
+
 	select.error {
 		background-color: var(--danger-light) !important;
 		border-color: var(--danger);
 	}
+
 	select {
 		width: 100%;
 		color: var(--default-letter);
@@ -30,21 +39,26 @@
 		border-radius: 0;
 		background-color: #e8edf2 !important;
 	}
+
 	select:disabled {
 		cursor: not-allowed;
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
 	}
+
 	option {
 		height: 2em;
 	}
+
 	select:not([multiple]) option {
 		padding: 0.5em;
 	}
-	kol-alert {
+
+	kol-alert-wc {
 		margin-top: var(--spacing);
 		display: block;
 	}
+
 	.kol-required span::after {
 		content: '*';
 	}
