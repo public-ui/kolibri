@@ -1,6 +1,7 @@
 /.husky/
 /license-reports/*.html
 /packages/**/pnpm-lock.yaml
+
 cjs/
 dist/
 esm/
