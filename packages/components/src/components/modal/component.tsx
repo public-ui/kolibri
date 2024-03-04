@@ -4,10 +4,12 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { KoliBriModalEventCallbacks } from '../../types/modal';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { featureHint } from '../../utils/a11y.tipps';
-import { getKoliBri } from '../../utils/dev.utils';
 import { setState, watchString, watchValidator } from '../../utils/prop.validators';
-import { ModalService } from './service';
 import { API, States } from './types';
+
+import { ModalService } from './service';
+
+const modalService = new ModalService();
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -30,16 +32,16 @@ export class KolModal implements API {
 	public componentDidRender(): void {
 		if (this.hostElement /* SSR instanceof HTMLElement */) {
 			if (this.state._activeElement /* SSR instanceof HTMLElement */) {
-				(getKoliBri().Modal as ModalService).openModal(this.hostElement, this.state._activeElement);
+				modalService.openModal(this.hostElement, this.state._activeElement);
 			} else {
-				(getKoliBri().Modal as ModalService).closeModal(this.hostElement);
+				modalService.closeModal(this.hostElement);
 			}
 		}
 	}
 
 	public disconnectedCallback(): void {
 		if (this.hostElement /* SSR instanceof HTMLElement */) {
-			(getKoliBri().Modal as ModalService).closeModal(this.hostElement);
+			modalService.closeModal(this.hostElement);
 		}
 	}
 
