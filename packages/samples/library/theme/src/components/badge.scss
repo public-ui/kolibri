@@ -4,39 +4,39 @@
 		font-size: inherit;
 	}
 
-	:host>span {
+	:host > span {
 		border-radius: var(--border-radius);
 		display: inline-flex;
 		font-style: normal;
 	}
 
-	:host>span.smart-button {
+	:host > span.smart-button {
 		align-items: center;
 	}
 
-	:host>span .kol-button-wc:hover>button {
+	:host > span .kol-button-wc:hover > button {
 		background-color: var(--color-primary-variant);
 		color: var(--color-light);
 	}
 
-	:host>span .kol-button-wc>button {
+	:host > span .kol-button-wc > button {
 		color: inherit;
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
 		padding: 0.2rem;
 	}
 
-	:host>span .kol-span-wc {
+	:host > span .kol-span-wc {
 		padding: 0.25rem 0.75rem;
 	}
 
-	:host>span>.kol-span-wc {
+	:host > span > .kol-span-wc {
 		align-items: center;
 		font-style: normal;
 		gap: 0.5rem;
 	}
 
-	:host>span>.kol-span-wc>span {
+	:host > span > .kol-span-wc > span {
 		display: flex;
 		gap: 0.25rem;
 	}

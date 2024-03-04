@@ -6,7 +6,7 @@
 		word-break: break-word;
 	}
 
-	:host>div {
+	:host > div {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
@@ -68,12 +68,12 @@
 		font-weight: 700;
 	}
 
-	:host>div:last-child {
+	:host > div:last-child {
 		padding: 0.5rem;
 	}
 
-	:host>div:last-child,
-	:host>div:last-child>div:last-child {
+	:host > div:last-child,
+	:host > div:last-child > div:last-child {
 		display: grid;
 		align-items: center;
 		justify-items: center;

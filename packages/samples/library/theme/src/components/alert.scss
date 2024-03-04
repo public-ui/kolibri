@@ -14,22 +14,22 @@
 		background-color: var(--color-light);
 	}
 
-	.kol-alert-wc>.heading {
+	.kol-alert-wc > .heading {
 		display: flex;
 		gap: 0.5em;
 		place-items: center;
 	}
 
-	.kol-alert-wc>.heading>div {
+	.kol-alert-wc > .heading > div {
 		display: grid;
 		gap: 0.25rem;
 	}
 
-	.msg>.heading>.kol-icon {
+	.msg > .heading > .kol-icon {
 		place-self: baseline;
 	}
 
-	.kol-alert-wc>.heading>.kol-button-wc.close {
+	.kol-alert-wc > .heading > .kol-button-wc.close {
 		place-self: center;
 	}
 
@@ -85,32 +85,32 @@
 		padding: 0;
 	}
 
-	.msg>.heading>.heading-icon {
+	.msg > .heading > .heading-icon {
 		padding-top: 0;
 		place-items: baseline;
 	}
 
-	.msg>.heading>div>.kol-heading-wc {
+	.msg > .heading > div > .kol-heading-wc {
 		padding-top: calc(--var-spacing / 2);
 	}
 
-	.msg.default .heading>div>.kol-heading-wc {
+	.msg.default .heading > div > .kol-heading-wc {
 		color: var(--color-subtle);
 	}
 
-	.msg.error .heading>div>.kol-heading-wc {
+	.msg.error .heading > div > .kol-heading-wc {
 		color: var(--color-danger);
 	}
 
-	.msg.info .heading>div>.kol-heading-wc {
+	.msg.info .heading > div > .kol-heading-wc {
 		color: var(--color-primary);
 	}
 
-	.msg.success .heading>div>.kol-heading-wc {
+	.msg.success .heading > div > .kol-heading-wc {
 		color: var(--color-success);
 	}
 
-	.msg.warning .heading>div>.kol-heading-wc {
+	.msg.warning .heading > div > .kol-heading-wc {
 		color: var(--color-warning);
 	}
 
@@ -141,27 +141,27 @@
 		flex-direction: column;
 	}
 
-	.card>.heading {
+	.card > .heading {
 		padding: 0.5rem 1rem;
 	}
 
-	.card[_has-closer]>.heading {
+	.card[_has-closer] > .heading {
 		padding-top: 0;
 		padding-bottom: 0;
 		padding-right: 0;
 	}
 
-	.card>.heading>div {
+	.card > .heading > div {
 		width: 100%;
 		min-height: 1.25rem;
 	}
 
-	.card>.heading .heading-icon {
+	.card > .heading .heading-icon {
 		justify-self: right;
 		margin-top: -4px;
 	}
 
-	.card>.heading .kol-heading-wc {
+	.card > .heading .kol-heading-wc {
 		width: 100%;
 		color: var(--color-light);
 		display: flex;
@@ -169,31 +169,31 @@
 		line-height: 1.25rem;
 	}
 
-	.card>.heading .kol-heading-wc>* {
+	.card > .heading .kol-heading-wc > * {
 		margin: auto 0;
 	}
 
-	.card>.content {
+	.card > .content {
 		padding: 1rem;
 	}
 
-	.card.default>.heading {
+	.card.default > .heading {
 		background-color: var(--color-subtle);
 	}
 
-	.card.error>.heading {
+	.card.error > .heading {
 		background-color: var(--color-danger);
 	}
 
-	.card.info>.heading {
+	.card.info > .heading {
 		background-color: var(--color-primary);
 	}
 
-	.card.success>.heading {
+	.card.success > .heading {
 		background-color: var(--color-success);
 	}
 
-	.card.warning>.heading {
+	.card.warning > .heading {
 		background-color: var(--color-warning);
 	}
 
@@ -201,7 +201,7 @@
 		font-size: 1.25rem;
 	}
 
-	.card>div>.content {
+	.card > div > .content {
 		grid-row: 2;
 		grid-column: 1 / span 2;
 	}
@@ -226,7 +226,7 @@
 		background-color: var(--color-warning);
 	}
 
-	.close>button {
+	.close > button {
 		border-radius: 50%;
 		/* visible on focus */
 		color: var(--color-light);
@@ -235,14 +235,14 @@
 		width: var(--a11y-min-size);
 	}
 
-	.close>button.hide-label .kol-icon {
+	.close > button.hide-label .kol-icon {
 		display: flex;
 		width: 1em;
 		height: 1em;
 		font-size: 1.2rem;
 	}
 
-	.close>button:active {
+	.close > button:active {
 		box-shadow: none;
 		outline: none;
 	}

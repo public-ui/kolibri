@@ -38,15 +38,15 @@
 		padding: 0 0.5rem;
 	}
 
-	.input>.kol-icon {
+	.input > .kol-icon {
 		width: 1rem;
 	}
 
-	.input.icon-left>.kol-icon:first-child {
+	.input.icon-left > .kol-icon:first-child {
 		margin-right: 0.5rem;
 	}
 
-	.input.icon-right>.kol-icon:last-child {
+	.input.icon-right > .kol-icon:last-child {
 		margin-left: 0.5rem;
 	}
 
@@ -63,7 +63,7 @@
 		cursor: not-allowed;
 	}
 
-	.required label>span::after {
+	.required label > span::after {
 		content: '*';
 		padding-left: 0.125em;
 	}
