@@ -3,3 +3,6 @@
 @import 'button';
 @import 'checkbox';
 @import 'switch';
+@import '../@shared/kol-alert-mixin.scss';
+
+@include kol-alert-styles;
