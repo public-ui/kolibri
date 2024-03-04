@@ -15,7 +15,7 @@ import { Component, h, Host, Prop, State } from '@stencil/core';
 export class KolAlert implements AlertProps {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-alert">
 				<kol-alert-wc
 					_alert={this._alert}
 					_hasCloser={this._hasCloser}

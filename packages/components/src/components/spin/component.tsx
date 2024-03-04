@@ -35,7 +35,7 @@ export class KolSpin implements SpinAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-spin">
 				{this.state._show ? (
 					<span
 						aria-busy="true"

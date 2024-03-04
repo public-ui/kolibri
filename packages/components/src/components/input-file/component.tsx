@@ -52,7 +52,7 @@ export class KolInputFile implements InputFileAPI {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-file">
 				<kol-input
 					class={{
 						file: true,

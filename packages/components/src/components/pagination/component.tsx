@@ -85,7 +85,7 @@ export class KolPagination implements PaginationAPI {
 			});
 
 		return (
-			<Host>
+			<Host class="kol-pagination">
 				<nav aria-label={this.state._label}>
 					<ul class="navigation-list">
 						{this.state._hasButtons.first && (

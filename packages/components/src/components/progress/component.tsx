@@ -94,7 +94,7 @@ export class KolProcess implements ProgressAPI {
 	// https://dequeuniversity.com/library/aria/progress-bar-bounded
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-progress">
 				{createProgressSVG(this.state)}
 				<progress aria-busy={this.state._value < this.state._max ? 'true' : 'false'} max={this.state._max} value={this.state._value}></progress>
 				<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">

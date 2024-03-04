@@ -35,7 +35,7 @@ export const getHeadingHtml = (
 	return `
 <kol-heading>
 	<mock:shadow-root>
-		${getHeadingWcHtml(props)}
+		${getHeadingWcHtml(props, {}, ` class="kol-heading kol-heading-wc"`)}
 	</mock:shadow-root>
 	${slots.expert !== undefined ? slots.expert : ''}
 </kol-heading>`;

@@ -2,6 +2,7 @@
 	:host {
 		font-family: var(--font-family);
 	}
+
 	.accordion,
 	div[part*='accordion'] {
 		border-radius: 8px;
@@ -13,16 +14,20 @@
 		margin: 0;
 		overflow: hidden;
 	}
+
 	.headline {
 		font-size: 2em;
 	}
+
 	div[part*='close'] .headline button {
 		border-radius: 8px;
 	}
+
 	div[part*='open'] .headline button {
 		border-start-end-radius: 8px;
 		border-start-start-radius: 8px;
 	}
+
 	.headline button {
 		outline-offset: -1px;
 		border: 0;
@@ -39,6 +44,7 @@
 		text-align: start;
 		width: 100%;
 	}
+
 	.headline button::before {
 		background-color: #fc0;
 		border-end-end-radius: 2px;
@@ -50,20 +56,25 @@
 		top: 0;
 		width: 32px;
 	}
-	.headline button kol-icon {
+
+	.headline button .kol-icon {
 		margin-right: 0.75rem;
 	}
-	.headline button kol-icon::part(icon)::before {
+
+	.headline button .kol-icon::part(icon)::before {
 		color: #0e47cb;
 		font-weight: 900;
 		font-family: 'Font Awesome 6 Free';
 	}
-	.open .headline button kol-icon::part(icon)::before {
+
+	.open .headline button .kol-icon::part(icon)::before {
 		content: '\\f077';
 	}
-	:not(.open) .headline button kol-icon::part(icon)::before {
+
+	:not(.open) .headline button .kol-icon::part(icon)::before {
 		content: '\\f078';
 	}
+
 	.content,
 	div[part='content'] {
 		-webkit-border-start: 4px solid #0e47cb;
@@ -77,7 +88,8 @@
 		margin-inline-start: 0;
 		padding: 1.5rem;
 	}
-	kol-span-wc > span {
+
+	.kol-span-wc > span {
 		align-items: baseline;
 	}
 }

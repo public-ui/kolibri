@@ -1,6 +1,6 @@
 import type { LabelPropType, VersionAPI, VersionStates } from '@public-ui/schema';
 import { validateLabel } from '@public-ui/schema';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
@@ -16,13 +16,15 @@ import type { JSX } from '@stencil/core';
 export class KolVersion implements VersionAPI {
 	public render(): JSX.Element {
 		return (
-			<kol-badge
-				_color="#bec5c9"
-				_icons={{
-					left: { icon: 'codicon codicon-versions', label: translate('kol-version') },
-				}}
-				_label={this.state._label}
-			/>
+			<Host class="kol-version">
+				<kol-badge
+					_color="#bec5c9"
+					_icons={{
+						left: { icon: 'codicon codicon-versions', label: translate('kol-version') },
+					}}
+					_label={this.state._label}
+				/>
+			</Host>
 		);
 	}
 
