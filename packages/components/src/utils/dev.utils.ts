@@ -1,33 +1,36 @@
-import { ModalService } from '../components/modal/service';
 import { processEnv } from './reuse';
 
 let WINDOW: Window | null = null;
 let DOCUMENT: Document | null = null;
 
-export const configKoliBri = (window: Window): void => {
-	if (window instanceof Window) {
-		WINDOW = window;
-		if (WINDOW.document instanceof Document) {
-			DOCUMENT = window.document;
-		} else {
-			console.warn(`The given Window has no valid Document.`);
-		}
-	} else {
-		console.warn(`The given Window is not valid.`);
-	}
+export const getWindow = (): Window => (WINDOW || typeof window === 'undefined' ? (null as unknown as Window) : window);
+export const setWindow = (value: Window): void => {
+	WINDOW = value;
 };
 
-export const getWindow = (): Window => (WINDOW || typeof window === 'undefined' ? (null as unknown as Window) : window);
 export const getDocument = (): Document => (DOCUMENT || typeof getWindow().document === 'undefined' ? (null as unknown as Document) : getWindow().document);
+export const setDocument = (value: Document): void => {
+	DOCUMENT = value;
+};
 
-let META_CONFIG: string | null = null;
 let DEV_MODE: boolean | null = null;
 let EXPERIMENTAL_MODE: boolean | null = null;
 let COLOR_CONTRAST_ANALYSIS: boolean | null = null;
 
 export const getDevMode = (): boolean => DEV_MODE === true;
+export const setDevMode = (value: boolean): void => {
+	DEV_MODE = value;
+};
+
 export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
+export const setExperimentalMode = (value: boolean): void => {
+	EXPERIMENTAL_MODE = value;
+};
+
 export const getColorContrastAnalysis = (): boolean => COLOR_CONTRAST_ANALYSIS === true;
+export const setColorContrastAnalysis = (value: boolean): void => {
+	COLOR_CONTRAST_ANALYSIS = value;
+};
 
 type LogShield = {
 	label: string;
@@ -100,18 +103,14 @@ export class Log {
 }
 
 const initMeta = (): void => {
-	if (DEV_MODE === null && EXPERIMENTAL_MODE === null && COLOR_CONTRAST_ANALYSIS === null) {
-		const meta = getDocument().querySelector('meta[name="kolibri"]');
-		if (meta && meta.hasAttribute('content')) {
-			META_CONFIG = meta.getAttribute('content');
-			if (typeof META_CONFIG === 'string') {
-				DEV_MODE = META_CONFIG.includes('dev-mode=true');
-				EXPERIMENTAL_MODE = META_CONFIG.includes('experimental-mode=true');
-				COLOR_CONTRAST_ANALYSIS = META_CONFIG.includes('color-contrast-analysis=true');
-			}
+	const meta = getDocument().querySelector('meta[name="kolibri"]');
+	if (meta && meta.hasAttribute('content')) {
+		const content = meta.getAttribute('content');
+		if (typeof content === 'string') {
+			setDevMode(content.includes('dev-mode=true'));
+			setExperimentalMode(content.includes('experimental-mode=true'));
+			setColorContrastAnalysis(content.includes('color-contrast-analysis=true'));
 		}
-	} else {
-		console.warn(`You can only initialize DEV_MODE and COLOR_CONTRAST_ANALYSIS once.`);
 	}
 };
 
@@ -127,17 +126,11 @@ const getKoliBri = (): Record<string, unknown> => {
 	return kolibri;
 };
 
+export { getKoliBri };
+
 export const initKoliBri = (): void => {
 	initMeta();
 	if (getKoliBri() === undefined) {
-		if (getKoliBri().Modal === undefined) {
-			const Modal = new ModalService();
-			Object.defineProperty(getKoliBri(), 'Modal', {
-				get: function (): ModalService {
-					return Modal;
-				},
-			});
-		}
 		Log.debug(
 			`
 	,--. ,--.         ,--. ,--. ,-----.           ,--.
@@ -155,7 +148,6 @@ export const initKoliBri = (): void => {
 		console.warn(`You can only initialize KoliBri once.`);
 	}
 };
-export { getKoliBri };
 
 export const renderDevAdvice = (): void => {
 	if (getKoliBri().adviceShown !== true) {
