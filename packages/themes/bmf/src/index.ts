@@ -1577,7 +1577,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			overflow-y: hidden;
 		}
 
-		.table:has(caption:focus) {
+		.table:has(.focus-element:focus) {
 			outline-color: var(--color-ocean);
 			outline-style: solid;
 			outline-width: 3px;
@@ -1883,6 +1883,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 			height: 1.5em;
 			border-radius: 1.25em;
 			position: relative;
+			/* Visible with forced colors  */
+			outline: transparent solid 1px;
 		}
 		:host kol-input.switch input[type='checkbox']:before {
 			transition: 0.5;

@@ -1,22 +1,6 @@
 import { Log, getDocument, processEnv, setColorContrastAnalysis, setDevMode, setExperimentalMode } from '@public-ui/schema';
 
-import { getWindow, setDocument, setWindow } from '@public-ui/schema';
-import { ModalService } from '../components/modal/service';
-
-const KOLIBRI = {};
-
-export const configKoliBri = (window: Window): void => {
-	if (window instanceof Window) {
-		setWindow(window);
-		if (getWindow().document instanceof Document) {
-			setDocument(window.document);
-		} else {
-			console.warn(`The given Window has no valid Document.`);
-		}
-	} else {
-		console.warn(`The given Window is not valid.`);
-	}
-};
+import { getWindow } from '@public-ui/schema';
 
 const initMeta = (): void => {
 	const meta = getDocument().querySelector('meta[name="kolibri"]');
@@ -31,21 +15,24 @@ const initMeta = (): void => {
 };
 
 const getKoliBri = (): Record<string, unknown> => {
-	return KOLIBRI;
+	let kolibri = getWindow().KoliBri;
+	if (kolibri === undefined) {
+		kolibri = {};
+		Object.defineProperty(getWindow(), 'KoliBri', {
+			value: kolibri,
+			writable: false,
+		});
+	}
+	return kolibri;
 };
+
+export { getKoliBri };
 
 export const initKoliBri = (): void => {
 	initMeta();
-	if (getKoliBri().Modal === undefined) {
-		const Modal = new ModalService();
-		Object.defineProperty(getKoliBri(), 'Modal', {
-			get: function (): ModalService {
-				return Modal;
-			},
-		});
-	}
-	Log.debug(
-		`
+	if (getKoliBri() === undefined) {
+		Log.debug(
+			`
 	,--. ,--.         ,--. ,--. ,-----.           ,--.
 	|  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
 	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
@@ -53,12 +40,14 @@ export const initKoliBri = (): void => {
 	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
 	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.8
 		`,
-		{
-			forceLog: true,
-		}
-	);
+			{
+				forceLog: true,
+			}
+		);
+	} else {
+		console.warn(`You can only initialize KoliBri once.`);
+	}
 };
-export { getKoliBri };
 
 export const renderDevAdvice = (): void => {
 	if (getKoliBri().adviceShown !== true) {
