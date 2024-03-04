@@ -1,6 +1,7 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister } from 'adopted-style-sheets';
 import { configI18n, initI18n } from './i18n';
+import { setCustomTagNames } from './component-names';
 
 type KoliBriOptions = RegisterOptions & {
 	// transformTagName?: (tagName: string) => string;
@@ -16,7 +17,9 @@ export const bootstrap = async (
 ): Promise<void[]> => {
 	await initI18n(options?.translation?.name);
 	await configI18n(options?.translation?.name ?? 'de', options?.translations);
-	// configTransformTagName(options.transformTagName);
+	if (options?.transformTagName) {
+		setCustomTagNames(options?.transformTagName);
+	}
 	return await coreRegister(themes, loaders, options);
 };
 
