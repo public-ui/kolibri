@@ -22,13 +22,13 @@
 		gap: 0.4em;
 	}
 
-	:host kol-input>div.input {
+	:host kol-input > div.input {
 		display: inherit;
 		min-height: 44px;
 		order: 2;
 	}
 
-	:host kol-input>div.input input {
+	:host kol-input > div.input input {
 		margin: 0px;
 	}
 
@@ -40,11 +40,11 @@
 		cursor: not-allowed;
 	}
 
-	:host kol-input>label {
+	:host kol-input > label {
 		order: 3;
 	}
 
-	:host kol-input>kol-alert.error {
+	:host kol-input > kol-alert.error {
 		order: 1;
 		padding-top: 0.25em;
 		grid-column: span 2 / auto;
@@ -100,7 +100,7 @@
 		margin-top: 0.125rem;
 	}
 
-	:host .required label>span::after {
+	:host .required label > span::after {
 		content: '*';
 		padding-left: 0.125em;
 	}
@@ -240,12 +240,12 @@
 		row-gap: 0.5rem;
 	}
 
-	:host kol-input.button.checked>.input,
-	:host kol-input.button.checked>label {
+	:host kol-input.button.checked > .input,
+	:host kol-input.button.checked > label {
 		background-color: var(--color-ice);
 	}
 
-	:host kol-input.button>label {
+	:host kol-input.button > label {
 		background-color: var(--color-silver);
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
@@ -256,7 +256,7 @@
 		width: 100%;
 	}
 
-	:host kol-input.button>.input {
+	:host kol-input.button > .input {
 		background-color: var(--color-silver);
 		border-top-left-radius: var(--border-radius);
 		border-bottom-left-radius: var(--border-radius);
@@ -265,12 +265,12 @@
 		place-content: center;
 	}
 
-	:host kol-input.button.hide-label>.input {
+	:host kol-input.button.hide-label > .input {
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
 	}
 
-	:host kol-input.button>.input>div {
+	:host kol-input.button > .input > div {
 		display: flex;
 	}
 

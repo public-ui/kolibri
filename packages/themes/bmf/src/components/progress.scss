@@ -3,13 +3,13 @@
 		font-family: var(--font-family);
 	}
 
-	.bar>div {
+	.bar > div {
 		flex-direction: column;
 		gap: 0.5rem !important;
 		width: 100px;
 	}
 
-	.bar>div text {
+	.bar > div text {
 		color: var(--color-black);
 		align-self: flex-end;
 	}

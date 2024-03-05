@@ -51,7 +51,7 @@
 		padding: 0 0.5em;
 	}
 
-	.input>kol-icon {
+	.input > kol-icon {
 		width: 1em;
 	}
 
@@ -65,11 +65,11 @@
 		padding-right: 0.5em;
 	}
 
-	.input>input:first-child {
+	.input > input:first-child {
 		padding-left: 0.375em;
 	}
 
-	.input>input:last-child {
+	.input > input:last-child {
 		padding-right: 0.375em;
 	}
 
@@ -82,7 +82,7 @@
 		cursor: not-allowed;
 	}
 
-	.required label>span::after {
+	.required label > span::after {
 		content: '*';
 		padding-left: 0.125em;
 	}

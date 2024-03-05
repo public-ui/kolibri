@@ -4,22 +4,22 @@
 		font-family: var(--font-family);
 	}
 
-	:host>span {
+	:host > span {
 		border-radius: 0.3125rem;
 		display: inline-flex;
 		font-style: normal;
 	}
 
-	:host>span.smart-button {
+	:host > span.smart-button {
 		align-items: center;
 	}
 
-	:host>span kol-button-wc:hover>button {
+	:host > span kol-button-wc:hover > button {
 		background-color: var(--color-ocean);
 		color: var(--color-white);
 	}
 
-	:host>span kol-button-wc>button {
+	:host > span kol-button-wc > button {
 		color: inherit;
 		font-size: 1rem;
 		border-top-right-radius: 0.3125rem;
@@ -27,17 +27,17 @@
 		padding: 2px;
 	}
 
-	:host>span kol-span-wc {
+	:host > span kol-span-wc {
 		padding: 0.25rem 0.75rem;
 	}
 
-	:host>span>kol-span-wc {
+	:host > span > kol-span-wc {
 		align-items: center;
 		font-style: normal;
 		gap: 0.5rem;
 	}
 
-	:host>span>kol-span-wc>span {
+	:host > span > kol-span-wc > span {
 		display: flex;
 		gap: 0.25rem;
 	}

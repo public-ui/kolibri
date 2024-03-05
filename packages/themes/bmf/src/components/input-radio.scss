@@ -47,7 +47,7 @@
 		width: 100%;
 	}
 
-	.required legend>span::after {
+	.required legend > span::after {
 		content: '*';
 		padding-left: 0.125em;
 	}

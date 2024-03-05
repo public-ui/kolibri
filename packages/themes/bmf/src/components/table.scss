@@ -10,7 +10,7 @@
 		word-break: break-word;
 	}
 
-	:host>div {
+	:host > div {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
@@ -83,8 +83,8 @@
 		font-weight: 700;
 	}
 
-	:host>div:last-child,
-	:host>div:last-child>div:last-child {
+	:host > div:last-child,
+	:host > div:last-child > div:last-child {
 		display: grid;
 		align-items: center;
 		justify-items: center;
@@ -98,13 +98,12 @@
 	}
 
 	@media (min-width: 1024px) {
-
-		:host>div:last-child,
-		:host>div:last-child>div:last-child {
+		:host > div:last-child,
+		:host > div:last-child > div:last-child {
 			grid-auto-flow: column;
 		}
 
-		:host>div:last-child kol-pagination {
+		:host > div:last-child kol-pagination {
 			display: flex;
 			gap: 1rem;
 		}
