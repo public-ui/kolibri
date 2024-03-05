@@ -1,10 +1,10 @@
 @layer kol-theme-component {
-	details > summary {
+	details>summary {
 		border-radius: var(--border-radius);
 		font-family: var(--font-family);
 	}
 
-	details .kol-indented-text {
+	details .kol-indented-text-wc {
 		margin: 0.25rem 0 0 0.65rem;
 	}
 

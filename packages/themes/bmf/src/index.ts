@@ -1237,7 +1237,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-radius: var(--border-radius);
 			font-family: var(--font-family);
 		}
-		details .kol-indented-text {
+		details .kol-indented-text-wc {
 			margin: 0.25em 0px 0px 0.65em;
 		}
 		details .kol-icon {

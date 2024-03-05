@@ -102,37 +102,35 @@ export class KolTabs implements TabsAPI {
 
 	private renderButtonGroup() {
 		return (
-			<Host class="kol-tabs">
-				<kol-button-group-wc class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
-					{this.state._tabs.map((button: TabButtonProps, index: number) => (
-						<kol-button-wc
-							_disabled={button._disabled}
-							_icons={button._icons}
-							_hideLabel={button._hideLabel}
-							_label={button._label} // TODO: ariaLabel-Konzept prüfen
-							_on={this.callbacks as ButtonCallbacksPropType<StencilUnknown>}
-							_tabIndex={this.state._selected === index ? 0 : -1}
-							_tooltipAlign={button._tooltipAlign}
-							_variant={this.state._selected === index ? 'custom' : undefined}
-							_customClass={this.state._selected === index ? 'selected' : undefined}
-							_ariaControls={`tabpanel-${index}`}
-							_ariaSelected={this.state._selected === index}
-							_id={`${this.state._label.replace(/\s/g, '-')}-tab-${index}`}
-							_role="tab"
-							_value={index}
-						></kol-button-wc>
-					))}
-					{this.showCreateTab && (
-						<kol-button-wc
-							class="create-button"
-							_label={this.onCreateLabel}
-							_on={{
-								onClick: this.onCreate,
-							}}
-						></kol-button-wc>
-					)}
-				</kol-button-group-wc>
-			</Host>
+			<kol-button-group-wc class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
+				{this.state._tabs.map((button: TabButtonProps, index: number) => (
+					<kol-button-wc
+						_disabled={button._disabled}
+						_icons={button._icons}
+						_hideLabel={button._hideLabel}
+						_label={button._label} // TODO: ariaLabel-Konzept prüfen
+						_on={this.callbacks as ButtonCallbacksPropType<StencilUnknown>}
+						_tabIndex={this.state._selected === index ? 0 : -1}
+						_tooltipAlign={button._tooltipAlign}
+						_variant={this.state._selected === index ? 'custom' : undefined}
+						_customClass={this.state._selected === index ? 'selected' : undefined}
+						_ariaControls={`tabpanel-${index}`}
+						_ariaSelected={this.state._selected === index}
+						_id={`${this.state._label.replace(/\s/g, '-')}-tab-${index}`}
+						_role="tab"
+						_value={index}
+					></kol-button-wc>
+				))}
+				{this.showCreateTab && (
+					<kol-button-wc
+						class="create-button"
+						_label={this.onCreateLabel}
+						_on={{
+							onClick: this.onCreate,
+						}}
+					></kol-button-wc>
+				)}
+			</kol-button-group-wc>
 		);
 	}
 
@@ -144,7 +142,7 @@ export class KolTabs implements TabsAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-tabs">
 				<div
 					ref={(el) => {
 						this.tabPanelsElement = el as HTMLElement;
