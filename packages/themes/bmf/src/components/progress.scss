@@ -1,0 +1,68 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.bar>div {
+		flex-direction: column;
+		gap: 0.5rem !important;
+		width: 100px;
+	}
+
+	.bar>div text {
+		color: var(--color-black);
+		align-self: flex-end;
+	}
+
+	.bar svg {
+		height: 1rem;
+	}
+
+	.bar .background {
+		fill: var(--color-ice);
+		stroke: var(--color-ice);
+		stroke-width: 1px;
+	}
+
+	.bar .progress {
+		fill: var(--color-midnight);
+		stroke: var(--color-midnight);
+	}
+
+	.bar .border {
+		display: none;
+	}
+
+	.cycle {
+		overflow: visible;
+	}
+
+	.cycle .whitespace,
+	.cycle .border {
+		stroke: transparent;
+	}
+
+	.cycle .background {
+		stroke: var(--color-ice);
+		stroke-width: 1rem;
+	}
+
+	.cycle .progress {
+		stroke: var(--color-midnight);
+		stroke-width: 1rem;
+	}
+
+	.cycle text:first-of-type {
+		color: var(--color-grey);
+		line-height: 1.25rem;
+		alignment-baseline: after-edge;
+	}
+
+	.cycle text:last-of-type {
+		color: var(--color-black);
+		font-size: 1.75rem;
+		font-weight: 700;
+		line-height: 1.5rem;
+		alignment-baseline: central;
+	}
+}

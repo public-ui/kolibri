@@ -1,0 +1,66 @@
+@layer kol-theme-component {
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	nav {
+		font-family: var(--font-family);
+		font-size: var(--font-size);
+		width: 100%;
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	.entry-item :is(a, .button) {
+		align-items: center;
+		background-color: var(--color-white);
+		border-left-color: transparent;
+		border-left-style: solid;
+		border-left-width: 0.5rem;
+		color: var(--color-midnight);
+		display: flex;
+		font-style: normal;
+		letter-spacing: 0.175px;
+		line-height: 1.5rem;
+		min-height: 44px;
+		min-width: 44px;
+		padding: 0.75rem 0.5rem 0.75rem 0.25rem;
+		place-items: center;
+		text-decoration: none;
+		transition-duration: 0.5s;
+		transition-property: background-color, color, border-color;
+		width: 100%;
+	}
+
+	.vertical .active .entry-item :is(a, .button) {
+		background-color: var(--color-ice);
+		border-left-color: var(--color-midnight);
+		color: var(--color-midnight);
+		font-weight: 700;
+	}
+
+	.entry-item :is(a, .button):hover,
+	.vertical .active .entry-item :is(a, .button):hover {
+		background-color: var(--color-ocean);
+		border-left-color: var(--color-ocean);
+		color: var(--color-white);
+		font-weight: 700;
+	}
+
+	.nav:not(.is-compact) .entry-item .icon {
+		display: none;
+	}
+
+	/** Compact mode */
+	.entry.hide-label :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+		place-items: center;
+	}
+
+	.entry.hide-label :is(a, button) {
+		padding: 0;
+		border-left: 0;
+	}
+}

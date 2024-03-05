@@ -1,0 +1,162 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	/* INPUT */
+	kol-input {
+		display: grid;
+		gap: 0.4em;
+	}
+
+	label {
+		cursor: pointer;
+		display: grid;
+		line-height: 20px;
+		gap: 8px;
+		width: 100%;
+	}
+
+	input {
+		cursor: pointer;
+		width: 100%;
+		border-color: var(--color-grey);
+		border-width: 2px;
+		border-style: solid;
+		border-radius: 5px;
+		/* padding: 10px 14px; */
+		line-height: 24px;
+		font-size: 16px;
+	}
+
+	input:hover {
+		border-color: var(--color-midnight);
+		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
+	}
+
+	input:focus:hover {
+		box-shadow: none;
+	}
+
+	input:hover {
+		border-color: var(--color-midnight);
+	}
+
+	kol-alert {
+		display: block;
+		width: 100%;
+	}
+
+	.required legend>span::after {
+		content: '*';
+		padding-left: 0.125em;
+	}
+
+	/* RADIO */
+	fieldset {
+		border: 0px;
+		margin: 0px;
+		padding: 0px;
+		display: grid;
+		gap: 0.25em;
+	}
+
+	.radio-input-wrapper {
+		cursor: pointer;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		position: relative;
+		min-height: 44px;
+		margin: 0;
+		gap: 0.5rem;
+	}
+
+	.radio-input-wrapper label {
+		cursor: pointer;
+		display: flex;
+		padding-left: 0.25em;
+		width: 100%;
+	}
+
+	.radio-input-wrapper label span {
+		margin-top: 0.125em;
+	}
+
+	.radio-input-wrapper input[type='radio'] {
+		appearance: none;
+		transition: 0.5s;
+		border-radius: 100%;
+		height: calc(6 * var(--spacing));
+		min-width: calc(6 * var(--spacing));
+		width: calc(6 * var(--spacing));
+	}
+
+	.radio-input-wrapper input[type='radio']:before {
+		content: '';
+		cursor: pointer;
+		border-radius: 100%;
+		display: block;
+	}
+
+	.radio-input-wrapper input[type='radio']:checked:before {
+		background-color: var(--color-midnight);
+	}
+
+	.radio-input-wrapper input[type='radio']:disabled {
+		cursor: not-allowed;
+		border-color: var(--border-default);
+		background-color: var(--background-light-grey);
+	}
+
+	kol-alert.error {
+		order: 1;
+	}
+
+	fieldset legend {
+		order: 2;
+		display: contents;
+	}
+
+	fieldset kol-input {
+		order: 3;
+	}
+
+	fieldset.error {
+		border-left: 3px solid var(--color-red);
+		color: var(--color-red);
+		font-weight: 700;
+		padding-left: 1em;
+	}
+
+	fieldset.error input:focus,
+	fieldset.error select:focus,
+	fieldset.error textarea:focus {
+		outline-color: var(--color-red) !important;
+	}
+
+	fieldset.error kol-alert.error {
+		margin-left: -0.25em;
+		color: var(--color-red);
+		font-weight: 700;
+	}
+
+	fieldset.horizontal {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1rem;
+	}
+
+	fieldset.horizontal legend {
+		display: inline-block;
+		margin-bottom: 0.25em;
+	}
+
+	fieldset .input-slot {
+		gap: 0.5rem;
+	}
+
+	.radio-input-wrapper label {
+		padding-left: 0;
+	}
+}

@@ -1,0 +1,127 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	kol-input {
+		gap: 0.25em;
+		display: grid;
+		grid-template-areas: 'error error' 'label counter' 'input input' 'hint hint';
+		grid-template-columns: 1fr 115px;
+	}
+
+	kol-input .error {
+		order: 1;
+		grid-area: error;
+	}
+
+	kol-input label {
+		order: 2;
+		grid-area: label;
+	}
+
+	kol-input .counter {
+		order: 2;
+		grid-area: counter;
+		justify-self: end;
+	}
+
+	kol-input .input {
+		order: 3;
+		grid-area: input;
+	}
+
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
+		grid-area: hint;
+	}
+
+	textarea {
+		border: none;
+	}
+
+	input::placeholder {
+		color: var(--color-grey);
+	}
+
+	.input {
+		background-color: var(--color-white);
+		border-color: var(--color-grey);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: 2px;
+		padding: 0 0.5em;
+	}
+
+	.input>kol-icon {
+		width: 1em;
+	}
+
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+	}
+
+	.input>input:first-child {
+		padding-left: 0.375em;
+	}
+
+	.input>input:last-child {
+		padding-right: 0.375em;
+	}
+
+	.input:hover {
+		border-color: var(--color-midnight);
+	}
+
+	textarea:disabled {
+		cursor: not-allowed;
+	}
+
+	.required label>span::after {
+		content: '*';
+		padding-left: 0.125em;
+	}
+
+	kol-input.error .input {
+		border-color: var(--color-red);
+		border-width: 3px;
+	}
+
+	kol-input.error:not(.hidden-error) {
+		border-left: 3px solid var(--color-red);
+		padding-left: 1em;
+	}
+
+	kol-input.error kol-alert.error {
+		color: var(--color-red);
+		font-weight: 700;
+	}
+
+	select[multiple],
+	textarea {
+		overflow: auto;
+	}
+
+	textarea {
+		display: block;
+	}
+
+	.input {
+		position: relative;
+	}
+
+	.input textarea~span {
+		position: absolute;
+		top: -1.5rem;
+		right: 0;
+		color: var(--color-grey);
+	}
+}
