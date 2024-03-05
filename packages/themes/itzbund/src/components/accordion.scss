@@ -1,5 +1,5 @@
 @layer kol-theme-component {
-	:host>div {
+	:host > div {
 		font-family: var(--font-family);
 		box-sizing: border-box;
 		width: 100%;
@@ -11,13 +11,13 @@
 		border-radius: 0.25rem;
 	}
 
-	:host>div>kol-heading-wc {
+	:host > div > kol-heading-wc {
 		font-weight: 700;
 		font-size: 1.25rem;
 		line-height: 1.75rem;
 	}
 
-	:host>div>kol-heading-wc button {
+	:host > div > kol-heading-wc button {
 		cursor: pointer;
 		width: 100%;
 		margin: 0;
@@ -32,29 +32,29 @@
 		padding: 0.5rem;
 	}
 
-	:host>div[part*='open']>kol-heading-wc button {
+	:host > div[part*='open'] > kol-heading-wc button {
 		padding-bottom: 0;
 	}
 
-	:host>div[part*='open']>kol-heading-wc button kol-icon {
+	:host > div[part*='open'] > kol-heading-wc button kol-icon {
 		width: 1em;
 	}
 
-	:host>div div[part='header'],
-	:host>div[part*='open'] div[part='content'] {
+	:host > div div[part='header'],
+	:host > div[part*='open'] div[part='content'] {
 		margin: 0;
 	}
 
-	:host>div div[part='header'] {
+	:host > div div[part='header'] {
 		padding-left: 2rem;
 	}
 
-	:host>div[part*='open'] div[part='content'] {
+	:host > div[part*='open'] div[part='content'] {
 		margin: 0;
 		padding: 0 1rem 1rem 2.25rem;
 	}
 
-	:host>div>kol-heading-wc button kol-icon::part(icon) {
+	:host > div > kol-heading-wc button kol-icon::part(icon) {
 		color: var(--color-midnight);
 	}
 
@@ -69,12 +69,12 @@
 		padding: 0.5rem;
 	}
 
-	:host>div>kol-heading-wc button kol-icon::part(close)::before {
+	:host > div > kol-heading-wc button kol-icon::part(close)::before {
 		font-family: 'Font Awesome 6 Free';
 		content: '\f077';
 	}
 
-	:host>div>kol-heading-wc button kol-icon::part(open)::before {
+	:host > div > kol-heading-wc button kol-icon::part(open)::before {
 		font-family: 'Font Awesome 6 Free';
 		content: '\f078';
 	}
