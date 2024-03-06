@@ -12,7 +12,7 @@ import { Component, h, Host } from '@stencil/core';
 export class KolButtonGroup implements ButtonGroupProps {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-button-group">
 				<kol-button-group-wc>
 					<slot />
 				</kol-button-group-wc>

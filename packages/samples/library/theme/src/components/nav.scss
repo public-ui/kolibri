@@ -4,12 +4,15 @@
 	nav {
 		background-color: var(--color-mute);
 	}
+
 	ul {
 		list-style: none;
 	}
-	kol-link-wc {
+
+	.kol-link-wc {
 		display: flex;
 	}
+
 	.entry-item a,
 	.entry-item .button {
 		align-items: center;
@@ -31,10 +34,12 @@
 		.vertical .active & {
 			border-left-color: var(--color-primary);
 		}
+
 		&:focus-visible {
 			@include focus-outline;
 		}
 	}
+
 	.entry-item a:hover {
 		text-decoration: underline;
 	}
@@ -48,6 +53,7 @@
 	.active .entry-item .button {
 		font-weight: bold;
 	}
+
 	.active .list .entry-item a,
 	.active .list .entry-item .button {
 		font-weight: normal;
@@ -62,6 +68,7 @@
 				background-color: var(--color-primary);
 				color: var(--color-light);
 			}
+
 			&:focus-visible {
 				@include focus-outline;
 			}

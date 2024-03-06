@@ -2,12 +2,14 @@
 	:host {
 		font-family: var(--font-family);
 	}
+
 	:host > div {
 		background-color: var(--color-grey-5);
 		border-color: var(--color-grey-25);
 		border-style: solid;
 		border-width: 1px;
 	}
+
 	:host > div .headline button {
 		text-align: left;
 		width: 100%;
@@ -15,29 +17,35 @@
 		display: flex;
 		place-items: center;
 	}
-	:host > div .headline button kol-icon {
+
+	:host > div .headline button .kol-icon {
 		margin-bottom: 0.75rem;
 		margin-inline-end: 1rem;
 		margin-inline-start: 0;
 		margin-top: 0.75rem;
 	}
+
 	:host > div .headline button span {
 		color: var(--color-grey);
 		font-weight: var(--font-weight-bold);
 		padding: 0.75rem 0;
 		width: 100%;
 	}
+
 	:host > div[part*='open'] .headline button span {
 		border-bottom: 1px solid var(--color-grey);
 	}
+
 	:host > div .headline button:focus,
 	:host > div .headline button:hover {
 		background-color: var(--color-grey-25);
 	}
+
 	:host > div .headline button:focus {
 		outline: 2px solid var(--color-blue);
 		outline-offset: -2px;
 	}
+
 	.content {
 		padding: var(--spacing-s) var(--spacing-m);
 	}

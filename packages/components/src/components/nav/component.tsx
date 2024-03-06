@@ -197,7 +197,7 @@ export class KolNav implements NavAPI {
 		const hideLabel = this.state._hideLabel === true;
 		const orientation = this.state._orientation;
 		return (
-			<Host>
+			<Host class="kol-nav">
 				<div
 					class={{
 						nav: true,

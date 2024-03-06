@@ -2,66 +2,85 @@
 	:host {
 		font-family: var(--font-family);
 	}
+
 	:host > div {
 		background-color: var(--color-white);
 	}
+
 	:host > div.card {
 		border-style: solid;
 		border-width: 2px;
 	}
+
 	:host > div.msg {
 		border: none;
 	}
-	:host .msg .heading kol-icon {
+
+	:host .msg .heading .kol-icon {
 		font-size: 1.5em;
 		margin: var(--spacing-2xs);
 	}
+
 	:host .msg .heading > div {
 		padding: var(--spacing-2xs);
 	}
+
 	:host .card {
 		padding-bottom: 1.5rem;
 		padding-inline-end: 0.5rem;
 		padding-inline-start: 1.5rem;
 		padding-top: 1.5rem;
 	}
+
 	:host .card .heading {
 		gap: 0.5rem;
 	}
+
 	:host .card .content {
 		margin-left: 2.5rem;
 	}
-	:host .card .heading kol-icon {
+
+	:host .card .heading .kol-icon {
 		font-size: 2rem;
 	}
+
 	:host .default {
 		border-color: var(--color-grey);
 	}
-	:host .default .heading kol-icon {
+
+	:host .default .heading .kol-icon {
 		color: var(--color-grey);
 	}
+
 	:host .error {
 		border-color: var(--color-red);
 	}
-	:host .error .heading kol-icon {
+
+	:host .error .heading .kol-icon {
 		color: var(--color-red);
 	}
+
 	:host .info {
 		border-color: var(--color-blue);
 	}
-	:host .info .heading kol-icon {
+
+	:host .info .heading .kol-icon {
 		color: var(--color-blue);
 	}
+
 	:host .success {
 		border-color: var(--color-green);
 	}
-	:host .success .heading kol-icon {
+
+	:host .success .heading .kol-icon {
 		color: var(--color-green);
 	}
+
 	:host .warning {
 		border-color: var(--color-orange);
 	}
-	:host .warning .heading kol-icon {
+
+	:host .warning .heading .kol-icon {
 		color: var(--color-orange);
 	}
 }

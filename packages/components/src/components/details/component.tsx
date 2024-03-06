@@ -46,7 +46,7 @@ export class KolDetails implements DetailsAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-details">
 				<details
 					ref={this.catchDetails}
 					class={{

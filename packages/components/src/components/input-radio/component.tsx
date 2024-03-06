@@ -55,7 +55,7 @@ export class KolInputRadio implements InputRadioAPI {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-radio">
 				<fieldset
 					class={{
 						fieldset: true,

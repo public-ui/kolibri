@@ -12,7 +12,7 @@ import { Component, h, Prop } from '@stencil/core';
 export class KolSpan implements SpanProps {
 	public render(): JSX.Element {
 		return (
-			<kol-span-wc _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey}>
+			<kol-span-wc _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey} class="kol-span">
 				<slot name="expert" slot="expert"></slot>
 			</kol-span-wc>
 		);

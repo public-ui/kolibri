@@ -67,6 +67,7 @@ export class KolInputPassword implements InputPasswordAPI {
 		return (
 			<Host
 				class={{
+					'kol-input-password': true,
 					'has-value': this.state._hasValue,
 				}}
 			>

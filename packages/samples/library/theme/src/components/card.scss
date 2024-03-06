@@ -9,16 +9,20 @@
 		box-shadow: 0 0 0.25rem var(--color-subtle);
 		border-radius: var(--border-radius);
 	}
-	:host kol-heading-wc {
+
+	:host .kol-heading-wc {
 		line-height: 1.75rem;
 	}
+
 	:host div.header {
 		padding: 1rem 1rem 0.5rem 1rem;
 	}
+
 	:host div.content {
 		padding: 0.5rem 1rem 1rem;
 		overflow: hidden;
 	}
+
 	:host div.footer {
 		padding: 0.5rem 1rem;
 	}

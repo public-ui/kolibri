@@ -39,7 +39,7 @@ export class KolButtonLink implements ButtonLinkProps {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-button-link">
 				<kol-button-wc
 					ref={this.catchRef}
 					_accessKey={this._accessKey}

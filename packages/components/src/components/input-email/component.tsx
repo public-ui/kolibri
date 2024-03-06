@@ -70,6 +70,7 @@ export class KolInputEmail implements InputEmailAPI {
 		return (
 			<Host
 				class={{
+					'kol-input-email': true,
 					'has-value': this.state._hasValue,
 				}}
 			>

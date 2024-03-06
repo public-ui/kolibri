@@ -833,7 +833,7 @@ export class KolTable implements TableAPI {
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination() : null;
 
 		return (
-			<Host>
+			<Host class="kol-table">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the

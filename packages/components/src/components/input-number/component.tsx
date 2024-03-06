@@ -69,6 +69,7 @@ export class KolInputNumber implements InputNumberAPI {
 		return (
 			<Host
 				class={{
+					'kol-input-number': true,
 					'has-value': this.state._hasValue,
 				}}
 			>

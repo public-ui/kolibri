@@ -29,8 +29,8 @@ body,
 	display: grid;
 }
 
-kol-accordion p,
-kol-card p {
+.kol-accordion p,
+.kol-card p {
 	padding: 0;
 	text-align: justify;
 	margin: 0;
@@ -44,28 +44,28 @@ kol-card p {
 	border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
 
-kol-accordion div[slot='content'],
-kol-accordion div[slot='header'] {
+.kol-accordion div[slot='content'],
+.kol-accordion div[slot='header'] {
 	padding: 0.5rem;
 }
 
-kol-logo {
+.kol-logo {
 	width: 18%;
 }
 
-kol-badge[_icon='ui-rating'],
-kol-badge[_label='Und ich!'] {
+.kol-badge[_icon='ui-rating'],
+.kol-badge[_label='Und ich!'] {
 	font-weight: 600;
 }
 
-kol-button.min-width {
+.kol-button.min-width {
 	display: inline-block;
 	margin-bottom: 0.1rem;
 	margin-right: 0.1rem;
 	width: 8rem;
 }
 
-kol-logo {
+.kol-logo {
 	display: block;
 	width: 175px;
 }
@@ -116,24 +116,24 @@ div.hr {
 	background-color: #850550;
 }
 
-kol-card[_level='5'],
-kol-card[_level='6'] {
+.kol-card[_level='5'],
+.kol-card[_level='6'] {
 	display: block;
 }
 
-kol-icon[_icon='codicon codicon-home'],
-kol-icon[_icon='fa-solid fa-house'],
-kol-icon[_icon='icofont-home'],
-kol-icon[_icon='ti ti-home'] {
+.kol-icon[_icon='codicon codicon-home'],
+.kol-icon[_icon='fa-solid fa-house'],
+.kol-icon[_icon='icofont-home'],
+.kol-icon[_icon='ti ti-home'] {
 	color: #00646b;
 	font-size: 500%;
 }
 
-kol-logo {
+.kol-logo {
 	margin: 0.25rem;
 }
 
-kol-nav.max-width {
+.kol-nav.max-width {
 	display: block;
 	max-width: 20em;
 }

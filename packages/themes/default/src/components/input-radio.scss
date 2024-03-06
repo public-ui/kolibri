@@ -34,7 +34,7 @@
 		border-color: var(--color-primary);
 	}
 
-	kol-alert {
+	.kol-alert {
 		display: block;
 		width: 100%;
 	}
@@ -100,7 +100,7 @@
 		background-color: var(--color-mute-variant);
 	}
 
-	kol-alert.error {
+	.kol-alert.error {
 		order: 1;
 	}
 
@@ -109,7 +109,7 @@
 		display: contents;
 	}
 
-	fieldset kol-input {
+	fieldset .kol-input {
 		order: 3;
 	}
 
@@ -126,7 +126,7 @@
 		outline-color: var(--color-danger) !important;
 	}
 
-	fieldset.error kol-alert.error {
+	fieldset.error .kol-alert.error {
 		margin-left: -0.25em;
 		color: var(--color-danger);
 		font-weight: 700;
