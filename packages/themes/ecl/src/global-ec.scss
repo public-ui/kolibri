@@ -55,7 +55,6 @@
 		--font-weight-bold: 600;
 		--line-height: 1.5em;
 		--line-height-heading: 1.2em;
-		/* ?! */
 		--spacing-4xl: 64px;
 		--spacing-3xl: 48px;
 		--spacing-2xl: 40px;
@@ -65,12 +64,11 @@
 		--spacing-s: 12px;
 		--spacing-xs: 8px;
 		--spacing-2xs: 4px;
-		/* ?! */
 	}
 
 	:host {
-		background-color: transparent;
 		/* Reset global background-color defined by components */
+		background-color: transparent;
 		display: inline-block;
 	}
 

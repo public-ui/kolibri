@@ -121,12 +121,11 @@
 		--spacing-s: 12px;
 		--spacing-xs: 8px;
 		--spacing-2xs: 4px;
-		/* ?! */
 	}
 
 	:host {
-		background-color: transparent;
 		/* Reset global background-color defined by components */
+		background-color: transparent;
 		display: inline-block;
 	}
 

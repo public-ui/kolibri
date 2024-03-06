@@ -18,8 +18,8 @@
 	}
 
 	:host {
-		background-color: transparent;
 		/* Reset global background-color defined by components */
+		background-color: transparent;
 		font-family: var(--font-family);
 		font-size: var(--font-size);
 	}
