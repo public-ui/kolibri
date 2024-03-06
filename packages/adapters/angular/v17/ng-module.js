@@ -1,16 +1,7 @@
 const fs = require('fs');
-const path = require('path');
 
-let ngComponents = fs.readFileSync('./src/components.ts', 'utf-8');
-// ngFile = ngFile.replace(/, NgModule/g, '');
-// ngFile = ngFile.replace(/\/\* AutoGen NgModule(.*\n?)*/, '');
-
-const componentList = ngComponents.split('export class');
-componentList.splice(0, 1);
-componentList.forEach((component, index) => {
-	componentList[index] = component.replace(/ \{(.*\n?)*/, '').trim();
-});
-
+const componentFileContents = fs.readFileSync('./src/components.ts', 'utf-8');
+const componentList = [...componentFileContents.matchAll(/export class ([^ ]+)/g)].map((group) => group[1]);
 const componentListStr = componentList.join(', ');
 
 fs.writeFileSync(
@@ -18,15 +9,18 @@ fs.writeFileSync(
 	`
 /* AutoGen NgModule */
 
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { ${componentListStr} } from './components';
-export { ${componentListStr} }
+import { ReplaceTagDirective } from './angular-component-lib/ReplaceTagDirective';
+
 
 @NgModule({
-  declarations: [${componentListStr}],
+  declarations: [ReplaceTagDirective, ${componentListStr}],
   exports: [${componentListStr}],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class KoliBriModule {}
+export { ${componentListStr} }
 `,
-	'utf-8'
+	'utf-8',
 );
