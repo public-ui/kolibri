@@ -3,25 +3,25 @@
 		font-family: var(--font-family);
 	}
 
-	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
+	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon {
 		font-size: 1.5rem;
 	}
 
-	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon::part(icon) {
+	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon::part(icon) {
 		font-family: 'Material Symbols Rounded';
 		font-weight: 400;
 		color: var(--color-grey);
 	}
 
-	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon::part(icon)::before {
+	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon::part(icon)::before {
 		content: 'chevron_right';
 	}
 
-	kol-link::part(icon) {
+	.kol-link::part(icon) {
 		font-size: 1.25rem;
 	}
 
-	ul li > :is(span, kol-link) {
+	ul li > :is(span, .kol-link) {
 		line-height: 1.25rem;
 	}
 
@@ -29,7 +29,7 @@
 		color: var(--color-grey);
 	}
 
-	kol-link {
+	.kol-link {
 		font-family: var(--font-family);
 	}
 }

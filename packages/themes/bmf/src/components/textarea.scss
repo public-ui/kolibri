@@ -3,35 +3,35 @@
 		font-family: var(--font-family);
 	}
 
-	kol-input {
+	.kol-input {
 		gap: 0.25em;
 		display: grid;
 		grid-template-areas: 'error error' 'label counter' 'input input' 'hint hint';
 		grid-template-columns: 1fr 115px;
 	}
 
-	kol-input .error {
+	.kol-input .error {
 		order: 1;
 		grid-area: error;
 	}
 
-	kol-input label {
+	.kol-input label {
 		order: 2;
 		grid-area: label;
 	}
 
-	kol-input .counter {
+	.kol-input .counter {
 		order: 2;
 		grid-area: counter;
 		justify-self: end;
 	}
 
-	kol-input .input {
+	.kol-input .input {
 		order: 3;
 		grid-area: input;
 	}
 
-	kol-input .hint {
+	.kol-input .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -55,7 +55,7 @@
 		padding: 0 0.5em;
 	}
 
-	.input > kol-icon {
+	.input > .kol-icon {
 		width: 1em;
 	}
 
@@ -90,17 +90,17 @@
 		padding-left: 0.125em;
 	}
 
-	kol-input.error .input {
+	.kol-input.error .input {
 		border-color: var(--color-red);
 		border-width: 3px;
 	}
 
-	kol-input.error:not(.hidden-error) {
+	.kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
 
-	kol-input.error kol-alert.error {
+	.kol-input.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}

@@ -28,9 +28,9 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	});
 
 	return `
-<kol-link>
+<kol-link class="kol-link">
   <mock:shadow-root>
-  <kol-link-wc>
+  <kol-link-wc class="kol-link-wc">
 		<a
 			${state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label}${isExternal ? ' (kol-open-link-in-tab)' : ''}"` : ''}
 			class="${classNames}"
@@ -52,6 +52,9 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot>`,
+				},
+				{
+					additionalClassNames: ['kol-span-wc'],
 				}
 			)}
 			${
@@ -61,7 +64,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 								_label: state._hideLabel ? '' : translate('kol-open-link-in-tab'),
 								_icons: 'codicon codicon-link-external',
 							},
-							` class="external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`
+							` class="kol-icon external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`
 					  )
 					: ''
 			}

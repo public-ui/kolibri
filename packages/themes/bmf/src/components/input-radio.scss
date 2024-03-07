@@ -4,7 +4,7 @@
 	}
 
 	/* INPUT */
-	kol-input {
+	.kol-input {
 		display: grid;
 		gap: 0.4em;
 	}
@@ -42,7 +42,7 @@
 		border-color: var(--color-midnight);
 	}
 
-	kol-alert {
+	.kol-alert {
 		display: block;
 		width: 100%;
 	}
@@ -109,7 +109,7 @@
 		background-color: var(--background-light-grey);
 	}
 
-	kol-alert.error {
+	.kol-alert.error {
 		order: 1;
 	}
 
@@ -118,7 +118,7 @@
 		display: contents;
 	}
 
-	fieldset kol-input {
+	fieldset .kol-input {
 		order: 3;
 	}
 
@@ -135,7 +135,7 @@
 		outline-color: var(--color-red) !important;
 	}
 
-	fieldset.error kol-alert.error {
+	fieldset.error .kol-alert.error {
 		margin-left: -0.25em;
 		color: var(--color-red);
 		font-weight: 700;

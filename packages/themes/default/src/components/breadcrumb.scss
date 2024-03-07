@@ -2,20 +2,25 @@
 	:host {
 		font-family: var(--font-family);
 	}
-	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
+
+	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon {
 		font-size: 0.75rem;
 		color: var(--color-subtle);
 	}
-	kol-link::part(icon) {
+
+	.kol-link::part(icon) {
 		font-size: 1.25rem;
 	}
-	ul li > :is(span, kol-link) {
+
+	ul li > :is(span, .kol-link) {
 		line-height: 1.25rem;
 	}
+
 	ul li:last-child > span {
 		color: var(--color-subtle);
 	}
-	kol-link {
+
+	.kol-link {
 		font-family: var(--font-family);
 	}
 }

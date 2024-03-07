@@ -4,20 +4,20 @@
 		font-family: var(--font-family);
 	}
 
-	details kol-indented-text {
+	details .kol-indented-text {
 		margin: 0.25em 0px 0px 0.65em;
 	}
 
-	details kol-icon {
+	details .kol-icon {
 		font-size: 2rem;
 	}
 
-	kol-icon::part(icon) {
+	.kol-icon::part(icon) {
 		font-family: 'Material Symbols Rounded';
 		font-weight: 400;
 	}
 
-	details kol-icon::part(icon):before {
+	details .kol-icon::part(icon):before {
 		content: 'chevron_right';
 	}
 }

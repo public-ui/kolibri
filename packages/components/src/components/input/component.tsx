@@ -54,6 +54,7 @@ export class KolInput implements Props {
 		return (
 			<Host
 				class={{
+					'kol-input': true,
 					disabled: this._disabled === true,
 					error: hasError === true,
 					'read-only': this._readOnly === true,

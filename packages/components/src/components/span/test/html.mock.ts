@@ -58,7 +58,7 @@ export const getSpanWcHtml = (
 							_label: (icon.left as KoliBriCustomIcon).label ?? '',
 							_icons: (icon.left as KoliBriCustomIcon).icon,
 						},
-						` class="icon left"`
+						` class="kol-icon icon left"`
 				  )
 				: ''
 		}
@@ -104,7 +104,7 @@ export const getSpanHtml = (
 	return `
 <kol-span>
 	<mock:shadow-root>
-		${getSpanWcHtml(props, slots)}
+		${getSpanWcHtml(props, slots, { additionalClassNames: ['kol-span', 'kol-span-wc'] })}
 	</mock:shadow-root>
 </kol-span>`;
 };

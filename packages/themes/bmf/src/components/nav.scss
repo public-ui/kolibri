@@ -55,7 +55,7 @@
 	}
 
 	/** Compact mode */
-	.entry.hide-label :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	.entry.hide-label :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child {
 		place-items: center;
 	}
 

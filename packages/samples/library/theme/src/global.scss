@@ -18,8 +18,8 @@
 	}
 
 	:host {
-		background-color: transparent;
 		/* Reset global background-color defined by components */
+		background-color: transparent;
 		font-family: var(--font-family);
 		font-size: var(--font-size);
 	}
@@ -43,8 +43,8 @@
 	}
 
 	*[tabindex]:focus,
-	kol-input:not(.checkbox, .radio) .input:focus-within,
-	kol-input:is(.checkbox, .radio) input:focus,
+	.kol-input:not(.checkbox, .radio) .input:focus-within,
+	.kol-input:is(.checkbox, .radio) input:focus,
 	summary:focus {
 		cursor: pointer;
 		outline-color: var(--color-primary-variant);
@@ -54,31 +54,31 @@
 		transition: outline-offset 0.2s linear;
 	}
 
-	kol-heading-wc {
+	.kol-heading-wc {
 		font-weight: 700;
 	}
 
-	kol-tooltip-wc .tooltip-floating {
+	.kol-tooltip-wc .tooltip-floating {
 		border: var(--border-width) solid var(--color-subtle);
 		border-radius: var(--border-radius);
 	}
 
-	kol-tooltip-wc .tooltip-arrow {
+	.kol-tooltip-wc .tooltip-arrow {
 		border: var(--border-width) solid var(--color-subtle);
 	}
 
-	kol-tooltip-wc .tooltip-area {
+	.kol-tooltip-wc .tooltip-area {
 		background-color: var(--color-light);
 	}
 
-	kol-tooltip-wc .tooltip-content {
+	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5;
 		padding: 0.5rem 0.75rem;
 	}
 
-	kol-span-wc,
-	kol-span-wc > span {
+	.kol-span-wc,
+	.kol-span-wc > span {
 		gap: 0.5rem;
 	}
 

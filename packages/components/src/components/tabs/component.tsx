@@ -142,7 +142,7 @@ export class KolTabs implements TabsAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-tabs">
 				<div
 					ref={(el) => {
 						this.tabPanelsElement = el as HTMLElement;

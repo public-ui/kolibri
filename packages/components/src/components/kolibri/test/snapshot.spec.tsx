@@ -14,9 +14,9 @@ describe('Test KolKolibri', () => {
 	it('render default', async () => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			html: `<kol-kolibri></kol-kolibri>`,
+			html: `<kol-kolibri  class="kol-kolibri"></kol-kolibri>`,
 		});
-		expect(page.root).toEqualHtml(`<kol-kolibri>
+		expect(page.root).toEqualHtml(`<kol-kolibri class="kol-kolibri">
   <mock:shadow-root>
     <svg ${DEFAULT_HTML_SVG_PROPS} fill="rgb(0,60,120)">
       ${DEFAULT_PATH_TAGS}
@@ -31,9 +31,9 @@ describe('Test KolKolibri', () => {
 	it('render not labeled', async () => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			html: `<kol-kolibri _labeled="false"></kol-kolibri>`,
+			html: `<kol-kolibri _labeled="false" class="kol-kolibri"></kol-kolibri>`,
 		});
-		expect(page.root).toEqualHtml(`<kol-kolibri _labeled="false">
+		expect(page.root).toEqualHtml(`<kol-kolibri _labeled="false" class="kol-kolibri">
   <mock:shadow-root>
     <svg ${DEFAULT_HTML_SVG_PROPS} fill="rgb(0,60,120)">
       ${DEFAULT_PATH_TAGS}

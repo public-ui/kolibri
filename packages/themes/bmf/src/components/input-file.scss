@@ -3,29 +3,29 @@
 		font-family: var(--font-family);
 	}
 
-	kol-input {
+	.kol-input {
 		gap: 0.25em;
 	}
 
-	kol-input .error {
+	.kol-input .error {
 		order: 1;
 	}
 
-	kol-input label {
+	.kol-input label {
 		order: 2;
 	}
 
-	kol-input .input {
+	.kol-input .input {
 		order: 3;
 	}
 
-	kol-input .hint {
+	.kol-input .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
 	}
 
-	kol-input .input input[type='file'] {
+	.kol-input .input input[type='file'] {
 		padding-top: calc(0.5em + 2px);
 	}
 
@@ -50,7 +50,7 @@
 		padding: 0 0.5em;
 	}
 
-	.input > kol-icon {
+	.input > .kol-icon {
 		width: 1em;
 	}
 
@@ -85,22 +85,22 @@
 		padding-left: 0.125em;
 	}
 
-	kol-input.error .input {
+	.kol-input.error .input {
 		border-color: var(--color-red);
 		border-width: 3px;
 	}
 
-	kol-input.error:not(.hidden-error) {
+	.kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
 
-	kol-input.error kol-alert.error {
+	.kol-input.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
 
-	kol-input.disabled .input {
+	.kol-input.disabled .input {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 		color: var(--color-black);

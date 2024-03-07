@@ -73,8 +73,8 @@
 		vertical-align: top;
 	}
 
-	th kol-button,
-	td kol-button {
+	th .kol-button,
+	td .kol-button {
 		margin-top: -0.75rem;
 		margin-bottom: -0.75rem;
 	}
@@ -103,7 +103,7 @@
 			grid-auto-flow: column;
 		}
 
-		:host > div:last-child kol-pagination {
+		:host > div:last-child .kol-pagination {
 			display: flex;
 			gap: 1rem;
 		}

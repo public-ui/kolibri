@@ -9,7 +9,7 @@ import { Component, h, Host, State } from '@stencil/core';
 export class KolButtonGroupWc implements ButtonGroupAPI {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-button-group-wc">
 				<slot />
 			</Host>
 		);

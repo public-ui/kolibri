@@ -11,7 +11,7 @@
 		height: 0;
 	}
 
-	kol-link-wc a {
+	.kol-link-wc a {
 		left: -99999px;
 		overflow: hidden;
 		position: absolute;
@@ -19,7 +19,7 @@
 		line-height: 1em;
 	}
 
-	kol-link-wc a:focus {
+	.kol-link-wc a:focus {
 		background-color: #fff;
 		left: unset;
 		position: unset;

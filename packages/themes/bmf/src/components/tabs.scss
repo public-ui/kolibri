@@ -3,7 +3,7 @@
 		font-family: var(--font-family);
 	}
 
-	:host kol-button-group-wc {
+	:host .kol-button-group-wc {
 		display: inline-flex;
 		gap: 2rem;
 		flex-wrap: wrap;
@@ -34,15 +34,15 @@
 		color: var(--color-midnight);
 	}
 
-	button:not(.selected) kol-span-wc > span {
+	button:not(.selected) .kol-span-wc > span {
 		padding-bottom: 0.25em;
 	}
 
-	button.selected kol-span-wc > span {
+	button.selected .kol-span-wc > span {
 		border-bottom: 0.25em solid;
 	}
 
-	button kol-span-wc > span {
+	button .kol-span-wc > span {
 		gap: 0.5rem;
 	}
 
@@ -78,7 +78,7 @@
 		grid-template-columns: 1fr auto;
 	}
 
-	:host > .tabs-align-right kol-button-group-wc {
+	:host > .tabs-align-right .kol-button-group-wc {
 		display: grid;
 		order: 2;
 	}
@@ -88,7 +88,7 @@
 		grid-template-columns: auto 1fr;
 	}
 
-	:host > .tabs-align-left kol-button-group-wc {
+	:host > .tabs-align-left .kol-button-group-wc {
 		display: grid;
 		order: 0;
 	}
@@ -98,19 +98,19 @@
 		grid-template-rows: 1fr auto;
 	}
 
-	:host > .tabs-align-bottom kol-button-group-wc {
+	:host > .tabs-align-bottom .kol-button-group-wc {
 		order: 2;
 	}
 
-	:host > .tabs-align-bottom kol-button-group-wc > div {
+	:host > .tabs-align-bottom .kol-button-group-wc > div {
 		display: flex;
 	}
 
-	:host > .tabs-align-bottom > kol-button-group-wc > div > div:first-child {
+	:host > .tabs-align-bottom > .kol-button-group-wc > div > div:first-child {
 		margin: 0px 1em 0px 0px;
 	}
 
-	:host > .tabs-align-bottom > kol-button-group-wc > div > div {
+	:host > .tabs-align-bottom > .kol-button-group-wc > div > div {
 		margin: 0px 1em;
 	}
 
@@ -119,19 +119,19 @@
 		grid-template-rows: auto 1fr;
 	}
 
-	:host > .tabs-align-top kol-button-group-wc {
+	:host > .tabs-align-top .kol-button-group-wc {
 		order: 0;
 	}
 
-	:host > .tabs-align-top kol-button-group-wc > div {
+	:host > .tabs-align-top .kol-button-group-wc > div {
 		display: flex;
 	}
 
-	:host > .tabs-align-top > kol-button-group-wc > div > div:first-child {
+	:host > .tabs-align-top > .kol-button-group-wc > div > div:first-child {
 		margin: 0px 1em 0px 0px;
 	}
 
-	:host > .tabs-align-top > kol-button-group-wc > div > div {
+	:host > .tabs-align-top > .kol-button-group-wc > div > div {
 		margin: 0px 1em;
 	}
 
@@ -147,40 +147,40 @@
 		grid-template-columns: 1fr auto;
 	}
 
-	:host > .tabs-align-left kol-button-group-wc,
-	:host > .tabs-align-top kol-button-group-wc {
+	:host > .tabs-align-left .kol-button-group-wc,
+	:host > .tabs-align-top .kol-button-group-wc {
 		order: 0;
 	}
 
-	:host > .tabs-align-bottom kol-button-group-wc,
-	:host > .tabs-align-right kol-button-group-wc {
+	:host > .tabs-align-bottom .kol-button-group-wc,
+	:host > .tabs-align-right .kol-button-group-wc {
 		order: 1;
 	}
 
-	:host > .tabs-align-left kol-button-group-wc,
-	:host > .tabs-align-right kol-button-group-wc {
+	:host > .tabs-align-left .kol-button-group-wc,
+	:host > .tabs-align-right .kol-button-group-wc {
 		gap: inherit;
 	}
 
-	:host > div.tabs-align-left kol-button-group-wc > div,
-	:host > div.tabs-align-left kol-button-group-wc > div > div,
-	:host > div.tabs-align-right kol-button-group-wc > div,
-	:host > div.tabs-align-right kol-button-group-wc > div > div {
+	:host > div.tabs-align-left .kol-button-group-wc > div,
+	:host > div.tabs-align-left .kol-button-group-wc > div > div,
+	:host > div.tabs-align-right .kol-button-group-wc > div,
+	:host > div.tabs-align-right .kol-button-group-wc > div > div {
 		display: grid;
 	}
 
-	:host > div.tabs-align-left kol-button-group-wc > div > div kol-button-wc,
-	:host > div.tabs-align-right kol-button-group-wc > div > div kol-button-wc {
+	:host > div.tabs-align-left .kol-button-group-wc > div > div .kol-button-wc,
+	:host > div.tabs-align-right .kol-button-group-wc > div > div .kol-button-wc {
 		width: 100%;
 	}
 
-	:host > div.tabs-align-bottom kol-button-group-wc div,
-	:host > div.tabs-align-top kol-button-group-wc div {
+	:host > div.tabs-align-bottom .kol-button-group-wc div,
+	:host > div.tabs-align-top .kol-button-group-wc div {
 		display: flex;
 		flex-wrap: wrap;
 	}
 
-	:host kol-button-group-wc button {
+	:host .kol-button-group-wc button {
 		border: none;
 	}
 }
