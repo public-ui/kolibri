@@ -1,6 +1,9 @@
+@import '../mixins-ec/alert-wc.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		@include kol-alert-theme;
 	}
 
 	fieldset {
@@ -13,7 +16,7 @@
 		gap: 0.25rem;
 	}
 
-	fieldset .kol-alert {
+	fieldset .kol-alert-wc {
 		order: 1;
 	}
 
@@ -21,7 +24,7 @@
 		order: 2;
 	}
 
-	fieldset .kol-alert {
+	fieldset .kol-alert-wc {
 		order: 3;
 	}
 
@@ -86,10 +89,8 @@
 		border-color: var(--color-red-1xx);
 	}
 
-	.kol-alert {
-		color: var(--color-red);
-		font-size: 0.875em;
-		margin-left: calc(-1 * var(--spacing-xs));
+	.kol-alert-wc {
+		@include kol-alert-wc(--color-red);
 		order: 1;
 		width: 100%;
 	}
