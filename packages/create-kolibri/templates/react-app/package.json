@@ -39,7 +39,7 @@
 		"@types/react-dom": "18.2.19",
 		"@unocss/preset-mini": "0.58.5",
 		"@unocss/webpack": "0.58.5",
-		"chromedriver": "122.0.3",
+		"chromedriver": "122.0.4",
 		"cpy-cli": "5.0.0",
 		"eslint-plugin-jsx-a11y": "6.8.0",
 		"eslint-plugin-react": "7.33.2",
