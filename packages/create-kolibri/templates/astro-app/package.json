@@ -34,7 +34,7 @@
 		"@types/node": "18.11.17",
 		"@types/react-dom": "18.0.9",
 		"astro": "1.7.4",
-		"chromedriver": "121.0.0",
+		"chromedriver": "122.0.4",
 		"cpy-cli": "5.0.0",
 		"nightwatch-axe-verbose": "2.3.0",
 		"npm-check-updates": "16.6.0",
