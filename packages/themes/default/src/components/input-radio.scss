@@ -37,7 +37,7 @@
 		border-color: var(--color-primary);
 	}
 
-	kol-alert-wc {
+	.kol-alert-wc {
 		@include kol-alert-wc;
 	}
 
@@ -102,7 +102,7 @@
 		background-color: var(--color-mute-variant);
 	}
 
-	kol-alert-wc.error {
+	.kol-alert-wc.error {
 		order: 1;
 	}
 
@@ -111,7 +111,7 @@
 		display: contents;
 	}
 
-	fieldset kol-input {
+	fieldset .kol-input {
 		order: 3;
 	}
 
@@ -128,7 +128,7 @@
 		outline-color: var(--color-danger) !important;
 	}
 
-	fieldset.error kol-alert-wc.error {
+	fieldset.error .kol-alert-wc.error {
 		margin-left: -0.25em;
 		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 	}

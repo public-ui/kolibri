@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '@public-ui/schema';
 import { featureHint, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
-
-import { getKoliBri } from '../../utils/dev.utils';
+import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
-import type { ModalService } from './service';
+import { ModalService } from './service';
+
+const modalService = new ModalService();
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -29,16 +29,16 @@ export class KolModal implements ModalAPI {
 	public componentDidRender(): void {
 		if (this.hostElement /* SSR instanceof HTMLElement */) {
 			if (this.state._activeElement /* SSR instanceof HTMLElement */) {
-				(getKoliBri().Modal as ModalService).openModal(this.hostElement, this.state._activeElement);
+				modalService.openModal(this.hostElement, this.state._activeElement);
 			} else {
-				(getKoliBri().Modal as ModalService).closeModal(this.hostElement);
+				modalService.closeModal(this.hostElement);
 			}
 		}
 	}
 
 	public disconnectedCallback(): void {
 		if (this.hostElement /* SSR instanceof HTMLElement */) {
-			(getKoliBri().Modal as ModalService).closeModal(this.hostElement);
+			modalService.closeModal(this.hostElement);
 		}
 	}
 
@@ -51,6 +51,7 @@ export class KolModal implements ModalAPI {
 	public render(): JSX.Element {
 		return (
 			<Host
+				class="kol-modal"
 				ref={(el) => {
 					this.hostElement = el as HTMLElement;
 				}}

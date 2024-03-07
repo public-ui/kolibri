@@ -6,7 +6,7 @@
 		@include kol-alert-theme;
 	}
 
-	kol-input {
+	.kol-input {
 		color: var(--color-grey);
 		gap: var(--spacing-xs);
 	}
@@ -34,7 +34,7 @@
 		order: 2;
 	}
 
-	kol-alert-wc {
+	.kol-alert-wc {
 		@include kol-alert-wc(--color-red);
 		order: 3;
 	}

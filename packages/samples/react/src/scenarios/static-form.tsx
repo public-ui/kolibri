@@ -18,6 +18,8 @@ import React from 'react';
 import { SampleDescription } from '../components/SampleDescription';
 
 export const StaticForm: FC = () => {
+	const { searchParams } = new URL(location.href);
+
 	return (
 		<>
 			<SampleDescription>
@@ -41,6 +43,16 @@ export const StaticForm: FC = () => {
 					</li>
 				</ol>
 			</SampleDescription>
+
+			{searchParams.size > 0 && (
+				<>
+					<h2>Submitted data</h2>
+					<pre>
+						<code>{JSON.stringify(Object.fromEntries(searchParams.entries()), null, 2)}</code>
+					</pre>
+				</>
+			)}
+
 			<form className="grid gap-4" method="get" noValidate>
 				<KolInputCheckbox _name="checkbox" _label="Checkbox" />
 				<KolInputColor _name="color" _label="Color" />
@@ -83,6 +95,9 @@ export const StaticForm: FC = () => {
 					<KolButton _label="Submit" _type="submit" _variant="primary" />
 					<KolButton _label="Reset" _type="reset" />
 				</div>
+
+				{/* Add a random string to allow the form to be always submitted. Without it, if theres no change to the data, the form simply won't submit when requested. */}
+				<input type="hidden" value={crypto.randomUUID()} name="random" />
 			</form>
 		</>
 	);

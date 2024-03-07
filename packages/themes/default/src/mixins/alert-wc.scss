@@ -13,7 +13,7 @@
 		border-width: 0;
 	}
 
-	kol-alert-wc {
+	.kol-alert-wc {
 		border-width: var(--border-width);
 		border-style: solid;
 		border-radius: var(--border-radius);
@@ -24,22 +24,22 @@
 		background-color: var(--color-light);
 	}
 
-	kol-alert-wc > .heading {
+	.kol-alert-wc > .heading {
 		display: flex;
 		gap: 0.5em;
 		place-items: center;
 	}
 
-	kol-alert-wc > .heading > div {
+	.kol-alert-wc > .heading > div {
 		display: grid;
 		gap: 0.25rem;
 	}
 
-	.msg > .heading > kol-icon {
+	.msg > .heading > .kol-icon {
 		place-self: baseline;
 	}
 
-	kol-alert-wc > .heading > kol-button-wc.close {
+	.kol-alert-wc > .heading > .kol-button-wc.close {
 		place-self: center;
 	}
 
@@ -91,7 +91,7 @@
 		color: var(--color-light);
 	}
 
-	kol-alert-wc .heading .heading-icon {
+	.kol-alert-wc .heading .heading-icon {
 		padding: 0;
 	}
 
@@ -100,27 +100,27 @@
 		place-items: baseline;
 	}
 
-	.msg > .heading > div > kol-heading-wc {
+	.msg > .heading > div > .kol-heading-wc {
 		padding-top: calc(--var-spacing / 2);
 	}
 
-	.msg.default .heading > div > kol-heading-wc {
+	.msg.default .heading > div > .kol-heading-wc {
 		color: var(--color-subtle);
 	}
 
-	.msg.error .heading > div > kol-heading-wc {
+	.msg.error .heading > div > .kol-heading-wc {
 		color: var(--color-danger);
 	}
 
-	.msg.info .heading > div > kol-heading-wc {
+	.msg.info .heading > div > .kol-heading-wc {
 		color: var(--color-primary);
 	}
 
-	.msg.success .heading > div > kol-heading-wc {
+	.msg.success .heading > div > .kol-heading-wc {
 		color: var(--color-success);
 	}
 
-	.msg.warning .heading > div > kol-heading-wc {
+	.msg.warning .heading > div > .kol-heading-wc {
 		color: var(--color-warning);
 	}
 
@@ -171,7 +171,7 @@
 		margin-top: -4px;
 	}
 
-	.card > .heading kol-heading-wc {
+	.card > .heading .kol-heading-wc {
 		width: 100%;
 		color: var(--color-light);
 		display: flex;
@@ -179,7 +179,7 @@
 		line-height: 1.25rem;
 	}
 
-	.card > .heading kol-heading-wc > * {
+	.card > .heading .kol-heading-wc > * {
 		margin: auto 0;
 	}
 
@@ -245,7 +245,7 @@
 		width: var(--a11y-min-size);
 	}
 
-	.close > button.hide-label kol-icon {
+	.close > button.hide-label .kol-icon {
 		display: flex;
 		width: 1em;
 		height: 1em;

@@ -12,7 +12,7 @@
 		flex-wrap: wrap;
 	}
 
-	fieldset kol-alert-wc {
+	fieldset .kol-alert-wc {
 		order: 1;
 	}
 
@@ -20,11 +20,11 @@
 		order: 2;
 	}
 
-	fieldset kol-alert-wc {
+	fieldset .kol-alert-wc {
 		order: 3;
 	}
 
-	fieldset kol-input-wc {
+	fieldset .kol-input-wc {
 		order: 4;
 	}
 
@@ -85,7 +85,7 @@
 		border-color: var(--color-red-1xx);
 	}
 
-	kol-alert-wc {
+	.kol-alert-wc {
 		@include kol-alert-wc(--color-red);
 
 		order: 1;

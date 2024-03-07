@@ -23,6 +23,7 @@
 	.focus-element {
 		font-size: 0;
 	}
+
 	.focus-element:focus {
 		outline: 0 !important;
 	}
@@ -62,7 +63,7 @@
 		}
 	}
 
-	div.pagination kol-pagination {
+	div.pagination .kol-pagination {
 		display: flex;
 		flex-wrap: wrap;
 	}
@@ -74,7 +75,7 @@
 	}
 
 	@media (max-width: 1024px) {
-		div.pagination kol-pagination {
+		div.pagination .kol-pagination {
 			flex-direction: column;
 		}
 	}
@@ -85,7 +86,7 @@
 			grid-auto-flow: column;
 		}
 
-		div.pagination kol-pagination {
+		div.pagination .kol-pagination {
 			display: flex;
 		}
 	}

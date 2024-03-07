@@ -20,7 +20,7 @@
 		border: none;
 	}
 
-	.msg .heading kol-icon {
+	.msg .heading .kol-icon {
 		font-size: 1.5em;
 		margin: var(--spacing-2xs);
 	}
@@ -44,7 +44,7 @@
 		margin-left: 2.5rem;
 	}
 
-	.card .heading kol-icon {
+	.card .heading .kol-icon {
 		font-size: 2rem;
 	}
 
@@ -52,7 +52,7 @@
 		border-color: var(--color-grey);
 	}
 
-	.default .heading kol-icon {
+	.default .heading .kol-icon {
 		color: var(--color-grey);
 	}
 
@@ -60,7 +60,7 @@
 		border-color: var(--color-red);
 	}
 
-	.error .heading kol-icon {
+	.error .heading .kol-icon {
 		color: var(--color-red);
 	}
 
@@ -68,7 +68,7 @@
 		border-color: var(--color-blue);
 	}
 
-	.info .heading kol-icon {
+	.info .heading .kol-icon {
 		color: var(--color-blue);
 	}
 
@@ -76,7 +76,7 @@
 		border-color: var(--color-green);
 	}
 
-	.success .heading kol-icon {
+	.success .heading .kol-icon {
 		color: var(--color-green);
 	}
 
@@ -84,7 +84,7 @@
 		border-color: var(--color-orange);
 	}
 
-	.warning .heading kol-icon {
+	.warning .heading .kol-icon {
 		color: var(--color-orange);
 	}
 }
