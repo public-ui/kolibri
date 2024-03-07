@@ -14,9 +14,9 @@ export const getAvatarHtml = (props: AvatarProps): string => {
 	);
 
 	return `
-<kol-avatar>
+<kol-avatar class="kol-avatar">
   <mock:shadow-root>
-		<kol-avatar-wc>
+		<kol-avatar-wc class="kol-avatar-wc">
 			<div aria-label="kol-avatar-alt" class="container" role="img">
 				${
 					state._src

@@ -8,6 +8,7 @@
 		outline-style: solid;
 		outline-width: 1px;
 	}
+
 	label {
 		color: var(--color-anthrazit);
 		font-size: 14px;
@@ -16,6 +17,7 @@
 		width: 100%;
 		font-weight: bold;
 	}
+
 	input {
 		cursor: pointer;
 		width: 100%;
@@ -29,22 +31,27 @@
 		line-height: 24px;
 		font-size: 16px;
 	}
+
 	.error input {
 		background-color: var(--color-rotton-20) !important;
 		border-color: var(--color-rotton) !important;
 	}
+
 	input:disabled {
 		background-color: var(--color-input-bg-default);
 		border-color: var(--border-color);
 		cursor: not-allowed;
 	}
-	kol-alert {
+
+	.kol-alert {
 		margin-top: calc(2 * var(--spacing));
 		display: block;
 	}
+
 	.kol-required span::after {
 		content: '*';
 	}
+
 	input::placeholder {
 		font-style: italic;
 	}

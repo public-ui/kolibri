@@ -49,9 +49,9 @@ export class KolInputPassword implements InputPasswordAPI {
 		return this.ref?.value;
 	}
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
-		if (event.code === 'Enter') {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
@@ -68,6 +68,7 @@ export class KolInputPassword implements InputPasswordAPI {
 		return (
 			<Host
 				class={{
+					'kol-input-password': true,
 					'has-value': this.state._hasValue,
 				}}
 			>
@@ -132,7 +133,7 @@ export class KolInputPassword implements InputPasswordAPI {
 							type="password"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
 				</KolInputTag>

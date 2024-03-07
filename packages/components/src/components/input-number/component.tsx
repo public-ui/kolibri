@@ -51,8 +51,8 @@ export class KolInputNumber implements InputNumberAPI {
 		return this.ref?.value;
 	}
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
-		if (event.code === 'Enter') {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
@@ -70,6 +70,7 @@ export class KolInputNumber implements InputNumberAPI {
 		return (
 			<Host
 				class={{
+					'kol-input-number': true,
 					'has-value': this.state._hasValue,
 				}}
 			>
@@ -132,7 +133,7 @@ export class KolInputNumber implements InputNumberAPI {
 							type="number"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
 				</KolInputTag>

@@ -58,6 +58,7 @@ export class KolTreeItem implements TreeItemProps {
 	public render(): JSX.Element {
 		return (
 			<KolTreeItemWcTag
+				class="kol-tree-item"
 				_active={this._active}
 				_label={this._label}
 				_open={this._open}

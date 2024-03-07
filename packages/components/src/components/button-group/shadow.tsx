@@ -13,7 +13,7 @@ import { KolButtonGroupWcTag } from '../../core/component-names';
 export class KolButtonGroup implements ButtonGroupProps {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-button-group">
 				<KolButtonGroupWcTag>
 					<slot />
 				</KolButtonGroupWcTag>

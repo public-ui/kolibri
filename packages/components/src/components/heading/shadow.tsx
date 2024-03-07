@@ -16,7 +16,7 @@ import { KolHeadingWcTag } from '../../core/component-names';
 export class KolHeading implements HeadingProps {
 	public render(): JSX.Element {
 		return (
-			<KolHeadingWcTag _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline} _variant={this._variant}>
+			<KolHeadingWcTag _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline} _variant={this._variant} class="kol-heading">
 				<slot name="expert" slot="expert" />
 			</KolHeadingWcTag>
 		);

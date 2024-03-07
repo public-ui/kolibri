@@ -5,23 +5,29 @@
 		font-weight: 400;
 		text-decoration-line: underline;
 	}
+
 	:is(a, button):focus {
 		outline: none;
 	}
-	:is(a, button):focus kol-span-wc {
+
+	:is(a, button):focus .kol-span-wc {
 		border-radius: var(--border-radius);
 		outline: var(--border-width) solid;
 	}
+
 	:is(a, button):hover {
 		text-decoration-thickness: 0.25em;
 	}
+
 	:is(a, button):visited {
 		color: var(--visited);
 	}
+
 	.hidden {
 		display: none;
 		visibility: hidden;
 	}
+
 	.skip {
 		left: -99999px;
 		overflow: hidden;
@@ -29,6 +35,7 @@
 		z-index: 9999999;
 		line-height: 1em;
 	}
+
 	.skip:focus {
 		background: white;
 		left: unset;

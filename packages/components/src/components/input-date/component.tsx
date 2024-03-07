@@ -53,8 +53,8 @@ export class KolInputDate implements InputDateAPI {
 		return this.ref?.value;
 	}
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
-		if (event.code === 'Enter') {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
@@ -70,7 +70,7 @@ export class KolInputDate implements InputDateAPI {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host class={{ 'has-value': this.state._hasValue }}>
+			<Host class={{ 'kol-input-date': true, 'has-value': this.state._hasValue }}>
 				<KolInputTag
 					class={{
 						[this.state._type]: true,
@@ -129,7 +129,7 @@ export class KolInputDate implements InputDateAPI {
 							type={this.state._type}
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
 				</KolInputTag>

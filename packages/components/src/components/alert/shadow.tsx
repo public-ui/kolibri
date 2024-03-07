@@ -16,7 +16,7 @@ import { KolAlertWcTag } from '../../core/component-names';
 export class KolAlert implements AlertProps {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-alert">
 				<KolAlertWcTag
 					_alert={this._alert}
 					_hasCloser={this._hasCloser}

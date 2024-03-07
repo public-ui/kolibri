@@ -5,17 +5,21 @@
 		line-height: var(--line-height);
 		word-break: break-word;
 	}
+
 	:host > div {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
+
 	caption {
 		padding: 0.5rem;
 	}
+
 	th {
 		font-weight: normal;
 		color: var(--color-primary);
 	}
+
 	:host table thead tr:first-child th,
 	:host table thead tr:first-child td {
 		border-width: 0;
@@ -23,10 +27,12 @@
 		border-style: solid;
 		border-color: var(--color-primary-variant);
 	}
+
 	table {
 		width: 100%;
 		border-spacing: 0;
 	}
+
 	table,
 	:host table thead tr:last-child th,
 	:host table thead tr:last-child td {
@@ -35,9 +41,11 @@
 		border-style: solid;
 		border-color: var(--color-primary-variant);
 	}
+
 	th {
 		background-color: var(--color-light);
 	}
+
 	th div {
 		width: 100%;
 		display: flex;
@@ -45,20 +53,25 @@
 		grid-template-columns: 1fr auto;
 		align-items: center;
 	}
+
 	tr:nth-child(even) {
 		background-color: var(--color-mute);
 	}
+
 	th,
 	td {
 		padding: 0.5rem;
 	}
+
 	th[aria-sort='ascending'],
 	th[aria-sort='descending'] {
 		font-weight: 700;
 	}
+
 	:host > div:last-child {
 		padding: 0.5rem;
 	}
+
 	:host > div:last-child,
 	:host > div:last-child > div:last-child {
 		display: grid;
@@ -68,7 +81,7 @@
 	}
 
 	@media (min-width: 1024px) {
-		div.pagination kol-pagination {
+		div.pagination .kol-pagination {
 			display: flex;
 			align-items: center;
 		}

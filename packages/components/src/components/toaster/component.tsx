@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Fragment, h, Method, State } from '@stencil/core';
+import { Component, h, Host, Method, State } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
@@ -94,7 +94,7 @@ export class KolToastContainer implements ToasterAPI {
 
 	public render(): JSX.Element {
 		return (
-			<>
+			<Host class="kol-toast-container">
 				{this.state._toastStates.length > 1 && (
 					<KolButtonTag
 						_label={translate('kol-toast-close-all')}
@@ -109,7 +109,7 @@ export class KolToastContainer implements ToasterAPI {
 				{this.state._toastStates.map((toastState) => (
 					<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />
 				))}
-			</>
+			</Host>
 		);
 	}
 }

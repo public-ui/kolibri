@@ -8,17 +8,20 @@
 		width: 100%;
 		height: 100%;
 	}
-	kol-heading {
+
+	.kol-heading {
 		padding: 0.5rem;
 		display: block;
 		border-bottom-style: solid;
 		border-bottom-color: var(--border-color);
 		border-bottom-width: 1px;
 	}
+
 	:host > div > div {
 		display: block;
 		padding: 0.5rem;
 	}
+
 	:host > div > div:last-child {
 		display: block;
 		padding: 0.5rem;

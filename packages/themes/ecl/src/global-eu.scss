@@ -1,17 +1,20 @@
 @layer kol-theme-global {
-	kol-tooltip-wc .tooltip-area {
+	.kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip-wc .tooltip-arrow {
+
+	.kol-tooltip-wc .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip-wc .tooltip-content {
+
+	.kol-tooltip-wc .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
 		border-radius: 2px;
 		border: 1px solid #626262;
 	}
+
 	:host {
 		--color-blue: #0e47cb;
 		--color-blue-140: #082b7a;
@@ -117,17 +120,21 @@
 		--spacing-m: 16px;
 		--spacing-s: 12px;
 		--spacing-xs: 8px;
-		--spacing-2xs: 4px; /* ?! */
+		--spacing-2xs: 4px;
 	}
+
 	:host {
-		background-color: transparent; /* Reset global background-color defined by components */
+		/* Reset global background-color defined by components */
+		background-color: transparent;
 		display: inline-block;
 	}
+
 	a,
 	button {
 		font-size: var(--font-size);
 		outline: none;
 	}
+
 	h1,
 	h2,
 	h3,
@@ -139,34 +146,41 @@
 		margin: 0;
 		padding: 0;
 	}
+
 	p {
 		font-weight: var(--font-weight);
 	}
-	kol-span-wc,
-	kol-span-wc > span {
+
+	.kol-span-wc,
+	.kol-span-wc > span {
 		gap: 0.5em;
 	}
+
 	.required label span::after,
 	.required legend span::after {
 		color: var(--color-red);
 		padding-left: 0.25em;
 	}
+
 	p.l,
 	p.lead {
 		font-size: 1.25rem;
 		line-height: 1.75rem;
 	}
+
 	p,
 	p.m,
 	p.medium {
 		font-size: 1rem;
 		line-height: 1.5rem;
 	}
+
 	p.s,
 	p.small {
 		font-size: 0.875rem;
 		line-height: 1.25rem;
 	}
+
 	p.xs,
 	p.extra-small {
 		font-size: 0.75rem;

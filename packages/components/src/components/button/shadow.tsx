@@ -40,7 +40,7 @@ export class KolButton implements ButtonProps {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-button">
 				<KolButtonWcTag
 					ref={this.catchRef}
 					class={{

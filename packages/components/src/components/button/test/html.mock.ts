@@ -56,7 +56,7 @@ export const getButtonWcHtml = (
 				_label: state._label,
 			},
 			slots,
-			{ additionalClassNames: ['button-inner'] }
+			{ additionalClassNames: ['button-inner', 'kol-span-wc'] }
 		)}
 	</button>
 	${getTooltipHtml(
@@ -79,14 +79,14 @@ export const getButtonHtml = (props: ButtonProps): string => {
 		},
 		props
 	);
-	return `<kol-button>
+	return `<kol-button class="kol-button">
   <mock:shadow-root>
     ${getButtonWcHtml(
 			props,
 			{
 				expert: `<slot name="expert" slot="expert"></slot>`,
 			},
-			` class="button ${state._variant}"`
+			` class="kol-button-wc button ${state._variant}"`
 		)}
   </mock:shadow-root>
 </kol-button>`;

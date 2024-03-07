@@ -14,7 +14,7 @@ import { KolAvatarWcTag } from '../../core/component-names';
 export class KolAvatar implements AvatarProps {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-avatar">
 				<KolAvatarWcTag _src={this._src} _label={this._label}></KolAvatarWcTag>
 			</Host>
 		);

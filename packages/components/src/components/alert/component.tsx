@@ -73,6 +73,7 @@ export class KolAlertWc implements AlertAPI {
 		return (
 			<Host
 				class={{
+					'kol-alert-wc': true,
 					alert: true,
 					[this.state._type as string]: true,
 					[this.state._variant as string]: true,

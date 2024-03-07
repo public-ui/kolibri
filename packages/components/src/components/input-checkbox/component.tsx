@@ -57,7 +57,7 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-checkbox">
 				<KolInputTag
 					class={{
 						checkbox: true,

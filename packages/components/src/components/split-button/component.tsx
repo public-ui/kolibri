@@ -72,7 +72,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-split-button">
 				<KolButtonWcTag
 					class={{
 						'main-button': true,

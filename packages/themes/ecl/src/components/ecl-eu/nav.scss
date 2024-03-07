@@ -2,37 +2,46 @@
 	:host {
 		font-family: var(--font-family);
 	}
+
 	.list {
 		display: flex;
 		list-style: none;
 		margin: 0px;
 		padding: 0px;
 	}
+
 	.list.vertical {
 		flex-direction: column;
 	}
+
 	.entry {
 		display: flex;
 	}
-	.entry kol-button-wc:first-child,
-	.entry kol-link-wc,
-	.entry kol-span-wc {
+
+	.entry .kol-button-wc:first-child,
+	.entry .kol-link-wc,
+	.entry .kol-span-wc {
 		flex-grow: 1;
-	} /* custom. */
+	}
+
+	/* custom. */
 	nav {
 		background-color: var(--color-blue);
 	}
+
 	ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 	}
+
 	.expand-button button {
 		background-color: var(--color-blue-130);
 		margin: auto;
 		height: 100%;
 	}
-	kol-span-wc {
+
+	.kol-span-wc {
 		border-color: transparent;
 		border-style: solid;
 		border-width: 2px;
@@ -42,6 +51,7 @@
 		padding: 1rem;
 		height: 100%;
 	}
+
 	li > ul,
 	li + li {
 		border-color: var(--color-blue-75);
@@ -49,20 +59,25 @@
 		border-width: 0;
 		border-top-width: 2px;
 	}
+
 	a {
 		text-decoration: none;
 	}
-	:is(kol-button-wc, kol-link-wc):focus-within kol-span-wc {
+
+	:is(.kol-button-wc, .kol-link-wc):focus-within .kol-span-wc {
 		border-color: var(--color-white);
 	}
-	:is(kol-button-wc, kol-link-wc):focus-within kol-span-wc,
-	:is(kol-button-wc, kol-link-wc):hover kol-span-wc {
+
+	:is(.kol-button-wc, .kol-link-wc):focus-within .kol-span-wc,
+	:is(.kol-button-wc, .kol-link-wc):hover .kol-span-wc {
 		text-decoration: underline;
 	}
-	div > .expand-button kol-icon::part(icon)::before {
+
+	div > .expand-button .kol-icon::part(icon)::before {
 		content: '\\eab6';
 	}
-	.expanded > div > .expand-button kol-icon::part(icon)::before {
+
+	.expanded > div > .expand-button .kol-icon::part(icon)::before {
 		content: '\\eab4';
 	}
 }

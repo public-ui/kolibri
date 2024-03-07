@@ -33,7 +33,7 @@ export class KolLink implements LinkProps {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-link">
 				<KolLinkWcTag
 					ref={this.catchRef}
 					_accessKey={this._accessKey}

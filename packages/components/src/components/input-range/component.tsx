@@ -85,8 +85,8 @@ export class KolInputRange implements InputRangeAPI {
 		}
 	};
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
-		if (event.code === 'Enter') {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.refInputNumber,
@@ -108,7 +108,7 @@ export class KolInputRange implements InputRangeAPI {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-range">
 				<KolInputTag
 					class={{
 						range: true,
@@ -189,7 +189,7 @@ export class KolInputRange implements InputRangeAPI {
 								type="number"
 								value={this.state._value}
 								{...this.controller.onFacade}
-								onKeyUp={this.onKeyUp}
+								onKeyDown={this.onKeyDown}
 								onChange={this.onChange}
 							/>
 						</div>

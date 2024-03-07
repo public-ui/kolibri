@@ -78,7 +78,7 @@ export class KolQuote implements QuoteAPI {
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._quote); // _quote instead of _caption as _label
 		return (
-			<Host>
+			<Host class="kol-quote">
 				<figure
 					class={{
 						[this.state._variant]: true,

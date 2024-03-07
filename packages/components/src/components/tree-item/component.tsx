@@ -15,7 +15,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)}>
+			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-item-wc">
 				<li class="tree-item">
 					<KolLinkTag
 						class={{

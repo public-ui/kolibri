@@ -13,7 +13,7 @@ import { KolSpanWcTag } from '../../core/component-names';
 export class KolSpan implements SpanProps {
 	public render(): JSX.Element {
 		return (
-			<KolSpanWcTag _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey}>
+			<KolSpanWcTag _icons={this._icons} _hideLabel={this._hideLabel} _label={this._label} _accessKey={this._accessKey} class="kol-span">
 				<slot name="expert" slot="expert"></slot>
 			</KolSpanWcTag>
 		);
