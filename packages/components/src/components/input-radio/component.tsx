@@ -12,7 +12,6 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	W3CInputValue,
 } from '@public-ui/schema';
 import { propagateFocus, showExpertSlot } from '@public-ui/schema';
 import { Component, Element, Host, Method, Prop, State, Watch, h } from '@stencil/core';
@@ -38,7 +37,7 @@ import { FormFieldMsg } from '../@shared/form-field-msg';
 })
 export class KolInputRadio implements InputRadioAPI {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
-	private currentValue?: W3CInputValue;
+	private currentValue?: StencilUnknown;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		propagateFocus(this.host, ref);
@@ -46,13 +45,36 @@ export class KolInputRadio implements InputRadioAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<W3CInputValue | undefined> {
+	public async getValue(): Promise<StencilUnknown | undefined> {
 		return this.currentValue;
 	}
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
+		function isEquivalent(a: StencilUnknown, b: StencilUnknown): boolean {
+			console.log(typeof a, typeof b);
+			console.log(a, b);
+
+			if (a === undefined || b === undefined || typeof a !== typeof b) return false;
+			if (a === b) return true;
+
+			if (typeof a === 'object' && typeof b === 'object' && a !== null && b !== null) {
+				var aProps = Object.getOwnPropertyNames(a);
+				var bProps = Object.getOwnPropertyNames(b);
+
+				if (aProps.length != bProps.length) {
+					return false;
+				}
+				for (const prop of aProps) {
+					if (!(prop in b)) return false;
+					if (!isEquivalent((a as any)[prop], (b as any)[prop])) return false;
+				}
+				return true;
+			}
+			if ((a === null || b === null) && a !== b) return false;
+			return false;
+		}
 
 		return (
 			<Host>
@@ -89,6 +111,8 @@ export class KolInputRadio implements InputRadioAPI {
 						 */
 						const customId = `${this.state._id}-${index}`;
 						const slotName = `radio-${index}`;
+						const selected = isEquivalent(option.value, this._value);
+						// console.log(option.value, this._value, selected);
 						return (
 							<kol-input
 								class={{
@@ -117,7 +141,7 @@ export class KolInputRadio implements InputRadioAPI {
 										aria-label={this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined}
 										type="radio"
 										id={customId}
-										checked={this.state._value === option.value}
+										checked={selected}
 										name={this.state._name || this.state._id}
 										disabled={this.state._disabled || option.disabled}
 										required={this.state._required}
@@ -254,7 +278,7 @@ export class KolInputRadio implements InputRadioAPI {
 	 * Defines the value of the input.
 	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
 	 */
-	@Prop() public _value?: Stringified<W3CInputValue>;
+	@Prop() public _value?: StencilUnknown;
 
 	@State() public state: InputRadioStates = {
 		_hideError: false,
