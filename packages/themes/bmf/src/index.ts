@@ -667,7 +667,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-granite);
 			color: var(--color-black);
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -1025,7 +1024,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-granite);
 			color: var(--color-black);
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -1383,7 +1381,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-granite);
 			color: var(--color-black);
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -1741,7 +1738,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-granite);
 			color: var(--color-black);
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -2105,7 +2101,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-granite);
 			color: var(--color-black);
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -2486,7 +2481,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			right: 0;
 			color: var(--color-grey);
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -2769,7 +2763,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		:host {
 			font-family: var(--font-family);
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -3354,8 +3347,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			background: var(--color-ocean);
 			color: white;
 		}
-
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -3721,7 +3712,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-granite);
 			color: var(--color-black);
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -4483,8 +4473,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			outline-style: solid;
 			outline-width: 3px;
 		}
-
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
@@ -4896,7 +4884,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		.radio-input-wrapper label {
 			padding-left: 0;
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
