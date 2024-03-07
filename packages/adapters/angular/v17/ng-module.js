@@ -12,6 +12,7 @@ fs.writeFileSync(
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { ${componentListStr} } from './components';
 import { ReplaceTagDirective } from './angular-component-lib/ReplaceTagDirective';
+export { setTagNameTransformer } from './angular-component-lib/tagNameTransformer';
 
 
 @NgModule({
