@@ -310,7 +310,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 			border-color: var(--color-granite);
 			color: var(--color-black);
 		}
-		.msg,
 		.msg {
 			border-width: 0 !important;
 		}
