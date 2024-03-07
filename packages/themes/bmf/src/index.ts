@@ -312,7 +312,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -670,7 +670,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -1028,7 +1028,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -1386,7 +1386,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -1744,7 +1744,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -2108,7 +2108,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -2489,7 +2489,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -3358,7 +3358,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -3724,7 +3724,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -4487,7 +4487,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
@@ -4899,7 +4899,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		}
 		.msg,
 		.msg {
-			border-width: 0;
+			border-width: 0 !important;
 		}
 		.kol-alert-wc {
 			border-width: 2px;
