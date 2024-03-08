@@ -1,10 +1,4 @@
-@import '../mixins/alert-wc.scss';
-
 @layer kol-theme-component {
-	:host {
-		@include kol-alert-theme;
-	}
-
 	input:hover,
 	input:focus {
 		border-color: var(--border-color) !important;
@@ -49,7 +43,7 @@
 		cursor: not-allowed;
 	}
 
-	.kol-alert-wc {
+	.kol-alert {
 		margin-top: calc(2 * var(--spacing));
 		display: block;
 	}

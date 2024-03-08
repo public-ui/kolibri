@@ -1,9 +1,6 @@
-@import '../mixins-ec/alert-wc.scss';
-
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
-		@include kol-alert-theme;
 	}
 
 	.kol-input {
@@ -35,8 +32,10 @@
 		order: 2;
 	}
 
-	.kol-alert-wc {
-		@include kol-alert-wc(--color-red);
+	.kol-alert {
+		color: var(--color-red);
+		font-size: 0.875em;
+		margin-left: calc(-1 * var(--spacing-2xs));
 		order: 3;
 	}
 

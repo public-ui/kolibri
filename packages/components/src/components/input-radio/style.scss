@@ -1,7 +1,4 @@
 @import '../input';
-@import '../@shared/kol-alert-mixin.scss';
-
-@include kol-alert-styles;
 
 @layer kol-component {
 	:host {

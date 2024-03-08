@@ -1,7 +1,4 @@
 @import '../input-line';
-@import '../@shared/kol-alert-mixin.scss';
-
-@include kol-alert-styles;
 
 @layer kol-component {
 	label input[type='file']::-webkit-file-upload-button {
