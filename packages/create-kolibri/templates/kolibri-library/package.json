@@ -24,8 +24,8 @@
 		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "17.7.1",
-		"@commitlint/config-conventional": "17.7.0",
+		"@commitlint/cli": "19.0.3",
+		"@commitlint/config-conventional": "19.0.3",
 		"@types/node": "ts5.3",
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.6",
