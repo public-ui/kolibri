@@ -4,6 +4,7 @@ import { ToasterService } from '@public-ui/components';
 import { KolButton } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
+import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
 const toaster = ToasterService.getInstance(document);
@@ -65,16 +66,21 @@ export const ToastBasic: FC = () => {
 	};
 
 	return (
-		<div>
-			<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>{' '}
-			<KolButton _label="Show toast with alert variant 'msg'" _on={{ onClick: handleButtonClickVariantMessage }}></KolButton>{' '}
-			<KolButton _label="Show complex toast" _on={{ onClick: handleButtonClickComplex }}></KolButton>
-			<br />
-			<br />
-			<KolButton _label="Show toast and close after 2 seconds" _on={{ onClick: () => void handleButtonClickOpenAndClose() }}></KolButton>
-			<br />
-			<br />
-			<KolButton _label="Close all toasts" _on={{ onClick: closeAll }}></KolButton>
-		</div>
+		<>
+			<SampleDescription>
+				<p>Hier ist ein Beispiel für verschiedene Toasts, die beim anklicken verschiedene Popups generieren. Der untere schließt alle geöffneten Toasts.</p>
+			</SampleDescription>
+			<div>
+				<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>{' '}
+				<KolButton _label="Show toast with alert variant 'msg'" _on={{ onClick: handleButtonClickVariantMessage }}></KolButton>{' '}
+				<KolButton _label="Show complex toast" _on={{ onClick: handleButtonClickComplex }}></KolButton>
+				<br />
+				<br />
+				<KolButton _label="Show toast and close after 2 seconds" _on={{ onClick: () => void handleButtonClickOpenAndClose() }}></KolButton>
+				<br />
+				<br />
+				<KolButton _label="Close all toasts" _on={{ onClick: closeAll }}></KolButton>
+			</div>
+		</>
 	);
 };

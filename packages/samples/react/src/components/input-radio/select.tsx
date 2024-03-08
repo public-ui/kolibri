@@ -3,6 +3,7 @@ import React from 'react';
 import { KolForm, KolInputRadio } from '@public-ui/react';
 
 import { ERROR_MSG } from '../../shares/constants';
+import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
 
@@ -13,7 +14,12 @@ const options = [
 ];
 
 export const InputRadioSelect: FC = () => (
-	<KolForm className="grid gap-4">
-		<KolInputRadio _error={ERROR_MSG} _options={options} _label="Anrede" />
-	</KolForm>
+	<>
+		<SampleDescription>
+			<p>Hier ist ein Beispiel Radio-Button. Nur eine gleichzeitige Auswahl ist möglich. </p>
+		</SampleDescription>
+		<KolForm className="grid gap-4">
+			<KolInputRadio _error={ERROR_MSG} _options={options} _label="Anrede" />
+		</KolForm>
+	</>
 );
