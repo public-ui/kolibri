@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "2.0.8",
+	"version": "2.0.9",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -68,9 +68,9 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.3",
-		"@public-ui/schema": "2.0.8",
+		"@public-ui/schema": "2.0.9",
 		"adopted-style-sheets": "1.1.4",
-		"i18next": "23.10.0",
+		"i18next": "23.10.1",
 		"markdown-it": "14.0.0"
 	},
 	"devDependencies": {
@@ -114,7 +114,7 @@
 		"terser": "5.29.1",
 		"tslib": "2.6.2",
 		"twig": "1.17.1",
-		"typescript": "5.3.3"
+		"typescript": "5.4.2"
 	},
 	"files": [
 		"assets",

@@ -14,9 +14,9 @@
 		"start": "npm run dev"
 	},
 	"dependencies": {
-		"@public-ui/components": "2.0.8",
-		"@public-ui/react": "2.0.8",
-		"@public-ui/themes": "2.0.8",
+		"@public-ui/components": "2.0.9",
+		"@public-ui/react": "2.0.9",
+		"@public-ui/themes": "2.0.9",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},
@@ -28,7 +28,7 @@
 		"npm-check-updates": "16.14.15",
 		"prettier": "3.2.5",
 		"unocss": "0.58.5",
-		"typescript": "5.3.3",
+		"typescript": "5.4.2",
 		"vite": "5.1.4"
 	}
 }

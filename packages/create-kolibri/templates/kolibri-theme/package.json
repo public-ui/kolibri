@@ -19,9 +19,9 @@
 		"unused": "knip"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.8",
-		"@public-ui/schema": "2.0.8",
-		"@public-ui/visual-tests": "2.0.8",
+		"@public-ui/components": "2.0.9",
+		"@public-ui/schema": "2.0.9",
+		"@public-ui/visual-tests": "2.0.9",
 		"@typescript-eslint/eslint-plugin": "6.8.0",
 		"@typescript-eslint/parser": "6.8.0",
 		"depcheck": "1.4.7",
@@ -37,7 +37,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.8"
+		"@public-ui/components": "2.0.9"
 	},
 	"sideEffects": false,
 	"type": "module",

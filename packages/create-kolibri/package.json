@@ -1,6 +1,6 @@
 {
 	"name": "create-kolibri",
-	"version": "2.0.8",
+	"version": "2.0.9",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -102,7 +102,7 @@
 		"prettier": "3.2.5",
 		"rimraf": "3.0.2",
 		"tsup": "8.0.2",
-		"typescript": "5.3.3"
+		"typescript": "5.4.2"
 	},
 	"files": [
 		"defaults/**/*",

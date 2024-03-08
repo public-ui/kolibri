@@ -42,7 +42,7 @@
 	"devDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
 		"@babel/types": "7.20.7",
-		"@public-ui/components": "2.0.8",
+		"@public-ui/components": "2.0.9",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
@@ -53,7 +53,7 @@
 	},
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
-		"@public-ui/components": "2.0.8",
+		"@public-ui/components": "2.0.9",
 		"vue": ">=3"
 	},
 	"sideEffects": false,
