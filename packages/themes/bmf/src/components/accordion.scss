@@ -3,30 +3,30 @@
 		font-family: var(--font-family);
 	}
 
-	.kol-span-wc>span {
+	.kol-span-wc > span {
 		display: flex;
 		place-items: baseline center;
 		text-align: left;
 	}
 
-	:host>div>.kol-heading-wc button {
+	:host > div > .kol-heading-wc button {
 		border-radius: var(--border-radius);
 		min-height: 22px;
 		padding: 12px 8px;
 	}
 
-	:host>div>.kol-heading-wc button .kol-span-wc {
+	:host > div > .kol-heading-wc button .kol-span-wc {
 		font-weight: 700;
 		font-size: 1.125rem;
 		line-height: 20px;
 		gap: 0.5rem;
 	}
 
-	:host>div>.kol-heading-wc button .kol-span-wc>span {
+	:host > div > .kol-heading-wc button .kol-span-wc > span {
 		gap: 0.5em;
 	}
 
-	:host>div>.kol-heading-wc button .kol-icon::part(icon) {
+	:host > div > .kol-heading-wc button .kol-icon::part(icon) {
 		font-family: 'Material Symbols Rounded';
 		font-weight: 400;
 		color: var(--color-midnight);
@@ -39,22 +39,22 @@
 		transition-duration: 150ms;
 	}
 
-	:host>div.open>.kol-heading-wc button .kol-icon::part(icon)::before {
+	:host > div.open > .kol-heading-wc button .kol-icon::part(icon)::before {
 		transform: rotate(90deg);
 	}
 
-	:host>div {
+	:host > div {
 		width: 100%;
 		height: 100%;
 		display: grid;
 	}
 
-	:host>div div[class='header'],
-	:host>div[class*='open'] div[class='content'] {
+	:host > div div[class='header'],
+	:host > div[class*='open'] div[class='content'] {
 		margin: 0;
 	}
 
-	:host>div div[class='content'] {
+	:host > div div[class='content'] {
 		padding-left: 2.25em;
 		padding-bottom: 12px;
 		padding-right: 8px;
@@ -64,7 +64,7 @@
 		outline: none;
 	}
 
-	:host>.accordion:focus-within {
+	:host > .accordion:focus-within {
 		border-radius: var(--border-radius);
 		cursor: pointer;
 		outline-color: var(--color-ocean);

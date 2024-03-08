@@ -1,5 +1,4 @@
 @layer kol-theme-global {
-
 	/* Design Tokens */
 	:host {
 		--border-radius: 5px;
@@ -109,7 +108,7 @@
 	}
 
 	.kol-span-wc,
-	.kol-span-wc>span {
+	.kol-span-wc > span {
 		gap: 0.5em;
 	}
 }
