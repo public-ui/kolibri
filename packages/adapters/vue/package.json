@@ -46,7 +46,7 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.23.9",
+		"@babel/types": "7.24.0",
 		"@public-ui/components": "2.0.8",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
@@ -54,7 +54,7 @@
 		"@types/normalize-package-data": "2.4.4",
 		"typescript": "5.3.3",
 		"unbuild": "1.2.1",
-		"vue": "3.4.19"
+		"vue": "3.4.21"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "2.0.8",
