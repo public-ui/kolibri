@@ -9,7 +9,6 @@ packages:
   - 'packages/create-kolibri'
   - 'packages/designer'
   - 'packages/samples/react'
-  - 'packages/samples/ssr'
   - 'packages/schema'
   - 'packages/themes'
   - 'packages/themes/bmf'
