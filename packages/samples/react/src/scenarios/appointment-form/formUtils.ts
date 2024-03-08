@@ -7,8 +7,8 @@ export function createErrorList(formikErrors: Record<string, string>): ErrorList
 	}));
 }
 
-export function focusErrorList(errorList: ErrorListPropType[], formikRef: React.MutableRefObject<any>) {
+export function focusErrorList(errorList: ErrorListPropType[], formikRef: React.RefObject<HTMLKolFormElement>) {
 	if (errorList.length > 0 && formikRef && formikRef.current) {
-		formikRef.current.focusErrorList();
+		formikRef.current.focusErrorList().catch(console.warn);
 	}
 }

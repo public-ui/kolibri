@@ -31,7 +31,7 @@ export function DistrictForm() {
 	const form = useFormikContext<FormValues>();
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const errorList = createErrorList(form.errors);
-	const formikRef = useRef(null);
+	const formikRef = useRef<HTMLKolFormElement>(null);
 
 	useEffect(() => {
 		focusErrorList(errorList, formikRef);
