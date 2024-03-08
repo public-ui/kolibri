@@ -1,4 +1,10 @@
+@import '../mixins/alert-wc.scss';
+
 @layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+
 	:host input:focus {
 		outline-color: var(--color-achat) !important;
 		outline-offset: 2px;
@@ -30,7 +36,7 @@
 		border-color: var(--color-achat);
 	}
 
-	.kol-alert {
+	.kol-alert-wc {
 		display: block;
 		width: 100%;
 	}
@@ -99,7 +105,7 @@
 		cursor: not-allowed;
 	}
 
-	.kol-alert {
+	.kol-alert-wc {
 		width: 100%;
 	}
 }

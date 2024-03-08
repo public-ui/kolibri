@@ -1,6 +1,9 @@
+@import '../mixins/alert-wc.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		@include kol-alert-theme;
 	}
 
 	.kol-input {
@@ -90,9 +93,8 @@
 		outline-color: var(--color-danger) !important;
 	}
 
-	.kol-input.error .kol-alert.error {
-		color: var(--color-danger);
-		font-weight: 700;
+	.kol-input.error .kol-alert-wc.error {
+		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 	}
 
 	select[multiple],
