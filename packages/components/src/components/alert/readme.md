@@ -100,6 +100,8 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 ### Used by
 
 - [kol-alert](.)
+- kol-input
+- [kol-input-radio](../input-radio)
 
 ### Depends on
 
@@ -119,6 +121,8 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
   kol-alert --> kol-alert-wc
+  kol-input --> kol-alert-wc
+  kol-input-radio --> kol-alert-wc
   style kol-alert-wc stroke:#333,stroke-width:4px
 ```
 

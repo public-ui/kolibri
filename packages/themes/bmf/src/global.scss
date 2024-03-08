@@ -62,8 +62,8 @@
 	}
 
 	*[tabindex]:focus,
-	kol-input:not(.checkbox, .radio) .input:focus-within,
-	kol-input:is(.checkbox, .radio) input:focus,
+	.kol-input:not(.checkbox, .radio) .input:focus-within,
+	.kol-input:is(.checkbox, .radio) input:focus,
 	summary:focus {
 		cursor: pointer;
 		outline-color: var(--color-ocean);
@@ -83,32 +83,32 @@
 		}
 	}
 
-	kol-heading-wc {
+	.kol-heading-wc {
 		font-weight: 700;
 	}
 
-	kol-tooltip-wc .tooltip-floating {
+	.kol-tooltip-wc .tooltip-floating {
 		border: 1px solid var(--color-metal);
 		border-radius: var(--border-radius);
 	}
 
-	kol-tooltip-wc .tooltip-arrow {
+	.kol-tooltip-wc .tooltip-arrow {
 		border: 1px solid var(--color-metal);
 	}
 
-	kol-tooltip-wc .tooltip-area {
+	.kol-tooltip-wc .tooltip-area {
 		background-color: var(--color-white);
 		color: var(--color-black);
 	}
 
-	kol-tooltip-wc .tooltip-content {
+	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5em;
 		padding: 0.5rem 0.75rem;
 	}
 
-	kol-span-wc,
-	kol-span-wc > span {
+	.kol-span-wc,
+	.kol-span-wc > span {
 		gap: 0.5em;
 	}
 }

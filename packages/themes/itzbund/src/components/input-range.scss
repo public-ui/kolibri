@@ -1,6 +1,9 @@
+@import '../mixins/alert-wc.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		@include kol-alert-theme;
 	}
 
 	.inputs-wrapper {
@@ -81,7 +84,7 @@
 		outline-color: var(--color-danger) !important;
 	}
 
-	.kol-input.error .kol-alert.error {
+	.kol-input.error .kol-alert-wc.error {
 		color: var(--color-danger);
 		font-weight: 700;
 	}
