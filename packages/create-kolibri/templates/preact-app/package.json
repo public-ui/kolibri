@@ -36,7 +36,7 @@
 		"@leanup/stack-webpack": "1.3.49",
 		"@unocss/preset-mini": "0.47.6",
 		"@unocss/webpack": "0.47.6",
-		"chromedriver": "122.0.3",
+		"chromedriver": "122.0.4",
 		"cpy-cli": "5.0.0",
 		"knip": "5.0.2",
 		"eslint-plugin-jsx-a11y": "6.8.0",
