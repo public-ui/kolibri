@@ -20,5 +20,5 @@ executeTests<NonNullable<unknown>>(
 	{
 		_label: [],
 	},
-	getButtonHtml,
+	getButtonHtml
 );

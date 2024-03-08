@@ -1,10 +1,4 @@
-@import '../mixins/alert-wc.scss';
-
 @layer kol-theme-component {
-	:host {
-		@include kol-alert-theme;
-	}
-
 	.checkbox-container {
 		justify-content: flex-start;
 	}
@@ -65,7 +59,7 @@
 		padding-left: calc(2 * 2 * var(--spacing));
 	}
 
-	.kol-input > .kol-alert-wc.error {
+	.kol-input > .kol-alert.error {
 		order: 3;
 		padding-top: 0.25em;
 		grid-column: span 2 / auto;

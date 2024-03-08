@@ -1,7 +1,38 @@
-@import '../mixins/alert-wc.scss';
-
 @layer kol-theme-component {
 	:host {
-		@include kol-alert-theme;
+		--kolibri-border-width: 1px;
+	}
+	:host .default {
+		border-color: var(--color-anthrazit);
+	}
+	.heading {
+		gap: 0.5rem;
+	}
+	.default .heading-icon {
+		background-color: var(--color-anthrazit);
+	}
+	:host .error {
+		border-color: var(--color-rotton);
+	}
+	.error .heading-icon {
+		background-color: var(--color-rotton);
+	}
+	:host .info {
+		border-color: var(--color-petrol);
+	}
+	.info .heading-icon {
+		background-color: var(--color-petrol);
+	}
+	:host .success {
+		border-color: var(--color-gras);
+	}
+	:host .success .heading-icon {
+		background-color: var(--color-gras);
+	}
+	:host .warning {
+		border-color: var(--color-warn);
+	}
+	.warning .heading-icon {
+		background-color: var(--color-warn);
 	}
 }
