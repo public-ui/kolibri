@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC } from 'react';
 
 import { KolAbbr, KolButton, KolInputEmail, KolInputRadio, KolInputText, KolSpin } from '@public-ui/react';
 
