@@ -6,3 +6,9 @@ export function createErrorList(formikErrors: Record<string, string>): ErrorList
 		selector: `#field-${fieldName}`,
 	}));
 }
+
+export function focusErrorList(errorList: ErrorListPropType[], formikRef: React.RefObject<HTMLKolFormElement>) {
+	if (errorList.length > 0 && formikRef && formikRef.current) {
+		formikRef.current.focusErrorList().catch(console.warn);
+	}
+}

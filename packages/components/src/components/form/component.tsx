@@ -1,10 +1,10 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-
+import { Component, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
+import { ErrorListPropType, validateErrorList } from '../../types/props/error-list';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { API, KoliBriFormCallbacks, States } from './types';
-import { ErrorListPropType, validateErrorList } from '../../types/props/error-list';
+
 /**
  * @slot - Inhalt der Form.
  */
@@ -46,28 +46,28 @@ export class KolForm implements API {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-form">
+				{this._errorList && this._errorList.length > 0 && (
+					<kol-alert _type="error">
+						{translate('kol-error-list-message')}
+						<nav aria-label={translate('kol-error-list')}>
+							<ul>
+								{this._errorList.map((error, index) => (
+									<li key={index}>
+										<kol-link
+											_href={error.selector}
+											_label={error.message}
+											_on={{ onClick: this.handleLinkClick }}
+											ref={(el) => {
+												if (index === 0) this.errorListElement = el as HTMLElement;
+											}}
+										/>
+									</li>
+								))}
+							</ul>
+						</nav>
+					</kol-alert>
+				)}
 				<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
-					{this._errorList && this._errorList.length > 0 && (
-						<kol-alert _type="error">
-							{translate('kol-error-list-message')}
-							<nav aria-label={translate('kol-error-list')}>
-								<ul>
-									{this._errorList.map((error, index) => (
-										<li key={index}>
-											<kol-link
-												_href={error.selector}
-												_label={error.message}
-												_on={{ onClick: this.handleLinkClick }}
-												ref={(el) => {
-													if (index === 0) this.errorListElement = el as HTMLElement;
-												}}
-											/>
-										</li>
-									))}
-								</ul>
-							</nav>
-						</kol-alert>
-					)}
 					{this.state._requiredText === true ? (
 						<p>
 							<kol-indented-text>{translate('kol-form-description')}</kol-indented-text>
@@ -81,6 +81,16 @@ export class KolForm implements API {
 				</form>
 			</Host>
 		);
+	}
+
+	@Method()
+	async focusErrorList(): Promise<void> {
+		setTimeout(() => {
+			if (this._errorList && this._errorList.length > 0) {
+				this.errorListElement?.focus();
+			}
+		}, 300);
+		return Promise.resolve();
 	}
 
 	/**
@@ -128,11 +138,5 @@ export class KolForm implements API {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
 		this.validateErrorList(this._errorList);
-	}
-
-	public componentDidRender() {
-		if (this._errorList && this._errorList.length > 0) {
-			this.errorListElement?.focus();
-		}
 	}
 }

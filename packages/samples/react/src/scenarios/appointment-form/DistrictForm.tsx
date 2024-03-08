@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { createErrorList } from './formUtils';
+import { createErrorList, focusErrorList } from './formUtils';
 
 const LOCATION_OPTIONS = [
 	{
@@ -31,16 +31,23 @@ export function DistrictForm() {
 	const form = useFormikContext<FormValues>();
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const errorList = createErrorList(form.errors);
+	const formikRef = useRef<HTMLKolFormElement>(null);
+
+	useEffect(() => {
+		focusErrorList(errorList, formikRef);
+	}, [sectionSubmitted]);
 
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus"></KolHeading>
 			<KolForm
+				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
 					onSubmit: () => {
 						void form.submitForm();
 						setSectionSubmitted(true);
+						focusErrorList(errorList, formikRef);
 					},
 				}}
 			>

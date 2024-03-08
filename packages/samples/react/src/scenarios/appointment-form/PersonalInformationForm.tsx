@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { KolButton, KolForm, KolHeading, KolInputEmail, KolInputText, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
-import { createErrorList } from './formUtils';
+import { createErrorList, focusErrorList } from './formUtils';
 
 const SALUTATION_OPTIONS = [
 	{
@@ -27,16 +27,23 @@ export function PersonalInformationForm() {
 	const form = useFormikContext<FormValues>();
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const errorList = createErrorList(form.errors);
+	const formikRef = useRef(null);
+
+	useEffect(() => {
+		focusErrorList(errorList, formikRef);
+	}, [sectionSubmitted]);
 
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Geben Sie Ihre Kontaktdaten ein"></KolHeading>
 			<KolForm
+				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
 					onSubmit: () => {
 						void form.submitForm();
 						setSectionSubmitted(true);
+						focusErrorList(errorList, formikRef);
 					},
 				}}
 			>
