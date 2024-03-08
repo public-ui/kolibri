@@ -1,6 +1,0 @@
-@mixin focus-outline {
-	border-radius: var(--border-radius);
-	outline-offset: 2px;
-	outline: var(--color-primary-variant) solid 3px;
-	transition: 200ms outline-offset linear;
-}
