@@ -1,7 +1,7 @@
 export enum TagEnum {
 	'abbr',
 	'accordion',
-	// 'accordion-group', // TODO: github pr link
+	'accordion-group', // TODO: github pr link
 	'alert',
 	'avatar',
 	'badge',
@@ -10,7 +10,6 @@ export enum TagEnum {
 	'button-group',
 	'button-link',
 	'card',
-	// 'combobox', // TODO: github pr link
 	'details',
 	'form',
 	'heading',
@@ -27,18 +26,17 @@ export enum TagEnum {
 	'input-radio',
 	'input-range',
 	'input-text',
-	// 'kolibri', // this component may not be redesigned
+	'kolibri',
 	'link',
 	'link-button',
 	'link-group',
-	// 'logo', // this component may not be redesigned
+	'logo',
 	'modal',
 	'nav',
 	'pagination',
 	'progress',
 	'select',
-	// 'separator', // TODO: github pr link
-	// 'sidebar', // TODO: github pr link
+	'separator', // TODO: github pr link
 	'skip-nav',
 	'spin',
 	'split-button',
@@ -47,7 +45,7 @@ export enum TagEnum {
 	'tabs',
 	'textarea',
 	'toast-container',
-	// 'toolbar', // TODO: github pr link
+	'toolbar', // TODO: github pr link
 	'tooltip',
 	'tree',
 	'tree-item',

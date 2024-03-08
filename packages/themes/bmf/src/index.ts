@@ -24,6 +24,7 @@ import inputPasswordCss from './components/input-password.scss';
 import inputRadioCss from './components/input-radio.scss';
 import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
+import kolibriCss from './components/kolibri.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
 import modalCss from './components/modal.scss';
@@ -70,6 +71,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-TABS': tabsCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-INPUT-RANGE': inputRangeCss,
+	'KOL-KOLIBRI': kolibriCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-ABBR': abbrCss,
