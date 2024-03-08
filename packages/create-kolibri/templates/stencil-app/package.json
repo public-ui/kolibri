@@ -19,8 +19,8 @@
 		"update": "ncu -t patch -u && ncu -t minor -u -x @stencil/core && ncu"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.14",
-		"@public-ui/themes": "1.7.14"
+		"@public-ui/components": "1.7.15",
+		"@public-ui/themes": "1.7.15"
 	},
 	"devDependencies": {
 		"@stencil-community/router": "1.0.2",

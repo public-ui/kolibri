@@ -1,6 +1,6 @@
 {
 	"name": "create-kolibri",
-	"version": "1.7.14",
+	"version": "1.7.15",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -108,7 +108,7 @@
 		"ts-node": "10.9.2",
 		"ts-prune": "0.10.3",
 		"tsup": "8.0.2",
-		"typescript": "5.3.3"
+		"typescript": "5.4.2"
 	},
 	"files": [
 		"defaults/**/*",

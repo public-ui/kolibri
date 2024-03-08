@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-itzbund",
-	"version": "1.7.14",
+	"version": "1.7.15",
 	"private": true,
 	"scripts": {
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
@@ -12,12 +12,12 @@
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "1.7.14",
-		"@public-ui/visual-tests": "1.7.14",
+		"@public-ui/schema": "1.7.15",
+		"@public-ui/visual-tests": "1.7.15",
 		"@types/node": "ts5.3",
-		"typescript": "5.3.3"
+		"typescript": "5.4.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.14"
+		"@public-ui/components": "1.7.15"
 	}
 }

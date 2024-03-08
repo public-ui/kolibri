@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/core",
-	"version": "1.7.14",
+	"version": "1.7.15",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -51,7 +51,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.14"
+		"@public-ui/components": "1.7.15"
 	},
 	"devDependencies": {
 		"adopted-style-sheets": "1.1.4",
@@ -62,7 +62,7 @@
 		"eslint-plugin-no-loops": "0.3.0",
 		"prettier": "3.2.5",
 		"ts-prune": "0.10.3",
-		"typescript": "5.3.3",
+		"typescript": "5.4.2",
 		"unbuild": "1.2.1"
 	},
 	"sideEffects": false,
