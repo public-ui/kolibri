@@ -1,0 +1,71 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.icon::part(icon) {
+		font-family: 'Material Symbols Rounded';
+		font-weight: 400;
+	}
+
+	.icon {
+		font-size: 18px;
+	}
+
+	.first .icon::part(icon)::before {
+		content: 'keyboard_double_arrow_left';
+	}
+
+	.previous .icon::part(icon)::before {
+		content: 'chevron_left';
+	}
+
+	.next .icon::part(icon)::before {
+		content: 'chevron_right';
+	}
+
+	.last .icon::part(icon)::before {
+		content: 'keyboard_double_arrow_right';
+	}
+
+	.button:focus {
+		outline: none;
+	}
+
+	.button-inner {
+		background-color: var(--color-white);
+		border-radius: var(--a11y-min-size);
+		border: 2px solid var(--color-midnight);
+		color: var(--color-midnight);
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		padding: 8px;
+		text-align: center;
+		transition-duration: 0.5s;
+		transition-property: background-color, color, border-color;
+	}
+
+	.button:focus .button-inner {
+		outline-offset: 2px;
+		outline: 3px solid var(--color-ocean);
+		transition: outline-offset 0.2s linear;
+	}
+
+	.button:is(:active, :hover):not(:disabled) .button-inner {
+		background-color: var(--color-ocean);
+		border-color: var(--color-ocean);
+		box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+		color: var(--color-white);
+	}
+
+	.button:active .button-inner {
+		border-color: var(--color-white);
+		outline: none;
+	}
+
+	.selected .button-inner {
+		background-color: var(--color-ice);
+		border-color: var(--color-ice);
+		font-weight: 700;
+	}
+}

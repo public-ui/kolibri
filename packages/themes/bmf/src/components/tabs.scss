@@ -1,0 +1,186 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	:host .kol-button-group-wc {
+		display: inline-flex;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
+	button {
+		box-sizing: border-box;
+		background-color: transparent;
+		border: 0;
+		border-radius: 0.25rem;
+		font-style: normal;
+		font-weight: 700;
+		font-size: 18px;
+		line-height: 22px;
+		min-height: 44px;
+		min-width: 44px;
+		color: var(--color-grey);
+		padding: 0;
+	}
+
+	button:hover {
+		color: var(--color-midnight);
+	}
+
+	button.primary,
+	button.selected {
+		/* border-bottom: 0.025rem solid var(--color-midnight); */
+		color: var(--color-midnight);
+	}
+
+	button:not(.selected) .kol-span-wc > span {
+		padding-bottom: 0.25em;
+	}
+
+	button.selected .kol-span-wc > span {
+		border-bottom: 0.25em solid;
+	}
+
+	button .kol-span-wc > span {
+		gap: 0.5rem;
+	}
+
+	:host > div > div {
+		padding: 0.25em 0;
+	}
+
+	.close-button {
+		display: none;
+		font-size: 25%;
+		height: fit-content;
+		width: 0;
+	}
+
+	.close-button button {
+		width: 1rem;
+		position: relative;
+		height: 1rem;
+		left: -4.25em;
+		top: 0.25em;
+	}
+
+	div[role='tabpanel'] {
+		height: 100%;
+	}
+
+	div.grid {
+		height: 100%;
+	}
+
+	:host > .tabs-align-right {
+		display: grid;
+		grid-template-columns: 1fr auto;
+	}
+
+	:host > .tabs-align-right .kol-button-group-wc {
+		display: grid;
+		order: 2;
+	}
+
+	:host > .tabs-align-left {
+		display: grid;
+		grid-template-columns: auto 1fr;
+	}
+
+	:host > .tabs-align-left .kol-button-group-wc {
+		display: grid;
+		order: 0;
+	}
+
+	:host > .tabs-align-bottom {
+		display: grid;
+		grid-template-rows: 1fr auto;
+	}
+
+	:host > .tabs-align-bottom .kol-button-group-wc {
+		order: 2;
+	}
+
+	:host > .tabs-align-bottom .kol-button-group-wc > div {
+		display: flex;
+	}
+
+	:host > .tabs-align-bottom > .kol-button-group-wc > div > div:first-child {
+		margin: 0px 1em 0px 0px;
+	}
+
+	:host > .tabs-align-bottom > .kol-button-group-wc > div > div {
+		margin: 0px 1em;
+	}
+
+	:host > .tabs-align-top {
+		display: grid;
+		grid-template-rows: auto 1fr;
+	}
+
+	:host > .tabs-align-top .kol-button-group-wc {
+		order: 0;
+	}
+
+	:host > .tabs-align-top .kol-button-group-wc > div {
+		display: flex;
+	}
+
+	:host > .tabs-align-top > .kol-button-group-wc > div > div:first-child {
+		margin: 0px 1em 0px 0px;
+	}
+
+	:host > .tabs-align-top > .kol-button-group-wc > div > div {
+		margin: 0px 1em;
+	}
+
+	:host > div {
+		display: grid;
+	}
+
+	:host > div.tabs-align-left {
+		grid-template-columns: auto 1fr;
+	}
+
+	:host > div.tabs-align-right {
+		grid-template-columns: 1fr auto;
+	}
+
+	:host > .tabs-align-left .kol-button-group-wc,
+	:host > .tabs-align-top .kol-button-group-wc {
+		order: 0;
+	}
+
+	:host > .tabs-align-bottom .kol-button-group-wc,
+	:host > .tabs-align-right .kol-button-group-wc {
+		order: 1;
+	}
+
+	:host > .tabs-align-left .kol-button-group-wc,
+	:host > .tabs-align-right .kol-button-group-wc {
+		gap: inherit;
+	}
+
+	:host > div.tabs-align-left .kol-button-group-wc > div,
+	:host > div.tabs-align-left .kol-button-group-wc > div > div,
+	:host > div.tabs-align-right .kol-button-group-wc > div,
+	:host > div.tabs-align-right .kol-button-group-wc > div > div {
+		display: grid;
+	}
+
+	:host > div.tabs-align-left .kol-button-group-wc > div > div .kol-button-wc,
+	:host > div.tabs-align-right .kol-button-group-wc > div > div .kol-button-wc {
+		width: 100%;
+	}
+
+	:host > div.tabs-align-bottom .kol-button-group-wc div,
+	:host > div.tabs-align-top .kol-button-group-wc div {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	:host .kol-button-group-wc button {
+		border: none;
+	}
+}
