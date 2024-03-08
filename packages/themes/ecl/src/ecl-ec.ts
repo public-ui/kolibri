@@ -24,7 +24,6 @@ import inputRadioCss from './components/ecl-ec/input-radio.scss';
 import inputRangeCss from './components/ecl-ec/input-range.scss';
 import inputTextCss from './components/ecl-ec/input-text.scss';
 import linkButtonCss from './components/ecl-ec/link-button.scss';
-import kolibriCss from './components/ecl-ec/kolibri.scss';
 import linkCss from './components/ecl-ec/link.scss';
 import navCss from './components/ecl-ec/nav.scss';
 import paginationCss from './components/ecl-ec/pagination.scss';
@@ -64,7 +63,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-INPUT-RADIO': inputRadioCss,
 	'KOL-INPUT-RANGE': inputRangeCss,
 	'KOL-INPUT-TEXT': inputTextCss,
-	'KOL-KOLIBRI': kolibriCss,
 	'KOL-INPUT-PASSWORD': inputPasswordCss,
 	'KOL-INPUT-NUMBER': inputNumberCss,
 	'KOL-INPUT-DATE': inputDateCss,
