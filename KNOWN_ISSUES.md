@@ -31,3 +31,10 @@ When focusing the element, it's expected that the `readonly` attribute is announ
 [🐞 GitHub issue #5554](https://github.com/public-ui/kolibri/issues/5554) (For number)
 [🐞 GitHub issue #5749](https://github.com/public-ui/kolibri/issues/5749) (For date)
 [🐞 NVDA issue #13672](https://github.com/nvaccess/nvda/issues/13672)
+
+## Deactivated buttons appear through the `dialog` -tag
+
+If  the HTML dialog tag is used instead of the modal component, it can happen that deactivated elements are visible in the background through the dialog.
+If possible use the dialog in the DOM at the end. This way, the deactivated elements no longer appear through the dialog.
+
+[🐞 GitHub issue #5484](https://github.com/public-ui/kolibri/issues/5484)
