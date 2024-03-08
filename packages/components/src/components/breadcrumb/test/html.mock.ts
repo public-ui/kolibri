@@ -44,7 +44,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 	});
 
 	return `
-<kol-breadcrumb>
+<kol-breadcrumb class="kol-breadcrumb">
   <mock:shadow-root>
 		<nav aria-label="${state._label}">
 			<ul>

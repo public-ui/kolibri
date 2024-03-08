@@ -52,7 +52,7 @@ const getIconHtmlPug = (props: Props, additionalAttrs = ''): string => {
 
 /* eslint-enable @typescript-eslint/no-unused-vars,@typescript-eslint/ban-ts-comment */
 
-export const getIconHtml = (props: Props, additionalAttrs = ''): string => {
+export const getIconHtml = (props: Props, additionalAttrs = ` class="kol-icon" `): string => {
 	return getIconHtmlTwig(props, additionalAttrs);
 	// return getIconHtmlMustache(props, additionalAttrs);
 	// return getIconHtmlPug(props, additionalAttrs);

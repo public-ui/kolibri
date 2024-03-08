@@ -18,7 +18,7 @@ import { LinkProps } from '../link/types';
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -31,7 +31,7 @@ export class KolLink implements LinkProps {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-link">
 				<kol-link-wc
 					ref={this.catchRef}
 					_ariaControls={this._ariaControls}

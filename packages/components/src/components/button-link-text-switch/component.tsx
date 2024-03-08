@@ -14,7 +14,7 @@ import { Props } from './types';
 })
 export class KolButtonLinkTextSwitch implements Props {
 	public render(): JSX.Element {
-		return <Host>{this.renderContent()}</Host>;
+		return <Host class="kol-button-link-text-switch">{this.renderContent()}</Host>;
 	}
 
 	private renderContent() {

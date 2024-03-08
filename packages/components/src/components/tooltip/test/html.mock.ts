@@ -18,7 +18,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 	state._label = state._label ?? '…';
 
 	return `
-<kol-tooltip-wc${additionalAttrs}>
+<kol-tooltip-wc${additionalAttrs} class="kol-tooltip-wc" >
 	${
 		state._label !== ''
 			? `<div class="tooltip-floating">
@@ -32,7 +32,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 				},
 				{
 					additionalAttrs: typeof state._id === 'string' ? ` id="${state._id}"` : undefined,
-					additionalClassNames: ['tooltip-area', 'tooltip-content'],
+					additionalClassNames: ['tooltip-area', 'tooltip-content', 'kol-span-wc'],
 				}
 			)}
 		</div>`

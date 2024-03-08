@@ -40,7 +40,7 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 @Component({
 	tag: 'kol-nav',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -151,7 +151,7 @@ export class KolNav implements API {
 		const hideLabel = this.state._hideLabel === true;
 		const orientation = this.state._orientation;
 		return (
-			<Host>
+			<Host class="kol-nav">
 				<div
 					class={{
 						[orientation]: true,

@@ -29,7 +29,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 @Component({
 	tag: 'kol-select',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -72,7 +72,7 @@ export class KolSelect implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host class={{ 'has-value': this.state._hasValue }}>
+			<Host class={{ 'kol-select': true, 'has-value': this.state._hasValue }}>
 				<kol-input
 					class={{
 						'hide-label': !!this.state._hideLabel,

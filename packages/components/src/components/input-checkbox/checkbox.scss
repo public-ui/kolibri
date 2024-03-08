@@ -1,0 +1,28 @@
+@layer kol-component {
+	.default {
+		& .checkbox-container {
+			align-items: center;
+			display: flex;
+			height: var(--a11y-min-size);
+			justify-content: center;
+			position: relative;
+			width: var(--a11y-min-size);
+		}
+
+		& .icon {
+			display: block;
+			inset: auto;
+			position: absolute;
+			z-index: 1;
+		}
+
+		&:not(.checked):not(.indeterminate) .icon::part(icon) {
+			display: none;
+		}
+
+		& .checkbox-input-element {
+			width: 22px;
+			height: 22px;
+		}
+	}
+}

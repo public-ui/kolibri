@@ -3,16 +3,16 @@
 	width: 100%;
 }
 
-:host kol-button-group-wc {
+:host .kol-button-group-wc {
 	display: flex;
 	background-color: var(--color-petrol);
 }
 
-:host kol-button-group-wc > div {
+:host .kol-button-group-wc > div {
 	display: inline-flex;
 }
 
-:host kol-button-group-wc > div + div {
+:host .kol-button-group-wc > div + div {
 	margin-left: 0.25em;
 }
 
@@ -41,15 +41,15 @@ button {
 	transition-property: background-color, color, border-color;
 }
 
-kol-button-wc button.selected,
-kol-button-wc[aria-selected='true'] button {
+.kol-button-wc button.selected,
+.kol-button-wc[aria-selected='true'] button {
 	background-color: white;
 	border-bottom-width: 0.25em !important;
 	border-bottom-style: solid;
 	border-bottom-color: var(--color-citrin) !important;
 }
 
-button > kol-span-wc span {
+button > .kol-span-wc span {
 	display: flex;
 	gap: 0.25em;
 	align-items: center;
@@ -159,30 +159,30 @@ button:active {
 	grid-template-columns: 1fr auto;
 }
 
-:host > .tabs-align-left kol-button-group-wc,
-:host > .tabs-align-top kol-button-group-wc {
+:host > .tabs-align-left .kol-button-group-wc,
+:host > .tabs-align-top .kol-button-group-wc {
 	order: 0;
 }
 
-:host > .tabs-align-bottom kol-button-group-wc,
-:host > .tabs-align-right kol-button-group-wc {
+:host > .tabs-align-bottom .kol-button-group-wc,
+:host > .tabs-align-right .kol-button-group-wc {
 	order: 1;
 }
 
-:host > div.tabs-align-left kol-button-group-wc > div,
-:host > div.tabs-align-left kol-button-group-wc > div > div,
-:host > div.tabs-align-right kol-button-group-wc > div,
-:host > div.tabs-align-right kol-button-group-wc > div > div {
+:host > div.tabs-align-left .kol-button-group-wc > div,
+:host > div.tabs-align-left .kol-button-group-wc > div > div,
+:host > div.tabs-align-right .kol-button-group-wc > div,
+:host > div.tabs-align-right .kol-button-group-wc > div > div {
 	display: grid;
 }
 
-:host > div.tabs-align-left kol-button-group-wc > div > div kol-button-wc,
-:host > div.tabs-align-right kol-button-group-wc > div > div kol-button-wc {
+:host > div.tabs-align-left .kol-button-group-wc > div > div .kol-button-wc,
+:host > div.tabs-align-right .kol-button-group-wc > div > div .kol-button-wc {
 	width: 100%;
 }
 
-:host > div.tabs-align-bottom kol-button-group-wc div,
-:host > div.tabs-align-top kol-button-group-wc div {
+:host > div.tabs-align-bottom .kol-button-group-wc div,
+:host > div.tabs-align-top .kol-button-group-wc div {
 	display: flex;
 	flex-wrap: wrap;
 }

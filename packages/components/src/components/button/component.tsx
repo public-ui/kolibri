@@ -73,7 +73,7 @@ export class KolButtonWc implements API {
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		return (
-			<Host>
+			<Host class="kol-button-wc">
 				<button
 					ref={this.catchRef}
 					accessKey={this.state._accessKey}

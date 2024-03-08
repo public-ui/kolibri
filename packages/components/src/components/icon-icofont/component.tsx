@@ -1,5 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
-import { Component, h, JSX, Prop } from '@stencil/core';
+import { Component, h, Host, JSX, Prop } from '@stencil/core';
 
 import { Icofont } from '../../types/icofont';
 import { PropAriaLabel } from '../../types/props/aria-label';
@@ -22,11 +22,13 @@ type OptionalProps = {
 export class KolIconIcofont implements Generic.Element.Members<RequiredProps, OptionalProps> {
 	public render(): JSX.Element {
 		return (
-			<kol-icon
-				exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
-				_ariaLabel={this._ariaLabel}
-				_icon={typeof this._icon === 'string' ? `icofont-${this._icon}` : (undefined as unknown as string)}
-			/>
+			<Host class="kol-icon-icofont">
+				<kol-icon
+					exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
+					_ariaLabel={this._ariaLabel}
+					_icon={typeof this._icon === 'string' ? `icofont-${this._icon}` : (undefined as unknown as string)}
+				/>
+			</Host>
 		);
 	}
 

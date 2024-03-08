@@ -30,7 +30,7 @@ input:hover {
 	border-color: var(--color-achat);
 }
 
-kol-alert {
+.kol-alert {
 	display: block;
 	width: 100%;
 }
@@ -98,6 +98,6 @@ fieldset div input[type='radio']:disabled {
 	cursor: not-allowed;
 }
 
-kol-alert {
+.kol-alert {
 	width: 100%;
 }

@@ -29,7 +29,7 @@ input:hover {
 	border-color: var(--color-primary);
 }
 
-kol-alert {
+.kol-alert {
 	display: block;
 	width: 100%;
 }
@@ -95,7 +95,7 @@ fieldset div input[type='radio']:disabled {
 	background-color: var(--color-mute-variant);
 }
 
-kol-alert.error {
+.kol-alert.error {
 	order: 1;
 }
 
@@ -104,7 +104,7 @@ fieldset legend {
 	display: contents;
 }
 
-fieldset kol-input {
+fieldset .kol-input {
 	order: 3;
 }
 
@@ -113,7 +113,7 @@ fieldset.error {
 	border-left: 3px solid var(--color-danger);
 }
 
-kol-alert.error {
+.kol-alert.error {
 	color: var(--color-danger);
 	font-weight: 700;
 }
@@ -124,7 +124,7 @@ fieldset.error textarea:focus {
 	outline-color: var(--color-danger) !important;
 }
 
-fieldset.error kol-alert.error {
+fieldset.error .kol-alert.error {
 	margin-left: -0.25em;
 	color: var(--color-danger);
 	font-weight: 700;

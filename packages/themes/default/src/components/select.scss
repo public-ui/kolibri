@@ -1,20 +1,20 @@
-kol-input {
+.kol-input {
 	gap: 0.25rem;
 }
 
-kol-input .error {
+.kol-input .error {
 	order: 1;
 }
 
-kol-input label {
+.kol-input label {
 	order: 2;
 }
 
-kol-input .input {
+.kol-input .input {
 	order: 3;
 }
 
-kol-input .hint {
+.kol-input .hint {
 	order: 4;
 	font-size: 0.9rem;
 	font-style: italic;
@@ -37,7 +37,7 @@ input::placeholder {
 	padding: 0 0.5rem;
 }
 
-.input > kol-icon {
+.input > .kol-icon {
 	width: 2rem;
 }
 
@@ -72,25 +72,25 @@ select:disabled {
 	padding-left: 0.125em;
 }
 
-kol-input.error {
+.kol-input.error {
 	border-left: 3px solid var(--color-danger);
 	padding-left: 1rem;
 }
 
-kol-input.error .input:focus-within {
+.kol-input.error .input:focus-within {
 	outline-color: var(--color-danger) !important;
 }
 
-kol-input.error kol-alert.error {
+.kol-input.error .kol-alert.error {
 	color: var(--color-danger);
 	font-weight: 700;
 }
 
-kol-input.disabled :is(select, label, option) {
+.kol-input.disabled :is(select, label, option) {
 	opacity: 1;
 }
 
-kol-input.disabled :is(select, .input) {
+.kol-input.disabled :is(select, .input) {
 	background-color: var(--color-mute);
 	border-color: var(--color-mute-variant);
 }

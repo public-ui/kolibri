@@ -1,5 +1,0 @@
-@import url(style.css);
-.required label > span::after,
-.required legend > span::after {
-	content: '*';
-}

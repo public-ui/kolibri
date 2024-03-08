@@ -9,7 +9,7 @@ import { API, States } from './types';
 export class KolButtonGroupWc implements API {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-button-group-wc">
 				<slot />
 			</Host>
 		);

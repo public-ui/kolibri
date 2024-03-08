@@ -19,7 +19,7 @@ import { API, KoliBriCardEventCallbacks, States } from './types';
 @Component({
 	tag: 'kol-card',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -36,7 +36,7 @@ export class KolCard implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-card">
 				<div class="card">
 					<div class="header">
 						<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>

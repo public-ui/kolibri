@@ -11,7 +11,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-abbr',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -20,7 +20,7 @@ export class KolAbbr implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-abbr">
 				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
 				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._label}>
 					<span title="">

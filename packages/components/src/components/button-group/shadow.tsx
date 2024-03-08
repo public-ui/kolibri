@@ -5,14 +5,14 @@ import { Props } from './types';
 @Component({
 	tag: 'kol-button-group',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
 export class KolButtonGroup implements Props {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-button-group">
 				<kol-button-group-wc>
 					<slot />
 				</kol-button-group-wc>

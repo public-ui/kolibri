@@ -10,14 +10,14 @@ import { Props } from './types';
 @Component({
 	tag: 'kol-heading',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
 export class KolHeading implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-heading-wc _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline}>
+			<kol-heading-wc _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline} class="kol-heading">
 				<slot />
 			</kol-heading-wc>
 		);

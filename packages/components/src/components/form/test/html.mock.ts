@@ -5,7 +5,7 @@ import { Props } from '../types';
 
 export const getFormHtml = (props: Props): string => {
 	props = mixMembers({ ...props }, props);
-	return `<kol-form>
+	return `<kol-form class="kol-form">
 	<mock:shadow-root>
 		<form autocomplete="off" method="post" novalidate="">
 			<p>

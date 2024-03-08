@@ -1,7 +1,0 @@
-@import url(../style.css);
-.navigation-list {
-	list-style: none;
-}
-.separator:before {
-	content: '•••';
-}

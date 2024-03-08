@@ -26,14 +26,14 @@ input:hover {
 }
 
 /* NEU */
-kol-input {
+.kol-input {
 	display: grid;
 	align-items: center;
 	justify-items: left;
 	width: 100%;
 }
 
-kol-input.default {
+.kol-input.default {
 	grid-template-columns: calc(6 * 2 * var(--spacing)) auto;
 }
 
@@ -49,21 +49,21 @@ kol-input.default {
 		'error error';
 }
 
-kol-input > div.input {
+.kol-input > div.input {
 	display: inline-flex;
 	order: 1;
 }
 
-kol-input > div.input input {
+.kol-input > div.input input {
 	margin: 0px;
 }
 
-kol-input > label {
+.kol-input > label {
 	order: 2;
 	padding-left: calc(2 * 2 * var(--spacing));
 }
 
-kol-input > kol-alert.error {
+.kol-input > .kol-alert.error {
 	order: 3;
 	padding-top: 0.25em;
 	grid-column: span 2 / auto;
@@ -143,7 +143,7 @@ input[type='checkbox']:checked {
 	opacity: 0.33;
 }
 
-kol-input span.hint {
+.kol-input span.hint {
 	grid-column: span 2;
 	font-style: italic;
 	color: gray;

@@ -1,4 +1,4 @@
-:host kol-input {
+:host .kol-input {
 	display: grid;
 	align-items: center;
 	justify-items: left;
@@ -7,15 +7,15 @@
 	gap: 0.4rem;
 }
 
-:host kol-input.default {
+:host .kol-input.default {
 	grid-template-columns: 1.5rem auto;
 }
 
-:host kol-input.switch {
+:host .kol-input.switch {
 	grid-template-columns: 3.5rem auto;
 }
 
-:host kol-input.button {
+:host .kol-input.button {
 	gap: 0.4rem 0;
 }
 
@@ -23,39 +23,39 @@
 	justify-content: flex-start;
 }
 
-:host kol-input > div.input {
+:host .kol-input > div.input {
 	display: inherit;
 	min-height: var(--a11y-min-size);
 	order: 2;
 }
 
-:host kol-input > div.input input {
+:host .kol-input > div.input input {
 	margin: 0px;
 }
 
-:host kol-input > label {
+:host .kol-input > label {
 	cursor: pointer;
 	order: 3;
 }
 
-:host kol-input > kol-alert.error {
+:host .kol-input > .kol-alert.error {
 	order: 1;
 	padding-top: calc(var(--spacing) / 2);
 	grid-column: span 2 / auto;
 }
 
-:host kol-input.error {
+:host .kol-input.error {
 	border-left: 3px solid var(--color-danger);
 	padding-left: 1rem;
 }
 
-:host kol-input.error input:focus,
-kol-input.error select:focus,
-kol-input.error textarea:focus {
+:host .kol-input.error input:focus,
+.kol-input.error select:focus,
+.kol-input.error textarea:focus {
 	outline-color: var(--color-danger) !important;
 }
 
-:host kol-input.error kol-alert.error {
+:host .kol-input.error .kol-alert.error {
 	color: var(--color-danger);
 	font-weight: 700;
 }
@@ -85,13 +85,13 @@ kol-input.error textarea:focus {
 	box-shadow: none;
 }
 
-:host kol-alert {
+:host .kol-alert {
 	display: block;
 	width: 100%;
 }
 
 /* CHECKBOX */
-:host kol-input label span {
+:host .kol-input label span {
 	margin-top: 0.125rem;
 }
 
@@ -100,35 +100,35 @@ kol-input.error textarea:focus {
 	padding-left: 0.125em;
 }
 
-:host kol-input input[type='checkbox'] {
+:host .kol-input input[type='checkbox'] {
 	appearance: none;
 	background-color: white;
 	cursor: pointer;
 	transition: 0.5s;
 }
 
-:host kol-input input[type='checkbox']:checked {
+:host .kol-input input[type='checkbox']:checked {
 	background-color: var(--color-primary);
 	border-color: var(--color-primary);
 }
 
-:host kol-input.default input[type='checkbox'] {
+:host .kol-input.default input[type='checkbox'] {
 	border-radius: var(--border-radius);
 	height: calc(6 * 0.25rem);
 	min-width: calc(6 * 0.25rem);
 	width: calc(6 * 0.25rem);
 }
 
-:host kol-input.default input[type='checkbox']:indeterminate {
+:host .kol-input.default input[type='checkbox']:indeterminate {
 	background-color: var(--color-primary);
 }
 
-:host kol-input.default .icon {
+:host .kol-input.default .icon {
 	color: var(--color-light);
 	margin-left: 0.25rem;
 }
 
-:host kol-input.switch input[type='checkbox'] {
+:host .kol-input.switch input[type='checkbox'] {
 	background-color: var(--color-subtle);
 	border-radius: 1.25em;
 	border-width: 0;
@@ -140,7 +140,7 @@ kol-input.error textarea:focus {
 	outline: transparent solid 1px;
 }
 
-:host kol-input.switch input[type='checkbox']:before {
+:host .kol-input.switch input[type='checkbox']:before {
 	width: 1.25em;
 	height: 1.25em;
 	left: calc(0.25em - 2px);
@@ -150,15 +150,15 @@ kol-input.error textarea:focus {
 	position: absolute;
 }
 
-:host kol-input.switch input[type='checkbox']:checked {
+:host .kol-input.switch input[type='checkbox']:checked {
 	background-color: var(--color-primary);
 }
 
-:host kol-input.switch input[type='checkbox']:checked:before {
+:host .kol-input.switch input[type='checkbox']:checked:before {
 	transform: translateX(2em);
 }
 
-:host kol-input.switch input[type='checkbox']:indeterminate:before {
+:host .kol-input.switch input[type='checkbox']:indeterminate:before {
 	transform: translateX(1em);
 }
 

@@ -36,7 +36,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 @Component({
 	tag: 'kol-textarea',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -54,7 +54,7 @@ export class KolTextarea implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host class={{ 'has-value': this.state._hasValue }}>
+			<Host class={{ 'kol-textarea': true, 'has-value': this.state._hasValue }}>
 				<kol-input
 					class={{ textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
 					_alert={this.state._alert}

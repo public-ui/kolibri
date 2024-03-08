@@ -23,7 +23,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-input-color',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -42,7 +42,7 @@ export class KolInputColor implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-color">
 				<kol-input
 					class={{
 						color: true,

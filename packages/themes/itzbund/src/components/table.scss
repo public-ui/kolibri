@@ -62,7 +62,7 @@ th {
 		grid-auto-flow: column;
 	}
 
-	:host > div.pagination kol-pagination {
+	:host > div.pagination .kol-pagination {
 		display: flex;
 		gap: 1rem;
 	}

@@ -1,0 +1,9 @@
+@import '../style';
+
+.navigation-list {
+	list-style: none;
+}
+
+.separator:before {
+	content: '•••';
+}

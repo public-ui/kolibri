@@ -12,7 +12,7 @@ import { API, States } from './types';
 export class KolSymbol implements API {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-symbol">
 				<span aria-label={this.state._label} role="term">
 					{this.state._symbol}
 				</span>

@@ -1,4 +1,4 @@
-import { Component, Fragment, h, JSX, Method, State } from '@stencil/core';
+import { Component, Fragment, h, Host, JSX, Method, State } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
@@ -10,7 +10,7 @@ const TRANSITION_TIMEOUT = 300;
 @Component({
 	tag: 'kol-toast-container',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -92,22 +92,24 @@ export class KolToastContainer implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Fragment>
-				{this.state._toastStates.length > 1 && (
-					<kol-button
-						_label={translate('kol-toast-close-all')}
-						class="close-all"
-						_on={{
-							onClick: () => {
-								void this.closeAll();
-							},
-						}}
-					></kol-button>
-				)}
-				{this.state._toastStates.map((toastState) => (
-					<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />
-				))}
-			</Fragment>
+			<Host class="kol-toast-container">
+				<Fragment>
+					{this.state._toastStates.length > 1 && (
+						<kol-button
+							_label={translate('kol-toast-close-all')}
+							class="close-all"
+							_on={{
+								onClick: () => {
+									void this.closeAll();
+								},
+							}}
+						></kol-button>
+					)}
+					{this.state._toastStates.map((toastState) => (
+						<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />
+					))}
+				</Fragment>
+			</Host>
 		);
 	}
 }

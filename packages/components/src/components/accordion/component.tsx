@@ -28,7 +28,7 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 @Component({
 	tag: 'kol-accordion',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -42,7 +42,7 @@ export class KolAccordion implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-accordion">
 				<div
 					class={{
 						accordion: true,

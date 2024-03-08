@@ -132,7 +132,7 @@ export class KolHeadingWc implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-heading-wc">
 				{typeof this.state._secondaryHeadline === 'string' && this.state._secondaryHeadline.length > 0 ? (
 					<hgroup>
 						{this.renderHeadline(this.state._label, this.state._level)}

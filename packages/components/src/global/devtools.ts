@@ -1,13 +1,25 @@
-import { Log, getColorContrastAnalysis, getDevMode, getDocument, getExperimentalMode, getKoliBri, initKoliBri, renderDevAdvice } from '../utils/dev.utils';
+import { Log, getColorContrastAnalysis, getDevMode, getDocument, getExperimentalMode, getWindow, initKoliBri, renderDevAdvice } from '../utils/dev.utils';
 import {
+	KoliBriUtils,
 	koliBriA11yColorContrast,
 	koliBriQuerySelector,
 	koliBriQuerySelectorAll,
 	koliBriQuerySelectorColors,
-	KoliBriUtils,
 	parseJson,
 	stringifyJson,
 } from '../utils/prop.validators';
+
+const getKoliBri = (): Record<string, unknown> => {
+	let kolibri = getWindow().KoliBri;
+	if (kolibri === undefined) {
+		kolibri = {};
+		Object.defineProperty(getWindow(), 'KoliBri', {
+			value: kolibri,
+			writable: false,
+		});
+	}
+	return kolibri;
+};
 
 function prototypeKoliBri<T>(name: string, cb: T) {
 	try {

@@ -12,7 +12,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-kolibri',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -20,7 +20,7 @@ export class KolKolibri implements API {
 	public render(): JSX.Element {
 		const fillColor = `rgb(${this.state._color.red},${this.state._color.green},${this.state._color.blue})`;
 		return (
-			<Host>
+			<Host class="kol-kolibri">
 				<svg role="img" aria-label={translate('kol-kolibri-logo')} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill={fillColor}>
 					<path d="M353 322L213 304V434L353 322Z" />
 					<path d="M209 564V304L149 434L209 564Z" />

@@ -19,23 +19,28 @@ export const getAccordionHtml = (
 		},
 		props
 	);
-	return `<kol-accordion${props._open ? ' _open' : ''}>
+	return `<kol-accordion${props._open ? ' _open' : ''} class="kol-accordion">
   <mock:shadow-root>
     <div class="accordion ${props._open ? 'open' : ''}">
-      ${getHeadingWcHtml(
+	${getHeadingWcHtml(
+		{
+			_label: '',
+			_level: props._level,
+		},
+		{
+			default: `${getButtonWcHtml(
 				{
-					_label: '',
-					_level: props._level,
+					_ariaControls: 'nonce',
+					_ariaExpanded: props._open === true,
+					_icons: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
+					_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
 				},
-				{
-					default: `${getButtonWcHtml({
-						_ariaControls: 'nonce',
-						_ariaExpanded: props._open === true,
-						_icons: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
-						_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
-					})}`,
-				}
-			)}
+				undefined,
+				` class="kol-button-wc"`
+			)}`,
+		},
+		` class="kol-heading-wc"`
+	)}
       <div class="header">
         <slot name="header"></slot>
       </div>

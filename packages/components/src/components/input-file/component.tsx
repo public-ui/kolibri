@@ -23,7 +23,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-input-file',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -41,7 +41,7 @@ export class KolInputFile implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-file">
 				<kol-input
 					class={{
 						file: true,

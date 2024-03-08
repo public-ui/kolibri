@@ -30,7 +30,7 @@ featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 @Component({
 	tag: 'kol-input-text',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -46,7 +46,7 @@ export class KolInputText implements API {
 		this.ref?.addEventListener('search', this.onChange);
 	};
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
@@ -73,6 +73,7 @@ export class KolInputText implements API {
 		return (
 			<Host
 				class={{
+					'kol-input-text': true,
 					'has-value': this.state._hasValue,
 				}}
 			>
@@ -128,7 +129,7 @@ export class KolInputText implements API {
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 							// onInput={this.controller.onFacade.onChange}
-							onKeyUp={this.onKeyUp}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
 				</kol-input>

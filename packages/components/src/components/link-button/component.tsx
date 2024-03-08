@@ -16,7 +16,7 @@ import { Props } from './types';
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -29,7 +29,7 @@ export class KolLinkButton implements Props {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-link-button">
 				<kol-link-wc
 					ref={this.catchRef}
 					class={{

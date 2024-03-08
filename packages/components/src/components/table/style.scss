@@ -1,0 +1,91 @@
+@import '../style';
+@import '../host-display-block';
+
+:host {
+	display: grid;
+}
+
+:host > div.table {
+	max-width: 100%;
+	order: 1;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+:host > div.table table {
+	width: 100%;
+}
+
+caption {
+	text-align: start;
+}
+
+.focus-element {
+	font-size: 0;
+}
+
+.focus-element:focus {
+	outline: 0 !important;
+}
+
+.table:has(.focus-element:focus) {
+	/* @see https://remysharp.com/til/css/focus-ring-default-styles */
+	outline: 5px auto Highlight;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: 2px;
+}
+
+th > div {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	place-items: center;
+}
+
+.table-sort-button .button {
+	color: inherit;
+}
+
+th.align-left {
+	text-align: left;
+
+	& .table-sort-button .button-inner {
+		justify-items: start;
+	}
+}
+
+th.align-center {
+	text-align: center;
+
+	& .table-sort-button .button-inner {
+		justify-items: center;
+	}
+}
+
+th.align-right {
+	text-align: right;
+
+	& .table-sort-button .button-inner {
+		justify-items: end;
+	}
+}
+
+div.pagination {
+	order: 2;
+}
+
+div.pagination,
+div.pagination > div:last-child {
+	display: grid;
+	place-items: center;
+}
+
+@media (min-width: 1024px) {
+	div.pagination,
+	div.pagination > div:last-child {
+		grid-auto-flow: column;
+	}
+
+	div.pagination .kol-pagination {
+		display: flex;
+	}
+}

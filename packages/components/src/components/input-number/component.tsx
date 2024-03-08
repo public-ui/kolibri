@@ -26,7 +26,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-input-number',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -39,8 +39,8 @@ export class KolInputNumber implements API {
 		propagateFocus(this.host, this.ref);
 	};
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
-		if (event.code === 'Enter') {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
@@ -58,6 +58,7 @@ export class KolInputNumber implements API {
 		return (
 			<Host
 				class={{
+					'kol-input-number': true,
 					'has-value': this.state._hasValue,
 				}}
 			>
@@ -107,7 +108,7 @@ export class KolInputNumber implements API {
 							type={this.state._type}
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
 				</kol-input>

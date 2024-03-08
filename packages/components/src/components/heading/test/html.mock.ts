@@ -20,10 +20,10 @@ export const getHeadingWcHtml = (
 
 	return `
 		<kol-heading-wc${additionalAttrs}>
-			<${tag} class="headline">
-				${state._label}
-				${typeof slots.default === 'string' ? slots.default : `<slot />`}
-			</${tag}>
+				<${tag} class="headline">
+					${state._label}
+					${typeof slots.default === 'string' ? slots.default : `<slot />`}
+				</${tag}>
 		</kol-heading-wc>`;
 };
 
@@ -36,7 +36,7 @@ export const getHeadingHtml = (
 	return `
 <kol-heading>
 	<mock:shadow-root>
-		${getHeadingWcHtml(props)}
+		${getHeadingWcHtml(props, {}, ` class="kol-heading kol-heading-wc"`)}
 	</mock:shadow-root>
 	${slots.default !== undefined ? slots.default : ''}
 </kol-heading>`;

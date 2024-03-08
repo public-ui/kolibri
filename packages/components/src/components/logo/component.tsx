@@ -1,4 +1,4 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { BUND_LOGO_TEXT_MAP, Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';
 import { translate } from '../../i18n';
@@ -86,7 +86,7 @@ c1.57,2.48,2.8,2.44,4.65,2.44c-1.2-0.97-2.21-2.14-3-3.46l-2.99-4.7c0.16-0.29,0.2
 @Component({
 	tag: 'kol-logo',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -127,51 +127,53 @@ export class KolLogo implements API {
 
 	public render(): JSX.Element {
 		return (
-			<svg
-				aria-label={translate('kol-logo-description', { placeholders: { orgShort: this.state._org, orgLong: getAriaLabel(this.state._org) } })}
-				role="img"
-				viewBox="0 0 225 100"
-			>
-				<rect width="100%" height="100%" fill="white"></rect>
-				<svg x="0" y="4" height="75">
-					<Adler />
+			<Host class="kol-logo">
+				<svg
+					aria-label={translate('kol-logo-description', { placeholders: { orgShort: this.state._org, orgLong: getAriaLabel(this.state._org) } })}
+					role="img"
+					viewBox="0 0 225 100"
+				>
+					<rect width="100%" height="100%" fill="white"></rect>
+					<svg x="0" y="4" height="75">
+						<Adler />
+					</svg>
+					<svg x="40.5" y="3.5" height="100">
+						<rect width="5" height="30"></rect>
+						<rect y="30" width="5" height="30" fill="red"></rect>
+						<rect y="60" width="5" height="30" fill="#fc0"></rect>
+					</svg>
+					<svg x="50" y="0">
+						<text x="0" y="-0.05em" font-family="BundesSans Web" style={{ backgroundColor: 'white', color: 'black' }}>
+							{BUND_LOGO_TEXT_MAP.has(this.state._org) ? (
+								<tspan>
+									{BUND_LOGO_TEXT_MAP.get(this.state._org)?.map((text: string, index: number) => {
+										return (
+											<tspan x="0" dy="1.1em" key={`kol-logo-text-${index}`}>
+												{text}
+											</tspan>
+										);
+									})}
+								</tspan>
+							) : (
+								<tspan fill="red">
+									<tspan x="0" dy="1.1em">
+										Der Schlüsselwert
+									</tspan>
+									<tspan x="0" dy="1.1em" font-weight="bold">
+										'{this.state._org}'
+									</tspan>
+									<tspan x="0" dy="1.1em">
+										ist nicht definiert.
+									</tspan>
+									<tspan x="0" dy="1.1em">
+										oder freigegeben.
+									</tspan>
+								</tspan>
+							)}
+						</text>
+					</svg>
 				</svg>
-				<svg x="40.5" y="3.5" height="100">
-					<rect width="5" height="30"></rect>
-					<rect y="30" width="5" height="30" fill="red"></rect>
-					<rect y="60" width="5" height="30" fill="#fc0"></rect>
-				</svg>
-				<svg x="50" y="0">
-					<text x="0" y="-0.05em" font-family="BundesSans Web" style={{ backgroundColor: 'white', color: 'black' }}>
-						{BUND_LOGO_TEXT_MAP.has(this.state._org) ? (
-							<tspan>
-								{BUND_LOGO_TEXT_MAP.get(this.state._org)?.map((text: string, index: number) => {
-									return (
-										<tspan x="0" dy="1.1em" key={`kol-logo-text-${index}`}>
-											{text}
-										</tspan>
-									);
-								})}
-							</tspan>
-						) : (
-							<tspan fill="red">
-								<tspan x="0" dy="1.1em">
-									Der Schlüsselwert
-								</tspan>
-								<tspan x="0" dy="1.1em" font-weight="bold">
-									'{this.state._org}'
-								</tspan>
-								<tspan x="0" dy="1.1em">
-									ist nicht definiert.
-								</tspan>
-								<tspan x="0" dy="1.1em">
-									oder freigegeben.
-								</tspan>
-							</tspan>
-						)}
-					</text>
-				</svg>
-			</svg>
+			</Host>
 		);
 	}
 }

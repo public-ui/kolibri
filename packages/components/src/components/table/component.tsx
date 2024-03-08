@@ -31,7 +31,7 @@ const paginationValidator = (value: unknown) => value === true || value === '' /
 @Component({
 	tag: 'kol-table',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -671,7 +671,7 @@ export class KolTable implements API {
 		const dataField = this.createDataField(displayedData, this.state._headers);
 
 		return (
-			<Host>
+			<Host class="kol-table">
 				{this.pageEndSlice > 0 && this.showPagination && (
 					<div class="pagination">
 						<span>

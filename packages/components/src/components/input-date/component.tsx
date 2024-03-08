@@ -27,7 +27,7 @@ import { ComponentApi, States } from './types';
 @Component({
 	tag: 'kol-input-date',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -40,8 +40,8 @@ export class KolInputDate implements ComponentApi {
 		propagateFocus(this.host, this.ref);
 	};
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
-		if (event.code === 'Enter') {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
@@ -57,7 +57,7 @@ export class KolInputDate implements ComponentApi {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host class={{ 'has-value': this.state._hasValue }}>
+			<Host class={{ 'kol-input-date': true, 'has-value': this.state._hasValue }}>
 				<kol-input
 					class={{
 						[this.state._type]: true,
@@ -103,7 +103,7 @@ export class KolInputDate implements ComponentApi {
 							type={this.state._type}
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
 				</kol-input>

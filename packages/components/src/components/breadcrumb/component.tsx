@@ -11,7 +11,7 @@ import { API, BreadcrumbLinkProps, States } from './types';
 @Component({
 	tag: 'kol-breadcrumb',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -39,7 +39,7 @@ export class KolBreadcrumb implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-breadcrumb">
 				<nav aria-label={this.state._label ?? ''}>
 					<ul>
 						{this.state._links.length === 0 && (

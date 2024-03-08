@@ -24,7 +24,7 @@ import { API, InputCheckboxIconsProp, InputCheckboxVariant, States } from './typ
 @Component({
 	tag: 'kol-input-checkbox',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -40,7 +40,7 @@ export class KolInputCheckbox implements API {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host>
+			<Host class="kol-input-checkbox">
 				<kol-input
 					class={{
 						checkbox: true,

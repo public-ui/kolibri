@@ -1,4 +1,4 @@
-import { Component, h, JSX, Prop } from '@stencil/core';
+import { Component, h, Host, JSX, Prop } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
@@ -21,24 +21,26 @@ export class KolInputRadioGroup implements Props {
 
 Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek entfernt.`);
 		return (
-			<kol-input-radio
-				_accessKey={this._accessKey}
-				_disabled={this._disabled}
-				_error={this._error}
-				_hideLabel={this._hideLabel}
-				_id={this._id}
-				_label={this._label}
-				_list={this._list}
-				_name={this._name}
-				_on={this._on}
-				_orientation={this._orientation}
-				_required={this._required}
-				_tabIndex={this._tabIndex}
-				_touched={this._touched}
-				_value={this._value}
-			>
-				<slot />
-			</kol-input-radio>
+			<Host class="kol-input-radio-group">
+				<kol-input-radio
+					_accessKey={this._accessKey}
+					_disabled={this._disabled}
+					_error={this._error}
+					_hideLabel={this._hideLabel}
+					_id={this._id}
+					_label={this._label}
+					_list={this._list}
+					_name={this._name}
+					_on={this._on}
+					_orientation={this._orientation}
+					_required={this._required}
+					_tabIndex={this._tabIndex}
+					_touched={this._touched}
+					_value={this._value}
+				>
+					<slot />
+				</kol-input-radio>
+			</Host>
 		);
 	}
 

@@ -16,7 +16,7 @@ export const getDetailsHtml = (
 		},
 		props
 	);
-	return `<kol-details${props._open ? ' _open' : ''}>
+	return `<kol-details${props._open ? ' _open' : ''}  class="kol-details">
 	<mock:shadow-root>
 		<details>
 			<summary>

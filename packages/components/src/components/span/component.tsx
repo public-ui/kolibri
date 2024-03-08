@@ -23,6 +23,7 @@ export class KolSpanWc implements API {
 		return (
 			<Host
 				class={{
+					'kol-span-wc': true,
 					'icon-only': !!this.state._hideLabel, // @deprecated in v2
 					'hide-label': !!this.state._hideLabel,
 				}}

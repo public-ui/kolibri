@@ -15,9 +15,9 @@
 		"update": "ncu -t minor -u && ncu"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.13",
-		"@public-ui/themes": "1.7.13",
-		"@public-ui/vue": "1.7.13",
+		"@public-ui/components": "1.7.14",
+		"@public-ui/themes": "1.7.14",
+		"@public-ui/vue": "1.7.14",
 		"vue": "3.3.4"
 	},
 	"devDependencies": {

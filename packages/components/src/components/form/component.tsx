@@ -1,10 +1,10 @@
-import { Component, h, JSX, Method, Prop, State, Watch } from '@stencil/core';
-
+import { Component, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
+import { ErrorListPropType, validateErrorList } from '../../types/props/error-list';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { API, KoliBriFormCallbacks, States } from './types';
-import { ErrorListPropType, validateErrorList } from '../../types/props/error-list';
+
 /**
  * @slot - Inhalt der Form.
  */
@@ -45,7 +45,7 @@ export class KolForm implements API {
 
 	public render(): JSX.Element {
 		return (
-			<div>
+			<Host class="kol-form">
 				{this._errorList && this._errorList.length > 0 && (
 					<kol-alert _type="error">
 						{translate('kol-error-list-message')}
@@ -79,7 +79,7 @@ export class KolForm implements API {
 					) : null}
 					<slot />
 				</form>
-			</div>
+			</Host>
 		);
 	}
 

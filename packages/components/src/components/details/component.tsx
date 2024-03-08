@@ -14,7 +14,7 @@ import { propagateFocus } from '../../utils/reuse';
 @Component({
 	tag: 'kol-details',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -31,7 +31,7 @@ export class KolDetails implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-details">
 				<details
 					ref={(el) => {
 						this.detailsElement = el as HTMLDetailsElement;

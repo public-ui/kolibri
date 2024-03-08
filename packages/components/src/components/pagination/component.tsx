@@ -30,7 +30,7 @@ const rightDoubleArrowIcon = {
 @Component({
 	tag: 'kol-pagination',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -71,7 +71,7 @@ export class KolPagination implements API {
 			});
 
 		return (
-			<Host>
+			<Host class="kol-pagination">
 				<nav aria-label={this.state._label}>
 					<ul class="navigation-list">
 						{this.state._hasButtons.first && (

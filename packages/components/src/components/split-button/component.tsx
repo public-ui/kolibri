@@ -20,7 +20,7 @@ import { API, States } from './types';
 @Component({
 	tag: 'kol-split-button',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -78,7 +78,7 @@ export class KolSplitButton implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-split-button split-button">
 				<kol-button-wc
 					class={{
 						'main-button': true,
