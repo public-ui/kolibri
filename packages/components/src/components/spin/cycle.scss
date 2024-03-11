@@ -1,8 +1,8 @@
 @import '../@shared/mixins';
 
 .spin.cycle {
-	width: rem(3);
-	height: rem(3);
+	width: rem(48);
+	height: rem(48);
 }
 .spin.cycle > .loader {
 	display: block;
