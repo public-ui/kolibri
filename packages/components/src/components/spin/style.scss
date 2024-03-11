@@ -1,9 +1,10 @@
+@import '../@shared/mixins';
 @import '../style';
 @import 'cycle';
 @import 'dot';
 
 .spin {
 	display: block;
-	padding: 0.125rem;
+	padding: rem(0.125);
 	position: relative;
 }

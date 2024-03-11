@@ -1,3 +1,4 @@
+@import '@shared/mixins';
 @import 'label';
 @import 'host-display-block';
 
@@ -37,18 +38,18 @@ input[type='week'],
 select,
 select[multiple] option,
 textarea {
-	font-size: 1rem;
+	font-size: rem(1);
 	width: 100%;
 }
 
 /* needed hack for vertical alignment */
 input[type='file'] {
-	padding: calc((var(--a11y-min-size) - 1rem) / 10) 0.5em;
+	padding: calc((var(--a11y-min-size) - rem(1)) / 10) 0.5em;
 }
 
 /* needed hack for vertical alignment */
 select[multiple] option {
-	padding: calc((var(--a11y-min-size) - 1rem) / 2) 0.5em;
+	padding: calc((var(--a11y-min-size) - rem(1)) / 2) 0.5em;
 }
 
 .kol-input.disabled :is(button, input, option, select, textarea, .input-label) {

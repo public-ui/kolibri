@@ -1,39 +1,41 @@
+@import '../@shared/mixins';
+
 .spin.dot {
-	height: 1rem;
-	width: 3rem;
+	height: rem(1);
+	width: rem(3);
 }
 .spin.dot > span {
 	animation-timing-function: cubic-bezier(0, 1, 1, 0);
 	border-radius: 50%;
-	border: 0.1rem solid #fff;
-	height: 0.8rem;
+	border: rem(0.1) solid #fff;
+	height: rem(0.8);
 	position: absolute;
-	top: 0.1rem;
-	width: 0.8rem;
+	top: rem(0.1);
+	width: rem(0.8);
 }
 .spin.dot > span:first-child {
 	background-color: #fc0;
 	z-index: 0;
 	animation: 1s infinite spin1;
-	left: 0.1rem;
+	left: rem(0.1);
 }
 .spin.dot > span:nth-child(2) {
 	background-color: red;
 	z-index: 1;
 	animation: 1s infinite spin2;
-	left: 0.1rem;
+	left: rem(0.1);
 }
 .spin.dot > span:nth-child(3) {
 	background-color: #000;
 	z-index: 1;
 	animation: 1s infinite spin2;
-	left: 1.1rem;
+	left: rem(1.1);
 }
 .spin.dot > span:nth-child(4) {
 	background-color: #666;
 	z-index: 0;
 	animation: 1s infinite spin3;
-	left: 2.1rem;
+	left: rem(2.1);
 }
 @keyframes spin1 {
 	0% {
@@ -48,7 +50,7 @@
 		transform: translate(0, 0);
 	}
 	100% {
-		transform: translate(1rem, 0);
+		transform: translate(rem(1), 0);
 	}
 }
 @keyframes spin3 {
