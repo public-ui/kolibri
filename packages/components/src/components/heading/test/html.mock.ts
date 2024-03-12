@@ -6,14 +6,14 @@ export const getHeadingWcHtml = (
 	slots: {
 		expert?: string;
 	} = {},
-	additionalAttrs = ''
+	additionalAttrs = '',
 ): string => {
 	const state = mixMembers<HeadingProps, HeadingStates>(
 		{
 			_label: '', // ⚠ required
 			_level: 1,
 		},
-		props
+		props,
 	);
 	const tag = state._level === 0 ? 'strong' : `h${state._level || 1}`;
 
@@ -30,7 +30,7 @@ export const getHeadingHtml = (
 	props: HeadingProps,
 	slots: {
 		expert?: string;
-	} = {}
+	} = {},
 ): string => {
 	return `
 <kol-heading>

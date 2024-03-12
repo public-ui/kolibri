@@ -26,5 +26,5 @@ executeTests<SpanProps>(
 	getSpanHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

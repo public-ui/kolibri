@@ -25,7 +25,7 @@ export class InputNumberController extends InputIconController implements InputN
 			'_autoComplete',
 			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
 			new Set(['on | off']),
-			value
+			value,
 		);
 	}
 
@@ -63,7 +63,7 @@ export class InputNumberController extends InputIconController implements InputN
 						}
 					},
 				},
-			}
+			},
 		);
 	};
 

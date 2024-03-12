@@ -63,7 +63,7 @@ export class KolQuote implements QuoteAPI {
 			'_variant',
 			(value) => typeof value === 'string' && koliBriQuoteVariantOptions.includes(value),
 			new Set(koliBriQuoteVariantOptions),
-			value
+			value,
 		);
 	}
 

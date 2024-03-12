@@ -16,7 +16,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_href: '', // ⚠ required
 			_icons: {},
 		},
-		props
+		props,
 	);
 	const hasExpertSlot = showExpertSlot(state._label);
 	const isExternal = typeof state._target === 'string' && state._target !== '_self';
@@ -55,7 +55,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				},
 				{
 					additionalClassNames: ['kol-span-wc'],
-				}
+				},
 			)}
 			${
 				typeof state._target === 'string' && state._target !== '_self'
@@ -64,8 +64,8 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 								_label: state._hideLabel ? '' : translate('kol-open-link-in-tab'),
 								_icons: 'codicon codicon-link-external',
 							},
-							` class="kol-icon external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`
-					  )
+							` class="kol-icon external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`,
+						)
 					: ''
 			}
     </a>
@@ -74,7 +74,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				_align: state._tooltipAlign,
 				_label: state._label || state._href,
 			},
-			` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
+			` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`,
 		)}
     </kol-link-wc>
   </mock:shadow-root>

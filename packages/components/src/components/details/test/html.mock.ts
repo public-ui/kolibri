@@ -10,13 +10,13 @@ export const getDetailsHtml = (
 	props: DetailsProps,
 	slots: {
 		default?: string;
-	} = {}
+	} = {},
 ): string => {
 	props = mixMembers(
 		{
 			_label: '', // ⚠ required
 		},
-		props
+		props,
 	);
 
 	const classNames = clsx({
@@ -36,7 +36,7 @@ export const getDetailsHtml = (
 						_label: '',
 						_icons: 'codicon codicon-chevron-right',
 					},
-					`class="kol-icon icon${props._open ? ' is-open' : ''}"`
+					`class="kol-icon icon${props._open ? ' is-open' : ''}"`,
 				)}
 				<span>
 					${props._label}

@@ -16,7 +16,6 @@
 	"sideEffects": false,
 	"description": "Provides utility to run visual regression tests for themes.",
 	"scripts": {
-		"depcheck": "depcheck --ignores=@babel/plugin-syntax-import-attributes,@babel/preset-env,@public-ui/sample-react,portfinder,serve",
 		"format": "prettier --check src",
 		"lint": "eslint src",
 		"unused": "knip"
@@ -35,7 +34,6 @@
 		"@babel/eslint-parser": "7.23.10",
 		"@babel/plugin-syntax-import-attributes": "7.23.3",
 		"@babel/preset-env": "7.24.0",
-		"depcheck": "1.4.7",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"knip": "5.0.3",

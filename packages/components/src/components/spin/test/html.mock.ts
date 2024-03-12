@@ -6,7 +6,7 @@ export const getSpinHtml = (props: SpinProps): string => {
 		{
 			_variant: 'dot',
 		},
-		props
+		props,
 	);
 	return `<kol-spin${state._show === true ? ' _show' : ''}  class="kol-spin">
 	 <mock:shadow-root>
