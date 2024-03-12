@@ -25,5 +25,5 @@ executeTests<IconProps>(
 	getIconHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

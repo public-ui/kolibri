@@ -10,7 +10,7 @@ export const getCardHtml = (props: CardProps): string => {
 		{
 			_label: '', // ⚠ required
 		},
-		props
+		props,
 	);
 	return `<kol-card class="kol-card">
 	<mock:shadow-root>
@@ -24,7 +24,7 @@ export const getCardHtml = (props: CardProps): string => {
 					{
 						expert: '',
 					},
-					` class="kol-heading-wc"`
+					` class="kol-heading-wc"`,
 				)}
 			</div>
 			<div class="content">
@@ -44,8 +44,8 @@ export const getCardHtml = (props: CardProps): string => {
 								_tooltipAlign: 'left',
 							},
 							undefined,
-							' class=" kol-button-wc close"'
-					  )
+							' class=" kol-button-wc close"',
+						)
 					: ``
 			}
 		</div>

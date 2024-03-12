@@ -108,7 +108,7 @@ export class KolTreeWc implements TreeAPI {
 			this.treeItemElements.map(async (element) => ({
 				value: element,
 				include: await areElementAndAllParentsOpen(element),
-			}))
+			})),
 		);
 
 		return elementsWithInclude.filter((element) => element.include).map((element) => element.value);

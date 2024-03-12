@@ -5,7 +5,10 @@ export class ToasterService {
 
 	private toastContainerElement?: HTMLKolToastContainerElement;
 
-	private constructor(private readonly document: Document, private readonly options?: ToasterOptions) {
+	private constructor(
+		private readonly document: Document,
+		private readonly options?: ToasterOptions,
+	) {
 		this.toastContainerElement = this.document.createElement('kol-toast-container');
 		this.document.body.prepend(this.toastContainerElement);
 	}

@@ -50,7 +50,7 @@
 		"@public-ui/components": "2.0.9",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
-		"@types/node": "ts5.3",
+		"@types/node": "ts5.4",
 		"@types/normalize-package-data": "2.4.4",
 		"typescript": "5.4.2",
 		"unbuild": "1.2.1",
