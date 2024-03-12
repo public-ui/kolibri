@@ -23,5 +23,5 @@ executeTests<Props>(
 	getBreadcrumbHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

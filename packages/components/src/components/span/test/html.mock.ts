@@ -20,7 +20,7 @@ export const getSpanWcHtml = (
 	slots: Slots = {
 		expert: undefined,
 	},
-	options?: SpanOptions
+	options?: SpanOptions,
 ): string => {
 	const state = mixMembers<Props, States>(
 		{
@@ -29,7 +29,7 @@ export const getSpanWcHtml = (
 			_icons: {},
 			_label: '…', // ⚠ required
 		},
-		props
+		props,
 	);
 
 	/**
@@ -48,7 +48,7 @@ export const getSpanWcHtml = (
 			? getIconHtml({
 					_label: (icons.top as KoliBriCustomIcon).label ?? '',
 					_icons: (icons.top as KoliBriCustomIcon).icon,
-			  })
+				})
 			: ''
 	}
 	<span>
@@ -59,8 +59,8 @@ export const getSpanWcHtml = (
 							_label: (icons.left as KoliBriCustomIcon).label ?? '',
 							_icons: (icons.left as KoliBriCustomIcon).icon,
 						},
-						` class="kol-icon icon left"`
-				  )
+						` class="kol-icon icon left"`,
+					)
 				: ''
 		}
 		${
@@ -80,8 +80,8 @@ export const getSpanWcHtml = (
 							_label: (icons.right as KoliBriCustomIcon).label ?? '',
 							_icons: (icons.right as KoliBriCustomIcon).icon,
 						},
-						` class="icon right"`
-				  )
+						` class="icon right"`,
+					)
 				: ''
 		}
 	</span>
@@ -90,7 +90,7 @@ export const getSpanWcHtml = (
 			? getIconHtml({
 					_label: (icons.bottom as KoliBriCustomIcon).label ?? '',
 					_icons: (icons.bottom as KoliBriCustomIcon).icon,
-			  })
+				})
 			: ''
 	}
 </kol-span-wc>`;
@@ -100,7 +100,7 @@ export const getSpanHtml = (
 	props: Props,
 	slots: Slots = {
 		expert: `<slot name="expert" slot="expert"></slot>`,
-	}
+	},
 ): string => {
 	return `
 <kol-span>

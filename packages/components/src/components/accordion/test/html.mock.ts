@@ -10,14 +10,14 @@ export const getAccordionHtml = (
 		header?: string;
 		content?: string;
 		footer?: string;
-	} = {}
+	} = {},
 ): string => {
 	props = mixMembers(
 		{
 			_label: '…', // ⚠ required
 			_level: 1,
 		},
-		props
+		props,
 	);
 	return `<kol-accordion${props._open ? ' _open' : ''} class="kol-accordion">
   <mock:shadow-root>
@@ -36,10 +36,10 @@ export const getAccordionHtml = (
 					_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
 				},
 				undefined,
-				` class="kol-button-wc"`
+				` class="kol-button-wc"`,
 			)}`,
 		},
-		` class="kol-heading-wc"`
+		` class="kol-heading-wc"`,
 	)}
       <div class="header">
         <slot name="header"></slot>

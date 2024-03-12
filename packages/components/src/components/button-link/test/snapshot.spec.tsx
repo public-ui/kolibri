@@ -18,5 +18,5 @@ executeTests<Props>(
 	{
 		_label: [`Beschreibung`],
 	},
-	getButtonLinkHtml
+	getButtonLinkHtml,
 );

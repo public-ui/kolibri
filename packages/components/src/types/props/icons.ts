@@ -91,7 +91,7 @@ export const validateIcons = (component: Generic.Element.Component, value?: Icon
 						beforePatchIcon(component);
 					},
 				},
-			}
+			},
 		);
 	});
 };

@@ -25,5 +25,5 @@ executeTests<Props>(
 	getCardHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

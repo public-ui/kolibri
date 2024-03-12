@@ -30,7 +30,7 @@ const validate = (component: Generic.Element.Component, propName: string, value?
 		propName,
 		(value) => value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time' || value === true || value === false,
 		new Set(['String {data, location, page, step, time}', 'boolean']),
-		value
+		value,
 	);
 };
 export const validateAriaCurrent = (component: Generic.Element.Component, value?: AriaCurrentPropType): void => {

@@ -118,7 +118,7 @@ graph TD;
   kol-input-adapter-leanup --> kol-link
   kol-link-group --> kol-link
   kol-quote --> kol-link
-  style kol-link fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-link stroke:#333,stroke-width:4px
 ```
 
 ---

@@ -50,7 +50,7 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  style kol-input-radio-group fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-input-radio-group stroke:#333,stroke-width:4px
 ```
 
 ---

@@ -8,13 +8,13 @@ export const getDetailsHtml = (
 	props: Props,
 	slots: {
 		default?: string;
-	} = {}
+	} = {},
 ): string => {
 	props = mixMembers(
 		{
 			_label: '…', // ⚠ required
 		},
-		props
+		props,
 	);
 	return `<kol-details${props._open ? ' _open' : ''}  class="kol-details">
 	<mock:shadow-root>

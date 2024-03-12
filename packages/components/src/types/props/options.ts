@@ -34,14 +34,14 @@ export const validateOptions = (component: Generic.Element.Component, value: Opt
 		(item: Option<W3CInputValue>) => typeof item === 'object' && item !== null && typeof item.label === 'string' && item.label.length > 0,
 		value,
 		undefined,
-		options
+		options,
 	);
 };
 
 export const validateOptionsWithOptgroup = (
 	component: Generic.Element.Component,
 	value: OptionsWithOptgroupPropType | undefined,
-	options: WatchOptions = {}
+	options: WatchOptions = {},
 ) => {
 	watchJsonArrayString(component, '_options', validateInputSelectOptions, value, undefined, options);
 };

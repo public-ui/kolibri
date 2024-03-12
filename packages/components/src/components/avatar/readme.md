@@ -62,7 +62,7 @@ Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefr
 ```mermaid
 graph TD;
   kol-avatar --> kol-avatar-wc
-  style kol-avatar-wc fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-avatar-wc stroke:#333,stroke-width:4px
 ```
 
 ---

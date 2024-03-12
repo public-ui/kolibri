@@ -406,7 +406,7 @@ export class KolPagination implements API {
 						}
 					},
 				},
-			}
+			},
 		);
 	}
 

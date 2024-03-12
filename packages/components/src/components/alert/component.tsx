@@ -180,7 +180,7 @@ export class KolAlertWc implements API {
 				'_on',
 				{
 					onClose: (value as KoliBriAlertEventCallbacks).onClose,
-				}
+				},
 				// {
 				// 	afterPatch: (value: unknown) => {
 				// 		this._hasCloser = this.validateOnValue(value);
@@ -203,7 +203,7 @@ export class KolAlertWc implements API {
 			'_type',
 			(value) => typeof value === 'string' && (value === 'default' || value === 'error' || value === 'info' || value === 'success' || value === 'warning'),
 			new Set('String {success, info, warning, error}'),
-			value
+			value,
 		);
 	}
 

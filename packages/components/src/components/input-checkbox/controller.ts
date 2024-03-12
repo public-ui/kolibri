@@ -53,7 +53,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 						});
 					},
 				},
-			}
+			},
 		);
 	}
 
@@ -85,7 +85,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 			'_variant',
 			(value): boolean => typeof value === 'string' && (value === 'button' || value === 'default' || value === 'switch'),
 			new Set(['String {button, default, switch}']),
-			value
+			value,
 		);
 	}
 

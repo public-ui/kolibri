@@ -58,7 +58,7 @@ export class InputTextController extends InputTextEmailController implements Inp
 			'_type',
 			(value): boolean => typeof value === 'string' && (value === 'text' || value === 'search' || value === 'url' || value === 'tel'),
 			new Set(['String {text, search, url, tel}']),
-			value
+			value,
 		);
 	}
 

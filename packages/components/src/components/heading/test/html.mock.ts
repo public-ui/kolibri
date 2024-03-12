@@ -7,14 +7,14 @@ export const getHeadingWcHtml = (
 	slots: {
 		default?: string;
 	} = {},
-	additionalAttrs = ''
+	additionalAttrs = '',
 ): string => {
 	const state = mixMembers<Props, States>(
 		{
 			_label: '…', // ⚠ required
 			_level: 1,
 		},
-		props
+		props,
 	);
 	const tag = state._level === 0 ? 'strong' : `h${state._level || 1}`;
 
@@ -31,7 +31,7 @@ export const getHeadingHtml = (
 	props: Props,
 	slots: {
 		default?: string;
-	} = {}
+	} = {},
 ): string => {
 	return `
 <kol-heading>

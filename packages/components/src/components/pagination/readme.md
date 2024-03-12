@@ -95,7 +95,7 @@ graph TD;
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
   kol-table --> kol-pagination
-  style kol-pagination fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-pagination stroke:#333,stroke-width:4px
 ```
 
 ---

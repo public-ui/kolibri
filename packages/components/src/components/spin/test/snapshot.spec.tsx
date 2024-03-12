@@ -22,5 +22,5 @@ executeTests<Props>(
 	getSpinHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

@@ -54,7 +54,7 @@ class I18nextService {
 		translations?:
 			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
 			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
-			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>
+			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>,
 	) {
 		if (Array.isArray(translations)) {
 			translations = new Set(translations);
@@ -67,7 +67,7 @@ class I18nextService {
 				t((l, t) => {
 					i18next.addResourceBundle(l, I18nextService.namespace, t, true);
 					return l;
-				})
+				}),
 			);
 		}
 	}
@@ -114,7 +114,7 @@ export const configI18n = async (
 	translations?:
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
-		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>
+		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>,
 ) => {
 	await initI18n(lng);
 	i18n.addTranslations(translations);
