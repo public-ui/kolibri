@@ -29,7 +29,7 @@ jobs:
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           # cache: pnpm
           node-version: 20
@@ -66,7 +66,7 @@ jobs:
       - name: Test
         run: pnpm -r --workspace-concurrency=1 test # https://pnpm.io/configuring
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: failure()
         name: Upload theme test reports
         with:

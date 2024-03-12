@@ -1,4 +1,4 @@
-name: Publish Page
+name: 02 - Publish Page
 
 env:
   access: public
@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: '${{env.npmjs-registry}}'
@@ -38,7 +38,7 @@ jobs:
       # - name: Build storybook
       #   run: npm i --legacy-peer-deps
       #   working-directory: packages/storybook
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: '${{env.github-registry}}'
