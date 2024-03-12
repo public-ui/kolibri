@@ -1,10 +1,9 @@
-name: Publish
+name: 01 - Publish
 
 env:
   access: public
   registry: https://registry.npmjs.org
   token: ${{ secrets.NPMJS_GRANULAR_TOKEN }}
-  prefix: v1
 
 on:
   workflow_dispatch:
@@ -28,7 +27,7 @@ jobs:
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: '${{env.registry}}'
@@ -58,127 +57,127 @@ jobs:
 
       - name: Build and publish schema
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/schema
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish components
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/components
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v11
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v11
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v12
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v12
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v13
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v13
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v14
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v14
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v15
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v15
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v16
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v16
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v17
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v17
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter react
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/react
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter react-standalone
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/react-standalone
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter solid
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/solid
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter vue
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/vue
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter preact
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/preact
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter hydrate
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/hydrate
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish create-kolibri
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/create-kolibri
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish tools kolibri-cli
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/tools/kolibri-cli
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish theme default
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/themes/default
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish themes
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/themes
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish sample react
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish tools visual-tests
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/tools/visual-tests
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
@@ -186,7 +185,7 @@ jobs:
       # deprecated packages
       - name: Build and publish core
         continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/core
         env:
           NODE_AUTH_TOKEN: ${{env.token}}

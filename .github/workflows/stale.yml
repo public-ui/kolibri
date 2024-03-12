@@ -1,0 +1,21 @@
+# @see https://github.com/actions/stale
+
+name: 'Close stale issues and PRs'
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *'
+
+jobs:
+  stale:
+    if: github.repository == 'public-ui/kolibri'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v8
+        with:
+          days-before-stale: 170
+          days-before-close: 10
+          days-before-pr-close: -1 # Don't close PR's
+          stale-issue-message: 'This issue has been automatically marked as stale and will be closed in 10 days because it has not had recent activity and is much likely outdated. If you think this issue is still relevant and applicable, please post a comment or remove the Stale label.'
+          stale-pr-message: 'This PR has been automatically marked as stale because it has not had recent activity and is much likely outdated. If you think this PR is still relevant and applicable, please post a comment or remove the Stale label.'
+          close-issue-message: 'This issue was closed because it has been stale for 10 days with no activity. If the issue is still relevant to you, feel free to re-open with a comment.'
