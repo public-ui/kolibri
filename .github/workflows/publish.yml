@@ -146,12 +146,6 @@ jobs:
         working-directory: packages/adapters/hydrate
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish create-kolibri
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
-        working-directory: packages/create-kolibri
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish tools kolibri-cli
         continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
@@ -188,6 +182,14 @@ jobs:
         continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/core
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+
+      # packages a obsolete with next major release
+      - name: Build and publish create-kolibri
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        working-directory: packages/create-kolibri
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
 

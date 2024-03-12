@@ -56,64 +56,30 @@
 		"template"
 	],
 	"scripts": {
-		"build": "rimraf dist templates/**/package-lock.json templates/**/pnpm-lock.yaml templates/**/yarn.lock && tsup src/cli.ts --minify",
+		"build": "tsup",
 		"clean": "git clean -f -d -X",
-		"dev": "tsup src/cli.ts --watch",
-		"format": "prettier --check src && npm-run-all format:*",
-		"format:angular": "prettier --check templates/angular-app -w",
-		":format:astro": "prettier --check templates/astro-app -w",
-		"format:kolibri-library": "prettier --check templates/kolibri-library -w",
-		"format:kolibri-theme": "prettier --check templates/kolibri-theme -w",
-		"format:next.js": "prettier --check templates/next.js-app -w",
-		"format:preact": "prettier --check templates/preact-app -w",
-		"format:react": "prettier --check templates/react-app -w",
-		"format:react-vite": "prettier --check templates/react-vite-app -w",
-		"format:solid": "prettier --check templates/solid-app -w",
-		"format:vue": "prettier --check templates/vue-app -w",
-		"format:vue-vite": "prettier --check templates/vue-vite-app -w",
-		"ncu:major": "ncu",
-		"ncu:minor": "ncu -t minor -u",
-		"ncu:patch": "ncu -t patch -u",
-		"prepack": "git clean -f -d -X templates/ && npm run build",
-		"prepare": "npm-run-all prepare:*",
-		"prepare:angular": "cpy \"defaults/**/*\" \"!defaults/unocss.config.ts\" templates/angular-app/ --dot",
-		"prepare:astro": "cpy \"defaults/**/*\" \"!defaults/public/index.html\" templates/astro-app/ --dot",
-		"prepare:library": "cpy \"defaults/*{.editorconfig,commitlint.config.js}\" templates/kolibri-library/ --dot",
-		"prepare:theme": "cpy \"defaults/{**/.{editorconfig,eslintignore,npmrc,prettierignore,ts-prunerc.js},**/gitignore}\" templates/kolibri-theme/ --dot",
-		"prepare:next.js": "cpy \"defaults/**/*\" \"!defaults/public/index.html\" templates/next.js-app/ --dot",
-		"prepare:preact": "cpy \"defaults/**/*\" templates/preact-app/ --dot",
-		"prepare:react": "cpy \"defaults/**/*\" templates/react-app/ --dot",
-		"prepare:react-vite": "cpy \"defaults/**/*\" templates/react-vite-app/ --dot",
-		"prepare:solid": "cpy \"defaults/**/*\" templates/solid-app/ --dot",
-		"prepare:stencil": "cpy \"defaults/{**/.{editorconfig,eslintignore,npmrc,prettierignore},**/gitignore}\" templates/stencil-app/ --dot",
-		"prepare:static": "cpy \"defaults/{public/**/*,**/.npmrc,**/gitignore}\" \"!defaults/public/index.html\" templates/static-page --dot",
-		"prepare:vue": "cpy \"defaults/**/*\" templates/vue-app/ --dot",
-		"prepare:vue-vite": "cpy \"defaults/**/*\" templates/vue-vite-app/ --dot",
-		"unused": "ts-prune src -e",
-		"test": "npm run clean && pnpm i && npm run build && rimraf my-* && node dist/cli.js"
+		"dev": "tsup --watch --onSuccess \"node dist/index.js\"",
+		"lint": "tsc src/index.ts --noEmit --skipLibCheck && eslint src --ext .ts",
+		"format": "prettier --check src",
+		"unused": "knip"
 	},
 	"bin": "dist/cli.js",
 	"dependencies": {
-		"cpy-cli": "5.0.0",
-		"create-create-cli": "7.3.2",
-		"kleur": "4.1.5",
-		"npm-run-all": "4.1.5"
+		"chalk": "4.1.2",
+		"gradient-string": "2.0.2"
 	},
 	"devDependencies": {
-		"@types/node": "ts5.3",
-		"cross-env": "7.0.3",
-		"depcheck": "1.4.7",
+		"@types/gradient-string": "1.1.5",
+		"@types/node": "ts5.4",
+		"@typescript-eslint/eslint-plugin": "7.2.0",
+		"@typescript-eslint/parser": "7.2.0",
+		"eslint": "8.57.0",
+		"knip": "5.0.3",
 		"prettier": "3.2.5",
-		"rimraf": "3.0.2",
-		"ts-node": "10.9.2",
-		"ts-prune": "0.10.3",
 		"tsup": "8.0.2",
 		"typescript": "5.4.2"
 	},
 	"files": [
-		"defaults/**/*",
-		"defaults/.npmrc",
-		"dist/**/*",
-		"templates/**/*"
+		"dist"
 	]
 }
