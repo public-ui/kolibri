@@ -1,7 +1,9 @@
+@import '../@shared/mixins';
+
 @layer kol-component {
 	.spin.cycle {
-		width: 3rem;
-		height: 3rem;
+		width: rem(48);
+		height: rem(48);
 	}
 
 	.spin.cycle > .loader {

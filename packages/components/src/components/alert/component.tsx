@@ -187,7 +187,7 @@ export class KolAlertWc implements AlertAPI {
 				'_on',
 				{
 					onClose: (value as KoliBriAlertEventCallbacks).onClose,
-				}
+				},
 				// {
 				// 	afterPatch: (value: unknown) => {
 				// 		this._hasCloser = this.validateOnValue(value);
@@ -210,7 +210,7 @@ export class KolAlertWc implements AlertAPI {
 			'_type',
 			(value?) => typeof value === 'string' && alertTypeOptions.includes(value),
 			new Set(`String {${alertTypeOptions.join(', ')}`),
-			value
+			value,
 		);
 	}
 
@@ -221,7 +221,7 @@ export class KolAlertWc implements AlertAPI {
 			'_variant',
 			(value?) => typeof value === 'string' && alertVariantOptions.includes(value),
 			new Set(`AlertVariant {${alertVariantOptions.join(', ')}`),
-			value
+			value,
 		);
 	}
 

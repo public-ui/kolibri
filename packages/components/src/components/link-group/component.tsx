@@ -23,7 +23,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 				>
 					<kol-link {...link}></kol-link>
 				</li>
-			) as JSX.Element
+			) as JSX.Element,
 		);
 	});
 	return list;
@@ -131,7 +131,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 			},
 			new Set(['https://www.w3schools.com/tags/tag_ol.asp']),
 			value,
-			{ defaultValue: 'disc' }
+			{ defaultValue: 'disc' },
 		);
 	}
 
@@ -150,7 +150,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 			value,
 			{
 				defaultValue: 'vertical',
-			}
+			},
 		);
 	}
 

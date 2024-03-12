@@ -4,7 +4,6 @@
 	"private": true,
 	"scripts": {
 		"build": "unbuild",
-		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
 		"prepack": "unbuild",
@@ -16,7 +15,7 @@
 	"devDependencies": {
 		"@public-ui/schema": "2.0.9",
 		"@public-ui/visual-tests": "2.0.9",
-		"@types/node": "ts5.3",
+		"@types/node": "ts5.4",
 		"typescript": "5.4.2"
 	},
 	"peerDependencies": {

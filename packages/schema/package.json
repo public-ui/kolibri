@@ -42,7 +42,6 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"dev": "nodemon --exec unbuild --ext js,json,ts --watch src",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
@@ -59,10 +58,10 @@
 	},
 	"devDependencies": {
 		"@types/color-convert": "2.0.3",
-		"@types/node": "ts5.3",
+		"@types/node": "ts5.4",
 		"@types/wcag-contrast": "3.0.3",
-		"@typescript-eslint/eslint-plugin": "7.1.1",
-		"@typescript-eslint/parser": "7.1.1",
+		"@typescript-eslint/eslint-plugin": "7.2.0",
+		"@typescript-eslint/parser": "7.2.0",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.1.0",

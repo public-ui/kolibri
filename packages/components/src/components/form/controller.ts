@@ -34,7 +34,7 @@ export const propagateResetEventToForm = (
 	options: {
 		form?: HTMLElement | ParentNode | null;
 		ref?: HTMLElement;
-	} = {}
+	} = {},
 ): void => {
 	const form = searchFormElement(options.form);
 	if (form instanceof HTMLElement) {
@@ -59,7 +59,7 @@ export const propagateSubmitEventToForm = (
 	options: {
 		form?: HTMLElement | ParentNode | null;
 		ref?: HTMLElement;
-	} = {}
+	} = {},
 ): void => {
 	const form = searchFormElement(options.form);
 	if (form instanceof HTMLElement) {

@@ -16,7 +16,7 @@ export const getQuoteHtml = (props: QuoteProps, slots: Slot = {}): string => {
 			_quote: '', // ⚠ required
 			_variant: 'inline',
 		},
-		props
+		props,
 	);
 	const hasExpertSlot = showExpertSlot(state._quote); // _quote instead of _caption as _label
 	return `<kol-quote class="kol-quote">

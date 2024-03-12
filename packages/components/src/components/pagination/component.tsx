@@ -395,7 +395,7 @@ export class KolPagination implements PaginationAPI {
 						}
 					},
 				},
-			}
+			},
 		);
 	}
 

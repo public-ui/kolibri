@@ -22,7 +22,7 @@ executeTests<ImageProps>(
 		_alt: ['somedescription'],
 		_src: ['something'],
 	},
-	getImageHtml
+	getImageHtml,
 );
 
 executeTests<ImageProps>(
@@ -41,5 +41,5 @@ executeTests<ImageProps>(
 		_src: ['https://some-url.tld/images/awesome.jpg'],
 		_srcset: ['https://some-url.tld/images/awesome.avif, https://some-url.tld/images/awesome.webp'],
 	},
-	getImageHtml
+	getImageHtml,
 );

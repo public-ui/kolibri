@@ -12,7 +12,7 @@ const getState = (props: IconProps): IconStates =>
 			_icons: 'codicon codicon-home',
 			_label: '',
 		},
-		props
+		props,
 	);
 
 const getIconHtmlTwig = (props: IconProps, additionalAttrs = ''): string => {
