@@ -21,6 +21,6 @@ export const validateAlignment = (component: Generic.Element.Component, propName
 		(value) => value === 'bottom' || value === 'left' || value === 'right' || value === 'top',
 		AVAILABLE_ALIGNMENT_VALUES,
 		value,
-		{ defaultValue: 'top' }
+		{ defaultValue: 'top' },
 	);
 };

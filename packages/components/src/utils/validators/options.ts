@@ -9,7 +9,7 @@ export const validateInputSelectOptions = <T>(option: SelectOption<T>): boolean 
 			option.label = `${option.label}`.trim();
 			if (hasEnoughReadableChars(option.label, 3) === false && containsOnlyNumbers(option.label) === false) {
 				a11yHint(
-					`Ein abweichendes Aria-Label (${option.label}) ist nicht barrierefrei. Ein abweichendes Aria-Label sollte aus mindestens drei lesbaren Zeichen bestehen.`
+					`Ein abweichendes Aria-Label (${option.label}) ist nicht barrierefrei. Ein abweichendes Aria-Label sollte aus mindestens drei lesbaren Zeichen bestehen.`,
 				);
 			}
 			if (Array.isArray((option as Optgroup<T>).options)) {

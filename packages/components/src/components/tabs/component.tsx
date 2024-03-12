@@ -272,7 +272,7 @@ export class KolTabs implements API {
     label: string (!),
     callback: Function
   }
-} ist nicht korrekt gesetzt.`
+} ist nicht korrekt gesetzt.`,
 						);
 					}
 					if (typeof value.onCreate.callback === 'function') {
@@ -284,7 +284,7 @@ export class KolTabs implements API {
     label: string,
     callback: Function (!)
   }
-} ist nicht korrekt gesetzt.`
+} ist nicht korrekt gesetzt.`,
 						);
 					}
 				} else {
@@ -320,7 +320,7 @@ export class KolTabs implements API {
 				hooks: {
 					beforePatch: this.syncSelectedAndTabs,
 				},
-			}
+			},
 		);
 		uiUxHintMillerscheZahl('KolTabs', this.state._tabs.length);
 	}

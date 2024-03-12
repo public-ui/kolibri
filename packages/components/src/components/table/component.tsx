@@ -210,7 +210,7 @@ export class KolTable implements API {
 							if (headers.horizontal && headers.vertical && headers.horizontal?.length > 0 && headers.vertical?.length > 0) {
 								this.disableSort = true;
 								devHint(
-									`Table: You can not sort the table data, if horizontal and vertical headers are defined at the same time. (https://github.com/public-ui/kolibri/issues/2372)`
+									`Table: You can not sort the table data, if horizontal and vertical headers are defined at the same time. (https://github.com/public-ui/kolibri/issues/2372)`,
 								);
 							}
 						},
@@ -288,7 +288,7 @@ export class KolTable implements API {
 					_pageSize: 10,
 					_max: 0,
 				},
-			}
+			},
 		);
 	}
 
@@ -525,12 +525,12 @@ export class KolTable implements API {
 							width: col.width,
 						} as KoliBriTableHeaderCell,
 						col.data,
-						this.state._data
+						this.state._data,
 					);
 					if (typeof html === 'string') {
 						el.textContent = html;
 					}
-				})
+				}),
 			);
 		}
 	}
@@ -647,7 +647,7 @@ export class KolTable implements API {
 						typeof cell.render === 'function'
 							? (el) => {
 									this.cellRender(cell as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
-							  }
+								}
 							: undefined
 					}
 				>
@@ -666,7 +666,7 @@ export class KolTable implements API {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
 			this.showPagination ? this.state._pagination?._pageSize ?? 10 : this.state._sortedData.length,
-			this.state._pagination._page || 1
+			this.state._pagination._page || 1,
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
 
@@ -747,7 +747,7 @@ export class KolTable implements API {
 															typeof col.render === 'function'
 																? (el) => {
 																		this.cellRender(col as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
-																  }
+																	}
 																: undefined
 														}
 													>

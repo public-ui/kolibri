@@ -9,7 +9,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 			_align: 'top',
 			_label: '…', // ⚠ required
 		},
-		props
+		props,
 	);
 
 	/**
@@ -33,7 +33,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 				{
 					additionalAttrs: typeof state._id === 'string' ? ` id="${state._id}"` : undefined,
 					additionalClassNames: ['tooltip-area', 'tooltip-content', 'kol-span-wc'],
-				}
+				},
 			)}
 		</div>`
 			: ''

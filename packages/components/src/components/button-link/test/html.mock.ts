@@ -12,7 +12,7 @@ export const getButtonLinkHtml = (props: Props): string => {
 			_type: 'button',
 			_variant: 'normal',
 		},
-		props
+		props,
 	);
 
 	return `<kol-button-link class="kol-button-link">

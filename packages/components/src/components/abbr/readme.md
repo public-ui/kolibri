@@ -69,7 +69,7 @@ graph TD;
   kol-abbr --> kol-tooltip-wc
   kol-tooltip-wc --> kol-span-wc
   kol-span-wc --> kol-icon
-  style kol-abbr fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-abbr stroke:#333,stroke-width:4px
 ```
 
 ---

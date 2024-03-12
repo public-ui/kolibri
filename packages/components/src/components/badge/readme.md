@@ -135,7 +135,7 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
   kol-version --> kol-badge
-  style kol-badge fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-badge stroke:#333,stroke-width:4px
 ```
 
 ---

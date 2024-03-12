@@ -21,6 +21,6 @@ export const validateButtonVariant = (component: Generic.Element.Component, valu
 		value,
 		{
 			defaultValue: 'normal',
-		}
+		},
 	);
 };

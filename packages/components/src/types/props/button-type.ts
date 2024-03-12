@@ -18,6 +18,6 @@ export const validateButtonType = (component: Generic.Element.Component, value?:
 		`_type`,
 		(value) => value === 'button' || value === 'reset' || value === 'submit',
 		new Set(['KoliBriButtonType {button, reset, submit}']),
-		value
+		value,
 	);
 };

@@ -22,5 +22,5 @@ executeTests<Props>(
 	getFormHtml,
 	{
 		execMode: 'skip',
-	}
+	},
 );

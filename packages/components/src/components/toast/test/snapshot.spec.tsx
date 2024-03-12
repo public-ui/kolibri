@@ -26,5 +26,5 @@ executeTests<Props>(
 	getToastHtml,
 	{
 		needTimers: true,
-	}
+	},
 );

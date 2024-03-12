@@ -42,7 +42,6 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild"
@@ -51,9 +50,9 @@
 		"adopted-style-sheets": "1.1.4"
 	},
 	"devDependencies": {
-		"@types/node": "ts5.3",
-		"@typescript-eslint/eslint-plugin": "7.1.1",
-		"@typescript-eslint/parser": "7.1.1",
+		"@types/node": "ts5.4",
+		"@typescript-eslint/eslint-plugin": "7.2.0",
+		"@typescript-eslint/parser": "7.2.0",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "5.4.2",

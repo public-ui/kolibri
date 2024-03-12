@@ -1,0 +1,77 @@
+name: 03 - Update Snapshots
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: 'Target branch'
+        required: true
+      purge_snapshots:
+        description: 'Delete all snapshots before regenerating them'
+        type: boolean
+        default: false
+
+jobs:
+  update-snapshots:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.target_branch }}
+          fetch-depth: 0
+
+      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store
+
+      - name: Install
+        run: pnpm i --no-frozen-lockfile
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Purge existing snapshots
+        if: ${{ github.event.inputs.purge_snapshots == 'true' }}
+        run: rm packages/themes/**/snapshots/**/*.png
+
+      - name: Display git status (before test-update)
+        run: git status
+
+      - name: Run test-update in all packages
+        run: pnpm -r --workspace-concurrency=1 test-update
+
+      - name: Display git status (after test-update)
+        run: git status
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update all snapshots
+          file_pattern: 'packages/themes/**/snapshots/*'

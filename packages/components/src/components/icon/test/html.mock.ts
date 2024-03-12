@@ -13,7 +13,7 @@ const getState = (props: Props): States =>
 			_icons: 'codicon codicon-home', // ⚠ required
 			// _label: '…', // ⚠ required TODO: required in v2
 		},
-		props
+		props,
 	);
 
 const getIconHtmlTwig = (props: Props, additionalAttrs = ''): string => {

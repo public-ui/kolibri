@@ -51,7 +51,7 @@ export class TextareaController extends InputController implements Watches {
 			'_resize',
 			(value) => typeof value === 'string' && (value === 'both' || value === 'horizontal' || value === 'none' || value === 'vertical'),
 			new Set('String {both, horizontal, vertical, none}'),
-			value
+			value,
 		);
 	}
 

@@ -139,7 +139,7 @@ export const handleColorChange = (value: unknown): ColorPair => {
 
 	if (colorContrast.contrast < 7) {
 		a11yHint(
-			`[KolBadge] The contrast of ${colorContrast.contrast} (≥7, AAA) is to low, between the color pair ${colorContrast.background} and ${colorContrast.foreground}.`
+			`[KolBadge] The contrast of ${colorContrast.contrast} (≥7, AAA) is to low, between the color pair ${colorContrast.background} and ${colorContrast.foreground}.`,
 		);
 	}
 	return {

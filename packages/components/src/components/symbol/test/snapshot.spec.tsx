@@ -23,5 +23,5 @@ executeTests<Props>(
 	getSymbolHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

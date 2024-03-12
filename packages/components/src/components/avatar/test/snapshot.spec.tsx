@@ -20,5 +20,5 @@ executeTests<Props>(
 		_label: ['Erika Maria Mustermann', `Erika`],
 		_src: [`/example-image.jpg`],
 	},
-	getAvatarHtml
+	getAvatarHtml,
 );

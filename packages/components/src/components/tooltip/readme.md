@@ -64,7 +64,7 @@ graph TD;
   kol-button-wc --> kol-tooltip-wc
   kol-input --> kol-tooltip-wc
   kol-link-wc --> kol-tooltip-wc
-  style kol-tooltip-wc fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-tooltip-wc stroke:#333,stroke-width:4px
 ```
 
 ---

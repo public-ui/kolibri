@@ -41,8 +41,8 @@ export class KolToastContainer implements API {
 						? {
 								...localToastState,
 								status: 'settled',
-						  }
-						: localToastState
+							}
+						: localToastState,
 				),
 			};
 		}, TRANSITION_TIMEOUT);

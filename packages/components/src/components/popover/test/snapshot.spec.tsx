@@ -22,5 +22,5 @@ executeTests<Props>(
 	getPopoverHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );
