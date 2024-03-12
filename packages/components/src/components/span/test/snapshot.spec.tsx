@@ -24,5 +24,5 @@ executeTests<Props>(
 	getSpanHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

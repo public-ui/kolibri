@@ -5,7 +5,11 @@ export default class DetailsAnimationController {
 	private isClosing = false;
 	private isExpanding = false;
 
-	constructor(private detailsElement: HTMLDetailsElement, private summaryElement: HTMLElement, private contentElement: HTMLElement) {
+	constructor(
+		private detailsElement: HTMLDetailsElement,
+		private summaryElement: HTMLElement,
+		private contentElement: HTMLElement,
+	) {
 		this.summaryElement.addEventListener('click', this.handleSummaryClick.bind(this));
 	}
 
@@ -57,7 +61,7 @@ export default class DetailsAnimationController {
 			{
 				duration: matchMedia('(prefers-reduced-motion)').matches ? 0 : 250,
 				easing: 'ease-out',
-			}
+			},
 		);
 
 		this.animation.addEventListener(
@@ -65,7 +69,7 @@ export default class DetailsAnimationController {
 			() => {
 				this.onAnimationFinish();
 			},
-			{ once: true }
+			{ once: true },
 		);
 		this.animation.addEventListener(
 			'cancel',
@@ -76,7 +80,7 @@ export default class DetailsAnimationController {
 					this.isClosing = false;
 				}
 			},
-			{ once: true }
+			{ once: true },
 		);
 	}
 

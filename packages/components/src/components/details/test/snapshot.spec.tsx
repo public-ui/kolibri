@@ -23,5 +23,5 @@ executeTests<Props>(
 	getDetailsHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

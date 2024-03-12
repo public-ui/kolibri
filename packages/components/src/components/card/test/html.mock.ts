@@ -9,7 +9,7 @@ export const getCardHtml = (props: Props): string => {
 		{
 			_label: '…', // ⚠ required
 		},
-		props
+		props,
 	);
 	return `<kol-card class="kol-card">
 	<mock:shadow-root>
@@ -23,7 +23,7 @@ export const getCardHtml = (props: Props): string => {
 					{
 						default: '',
 					},
-					` class="kol-heading-wc"`
+					` class="kol-heading-wc"`,
 				)}
 				<slot name="header"></slot>
 			</div>
@@ -52,8 +52,8 @@ export const getCardHtml = (props: Props): string => {
 								_tooltipAlign: 'left',
 							},
 							undefined,
-							' class=" kol-button-wc close"'
-					  )
+							' class=" kol-button-wc close"',
+						)
 					: ``
 			}
 		</div>

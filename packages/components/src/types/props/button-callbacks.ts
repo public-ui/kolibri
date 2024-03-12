@@ -24,6 +24,6 @@ export const validateButtonCallbacks = (component: Generic.Element.Component, va
 		`_on`,
 		(value) => typeof value === 'object' && value !== null,
 		new Set(['ButtonCallbacksPropType {Events.onClick, Events.onMouseDown}']),
-		value
+		value,
 	);
 };

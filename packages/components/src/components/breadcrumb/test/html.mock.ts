@@ -11,7 +11,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 			_label: '…',
 			_links: [],
 		},
-		props
+		props,
 	);
 
 	const lastIndex = state._links.length - 1;
@@ -24,7 +24,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 						? getIconHtml({
 								_label: '',
 								_icons: 'codicon codicon-chevron-right',
-						  })
+							})
 						: ''
 				}
 					${
@@ -34,9 +34,9 @@ export const getBreadcrumbHtml = (props: Props): string => {
 										? getIconHtml({
 												_label: link._label,
 												_icons: link._icon as Icofont,
-										  })
+											})
 										: link._label
-							  }</span>`
+								}</span>`
 							: getLinkHtml(link)
 					}
 				</li>
@@ -53,7 +53,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 						? `<li>${getIconHtml({
 								_label: '',
 								_icons: 'codicon codicon-home',
-						  })}…</li>`
+							})}…</li>`
 						: ''
 				}
 				${list}

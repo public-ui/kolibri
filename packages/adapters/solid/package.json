@@ -49,7 +49,7 @@
 		"@public-ui/components": "1.7.15",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
-		"@types/node": "ts5.3",
+		"@types/node": "ts5.4",
 		"@types/normalize-package-data": "2.4.4",
 		"solid-js": "1.8.15",
 		"typescript": "5.4.2",

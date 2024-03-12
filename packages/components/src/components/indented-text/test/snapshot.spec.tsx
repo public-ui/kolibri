@@ -20,5 +20,5 @@ executeTests<Props>(
 	getIndentedTextHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

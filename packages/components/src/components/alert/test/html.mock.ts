@@ -11,7 +11,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 		{
 			_level: 1,
 		},
-		props
+		props,
 	);
 	const type: string = props._type !== undefined ? props._type : 'default';
 	props._type = props._type || 'default';
@@ -26,26 +26,26 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 							props._label !== undefined
 								? ''
 								: props._type === 'success'
-								? 'kol-success'
-								: props._type === 'error'
-								? 'kol-error'
-								: props._type === 'warning'
-								? 'kol-warning'
-								: props._type === 'info'
-								? 'kol-info'
-								: 'kol-message',
+									? 'kol-success'
+									: props._type === 'error'
+										? 'kol-error'
+										: props._type === 'warning'
+											? 'kol-warning'
+											: props._type === 'info'
+												? 'kol-info'
+												: 'kol-message',
 						_icons:
 							props._type === 'success'
 								? 'codicon codicon-pass'
 								: props._type === 'error'
-								? 'codicon codicon-error'
-								: props._type === 'warning'
-								? 'codicon codicon-warning'
-								: props._type === 'info'
-								? 'codicon codicon-info'
-								: 'codicon codicon-comment',
+									? 'codicon codicon-error'
+									: props._type === 'warning'
+										? 'codicon codicon-warning'
+										: props._type === 'info'
+											? 'codicon codicon-info'
+											: 'codicon codicon-comment',
 					},
-					` class="heading-icon kol-icon"`
+					` class="heading-icon kol-icon"`,
 				)}
 				<div>
 					${
@@ -58,8 +58,8 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 									{
 										default: props._label,
 									},
-									` class="kol-heading-wc"`
-							  )
+									` class="kol-heading-wc"`,
+								)
 							: ''
 					}
 					${
@@ -84,8 +84,8 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 									_tooltipAlign: 'left',
 								},
 								{},
-								` class="close"`
-						  )
+								` class="close"`,
+							)
 						: ''
 				}
 			</div>${

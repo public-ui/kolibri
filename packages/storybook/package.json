@@ -93,7 +93,7 @@
 		"react-dom": "17.0.2",
 		"register-service-worker": "1.7.5",
 		"require-from-string": "2.0.2",
-		"rimraf": "3.0.2",
+		"rimraf": "5.0.5",
 		"serve": "14.2.0",
 		"storybook": "6.5.16",
 		"storybook-addon-themes": "6.1.0",

@@ -24,7 +24,7 @@
 ```mermaid
 graph TD;
   kol-icon-font-awesome --> kol-icon
-  style kol-icon-font-awesome fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-icon-font-awesome stroke:#333,stroke-width:4px
 ```
 
 ---

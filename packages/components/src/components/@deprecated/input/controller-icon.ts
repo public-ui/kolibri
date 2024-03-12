@@ -56,7 +56,7 @@ export class InputIconController extends InputController implements Watches {
 						beforePatch: beforePatchIcons,
 					},
 					required: true,
-				}
+				},
 			);
 		});
 	}

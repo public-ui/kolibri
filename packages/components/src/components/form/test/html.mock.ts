@@ -16,7 +16,7 @@ export const getFormHtml = (props: Props): string => {
 							typeof props._requiredText === 'string'
 								? props._requiredText
 								: 'Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben.',
-					}
+					},
 				)}
 			</p>
 			<slot />

@@ -19,5 +19,5 @@ executeTests<Props>(
 	getButtonGroupHtml,
 	{
 		execMode: 'default',
-	}
+	},
 );

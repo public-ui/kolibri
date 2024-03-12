@@ -22,5 +22,5 @@ executeTests<Props>(
 	(props) => getVersionHtml(props),
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

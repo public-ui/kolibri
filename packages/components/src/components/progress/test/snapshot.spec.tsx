@@ -44,7 +44,7 @@ describe('test Progress', () => {
              0 von 100 %
            </span>
          </mock:shadow-root>
-       </kol-progress>`
+       </kol-progress>`,
 		);
 	});
 
@@ -74,7 +74,7 @@ describe('test Progress', () => {
              0 von ${DEFAULT_PROPS._max} %
            </span>
          </mock:shadow-root>
-       </kol-progress>`
+       </kol-progress>`,
 		);
 	});
 
@@ -113,7 +113,7 @@ describe('test Progress', () => {
              0 von ${DEFAULT_PROPS._max} %
            </span>
          </mock:shadow-root>
-       </kol-progress>`
+       </kol-progress>`,
 		);
 	});
 
@@ -139,7 +139,7 @@ describe('test Progress', () => {
            <progress ${DEFAULT_HTML_PROGRESS_PROPS}></progress>
            <span ${DEFAULT_HTML_SPAN_PROPS} hidden>0 von ${DEFAULT_PROPS._max} %</span>
          </mock:shadow-root>
-       </kol-progress>`
+       </kol-progress>`,
 		);
 	});
 });

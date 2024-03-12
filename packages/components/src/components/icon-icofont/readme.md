@@ -23,7 +23,7 @@
 ```mermaid
 graph TD;
   kol-icon-icofont --> kol-icon
-  style kol-icon-icofont fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-icon-icofont stroke:#333,stroke-width:4px
 ```
 
 ---

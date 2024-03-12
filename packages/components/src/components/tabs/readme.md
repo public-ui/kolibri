@@ -117,7 +117,7 @@ graph TD;
   kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
-  style kol-tabs fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-tabs stroke:#333,stroke-width:4px
 ```
 
 ---

@@ -28,5 +28,5 @@ executeTests<LinkProps>(
 	getLinkHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

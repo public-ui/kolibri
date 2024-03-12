@@ -29,8 +29,8 @@ export class SelectController extends InputIconController implements Watches {
 				typeof (option as Option<W3CInputValue>).value === 'string'
 					? (option as Option<W3CInputValue>).value === value
 					: Array.isArray((option as Optgroup<string>).options)
-					? this.isValueInOptions(value, (option as Optgroup<string>).options)
-					: false
+						? this.isValueInOptions(value, (option as Optgroup<string>).options)
+						: false,
 			) !== undefined
 		);
 	};
@@ -53,7 +53,7 @@ export class SelectController extends InputIconController implements Watches {
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
 			const selected = this.filterValuesInOptions(
 				Array.isArray(value) && value.length > 0 ? (value as string[]) : [],
-				options as SelectOption<W3CInputValue>[]
+				options as SelectOption<W3CInputValue>[],
 			);
 			if (this.component._multiple === false && selected.length === 0) {
 				nextState.set('_value', [

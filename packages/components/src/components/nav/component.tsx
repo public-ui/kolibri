@@ -65,7 +65,7 @@ export class KolNav implements API {
 		hideLabel: HideLabelPropType,
 		hasChildren: boolean,
 		link: ButtonOrLinkOrTextWithChildrenProps,
-		expanded: boolean
+		expanded: boolean,
 	): JSX.Element {
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
@@ -100,7 +100,7 @@ export class KolNav implements API {
 		deep: number,
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
-		orientation: Orientation
+		orientation: Orientation,
 	): JSX.Element {
 		const active = !!link._active;
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
@@ -264,7 +264,7 @@ export class KolNav implements API {
 			'_ariaCurrentValue',
 			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
 			new Set(['boolean', 'String {data, location, page, step, time}']),
-			value
+			value,
 		);
 	}
 
@@ -327,7 +327,7 @@ export class KolNav implements API {
 			value,
 			{
 				defaultValue: 'vertical',
-			}
+			},
 		);
 	}
 

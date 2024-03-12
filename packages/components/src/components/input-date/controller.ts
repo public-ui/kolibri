@@ -32,7 +32,7 @@ export class InputDateController extends InputIconController implements Watches 
 			'_autoComplete',
 			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
 			new Set(['on | off']),
-			value
+			value,
 		);
 	}
 
@@ -112,7 +112,7 @@ export class InputDateController extends InputIconController implements Watches 
 						}
 					},
 				},
-			}
+			},
 		);
 	};
 
@@ -135,8 +135,8 @@ export class InputDateController extends InputIconController implements Watches 
 				value,
 				this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local'
 					? InputDateController.DEFAULT_MAX_DATE
-					: undefined
-			)
+					: undefined,
+			),
 		);
 	}
 
@@ -146,7 +146,7 @@ export class InputDateController extends InputIconController implements Watches 
 			'_min',
 			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
 			new Set(['Iso8601', 'Date']),
-			this.tryParseToString(value)
+			this.tryParseToString(value),
 		);
 	}
 
@@ -186,7 +186,7 @@ export class InputDateController extends InputIconController implements Watches 
 				typeof value === 'string' &&
 				(value === 'date' || value === 'datetime-local' || value === 'month' || value === 'number' || value === 'time' || value === 'week'),
 			new Set(['String {date, datetime-local, month, number, time, week}']),
-			value
+			value,
 		);
 	}
 

@@ -29,7 +29,7 @@ graph TD;
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip-wc
-  style kol-input-adapter-leanup fill:#f9f,stroke:#333,stroke-width:4px
+  style kol-input-adapter-leanup stroke:#333,stroke-width:4px
 ```
 
 ---

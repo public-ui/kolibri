@@ -12,7 +12,7 @@ export const getBadgeHtml = (props: Props, options?: SpanOptions): string => {
 				foregroundColor: '#fff',
 			},
 		},
-		props
+		props,
 	);
 
 	state._color = handleColorChange(props._color || '#000');

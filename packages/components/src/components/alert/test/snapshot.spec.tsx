@@ -25,5 +25,5 @@ executeTests<Props>(
 	getAlertHtml,
 	{
 		needTimers: true,
-	}
+	},
 );

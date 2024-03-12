@@ -20,7 +20,7 @@ executeTests<Props>(
 		_alt: ['somedescription'],
 		_src: ['something'],
 	},
-	getImageHtml
+	getImageHtml,
 );
 
 executeTests<Props>(
@@ -39,5 +39,5 @@ executeTests<Props>(
 		_src: ['https://some-url.tld/images/awesome.jpg'],
 		_srcset: ['https://some-url.tld/images/awesome.avif, https://some-url.tld/images/awesome.webp'],
 	},
-	getImageHtml
+	getImageHtml,
 );
