@@ -3,13 +3,13 @@ on:
   pull_request:
     types: [opened, edited]
 
-
 concurrency:
-  group: ci-{{ github.head_ref || github.ref }}
+  group: ci-pr-{{ github.event.number }}
   cancel-in-progress: true
 
 jobs:
   check-dod:
+    if: contains(github.actor, 'dependabot') == false
     runs-on: ubuntu-20.04
     steps:
       - name: Clone Repo
