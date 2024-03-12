@@ -1,3 +1,4 @@
+@import '../@shared/mixins';
 @import '../style';
 
 ul {
@@ -12,8 +13,8 @@ nav.horizontal ul {
 }
 
 nav.horizontal li {
-	margin-left: 1.25rem;
-	margin-right: 0.25rem;
+	margin-left: rem(20);
+	margin-right: rem(4);
 }
 
 nav.horizontal li:first-child {
@@ -25,8 +26,8 @@ nav.horizontal li:last-child {
 }
 
 nav.vertical li {
-	margin-left: 1.75rem;
-	margin-right: 0.5rem;
+	margin-left: rem(28);
+	margin-right: rem(8);
 }
 
 li.list-none {
