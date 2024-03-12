@@ -11,7 +11,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, Option, Orientation, W3CInputValue, StencilUnknown } from '../types';
+import type { InputTypeOnDefault, Option, Orientation, StencilUnknown } from '../types';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -34,7 +34,7 @@ type OptionalProps = {
 	PropTouched;
 
 type RequiredStates = {
-	options: Option<W3CInputValue>[];
+	options: Option<StencilUnknown>[];
 	orientation: Orientation;
 } & PropId &
 	PropHideError &

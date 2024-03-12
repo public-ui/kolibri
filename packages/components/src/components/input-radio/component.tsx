@@ -52,29 +52,6 @@ export class KolInputRadio implements InputRadioAPI {
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		function isEquivalent(a: StencilUnknown, b: StencilUnknown): boolean {
-			console.log(typeof a, typeof b);
-			console.log(a, b);
-
-			if (a === undefined || b === undefined || typeof a !== typeof b) return false;
-			if (a === b) return true;
-
-			if (typeof a === 'object' && typeof b === 'object' && a !== null && b !== null) {
-				var aProps = Object.getOwnPropertyNames(a);
-				var bProps = Object.getOwnPropertyNames(b);
-
-				if (aProps.length != bProps.length) {
-					return false;
-				}
-				for (const prop of aProps) {
-					if (!(prop in b)) return false;
-					if (!isEquivalent((a as any)[prop], (b as any)[prop])) return false;
-				}
-				return true;
-			}
-			if ((a === null || b === null) && a !== b) return false;
-			return false;
-		}
 
 		return (
 			<Host>
@@ -111,8 +88,8 @@ export class KolInputRadio implements InputRadioAPI {
 						 */
 						const customId = `${this.state._id}-${index}`;
 						const slotName = `radio-${index}`;
-						const selected = isEquivalent(option.value, this._value);
-						// console.log(option.value, this._value, selected);
+						const selected = option.value === this.currentValue;
+
 						return (
 							<kol-input
 								class={{
