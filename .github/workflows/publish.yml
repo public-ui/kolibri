@@ -190,6 +190,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
 
+      # packages a obsolete with next major release
+      - name: Build and publish create-kolibri
+        continue-on-error: true
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
+        working-directory: packages/create-kolibri
+        env:
+          NODE_AUTH_TOKEN: ${{env.token}}
+
   publish-page:
     needs: publish
     uses: public-ui/kolibri/.github/workflows/publish-page.yml@release/1.7

@@ -1,9 +1,0 @@
-{
-	"compilerOptions": {
-		"moduleResolution": "node",
-		"outDir": "dist",
-		"strict": true
-	},
-	"include": ["src/index.ts"],
-	"exclude": ["node_modules", "dist"]
-}
