@@ -23,7 +23,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 				>
 					<kol-link {...link}></kol-link>
 				</li>
-			) as JSX.Element,
+			) as JSX.Element
 		);
 	});
 	return list;
@@ -36,11 +36,15 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 	},
 	shadow: true,
 })
+
+/**
+ * @deprecated This component has been deprecated as it does not contribute significantly to accessibility.
+ */
 export class KolLinkGroup implements LinkGroupAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-link-group">
-				<nav
+				<ol
 					aria-label={this.state._label}
 					class={{
 						vertical: this.state._orientation === 'vertical',
@@ -56,7 +60,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 							<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
 						</ul>
 					)}
-				</nav>
+				</ol>
 			</Host>
 		);
 	}
@@ -71,7 +75,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * Defines the list of links to render.
@@ -84,7 +88,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	@State() public state: LinkGroupStates = {
-		_label: '', // ⚠ required
+		_label: '',
 		_listStyleType: 'disc',
 		_links: [],
 		_orientation: 'vertical',
@@ -92,13 +96,13 @@ export class KolLinkGroup implements LinkGroupAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
-		if (!initial) {
+		if (!initial && this.state._label) {
 			removeNavLabel(this.state._label); // remove the current
 		}
 		validateLabel(this, value, {
 			required: true,
 		});
-		addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
+		this.state._label && addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
 	@Watch('_listStyleType')
@@ -131,7 +135,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 			},
 			new Set(['https://www.w3schools.com/tags/tag_ol.asp']),
 			value,
-			{ defaultValue: 'disc' },
+			{ defaultValue: 'disc' }
 		);
 	}
 
@@ -150,7 +154,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 			value,
 			{
 				defaultValue: 'vertical',
-			},
+			}
 		);
 	}
 
@@ -162,7 +166,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 	}
 
 	public disconnectedCallback(): void {
-		removeNavLabel(this.state._label);
+		this.state._label && removeNavLabel(this.state._label);
 	}
 }
 
