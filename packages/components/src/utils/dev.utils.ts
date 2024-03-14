@@ -41,7 +41,7 @@ export const initKoliBri = (): void => {
 	`,
 		{
 			forceLog: true,
-		}
+		},
 	);
 };
 
