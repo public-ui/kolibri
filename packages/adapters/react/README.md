@@ -39,7 +39,8 @@ register(DEFAULT, defineCustomElements)
 Then, you can import any component from `@public-ui/react` and render it within React components:
 
 ```tsx
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC } from 'react';
 import { KolButton } from '@public-ui/react';
 
 export default (): FC => <KolButton _label="Hello World" />;

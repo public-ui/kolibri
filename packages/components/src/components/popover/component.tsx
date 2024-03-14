@@ -60,7 +60,7 @@ export class KolPopover implements PopoverAPI {
 			() => {
 				void this.showPopover();
 			},
-			{ passive: true }
+			{ passive: true },
 		);
 	}
 	private removeListenersToBody(): void {

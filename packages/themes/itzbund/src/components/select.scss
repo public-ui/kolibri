@@ -1,4 +1,10 @@
+@import '../mixins/alert-wc.scss';
+
 @layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+
 	select:hover,
 	select:focus {
 		border-color: var(--default-border-hover);
@@ -48,7 +54,7 @@
 		padding: 0.5em;
 	}
 
-	.kol-alert {
+	.kol-alert-wc {
 		margin-top: var(--spacing);
 		display: block;
 	}

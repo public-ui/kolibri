@@ -26,5 +26,5 @@ executeTests<BadgeProps>(
 	(props) => getBadgeHtml(props),
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

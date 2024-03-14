@@ -20,5 +20,5 @@ executeTests<ButtonLinkProps>(
 	{
 		_label: [`Beschreibung`],
 	},
-	getButtonLinkHtml
+	getButtonLinkHtml,
 );

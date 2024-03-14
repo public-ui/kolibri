@@ -18,7 +18,7 @@ export class InputColorController extends InputIconController implements InputCo
 			'_autoComplete',
 			(value): boolean => typeof value === 'string' && inputTypeOnOffOptions.includes(value),
 			new Set(inputTypeOnOffOptions),
-			value
+			value,
 		);
 	}
 

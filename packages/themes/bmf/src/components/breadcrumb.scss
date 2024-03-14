@@ -1,0 +1,35 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon {
+		font-size: 1.5rem;
+	}
+
+	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon::part(icon) {
+		font-family: 'Material Symbols Rounded';
+		font-weight: 400;
+		color: var(--color-grey);
+	}
+
+	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon::part(icon)::before {
+		content: 'chevron_right';
+	}
+
+	.kol-link::part(icon) {
+		font-size: 1.25rem;
+	}
+
+	ul li > :is(span, .kol-link) {
+		line-height: 1.25rem;
+	}
+
+	ul li:last-child > span {
+		color: var(--color-grey);
+	}
+
+	.kol-link {
+		font-family: var(--font-family);
+	}
+}

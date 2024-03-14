@@ -81,7 +81,7 @@ export class KolNav implements NavAPI {
 		hideLabel: HideLabelPropType,
 		hasChildren: boolean,
 		link: ButtonOrLinkOrTextWithChildrenProps,
-		expanded: boolean
+		expanded: boolean,
 	): JSX.Element {
 		const icons =
 			this.state._hasIconsWhenExpanded || this.state._hideLabel
@@ -127,7 +127,7 @@ export class KolNav implements NavAPI {
 		deep: number,
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
-		orientation: Orientation
+		orientation: Orientation,
 	): JSX.Element {
 		const active = !!link._active;
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
@@ -332,7 +332,7 @@ export class KolNav implements NavAPI {
 			value,
 			{
 				defaultValue: 'vertical',
-			}
+			},
 		);
 	}
 

@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { KolForm, KolInputPassword } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
 
 export const InputPasswordShowPassword: FC = () => {
 	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -17,25 +18,33 @@ export const InputPasswordShowPassword: FC = () => {
 	}, [isPasswordVisible]);
 
 	return (
-		<KolForm>
-			<KolInputPassword
-				_placeholder="Mit 'Passwort anzeigen' Button"
-				_label="Passwort"
-				ref={passwordRef}
-				_smartButton={{
-					_icons: {
-						left: {
-							icon: 'codicon codicon-eye',
+		<>
+			<SampleDescription>
+				<p>
+					Hier wird ein Passwort Eingabefeld angezeigt. Durch klicken auf den im Feld Rechts stehenden Button, kann zwischen verdecktem und angezeigtem Passwort
+					gewechselt werden.
+				</p>
+			</SampleDescription>
+			<KolForm>
+				<KolInputPassword
+					_placeholder="Mit 'Passwort anzeigen' Button"
+					_label="Passwort"
+					ref={passwordRef}
+					_smartButton={{
+						_icons: {
+							left: {
+								icon: 'codicon codicon-eye',
+							},
 						},
-					},
-					_hideLabel: true,
-					_label: `Passwort ${isPasswordVisible ? 'ausblenden' : 'einblenden'}`,
-					_on: {
-						onClick: handleTogglePasswordClick,
-					},
-				}}
-				className="block"
-			/>
-		</KolForm>
+						_hideLabel: true,
+						_label: `Passwort ${isPasswordVisible ? 'ausblenden' : 'einblenden'}`,
+						_on: {
+							onClick: handleTogglePasswordClick,
+						},
+					}}
+					className="block"
+				/>
+			</KolForm>
+		</>
 	);
 };

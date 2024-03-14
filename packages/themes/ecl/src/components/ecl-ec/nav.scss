@@ -73,11 +73,11 @@
 		text-decoration: underline;
 	}
 
-	div > .expand-button .kol-icon::part(icon)::before {
-		content: '\\eab6';
+	div > .expand-button kol-icon::part(icon)::before {
+		content: '\eab6';
 	}
 
-	.expanded > div > .expand-button .kol-icon::part(icon)::before {
-		content: '\\eab4';
+	.expanded > div > .expand-button kol-icon::part(icon)::before {
+		content: '\eab4';
 	}
 }

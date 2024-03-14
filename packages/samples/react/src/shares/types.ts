@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export type Route = FC | Routes;
 export type Routes = { [key: string]: Route };

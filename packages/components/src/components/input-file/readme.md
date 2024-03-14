@@ -78,4 +78,29 @@ Type: `Promise<FileList | null | undefined>`
 | ---- | ----------------------------------- |
 |      | Die Beschriftung des Eingabefeldes. |
 
+## Dependencies
+
+### Depends on
+
+- kol-input
+
+### Graph
+
+```mermaid
+graph TD;
+  kol-input-file --> kol-input
+  kol-input --> kol-icon
+  kol-input --> kol-button-wc
+  kol-input --> kol-tooltip-wc
+  kol-input --> kol-alert-wc
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip-wc
+  kol-span-wc --> kol-icon
+  kol-tooltip-wc --> kol-span-wc
+  kol-alert-wc --> kol-heading-wc
+  kol-alert-wc --> kol-button-wc
+  kol-alert-wc --> kol-icon
+  style kol-input-file stroke:#333,stroke-width:4px
+```
+
 ---

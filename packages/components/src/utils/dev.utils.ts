@@ -58,7 +58,7 @@ You are using the KoliBri component library. If you have any suggestions for imp
 
 Ticket: https://github.com/public-ui/kolibri/issues/new/choose (for privacy reasons, please use email)
 Email: kolibri@itzbund.de
-`
+`,
 		);
 	}
 };

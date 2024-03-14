@@ -1,4 +1,8 @@
+@import '../@shared/mixins';
+@import '../@shared/kol-alert-mixin';
 @import '../input-line';
+
+@include kol-alert-styles;
 
 @layer kol-component {
 	.inputs-wrapper {
@@ -22,7 +26,7 @@
 		border: 1px solid #000;
 		display: inline-block;
 		flex-grow: 1;
-		height: 0.5rem;
+		height: rem(8);
 		line-height: 1.5em;
 		padding: 0;
 		margin: 0;

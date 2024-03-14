@@ -10,7 +10,7 @@ export const getVersionHtml = (props: VersionProps, options?: SpanOptions): stri
 		{
 			_label: '0.0.0-alpha.0',
 		},
-		props
+		props,
 	);
 	return `
 <kol-version${options?.additionalAttrs ?? ''} class="kol-version">
@@ -21,7 +21,7 @@ export const getVersionHtml = (props: VersionProps, options?: SpanOptions): stri
 				_icons: { left: { icon: 'codicon codicon-versions', label: 'kol-version' } },
 				_label: props._label || '0.0.0-alpha.0',
 			},
-			options
+			options,
 		)}
   </mock:shadow-root>
 </kol-version>`;

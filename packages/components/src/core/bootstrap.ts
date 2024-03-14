@@ -13,7 +13,7 @@ export const bootstrap = async (
 		| Generic.Theming.RegisterPatch<string, string, string>[]
 		| Set<Generic.Theming.RegisterPatch<string, string, string>>,
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
-	options?: KoliBriOptions
+	options?: KoliBriOptions,
 ): Promise<void[]> => {
 	await initI18n(options?.translation?.name);
 	await configI18n(options?.translation?.name ?? 'de', options?.translations);

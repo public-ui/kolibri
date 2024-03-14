@@ -16,10 +16,7 @@
 		"packages/components",
 		"packages/create-kolibri",
 		"packages/designer",
-		"packages/samples/angular",
 		"packages/samples/react",
-		"packages/samples/ssr",
-		"packages/samples/vite",
 		"packages/schema",
 		"packages/themes",
 		"packages/themes/bmf",
@@ -30,5 +27,5 @@
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "2.0.8"
+	"version": "2.0.9"
 }

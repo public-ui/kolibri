@@ -1,9 +1,0 @@
-{
-	"entry": ["src/index.ts"],
-	"ignoreBinaries": [],
-	"ignoreDependencies": [],
-	"project": ["src/**/*.ts"],
-	"rules": {
-		"classMembers": "warn"
-	}
-}

@@ -1,8 +1,10 @@
 @import '../mixins/focus-outline';
+@import '../mixins/alert-wc.scss';
 
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		@include kol-alert-theme;
 	}
 
 	:host .kol-input {
@@ -45,7 +47,7 @@
 		order: 3;
 	}
 
-	:host .kol-input > .kol-alert.error {
+	:host .kol-input > .kol-alert-wc.error {
 		order: 1;
 		padding-top: calc(var(--spacing) / 2);
 		grid-column: span 2 / auto;
@@ -62,9 +64,8 @@
 		outline-color: var(--color-danger) !important;
 	}
 
-	:host .kol-input.error .kol-alert.error {
-		color: var(--color-danger);
-		font-weight: 700;
+	:host .kol-input.error .kol-alert-wc.error {
+		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 	}
 
 	:host input {
@@ -92,9 +93,8 @@
 		box-shadow: none;
 	}
 
-	:host .kol-alert {
-		display: block;
-		width: 100%;
+	:host .kol-alert-wc {
+		@include kol-alert-wc;
 	}
 
 	/* CHECKBOX */
