@@ -44,23 +44,27 @@ export class KolLinkGroup implements LinkGroupAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-link-group">
-				<ol
-					aria-label={this.state._label}
-					class={{
-						vertical: this.state._orientation === 'vertical',
-						horizontal: this.state._orientation === 'horizontal',
-					}}
-				>
-					{this.isUl === false ? (
-						<ol>
-							<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
-						</ol>
-					) : (
-						<ul>
-							<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
-						</ul>
-					)}
-				</ol>
+				{this.isUl === false ? (
+					<ol
+						aria-label={this.state._label}
+						class={{
+							vertical: this.state._orientation === 'vertical',
+							horizontal: this.state._orientation === 'horizontal',
+						}}
+					>
+						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
+					</ol>
+				) : (
+					<ul
+						aria-label={this.state._label}
+						class={{
+							vertical: this.state._orientation === 'vertical',
+							horizontal: this.state._orientation === 'horizontal',
+						}}
+					>
+						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
+					</ul>
+				)}
 			</Host>
 		);
 	}
