@@ -11,7 +11,7 @@ export const TextareaReadOnly: FC = () => (
 			<p>Hier ist ein Beispiel für ein Textfeld, in das nicht geschrieben werden kann.</p>
 		</SampleDescription>
 		<KolForm>
-			<KolTextarea _error="Es ist ein Fehler aufgetreten." _readOnly _value="Kleiner Text im Eingabefeld ..." _label="Texteingabe" />
+			<KolTextarea _msg={{ _type: 'error', _label: 'Es ist ein Fehler aufgetreten' }} _readOnly _value="Kleiner Text im Eingabefeld ..." _label="Texteingabe" />
 		</KolForm>
 	</>
 );

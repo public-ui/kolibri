@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { handleSlotContent, showExpertSlot } from '@public-ui/schema';
+import { handleSlotContent, MsgPropType, showExpertSlot } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
 
@@ -46,7 +46,8 @@ export class KolInput implements Props {
 	}
 
 	public render(): JSX.Element {
-		const hasError = !this._readOnly && typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
+		const isMessageValidError = Boolean(this._msg?._type === 'error' && this._msg._label && this._msg._label?.length > 0);
+		const hasError = !this._readOnly && isMessageValidError && this._touched === true;
 		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 		const useTooltopInsteadOfLabel = !hasExpertSlot && this._hideLabel;
@@ -117,7 +118,7 @@ export class KolInput implements Props {
 						_label={this._label}
 					></kol-tooltip-wc>
 				)}
-				{hasError && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _error={this._error} _id={this._id} />}
+				{this._msg && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (
@@ -166,11 +167,6 @@ export class KolInput implements Props {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Defines the error message text.
-	 */
-	@Prop() public _error?: string = '';
-
-	/**
 	 * Shows the character count on the lower border of the input.
 	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
@@ -213,6 +209,11 @@ export class KolInput implements Props {
 	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Makes the input element read only.

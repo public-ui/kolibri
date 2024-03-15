@@ -7,6 +7,7 @@ import type {
 	InputTypeOnOff,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	Stringified,
 	SuggestionsPropType,
@@ -115,7 +116,7 @@ export class KolInputRange implements InputRangeAPI {
 					}}
 					_accessKey={this.state._accessKey}
 					_disabled={this.state._disabled}
-					_error={this.state._error}
+					_msg={this.state._msg}
 					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
@@ -235,8 +236,14 @@ export class KolInputRange implements InputRangeAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -363,6 +370,11 @@ export class KolInputRange implements InputRangeAPI {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_hideError')

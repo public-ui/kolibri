@@ -10,6 +10,7 @@ import type {
 	InputTypeOnOff,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	Stringified,
 	SuggestionsPropType,
@@ -93,7 +94,6 @@ export class KolInputText implements InputTextAPI {
 					_accessKey={this.state._accessKey}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
-					_error={this.state._error}
 					_hideError={this.state._hideError}
 					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
@@ -101,6 +101,7 @@ export class KolInputText implements InputTextAPI {
 					_icons={this.state._icons}
 					_id={this.state._id}
 					_label={this.state._label}
+					_msg={this.state._msg}
 					_suggestions={this.state._suggestions}
 					_maxLength={this.state._maxLength}
 					_readOnly={this.state._readOnly}
@@ -183,6 +184,7 @@ export class KolInputText implements InputTextAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
 
@@ -234,6 +236,11 @@ export class KolInputText implements InputTextAPI {
 	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: NamePropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -387,6 +394,11 @@ export class KolInputText implements InputTextAPI {
 	@Watch('_name')
 	public validateName(value?: string): void {
 		this.controller.validateName(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_on')

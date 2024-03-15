@@ -1,4 +1,4 @@
-import type { TouchedPropType } from '@public-ui/schema';
+import type { MsgPropType, TouchedPropType } from '@public-ui/schema';
 
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die
@@ -8,7 +8,7 @@ import type { TouchedPropType } from '@public-ui/schema';
  * @returns Render-States
  */
 export const getRenderStates = (state: {
-	_error?: string;
+	_msg?: MsgPropType;
 	_hint?: string;
 	_id: string;
 	_touched?: TouchedPropType;
@@ -17,7 +17,8 @@ export const getRenderStates = (state: {
 	hasHint: boolean;
 	ariaDescribedBy: string[];
 } => {
-	const hasError = typeof state._error === 'string' && state._error.length > 0 && state._touched === true;
+	const isMessageValidError = Boolean(state._msg?._type === 'error' && state._msg._label && state._msg._label?.length > 0);
+	const hasError = isMessageValidError && state._touched === true;
 	const hasHint = typeof state._hint === 'string' && state._hint.length > 0;
 
 	const ariaDescribedBy: string[] = [];

@@ -6,6 +6,7 @@ import type {
 	IdPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	RowsPropType,
 	SyncValueBySelectorPropType,
@@ -72,7 +73,6 @@ export class KolTextarea implements TextareaAPI {
 					_alert={this.state._alert}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
-					_error={this.state._error}
 					_hideError={this.state._hideError}
 					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
@@ -80,6 +80,7 @@ export class KolTextarea implements TextareaAPI {
 					_id={this.state._id}
 					_label={this.state._label}
 					_maxLength={this.state._maxLength}
+					_msg={this.state._msg}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_tooltipAlign={this._tooltipAlign}
@@ -158,8 +159,14 @@ export class KolTextarea implements TextareaAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Shows the character count on the lower border of the input.
@@ -301,6 +308,11 @@ export class KolTextarea implements TextareaAPI {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_hasCounter')

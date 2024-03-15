@@ -9,6 +9,7 @@ import type {
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropReadOnly,
 	PropRequired,
 	PropSuggestions,
@@ -22,6 +23,10 @@ import type { ButtonProps } from './button';
 type RequiredProps = PropId & PropLabelWithExpertSlot;
 type OptionalProps = {
 	currentLength: number;
+
+	/**
+	 * @deprecated Will be removed in v3. Use `msg` instead.
+	 */
 	error: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
@@ -34,6 +39,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideError &
 	PropHideLabel &
+	PropMsg &
 	PropReadOnly &
 	PropRequired &
 	PropSuggestions &

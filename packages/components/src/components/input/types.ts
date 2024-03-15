@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	ButtonProps,
 	KoliBriHorizontalIcons,
+	MsgPropType,
 	PropAccessKey,
 	PropAlert,
 	PropDisabled,
@@ -23,10 +24,10 @@ import type {
 type RequiredProps = PropId & PropLabelWithExpertSlot;
 type OptionalProps = {
 	currentLength: number;
-	error: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	maxLength: number;
+	msg: MsgPropType;
 	slotName: string;
 	smartButton: Stringified<ButtonProps>;
 } & PropAccessKey &

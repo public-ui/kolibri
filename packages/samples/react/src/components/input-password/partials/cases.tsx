@@ -8,14 +8,14 @@ import type { Components } from '@public-ui/components';
 export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, Components.KolInputPassword>(function InputPasswordCases(props, ref) {
 	return (
 		<div className="grid gap-4">
-			<KolInputPassword {...props} _disabled _error={ERROR_MSG} _label="Passwort (Disabled)" _touched />
+			<KolInputPassword {...props} _disabled _msg={{ _type: 'error', _label: ERROR_MSG }} _label="Passwort (Disabled)" _touched />
 			<KolInputPassword {...props} _readOnly _label="Passwort (Readonly)" />
 			<KolInputPassword
 				{...props}
 				ref={ref}
 				_accessKey="P"
 				_required
-				_error={ERROR_MSG}
+				_msg={{ _type: 'error', _label: ERROR_MSG }}
 				_placeholder="Mit Icons"
 				_label="Passwort"
 				_icons={{

@@ -59,9 +59,17 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				}}
 			/>
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Disabled" _disabled />
-			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Anrede mit Fehler" _error={ERROR_MSG} _touched />
+			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Anrede mit Fehler" _msg={{ _type: 'error', _label: ERROR_MSG }} _touched />
 			<KolSelect {...props} _options={COUNTRY_OPTIONS} _label="Mehrfachauswahl" _multiple />
-			<KolSelect {...props} _options={COUNTRY_OPTIONS} _label="Mehrfachauswahl mit Fehler" _multiple _required _error={ERROR_MSG} _touched />
+			<KolSelect
+				{...props}
+				_options={COUNTRY_OPTIONS}
+				_label="Mehrfachauswahl mit Fehler"
+				_multiple
+				_required
+				_msg={{ _type: 'error', _label: ERROR_MSG }}
+				_touched
+			/>
 		</div>
 	);
 });

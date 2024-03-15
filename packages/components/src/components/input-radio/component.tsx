@@ -5,6 +5,7 @@ import type {
 	InputRadioStates,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	OptionsPropType,
 	Orientation,
@@ -145,7 +146,7 @@ export class KolInputRadio implements InputRadioAPI {
 							</kol-input>
 						);
 					})}
-					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _error={this.state._error} _id={this.state._id} />}
+					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}
 				</fieldset>
 			</Host>
 		);
@@ -171,8 +172,14 @@ export class KolInputRadio implements InputRadioAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -286,6 +293,11 @@ export class KolInputRadio implements InputRadioAPI {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_hideLabel')

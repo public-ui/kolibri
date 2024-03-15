@@ -16,7 +16,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 			<KolInputRadio
 				{...props}
 				_required
-				_error={ERROR_MSG}
+				_msg={{ _type: 'error', _label: ERROR_MSG }}
 				_touched
 				_value="Firma"
 				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)','value':'Herr'},{'label':'Firma','value':'Firma'}]"
@@ -37,7 +37,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_disabled
 				_orientation="horizontal"
 				_required
-				_error={ERROR_MSG}
+				_msg={{ _type: 'error', _label: ERROR_MSG }}
 				_touched
 				_value="Firma"
 				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"

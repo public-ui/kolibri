@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { propagateFocus, showExpertSlot } from '@public-ui/schema';
+import { MsgPropType, propagateFocus, showExpertSlot } from '@public-ui/schema';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -77,7 +77,7 @@ export class KolInputDate implements InputDateAPI {
 					}}
 					_accessKey={this.state._accessKey}
 					_disabled={this.state._disabled}
-					_error={this.state._error}
+					_msg={this.state._msg}
 					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
@@ -161,8 +161,14 @@ export class KolInputDate implements InputDateAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -313,6 +319,11 @@ export class KolInputDate implements InputDateAPI {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_hideError')

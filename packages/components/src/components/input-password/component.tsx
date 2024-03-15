@@ -8,6 +8,7 @@ import type {
 	InputTypeOnOff,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	Stringified,
 	SyncValueBySelectorPropType,
@@ -79,7 +80,7 @@ export class KolInputPassword implements InputPasswordAPI {
 					_accessKey={this.state._accessKey}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
-					_error={this.state._error}
+					_msg={this.state._msg}
 					_hasCounter={this.state._hasCounter}
 					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
@@ -165,8 +166,14 @@ export class KolInputPassword implements InputPasswordAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Shows the character count on the lower border of the input.
@@ -315,6 +322,11 @@ export class KolInputPassword implements InputPasswordAPI {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_hasCounter')

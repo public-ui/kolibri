@@ -8,6 +8,7 @@ import type {
 	InputTypeOnOff,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	MultiplePropType,
 	NamePropType,
 	Stringified,
@@ -80,7 +81,7 @@ export class KolInputEmail implements InputEmailAPI {
 					_alert={this.state._alert}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
-					_error={this.state._error}
+					_msg={this.state._msg}
 					_hideError={this.state._hideError}
 					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
@@ -171,6 +172,11 @@ export class KolInputEmail implements InputEmailAPI {
 	 * Defines the error message text.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Shows the character count on the lower border of the input.
@@ -328,6 +334,11 @@ export class KolInputEmail implements InputEmailAPI {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_hasCounter')
