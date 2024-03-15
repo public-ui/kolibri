@@ -984,7 +984,7 @@ export const HandoutBasic: FC = () => (
 						<KolInputDate _type="date" _label={`Datum`} />
 						<KolInputEmail
 							_icons="{'left': 'codicon codicon-home'}"
-							_msg={{ _type: 'error', _label: 'Test einer Fehlermeldung' }}
+							_msg={{ _type: 'error', _description: 'Test einer Fehlermeldung' }}
 							_touched
 							_label={`E-Mail-Adresse`}
 						/>

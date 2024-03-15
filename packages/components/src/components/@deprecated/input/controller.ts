@@ -54,7 +54,7 @@ export class InputController extends ControlledInputController implements Watche
 	public validateError(value?: string): void {
 		const message: MsgPropType | undefined = value
 			? {
-					_label: value,
+					_description: value,
 					_type: 'error',
 				}
 			: undefined;

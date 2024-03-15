@@ -52,7 +52,7 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 			<KolInputCheckbox {...props} _indeterminate _disabled _label="Indeterminate and disabled" />
 			<KolInputCheckbox
 				{...props}
-				_msg={{ _type: 'error', _label: ERROR_MSG }}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_icons={{
 					unchecked: 'codicon codicon-close',
 				}}

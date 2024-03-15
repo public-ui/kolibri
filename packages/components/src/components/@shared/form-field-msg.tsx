@@ -26,5 +26,7 @@ export const FormFieldMsg: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _
 			'visually-hidden': _hideError === true,
 		}}
 		{..._msg}
-	></kol-alert-wc>
+	>
+		{_msg?._description || undefined}
+	</kol-alert-wc>
 );

@@ -14,7 +14,7 @@ export const InputDateCases = forwardRef<HTMLKolInputDateElement, Components.Kol
 				{...props}
 				_step={1}
 				_type="datetime-local"
-				_msg={{ _type: 'error', _label: ERROR_MSG }}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_label="Local-Datetime (mit Sekunden)"
 				_required
 				_touched

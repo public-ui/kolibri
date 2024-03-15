@@ -12,7 +12,7 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, Components.K
 				{...props}
 				_min={0}
 				_max={50}
-				_msg={{ _type: 'error', _label: ERROR_MSG }}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_label="Schieberegler"
 				_icons={{
 					left: {
@@ -31,7 +31,7 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, Components.K
 				_min={0}
 				_max={50}
 				_step={10}
-				_msg={{ _type: 'error', _label: ERROR_MSG }}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_label="Schieberegler mit Fehler"
 				_touched
 			/>

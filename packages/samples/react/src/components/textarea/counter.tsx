@@ -9,6 +9,12 @@ export const TextareaCounter: FC = () => (
 		<SampleDescription>
 			<p>Hier ist ein Beispiel für eine Freitextfeld mit Zeichenzähler.</p>
 		</SampleDescription>
-		<KolTextarea _hasCounter={true} _label="Textara mit Counter und Hint und Fehler" _msg={{ _type: 'error', _label: 'oh no' }} _hint={'Hinweis'} _touched />
+		<KolTextarea
+			_hasCounter={true}
+			_label="Textara mit Counter und Hint und Fehler"
+			_msg={{ _type: 'error', _description: 'oh no' }}
+			_hint={'Hinweis'}
+			_touched
+		/>
 	</>
 );

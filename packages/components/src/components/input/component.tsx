@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { handleSlotContent, MsgPropType, showExpertSlot } from '@public-ui/schema';
+import { handleSlotContent, type MsgPropType, showExpertSlot } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
 
@@ -46,7 +46,7 @@ export class KolInput implements Props {
 	}
 
 	public render(): JSX.Element {
-		const isMessageValidError = Boolean(this._msg?._type === 'error' && this._msg._label && this._msg._label?.length > 0);
+		const isMessageValidError = Boolean(this._msg?._type === 'error' && this._msg._description && this._msg._description?.length > 0);
 		const hasError = !this._readOnly && isMessageValidError && this._touched === true;
 		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;

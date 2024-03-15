@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { MsgPropType, propagateFocus, showExpertSlot } from '@public-ui/schema';
+import { type MsgPropType, propagateFocus, showExpertSlot } from '@public-ui/schema';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';

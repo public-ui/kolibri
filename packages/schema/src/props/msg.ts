@@ -3,7 +3,9 @@ import type { AlertProps } from '../components';
 import { watchValidator } from '../utils';
 
 /* types */
-export type MsgPropType = AlertProps;
+export type MsgPropType = AlertProps & {
+	_description: string;
+};
 
 /**
  * Defines the properties for a message rendered as Alert component.
