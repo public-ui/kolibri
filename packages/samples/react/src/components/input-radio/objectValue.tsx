@@ -21,6 +21,14 @@ export const InputRadioObjectValue: FC = () => {
 					<KolInputRadio _value={options[1].value} _options={options} _label="Test(mit Objekt-Wert)" />
 				</div>
 			</KolForm>
+			<SampleDescription>
+				In Diesem Beispiel für <code>KolInputRadio</code> wird kein Wert gesetzt.
+			</SampleDescription>
+			<KolForm>
+				<div className="container my-4 d-grid gap-4">
+					<KolInputRadio _options={options} _label="Test(ohne Value-Wert)" />
+				</div>
+			</KolForm>
 		</div>
 	);
 };

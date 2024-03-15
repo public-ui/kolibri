@@ -71,12 +71,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		return options.find((option) => option.value === value) !== undefined;
 	};
 
-	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
-		if (key === '_value') {
-			this.setFormAssociatedValue(value as string);
-		}
-	};
-
 	protected readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
@@ -113,7 +107,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 	public validateOptions(value?: OptionsPropType): void {
 		validateOptions(this.component, value, {
 			hooks: {
-				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,
 			},
 		});
@@ -123,7 +116,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		value = mapString2Unknown(value);
 		value = Array.isArray(value) ? (value[0] as StencilUnknown) : value;
 		setState(this.component, '_value', value, {
-			afterPatch: this.afterPatchOptions,
 			beforePatch: this.beforePatchOptions,
 		});
 	}

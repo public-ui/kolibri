@@ -88,7 +88,7 @@ export class KolInputRadio implements InputRadioAPI {
 						 */
 						const customId = `${this.state._id}-${index}`;
 						const slotName = `radio-${index}`;
-						const selected = option.value === this.currentValue;
+						const selected = this.state._value === option.value;
 
 						return (
 							<kol-input
