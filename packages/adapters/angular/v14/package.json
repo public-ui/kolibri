@@ -74,13 +74,13 @@
 		"@types/normalize-package-data": "2.4.4",
 		"prettier": "3.2.5",
 		"rimraf": "5.0.5",
-		"rxjs": "7.6.0",
+		"rxjs": "7.8.1",
 		"tslib": "2.6.2",
 		"typescript": "4.8.4",
 		"zone.js": "0.12.0"
 	},
 	"peerDependencies": {
-		"@angular/core": "^14",
+		"@angular/core": "14.3.0",
 		"@public-ui/components": "2.0.9"
 	},
 	"files": [
