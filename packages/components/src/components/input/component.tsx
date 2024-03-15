@@ -48,6 +48,7 @@ export class KolInput implements Props {
 	public render(): JSX.Element {
 		const isMessageValidError = Boolean(this._msg?._type === 'error' && this._msg._description && this._msg._description?.length > 0);
 		const hasError = !this._readOnly && isMessageValidError && this._touched === true;
+		const showFormFieldMsg = Boolean(hasError || (this._msg?._type !== 'error' && this._msg?._description));
 		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 		const useTooltopInsteadOfLabel = !hasExpertSlot && this._hideLabel;
@@ -118,7 +119,7 @@ export class KolInput implements Props {
 						_label={this._label}
 					></kol-tooltip-wc>
 				)}
-				{this._msg && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
+				{showFormFieldMsg && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (
