@@ -8,6 +8,7 @@ packages:
   - 'packages/components'
   - 'packages/create-kolibri'
   - 'packages/designer'
+  - 'packages/samples/angular'
   - 'packages/samples/react'
   - 'packages/schema'
   - 'packages/themes'
