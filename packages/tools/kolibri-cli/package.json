@@ -51,7 +51,7 @@
 		"eslint-plugin-jsx-a11y": "6.8.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"eslint-plugin-react": "7.34.0",
-		"knip": "5.0.3",
+		"knip": "5.1.0",
 		"mocha": "10.3.0",
 		"nodemon": "3.1.0",
 		"rimraf": "5.0.5",
