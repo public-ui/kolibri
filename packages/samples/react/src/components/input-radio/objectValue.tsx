@@ -13,20 +13,20 @@ export const InputRadioObjectValue: FC = () => {
 
 	return (
 		<div className="grid gap-4">
-			<SampleDescription>
-				In Diesem Beispiel für <code>KolInputRadio</code> werden die Werte der Optionen als Objekte definiert.
-			</SampleDescription>
+			<p>
+				In this example for <code>KolInputRadio</code>, the values of the options are defined as objects.
+			</p>
 			<KolForm>
 				<div className="container my-4 d-grid gap-4">
-					<KolInputRadio _value={options[1].value} _options={options} _label="Test(mit Objekt-Wert)" />
+					<KolInputRadio _value={options[1].value} _options={options} _label="Test(with object value)" />
 				</div>
 			</KolForm>
-			<SampleDescription>
-				In Diesem Beispiel für <code>KolInputRadio</code> wird kein Wert gesetzt.
-			</SampleDescription>
+			<p>
+				In this example for <code>KolInputRadio</code>, no value is set.
+			</p>
 			<KolForm>
 				<div className="container my-4 d-grid gap-4">
-					<KolInputRadio _options={options} _label="Test(ohne Value-Wert)" />
+					<KolInputRadio _options={options} _label="Test(without value)" />
 				</div>
 			</KolForm>
 		</div>
