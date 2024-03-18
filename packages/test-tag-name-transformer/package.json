@@ -1,0 +1,15 @@
+{
+  "name": "@public-ui/test-tag-name-transformer",
+	"private": true,
+	"version": "1.0.0",
+	"license": "EUPL-1.2",
+  "description": "Performs snapshot testing on the default theme with a tag name transformer enabled.",
+  "scripts": {
+    "test": "THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test",
+    "test-update": "THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
+  },
+  "devDependencies": {
+    "@public-ui/theme-default": "workspace:*",
+    "@public-ui/visual-tests": "workspace:*"
+  }
+}

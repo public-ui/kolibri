@@ -951,6 +951,15 @@ importers:
         specifier: 1.2.1
         version: 1.2.1(sass@1.72.0)
 
+  packages/test-tag-name-transformer:
+    devDependencies:
+      '@public-ui/theme-default':
+        specifier: workspace:*
+        version: link:../themes/default
+      '@public-ui/visual-tests':
+        specifier: workspace:2.0.9
+        version: link:../tools/visual-tests
+
   packages/themes:
     dependencies:
       '@public-ui/components':
