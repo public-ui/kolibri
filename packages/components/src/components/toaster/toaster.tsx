@@ -1,4 +1,6 @@
 import type { Toast, ToasterOptions } from '@public-ui/schema';
+import { KolToastContainerTag } from '../../core/component-names';
+import { isInitialized } from '../../core/bootstrap';
 
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();
@@ -9,7 +11,9 @@ export class ToasterService {
 		private readonly document: Document,
 		private readonly options?: ToasterOptions,
 	) {
-		this.toastContainerElement = this.document.createElement('kol-toast-container');
+		console.log('create', KolToastContainerTag);
+		console.trace();
+		this.toastContainerElement = this.document.createElement(KolToastContainerTag);
 		this.document.body.prepend(this.toastContainerElement);
 	}
 
@@ -17,6 +21,10 @@ export class ToasterService {
 	 * Get a toaster for the specified document environment. Each environment has exactly one instance of the service.
 	 */
 	public static getInstance(document: Document, options?: ToasterOptions): ToasterService {
+		if (!isInitialized()) {
+			throw new Error('Toaster: Call KoliBri bootstrap/register method first.');
+		}
+
 		let instance = this.instances.get(document);
 		if (!instance) {
 			instance = new ToasterService(document, options);
