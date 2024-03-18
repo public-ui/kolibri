@@ -3,8 +3,10 @@ import { register as coreRegister } from 'adopted-style-sheets';
 import { configI18n, initI18n } from './i18n';
 import { setCustomTagNames } from './component-names';
 
+let initialized = false;
+
 type KoliBriOptions = RegisterOptions & {
-	// transformTagName?: (tagName: string) => string;
+	transformTagName?: (tagName: string) => string;
 };
 
 export const bootstrap = async (
@@ -20,7 +22,11 @@ export const bootstrap = async (
 	if (options?.transformTagName) {
 		setCustomTagNames(options?.transformTagName);
 	}
-	return await coreRegister(themes, loaders, options);
+	const coreRegisterReturnValue = await coreRegister(themes, loaders, options);
+	initialized = true;
+
+	return coreRegisterReturnValue;
 };
 
 export const register = bootstrap;
+export const isInitialized = () => initialized;

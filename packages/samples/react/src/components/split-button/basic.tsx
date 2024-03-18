@@ -5,9 +5,9 @@ import { KolSplitButton } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
-const toaster = ToasterService.getInstance(document);
 
 export const SplitButtonBasic: FC = () => {
+	const toaster = ToasterService.getInstance(document);
 	const handleButtonClick = () => {
 		void toaster.enqueue({
 			description: 'The Button has been clicked.',
