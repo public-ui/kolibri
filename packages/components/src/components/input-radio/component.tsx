@@ -177,11 +177,6 @@ export class KolInputRadio implements InputRadioAPI {
 	@Prop() public _error?: string;
 
 	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: MsgPropType;
-
-	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
@@ -208,6 +203,11 @@ export class KolInputRadio implements InputRadioAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -295,11 +295,6 @@ export class KolInputRadio implements InputRadioAPI {
 		this.controller.validateError(value);
 	}
 
-	@Watch('_msg')
-	public validateMsg(value?: MsgPropType): void {
-		this.controller.validateMsg(value);
-	}
-
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
 		this.controller.validateHideLabel(value);
@@ -323,6 +318,11 @@ export class KolInputRadio implements InputRadioAPI {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_name')

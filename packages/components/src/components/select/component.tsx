@@ -200,11 +200,6 @@ export class KolSelect implements SelectAPI {
 	@Prop() public _error?: string;
 
 	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: MsgPropType;
-
-	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
@@ -236,6 +231,11 @@ export class KolSelect implements SelectAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Makes the input accept multiple inputs.
@@ -330,11 +330,6 @@ export class KolSelect implements SelectAPI {
 		this.controller.validateError(value);
 	}
 
-	@Watch('_msg')
-	public validateMsg(value?: MsgPropType): void {
-		this.controller.validateMsg(value);
-	}
-
 	@Watch('_hideError')
 	public validateHideError(value?: HideErrorPropType): void {
 		this.controller.validateHideError(value);
@@ -363,6 +358,11 @@ export class KolSelect implements SelectAPI {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_multiple')

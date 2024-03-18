@@ -165,11 +165,6 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 	@Prop() public _error?: string;
 
 	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: MsgPropType;
-
-	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
@@ -201,6 +196,11 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -294,11 +294,6 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 		this.controller.validateError(value);
 	}
 
-	@Watch('_msg')
-	public validateMsg(value?: MsgPropType): void {
-		this.controller.validateMsg(value);
-	}
-
 	@Watch('_hideError')
 	public validateHideError(value?: HideErrorPropType): void {
 		this.controller.validateHideError(value);
@@ -332,6 +327,11 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_name')

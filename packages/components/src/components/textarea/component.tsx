@@ -164,11 +164,6 @@ export class KolTextarea implements TextareaAPI {
 	@Prop() public _error?: string;
 
 	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: MsgPropType;
-
-	/**
 	 * Shows the character count on the lower border of the input.
 	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
@@ -206,6 +201,11 @@ export class KolTextarea implements TextareaAPI {
 	 * Defines the maximum number of input characters.
 	 */
 	@Prop() public _maxLength?: number;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -310,11 +310,6 @@ export class KolTextarea implements TextareaAPI {
 		this.controller.validateError(value);
 	}
 
-	@Watch('_msg')
-	public validateMsg(value?: MsgPropType): void {
-		this.controller.validateMsg(value);
-	}
-
 	@Watch('_hasCounter')
 	public validateHasCounter(value?: HasCounterPropType): void {
 		this.controller.validateHasCounter(value);
@@ -348,6 +343,11 @@ export class KolTextarea implements TextareaAPI {
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_name')

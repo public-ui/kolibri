@@ -233,14 +233,14 @@ export class KolInputText implements InputTextAPI {
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Defines the technical name of an input field.
-	 */
-	@Prop() public _name?: NamePropType;
-
-	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
 	@Prop() public _msg?: MsgPropType;
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -391,14 +391,14 @@ export class KolInputText implements InputTextAPI {
 		this.controller.validateMaxLength(value);
 	}
 
-	@Watch('_name')
-	public validateName(value?: string): void {
-		this.controller.validateName(value);
-	}
-
 	@Watch('_msg')
 	public validateMsg(value?: MsgPropType): void {
 		this.controller.validateMsg(value);
+	}
+
+	@Watch('_name')
+	public validateName(value?: string): void {
+		this.controller.validateName(value);
 	}
 
 	@Watch('_on')

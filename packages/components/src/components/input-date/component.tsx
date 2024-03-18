@@ -166,11 +166,6 @@ export class KolInputDate implements InputDateAPI {
 	@Prop() public _error?: string;
 
 	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: MsgPropType;
-
-	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
@@ -212,6 +207,11 @@ export class KolInputDate implements InputDateAPI {
 	 * Defines the smallest possible input value.
 	 */
 	@Prop() public _min?: Iso8601 | Date;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -321,11 +321,6 @@ export class KolInputDate implements InputDateAPI {
 		this.controller.validateError(value);
 	}
 
-	@Watch('_msg')
-	public validateMsg(value?: MsgPropType): void {
-		this.controller.validateMsg(value);
-	}
-
 	@Watch('_hideError')
 	public validateHideError(value?: HideErrorPropType): void {
 		this.controller.validateHideError(value);
@@ -364,6 +359,11 @@ export class KolInputDate implements InputDateAPI {
 	@Watch('_min')
 	public validateMin(value?: Iso8601 | Date): void {
 		this.controller.validateMin(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_name')
