@@ -10,6 +10,7 @@ packages:
   - 'packages/designer'
   - 'packages/samples/react'
   - 'packages/schema'
+  - 'packages/test-tag-name-transformer'
   - 'packages/themes'
   - 'packages/themes/bmf'
   - 'packages/themes/default'
