@@ -1,5 +1,9 @@
+@import '../mixins/button.scss';
+
 @layer kol-theme-component {
 	.popover {
 		background: #fff;
 	}
+
+	@include kol-button;
 }
