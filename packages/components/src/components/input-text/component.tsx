@@ -94,19 +94,19 @@ export class KolInputText implements InputTextAPI {
 					_accessKey={this.state._accessKey}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
-					_hideError={this.state._hideError}
 					_hasCounter={this.state._hasCounter}
+					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_icons={this.state._icons}
 					_id={this.state._id}
 					_label={this.state._label}
-					_msg={this.state._msg}
-					_suggestions={this.state._suggestions}
 					_maxLength={this.state._maxLength}
+					_msg={this.state._msg}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
+					_suggestions={this.state._suggestions}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
