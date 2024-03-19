@@ -46,8 +46,6 @@ export class KolInputDate implements ComponentApi {
 				form: this.host,
 				ref: this.ref,
 			});
-		} else {
-			this.controller.onFacade.onChange(event);
 		}
 	};
 

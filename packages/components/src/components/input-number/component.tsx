@@ -45,8 +45,6 @@ export class KolInputNumber implements API {
 				form: this.host,
 				ref: this.ref,
 			});
-		} else {
-			this.controller.onFacade.onChange(event);
 		}
 	};
 
