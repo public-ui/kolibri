@@ -363,7 +363,7 @@ export class KolInputRadio implements InputRadioAPI {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.currentValue = this._value;
-		this.controller.componentWillLoad(this.onChange);
+		this.controller.componentWillLoad();
 	}
 
 	private onChange = (event: Event): void => {

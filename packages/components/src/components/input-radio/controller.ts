@@ -13,7 +13,7 @@ import type {
 	Stringified,
 	W3CInputValue,
 } from '@public-ui/schema';
-import { mapString2Unknown, orientationOptions, setState, STATE_CHANGE_EVENT, validateOptions, validateRequired, watchValidator } from '@public-ui/schema';
+import { mapString2Unknown, orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '@public-ui/schema';
 
 import { InputController } from '../@deprecated/input/controller';
 
@@ -101,16 +101,8 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		});
 	}
 
-	public componentWillLoad(onChange?: (event: Event) => void): void {
+	public componentWillLoad(): void {
 		super.componentWillLoad();
-
-		if (typeof onChange === 'function') {
-			const timeout = setTimeout(() => {
-				clearTimeout(timeout);
-				onChange(STATE_CHANGE_EVENT);
-			});
-		}
-
 		this.validateOrientation(this.component._orientation);
 		this.validateOptions(this.component._options);
 		this.validateValue(this.component._value);
