@@ -8,30 +8,25 @@
 		padding: 0;
 	}
 
-	ol.horizontal,
-	ul.horizontal {
+	:is(ol, ul).horizontal {
 		display: flex;
 		flex-wrap: wrap;
 	}
 
-	ol.horizontal li,
-	ul.horizontal li {
+	:is(ol, ul).horizontal li {
 		margin-left: rem(20);
 		margin-right: rem(4);
 	}
 
-	ol.horizontal li:first-child,
-	ul.horizontal li:first-child {
+	:is(ol, ul).horizontal li:first-child {
 		margin-left: 0;
 	}
 
-	ol.horizontal li:last-child,
-	ul.horizontal li:last-child {
+	:is(ol, ul).horizontal li:last-child {
 		margin-right: 0;
 	}
 
-	ol.vertical li,
-	ul.vertical li {
+	:is(ol, ul).vertical li {
 		margin-left: rem(28);
 		margin-right: rem(8);
 	}
