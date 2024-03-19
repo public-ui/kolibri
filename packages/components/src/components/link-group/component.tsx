@@ -92,7 +92,6 @@ export class KolLinkGroup implements LinkGroupAPI {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	@State() public state: LinkGroupStates = {
-		_label: '',
 		_listStyleType: 'disc',
 		_links: [],
 		_orientation: 'vertical',
