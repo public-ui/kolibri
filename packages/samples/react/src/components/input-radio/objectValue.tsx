@@ -13,6 +13,9 @@ export const InputRadioObjectValue: FC = () => {
 
 	return (
 		<div className="grid gap-4">
+			<SampleDescription>
+				Examples of implementing the <code>KolInputRadio</code> component with object-based preselected value and undefined value.
+			</SampleDescription>
 			<p>
 				In this example for <code>KolInputRadio</code>, the values of the options are defined as objects.
 			</p>
