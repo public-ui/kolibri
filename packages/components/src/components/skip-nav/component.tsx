@@ -6,6 +6,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
+import { KolLinkWcTag } from '../../core/component-names';
 @Component({
 	tag: 'kol-skip-nav',
 	styleUrls: {
@@ -22,7 +23,7 @@ export class KolSkipNav implements SkipNavAPI {
 						{this.state._links.map((link: LinkProps, index: number) => {
 							return (
 								<li key={index}>
-									<kol-link-wc {...link}></kol-link-wc>
+									<KolLinkWcTag {...link}></KolLinkWcTag>
 								</li>
 							);
 						})}

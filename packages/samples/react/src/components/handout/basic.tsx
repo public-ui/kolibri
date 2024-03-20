@@ -6,6 +6,7 @@ import {
 	KolAbbr,
 	KolAccordion,
 	KolAlert,
+	KolBadge,
 	KolBreadcrumb,
 	KolButton,
 	KolButtonLink,
@@ -39,6 +40,7 @@ import {
 import { getTheme, getThemeName } from '../../shares/store';
 
 import type { FC } from 'react';
+import { getRoot } from '../../shares/react-roots';
 const TABLE_HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
@@ -60,15 +62,12 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'montag',
 				label: 'Montag',
-				render: (el, data) => {
-					const button = document.createElement('kol-button');
-					button.setAttribute('_label', data.label);
-					button.setAttribute('data-theme', 'default');
-					button.setAttribute('style', 'font-size: 75%');
-					button.setAttribute('exportparts', 'button,normal');
-					button._on = { onClick: console.log };
+				render: (el, cell) => {
+					const renderElement = document.createElement('div');
+					renderElement.setAttribute('role', 'presentation');
 					el.innerHTML = '';
-					el.appendChild(button);
+					el.appendChild(renderElement);
+					getRoot(renderElement).render(<KolButton _label={cell.label} style={{ fontSize: '75%' }} data-theme="default" />);
 				},
 				sort: (data) => {
 					return data.sort((first, second) => {
@@ -87,8 +86,12 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			{
 				key: 'dienstag',
 				label: 'Dienstag',
-				render: (el, data) => {
-					el.innerHTML = `<kol-badge _color="#060" _label="${data.label}"></kol-badge>`;
+				render: (el, cell) => {
+					const renderElement = document.createElement('div');
+					renderElement.setAttribute('role', 'presentation');
+					el.innerHTML = '';
+					el.appendChild(renderElement);
+					getRoot(renderElement).render(<KolBadge _color="#060" _label={cell.label}></KolBadge>);
 				},
 				sort: (data) => {
 					return data.sort((first, second) => {
@@ -109,33 +112,56 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				render: (el, data) => {
 					el.innerHTML = `<kol-badge _color="#006" _label="${data.label}"></kol-badge>`;
 				},
+				render: (el, cell) => {
+					const renderElement = document.createElement('div');
+					renderElement.setAttribute('role', 'presentation');
+					el.innerHTML = '';
+					el.appendChild(renderElement);
+					getRoot(renderElement).render(<KolBadge _color="#006" _label={cell.label}></KolBadge>);
+				},
 			},
 			{
 				key: 'donnerstag',
 				label: 'Donnerstag',
-				render: (el, data) => {
-					el.innerHTML = `<kol-badge _color="#600" _label="${data.label}"></kol-badge>`;
+				render: (el, cell) => {
+					const renderElement = document.createElement('div');
+					renderElement.setAttribute('role', 'presentation');
+					el.innerHTML = '';
+					el.appendChild(renderElement);
+					getRoot(renderElement).render(<KolBadge _color="#600" _label={cell.label}></KolBadge>);
 				},
 			},
 			{
 				key: 'freitag',
 				label: 'Freitag',
-				render: (el, data) => {
-					el.innerHTML = `<kol-badge _color="#303" _label="${data.label}"></kol-badge>`;
+				render: (el, cell) => {
+					const renderElement = document.createElement('div');
+					renderElement.setAttribute('role', 'presentation');
+					el.innerHTML = '';
+					el.appendChild(renderElement);
+					getRoot(renderElement).render(<KolBadge _color="#303" _label={cell.label}></KolBadge>);
 				},
 			},
 			{
 				key: 'samstag',
 				label: 'Samstag',
-				render: (el, data) => {
-					el.innerHTML = `<kol-badge _color="#330" _label="${data.label}"></kol-badge>`;
+				render: (el, cell) => {
+					const renderElement = document.createElement('div');
+					renderElement.setAttribute('role', 'presentation');
+					el.innerHTML = '';
+					el.appendChild(renderElement);
+					getRoot(renderElement).render(<KolBadge _color="#330" _label={cell.label}></KolBadge>);
 				},
 			},
 			{
 				key: 'sonntag',
 				label: 'Sonntag',
-				render: (el, data) => {
-					el.innerHTML = `<kol-badge _color="#033" _label="${data.label}"></kol-badge>`;
+				render: (el, cell) => {
+					const renderElement = document.createElement('div');
+					renderElement.setAttribute('role', 'presentation');
+					el.innerHTML = '';
+					el.appendChild(renderElement);
+					getRoot(renderElement).render(<KolBadge _color="#033" _label={cell.label}></KolBadge>);
 				},
 			},
 		],

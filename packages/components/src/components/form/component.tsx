@@ -5,6 +5,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '@public-ui/schema';
+import { KolAlertTag, KolIndentedTextTag, KolLinkTag } from '../../core/component-names';
 /**
  * @slot - Inhalt der Form.
  */
@@ -48,33 +49,33 @@ export class KolForm implements FormAPI {
 			<Host class="kol-form">
 				<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 					{this._errorList && this._errorList.length > 0 && (
-						<kol-alert _type="error">
+						<KolAlertTag _type="error">
 							{translate('kol-error-list-message')}
 							<nav aria-label={translate('kol-error-list')}>
 								<ul>
 									{this._errorList.map((error, index) => (
 										<li key={index}>
-											<kol-link
+											<KolLinkTag
 												_href={error.selector}
 												_label={error.message}
 												_on={{ onClick: this.handleLinkClick }}
-												ref={(el) => {
-													if (index === 0) this.errorListElement = el as HTMLElement;
+												ref={(el?: HTMLKolLinkElement) => {
+													if (index === 0) this.errorListElement = el;
 												}}
 											/>
 										</li>
 									))}
 								</ul>
 							</nav>
-						</kol-alert>
+						</KolAlertTag>
 					)}
 					{this.state._requiredText === true ? (
 						<p>
-							<kol-indented-text>{translate('kol-form-description')}</kol-indented-text>
+							<KolIndentedTextTag>{translate('kol-form-description')}</KolIndentedTextTag>
 						</p>
 					) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
 						<p>
-							<kol-indented-text>{this.state._requiredText}</kol-indented-text>
+							<KolIndentedTextTag>{this.state._requiredText}</KolIndentedTextTag>
 						</p>
 					) : null}
 					<slot />

@@ -59,37 +59,4 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 | `_siblingCount`      | `_sibling-count`     | Defines the amount of pages to show next to the current page.                                                      | `number \| undefined`                                                                                                                                                                                                  | `1`         |
 | `_tooltipAlign`      | `_tooltip-align`     | Defines where to show the Tooltip preferably: top, right, bottom or left.                                          | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                  | `'top'`     |
 
-## Dependencies
-
-### Used by
-
-- [kol-table](../table)
-
-### Depends on
-
-- kol-button-wc
-- [kol-select](../select)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-pagination --> kol-button-wc
-  kol-pagination --> kol-select
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-select --> kol-input
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  kol-table --> kol-pagination
-  style kol-pagination stroke:#333,stroke-width:4px
-```
-
 ---
