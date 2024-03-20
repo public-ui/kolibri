@@ -1,5 +1,6 @@
 import type { ToastState } from '@public-ui/schema';
 import { h } from '@stencil/core';
+import { KolAlertTag } from '../../core/component-names';
 
 type Props = {
 	toastState: ToastState;
@@ -16,7 +17,7 @@ export const InternalToast = ({ toastState, onClose, key }: Props) => {
 
 	return (
 		<div class={`toast ${toastState.status}`} key={key}>
-			<kol-alert
+			<KolAlertTag
 				class="alert"
 				_alert={true}
 				_label={toastState.toast.label}
@@ -27,7 +28,7 @@ export const InternalToast = ({ toastState, onClose, key }: Props) => {
 				_on={{ onClose }}
 			>
 				<div ref={handleRef}>{typeof toastState.toast.description === 'string' ? toastState.toast.description : null}</div>
-			</kol-alert>
+			</KolAlertTag>
 		</div>
 	);
 };

@@ -25,6 +25,7 @@ import type {
 	TableStates,
 } from '@public-ui/schema';
 import { validatePaginationPosition } from '@public-ui/schema';
+import { KolButtonTag, KolButtonWcTag, KolPaginationTag } from '../../core/component-names';
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
@@ -741,7 +742,7 @@ export class KolTable implements TableAPI {
 							{headerCell.label}
 						</div>
 						{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') && (
-							<kol-button
+							<KolButtonTag
 								exportparts="icon"
 								_icons={sortButtonIcon}
 								_hideLabel
@@ -750,7 +751,7 @@ export class KolTable implements TableAPI {
 									onClick: () => this.changeCellSort(headerCell),
 								}}
 								_variant="ghost"
-							></kol-button>
+							></KolButtonTag>
 						)}
 					</div>
 				</th>
@@ -805,7 +806,7 @@ export class KolTable implements TableAPI {
 					})}
 				</span>
 				<div>
-					<kol-pagination
+					<KolPaginationTag
 						_boundaryCount={this.state._pagination._boundaryCount}
 						_customClass={this.state._pagination._customClass}
 						_on={this.handlePagination}
@@ -816,7 +817,7 @@ export class KolTable implements TableAPI {
 						_tooltipAlign="bottom"
 						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
 						_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
-					></kol-pagination>
+					></KolPaginationTag>
 				</div>
 			</div>
 		);
@@ -943,7 +944,7 @@ export class KolTable implements TableAPI {
 														data-sort={`sort-${shortSortDirection}`}
 													>
 														{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') ? (
-															<kol-button-wc
+															<KolButtonWcTag
 																class="table-sort-button"
 																exportparts="icon"
 																_icons={{ right: sortButtonIcon }}
@@ -951,7 +952,7 @@ export class KolTable implements TableAPI {
 																_on={{
 																	onClick: () => this.changeCellSort(headerCell),
 																}}
-															></kol-button-wc>
+															></KolButtonWcTag>
 														) : (
 															col.label
 														)}

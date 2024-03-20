@@ -27,6 +27,7 @@ import { translate } from '../../i18n';
 
 import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
+import { KolButtonGroupWcTag, KolButtonWcTag } from '../../core/component-names';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 @Component({
@@ -102,9 +103,9 @@ export class KolTabs implements TabsAPI {
 
 	private renderButtonGroup() {
 		return (
-			<kol-button-group-wc class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
+			<KolButtonGroupWcTag class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
-					<kol-button-wc
+					<KolButtonWcTag
 						_disabled={button._disabled}
 						_icons={button._icons}
 						_hideLabel={button._hideLabel}
@@ -119,18 +120,18 @@ export class KolTabs implements TabsAPI {
 						_id={`${this.state._label.replace(/\s/g, '-')}-tab-${index}`}
 						_role="tab"
 						_value={index}
-					></kol-button-wc>
+					></KolButtonWcTag>
 				))}
 				{this.showCreateTab && (
-					<kol-button-wc
+					<KolButtonWcTag
 						class="create-button"
 						_label={this.onCreateLabel}
 						_on={{
 							onClick: this.onCreate,
 						}}
-					></kol-button-wc>
+					></KolButtonWcTag>
 				)}
-			</kol-button-group-wc>
+			</KolButtonGroupWcTag>
 		);
 	}
 

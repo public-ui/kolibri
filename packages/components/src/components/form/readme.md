@@ -36,34 +36,4 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 | ---- | ---------------- |
 |      | Inhalt der Form. |
 
-## Dependencies
-
-### Depends on
-
-- [kol-alert](../alert)
-- [kol-link](../link)
-- [kol-indented-text](../indented-text)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-form --> kol-alert
-  kol-form --> kol-link
-  kol-form --> kol-indented-text
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-link --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  style kol-form stroke:#333,stroke-width:4px
-```
-
 ---
