@@ -7,8 +7,7 @@
 		"ng": "ng",
 		"start": "ng serve",
 		"build": "ng build",
-		"watch": "ng build --watch --configuration development",
-		"test": "ng test"
+		"watch": "ng build --watch --configuration development"
 	},
 	"dependencies": {
 		"@angular/animations": "17.3.0",
