@@ -838,19 +838,10 @@ export class KolTable implements TableAPI {
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements:
-				 *   tabindex="-1" prevents keyboard-focus,
-				 *   catching the mouseDown event prevents click-focus
+				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
 				 */}
 				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-				<div
-					ref={(element) => (this.tableDivElement = element)}
-					class="table"
-					tabindex="-1"
-					onMouseDown={(event) => {
-						event.preventDefault();
-					}}
-				>
+				<div ref={(element) => (this.tableDivElement = element)} class="table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
 					<table
 						style={{
 							minWidth: this.state._minWidth,
