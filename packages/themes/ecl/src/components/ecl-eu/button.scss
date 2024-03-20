@@ -1,5 +1,10 @@
 @import '../mixins-eu/button.scss';
 
 @layer kol-theme-component {
+	:host {
+		--kolibri-spacing: 0.25rem;
+		font-family: var(--font-family);
+	}
+
 	@include kol-button;
 }

@@ -3,10 +3,57 @@
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		border-radius: var(--a11y-min-size);
+		border-style: solid;
+		border-width: 2px;
+		border-color: var(--color-midnight);
 	}
 
 	.popover {
 		background: #fff;
+	}
+
+	.horizontal-line {
+		background-color: var(--color-midnight);
+		border-radius: 2px;
+		width: 1px;
+	}
+
+	.secondary-button button {
+		height: 100%;
+	}
+
+	.secondary-button :active > .kol-span-wc {
+		border-top-right-radius: var(--a11y-min-size);
+		border-bottom-right-radius: var(--a11y-min-size);
+	}
+
+	.secondary-button :focus .kol-span-wc {
+		border-top-right-radius: var(--a11y-min-size);
+		border-bottom-right-radius: var(--a11y-min-size);
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+		outline-offset: 0;
+	}
+
+	:is(a, button):focus .kol-span-wc {
+		outline-color: var(--color-ocean);
+		outline-style: solid;
+		outline-width: 3px;
+		outline-offset: 2px;
+		transition: outline-offset 0.2s linear;
+	}
+
+	:is(a, button) > .kol-span-wc {
+		font-weight: 700;
+		border-top-left-radius: var(--a11y-min-size);
+		border-bottom-left-radius: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		padding: 8px 14px;
+		text-align: center;
+		transition-duration: 0.5s;
+		transition-property: background-color, color, border-color;
 	}
 
 	@include kol-button;

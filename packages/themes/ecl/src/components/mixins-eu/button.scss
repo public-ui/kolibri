@@ -1,9 +1,4 @@
 @mixin kol-button {
-	:host {
-		--kolibri-spacing: 0.25rem;
-		font-family: var(--font-family);
-	}
-
 	a,
 	button {
 		appearance: none;

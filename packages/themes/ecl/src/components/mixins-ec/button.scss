@@ -1,26 +1,10 @@
 @mixin kol-button {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	a,
 	button {
 		appearance: none;
 		background: none;
 		outline: none;
 		text-decoration: none;
-	}
-
-	a .kol-span-wc,
-	button .kol-span-wc {
-		border-radius: 0;
-		border-style: solid;
-		border-width: 2px;
-		font-weight: var(--font-weight-bold);
-		margin: 0;
-		min-height: 44px;
-		min-width: 44px;
-		padding: 0.25em 0.75em;
 	}
 
 	a:focus .kol-span-wc,

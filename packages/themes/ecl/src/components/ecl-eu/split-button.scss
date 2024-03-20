@@ -3,6 +3,15 @@
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		border-style: solid;
+		border-width: 2px;
+		border-color: var(--color-blue);
+		border-radius: 4px;
+	}
+
+	.horizontal-line {
+		border: 0;
+		border-top: 1px solid var(--color-blue);
 	}
 
 	.popover {

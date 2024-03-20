@@ -1,35 +1,10 @@
 @mixin kol-button {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	:is(a, button) {
 		font-size: 1.125em;
 	}
 
 	:is(a, button):focus {
 		outline: none;
-	}
-
-	:is(a, button):focus .kol-span-wc {
-		outline-color: var(--color-ocean);
-		outline-offset: 2px;
-		outline-style: solid;
-		outline-width: 3px;
-		transition: outline-offset 0.2s linear;
-	}
-
-	:is(a, button) > .kol-span-wc {
-		font-weight: 700;
-		border-radius: var(--a11y-min-size);
-		border-style: solid;
-		border-width: 2px;
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: 8px 14px;
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
 	}
 
 	.primary :is(a, button) > .kol-span-wc,
