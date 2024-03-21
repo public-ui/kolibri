@@ -88,17 +88,19 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property             | Attribute     | Description                                                                                                                                 | Type                                                                                                                                                                                                                                                     | Default     |
-| -------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_align`             | `_align`      | Defines the position of the tab captions.                                                                                                   | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                    | `'top'`     |
-| `_ariaLabel`         | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string \| undefined`                                                                                                                                                                                                                                    | `undefined` |
-| `_label`             | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                          | `string \| undefined`                                                                                                                                                                                                                                    | `undefined` |
-| `_on`                | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.                                                         | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueOrEventCallback<MouseEvent \| CustomEvent<any> \| KeyboardEvent \| PointerEvent, number> \| undefined; }` | `undefined` |
-| `_selected`          | `_selected`   | Defines which tab is active.                                                                                                                | `number \| undefined`                                                                                                                                                                                                                                    | `0`         |
-| `_tabs` _(required)_ | `_tabs`       | Defines the tab captions.                                                                                                                   | `TabButtonProps[] \| string`                                                                                                                                                                                                                             | `undefined` |
-| `_tabsAlign`         | `_tabs-align` | <span style="color:red">**[DEPRECATED]**</span> Use \_align.<br/><br/>Deprecated: Setzt die Position der Registrierkarten.                  | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                    | `'top'`     |
+| Property             | Attribute     | Description                                                                                                                                | Type                                                                                                                                                                                                                                                     | Default     |
+| -------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_align`             | `_align`      | Defines the position of the tab captions.                                                                                                  | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                    | `'top'`     |
+| `_ariaLabel`         | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use _label instead<br/><br/>Deprecated: Setzt die semantische Beschriftung der Komponente. | `string \| undefined`                                                                                                                                                                                                                                    | `undefined` |
+| `_label`             | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                         | `string \| undefined`                                                                                                                                                                                                                                    | `undefined` |
+| `_on`                | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.                                                        | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueOrEventCallback<MouseEvent \| CustomEvent<any> \| KeyboardEvent \| PointerEvent, number> \| undefined; }` | `undefined` |
+| `_selected`          | `_selected`   | Defines which tab is active.                                                                                                               | `number \| undefined`                                                                                                                                                                                                                                    | `0`         |
+| `_tabs` _(required)_ | `_tabs`       | Defines the tab captions.                                                                                                                  | `TabButtonProps[] \| string`                                                                                                                                                                                                                             | `undefined` |
+| `_tabsAlign`         | `_tabs-align` | <span style="color:red">**[DEPRECATED]**</span> Use _align.<br/><br/>Deprecated: Setzt die Position der Registrierkarten.                  | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                    | `'top'`     |
+
 
 ## Dependencies
 
@@ -108,7 +110,6 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 - kol-button-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-tabs --> kol-button-group-wc
@@ -117,7 +118,9 @@ graph TD;
   kol-button-wc --> kol-tooltip-wc
   kol-span-wc --> kol-icon
   kol-tooltip-wc --> kol-span-wc
-  style kol-tabs stroke:#333,stroke-width:4px
+  style kol-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+
