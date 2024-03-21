@@ -1,0 +1,90 @@
+@mixin kol-alert-wc($color: null) {
+	color: var($color);
+	font-size: 0.875em;
+	margin-left: calc(-1 * var(--spacing-2xs));
+}
+
+@mixin kol-alert-theme {
+	font-family: var(--font-family);
+
+	> div {
+		background-color: var(--color-white);
+	}
+
+	> div.card {
+		border-style: solid;
+		border-width: 2px;
+	}
+
+	> div.msg {
+		border: none;
+	}
+
+	.msg .heading .kol-icon {
+		font-size: 1.5em;
+		margin: var(--spacing-2xs);
+	}
+
+	.msg .heading > div {
+		padding: var(--spacing-2xs);
+	}
+
+	.card {
+		padding-bottom: 1.5rem;
+		padding-inline-end: 0.5rem;
+		padding-inline-start: 1.5rem;
+		padding-top: 1.5rem;
+	}
+
+	.card .heading {
+		gap: 0.5rem;
+	}
+
+	.card .content {
+		margin-left: 2.5rem;
+	}
+
+	.card .heading .kol-icon {
+		font-size: 2rem;
+	}
+
+	.default {
+		border-color: var(--color-grey);
+	}
+
+	.default .heading kol-icon {
+		color: var(--color-grey);
+	}
+
+	.error {
+		border-color: var(--color-red);
+	}
+
+	.error .heading .kol-icon {
+		color: var(--color-red);
+	}
+
+	.info {
+		border-color: var(--color-blue);
+	}
+
+	.info .heading .kol-icon {
+		color: var(--color-blue);
+	}
+
+	.success {
+		border-color: var(--color-green);
+	}
+
+	.success .heading .kol-icon {
+		color: var(--color-green);
+	}
+
+	.warning {
+		border-color: var(--color-orange);
+	}
+
+	.warning .heading .kol-icon {
+		color: var(--color-orange);
+	}
+}

@@ -1,10 +1,17 @@
+@import '../mixins/alert-wc.scss';
+
 @layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+
 	:host input:focus {
 		outline-color: var(--color-achat) !important;
 		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 3px;
 	}
+
 	label {
 		color: var(--color-anthrazit);
 		font-size: 14px;
@@ -12,40 +19,50 @@
 		gap: 8px;
 		width: 100%;
 	}
+
 	input {
 		width: 100%;
 		color: var(--color-anthrazit);
 		border-color: var(--default-border);
 		border-width: 2px;
 		border-style: solid;
-		border-radius: 5px; /* padding: 10px 14px; */
+		border-radius: 5px;
+		/* padding: 10px 14px; */
 		line-height: 24px;
 		font-size: 16px;
 	}
+
 	input:hover {
 		border-color: var(--color-achat);
 	}
-	kol-alert {
+
+	.kol-alert-wc {
 		display: block;
 		width: 100%;
 	}
+
 	.kol-required span::after {
 		content: '*';
-	} /* RADIO */
+	}
+
+	/* RADIO */
 	fieldset {
 		border: 0px;
 		margin: 0px;
 		padding: 0px;
 		flex-wrap: wrap;
 	}
+
 	fieldset.horizontal {
 		gap: 1rem;
 	}
+
 	fieldset legend {
 		display: block;
 		width: 100%;
 		line-height: 1.5em;
 	}
+
 	.radio-input-wrapper,
 	.input {
 		cursor: pointer;
@@ -57,14 +74,17 @@
 		align-items: center;
 		position: relative;
 	}
+
 	.radio-label {
 		cursor: pointer;
 		display: flex;
 		width: 100%;
 	}
+
 	.radio-label span {
 		margin-top: 0.125em;
 	}
+
 	.radio-input-wrapper input[type='radio'] {
 		appearance: none;
 		transition: 0.5s;
@@ -73,16 +93,19 @@
 		min-width: calc(6 * 2 * var(--spacing));
 		width: calc(6 * 2 * var(--spacing));
 	}
+
 	.radio-input-wrapper input[type='radio']:checked:before {
 		box-shadow: 0 0 0.1rem black;
 		background-color: var(--color-petrol);
 	}
+
 	.radio-input-wrapper input[type='radio']:disabled {
 		background-color: var(--color-input-bg-default);
 		border-color: #999;
 		cursor: not-allowed;
 	}
-	kol-alert {
+
+	.kol-alert-wc {
 		width: 100%;
 	}
 }

@@ -26,5 +26,5 @@ executeTests<TooltipProps>(
 	getTooltipHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

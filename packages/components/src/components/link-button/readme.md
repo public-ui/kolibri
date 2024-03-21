@@ -47,23 +47,4 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
 | `_tooltipAlign`       | `_tooltip-align`      | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                | `'right'`   |
 | `_variant`            | `_variant`            | Defines which variant should be used for presentation.                                                                                                       | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined` | `'normal'`  |
 
-## Dependencies
-
-### Depends on
-
-- kol-link-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-link-button --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-link-button stroke:#333,stroke-width:4px
-```
-
 ---

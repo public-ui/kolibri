@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/schema",
-	"version": "2.0.8",
+	"version": "2.0.9",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -42,14 +42,13 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"dev": "nodemon --exec unbuild --ext js,json,ts --watch src",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"adopted-style-sheets": "1.1.3",
+		"adopted-style-sheets": "1.1.4",
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
 		"rgba-convert": "0.3.0",
@@ -59,14 +58,14 @@
 	},
 	"devDependencies": {
 		"@types/color-convert": "2.0.3",
-		"@types/node": "ts5.3",
+		"@types/node": "ts5.4",
 		"@types/wcag-contrast": "3.0.3",
-		"@typescript-eslint/eslint-plugin": "7.0.2",
-		"@typescript-eslint/parser": "7.0.2",
-		"eslint": "8.56.0",
+		"@typescript-eslint/eslint-plugin": "7.2.0",
+		"@typescript-eslint/parser": "7.2.0",
+		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"nodemon": "3.0.3",
-		"typescript": "5.3.3",
+		"nodemon": "3.1.0",
+		"typescript": "5.4.2",
 		"unbuild": "1.2.1"
 	},
 	"sideEffects": false,

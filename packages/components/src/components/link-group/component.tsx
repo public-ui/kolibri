@@ -1,11 +1,12 @@
 import type { LabelPropType, LinkGroupAPI, LinkGroupStates, LinkProps, ListStyleType, Orientation, Stringified } from '@public-ui/schema';
 import { validateLabel, watchValidator } from '@public-ui/schema';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
+import { KolLinkTag } from '../../core/component-names';
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
 	props.links.map((link, index: number) => {
@@ -21,9 +22,9 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 						listStyleType: props.listStyleType,
 					}}
 				>
-					<kol-link {...link}></kol-link>
+					<KolLinkTag {...link}></KolLinkTag>
 				</li>
-			) as JSX.Element
+			) as JSX.Element,
 		);
 	});
 	return list;
@@ -39,23 +40,25 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 export class KolLinkGroup implements LinkGroupAPI {
 	public render(): JSX.Element {
 		return (
-			<nav
-				aria-label={this.state._label}
-				class={{
-					vertical: this.state._orientation === 'vertical',
-					horizontal: this.state._orientation === 'horizontal',
-				}}
-			>
-				{this.isUl === false ? (
-					<ol>
-						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
-					</ol>
-				) : (
-					<ul>
-						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
-					</ul>
-				)}
-			</nav>
+			<Host class="kol-link-group">
+				<nav
+					aria-label={this.state._label}
+					class={{
+						vertical: this.state._orientation === 'vertical',
+						horizontal: this.state._orientation === 'horizontal',
+					}}
+				>
+					{this.isUl === false ? (
+						<ol>
+							<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
+						</ol>
+					) : (
+						<ul>
+							<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
+						</ul>
+					)}
+				</nav>
+			</Host>
 		);
 	}
 
@@ -129,7 +132,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 			},
 			new Set(['https://www.w3schools.com/tags/tag_ol.asp']),
 			value,
-			{ defaultValue: 'disc' }
+			{ defaultValue: 'disc' },
 		);
 	}
 
@@ -148,7 +151,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 			value,
 			{
 				defaultValue: 'vertical',
-			}
+			},
 		);
 	}
 

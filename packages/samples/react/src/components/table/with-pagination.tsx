@@ -4,6 +4,7 @@ import React from 'react';
 import { KolTable } from '@public-ui/react';
 
 import { DATE_FORMATTER } from './formatter';
+import { SampleDescription } from '../SampleDescription';
 import { DATA } from './test-data';
 
 import type { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-ui/components';
@@ -19,7 +20,15 @@ const HEADERS: KoliBriTableHeaders = {
 const PAGINATION: KoliBriTablePaginationProps = { _page: 2 };
 
 export const TableWithPagination: FC = () => (
-	<div>
-		<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTable>
-	</div>
+	<>
+		<SampleDescription>
+			<p>
+				Durch das Navigieren der Seitenzahlen unten kann die Tabelle umgeblättert werden. Stattdessen kann auch die komplette Tabelle mit Änderung der Einträge
+				pro Seite angezeigt werden.
+			</p>
+		</SampleDescription>
+		<div>
+			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTable>
+		</div>
+	</>
 );

@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const rimraf = require('rimraf');
+const { rimraf } = require('rimraf');
 const exclude = /(@else)/;
 // const exclude = /(@else|font-awesome|icofont|leanup|symbol)/;
 function filterMdFiles(dir) {
@@ -46,7 +46,7 @@ const modifyReadmeContent = (contents) =>
  */
 const modifyReadmeContentForDocsFolder = (contents) => contents.replace('style="color:red"', 'class="text-red-500"').replace(/ \\\| /g, '` \\| `');
 
-rimraf('doc/*.md', () => {
+rimraf('doc/*.md', { glob: true }).then(() => {
 	README_PATHS.forEach((readmePath) => {
 		const name = reverseString(reverseString(path.dirname(readmePath)).replace(/(\/|\\).+/g, ''));
 		const contents = fs.readFileSync(readmePath, 'utf-8');

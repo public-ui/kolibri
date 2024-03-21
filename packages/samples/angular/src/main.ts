@@ -1,8 +1,9 @@
-// Static CSS
-import './style.css';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { DEFAULT } from '@public-ui/theme-default';
+import { AppComponent } from './app/app.component';
 
-// App style
-import './style.scss';
-
-// App
-import './angular.main';
+register(DEFAULT, defineCustomElements)
+	.then(() => bootstrapApplication(AppComponent))
+	.catch(console.warn);

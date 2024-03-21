@@ -27,5 +27,5 @@ executeTests<AccordionProps>(
 	getAccordionHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

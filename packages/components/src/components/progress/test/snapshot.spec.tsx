@@ -22,10 +22,10 @@ describe('test Progress', () => {
 	it('render empty Progress', async () => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			html: `<kol-progress></kol-progress>`,
+			html: `<kol-progress class="kol-progress"></kol-progress>`,
 		});
 		expect(page.root).toEqualHtml(
-			`<kol-progress>
+			`<kol-progress class="kol-progress">
          <mock:shadow-root>
             <div class="bar">
              <div style="display: flex; gap: 0.3em;">
@@ -44,7 +44,7 @@ describe('test Progress', () => {
              0 von 100 %
            </span>
          </mock:shadow-root>
-       </kol-progress>`
+       </kol-progress>`,
 		);
 	});
 
@@ -55,7 +55,7 @@ describe('test Progress', () => {
 			template: () => <kol-progress {...DEFAULT_PROPS}></kol-progress>,
 		});
 		expect(page.root).toEqualHtml(
-			`<kol-progress>
+			`<kol-progress class="kol-progress">
          <mock:shadow-root>
             <div class="bar">
              <div style="display: flex; gap: 0.3em;">
@@ -74,7 +74,7 @@ describe('test Progress', () => {
              0 von ${DEFAULT_PROPS._max} %
            </span>
          </mock:shadow-root>
-       </kol-progress>`
+       </kol-progress>`,
 		);
 	});
 
@@ -84,7 +84,7 @@ describe('test Progress', () => {
 			template: () => <kol-progress _max={DEFAULT_PROPS._max} _value={DEFAULT_PROPS._max}></kol-progress>,
 		});
 		expect(page.root).toEqualHtml(
-			` <kol-progress>
+			` <kol-progress class="kol-progress">
          <mock:shadow-root>
             <div class="bar">
              <div style="display: flex; gap: 0.3em;">
@@ -113,7 +113,7 @@ describe('test Progress', () => {
              0 von ${DEFAULT_PROPS._max} %
            </span>
          </mock:shadow-root>
-       </kol-progress>`
+       </kol-progress>`,
 		);
 	});
 
@@ -123,7 +123,7 @@ describe('test Progress', () => {
 			template: () => <kol-progress {...DEFAULT_PROPS} _variant={'cycle'}></kol-progress>,
 		});
 		expect(page.root).toEqualHtml(
-			`<kol-progress>
+			`<kol-progress class="kol-progress">
          <mock:shadow-root>
            <svg class="cycle" viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
              <circle class="background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
@@ -139,7 +139,7 @@ describe('test Progress', () => {
            <progress ${DEFAULT_HTML_PROGRESS_PROPS}></progress>
            <span ${DEFAULT_HTML_SPAN_PROPS} class="visually-hidden">0 von ${DEFAULT_PROPS._max} %</span>
          </mock:shadow-root>
-       </kol-progress>`
+       </kol-progress>`,
 		);
 	});
 });

@@ -88,30 +88,4 @@ Type: `Promise<number | undefined>`
 | ---- | ------------------------------------- |
 |      | Die Beschriftung des Eingabeelements. |
 
-## Dependencies
-
-### Depends on
-
-- kol-input
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-input-range --> kol-input
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  style kol-input-range stroke:#333,stroke-width:4px
-```
-
 ---

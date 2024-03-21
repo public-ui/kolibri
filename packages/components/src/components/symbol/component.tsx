@@ -12,7 +12,7 @@ import type { JSX } from '@stencil/core';
 export class KolSymbol implements SymbolAPI {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-symbol">
 				<span aria-label={this.state._label} role="term">
 					{this.state._symbol}
 				</span>

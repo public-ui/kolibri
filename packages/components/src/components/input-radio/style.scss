@@ -1,4 +1,7 @@
 @import '../input';
+@import '../@shared/kol-alert-mixin.scss';
+
+@include kol-alert-styles;
 
 @layer kol-component {
 	:host {
@@ -6,7 +9,7 @@
 		--input-size: 1.5em;
 	}
 
-	kol-input .icons {
+	.kol-input .icons {
 		display: none;
 	}
 

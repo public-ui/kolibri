@@ -46,7 +46,7 @@ export class InputTextController extends InputTextEmailController implements Inp
 			'_type',
 			(value): boolean => typeof value === 'string' && inputTextTypeOptions.includes(value),
 			new Set([`String {${inputTextTypeOptions.join(', ')}`]),
-			value
+			value,
 		);
 	}
 

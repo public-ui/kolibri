@@ -30,23 +30,19 @@ export { getKoliBri };
 
 export const initKoliBri = (): void => {
 	initMeta();
-	if (getKoliBri() === undefined) {
-		Log.debug(
-			`
-	,--. ,--.         ,--. ,--. ,-----.           ,--.
-	|  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
-	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
-	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
-	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.8
-		`,
-			{
-				forceLog: true,
-			}
-		);
-	} else {
-		console.warn(`You can only initialize KoliBri once.`);
-	}
+	Log.debug(
+		`
+,--. ,--.         ,--. ,--. ,-----.           ,--.
+|  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
+|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
+|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
+\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
+🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.8
+	`,
+		{
+			forceLog: true,
+		},
+	);
 };
 
 export const renderDevAdvice = (): void => {
@@ -62,7 +58,7 @@ You are using the KoliBri component library. If you have any suggestions for imp
 
 Ticket: https://github.com/public-ui/kolibri/issues/new/choose (for privacy reasons, please use email)
 Email: kolibri@itzbund.de
-`
+`,
 		);
 	}
 };

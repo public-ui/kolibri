@@ -11,7 +11,7 @@
 		outline: none;
 	}
 
-	:is(a, button):focus kol-span-wc {
+	:is(a, button):focus .kol-span-wc {
 		border-radius: var(--border-radius);
 		outline: calc(var(--border-width) * 2) solid;
 	}

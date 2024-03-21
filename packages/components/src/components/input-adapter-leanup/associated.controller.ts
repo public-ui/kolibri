@@ -146,7 +146,7 @@ export class AssociatedInputController implements Watches {
 	private syncValue(
 		rawValue: StencilUnknown,
 		strValue: string | null,
-		associatedElement?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+		associatedElement?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement,
 	) {
 		if (associatedElement) {
 			switch (this.type) {
@@ -191,7 +191,7 @@ export class AssociatedInputController implements Watches {
 		});
 		if (typeof value === 'undefined') {
 			devHint(
-				`Ein Name am Eingabefeldern oder Schalter ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion und für das statische Versenden des Eingabefeldes relevant sein.`
+				`Ein Name am Eingabefeldern oder Schalter ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion und für das statische Versenden des Eingabefeldes relevant sein.`,
 			);
 		}
 	}

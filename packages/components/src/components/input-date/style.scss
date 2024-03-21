@@ -1,7 +1,10 @@
 @import '../input-line';
+@import '../@shared/kol-alert-mixin.scss';
+
+@include kol-alert-styles;
 
 @layer kol-component {
-	kol-input-number {
+	.kol-input-number {
 		display: block;
 	}
 }

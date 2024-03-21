@@ -1,4 +1,10 @@
+@import '../mixins/alert-wc.scss';
+
 @layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+
 	textarea:hover,
 	textarea:focus {
 		border-color: var(--default-border-hover);
@@ -7,6 +13,7 @@
 		outline-style: solid;
 		outline-width: 1px;
 	}
+
 	label {
 		color: var(--default-letter);
 		font-size: 14px;
@@ -15,10 +22,12 @@
 		width: 100%;
 		font-weight: bold;
 	}
+
 	textarea.error {
 		background-color: var(--danger-light) !important;
 		border-color: var(--danger);
 	}
+
 	textarea {
 		width: 100%;
 		color: var(--default-letter);
@@ -30,21 +39,26 @@
 		border-radius: 0;
 		background-color: #e8edf2 !important;
 	}
+
 	textarea::placeholder {
 		color: var(--default-border);
 	}
+
 	textarea:disabled {
 		cursor: not-allowed;
 	}
+
 	textarea:disabled,
 	textarea:read-only {
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
 	}
+
 	.kol-required span::after {
 		content: '*';
 	}
-	kol-alert {
+
+	.kol-alert-wc {
 		margin-top: var(--spacing);
 		display: block;
 	}

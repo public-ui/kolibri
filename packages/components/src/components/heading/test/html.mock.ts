@@ -6,14 +6,14 @@ export const getHeadingWcHtml = (
 	slots: {
 		expert?: string;
 	} = {},
-	additionalAttrs = ''
+	additionalAttrs = '',
 ): string => {
 	const state = mixMembers<HeadingProps, HeadingStates>(
 		{
 			_label: '', // ⚠ required
 			_level: 1,
 		},
-		props
+		props,
 	);
 	const tag = state._level === 0 ? 'strong' : `h${state._level || 1}`;
 
@@ -30,12 +30,12 @@ export const getHeadingHtml = (
 	props: HeadingProps,
 	slots: {
 		expert?: string;
-	} = {}
+	} = {},
 ): string => {
 	return `
 <kol-heading>
 	<mock:shadow-root>
-		${getHeadingWcHtml(props)}
+		${getHeadingWcHtml(props, {}, ` class="kol-heading kol-heading-wc"`)}
 	</mock:shadow-root>
 	${slots.expert !== undefined ? slots.expert : ''}
 </kol-heading>`;

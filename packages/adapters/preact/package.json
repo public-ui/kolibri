@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/preact",
-	"version": "2.0.8",
+	"version": "2.0.9",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -46,17 +46,17 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/react": "2.0.8"
+		"@public-ui/react": "2.0.9"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.8",
+		"@public-ui/components": "2.0.9",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"typescript": "5.3.3",
+		"typescript": "5.4.2",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"preact": ">=10.11.3"
+		"preact": ">=10.19.6"
 	},
 	"sideEffects": false,
 	"type": "module",

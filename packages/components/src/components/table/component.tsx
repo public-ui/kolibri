@@ -25,6 +25,7 @@ import type {
 	TableStates,
 } from '@public-ui/schema';
 import { validatePaginationPosition } from '@public-ui/schema';
+import { KolButtonTag, KolButtonWcTag, KolPaginationTag } from '../../core/component-names';
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
@@ -308,7 +309,7 @@ export class KolTable implements TableAPI {
 							if (headers.horizontal && headers.vertical && headers.horizontal?.length > 0 && headers.vertical?.length > 0) {
 								this.disableSort = true;
 								devHint(
-									`Table: You can not sort the table data, if horizontal and vertical headers are defined at the same time. (https://github.com/public-ui/kolibri/issues/2372)`
+									`Table: You can not sort the table data, if horizontal and vertical headers are defined at the same time. (https://github.com/public-ui/kolibri/issues/2372)`,
 								);
 							}
 						},
@@ -386,7 +387,7 @@ export class KolTable implements TableAPI {
 					_pageSize: 10,
 					_max: 0,
 				},
-			}
+			},
 		);
 	}
 
@@ -625,12 +626,12 @@ export class KolTable implements TableAPI {
 							width: col.width,
 						} as KoliBriTableHeaderCell,
 						col.data,
-						this.state._data
+						this.state._data,
 					);
 					if (typeof html === 'string') {
 						el.textContent = html;
 					}
-				})
+				}),
 			);
 		}
 	}
@@ -741,7 +742,7 @@ export class KolTable implements TableAPI {
 							{headerCell.label}
 						</div>
 						{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') && (
-							<kol-button
+							<KolButtonTag
 								exportparts="icon"
 								_icons={sortButtonIcon}
 								_hideLabel
@@ -750,7 +751,7 @@ export class KolTable implements TableAPI {
 									onClick: () => this.changeCellSort(headerCell),
 								}}
 								_variant="ghost"
-							></kol-button>
+							></KolButtonTag>
 						)}
 					</div>
 				</th>
@@ -772,7 +773,7 @@ export class KolTable implements TableAPI {
 						typeof cell.render === 'function'
 							? (el) => {
 									this.cellRender(cell as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
-							  }
+								}
 							: undefined
 					}
 				>
@@ -799,13 +800,13 @@ export class KolTable implements TableAPI {
 								this.state._pagination && this.state._pagination._max > 0
 									? this.state._pagination._max.toString()
 									: Array.isArray(this.state._data)
-									? this.state._data.length.toString()
-									: '0',
+										? this.state._data.length.toString()
+										: '0',
 						},
 					})}
 				</span>
 				<div>
-					<kol-pagination
+					<KolPaginationTag
 						_boundaryCount={this.state._pagination._boundaryCount}
 						_customClass={this.state._pagination._customClass}
 						_on={this.handlePagination}
@@ -816,7 +817,7 @@ export class KolTable implements TableAPI {
 						_tooltipAlign="bottom"
 						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
 						_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
-					></kol-pagination>
+					></KolPaginationTag>
 				</div>
 			</div>
 		);
@@ -826,30 +827,21 @@ export class KolTable implements TableAPI {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
 			this.showPagination ? this.state._pagination?._pageSize ?? 10 : this.state._sortedData.length,
-			this.state._pagination._page || 1
+			this.state._pagination._page || 1,
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
 		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination() : null;
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination() : null;
 
 		return (
-			<Host>
+			<Host class="kol-table">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements:
-				 *   tabindex="-1" prevents keyboard-focus,
-				 *   catching the mouseDown event prevents click-focus
+				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
 				 */}
 				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-				<div
-					ref={(element) => (this.tableDivElement = element)}
-					class="table"
-					tabindex="-1"
-					onMouseDown={(event) => {
-						event.preventDefault();
-					}}
-				>
+				<div ref={(element) => (this.tableDivElement = element)} class="table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
 					<table
 						style={{
 							minWidth: this.state._minWidth,
@@ -888,7 +880,7 @@ export class KolTable implements TableAPI {
 															typeof col.render === 'function'
 																? (el) => {
 																		this.cellRender(col as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
-																  }
+																	}
 																: undefined
 														}
 													>
@@ -943,7 +935,7 @@ export class KolTable implements TableAPI {
 														data-sort={`sort-${shortSortDirection}`}
 													>
 														{!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function') ? (
-															<kol-button-wc
+															<KolButtonWcTag
 																class="table-sort-button"
 																exportparts="icon"
 																_icons={{ right: sortButtonIcon }}
@@ -951,7 +943,7 @@ export class KolTable implements TableAPI {
 																_on={{
 																	onClick: () => this.changeCellSort(headerCell),
 																}}
-															></kol-button-wc>
+															></KolButtonWcTag>
 														) : (
 															col.label
 														)}

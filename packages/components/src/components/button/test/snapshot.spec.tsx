@@ -23,5 +23,5 @@ executeTests<ButtonProps>(
 		_label: ['Label'],
 		_variant: ['primary', 'secondary', 'normal', 'danger', 'ghost'],
 	},
-	getButtonHtml
+	getButtonHtml,
 );

@@ -24,5 +24,5 @@ executeTests<SpinProps>(
 	getSpinHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

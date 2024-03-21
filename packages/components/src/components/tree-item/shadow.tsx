@@ -1,6 +1,7 @@
 import { Component, h, type JSX, Method, Prop } from '@stencil/core';
 
 import type { HrefPropType, LabelPropType, OpenPropType, TreeItemProps } from '@public-ui/schema';
+import { KolTreeItemWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-tree-item', // keep in sync with `const TREE_ITEM_TAG_NAME`
@@ -56,7 +57,8 @@ export class KolTreeItem implements TreeItemProps {
 
 	public render(): JSX.Element {
 		return (
-			<kol-tree-item-wc
+			<KolTreeItemWcTag
+				class="kol-tree-item"
 				_active={this._active}
 				_label={this._label}
 				_open={this._open}
@@ -64,7 +66,7 @@ export class KolTreeItem implements TreeItemProps {
 				ref={(element?: HTMLKolTreeItemWcElement) => (this.element = element)}
 			>
 				<slot />
-			</kol-tree-item-wc>
+			</KolTreeItemWcTag>
 		);
 	}
 }

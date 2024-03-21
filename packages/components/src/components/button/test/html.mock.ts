@@ -17,7 +17,7 @@ export const getButtonWcHtml = (
 	slots: Slots = {
 		expert: undefined,
 	},
-	additionalAttrs = ''
+	additionalAttrs = '',
 ): string => {
 	const state = mixMembers<ButtonProps, ButtonStates>(
 		{
@@ -27,7 +27,7 @@ export const getButtonWcHtml = (
 			_type: 'button',
 			_variant: 'normal',
 		},
-		props
+		props,
 	);
 	const ariaControls = typeof state._ariaControls === 'string' ? state._ariaControls : undefined;
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
@@ -56,7 +56,7 @@ export const getButtonWcHtml = (
 				_label: state._label,
 			},
 			slots,
-			{ additionalClassNames: ['button-inner'] }
+			{ additionalClassNames: ['button-inner', 'kol-span-wc'] },
 		)}
 	</button>
 	${getTooltipHtml(
@@ -64,7 +64,7 @@ export const getButtonWcHtml = (
 			_align: state._tooltipAlign,
 			_label: state._label,
 		},
-		` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
+		` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`,
 	)}
 </kol-button-wc>`;
 };
@@ -77,16 +77,16 @@ export const getButtonHtml = (props: ButtonProps): string => {
 			_type: 'button',
 			_variant: 'normal',
 		},
-		props
+		props,
 	);
-	return `<kol-button>
+	return `<kol-button class="kol-button">
   <mock:shadow-root>
     ${getButtonWcHtml(
 			props,
 			{
 				expert: `<slot name="expert" slot="expert"></slot>`,
 			},
-			` class="button ${state._variant}"`
+			` class="kol-button-wc button ${state._variant}"`,
 		)}
   </mock:shadow-root>
 </kol-button>`;

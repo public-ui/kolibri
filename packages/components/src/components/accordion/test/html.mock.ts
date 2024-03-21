@@ -10,16 +10,16 @@ export const getAccordionHtml = (
 	slots: {
 		default?: string;
 		footer?: string;
-	} = {}
+	} = {},
 ): string => {
 	props = mixMembers(
 		{
 			_label: '', // ⚠ required
 			_level: 1,
 		},
-		props
+		props,
 	);
-	return `<kol-accordion${props._open ? ' _open' : ''}>
+	return `<kol-accordion${props._open ? ' _open' : ''} class="kol-accordion">
   <mock:shadow-root>
     <div class="accordion${props._disabled ? ' disabled' : ''}${props._open ? ' open' : ''}">
       ${getHeadingWcHtml(
@@ -37,10 +37,10 @@ export const getAccordionHtml = (
 							_label: props._label,
 						},
 						undefined,
-						' class="accordion-button" slot="expert"'
+						' class="accordion-button kol-button-wc" slot="expert"',
 					)}`,
 				},
-				` class="accordion-heading"`
+				` class="accordion-heading kol-heading-wc"`,
 			)}
 			<div class="wrapper">
 				<div class="animation-wrapper">

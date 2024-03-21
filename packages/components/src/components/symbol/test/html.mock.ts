@@ -9,9 +9,9 @@ export const getSymbolHtml = (props: SymbolProps): string => {
 			_label: translate('kol-warning'),
 			_symbol: '', // ⚠ required
 		},
-		props
+		props,
 	);
-	return `<kol-symbol>
+	return `<kol-symbol  class="kol-symbol">
 		<span aria-label="${props._label}" role="term">${props._symbol}</span>
 	</kol-symbol>`;
 };

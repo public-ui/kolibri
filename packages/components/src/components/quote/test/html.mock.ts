@@ -16,10 +16,10 @@ export const getQuoteHtml = (props: QuoteProps, slots: Slot = {}): string => {
 			_quote: '', // ⚠ required
 			_variant: 'inline',
 		},
-		props
+		props,
 	);
 	const hasExpertSlot = showExpertSlot(state._quote); // _quote instead of _caption as _label
-	return `<kol-quote>
+	return `<kol-quote class="kol-quote">
   <mock:shadow-root>
 		<figure class="${state._variant}">
 			<${state._variant === 'block' ? 'blockquote' : 'q'} cite="${state._href}">
