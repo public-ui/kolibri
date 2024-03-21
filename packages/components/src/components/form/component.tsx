@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { validateErrorList, watchBoolean, watchString } from '@public-ui/schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, Prop, State, Watch, Method } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
@@ -47,28 +47,28 @@ export class KolForm implements FormAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-form">
+				{this._errorList && this._errorList.length > 0 && (
+					<KolAlertTag _type="error">
+						{translate('kol-error-list-message')}
+						<nav aria-label={translate('kol-error-list')}>
+							<ul>
+								{this._errorList.map((error, index) => (
+									<li key={index}>
+										<KolLinkTag
+											_href={error.selector}
+											_label={error.message}
+											_on={{ onClick: this.handleLinkClick }}
+											ref={(el?: HTMLKolLinkElement) => {
+												if (index === 0) this.errorListElement = el;
+											}}
+										/>
+									</li>
+								))}
+							</ul>
+						</nav>
+					</KolAlertTag>
+				)}
 				<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
-					{this._errorList && this._errorList.length > 0 && (
-						<KolAlertTag _type="error">
-							{translate('kol-error-list-message')}
-							<nav aria-label={translate('kol-error-list')}>
-								<ul>
-									{this._errorList.map((error, index) => (
-										<li key={index}>
-											<KolLinkTag
-												_href={error.selector}
-												_label={error.message}
-												_on={{ onClick: this.handleLinkClick }}
-												ref={(el?: HTMLKolLinkElement) => {
-													if (index === 0) this.errorListElement = el;
-												}}
-											/>
-										</li>
-									))}
-								</ul>
-							</nav>
-						</KolAlertTag>
-					)}
 					{this.state._requiredText === true ? (
 						<p>
 							<KolIndentedTextTag>{translate('kol-form-description')}</KolIndentedTextTag>
@@ -82,6 +82,16 @@ export class KolForm implements FormAPI {
 				</form>
 			</Host>
 		);
+	}
+
+	@Method()
+	async focusErrorList(): Promise<void> {
+		setTimeout(() => {
+			if (this._errorList && this._errorList.length > 0) {
+				this.errorListElement?.focus();
+			}
+		}, 300);
+		return Promise.resolve();
 	}
 
 	/**
@@ -129,11 +139,5 @@ export class KolForm implements FormAPI {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);
 		this.validateErrorList(this._errorList);
-	}
-
-	public componentDidRender() {
-		if (this._errorList && this._errorList.length > 0) {
-			this.errorListElement?.focus();
-		}
 	}
 }
