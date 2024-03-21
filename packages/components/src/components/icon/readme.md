@@ -57,18 +57,4 @@ Mittels der Property `_label` muss ein Kontext-relevantes Icon beschriftet werde
 | -------- | ----------------------------------------- |
 | `"icon"` | Ermöglicht das Styling des inneren Icons. |
 
-## Dependencies
-
-### Used by
-
-- [kol-breadcrumb](../breadcrumb)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-breadcrumb --> kol-icon
-  style kol-icon stroke:#333,stroke-width:4px
-```
-
 ---
