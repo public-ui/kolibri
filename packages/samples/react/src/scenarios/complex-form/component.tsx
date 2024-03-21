@@ -158,7 +158,7 @@ export const TerminComponent: FC = () => (
 		<div className="grid sm:grid-cols-1 gap-2">
 			<div className="border-top"></div>
 			<KolHeading _level={3} _label="Fortschritt" />
-			<KolProgress _value={0} _max={100} _unit="Prozent des Formulars"></KolProgress>
+			<KolProgress _value={0} _max={100} _unit="%" _label="Formularfortschitt"></KolProgress>
 		</div>
 	</>
 );
