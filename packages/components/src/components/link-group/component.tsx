@@ -42,29 +42,18 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
  */
 export class KolLinkGroup implements LinkGroupAPI {
 	public render(): JSX.Element {
+		const ListTag = this.isUl ? 'ul' : 'li';
 		return (
 			<Host class="kol-link-group">
-				{this.isUl === false ? (
-					<ol
-						aria-label={this.state._label}
-						class={{
-							vertical: this.state._orientation === 'vertical',
-							horizontal: this.state._orientation === 'horizontal',
-						}}
-					>
-						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
-					</ol>
-				) : (
-					<ul
-						aria-label={this.state._label}
-						class={{
-							vertical: this.state._orientation === 'vertical',
-							horizontal: this.state._orientation === 'horizontal',
-						}}
-					>
-						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
-					</ul>
-				)}
+				<ListTag
+					aria-label={this.state._label}
+					class={{
+						vertical: this.state._orientation === 'vertical',
+						horizontal: this.state._orientation === 'horizontal',
+					}}
+				>
+					<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
+				</ListTag>
 			</Host>
 		);
 	}
@@ -102,9 +91,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 		if (!initial && this.state._label) {
 			removeNavLabel(this.state._label); // remove the current
 		}
-		validateLabel(this, value, {
-			required: true,
-		});
+		validateLabel(this, value);
 		this.state._label && addNavLabel(this.state._label); // add the state instead of prop, because the prop could be invalid and not set as new label
 	}
 
