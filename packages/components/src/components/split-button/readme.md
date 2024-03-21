@@ -53,22 +53,4 @@ dem sich weitere Aktionen verbergen.
 | ---- | --------------------------------------------------------- |
 |      | Ermöglicht das Einfügen beliebigen HTMLs in das dropdown. |
 
-## Dependencies
-
-### Depends on
-
-- kol-button-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-split-button --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-split-button stroke:#333,stroke-width:4px
-```
-
 ---

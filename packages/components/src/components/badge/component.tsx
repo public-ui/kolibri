@@ -1,10 +1,12 @@
 import type { BadgeAPI, BadgeStates, ButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '@public-ui/schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor } from '@public-ui/schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { KolSpanWcTag } from '../../core/component-names';
 
 import { nonce } from '../../utils/dev.utils';
 
 import type { JSX } from '@stencil/core';
+import { KolButtonWcTag } from '../../core/component-names';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 @Component({
@@ -21,7 +23,7 @@ export class KolBadge implements BadgeAPI {
 
 	private renderSmartButton(props: ButtonProps): JSX.Element {
 		return (
-			<kol-button-wc
+			<KolButtonWcTag
 				_ariaControls={this.id}
 				_customClass={props._customClass}
 				_disabled={props._disabled}
@@ -32,7 +34,7 @@ export class KolBadge implements BadgeAPI {
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
 				_variant={props._variant}
-			></kol-button-wc>
+			></KolButtonWcTag>
 		);
 	}
 
@@ -49,7 +51,7 @@ export class KolBadge implements BadgeAPI {
 						color: this.colorStr,
 					}}
 				>
-					<kol-span-wc id={hasSmartButton ? this.id : undefined} _allowMarkdown _icons={this._icons} _label={this._label}></kol-span-wc>
+					<KolSpanWcTag id={hasSmartButton ? this.id : undefined} _allowMarkdown _icons={this._icons} _label={this._label}></KolSpanWcTag>
 					{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
 				</span>
 			</Host>

@@ -46,7 +46,7 @@ const modifyReadmeContent = (contents) =>
  */
 const modifyReadmeContentForDocsFolder = (contents) => contents.replace('style="color:red"', 'class="text-red-500"').replace(/ \\\| /g, '` \\| `');
 
-rimraf('doc/*.md').then(() => {
+rimraf('doc/*.md', { glob: true }).then(() => {
 	README_PATHS.forEach((readmePath) => {
 		const name = reverseString(reverseString(path.dirname(readmePath)).replace(/(\/|\\).+/g, ''));
 		const contents = fs.readFileSync(readmePath, 'utf-8');

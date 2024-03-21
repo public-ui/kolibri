@@ -91,24 +91,4 @@ nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum 
 | `_listStyleType`      | `_list-style-type` | Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet       | `"circle" \| "decimal" \| "decimal-leading-zero" \| "disc" \| "lower-alpha" \| "lower-greek" \| "lower-latin" \| "lower-roman" \| "none" \| "square" \| "upper-alpha" \| "upper-latin" \| "upper-roman" \| undefined` | `undefined`  |
 | `_orientation`        | `_orientation`     | Defines whether the orientation of the component is horizontal or vertical.                                        | `"horizontal" \| "vertical" \| undefined`                                                                                                                                                                             | `'vertical'` |
 
-## Dependencies
-
-### Depends on
-
-- [kol-link](../link)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-link-group --> kol-link
-  kol-link --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-link-group stroke:#333,stroke-width:4px
-```
-
 ---

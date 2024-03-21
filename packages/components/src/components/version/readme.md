@@ -30,24 +30,4 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 | --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | -------- | ----------- |
 | `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string` | `undefined` |
 
-## Dependencies
-
-### Depends on
-
-- [kol-badge](../badge)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-version --> kol-badge
-  kol-badge --> kol-button-wc
-  kol-badge --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-version stroke:#333,stroke-width:4px
-```
-
 ---

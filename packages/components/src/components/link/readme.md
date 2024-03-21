@@ -90,36 +90,4 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 | `_target`            | `_target`             | Defines where to open the link.                                                                                                                              | `string \| undefined`                                                                  | `undefined` |
 | `_tooltipAlign`      | `_tooltip-align`      | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                  | `'right'`   |
 
-## Dependencies
-
-### Used by
-
-- [kol-breadcrumb](../breadcrumb)
-- [kol-form](../form)
-- [kol-link-group](../link-group)
-- [kol-quote](../quote)
-- [kol-tree-item-wc](../tree-item)
-
-### Depends on
-
-- kol-link-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-link --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-breadcrumb --> kol-link
-  kol-form --> kol-link
-  kol-link-group --> kol-link
-  kol-quote --> kol-link
-  kol-tree-item-wc --> kol-link
-  style kol-link stroke:#333,stroke-width:4px
-```
-
 ---

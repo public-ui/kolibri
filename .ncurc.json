@@ -1,0 +1,4 @@
+{
+	"dep": ["prod", "dev", "optional", "peer"],
+	"peer": true
+}
