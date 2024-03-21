@@ -1,4 +1,8 @@
 @layer kol-theme-component {
+	:host {
+		--kolibri-text-label-padding: 60px;
+	}
+
 	:host progress,
 	:host span {
 		display: block;
