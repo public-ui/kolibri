@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop } from '@stencil/core';
 
 import type { LabelPropType, TreeProps } from '@public-ui/schema';
+import { KolTreeWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-tree',
@@ -19,9 +20,9 @@ export class KolTree implements TreeProps {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-tree">
-				<kol-tree-wc _label={this._label}>
+				<KolTreeWcTag _label={this._label}>
 					<slot />
-				</kol-tree-wc>
+				</KolTreeWcTag>
 			</Host>
 		);
 	}

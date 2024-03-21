@@ -7,9 +7,9 @@ import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
-const toaster = ToasterService.getInstance(document);
 
 export const ToastBasic: FC = () => {
+	const toaster = ToasterService.getInstance(document);
 	const handleButtonClickSimple = () => {
 		void toaster.enqueue({
 			description: 'Toasty',
