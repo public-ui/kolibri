@@ -1,11 +1,12 @@
 import { SelectOption } from '@public-ui/components';
 
 export const THEMES = ['bmf', 'default', 'ecl-ec', 'ecl-eu', 'itzbund'] as const;
-export type Theme = (typeof THEMES)[number] | 'unstyled';
+export type Theme = (typeof THEMES)[number];
+export type ThemeAndUnstyled = Theme | 'unstyled';
 
-const drafts: Theme[] = ['ecl-ec', 'ecl-eu', 'itzbund'];
+const drafts: ThemeAndUnstyled[] = ['ecl-ec', 'ecl-eu', 'itzbund'];
 
-export const isDraftTheme = (theme: Theme) => drafts.includes(theme);
+export const isDraftTheme = (theme: ThemeAndUnstyled) => drafts.includes(theme);
 
 export const isTheme = (value: unknown) => {
 	return (
@@ -16,10 +17,10 @@ export const isTheme = (value: unknown) => {
 
 export type Store = {
 	darkMode: boolean;
-	theme: Theme;
+	theme: ThemeAndUnstyled;
 };
 
-export const THEME_OPTIONS: SelectOption<Theme>[] = [
+export const THEME_OPTIONS: SelectOption<ThemeAndUnstyled>[] = [
 	{
 		label: 'Unstyled (Uncolored)',
 		value: 'unstyled',
