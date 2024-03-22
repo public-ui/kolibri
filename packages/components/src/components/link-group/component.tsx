@@ -43,7 +43,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
  */
 export class KolLinkGroup implements LinkGroupAPI {
 	public render(): JSX.Element {
-		const ListTag = this.isUl ? 'ul' : 'li';
+		const ListTag = this.isUl ? 'ul' : 'ol';
 		return (
 			<Host class="kol-link-group">
 				<ListTag
