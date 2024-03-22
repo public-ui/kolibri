@@ -1,5 +1,5 @@
 import { Field, useFormikContext } from 'formik';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import { KolButton, KolForm, KolHeading, KolInputDate, KolInputRadio, KolSpin } from '@public-ui/react';
 
@@ -8,19 +8,24 @@ import { fetchAvailableTimes } from './appointmentService';
 import type { FormValues } from './AppointmentForm';
 import type { FieldProps } from 'formik';
 import type { Option } from '@public-ui/components';
-import { createErrorList } from './formUtils';
+import { createErrorList, focusErrorList } from './formUtils';
 
 export function AvailableAppointmentsForm() {
 	const form = useFormikContext<FormValues>();
 
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const [availableTimes, setAvailableTimes] = useState<Option<string>[] | null>(null);
-
+	const [schouldFocusErrorList, setSchouldFocusErrorList] = useState(true);
 	const errorList = createErrorList(form.errors);
+	const formikRef = useRef(null);
 
 	useEffect(() => {
 		let ignoreResponse = false;
 		setAvailableTimes(null);
+		if (schouldFocusErrorList && sectionSubmitted) {
+			focusErrorList(errorList, formikRef);
+			setSchouldFocusErrorList(false);
+		}
 
 		if (form.values.date) {
 			fetchAvailableTimes().then(
@@ -37,17 +42,19 @@ export function AvailableAppointmentsForm() {
 		return () => {
 			ignoreResponse = true;
 		};
-	}, [form.values.date]);
+	}, [form.values.date, sectionSubmitted]);
 
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Termin aus"></KolHeading>
 			<KolForm
+				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
 					onSubmit: () => {
 						setSectionSubmitted(true);
 						void form.submitForm();
+						focusErrorList(errorList, formikRef);
 					},
 				}}
 			>
