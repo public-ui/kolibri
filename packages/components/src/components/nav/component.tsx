@@ -4,6 +4,8 @@ import type {
 	CollapsiblePropType,
 	HideLabelPropType,
 	LabelPropType,
+	LinkProps,
+	LinkWithChildrenProps,
 	NavAPI,
 	NavStates,
 	Orientation,
@@ -20,14 +22,14 @@ import {
 	validateLabel,
 	watchValidator,
 } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
-
-import type { JSX } from '@stencil/core';
 import { KolButtonTag, KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
 		if (Array.isArray(link._children)) {
@@ -43,6 +45,14 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 		return links.find(linkValidator) !== undefined;
 	}
 	return true;
+};
+
+const entryIsLink = (entryProps: ButtonOrLinkOrTextWithChildrenProps): entryProps is LinkWithChildrenProps => {
+	return typeof (entryProps as LinkProps)._href === 'string';
+};
+
+const entryIsButton = (entryProps: ButtonOrLinkOrTextWithChildrenProps): entryProps is ButtonWithChildrenProps => {
+	return (entryProps as LinkProps)._href === undefined && typeof (entryProps as ButtonWithChildrenProps)._on?.onClick === 'function';
 };
 
 @Component({
@@ -80,29 +90,37 @@ export class KolNav implements NavAPI {
 		collapsible: boolean,
 		hideLabel: HideLabelPropType,
 		hasChildren: boolean,
-		link: ButtonOrLinkOrTextWithChildrenProps,
+		entry: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean,
 	): JSX.Element {
 		const icons =
 			this.state._hasIconsWhenExpanded || this.state._hideLabel
-				? link._icons || (this.state._hideLabel ? 'codicon codicon-symbol-method' : undefined)
+				? entry._icons || (this.state._hideLabel ? 'codicon codicon-symbol-method' : undefined)
 				: undefined;
 
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
-				{'_href' in link ? (
-					<KolLinkWcTag class="entry-item" {...link} _hideLabel={hideLabel} _icons={icons} />
+				{entryIsLink(entry) ? (
+					<KolLinkWcTag class="entry-item" {...entry} _hideLabel={hideLabel} _icons={icons} />
 				) : (
 					<KolButtonWcTag
 						class="entry-item"
-						_label={link._label}
+						_label={entry._label}
 						_hideLabel={hideLabel}
 						_icons={icons}
-						_on={{ onClick: () => this.handleToggleExpansionClick(link._children) }}
+						_on={{
+							onClick: (event, value) => {
+								if (entryIsButton(entry) && typeof entry._on.onClick === 'function') {
+									entry._on.onClick(event, value);
+								} else {
+									this.handleToggleExpansionClick(entry._children);
+								}
+							},
+						}}
 					/>
 				)}
 
-				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, expanded) : ''}
+				{hasChildren ? this.expandButton(collapsible, entry as ButtonWithChildrenProps, expanded) : ''}
 			</div>
 		);
 	}
