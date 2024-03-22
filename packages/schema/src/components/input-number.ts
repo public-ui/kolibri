@@ -6,6 +6,7 @@ import type {
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropName,
 	PropReadOnly,
 	PropRequired,
@@ -18,10 +19,15 @@ import type { ButtonProps } from './button';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
+	/**
+	 * @deprecated Will be removed in v3. Use `msg` instead.
+	 */
+	error: string;
 	placeholder: string;
 } & OptionalInputProps<number | Iso8601> &
 	PropHideError &
 	PropLabelWithExpertSlot &
+	PropMsg &
 	PropSuggestions;
 
 type RequiredStates = {
@@ -35,7 +41,6 @@ type RequiredStates = {
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
-	error: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	max: string;
@@ -48,6 +53,7 @@ type OptionalStates = {
 	value: string;
 } & PropDisabled &
 	PropHideLabel &
+	PropMsg &
 	PropName &
 	PropReadOnly &
 	PropRequired &

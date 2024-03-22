@@ -6,6 +6,7 @@ import type {
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropMultiple,
 	PropName,
 	PropOptionsWithOptgroup,
@@ -20,6 +21,9 @@ type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
+	/**
+	 * @deprecated Will be removed in v3. Use `msg` instead.
+	 */
 	error: string;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;
@@ -27,9 +31,10 @@ type OptionalProps = {
 	tabIndex: number;
 	value: Stringified<W3CInputValue[]>;
 } & PropDisabled &
-	PropHideLabel &
 	PropHideError &
+	PropHideLabel &
 	PropLabelWithExpertSlot &
+	PropMsg &
 	PropMultiple &
 	PropName &
 	PropOptionsWithOptgroup & // PropOptionsWithOptgroup becomes required with 2.0
@@ -60,6 +65,7 @@ type OptionalStates = {
 	PropName &
 	PropRequired &
 	PropRows &
+	PropMsg &
 	PropTouched;
 
 export type SelectProps = Generic.Element.Members<RequiredProps, OptionalProps>;

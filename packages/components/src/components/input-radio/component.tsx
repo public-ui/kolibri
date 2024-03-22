@@ -5,6 +5,7 @@ import type {
 	InputRadioStates,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	OptionsPropType,
 	Orientation,
@@ -12,7 +13,6 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	W3CInputValue,
 } from '@public-ui/schema';
 import { propagateFocus, showExpertSlot } from '@public-ui/schema';
 import { Component, Element, Host, Method, Prop, State, Watch, h } from '@stencil/core';
@@ -39,7 +39,7 @@ import { KolInputTag } from '../../core/component-names';
 })
 export class KolInputRadio implements InputRadioAPI {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
-	private currentValue?: W3CInputValue;
+	private currentValue?: StencilUnknown;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		propagateFocus(this.host, ref);
@@ -47,7 +47,7 @@ export class KolInputRadio implements InputRadioAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<W3CInputValue | undefined> {
+	public async getValue(): Promise<StencilUnknown | undefined> {
 		return this.currentValue;
 	}
 
@@ -90,6 +90,8 @@ export class KolInputRadio implements InputRadioAPI {
 						 */
 						const customId = `${this.state._id}-${index}`;
 						const slotName = `radio-${index}`;
+						const selected = this.state._value === option.value;
+
 						return (
 							<KolInputTag
 								class={{
@@ -118,7 +120,7 @@ export class KolInputRadio implements InputRadioAPI {
 										aria-label={this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined}
 										type="radio"
 										id={customId}
-										checked={this.state._value === option.value}
+										checked={selected}
 										name={this.state._name || this.state._id}
 										disabled={this.state._disabled || option.disabled}
 										required={this.state._required}
@@ -146,7 +148,7 @@ export class KolInputRadio implements InputRadioAPI {
 							</KolInputTag>
 						);
 					})}
-					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _error={this.state._error} _id={this.state._id} />}
+					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}
 				</fieldset>
 			</Host>
 		);
@@ -172,6 +174,7 @@ export class KolInputRadio implements InputRadioAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
 
@@ -202,6 +205,11 @@ export class KolInputRadio implements InputRadioAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -255,7 +263,7 @@ export class KolInputRadio implements InputRadioAPI {
 	 * Defines the value of the input.
 	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
 	 */
-	@Prop() public _value?: Stringified<W3CInputValue>;
+	@Prop() public _value?: StencilUnknown;
 
 	@State() public state: InputRadioStates = {
 		_hideError: false,
@@ -314,6 +322,11 @@ export class KolInputRadio implements InputRadioAPI {
 		this.controller.validateLabel(value);
 	}
 
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
+	}
+
 	@Watch('_name')
 	public validateName(value?: string): void {
 		this.controller.validateName(value);
@@ -363,7 +376,7 @@ export class KolInputRadio implements InputRadioAPI {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.currentValue = this._value;
-		this.controller.componentWillLoad(this.onChange);
+		this.controller.componentWillLoad();
 	}
 
 	private onChange = (event: Event): void => {

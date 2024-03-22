@@ -35,6 +35,7 @@ export * from './link-on-callbacks';
 export * from './link-target';
 export * from './loading';
 export * from './max';
+export * from './msg';
 export * from './multiple';
 export * from './name';
 export * from './open';
