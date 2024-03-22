@@ -4,6 +4,14 @@ Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine vertik
 
 ## Konstruktion
 
+### Hinweis zur Version 3
+
+Die `KolLinkGroup` Komponente der Version 3 wurde als veraltet markiert (`deprecated`), da sie keinen wesentlichen Beitrag zur Verbesserung der Barrierefreiheit bietet.
+
+### Hinweis zum `nav` Tag
+
+Die Verwendung des `nav` Tags wurde aus der `KolLinkGroup` Komponente entfernt, da er für die Barrierefreiheit leistet.
+
 ### Code
 
 ```html

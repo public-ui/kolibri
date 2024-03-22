@@ -21,18 +21,18 @@ export type ListStyleType =
 
 type RequiredProps = {
 	links: Stringified<LinkProps[]>;
-} & PropLabel;
+};
 type OptionalProps = {
 	listStyleType: ListStyleType;
 	orientation: Orientation;
-};
+} & PropLabel;
 
 type RequiredStates = {
 	links: LinkProps[];
 	listStyleType: ListStyleType;
 	orientation: Orientation;
-} & PropLabel;
-type OptionalStates = NonNullable<unknown>;
+};
+type OptionalStates = NonNullable<unknown> & PropLabel;
 
 export type LinkGroupProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type LinkGroupStates = Generic.Element.Members<RequiredStates, OptionalStates>;
