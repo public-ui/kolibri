@@ -9,6 +9,7 @@ import type {
 	Iso8601,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	Stringified,
 	SuggestionsPropType,
@@ -81,7 +82,7 @@ export class KolInputNumber implements InputNumberAPI {
 					}}
 					_accessKey={this.state._accessKey}
 					_disabled={this.state._disabled}
-					_error={this.state._error}
+					_msg={this.state._msg}
 					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
@@ -166,6 +167,7 @@ export class KolInputNumber implements InputNumberAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
 
@@ -211,6 +213,11 @@ export class KolInputNumber implements InputNumberAPI {
 	 * Defines the smallest possible input value.
 	 */
 	@Prop() public _min?: number | Iso8601;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -357,6 +364,11 @@ export class KolInputNumber implements InputNumberAPI {
 	@Watch('_min')
 	public validateMin(value?: number | Iso8601): void {
 		this.controller.validateMin(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_name')

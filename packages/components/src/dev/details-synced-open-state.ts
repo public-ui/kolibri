@@ -3,7 +3,7 @@ const buttonElement = document.getElementById('button') as HTMLKolButtonElement;
 
 if (detailsElement) {
 	detailsElement._on = {
-		onToggle: (_event, open: boolean) => {
+		onToggle: (_event: Event, open: boolean) => {
 			buttonElement._label = `👆Details ${open ? 'schließen' : 'öffnen'}`;
 		},
 	};

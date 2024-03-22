@@ -4,6 +4,14 @@ Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine vertik
 
 ## Konstruktion
 
+### Hinweis zur Version 3
+
+Die `KolLinkGroup` Komponente der Version 3 wurde als veraltet markiert (`deprecated`), da sie keinen wesentlichen Beitrag zur Verbesserung der Barrierefreiheit bietet.
+
+### Hinweis zum `nav` Tag
+
+Die Verwendung des `nav` Tags wurde aus der `KolLinkGroup` Komponente entfernt, da er für die Barrierefreiheit leistet.
+
 ### Code
 
 ```html
@@ -78,7 +86,7 @@ nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum 
 
 | Property              | Attribute          | Description                                                                                                        | Type                                                                                                                                                                                                                  | Default      |
 | --------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| `_label` _(required)_ | `_label`           | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                                                                                                                                                              | `undefined`  |
+| `_label`              | `_label`           | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string \| undefined`                                                                                                                                                                                                 | `undefined`  |
 | `_links` _(required)_ | `_links`           | Defines the list of links to render.                                                                               | `LinkProps[] \| string`                                                                                                                                                                                               | `undefined`  |
 | `_listStyleType`      | `_list-style-type` | Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet       | `"circle" \| "decimal" \| "decimal-leading-zero" \| "disc" \| "lower-alpha" \| "lower-greek" \| "lower-latin" \| "lower-roman" \| "none" \| "square" \| "upper-alpha" \| "upper-latin" \| "upper-roman" \| undefined` | `undefined`  |
 | `_orientation`        | `_orientation`     | Defines whether the orientation of the component is horizontal or vertical.                                        | `"horizontal" \| "vertical" \| undefined`                                                                                                                                                                             | `'vertical'` |

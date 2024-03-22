@@ -1,4 +1,4 @@
-import type { ButtonProps, InputTypeOnDefault, PropLabelWithExpertSlot, Stringified } from '@public-ui/schema';
+import type { ButtonProps, InputTypeOnDefault, MsgPropType, PropLabelWithExpertSlot, Stringified } from '@public-ui/schema';
 import type { Generic } from 'adopted-style-sheets';
 
 type RequiredProps = NonNullable<unknown>;
@@ -11,6 +11,7 @@ type OptionalProps = PropLabelWithExpertSlot & {
 	hideLabel: boolean;
 	hint: string;
 	id: string;
+	msg: MsgPropType;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
 	syncValueBySelector: string;

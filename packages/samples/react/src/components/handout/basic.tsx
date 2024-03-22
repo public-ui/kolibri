@@ -1008,7 +1008,12 @@ export const HandoutBasic: FC = () => (
 						<KolInputFile _label={`Datei hochladen`} />
 						<KolInputNumber _label={`Zahleneingabe`} />
 						<KolInputDate _type="date" _label={`Datum`} />
-						<KolInputEmail _icons="{'left': 'codicon codicon-home'}" _error="Test einer Fehlermeldung" _touched _label={`E-Mail-Adresse`} />
+						<KolInputEmail
+							_icons="{'left': 'codicon codicon-home'}"
+							_msg={{ _type: 'error', _description: 'Test einer Fehlermeldung' }}
+							_touched
+							_label={`E-Mail-Adresse`}
+						/>
 						<KolInputText _hint="Ich bin ein Hinweis." _label={`Vorname`} />
 						<KolInputPassword _label={`Passwort`} />
 						<KolSelect _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _label={`Stimmung`} />

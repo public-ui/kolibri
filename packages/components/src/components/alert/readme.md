@@ -95,20 +95,4 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 | ---- | ----------------------- |
 |      | Der Inhalt der Meldung. |
 
-## Dependencies
-
-### Used by
-
-- kol-input
-- [kol-input-radio](../input-radio)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-input --> kol-alert-wc
-  kol-input-radio --> kol-alert-wc
-  style kol-alert-wc stroke:#333,stroke-width:4px
-```
-
 ---

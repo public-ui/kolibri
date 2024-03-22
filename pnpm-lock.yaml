@@ -1036,7 +1036,7 @@ importers:
         specifier: workspace:*
         version: link:../themes/default
       '@public-ui/visual-tests':
-        specifier: workspace:2.0.9
+        specifier: workspace:*
         version: link:../tools/visual-tests
 
   packages/themes:

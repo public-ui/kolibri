@@ -4,6 +4,7 @@ import type {
 	InputTypeOnDefault,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	Optgroup,
 	Option,
@@ -95,13 +96,13 @@ export class KolSelect implements SelectAPI {
 					}}
 					_accessKey={this.state._accessKey}
 					_disabled={this.state._disabled}
-					_error={this.state._error}
 					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_icons={this.state._icons}
 					_id={this.state._id}
 					_label={this.state._label}
+					_msg={this.state._msg}
 					_required={this.state._required}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
@@ -195,6 +196,7 @@ export class KolSelect implements SelectAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
 
@@ -230,6 +232,11 @@ export class KolSelect implements SelectAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Makes the input accept multiple inputs.
@@ -352,6 +359,11 @@ export class KolSelect implements SelectAPI {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_multiple')

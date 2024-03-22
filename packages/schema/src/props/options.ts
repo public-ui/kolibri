@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { Optgroup, Option, W3CInputValue } from '../types';
+import type { Optgroup, Option, StencilUnknown } from '../types';
 import type { Stringified } from '../types/common';
 import type { WatchOptions } from '../utils';
 import { watchJsonArrayString } from '../utils';
@@ -8,8 +8,8 @@ import { validateInputSelectOptions } from '../validators';
 
 /* types */
 
-export type OptionsPropType = Stringified<Option<W3CInputValue>[]>;
-export type OptionsWithOptgroupPropType = Stringified<(Option<W3CInputValue> | Optgroup<W3CInputValue>)[]>;
+export type OptionsPropType = Stringified<Option<StencilUnknown>[]>;
+export type OptionsWithOptgroupPropType = Stringified<(Option<StencilUnknown> | Optgroup<StencilUnknown>)[]>;
 
 /**
  * Options the user can choose from.
@@ -31,7 +31,7 @@ export const validateOptions = (component: Generic.Element.Component, value: Opt
 	watchJsonArrayString(
 		component,
 		'_options',
-		(item: Option<W3CInputValue>) => typeof item === 'object' && item !== null && typeof item.label === 'string' && item.label.length > 0,
+		(item: Option<StencilUnknown>) => typeof item === 'object' && item !== null && typeof item.label === 'string' && item.label.length > 0,
 		value,
 		undefined,
 		options,

@@ -6,6 +6,7 @@ import type {
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropName,
 	PropReadOnly,
 	PropRequired,
@@ -18,11 +19,16 @@ import type { ButtonProps } from './button';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
+	/**
+	 * @deprecated Will be removed in v3. Use `msg` instead.
+	 */
+	error: string;
 	type: InputDateType;
 } & OptionalInputProps<Iso8601 | Date> &
 	PropHideError &
 	PropLabelWithExpertSlot &
-	PropSuggestions;
+	PropSuggestions &
+	PropMsg;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
@@ -36,7 +42,6 @@ type RequiredStates = {
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
-	error: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	max: Iso8601;
@@ -50,6 +55,7 @@ type OptionalStates = {
 } & PropSyncValueBySelector &
 	PropDisabled &
 	PropHideLabel &
+	PropMsg &
 	PropName &
 	PropReadOnly &
 	PropRequired &

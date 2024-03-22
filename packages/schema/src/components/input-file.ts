@@ -6,6 +6,7 @@ import type {
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropMultiple,
 	PropName,
 	PropRequired,
@@ -20,6 +21,9 @@ type OptionalProps = {
 	accept: string;
 	alert: boolean;
 	accessKey: string;
+	/**
+	 * @deprecated Will be removed in v3. Use `msg` instead.
+	 */
 	error: string;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;
@@ -31,6 +35,7 @@ type OptionalProps = {
 	PropHideError &
 	PropHideLabel &
 	PropLabelWithExpertSlot &
+	PropMsg &
 	PropMultiple &
 	PropName &
 	PropRequired &
@@ -42,7 +47,6 @@ type OptionalStates = {
 	accept: string;
 	alert: boolean;
 	accessKey: string;
-	error: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
@@ -51,6 +55,7 @@ type OptionalStates = {
 	value: string;
 } & PropDisabled &
 	PropHideLabel &
+	PropMsg &
 	PropMultiple &
 	PropName &
 	PropRequired &
