@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "1.7.15",
+	"version": "1.7.16",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -25,7 +25,7 @@
 	},
 	"dependencies": {
 		"@playwright/test": "1.42.1",
-		"@public-ui/sample-react": "1.7.15",
+		"@public-ui/sample-react": "1.7.16",
 		"axe-playwright": "2.0.1",
 		"portfinder": "1.0.32",
 		"serve": "14.2.1"
