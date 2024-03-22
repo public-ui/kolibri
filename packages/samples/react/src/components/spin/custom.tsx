@@ -11,8 +11,8 @@ export const SpinCustom: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				Hier ist ein von uns erstelltes Beispiel für eine Custom Animation. Diese kann nach eigenen Vorstellungen angepasst werden und ist nicht zwingend
-				barrierefrei.
+				Hier ist ein Beispiel für eine Custom Animation. Mittels des Expert-Slots ist es möglich, eigene Animationen einzufügen. Diese kann nach eigenen
+				Vorstellungen angepasst werden und ist nicht zwingend barrierefrei.
 			</p>
 		</SampleDescription>
 		<KolSpin _show _variant="none">
