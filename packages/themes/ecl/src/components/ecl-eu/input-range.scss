@@ -1,0 +1,12 @@
+@import '../mixins-eu/alert-wc.scss';
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		@include kol-alert-theme;
+	}
+
+	.inputs-wrapper {
+		gap: 1rem;
+	}
+}

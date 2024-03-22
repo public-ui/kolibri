@@ -1,8 +1,8 @@
 import { test } from '@playwright/test';
 import { checkA11y, injectAxe } from 'axe-playwright';
-import path from 'path';
 import { ROUTES } from './sample-app.routes.js';
 
+const themeName = (process.env.THEME_EXPORT || 'default').toLocaleLowerCase();
 const rename = (snapshotName) => {
 	const result = snapshotName
 
@@ -19,7 +19,7 @@ const rename = (snapshotName) => {
 		.replace('-1-', '-')
 
 		// Make different snapshot folder for different themes
-		.replace('theme-snapshots.spec.js', `axe-${process.env.THEME_EXPORT.toLocaleLowerCase()}`)
+		.replace('theme-snapshots.spec.js', `axe-${themeName}`)
 		.replace('-snapshots', '');
 	return result;
 };
@@ -36,9 +36,6 @@ test.use({
 	},
 });
 
-/**
- * @todo stabilize and re-enable test
- */
 const blocklist = [];
 
 ROUTES.forEach((options, route) => {
@@ -74,7 +71,7 @@ ROUTES.forEach((options, route) => {
 			'html',
 			{
 				outputDirPath: outputPath.replace(/\/[^/]+$/, ''),
-				outputDir: `axe-${process.env.THEME_EXPORT.toLocaleLowerCase()}`,
+				outputDir: `axe-${themeName}`,
 				reportFileName: `${route.replace('/', '-')}.html`,
 			},
 		);

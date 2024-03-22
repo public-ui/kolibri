@@ -1,0 +1,12 @@
+@import '../@shared/mixins';
+@import '../style';
+@import 'cycle';
+@import 'dot';
+
+@layer kol-component {
+	.spin {
+		display: block;
+		padding: rem(2);
+		position: relative;
+	}
+}

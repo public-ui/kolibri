@@ -90,7 +90,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 						options[0] as {
 							value: string;
 						}
-					).value
+					).value,
 				);
 				this.onStateChange();
 			}
@@ -106,7 +106,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 			value,
 			{
 				defaultValue: 'vertical',
-			}
+			},
 		);
 	}
 

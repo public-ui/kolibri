@@ -50,23 +50,23 @@ jobs:
             ${{ runner.os }}-pnpm-store
 
       - name: Create new branch
-        run: git checkout -b chore/auto-update-deps
-      - name: Install tools
-        run: npm i lerna npm-check-updates --no-save
+        run: git checkout -b chore-v2/auto-update-deps
+      - name: Install
+        run: pnpm i --workspace-root
       - name: Update dependencies
-        run: npm run update
+        run: pnpm run update
       - name: Reinstall dependencies
-        run: npm run reinstall
+        run: pnpm i
       - name: Commit changed files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add **/package.json pnpm-lock.yaml
           git status
-          git commit -m "chore: auto dependency update"
+          git commit -m "chore: update dependencies and lock file"
 
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'chore/auto-update-deps'
+          branch: chore-v2/auto-update-deps
           force: true

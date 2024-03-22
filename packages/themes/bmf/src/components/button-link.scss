@@ -1,0 +1,45 @@
+@layer kol-theme-component {
+	:is(a, button) {
+		color: var(--color-midnight);
+		font-style: normal;
+		font-weight: 400;
+		text-decoration-line: underline;
+		font-size: inherit;
+	}
+
+	:is(a, button):focus {
+		outline: none;
+	}
+
+	:is(a, button):focus .kol-span-wc {
+		border-radius: var(--border-radius);
+		outline: 2px solid;
+	}
+
+	a:hover:not([aria-disabled]),
+	button:hover:not([disabled]) {
+		text-decoration-thickness: 0.25em;
+	}
+
+	:is(a, button):visited {
+		color: var(--visited);
+	}
+
+	.hidden {
+		display: none;
+		visibility: hidden;
+	}
+
+	.skip {
+		left: -99999px;
+		overflow: hidden;
+		position: absolute;
+		z-index: 9999999;
+	}
+
+	.skip:focus {
+		background: white;
+		left: unset;
+		position: unset;
+	}
+}

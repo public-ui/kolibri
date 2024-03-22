@@ -1,20 +1,6 @@
 import { Log, getDocument, processEnv, setColorContrastAnalysis, setDevMode, setExperimentalMode } from '@public-ui/schema';
 
-import { getWindow, setDocument, setWindow } from '@public-ui/schema';
-import { ModalService } from '../components/modal/service';
-
-export const configKoliBri = (window: Window): void => {
-	if (window instanceof Window) {
-		setWindow(window);
-		if (getWindow().document instanceof Document) {
-			setDocument(window.document);
-		} else {
-			console.warn(`The given Window has no valid Document.`);
-		}
-	} else {
-		console.warn(`The given Window is not valid.`);
-	}
-};
+import { getWindow } from '@public-ui/schema';
 
 const initMeta = (): void => {
 	const meta = getDocument().querySelector('meta[name="kolibri"]');
@@ -40,33 +26,24 @@ const getKoliBri = (): Record<string, unknown> => {
 	return kolibri;
 };
 
-export const initKoliBri = (): void => {
-	if (getKoliBri().Modal === undefined) {
-		const Modal = new ModalService();
-		Object.defineProperty(getKoliBri(), 'Modal', {
-			get: function (): ModalService {
-				return Modal;
-			},
-		});
-		initMeta();
-		Log.debug(
-			`
-	,--. ,--.         ,--. ,--. ,-----.           ,--.
-	|  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
-	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
-	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
-	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.7
-		`,
-			{
-				forceLog: true,
-			}
-		);
-	} else {
-		console.warn(`You can only initialize KoliBri once.`);
-	}
-};
 export { getKoliBri };
+
+export const initKoliBri = (): void => {
+	initMeta();
+	Log.debug(
+		`
+,--. ,--.         ,--. ,--. ,-----.           ,--.
+|  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
+|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
+|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
+\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
+🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.0.8
+	`,
+		{
+			forceLog: true,
+		},
+	);
+};
 
 export const renderDevAdvice = (): void => {
 	if (getKoliBri().adviceShown !== true) {
@@ -81,7 +58,7 @@ You are using the KoliBri component library. If you have any suggestions for imp
 
 Ticket: https://github.com/public-ui/kolibri/issues/new/choose (for privacy reasons, please use email)
 Email: kolibri@itzbund.de
-`
+`,
 		);
 	}
 };

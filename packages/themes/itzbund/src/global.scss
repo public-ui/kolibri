@@ -1,0 +1,87 @@
+@layer kol-theme-global {
+	:host {
+		--border-color: var(--color-anthrazit);
+		--border-radius: 0.125rem;
+		--color-anthrazit: #333;
+		--color-jade: #f3f7fb;
+		--color-weiss: #fff;
+		--color-petrol: #007a89;
+		--color-achat: #0b4d59;
+		--color-teal: #056773;
+		--color-fluorit: #66ddec;
+		--color-rotton: rgba(188, 0, 0, 1);
+		--color-rotton-20: rgba(188, 0, 0, 0.2);
+		--color-gras: #138510;
+		--color-warn: #f0541e;
+		--color-blut: var(--color-rotton);
+		--color-input-bg-default: #e8edf2;
+		--gradient-petrol-achat: linear-gradient(67deg, var(--color-petrol), var(--color-achat));
+		--color-citrin: #d4c912;
+		--color-umber: #494500;
+		--color-gelb: #fff443;
+		--color-lichtgelb: #eeff6c;
+		--gradient-gelb-citrin: linear-gradient(67deg, var(--color-gelb), var(--color-citrin));
+		--font-family-sans: BundesSans Web;
+		--font-family-serif: BundesSerif Web;
+		--font-size: 16px;
+		--spacing: 0.125em;
+		--kolibri-spacing: calc(2 * var(--spacing));
+	}
+
+	:host {
+		/* Reset global background-color defined by components */
+		background-color: transparent;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-family);
+		font-size: var(--font-size);
+		margin: 0;
+		padding: 0;
+	}
+
+	*[tabindex]:focus,
+	a:focus,
+	button:focus,
+	input:focus,
+	select:focus,
+	summary:focus,
+	textarea:focus {
+		cursor: pointer;
+		outline-color: var(--color-petrol);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
+	}
+
+	.kol-span-wc,
+	.kol-span-wc > span {
+		gap: 0.25em;
+	}
+
+	.kol-tooltip-wc .tooltip-area {
+		background-color: #f2f2f2;
+	}
+
+	.kol-tooltip-wc .tooltip-arrow {
+		background-color: #626262;
+	}
+
+	.kol-tooltip-wc .tooltip-content {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid #626262;
+	}
+}

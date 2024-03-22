@@ -1,28 +1,32 @@
+@import '../mixins/alert-wc.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		@include kol-alert-theme;
 	}
+
 	.inputs-wrapper {
 		gap: 1rem;
 	}
 
-	kol-input {
+	.kol-input {
 		gap: 0.25rem;
 	}
 
-	kol-input .error {
+	.kol-input .error {
 		order: 1;
 	}
 
-	kol-input label {
+	.kol-input label {
 		order: 2;
 	}
 
-	kol-input .input {
+	.kol-input .input {
 		order: 3;
 	}
 
-	kol-input .hint {
+	.kol-input .hint {
 		order: 4;
 		font-size: 0.9rem;
 		font-style: italic;
@@ -41,15 +45,15 @@
 		padding: 0 0.5rem;
 	}
 
-	.input > kol-icon {
+	.input > .kol-icon {
 		width: 1rem;
 	}
 
-	.input.icon-left > kol-icon:first-child {
+	.input.icon-left > .kol-icon:first-child {
 		margin-right: 0.5rem;
 	}
 
-	.input.icon-right > kol-icon:last-child {
+	.input.icon-right > .kol-icon:last-child {
 		margin-left: 0.5rem;
 	}
 
@@ -58,7 +62,7 @@
 		padding-right: 1rem;
 	}
 
-	.input:hover {
+	:not(.disabled) .input:hover {
 		border-color: var(--color-primary);
 	}
 
@@ -71,21 +75,20 @@
 		padding-left: 0.125em;
 	}
 
-	kol-input.error {
+	.kol-input.error {
 		border-left: 3px solid var(--color-danger);
 		padding-left: 1rem;
 	}
 
-	kol-input.error .input:focus-within {
+	.kol-input.error .input:focus-within {
 		outline-color: var(--color-danger) !important;
 	}
 
-	kol-input.error kol-alert.error {
-		color: var(--color-danger);
-		font-weight: 700;
+	.kol-input.error .kol-alert-wc.error {
+		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 	}
 
-	kol-input.disabled :is(.input) {
+	.kol-input.disabled .input {
 		background-color: var(--color-mute);
 		border-color: var(--color-mute-variant);
 		color: var(--color-text);

@@ -1,0 +1,189 @@
+@layer kol-theme-global {
+	.kol-tooltip-wc .tooltip-area {
+		background-color: #f2f2f2;
+	}
+
+	.kol-tooltip-wc .tooltip-arrow {
+		background-color: #626262;
+	}
+
+	.kol-tooltip-wc .tooltip-content {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid #626262;
+	}
+
+	:host {
+		--color-blue: #0e47cb;
+		--color-blue-140: #082b7a;
+		--color-blue-130: #082b7a;
+		--color-blue-120: #0b39a2;
+		--color-blue-110: #0d40b7;
+		--color-blue-100: #0e47cb;
+		--color-blue-80: #3e6cd5;
+		--color-blue-60: #6e91e0;
+		--color-blue-40: #9fb5ea;
+		--color-blue-20: #cfdaf5;
+		--color-blue-10: #e7edfa;
+		--color-blue-5: #f3f6fc;
+		--color-yellow: #ffcc00;
+		--color-yellow-140: #997a00;
+		--color-yellow-130: #b38f00;
+		--color-yellow-120: #cca300;
+		--color-yellow-110: #e6b800;
+		--color-yellow-100: #ffcc00;
+		--color-yellow-80: #ffd633;
+		--color-yellow-60: #ffe066;
+		--color-yellow-40: #ffeb99;
+		--color-yellow-20: #fff5cc;
+		--color-yellow-10: #fffae6;
+		--color-yellow-5: #fffcf2;
+		--color-grey: #262b38;
+		--color-grey-140: #171a22;
+		--color-grey-130: #1b1e27;
+		--color-grey-120: #1e222d;
+		--color-grey-110: #222732;
+		--color-grey-100: #262b38;
+		--color-grey-80: #515560;
+		--color-grey-75: #515560;
+		--color-grey-60: #7d8088;
+		--color-grey-40: #a8aaaf;
+		--color-grey-20: #d4d5d7;
+		--color-grey-10: #e9eaeb;
+		--color-grey-5: #f4f5f5;
+		--color-grey-3: #f9f9f9;
+		--color-orange: #ff6200;
+		--color-orange-140: #993b00;
+		--color-orange-130: #b34500;
+		--color-orange-120: #cc4e00;
+		--color-orange-110: #e65800;
+		--color-orange-100: #e65800;
+		--color-orange-80: #ff8133;
+		--color-orange-60: #ff914d;
+		--color-orange-40: #ffb180;
+		--color-orange-20: #ffd0b3;
+		--color-orange-10: #ffefe6;
+		--color-orange-5: #fff7f2;
+		--color-green: #00c991;
+		--color-green-140: #007957;
+		--color-green-130: #008d66;
+		--color-green-120: #008d66;
+		--color-green-110: #00b583;
+		--color-green-100: #00c991;
+		--color-green-80: #00c991;
+		--color-green-60: #66dfbd;
+		--color-green-40: #99e9d3;
+		--color-green-20: #ccf4e9;
+		--color-green-10: #e6faf4;
+		--color-green-5: #f2fcf9;
+		--color-red: #ef0044;
+		--color-red-140: #8f0029;
+		--color-red-130: #a70030;
+		--color-red-120: #bf0036;
+		--color-red-110: #d7003d;
+		--color-red-100: #ef0044;
+		--color-red-80: #f23369;
+		--color-red-60: #f5668f;
+		--color-red-40: #f999b4;
+		--color-red-20: #fcccda;
+		--color-red-10: #fde6ec;
+		--color-red-5: #fef2f5;
+		--color-accent-blue-100: #00e9ff;
+		--color-accent-blue-30: #b3f8ff;
+		--color-purple: #510dcd;
+		--color-purple-140: #31087b;
+		--color-purple-130: #390990;
+		--color-purple-120: #410aa4;
+		--color-purple-110: #490cb9;
+		--color-purple-100: #510dcd;
+		--color-purple-80: #743dd7;
+		--color-purple-60: #976ee1;
+		--color-purple-40: #bf9af1;
+		--color-purple-20: #dccff5;
+		--color-purple-10: #eee7fa;
+		--color-purple-5: #eee7fa;
+		--color-white: #fff;
+		--color-black: #000;
+		--font-family: Arial, sans-serif;
+		--font-size: 16px;
+		--font-weight-regular: 400;
+		--font-weight-bold: 700;
+		--line-height-regular: 1.5em;
+		--line-height-heading: 1.2em;
+		--spacing-4xl: 64px;
+		--spacing-3xl: 48px;
+		--spacing-2xl: 40px;
+		--spacing-xl: 32px;
+		--spacing-l: 24px;
+		--spacing-m: 16px;
+		--spacing-s: 12px;
+		--spacing-xs: 8px;
+		--spacing-2xs: 4px;
+	}
+
+	:host {
+		/* Reset global background-color defined by components */
+		background-color: transparent;
+		display: inline-block;
+	}
+
+	a,
+	button {
+		font-size: var(--font-size);
+		outline: none;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-heading);
+		margin: 0;
+		padding: 0;
+	}
+
+	p {
+		font-weight: var(--font-weight);
+	}
+
+	.kol-span-wc,
+	.kol-span-wc > span {
+		gap: 0.5em;
+	}
+
+	.required label span::after,
+	.required legend span::after {
+		color: var(--color-red);
+		padding-left: 0.25em;
+	}
+
+	p.l,
+	p.lead {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+	}
+
+	p,
+	p.m,
+	p.medium {
+		font-size: 1rem;
+		line-height: 1.5rem;
+	}
+
+	p.s,
+	p.small {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
+
+	p.xs,
+	p.extra-small {
+		font-size: 0.75rem;
+		line-height: 1.25rem;
+	}
+}

@@ -3,10 +3,11 @@ import { koliBriQuoteVariantOptions, showExpertSlot, validateLabel, watchString,
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
+import { KolLinkTag } from '../../core/component-names';
 @Component({
 	tag: 'kol-quote',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -63,7 +64,7 @@ export class KolQuote implements QuoteAPI {
 			'_variant',
 			(value) => typeof value === 'string' && koliBriQuoteVariantOptions.includes(value),
 			new Set(koliBriQuoteVariantOptions),
-			value
+			value,
 		);
 	}
 
@@ -77,7 +78,7 @@ export class KolQuote implements QuoteAPI {
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._quote); // _quote instead of _caption as _label
 		return (
-			<Host>
+			<Host class="kol-quote">
 				<figure
 					class={{
 						[this.state._variant]: true,
@@ -101,7 +102,7 @@ export class KolQuote implements QuoteAPI {
 					{typeof this.state._label === 'string' && this.state._label.length > 0 && (
 						<figcaption>
 							<cite>
-								<kol-link _href={this.state._href} _label={this.state._label} _target="_blank" />
+								<KolLinkTag _href={this.state._href} _label={this.state._label} _target="_blank" />
 							</cite>
 						</figcaption>
 					)}

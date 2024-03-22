@@ -1,0 +1,7 @@
+@layer kol-theme-component {
+	:host > .kol-button-group-wc {
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-2xs);
+	}
+}

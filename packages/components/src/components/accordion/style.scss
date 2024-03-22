@@ -1,0 +1,49 @@
+@import '../style';
+@import '../host-display-block';
+
+@layer kol-component {
+	/* For animation technique see https://css-tricks.com/css-grid-can-do-auto-height-transitions/ */
+	.wrapper {
+		display: grid;
+		grid-template-rows: 0fr;
+		overflow: hidden;
+		transition: grid-template-rows 0.3s;
+	}
+
+	.accordion.open .wrapper {
+		grid-template-rows: 1fr;
+	}
+
+	.animation-wrapper {
+		min-height: 0;
+		transition: visibility 0.3s;
+		/* This property is important to keep in sync with the visual transition (template-rows). Without it interactive elements within the accordion would stay focusable. */
+		visibility: hidden;
+	}
+
+	.accordion.open .animation-wrapper {
+		visibility: visible;
+	}
+
+	@media (prefers-reduced-motion) {
+		.animation-wrapper,
+		.wrapper {
+			transition-duration: 0s;
+		}
+	}
+
+	/* @see https://github.com/public-ui/kolibri/issues/5952 */
+	@media print {
+		.accordion:not(.open) .animation-wrapper {
+			display: none;
+		}
+	}
+
+	/*
+ * Inside a button, the caption text is always centered.
+ * So we have to align the text to the left.
+ */
+	.accordion .kol-heading-wc .kol-button-wc button .kol-span-wc {
+		justify-items: start;
+	}
+}

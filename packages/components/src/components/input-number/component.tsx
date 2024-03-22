@@ -25,13 +25,14 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputNumberController } from './controller';
 
 import type { JSX } from '@stencil/core';
+import { KolInputTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
 @Component({
 	tag: 'kol-input-number',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -50,8 +51,8 @@ export class KolInputNumber implements InputNumberAPI {
 		return this.ref?.value;
 	}
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
-		if (event.code === 'Enter') {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
@@ -69,10 +70,11 @@ export class KolInputNumber implements InputNumberAPI {
 		return (
 			<Host
 				class={{
+					'kol-input-number': true,
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<kol-input
+				<KolInputTag
 					class={{
 						number: true,
 						'hide-label': !!this.state._hideLabel,
@@ -131,10 +133,10 @@ export class KolInputNumber implements InputNumberAPI {
 							type="number"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

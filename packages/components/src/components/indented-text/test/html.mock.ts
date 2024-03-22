@@ -4,9 +4,9 @@ export const getIndentedTextHtml = (
 	props: IndentedTextProps,
 	slots: {
 		default?: string;
-	} = {}
+	} = {},
 ): string => {
-	return `<kol-indented-text>
+	return `<kol-indented-text class="kol-indented-text-wc">
 	<mock:shadow-root>
 		<div>
 			${typeof slots.default === 'undefined' ? '<slot />' : slots.default}

@@ -1,13 +1,14 @@
 import fs, { promises as fsPromises } from 'fs';
 import path from 'path';
 
-import { angularOutputTarget } from '@stencil/angular-output-target';
+import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
 import { Config } from '@stencil/core';
 import { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil/postcss';
-import { reactOutputTarget } from '@stencil/react-output-target';
-import { solidOutputTarget } from '@stencil/solid-output-target';
-import { vueOutputTarget } from '@stencil/vue-output-target';
+import { sass } from '@stencil/sass';
+import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
+import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
+import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
 
 const TAGS = [
 	'kol-abbr',
@@ -279,7 +280,7 @@ export const config: Config = {
 		// scopedSlotTextContentFix: true,
 		// scriptDataOpts: true,
 		// slotChildNodesFix: true,
-		// tagNameTransform: true,
+		tagNameTransform: true,
 	},
 	// enableCache: true,
 	invisiblePrehydration: true,
@@ -290,7 +291,7 @@ export const config: Config = {
 	namespace: 'kolibri',
 	preamble: 'KoliBri - The accessible HTML-Standard',
 	outputTargets: outputTargets,
-	plugins: [postcss()],
+	plugins: [sass(), postcss()],
 	rollupPlugins: {
 		before: [],
 		after: [],

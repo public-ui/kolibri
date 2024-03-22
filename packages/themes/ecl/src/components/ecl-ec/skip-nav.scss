@@ -1,0 +1,19 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.kol-link-wc > a > .kol-span-wc {
+		border-radius: 0;
+		border-style: solid;
+		border-width: 2px;
+		font-weight: var(--font-weight-bold);
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.25em 0.75em;
+		background-color: var(--color-blue);
+		border-color: var(--color-blue);
+		color: var(--color-white);
+		cursor: pointer;
+	}
+}

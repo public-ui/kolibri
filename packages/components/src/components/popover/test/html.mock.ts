@@ -5,7 +5,7 @@ export const getPopoverHtml = (
 	props: PopoverProps,
 	slots: {
 		default?: string;
-	} = {}
+	} = {},
 ): string => {
 	const state = mixMembers<PopoverProps, PopoverStates>(
 		{
@@ -13,10 +13,10 @@ export const getPopoverHtml = (
 			_show: false,
 			_visible: false,
 		},
-		props
+		props,
 	);
 	return `
-  <kol-popover-wc>
+  <kol-popover-wc class="kol-popover-wc">
 		<div class="popover hidden">
 			<div class="arrow ${state._align}"></div>
 			${slots.default !== undefined ? slots.default : ''}

@@ -4,6 +4,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { watchHeadingLevel } from '../heading/validation';
+import { KolIconTag, KolHeadingWcTag, KolButtonWcTag } from '../../core/component-names';
 
 import type {
 	AlertAPI,
@@ -16,7 +17,7 @@ import type {
 	LabelPropType,
 } from '@public-ui/schema';
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return <kol-icon class="heading-icon" _label={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
+	return <KolIconTag class="heading-icon" _label={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
 };
 
 const AlertIcon = (props: { label?: string; type?: AlertType }) => {
@@ -72,6 +73,7 @@ export class KolAlertWc implements AlertAPI {
 		return (
 			<Host
 				class={{
+					'kol-alert-wc': true,
 					alert: true,
 					[this.state._type as string]: true,
 					[this.state._variant as string]: true,
@@ -83,7 +85,7 @@ export class KolAlertWc implements AlertAPI {
 					<AlertIcon label={this.state._label} type={this.state._type} />
 					<div class="heading-content">
 						{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
-							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
+							<KolHeadingWcTag _label={this.state._label} _level={this.state._level}></KolHeadingWcTag>
 						)}
 						{this.state._variant === 'msg' && (
 							<div class="content">
@@ -92,7 +94,7 @@ export class KolAlertWc implements AlertAPI {
 						)}
 					</div>
 					{this.state._hasCloser && (
-						<kol-button-wc
+						<KolButtonWcTag
 							class="close"
 							_hideLabel
 							_icons={{
@@ -103,7 +105,7 @@ export class KolAlertWc implements AlertAPI {
 							_label={translate('kol-close')}
 							_on={this.on}
 							_tooltipAlign="left"
-						></kol-button-wc>
+						></KolButtonWcTag>
 					)}
 				</div>
 				{this.state._variant === 'card' && (
@@ -186,7 +188,7 @@ export class KolAlertWc implements AlertAPI {
 				'_on',
 				{
 					onClose: (value as KoliBriAlertEventCallbacks).onClose,
-				}
+				},
 				// {
 				// 	afterPatch: (value: unknown) => {
 				// 		this._hasCloser = this.validateOnValue(value);
@@ -209,7 +211,7 @@ export class KolAlertWc implements AlertAPI {
 			'_type',
 			(value?) => typeof value === 'string' && alertTypeOptions.includes(value),
 			new Set(`String {${alertTypeOptions.join(', ')}`),
-			value
+			value,
 		);
 	}
 
@@ -220,7 +222,7 @@ export class KolAlertWc implements AlertAPI {
 			'_variant',
 			(value?) => typeof value === 'string' && alertVariantOptions.includes(value),
 			new Set(`AlertVariant {${alertVariantOptions.join(', ')}`),
-			value
+			value,
 		);
 	}
 

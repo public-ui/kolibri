@@ -25,13 +25,14 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputEmailController } from './controller';
 
 import type { JSX } from '@stencil/core';
+import { KolInputTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
 @Component({
 	tag: 'kol-input-email',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -50,9 +51,9 @@ export class KolInputEmail implements InputEmailAPI {
 		return this.ref?.value;
 	}
 
-	private readonly onKeyUp = (event: KeyboardEvent) => {
+	private readonly onKeyDown = (event: KeyboardEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
-		if (event.code === 'Enter') {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
@@ -70,10 +71,11 @@ export class KolInputEmail implements InputEmailAPI {
 		return (
 			<Host
 				class={{
+					'kol-input-email': true,
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<kol-input
+				<KolInputTag
 					class={{ email: true, 'hide-label': !!this.state._hideLabel }}
 					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
@@ -135,10 +137,10 @@ export class KolInputEmail implements InputEmailAPI {
 							type="email"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

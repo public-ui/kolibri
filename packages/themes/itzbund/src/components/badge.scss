@@ -1,0 +1,34 @@
+@layer kol-theme-component {
+	:host {
+		display: inline-block;
+		font-family: inherit;
+	}
+
+	:host > span {
+		border-radius: 0.3125rem;
+		display: inline-flex;
+	}
+
+	:host > span .kol-button-wc {
+		border-left: 1px solid rgba(0, 0, 0, 0.25);
+	}
+
+	:host > span .kol-span-wc {
+		padding: 0.25rem 0.5rem;
+	}
+
+	:host > span > .kol-span-wc {
+		align-items: center;
+		font-style: normal;
+		gap: 0.5rem;
+	}
+
+	:host > span > .kol-span-wc > span {
+		display: flex;
+		gap: 0.25rem;
+	}
+
+	:host button {
+		border-radius: 0 var(--spacing) var(--spacing) 0;
+	}
+}

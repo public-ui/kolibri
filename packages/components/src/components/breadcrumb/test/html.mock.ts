@@ -11,7 +11,7 @@ export const getBreadcrumbHtml = (props: BreadcrumbProps): string => {
 			_label: '', // ⚠ required
 			_links: [],
 		},
-		props
+		props,
 	);
 
 	const lastIndex = state._links.length - 1;
@@ -24,7 +24,7 @@ export const getBreadcrumbHtml = (props: BreadcrumbProps): string => {
 						? getIconHtml({
 								_label: '',
 								_icons: 'codicon codicon-chevron-right',
-						  })
+							})
 						: ''
 				}
 					${
@@ -34,9 +34,9 @@ export const getBreadcrumbHtml = (props: BreadcrumbProps): string => {
 										? getIconHtml({
 												_label: link._label,
 												_icons: link._icons as AnyIconFontClass,
-										  })
+											})
 										: link._label
-							  }</span>`
+								}</span>`
 							: getLinkHtml(link)
 					}
 				</li>
@@ -44,7 +44,7 @@ export const getBreadcrumbHtml = (props: BreadcrumbProps): string => {
 	});
 
 	return `
-<kol-breadcrumb>
+<kol-breadcrumb class="kol-breadcrumb">
   <mock:shadow-root>
 		<nav aria-label="${state._label as unknown as LabelPropType}">
 			<ul>
@@ -53,7 +53,7 @@ export const getBreadcrumbHtml = (props: BreadcrumbProps): string => {
 						? `<li>${getIconHtml({
 								_label: '',
 								_icons: 'codicon codicon-home',
-						  })}…</li>`
+							})}…</li>`
 						: ''
 				}
 				${list}

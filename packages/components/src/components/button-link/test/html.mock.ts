@@ -13,12 +13,12 @@ export const getButtonLinkHtml = (props: ButtonLinkProps): string => {
 			_type: 'button',
 			_variant: 'normal',
 		},
-		props
+		props,
 	);
 
-	return `<kol-button-link>
+	return `<kol-button-link class="kol-button-link">
 		<mock:shadow-root>
-			${getButtonWcHtml({ ...state, _role: 'link' }, { expert: '<slot name="expert" slot="expert"></slot>' })}
+			${getButtonWcHtml({ ...state, _role: 'link' }, { expert: '<slot name="expert" slot="expert"></slot>' }, ` class="kol-button-wc"`)}
 		</mock:shadow-root>
 	</kol-button-link>`;
 };

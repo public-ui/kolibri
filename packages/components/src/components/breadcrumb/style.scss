@@ -1,0 +1,24 @@
+@import '../style';
+
+@layer kol-component {
+	li,
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		gap: 0.5em;
+		flex-wrap: wrap;
+		place-items: center;
+	}
+
+	.kol-icon::part(separator) {
+		font-weight: 900;
+		font-size: 0.7em;
+	}
+
+	.kol-icon::part(separator):before {
+		content: '\f054';
+		font-family: 'Font Awesome 6 Free';
+	}
+}

@@ -14,13 +14,14 @@ import { translate } from '../../i18n';
 import { watchHeadingLevel } from '../heading/validation';
 
 import type { JSX } from '@stencil/core';
+import { KolButtonWcTag, KolHeadingWcTag } from '../../core/component-names';
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
  */
 @Component({
 	tag: 'kol-card',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -37,16 +38,16 @@ export class KolCard implements CardAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-card">
 				<div class="card">
 					<div class="header">
-						<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
+						<KolHeadingWcTag _label={this.state._label} _level={this.state._level}></KolHeadingWcTag>
 					</div>
 					<div class="content">
 						<slot />
 					</div>
 					{this.state._hasCloser && (
-						<kol-button-wc
+						<KolButtonWcTag
 							class="close"
 							_hideLabel
 							_icons={{
@@ -57,7 +58,7 @@ export class KolCard implements CardAPI {
 							_label={translate('kol-close')}
 							_on={this.on}
 							_tooltipAlign="left"
-						></kol-button-wc>
+						></KolButtonWcTag>
 					)}
 				</div>
 			</Host>

@@ -19,7 +19,7 @@ export class InputPasswordController extends InputIconController implements Inpu
 			'_autoComplete',
 			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
 			new Set(['on | off']),
-			value
+			value,
 		);
 	}
 

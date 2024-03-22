@@ -27,5 +27,5 @@ executeTests<HeadingProps>(
 	getHeadingHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

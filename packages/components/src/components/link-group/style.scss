@@ -1,0 +1,38 @@
+@import '../@shared/mixins';
+@import '../style';
+
+@layer kol-component {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	nav.horizontal ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	nav.horizontal li {
+		margin-left: rem(20);
+		margin-right: rem(4);
+	}
+
+	nav.horizontal li:first-child {
+		margin-left: 0;
+	}
+
+	nav.horizontal li:last-child {
+		margin-right: 0;
+	}
+
+	nav.vertical li {
+		margin-left: rem(28);
+		margin-right: rem(8);
+	}
+
+	li.list-none {
+		list-style-type: none !important;
+		margin-left: 0;
+	}
+}

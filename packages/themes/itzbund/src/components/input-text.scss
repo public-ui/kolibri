@@ -1,0 +1,64 @@
+@import '../mixins/alert-wc.scss';
+
+@layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+
+	input:hover,
+	input:focus {
+		border-color: var(--border-color) !important;
+		border-radius: none !important;
+		outline-color: var(--color-achat) !important;
+		outline-offset: 0;
+		outline-style: solid;
+		outline-width: 1px;
+	}
+
+	label {
+		color: var(--color-anthrazit);
+		font-size: 14px;
+		line-height: 20px;
+		gap: 8px;
+		width: 100%;
+		font-weight: bold;
+	}
+
+	input {
+		cursor: pointer;
+		width: 100%;
+		color: var(--color-anthrazit);
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-petrol);
+		border-radius: 0;
+		background-color: #e8edf2 !important;
+		overflow: hidden;
+		line-height: 24px;
+		font-size: 16px;
+	}
+
+	.error input {
+		background-color: var(--color-rotton-20) !important;
+		border-color: var(--color-rotton) !important;
+	}
+
+	input:disabled {
+		background-color: var(--color-input-bg-default);
+		border-color: var(--border-color);
+		cursor: not-allowed;
+	}
+
+	.kol-alert-wc {
+		margin-top: calc(2 * var(--spacing));
+		display: block;
+	}
+
+	.kol-required span::after {
+		content: '*';
+	}
+
+	input::placeholder {
+		font-style: italic;
+	}
+}

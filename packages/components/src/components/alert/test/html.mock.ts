@@ -11,14 +11,14 @@ export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML =
 		{
 			_level: 1,
 		},
-		props
+		props,
 	);
 	const type: string = props._type !== undefined ? props._type : 'default';
 	props._type = props._type || 'default';
 	props._variant = props._variant || 'msg';
-	return `<kol-alert${additionalHTML}>
+	return `<kol-alert${additionalHTML} class="kol-alert">
   <mock:shadow-root>
-    <kol-alert-wc class="alert ${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}"${props._alert === true ? ' role="alert"' : ''}>
+    <kol-alert-wc class="kol-alert-wc alert ${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}"${props._alert === true ? ' role="alert"' : ''}>
 			<div class="heading">
 				${getIconHtml(
 					{
@@ -26,26 +26,26 @@ export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML =
 							props._label !== undefined
 								? ''
 								: props._type === 'success'
-								? 'kol-success'
-								: props._type === 'error'
-								? 'kol-error'
-								: props._type === 'warning'
-								? 'kol-warning'
-								: props._type === 'info'
-								? 'kol-info'
-								: 'kol-message',
+									? 'kol-success'
+									: props._type === 'error'
+										? 'kol-error'
+										: props._type === 'warning'
+											? 'kol-warning'
+											: props._type === 'info'
+												? 'kol-info'
+												: 'kol-message',
 						_icons:
 							props._type === 'success'
 								? 'codicon codicon-pass'
 								: props._type === 'error'
-								? 'codicon codicon-error'
-								: props._type === 'warning'
-								? 'codicon codicon-warning'
-								: props._type === 'info'
-								? 'codicon codicon-info'
-								: 'codicon codicon-comment',
+									? 'codicon codicon-error'
+									: props._type === 'warning'
+										? 'codicon codicon-warning'
+										: props._type === 'info'
+											? 'codicon codicon-info'
+											: 'codicon codicon-comment',
 					},
-					` class="heading-icon"`
+					` class="heading-icon kol-icon"`,
 				)}
 				<div class="heading-content">
 					${
@@ -57,8 +57,9 @@ export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML =
 									},
 									{
 										expert: props._label,
-									}
-							  )
+									},
+									` class="kol-heading-wc"`,
+								)
 							: ''
 					}
 					${
@@ -83,8 +84,8 @@ export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML =
 									_tooltipAlign: 'left',
 								},
 								{},
-								` class="close"`
-						  )
+								` class="close"`,
+							)
 						: ''
 				}
 			</div>${

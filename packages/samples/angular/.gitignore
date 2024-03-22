@@ -1,53 +1,42 @@
-# Next
-.next
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# GraphQL
-src/__generated__
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
 
-# IDE's
-.idea
-.project
-*.sublime-*
-*.code-*
-
-
-# Node.js
-node_modules
+# Node
+/node_modules
 npm-debug.log
+yarn-error.log
 
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# Build and test tools
-*.zip
-/public/assets/
-/dist/
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
-# Cache
-.sass-cache
-.cache
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
 
-
-# Operating system
+# System files
 .DS_Store
 Thumbs.db
-
-
-# Other
-/.husky
-/.reports
-.env
-.eslintcache
-*~
-*.log
-*.tgz
-
-assets/bundes/
-assets/codicons/
-assets/fontawesome-free/
-assets/icofont/
-assets/kreon/
-assets/material-icons/
-assets/material-symbols/
-assets/noto-sans/
-assets/roboto/
-assets/tabler-icons/
-assets/kolibri.ico

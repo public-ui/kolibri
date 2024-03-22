@@ -1,0 +1,25 @@
+@import '../@shared/mixins';
+@import '../style';
+
+@layer kol-component {
+	:host {
+		align-items: center;
+		display: grid;
+		gap: rem(16);
+		grid-template-columns: 1fr auto;
+	}
+
+	.navigation-list {
+		align-items: center;
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.separator:before {
+		content: '•••';
+	}
+}

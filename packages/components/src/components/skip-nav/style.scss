@@ -1,0 +1,27 @@
+@import '../style';
+
+@layer kol-component {
+	ul {
+		display: grid;
+		list-style: none;
+		place-items: center;
+	}
+
+	ul li {
+		height: 0;
+	}
+
+	.kol-link-wc a {
+		left: -99999px;
+		overflow: hidden;
+		position: absolute;
+		z-index: 9999999;
+		line-height: 1em;
+	}
+
+	.kol-link-wc a:focus {
+		background-color: #fff;
+		left: unset;
+		position: unset;
+	}
+}

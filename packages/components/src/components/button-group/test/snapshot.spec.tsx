@@ -21,5 +21,5 @@ executeTests<ButtonGroupProps>(
 	getButtonGroupHtml,
 	{
 		execMode: 'default',
-	}
+	},
 );

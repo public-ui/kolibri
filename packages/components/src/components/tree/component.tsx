@@ -29,7 +29,7 @@ export class KolTreeWc implements TreeAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)}>
+			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-wc">
 				<nav class="tree" aria-label={this.state._label}>
 					<ul class="treeview-navigation" role="tree" aria-label={this.state._label}>
 						<slot />
@@ -108,7 +108,7 @@ export class KolTreeWc implements TreeAPI {
 			this.treeItemElements.map(async (element) => ({
 				value: element,
 				include: await areElementAndAllParentsOpen(element),
-			}))
+			})),
 		);
 
 		return elementsWithInclude.filter((element) => element.include).map((element) => element.value);

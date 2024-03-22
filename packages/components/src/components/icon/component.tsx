@@ -9,7 +9,7 @@ import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-icon',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -17,7 +17,7 @@ export class KolIcon implements IconAPI {
 	public render(): JSX.Element {
 		const ariaShow = this.state._label.length > 0;
 		return (
-			<Host exportparts="icon">
+			<Host exportparts="icon" class="kol-icon">
 				<i
 					aria-hidden={ariaShow ? undefined : 'true'}
 					/**

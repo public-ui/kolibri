@@ -1,0 +1,7 @@
+@import '../mixins-ec/alert-wc.scss';
+
+@layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+}

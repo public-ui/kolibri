@@ -8,7 +8,7 @@ import { Component, h, Host, State } from '@stencil/core';
 @Component({
 	tag: 'kol-indented-text',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -17,7 +17,7 @@ export class KolIndentedText implements IndentedTextAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-indented-text-wc">
 				<div>
 					{/* TODO: Für was wird dieses div benötigt? */}
 					<slot />

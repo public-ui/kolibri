@@ -10,7 +10,24 @@ type OptionalProps = {
 type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
-const isAssociatedTagName = (name?: string): boolean => name === 'KOL-BUTTON' || name === 'KOL-INPUT' || name === 'KOL-SELECT' || name === 'KOL-TEXTAREA';
+type HTMLInputFileElement = HTMLInputElement & {
+	files: FileList;
+};
+
+const isAssociatedTagName = (name?: string): boolean =>
+	name === 'KOL-BUTTON' ||
+	name === 'KOL-INPUT-CHECKBOX' ||
+	name === 'KOL-INPUT-COLOR' ||
+	name === 'KOL-INPUT-DATE' ||
+	name === 'KOL-INPUT-EMAIL' ||
+	name === 'KOL-INPUT-FILE' ||
+	name === 'KOL-INPUT-NUMBER' ||
+	name === 'KOL-INPUT-PASSWORD' ||
+	name === 'KOL-INPUT-RADIO' ||
+	name === 'KOL-INPUT-RANGE' ||
+	name === 'KOL-INPUT-TEXT' ||
+	name === 'KOL-SELECT' ||
+	name === 'KOL-TEXTAREA';
 
 export class AssociatedInputController implements Watches {
 	private readonly experimentalMode = getExperimentalMode();
@@ -27,13 +44,12 @@ export class AssociatedInputController implements Watches {
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
 
-		if (getExperimentalMode() && isAssociatedTagName(this.host?.tagName)) {
+		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName)) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
 				this.host?.removeChild(el);
 			});
 			switch (this.type) {
 				case 'button':
-				case 'checkbox':
 				case 'color':
 				case 'date':
 				case 'email':
@@ -53,6 +69,7 @@ export class AssociatedInputController implements Watches {
 				case 'textarea':
 					this.formAssociated = document.createElement('textarea');
 					break;
+				case 'checkbox': // Checkbox use default case
 				default:
 					this.formAssociated = document.createElement('input');
 					this.formAssociated.setAttribute('type', 'hidden');
@@ -129,10 +146,13 @@ export class AssociatedInputController implements Watches {
 	private syncValue(
 		rawValue: StencilUnknown,
 		strValue: string | null,
-		associatedElement?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+		associatedElement?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement,
 	) {
 		if (associatedElement) {
 			switch (this.type) {
+				case 'file':
+					(associatedElement as HTMLInputFileElement).files = rawValue as FileList;
+					break;
 				case 'select':
 					(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
 						(associatedElement as HTMLSelectElement).removeChild(el);
@@ -171,7 +191,7 @@ export class AssociatedInputController implements Watches {
 		});
 		if (typeof value === 'undefined') {
 			devHint(
-				`Ein Name am Eingabefeldern oder Schalter ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion und für das statische Versenden des Eingabefeldes relevant sein.`
+				`Ein Name am Eingabefeldern oder Schalter ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion und für das statische Versenden des Eingabefeldes relevant sein.`,
 			);
 		}
 	}

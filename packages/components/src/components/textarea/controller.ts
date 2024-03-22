@@ -49,7 +49,7 @@ export class TextareaController extends InputController implements TextareaWatch
 			'_resize',
 			(value) => typeof value === 'string' && cssResizeOptions.includes(value),
 			new Set(`String {${cssResizeOptions.join(', ')}`),
-			value
+			value,
 		);
 	}
 

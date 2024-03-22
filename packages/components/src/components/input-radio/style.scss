@@ -1,0 +1,71 @@
+@import '../input';
+@import '../@shared/kol-alert-mixin.scss';
+
+@include kol-alert-styles;
+
+@layer kol-component {
+	:host {
+		--border-width: 2px;
+		--input-size: 1.5em;
+	}
+
+	.kol-input .icons {
+		display: none;
+	}
+
+	label {
+		cursor: pointer;
+	}
+
+	input {
+		appearance: none;
+		border-width: var(--border-width);
+		border-style: solid;
+		border-radius: 100%;
+		cursor: pointer;
+		display: flex;
+		height: var(--input-size);
+		margin: 0;
+		min-height: var(--input-size);
+		min-width: var(--input-size);
+		padding: 0;
+		width: var(--input-size);
+	}
+
+	input:before {
+		border-radius: 100%;
+		content: '';
+		margin: auto;
+		height: calc(var(--input-size) / 2);
+		width: calc(var(--input-size) / 2);
+	}
+
+	input:checked:before {
+		background-color: #000;
+	}
+
+	@media (forced-colors: active) {
+		input:checked:before {
+			/* Give it a visible background in forced colors mode */
+			background: highlight !important;
+		}
+	}
+
+	fieldset {
+		display: flex;
+	}
+
+	fieldset.vertical {
+		flex-direction: column;
+	}
+
+	fieldset .input-slot {
+		align-items: center;
+		display: flex;
+	}
+
+	/* required star is on fieldset legend */
+	.required label > span::after {
+		content: '';
+	}
+}

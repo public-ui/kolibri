@@ -3,6 +3,7 @@ import { validateLabel, validateTooltipAlign } from '@public-ui/schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
+import { KolTooltipWcTag } from '../../core/component-names';
 
 import type { AbbrAPI, AbbrStates, LabelPropType, TooltipAlignPropType } from '@public-ui/schema';
 
@@ -12,7 +13,7 @@ import type { AbbrAPI, AbbrStates, LabelPropType, TooltipAlignPropType } from '@
 @Component({
 	tag: 'kol-abbr',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -21,14 +22,14 @@ export class KolAbbr implements AbbrAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-abbr">
 				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
 				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._label}>
 					<span title="">
 						<slot />
 					</span>
 				</abbr>
-				<kol-tooltip-wc _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip-wc>
+				<KolTooltipWcTag _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></KolTooltipWcTag>
 			</Host>
 		);
 	}

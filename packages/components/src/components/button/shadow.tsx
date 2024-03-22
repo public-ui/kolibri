@@ -15,12 +15,13 @@ import type {
 } from '@public-ui/schema';
 import { propagateFocus } from '@public-ui/schema';
 import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
+import { KolButtonWcTag } from '../../core/component-names';
 
 import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-button',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -39,8 +40,8 @@ export class KolButton implements ButtonProps {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<kol-button-wc
+			<Host class="kol-button">
+				<KolButtonWcTag
 					ref={this.catchRef}
 					class={{
 						button: true,
@@ -68,7 +69,7 @@ export class KolButton implements ButtonProps {
 					_variant={this._variant}
 				>
 					<slot name="expert" slot="expert"></slot>
-				</kol-button-wc>
+				</KolButtonWcTag>
 			</Host>
 		);
 	}

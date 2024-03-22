@@ -22,6 +22,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { TextareaController } from './controller';
 
 import type { JSX } from '@stencil/core';
+import { KolInputTag } from '../../core/component-names';
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
  */
@@ -41,7 +42,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 @Component({
 	tag: 'kol-textarea',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -65,8 +66,8 @@ export class KolTextarea implements TextareaAPI {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host class={{ 'has-value': this.state._hasValue }}>
-				<kol-input
+			<Host class={{ 'kol-textarea': true, 'has-value': this.state._hasValue }}>
+				<KolInputTag
 					class={{ textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
 					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
@@ -127,7 +128,7 @@ export class KolTextarea implements TextareaAPI {
 							value={this.state._value}
 						/>
 					</div>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

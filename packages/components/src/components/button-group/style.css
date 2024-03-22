@@ -1,7 +1,0 @@
-@import url(../style.css);
-@layer kol-component {
-	:host > kol-button-group-wc {
-		display: flex;
-		flex-wrap: wrap;
-	}
-}

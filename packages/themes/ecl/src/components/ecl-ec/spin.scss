@@ -1,0 +1,8 @@
+@layer kol-theme-component {
+	.cycle {
+		padding: 0.125rem;
+		& span {
+			background-color: var(--color-blue-75);
+		}
+	}
+}

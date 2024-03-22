@@ -15,18 +15,19 @@ export const getBadgeHtml = (props: BadgeProps, options?: SpanOptions): string =
 				foregroundColor: '#fff',
 			},
 		},
-		props
+		props,
 	);
 
 	state._color = handleColorChange(props._color || '#000');
 
 	const hasSmartButton = typeof state._smartButton === 'object' && state._smartButton !== null;
-	return `<kol-badge${options?.additionalAttrs ?? ''}>
+	return `<kol-badge${options?.additionalAttrs ?? ''} class="kol-badge">
 	<mock:shadow-root>
 		<span style="background-color: ${state._color.backgroundColor}; color: ${state._color.foregroundColor as string};">
 			${getSpanWcHtml({ ...state, _label: props._label, _allowMarkdown: true }, undefined, {
 				...options,
 				additionalAttrs: `${hasSmartButton ? ' id="nonce"' : ''}` + (options?.additionalAttrs ?? ''),
+				additionalClassNames: ['kol-span-wc'],
 			})}
 		</span>
 	</mock:shadow-root>

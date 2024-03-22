@@ -9,6 +9,7 @@ import type { DisabledPropType } from '@public-ui/schema';
 import { validateDisabled } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { preventDefaultAndStopPropagation } from '../../utils/events';
+import { KolIconTag, KolIndentedTextTag } from '../../core/component-names';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -16,7 +17,7 @@ import { preventDefaultAndStopPropagation } from '../../utils/events';
 @Component({
 	tag: 'kol-details',
 	styleUrls: {
-		default: './style.css',
+		default: './style.scss',
 	},
 	shadow: true,
 })
@@ -46,7 +47,7 @@ export class KolDetails implements DetailsAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class="kol-details">
 				<details
 					ref={this.catchDetails}
 					class={{
@@ -63,13 +64,13 @@ export class KolDetails implements DetailsAPI {
 						onKeyPress={this.preventToggleIfDisabled}
 						tabIndex={this.state._disabled ? -1 : undefined}
 					>
-						<kol-icon _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
+						<KolIconTag _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
 						<span>{this.state._label}</span>
 					</summary>
 					<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" ref={(element) => (this.contentElement = element)}>
-						<kol-indented-text>
+						<KolIndentedTextTag>
 							<slot />
-						</kol-indented-text>
+						</KolIndentedTextTag>
 					</div>
 				</details>
 			</Host>

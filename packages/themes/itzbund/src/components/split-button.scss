@@ -1,0 +1,76 @@
+@import '../mixins/button.scss';
+
+@layer kol-theme-component {
+	:host {
+		border-radius: 2rem;
+		border-style: solid;
+		border-width: var(--spacing);
+	}
+
+	.popover {
+		background: #fff;
+	}
+
+	.horizontal-line {
+		background-color: var(--border-color);
+		border-radius: 2px;
+		width: 1px;
+	}
+
+	.secondary-button button {
+		height: 100%;
+	}
+
+	.secondary-button > button > .kol-span-wc {
+		border-top-right-radius: 2rem;
+		border-bottom-right-radius: 2rem;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+	}
+
+	.secondary-button > button > :active > .kol-span-wc {
+		border-top-right-radius: 2rem;
+		border-bottom-right-radius: 2rem;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+	}
+
+	.secondary-button > button > :focus > .kol-span-wc {
+		border-top-right-radius: 2rem;
+		border-bottom-right-radius: 2rem;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+	}
+
+	.secondary-button > a,
+	.secondary-button > button {
+		border-top-right-radius: 2rem !important;
+		border-bottom-right-radius: 2rem !important;
+		border-top-left-radius: 0px !important;
+		border-bottom-left-radius: 0px !important;
+		font-family: var(--font-family-sans);
+		/* text-transform: uppercase; */
+	}
+
+	a,
+	button {
+		border-top-left-radius: 2rem !important;
+		border-bottom-left-radius: 2rem !important;
+		border-top-right-radius: 0px !important;
+		border-bottom-right-radius: 0px !important;
+		font-family: var(--font-family-sans);
+		/* text-transform: uppercase; */
+	}
+
+	a > .kol-span-wc,
+	button > .kol-span-wc {
+		border-top-left-radius: 2rem;
+		border-bottom-left-radius: 2rem;
+		font-size: inherit;
+		padding: 0 1rem;
+		min-width: 44px;
+		min-height: 44px;
+	}
+
+	@include kol-button;
+}
