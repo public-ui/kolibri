@@ -31,12 +31,12 @@
 		"serve": "14.2.1"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.23.10",
-		"@babel/plugin-syntax-import-attributes": "7.23.3",
-		"@babel/preset-env": "7.24.0",
+		"@babel/eslint-parser": "7.24.1",
+		"@babel/plugin-syntax-import-attributes": "7.24.1",
+		"@babel/preset-env": "7.24.3",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "5.1.0",
+		"knip": "5.2.2",
 		"prettier": "3.2.5"
 	},
 	"files": [

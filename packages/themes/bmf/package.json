@@ -16,7 +16,7 @@
 		"@public-ui/schema": "2.0.9",
 		"@public-ui/visual-tests": "2.0.9",
 		"@types/node": "ts5.4",
-		"typescript": "5.4.2"
+		"typescript": "5.4.3"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "2.0.9"

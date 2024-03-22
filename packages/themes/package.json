@@ -52,15 +52,15 @@
 	"devDependencies": {
 		"@public-ui/schema": "2.0.9",
 		"@types/node": "ts5.4",
-		"@typescript-eslint/eslint-plugin": "7.2.0",
-		"@typescript-eslint/parser": "7.2.0",
+		"@typescript-eslint/eslint-plugin": "7.3.1",
+		"@typescript-eslint/parser": "7.3.1",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.1.0",
-		"postcss": "8.4.35",
+		"postcss": "8.4.38",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass": "1.72.0",
-		"typescript": "5.4.2",
+		"typescript": "5.4.3",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {

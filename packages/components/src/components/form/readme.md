@@ -30,6 +30,14 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 | `_on`           | --               | Gibt die EventCallback-Funktionen für die Form-Events an.                                                                                                                               | `undefined \| { onSubmit?: EventCallback<Event> \| undefined; onReset?: EventCallback<Event> \| undefined; }` | `undefined` |
 | `_requiredText` | `_required-text` | Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.                                                                                         | `boolean \| string \| undefined`                                                                              | `true`      |
 
+## Methods
+
+### `focusErrorList() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
+
 ## Slots
 
 | Slot | Description      |
