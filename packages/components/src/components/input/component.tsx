@@ -2,6 +2,7 @@
 import { handleSlotContent, type MsgPropType, showExpertSlot } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
+import clsx from 'clsx';
 
 import { translate } from '../../i18n';
 
@@ -56,15 +57,14 @@ export class KolInput implements Props {
 
 		return (
 			<Host
-				class={{
-					'kol-input': true,
+				class={clsx('kol-input', this.getModifierClassNameByMsgType(), {
 					disabled: this._disabled === true,
 					error: hasError === true,
 					'read-only': this._readOnly === true,
 					required: this._required === true,
 					touched: this._touched === true,
 					'hidden-error': this._hideError === true,
-				}}
+				})}
 			>
 				<label class="input-label" id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltopInsteadOfLabel} htmlFor={this._id}>
 					{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
@@ -260,4 +260,16 @@ export class KolInput implements Props {
 	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _touched?: boolean = false;
+
+	private getModifierClassNameByMsgType() {
+		if (this._msg?._type) {
+			return {
+				default: 'msg-type-default',
+				info: 'msg-type-info',
+				success: 'msg-type-success',
+				warning: 'msg-type-warning',
+				error: 'msg-type-error',
+			}[this._msg?._type];
+		}
+	}
 }
