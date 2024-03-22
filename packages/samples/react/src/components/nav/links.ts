@@ -4,11 +4,16 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_label: 'Homepage',
 		_icons: 'codicon codicon-home',
-		_href: '#/back-page',
+		_on: {
+			onClick: () => console.log('Homepage clicked'),
+		},
 	},
 	{
 		_label: '2 Navigation point',
 		_href: '#/back-page',
+		_on: {
+			onClick: () => console.log('Link clicked'),
+		},
 	},
 	{
 		_label: '3 Navigation point',
@@ -54,7 +59,18 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 			{ _label: '3.5 Navigation point', _href: '#/back-page' },
 		],
 	},
-	{ _label: '4 Navigation point', _href: '#/back-page' },
+	{
+		_label: '4 Navigation point with children and onClick',
+		_children: [
+			{
+				_label: '4.1 Nested link',
+				_href: '#/back-page',
+			},
+		],
+		_on: {
+			onClick: () => console.log('4.1 Nested link clicked'),
+		},
+	},
 	{
 		_label: '5 Keine eigene Seite, nur Kategorie',
 		_active: true,
