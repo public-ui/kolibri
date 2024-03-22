@@ -92,18 +92,4 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 | `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                          | `undefined` |
 | `_links` _(required)_ | `_links`  | Defines the list of links combined with their labels to render.                                                    | `BreadcrumbLinkProps[] \| string` | `undefined` |
 
-## Dependencies
-
-### Depends on
-
-- [kol-icon](../icon)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-breadcrumb --> kol-icon
-  style kol-breadcrumb stroke:#333,stroke-width:4px
-```
-
 ---

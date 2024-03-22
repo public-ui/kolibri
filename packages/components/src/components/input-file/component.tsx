@@ -7,6 +7,7 @@ import type {
 	InputTypeOnDefault,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	Stringified,
 	SyncValueBySelectorPropType,
@@ -61,7 +62,7 @@ export class KolInputFile implements InputFileAPI {
 					}}
 					_accessKey={this.state._accessKey}
 					_disabled={this.state._disabled}
-					_error={this.state._error}
+					_msg={this.state._msg}
 					_hideError={this.state._hideError}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
@@ -141,6 +142,7 @@ export class KolInputFile implements InputFileAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
 
@@ -176,6 +178,11 @@ export class KolInputFile implements InputFileAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Makes the input accept multiple inputs.
@@ -294,6 +301,11 @@ export class KolInputFile implements InputFileAPI {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_multiple')

@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { handleSlotContent, showExpertSlot } from '@public-ui/schema';
+import { handleSlotContent, type MsgPropType, showExpertSlot } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
+import clsx from 'clsx';
 
 import { translate } from '../../i18n';
 
@@ -47,22 +48,23 @@ export class KolInput implements Props {
 	}
 
 	public render(): JSX.Element {
-		const hasError = !this._readOnly && typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
+		const isMessageValidError = Boolean(this._msg?._type === 'error' && this._msg._description && this._msg._description?.length > 0);
+		const hasError = !this._readOnly && isMessageValidError && this._touched === true;
+		const showFormFieldMsg = Boolean(hasError || (this._msg?._type !== 'error' && this._msg?._description));
 		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 		const useTooltopInsteadOfLabel = !hasExpertSlot && this._hideLabel;
 
 		return (
 			<Host
-				class={{
-					'kol-input': true,
+				class={clsx('kol-input', this.getModifierClassNameByMsgType(), {
 					disabled: this._disabled === true,
 					error: hasError === true,
 					'read-only': this._readOnly === true,
 					required: this._required === true,
 					touched: this._touched === true,
 					'hidden-error': this._hideError === true,
-				}}
+				})}
 			>
 				<label class="input-label" id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltopInsteadOfLabel} htmlFor={this._id}>
 					{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
@@ -118,7 +120,7 @@ export class KolInput implements Props {
 						_label={this._label}
 					></KolTooltipWcTag>
 				)}
-				{hasError && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _error={this._error} _id={this._id} />}
+				{showFormFieldMsg && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (
@@ -167,11 +169,6 @@ export class KolInput implements Props {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Defines the error message text.
-	 */
-	@Prop() public _error?: string = '';
-
-	/**
 	 * Shows the character count on the lower border of the input.
 	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
@@ -216,6 +213,11 @@ export class KolInput implements Props {
 	@Prop() public _maxLength?: number;
 
 	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
+
+	/**
 	 * Makes the input element read only.
 	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
@@ -258,4 +260,16 @@ export class KolInput implements Props {
 	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _touched?: boolean = false;
+
+	private getModifierClassNameByMsgType() {
+		if (this._msg?._type) {
+			return {
+				default: 'msg-type-default',
+				info: 'msg-type-info',
+				success: 'msg-type-success',
+				warning: 'msg-type-warning',
+				error: 'msg-type-error',
+			}[this._msg?._type];
+		}
+	}
 }

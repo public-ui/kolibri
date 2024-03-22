@@ -5,6 +5,7 @@ import type {
 	InputRadioStates,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
+	MsgPropType,
 	NamePropType,
 	OptionsPropType,
 	Orientation,
@@ -147,7 +148,7 @@ export class KolInputRadio implements InputRadioAPI {
 							</KolInputTag>
 						);
 					})}
-					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _error={this.state._error} _id={this.state._id} />}
+					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}
 				</fieldset>
 			</Host>
 		);
@@ -173,6 +174,7 @@ export class KolInputRadio implements InputRadioAPI {
 
 	/**
 	 * Defines the error message text.
+	 * @deprecated Will be removed in v3. Use `msg` instead.
 	 */
 	@Prop() public _error?: string;
 
@@ -203,6 +205,11 @@ export class KolInputRadio implements InputRadioAPI {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: MsgPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -313,6 +320,11 @@ export class KolInputRadio implements InputRadioAPI {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
+	}
+
+	@Watch('_msg')
+	public validateMsg(value?: MsgPropType): void {
+		this.controller.validateMsg(value);
 	}
 
 	@Watch('_name')

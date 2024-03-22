@@ -10,14 +10,20 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, Components.K
 		<div className="grid gap-4">
 			<KolInputColor
 				{...props}
-				_error={ERROR_MSG}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_icons={{
 					left: 'codicon codicon-symbol-color',
 				}}
 				_label="Color"
 				_value="#f08080"
 			/>
-			<KolInputColor {...props} _error={ERROR_MSG} _label="Color with error" _suggestions="['#000000','#f08080', '#0000ff','#00ff00']" _touched />
+			<KolInputColor
+				{...props}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
+				_label="Color with error"
+				_suggestions="['#000000','#f08080', '#0000ff','#00ff00']"
+				_touched
+			/>
 			<KolInputColor {...props} ref={ref} _accessKey="C" _hint="Hint text" _label="Color with hint" _value="#f08080" />
 			<KolInputColor {...props} _disabled _label="Color (Disabled)" _value="#f08080" />
 		</div>
