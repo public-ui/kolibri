@@ -51,13 +51,13 @@
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.4",
 		"@types/normalize-package-data": "2.4.4",
-		"solid-js": "1.8.15",
-		"typescript": "5.4.2",
+		"solid-js": "1.8.16",
+		"typescript": "5.4.3",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "1.7.15",
-		"solid-js": ">=1.8.15"
+		"solid-js": ">=1.8.16"
 	},
 	"sideEffects": false,
 	"type": "module",

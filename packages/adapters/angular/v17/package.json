@@ -63,9 +63,9 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/compiler": "17.3.0",
-		"@angular/compiler-cli": "17.3.0",
-		"@angular/core": "17.2.4",
+		"@angular/compiler": "17.3.1",
+		"@angular/compiler-cli": "17.3.1",
+		"@angular/core": "17.3.1",
 		"@public-ui/components": "1.7.15",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
@@ -75,7 +75,7 @@
 		"rimraf": "5.0.5",
 		"rxjs": "7.8.1",
 		"tslib": "2.6.2",
-		"typescript": "5.4.2",
+		"typescript": "5.4.3",
 		"zone.js": "0.14.4"
 	},
 	"peerDependencies": {
