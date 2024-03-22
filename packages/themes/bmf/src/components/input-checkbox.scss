@@ -96,7 +96,7 @@
 	}
 
 	/* CHECKBOX */
-	:host .kol-input label span {
+	:host .kol-input:not(.button) label span {
 		margin-top: 0.125rem;
 	}
 
@@ -236,54 +236,93 @@
 		}
 	}
 
-	:host .kol-input.button {
+	.kol-input.button {
 		row-gap: 0.5rem;
-	}
 
-	:host .kol-input.button.checked > .input,
-	:host .kol-input.button.checked > label {
-		background-color: var(--color-ice);
-	}
+		/* Outer, clickable, container for the checkbox */
+		.checkbox-container {
+			align-items: center;
+			display: flex;
+			min-height: 44px;
+			position: relative;
+		}
 
-	:host .kol-input.button > label {
-		background-color: var(--color-silver);
-		border-top-right-radius: var(--border-radius);
-		border-bottom-right-radius: var(--border-radius);
-		min-height: 32px;
-		align-items: center;
-		display: flex;
-		padding-right: 12px;
-		width: 100%;
-	}
+		/* Inner, visual, element for the checkbox */
+		.icon {
+			background-color: var(--color-silver);
+			border-bottom-left-radius: var(--border-radius);
+			border-top-left-radius: var(--border-radius);
+			height: auto;
+			min-height: 32px;
+			min-width: 32px;
 
-	:host .kol-input.button > .input {
-		background-color: var(--color-silver);
-		border-top-left-radius: var(--border-radius);
-		border-bottom-left-radius: var(--border-radius);
-		min-height: 32px;
-		min-width: 32px;
-		place-content: center;
-	}
+			/* Stable position when paddings are changing */
+			&::part(icon) {
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
 
-	:host .kol-input.button.hide-label > .input {
-		border-top-right-radius: var(--border-radius);
-		border-bottom-right-radius: var(--border-radius);
-	}
+			@at-root .hide-label#{&} {
+				border-top-right-radius: var(--border-radius);
+				border-bottom-right-radius: var(--border-radius);
+			}
+		}
 
-	:host .kol-input.button > .input > div {
-		display: flex;
-	}
+		/* Outer, clickable, container for the label */
+		.input-label {
+			align-items: center;
+			display: flex;
+			min-height: 44px;
+			width: 100%;
+		}
 
-	:host .kol-input.button .icon {
-		height: auto;
-	}
+		/* Inner, visual, element for the label */
+		.input-label-span {
+			align-items: center;
+			background-color: var(--color-silver);
+			border-bottom-right-radius: var(--border-radius);
+			border-top-right-radius: var(--border-radius);
+			display: flex;
+			min-height: 32px;
+			padding-right: 12px;
+			width: 100%;
+		}
 
-	.button:focus-within {
-		border-radius: var(--a11y-min-size);
-		outline-color: var(--color-ocean);
-		outline-offset: 2px;
-		outline-style: solid;
-		outline-width: 3px;
+		/* States */
+		&.checked .icon,
+		&.checked .input-label-span {
+			background-color: var(--color-ice);
+		}
+
+		&:not(.disabled):hover .icon,
+		&:not(.disabled):hover .input-label-span {
+			background-color: var(--color-midnight);
+			color: var(--color-silver);
+		}
+
+		&:focus-within {
+			outline: none;
+
+			.icon,
+			.input-label-span {
+				min-height: 34px;
+				border: 3px solid var(--color-ocean);
+				background-clip: content-box; // emulate outline with offset
+				padding: 2px;
+			}
+
+			.icon {
+				border-right: none;
+				padding-right: 0;
+			}
+
+			.input-label-span {
+				border-left: none;
+				padding-left: 0;
+			}
+		}
 	}
 
 	.msg {
