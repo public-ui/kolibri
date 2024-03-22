@@ -111,18 +111,4 @@ Type: `Promise<W3CInputValue | undefined>`
 | ---- | ----------------------------------------- |
 |      | Die Legende/Überschrift der Radiobuttons. |
 
-## Dependencies
-
-### Depends on
-
-- [kol-alert-wc](../alert)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-input-radio --> kol-alert-wc
-  style kol-input-radio stroke:#333,stroke-width:4px
-```
-
 ---

@@ -90,18 +90,4 @@ Type: `Promise<void>`
 
 Type: `Promise<() => void>`
 
-## Dependencies
-
-### Depends on
-
-- [kol-alert](../alert)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-toast-container --> kol-alert
-  style kol-toast-container stroke:#333,stroke-width:4px
-```
-
 ---
