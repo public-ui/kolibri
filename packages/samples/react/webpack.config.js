@@ -8,6 +8,7 @@ module.exports = (...args) => {
 		new webpack.EnvironmentPlugin({
 			THEME_MODULE: '',
 			THEME_EXPORT: '',
+			ENABLE_TAG_NAME_TRANSFORMER: '',
 		}),
 	);
 	return config;

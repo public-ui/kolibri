@@ -74,4 +74,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update all snapshots
-          file_pattern: 'packages/themes/**/snapshots/*'
+          file_pattern: 'packages/themes/**/snapshots/* packages/test-tag-name-transformer/snapshots/*'
