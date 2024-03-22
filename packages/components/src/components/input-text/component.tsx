@@ -42,26 +42,26 @@ export class KolInputText implements API {
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
 		propagateFocus(this.host, this.ref);
-		this.disconnectedCallback();
-		this.ref?.addEventListener('search', this.onChange);
-	};
-
-	private readonly onKeyDown = (event: KeyboardEvent) => {
-		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
-		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-			propagateSubmitEventToForm({
-				form: this.host,
-				ref: this.ref,
-			});
-		} else {
-			this.onChange(event);
-		}
 	};
 
 	private readonly onChange = (event: Event) => {
 		if (this.oldValue !== this.ref?.value) {
 			this.oldValue = this.ref?.value;
 			this.controller.onFacade.onChange(event);
+		}
+	};
+
+	private readonly onInput = (event: InputEvent) => {
+		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		this.controller.onFacade.onInput(event);
+	};
+
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.ref,
+			});
 		}
 	};
 
@@ -128,7 +128,8 @@ export class KolInputText implements API {
 							type={this.state._type}
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							// onInput={this.controller.onFacade.onChange}
+							onChange={this.onChange}
+							onInput={this.onInput}
 							onKeyDown={this.onKeyDown}
 						/>
 					</div>
@@ -471,9 +472,5 @@ export class KolInputText implements API {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-	}
-
-	public disconnectedCallback(): void {
-		this.ref?.removeEventListener('search', this.onChange);
 	}
 }

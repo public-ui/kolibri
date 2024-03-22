@@ -386,12 +386,13 @@ export class KolTextarea implements API {
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 
-	private readonly onInput = () => {
+	private readonly onInput = (event: InputEvent) => {
 		if (this.ref instanceof HTMLTextAreaElement) {
 			setState(this, '_currentLength', this.ref.value.length);
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.ref);
 			}
+			this.controller.onFacade.onInput(event);
 		}
 	};
 }
