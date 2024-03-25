@@ -1,10 +1,8 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getIconHtml } from '../../icon/test/html.mock';
-import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
-
 import type { DetailsProps } from '@public-ui/schema';
 import clsx from 'clsx';
+import { KolIconTag, KolIndentedTextTag } from '../../../core/component-names';
 
 export const getDetailsHtml = (
 	props: DetailsProps,
@@ -31,19 +29,15 @@ export const getDetailsHtml = (
 				${props._disabled ? `aria-disabled="true"` : ''}
 				${props._disabled ? `tabindex="-1"` : ''}
 			>
-				${getIconHtml(
-					{
-						_label: '',
-						_icons: 'codicon codicon-chevron-right',
-					},
-					`class="kol-icon icon${props._open ? ' is-open' : ''}"`,
-				)}
+				<${KolIconTag} _label="" _icons="codicon codicon-chevron-right" class="icon${props._open ? ' is-open' : ''}" > </${KolIconTag}>
 				<span>
 					${props._label}
 				</span>
 			</summary>
 			<div${props._open ? `` : ` aria-hidden="true"`} class="content">
-				${getIndentedTextHtml(props, slots)}
+				<${KolIndentedTextTag}>
+					<slot />
+				</${KolIndentedTextTag}>
 			</div>
 		</details>
 	</mock:shadow-root>
