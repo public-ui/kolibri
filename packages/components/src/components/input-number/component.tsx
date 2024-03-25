@@ -58,8 +58,6 @@ export class KolInputNumber implements InputNumberAPI {
 				form: this.host,
 				ref: this.ref,
 			});
-		} else {
-			this.controller.onFacade.onChange(event);
 		}
 	};
 

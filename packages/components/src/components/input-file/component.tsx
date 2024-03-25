@@ -14,16 +14,15 @@ import type {
 	TooltipAlignPropType,
 } from '@public-ui/schema';
 import { propagateFocus, showExpertSlot } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputFileController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolInputTag } from '../../core/component-names';
+
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -110,6 +109,7 @@ export class KolInputFile implements InputFileAPI {
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 							onChange={this.onChange}
+							onInput={this.onInput}
 						/>
 					</div>
 				</KolInputTag>
@@ -363,17 +363,14 @@ export class KolInputFile implements InputFileAPI {
 		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file') {
 			const value = this.ref.files;
 
-			// Event handling
-			stopPropagation(event);
-			tryToDispatchKoliBriEvent('change', this.host, value);
+			this.controller.onFacade.onChange(event);
 
 			// Static form handling
 			this.controller.setFormAssociatedValue(value);
-
-			// Callback
-			if (typeof this.state._on?.onChange === 'function') {
-				this.state._on.onChange(event, value);
-			}
 		}
+	};
+
+	private onInput = (event: Event): void => {
+		this.controller.onFacade.onInput(event, false);
 	};
 }

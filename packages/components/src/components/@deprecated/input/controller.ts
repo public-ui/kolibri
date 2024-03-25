@@ -175,9 +175,6 @@ export class InputController extends ControlledInputController implements Watche
 		// Event handling
 		tryToDispatchKoliBriEvent('change', this.host, value);
 
-		// Static form handling
-		this.setFormAssociatedValue(value);
-
 		// Callback
 		if (typeof this.component._on?.onChange === 'function') {
 			/**
@@ -194,6 +191,24 @@ export class InputController extends ControlledInputController implements Watche
 		 * TODO: Was ist das?
 		 */
 		this.valueChangeListeners.forEach((listener) => listener(value));
+	}
+
+	protected onInput(event: Event, shouldSetFormAssociatedValue = true): void {
+		const value = (event.target as HTMLInputElement).value;
+
+		// Event handling
+		stopPropagation(event);
+		tryToDispatchKoliBriEvent('input', this.host);
+
+		// Static form handling
+		if (shouldSetFormAssociatedValue) {
+			this.setFormAssociatedValue(value);
+		}
+
+		// Callback
+		if (typeof this.component._on?.onInput === 'function') {
+			this.component._on.onInput(event);
+		}
 	}
 
 	protected onClick(event: Event): void {
@@ -237,5 +252,6 @@ export class InputController extends ControlledInputController implements Watche
 		onChange: this.onChange.bind(this),
 		onClick: this.onClick.bind(this),
 		onFocus: this.onFocus.bind(this),
+		onInput: this.onInput.bind(this),
 	};
 }

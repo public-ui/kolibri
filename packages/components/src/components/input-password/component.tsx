@@ -51,15 +51,17 @@ export class KolInputPassword implements InputPasswordAPI {
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
-		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});
-		} else {
-			this.controller.onFacade.onChange(event);
 		}
+	};
+
+	private readonly onInput = (event: InputEvent) => {
+		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		this.controller.onFacade.onInput(event);
 	};
 
 	public render(): JSX.Element {
@@ -135,6 +137,7 @@ export class KolInputPassword implements InputPasswordAPI {
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 							onKeyDown={this.onKeyDown}
+							onInput={this.onInput}
 						/>
 					</div>
 				</KolInputTag>

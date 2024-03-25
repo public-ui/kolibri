@@ -139,11 +139,7 @@ export class KolSelect implements SelectAPI {
 							required={this.state._required}
 							size={this.state._rows}
 							spellcheck="false"
-							{...{
-								onClick: this.controller.onFacade.onClick,
-								onBlur: this.controller.onFacade.onBlur,
-								onFocus: this.controller.onFacade.onFocus,
-							}}
+							{...this.controller.onFacade}
 							onChange={this.onChange}
 						>
 							{this.state._options.map((option, index) => {

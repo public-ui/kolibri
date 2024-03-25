@@ -20,6 +20,10 @@ type InputTypeOnFocus = {
 	[Events.onFocus]?: EventCallback<Event>;
 };
 
+type InputTypeOnInput = {
+	[Events.onInput]?: EventCallback<Event>;
+};
+
 // https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element
 export type Option<T> = {
 	disabled?: boolean;
@@ -36,4 +40,4 @@ export type Optgroup<T> = {
 
 export type SelectOption<T> = Option<T> | Optgroup<T>;
 
-export type InputTypeOnDefault = InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus;
+export type InputTypeOnDefault = InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput;
