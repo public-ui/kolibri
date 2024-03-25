@@ -88,6 +88,55 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 - Es ist exakt eine oder keine Sortierfunktion aktiviert.
 - Aktuell wird nicht unterstützt, dass bei zweidimensionalen Headern, die Header der jeweils anderen Header-Seite mit sortiert werden. Bei der Anforderung der Sortierung empfehlen wir die Verwendung nur einer Header-Dimension (entweder horizontal oder vertikal).
 
+### Render Funktion
+
+Die `render` Funktion kann auf verschiedene Arten wie folgt verwendet werden.  
+Alle Methoden sind auch in diesem Beispiel demonstriert: [render-cell.tsx](https://github.com/public-ui/kolibri/blob/23ebb42d1ce3c8d1e4c74a5c7972842d5e4203fe/packages/samples/react/src/components/table/render-cell.tsx#L34)
+
+1. String Rückgabewert:
+
+```tsx
+{
+  render: (_el, cell) => `Index: ${cell.label}`,
+}
+```
+
+2. Node mit textContent füllen
+
+```tsx
+{
+  render: (el, cell) => {
+    el.textContent = `Index: ${cell.label}`;
+  },
+}
+```
+
+3. Node mit innerHTML füllen - ⚠️ Hierbei unbedingt darauf achten, Werte zu sanitizen, um XXS vermeiden.
+
+```tsx
+{
+  render: (el, cell) => {
+    el.innerHTML = `<strong>${cell.label}</strong>`;
+  },
+}
+```
+
+4. React render-function verwenden
+
+```tsx
+import { createReactRenderElement } from '@public-ui/react';
+{
+  render: (el) => {
+    getRoot(createReactRenderElement(el)).render(
+      <div>
+        <KolInputText _label="Input" />
+        <KolButton _label="Save" />
+      </div>,
+    );
+  },
+}
+```
+
 <!--### Best practices
 
 ### Anwendungsfälle-->
