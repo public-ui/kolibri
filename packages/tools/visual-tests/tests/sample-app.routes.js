@@ -183,6 +183,7 @@ ROUTES.set('input-password/show-password', null);
 ROUTES.set('input-radio/basic', null);
 ROUTES.set('input-radio/horizontal', null);
 ROUTES.set('input-radio/select', null);
+ROUTES.set('input-radio/object', null);
 ROUTES.set('input-range/basic', null);
 ROUTES.set('input-text/basic', null);
 ROUTES.set('input-text/blur', null);
@@ -376,11 +377,6 @@ ROUTES.set('version/basic', {
 	},
 });
 ROUTES.set('version/context', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('scenarios/complex-form', {
 	axe: {
 		skipFailures: false,
 	},

@@ -21,14 +21,17 @@ packageJson.scripts = {
 	postpack: 'mv package.bak.json package.json',
 };
 
-packageJson = prettier.format(JSON.stringify(packageJson), {
-	parser: 'json',
-	printWidth: 120,
-	singleQuote: true,
-});
+prettier
+	.format(JSON.stringify(packageJson), {
+		parser: 'json',
+		printWidth: 120,
+		singleQuote: true,
+	})
+	.then((packageJson) => {
+		console.log(packageJson);
 
-console.log(packageJson);
-
-fs.writeFileSync('./package.json', packageJson, {
-	encoding: 'utf8',
-});
+		fs.writeFileSync('./package.json', packageJson, {
+			encoding: 'utf8',
+		});
+	})
+	.catch(console.error);

@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { AdjustHeightPropType, ButtonProps, HideErrorPropType, InputTypeOnDefault, LabelWithExpertSlotPropType } from '@public-ui/schema';
+import type { AdjustHeightPropType, ButtonProps, HideErrorPropType, InputTypeOnDefault, LabelWithExpertSlotPropType, MsgPropType } from '@public-ui/schema';
 import {
 	a11yHint,
 	a11yHintDisabled,
@@ -12,6 +12,7 @@ import {
 	validateHideError,
 	validateHideLabel,
 	validateLabelWithExpertSlot,
+	validateMsg,
 	validateTabIndex,
 	watchBoolean,
 	watchString,
@@ -50,8 +51,17 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public validateError(value?: string): void {
-		watchString(this.component, '_error', value);
+		const message: MsgPropType | undefined = value
+			? {
+					_description: value,
+					_type: 'error',
+				}
+			: undefined;
+		this.validateMsg(message);
 	}
 
 	public validateHideError(value?: HideErrorPropType): void {
@@ -102,6 +112,10 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
+	public validateMsg(value?: MsgPropType): void {
+		validateMsg(this.component, value);
+	}
+
 	public validateOn(value?: InputTypeOnDefault): void {
 		if (typeof value === 'object') {
 			setState(this.component, '_on', value);
@@ -129,6 +143,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateAccessKey(this.component._accessKey);
 		this.validateAdjustHeight(this.component._adjustHeight);
 		this.validateError(this.component._error);
+		this.validateMsg(this.component._msg);
 		this.validateDisabled(this.component._disabled);
 		this.validateHideError(this.component._hideError);
 		this.validateHideLabel(this.component._hideLabel);

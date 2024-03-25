@@ -7,6 +7,7 @@ import type {
 	PropHideLabel,
 	PropIndeterminate,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropName,
 	PropRequired,
 	PropSyncValueBySelector,
@@ -44,6 +45,9 @@ type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
+	/**
+	 * @deprecated Will be removed in v3. Use `msg` instead.
+	 */
 	error: string;
 	hint: string;
 	icons: Stringified<InputCheckboxIconsProp>;
@@ -57,6 +61,7 @@ type OptionalProps = {
 	PropHideLabel &
 	PropIndeterminate &
 	PropLabelWithExpertSlot &
+	PropMsg &
 	PropName &
 	PropRequired &
 	PropSyncValueBySelector &
@@ -74,12 +79,12 @@ type RequiredStates = {
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
-	error: string;
 	hint: string;
 	on: InputTypeOnDefault;
 	tabIndex: number;
 } & PropDisabled &
 	PropHideLabel &
+	PropMsg &
 	PropName &
 	PropRequired &
 	PropTouched;

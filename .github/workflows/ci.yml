@@ -73,4 +73,5 @@ jobs:
           name: reports
           path: |
             packages/themes/**/test-results/**/*.png
+            packages/test-tag-name-transformer/test-results/**/*.png
             !**/node_modules

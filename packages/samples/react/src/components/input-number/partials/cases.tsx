@@ -11,7 +11,7 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 			<KolInputNumber
 				{...props}
 				_required
-				_error={ERROR_MSG}
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_touched
 				_placeholder="Mit Icons"
 				_label="Zahleneingabe"
