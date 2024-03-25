@@ -124,15 +124,10 @@ Alle Methoden sind auch in diesem Beispiel demonstriert: [render-cell.tsx](https
 4. React render-function verwenden
 
 ```tsx
+import { createReactRenderElement } from '@public-ui/react';
 {
   render: (el) => {
-    const renderElement = document.createElement('div');
-    renderElement.setAttribute('role', 'presentation'); // Vorlegen in Screenreader als "anklickbar" vermeiden
-    el.innerHTML = '';
-    el.appendChild(renderElement);
-
-    /* https://react.dev/reference/react-dom/client/createRoot */
-    getRoot(renderElement).render(
+    getRoot(createReactRenderElement(el)).render(
       <div>
         <KolInputText _label="Input" />
         <KolButton _label="Save" />
