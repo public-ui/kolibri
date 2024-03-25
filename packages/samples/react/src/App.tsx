@@ -4,13 +4,13 @@ import { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
 import { Option } from '@public-ui/components';
 import PackageJson from '@public-ui/components/package.json';
-import { KolAlert, KolBadge } from '@public-ui/react';
+import { KolBadge } from '@public-ui/react';
 import { useLocation } from 'react-router';
 import { Sidebar } from './components/Sidebar';
 import { HideMenusContext } from './shares/HideMenusContext';
 import { ROUTES } from './shares/routes';
 import { getTheme, getThemeName, setStorage, setTheme } from './shares/store';
-import { THEMES, THEME_OPTIONS, Theme, isDraftTheme } from './shares/theme';
+import { THEMES, THEME_OPTIONS, Theme, ThemeAndUnstyled, isDraftTheme } from './shares/theme';
 
 import { BackPage } from './components/BackPage';
 
@@ -47,7 +47,7 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 						element={
 							<div className="d-grid gap-4">
 								{THEME_OPTIONS.filter((theme) => THEMES.indexOf((theme as Option<Theme>).value) >= 0).map((theme) => (
-									<div className="d-grid gap-2" key={(theme as Option<Theme>).value} data-theme={(theme as Option<Theme>).value}>
+									<div className="d-grid gap-2" key={(theme as Option<ThemeAndUnstyled>).value} data-theme={(theme as Option<ThemeAndUnstyled>).value}>
 										<div className="mt-4">
 											<strong>{theme.label}</strong>
 										</div>
@@ -102,10 +102,10 @@ ROUTE_LIST.forEach((route) => {
 export const App: FC = () => {
 	const routerLocation = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
-	const theme: Theme = (searchParams.get('theme') as Theme) ?? getTheme();
+	const theme: ThemeAndUnstyled = (searchParams.get('theme') as ThemeAndUnstyled) ?? getTheme();
 	const hideMenus = searchParams.has('hideMenus');
 
-	setTheme(theme as Theme); // set for `getTheme` usages within the application
+	setTheme(theme); // set for `getTheme` usages within the application
 
 	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
 	document.body.setAttribute('class', theme);

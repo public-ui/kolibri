@@ -10,7 +10,6 @@ import { NamePropType } from '../../types/props/name';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { Props as ButtonProps } from '../button/types';
 import { getRenderStates } from '../input/controller';
@@ -84,6 +83,7 @@ export class KolInputFile implements API {
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 							onChange={this.onChange}
+							onInput={this.onInput}
 						/>
 					</div>
 				</kol-input>
@@ -336,17 +336,14 @@ export class KolInputFile implements API {
 		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file') {
 			const value = this.ref.files;
 
-			// Event handling
-			stopPropagation(event);
-			tryToDispatchKoliBriEvent('change', this.host, value);
+			this.controller.onFacade.onChange(event);
 
 			// Static form handling
 			this.controller.setFormAssociatedValue(value);
-
-			// Callback
-			if (typeof this.state._on?.onChange === 'function') {
-				this.state._on.onChange(event, value);
-			}
 		}
+	};
+
+	private onInput = (event: Event): void => {
+		this.controller.onFacade.onInput(event, false);
 	};
 }

@@ -65,8 +65,6 @@ export class KolInputRange implements API {
 				form: this.host,
 				ref: this.refInputRange,
 			});
-		} else {
-			this.onChange(event);
 		}
 	};
 

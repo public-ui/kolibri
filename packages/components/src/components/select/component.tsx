@@ -113,11 +113,7 @@ export class KolSelect implements API {
 							style={{
 								height: this.state._height,
 							}}
-							{...{
-								onClick: this.controller.onFacade.onClick,
-								onBlur: this.controller.onFacade.onBlur,
-								onFocus: this.controller.onFacade.onFocus,
-							}}
+							{...this.controller.onFacade}
 							onChange={this.onChange}
 						>
 							{this.state._options.map((option, index) => {

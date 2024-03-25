@@ -1,4 +1,4 @@
-import { isTheme, Store, Theme } from './theme';
+import { isTheme, Store, ThemeAndUnstyled } from './theme';
 import PackageJson from '@public-ui/components/package.json';
 import { THEME_OPTIONS } from './theme';
 import { Option } from '@public-ui/components';
@@ -63,7 +63,7 @@ export const getDarkMode = (): boolean => {
 	return STORE.darkMode === true;
 };
 
-export const setTheme = (theme: Theme) => {
+export const setTheme = (theme: ThemeAndUnstyled) => {
 	if (isTheme(theme)) {
 		STORE.theme = theme;
 		setStore();
@@ -72,13 +72,13 @@ export const setTheme = (theme: Theme) => {
 	}
 };
 
-export const getTheme = (): Theme => {
+export const getTheme = (): ThemeAndUnstyled => {
 	return `${STORE.theme}`;
 };
 
-export const getThemeName = (theme: Theme): string => {
+export const getThemeName = (theme: ThemeAndUnstyled): string => {
 	if (isTheme(theme)) {
-		return THEME_OPTIONS.find((option) => (option as Option<Theme>).value === theme)?.label;
+		return THEME_OPTIONS.find((option) => (option as Option<ThemeAndUnstyled>).value === theme)?.label;
 	} else {
 		throw new Error(`The theme identifier "${theme}" is not valid or an available option.`);
 	}
