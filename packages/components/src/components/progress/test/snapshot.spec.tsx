@@ -56,7 +56,7 @@ describe('test Progress', () => {
 			template: () => <KolProgressTag {...DEFAULT_PROPS}></KolProgressTag>,
 		});
 		expect(page.root).toEqualHtml(
-			`<KolProgressTag class="kol-progress">
+			`<kol-progress class="kol-progress">
          <mock:shadow-root>
             <div class="bar">
              <div style="display: flex; gap: 0.3em;">
@@ -75,7 +75,7 @@ describe('test Progress', () => {
              0 von ${DEFAULT_PROPS._max} %
            </span>
          </mock:shadow-root>
-       </KolProgressTag>`,
+       </kol-progress>`,
 		);
 	});
 

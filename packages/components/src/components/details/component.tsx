@@ -40,7 +40,11 @@ export class KolDetails implements API {
 					onToggle={this.handleToggle}
 				>
 					<summary ref={this.catchRef}>
-						{this.state._open ? <KolIconTag _label="" _icons="codicon codicon-chevron-down" /> : <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
+						{this.state._open ? (
+							<KolIconTag _label="" _icons="codicon codicon-chevron-down" />
+						) : (
+							<KolIconTag _label="" _icons="codicon codicon-chevron-right" />
+						)}
 						<span>{this.state._label}</span>
 					</summary>
 					<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" ref={(element) => (this.contentElement = element)}>
