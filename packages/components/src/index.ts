@@ -6,4 +6,3 @@ export * from './enums/bund';
 export * from './kolibri';
 export { Optgroup, Option, SelectOption } from './types/input/types';
 export { KoliBriDevHelper } from './utils/prop.validators';
-export { createReactRenderElement } from './utils/create-react-render-element';

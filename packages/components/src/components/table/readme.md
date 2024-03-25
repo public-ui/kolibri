@@ -124,7 +124,7 @@ Alle Methoden sind auch in diesem Beispiel demonstriert: [render-cell.tsx](https
 4. React render-function verwenden
 
 ```tsx
-import { createReactRenderElement } from '@public-ui/components';
+import { createReactRenderElement } from '@public-ui/react';
 {
   render: (el) => {
     getRoot(createReactRenderElement(el)).render(

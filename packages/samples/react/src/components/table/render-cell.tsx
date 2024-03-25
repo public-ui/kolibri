@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
-import { KolButton, KolInputText, KolTable } from '@public-ui/react';
-import { createReactRenderElement } from '@public-ui/components';
+import { createReactRenderElement, KolButton, KolInputText, KolTable } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
-import { KoliBriTableHeaders } from '@public-ui/components';
+import type { KoliBriTableHeaders } from '@public-ui/components';
 import { DATE_FORMATTER } from './formatter';
 
 type Data = {
