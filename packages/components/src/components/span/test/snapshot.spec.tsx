@@ -3,17 +3,18 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
 import { getSpanHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { SpanProps } from '@public-ui/schema';
+import { KolSpan } from '../shadow';
+import { KolSpanWc } from '../component';
 
 executeTests<SpanProps>(
 	'Span',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolSpan, KolSpanWc],
 			template: () => <kol-span {...props} />,
 		});
 		return page;

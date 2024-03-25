@@ -3,17 +3,17 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
 import { getCardHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { CardProps } from '@public-ui/schema';
+import { KolCard } from '../component';
 
 executeTests<CardProps>(
 	'Card',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolCard],
 			template: () => <kol-card {...props} />,
 		});
 		return page;

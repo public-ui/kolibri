@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { showExpertSlot } from '@public-ui/schema';
 
-import { getLinkHtml } from '../../link/test/html.mock';
+import { KolLinkTag } from '../../../core/component-names';
 
 import type { QuoteProps, QuoteStates } from '@public-ui/schema';
 type Slot = {
@@ -34,11 +34,7 @@ export const getQuoteHtml = (props: QuoteProps, slots: Slot = {}): string => {
 				typeof state._label === 'string' && state._label.length > 0
 					? `<figcaption>
 							<cite>
-								${getLinkHtml({
-									_href: state._href,
-									_label: state._label,
-									_target: '_blank',
-								})}
+							<${KolLinkTag} _href="${state._href}" _label="${state._label}" _target="_blank" > </${KolLinkTag}>
 							</cite>
 						</figcaption>`
 					: ``

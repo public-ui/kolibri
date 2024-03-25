@@ -5,6 +5,7 @@ import { mapIconProp2State, showExpertSlot } from '@public-ui/schema';
 
 import { md } from '../../../utils/markdown';
 import { getIconHtml } from '../../icon/test/html.mock';
+import { KolIconTag } from '../../../core/component-names';
 
 type Slots = {
 	''?: string;
@@ -42,24 +43,16 @@ export const getSpanWcHtml = (
 
 	return `
 <kol-span-wc${classNames.length ? ` class="${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
-	${
-		icon.top
-			? getIconHtml({
-					_label: (icon.top as KoliBriCustomIcon).label ?? '',
-					_icons: (icon.top as KoliBriCustomIcon).icon,
-				})
-			: ''
-	}
+	${icon.top ? `<${KolIconTag}  _label="${(icon.top as KoliBriCustomIcon).label ?? ''}" _icons="${(icon.top as KoliBriCustomIcon).icon}" > </${KolIconTag}>` : ''}
 	<span>
 		${
 			icon.left
-				? getIconHtml(
-						{
-							_label: (icon.left as KoliBriCustomIcon).label ?? '',
-							_icons: (icon.left as KoliBriCustomIcon).icon,
-						},
-						` class="kol-icon icon left"`,
-					)
+				? `<${KolIconTag}
+				class="icon left"
+				_label="${(icon.left as KoliBriCustomIcon).label ?? ''}"
+				 _icons="${(icon.left as KoliBriCustomIcon).icon}"
+				 >
+			 </${KolIconTag}>`
 				: ''
 		}
 		${
@@ -74,22 +67,20 @@ export const getSpanWcHtml = (
 		</span>
 		${
 			icon.right
-				? getIconHtml(
-						{
-							_label: (icon.right as KoliBriCustomIcon).label ?? '',
-							_icons: (icon.right as KoliBriCustomIcon).icon,
-						},
-						` class="icon right"`,
-					)
+				? `<${KolIconTag}
+				class="icon right"
+				_label="${(icon.right as KoliBriCustomIcon).label ?? ''}"
+				 _icons="${(icon.right as KoliBriCustomIcon).icon}" >
+			 </${KolIconTag}>`
 				: ''
 		}
 	</span>
 	${
 		icon.bottom
-			? getIconHtml({
-					_label: (icon.bottom as KoliBriCustomIcon).label ?? '',
-					_icons: (icon.bottom as KoliBriCustomIcon).icon,
-				})
+			? `<${KolIconTag}
+				_label="${(icon.bottom as KoliBriCustomIcon).label ?? ''}"
+				 _icons="${(icon.bottom as KoliBriCustomIcon).icon}" >
+			 </${KolIconTag}>`
 			: ''
 	}
 </kol-span-wc>`;

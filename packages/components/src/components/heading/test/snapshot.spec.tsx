@@ -3,17 +3,18 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
 import { getHeadingHtml } from './html.mock';
 
 import type { HeadingProps } from '@public-ui/schema';
 import type { SpecPage } from '@stencil/core/testing';
+import { KolHeading } from '../shadow';
+import { KolHeadingWc } from '../component';
 
 executeTests<HeadingProps>(
 	'Heading',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolHeading, KolHeadingWc],
 			template: () => <kol-heading {...props} />,
 		});
 		return page;
