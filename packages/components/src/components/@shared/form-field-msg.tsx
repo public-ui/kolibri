@@ -3,6 +3,7 @@ import { h } from '@stencil/core';
 import type { IdPropType } from '../../components';
 import type { AlertPropType } from '../../types/props/alert';
 import type { HideErrorPropType } from '../../types/props/hide-error';
+import { KolAlertTag } from '../../core/component-names';
 
 type FormFieldMsgProps = {
 	_alert?: AlertPropType;
@@ -12,7 +13,7 @@ type FormFieldMsgProps = {
 };
 
 export const FormFieldMsg: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _error, _hideError, _id }) => (
-	<kol-alert
+	<KolAlertTag
 		/**
 		 * This message is read out by screen readers if the input field
 		 * refers to the message using the <code>aria-describedby</code>
@@ -29,5 +30,5 @@ export const FormFieldMsg: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _
 		}}
 	>
 		{_error}
-	</kol-alert>
+	</KolAlertTag>
 );

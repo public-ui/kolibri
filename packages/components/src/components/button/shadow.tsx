@@ -15,6 +15,7 @@ import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
 import { Props } from './types';
+import { KolButtonWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-button',
@@ -33,7 +34,7 @@ export class KolButton implements Props {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-button">
-				<kol-button-wc
+				<KolButtonWcTag
 					ref={this.catchRef}
 					class={{
 						button: true,
@@ -64,7 +65,7 @@ export class KolButton implements Props {
 					_variant={this._variant}
 				>
 					<slot name="expert" slot="expert"></slot>
-				</kol-button-wc>
+				</KolButtonWcTag>
 			</Host>
 		);
 	}

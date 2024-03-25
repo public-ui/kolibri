@@ -1,6 +1,7 @@
 import { Component, h, Host, JSX } from '@stencil/core';
 
 import { Props } from './types';
+import { KolButtonGroupWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-button-group',
@@ -13,9 +14,9 @@ export class KolButtonGroup implements Props {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-button-group">
-				<kol-button-group-wc>
+				<KolButtonGroupWcTag>
 					<slot />
-				</kol-button-group-wc>
+				</KolButtonGroupWcTag>
 			</Host>
 		);
 	}

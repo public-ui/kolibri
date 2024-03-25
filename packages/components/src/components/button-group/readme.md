@@ -86,20 +86,4 @@ Bei Verwendung der **ButtonGroup**-Komponente sind keine besonderen Maßnahmen i
 
 <!-- Auto Generated Below -->
 
-## Dependencies
-
-### Used by
-
-- [kol-button-group](.)
-- [kol-tabs](../tabs)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-button-group --> kol-button-group-wc
-  kol-tabs --> kol-button-group-wc
-  style kol-button-group-wc stroke:#333,stroke-width:4px
-```
-
 ---

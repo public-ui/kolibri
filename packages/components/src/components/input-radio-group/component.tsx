@@ -7,6 +7,7 @@ import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
 import { deprecatedHint } from '../../utils/a11y.tipps';
 import { Props } from '../input-radio/types';
+import { KolInputRadioTag } from '../../core/component-names';
 
 /**
  * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
@@ -22,7 +23,7 @@ export class KolInputRadioGroup implements Props {
 Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek entfernt.`);
 		return (
 			<Host class="kol-input-radio-group">
-				<kol-input-radio
+				<KolInputRadioTag
 					_accessKey={this._accessKey}
 					_disabled={this._disabled}
 					_error={this._error}
@@ -39,7 +40,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 					_value={this._value}
 				>
 					<slot />
-				</kol-input-radio>
+				</KolInputRadioTag>
 			</Host>
 		);
 	}

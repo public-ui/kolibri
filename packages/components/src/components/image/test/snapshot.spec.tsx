@@ -6,13 +6,14 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { COMPONENTS } from '../../component-list';
 import { Props } from '../types';
 import { getImageHtml } from './html.mock';
+import { KolImageTag } from '../../../core/component-names';
 
 executeTests<Props>(
 	'Image',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-image {...props}></kol-image>,
+			template: () => <KolImageTag {...props}></KolImageTag>,
 		});
 		return page;
 	},
@@ -28,7 +29,7 @@ executeTests<Props>(
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-image {...props}></kol-image>,
+			template: () => <KolImageTag {...props}></KolImageTag>,
 		});
 		return page;
 	},

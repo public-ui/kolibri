@@ -14,6 +14,7 @@ import { LinkTargetPropType } from '../../types/props/link-target';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { propagateFocus } from '../../utils/reuse';
 import { LinkProps } from '../link/types';
+import { KolLinkWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-link',
@@ -32,7 +33,7 @@ export class KolLink implements LinkProps {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-link">
-				<kol-link-wc
+				<KolLinkWcTag
 					ref={this.catchRef}
 					_ariaControls={this._ariaControls}
 					_ariaCurrent={this._ariaCurrent}
@@ -63,7 +64,7 @@ export class KolLink implements LinkProps {
 					<slot name="expert" slot="expert"></slot>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<slot slot="expert" />
-				</kol-link-wc>
+				</KolLinkWcTag>
 			</Host>
 		);
 	}

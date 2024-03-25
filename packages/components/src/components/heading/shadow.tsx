@@ -3,6 +3,7 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { Props } from './types';
+import { KolHeadingWcTag } from '../../core/component-names';
 
 /**
  * @slot - Inhalt der Überschrift.
@@ -17,9 +18,9 @@ import { Props } from './types';
 export class KolHeading implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-heading-wc _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline} class="kol-heading">
+			<KolHeadingWcTag _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline} class="kol-heading">
 				<slot />
-			</kol-heading-wc>
+			</KolHeadingWcTag>
 		);
 	}
 

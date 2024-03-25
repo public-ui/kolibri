@@ -59,6 +59,9 @@ importers:
 
   packages/adapters/angular/v11:
     devDependencies:
+      '@angular/common':
+        specifier: 11.2.14
+        version: 11.2.14(@angular/core@11.2.14)(rxjs@6.6.7)
       '@angular/compiler':
         specifier: 11.2.14
         version: 11.2.14
@@ -104,6 +107,9 @@ importers:
 
   packages/adapters/angular/v12:
     devDependencies:
+      '@angular/common':
+        specifier: 12.2.17
+        version: 12.2.17(@angular/core@12.2.17)(rxjs@7.8.1)
       '@angular/compiler':
         specifier: 12.2.17
         version: 12.2.17
@@ -149,6 +155,9 @@ importers:
 
   packages/adapters/angular/v13:
     devDependencies:
+      '@angular/common':
+        specifier: 13.4.0
+        version: 13.4.0(@angular/core@13.4.0)(rxjs@7.8.1)
       '@angular/compiler':
         specifier: 13.4.0
         version: 13.4.0
@@ -194,6 +203,9 @@ importers:
 
   packages/adapters/angular/v14:
     devDependencies:
+      '@angular/common':
+        specifier: 14.3.0
+        version: 14.3.0(@angular/core@14.3.0)(rxjs@7.8.1)
       '@angular/compiler':
         specifier: 14.3.0
         version: 14.3.0(@angular/core@14.3.0)
@@ -239,6 +251,9 @@ importers:
 
   packages/adapters/angular/v15:
     devDependencies:
+      '@angular/common':
+        specifier: 15.2.10
+        version: 15.2.10(@angular/core@15.2.10)(rxjs@7.8.1)
       '@angular/compiler':
         specifier: 15.2.10
         version: 15.2.10(@angular/core@15.2.10)
@@ -284,6 +299,9 @@ importers:
 
   packages/adapters/angular/v16:
     devDependencies:
+      '@angular/common':
+        specifier: 16.2.12
+        version: 16.2.12(@angular/core@16.2.12)(rxjs@7.8.1)
       '@angular/compiler':
         specifier: 16.2.12
         version: 16.2.12(@angular/core@16.2.12)
@@ -329,6 +347,9 @@ importers:
 
   packages/adapters/angular/v17:
     devDependencies:
+      '@angular/common':
+        specifier: 17.3.1
+        version: 17.3.1(@angular/core@17.3.1)(rxjs@7.8.1)
       '@angular/compiler':
         specifier: 17.3.1
         version: 17.3.1(@angular/core@17.3.1)
@@ -539,27 +560,27 @@ importers:
         specifier: 14.1.0
         version: 14.1.0
     devDependencies:
-      '@stencil/angular-output-target':
-        specifier: 0.8.4
-        version: 0.8.4(@stencil/core@4.13.0)
+      '@public-ui/stencil-angular-output-target':
+        specifier: 0.9.0
+        version: 0.9.0(@stencil/core@4.13.0)
+      '@public-ui/stencil-react-output-target':
+        specifier: 0.6.0
+        version: 0.6.0(@stencil/core@4.13.0)
+      '@public-ui/stencil-solid-output-target':
+        specifier: 0.2.0
+        version: 0.2.0(@stencil/core@4.13.0)
+      '@public-ui/stencil-vue-output-target':
+        specifier: 0.9.0
+        version: 0.9.0(@stencil/core@4.13.0)
       '@stencil/core':
         specifier: 4.13.0
         version: 4.13.0
       '@stencil/postcss':
         specifier: 2.1.0
         version: 2.1.0(@stencil/core@4.13.0)
-      '@stencil/react-output-target':
-        specifier: 0.5.3
-        version: 0.5.3(@stencil/core@4.13.0)
       '@stencil/sass':
         specifier: 3.0.10
         version: 3.0.10(@stencil/core@4.13.0)
-      '@stencil/solid-output-target':
-        specifier: file:node_martin/stencil-solid-output-target-0.0.1.tgz
-        version: file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz(@stencil/core@4.13.0)
-      '@stencil/vue-output-target':
-        specifier: 0.8.7
-        version: 0.8.7(@stencil/core@4.13.0)
       '@types/color-convert':
         specifier: 2.0.3
         version: 2.0.3
@@ -967,6 +988,15 @@ importers:
         specifier: 1.2.1
         version: 1.2.1
 
+  packages/test-tag-name-transformer:
+    devDependencies:
+      '@public-ui/theme-default':
+        specifier: workspace:*
+        version: link:../themes/default
+      '@public-ui/visual-tests':
+        specifier: workspace:*
+        version: link:../tools/visual-tests
+
   packages/themes:
     dependencies:
       '@public-ui/components':
@@ -1246,6 +1276,89 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
+
+  /@angular/common@11.2.14(@angular/core@11.2.14)(rxjs@6.6.7):
+    resolution: {integrity: sha512-ZSLV/3j7eCTyLf/8g4yBFLWySjiLz3vLJAGWscYoUpnJWMnug1VRu6zoF/COxCbtORgE+Wz6K0uhfS6MziBGVw==}
+    peerDependencies:
+      '@angular/core': 11.2.14
+      rxjs: ^6.5.3
+    dependencies:
+      '@angular/core': 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
+      rxjs: 6.6.7
+      tslib: 2.6.2
+    dev: true
+
+  /@angular/common@12.2.17(@angular/core@12.2.17)(rxjs@7.8.1):
+    resolution: {integrity: sha512-/Rc83mzlL6YZScYTzg+Ng2hiCSf3jUVHAfQ8cyLOIMj/y8863Q+DMLVWW+ttvHwCjEFY44pC8IPyBl5FmSJYHg==}
+    engines: {node: ^12.14.1 || >=14.0.0}
+    peerDependencies:
+      '@angular/core': 12.2.17
+      rxjs: ^6.5.3 || ^7.0.0
+    dependencies:
+      '@angular/core': 12.2.17(rxjs@7.8.1)(zone.js@0.11.8)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: true
+
+  /@angular/common@13.4.0(@angular/core@13.4.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-DHbPqRaxW7GmnkxqZaaasgC5OaFTeTBrmr7MJUsqsSGePHWuJYWU4QS3Fn86zd/VESJgBGmq2aCDEUmzfjnRQA==}
+    engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0}
+    peerDependencies:
+      '@angular/core': 13.4.0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/core': 13.4.0(rxjs@7.8.1)(zone.js@0.11.8)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: true
+
+  /@angular/common@14.3.0(@angular/core@14.3.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-pV9oyG3JhGWeQ+TFB0Qub6a1VZWMNZ6/7zEopvYivdqa5yDLLDSBRWb6P80RuONXyGnM1pa7l5nYopX+r/23GQ==}
+    engines: {node: ^14.15.0 || >=16.10.0}
+    peerDependencies:
+      '@angular/core': 14.3.0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/core': 14.3.0(rxjs@7.8.1)(zone.js@0.12.0)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: true
+
+  /@angular/common@15.2.10(@angular/core@15.2.10)(rxjs@7.8.1):
+    resolution: {integrity: sha512-jdBn3fctkqoNrJn9VLsUHpcCEhCxWSczdsR+BBbD6T0oLl6vMrAVNjPwfBejnlgfWN1KoRU9kgOYsMxa5apIWQ==}
+    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
+    peerDependencies:
+      '@angular/core': 15.2.10
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/core': 15.2.10(rxjs@7.8.1)(zone.js@0.13.3)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: true
+
+  /@angular/common@16.2.12(@angular/core@16.2.12)(rxjs@7.8.1):
+    resolution: {integrity: sha512-B+WY/cT2VgEaz9HfJitBmgdk4I333XG/ybC98CMC4Wz8E49T8yzivmmxXB3OD6qvjcOB6ftuicl6WBqLbZNg2w==}
+    engines: {node: ^16.14.0 || >=18.10.0}
+    peerDependencies:
+      '@angular/core': 16.2.12
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/core': 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: true
+
+  /@angular/common@17.3.1(@angular/core@17.3.1)(rxjs@7.8.1):
+    resolution: {integrity: sha512-HyUTJ4RxhE3bOmFRV6Fv2y01ixbrUb8Hd4MxPm8REbNMGKsWCfXhR3FfxFL18Sc03SAF+o0Md0wwekjFKTNKfQ==}
+    engines: {node: ^18.13.0 || >=20.9.0}
+    peerDependencies:
+      '@angular/core': 17.3.1
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/core': 17.3.1(rxjs@7.8.1)(zone.js@0.14.4)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: true
 
   /@angular/compiler-cli@11.2.14(@angular/compiler@11.2.14)(typescript@4.1.2):
     resolution: {integrity: sha512-A7ltnCp03/EVqK/Q3tVUDsokgz5GHW3dSPGl0Csk7Ys5uBB9ibHTmVt4eiXA4jt0+6Bk+mKxwe5BEDqLvwYFAg==}
@@ -6507,6 +6620,38 @@ packages:
       - domexception
     dev: true
 
+  /@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.13.0):
+    resolution: {integrity: sha512-kmF0p9OqBm/ZEUXS9fu+eTyjcLi1Ryv8/bXFlGu62M/xmIoY8yofUuqxuSA6eEi6gqyOL3CkugDeIXwL+upfFw==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
+    dependencies:
+      '@stencil/core': 4.13.0
+    dev: true
+
+  /@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.13.0):
+    resolution: {integrity: sha512-rMxQJo/nqegKOKfVwncvH+RbWB6ZnPaINdeqwpSTCdCX2u+wM5yQydB3+BU7c33gkfihJlmwyauEb0EQQusOHQ==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
+    dependencies:
+      '@stencil/core': 4.13.0
+    dev: true
+
+  /@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.13.0):
+    resolution: {integrity: sha512-w06wR57l0i3gMY4QoxA8AuoIYo9tWXdU+1SRa4kNFiZXgLZzeFg0/WYX3aNLbOybreN6E1iNnF6wJO5ncE1yHA==}
+    peerDependencies:
+      '@stencil/core': '>=2.17.2'
+    dependencies:
+      '@stencil/core': 4.13.0
+    dev: true
+
+  /@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.13.0):
+    resolution: {integrity: sha512-ZFwrOAYTSxRwLG4q5WU8mGerMUoiAdFlzOg65AR04tUFAKgd99HHJ+0lkc/8ugH572oBB9fwgJ1POJJPdrpy/A==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
+    dependencies:
+      '@stencil/core': 4.13.0
+    dev: true
+
   /@puppeteer/browsers@2.2.0:
     resolution: {integrity: sha512-MC7LxpcBtdfTbzwARXIkqGZ1Osn3nnZJlm+i0+VqHl72t//Xwl9wICrXT8BwtgC6s1xJNHsxOpvzISUqe92+sw==}
     engines: {node: '>=18'}
@@ -6926,14 +7071,6 @@ packages:
       p-map: 4.0.0
     dev: true
 
-  /@stencil/angular-output-target@0.8.4(@stencil/core@4.13.0):
-    resolution: {integrity: sha512-QvmHTueXXs5vB9W2L12uEzFmAuR8sqATJV2b+SCFmYsjJSaymiSqR3dKo2wnr0tZiTgU1t16BWaUKiSh3wPXpw==}
-    peerDependencies:
-      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
-    dependencies:
-      '@stencil/core': 4.13.0
-    dev: true
-
   /@stencil/core@4.13.0:
     resolution: {integrity: sha512-gg+gtBWekQ08mDja8GVAUHNu+rrFhQaKZDvfhnS3l/5JbYiJddTimuDPPhuc0sR0JZL1iRdJTJSa+JbvmnQ1cQ==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
@@ -6951,27 +7088,11 @@ packages:
       postcss: 8.3.11
     dev: true
 
-  /@stencil/react-output-target@0.5.3(@stencil/core@4.13.0):
-    resolution: {integrity: sha512-68jwRp35CjAcwhTJ9yFD/3n+jrHOqvEH2jreVuPVvZK+4tkhPlYlwz0d1E1RlF3jyifUSfdkWUGgXIEy8Fo3yw==}
-    peerDependencies:
-      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
-    dependencies:
-      '@stencil/core': 4.13.0
-    dev: true
-
   /@stencil/sass@3.0.10(@stencil/core@4.13.0):
     resolution: {integrity: sha512-G4JdKDhEXEBS4+Riy5WVxPRXfHdfEwPopmPne8fm9ilQpaTRyl3BMpbxt63ijHtQjH0KtH8jxmRiTYamP4BfIA==}
     engines: {node: '>=12.0.0', npm: '>=6.0.0'}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0'
-    dependencies:
-      '@stencil/core': 4.13.0
-    dev: true
-
-  /@stencil/vue-output-target@0.8.7(@stencil/core@4.13.0):
-    resolution: {integrity: sha512-hgOzbKKgLdCFrhLpmaw/qQrPSXl6hZ09K+j3p/iWh3esq6sxnwuW1PJKLniwkT4Z/JlDIk6stGPGQYi+WE5I2Q==}
-    peerDependencies:
-      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
       '@stencil/core': 4.13.0
     dev: true
@@ -7395,6 +7516,7 @@ packages:
 
   /@types/node@20.11.27:
     resolution: {integrity: sha512-qyUZfMnCg1KEz57r7pzFtSGt49f6RPkPBis3Vo4PbS7roQEDn22hiHzl/Lo1q4i4hDEgBJmBF/NTNg2XR0HbFg==}
+    requiresBuild: true
     dependencies:
       undici-types: 5.26.5
 
@@ -21605,6 +21727,7 @@ packages:
   /uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
+    requiresBuild: true
 
   /uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
@@ -22581,15 +22704,4 @@ packages:
     resolution: {integrity: sha512-NtTUvIlNELez7Q1DzKVIFZBzNb646boQMgpATo9z3Ftuu/gWvzxCW7jdjcUDoRGxRikrhVHB/zLXh1hxeJawvw==}
     dependencies:
       tslib: 2.6.2
-    dev: true
-
-  file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz(@stencil/core@4.13.0):
-    resolution: {integrity: sha512-leO/+AmnieoDOB2Pv3sSk6QOI3htP7ENTnaCW3u1GEdK6OKB6c0VBJkjbklQHh2EtOx2tXWlvXI6ne5iYdIXNg==, tarball: file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz}
-    id: file:packages/components/node_martin/stencil-solid-output-target-0.0.1.tgz
-    name: '@stencil/solid-output-target'
-    version: 0.0.1
-    peerDependencies:
-      '@stencil/core': '>=1.8.0'
-    dependencies:
-      '@stencil/core': 4.13.0
     dev: true

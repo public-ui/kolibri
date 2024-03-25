@@ -4,6 +4,7 @@ import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { API, States, Toast, ToastState } from './types';
 import { InternalToast } from './InternalToast';
+import { KolButtonTag } from '../../core/component-names';
 
 const TRANSITION_TIMEOUT = 300;
 
@@ -95,7 +96,7 @@ export class KolToastContainer implements API {
 			<Host class="kol-toast-container">
 				<Fragment>
 					{this.state._toastStates.length > 1 && (
-						<kol-button
+						<KolButtonTag
 							_label={translate('kol-toast-close-all')}
 							class="close-all"
 							_on={{
@@ -103,7 +104,7 @@ export class KolToastContainer implements API {
 									void this.closeAll();
 								},
 							}}
-						></kol-button>
+						></KolButtonTag>
 					)}
 					{this.state._toastStates.map((toastState) => (
 						<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />

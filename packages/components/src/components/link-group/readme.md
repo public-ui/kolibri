@@ -91,26 +91,4 @@ nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum 
 | `_ordered`            | `_ordered`         | <span style="color:red">**[DEPRECATED]**</span> Wird mittels der Property \_list-style-type automatisch gesteuert.<br/><br/>Deprecated: Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll. | `boolean \| undefined`                                                                                                                                                                                                | `false`      |
 | `_orientation`        | `_orientation`     | Defines whether the orientation of the component is horizontal or vertical.                                                                                                                                       | `"horizontal" \| "vertical" \| undefined`                                                                                                                                                                             | `'vertical'` |
 
-## Dependencies
-
-### Depends on
-
-- [kol-heading-wc](../heading)
-- [kol-link](../link)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-link-group --> kol-heading-wc
-  kol-link-group --> kol-link
-  kol-link --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-link-group stroke:#333,stroke-width:4px
-```
-
 ---

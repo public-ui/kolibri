@@ -18,6 +18,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
 import { API, States } from './types';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -63,7 +64,7 @@ export class KolInputPassword implements API {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<kol-input
+				<KolInputTag
 					class={{
 						'hide-label': !!this.state._hideLabel,
 						password: true,
@@ -116,7 +117,7 @@ export class KolInputPassword implements API {
 							onInput={this.onInput}
 						/>
 					</div>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

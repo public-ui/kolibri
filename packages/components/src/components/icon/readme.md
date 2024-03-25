@@ -66,29 +66,13 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 ### Used by
 
-- [kol-alert-wc](../alert)
-- [kol-breadcrumb](../breadcrumb)
 - [kol-details](../details)
-- [kol-icon-font-awesome](../icon-font-awesome)
-- [kol-icon-icofont](../icon-icofont)
-- kol-input
-- [kol-input-checkbox](../input-checkbox)
-- kol-link-wc
-- kol-span-wc
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-alert-wc --> kol-icon
-  kol-breadcrumb --> kol-icon
   kol-details --> kol-icon
-  kol-icon-font-awesome --> kol-icon
-  kol-icon-icofont --> kol-icon
-  kol-input --> kol-icon
-  kol-input-checkbox --> kol-icon
-  kol-link-wc --> kol-icon
-  kol-span-wc --> kol-icon
   style kol-icon stroke:#333,stroke-width:4px
 ```
 

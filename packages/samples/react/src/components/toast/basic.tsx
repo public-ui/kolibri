@@ -3,9 +3,9 @@ import { KolButton } from '@public-ui/react';
 import React, { FC } from 'react';
 import { getRoot } from '../../shares/react-roots';
 
-const toaster = ToasterService.getInstance(document);
-
 export const ToastBasic: FC = () => {
+	const toaster = ToasterService.getInstance(document);
+
 	const handleButtonClickSimple = () => {
 		void toaster.enqueue({
 			description: 'Toasty',

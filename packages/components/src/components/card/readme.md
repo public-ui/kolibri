@@ -88,24 +88,4 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 | `"footer"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.                            |
 | `"header"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card. |
 
-## Dependencies
-
-### Depends on
-
-- [kol-heading-wc](../heading)
-- kol-button-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-card --> kol-heading-wc
-  kol-card --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-card stroke:#333,stroke-width:4px
-```
-
 ---

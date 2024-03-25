@@ -6,13 +6,14 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { COMPONENTS } from '../../component-list';
 import { Props } from '../types';
 import { getBadgeHtml } from './html.mock';
+import { KolBadgeTag } from '../../../core/component-names';
 
 executeTests<Props>(
 	'Badge',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-badge {...props} />,
+			template: () => <KolBadgeTag {...props} />,
 		});
 		return page;
 	},

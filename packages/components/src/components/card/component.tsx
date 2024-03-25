@@ -9,6 +9,7 @@ import { setState } from '../../utils/prop.validators';
 import { KoliBriAlertEventCallbacks } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
 import { API, KoliBriCardEventCallbacks, States } from './types';
+import { KolButtonWcTag, KolHeadingWcTag } from '../../core/component-names';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
@@ -39,7 +40,7 @@ export class KolCard implements API {
 			<Host class="kol-card">
 				<div class="card">
 					<div class="header">
-						<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
+						<KolHeadingWcTag _label={this.state._label} _level={this.state._level}></KolHeadingWcTag>
 						<slot name="header"></slot>
 					</div>
 					<div class="content">
@@ -54,7 +55,7 @@ export class KolCard implements API {
 					)}
 
 					{this.state._hasCloser && (
-						<kol-button-wc
+						<KolButtonWcTag
 							class="close"
 							_hideLabel
 							_icons={{
@@ -65,7 +66,7 @@ export class KolCard implements API {
 							_label={translate('kol-close')}
 							_on={this.on}
 							_tooltipAlign="left"
-						></kol-button-wc>
+						></KolButtonWcTag>
 					)}
 				</div>
 			</Host>

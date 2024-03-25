@@ -4,6 +4,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriIconsProp } from '../../types/icons';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { Props } from './types';
+import { KolSpanWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-span',
@@ -15,9 +16,9 @@ import { Props } from './types';
 export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-span-wc _icons={this._icons || this._icon} _hideLabel={this._hideLabel} _label={this._label} class="kol-span">
+			<KolSpanWcTag _icons={this._icons || this._icon} _hideLabel={this._hideLabel} _label={this._label} class="kol-span">
 				<slot name="expert" slot="expert"></slot>
-			</kol-span-wc>
+			</KolSpanWcTag>
 		);
 	}
 

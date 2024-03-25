@@ -18,6 +18,7 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { API, States } from './types';
+import { KolInputTag } from '../../core/component-names';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -73,7 +74,7 @@ export class KolSelect implements API {
 
 		return (
 			<Host class={{ 'kol-select': true, 'has-value': this.state._hasValue }}>
-				<kol-input
+				<KolInputTag
 					class={{
 						'hide-label': !!this.state._hideLabel,
 						select: true,
@@ -141,7 +142,7 @@ export class KolSelect implements API {
 							})}
 						</select>
 					</div>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

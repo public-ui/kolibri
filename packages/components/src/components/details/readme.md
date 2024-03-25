@@ -108,14 +108,12 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 ### Depends on
 
 - [kol-icon](../icon)
-- [kol-indented-text](../indented-text)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-details --> kol-icon
-  kol-details --> kol-indented-text
   style kol-details stroke:#333,stroke-width:4px
 ```
 

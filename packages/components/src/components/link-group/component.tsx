@@ -10,6 +10,7 @@ import { watchHeadingLevel } from '../heading/validation';
 import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
 import { API, ListStyleType, States } from './types';
+import { KolHeadingWcTag, KolLinkTag } from '../../core/component-names';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
@@ -26,7 +27,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 						listStyleType: props.listStyleType,
 					}}
 				>
-					<kol-link {...link}></kol-link>
+					<KolLinkTag {...link}></KolLinkTag>
 				</li>
 			) as JSX.Element,
 		);
@@ -54,7 +55,7 @@ export class KolLinkGroup implements API {
 				>
 					{/* @deprecated remove in the next major version */}
 					{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
-						<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
+						<KolHeadingWcTag _label={this.state._heading} _level={this.state._level}></KolHeadingWcTag>
 					)}
 
 					{this.isUl === false ? (

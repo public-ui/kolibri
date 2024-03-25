@@ -1,6 +1,7 @@
 import { Component, h, Host, JSX, Prop } from '@stencil/core';
 
 import { Props } from './types';
+import { KolAvatarWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-avatar',
@@ -13,7 +14,7 @@ export class KolAvatar implements Props {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-avatar">
-				<kol-avatar-wc _src={this._src} _label={this._label}></kol-avatar-wc>
+				<KolAvatarWcTag _src={this._src} _label={this._label}></KolAvatarWcTag>
 			</Host>
 		);
 	}

@@ -5,6 +5,7 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { showExpertSlot } from '../../utils/reuse';
 import { API, KoliBriQuoteVariant, States } from './types';
+import { KolLinkTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-quote',
@@ -109,7 +110,7 @@ export class KolQuote implements API {
 					{typeof this.state._label === 'string' && this.state._label.length > 0 && (
 						<figcaption>
 							<cite>
-								<kol-link _href={this.state._href} _label={this.state._label} _target="_blank" class="kol-link" />
+								<KolLinkTag _href={this.state._href} _label={this.state._label} _target="_blank" class="kol-link" />
 							</cite>
 						</figcaption>
 					)}

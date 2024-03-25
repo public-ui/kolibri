@@ -25,32 +25,4 @@
 | `_touched`           | `_touched`     | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                                | `boolean \| undefined`                                                                                      | `false`      |
 | `_value`             | `_value`       | Defines the value of the input.                                                                                                                              | `number \| string \| undefined`                                                                             | `undefined`  |
 
-## Dependencies
-
-### Depends on
-
-- [kol-input-radio](../input-radio)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-input-radio-group --> kol-input-radio
-  kol-input-radio --> kol-input
-  kol-input-radio --> kol-alert
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  style kol-input-radio-group stroke:#333,stroke-width:4px
-```
-
 ---

@@ -17,6 +17,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
 import { API, States } from './types';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -81,7 +82,7 @@ export class KolInputRange implements API {
 
 		return (
 			<Host class="kol-input-range">
-				<kol-input
+				<KolInputTag
 					class={{
 						range: true,
 						'hide-label': !!this.state._hideLabel,
@@ -165,7 +166,7 @@ export class KolInputRange implements API {
 							// </ul>,
 						]}
 					</div>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

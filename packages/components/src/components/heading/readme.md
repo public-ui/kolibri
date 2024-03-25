@@ -49,26 +49,4 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 | ---- | ----------------------- |
 |      | Inhalt der Überschrift. |
 
-## Dependencies
-
-### Used by
-
-- [kol-accordion](../accordion)
-- [kol-alert-wc](../alert)
-- [kol-card](../card)
-- [kol-heading](.)
-- [kol-link-group](../link-group)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-accordion --> kol-heading-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-card --> kol-heading-wc
-  kol-heading --> kol-heading-wc
-  kol-link-group --> kol-heading-wc
-  style kol-heading-wc stroke:#333,stroke-width:4px
-```
-
 ---

@@ -14,6 +14,7 @@ import { watchValidator } from '../../utils/prop.validators';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { API, States } from './types';
 import { watchNavLinks } from './validation';
+import { KolButtonLinkTextSwitchTag, KolButtonTag, KolButtonWcTag } from '../../core/component-names';
 
 /**
  * @deprecated Removed in v2
@@ -69,7 +70,7 @@ export class KolNav implements API {
 	): JSX.Element {
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
-				<kol-button-link-text-switch
+				<KolButtonLinkTextSwitchTag
 					_link={{
 						...link,
 						_hideLabel: hideLabel,
@@ -82,7 +83,7 @@ export class KolNav implements API {
 
 	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, expanded: boolean): JSX.Element {
 		return (
-			<kol-button-wc
+			<KolButtonWcTag
 				class="expand-button"
 				_ariaExpanded={expanded}
 				_disabled={!collapsible}
@@ -90,7 +91,7 @@ export class KolNav implements API {
 				_hideLabel
 				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
-			></kol-button-wc>
+			></KolButtonWcTag>
 		);
 	}
 
@@ -163,7 +164,7 @@ export class KolNav implements API {
 					</nav>
 					{hasCompactButton && (
 						<div class="compact">
-							<kol-button
+							<KolButtonTag
 								_ariaControls="nav"
 								_ariaExpanded={!hideLabel}
 								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
@@ -179,7 +180,7 @@ export class KolNav implements API {
 								}}
 								_tooltipAlign="right"
 								_variant="ghost"
-							></kol-button>
+							></KolButtonTag>
 						</div>
 					)}
 				</div>

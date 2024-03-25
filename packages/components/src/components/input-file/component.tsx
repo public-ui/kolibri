@@ -15,6 +15,7 @@ import { Props as ButtonProps } from '../button/types';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
 import { API, States } from './types';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -41,7 +42,7 @@ export class KolInputFile implements API {
 
 		return (
 			<Host class="kol-input-file">
-				<kol-input
+				<KolInputTag
 					class={{
 						file: true,
 						'hide-label': !!this.state._hideLabel,
@@ -86,7 +87,7 @@ export class KolInputFile implements API {
 							onInput={this.onInput}
 						/>
 					</div>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

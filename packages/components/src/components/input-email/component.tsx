@@ -19,6 +19,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { API, States } from './types';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -65,7 +66,7 @@ export class KolInputEmail implements API {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<kol-input
+				<KolInputTag
 					class={{ email: true, 'hide-label': !!this.state._hideLabel }}
 					_alert={this.state._alert}
 					_currentLength={this.state._currentLength}
@@ -119,7 +120,7 @@ export class KolInputEmail implements API {
 							onInput={this.onInput}
 						/>
 					</div>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

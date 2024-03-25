@@ -3,6 +3,7 @@ import { Component, h, Host, JSX, Prop } from '@stencil/core';
 
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps, TextWithChildrenProps } from '../../types/button-link-text';
 import { Props } from './types';
+import { KolButtonWcTag, KolLinkWcTag, KolSpanWcTag } from '../../core/component-names';
 
 /**
  * Internal component that renders an action or text component like a button or a link.
@@ -30,11 +31,11 @@ export class KolButtonLinkTextSwitch implements Props {
 		}
 	}
 
-	private button = (button: ButtonWithChildrenProps): JSX.Element => <kol-button-wc {...button}></kol-button-wc>;
+	private button = (button: ButtonWithChildrenProps): JSX.Element => <KolButtonWcTag {...button}></KolButtonWcTag>;
 
-	private link = (link: LinkWithChildrenProps): JSX.Element => <kol-link-wc {...link}></kol-link-wc>;
+	private link = (link: LinkWithChildrenProps): JSX.Element => <KolLinkWcTag {...link}></KolLinkWcTag>;
 
-	private text = (text: TextWithChildrenProps): JSX.Element => <kol-span-wc {...text}></kol-span-wc>;
+	private text = (text: TextWithChildrenProps): JSX.Element => <KolSpanWcTag {...text}></KolSpanWcTag>;
 
 	/**
 	 * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.

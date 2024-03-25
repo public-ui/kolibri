@@ -8,9 +8,10 @@ import { Log } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { AlertType, AlertVariant, API, KoliBriAlertEventCallbacks, States } from './types';
+import { KolButtonWcTag, KolHeadingWcTag, KolIconTag } from '../../core/component-names';
 
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return <kol-icon class="heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
+	return <KolIconTag class="heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
 };
 
 const AlertIcon = (props: { label?: string; type?: AlertType }) => {
@@ -77,7 +78,7 @@ export class KolAlertWc implements API {
 					<AlertIcon label={this.state._label} type={this.state._type} />
 					<div>
 						{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
-							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
+							<KolHeadingWcTag _label={this.state._label} _level={this.state._level}></KolHeadingWcTag>
 						)}
 						{this.state._variant === 'msg' && (
 							<div class="content">
@@ -86,7 +87,7 @@ export class KolAlertWc implements API {
 						)}
 					</div>
 					{this.state._hasCloser && (
-						<kol-button-wc
+						<KolButtonWcTag
 							class="close"
 							_hideLabel
 							_icons={{
@@ -97,7 +98,7 @@ export class KolAlertWc implements API {
 							_label={translate('kol-close')}
 							_on={this.on}
 							_tooltipAlign="left"
-						></kol-button-wc>
+						></KolButtonWcTag>
 					)}
 				</div>
 				{this.state._variant === 'card' && (

@@ -9,6 +9,7 @@ import { nonce } from '../../utils/dev.utils';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
 import { ButtonProps } from '../button/types';
 import { API, States } from './types';
+import { KolButtonWcTag, KolSpanWcTag } from '../../core/component-names';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -26,7 +27,7 @@ export class KolBadge implements API {
 
 	private renderSmartButton(props: ButtonProps): JSX.Element {
 		return (
-			<kol-button-wc
+			<KolButtonWcTag
 				_ariaControls={this.id}
 				_customClass={props._customClass}
 				_disabled={props._disabled}
@@ -37,7 +38,7 @@ export class KolBadge implements API {
 				_on={props._on}
 				_tooltipAlign={props._tooltipAlign}
 				_variant={props._variant}
-			></kol-button-wc>
+			></KolButtonWcTag>
 		);
 	}
 
@@ -54,13 +55,13 @@ export class KolBadge implements API {
 						color: this.colorStr,
 					}}
 				>
-					<kol-span-wc
+					<KolSpanWcTag
 						id={hasSmartButton ? this.id : undefined}
 						_allowMarkdown
 						_hideLabel={this._hideLabel || this._iconOnly}
 						_icons={this._icons || this._icon}
 						_label={this._label}
-					></kol-span-wc>
+					></KolSpanWcTag>
 					{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
 				</span>
 			</Host>

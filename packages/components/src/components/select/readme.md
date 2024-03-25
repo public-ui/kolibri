@@ -122,35 +122,4 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 | ---- | ----------------------------------- |
 |      | Die Beschriftung des Eingabefeldes. |
 
-## Dependencies
-
-### Used by
-
-- [kol-pagination](../pagination)
-
-### Depends on
-
-- kol-input
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-select --> kol-input
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  kol-pagination --> kol-select
-  style kol-select stroke:#333,stroke-width:4px
-```
-
 ---

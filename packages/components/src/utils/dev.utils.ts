@@ -130,9 +130,8 @@ export { getKoliBri };
 
 export const initKoliBri = (): void => {
 	initMeta();
-	if (getKoliBri() === undefined) {
-		Log.debug(
-			`
+	Log.debug(
+		`
 	,--. ,--.         ,--. ,--. ,-----.           ,--.
 	|  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
 	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
@@ -140,13 +139,10 @@ export const initKoliBri = (): void => {
 	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
 	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 1.7.16
 		`,
-			{
-				forceLog: true,
-			},
-		);
-	} else {
-		console.warn(`You can only initialize KoliBri once.`);
-	}
+		{
+			forceLog: true,
+		},
+	);
 };
 
 export const renderDevAdvice = (): void => {

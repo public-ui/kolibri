@@ -13,6 +13,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { API, KoliBriPaginationButtonCallbacks, PaginationHasButton, States } from './types';
 import { MaxPropType, validateMax } from '../../types/props/max';
+import { KolButtonTag, KolButtonWcTag, KolSelectTag } from '../../core/component-names';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -76,7 +77,7 @@ export class KolPagination implements API {
 					<ul class="navigation-list">
 						{this.state._hasButtons.first && (
 							<li>
-								<kol-button
+								<KolButtonTag
 									class="first"
 									exportparts="icon"
 									_customClass={this.state._customClass}
@@ -87,12 +88,12 @@ export class KolPagination implements API {
 									_on={this.onGoToFirst}
 									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></KolButtonTag>
 							</li>
 						)}
 						{this.state._hasButtons.previous && (
 							<li>
-								<kol-button
+								<KolButtonTag
 									class="previous"
 									exportparts="icon"
 									_customClass={this.state._customClass}
@@ -103,13 +104,13 @@ export class KolPagination implements API {
 									_on={this.onGoBackward}
 									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></KolButtonTag>
 							</li>
 						)}
 						{pageButtons}
 						{this.state._hasButtons.next && (
 							<li>
-								<kol-button
+								<KolButtonTag
 									class="next"
 									exportparts="icon"
 									_customClass={this.state._customClass}
@@ -120,12 +121,12 @@ export class KolPagination implements API {
 									_on={this.onGoForward}
 									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></KolButtonTag>
 							</li>
 						)}
 						{this.state._hasButtons.last && (
 							<li>
-								<kol-button
+								<KolButtonTag
 									class="last"
 									exportparts="icon"
 									_customClass={this.state._customClass}
@@ -136,13 +137,13 @@ export class KolPagination implements API {
 									_on={this.onGoToEnd}
 									_variant={this.state._variant}
 									_tooltipAlign={this.state._tooltipAlign}
-								></kol-button>
+								></KolButtonTag>
 							</li>
 						)}
 					</ul>
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
-					<kol-select
+					<KolSelectTag
 						_hideLabel
 						_id={`pagination-size-${this.nonce}`}
 						_label={translate('kol-entries-per-site')}
@@ -151,7 +152,7 @@ export class KolPagination implements API {
 							onChange: this.onChangePageSize,
 						}}
 						_value={[this.state._pageSize]}
-					></kol-select>
+					></KolSelectTag>
 				)}
 			</Host>
 		);
@@ -296,7 +297,7 @@ export class KolPagination implements API {
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
 			<li>
-				<kol-button
+				<KolButtonTag
 					exportparts="icon"
 					key={`${this.nonce}-${page}`}
 					_customClass={this.state._customClass}
@@ -311,7 +312,7 @@ export class KolPagination implements API {
 					<span slot="expert">
 						<span class="visually-hidden">{translate('kol-page')}</span> {page}
 					</span>
-				</kol-button>
+				</KolButtonTag>
 			</li>
 		);
 	}
@@ -319,7 +320,7 @@ export class KolPagination implements API {
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
 			<li>
-				<kol-button-wc
+				<KolButtonWcTag
 					class="selected"
 					key={`${this.nonce}-selected`}
 					_customClass={this.state._customClass}
@@ -331,7 +332,7 @@ export class KolPagination implements API {
 					<span slot="expert">
 						<span class="visually-hidden">{translate('kol-page')}</span> {page}
 					</span>
-				</kol-button-wc>
+				</KolButtonWcTag>
 			</li>
 		);
 	}

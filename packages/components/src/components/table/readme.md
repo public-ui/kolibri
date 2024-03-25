@@ -180,39 +180,4 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 | `_minWidth`             | `_min-width`  | Defines the table min-width.                                                                                                    | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
 | `_pagination`           | `_pagination` | Defines whether to show the data distributed over multiple pages.                                                               | `boolean \| string \| undefined \| { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks \| undefined; _page?: number \| undefined; _boundaryCount?: number \| undefined; _hasButtons?: boolean \| Stringified<PaginationHasButton> \| undefined; _pageSize?: number \| undefined; _pageSizeOptions?: Stringified<number[]> \| undefined; _siblingCount?: number \| undefined; _total?: number \| undefined; _variant?: ButtonVariantPropType \| undefined; _customClass?: string \| undefined; _label?: string \| undefined; _max?: number \| undefined; _tooltipAlign?: AlignPropType \| undefined; }` | `undefined` |
 
-## Dependencies
-
-### Depends on
-
-- [kol-button](../button)
-- [kol-pagination](../pagination)
-- kol-button-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-table --> kol-button
-  kol-table --> kol-pagination
-  kol-table --> kol-button-wc
-  kol-button --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-pagination --> kol-button
-  kol-pagination --> kol-select
-  kol-pagination --> kol-button-wc
-  kol-select --> kol-input
-  kol-input --> kol-icon
-  kol-input --> kol-button-wc
-  kol-input --> kol-tooltip-wc
-  kol-input --> kol-alert
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  style kol-table stroke:#333,stroke-width:4px
-```
-
 ---

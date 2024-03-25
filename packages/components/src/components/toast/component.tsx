@@ -9,6 +9,7 @@ import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils
 import { AlertType } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
 import { API, States } from './types';
+import { KolAlertTag } from '../../core/component-names';
 
 /**
  * @slot - Der Inhalt der Meldung.
@@ -176,7 +177,7 @@ export class KolToast implements API {
 			<Host class="kol-toast">
 				{this.state._show && (
 					<div>
-						<kol-alert
+						<KolAlertTag
 							_alert={this.state._alert}
 							_label={this.state._label}
 							_level={this.state._level}
@@ -188,7 +189,7 @@ export class KolToast implements API {
 							class="kol-alert"
 						>
 							<slot />
-						</kol-alert>
+						</KolAlertTag>
 					</div>
 				)}
 			</Host>
