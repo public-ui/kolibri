@@ -1,7 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getIconHtml } from '../../icon/test/html.mock';
-import { getLinkHtml } from '../../link/test/html.mock';
 import { KolIconTag, KolLinkTag } from '../../../core/component-names';
 
 import type { AnyIconFontClass, BreadcrumbLinkProps, BreadcrumbProps, LabelPropType } from '@public-ui/schema';

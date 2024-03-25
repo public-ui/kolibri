@@ -4,12 +4,7 @@ import type { DetailsProps } from '@public-ui/schema';
 import clsx from 'clsx';
 import { KolIconTag, KolIndentedTextTag } from '../../../core/component-names';
 
-export const getDetailsHtml = (
-	props: DetailsProps,
-	slots: {
-		default?: string;
-	} = {},
-): string => {
+export const getDetailsHtml = (props: DetailsProps): string => {
 	props = mixMembers(
 		{
 			_label: '', // ⚠ required

@@ -4,7 +4,6 @@ import { mixMembers } from 'stencil-awesome-test';
 import { mapIconProp2State, showExpertSlot } from '@public-ui/schema';
 
 import { md } from '../../../utils/markdown';
-import { getIconHtml } from '../../icon/test/html.mock';
 import { KolIconTag } from '../../../core/component-names';
 
 type Slots = {

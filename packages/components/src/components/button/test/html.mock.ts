@@ -6,17 +6,8 @@ import clsx from 'clsx';
 
 import type { ButtonProps, ButtonStates } from '@public-ui/schema';
 import { KolSpanWcTag, KolTooltipWcTag } from '../../../core/component-names';
-type Slots = {
-	expert?: string;
-};
 
-export const getButtonWcHtml = (
-	props: ButtonProps,
-	slots: Slots = {
-		expert: undefined,
-	},
-	additionalAttrs = '',
-): string => {
+export const getButtonWcHtml = (props: ButtonProps, additionalAttrs = ''): string => {
 	const state = mixMembers<ButtonProps, ButtonStates>(
 		{
 			_icons: {},
@@ -78,13 +69,7 @@ export const getButtonHtml = (props: ButtonProps): string => {
 	);
 	return `<kol-button class="kol-button">
   <mock:shadow-root>
-    ${getButtonWcHtml(
-			props,
-			{
-				expert: `<slot name="expert" slot="expert"></slot>`,
-			},
-			` class="kol-button-wc button ${state._variant}"`,
-		)}
+    ${getButtonWcHtml(props, ` class="kol-button-wc button ${state._variant}"`)}
   </mock:shadow-root>
 </kol-button>`;
 };
