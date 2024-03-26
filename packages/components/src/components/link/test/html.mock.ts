@@ -2,13 +2,10 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { showExpertSlot } from '@public-ui/schema';
 
-import { getIconHtml } from '../../icon/test/html.mock';
-import { getSpanWcHtml } from '../../span/test/html.mock';
-import { getTooltipHtml } from '../../tooltip/test/html.mock';
-
 import type { LinkProps, LinkStates } from '@public-ui/schema';
 import clsx from 'clsx';
 import { translate } from '../../../i18n';
+import { KolSpanWcTag, KolIconTag, KolTooltipWcTag } from '../../../core/component-names';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	const state = mixMembers<LinkProps, LinkStates>(
 		{
@@ -45,37 +42,31 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			${props._disabled ? `aria-disabled="true"` : ''}
 			${props._disabled ? `tabindex="-1"` : ''}
 		>
-			${getSpanWcHtml(
-				{
-					...state,
-					_label: state._label || state._href,
-				},
-				{
-					expert: `<slot name="expert" slot="expert"></slot>`,
-				},
-				{
-					additionalClassNames: ['kol-span-wc'],
-				},
-			)}
+			<${KolSpanWcTag}
+				${state._hideLabel ? '_hidelabel=""' : ''}
+				_label="${state._label || state._href}"
+			>
+				<slot name="expert" slot="expert"></slot>
+			</${KolSpanWcTag}>
+
 			${
 				typeof state._target === 'string' && state._target !== '_self'
-					? getIconHtml(
-							{
-								_label: state._hideLabel ? '' : translate('kol-open-link-in-tab'),
-								_icons: 'codicon codicon-link-external',
-							},
-							` class="kol-icon external-link-icon"${state._hideLabel ? ' aria-hidden=""' : ''}`,
-						)
+					? `	<${KolIconTag}
+					class="external-link-icon"
+					_label="${state._hideLabel ? '' : translate('kol-open-link-in-tab')}"
+					_icons="codicon codicon-link-external"
+					${state._hideLabel ? ' aria-hidden=""' : ''}
+				></${KolIconTag}>`
 					: ''
 			}
     </a>
-		${getTooltipHtml(
-			{
-				_align: state._tooltipAlign,
-				_label: state._label || state._href,
-			},
-			` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`,
-		)}
+		<${KolTooltipWcTag}
+			aria-hidden="true"
+			${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}
+			_align="${state._tooltipAlign ? state._tooltipAlign : 'right'}"
+			_label="${state._label || state._href}"
+		></${KolTooltipWcTag}>
+
     </kol-link-wc>
   </mock:shadow-root>
   ${innerHTML}

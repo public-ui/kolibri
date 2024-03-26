@@ -3,17 +3,18 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
 import { getLinkHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { LinkProps } from '@public-ui/schema';
+import { KolLink } from '../shadow';
+import { KolLinkWc } from '../component';
 
 executeTests<LinkProps>(
 	'Link',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolLink, KolLinkWc],
 			template: () => <kol-link {...props} />,
 		});
 		return page;

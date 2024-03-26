@@ -1,7 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getIconHtml } from '../../icon/test/html.mock';
-import { getLinkHtml } from '../../link/test/html.mock';
+import { KolIconTag, KolLinkTag } from '../../../core/component-names';
 
 import type { AnyIconFontClass, BreadcrumbLinkProps, BreadcrumbProps, LabelPropType } from '@public-ui/schema';
 
@@ -19,25 +18,11 @@ export const getBreadcrumbHtml = (props: BreadcrumbProps): string => {
 	(state._links as BreadcrumbLinkProps[]).forEach((link, index) => {
 		list += `
 				<li>
-				${
-					index !== 0
-						? getIconHtml({
-								_label: '',
-								_icons: 'codicon codicon-chevron-right',
-							})
-						: ''
-				}
+				${index !== 0 ? `<${KolIconTag} _label="" _icons="codicon codicon-chevron-right" /> </${KolIconTag}>` : ''}
 					${
 						lastIndex === index
-							? `<span>${
-									link._hideLabel
-										? getIconHtml({
-												_label: link._label,
-												_icons: link._icons as AnyIconFontClass,
-											})
-										: link._label
-								}</span>`
-							: getLinkHtml(link)
+							? `<span>${link._hideLabel ? `<${KolIconTag} _label="${link._label}" _icons="${link._icons as AnyIconFontClass}" /></${KolIconTag}>` : link._label}</span>`
+							: `<${KolLinkTag} {...link}></${KolLinkTag}>`
 					}
 				</li>
 			`;
@@ -48,14 +33,7 @@ export const getBreadcrumbHtml = (props: BreadcrumbProps): string => {
   <mock:shadow-root>
 		<nav aria-label="${state._label as unknown as LabelPropType}">
 			<ul>
-				${
-					state._links.length === 0
-						? `<li>${getIconHtml({
-								_label: '',
-								_icons: 'codicon codicon-home',
-							})}…</li>`
-						: ''
-				}
+				${state._links.length === 0 ? `<li>	<${KolIconTag} _label="" _icons="codicon codicon-home" /> </${KolIconTag}>…</li>` : ''}
 				${list}
 			</ul>
 		</nav>

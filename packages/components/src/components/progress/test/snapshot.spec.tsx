@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
+import { KolProcess } from '../component';
 
 const DEFAULT_PROPS = {
 	_max: 42,
@@ -21,7 +21,7 @@ describe('test Progress', () => {
 
 	it('render empty Progress', async () => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolProcess],
 			html: `<kol-progress class="kol-progress"></kol-progress>`,
 		});
 		expect(page.root).toEqualHtml(
@@ -51,7 +51,7 @@ describe('test Progress', () => {
 	// Test equivalent to explicitly assigning 'bar' to Type Property
 	it('render Progress with required Max and Value Properties', async () => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolProcess],
 			template: () => <kol-progress {...DEFAULT_PROPS}></kol-progress>,
 		});
 		expect(page.root).toEqualHtml(
@@ -80,7 +80,7 @@ describe('test Progress', () => {
 
 	it('render Progress with Max and Value Properties of equal value', async () => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolProcess],
 			template: () => <kol-progress _max={DEFAULT_PROPS._max} _value={DEFAULT_PROPS._max}></kol-progress>,
 		});
 		expect(page.root).toEqualHtml(
@@ -119,7 +119,7 @@ describe('test Progress', () => {
 
 	it('render Progress of Type Cycle', async () => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolProcess],
 			template: () => <kol-progress {...DEFAULT_PROPS} _variant={'cycle'}></kol-progress>,
 		});
 		expect(page.root).toEqualHtml(

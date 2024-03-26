@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getSpanWcHtml } from '../../span/test/html.mock';
+import { KolSpanWcTag } from '../../../core/component-names';
 
 import type { TooltipProps, TooltipStates } from '@public-ui/schema';
 export const getTooltipHtml = (props: TooltipProps, additionalAttrs = ''): string => {
@@ -18,18 +18,7 @@ export const getTooltipHtml = (props: TooltipProps, additionalAttrs = ''): strin
 			? ''
 			: `<div class="tooltip-floating">
 			<div class="tooltip-area tooltip-arrow"></div>
-			${getSpanWcHtml(
-				{
-					_label: state._label,
-				},
-				{
-					expert: undefined,
-				},
-				{
-					additionalAttrs: typeof state._id === 'string' ? ` id="${state._id}"` : undefined,
-					additionalClassNames: ['tooltip-area', 'tooltip-content', 'kol-span-wc'],
-				},
-			)}
+			<${KolSpanWcTag} class="tooltip-area tooltip-content" ${state._id ? `id="${state._id}"` : ''} _label="${state._label}"></${KolSpanWcTag}>
 		</div>`
 	}
 </kol-tooltip-wc>`;

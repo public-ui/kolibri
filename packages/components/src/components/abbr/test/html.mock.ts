@@ -1,8 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getTooltipHtml } from '../../tooltip/test/html.mock';
-
 import type { AbbrProps } from '@public-ui/schema';
+import { KolTooltipWcTag } from '../../../core/component-names';
 
 export const getAbbrHtml = (props: AbbrProps): string => {
 	props = mixMembers(
@@ -20,11 +19,7 @@ export const getAbbrHtml = (props: AbbrProps): string => {
         <slot />
       </span>
     </abbr>
-    ${getTooltipHtml({
-			_align: props._tooltipAlign,
-			_id: 'nonce',
-			_label: props._label,
-		})}
+		<${KolTooltipWcTag} _align=${props._tooltipAlign} _id="nonce" _label=${props._label}></${KolTooltipWcTag}>
   </mock:shadow-root>
 </kol-abbr>`;
 };

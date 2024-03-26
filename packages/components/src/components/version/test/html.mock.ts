@@ -1,9 +1,8 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getBadgeHtml } from '../../badge/test/html.mock';
-
 import type { SpanOptions } from '../../span/test/html.mock';
 import type { VersionProps } from '@public-ui/schema';
+import { KolBadgeTag } from '../../../core/component-names';
 
 export const getVersionHtml = (props: VersionProps, options?: SpanOptions): string => {
 	props = mixMembers(
@@ -15,14 +14,10 @@ export const getVersionHtml = (props: VersionProps, options?: SpanOptions): stri
 	return `
 <kol-version${options?.additionalAttrs ?? ''} class="kol-version">
   <mock:shadow-root>
-    ${getBadgeHtml(
-			{
-				_color: '#BEC5C9',
-				_icons: { left: { icon: 'codicon codicon-versions', label: 'kol-version' } },
-				_label: props._label || '0.0.0-alpha.0',
-			},
-			options,
-		)}
+	<${KolBadgeTag}
+					_color="#bec5c9"
+					_label="${props._label || '0.0.0-alpha.0'}"
+				> </${KolBadgeTag}>
   </mock:shadow-root>
 </kol-version>`;
 };

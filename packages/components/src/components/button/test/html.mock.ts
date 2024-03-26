@@ -4,21 +4,10 @@ import { showExpertSlot } from '@public-ui/schema';
 
 import clsx from 'clsx';
 
-import { getSpanWcHtml } from '../../span/test/html.mock';
-import { getTooltipHtml } from '../../tooltip/test/html.mock';
-
 import type { ButtonProps, ButtonStates } from '@public-ui/schema';
-type Slots = {
-	expert?: string;
-};
+import { KolSpanWcTag, KolTooltipWcTag } from '../../../core/component-names';
 
-export const getButtonWcHtml = (
-	props: ButtonProps,
-	slots: Slots = {
-		expert: undefined,
-	},
-	additionalAttrs = '',
-): string => {
+export const getButtonWcHtml = (props: ButtonProps, additionalAttrs = ''): string => {
 	const state = mixMembers<ButtonProps, ButtonStates>(
 		{
 			_icons: {},
@@ -50,22 +39,21 @@ export const getButtonWcHtml = (
 	class="${classNames}"
 	${state._disabled ? `disabled` : ''}
 	${state._role ? `role="${state._role}"` : ''} type="${type}">
-		${getSpanWcHtml(
-			{
-				...props,
-				_label: state._label,
-			},
-			slots,
-			{ additionalClassNames: ['button-inner', 'kol-span-wc'] },
-		)}
+
+		<${KolSpanWcTag}
+		class="button-inner"
+		_label="${hasExpertSlot ? '' : state._label}"
+	>
+		<slot name="expert" slot="expert"></slot>
+	</${KolSpanWcTag}>
+
 	</button>
-	${getTooltipHtml(
-		{
-			_align: state._tooltipAlign,
-			_label: state._label,
-		},
-		` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`,
-	)}
+	<${KolTooltipWcTag}
+				aria-hidden="true"
+				hidden=""
+					${state._tooltipAlign ? `_align=${state._tooltipAlign}` : "_align='top'"}
+					_label="${typeof state._label === 'string' ? state._label : ''}"
+				></${KolTooltipWcTag}>
 </kol-button-wc>`;
 };
 
@@ -81,13 +69,7 @@ export const getButtonHtml = (props: ButtonProps): string => {
 	);
 	return `<kol-button class="kol-button">
   <mock:shadow-root>
-    ${getButtonWcHtml(
-			props,
-			{
-				expert: `<slot name="expert" slot="expert"></slot>`,
-			},
-			` class="kol-button-wc button ${state._variant}"`,
-		)}
+    ${getButtonWcHtml(props, ` class="kol-button-wc button ${state._variant}"`)}
   </mock:shadow-root>
 </kol-button>`;
 };

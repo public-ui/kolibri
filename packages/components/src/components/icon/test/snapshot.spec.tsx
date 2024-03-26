@@ -3,17 +3,17 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
 import { getIconHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { IconProps } from '@public-ui/schema';
+import { KolIcon } from '../component';
 
 executeTests<IconProps>(
 	'Icon',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolIcon],
 			template: () => <kol-icon {...props} />,
 		});
 		return page;
