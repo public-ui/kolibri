@@ -22,7 +22,7 @@ export const getBadgeHtml = (props: BadgeProps, options?: SpanOptions): string =
 	return `<kol-badge${options?.additionalAttrs ?? ''} class="kol-badge">
 	<mock:shadow-root>
 		<span style="background-color: ${state._color.backgroundColor}; color: ${state._color.foregroundColor as string};">
-		<${KolSpanWcTag} _allowMarkdown  ${props._icons ? `_icons="${props._icons}"` : ''} ${props._label ? `_label="${props._label}"` : ''}></${KolSpanWcTag} >
+		<${KolSpanWcTag} _allowMarkdown  ${props._icons ? `_icons="${props._icons as string}"` : ''} ${props._label ? `_label="${props._label}"` : ''}></${KolSpanWcTag} >
 		</span>
 	</mock:shadow-root>
 </kol-badge>`;
