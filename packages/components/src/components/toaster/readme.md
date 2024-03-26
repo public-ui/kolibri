@@ -14,8 +14,8 @@ import { ToasterService } from '@public-ui/components';
 
 // Get the toaster instance for the current HTML document.
 const toaster = ToasterService.getInstance(document, {
-  defaultAlertType: 'msg', // Standard: 'card'
-}});
+	defaultAlertType: 'msg', // Standard: 'card'
+});
 
 // Enqueue a new toast to the toaster to display:
 toaster.enqueue({
