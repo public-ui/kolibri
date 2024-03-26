@@ -4,6 +4,7 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { nonce } from '../../utils/dev.utils';
 import { API, States } from './types';
+import { KolTooltipWcTag } from '../../core/component-names';
 
 /**
  * @slot - Der Begriff, der erläutert werden soll.
@@ -27,7 +28,7 @@ export class KolAbbr implements API {
 						<slot />
 					</span>
 				</abbr>
-				<kol-tooltip-wc _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip-wc>
+				<KolTooltipWcTag _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></KolTooltipWcTag>
 			</Host>
 		);
 	}

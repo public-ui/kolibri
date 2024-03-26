@@ -12,6 +12,7 @@ import { LinkTargetPropType } from '../../types/props/link-target';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { propagateFocus } from '../../utils/reuse';
 import { Props } from './types';
+import { KolLinkWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-link-button',
@@ -30,7 +31,7 @@ export class KolLinkButton implements Props {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-link-button">
-				<kol-link-wc
+				<KolLinkWcTag
 					ref={this.catchRef}
 					class={{
 						button: true,
@@ -56,7 +57,7 @@ export class KolLinkButton implements Props {
 					_tooltipAlign={this._tooltipAlign}
 				>
 					<slot name="expert" slot="expert"></slot>
-				</kol-link-wc>
+				</KolLinkWcTag>
 			</Host>
 		);
 	}

@@ -4,6 +4,7 @@ import { Stringified } from '../../types/common';
 import { ErrorListPropType, validateErrorList } from '../../types/props/error-list';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { API, KoliBriFormCallbacks, States } from './types';
+import { KolAlertTag, KolIndentedTextTag, KolLinkTag } from '../../core/component-names';
 
 /**
  * @slot - Inhalt der Form.
@@ -47,13 +48,13 @@ export class KolForm implements API {
 		return (
 			<Host class="kol-form">
 				{this._errorList && this._errorList.length > 0 && (
-					<kol-alert _type="error">
+					<KolAlertTag _type="error">
 						{translate('kol-error-list-message')}
 						<nav aria-label={translate('kol-error-list')}>
 							<ul>
 								{this._errorList.map((error, index) => (
 									<li key={index}>
-										<kol-link
+										<KolLinkTag
 											_href={error.selector}
 											_label={error.message}
 											_on={{ onClick: this.handleLinkClick }}
@@ -65,16 +66,16 @@ export class KolForm implements API {
 								))}
 							</ul>
 						</nav>
-					</kol-alert>
+					</KolAlertTag>
 				)}
 				<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 					{this.state._requiredText === true ? (
 						<p>
-							<kol-indented-text>{translate('kol-form-description')}</kol-indented-text>
+							<KolIndentedTextTag>{translate('kol-form-description')}</KolIndentedTextTag>
 						</p>
 					) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
 						<p>
-							<kol-indented-text>{this.state._requiredText}</kol-indented-text>
+							<KolIndentedTextTag>{this.state._requiredText}</KolIndentedTextTag>
 						</p>
 					) : null}
 					<slot />

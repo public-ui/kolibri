@@ -21,6 +21,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
 import { API, States } from './types';
+import { KolInputTag } from '../../core/component-names';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
@@ -77,7 +78,7 @@ export class KolInputText implements API {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<kol-input
+				<KolInputTag
 					class={{
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
@@ -133,7 +134,7 @@ export class KolInputText implements API {
 							onKeyDown={this.onKeyDown}
 						/>
 					</div>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

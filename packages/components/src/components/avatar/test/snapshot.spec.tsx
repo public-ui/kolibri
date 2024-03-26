@@ -6,13 +6,14 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { COMPONENTS } from '../../component-list';
 import { Props } from '../types';
 import { getAvatarHtml } from './html.mock';
+import { KolAvatarTag } from '../../../core/component-names';
 
 executeTests<Props>(
 	'Avatar',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-avatar {...props} />,
+			template: () => <KolAvatarTag {...props} />,
 		});
 		return page;
 	},

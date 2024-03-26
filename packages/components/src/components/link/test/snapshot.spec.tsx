@@ -6,13 +6,14 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { COMPONENTS } from '../../component-list';
 import { LinkProps } from '../../link/types';
 import { getLinkHtml } from './html.mock';
+import { KolLinkTag } from '../../../core/component-names';
 
 executeTests<LinkProps>(
 	'Link',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-link {...props} />,
+			template: () => <KolLinkTag {...props} />,
 		});
 		return page;
 	},

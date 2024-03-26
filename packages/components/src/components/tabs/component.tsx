@@ -11,6 +11,7 @@ import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.t
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
 import { API, KoliBriTabsCallbacks, States, TabButtonProps } from './types';
+import { KolButtonGroupWcTag, KolButtonWcTag } from '../../core/component-names';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -87,9 +88,9 @@ export class KolTabs implements API {
 
 	private renderButtonGroup() {
 		return (
-			<kol-button-group-wc role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown} class="kol-tabs">
+			<KolButtonGroupWcTag role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown} class="kol-tabs">
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
-					<kol-button-wc
+					<KolButtonWcTag
 						_disabled={button._disabled}
 						_icons={button._icons || button._icon}
 						_hideLabel={button._hideLabel || button._iconOnly}
@@ -104,18 +105,18 @@ export class KolTabs implements API {
 						_id={`${this.state._label.replace(/\s/g, '-')}-tab-${index}`}
 						_role="tab"
 						_value={index}
-					></kol-button-wc>
+					></KolButtonWcTag>
 				))}
 				{this.showCreateTab && (
-					<kol-button-wc
+					<KolButtonWcTag
 						class="create-button"
 						_label={this.onCreateLabel}
 						_on={{
 							onClick: this.onCreate,
 						}}
-					></kol-button-wc>
+					></KolButtonWcTag>
 				)}
-			</kol-button-group-wc>
+			</KolButtonGroupWcTag>
 		);
 	}
 

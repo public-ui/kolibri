@@ -24,7 +24,7 @@ export const configureSnapshotPath =
 				.replace('-1-', '-')
 
 				// Make different snapshot folder for different themes
-				.replace('theme-snapshots.spec.js', `theme-${process.env.THEME_EXPORT.toLocaleLowerCase()}`)
+				.replace('theme-snapshots.spec.js', `theme-${(process.env.THEME_EXPORT || 'default').toLocaleLowerCase()}`)
 				.replace('-snapshots', '');
 			return result;
 		};
@@ -44,9 +44,6 @@ test.use({
 	},
 });
 
-/**
- * @todo stabilize and re-enable test
- */
 const blocklist = [];
 
 ROUTES.forEach((options, route) => {

@@ -113,29 +113,4 @@ Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hie
 | `_label` _(required)_ | `_label`        | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                                                                                                                                                                                                       | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 | `_smartButton`        | `_smart-button` | Allows to add a button with an arbitrary action within the element (\_hide-label only).                                                                                                                                                                                                                                                  | `string \| undefined \| { _label: string; } & { _tabIndex?: number \| undefined; _value?: Stringified<StencilUnknown>; _accessKey?: string \| undefined; _iconAlign?: AlignPropType \| undefined; _iconOnly?: boolean \| undefined; _icon?: IconsPropType \| undefined; _role?: AlternativeButtonLinkRolePropType \| undefined; _ariaControls?: string \| undefined; _ariaCurrent?: AriaCurrentPropType \| undefined; _ariaExpanded?: boolean \| undefined; _ariaLabel?: string \| undefined; _ariaSelected?: boolean \| undefined; _on?: ButtonCallbacksPropType<StencilUnknown> \| undefined; _type?: ButtonTypePropType \| undefined; _variant?: ButtonVariantPropType \| undefined; _customClass?: string \| undefined; _disabled?: boolean \| undefined; _hideLabel?: boolean \| undefined; _icons?: IconsPropType \| undefined; _id?: string \| undefined; _name?: string \| undefined; _syncValueBySelector?: string \| undefined; _tooltipAlign?: AlignPropType \| undefined; }` | `undefined` |
 
-## Dependencies
-
-### Used by
-
-- [kol-version](../version)
-
-### Depends on
-
-- kol-button-wc
-- kol-span-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-badge --> kol-button-wc
-  kol-badge --> kol-span-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-version --> kol-badge
-  style kol-badge stroke:#333,stroke-width:4px
-```
-
 ---

@@ -74,24 +74,4 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 | `_quote` _(required)_ | `_quote`   | Defines the text of the quote.                                                                                                  | `string`                           | `undefined` |
 | `_variant`            | `_variant` | Defines which variant should be used for presentation.                                                                          | `"block" \| "inline" \| undefined` | `'inline'`  |
 
-## Dependencies
-
-### Depends on
-
-- [kol-link](../link)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-quote --> kol-link
-  kol-link --> kol-link-wc
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-quote stroke:#333,stroke-width:4px
-```
-
 ---

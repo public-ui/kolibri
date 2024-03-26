@@ -78,26 +78,4 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 | ---- | ----------------------- |
 |      | Der Inhalt der Meldung. |
 
-## Dependencies
-
-### Depends on
-
-- [kol-alert](../alert)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-toast --> kol-alert
-  kol-alert --> kol-alert-wc
-  kol-alert-wc --> kol-heading-wc
-  kol-alert-wc --> kol-button-wc
-  kol-alert-wc --> kol-icon
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  style kol-toast stroke:#333,stroke-width:4px
-```
-
 ---

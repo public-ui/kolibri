@@ -6,13 +6,14 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { COMPONENTS } from '../../component-list';
 import { Props } from '../types';
 import { getAlertHtml } from './html.mock';
+import { KolAlertTag } from '../../../core/component-names';
 
 executeTests<Props>(
 	'Alert',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-alert {...props} />,
+			template: () => <KolAlertTag {...props} />,
 		});
 		return page;
 	},

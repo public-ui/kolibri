@@ -6,6 +6,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
 import { API, States } from './types';
+import { KolLinkWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-skip-nav',
@@ -23,7 +24,7 @@ export class KolSkipNav implements API {
 						{this.state._links.map((link: LinkProps, index: number) => {
 							return (
 								<li key={index}>
-									<kol-link-wc {...link}></kol-link-wc>
+									<KolLinkWcTag {...link}></KolLinkWcTag>
 								</li>
 							);
 						})}

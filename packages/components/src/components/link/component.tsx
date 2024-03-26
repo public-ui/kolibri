@@ -24,6 +24,7 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { States as LinkStates } from '../link/types';
 import { API } from './types';
+import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 
 /**
  * @internal
@@ -131,11 +132,11 @@ export class KolLinkWc implements API {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label || this.state._href}>
+					<KolSpanWcTag _icons={this.state._icons} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? '' : this.state._label || this.state._href}>
 						<slot name="expert" slot="expert"></slot>
-					</kol-span-wc>
+					</KolSpanWcTag>
 					{isExternal && (
-						<kol-icon
+						<KolIconTag
 							class="external-link-icon"
 							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
 							_icons={'codicon codicon-link-external'}
@@ -143,7 +144,7 @@ export class KolLinkWc implements API {
 						/>
 					)}
 				</a>
-				<kol-tooltip-wc
+				<KolTooltipWcTag
 					/**
 					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
@@ -152,7 +153,7 @@ export class KolLinkWc implements API {
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
-				></kol-tooltip-wc>
+				></KolTooltipWcTag>
 			</Host>
 		);
 	}

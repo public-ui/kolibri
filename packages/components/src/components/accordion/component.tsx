@@ -11,6 +11,7 @@ import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { watchHeadingLevel } from '../heading/validation';
 import { API, KoliBriAccordionCallbacks, States } from './types';
+import { KolButtonWcTag, KolHeadingWcTag } from '../../core/component-names';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
@@ -49,8 +50,8 @@ export class KolAccordion implements API {
 						open: this.state._open === true,
 					}}
 				>
-					<kol-heading-wc _label="" _level={this.state._level}>
-						<kol-button-wc
+					<KolHeadingWcTag _label="" _level={this.state._level}>
+						<KolButtonWcTag
 							ref={this.catchRef}
 							// slot="expert"
 							_ariaControls={this.nonce}
@@ -58,8 +59,8 @@ export class KolAccordion implements API {
 							_icons={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
 							_label={this.state._label}
 							_on={{ onClick: this.onClick }}
-						></kol-button-wc>
-					</kol-heading-wc>
+						></KolButtonWcTag>
+					</KolHeadingWcTag>
 					<div class="header">
 						<slot name="header"></slot>
 					</div>

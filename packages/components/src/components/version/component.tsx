@@ -4,6 +4,7 @@ import { Farbspektrum } from '../../enums/color';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { API, States } from './types';
 import { translate } from '../../i18n';
+import { KolBadgeTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-version',
@@ -16,7 +17,7 @@ export class KolVersion implements API {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-version">
-				<kol-badge
+				<KolBadgeTag
 					_color={Farbspektrum.Hellgrau}
 					_icons={{
 						left: { icon: 'codicon codicon-versions', label: translate('kol-version') },

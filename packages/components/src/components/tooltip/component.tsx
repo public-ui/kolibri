@@ -8,6 +8,7 @@ import { getDocument } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { processEnv } from '../../utils/reuse';
 import { API, States } from './types';
+import { KolSpanWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-tooltip-wc',
@@ -155,7 +156,7 @@ export class KolTooltip implements API {
 				{this.state._label !== '' && (
 					<div class="tooltip-floating" ref={this.catchTooltipElement}>
 						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
-						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _label={this.state._label}></kol-span-wc>
+						<KolSpanWcTag class="tooltip-area tooltip-content" id={this.state._id} _label={this.state._label}></KolSpanWcTag>
 					</div>
 				)}
 			</Host>

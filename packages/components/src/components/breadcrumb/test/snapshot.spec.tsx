@@ -6,13 +6,14 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { COMPONENTS } from '../../component-list';
 import { Props } from '../types';
 import { getBreadcrumbHtml } from './html.mock';
+import { KolBreadcrumbTag } from '../../../core/component-names';
 
 executeTests<Props>(
 	'Breadcrumb',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-breadcrumb {...props} />,
+			template: () => <KolBreadcrumbTag {...props} />,
 		});
 		return page;
 	},

@@ -63,6 +63,7 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
+		"@angular/common": "17.3.1",
 		"@angular/compiler": "17.3.1",
 		"@angular/compiler-cli": "17.3.1",
 		"@angular/core": "17.3.1",

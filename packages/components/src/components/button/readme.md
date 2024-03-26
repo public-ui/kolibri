@@ -123,33 +123,4 @@ Probleme mit Disabled-Status
 | `_value`              | `_value`         | Defines the value that the button emits on click.                                                                                                                                                                                                                                                                                                                                                    | `boolean \| null \| number \| object \| string \| undefined`                                                                                           | `undefined` |
 | `_variant`            | `_variant`       | Defines which variant should be used for presentation.                                                                                                                                                                                                                                                                                                                                               | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined`                                                   | `'normal'`  |
 
-## Dependencies
-
-### Used by
-
-- [kol-nav](../nav)
-- [kol-pagination](../pagination)
-- [kol-table](../table)
-- [kol-toast-container](../toaster)
-
-### Depends on
-
-- kol-button-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-button --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip-wc
-  kol-span-wc --> kol-icon
-  kol-tooltip-wc --> kol-span-wc
-  kol-nav --> kol-button
-  kol-pagination --> kol-button
-  kol-table --> kol-button
-  kol-toast-container --> kol-button
-  style kol-button stroke:#333,stroke-width:4px
-```
-
 ---

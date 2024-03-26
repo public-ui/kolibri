@@ -1,5 +1,6 @@
 import { LabelPropType } from '../../types/props/label';
 import { AlertType } from '../alert/types';
+import { KolToastTag } from '../../core/component-names';
 
 type Toast = {
 	description: string;
@@ -24,7 +25,7 @@ export class ToasterService {
 	private isOpen = false;
 
 	private constructor(private readonly document: Document) {
-		this.toastElement = this.document.createElement('kol-toast');
+		this.toastElement = this.document.createElement(KolToastTag);
 		this.toastElement.setAttribute('_level', '0');
 		this.toastElement.setAttribute('_show', 'false');
 		this.toastElement.setAttribute('_show-duration', '-1'); // @deprecated in v2

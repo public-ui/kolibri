@@ -3,6 +3,7 @@ import { Component, h, Host, JSX, Prop } from '@stencil/core';
 
 import { Icofont } from '../../types/icofont';
 import { PropAriaLabel } from '../../types/props/aria-label';
+import { KolIconTag } from '../../core/component-names';
 
 type RequiredProps = PropAriaLabel & {
 	icon: Icofont;
@@ -23,7 +24,7 @@ export class KolIconIcofont implements Generic.Element.Members<RequiredProps, Op
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-icon-icofont">
-				<kol-icon
+				<KolIconTag
 					exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
 					_ariaLabel={this._ariaLabel}
 					_icon={typeof this._icon === 'string' ? `icofont-${this._icon}` : (undefined as unknown as string)}

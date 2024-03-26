@@ -7,6 +7,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { LinkProps } from '../link/types';
 import { watchNavLinks } from '../nav/validation';
 import { API, BreadcrumbLinkProps, States } from './types';
+import { KolIconTag, KolLinkTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -21,17 +22,17 @@ export class KolBreadcrumb implements API {
 		const hideLabel = link._iconOnly || link._hideLabel;
 		return (
 			<li key={index}>
-				{index !== 0 && <kol-icon _label="" _icons="codicon codicon-chevron-right" />}
+				{index !== 0 && <KolIconTag _label="" _icons="codicon codicon-chevron-right" />}
 				{index === lastIndex ? (
 					<span>
 						{hideLabel ? (
-							<kol-icon _label={link._label} _icons={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+							<KolIconTag _label={link._label} _icons={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
 						) : (
 							<Fragment>{link._label}</Fragment>
 						)}
 					</span>
 				) : (
-					<kol-link {...link}></kol-link>
+					<KolLinkTag {...link}></KolLinkTag>
 				)}
 			</li>
 		);
@@ -44,7 +45,7 @@ export class KolBreadcrumb implements API {
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
-								<kol-icon _label="" _icons="codicon codicon-home" />…
+								<KolIconTag _label="" _icons="codicon codicon-home" />…
 							</li>
 						)}
 						{this.state._links.map(this.renderLink)}

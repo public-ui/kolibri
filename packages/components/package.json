@@ -67,20 +67,20 @@
 		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js"
 	},
 	"dependencies": {
-		"adopted-style-sheets": "1.1.4",
 		"@floating-ui/dom": "1.6.3",
 		"@public-ui/schema": "1.7.16",
+		"adopted-style-sheets": "1.1.4",
 		"i18next": "23.10.1",
 		"markdown-it": "14.1.0"
 	},
 	"devDependencies": {
-		"@stencil/angular-output-target": "0.8.4",
+		"@public-ui/stencil-angular-output-target": "0.9.0",
+		"@public-ui/stencil-react-output-target": "0.6.0",
+		"@public-ui/stencil-solid-output-target": "0.2.0",
+		"@public-ui/stencil-vue-output-target": "0.9.0",
 		"@stencil/core": "4.13.0",
 		"@stencil/postcss": "2.1.0",
 		"@stencil/sass": "3.0.10",
-		"@stencil/react-output-target": "0.5.3",
-		"@stencil/solid-output-target": "file:node_martin/stencil-solid-output-target-0.0.1.tgz",
-		"@stencil/vue-output-target": "0.8.7",
 		"@types/color-convert": "2.0.3",
 		"@types/jest": "26.0.24",
 		"@types/markdown-it": "13.0.7",

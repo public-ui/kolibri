@@ -21,6 +21,7 @@ import {
 	KoliBriTableSelectedHead,
 	States,
 } from './types';
+import { KolButtonTag, KolButtonWcTag, KolPaginationTag } from '../../core/component-names';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -601,7 +602,7 @@ export class KolTable implements API {
 							{headerCell.label}
 						</div>
 						{!this.disableSort && typeof headerCell.sort === 'function' && (
-							<kol-button
+							<KolButtonTag
 								exportparts="icon"
 								_icon={sortButtonIcon}
 								_hideLabel
@@ -625,7 +626,7 @@ export class KolTable implements API {
 									},
 								}}
 								_variant="ghost"
-							></kol-button>
+							></KolButtonTag>
 						)}
 					</div>
 				</th>
@@ -679,7 +680,7 @@ export class KolTable implements API {
 							{this.state._pagination._max || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
 						</span>
 						<div>
-							<kol-pagination
+							<KolPaginationTag
 								_boundaryCount={this.state._pagination._boundaryCount}
 								_customClass={this.state._pagination._customClass}
 								_on={this.handlePagination}
@@ -690,7 +691,7 @@ export class KolTable implements API {
 								_tooltipAlign="bottom"
 								_max={this.state._pagination._max || this.state._pagination._total || this.state._data.length}
 								_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
-							></kol-pagination>
+							></KolPaginationTag>
 						</div>
 					</div>
 				)}
@@ -775,7 +776,7 @@ export class KolTable implements API {
 														data-sort={sortDirection ? `sort-${this.sortedColumnHead.sortDirection}` : 'sort-NOS'}
 													>
 														{!this.disableSort && typeof headerCell.sort === 'function' ? (
-															<kol-button-wc
+															<KolButtonWcTag
 																class="table-sort-button"
 																exportparts="icon"
 																_icons={{ right: sortButtonIcon }}
@@ -798,7 +799,7 @@ export class KolTable implements API {
 																		}
 																	},
 																}}
-															></kol-button-wc>
+															></KolButtonWcTag>
 														) : (
 															col.label
 														)}

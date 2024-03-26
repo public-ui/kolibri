@@ -19,6 +19,7 @@ import { FormFieldMsg } from '../@shared/form-field-msg';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { API, States } from './types';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -69,7 +70,7 @@ export class KolInputRadio implements API {
 						const customId = `${this.state._id}-${index}`;
 						const slotName = `radio-${index}`;
 						return (
-							<kol-input
+							<KolInputTag
 								class={{
 									radio: true,
 									disabled: Boolean(this.state._disabled || option.disabled),
@@ -120,7 +121,7 @@ export class KolInputRadio implements API {
 										</span>
 									</label>
 								</div>
-							</kol-input>
+							</KolInputTag>
 						);
 					})}
 					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _error={this.state._error} _id={this.state._id} />}

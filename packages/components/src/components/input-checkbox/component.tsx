@@ -17,6 +17,7 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { API, InputCheckboxIconsProp, InputCheckboxVariant, States } from './types';
+import { KolIconTag, KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -41,7 +42,7 @@ export class KolInputCheckbox implements API {
 
 		return (
 			<Host class="kol-input-checkbox">
-				<kol-input
+				<KolInputTag
 					class={{
 						checkbox: true,
 						[this.state._variant]: true,
@@ -65,7 +66,7 @@ export class KolInputCheckbox implements API {
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
 					<label slot="input" class="checkbox-container">
-						<kol-icon
+						<KolIconTag
 							class="icon"
 							_icons={
 								this.state._indeterminate ? this.state._icons.indeterminate : this.state._checked ? this.state._icons.checked : this.state._icons.unchecked
@@ -92,7 +93,7 @@ export class KolInputCheckbox implements API {
 							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 						/>
 					</label>
-				</kol-input>
+				</KolInputTag>
 			</Host>
 		);
 	}

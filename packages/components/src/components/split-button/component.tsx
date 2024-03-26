@@ -13,6 +13,7 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { StencilUnknown } from '../../types/unknown';
 import { API, States } from './types';
+import { KolButtonWcTag } from '../../core/component-names';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
@@ -79,7 +80,7 @@ export class KolSplitButton implements API {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-split-button split-button">
-				<kol-button-wc
+				<KolButtonWcTag
 					class={{
 						'main-button': true,
 						button: true,
@@ -104,16 +105,16 @@ export class KolSplitButton implements API {
 					_type={this._type}
 					_value={this._value}
 					_variant={this._variant}
-				></kol-button-wc>
+				></KolButtonWcTag>
 				<div class="horizontal-line"></div>
-				<kol-button-wc
+				<KolButtonWcTag
 					class="secondary-button"
 					_disabled={this._disabled}
 					_hideLabel
 					_icons="codicon codicon-triangle-down"
 					_label={`dropdown ${this.state._show ? 'schließen' : 'öffnen'}`} // @todo: translate
 					_on={this.clickToggleHandler}
-				></kol-button-wc>
+				></KolButtonWcTag>
 				<div class="popover" ref={this.catchDropdownElements}>
 					<div class="popover-content">
 						<slot />
