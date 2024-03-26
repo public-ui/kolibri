@@ -62,18 +62,4 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 | -------- | ----------------------------------------- |
 | `"icon"` | Ermöglicht das Styling des inneren Icons. |
 
-## Dependencies
-
-### Used by
-
-- [kol-details](../details)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-details --> kol-icon
-  style kol-icon stroke:#333,stroke-width:4px
-```
-
 ---

@@ -103,18 +103,4 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 | ---- | --------------------------------------------------------- |
 |      | Der Inhalt, der in der Detailbeschreibung angezeigt wird. |
 
-## Dependencies
-
-### Depends on
-
-- [kol-icon](../icon)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-details --> kol-icon
-  style kol-details stroke:#333,stroke-width:4px
-```
-
 ---
