@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.7.16",
+	"version": "1.7.17",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -68,7 +68,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.3",
-		"@public-ui/schema": "1.7.16",
+		"@public-ui/schema": "1.7.17",
 		"adopted-style-sheets": "1.1.4",
 		"i18next": "23.10.1",
 		"markdown-it": "14.1.0"
