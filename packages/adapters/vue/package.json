@@ -1,9 +1,12 @@
 {
 	"name": "@public-ui/vue",
-	"version": "1.7.17",
+	"version": "1.7.18",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
-	"repository": "https://github.com/public-ui/kolibri",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/public-ui/kolibri"
+  },
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -47,7 +50,7 @@
 	},
 	"devDependencies": {
 		"@babel/types": "7.24.0",
-		"@public-ui/components": "1.7.17",
+		"@public-ui/components": "1.7.18",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.4",
@@ -57,7 +60,7 @@
 		"vue": "3.4.21"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.17",
+		"@public-ui/components": "1.7.18",
 		"vue": ">=3"
 	},
 	"sideEffects": false,

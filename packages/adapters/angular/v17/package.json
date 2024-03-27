@@ -1,9 +1,12 @@
 {
 	"name": "@public-ui/angular-v17",
-	"version": "1.7.17",
+	"version": "1.7.18",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
-	"repository": "https://github.com/public-ui/kolibri",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/public-ui/kolibri"
+  },
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -67,7 +70,7 @@
 		"@angular/compiler": "17.3.1",
 		"@angular/compiler-cli": "17.3.1",
 		"@angular/core": "17.3.1",
-		"@public-ui/components": "1.7.17",
+		"@public-ui/components": "1.7.18",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.2",
@@ -80,8 +83,8 @@
 		"zone.js": "0.14.4"
 	},
 	"peerDependencies": {
-		"@angular/core": "17.3.0",
-		"@public-ui/components": "1.7.17"
+		"@angular/core": "17.3.1",
+		"@public-ui/components": "1.7.18"
 	},
 	"files": [
 		"dist"
