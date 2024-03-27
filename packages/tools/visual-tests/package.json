@@ -1,9 +1,12 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "1.7.17",
+	"version": "1.7.18",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
-	"repository": "https://github.com/public-ui/kolibri",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/public-ui/kolibri"
+  },
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -25,7 +28,7 @@
 	},
 	"dependencies": {
 		"@playwright/test": "1.42.1",
-		"@public-ui/sample-react": "1.7.17",
+		"@public-ui/sample-react": "1.7.18",
 		"axe-playwright": "2.0.1",
 		"portfinder": "1.0.32",
 		"serve": "14.2.1"
@@ -36,7 +39,7 @@
 		"@babel/preset-env": "7.24.3",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "5.2.2",
+		"knip": "5.6.1",
 		"prettier": "3.2.5"
 	},
 	"files": [

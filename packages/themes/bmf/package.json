@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-bmf",
-	"version": "1.7.17",
+	"version": "1.7.18",
 	"private": true,
 	"scripts": {
 		"format": "prettier --check src",
@@ -9,12 +9,12 @@
 		"test-update": "THEME_MODULE=src/index THEME_EXPORT=BMF kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "1.7.17",
-		"@public-ui/visual-tests": "1.7.17",
+		"@public-ui/schema": "1.7.18",
+		"@public-ui/visual-tests": "1.7.18",
 		"@types/node": "ts5.4",
 		"typescript": "5.4.3"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.17"
+		"@public-ui/components": "1.7.18"
 	}
 }

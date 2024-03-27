@@ -1,9 +1,12 @@
 {
 	"name": "@public-ui/schema",
-	"version": "1.7.17",
+	"version": "1.7.18",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
-	"repository": "https://github.com/public-ui/kolibri",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/public-ui/kolibri"
+  },
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -51,8 +54,8 @@
 	},
 	"devDependencies": {
 		"@types/node": "ts5.4",
-		"@typescript-eslint/eslint-plugin": "7.3.1",
-		"@typescript-eslint/parser": "7.3.1",
+		"@typescript-eslint/eslint-plugin": "7.4.0",
+		"@typescript-eslint/parser": "7.4.0",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "5.4.3",
