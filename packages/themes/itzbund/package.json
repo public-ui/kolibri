@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-itzbund",
-	"version": "2.0.10",
+	"version": "2.0.11",
 	"private": true,
 	"scripts": {
 		"format": "prettier --check src",
@@ -11,12 +11,12 @@
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.10",
-		"@public-ui/visual-tests": "2.0.10",
+		"@public-ui/schema": "2.0.11",
+		"@public-ui/visual-tests": "2.0.11",
 		"@types/node": "ts5.4",
 		"typescript": "5.4.3"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.10"
+		"@public-ui/components": "2.0.11"
 	}
 }
