@@ -3,7 +3,10 @@
 	"version": "2.0.10",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
-	"repository": "https://github.com/public-ui/kolibri",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/public-ui/kolibri"
+  },
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -51,7 +54,7 @@
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.4",
 		"@types/normalize-package-data": "2.4.4",
-		"@types/react": "18.2.68",
+		"@types/react": "18.2.73",
 		"@types/react-dom": "18.2.22",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
