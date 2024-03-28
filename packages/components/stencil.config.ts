@@ -150,7 +150,16 @@ async function generateCustomElementsJson(docsData: JsonDocs) {
 	await fsPromises.writeFile('./custom-elements.json', JSON.stringify(jsonData, null, 2));
 }
 
-const developmentHtmlFiles = fs.readdirSync(path.join(__dirname, 'src/dev')).filter((fileName: string) => fileName.endsWith('.html'));
+const developmentHtmlFiles =
+	process.env.NODE_ENV === 'development'
+		? [
+				'dev.html',
+				...fs
+					.readdirSync(path.join(__dirname, 'src/dev'))
+					.filter((fileName: string) => fileName.endsWith('.html'))
+					.map((fileName: string) => path.join('dev', fileName)),
+			]
+		: [];
 
 let outputTargets: OutputTarget[] = [
 	{
@@ -168,10 +177,7 @@ let outputTargets: OutputTarget[] = [
 			{
 				src: 'assets',
 			},
-			{
-				src: 'dev.html',
-			},
-			...developmentHtmlFiles.map((fileName) => ({ src: path.join('dev', fileName) })),
+			...developmentHtmlFiles.map((filePath) => ({ src: filePath })),
 		],
 	},
 	// {
