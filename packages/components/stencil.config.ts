@@ -159,8 +159,6 @@ const developmentHtmlFiles =
 			]
 		: [];
 
-console.log(developmentHtmlFiles);
-
 let outputTargets: OutputTarget[] = [
 	{
 		type: 'dist',
