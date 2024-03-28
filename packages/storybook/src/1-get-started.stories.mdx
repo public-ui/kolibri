@@ -99,9 +99,9 @@ Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sob
 ```html
 <head>
 	<script type="module">
-		import { register } from 'https://unpkg.com/@public-ui/components@1.7.19-rc.0/dist/esm/index.js';
-		import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@1.7.19-rc.0/dist/loader/index.js';
-		import { ITZBund } from 'https://unpkg.com/@public-ui/themes@1.7.19-rc.0/dist/index.mjs';
+		import { register } from 'https://unpkg.com/@public-ui/components@1.7.19/dist/esm/index.js';
+		import { defineCustomElements } from 'https://unpkg.com/@public-ui/components@1.7.19/dist/loader/index.js';
+		import { ITZBund } from 'https://unpkg.com/@public-ui/themes@1.7.19/dist/index.mjs';
 		register([ITZBund], defineCustomElements)
 			.then(() => {})
 			.catch(console.warn);

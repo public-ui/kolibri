@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "1.7.19-rc.0",
+	"version": "1.7.19",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -40,7 +40,7 @@
 		"semver": "7.6.0"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.7.19-rc.0",
+		"@public-ui/components": "1.7.19",
 		"@types/gradient-string": "1.1.5",
 		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.4.0",

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/core",
-	"version": "1.7.19-rc.0",
+	"version": "1.7.19",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -54,7 +54,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.19-rc.0"
+		"@public-ui/components": "1.7.19"
 	},
 	"devDependencies": {
 		"adopted-style-sheets": "1.1.4",
