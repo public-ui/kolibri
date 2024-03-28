@@ -29,6 +29,6 @@ import('./devtools')
 	});
 
 /* Import scripts necessary for the development server, i.e. the /dev/*.html files. Only include in development environment. */
-if (processEnv) {
+if (processEnv === 'development') {
 	import('../dev');
 }
