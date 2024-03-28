@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/preact",
-	"version": "2.0.12-rc.0",
+	"version": "2.0.12",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,10 +49,10 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/react": "2.0.12-rc.0"
+		"@public-ui/react": "2.0.12"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.12-rc.0",
+		"@public-ui/components": "2.0.12",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"typescript": "5.4.3",
