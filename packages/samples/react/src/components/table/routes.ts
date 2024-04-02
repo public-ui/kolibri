@@ -6,6 +6,7 @@ import { PaginationPosition } from './pagination-position';
 import { TableRenderCell } from './render-cell';
 import { TableSortData } from './sort-data';
 import { TableWithPagination } from './with-pagination';
+import { TableStateless } from './stateless';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
@@ -16,5 +17,6 @@ export const TABLE_ROUTES: Routes = {
 		'sort-data': TableSortData,
 		'with-pagination': TableWithPagination,
 		'pagination-position': PaginationPosition,
+		stateless: TableStateless,
 	},
 };

@@ -1,5 +1,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import { devHint, emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
+import {
+	devHint,
+	emptyStringByArrayHandler,
+	objectObjectHandler,
+	parseJson,
+	setState,
+	validateLabel,
+	watchString,
+	watchValidator,
+	validateTableData,
+} from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
@@ -23,6 +33,7 @@ import type {
 	Stringified,
 	TableAPI,
 	TableStates,
+	TableDataPropType,
 } from '@public-ui/schema';
 import { validatePaginationPosition } from '@public-ui/schema';
 import { KolButtonTag, KolButtonWcTag, KolPaginationTag } from '../../core/component-names';
@@ -137,27 +148,12 @@ export class KolTable implements TableAPI {
 	}
 
 	@Watch('_data')
-	public validateData(value?: Stringified<KoliBriTableDataType[]>): void {
-		emptyStringByArrayHandler(value, () => {
-			objectObjectHandler(value, () => {
-				if (typeof value === 'undefined') {
-					value = [];
-				}
-				try {
-					value = parseJson<KoliBriTableDataType[]>(value);
-					// eslint-disable-next-line no-empty
-				} catch (e) {
-					// value behält den ursprünglichen Wert
-				}
-				if (Array.isArray(value) && value.find((dataTupel: KoliBriTableDataType) => !(typeof dataTupel === 'object' && dataTupel !== null)) === undefined) {
-					setState(this, '_data', value, {
-						afterPatch: () => {
-							// TODO: kein guter Hack (endless loop)
-							setTimeout(this.updateSortedData);
-						},
-					});
-				}
-			});
+	public validateData(value?: TableDataPropType): void {
+		validateTableData(this, value, {
+			afterPatch: () => {
+				// TODO: kein guter Hack (endless loop)
+				setTimeout(this.updateSortedData);
+			},
 		});
 	}
 

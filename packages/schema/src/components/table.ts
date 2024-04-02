@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropLabel } from '../props';
+import type { PropLabel, PropTableData } from '../props';
 import type { Stringified } from '../types';
 import type { KoliBriPaginationProps } from './pagination';
 import type { PropPaginationPosition } from '../props/pagination-position';
@@ -23,13 +23,11 @@ export type KoliBriTableCell = {
 	label: string;
 	render?: KoliBriTableRender;
 	rowSpan?: number;
-	sort?: KoliBriTableSort;
 	textAlign?: KoliBriTableCellTextAlign;
 	width?: string;
 };
 
 export type KoliBriTableHeaderCell = {
-	asTd?: boolean;
 	key?: string;
 	compareFn?: KoliBriDataCompareFn;
 	/**
@@ -37,7 +35,6 @@ export type KoliBriTableHeaderCell = {
 	 */
 	sort?: KoliBriTableSort;
 	sortDirection?: KoliBriSortDirection;
-	textAlign?: KoliBriTableCellTextAlign;
 } & KoliBriTableCell;
 
 export type KoliBriTableHeaders = {
@@ -63,9 +60,9 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 >;
 
 type RequiredProps = {
-	data: Stringified<KoliBriTableDataType[]>;
 	headers: Stringified<KoliBriTableHeaders>;
-} & PropLabel;
+} & PropTableData &
+	PropLabel;
 type OptionalProps = {
 	allowMultiSort: boolean;
 	dataFoot: Stringified<KoliBriTableDataType[]>;

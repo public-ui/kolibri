@@ -42,6 +42,7 @@ export enum TagEnum {
 	'split-button',
 	'symbol',
 	'table',
+	'table-stateless',
 	'tabs',
 	'textarea',
 	'toast-container',
