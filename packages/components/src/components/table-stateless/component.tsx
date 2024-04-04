@@ -1,8 +1,16 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
-import type { KoliBriTableHeaders, LabelPropType, Stringified, TableDataPropType, TableStatelessAPI, TableStatelessStates } from '@public-ui/schema';
-import { validateLabel, watchString } from '@public-ui/schema';
+import type {
+	KoliBriTableHeaders,
+	LabelPropType,
+	Stringified,
+	TableDataFootPropType,
+	TableDataPropType,
+	TableStatelessAPI,
+	TableStatelessStates,
+} from '@public-ui/schema';
+import { validateLabel, validateTableData, validateTableDataFoot, watchString } from '@public-ui/schema';
 
 @Component({
 	tag: 'kol-table-stateless-wc',
@@ -26,7 +34,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	/**
 	 * Defines the data for the table footer.
 	 */
-	@Prop() public _dataFoot?: TableDataPropType;
+	@Prop() public _dataFoot?: TableDataFootPropType;
 
 	/**
 	 * Defines the horizontal and vertical table headers.
@@ -44,10 +52,14 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Prop() public _minWidth?: string;
 
 	@Watch('_data')
-	public validateData() {}
+	public validateData(value?: TableDataPropType) {
+		validateTableData(this, value);
+	}
 
 	@Watch('_dataFoot')
-	public validateDataFoot() {}
+	public validateDataFoot(value?: TableDataFootPropType) {
+		validateTableDataFoot(this, value);
+	}
 
 	@Watch('_headers')
 	public validateHeaders() {}
@@ -67,8 +79,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	public componentWillLoad(): void {
-		// this.validateData(this._data);
-		// this.validateDataFoot(this._dataFoot);
+		this.validateData(this._data);
+		this.validateDataFoot(this._dataFoot);
 		// this.validateHeaders(this._headers);
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);

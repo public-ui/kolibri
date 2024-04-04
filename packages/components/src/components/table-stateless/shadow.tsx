@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop } from '@stencil/core';
 
 import { KolTableStatelessWcTag } from '../../core/component-names';
-import type { KoliBriTableHeaders, Stringified, TableDataPropType, TableStatelessProps } from '@public-ui/schema';
+import type { KoliBriTableHeaders, Stringified, TableDataPropType, TableStatelessProps, TableDataFootPropType } from '@public-ui/schema';
 
 @Component({
 	tag: 'kol-table-stateless',
@@ -20,7 +20,7 @@ export class KolTableStateless implements TableStatelessProps {
 	/**
 	 * Defines the data for the table footer.
 	 */
-	@Prop() public _dataFoot?: TableDataPropType;
+	@Prop() public _dataFoot?: TableDataFootPropType;
 
 	/**
 	 * Defines the horizontal and vertical table headers.

@@ -9,6 +9,7 @@ import {
 	watchString,
 	watchValidator,
 	validateTableData,
+	validateTableDataFoot,
 } from '@public-ui/schema';
 import type { JSX } from '@stencil/core';
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
@@ -34,6 +35,7 @@ import type {
 	TableAPI,
 	TableStates,
 	TableDataPropType,
+	TableDataFootPropType,
 } from '@public-ui/schema';
 import { validatePaginationPosition } from '@public-ui/schema';
 import { KolButtonTag, KolButtonWcTag, KolPaginationTag } from '../../core/component-names';
@@ -158,26 +160,11 @@ export class KolTable implements TableAPI {
 	}
 
 	@Watch('_dataFoot')
-	public validateDataFoot(value?: Stringified<KoliBriTableDataType[]>): void {
-		emptyStringByArrayHandler(value, () => {
-			objectObjectHandler(value, () => {
-				if (typeof value === 'undefined') {
-					value = [];
-				}
-				try {
-					value = parseJson<KoliBriTableDataType[]>(value);
-					// eslint-disable-next-line no-empty
-				} catch (e) {
-					// value behält den ursprünglichen Wert
-				}
-				if (Array.isArray(value) && value.find((dataTupel: KoliBriTableDataType) => !(typeof dataTupel === 'object' && dataTupel !== null)) === undefined) {
-					setState(this, '_dataFoot', value, {
-						afterPatch: () => {
-							setTimeout(this.updateSortedData);
-						},
-					});
-				}
-			});
+	public validateDataFoot(value?: TableDataFootPropType): void {
+		validateTableDataFoot(this, value, {
+			afterPatch: () => {
+				setTimeout(this.updateSortedData);
+			},
 		});
 	}
 

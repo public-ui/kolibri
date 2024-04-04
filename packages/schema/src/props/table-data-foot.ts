@@ -6,17 +6,17 @@ import type { KoliBriTableDataType } from '../components';
 import type { Stringified } from '../types';
 
 /* types */
-export type TableDataPropType = Stringified<KoliBriTableDataType[]>;
+export type TableDataFootPropType = Stringified<KoliBriTableDataType[]>;
 
 /**
- * Defines the primary table data.
+ * Defines the data for the table footer.
  */
-export type PropTableData = {
-	data: TableDataPropType;
+export type PropTableDataFoot = {
+	dataFoot: TableDataFootPropType;
 };
 
 /* validator */
-export const validateTableData = (component: Generic.Element.Component, value?: TableDataPropType, setStateHooks?: SetStateHooks): void => {
+export const validateTableDataFoot = (component: Generic.Element.Component, value?: TableDataFootPropType, setStateHooks?: SetStateHooks): void => {
 	emptyStringByArrayHandler(value, () => {
 		objectObjectHandler(value, () => {
 			if (typeof value === 'undefined') {
@@ -29,7 +29,7 @@ export const validateTableData = (component: Generic.Element.Component, value?: 
 				// value keeps the original data
 			}
 			if (Array.isArray(value) && value.every((data: KoliBriTableDataType) => typeof data === 'object' && data !== null)) {
-				setState(component, '_data', value, setStateHooks);
+				setState(component, '_dataFoot', value, setStateHooks);
 			}
 		});
 	});

@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropLabel, PropTableData } from '../props';
+import type { PropLabel, PropTableData, PropTableDataFoot } from '../props';
 import type { Stringified } from '../types';
 import type { KoliBriPaginationProps } from './pagination';
 import type { PropPaginationPosition } from '../props/pagination-position';
@@ -65,10 +65,10 @@ type RequiredProps = {
 	PropLabel;
 type OptionalProps = {
 	allowMultiSort: boolean;
-	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-} & PropPaginationPosition;
+} & PropTableDataFoot &
+	PropPaginationPosition;
 
 type RequiredStates = {
 	allowMultiSort: boolean;

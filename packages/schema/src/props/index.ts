@@ -48,6 +48,7 @@ export * from './show';
 export * from './suggestions';
 export * from './sync-value-by-selector';
 export * from './table-data';
+export * from './table-data-foot';
 export * from './tooltip-align';
 export * from './touched';
 export * from './variant/spin';
