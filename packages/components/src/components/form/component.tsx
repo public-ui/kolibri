@@ -16,6 +16,7 @@ import { KolAlertTag, KolIndentedTextTag, KolLinkTag } from '../../core/componen
 export class KolForm implements FormAPI {
 	errorListElement?: HTMLElement;
 
+	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
 		event.stopPropagation();
@@ -23,6 +24,7 @@ export class KolForm implements FormAPI {
 			this.state._on?.onSubmit(event as SubmitEvent);
 		}
 	};
+
 	private readonly onReset = (event: Event) => {
 		event.preventDefault();
 		event.stopPropagation();
