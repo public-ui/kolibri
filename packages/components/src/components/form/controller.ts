@@ -75,24 +75,31 @@ export const propagateSubmitEventToForm = (
 		 *       - https://github.com/public-ui/kolibri/issues/946
 		 */
 		if (form.tagName === 'FORM') {
-			setEventTarget(event, form);
-			form.dispatchEvent(event);
 			if (getExperimentalMode() && (form as HTMLFormElement).noValidate === false) {
 				devHint(`If you have not focusable or hidden form fields in your form, you should enable noValidate for your form.`, {
 					force: true,
 				});
 				// (form as HTMLFormElement).noValidate = true; do not make this implicit
 			}
-			if (typeof (form as HTMLFormElement).requestSubmit === 'function') {
+			// Use setTimeout to ensure onChange has been called first
+			setTimeout(() => {
 				// See https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit
-				(form as HTMLFormElement).requestSubmit();
-			}
+				if (typeof (form as HTMLFormElement).requestSubmit === 'function') {
+					(form as HTMLFormElement).requestSubmit();
+				} else {
+					setEventTarget(event, form);
+					form.dispatchEvent(event);
+				}
+			});
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as Props;
-			if (typeof kolForm._on?.onSubmit === 'function') {
-				kolForm._on?.onSubmit(event);
-			}
+			// Use setTimeout to ensure onChange has been called first
+			setTimeout(() => {
+				if (typeof kolForm._on?.onSubmit === 'function') {
+					kolForm._on?.onSubmit(event);
+				}
+			});
 		}
 	}
 };
