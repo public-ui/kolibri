@@ -1,20 +1,17 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropLabel, PropTableData, PropTableDataFoot } from '../props';
-import type { Stringified } from '../types';
-import type { KoliBriTableDataType, KoliBriTableHeaders } from './table';
+import type { PropLabel, PropTableData, PropTableDataFoot, TableHeaderCells } from '../props';
+import type { KoliBriTableDataType } from '../types';
+import type { PropTableHeaderCells } from '../props/table-header-cells';
 
-type RequiredProps = {
-	headers: Stringified<KoliBriTableHeaders>;
-} & PropTableData &
-	PropLabel;
+type RequiredProps = PropLabel & PropTableData & PropTableHeaderCells;
 
 type OptionalProps = {
 	minWidth: string;
 } & PropTableDataFoot;
 
 type RequiredStates = {
-	headers: KoliBriTableHeaders;
+	headerCells: TableHeaderCells;
 	data: KoliBriTableDataType[];
 } & PropLabel;
 

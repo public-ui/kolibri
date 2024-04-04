@@ -2,15 +2,14 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type {
-	KoliBriTableHeaders,
 	LabelPropType,
-	Stringified,
 	TableDataFootPropType,
 	TableDataPropType,
+	TableHeaderCellsPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
 } from '@public-ui/schema';
-import { validateLabel, validateTableData, validateTableDataFoot, watchString } from '@public-ui/schema';
+import { validateLabel, validateTableData, validateTableDataFoot, validateTableHeaderCells, watchString } from '@public-ui/schema';
 
 @Component({
 	tag: 'kol-table-stateless-wc',
@@ -20,7 +19,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	@State() public state: TableStatelessStates = {
 		_data: [],
 		_label: '',
-		_headers: {
+		_headerCells: {
 			horizontal: [],
 			vertical: [],
 		},
@@ -39,7 +38,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
+	@Prop() public _headerCells!: TableHeaderCellsPropType;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -61,8 +60,10 @@ export class KolTableStateless implements TableStatelessAPI {
 		validateTableDataFoot(this, value);
 	}
 
-	@Watch('_headers')
-	public validateHeaders() {}
+	@Watch('_headerCells')
+	public validateHeaderCells(value?: TableHeaderCellsPropType) {
+		validateTableHeaderCells(this, value);
+	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
@@ -81,7 +82,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	public componentWillLoad(): void {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
-		// this.validateHeaders(this._headers);
+		this.validateHeaderCells(this._headerCells);
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 	}

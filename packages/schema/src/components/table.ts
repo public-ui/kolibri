@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { PropLabel, PropTableData, PropTableDataFoot } from '../props';
-import type { Stringified } from '../types';
+import type { KoliBriTableDataType, Stringified } from '../types';
 import type { KoliBriPaginationProps } from './pagination';
 import type { PropPaginationPosition } from '../props/pagination-position';
 
@@ -14,7 +14,7 @@ export type KoliBriSortDirection = 'ASC' | 'DESC' | 'NOS';
 export type KoliBriSortFunction = (data: KoliBriTableDataType[]) => KoliBriTableDataType[];
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType) => number;
 
-export type KoliBriTableDataType = Record<string, unknown>;
+export { KoliBriTableDataType };
 
 type KoliBriTableCellTextAlign = 'center' | 'left' | 'right' | 'justify';
 export type KoliBriTableCell = {
