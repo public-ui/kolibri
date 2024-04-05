@@ -315,6 +315,16 @@ ROUTES.set('table/pagination-position', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('table/complex-headers', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateless', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('tabs/basic', {
 	axe: {
 		skipFailures: false,
