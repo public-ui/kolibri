@@ -6,7 +6,7 @@
 		display: grid;
 	}
 
-	.table-stateless {
+	.table {
 		max-width: 100%;
 		overflow-x: auto;
 		overflow-y: hidden;
@@ -28,7 +28,7 @@
 		outline: 0 !important;
 	}
 
-	.table-stateless:has(.focus-element:focus) {
+	.table:has(.focus-element:focus) {
 		/* @see https://remysharp.com/til/css/focus-ring-default-styles */
 		outline: 5px auto Highlight;
 		outline: 5px auto -webkit-focus-ring-color;

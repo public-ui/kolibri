@@ -28,7 +28,7 @@
 		border-color: var(--color-primary-variant);
 	}
 
-	.table-stateless {
+	.table {
 		padding: 0.5rem;
 
 		&:has(.focus-element:focus) {
