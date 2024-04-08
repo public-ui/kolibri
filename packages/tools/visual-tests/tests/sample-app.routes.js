@@ -305,12 +305,27 @@ ROUTES.set('table/sort-data', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('table/with-footer', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('table/with-pagination', {
 	axe: {
 		skipFailures: false,
 	},
 });
 ROUTES.set('table/pagination-position', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/complex-headers', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateless', {
 	axe: {
 		skipFailures: false,
 	},
