@@ -1,12 +1,11 @@
-import type { KoliBriTableCell, KoliBriTableHeaders } from '../components';
 import type { Generic } from 'adopted-style-sheets';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, watchValidator } from '../utils';
-import type { Stringified } from '../types';
+import type { KoliBriTableHeaderCell, Stringified } from '../types';
 
 /* types */
 export type TableHeaderCells = {
-	horizontal?: KoliBriTableCell[][];
-	vertical?: KoliBriTableCell[][];
+	horizontal?: KoliBriTableHeaderCell[][];
+	vertical?: KoliBriTableHeaderCell[][];
 };
 
 export type TableHeaderCellsPropType = Stringified<TableHeaderCells>;
@@ -23,7 +22,7 @@ export const validateTableHeaderCells = (component: Generic.Element.Component, v
 	emptyStringByArrayHandler(value, () => {
 		objectObjectHandler(value, () => {
 			try {
-				value = parseJson<KoliBriTableHeaders>(value);
+				value = parseJson<TableHeaderCells>(value);
 				// eslint-disable-next-line no-empty
 			} catch (e) {
 				// value keeps the original data

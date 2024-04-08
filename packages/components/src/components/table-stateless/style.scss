@@ -1,0 +1,65 @@
+@import '../style';
+@import '../host-display-block';
+
+@layer kol-component {
+	:host {
+		display: grid;
+	}
+
+	.table-stateless {
+		max-width: 100%;
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	table {
+		width: 100%;
+	}
+
+	caption {
+		text-align: start;
+	}
+
+	.focus-element {
+		font-size: 0;
+	}
+
+	.focus-element:focus {
+		outline: 0 !important;
+	}
+
+	.table-stateless:has(.focus-element:focus) {
+		/* @see https://remysharp.com/til/css/focus-ring-default-styles */
+		outline: 5px auto Highlight;
+		outline: 5px auto -webkit-focus-ring-color;
+		outline-offset: 2px;
+	}
+
+	.table-sort-button .button {
+		color: inherit;
+	}
+
+	th.align-left {
+		text-align: left;
+
+		& .table-sort-button .button-inner {
+			justify-items: start;
+		}
+	}
+
+	th.align-center {
+		text-align: center;
+
+		& .table-sort-button .button-inner {
+			justify-items: center;
+		}
+	}
+
+	th.align-right {
+		text-align: right;
+
+		& .table-sort-button .button-inner {
+			justify-items: end;
+		}
+	}
+}

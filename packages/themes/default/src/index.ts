@@ -35,6 +35,7 @@ import selectCss from './components/select.scss';
 import skipNavCss from './components/skip-nav.scss';
 import splitButtonCss from './components/split-button.scss';
 import tableCss from './components/table.scss';
+import tableStatelessCss from './components/table-stateless.scss';
 import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
@@ -78,6 +79,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-SKIP-NAV': skipNavCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-TABLE': tableCss,
+	'KOL-TABLE-STATELESS': tableStatelessCss,
 	'KOL-TABS': tabsCss,
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,

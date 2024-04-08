@@ -23,8 +23,8 @@ import type {
 	KoliBriSortFunction,
 	KoliBriTableCell,
 	KoliBriTableDataType,
-	KoliBriTableHeaderCell,
 	KoliBriTableHeaderCellAndData,
+	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
 	KoliBriTableRender,
@@ -33,9 +33,9 @@ import type {
 	PaginationPositionPropType,
 	Stringified,
 	TableAPI,
-	TableStates,
-	TableDataPropType,
 	TableDataFootPropType,
+	TableDataPropType,
+	TableStates,
 } from '@public-ui/schema';
 import { validatePaginationPosition } from '@public-ui/schema';
 import { KolButtonTag, KolButtonWcTag, KolPaginationTag } from '../../core/component-names';
@@ -190,7 +190,7 @@ export class KolTable implements TableAPI {
 		this.sortFunction = sort;
 	};
 
-	private changeCellSort(headerCell: KoliBriTableHeaderCell) {
+	private changeCellSort(headerCell: KoliBriTableHeaderCellWithLogic) {
 		if (typeof headerCell.compareFn === 'function') {
 			if (!this.state._allowMultiSort && headerCell.key != this.sortData[0]?.key) {
 				// clear when another column is sorted and multi sort is not allowed
@@ -260,7 +260,7 @@ export class KolTable implements TableAPI {
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
 						beforePatch: (nextValue: unknown) => {
-							const applySort = (headers: KoliBriTableHeaderCell[]) => {
+							const applySort = (headers: KoliBriTableHeaderCellWithLogic[]) => {
 								let hasSortedCells = false;
 								headers.forEach((cell) => {
 									const key = cell.key;
@@ -406,7 +406,7 @@ export class KolTable implements TableAPI {
 		this.validatePaginationPosition(this._paginationPosition);
 	}
 
-	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[]): number {
+	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCellWithLogic[][], data: KoliBriTableDataType[]): number {
 		let max = 0;
 		horizontalHeaders.forEach((row) => {
 			let count = 0;
@@ -421,7 +421,7 @@ export class KolTable implements TableAPI {
 		return max;
 	}
 
-	private getNumberOfRows(verticalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[]): number {
+	private getNumberOfRows(verticalHeaders: KoliBriTableHeaderCellWithLogic[][], data: KoliBriTableDataType[]): number {
 		let max = 0;
 		verticalHeaders.forEach((col) => {
 			let count = 0;
@@ -438,8 +438,8 @@ export class KolTable implements TableAPI {
 		return max;
 	}
 
-	private filterHeaderKeys(headers: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCell[] {
-		const primaryHeader: KoliBriTableHeaderCell[] = [];
+	private filterHeaderKeys(headers: KoliBriTableHeaderCellWithLogic[][]): KoliBriTableHeaderCellWithLogic[] {
+		const primaryHeader: KoliBriTableHeaderCellWithLogic[] = [];
 		headers.forEach((cells) => {
 			cells.forEach((cell) => {
 				if (typeof cell.key === 'string') {
@@ -450,8 +450,8 @@ export class KolTable implements TableAPI {
 		return primaryHeader;
 	}
 
-	private getPrimaryHeader(headers: KoliBriTableHeaders): KoliBriTableHeaderCell[] {
-		let primaryHeader: KoliBriTableHeaderCell[] = this.filterHeaderKeys(headers.horizontal ?? []);
+	private getPrimaryHeader(headers: KoliBriTableHeaders): KoliBriTableHeaderCellWithLogic[] {
+		let primaryHeader: KoliBriTableHeaderCellWithLogic[] = this.filterHeaderKeys(headers.horizontal ?? []);
 		this.horizontal = true;
 		if (primaryHeader.length === 0) {
 			primaryHeader = this.filterHeaderKeys(headers.vertical ?? []);
@@ -607,7 +607,7 @@ export class KolTable implements TableAPI {
 							label: col.label,
 							textAlign: col.textAlign,
 							width: col.width,
-						} as KoliBriTableHeaderCell,
+						} as KoliBriTableHeaderCellWithLogic,
 						col.data,
 						this.state._data,
 					);
@@ -665,7 +665,7 @@ export class KolTable implements TableAPI {
 	};
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
 		if (cell.asTd === false) {
-			const headerCell: KoliBriTableHeaderCell = cell;
+			const headerCell: KoliBriTableHeaderCellWithLogic = cell;
 			let sortDirection = undefined;
 			let shortSortDirection: KoliBriSortDirection = 'NOS';
 			let sortButtonIcon = 'codicon codicon-fold';
@@ -871,7 +871,7 @@ export class KolTable implements TableAPI {
 													</td>
 												);
 											} else {
-												const headerCell: KoliBriTableHeaderCell = col;
+												const headerCell: KoliBriTableHeaderCellWithLogic = col;
 												let sortDirection = undefined;
 												let shortSortDirection: KoliBriSortDirection = 'NOS';
 												let sortButtonIcon = 'codicon codicon-fold';

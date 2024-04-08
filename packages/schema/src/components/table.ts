@@ -1,49 +1,33 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { PropLabel, PropTableData, PropTableDataFoot } from '../props';
-import type { KoliBriTableDataType, Stringified } from '../types';
+import type { KoliBriTableDataType, KoliBriTableHeaderCell, Stringified, KoliBriSortDirection } from '../types';
 import type { KoliBriPaginationProps } from './pagination';
 import type { PropPaginationPosition } from '../props/pagination-position';
 
 export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
 
-export type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCell, tupel: T, data: T[]) => string | void;
-
 type KoliBriTableSort = <T>(data: T[]) => T[];
-export type KoliBriSortDirection = 'ASC' | 'DESC' | 'NOS';
+
 export type KoliBriSortFunction = (data: KoliBriTableDataType[]) => KoliBriTableDataType[];
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType) => number;
 
-export { KoliBriTableDataType };
-
-type KoliBriTableCellTextAlign = 'center' | 'left' | 'right' | 'justify';
-export type KoliBriTableCell = {
-	asTd?: boolean;
-	colSpan?: number;
-	label: string;
-	render?: KoliBriTableRender;
-	rowSpan?: number;
-	textAlign?: KoliBriTableCellTextAlign;
-	width?: string;
-};
-
-export type KoliBriTableHeaderCell = {
-	key?: string;
+export type KoliBriTableHeaderCellWithLogic = KoliBriTableHeaderCell & {
 	compareFn?: KoliBriDataCompareFn;
 	/**
 	 * @deprecated use `compareFn` instead
 	 */
 	sort?: KoliBriTableSort;
 	sortDirection?: KoliBriSortDirection;
-} & KoliBriTableCell;
+};
 
 export type KoliBriTableHeaders = {
-	horizontal?: KoliBriTableHeaderCell[][];
-	vertical?: KoliBriTableHeaderCell[][];
+	horizontal?: KoliBriTableHeaderCellWithLogic[][];
+	vertical?: KoliBriTableHeaderCellWithLogic[][];
 };
-export type KoliBriTableHeaderCellAndData = {
+export type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCellWithLogic & {
 	data: KoliBriTableDataType;
-} & KoliBriTableHeaderCell;
+};
 
 export type KoliBriTablePaginationProps = Generic.Element.Members<
 	{
