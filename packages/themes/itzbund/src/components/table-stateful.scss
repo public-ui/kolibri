@@ -1,0 +1,24 @@
+@layer kol-theme-component {
+	:host > div {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	:host > div:last-child {
+		border-style: solid;
+		border-width: 1px;
+		border-color: var(--border-color);
+	}
+
+	@media (min-width: 1024px) {
+		:host > div.pagination,
+		:host > div.pagination > div:last-child {
+			grid-auto-flow: column;
+		}
+
+		:host > div.pagination .kol-pagination {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+}
