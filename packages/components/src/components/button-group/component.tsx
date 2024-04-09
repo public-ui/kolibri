@@ -6,6 +6,9 @@ import { Component, h, Host, State } from '@stencil/core';
 	tag: 'kol-button-group-wc',
 	shadow: false,
 })
+/**
+ * @deprecated This component has been deprecated as it does not contribute significantly to accessibility.
+ */
 export class KolButtonGroupWc implements ButtonGroupAPI {
 	public render(): JSX.Element {
 		return (
