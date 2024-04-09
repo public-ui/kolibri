@@ -727,7 +727,7 @@ const TABLE_DATA = [
 ];
 
 export const HandoutBasic: FC = () => (
-	<div className="grid gap-4">
+	<div className="flex flex-col gap-4">
 		<div className="grid gap-4 grid-cols-[auto_1fr_1fr] items-center">
 			<KolKolibri className="block w-75px" _labeled={false}></KolKolibri>
 			<KolHeading _label="" _level={1}>
@@ -743,8 +743,8 @@ export const HandoutBasic: FC = () => (
 				).
 			</KolDetails>
 		</div>
-		<div className="grid gap-4 sm:grid-cols-6 md:grid-cols-6  xl:grid-cols-12">
-			<KolCard className="col-span-6 sm:col-span-6 md:col-span-3 xl:col-span-2" _label="Heading" _level={2}>
+		<div className="flex flex-wrap align-content-stretch gap-4">
+			<KolCard _label="Heading" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
 					<KolHeading _label="Überschrift Stufe 1" _level={1}></KolHeading>
 					<KolHeading _label="Überschrift Stufe 2" _level={2}></KolHeading>
@@ -755,7 +755,7 @@ export const HandoutBasic: FC = () => (
 					<KolHeading _label="Überschrift Stufe 6" _secondaryHeadline="Unterüberricht" _level={6}></KolHeading>
 				</div>
 			</KolCard>
-			{/* <KolCard className="col-span-3" _label="Accordion" _level={2}>
+			{/* <KolCard  _label="Accordion" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
 					<KolAccordion _label="Überschrift Level 1" _level={1} _open>
 						<div slot="">Inhalt Accordion Tab 1</div>
@@ -777,8 +777,8 @@ export const HandoutBasic: FC = () => (
 					</KolAccordion>
 				</div>
 			</KolCard> */}
-			<KolCard className="col-span-6 sm:col-span-6 md:col-span-3 xl:col-span-2" _label="Abbreviation and Progress" _level={2}>
-				<div slot="" className="grid gap-2 p-2">
+			<KolCard _label="Abbreviation and Progress" _level={2}>
+				<div slot="" className="flex flex-col gap-2 p-2">
 					<p>
 						Ich bin eine{' '}
 						<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="top">
@@ -807,13 +807,11 @@ export const HandoutBasic: FC = () => (
 						</KolAbbr>{' '}
 						mit Tooltip links
 					</p>
-					<div className="grid grid-cols-2 items-center">
-						<KolProgress _variant="bar" _max={100} _value={33} _label="Progress" />
-						<KolProgress _variant="cycle" _max={100} _value={66} _label="Progress" />
-					</div>
+					<KolProgress _variant="bar" _max={100} _value={33} _label="Progress" />
+					<KolProgress _variant="cycle" _max={100} _value={66} _label="Progress" />
 				</div>
 			</KolCard>
-			<KolCard className="col-span-6 sm:col-span-6 md:col-span-6 xl:col-span-3" _label="Button, LinkButton and Tab" _level={2}>
+			<KolCard _label="Button, LinkButton and Tab" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
 					<KolTabs _label="" _selected={0} _tabs={[{ _label: 'Button' }, { _label: 'LinkButton' }, { _label: 'Disabled Tab', _disabled: true }]}>
 						<div className="grid gap-2 py-2">
@@ -873,7 +871,7 @@ export const HandoutBasic: FC = () => (
 					</KolTabs>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-6 sm:col-span-6 md:col-span-2 xl:col-span-2" _label="Accordion, Link and ButtonLink" _level={2}>
+			<KolCard _label="Accordion, Link and ButtonLink" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
 					<KolAccordion _label="Links" _level={3} _open>
 						<div className="grid gap-2" slot="">
@@ -913,7 +911,7 @@ export const HandoutBasic: FC = () => (
 					</KolAccordion>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-3" _label="Alert" _level={2}>
+			<KolCard _label="Alert" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
 					<KolAlert _label="Default message" _type="default">
 						This is the text of the alert.
@@ -930,7 +928,35 @@ export const HandoutBasic: FC = () => (
 					</KolAlert>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-6 sm:col-span-6 md:col-span-2 xl:col-span-2" _label="Nav and Breadcrumb" _level={2}>
+			<KolCard _label="Input" _level={2}>
+				<KolForm slot="">
+					<div className="grid gap-4 grid-cols-3 p-2">
+						<KolInputColor _label={`Farbe`} />
+						<KolInputFile _label={`Datei hochladen`} />
+						<KolInputNumber _label={`Zahleneingabe`} />
+						<KolInputDate _type="date" _label={`Datum`} />
+						<KolInputEmail
+							_icons="{'left': 'codicon codicon-home'}"
+							_msg={{ _type: 'error', _description: 'Test einer Fehlermeldung' }}
+							_touched
+							_label={`E-Mail-Adresse`}
+						/>
+						<KolInputText _hint="Ich bin ein Hinweis." _label={`Vorname`} />
+						<KolInputPassword _label={`Passwort`} />
+						<KolSelect _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _label={`Stimmung`} />
+						<KolInputRange _min={0} _max={50} _value={25} _label={`Schieberegler`} />
+						<KolInputRadio className="herr-frau" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1" _label={`Anrede`} />
+						<div className="grid gap-4">
+							<KolInputRadio _orientation="horizontal" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="0" _label={`Anrede`} />
+							<KolInputCheckbox _label="">
+								Ich akzeptiere die <KolAbbr _label="Allgemeine Geschäftsbedingungen">AGB</KolAbbr>.
+							</KolInputCheckbox>
+						</div>
+						<KolTextarea _rows={4} _label={`Textarea`} />
+					</div>
+				</KolForm>
+			</KolCard>
+			<KolCard _label="Nav and Breadcrumb" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
 					<div>
 						<KolNav
@@ -1001,35 +1027,7 @@ export const HandoutBasic: FC = () => (
 					</div>
 				</div>
 			</KolCard>
-			<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Input" _level={2}>
-				<KolForm slot="">
-					<div className="grid gap-4 grid-cols-3 p-2">
-						<KolInputColor _label={`Farbe`} />
-						<KolInputFile _label={`Datei hochladen`} />
-						<KolInputNumber _label={`Zahleneingabe`} />
-						<KolInputDate _type="date" _label={`Datum`} />
-						<KolInputEmail
-							_icons="{'left': 'codicon codicon-home'}"
-							_msg={{ _type: 'error', _description: 'Test einer Fehlermeldung' }}
-							_touched
-							_label={`E-Mail-Adresse`}
-						/>
-						<KolInputText _hint="Ich bin ein Hinweis." _label={`Vorname`} />
-						<KolInputPassword _label={`Passwort`} />
-						<KolSelect _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _label={`Stimmung`} />
-						<KolInputRange _min={0} _max={50} _value={25} _label={`Schieberegler`} />
-						<KolInputRadio className="herr-frau" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1" _label={`Anrede`} />
-						<div className="grid gap-4">
-							<KolInputRadio _orientation="horizontal" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="0" _label={`Anrede`} />
-							<KolInputCheckbox _label="">
-								Ich akzeptiere die <KolAbbr _label="Allgemeine Geschäftsbedingungen">AGB</KolAbbr>.
-							</KolInputCheckbox>
-						</div>
-						<KolTextarea _rows={4} _label={`Textarea`} />
-					</div>
-				</KolForm>
-			</KolCard>
-			<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Table with Pagination" _level={2}>
+			<KolCard _label="Table with Pagination" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
 					<KolTable _label="Tabelle" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTable>
 				</div>
