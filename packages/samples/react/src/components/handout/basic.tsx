@@ -1,7 +1,7 @@
 import type { KoliBriTableHeaders } from '@public-ui/components';
-import React from 'react';
-
 import { Bundesanstalt } from '@public-ui/components';
+import type { FC } from 'react';
+import React from 'react';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -31,16 +31,15 @@ import {
 	KolNav,
 	KolProgress,
 	KolSelect,
-	KolTable,
+	KolTableStateful,
 	KolTabs,
 	KolTextarea,
 	KolVersion,
 } from '@public-ui/react';
 
 import { getTheme, getThemeName } from '../../shares/store';
-
-import type { FC } from 'react';
 import { getRoot } from '../../shares/react-roots';
+
 const TABLE_HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
@@ -1031,7 +1030,7 @@ export const HandoutBasic: FC = () => (
 			</KolCard>
 			<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Table with Pagination" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
-					<KolTable _label="Tabelle" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTable>
+					<KolTableStateful _label="Tabelle" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
 				</div>
 			</KolCard>
 		</div>

@@ -1,14 +1,15 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolTable } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react';
 
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
+import type { Data } from './test-data';
 import { DATA } from './test-data';
 
 import type { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-ui/components';
-import type { Data } from './test-data';
+
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
@@ -24,15 +25,15 @@ export const PaginationPosition: FC = () => (
 		<SampleDescription>Tables with different pagination positions.</SampleDescription>
 		<section>
 			<h2>Table with pagination at the bottom.</h2>
-			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="bottom"></KolTable>
+			<KolTableStateful _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="bottom"></KolTableStateful>
 		</section>
 		<section>
 			<h2>Table with pagination at the top.</h2>
-			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="top"></KolTable>
+			<KolTableStateful _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="top"></KolTableStateful>
 		</section>
 		<section>
 			<h2>Table with pagination at both top and bottom.</h2>
-			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="both"></KolTable>
+			<KolTableStateful _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="both"></KolTableStateful>
 		</section>
 	</div>
 );

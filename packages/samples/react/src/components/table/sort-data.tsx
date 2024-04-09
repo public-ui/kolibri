@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolTable } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react';
 import type { KoliBriTableHeaders } from '@public-ui/components';
-import { DATA } from './test-data';
 import type { Data } from './test-data';
+import { DATA } from './test-data';
 import { SampleDescription } from '../SampleDescription';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
@@ -64,10 +64,10 @@ export const TableSortData: FC = () => (
 
 		<h2>Vertical</h2>
 
-		<KolTable _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
+		<KolTableStateful _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
 
 		<h2>Horizontal</h2>
 
-		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+		<KolTableStateful _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
 	</>
 );
