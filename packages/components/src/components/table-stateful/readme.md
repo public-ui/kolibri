@@ -73,12 +73,12 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 ### Code
 
 ```html
-<kol-table _label="Tabellenbeschreibung" _headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}' _pagination='[{"page":2}]'></kol-table>
+<kol-table-stateful _label="Tabellenbeschreibung" _headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}' _pagination='[{"page":2}]'></kol-table>
 ```
 
 ### Beispiel
 
-<kol-table _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table>
+<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table>
 
 ## Verwendung
 
