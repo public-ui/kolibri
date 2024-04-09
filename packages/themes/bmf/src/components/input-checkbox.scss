@@ -26,6 +26,8 @@
 		display: inherit;
 		min-height: 44px;
 		order: 2;
+		height: 100%;
+		align-items: baseline;
 	}
 
 	:host .kol-input > div.input input {
@@ -42,6 +44,9 @@
 
 	:host .kol-input > label {
 		order: 3;
+		height: 100%;
+		padding-top: 0.75rem;
+		color: var(--color-black);
 	}
 
 	:host .kol-input > .kol-alert-wc.error {
@@ -77,13 +82,19 @@
 		font-size: 1rem;
 	}
 
+	:host kol-icon:hover ~ input,
 	:host input:hover {
 		border-color: var(--color-midnight);
 		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
 	}
 
-	:host input:focus:hover {
-		box-shadow: none;
+	:host input {
+		&:focus {
+			border-color: var(--color-midnight);
+		}
+		&:hover {
+			box-shadow: none;
+		}
 	}
 
 	:host input:active {

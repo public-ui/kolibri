@@ -13,6 +13,7 @@
 
 	.kol-input label {
 		order: 2;
+		color: var(--color-black);
 	}
 
 	.kol-input .input {
@@ -75,6 +76,10 @@
 	.kol-input.error .input {
 		border-color: var(--color-red);
 		border-width: 3px;
+
+		&:hover {
+			border-color: var(--color-midnight);
+		}
 	}
 
 	.kol-input.error:not(.hidden-error) {

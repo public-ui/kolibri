@@ -40,6 +40,15 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 			/>
 			<KolInputCheckbox
 				{...props}
+				_checked
+				_icons={{
+					unchecked: 'codicon codicon-close',
+				}}
+				_label={'Mit sehr langem Label und Umbrüchen '.repeat(5)}
+				_value={true}
+			/>
+			<KolInputCheckbox
+				{...props}
 				_disabled
 				_icons={{
 					unchecked: 'codicon codicon-close',

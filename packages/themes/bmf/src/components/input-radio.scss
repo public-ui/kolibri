@@ -6,7 +6,6 @@
 	/* INPUT */
 	.kol-input {
 		display: grid;
-		gap: 0.4em;
 	}
 
 	label {
@@ -59,6 +58,7 @@
 		padding: 0px;
 		display: grid;
 		gap: 0.25em;
+		color: var(--color-black);
 	}
 
 	.radio-input-wrapper {
@@ -99,8 +99,12 @@
 		display: block;
 	}
 
-	.radio-input-wrapper input[type='radio']:checked:before {
-		background-color: var(--color-midnight);
+	.radio-input-wrapper input[type='radio']:checked {
+		border-color: var(--color-midnight);
+
+		&:before {
+			background-color: var(--color-midnight);
+		}
 	}
 
 	.radio-input-wrapper input[type='radio']:disabled {
@@ -144,7 +148,7 @@
 	fieldset.horizontal {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem 1rem;
+		gap: 0.5rem 1.5rem;
 	}
 
 	fieldset.horizontal legend {
