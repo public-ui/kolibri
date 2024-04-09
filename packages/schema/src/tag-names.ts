@@ -43,6 +43,7 @@ export enum TagEnum {
 	'symbol',
 	'table',
 	'table-stateless',
+	'table-stateful',
 	'tabs',
 	'textarea',
 	'toast-container',

@@ -51,6 +51,9 @@ type SortData = {
 
 @Component({
 	tag: 'kol-table-stateful',
+	styleUrls: {
+		default: './style.scss',
+	},
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
@@ -499,7 +502,7 @@ export class KolTableStateful implements TableAPI {
 		console.log(headerCells);
 
 		return (
-			<Host class="kol-table">
+			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<KolTableStatelessTag
 					_data={displayedData}
