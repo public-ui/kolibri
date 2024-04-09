@@ -6,6 +6,10 @@ Die **ButtonGroup**-Komponente fasst mehrere Buttons zu einer optischen und funk
 
 ## Konstruktion
 
+### Hinweis zur Version 3
+
+Die **ButtonGroup** Komponente wurde für die Version 3 wurde als veraltet markiert (`deprecated`), da sie keinen nennenswerten Beitrag zur Verbesserung der Barrierefreiheit beiträgt.
+
 Die Komponente **ButtonGroup** besteht aus einem Hauptelement `<kol-button-group></kol-button-group>`. In ihm werden beliebig viele **Button**-Komponenten zu einer Gruppe zusammengefasst. Die einzelnen **Buttons** entsprechen in ihrer Konstruktion der Beschreibung
 zur **Button**-Komponente.
 

@@ -10,7 +10,7 @@ Die `KolLinkGroup` Komponente der Version 3 wurde als veraltet markiert (`deprec
 
 ### Hinweis zum `nav` Tag
 
-Die Verwendung des `nav` Tags wurde aus der `KolLinkGroup` Komponente entfernt, da er für die Barrierefreiheit leistet.
+Die Verwendung des `nav` Tags wurde aus der `KolLinkGroup` Komponente entfernt, da er keinen Beitrag für die Barrierefreiheit leistet.
 
 ### Code
 
