@@ -205,7 +205,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		return primaryHeader;
 	}
 
-	// @ts-ignore
 	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): KoliBriTableCell[][] {
 		headers.horizontal = Array.isArray(headers?.horizontal) ? headers.horizontal : [];
 		headers.vertical = Array.isArray(headers?.vertical) ? headers.vertical : [];

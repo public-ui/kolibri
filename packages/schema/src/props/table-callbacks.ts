@@ -6,7 +6,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type { KoliBriSortDirection } from '../types';
 
 /* types */
-type SortEventPayload = {
+export type SortEventPayload = {
 	key: string;
 	currentSortDirection: KoliBriSortDirection;
 };
