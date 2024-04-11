@@ -55,9 +55,9 @@
 	[aria-disabled='true']:focus,
 	[disabled],
 	[disabled]:focus {
-		cursor: not-allowed !important;
-		opacity: 0.5 !important;
-		outline: none !important;
+		cursor: not-allowed;
+		opacity: 0.5;
+		outline: none;
 	}
 
 	[aria-disabled='true']:focus .kol-span-wc,
