@@ -499,7 +499,6 @@ export class KolTableStateful implements TableAPI {
 			horizontal: this.state._headers.horizontal?.map((row) => row.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))),
 			vertical: this.state._headers.vertical?.map((column) => column.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))),
 		};
-		console.log(headerCells);
 
 		return (
 			<Host class="kol-table-stateful">
