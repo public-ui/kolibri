@@ -296,10 +296,9 @@ export class KolPagination implements API {
 
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
-			<li>
+			<li key={`${this.nonce}-${page}`}>
 				<KolButtonTag
 					exportparts="icon"
-					key={`${this.nonce}-${page}`}
 					_customClass={this.state._customClass}
 					_label=""
 					_on={{
@@ -319,16 +318,8 @@ export class KolPagination implements API {
 
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
-			<li>
-				<KolButtonWcTag
-					class="selected"
-					key={`${this.nonce}-selected`}
-					_customClass={this.state._customClass}
-					_disabled={true}
-					_ariaCurrent={true}
-					_label=""
-					_variant={this.state._variant}
-				>
+			<li key={`${this.nonce}-selected`}>
+				<KolButtonWcTag class="selected" _customClass={this.state._customClass} _disabled={true} _ariaCurrent={true} _label="" _variant={this.state._variant}>
 					<span slot="expert">
 						<span class="visually-hidden">{translate('kol-page')}</span> {page}
 					</span>
