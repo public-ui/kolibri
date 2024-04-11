@@ -1,4 +1,37 @@
-# kol-table-stateless
+# TableStateless
+
+Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe [KolTableStateful](../table-stateful/readme.md).
+
+TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.
+
+Beispiel:
+
+```jsx
+<KolTableStateless
+  _label="Table for demonstration purposes"
+  _headerCells={{
+    horizontal: [
+      [
+        { key: 'value', label: 'Value', sortDirection: 'ASC' },
+      ],
+    ],
+  }}
+  _data={DATA}
+  className="block"
+  style={{ maxWidth: '600px' }}
+  _on={{
+    /**
+     * @param {MouseEvent} _
+     * @param {SortEventPayload} payload
+     * @param {string} payload.key
+     * @param {KoliBriSortDirection} payload.currentSortDirection
+     */
+    onSort: (_: MouseEvent, payload: SortEventPayload) => {
+      /* Perform sort, update `DATA` and headers `sortDirection` */
+    },
+  }}
+/>
+```
 
 <!-- Auto Generated Below -->
 
