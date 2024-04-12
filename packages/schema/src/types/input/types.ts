@@ -21,7 +21,7 @@ type InputTypeOnFocus = {
 };
 
 type InputTypeOnInput = {
-	[Events.onInput]?: EventCallback<Event>;
+	[Events.onInput]?: EventValueOrEventCallback<Event, unknown>;
 };
 
 // https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element

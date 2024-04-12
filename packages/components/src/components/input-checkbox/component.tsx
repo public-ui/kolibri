@@ -119,6 +119,7 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 							tabIndex={this.state._tabIndex}
 							type="checkbox"
 							{...this.controller.onFacade}
+							onInput={this.onInput}
 							onChange={this.onChange}
 							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 						/>
@@ -380,10 +381,22 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 		this.controller.componentWillLoad();
 	}
 
-	private onChange = (event: Event): void => {
+	private onInput = (event: Event): void => {
 		this._checked = !this._checked;
 		this._indeterminate = false;
 
+		const value = this._checked ? this.state._value : null;
+
+		// Event handling
+		tryToDispatchKoliBriEvent('input', this.host, value);
+
+		// Callback
+		if (typeof this._on?.onInput === 'function') {
+			this._on.onInput(event, value);
+		}
+	};
+
+	private onChange = (event: Event): void => {
 		const value = this._checked ? this.state._value : null;
 
 		// Event handling
