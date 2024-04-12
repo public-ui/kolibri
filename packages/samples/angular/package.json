@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-angular",
-	"version": "2.0.12",
+	"version": "2.0.13",
 	"private": true,
 	"scripts": {
 		"build:deps": "pnpm --filter @public-ui/sample-angular^... build",
@@ -18,9 +18,9 @@
 		"@angular/platform-browser": "17.3.4",
 		"@angular/platform-browser-dynamic": "17.3.4",
 		"@angular/router": "17.3.4",
-		"@public-ui/angular-v17": "2.0.12",
-		"@public-ui/components": "2.0.12",
-		"@public-ui/theme-default": "2.0.12",
+		"@public-ui/angular-v17": "2.0.13",
+		"@public-ui/components": "2.0.13",
+		"@public-ui/theme-default": "2.0.13",
 		"rxjs": "~7.8.1",
 		"tslib": "^2.6.2",
 		"zone.js": "~0.14.4"

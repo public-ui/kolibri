@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-bmf",
-	"version": "2.0.12",
+	"version": "2.0.13",
 	"private": true,
 	"scripts": {
 		"build": "unbuild",
@@ -13,12 +13,12 @@
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.12",
-		"@public-ui/visual-tests": "2.0.12",
+		"@public-ui/schema": "2.0.13",
+		"@public-ui/visual-tests": "2.0.13",
 		"@types/node": "ts5.4",
 		"typescript": "5.4.5"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.12"
+		"@public-ui/components": "2.0.13"
 	}
 }

@@ -72,7 +72,7 @@ importers:
         specifier: 11.2.14
         version: 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -120,7 +120,7 @@ importers:
         specifier: 12.2.17
         version: 12.2.17(rxjs@7.8.1)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -168,7 +168,7 @@ importers:
         specifier: 13.4.0
         version: 13.4.0(rxjs@7.8.1)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -216,7 +216,7 @@ importers:
         specifier: 14.3.0
         version: 14.3.0(rxjs@7.8.1)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -264,7 +264,7 @@ importers:
         specifier: 15.2.10
         version: 15.2.10(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -312,7 +312,7 @@ importers:
         specifier: 16.2.12
         version: 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -360,7 +360,7 @@ importers:
         specifier: 17.3.4
         version: 17.3.4(rxjs@7.8.1)(zone.js@0.14.4)
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -396,7 +396,7 @@ importers:
   packages/adapters/hydrate:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
       rimraf:
         specifier: 5.0.5
@@ -405,14 +405,14 @@ importers:
   packages/adapters/preact:
     dependencies:
       '@public-ui/react':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../react
       preact:
         specifier: '>=10.20.2'
         version: 10.20.2
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
       react:
         specifier: 18.2.0
@@ -430,7 +430,7 @@ importers:
   packages/adapters/react:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -466,7 +466,7 @@ importers:
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
       react:
         specifier: '>=16.14.0'
@@ -476,7 +476,7 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@public-ui/react':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../react
       cpy-cli:
         specifier: 5.0.0
@@ -488,7 +488,7 @@ importers:
   packages/adapters/solid:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -518,7 +518,7 @@ importers:
         specifier: 7.24.0
         version: 7.24.0
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -548,7 +548,7 @@ importers:
         specifier: 1.6.3
         version: 1.6.3
       '@public-ui/schema':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../schema
       adopted-style-sheets:
         specifier: 1.1.4
@@ -724,13 +724,13 @@ importers:
   packages/designer:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../components
       '@public-ui/solid':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../adapters/solid
       '@public-ui/themes':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../themes
       adopted-style-sheets:
         specifier: 1.1.4
@@ -836,13 +836,13 @@ importers:
         specifier: 17.3.4
         version: 17.3.4(@angular/common@17.3.4)(@angular/core@17.3.4)(@angular/platform-browser@17.3.4)(rxjs@7.8.1)
       '@public-ui/angular-v17':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../adapters/angular/v17
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
       '@public-ui/theme-default':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../themes/default
       rxjs:
         specifier: ~7.8.1
@@ -900,13 +900,13 @@ importers:
         specifier: 1.3.49
         version: 1.3.49(@leanup/stack@1.3.49)(esbuild@0.20.1)(less@4.2.0)(postcss@8.4.38)
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
       '@public-ui/react':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../adapters/react
       '@public-ui/themes':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../themes
       '@types/node':
         specifier: ts5.4
@@ -1042,11 +1042,11 @@ importers:
   packages/themes:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../schema
       '@types/node':
         specifier: ts5.4
@@ -1085,14 +1085,14 @@ importers:
   packages/themes/bmf:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.4
@@ -1104,14 +1104,14 @@ importers:
   packages/themes/default:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.4
@@ -1141,14 +1141,14 @@ importers:
   packages/themes/ecl:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.4
@@ -1163,14 +1163,14 @@ importers:
   packages/themes/itzbund:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
     devDependencies:
       '@public-ui/schema':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../schema
       '@public-ui/visual-tests':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../tools/visual-tests
       '@types/node':
         specifier: ts5.4
@@ -1204,7 +1204,7 @@ importers:
         version: 7.6.0
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../components
       '@types/gradient-string':
         specifier: 1.1.6
@@ -1270,7 +1270,7 @@ importers:
         specifier: 1.43.1
         version: 1.43.1
       '@public-ui/sample-react':
-        specifier: 2.0.12
+        specifier: 2.0.13
         version: link:../../samples/react
       axe-playwright:
         specifier: 2.0.1
