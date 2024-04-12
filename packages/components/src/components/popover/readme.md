@@ -5,6 +5,8 @@
 Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in ein temporäres Element zu setzen, das, ähnlich wie <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement angeordnet ist.
 Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 
+<kol-alert _type="info" _variant="card">Die **Popover**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden.</kol-alert>
+
 <!-- Auto Generated Below -->
 
 ## Properties
