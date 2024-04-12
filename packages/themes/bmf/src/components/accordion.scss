@@ -5,25 +5,29 @@
 
 	.kol-span-wc > span {
 		display: flex;
-		place-items: baseline center;
+		align-items: center;
 		text-align: left;
 	}
 
 	:host > div > .kol-heading-wc button {
 		border-radius: var(--border-radius);
-		min-height: 22px;
-		padding: 12px 8px;
+		min-height: 24px;
+		padding: 10px 8px;
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc {
 		font-weight: 700;
 		font-size: 1.125rem;
-		line-height: 20px;
+		line-height: 24px;
 		gap: 0.5rem;
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc > span {
-		gap: 0.5em;
+		gap: 0.25rem;
+	}
+
+	:host > div > .kol-heading-wc button .kol-icon {
+		font-size: 1.5rem;
 	}
 
 	:host > div > .kol-heading-wc button .kol-icon::part(icon) {
@@ -64,13 +68,17 @@
 		outline: none;
 	}
 
-	:host > .accordion:focus-within {
+	:host > .accordion:hover > kol-heading-wc {
+		background-color: var(--color-smoke);
+	}
+
+	:host > .accordion:focus-within > kol-heading-wc {
 		border-radius: var(--border-radius);
 		cursor: pointer;
 		outline-color: var(--color-ocean);
-		outline-offset: 2px;
+		outline-offset: -3px;
 		outline-style: solid;
 		outline-width: 3px;
-		transition: outline-offset 0.2s linear;
+		transition: outline 0.2s linear;
 	}
 }
