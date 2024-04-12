@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react",
-	"version": "1.7.19",
+	"version": "1.7.20",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -46,7 +46,7 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.7.19",
+		"@public-ui/components": "1.7.20",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.4",
@@ -59,7 +59,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.7.19",
+		"@public-ui/components": "1.7.20",
 		"react": ">=16.14.0",
 		"react-dom": ">=16.14.0"
 	},
