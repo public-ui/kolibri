@@ -13,7 +13,7 @@
 		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u",
 		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u",
 		"pack": "pnpm -r exec pnpm pack",
-		"prepare": "pnpm exec playwright install && husky && echo \"Don't forget to build all packages once: pnpm -r build\"",
+		"prepare": "husky && echo \"Don't forget to build all packages once: pnpm -r build\"",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
