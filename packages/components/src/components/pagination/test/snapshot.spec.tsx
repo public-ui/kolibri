@@ -29,5 +29,6 @@ executeTests<PaginationProps>(
 	getPaginationHtml,
 	{
 		execMode: 'default', // ready
+		needTimers: true,
 	},
 );
