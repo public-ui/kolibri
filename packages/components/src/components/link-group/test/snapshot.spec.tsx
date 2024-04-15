@@ -25,6 +25,7 @@ executeTests<LinkGroupProps>(
 			{ _label: 'Link 2', _href: '#' },
 			{ _label: 'Link 3', _href: '#' },
 		],
+		_orientation: ['vertical', 'horizontal'],
 	},
 	(props) => getLinkGroupHtml(props),
 	{

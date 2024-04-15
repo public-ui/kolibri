@@ -19,11 +19,16 @@ executeTests<LinkButtonProps>(
 		return page;
 	},
 	{
-		_label: ['Primary', 'Danger'],
-		_href: ['#'],
+		_label: ['Label'],
+		_href: ['https://google.de'],
 		_icons: ['codicon codicon-squirrel'],
+		_disabled: [true, false],
+		_hideLabel: [false, true],
+		_target: ['_self', '_blank', 'egal'],
+		_tooltipAlign: ['top', 'right', 'bottom', 'left'],
+		_download: ['', 'download-file.zip'],
 	},
-	(props) => getLinkButtonHtml(props),
+	getLinkButtonHtml,
 	{
 		execMode: 'default', // ready
 	},
