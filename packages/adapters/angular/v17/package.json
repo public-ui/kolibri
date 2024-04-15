@@ -1,9 +1,12 @@
 {
 	"name": "@public-ui/angular-v17",
-	"version": "2.0.10",
+	"version": "2.0.13",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
-	"repository": "https://github.com/public-ui/kolibri",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/public-ui/kolibri"
+  },
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -63,11 +66,11 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "17.3.1",
-		"@angular/compiler": "17.3.1",
-		"@angular/compiler-cli": "17.3.1",
-		"@angular/core": "17.3.1",
-		"@public-ui/components": "2.0.10",
+		"@angular/common": "17.3.4",
+		"@angular/compiler": "17.3.4",
+		"@angular/compiler-cli": "17.3.4",
+		"@angular/core": "17.3.4",
+		"@public-ui/components": "2.0.13",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.3",
@@ -76,12 +79,12 @@
 		"rimraf": "5.0.5",
 		"rxjs": "7.8.1",
 		"tslib": "2.6.2",
-		"typescript": "5.4.3",
+		"typescript": "5.4.5",
 		"zone.js": "0.14.4"
 	},
 	"peerDependencies": {
-		"@angular/core": "17.3.1",
-		"@public-ui/components": "2.0.10"
+		"@angular/core": "17.3.4",
+		"@public-ui/components": "2.0.13"
 	},
 	"files": [
 		"dist"

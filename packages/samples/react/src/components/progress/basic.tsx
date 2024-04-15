@@ -11,7 +11,9 @@ export const ProgressBasic: FC = () => (
 			<p>Hier ist ein Fortschrittsbalken und Fortschrittskreis. Der Fortschritt verändert sich nicht.</p>
 		</SampleDescription>
 		<div className="grid gap-4">
+			<KolProgress _variant="bar" _max={100} _value={0} _label="With label"></KolProgress>
 			<KolProgress _variant="bar" _max={100} _value={33}></KolProgress>
+			<KolProgress _variant="bar" _max={100} _value={100}></KolProgress>
 			<KolProgress _variant="cycle" _max={100} _value={33}></KolProgress>
 		</div>
 	</>

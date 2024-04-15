@@ -93,11 +93,20 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		});
 	}
 
+	protected readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
+		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
+		if (Array.isArray(options) && options.length > 0) {
+			this.keyOptionMap.clear();
+			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
+		}
+	};
+
 	public validateValue(value?: Stringified<StencilUnknown>): void {
 		value = mapString2Unknown(value);
 		value = Array.isArray(value) ? (value[0] as StencilUnknown) : value;
 		setState(this.component, '_value', value, {
 			afterPatch: this.afterPatchOptions,
+			beforePatch: this.beforePatchOptions,
 		});
 	}
 

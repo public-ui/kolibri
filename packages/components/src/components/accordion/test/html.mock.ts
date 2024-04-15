@@ -1,9 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getButtonWcHtml } from '../../button/test/html.mock';
-import { getHeadingWcHtml } from '../../heading/test/html.mock';
-
 import type { AccordionProps } from '@public-ui/schema';
+import { KolButtonWcTag, KolHeadingWcTag } from '../../../core/component-names';
 
 export const getAccordionHtml = (
 	props: AccordionProps,
@@ -22,26 +20,18 @@ export const getAccordionHtml = (
 	return `<kol-accordion${props._open ? ' _open' : ''} class="kol-accordion">
   <mock:shadow-root>
     <div class="accordion${props._disabled ? ' disabled' : ''}${props._open ? ' open' : ''}">
-      ${getHeadingWcHtml(
-				{
-					_label: '',
-					_level: props._level,
-				},
-				{
-					expert: `${getButtonWcHtml(
-						{
-							_ariaControls: 'nonce',
-							_ariaExpanded: props._open === true,
-							_disabled: props._disabled,
-							_icons: `codicon codicon-${props._open ? 'remove' : 'add'}`,
-							_label: props._label,
-						},
-						undefined,
-						' class="accordion-button kol-button-wc" slot="expert"',
-					)}`,
-				},
-				` class="accordion-heading kol-heading-wc"`,
-			)}
+			<${KolHeadingWcTag} _label="" _level="${props._level}" class="accordion-heading">
+			<${KolButtonWcTag}
+				class="accordion-button"
+				slot="expert"
+				_ariaControls="nonce"
+				${props._open ? '_ariaExpanded=""' : ''}
+				${props._disabled ? '_disabled=""' : ''}
+				_icons="codicon codicon-${props._open ? 'remove' : 'add'}"
+				_label="${props._label}"
+			></${KolButtonWcTag}>
+		</${KolHeadingWcTag}>
+
 			<div class="wrapper">
 				<div class="animation-wrapper">
 					<div class="content" id="nonce" ${props._open ? '' : 'aria-hidden="true"'}>

@@ -3,17 +3,17 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
 import { getAbbrHtml } from './html.mock';
 
 import type { AbbrProps } from '@public-ui/schema';
 import type { SpecPage } from '@stencil/core/testing';
+import { KolAbbr } from '../component';
 
 executeTests<AbbrProps>(
 	'Abbr',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolAbbr],
 			template: () => <kol-abbr {...props} />,
 		});
 		return page;

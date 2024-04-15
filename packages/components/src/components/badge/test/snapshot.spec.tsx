@@ -3,17 +3,17 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
 import { getBadgeHtml } from './html.mock';
 
 import type { BadgeProps } from '@public-ui/schema';
 import type { SpecPage } from '@stencil/core/testing';
+import { KolBadge } from '../component';
 
 executeTests<BadgeProps>(
 	'Badge',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolBadge],
 			template: () => <kol-badge {...props} />,
 		});
 		return page;

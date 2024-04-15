@@ -1,6 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
+import { KolKolibri } from '../component';
 
 const DEFAULT_HTML_SVG_PROPS = `role="img" aria-label="kol-kolibri-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"`;
 const DEFAULT_PATH_TAGS = `<path d="M353 322L213 304V434L353 322Z"></path>
@@ -13,7 +13,7 @@ const DEFAULT_PATH_TAGS = `<path d="M353 322L213 304V434L353 322Z"></path>
 describe('Test KolKolibri', () => {
 	it('render default', async () => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolKolibri],
 			html: `<kol-kolibri  class="kol-kolibri"></kol-kolibri>`,
 		});
 		expect(page.root).toEqualHtml(`<kol-kolibri class="kol-kolibri">
@@ -30,7 +30,7 @@ describe('Test KolKolibri', () => {
 
 	it('render not labeled', async () => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolKolibri],
 			html: `<kol-kolibri _labeled="false" class="kol-kolibri"></kol-kolibri>`,
 		});
 		expect(page.root).toEqualHtml(`<kol-kolibri _labeled="false" class="kol-kolibri">

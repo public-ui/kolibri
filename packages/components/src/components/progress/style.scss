@@ -8,20 +8,24 @@
 		width: 0;
 	}
 
-	.bar .border {
-		fill: transparent;
-		stroke: black;
-	}
+	.bar {
+		width: 150px;
 
-	.bar .background {
-		fill: lightgray;
-		stroke: white;
-	}
+		.border {
+			fill: transparent;
+			stroke: black;
+		}
 
-	.bar .progress {
-		fill: #0075ff;
-		stroke: transparent;
-		transition: 250ms ease-in-out 50ms;
+		.background {
+			fill: lightgray;
+			stroke: white;
+		}
+
+		.progress {
+			fill: #0075ff;
+			stroke: transparent;
+			transition: 250ms ease-in-out 50ms;
+		}
 	}
 
 	.cycle .background {

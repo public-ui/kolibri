@@ -3,17 +3,17 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
 import { getImageHtml } from './html.mock';
 
 import type { ImageProps } from '@public-ui/schema';
 import type { SpecPage } from '@stencil/core/testing';
+import { KolImage } from '../shadow';
 
 executeTests<ImageProps>(
 	'Image',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolImage],
 			template: () => <kol-image {...props}></kol-image>,
 		});
 		return page;
@@ -29,7 +29,7 @@ executeTests<ImageProps>(
 	'Image',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolImage],
 			template: () => <kol-image {...props}></kol-image>,
 		});
 		return page;

@@ -1,9 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getButtonWcHtml } from '../../button/test/html.mock';
-import { getHeadingWcHtml } from '../../heading/test/html.mock';
-
 import type { CardProps } from '@public-ui/schema';
+import { KolHeadingWcTag, KolButtonWcTag } from '../../../core/component-names';
 
 export const getCardHtml = (props: CardProps): string => {
 	props = mixMembers(
@@ -16,36 +14,19 @@ export const getCardHtml = (props: CardProps): string => {
 	<mock:shadow-root>
 		<div class="card">
 			<div class="header">
-				${getHeadingWcHtml(
-					{
-						_label: props._label,
-						_level: props._level,
-					},
-					{
-						expert: '',
-					},
-					` class="kol-heading-wc"`,
-				)}
+			<${KolHeadingWcTag} _label="${props._label}" _level="${props._level ? props._level : '1'}"></${KolHeadingWcTag}>
 			</div>
 			<div class="content">
 				<slot />
 			</div>
 			${
 				props._hasCloser
-					? getButtonWcHtml(
-							{
-								_hideLabel: true,
-								_icons: {
-									left: {
-										icon: 'codicon codicon-close',
-									},
-								},
-								_label: 'kol-close',
-								_tooltipAlign: 'left',
-							},
-							undefined,
-							' class=" kol-button-wc close"',
-						)
+					? `<${KolButtonWcTag}
+					class="close"
+					_hideLabel=""
+					_label='kol-close'
+					_tooltipAlign="left"
+				></${KolButtonWcTag}>`
 					: ``
 			}
 		</div>

@@ -1,8 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
-
-import { getButtonWcHtml } from '../../button/test/html.mock';
-
 import type { ButtonLinkProps, ButtonLinkStates } from '@public-ui/schema';
+import { KolButtonWcTag } from '../../../core/component-names';
 
 export const getButtonLinkHtml = (props: ButtonLinkProps): string => {
 	const state = mixMembers<ButtonLinkProps, ButtonLinkStates>(
@@ -18,7 +16,14 @@ export const getButtonLinkHtml = (props: ButtonLinkProps): string => {
 
 	return `<kol-button-link class="kol-button-link">
 		<mock:shadow-root>
-			${getButtonWcHtml({ ...state, _role: 'link' }, { expert: '<slot name="expert" slot="expert"></slot>' }, ` class="kol-button-wc"`)}
+		<${KolButtonWcTag}
+					_role="link"
+					_type="button"
+					${state._label ? `_label="${state._label}"` : ''}
+					_tooltipalign="top"
+				>
+					<slot name="expert" slot="expert"></slot>
+				</${KolButtonWcTag}>
 		</mock:shadow-root>
 	</kol-button-link>`;
 };
