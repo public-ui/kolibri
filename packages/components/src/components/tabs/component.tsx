@@ -27,7 +27,6 @@ export class KolTabs implements API {
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
 	private showCreateTab = false;
-	private selectedTimeout?: ReturnType<typeof setTimeout>;
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step: number): number => {
 		if (step > 0) {
@@ -49,25 +48,22 @@ export class KolTabs implements API {
 	};
 
 	private onKeyDown = (event: KeyboardEvent) => {
-		const timeout = setTimeout(() => {
-			clearTimeout(timeout);
-			let selectedIndex: number | null = null;
-			switch (event.key) {
-				case 'ArrowRight':
-					selectedIndex = this.nextPossibleTabIndex(this.state._tabs, this.state._selected, 1);
-					break;
-				case 'ArrowLeft':
-					selectedIndex = this.nextPossibleTabIndex(this.state._tabs, this.state._selected, -1);
-					break;
-			}
-			if (selectedIndex !== null) {
-				this.onSelect(event, selectedIndex, true);
-			}
-		}, 250);
+		let selectedIndex: number | null = null;
+		switch (event.key) {
+			case 'ArrowRight':
+				selectedIndex = this.nextPossibleTabIndex(this.state._tabs, this.state._selected, 1);
+				break;
+			case 'ArrowLeft':
+				selectedIndex = this.nextPossibleTabIndex(this.state._tabs, this.state._selected, -1);
+				break;
+		}
+		if (selectedIndex !== null) {
+			this.onSelect(event, selectedIndex);
+		}
 	};
 
 	private readonly onClickSelect = (event: MouseEvent, index: number): void => {
-		this.onSelect(event, index, true);
+		this.onSelect(event, index);
 	};
 
 	// private readonly onClickClose = (event: Event, button: TabButtonProps, index: number) => {
@@ -372,21 +368,14 @@ export class KolTabs implements API {
 		}
 	}
 
-	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number, focus = false): void {
+	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number): void {
 		this._selected = index;
 		if (typeof this._on?.onSelect === 'function') {
 			this._on?.onSelect(event, index);
 		}
-		if (focus === true) {
-			// TODO: prüfen, ob hier noch was offen ist
-			// devHint('[KolTabs] Tab-Fokus-verschieben geht im Moment nicht.');
-			this.selectedTimeout = setTimeout(() => {
-				clearTimeout(this.selectedTimeout);
-				if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
-					const button: HTMLElement | null = koliBriQuerySelector(`button#${this.state._label.replace(/\s/g, '-')}-tab-${index}`, this.tabPanelsElement);
-					button?.focus();
-				}
-			}, 250);
+		if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
+			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.state._label.replace(/\s/g, '-')}-tab-${index}`, this.tabPanelsElement);
+			button?.focus();
 		}
 	}
 
