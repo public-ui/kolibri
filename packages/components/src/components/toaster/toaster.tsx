@@ -11,8 +11,6 @@ export class ToasterService {
 		private readonly document: Document,
 		private readonly options?: ToasterOptions,
 	) {
-		console.log('create', KolToastContainerTag);
-		console.trace();
 		this.toastContainerElement = this.document.createElement(KolToastContainerTag);
 		this.document.body.prepend(this.toastContainerElement);
 	}
