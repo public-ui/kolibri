@@ -25,7 +25,7 @@
 	}
 
 	:host .kol-input.button {
-		gap: 0.4rem 0;
+		gap: 0.4rem 1px;
 	}
 
 	.checkbox-container {
@@ -43,8 +43,12 @@
 	}
 
 	:host .kol-input > label {
-		cursor: pointer;
 		order: 3;
+	}
+
+	.disabled .input-label,
+	.disabled .checkbox-container {
+		cursor: not-allowed;
 	}
 
 	:host .kol-input > .kol-alert-wc.error {
@@ -186,7 +190,81 @@
 		}
 	}
 
-	.button:focus-within {
-		@include focus-outline;
+	.button {
+		.input {
+			border-top-width: 1px;
+			border-left-width: 1px;
+			border-bottom-width: 1px;
+
+			border-top-style: solid;
+			border-left-style: solid;
+			border-bottom-style: solid;
+		}
+
+		&.hide-label .input {
+			border-right-width: 1px;
+			border-right-style: solid;
+		}
+
+		.input-label {
+			border-top-width: 1px;
+			border-right-width: 1px;
+			border-bottom-width: 1px;
+
+			border-top-style: solid;
+			border-right-style: solid;
+			border-bottom-style: solid;
+
+			justify-self: stretch;
+			align-self: stretch;
+			display: flex;
+
+			.input-label-span {
+				margin: auto 0;
+			}
+		}
+
+		&:focus-within {
+			@include focus-outline;
+		}
+
+		.input,
+		.input-label {
+			border-color: var(--color-primary);
+			background-color: var(--color-light);
+			color: var(--color-primary);
+		}
+
+		&.indeterminate {
+			.input,
+			.input-label {
+				border-color: var(--color-primary);
+				background-color: var(--color-mute);
+				color: var(--color-primary);
+			}
+		}
+
+		&.checked {
+			.input,
+			.input-label {
+				border-color: var(--color-primary);
+				background-color: var(--color-primary);
+				color: var(--color-light);
+			}
+		}
+
+		&:is(:active, :hover):not(.disabled) {
+			.input,
+			.input-label {
+				background-color: var(--color-primary-variant);
+				border-color: var(--color-primary-variant);
+				color: var(--color-light);
+			}
+		}
+
+		&.disabled .input {
+			opacity: 0.5;
+			outline: none;
+		}
 	}
 }
