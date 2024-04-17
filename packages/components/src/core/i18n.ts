@@ -2,11 +2,6 @@ import type { Generic } from 'adopted-style-sheets';
 
 interface ITranslationOptions {
 	/**
-	 * The number of items to determine an counted text.
-	 */
-	//count?: number;
-
-	/**
 	 * Placeholders to insert into the text. Replacing {{key}} with the specified value if the "key".
 	 */
 	placeholders?: { [K: string]: string };
