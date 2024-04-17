@@ -73,7 +73,6 @@
 		"@floating-ui/dom": "1.6.3",
 		"@public-ui/schema": "2.0.13",
 		"adopted-style-sheets": "1.1.4",
-		"i18next": "23.11.1",
 		"markdown-it": "14.1.0"
 	},
 	"devDependencies": {

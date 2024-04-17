@@ -553,9 +553,6 @@ importers:
       adopted-style-sheets:
         specifier: 1.1.4
         version: 1.1.4
-      i18next:
-        specifier: 23.11.1
-        version: 23.11.1
       markdown-it:
         specifier: 14.1.0
         version: 14.1.0
@@ -14725,12 +14722,6 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
     dev: true
-
-  /i18next@23.11.1:
-    resolution: {integrity: sha512-mXw4A24BiPZKRsbb9ewgSvjYd6fxFCNwJyfK6nYfSTIAX2GkCWcb598m3DFkDZmqADatvuASrKo6qwORz3VwTQ==}
-    dependencies:
-      '@babel/runtime': 7.24.0
-    dev: false
 
   /iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
