@@ -9,8 +9,7 @@ interface ITranslationOptions {
 
 // String.replaceAll should be used but is only available with ECMAScript 2021.
 const replaceAll = function (text: string, search: string, replacement: string) {
-	var target = text;
-	return target.split(search).join(replacement);
+	return text.split(search).join(replacement);
 };
 
 type Resources = Map<string, string>;
