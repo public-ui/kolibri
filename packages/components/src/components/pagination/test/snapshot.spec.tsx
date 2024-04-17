@@ -10,7 +10,7 @@ import type { PaginationProps } from '@public-ui/schema';
 import { KolPagination } from '../component';
 
 executeTests<PaginationProps>(
-	'LinkGroup',
+	'Pagination',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: [KolPagination],

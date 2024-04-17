@@ -50,9 +50,7 @@ executeTests<SelectProps>(
 		_multiple: [false, true],
 		_required: [false, true],
 		_touched: [false, true],
+		_label: ['Label'],
 	},
 	getSelectHtml,
-	{
-		execMode: 'default', // ready
-	},
 );

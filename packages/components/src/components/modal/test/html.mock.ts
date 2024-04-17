@@ -1,6 +1,6 @@
 import type { ModalProps } from '@public-ui/schema';
 
-export const getModalHtml = (props: ModalProps): string => {
+export const getModalHtml = (): string => {
 	return `
 <kol-modal class="kol-modal">
   <mock:shadow-root>

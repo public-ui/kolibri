@@ -10,7 +10,7 @@ import type { ModalProps } from '@public-ui/schema';
 import { KolModal } from '../component';
 
 executeTests<ModalProps>(
-	'LinkGroup',
+	'Modal',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: [KolModal],

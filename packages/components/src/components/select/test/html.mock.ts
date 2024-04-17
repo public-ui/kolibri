@@ -29,7 +29,7 @@ export const getSelectHtml = (props: SelectProps): string => {
 					${state._hideError ? '_hideerror=""' : ''}
 					_hint=""
 					_id="id-nonce"
-					_label=""
+					_label="${typeof state._label === 'string' ? state._label : ''}"
 					_tooltipalign="top"
 					class="select"
 					role="presentation"
