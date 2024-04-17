@@ -21,7 +21,7 @@ export const getInputNumberHtml = (props: InputNumberProps): string => {
 	const { ariaDescribedBy } = getRenderStates(state);
 
 	return `
-	<kol-input-number class="kol-input-number" ${state._required ? `_required=""` : ''} ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
+	<kol-input-number class="kol-input-number"  ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
 	   <mock:shadow-root>
 	     <${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}
@@ -33,19 +33,21 @@ export const getInputNumberHtml = (props: InputNumberProps): string => {
 					_tooltipalign="top"
 					class="number ${state._hideLabel ? 'hide-label' : ''} "
 					${state._readOnly ? `_readonly=""` : ''}
+					${state._required ? `_required=""` : ''}
 			 >
 			 <span slot="label"> ${
 					hasExpertSlot
 						? `<slot name="expert"></slot> `
 						: typeof state._accessKey === 'string'
-							? `<>
-						 <InternalUnderlinedAccessKey  label="${state._label}" />
+							? `
+						 ${state._label}
 						 <span class="access-key-hint" aria-hidden="true">
 						 ${state._accessKey}
 						 </span>
-					 </> `
+					  `
 							: ` <span>${state._label}</span> `
-				}</span>
+				}
+				</span>
 	       <div slot="input">
 	        	<input
 							${state._disabled ? `disabled=""` : ''}
@@ -62,6 +64,7 @@ export const getInputNumberHtml = (props: InputNumberProps): string => {
 							${state._step ? `step="${state._step}"` : ''}
 							${state._readOnly ? `readonly=""` : ''}
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
+							${state._required ? `required=""` : ''}
 						>
 	       </div>
 	     </${KolInputTag}>

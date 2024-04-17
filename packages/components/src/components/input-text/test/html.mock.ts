@@ -1,36 +1,49 @@
-import type { InputFileProps, InputFileStates } from '@public-ui/schema';
+import type { InputTextProps, InputTextStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 import { KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '@public-ui/schema';
 import { getRenderStates } from '../../input/controller';
 
-export const getInputFileHtml = (props: InputFileProps): string => {
-	const state = mixMembers<InputFileProps, InputFileStates>(
+export const getInpuTextHtml = (props: InputTextProps): string => {
+	const state = mixMembers<InputTextProps, InputTextStates>(
 		{
+			_autoComplete: 'off',
+			_currentLength: 0,
+			_hasValue: false,
 			_hideError: false,
 			_id: `id-${nonce()}`,
 			_label: '', // ⚠ required
+			_suggestions: [],
+			_type: 'text',
 		},
 		props,
 	);
 	const hasExpertSlot = showExpertSlot(state._label);
 	const { ariaDescribedBy } = getRenderStates(state);
+
 	return `
-	<kol-input-file class="kol-input-file" ${state._readOnly ? `_readonly=""` : ''} ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
+	<kol-input-text
+		class="kol-input-text"
+		${state._touched ? `_touched=""` : ''}
+		${state._alert || state._alert === undefined ? `_alert=""` : ''}
+	>
 	   <mock:shadow-root>
 	     <${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
-					${state._required ? `_required=""` : ''}
 					${state._touched ? `_touched=""` : ''}
+					${state._accessKey ? `_accessKey="${state._accessKey}"` : ''}
 					_hint=""
 					_id="${state._id}"
 					_label="${state._label ? `${state._label}` : ''}"
 					_tooltipalign="top"
-					class="file ${state._hideLabel ? `hide-label` : ''}"
-					>
-
+					class="${state._type} ${state._hideLabel ? 'hide-label' : ''} "
+					role="presentation"
+					_currentlength="0"
+					${state._readOnly ? `_readonly=""` : ''}
+					${state._required ? `_required=""` : ''}
+			 >
 			 <span slot="label"> ${
 					hasExpertSlot
 						? `<slot name="expert"></slot> `
@@ -42,22 +55,25 @@ export const getInputFileHtml = (props: InputFileProps): string => {
 						 </span>
 					  `
 							: ` <span>${state._label}</span> `
-				}
-				</span>
+				}</span>
 	       <div slot="input">
 	        	<input
 							${state._disabled ? `disabled=""` : ''}
 							${state._hideLabel && typeof state._label === 'string' ? `aria-label="${state._label}"` : ''}
 							autocapitalize="off"
+							autocomplete="off"
 							autocorrect="off"
 							id="${state._id}"
 							spellcheck="false"
-							type="file"
-							${state._required ? `required=""` : ''}
+							type="${state._type}"
+							${state._readOnly ? `readonly=""` : ''}
+							${state._placeholder ? `placeholder="${state._placeholder}"` : ''}
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
-						>
+							${state._required ? `required=""` : ''}
+							${state._accessKey ? `accessKey="${state._accessKey}"` : ''}
+							>
 	       </div>
 	     </${KolInputTag}>
 	   </mock:shadow-root>
-	</kol-input-file>`;
+	</kol-input-text>`;
 };

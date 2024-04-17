@@ -43,14 +43,15 @@ export const getInputEmailHtml = (props: InputEmailProps): string => {
 					hasExpertSlot
 						? `<slot name="expert"></slot> `
 						: typeof state._accessKey === 'string'
-							? `<>
-						 <InternalUnderlinedAccessKey  label="${state._label}" />
+							? `
+						 ${state._label}
 						 <span class="access-key-hint" aria-hidden="true">
 						 ${state._accessKey}
 						 </span>
-					 </> `
+					  `
 							: ` <span>${state._label}</span> `
-				}</span>
+				}
+				</span>
 	       <div slot="input">
 	        	<input
 							${state._disabled ? `disabled=""` : ''}

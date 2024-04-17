@@ -45,14 +45,15 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 					hasExpertSlot
 						? `<slot name="expert"></slot> `
 						: typeof state._accessKey === 'string'
-							? `<>
-						 <InternalUnderlinedAccessKey  label="${state._label}" />
+							? `
+						 ${state._label}
 						 <span class="access-key-hint" aria-hidden="true">
 						 ${state._accessKey}
 						 </span>
-					 </> `
+					  `
 							: ` <span>${state._label}</span> `
-				}</span>
+				}
+				</span>
 				<label slot="input" class="checkbox-container">
 				<${KolIconTag}
 					class="icon"
