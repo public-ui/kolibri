@@ -8,7 +8,7 @@ export const getLinkButtonHtml = (props: LinkButtonProps): string => {
 	<${KolLinkWcTag}
 			${props._href ? `_href="${props._href}"` : ''}
 			${props._label ? `_label="${props._label}"` : ''}
-			${props._icons ? `_icons="${props._icons}"` : ''}
+			${typeof props._icons === 'string' ? `_icons="${props._icons}"` : ''}
 			${props._target ? `_target="${props._target}"` : ''}
 			${typeof props._download === 'string' ? ` _download="${props._download}"` : ''}
 			${props._hideLabel ? `_hidelabel=""` : ''}

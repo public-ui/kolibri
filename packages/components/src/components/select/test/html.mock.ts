@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 
-import { type SelectProps, type SelectStates, showExpertSlot, W3CInputValue, Option } from '@public-ui/schema';
+import { type SelectProps, type SelectStates, showExpertSlot, type W3CInputValue, type Option } from '@public-ui/schema';
 import { KolInputTag } from '../../../core/component-names';
 
 export const getSelectHtml = (props: SelectProps): string => {

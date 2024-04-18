@@ -31,8 +31,8 @@ export const getNavHtml = (props: NavProps): string => {
 								<div class="entry ${props._hideLabel ? 'hide-label' : ''}">
 									${
 										entryIsLink(link)
-											? `<${KolLinkWcTag} ${icons ? `_icons="${icons}"` : ''} ${props._hideLabel ? '_hidelabel=""' : ''} ${link._active ? '_active=""' : ''} _href="${link._href}" _label="${link._label}" class="entry-item"></${KolLinkWcTag}>`
-											: `<${KolButtonWcTag} ${props._hideLabel ? '_hidelabel=""' : ''}  _label="${link._label}" class="entry-item"  ${icons ? `_icons="${icons}"` : ''} ></${KolButtonWcTag}>`
+											? `<${KolLinkWcTag} ${typeof icons === 'string' ? `_icons="${icons}"` : ''} ${props._hideLabel ? '_hidelabel=""' : ''} ${link._active ? '_active=""' : ''} _href="${link._href}" _label="${link._label}" class="entry-item"></${KolLinkWcTag}>`
+											: `<${KolButtonWcTag} ${props._hideLabel ? '_hidelabel=""' : ''}  _label="${link._label}" class="entry-item"  ${typeof icons === 'string' ? `_icons="${icons}"` : ''} ></${KolButtonWcTag}>`
 									}			${
 										link._children
 											? `<${KolButtonWcTag} _hidelabel="" _label="${`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}" class="expand-button" _icons="codicon codicon-${expanded ? 'remove' : 'add'}"  ></${KolButtonWcTag}>`

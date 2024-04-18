@@ -19,7 +19,7 @@ export const getSplitButtonHtml = (props: SplitButtonProps): string => {
 		${props._disabled ? `_disabled=""` : ''}
 		${typeof props._name === 'string' ? `_name="${props._name}"` : ''}
 		${props._hideLabel ? `_hidelabel=""` : ''}
-		${props._icons ? `_icons="${props._icons}"` : ''}
+		${typeof props._icons === 'string' ? `_icons="${props._icons}"` : ''}
 		${typeof props._label === 'string' ? `_label="${props._label}"` : ''}
 		_tooltipalign="top"
 		_type="button"

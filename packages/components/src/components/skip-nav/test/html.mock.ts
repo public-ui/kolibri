@@ -3,7 +3,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { KolLinkWcTag } from '../../../core/component-names';
 
 export const getSkipNavHtml = (props: SkipNavProps): string => {
-	let state = mixMembers<SkipNavProps, SkipNavStates>(
+	const state = mixMembers<SkipNavProps, SkipNavStates>(
 		{
 			_label: '', // ⚠ required
 			_links: [],

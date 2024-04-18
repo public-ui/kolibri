@@ -3,7 +3,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { KolButtonGroupWcTag, KolButtonWcTag } from '../../../core/component-names';
 
 export const getTabsHtml = (props: TabsProps): string => {
-	let state = mixMembers<TabsProps, TabsStates>(
+	const state = mixMembers<TabsProps, TabsStates>(
 		{
 			_align: 'top',
 			_label: '', // ⚠ required

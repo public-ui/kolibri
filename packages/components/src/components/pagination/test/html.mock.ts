@@ -4,7 +4,7 @@ import { translate } from '../../../i18n';
 import { JSX } from '@stencil/core/internal';
 
 export const getPaginationHtml = (props: PaginationProps): string => {
-	let state = mixMembers<PaginationProps, PaginationStates>(
+	const state = mixMembers<PaginationProps, PaginationStates>(
 		{
 			_boundaryCount: 1,
 			_label: translate('kol-pagination'),
