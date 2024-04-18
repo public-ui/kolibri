@@ -169,6 +169,13 @@ export class AssociatedInputController implements Watches {
 						});
 					}
 					break;
+				case 'radio':
+					if (typeof strValue === 'string') {
+						associatedElement.setAttribute('value', strValue);
+						associatedElement.setAttribute('checked', '');
+						associatedElement.value = strValue;
+					}
+					break;
 				default:
 					if (typeof strValue === 'string') {
 						associatedElement.setAttribute('value', strValue);
