@@ -1,7 +1,7 @@
 import type { PaginationProps, PaginationStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { translate } from '../../../i18n';
-import { JSX } from '@stencil/core/internal';
+import { JSX } from '@stencil/core';
 
 export const getPaginationHtml = (props: PaginationProps): string => {
 	const state = mixMembers<PaginationProps, PaginationStates>(

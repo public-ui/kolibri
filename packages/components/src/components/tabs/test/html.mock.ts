@@ -26,7 +26,7 @@ export const getTabsHtml = (props: TabsProps): string => {
 							_ariacontrols=${`tabpanel-${index}`}
 							${state._selected === index ? '_ariaSelected=""' : ''}
 							${state._selected === index ? '_customclass="selected"' : ''}
-							_icons="${button._icons}"
+							${typeof button._icons === 'string' ? `_icons="${button._icons}"` : ''}
 							_id="${state._label.replace(/\s/g, '-')}-tab-${index}"
 							_label="${button._label}"
 							_role="tab"
