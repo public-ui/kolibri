@@ -29,6 +29,7 @@ import { SelectController } from './controller';
 
 import type { JSX } from '@stencil/core';
 import { KolInputTag } from '../../core/component-names';
+import { propagateSubmitEventToForm } from '../form/controller';
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
 };
@@ -142,6 +143,7 @@ export class KolSelect implements SelectAPI {
 							{...this.controller.onFacade}
 							onInput={this.onInput.bind(this)}
 							onChange={this.onChange.bind(this)}
+							onKeyDown={this.onKeyDown.bind(this)}
 						>
 							{this.state._options.map((option, index) => {
 								/**
@@ -449,4 +451,13 @@ export class KolSelect implements SelectAPI {
 			this.state._on.onChange(event, this._value);
 		}
 	}
+
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.ref,
+			});
+		}
+	};
 }
