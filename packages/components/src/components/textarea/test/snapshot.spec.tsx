@@ -31,5 +31,6 @@ executeTests<TextareaProps>(
 	getTextareaHtml,
 	{
 		execMode: 'default', // ready
+		needTimers: true,
 	},
 );

@@ -22,6 +22,7 @@ import type {
 export type RequiredProps = PropHref;
 export type OptionalProps = {
 	tabIndex: number;
+	selector?: string;
 } & PropAccessKey &
 	PropAlternativeButtonLinkRole &
 	PropAriaCurrentValue &

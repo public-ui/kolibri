@@ -53,4 +53,8 @@ executeTests<SelectProps>(
 		_label: ['Label'],
 	},
 	getSelectHtml,
+	{
+		execMode: 'default', // ready
+		needTimers: true,
+	},
 );

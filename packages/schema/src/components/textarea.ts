@@ -21,7 +21,7 @@ import type { InputTypeOnDefault } from '../types';
 export const cssResizeOptions = ['both', 'horizontal', 'vertical', 'none'] as const;
 export type CSSResize = (typeof cssResizeOptions)[number];
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -41,7 +41,6 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideError &
 	PropHideLabel &
-	PropLabelWithExpertSlot &
 	PropMsg &
 	PropName &
 	PropReadOnly &

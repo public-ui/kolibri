@@ -1,25 +1,26 @@
-import type { SkipNavProps, SkipNavStates } from '@public-ui/schema';
+import type { SplitButtonProps, SplitButtonStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { KolButtonWcTag } from '../../../core/component-names';
 
-export const getSplitButtonHtml = (props: SkipNavProps): string => {
-	let state = mixMembers<SkipNavProps, SkipNavStates>(
+export const getSplitButtonHtml = (props: SplitButtonProps): string => {
+	const state = mixMembers<SplitButtonProps, SplitButtonStates>(
 		{
 			_show: false,
 		},
 		props,
 	);
-	const variant = typeof state._variant === 'string' ? state._variant : 'normal';
+
+	const variant = typeof props._variant === 'string' ? props._variant : 'normal';
 
 	return `
 <kol-split-button  class="kol-split-button">
   <mock:shadow-root>
   <${KolButtonWcTag}
-		${state._disabled ? `_disabled=""` : ''}
-		${typeof state._name === 'string' ? `_name="${state._name}"` : ''}
-		${state._hideLabel ? `_hidelabel=""` : ''}
-		${state._icons ? `_icons="${state._icons}"` : ''}
-		${typeof state._label === 'string' ? `_label="${state._label}"` : ''}
+		${props._disabled ? `_disabled=""` : ''}
+		${typeof props._name === 'string' ? `_name="${props._name}"` : ''}
+		${props._hideLabel ? `_hidelabel=""` : ''}
+		${props._icons ? `_icons="${props._icons}"` : ''}
+		${typeof props._label === 'string' ? `_label="${props._label}"` : ''}
 		_tooltipalign="top"
 		_type="button"
 		_variant= ${variant}
@@ -28,10 +29,10 @@ export const getSplitButtonHtml = (props: SkipNavProps): string => {
 	</${KolButtonWcTag}>
     <div class="horizontal-line"></div>
     <${KolButtonWcTag}
-			${state._disabled ? `_disabled=""` : ''}
+			${props._disabled ? `_disabled=""` : ''}
 			_hidelabel=""
 			_icons="codicon codicon-triangle-down"
-			_label="dropdown öffnen"
+			_label="dropdown ${state._show ? 'schließen' : 'öffnen'}"
 			class="secondary-button"
 		>
 		</${KolButtonWcTag}>

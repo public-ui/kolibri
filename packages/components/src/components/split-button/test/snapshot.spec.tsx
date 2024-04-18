@@ -19,7 +19,7 @@ executeTests<SplitButtonProps>(
 		return page;
 	},
 	{
-		_label: ['Label', ''],
+		_label: ['Label'],
 		_hideLabel: [true, false],
 		_icons: ['codicon codicon-git-pull-request'],
 		_disabled: [true, false],
