@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
-import { KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react';
+import { KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react';
 
 import { SampleDescription } from '../SampleDescription';
 
@@ -29,7 +29,7 @@ export const TableHorizontalScrollbar: FC = () => {
 
 			<KolHeading _label="Table with scrollbar" _level={2} />
 
-			<KolTableStateful
+			<KolTable
 				_label="Table for demonstration purposes with horizontal scrollbar."
 				_minWidth={hasWidthRestriction ? '600px' : 'auto'}
 				_headers={HEADERS}
@@ -54,13 +54,7 @@ export const TableHorizontalScrollbar: FC = () => {
 				<i>Scrollbar appears on very small viewport sizes</i>
 			</p>
 
-			<KolTableStateful
-				_label="Table for demonstration purposes without horizontal scrollbar"
-				_minWidth="600px"
-				_headers={HEADERS}
-				_data={DATA}
-				className="block"
-			/>
+			<KolTable _label="Table for demonstration purposes without horizontal scrollbar" _minWidth="600px" _headers={HEADERS} _data={DATA} className="block" />
 		</>
 	);
 };

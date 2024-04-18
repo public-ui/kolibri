@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolTableStateful } from '@public-ui/react';
+import { KolTable } from '@public-ui/react';
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
@@ -64,10 +64,10 @@ export const TableSortData: FC = () => (
 
 		<h2>Vertical</h2>
 
-		<KolTableStateful _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
+		<KolTable _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
 
 		<h2>Horizontal</h2>
 
-		<KolTableStateful _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
 	</>
 );

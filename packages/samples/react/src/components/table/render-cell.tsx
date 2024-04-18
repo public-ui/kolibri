@@ -1,13 +1,14 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { createReactRenderElement, KolButton, KolInputText, KolTable, KolTableStateful } from '@public-ui/react';
+import { createReactRenderElement, KolButton, KolInputText, KolTable } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 
 import type { KoliBriTableHeaders } from '@public-ui/components';
+
 type Data = {
 	order: number;
 	date: Date;
@@ -102,6 +103,6 @@ export const TableRenderCell: FC = () => (
 		<SampleDescription>
 			<p>This sample simulates the usage of React render functions for the table column contents.</p>
 		</SampleDescription>
-		<KolTableStateful _label="Sort by date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
+		<KolTable _label="Sort by date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
 	</>
 );

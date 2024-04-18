@@ -31,7 +31,7 @@ import {
 	KolNav,
 	KolProgress,
 	KolSelect,
-	KolTableStateful,
+	KolTable,
 	KolTabs,
 	KolTextarea,
 	KolVersion,
@@ -1030,7 +1030,7 @@ export const HandoutBasic: FC = () => (
 			</KolCard>
 			<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Table with Pagination" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
-					<KolTableStateful _label="Tabelle" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
+					<KolTable _label="Tabelle" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTable>
 				</div>
 			</KolCard>
 		</div>

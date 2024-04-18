@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolTableStateful } from '@public-ui/react';
+import { KolTable } from '@public-ui/react';
 
 import { DATE_FORMATTER } from './formatter';
 import { SampleDescription } from '../SampleDescription';
@@ -29,7 +29,7 @@ export const TableWithPagination: FC = () => (
 			</p>
 		</SampleDescription>
 		<div>
-			<KolTableStateful _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTableStateful>
+			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTable>
 		</div>
 	</>
 );

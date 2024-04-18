@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolBadge, KolTableStateful } from '@public-ui/react';
+import { KolBadge, KolTable } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
 import type { Data } from './test-data';
@@ -61,6 +61,6 @@ export const TableBadgeSize: FC = () => (
 				jüngsten Datum.
 			</p>
 		</SampleDescription>
-		<KolTableStateful _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
+		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
 	</>
 );
