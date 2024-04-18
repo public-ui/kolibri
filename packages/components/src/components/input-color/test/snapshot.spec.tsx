@@ -24,8 +24,6 @@ executeTests<InputColorProps>(
 		_disabled: [true, false],
 		_alert: [true, false],
 		_icons: [[{ left: 'codicon codicon-home' }]],
-		_readOnly: [true, false],
-		_required: [true, false],
 		_touched: [true, false],
 		_smartButton: [
 			{

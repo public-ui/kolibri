@@ -21,11 +21,8 @@ executeTests<InputRangeProps>(
 	{
 		_label: ['Label'],
 		_disabled: [true, false],
-		_placeholder: ['Mit Icons'],
 		_alert: [true, false],
 		_icons: [[{ left: 'codicon codicon-home' }]],
-		_readOnly: [true, false],
-		_required: [true, false],
 		_touched: [true, false],
 		_accessKey: ['V'],
 		_max: [10],

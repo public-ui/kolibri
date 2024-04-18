@@ -1,12 +1,12 @@
-import type { InputColorProps, InputColorStates } from '@public-ui/schema';
+import type { InputDateProps, InputDateStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 import { KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '@public-ui/schema';
 import { getRenderStates } from '../../input/controller';
 
-export const getInputDateHtml = (props: InputColorProps): string => {
-	const state = mixMembers<InputColorProps, InputColorStates>(
+export const getInputDateHtml = (props: InputDateProps): string => {
+	const state = mixMembers<InputDateProps, InputDateStates>(
 		{
 			_autoComplete: 'off',
 			_hasValue: false,

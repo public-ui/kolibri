@@ -41,7 +41,7 @@ export type InputCheckboxIconsState = {
 	unchecked: AnyIconFontClass;
 };
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -60,7 +60,6 @@ type OptionalProps = {
 	PropHideError &
 	PropHideLabel &
 	PropIndeterminate &
-	PropLabelWithExpertSlot &
 	PropMsg &
 	PropName &
 	PropRequired &

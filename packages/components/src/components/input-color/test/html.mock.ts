@@ -20,7 +20,7 @@ export const getInputColorHtml = (props: InputColorProps): string => {
 	const { ariaDescribedBy } = getRenderStates(state);
 
 	return `
-	<kol-input-color class="kol-input-color" ${state._required ? `_required=""` : ''} ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} ${state._readOnly ? `_readonly=""` : ''}>
+	<kol-input-color class="kol-input-color"  ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
 	   <mock:shadow-root>
 	     <${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}

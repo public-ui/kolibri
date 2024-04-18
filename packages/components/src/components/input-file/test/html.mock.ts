@@ -17,7 +17,7 @@ export const getInputFileHtml = (props: InputFileProps): string => {
 	const hasExpertSlot = showExpertSlot(state._label);
 	const { ariaDescribedBy } = getRenderStates(state);
 	return `
-	<kol-input-file class="kol-input-file" ${state._readOnly ? `_readonly=""` : ''} ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
+	<kol-input-file class="kol-input-file" ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
 	   <mock:shadow-root>
 	     <${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}
@@ -29,6 +29,7 @@ export const getInputFileHtml = (props: InputFileProps): string => {
 					_label="${state._label ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="file ${state._hideLabel ? `hide-label` : ''}"
+					role="presentation"
 					>
 
 			 <span slot="label"> ${

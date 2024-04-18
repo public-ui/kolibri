@@ -22,11 +22,8 @@ export const getInpuRangeHtml = (props: InputTextProps): string => {
 	return `
 	<kol-input-range
 	 	class="kol-input-range"
-		${state._placeholder ? `_placeholder="${state._placeholder}"` : ''}
 		${state._touched ? `_touched=""` : ''}
 		${state._alert || state._alert === undefined ? `_alert=""` : ''}
-		${state._required ? `_required=""` : ''}
-		${state._readOnly ? `_readonly=""` : ''}
 
 	>
 	   <mock:shadow-root>

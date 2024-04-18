@@ -1,4 +1,4 @@
-import type { InputCheckboxProps, InputCheckboxStates, InputColorProps, InputColorStates } from '@public-ui/schema';
+import type { InputCheckboxProps, InputCheckboxStates } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 import { KolIconTag, KolInputTag } from '../../../core/component-names';
@@ -6,7 +6,7 @@ import { showExpertSlot } from '@public-ui/schema';
 import { getRenderStates } from '../../input/controller';
 
 export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
-	const state = mixMembers<InputColorProps, InputCheckboxStates>(
+	const state = mixMembers<InputCheckboxProps, InputCheckboxStates>(
 		{
 			_checked: false,
 			_hideError: false,
@@ -27,7 +27,7 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 	const { ariaDescribedBy } = getRenderStates(state);
 
 	return `
-	<kol-input-checkbox class="kol-input-checkbox" ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} ${state._readOnly ? `_readonly=""` : ''}>
+	<kol-input-checkbox class="kol-input-checkbox" ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
 	   <mock:shadow-root>
 	     <${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}

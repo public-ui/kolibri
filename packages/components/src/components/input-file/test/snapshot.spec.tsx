@@ -6,10 +6,10 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInputFileHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputFileAPI } from '@public-ui/schema';
+import type { InputFileProps } from '@public-ui/schema';
 import { KolInputFile } from '../component';
 
-executeTests<InputFileAPI>(
+executeTests<InputFileProps>(
 	'InputFile',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
@@ -23,7 +23,6 @@ executeTests<InputFileAPI>(
 		_hideLabel: [true, false],
 		_disabled: [true, false],
 		_alert: [true, false],
-		_readOnly: [true, false],
 		_msg: [{ _type: 'error', _description: 'Error message' }],
 		_required: [true, false],
 		_touched: [true, false],

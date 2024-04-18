@@ -11,8 +11,8 @@ export const getInputHtml = (props: InputProps): string => {
 	const hasHint = typeof props._hint === 'string' && props._hint.length > 0;
 	const useTooltopInsteadOfLabel = !hasExpertSlot && props._hideLabel;
 	return `
-	<kol-input class="kol-input ${props._readOnly ? 'read-only' : ''} ${props._disabled ? 'disabled' : ''}">
-		<label class="input-label" id="${!useTooltopInsteadOfLabel ? `${props._id}-label` : ''}" ${useTooltopInsteadOfLabel ? `hidden=""` : ''}>
+	<kol-input class="kol-input ${props._readOnly ? 'read-only' : ''} ${props._disabled ? 'disabled' : ''}" >
+		<label class="input-label" htmlfor="${props._id}" id="${!useTooltopInsteadOfLabel ? `${props._id}-label` : ''}" ${useTooltopInsteadOfLabel ? `hidden=""` : ''}>
 			<span class="input-label-span"></span>
 		</label>
 

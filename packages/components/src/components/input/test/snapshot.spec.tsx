@@ -19,7 +19,8 @@ executeTests<InputProps>(
 		return page;
 	},
 	{
-		_label: ['Label', ''],
+		_id: ['Id'],
+		_label: ['Label'],
 		_hideLabel: [true, false],
 		_disabled: [true, false],
 		_alert: [true, false],
