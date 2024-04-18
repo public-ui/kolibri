@@ -1,0 +1,46 @@
+#! /usr/bin/env bash
+
+#
+# Validate branch name and append the ticket ID (from branch name) to commit messages.
+# Modified version of: https://medium.com/@adrian.garcia.estaun/add-the-ticket-id-to-your-commit-messages-automatically-2debfa0fbe9d
+#
+
+ERROR_MESSAGE="Error: Branch name does not start with a ticket ID. Format: ticketID-branch-description. E.g.: '1234-update-tests'"
+
+# Gets the commit message received as parameter and the current branch name.
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+
+# Skip merge commits
+if [ "${COMMIT_SOURCE}" = merge ]; then
+    exit 0
+fi
+
+message=$(cat "$COMMIT_MSG_FILE")
+branchName=$(git symbolic-ref --short HEAD)
+
+# Get the last part of the branch name. feature/foo/42-bugfix -> 42-bugfix
+normalizedBranchName=${branchName##*/}
+
+# Message already starts with a ticket ID
+if [[ $message =~ ^\(#[0-9]+\) ]]; then
+  exit 0
+fi
+
+# Branch name starts with a ticket ID
+if [[ $normalizedBranchName =~ ^[0-9]+- ]]; then
+  # Get ticketID from branch name. Works with `-` or `_` as separator. 123-foobar -> 123
+  ticketID=$(echo "$normalizedBranchName" | sed -nE 's,([0-9]+)[_-].+,\1,p')
+
+  if [[ -z $ticketID ]]; then
+      echo $ERROR_MESSAGE
+      exit 1
+  fi
+
+  output="(#$ticketID) $message"
+
+  echo "$output" > "$1"
+else
+  echo $ERROR_MESSAGE
+  exit 1
+fi

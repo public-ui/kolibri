@@ -6,9 +6,11 @@ import type { AlertType, AlertVariant } from './alert';
 const toastStatusOptions = ['adding', 'settled', 'removing'] as const;
 type ToastStatus = (typeof toastStatusOptions)[number];
 
+export type ToastRenderFunction = (nodeRef: HTMLElement, options: { close: () => void }) => void;
+
 export type Toast = {
 	description?: string;
-	render?: (nodeRef: HTMLElement, options: { close: () => void }) => void;
+	render?: ToastRenderFunction;
 	label: LabelPropType;
 	type: AlertType;
 	alertVariant?: AlertVariant;
