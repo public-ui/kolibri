@@ -28,7 +28,7 @@ if [[ $message =~ ^\(#[0-9]+\) ]]; then
 fi
 
 # Branch name starts with a ticket ID
-if [[ $normalizedBranchName =~ ^[0-9]+- ]]; then
+if [[ $normalizedBranchName =~ ^[0-9]+[-_] ]]; then
   # Get ticketID from branch name. Works with `-` or `_` as separator. 123-foobar -> 123
   ticketID=$(echo "$normalizedBranchName" | sed -nE 's,([0-9]+)[_-].+,\1,p')
 
