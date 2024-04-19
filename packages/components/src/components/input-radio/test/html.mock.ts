@@ -57,7 +57,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 							_renderNoLabel=""
 							${state._required ? "_required=''" : ''}
 							_slotName="${slotName}"
-							_tooltipAlign="${props._tooltipAlign ? props._tooltipAlign : 'top'}"
+							_tooltipAlign="top"
 						>
 							<div slot="${slotName}" class="radio-input-wrapper">
 								<input

@@ -1,12 +1,12 @@
-import type { InputRangeStates, InputTextProps } from '@public-ui/schema';
+import type { InputRangeStates, InputRangeProps } from '@public-ui/schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 import { KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '@public-ui/schema';
 import { getRenderStates } from '../../input/controller';
 
-export const getInpuRangeHtml = (props: InputTextProps): string => {
-	const state = mixMembers<InputTextProps, InputRangeStates>(
+export const getInpuRangeHtml = (props: InputRangeProps): string => {
+	const state = mixMembers<InputRangeProps, InputRangeStates>(
 		{
 			_autoComplete: 'off',
 			_hideError: false,
