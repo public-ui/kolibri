@@ -2,11 +2,14 @@
 	"name": "@public-ui/theme-bmf",
 	"version": "2.0.14",
 	"private": true,
+	"type": "module",
+	"sideEffects": false,
 	"scripts": {
-		"build": "unbuild",
+		"build": "rollup -c",
+		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "unbuild",
+		"prepack": "pnpm build",
 		"test": "THEME_MODULE=dist THEME_EXPORT=BMF kolibri-visual-test",
 		"test-update": "THEME_MODULE=dist THEME_EXPORT=BMF kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"pretest": "pnpm build",
@@ -15,7 +18,10 @@
 	"devDependencies": {
 		"@public-ui/schema": "2.0.14",
 		"@public-ui/visual-tests": "2.0.14",
+		"@rollup/plugin-typescript": "11.1.6",
 		"@types/node": "ts5.4",
+		"rollup": "4.14.3",
+		"rollup-plugin-postcss": "4.0.2",
 		"typescript": "5.4.5"
 	},
 	"peerDependencies": {
