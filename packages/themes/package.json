@@ -47,7 +47,7 @@
 		"build": "rollup -c",
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
-		"lint": "tsc --noemit eslint src",
+		"lint": "tsc --noemit && eslint src",
 		"prepack": "pnpm build",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
