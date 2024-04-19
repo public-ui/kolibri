@@ -32,7 +32,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 									? `<slot name="expert"></slot> `
 									: typeof state._accessKey === 'string'
 										? `
-											<${InternalUnderlinedAccessKey} accessKey="${state._accessKey}" label="${state._label}" > </${InternalUnderlinedAccessKey}>
+											<${InternalUnderlinedAccessKey} accessKey="${state._accessKey as string}" label="${state._label as string}" > </${InternalUnderlinedAccessKey}>
 										</span>
 										`
 										: ` ${state._label}`
