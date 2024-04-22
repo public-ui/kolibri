@@ -19,6 +19,7 @@ import type {
 	W3CInputValue,
 } from '@public-ui/schema';
 import { propagateFocus, showExpertSlot } from '@public-ui/schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -26,10 +27,9 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { SelectController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolInputTag } from '../../core/component-names';
 import { propagateSubmitEventToForm } from '../form/controller';
+
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
 };
@@ -125,50 +125,60 @@ export class KolSelect implements SelectAPI {
 						)}
 					</span>
 					<div slot="input">
-						<select
-							ref={this.catchRef}
-							title=""
-							accessKey={this.state._accessKey}
-							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-							autoCapitalize="off"
-							autoCorrect="off"
-							disabled={this.state._disabled}
-							id={this.state._id}
-							multiple={this.state._multiple}
-							name={this.state._name}
-							required={this.state._required}
-							size={this.state._rows}
-							spellcheck="false"
-							{...this.controller.onFacade}
-							onInput={this.onInput.bind(this)}
-							onChange={this.onChange.bind(this)}
-							onKeyDown={this.onKeyDown.bind(this)}
+						<form
+							onSubmit={(event) => {
+								event.preventDefault();
+								propagateSubmitEventToForm({
+									form: this.host,
+									ref: this.ref,
+								});
+							}}
 						>
-							{this.state._options.map((option, index) => {
-								/**
-								 * Damit der Value einer Option ein beliebigen Typ haben kann
-								 * muss man auf HTML-Ebene den Value auf einen String-Wert
-								 * mappen. Das tun wir mittels der Map.
-								 */
-								const key = `-${index}`;
-								if (Array.isArray((option as unknown as Optgroup<string>).options)) {
-									return this.renderOptgroup(option as unknown as Optgroup<string>, key);
-								} else {
-									return (
-										<option
-											disabled={option.disabled}
-											key={key}
-											// label={option.label}
-											selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
-											value={key}
-										>
-											{option.label}
-										</option>
-									);
-								}
-							})}
-						</select>
+							<input type="submit" hidden />
+							<select
+								ref={this.catchRef}
+								title=""
+								accessKey={this.state._accessKey}
+								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+								autoCapitalize="off"
+								autoCorrect="off"
+								disabled={this.state._disabled}
+								id={this.state._id}
+								multiple={this.state._multiple}
+								name={this.state._name}
+								required={this.state._required}
+								size={this.state._rows}
+								spellcheck="false"
+								{...this.controller.onFacade}
+								onInput={this.onInput.bind(this)}
+								onChange={this.onChange.bind(this)}
+							>
+								{this.state._options.map((option, index) => {
+									/**
+									 * Damit der Value einer Option ein beliebigen Typ haben kann
+									 * muss man auf HTML-Ebene den Value auf einen String-Wert
+									 * mappen. Das tun wir mittels der Map.
+									 */
+									const key = `-${index}`;
+									if (Array.isArray((option as unknown as Optgroup<string>).options)) {
+										return this.renderOptgroup(option as unknown as Optgroup<string>, key);
+									} else {
+										return (
+											<option
+												disabled={option.disabled}
+												key={key}
+												// label={option.label}
+												selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
+												value={key}
+											>
+												{option.label}
+											</option>
+										);
+									}
+								})}
+							</select>
+						</form>
 					</div>
 				</KolInputTag>
 			</Host>
@@ -451,13 +461,4 @@ export class KolSelect implements SelectAPI {
 			this.state._on.onChange(event, this._value);
 		}
 	}
-
-	private readonly onKeyDown = (event: KeyboardEvent) => {
-		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-			propagateSubmitEventToForm({
-				form: this.host,
-				ref: this.ref,
-			});
-		}
-	};
 }
