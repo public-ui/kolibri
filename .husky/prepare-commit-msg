@@ -34,6 +34,7 @@ if [[ $normalizedBranchName =~ ^[0-9]+- ]]; then
 
   if [[ -z $ticketID ]]; then
       echo $ERROR_MESSAGE
+      echo "Branch name: $branchName"
       exit 1
   fi
 
@@ -42,5 +43,6 @@ if [[ $normalizedBranchName =~ ^[0-9]+- ]]; then
   echo "$output" > "$1"
 else
   echo $ERROR_MESSAGE
+  echo "Branch name: $branchName"
   exit 1
 fi
