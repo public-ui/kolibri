@@ -42,6 +42,7 @@ export * from './spin';
 export * from './split-button';
 export * from './symbol';
 export * from './table';
+export * from './tableStateless';
 export * from './tabs';
 export * from './textarea';
 export * from './toaster';

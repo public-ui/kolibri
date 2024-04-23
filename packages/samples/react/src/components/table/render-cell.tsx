@@ -8,6 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 
 import type { KoliBriTableHeaders } from '@public-ui/components';
+
 type Data = {
 	order: number;
 	date: Date;
