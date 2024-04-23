@@ -4,24 +4,29 @@
 		font-style: normal;
 		font-weight: 400;
 		text-decoration-line: underline;
-	}
+		text-decoration-color: var(--color-ocean);
 
-	:is(a, button):focus {
-		outline: none;
-	}
+		&:focus {
+			outline: none;
+			text-decoration-thickness: unset;
 
-	:is(a, button):focus .kol-span-wc {
-		border-radius: var(--border-radius);
-		outline: 2px solid;
+			.kol-span-wc {
+				border-radius: 5px;
+				outline: 3px solid var(--color-ocean);
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		&:visited {
+			color: var(--color-purple);
+		}
 	}
 
 	a:hover:not([aria-disabled]),
 	button:hover:not([disabled]) {
 		text-decoration-thickness: 0.25em;
-	}
-
-	:is(a, button):visited {
-		color: var(--visited);
 	}
 
 	.hidden {
@@ -35,11 +40,11 @@
 		position: absolute;
 		z-index: 9999999;
 		line-height: 1em;
-	}
 
-	.skip:focus {
-		background: white;
-		left: unset;
-		position: unset;
+		&:focus {
+			background: white;
+			left: unset;
+			position: unset;
+		}
 	}
 }
