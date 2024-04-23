@@ -756,7 +756,7 @@ importers:
         version: 1.3.49(chromedriver@122.0.6)(esbuild@0.20.1)(typescript@5.4.5)
       '@leanup/stack-solid':
         specifier: 1.3.49
-        version: 1.3.49(@babel/core@7.24.0)(solid-js@1.8.16)(vite@5.1.5)(webpack@5.90.3)
+        version: 1.3.49(@babel/core@7.24.0)(solid-js@1.8.16)(vite@5.1.7)(webpack@5.90.3)
       '@leanup/stack-webpack':
         specifier: 1.3.49
         version: 1.3.49(@leanup/stack@1.3.49)(esbuild@0.20.1)(less@4.2.0)(postcss@8.4.38)
@@ -6636,7 +6636,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@leanup/stack-solid@1.3.49(@babel/core@7.24.0)(solid-js@1.8.16)(vite@5.1.5)(webpack@5.90.3):
+  /@leanup/stack-solid@1.3.49(@babel/core@7.24.0)(solid-js@1.8.16)(vite@5.1.7)(webpack@5.90.3):
     resolution: {integrity: sha512-DCrcyPuD3hKSQFz57T/1Fz3vNFSkQgQ1Up7vrv1IZJpsveUoZqTAUJBdPvMBaLQSsZvJMha8AnnPtVNDuxzeMw==}
     peerDependencies:
       solid-js: ^1
@@ -6645,7 +6645,7 @@ packages:
       '@snowpack/plugin-babel': 2.1.7
       babel-preset-solid: 1.8.6(@babel/core@7.24.0)
       solid-js: 1.8.16
-      vite-plugin-solid: 2.8.0(solid-js@1.8.16)(vite@5.1.5)
+      vite-plugin-solid: 2.8.0(solid-js@1.8.16)(vite@5.1.7)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -8902,7 +8902,7 @@ packages:
       '@vue/shared': 3.4.21
       entities: 4.5.0
       estree-walker: 2.0.2
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /@vue/compiler-dom@3.4.21:
@@ -8923,7 +8923,7 @@ packages:
       estree-walker: 2.0.2
       magic-string: 0.30.7
       postcss: 8.4.38
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /@vue/compiler-ssr@3.4.21:
@@ -21794,11 +21794,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /source-map-js@1.0.2:
-    resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
-    engines: {node: '>=0.10.0'}
-    dev: true
-
   /source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
     engines: {node: '>=0.10.0'}
@@ -22480,7 +22475,7 @@ packages:
       uglify-js:
         optional: true
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.25
+      '@jridgewell/trace-mapping': 0.3.22
       '@swc/core': 1.3.101
       esbuild: 0.20.1
       jest-worker: 27.5.1
@@ -23530,7 +23525,7 @@ packages:
     resolution: {integrity: sha512-vLFU70y3D915d611GnHYeHkEmq6ZZETzTH4P1hM6I9E3lBwH2VeBBEESe/bGCY+gAyK0qqLFn5bNFpui/GKmww==}
     dev: true
 
-  /vite-plugin-solid@2.8.0(solid-js@1.8.16)(vite@5.1.5):
+  /vite-plugin-solid@2.8.0(solid-js@1.8.16)(vite@5.1.7):
     resolution: {integrity: sha512-n5FAm7ZmTl94VWUoiJCgG7bouF2NlC9CA1wY/qbVnkFbYDWk++bFWyNoU48aLJ+lMtzNeYzJypJXOHzFKxL9xA==}
     peerDependencies:
       solid-js: ^1.7.2
@@ -23543,47 +23538,10 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.8.16
       solid-refresh: 0.5.3(solid-js@1.8.16)
-      vite: 5.1.5(@types/node@20.11.25)(less@4.2.0)
-      vitefu: 0.2.5(vite@5.1.5)
+      vite: 5.1.7(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(terser@5.29.1)
+      vitefu: 0.2.5(vite@5.1.7)
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /vite@5.1.5(@types/node@20.11.25)(less@4.2.0):
-    resolution: {integrity: sha512-BdN1xh0Of/oQafhU+FvopafUp6WaYenLU/NFoL5WyJL++GxkNfieKzBhM24H3HVsPQrlAqB7iJYTHabzaRed5Q==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 20.11.25
-      esbuild: 0.19.3
-      less: 4.2.0
-      postcss: 8.4.38
-      rollup: 4.8.0
-    optionalDependencies:
-      fsevents: 2.3.3
     dev: true
 
   /vite@5.1.7(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(terser@5.29.1):
@@ -23625,7 +23583,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitefu@0.2.5(vite@5.1.5):
+  /vitefu@0.2.5(vite@5.1.7):
     resolution: {integrity: sha512-SgHtMLoqaeeGnd2evZ849ZbACbnwQCIwRH57t18FxcXoZop0uQu0uzlIhJBlF/eWVzuce0sHeqPcDo+evVcg8Q==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
@@ -23633,7 +23591,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.1.5(@types/node@20.11.25)(less@4.2.0)
+      vite: 5.1.7(@types/node@20.11.25)(less@4.2.0)(sass@1.71.1)(terser@5.29.1)
     dev: true
 
   /vlq@0.2.3:
