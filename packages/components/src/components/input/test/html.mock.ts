@@ -56,7 +56,7 @@ export const getInputHtml = (props: InputProps): string => {
 				${
 					Array.isArray(props._suggestions) && props._suggestions.length > 0
 						? `<datalist id="${props._id}-list">
-						${props._suggestions.map((option: W3CInputValue) => `<option value=${option} />`)}
+						${props._suggestions.map((option: W3CInputValue) => `<option value=${option} />`).join('')}
 					</datalist>`
 						: ''
 				}

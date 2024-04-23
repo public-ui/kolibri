@@ -36,7 +36,6 @@ const config = {
 		 */
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
-		'@typescript-eslint/restrict-template-expressions': 'error',
 	},
 	settings: {
 		react: {

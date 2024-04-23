@@ -4,7 +4,6 @@ import { nonce } from '../../../utils/dev.utils';
 import { KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '@public-ui/schema';
 import { getRenderStates } from '../../input/controller';
-import { InternalUnderlinedAccessKey } from '../../span/InternalUnderlinedAccessKey';
 
 export const getInputRadioHtml = (props: InputRadioProps): string => {
 	const state = mixMembers<InputRadioProps, InputRadioStates>(
@@ -19,6 +18,17 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 	);
 	const hasExpertSlot = showExpertSlot(state._label);
 	const { ariaDescribedBy, hasError } = getRenderStates(state);
+	const label = state._label ? state._label : '';
+	let accessKey = state._accessKey ? state._accessKey : '';
+	let [first, ...rest] = label.split(accessKey);
+	if (rest.length === 0) {
+		accessKey = accessKey.toUpperCase();
+		[first, ...rest] = label.split(accessKey);
+	}
+	if (rest.length === 0) {
+		accessKey = accessKey.toLowerCase();
+		[first, ...rest] = label.split(accessKey);
+	}
 
 	return `
 	<kol-input-radio class="kol-input-radio"  ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
@@ -32,7 +42,17 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 									? `<slot name="expert"></slot> `
 									: typeof state._accessKey === 'string'
 										? `
-											<${InternalUnderlinedAccessKey} accessKey="${state._accessKey}" label="${state._label}" > </${InternalUnderlinedAccessKey}>
+										<>
+										${first}
+										${
+											rest.length
+												? `<>
+												<u>{accessKey}</u>
+												{rest.join(accessKey)}
+											</>`
+												: null
+										}
+									</>
 										</span>
 										`
 										: ` ${state._label}`
@@ -47,7 +67,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 						const slotName = `radio-${index}`;
 						const selected = state._value === option.value;
 						return `<${KolInputTag}
-							class=" radio ${Boolean(state._disabled || option.disabled) ? 'disabled' : ''} "
+							class=" radio ${state._disabled || option.disabled ? 'disabled' : ''} "
 							${state._disabled || option.disabled ? "_disabled=''" : ''}
 							${state._hideLabel ? "_hideLabel=''" : ''}
 							${state._touched ? "_touched=''" : ''}
