@@ -4,11 +4,12 @@ import React from 'react';
 import { KolBadge, KolTable } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
+import type { Data } from './test-data';
 import { DATA } from './test-data';
 import { SampleDescription } from '../SampleDescription';
 
 import type { KoliBriTableHeaders } from '@public-ui/components';
-import type { Data } from './test-data';
+
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
 	month: '2-digit',

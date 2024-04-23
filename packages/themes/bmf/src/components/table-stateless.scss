@@ -82,30 +82,4 @@
 	.table-sort-button .button {
 		font-weight: 700;
 	}
-
-	:host > div:last-child,
-	:host > div:last-child > div:last-child {
-		display: grid;
-		align-items: center;
-		justify-items: center;
-		gap: 1em;
-	}
-
-	.pagination {
-		align-items: center;
-		justify-content: start;
-		grid-template-columns: auto 1fr;
-	}
-
-	@media (min-width: 1024px) {
-		:host > div:last-child,
-		:host > div:last-child > div:last-child {
-			grid-auto-flow: column;
-		}
-
-		:host > div:last-child .kol-pagination {
-			display: flex;
-			gap: 1rem;
-		}
-	}
 }

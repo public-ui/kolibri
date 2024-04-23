@@ -15,5 +15,6 @@ export enum Events {
 	onMouseUp = 'onMouseUp',
 	onReset = 'onReset',
 	onSelect = 'onSelect',
+	onSort = 'onSort',
 	onSubmit = 'onSubmit',
 }

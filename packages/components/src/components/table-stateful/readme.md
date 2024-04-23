@@ -1,15 +1,13 @@
-# Table
+# TableStateful
 
 <KolAlert _type="warning" _variant="msg">
-  KolTable ist deprecated, bitte stattdessen
-  <kol-link _label="KolTableStateful" _href="https://github.com/public-ui/kolibri/blob/develop/packages/components/src/components/table-stateless/readme.md">
-  verwenden, die API und Funktionalität sind identisch.
+  <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
 </KolAlert>
 
-Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+Die **TableStateful**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
 <kol-indented-text _summary="Backend-seitige Pagination">
-	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden.
+	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der TableStateless-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden. Eine mögliche Sortierung muss ebenfalls über die `onSort`-Events selber implementiert werden. Siehe [KolTableStateless](../table-stateless/readme.md).
 </kol-indented-text>
 
 ## Konstruktion
@@ -79,12 +77,12 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 ### Code
 
 ```html
-<kol-table _label="Tabellenbeschreibung" _headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}' _pagination='[{"page":2}]'></kol-table>
+<kol-table-stateful _label="Tabellenbeschreibung" _headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}' _pagination='[{"page":2}]'></kol-table>
 ```
 
 ### Beispiel
 
-<kol-table _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table>
+<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table>
 
 ## Verwendung
 
@@ -173,8 +171,6 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 - <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
-
-> **[DEPRECATED]** Use KolTableStateful instead.
 
 ## Properties
 

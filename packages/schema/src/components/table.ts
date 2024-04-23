@@ -1,52 +1,33 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropLabel } from '../props';
-import type { Stringified } from '../types';
+import type { PropLabel, PropTableData, PropTableDataFoot } from '../props';
+import type { KoliBriTableDataType, KoliBriTableHeaderCell, Stringified, KoliBriSortDirection } from '../types';
 import type { KoliBriPaginationProps } from './pagination';
 import type { PropPaginationPosition } from '../props/pagination-position';
 
 export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
 
-export type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCell, tupel: T, data: T[]) => string | void;
-
 type KoliBriTableSort = <T>(data: T[]) => T[];
-export type KoliBriSortDirection = 'ASC' | 'DESC' | 'NOS';
+
 export type KoliBriSortFunction = (data: KoliBriTableDataType[]) => KoliBriTableDataType[];
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType) => number;
 
-export type KoliBriTableDataType = Record<string, unknown>;
-
-type KoliBriTableCellTextAlign = 'center' | 'left' | 'right' | 'justify';
-export type KoliBriTableCell = {
-	asTd?: boolean;
-	colSpan?: number;
-	label: string;
-	render?: KoliBriTableRender;
-	rowSpan?: number;
-	sort?: KoliBriTableSort;
-	textAlign?: KoliBriTableCellTextAlign;
-	width?: string;
-};
-
-export type KoliBriTableHeaderCell = {
-	asTd?: boolean;
-	key?: string;
+export type KoliBriTableHeaderCellWithLogic = KoliBriTableHeaderCell & {
 	compareFn?: KoliBriDataCompareFn;
 	/**
 	 * @deprecated use `compareFn` instead
 	 */
 	sort?: KoliBriTableSort;
 	sortDirection?: KoliBriSortDirection;
-	textAlign?: KoliBriTableCellTextAlign;
-} & KoliBriTableCell;
+};
 
 export type KoliBriTableHeaders = {
-	horizontal?: KoliBriTableHeaderCell[][];
-	vertical?: KoliBriTableHeaderCell[][];
+	horizontal?: KoliBriTableHeaderCellWithLogic[][];
+	vertical?: KoliBriTableHeaderCellWithLogic[][];
 };
-export type KoliBriTableHeaderCellAndData = {
+export type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCellWithLogic & {
 	data: KoliBriTableDataType;
-} & KoliBriTableHeaderCell;
+};
 
 export type KoliBriTablePaginationProps = Generic.Element.Members<
 	{
@@ -63,15 +44,15 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 >;
 
 type RequiredProps = {
-	data: Stringified<KoliBriTableDataType[]>;
 	headers: Stringified<KoliBriTableHeaders>;
-} & PropLabel;
+} & PropTableData &
+	PropLabel;
 type OptionalProps = {
 	allowMultiSort: boolean;
-	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-} & PropPaginationPosition;
+} & PropTableDataFoot &
+	PropPaginationPosition;
 
 type RequiredStates = {
 	allowMultiSort: boolean;
