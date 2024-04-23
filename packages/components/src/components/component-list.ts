@@ -59,6 +59,7 @@ import { KolTree } from './tree/shadow';
 import { KolTreeItem } from './tree-item/shadow';
 import { KolTreeItemWc } from './tree-item/component';
 import { KolTreeWc } from './tree/component';
+import { KolCombobox } from './combobox/component';
 
 export const COMPONENTS = [
 	KolAbbr,
@@ -75,6 +76,7 @@ export const COMPONENTS = [
 	KolButtonLink,
 	KolButtonWc,
 	KolCard,
+	KolCombobox,
 	KolDetails,
 	KolForm,
 	KolHeading,
