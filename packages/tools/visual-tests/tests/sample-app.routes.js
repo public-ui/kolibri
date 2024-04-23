@@ -325,6 +325,11 @@ ROUTES.set('table/complex-headers', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('table/stateless', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('tabs/basic', {
 	axe: {
 		skipFailures: false,

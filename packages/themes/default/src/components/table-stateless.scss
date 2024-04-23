@@ -1,6 +1,9 @@
 @layer kol-theme-component {
-	:host {
+	:host * {
+		hyphens: var(--hyphens);
 		font-family: var(--font-family);
+		line-height: var(--line-height);
+		word-break: break-word;
 	}
 
 	:host > div {
@@ -9,31 +12,32 @@
 	}
 
 	caption {
-		padding: 0.5em;
+		padding: 0.5rem;
 	}
 
 	th {
 		font-weight: normal;
-		color: var(--color-midnight);
+		color: var(--color-primary);
 	}
 
 	:host table thead tr:first-child th,
 	:host table thead tr:first-child td {
 		border-width: 0;
-		border-top-width: 2px;
+		border-top-width: calc(var(--border-width) * 2);
 		border-style: solid;
-		border-color: var(--color-ice);
+		border-color: var(--color-primary-variant);
 	}
 
 	.table {
-		padding: 0.5em;
-	}
+		padding: 0.5rem;
 
-	.table:has(.focus-element:focus) {
-		outline-color: var(--color-blue);
-		outline-offset: 2px;
-		outline-style: solid;
-		outline-width: 2px;
+		&:has(.focus-element:focus) {
+			outline-color: var(--color-primary-variant);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
+			transition: outline-offset 0.2s linear;
+		}
 	}
 
 	table {
@@ -45,46 +49,34 @@
 	:host table thead tr:last-child th,
 	:host table thead tr:last-child td {
 		border-width: 0;
-		border-bottom-width: 2px;
+		border-bottom-width: calc(var(--border-width) * 2);
 		border-style: solid;
-		border-color: var(--color-ice);
+		border-color: var(--color-primary-variant);
 	}
 
 	th {
-		background-color: var(--color-white);
+		background-color: var(--color-light);
 	}
 
 	th div {
 		width: 100%;
 		display: flex;
-		gap: 0.5em;
+		gap: 0.5rem;
 		grid-template-columns: 1fr auto;
 		align-items: center;
 	}
 
-	tbody tr:nth-child(odd) {
-		background-color: var(--color-grey-10);
+	tr:nth-child(even) {
+		background-color: var(--color-mute);
 	}
 
 	th,
 	td {
-		padding: 0.5em;
+		padding: 0.5rem;
 	}
 
 	th[aria-sort='ascending'],
 	th[aria-sort='descending'] {
 		font-weight: 700;
-	}
-
-	@media (min-width: 1024px) {
-		:host > div:last-child,
-		:host > div:last-child > div:last-child {
-			grid-auto-flow: column;
-		}
-
-		:host > div:last-child .kol-pagination {
-			display: flex;
-			gap: 1rem;
-		}
 	}
 }

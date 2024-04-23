@@ -84,7 +84,7 @@ const patchState = (component: Generic.Element.Component): void => {
 	delete component.nextHooks;
 };
 
-type SetStateHooks = {
+export type SetStateHooks = {
 	afterPatch?: Generic.Element.StateHooksCallback;
 	beforePatch?: Generic.Element.NextStateHooksCallback;
 };

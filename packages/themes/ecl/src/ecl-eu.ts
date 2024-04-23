@@ -22,8 +22,8 @@ import inputPasswordCss from './components/ecl-eu/input-password.scss';
 import inputRadioCss from './components/ecl-eu/input-radio.scss';
 import inputRangeCss from './components/ecl-eu/input-range.scss';
 import inputTextCss from './components/ecl-eu/input-text.scss';
-import linkButtonCss from './components/ecl-eu/link-button.scss';
 import kolibriCss from './components/ecl-eu/kolibri.scss';
+import linkButtonCss from './components/ecl-eu/link-button.scss';
 import linkCss from './components/ecl-eu/link.scss';
 import navCss from './components/ecl-eu/nav.scss';
 import paginationCss from './components/ecl-eu/pagination.scss';
@@ -32,6 +32,8 @@ import selectCss from './components/ecl-eu/select.scss';
 import skipNavCss from './components/ecl-eu/skip-nav.scss';
 import spinCss from './components/ecl-eu/spin.scss';
 import splitButtonCss from './components/ecl-eu/split-button.scss';
+import tableStatefulCss from './components/ecl-eu/table-stateful.scss';
+import tableStatelessCss from './components/ecl-eu/table-stateless.scss';
 import tabsCss from './components/ecl-eu/tabs.scss';
 import textareaCss from './components/ecl-eu/textarea.scss';
 import toastContainerCss from './components/ecl-eu/toast-container.scss';
@@ -62,7 +64,8 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-KOLIBRI': kolibriCss,
 	'KOL-SELECT': selectCss,
 	'KOL-TEXTAREA': textareaCss,
-	'KOL-TABLE': tabsCss,
+	'KOL-TABLE-STATEFUL': tableStatefulCss,
+	'KOL-TABLE-STATELESS': tableStatelessCss,
 	'KOL-AVATAR': avatarCss,
 	'KOL-TABS': tabsCss,
 	'KOL-LINK': linkCss,
