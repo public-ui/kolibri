@@ -6,32 +6,25 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	Optgroup,
-	Option,
 	OptionsWithOptgroupPropType,
 	RowsPropType,
 	SelectAPI,
-	SelectOption,
 	SelectStates,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 	W3CInputValue,
 } from '@public-ui/schema';
-import { propagateFocus, showExpertSlot } from '@public-ui/schema';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch, Fragment } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { SelectController } from './controller';
 
 import type { JSX } from '@stencil/core';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
-const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
-	return Array.isArray(valueList) && valueList.includes(optionValue);
-};
+import { showExpertSlot } from '@public-ui/schema';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -46,11 +39,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 export class KolCombobox implements SelectAPI {
 	@Element() private readonly host?: HTMLKolComboBoxElement;
 	private ref?: HTMLSelectElement;
-
-	private readonly catchRef = (ref?: HTMLSelectElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
-	};
+	@State() isListBoxOpen: boolean = false;
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -58,42 +47,15 @@ export class KolCombobox implements SelectAPI {
 		return this._value;
 	}
 
-	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
-		return (
-			<optgroup disabled={optgroup.disabled} label={optgroup.label}>
-				{optgroup.options?.map((option: SelectOption<W3CInputValue>, index: number) => {
-					const key = `${preKey}-${index}`;
-					if (Array.isArray((option as Optgroup<string>).options)) {
-						return this.renderOptgroup(option as Optgroup<string>, key);
-					} else {
-						return (
-							<option
-								disabled={option.disabled}
-								key={key}
-								// label={option.label}
-								selected={isSelected(this.state._value, (option as Option<W3CInputValue>).value)}
-								value={key}
-							>
-								{option.label}
-							</option>
-						);
-					}
-				})}
-			</optgroup>
-		);
-	}
+	private toggleListbox = () => {
+		this.isListBoxOpen = !this.isListBoxOpen;
+	};
 
 	public render(): JSX.Element {
-		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
-
 		return (
-			<Host class={{ 'kol-combobox': true, 'has-value': this.state._hasValue }}>
+			<Host class={{ 'kol-combo-box': true }}>
 				<KolInputTag
-					class={{
-						'hide-label': !!this.state._hideLabel,
-						select: true,
-					}}
 					_accessKey={this.state._accessKey}
 					_disabled={this.state._disabled}
 					_hideError={this.state._hideError}
@@ -125,12 +87,29 @@ export class KolCombobox implements SelectAPI {
 					</span>
 					<div slot="input">
 						<input type="text" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-controls="listbox" />
-						<KolIconTag _icons="" _label="" />
+						<span onClick={this.toggleListbox}>
+							<KolIconTag _icons="codicon codicon-triangle-down" _label={`dropdown`} />
+						</span>
 					</div>
-					<ul id="listbox" role="listbox" aria-label="">
-						<li id="" role="option" />
-					</ul>
 				</KolInputTag>
+				<div slot="listbox" class={{ listbox: true, hidden: !this.isListBoxOpen }} tabindex="-1">
+					<ul id="listbox" role="listbox" aria-label="">
+						{this.state._options.map((option, index) => {
+							/**
+							 * Damit der Value einer Option ein beliebigen Typ haben kann
+							 * muss man auf HTML-Ebene den Value auf einen String-Wert
+							 * mappen. Das tun wir mittels der Map.
+							 */
+							const key = `-${index}`;
+
+							return (
+								<li key={key} class="combo-option">
+									{option.label}
+								</li>
+							);
+						})}
+					</ul>
+				</div>
 			</Host>
 		);
 	}
@@ -382,20 +361,6 @@ export class KolCombobox implements SelectAPI {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-	}
-
-	private onInput(event: Event): void {
-		this._value = Array.from(this.ref?.options || [])
-			.filter((option) => option.selected === true)
-			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
-
-		// Event handling
-		tryToDispatchKoliBriEvent('input', this.host, this._value);
-
-		// Callback
-		if (typeof this.state._on?.onInput === 'function') {
-			this.state._on.onInput(event, this._value);
-		}
 	}
 
 	private onChange(event: Event): void {

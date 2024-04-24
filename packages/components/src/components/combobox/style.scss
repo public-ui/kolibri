@@ -1,4 +1,69 @@
 @import '../input-line';
 
 @layer kol-component {
+	:host {
+		display: block;
+		margin-bottom: 1.5em;
+		max-width: 400px;
+		position: relative;
+	}
+
+
+	div[slot='input'] {
+		display: flex;
+		align-items: center;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		min-height: calc(1.4em + 26px);
+		text-align: left;
+		width: 100%;
+	}
+
+	input[type='text'] {
+		flex-grow: 1;
+		padding: 5px 30px 5px 10px;
+		border: transparent;
+		width: calc(100% - 40px);
+	}
+
+	.kol-icon {
+		display: grid;
+		height: var(--a11y-min-size);
+		place-items: center;
+		cursor: pointer;
+		width: 40px;
+	}
+
+	.listbox {
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		display: block;
+		max-height: 300px;
+		overflow-y: scroll;
+		left: 0;
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		z-index: 100;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		padding: 10px 12px 12px;
+		cursor: pointer;
+	}
+
+	.listbox.hidden {
+		display: none;
+	}
+
+	li:hover {
+		background: var(--color-primary-variant);
+		color: var(--color-light);
+	}
 }
