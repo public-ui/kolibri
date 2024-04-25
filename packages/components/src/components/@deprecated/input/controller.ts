@@ -198,7 +198,7 @@ export class InputController extends ControlledInputController implements Watche
 
 		// Event handling
 		stopPropagation(event);
-		tryToDispatchKoliBriEvent('input', this.host);
+		tryToDispatchKoliBriEvent('input', this.host, value);
 
 		// Static form handling
 		if (shouldSetFormAssociatedValue) {
@@ -207,7 +207,7 @@ export class InputController extends ControlledInputController implements Watche
 
 		// Callback
 		if (typeof this.component._on?.onInput === 'function') {
-			this.component._on.onInput(event);
+			this.component._on.onInput(event, value);
 		}
 	}
 
