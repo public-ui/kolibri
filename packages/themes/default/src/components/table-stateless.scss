@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host * {
 		hyphens: var(--hyphens);
@@ -12,7 +14,7 @@
 	}
 
 	caption {
-		padding: 0.5rem;
+		padding: rem(0.5);
 	}
 
 	th {
@@ -29,7 +31,7 @@
 	}
 
 	.table {
-		padding: 0.5rem;
+		padding: rem(0.5);
 
 		&:has(.focus-element:focus) {
 			outline-color: var(--color-primary-variant);
@@ -61,7 +63,7 @@
 	th div {
 		width: 100%;
 		display: flex;
-		gap: 0.5rem;
+		gap: rem(0.5);
 		grid-template-columns: 1fr auto;
 		align-items: center;
 	}
@@ -72,7 +74,7 @@
 
 	th,
 	td {
-		padding: 0.5rem;
+		padding: rem(0.5);
 	}
 
 	th[aria-sort='ascending'],

@@ -1,3 +1,4 @@
+@import '../mixins/rem';
 @import '../mixins/alert-wc.scss';
 
 @layer kol-theme-component {
@@ -7,11 +8,11 @@
 	}
 
 	.inputs-wrapper {
-		gap: 1rem;
+		gap: rem(1);
 	}
 
 	.kol-input {
-		gap: 0.25rem;
+		gap: rem(0.25);
 	}
 
 	.kol-input .error {
@@ -28,7 +29,7 @@
 
 	.kol-input .hint {
 		order: 4;
-		font-size: 0.9rem;
+		font-size: rem(0.9);
 		font-style: italic;
 	}
 
@@ -42,24 +43,24 @@
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
-		padding: 0 0.5rem;
+		padding: 0 rem(0.5);
 	}
 
 	.input > .kol-icon {
-		width: 1rem;
+		width: rem(1);
 	}
 
 	.input.icon-left > .kol-icon:first-child {
-		margin-right: 0.5rem;
+		margin-right: rem(0.5);
 	}
 
 	.input.icon-right > .kol-icon:last-child {
-		margin-left: 0.5rem;
+		margin-left: rem(0.5);
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: 1rem;
-		padding-right: 1rem;
+		padding-left: rem(1);
+		padding-right: rem(1);
 	}
 
 	:not(.disabled) .input:hover {
@@ -77,7 +78,7 @@
 
 	.kol-input.error {
 		border-left: 3px solid var(--color-danger);
-		padding-left: 1rem;
+		padding-left: rem(1);
 	}
 
 	.kol-input.error .input:focus-within {

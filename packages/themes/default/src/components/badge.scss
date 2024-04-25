@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		display: inline-block;
@@ -24,21 +26,21 @@
 		color: inherit;
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
-		padding: 0.2rem;
+		padding: rem(0.2);
 	}
 
 	:host > span .kol-span-wc {
-		padding: 0.25rem 0.75rem;
+		padding: rem(0.25) rem(0.75);
 	}
 
 	:host > span > .kol-span-wc {
 		align-items: center;
 		font-style: normal;
-		gap: 0.5rem;
+		gap: rem(0.5);
 	}
 
 	:host > span > .kol-span-wc > span {
 		display: flex;
-		gap: 0.25rem;
+		gap: rem(0.25);
 	}
 }

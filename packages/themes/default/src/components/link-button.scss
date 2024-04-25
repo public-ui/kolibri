@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -98,7 +100,7 @@
 	}
 
 	:is(a, button).hide-label > .kol-span-wc {
-		padding: 0.8rem;
+		padding: rem(0.8);
 		width: unset;
 	}
 

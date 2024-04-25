@@ -1,3 +1,4 @@
+@import '../mixins/rem';
 @import '../mixins/focus-outline';
 
 @layer kol-theme-component {
@@ -22,17 +23,17 @@
 		align-items: center;
 		color: var(--color-primary);
 		display: flex;
-		gap: 0.5rem;
+		gap: rem(0.5);
 		min-height: var(--a11y-min-size);
 		text-decoration: none;
 
 		.vertical & {
 			border-left: 2px solid transparent;
-			padding-left: 0.5rem;
+			padding-left: rem(0.5);
 		}
 
 		.horizontal & {
-			padding: 0 1rem;
+			padding: 0 rem(1);
 		}
 
 		.vertical .active & {
@@ -50,7 +51,7 @@
 
 	// nested lists
 	.list .list {
-		padding-left: 1rem;
+		padding-left: rem(1);
 	}
 
 	.active .entry-item a,
@@ -65,7 +66,7 @@
 	}
 
 	.expand-button {
-		margin-left: 0.5rem;
+		margin-left: rem(0.5);
 
 		.button {
 			&:hover {
