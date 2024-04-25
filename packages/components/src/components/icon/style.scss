@@ -1,9 +1,11 @@
+@import '../@shared/mixins';
 @import '../../assets/codicons/codicon';
 
 @layer kol-component {
 	:host {
 		color: inherit;
 		display: contents;
+		font-size: rem(16);
 		height: 1em;
 		line-height: inherit;
 		width: 1em;
