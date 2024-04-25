@@ -30,17 +30,17 @@
 	}
 
 	:host > span .kol-span-wc {
-		padding: rem(4.0) rem(12.0);
+		padding: rem(4) rem(12);
 	}
 
 	:host > span > .kol-span-wc {
 		align-items: center;
 		font-style: normal;
-		gap: rem(8.0);
+		gap: rem(8);
 	}
 
 	:host > span > .kol-span-wc > span {
 		display: flex;
-		gap: rem(4.0);
+		gap: rem(4);
 	}
 }

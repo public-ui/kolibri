@@ -7,7 +7,7 @@
 
 	:host .kol-button-group-wc {
 		display: inline-flex;
-		gap: rem(32.0);
+		gap: rem(32);
 		flex-wrap: wrap;
 	}
 
@@ -44,11 +44,11 @@
 	}
 
 	button .kol-span-wc > span {
-		gap: rem(8.0);
+		gap: rem(8);
 	}
 
 	.kol-icon {
-		font-size: rem(16.0);
+		font-size: rem(16);
 	}
 
 	:host > div > div {
@@ -97,11 +97,11 @@
 	}
 
 	:host > .tabs-align-bottom > .kol-button-group-wc > div > div:first-child {
-		margin: 0px rem(16.0) 0px 0px;
+		margin: 0px rem(16) 0px 0px;
 	}
 
 	:host > .tabs-align-bottom > .kol-button-group-wc > div > div {
-		margin: 0px rem(16.0);
+		margin: 0px rem(16);
 	}
 
 	:host > .tabs-align-top {
@@ -118,11 +118,11 @@
 	}
 
 	:host > .tabs-align-top > .kol-button-group-wc > div > div:first-child {
-		margin: 0px rem(16.0) 0px 0px;
+		margin: 0px rem(16) 0px 0px;
 	}
 
 	:host > .tabs-align-top > .kol-button-group-wc > div > div {
-		margin: 0px rem(16.0);
+		margin: 0px rem(16);
 	}
 
 	:host > div {

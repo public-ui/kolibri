@@ -8,7 +8,7 @@
 	}
 
 	.kol-input {
-		gap: rem(4.0);
+		gap: rem(4);
 	}
 
 	.kol-input .error {
@@ -52,21 +52,21 @@
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
-		padding: 0 rem(8.0);
+		padding: 0 rem(8);
 	}
 
 	.input > .kol-icon {
-		width: rem(16.0);
+		width: rem(16);
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(16.0);
-		padding-right: rem(16.0);
+		padding-left: rem(16);
+		padding-right: rem(16);
 	}
 
 	.input:is(.icon-left, .icon-right) input {
-		padding-left: rem(8.0);
-		padding-right: rem(8.0);
+		padding-left: rem(8);
+		padding-right: rem(8);
 	}
 
 	.input > input:first-child {
@@ -92,7 +92,7 @@
 
 	.kol-input.error {
 		border-left: 3px solid var(--color-danger);
-		padding-left: rem(16.0);
+		padding-left: rem(16);
 	}
 
 	.kol-input.error .input:focus-within {

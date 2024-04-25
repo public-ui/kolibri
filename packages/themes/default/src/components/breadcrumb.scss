@@ -6,16 +6,16 @@
 	}
 
 	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon {
-		font-size: rem(12.0);
+		font-size: rem(12);
 		color: var(--color-subtle);
 	}
 
 	.kol-link::part(icon) {
-		font-size: rem(20.0);
+		font-size: rem(20);
 	}
 
 	ul li > :is(span, .kol-link) {
-		line-height: rem(20.0);
+		line-height: rem(20);
 	}
 
 	ul li:last-child > span {

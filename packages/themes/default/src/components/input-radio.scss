@@ -61,7 +61,7 @@
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
-		gap: rem(8.0);
+		gap: rem(8);
 		margin: 0;
 		min-height: var(--a11y-min-size);
 		position: relative;
@@ -82,9 +82,9 @@
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
-		height: calc(6 * rem(4.0));
-		min-width: calc(6 * rem(4.0));
-		width: calc(6 * rem(4.0));
+		height: calc(6 * rem(4));
+		min-width: calc(6 * rem(4));
+		width: calc(6 * rem(4));
 	}
 
 	.radio-input-wrapper input[type='radio']:before {
@@ -120,7 +120,7 @@
 		border-left: 3px solid var(--color-danger);
 		color: var(--color-danger);
 		font-weight: 700;
-		padding-left: rem(16.0);
+		padding-left: rem(16);
 	}
 
 	fieldset.error input:focus,
