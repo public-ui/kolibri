@@ -23,17 +23,17 @@
 		align-items: center;
 		color: var(--color-primary);
 		display: flex;
-		gap: rem(0.5);
+		gap: rem(8.0);
 		min-height: var(--a11y-min-size);
 		text-decoration: none;
 
 		.vertical & {
 			border-left: 2px solid transparent;
-			padding-left: rem(0.5);
+			padding-left: rem(8.0);
 		}
 
 		.horizontal & {
-			padding: 0 rem(1);
+			padding: 0 rem(16.0);
 		}
 
 		.vertical .active & {
@@ -51,7 +51,7 @@
 
 	// nested lists
 	.list .list {
-		padding-left: rem(1);
+		padding-left: rem(16.0);
 	}
 
 	.active .entry-item a,
@@ -66,7 +66,7 @@
 	}
 
 	.expand-button {
-		margin-left: rem(0.5);
+		margin-left: rem(8.0);
 
 		.button {
 			&:hover {

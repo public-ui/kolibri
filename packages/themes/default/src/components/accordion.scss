@@ -14,15 +14,15 @@
 
 	:host > div > .kol-heading-wc button {
 		border-radius: var(--border-radius);
-		min-height: rem(2.2);
+		min-height: rem(35.2);
 		padding: 12px 8px;
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc {
 		font-weight: 700;
-		font-size: rem(1.125);
+		font-size: rem(18.0);
 		line-height: 20px;
-		gap: rem(0.5);
+		gap: rem(8.0);
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc > span {
@@ -31,7 +31,7 @@
 
 	:host > div > .kol-heading-wc button .kol-icon {
 		color: var(--color-primary);
-		font-size: rem(1);
+		font-size: rem(16.0);
 	}
 
 	:host > div {

@@ -14,7 +14,7 @@
 	}
 
 	caption {
-		padding: rem(0.5);
+		padding: rem(8.0);
 	}
 
 	th {
@@ -31,7 +31,7 @@
 	}
 
 	.table {
-		padding: rem(0.5);
+		padding: rem(8.0);
 
 		&:has(.focus-element:focus) {
 			outline-color: var(--color-primary-variant);
@@ -63,7 +63,7 @@
 	th div {
 		width: 100%;
 		display: flex;
-		gap: rem(0.5);
+		gap: rem(8.0);
 		grid-template-columns: 1fr auto;
 		align-items: center;
 	}
@@ -74,7 +74,7 @@
 
 	th,
 	td {
-		padding: rem(0.5);
+		padding: rem(8.0);
 	}
 
 	th[aria-sort='ascending'],

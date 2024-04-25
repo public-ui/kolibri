@@ -5,29 +5,29 @@
 		ul {
 			list-style: disc inside;
 			border-left: 2px solid;
-			padding-left: rem(0.4);
-			margin-left: rem(2);
-			margin-top: rem(0.4);
+			padding-left: rem(6.4);
+			margin-left: rem(32.0);
+			margin-top: rem(6.4);
 		}
 
 		li {
-			margin: rem(0.4) 0;
+			margin: rem(6.4) 0;
 		}
 
 		.toggle-button {
 			align-items: center;
 			border: 1px solid var(--color-primary);
 			display: inline-flex;
-			height: rem(1.6);
+			height: rem(25.6);
 			justify-content: center;
-			margin-right: rem(0.4);
-			width: rem(1.6);
+			margin-right: rem(6.4);
+			width: rem(25.6);
 		}
 	}
 
 	.tree-link {
 		display: inline-block;
-		padding: rem(0.4);
+		padding: rem(6.4);
 
 		&.active {
 			background: var(--color-primary-variant);

@@ -2,11 +2,11 @@
 
 @layer kol-theme-component {
 	:host {
-		top: rem(1);
-		right: rem(1);
+		top: rem(16.0);
+		right: rem(16.0);
 		width: 440px;
 	}
 	.toast {
-		margin-top: rem(1);
+		margin-top: rem(16.0);
 	}
 }

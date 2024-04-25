@@ -12,24 +12,24 @@
 		height: 100%;
 		background-color: var(--color-light);
 		grid-template-rows: min-content 2fr min-content;
-		box-shadow: 0 0 rem(0.25) var(--color-subtle);
+		box-shadow: 0 0 rem(4.0) var(--color-subtle);
 		border-radius: var(--border-radius);
 	}
 
 	:host .kol-heading-wc {
-		line-height: rem(1.75);
+		line-height: rem(28.0);
 	}
 
 	:host div.header {
-		padding: rem(1) rem(1) rem(0.5) rem(1);
+		padding: rem(16.0) rem(16.0) rem(8.0) rem(16.0);
 	}
 
 	:host div.content {
-		padding: rem(0.5) rem(1) rem(1);
+		padding: rem(8.0) rem(16.0) rem(16.0);
 		overflow: hidden;
 	}
 
 	:host div.footer {
-		padding: rem(0.5) rem(1);
+		padding: rem(8.0) rem(16.0);
 	}
 }

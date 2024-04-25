@@ -26,21 +26,21 @@
 		color: inherit;
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
-		padding: rem(0.2);
+		padding: rem(3.2);
 	}
 
 	:host > span .kol-span-wc {
-		padding: rem(0.25) rem(0.75);
+		padding: rem(4.0) rem(12.0);
 	}
 
 	:host > span > .kol-span-wc {
 		align-items: center;
 		font-style: normal;
-		gap: rem(0.5);
+		gap: rem(8.0);
 	}
 
 	:host > span > .kol-span-wc > span {
 		display: flex;
-		gap: rem(0.25);
+		gap: rem(4.0);
 	}
 }

@@ -8,11 +8,11 @@
 	}
 
 	.inputs-wrapper {
-		gap: rem(1);
+		gap: rem(16.0);
 	}
 
 	.kol-input {
-		gap: rem(0.25);
+		gap: rem(4.0);
 	}
 
 	.kol-input .error {
@@ -29,7 +29,7 @@
 
 	.kol-input .hint {
 		order: 4;
-		font-size: rem(0.9);
+		font-size: rem(14.4);
 		font-style: italic;
 	}
 
@@ -43,24 +43,24 @@
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
-		padding: 0 rem(0.5);
+		padding: 0 rem(8.0);
 	}
 
 	.input > .kol-icon {
-		width: rem(1);
+		width: rem(16.0);
 	}
 
 	.input.icon-left > .kol-icon:first-child {
-		margin-right: rem(0.5);
+		margin-right: rem(8.0);
 	}
 
 	.input.icon-right > .kol-icon:last-child {
-		margin-left: rem(0.5);
+		margin-left: rem(8.0);
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(1);
-		padding-right: rem(1);
+		padding-left: rem(16.0);
+		padding-right: rem(16.0);
 	}
 
 	:not(.disabled) .input:hover {
@@ -78,7 +78,7 @@
 
 	.kol-input.error {
 		border-left: 3px solid var(--color-danger);
-		padding-left: rem(1);
+		padding-left: rem(16.0);
 	}
 
 	.kol-input.error .input:focus-within {
