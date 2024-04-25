@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 import { Field, FieldProps, useFormikContext } from 'formik';
 import { FormValues } from './AppointmentForm';
@@ -32,11 +32,6 @@ export function DistrictForm() {
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const errorList = createErrorList(form.errors);
 	const formikRef = useRef<HTMLKolFormElement>(null);
-
-	useEffect(() => {
-		focusErrorList(errorList, formikRef);
-	}, [sectionSubmitted]);
-
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus"></KolHeading>
@@ -44,10 +39,15 @@ export function DistrictForm() {
 				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
-					onSubmit: () => {
-						void form.submitForm();
-						setSectionSubmitted(true);
-						focusErrorList(errorList, formikRef);
+					onSubmit: async () => {
+						try {
+							setSectionSubmitted(true);
+							const res = await form.validateForm();
+							if (res && Object.keys(res).length > 0) throw Error();
+							void form.submitForm();
+						} catch(_) {
+							focusErrorList(formikRef);
+						}
 					},
 				}}
 			>
@@ -66,6 +66,7 @@ export function DistrictForm() {
 									void form.setFieldTouched('district', true);
 								},
 								onChange: (event, values: unknown) => {
+									setSectionSubmitted(false);
 									// Select und Radio setzen den Wert immer initial.
 									if (event.target) {
 										const [value] = values as [FormValues['district']];
