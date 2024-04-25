@@ -110,7 +110,7 @@ export function AppointmentForm() {
 				_on={{
 					onSelect: (_event, selectedTab) => {
 						setActiveFormSection(selectedTab);
-						// formikRef.current?.setErrors({});
+						formikRef.current?.setErrors({});
 					},
 				}}
 			>
