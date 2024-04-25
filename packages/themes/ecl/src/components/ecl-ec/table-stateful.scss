@@ -1,0 +1,22 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	:host > div {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	@media (min-width: 1024px) {
+		:host > div:last-child,
+		:host > div:last-child > div:last-child {
+			grid-auto-flow: column;
+		}
+
+		:host > div:last-child .kol-pagination {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+}

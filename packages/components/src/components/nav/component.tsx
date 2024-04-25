@@ -29,6 +29,7 @@ import { translate } from '../../i18n';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
 import { KolButtonTag, KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import type { StencilUnknown } from '@public-ui/schema';
 
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
@@ -109,7 +110,7 @@ export class KolNav implements NavAPI {
 						_hideLabel={hideLabel}
 						_icons={icons}
 						_on={{
-							onClick: (event, value) => {
+							onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
 								if (entryIsButton(entry) && typeof entry._on.onClick === 'function') {
 									entry._on.onClick(event, value);
 								} else {

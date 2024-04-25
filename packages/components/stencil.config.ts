@@ -53,6 +53,8 @@ const TAGS = [
 	'kol-split-button',
 	'kol-symbol',
 	'kol-table',
+	'kol-table-stateless',
+	'kol-table-stateful',
 	'kol-tabs',
 	'kol-textarea',
 	'kol-toast-container',
@@ -74,6 +76,7 @@ const EXCLUDE_TAGS = [
 	'kol-link-wc',
 	'kol-popover-wc',
 	'kol-span-wc',
+	'kol-table-stateless-wc',
 	'kol-tooltip-wc',
 ];
 const BUNDLES: {

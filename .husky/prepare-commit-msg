@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/sh
 
 #
 # Validate branch name and append the ticket ID (from branch name) to commit messages.
@@ -8,11 +8,11 @@
 ERROR_MESSAGE="Error: Branch name does not start with a ticket ID. Format: ticketID-branch-description. E.g.: '1234-update-tests'"
 
 # Gets the commit message received as parameter and the current branch name.
-COMMIT_MSG_FILE=$1
-COMMIT_SOURCE=$2
+COMMIT_MSG_FILE="$1"
+COMMIT_SOURCE="$2"
 
 # Skip merge commits
-if [ "${COMMIT_SOURCE}" = merge ]; then
+if [ "$COMMIT_SOURCE" = merge ]; then
     exit 0
 fi
 
@@ -20,20 +20,20 @@ message=$(cat "$COMMIT_MSG_FILE")
 branchName=$(git symbolic-ref --short HEAD)
 
 # Get the last part of the branch name. feature/foo/42-bugfix -> 42-bugfix
-normalizedBranchName=${branchName##*/}
+normalizedBranchName=$(echo "$branchName" | awk -F'/' '{print $NF}')
 
 # Message already starts with a ticket ID
-if [[ $message =~ ^\(#[0-9]+\) ]]; then
+if echo "$message" | grep -qE '^#[0-9]+'; then
   exit 0
 fi
 
 # Branch name starts with a ticket ID
-if [[ $normalizedBranchName =~ ^[0-9]+[-_] ]]; then
+if echo "$normalizedBranchName" | grep -qE '^[0-9]+[-_]'; then
   # Get ticketID from branch name. Works with `-` or `_` as separator. 123-foobar -> 123
   ticketID=$(echo "$normalizedBranchName" | sed -nE 's,([0-9]+)[_-].+,\1,p')
 
-  if [[ -z $ticketID ]]; then
-      echo $ERROR_MESSAGE
+  if [ -z "$ticketID" ]; then
+      echo "$ERROR_MESSAGE"
       exit 1
   fi
 
@@ -41,6 +41,6 @@ if [[ $normalizedBranchName =~ ^[0-9]+[-_] ]]; then
 
   echo "$output" > "$1"
 else
-  echo $ERROR_MESSAGE
+  echo "$ERROR_MESSAGE"
   exit 1
 fi
