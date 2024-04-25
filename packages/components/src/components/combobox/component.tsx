@@ -8,8 +8,9 @@ import type {
 	NamePropType,
 	OptionsWithOptgroupPropType,
 	RowsPropType,
-	SelectAPI,
-	SelectStates,
+	ComboBoxAPI,
+	SelectOption,
+	ComboBoxStates,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
@@ -25,6 +26,9 @@ import type { JSX } from '@stencil/core';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import { showExpertSlot } from '@public-ui/schema';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
+// const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
+// 	return Array.isArray(valueList) && valueList.includes(optionValue);
+// };
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -36,10 +40,9 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 	},
 	shadow: true,
 })
-export class KolCombobox implements SelectAPI {
+export class KolCombobox implements ComboBoxAPI {
 	@Element() private readonly host?: HTMLKolComboBoxElement;
 	private ref?: HTMLSelectElement;
-	@State() isListBoxOpen: boolean = false;
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -48,8 +51,29 @@ export class KolCombobox implements SelectAPI {
 	}
 
 	private toggleListbox = () => {
-		this.isListBoxOpen = !this.isListBoxOpen;
+		this._isOpen = !this._isOpen;
 	};
+	private selectOption(option: SelectOption<W3CInputValue>) {
+		this.state._inputValue = option.label;
+		this.toggleListbox();
+	}
+	private OnInput(event: Event) {
+		const target = event.target as HTMLInputElement;
+		this.state._inputValue = target.value;
+		this.filtredOptions(this.state._inputValue);
+	}
+
+	private filtredOptions(query: string) {
+		if (query.trim() === '') {
+			this.state._filtredOptions = [...this.state._options];
+		} else {
+			this.state._filtredOptions = this.state._options.filter((option) => {
+				if (typeof option.label === 'string') {
+					return option.label.toLowerCase().includes(query.toLowerCase());
+				}
+			});
+		}
+	}
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
@@ -86,36 +110,40 @@ export class KolCombobox implements SelectAPI {
 						)}
 					</span>
 					<div slot="input">
-						<input type="text" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-controls="listbox" />
-						<span onClick={this.toggleListbox}>
-							<KolIconTag _icons="codicon codicon-triangle-down" _label={`dropdown`} />
-						</span>
+						<div class="group" onClick={this.toggleListbox}>
+							<input
+								type="text"
+								role="combobox"
+								aria-autocomplete="both"
+								aria-expanded="false"
+								aria-controls="listbox"
+								value={this.state._inputValue}
+								onInput={this.OnInput.bind(this)}
+							/>
+							<span>
+								<KolIconTag _icons="codicon codicon-triangle-down" _label={`dropdown`} />
+							</span>
+						</div>
+						<ul id="listbox" role="listbox" aria-label="" class={{ listbox: true, hidden: !this._isOpen }} tabindex="-1">
+							{this.state._filtredOptions &&
+								this.state._filtredOptions.map((option, index) => {
+									const key = `-${index}`;
+									return (
+										<li key={key} class="combo-option" onClick={() => this.selectOption(option)}>
+											{option.label}
+										</li>
+									);
+								})}
+						</ul>
 					</div>
 				</KolInputTag>
-				<div slot="listbox" class={{ listbox: true, hidden: !this.isListBoxOpen }} tabindex="-1">
-					<ul id="listbox" role="listbox" aria-label="">
-						{this.state._options.map((option, index) => {
-							/**
-							 * Damit der Value einer Option ein beliebigen Typ haben kann
-							 * muss man auf HTML-Ebene den Value auf einen String-Wert
-							 * mappen. Das tun wir mittels der Map.
-							 */
-							const key = `-${index}`;
-
-							return (
-								<li key={key} class="combo-option">
-									{option.label}
-								</li>
-							);
-						})}
-					</ul>
-				</div>
 			</Host>
 		);
 	}
 
 	private readonly controller: SelectController;
-
+	@State()
+	private _isOpen = false;
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
@@ -235,7 +263,7 @@ export class KolCombobox implements SelectAPI {
 	 */
 	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
 
-	@State() public state: SelectStates = {
+	@State() public state: ComboBoxStates = {
 		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`,
@@ -243,6 +271,8 @@ export class KolCombobox implements SelectAPI {
 		_multiple: false,
 		_options: [],
 		_value: [],
+		_inputValue: '',
+		_filtredOptions: [],
 	};
 
 	public constructor() {
@@ -361,6 +391,7 @@ export class KolCombobox implements SelectAPI {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.state._filtredOptions = this.state._options;
 	}
 
 	private onChange(event: Event): void {

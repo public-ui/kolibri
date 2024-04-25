@@ -8,15 +8,16 @@
 		position: relative;
 	}
 
-
-	div[slot='input'] {
-		display: flex;
+	.group {
+		display: inline-flex;
 		align-items: center;
 		border: 1px solid #ccc;
 		border-radius: 4px;
 		min-height: calc(1.4em + 26px);
 		text-align: left;
 		width: 100%;
+		padding: 4px;
+		cursor: pointer;
 	}
 
 	input[type='text'] {
@@ -24,6 +25,8 @@
 		padding: 5px 30px 5px 10px;
 		border: transparent;
 		width: calc(100% - 40px);
+		cursor: pointer;
+		position: relative;
 	}
 
 	.kol-icon {
@@ -45,12 +48,20 @@
 		top: 100%;
 		width: 100%;
 		z-index: 100;
+		padding: 0;
+		background-color: white;
+		box-sizing: border-box;
+		max-height: 250px;
+		overflow-x: hidden;
+		font-size: 87.5%;
+		cursor: pointer;
 	}
 
 	ul {
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
+		margin: 0;
 	}
 
 	li {

@@ -47,6 +47,8 @@ type RequiredStates = {
 	hasValue: boolean;
 	options: SelectOption<W3CInputValue>[];
 	value: W3CInputValue[];
+	inputValue: W3CInputValue;
+	filtredOptions: SelectOption<W3CInputValue>[];
 } & PropId &
 	PropHideError &
 	PropMultiple &
@@ -68,7 +70,7 @@ type OptionalStates = {
 	PropMsg &
 	PropTouched;
 
-export type ComboboxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type ComboboxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type ComboboxWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
-export type ComboboxAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type ComboBoxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type ComboBoxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type ComboBoxWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export type ComboBoxAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
