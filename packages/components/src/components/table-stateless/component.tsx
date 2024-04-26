@@ -13,10 +13,19 @@ import type {
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCellsPropType,
+	TableSelectionPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
 } from '@public-ui/schema';
-import { validateLabel, validateTableCallbacks, validateTableData, validateTableDataFoot, validateTableHeaderCells, watchString } from '@public-ui/schema';
+import {
+	validateLabel,
+	validateTableCallbacks,
+	validateTableData,
+	validateTableDataFoot,
+	validateTableHeaderCells,
+	validateTableSelection,
+	watchString,
+} from '@public-ui/schema';
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 
@@ -72,6 +81,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	@Prop() public _on?: TableCallbacksPropType;
 
+	/**
+	 * Defines how rows can be selected and the current selection.
+	 */
+	@Prop() public _selection?: TableSelectionPropType;
+
 	@Watch('_data')
 	public validateData(value?: TableDataPropType) {
 		validateTableData(this, value);
@@ -104,6 +118,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_on')
 	public validateOn(value?: TableCallbacksPropType): void {
 		validateTableCallbacks(this, value);
+	}
+
+	@Watch('_selection')
+	public validateSelection(value?: TableSelectionPropType): void {
+		validateTableSelection(this, value);
 	}
 
 	public componentDidRender(): void {
@@ -331,6 +350,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
+		this.validateSelection(this._selection);
 	}
 
 	private readonly renderTableRow = (row: KoliBriTableCell[], rowIndex: number): JSX.Element => {

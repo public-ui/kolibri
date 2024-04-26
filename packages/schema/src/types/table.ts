@@ -19,3 +19,9 @@ export type KoliBriTableHeaderCell = KoliBriTableCell & {
 	key?: string;
 	sortDirection?: KoliBriSortDirection;
 };
+
+export type KoliBriTableSelection = {
+	label: (row: KoliBriTableDataType) => string;
+	keyPropertyName?: string;
+	selectedKeys?: string[];
+};
