@@ -9,4 +9,9 @@
 	.close-all {
 		align-self: flex-end;
 	}
+
+	dialog {
+		position: static;
+		display: contents;
+	}
 }
