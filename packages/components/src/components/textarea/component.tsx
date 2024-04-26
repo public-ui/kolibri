@@ -410,6 +410,8 @@ export class KolTextarea implements TextareaAPI {
 		setTimeout(() => {
 			if (this._adjustHeight === true && this.ref /* SSR instanceof HTMLTextAreaElement */) {
 				this._rows = this.state?._rows && this.state._rows > increaseTextareaHeight(this.ref) ? this.state._rows : increaseTextareaHeight(this.ref);
+			} else if (!this._rows) {
+				this._rows = 1;
 			}
 		}, 0);
 	}
