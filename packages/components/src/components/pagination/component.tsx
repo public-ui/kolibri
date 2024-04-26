@@ -76,8 +76,8 @@ export class KolPagination implements PaginationAPI {
 				} else if (ellipsis === true) {
 					ellipsis = false;
 					return (
-						<li>
-							<span class="separator" key={`${this.nonce}-el-${page}`} aria-hidden="true"></span>
+						<li key={nonce()}>
+							<span class="separator" aria-hidden="true"></span>
 						</li>
 					);
 				} else {
@@ -294,10 +294,9 @@ export class KolPagination implements PaginationAPI {
 
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
-			<li>
+			<li key={nonce()}>
 				<KolButtonWcTag
 					exportparts="icon"
-					key={`${this.nonce}-${page}`}
 					_customClass={this.state._customClass}
 					_label=""
 					_on={{
@@ -316,8 +315,8 @@ export class KolPagination implements PaginationAPI {
 
 	private getSelectedPageButton(page: number): JSX.Element {
 		return (
-			<li>
-				<KolButtonWcTag class="selected" key={`${this.nonce}-selected`} _customClass={this.state._customClass} _disabled={true} _label="">
+			<li key={nonce()}>
+				<KolButtonWcTag class="selected" _customClass={this.state._customClass} _disabled={true} _label="">
 					<span slot="expert">
 						<span class="visually-hidden">{translate('kol-page')}</span> {page}
 					</span>

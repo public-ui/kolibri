@@ -30,6 +30,8 @@ export default {
 	'kolibri-logo': 'Logo von KoliBri',
 	'table-pagination-label': 'Paginierung für die Tabelle {{label}}',
 	'avatar-alt': 'Avatar von {{name}}',
+	'split-button-dropdown-label-open': 'Optionen anzeigen',
+	'split-button-dropdown-label-close': 'Optionen schließen',
 	'toast-close-all': 'Alle schließen',
 	'error-list': 'Fehlerliste',
 	'error-list-message': 'Bitte korrigieren Sie folgende Fehler:',

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/solid",
-	"version": "2.0.12",
+	"version": "2.0.14",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,18 +49,18 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.12",
+		"@public-ui/components": "2.0.14",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.4",
 		"@types/normalize-package-data": "2.4.4",
-		"solid-js": "1.8.16",
-		"typescript": "5.4.3",
+		"solid-js": "1.8.17",
+		"typescript": "5.4.5",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.12",
-		"solid-js": ">=1.8.16"
+		"@public-ui/components": "2.0.14",
+		"solid-js": ">=1.8.17"
 	},
 	"sideEffects": false,
 	"type": "module",

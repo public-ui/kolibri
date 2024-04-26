@@ -11,12 +11,12 @@ const tabs = [
 	},
 	{
 		_icons: 'codicon codicon-calendar',
-		_label: 'Zweites Tab',
+		_label: 'Zweiter Tab',
 	},
 	{
 		_disabled: true,
 		_icons: 'codicon codicon-briefcase',
-		_label: 'Deaktiviertes Tab',
+		_label: 'Deaktivierter Tab',
 	},
 	{
 		_icons: 'codicon codicon-telescope',

@@ -3,8 +3,8 @@ import React from 'react';
 
 import { KolTable } from '@public-ui/react';
 import type { KoliBriTableHeaders } from '@public-ui/components';
-import { DATA } from './test-data';
 import type { Data } from './test-data';
+import { DATA } from './test-data';
 import { SampleDescription } from '../SampleDescription';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
@@ -13,8 +13,28 @@ const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	year: 'numeric',
 });
 
-const HEADERS: KoliBriTableHeaders = {
+const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
+		[
+			{ label: 'order', key: 'order', textAlign: 'center' },
+			{
+				label: 'date',
+				key: 'date',
+				textAlign: 'center',
+				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
+				sort: (data: Data[]) =>
+					data.sort((data0, data1) => {
+						if (data0.date < data1.date) return -1;
+						else if (data1.date < data0.date) return 1;
+						else return 0;
+					}),
+			},
+		],
+	],
+};
+
+const HEADERS_VERTICAL: KoliBriTableHeaders = {
+	vertical: [
 		[
 			{ label: 'order', key: 'order', textAlign: 'center' },
 			{
@@ -41,6 +61,13 @@ export const TableSortData: FC = () => (
 				jüngsten Datum.
 			</p>
 		</SampleDescription>
-		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS} className="block" />
+
+		<h2>Vertical</h2>
+
+		<KolTable _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
+
+		<h2>Horizontal</h2>
+
+		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
 	</>
 );

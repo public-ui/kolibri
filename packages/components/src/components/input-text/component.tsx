@@ -84,11 +84,11 @@ export class KolInputText implements InputTextAPI {
 			<Host
 				class={{
 					'has-value': this.state._hasValue,
+					'kol-input-text': true,
 				}}
 			>
 				<KolInputTag
 					class={{
-						'kol-input-text': true,
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
 					}}
