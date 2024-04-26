@@ -41,12 +41,15 @@ export function DistrictForm() {
 				_on={{
 					onSubmit: () => {
 						setSectionSubmitted(true);
-						form.validateForm().then((res) => {
-							if (res && Object.keys(res).length > 0) throw Error();
-							form.submitForm();
-						}).catch(() => {
-							focusErrorList(formikRef);
-						});
+						form
+							.validateForm()
+							.then((res) => {
+								if (res && Object.keys(res).length > 0) throw Error();
+								void form.submitForm();
+							})
+							.catch(() => {
+								focusErrorList(formikRef);
+							});
 					},
 				}}
 			>
