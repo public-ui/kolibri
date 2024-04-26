@@ -81,7 +81,7 @@ export function AppointmentForm() {
 		const nextSection = formSectionSequence[currentSectionIndex + 1];
 		if (nextSection !== undefined) {
 			await formik.setTouched({});
-			setActiveFormSection(nextSection)
+			setActiveFormSection(nextSection);
 		}
 	};
 

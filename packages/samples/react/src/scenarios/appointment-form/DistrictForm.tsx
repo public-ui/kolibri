@@ -39,15 +39,14 @@ export function DistrictForm() {
 				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
-					onSubmit: async () => {
-						try {
-							setSectionSubmitted(true);
-							const res = await form.validateForm();
+					onSubmit: () => {
+						setSectionSubmitted(true);
+						form.validateForm().then((res) => {
 							if (res && Object.keys(res).length > 0) throw Error();
-							void form.submitForm();
-						} catch(_) {
+							form.submitForm();
+						}).catch(() => {
 							focusErrorList(formikRef);
-						}
+						});
 					},
 				}}
 			>

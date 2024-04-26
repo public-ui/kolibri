@@ -39,22 +39,26 @@ export function AvailableAppointmentsForm() {
 		};
 	}, [form.values.date, sectionSubmitted]);
 
-	const renderField = useCallback((name: string, node: (field: FieldInputProps<FormValues['date' | 'time']>) => void) => (
-		<Field name={name}>
-			{({ field }: FieldProps<FormValues['date' | 'time']>) => node(field) }
-		</Field>
-	), [])
+	const renderField = useCallback(
+		(name: string, node: (field: FieldInputProps<FormValues['date' | 'time']>) => void) => (
+			<Field name={name}>{({ field }: FieldProps<FormValues['date' | 'time']>) => node(field)}</Field>
+		),
+		[],
+	);
 
-	const handleField = useCallback((name: string) => ({
-		onChange: (event: Event, value: unknown): void => {
-			if (event.target) {
-				void form.setFieldValue(name, value, true);
-			}
-		},
-		onBlur: () => {
-			void form.setFieldTouched(name, true);
-		},
-	}), [form.setFieldValue, form.setFieldTouched])
+	const handleField = useCallback(
+		(name: string) => ({
+			onChange: (event: Event, value: unknown): void => {
+				if (event.target) {
+					void form.setFieldValue(name, value, true);
+				}
+			},
+			onBlur: () => {
+				void form.setFieldTouched(name, true);
+			},
+		}),
+		[form.setFieldValue, form.setFieldTouched],
+	);
 
 	return (
 		<div className="p-2">
@@ -70,25 +74,23 @@ export function AvailableAppointmentsForm() {
 					},
 				}}
 			>
-				{renderField(
-					"date",
-					(field) => <KolInputDate
+				{renderField('date', (field) => (
+					<KolInputDate
 						id="field-date"
 						_label="Datum"
 						_value={field.value}
 						_error={form.errors.date || ''}
 						_touched={form.touched.date}
 						_required
-						_on={handleField("date")}
+						_on={handleField('date')}
 					/>
-				)}
+				))}
 				{form.values.date && (
 					<div className="grid gap-4 mt-4">
 						{availableTimes ? (
 							<>
-								{renderField(
-									"time",
-									(field) => <KolInputRadio
+								{renderField('time', (field) => (
+									<KolInputRadio
 										id="field-time"
 										_label="Zeit"
 										_orientation="horizontal"
@@ -97,9 +99,9 @@ export function AvailableAppointmentsForm() {
 										_error={form.errors.time || ''}
 										_touched={form.touched.time}
 										_required
-										_on={handleField("time")}
+										_on={handleField('time')}
 									/>
-								)}
+								))}
 								<p>
 									<em>Aus Testzwecken sind nur die Termine zu jeder halben Stunde verfügbar.</em>
 								</p>
