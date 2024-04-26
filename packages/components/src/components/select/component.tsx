@@ -115,7 +115,8 @@ export class KolSelect implements API {
 								height: this.state._height,
 							}}
 							{...this.controller.onFacade}
-							onChange={this.onChange}
+							onInput={this.onInput.bind(this)}
+							onChange={this.onChange.bind(this)}
 						>
 							{this.state._options.map((option, index) => {
 								/**
@@ -423,17 +424,27 @@ export class KolSelect implements API {
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
-		this.controller.componentWillLoad(this.onChange);
+		this.controller.componentWillLoad(this.onChange.bind(this));
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 
-	private onChange = (event: Event): void => {
+	private onInput(event: Event): void {
 		this._value = Array.from(this.ref?.options || [])
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
 
+		// Event handling
+		tryToDispatchKoliBriEvent('input', this.host, this._value);
+
+		// Callback
+		if (typeof this.state._on?.onInput === 'function') {
+			this.state._on.onInput(event, this._value);
+		}
+	}
+
+	private onChange(event: Event): void {
 		// Event handling
 		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, this._value);
@@ -445,5 +456,5 @@ export class KolSelect implements API {
 		if (typeof this.state._on?.onChange === 'function') {
 			this.state._on.onChange(event, this._value);
 		}
-	};
+	}
 }
