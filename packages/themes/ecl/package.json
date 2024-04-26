@@ -17,7 +17,6 @@
 		"pretest-update:ecl-eu": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.14",
 		"@public-ui/visual-tests": "2.0.14",
 		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.7.1",

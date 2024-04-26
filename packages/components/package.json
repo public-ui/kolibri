@@ -71,7 +71,6 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.3",
-		"@public-ui/schema": "2.0.14",
 		"adopted-style-sheets": "1.1.4",
 		"markdown-it": "14.1.0"
 	},
