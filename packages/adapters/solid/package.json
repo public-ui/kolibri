@@ -54,13 +54,13 @@
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.4",
 		"@types/normalize-package-data": "2.4.4",
-		"solid-js": "1.8.16",
+		"solid-js": "1.8.17",
 		"typescript": "5.4.5",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "2.0.14",
-		"solid-js": ">=1.8.16"
+		"solid-js": ">=1.8.17"
 	},
 	"sideEffects": false,
 	"type": "module",
