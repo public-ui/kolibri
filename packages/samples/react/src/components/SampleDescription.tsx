@@ -19,8 +19,8 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 		<div className="flex mb-sm">
 			<KolIndentedText>{props.children}</KolIndentedText>
 			<div className="links">
-				<KolLink _hideLabel _href={docRedirect} _label="Dokumentation in neuem Tab öffnen" _target="_blank" className="mla flex-self-center" />
-				<KolLink _hideLabel _href={`${location.href}?hideMenus`} _label="Beispiel in neuem Tab öffnen" _target="_blank" className="mla flex-self-center" />
+				<KolLink _href={docRedirect} _label="Dokumentation" _target="_blank" />
+				<KolLink _href={`${location.href}?hideMenus`} _label="Beispiel" _target="_blank" />
 			</div>
 		</div>
 	);
