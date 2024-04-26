@@ -17,7 +17,7 @@ import type {
 import type { InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriHorizontalIcons, OptionalInputProps, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	/**
 	 * @deprecated Will be removed in v3. Use `msg` instead.
@@ -26,7 +26,6 @@ type OptionalProps = {
 	placeholder: string;
 } & OptionalInputProps<number | Iso8601> &
 	PropHideError &
-	PropLabelWithExpertSlot &
 	PropMsg &
 	PropSuggestions;
 

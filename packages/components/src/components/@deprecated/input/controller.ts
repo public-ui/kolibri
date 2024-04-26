@@ -1,6 +1,14 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { AdjustHeightPropType, ButtonProps, HideErrorPropType, InputTypeOnDefault, LabelWithExpertSlotPropType, MsgPropType } from '@public-ui/schema';
+import type {
+	AdjustHeightPropType,
+	ButtonProps,
+	HideErrorPropType,
+	InputTypeOnDefault,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	TooltipAlignPropType,
+} from '@public-ui/schema';
 import {
 	a11yHint,
 	a11yHintDisabled,
@@ -16,6 +24,7 @@ import {
 	validateTabIndex,
 	watchBoolean,
 	watchString,
+	validateTooltipAlign,
 } from '@public-ui/schema';
 
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../../utils/events';
@@ -49,6 +58,9 @@ export class InputController extends ControlledInputController implements Watche
 		if (value === true) {
 			a11yHintDisabled();
 		}
+	}
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this.component, value);
 	}
 
 	/**
