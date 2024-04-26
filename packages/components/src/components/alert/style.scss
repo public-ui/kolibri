@@ -1,3 +1,10 @@
+@import '../@shared/mixins';
 @import '../@shared/kol-alert-mixin.scss';
+
+@layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
+}
 
 @include kol-alert-styles;

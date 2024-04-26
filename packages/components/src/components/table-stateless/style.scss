@@ -1,9 +1,11 @@
+@import '../@shared/mixins';
 @import '../style';
 @import '../host-display-block';
 
 @layer kol-component {
 	:host {
 		display: block;
+		font-size: rem(16);
 	}
 
 	.table {

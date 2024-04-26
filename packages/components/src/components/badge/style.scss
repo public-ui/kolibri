@@ -1,6 +1,9 @@
+@import '../@shared/mixins';
 @import '../style';
 
 @layer kol-component {
+	/* :host implicitly inherits font-size, e.g. for usage in headlines */
+
 	:host > span {
 		display: inline-flex;
 		place-items: center;

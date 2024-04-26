@@ -5,7 +5,7 @@ import { setTagNameTransformer } from '@public-ui/react';
 
 import { bootstrap } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
+import { BMF, BStW, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
 import { App } from './App';
 
@@ -29,7 +29,7 @@ const getThemes = async () => {
 	}
 
 	/* List of regular sample app themes */
-	return [BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund] as Theme[];
+	return [BMF, BStW, DEFAULT, ECL_EC, ECL_EU, ITZBund] as Theme[];
 };
 
 void (async () => {

@@ -22,11 +22,6 @@ branchName=$(git symbolic-ref --short HEAD)
 # Get the last part of the branch name. feature/foo/42-bugfix -> 42-bugfix
 normalizedBranchName=$(echo "$branchName" | awk -F'/' '{print $NF}')
 
-# Message already starts with a ticket ID
-if echo "$message" | grep -qE '^#[0-9]+'; then
-  exit 0
-fi
-
 # Branch name starts with a ticket ID
 if echo "$normalizedBranchName" | grep -qE '^[0-9]+[-_]'; then
   # Get ticketID from branch name. Works with `-` or `_` as separator. 123-foobar -> 123
@@ -36,8 +31,13 @@ if echo "$normalizedBranchName" | grep -qE '^[0-9]+[-_]'; then
       echo "$ERROR_MESSAGE"
       exit 1
   fi
+  
+  # Message already contains the ticket ID
+  if echo "$message" | grep -qE '#[0-9]+'; then
+    exit 0
+  fi
 
-  output="(#$ticketID) $message"
+  output="$message"$'\n'$'\n'"Refs: #$ticketID"
 
   echo "$output" > "$1"
 else

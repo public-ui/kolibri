@@ -1,7 +1,12 @@
+@import '../@shared/mixins';
 @import '../style';
 @import '../host-display-block';
 
 @layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
+
 	:host > div {
 		border-left-style: solid;
 		padding-left: 0.5em;

@@ -1,149 +1,57 @@
+@import '../mixins/button.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
 	}
 
 	:is(a, button) {
-		font-size: 1.125em;
+		&:focus .kol-span-wc {
+			outline-color: var(--color-ocean);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
+			transition: outline-offset 0.2s linear;
+		}
+
+		> .kol-span-wc {
+			font-weight: 700;
+			border-radius: var(--a11y-min-size);
+			border-style: solid;
+			border-width: 2px;
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			padding: 8px 14px;
+			text-align: center;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+		}
 	}
 
-	:is(a, button):focus {
-		outline: none;
-	}
-
-	:is(a, button):focus .kol-span-wc {
-		outline-color: var(--color-ocean);
-		outline-offset: 2px;
-		outline-style: solid;
-		outline-width: 3px;
-		transition: outline-offset 0.2s linear;
-	}
-
-	:is(a, button) > .kol-span-wc {
-		font-weight: 700;
-		border-radius: var(--a11y-min-size);
-		border-style: solid;
-		border-width: 2px;
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: 8px 14px;
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
-	}
-
-	.primary :is(a, button) > .kol-span-wc,
-	.primary :is(a, button):disabled:hover > .kol-span-wc {
-		background-color: var(--color-midnight);
-		border-color: var(--color-midnight);
-		color: var(--color-white);
-	}
-
-	.secondary :is(a, button) > .kol-span-wc,
-	.secondary :is(a, button):disabled:hover > .kol-span-wc,
-	.normal :is(a, button) > .kol-span-wc,
-	.normal :is(a, button):disabled:hover > .kol-span-wc {
-		background-color: var(--color-white);
-		border-color: var(--color-midnight);
+	.standalone a {
+		font-size: 1em;
+		line-height: 1.25em;
 		color: var(--color-midnight);
-	}
+		text-decoration: underline;
 
-	.danger :is(a, button) > .kol-span-wc,
-	.danger :is(a, button):disabled:hover > .kol-span-wc {
-		background-color: var(--color-red);
-		border-color: var(--color-red);
-		color: var(--color-white);
-	}
+		&:hover {
+			text-decoration-thickness: 3px;
+			text-decoration-color: var(--color-ocean);
+		}
 
-	.ghost :is(a, button) > .kol-span-wc,
-	.ghost :is(a, button):disabled:hover > .kol-span-wc {
-		border-color: var(--color-white);
-		background-color: var(--color-white);
-		box-shadow: none;
-		color: var(--color-midnight);
-	}
+		&:visited {
+			color: var(--color-purple);
+		}
 
-	/*-----------*/
-	.primary :is(a, button):active > .kol-span-wc,
-	.primary :is(a, button):hover > .kol-span-wc,
-	.secondary :is(a, button):active > .kol-span-wc,
-	.secondary :is(a, button):hover > .kol-span-wc,
-	.normal :is(a, button):active > .kol-span-wc,
-	.normal :is(a, button):hover > .kol-span-wc,
-	.danger :is(a, button):active > .kol-span-wc,
-	.danger :is(a, button):hover > .kol-span-wc,
-	.ghost :is(a, button):active > .kol-span-wc,
-	.ghost :is(a, button):hover > .kol-span-wc {
-		background-color: var(--color-ocean);
-		border-color: var(--color-ocean);
-		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-		color: var(--color-white);
-	}
+		&:focus > .kol-span-wc {
+			outline-offset: -3px;
+			transition: outline 0.2s linear;
+		}
 
-	.danger :is(a, button):active > .kol-span-wc,
-	.danger :is(a, button):hover > .kol-span-wc {
-		background-color: var(--color-crimson);
-		border-color: var(--color-crimson);
+		.kol-span-wc {
+			border: none;
+			border-radius: 5px;
+		}
 	}
-
-	:is(a, button):disabled:hover > .kol-span-wc,
-	:is(a, button):focus:hover > .kol-span-wc {
-		box-shadow: none;
-	}
-
-	.primary :is(a, button):active > .kol-span-wc,
-	.secondary :is(a, button):active > .kol-span-wc,
-	.normal :is(a, button):active > .kol-span-wc,
-	.danger :is(a, button):active > .kol-span-wc,
-	.ghost :is(a, button):active > .kol-span-wc {
-		border-color: var(--color-white);
-		box-shadow: none;
-		outline: none;
-	}
-
-	:is(a, button).hide-label > .kol-span-wc {
-		padding: 8px;
-		width: unset;
-	}
-
-	:is(a, button).hide-label > .kol-span-wc > span > span {
-		display: none;
-	}
-
-	:is(a, button).loading > .kol-span-wc .kol-icon {
-		animation: spin 5s infinite linear;
-	}
-
-	/** small ghost button */
-	.ghost :is(a, button).small > .kol-span-wc {
-		border: none;
-		background-color: transparent;
-		box-shadow: none;
-	}
-
-	.ghost :is(a, button).small > .kol-span-wc > span {
-		border-radius: 1.5em;
-		border-style: solid;
-		border-width: 2px;
-		border-color: var(--color-white);
-		background-color: var(--color-white);
-	}
-
-	.ghost :is(a, button).small:active > .kol-span-wc > span,
-	.ghost :is(a, button).small:hover > .kol-span-wc > span,
-	.ghost :is(a, button).small.transparent:active > .kol-span-wc > span,
-	.ghost :is(a, button).small.transparent:hover > .kol-span-wc > span {
-		background-color: var(--color-ocean);
-		border-color: var(--color-ocean);
-		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-		color: var(--color-white);
-	}
-
-	/** :is(a,button) with transparent background */
-	:is(a, button).transparent > .kol-span-wc > span,
-	.ghost :is(a, button).small.transparent > .kol-span-wc > span,
-	:is(a, button).transparent > .kol-span-wc {
-		background-color: transparent;
-		border-color: transparent;
-	}
+	@include kol-button;
 }
