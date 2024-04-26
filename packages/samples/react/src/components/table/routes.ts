@@ -6,6 +6,7 @@ import { TableComplexHeaders } from './complex-headers';
 import { TableHorizontalScrollbar } from './horizontal-scrollbar';
 import { TableRenderCell } from './render-cell';
 import { TableSortData } from './sort-data';
+import { TableStateless } from './stateless';
 import { TableWithFooter } from './with-footer';
 import { TableWithPagination } from './with-pagination';
 
@@ -20,5 +21,6 @@ export const TABLE_ROUTES: Routes = {
 		'sort-data': TableSortData,
 		'with-footer': TableWithFooter,
 		'with-pagination': TableWithPagination,
+		stateless: TableStateless,
 	},
 };
