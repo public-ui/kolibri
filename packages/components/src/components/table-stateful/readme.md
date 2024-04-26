@@ -86,7 +86,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 
 ### Footer
 
-Druch die Verwendung des **`_dataFoot_`** Attribut können zusammenfassende Informationen oder zusätzliche Details am Ende der Tabelle angezeigt werden.
+Durch die Verwendung des **`_dataFoot_`**-Attribut können zusammenfassende Informationen oder zusätzliche Details am Ende der Tabelle angezeigt werden. Die Informationen sind hierbei an die Spaltendefinitionen gebunden.
 
 ### Beispiel
 
