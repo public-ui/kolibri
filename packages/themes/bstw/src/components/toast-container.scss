@@ -1,0 +1,10 @@
+@layer kol-theme-component {
+	:host {
+		top: 1rem;
+		right: 1rem;
+		width: 440px;
+	}
+	.toast {
+		margin-top: 1rem;
+	}
+}

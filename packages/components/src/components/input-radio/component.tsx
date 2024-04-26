@@ -282,7 +282,10 @@ export class KolInputRadio implements InputRadioAPI {
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
 	}
-
+	@Watch('_tooltipAlign')
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		this.controller.validateTooltipAlign(value);
+	}
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		this.controller.validateAlert(value);
