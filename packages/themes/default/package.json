@@ -4,9 +4,9 @@
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/public-ui/kolibri"
-  },
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -58,7 +58,10 @@
 		"@typescript-eslint/parser": "7.7.1",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
+		"nodemon": "3.1.0",
+		"postcss": "8.4.38",
 		"rollup-plugin-postcss": "4.0.2",
+		"sass": "1.75.0",
 		"typescript": "5.4.5",
 		"unbuild": "1.2.1"
 	},
