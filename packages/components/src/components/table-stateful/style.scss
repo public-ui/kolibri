@@ -1,0 +1,27 @@
+div.pagination .kol-pagination {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+div.pagination,
+div.pagination > div:last-child {
+	display: grid;
+	place-items: center;
+}
+
+@media (max-width: 1024px) {
+	div.pagination .kol-pagination {
+		flex-direction: column;
+	}
+}
+
+@media (min-width: 1024px) {
+	div.pagination,
+	div.pagination > div:last-child {
+		grid-auto-flow: column;
+	}
+
+	div.pagination .kol-pagination {
+		display: flex;
+	}
+}

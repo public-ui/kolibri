@@ -257,7 +257,7 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 		_icons: {
 			checked: 'codicon codicon-check',
 			indeterminate: 'codicon codicon-remove',
-			unchecked: 'codicon codicon-add',
+			unchecked: 'codicon codicon-close',
 		},
 		_id: `id-${nonce()}`,
 		_indeterminate: false,

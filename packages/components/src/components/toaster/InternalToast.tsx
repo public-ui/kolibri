@@ -3,18 +3,13 @@ import { h } from '@stencil/core';
 import { KolAlertTag } from '../../core/component-names';
 
 type Props = {
-	toastState: ToastState;
-	onClose: () => void;
 	key: string;
+	onClose: () => void;
+	onRef: (element?: HTMLDivElement) => void;
+	toastState: ToastState;
 };
 
-export const InternalToast = ({ toastState, onClose, key }: Props) => {
-	const handleRef = (element?: HTMLDivElement) => {
-		if (typeof toastState.toast.render === 'function' && element) {
-			toastState.toast.render(element, { close: () => onClose() });
-		}
-	};
-
+export const InternalToast = ({ key, onClose, onRef, toastState }: Props) => {
 	return (
 		<div class={`toast ${toastState.status}`} key={key}>
 			<KolAlertTag
@@ -27,7 +22,7 @@ export const InternalToast = ({ toastState, onClose, key }: Props) => {
 				_variant={toastState.toast.alertVariant || 'card'}
 				_on={{ onClose }}
 			>
-				<div ref={handleRef}>{typeof toastState.toast.description === 'string' ? toastState.toast.description : null}</div>
+				<div ref={onRef}>{typeof toastState.toast.description === 'string' ? toastState.toast.description : null}</div>
 			</KolAlertTag>
 		</div>
 	);
