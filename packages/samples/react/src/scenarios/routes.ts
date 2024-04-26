@@ -4,6 +4,7 @@ import { CustomTooltipWidth } from './custom-tooltip-width';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
 import { InputsGetValue } from './inputs-get-value';
 import { StaticForm } from './static-form';
+import { DialogOnToast } from './dialog-on-toast';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
@@ -12,5 +13,6 @@ export const SCENARIO_ROUTES: Routes = {
 		'custom-tooltip-width': CustomTooltipWidth,
 		'static-form': StaticForm,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
+		'dialog-on-toast': DialogOnToast,
 	},
 };
