@@ -1,4 +1,8 @@
+@import '../@shared/mixins';
 @import '../input-line';
 
 @layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
 }

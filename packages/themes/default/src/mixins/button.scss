@@ -1,3 +1,4 @@
+@import 'rem';
 @import './focus-outline';
 
 @mixin kol-button {
@@ -79,7 +80,7 @@
 	}
 
 	:is(a, button).hide-label > .kol-span-wc {
-		padding: 0.8rem;
+		padding: rem(12.8);
 		width: unset;
 	}
 

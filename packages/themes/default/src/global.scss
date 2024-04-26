@@ -1,9 +1,11 @@
+@import 'mixins/rem';
+
 @layer kol-theme-global {
 	:host {
 		--border-radius: var(--kolibri-border-radius, 5px);
 		--font-family: var(--kolibri-font-family, BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif);
 		--font-size: var(--kolibri-font-size, 16px);
-		--spacing: var(--kolibri-spacing, 0.25rem);
+		--spacing: var(--kolibri-spacing, #{rem(4)});
 		--border-width: var(--kolibri-border-width, 1px);
 		--color-primary: var(--kolibri-color-primary, #004b76);
 		--color-primary-variant: var(--kolibri-color-primary-variant, #0077b6);
@@ -68,12 +70,12 @@
 	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5;
-		padding: 0.5rem 0.75rem;
+		padding: rem(8) rem(12);
 	}
 
 	.kol-span-wc,
 	.kol-span-wc > span {
-		gap: 0.5rem;
+		gap: rem(8);
 	}
 
 	@keyframes spin {

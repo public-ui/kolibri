@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -5,7 +7,7 @@
 
 	:host .kol-button-group-wc {
 		display: inline-flex;
-		gap: 2rem;
+		gap: rem(32);
 		flex-wrap: wrap;
 	}
 
@@ -42,11 +44,11 @@
 	}
 
 	button .kol-span-wc > span {
-		gap: 0.5rem;
+		gap: rem(8);
 	}
 
 	.kol-icon {
-		font-size: 1rem;
+		font-size: rem(16);
 	}
 
 	:host > div > div {
@@ -95,11 +97,11 @@
 	}
 
 	:host > .tabs-align-bottom > .kol-button-group-wc > div > div:first-child {
-		margin: 0px 1rem 0px 0px;
+		margin: 0px rem(16) 0px 0px;
 	}
 
 	:host > .tabs-align-bottom > .kol-button-group-wc > div > div {
-		margin: 0px 1rem;
+		margin: 0px rem(16);
 	}
 
 	:host > .tabs-align-top {
@@ -116,11 +118,11 @@
 	}
 
 	:host > .tabs-align-top > .kol-button-group-wc > div > div:first-child {
-		margin: 0px 1rem 0px 0px;
+		margin: 0px rem(16) 0px 0px;
 	}
 
 	:host > .tabs-align-top > .kol-button-group-wc > div > div {
-		margin: 0px 1rem;
+		margin: 0px rem(16);
 	}
 
 	:host > div {
