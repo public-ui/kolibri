@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.7.20",
+	"version": "1.7.21",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -71,7 +71,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.3",
-		"@public-ui/schema": "1.7.20",
+		"@public-ui/schema": "1.7.21",
 		"adopted-style-sheets": "1.1.4",
 		"i18next": "23.11.2",
 		"markdown-it": "14.1.0"
@@ -99,7 +99,7 @@
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
 		"cross-env": "7.0.3",
-		"cssnano": "7.0.0",
+		"cssnano": "7.0.1",
 		"eslint": "8.57.0",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-html": "8.1.1",

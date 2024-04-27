@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v14",
-	"version": "1.7.20",
+	"version": "1.7.21",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -70,7 +70,7 @@
 		"@angular/compiler": "14.3.0",
 		"@angular/compiler-cli": "14.3.0",
 		"@angular/core": "14.3.0",
-		"@public-ui/components": "1.7.20",
+		"@public-ui/components": "1.7.21",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts4.8",
@@ -84,7 +84,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": "14.3.0",
-		"@public-ui/components": "1.7.20"
+		"@public-ui/components": "1.7.21"
 	},
 	"files": [
 		"dist"
