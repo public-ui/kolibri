@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "2.0.14",
+	"version": "2.0.15",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -28,7 +28,7 @@
 	},
 	"dependencies": {
 		"@playwright/test": "1.43.1",
-		"@public-ui/sample-react": "2.0.14",
+		"@public-ui/sample-react": "2.0.15",
 		"axe-playwright": "2.0.1",
 		"portfinder": "1.0.32",
 		"serve": "14.2.3"
@@ -39,7 +39,7 @@
 		"@babel/preset-env": "7.24.4",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "5.10.0",
+		"knip": "5.11.0",
 		"prettier": "3.2.5"
 	},
 	"files": [
