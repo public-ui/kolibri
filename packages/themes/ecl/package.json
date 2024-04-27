@@ -2,23 +2,27 @@
 	"name": "@public-ui-/theme-ecl",
 	"version": "2.0.14",
 	"private": true,
+	"type": "module",
+	"sideEffects": false,
 	"scripts": {
+		"build": "rollup -c",
+		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
+		"prepack": "pnpm build",
 		"xtest": "npm-run-all test:*",
 		"test:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test",
 		"test:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test",
 		"xtest-update": "npm-run-all test-update:*",
 		"test-update:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"test-update:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
-		"pretest:ecl-ec": "pnpm build",
-		"pretest-update:ecl-ec": "pnpm build",
-		"pretest:ecl-eu": "pnpm build",
-		"pretest-update:ecl-eu": "pnpm build"
+		"pretest": "pnpm build",
+		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "2.0.14",
 		"@public-ui/visual-tests": "2.0.14",
+		"@rollup/plugin-typescript": "11.1.6",
 		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.7.1",
 		"@typescript-eslint/parser": "7.7.1",
@@ -26,6 +30,7 @@
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.1.0",
 		"postcss": "8.4.38",
+		"rollup": "4.14.3",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass": "1.75.0",
 		"typescript": "5.4.5",
@@ -34,8 +39,6 @@
 	"peerDependencies": {
 		"@public-ui/components": "2.0.14"
 	},
-	"sideEffects": false,
-	"type": "module",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
