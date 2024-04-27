@@ -1,5 +1,5 @@
-import type { LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '@public-ui/schema';
-import { validateLabel } from '@public-ui/schema';
+import type { LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
+import { validateLabel } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';

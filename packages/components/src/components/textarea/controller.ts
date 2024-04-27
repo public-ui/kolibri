@@ -1,5 +1,5 @@
-import type { CSSResize, HasCounterPropType, RowsPropType, TextareaProps, TextareaWatches } from '@public-ui/schema';
-import { cssResizeOptions, validateRows, watchBoolean, watchNumber, watchString, watchValidator } from '@public-ui/schema';
+import type { CSSResize, HasCounterPropType, RowsPropType, TextareaProps, TextareaWatches } from '../../schema';
+import { cssResizeOptions, validateRows, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 
 import { InputController } from '../@deprecated/input/controller';
 

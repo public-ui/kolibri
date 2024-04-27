@@ -1,4 +1,4 @@
-import type { MsgPropType, TouchedPropType } from '@public-ui/schema';
+import type { MsgPropType, TouchedPropType } from '../../schema';
 
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die

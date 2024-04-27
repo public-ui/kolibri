@@ -1,6 +1,6 @@
 import { Component, h, type JSX, Method, Prop } from '@stencil/core';
 
-import type { HrefPropType, LabelPropType, OpenPropType, TreeItemProps } from '@public-ui/schema';
+import type { HrefPropType, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
 import { KolTreeItemWcTag } from '../../core/component-names';
 
 @Component({

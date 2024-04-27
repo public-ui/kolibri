@@ -1,5 +1,5 @@
-import type { BreadcrumbAPI, BreadcrumbLinkProps, BreadcrumbStates, LabelPropType, LinkProps, Stringified } from '@public-ui/schema';
-import { a11yHintLabelingLandmarks, validateLabel } from '@public-ui/schema';
+import type { BreadcrumbAPI, BreadcrumbLinkProps, BreadcrumbStates, LabelPropType, LinkProps, Stringified } from '../../schema';
+import { a11yHintLabelingLandmarks, validateLabel } from '../../schema';
 import { Component, Fragment, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';

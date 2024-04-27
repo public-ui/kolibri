@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInputColorHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputColorProps } from '@public-ui/schema';
+import type { InputColorProps } from '../../../schema';
 import { KolInputColor } from '../component';
 
 executeTests<InputColorProps>(

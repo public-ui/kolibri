@@ -1,4 +1,4 @@
-import type { AlertPropType, HideErrorPropType, IdPropType, MsgPropType } from '@public-ui/schema';
+import type { AlertPropType, HideErrorPropType, IdPropType, MsgPropType } from '../../schema';
 import type { FunctionalComponent } from '@stencil/core';
 import { h } from '@stencil/core';
 import { KolAlertWcTag } from '../../core/component-names';

@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop } from '@stencil/core';
 
 import { KolTableStatelessWcTag } from '../../core/component-names';
-import type { TableDataFootPropType, TableDataPropType, TableHeaderCellsPropType, TableStatelessProps, TableCallbacksPropType } from '@public-ui/schema';
+import type { TableDataFootPropType, TableDataPropType, TableHeaderCellsPropType, TableStatelessProps, TableCallbacksPropType } from '../../schema';
 
 @Component({
 	tag: 'kol-table-stateless',

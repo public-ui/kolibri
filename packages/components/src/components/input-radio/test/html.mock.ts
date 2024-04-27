@@ -1,8 +1,8 @@
-import type { InputRadioProps, InputRadioStates } from '@public-ui/schema';
+import type { InputRadioProps, InputRadioStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 import { KolInputTag } from '../../../core/component-names';
-import { showExpertSlot } from '@public-ui/schema';
+import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
 export const getInputRadioHtml = (props: InputRadioProps): string => {
