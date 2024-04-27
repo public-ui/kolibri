@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-itzbund",
-	"version": "2.0.14",
+	"version": "2.0.15",
 	"private": true,
 	"type": "module",
 	"sideEffects": false,
@@ -16,7 +16,8 @@
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/visual-tests": "2.0.14",
+		"@public-ui/components": "2.0.15",
+		"@public-ui/visual-tests": "2.0.15",
 		"@rollup/plugin-typescript": "11.1.6",
 		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.7.1",
@@ -25,14 +26,14 @@
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.1.0",
 		"postcss": "8.4.38",
-		"rollup": "4.14.3",
+		"rollup": "4.16.4",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass": "1.75.0",
 		"typescript": "5.4.5",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.14"
+		"@public-ui/components": "2.0.15"
 	},
 	"exports": {
 		".": {
