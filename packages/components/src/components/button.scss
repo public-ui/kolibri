@@ -1,7 +1,9 @@
+@import '@shared/mixins';
 @import 'style';
 
 @layer kol-component {
 	:host {
+		font-style: rem(16);
 		display: inline-block;
 	}
 

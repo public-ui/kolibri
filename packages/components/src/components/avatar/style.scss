@@ -3,6 +3,10 @@
 @import '../host-display-block';
 
 @layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
+
 	.container {
 		border-radius: 50%;
 		overflow: hidden;

@@ -84,6 +84,14 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 
 <kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table>
 
+### Footer
+
+Durch die Verwendung des **`_dataFoot_`**-Attribut können zusammenfassende Informationen oder zusätzliche Details am Ende der Tabelle angezeigt werden. Die Informationen sind hierbei an die Spaltendefinitionen gebunden.
+
+### Beispiel
+
+<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination, DataFoot" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _dataFoot='[{"montag":"Ruhetag"}]' _pagination='{"page":2}'></kol-table>
+
 ## Verwendung
 
 ### Sortierung

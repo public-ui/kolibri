@@ -1,6 +1,11 @@
+@import '../@shared/mixins';
 @import '../style';
 
 @layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
+
 	progress {
 		display: block;
 		height: 0;

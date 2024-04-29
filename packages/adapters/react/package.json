@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react",
-	"version": "2.0.14",
+	"version": "2.0.15",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,20 +49,20 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.14",
+		"@public-ui/components": "2.0.15",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.4",
 		"@types/normalize-package-data": "2.4.4",
-		"@types/react": "18.2.77",
-		"@types/react-dom": "18.2.25",
+		"@types/react": "18.3.1",
+		"@types/react-dom": "18.3.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"typescript": "5.4.5",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.14",
+		"@public-ui/components": "2.0.15",
 		"react": ">=16.14.0",
 		"react-dom": ">=16.14.0"
 	},

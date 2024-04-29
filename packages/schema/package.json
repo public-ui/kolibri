@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/schema",
-	"version": "2.0.14",
+	"version": "2.0.15",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -63,8 +63,8 @@
 		"@types/color-convert": "2.0.3",
 		"@types/node": "ts5.4",
 		"@types/wcag-contrast": "3.0.3",
-		"@typescript-eslint/eslint-plugin": "7.6.0",
-		"@typescript-eslint/parser": "7.6.0",
+		"@typescript-eslint/eslint-plugin": "7.7.1",
+		"@typescript-eslint/parser": "7.7.1",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.1.0",
