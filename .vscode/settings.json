@@ -1,5 +1,5 @@
 {
-	"editor.formatOnSave": false,
+	"editor.formatOnSave": true,
 	"editor.renderWhitespace": "all",
 	// Configure glob patterns for excluding files and folders.
 	// For example, the files explorer decides which files and folders to show
