@@ -1004,6 +1004,12 @@ importers:
       '@public-ui/components':
         specifier: 2.0.15
         version: link:../components
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1049,6 +1055,12 @@ importers:
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1097,6 +1109,12 @@ importers:
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1145,6 +1163,12 @@ importers:
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1193,6 +1217,12 @@ importers:
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1241,6 +1271,12 @@ importers:
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -6898,6 +6934,24 @@ packages:
       rollup: 3.29.4
     dev: true
 
+  /@rollup/plugin-commonjs@25.0.7(rollup@4.16.4):
+    resolution: {integrity: sha512-nEvcR+LRjEjsaSsc4x3XZfCCvZIaSMenZu/OiwOKGN2UhQpAYI7ru7czFvyWbErlpoGjnSX3D5Ch5FcMA3kRWQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.68.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.16.4)
+      commondir: 1.0.1
+      estree-walker: 2.0.2
+      glob: 8.1.0
+      is-reference: 1.2.1
+      magic-string: 0.30.10
+      rollup: 4.16.4
+    dev: true
+
   /@rollup/plugin-json@6.1.0(rollup@3.29.4):
     resolution: {integrity: sha512-EGI2te5ENk1coGeADSIwZ7G2Q8CJS2sF120T7jLw4xFw9n7wIOXHo+kIYRAoVpJAN+kmqZSoO3Fp4JtoNF4ReA==}
     engines: {node: '>=14.0.0'}
@@ -6927,6 +6981,24 @@ packages:
       is-module: 1.0.0
       resolve: 1.22.8
       rollup: 3.29.4
+    dev: true
+
+  /@rollup/plugin-node-resolve@15.2.3(rollup@4.16.4):
+    resolution: {integrity: sha512-j/lym8nf5E21LwBT4Df1VD6hRO2L2iwUeUmP7litikRsVp1H6NWx20NEp0Y7su+7XGc476GnXXc4kFeZNGmaSQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.78.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.16.4)
+      '@types/resolve': 1.20.2
+      deepmerge: 4.3.1
+      is-builtin-module: 3.2.1
+      is-module: 1.0.0
+      resolve: 1.22.8
+      rollup: 4.16.4
     dev: true
 
   /@rollup/plugin-replace@5.0.5(rollup@3.29.4):
@@ -13042,7 +13114,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.0.1
+      minimatch: 5.1.6
       once: 1.4.0
     dev: true
 

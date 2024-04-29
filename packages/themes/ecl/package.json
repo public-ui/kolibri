@@ -22,6 +22,8 @@
 	"devDependencies": {
 		"@public-ui/components": "2.0.15",
 		"@public-ui/visual-tests": "2.0.15",
+		"@rollup/plugin-commonjs": "25.0.7",
+		"@rollup/plugin-node-resolve": "15.2.3",
 		"@rollup/plugin-typescript": "11.1.6",
 		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.7.1",
