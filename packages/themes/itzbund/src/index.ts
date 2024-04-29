@@ -28,6 +28,8 @@ import selectCss from './components/select.scss';
 import skipNavCss from './components/skip-nav.scss';
 import spinCss from './components/spin.scss';
 import splitButtonCss from './components/split-button.scss';
+import tableStatefulCss from './components/table-stateful.scss';
+import tableStatelessCss from './components/table-stateless.scss';
 import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
@@ -58,7 +60,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-SELECT': selectCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-ACCORDION': accordionCss,
-	'KOL-TABLE': tabsCss,
+	'KOL-TABLE-STATEFUL': tableStatefulCss,
+	'KOL-TABLE-STATELESS': tableStatelessCss,
 	'KOL-NAV': navCss,
 	'KOL-CARD': cardCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,

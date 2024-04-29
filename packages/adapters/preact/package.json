@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/preact",
-	"version": "2.0.12",
+	"version": "2.0.15",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,17 +49,17 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/react": "2.0.12"
+		"@public-ui/react": "2.0.15"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.12",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
-		"typescript": "5.4.3",
+		"@public-ui/components": "2.0.15",
+		"react": "18.3.1",
+		"react-dom": "18.3.1",
+		"typescript": "5.4.5",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"preact": ">=10.20.1"
+		"preact": ">=10.20.2"
 	},
 	"sideEffects": false,
 	"type": "module",

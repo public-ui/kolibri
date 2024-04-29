@@ -5,8 +5,9 @@ import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { InternalToast } from './InternalToast';
 
-import type { Toast, ToasterAPI, ToasterStates, ToastState } from '@public-ui/schema';
+import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '@public-ui/schema';
 import { KolButtonTag } from '../../core/component-names';
+
 const TRANSITION_TIMEOUT = 300;
 
 @Component({
@@ -20,6 +21,9 @@ export class KolToastContainer implements ToasterAPI {
 	@State() public state: ToasterStates = {
 		_toastStates: [],
 	};
+
+	/* Keep track of render functions, so we call each only once. */
+	private knownRenderFunctions = new Set<ToastRenderFunction>();
 
 	// Stencil requires async function:
 	@Method()
@@ -92,6 +96,13 @@ export class KolToastContainer implements ToasterAPI {
 		}, TRANSITION_TIMEOUT);
 	}
 
+	private handleToastRef(toastState: ToastState, element?: HTMLDivElement) {
+		if (element && typeof toastState.toast.render === 'function' && !this.knownRenderFunctions.has(toastState.toast.render)) {
+			this.knownRenderFunctions.add(toastState.toast.render);
+			toastState.toast.render(element, { close: () => this.handleClose(toastState) });
+		}
+	}
+
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-toast-container">
@@ -107,7 +118,12 @@ export class KolToastContainer implements ToasterAPI {
 					></KolButtonTag>
 				)}
 				{this.state._toastStates.map((toastState) => (
-					<InternalToast toastState={toastState} onClose={() => this.handleClose(toastState)} key={toastState.id} />
+					<InternalToast
+						key={toastState.id}
+						onClose={() => this.handleClose(toastState)}
+						onRef={(element) => this.handleToastRef(toastState, element)}
+						toastState={toastState}
+					/>
 				))}
 			</Host>
 		);

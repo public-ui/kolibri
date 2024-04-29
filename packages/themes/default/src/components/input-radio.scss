@@ -1,3 +1,4 @@
+@import '../mixins/rem';
 @import '../mixins/alert-wc.scss';
 
 @layer kol-theme-component {
@@ -60,7 +61,7 @@
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
-		gap: 0.5rem;
+		gap: rem(8);
 		margin: 0;
 		min-height: var(--a11y-min-size);
 		position: relative;
@@ -81,9 +82,9 @@
 		appearance: none;
 		transition: 0.5s;
 		border-radius: 100%;
-		height: calc(6 * 0.25rem);
-		min-width: calc(6 * 0.25rem);
-		width: calc(6 * 0.25rem);
+		height: calc(6 * rem(4));
+		min-width: calc(6 * rem(4));
+		width: calc(6 * rem(4));
 	}
 
 	.radio-input-wrapper input[type='radio']:before {
@@ -119,7 +120,7 @@
 		border-left: 3px solid var(--color-danger);
 		color: var(--color-danger);
 		font-weight: 700;
-		padding-left: 1rem;
+		padding-left: rem(16);
 	}
 
 	fieldset.error input:focus,

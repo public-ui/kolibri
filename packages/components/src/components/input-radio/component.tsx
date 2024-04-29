@@ -127,6 +127,7 @@ export class KolInputRadio implements InputRadioAPI {
 										tabIndex={this.state._tabIndex}
 										value={`-${index}`}
 										{...this.controller.onFacade}
+										onInput={this.onInput}
 										onChange={this.onChange}
 										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 									/>
@@ -281,7 +282,10 @@ export class KolInputRadio implements InputRadioAPI {
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
 	}
-
+	@Watch('_tooltipAlign')
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		this.controller.validateTooltipAlign(value);
+	}
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		this.controller.validateAlert(value);
@@ -378,6 +382,21 @@ export class KolInputRadio implements InputRadioAPI {
 		this.currentValue = this._value;
 		this.controller.componentWillLoad();
 	}
+
+	private onInput = (event: Event): void => {
+		if (event.target instanceof HTMLInputElement) {
+			const option = this.controller.getOptionByKey(event.target.value);
+			if (option !== undefined) {
+				// Event handling
+				tryToDispatchKoliBriEvent('input', this.host, option.value);
+
+				// Callback
+				if (typeof this.state._on?.onInput === 'function') {
+					this.state._on.onInput(event, option.value);
+				}
+			}
+		}
+	};
 
 	private onChange = (event: Event): void => {
 		if (event.target instanceof HTMLInputElement) {

@@ -10,11 +10,12 @@ import type {
 	PropOptions,
 	PropRequired,
 	PropSyncValueBySelector,
+	PropTooltipAlign,
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, Option, Orientation, StencilUnknown } from '../types';
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -30,13 +31,13 @@ type OptionalProps = {
 } & PropDisabled &
 	PropHideError &
 	PropHideLabel &
-	PropLabelWithExpertSlot &
 	PropMsg &
 	PropName &
 	PropOptions & // PropOptions becomes required with 2.0
 	PropRequired &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropTooltipAlign;
 
 type RequiredStates = {
 	options: Option<StencilUnknown>[];

@@ -16,7 +16,7 @@ import type {
 import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified } from '../types';
 import type { ButtonProps } from './button';
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accept: string;
 	alert: boolean;
@@ -34,7 +34,6 @@ type OptionalProps = {
 } & PropDisabled &
 	PropHideError &
 	PropHideLabel &
-	PropLabelWithExpertSlot &
 	PropMsg &
 	PropMultiple &
 	PropName &

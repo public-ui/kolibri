@@ -1,8 +1,10 @@
+@import '@shared/mixins';
 @import 'style';
 
 @layer kol-component {
 	:host {
 		display: inline-block;
+		font-size: rem(16);
 	}
 
 	:is(a, button) {
