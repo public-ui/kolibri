@@ -41,7 +41,6 @@ Folgende Pakete/Artefakte von **[KoliBri]** werden in der öffentlichen [NPM-Reg
 | create-kolibri         | CLI zum Erstellen neuer Projekt auf **[KoliBri]**-Basis.                                                                                |
 | @public-ui/components  | Beinhaltet die barrierefreien Web Components ohne Styling.                                                                              |
 | @public-ui/core        | Beinhaltet generische Typen und zentrale Funktionalitäten für die Entwicklung weiterer Komponenten-Bibliothek mit gleicher Architektur. |
-| @public-ui/components  | Beinhaltet das Schema für die **[KoliBri]**-Komponenten.                                                                                |
 | @public-ui/themes      | Beinhaltet zahlreiche Themes für die **[KoliBri]**-Komponenten.                                                                         |
 | @public-ui/react       | Adapter für das Framework [React].                                                                                                      |
 | @public-ui/preact      | Adapter für das Framework [Preact].                                                                                                     |

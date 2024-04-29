@@ -1,57 +1,37 @@
+# KoliBri - Visual Tests
+
+## Motivation
+
+The `KoliBri` Visual Tests provide a way to add visual regression testing to **theme** modules.  
+It takes screenshots of every component defined in the [React Sample App](https://github.com/public-ui/kolibri/tree/develop/packages/samples/react) with the theme applied and compares them to their references.
+
+## Installation
+
+You can install the `KoliBri` Visual Tests with `npm`, `pnpm` or `yarn`:
+
+```bash
+npm i -D @public-ui/visual-tests
+pnpm i -D @public-ui/visual-tests
+yarn add -D @public-ui/visual-tests
+```
+
+## Usage
+
+Add the following npm scripts to the theme's `package.json`:
+
+```json
 {
-"name": "{{kebab name}}",
-"version": "0.0.0",
-"description": "{{description}}",
-"author": {
-"name": "{{author}}",
-"email": "{{email}}"
-},
-"license": "EUPL-1.2",
-"private": false,
-"scripts": {
-"build": "unbuild",
-"depcheck": "depcheck",
-"format": "prettier --check src",
-"lint": "eslint src",
-"prepack": "unbuild",
-"test": "THEME_MODULE=src/index THEME_EXPORT={{capital name}} kolibri-visual-test",
-"test-update": "THEME_MODULE=src/index THEME_EXPORT={{capital name}} kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
-"unused": "knip"
-},
-"devDependencies": {
-"@public-ui/components": "2.0.3",
-"@public-ui/visual-tests": "2.0.3",
-"@typescript-eslint/eslint-plugin": "6.8.0",
-"@typescript-eslint/parser": "6.8.0",
-"depcheck": "1.4.7",
-"eslint": "8.51.0",
-"eslint-config-prettier": "9.1.0",
-"eslint-plugin-html": "8.0.0",
-"eslint-plugin-jsdoc": "48.0.2",
-"eslint-plugin-json": "3.1.0",
-"eslint-plugin-no-loops": "0.3.0",
-"knip": "2.35.0",
-"npm-check-updates": "16.14.6",
-"prettier": "3.0.3",
-"unbuild": "1.2.1"
-},
-"peerDependencies": {
-"@public-ui/components": "2.0.3"
-},
-"sideEffects": false,
-"type": "module",
-"exports": {
-".": {
-"types": "./dist/index.d.ts",
-"import": "./dist/index.mjs",
-"require": "./dist/index.cjs"
+    "scripts": {
+        "test": "THEME_MODULE=src/index THEME_EXPORT=THEME_NAME kolibri-visual-test",
+        "test-update": "THEME_MODULE=src/index THEME_EXPORT=THEME_NAME kolibri-visual-test --update-snapshots",
+    }
 }
-},
-"main": "./dist/index.cjs",
-"module": "./dist/index.mjs",
-"types": "./dist/index.d.ts",
-"files": [
-"assets",
-"dist"
-]
-}
+```
+
+* `THEME_MODULE` defines the relative path to the TypeScript module containing the the theme definitions. Without file extension. 
+* `THEME_EXPERT` defines the name of the export within the the module. (e.g., `export const THEME_NAME = {/**/};`) Defaults to `default`.  
+
+Run the tests with `npm test`. The first time, this will create a new folder `snapshots` which is supposed to be committed to the repository.
+In the following runs, new screenshots will be compared to this reference.
+
+To update the reference screenshots call `npm run test-update`.
