@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getButtonLinkHtml } from './html.mock';
 
-import type { ButtonLinkProps } from '@public-ui/schema';
+import type { ButtonLinkProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolButtonLink } from '../component';
 

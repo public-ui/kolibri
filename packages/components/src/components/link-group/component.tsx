@@ -1,5 +1,5 @@
-import type { LabelPropType, LinkGroupAPI, LinkGroupStates, LinkProps, ListStyleType, Orientation, Stringified } from '@public-ui/schema';
-import { validateLabel, watchValidator } from '@public-ui/schema';
+import type { LabelPropType, LinkGroupAPI, LinkGroupStates, LinkProps, ListStyleType, Orientation, Stringified } from '../../schema';
+import { validateLabel, watchValidator } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';

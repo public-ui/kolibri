@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import type { FormProps } from '@public-ui/schema';
+import type { FormProps } from '../../../schema';
 import { KolIndentedTextTag } from '../../../core/component-names';
 export const getFormHtml = (props: FormProps): string => {
 	props = mixMembers({ ...props }, props);

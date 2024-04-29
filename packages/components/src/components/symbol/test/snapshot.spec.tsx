@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getSymbolHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { SymbolProps } from '@public-ui/schema';
+import type { SymbolProps } from '../../../schema';
 import { KolSymbol } from '../component';
 
 executeTests<SymbolProps>(

@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInputPasswordHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputPasswordProps } from '@public-ui/schema';
+import type { InputPasswordProps } from '../../../schema';
 import { KolInputPassword } from '../component';
 
 executeTests<InputPasswordProps>(

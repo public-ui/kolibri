@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getFormHtml } from './html.mock';
 
-import type { FormProps } from '@public-ui/schema';
+import type { FormProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolForm } from '../component';
 

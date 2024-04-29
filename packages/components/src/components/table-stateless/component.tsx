@@ -15,8 +15,8 @@ import type {
 	TableHeaderCellsPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
-} from '@public-ui/schema';
-import { validateLabel, validateTableCallbacks, validateTableData, validateTableDataFoot, validateTableHeaderCells, watchString } from '@public-ui/schema';
+} from '../../schema';
+import { validateLabel, validateTableCallbacks, validateTableData, validateTableDataFoot, validateTableHeaderCells, watchString } from '../../schema';
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 

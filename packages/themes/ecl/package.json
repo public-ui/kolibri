@@ -20,7 +20,7 @@
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.15",
+		"@public-ui/components": "2.0.15",
 		"@public-ui/visual-tests": "2.0.15",
 		"@rollup/plugin-commonjs": "25.0.7",
 		"@rollup/plugin-node-resolve": "15.2.3",

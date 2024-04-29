@@ -1,8 +1,8 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { handleColorChange } from '@public-ui/schema';
+import { handleColorChange } from '../../../schema';
 
-import type { BadgeProps, BadgeStates } from '@public-ui/schema';
+import type { BadgeProps, BadgeStates } from '../../../schema';
 import type { SpanOptions } from '../../span/test/html.mock';
 import { KolSpanWcTag } from '../../../core/component-names';
 

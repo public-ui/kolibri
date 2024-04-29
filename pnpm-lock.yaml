@@ -547,15 +547,33 @@ importers:
       '@floating-ui/dom':
         specifier: 1.6.3
         version: 1.6.3
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../schema
       adopted-style-sheets:
         specifier: 1.1.4
         version: 1.1.4
+      clsx:
+        specifier: 2.1.1
+        version: 2.1.1
+      color-convert:
+        specifier: 2.0.1
+        version: 2.0.1
+      color-rgba:
+        specifier: 2.4.0
+        version: 2.4.0
       markdown-it:
         specifier: 14.1.0
         version: 14.1.0
+      query-selector-all-shadow-root:
+        specifier: 0.0.3
+        version: 0.0.3
+      query-selector-shadow-root:
+        specifier: 0.0.3
+        version: 0.0.3
+      rgba-convert:
+        specifier: 0.3.0
+        version: 0.3.0
+      wcag-contrast:
+        specifier: 3.0.0
+        version: 3.0.0
     devDependencies:
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
@@ -578,6 +596,9 @@ importers:
       '@stencil/sass':
         specifier: 3.0.11
         version: 3.0.11(@stencil/core@4.17.1)
+      '@types/color-convert':
+        specifier: 2.0.3
+        version: 2.0.3
       '@types/jest':
         specifier: 26.0.24
         version: 26.0.24
@@ -596,6 +617,9 @@ importers:
       '@types/twig':
         specifier: 1.12.16
         version: 1.12.16
+      '@types/wcag-contrast':
+        specifier: 3.0.3
+        version: 3.0.3
       '@typescript-eslint/eslint-plugin':
         specifier: 7.7.1
         version: 7.7.1(@typescript-eslint/parser@7.7.1)(eslint@8.57.0)(typescript@5.4.5)
@@ -605,12 +629,6 @@ importers:
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
-      clsx:
-        specifier: 2.1.1
-        version: 2.1.1
-      color-rgba:
-        specifier: 2.4.0
-        version: 2.4.0
       cross-env:
         specifier: 7.0.3
         version: 7.0.3
@@ -972,61 +990,6 @@ importers:
         specifier: 1.4.0
         version: 1.4.0
 
-  packages/schema:
-    dependencies:
-      adopted-style-sheets:
-        specifier: 1.1.4
-        version: 1.1.4
-      color-convert:
-        specifier: 2.0.1
-        version: 2.0.1
-      color-rgba:
-        specifier: 2.4.0
-        version: 2.4.0
-      query-selector-all-shadow-root:
-        specifier: 0.0.3
-        version: 0.0.3
-      query-selector-shadow-root:
-        specifier: 0.0.3
-        version: 0.0.3
-      rgba-convert:
-        specifier: 0.3.0
-        version: 0.3.0
-      wcag-contrast:
-        specifier: 3.0.0
-        version: 3.0.0
-    devDependencies:
-      '@types/color-convert':
-        specifier: 2.0.3
-        version: 2.0.3
-      '@types/node':
-        specifier: ts5.4
-        version: 20.12.7
-      '@types/wcag-contrast':
-        specifier: 3.0.3
-        version: 3.0.3
-      '@typescript-eslint/eslint-plugin':
-        specifier: 7.7.1
-        version: 7.7.1(@typescript-eslint/parser@7.7.1)(eslint@8.57.0)(typescript@5.4.5)
-      '@typescript-eslint/parser':
-        specifier: 7.7.1
-        version: 7.7.1(eslint@8.57.0)(typescript@5.4.5)
-      eslint:
-        specifier: 8.57.0
-        version: 8.57.0
-      eslint-plugin-no-loops:
-        specifier: 0.3.0
-        version: 0.3.0(eslint@8.57.0)
-      nodemon:
-        specifier: 3.1.0
-        version: 3.1.0
-      typescript:
-        specifier: 5.4.5
-        version: 5.4.5
-      unbuild:
-        specifier: 1.2.1
-        version: 1.2.1(sass@1.75.0)
-
   packages/test-tag-name-transformer:
     devDependencies:
       '@public-ui/theme-default':
@@ -1037,14 +1000,10 @@ importers:
         version: link:../tools/visual-tests
 
   packages/themes:
-    dependencies:
+    devDependencies:
       '@public-ui/components':
         specifier: 2.0.15
         version: link:../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../schema
       '@rollup/plugin-commonjs':
         specifier: 25.0.7
         version: 25.0.7(rollup@4.16.4)
@@ -1089,14 +1048,10 @@ importers:
         version: 5.4.5
 
   packages/themes/bmf:
-    dependencies:
+    devDependencies:
       '@public-ui/components':
         specifier: 2.0.15
         version: link:../../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
@@ -1147,14 +1102,10 @@ importers:
         version: 1.2.1(sass@1.75.0)
 
   packages/themes/bstw:
-    dependencies:
+    devDependencies:
       '@public-ui/components':
         specifier: 2.0.15
         version: link:../../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
@@ -1205,14 +1156,10 @@ importers:
         version: 1.2.1(sass@1.75.0)
 
   packages/themes/default:
-    dependencies:
+    devDependencies:
       '@public-ui/components':
         specifier: 2.0.15
         version: link:../../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
@@ -1263,14 +1210,10 @@ importers:
         version: 1.2.1(sass@1.75.0)
 
   packages/themes/ecl:
-    dependencies:
+    devDependencies:
       '@public-ui/components':
         specifier: 2.0.15
         version: link:../../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
@@ -1321,14 +1264,10 @@ importers:
         version: 1.2.1(sass@1.75.0)
 
   packages/themes/itzbund:
-    dependencies:
+    devDependencies:
       '@public-ui/components':
         specifier: 2.0.15
         version: link:../../components
-    devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
       '@public-ui/visual-tests':
         specifier: 2.0.15
         version: link:../../tools/visual-tests
@@ -7108,6 +7047,7 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 3.29.4
+    dev: true
 
   /@rollup/pluginutils@5.1.0(rollup@4.16.4):
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
@@ -7122,14 +7062,12 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 4.16.4
-    dev: true
 
   /@rollup/rollup-android-arm-eabi@4.16.4:
     resolution: {integrity: sha512-GkhjAaQ8oUTOKE4g4gsZ0u8K/IHU1+2WQSgS1TwTcYvL+sjbaQjNHFXbOJ6kgqGHIO1DfUhI/Sphi9GkRT9K+Q==}
     cpu: [arm]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-android-arm64@4.16.4:
@@ -7137,7 +7075,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-darwin-arm64@4.16.4:
@@ -7145,7 +7082,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-darwin-x64@4.16.4:
@@ -7153,7 +7089,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-linux-arm-gnueabihf@4.16.4:
@@ -7161,7 +7096,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-linux-arm-musleabihf@4.16.4:
@@ -7169,7 +7103,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-linux-arm64-gnu@4.16.4:
@@ -7177,7 +7110,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-linux-arm64-musl@4.16.4:
@@ -7185,7 +7117,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-linux-powerpc64le-gnu@4.16.4:
@@ -7193,7 +7124,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-linux-riscv64-gnu@4.16.4:
@@ -7201,7 +7131,6 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-linux-s390x-gnu@4.16.4:
@@ -7209,7 +7138,6 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-linux-x64-gnu@4.16.4:
@@ -7217,7 +7145,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-linux-x64-musl@4.16.4:
@@ -7225,7 +7152,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-win32-arm64-msvc@4.16.4:
@@ -7233,7 +7159,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-win32-ia32-msvc@4.16.4:
@@ -7241,7 +7166,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@rollup/rollup-win32-x64-msvc@4.16.4:
@@ -7249,7 +7173,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@schematics/angular@17.3.6:
@@ -8361,7 +8284,7 @@ packages:
       webpack: ^4 || ^5
     dependencies:
       '@ampproject/remapping': 2.3.0
-      '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
+      '@rollup/pluginutils': 5.1.0(rollup@4.16.4)
       '@unocss/config': 0.58.9
       '@unocss/core': 0.58.9
       chokidar: 3.6.0
@@ -10145,7 +10068,7 @@ packages:
   /clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
-    dev: true
+    dev: false
 
   /cmd-shim@6.0.1:
     resolution: {integrity: sha512-S9iI9y0nKR4hwEQsVWpyxld/6kRfGepGfzff83FcaiEBpmvlbA2nnGe7Cylgrx2f/p1P5S5wpRm9oL8z1PbS3Q==}
@@ -10193,15 +10116,18 @@ packages:
     resolution: {integrity: sha512-BADfVl/FHkQkyo8sRBwMYBqemqsgnu7JZAwUgvBvuwwuNUZAhSvLTbsEErS5bQXzOjDR0dWzJ4vXN2Q+QoPx0A==}
     dependencies:
       color-name: 1.1.4
+    dev: false
 
   /color-rgba@2.4.0:
     resolution: {integrity: sha512-Nti4qbzr/z2LbUWySr7H9dk3Rl7gZt7ihHAxlgT4Ho90EXWkjtkL1avTleu9yeGuqrt/chxTB6GKK8nZZ6V0+Q==}
     dependencies:
       color-parse: 1.4.3
       color-space: 2.0.1
+    dev: false
 
   /color-space@2.0.1:
     resolution: {integrity: sha512-nKqUYlo0vZATVOFHY810BSYjmCARrG7e5R3UE3CQlyjJTvv5kSSmPG1kzm/oDyyqjehM+lW1RnEt9It9GNa5JA==}
+    dev: false
 
   /color-support@1.1.3:
     resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==}
@@ -20057,6 +19983,7 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.3
+    dev: true
 
   /rollup@4.16.4:
     resolution: {integrity: sha512-kuaTJSUbz+Wsb2ATGvEknkI12XV40vIiHmLuFlejoo7HtDok/O5eDDD0UpCVY5bBX5U5RYo8wWP83H7ZsqVEnA==}
@@ -20082,7 +20009,6 @@ packages:
       '@rollup/rollup-win32-ia32-msvc': 4.16.4
       '@rollup/rollup-win32-x64-msvc': 4.16.4
       fsevents: 2.3.3
-    dev: true
 
   /rrweb-cssom@0.6.0:
     resolution: {integrity: sha512-APM0Gt1KoXBz0iIkkdB/kfvGOwC4UuJFeG/c+yV7wSc7q96cG/kJ0HiYCnzivD9SB53cLV1MlHFNfOuPaadYSw==}

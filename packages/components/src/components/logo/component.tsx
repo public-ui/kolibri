@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { devHint, setState } from '@public-ui/schema';
+import { devHint, setState } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { BUND_LOGO_TEXT_MAP, Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';

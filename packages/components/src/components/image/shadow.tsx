@@ -1,5 +1,5 @@
-import type { ImageAPI, ImageSourcePropType, ImageStates, Loading } from '@public-ui/schema';
-import { validateImageSource, validateLoading, watchString } from '@public-ui/schema';
+import type { ImageAPI, ImageSourcePropType, ImageStates, Loading } from '../../schema';
+import { validateImageSource, validateLoading, watchString } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';

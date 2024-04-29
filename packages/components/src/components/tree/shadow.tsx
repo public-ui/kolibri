@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop } from '@stencil/core';
 
-import type { LabelPropType, TreeProps } from '@public-ui/schema';
+import type { LabelPropType, TreeProps } from '../../schema';
 import { KolTreeWcTag } from '../../core/component-names';
 
 @Component({

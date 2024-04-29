@@ -1,5 +1,5 @@
-import type { AccessKeyPropType, HideLabelPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanAPI, SpanStates, Stringified } from '@public-ui/schema';
-import { showExpertSlot, validateAccessKey, validateHideLabel, validateIcons, validateLabelWithExpertSlot, watchBoolean } from '@public-ui/schema';
+import type { AccessKeyPropType, HideLabelPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanAPI, SpanStates, Stringified } from '../../schema';
+import { showExpertSlot, validateAccessKey, validateHideLabel, validateIcons, validateLabelWithExpertSlot, watchBoolean } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { md } from '../../utils/markdown';

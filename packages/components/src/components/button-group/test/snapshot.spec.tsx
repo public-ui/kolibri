@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getButtonGroupHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { ButtonGroupProps } from '@public-ui/schema';
+import type { ButtonGroupProps } from '../../../schema';
 import { KolButtonGroup } from '../shadow';
 import { KolButtonGroupWc } from '../component';
 

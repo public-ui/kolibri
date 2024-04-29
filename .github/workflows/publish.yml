@@ -55,12 +55,6 @@ jobs:
       - name: Build
         run: pnpm -r build
 
-      - name: Build and publish schema
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
-        working-directory: packages/schema
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish components
         continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
