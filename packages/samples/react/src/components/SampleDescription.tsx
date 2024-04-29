@@ -1,4 +1,3 @@
-import './SampleDescription.css';
 import type { FC, PropsWithChildren } from 'react';
 import React, { useContext, useMemo } from 'react';
 
@@ -16,9 +15,9 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 	}, [PUBLIC_DOC_COMPONENT_URL, location.href]);
 
 	return hideMenus ? null : (
-		<div className="flex mb-sm">
+		<div className="flex justify-between mb-sm">
 			<KolIndentedText>{props.children}</KolIndentedText>
-			<div className="links">
+			<div className="flex flex-wrap gap-2">
 				<KolLink _href={docRedirect} _label="Dokumentation" _target="_blank" />
 				<KolLink _href={`${location.href}?hideMenus`} _label="Beispiel" _target="_blank" />
 			</div>
