@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui-/theme-ecl",
-	"version": "2.0.15",
+	"version": "2.1.0",
 	"private": true,
 	"type": "module",
 	"sideEffects": false,
@@ -20,8 +20,8 @@
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.15",
-		"@public-ui/visual-tests": "2.0.15",
+		"@public-ui/components": "2.1.0",
+		"@public-ui/visual-tests": "2.1.0",
 		"@rollup/plugin-commonjs": "25.0.7",
 		"@rollup/plugin-node-resolve": "15.2.3",
 		"@rollup/plugin-typescript": "11.1.6",
@@ -39,7 +39,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.15"
+		"@public-ui/components": "2.1.0"
 	},
 	"exports": {
 		".": {
