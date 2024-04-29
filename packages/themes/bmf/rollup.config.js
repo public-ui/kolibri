@@ -17,7 +17,6 @@ export default {
 			sourcemap: true,
 		},
 	],
-	external: ['@public-ui/schema'],
 	plugins: [
 		typescript(),
 		nodeResolve(),
