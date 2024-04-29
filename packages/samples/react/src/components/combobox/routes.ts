@@ -1,8 +1,8 @@
 import { Routes } from '../../shares/types';
-import { ComboboxbBasic } from './basic';
+import { ComboboxBasic } from './basic';
 
-export const COMBOBOX_ROUTES: Routes = {
-	'combo-box': {
-		basic: ComboboxbBasic,
+export const Combobox_ROUTES: Routes = {
+	Combobox: {
+		basic: ComboboxBasic,
 	},
 };

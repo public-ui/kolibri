@@ -7,7 +7,6 @@ import type {
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
-	PropMultiple,
 	PropName,
 	PropOptionsWithOptgroup,
 	PropRequired,
@@ -15,15 +14,11 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, SelectOption, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHorizontalIcons, ComboboxOption, Stringified, W3CInputValue } from '../types';
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropOptionsWithOptgroup;
 type OptionalProps = {
 	accessKey: string;
-	alert: boolean;
-	/**
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
 	error: string;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;
@@ -35,9 +30,7 @@ type OptionalProps = {
 	PropHideLabel &
 	PropLabelWithExpertSlot &
 	PropMsg &
-	PropMultiple &
 	PropName &
-	PropOptionsWithOptgroup & // PropOptionsWithOptgroup becomes required with 2.0
 	PropRequired &
 	PropRows &
 	PropSyncValueBySelector &
@@ -45,13 +38,11 @@ type OptionalProps = {
 
 type RequiredStates = {
 	hasValue: boolean;
-	options: SelectOption<W3CInputValue>[];
+	options: ComboboxOption<W3CInputValue>[];
 	value: W3CInputValue[];
-	inputValue: W3CInputValue;
-	filtredOptions: SelectOption<W3CInputValue>[];
+	inputValue: string;
 } & PropId &
 	PropHideError &
-	PropMultiple &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
@@ -70,7 +61,7 @@ type OptionalStates = {
 	PropMsg &
 	PropTouched;
 
-export type ComboBoxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type ComboBoxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type ComboBoxWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
-export type ComboBoxAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type ComboboxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type ComboboxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type ComboboxWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export type ComboboxAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

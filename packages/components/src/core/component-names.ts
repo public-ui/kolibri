@@ -12,7 +12,6 @@ export let KolButtonGroupTag = 'kol-button-group' as const;
 export let KolButtonGroupWcTag = 'kol-button-group-wc' as const;
 export let KolButtonLinkTag = 'kol-button-link' as const;
 export let KolCardTag = 'kol-card' as const;
-export let KolComboboxTag = 'kol-Combo-box' as const;
 export let KolDetailsTag = 'kol-details' as const;
 export let KolFormTag = 'kol-form' as const;
 export let KolHeadingTag = 'kol-heading' as const;
@@ -76,7 +75,6 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolButtonGroupWcTag = transformTagName(KolButtonGroupWcTag as string) as 'kol-button-group-wc';
 	KolButtonLinkTag = transformTagName(KolButtonLinkTag as string) as 'kol-button-link';
 	KolCardTag = transformTagName(KolCardTag as string) as 'kol-card';
-	KolComboboxTag = transformTagName(KolComboboxTag as string) as 'kol-Combo-box';
 	KolDetailsTag = transformTagName(KolDetailsTag as string) as 'kol-details';
 	KolFormTag = transformTagName(KolFormTag as string) as 'kol-form';
 	KolHeadingTag = transformTagName(KolHeadingTag as string) as 'kol-heading';

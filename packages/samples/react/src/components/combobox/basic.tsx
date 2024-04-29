@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolComboBox } from '@public-ui/react';
+import { KolCombobox } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
@@ -26,13 +26,13 @@ const SALUTATION_OPTIONS: SelectOption<string>[] = [
 	},
 ];
 
-export const ComboboxbBasic: FC = () => (
+export const ComboboxBasic: FC = () => (
 	<>
 		<SampleDescription>
-			Here's combobox example: This combobox merges a text input with a dropdown list, enabling users to type or select their choice.
+			Here's Combobox example: This Combobox merges a text input with a dropdown list, enabling users to type or select their choice.
 		</SampleDescription>
 		<p>
-			<KolComboBox _label="Label" _options={SALUTATION_OPTIONS} />
+			<KolCombobox _label="Label" _options={SALUTATION_OPTIONS} />
 		</p>
 	</>
 );

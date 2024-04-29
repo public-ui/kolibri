@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { Optgroup, Option, StencilUnknown } from '../types';
+import type { ComboboxOption, Optgroup, Option, StencilUnknown } from '../types';
 import type { Stringified } from '../types/common';
 import type { WatchOptions } from '../utils';
 import { watchJsonArrayString } from '../utils';
@@ -9,7 +9,7 @@ import { validateInputSelectOptions } from '../validators';
 /* types */
 
 export type OptionsPropType = Stringified<Option<StencilUnknown>[]>;
-export type OptionsWithOptgroupPropType = Stringified<(Option<StencilUnknown> | Optgroup<StencilUnknown>)[]>;
+export type OptionsWithOptgroupPropType = Stringified<(Option<StencilUnknown> | Optgroup<StencilUnknown> | ComboboxOption<StencilUnknown>)[]>;
 
 /**
  * Options the user can choose from.
