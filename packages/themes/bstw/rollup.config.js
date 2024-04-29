@@ -1,5 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default {
 	input: 'src/index.ts',
@@ -18,6 +20,8 @@ export default {
 	external: ['@public-ui/schema'],
 	plugins: [
 		typescript(),
+		nodeResolve(),
+		commonjs(),
 		postcss({
 			plugins: [],
 			inject: false,
