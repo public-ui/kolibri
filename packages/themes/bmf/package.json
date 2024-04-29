@@ -1,20 +1,24 @@
 {
 	"name": "@public-ui/theme-bmf",
-	"version": "2.0.14",
+	"version": "2.0.15",
 	"private": true,
+	"type": "module",
+	"sideEffects": false,
 	"scripts": {
-		"build": "unbuild",
+		"build": "rollup -c",
+		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "unbuild",
+		"prepack": "pnpm build",
 		"test": "THEME_MODULE=dist THEME_EXPORT=BMF kolibri-visual-test",
 		"test-update": "THEME_MODULE=dist THEME_EXPORT=BMF kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.14",
-		"@public-ui/visual-tests": "2.0.14",
+		"@public-ui/schema": "2.0.15",
+		"@public-ui/visual-tests": "2.0.15",
+		"@rollup/plugin-typescript": "11.1.6",
 		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.7.1",
 		"@typescript-eslint/parser": "7.7.1",
@@ -22,16 +26,15 @@
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.1.0",
 		"postcss": "8.4.38",
+		"rollup": "4.16.4",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass": "1.75.0",
 		"typescript": "5.4.5",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.14"
+		"@public-ui/components": "2.0.15"
 	},
-	"sideEffects": false,
-	"type": "module",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",

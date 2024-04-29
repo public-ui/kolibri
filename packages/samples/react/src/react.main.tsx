@@ -29,7 +29,7 @@ const getThemes = async () => {
 	}
 
 	/* List of regular sample app themes */
-	return [BMF, BStW, DEFAULT, ECL_EC, ECL_EU, ITZBund];
+	return [BMF, BStW, DEFAULT, ECL_EC, ECL_EU, ITZBund] as Theme[];
 };
 
 void (async () => {
