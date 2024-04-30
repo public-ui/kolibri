@@ -8,7 +8,28 @@ Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tab
 
 TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.
 
-Beispiel:
+## Selektion
+
+Über die `_selection`-Property kann der "Selection-Modus" der Komponente aktiviert und gesteuert werden. Ist `_selection` definiert, erhält jede Zeile eine Checkbox, über die sich die Zeile aus- oder abwählen lässt.
+
+```ts
+const data = [
+	{ id: '1001', name: 'Marianne Musterfrau' },
+	{ id: '1002', name: 'Max Mustermann' },
+];
+const selection: KoliBriTableSelection = {
+	/* label: Funktion, welche für jede Zeile ausgerufen wird, und ein Label für die Checkbox zurückgibt. */
+	label: (row: KoliBriTableCell[]) => `Selection for ${(row.data as Data).name}`,
+
+	/* selectedKeys: Array von Strings, das die Key-Properties der gewählten Zeilen beinhaltet */
+	selectedKeys: ['1002'],
+
+	/* keyPropertyName: Eigenschaft, auf die sich `selectedKeys` bezieht. Default-Wert: `id` */
+	keyPropertyName: 'id',
+};
+```
+
+## Beispiel
 
 ```jsx
 <KolTableStateless
@@ -21,8 +42,11 @@ Beispiel:
     ],
   }}
   _data={DATA}
-  className="block"
-  style={{ maxWidth: '600px' }}
+  _selection={{
+    label: (row: KoliBriTableCell[]) => `Selection for ${(row.data as Data).name}`,
+    selectedKeys: ['1002'],
+    keyPropertyName: 'id',
+  }}
   _on={{
     /**
      * @param {MouseEvent} _
@@ -33,6 +57,14 @@ Beispiel:
     onSort: (_: MouseEvent, payload: SortEventPayload) => {
       /* Perform sort, update `DATA` and headers `sortDirection` */
     },
+
+    /**
+     * @param {Event} _
+     * @param {string[]} selection - Array of selected keys
+     */
+    onSelectionChange: (_: Event, selection: string[]) => {
+      /* Update selection.selectedKeys state */
+    }
   }}
 />
 ```
