@@ -11,8 +11,8 @@ import type {
 	LinkTargetPropType,
 	Stringified,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
-import { propagateFocus } from '@public-ui/schema';
+} from '../../schema';
+import { propagateFocus } from '../../schema';
 import { Component, Element, h, Host, Prop } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';

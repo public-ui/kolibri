@@ -1,10 +1,10 @@
 import type { JSX } from '@stencil/core';
-import { validateErrorList, watchBoolean, watchString } from '@public-ui/schema';
+import { validateErrorList, watchBoolean, watchString } from '../../schema';
 import { Component, h, Host, Prop, State, Watch, Method } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
-import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '@public-ui/schema';
+import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { KolAlertTag, KolIndentedTextTag, KolLinkTag } from '../../core/component-names';
 /**
  * @slot - Inhalt der Form.

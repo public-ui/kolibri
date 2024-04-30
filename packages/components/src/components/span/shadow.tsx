@@ -1,4 +1,4 @@
-import type { AccessKeyPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanProps, Stringified } from '@public-ui/schema';
+import type { AccessKeyPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanProps, Stringified } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
 import { KolSpanWcTag } from '../../core/component-names';

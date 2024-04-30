@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInputDateHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputDateProps } from '@public-ui/schema';
+import type { InputDateProps } from '../../../schema';
 import { KolInputDate } from '../component';
 
 executeTests<InputDateProps>(

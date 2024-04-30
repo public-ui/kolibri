@@ -16,7 +16,7 @@ import type {
 	TableSelectionPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
-} from '@public-ui/schema';
+} from '../../schema';
 import {
 	validateLabel,
 	validateTableCallbacks,
@@ -25,7 +25,7 @@ import {
 	validateTableHeaderCells,
 	validateTableSelection,
 	watchString,
-} from '@public-ui/schema';
+} from '../../schema';
 import { KolButtonWcTag, KolInputCheckboxTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';

@@ -13,8 +13,8 @@ import type {
 	TextareaAPI,
 	TextareaStates,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
-import { propagateFocus, setState, showExpertSlot } from '@public-ui/schema';
+} from '../../schema';
+import { propagateFocus, setState, showExpertSlot } from '../../schema';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';

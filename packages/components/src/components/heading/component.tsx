@@ -1,5 +1,5 @@
-import type { HeadingAPI, HeadingLevel, HeadingStates, HeadingVariantPropType, LabelWithExpertSlotPropType } from '@public-ui/schema';
-import { validateHeadingVariant, validateLabelWithExpertSlot, watchString } from '@public-ui/schema';
+import type { HeadingAPI, HeadingLevel, HeadingStates, HeadingVariantPropType, LabelWithExpertSlotPropType } from '../../schema';
+import { validateHeadingVariant, validateLabelWithExpertSlot, watchString } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { watchHeadingLevel } from './validation';

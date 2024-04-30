@@ -72,7 +72,7 @@ importers:
         specifier: 11.2.14
         version: 11.2.14(rxjs@6.6.7)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -120,7 +120,7 @@ importers:
         specifier: 12.2.17
         version: 12.2.17(rxjs@7.8.1)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -168,7 +168,7 @@ importers:
         specifier: 13.4.0
         version: 13.4.0(rxjs@7.8.1)(zone.js@0.11.8)
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -216,7 +216,7 @@ importers:
         specifier: 14.3.0
         version: 14.3.0(rxjs@7.8.1)(zone.js@0.12.0)
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -264,7 +264,7 @@ importers:
         specifier: 15.2.10
         version: 15.2.10(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -312,7 +312,7 @@ importers:
         specifier: 16.2.12
         version: 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -360,7 +360,7 @@ importers:
         specifier: 17.3.6
         version: 17.3.6(rxjs@7.8.1)(zone.js@0.14.4)
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -396,7 +396,7 @@ importers:
   packages/adapters/hydrate:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../components
       rimraf:
         specifier: 5.0.5
@@ -405,14 +405,14 @@ importers:
   packages/adapters/preact:
     dependencies:
       '@public-ui/react':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../react
       preact:
         specifier: '>=10.20.2'
         version: 10.20.2
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../components
       react:
         specifier: 18.3.1
@@ -430,7 +430,7 @@ importers:
   packages/adapters/react:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -466,7 +466,7 @@ importers:
   packages/adapters/react-standalone:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../components
       react:
         specifier: '>=16.14.0'
@@ -476,7 +476,7 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@public-ui/react':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../react
       cpy-cli:
         specifier: 5.0.0
@@ -488,7 +488,7 @@ importers:
   packages/adapters/solid:
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -518,7 +518,7 @@ importers:
         specifier: 7.24.0
         version: 7.24.0
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../components
       '@types/minimatch':
         specifier: 5.1.2
@@ -547,15 +547,33 @@ importers:
       '@floating-ui/dom':
         specifier: 1.6.3
         version: 1.6.3
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../schema
       adopted-style-sheets:
         specifier: 1.1.4
         version: 1.1.4
+      clsx:
+        specifier: 2.1.1
+        version: 2.1.1
+      color-convert:
+        specifier: 2.0.1
+        version: 2.0.1
+      color-rgba:
+        specifier: 2.4.0
+        version: 2.4.0
       markdown-it:
         specifier: 14.1.0
         version: 14.1.0
+      query-selector-all-shadow-root:
+        specifier: 0.0.3
+        version: 0.0.3
+      query-selector-shadow-root:
+        specifier: 0.0.3
+        version: 0.0.3
+      rgba-convert:
+        specifier: 0.3.0
+        version: 0.3.0
+      wcag-contrast:
+        specifier: 3.0.0
+        version: 3.0.0
     devDependencies:
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
@@ -578,6 +596,9 @@ importers:
       '@stencil/sass':
         specifier: 3.0.11
         version: 3.0.11(@stencil/core@4.17.1)
+      '@types/color-convert':
+        specifier: 2.0.3
+        version: 2.0.3
       '@types/jest':
         specifier: 26.0.24
         version: 26.0.24
@@ -596,6 +617,9 @@ importers:
       '@types/twig':
         specifier: 1.12.16
         version: 1.12.16
+      '@types/wcag-contrast':
+        specifier: 3.0.3
+        version: 3.0.3
       '@typescript-eslint/eslint-plugin':
         specifier: 7.7.1
         version: 7.7.1(@typescript-eslint/parser@7.7.1)(eslint@8.57.0)(typescript@5.4.5)
@@ -605,12 +629,6 @@ importers:
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
-      clsx:
-        specifier: 2.1.1
-        version: 2.1.1
-      color-rgba:
-        specifier: 2.4.0
-        version: 2.4.0
       cross-env:
         specifier: 7.0.3
         version: 7.0.3
@@ -721,13 +739,13 @@ importers:
   packages/designer:
     dependencies:
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../components
       '@public-ui/solid':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../adapters/solid
       '@public-ui/themes':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../themes
       adopted-style-sheets:
         specifier: 1.1.4
@@ -833,13 +851,13 @@ importers:
         specifier: 17.3.6
         version: 17.3.6(@angular/common@17.3.6)(@angular/core@17.3.6)(@angular/platform-browser@17.3.6)(rxjs@7.8.1)
       '@public-ui/angular-v17':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../adapters/angular/v17
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../components
       '@public-ui/theme-default':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../themes/default
       rxjs:
         specifier: ~7.8.1
@@ -897,13 +915,13 @@ importers:
         specifier: 1.3.50
         version: 1.3.50(@leanup/stack@1.3.50)(esbuild@0.20.2)(less@4.2.0)(postcss@8.4.38)
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../components
       '@public-ui/react':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../adapters/react
       '@public-ui/themes':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../themes
       '@types/node':
         specifier: ts5.4
@@ -972,61 +990,6 @@ importers:
         specifier: 1.4.0
         version: 1.4.0
 
-  packages/schema:
-    dependencies:
-      adopted-style-sheets:
-        specifier: 1.1.4
-        version: 1.1.4
-      color-convert:
-        specifier: 2.0.1
-        version: 2.0.1
-      color-rgba:
-        specifier: 2.4.0
-        version: 2.4.0
-      query-selector-all-shadow-root:
-        specifier: 0.0.3
-        version: 0.0.3
-      query-selector-shadow-root:
-        specifier: 0.0.3
-        version: 0.0.3
-      rgba-convert:
-        specifier: 0.3.0
-        version: 0.3.0
-      wcag-contrast:
-        specifier: 3.0.0
-        version: 3.0.0
-    devDependencies:
-      '@types/color-convert':
-        specifier: 2.0.3
-        version: 2.0.3
-      '@types/node':
-        specifier: ts5.4
-        version: 20.12.7
-      '@types/wcag-contrast':
-        specifier: 3.0.3
-        version: 3.0.3
-      '@typescript-eslint/eslint-plugin':
-        specifier: 7.7.1
-        version: 7.7.1(@typescript-eslint/parser@7.7.1)(eslint@8.57.0)(typescript@5.4.5)
-      '@typescript-eslint/parser':
-        specifier: 7.7.1
-        version: 7.7.1(eslint@8.57.0)(typescript@5.4.5)
-      eslint:
-        specifier: 8.57.0
-        version: 8.57.0
-      eslint-plugin-no-loops:
-        specifier: 0.3.0
-        version: 0.3.0(eslint@8.57.0)
-      nodemon:
-        specifier: 3.1.0
-        version: 3.1.0
-      typescript:
-        specifier: 5.4.5
-        version: 5.4.5
-      unbuild:
-        specifier: 1.2.1
-        version: 1.2.1(sass@1.75.0)
-
   packages/test-tag-name-transformer:
     devDependencies:
       '@public-ui/theme-default':
@@ -1037,14 +1000,16 @@ importers:
         version: link:../tools/visual-tests
 
   packages/themes:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.15
-        version: link:../components
     devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../schema
+      '@public-ui/components':
+        specifier: 2.1.0
+        version: link:../components
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1083,17 +1048,19 @@ importers:
         version: 5.4.5
 
   packages/themes/bmf:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.15
-        version: link:../../components
     devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
+      '@public-ui/components':
+        specifier: 2.1.0
+        version: link:../../components
       '@public-ui/visual-tests':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1135,17 +1102,19 @@ importers:
         version: 1.2.1(sass@1.75.0)
 
   packages/themes/bstw:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.15
-        version: link:../../components
     devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
+      '@public-ui/components':
+        specifier: 2.1.0
+        version: link:../../components
       '@public-ui/visual-tests':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1187,17 +1156,19 @@ importers:
         version: 1.2.1(sass@1.75.0)
 
   packages/themes/default:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.15
-        version: link:../../components
     devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
+      '@public-ui/components':
+        specifier: 2.1.0
+        version: link:../../components
       '@public-ui/visual-tests':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1239,17 +1210,19 @@ importers:
         version: 1.2.1(sass@1.75.0)
 
   packages/themes/ecl:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.15
-        version: link:../../components
     devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
+      '@public-ui/components':
+        specifier: 2.1.0
+        version: link:../../components
       '@public-ui/visual-tests':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1291,17 +1264,19 @@ importers:
         version: 1.2.1(sass@1.75.0)
 
   packages/themes/itzbund:
-    dependencies:
-      '@public-ui/components':
-        specifier: 2.0.15
-        version: link:../../components
     devDependencies:
-      '@public-ui/schema':
-        specifier: 2.0.15
-        version: link:../../schema
+      '@public-ui/components':
+        specifier: 2.1.0
+        version: link:../../components
       '@public-ui/visual-tests':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../tools/visual-tests
+      '@rollup/plugin-commonjs':
+        specifier: 25.0.7
+        version: 25.0.7(rollup@4.16.4)
+      '@rollup/plugin-node-resolve':
+        specifier: 15.2.3
+        version: 15.2.3(rollup@4.16.4)
       '@rollup/plugin-typescript':
         specifier: 11.1.6
         version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
@@ -1367,7 +1342,7 @@ importers:
         version: 7.6.0
     devDependencies:
       '@public-ui/components':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../components
       '@types/gradient-string':
         specifier: 1.1.6
@@ -1433,7 +1408,7 @@ importers:
         specifier: 1.43.1
         version: 1.43.1
       '@public-ui/sample-react':
-        specifier: 2.0.15
+        specifier: 2.1.0
         version: link:../../samples/react
       axe-playwright:
         specifier: 2.0.1
@@ -6959,6 +6934,24 @@ packages:
       rollup: 3.29.4
     dev: true
 
+  /@rollup/plugin-commonjs@25.0.7(rollup@4.16.4):
+    resolution: {integrity: sha512-nEvcR+LRjEjsaSsc4x3XZfCCvZIaSMenZu/OiwOKGN2UhQpAYI7ru7czFvyWbErlpoGjnSX3D5Ch5FcMA3kRWQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.68.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.16.4)
+      commondir: 1.0.1
+      estree-walker: 2.0.2
+      glob: 8.1.0
+      is-reference: 1.2.1
+      magic-string: 0.30.10
+      rollup: 4.16.4
+    dev: true
+
   /@rollup/plugin-json@6.1.0(rollup@3.29.4):
     resolution: {integrity: sha512-EGI2te5ENk1coGeADSIwZ7G2Q8CJS2sF120T7jLw4xFw9n7wIOXHo+kIYRAoVpJAN+kmqZSoO3Fp4JtoNF4ReA==}
     engines: {node: '>=14.0.0'}
@@ -6988,6 +6981,24 @@ packages:
       is-module: 1.0.0
       resolve: 1.22.8
       rollup: 3.29.4
+    dev: true
+
+  /@rollup/plugin-node-resolve@15.2.3(rollup@4.16.4):
+    resolution: {integrity: sha512-j/lym8nf5E21LwBT4Df1VD6hRO2L2iwUeUmP7litikRsVp1H6NWx20NEp0Y7su+7XGc476GnXXc4kFeZNGmaSQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.78.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.16.4)
+      '@types/resolve': 1.20.2
+      deepmerge: 4.3.1
+      is-builtin-module: 3.2.1
+      is-module: 1.0.0
+      resolve: 1.22.8
+      rollup: 4.16.4
     dev: true
 
   /@rollup/plugin-replace@5.0.5(rollup@3.29.4):
@@ -10057,7 +10068,7 @@ packages:
   /clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
-    dev: true
+    dev: false
 
   /cmd-shim@6.0.1:
     resolution: {integrity: sha512-S9iI9y0nKR4hwEQsVWpyxld/6kRfGepGfzff83FcaiEBpmvlbA2nnGe7Cylgrx2f/p1P5S5wpRm9oL8z1PbS3Q==}
@@ -10105,15 +10116,18 @@ packages:
     resolution: {integrity: sha512-BADfVl/FHkQkyo8sRBwMYBqemqsgnu7JZAwUgvBvuwwuNUZAhSvLTbsEErS5bQXzOjDR0dWzJ4vXN2Q+QoPx0A==}
     dependencies:
       color-name: 1.1.4
+    dev: false
 
   /color-rgba@2.4.0:
     resolution: {integrity: sha512-Nti4qbzr/z2LbUWySr7H9dk3Rl7gZt7ihHAxlgT4Ho90EXWkjtkL1avTleu9yeGuqrt/chxTB6GKK8nZZ6V0+Q==}
     dependencies:
       color-parse: 1.4.3
       color-space: 2.0.1
+    dev: false
 
   /color-space@2.0.1:
     resolution: {integrity: sha512-nKqUYlo0vZATVOFHY810BSYjmCARrG7e5R3UE3CQlyjJTvv5kSSmPG1kzm/oDyyqjehM+lW1RnEt9It9GNa5JA==}
+    dev: false
 
   /color-support@1.1.3:
     resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==}
@@ -13100,7 +13114,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.0.1
+      minimatch: 5.1.6
       once: 1.4.0
     dev: true
 
@@ -21380,7 +21394,7 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
-      terser: 5.29.1
+      terser: 5.30.4
       webpack: 5.90.3(esbuild@0.20.1)
     dev: true
 

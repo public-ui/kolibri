@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getButtonHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { ButtonProps } from '@public-ui/schema';
+import type { ButtonProps } from '../../../schema';
 import { KolButton } from '../shadow';
 import { KolButtonWc } from '../component';
 

@@ -1,8 +1,8 @@
-import type { InputCheckboxProps, InputCheckboxStates } from '@public-ui/schema';
+import type { InputCheckboxProps, InputCheckboxStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 import { KolIconTag, KolInputTag } from '../../../core/component-names';
-import { showExpertSlot } from '@public-ui/schema';
+import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
 export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {

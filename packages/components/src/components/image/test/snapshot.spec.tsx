@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getImageHtml } from './html.mock';
 
-import type { ImageProps } from '@public-ui/schema';
+import type { ImageProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolImage } from '../shadow';
 

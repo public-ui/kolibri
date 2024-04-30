@@ -5,7 +5,7 @@ import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { InternalToast } from './InternalToast';
 
-import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '@public-ui/schema';
+import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../schema';
 import { KolButtonTag } from '../../core/component-names';
 
 const TRANSITION_TIMEOUT = 300;

@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { type MsgPropType, propagateFocus, showExpertSlot } from '@public-ui/schema';
+import { type MsgPropType, propagateFocus, showExpertSlot } from '../../schema';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -26,7 +26,7 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 import { KolInputTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.

@@ -9,7 +9,7 @@ import type {
 	TableStatelessProps,
 	TableCallbacksPropType,
 	TableSelectionPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 
 @Component({
 	tag: 'kol-table-stateless',

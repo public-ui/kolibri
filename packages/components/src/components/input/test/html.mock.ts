@@ -1,8 +1,8 @@
-import type { InputProps } from '@public-ui/schema';
-import { showExpertSlot } from '@public-ui/schema';
+import type { InputProps } from '../../../schema';
+import { showExpertSlot } from '../../../schema';
 import { KolIconTag, KolTooltipWcTag, KolButtonWcTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
-import type { W3CInputValue, KoliBriCustomIcon } from '@public-ui/schema';
+import type { W3CInputValue, KoliBriCustomIcon } from '../../../schema';
 export const getInputHtml = (props: InputProps): string => {
 	const isMessageValidError = Boolean(props._msg?._type === 'error' && props._msg._description && props._msg._description?.length > 0);
 	const hasError = !props._readOnly && isMessageValidError && props._touched === true;

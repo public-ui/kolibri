@@ -8,7 +8,7 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
+} from '../../../schema';
 import {
 	a11yHint,
 	a11yHintDisabled,
@@ -25,7 +25,7 @@ import {
 	watchBoolean,
 	watchString,
 	validateTooltipAlign,
-} from '@public-ui/schema';
+} from '../../../schema';
 
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';

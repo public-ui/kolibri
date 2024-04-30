@@ -1,4 +1,4 @@
-import type { ButtonProps, InputTypeOnDefault, MsgPropType, PropLabelWithExpertSlot, Stringified } from '@public-ui/schema';
+import type { ButtonProps, InputTypeOnDefault, MsgPropType, PropLabelWithExpertSlot, Stringified } from '../../../schema';
 import type { Generic } from 'adopted-style-sheets';
 
 type RequiredProps = NonNullable<unknown>;

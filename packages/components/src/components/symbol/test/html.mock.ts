@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { translate } from '../../../i18n';
 
-import type { SymbolProps } from '@public-ui/schema';
+import type { SymbolProps } from '../../../schema';
 export const getSymbolHtml = (props: SymbolProps): string => {
 	props = mixMembers(
 		{

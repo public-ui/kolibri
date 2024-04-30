@@ -1,4 +1,4 @@
-import type { IconProps, IconStates } from '@public-ui/schema';
+import type { IconProps, IconStates } from '../../../schema';
 import { readFileSync } from 'fs';
 import { render } from 'mustache';
 import path from 'path';

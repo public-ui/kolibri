@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInputRadioHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputRadioProps } from '@public-ui/schema';
+import type { InputRadioProps } from '../../../schema';
 import { KolInputRadio } from '../component';
 
 executeTests<InputRadioProps>(

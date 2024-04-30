@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop } from '@stencil/core';
 
-import type { AvatarProps } from '@public-ui/schema';
+import type { AvatarProps } from '../../schema';
 import { KolAvatarWcTag } from '../../core/component-names';
 
 @Component({

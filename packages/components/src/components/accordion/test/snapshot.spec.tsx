@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getAccordionHtml } from './html.mock';
 
-import type { AccordionProps } from '@public-ui/schema';
+import type { AccordionProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolAccordion } from '../component';
 

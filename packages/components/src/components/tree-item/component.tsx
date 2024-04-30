@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '@public-ui/schema';
-import { validateActive, validateHref, validateLabel, validateOpen } from '@public-ui/schema';
+import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
+import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import { KolLinkTag } from '../../core/component-names';
 
 @Component({
