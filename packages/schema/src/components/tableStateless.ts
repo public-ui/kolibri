@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection, TableHeaderCells } from '../props';
-import type { KoliBriTableDataType } from '../types';
+import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
 import type { PropTableHeaderCells } from '../props/table-header-cells';
 
 type RequiredProps = PropLabel & PropTableData & PropTableHeaderCells;
@@ -20,8 +20,8 @@ type RequiredStates = {
 type OptionalStates = {
 	minWidth: string;
 	dataFoot: KoliBriTableDataType[];
-} & PropTableCallbacks &
-	PropTableSelection;
+	selection: KoliBriTableSelection;
+} & PropTableCallbacks;
 
 export type TableStatelessProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type TableStatelessStates = Generic.Element.Members<RequiredStates, OptionalStates>;

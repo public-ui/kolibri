@@ -8,6 +8,7 @@ import { TableRenderCell } from './render-cell';
 import { TableSortData } from './sort-data';
 import { TableStateless } from './stateless';
 import { TableWithFooter } from './with-footer';
+import { TableStatelessWithSelection } from './stateless-with-selection';
 import { TableWithPagination } from './with-pagination';
 
 export const TABLE_ROUTES: Routes = {
@@ -20,6 +21,7 @@ export const TABLE_ROUTES: Routes = {
 		'render-cell': TableRenderCell,
 		'sort-data': TableSortData,
 		'with-footer': TableWithFooter,
+		'stateless-with-selection': TableStatelessWithSelection,
 		'with-pagination': TableWithPagination,
 		stateless: TableStateless,
 	},

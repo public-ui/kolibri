@@ -1,0 +1,41 @@
+import type { FC } from 'react';
+import React from 'react';
+import { KolTableStateless } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
+import type { KoliBriTableSelection } from '@public-ui/components';
+
+const DATA = [
+	{ id: '1001', name: 'Foo Bar' },
+	{ id: '1002', name: 'Foo Baz' },
+];
+type Data = (typeof DATA)[0];
+
+export const TableStatelessWithSelection: FC = () => {
+	const selection: KoliBriTableSelection = {
+		label: (row) => `Selection for ${(row.data as Data).name}`,
+		selectedKeys: ['1002'],
+		keyPropertyName: 'id',
+	};
+
+	return (
+		<>
+			<SampleDescription>KolTableStateless with selection</SampleDescription>
+
+			<KolTableStateless
+				_label="Table with selection checkboxes"
+				_headerCells={{
+					horizontal: [
+						[
+							{ key: 'id', label: '#ID', textAlign: 'left' },
+							{ key: 'name', label: 'Name', textAlign: 'left' },
+						],
+					],
+				}}
+				_data={DATA}
+				_selection={selection}
+				className="block"
+				style={{ maxWidth: '600px' }}
+			/>
+		</>
+	);
+};

@@ -26,7 +26,7 @@ import {
 	validateTableSelection,
 	watchString,
 } from '@public-ui/schema';
-import { KolButtonWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolInputCheckboxTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 
 @Component({
@@ -224,7 +224,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return primaryHeader;
 	}
 
-	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): KoliBriTableCell[][] {
+	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): (KoliBriTableCell & KoliBriTableDataType)[][] {
 		headers.horizontal = Array.isArray(headers?.horizontal) ? headers.horizontal : [];
 		headers.vertical = Array.isArray(headers?.vertical) ? headers.vertical : [];
 		const primaryHeader = this.getPrimaryHeader(headers);
@@ -353,8 +353,33 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateSelection(this._selection);
 	}
 
-	private readonly renderTableRow = (row: KoliBriTableCell[], rowIndex: number): JSX.Element => {
-		return <tr key={`tbody-${rowIndex}`}>{row.map((col, colIndex) => this.renderTableCell(col, rowIndex, colIndex))}</tr>;
+	private renderSelectionCell(row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element {
+		if (this.state._selection) {
+			const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
+			const keyCell = row.find((cell) => cell.key === keyPropertyName);
+			if (keyCell) {
+				const keyProperty = (keyCell?.data as KoliBriTableDataType)[keyPropertyName] as string;
+				const selected = this.state._selection?.selectedKeys?.includes(keyProperty);
+				const label = this.state._selection.label(keyCell);
+
+				return (
+					<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
+						<KolInputCheckboxTag _label={label} _hideLabel _checked={selected} />
+					</td>
+				);
+			}
+		}
+
+		return '';
+	}
+
+	private readonly renderTableRow = (row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element => {
+		return (
+			<tr key={`tbody-${rowIndex}`}>
+				{this.renderSelectionCell(row, rowIndex)}
+				{row.map((col, colIndex) => this.renderTableCell(col, rowIndex, colIndex))}
+			</tr>
+		);
 	};
 
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
@@ -481,6 +506,7 @@ export class KolTableStateless implements TableStatelessAPI {
 							<thead>
 								{this.state._headerCells.horizontal.map((cols, rowIndex) => (
 									<tr key={`thead-${rowIndex}`}>
+										{this.state._selection && <td key="thead-selection" class="selection-header-cell"></td>}
 										{cols.map((cell, colIndex) => {
 											if (cell.asTd === true) {
 												return (
