@@ -1,5 +1,5 @@
-import type { LabelPropType, VersionAPI, VersionStates } from '@public-ui/schema';
-import { validateLabel } from '@public-ui/schema';
+import type { LabelPropType, VersionAPI, VersionStates } from '../../schema';
+import { validateLabel } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';

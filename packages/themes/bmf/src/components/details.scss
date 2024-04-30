@@ -1,23 +1,38 @@
 @layer kol-theme-component {
-	details > summary {
-		border-radius: var(--border-radius);
-		font-family: var(--font-family);
-	}
+	details {
+		> summary {
+			min-height: 2.75rem;
+			display: flex;
+			border-radius: var(--border-radius);
+			font-family: var(--font-family);
+			color: var(--color-midnight);
+			gap: 0.25rem;
 
-	details .kol-indented-text-wc {
-		margin: 0.25em 0px 0px 0.65em;
-	}
+			> span {
+				border: none;
 
-	details .kol-icon {
-		font-size: 2rem;
-	}
+				&:hover {
+					box-shadow: 0 3px var(--color-ocean);
+				}
+			}
+		}
 
-	.kol-icon::part(icon) {
-		font-family: 'Material Symbols Rounded';
-		font-weight: 400;
-	}
+		.kol-indented-text-wc {
+			margin: 0.25em 0 0 0.65em;
+		}
 
-	details .kol-icon::part(icon):before {
-		content: 'chevron_right';
+		.kol-icon {
+			font-size: 1rem;
+
+			&::part(icon) {
+				font-family: 'Material Symbols Rounded';
+				font-weight: 400;
+				color: var(--color-midnight);
+
+				&:before {
+					content: 'chevron_right';
+				}
+			}
+		}
 	}
 }

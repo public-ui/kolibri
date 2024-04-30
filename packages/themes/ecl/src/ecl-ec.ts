@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/schema';
+import { KoliBri } from '@public-ui/components';
 import globalCss from './global-ec.scss';
 import accordionCss from './components/ecl-ec/accordion.scss';
 import alertCss from './components/ecl-ec/alert.scss';
@@ -33,7 +33,8 @@ import selectCss from './components/ecl-ec/select.scss';
 import skipNavCss from './components/ecl-ec/skip-nav.scss';
 import spinCss from './components/ecl-ec/spin.scss';
 import splitButtonCss from './components/ecl-ec/split-button.scss';
-import tableCss from './components/ecl-ec/table.scss';
+import tableStatefulCss from './components/ecl-ec/table-stateful.scss';
+import tableStatelessCss from './components/ecl-ec/table-stateless.scss';
 import tabsCss from './components/ecl-ec/tabs.scss';
 import textareaCss from './components/ecl-ec/textarea.scss';
 import toastContainerCss from './components/ecl-ec/toast-container.scss';
@@ -73,7 +74,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-SELECT': selectCss,
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-ICON': iconCss,
-	'KOL-TABLE': tableCss,
+	'KOL-TABLE-STATEFUL': tableStatefulCss,
+	'KOL-TABLE-STATELESS': tableStatelessCss,
 	'KOL-NAV': navCss,
 	'KOL-SKIP-NAV': skipNavCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,

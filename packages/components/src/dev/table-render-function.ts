@@ -1,4 +1,4 @@
-import type { KoliBriTableCell, KoliBriTableHeaders } from '@public-ui/schema';
+import type { KoliBriTableCell, KoliBriTableHeaders } from '../schema';
 
 type Data = {
 	order: number;

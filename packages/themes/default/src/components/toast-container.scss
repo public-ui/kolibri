@@ -1,10 +1,12 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
-		top: 1rem;
-		right: 1rem;
+		top: rem(16);
+		right: rem(16);
 		width: 440px;
 	}
 	.toast {
-		margin-top: 1rem;
+		margin-top: rem(16);
 	}
 }

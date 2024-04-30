@@ -1,4 +1,4 @@
-import type { ButtonGroupAPI, ButtonGroupStates } from '@public-ui/schema';
+import type { ButtonGroupAPI, ButtonGroupStates } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, State } from '@stencil/core';
 

@@ -1,3 +1,5 @@
+@import 'rem';
+
 @mixin kol-alert-wc {
 	display: block;
 	width: 100%;
@@ -32,7 +34,7 @@
 
 	.kol-alert-wc > .heading > div {
 		display: grid;
-		gap: 0.25rem;
+		gap: rem(4);
 	}
 
 	.msg > .heading > .kol-icon {
@@ -152,7 +154,7 @@
 	}
 
 	.card > .heading {
-		padding: 0.5rem 1rem;
+		padding: rem(8) rem(16);
 	}
 
 	.card[_has-closer] > .heading {
@@ -163,7 +165,7 @@
 
 	.card > .heading > div {
 		width: 100%;
-		min-height: 1.25rem;
+		min-height: rem(20);
 	}
 
 	.card > .heading .heading-icon {
@@ -175,8 +177,8 @@
 		width: 100%;
 		color: var(--color-light);
 		display: flex;
-		font-size: 1.25rem;
-		line-height: 1.25rem;
+		font-size: rem(20);
+		line-height: rem(20);
 	}
 
 	.card > .heading .kol-heading-wc > * {
@@ -184,7 +186,7 @@
 	}
 
 	.card > .content {
-		padding: 1rem;
+		padding: rem(16);
 	}
 
 	.card.default > .heading {
@@ -208,7 +210,7 @@
 	}
 
 	:is(.error, .info, .success, .warning) .heading-icon {
-		font-size: 1.25rem;
+		font-size: rem(20);
 	}
 
 	.card > div > .content {
@@ -249,7 +251,7 @@
 		display: flex;
 		width: 1em;
 		height: 1em;
-		font-size: 1.2rem;
+		font-size: rem(19.2);
 	}
 
 	.close > button:active {

@@ -1,7 +1,7 @@
-import type { KoliBriCustomIcon, KoliBriIconsProp, SpanProps, SpanStates } from '@public-ui/schema';
+import type { KoliBriCustomIcon, KoliBriIconsProp, SpanProps, SpanStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 
-import { mapIconProp2State, showExpertSlot } from '@public-ui/schema';
+import { mapIconProp2State, showExpertSlot } from '../../../schema';
 
 import { md } from '../../../utils/markdown';
 import { KolIconTag } from '../../../core/component-names';

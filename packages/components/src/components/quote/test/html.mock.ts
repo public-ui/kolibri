@@ -1,10 +1,10 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { showExpertSlot } from '@public-ui/schema';
+import { showExpertSlot } from '../../../schema';
 
 import { KolLinkTag } from '../../../core/component-names';
 
-import type { QuoteProps, QuoteStates } from '@public-ui/schema';
+import type { QuoteProps, QuoteStates } from '../../../schema';
 type Slot = {
 	expert?: string;
 };

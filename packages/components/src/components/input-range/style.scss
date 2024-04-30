@@ -5,6 +5,9 @@
 @include kol-alert-styles;
 
 @layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
 	.inputs-wrapper {
 		align-items: center;
 		display: flex;

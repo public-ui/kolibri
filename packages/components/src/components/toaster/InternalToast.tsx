@@ -1,4 +1,4 @@
-import type { ToastState } from '@public-ui/schema';
+import type { ToastState } from '../../schema';
 import { h } from '@stencil/core';
 import { KolAlertTag } from '../../core/component-names';
 

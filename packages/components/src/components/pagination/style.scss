@@ -5,6 +5,7 @@
 	:host {
 		align-items: center;
 		display: grid;
+		font-size: rem(16);
 		gap: rem(16);
 		grid-template-columns: 1fr auto;
 	}

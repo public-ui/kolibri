@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { KoliBriHorizontalIcons, Stringified } from '@public-ui/schema';
-import { isIcon, isString, objectObjectHandler, parseJson, watchValidator } from '@public-ui/schema';
+import type { KoliBriHorizontalIcons, Stringified } from '../../../schema';
+import { isIcon, isString, objectObjectHandler, parseJson, watchValidator } from '../../../schema';
 
 import { InputController } from './controller';
 

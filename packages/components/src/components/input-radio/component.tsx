@@ -13,8 +13,8 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
-import { propagateFocus, showExpertSlot } from '@public-ui/schema';
+} from '../../schema';
+import { propagateFocus, showExpertSlot } from '../../schema';
 import { Component, Element, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -282,7 +282,10 @@ export class KolInputRadio implements InputRadioAPI {
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
 	}
-
+	@Watch('_tooltipAlign')
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		this.controller.validateTooltipAlign(value);
+	}
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		this.controller.validateAlert(value);

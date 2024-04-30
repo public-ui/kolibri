@@ -1,6 +1,6 @@
-export { KoliBriDevHelper, Optgroup, Option, SelectOption } from '@public-ui/schema';
-export type { Toast, ToasterOptions } from '@public-ui/schema';
-export * from '@public-ui/schema/dist/index.d';
+export { KoliBriDevHelper, Optgroup, Option, SelectOption } from './schema';
+export type { Toast, ToasterOptions } from './schema';
+export { KoliBri } from './schema';
 export * from './components.d';
 export { setCurrentLocation } from './components/link/ariaCurrentService';
 export { ToasterService } from './components/toaster/toaster';

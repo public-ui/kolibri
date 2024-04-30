@@ -11,7 +11,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 import { Component, Element, h, Host, Method, Prop, State, Watch, Fragment, Listen } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -20,7 +20,7 @@ import { ComboboxController } from './controller';
 
 import type { JSX } from '@stencil/core';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
-import { showExpertSlot } from '@public-ui/schema';
+import { showExpertSlot } from '../../schema';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 

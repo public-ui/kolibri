@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v17",
-	"version": "2.0.13",
+	"version": "2.1.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -66,11 +66,11 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "17.3.4",
-		"@angular/compiler": "17.3.4",
-		"@angular/compiler-cli": "17.3.4",
-		"@angular/core": "17.3.4",
-		"@public-ui/components": "2.0.13",
+		"@angular/common": "17.3.6",
+		"@angular/compiler": "17.3.6",
+		"@angular/compiler-cli": "17.3.6",
+		"@angular/core": "17.3.6",
+		"@public-ui/components": "2.1.0",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.3",
@@ -83,8 +83,8 @@
 		"zone.js": "0.14.4"
 	},
 	"peerDependencies": {
-		"@angular/core": "17.3.4",
-		"@public-ui/components": "2.0.13"
+		"@angular/core": "17.3.6",
+		"@public-ui/components": "2.1.0"
 	},
 	"files": [
 		"dist"

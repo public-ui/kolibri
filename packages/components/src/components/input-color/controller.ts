@@ -1,5 +1,5 @@
-import type { InputColorProps, InputColorWatches, InputTypeOnOff, SuggestionsPropType } from '@public-ui/schema';
-import { inputTypeOnOffOptions, validateSuggestions, watchString, watchValidator } from '@public-ui/schema';
+import type { InputColorProps, InputColorWatches, InputTypeOnOff, SuggestionsPropType } from '../../schema';
+import { inputTypeOnOffOptions, validateSuggestions, watchString, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 

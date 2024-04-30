@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { KolSpanWcTag } from '../../../core/component-names';
 
-import type { TooltipProps, TooltipStates } from '@public-ui/schema';
+import type { TooltipProps, TooltipStates } from '../../../schema';
 export const getTooltipHtml = (props: TooltipProps, additionalAttrs = ''): string => {
 	const state = mixMembers<TooltipProps, TooltipStates>(
 		{

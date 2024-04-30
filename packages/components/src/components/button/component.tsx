@@ -14,7 +14,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 import {
 	mapBoolean2String,
 	mapStringOrBoolean2String,
@@ -38,7 +38,7 @@ import {
 	validateTabIndex,
 	validateTooltipAlign,
 	watchString,
-} from '@public-ui/schema';
+} from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
