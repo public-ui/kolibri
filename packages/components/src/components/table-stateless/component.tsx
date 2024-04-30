@@ -29,6 +29,7 @@ import {
 import { KolButtonWcTag, KolInputCheckboxTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
+import { Events } from '../../schema/enums';
 
 @Component({
 	tag: 'kol-table-stateless-wc',
@@ -373,13 +374,16 @@ export class KolTableStateless implements TableStatelessAPI {
 							_checked={selected}
 							_tooltipAlign="right"
 							_on={{
-								onInput: (_, value) => {
+								onInput: (event: Event, value) => {
 									if (this.state._selection?.selectedKeys) {
 										const updatedSelectedKeys = value
 											? [...this.state._selection.selectedKeys, keyProperty]
 											: this.state._selection.selectedKeys.filter((key) => key !== keyProperty);
 
 										tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
+										if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
+											this.state._on[Events.onSelectionChange](event, updatedSelectedKeys);
+										}
 									}
 								},
 							}}

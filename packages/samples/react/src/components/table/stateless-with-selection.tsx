@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React, { useEffect, useRef } from 'react';
 import { KolTableStateless } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
-import type { KoliBriTableSelection } from '@public-ui/components';
+import type { KoliBriTableSelection, KoliBriTableCell } from '@public-ui/components';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar' },
@@ -12,7 +12,7 @@ type Data = (typeof DATA)[0];
 
 export const TableStatelessWithSelection: FC = () => {
 	const selection: KoliBriTableSelection = {
-		label: (row) => `Selection for ${(row.data as Data).name}`,
+		label: (row: KoliBriTableCell[]) => `Selection for ${(row.data as Data).name}`,
 		selectedKeys: ['1002'],
 		keyPropertyName: 'id',
 	};
@@ -20,7 +20,10 @@ export const TableStatelessWithSelection: FC = () => {
 	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>();
 
 	const handleSelectionChangeEvent = ({ detail: selection }) => {
-		console.log(selection);
+		console.log('Selection change via event', selection);
+	};
+	const handleSelectionChangeCallback = (_event, selection) => {
+		console.log('Selection change via callback', selection);
 	};
 
 	useEffect(() => {
@@ -47,6 +50,7 @@ export const TableStatelessWithSelection: FC = () => {
 				}}
 				_data={DATA}
 				_selection={selection}
+				_on={{ onSelectionChange: handleSelectionChangeCallback }}
 				className="block"
 				style={{ maxWidth: '600px' }}
 				ref={kolTableStatelessRef}
