@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { KolTableStateless } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableSelection } from '@public-ui/components';
@@ -16,6 +16,20 @@ export const TableStatelessWithSelection: FC = () => {
 		selectedKeys: ['1002'],
 		keyPropertyName: 'id',
 	};
+
+	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>();
+
+	const handleSelectionChangeEvent = ({ detail: selection }) => {
+		console.log(selection);
+	};
+
+	useEffect(() => {
+		kolTableStatelessRef.current?.addEventListener('kol-selection-change', handleSelectionChangeEvent);
+
+		return () => {
+			kolTableStatelessRef.current?.removeEventListener('kol-selection-change', handleSelectionChangeEvent);
+		};
+	}, [kolTableStatelessRef]);
 
 	return (
 		<>
@@ -35,6 +49,7 @@ export const TableStatelessWithSelection: FC = () => {
 				_selection={selection}
 				className="block"
 				style={{ maxWidth: '600px' }}
+				ref={kolTableStatelessRef}
 			/>
 		</>
 	);

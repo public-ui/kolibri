@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type {
 	KoliBriTableCell,
@@ -28,12 +28,15 @@ import {
 } from '@public-ui/schema';
 import { KolButtonWcTag, KolInputCheckboxTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
 
 @Component({
 	tag: 'kol-table-stateless-wc',
 	shadow: false,
 })
 export class KolTableStateless implements TableStatelessAPI {
+	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+
 	@State() public state: TableStatelessStates = {
 		_data: [],
 		_label: '',
@@ -364,7 +367,23 @@ export class KolTableStateless implements TableStatelessAPI {
 
 				return (
 					<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
-						<KolInputCheckboxTag _label={label} _hideLabel _checked={selected} />
+						<KolInputCheckboxTag
+							_label={label}
+							_hideLabel
+							_checked={selected}
+							_tooltipAlign="right"
+							_on={{
+								onInput: (_, value) => {
+									if (this.state._selection?.selectedKeys) {
+										const updatedSelectedKeys = value
+											? [...this.state._selection.selectedKeys, keyProperty]
+											: this.state._selection.selectedKeys.filter((key) => key !== keyProperty);
+
+										tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
+									}
+								},
+							}}
+						/>
 					</td>
 				);
 			}
