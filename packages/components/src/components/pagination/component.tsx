@@ -9,7 +9,7 @@ import type {
 	PaginationStates,
 	Stringified,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 import {
 	parseJson,
 	STATE_CHANGE_EVENT,
@@ -20,7 +20,7 @@ import {
 	watchJsonArrayString,
 	watchNumber,
 	watchValidator,
-} from '@public-ui/schema';
+} from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 

@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInputEmailHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputEmailProps } from '@public-ui/schema';
+import type { InputEmailProps } from '../../../schema';
 import { KolInputEmail } from '../component';
 
 executeTests<InputEmailProps>(

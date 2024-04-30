@@ -1,11 +1,11 @@
 import type { JSX } from '@stencil/core';
-import { validateLabel, validateTooltipAlign } from '@public-ui/schema';
+import { validateLabel, validateTooltipAlign } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { KolTooltipWcTag } from '../../core/component-names';
 
-import type { AbbrAPI, AbbrStates, LabelPropType, TooltipAlignPropType } from '@public-ui/schema';
+import type { AbbrAPI, AbbrStates, LabelPropType, TooltipAlignPropType } from '../../schema';
 
 /**
  * @slot - Der Begriff, der erläutert werden soll.

@@ -1,11 +1,4 @@
-import type {
-	KoliBriTableDataType,
-	KoliBriTableHeaders,
-	KoliBriTablePaginationProps,
-	PaginationPositionPropType,
-	Stringified,
-	TableProps,
-} from '@public-ui/schema';
+import type { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, PaginationPositionPropType, Stringified, TableProps } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 import { Component, Prop } from '@stencil/core';

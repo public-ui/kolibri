@@ -17,7 +17,7 @@ import type {
 	TableDataPropType,
 	TableHeaderCells,
 	TableStates,
-} from '@public-ui/schema';
+} from '../../schema';
 import {
 	devHint,
 	emptyStringByArrayHandler,
@@ -30,13 +30,13 @@ import {
 	validateTableDataFoot,
 	watchString,
 	watchValidator,
-} from '@public-ui/schema';
+} from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessTag } from '../../core/component-names';
-import type { SortEventPayload } from '@public-ui/schema';
+import type { SortEventPayload } from '../../schema';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 

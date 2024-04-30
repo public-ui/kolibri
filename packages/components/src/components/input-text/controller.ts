@@ -1,5 +1,5 @@
-import type { InputTextProps, InputTextType, InputTextWatches, PropLabelWithExpertSlot, PropSuggestions, SuggestionsPropType } from '@public-ui/schema';
-import { inputTextTypeOptions, validateHasCounter, validateSuggestions, watchValidator } from '@public-ui/schema';
+import type { InputTextProps, InputTextType, InputTextWatches, PropLabelWithExpertSlot, PropSuggestions, SuggestionsPropType } from '../../schema';
+import { inputTextTypeOptions, validateHasCounter, validateSuggestions, watchValidator } from '../../schema';
 
 import { InputPasswordController } from '../input-password/controller';
 

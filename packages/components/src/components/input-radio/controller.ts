@@ -12,8 +12,8 @@ import type {
 	StencilUnknown,
 	Stringified,
 	W3CInputValue,
-} from '@public-ui/schema';
-import { mapString2Unknown, orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '@public-ui/schema';
+} from '../../schema';
+import { mapString2Unknown, orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '../../schema';
 
 import { InputController } from '../@deprecated/input/controller';
 

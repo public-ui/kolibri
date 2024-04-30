@@ -1,3 +1,4 @@
+@import '../mixins/rem';
 @import '../mixins/focus-outline';
 @import '../mixins/alert-wc.scss';
 
@@ -13,19 +14,19 @@
 		justify-items: left;
 		width: 100%;
 		min-height: var(--a11y-min-size);
-		gap: 0.4rem;
+		gap: rem(6.4);
 	}
 
 	:host .kol-input.default {
-		grid-template-columns: 1.5rem auto;
+		grid-template-columns: rem(24) auto;
 	}
 
 	:host .kol-input.switch {
-		grid-template-columns: 3.5rem auto;
+		grid-template-columns: rem(56) auto;
 	}
 
 	:host .kol-input.button {
-		gap: 0.4rem 1px;
+		gap: rem(6.4) 1px;
 	}
 
 	.checkbox-container {
@@ -59,7 +60,7 @@
 
 	:host .kol-input.error {
 		border-left: 3px solid var(--color-danger);
-		padding-left: 1rem;
+		padding-left: rem(16);
 	}
 
 	:host .kol-input.error input:focus,
@@ -81,7 +82,7 @@
 		border-style: solid;
 		border-radius: var(--border-radius);
 		line-height: 24px;
-		font-size: 1rem;
+		font-size: rem(16);
 	}
 
 	:host input:hover {
@@ -103,7 +104,7 @@
 
 	/* CHECKBOX */
 	:host .kol-input label span {
-		margin-top: 0.125rem;
+		margin-top: rem(2);
 	}
 
 	:host .required label > span::after {
@@ -125,9 +126,9 @@
 
 	:host .kol-input.default input[type='checkbox'] {
 		border-radius: var(--border-radius);
-		height: calc(6 * 0.25rem);
-		min-width: calc(6 * 0.25rem);
-		width: calc(6 * 0.25rem);
+		height: calc(6 * rem(4));
+		min-width: calc(6 * rem(4));
+		width: calc(6 * rem(4));
 	}
 
 	:host .kol-input.default input[type='checkbox']:indeterminate {
@@ -136,7 +137,7 @@
 
 	:host .kol-input.default .icon {
 		color: var(--color-light);
-		margin-left: 0.25rem;
+		margin-left: rem(4);
 	}
 
 	:host .kol-input.switch input[type='checkbox'] {
@@ -219,7 +220,7 @@
 			align-self: stretch;
 			display: flex;
 
-			padding-right: 1rem;
+			padding-right: rem(16);
 
 			.input-label-span {
 				margin: auto auto;

@@ -1,4 +1,4 @@
-import type { KoliBriHorizontalIcons, PropLabelWithExpertSlot, Stringified } from '@public-ui/schema';
+import type { KoliBriHorizontalIcons, PropLabelWithExpertSlot, Stringified } from '../../../schema';
 import type { Generic } from 'adopted-style-sheets';
 
 type RequiredProps = NonNullable<unknown>;

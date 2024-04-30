@@ -1,5 +1,5 @@
-import type { BadgeAPI, BadgeStates, ButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '@public-ui/schema';
-import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor } from '@public-ui/schema';
+import type { BadgeAPI, BadgeStates, ButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
+import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { KolSpanWcTag } from '../../core/component-names';
 

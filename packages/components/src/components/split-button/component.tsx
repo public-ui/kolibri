@@ -12,7 +12,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State } from '@stencil/core';
 

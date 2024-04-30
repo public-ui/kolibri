@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getBadgeHtml } from './html.mock';
 
-import type { BadgeProps } from '@public-ui/schema';
+import type { BadgeProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolBadge } from '../component';
 

@@ -1,8 +1,10 @@
+@import '../@shared/mixins';
 @import '../style';
 
 @layer kol-component {
 	:host {
 		display: flex;
+		font-size: rem(16);
 		position: relative;
 	}
 

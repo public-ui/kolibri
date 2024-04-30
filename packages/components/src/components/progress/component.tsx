@@ -1,5 +1,5 @@
-import type { KoliBriProgressVariantType, LabelPropType, ProgressAPI, ProgressStates } from '@public-ui/schema';
-import { KoliBriProgressVariantEnum, validateLabel, watchNumber, watchString, watchValidator } from '@public-ui/schema';
+import type { KoliBriProgressVariantType, LabelPropType, ProgressAPI, ProgressStates } from '../../schema';
+import { KoliBriProgressVariantEnum, validateLabel, watchNumber, watchString, watchValidator } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';

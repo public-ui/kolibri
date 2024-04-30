@@ -1,4 +1,4 @@
-import type { IndentedTextAPI, IndentedTextStates } from '@public-ui/schema';
+import type { IndentedTextAPI, IndentedTextStates } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, State } from '@stencil/core';
 

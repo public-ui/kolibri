@@ -1,6 +1,8 @@
+@import '../@shared/mixins';
 @import '../../assets/codicons/codicon';
 
 @layer kol-component {
+	/* :host implicitly inherits font-size, see below */
 	:host {
 		color: inherit;
 		display: contents;

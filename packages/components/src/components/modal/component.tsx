@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '@public-ui/schema';
-import { featureHint, setState, validateLabel, watchString, watchValidator } from '@public-ui/schema';
+import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '../../schema';
+import { featureHint, setState, validateLabel, watchString, watchValidator } from '../../schema';
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';

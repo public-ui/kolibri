@@ -8,6 +8,7 @@
 		"esModuleInterop": true,
 		"lib": ["dom", "es2015"],
 		"module": "ESNext",
+		"preserveSymlinks": true,
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
@@ -21,8 +22,10 @@
 		"forceConsistentCasingInFileNames": false,
 		"importHelpers": false,
 		"strict": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
 	},
 	"compileOnSave": false,
-	"buildOnSave": false
+	"buildOnSave": false,
+	"exclude": ["node_modules/**"],
+	"include": ["src/**/*.ts", "src/**/*.tsx", "src/globals.d.ts"],
 }

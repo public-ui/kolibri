@@ -1,5 +1,5 @@
-import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff } from '@public-ui/schema';
-import { validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '@public-ui/schema';
+import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff } from '../../schema';
+import { validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 

@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getSpanHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { SpanProps } from '@public-ui/schema';
+import type { SpanProps } from '../../../schema';
 import { KolSpan } from '../shadow';
 import { KolSpanWc } from '../component';
 

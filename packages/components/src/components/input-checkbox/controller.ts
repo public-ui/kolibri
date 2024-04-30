@@ -8,8 +8,8 @@ import type {
 	InputCheckboxWatches,
 	StencilUnknown,
 	Stringified,
-} from '@public-ui/schema';
-import { inputCheckboxVariantOptions, isString, setState, validateChecked, validateIndeterminate, watchValidator } from '@public-ui/schema';
+} from '../../schema';
+import { inputCheckboxVariantOptions, isString, setState, validateChecked, validateIndeterminate, watchValidator } from '../../schema';
 
 import { InputCheckboxRadioController } from '../input-radio/controller';
 

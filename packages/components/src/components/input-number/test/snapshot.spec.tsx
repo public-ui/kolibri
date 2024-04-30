@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInputNumberHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputNumberProps } from '@public-ui/schema';
+import type { InputNumberProps } from '../../../schema';
 import { KolInputNumber } from '../component';
 
 executeTests<InputNumberProps>(

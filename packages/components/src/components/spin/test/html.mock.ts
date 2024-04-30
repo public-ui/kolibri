@@ -1,4 +1,4 @@
-import type { SpinProps, SpinStates } from '@public-ui/schema';
+import type { SpinProps, SpinStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 
 export const getSpinHtml = (props: SpinProps): string => {

@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import type { CardProps } from '@public-ui/schema';
+import type { CardProps } from '../../../schema';
 import { KolHeadingWcTag, KolButtonWcTag } from '../../../core/component-names';
 
 export const getCardHtml = (props: CardProps): string => {

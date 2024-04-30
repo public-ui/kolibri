@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getTooltipHtml } from './html.mock';
 
-import type { TooltipProps } from '@public-ui/schema';
+import type { TooltipProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolTooltip } from '../component';
 
