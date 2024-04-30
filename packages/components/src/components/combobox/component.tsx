@@ -6,15 +6,11 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	OptionsWithOptgroupPropType,
-	RowsPropType,
 	ComboboxAPI,
-	ComboboxOption,
 	ComboboxStates,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	W3CInputValue,
 } from '@public-ui/schema';
 import { Component, Element, h, Host, Method, Prop, State, Watch, Fragment, Listen } from '@stencil/core';
 
@@ -44,7 +40,7 @@ export class KolCombobox implements ComboboxAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
+	public async getValue(): Promise<string | undefined> {
 		return this._value;
 	}
 
@@ -52,24 +48,22 @@ export class KolCombobox implements ComboboxAPI {
 		this._isOpen = !this._isOpen;
 	};
 
-	private selectOption(option: ComboboxOption<W3CInputValue>) {
-		this.state._inputValue = option.label;
+	private selectOption(option: string) {
+		this.state._value = option;
 		this.toggleListbox();
 	}
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
-		this.state._inputValue = target.value;
-		this.setFilteredOptionsByQuery(this.state._inputValue);
+		this.state._value = target.value;
+		this.setFilteredOptionsByQuery(this.state._value);
 	}
 
 	private setFilteredOptionsByQuery(query: string) {
 		if (query.trim() === '') {
 			this._filtredOptions = [...this.state._options];
 		} else {
-			this._filtredOptions = this.state._options.filter((option) => {
-				if (typeof option.label === 'string') {
-					return option.label.toLowerCase().includes(query.toLowerCase());
-				}
+			this._filtredOptions = this.state._options.filter((option: string) => {
+				return option.toLowerCase().includes(query.toLowerCase());
 			});
 		}
 	}
@@ -91,8 +85,8 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private focusOption(index: number) {
-		if ((this.host as HTMLKolComboboxElement) && this.host != undefined) {
-			const optionElement = this.host.shadowRoot?.querySelector(`li[data-index="${index}"]`) as HTMLElement;
+		if ((this.host as HTMLKolComboboxElement) && this.host != undefined && this.host.shadowRoot) {
+			const optionElement = this.host.shadowRoot.querySelector(`li[data-index="${index}"]`) as HTMLElement;
 			optionElement?.focus();
 			if (optionElement && typeof optionElement.focus === 'function') {
 				optionElement.focus();
@@ -102,7 +96,7 @@ export class KolCombobox implements ComboboxAPI {
 	private selectFocusedOption() {
 		if (this._focusedOptionIndex !== undefined && this._filtredOptions) {
 			const selectedOption = this._filtredOptions[this._focusedOptionIndex];
-			this.state._inputValue = selectedOption.label;
+			this.state._value = selectedOption;
 			this._isOpen = false;
 			this._focusedOptionIndex = 0;
 		}
@@ -111,7 +105,7 @@ export class KolCombobox implements ComboboxAPI {
 	private focusOptionStartingWith(char: string) {
 		const charLowerCase = char.toLowerCase();
 
-		const index = this._filtredOptions?.findIndex((option) => option.label.toLowerCase().startsWith(charLowerCase));
+		const index = this._filtredOptions?.findIndex((option: string) => option.toLowerCase().startsWith(charLowerCase));
 
 		if ((index as number) >= 0) {
 			this._focusedOptionIndex = index as number;
@@ -165,7 +159,7 @@ export class KolCombobox implements ComboboxAPI {
 									aria-autocomplete="both"
 									aria-expanded="false"
 									aria-controls="listbox"
-									value={this.state._inputValue}
+									value={this.state._value}
 									title=""
 									accessKey={this.state._accessKey}
 									aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
@@ -192,7 +186,7 @@ export class KolCombobox implements ComboboxAPI {
 										const key = `-${index}`;
 										return (
 											<li key={key} data-index={index} tabIndex={0} onClick={() => this.selectOption(option)} class="combobox__item">
-												{option.label}
+												{option}
 											</li>
 										);
 									})}
@@ -291,7 +285,7 @@ export class KolCombobox implements ComboboxAPI {
 	@State()
 	private _isOpen = false;
 	@State()
-	private _filtredOptions?: ComboboxOption<W3CInputValue>[];
+	private _filtredOptions?: string[];
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
@@ -365,18 +359,13 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Options the user can choose from, also supporting Optgroup.
 	 */
-	@Prop() public _options!: OptionsWithOptgroupPropType;
+	@Prop() public _options!: string[];
 
 	/**
 	 * Makes the input element required.
 	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean = false;
-
-	/**
-	 * Defines how many rows of options should be visible at the same time.
-	 */
-	@Prop() public _rows?: RowsPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -403,7 +392,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
+	@Prop({ mutable: true }) public _value?: string;
 
 	@State() public state: ComboboxStates = {
 		_hasValue: false,
@@ -411,8 +400,7 @@ export class KolCombobox implements ComboboxAPI {
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
-		_value: [],
-		_inputValue: '',
+		_value: '',
 	};
 
 	public constructor() {
@@ -485,18 +473,13 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	@Watch('_options')
-	public validateOptions(value?: OptionsWithOptgroupPropType): void {
+	public validateOptions(value?: string[]): void {
 		this.controller.validateOptions(value);
 	}
 
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
-	}
-
-	@Watch('_rows')
-	public validateRows(value?: RowsPropType): void {
-		this.controller.validateRows(value);
 	}
 
 	@Watch('_syncValueBySelector')
@@ -515,14 +498,14 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<W3CInputValue[]>): void {
+	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 	}
 
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
-		this.controller.componentWillLoad(this.onChange.bind(this));
+		this.controller.componentWillLoad();
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));

@@ -215,6 +215,19 @@ export const watchNumber = (component: Generic.Element.Component, propName: stri
 	);
 };
 
+export const watchArryString = (component: Generic.Element.Component, propName: string, value?: string[], options: WatchStringOptions = {}): void => {
+	watchValidator(
+		component,
+		propName,
+		(value): boolean => {
+			if (!Array.isArray(value)) return false;
+			return value.every((item) => typeof item === 'string' && (typeof options?.maxLength === 'undefined' || value.length <= options.maxLength));
+		},
+		new Set([`String []`]),
+		value,
+		options,
+	);
+};
 export const watchJsonArrayString = <T>(
 	component: Generic.Element.Component,
 	propName: string,

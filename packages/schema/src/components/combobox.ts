@@ -8,15 +8,13 @@ import type {
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
-	PropOptionsWithOptgroup,
 	PropRequired,
-	PropRows,
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, ComboboxOption, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified } from '../types';
 
-type RequiredProps = PropOptionsWithOptgroup;
+type RequiredProps = { options: string[] };
 type OptionalProps = {
 	accessKey: string;
 	error: string;
@@ -24,7 +22,7 @@ type OptionalProps = {
 	icons: Stringified<KoliBriHorizontalIcons>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
-	value: Stringified<W3CInputValue[]>;
+	value: string;
 } & PropDisabled &
 	PropHideError &
 	PropHideLabel &
@@ -32,15 +30,13 @@ type OptionalProps = {
 	PropMsg &
 	PropName &
 	PropRequired &
-	PropRows &
 	PropSyncValueBySelector &
 	PropTouched;
 
 type RequiredStates = {
 	hasValue: boolean;
-	options: ComboboxOption<W3CInputValue>[];
-	value: W3CInputValue[];
-	inputValue: string;
+	options: string[];
+	value: string;
 } & PropId &
 	PropHideError &
 	PropLabelWithExpertSlot;
@@ -57,7 +53,6 @@ type OptionalStates = {
 	PropId &
 	PropName &
 	PropRequired &
-	PropRows &
 	PropMsg &
 	PropTouched;
 

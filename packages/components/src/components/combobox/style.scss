@@ -1,7 +1,6 @@
 @import '../input-line';
 
 @layer kol-component {
-
 	//Block: .combobox
 	.combobox {
 		max-width: 400px;
@@ -72,7 +71,6 @@
 	.combobox__item {
 		padding: 10px 12px 12px;
 		cursor: pointer;
-
 	}
 
 	.combobox__item:hover {

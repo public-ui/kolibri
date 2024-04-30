@@ -40,9 +40,4 @@ export type Optgroup<T> = {
 
 export type SelectOption<T> = Option<T> | Optgroup<T>;
 
-export type ComboboxOption<T> = {
-	label: string;
-	value: T;
-};
-
 export type InputTypeOnDefault = InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput;
