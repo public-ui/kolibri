@@ -1,6 +1,6 @@
 import { processEnv } from './schema';
 import type { Generic } from 'adopted-style-sheets';
-import { getI18nInstance } from './core/i18n';
+import { getI18nInstance, initializeI18n } from './core/i18n';
 import locale_de from './locales/de';
 import locale_en from './locales/en';
 
@@ -21,7 +21,7 @@ type Options = {
 };
 
 export let translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<ComponentKeys>}`, options?: Options) => {
-	const i18n = getI18nInstance();
+	const i18n = getI18nInstance() ?? initializeI18n('de', translations);
 	let text = i18n.translate(key, options);
 	if (text === key) {
 		i18n.addTranslations(translations);

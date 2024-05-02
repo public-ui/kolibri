@@ -91,9 +91,6 @@ export class I18nService {
 let i18n: I18nService;
 
 export const getI18nInstance = () => {
-	if (!(i18n instanceof I18nService)) {
-		throw new Error('i18n not initialized yet');
-	}
 	return i18n;
 };
 
@@ -106,4 +103,5 @@ export const initializeI18n = (
 ) => {
 	i18n = new I18nService(lng);
 	i18n.addTranslations(translations);
+	return i18n;
 };
