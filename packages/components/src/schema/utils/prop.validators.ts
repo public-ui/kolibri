@@ -219,10 +219,10 @@ export const watchArryString = (component: Generic.Element.Component, propName: 
 	watchValidator(
 		component,
 		propName,
-		(value): boolean => {
-			if (!Array.isArray(value)) return false;
-			return value.every((item) => typeof item === 'string' && (typeof options?.maxLength === 'undefined' || value.length <= options.maxLength));
-		},
+		(value): boolean =>
+			Array.isArray(value)
+				? value.every((item) => typeof item === 'string' && (typeof options?.maxLength === 'undefined' || value.length <= options.maxLength))
+				: false,
 		new Set([`String []`]),
 		value,
 		options,

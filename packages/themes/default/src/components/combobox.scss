@@ -1,0 +1,91 @@
+@import '../mixins/rem';
+@import '../mixins/alert-wc.scss';
+
+@layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+
+	//Block: .combobox
+	.combobox {
+		display: block;
+		margin-bottom: 1.5rem;
+		position: relative;
+
+		&__group {
+			display: inline-flex;
+			align-items: center;
+			min-height: var(--a11y-min-size);
+			text-align: left;
+			width: 100%;
+			padding: 0.25rem;
+			cursor: pointer;
+			background-color: var(--color-light);
+			border-color: var(--color-subtle);
+			border-radius: var(--border-radius);
+			border-style: solid;
+			border-width: 1px;
+			padding: 0 rem(8);
+		}
+
+		&__input {
+			flex-grow: 1;
+			border: transparent;
+			width: calc(100% - 2.5rem);
+			cursor: pointer;
+			position: relative;
+
+			&::placeholder {
+				color: var(--color-subtle);
+			}
+
+			&:first-child {
+				padding-left: var(--spacing);
+			}
+
+			&:last-child {
+				padding-right: var(--spacing);
+			}
+
+			&:not(.disabled) &:hover {
+				border-color: var(--color-primary);
+			}
+		}
+
+		&__icon {
+			display: grid;
+			place-items: center;
+			cursor: pointer;
+			padding-left: rem(8);
+			padding-right: rem(8);
+
+			&:focus {
+				outline: 0 !important;
+			}
+		}
+
+		&__listbox {
+			border-style: solid;
+			border-width: 1px;
+			border-radius: var(--border-radius);
+			border-color: var(--color-subtle);
+			max-height: 15.625rem;
+		}
+
+		&__item {
+			padding: 0.62rem 0.75rem;
+			cursor: pointer;
+
+			&:hover {
+				background: var(--color-primary-variant);
+				color: var(--color-light);
+			}
+
+			&:focus {
+				background: var(--color-primary-variant);
+				color: var(--color-light);
+				outline: 0 !important;
+			}
+		}
+	}
+}

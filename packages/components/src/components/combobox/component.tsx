@@ -54,48 +54,51 @@ export class KolCombobox implements ComboboxAPI {
 	}
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
-		this.state._value = target.value;
-		this.setFilteredOptionsByQuery(this.state._value);
+		this._value = target.value;
+		this.setFilteredOptionsByQuery(target.value);
 	}
 
 	private setFilteredOptionsByQuery(query: string) {
 		if (query.trim() === '') {
-			this._filtredOptions = [...this.state._options];
+			this._filteredOptions = [...this.state._options];
 		} else {
-			this._filtredOptions = this.state._options.filter((option: string) => {
+			this._filteredOptions = this.state._options.filter((option: string) => {
 				return option.toLowerCase().includes(query.toLowerCase());
 			});
+			console.log(this._filteredOptions);
+
+			this._isOpen = this._filteredOptions.length > 0 ? true : false;
 		}
 	}
 
 	private _focusedOptionIndex: number = -1;
 
-	private moveFokus(delta: number) {
-		if (this._filtredOptions) {
-			if (delta >= this._filtredOptions.length) {
-				this._focusedOptionIndex = 0;
-			} else {
-				this._focusedOptionIndex = (this._focusedOptionIndex + delta + this._filtredOptions.length) % this._filtredOptions.length;
-				if (this._focusedOptionIndex < 0) {
-					this._focusedOptionIndex = this._filtredOptions.length - 1;
-				}
-			}
-			this.focusOption(this._focusedOptionIndex);
+	private moveFocus(delta: number) {
+		if (!this._filteredOptions) {
+			return;
 		}
+		let index = 0;
+		if (delta < this._filteredOptions.length) {
+			const optionLength = this._filteredOptions.length;
+			index = (this._focusedOptionIndex + delta + optionLength) % optionLength;
+			if (index < 0) {
+				index = optionLength - 1;
+			}
+		}
+		this._focusedOptionIndex = index;
+		this.focusOption(this._focusedOptionIndex);
 	}
 
 	private focusOption(index: number) {
 		if ((this.host as HTMLKolComboboxElement) && this.host != undefined && this.host.shadowRoot) {
 			const optionElement = this.host.shadowRoot.querySelector(`li[data-index="${index}"]`) as HTMLElement;
 			optionElement?.focus();
-			if (optionElement && typeof optionElement.focus === 'function') {
-				optionElement.focus();
-			}
+			this._value = optionElement.textContent || '';
 		}
 	}
 	private selectFocusedOption() {
-		if (this._focusedOptionIndex !== undefined && this._filtredOptions) {
-			const selectedOption = this._filtredOptions[this._focusedOptionIndex];
+		if (this._focusedOptionIndex !== undefined && this._filteredOptions) {
+			const selectedOption = this._filteredOptions[this._focusedOptionIndex];
 			this.state._value = selectedOption;
 			this._isOpen = false;
 			this._focusedOptionIndex = 0;
@@ -105,7 +108,7 @@ export class KolCombobox implements ComboboxAPI {
 	private focusOptionStartingWith(char: string) {
 		const charLowerCase = char.toLowerCase();
 
-		const index = this._filtredOptions?.findIndex((option: string) => option.toLowerCase().startsWith(charLowerCase));
+		const index = this._filteredOptions?.findIndex((option: string) => option.toLowerCase().startsWith(charLowerCase));
 
 		if ((index as number) >= 0) {
 			this._focusedOptionIndex = index as number;
@@ -181,15 +184,12 @@ export class KolCombobox implements ComboboxAPI {
 								</span>
 							</div>
 							<ul role="listbox" aria-label="" class={{ combobox__listbox: true, 'combobox__listbox--hidden': !this._isOpen }} tabindex="-1">
-								{this._filtredOptions &&
-									this._filtredOptions.map((option, index) => {
-										const key = `-${index}`;
-										return (
-											<li key={key} data-index={index} tabIndex={0} onClick={() => this.selectOption(option)} class="combobox__item">
-												{option}
-											</li>
-										);
-									})}
+								{this._filteredOptions &&
+									this._filteredOptions.map((option, index) => (
+										<li key={`-${index}`} data-index={index} tabIndex={0} onClick={() => this.selectOption(option)} class="combobox__item">
+											{option}
+										</li>
+									))}
 							</ul>
 						</div>
 					</KolInputTag>
@@ -205,14 +205,14 @@ export class KolCombobox implements ComboboxAPI {
 			case 'ArrowDown': {
 				event.preventDefault();
 				this._isOpen = true;
-				this.moveFokus(1);
+				this.moveFocus(1);
 				break;
 			}
 			case 'Up':
 			case 'ArrowUp': {
 				event.preventDefault();
 				this._isOpen = true;
-				this.moveFokus(-1);
+				this.moveFocus(-1);
 
 				break;
 			}
@@ -244,7 +244,7 @@ export class KolCombobox implements ComboboxAPI {
 			case 'End': {
 				event.preventDefault();
 				if (this._isOpen) {
-					this._focusedOptionIndex = this._filtredOptions ? this._filtredOptions.length - 1 : 0;
+					this._focusedOptionIndex = this._filteredOptions ? this._filteredOptions.length - 1 : 0;
 					this.focusOption(this._focusedOptionIndex);
 				}
 				break;
@@ -252,18 +252,17 @@ export class KolCombobox implements ComboboxAPI {
 			case 'PageUp': {
 				event.preventDefault();
 				if (this._isOpen) {
-					this.moveFokus(10);
+					this.moveFocus(10);
 				}
 				break;
 			}
 			case 'PageDown': {
 				event.preventDefault();
 				if (this._isOpen) {
-					this.moveFokus(-10);
+					this.moveFocus(-10);
 				}
 				break;
 			}
-
 			default:
 				if (event.key.length === 1 && /[a-z0-9]/i.test(event.key)) {
 					this._isOpen = true;
@@ -275,17 +274,14 @@ export class KolCombobox implements ComboboxAPI {
 
 	@Listen('click', { target: 'window' })
 	handleWindowClick(event: MouseEvent) {
-		const target = event.target as Node;
-		if ((this.host as HTMLKolComboboxElement) && this.host != undefined && !this.host.contains(target)) {
-			this._isOpen = false;
-		}
+		(this.host as HTMLKolComboboxElement) && this.host != undefined && !this.host.contains(event.target as Node) && (this._isOpen = false);
 	}
 
 	private readonly controller: ComboboxController;
 	@State()
 	private _isOpen = false;
 	@State()
-	private _filtredOptions?: string[];
+	private _filteredOptions?: string[];
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
@@ -509,7 +505,7 @@ export class KolCombobox implements ComboboxAPI {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-		this._filtredOptions = this.state._options;
+		this._filteredOptions = this.state._options;
 	}
 
 	private onChange(event: Event): void {

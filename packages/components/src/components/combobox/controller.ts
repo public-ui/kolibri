@@ -16,9 +16,7 @@ export class ComboboxController extends InputIconController implements ComboboxW
 	public readonly getOptionByKey = (key: string): Option<string> | undefined => this.keyOptionMap.get(key);
 
 	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
-		if (key === '_value') {
-			this.setFormAssociatedValue(value as string);
-		}
+		key === '_value' && this.setFormAssociatedValue(value as string);
 	};
 
 	public validateOptions(value?: string[]): void {

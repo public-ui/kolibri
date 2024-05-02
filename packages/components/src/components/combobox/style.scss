@@ -1,86 +1,49 @@
 @import '../input-line';
 
 @layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
+
 	//Block: .combobox
 	.combobox {
-		max-width: 400px;
 		display: block;
-		margin-bottom: 1.5em;
+		margin-bottom: 1.5rem;
 		position: relative;
-	}
 
-	.combobox__group {
-		display: inline-flex;
-		align-items: center;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-		min-height: calc(1.4em + 26px);
-		text-align: left;
-		width: 100%;
-		padding: 4px;
-		cursor: pointer;
-	}
+		&__group {
+			display: inline-flex;
+			align-items: center;
+			min-height: var(--a11y-min-size);
+			text-align: left;
+			width: 100%;
+			padding: 0.25rem;
+			cursor: pointer;
+		}
 
-	.combobox__input[type='text'] {
-		flex-grow: 1;
-		padding: 5px 30px 5px 10px;
-		border: transparent;
-		width: calc(100% - 40px);
-		cursor: pointer;
-		position: relative;
-	}
+		&__input {
+			flex-grow: 1;
+			border: transparent;
+			width: calc(100% - 2.5rem);
+			cursor: pointer;
+			position: relative;
+		}
 
-	.combobox__icon {
-		display: grid;
-		height: var(--a11y-min-size);
-		place-items: center;
-		cursor: pointer;
-		width: 40px;
-	}
+		&__listbox {
+			display: block;
+			overflow-y: auto;
+			overflow-x: hidden;
+			position: absolute;
+			top: 100%;
+			width: 100%;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
 
-	.combobox__icon:focus {
-		outline: 0 !important;
-	}
-
-	.combobox__listbox {
-		border: 1px solid #ccc;
-		border-radius: 4px;
-		display: block;
-		max-height: 300px;
-		overflow-y: scroll;
-		left: 0;
-		position: absolute;
-		top: 100%;
-		width: 100%;
-		z-index: 100;
-		padding: 0;
-		background-color: white;
-		box-sizing: border-box;
-		max-height: 250px;
-		overflow-x: hidden;
-		font-size: 87.5%;
-		cursor: pointer;
-		list-style-type: none;
-		margin: 0;
-	}
-
-	.combobox__listbox--hidden {
-		display: none;
-	}
-
-	.combobox__item {
-		padding: 10px 12px 12px;
-		cursor: pointer;
-	}
-
-	.combobox__item:hover {
-		background: var(--color-primary-variant);
-		color: var(--color-light);
-	}
-
-	.combobox__item:focus {
-		background: var(--color-primary-variant);
-		color: var(--color-light);
-		outline: 0 !important;
+			&--hidden {
+				display: none;
+			}
+		}
 	}
 }

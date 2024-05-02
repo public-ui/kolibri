@@ -1,0 +1,113 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.kol-input {
+		gap: 0.25em;
+	}
+
+	.kol-input .error {
+		order: 1;
+	}
+
+	.kol-input label {
+		order: 2;
+	}
+
+	.kol-input .input {
+		order: 3;
+	}
+
+	.kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
+	}
+
+	//Block: .combobox
+	.combobox {
+		display: block;
+		margin-bottom: 1.5rem;
+		position: relative;
+
+		&__group {
+			display: inline-flex;
+			align-items: center;
+			min-height: var(--a11y-min-size);
+			text-align: left;
+			width: 100%;
+			padding: 0.25rem;
+			cursor: pointer;
+			background-color: var(--color-white);
+			border-color: var(--color-grey);
+			border-radius: var(--border-radius);
+			border-style: solid;
+			border-width: 1px;
+			padding: 0 0.5em;
+		}
+
+		&__input {
+			border: none;
+			flex-grow: 1;
+			border: transparent;
+			width: calc(100% - 2.5rem);
+			cursor: pointer;
+			position: relative;
+
+			&::placeholder {
+				color: var(--color-grey);
+			}
+
+			&:first-child {
+				padding-left: var(--spacing);
+			}
+
+			&:last-child {
+				padding-right: var(--spacing);
+			}
+
+			&:not(.disabled) &:hover {
+				border-color: var(--color-primary);
+			}
+		}
+
+		&__icon {
+			display: grid;
+			place-items: center;
+			cursor: pointer;
+			padding-left: 1em;
+			padding-right: 1em;
+
+			&:focus {
+				outline: 0 !important;
+			}
+		}
+
+		&__listbox {
+			border-style: solid;
+			border-width: 1px;
+			border-radius: var(--border-radius);
+			border-color: var(--color-grey);
+			max-height: 15.625rem;
+		}
+
+		&__item {
+			padding: 0.62rem 0.75rem;
+			margin: 1px 0;
+			border-radius: 0.25em;
+			cursor: pointer;
+
+			&:hover {
+				background: var(--color-ocean);
+				color: white;
+			}
+
+			&:focus {
+				background: var(--color-ocean);
+				color: white;
+				outline: 0 !important;
+			}
+		}
+	}
+}
