@@ -1,12 +1,12 @@
 import { Field, useFormikContext } from 'formik';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 
 import { KolButton, KolForm, KolHeading, KolInputDate, KolInputRadio, KolSpin } from '@public-ui/react';
 
 import { fetchAvailableTimes } from './appointmentService';
 
 import type { FormValues } from './AppointmentForm';
-import type { FieldProps } from 'formik';
+import type { FieldProps, FieldInputProps } from 'formik';
 import type { Option } from '@public-ui/components';
 import { createErrorList, focusErrorList } from './formUtils';
 
@@ -23,7 +23,7 @@ export function AvailableAppointmentsForm() {
 		let ignoreResponse = false;
 		setAvailableTimes(null);
 		if (schouldFocusErrorList && sectionSubmitted) {
-			focusErrorList(errorList, formikRef);
+			focusErrorList(formikRef);
 			setSchouldFocusErrorList(false);
 		}
 
@@ -44,6 +44,26 @@ export function AvailableAppointmentsForm() {
 		};
 	}, [form.values.date, sectionSubmitted]);
 
+	const renderField = useCallback(
+		(name: string, node: (field: FieldInputProps<FormValues['date' | 'time']>) => void) => (
+			<Field name={name}>{({ field }: FieldProps<FormValues['date' | 'time']>) => node(field)}</Field>
+		),
+		[],
+	);
+
+	const handleField = useCallback(
+		(name: string) => ({
+			onChange: (event: Event, value: unknown): void => {
+				if (event.target) {
+					void form.setFieldValue(name, value, true);
+				}
+			},
+			onBlur: () => {
+				void form.setFieldTouched(name, true);
+			},
+		}),
+		[form.setFieldValue, form.setFieldTouched],
+	);
 	return (
 		<div className="p-2">
 			<KolHeading _level={2} _label="Wählen Sie einen Termin aus"></KolHeading>
@@ -54,59 +74,45 @@ export function AvailableAppointmentsForm() {
 					onSubmit: () => {
 						setSectionSubmitted(true);
 						void form.submitForm();
-						focusErrorList(errorList, formikRef);
+						focusErrorList(formikRef);
 					},
 				}}
 			>
-				<Field name="date">
-					{({ field }: FieldProps<FormValues['date']>) => (
-						<KolInputDate
-							id="field-date"
-							_label="Datum"
-							_value={field.value}
-							_error={form.errors.date || ''}
-							_touched={form.touched.date}
-							_required
-							_on={{
-								onChange: (event: Event, value: unknown): void => {
-									if (event.target) {
-										void form.setFieldValue('date', value, true);
-									}
-								},
-								onBlur: () => {
-									void form.setFieldTouched('date', true);
-								},
-							}}
-						/>
-					)}
-				</Field>
+				{renderField('date', (field) => (
+					<KolInputDate
+						id="field-date"
+						_label="Datum"
+						_value={field.value}
+						_msg={{
+							_type: 'error',
+							_description: form.errors.date || '',
+						}}
+						_touched={form.touched.date}
+						_required
+						_on={handleField('date')}
+					/>
+				))}
 
 				{form.values.date && (
 					<div className="grid gap-4 mt-4">
 						{availableTimes ? (
 							<>
-								<Field name="time">
-									{({ field }: FieldProps<FormValues['time']>) => (
-										<KolInputRadio
-											id="field-time"
-											_label="Zeit"
-											_orientation="horizontal"
-											_options={availableTimes}
-											_value={field.value}
-											_error={form.errors.time || ''}
-											_touched={form.touched.time}
-											_required
-											_on={{
-												onChange: (event: Event, value: unknown): void => {
-													if (event.target) {
-														void form.setFieldTouched('time', true);
-														void form.setFieldValue('time', value, true);
-													}
-												},
-											}}
-										/>
-									)}
-								</Field>
+								{renderField('time', (field) => (
+									<KolInputRadio
+										id="field-time"
+										_label="Zeit"
+										_orientation="horizontal"
+										_options={availableTimes}
+										_value={field.value}
+										_msg={{
+											_type: 'error',
+											_description: form.errors.time || '',
+										}}
+										_touched={form.touched.time}
+										_required
+										_on={handleField('time')}
+									/>
+								))}
 								<p>
 									<em>Aus Testzwecken sind nur die Termine zu jeder halben Stunde verfügbar.</em>
 								</p>
@@ -117,7 +123,7 @@ export function AvailableAppointmentsForm() {
 					</div>
 				)}
 
-				<KolButton _label="Weiter" _type="submit" className="mt-2" _disabled={form.isValidating} />
+				<KolButton _label="Weiter" _type="submit" className="mt-2" />
 				{form.values.date && form.isValidating ? <KolSpin _show aria-label="Termin wird geprüft." /> : ''}
 			</KolForm>
 		</div>
