@@ -1,21 +1,12 @@
 import type { JSX } from '@stencil/core';
-import { Log, alertTypeOptions, alertVariantOptions, setState, validateHasCloser, validateLabel, watchBoolean, watchValidator } from '@public-ui/schema';
+import { Log, alertTypeOptions, alertVariantOptions, setState, validateHasCloser, validateLabel, watchBoolean, watchValidator } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { watchHeadingLevel } from '../heading/validation';
 import { KolIconTag, KolHeadingWcTag, KolButtonWcTag } from '../../core/component-names';
 
-import type {
-	AlertAPI,
-	AlertStates,
-	AlertType,
-	AlertVariant,
-	HasCloserPropType,
-	HeadingLevel,
-	KoliBriAlertEventCallbacks,
-	LabelPropType,
-} from '@public-ui/schema';
+import type { AlertAPI, AlertStates, AlertType, AlertVariant, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
 	return <KolIconTag class="heading-icon" _label={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
 };

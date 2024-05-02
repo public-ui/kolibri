@@ -1,4 +1,4 @@
-import type { HeadingLevel, HeadingProps, HeadingVariantPropType, LabelWithExpertSlotPropType } from '@public-ui/schema';
+import type { HeadingLevel, HeadingProps, HeadingVariantPropType, LabelWithExpertSlotPropType } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
 import { KolHeadingWcTag } from '../../core/component-names';

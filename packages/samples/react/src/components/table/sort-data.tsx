@@ -3,8 +3,8 @@ import React from 'react';
 
 import { KolTable } from '@public-ui/react';
 import type { KoliBriTableHeaders } from '@public-ui/components';
-import { DATA } from './test-data';
 import type { Data } from './test-data';
+import { DATA } from './test-data';
 import { SampleDescription } from '../SampleDescription';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {

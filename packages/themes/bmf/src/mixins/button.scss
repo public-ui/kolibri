@@ -112,12 +112,6 @@
 		border-color: transparent;
 	}
 
-	/** CUSTOM_CLASS */
-	:is(a, button).hide-label > .kol-span-wc {
-		padding: 8px;
-		width: unset;
-	}
-
 	:is(a, button).hide-label > .kol-span-wc > span > span {
 		display: block;
 	}

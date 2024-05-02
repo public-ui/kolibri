@@ -1,12 +1,12 @@
-import type { DetailsAPI, DetailsStates, EventCallbacks, LabelPropType } from '@public-ui/schema';
-import { propagateFocus, setState, validateLabel, validateOpen } from '@public-ui/schema';
+import type { DetailsAPI, DetailsStates, EventCallbacks, LabelPropType } from '../../schema';
+import { propagateFocus, setState, validateLabel, validateOpen } from '../../schema';
 import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { DetailsAnimationController } from './DetailsAnimationController';
 
-import type { DisabledPropType } from '@public-ui/schema';
-import { validateDisabled } from '@public-ui/schema';
+import type { DisabledPropType } from '../../schema';
+import { validateDisabled } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { preventDefaultAndStopPropagation } from '../../utils/events';
 import { KolIconTag, KolIndentedTextTag } from '../../core/component-names';

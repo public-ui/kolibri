@@ -1,6 +1,6 @@
 import { autoUpdate } from '@floating-ui/dom';
-import type { AccessKeyPropType, AlignPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '@public-ui/schema';
-import { getDocument, validateAccessKey, validateAlign, validateId, validateLabel } from '@public-ui/schema';
+import type { AccessKeyPropType, AlignPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '../../schema';
+import { getDocument, validateAccessKey, validateAlign, validateId, validateLabel } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 

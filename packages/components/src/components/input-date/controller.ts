@@ -7,8 +7,8 @@ import type {
 	Iso8601,
 	ReadOnlyPropType,
 	SuggestionsPropType,
-} from '@public-ui/schema';
-import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchNumber, watchValidator } from '@public-ui/schema';
+} from '../../schema';
+import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchNumber, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 

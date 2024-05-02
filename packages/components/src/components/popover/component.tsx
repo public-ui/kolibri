@@ -1,5 +1,5 @@
-import type { AlignPropType, PopoverAPI, PopoverStates, ShowPropType } from '@public-ui/schema';
-import { getDocument, validateAlign, validateShow } from '@public-ui/schema';
+import type { AlignPropType, PopoverAPI, PopoverStates, ShowPropType } from '../../schema';
+import { getDocument, validateAlign, validateShow } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';

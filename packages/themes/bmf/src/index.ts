@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/schema';
+import { KoliBri } from '@public-ui/components';
 import globalCss from './global.scss';
 import abbrCss from './components/abbr.scss';
 import accordionCss from './components/accordion.scss';
@@ -34,7 +34,8 @@ import selectCss from './components/select.scss';
 import skipNavCss from './components/skip-nav.scss';
 import splitButtonCss from './components/split-button.scss';
 import spinCss from './components/spin.scss';
-import tableCss from './components/table.scss';
+import tableStatefulCss from './components/table-stateful.scss';
+import tableStatelessCss from './components/table-stateless.scss';
 import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
@@ -61,7 +62,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-SELECT': selectCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-ACCORDION': accordionCss,
-	'KOL-TABLE': tableCss,
+	'KOL-TABLE-STATEFUL': tableStatefulCss,
+	'KOL-TABLE-STATELESS': tableStatelessCss,
 	'KOL-NAV': navCss,
 	'KOL-CARD': cardCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,

@@ -1,4 +1,4 @@
-<!-- Note: Headings might be used for anchor-links. Please check for reference before adjusting them. -->
+<!-- Note: Headings might be used for anchor-links. Please check for references before adjusting them. -->
 
 # Known Issues
 
@@ -31,3 +31,16 @@ When focusing the element, it's expected that the `readonly` attribute is announ
 [🐞 GitHub issue #5554](https://github.com/public-ui/kolibri/issues/5554) (For number)
 [🐞 GitHub issue #5749](https://github.com/public-ui/kolibri/issues/5749) (For date)
 [🐞 NVDA issue #13672](https://github.com/nvaccess/nvda/issues/13672)
+
+## Toaster
+
+Toasts are rendered in a container that's appended as first element of `<body>` and elevated using a high `z-index`.
+
+When using [modal Dialogs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) these are rendered above toasts on the
+[top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer). Hence, toast messages are always blocked by Modal Dialogs. We recommend completely
+avoiding Toasts in Modals and giving feedback within the modal directly.
+
+## input text
+
+The `search` of this component is highly browser-dependent. For example, the close button is either shown or hidden depending on the browser. Accessibility is therefore not achieved.
+[🐞 GitHub issue #6307](https://github.com/public-ui/kolibri/issues/6307)

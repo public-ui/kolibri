@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import type { AbbrProps } from '@public-ui/schema';
+import type { AbbrProps } from '../../../schema';
 import { KolTooltipWcTag } from '../../../core/component-names';
 
 export const getAbbrHtml = (props: AbbrProps): string => {

@@ -19,7 +19,7 @@ import type {
 	PropTooltipAlign,
 	PropTouched,
 	Stringified,
-} from '@public-ui/schema';
+} from '../../schema';
 
 type RequiredProps = PropId & PropLabelWithExpertSlot;
 type OptionalProps = {

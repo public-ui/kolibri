@@ -8,7 +8,7 @@ import type {
 	TabButtonProps,
 	TabsAPI,
 	TabsStates,
-} from '@public-ui/schema';
+} from '../../schema';
 import {
 	devHint,
 	featureHint,
@@ -20,7 +20,7 @@ import {
 	validateLabel,
 	watchJsonArrayString,
 	watchNumber,
-} from '@public-ui/schema';
+} from '../../schema';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';

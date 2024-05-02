@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getHeadingHtml } from './html.mock';
 
-import type { HeadingProps } from '@public-ui/schema';
+import type { HeadingProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolHeading } from '../shadow';
 import { KolHeadingWc } from '../component';

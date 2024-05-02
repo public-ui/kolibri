@@ -13,7 +13,7 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 	DisabledPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 import {
 	devHint,
 	propagateFocus,
@@ -31,13 +31,13 @@ import {
 	validateLinkTarget,
 	validateTabIndex,
 	validateTooltipAlign,
-} from '@public-ui/schema';
+} from '../../schema';
 import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { onLocationChange } from './ariaCurrentService';
 
-import { validateDisabled } from '@public-ui/schema';
+import { validateDisabled } from '../../schema';
 import type { JSX } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { preventDefaultAndStopPropagation } from '../../utils/events';

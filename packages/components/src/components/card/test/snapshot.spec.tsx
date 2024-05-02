@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getCardHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { CardProps } from '@public-ui/schema';
+import type { CardProps } from '../../../schema';
 import { KolCard } from '../component';
 
 executeTests<CardProps>(

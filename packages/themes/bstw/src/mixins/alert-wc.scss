@@ -1,0 +1,259 @@
+@mixin kol-alert-wc {
+	display: block;
+	width: 100%;
+}
+
+@mixin kol-input-error-with-kol-alert-wc-error($color: null) {
+	color: var($color);
+	font-weight: 700;
+}
+
+@mixin kol-alert-theme {
+	.msg {
+		border-width: 0 !important;
+	}
+
+	.kol-alert-wc {
+		border-width: var(--border-width);
+		border-style: solid;
+		border-radius: var(--border-radius);
+		display: flex;
+		width: 100%;
+		overflow: unset;
+		border-color: transparent;
+		background-color: var(--color-light);
+	}
+
+	.kol-alert-wc > .heading {
+		display: flex;
+		gap: 0.5em;
+		place-items: center;
+	}
+
+	.kol-alert-wc > .heading > div {
+		display: grid;
+		gap: 0.25rem;
+	}
+
+	.msg > .heading > .kol-icon {
+		place-self: baseline;
+	}
+
+	.kol-alert-wc > .heading > .kol-button-wc.close {
+		place-self: center;
+	}
+
+	.msg {
+		align-items: start;
+	}
+
+	.default {
+		border-color: var(--color-subtle);
+	}
+
+	.default.msg .heading-icon {
+		color: var(--color-subtle);
+	}
+
+	.error {
+		border-color: var(--color-danger);
+	}
+
+	.error.msg .heading-icon {
+		color: var(--color-danger);
+	}
+
+	.info {
+		border-color: var(--color-primary);
+	}
+
+	.info.msg .heading-icon {
+		color: var(--color-primary);
+	}
+
+	.success {
+		border-color: var(--color-success);
+	}
+
+	.success.msg .heading-icon {
+		color: var(--color-success);
+	}
+
+	.warning {
+		border-color: var(--color-warning);
+	}
+
+	.warning.msg .heading-icon {
+		color: var(--color-warning);
+	}
+
+	.heading-icon {
+		color: var(--color-light);
+	}
+
+	.kol-alert-wc .heading .heading-icon {
+		padding: 0;
+	}
+
+	.msg > .heading > .heading-icon {
+		padding-top: 0;
+		place-items: baseline;
+	}
+
+	.msg > .heading > div > .kol-heading-wc {
+		padding-top: calc(--var-spacing / 2);
+	}
+
+	.msg.default .heading > div > .kol-heading-wc {
+		color: var(--color-subtle);
+	}
+
+	.msg.error .heading > div > .kol-heading-wc {
+		color: var(--color-danger);
+	}
+
+	.msg.info .heading > div > .kol-heading-wc {
+		color: var(--color-primary);
+	}
+
+	.msg.success .heading > div > .kol-heading-wc {
+		color: var(--color-success);
+	}
+
+	.msg.warning .heading > div > .kol-heading-wc {
+		color: var(--color-warning);
+	}
+
+	.msg.default .close .icon {
+		color: var(--color-subtle);
+	}
+
+	.msg.error .close .icon {
+		color: var(--color-danger);
+	}
+
+	.msg.info .close .icon {
+		color: var(--color-primary);
+	}
+
+	.msg.success .close .icon {
+		color: var(--color-success);
+	}
+
+	.msg.warning .close .icon {
+		color: var(--color-warning);
+	}
+
+	.card {
+		border-width: var(--border-width);
+		border-style: solid;
+		filter: drop-shadow(0px 2px 4px rgba(8, 35, 48, 0.24));
+		flex-direction: column;
+	}
+
+	.card > .heading {
+		padding: 0.5rem 1rem;
+	}
+
+	.card[_has-closer] > .heading {
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-right: 0;
+	}
+
+	.card > .heading > div {
+		width: 100%;
+		min-height: 1.25rem;
+	}
+
+	.card > .heading .heading-icon {
+		justify-self: right;
+		margin-top: -4px;
+	}
+
+	.card > .heading .kol-heading-wc {
+		width: 100%;
+		color: var(--color-light);
+		display: flex;
+		font-size: 1.25rem;
+		line-height: 1.25rem;
+	}
+
+	.card > .heading .kol-heading-wc > * {
+		margin: auto 0;
+	}
+
+	.card > .content {
+		padding: 1rem;
+	}
+
+	.card.default > .heading {
+		background-color: var(--color-subtle);
+	}
+
+	.card.error > .heading {
+		background-color: var(--color-danger);
+	}
+
+	.card.info > .heading {
+		background-color: var(--color-primary);
+	}
+
+	.card.success > .heading {
+		background-color: var(--color-success);
+	}
+
+	.card.warning > .heading {
+		background-color: var(--color-warning);
+	}
+
+	:is(.error, .info, .success, .warning) .heading-icon {
+		font-size: 1.25rem;
+	}
+
+	.card > div > .content {
+		grid-row: 2;
+		grid-column: 1 / span 2;
+	}
+
+	.card.default .close {
+		background-color: var(--color-subtle);
+	}
+
+	.card.error .close {
+		background-color: var(--color-danger);
+	}
+
+	.card.info .close {
+		background-color: var(--color-primary);
+	}
+
+	.card.success .close {
+		background-color: var(--color-success);
+	}
+
+	.card.warning .close {
+		background-color: var(--color-warning);
+	}
+
+	.close > button {
+		border-radius: 50%;
+		/* visible on focus */
+		color: var(--color-light);
+		cursor: pointer;
+		height: var(--a11y-min-size);
+		width: var(--a11y-min-size);
+	}
+
+	.close > button.hide-label .kol-icon {
+		display: flex;
+		width: 1em;
+		height: 1em;
+		font-size: 1.2rem;
+	}
+
+	.close > button:active {
+		box-shadow: none;
+		outline: none;
+	}
+}

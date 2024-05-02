@@ -1,14 +1,13 @@
-import type { InputTextProps, InputTextType, InputTextWatches, PropLabelWithExpertSlot, PropSuggestions, SuggestionsPropType } from '@public-ui/schema';
-import { inputTextTypeOptions, validateHasCounter, validateSuggestions, watchValidator } from '@public-ui/schema';
+import type { InputTextProps, InputTextType, InputTextWatches, PropLabelWithExpertSlot, PropSuggestions, SuggestionsPropType } from '../../schema';
+import { inputTextTypeOptions, validateHasCounter, validateSuggestions, watchValidator } from '../../schema';
 
 import { InputPasswordController } from '../input-password/controller';
 
 import type { Generic } from 'adopted-style-sheets';
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	id: string;
-} & PropLabelWithExpertSlot &
-	PropSuggestions;
+} & PropSuggestions;
 type InputTextEmailProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 type InputTextEmailWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 

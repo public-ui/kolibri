@@ -1,0 +1,31 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.pagination {
+		align-items: center;
+		justify-content: start;
+		grid-template-columns: auto 1fr;
+	}
+
+	:host > div:last-child,
+	:host > div:last-child > div:last-child {
+		display: grid;
+		align-items: center;
+		justify-items: center;
+		gap: 1em;
+	}
+
+	@media (min-width: 1024px) {
+		:host > div:last-child,
+		:host > div:last-child > div:last-child {
+			grid-auto-flow: column;
+		}
+
+		:host > div:last-child .kol-pagination {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+}

@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getPopoverHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { PopoverProps } from '@public-ui/schema';
+import type { PopoverProps } from '../../../schema';
 import { KolPopover } from '../component';
 
 executeTests<PopoverProps>(

@@ -12,8 +12,8 @@ import type {
 	StencilUnknown,
 	Stringified,
 	W3CInputValue,
-} from '@public-ui/schema';
-import { mapString2Unknown, orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '@public-ui/schema';
+} from '../../schema';
+import { mapString2Unknown, orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '../../schema';
 
 import { InputController } from '../@deprecated/input/controller';
 
@@ -30,10 +30,10 @@ export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, option
 	});
 };
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	required: boolean;
-} & PropLabelWithExpertSlot;
+};
 type InputCheckboxRadioProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 type InputCheckboxRadioWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 

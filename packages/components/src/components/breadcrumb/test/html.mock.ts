@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { KolIconTag, KolLinkTag } from '../../../core/component-names';
 
-import type { AnyIconFontClass, BreadcrumbLinkProps, BreadcrumbProps, LabelPropType } from '@public-ui/schema';
+import type { AnyIconFontClass, BreadcrumbLinkProps, BreadcrumbProps, LabelPropType } from '../../../schema';
 
 export const getBreadcrumbHtml = (props: BreadcrumbProps): string => {
 	const state = mixMembers(

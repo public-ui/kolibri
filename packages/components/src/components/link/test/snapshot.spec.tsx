@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getLinkHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { LinkProps } from '@public-ui/schema';
+import type { LinkProps } from '../../../schema';
 import { KolLink } from '../shadow';
 import { KolLinkWc } from '../component';
 

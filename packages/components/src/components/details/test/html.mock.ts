@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import type { DetailsProps } from '@public-ui/schema';
+import type { DetailsProps } from '../../../schema';
 import clsx from 'clsx';
 import { KolIconTag, KolIndentedTextTag } from '../../../core/component-names';
 

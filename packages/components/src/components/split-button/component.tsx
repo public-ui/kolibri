@@ -12,9 +12,11 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State } from '@stencil/core';
+
+import { translate } from '../../i18n';
 import { KolButtonWcTag } from '../../core/component-names';
 
 /**
@@ -71,6 +73,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	};
 
 	public render(): JSX.Element {
+		const i18nDropdownLabel = 'kol-split-button-dropdown-label';
 		return (
 			<Host class="kol-split-button">
 				<KolButtonWcTag
@@ -104,7 +107,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 					_disabled={this._disabled}
 					_hideLabel
 					_icons="codicon codicon-triangle-down"
-					_label={`dropdown ${this.state._show ? 'schließen' : 'öffnen'}`} // @todo: translate
+					_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
 					_on={this.clickToggleHandler}
 				></KolButtonWcTag>
 				<div class="popover" ref={this.catchDropdownElements}>

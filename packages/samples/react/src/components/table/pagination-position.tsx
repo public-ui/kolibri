@@ -5,10 +5,11 @@ import { KolTable } from '@public-ui/react';
 
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
+import type { Data } from './test-data';
 import { DATA } from './test-data';
 
 import type { KoliBriTableHeaders, KoliBriTablePaginationProps } from '@public-ui/components';
-import type { Data } from './test-data';
+
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[

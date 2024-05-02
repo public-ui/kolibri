@@ -1,5 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
-import type { ButtonLinkProps, ButtonLinkStates } from '@public-ui/schema';
+import type { ButtonLinkProps, ButtonLinkStates } from '../../../schema';
 import { KolButtonWcTag } from '../../../core/component-names';
 
 export const getButtonLinkHtml = (props: ButtonLinkProps): string => {

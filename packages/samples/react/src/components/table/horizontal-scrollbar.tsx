@@ -6,6 +6,7 @@ import { KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 import type { KoliBriTableHeaders } from '@public-ui/components/src';
+
 const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
