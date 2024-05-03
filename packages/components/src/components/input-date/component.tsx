@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { type MsgPropType, propagateFocus, showExpertSlot } from '../../schema';
+import { type MsgPropType, propagateFocus, showExpertSlot, deprecatedHint } from '../../schema';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -422,6 +422,9 @@ export class KolInputDate implements InputDateAPI {
 
 	@Watch('_value')
 	public validateValue(value?: Iso8601 | Date | null): void {
+		if (typeof value === 'object') {
+			deprecatedHint('Date type will be removed in v3. Use `Iso8601` instead.');
+		}
 		this.controller.validateValueEx(value, (v) => {
 			if (v === '' && this.ref) {
 				this.ref.value = '';
