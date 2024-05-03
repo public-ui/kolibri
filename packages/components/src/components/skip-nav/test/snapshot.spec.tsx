@@ -24,15 +24,12 @@ executeTests<SkipNavProps>(
 			[
 				{
 					_label: 'Zum Anfang',
-					_selector: 'header',
 				},
 				{
 					_label: 'Zum Formular',
-					_selector: '#form',
 				},
 				{
 					_label: 'Zum Ende',
-					_selector: 'footer',
 				},
 			],
 		],

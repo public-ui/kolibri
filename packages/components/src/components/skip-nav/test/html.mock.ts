@@ -19,7 +19,7 @@ export const getSkipNavHtml = (props: SkipNavProps): string => {
 					${state._links
 						.map((link: LinkProps) => {
 							return `<li>
-								<${KolLinkWcTag}  _label="${link._label}" _selector="${link._selector}"></${KolLinkWcTag}>
+								<${KolLinkWcTag}  _label="${link._label}" ></${KolLinkWcTag}>
 							</li>`;
 						})
 						.join('')}
