@@ -5,24 +5,37 @@
 
 	.kol-input {
 		gap: 0.25em;
+		display: grid;
+		grid-template-areas: 'error error' 'label counter' 'input input' 'hint hint';
+		grid-template-columns: 1fr 115px;
 
 		.error {
 			order: 1;
+			grid-area: error;
 		}
 
 		label {
 			order: 2;
+			grid-area: label;
 			color: var(--color-black);
+		}
+
+		.counter {
+			order: 2;
+			grid-area: counter;
+			justify-self: end;
 		}
 
 		.input {
 			order: 3;
+			grid-area: input;
 		}
 
 		.hint {
 			order: 4;
 			font-size: 0.875em;
 			font-style: italic;
+			grid-area: hint;
 		}
 
 		&.error {
