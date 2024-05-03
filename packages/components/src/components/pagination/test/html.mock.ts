@@ -50,10 +50,7 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 			</li>`;
 	}
 
-	const calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
-
-	const getCount = (): number => calcCount(state._max, state._pageSize);
-	const count = getCount();
+	const count = Math.ceil(state._max / state._pageSize ?? 1);
 	if (count > 0) {
 		if (state._page > count) {
 			state._page = count;

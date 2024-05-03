@@ -1,12 +1,21 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { ButtonCallbacksPropType, PropAlternativeButtonLinkRole, PropButtonVariant, PropIcons, PropLabel, PropShow, PropTooltipAlign } from '../props';
+import type {
+	ButtonCallbacksPropType,
+	PropAlternativeButtonLinkRole,
+	PropButtonVariant,
+	PropIcons,
+	PropLabel,
+	PropName,
+	PropShow,
+	PropTooltipAlign,
+} from '../props';
 import type { StencilUnknown } from '../types';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
 	on?: ButtonCallbacksPropType<StencilUnknown>;
-	name: string;
+	name: PropName;
 	hideLabel: boolean;
 	disabled: boolean;
 } & PropAlternativeButtonLinkRole &
