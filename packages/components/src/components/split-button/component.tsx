@@ -6,7 +6,7 @@ import type {
 	CustomClassPropType,
 	IconsPropType,
 	LabelPropType,
-	PropName,
+	NamePropType,
 	SplitButtonProps,
 	SplitButtonStates,
 	StencilUnknown,
@@ -170,7 +170,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: PropName;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Defines the callback functions for button events.
