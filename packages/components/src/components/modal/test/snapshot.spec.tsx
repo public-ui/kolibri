@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getModalHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { ModalProps } from '@public-ui/schema';
+import type { ModalProps } from '../../../schema';
 import { KolModal } from '../component';
 
 executeTests<ModalProps>(

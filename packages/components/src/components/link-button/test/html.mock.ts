@@ -1,4 +1,4 @@
-import type { LinkButtonProps } from '@public-ui/schema';
+import type { LinkButtonProps } from '../../../schema';
 import { KolLinkWcTag } from '../../../core/component-names';
 
 export const getLinkButtonHtml = (props: LinkButtonProps): string => {

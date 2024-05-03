@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 
-import { type SelectProps, type SelectStates, showExpertSlot, type W3CInputValue, type Option } from '@public-ui/schema';
+import { type SelectProps, type SelectStates, showExpertSlot, type W3CInputValue, type Option } from '../../../schema';
 import { KolInputTag } from '../../../core/component-names';
 
 export const getSelectHtml = (props: SelectProps): string => {
@@ -51,21 +51,24 @@ export const getSelectHtml = (props: SelectProps): string => {
 				}
 			</span>
 			<div slot="input">
+			<form>
+			<input type="submit" hidden="" />
 				<select ${state._required ? ' required=""' : ''} ${state._multiple ? ' multiple=""' : ''} autocapitalize="off" autocorrect="off" id="id-nonce" spellcheck="false">
-					${state._options
-						.map((option, index) => {
-							const key = `-${index}`;
-							return `
-							<option
-								${option.disabled ? 'disabled=""' : ''}
-								value="${key}"
-								${isSelected(state._value, (option as unknown as Option<W3CInputValue>).value) || (state._multiple === false && index === 0) ? 'selected=""' : ''}
-							>
-								${option.label}
-							</option>`;
-						})
-						.join('')}
-				</select>
+						${state._options
+							.map((option, index) => {
+								const key = `-${index}`;
+								return `
+								<option
+									${option.disabled ? 'disabled=""' : ''}
+									value="${key}"
+									${isSelected(state._value, (option as unknown as Option<W3CInputValue>).value) || (state._multiple === false && index === 0) ? 'selected=""' : ''}
+								>
+									${option.label}
+								</option>`;
+							})
+							.join('')}
+					</select>
+				<form>
 			</div>
 		</${KolInputTag}t>
 	</mock:shadow-root>

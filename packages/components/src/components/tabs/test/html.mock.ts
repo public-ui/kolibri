@@ -1,4 +1,4 @@
-import type { TabButtonProps, TabsProps, TabsStates } from '@public-ui/schema';
+import type { TabButtonProps, TabsProps, TabsStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { KolButtonGroupWcTag, KolButtonWcTag } from '../../../core/component-names';
 

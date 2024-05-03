@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getLinkGroupHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { LinkGroupProps } from '@public-ui/schema';
+import type { LinkGroupProps } from '../../../schema';
 import { KolLinkGroup } from '../component';
 
 executeTests<LinkGroupProps>(

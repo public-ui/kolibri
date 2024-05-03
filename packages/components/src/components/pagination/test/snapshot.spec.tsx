@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getPaginationHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { PaginationProps } from '@public-ui/schema';
+import type { PaginationProps } from '../../../schema';
 import { KolPagination } from '../component';
 
 executeTests<PaginationProps>(

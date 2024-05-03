@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { KolButtonTag, KolButtonWcTag, KolLinkWcTag } from '../../../core/component-names';
 
-import type { ButtonOrLinkOrTextWithChildrenProps, LinkProps, LinkWithChildrenProps, NavProps } from '@public-ui/schema';
+import type { ButtonOrLinkOrTextWithChildrenProps, LinkProps, LinkWithChildrenProps, NavProps } from '../../../schema';
 import { translate } from '../../../i18n';
 
 export const getNavHtml = (props: NavProps): string => {

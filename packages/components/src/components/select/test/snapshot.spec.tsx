@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getSelectHtml } from './html.mock';
 
-import type { SelectProps } from '@public-ui/schema';
+import type { SelectProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolSelect } from '../component';
 

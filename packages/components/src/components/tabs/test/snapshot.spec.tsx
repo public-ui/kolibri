@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getTabsHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { TabsProps } from '@public-ui/schema';
+import type { TabsProps } from '../../../schema';
 import { KolTabs } from '../component';
 
 executeTests<TabsProps>(

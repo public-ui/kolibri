@@ -1,4 +1,4 @@
-import type { PaginationProps, PaginationStates } from '@public-ui/schema';
+import type { PaginationProps, PaginationStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { translate } from '../../../i18n';
 import { JSX } from '@stencil/core';

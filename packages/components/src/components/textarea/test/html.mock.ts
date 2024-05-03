@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { showExpertSlot } from '@public-ui/schema';
+import { showExpertSlot } from '../../../schema';
 
-import type { TextareaProps, TextareaStates } from '@public-ui/schema';
+import type { TextareaProps, TextareaStates } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 import { nonce } from '../../../utils/dev.utils';
 import { KolInputTag } from '../../../core/component-names';

@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getNavHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { NavProps } from '@public-ui/schema';
+import type { NavProps } from '../../../schema';
 import { KolNav } from '../component';
 
 executeTests<NavProps>(

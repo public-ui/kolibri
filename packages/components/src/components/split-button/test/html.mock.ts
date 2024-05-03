@@ -1,6 +1,7 @@
-import type { SplitButtonProps, SplitButtonStates } from '@public-ui/schema';
+import type { SplitButtonProps, SplitButtonStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { KolButtonWcTag } from '../../../core/component-names';
+import { translate } from '../../../i18n';
 
 export const getSplitButtonHtml = (props: SplitButtonProps): string => {
 	const state = mixMembers<SplitButtonProps, SplitButtonStates>(
@@ -11,7 +12,7 @@ export const getSplitButtonHtml = (props: SplitButtonProps): string => {
 	);
 
 	const variant = typeof props._variant === 'string' ? props._variant : 'normal';
-
+	const i18nDropdownLabel = 'kol-split-button-dropdown-label';
 	return `
 <kol-split-button  class="kol-split-button">
   <mock:shadow-root>
@@ -32,7 +33,7 @@ export const getSplitButtonHtml = (props: SplitButtonProps): string => {
 			${props._disabled ? `_disabled=""` : ''}
 			_hidelabel=""
 			_icons="codicon codicon-triangle-down"
-			_label="dropdown ${state._show ? 'schließen' : 'öffnen'}"
+			_label="${state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}"
 			class="secondary-button"
 		>
 		</${KolButtonWcTag}>

@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getSkipNavHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { SkipNavProps } from '@public-ui/schema';
+import type { SkipNavProps } from '../../../schema';
 import { KolSkipNav } from '../component';
 
 executeTests<SkipNavProps>(

@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import type { LinkGroupProps } from '@public-ui/schema';
+import type { LinkGroupProps } from '../../../schema';
 
 export const getLinkGroupHtml = (props: LinkGroupProps): string => {
 	props = mixMembers(

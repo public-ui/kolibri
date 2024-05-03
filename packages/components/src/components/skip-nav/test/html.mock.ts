@@ -1,4 +1,4 @@
-import type { LinkProps, SkipNavProps, SkipNavStates } from '@public-ui/schema';
+import type { LinkProps, SkipNavProps, SkipNavStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { KolLinkWcTag } from '../../../core/component-names';
 
