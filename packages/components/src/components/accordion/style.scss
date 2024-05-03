@@ -1,7 +1,12 @@
+@import '../@shared/mixins';
 @import '../style';
 @import '../host-display-block';
 
 @layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
+
 	/* For animation technique see https://css-tricks.com/css-grid-can-do-auto-height-transitions/ */
 	.wrapper {
 		display: grid;

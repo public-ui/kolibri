@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { translate } from '../../../i18n';
 
-import type { AlertProps } from '@public-ui/schema';
+import type { AlertProps } from '../../../schema';
 import { KolIconTag, KolHeadingWcTag, KolButtonWcTag } from '../../../core/component-names';
 export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML = ''): string => {
 	props = mixMembers(

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { handleSlotContent, type MsgPropType, showExpertSlot } from '@public-ui/schema';
+import { handleSlotContent, type MsgPropType, showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
 import clsx from 'clsx';
@@ -18,7 +18,7 @@ import type {
 	SuggestionsPropType,
 	TooltipAlignPropType,
 	W3CInputValue,
-} from '@public-ui/schema';
+} from '../../schema';
 import { FormFieldMsg } from '../@shared/form-field-msg';
 import type { Props } from './types';
 import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';

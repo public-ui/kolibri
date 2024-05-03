@@ -1,4 +1,4 @@
-import type { ButtonGroupProps } from '@public-ui/schema';
+import type { ButtonGroupProps } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host } from '@stencil/core';
 import { KolButtonGroupWcTag } from '../../core/component-names';

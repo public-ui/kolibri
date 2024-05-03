@@ -13,8 +13,8 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
-import { propagateFocus, showExpertSlot } from '@public-ui/schema';
+} from '../../schema';
+import { propagateFocus, showExpertSlot } from '../../schema';
 import { Component, Element, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -26,6 +26,7 @@ import { InputRadioController } from './controller';
 import type { JSX } from '@stencil/core';
 import { FormFieldMsg } from '../@shared/form-field-msg';
 import { KolInputTag } from '../../core/component-names';
+import { propagateSubmitEventToForm } from '../form/controller';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -41,7 +42,10 @@ export class KolInputRadio implements InputRadioAPI {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private currentValue?: StencilUnknown;
 
+	private ref?: HTMLInputElement;
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
 		propagateFocus(this.host, ref);
 	};
 
@@ -127,9 +131,10 @@ export class KolInputRadio implements InputRadioAPI {
 										tabIndex={this.state._tabIndex}
 										value={`-${index}`}
 										{...this.controller.onFacade}
-										onInput={this.onInput}
 										onChange={this.onChange}
 										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
+										onInput={this.onInput}
+										onKeyDown={this.onKeyDown.bind(this)}
 									/>
 									<label
 										class="radio-label"
@@ -282,7 +287,10 @@ export class KolInputRadio implements InputRadioAPI {
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
 	}
-
+	@Watch('_tooltipAlign')
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		this.controller.validateTooltipAlign(value);
+	}
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		this.controller.validateAlert(value);
@@ -413,6 +421,15 @@ export class KolInputRadio implements InputRadioAPI {
 
 				this.currentValue = option.value;
 			}
+		}
+	};
+
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.ref,
+			});
 		}
 	};
 }

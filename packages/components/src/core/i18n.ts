@@ -1,48 +1,25 @@
-import i18next from 'i18next';
-
 import type { Generic } from 'adopted-style-sheets';
 
 interface ITranslationOptions {
-	/**
-	 * The number of items to determine an counted text.
-	 */
-	count?: number;
-
 	/**
 	 * Placeholders to insert into the text. Replacing {{key}} with the specified value if the "key".
 	 */
 	placeholders?: { [K: string]: string };
 }
 
-export class I18nextService {
-	private static instance: I18nextService;
-	private static namespace = 'KoliBri';
-	private _initialized = false;
+// String.replaceAll should be used but is only available with ECMAScript 2021.
+const replaceAll = function (text: string, search: string, replacement: string) {
+	return text.split(search).join(replacement);
+};
 
-	get initialized() {
-		return this._initialized;
-	}
+type Resources = Map<string, string>;
 
-	private constructor() {}
+export class I18nService {
+	private resourceMap = new Map<Generic.I18n.Locale.ISO_639_1, Resources>();
+	language: Generic.I18n.Locale.ISO_639_1;
 
-	public static async getInstance(lng?: Generic.I18n.Locale.ISO_639_1): Promise<I18nextService> {
-		if (I18nextService.instance instanceof I18nextService) {
-			return I18nextService.instance;
-		}
-		I18nextService.instance = new I18nextService();
-
-		if (!i18next.isInitialized) {
-			// https://www.i18next.com/overview/api#init
-			await i18next.init({
-				ns: [I18nextService.namespace],
-				lng: lng ?? 'de',
-			});
-		} else {
-			// https://www.i18next.com/overview/api#loadnamespaces
-			await i18next.loadNamespaces(I18nextService.namespace);
-		}
-
-		return I18nextService.instance;
+	public constructor(initialLanguage?: Generic.I18n.Locale.ISO_639_1) {
+		this.language = initialLanguage ?? 'de';
 	}
 
 	/**
@@ -65,7 +42,17 @@ export class I18nextService {
 		if (translations !== undefined) {
 			translations.forEach((t) =>
 				t((l, t) => {
-					i18next.addResourceBundle(l, I18nextService.namespace, t, true);
+					let resources = this.resourceMap.get(l);
+					if (!resources) {
+						resources = new Map<string, string>();
+						this.resourceMap.set(l, resources);
+					}
+
+					Object.entries(t).forEach(([k, v]) => {
+						if (v) {
+							resources.set(k, v);
+						}
+					});
 					return l;
 				}),
 			);
@@ -76,8 +63,8 @@ export class I18nextService {
 	 * Set the current language.
 	 * @param lng the language the bundle is for
 	 */
-	public async setLanguage(lng: Generic.I18n.Locale.ISO_639_1) {
-		await i18next.changeLanguage(lng);
+	public setLanguage(lng: Generic.I18n.Locale.ISO_639_1) {
+		this.language = lng;
 	}
 
 	/**
@@ -87,35 +74,36 @@ export class I18nextService {
 	 * @returns the translated text
 	 */
 	public translate(key: string, options?: ITranslationOptions) {
-		return i18next.t(key, {
-			ns: I18nextService.namespace,
-			count: options?.count,
-			...options?.placeholders,
-		});
+		let result = this.resourceMap.get(this.language)?.get(key);
+		if (result) {
+			if (options?.placeholders) {
+				Object.entries(options.placeholders).forEach(([k, v]) => {
+					result = replaceAll(result!, `{{${k}}}`, v);
+				});
+			}
+		} else {
+			result = key;
+		}
+		return result;
 	}
 }
 
-let i18n: I18nextService;
+let i18n: I18nService;
 
 export const getI18nInstance = () => {
-	if (!(i18n instanceof I18nextService)) {
+	if (!(i18n instanceof I18nService)) {
 		throw new Error('i18n not initialized yet');
 	}
 	return i18n;
 };
 
-export const initI18n = async (lng?: Generic.I18n.Locale.ISO_639_1): Promise<I18nextService> => {
-	i18n = await I18nextService.getInstance(lng);
-	return i18n;
-};
-
-export const configI18n = async (
+export const initializeI18n = (
 	lng: Generic.I18n.Locale.ISO_639_1,
 	translations?:
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
 		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>,
 ) => {
-	await initI18n(lng);
+	i18n = new I18nService(lng);
 	i18n.addTranslations(translations);
 };

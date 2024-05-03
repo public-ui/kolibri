@@ -1,0 +1,85 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	:host * {
+		hyphens: var(--kolibri-hyphens);
+		font-family: var(--kolibri-font-family);
+		line-height: var(--kolibri-line-height);
+		word-break: break-word;
+	}
+
+	:host > div {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	.table:has(.focus-element:focus) {
+		outline-color: var(--color-ocean);
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
+	}
+
+	caption {
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
+
+	table {
+		width: 100%;
+		border-spacing: 0;
+	}
+
+	tbody tr:last-child th,
+	tr:last-child td {
+		border-bottom-width: 0;
+	}
+
+	th {
+		padding: 0.75em 0;
+		font-weight: 700;
+		color: var(--color-black);
+	}
+
+	th div {
+		width: 100%;
+		display: flex;
+		gap: 0.5em;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+	}
+
+	th,
+	td {
+		border-bottom: 1px solid var(--color-granite);
+		height: 1.25rem;
+	}
+
+	tbody th {
+		text-align: left;
+	}
+
+	tbody th,
+	td {
+		padding: 1em 0;
+		vertical-align: top;
+	}
+
+	th .kol-button,
+	td .kol-button {
+		margin-top: -0.75rem;
+		margin-bottom: -0.75rem;
+	}
+
+	.table-sort-button .button {
+		font-weight: 700;
+	}
+}

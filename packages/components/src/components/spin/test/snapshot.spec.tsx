@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getSpinHtml } from './html.mock';
 
-import type { SpinProps } from '@public-ui/schema';
+import type { SpinProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolSpin } from '../component';
 

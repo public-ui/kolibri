@@ -1,5 +1,5 @@
-import type { HeadingLevel } from '@public-ui/schema';
-import { headingLevelOptions, watchValidator } from '@public-ui/schema';
+import type { HeadingLevel } from '../../schema';
+import { headingLevelOptions, watchValidator } from '../../schema';
 
 import type { Generic } from 'adopted-style-sheets';
 

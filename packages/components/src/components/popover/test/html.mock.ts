@@ -1,4 +1,4 @@
-import type { PopoverProps, PopoverStates } from '@public-ui/schema';
+import type { PopoverProps, PopoverStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 
 export const getPopoverHtml = (

@@ -1,12 +1,12 @@
 {
 	"name": "@public-ui/themes",
-	"version": "2.0.13",
+	"version": "2.1.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/public-ui/kolibri"
-  },
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -44,30 +44,33 @@
 		"wcag"
 	],
 	"scripts": {
-		"build": "unbuild",
+		"build": "rollup -c",
+		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "unbuild",
-		"dev": "nodemon --ignore dist -e ts,tsx,scss  --exec \"pnpm build\"",
+		"prepack": "pnpm build",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.13",
+		"@public-ui/components": "2.1.0",
+		"@rollup/plugin-commonjs": "25.0.7",
+		"@rollup/plugin-node-resolve": "15.2.3",
+		"@rollup/plugin-typescript": "11.1.6",
 		"@types/node": "ts5.4",
-		"@typescript-eslint/eslint-plugin": "7.6.0",
-		"@typescript-eslint/parser": "7.6.0",
+		"@typescript-eslint/eslint-plugin": "7.7.1",
+		"@typescript-eslint/parser": "7.7.1",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nodemon": "3.1.0",
 		"postcss": "8.4.38",
+		"rollup": "4.16.4",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass": "1.75.0",
-		"typescript": "5.4.5",
-		"unbuild": "1.2.1"
+		"typescript": "5.4.5"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.13"
+		"@public-ui/components": "2.1.0"
 	},
 	"sideEffects": false,
 	"type": "module",

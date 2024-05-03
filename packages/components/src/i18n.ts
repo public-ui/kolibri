@@ -1,4 +1,4 @@
-import { processEnv } from '@public-ui/schema';
+import { processEnv } from './schema';
 import type { Generic } from 'adopted-style-sheets';
 import { getI18nInstance } from './core/i18n';
 import locale_de from './locales/de';

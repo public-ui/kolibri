@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import type { SpanOptions } from '../../span/test/html.mock';
-import type { VersionProps } from '@public-ui/schema';
+import type { VersionProps } from '../../../schema';
 import { KolBadgeTag } from '../../../core/component-names';
 
 export const getVersionHtml = (props: VersionProps, options?: SpanOptions): string => {

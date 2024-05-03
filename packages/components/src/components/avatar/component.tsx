@@ -1,11 +1,11 @@
 import type { JSX } from '@stencil/core';
-import { validateImageSource, validateLabel } from '@public-ui/schema';
+import { validateImageSource, validateLabel } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { formatLabelAsInitials } from './controller';
 
-import type { AvatarAPI, AvatarStates, ImageSourcePropType, LabelPropType } from '@public-ui/schema';
+import type { AvatarAPI, AvatarStates, ImageSourcePropType, LabelPropType } from '../../schema';
 @Component({
 	tag: 'kol-avatar-wc',
 	shadow: false,

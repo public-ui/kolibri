@@ -1,4 +1,4 @@
-import type { ImageProps, ImageStates } from '@public-ui/schema';
+import type { ImageProps, ImageStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 
 export const getImageHtml = (props: ImageProps, additionalAttrs = ''): string => {

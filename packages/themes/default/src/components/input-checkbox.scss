@@ -1,3 +1,4 @@
+@import '../mixins/rem';
 @import '../mixins/focus-outline';
 @import '../mixins/alert-wc.scss';
 
@@ -13,19 +14,19 @@
 		justify-items: left;
 		width: 100%;
 		min-height: var(--a11y-min-size);
-		gap: 0.4rem;
+		gap: rem(6.4);
 	}
 
 	:host .kol-input.default {
-		grid-template-columns: 1.5rem auto;
+		grid-template-columns: rem(24) auto;
 	}
 
 	:host .kol-input.switch {
-		grid-template-columns: 3.5rem auto;
+		grid-template-columns: rem(56) auto;
 	}
 
 	:host .kol-input.button {
-		gap: 0.4rem 0;
+		gap: rem(6.4) 1px;
 	}
 
 	.checkbox-container {
@@ -43,8 +44,12 @@
 	}
 
 	:host .kol-input > label {
-		cursor: pointer;
 		order: 3;
+	}
+
+	.disabled .input-label,
+	.disabled .checkbox-container {
+		cursor: not-allowed;
 	}
 
 	:host .kol-input > .kol-alert-wc.error {
@@ -55,7 +60,7 @@
 
 	:host .kol-input.error {
 		border-left: 3px solid var(--color-danger);
-		padding-left: 1rem;
+		padding-left: rem(16);
 	}
 
 	:host .kol-input.error input:focus,
@@ -77,7 +82,7 @@
 		border-style: solid;
 		border-radius: var(--border-radius);
 		line-height: 24px;
-		font-size: 1rem;
+		font-size: rem(16);
 	}
 
 	:host input:hover {
@@ -99,7 +104,7 @@
 
 	/* CHECKBOX */
 	:host .kol-input label span {
-		margin-top: 0.125rem;
+		margin-top: rem(2);
 	}
 
 	:host .required label > span::after {
@@ -121,9 +126,9 @@
 
 	:host .kol-input.default input[type='checkbox'] {
 		border-radius: var(--border-radius);
-		height: calc(6 * 0.25rem);
-		min-width: calc(6 * 0.25rem);
-		width: calc(6 * 0.25rem);
+		height: calc(6 * rem(4));
+		min-width: calc(6 * rem(4));
+		width: calc(6 * rem(4));
 	}
 
 	:host .kol-input.default input[type='checkbox']:indeterminate {
@@ -132,7 +137,7 @@
 
 	:host .kol-input.default .icon {
 		color: var(--color-light);
-		margin-left: 0.25rem;
+		margin-left: rem(4);
 	}
 
 	:host .kol-input.switch input[type='checkbox'] {
@@ -186,7 +191,84 @@
 		}
 	}
 
-	.button:focus-within {
-		@include focus-outline;
+	.button {
+		.input {
+			border-top-width: 1px;
+			border-left-width: 1px;
+			border-bottom-width: 1px;
+
+			border-top-style: solid;
+			border-left-style: solid;
+			border-bottom-style: solid;
+		}
+
+		&.hide-label .input {
+			border-right-width: 1px;
+			border-right-style: solid;
+		}
+
+		.input-label {
+			border-top-width: 1px;
+			border-right-width: 1px;
+			border-bottom-width: 1px;
+
+			border-top-style: solid;
+			border-right-style: solid;
+			border-bottom-style: solid;
+
+			justify-self: stretch;
+			align-self: stretch;
+			display: flex;
+
+			padding-right: rem(16);
+
+			.input-label-span {
+				margin: auto auto;
+				font-weight: 700;
+			}
+		}
+
+		&:focus-within {
+			@include focus-outline;
+		}
+
+		.input,
+		.input-label {
+			border-color: var(--color-primary);
+			background-color: var(--color-light);
+			color: var(--color-primary);
+		}
+
+		&.indeterminate {
+			.input,
+			.input-label {
+				border-color: var(--color-primary);
+				background-color: var(--color-mute);
+				color: var(--color-primary);
+			}
+		}
+
+		&.checked {
+			.input,
+			.input-label {
+				border-color: var(--color-primary);
+				background-color: var(--color-primary);
+				color: var(--color-light);
+			}
+		}
+
+		&:is(:active, :hover):not(.disabled) {
+			.input,
+			.input-label {
+				background-color: var(--color-primary-variant);
+				border-color: var(--color-primary-variant);
+				color: var(--color-light);
+			}
+		}
+
+		&.disabled .input {
+			opacity: 0.5;
+			outline: none;
+		}
 	}
 }

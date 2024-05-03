@@ -6,7 +6,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getAvatarHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { AvatarProps } from '@public-ui/schema';
+import type { AvatarProps } from '../../../schema';
 import { KolAvatar } from '../shadow';
 import { KolAvatarWc } from '../component';
 
