@@ -60,14 +60,13 @@ export class KolCombobox implements ComboboxAPI {
 
 	private setFilteredOptionsByQuery(query: string) {
 		if (query.trim() === '') {
-			this._filteredOptions = [...this.state._options];
+			this._filteredOptions = [...this._options];
 		} else {
-			this._filteredOptions = this.state._options.filter((option: string) => {
+			this._filteredOptions = this._options.filter((option: string) => {
 				return option.toLowerCase().includes(query.toLowerCase());
 			});
-			console.log(this._filteredOptions);
 
-			this._isOpen = this._filteredOptions.length > 0 ? true : false;
+			this._isOpen = this._filteredOptions && this._filteredOptions.length > 0 ? true : false;
 		}
 	}
 
@@ -179,14 +178,28 @@ export class KolCombobox implements ComboboxAPI {
 									onClick={this.toggleListbox.bind(this)}
 									onChange={this.onChange.bind(this)}
 								/>
-								<span onClick={this.toggleListbox.bind(this)} tabIndex={0} class="combobox__icon">
-									<KolIconTag _icons="codicon codicon-triangle-down" _label={`dropdown`} />
+								<span class="combobox__icon">
+									<KolIconTag _icons="codicon codicon-triangle-down" _label={`dropdown`} onClick={this.toggleListbox.bind(this)} />
 								</span>
 							</div>
-							<ul role="listbox" aria-label="" class={{ combobox__listbox: true, 'combobox__listbox--hidden': !this._isOpen }} tabindex="-1">
+							<ul role="listbox" aria-label="" class={{ combobox__listbox: true, 'combobox__listbox--hidden': !this._isOpen }}>
 								{this._filteredOptions &&
 									this._filteredOptions.map((option, index) => (
-										<li key={`-${index}`} data-index={index} tabIndex={0} onClick={() => this.selectOption(option)} class="combobox__item">
+										<li
+											key={`-${index}`}
+											data-index={index}
+											tabIndex={0}
+											role="option"
+											aria-selected={this.state._value === option}
+											onClick={() => this.selectOption(option)}
+											class="combobox__item"
+											onKeyDown={(e) => {
+												if (e.key === 'Enter' || e.key === ' ') {
+													this.selectOption(option);
+													e.preventDefault();
+												}
+											}}
+										>
 											{option}
 										</li>
 									))}
