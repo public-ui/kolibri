@@ -50,7 +50,6 @@ export class KolCombobox implements ComboboxAPI {
 
 	private selectOption(option: string) {
 		this.state._value = option;
-		this.toggleListbox();
 	}
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
@@ -93,14 +92,6 @@ export class KolCombobox implements ComboboxAPI {
 			const optionElement = this.host.shadowRoot.querySelector(`li[data-index="${index}"]`) as HTMLElement;
 			optionElement?.focus();
 			this._value = optionElement.textContent || '';
-		}
-	}
-	private selectFocusedOption() {
-		if (this._focusedOptionIndex !== undefined && this._filteredOptions) {
-			const selectedOption = this._filteredOptions[this._focusedOptionIndex];
-			this.state._value = selectedOption;
-			this._isOpen = false;
-			this._focusedOptionIndex = 0;
 		}
 	}
 
@@ -191,7 +182,10 @@ export class KolCombobox implements ComboboxAPI {
 											tabIndex={0}
 											role="option"
 											aria-selected={this.state._value === option}
-											onClick={() => this.selectOption(option)}
+											onClick={() => {
+												this.selectOption(option);
+												this.toggleListbox();
+											}}
 											class="combobox__item"
 											onKeyDown={(e) => {
 												if (e.key === 'Enter' || e.key === ' ') {
@@ -239,7 +233,7 @@ export class KolCombobox implements ComboboxAPI {
 			}
 			case ' ':
 			case 'Enter': {
-				handleEvent(isOpen ? true : true, () => (isOpen ? this.selectFocusedOption() : undefined));
+				this.toggleListbox();
 				break;
 			}
 			case 'Home': {
