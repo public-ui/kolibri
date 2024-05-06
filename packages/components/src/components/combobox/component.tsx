@@ -226,7 +226,7 @@ export class KolCombobox implements ComboboxAPI {
 			}
 			case ' ':
 			case 'Enter': {
-				handleEvent(isOpen ? true : undefined, () => (isOpen ? this.selectFocusedOption() : undefined));
+				handleEvent(isOpen ? true : true, () => (isOpen ? this.selectFocusedOption() : undefined));
 				break;
 			}
 			case 'Home': {
