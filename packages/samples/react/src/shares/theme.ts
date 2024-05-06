@@ -1,6 +1,6 @@
 import { SelectOption } from '@public-ui/components';
 
-export const THEMES = ['bmf', 'bstw', 'default', 'ecl-ec', 'ecl-eu', 'itzbund'] as const;
+export const THEMES = ['bmf', 'bstw', 'default', 'ecl-ec', 'ecl-eu', 'itzbund', 'unstyled'] as const;
 export type Theme = (typeof THEMES)[number];
 export type ThemeAndUnstyled = Theme | 'unstyled';
 
