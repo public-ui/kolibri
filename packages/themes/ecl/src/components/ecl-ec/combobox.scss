@@ -1,0 +1,99 @@
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.kol-input {
+		color: var(--color-grey);
+		gap: var(--spacing-xs);
+	}
+
+	label {
+		font-weight: var(--font-weight-bold);
+		order: 1;
+	}
+
+	//Block: .combobox
+	.combobox {
+		display: block;
+		margin-bottom: 1.5rem;
+		position: relative;
+
+		&__group {
+			display: inline-flex;
+			align-items: center;
+			min-height: var(--a11y-min-size);
+			text-align: left;
+			width: 100%;
+			padding: 0.25rem;
+			cursor: pointer;
+			min-height: 44px !important;
+			border: 1px solid var(--color-blue);
+			color: var(--color-grey);
+			order: 4;
+			align-items: center;
+			padding: 1px 0.5em;
+		}
+
+		&__input {
+			border: none;
+			flex-grow: 1;
+			border: transparent;
+			width: calc(100% - 2.5rem);
+			cursor: pointer;
+			position: relative;
+
+			&::placeholder {
+				color: var(--color-grey-50);
+			}
+
+			&:first-child {
+				padding-left: var(--spacing);
+			}
+
+			&:last-child {
+				padding-right: var(--spacing);
+			}
+
+			&:not(.disabled) &:hover {
+				border-color: var(--color-blue);
+			}
+		}
+
+		&__icon {
+			display: grid;
+			place-items: center;
+			cursor: pointer;
+			padding-left: 1em;
+			padding-right: 1em;
+
+			&:focus {
+				outline: 0 !important;
+			}
+		}
+
+		&__listbox {
+			border-style: solid;
+			border-width: 1px;
+			border-color: var(--color-blue);
+			max-height: 15.625rem;
+		}
+
+		&__item {
+			padding: 0.62rem 0.75rem;
+			margin: 1px 0;
+			cursor: pointer;
+
+			&:hover {
+				background: var(--color-blue);
+				color: white;
+			}
+
+			&:focus {
+				background: var(--color-blue);
+				color: white;
+				outline: 0 !important;
+			}
+		}
+	}
+}

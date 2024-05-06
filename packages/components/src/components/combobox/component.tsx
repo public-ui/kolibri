@@ -200,67 +200,59 @@ export class KolCombobox implements ComboboxAPI {
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
+		const isOpen = this._isOpen;
+		const handleEvent = (val?: boolean, callback?: () => void): void => {
+			event.preventDefault();
+			if (val !== undefined) {
+				this._isOpen = val;
+			}
+			callback?.();
+		};
 		switch (event.key) {
 			case 'Down':
 			case 'ArrowDown': {
-				event.preventDefault();
-				this._isOpen = true;
-				this.moveFocus(1);
+				handleEvent(true, () => this.moveFocus(1));
 				break;
 			}
 			case 'Up':
 			case 'ArrowUp': {
-				event.preventDefault();
-				this._isOpen = true;
-				this.moveFocus(-1);
-
+				handleEvent(true, () => this.moveFocus(-1));
 				break;
 			}
 			case 'Esc':
 			case 'Escape': {
-				event.preventDefault();
-				this._isOpen = false;
-
+				handleEvent(false);
 				break;
 			}
 			case ' ':
 			case 'Enter': {
-				event.preventDefault();
-				if (this._isOpen) {
-					this.selectFocusedOption();
-				} else {
-					this._isOpen = true;
-				}
+				handleEvent(isOpen ? true : undefined, () => (isOpen ? this.selectFocusedOption() : undefined));
 				break;
 			}
 			case 'Home': {
-				event.preventDefault();
-				if (this._isOpen) {
-					this._focusedOptionIndex = 0;
-					this.focusOption(this._focusedOptionIndex);
-				}
+				handleEvent(undefined, () => {
+					if (isOpen) {
+						this._focusedOptionIndex = 0;
+						this.focusOption(this._focusedOptionIndex);
+					}
+				});
 				break;
 			}
 			case 'End': {
-				event.preventDefault();
-				if (this._isOpen) {
-					this._focusedOptionIndex = this._filteredOptions ? this._filteredOptions.length - 1 : 0;
-					this.focusOption(this._focusedOptionIndex);
-				}
+				handleEvent(undefined, () => {
+					if (isOpen) {
+						this._focusedOptionIndex = this._filteredOptions ? this._filteredOptions.length - 1 : 0;
+						this.focusOption(this._focusedOptionIndex);
+					}
+				});
 				break;
 			}
 			case 'PageUp': {
-				event.preventDefault();
-				if (this._isOpen) {
-					this.moveFocus(10);
-				}
+				handleEvent(undefined, () => isOpen && this.moveFocus(10));
 				break;
 			}
 			case 'PageDown': {
-				event.preventDefault();
-				if (this._isOpen) {
-					this.moveFocus(-10);
-				}
+				handleEvent(undefined, () => isOpen && this.moveFocus(-10));
 				break;
 			}
 			default:
