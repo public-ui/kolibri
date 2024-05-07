@@ -1,3 +1,5 @@
+@import '../mixins/alert.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -92,4 +94,6 @@
 		border-color: var(--color-granite);
 		color: var(--color-black);
 	}
+
+	@include kol-alert;
 }
