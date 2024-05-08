@@ -52,5 +52,6 @@ export * from './table-data';
 export * from './table-data-foot';
 export * from './table-header-cells';
 export * from './tooltip-align';
+export * from './toolbar-items';
 export * from './touched';
 export * from './variant/spin';
