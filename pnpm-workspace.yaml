@@ -13,7 +13,6 @@ packages:
   - 'packages/test-tag-name-transformer'
   - 'packages/themes'
   - 'packages/themes/bmf'
-  - 'packages/themes/bstw'
   - 'packages/themes/default'
   - 'packages/themes/ecl'
   - 'packages/themes/itzbund'
