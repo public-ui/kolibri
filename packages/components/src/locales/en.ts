@@ -37,4 +37,5 @@ export default {
 	'error-list-message': 'Please correct the following errors',
 	version: 'Version number',
 	'table-visible-range': 'Entries {{start}} to {{end}} of {{total}}',
+	dropdown: 'Dropdown',
 };

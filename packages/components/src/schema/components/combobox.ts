@@ -11,10 +11,11 @@ import type {
 	PropRequired,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropSuggestions,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified, W3CInputValue } from '../types';
 
-type RequiredProps = { options: string[] };
+type RequiredProps = PropSuggestions;
 type OptionalProps = {
 	accessKey: string;
 	error: string;
@@ -35,7 +36,7 @@ type OptionalProps = {
 
 type RequiredStates = {
 	hasValue: boolean;
-	options: string[];
+	suggestions: W3CInputValue[];
 	value: string;
 } & PropId &
 	PropHideError &
