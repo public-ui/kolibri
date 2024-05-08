@@ -38,4 +38,6 @@ export default {
 	version: 'Version number',
 	'table-visible-range': 'Entries {{start}} to {{end}} of {{total}}',
 	dropdown: 'Dropdown',
+	'nav-label-open': 'Submenu for {{label}} open',
+	'nav-label-close': 'Submenu for {{label}} close',
 };
