@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { KolInputText, KolTextarea } from '@public-ui/react';
+import { KolTextarea } from '@public-ui/react';
 
 import { ERROR_MSG } from '../../../shares/constants';
 
