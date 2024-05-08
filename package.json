@@ -37,5 +37,9 @@
 		"ts-node": "10.9.2",
 		"ts-prune": "0.10.3",
 		"typescript": "5.4.5"
-	}
+	},
+	"engines": {
+		"pnpm": "^8"
+	},
+	"packageManager": "pnpm@^8"
 }
