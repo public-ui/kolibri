@@ -1101,60 +1101,6 @@ importers:
         specifier: 1.2.1
         version: 1.2.1(sass@1.75.0)
 
-  packages/themes/bstw:
-    devDependencies:
-      '@public-ui/components':
-        specifier: 2.1.0
-        version: link:../../components
-      '@public-ui/visual-tests':
-        specifier: 2.1.0
-        version: link:../../tools/visual-tests
-      '@rollup/plugin-commonjs':
-        specifier: 25.0.7
-        version: 25.0.7(rollup@4.16.4)
-      '@rollup/plugin-node-resolve':
-        specifier: 15.2.3
-        version: 15.2.3(rollup@4.16.4)
-      '@rollup/plugin-typescript':
-        specifier: 11.1.6
-        version: 11.1.6(rollup@4.16.4)(typescript@5.4.5)
-      '@types/node':
-        specifier: ts5.4
-        version: 20.12.7
-      '@typescript-eslint/eslint-plugin':
-        specifier: 7.7.1
-        version: 7.7.1(@typescript-eslint/parser@7.7.1)(eslint@8.57.0)(typescript@5.4.5)
-      '@typescript-eslint/parser':
-        specifier: 7.7.1
-        version: 7.7.1(eslint@8.57.0)(typescript@5.4.5)
-      eslint:
-        specifier: 8.57.0
-        version: 8.57.0
-      eslint-plugin-no-loops:
-        specifier: 0.3.0
-        version: 0.3.0(eslint@8.57.0)
-      nodemon:
-        specifier: 3.1.0
-        version: 3.1.0
-      postcss:
-        specifier: 8.4.38
-        version: 8.4.38
-      rollup:
-        specifier: 4.16.4
-        version: 4.16.4
-      rollup-plugin-postcss:
-        specifier: 4.0.2
-        version: 4.0.2(postcss@8.4.38)(ts-node@10.9.2)
-      sass:
-        specifier: 1.75.0
-        version: 1.75.0
-      typescript:
-        specifier: 5.4.5
-        version: 5.4.5
-      unbuild:
-        specifier: 1.2.1
-        version: 1.2.1(sass@1.75.0)
-
   packages/themes/default:
     devDependencies:
       '@public-ui/components':
@@ -1437,7 +1383,7 @@ importers:
         version: 0.3.0(eslint@8.57.0)
       knip:
         specifier: 5.11.0
-        version: 5.11.0(@types/node@20.12.7)(typescript@5.4.5)
+        version: 5.11.0(@types/node@20.12.10)(typescript@5.4.5)
       prettier:
         specifier: 3.2.5
         version: 3.2.5
@@ -7840,6 +7786,12 @@ packages:
 
   /@types/node@20.11.25:
     resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
+
+  /@types/node@20.12.10:
+    resolution: {integrity: sha512-Eem5pH9pmWBHoGAT8Dr5fdc5rYA+4NAovdM4EktRPVAAiJhmWWfQrA0cFhAbOsQdSfIHjAud6YdkbL69+zSKjw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -15347,6 +15299,36 @@ packages:
   /klona@2.0.6:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
+
+  /knip@5.11.0(@types/node@20.12.10)(typescript@5.4.5):
+    resolution: {integrity: sha512-7TBBpLYYAqZI+FM+qHsmT0jfYNOwwZAMBvuJXq3gFJCCpDvGrYcLMu2j6yvURJNh1UlpQ4jaNgPoHw7ylGDWMA==}
+    engines: {node: '>=18.6.0'}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>=18'
+      typescript: '>=5.0.4'
+    dependencies:
+      '@ericcornelissen/bash-parser': 0.5.2
+      '@nodelib/fs.walk': 2.0.0
+      '@snyk/github-codeowners': 1.1.0
+      '@types/node': 20.12.10
+      easy-table: 1.2.0
+      fast-glob: 3.3.2
+      file-entry-cache: 8.0.0
+      jiti: 1.21.0
+      js-yaml: 4.1.0
+      minimist: 1.2.8
+      picocolors: 1.0.0
+      picomatch: 4.0.2
+      pretty-ms: 9.0.0
+      resolve: 1.22.8
+      smol-toml: 1.1.4
+      strip-json-comments: 5.0.1
+      summary: 2.1.0
+      typescript: 5.4.5
+      zod: 3.23.4
+      zod-validation-error: 3.2.0(zod@3.23.4)
+    dev: true
 
   /knip@5.11.0(@types/node@20.12.7)(typescript@5.4.5):
     resolution: {integrity: sha512-7TBBpLYYAqZI+FM+qHsmT0jfYNOwwZAMBvuJXq3gFJCCpDvGrYcLMu2j6yvURJNh1UlpQ4jaNgPoHw7ylGDWMA==}
