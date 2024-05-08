@@ -39,3 +39,8 @@ Toasts are rendered in a container that's appended as first element of `<body>` 
 When using [modal Dialogs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) these are rendered above toasts on the
 [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer). Hence, toast messages are always blocked by Modal Dialogs. We recommend completely
 avoiding Toasts in Modals and giving feedback within the modal directly.
+
+## input text
+
+The `search` of this component is highly browser-dependent. For example, the close button is either shown or hidden depending on the browser. Accessibility is therefore not achieved.
+[🐞 GitHub issue #6307](https://github.com/public-ui/kolibri/issues/6307)
