@@ -40,6 +40,9 @@ export class KolInputText implements API {
 	private ref?: HTMLInputElement;
 	private oldValue?: string;
 
+	@State()
+	private showPlaceholder = true;
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
 		propagateFocus(this.host, this.ref);
@@ -55,6 +58,10 @@ export class KolInputText implements API {
 	private readonly onInput = (event: InputEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
 		this.controller.onFacade.onInput(event);
+	};
+
+	private readonly handleBlur = () => {
+		if (this.state._value === '') this.showPlaceholder = true;
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -121,7 +128,7 @@ export class KolInputText implements API {
 							maxlength={this.state._maxLength}
 							name={this.state._name}
 							pattern={this.state._pattern}
-							placeholder={this.state._placeholder}
+							placeholder={this.showPlaceholder ? this.state._placeholder : ''}
 							readOnly={this.state._readOnly}
 							required={this.state._required}
 							size={this.state._size}
@@ -130,6 +137,8 @@ export class KolInputText implements API {
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 							onChange={this.onChange}
+							onFocus={console.log}
+							onBlur={this.handleBlur}
 							onInput={this.onInput}
 							onKeyDown={this.onKeyDown}
 						/>
