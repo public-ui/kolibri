@@ -134,7 +134,7 @@ export class KolNav implements NavAPI {
 				_disabled={!collapsible}
 				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
 				_hideLabel
-				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
+				_label={`${expanded ? translate('kol-nav-label-close', { placeholders: { label: link._label } }) : translate('kol-nav-label-open', { placeholders: { label: link._label } })}`}
 				_on={{ onClick: () => this.handleToggleExpansionClick(link._children) }}
 			></KolButtonWcTag>
 		);
