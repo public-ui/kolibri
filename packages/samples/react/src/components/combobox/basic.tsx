@@ -1,11 +1,8 @@
-import React from 'react';
-
 import { KolCombobox } from '@public-ui/react';
-import { SampleDescription } from '../SampleDescription';
-
 import type { FC } from 'react';
-
-const SALUTATION_OPTIONS: string[] = ['Keine Auswahl', 'Frau', 'Herr', 'Divers'];
+import React from 'react';
+import { COUNTRY_SUGGESTIONS } from '../../shares/country';
+import { SampleDescription } from '../SampleDescription';
 
 export const ComboboxBasic: FC = () => (
 	<>
@@ -13,7 +10,7 @@ export const ComboboxBasic: FC = () => (
 			Her&apos;s Combobox example: This Combobox merges a text input with a dropdown list, enabling users to type or select their choice.
 		</SampleDescription>
 		<p>
-			<KolCombobox _label="Label" _options={SALUTATION_OPTIONS} _value={'Frau'} />
+			<KolCombobox _label="Label" _options={COUNTRY_SUGGESTIONS} _value={'Deutschland'} />
 		</p>
 	</>
 );
