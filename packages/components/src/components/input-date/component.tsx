@@ -422,7 +422,7 @@ export class KolInputDate implements InputDateAPI {
 
 	@Watch('_value')
 	public validateValue(value?: Iso8601 | Date | null): void {
-		if (typeof value === 'object') {
+		if (value instanceof Date) {
 			deprecatedHint('Date type will be removed in v3. Use `Iso8601` instead.');
 		}
 		this.controller.validateValueEx(value, (v) => {
