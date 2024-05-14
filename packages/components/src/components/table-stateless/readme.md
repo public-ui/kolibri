@@ -19,7 +19,7 @@ const data = [
 ];
 const selection: KoliBriTableSelection = {
 	/* label: Funktion, welche für jede Zeile ausgerufen wird, und ein Label für die Checkbox zurückgibt. */
-	label: (row: KoliBriTableCell[]) => `Selection for ${(row.data as Data).name}`,
+	label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
 
 	/* selectedKeys: Array von Strings, das die Key-Properties der gewählten Zeilen beinhaltet */
 	selectedKeys: ['1002'],
@@ -43,7 +43,7 @@ const selection: KoliBriTableSelection = {
   }}
   _data={DATA}
   _selection={{
-    label: (row: KoliBriTableCell[]) => `Selection for ${(row.data as Data).name}`,
+    label: (row: KoliBriTableDataType) => `Selection for ${row.name}`,
     selectedKeys: ['1002'],
     keyPropertyName: 'id',
   }}

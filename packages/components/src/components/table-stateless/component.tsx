@@ -364,7 +364,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			if (keyCell) {
 				const keyProperty = (keyCell?.data as KoliBriTableDataType)[keyPropertyName] as string;
 				const selected = this.state._selection?.selectedKeys?.includes(keyProperty);
-				const label = this.state._selection.label(keyCell);
+				const label = this.state._selection.label(keyCell.data as KoliBriTableDataType);
 
 				return (
 					<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
