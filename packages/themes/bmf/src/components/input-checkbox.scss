@@ -1,5 +1,3 @@
-@import '../mixins/alert.scss';
-
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -674,6 +672,4 @@
 		box-shadow: none;
 		outline: none;
 	}
-
-	@include kol-alert;
 }
