@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      # - uses: pnpm/action-setup@v3
+      # - uses: pnpm/action-setup@v4
       #   with:
       #     run_install: false
       #     version: 8
@@ -32,7 +32,7 @@ jobs:
         with:
           # cache: pnpm
           node-version: 20
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         id: pnpm-install
         with:
           version: 8
