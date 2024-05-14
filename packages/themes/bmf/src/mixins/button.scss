@@ -7,6 +7,10 @@
 		outline: none;
 	}
 
+	:is(a, button) > .kol-span-wc .kol-icon {
+    color: inherit;
+	}
+
 	.primary :is(a, button) > .kol-span-wc,
 	.primary :is(a, button):disabled:hover > .kol-span-wc {
 		background-color: var(--color-midnight);
