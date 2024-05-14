@@ -4,6 +4,8 @@ import type {
 	ButtonCallbacksPropType,
 	PropAlternativeButtonLinkRole,
 	PropButtonVariant,
+	PropDisabled,
+	PropHideLabel,
 	PropIcons,
 	PropLabel,
 	PropName,
@@ -15,9 +17,9 @@ import type { StencilUnknown } from '../types';
 type RequiredProps = PropLabel;
 type OptionalProps = {
 	on?: ButtonCallbacksPropType<StencilUnknown>;
-	hideLabel: boolean;
-	disabled: boolean;
-} & PropAlternativeButtonLinkRole &
+} & PropDisabled &
+	PropHideLabel &
+	PropAlternativeButtonLinkRole &
 	PropIcons &
 	PropTooltipAlign &
 	PropButtonVariant &
