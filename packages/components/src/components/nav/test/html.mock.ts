@@ -35,7 +35,7 @@ export const getNavHtml = (props: NavProps): string => {
 											: `<${KolButtonWcTag} ${props._hideLabel ? '_hidelabel=""' : ''}  _label="${link._label}" class="entry-item"  ${typeof icons === 'string' ? `_icons="${icons}"` : ''} ></${KolButtonWcTag}>`
 									}			${
 										link._children
-											? `<${KolButtonWcTag} _hidelabel="" _label="${`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}" class="expand-button" _icons="codicon codicon-${expanded ? 'remove' : 'add'}"  ></${KolButtonWcTag}>`
+											? `<${KolButtonWcTag} _hidelabel="" _label="${expanded ? translate('kol-nav-label-close', { placeholders: { label: link._label as string } }) : translate('kol-nav-label-open', { placeholders: { label: link._label as string } })}" class="expand-button" _icons="codicon codicon-${expanded ? 'remove' : 'add'}"  ></${KolButtonWcTag}>`
 											: ''
 									}
 								</div>
