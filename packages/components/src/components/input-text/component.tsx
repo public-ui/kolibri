@@ -61,7 +61,7 @@ export class KolInputText implements API {
 		(event.target as HTMLInputElement).value === '' ? (this.showPlaceholder = true) : (this.showPlaceholder = false);
 	};
 
-	private readonly SetShowPlaceholder = () => {
+	private readonly setShowPlaceholder = () => {
 		this.ref?.value === '' || this.ref?.value === undefined ? (this.showPlaceholder = true) : (this.showPlaceholder = false);
 	};
 
@@ -138,8 +138,8 @@ export class KolInputText implements API {
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 							onChange={this.onChange}
-							onFocus={this.SetShowPlaceholder}
-							onBlur={this.SetShowPlaceholder}
+							onFocus={this.setShowPlaceholder}
+							onBlur={this.setShowPlaceholder}
 							onInput={this.onInput}
 							onKeyDown={this.onKeyDown}
 						/>
