@@ -62,7 +62,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add **/package.json pnpm-lock.yaml
           git status
-          git commit -m "chore: update dependencies and lock file"
+          HUSKY=0 git commit -m "chore: update dependencies and lock file"
 
       - uses: ad-m/github-push-action@master
         with:
