@@ -40,9 +40,6 @@ export class KolInputText implements API {
 	private ref?: HTMLInputElement;
 	private oldValue?: string;
 
-	@State()
-	private showPlaceholder = true;
-
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
 		propagateFocus(this.host, this.ref);
@@ -58,11 +55,15 @@ export class KolInputText implements API {
 	private readonly onInput = (event: InputEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
 		this.controller.onFacade.onInput(event);
-		(event.target as HTMLInputElement).value === '' ? (this.showPlaceholder = true) : (this.showPlaceholder = false);
+		if ((event.target as HTMLInputElement).value === '') {
+			(event.target as HTMLInputElement).placeholder = this.state._placeholder as string;
+		}
 	};
 
 	private readonly setShowPlaceholder = () => {
-		this.ref?.value === '' || this.ref?.value === undefined ? (this.showPlaceholder = true) : (this.showPlaceholder = false);
+		if (this.ref?.value === '') {
+			if (this.ref?.placeholder) this.ref.placeholder = this.state._placeholder as string;
+		}
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -129,7 +130,7 @@ export class KolInputText implements API {
 							maxlength={this.state._maxLength}
 							name={this.state._name}
 							pattern={this.state._pattern}
-							placeholder={this.showPlaceholder ? this.state._placeholder : ''}
+							placeholder={this.ref?.value === '' || this.ref?.value === undefined ? this.state._placeholder : undefined}
 							readOnly={this.state._readOnly}
 							required={this.state._required}
 							size={this.state._size}
