@@ -12,6 +12,8 @@ export const getSymbolHtml = (props: Props): string => {
 		props,
 	);
 	return `<kol-symbol class="kol-symbol">
-	<span aria-label="${props._label}" role="term">${props._symbol}</span>
+	<mock:shadow-root>
+		<span aria-label="${props._label}" role="term">${props._symbol}</span>
+	</mock:shadow-root>
 </kol-symbol>`;
 };
