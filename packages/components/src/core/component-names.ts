@@ -49,7 +49,7 @@ export let KolSpanTag = 'kol-span' as const;
 export let KolSpanWcTag = 'kol-span-wc' as const;
 export let KolSpinTag = 'kol-spin' as const;
 export let KolSplitButtonTag = 'kol-split-button' as const;
-export let KolSymbolTag = 'kol-symbol' as const;
+export let KolSymbolTag = 'kol-symbol-wc' as const;
 export let KolTableTag = 'kol-table' as const;
 export let KolTabsTag = 'kol-tabs' as const;
 export let KolTextareaTag = 'kol-textarea' as const;
@@ -114,7 +114,7 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolSpanWcTag = transformTagName(KolSpanWcTag as string) as 'kol-span-wc';
 	KolSpinTag = transformTagName(KolSpinTag as string) as 'kol-spin';
 	KolSplitButtonTag = transformTagName(KolSplitButtonTag as string) as 'kol-split-button';
-	KolSymbolTag = transformTagName(KolSymbolTag as string) as 'kol-symbol';
+	KolSymbolTag = transformTagName(KolSymbolTag as string) as 'kol-symbol-wc';
 	KolTableTag = transformTagName(KolTableTag as string) as 'kol-table';
 	KolTabsTag = transformTagName(KolTabsTag as string) as 'kol-tabs';
 	KolTextareaTag = transformTagName(KolTextareaTag as string) as 'kol-textarea';

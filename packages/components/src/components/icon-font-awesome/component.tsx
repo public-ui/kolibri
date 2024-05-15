@@ -18,13 +18,13 @@ type OptionalProps = {
  * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
  */
 @Component({
-	tag: 'kol-icon-font-awesome',
+	tag: 'kol-icon-font-awesome-wc',
 	shadow: false,
 })
-export class KolIconFontAwesome implements Generic.Element.Members<RequiredProps, OptionalProps> {
+export class KolIconFontAwesomeWc implements Generic.Element.Members<RequiredProps, OptionalProps> {
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-icon-font-awesome">
+			<Host class="kol-icon-font-awesome-wc">
 				<KolIconTag
 					exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
 					_ariaLabel={this._ariaLabel}

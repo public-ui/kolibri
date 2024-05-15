@@ -15,7 +15,7 @@ import { KolSpanWcTag } from '../../core/component-names';
 	styleUrl: './style.scss',
 	shadow: false,
 })
-export class KolTooltip implements API {
+export class KolTooltipWc implements API {
 	@Element() private host!: HTMLKolTooltipWcElement;
 
 	private arrowElement?: HTMLDivElement;

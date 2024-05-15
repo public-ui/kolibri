@@ -10,7 +10,7 @@ import { PropCompact } from '../../types/props/compact';
 import { HasCompactButtonPropType, PropHasCompactButton } from '../../types/props/has-compact-button';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
-import { KoliBriNavVariant } from './component';
+import { KoliBriNavVariant } from './shadow';
 
 type RequiredProps = {
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;

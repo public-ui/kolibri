@@ -11,7 +11,7 @@ export const getSymbolHtml = (props: Props): string => {
 		},
 		props,
 	);
-	return `<kol-symbol class="kol-symbol">
+	return `<kol-symbol-wc class="kol-symbol-wc">
 	<span aria-label="${props._label}" role="term">${props._symbol}</span>
-</kol-symbol>`;
+</kol-symbol-wc>`;
 };

@@ -19,10 +19,10 @@ import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/componen
  * @internal
  */
 @Component({
-	tag: 'kol-input',
+	tag: 'kol-input-wc',
 	shadow: false,
 })
-export class KolInput implements Props {
+export class KolInputWc implements Props {
 	@Element() private readonly host?: HTMLElement;
 
 	private slotName: string = 'input';
@@ -52,7 +52,7 @@ export class KolInput implements Props {
 		return (
 			<Host
 				class={{
-					'kol-input': true,
+					'kol-input-wc': true,
 					disabled: this._disabled === true,
 					error: hasError === true,
 					'read-only': this._readOnly === true,

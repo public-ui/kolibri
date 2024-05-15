@@ -15,7 +15,7 @@ import { API, States } from './types';
 	styleUrl: './style.scss',
 	shadow: false,
 })
-export class KolPopover implements API {
+export class KolPopoverWc implements API {
 	private arrowElement?: HTMLDivElement;
 	private popoverElement?: HTMLDivElement;
 	private triggerElement?: HTMLElement | null;

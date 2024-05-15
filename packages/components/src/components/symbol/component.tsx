@@ -6,13 +6,13 @@ import { watchString } from '../../utils/prop.validators';
 import { API, States } from './types';
 
 @Component({
-	tag: 'kol-symbol',
+	tag: 'kol-symbol-wc',
 	shadow: false,
 })
-export class KolSymbol implements API {
+export class KolSymbolWc implements API {
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-symbol">
+			<Host class="kol-symbol-wc">
 				<span aria-label={this.state._label} role="term">
 					{this.state._symbol}
 				</span>

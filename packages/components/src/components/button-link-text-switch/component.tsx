@@ -10,12 +10,12 @@ import { KolButtonWcTag, KolLinkWcTag, KolSpanWcTag } from '../../core/component
  * @internal
  */
 @Component({
-	tag: 'kol-button-link-text-switch',
+	tag: 'kol-button-link-text-switch-wc',
 	shadow: false,
 })
-export class KolButtonLinkTextSwitch implements Props {
+export class KolButtonLinkTextSwitchWc implements Props {
 	public render(): JSX.Element {
-		return <Host class="kol-button-link-text-switch">{this.renderContent()}</Host>;
+		return <Host class="kol-button-link-text-switch-wc">{this.renderContent()}</Host>;
 	}
 
 	private renderContent() {
