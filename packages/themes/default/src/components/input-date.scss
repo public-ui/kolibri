@@ -1,20 +1,20 @@
-.kol-input {
+.kol-input-wc {
 	gap: 0.25rem;
 }
 
-.kol-input .error {
+.kol-input-wc .error {
 	order: 1;
 }
 
-.kol-input label {
+.kol-input-wc label {
 	order: 2;
 }
 
-.kol-input .input {
+.kol-input-wc .input {
 	order: 3;
 }
 
-.kol-input .hint {
+.kol-input-wc .hint {
 	order: 4;
 	font-size: 0.9rem;
 	font-style: italic;
@@ -72,25 +72,25 @@ input:disabled {
 	padding-left: 0.125em;
 }
 
-.kol-input.error {
+.kol-input-wc.error {
 	border-left: 3px solid var(--color-danger);
 	padding-left: 1rem;
 }
 
-.kol-input.error .input:focus-within {
+.kol-input-wc.error .input:focus-within {
 	outline-color: var(--color-danger) !important;
 }
 
-.kol-input.error .kol-alert.error {
+.kol-input-wc.error .kol-alert.error {
 	color: var(--color-danger);
 	font-weight: 700;
 }
 
-.kol-input.disabled :is(input, label) {
+.kol-input-wc.disabled :is(input, label) {
 	opacity: 1;
 }
 
-.kol-input.disabled :is(input, .input) {
+.kol-input-wc.disabled :is(input, .input) {
 	background-color: var(--color-mute);
 	border-color: var(--color-mute-variant);
 	color: var(--color-text);

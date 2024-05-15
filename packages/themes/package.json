@@ -4,9 +4,9 @@
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/public-ui/kolibri"
-  },
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -48,7 +48,7 @@
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
 		"prepack": "unbuild",
-		"dev": "nodemon --ignore dist -e ts,tsx  --exec 'pnpm build'",
+		"dev": "nodemon --ignore dist -e ts,tsx,scss  --exec \"pnpm build\"",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
 	},
