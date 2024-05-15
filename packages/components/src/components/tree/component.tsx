@@ -138,23 +138,21 @@ export class KolTreeWc implements TreeAPI {
 			}
 			case 'Right':
 			case 'ArrowRight': {
-				if (!(await currentTreeItem.isOpen())) {
-					await currentTreeItem.expand();
-					event.preventDefault();
-				} else {
+				event.preventDefault();
+				if (await currentTreeItem.isOpen()) {
 					await openItems[currentIndex + 1]?.focusLink();
-					event.preventDefault();
+				} else {
+					await currentTreeItem.expand();
 				}
 				break;
 			}
 			case 'Left':
 			case 'ArrowLeft': {
+				event.preventDefault();
 				if (await currentTreeItem.isOpen()) {
 					await currentTreeItem.collapse();
-					event.preventDefault();
 				} else {
 					await openItems[currentIndex - 1]?.focusLink();
-					event.preventDefault();
 				}
 
 				break;
@@ -172,13 +170,13 @@ export class KolTreeWc implements TreeAPI {
 			case event.key.match(/[a-zA-Z0-9]/)?.input: {
 				const char = event.key.toLowerCase();
 				const startIndex = openItems.indexOf(currentTreeItem) + 1;
-				const warpAroundItems = openItems.concat(openItems);
-				const matchIndex = warpAroundItems
+				const wrapAroundItems = openItems.concat(openItems);
+				const matchIndex = wrapAroundItems
 					.slice(startIndex, startIndex + openItems.length)
 					.findIndex((item) => item.getAttribute('_label')?.trim().toLowerCase().startsWith(char));
 
 				if (matchIndex !== -1) {
-					await warpAroundItems[startIndex + matchIndex].focusLink();
+					await wrapAroundItems[startIndex + matchIndex].focusLink();
 					event.preventDefault();
 				}
 				break;
