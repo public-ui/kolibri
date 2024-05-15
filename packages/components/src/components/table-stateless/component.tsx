@@ -358,11 +358,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		if (this.horizontal && row[0].data) {
 			key = this.getDataKey(row[0].data) ?? key;
 		}
-		return (
-			<tr key={`row-${key}`} data-debug={`row-${key}`}>
-				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex))}
-			</tr>
-		);
+
+		return <tr key={`row-${key}`}>{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex))}</tr>;
 	};
 
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
@@ -382,7 +379,6 @@ export class KolTableStateless implements TableStatelessAPI {
 			return (
 				<td
 					key={`cell-${key}`}
-					data-debug={`cell-${key}`}
 					class={{
 						[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
 					}}
