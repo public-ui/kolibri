@@ -53,21 +53,40 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 	],
 };
 
-export const TableSortData: FC = () => (
-	<>
-		<SampleDescription>
-			<p>
-				Hier ist eine Tabelle, die durch anklicken des Knopfes sortiert werden kann. Entweder nach der Reihenfolge, nach dem ältesten Datum oder nach dem
-				jüngsten Datum.
-			</p>
-		</SampleDescription>
+export const TableSortData: FC = () => {
+	const [myData, setMyData] = React.useState<Data[]>(DATA.slice(0, 3));
 
-		<h2>Vertical</h2>
+	return (
+		<>
+			<SampleDescription>
+				<p>
+					Hier ist eine Tabelle, die durch anklicken des Knopfes sortiert werden kann. Entweder nach der Reihenfolge, nach dem ältesten Datum oder nach dem
+					jüngsten Datum.
+				</p>
+			</SampleDescription>
 
-		<KolTable _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
+			<h2>Vertical</h2>
 
-		<h2>Horizontal</h2>
+			<KolTable _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
 
-		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
-	</>
-);
+			<h2>Horizontal</h2>
+
+			<KolTable _label="Sort a date column" _data={myData} _headers={HEADERS_HORIZONTAL} className="block" />
+			<button
+				onClick={() =>
+					setMyData([
+						...myData,
+						{
+							order: 1000,
+							date: new Date(),
+						},
+					])
+				}
+			>
+				add
+			</button>
+
+			<button onClick={() => setMyData(myData.filter((_el) => _el.order !== 1000))}>remove 1000</button>
+		</>
+	);
+};
