@@ -17,8 +17,8 @@ import { KolDetails } from './details/shadow';
 import { KolForm } from './form/shadow';
 import { KolHeadingWc } from './heading/component';
 import { KolHeading } from './heading/shadow';
-import { KolIconFontAwesomeWc } from './icon-font-awesome/component';
-import { KolIconIcofontWc } from './icon-icofont/component';
+import { KolIconFontAwesome } from './icon-font-awesome/component';
+import { KolIconIcofont } from './icon-icofont/component';
 import { KolIcon } from './icon/shadow';
 import { KolImage } from './image/shadow';
 import { KolIndentedText } from './indented-text/shadow';
@@ -53,7 +53,7 @@ import { KolSpanWc } from './span/component';
 import { KolSpan } from './span/shadow';
 import { KolSpin } from './spin/shadow';
 import { KolSplitButton } from './split-button/shadow';
-import { KolSymbolWc } from './symbol/component';
+import { KolSymbol } from './symbol/shadow';
 import { KolTable } from './table/shadow';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
@@ -83,8 +83,8 @@ export const COMPONENTS = [
 	KolHeading,
 	KolHeadingWc,
 	KolIcon,
-	KolIconFontAwesomeWc,
-	KolIconIcofontWc,
+	KolIconFontAwesome,
+	KolIconIcofont,
 	KolImage,
 	KolIndentedText,
 	KolInputWc,
@@ -118,7 +118,7 @@ export const COMPONENTS = [
 	KolSpanWc,
 	KolSpin,
 	KolSplitButton,
-	KolSymbolWc,
+	KolSymbol,
 	KolTable,
 	KolTabs,
 	KolTextarea,

@@ -14,7 +14,7 @@ import { watchValidator } from '../../utils/prop.validators';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { API, States } from './types';
 import { watchNavLinks } from './validation';
-import { KolButtonLinkTextSwitchTag, KolButtonTag, KolButtonWcTag } from '../../core/component-names';
+import { KolButtonLinkTextSwitchWcTag, KolButtonTag, KolButtonWcTag } from '../../core/component-names';
 
 /**
  * @deprecated Removed in v2
@@ -70,7 +70,7 @@ export class KolNav implements API {
 	): JSX.Element {
 		return (
 			<div class={{ entry: true, 'hide-label': hideLabel }}>
-				<KolButtonLinkTextSwitchTag
+				<KolButtonLinkTextSwitchWcTag
 					_link={{
 						...link,
 						_hideLabel: hideLabel,

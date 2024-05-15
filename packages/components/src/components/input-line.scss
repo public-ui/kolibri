@@ -1,10 +1,10 @@
 @import 'input';
 
-.kol-input {
+.kol-input-wc {
 	display: grid;
 }
 
-.kol-input .input-slot {
+.kol-input-wc .input-slot {
 	flex-grow: 1;
 }
 
@@ -31,6 +31,6 @@ textarea:focus {
 	place-items: center;
 }
 
-.kol-input.required .input-tooltip .span-label::after {
+.kol-input-wc.required .input-tooltip .span-label::after {
 	content: '*';
 }

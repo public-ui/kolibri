@@ -20,7 +20,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputDateController } from './controller';
 import { ComponentApi, States } from './types';
-import { KolInputTag } from '../../core/component-names';
+import { KolInputWcTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -57,7 +57,7 @@ export class KolInputDate implements ComponentApi {
 
 		return (
 			<Host class={{ 'kol-input-date': true, 'has-value': this.state._hasValue }}>
-				<KolInputTag
+				<KolInputWcTag
 					class={{
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
@@ -105,7 +105,7 @@ export class KolInputDate implements ComponentApi {
 							onKeyDown={this.onKeyDown}
 						/>
 					</div>
-				</KolInputTag>
+				</KolInputWcTag>
 			</Host>
 		);
 	}

@@ -16,7 +16,7 @@ import { propagateFocus, showExpertSlot } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { API, CSSResize, States } from './types';
-import { KolInputTag } from '../../core/component-names';
+import { KolInputWcTag } from '../../core/component-names';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -56,7 +56,7 @@ export class KolTextarea implements API {
 
 		return (
 			<Host class={{ 'kol-textarea': true, 'has-value': this.state._hasValue }}>
-				<KolInputTag
+				<KolInputWcTag
 					class={{ textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
 					_alert={this.state._alert}
 					_currentLength={this.state._currentLength}
@@ -104,7 +104,7 @@ export class KolTextarea implements API {
 							value={this.state._value}
 						/>
 					</div>
-				</KolInputTag>
+				</KolInputWcTag>
 			</Host>
 		);
 	}

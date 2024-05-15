@@ -63,8 +63,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 		padding: 0;
 	}
 	*[tabindex]:focus,
-	.kol-input:not(.checkbox, .radio) .input:focus-within,
-	.kol-input:is(.checkbox, .radio) input:focus,
+	.kol-input-wc:not(.checkbox, .radio) .input:focus-within,
+	.kol-input-wc:is(.checkbox, .radio) input:focus,
 	summary:focus {
 		cursor: pointer;
 		outline-color: var(--color-ocean);
@@ -231,19 +231,19 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:is(a, button).icon-only > .kol-span-wc > span > span {
 		display: block;
 	}`,
-	'KOL-INPUT-TEXT': `.kol-input {
+	'KOL-INPUT-TEXT': `.kol-input-wc {
 		gap: 0.25em;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -290,37 +290,37 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.kol-input.disabled :is(input, label) {
+	.kol-input-wc.disabled :is(input, label) {
 		opacity: 1;
 	}
-	.kol-input.disabled :is(input, .input) {
+	.kol-input-wc.disabled :is(input, .input) {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 	}`,
-	'KOL-INPUT-PASSWORD': `.kol-input {
+	'KOL-INPUT-PASSWORD': `.kol-input-wc {
 		gap: 0.25em;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -367,38 +367,38 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.kol-input.disabled :is(button, input, label, option, select, textarea) {
+	.kol-input-wc.disabled :is(button, input, label, option, select, textarea) {
 		opacity: 1;
 	}
-	.kol-input.disabled :is(input, select, textarea, .input) {
+	.kol-input-wc.disabled :is(input, select, textarea, .input) {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 		color: var(--color-black);
 	}`,
-	'KOL-INPUT-NUMBER': `.kol-input {
+	'KOL-INPUT-NUMBER': `.kol-input-wc {
 		gap: 0.25em;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -444,38 +444,38 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.kol-input.disabled :is(input, label) {
+	.kol-input-wc.disabled :is(input, label) {
 		opacity: 1;
 	}
-	.kol-input.disabled :is(input, .input) {
+	.kol-input-wc.disabled :is(input, .input) {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 		color: var(--color-black);
 	}`,
-	'KOL-INPUT-DATE': `.kol-input {
+	'KOL-INPUT-DATE': `.kol-input-wc {
 		gap: 0.25em;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -521,38 +521,38 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.kol-input.disabled :is(input, label) {
+	.kol-input-wc.disabled :is(input, label) {
 		opacity: 1;
 	}
-	.kol-input.disabled :is(input, .input) {
+	.kol-input-wc.disabled :is(input, .input) {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 		color: var(--color-black);
 	}`,
-	'KOL-INPUT-EMAIL': `.kol-input {
+	'KOL-INPUT-EMAIL': `.kol-input-wc {
 		gap: 0.25em;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -599,43 +599,43 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.kol-input.disabled :is(input, label) {
+	.kol-input-wc.disabled :is(input, label) {
 		opacity: 1;
 	}
-	.kol-input.disabled :is(input, .input) {
+	.kol-input-wc.disabled :is(input, .input) {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 		color: var(--color-black);
 	}`,
-	'KOL-INPUT-FILE': `.kol-input {
+	'KOL-INPUT-FILE': `.kol-input-wc {
 		gap: 0.25em;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	.kol-input .input input[type="file"] {
+	.kol-input-wc .input input[type="file"] {
 		padding-top: calc(0.5em + 2px);
 	}
 	input {
@@ -683,49 +683,49 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.kol-input.disabled :is(button, input, label, option, select, textarea) {
+	.kol-input-wc.disabled :is(button, input, label, option, select, textarea) {
 		opacity: 1;
 	}
-	.kol-input.disabled :is(input, select, textarea, .input) {
+	.kol-input-wc.disabled :is(input, select, textarea, .input) {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 		color: var(--color-black);
 	}`,
-	'KOL-TEXTAREA': `.kol-input {
+	'KOL-TEXTAREA': `.kol-input-wc {
 		gap: 0.25em;
 		display: grid;
 		grid-template-areas: "error error" "label counter" "input input" "hint hint";
 		grid-template-columns: 1fr 115px;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 		grid-area: error;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 		grid-area: label;
 	}
-	.kol-input .counter {
+	.kol-input-wc .counter {
 		order: 2;
 		grid-area: counter;
 		justify-self: end;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 		grid-area: input;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -773,14 +773,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
@@ -1320,19 +1320,19 @@ export const BMF = KoliBri.createTheme('bmf', {
 		line-height: 1.5rem;
 		alignment-baseline: central;
 	}`,
-	'KOL-SELECT': `.kol-input {
+	'KOL-SELECT': `.kol-input-wc {
 		gap: 0.25em;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -1380,21 +1380,21 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.kol-input.disabled :is(select, label, option) {
+	.kol-input-wc.disabled :is(select, label, option) {
 		opacity: 1;
 	}
-	.kol-input.disabled :is(select, .input) {
+	.kol-input-wc.disabled :is(select, .input) {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 	}
@@ -1417,19 +1417,19 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background: var(--color-ocean);
 		color: white;
 	}`,
-	'KOL-INPUT-COLOR': `.kol-input {
+	'KOL-INPUT-COLOR': `.kol-input-wc {
 		gap: 0.25em;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -1483,21 +1483,21 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.kol-input.disabled :is(input, label) {
+	.kol-input-wc.disabled :is(input, label) {
 		opacity: 1;
 	}
-	.kol-input.disabled :is(input, .input) {
+	.kol-input-wc.disabled :is(input, .input) {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 		color: var(--color-black);
@@ -1665,11 +1665,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: flex;
 		place-items: center;
 	}
-	.entry > .kol-button-link-text-switch {
+	.entry > .kol-button-link-text-switch-wc {
 		width: 100%;
 	}
 	.entry
-		> .kol-button-link-text-switch
+		> .kol-button-link-text-switch-wc
 		> :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child {
 		background-color: var(--color-white);
 		text-decoration: none;
@@ -1686,20 +1686,20 @@ export const BMF = KoliBri.createTheme('bmf', {
 		letter-spacing: 0.175px;
 	}
 	.entry
-		> .kol-button-link-text-switch
+		> .kol-button-link-text-switch-wc
 		> :is(.kol-link-wc, .kol-button-wc):first-child:is(a, button) {
 		color: var(--color-midnight);
 		text-decoration: none;
 	}
 	.entry
-		> .kol-button-link-text-switch
+		> .kol-button-link-text-switch-wc
 		> :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child:hover {
 		border-left-color: var(--color-ocean);
 		background-color: var(--color-ocean);
 		letter-spacing: unset;
 	}
 	.entry
-		> .kol-button-link-text-switch
+		> .kol-button-link-text-switch-wc
 		> :is(.kol-link-wc, .kol-button-wc, .kol-span-wc):first-child:hover
 		> :is(a, button, span) {
 		color: var(--color-white);
@@ -1708,13 +1708,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 		letter-spacing: unset;
 	}
 	:is(.active, .selected).list.entry
-		> .kol-button-link-text-switch
+		> .kol-button-link-text-switch-wc
 		> :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child {
 		background-color: var(--color-smoke);
 	}
 	:is(.active, .selected)
 		> .entry
-		> .kol-button-link-text-switch
+		> .kol-button-link-text-switch-wc
 		> :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child {
 		background-color: var(--color-ice);
 		color: var(--color-midnight);
@@ -1722,26 +1722,26 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	:is(.active, .selected)
 		> .entry
-		> .kol-button-link-text-switch
+		> .kol-button-link-text-switch-wc
 		> :is(.kol-link-wc, .kol-button-wc, .kol-span-wc):first-child
 		> :is(a, button, span) {
 		font-weight: 700;
 	}
 	:is(.active, .selected)
 		> .entry
-		> .kol-button-link-text-switch
+		> .kol-button-link-text-switch-wc
 		> :is(.kol-button-wc, .kol-link-wc, .kol-span-wc):first-child:hover {
 		color: var(--color-white);
 		letter-spacing: unset;
 	}
-	.entry > .kol-button-link-text-switch > .kol-span-wc > span,
+	.entry > .kol-button-link-text-switch-wc > .kol-span-wc > span,
 	.entry :is(a, button) {
 		border-left-color: transparent;
 		border-left-style: solid;
 		border-left-width: 0.5rem;
 		padding: 0.75rem 0.5rem 0.75rem 0.25rem;
 	}
-	:is(.active, .selected) .kol-button-link-text-switch :is(a, button),
+	:is(.active, .selected) .kol-button-link-text-switch-wc :is(a, button),
 	[exportparts*="selected"] a {
 		border-left-color: var(--color-midnight);
 	}
@@ -1789,53 +1789,53 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-top: 2px solid var(--color-ice);
 	}`,
 	'KOL-INPUT-CHECKBOX': `/* INPUT */
-	:host .kol-input {
+	:host .kol-input-wc {
 		display: grid;
 		align-items: center;
 		justify-items: left;
 		width: 100%;
 		min-height: 44px;
 	}
-	:host .kol-input.default:not(.hide-label) {
+	:host .kol-input-wc.default:not(.hide-label) {
 		grid-template-columns: 1.5rem auto;
 		gap: 0.4em;
 	}
-	:host .kol-input.switch:not(.hide-label) {
+	:host .kol-input-wc.switch:not(.hide-label) {
 		grid-template-columns: 3.5rem auto;
 		gap: 0.4em;
 	}
-	:host .kol-input > div.input {
+	:host .kol-input-wc > div.input {
 		display: inherit;
 		min-height: 44px;
 		order: 2;
 	}
-	:host .kol-input > div.input input {
+	:host .kol-input-wc > div.input input {
 		margin: 0px;
 	}
-	:host .kol-input:not(.disabled) :is(.input, label) {
+	:host .kol-input-wc:not(.disabled) :is(.input, label) {
 		cursor: pointer;
 	}
-	:host .kol-input.disabled :is(.input, label) {
+	:host .kol-input-wc.disabled :is(.input, label) {
 		cursor: not-allowed;
 	}
-	:host .kol-input > label {
+	:host .kol-input-wc > label {
 		order: 3;
 	}
-	:host .kol-input > .kol-alert.error {
+	:host .kol-input-wc > .kol-alert.error {
 		order: 1;
 		padding-top: 0.25em;
 		grid-column: span 2 / auto;
 	}
-	:host .kol-input.error:not(.hidden-error) {
+	:host .kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	:host .kol-input.error input:focus,
-	.kol-input.error select:focus,
-	.kol-input.error textarea:focus {
+	:host .kol-input-wc.error input:focus,
+	.kol-input-wc.error select:focus,
+	.kol-input-wc.error textarea:focus {
 		outline-color: var(--color-red) !important;
 	}
-	:host .kol-input.error .kol-alert.error {
+	:host .kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
@@ -1849,14 +1849,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		line-height: 24px;
 		font-size: 1rem;
 	}
-	:host .kol-input.default .checkbox-container {
+	:host .kol-input-wc.default .checkbox-container {
 		justify-content: flex-start;
 	}
-	:host .kol-input.default input[type='checkbox']:indeterminate {
+	:host .kol-input-wc.default input[type='checkbox']:indeterminate {
 		background-color: var(--color-midnight);
 		border-color: var(--color-midnight);
 	}
-	:host .kol-input.default .icon {
+	:host .kol-input-wc.default .icon {
 		color: var(--color-white);
 		margin: -0.125rem 0 0 0.25rem; /* visually align */
 	}
@@ -1874,26 +1874,26 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: block;
 		width: 100%;
 	} /* CHECKBOX */
-	:host .kol-input label span {
+	:host .kol-input-wc label span {
 		margin-top: 0.125rem;
 	}
 	:host .required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	:host .kol-input input[type="checkbox"] {
+	:host .kol-input-wc input[type="checkbox"] {
 		appearance: none;
 		background-color: white;
 		transition: 0.5s;
 	}
-	:host .kol-input input[type="checkbox"]:before {
+	:host .kol-input-wc input[type="checkbox"]:before {
 		content: "";
 	}
-	:host .kol-input input[type="checkbox"]:checked {
+	:host .kol-input-wc input[type="checkbox"]:checked {
 		background-color: var(--color-midnight);
 		border-color: var(--color-midnight);
 	}
-	:host .kol-input.default input[type="checkbox"] {
+	:host .kol-input-wc.default input[type="checkbox"] {
 		border-radius: var(--border-radius);
 		height: calc(6 * var(--spacing));
 		min-width: calc(6 * var(--spacing));
@@ -1911,7 +1911,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 			content: '\\f068';
 		}
 	}
-	:host .kol-input.switch input[type="checkbox"] {
+	:host .kol-input-wc.switch input[type="checkbox"] {
 		min-width: 3.5em;
 		width: 3.5em;
 		background-color: var(--color-grey);
@@ -1921,7 +1921,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		position: relative;
 		outline: transparent solid 1px; /* Visible with forced colors */
 	}
-	:host .kol-input.switch input[type="checkbox"]:before {
+	:host .kol-input-wc.switch input[type="checkbox"]:before {
 		-webkit-transition: 0.5s;
 		-moz-transition: 0.5s;
 		-ms-transition: 0.5s;
@@ -1934,20 +1934,20 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background-color: white;
 		position: absolute;
 	}
-	:host .kol-input.switch input[type="checkbox"]:checked {
+	:host .kol-input-wc.switch input[type="checkbox"]:checked {
 		background-color: var(--color-midnight);
 	}
-	:host .kol-input.switch input[type="checkbox"]:checked:before {
+	:host .kol-input-wc.switch input[type="checkbox"]:checked:before {
 		-webkit-transform: translateX(2em);
 		-moz-transform: translateX(2em);
 		-ms-transform: translateX(2em);
 		transform: translateX(2em);
 		--tw-bg-opacity: 1;
 	}
-	:host .kol-input.switch input[type="checkbox"]:indeterminate {
+	:host .kol-input-wc.switch input[type="checkbox"]:indeterminate {
 		--tw-bg-opacity: 1;
 	}
-	:host .kol-input.switch input[type="checkbox"]:indeterminate:before {
+	:host .kol-input-wc.switch input[type="checkbox"]:indeterminate:before {
 		-webkit-transform: translateX(1em);
 		-moz-transform: translateX(1em);
 		-ms-transform: translateX(1em);
@@ -1986,14 +1986,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host .disabled {
 		opacity: 0.33;
 	}
-	:host .kol-input.button {
+	:host .kol-input-wc.button {
 		row-gap: 0.5rem;
 	}
-	:host .kol-input.button.checked > .input,
-	:host .kol-input.button.checked > label {
+	:host .kol-input-wc.button.checked > .input,
+	:host .kol-input-wc.button.checked > label {
 		background-color: var(--color-ice);
 	}
-	:host .kol-input.button > label {
+	:host .kol-input-wc.button > label {
 		background-color: var(--color-silver);
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
@@ -2003,7 +2003,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		padding-right: 12px;
 		width: 100%;
 	}
-	:host .kol-input.button > .input {
+	:host .kol-input-wc.button > .input {
 		background-color: var(--color-silver);
 		border-top-left-radius: var(--border-radius);
 		border-bottom-left-radius: var(--border-radius);
@@ -2011,14 +2011,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		min-width: 32px;
 		place-content: center;
 	}
-	:host .kol-input.button.hide-label > .input {
+	:host .kol-input-wc.button.hide-label > .input {
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
 	}
-	:host .kol-input.button > .input > div {
+	:host .kol-input-wc.button > .input > div {
 		display: flex;
 	}
-	:host .kol-input.button .icon {
+	:host .kol-input-wc.button .icon {
 		height: auto;
 	}
 	.button:focus-within {
@@ -2029,7 +2029,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		outline-width: 3px;
 	}`,
 	'KOL-INPUT-RADIO': `/* INPUT */
-	.kol-input {
+	.kol-input-wc {
 		display: grid;
 		gap: 0.4em;
 	}
@@ -2123,7 +2123,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		order: 2;
 		display: contents;
 	}
-	fieldset .kol-input {
+	fieldset .kol-input-wc {
 		order: 3;
 	}
 	fieldset.error {
@@ -2373,19 +2373,19 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.kol-button.last::part(icon):before {
 		content: "\\f101";
 	}`,
-	'KOL-INPUT-RANGE': `.kol-input {
+	'KOL-INPUT-RANGE': `.kol-input-wc {
 		gap: 0.25em;
 	}
-	.kol-input .error {
+	.kol-input-wc .error {
 		order: 1;
 	}
-	.kol-input label {
+	.kol-input-wc label {
 		order: 2;
 	}
-	.kol-input .input {
+	.kol-input-wc .input {
 		order: 3;
 	}
-	.kol-input .hint {
+	.kol-input-wc .hint {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
@@ -2428,21 +2428,21 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.kol-input.error:not(.hidden-error) {
+	.kol-input-wc.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	.kol-input.error .input:focus-within {
+	.kol-input-wc.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
-	.kol-input.error .kol-alert.error {
+	.kol-input-wc.error .kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.kol-input.disabled :is(input, label) {
+	.kol-input-wc.disabled :is(input, label) {
 		opacity: 1;
 	}
-	.kol-input.disabled :is(.input) {
+	.kol-input-wc.disabled :is(.input) {
 		background-color: var(--color-smoke);
 		border-color: var(--color-granite);
 		color: var(--color-black);

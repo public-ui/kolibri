@@ -19,7 +19,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputNumberController } from './controller';
 import { API, States } from './types';
-import { KolInputTag } from '../../core/component-names';
+import { KolInputWcTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -61,7 +61,7 @@ export class KolInputNumber implements API {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<KolInputTag
+				<KolInputWcTag
 					class={{
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
@@ -110,7 +110,7 @@ export class KolInputNumber implements API {
 							onKeyDown={this.onKeyDown}
 						/>
 					</div>
-				</KolInputTag>
+				</KolInputWcTag>
 			</Host>
 		);
 	}

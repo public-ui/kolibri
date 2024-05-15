@@ -16,7 +16,7 @@ import { Props as ButtonProps } from '../button/types';
 import { getRenderStates } from '../input/controller';
 import { InputColorController } from './controller';
 import { API, States } from './types';
-import { KolInputTag } from '../../core/component-names';
+import { KolInputWcTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -44,7 +44,7 @@ export class KolInputColor implements API {
 
 		return (
 			<Host class="kol-input-color">
-				<KolInputTag
+				<KolInputWcTag
 					class={{
 						color: true,
 						'hide-label': !!this.state._hideLabel,
@@ -87,7 +87,7 @@ export class KolInputColor implements API {
 							{...this.controller.onFacade}
 						/>
 					</div>
-				</KolInputTag>
+				</KolInputWcTag>
 			</Host>
 		);
 	}
