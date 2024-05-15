@@ -355,7 +355,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	private readonly renderTableRow = (row: KoliBriTableCell[], rowIndex: number): JSX.Element => {
 		let key = String(rowIndex);
-		if (this.horizontal && row[0].data) {
+		if (this.horizontal && row[0]?.data) {
 			key = this.getDataKey(row[0].data) ?? key;
 		}
 
