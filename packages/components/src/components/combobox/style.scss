@@ -6,36 +6,36 @@
 		font-size: rem(16);
 	}
 
-	//Block: .combobox
 	.combobox {
-		display: block;
 		position: relative;
-
+		&.disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
+			outline: none;
+		}
 		&__group {
 			display: inline-flex;
 			align-items: center;
-			min-height: var(--a11y-min-size);
 			text-align: left;
 			cursor: pointer;
 		}
 
 		&__input {
 			flex-grow: 1;
-			cursor: text;
 		}
 
 		&__listbox {
 			display: block;
 			position: absolute;
 			top: 100%;
-			width: 100%;
 			list-style-type: none;
 			margin: 0;
 			padding: 0;
-
-			&--hidden {
-				display: none;
-			}
+			overflow-y: auto;
+			overflow-x: hidden;
+			z-index: 2;
+			background-color: white;
+			max-height: 15.625rem;
 		}
 	}
 }

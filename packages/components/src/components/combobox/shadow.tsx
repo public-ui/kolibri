@@ -48,7 +48,7 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private toggleListbox = () => {
-		this._isOpen = !this._isOpen;
+		this._isOpen = this.state._disabled === true ? false : !this._isOpen;
 	};
 
 	private selectOption(option: string) {
@@ -124,8 +124,8 @@ export class KolCombobox implements ComboboxAPI {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 
 		return (
-			<Host class={{ 'kol-combobox': true, combobox: true }}>
-				<div class="combobox">
+			<Host class="kol-combobox">
+				<div class={`combobox ${this.state._disabled === true ? 'disabled' : ''} `}>
 					<KolInputTag
 						_accessKey={this.state._accessKey}
 						_disabled={this.state._disabled}
@@ -182,41 +182,38 @@ export class KolCombobox implements ComboboxAPI {
 									onClick={this.toggleListbox.bind(this)}
 									onChange={this.onChange.bind(this)}
 								/>
-								<span class="combobox__icon">
+								<span class={{ combobox__icon: true }}>
 									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} onClick={this.toggleListbox.bind(this)} />
 								</span>
 							</div>
-							<ul
-								role="listbox"
-								aria-label=""
-								class={{ combobox__listbox: true, 'combobox__listbox--hidden': !this._isOpen }}
-								onKeyDown={this.handleKeyDownDropdown.bind(this)}
-							>
-								{Array.isArray(this._filteredOptions) &&
-									this._filteredOptions.length > 0 &&
-									this._filteredOptions.map((option, index) => (
-										<li
-											key={`-${index}`}
-											data-index={index}
-											tabIndex={0}
-											role="option"
-											aria-selected={this.state._value === option}
-											onClick={() => {
-												this.selectOption(option as string);
-												this.toggleListbox();
-											}}
-											class="combobox__item"
-											onKeyDown={(e) => {
-												if (e.key === 'Enter' || e.key === ' ') {
+							{this._isOpen && !(this.state._disabled === true) && (
+								<ul role="listbox" aria-label="" class={{ combobox__listbox: true }} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+									{Array.isArray(this._filteredOptions) &&
+										this._filteredOptions.length > 0 &&
+										this._filteredOptions.map((option, index) => (
+											<li
+												key={`-${index}`}
+												data-index={index}
+												tabIndex={0}
+												role="option"
+												aria-selected={this.state._value === option}
+												onClick={() => {
 													this.selectOption(option as string);
-													e.preventDefault();
-												}
-											}}
-										>
-											{option}
-										</li>
-									))}
-							</ul>
+													this.toggleListbox();
+												}}
+												class="combobox__item"
+												onKeyDown={(e) => {
+													if (e.key === 'Enter' || e.key === ' ') {
+														this.selectOption(option as string);
+														e.preventDefault();
+													}
+												}}
+											>
+												{option}
+											</li>
+										))}
+								</ul>
+							)}
 						</div>
 					</KolInputTag>
 				</div>

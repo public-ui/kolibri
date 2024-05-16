@@ -12,10 +12,6 @@ export class ComboboxController extends InputIconController implements ComboboxW
 		this.component = component;
 	}
 
-	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
-		key === '_value' && this.setFormAssociatedValue(value as string);
-	};
-
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		validateSuggestions(this.component, value);
 	}
