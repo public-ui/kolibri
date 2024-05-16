@@ -50,6 +50,11 @@
 		background-color: var(--color-white);
 	}
 
+	th[aria-sort='ascending'] .button,
+	th[aria-sort='descending'] .button {
+		font-weight: 700;
+	}
+
 	th div {
 		width: 100%;
 		display: flex;

@@ -33,7 +33,7 @@ export function PersonalInformationForm() {
 	const formikRef = useRef(null);
 
 	useEffect(() => {
-		focusErrorList(errorList, formikRef);
+		focusErrorList(formikRef);
 	}, [sectionSubmitted]);
 	return (
 		<div className="p-2">
@@ -45,7 +45,7 @@ export function PersonalInformationForm() {
 					onSubmit: () => {
 						void form.submitForm();
 						setSectionSubmitted(true);
-						focusErrorList(errorList, formikRef);
+						focusErrorList(formikRef);
 					},
 				}}
 			>
@@ -58,7 +58,10 @@ export function PersonalInformationForm() {
 							id="field-salutation"
 							_label="Anrede"
 							_value={[field.value]}
-							_error={form.errors.salutation || ''}
+							_msg={{
+								_type: 'error',
+								_description: form.errors.salutation || '',
+							}}
 							_touched={form.touched.salutation}
 							_options={[{ label: 'Bitte wählen…', value: '' }, ...SALUTATION_OPTIONS]}
 							_required
@@ -85,7 +88,10 @@ export function PersonalInformationForm() {
 									id="field-company"
 									_label="Firma"
 									_value={field.value}
-									_error={form.errors.company || ''}
+									_msg={{
+										_type: 'error',
+										_description: form.errors.company || '',
+									}}
 									_touched={form.touched.company}
 									_required
 									_on={{
@@ -111,7 +117,10 @@ export function PersonalInformationForm() {
 								id="field-name"
 								_label="Vor- und Zuname"
 								_value={field.value}
-								_error={form.errors.name || ''}
+								_msg={{
+									_type: 'error',
+									_description: form.errors.name || '',
+								}}
 								_touched={form.touched.name}
 								_required
 								_on={{
@@ -159,7 +168,10 @@ export function PersonalInformationForm() {
 								_type="tel"
 								_label="Telefonnumer"
 								_value={field.value}
-								_error={form.errors.phone || ''}
+								_msg={{
+									_type: 'error',
+									_description: form.errors.phone || '',
+								}}
 								_touched={form.touched.phone}
 								_on={{
 									onChange: (event, value: unknown) => {

@@ -17,17 +17,17 @@ export const a11yHint = (msg: string, options?: HintOptions): void => {
 	}
 };
 
-// const deprecatedCache: Set<string> = new Set();
-// export const deprecatedHint = (msg: string, options?: HintOptions): void => {
-// 	if (deprecatedCache.has(msg) === false || !!options?.force) {
-// 		deprecatedCache.add(msg);
-// 		Log.warn(([msg] as unknown[]).concat(options?.details || []), {
-// 			classifier: `🔥 deprecated`,
-// 			forceLog: !!options?.force,
-// 			overwriteStyle: '; background-color: #f00',
-// 		});
-// 	}
-// };
+const deprecatedCache: Set<string> = new Set();
+export const deprecatedHint = (msg: string, options?: HintOptions): void => {
+	if (deprecatedCache.has(msg) === false || !!options?.force) {
+		deprecatedCache.add(msg);
+		Log.warn(([msg] as unknown[]).concat(options?.details || []), {
+			classifier: `🔥 deprecated`,
+			forceLog: !!options?.force,
+			overwriteStyle: '; background-color: #f00',
+		});
+	}
+};
 
 const devCache: Set<string> = new Set();
 export const devHint = (msg: string, options?: HintOptions): void => {

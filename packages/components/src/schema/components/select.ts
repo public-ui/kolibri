@@ -17,7 +17,7 @@ import type {
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHorizontalIcons, SelectOption, Stringified, W3CInputValue } from '../types';
 
-type RequiredProps = NonNullable<unknown>;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -33,7 +33,6 @@ type OptionalProps = {
 } & PropDisabled &
 	PropHideError &
 	PropHideLabel &
-	PropLabelWithExpertSlot &
 	PropMsg &
 	PropMultiple &
 	PropName &

@@ -7,7 +7,7 @@ import { getSpinHtml } from './html.mock';
 
 import type { SpinProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
-import { KolSpin } from '../component';
+import { KolSpin } from '../shadow';
 
 executeTests<SpinProps>(
 	'Spin',
