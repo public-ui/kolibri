@@ -7,23 +7,6 @@ import { KolLinkTag, KolButtonTag } from '../../core/component-names';
 
 const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar-item';
 
-const Elements = (props: { elements: ToolbarItemsPropType }): JSX.Element => {
-	const mappedElements: JSX.Element[] = [];
-	if (typeof props.elements === 'string') {
-		return mappedElements;
-	}
-	props.elements.map((element: ToolbarItemPropType, index: number) => {
-		mappedElements.push(
-			(
-				<div key={index} class={`${TOOLBAR_ITEM_TAG_NAME}`}>
-					{'_href' in element ? <KolLinkTag {...element}></KolLinkTag> : <KolButtonTag {...element}></KolButtonTag>}
-				</div>
-			) as JSX.Element,
-		);
-	});
-	return mappedElements;
-};
-
 @Component({
 	tag: 'kol-toolbar',
 	styleUrl: './style.scss',
@@ -37,11 +20,17 @@ export class KolToolbar implements ToolbarAPI {
 		_items: [],
 	};
 
+	private readonly renderElement = (element: ToolbarItemPropType, index: number): JSX.Element => (
+		<div key={index} class={`${TOOLBAR_ITEM_TAG_NAME}`}>
+			{'_href' in element ? <KolLinkTag {...element}></KolLinkTag> : <KolButtonTag {...element}></KolButtonTag>}
+		</div>
+	);
+
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-toolbar">
 				<div class="toolbar" role="toolbar" aria-label={this._label}>
-					<Elements elements={this.state._items} />
+					{(this.state._items as ToolbarItemPropType[]).map(this.renderElement)}
 				</div>
 			</Host>
 		);
@@ -57,11 +46,6 @@ export class KolToolbar implements ToolbarAPI {
 	 */
 	@Prop() public _items!: ToolbarItemsPropType;
 
-	// @Watch('_items')
-	// public validateItems(value?: (LinkProps | ButtonProps)[]): void {
-
-	// }
-
 	@Watch('_label') validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
@@ -71,24 +55,70 @@ export class KolToolbar implements ToolbarAPI {
 		validateToolbarItems(this, value);
 	}
 
+	/**
+	 * Retrieves all toolbar items within the host element.
+	 * 
+	 * @returns An array of HTMLElements representing the toolbar items.
+	*/
+	private getToolbarItems(): HTMLElement[] {
+		return Array.from(this.host.querySelectorAll(`.${TOOLBAR_ITEM_TAG_NAME}`));
+	}
+	
+	/**
+	 * Finds the first focusable child element within a given toolbar item.
+	 * Focusable elements include 'kol-button' and 'kol-link'.
+	 * 
+	 * @param element - The toolbar item element to search within.
+	 * @returns The first focusable child element, or null if none is found.
+	*/
+	private getFocusableChild(element: HTMLElement): HTMLElement | null {
+		return element.querySelector('kol-button, kol-link') as HTMLElement | null;
+	}
+	
+	/**
+	 * Traverses up the DOM tree from a given element to find its parent toolbar item.
+	 * 
+	 * @param element - The starting element to begin the traversal from.
+	 * @returns The parent toolbar item element, or null if none is found.
+	*/
+	private getActiveToolbarItem(element: Element | null): HTMLElement | null {
+		while (element && !element.classList.contains(TOOLBAR_ITEM_TAG_NAME)) {
+			element = element.parentElement;
+		}
+		return element as HTMLElement | null;
+	}
+	
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
-		if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') {
-			event.preventDefault();
-			const elements = Array.from(this.host.querySelectorAll(TOOLBAR_ITEM_TAG_NAME));
-			const currentIndex = elements.indexOf(document.activeElement as HTMLElement);
-			let nextIndex = -1;
-			if (event.code === 'ArrowRight') {
-				nextIndex = currentIndex >= 0 && currentIndex < elements.length - 1 ? currentIndex + 1 : 0;
-			} else if (event.code === 'ArrowLeft') {
-				nextIndex = currentIndex > 0 ? currentIndex - 1 : elements.length - 1;
-			}
-			if (nextIndex !== -1 && elements[nextIndex]) {
-				elements.forEach((el) => el.classList.remove('focused'));
-				const nextElement = elements[nextIndex] as HTMLElement;
-				nextElement.classList.add('focused');
-				nextElement.focus();
+		const isArrowKey = event.code === 'ArrowRight' || event.code === 'ArrowLeft';
+		if (!isArrowKey) return;
+
+		event.preventDefault();
+		const elements = this.getToolbarItems();
+		const currentElement = this.getActiveToolbarItem(document.activeElement);
+		const currentIndex = elements.indexOf(currentElement as HTMLElement);
+
+		const nextIndex = event.code === 'ArrowRight'
+			? (currentIndex + 1) % elements.length
+			: (currentIndex - 1 + elements.length) % elements.length;
+
+		if (elements.length > 0 && currentIndex !== -1) {
+			const currentChild = this.getFocusableChild(elements[currentIndex]);
+			if (currentChild) {
+				currentChild.setAttribute('tabindex', '-1');
+				currentChild.blur();
 			}
 		}
+
+		const nextChild = this.getFocusableChild(elements[nextIndex]);
+		if (nextChild) {
+			nextChild.setAttribute('tabindex', '0');
+			nextChild.focus();
+		}
+	}
+
+	public componentWillLoad(): void {
+		this.validateLabel(this._label);
+		this.validateItems(this._items);
 	}
 }
