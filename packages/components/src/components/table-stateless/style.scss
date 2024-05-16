@@ -65,4 +65,12 @@
 			justify-items: end;
 		}
 	}
+
+	.selection-header-cell {
+		width: 0;
+	}
+
+	.selection-cell {
+		white-space: nowrap;
+	}
 }
