@@ -25,9 +25,6 @@ export type KoliBriTableHeaders = {
 	horizontal?: KoliBriTableHeaderCellWithLogic[][];
 	vertical?: KoliBriTableHeaderCellWithLogic[][];
 };
-export type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCellWithLogic & {
-	data: KoliBriTableDataType;
-};
 
 export type KoliBriTablePaginationProps = Generic.Element.Members<
 	{
