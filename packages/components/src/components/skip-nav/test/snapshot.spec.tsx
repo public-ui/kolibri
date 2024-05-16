@@ -7,7 +7,7 @@ import { getSkipNavHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { SkipNavProps } from '../../../schema';
-import { KolSkipNav } from '../component';
+import { KolSkipNav } from '../shadow';
 
 executeTests<SkipNavProps>(
 	'SkipNav',
