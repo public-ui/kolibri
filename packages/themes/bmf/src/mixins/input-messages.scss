@@ -1,0 +1,171 @@
+@mixin inputMessages {
+	.kol-input {
+		&.error,
+		&.msg-type-info,
+		&.msg-type-warning,
+		&.msg-type-success {
+			.input {
+				border-width: 3px;
+
+				&:hover {
+					border-color: var(--color-midnight);
+				}
+			}
+			&:not(.hidden-error) {
+				padding-left: 1em;
+			}
+		}
+
+		&.error {
+			.input {
+				border-color: var(--color-red);
+			}
+			&:not(.hidden-error) {
+				border-left: 3px solid var(--color-red);
+			}
+		}
+
+		&.msg-type-info {
+			.input {
+				border-color: var(--color-midnight);
+			}
+			&:not(.hidden-error) {
+				border-left: 3px solid var(--color-midnight);
+			}
+		}
+
+		&.msg-type-warning {
+			.input {
+				border-color: var(--color-orange);
+			}
+			&:not(.hidden-error) {
+				border-left: 3px solid var(--color-orange);
+			}
+		}
+
+		&.msg-type-success {
+			.input {
+				border-color: var(--color-green);
+			}
+			&:not(.hidden-error) {
+				border-left: 3px solid var(--color-green);
+			}
+		}
+	}
+	.msg {
+		border-width: 0;
+		background-color: transparent;
+		align-items: start;
+
+		> .heading {
+			place-items: flex-start;
+
+			> .kol-icon {
+				place-self: baseline;
+			}
+
+			.heading-icon {
+				padding-top: 0;
+				place-items: baseline;
+
+				&::part(icon) {
+					line-height: 1.375rem;
+				}
+			}
+
+			> div > .kol-heading-wc {
+				line-height: 20px;
+				padding-top: 0.125rem;
+			}
+		}
+
+		&.default {
+			.heading > div > .kol-heading-wc {
+				color: var(--color-grey);
+			}
+		}
+
+		&.error {
+			.heading > div > .kol-heading-wc {
+				color: var(--color-red);
+			}
+		}
+
+		&.info {
+			.heading > div > .kol-heading-wc {
+				color: var(--color-midnight);
+			}
+		}
+
+		&.success {
+			.heading > div > .kol-heading-wc {
+				color: var(--color-green);
+			}
+		}
+
+		&.warning {
+			.heading > div > .kol-heading-wc {
+				color: var(--color-orange);
+			}
+		}
+	}
+
+	.kol-alert-wc {
+		display: flex;
+		width: 100%;
+		overflow: unset;
+
+		> .heading {
+			display: flex;
+			gap: 0.5em;
+
+			> div {
+				display: grid;
+				gap: var(--spacing);
+				font-weight: 700;
+			}
+		}
+	}
+
+	.default {
+		border-color: var(--color-grey);
+
+		&.msg .heading-icon {
+			color: var(--color-grey);
+		}
+	}
+
+	@include setMsgType(error, red, error);
+	@include setMsgType(info, midnight, info);
+	@include setMsgType(success, green, check_circle);
+	@include setMsgType(warning, orange, warning);
+
+	.heading-icon {
+		color: white;
+		font-size: 1.25rem !important;
+
+		&::part(icon) {
+			font-family: 'Material Symbols Rounded';
+			font-weight: 900;
+			font-variation-settings: 'FILL' 1;
+			height: 1.25rem;
+			width: 1.25rem;
+		}
+	}
+}
+
+@mixin setMsgType($type, $color, $icon) {
+	.#{$type},
+	.msg-type-#{$type} {
+		border-color: var(--color-#{$color});
+		color: var(--color-#{$color});
+
+		&.msg .heading-icon {
+			color: var(--color-#{$color});
+		}
+
+		.heading-icon::part(icon)::before {
+			content: '#{$icon}';
+		}
+	}
+}

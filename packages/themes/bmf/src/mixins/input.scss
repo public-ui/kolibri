@@ -1,0 +1,87 @@
+@import './input-messages.scss';
+
+@mixin input {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.kol-input {
+		gap: 0.25em;
+		display: grid;
+		grid-template-areas: 'error error' 'label counter' 'input input' 'hint hint';
+		grid-template-columns: 1fr 115px;
+
+		.error {
+			order: 1;
+			grid-area: error;
+		}
+
+		label {
+			order: 2;
+			grid-area: label;
+			color: var(--color-black);
+		}
+
+		.counter {
+			order: 2;
+			grid-area: counter;
+			justify-self: end;
+		}
+
+		.input {
+			order: 3;
+			grid-area: input;
+		}
+
+		.hint {
+			order: 4;
+			font-size: 0.875em;
+			font-style: italic;
+			grid-area: hint;
+		}
+
+		&.disabled {
+			label {
+				opacity: 1;
+			}
+			.input {
+				background-color: var(--color-smoke);
+				border-color: var(--color-granite);
+				color: var(--color-black);
+			}
+		}
+	}
+
+	.input {
+		background-color: var(--color-white);
+		border-color: var(--color-grey);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: 2px;
+
+		> .kol-icon {
+			width: 1em;
+		}
+
+		&:is(.icon-left, .icon-right) {
+			padding-left: 0.875em;
+			padding-left: 0.875em;
+
+			input {
+				padding-left: 0.5em;
+				padding-right: 0.5em;
+			}
+		}
+
+		&:hover {
+			border-color: var(--color-midnight);
+		}
+	}
+
+	.required label > span::after {
+		content: '*';
+		padding-left: 0.125em;
+	}
+
+	@include inputMessages;
+}

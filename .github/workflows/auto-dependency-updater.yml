@@ -1,5 +1,9 @@
 name: Auto dependency updater
 
+env:
+  issue: 6350
+  version: v2
+
 on:
   schedule:
     - cron: '0 2 * * *'
@@ -13,9 +17,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'develop'
 
-      # - uses: pnpm/action-setup@v3
+      # - uses: pnpm/action-setup@v4
       #   with:
       #     run_install: false
       #     version: 8
@@ -25,13 +28,11 @@ jobs:
       #     node-version: 20
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           # cache: pnpm
           node-version: 20
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
+      - uses: pnpm/action-setup@v4
         id: pnpm-install
         with:
           version: 8
@@ -39,34 +40,32 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
       - uses: actions/cache@v4
-        name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store # -${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store
           restore-keys: |
             ${{ runner.os }}-pnpm-store
 
-      - name: Create new branch
-        run: git checkout -b chore-v2/auto-update-deps
+      - name: Create update branch
+        run: git checkout -b ${{env.issue}}-${{env.version}}/auto-update-deps
       - name: Install
         run: pnpm i --workspace-root
       - name: Update dependencies
-        run: pnpm run update
+        run: pnpm ncu:minor
       - name: Reinstall dependencies
-        run: pnpm i
+        run: pnpm i --no-frozen-lockfile
       - name: Commit changed files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add **/package.json pnpm-lock.yaml
           git status
-          git commit -m "chore: update dependencies and lock file"
+          HUSKY=0 git commit -m "chore: update dependencies and lock file"
 
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: chore-v2/auto-update-deps
+          branch: ${{env.issue}}-${{env.version}}/auto-update-deps
           force: true

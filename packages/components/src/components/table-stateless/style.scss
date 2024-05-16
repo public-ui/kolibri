@@ -41,6 +41,11 @@
 		color: inherit;
 	}
 
+	thead th[aria-sort='ascending'] .button,
+	thead th[aria-sort='descending'] .button {
+		font-weight: 700;
+	}
+
 	tbody th, // headings in table body default to text-align left, unless defined otherwise.
 	th.align-left {
 		text-align: left;
