@@ -19,7 +19,6 @@
 			text-align: left;
 			width: 100%;
 			padding: 0.25rem;
-			cursor: pointer;
 			background-color: var(--color-light);
 			border-color: var(--color-subtle);
 			border-radius: var(--border-radius);
@@ -30,9 +29,8 @@
 
 		&__input {
 			flex-grow: 1;
-			border: transparent;
+			border: none;
 			width: calc(100% - 2.5rem);
-			cursor: pointer;
 			position: relative;
 
 			&::placeholder {
@@ -70,6 +68,9 @@
 			border-radius: var(--border-radius);
 			border-color: var(--color-subtle);
 			max-height: 15.625rem;
+			overflow-y: auto;
+			overflow-x: hidden;
+			box-sizing: border-box;
 		}
 
 		&__item {

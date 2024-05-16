@@ -8,9 +8,16 @@
 		gap: var(--spacing-xs);
 	}
 
+	.kol-input .error {
+		order: 1;
+	}
+
 	label {
 		font-weight: var(--font-weight-bold);
-		order: 1;
+		order: 2;
+	}
+	.kol-input .input {
+		order: 3;
 	}
 
 	//Block: .combobox
@@ -26,7 +33,6 @@
 			text-align: left;
 			width: 100%;
 			padding: 0.25rem;
-			cursor: pointer;
 			min-height: 44px !important;
 			border: 1px solid var(--color-blue);
 			color: var(--color-grey);
@@ -38,9 +44,7 @@
 		&__input {
 			border: none;
 			flex-grow: 1;
-			border: transparent;
 			width: calc(100% - 2.5rem);
-			cursor: pointer;
 			position: relative;
 
 			&::placeholder {
@@ -77,6 +81,9 @@
 			border-width: 1px;
 			border-color: var(--color-blue);
 			max-height: 15.625rem;
+			overflow-y: auto;
+			overflow-x: hidden;
+			box-sizing: border-box;
 		}
 
 		&__item {

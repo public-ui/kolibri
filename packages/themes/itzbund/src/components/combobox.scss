@@ -27,7 +27,6 @@
 			text-align: left;
 			width: 100%;
 			padding: 0.25rem;
-			cursor: pointer;
 			color: var(--default-letter);
 			border-width: 1px;
 			border-style: solid;
@@ -49,11 +48,10 @@
 
 		&__input {
 			flex-grow: 1;
-			border: transparent !important;
+			border: none !important;
 			background-color: #e8edf2 !important;
 			border: none;
 			width: calc(100% - 2.5rem);
-			cursor: pointer;
 			position: relative;
 
 			&:focus {
@@ -81,6 +79,9 @@
 			border-color: var(--kolibri-color-normal);
 			max-height: 15.625rem;
 			background-color: #e8edf2 !important;
+			overflow-y: auto;
+			overflow-x: hidden;
+			box-sizing: border-box;
 		}
 
 		&__item {

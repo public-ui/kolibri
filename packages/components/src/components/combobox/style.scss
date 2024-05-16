@@ -9,7 +9,6 @@
 	//Block: .combobox
 	.combobox {
 		display: block;
-		margin-bottom: 1.5rem;
 		position: relative;
 
 		&__group {
@@ -17,30 +16,22 @@
 			align-items: center;
 			min-height: var(--a11y-min-size);
 			text-align: left;
-			width: 100%;
-			padding: 0.25rem;
 			cursor: pointer;
 		}
 
 		&__input {
 			flex-grow: 1;
-			border: transparent;
-			width: calc(100% - 2.5rem);
-			cursor: pointer;
-			position: relative;
+			cursor: text;
 		}
 
 		&__listbox {
 			display: block;
-			overflow-y: auto;
-			overflow-x: hidden;
 			position: absolute;
 			top: 100%;
 			width: 100%;
 			list-style-type: none;
 			margin: 0;
 			padding: 0;
-			box-sizing: border-box;
 
 			&--hidden {
 				display: none;
