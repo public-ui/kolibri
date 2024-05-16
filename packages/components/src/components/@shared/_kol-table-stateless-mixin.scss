@@ -3,6 +3,7 @@
 
 @mixin kol-table-stateless-styles {
 	@layer kol-component {
+
 		:host,
 		.kol-table-stateless-wc {
 			display: block;
@@ -42,7 +43,8 @@
 			color: inherit;
 		}
 
-		tbody th, // headings in table body default to text-align left, unless defined otherwise.
+		// headings in table body default to text-align left, unless defined otherwise.
+		tbody th,
 		th.align-left {
 			text-align: left;
 
@@ -65,6 +67,14 @@
 			& .table-sort-button .button-inner {
 				justify-items: end;
 			}
+		}
+
+		.selection-header-cell {
+			width: 0;
+		}
+
+		.selection-cell {
+			white-space: nowrap;
 		}
 	}
 }
