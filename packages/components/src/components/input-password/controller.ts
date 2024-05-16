@@ -89,15 +89,15 @@ export class InputPasswordController extends InputIconController implements Watc
 		 * vermieden werden kann, wird der Placeholder für
 		 * den fokussierten Feldstatus entfernt.
 		 *
-		 * Hinweis: Für alle Nutzenden müssen die all dar-
-		 *          gestellten Inhalte, also auch der Place-
+		 * Hinweis: Für alle Nutzenden müssen alle darge-
+		 *          stellten Inhalte, also auch der Place-
 		 *          holder, gleichermaßen zugänglich sein.
 		 *          Das oben beschriebene Handling erfüllt
 		 *          diese Anforderung nicht.
 		 */
 		this.component.state = {
 			...this.component.state,
-			_placeholder: this.placeholderCache,
+			// _placeholder: this.placeholderCache,
 		};
 		this.placeholderCache = undefined;
 		super.onBlur(event);
@@ -107,7 +107,7 @@ export class InputPasswordController extends InputIconController implements Watc
 		this.placeholderCache = this.component.state._placeholder as string;
 		this.component.state = {
 			...this.component.state,
-			_placeholder: undefined,
+			// _placeholder: undefined,
 		};
 		super.onFocus(event);
 	}
