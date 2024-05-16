@@ -14,7 +14,7 @@ export const ToolbarBasic: FC = () => {
 				class="block w-fit"
 				_items={[
 					{
-						_label: "Button"
+						_label: "Button",
 					},
 					{
 						_href: "#",

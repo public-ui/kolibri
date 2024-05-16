@@ -3,8 +3,9 @@ import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stenci
 
 import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, ToolbarItemPropType } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
-import { TOOLBAR_ITEM_TAG_NAME } from './constants';
 import { KolLinkTag, KolButtonTag } from '../../core/component-names';
+
+const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar-item';
 
 const Elements = (props: { elements: ToolbarItemsPropType }): JSX.Element => {
 	const mappedElements: JSX.Element[] = [];
@@ -78,16 +79,16 @@ export class KolToolbar implements ToolbarAPI {
 			const currentIndex = elements.indexOf(document.activeElement as HTMLElement);
 			let nextIndex = -1;
 			if (event.code === 'ArrowRight') {
-			  nextIndex = currentIndex >= 0 && currentIndex < elements.length - 1 ? currentIndex + 1 : 0;
+				nextIndex = currentIndex >= 0 && currentIndex < elements.length - 1 ? currentIndex + 1 : 0;
 			} else if (event.code === 'ArrowLeft') {
-			  nextIndex = currentIndex > 0 ? currentIndex - 1 : elements.length - 1;
+				nextIndex = currentIndex > 0 ? currentIndex - 1 : elements.length - 1;
 			}
 			if (nextIndex !== -1 && elements[nextIndex]) {
-			  elements.forEach(el => el.classList.remove('focused'));
-			  const nextElement = elements[nextIndex] as HTMLElement;
-			  nextElement.classList.add('focused');
-			  nextElement.focus();
+				elements.forEach((el) => el.classList.remove('focused'));
+				const nextElement = elements[nextIndex] as HTMLElement;
+				nextElement.classList.add('focused');
+				nextElement.focus();
 			}
-		  }
+		}
 	}
 }
