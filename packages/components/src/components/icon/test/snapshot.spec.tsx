@@ -7,7 +7,7 @@ import { getIconHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { IconProps } from '../../../schema';
-import { KolIcon } from '../component';
+import { KolIcon } from '../shadow';
 
 executeTests<IconProps>(
 	'Icon',

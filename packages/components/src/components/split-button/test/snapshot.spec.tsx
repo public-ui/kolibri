@@ -7,7 +7,7 @@ import { getSplitButtonHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { SplitButtonProps } from '../../../schema';
-import { KolSplitButton } from '../component';
+import { KolSplitButton } from '../shadow';
 
 executeTests<SplitButtonProps>(
 	'SplitButton',
