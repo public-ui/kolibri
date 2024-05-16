@@ -7,7 +7,7 @@ import { getDetailsHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { DetailsProps } from '../../../schema';
-import { KolDetails } from '../component';
+import { KolDetails } from '../shadow';
 
 executeTests<DetailsProps>(
 	'Details',
