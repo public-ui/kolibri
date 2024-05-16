@@ -13,6 +13,7 @@ export type KoliBriTableCell = {
 	rowSpan?: number;
 	textAlign?: KoliBriTableCellTextAlign;
 	width?: string;
+	data?: KoliBriTableDataType;
 };
 
 export type KoliBriTableHeaderCell = KoliBriTableCell & {
