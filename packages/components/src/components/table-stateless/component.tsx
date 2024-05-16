@@ -5,7 +5,7 @@ import type {
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
-	KoliBriTableHeaderCellAndData,
+	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTableRender,
 	LabelPropType,
@@ -19,6 +19,7 @@ import type {
 import { validateLabel, validateTableCallbacks, validateTableData, validateTableDataFoot, validateTableHeaderCells, watchString } from '../../schema';
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-table-stateless-wc',
@@ -38,6 +39,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private tableDivElementResizeObserver?: ResizeObserver;
 	private horizontal = true;
 	private cellsToRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -74,7 +76,11 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	@Watch('_data')
 	public validateData(value?: TableDataPropType) {
-		validateTableData(this, value);
+		validateTableData(this, value, {
+			beforePatch: (nextValue) => {
+				this.updateDataToKeyMap(nextValue as KoliBriTableDataType[]);
+			},
+		});
 	}
 
 	@Watch('_dataFoot')
@@ -127,12 +133,26 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	}
 
-	private cellRender(
-		cell: KoliBriTableCell & {
-			data?: KoliBriTableDataType;
-		},
-		el?: HTMLElement,
-	): void {
+	private updateDataToKeyMap(data: KoliBriTableDataType[]) {
+		data.forEach((data) => {
+			if (!this.dataToKeyMap.has(data)) {
+				this.dataToKeyMap.set(data, nonce());
+			}
+		});
+
+		/* Cleanup old values from map */
+		this.dataToKeyMap.forEach((_, key) => {
+			if (!data.includes(key)) {
+				this.dataToKeyMap.delete(key);
+			}
+		});
+	}
+
+	private getDataKey(data: KoliBriTableDataType) {
+		return this.dataToKeyMap.get(data);
+	}
+
+	private cellRender(cell: KoliBriTableCell, el?: HTMLElement): void {
 		if (el) {
 			clearTimeout(this.cellsToRenderTimeouts.get(el));
 			this.cellsToRenderTimeouts.set(
@@ -226,7 +246,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		});
 
 		for (let i = startRow; i < maxRows; i++) {
-			const dataRow: KoliBriTableHeaderCellAndData[] = [];
+			const dataRow: KoliBriTableHeaderCellWithLogic[] = [];
 			headers.vertical.forEach((headerCells, index) => {
 				let rowsTotal = 0;
 				rowSpans[index].forEach((value) => (rowsTotal += value));
@@ -334,16 +354,31 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	private readonly renderTableRow = (row: KoliBriTableCell[], rowIndex: number): JSX.Element => {
-		return <tr key={`tbody-${rowIndex}`}>{row.map((col, colIndex) => this.renderTableCell(col, rowIndex, colIndex))}</tr>;
+		let key = String(rowIndex);
+		if (this.horizontal && row[0]?.data) {
+			key = this.getDataKey(row[0].data) ?? key;
+		}
+
+		return <tr key={`row-${key}`}>{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex))}</tr>;
 	};
 
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
+		let key = `${rowIndex}-${colIndex}-${cell.label}`;
+		if (cell.data) {
+			const dataKey = this.getDataKey(cell.data);
+			if (this.horizontal) {
+				key = dataKey ? `${dataKey}-${colIndex}` : key;
+			} else {
+				key = dataKey ? `${dataKey}-${rowIndex}` : key;
+			}
+		}
+
 		if (cell.asTd === false) {
 			return this.renderHeadingCell(cell, rowIndex, colIndex);
 		} else {
 			return (
 				<td
-					key={`tbody-${rowIndex}-${colIndex}-${cell.label}`}
+					key={`cell-${key}`}
 					class={{
 						[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
 					}}
@@ -356,7 +391,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					ref={
 						typeof cell.render === 'function'
 							? (el) => {
-									this.cellRender(cell as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
+									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
 								}
 							: undefined
 					}

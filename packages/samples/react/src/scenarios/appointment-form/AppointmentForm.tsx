@@ -80,12 +80,11 @@ export function AppointmentForm() {
 	}, [activeFormSection]);
 
 	const handleSubmit = async (_values: FormValues, formik: FormikHelpers<FormValues>) => {
-		console.log(_values, formik);
 		const currentSectionIndex = formSectionSequence.indexOf(activeFormSection);
 		const nextSection = formSectionSequence[currentSectionIndex + 1];
 		if (nextSection !== undefined) {
 			await formik.setTouched({});
-			setTimeout(() => setActiveFormSection(nextSection), 1000);
+			setActiveFormSection(nextSection);
 		}
 	};
 
