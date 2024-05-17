@@ -20,6 +20,30 @@ Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur V
 ></kol-textarea>
 ```
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                                                     | Value                        |
+| -------- | -------------------------------------------------------------------------------------------- | ---------------------------- |
+| onFocus  | Element wird fokussiert                                                                      | -                            |
+| onClick  | Element wird angeklickt                                                                      | -                            |
+| onInput  | Eine Eingabe erfolgt (entspricht nativem `input`-Event)                                      | Eingegebener Wert als String |
+| onChange | Eingabe ist abgeschlossen und Eingabefeld verliert Fokus (entspricht nativem `change`-Event) | Eingegebener Wert als String |
+| onBlur   | Element verliert Fokus                                                                       | -                            |
+
 ### Beispiel
 
 <kol-textarea _resize="none" _rows="5" _value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.">
