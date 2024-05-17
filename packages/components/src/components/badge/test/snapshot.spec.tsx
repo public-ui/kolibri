@@ -7,7 +7,7 @@ import { getBadgeHtml } from './html.mock';
 
 import type { BadgeProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
-import { KolBadge } from '../component';
+import { KolBadge } from '../shadow';
 
 executeTests<BadgeProps>(
 	'Badge',

@@ -1,3 +1,5 @@
+@import '../mixins-eu/kol-table-stateless-wc';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -24,3 +26,5 @@
 		}
 	}
 }
+
+@include kol-table-stateless-wc;

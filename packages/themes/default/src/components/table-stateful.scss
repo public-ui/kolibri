@@ -1,3 +1,5 @@
+@import '../mixins/kol-table-stateless-wc';
+
 @layer kol-theme-component {
 	:host * {
 		hyphens: var(--hyphens);
@@ -13,3 +15,5 @@
 		}
 	}
 }
+
+@include kol-table-stateless-wc;

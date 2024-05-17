@@ -7,7 +7,7 @@ import { getInpuRangeHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { InputRangeProps } from '../../../schema';
-import { KolInputRange } from '../component';
+import { KolInputRange } from '../shadow';
 
 executeTests<InputRangeProps>(
 	'InputText',

@@ -51,6 +51,7 @@ export * from './table-callbacks';
 export * from './table-data';
 export * from './table-data-foot';
 export * from './table-header-cells';
+export * from './table-selection';
 export * from './tooltip-align';
 export * from './touched';
 export * from './variant/spin';

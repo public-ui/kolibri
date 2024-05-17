@@ -1,4 +1,5 @@
 @import '../@shared/mixins';
+@import '../@shared/kol-table-stateless-mixin';
 
 @layer kol-component {
 	:root {
@@ -33,3 +34,5 @@
 		}
 	}
 }
+
+@include kol-table-stateless-styles;
