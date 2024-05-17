@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import type { AccordionProps } from '@public-ui/schema';
+import type { AccordionProps } from '../../../schema';
 import { KolButtonWcTag, KolHeadingWcTag } from '../../../core/component-names';
 
 export const getAccordionHtml = (

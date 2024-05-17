@@ -5,9 +5,9 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getAbbrHtml } from './html.mock';
 
-import type { AbbrProps } from '@public-ui/schema';
+import type { AbbrProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
-import { KolAbbr } from '../component';
+import { KolAbbr } from '../shadow';
 
 executeTests<AbbrProps>(
 	'Abbr',

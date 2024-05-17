@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/schema';
+import { KoliBri } from '@public-ui/components';
 import globalCss from './global-ec.scss';
 import accordionCss from './components/ecl-ec/accordion.scss';
 import alertCss from './components/ecl-ec/alert.scss';

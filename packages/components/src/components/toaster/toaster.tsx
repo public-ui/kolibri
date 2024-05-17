@@ -1,4 +1,4 @@
-import type { Toast, ToasterOptions } from '@public-ui/schema';
+import type { Toast, ToasterOptions } from '../../schema';
 import { KolToastContainerTag } from '../../core/component-names';
 import { isInitialized } from '../../core/bootstrap';
 

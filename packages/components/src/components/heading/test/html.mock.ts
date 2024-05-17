@@ -1,4 +1,4 @@
-import type { HeadingProps, HeadingStates } from '@public-ui/schema';
+import type { HeadingProps, HeadingStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 
 export const getHeadingWcHtml = (

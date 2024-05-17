@@ -6,8 +6,8 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInputFileHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputFileProps } from '@public-ui/schema';
-import { KolInputFile } from '../component';
+import type { InputFileProps } from '../../../schema';
+import { KolInputFile } from '../shadow';
 
 executeTests<InputFileProps>(
 	'InputFile',

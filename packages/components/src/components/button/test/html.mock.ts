@@ -1,10 +1,10 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { showExpertSlot } from '@public-ui/schema';
+import { showExpertSlot } from '../../../schema';
 
 import clsx from 'clsx';
 
-import type { ButtonProps, ButtonStates } from '@public-ui/schema';
+import type { ButtonProps, ButtonStates } from '../../../schema';
 import { KolSpanWcTag, KolTooltipWcTag } from '../../../core/component-names';
 
 export const getButtonWcHtml = (props: ButtonProps, additionalAttrs = ''): string => {

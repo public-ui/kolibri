@@ -1,4 +1,17 @@
 import type { Generic } from 'adopted-style-sheets';
+import locale_de from '../locales/de';
+import locale_en from '../locales/en';
+
+export type ResourcePrefix = 'Kol';
+export type ComponentKeys = keyof typeof locale_de;
+
+const mapLocaleKeys = (locale: { [K in ComponentKeys]: string }) =>
+	(Object.keys(locale) as ComponentKeys[]).reduce((a, c) => ((a[`${'kol'}-${c}`] = locale[c]), a), {} as Generic.I18n.Map<ResourcePrefix, ComponentKeys>);
+
+const TRANSLATIONS = new Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, ResourcePrefix, ComponentKeys>>([
+	(t: (language: 'en', translationMap: Generic.I18n.Map<ResourcePrefix, ComponentKeys>) => Generic.I18n.Locale.ISO_639_1) => t('en', mapLocaleKeys(locale_en)),
+	(t: (language: 'de', translationMap: Generic.I18n.Map<ResourcePrefix, ComponentKeys>) => Generic.I18n.Locale.ISO_639_1) => t('de', mapLocaleKeys(locale_de)),
+]);
 
 interface ITranslationOptions {
 	/**
@@ -91,19 +104,17 @@ export class I18nService {
 let i18n: I18nService;
 
 export const getI18nInstance = () => {
-	if (!(i18n instanceof I18nService)) {
-		throw new Error('i18n not initialized yet');
-	}
 	return i18n;
 };
 
 export const initializeI18n = (
 	lng: Generic.I18n.Locale.ISO_639_1,
-	translations?:
+	translations:
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
-		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>,
+		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>> = TRANSLATIONS,
 ) => {
 	i18n = new I18nService(lng);
 	i18n.addTranslations(translations);
+	return i18n;
 };

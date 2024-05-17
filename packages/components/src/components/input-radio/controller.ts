@@ -12,8 +12,8 @@ import type {
 	StencilUnknown,
 	Stringified,
 	W3CInputValue,
-} from '@public-ui/schema';
-import { mapString2Unknown, orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '@public-ui/schema';
+} from '../../schema';
+import { mapString2Unknown, orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '../../schema';
 
 import { InputController } from '../@deprecated/input/controller';
 
@@ -85,14 +85,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		);
 	}
 
-	public validateOptions(value?: OptionsPropType): void {
-		validateOptions(this.component, value, {
-			hooks: {
-				afterPatch: this.afterPatchOptions,
-			},
-		});
-	}
-
 	protected readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
@@ -100,6 +92,15 @@ export class InputRadioController extends InputCheckboxRadioController implement
 			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
 		}
 	};
+
+	public validateOptions(value?: OptionsPropType): void {
+		validateOptions(this.component, value, {
+			hooks: {
+				afterPatch: this.afterPatchOptions,
+				beforePatch: this.beforePatchOptions,
+			},
+		});
+	}
 
 	public validateValue(value?: Stringified<StencilUnknown>): void {
 		value = mapString2Unknown(value);

@@ -5,7 +5,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { getAlertHtml } from './html.mock';
 
-import type { AlertProps } from '@public-ui/schema';
+import type { AlertProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
 import { KolAlert } from '../shadow';
 import { KolAlertWc } from '../component';

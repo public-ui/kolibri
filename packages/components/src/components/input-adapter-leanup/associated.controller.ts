@@ -1,5 +1,5 @@
-import type { NamePropType, PropSyncValueBySelector, StencilUnknown, SyncValueBySelectorPropType } from '@public-ui/schema';
-import { devHint, devWarning, getExperimentalMode, validateName } from '@public-ui/schema';
+import type { NamePropType, PropSyncValueBySelector, StencilUnknown, SyncValueBySelectorPropType } from '../../schema';
+import { devHint, devWarning, getExperimentalMode, validateName } from '../../schema';
 
 import type { Generic } from 'adopted-style-sheets';
 
@@ -167,6 +167,13 @@ export class AssociatedInputController implements Watches {
 								(associatedElement as HTMLSelectElement).appendChild(option);
 							}
 						});
+					}
+					break;
+				case 'radio':
+					if (typeof strValue === 'string') {
+						associatedElement.setAttribute('value', strValue);
+						associatedElement.setAttribute('checked', '');
+						associatedElement.value = strValue;
 					}
 					break;
 				default:

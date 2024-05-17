@@ -6,8 +6,8 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getBreadcrumbHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { BreadcrumbProps } from '@public-ui/schema';
-import { KolBreadcrumb } from '../component';
+import type { BreadcrumbProps } from '../../../schema';
+import { KolBreadcrumb } from '../shadow';
 
 executeTests<BreadcrumbProps>(
 	'Breadcrumb',

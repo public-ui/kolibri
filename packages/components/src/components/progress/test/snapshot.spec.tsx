@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolProcess } from '../component';
+import { KolProcess } from '../shadow';
 
 const DEFAULT_PROPS = {
 	_max: 42,

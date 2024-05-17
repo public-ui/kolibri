@@ -12,7 +12,7 @@ import {
 	Log,
 	parseJson,
 	stringifyJson,
-} from '@public-ui/schema';
+} from '../schema';
 import { initKoliBri, renderDevAdvice } from '../utils/dev.utils';
 
 const getKoliBri = (): Record<string, unknown> => {

@@ -1,0 +1,53 @@
+@mixin kol-table-stateless-wc {
+	@layer kol-theme-component {
+		.table {
+			padding: 0.5em;
+		}
+
+		.table:has(.focus-element:focus) {
+			outline-color: var(--color-petrol);
+			outline-offset: 2px;
+			outline-style: solid;
+			outline-width: 3px;
+			transition: outline-offset 0.2s linear;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			border-spacing: 0;
+			border: 1px solid var(--border-color);
+			border-width: 0 1px 1px 1px;
+		}
+
+		tr {
+			border-top: 1px solid var(--border-color);
+		}
+
+		th,
+		td {
+			border-right: 1px solid var(--border-color);
+
+			&:last-child {
+				border-right-width: 0;
+			}
+		}
+
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		th,
+		td {
+			padding: 0.25em 0.5em;
+		}
+
+		th {
+			background-color: #eee;
+		}
+
+		.table-sort-button .button {
+			font-weight: bold;
+		}
+	}
+}

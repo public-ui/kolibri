@@ -306,4 +306,7 @@ export const config: Config = {
 		after: [],
 	},
 	taskQueue: 'immediate',
+	testing: {
+		setupFilesAfterEnv: ['./test-env.js'],
+	},
 };

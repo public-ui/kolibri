@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { InputFileProps, InputFileWatches } from '@public-ui/schema';
-import { watchBoolean, watchString } from '@public-ui/schema';
+import type { InputFileProps, InputFileWatches } from '../../schema';
+import { watchBoolean, watchString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 

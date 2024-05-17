@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui-/theme-ecl",
-	"version": "2.0.15",
+	"version": "2.1.0",
 	"private": true,
 	"type": "module",
 	"sideEffects": false,
@@ -10,6 +10,10 @@
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
 		"prepack": "pnpm build",
+		"start:ec": "npm-run-all --parallel dev serve:ec",
+		"start:eu": "npm-run-all --parallel dev serve:eu",
+		"serve:ec": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=ECL_EC npm --prefix \"node_modules/@public-ui/sample-react/\" start",
+		"serve:eu": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=ECL_EU npm --prefix \"node_modules/@public-ui/sample-react/\" start",
 		"xtest": "npm-run-all test:*",
 		"test:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test",
 		"test:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test",
@@ -20,8 +24,8 @@
 		"pretest-update": "pnpm build"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "2.0.15",
-		"@public-ui/visual-tests": "2.0.15",
+		"@public-ui/components": "2.1.0",
+		"@public-ui/visual-tests": "2.1.0",
 		"@rollup/plugin-commonjs": "25.0.7",
 		"@rollup/plugin-node-resolve": "15.2.3",
 		"@rollup/plugin-typescript": "11.1.6",
@@ -39,7 +43,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.15"
+		"@public-ui/components": "2.1.0"
 	},
 	"exports": {
 		".": {

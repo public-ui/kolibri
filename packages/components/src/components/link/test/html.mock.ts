@@ -1,8 +1,8 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { showExpertSlot } from '@public-ui/schema';
+import { showExpertSlot } from '../../../schema';
 
-import type { LinkProps, LinkStates } from '@public-ui/schema';
+import type { LinkProps, LinkStates } from '../../../schema';
 import clsx from 'clsx';
 import { translate } from '../../../i18n';
 import { KolSpanWcTag, KolIconTag, KolTooltipWcTag } from '../../../core/component-names';

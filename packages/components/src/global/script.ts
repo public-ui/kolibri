@@ -1,6 +1,6 @@
 import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
 
-import { Log, processEnv } from '@public-ui/schema';
+import { Log, processEnv } from '../schema';
 import { setMode } from '@stencil/core';
 
 setMode((elm) => {

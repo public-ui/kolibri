@@ -6,8 +6,8 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInpuTextHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputTextProps } from '@public-ui/schema';
-import { KolInputText } from '../component';
+import type { InputTextProps } from '../../../schema';
+import { KolInputText } from '../shadow';
 
 executeTests<InputTextProps>(
 	'InputText',

@@ -6,8 +6,8 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getInputCheckboxHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { InputCheckboxProps } from '@public-ui/schema';
-import { KolInputCheckbox } from '../component';
+import type { InputCheckboxProps } from '../../../schema';
+import { KolInputCheckbox } from '../shadow';
 
 executeTests<InputCheckboxProps>(
 	'InputCheckbox',

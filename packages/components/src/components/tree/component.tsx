@@ -1,8 +1,8 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 
-import type { LabelPropType, TreeAPI, TreeStates } from '@public-ui/schema';
-import { validateLabel } from '@public-ui/schema';
+import type { LabelPropType, TreeAPI, TreeStates } from '../../schema';
+import { validateLabel } from '../../schema';
 import { TREE_ITEM_TAG_NAME } from './constants';
 
 @Component({

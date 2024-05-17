@@ -6,8 +6,8 @@ import { newSpecPage } from '@stencil/core/testing';
 import { getVersionHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
-import type { VersionProps } from '@public-ui/schema';
-import { KolVersion } from '../component';
+import type { VersionProps } from '../../../schema';
+import { KolVersion } from '../shadow';
 
 executeTests<VersionProps>(
 	'Version',
