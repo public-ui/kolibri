@@ -9,7 +9,9 @@ const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar-item';
 
 @Component({
 	tag: 'kol-toolbar',
-	styleUrl: './style.scss',
+	styleUrls: {
+		default: './style.scss',
+	},
 	shadow: true,
 })
 export class KolToolbar implements ToolbarAPI {
@@ -88,7 +90,7 @@ export class KolToolbar implements ToolbarAPI {
 	 * @returns The first focusable child element, or null if none is found.
 	 */
 	private getFocusableChild(element: HTMLElement): HTMLElement | null {
-		return element.querySelector('kol-button, kol-link') as HTMLElement | null;
+		return element.querySelector('kol-button, kol-link');
 	}
 
 	/**
