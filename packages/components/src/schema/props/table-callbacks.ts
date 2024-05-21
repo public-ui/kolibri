@@ -11,8 +11,11 @@ export type SortEventPayload = {
 	currentSortDirection: KoliBriSortDirection;
 };
 
+export type SelectionChangeEventPayload = string[];
+
 export type TableCallbacksPropType = {
 	[Events.onSort]?: EventValueOrEventCallback<MouseEvent, SortEventPayload>;
+	[Events.onSelectionChange]?: EventValueOrEventCallback<Event, SelectionChangeEventPayload>;
 };
 
 /**
@@ -24,5 +27,11 @@ export type PropTableCallbacks = {
 
 /* validator */
 export const validateTableCallbacks = (component: Generic.Element.Component, value?: TableCallbacksPropType): void => {
-	watchValidator(component, `_on`, (value) => typeof value === 'object' && value !== null, new Set(['TableCallbacksPropType {Events.onSort}']), value);
+	watchValidator(
+		component,
+		`_on`,
+		(value) => typeof value === 'object' && value !== null,
+		new Set(['TableCallbacksPropType {Events.onSort, Events.onSelectionChange}']),
+		value,
+	);
 };

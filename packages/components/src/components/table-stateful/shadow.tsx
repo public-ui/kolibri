@@ -35,7 +35,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KolPaginationTag, KolTableStatelessTag } from '../../core/component-names';
+import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
 import type { SortEventPayload } from '../../schema';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -503,7 +503,7 @@ export class KolTableStateful implements TableAPI {
 		return (
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
-				<KolTableStatelessTag
+				<KolTableStatelessWcTag
 					_data={displayedData}
 					_headerCells={headerCells}
 					_label={this.state._label}
