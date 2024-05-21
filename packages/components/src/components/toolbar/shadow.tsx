@@ -128,27 +128,16 @@ export class KolToolbar implements ToolbarAPI {
 		const items = this.getToolbarItems();
 		const lastItemIndex = this._items?.length - 1;
 		const currentIndex = this.currentIndex;
-		let nextIndex = this.getFirstEnabledItemIndex();
-
-		const findNextEnabledIndex = (index: number, direction: 'left' | 'right') => {
-			let newIndex = index;
-			do {
-				newIndex = direction === 'left' ? newIndex - 1 : newIndex + 1;
-				if (newIndex < 0) newIndex = lastItemIndex;
-				if (newIndex > lastItemIndex) newIndex = 0;
-			} while (items[newIndex].ariaDisabled === 'true' && newIndex !== currentIndex);
-			return newIndex;
-		};
+		let nextIndex = 0;
 
 		switch (event.code) {
 			case 'ArrowLeft':
-				nextIndex = findNextEnabledIndex(currentIndex, 'left');
+				nextIndex = currentIndex !== nextIndex ? currentIndex - 1 : lastItemIndex;
 				break;
 			case 'ArrowRight':
-				nextIndex = findNextEnabledIndex(currentIndex, 'right');
+				if (lastItemIndex !== currentIndex) nextIndex = currentIndex + 1;
 				break;
 		}
-
 		if (currentIndex === nextIndex) return;
 
 		this.currentIndex = nextIndex;
