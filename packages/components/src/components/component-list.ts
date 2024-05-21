@@ -53,7 +53,7 @@ import { KolTable } from './table/shadow';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
 import { KolToastContainer } from './toaster/shadow';
-import { KolToolbar } from './toolbar/component';
+import { KolToolbar } from './toolbar/shadow';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/shadow';
 import { KolTree } from './tree/shadow';
