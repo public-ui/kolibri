@@ -8,6 +8,7 @@
 		<script type="module">
 			import('./build/index.esm.js')
 				.then((module) => {
+					module.bootstrap();
 					module.KoliBriDevHelper.patchTheme('demo', {});
 				})
 				.catch(console.warn);
