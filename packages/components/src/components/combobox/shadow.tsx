@@ -181,6 +181,7 @@ export class KolCombobox implements ComboboxAPI {
 									onInput={this.onInput.bind(this)}
 									onClick={this.toggleListbox.bind(this)}
 									onChange={this.onChange.bind(this)}
+									placeholder={this.state._placeholder}
 								/>
 								<span class={{ combobox__icon: true }}>
 									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} onClick={this.toggleListbox.bind(this)} />
@@ -297,13 +298,17 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop() public _accessKey?: string;
 
 	/**
+	 * Defines the placeholder for input field. To be shown when there's no value.
+	 */
+	@Prop() public _placeholder?: string;
+
+	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
@@ -364,7 +369,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Suggestions the user can choose from, also supporting Optgroup.
 	 */
-	@Prop() public _suggestions!: [];
+	@Prop() public _suggestions!: string[];
 
 	/**
 	 * Makes the input element required.
@@ -411,6 +416,11 @@ export class KolCombobox implements ComboboxAPI {
 	public constructor() {
 		this.controller = new ComboboxController(this, 'select', this.host);
 		this.onInput = this.onInput.bind(this);
+	}
+
+	@Watch('_placeholder')
+	public validatePlaceholder(value?: string): void {
+		this.controller.validatePlaceholder(value);
 	}
 
 	@Watch('_accessKey')

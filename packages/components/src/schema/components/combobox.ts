@@ -24,6 +24,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	tabIndex: number;
 	value: string;
+	placeholder: string;
 } & PropDisabled &
 	PropHideError &
 	PropHideLabel &
@@ -49,6 +50,7 @@ type OptionalStates = {
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	tabIndex: number;
+	placeholder: string;
 } & PropDisabled &
 	PropHideLabel &
 	PropId &

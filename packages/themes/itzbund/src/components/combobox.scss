@@ -82,6 +82,7 @@
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
+			width: -webkit-fill-available;
 		}
 
 		&__item {
@@ -100,5 +101,23 @@
 				outline: 0 !important;
 			}
 		}
+	}
+
+	label {
+		color: var(--color-anthrazit);
+		font-size: 14px;
+		line-height: 20px;
+		gap: 8px;
+		width: 100%;
+		font-weight: bold;
+	}
+
+	.kol-alert-wc {
+		margin-top: calc(2 * var(--spacing));
+		display: block;
+	}
+
+	.kol-required span::after {
+		content: '*';
 	}
 }

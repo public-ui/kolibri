@@ -26,10 +26,15 @@ export class ComboboxController extends InputIconController implements ComboboxW
 		validateMsg(this.component, value);
 	}
 
+	public validatePlaceholder(value?: string): void {
+		watchString(this.component, '_placeholder', value);
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateSuggestions(this.component._suggestions);
 		this.validateRequired(this.component._required);
 		this.validateValue(this.component._value);
+		this.validatePlaceholder(this.component._placeholder);
 	}
 }

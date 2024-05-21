@@ -3,10 +3,9 @@
 
 @layer kol-theme-component {
 	:host {
+		font-family: var(--font-family);
 		@include kol-alert-theme;
 	}
-
-	//Block: .combobox
 	.combobox {
 		display: block;
 		margin-bottom: 1.5rem;
@@ -18,12 +17,7 @@
 			min-height: var(--a11y-min-size);
 			text-align: left;
 			width: 100%;
-			padding: 0.25rem;
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: 1px;
+
 			padding: 0 rem(8);
 		}
 
@@ -71,7 +65,7 @@
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
-			width: 100%;
+			width: -webkit-fill-available;
 		}
 
 		&__item {
@@ -89,5 +83,98 @@
 				outline: 0 !important;
 			}
 		}
+	}
+
+	.kol-input {
+		gap: rem(4);
+	}
+
+	.kol-input .error {
+		order: 1;
+	}
+
+	.kol-input label {
+		order: 2;
+	}
+
+	.kol-input .input {
+		order: 3;
+	}
+
+	.kol-input .counter {
+		order: 4;
+	}
+
+	.kol-input .hint {
+		order: 5;
+		font-size: rem(14.4);
+		font-style: italic;
+	}
+
+	input::placeholder {
+		color: var(--color-subtle);
+	}
+
+	.input {
+		background-color: var(--color-light);
+		border-color: var(--color-subtle);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: 2px;
+		padding: 0 rem(8);
+	}
+
+	.input > .kol-icon {
+		width: rem(16);
+	}
+
+	.input:is(.icon-left, .icon-right) {
+		padding-left: rem(16);
+		padding-right: rem(16);
+	}
+
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: rem(8);
+		padding-right: rem(8);
+	}
+
+	.input > input:first-child {
+		padding-left: var(--spacing);
+	}
+
+	.input > input:last-child {
+		padding-right: var(--spacing);
+	}
+
+	:not(.disabled) .input:hover {
+		border-color: var(--color-primary);
+	}
+
+	.required label > span::after {
+		content: '*';
+		padding-left: 0.125em;
+	}
+
+	.kol-input.error {
+		border-left: 3px solid var(--color-danger);
+		padding-left: rem(16);
+	}
+
+	.kol-input.error .input:focus-within {
+		outline-color: var(--color-danger) !important;
+	}
+
+	.kol-input.error .kol-alert-wc.error {
+		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+	}
+
+	.input {
+		position: relative;
+	}
+
+	.kol-input.disabled .input {
+		background-color: var(--color-mute);
+		border-color: var(--color-mute-variant);
+		color: var(--color-text);
 	}
 }

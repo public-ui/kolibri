@@ -16,7 +16,6 @@
 		&__group {
 			display: inline-flex;
 			align-items: center;
-			text-align: left;
 			cursor: pointer;
 		}
 
@@ -27,7 +26,6 @@
 		&__listbox {
 			display: block;
 			position: absolute;
-			top: 100%;
 			list-style-type: none;
 			margin: 0;
 			padding: 0;
