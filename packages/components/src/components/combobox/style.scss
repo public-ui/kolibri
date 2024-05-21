@@ -8,8 +8,11 @@
 
 	.combobox {
 		position: relative;
+		&.disabled,
+		&.disabled * {
+			cursor: not-allowed !important;
+		}
 		&.disabled {
-			cursor: not-allowed;
 			opacity: 0.5;
 			outline: none;
 		}
