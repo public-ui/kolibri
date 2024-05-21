@@ -7,27 +7,21 @@ Die **Combobox**-Komponente erzeugt eine Auswahlliste, die ein Eingabefeld mit e
 ### Code
 
 ```html
-<kol-combobox _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _value="1"> Auswahlfeld </kol-combobox>
+<kol-combobox _suggestions="['Herr','Frau','Firma']" _value="Herr"> Auswahlfeld </kol-combobox>
 ```
 
 ### Beispiel
 
-<kol-combobox _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]" _value="1"> Auswahlfeld </kol-combobox>
-
-<kol-combobox _options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2},{'label':'Herr','value':3},{'label':'Frau','value':4},{'label':'Firma','value':5}]" _value="1">Auswahlfeld mit rows</kol-combobox>
+<kol-combobox  _suggestions="['Herr','Frau','Firma']" _value="Herr"> Auswahlfeld </kol-combobox>
 
 ## Verwendung
 
-Die Auswahlmöglichkeiten werden über das Attribut **`_options`** als Objekt oder JSON-String an die Komponente übergeben. Je Option müssen die Werte **`label`** und **`value`** angegeben werden.
+Die Auswahlmöglichkeiten werden über das Attribut **`_suggestions`** als JSON-Array an die Komponente übergeben.
 
-Beispiel für die Konstruktion des JSON-Objektes:
+Beispiel für die Konstruktion des JSON-Array:
 
 ```json
-[
-	{ "label": "Herr", "value": 0 },
-	{ "label": "Frau", "value": 1 },
-	{ "label": "Firma", "value": 2 }
-]
+["Herr", "Frau", "Firma"]
 ```
 
 <!--### Best practices-->

@@ -33,7 +33,6 @@ export const ComboboxCases = forwardRef<HTMLKolSelectElement, Components.KolSele
 				_placeholder="Placeholder"
 				_required
 			/>
-			<KolCombobox {...props} _suggestions={COUNTRY_SUGGESTIONS} _disabled _label="Vorname (text, disabled)" _placeholder="Placeholder" />
 		</div>
 	);
 });
