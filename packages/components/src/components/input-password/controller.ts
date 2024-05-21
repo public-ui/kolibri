@@ -80,8 +80,8 @@ export class InputPasswordController extends InputIconController implements Inpu
 		 * vermieden werden kann, wird der Placeholder für
 		 * den fokussierten Feldstatus entfernt.
 		 *
-		 * Hinweis: Für alle Nutzenden müssen die all dar-
-		 *          gestellten Inhalte, also auch der Place-
+		 * Hinweis: Für alle Nutzenden müssen alle darge-
+		 *          stellten Inhalte, also auch der Place-
 		 *          holder, gleichermaßen zugänglich sein.
 		 *          Das oben beschriebene Handling erfüllt
 		 *          diese Anforderung nicht.
