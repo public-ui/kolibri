@@ -13,25 +13,25 @@ export const ToolbarDisabled: FC = () => {
 				class="block w-fit"
 				_items={[
 					{
-						_label: "Button",
-                        _disabled: true,
+						_label: 'Button',
+						_disabled: true,
 					},
 					{
-						_href: "#",
-						_label: "Simple Link 1"
+						_href: '#',
+						_label: 'Simple Link 1',
 					},
 					{
-						_label: "Button",
-                        _disabled: true,
+						_label: 'Button',
+						_disabled: true,
 					},
 					{
-						_href: "#",
-						_label: "Simple Link 3"
+						_href: '#',
+						_label: 'Simple Link 3',
 					},
-                    {
-						_href: "#",
-                        _disabled: true,
-						_label: "Simple Link 3"
+					{
+						_href: '#',
+						_disabled: true,
+						_label: 'Simple Link 3',
 					},
 				]}
 			/>

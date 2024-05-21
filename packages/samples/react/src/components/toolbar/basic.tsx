@@ -13,18 +13,18 @@ export const ToolbarBasic: FC = () => {
 				_label="Toolbar"
 				_items={[
 					{
-						_label: "Button",
+						_label: 'Button',
 					},
 					{
-						_href: "#",
-						_label: "Simple Link 1"
+						_href: '#',
+						_label: 'Simple Link 1',
 					},
 					{
-						_label: "Button",
+						_label: 'Button',
 					},
 					{
-						_href: "#",
-						_label: "Simple Link 3"
+						_href: '#',
+						_label: 'Simple Link 3',
 					},
 				]}
 			/>
