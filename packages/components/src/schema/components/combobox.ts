@@ -18,7 +18,6 @@ import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified, W3CInputV
 type RequiredProps = PropSuggestions;
 type OptionalProps = {
 	accessKey: string;
-	error: string;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;
 	on: InputTypeOnDefault;
@@ -45,7 +44,6 @@ type RequiredStates = {
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
-	error: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
