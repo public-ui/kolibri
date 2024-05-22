@@ -18,6 +18,29 @@ Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `seconda
 <kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
 ```
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onClick: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event       | Auslöser                                                       | Value                |
+| ----------- | -------------------------------------------------------------- | -------------------- |
+| onFocus     | Element wird fokussiert                                        | -                    |
+| onMouseDown | Element wird angeklickt (entspricht nativem `mouseDown`-Event) | -                    |
+| onClick     | Element wird angeklickt (entspricht nativem `click`-Event)     | Definierter `_value` |
+| onBlur      | Element verliert Fokus                                         | -                    |
+
 ### Beispiel
 
 <div class="flex gap-2">

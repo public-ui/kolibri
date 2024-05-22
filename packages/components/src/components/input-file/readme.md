@@ -10,6 +10,30 @@ Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es kö
 <kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icons='{"right": "codicon codicon-device-camera"}'></kol-input-file>
 ```
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                                        | Value                           |
+| -------- | ------------------------------------------------------------------------------- | ------------------------------- |
+| onFocus  | Element wird fokussiert                                                         | -                               |
+| onClick  | Element wird angeklickt                                                         | -                               |
+| onInput  | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `input`-Event)  | Ausgwählte Dateien als FileList |
+| onChange | Eine oder mehrere Dateien werden ausgewählt (entspricht nativem `change`-Event) | Ausgwählte Dateien als FileList |
+| onBlur   | Element verliert Fokus                                                          | -                               |
+
 ### Beispiel
 
 <kol-input-file _label="Bild hochladen" _accept="image/png, image/jpeg, application/pdf" _icons='{"right": "codicon codicon-device-camera"}'></kol-input-file>
