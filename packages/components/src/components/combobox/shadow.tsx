@@ -64,7 +64,7 @@ export class KolCombobox implements ComboboxAPI {
 	private handleKeyDownDropdown(event: KeyboardEvent) {
 		if (event.key.length === 1 && /[a-z0-9]/i.test(event.key)) {
 			this._isOpen = true;
-			this.focusSuggestionstartingWith(event.key);
+			this.focusSuggestionStartingWith(event.key);
 		}
 	}
 
@@ -106,7 +106,7 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	}
 
-	private focusSuggestionstartingWith(char: string) {
+	private focusSuggestionStartingWith(char: string) {
 		const charLowerCase = char.toLowerCase();
 
 		const index =
@@ -435,11 +435,6 @@ export class KolCombobox implements ComboboxAPI {
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_error')
-	public validateError(value?: string): void {
-		this.controller.validateError(value);
 	}
 
 	@Watch('_hideError')

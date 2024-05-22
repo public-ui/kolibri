@@ -24,7 +24,7 @@
 		&__input {
 			flex-grow: 1;
 			border: none;
-			width: calc(100% - 2.5rem);
+			width: calc(100% - rem(2.5));
 			position: relative;
 
 			&::placeholder {
@@ -61,7 +61,7 @@
 			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--color-subtle);
-			max-height: 15.625rem;
+			max-height: rem(15.625);
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
@@ -69,7 +69,7 @@
 		}
 
 		&__item {
-			padding: 0.62rem 0.75rem;
+			padding: rem(0.62) rem(0.75);
 			cursor: pointer;
 
 			&:hover {

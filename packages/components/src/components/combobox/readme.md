@@ -7,12 +7,12 @@ Die **Combobox**-Komponente erzeugt eine Auswahlliste, die ein Eingabefeld mit e
 ### Code
 
 ```html
-<kol-combobox _suggestions="['Herr','Frau','Firma']" _value="Herr"> Auswahlfeld </kol-combobox>
+<kol-combobox _suggestions="['Herr','Frau','Firma']" _label="Label" _value="Herr"> Auswahlfeld </kol-combobox>
 ```
 
 ### Beispiel
 
-<kol-combobox  _suggestions="['Herr','Frau','Firma']" _value="Herr"> Auswahlfeld </kol-combobox>
+<kol-combobox  _suggestions="['Herr','Frau','Firma']" _label="Label" _value="Herr"> Auswahlfeld </kol-combobox>
 
 ## Verwendung
 
