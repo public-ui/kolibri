@@ -8,23 +8,20 @@
 	}
 	.combobox {
 		display: block;
-		margin-bottom: 1.5rem;
+		margin-bottom: rem(24);
 		position: relative;
 
 		&__group {
 			display: inline-flex;
 			align-items: center;
-			min-height: var(--a11y-min-size);
-			text-align: left;
 			width: 100%;
-
 			padding: 0 rem(8);
 		}
 
 		&__input {
 			flex-grow: 1;
 			border: none;
-			width: calc(100% - rem(2.5));
+			width: calc(100% - rem(40));
 			position: relative;
 
 			&::placeholder {
@@ -61,7 +58,7 @@
 			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--color-subtle);
-			max-height: rem(15.625);
+			max-height: rem(250);
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
@@ -69,7 +66,7 @@
 		}
 
 		&__item {
-			padding: rem(0.62) rem(0.75);
+			padding: rem(10) rem(12);
 			cursor: pointer;
 
 			&:hover {
@@ -99,6 +96,7 @@
 
 	.kol-input .input {
 		order: 3;
+		padding: 0;
 	}
 
 	.kol-input .counter {
