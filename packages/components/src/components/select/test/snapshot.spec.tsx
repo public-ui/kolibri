@@ -7,7 +7,7 @@ import { getSelectHtml } from './html.mock';
 
 import type { SelectProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
-import { KolSelect } from '../component';
+import { KolSelect } from '../shadow';
 
 executeTests<SelectProps>(
 	'Tabs',

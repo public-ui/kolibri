@@ -7,7 +7,7 @@ import { getButtonLinkHtml } from './html.mock';
 
 import type { ButtonLinkProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
-import { KolButtonLink } from '../component';
+import { KolButtonLink } from '../shadow';
 
 executeTests<ButtonLinkProps>(
 	'ButtonLink',

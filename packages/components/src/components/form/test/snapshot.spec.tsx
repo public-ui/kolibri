@@ -7,7 +7,7 @@ import { getFormHtml } from './html.mock';
 
 import type { FormProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
-import { KolForm } from '../component';
+import { KolForm } from '../shadow';
 
 executeTests<FormProps>(
 	'Form',

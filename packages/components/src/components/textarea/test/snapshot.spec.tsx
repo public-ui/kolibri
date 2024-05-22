@@ -7,7 +7,7 @@ import { getTextareaHtml } from './html.mock';
 
 import type { TextareaProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
-import { KolTextarea } from '../component';
+import { KolTextarea } from '../shadow';
 
 executeTests<TextareaProps>(
 	'Textarea',
