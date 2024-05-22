@@ -1,12 +1,11 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState } from '../utils';
-import type { Stringified } from '../types';
 import type { ButtonProps, LinkProps } from '../../schema';
 
 /* types */
 export type ToolbarItemPropType = ButtonProps | LinkProps;
-export type ToolbarItemsPropType = Stringified<ToolbarItemPropType[]>;
+export type ToolbarItemsPropType = ToolbarItemPropType[];
 
 /**
  * Defines the primary toolbar items.

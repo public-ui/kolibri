@@ -1,0 +1,12 @@
+@layer kol-theme-component {
+	.toolbar {
+		padding: var(--spacing-s);
+		border-radius: 8px;
+		box-shadow:
+			0 2px 4px rgb(9 49 142 / 8%),
+			0 0 10px rgb(9 49 142 / 4%),
+			0 4px 5px rgb(9 49 142 / 4%),
+			0 -4px 4px rgb(9 49 142 / 4%);
+		background-color: var(--color-white);
+	}
+}
