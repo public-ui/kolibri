@@ -593,6 +593,9 @@ importers:
       '@stencil/core':
         specifier: 4.17.1
         version: 4.17.1
+      '@stencil/playwright':
+        specifier: 0.2.0
+        version: 0.2.0(@playwright/test@1.43.1)(@stencil/core@4.17.1)
       '@stencil/postcss':
         specifier: 2.1.0
         version: 2.1.0(@stencil/core@4.17.1)
@@ -7350,6 +7353,19 @@ packages:
     resolution: {integrity: sha512-nlARe1QtK5abnCG8kPQKJMWiELg39vKabvf3ebm6YEhQA35CgrxC1pVYTsYq3yktJKoY+k+VzGRnATLKyaLbvA==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
+    dev: true
+
+  /@stencil/playwright@0.2.0(@playwright/test@1.43.1)(@stencil/core@4.17.1):
+    resolution: {integrity: sha512-foJuFpjzNY3kxaI5xG+W/bRQrvosLklPL6r/Rw/VKr3H20DznLLSnkFUikEjGv3/Q2yQwT1dTvwJmSzftXFnhg==}
+    engines: {node: '>=12.0.0', npm: '>=6.0.0'}
+    peerDependencies:
+      '@playwright/test': '>=1.41.2'
+      '@stencil/core': '>=4.13.0'
+    dependencies:
+      '@playwright/test': 1.43.1
+      '@stencil/core': 4.17.1
+      deepmerge: 4.3.1
+      find-up: 7.0.0
     dev: true
 
   /@stencil/postcss@2.1.0(@stencil/core@4.17.1):

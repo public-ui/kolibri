@@ -1,9 +1,12 @@
-import { defineConfig, devices } from '@playwright/test';
+import { devices, expect } from '@playwright/test';
+import { createConfig, matchers } from '@stencil/playwright';
+
+expect.extend(matchers);
 
 const PORT = 9191;
 
 /* See https://playwright.dev/docs/test-configuration */
-export default defineConfig({
+export default createConfig({
 	testDir: './e2e',
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,

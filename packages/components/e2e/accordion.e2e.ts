@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
 test('accordion', async ({ page }) => {
 	await page.goto('/#/accordion/basic');

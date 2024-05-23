@@ -65,7 +65,7 @@
     "dev": "cross-env NODE_ENV=development stencil build --prod --watch",
     "test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
     "test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
-		"e2e": "playwright test",
+    "e2e": "playwright test",
     "postpack": "mv package.bak.json package.json",
     "prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
     "xunused": "knip"
@@ -89,6 +89,7 @@
     "@public-ui/stencil-solid-output-target": "0.2.0",
     "@public-ui/stencil-vue-output-target": "0.9.0",
     "@stencil/core": "4.17.1",
+    "@stencil/playwright": "0.2.0",
     "@stencil/postcss": "2.1.0",
     "@stencil/sass": "3.0.11",
     "@types/color-convert": "2.0.3",

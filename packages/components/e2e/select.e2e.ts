@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { test } from '@stencil/playwright';
 
 test('select', async ({ page }) => {
 	await page.goto('/#/select/basic');
@@ -14,7 +15,7 @@ test('select', async ({ page }) => {
 			};
 		});
 	});
-	await page.evaluate(() => new Promise((resolve) => setTimeout(resolve)));
+	await page.waitForChanges();
 	await select.selectOption({ label: 'Herr' });
 	expect(await inputEventPromise).toBe(true);
 });
