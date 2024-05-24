@@ -24,24 +24,23 @@ export class KolToolbar implements ToolbarAPI {
 
 	@State() private currentIndex: number = 0;
 
-	private renderElement = (element: ToolbarItemPropType, index: number): JSX.Element => {
+	private toolbarElement!: HTMLDivElement | undefined;
+
+	private renderItem = (element: ToolbarItemPropType, index: number): JSX.Element => {
 		const tabIndex = index === this.currentIndex && !element?._disabled ? 0 : -1;
 		const props = {
 			key: index,
 			class: TOOLBAR_ITEM_TAG_NAME,
 			_tabIndex: tabIndex,
 		};
-		if ('_href' in element) {
-			return <KolLinkTag {...element} {...props}></KolLinkTag>;
-		}
-		return <KolButtonTag {...element} {...props}></KolButtonTag>;
+		return '_href' in element ? <KolLinkTag {...element} {...props}></KolLinkTag> : <KolButtonTag {...element} {...props}></KolButtonTag>;
 	};
 
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-toolbar">
-				<div class="toolbar" role="toolbar" aria-label={this.state._label}>
-					{(this.state._items as ToolbarItemPropType[]).map(this.renderElement)}
+				<div ref={(e) => (this.toolbarElement = e)} class="toolbar" role="toolbar" aria-label={this.state._label}>
+					{this.state._items.map(this.renderItem)}
 				</div>
 			</Host>
 		);
@@ -67,50 +66,26 @@ export class KolToolbar implements ToolbarAPI {
 	}
 
 	/**
-	 * Retrieves the toolbar.
+	 * Retrieves the toolbar item by index if defined.
+	 * If not it use the current index of state.
 	 *
 	 * @returns An array of HTMLElements representing the toolbar items.
 	 */
-	private getToolbar(): HTMLElement | null | undefined {
-		return this.host.shadowRoot?.querySelector('.toolbar');
-	}
-
-	/**
-	 * Retrieves all toolbar items within the host element.
-	 *
-	 * @returns An array of HTMLElements representing the toolbar items.
-	 */
-	private getToolbarItems(): HTMLElement[] {
-		const toolbar = this.getToolbar();
-		if (!toolbar) return [];
-		return Array.from(toolbar.querySelectorAll(`.${TOOLBAR_ITEM_TAG_NAME}`));
-	}
-
-	/**
-	 * Finds the first enabled toolbar item.
-	 *
-	 * @returns Returns the index of the first enabled toolbar item.
-	 */
-	private getFirstEnabledItemIndex(): number {
-		const toolbarItems = this._items as ToolbarItemPropType[];
-		let firstEnabledItemIndex: number | null = null;
-		toolbarItems?.forEach((item, index) => {
-			if (firstEnabledItemIndex === null && !item._disabled) return (firstEnabledItemIndex = index);
-		});
-		return firstEnabledItemIndex ?? 0;
+	private getCurrentToolbarItem(index?: number): ChildNode | undefined {
+		return this.toolbarElement?.childNodes?.[index ?? this.currentIndex];
 	}
 
 	/**
 	 * Sets the index of the first enabled toolbar item.
 	 */
 	private setFirstEnabledItemIndex() {
-		this.currentIndex = this.getFirstEnabledItemIndex();
+		this.currentIndex = this.state._items?.findIndex((item) => !item._disabled);
 	}
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
+		const toolbar = this.toolbarElement;
 		if (event.code === 'Tab') {
-			const toolbar = this.getToolbar();
 			return toolbar?.blur();
 		}
 
@@ -118,7 +93,7 @@ export class KolToolbar implements ToolbarAPI {
 		if (!isArrowKey) return;
 		event.preventDefault();
 
-		const items = this.getToolbarItems();
+		// const items = this.getToolbarItems();
 		const lastItemIndex = this._items?.length - 1;
 		const currentIndex = this.currentIndex;
 		let nextIndex = 0;
@@ -134,13 +109,12 @@ export class KolToolbar implements ToolbarAPI {
 		if (currentIndex === nextIndex) return;
 
 		this.currentIndex = nextIndex;
-		items[nextIndex].focus();
+		(this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkElement | HTMLKolButtonElement | undefined)?.focus();
 	}
 
 	@Listen('focusin')
 	public handleFocusIn() {
-		const items = this.getToolbarItems();
-		items[this.currentIndex].focus();
+		(this.getCurrentToolbarItem() as HTMLKolLinkElement | HTMLKolButtonElement | undefined)?.focus();
 	}
 
 	@Listen('blur', { capture: true })
