@@ -70,7 +70,7 @@
 		"@angular/compiler": "17.3.6",
 		"@angular/compiler-cli": "17.3.6",
 		"@angular/core": "17.3.6",
-		"@public-ui/components": "2.1.0",
+		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.3",
