@@ -35,6 +35,30 @@ const ClearableDateInput = () => {
 };
 ```
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                               | Value                                 |
+| -------- | ---------------------------------------------------------------------- | ------------------------------------- |
+| onFocus  | Element wird fokussiert                                                | -                                     |
+| onClick  | Element wird angeklickt                                                | -                                     |
+| onInput  | Datum wird gesetzt bzw. änder sich (entspricht nativem `input`-Event)  | Eingegebenes Datum als ISO8601 String |
+| onChange | Datum wird gesetzt bzw. änder sich (entspricht nativem `change`-Event) | Eingegebenes Datum als ISO8601 String |
+| onBlur   | Element verliert Fokus                                                 | -                                     |
+
 ## Verwendung
 
 Die **InputDate**-Komponente kann für die Erfassung von Daten verwendet werden. Es verwendet intern die InputNumber-Komponente.

@@ -34,9 +34,31 @@ Beispiel für die Erstellung des JSON-Objekts zur Definition der Radio-Elemente:
 [ { label: 'Herr', value: 'Herr', }, { label: 'Frau', value: 'Frau', }, { label: 'Firma', value: 'Firma', }, ];
 ```
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                        | Value                       |
+| -------- | --------------------------------------------------------------- | --------------------------- |
+| onFocus  | Eine Option wird fokussiert                                     | -                           |
+| onInput  | Eine Option wird ausgewählt (entspricht nativem `input`-Event)  | `value`-Attribut der Option |
+| onChange | Eine Option wird ausgewählt (entspricht nativem `change`-Event) | `value`-Attribut der Option |
+| onBlur   | Eine Option verliert Fokus                                      | -                           |
+
 ### onChange
 
-Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und der Wert des ausgewählten RadioButtons.
 <kol-alert _heading="Hinweis für Versionen <2" _type="info">event.target.value enthält die Nummer der Checkbox mit einem '-' davor.</kol-alert>
 
 ```jsx
