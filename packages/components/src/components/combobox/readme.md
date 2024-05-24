@@ -1,5 +1,9 @@
 # Combobox `preview`
 
+<kol-alert _type="warning">
+  Komponente ist ein Entwurf - Vorläufig nicht in Produktion verwenden.
+</kol-alert>
+
 Die **Combobox**-Komponente erzeugt eine Auswahlliste, die ein Eingabefeld mit einer darunter angezeigten Liste von auswählbaren Optionen kombiniert.
 
 ## Konstruktion
