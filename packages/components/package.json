@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.7.21",
+	"version": "1.7.22",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -71,7 +71,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.3",
-		"@public-ui/schema": "1.7.21",
+		"@public-ui/schema": "workspace:*",
 		"adopted-style-sheets": "1.1.4",
 		"i18next": "23.11.2",
 		"markdown-it": "14.1.0"

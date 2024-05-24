@@ -1,5 +1,24 @@
 {
-	"name": "root",
+	"devDependencies": {
+		"@commitlint/cli": "19.3.0",
+		"@commitlint/config-conventional": "19.2.2",
+		"@types/node": "ts5.4",
+		"cross-env": "7.0.3",
+		"husky": "9.0.11",
+		"lerna": "8.1.2",
+		"license-report": "6.5.0",
+		"lint-staged": "15.2.2",
+		"npm-check-updates": "16.14.20",
+		"npm-run-all": "4.1.5",
+		"prettier": "3.2.5",
+		"rimraf": "5.0.5",
+		"ts-node": "10.9.2",
+		"ts-prune": "0.10.3",
+		"typescript": "5.4.5"
+	},
+	"engines": {
+		"pnpm": "^9"
+	},
 	"private": true,
 	"scripts": {
 		"clean": "git clean -f -d -X",
@@ -19,23 +38,5 @@
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
 		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "19.3.0",
-		"@commitlint/config-conventional": "19.2.2",
-		"@types/node": "ts5.4",
-		"cross-env": "7.0.3",
-		"husky": "9.0.11",
-		"lerna": "8.1.2",
-		"license-report": "6.5.0",
-		"lint-staged": "15.2.2",
-		"npm-check-updates": "16.14.20",
-		"npm-run-all": "4.1.5",
-		"pnpm": "8.15.7",
-		"prettier": "3.2.5",
-		"rimraf": "5.0.5",
-		"ts-node": "10.9.2",
-		"ts-prune": "0.10.3",
-		"typescript": "5.4.5"
 	}
 }

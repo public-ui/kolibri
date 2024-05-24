@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/designer",
-	"version": "1.7.21",
+	"version": "1.7.22",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -32,9 +32,9 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.7.21",
-		"@public-ui/solid": "1.7.21",
-		"@public-ui/themes": "1.7.21",
+		"@public-ui/components": "workspace:*",
+		"@public-ui/solid": "workspace:*",
+		"@public-ui/themes": "workspace:*",
 		"adopted-style-sheets": "1.1.4",
 		"monaco-editor": "0.48.0",
 		"monaco-editor-webpack-plugin": "7.1.0",
