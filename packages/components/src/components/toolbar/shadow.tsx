@@ -94,16 +94,10 @@ export class KolToolbar implements ToolbarAPI {
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
-		const toolbar = this.toolbarElement;
-		if (event.code === 'Tab') {
-			return toolbar?.blur();
-		}
-
 		const isArrowKey = event.code === 'ArrowRight' || event.code === 'ArrowLeft';
 		if (!isArrowKey) return;
 		event.preventDefault();
 
-		// const items = this.getToolbarItems();
 		const lastItemIndex = this._items?.length - 1;
 		const currentIndex = this.currentIndex;
 		let nextIndex = 0;
@@ -122,11 +116,9 @@ export class KolToolbar implements ToolbarAPI {
 		(this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkElement | HTMLKolButtonElement | undefined)?.focus();
 	}
 
-	@Listen('focusin')
-	public handleFocusIn() {
-		(this.getCurrentToolbarItem() as HTMLKolLinkElement | HTMLKolButtonElement | undefined)?.focus();
-	}
-
+	/**
+	 * Resets the tabIndexes of the toolbar to default.
+	 */
 	@Listen('blur', { capture: true })
 	public handleBlur(event: FocusEvent) {
 		if (event.target === this.host) this.setFirstEnabledItemIndex();
