@@ -6,7 +6,6 @@ import { InputIconController } from '../@deprecated/input/controller-icon';
 import type { Generic } from 'adopted-style-sheets';
 export class InputPasswordController extends InputIconController implements InputPasswordWatches {
 	protected readonly component: Generic.Element.Component & InputPasswordProps;
-	private placeholderCache?: string;
 
 	public constructor(component: Generic.Element.Component & InputPasswordProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
@@ -64,42 +63,5 @@ export class InputPasswordController extends InputIconController implements Inpu
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);
 		this.validateValue(this.component._value);
-	}
-
-	protected onBlur(event: Event): void {
-		/**
-		 * Beim Screenreader NVDA wird der Placeholder mit
-		 * vorgelesen. Somit kann es vorkommen, dass das
-		 * Label und der Placeholder vorgelesen werden.
-		 *
-		 * Aufgrund dessen, dass das Label immer vorgelesen
-		 * werden muss, kann das zusätzliche Vorlesen des
-		 * Placeholders störend sein.
-		 *
-		 * Damit beim Fokussieren das "doppelte" vorlesen
-		 * vermieden werden kann, wird der Placeholder für
-		 * den fokussierten Feldstatus entfernt.
-		 *
-		 * Hinweis: Für alle Nutzenden müssen alle darge-
-		 *          stellten Inhalte, also auch der Place-
-		 *          holder, gleichermaßen zugänglich sein.
-		 *          Das oben beschriebene Handling erfüllt
-		 *          diese Anforderung nicht.
-		 */
-		this.component.state = {
-			...this.component.state,
-			_placeholder: this.placeholderCache,
-		};
-		this.placeholderCache = undefined;
-		super.onBlur(event);
-	}
-
-	protected onFocus(event: Event): void {
-		this.placeholderCache = this.component.state._placeholder as string;
-		this.component.state = {
-			...this.component.state,
-			_placeholder: undefined,
-		};
-		super.onFocus(event);
 	}
 }
