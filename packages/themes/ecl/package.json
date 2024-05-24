@@ -25,7 +25,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"@public-ui/visual-tests": "2.1.0",
+		"@public-ui/visual-tests": "workspace:*",
 		"@rollup/plugin-commonjs": "25.0.7",
 		"@rollup/plugin-node-resolve": "15.2.3",
 		"@rollup/plugin-typescript": "11.1.6",
