@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v11",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -84,7 +84,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": "11.2.14",
-		"@public-ui/components": "2.1.0"
+		"@public-ui/components": "workspace:*"
 	},
 	"files": [
 		"dist"

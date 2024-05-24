@@ -402,8 +402,8 @@ importers:
   packages/adapters/preact:
     dependencies:
       '@public-ui/react':
-        specifier: 2.1.0
-        version: 2.1.0(@public-ui/components@packages+components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: workspace:*
+        version: link:../react
       preact:
         specifier: '>=10.20.2'
         version: 10.20.2
@@ -3771,13 +3771,6 @@ packages:
   '@pnpm/npm-conf@2.2.2':
     resolution: {integrity: sha512-UA91GwWPhFExt3IizW6bOeY/pQ0BkuNwKjk9iQW9KqxluGCrg4VenZ0/L+2Y0+ZOtme72EVvg6v0zo3AMQRCeA==}
     engines: {node: '>=12'}
-
-  '@public-ui/react@2.1.0':
-    resolution: {integrity: sha512-qrZN1p9OMXGOv+ueehCXeXJ3NGGjpB0mfERE9LoJlRKl+Y2oztx331V5ugwNgXRD2tNK3UVLjJG/Iwh4n8Pq8g==}
-    peerDependencies:
-      '@public-ui/components': 2.1.0
-      react: '>=16.14.0'
-      react-dom: '>=16.14.0'
 
   '@public-ui/stencil-angular-output-target@0.9.0':
     resolution: {integrity: sha512-kmF0p9OqBm/ZEUXS9fu+eTyjcLi1Ryv8/bXFlGu62M/xmIoY8yofUuqxuSA6eEi6gqyOL3CkugDeIXwL+upfFw==}
@@ -16342,12 +16335,6 @@ snapshots:
       '@pnpm/config.env-replace': 1.1.0
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
-
-  '@public-ui/react@2.1.0(@public-ui/components@packages+components)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@public-ui/components': link:packages/components
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.17.1)':
     dependencies:

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/preact",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,7 +49,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/react": "2.1.0"
+		"@public-ui/react": "workspace:*"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",

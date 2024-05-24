@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-angular",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"private": true,
 	"scripts": {
 		"build:deps": "pnpm --filter @public-ui/sample-angular^... build",
