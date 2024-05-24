@@ -577,25 +577,25 @@ importers:
     devDependencies:
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.17.1)
+        version: 0.9.0(@stencil/core@4.18.2-dev.1716246842.b6713e1)
       '@public-ui/stencil-react-output-target':
         specifier: 0.6.0
-        version: 0.6.0(@stencil/core@4.17.1)
+        version: 0.6.0(@stencil/core@4.18.2-dev.1716246842.b6713e1)
       '@public-ui/stencil-solid-output-target':
         specifier: 0.2.0
-        version: 0.2.0(@stencil/core@4.17.1)
+        version: 0.2.0(@stencil/core@4.18.2-dev.1716246842.b6713e1)
       '@public-ui/stencil-vue-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.17.1)
+        version: 0.9.0(@stencil/core@4.18.2-dev.1716246842.b6713e1)
       '@stencil/core':
-        specifier: 4.17.1
-        version: 4.17.1
+        specifier: 4.18.2-dev.1716246842.b6713e1
+        version: 4.18.2-dev.1716246842.b6713e1
       '@stencil/postcss':
         specifier: 2.1.0
-        version: 2.1.0(@stencil/core@4.17.1)
+        version: 2.1.0(@stencil/core@4.18.2-dev.1716246842.b6713e1)
       '@stencil/sass':
         specifier: 3.0.11
-        version: 3.0.11(@stencil/core@4.17.1)
+        version: 3.0.11(@stencil/core@4.18.2-dev.1716246842.b6713e1)
       '@types/color-convert':
         specifier: 2.0.3
         version: 2.0.3
@@ -685,7 +685,7 @@ importers:
         version: 5.0.5
       stencil-awesome-test:
         specifier: 1.0.6
-        version: 1.0.6(@stencil/core@4.17.1)
+        version: 1.0.6(@stencil/core@4.18.2-dev.1716246842.b6713e1)
       terser:
         specifier: 5.30.4
         version: 5.30.4
@@ -6790,36 +6790,36 @@ packages:
       config-chain: 1.1.13
     dev: true
 
-  /@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.17.1):
+  /@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.18.2-dev.1716246842.b6713e1):
     resolution: {integrity: sha512-kmF0p9OqBm/ZEUXS9fu+eTyjcLi1Ryv8/bXFlGu62M/xmIoY8yofUuqxuSA6eEi6gqyOL3CkugDeIXwL+upfFw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.17.1
+      '@stencil/core': 4.18.2-dev.1716246842.b6713e1
     dev: true
 
-  /@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.17.1):
+  /@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.18.2-dev.1716246842.b6713e1):
     resolution: {integrity: sha512-rMxQJo/nqegKOKfVwncvH+RbWB6ZnPaINdeqwpSTCdCX2u+wM5yQydB3+BU7c33gkfihJlmwyauEb0EQQusOHQ==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.17.1
+      '@stencil/core': 4.18.2-dev.1716246842.b6713e1
     dev: true
 
-  /@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.17.1):
+  /@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.18.2-dev.1716246842.b6713e1):
     resolution: {integrity: sha512-w06wR57l0i3gMY4QoxA8AuoIYo9tWXdU+1SRa4kNFiZXgLZzeFg0/WYX3aNLbOybreN6E1iNnF6wJO5ncE1yHA==}
     peerDependencies:
       '@stencil/core': '>=2.17.2'
     dependencies:
-      '@stencil/core': 4.17.1
+      '@stencil/core': 4.18.2-dev.1716246842.b6713e1
     dev: true
 
-  /@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.17.1):
+  /@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.18.2-dev.1716246842.b6713e1):
     resolution: {integrity: sha512-ZFwrOAYTSxRwLG4q5WU8mGerMUoiAdFlzOg65AR04tUFAKgd99HHJ+0lkc/8ugH572oBB9fwgJ1POJJPdrpy/A==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.17.1
+      '@stencil/core': 4.18.2-dev.1716246842.b6713e1
     dev: true
 
   /@puppeteer/browsers@2.2.3:
@@ -7339,30 +7339,30 @@ packages:
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
     dev: true
 
-  /@stencil/core@4.17.1:
-    resolution: {integrity: sha512-nlARe1QtK5abnCG8kPQKJMWiELg39vKabvf3ebm6YEhQA35CgrxC1pVYTsYq3yktJKoY+k+VzGRnATLKyaLbvA==}
+  /@stencil/core@4.18.2-dev.1716246842.b6713e1:
+    resolution: {integrity: sha512-AuXo0wk5ja0jIU5xWCiVvDBe9k/0tB/aNEieBhwQ15N045hPJQlX7qSL+9hMjCkfEa8jlSHz/jkg4xRc2xMEQw==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
     dev: true
 
-  /@stencil/postcss@2.1.0(@stencil/core@4.17.1):
+  /@stencil/postcss@2.1.0(@stencil/core@4.18.2-dev.1716246842.b6713e1):
     resolution: {integrity: sha512-/e4TYEXErGaHxH0ocg620YqEMLuMLpK/Wg4MJsiJglrLZCZhU4XCX1N0SwxaIOUbEZ1Zh+AqQ++yMI92ilndEA==}
     deprecated: '@stencil/postcss has been deprecated. Please see the community-driven package, ''@stencil-community/postcss'''
     peerDependencies:
       '@stencil/core': '>=2.0.0'
     dependencies:
-      '@stencil/core': 4.17.1
+      '@stencil/core': 4.18.2-dev.1716246842.b6713e1
       autoprefixer: 10.4.19(postcss@8.3.11)
       postcss: 8.3.11
     dev: true
 
-  /@stencil/sass@3.0.11(@stencil/core@4.17.1):
+  /@stencil/sass@3.0.11(@stencil/core@4.18.2-dev.1716246842.b6713e1):
     resolution: {integrity: sha512-YzKBKuV2wYf2aCM2Or8DbksX+8DQKOYFe2QMNAV+LFzyexhiYDz5/Tq04CDtc8xTXmzqC0J8U79GB8Vvz9myAQ==}
     engines: {node: '>=12.0.0', npm: '>=6.0.0'}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.17.1
+      '@stencil/core': 4.18.2-dev.1716246842.b6713e1
     dev: true
 
   /@swc/core-darwin-arm64@1.5.0:
@@ -20269,12 +20269,12 @@ packages:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
 
-  /stencil-awesome-test@1.0.6(@stencil/core@4.17.1):
+  /stencil-awesome-test@1.0.6(@stencil/core@4.18.2-dev.1716246842.b6713e1):
     resolution: {integrity: sha512-k/tCbR1Kw8ketuoPlXYNLpeqyoD6AWC22qBxNQDrQIcaXqxcIaoMACtB3x7LEVhMPXsHhPSH6Y4H/Haazvhvdg==}
     peerDependencies:
       '@stencil/core': '>=2'
     dependencies:
-      '@stencil/core': 4.17.1
+      '@stencil/core': 4.18.2-dev.1716246842.b6713e1
     dev: true
 
   /streamroller@3.1.5:
