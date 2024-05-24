@@ -46,6 +46,7 @@ export * from './tableStateless';
 export * from './tabs';
 export * from './textarea';
 export * from './toaster';
+export * from './toolbar';
 export * from './tooltip';
 export * from './tree';
 export * from './tree-item';

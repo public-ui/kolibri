@@ -39,6 +39,7 @@ import tableStatelessCss from './components/ecl-ec/table-stateless.scss';
 import tabsCss from './components/ecl-ec/tabs.scss';
 import textareaCss from './components/ecl-ec/textarea.scss';
 import toastContainerCss from './components/ecl-ec/toast-container.scss';
+import toolbarCss from './components/ecl-ec/toolbar.scss';
 
 // Europa Component Library - European Commission | https://ec.europa.eu/component-library/ec/
 export const ECL_EC = KoliBri.createTheme('ecl-ec', {
@@ -82,4 +83,5 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-SKIP-NAV': skipNavCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
+	'KOL-TOOLBAR': toolbarCss,
 });

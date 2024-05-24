@@ -34,6 +34,7 @@ import tableStatelessCss from './components/table-stateless.scss';
 import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
+import toolbarCss from './components/toolbar.scss';
 
 // Informationstechnikzentrum Bund
 export const ITZBund = KoliBri.createTheme('itzbund', {
@@ -72,4 +73,5 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-TABS': tabsCss,
 	'KOL-SKIP-NAV': skipNavCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
+	'KOL-TOOLBAR': toolbarCss,
 });

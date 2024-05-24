@@ -56,6 +56,7 @@ export let KolTableTag = 'kol-table' as const;
 export let KolTabsTag = 'kol-tabs' as const;
 export let KolTextareaTag = 'kol-textarea' as const;
 export let KolToastContainerTag = 'kol-toast-container' as const;
+export let KolToolbarTag = 'kol-toolbar' as const;
 export let KolTooltipWcTag = 'kol-tooltip-wc' as const;
 export let KolTreeItemTag = 'kol-tree-item' as const;
 export let KolTreeItemWcTag = 'kol-tree-item-wc' as const;
@@ -122,6 +123,7 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolTabsTag = transformTagName(KolTabsTag as string) as 'kol-tabs';
 	KolTextareaTag = transformTagName(KolTextareaTag as string) as 'kol-textarea';
 	KolToastContainerTag = transformTagName(KolToastContainerTag as string) as 'kol-toast-container';
+	KolToolbarTag = transformTagName(KolTooltipWcTag as string) as 'kol-toolbar';
 	KolTooltipWcTag = transformTagName(KolTooltipWcTag as string) as 'kol-tooltip-wc';
 	KolTreeItemTag = transformTagName(KolTreeItemTag as string) as 'kol-tree-item';
 	KolTreeItemWcTag = transformTagName(KolTreeItemWcTag as string) as 'kol-tree-item-wc';

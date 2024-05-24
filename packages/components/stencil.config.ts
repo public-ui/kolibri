@@ -56,6 +56,7 @@ const TAGS = [
 	'kol-table-stateless',
 	'kol-table-stateful',
 	'kol-tabs',
+	'kol-toolbar',
 	'kol-textarea',
 	'kol-toast-container',
 	'kol-tree',
