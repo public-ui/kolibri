@@ -1,6 +1,9 @@
 {
 	"name": "root",
 	"private": true,
+	"engines": {
+    "pnpm": ">=9"
+  },
 	"scripts": {
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
