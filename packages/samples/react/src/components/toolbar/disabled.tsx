@@ -14,6 +14,7 @@ export const ToolbarDisabled: FC = () => {
 				_items={[
 					{
 						_label: 'Back',
+						_disabled: true,
 						_hideLabel: true,
 						_icons: {
 							left: {
@@ -24,7 +25,6 @@ export const ToolbarDisabled: FC = () => {
 					{
 						_label: 'Next',
 						_hideLabel: true,
-						_disabled: true,
 						_icons: {
 							right: {
 								icon: 'codicon codicon-arrow-right',
