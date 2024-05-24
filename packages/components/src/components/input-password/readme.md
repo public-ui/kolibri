@@ -10,6 +10,30 @@ Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe
 <kol-input-password _label="Passwort" _smartButton='{"_icons": "codicon codicon-eye", "_hideLabel": true, "_label": "Passwort anzeigen"}'></kol-input-password>
 ```
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                                                     | Value                        |
+| -------- | -------------------------------------------------------------------------------------------- | ---------------------------- |
+| onFocus  | Element wird fokussiert                                                                      | -                            |
+| onClick  | Element wird angeklickt                                                                      | -                            |
+| onInput  | Eine Eingabe erfolgt (entspricht nativem `input`-Event)                                      | Eingegebener Wert als String |
+| onChange | Eingabe ist abgeschlossen und Eingabefeld verliert Fokus (entspricht nativem `change`-Event) | Eingegebener Wert als String |
+| onBlur   | Element verliert Fokus                                                                       | -                            |
+
 ### Beispiel
 
 <kol-input-password _label="Passwort" _smartButton='{"_icons": "codicon codicon-eye", "_hideLabel": true, "_label": "Passwort anzeigen"}'></kol-input-password>

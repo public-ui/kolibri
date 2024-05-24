@@ -4,14 +4,13 @@ import { format } from 'prettier';
 import parserTypeScript from 'prettier/esm/parser-typescript.mjs';
 import { copyToClipboard, formatReadableCssJson } from './utils';
 
-const Toaster = ToasterService.getInstance(document);
-
 /**
  * - https://www.npmjs.com/package/sass
  * - https://www.npmjs.com/package/clean-css
  * - https://www.npmjs.com/package/monaco-editor
  */
 export const createTsEditor = (ref: HTMLElement, theme: string, code: string) => {
+	const Toaster = ToasterService.getInstance(document);
 	const css = formatReadableCssJson(code).replace(/\\/g, '\\\\');
 	copyToClipboard(css);
 	void Toaster.enqueue({
