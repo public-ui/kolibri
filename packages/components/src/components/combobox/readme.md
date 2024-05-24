@@ -1,4 +1,4 @@
-# Combobox
+# Combobox `preview`
 
 Die **Combobox**-Komponente erzeugt eine Auswahlliste, die ein Eingabefeld mit einer darunter angezeigten Liste von auswählbaren Optionen kombiniert.
 
