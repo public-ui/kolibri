@@ -52,7 +52,7 @@
 		"@public-ui/react": "2.1.0"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.1.0",
+		"@public-ui/components": "workspace:*",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
 		"typescript": "5.4.5",

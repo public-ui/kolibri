@@ -10,6 +10,7 @@ export enum TagEnum {
 	'button-group',
 	'button-link',
 	'card',
+	'combobox',
 	'details',
 	'form',
 	'heading',
