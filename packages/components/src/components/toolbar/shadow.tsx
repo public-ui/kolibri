@@ -26,6 +26,8 @@ export class KolToolbar implements ToolbarAPI {
 
 	private toolbarElement!: HTMLDivElement | undefined;
 
+	private indexToElement = new Map<number, HTMLKolLinkElement | HTMLKolButtonElement>();
+
 	private renderItem = (element: ToolbarItemPropType, index: number): JSX.Element => {
 		const tabIndex = index === this.currentIndex && !element?._disabled ? 0 : -1;
 		const props = {
@@ -33,7 +35,15 @@ export class KolToolbar implements ToolbarAPI {
 			class: TOOLBAR_ITEM_TAG_NAME,
 			_tabIndex: tabIndex,
 		};
-		return '_href' in element ? <KolLinkTag {...element} {...props}></KolLinkTag> : <KolButtonTag {...element} {...props}></KolButtonTag>;
+		const catchRef = (element?: HTMLKolLinkElement | HTMLKolButtonElement) => {
+			element && this.indexToElement.set(index, element);
+		};
+
+		return '_href' in element ? (
+			<KolLinkTag {...element} {...props} ref={catchRef}></KolLinkTag>
+		) : (
+			<KolButtonTag {...element} {...props} ref={catchRef}></KolButtonTag>
+		);
 	};
 
 	public render(): JSX.Element {
@@ -72,7 +82,7 @@ export class KolToolbar implements ToolbarAPI {
 	 * @returns An array of HTMLElements representing the toolbar items.
 	 */
 	private getCurrentToolbarItem(index?: number): ChildNode | undefined {
-		return this.toolbarElement?.childNodes?.[index ?? this.currentIndex];
+		return typeof index === 'number' ? this.indexToElement.get(index) : undefined;
 	}
 
 	/**
