@@ -38,9 +38,6 @@ importers:
       npm-run-all:
         specifier: 4.1.5
         version: 4.1.5
-      pnpm:
-        specifier: 8.15.7
-        version: 8.15.7
       prettier:
         specifier: 3.2.5
         version: 3.2.5
@@ -9992,11 +9989,6 @@ packages:
   playwright@1.43.1:
     resolution: {integrity: sha512-V7SoH0ai2kNt1Md9E3Gwas5B9m8KR2GVvwZnAI6Pg0m3sh7UvgiYhRrhsziCmqMJNouPckiOhk8T+9bSAK0VIA==}
     engines: {node: '>=16'}
-    hasBin: true
-
-  pnpm@8.15.7:
-    resolution: {integrity: sha512-yFzSG22hAzIVaxyiqnnAph7nrS6wRTuIqymSienoypPmCRIyslwHy/YfbfdxKNnISeXJrG5EhU29IRxJ86Z63A==}
-    engines: {node: '>=16.14'}
     hasBin: true
 
   portfinder@1.0.32:
@@ -24077,8 +24069,6 @@ snapshots:
       playwright-core: 1.43.1
     optionalDependencies:
       fsevents: 2.3.2
-
-  pnpm@8.15.7: {}
 
   portfinder@1.0.32:
     dependencies:
