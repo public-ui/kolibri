@@ -1,4 +1,4 @@
-# Toolbar
+# Toolbar `preview`
 
 <kol-alert _type="warning">
   Komponente ist ein Entwurf - Vorläufig nicht in Produktion verwenden.
