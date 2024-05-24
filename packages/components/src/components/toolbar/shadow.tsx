@@ -114,12 +114,9 @@ export class KolToolbar implements ToolbarAPI {
 		if (event.target === this.host) this.setFirstEnabledItemIndex();
 	}
 
-	public componentDidLoad(): void {
-		this.setFirstEnabledItemIndex();
-	}
-
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateItems(this._items);
+		this.setFirstEnabledItemIndex();
 	}
 }
