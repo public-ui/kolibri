@@ -572,12 +572,12 @@ importers:
       '@public-ui/stencil-vue-output-target':
         specifier: 0.9.0
         version: 0.9.0(@stencil/core@4.17.1)
+      '@stencil-community/postcss':
+        specifier: 2.1.0
+        version: 2.1.0(@stencil/core@4.17.1)
       '@stencil/core':
         specifier: 4.17.1
         version: 4.17.1
-      '@stencil/postcss':
-        specifier: 2.1.0
-        version: 2.1.0(@stencil/core@4.17.1)
       '@stencil/sass':
         specifier: 3.0.11
         version: 3.0.11(@stencil/core@4.17.1)
@@ -1251,7 +1251,7 @@ importers:
         version: 0.3.0(eslint@8.57.0)
       knip:
         specifier: 5.11.0
-        version: 5.11.0(@types/node@20.12.7)(typescript@5.4.5)
+        version: 5.11.0(@types/node@20.12.12)(typescript@5.4.5)
       prettier:
         specifier: 3.2.5
         version: 3.2.5
@@ -6068,21 +6068,20 @@ packages:
       p-map: 4.0.0
     dev: true
 
-  /@stencil/core@4.17.1:
-    resolution: {integrity: sha512-nlARe1QtK5abnCG8kPQKJMWiELg39vKabvf3ebm6YEhQA35CgrxC1pVYTsYq3yktJKoY+k+VzGRnATLKyaLbvA==}
-    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
-    hasBin: true
-    dev: true
-
-  /@stencil/postcss@2.1.0(@stencil/core@4.17.1):
-    resolution: {integrity: sha512-/e4TYEXErGaHxH0ocg620YqEMLuMLpK/Wg4MJsiJglrLZCZhU4XCX1N0SwxaIOUbEZ1Zh+AqQ++yMI92ilndEA==}
-    deprecated: '@stencil/postcss has been deprecated. Please see the community-driven package, ''@stencil-community/postcss'''
+  /@stencil-community/postcss@2.1.0(@stencil/core@4.17.1):
+    resolution: {integrity: sha512-M09F6BSfYe/Pu6TraSbtqyUY3WBlfWiWFSvTIfwJx0gCV+YOvU+0TTmnxEZIkEVeF7kMwLe8BoOIzyl4MyvnLg==}
     peerDependencies:
       '@stencil/core': '>=2.0.0'
     dependencies:
       '@stencil/core': 4.17.1
       autoprefixer: 10.4.19(postcss@8.3.11)
       postcss: 8.3.11
+    dev: true
+
+  /@stencil/core@4.17.1:
+    resolution: {integrity: sha512-nlARe1QtK5abnCG8kPQKJMWiELg39vKabvf3ebm6YEhQA35CgrxC1pVYTsYq3yktJKoY+k+VzGRnATLKyaLbvA==}
+    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+    hasBin: true
     dev: true
 
   /@stencil/sass@3.0.11(@stencil/core@4.17.1):
@@ -6517,6 +6516,12 @@ packages:
     resolution: {integrity: sha512-YwOMmyhNnAWijOBQweOJnQPl068Oqd4K3OFbTc6AHJwzweUwwWG3GIFY74OKks2PJUDkQPeddOQES9mLn1CTEQ==}
     dependencies:
       undici-types: 5.26.5
+
+  /@types/node@20.12.12:
+    resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
 
   /@types/node@20.12.7:
     resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
@@ -13940,7 +13945,7 @@ packages:
       zod-validation-error: 3.0.3(zod@3.22.4)
     dev: true
 
-  /knip@5.11.0(@types/node@20.12.7)(typescript@5.4.5):
+  /knip@5.11.0(@types/node@20.12.12)(typescript@5.4.5):
     resolution: {integrity: sha512-7TBBpLYYAqZI+FM+qHsmT0jfYNOwwZAMBvuJXq3gFJCCpDvGrYcLMu2j6yvURJNh1UlpQ4jaNgPoHw7ylGDWMA==}
     engines: {node: '>=18.6.0'}
     hasBin: true
@@ -13951,7 +13956,7 @@ packages:
       '@ericcornelissen/bash-parser': 0.5.2
       '@nodelib/fs.walk': 2.0.0
       '@snyk/github-codeowners': 1.1.0
-      '@types/node': 20.12.7
+      '@types/node': 20.12.12
       easy-table: 1.2.0
       fast-glob: 3.3.2
       file-entry-cache: 8.0.0
