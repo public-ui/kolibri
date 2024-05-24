@@ -50,3 +50,4 @@ export * from './tooltip';
 export * from './tree';
 export * from './tree-item';
 export * from './version';
+export * from './combobox';
