@@ -19,7 +19,7 @@
 		"@angular/platform-browser-dynamic": "17.3.6",
 		"@angular/router": "17.3.6",
 		"@public-ui/angular-v17": "2.1.0",
-		"@public-ui/components": "2.1.0",
+		"@public-ui/components": "workspace:*",
 		"@public-ui/theme-default": "2.1.0",
 		"rxjs": "~7.8.1",
 		"tslib": "^2.6.2",
