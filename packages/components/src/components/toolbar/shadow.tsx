@@ -24,8 +24,6 @@ export class KolToolbar implements ToolbarAPI {
 
 	@State() private currentIndex: number = 0;
 
-	private toolbarElement!: HTMLDivElement | undefined;
-
 	private indexToElement = new Map<number, HTMLKolLinkElement | HTMLKolButtonElement>();
 
 	private renderItem = (element: ToolbarItemPropType, index: number): JSX.Element => {
@@ -49,7 +47,7 @@ export class KolToolbar implements ToolbarAPI {
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-toolbar">
-				<div ref={(e) => (this.toolbarElement = e)} class="toolbar" role="toolbar" aria-label={this.state._label}>
+				<div class="toolbar" role="toolbar" aria-label={this.state._label}>
 					{this.state._items.map(this.renderItem)}
 				</div>
 			</Host>
