@@ -83,7 +83,7 @@
     "wcag-contrast": "3.0.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.43.1",
+    "@playwright/test": "1.44.1",
     "@public-ui/stencil-angular-output-target": "0.9.0",
     "@public-ui/stencil-react-output-target": "0.6.0",
     "@public-ui/stencil-solid-output-target": "0.2.0",

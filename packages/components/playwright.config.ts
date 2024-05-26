@@ -12,7 +12,7 @@ export default createConfig({
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
 	workers: process.env.CI ? 1 : undefined,
-	reporter: 'html',
+	reporter: [['html', { open: 'never' }]],
 	use: {
 		baseURL: `http://localhost:${PORT}/`,
 		trace: 'on-first-retry',
