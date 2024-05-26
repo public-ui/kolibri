@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v16",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -70,7 +70,7 @@
 		"@angular/compiler": "16.2.12",
 		"@angular/compiler-cli": "16.2.12",
 		"@angular/core": "16.2.12",
-		"@public-ui/components": "2.1.0",
+		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.1",
@@ -84,7 +84,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": "16.2.12",
-		"@public-ui/components": "2.1.0"
+		"@public-ui/components": "workspace:*"
 	},
 	"files": [
 		"dist"

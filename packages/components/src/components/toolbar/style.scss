@@ -1,0 +1,19 @@
+@import '../@shared/mixins';
+@import '../style';
+
+@layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
+
+	.toolbar {
+		display: flex;
+		align-items: center;
+		gap: rem(16);
+
+		&:focus-within {
+			outline: 1px solid;
+			outline-offset: 2px;
+		}
+	}
+}

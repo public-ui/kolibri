@@ -1,17 +1,11 @@
 import React, { forwardRef } from 'react';
-import countries from 'world_countries_lists/data/countries/de/countries.json';
 
 import { KolSelect } from '@public-ui/react';
 
 import { ERROR_MSG } from '../../../shares/constants';
 
 import type { Components, SelectOption } from '@public-ui/components';
-type Country = {
-	id: number;
-	alpha2: string;
-	alpha3: string;
-	name: string;
-};
+import { COUNTRY_OPTIONS } from '../../../shares/country';
 
 const SALUTATION_OPTIONS: SelectOption<string>[] = [
 	{
@@ -31,13 +25,6 @@ const SALUTATION_OPTIONS: SelectOption<string>[] = [
 		label: 'Divers',
 		value: 'Divers',
 	},
-];
-
-const COUNTRY_OPTIONS: SelectOption<string>[] = [
-	...(countries as Country[]).map((country) => ({
-		label: country.name,
-		value: country.alpha2,
-	})),
 ];
 
 export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect>(function SelectCases(props, ref) {

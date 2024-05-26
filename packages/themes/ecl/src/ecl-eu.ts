@@ -9,6 +9,7 @@ import buttonCss from './components/ecl-eu/button.scss';
 import buttonGroupCss from './components/ecl-eu/button-group.scss';
 import buttonLinkCss from './components/ecl-eu/button-link.scss';
 import cardCss from './components/ecl-eu/card.scss';
+import ComboboxCss from './components/ecl-eu/combobox.scss';
 import detailsCss from './components/ecl-eu/details.scss';
 import headingCss from './components/ecl-eu/heading.scss';
 import indentedTextCss from './components/ecl-eu/indented-text.scss';
@@ -37,6 +38,7 @@ import tableStatelessCss from './components/ecl-eu/table-stateless.scss';
 import tabsCss from './components/ecl-eu/tabs.scss';
 import textareaCss from './components/ecl-eu/textarea.scss';
 import toastContainerCss from './components/ecl-eu/toast-container.scss';
+import toolbarCss from './components/ecl-eu/toolbar.scss';
 
 // Europa Component Library - European Union | https://ec.europa.eu/component-library/eu/
 export const ECL_EU = KoliBri.createTheme('ecl-eu', {
@@ -53,6 +55,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-BADGE': badgeCss,
 	'KOL-ALERT': alertCss,
 	'KOL-CARD': cardCss,
+	'KOL-COMBOBOX': ComboboxCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-INPUT-FILE': inputFileCss,
@@ -78,4 +81,5 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-SKIP-NAV': skipNavCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
+	'KOL-TOOLBAR': toolbarCss,
 });
