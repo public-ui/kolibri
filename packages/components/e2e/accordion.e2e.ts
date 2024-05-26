@@ -25,7 +25,7 @@ test.describe('Accordion', () => {
 
 	test("should not hide the accordion content after the title has been clicked if it's disabled", async ({ page }) => {
 		await expect(page.getByText('Inhalt Accordion Tab 2')).toBeVisible();
-		await page.getByRole('button', { name: 'Überschrift Accordion Tab 2 (deaktiviert)' }).click();
+		await page.getByRole('button', { name: 'Überschrift Accordion Tab 2 (deaktiviert)' }).click({ force: true });
 		await expect(page.getByText('Inhalt Accordion Tab 2')).toBeVisible();
 	});
 });
