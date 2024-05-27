@@ -4,7 +4,7 @@
 /**
  * Add to npm scripts like
  *
- *  "build": "stenicl build ... && node hashing.js"
+ *  "build": "stenicl build ... && node hashing.cjs"
  */
 
 const fs = require('fs');
