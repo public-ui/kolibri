@@ -1,44 +1,21 @@
 # Toolbar `preview`
 
-<kol-alert _type="warning">
-  Komponente ist ein Entwurf - Vorläufig nicht in Produktion verwenden.
+<kol-alert _type="warning" _variant="card">
+  <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
 </kol-alert>
 
 Die Komponente **Toolbar** ist eine Sammlung häufig verwendeter Steuerelemente für Schaltflächen und Links, die in einer kompakten visuellen Form zusammengefasst sind. Die Toolbar ist in der Regel eine Untermenge von Funktionen, die in einer Menüleiste zu finden sind, um den Aufwand für den Benutzer zu verringern.
 
 ```html
-<kol-toolbar
-	_label="Label"
-	_items=[
-    {
-      {
-        _label: "Button",
-      },
-      {
-        _href: "#",
-        _label: "Link"
-      },
-    }
-]></kol-toolbar>
+<kol-toolbar _label="Label" _items="[{'_label': 'Button',},{'_href': '#','_label': 'Link'}]"> </kol-toolbar>
 ```
 
 ### Beispiel
 
 <kol-toolbar
-\_label="Label"
-\_items=[
-{
-{
-_label: "Button",
-},
-{
-_href: "#",
-_label: "Link"
-}
-}
-]
-
-> </kol-toolbar>
+	_label="Label"
+	_items="[{'_label': 'Button',},{'_href': '#','_label': 'Link'}]">
+</kol-toolbar>
 
 ## Verwendung
 
