@@ -1,4 +1,12 @@
-import type { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps, PaginationPositionPropType, Stringified, TableProps } from '../../schema';
+import type {
+	KoliBriTableDataType,
+	KoliBriTableHeaders,
+	KoliBriTablePaginationProps,
+	PaginationPositionPropType,
+	Stringified,
+	TableProps,
+	TableSelectionPropType,
+} from '../../schema';
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 import { Component, Prop } from '@stencil/core';
@@ -50,8 +58,14 @@ export class KolTable implements TableProps {
 	 * Controls the position of the pagination.
 	 */
 	@Prop() public _paginationPosition?: PaginationPositionPropType = 'bottom';
+	/**
+	 * Defines how rows can be selected and the current selection.
+	 */
+	@Prop() public _selection?: TableSelectionPropType;
 
 	public render(): JSX.Element {
+		console.log(this._selection);
+
 		return (
 			<KolTableStatefulTag
 				_allowMultiSort={this._allowMultiSort}
@@ -62,6 +76,7 @@ export class KolTable implements TableProps {
 				_minWidth={this._minWidth}
 				_pagination={this._pagination}
 				_paginationPosition={this._paginationPosition}
+				_selection={this._selection}
 			/>
 		);
 	}

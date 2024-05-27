@@ -16,6 +16,7 @@ import type {
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCells,
+	TableSelectionPropType,
 	TableStates,
 } from '../../schema';
 import {
@@ -28,6 +29,7 @@ import {
 	validatePaginationPosition,
 	validateTableData,
 	validateTableDataFoot,
+	validateTableSelection,
 	watchString,
 	watchValidator,
 } from '../../schema';
@@ -114,6 +116,10 @@ export class KolTableStateful implements TableAPI {
 	 * Controls the position of the pagination.
 	 */
 	@Prop() public _paginationPosition?: PaginationPositionPropType = 'bottom';
+	/**
+	 * Defines how rows can be selected and the current selection.
+	 */
+	@Prop() public _selection?: TableSelectionPropType;
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
@@ -305,6 +311,11 @@ export class KolTableStateful implements TableAPI {
 		watchString(this, '_minWidth', value, {
 			defaultValue: undefined,
 		});
+	}
+
+	@Watch('_selection')
+	public validateSelection(value?: TableSelectionPropType): void {
+		validateTableSelection(this, value);
 	}
 
 	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
@@ -514,6 +525,7 @@ export class KolTableStateful implements TableAPI {
 							this.handleSort(payload);
 						},
 					}}
+					_selection={this._selection}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
