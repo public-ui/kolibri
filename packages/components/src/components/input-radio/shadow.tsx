@@ -389,8 +389,8 @@ export class KolInputRadio implements InputRadioAPI {
 	}
 
 	private onInput = (event: Event): void => {
-		console.log("onInput Radio")
-		console.log(event.target)
+		console.log('onInput Radio');
+		console.log(event.target);
 		if (event.target instanceof HTMLInputElement) {
 			const option = this.controller.getOptionByKey(event.target.value);
 			if (option !== undefined) {
@@ -406,8 +406,8 @@ export class KolInputRadio implements InputRadioAPI {
 	};
 
 	private onChange = (event: Event): void => {
-		console.log("onChange Radio")
-		console.log(event.target)
+		console.log('onChange Radio');
+		console.log(event.target);
 		if (event.target instanceof HTMLInputElement) {
 			const option = this.controller.getOptionByKey(event.target.value);
 			if (option !== undefined) {
@@ -429,8 +429,8 @@ export class KolInputRadio implements InputRadioAPI {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
-		console.log("onKeyDown Radio")
-		console.log(event.target)
+		console.log('onKeyDown Radio');
+		console.log(event.target);
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
