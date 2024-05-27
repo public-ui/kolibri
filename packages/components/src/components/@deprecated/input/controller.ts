@@ -13,8 +13,9 @@ import { Props as ButtonProps } from '../../button/types';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 import { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import { Props, Watches } from './types';
+import { StencilUnknown } from '../../../types/unknown';
 
-type ValueChangeListener = (value: string) => void;
+type ValueChangeListener = (value: StencilUnknown) => void;
 
 export class InputController extends ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props & AdapterProps;
@@ -145,8 +146,12 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	protected onChange(event: Event): void {
-		const value = (event.target as HTMLInputElement).value;
+	/**
+	 * @param event - The original event object
+	 * @param value - Optional value. Taken from event if not defined.
+	 */
+	protected onChange(event: Event, value?: StencilUnknown): void {
+		value = value ?? (event.target as HTMLInputElement).value;
 
 		// Event handling
 		tryToDispatchKoliBriEvent('change', this.host, value);
@@ -193,8 +198,13 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	protected onInput(event: Event, shouldSetFormAssociatedValue = true): void {
-		const value = (event.target as HTMLInputElement).value;
+	/**
+	 * @param event - The original event object
+	 * @param shouldSetFormAssociatedValue - Set to false when setting form associated value is not desired.
+	 * @param value - Optional value. Taken from event if not defined.
+	 */
+	protected onInput(event: Event, shouldSetFormAssociatedValue = true, value?: StencilUnknown): void {
+		value = value ?? (event.target as HTMLInputElement).value;
 
 		// Event handling
 		stopPropagation(event);
