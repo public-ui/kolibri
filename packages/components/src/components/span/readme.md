@@ -20,6 +20,7 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute     | Description                                                                                                                                                  | Type                                                                   | Default     |
@@ -29,4 +30,7 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 | `_icons`              | `_icons`      | Defines the g classnames (e.g. `_icons="fa-solid fa-user"`).                                                                                                 | `KoliBriHorizontalIcons & KoliBriVerticalIcons \| string \| undefined` | `undefined` |
 | `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                               | `undefined` |
 
----
+
+----------------------------------------------
+
+

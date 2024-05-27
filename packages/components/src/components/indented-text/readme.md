@@ -37,10 +37,14 @@ Verwenden Sie die **IndentedText**-Komponente, um Textpassagen oder Informatione
 
 <!-- Auto Generated Below -->
 
+
 ## Slots
 
 | Slot | Description |
 | ---- | ----------- |
 |      | Der Text.   |
 
----
+
+----------------------------------------------
+
+

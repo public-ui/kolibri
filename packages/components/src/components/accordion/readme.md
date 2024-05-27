@@ -107,6 +107,7 @@ Standardansicht gelegt.
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute   | Description                                                                                                        | Type                                                                                 | Default     |
@@ -117,10 +118,14 @@ Standardansicht gelegt.
 | `_on`                 | --          | Gibt die EventCallback-Funktionen an.                                                                              | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
 | `_open`               | `_open`     | If set (to true) opens/expands the element, closes if not set (or set to false).                                   | `boolean \| undefined`                                                               | `false`     |
 
+
 ## Slots
 
 | Slot | Description                                                                     |
 | ---- | ------------------------------------------------------------------------------- |
 |      | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions. |
 
----
+
+----------------------------------------------
+
+

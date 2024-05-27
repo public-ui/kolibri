@@ -96,6 +96,7 @@ kolibriElement._on = {
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute        | Description                                                                                                                                                  | Type                                                                                                                                                                                                                                                                                                                                                                              | Default      |
@@ -120,13 +121,19 @@ kolibriElement._on = {
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                            | `false`      |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `boolean \| null \| number \| object \| string \| undefined`                                                                                                                                                                                                                                                                                                                      | `undefined`  |
 
+
 ## Methods
 
 ### `getValue() => Promise<StencilUnknown | undefined>`
 
+
+
 #### Returns
 
 Type: `Promise<StencilUnknown>`
+
+
+
 
 ## Slots
 
@@ -134,4 +141,7 @@ Type: `Promise<StencilUnknown>`
 | ---- | ----------------------------------------- |
 |      | Die Legende/Überschrift der Radiobuttons. |
 
----
+
+----------------------------------------------
+
+

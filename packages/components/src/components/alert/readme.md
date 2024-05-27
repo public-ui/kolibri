@@ -77,6 +77,7 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property     | Attribute     | Description                                                                                                        | Type                                                                    | Default     |
@@ -89,10 +90,14 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 | `_type`      | `_type`       | Defines either the type of the component or of the components interactive element.                                 | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 | `_variant`   | `_variant`    | Defines which variant should be used for presentation.                                                             | `"card" \| "msg" \| undefined`                                          | `'msg'`     |
 
+
 ## Slots
 
 | Slot | Description             |
 | ---- | ----------------------- |
 |      | Der Inhalt der Meldung. |
 
----
+
+----------------------------------------------
+
+

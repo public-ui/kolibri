@@ -42,6 +42,7 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute        | Description                                                                                                        | Type                                                  | Default     |
@@ -49,10 +50,14 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 | `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
 | `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                          | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
 
+
 ## Slots
 
 | Slot | Description                             |
 | ---- | --------------------------------------- |
 |      | Der Begriff, der erläutert werden soll. |
 
----
+
+----------------------------------------------
+
+

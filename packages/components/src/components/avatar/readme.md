@@ -44,6 +44,7 @@ Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefr
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute | Description                                                                                                        | Type                  | Default     |
@@ -51,4 +52,7 @@ Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefr
 | `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`              | `undefined` |
 | `_src`                | `_src`    | Sets the image `src` attribute to the given string.                                                                | `string \| undefined` | `undefined` |
 
----
+
+----------------------------------------------
+
+

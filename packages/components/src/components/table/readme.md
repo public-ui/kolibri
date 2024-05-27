@@ -172,6 +172,7 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 <!-- Auto Generated Below -->
 
+
 > **[DEPRECATED]** Use KolTableStateful instead.
 
 ## Properties
@@ -187,4 +188,7 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 | `_pagination`           | `_pagination`          | Defines whether to show the data distributed over multiple pages.                                                  | `boolean \| string \| undefined \| { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks \| undefined; _page?: number \| undefined; _max?: number \| undefined; _boundaryCount?: number \| undefined; _hasButtons?: boolean \| Stringified<PaginationHasButton> \| undefined; _pageSize?: number \| undefined; _pageSizeOptions?: Stringified<number[]> \| undefined; _siblingCount?: number \| undefined; _customClass?: string \| undefined; _label?: string \| undefined; _tooltipAlign?: AlignPropType \| undefined; }` | `undefined` |
 | `_paginationPosition`   | `_pagination-position` | Controls the position of the pagination.                                                                           | `"both" \| "bottom" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `'bottom'`  |
 
----
+
+----------------------------------------------
+
+

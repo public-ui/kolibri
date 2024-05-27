@@ -35,6 +35,7 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute             | Description                                                                                                                                                  | Type                                                                    | Default     |
@@ -44,10 +45,14 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 | `_secondaryHeadline`  | `_secondary-headline` | Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.                                                                            | `string \| undefined`                                                   | `undefined` |
 | `_variant`            | `_variant`            | Defines which variant should be used for presentation.                                                                                                       | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "strong" \| undefined` | `undefined` |
 
+
 ## Slots
 
 | Slot | Description             |
 | ---- | ----------------------- |
 |      | Inhalt der Überschrift. |
 
----
+
+----------------------------------------------
+
+

@@ -88,6 +88,7 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute   | Description                                                                                                        | Type                                                                                  | Default     |
@@ -97,10 +98,14 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 | `_on`                 | --          | Defines the callback functions for details.                                                                        | `undefined \| { onToggle?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
 | `_open`               | `_open`     | If set (to true) opens/expands the element, closes if not set (or set to false).                                   | `boolean \| undefined`                                                                | `false`     |
 
+
 ## Slots
 
 | Slot | Description                                               |
 | ---- | --------------------------------------------------------- |
 |      | Der Inhalt, der in der Detailbeschreibung angezeigt wird. |
 
----
+
+----------------------------------------------
+
+
