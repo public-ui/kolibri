@@ -381,6 +381,16 @@ ROUTES.set('toast/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('toolbar/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('toolbar/disabled', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('tree/basic/home', {
 	axe: {
 		skipFailures: false,

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -87,7 +87,7 @@
 		"@public-ui/stencil-solid-output-target": "0.2.0",
 		"@public-ui/stencil-vue-output-target": "0.9.0",
 		"@stencil/core": "4.17.1",
-		"@stencil/postcss": "2.1.0",
+		"@stencil-community/postcss": "2.2.0",
 		"@stencil/sass": "3.0.11",
 		"@types/color-convert": "2.0.3",
 		"@types/jest": "26.0.24",

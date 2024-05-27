@@ -10,6 +10,7 @@ import buttonCss from './components/button.scss';
 import buttonGroupCss from './components/button-group.scss';
 import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
+import ComboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
 import headingCss from './components/heading.scss';
 import iconCss from './components/icon.scss';
@@ -39,6 +40,7 @@ import tableStatelessCss from './components/table-stateless.scss';
 import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
+import toolbarCss from './components/toolbar.scss';
 import treeItemCss from './components/tree-item.scss';
 import treeCss from './components/tree.scss';
 
@@ -54,6 +56,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-BUTTON-GROUP': buttonGroupCss,
 	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-CARD': cardCss,
+	'KOL-COMBOBOX': ComboboxCss,
 	'KOL-DETAILS': detailsCss,
 	'KOL-HEADING': headingCss,
 	'KOL-ICON': iconCss,
@@ -83,6 +86,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-TABS': tabsCss,
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
+	'KOL-TOOLBAR': toolbarCss,
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
 });
