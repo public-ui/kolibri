@@ -21,7 +21,7 @@
 	"es2015": "dist/esm/index.mjs",
 	"es2017": "dist/esm/index.mjs",
 	"types": "dist/types/index.d.ts",
-	"unpkg": "dist/stencil/stencil.js",
+	"unpkg": "dist/kolibri/kolibri.esm.js",
 	"collection:main": "dist/collection/index.js",
 	"collection": "dist/collection/collection-manifest.json",
 	"sideEffects": false,
