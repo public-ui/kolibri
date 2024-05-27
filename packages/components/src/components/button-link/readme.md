@@ -49,7 +49,6 @@ kolibriElement._on = {
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute        | Description                                                                                                                                                                      | Type                                                                                                                                                   | Default     |
@@ -71,20 +70,12 @@ kolibriElement._on = {
 | `_type`               | `_type`          | Defines either the type of the component or of the components interactive element.                                                                                               | `"button" \| "reset" \| "submit" \| undefined`                                                                                                         | `'button'`  |
 | `_value`              | `_value`         | Defines the value that the button emits on click.                                                                                                                                | `boolean \| null \| number \| object \| string \| undefined`                                                                                           | `undefined` |
 
-
 ## Methods
 
 ### `getValue() => Promise<Stringified<StencilUnknown> | undefined>`
-
-
 
 #### Returns
 
 Type: `Promise<Stringified<StencilUnknown>>`
 
-
-
-
-----------------------------------------------
-
-
+---

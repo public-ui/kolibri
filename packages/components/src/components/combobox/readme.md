@@ -49,7 +49,6 @@ Beispiel für die Konstruktion des JSON-Array:
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                    | Attribute        | Description                                                                                                                                                  | Type                                                                                                                                                                                                                                                                                                                                                                              | Default     |
@@ -74,19 +73,13 @@ Beispiel für die Konstruktion des JSON-Array:
 | `_touched`                  | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                            | `false`     |
 | `_value`                    | `_value`         | Defines the value of the input.                                                                                                                              | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
 
-
 ## Methods
 
 ### `getValue() => Promise<string | undefined>`
 
-
-
 #### Returns
 
 Type: `Promise<string | undefined>`
-
-
-
 
 ## Slots
 
@@ -94,7 +87,4 @@ Type: `Promise<string | undefined>`
 | ---- | ----------------------------------- |
 |      | Die Beschriftung des Eingabefeldes. |
 
-
-----------------------------------------------
-
-
+---

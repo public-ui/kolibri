@@ -79,7 +79,6 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute        | Description                                                                                                                                                  | Type                                                                                                                                                                                                                                                                                                                                                                              | Default     |
@@ -94,7 +93,7 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 | `_hint`               | `_hint`          | Defines the hint text.                                                                                                                                       | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `''`        |
 | `_icons`              | `_icons`         | Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).                                                                                              | `string \| undefined \| { checked: string; indeterminate?: string \| undefined; unchecked?: string \| undefined; } \| { checked?: string \| undefined; indeterminate: string; unchecked?: string \| undefined; } \| { checked?: string \| undefined; indeterminate?: string \| undefined; unchecked: string; }`                                                                   | `undefined` |
 | `_id`                 | `_id`            | Defines the internal ID of the primary component element.                                                                                                    | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
-| `_indeterminate`      | `_indeterminate` | Puts the checkbox in the indeterminate state, does not change the value of _checked.                                                                         | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
+| `_indeterminate`      | `_indeterminate` | Puts the checkbox in the indeterminate state, does not change the value of \_checked.                                                                        | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
 | `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                                                                                                                                                                                                                                                                                                                                          | `undefined` |
 | `_msg`                | --               | Defines the properties for a message rendered as Alert component.                                                                                            | `undefined \| {} & { _level?: 0 \| 2 \| 1 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "default" \| "info" \| "success" \| "warning" \| "error" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined` |
 | `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
@@ -106,19 +105,13 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `boolean \| null \| number \| object \| string \| undefined`                                                                                                                                                                                                                                                                                                                      | `true`      |
 | `_variant`            | `_variant`       | Defines which variant should be used for presentation.                                                                                                       | `"button" \| "default" \| "switch" \| undefined`                                                                                                                                                                                                                                                                                                                                  | `'default'` |
 
-
 ## Methods
 
 ### `getValue() => Promise<boolean | undefined>`
 
-
-
 #### Returns
 
 Type: `Promise<boolean | undefined>`
-
-
-
 
 ## Slots
 
@@ -126,7 +119,4 @@ Type: `Promise<boolean | undefined>`
 | ---------- | ------------------------------ |
 | `"expert"` | Die Beschriftung der Checkbox. |
 
-
-----------------------------------------------
-
-
+---

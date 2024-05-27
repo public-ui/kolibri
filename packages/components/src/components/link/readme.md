@@ -72,7 +72,6 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property             | Attribute             | Description                                                                                                                                                  | Type                                                                                   | Default     |
@@ -91,7 +90,4 @@ Der übergebene Location-String muss dabei exakt dem `href`-Attributs des Links 
 | `_target`            | `_target`             | Defines where to open the link.                                                                                                                              | `string \| undefined`                                                                  | `undefined` |
 | `_tooltipAlign`      | `_tooltip-align`      | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                  | `'right'`   |
 
-
-----------------------------------------------
-
-
+---

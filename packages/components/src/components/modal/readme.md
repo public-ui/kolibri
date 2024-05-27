@@ -104,7 +104,6 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute | Description                                                                                                        | Type                                                      | Default     |
@@ -114,14 +113,10 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 | `_on`                 | --        | Gibt die EventCallback-Function für das Schließen des Modals an.                                                   | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |
 | `_width`              | `_width`  | Defines the width of the modal. (max-width: 100%)                                                                  | `string \| undefined`                                     | `'100%'`    |
 
-
 ## Slots
 
 | Slot | Description            |
 | ---- | ---------------------- |
 |      | Der Inhalt des Modals. |
 
-
-----------------------------------------------
-
-
+---

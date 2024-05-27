@@ -88,7 +88,6 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute   | Description                                                                                                        | Type                                                                                                                                                                                                                                                     | Default     |
@@ -99,7 +98,4 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 | `_selected`           | `_selected` | Defines which tab is active.                                                                                       | `number \| undefined`                                                                                                                                                                                                                                    | `0`         |
 | `_tabs` _(required)_  | `_tabs`     | Defines the tab captions.                                                                                          | `TabButtonProps[] \| string`                                                                                                                                                                                                                             | `undefined` |
 
-
-----------------------------------------------
-
-
+---

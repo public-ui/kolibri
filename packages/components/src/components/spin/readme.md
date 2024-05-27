@@ -112,7 +112,6 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property   | Attribute  | Description                                            | Type                                      | Default |
@@ -120,7 +119,4 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 | `_show`    | `_show`    | Makes the element show up.                             | `boolean \| undefined`                    | `false` |
 | `_variant` | `_variant` | Defines which variant should be used for presentation. | `"cycle" \| "dot" \| "none" \| undefined` | `'dot'` |
 
-
-----------------------------------------------
-
-
+---

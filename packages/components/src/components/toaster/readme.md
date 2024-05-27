@@ -70,22 +70,15 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 <!-- Auto Generated Below -->
 
-
 ## Methods
 
 ### `closeAll() => Promise<void>`
-
-
 
 #### Returns
 
 Type: `Promise<void>`
 
-
-
 ### `enqueue(toast: Toast) => Promise<() => void>`
-
-
 
 #### Parameters
 
@@ -97,9 +90,4 @@ Type: `Promise<void>`
 
 Type: `Promise<() => void>`
 
-
-
-
-----------------------------------------------
-
-
+---

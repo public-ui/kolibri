@@ -9,7 +9,6 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property | Attribute | Description                                                                       | Type                                                  | Default |
@@ -17,14 +16,10 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 | `_align` | `_align`  | Defines the alignment of the tooltip, popover or tabs in relation to the element. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'` |
 | `_show`  | `_show`   | Makes the element show up.                                                        | `boolean \| undefined`                                | `false` |
 
-
 ## Slots
 
 | Slot | Description             |
 | ---- | ----------------------- |
 |      | Der Inhalt des Popover. |
 
-
-----------------------------------------------
-
-
+---

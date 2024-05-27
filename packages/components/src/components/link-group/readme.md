@@ -82,7 +82,6 @@ nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum 
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute          | Description                                                                                                        | Type                                                                                                                                                                                                                  | Default      |
@@ -92,7 +91,4 @@ nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum 
 | `_listStyleType`      | `_list-style-type` | Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet       | `"circle" \| "decimal" \| "decimal-leading-zero" \| "disc" \| "lower-alpha" \| "lower-greek" \| "lower-latin" \| "lower-roman" \| "none" \| "square" \| "upper-alpha" \| "upper-latin" \| "upper-roman" \| undefined` | `undefined`  |
 | `_orientation`        | `_orientation`     | Defines whether the orientation of the component is horizontal or vertical.                                        | `"horizontal" \| "vertical" \| undefined`                                                                                                                                                                             | `'vertical'` |
 
-
-----------------------------------------------
-
-
+---

@@ -71,7 +71,6 @@ const selection: KoliBriTableSelection = {
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                    | Attribute       | Description                                                                                                        | Type                                                                                                                                                                                              | Default     |
@@ -84,7 +83,4 @@ const selection: KoliBriTableSelection = {
 | `_on`                       | --              | Defines the callback functions for table events.                                                                   | `undefined \| { onSort?: EventValueOrEventCallback<MouseEvent, SortEventPayload> \| undefined; onSelectionChange?: EventValueOrEventCallback<Event, SelectionChangeEventPayload> \| undefined; }` | `undefined` |
 | `_selection`                | `_selection`    | Defines how rows can be selected and the current selection.                                                        | `string \| undefined \| ({ label: (row: KoliBriTableDataType) => string; keyPropertyName?: string \| undefined; selectedKeys?: string[] \| undefined; })`                                         | `undefined` |
 
-
-----------------------------------------------
-
-
+---

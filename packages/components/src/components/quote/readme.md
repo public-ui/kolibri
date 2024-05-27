@@ -64,7 +64,6 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute  | Description                                                                                                        | Type                               | Default     |
@@ -74,7 +73,4 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 | `_quote` _(required)_ | `_quote`   | Defines the text of the quote.                                                                                     | `string`                           | `undefined` |
 | `_variant`            | `_variant` | Defines which variant should be used for presentation.                                                             | `"block" \| "inline" \| undefined` | `'inline'`  |
 
-
-----------------------------------------------
-
-
+---

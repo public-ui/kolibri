@@ -74,7 +74,6 @@ Value types von onInput und onChange werden in [#6345](https://github.com/public
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute        | Description                                                                                                                                                  | Type                                                                                                                                                                                                                                                                                                                                                                              | Default     |
@@ -102,19 +101,13 @@ Value types von onInput und onChange werden in [#6345](https://github.com/public
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                            | `false`     |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
 
-
 ## Methods
 
 ### `getValue() => Promise<number | undefined>`
 
-
-
 #### Returns
 
 Type: `Promise<number | undefined>`
-
-
-
 
 ## Slots
 
@@ -122,7 +115,4 @@ Type: `Promise<number | undefined>`
 | ---- | ------------------------------------- |
 |      | Die Beschriftung des Eingabeelements. |
 
-
-----------------------------------------------
-
-
+---

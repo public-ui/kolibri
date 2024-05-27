@@ -47,7 +47,6 @@ Die **Toolbar**-Komponente erkennt hierbei selbständig durch das **`_href`**-At
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute | Description                                                                       | Type                    | Default     |
@@ -55,7 +54,4 @@ Die **Toolbar**-Komponente erkennt hierbei selbständig durch das **`_href`**-At
 | `_items` _(required)_ | --        | Defines the functional elements of toolbar to render (e.g. kol-link, kol-button). | `ToolbarItemPropType[]` | `undefined` |
 | `_label` _(required)_ | `_label`  | Defines the semantic aria-label of the component.                                 | `string`                | `undefined` |
 
-
-----------------------------------------------
-
-
+---

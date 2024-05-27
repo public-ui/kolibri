@@ -33,7 +33,6 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute     | Description                                                                                                        | Type                                                  | Default     |
@@ -43,7 +42,4 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 | `_id`                 | `_id`         | Defines the internal ID of the primary component element.                                                          | `string \| undefined`                                 | `undefined` |
 | `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
 
-
-----------------------------------------------
-
-
+---

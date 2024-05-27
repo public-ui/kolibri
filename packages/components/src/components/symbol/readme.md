@@ -30,7 +30,6 @@ Das eigentliche Symbol, welches am Bildschirm ausgegeben wird, wird über die Pr
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property               | Attribute | Description                                                                                                     | Type     | Default     |
@@ -38,7 +37,4 @@ Das eigentliche Symbol, welches am Bildschirm ausgegeben wird, wird über die Pr
 | `_label` _(required)_  | `_label`  | Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.). | `string` | `undefined` |
 | `_symbol` _(required)_ | `_symbol` | Dieses Property gibt den String an der angezeigt werden soll.                                                   | `string` | `undefined` |
 
-
-----------------------------------------------
-
-
+---

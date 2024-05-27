@@ -74,7 +74,6 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute        | Description                                                                                                                                                  | Type                                                                                                                                                                                                                                                                                                                                                                              | Default      |
@@ -104,19 +103,13 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 | `_touched`            | `_touched`       | Shows if the input was touched by a user.                                                                                                                    | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                            | `false`      |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined`  |
 
-
 ## Methods
 
 ### `getValue() => Promise<string | undefined>`
 
-
-
 #### Returns
 
 Type: `Promise<string | undefined>`
-
-
-
 
 ## Slots
 
@@ -124,7 +117,4 @@ Type: `Promise<string | undefined>`
 | ---- | ----------------------------------- |
 |      | Die Beschriftung des Eingabefeldes. |
 
-
-----------------------------------------------
-
-
+---
