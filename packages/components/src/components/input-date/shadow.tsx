@@ -1,40 +1,45 @@
+import type { JSX } from '@stencil/core';
+import { type MsgPropType, propagateFocus, showExpertSlot, deprecatedHint } from '../../schema';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { nonce } from '../../utils/dev.utils';
+import { propagateSubmitEventToForm } from '../form/controller';
+import { getRenderStates } from '../input/controller';
+import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
+import { InputDateController } from './controller';
+
 import type {
 	ButtonProps,
 	HideErrorPropType,
 	IdPropType,
-	InputFileAPI,
-	InputFileStates,
+	InputDateAPI,
+	InputDateStates,
+	InputDateType,
 	InputTypeOnDefault,
+	InputTypeOnOff,
+	Iso8601,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
-	MsgPropType,
 	NamePropType,
+	ReadOnlyPropType,
 	Stringified,
+	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus, showExpertSlot } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-
-import { nonce } from '../../utils/dev.utils';
-import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
-import { InputFileController } from './controller';
 import { KolInputTag } from '../../core/component-names';
-
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
 @Component({
-	tag: 'kol-input-file',
+	tag: 'kol-input-date',
 	styleUrls: {
 		default: './style.scss',
 	},
 	shadow: true,
 })
-export class KolInputFile implements InputFileAPI {
-	@Element() private readonly host?: HTMLKolInputFileElement;
+export class KolInputDate implements InputDateAPI {
+	@Element() private readonly host?: HTMLKolInputDateElement;
 	private ref?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
@@ -44,19 +49,29 @@ export class KolInputFile implements InputFileAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<FileList | null | undefined> {
-		return this.ref?.files;
+	public async getValue(): Promise<string | undefined> {
+		return this.ref?.value;
 	}
+
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.ref,
+			});
+		}
+	};
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
 		return (
-			<Host class="kol-input-file">
+			<Host class={{ 'kol-input-date': true, 'has-value': this.state._hasValue }}>
 				<KolInputTag
 					class={{
-						file: true,
+						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
 					}}
 					_accessKey={this.state._accessKey}
@@ -68,12 +83,12 @@ export class KolInputFile implements InputFileAPI {
 					_icons={this.state._icons}
 					_id={this.state._id}
 					_label={this.state._label}
+					_suggestions={this.state._suggestions}
+					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.ref?.focus()}
-					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
 						{hasExpertSlot ? (
@@ -93,23 +108,26 @@ export class KolInputFile implements InputFileAPI {
 						<input
 							ref={this.catchRef}
 							title=""
-							accept={this.state._accept}
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							autoCapitalize="off"
+							autoComplete={this.state._autoComplete}
 							autoCorrect="off"
 							disabled={this.state._disabled}
 							id={this.state._id}
-							multiple={this.state._multiple}
+							list={hasSuggestions ? `${this.state._id}-list` : undefined}
+							max={this.state._max}
+							min={this.state._min}
 							name={this.state._name}
+							readOnly={this.state._readOnly}
 							required={this.state._required}
+							step={this.state._step}
 							spellcheck="false"
-							type="file"
+							type={this.state._type}
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onChange={this.onChange}
-							onInput={this.onInput}
+							onKeyDown={this.onKeyDown}
 						/>
 					</div>
 				</KolInputTag>
@@ -117,12 +135,7 @@ export class KolInputFile implements InputFileAPI {
 		);
 	}
 
-	private readonly controller: InputFileController;
-
-	/**
-	 * Defines which file formats are accepted.
-	 */
-	@Prop() public _accept?: string;
+	private readonly controller: InputDateController;
 
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
@@ -133,6 +146,11 @@ export class KolInputFile implements InputFileAPI {
 	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+
+	/**
+	 * Defines whether the input can be auto-completed.
+	 */
+	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -180,15 +198,19 @@ export class KolInputFile implements InputFileAPI {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
+	 * Defines the largest possible input value.
+	 */
+	@Prop() public _max?: Iso8601 | Date;
+
+	/**
+	 * Defines the smallest possible input value.
+	 */
+	@Prop() public _min?: Iso8601 | Date;
+
+	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
 	@Prop() public _msg?: MsgPropType;
-
-	/**
-	 * Makes the input accept multiple inputs.
-	 * @TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _multiple?: boolean = false;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -199,6 +221,12 @@ export class KolInputFile implements InputFileAPI {
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
 	@Prop() public _on?: InputTypeOnDefault;
+
+	/**
+	 * Makes the input element read only.
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _readOnly?: boolean = false;
 
 	/**
 	 * Makes the input element required.
@@ -212,10 +240,20 @@ export class KolInputFile implements InputFileAPI {
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
+	 * Suggestions to provide for the input.
+	 */
+	@Prop() public _suggestions?: SuggestionsPropType;
+
+	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+
+	/**
+	 * Defines the step size for value changes.
+	 */
+	@Prop() public _step?: number;
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -234,23 +272,27 @@ export class KolInputFile implements InputFileAPI {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
+	 * Defines either the type of the component or of the components interactive element.
+	 */
+	@Prop() public _type: InputDateType = 'date';
+
+	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: string;
+	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
 
-	@State() public state: InputFileStates = {
+	@State() public state: InputDateStates = {
+		_autoComplete: 'off',
+		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
+		_suggestions: [],
+		_type: 'datetime-local',
 	};
 
 	public constructor() {
-		this.controller = new InputFileController(this, 'file', this.host);
-	}
-
-	@Watch('_accept')
-	public validateAccept(value?: string): void {
-		this.controller.validateAccept(value);
+		this.controller = new InputDateController(this, 'date', this.host);
 	}
 
 	@Watch('_accessKey')
@@ -261,6 +303,11 @@ export class KolInputFile implements InputFileAPI {
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		this.controller.validateAlert(value);
+	}
+
+	@Watch('_autoComplete')
+	public validateAutoComplete(value?: InputTypeOnOff): void {
+		this.controller.validateAutoComplete(value);
 	}
 
 	@Watch('_disabled')
@@ -303,14 +350,19 @@ export class KolInputFile implements InputFileAPI {
 		this.controller.validateLabel(value);
 	}
 
+	@Watch('_max')
+	public validateMax(value?: Iso8601 | Date): void {
+		this.controller.validateMax(value);
+	}
+
+	@Watch('_min')
+	public validateMin(value?: Iso8601 | Date): void {
+		this.controller.validateMin(value);
+	}
+
 	@Watch('_msg')
 	public validateMsg(value?: MsgPropType): void {
 		this.controller.validateMsg(value);
-	}
-
-	@Watch('_multiple')
-	public validateMultiple(value?: boolean): void {
-		this.controller.validateMultiple(value);
 	}
 
 	@Watch('_name')
@@ -323,6 +375,11 @@ export class KolInputFile implements InputFileAPI {
 		this.controller.validateOn(value);
 	}
 
+	@Watch('_readOnly')
+	public validateReadOnly(value?: ReadOnlyPropType): void {
+		this.controller.validateReadOnly(value);
+	}
+
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
@@ -331,6 +388,16 @@ export class KolInputFile implements InputFileAPI {
 	@Watch('_smartButton')
 	public validateSmartButton(value?: ButtonProps | string): void {
 		this.controller.validateSmartButton(value);
+	}
+
+	@Watch('_suggestions')
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		this.controller.validateSuggestions(value);
+	}
+
+	@Watch('_step')
+	public validateStep(value?: number): void {
+		this.controller.validateStep(value);
 	}
 
 	@Watch('_syncValueBySelector')
@@ -348,29 +415,29 @@ export class KolInputFile implements InputFileAPI {
 		this.controller.validateTouched(value);
 	}
 
+	@Watch('_type')
+	public validateType(value?: InputDateType): void {
+		this.controller.validateType(value);
+	}
+
 	@Watch('_value')
-	public validateValue(value?: string): void {
-		this.controller.validateValue(value);
+	public validateValue(value?: Iso8601 | Date | null): void {
+		if (value instanceof Date) {
+			deprecatedHint('Date type will be removed in v3. Use `Iso8601` instead.');
+		}
+		this.controller.validateValueEx(value, (v) => {
+			if (v === '' && this.ref) {
+				this.ref.value = '';
+			}
+		});
 	}
 
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
+
+		this.state._hasValue = !!this.state._value;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
-
-	private onChange = (event: Event): void => {
-		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file') {
-			const value = this.ref.files;
-
-			this.controller.onFacade.onChange(event);
-
-			// Static form handling
-			this.controller.setFormAssociatedValue(value);
-		}
-	};
-
-	private onInput = (event: Event): void => {
-		this.controller.onFacade.onInput(event, false);
-	};
 }

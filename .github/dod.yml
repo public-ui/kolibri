@@ -1,6 +1,0 @@
-dod:
-  - Meaningful title for the release notes
-  - Pull request is linked to a problem
-  - All changes relate to the problem
-  - A11y tests performed successfully or not relevant
-  - Manual test performed successfully (by reviewer) or not relevant

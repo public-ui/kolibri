@@ -17,6 +17,32 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 ></kol-input-range>
 ```
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                      | Value                        |
+| -------- | ------------------------------------------------------------- | ---------------------------- |
+| onFocus  | Element wird fokussiert                                       | -                            |
+| onClick  | Element wird angeklickt                                       | -                            |
+| onInput  | Eine Eingabe erfolgt (entspricht nativem `input`-Event)       | Eingegebener Wert als String |
+| onChange | Eingabe ist abgeschlossen (entspricht nativem `change`-Event) | Eingegebener Wert als Number |
+| onBlur   | Element verliert Fokus                                        | -                            |
+
+Value types von onInput und onChange werden in [#6345](https://github.com/public-ui/kolibri/issues/6345) angeglichen.
+
 ### Beispiel
 
 <kol-input-range
@@ -65,7 +91,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 | `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                                                                                                                                                                                                                                                                                                                                          | `undefined` |
 | `_max`                | `_max`           | Defines the largest possible input value.                                                                                                                    | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
 | `_min`                | `_min`           | Defines the smallest possible input value.                                                                                                                   | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
-| `_msg`                | --               | Defines the properties for a message rendered as Alert component.                                                                                            | `undefined \| {} & { _level?: 0 \| 2 \| 1 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "default" \| "info" \| "success" \| "warning" \| "error" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined` |
+| `_msg`                | --               | Defines the properties for a message rendered as Alert component.                                                                                            | `undefined \| {} & { _level?: 0 \| 1 \| 2 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "error" \| "warning" \| "info" \| "success" \| "default" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined` |
 | `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                    | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput \| undefined`                                                                                                                                                                                                                                                                       | `undefined` |
 | `_step`               | `_step`          | Defines the step size for value changes.                                                                                                                     | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |

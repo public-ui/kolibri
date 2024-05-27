@@ -20,6 +20,30 @@ Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur V
 ></kol-textarea>
 ```
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                                                     | Value                        |
+| -------- | -------------------------------------------------------------------------------------------- | ---------------------------- |
+| onFocus  | Element wird fokussiert                                                                      | -                            |
+| onClick  | Element wird angeklickt                                                                      | -                            |
+| onInput  | Eine Eingabe erfolgt (entspricht nativem `input`-Event)                                      | Eingegebener Wert als String |
+| onChange | Eingabe ist abgeschlossen und Eingabefeld verliert Fokus (entspricht nativem `change`-Event) | Eingegebener Wert als String |
+| onBlur   | Element verliert Fokus                                                                       | -                            |
+
 ### Beispiel
 
 <kol-textarea _resize="none" _rows="5" _value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.">
@@ -66,7 +90,7 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 | `_id`                 | `_id`            | Defines the internal ID of the primary component element.                                                                                                    | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined`  |
 | `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                                                                                                                                                                                                                                                                                                                                          | `undefined`  |
 | `_maxLength`          | `_max-length`    | Defines the maximum number of input characters.                                                                                                              | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined`  |
-| `_msg`                | --               | Defines the properties for a message rendered as Alert component.                                                                                            | `undefined \| {} & { _level?: 0 \| 2 \| 1 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "default" \| "info" \| "success" \| "warning" \| "error" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined`  |
+| `_msg`                | --               | Defines the properties for a message rendered as Alert component.                                                                                            | `undefined \| {} & { _level?: 0 \| 1 \| 2 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "error" \| "warning" \| "info" \| "success" \| "default" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined`  |
 | `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined`  |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                    | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput \| undefined`                                                                                                                                                                                                                                                                       | `undefined`  |
 | `_placeholder`        | `_placeholder`   | Defines the placeholder for input field. To be shown when there's no value.                                                                                  | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined`  |

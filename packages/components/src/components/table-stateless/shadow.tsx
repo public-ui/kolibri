@@ -2,7 +2,14 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop } from '@stencil/core';
 
 import { KolTableStatelessWcTag } from '../../core/component-names';
-import type { TableDataFootPropType, TableDataPropType, TableHeaderCellsPropType, TableStatelessProps, TableCallbacksPropType } from '../../schema';
+import type {
+	TableDataFootPropType,
+	TableDataPropType,
+	TableHeaderCellsPropType,
+	TableStatelessProps,
+	TableCallbacksPropType,
+	TableSelectionPropType,
+} from '../../schema';
 
 @Component({
 	tag: 'kol-table-stateless',
@@ -42,6 +49,11 @@ export class KolTableStateless implements TableStatelessProps {
 	 */
 	@Prop() public _on?: TableCallbacksPropType;
 
+	/**
+	 * Defines how rows can be selected and the current selection.
+	 */
+	@Prop() public _selection?: TableSelectionPropType;
+
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-table-stateless">
@@ -52,6 +64,7 @@ export class KolTableStateless implements TableStatelessProps {
 					_label={this._label}
 					_minWidth={this._minWidth}
 					_on={this._on}
+					_selection={this._selection}
 				/>
 			</Host>
 		);

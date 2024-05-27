@@ -44,6 +44,25 @@ export const InputPasswordShowPassword: FC = () => {
 					}}
 					className="block"
 				/>
+				<KolInputPassword
+					_placeholder="Mit 'Passwort anzeigen' Button und disabled"
+					_label="Passwort"
+					ref={passwordRef}
+					_smartButton={{
+						_icons: {
+							left: {
+								icon: 'codicon codicon-eye',
+							},
+						},
+						_hideLabel: true,
+						_label: `Passwort ${isPasswordVisible ? 'ausblenden' : 'einblenden'}`,
+						_on: {
+							onClick: handleTogglePasswordClick,
+						},
+					}}
+					className="block"
+					_disabled
+				/>
 			</KolForm>
 		</>
 	);

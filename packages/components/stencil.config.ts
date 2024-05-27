@@ -4,7 +4,7 @@ import path from 'path';
 import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
 import { Config } from '@stencil/core';
 import { JsonDocs, OutputTarget } from '@stencil/core/internal';
-import { postcss } from '@stencil/postcss';
+import { postcss } from '@stencil-community/postcss';
 import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
@@ -56,6 +56,7 @@ const TAGS = [
 	'kol-table-stateless',
 	'kol-table-stateful',
 	'kol-tabs',
+	'kol-toolbar',
 	'kol-textarea',
 	'kol-toast-container',
 	'kol-tree',
@@ -306,4 +307,7 @@ export const config: Config = {
 		after: [],
 	},
 	taskQueue: 'immediate',
+	testing: {
+		setupFilesAfterEnv: ['./test-env.js'],
+	},
 };

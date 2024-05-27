@@ -1,11 +1,11 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type {
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
-	KoliBriTableHeaderCellAndData,
+	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTableRender,
 	LabelPropType,
@@ -13,18 +13,32 @@ import type {
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCellsPropType,
+	TableSelectionPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
 } from '../../schema';
-import { validateLabel, validateTableCallbacks, validateTableData, validateTableDataFoot, validateTableHeaderCells, watchString } from '../../schema';
-import { KolButtonWcTag } from '../../core/component-names';
+import {
+	validateLabel,
+	validateTableCallbacks,
+	validateTableData,
+	validateTableDataFoot,
+	validateTableHeaderCells,
+	validateTableSelection,
+	watchString,
+} from '../../schema';
+import { KolButtonWcTag, KolInputCheckboxTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
+import { Events } from '../../schema/enums';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-table-stateless-wc',
 	shadow: false,
 })
 export class KolTableStateless implements TableStatelessAPI {
+	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+
 	@State() public state: TableStatelessStates = {
 		_data: [],
 		_label: '',
@@ -38,6 +52,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private tableDivElementResizeObserver?: ResizeObserver;
 	private horizontal = true;
 	private cellsToRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -72,9 +87,18 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	@Prop() public _on?: TableCallbacksPropType;
 
+	/**
+	 * Defines how rows can be selected and the current selection.
+	 */
+	@Prop() public _selection?: TableSelectionPropType;
+
 	@Watch('_data')
 	public validateData(value?: TableDataPropType) {
-		validateTableData(this, value);
+		validateTableData(this, value, {
+			beforePatch: (nextValue) => {
+				this.updateDataToKeyMap(nextValue as KoliBriTableDataType[]);
+			},
+		});
 	}
 
 	@Watch('_dataFoot')
@@ -106,6 +130,11 @@ export class KolTableStateless implements TableStatelessAPI {
 		validateTableCallbacks(this, value);
 	}
 
+	@Watch('_selection')
+	public validateSelection(value?: TableSelectionPropType): void {
+		validateTableSelection(this, value);
+	}
+
 	public componentDidRender(): void {
 		this.checkDivElementScrollbar();
 	}
@@ -127,12 +156,26 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	}
 
-	private cellRender(
-		cell: KoliBriTableCell & {
-			data?: KoliBriTableDataType;
-		},
-		el?: HTMLElement,
-	): void {
+	private updateDataToKeyMap(data: KoliBriTableDataType[]) {
+		data.forEach((data) => {
+			if (!this.dataToKeyMap.has(data)) {
+				this.dataToKeyMap.set(data, nonce());
+			}
+		});
+
+		/* Cleanup old values from map */
+		this.dataToKeyMap.forEach((_, key) => {
+			if (!data.includes(key)) {
+				this.dataToKeyMap.delete(key);
+			}
+		});
+	}
+
+	private getDataKey(data: KoliBriTableDataType) {
+		return this.dataToKeyMap.get(data);
+	}
+
+	private cellRender(cell: KoliBriTableCell, el?: HTMLElement): void {
 		if (el) {
 			clearTimeout(this.cellsToRenderTimeouts.get(el));
 			this.cellsToRenderTimeouts.set(
@@ -205,7 +248,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return primaryHeader;
 	}
 
-	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): KoliBriTableCell[][] {
+	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): (KoliBriTableCell & KoliBriTableDataType)[][] {
 		headers.horizontal = Array.isArray(headers?.horizontal) ? headers.horizontal : [];
 		headers.vertical = Array.isArray(headers?.vertical) ? headers.vertical : [];
 		const primaryHeader = this.getPrimaryHeader(headers);
@@ -226,7 +269,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		});
 
 		for (let i = startRow; i < maxRows; i++) {
-			const dataRow: KoliBriTableHeaderCellAndData[] = [];
+			const dataRow: KoliBriTableHeaderCellWithLogic[] = [];
 			headers.vertical.forEach((headerCells, index) => {
 				let rowsTotal = 0;
 				rowSpans[index].forEach((value) => (rowsTotal += value));
@@ -331,19 +374,79 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateLabel(this._label);
 		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
+		this.validateSelection(this._selection);
 	}
 
-	private readonly renderTableRow = (row: KoliBriTableCell[], rowIndex: number): JSX.Element => {
-		return <tr key={`tbody-${rowIndex}`}>{row.map((col, colIndex) => this.renderTableCell(col, rowIndex, colIndex))}</tr>;
+	private renderSelectionCell(row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element {
+		if (this.state._selection) {
+			const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
+			const keyCell = row.find((cell) => cell.key === keyPropertyName);
+			if (keyCell) {
+				const keyProperty = (keyCell?.data as KoliBriTableDataType)[keyPropertyName] as string;
+				const selected = this.state._selection?.selectedKeys?.includes(keyProperty);
+				const label = this.state._selection.label(keyCell.data as KoliBriTableDataType);
+
+				return (
+					<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
+						<KolInputCheckboxTag
+							_label={label}
+							_hideLabel
+							_checked={selected}
+							_tooltipAlign="right"
+							_on={{
+								onInput: (event: Event, value) => {
+									if (this.state._selection?.selectedKeys) {
+										const updatedSelectedKeys = value
+											? [...this.state._selection.selectedKeys, keyProperty]
+											: this.state._selection.selectedKeys.filter((key) => key !== keyProperty);
+
+										tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
+										if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
+											this.state._on[Events.onSelectionChange](event, updatedSelectedKeys);
+										}
+									}
+								},
+							}}
+						/>
+					</td>
+				);
+			}
+		}
+
+		return '';
+	}
+
+	private readonly renderTableRow = (row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element => {
+		let key = String(rowIndex);
+		if (this.horizontal && row[0]?.data) {
+			key = this.getDataKey(row[0].data) ?? key;
+		}
+
+		return (
+			<tr key={`row-${key}`}>
+				{this.renderSelectionCell(row, rowIndex)}
+				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex))}
+			</tr>
+		);
 	};
 
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
+		let key = `${rowIndex}-${colIndex}-${cell.label}`;
+		if (cell.data) {
+			const dataKey = this.getDataKey(cell.data);
+			if (this.horizontal) {
+				key = dataKey ? `${dataKey}-${colIndex}` : key;
+			} else {
+				key = dataKey ? `${dataKey}-${rowIndex}` : key;
+			}
+		}
+
 		if (cell.asTd === false) {
 			return this.renderHeadingCell(cell, rowIndex, colIndex);
 		} else {
 			return (
 				<td
-					key={`tbody-${rowIndex}-${colIndex}-${cell.label}`}
+					key={`cell-${key}`}
 					class={{
 						[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
 					}}
@@ -356,7 +459,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					ref={
 						typeof cell.render === 'function'
 							? (el) => {
-									this.cellRender(cell as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
+									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
 								}
 							: undefined
 					}
@@ -434,7 +537,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const dataField = this.createDataField(this.state._data, this.state._headerCells);
 
 		return (
-			<Host class="kol-table-stateless">
+			<Host class="kol-table-stateless-wc">
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
 				 */}
@@ -461,6 +564,7 @@ export class KolTableStateless implements TableStatelessAPI {
 							<thead>
 								{this.state._headerCells.horizontal.map((cols, rowIndex) => (
 									<tr key={`thead-${rowIndex}`}>
+										{this.state._selection && <td key="thead-selection" class="selection-header-cell"></td>}
 										{cols.map((cell, colIndex) => {
 											if (cell.asTd === true) {
 												return (

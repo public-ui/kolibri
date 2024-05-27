@@ -20,6 +20,29 @@ Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken
 <kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
 <kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                            | Value                                               |
+| -------- | ------------------------------------------------------------------- | --------------------------------------------------- |
+| onFocus  | Element wird fokussiert                                             | -                                                   |
+| onInput  | Checkbox wird an- oder abgehakt (entspricht nativem `input`-Event)  | Definierter `_value` wenn aktiv, andernfalls `null` |
+| onChange | Checkbox wird an- oder abgehakt (entspricht nativem `change`-Event) | Definierter `_value` wenn aktiv, andernfalls `null` |
+| onBlur   | Element verliert Fokus                                              | -                                                   |
+
 ## Verwendung
 
 Checkboxen werden als Einzelelement oder als Liste beliebig vieler Checkboxen verwendet. Sie ermöglichen den Nutzer:innen, aus einer vordefinierten Anzahl von Möglichkeiten eine oder mehrere auszuwählen.
@@ -72,7 +95,7 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 | `_id`                 | `_id`            | Defines the internal ID of the primary component element.                                                                                                    | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
 | `_indeterminate`      | `_indeterminate` | Puts the checkbox in the indeterminate state, does not change the value of \_checked.                                                                        | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
 | `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string`                                                                                                                                                                                                                                                                                                                                                                          | `undefined` |
-| `_msg`                | --               | Defines the properties for a message rendered as Alert component.                                                                                            | `undefined \| {} & { _level?: 0 \| 2 \| 1 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "default" \| "info" \| "success" \| "warning" \| "error" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined` |
+| `_msg`                | --               | Defines the properties for a message rendered as Alert component.                                                                                            | `undefined \| {} & { _level?: 0 \| 1 \| 2 \| 4 \| 3 \| 5 \| 6 \| undefined; _on?: KoliBriAlertEventCallbacks \| undefined; _type?: "error" \| "warning" \| "info" \| "success" \| "default" \| undefined; _variant?: "card" \| "msg" \| undefined; _label?: string \| undefined; _alert?: boolean \| undefined; _hasCloser?: boolean \| undefined; } & { _description: string; }` | `undefined` |
 | `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                    | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput \| undefined`                                                                                                                                                                                                                                                                       | `undefined` |
 | `_required`           | `_required`      | Makes the input element required.                                                                                                                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                            | `false`     |

@@ -33,10 +33,10 @@ jobs:
           registry-url: '${{env.registry}}'
           scope: '@public-ui'
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         id: pnpm-install
         with:
-          version: 8
+          version: 9
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
