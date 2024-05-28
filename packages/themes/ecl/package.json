@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui-/theme-ecl",
-	"version": "1.7.22",
+	"version": "1.7.23",
 	"private": true,
 	"scripts": {
 		"format": "prettier --check src",
