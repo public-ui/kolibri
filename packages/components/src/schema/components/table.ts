@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropLabel, PropTableData, PropTableDataFoot, PropTableSelection } from '../props';
+import type { PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection } from '../props';
 import type { KoliBriTableDataType, KoliBriTableHeaderCell, Stringified, KoliBriSortDirection, KoliBriTableSelection } from '../types';
 import type { KoliBriPaginationProps } from './pagination';
 import type { PropPaginationPosition } from '../props/pagination-position';
@@ -50,7 +50,8 @@ type OptionalProps = {
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
 } & PropTableDataFoot &
 	PropPaginationPosition &
-	PropTableSelection;
+	PropTableSelection &
+	PropTableCallbacks;
 
 type RequiredStates = {
 	allowMultiSort: boolean;
@@ -65,7 +66,7 @@ type OptionalStates = {
 	minWidth: string;
 	sortDirection: KoliBriSortDirection;
 	selection: KoliBriTableSelection;
-};
+} & PropTableCallbacks;
 
 export type TableProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type TableStates = Generic.Element.Members<RequiredStates, OptionalStates>;
