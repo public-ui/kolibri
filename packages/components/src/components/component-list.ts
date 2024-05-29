@@ -29,7 +29,7 @@ import { KolInputPassword } from './input-password/shadow';
 import { KolInputRadio } from './input-radio/shadow';
 import { KolInputRange } from './input-range/shadow';
 import { KolInputText } from './input-text/shadow';
-import { KolInput } from './input/component';
+import { KolInputWc } from './input/component';
 import { KolKolibri } from './kolibri/shadow';
 import { KolLinkButton } from './link-button/shadow';
 import { KolLinkGroup } from './link-group/shadow';
@@ -53,7 +53,7 @@ import { KolTable } from './table/shadow';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
 import { KolToastContainer } from './toaster/shadow';
-import { KolTooltip } from './tooltip/component';
+import { KolTooltipWc } from './tooltip/component';
 import { KolVersion } from './version/shadow';
 import { KolTree } from './tree/shadow';
 import { KolTreeItem } from './tree-item/shadow';
@@ -82,7 +82,7 @@ export const COMPONENTS = [
 	KolIcon,
 	KolImage,
 	KolIndentedText,
-	KolInput,
+	KolInputWc,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -116,7 +116,7 @@ export const COMPONENTS = [
 	KolTabs,
 	KolTextarea,
 	KolToastContainer,
-	KolTooltip,
+	KolTooltipWc,
 	KolTree,
 	KolTreeItem,
 	KolTreeItemWc,

@@ -26,7 +26,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputEmailController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolInputTag } from '../../core/component-names';
+import { KolInputWcTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -78,7 +78,7 @@ export class KolInputEmail implements InputEmailAPI {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<KolInputTag
+				<KolInputWcTag
 					class={{ email: true, 'hide-label': !!this.state._hideLabel }}
 					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
@@ -144,7 +144,7 @@ export class KolInputEmail implements InputEmailAPI {
 							onInput={this.onInput}
 						/>
 					</div>
-				</KolInputTag>
+				</KolInputWcTag>
 			</Host>
 		);
 	}

@@ -1,7 +1,7 @@
 import type { InputRadioProps, InputRadioStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
-import { KolInputTag } from '../../../core/component-names';
+import { KolInputWcTag } from '../../../core/component-names';
 import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
@@ -66,7 +66,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 						const customId = `${state._id}-${index}`;
 						const slotName = `radio-${index}`;
 						const selected = state._value === option.value;
-						return `<${KolInputTag}
+						return `<${KolInputWcTag}
 							class=" radio ${state._disabled || option.disabled ? 'disabled' : ''} "
 							${state._disabled || option.disabled ? "_disabled=''" : ''}
 							${state._hideLabel ? "_hideLabel=''" : ''}
@@ -109,7 +109,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 									</span>
 								</label>
 							</div>
-						</${KolInputTag}>`;
+						</${KolInputWcTag}>`;
 					})
 					.join(' ')}
 				${hasError ? `<FormFieldMsg _alert={state._alert} _hideError={state._hideError} _msg={state._msg} _id={state._id} />` : ''}

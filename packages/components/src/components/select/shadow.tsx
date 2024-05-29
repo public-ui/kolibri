@@ -27,7 +27,7 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { SelectController } from './controller';
-import { KolInputTag } from '../../core/component-names';
+import { KolInputWcTag } from '../../core/component-names';
 import { propagateSubmitEventToForm } from '../form/controller';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
@@ -90,7 +90,7 @@ export class KolSelect implements SelectAPI {
 
 		return (
 			<Host class={{ 'kol-select': true, 'has-value': this.state._hasValue }}>
-				<KolInputTag
+				<KolInputWcTag
 					class={{
 						'hide-label': !!this.state._hideLabel,
 						select: true,
@@ -180,7 +180,7 @@ export class KolSelect implements SelectAPI {
 							</select>
 						</form>
 					</div>
-				</KolInputTag>
+				</KolInputWcTag>
 			</Host>
 		);
 	}

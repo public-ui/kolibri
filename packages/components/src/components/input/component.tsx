@@ -30,7 +30,7 @@ import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/componen
 	tag: 'kol-input',
 	shadow: false,
 })
-export class KolInput implements Props {
+export class KolInputWc implements Props {
 	@Element() private readonly host?: HTMLElement;
 
 	private slotName: string = 'input';

@@ -27,7 +27,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { KolInputTag } from '../../core/component-names';
+import { KolInputWcTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -69,7 +69,7 @@ export class KolInputDate implements InputDateAPI {
 
 		return (
 			<Host class={{ 'kol-input-date': true, 'has-value': this.state._hasValue }}>
-				<KolInputTag
+				<KolInputWcTag
 					class={{
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
@@ -130,7 +130,7 @@ export class KolInputDate implements InputDateAPI {
 							onKeyDown={this.onKeyDown}
 						/>
 					</div>
-				</KolInputTag>
+				</KolInputWcTag>
 			</Host>
 		);
 	}

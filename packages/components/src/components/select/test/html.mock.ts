@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 
 import { type SelectProps, type SelectStates, showExpertSlot, type W3CInputValue, type Option } from '../../../schema';
-import { KolInputTag } from '../../../core/component-names';
+import { KolInputWcTag } from '../../../core/component-names';
 
 export const getSelectHtml = (props: SelectProps): string => {
 	const state = mixMembers<SelectProps, SelectStates>(
@@ -25,7 +25,7 @@ export const getSelectHtml = (props: SelectProps): string => {
 	return `
 <kol-select _alert="" ${state._hideError ? '_hide-error=""' : ''} class="${state._hasValue ? 'has-value kol-select' : 'kol-select'}" ${state._touched ? ' _touched=""' : ''}>
 	<mock:shadow-root>
-		<${KolInputTag}
+		<${KolInputWcTag}
 					${state._hideError ? '_hideerror=""' : ''}
 					_hint=""
 					_id="id-nonce"
@@ -70,7 +70,7 @@ export const getSelectHtml = (props: SelectProps): string => {
 					</select>
 				<form>
 			</div>
-		</${KolInputTag}t>
+		</${KolInputWcTag}t>
 	</mock:shadow-root>
 </kol-select>`;
 };

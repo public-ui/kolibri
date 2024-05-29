@@ -21,7 +21,7 @@ import { nonce } from '../../utils/dev.utils';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputFileController } from './controller';
-import { KolInputTag } from '../../core/component-names';
+import { KolInputWcTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -54,7 +54,7 @@ export class KolInputFile implements InputFileAPI {
 
 		return (
 			<Host class="kol-input-file">
-				<KolInputTag
+				<KolInputWcTag
 					class={{
 						file: true,
 						'hide-label': !!this.state._hideLabel,
@@ -112,7 +112,7 @@ export class KolInputFile implements InputFileAPI {
 							onInput={this.onInput}
 						/>
 					</div>
-				</KolInputTag>
+				</KolInputWcTag>
 			</Host>
 		);
 	}

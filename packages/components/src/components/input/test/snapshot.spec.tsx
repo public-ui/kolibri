@@ -7,13 +7,13 @@ import { getInputHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { InputProps } from '../../../schema';
-import { KolInput } from '../component';
+import { KolInputWc } from '../component';
 
 executeTests<InputProps>(
 	'Input',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: [KolInput],
+			components: [KolInputWc],
 			template: () => <kol-input {...props} />,
 		});
 		return page;
