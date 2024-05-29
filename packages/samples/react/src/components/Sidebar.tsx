@@ -23,7 +23,7 @@ const ComponentNavContainer = ({ children, isMobile }: PropsWithChildren<{ isMob
 	) : (
 		<div className="mt">{children}</div>
 	);
-export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, buildDate, commitHash ,onThemeChange }) => {
+export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, buildDate, commitHash, onThemeChange }) => {
 	/* KolSelect calls onChange initially by design - work around this with a state variable  */
 	const [isFirstThemeSelectChange, setIsFirstThemeSelectChange] = useState(true);
 	const isMobile = useMobile();
@@ -64,8 +64,9 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 			</div>
 			{(buildDate || commitHash) && (
 				<div className="text-sm font-mono color-gray-5 m-t-2">
-					{commitHash ? `Build: ${commitHash}`: ''}<br/>
-					{buildDate ? `at ${buildDate}`: ''}
+					{commitHash ? `Build: ${commitHash}` : ''}
+					<br />
+					{buildDate ? `at ${buildDate}` : ''}
 				</div>
 			)}
 			<KolSelect _label="Theme wählen" _list={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={[theme]} class="mt"></KolSelect>
