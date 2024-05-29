@@ -27,19 +27,19 @@
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@playwright/test": "1.43.1",
+		"@playwright/test": "1.44.1",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.0.1",
 		"portfinder": "1.0.32",
 		"serve": "14.2.3"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.24.1",
-		"@babel/plugin-syntax-import-attributes": "7.24.1",
-		"@babel/preset-env": "7.24.4",
+		"@babel/eslint-parser": "7.24.6",
+		"@babel/plugin-syntax-import-attributes": "7.24.6",
+		"@babel/preset-env": "7.24.6",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "5.11.0",
+		"knip": "5.17.3",
 		"prettier": "3.2.5"
 	},
 	"files": [
