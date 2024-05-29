@@ -126,6 +126,8 @@ export const App: FC = () => {
 						sample={routerLocation.pathname}
 						routes={ROUTES}
 						routeList={ROUTE_LIST}
+						buildDate={process.env.BUILD_DATE}
+						commitHash={process.env.COMMIT_HASH}
 						onThemeChange={handleThemeChange}
 					/>
 				)}
