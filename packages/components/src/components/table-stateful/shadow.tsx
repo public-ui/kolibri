@@ -13,7 +13,7 @@ import type {
 	PaginationPositionPropType,
 	Stringified,
 	TableAPI,
-	TableCallbacksPropType,
+	TableStatefulCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCells,
@@ -28,10 +28,10 @@ import {
 	setState,
 	validateLabel,
 	validatePaginationPosition,
-	validateTableCallbacks,
 	validateTableData,
 	validateTableDataFoot,
 	validateTableSelection,
+	validateTableStatefulCallbacks,
 	watchString,
 	watchValidator,
 } from '../../schema';
@@ -129,7 +129,7 @@ export class KolTableStateful implements TableAPI {
 	/**
 	 * Defines the callback functions for table events.
 	 */
-	@Prop() public _on?: TableCallbacksPropType;
+	@Prop() public _on?: TableStatefulCallbacksPropType;
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
@@ -328,8 +328,8 @@ export class KolTableStateful implements TableAPI {
 		validateTableSelection(this, value);
 	}
 	@Watch('_on')
-	public validateOn(value?: TableCallbacksPropType): void {
-		validateTableCallbacks(this, value);
+	public validateOn(value?: TableStatefulCallbacksPropType): void {
+		validateTableStatefulCallbacks(this, value);
 	}
 
 	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
@@ -511,14 +511,16 @@ export class KolTableStateful implements TableAPI {
 			this.changeCellSort(headerCell);
 		}
 	}
-	private handleSelectionChange(event: Event, value: KoliBriTableDataType[]): void {
+	private handleSelectionChange(event: Event, value: string[]): void {
 		if (this.state._selection) {
 			const keyPropertyName = this.state._selection.keyPropertyName;
-			const updatedSelectedKeys = keyPropertyName ? value.map((item) => item[keyPropertyName] as string) : [];
-			tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
+			let selectedData: KoliBriTableDataType[] = [];
+			if (keyPropertyName) selectedData = this.state._sortedData.filter((item) => value.includes(item[keyPropertyName] as string));
+
+			tryToDispatchKoliBriEvent('selection-change', this.host, selectedData);
 
 			if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-				this.state._on[Events.onSelectionChange](event, updatedSelectedKeys);
+				this.state._on[Events.onSelectionChange](event, selectedData);
 			}
 		}
 	}
@@ -563,7 +565,7 @@ export class KolTableStateful implements TableAPI {
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {
 							this.handleSort(payload);
 						},
-						onSelectionChange: (event: Event, value: KoliBriTableDataType[]) => {
+						onSelectionChange: (event: Event, value: string[]) => {
 							this.handleSelectionChange(event, value);
 						},
 					}}
