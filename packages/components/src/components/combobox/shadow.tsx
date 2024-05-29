@@ -21,7 +21,7 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { ComboboxController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolIconTag, KolInputTag } from '../../core/component-names';
+import { KolIconTag, KolInputWcTag } from '../../core/component-names';
 import { showExpertSlot } from '../../schema';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
@@ -127,7 +127,7 @@ export class KolCombobox implements ComboboxAPI {
 		return (
 			<Host class="kol-combobox">
 				<div class={`combobox ${this.state._disabled === true ? 'disabled' : ''} `}>
-					<KolInputTag
+					<KolInputWcTag
 						_accessKey={this.state._accessKey}
 						_disabled={this.state._disabled}
 						_hideError={this.state._hideError}
@@ -219,7 +219,7 @@ export class KolCombobox implements ComboboxAPI {
 								</ul>
 							)}
 						</div>
-					</KolInputTag>
+					</KolInputWcTag>
 				</div>
 			</Host>
 		);
