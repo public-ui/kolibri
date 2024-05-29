@@ -9,7 +9,7 @@ import type {
 	Stringified,
 	W3CInputValue,
 } from '../../schema';
-import { STATE_CHANGE_EVENT, validateOptionsWithOptgroup, validateRows, watchBoolean, watchJsonArrayString } from '../../schema';
+import { validateOptionsWithOptgroup, validateRows, watchBoolean, watchJsonArrayString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
@@ -17,7 +17,6 @@ import { fillKeyOptionMap } from '../input-radio/controller';
 import type { Generic } from 'adopted-style-sheets';
 export class SelectController extends InputIconController implements SelectWatches {
 	protected readonly component: Generic.Element.Component & SelectProps;
-	private onStateChange!: () => void;
 	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();
 
 	public constructor(component: Generic.Element.Component & SelectProps, name: string, host?: HTMLElement) {
@@ -67,10 +66,8 @@ export class SelectController extends InputIconController implements SelectWatch
 						}
 					).value,
 				]);
-				this.onStateChange();
 			} else if (Array.isArray(value) && selected.length < value.length) {
 				nextState.set('_value', selected);
-				this.onStateChange();
 			}
 		}
 	};
@@ -116,18 +113,8 @@ export class SelectController extends InputIconController implements SelectWatch
 		});
 	}
 
-	public componentWillLoad(onChange?: (event: Event) => void): void {
+	public componentWillLoad(): void {
 		super.componentWillLoad();
-
-		this.onStateChange = () => {
-			if (typeof onChange === 'function') {
-				const timeout = setTimeout(() => {
-					clearTimeout(timeout);
-					onChange(STATE_CHANGE_EVENT);
-				});
-			}
-		};
-
 		this.validateOptions(this.component._options);
 		this.validateMultiple(this.component._multiple);
 		this.validateRequired(this.component._required);

@@ -20,6 +20,29 @@ Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken
 <kol-input-checkbox _variant="button" _label="Schalter aktiviert" _checked></kol-input-checkbox>
 <kol-input-checkbox _variant="button" _label="Schalter deaktiviert"></kol-input-checkbox>
 
+### Events
+
+Events der Komponente können über eine `_on`-Property behandelt werden, die aus einem Objekt mit verschiedenen Callback-Funktionen besteht:
+
+```js
+kolibriElement._on = {
+	onFocus: (event) => {
+		/* Do something on focus */
+	},
+	onInput: (event, value) => {
+		/* Do something with value or event */
+	},
+	// ...
+};
+```
+
+| Event    | Auslöser                                                            | Value                                               |
+| -------- | ------------------------------------------------------------------- | --------------------------------------------------- |
+| onFocus  | Element wird fokussiert                                             | -                                                   |
+| onInput  | Checkbox wird an- oder abgehakt (entspricht nativem `input`-Event)  | Definierter `_value` wenn aktiv, andernfalls `null` |
+| onChange | Checkbox wird an- oder abgehakt (entspricht nativem `change`-Event) | Definierter `_value` wenn aktiv, andernfalls `null` |
+| onBlur   | Element verliert Fokus                                              | -                                                   |
+
 ## Verwendung
 
 Checkboxen werden als Einzelelement oder als Liste beliebig vieler Checkboxen verwendet. Sie ermöglichen den Nutzer:innen, aus einer vordefinierten Anzahl von Möglichkeiten eine oder mehrere auszuwählen.

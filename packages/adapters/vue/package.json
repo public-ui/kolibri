@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/vue",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,8 +49,8 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.24.0",
-		"@public-ui/components": "2.1.0",
+		"@babel/types": "7.24.6",
+		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.4",
@@ -60,7 +60,7 @@
 		"vue": "3.4.21"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.1.0",
+		"@public-ui/components": "workspace:*",
 		"vue": ">=3"
 	},
 	"sideEffects": false,

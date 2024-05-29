@@ -10,6 +10,7 @@ import buttonCss from './components/button.scss';
 import buttonGroupCss from './components/button-group.scss';
 import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
+import ComboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
 import headingCss from './components/heading.scss';
 import iconCss from './components/icon.scss';
@@ -39,6 +40,7 @@ import tableStatelessCss from './components/table-stateless.scss';
 import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
+import toolbarCss from './components/toolbar.scss';
 
 export const BMF = KoliBri.createTheme('bmf', {
 	GLOBAL: globalCss,
@@ -66,6 +68,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-TABLE-STATELESS': tableStatelessCss,
 	'KOL-NAV': navCss,
 	'KOL-CARD': cardCss,
+	'KOL-COMBOBOX': ComboboxCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-RADIO': inputRadioCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
@@ -81,4 +84,5 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-SKIP-NAV': skipNavCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-SPIN': spinCss,
+	'KOL-TOOLBAR': toolbarCss,
 });

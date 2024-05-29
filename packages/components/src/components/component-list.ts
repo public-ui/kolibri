@@ -53,12 +53,14 @@ import { KolTable } from './table/shadow';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
 import { KolToastContainer } from './toaster/shadow';
+import { KolToolbar } from './toolbar/shadow';
 import { KolTooltipWc } from './tooltip/component';
 import { KolVersion } from './version/shadow';
 import { KolTree } from './tree/shadow';
 import { KolTreeItem } from './tree-item/shadow';
 import { KolTreeItemWc } from './tree-item/component';
 import { KolTreeWc } from './tree/component';
+import { KolCombobox } from './combobox/shadow';
 
 export const COMPONENTS = [
 	KolAbbr,
@@ -75,6 +77,7 @@ export const COMPONENTS = [
 	KolButtonLink,
 	KolButtonWc,
 	KolCard,
+	KolCombobox,
 	KolDetails,
 	KolForm,
 	KolHeading,
@@ -116,6 +119,7 @@ export const COMPONENTS = [
 	KolTabs,
 	KolTextarea,
 	KolToastContainer,
+	KolToolbar,
 	KolTooltipWc,
 	KolTree,
 	KolTreeItem,

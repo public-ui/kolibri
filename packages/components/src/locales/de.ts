@@ -37,6 +37,7 @@ export default {
 	'error-list-message': 'Bitte korrigieren Sie folgende Fehler:',
 	version: 'Versionsnummer',
 	'table-visible-range': 'Einträge {{start}} bis {{end}} von {{total}}',
+	dropdown: 'Auswahlliste',
 	'nav-label-open': 'Untermenü zu {{label}} öffnen',
 	'nav-label-close': 'Untermenü zu {{label}} schließen',
 };

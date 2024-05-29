@@ -363,7 +363,7 @@ export class KolInputFile implements InputFileAPI {
 		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file') {
 			const value = this.ref.files;
 
-			this.controller.onFacade.onChange(event);
+			this.controller.onFacade.onChange(event, value);
 
 			// Static form handling
 			this.controller.setFormAssociatedValue(value);
@@ -371,6 +371,9 @@ export class KolInputFile implements InputFileAPI {
 	};
 
 	private onInput = (event: Event): void => {
-		this.controller.onFacade.onInput(event, false);
+		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file') {
+			const value = this.ref.files;
+			this.controller.onFacade.onInput(event, false, value);
+		}
 	};
 }
