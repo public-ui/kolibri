@@ -1,0 +1,35 @@
+body:
+  - type: textarea
+    attributes:
+      label: Summary
+      description: |
+        What do you need help with?
+
+        ```diff
+        # Womit brauchen Sie Hilfe?
+        ```
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional information / Zusätzliche Informationen
+      description: |
+        Any code snippets, error messages, or dependency details that may be related? (`kolibri info`)
+
+        ```diff
+        # Irgendwelche Codeschnipsel, Fehlermeldungen oder Abhängigkeitsdetails, die damit zusammenhängen könnten? (`kolibri info`)
+        ```
+      render: js
+    validations:
+      required: false
+  - type: input
+    attributes:
+      label: Example / Beispiel
+      description: |
+        A link to a minimal reproduction is helpful for collaborative debugging!
+
+        ```diff
+        # Ein Link zu einer minimalen Reproduktion ist hilfreich für die gemeinsame Fehlersuche!
+        ```
+    validations:
+      required: false

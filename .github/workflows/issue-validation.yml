@@ -1,0 +1,105 @@
+name: Validate Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-issue:
+    if: contains(join(github.event.issue.labels.*.name, ','), 'bug') || contains(join(github.event.issue.labels.*.name, ','), 'doc')
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Extract issue details
+      id: extract
+      run: |
+        ISSUE_BODY=$(jq -r .issue.body "$GITHUB_EVENT_PATH")
+
+        # Extract form-specific fields if it's a bug report
+        if echo "${{ github.event.issue.labels.*.name }}" | grep -q "bug"; then
+          REPRODUCTION_URL=$(echo "$ISSUE_BODY" | jq -r '.reproduction_url // empty')
+          THEMES=$(echo "$ISSUE_BODY" | jq -r '.affected_themes // empty' | tr '\n' ' ')
+          THEME_SHORT_FORMS=$(echo "$THEMES" | sed 's/Not sure//; s/Bundesministerium der Finanzen/theme: BMF/; s/Default/theme: Default/; s/European Comission/theme: EC/; s/European Union/theme: EU/; s/Informationstechnikzentrum Bund/theme: ITZ/; s/Unstyled/theme: Unstyled/; s/ /,/g' | sed 's/^,*//;s/,*$//')
+          ERROR_CATEGORY=$(echo "$ISSUE_BODY" | jq -r '.error_category // empty')
+          BROWSER_INFO=$(echo "$ISSUE_BODY" | jq -r '.browser_info // empty')
+          COMPONENTS=$(echo "$ISSUE_BODY" | jq -r '.affected_components // empty' | tr '\n' ' ' | sed 's/Not sure//g' | sed 's/ (\(Scenario\))//g' | tr -d ' ')
+          COMPONENTS_LABEL=$(echo "$COMPONENTS" | sed 's/ /,/g' | sed 's/^,*//;s/,*$//')
+          KOLIBRI_VERSION=$(echo "$ISSUE_BODY" | grep -oP 'kolibri: \d+\.\d+\.\d+' | awk '{print $2}')
+          KOLIBRI_MAJOR_VERSION=$(echo "$KOLIBRI_VERSION" | cut -d '.' -f 1)
+          KOLIBRI_LABEL=$(echo "v$KOLIBRI_MAJOR_VERSION")
+
+          # Construct the new issue body with optional fields
+          NEW_ISSUE_BODY=$(echo "$ISSUE_BODY" | sed -E 's/\(.*?\)//g' | sed -E 's/^ *\* +/\n/g' | sed 's/### /\n\n### /g')
+          if [ -n "$REPRODUCTION_URL" ]; then
+            NEW_ISSUE_BODY="${NEW_ISSUE_BODY}\n**Reproduction URL:** $REPRODUCTION_URL\n"
+          fi
+          if [ -n "$ERROR_CATEGORY" ]; then
+            NEW_ISSUE_BODY="${NEW_ISSUE_BODY}\n**Error Category:** $ERROR_CATEGORY\n"
+          fi
+          if [ -n "$BROWSER_INFO" ]; then
+            NEW_ISSUE_BODY="${NEW_ISSUE_BODY}\n**Browser Information:** $BROWSER_INFO\n"
+          fi
+
+          echo "reproduction_url=$REPRODUCTION_URL" >> $GITHUB_OUTPUT
+          echo "themes_labels=$THEME_SHORT_FORMS" >> $GITHUB_OUTPUT
+          echo "error_category=$ERROR_CATEGORY" >> $GITHUB_OUTPUT
+          echo "browser_info=$BROWSER_INFO" >> $GITHUB_OUTPUT
+          echo "components_label=$COMPONENTS_LABEL" >> $GITHUB_OUTPUT
+          echo "kolibri_label=$KOLIBRI_LABEL" >> $GITHUB_OUTPUT
+          echo "issue_body=$NEW_ISSUE_BODY" >> $GITHUB_OUTPUT
+
+        # Extract form-specific fields if it's a documentation report
+        elif echo "${{ github.event.issue.labels.*.name }}" | grep -q "doc"; then
+            DOC_UPDATE=$(echo "$ISSUE_BODY" | jq -r '.update // empty')
+            DOC_CONTEXT=$(echo "$ISSUE_BODY" | jq -r '.context // empty')
+            DOC_LINK=$(echo "$ISSUE_BODY" | jq -r '.doc_link // empty')
+
+            # Construct the new issue body
+            NEW_ISSUE_BODY=$(cat <<EOF
+            **Update Requested:**
+            $DOC_UPDATE
+
+            **Context:**
+            $DOC_CONTEXT
+            EOF
+            )
+
+            if [ -n "$DOC_LINK" ]; then
+                NEW_ISSUE_BODY="${NEW_ISSUE_BODY}\n**Documentation Link:** $DOC_LINK\n"
+            fi
+
+            echo "issue_body=$NEW_ISSUE_BODY" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Check if user is a team member
+      id: check-team
+      run: |
+        USERNAME=${{ github.event.issue.user.login }}
+        ORG="public-ui"
+        TEAM="SpecTeam"
+        RESPONSE=$(curl -H "Authorization: token ${{ secrets.ORG_ACCESS_TOKEN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/orgs/$ORG/teams/$TEAM/memberships/$USERNAME)
+        if echo "$RESPONSE" | grep -q '"state": "active"'; then
+            echo "::set-output name=team_member::true"
+        else
+            echo "::set-output name=team_member::false"
+        fi
+
+    - name: Update issue with labels and new description
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        issue-number: ${{ github.event.issue.number }}
+        body: |
+          ${{ steps.extract.outputs.issue_body }}
+
+    - name: Add labels to the issue
+      uses: actions-ecosystem/action-add-labels@v1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        labels: |
+            ${{ steps.check-team.outputs.team_member == 'true' && 'created-by: kolibri-team' || '' }}
+            ${{ steps.extract.outputs.kolibri_label || '' }}
+            ${{ steps.extract.outputs.themes_labels || '' }}
+            ${{ steps.extract.outputs.components_label || '' }}

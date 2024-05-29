@@ -1,0 +1,7 @@
+contact_links:
+  - name: KoliBri Feature Request
+    url: https://github.com/public-ui/kolibri/discussions/new/choose
+    about: Feature or docs requests should be opened as discussions.
+  - name: KoliBri Question
+    url: https://github.com/public-ui/kolibri/discussions/new?category=q-a
+    about: Ask questions and discuss with other community members.

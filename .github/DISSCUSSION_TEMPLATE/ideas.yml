@@ -1,0 +1,53 @@
+body:
+  - type: textarea
+    attributes:
+      label: Goals
+      description: |
+        Short list of what the feature request aims to address?
+
+        ```diff
+        # Kurze Auflistung dessen, worauf die Anfrage abzielt?
+        ```
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Non-Goals
+      description: |
+        Short list of what the feature request _does not_ aim to address?
+
+        ```diff
+        # Kurze Auflistung dessen, was mit der Anfrage _nicht_ bezweckt wird?
+        ```
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Background / Hintergrund
+      description: |
+        Discuss prior art, why do you think this feature is needed? Are there current alternatives?
+
+        ```diff
+        # Diskutieren Sie den Stand der Technik, warum glauben Sie, dass diese Funktion benötigt wird? Gibt es aktuelle Alternativen?
+        ```
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposal
+      description: |
+        How should this feature be implemented? Are you interested in contributing?
+
+        ```diff
+        # Wie sollte diese Funktion implementiert werden? Wären Sie daran interessiert, einen Beitrag zu leisten?
+        ```
+    validations:
+      required: true
