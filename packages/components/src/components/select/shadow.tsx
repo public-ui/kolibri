@@ -428,7 +428,7 @@ export class KolSelect implements SelectAPI {
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
-		this.controller.componentWillLoad(this.onChange.bind(this));
+		this.controller.componentWillLoad();
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
@@ -443,9 +443,7 @@ export class KolSelect implements SelectAPI {
 		tryToDispatchKoliBriEvent('input', this.host, this._value);
 
 		// Callback
-		if (typeof this.state._on?.onInput === 'function') {
-			this.state._on.onInput(event, this._value);
-		}
+		this.state._on?.onInput?.(event, this._value);
 	}
 
 	private onChange(event: Event): void {
@@ -457,8 +455,6 @@ export class KolSelect implements SelectAPI {
 		this.controller.setFormAssociatedValue(this._value as unknown as string);
 
 		// Callback
-		if (typeof this.state._on?.onChange === 'function') {
-			this.state._on.onChange(event, this._value);
-		}
+		this.state._on?.onChange?.(event, this._value);
 	}
 }

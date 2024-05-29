@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { KolAccordion, KolButton, KolHeading, KolLink, KolSelect, KolVersion } from '@public-ui/react';
 
@@ -26,18 +26,13 @@ const ComponentNavContainer = ({ children, isMobile }: PropsWithChildren<{ isMob
 	);
 export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, onThemeChange }) => {
 	/* KolSelect calls onChange initially by design - work around this with a state variable  */
-	const [isFirstThemeSelectChange, setIsFirstThemeSelectChange] = useState(true);
 	const isMobile = useMobile();
 
 	const getIndexOfSample = () => routeList.indexOf(sample);
 	const formatSampleAsLabel = () => sample.replace(/\//g, ' ');
 
 	const handleThemeSelectChange = (_event: Event, value: unknown) => {
-		if (isFirstThemeSelectChange) {
-			setIsFirstThemeSelectChange(false);
-		} else {
-			onThemeChange((value as [string])[0]);
-		}
+		onThemeChange((value as [string])[0]);
 	};
 
 	const handleLinkClick = (event: Event) => {
