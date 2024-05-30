@@ -1,14 +1,14 @@
 import { Component, createEffect, createSignal, Match, Switch } from 'solid-js';
 
-import { KolInputText, KolSelect, KolButton, KolHeading, KolAlert, KolLink, KolInputFile, KolInputCheckbox } from '@public-ui/solid';
-import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper, SelectOption } from '@public-ui/components';
-import { createTsEditor } from '../editor/ts-editor';
-import AllComp from '../../assets/components-overview.svg';
+import { KolAlert, KolButton, KolHeading, KolInputCheckbox, KolInputFile, KolInputText, KolLink, KolSelect } from '@public-ui/solid';
 import { format } from 'prettier';
 import parserBabel from 'prettier/esm/parser-babel.mjs';
+import AllComp from '../../assets/components-overview.svg';
+import { restoreThemes, saveData } from '../../shares/theme';
+import { EditorComponent } from '../editor/component.solid';
+import { createTsEditor } from '../editor/ts-editor';
 import { TAG_NAMES } from '../tags';
-import { restoreThemes, saveData, storeThemes } from '../../shares/theme';
 
 type Page = 'editor' | 'result' | 'overview';
 
@@ -77,7 +77,6 @@ export const AppComponent: Component = () => {
 					?.text()
 					.then((content: string) => {
 						KoliBriDevHelper.patchTheme(getTheme(), JSON.parse(content) as Record<string, string>);
-						storeThemes();
 						window.location.reload();
 					})
 					.catch(console.warn);
@@ -176,6 +175,8 @@ export const AppComponent: Component = () => {
 							_tooltipAlign="bottom"
 						></KolButton>
 						<KolSelect
+							_label="Komponente"
+							_hideLabel
 							_id="component-select"
 							_options={TAG_NAME_LIST}
 							_on={{
@@ -187,6 +188,7 @@ export const AppComponent: Component = () => {
 							ref={(el: HTMLElement) => {
 								select = el as HTMLKolSelectElement;
 							}}
+							_value={[getComponent()]}
 						>
 							Komponenten
 						</KolSelect>
