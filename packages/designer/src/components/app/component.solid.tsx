@@ -221,13 +221,13 @@ export const AppComponent: Component = () => {
 								um die Änderungen zu übernehmen und zu speichern.
 							</div>
 							<div class="flex gap-2 flex-wrap">
-								<KolButton class="w-full sm:w-auto" _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton>
-								<KolButton class="w-full sm:w-auto" _label="Theme herunterladen" _on={onClickDownload}></KolButton>
+								{/* <KolButton class="w-full sm:w-auto" _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton> */}
+								{/* <KolButton class="w-full sm:w-auto" _label="Theme herunterladen" _on={onClickDownload}></KolButton> */}
 								<KolButton class="w-full sm:w-auto" _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
 							</div>
-							<div class="flex gap-2">
+							{/* <div class="flex gap-2">
 								<KolInputFile _id="theme-upload-input" _on={onChangeUpload} _label={`Theme laden`} />
-							</div>
+							</div> */}
 						</div>
 					</>
 				}
