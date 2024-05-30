@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import React, { useEffect, useRef } from 'react';
-import { KolTableStateful } from '@public-ui/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { KolButton, KolTableStateful } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableSelection } from '@public-ui/components';
 
@@ -19,11 +19,18 @@ export const TableStatefulWithSelection: FC = () => {
 
 	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>();
 
+	const [selectedValue, setSelectedValue] = useState<unknown>(undefined);
+
 	const handleSelectionChangeEvent = ({ detail: selection }) => {
 		console.log('Selection change via event', selection);
 	};
 	const handleSelectionChangeCallback = (_event, selection) => {
 		console.log('Selection change via callback', selection);
+	};
+
+	const handleButtonClick = async () => {
+		const selection = await kolTableStatefulRef.current?.getSelection();
+		setSelectedValue(selection);
 	};
 
 	useEffect(() => {
@@ -55,6 +62,17 @@ export const TableStatefulWithSelection: FC = () => {
 				style={{ maxWidth: '600px' }}
 				ref={kolTableStatefulRef}
 			/>
+			<div className="grid grid-cols-3 items-end gap-4 mt-4">
+				<KolButton
+					_label="getSelection()"
+					_on={{
+						onClick: () => {
+							void handleButtonClick();
+						},
+					}}
+				></KolButton>
+				<pre>{JSON.stringify(selectedValue, null, 2)}</pre>
+			</div>
 		</>
 	);
 };

@@ -48,7 +48,7 @@ export const validateTableStatefulCallbacks = (component: Generic.Element.Compon
 		component,
 		`_on`,
 		(value) => typeof value === 'object' && value !== null,
-		new Set(['TableStatefulCallbacksPropType {Events.onSort, Events.onSelectionChange}']),
+		new Set(['TableStatefulCallbacksPropType {Events.onSelectionChange}']),
 		value,
 	);
 };
