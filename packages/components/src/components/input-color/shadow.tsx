@@ -24,7 +24,7 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputColorController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolInputTag } from '../../core/component-names';
+import { KolInputWcTag } from '../../core/component-names';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -57,7 +57,7 @@ export class KolInputColor implements InputColorAPI {
 
 		return (
 			<Host class="kol-input-color">
-				<KolInputTag
+				<KolInputWcTag
 					class={{
 						color: true,
 						'hide-label': !!this.state._hideLabel,
@@ -113,7 +113,7 @@ export class KolInputColor implements InputColorAPI {
 							{...this.controller.onFacade}
 						/>
 					</div>
-				</KolInputTag>
+				</KolInputWcTag>
 			</Host>
 		);
 	}

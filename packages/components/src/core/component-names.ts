@@ -28,7 +28,7 @@ export let KolInputNumberTag = 'kol-input-number' as const;
 export let KolInputPasswordTag = 'kol-input-password' as const;
 export let KolInputRadioTag = 'kol-input-radio' as const;
 export let KolInputRangeTag = 'kol-input-range' as const;
-export let KolInputTag = 'kol-input' as const;
+export let KolInputWcTag = 'kol-input' as const;
 export let KolInputTextTag = 'kol-input-text' as const;
 export let KolKolibriTag = 'kol-kolibri' as const;
 export let KolLinkButtonTag = 'kol-link-button' as const;
@@ -95,7 +95,7 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolInputPasswordTag = transformTagName(KolInputPasswordTag as string) as 'kol-input-password';
 	KolInputRadioTag = transformTagName(KolInputRadioTag as string) as 'kol-input-radio';
 	KolInputRangeTag = transformTagName(KolInputRangeTag as string) as 'kol-input-range';
-	KolInputTag = transformTagName(KolInputTag as string) as 'kol-input';
+	KolInputWcTag = transformTagName(KolInputWcTag as string) as 'kol-input';
 	KolInputTextTag = transformTagName(KolInputTextTag as string) as 'kol-input-text';
 	KolKolibriTag = transformTagName(KolKolibriTag as string) as 'kol-kolibri';
 	KolLinkButtonTag = transformTagName(KolLinkButtonTag as string) as 'kol-link-button';

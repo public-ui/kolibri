@@ -7,13 +7,13 @@ import { getTooltipHtml } from './html.mock';
 
 import type { TooltipProps } from '../../../schema';
 import type { SpecPage } from '@stencil/core/testing';
-import { KolTooltip } from '../component';
+import { KolTooltipWc } from '../component';
 
 executeTests<TooltipProps>(
 	'Tooltip',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: [KolTooltip],
+			components: [KolTooltipWc],
 			template: () => <kol-tooltip-wc {...props} />,
 		});
 		return page;

@@ -1,7 +1,7 @@
 import type { InputColorProps, InputColorStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
-import { KolInputTag } from '../../../core/component-names';
+import { KolInputWcTag } from '../../../core/component-names';
 import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
@@ -22,7 +22,7 @@ export const getInputColorHtml = (props: InputColorProps): string => {
 	return `
 	<kol-input-color class="kol-input-color"  ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
 	   <mock:shadow-root>
-	     <${KolInputTag}
+	     <${KolInputWcTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
@@ -60,7 +60,7 @@ export const getInputColorHtml = (props: InputColorProps): string => {
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
 						>
 	       </div>
-	     </${KolInputTag}>
+	     </${KolInputWcTag}>
 	   </mock:shadow-root>
 	</kol-input-color>`;
 };

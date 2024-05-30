@@ -4,7 +4,7 @@ import { showExpertSlot } from '../../../schema';
 import type { TextareaProps, TextareaStates } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 import { nonce } from '../../../utils/dev.utils';
-import { KolInputTag } from '../../../core/component-names';
+import { KolInputWcTag } from '../../../core/component-names';
 
 export const getTextareaHtml = (props: TextareaProps): string => {
 	const state = mixMembers<TextareaProps, TextareaStates>(
@@ -25,7 +25,7 @@ export const getTextareaHtml = (props: TextareaProps): string => {
 	return `
 <kol-textarea  _alert="" ${props._touched ? '_touched=""' : ''} class="${props._value ? 'has-value kol-textarea' : 'kol-textarea'}">
   <mock:shadow-root>
-		<${KolInputTag} _alert=""
+		<${KolInputWcTag} _alert=""
 				_currentlength="${props._value ? `${props._value.length}` : '0'}"
 				${props._disabled ? ' _disabled=""' : ''}
 				_hint="${props._hint ? props._hint : ''}"
@@ -64,7 +64,7 @@ export const getTextareaHtml = (props: TextareaProps): string => {
 				>
 				</textarea>
 			</div>
-		</${KolInputTag}>
+		</${KolInputWcTag}>
   </mock:shadow-root>
 </kol-textarea>`;
 };
