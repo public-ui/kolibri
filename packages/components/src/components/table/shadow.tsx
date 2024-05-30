@@ -6,6 +6,7 @@ import type {
 	Stringified,
 	TableProps,
 	TableSelectionPropType,
+	TableStatefulCallbacksPropType,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
@@ -62,6 +63,10 @@ export class KolTable implements TableProps {
 	 * Defines how rows can be selected and the current selection.
 	 */
 	@Prop() public _selection?: TableSelectionPropType;
+	/**
+	 * Defines the callback functions for table events.
+	 */
+	@Prop() public _on?: TableStatefulCallbacksPropType;
 
 	public render(): JSX.Element {
 		console.log(this._selection);
@@ -77,6 +82,7 @@ export class KolTable implements TableProps {
 				_pagination={this._pagination}
 				_paginationPosition={this._paginationPosition}
 				_selection={this._selection}
+				_on={this._on}
 			/>
 		);
 	}
