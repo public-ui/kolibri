@@ -126,10 +126,9 @@ export const AppComponent: Component = () => {
 		<div class="font-sans grid gap-2">
 			<div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end default">
 				<div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">
-					<KolInputText class="w-full" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search">
-						Theme
-					</KolInputText>
+					<KolInputText class="w-full" _label="Theme" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search" />
 					<KolInputCheckbox
+						_label="Global-Properties / Component-Style"
 						_id="scope switch"
 						_on={{
 							onChange: () => {
@@ -137,10 +136,8 @@ export const AppComponent: Component = () => {
 							},
 						}}
 						_checked={getPropsStyle()}
-						_type="switch"
-					>
-						Global-Properties / Component-Style
-					</KolInputCheckbox>
+						_variant="switch"
+					/>
 				</div>
 				<div class="w-full grid gap-2 md:grid-cols-2 md:col-span-2 justify-items-center items-end">
 					<Switch

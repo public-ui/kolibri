@@ -1,10 +1,9 @@
 import { KoliBriDevHelper } from '@public-ui/components';
 import type { Generic } from 'adopted-style-sheets';
-import { patchThemeTag } from 'adopted-style-sheets';
 import { editor, KeyCode } from 'monaco-editor';
 import { format } from 'prettier';
 import parserCss from 'prettier/esm/parser-postcss.mjs';
-import { storeThemes } from '../../shares/theme';
+import { storeThemeChange } from '../../shares/theme';
 
 /**
  * - https://www.npmjs.com/package/sass
