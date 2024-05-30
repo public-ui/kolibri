@@ -72,7 +72,7 @@
 	"dependencies": {
 		"@floating-ui/dom": "1.6.5",
 		"@public-ui/schema": "workspace:*",
-		"adopted-style-sheets": "1.1.4",
+		"adopted-style-sheets": "1.1.5-rc.1",
 		"i18next": "23.11.5",
 		"markdown-it": "14.1.0"
 	},

@@ -1,3 +1,4 @@
+import { KoliBriDevHelper } from '@public-ui/components';
 import type { Generic } from 'adopted-style-sheets';
 import { patchThemeTag } from 'adopted-style-sheets';
 import { editor, KeyCode } from 'monaco-editor';
@@ -12,13 +13,11 @@ import { storeThemes } from '../../shares/theme';
  */
 export const createCssEditor = (model: editor.ITextModel, ref: HTMLElement, tagName: string, theme: string, setSignal: Function) => {
 	setTimeout(() => {
-		let css = ``;
-		if (window.A11yUi?.Themes?.[theme]?.[tagName] && typeof window.A11yUi.Themes[theme][tagName] === 'string') {
-			css = window.A11yUi.Themes[theme][tagName] as string;
-			try {
-				css = format(css, { parser: 'css', plugins: [parserCss] });
-			} catch (e) {}
-		}
+		let css = KoliBriDevHelper.getCssStyle(theme, tagName as Generic.Theming.Props<string, string>);
+		console.log('css', css);
+		try {
+			css = format(css, { parser: 'css', plugins: [parserCss] });
+		} catch (e) {}
 		model.setValue(css);
 		const vs = editor.create(ref, {
 			theme: 'vs-dark',
@@ -40,8 +39,8 @@ export const createCssEditor = (model: editor.ITextModel, ref: HTMLElement, tagN
 				model.updateOptions({
 					tabSize: 2,
 				});
-				patchThemeTag(theme, tagName as Generic.Theming.Props<string, string>, css);
-				storeThemes();
+				KoliBriDevHelper.patchThemeTag(theme, tagName as Generic.Theming.Props<string, string>, css);
+				storeThemeChange(theme, tagName, css);
 				setSignal(() => false);
 				const timeout = setTimeout(() => {
 					clearTimeout(timeout);
