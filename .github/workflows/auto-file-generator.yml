@@ -15,7 +15,7 @@ jobs:
           persist-credentials: false
           ref: 'develop'
 
-      # - uses: pnpm/action-setup@v3
+      # - uses: pnpm/action-setup@v4
       #   with:
       #     run_install: false
       #     version: 8
@@ -30,11 +30,11 @@ jobs:
         with:
           # cache: pnpm
           node-version: 20
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8
+          version: 9
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache

@@ -70,7 +70,7 @@ export const AppComponent: Component = () => {
 	};
 
 	const onChangeUpload = {
-		onChange: (_event: Event, value: unknown) => {
+		onInput: (_event: Event, value: unknown) => {
 			if (value instanceof FileList && value.item(0) instanceof File) {
 				value
 					.item(0)
@@ -103,7 +103,7 @@ export const AppComponent: Component = () => {
 
 	let timeoutTheme: NodeJS.Timer;
 	const onTheme = {
-		onChange: (_event: Event, value: unknown) => {
+		onInput: (_event: Event, value: unknown) => {
 			clearTimeout(timeoutTheme);
 			timeoutTheme = setTimeout(() => {
 				clearTimeout(timeoutTheme);
@@ -131,7 +131,7 @@ export const AppComponent: Component = () => {
 					<KolInputCheckbox
 						_id="scope switch"
 						_on={{
-							onChange: () => {
+							onInput: () => {
 								setPropsStyle((props) => props === false);
 							},
 						}}
@@ -179,7 +179,7 @@ export const AppComponent: Component = () => {
 							_id="component-select"
 							_options={TAG_NAME_LIST}
 							_on={{
-								onChange: (_event, value) => {
+								onInput: (_event, value) => {
 									setComponent((value as string[])[0]);
 									sessionStorage.setItem('kolibri-component', getComponent());
 								},

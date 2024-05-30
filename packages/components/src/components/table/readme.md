@@ -1,10 +1,8 @@
 # Table
 
-<KolAlert _type="warning" _variant="msg">
-  KolTable ist deprecated, bitte stattdessen
-  <kol-link _label="KolTableStateful" _href="https://github.com/public-ui/kolibri/blob/develop/packages/components/src/components/table-stateless/readme.md">
-  verwenden, die API und Funktionalität sind identisch.
-</KolAlert>
+<kol-alert _type="warning" _variant="card">
+  <kol-badge _color="#fb4509" _label="Deprecated"></kol-badge> KolTable ist veraltet, bitte stattdessen <kol-link _label="KolTableStateful" _href="https://github.com/public-ui/kolibri/blob/develop/packages/components/src/components/table-stateless/readme.md"></kol-link> verwenden, die API und Funktionalität sind identisch.
+</kol-alert>
 
 Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 

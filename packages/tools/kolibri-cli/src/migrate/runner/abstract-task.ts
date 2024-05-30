@@ -5,7 +5,7 @@ import { logAndCreateError } from '../shares/reuse';
 import { TaskStatus } from './types';
 
 export type TaskOptions = {
-	dependentTasks?: AbstractTask[];
+	taskDependencies?: AbstractTask[];
 	description?: string;
 };
 
@@ -21,7 +21,7 @@ export abstract class AbstractTask {
 		protected readonly title: string,
 		protected readonly extensions: FileExtension[],
 		protected readonly versionRange: string,
-		protected readonly dependentTasks: AbstractTask[] = [],
+		protected readonly taskDependencies: AbstractTask[] = [],
 		options: TaskOptions = {},
 	) {
 		this.description = options.description;
@@ -32,8 +32,8 @@ export abstract class AbstractTask {
 		}
 	}
 
-	public getDependentTasks(): AbstractTask[] {
-		return this.dependentTasks;
+	public getTaskDependencies(): AbstractTask[] {
+		return this.taskDependencies;
 	}
 
 	public getDescription(): string | undefined {

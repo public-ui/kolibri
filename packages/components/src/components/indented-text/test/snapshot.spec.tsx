@@ -7,7 +7,7 @@ import { getIndentedTextHtml } from './html.mock';
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { IndentedTextProps } from '../../../schema';
-import { KolIndentedText } from '../component';
+import { KolIndentedText } from '../shadow';
 
 executeTests<IndentedTextProps>(
 	'Heading',
