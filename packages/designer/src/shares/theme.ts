@@ -1,7 +1,5 @@
 import { KoliBriDevHelper } from '@public-ui/components';
 
-export const THEME_LIST = new Set<string>(['bmf', 'default', 'ecl-ec', 'ecl-eu', 'itzbund']);
-
 export const saveData = (content: string, fileName: string) => {
 	const a = document.createElement('a');
 	document.body.appendChild(a);
