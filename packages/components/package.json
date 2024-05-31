@@ -71,7 +71,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.5",
-		"adopted-style-sheets": "1.1.4",
+		"adopted-style-sheets": "1.1.5-rc.1",
 		"clsx": "2.1.1",
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
