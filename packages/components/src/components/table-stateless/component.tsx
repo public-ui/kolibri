@@ -381,6 +381,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		if (this.state._selection) {
 			const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
 			const keyCell = row.find((cell) => cell.key === keyPropertyName);
+
 			if (keyCell) {
 				const keyProperty = (keyCell?.data as KoliBriTableDataType)[keyPropertyName] as string;
 				const selected = this.state._selection?.selectedKeys?.includes(keyProperty);

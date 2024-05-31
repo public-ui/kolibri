@@ -11,15 +11,15 @@ const DATA = [
 type Data = (typeof DATA)[0];
 
 export const TableStatefulWithSelection: FC = () => {
+	const [selectedValue, setSelectedValue] = useState<Data[]>();
+
 	const selection: KoliBriTableSelection = {
 		label: (row: Data) => `Selection for ${row.name}`,
-		selectedKeys: ['1002'],
+		selectedKeys: selectedValue ? selectedValue.map((element) => element.id) : [],
 		keyPropertyName: 'id',
 	};
 
 	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>();
-
-	const [selectedValue, setSelectedValue] = useState<unknown>(undefined);
 
 	const handleSelectionChangeEvent = ({ detail: selection }) => {
 		console.log('Selection change via event', selection);

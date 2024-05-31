@@ -514,12 +514,20 @@ export class KolTableStateful implements TableAPI {
 
 	private getSelectedData(selectedKeys: string[]): KoliBriTableDataType[] {
 		if (this.state._selection) {
-			const keyPropertyName = this.state._selection.keyPropertyName;
+			const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
 			if (keyPropertyName) return this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
 		}
 		return [];
 	}
 	private handleSelectionChange(event: Event, value: string[]): void {
+		if (this.state._selection)
+			this.state = {
+				...this.state,
+				_selection: {
+					...this.state._selection,
+					selectedKeys: value,
+				},
+			};
 		const selectedData = this.getSelectedData(value);
 
 		tryToDispatchKoliBriEvent('selection-change', this.host, selectedData);
@@ -568,7 +576,7 @@ export class KolTableStateful implements TableAPI {
 							this.handleSelectionChange(event, value);
 						},
 					}}
-					_selection={this._selection}
+					_selection={this.state._selection}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
