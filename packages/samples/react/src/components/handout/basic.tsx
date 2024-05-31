@@ -27,7 +27,6 @@ import {
 	KolKolibri,
 	KolLink,
 	KolLinkButton,
-	KolLogo,
 	KolNav,
 	KolProgress,
 	KolSelect,
@@ -883,9 +882,6 @@ export const HandoutBasic: FC = () => (
 							<p>
 								Ich bin ein <KolLink _href="#/back-page" _label="externer Link" _target="w3c"></KolLink> im Fließtext.
 							</p>
-							<KolLink _href="#/back-page" _label="">
-								<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-							</KolLink>
 						</div>
 					</KolAccordion>
 					<KolAccordion _label="ButtonLinks" _level={3}>
@@ -896,9 +892,6 @@ export const HandoutBasic: FC = () => (
 							<p>
 								Ich bin ein <KolButtonLink _label="Link"></KolButtonLink> im Fließtext.
 							</p>
-							<KolButtonLink _label="">
-								<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-							</KolButtonLink>
 							<KolButtonLink
 								_icons={{
 									left: 'codicon codicon-arrow-left',

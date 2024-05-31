@@ -29,7 +29,6 @@ import { KOLIBRI_ROUTES } from '../components/kolibri/routes';
 import { LINK_BUTTON_ROUTES } from '../components/link-button/routes';
 import { LINK_GROUP_ROUTES } from '../components/link-group/routes';
 import { LINK_ROUTES } from '../components/link/routes';
-import { LOGO_ROUTES } from '../components/logo/routes';
 import { MODAL_ROUTES } from '../components/modal/routes';
 import { NAV_ROUTES } from '../components/nav/routes';
 import { PAGINATION_ROUTES } from '../components/pagination/routes';
@@ -83,7 +82,6 @@ export const ROUTES: Routes = {
 	...LINK_BUTTON_ROUTES,
 	...LINK_GROUP_ROUTES,
 	...LINK_ROUTES,
-	...LOGO_ROUTES,
 	...MODAL_ROUTES,
 	...NAV_ROUTES,
 	...PAGINATION_ROUTES,
