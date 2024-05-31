@@ -140,6 +140,16 @@ ROUTES.set('details/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('form/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('form/error-list', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('heading/badge', {
 	axe: {
 		skipFailures: false,
