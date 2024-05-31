@@ -38,7 +38,6 @@ import {
 	KolTable,
 	KolTabs,
 	KolTextarea,
-	KolToast,
 	KolVersion,
 } from '@public-ui/solid';
 import { Component } from 'solid-js';
@@ -48,8 +47,6 @@ import { AlertType } from '@public-ui/components';
 
 // https://css-tricks.com/snippets/javascript/random-hex-color/
 const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
-
-const toaster = ToasterService.getInstance(document);
 
 const STATUS_OPTIONS: SelectOption<string>[] = [
 	{
@@ -1624,54 +1621,26 @@ export const components: Record<string, Component> = {
 			/>
 		</div>
 	),
-	'KOL-TOAST': () => (
-		<div
-			class="grid gap-6"
-			ref={(elm) => {
-				if (elm instanceof HTMLElement) {
-					const toasts = elm.querySelectorAll('kol-toast');
-					toasts.forEach((toast) => toast.setAttribute('_show', 'false'));
-					if (toasts.length > 0) {
-						toasts[0].setAttribute('_show', 'true');
-					}
-				}
-			}}
-		>
-			<KolToast _type="error" _heading="Fehler" _level={3}>
-				Hier wird der Fehler näher beschrieben.
-			</KolToast>
-			<KolToast _type="info" _heading="Hinweis" _level={4}>
-				Hier wird der Hinweis näher beschrieben.
-			</KolToast>
-			<KolToast _type="success" _heading="Erfolg" _level={5}>
-				Hier wird der Erfolg näher beschrieben.
-			</KolToast>
-			<KolToast _type="warning" _heading="Warnung" _level={6}>
-				Hier wird die Warnung näher beschrieben.
-			</KolToast>
-			{/* <KolToast _type="error">Hier wird der Fehler kurz beschrieben.</KolToast>
-      <KolToast _type="info">Hier wird der Hinweis kurz beschrieben.</KolToast>
-      <KolToast _type="success">Hier wird der Erfolg kurz beschrieben.</KolToast>
-      <KolToast _type="warning">Hier wird die Warnung kurz beschrieben.</KolToast> */}
-		</div>
-	),
-	'KOL-TOAST-CONTAINER': () => (
-		<div class="grid gap-1">
-			{['default', 'info', 'success', 'warning', 'error'].map((type) => (
-				<KolButton
-					_label={`Toast zeigen (${type})`}
-					_on={{
-						onClick: () =>
-							void toaster.enqueue({
-								label: `${type.toUpperCase()} Toast`,
-								description: `Dies ist eine Toast-Nachricht vom Typ "${type}".`,
-								type: type as AlertType,
-							}),
-					}}
-				/>
-			))}
-		</div>
-	),
+	'KOL-TOAST-CONTAINER': () => {
+		const toaster = ToasterService.getInstance(document);
+		return (
+			<div class="grid gap-1">
+				{['default', 'info', 'success', 'warning', 'error'].map((type) => (
+					<KolButton
+						_label={`Toast zeigen (${type})`}
+						_on={{
+							onClick: () =>
+								void toaster.enqueue({
+									label: `${type.toUpperCase()} Toast`,
+									description: `Dies ist eine Toast-Nachricht vom Typ "${type}".`,
+									type: type as AlertType,
+								}),
+						}}
+					/>
+				))}
+			</div>
+		);
+	},
 	'KOL-TOOLTIP-WC': () => (
 		<div class="grid justify-items-center gap-8">
 			<div class="grid gap-4 grid-cols-4 justify-items-center">
