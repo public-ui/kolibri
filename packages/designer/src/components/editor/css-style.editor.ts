@@ -13,7 +13,6 @@ import { storeThemeChange } from '../../shares/theme';
 export const createCssEditor = (model: editor.ITextModel, ref: HTMLElement, tagName: string, theme: string, setSignal: Function) => {
 	setTimeout(() => {
 		let css = KoliBriDevHelper.getCssStyle(theme, tagName as Generic.Theming.Props<string, string>);
-		console.log('css', css);
 		try {
 			css = format(css, { parser: 'css', plugins: [parserCss] });
 		} catch (e) {}
