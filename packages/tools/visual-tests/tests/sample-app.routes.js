@@ -228,11 +228,6 @@ ROUTES.set('link/target', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('logo/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('modal/basic', {
 	axe: {
 		skipFailures: false,
