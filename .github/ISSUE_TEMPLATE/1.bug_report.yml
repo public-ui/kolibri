@@ -13,14 +13,16 @@ body:
 
         If you need help with your own project, you can start a discussion in the ["Q&A" section](https://github.com/public-ui/kolibri/discussions/new?category=q-a)
 
-        ```diff
-        # Diese Vorlage ist zur Meldung von KoliBri-Bugs. Dokumentationsbezogene Bugs sollten stattdessen mit dieser [Vorlage](https://github.com/public-ui/kolibri/issues/new/choose) gemeldet werden.
-        # Funktionsanfragen sollten als [Diskussionen](https://github.com/public-ui/kolibri/discussions/new/choose) eröffnet werden.
+        #### Deutsch:
+        Diese Vorlage ist zur Meldung von KoliBri-Bugs. Dokumentationsbezogene Bugs sollten stattdessen mit dieser [Vorlage](https://github.com/public-ui/kolibri/issues/new/choose) gemeldet werden.
+        Funktionsanfragen sollten als [Diskussionen](https://github.com/public-ui/kolibri/discussions/new/choose) eröffnet werden.
 
-        # Bevor Sie ein neues Problem melden, führen Sie bitte eine [Suche](https://github.com/public-ui/kolibri/issues) nach bestehenden Problemen durch und stimmen Sie dem bestehenden Problem mit :+1: zu. Dies führt zu einer schnelleren Lösung.
+        Bevor Sie ein neues Problem melden, führen Sie bitte eine [Suche](https://github.com/public-ui/kolibri/issues) nach bestehenden Problemen durch und stimmen Sie dem bestehenden Problem mit :+1: zu. Dies führt zu einer schnelleren Lösung.
 
-        # Wenn Sie Hilfe bei Ihrem eigenen Projekt benötigen, können Sie eine Diskussion im ["Q&A"-Bereich](https://github.com/public-ui/kolibri/discussions/new?category=q-a) starten.
-        ```
+        Wenn Sie Hilfe bei Ihrem eigenen Projekt benötigen, können Sie eine Diskussion im ["Q&A"-Bereich](https://github.com/public-ui/kolibri/discussions/new?category=q-a) starten.
+
+        Please fill out the form: / Bitte fülle die folgende Form aus:
+        ------------------------------------------------------------------------------------------------------
   - type: checkboxes
     id: verify_release
     attributes:
@@ -35,22 +37,27 @@ body:
       description: |
         A link to a **public** GitHub repository or a StackBlitz minimal reproduction. Minimal reproductions should be created from our actual released versions (e.g. v1, v2, ...) and should include only changes that contribute to the issue. StackBlitz templates can be found under the followjng url's:
 
-        ```diff
-        # Ein Link zu einem **öffentlichen** GitHub-Repository oder einer StackBlitz-Minimalreproduktion. Minimale Reproduktionen sollten aus unseren aktuell veröffentlichten Versionen (z. B. v1, v2, ...) erstellt werden und nur Änderungen enthalten, die zum Problem beitragen. StackBlitz-Vorlagen können unter den folgenden URLs gefunden werden:
-        ````
+        #### Deutsch:
+        Ein Link zu einem **öffentlichen** GitHub-Repository oder einer StackBlitz-Minimalreproduktion. Minimale Reproduktionen sollten aus unseren aktuell veröffentlichten Versionen (z. B. v1, v2, ...) erstellt werden und nur Änderungen enthalten, die zum Problem beitragen. StackBlitz-Vorlagen können unter den folgenden URLs gefunden werden:
 
-        - [Template (v1)](https://stackblitz.com/edit/vitejs-vite-dcg6xo)
-        - [Template (v2)](https://stackblitz.com/edit/vitejs-vite-kkfhk5)
+        - [KoliBri (v1)](https://stackblitz.com/edit/vitejs-vite-dcg6xo)
+        - [KoliBri (v2)](https://stackblitz.com/edit/vitejs-vite-kkfhk5)
       placeholder: 'https://github.com/user/my-minimal-kolibri-issue-reproduction or https://stackblitz.com/edit/XXXXXX'
     validations:
       required: false
   - type: dropdown
     id: affected_themes
     attributes:
-      label: Which theme(s) are affected? (Select all that apply) / Welche(s) Layout(s) ist/sind betroffen? (Wählen Sie alle zutreffenden aus)
+      label: Which theme(s) are affected? / Welche(s) Layout(s) ist/sind betroffen?
+      description: |
+        If you are not sure select "Not sure". If you see the bug in all themes select "All" or select theme by theme were the bug occurs.
+
+        #### Deutsch:
+        Wenn Sie sich nicht sicher sind, wählen Sie "Not sure". Wenn Sie den Fehler in allen Themes sehen, wählen Sie "All" oder wählen Sie ein Theme nach dem anderen, in dem der Fehler auftritt.
       multiple: true
       options:
         - 'Not sure'
+        - 'All'
         - 'Bundesministerium der Finanzen'
         - 'Default'
         - 'European Comission'
@@ -142,9 +149,8 @@ body:
       description: |
         A step-by-step description of how to reproduce the issue. Screenshots can be provided in the issue body below. If using code blocks, make sure that [syntax highlighting is correct](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#syntax-highlighting) and double check that the rendered preview is not broken.
 
-        ```diff
-        # Eine schrittweise Beschreibung, wie das Problem zu reproduzieren ist. Screenshots können im Problemtext unten bereitgestellt werden. Wenn Sie Codeblöcke verwenden, stellen Sie sicher, dass die [Syntaxhervorhebung korrekt ist] (https://docs.github.com/de/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#syntax-highlighting) und überprüfen Sie, ob die gerenderte Vorschau nicht beschädigt ist.
-        ```
+        #### Deutsch:
+        Eine schrittweise Beschreibung, wie das Problem zu reproduzieren ist. Screenshots können im Problemtext unten bereitgestellt werden. Wenn Sie Codeblöcke verwenden, stellen Sie sicher, dass die [Syntaxhervorhebung korrekt ist] (https://docs.github.com/de/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#syntax-highlighting) und überprüfen Sie, ob die gerenderte Vorschau nicht beschädigt ist.
       placeholder: |
         1. Click X
         2. Y will happen
@@ -158,32 +164,42 @@ body:
       description: |
         A clear and concise description of what the bug is, and what you expected to happen.
 
-        ```diff
-        # Eine klare und prägnante Beschreibung des Fehlers und der erwarteten Reaktion.
-        ```
+        #### Deutsch:
+        Eine klare und prägnante Beschreibung des Fehlers und der erwarteten Reaktion.
       placeholder: 'Following the steps from the previous section, I expected A to happen, but I observed B instead'
     validations:
       required: true
   - type: textarea
     id: environment_info
     attributes:
-      label: Provide environment information
-      description: Please run `kolibri info` in the root directory of your project and paste the results. You might need to use `npx --no-install kolibri info` if kolibri is not in the current PATH.
+      label: Provide environment information / Bereitstellung von Betriebsinformationen
+      description: |
+        Please run `kolibri info` in the root directory of your project and paste the results. You might need to use `npx --no-install kolibri info` if kolibri is not in the current PATH.
+
+        #### Deutsch:
+        Bitte führen Sie `kolibri info` im Hauptverzeichnis Ihres Projekts aus und fügen Sie die Ergebnisse ein. Möglicherweise müssen Sie `npx --no-install kolibri info` verwenden, wenn sich kolibri nicht im aktuellen PFAD befindet.
       render: bash
       placeholder: |
-        Operating System:
-          Platform: darwin
-          Arch: arm64
-          Version: Darwin Kernel Version 22.5.0
-        Binaries:
-          Node: 18.17.1
-          npm: 9.5.1
-          Yarn: 1.22.19
-          pnpm: N/A
-        Relevant Packages:
-          kolibri: 2.1.1
-          react: 18.2.0
-          react-dom: 18.2.0
-          typescript: 5.2.2
+        {
+          "Operating System": {
+            "platform": "darwin",
+            "arch": "arm64",
+            "version": "23.2.0"
+          },
+          "Binaries": {
+            "node": "v20.9.0",
+            "npm": "10.1.0",
+            "yarn": "3.2.4",
+            "pnpm": "9.1.3"
+          },
+          "Relevant Packages": {
+            "@public-ui/core": "N/A",
+            "@public-ui/react": "^2.1.1",
+            "@public-ui/...": "N/A",
+            "react": "^18.3.1",
+            "react-dom": "^18.3.1",
+            "typescript": "N/A"
+          }
+        }
     validations:
       required: true

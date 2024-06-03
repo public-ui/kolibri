@@ -1,9 +1,10 @@
 name: KoliBri Documentation Report
 description: Create a report for KoliBri documentation / Einen Bericht für die KoliBri-Dokumentation erstellen
-title: '💡 Docs: '
+title: '📖 Docs: '
 labels: ['doc']
 body:
   - type: textarea
+    id: update
     attributes:
       label: What is the update you wish to see? / Welche Aktualisierung würden Sie gerne sehen?
       description: |
@@ -15,6 +16,7 @@ body:
     validations:
       required: true
   - type: textarea
+    id: context
     attributes:
       label: Is there any context that might help us understand? / Gibt es irgendeinen Zusammenhang, der uns helfen könnte, es besser zu verstehen? 
       description: |
@@ -26,6 +28,7 @@ body:
     validations:
       required: true
   - type: input
+    id: link
     attributes:
       label: Does the docs page already exist? Please link to it. / Gibt es die Doku-Seite bereits? Bitte verlinken Sie sie.
       description: 'Example: https://public-ui.github.io/docs/components/abbr'

@@ -1,3 +1,5 @@
+title: '🚀 Feature: '
+labels: ['feature']
 body:
   - type: textarea
     attributes:
@@ -5,9 +7,7 @@ body:
       description: |
         Short list of what the feature request aims to address?
 
-        ```diff
-        # Kurze Auflistung dessen, worauf die Anfrage abzielt?
-        ```
+        Kurze Auflistung dessen, worauf die Anfrage abzielt?
       value: |
         1.
         2.
@@ -18,11 +18,9 @@ body:
     attributes:
       label: Non-Goals
       description: |
-        Short list of what the feature request _does not_ aim to address?
-
-        ```diff
-        # Kurze Auflistung dessen, was mit der Anfrage _nicht_ bezweckt wird?
-        ```
+        Short list of what the feature request **does not** aim to address?
+        
+        Kurze Auflistung dessen, was mit der Anfrage **nicht** bezweckt wird?
       value: |
         1.
         2.
@@ -34,20 +32,16 @@ body:
       label: Background / Hintergrund
       description: |
         Discuss prior art, why do you think this feature is needed? Are there current alternatives?
-
-        ```diff
-        # Diskutieren Sie den Stand der Technik, warum glauben Sie, dass diese Funktion benötigt wird? Gibt es aktuelle Alternativen?
-        ```
+        
+        Diskutieren Sie den Stand der Technik, warum glauben Sie, dass diese Funktion benötigt wird? Gibt es aktuelle Alternativen?
     validations:
       required: true
   - type: textarea
     attributes:
-      label: Proposal
+      label: Proposal / Vorschlag
       description: |
         How should this feature be implemented? Are you interested in contributing?
 
-        ```diff
-        # Wie sollte diese Funktion implementiert werden? Wären Sie daran interessiert, einen Beitrag zu leisten?
-        ```
+        Wie sollte diese Funktion implementiert werden? Wären Sie daran interessiert, einen Beitrag zu leisten?
     validations:
       required: true
