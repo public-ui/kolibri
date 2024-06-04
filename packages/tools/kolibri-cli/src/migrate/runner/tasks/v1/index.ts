@@ -8,9 +8,9 @@ import { AccordionRenamePropertyHeadingToLabel } from './accordion';
 import { BadgeRemovePropertyHideLabel, BadgeRemovePropertyIconOnly, BadgeRenamePropertyIconOnlyToHideLabel, BadgeRenamePropertyIconToIcons } from './badge';
 import { BreadcrumbRenamePropertyAriaLabelToLabel } from './breadcrumb';
 import {
+	ButtonRefactorPropertyIconAlign,
 	ButtonRemovePropertyAriaCurrent,
 	ButtonRemovePropertyAriaLabel,
-	ButtonRemovePropertyIconAlign,
 	ButtonRenamePropertyIconOnlyToHideLabel,
 	ButtonRenamePropertyIconToIcons,
 } from './button';
@@ -35,12 +35,12 @@ import { InputRadioRenamePropertyListToOptions } from './input-radio';
 import { InputRangeRenamePropertyIconToIcons, InputRangeRenamePropertyListToSuggestions } from './input-range';
 import { InputTextRemovePropertySize, InputTextRenamePropertyIconToIcons, InputTextRenamePropertyListToSuggestions } from './input-text';
 import {
+	LinkRefactorPropertyIconAlign,
 	LinkRemovePropertyAriaControls,
 	LinkRemovePropertyAriaExpanded,
 	LinkRemovePropertyAriaLabel,
 	LinkRemovePropertyAriaSelected,
 	LinkRemovePropertyDisabled,
-	LinkRemovePropertyIconAlign,
 	LinkRemovePropertySelector,
 	LinkRemovePropertyStealth,
 	LinkRemovePropertyUseCase,
@@ -107,8 +107,8 @@ v1Tasks.push(ButtonLinkRenamePropertyIconOnlyToHideLabel);
 v1Tasks.push(ButtonLinkRenamePropertyIconToIcons);
 v1Tasks.push(ButtonRemovePropertyAriaCurrent);
 v1Tasks.push(ButtonRemovePropertyAriaLabel);
-v1Tasks.push(ButtonRemovePropertyIconAlign);
 v1Tasks.push(ButtonRenamePropertyIconOnlyToHideLabel);
+v1Tasks.push(ButtonRefactorPropertyIconAlign);
 v1Tasks.push(ButtonRenamePropertyIconToIcons);
 v1Tasks.push(CardRenamePropertyHeadingToLabel);
 v1Tasks.push(CardRenamePropertyHeadlineToLabel);
@@ -155,7 +155,7 @@ v1Tasks.push(LinkRemovePropertyAriaExpanded);
 v1Tasks.push(LinkRemovePropertyAriaLabel);
 v1Tasks.push(LinkRemovePropertyAriaSelected);
 v1Tasks.push(LinkRemovePropertyDisabled);
-v1Tasks.push(LinkRemovePropertyIconAlign);
+v1Tasks.push(LinkRefactorPropertyIconAlign);
 v1Tasks.push(LinkRemovePropertySelector);
 v1Tasks.push(LinkRemovePropertyStealth);
 v1Tasks.push(LinkRemovePropertyUseCase);
