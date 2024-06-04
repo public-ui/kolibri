@@ -191,7 +191,7 @@ export class KolTooltipWc implements TooltipAPI {
 			} else {
 				this.hideTooltip();
 			}
-		}, 250);
+		}, 300);
 	};
 
 	public componentWillLoad(): void {
