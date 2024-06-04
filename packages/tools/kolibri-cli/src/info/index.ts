@@ -3,6 +3,7 @@ import os from 'os';
 import { execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
+import { PackageJson } from '../types';
 
 // Function to get the binary version
 const getBinaryVersion = (command: string): string => {
@@ -37,7 +38,7 @@ type PackageInfo = { [key: string]: string };
 // Get relevant packages information
 const getRelevantPackagesInfo = (): PackageInfo => {
 	const packageJsonPath = path.join(process.cwd(), 'package.json');
-	const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+	const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8')) as PackageJson;
 
 	const relevantPackages = [
 		'@public-ui/core',
