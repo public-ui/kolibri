@@ -156,9 +156,6 @@
 
 				&:before {
 					background-color: var(--color-midnight);
-					@media (forced-colors: active) {
-						background: selectedItem !important;
-					}
 				}
 			}
 		}
