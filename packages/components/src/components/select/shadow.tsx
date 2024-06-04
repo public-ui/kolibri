@@ -56,7 +56,7 @@ export class KolSelect implements SelectAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
-		return this._value;
+		return this.state._value;
 	}
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
