@@ -40,33 +40,22 @@ const getRelevantPackagesInfo = (): PackageInfo => {
 	const packageJsonPath = path.join(process.cwd(), 'package.json');
 	const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8')) as PackageJson;
 
-	const relevantPackages = [
-		'@public-ui/core',
-		'@public-ui/angular-v17',
-		'@public-ui/angular-v16',
-		'@public-ui/angular-v15',
-		'@public-ui/angular-v14',
-		'@public-ui/angular-v13',
-		'@public-ui/angular-v12',
-		'@public-ui/angular-v11',
-		'@public-ui/react',
-		'@public-ui/preact',
-		'@public-ui/react-standalone',
-		'@public-ui/sample-react',
-		'@public-ui/hydrate',
-		'@public-ui/vue',
-		'@public-ui/components',
-		'@public-ui/themes',
-		'@public-ui/solid',
-		'@public-ui/schema',
-		'react',
-		'react-dom',
-		'typescript',
-	];
+	const packagePattern = /^@public-ui\//;
 	const packagesInfo: PackageInfo = {};
 
-	relevantPackages.forEach((pkg) => {
-		packagesInfo[pkg] = packageJson?.dependencies?.[pkg] || packageJson?.devDependencies?.[pkg] || 'N/A';
+	const allDependencies = { ...packageJson?.dependencies, ...packageJson?.devDependencies };
+
+	Object.keys(allDependencies).forEach((pkg) => {
+		if (packagePattern.test(pkg)) {
+			packagesInfo[pkg] = allDependencies?.[pkg];
+		}
+	});
+
+	// Add specific packages not matching the pattern
+	const additionalPackages = ['react', 'react-dom', 'typescript'];
+
+	additionalPackages.forEach((pkg) => {
+		packagesInfo[pkg] = allDependencies?.[pkg] || 'N/A';
 	});
 
 	return packagesInfo;
@@ -79,7 +68,7 @@ const getRelevantPackagesInfo = (): PackageInfo => {
 export default function (program: Command): void {
 	program
 		.command('info')
-		.description('This command returns informations about your system.')
+		.description('This command returns information about your system.')
 		.action(() => {
 			// Gather all information
 			const systemInfo = {

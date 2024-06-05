@@ -48,7 +48,7 @@ body:
   - type: dropdown
     id: affected_themes
     attributes:
-      label: Which theme(s) are affected? / Welche(s) Layout(s) ist/sind betroffen?
+      label: Which theme(s) are affected? / Welche(s) Theme(s) ist/sind betroffen?
       description: |
         If you are not sure select "Not sure". If you see the bug in all themes select "All" or select theme by theme were the bug occurs.
 
@@ -70,7 +70,7 @@ body:
     id: error_category
     attributes:
       label: Can you categorise where the error occurs? (If known) / Können Sie einordnen, wo der Fehler auftaucht? (Falls bekannt)
-      placeholder: Nativ (shadow), React, Angular, ...
+      placeholder: Nativ (Web Component), React, Angular, ...
     validations:
       required: false
   - type: input
@@ -174,10 +174,10 @@ body:
     attributes:
       label: Provide environment information / Bereitstellung von Betriebsinformationen
       description: |
-        Please run `kolibri info` in the root directory of your project and paste the results. You might need to use `npx --no-install kolibri info` if kolibri is not in the current PATH.
+        Please run `kolibri info` in the root directory of your project and paste the results. You might need to use `npx --no-install kolibri info` if kolibri is not in the current PATH or not installed.
 
         #### Deutsch:
-        Bitte führen Sie `kolibri info` im Hauptverzeichnis Ihres Projekts aus und fügen Sie die Ergebnisse ein. Möglicherweise müssen Sie `npx --no-install kolibri info` verwenden, wenn sich kolibri nicht im aktuellen PFAD befindet.
+        Bitte führen Sie `kolibri info` im Hauptverzeichnis Ihres Projekts aus und fügen Sie die Ergebnisse ein. Möglicherweise müssen Sie `npx @public-ui/kolibri-cli info` verwenden, wenn sich kolibri nicht im aktuellen PFAD befindet bzw. nicht installiert ist.
       render: bash
       placeholder: |
         {

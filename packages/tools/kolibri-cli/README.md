@@ -39,13 +39,13 @@ Options:
   -h, --help                  display help for command
 
 Commands:
-  info						  Shows the system and KoliBri package informations
+  info						  Shows the system and KoliBri package information
   migrate [options] <string>  This command migrates KoliBri code to the current version.
   help [command]              display help for command
 ```
 
 ### Info
-With the `info` command you can show the actual system and KoliBri package informations.
+With the `info` command you can show the current system and KoliBri package information.
 
 This command is mainly needed for our bug issue templates.
 If errors occur in our packages, we would like to ask you to create an issue under the following link:

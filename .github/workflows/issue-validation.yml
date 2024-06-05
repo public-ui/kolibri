@@ -82,7 +82,7 @@ jobs:
           echo "EOF" >> $GITHUB_ENV
         env:
           REPRODUCTION_URL: ${{ steps.issue-parser.outputs.issueparser_link_to_the_code_that_reproduces_this_issue__link_zu_dem_code_der_dieses_problem_reproduziert }}
-          THEMES: ${{ steps.issue-parser.outputs.issueparser_which_themes_are_affected__welches_layouts_istsind_betroffen }}
+          THEMES: ${{ steps.issue-parser.outputs.issueparser_which_themes_are_affected__welches_themes_istsind_betroffen }}
           CATEGORY: ${{ steps.issue-parser.outputs.issueparser_can_you_categorise_where_the_error_occurs_if_known__knnen_sie_einordnen_wo_der_fehler_auftaucht_falls_bekannt }}
           BROWSER: ${{ steps.issue-parser.outputs.issueparser_which_browser_or_operating_system_do_you_used_to_test_kolibri_if_available__welchen_browser_bzw_betriebsystem_haben_sie_verwendet_um_kolibri_zu_testen_falls_vorhanden }}
           COMPONENTS: ${{ steps.issue-parser.outputs.issueparser_which_componentareas_are_affected_select_all_that_apply__welche_komponentenbereiche_sind_betroffen_whlen_sie_alle_zutreffenden_punkte_aus }}

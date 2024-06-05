@@ -14,9 +14,9 @@ body:
     attributes:
       label: Additional information / Zusätzliche Informationen
       description: |
-        Any code snippets, error messages, or dependency details that may be related? (`kolibri info`)
+        Any code snippets, error messages, or dependency details that may be related? (`Please run `npx @public-ui/kolibri-cli info` and paste the result`)
         
-        Irgendwelche Codeschnipsel, Fehlermeldungen oder Abhängigkeitsdetails, die damit zusammenhängen könnten? (`kolibri info`)
+        Irgendwelche Codeschnipsel, Fehlermeldungen oder Abhängigkeitsdetails, die damit zusammenhängen könnten? (`Bitte führe folgenden Befehl aus `npx @public-ui/kolibri-cli info` und kopiere es in das Feld`)
       render: js
     validations:
       required: false
