@@ -70,7 +70,7 @@ body:
     id: error_category
     attributes:
       label: Can you categorise where the error occurs? (If known) / Können Sie einordnen, wo der Fehler auftaucht? (Falls bekannt)
-      placeholder: Nativ (Web Component), React, Angular, ...
+      placeholder: Native (Web Component), React, Angular, ...
     validations:
       required: false
   - type: input
@@ -87,7 +87,6 @@ body:
       multiple: true
       options:
         - 'Not sure'
-        - 'Handout'
         - 'Abbr'
         - 'Accordion'
         - 'Alert'
@@ -115,11 +114,9 @@ body:
         - 'Input-Radio'
         - 'Input-Range'
         - 'Input-Text'
-        - 'Kolibri'
         - 'Link-Button'
         - 'Link-Group'
         - 'Link'
-        - 'Logo'
         - 'Modal'
         - 'Nav'
         - 'Pagination'
@@ -135,11 +132,6 @@ body:
         - 'Toolbar'
         - 'Tree'
         - 'Version'
-        - 'Appointment-Form (Scenario)'
-        - 'Inputs-Get-Value (Scenario)'
-        - 'Custom-Tooltip-Width (Scenario)'
-        - 'Static-Form (Scenario)'
-        - 'Disabled-Interactive-Scenario (Scenario)'
     validations:
       required: true
   - type: textarea

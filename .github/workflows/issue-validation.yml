@@ -44,7 +44,7 @@ jobs:
           reproduction=$(echo $REPRODUCTION || echo "Not defined")
           expacted_behavior=$(echo $EXPACTED_BEHAVIOR || echo "Not defined")
           components=$(echo $COMPONENTS || echo "")
-          components_label=$(echo "${components}" | sed 's/(Scenario)//g' | sed 's/\n/,/g' | sed 's/^,*//;s/,*$//' || echo "")
+          components_label=$(echo "${components}" | sed 's/\n/,/g' | sed 's/^,*//;s/,*$//' || echo "")
           IFS=',' read -r -a components_array <<< "$components_label"
           for component in "${components_array[@]}"; do
             component_no_spaces="${component// /}"
