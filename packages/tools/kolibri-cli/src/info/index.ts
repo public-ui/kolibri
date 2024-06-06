@@ -29,8 +29,8 @@ type Binaries = { node: string; npm: string; yarn: string; pnpm: string };
 const getBinariesInfo = (): Binaries => ({
 	node: getBinaryVersion('node'),
 	npm: getBinaryVersion('npm'),
-	yarn: getBinaryVersion('yarn'),
 	pnpm: getBinaryVersion('pnpm'),
+	yarn: getBinaryVersion('yarn'),
 });
 
 type PackageInfo = { [key: string]: string };
