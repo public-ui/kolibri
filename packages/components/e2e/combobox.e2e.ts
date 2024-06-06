@@ -25,4 +25,4 @@ test.describe('Combobox', () => {
 		expect(await combobox.getByRole('listbox')).toBeVisible();
 		expect(await combobox.getByRole('listbox').locator('li').count()).toBe(193);
 	});
-})π;
+});
