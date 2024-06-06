@@ -51,11 +51,20 @@ textarea::placeholder {
 	color: var(--color-grey-50);
 }
 
-.input:focus-within {
+.kol-input.textarea .input {
+	border: none;
+	padding: 0;
+}
+
+textarea {
+	border: 1px solid var(--color-grey-75);
+	padding: 1px 0.5em;
+}
+
+textarea:focus-within {
 	box-shadow:
 		inset 1px 1px var(--color-blue),
 		inset -1px -1px var(--color-blue);
-	outline: none;
 }
 
 .input:focus-within,
@@ -64,5 +73,11 @@ textarea::placeholder {
 }
 
 .error .input {
-	border-color: var(--color-red);
+	textarea {
+		border-color: var(--color-red);
+	}
+
+	&:focus-within textarea {
+		border-color: var(--color-grey-75);
+	}
 }

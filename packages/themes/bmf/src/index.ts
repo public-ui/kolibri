@@ -731,8 +731,31 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-style: italic;
 		grid-area: hint;
 	}
-	textarea {
+	kol-input.textarea .input {
 		border: none;
+		background-color: none;
+		padding: 0;
+	}
+	.kol-input.textarea .input:focus-within {
+		outline: none;
+	}
+	textarea {
+		background-color: var(--color-white);
+		border-color: var(--color-grey);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: 2px;
+		padding: 0 0.5em;
+	}
+	.kol-input.textarea .input:focus-within textarea {
+		outline-color: var(--color-ocean);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
+	}
+	.kol-input.textarea.error .input:focus-within textarea {
+		outline-color: var(--color-red) !important;
 	}
 	input::placeholder {
 		color: var(--color-grey);

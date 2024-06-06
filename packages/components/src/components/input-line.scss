@@ -27,18 +27,15 @@ textarea:focus {
 
 .kol-input.textarea {
 	.input {
-		max-width: fit-content;
-	}
-
-	.input-slot {
-		position: relative;
-		overflow: hidden;
+		display: block;
 	}
 
 	textarea {
+		position: relative;
 		max-width: 100%;
-		max-height: 100%;
 		overflow: hidden;
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
 	}
 }
 

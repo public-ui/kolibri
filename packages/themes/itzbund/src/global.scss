@@ -70,6 +70,18 @@
 		transition: outline-offset 0.2s linear;
 	}
 
+	.kol-input.textarea .input:focus-within {
+		outline: none !important;
+	}
+
+	.kol-input.textarea .input:focus-within textarea {
+		outline-color: var(--color-petrol);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
+	}
+
 	.kol-span-wc,
 	.kol-span-wc > span {
 		gap: 0.25em;
