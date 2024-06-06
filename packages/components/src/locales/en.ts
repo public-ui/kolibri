@@ -40,4 +40,5 @@ export default {
 	dropdown: 'Dropdown',
 	'nav-label-open': 'Submenu for {{label}} open',
 	'nav-label-close': 'Submenu for {{label}} close',
+	'close-alert': 'Notification {{label}} close',
 };
