@@ -1,0 +1,144 @@
+name: Validate Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-issue:
+    if: contains(join(github.event.issue.labels.*.name, ','), 'bug')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: View the GitHub context
+        run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+
+      - uses: stefanbuck/github-issue-parser@v3
+        id: issue-parser
+
+      - run: cat ${HOME}/issue-parser-result.json       
+
+      - name: Extract issue details
+        id: extract
+        run: |
+          echo "Extracting issue details..."
+
+          echo "Processing as a bug report..."
+
+          reproduction_url=$(echo $REPRODUCTION_URL || echo "Not defined")
+          themes=$(echo $THEMES || echo "")
+          themes_short_forms=$(echo "${THEMES}" | sed 's/Not sure//; s/All/theme: All/; s/Bundesministerium der Finanzen/theme: BMF/; s/Default/theme: Default/; s/European Comission/theme: EC/; s/European Union/theme: EU/; s/Informationstechnikzentrum Bund/theme: ITZ/; s/Unstyled/theme: Unstyled/' | sed 's/^,*//;s/,*$//')
+          IFS=',' read -r -a themes_array <<< "$themes_short_forms"
+          for theme in "${themes_array[@]}"; do
+            theme_no_spaces="${theme// /}"
+            echo "THEME_LABEL_$theme_no_spaces=$theme_no_spaces" >> $GITHUB_ENV
+          done
+
+          error_category=$(echo $CATEGORY || echo "Not defined")
+          browser_info=$(echo $BROWSER || echo "Not defined")
+          reproduction=$(echo $REPRODUCTION || echo "Not defined")
+          expacted_behavior=$(echo $EXPACTED_BEHAVIOR || echo "Not defined")
+          components=$(echo $COMPONENTS || echo "")
+          components_label=$(echo "${components}" | sed 's/\n/,/g' | sed 's/^,*//;s/,*$//' || echo "")
+          IFS=',' read -r -a components_array <<< "$components_label"
+          for component in "${components_array[@]}"; do
+            component_no_spaces="${component// /}"
+            echo "COMPONENT_LABEL_$component_no_spaces=$component_no_spaces" >> $GITHUB_ENV
+          done
+
+          system_info=$(echo $SYSTEM || echo "Not defined")
+          kolibri_version=$(echo "$system_info" | grep -oP '"@public-ui/components": "\K[^"]+' | sed 's/[^0-9.]//g' || echo "N/A")
+          kolibri_major_version=$(echo "$kolibri_version" | cut -d '.' -f 1)
+          kolibri_version_label="v$kolibri_major_version"
+          echo "KOLIBRI_VERSION_LABEL=$kolibri_version_label" >> $GITHUB_ENV
+
+          NEW_ISSUE_BODY=$(cat <<EOF
+          ### Link to the code that reproduces this issue:
+          $reproduction_url
+
+          ### Can you categorise where the error occurs?
+          $error_category
+
+          ### Which browser or operating system do you used to test KoliBri?
+          $browser_info
+
+          ### How to reproduce issue?
+          $reproduction
+
+          ### Current vs. Expected:
+          $expacted_behavior
+
+          ### Environment informations:
+          $system_info
+          EOF
+          )
+          echo "NEW_ISSUE_BODY<<EOF" >> $GITHUB_ENV
+          echo "$NEW_ISSUE_BODY" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+        env:
+          REPRODUCTION_URL: ${{ steps.issue-parser.outputs.issueparser_link_to_the_code_that_reproduces_this_issue__link_zu_dem_code_der_dieses_problem_reproduziert }}
+          THEMES: ${{ steps.issue-parser.outputs.issueparser_which_themes_are_affected__welches_themes_istsind_betroffen }}
+          CATEGORY: ${{ steps.issue-parser.outputs.issueparser_can_you_categorise_where_the_error_occurs_if_known__knnen_sie_einordnen_wo_der_fehler_auftaucht_falls_bekannt }}
+          BROWSER: ${{ steps.issue-parser.outputs.issueparser_which_browser_or_operating_system_do_you_used_to_test_kolibri_if_available__welchen_browser_bzw_betriebsystem_haben_sie_verwendet_um_kolibri_zu_testen_falls_vorhanden }}
+          COMPONENTS: ${{ steps.issue-parser.outputs.issueparser_which_componentareas_are_affected_select_all_that_apply__welche_komponentenbereiche_sind_betroffen_whlen_sie_alle_zutreffenden_punkte_aus }}
+          REPRODUCTION: ${{ steps.issue-parser.outputs.issueparser_to_reproduce__zum_reproduzieren }}
+          EXPACTED_BEHAVIOR: ${{ steps.issue-parser.outputs.issueparser_current_vs_expected_behavior__aktuelles_vs_erwartetes_verhalten }}
+          SYSTEM: ${{ steps.issue-parser.outputs.issueparser_provide_environment_information__bereitstellung_von_betriebsinformationen }}
+
+      - name: Check if user is a team member
+        id: check-team
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          script: |
+            try {
+              
+              const result = await github.rest.teams.getMembershipForUserInOrg({
+                org: context.repo.owner,
+                team_slug: 'specteam',
+                username: context.payload.sender.login
+              });
+
+              if (result.data.state === 'active') {
+                core.setOutput('team_member', 'true');
+              } else {
+                core.setOutput('team_member', 'false');
+              }
+            } catch (error) {
+              core.error(`${error}`);
+              core.setOutput('team_member', 'false');
+            }
+            return
+
+      - name: Update issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labelsToAdd = ['bug'];
+
+            if ('${{ steps.check-team.outputs.team_member }}' === 'true') {
+              labelsToAdd.push('created-by: kolibri-team');
+            }
+
+            if ('${{ env.KOLIBRI_VERSION_LABEL }}') {
+              labelsToAdd.push('${{ env.KOLIBRI_VERSION_LABEL }}');
+            }
+
+            for (const key of Object.keys(process.env)) {
+              if ((key.startsWith('THEME_LABEL_') || key.startsWith('COMPONENT_LABEL_')) && process.env[key]) {
+                labelsToAdd.push(process.env[key]);
+              }
+            }
+            core.info(`Labels to add: ${labelsToAdd.join(', ')}`);
+
+            await github.rest.issues.update({
+              ...context.repo,
+              issue_number: context.issue.number,
+              body: process.env.NEW_ISSUE_BODY,
+              labels: labelsToAdd
+            });

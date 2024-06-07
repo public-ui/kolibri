@@ -1,0 +1,31 @@
+title: '🙏 Help: '
+labels: ['help wanted']
+body:
+  - type: textarea
+    attributes:
+      label: Summary
+      description: |
+        What do you need help with?
+
+        Womit brauchen Sie Hilfe?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional information / Zusätzliche Informationen
+      description: |
+        Any code snippets, error messages, or dependency details that may be related? (`Please run `npx @public-ui/kolibri-cli info` and paste the result`)
+        
+        Irgendwelche Codeschnipsel, Fehlermeldungen oder Abhängigkeitsdetails, die damit zusammenhängen könnten? (`Bitte führe folgenden Befehl aus `npx @public-ui/kolibri-cli info` und kopiere es in das Feld`)
+      render: js
+    validations:
+      required: false
+  - type: input
+    attributes:
+      label: Example / Beispiel
+      description: |
+        A link to a minimal reproduction is helpful for collaborative debugging!
+
+        Ein Link zu einer minimalen Reproduktion ist hilfreich für die gemeinsame Fehlersuche!
+    validations:
+      required: false
