@@ -73,11 +73,19 @@ export class KolTabs implements TabsAPI {
 				break;
 		}
 		if (selectedIndex !== null) {
+			const tab = this.state._tabs[selectedIndex];
+			if (tab._on?.onSelect) {
+				tab._on?.onSelect(event, selectedIndex);
+			}
 			this.onSelect(event, selectedIndex);
 		}
 	};
 
 	private readonly onClickSelect = (event: MouseEvent, index: number): void => {
+		const tab = this.state._tabs[index];
+		if (tab._on?.onSelect) {
+			tab._on?.onSelect(event, index);
+		}
 		this.onSelect(event, index);
 	};
 
