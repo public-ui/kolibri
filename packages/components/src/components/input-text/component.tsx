@@ -463,6 +463,7 @@ export class KolInputText implements API {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+		this.oldValue = value;
 	}
 
 	public componentWillLoad(): void {
