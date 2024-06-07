@@ -13,9 +13,11 @@ import type {
 	PaginationPositionPropType,
 	Stringified,
 	TableAPI,
+	TableStatefulCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCells,
+	TableSelectionPropType,
 	TableStates,
 } from '../../schema';
 import {
@@ -28,15 +30,19 @@ import {
 	validatePaginationPosition,
 	validateTableData,
 	validateTableDataFoot,
+	validateTableSelection,
+	validateTableStatefulCallbacks,
 	watchString,
 	watchValidator,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, Method, Prop, State, Watch, Element } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
 import type { SortEventPayload } from '../../schema';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
+import { Events } from '../../schema/enums';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -57,6 +63,8 @@ type SortData = {
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
+	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+
 	/**
 	 * @deprecated only for backward compatibility
 	 */
@@ -114,6 +122,14 @@ export class KolTableStateful implements TableAPI {
 	 * Controls the position of the pagination.
 	 */
 	@Prop() public _paginationPosition?: PaginationPositionPropType = 'bottom';
+	/**
+	 * Defines how rows can be selected and the current selection.
+	 */
+	@Prop() public _selection?: TableSelectionPropType;
+	/**
+	 * Defines the callback functions for table events.
+	 */
+	@Prop() public _on?: TableStatefulCallbacksPropType;
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
@@ -307,6 +323,15 @@ export class KolTableStateful implements TableAPI {
 		});
 	}
 
+	@Watch('_selection')
+	public validateSelection(value?: TableSelectionPropType): void {
+		validateTableSelection(this, value);
+	}
+	@Watch('_on')
+	public validateOn(value?: TableStatefulCallbacksPropType): void {
+		validateTableStatefulCallbacks(this, value);
+	}
+
 	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
 		onClick: (event: Event, page: number) => {
 			if (typeof this.state._pagination._on?.onClick === 'function') {
@@ -374,6 +399,7 @@ export class KolTableStateful implements TableAPI {
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
 		this.validatePaginationPosition(this._paginationPosition);
+		this.validateSelection(this._selection);
 	}
 
 	private selectDisplayedData(data: KoliBriTableDataType[], pageSize: number, page: number): KoliBriTableDataType[] {
@@ -486,6 +512,40 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
+	private getSelectedData(selectedKeys: string[]): KoliBriTableDataType[] {
+		if (this.state._selection) {
+			const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
+			if (keyPropertyName) return this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
+		}
+		return [];
+	}
+	private handleSelectionChange(event: Event, value: string[]): void {
+		if (this.state._selection)
+			this.state = {
+				...this.state,
+				_selection: {
+					...this.state._selection,
+					selectedKeys: value,
+				},
+			};
+		const selectedData = this.getSelectedData(value);
+
+		tryToDispatchKoliBriEvent('selection-change', this.host, selectedData);
+
+		if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
+			this.state._on[Events.onSelectionChange](event, selectedData);
+		}
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async getSelection(): Promise<KoliBriTableDataType[]> {
+		const selectedKeys: string[] = this.state._selection?.selectedKeys || [];
+		const selectedData = this.getSelectedData(selectedKeys);
+
+		return selectedData;
+	}
+
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
@@ -499,7 +559,6 @@ export class KolTableStateful implements TableAPI {
 			horizontal: this.state._headers.horizontal?.map((row) => row.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))),
 			vertical: this.state._headers.vertical?.map((column) => column.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))),
 		};
-
 		return (
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
@@ -513,7 +572,11 @@ export class KolTableStateful implements TableAPI {
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {
 							this.handleSort(payload);
 						},
+						onSelectionChange: (event: Event, value: string[]) => {
+							this.handleSelectionChange(event, value);
+						},
 					}}
+					_selection={this.state._selection}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
