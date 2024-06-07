@@ -12,7 +12,11 @@
 		display: inline-flex;
 		place-items: center;
 		text-align: left;
-		text-decoration-line: underline;
+		text-decoration-line: none;
+
+		.kol-span-wc {
+			text-decoration-line: underline;
+		}
 	}
 
 	a:is(:focus, :hover):not([aria-disabled]),
