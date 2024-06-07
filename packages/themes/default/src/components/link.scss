@@ -3,7 +3,11 @@
 		color: var(--color-primary);
 		font-style: normal;
 		font-weight: 400;
-		text-decoration-line: underline;
+		text-decoration-line: none;
+
+		.kol-span-wc {
+			text-decoration-line: underline;
+		}
 	}
 
 	:is(a, button):focus {
