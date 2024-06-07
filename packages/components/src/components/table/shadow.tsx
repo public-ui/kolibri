@@ -69,8 +69,6 @@ export class KolTable implements TableProps {
 	@Prop() public _on?: TableStatefulCallbacksPropType;
 
 	public render(): JSX.Element {
-		console.log(this._selection);
-
 		return (
 			<KolTableStatefulTag
 				_allowMultiSort={this._allowMultiSort}
