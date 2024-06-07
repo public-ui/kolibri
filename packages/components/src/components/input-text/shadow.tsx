@@ -461,6 +461,7 @@ export class KolInputText implements InputTextAPI {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+		this.oldValue = value;
 	}
 
 	public componentWillLoad(): void {
