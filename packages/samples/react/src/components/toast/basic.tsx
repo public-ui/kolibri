@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { ToasterService } from '@public-ui/components';
 import { KolButton } from '@public-ui/react';
@@ -10,22 +10,6 @@ import type { FC } from 'react';
 
 export const ToastBasic: FC = () => {
 	const toaster = ToasterService.getInstance(document);
-
-	useEffect(() => {
-		async function createNotification() {
-			await toaster.enqueue({
-				label: 'Fehler',
-				type: 'error',
-				description: `Eine Fehlermeldung ${new Date().getTime()}`,
-			});
-		}
-		void createNotification();
-
-		return () => {
-			toaster.closeAll();
-		};
-	}, []);
-
 	const handleButtonClickSimple = () => {
 		void toaster.enqueue({
 			description: 'Toasty',
