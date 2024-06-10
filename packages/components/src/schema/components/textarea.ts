@@ -18,6 +18,9 @@ import type {
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHorizontalIcons } from '../types';
 
+/**
+ * TODO: In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `none` (default) and `vertical`.
+ */
 export const cssResizeOptions = ['both', 'horizontal', 'vertical', 'none'] as const;
 export type CSSResize = (typeof cssResizeOptions)[number];
 
