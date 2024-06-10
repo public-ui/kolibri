@@ -239,7 +239,7 @@ export class KolTextarea implements TextareaAPI {
 
 	/**
 	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
-	 * In version 3 (v3), horizontal resizing will be removed. The relevant property will be changed to a Boolean, allowing only vertical resizing.
+	 * In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `vertical` (default) and `none`.
 	 */
 	@Prop() public _resize?: CSSResize = 'vertical';
 
