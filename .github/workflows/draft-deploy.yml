@@ -48,7 +48,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
-          args: deploy --filter=@public-ui/sample-react
+          args: deploy --filter=@public-ui/sample-react -d dist
 
       - name: Find comment
         uses: peter-evans/find-comment@v3
