@@ -19,7 +19,6 @@ npx license-report --output=html --package=packages/samples/angular/package.json
 npx license-report --output=html --package=packages/samples/react/package.json >> license-reports/sample-react.html
 npx license-report --output=html --package=packages/samples/ssr/package.json >> license-reports/sample-ssr.html
 npx license-report --output=html --package=packages/samples/vite/package.json >> license-reports/sample-vite.html
-npx license-report --output=html --package=packages/storybook/package.json >> license-reports/storybook.html
 npx license-report --output=html --package=packages/schema/package.json >> license-reports/schema.html
 npx license-report --output=html --package=packages/themes/package.json >> license-reports/themes.html
 npx license-report --output=html --package=packages/theme-default/package.json >> license-reports/theme-default.html
