@@ -25,6 +25,17 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 		},
 		props,
 	);
+	function getUserLanguage(): string {
+		const userLanguage = navigator.language || 'de-DE';
+		const normalizedLanguage = userLanguage.includes('-') ? userLanguage : `${userLanguage}-${userLanguage.toUpperCase()}`;
+		return normalizedLanguage;
+	}
+	const userLanguage = getUserLanguage();
+	const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
+		style: 'decimal',
+		minimumFractionDigits: 0,
+		maximumFractionDigits: 0,
+	});
 
 	function getUnselectedPageButton(page: number): JSX.Element {
 		return `<li >
@@ -34,7 +45,7 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 					_label=""
 				>
 					<span slot="expert">
-						<span class="visually-hidden">${translate('kol-page')}</span> ${page}
+						<span class="visually-hidden">${translate('kol-page')}</span> ${NUMBER_FORMATTER.format(page)}
 					</span>
 				</kol-button-wc>
 			</li>`;
@@ -44,7 +55,7 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 		return `<li >
 				<kol-button-wc class="selected" ${state._customClass ? `_customClass="${state._customClass}" ` : ''} _disabled="" _label="">
 					<span slot="expert">
-						<span class="visually-hidden">${translate('kol-page')}</span> ${page}
+						<span class="visually-hidden">${translate('kol-page')}</span> ${NUMBER_FORMATTER.format(page)}
 					</span>
 				</kol-button-wc>
 			</li>`;
