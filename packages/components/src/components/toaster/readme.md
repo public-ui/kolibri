@@ -72,7 +72,13 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 ## Methods
 
-### `closeAll() => Promise<void>`
+### `closeAll(immediate?: boolean) => Promise<void>`
+
+#### Parameters
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| `immediate` | `boolean` |             |
 
 #### Returns
 
@@ -84,7 +90,7 @@ Type: `Promise<void>`
 
 | Name    | Type                                                                                                                                                                                                            | Description |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; alertVariant?: "card" \| "msg" \| undefined; }` |             |
+| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "error" \| "warning" \| "info" \| "success" \| "default"; alertVariant?: "card" \| "msg" \| undefined; }` |             |
 
 #### Returns
 
