@@ -5,16 +5,18 @@ import type {
 	HideErrorPropType,
 	IdPropType,
 	InputTypeOnDefault,
+	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
+	Stringified,
 	RowsPropType,
 	SyncValueBySelectorPropType,
 	TextareaAPI,
 	TextareaStates,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus, setState, showExpertSlot } from '../../schema';
+import { propagateFocus, setState, showExpertSlot, devWarning } from '../../schema';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -78,6 +80,7 @@ export class KolTextarea implements TextareaAPI {
 					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
+					_icons={this.state._icons}
 					_id={this.state._id}
 					_label={this.state._label}
 					_maxLength={this.state._maxLength}
@@ -187,6 +190,11 @@ export class KolTextarea implements TextareaAPI {
 	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
+
+	/**
+	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: KoliBriHorizontalIcons;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -331,6 +339,11 @@ export class KolTextarea implements TextareaAPI {
 		this.controller.validateHint(value);
 	}
 
+	@Watch('_icons')
+	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+		this.controller.validateIcons(value);
+	}
+
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
@@ -373,6 +386,9 @@ export class KolTextarea implements TextareaAPI {
 
 	@Watch('_resize')
 	public validateResize(value?: CSSResize): void {
+		if (value === 'both' || value === 'horizontal') {
+			devWarning('Die Option wird in v3 nur noch vertical skalieren (none | vertical)');
+		}
 		this.controller.validateResize(value);
 	}
 

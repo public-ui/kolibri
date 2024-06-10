@@ -16,7 +16,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault } from '../types';
+import type { InputTypeOnDefault, KoliBriHorizontalIcons } from '../types';
 
 export const cssResizeOptions = ['both', 'horizontal', 'vertical', 'none'] as const;
 export type CSSResize = (typeof cssResizeOptions)[number];
@@ -30,6 +30,7 @@ type OptionalProps = {
 	 */
 	error: string;
 	hint: string;
+	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	placeholder: string;
@@ -63,6 +64,7 @@ type OptionalStates = {
 	alert: boolean;
 	error: string;
 	hint: string;
+	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	placeholder: string;
