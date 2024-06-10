@@ -25,7 +25,13 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 		},
 		props,
 	);
-	const NUMBER_FORMATTER = new Intl.NumberFormat('de-DE', {
+	function getUserLanguage(): string {
+		const userLanguage = navigator.language || 'de-DE';
+		const normalizedLanguage = userLanguage.includes('-') ? userLanguage : `${userLanguage}-${userLanguage.toUpperCase()}`;
+		return normalizedLanguage;
+	}
+	const userLanguage = getUserLanguage();
+	const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 		style: 'decimal',
 		minimumFractionDigits: 0,
 		maximumFractionDigits: 0,
