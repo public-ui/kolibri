@@ -15,9 +15,13 @@ export type KoliBriTabsCallbacks = {
 	[Events.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
 
+export type KoliBriTabButtonCallbacks = {
+	[Events.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
+};
 type RequiredTabButtonProps = PropLabel;
 type OptionalTabButtonProps = {
 	icons: Stringified<KoliBriIconsProp>;
+	on: KoliBriTabButtonCallbacks;
 } & PropDisabled &
 	PropHideLabel &
 	PropTooltipAlign;
