@@ -548,8 +548,8 @@ importers:
         specifier: workspace:*
         version: link:../schema
       adopted-style-sheets:
-        specifier: 1.1.4
-        version: 1.1.4
+        specifier: 1.1.5-rc.1
+        version: 1.1.5-rc.1
       i18next:
         specifier: 23.11.5
         version: 23.11.5
@@ -794,8 +794,8 @@ importers:
         specifier: workspace:*
         version: link:../themes
       adopted-style-sheets:
-        specifier: 1.1.4
-        version: 1.1.4
+        specifier: 1.1.5-rc.1
+        version: 1.1.5-rc.1
       monaco-editor:
         specifier: 0.49.0
         version: 0.49.0
@@ -4717,6 +4717,9 @@ packages:
 
   adopted-style-sheets@1.1.4:
     resolution: {integrity: sha512-e3YepSR6N/fRHCBM++pIsfFDdvWSbuoRVmYWXiQMuyK9d+6vsrsS7Frt7KOnSy2aHnipGbast0oKaY6arxkcrw==}
+
+  adopted-style-sheets@1.1.5-rc.1:
+    resolution: {integrity: sha512-IonhDyX0bmIG/xSS6KeX5PXgYBT7F4F4gg+LHacdYmcBnXH3c1fPadGWL8HcfiqcFJMEfMancS93rDnV6qbtXA==}
 
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -12419,11 +12422,6 @@ packages:
     resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
     engines: {node: '>= 14'}
 
-  yaml@2.4.2:
-    resolution: {integrity: sha512-B3VqDZ+JAg1nZpaEmWtTXUlBneoGx6CPM9b0TENK6aoSu5t73dItudwdgmi6tHlIZZId4dZ9skcAQ2UbcyAeVA==}
-    engines: {node: '>= 14'}
-    hasBin: true
-
   yargs-parser@18.1.3:
     resolution: {integrity: sha512-o50j0JeToy/4K6OZcaQmW6lyXXKhq7csREXcDwk2omFPJEwUNOVtJKvmDr9EI1fAJZUyZcRF7kxGBWmRXudrCQ==}
     engines: {node: '>=6'}
@@ -16685,6 +16683,10 @@ snapshots:
   address@1.2.2: {}
 
   adopted-style-sheets@1.1.4:
+    dependencies:
+      loglevel: 1.9.1
+
+  adopted-style-sheets@1.1.5-rc.1:
     dependencies:
       loglevel: 1.9.1
 
@@ -26072,8 +26074,6 @@ snapshots:
   yaml@1.10.2: {}
 
   yaml@2.3.4: {}
-
-  yaml@2.4.2: {}
 
   yargs-parser@18.1.3:
     dependencies:

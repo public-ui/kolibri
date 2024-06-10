@@ -1,14 +1,14 @@
 import { Component, createEffect, createSignal, Match, Switch } from 'solid-js';
 
-import { KolInputText, KolSelect, KolButton, KolHeading, KolAlert, KolLink, KolInputFile, KolInputCheckbox } from '@public-ui/solid';
-import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper, SelectOption } from '@public-ui/components';
-import { createTsEditor } from '../editor/ts-editor';
-import AllComp from '../../assets/components-overview.svg';
+import { KolAlert, KolButton, KolHeading, KolInputCheckbox, KolInputText, KolLink, KolSelect } from '@public-ui/solid';
 import { format } from 'prettier';
 import parserBabel from 'prettier/esm/parser-babel.mjs';
+import AllComp from '../../assets/components-overview.svg';
+import { restoreThemes, saveData } from '../../shares/theme';
+import { EditorComponent } from '../editor/component.solid';
+import { createTsEditor } from '../editor/ts-editor';
 import { TAG_NAMES } from '../tags';
-import { restoreThemes, saveData, storeThemes } from '../../shares/theme';
 
 type Page = 'editor' | 'result' | 'overview';
 
@@ -77,7 +77,6 @@ export const AppComponent: Component = () => {
 					?.text()
 					.then((content: string) => {
 						KoliBriDevHelper.patchTheme(getTheme(), JSON.parse(content) as Record<string, string>);
-						storeThemes();
 						window.location.reload();
 					})
 					.catch(console.warn);
@@ -127,10 +126,9 @@ export const AppComponent: Component = () => {
 		<div class="font-sans grid gap-2">
 			<div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end default">
 				<div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">
-					<KolInputText class="w-full" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search">
-						Theme
-					</KolInputText>
+					<KolInputText class="w-full" _label="Theme" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search" />
 					<KolInputCheckbox
+						_label="Global-Properties / Component-Style"
 						_id="scope switch"
 						_on={{
 							onChange: () => {
@@ -138,10 +136,8 @@ export const AppComponent: Component = () => {
 							},
 						}}
 						_checked={getPropsStyle()}
-						_type="switch"
-					>
-						Global-Properties / Component-Style
-					</KolInputCheckbox>
+						_variant="switch"
+					/>
 				</div>
 				<div class="w-full grid gap-2 md:grid-cols-2 md:col-span-2 justify-items-center items-end">
 					<Switch
@@ -164,7 +160,7 @@ export const AppComponent: Component = () => {
 					<div class="flex gap-2 items-end">
 						<KolButton
 							_label="Zurück"
-							_icon="codicon codicon-arrow-left"
+							_icons="codicon codicon-arrow-left"
 							_hideLabel
 							_on={{
 								onClick: (event: MouseEvent) => {
@@ -179,8 +175,10 @@ export const AppComponent: Component = () => {
 							_tooltipAlign="bottom"
 						></KolButton>
 						<KolSelect
+							_label="Komponente"
+							_hideLabel
 							_id="component-select"
-							_list={TAG_NAME_LIST}
+							_options={TAG_NAME_LIST}
 							_on={{
 								onChange: (_event, value) => {
 									setComponent((value as string[])[0]);
@@ -195,7 +193,7 @@ export const AppComponent: Component = () => {
 						</KolSelect>
 						<KolButton
 							_label="Weiter"
-							_icon="codicon codicon-arrow-right"
+							_icons="codicon codicon-arrow-right"
 							_hideLabel
 							_on={{
 								onClick: (event: MouseEvent) => {
@@ -222,15 +220,15 @@ export const AppComponent: Component = () => {
 								um die Änderungen zu übernehmen und zu speichern.
 							</div>
 							<div class="flex gap-2 flex-wrap">
-								<KolButton class="w-full sm:w-auto" _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton>
-								<KolButton class="w-full sm:w-auto" _label="Theme herunterladen" _on={onClickDownload}></KolButton>
+								{/* <KolButton class="w-full sm:w-auto" _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton> */}
+								{/* <KolButton class="w-full sm:w-auto" _label="Theme herunterladen" _on={onClickDownload}></KolButton> */}
 								<KolButton class="w-full sm:w-auto" _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
 							</div>
-							<div class="flex gap-2">
+							{/* <div class="flex gap-2">
 								<KolInputFile _id="theme-upload-input" _on={onChangeUpload}>
 									Theme laden
 								</KolInputFile>
-							</div>
+							</div> */}
 						</div>
 					</>
 				}

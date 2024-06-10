@@ -35,7 +35,7 @@
 		"@public-ui/components": "workspace:*",
 		"@public-ui/solid": "workspace:*",
 		"@public-ui/themes": "workspace:*",
-		"adopted-style-sheets": "1.1.4",
+		"adopted-style-sheets": "1.1.5-rc.1",
 		"monaco-editor": "0.49.0",
 		"monaco-editor-webpack-plugin": "7.1.0",
 		"prettier": "2.8.8",
