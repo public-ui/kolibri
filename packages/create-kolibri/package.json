@@ -74,12 +74,12 @@
 	"devDependencies": {
 		"@types/gradient-string": "1.1.6",
 		"@types/node": "ts5.4",
-		"@typescript-eslint/eslint-plugin": "7.11.0",
-		"@typescript-eslint/parser": "7.11.0",
+		"@typescript-eslint/eslint-plugin": "7.13.0",
+		"@typescript-eslint/parser": "7.13.0",
 		"eslint": "8.57.0",
-		"knip": "5.17.3",
-		"prettier": "3.2.5",
-		"tsup": "8.0.2",
+		"knip": "5.18.2",
+		"prettier": "3.3.1",
+		"tsup": "8.1.0",
 		"typescript": "5.4.5"
 	},
 	"files": [

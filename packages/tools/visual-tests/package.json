@@ -34,13 +34,13 @@
 		"serve": "14.2.3"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.24.6",
-		"@babel/plugin-syntax-import-attributes": "7.24.6",
-		"@babel/preset-env": "7.24.6",
+		"@babel/eslint-parser": "7.24.7",
+		"@babel/plugin-syntax-import-attributes": "7.24.7",
+		"@babel/preset-env": "7.24.7",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "5.17.3",
-		"prettier": "3.2.5"
+		"knip": "5.18.2",
+		"prettier": "3.3.1"
 	},
 	"files": [
 		"playwright.config.js",
