@@ -79,21 +79,28 @@ export class KolToastContainer implements ToasterAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async closeAll() {
-		this.state = {
-			...this.state,
-			_toastStates: this.state._toastStates.map((localToastState) => ({
-				...localToastState,
-				status: 'removing',
-			})),
-		};
-
-		setTimeout(() => {
+	public async closeAll(immediate: boolean = false) {
+		if (immediate) {
 			this.state = {
 				...this.state,
 				_toastStates: [],
 			};
-		}, TRANSITION_TIMEOUT);
+		} else {
+			this.state = {
+				...this.state,
+				_toastStates: this.state._toastStates.map((localToastState) => ({
+					...localToastState,
+					status: 'removing',
+				})),
+			};
+
+			setTimeout(() => {
+				this.state = {
+					...this.state,
+					_toastStates: [],
+				};
+			}, TRANSITION_TIMEOUT);
+		}
 	}
 
 	private handleToastRef(toastState: ToastState, element?: HTMLDivElement) {
