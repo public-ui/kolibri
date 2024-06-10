@@ -6,7 +6,7 @@ on:
 
 jobs:
   process-issue:
-    if: contains(join(github.event.issue.labels.*.name, ','), 'bug')
+    if: contains(join(github.event.issue.labels.*.name, ','), 'bug') || contains(join(github.event.issue.labels.*.name, ','), 'doc')
     runs-on: ubuntu-latest
 
     steps:
@@ -18,12 +18,19 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
 
+      - name: Set labels in a global environment variable
+        id: set_labels
+        run: echo "LABELS=${{ join(github.event.issue.labels.*.name, ',') }}" >> $GITHUB_ENV
+
       - uses: stefanbuck/github-issue-parser@v3
+        if: contains(env.LABELS, 'bug')
         id: issue-parser
 
-      - run: cat ${HOME}/issue-parser-result.json       
+      - run: cat ${HOME}/issue-parser-result.json
+        if: contains(env.LABELS, 'bug')
 
       - name: Extract issue details
+        if: contains(env.LABELS, 'bug')
         id: extract
         run: |
           echo "Extracting issue details..."
@@ -81,14 +88,14 @@ jobs:
           echo "$NEW_ISSUE_BODY" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
         env:
-          REPRODUCTION_URL: ${{ steps.issue-parser.outputs.issueparser_link_to_the_code_that_reproduces_this_issue__link_zu_dem_code_der_dieses_problem_reproduziert }}
-          THEMES: ${{ steps.issue-parser.outputs.issueparser_which_themes_are_affected__welches_themes_istsind_betroffen }}
-          CATEGORY: ${{ steps.issue-parser.outputs.issueparser_can_you_categorise_where_the_error_occurs_if_known__knnen_sie_einordnen_wo_der_fehler_auftaucht_falls_bekannt }}
-          BROWSER: ${{ steps.issue-parser.outputs.issueparser_which_browser_or_operating_system_do_you_used_to_test_kolibri_if_available__welchen_browser_bzw_betriebsystem_haben_sie_verwendet_um_kolibri_zu_testen_falls_vorhanden }}
-          COMPONENTS: ${{ steps.issue-parser.outputs.issueparser_which_componentareas_are_affected_select_all_that_apply__welche_komponentenbereiche_sind_betroffen_whlen_sie_alle_zutreffenden_punkte_aus }}
-          REPRODUCTION: ${{ steps.issue-parser.outputs.issueparser_to_reproduce__zum_reproduzieren }}
-          EXPACTED_BEHAVIOR: ${{ steps.issue-parser.outputs.issueparser_current_vs_expected_behavior__aktuelles_vs_erwartetes_verhalten }}
-          SYSTEM: ${{ steps.issue-parser.outputs.issueparser_provide_environment_information__bereitstellung_von_betriebsinformationen }}
+          REPRODUCTION_URL: ${{ steps.issue-parser.outputs.issueparser_link_to_the_code_that_reproduces_this_issue }}
+          THEMES: ${{ steps.issue-parser.outputs.issueparser_which_themes_are_affected }}
+          CATEGORY: ${{ steps.issue-parser.outputs.issueparser_can_you_categorise_where_the_error_occurs_if_known }}
+          BROWSER: ${{ steps.issue-parser.outputs.issueparser_which_browser_or_operating_system_do_you_used_to_test_kolibri_if_available }}
+          COMPONENTS: ${{ steps.issue-parser.outputs.issueparser_which_componentareas_are_affected_select_all_that_apply }}
+          REPRODUCTION: ${{ steps.issue-parser.outputs.issueparser_to_reproduce }}
+          EXPACTED_BEHAVIOR: ${{ steps.issue-parser.outputs.issueparser_current_vs_expected_behavior }}
+          SYSTEM: ${{ steps.issue-parser.outputs.issueparser_provide_environment_information }}
 
       - name: Check if user is a team member
         id: check-team
@@ -119,26 +126,33 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const labelsToAdd = ['bug'];
-
+            const labelsToAdd = ['${{ env.LABELS }}'];
+            const isBug = labelsToAdd.includes('bug');
             if ('${{ steps.check-team.outputs.team_member }}' === 'true') {
               labelsToAdd.push('created-by: kolibri-team');
             }
 
-            if ('${{ env.KOLIBRI_VERSION_LABEL }}') {
-              labelsToAdd.push('${{ env.KOLIBRI_VERSION_LABEL }}');
-            }
-
-            for (const key of Object.keys(process.env)) {
-              if ((key.startsWith('THEME_LABEL_') || key.startsWith('COMPONENT_LABEL_')) && process.env[key]) {
-                labelsToAdd.push(process.env[key]);
+            if (isBug == true) {
+              if ('${{ env.KOLIBRI_VERSION_LABEL }}') {
+                labelsToAdd.push('${{ env.KOLIBRI_VERSION_LABEL }}');
               }
-            }
-            core.info(`Labels to add: ${labelsToAdd.join(', ')}`);
 
-            await github.rest.issues.update({
-              ...context.repo,
-              issue_number: context.issue.number,
-              body: process.env.NEW_ISSUE_BODY,
-              labels: labelsToAdd
-            });
+              for (const key of Object.keys(process.env)) {
+                if ((key.startsWith('THEME_LABEL_') || key.startsWith('COMPONENT_LABEL_')) && process.env[key]) {
+                  labelsToAdd.push(process.env[key]);
+                }
+              }
+              core.info(`Labels to add: ${labelsToAdd.join(', ')}`);
+              await github.rest.issues.update({
+                ...context.repo,
+                issue_number: context.issue.number,
+                body: process.env.NEW_ISSUE_BODY,
+                labels: labelsToAdd
+              });
+            } else {
+             await github.rest.issues.update({
+                ...context.repo,
+                issue_number: context.issue.number,
+                labels: labelsToAdd
+              });
+            }
