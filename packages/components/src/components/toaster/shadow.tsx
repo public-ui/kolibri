@@ -43,7 +43,7 @@ export class KolToastContainer implements ToasterAPI {
 			this.state = {
 				...this.state,
 				_toastStates: this.state._toastStates.map((localToastState) =>
-					localToastState.id === newToastState.id
+					localToastState.id === newToastState.id && localToastState.status !== 'removing'
 						? {
 								...localToastState,
 								status: 'settled',
@@ -79,21 +79,30 @@ export class KolToastContainer implements ToasterAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async closeAll() {
-		this.state = {
-			...this.state,
-			_toastStates: this.state._toastStates.map((localToastState) => ({
-				...localToastState,
-				status: 'removing',
-			})),
-		};
-
-		setTimeout(() => {
+	public async closeAll(immediate: boolean = false) {
+		if (immediate) {
 			this.state = {
 				...this.state,
 				_toastStates: [],
 			};
-		}, TRANSITION_TIMEOUT);
+		} else {
+			const toastsToClose = [...this.state._toastStates]; // Create a snapshot of the open toasts at the time closeAll has been called
+
+			this.state = {
+				...this.state,
+				_toastStates: toastsToClose.map((localToastState) => ({
+					...localToastState,
+					status: 'removing',
+				})),
+			};
+
+			setTimeout(() => {
+				this.state = {
+					...this.state,
+					_toastStates: this.state._toastStates.filter((toastState) => toastsToClose.every((toastToClose) => toastToClose.id !== toastState.id)),
+				};
+			}, TRANSITION_TIMEOUT);
+		}
 	}
 
 	private handleToastRef(toastState: ToastState, element?: HTMLDivElement) {

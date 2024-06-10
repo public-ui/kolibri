@@ -55,9 +55,9 @@ export class ToasterService {
 		}
 	}
 
-	public closeAll(): void {
+	public closeAll(immediate: boolean = false): void {
 		if (this.toastContainerElement && typeof this.toastContainerElement.closeAll === 'function') {
-			void this.toastContainerElement.closeAll();
+			void this.toastContainerElement.closeAll(immediate);
 		}
 	}
 }
