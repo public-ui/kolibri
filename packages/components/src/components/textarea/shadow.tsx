@@ -388,7 +388,9 @@ export class KolTextarea implements TextareaAPI {
 	@Watch('_resize')
 	public validateResize(value?: CSSResize): void {
 		if (value === 'both' || value === 'horizontal') {
-			devWarning('In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `none` (default) and `vertical`.');
+			devWarning(
+				'In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `none` (default) and `vertical`.',
+			);
 		}
 		this.controller.validateResize(value);
 	}
