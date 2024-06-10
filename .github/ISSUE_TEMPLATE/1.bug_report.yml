@@ -1,5 +1,5 @@
-name: KoliBri Bug
-description: All relevant bugs, e.g. faulty components or examples / Alle relevanten bugs, z.B. fehlerhafte Komponenten oder Beispiele
+name: Report a bug
+description: All relevant bugs, e.g. faulty components or examples
 title: '🐞 Bug: '
 labels: ['bug']
 body:
@@ -7,38 +7,27 @@ body:
     attributes:
       value: |
         This template is to report KoliBri bugs. Documentation related bug should be reported using [this](https://github.com/public-ui/kolibri/issues/new/choose) issue template instead.
-        Feature requests should be opened as [discussions](https://github.com/public-ui/kolibri/discussions/new/choose).
+        Feature requests should be opened as [discussions](https://github.com/public-ui/kolibri/discussions/new?category=ideas).
 
         Before opening a new issue, please do a [search](https://github.com/public-ui/kolibri/issues) of existing issues and :+1: upvote the existing issue instead. This will result in a quicker resolution.
 
         If you need help with your own project, you can start a discussion in the ["Q&A" section](https://github.com/public-ui/kolibri/discussions/new?category=q-a)
 
-        #### Deutsch:
-        Diese Vorlage ist zur Meldung von KoliBri-Bugs. Dokumentationsbezogene Bugs sollten stattdessen mit dieser [Vorlage](https://github.com/public-ui/kolibri/issues/new/choose) gemeldet werden.
-        Funktionsanfragen sollten als [Diskussionen](https://github.com/public-ui/kolibri/discussions/new/choose) eröffnet werden.
-
-        Bevor Sie ein neues Problem melden, führen Sie bitte eine [Suche](https://github.com/public-ui/kolibri/issues) nach bestehenden Problemen durch und stimmen Sie dem bestehenden Problem mit :+1: zu. Dies führt zu einer schnelleren Lösung.
-
-        Wenn Sie Hilfe bei Ihrem eigenen Projekt benötigen, können Sie eine Diskussion im ["Q&A"-Bereich](https://github.com/public-ui/kolibri/discussions/new?category=q-a) starten.
-
-        Please fill out the form: / Bitte fülle die folgende Form aus:
+        Please fill out the form:
         ------------------------------------------------------------------------------------------------------
   - type: checkboxes
     id: verify_release
     attributes:
-      label: Verify current release / Überprüfung der aktuellen Version
+      label: Verify current release
       options:
-        - label: I verified that the issue exists in the latest KoliBri v1 or v2 release / Ich habe mich vergewissert, dass das Problem in der neuesten Version von KoliBri v1 oder v2 auftritt
+        - label: I verified that the issue exists in the latest KoliBri v1 or v2 release
           required: true
   - type: input
     id: reproduction_url
     attributes:
-      label: Link to the code that reproduces this issue / Link zu dem Code, der dieses Problem reproduziert
+      label: Link to the code that reproduces this issue
       description: |
         A link to a **public** GitHub repository or a StackBlitz minimal reproduction. Minimal reproductions should be created from our actual released versions (e.g. v1, v2, ...) and should include only changes that contribute to the issue. StackBlitz templates can be found under the followjng url's:
-
-        #### Deutsch:
-        Ein Link zu einem **öffentlichen** GitHub-Repository oder einer StackBlitz-Minimalreproduktion. Minimale Reproduktionen sollten aus unseren aktuell veröffentlichten Versionen (z. B. v1, v2, ...) erstellt werden und nur Änderungen enthalten, die zum Problem beitragen. StackBlitz-Vorlagen können unter den folgenden URLs gefunden werden:
 
         - [KoliBri (v1)](https://stackblitz.com/edit/vitejs-vite-dcg6xo)
         - [KoliBri (v2)](https://stackblitz.com/edit/vitejs-vite-kkfhk5)
@@ -48,12 +37,9 @@ body:
   - type: dropdown
     id: affected_themes
     attributes:
-      label: Which theme(s) are affected? / Welche(s) Theme(s) ist/sind betroffen?
+      label: Which theme(s) are affected?
       description: |
         If you are not sure select "Not sure". If you see the bug in all themes select "All" or select theme by theme were the bug occurs.
-
-        #### Deutsch:
-        Wenn Sie sich nicht sicher sind, wählen Sie "Not sure". Wenn Sie den Fehler in allen Themes sehen, wählen Sie "All" oder wählen Sie ein Theme nach dem anderen, in dem der Fehler auftritt.
       multiple: true
       options:
         - 'Not sure'
@@ -69,21 +55,21 @@ body:
   - type: input
     id: error_category
     attributes:
-      label: Can you categorise where the error occurs? (If known) / Können Sie einordnen, wo der Fehler auftaucht? (Falls bekannt)
+      label: Can you categorise where the error occurs? (If known)
       placeholder: Native (Web Component), React, Angular, ...
     validations:
       required: false
   - type: input
     id: browser_info
     attributes:
-      label: Which browser or operating system do you used to test KoliBri? (If available) / Welchen Browser bzw. Betriebsystem haben Sie verwendet um KoliBri zu testen? (Falls vorhanden)
+      label: Which browser or operating system do you used to test KoliBri? (If available)
       placeholder: Firefox, Chrome, iOS 12.4, ...
     validations:
       required: false
   - type: dropdown
     id: affected_components
     attributes:
-      label: Which component/area(s) are affected? (Select all that apply) / Welche Komponente(n)/Bereich(e) sind betroffen? (Wählen Sie alle zutreffenden Punkte aus)
+      label: Which component/area(s) are affected? (Select all that apply)
       multiple: true
       options:
         - 'Not sure'
@@ -137,12 +123,9 @@ body:
   - type: textarea
     id: reproduction_steps
     attributes:
-      label: To Reproduce / Zum Reproduzieren
+      label: To Reproduce
       description: |
         A step-by-step description of how to reproduce the issue. Screenshots can be provided in the issue body below. If using code blocks, make sure that [syntax highlighting is correct](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#syntax-highlighting) and double check that the rendered preview is not broken.
-
-        #### Deutsch:
-        Eine schrittweise Beschreibung, wie das Problem zu reproduzieren ist. Screenshots können im Problemtext unten bereitgestellt werden. Wenn Sie Codeblöcke verwenden, stellen Sie sicher, dass die [Syntaxhervorhebung korrekt ist] (https://docs.github.com/de/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#syntax-highlighting) und überprüfen Sie, ob die gerenderte Vorschau nicht beschädigt ist.
       placeholder: |
         1. Click X
         2. Y will happen
@@ -152,24 +135,18 @@ body:
   - type: textarea
     id: current_vs_expected_behavior
     attributes:
-      label: Current vs. Expected behavior / Aktuelles vs. Erwartetes Verhalten
+      label: Current vs. Expected behavior
       description: |
         A clear and concise description of what the bug is, and what you expected to happen.
-
-        #### Deutsch:
-        Eine klare und prägnante Beschreibung des Fehlers und der erwarteten Reaktion.
       placeholder: 'Following the steps from the previous section, I expected A to happen, but I observed B instead'
     validations:
       required: true
   - type: textarea
     id: environment_info
     attributes:
-      label: Provide environment information / Bereitstellung von Betriebsinformationen
+      label: Provide environment information
       description: |
-        Please run `kolibri info` in the root directory of your project and paste the results. You might need to use `npx --no-install kolibri info` if kolibri is not in the current PATH or not installed.
-
-        #### Deutsch:
-        Bitte führen Sie `kolibri info` im Hauptverzeichnis Ihres Projekts aus und fügen Sie die Ergebnisse ein. Möglicherweise müssen Sie `npx @public-ui/kolibri-cli info` verwenden, wenn sich kolibri nicht im aktuellen PFAD befindet bzw. nicht installiert ist.
+        Please run `npx kolibri info` in the root directory of your project and paste the results.
       render: bash
       placeholder: |
         {
