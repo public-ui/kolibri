@@ -146,7 +146,7 @@ body:
     attributes:
       label: Provide environment information
       description: |
-        Please run `kolibri info` in the root directory of your project and paste the results. You might need to use `npx --no-install kolibri info` if kolibri is not in the current PATH or not installed.
+        Please run `npx kolibri info` in the root directory of your project and paste the results.
       render: bash
       placeholder: |
         {
