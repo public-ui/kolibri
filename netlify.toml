@@ -1,0 +1,3 @@
+[build]
+	command = "pnpm -r build"
+	publish = "packages/samples/react/dist"
