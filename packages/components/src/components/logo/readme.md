@@ -52,6 +52,8 @@ Das Attribut **`_org`** wird für die Definition des gewünschten Logos verwende
 
 <!-- Auto Generated Below -->
 
+> **[DEPRECATED]**
+
 ## Properties
 
 | Property            | Attribute | Description                                                                    | Type                                              | Default     |
