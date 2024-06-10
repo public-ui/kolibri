@@ -49,4 +49,4 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
         with:
-          args: deploy --filter=@public-ui/sample-react --alias="$GITHUB_REF_NAME" # Netlify conveniently sanitizes the alias for us. E.g. `release/1.7` becomes `release-1-7`
+          args: deploy --filter=@public-ui/sample-react --alias="$GITHUB_REF_NAME" -d dist # Netlify conveniently sanitizes the alias for us. E.g. `release/1.7` becomes `release-1-7`
