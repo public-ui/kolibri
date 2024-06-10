@@ -43,7 +43,7 @@ export class KolToastContainer implements ToasterAPI {
 			this.state = {
 				...this.state,
 				_toastStates: this.state._toastStates.map((localToastState) =>
-					localToastState.id === newToastState.id
+					localToastState.id === newToastState.id && localToastState.status !== 'removing'
 						? {
 								...localToastState,
 								status: 'settled',
@@ -86,9 +86,11 @@ export class KolToastContainer implements ToasterAPI {
 				_toastStates: [],
 			};
 		} else {
+			const toastsToClose = [...this.state._toastStates]; // Create a snapshot of the open toasts at the time closeAll has been called
+
 			this.state = {
 				...this.state,
-				_toastStates: this.state._toastStates.map((localToastState) => ({
+				_toastStates: toastsToClose.map((localToastState) => ({
 					...localToastState,
 					status: 'removing',
 				})),
@@ -97,7 +99,7 @@ export class KolToastContainer implements ToasterAPI {
 			setTimeout(() => {
 				this.state = {
 					...this.state,
-					_toastStates: [],
+					_toastStates: this.state._toastStates.filter((toastState) => toastsToClose.every((toastToClose) => toastToClose.id !== toastState.id)),
 				};
 			}, TRANSITION_TIMEOUT);
 		}
