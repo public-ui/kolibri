@@ -89,7 +89,7 @@ export class KolPopover implements PopoverAPI {
 	public render(): JSX.Element {
 		return (
 			<Host ref={this.catchHostAndTriggerElement} class="kol-popover-wc">
-				<div class={{ popover: true, hidden: !this.state._show, show: this.state._visible }} ref={this.catchPopoverElement}>
+				<div class={{ popover: true, show: this.state._visible }} ref={this.catchPopoverElement} hidden={!this.state._show}>
 					<div class={`arrow ${this.state._align}`} ref={this.catchArrowElement} />
 					<slot />
 				</div>
