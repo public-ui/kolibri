@@ -16,9 +16,9 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@leanup/stack": "1.3.53",
-		"@leanup/stack-react": "1.3.53",
-		"@leanup/stack-webpack": "1.3.53",
+		"@leanup/stack": "1.3.52",
+		"@leanup/stack-react": "1.3.52",
+		"@leanup/stack-webpack": "1.3.52",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react": "workspace:*",
 		"@public-ui/themes": "workspace:*",
