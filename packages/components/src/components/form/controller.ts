@@ -1,11 +1,12 @@
 import type { FormProps } from '../../schema';
+import { Log } from '../../schema';
 import { devHint, getExperimentalMode, KoliBriDevHelper, setEventTarget } from '../../schema';
 import { KolFormTag } from '../../core/component-names';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimentalMode()) {
 		devHint(`↓ Search form element start.`);
-		console.log(el);
+		Log.debug(el);
 	}
 	while (el instanceof HTMLElement && el.tagName !== 'FORM' && el.tagName !== KolFormTag.toUpperCase()) {
 		try {
@@ -24,7 +25,7 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 			 */
 		}
 		if (getExperimentalMode()) {
-			console.log(el);
+			Log.debug(el);
 			devHint(`↑ Search form element finished.`);
 		}
 	}

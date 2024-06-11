@@ -2,6 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { Stringified } from '../types';
 import type { ColorContrast, WatchOptions } from '../utils';
+import { Log } from '../utils';
 import { a11yHint, createContrastColorPair, watchValidator } from '../utils';
 
 /**
@@ -107,7 +108,7 @@ export const handleColorChange = (value: unknown): ColorPair => {
 			break;
 		}
 		case null:
-			console.warn(`_color was empty or invalid (${JSON.stringify(value)})`);
+			Log.warn(`_color was empty or invalid (${JSON.stringify(value)})`, { forceLog: true });
 			colorContrast = createContrastColorPair({
 				background: '#000',
 				foreground: '#000',

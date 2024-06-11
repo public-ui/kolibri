@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 type GetModeFn = () => boolean;
 
 let WINDOW: Window | null = null;

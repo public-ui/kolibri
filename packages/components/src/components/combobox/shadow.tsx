@@ -92,7 +92,6 @@ export class KolCombobox implements ComboboxAPI {
 	private _focusedOptionIndex: number = -1;
 
 	private moveFocus(delta: number) {
-		console.log(this._focusedOptionIndex);
 		if (!this._filteredSuggestions) {
 			return;
 		}

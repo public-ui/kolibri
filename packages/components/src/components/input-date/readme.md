@@ -51,13 +51,13 @@ kolibriElement._on = {
 };
 ```
 
-| Event    | Auslöser                                                               | Value                                 |
-| -------- | ---------------------------------------------------------------------- | ------------------------------------- |
-| onFocus  | Element wird fokussiert                                                | -                                     |
-| onClick  | Element wird angeklickt                                                | -                                     |
-| onInput  | Datum wird gesetzt bzw. änder sich (entspricht nativem `input`-Event)  | Eingegebenes Datum als ISO8601 String |
-| onChange | Datum wird gesetzt bzw. änder sich (entspricht nativem `change`-Event) | Eingegebenes Datum als ISO8601 String |
-| onBlur   | Element verliert Fokus                                                 | -                                     |
+| Event    | Auslöser                                                                | Value                                 |
+| -------- | ----------------------------------------------------------------------- | ------------------------------------- |
+| onFocus  | Element wird fokussiert                                                 | -                                     |
+| onClick  | Element wird angeklickt                                                 | -                                     |
+| onInput  | Datum wird gesetzt bzw. ändert sich (entspricht nativem `input`-Event)  | Eingegebenes Datum als ISO8601 String |
+| onChange | Datum wird gesetzt bzw. ändert sich (entspricht nativem `change`-Event) | Eingegebenes Datum als ISO8601 String |
+| onBlur   | Element verliert Fokus                                                  | -                                     |
 
 ## Verwendung
 
