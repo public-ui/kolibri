@@ -1,12 +1,12 @@
 import { devHint } from '../../utils/a11y.tipps';
-import { getExperimentalMode } from '../../utils/dev.utils';
+import { getExperimentalMode, Log } from '../../utils/dev.utils';
 import { KoliBriDevHelper, setEventTarget } from '../../utils/prop.validators';
 import { Props } from './types';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimentalMode()) {
 		devHint(`↓ Search form element start.`);
-		console.log(el);
+		Log.debug(el);
 	}
 	while (el instanceof HTMLElement && el.tagName !== 'FORM' && el.tagName !== 'KOL-FORM') {
 		if (el.parentElement instanceof HTMLElement) {
@@ -17,7 +17,7 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 			el = null;
 		}
 		if (getExperimentalMode()) {
-			console.log(el);
+			Log.debug(el);
 		}
 	}
 	if (getExperimentalMode()) {

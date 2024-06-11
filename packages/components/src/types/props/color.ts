@@ -4,6 +4,7 @@ import { ColorContrast, createContrastColorPair } from '../../components/badge/c
 import { a11yHint } from '../../utils/a11y.tipps';
 import { WatchOptions, watchValidator } from '../../utils/prop.validators';
 import { Stringified } from '../common';
+import { Log } from '../../utils/dev.utils';
 
 /* types */
 type CharacteristicColors = {
@@ -130,7 +131,7 @@ export const handleColorChange = (value: unknown): ColorPair => {
 			break;
 		}
 		case null:
-			console.warn(`_color was empty or invalid (${JSON.stringify(value)})`);
+			Log.warn(`_color was empty or invalid (${JSON.stringify(value)})`, { forceLog: true });
 			colorContrast = createContrastColorPair({
 				background: '#000',
 				foreground: '#000',
