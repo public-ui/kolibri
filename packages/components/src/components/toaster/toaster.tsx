@@ -1,6 +1,7 @@
 import { Toast } from './types';
 import { KolToastContainerTag } from '../../core/component-names';
 import { isInitialized } from '../../core/bootstrap';
+import { Log } from '../../utils/dev.utils';
 
 export class ToasterService {
 	private static readonly instances: Map<Document, ToasterService> = new Map<Document, ToasterService>();
@@ -34,7 +35,7 @@ export class ToasterService {
 			this.toastContainerElement = undefined;
 			element.remove();
 		} else {
-			console.warn('Toaster service is already disposed.');
+			Log.warn('Toaster service is already disposed.', { forceLog: true });
 		}
 	}
 

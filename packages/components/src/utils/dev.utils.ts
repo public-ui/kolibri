@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { processEnv } from './reuse';
 
 let WINDOW: Window | null = null;

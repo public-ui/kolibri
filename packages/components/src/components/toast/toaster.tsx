@@ -1,6 +1,7 @@
 import { LabelPropType } from '../../types/props/label';
 import { AlertType } from '../alert/types';
 import { KolToastTag } from '../../core/component-names';
+import { Log } from '../../utils/dev.utils';
 
 type Toast = {
 	description: string;
@@ -70,7 +71,7 @@ export class ToasterService {
 				on.onClose(new Event('dispose'));
 			}
 		} else {
-			console.warn('Toaster service is already disposed.');
+			Log.warn('Toaster service is already disposed.', { forceLog: true });
 		}
 	}
 
@@ -94,7 +95,7 @@ export class ToasterService {
 		}
 
 		if (!this.toastElement) {
-			console.warn('Tried to show a new toast at a disposed toaster service!');
+			Log.warn('Tried to show a new toast at a disposed toaster service!', { forceLog: true });
 			return;
 		}
 		this.toastElement.setAttribute('_label', label);
