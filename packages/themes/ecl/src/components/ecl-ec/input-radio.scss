@@ -35,6 +35,11 @@
 	.radio-input-wrapper {
 		display: flex;
 		align-items: center;
+		display: flex;
+		flex-direction: row;
+		margin: 0;
+		min-height: var(--a11y-min-size);
+		position: relative;
 	}
 
 	.radio-label {
