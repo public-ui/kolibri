@@ -132,14 +132,14 @@ export const App: FC = () => {
 					/>
 				)}
 
-				<div className="p-4" id="route-container">
+				<main className="p-4" id="route-container">
 					{!hideMenus && isDraftTheme(theme) && <KolBadge className="mb-3" _label="DRAFT" _color="#db5461" />}
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<Navigate to={ROUTE_LIST[0]} replace />} />
 						<Route path="back-page" element={<BackPage />} />
 					</Routes>
-				</div>
+				</main>
 			</div>
 		</HideMenusContext.Provider>
 	);
