@@ -52,3 +52,4 @@ export * from './tree';
 export * from './tree-item';
 export * from './version';
 export * from './combobox';
+export * from './single-select';
