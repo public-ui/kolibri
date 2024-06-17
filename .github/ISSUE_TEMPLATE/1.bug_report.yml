@@ -146,7 +146,7 @@ body:
     attributes:
       label: Provide environment information
       description: |
-        Please run `npx kolibri info` in the root directory of your project and paste the results.
+        Please run `npx @public-ui/kolibri-cli info` in the root directory of your project and paste the results.
       render: bash
       placeholder: |
         {
