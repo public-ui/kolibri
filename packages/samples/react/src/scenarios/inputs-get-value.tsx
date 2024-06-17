@@ -105,7 +105,7 @@ export const InputsGetValue: FC = () => {
 
 					<div className="grid gap-4">
 						<Scenario InputComponent={KolInputText} inputProps={{ _label: 'InputText' }} />
-						<Scenario InputComponent={KolInputCheckbox} inputProps={{ _label: 'KolInputCheckbox' }} />
+						<Scenario InputComponent={KolInputCheckbox} inputProps={{ _label: 'KolInputCheckbox', _value: 'Checkbox True Value' }} />
 						<Scenario InputComponent={KolInputColor} inputProps={{ _label: 'KolInputColor' }} />
 						<Scenario InputComponent={KolInputDate} inputProps={{ _label: 'KolInputDate' }} />
 						<Scenario InputComponent={KolInputEmail} inputProps={{ _label: 'KolInputEmail' }} />
