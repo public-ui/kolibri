@@ -57,6 +57,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 				const selectedIndex = this._filteredOptions.findIndex((option) => option.label === this.state._value);
 				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
 				this.focusOption(this._focusedOptionIndex);
+
+				const filterInput = document.getElementById('filter-input');
+				if (filterInput instanceof HTMLInputElement) {
+					filterInput.focus();
+					filterInput.setSelectionRange(0, 0);
+				}
 			}
 			if (Array.isArray(this._options)) {
 				const matchedOption = this._options.find((option) => option.label === this.state._value);
@@ -103,6 +109,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 			this._isOpen = Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0;
 		}
+		if (this._filteredOptions.length === 0) {
+			const event = new CustomEvent('load-more-options');
+			this.host?.dispatchEvent(event);
+		}
 	}
 
 	private _focusedOptionIndex: number = -1;
@@ -127,9 +137,16 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	private focusOption(index: number) {
 		if (this.refOptions) {
+			this.refOptions.forEach((el) => {
+				if (el) el.classList.remove('highlighted');
+			});
 			const optionElement = this.refOptions[index];
-			optionElement?.focus();
-			// this._value = optionElement?.textContent || '';
+			if (optionElement) {
+				optionElement.classList.add('highlighted');
+				optionElement.scrollIntoView({ block: 'center', inline: 'center' });
+			}
+			const radioInput = optionElement.querySelector('input[type="radio"]') as HTMLInputElement;
+			if (radioInput) radioInput.checked = true;
 		}
 	}
 
@@ -197,12 +214,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 									accessKey={this.state._accessKey}
 									aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 									aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-									aria-labelledby={this.state._id}
+									aria-labelledby="filter-input"
 									aria-activedescendant={this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined}
 									autoCapitalize="off"
 									autoCorrect="off"
 									disabled={this.state._disabled}
-									id={this.state._id}
+									id="filter-input"
 									name={this.state._name}
 									required={this.state._required}
 									spellcheck="false"
@@ -217,22 +234,22 @@ export class KolSingleSelect implements SingleSelectAPI {
 										_icons="codicon codicon-close"
 										_label={translate('kol-dropdown')}
 										onClick={this.clearSelection.bind(this)}
-										class="single-select__icon"
+										class="single-select__close"
 									/>
 								)}
-								<span class={{ 'single-select__button': true }}>
-									<KolButtonTag
-										_label={translate('kol-dropdown')}
-										_variant="ghost"
-										_on={{
-											onClick: (): void => {
-												this.toggleListbox();
-											},
-										}}
-										_hideLabel
-										_icons="codicon codicon-triangle-down"
-									></KolButtonTag>
-								</span>
+
+								<KolButtonTag
+									class="single-select__button"
+									_label={translate('kol-dropdown')}
+									_variant="ghost"
+									_on={{
+										onClick: (): void => {
+											this.toggleListbox();
+										},
+									}}
+									_hideLabel
+									_icons="codicon codicon-triangle-down"
+								></KolButtonTag>
 							</div>
 							{this._isOpen && !(this.state._disabled === true) && (
 								<ul role="listbox" aria-label="" class={{ 'single-select__listbox': true }} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
@@ -290,7 +307,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 			}
 			callback?.();
 		};
+
 		switch (event.key) {
+			case 'Tab': {
+				this._isOpen = false;
+				break;
+			}
 			case 'Down':
 			case 'ArrowDown': {
 				handleEvent(true, () => this.moveFocus(1));
@@ -308,7 +330,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 			}
 			case 'NumpadEnter':
 			case 'Enter': {
-				this.toggleListbox();
+				if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
+					this.selectOption(this._filteredOptions[this._focusedOptionIndex].label);
+					handleEvent(false);
+				}
+
 				break;
 			}
 			case 'Home': {
@@ -330,11 +356,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 				break;
 			}
 			case 'PageUp': {
-				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
+				handleEvent(undefined, () => this._isOpen && this.moveFocus(-10));
 				break;
 			}
 			case 'PageDown': {
-				handleEvent(undefined, () => this._isOpen && this.moveFocus(-10));
+				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
 				break;
 			}
 		}
