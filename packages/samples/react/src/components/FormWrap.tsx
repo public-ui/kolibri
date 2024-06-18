@@ -1,10 +1,7 @@
+import type { FC } from 'react';
 import React from 'react';
 
 import { KolButton, KolForm } from '@public-ui/react';
-
-import { FocusElement } from './FocusInput';
-
-import type { FC } from 'react';
 import type { RefFormComponent } from './types';
 
 type FormWrapProps = {
@@ -14,7 +11,7 @@ type FormWrapProps = {
 export const FormWrap: FC<FormWrapProps> = (props) => (
 	<KolForm>
 		<div className="grid gap-4">
-			<FocusElement {...props} />
+			<props.RefComponent {...props} />
 			<div className="flex gap-4">
 				<KolButton _label="Submit" _icons="codicon codicon-arrow-right" _type="submit" _variant="primary" />
 				<KolButton

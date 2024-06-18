@@ -1,5 +1,3 @@
-import { FormWrap } from './FormWrap';
-
 import type { ButtonVariants } from './button/partials/variants';
 import type { InputCheckboxVariants } from './input-checkbox/partials/variants';
 import type { InputColorVariants } from './input-color/partials/variants';
