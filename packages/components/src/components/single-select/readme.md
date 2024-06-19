@@ -1,5 +1,33 @@
 # kol-single-select
 
+Die **SingleSelect**-Komponente erzeugt eine Auswahlbox, die ein Eingabefeld mit einer darunter angeordneten Liste von auswählbaren Optionen kombiniert. Sie bietet auch eine Suchfunktion, um die Auswahl zu filtern.
+
+## Konstruktion
+
+### Code
+
+```html
+<kol-single-select
+	_options="[{'label':'Herr','value':0},{'label':'Frau','value':1},{'label':'Firma','value':2}]"
+	_label="Beispiel"
+	_value="1"
+></kol-single-select>
+```
+
+## Verwendung
+
+Die Auswahlmöglichkeiten werden über das Attribut **`_options`** als Objekt oder JSON-String an die Komponente übergeben. Je Option müssen die Werte **`label`** und **`value`** angegeben werden.
+
+Beispiel für die Konstruktion des JSON-Objektes:
+
+```json
+[
+	{ "label": "Herr", "value": 0 },
+	{ "label": "Frau", "value": 1 },
+	{ "label": "Firma", "value": 2 }
+]
+```
+
 <!-- Auto Generated Below -->
 
 ## Properties

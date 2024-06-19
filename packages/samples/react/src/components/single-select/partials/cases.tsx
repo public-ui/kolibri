@@ -15,7 +15,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSelectElement, Components.Kol
 				_hint={HINT_MSG}
 				_label="Label"
 				_options={COUNTRY_OPTIONS}
-				_value={'Deutschland'}
+				_value={'de'}
 				_on={{
 					onBlur: console.log,
 					onChange: console.log,
@@ -23,7 +23,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSelectElement, Components.Kol
 					onFocus: console.log,
 				}}
 			/>
-			<KolSingleSelect {...props} _label="Disabled" _options={COUNTRY_OPTIONS} _value={'Deutschland'} _disabled />
+			<KolSingleSelect {...props} _label="Disabled" _options={COUNTRY_OPTIONS} _value={'de'} _disabled />
 			<KolSingleSelect
 				{...props}
 				_options={COUNTRY_OPTIONS}
