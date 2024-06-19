@@ -26,6 +26,7 @@ import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
+import singleSelectCss from './components/single-select.scss';
 import skipNavCss from './components/skip-nav.scss';
 import spinCss from './components/spin.scss';
 import splitButtonCss from './components/split-button.scss';
@@ -58,6 +59,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-LINK': linkCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-SPIN': spinCss,
+	'KOL-SINGLE-SELECT': singleSelectCss,
 	'KOL-PROGRESS': progressCss,
 	'KOL-SELECT': selectCss,
 	'KOL-INPUT-COLOR': inputColorCss,

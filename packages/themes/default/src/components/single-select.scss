@@ -16,7 +16,7 @@
 			display: inline-flex;
 			align-items: center;
 			width: 100%;
-			padding: 0 rem(8);
+			padding-left: rem(8);
 		}
 
 		&__input {
@@ -45,10 +45,8 @@
 		&__button {
 			display: grid;
 			place-items: center;
-			color: var(--color-primary);
 			cursor: pointer;
 			padding-left: rem(8);
-			padding-right: rem(8);
 
 			&:focus {
 				outline: 0 !important;
@@ -70,6 +68,15 @@
 		&__item {
 			padding: rem(10) rem(12);
 			cursor: pointer;
+
+			&label {
+				order: 3 !important;
+			}
+
+			.radio-label {
+				align-self: center;
+				padding-left: 1em;
+			}
 
 			&:hover {
 				background: var(--color-primary-variant);
@@ -125,7 +132,7 @@
 		padding: 0 rem(8);
 	}
 
-	.input>.kol-icon {
+	.input > .kol-icon {
 		width: rem(16);
 	}
 
@@ -139,11 +146,11 @@
 		padding-right: rem(8);
 	}
 
-	.input>input:first-child {
+	.input > input:first-child {
 		padding-left: var(--spacing);
 	}
 
-	.input>input:last-child {
+	.input > input:last-child {
 		padding-right: var(--spacing);
 	}
 
@@ -151,7 +158,7 @@
 		border-color: var(--color-primary);
 	}
 
-	.required label>span::after {
+	.required label > span::after {
 		content: '*';
 		padding-left: 0.125em;
 	}

@@ -21,7 +21,7 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { SingleSelectController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolButtonTag, KolIconTag, KolInputWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolIconTag, KolInputWcTag } from '../../core/component-names';
 import { showExpertSlot } from '../../schema';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
@@ -234,11 +234,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 										_icons="codicon codicon-close"
 										_label={translate('kol-dropdown')}
 										onClick={this.clearSelection.bind(this)}
-										class="single-select__close"
+										class="single-select__delete"
 									/>
 								)}
 
-								<KolButtonTag
+								<KolButtonWcTag
 									class="single-select__button"
 									_label={translate('kol-dropdown')}
 									_variant="ghost"
@@ -249,7 +249,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									}}
 									_hideLabel
 									_icons="codicon codicon-triangle-down"
-								></KolButtonTag>
+								></KolButtonWcTag>
 							</div>
 							{this._isOpen && !(this.state._disabled === true) && (
 								<ul role="listbox" aria-label="" class={{ 'single-select__listbox': true }} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
@@ -286,7 +286,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 													checked={this.state._value === (option.label as string)}
 												/>
 
-												<label htmlfor={`option-radio-${index}`}> {option.label}</label>
+												<label htmlfor={`option-radio-${index}`} class="radio-label">
+													{option.label}
+												</label>
 											</li>
 										))}
 								</ul>
