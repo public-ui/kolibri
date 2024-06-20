@@ -1,4 +1,8 @@
 import {
+	KolAccordion,
+	KolButton,
+	KolButtonLink,
+	KolDetails,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -9,6 +13,8 @@ import {
 	KolInputRadio,
 	KolInputRange,
 	KolInputText,
+	KolLink,
+	KolLinkButton,
 	KolSelect,
 	KolTextarea,
 } from '@public-ui/react';
@@ -64,6 +70,17 @@ focusElements.set('selectMultiple', (props, ref) => (
 	/>
 ));
 focusElements.set('textarea', (props, ref) => <KolTextarea _name="textarea" _label="Textarea" _rows={5} ref={ref} />);
+
+focusElements.set('accordion', (props, ref) => <KolAccordion _label="Accordion here" ref={ref} />);
+focusElements.set('button', (props, ref) => <KolButton _label="Button here" ref={ref}></KolButton>);
+focusElements.set('buttonLink', (props, ref) => <KolButtonLink _label="ButtonLink here" ref={ref}></KolButtonLink>);
+focusElements.set('details', (props, ref) => (
+	<KolDetails _label="Details here" ref={ref}>
+		detailed details
+	</KolDetails>
+));
+focusElements.set('link', (props, ref) => <KolLink _label="Link here" _href="#" ref={ref}></KolLink>);
+focusElements.set('linkButton', (props, ref) => <KolLinkButton _label="LinkButton here" _href="#" ref={ref}></KolLinkButton>);
 
 export const FocusElements: FC = () => {
 	const ref = useRef(null);
