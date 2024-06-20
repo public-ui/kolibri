@@ -92,10 +92,7 @@ type FallbackProps = {
 };
 const Fallback = (props: FallbackProps) => {
 	const focusElements = useMemo(() => getFocusElements(), []);
-	const componentNames = focusElements
-		.keys()
-		.toArray()
-		.map((key) => key);
+	const componentNames = [...focusElements.keys()].map((key) => key);
 
 	return (
 		<div>
