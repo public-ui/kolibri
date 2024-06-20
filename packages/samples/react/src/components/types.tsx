@@ -25,17 +25,3 @@ export type RefFormComponent =
 	| typeof InputTextVariants
 	| typeof SelectVariants
 	| typeof TextareaVariants;
-
-export type RefComponent =
-	// | typeof AbbrVariants
-	// | typeof AccordionVariants
-	// | typeof AlertVariants
-	| typeof ButtonVariants
-	// | typeof ButtonLinkVariants
-	// | typeof CardVariants
-	// | typeof LinkVariants
-	// | typeof LinkButtonVariants
-	// | typeof PopoverVariants
-	// | typeof SplitButtonVariants
-	// | typeof TabsVariants
-	| RefFormComponent;
