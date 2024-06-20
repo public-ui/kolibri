@@ -25,7 +25,7 @@ import React, { forwardRef, useLayoutEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const getFocusElements = () => {
-	const focusElements = new Map<string, ForwardRefRenderFunction<HTMLElement, any>>();
+	const focusElements = new Map<string, ForwardRefRenderFunction<any, any>>();
 	focusElements.set('inputCheckbox', (_, ref) => <KolInputCheckbox _name="checkbox" _label="Checkbox" ref={ref} />);
 	focusElements.set('inputColor', (_, ref) => <KolInputColor _name="color" _label="Color" ref={ref} />);
 	focusElements.set('inputDate', (_, ref) => <KolInputDate _name="date" _label="Date" ref={ref} />);
