@@ -1,4 +1,3 @@
-import type { ButtonVariants } from './button/partials/variants';
 import type { InputCheckboxVariants } from './input-checkbox/partials/variants';
 import type { InputColorVariants } from './input-color/partials/variants';
 import type { InputDateVariants } from './input-date/partials/variants';
