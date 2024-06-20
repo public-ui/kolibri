@@ -33,6 +33,7 @@ focusElements.set('inputRadio', (props, ref) => (
 			{ label: 'Option A', value: 'A' },
 			{ label: 'Option B', value: 'B' },
 		]}
+		_value="A"
 		ref={ref}
 	/>
 ));
