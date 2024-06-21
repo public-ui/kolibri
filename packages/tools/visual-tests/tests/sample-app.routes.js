@@ -140,6 +140,11 @@ ROUTES.set('details/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('drawer/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('form/basic', {
 	axe: {
 		skipFailures: false,

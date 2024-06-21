@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import type { KoliBriModalEventCallbacks, LabelPropType, DrawerAPI, AlignPropType, DrawerStates } from '../../schema';
-import { featureHint, setState, validateLabel } from '../../schema';
-import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
+import { setState, validateLabel } from '../../schema';
+import { Component, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
 
@@ -16,17 +16,41 @@ import type { JSX } from '@stencil/core';
 	shadow: true,
 })
 export class KolDrawer implements DrawerAPI {
-	private hostElement?: HTMLElement;
+	@Method()
+	async open() {
+		this.state._open = true;
+	}
+
+	@Method()
+	async close() {
+		this.state._open = false;
+		if (this._on?.onClose) {
+			this._on.onClose();
+		}
+	}
+
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		if (event.key === 'Escape' && this.state._open) {
+			this.close();
+		}
+	};
 
 	public render(): JSX.Element {
 		return (
 			<Host
-				class="kol-drawer"
-				ref={(el) => {
-					this.hostElement = el as HTMLElement;
+				class={{
+					'kol-drawer': true,
+					[this._align as string]: true,
+					modal: this._modal ?? false,
+					open: this.state._open,
 				}}
 			>
-				
+				<div class="backdrop" onClick={() => this.close()}></div>
+				<dialog open={this.state._open} onKeyDown={this.onKeyDown}>
+					<div class="drawer-content" aria-label={this._label}>
+						<slot />
+					</div>
+				</dialog>
 			</Host>
 		);
 	}
@@ -41,7 +65,7 @@ export class KolDrawer implements DrawerAPI {
 	 */
 	@Prop() public _label!: LabelPropType;
 
-    /**
+	/**
 	 * Defines if drawer is a modal.
 	 */
 	@Prop() public _modal?: boolean;
@@ -51,9 +75,9 @@ export class KolDrawer implements DrawerAPI {
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
-
 	@State() public state: DrawerStates = {
 		_label: '', // ⚠ required
+		_open: false,
 	};
 
 	@Watch('_label')
@@ -66,7 +90,6 @@ export class KolDrawer implements DrawerAPI {
 	@Watch('_on')
 	public validateOn(value?: KoliBriModalEventCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
-			featureHint('[KolTabs] Prüfen, wie man auch einen EventCallback einzeln ändern kann.');
 			const callbacks: KoliBriModalEventCallbacks = {};
 			if (typeof value.onClose === 'function' || value.onClose === true) {
 				callbacks.onClose = value.onClose;

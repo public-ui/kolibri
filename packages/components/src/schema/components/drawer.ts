@@ -7,7 +7,9 @@ type RequiredProps = PropLabel;
 type OptionalProps = {
 	on: KoliBriModalEventCallbacks;
 };
-type RequiredStates = {} & PropLabel;
+type RequiredStates = {
+	open: boolean;
+} & PropLabel;
 type OptionalStates = {
 	on: KoliBriModalEventCallbacks;
 };

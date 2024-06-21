@@ -22,6 +22,7 @@ const TAGS = [
 	'kol-button-link',
 	'kol-card',
 	'kol-details',
+	'kol-drawer',
 	'kol-form',
 	'kol-heading',
 	'kol-icon',
