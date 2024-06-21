@@ -1,7 +1,3 @@
-npm dist-tag $1 @public-ui/angular-v11@$2 $3
-npm dist-tag $1 @public-ui/angular-v12@$2 $3
-npm dist-tag $1 @public-ui/angular-v13@$2 $3
-npm dist-tag $1 @public-ui/angular-v14@$2 $3
 npm dist-tag $1 @public-ui/angular-v15@$2 $3
 npm dist-tag $1 @public-ui/angular-v16@$2 $3
 npm dist-tag $1 @public-ui/angular-v17@$2 $3
