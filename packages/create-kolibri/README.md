@@ -36,23 +36,19 @@ Für eine optimale Developer Experience bieten wir zahlreiche Framework-Adapter 
 
 Folgende Pakete/Artefakte von **[KoliBri]** werden in der öffentlichen [NPM-Registry](https://www.npmjs.com/search?q=%40public-ui) versioniert bereitgestellt.
 
-| Paket                  | Erläuterung                                                                                                                             |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| create-kolibri         | CLI zum Erstellen neuer Projekt auf **[KoliBri]**-Basis.                                                                                |
-| @public-ui/components  | Beinhaltet die barrierefreien Web Components ohne Styling.                                                                              |
-| @public-ui/core        | Beinhaltet generische Typen und zentrale Funktionalitäten für die Entwicklung weiterer Komponenten-Bibliothek mit gleicher Architektur. |
-| @public-ui/schema      | Beinhaltet das Schema für die **[KoliBri]**-Komponenten.                                                                                |
-| @public-ui/themes      | Beinhaltet zahlreiche Themes für die **[KoliBri]**-Komponenten.                                                                         |
-| @public-ui/react       | Adapter für das Framework [React].                                                                                                      |
-| @public-ui/preact      | Adapter für das Framework [Preact].                                                                                                     |
-| @public-ui/solid       | Adapter für das Framework [Solid].                                                                                                      |
-| @public-ui/vue         | Adapter für das Framework [Vue].                                                                                                        |
-| @public-ui/angular-v15 | Adapter für das Framework [Angular] v15.                                                                                                |
-| @public-ui/angular-v14 | Adapter für das Framework [Angular] v14.                                                                                                |
-| @public-ui/angular-v13 | Adapter für das Framework [Angular] v13.                                                                                                |
-| @public-ui/angular-v12 | Adapter für das Framework [Angular] v12.                                                                                                |
-| @public-ui/angular-v11 | Adapter für das Framework [Angular] v11.                                                                                                |
-| @public-ui/angular     | Dieses Paket ist veraltet, weil [Angular] versionsspezifische Adapter benötigt.                                                         |
+| Paket                       | Erläuterung                                                                                                                             |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| create-kolibri              | CLI zum Erstellen neuer Projekt auf **[KoliBri]**-Basis.                                                                                |
+| @public-ui/components       | Beinhaltet die barrierefreien Web Components ohne Styling.                                                                              |
+| @public-ui/core             | Beinhaltet generische Typen und zentrale Funktionalitäten für die Entwicklung weiterer Komponenten-Bibliothek mit gleicher Architektur. |
+| @public-ui/schema           | Beinhaltet das Schema für die **[KoliBri]**-Komponenten.                                                                                |
+| @public-ui/themes           | Beinhaltet zahlreiche Themes für die **[KoliBri]**-Komponenten.                                                                         |
+| @public-ui/react            | Adapter für das Framework [React].                                                                                                      |
+| @public-ui/preact           | Adapter für das Framework [Preact].                                                                                                     |
+| @public-ui/solid            | Adapter für das Framework [Solid].                                                                                                      |
+| @public-ui/vue              | Adapter für das Framework [Vue].                                                                                                        |
+| @public-ui/angular-v{15..x} | Adapter für das Framework [Angular] in der jeweiligen Version.                                                                          |
+| @public-ui/angular          | Dieses Paket ist veraltet, weil [Angular] versionsspezifische Adapter benötigt.                                                         |
 
 ### Integrationsvarianten
 

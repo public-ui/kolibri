@@ -68,30 +68,6 @@ jobs:
         working-directory: packages/components
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish adapter angular v11
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v11
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish adapter angular v12
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v12
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish adapter angular v13
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v13
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish adapter angular v14
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v14
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish adapter angular v15
         continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
