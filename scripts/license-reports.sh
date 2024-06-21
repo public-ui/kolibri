@@ -2,6 +2,7 @@ npx license-report --output=html --package=package.json >> license-reports/root.
 npx license-report --output=html --package=packages/adapters/angular/v15/package.json >> license-reports/adapter-angular-v15.html
 npx license-report --output=html --package=packages/adapters/angular/v16/package.json >> license-reports/adapter-angular-v16.html
 npx license-report --output=html --package=packages/adapters/angular/v17/package.json >> license-reports/adapter-angular-v17.html
+npx license-report --output=html --package=packages/adapters/angular/v18/package.json >> license-reports/adapter-angular-v18.html
 npx license-report --output=html --package=packages/adapters/hydrate/package.json >> license-reports/adapter-hydrate.html
 npx license-report --output=html --package=packages/adapters/preact/package.json >> license-reports/adapter-preact.html
 npx license-report --output=html --package=packages/adapters/react/package.json >> license-reports/adapter-react.html

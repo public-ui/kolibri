@@ -3,6 +3,7 @@
 		"packages/adapters/angular/v15",
 		"packages/adapters/angular/v16",
 		"packages/adapters/angular/v17",
+		"packages/adapters/angular/v18",
 		"packages/adapters/hydrate",
 		"packages/adapters/preact",
 		"packages/adapters/react",

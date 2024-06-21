@@ -205,6 +205,11 @@ if (process.env.NODE_ENV === 'production') {
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v17/src/components.ts',
 		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v18/src/components.ts',
+		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,

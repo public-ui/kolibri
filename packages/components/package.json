@@ -57,7 +57,7 @@
 		"build": "npm run build:light",
 		"build:deps": "pnpm --filter @public-ui/components^... build",
 		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/hashing.js && node scripts/autogen.doc.js && node scripts/vaadin.js && npm run format -- -w",
-		"clear": "rimraf -g dist doc loader www ../adapters/angular/v15/src ../adapters/angular/v16/src ../adapters/angular/v17/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
+		"clear": "rimraf -g dist doc loader www ../adapters/angular/v15/src ../adapters/angular/v16/src ../adapters/angular/v17/src ../adapters/angular/v18/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
 		"lint": "tsc --noemit && eslint src",
