@@ -211,9 +211,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								<input
 									class="single-select__input"
 									type="text"
-									role="single-select"
 									aria-autocomplete="both"
-									aria-expanded={this._isOpen ? 'true' : 'false'}
 									aria-controls="listbox"
 									value={this._inputValue}
 									accessKey={this.state._accessKey}
