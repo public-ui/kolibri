@@ -35,6 +35,7 @@ type OptionalProps = {
 	smartButton: Stringified<ButtonProps>;
 	tabIndex: number;
 	value: string;
+	passwordVisible: boolean;
 } & PropDisabled &
 	PropHasCounter &
 	PropHideError &
@@ -65,6 +66,7 @@ type OptionalStates = {
 	smartButton: ButtonProps;
 	tabIndex: number;
 	value: string | null;
+	passwordVisible: boolean;
 } & PropDisabled &
 	PropHasCounter &
 	PropHideLabel &

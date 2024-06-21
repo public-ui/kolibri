@@ -25,6 +25,9 @@ export class InputPasswordController extends InputIconController implements Inpu
 	public validateHasCounter(value?: boolean): void {
 		validateHasCounter(this.component, value);
 	}
+	public validatePasswordVisible(value?: boolean): void {
+		watchBoolean(this.component, '_passwordVisible', value);
+	}
 
 	public validateMaxLength(value?: number): void {
 		watchNumber(this.component, '_maxLength', value, {
@@ -63,5 +66,6 @@ export class InputPasswordController extends InputIconController implements Inpu
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);
 		this.validateValue(this.component._value);
+		this.validatePasswordVisible(this.component._passwordVisible);
 	}
 }

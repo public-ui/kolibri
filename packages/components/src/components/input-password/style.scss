@@ -8,4 +8,9 @@
 	:host {
 		font-size: rem(16);
 	}
+
+	.kol-button-wc {
+		position: absolute;
+		transform: translateX(-100%);
+	}
 }

@@ -24,7 +24,8 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputPasswordController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolInputWcTag } from '../../core/component-names';
+import { translate } from '../../i18n';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -133,12 +134,27 @@ export class KolInputPassword implements InputPasswordAPI {
 							readOnly={this.state._readOnly}
 							required={this.state._required}
 							spellcheck="false"
-							type="password"
+							type={this._passwordVisible ? 'text' : 'password'}
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 							onKeyDown={this.onKeyDown}
 							onInput={this.onInput}
 						/>
+						{this.ref?.value && this.ref.value.length > 0 ? (
+							<KolButtonWcTag
+								_label={this._passwordVisible ? 'kol-hide-password' : translate('kol-show-password')}
+								_variant="ghost"
+								_on={{
+									onClick: (): void => {
+										this._passwordVisible = !this._passwordVisible;
+									},
+								}}
+								_hideLabel
+								_icons={this._passwordVisible ? 'codicon codicon-eye-closed' : 'codicon codicon-eye-watch'}
+							/>
+						) : (
+							''
+						)}
 					</div>
 				</KolInputWcTag>
 			</Host>
@@ -287,6 +303,8 @@ export class KolInputPassword implements InputPasswordAPI {
 	 */
 	@Prop() public _value?: string;
 
+	@Prop() public _passwordVisible?: boolean = false;
+
 	@State() public state: InputPasswordStates = {
 		_autoComplete: 'off',
 		_currentLength: 0,
@@ -294,6 +312,7 @@ export class KolInputPassword implements InputPasswordAPI {
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
+		_passwordVisible: false,
 	};
 
 	public constructor() {
@@ -322,7 +341,10 @@ export class KolInputPassword implements InputPasswordAPI {
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
 	}
-
+	@Watch('_passwordVisible')
+	public validatePasswordVisible(value?: boolean): void {
+		this.controller.validatePasswordVisible(value);
+	}
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
