@@ -18,63 +18,43 @@
 
 	:host(:not(.modal)) dialog {
 		border: none;
-		padding: 0;
 		margin: 0;
-		height: 100%;
 		position: fixed;
-		background: white;
-		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		transition: transform 0.3s ease-in-out;
+		background: white;
 	}
 
-	:host(:not(.modal)) .drawer-content {
+	:host(.modal) .drawer-content {
 		overflow: auto;
-		width: 100%;
+		width: auto;
+	}
+
+	:host(.modal.left) dialog {
+		top: 0;
+		bottom: 0;
+		left: 0;
 		height: 100%;
 	}
 
-	:host(:not(.modal).left) dialog {
-		top: 0;
-		bottom: 0;
-		left: 0;
-		transform: translateX(-100%);
-		width: auto;
-	}
-
-	:host(:not(.modal).right) dialog {
+	:host(.modal.right) dialog {
 		top: 0;
 		bottom: 0;
 		right: 0;
-		transform: translateX(100%);
-		width: auto;
+		height: 100%;
 	}
 
-	:host(:not(.modal).top) dialog {
+	:host(.modal.top) dialog {
 		top: 0;
 		left: 0;
 		right: 0;
-		transform: translateY(-100%);
-		height: auto;
+		width: 100%;
 	}
 
-	:host(:not(.modal).bottom) dialog {
+	:host(.modal.bottom) dialog {
 		bottom: 0;
 		left: 0;
 		right: 0;
-		transform: translateY(100%);
-		height: auto;
-	}
-
-	:host(:not(.modal).left.open) dialog,
-	:host(:not(.modal).right.open) dialog,
-	:host(:not(.modal).top.open) dialog,
-	:host(:not(.modal).bottom.open) dialog {
-		transform: translateX(0);
-		transform: translateY(0);
+		width: 100%;
 	}
 
 	:host(.modal) {
