@@ -39,12 +39,6 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
-	private readonly onKeyDown = (event: KeyboardEvent) => {
-		if (event.key === 'Escape' && this.state._open) {
-			this.close();
-		}
-	};
-
 	public render(): JSX.Element {
 		return (
 			<Host
@@ -56,7 +50,7 @@ export class KolDrawer implements DrawerAPI {
 				}}
 				ref={(el) => (this.hostElement = el as HTMLElement)}
 			>
-				<dialog ref={(el) => (this.dialogElement = el as HTMLDialogElement)} open={this.state._open} onKeyDown={this.onKeyDown}>
+				<dialog ref={(el) => (this.dialogElement = el as HTMLDialogElement)} open={this.state._open}>
 					<div class="drawer-content" aria-label={this._label}>
 						<slot />
 					</div>
