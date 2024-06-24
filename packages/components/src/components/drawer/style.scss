@@ -16,7 +16,7 @@
 		pointer-events: auto;
 	}
 
-	:host(:not(.modal)) dialog {
+	:host dialog {
 		border: none;
 		margin: 0;
 		position: fixed;
@@ -24,33 +24,33 @@
 		background: white;
 	}
 
-	:host(.modal) .drawer-content {
+	:host .drawer-content {
 		overflow: auto;
 		width: auto;
 	}
 
-	:host(.modal.left) dialog {
+	:host(.left) dialog {
 		top: 0;
 		bottom: 0;
 		left: 0;
 		height: 100%;
 	}
 
-	:host(.modal.right) dialog {
+	:host(.right) dialog {
 		top: 0;
 		bottom: 0;
 		right: 0;
 		height: 100%;
 	}
 
-	:host(.modal.top) dialog {
+	:host(.top) dialog {
 		top: 0;
 		left: 0;
 		right: 0;
 		width: 100%;
 	}
 
-	:host(.modal.bottom) dialog {
+	:host(.bottom) dialog {
 		bottom: 0;
 		left: 0;
 		right: 0;
