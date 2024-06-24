@@ -1,8 +1,10 @@
 import { Routes } from '../../shares/types';
 import { DrawerBasic } from './basic';
+import { DrawerControlled } from './controlled';
 
 export const DRAWER_ROUTES: Routes = {
-	details: {
+	drawer: {
 		basic: DrawerBasic,
+		controlled: DrawerControlled,
 	},
 };

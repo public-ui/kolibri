@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import type { KoliBriModalEventCallbacks, LabelPropType, DrawerAPI, AlignPropType, DrawerStates } from '../../schema';
-import { setState, validateLabel } from '../../schema';
+import type { KoliBriModalEventCallbacks, LabelPropType, DrawerAPI, AlignPropType, OpenPropType, DrawerStates } from '../../schema';
+import { setState, validateLabel, validateOpen } from '../../schema';
 import { Component, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
@@ -16,17 +16,18 @@ import type { JSX } from '@stencil/core';
 	shadow: true,
 })
 export class KolDrawer implements DrawerAPI {
+	public hostElement?: HTMLElement;
+
 	@Method()
 	async open() {
-		this.state._open = true;
+		console.log("OPEN!")
+		this._open = true;
 	}
 
 	@Method()
 	async close() {
-		this.state._open = false;
-		if (this._on?.onClose) {
-			this._on.onClose();
-		}
+		this._open = false;
+		this._on?.onClose?.();
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -44,6 +45,7 @@ export class KolDrawer implements DrawerAPI {
 					modal: this._modal ?? false,
 					open: this.state._open,
 				}}
+				ref={(el) => (this.hostElement = el as HTMLElement)}
 			>
 				<div class="backdrop" onClick={() => this.close()}></div>
 				<dialog open={this.state._open} onKeyDown={this.onKeyDown}>
@@ -56,7 +58,12 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	/**
-	 * Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.
+	 * Specifies the default open state of the drawer.
+	 */
+	@Prop() public _open?: OpenPropType;
+
+	/**
+	 * Specifies the orientation of the drawer.
 	 */
 	@Prop() public _align?: AlignPropType = 'left';
 
@@ -66,12 +73,12 @@ export class KolDrawer implements DrawerAPI {
 	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Defines if drawer is a modal.
+	 * Indicates whether the drawer is a modal.
 	 */
 	@Prop() public _modal?: boolean;
 
 	/**
-	 * Specifies the EventCallback function for closing the drawer.
+	 * Specifies the EventCallback function to be called when the drawer is closing.
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
@@ -79,6 +86,13 @@ export class KolDrawer implements DrawerAPI {
 		_label: '', // ⚠ required
 		_open: false,
 	};
+
+	@Watch('_open')
+	public validateOpen(value?: OpenPropType): void {
+		if (typeof value === "boolean") {
+			validateOpen(this, value);
+		}
+	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
@@ -99,6 +113,7 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.validateOpen(this._open);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 	}
