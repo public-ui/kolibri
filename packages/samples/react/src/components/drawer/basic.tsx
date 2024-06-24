@@ -18,24 +18,20 @@ export const DrawerBasic: FC = () => {
 			<div>
 				<KolDrawer ref={drawerElement} _label="Ich bin ein Drawer" _align="top" _on={{ onClose: () => console.log('Drawer onClose triggered!') }}>
 					<div>
-						<p>
-							Lorem ipsum dolor sit amet
-						</p>
-						<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close()}}/>
+						<p>Lorem ipsum dolor sit amet</p>
+						<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
 					</div>
 				</KolDrawer>
-				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.open()}}/>
+				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.open() }} />
 			</div>
 			<div>
 				<KolDrawer ref={drawerModalElement} _modal _label="Ich bin ein Drawer Modal" _on={{ onClose: () => console.log('Drawer Modal onClose triggered!') }}>
 					<div>
-						<p>
-							Lorem ipsum dolor sit amet
-						</p>
-						<KolButton _label="Close drawer modal" _on={{ onClick: () => drawerModalElement.current?.close()}}/>
+						<p>Lorem ipsum dolor sit amet</p>
+						<KolButton _label="Close drawer modal" _on={{ onClick: () => drawerModalElement.current?.close() }} />
 					</div>
 				</KolDrawer>
-				<KolButton _label="Open drawer as modal" _on={{ onClick: () => drawerModalElement.current?.open()}}/>
+				<KolButton _label="Open drawer as modal" _on={{ onClick: () => drawerModalElement.current?.open() }} />
 			</div>
 		</>
 	);

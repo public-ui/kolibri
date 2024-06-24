@@ -5,7 +5,7 @@ import type { KoliBriModalEventCallbacks } from '../types';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
-	open: OpenPropType
+	open: OpenPropType;
 	on: KoliBriModalEventCallbacks;
 };
 type RequiredStates = {

@@ -6,7 +6,7 @@ import { Component, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import type { JSX } from '@stencil/core';
 
 /**
- * @slot - Der Inhalt des Drawers.
+ * @slot - The Content of drawer.
  */
 @Component({
 	tag: 'kol-drawer',
@@ -22,10 +22,10 @@ export class KolDrawer implements DrawerAPI {
 	@Method()
 	async open() {
 		if (this._modal) {
-			this.dialogElement?.showModal()
+			this.dialogElement?.showModal();
 		} else {
 			this._open = true;
-			this.dialogElement?.show()
+			this.dialogElement?.show();
 		}
 	}
 
@@ -33,7 +33,7 @@ export class KolDrawer implements DrawerAPI {
 	async close() {
 		this._on?.onClose?.();
 		if (this._modal) {
-			this.dialogElement?.close()
+			this.dialogElement?.close();
 		} else {
 			this._open = false;
 		}
@@ -93,7 +93,7 @@ export class KolDrawer implements DrawerAPI {
 
 	@Watch('_open')
 	public validateOpen(value?: OpenPropType): void {
-		if (typeof value === "boolean") {
+		if (typeof value === 'boolean') {
 			validateOpen(this, value);
 		}
 	}

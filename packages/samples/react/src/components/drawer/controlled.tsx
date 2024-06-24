@@ -5,7 +5,7 @@ import { KolDrawer, KolButton } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const DrawerControlled: FC = () => {
-    const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(true);
 	return (
 		<div>
 			<SampleDescription>
@@ -17,10 +17,8 @@ export const DrawerControlled: FC = () => {
 			<div>
 				<KolDrawer _open={open} _align="left" _label="Ich bin ein kotrollierter Drawer" _on={{ onClose: () => setOpen(false) }}>
 					<div>
-						<p>
-							Lorem ipsum dolor sit amet,
-						</p>
-                        <KolButton _label="Close drawer" _on={{ onClick: () => setOpen(false)}}/>
+						<p>Lorem ipsum dolor sit amet,</p>
+						<KolButton _label="Close drawer" _on={{ onClick: () => setOpen(false) }} />
 					</div>
 				</KolDrawer>
 			</div>
