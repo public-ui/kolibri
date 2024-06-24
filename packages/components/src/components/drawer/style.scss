@@ -16,22 +16,7 @@
 		pointer-events: auto;
 	}
 
-	.backdrop {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: rgba(0, 0, 0, 0.5);
-		opacity: 0;
-		transition: opacity 0.3s ease-in-out;
-	}
-
-	:host(.open) .backdrop {
-		opacity: 1;
-	}
-
-	dialog {
+	:host(:not(.modal)) dialog {
 		border: none;
 		padding: 0;
 		margin: 0;
@@ -46,13 +31,13 @@
 		transition: transform 0.3s ease-in-out;
 	}
 
-	.drawer-content {
+	:host(:not(.modal)) .drawer-content {
 		overflow: auto;
 		width: 100%;
 		height: 100%;
 	}
 
-	:host(.left) dialog {
+	:host(:not(.modal).left) dialog {
 		top: 0;
 		bottom: 0;
 		left: 0;
@@ -60,7 +45,7 @@
 		width: auto;
 	}
 
-	:host(.right) dialog {
+	:host(:not(.modal).right) dialog {
 		top: 0;
 		bottom: 0;
 		right: 0;
@@ -68,7 +53,7 @@
 		width: auto;
 	}
 
-	:host(.top) dialog {
+	:host(:not(.modal).top) dialog {
 		top: 0;
 		left: 0;
 		right: 0;
@@ -76,7 +61,7 @@
 		height: auto;
 	}
 
-	:host(.bottom) dialog {
+	:host(:not(.modal).bottom) dialog {
 		bottom: 0;
 		left: 0;
 		right: 0;
@@ -84,10 +69,10 @@
 		height: auto;
 	}
 
-	:host(.left.open) dialog,
-	:host(.right.open) dialog,
-	:host(.top.open) dialog,
-	:host(.bottom.open) dialog {
+	:host(:not(.modal).left.open) dialog,
+	:host(:not(.modal).right.open) dialog,
+	:host(:not(.modal).top.open) dialog,
+	:host(:not(.modal).bottom.open) dialog {
 		transform: translateX(0);
 		transform: translateY(0);
 	}

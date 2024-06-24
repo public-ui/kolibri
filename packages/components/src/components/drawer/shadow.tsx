@@ -17,17 +17,26 @@ import type { JSX } from '@stencil/core';
 })
 export class KolDrawer implements DrawerAPI {
 	public hostElement?: HTMLElement;
+	private dialogElement?: HTMLDialogElement;
 
 	@Method()
 	async open() {
-		console.log("OPEN!")
-		this._open = true;
+		if (this._modal) {
+			this.dialogElement?.showModal()
+		} else {
+			this._open = true;
+			this.dialogElement?.show()
+		}
 	}
 
 	@Method()
 	async close() {
-		this._open = false;
 		this._on?.onClose?.();
+		if (this._modal) {
+			this.dialogElement?.close()
+		} else {
+			this._open = false;
+		}
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -47,8 +56,7 @@ export class KolDrawer implements DrawerAPI {
 				}}
 				ref={(el) => (this.hostElement = el as HTMLElement)}
 			>
-				<div class="backdrop" onClick={() => this.close()}></div>
-				<dialog open={this.state._open} onKeyDown={this.onKeyDown}>
+				<dialog ref={(el) => (this.dialogElement = el as HTMLDialogElement)} open={this.state._open} onKeyDown={this.onKeyDown}>
 					<div class="drawer-content" aria-label={this._label}>
 						<slot />
 					</div>

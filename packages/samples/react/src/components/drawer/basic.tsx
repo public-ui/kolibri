@@ -6,6 +6,7 @@ import { SampleDescription } from '../SampleDescription';
 
 export const DrawerBasic: FC = () => {
 	const drawerElement = useRef<HTMLKolDrawerElement>(null);
+	const drawerModalElement = useRef<HTMLKolDrawerElement>(null);
 	return (
 		<>
 			<SampleDescription>
@@ -28,6 +29,21 @@ export const DrawerBasic: FC = () => {
 					</div>
 				</KolDrawer>
 				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.open()}}/>
+			</div>
+			<div>
+				<KolDrawer ref={drawerModalElement} _modal _label="Ich bin ein Drawer Modal" _on={{ onClose: () => console.log('Drawer Modal onClose triggered!') }}>
+					<div>
+						<p>
+							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+							amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+							diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+							sit amet.
+						</p>
+						<KolButton _label="Close drawer modal" _on={{ onClick: () => drawerModalElement.current?.close()}}/>
+					</div>
+				</KolDrawer>
+				<KolButton _label="Open drawer as modal" _on={{ onClick: () => drawerModalElement.current?.open()}}/>
 			</div>
 		</>
 	);
