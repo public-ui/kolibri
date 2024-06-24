@@ -2,62 +2,44 @@
 @import '../style';
 
 @layer kol-component {
-	:host {
-		display: block;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-	}
-
-	:host(.open) {
-		pointer-events: auto;
-	}
-
-	:host dialog {
+	dialog {
+		padding: 0;
 		border: none;
-		margin: 0;
+	}
+
+	.drawer-wrapper {
 		position: fixed;
-		overflow: hidden;
+		width: auto;
+		overflow: auto;
 		background: white;
 	}
 
-	:host .drawer-content {
-		overflow: auto;
-		width: auto;
+	.drawer-content {
+		position: relative;
+		padding: 0.5em;
 	}
 
-	:host(.left) dialog {
+	:host(.left) .drawer-wrapper {
 		top: 0;
-		bottom: 0;
 		left: 0;
 		height: 100%;
 	}
 
-	:host(.right) dialog {
+	:host(.right) .drawer-wrapper {
 		top: 0;
-		bottom: 0;
 		right: 0;
 		height: 100%;
 	}
 
-	:host(.top) dialog {
+	:host(.top) .drawer-wrapper {
+		left: 0;
 		top: 0;
-		left: 0;
-		right: 0;
 		width: 100%;
 	}
 
-	:host(.bottom) dialog {
+	:host(.bottom) .drawer-wrapper {
+		left: 0;
 		bottom: 0;
-		left: 0;
-		right: 0;
 		width: 100%;
-	}
-
-	:host(.modal) {
-		display: block;
-	}
+	}	
 }

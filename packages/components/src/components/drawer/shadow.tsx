@@ -51,8 +51,10 @@ export class KolDrawer implements DrawerAPI {
 				ref={(el) => (this.hostElement = el as HTMLElement)}
 			>
 				<dialog ref={(el) => (this.dialogElement = el as HTMLDialogElement)} open={this.state._open}>
-					<div class="drawer-content" aria-label={this._label}>
-						<slot />
+					<div class="drawer-wrapper" aria-label={this._label}>
+						<div class="drawer-content">
+							<slot />
+						</div>
 					</div>
 				</dialog>
 			</Host>
