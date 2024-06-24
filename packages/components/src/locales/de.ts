@@ -41,6 +41,6 @@ export default {
 	'nav-label-open': 'Untermenü zu {{label}} öffnen',
 	'nav-label-close': 'Untermenü zu {{label}} schließen',
 	'close-alert': 'Benachrichtigung {{label}} schließen',
-	'show-password': 'Password anzeigen',
-	'hide-password': 'Password verbergen',
+	'show-password': 'einblenden',
+	'hide-password': 'ausblenden',
 };

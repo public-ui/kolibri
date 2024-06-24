@@ -1,5 +1,6 @@
 import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff } from '../../schema';
 import { validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
+import { PasswordVariantPropType, validatePasswordVariant } from '../../schema/props/variant/input-password';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -27,6 +28,10 @@ export class InputPasswordController extends InputIconController implements Inpu
 	}
 	public validatePasswordVisible(value?: boolean): void {
 		watchBoolean(this.component, '_passwordVisible', value);
+	}
+
+	public validateVariant(value?: PasswordVariantPropType): void {
+		validatePasswordVariant(this.component, value);
 	}
 
 	public validateMaxLength(value?: number): void {
@@ -66,6 +71,7 @@ export class InputPasswordController extends InputIconController implements Inpu
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);
 		this.validateValue(this.component._value);
+		this.validateVariant(this.component._variant);
 		this.validatePasswordVisible(this.component._passwordVisible);
 	}
 }

@@ -9,8 +9,12 @@
 		font-size: rem(16);
 	}
 
-	.kol-button-wc {
-		position: absolute;
-		transform: translateX(-100%);
+	.password-toggle-button {
+		position: absolute !important;
+		transform: translateX(-100%) !important;
+	}
+
+	.kol-tooltip-wc {
+		--kol-tooltip-width: 10rem;
 	}
 }

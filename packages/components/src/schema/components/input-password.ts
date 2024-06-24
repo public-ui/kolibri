@@ -16,6 +16,7 @@ import type {
 } from '../props';
 import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHorizontalIcons, Stringified } from '../types';
 import type { ButtonProps } from './button';
+import { PropPasswordVariant } from '../props/variant/input-password';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -36,7 +37,8 @@ type OptionalProps = {
 	tabIndex: number;
 	value: string;
 	passwordVisible: boolean;
-} & PropDisabled &
+} & PropPasswordVariant &
+	PropDisabled &
 	PropHasCounter &
 	PropHideError &
 	PropHideLabel &
@@ -67,7 +69,8 @@ type OptionalStates = {
 	tabIndex: number;
 	value: string | null;
 	passwordVisible: boolean;
-} & PropDisabled &
+} & PropPasswordVariant &
+	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
 	PropMsg &
