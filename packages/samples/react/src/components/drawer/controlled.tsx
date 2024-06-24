@@ -13,9 +13,8 @@ export const DrawerControlled: FC = () => {
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 			<SampleDescription>
 				<p>
-					Hier ist ein Beispiel für einen kontrollierten Drawer. Dieser lässt sich öffnen und schließen über das Attribut _open.
-					Ein Drawer als Modal (_modal) ist nur unkontrolliert möglich.
-					Der Drawer kann über das Attribut _align links, oben, rechts oder unten ausgerichtet werden.
+					Hier ist ein Beispiel für einen kontrollierten Drawer. Dieser lässt sich öffnen und schließen über das Attribut _open. Ein Drawer als Modal (_modal)
+					ist nur unkontrolliert möglich. Der Drawer kann über das Attribut _align links, oben, rechts oder unten ausgerichtet werden.
 				</p>
 			</SampleDescription>
 			<div>

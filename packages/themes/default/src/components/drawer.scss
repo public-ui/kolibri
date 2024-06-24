@@ -1,15 +1,15 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	:host .drawer-wrapper {   
+	:host .drawer-wrapper {
 		box-shadow: 0 0 rem(4) var(--color-subtle);
 	}
 
-    // :host .drawer-wrapper {
-    //     transition: transform 1s ease-in-out;
-    // }
+	// :host .drawer-wrapper {
+	//     transition: transform 1s ease-in-out;
+	// }
 
-    // :host(.left) .drawer-wrapper {
+	// :host(.left) .drawer-wrapper {
 	// 	transform: translateX(-100%);
 	// }
 
@@ -25,7 +25,7 @@
 	// 	transform: translateY(100%);
 	// }
 
-    // :host(.left.open) .drawer-wrapper,
+	// :host(.left.open) .drawer-wrapper,
 	// :host(.right.open) .drawer-wrapper,
 	// :host(.top.open) .drawer-wrapper,
 	// :host(.bottom.open) .drawer-wrapper {
