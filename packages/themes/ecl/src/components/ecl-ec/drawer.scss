@@ -1,2 +1,5 @@
 @layer kol-theme-component {
+	:host .drawer-wrapper {   
+		box-shadow: 0 0 calc(var(--spacing-2xs) / 2) var(--color-black);
+	}
 }

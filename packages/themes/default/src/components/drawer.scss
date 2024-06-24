@@ -1,2 +1,34 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
+	:host .drawer-wrapper {   
+		box-shadow: 0 0 rem(4) var(--color-subtle);
+	}
+
+    // :host .drawer-wrapper {
+    //     transition: transform 1s ease-in-out;
+    // }
+
+    // :host(.left) .drawer-wrapper {
+	// 	transform: translateX(-100%);
+	// }
+
+	// :host(.right)  .drawer-wrapper {
+	// 	transform: translateX(100%);
+	// }
+
+	// :host(.top)  .drawer-wrapper {
+	// 	transform: translateY(-100%);
+	// }
+
+	// :host(.bottom)  .drawer-wrapper {
+	// 	transform: translateY(100%);
+	// }
+
+    // :host(.left.open) .drawer-wrapper,
+	// :host(.right.open) .drawer-wrapper,
+	// :host(.top.open) .drawer-wrapper,
+	// :host(.bottom.open) .drawer-wrapper {
+	// 	transform: translate(0, 0);
+	// }
 }

@@ -1,17 +1,21 @@
 import type { FC } from 'react';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
-import { KolDrawer, KolButton } from '@public-ui/react';
+import { HideMenusContext } from '../../shares/HideMenusContext';
+import { KolDrawer, KolButton, KolBadge } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const DrawerControlled: FC = () => {
+	const hideMenus = useContext(HideMenusContext);
 	const [open, setOpen] = useState(true);
 	return (
 		<div>
+			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 			<SampleDescription>
 				<p>
-					Hier ist ein Beispiel für ein Drawer. Es lässt sich öffnen und schließen mit Methoden. Dadurch erscheint ein Popup mit Text und &apos;Schließen&apos;
-					Button. Durch anklicken des &apos;Schließen&apos; Button, schließt sich das Modal wieder.
+					Hier ist ein Beispiel für einen kontrollierten Drawer. Dieser lässt sich öffnen und schließen über das Attribut _open.
+					Ein Drawer als Modal (_modal) ist nur unkontrolliert möglich.
+					Der Drawer kann über das Attribut _align links, oben, rechts oder unten ausgerichtet werden.
 				</p>
 			</SampleDescription>
 			<div>
@@ -21,6 +25,7 @@ export const DrawerControlled: FC = () => {
 						<KolButton _label="Close drawer" _on={{ onClick: () => setOpen(false) }} />
 					</div>
 				</KolDrawer>
+				<KolButton _label="Open drawer as modal" _on={{ onClick: () => setOpen(true) }} />
 			</div>
 		</div>
 	);

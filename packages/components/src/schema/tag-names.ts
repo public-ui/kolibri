@@ -12,6 +12,7 @@ export enum TagEnum {
 	'card',
 	'combobox',
 	'details',
+	'drawer',
 	'form',
 	'heading',
 	'icon',
