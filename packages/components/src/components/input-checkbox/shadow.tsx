@@ -40,17 +40,19 @@ import { KolIconTag, KolInputWcTag } from '../../core/component-names';
 })
 export class KolInputCheckbox implements InputCheckboxAPI {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
-	private ref?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
 		propagateFocus(this.host, ref);
 	};
 
+	private getModelValue(): StencilUnknown {
+		return this._checked ? this.state._value : null;
+	}
+
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<boolean | undefined> {
-		return this.ref?.checked;
+	public async getValue(): Promise<StencilUnknown> {
+		return this.getModelValue();
 	}
 
 	public render(): JSX.Element {
@@ -385,7 +387,7 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 		this._checked = !this._checked;
 		this._indeterminate = false;
 
-		const value = this._checked ? this.state._value : null;
+		const value = this.getModelValue();
 
 		// Event handling
 		tryToDispatchKoliBriEvent('input', this.host, value);
@@ -397,7 +399,7 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 	};
 
 	private onChange = (event: Event): void => {
-		const value = this._checked ? this.state._value : null;
+		const value = this.getModelValue();
 
 		// Event handling
 		// stopPropagation(event);
