@@ -1,6 +1,6 @@
 import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
 
-import { Log, processEnv } from '../schema';
+import { Log } from '../schema';
 import { setMode } from '@stencil/core';
 
 setMode((elm) => {
@@ -27,8 +27,3 @@ import('./devtools')
 	.catch((error) => {
 		Log.error(error);
 	});
-
-/* Import scripts necessary for the development server, i.e. the /dev/*.html files. Only include in development environment. */
-if (processEnv === 'development') {
-	import('../dev');
-}
