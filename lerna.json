@@ -1,12 +1,9 @@
 {
 	"packages": [
-		"packages/adapters/angular/v11",
-		"packages/adapters/angular/v12",
-		"packages/adapters/angular/v13",
-		"packages/adapters/angular/v14",
 		"packages/adapters/angular/v15",
 		"packages/adapters/angular/v16",
 		"packages/adapters/angular/v17",
+		"packages/adapters/angular/v18",
 		"packages/adapters/hydrate",
 		"packages/adapters/preact",
 		"packages/adapters/react",

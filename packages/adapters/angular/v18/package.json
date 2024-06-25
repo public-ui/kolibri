@@ -1,5 +1,5 @@
 {
-	"name": "@public-ui/angular-v14",
+	"name": "@public-ui/angular-v18",
 	"version": "2.1.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -16,7 +16,7 @@
 		"email": "kolibri@itzbund.de"
 	},
 	"sideEffects": false,
-	"description": "Angular (v14) framework adapter for KoliBri - The accessible HTML-Standard.",
+	"description": "Angular (v18) framework adapter for KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
 		"accessible",
@@ -66,24 +66,24 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "14.3.0",
-		"@angular/compiler": "14.3.0",
-		"@angular/compiler-cli": "14.3.0",
-		"@angular/core": "14.3.0",
+		"@angular/common": "18.0.4",
+		"@angular/compiler": "18.0.4",
+		"@angular/compiler-cli": "18.0.4",
+		"@angular/core": "18.0.4",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
-		"@types/node": "ts4.8",
+		"@types/node": "ts5.3",
 		"@types/normalize-package-data": "2.4.4",
 		"prettier": "3.3.1",
 		"rimraf": "5.0.7",
 		"rxjs": "7.8.1",
 		"tslib": "2.6.3",
-		"typescript": "4.8.4",
-		"zone.js": "0.12.0"
+		"typescript": "5.4.5",
+		"zone.js": "0.14.7"
 	},
 	"peerDependencies": {
-		"@angular/core": "14.3.0",
+		"@angular/core": "18.0.4",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [
