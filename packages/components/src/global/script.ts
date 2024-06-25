@@ -1,7 +1,6 @@
 import { setMode } from '@stencil/core';
 import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
 import { Log } from '../utils/dev.utils';
-import { processEnv } from '../utils/reuse';
 
 setMode((elm) => {
 	if (elm.shadowRoot instanceof ShadowRoot) {
@@ -19,8 +18,3 @@ import('./devtools')
 	.catch((error) => {
 		Log.error(error);
 	});
-
-/* Import scripts necessary for the development server, i.e. the /dev/*.html files. Only include in development environment. */
-if (processEnv === 'development') {
-	import('../dev');
-}
