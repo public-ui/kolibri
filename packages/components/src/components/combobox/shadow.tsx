@@ -49,7 +49,16 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private toggleListbox = () => {
-		this._isOpen = this.state._disabled === true ? false : !this._isOpen;
+		if (this.state._disabled === true) {
+			this._isOpen = false;
+		} else {
+			this._isOpen = !this._isOpen;
+			if (this._isOpen && Array.isArray(this._filteredSuggestions) && this._filteredSuggestions.length > 0) {
+				const selectedIndex = this._filteredSuggestions.findIndex((option) => option === this._value);
+				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				this.focusOption(this._focusedOptionIndex);
+			}
+		}
 	};
 
 	private selectOption(option: string) {
@@ -86,15 +95,17 @@ export class KolCombobox implements ComboboxAPI {
 		if (!this._filteredSuggestions) {
 			return;
 		}
-		let index = 0;
-		if (delta < this._filteredSuggestions.length) {
-			const optionLength = this._filteredSuggestions.length;
-			index = (this._focusedOptionIndex + delta + optionLength) % optionLength;
-			if (index < 0) {
-				index = optionLength - 1;
-			}
+		let newIndex = this._focusedOptionIndex + delta;
+
+		if (newIndex >= this._filteredSuggestions.length) {
+			newIndex = 0;
 		}
-		this._focusedOptionIndex = index;
+
+		if (newIndex < 0) {
+			newIndex = this._filteredSuggestions.length - 1;
+		}
+
+		this._focusedOptionIndex = newIndex;
 		this.focusOption(this._focusedOptionIndex);
 	}
 
@@ -170,6 +181,8 @@ export class KolCombobox implements ComboboxAPI {
 									accessKey={this.state._accessKey}
 									aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 									aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+									aria-labelledby={this.state._id}
+									aria-activedescendant={this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined}
 									autoCapitalize="off"
 									autoCorrect="off"
 									disabled={this.state._disabled}
@@ -193,6 +206,7 @@ export class KolCombobox implements ComboboxAPI {
 										this._filteredSuggestions.length > 0 &&
 										this._filteredSuggestions.map((option, index) => (
 											<li
+												id={`option-${index}`}
 												key={`-${index}`}
 												ref={(el) => {
 													if (el) this.refSuggestions[index] = el;

@@ -1,5 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
-import { patchTheme, patchThemeTag } from 'adopted-style-sheets';
+import { getCssStyle, patchTheme, patchThemeTag } from 'adopted-style-sheets';
 import { querySelectorAll } from 'query-selector-all-shadow-root';
 import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
@@ -475,6 +475,7 @@ export class KoliBriUtils {
 }
 
 export class KoliBriDevHelper {
+	public static readonly getCssStyle = getCssStyle;
 	public static readonly patchTheme = patchTheme;
 	public static readonly patchThemeTag = patchThemeTag;
 	public static readonly querySelector = koliBriQuerySelector;

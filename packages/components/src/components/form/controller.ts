@@ -1,12 +1,14 @@
 import type { FormProps } from '../../schema';
+import { Log } from '../../schema';
 import { devHint, getExperimentalMode, KoliBriDevHelper, setEventTarget } from '../../schema';
+import { KolFormTag } from '../../core/component-names';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimentalMode()) {
 		devHint(`↓ Search form element start.`);
-		console.log(el);
+		Log.debug(el);
 	}
-	while (el instanceof HTMLElement && el.tagName !== 'FORM' && el.tagName !== 'KOL-FORM') {
+	while (el instanceof HTMLElement && el.tagName !== 'FORM' && el.tagName !== KolFormTag.toUpperCase()) {
 		try {
 			if (el.parentElement instanceof HTMLElement) {
 				el = el.parentElement;
@@ -23,7 +25,7 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 			 */
 		}
 		if (getExperimentalMode()) {
-			console.log(el);
+			Log.debug(el);
 			devHint(`↑ Search form element finished.`);
 		}
 	}
@@ -45,7 +47,7 @@ export const propagateResetEventToForm = (
 		if (form.tagName === 'FORM') {
 			setEventTarget(event, form);
 			form.dispatchEvent(event);
-		} else if (form.tagName === 'KOL-FORM') {
+		} else if (form.tagName === KolFormTag.toUpperCase()) {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as FormProps;
 			if (typeof kolForm._on?.onReset === 'function') {
@@ -95,7 +97,7 @@ export const propagateSubmitEventToForm = (
 					form.dispatchEvent(event);
 				}
 			});
-		} else if (form.tagName === 'KOL-FORM') {
+		} else if (form.tagName === KolFormTag.toUpperCase()) {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as FormProps;
 			// Use setTimeout to ensure onChange has been called first

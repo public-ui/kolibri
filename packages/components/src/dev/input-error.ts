@@ -1,6 +1,5 @@
 const input = document.querySelector('kol-input-text');
 if (input) {
-	console.log(input);
 	setInterval(() => {
 		const error = input.hasAttribute('_error');
 		if (error) {

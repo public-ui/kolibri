@@ -1,0 +1,174 @@
+name: Report a bug
+description: All relevant bugs, e.g. faulty components or examples
+title: '🐞 Bug: '
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This template is to report KoliBri bugs. Documentation related bug should be reported using [this](https://github.com/public-ui/kolibri/issues/new/choose) issue template instead.
+        Feature requests should be opened as [discussions](https://github.com/public-ui/kolibri/discussions/new?category=ideas).
+
+        Before opening a new issue, please do a [search](https://github.com/public-ui/kolibri/issues) of existing issues and :+1: upvote the existing issue instead. This will result in a quicker resolution.
+
+        If you need help with your own project, you can start a discussion in the ["Q&A" section](https://github.com/public-ui/kolibri/discussions/new?category=q-a)
+
+        Please fill out the form:
+        ------------------------------------------------------------------------------------------------------
+  - type: checkboxes
+    id: verify_release
+    attributes:
+      label: Verify current release
+      options:
+        - label: I verified that the issue exists in the latest KoliBri v1 or v2 release
+          required: true
+  - type: input
+    id: reproduction_url
+    attributes:
+      label: Link to the code that reproduces this issue
+      description: |
+        A link to a **public** GitHub repository or a StackBlitz minimal reproduction. Minimal reproductions should be created from our actual released versions (e.g. v1, v2, ...) and should include only changes that contribute to the issue. StackBlitz templates can be found under the followjng url's:
+
+        - [KoliBri (v1)](https://stackblitz.com/edit/vitejs-vite-dcg6xo)
+        - [KoliBri (v2)](https://stackblitz.com/edit/vitejs-vite-kkfhk5)
+      placeholder: 'https://github.com/user/my-minimal-kolibri-issue-reproduction or https://stackblitz.com/edit/XXXXXX'
+    validations:
+      required: false
+  - type: dropdown
+    id: affected_themes
+    attributes:
+      label: Which theme(s) are affected?
+      description: |
+        If you are not sure select "Not sure". If you see the bug in all themes select "All" or select theme by theme were the bug occurs.
+      multiple: true
+      options:
+        - 'Not sure'
+        - 'All'
+        - 'Bundesministerium der Finanzen'
+        - 'Default'
+        - 'European Comission'
+        - 'European Union'
+        - 'Informationstechnikzentrum Bund'
+        - 'Unstyled'
+    validations:
+      required: true
+  - type: input
+    id: error_category
+    attributes:
+      label: Can you categorise where the error occurs? (If known)
+      placeholder: Native (Web Component), React, Angular, ...
+    validations:
+      required: false
+  - type: input
+    id: browser_info
+    attributes:
+      label: Which browser or operating system do you used to test KoliBri? (If available)
+      placeholder: Firefox, Chrome, iOS 12.4, ...
+    validations:
+      required: false
+  - type: dropdown
+    id: affected_components
+    attributes:
+      label: Which component/area(s) are affected? (Select all that apply)
+      multiple: true
+      options:
+        - 'Not sure'
+        - 'Abbr'
+        - 'Accordion'
+        - 'Alert'
+        - 'Avatar'
+        - 'Badge'
+        - 'Breadcrumb'
+        - 'Button-Group'
+        - 'Button-Link'
+        - 'Button'
+        - 'Card'
+        - 'Combobox'
+        - 'Details'
+        - 'Form'
+        - 'Heading'
+        - 'Icon'
+        - 'Image'
+        - 'Indented-Text'
+        - 'Input-Checkbox'
+        - 'Input-Color'
+        - 'Input-Date'
+        - 'Input-Email'
+        - 'Input-File'
+        - 'Input-Number'
+        - 'Input-Password'
+        - 'Input-Radio'
+        - 'Input-Range'
+        - 'Input-Text'
+        - 'Link-Button'
+        - 'Link-Group'
+        - 'Link'
+        - 'Modal'
+        - 'Nav'
+        - 'Pagination'
+        - 'Progress'
+        - 'Quote'
+        - 'Select'
+        - 'Spin'
+        - 'Split-Button'
+        - 'Table'
+        - 'Tabs'
+        - 'Textarea'
+        - 'Toast'
+        - 'Toolbar'
+        - 'Tree'
+        - 'Version'
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: To Reproduce
+      description: |
+        A step-by-step description of how to reproduce the issue. Screenshots can be provided in the issue body below. If using code blocks, make sure that [syntax highlighting is correct](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#syntax-highlighting) and double check that the rendered preview is not broken.
+      placeholder: |
+        1. Click X
+        2. Y will happen
+        3. Z throws a bug
+    validations:
+      required: true
+  - type: textarea
+    id: current_vs_expected_behavior
+    attributes:
+      label: Current vs. Expected behavior
+      description: |
+        A clear and concise description of what the bug is, and what you expected to happen.
+      placeholder: 'Following the steps from the previous section, I expected A to happen, but I observed B instead'
+    validations:
+      required: true
+  - type: textarea
+    id: environment_info
+    attributes:
+      label: Provide environment information
+      description: |
+        Please run `npx @public-ui/kolibri-cli info` in the root directory of your project and paste the results.
+      render: bash
+      placeholder: |
+        {
+          "Operating System": {
+            "platform": "darwin",
+            "arch": "arm64",
+            "version": "23.2.0"
+          },
+          "Binaries": {
+            "node": "v20.9.0",
+            "npm": "10.1.0",
+            "yarn": "3.2.4",
+            "pnpm": "9.1.3"
+          },
+          "Relevant Packages": {
+            "@public-ui/core": "N/A",
+            "@public-ui/react": "^2.1.1",
+            "@public-ui/...": "N/A",
+            "react": "^18.3.1",
+            "react-dom": "^18.3.1",
+            "typescript": "N/A"
+          }
+        }
+    validations:
+      required: true

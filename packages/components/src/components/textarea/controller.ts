@@ -1,10 +1,10 @@
 import type { CSSResize, HasCounterPropType, RowsPropType, TextareaProps, TextareaWatches } from '../../schema';
 import { cssResizeOptions, validateRows, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 
-import { InputController } from '../@deprecated/input/controller';
+import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
-export class TextareaController extends InputController implements TextareaWatches {
+export class TextareaController extends InputIconController implements TextareaWatches {
 	protected readonly component: Generic.Element.Component & TextareaProps;
 
 	public constructor(component: Generic.Element.Component & TextareaProps, name: string, host?: HTMLElement) {

@@ -1,0 +1,7 @@
+contact_links:
+  - name: Report a feature request
+    url: https://github.com/public-ui/kolibri/discussions/new?category=ideas
+    about: Feature or docs requests should be opened as discussions.
+  - name: Ask a question
+    url: https://github.com/public-ui/kolibri/discussions/new?category=q-a
+    about: Ask questions and discuss with other community members.

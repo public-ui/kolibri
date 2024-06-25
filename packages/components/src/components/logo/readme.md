@@ -1,5 +1,7 @@
 # Logo
 
+> **[DEPRECATED]**: Das Logo wird eine interne Komponente.
+
 Mit Hilfe der **Logo**-Komponente können an beliebigen Positionen die Logos verschiedener Bundesinstitutionen ausgegeben werden. Das Logo wird dabei aus einer Sammlung von SVG-Grafiken zusammengesetzt, die fertig konstruiert vorliegen.
 
 ## Konstruktion
@@ -49,6 +51,8 @@ Das Attribut **`_org`** wird für die Definition des gewünschten Logos verwende
 **BMZ** = **_Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung_**
 
 <!-- Auto Generated Below -->
+
+> **[DEPRECATED]**
 
 ## Properties
 

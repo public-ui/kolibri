@@ -8,6 +8,11 @@ const tabs = [
 	{
 		_icons: 'codicon codicon-pie-chart',
 		_label: 'Erster Tab',
+		_on: {
+			onSelect: (event) => {
+				console.log('Erster Tab ausgewählt', event);
+			},
+		},
 	},
 	{
 		_icons: 'codicon codicon-calendar',

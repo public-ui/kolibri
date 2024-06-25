@@ -1,4 +1,5 @@
 import type { Toast, ToasterOptions } from '../../schema';
+import { Log } from '../../schema';
 import { KolToastContainerTag } from '../../core/component-names';
 import { isInitialized } from '../../core/bootstrap';
 
@@ -37,7 +38,7 @@ export class ToasterService {
 			this.toastContainerElement = undefined;
 			element.remove();
 		} else {
-			console.warn('Toaster service is already disposed.');
+			Log.warn('Toaster service is already disposed.', { forceLog: true });
 		}
 	}
 
@@ -55,9 +56,9 @@ export class ToasterService {
 		}
 	}
 
-	public closeAll(): void {
+	public closeAll(immediate: boolean = false): void {
 		if (this.toastContainerElement && typeof this.toastContainerElement.closeAll === 'function') {
-			void this.toastContainerElement.closeAll();
+			void this.toastContainerElement.closeAll(immediate);
 		}
 	}
 }

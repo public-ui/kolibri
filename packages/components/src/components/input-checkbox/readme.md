@@ -107,11 +107,11 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 ## Methods
 
-### `getValue() => Promise<boolean | undefined>`
+### `getValue() => Promise<StencilUnknown>`
 
 #### Returns
 
-Type: `Promise<boolean | undefined>`
+Type: `Promise<StencilUnknown>`
 
 ## Slots
 

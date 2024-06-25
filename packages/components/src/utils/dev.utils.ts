@@ -37,7 +37,7 @@ export const initKoliBri = (): void => {
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 |  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 \`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.1.1
+🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.1.2
 	`,
 		{
 			forceLog: true,

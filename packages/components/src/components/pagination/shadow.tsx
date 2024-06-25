@@ -42,6 +42,18 @@ const rightDoubleArrowIcon = {
 	right: 'codicon codicon-debug-continue',
 };
 
+function getUserLanguage(): string {
+	const userLanguage = navigator.language || 'de-DE';
+	const normalizedLanguage = userLanguage.includes('-') ? userLanguage : `${userLanguage}-${userLanguage.toUpperCase()}`;
+	return normalizedLanguage;
+}
+const userLanguage = getUserLanguage();
+const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
+	style: 'decimal',
+	minimumFractionDigits: 0,
+	maximumFractionDigits: 0,
+});
+
 @Component({
 	tag: 'kol-pagination',
 	styleUrls: {
@@ -306,7 +318,7 @@ export class KolPagination implements PaginationAPI {
 					}}
 				>
 					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-page')}</span> {page}
+						<span class="visually-hidden">{translate('kol-page')}</span> {NUMBER_FORMATTER.format(page)}
 					</span>
 				</KolButtonWcTag>
 			</li>
@@ -318,7 +330,7 @@ export class KolPagination implements PaginationAPI {
 			<li key={nonce()}>
 				<KolButtonWcTag class="selected" _customClass={this.state._customClass} _disabled={true} _label="">
 					<span slot="expert">
-						<span class="visually-hidden">{translate('kol-page')}</span> {page}
+						<span class="visually-hidden">{translate('kol-page')}</span> {NUMBER_FORMATTER.format(page)}
 					</span>
 				</KolButtonWcTag>
 			</li>

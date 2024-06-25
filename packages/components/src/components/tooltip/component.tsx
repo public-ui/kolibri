@@ -191,7 +191,8 @@ export class KolTooltipWc implements TooltipAPI {
 			} else {
 				this.hideTooltip();
 			}
-		}, 250);
+			// Timing Guidelines for Exposing Hidden Content: https://www.nngroup.com/articles/timing-exposing-content/
+		}, 300);
 	};
 
 	public componentWillLoad(): void {

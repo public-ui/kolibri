@@ -140,6 +140,16 @@ ROUTES.set('details/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('form/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('form/error-list', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('heading/badge', {
 	axe: {
 		skipFailures: false,
@@ -224,11 +234,6 @@ ROUTES.set('link/image', {
 	},
 });
 ROUTES.set('link/target', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('logo/basic', {
 	axe: {
 		skipFailures: false,
 	},
@@ -421,3 +426,25 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 		skipFailures: false,
 	},
 });
+
+/* Focus tests */
+ROUTES.set('scenarios/focus-elements?component=inputCheckbox');
+ROUTES.set('scenarios/focus-elements?component=inputColor');
+ROUTES.set('scenarios/focus-elements?component=inputDate');
+ROUTES.set('scenarios/focus-elements?component=inputEmail');
+ROUTES.set('scenarios/focus-elements?component=inputFile');
+ROUTES.set('scenarios/focus-elements?component=inputFileMultiple');
+ROUTES.set('scenarios/focus-elements?component=inputNumber');
+ROUTES.set('scenarios/focus-elements?component=inputPassword');
+ROUTES.set('scenarios/focus-elements?component=inputRadio');
+ROUTES.set('scenarios/focus-elements?component=inputRange');
+ROUTES.set('scenarios/focus-elements?component=inputText');
+ROUTES.set('scenarios/focus-elements?component=select');
+ROUTES.set('scenarios/focus-elements?component=selectMultiple');
+ROUTES.set('scenarios/focus-elements?component=textarea');
+ROUTES.set('scenarios/focus-elements?component=accordion');
+ROUTES.set('scenarios/focus-elements?component=button');
+ROUTES.set('scenarios/focus-elements?component=buttonLink');
+ROUTES.set('scenarios/focus-elements?component=details');
+ROUTES.set('scenarios/focus-elements?component=link');
+ROUTES.set('scenarios/focus-elements?component=linkButton');
