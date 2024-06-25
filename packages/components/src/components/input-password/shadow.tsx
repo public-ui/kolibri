@@ -26,7 +26,7 @@ import { InputPasswordController } from './controller';
 import type { JSX } from '@stencil/core';
 import { KolButtonWcTag, KolInputWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
-import { PasswordVariantPropType } from '../../schema/props/variant/input-password';
+import { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -141,7 +141,7 @@ export class KolInputPassword implements InputPasswordAPI {
 							onKeyDown={this.onKeyDown}
 							onInput={this.onInput}
 						/>
-						{this._variant === 'toggle' && this.ref && this.ref.value?.length > 0 ? (
+						{this._variant === 'visibility-toggle' && this.ref && this.ref.value?.length > 0 ? (
 							<KolButtonWcTag
 								class="password-toggle-button"
 								_label={this._passwordVisible ? translate('kol-hide-password') : translate('kol-show-password')}
@@ -308,11 +308,7 @@ export class KolInputPassword implements InputPasswordAPI {
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: PasswordVariantPropType = 'none';
-	/**
-	 * Controls whether the password is visible or hidden.
-	 */
-	@Prop() public _passwordVisible?: boolean = false;
+	@Prop() public _variant?: PasswordVariantPropType = 'default';
 
 	@State() public state: InputPasswordStates = {
 		_autoComplete: 'off',
@@ -321,9 +317,9 @@ export class KolInputPassword implements InputPasswordAPI {
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
-		_variant: 'none',
-		_passwordVisible: false,
+		_variant: 'default',
 	};
+	@State() private _passwordVisible: boolean = false;
 
 	public constructor() {
 		this.controller = new InputPasswordController(this, 'password', this.host);
@@ -354,10 +350,6 @@ export class KolInputPassword implements InputPasswordAPI {
 	@Watch('_variant')
 	public validateVariant(value?: PasswordVariantPropType): void {
 		this.controller.validateVariant(value);
-	}
-	@Watch('_passwordVisible')
-	public validatePasswordVisible(value?: boolean): void {
-		this.controller.validatePasswordVisible(value);
 	}
 
 	@Watch('_error')

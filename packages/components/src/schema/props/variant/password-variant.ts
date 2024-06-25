@@ -2,16 +2,11 @@ import type { Generic } from 'adopted-style-sheets';
 
 import { watchValidator } from '../../utils/prop.validators';
 
-/* types */
-/**
- * Loading-Passwordner
- * - https://github.com/vineethtrv/css-loader
- */
-const PasswordVariantPropTypeOptions = ['toggle', 'none'] as const;
+const PasswordVariantPropTypeOptions = ['default', 'visibility-toggle'] as const;
 export type PasswordVariantPropType = (typeof PasswordVariantPropTypeOptions)[number];
 
 /**
- * Defines the variant of Password navigation.
+ * Defines the different variants for displaying the password input.
  */
 export type PropPasswordVariant = {
 	variant: PasswordVariantPropType;
