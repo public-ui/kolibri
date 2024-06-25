@@ -21,7 +21,9 @@
 
 	a:is(:focus, :hover):not([aria-disabled]),
 	button:is(:focus, :hover):not([disabled]) {
-		text-decoration-thickness: 0.2em;
+		.kol-span-wc .span-label {
+			text-decoration-thickness: 0.2em;
+		}
 	}
 
 	.skip {
