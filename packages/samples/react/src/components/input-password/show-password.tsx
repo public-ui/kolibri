@@ -1,21 +1,11 @@
 import type { FC } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { KolForm, KolInputPassword } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputPasswordShowPassword: FC = () => {
-	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 	const passwordRef = useRef<HTMLKolInputPasswordElement>(null);
-	const handleTogglePasswordClick = () => {
-		setIsPasswordVisible(!isPasswordVisible);
-	};
-	useEffect(() => {
-		const input = passwordRef.current?.shadowRoot?.querySelector('input');
-		if (input) {
-			input.type = isPasswordVisible ? 'text' : 'password';
-		}
-	}, [isPasswordVisible]);
 
 	return (
 		<>
@@ -26,42 +16,14 @@ export const InputPasswordShowPassword: FC = () => {
 				</p>
 			</SampleDescription>
 			<KolForm>
-				<KolInputPassword
-					_placeholder="Mit 'Passwort anzeigen' Button"
-					_label="Passwort"
-					ref={passwordRef}
-					_smartButton={{
-						_icons: {
-							left: {
-								icon: 'codicon codicon-eye',
-							},
-						},
-						_hideLabel: true,
-						_label: `Passwort ${isPasswordVisible ? 'ausblenden' : 'einblenden'}`,
-						_on: {
-							onClick: handleTogglePasswordClick,
-						},
-					}}
-					className="block"
-				/>
+				<KolInputPassword _placeholder="Mit 'Passwort anzeigen' Button" _label="Passwort" ref={passwordRef} className="block" _variant="visibility-toggle" />
 				<KolInputPassword
 					_placeholder="Mit 'Passwort anzeigen' Button und disabled"
 					_label="Passwort"
 					ref={passwordRef}
-					_smartButton={{
-						_icons: {
-							left: {
-								icon: 'codicon codicon-eye',
-							},
-						},
-						_hideLabel: true,
-						_label: `Passwort ${isPasswordVisible ? 'ausblenden' : 'einblenden'}`,
-						_on: {
-							onClick: handleTogglePasswordClick,
-						},
-					}}
 					className="block"
 					_disabled
+					_variant="visibility-toggle"
 				/>
 			</KolForm>
 		</>

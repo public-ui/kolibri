@@ -3,7 +3,6 @@
 		color: var(--color-primary);
 		font-style: normal;
 		font-weight: 400;
-		text-decoration-line: underline;
 	}
 
 	:is(a, button):focus {
@@ -15,9 +14,11 @@
 		outline: var(--border-width) solid;
 	}
 
-	a:hover:not([aria-disabled]),
-	button:hover:not([disabled]) {
-		text-decoration-thickness: 0.25em;
+	a:is(:focus, :hover):not([aria-disabled]),
+	button:is(:focus, :hover):not([disabled]) {
+		.kol-span-wc .span-label {
+			text-decoration-thickness: 0.25em;
+		}
 	}
 
 	:is(a, button):visited {

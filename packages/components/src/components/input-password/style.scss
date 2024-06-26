@@ -8,4 +8,13 @@
 	:host {
 		font-size: rem(16);
 	}
+
+	.password-toggle-button {
+		position: absolute;
+		transform: translateX(-100%);
+	}
+
+	.kol-tooltip-wc {
+		--kol-tooltip-width: 10rem;
+	}
 }
