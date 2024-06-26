@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { HideMenusContext } from '../../shares/HideMenusContext';
-import type { AlignPropType } from '@public-ui/components'
+import type { AlignPropType } from '@public-ui/components';
 import { KolDrawer, KolButton, KolBadge } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 

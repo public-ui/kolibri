@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import type { KoliBriModalEventCallbacks, LabelPropType, DrawerAPI, AlignPropType, OpenPropType, ModalPropType, DrawerStates } from '../../schema';
 import { setState, validateLabel, validateOpen, validateAlign, validateModal } from '../../schema';
-import { Component, Host, Method, Prop, State, Watch, h, Listen } from '@stencil/core';
+import { Component, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
 
@@ -21,22 +21,19 @@ export class KolDrawer implements DrawerAPI {
 
 	@Method()
 	async open() {
+		this.state._open = true;
 		if (this.state._modal) {
 			this.dialogElement?.showModal();
 		} else {
-			this.state._open = true;
 			this.dialogElement?.show();
 		}
 	}
 
 	@Method()
 	async close() {
+		this.state._open = false;
 		this._on?.onClose?.();
-		if (this.state._modal) {
-			this.dialogElement?.close();
-		} else {
-			this.state._open = false;
-		}
+		this.dialogElement?.close();
 	}
 
 	private renderDialogContent() {
@@ -46,27 +43,18 @@ export class KolDrawer implements DrawerAPI {
 					<slot />
 				</div>
 			</div>
-		)
+		);
 	}
 
-	private getRef = (el: HTMLDialogElement | undefined) => (this.dialogElement = el as HTMLDialogElement)
+	private getRef = (el: HTMLDialogElement | undefined) => (this.dialogElement = el as HTMLDialogElement);
 	public render(): JSX.Element {
-		const isModal = this.state._modal
-		const isOpen = this.state._open
+		const isModal = this.state._modal;
+		const isOpen = this.state._open;
 		return (
-			<Host
-				class={`kol-drawer drawer ${isModal ? "drawer--modal" : ""} ${isOpen ? "drawer--open" : ""}`}
-				ref={(el) => (this.hostElement = el as HTMLElement)}
-			>
-				{isModal ?
-					<dialog class="drawer__dialog" ref={this.getRef}>
-						{this.renderDialogContent()}
-					</dialog>
-				:
-					<dialog class="drawer__dialog" ref={this.getRef} open={isOpen}>
-						{this.renderDialogContent()}
-					</dialog>
-				}
+			<Host class={`kol-drawer drawer ${isModal ? 'drawer--modal' : ''} ${isOpen ? 'drawer--open' : ''}`} ref={(el) => (this.hostElement = el as HTMLElement)}>
+				<dialog class="drawer__dialog" ref={this.getRef}>
+					{this.renderDialogContent()}
+				</dialog>
 			</Host>
 		);
 	}
@@ -99,16 +87,8 @@ export class KolDrawer implements DrawerAPI {
 	@State() public state: DrawerStates = {
 		_label: '', // ⚠ required
 		_open: false,
-		_align: 'left'
+		_align: 'left',
 	};
-
-	@Listen('keydown')
-	handleKeyDown(ev: KeyboardEvent) {
-		if (ev.key === 'Escape' || ev.key === 'Esc') {
-			console.log('YO')
-			this.state._open = false
-		}
-	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
@@ -131,7 +111,7 @@ export class KolDrawer implements DrawerAPI {
 	public validateOpen(value?: OpenPropType): void {
 		if (typeof value === 'boolean') {
 			validateOpen(this, value);
-			if (this._modal) value ? this.open() : this.close()
+			value ? this.open() : this.close();
 		}
 	}
 
@@ -144,6 +124,18 @@ export class KolDrawer implements DrawerAPI {
 			}
 			setState<KoliBriModalEventCallbacks>(this, '_on', callbacks);
 		}
+	}
+
+	private handleClose() {
+		this.close();
+	}
+
+	public componentDidLoad(): void {
+		this.dialogElement?.addEventListener('close', this.handleClose.bind(this));
+	}
+
+	public disconnectedCallback(): void {
+		this.dialogElement?.removeEventListener('close', this.handleClose);
 	}
 
 	public componentWillLoad(): void {

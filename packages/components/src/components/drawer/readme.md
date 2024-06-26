@@ -97,7 +97,7 @@ Während der **Drawer** geöffnet ist, werden alle selektierbaren Elemente auße
 
 | Property              | Attribute | Description                                                                                                        | Type                                                      | Default     |
 | --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | ----------- |
-| `_align`              | `_align`  | Specifies the orientation of the drawer.                                                                           | `"bottom" \| "left" \| "right" \| "top" \| undefined`     | `'left'`    |
+| `_align`              | `_align`  | Specifies the orientation of the drawer.                                                                           | `"bottom" \| "left" \| "right" \| "top" \| undefined`     | `undefined` |
 | `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                  | `undefined` |
 | `_modal`              | `_modal`  | Indicates whether the drawer is a modal.                                                                           | `boolean \| undefined`                                    | `undefined` |
 | `_on`                 | --        | Specifies the EventCallback function to be called when the drawer is closing.                                      | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |

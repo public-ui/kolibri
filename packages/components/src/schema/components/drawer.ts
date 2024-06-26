@@ -4,9 +4,11 @@ import type { PropLabel, PropOpen, PropAlign, PropModal } from '../props';
 import type { KoliBriModalEventCallbacks } from '../types';
 
 type RequiredProps = PropLabel;
-type OptionalProps = PropAlign & PropOpen & PropModal & {
-	on: KoliBriModalEventCallbacks;
-};
+type OptionalProps = PropAlign &
+	PropOpen &
+	PropModal & {
+		on: KoliBriModalEventCallbacks;
+	};
 type RequiredStates = PropAlign & PropOpen & PropLabel;
 type OptionalStates = PropModal & {
 	on: KoliBriModalEventCallbacks;

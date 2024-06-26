@@ -1,6 +1,6 @@
 @import '../mixins/rem';
 
-$duration: .4s;
+$duration: 0.4s;
 @layer kol-theme-component {
 	.drawer__wrapper {
 		box-shadow: 0 0 rem(4) var(--color-subtle);
@@ -27,7 +27,7 @@ $duration: .4s;
 	from {
 		transform: translateX(-100%);
 	}
-  
+
 	to {
 		transform: translateX(0);
 	}
@@ -37,7 +37,7 @@ $duration: .4s;
 	from {
 		transform: translateX(100%);
 	}
-  
+
 	to {
 		transform: translateX(0);
 	}
@@ -47,7 +47,7 @@ $duration: .4s;
 	from {
 		transform: translateY(-100%);
 	}
-  
+
 	to {
 		transform: translateY(0);
 	}
@@ -57,7 +57,7 @@ $duration: .4s;
 	from {
 		transform: translateY(100%);
 	}
-  
+
 	to {
 		transform: translateY(0);
 	}
