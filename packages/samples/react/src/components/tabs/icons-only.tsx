@@ -32,7 +32,8 @@ export const TabsIconsOnly: FC = () => (
 		<SampleDescription>
 			<p>Hier sind verschiedene Varianten von Tabs mit Icons. Nur der Inhalt eines Tabs wird gleichzeitig angezeigt.</p>
 		</SampleDescription>
-		<KolTabs _tabs={tabs}>
+
+		<KolTabs _label="Tabs with icons" _tabs={tabs}>
 			<div slot="tab-0">Inhalte von Tab 1</div>
 			<div slot="tab-1">Inhalte von Tab 2</div>
 			<div slot="tab-2">Inhalte von Tab 3</div>

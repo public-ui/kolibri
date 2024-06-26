@@ -12,24 +12,26 @@ type Data = (typeof DATA)[0];
 
 export const TableStatelessWithSelection: FC = () => {
 	const selection: KoliBriTableSelection = {
-		label: (row: Data) => `Selection for ${row.name}`,
+		label: (row) => `Selection for ${(row as Data).name}`,
 		selectedKeys: ['1002'],
 		keyPropertyName: 'id',
 	};
 
 	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>();
 
-	const handleSelectionChangeEvent = ({ detail: selection }) => {
+	const handleSelectionChangeEvent = ({ detail: selection }: { detail: string[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event, selection) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: string[]) => {
 		console.log('Selection change via callback', selection);
 	};
 
 	useEffect(() => {
+		// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
 		kolTableStatelessRef.current?.addEventListener('kol-selection-change', handleSelectionChangeEvent);
 
 		return () => {
+			// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
 			kolTableStatelessRef.current?.removeEventListener('kol-selection-change', handleSelectionChangeEvent);
 		};
 	}, [kolTableStatelessRef]);

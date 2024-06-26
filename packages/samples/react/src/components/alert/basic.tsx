@@ -10,7 +10,7 @@ type PropsByType = {
 	variant: AlertVariant;
 };
 type PropsBasic = {
-	variant: AlertVariant;
+	variant?: AlertVariant;
 };
 
 const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (

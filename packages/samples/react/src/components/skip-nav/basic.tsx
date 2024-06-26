@@ -19,15 +19,15 @@ export const SkipNavBasic: FC = () => (
 			_links={[
 				{
 					_label: 'Zum Anfang',
-					_selector: 'header',
+					_href: '#header',
 				},
 				{
 					_label: 'Zum Formular',
-					_selector: '#form',
+					_href: '#form',
 				},
 				{
 					_label: 'Zum Ende',
-					_selector: 'footer',
+					_href: '#footer',
 				},
 			]}
 		></KolSkipNav>

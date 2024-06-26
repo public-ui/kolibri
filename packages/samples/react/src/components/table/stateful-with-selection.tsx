@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { KolButton, KolTableStateful } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableSelection } from '@public-ui/components';
+import type { StatefulSelectionChangeEventPayload } from '@public-ui/components/src/schema';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar' },
@@ -14,29 +15,31 @@ export const TableStatefulWithSelection: FC = () => {
 	const [selectedValue, setSelectedValue] = useState<Data[]>();
 
 	const selection: KoliBriTableSelection = {
-		label: (row: Data) => `Selection for ${row.name}`,
+		label: (row) => `Selection for ${(row as Data).name}`,
 		selectedKeys: selectedValue ? selectedValue.map((element) => element.id) : [],
 		keyPropertyName: 'id',
 	};
 
 	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>();
 
-	const handleSelectionChangeEvent = ({ detail: selection }) => {
+	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event, selection) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: StatefulSelectionChangeEventPayload) => {
 		console.log('Selection change via callback', selection);
 	};
 
 	const handleButtonClick = async () => {
 		const selection = await kolTableStatefulRef.current?.getSelection();
-		setSelectedValue(selection);
+		setSelectedValue(selection as Data[]);
 	};
 
 	useEffect(() => {
+		// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
 		kolTableStatefulRef.current?.addEventListener('kol-selection-change', handleSelectionChangeEvent);
 
 		return () => {
+			// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
 			kolTableStatefulRef.current?.removeEventListener('kol-selection-change', handleSelectionChangeEvent);
 		};
 	}, [kolTableStatefulRef]);

@@ -1,3 +1,4 @@
+import type { ComboboxVariants } from './combobox/partials/variants';
 import type { InputCheckboxVariants } from './input-checkbox/partials/variants';
 import type { InputColorVariants } from './input-color/partials/variants';
 import type { InputDateVariants } from './input-date/partials/variants';
@@ -12,6 +13,7 @@ import type { SelectVariants } from './select/partials/variants';
 import type { TextareaVariants } from './textarea/partials/variants';
 
 export type RefFormComponent =
+	| typeof ComboboxVariants
 	| typeof InputCheckboxVariants
 	| typeof InputColorVariants
 	| typeof InputDateVariants
