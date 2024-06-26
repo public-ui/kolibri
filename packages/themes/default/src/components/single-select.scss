@@ -78,11 +78,6 @@
 				padding-left: 1em;
 			}
 
-			&:hover {
-				background: var(--color-primary-variant);
-				color: var(--color-light);
-			}
-
 			&:focus,
 			&.highlighted {
 				background: var(--color-primary-variant);

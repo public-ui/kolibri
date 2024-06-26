@@ -35,6 +35,11 @@
 			}
 		}
 
+		&.no-results {
+			padding: 8px;
+			text-align: center !important;
+		}
+
 		&__listbox {
 			display: block;
 			position: absolute;

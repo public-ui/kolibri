@@ -77,14 +77,6 @@
 				padding-left: 1em;
 			}
 
-			&:hover {
-				background: var(--color-ocean);
-
-				.radio-label {
-					color: white !important;
-				}
-			}
-
 			&:focus,
 			&.highlighted {
 				background: var(--color-ocean);

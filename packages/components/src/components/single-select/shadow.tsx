@@ -23,7 +23,7 @@ import { SingleSelectController } from './controller';
 
 import type { JSX } from '@stencil/core';
 import { KolButtonWcTag, KolIconTag, KolInputWcTag } from '../../core/component-names';
-import { showExpertSlot } from '../../schema';
+import { propagateFocus, showExpertSlot } from '../../schema';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
@@ -40,7 +40,7 @@ import { translate } from '../../i18n';
 })
 export class KolSingleSelect implements SingleSelectAPI {
 	@Element() private readonly host?: HTMLKolSingleSelectElement;
-	private ref?: HTMLSelectElement;
+	private ref?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
 	private refScrollContainer?: HTMLUListElement;
 
@@ -49,12 +49,16 @@ export class KolSingleSelect implements SingleSelectAPI {
 	public async getValue(): Promise<string | undefined> {
 		return this.state._value;
 	}
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propagateFocus(this.host, this.ref);
+	};
 
 	private toggleListbox = (event?: Event) => {
 		if (event) event.preventDefault();
 
 		if (this.state._disabled) {
-			this._isOpen = false;
+			return;
 		} else {
 			this._isOpen = !this._isOpen;
 			if (this._isOpen && Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
@@ -78,11 +82,13 @@ export class KolSingleSelect implements SingleSelectAPI {
 	};
 
 	private clearSelection() {
+		this._focusedOptionIndex = -1;
 		this.state._value = '';
 		this._value = '';
 		this._inputValue = '';
 		this.state._hasValue = false;
 		this._filteredOptions = [...this.state._options];
+		this.ref?.focus();
 	}
 
 	private selectOption(option: Option<W3CInputValue>) {
@@ -92,12 +98,14 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 		this.state._hasValue = !!option;
 		this._filteredOptions = [...this.state._options];
+		this.ref?.focus();
 	}
 
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
 		this._inputValue = target.value;
 		this.setFilteredOptionsByQuery(target.value);
+		this._focusedOptionIndex = -1;
 	}
 
 	private handleKeyDownDropdown(event: KeyboardEvent) {
@@ -115,8 +123,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this._filteredOptions = this.state._options.filter((option) => {
 				return (option.label as string).toLowerCase().includes(query.toLowerCase());
 			});
-
-			this._isOpen = Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0;
 		}
 		if (this._filteredOptions.length === 0) {
 			const event = new CustomEvent('load-more-options');
@@ -200,7 +206,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 						_required={this.state._required}
 						_tooltipAlign={this._tooltipAlign}
 						_touched={this.state._touched}
-						onClick={() => this.ref?.focus()}
 						role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 					>
 						<span slot="label">
@@ -220,6 +225,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 						<div slot="input">
 							<div class="single-select__group">
 								<input
+									ref={this.catchRef}
 									class="single-select__input"
 									type="text"
 									aria-autocomplete="both"
@@ -256,6 +262,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									class="single-select__button"
 									_label={translate('kol-dropdown')}
 									_variant="ghost"
+									_disabled={this.state._disabled}
 									_on={{
 										onClick: (event: Event): void => {
 											this.toggleListbox(event);
@@ -273,8 +280,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									class={{ 'single-select__listbox': true }}
 									onKeyDown={this.handleKeyDownDropdown.bind(this)}
 								>
-									{Array.isArray(this._filteredOptions) &&
-										this._filteredOptions.length > 0 &&
+									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 										this._filteredOptions.map((option, index) => (
 											<li
 												id={`option-${index}`}
@@ -307,6 +313,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 												}}
 											>
 												<input
+													class="visually-hidden"
 													type="radio"
 													name="options"
 													id={`option-radio-${index}`}
@@ -318,7 +325,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 													{option.label}
 												</label>
 											</li>
-										))}
+										))
+									) : (
+										<li class="single-select__item">Keine Ergebnisse gefunden</li>
+									)}
 								</ul>
 							)}
 						</div>
@@ -335,6 +345,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 			if (isOpen !== undefined) {
 				this._isOpen = isOpen;
+				if (!isOpen) {
+					this.ref?.focus();
+				}
 			}
 			callback?.();
 		};
