@@ -20,7 +20,7 @@ export class KolDrawer implements DrawerAPI {
 	private dialogElement?: HTMLDialogElement;
 
 	@Method()
-	async open() {
+	open() {
 		if (this._modal) {
 			this.dialogElement?.showModal();
 		} else {
@@ -30,7 +30,7 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	@Method()
-	async close() {
+	close() {
 		this._on?.onClose?.();
 		if (this._modal) {
 			this.dialogElement?.close();
@@ -39,24 +39,31 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
+	private renderDialogContent() {
+		return (
+			<div class={`drawer__wrapper drawer__wrapper--${this._align as string}`} aria-label={this._label}>
+				<div class="drawer__content">
+					<slot />
+				</div>
+			</div>
+		)
+	}
+
 	public render(): JSX.Element {
 		return (
 			<Host
-				class={{
-					'kol-drawer': true,
-					[this._align as string]: true,
-					modal: this._modal ?? false,
-					open: this.state._open,
-				}}
+				class={`kol-drawer drawer ${this._modal ? "drawer--modal" : ""} ${this.state._open ? "drawer--open" : ""}`}
 				ref={(el) => (this.hostElement = el as HTMLElement)}
 			>
-				<dialog ref={(el) => (this.dialogElement = el as HTMLDialogElement)} open={this.state._open}>
-					<div class="drawer-wrapper" aria-label={this._label}>
-						<div class="drawer-content">
-							<slot />
-						</div>
-					</div>
-				</dialog>
+				{this._modal ?
+					<dialog class="drawer__dialog" ref={(el) => (this.dialogElement = el as HTMLDialogElement)}>
+						{this.renderDialogContent()}
+					</dialog>
+				:
+					<dialog class="drawer__dialog" ref={(el) => (this.dialogElement = el as HTMLDialogElement)} open={this.state._open}>
+						{this.renderDialogContent()}
+					</dialog>
+				}
 			</Host>
 		);
 	}
@@ -95,6 +102,7 @@ export class KolDrawer implements DrawerAPI {
 	public validateOpen(value?: OpenPropType): void {
 		if (typeof value === 'boolean') {
 			validateOpen(this, value);
+			if (this._modal) value ? this.open() : this.close()
 		}
 	}
 

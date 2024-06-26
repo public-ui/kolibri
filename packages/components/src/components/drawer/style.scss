@@ -1,44 +1,46 @@
 @import '../style';
 
 @layer kol-component {
-	dialog {
-		padding: 0;
-		border: none;
-	}
+	.drawer {
+		&__dialog {
+			padding: 0;
+			border: none;
+		}
 
-	.drawer-wrapper {
-		position: fixed;
-		width: auto;
-		overflow: auto;
-		background: white;
-	}
+		&__wrapper {
+			position: fixed;
+			width: auto;
+			overflow: auto;
+			background: white;
 
-	.drawer-content {
-		position: relative;
-		padding: 0.5em;
-	}
+			&--left {
+				top: 0;
+				left: 0;
+				height: 100%;
+			}
+			
+			&--right {
+				top: 0;
+				right: 0;
+				height: 100%;
+			}
+	
+			&--top {
+				left: 0;
+				top: 0;
+				width: 100%;
+			}
+	
+			&--bottom {
+				left: 0;
+				bottom: 0;
+				width: 100%;
+			}
+		}
 
-	:host(.left) .drawer-wrapper {
-		top: 0;
-		left: 0;
-		height: 100%;
-	}
-
-	:host(.right) .drawer-wrapper {
-		top: 0;
-		right: 0;
-		height: 100%;
-	}
-
-	:host(.top) .drawer-wrapper {
-		left: 0;
-		top: 0;
-		width: 100%;
-	}
-
-	:host(.bottom) .drawer-wrapper {
-		left: 0;
-		bottom: 0;
-		width: 100%;
+		&__content {
+			position: relative;
+			padding: 0.5em;
+		}
 	}
 }

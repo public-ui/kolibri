@@ -7,7 +7,8 @@ import { SampleDescription } from '../SampleDescription';
 
 export const DrawerControlled: FC = () => {
 	const hideMenus = useContext(HideMenusContext);
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
+	const [modalOpen, setModalOpen] = useState(false);
 	return (
 		<div>
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
@@ -17,14 +18,21 @@ export const DrawerControlled: FC = () => {
 					ist nur unkontrolliert möglich. Der Drawer kann über das Attribut _align links, oben, rechts oder unten ausgerichtet werden.
 				</p>
 			</SampleDescription>
-			<div>
+			<div className="flex flex-wrap gap-4">
 				<KolDrawer _open={open} _align="left" _label="Ich bin ein kotrollierter Drawer" _on={{ onClose: () => setOpen(false) }}>
 					<div>
 						<p>Lorem ipsum dolor sit amet,</p>
 						<KolButton _label="Close drawer" _on={{ onClick: () => setOpen(false) }} />
 					</div>
 				</KolDrawer>
-				<KolButton _label="Open drawer as modal" _on={{ onClick: () => setOpen(true) }} />
+				<KolButton _label="Open drawer" _on={{ onClick: () => setOpen(true) }} />
+				<KolDrawer _open={modalOpen} _modal _align="left" _label="Ich bin ein kotrollierter Modal Drawer" _on={{ onClose: () => setModalOpen(false) }}>
+					<div>
+						<p>Lorem ipsum dolor sit amet,</p>
+						<KolButton _label="Close drawer" _on={{ onClick: () => setModalOpen(false) }} />
+					</div>
+				</KolDrawer>
+				<KolButton _label="Open drawer as modal" _on={{ onClick: () => setModalOpen(true) }} />
 			</div>
 		</div>
 	);
