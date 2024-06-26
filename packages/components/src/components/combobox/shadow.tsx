@@ -251,6 +251,9 @@ export class KolCombobox implements ComboboxAPI {
 			event.preventDefault();
 			if (isOpen !== undefined) {
 				this._isOpen = isOpen;
+				if (!isOpen) {
+					this.ref?.focus();
+				}
 			}
 			callback?.();
 		};
