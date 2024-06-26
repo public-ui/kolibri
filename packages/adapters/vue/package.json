@@ -55,7 +55,7 @@
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.4",
 		"@types/normalize-package-data": "2.4.4",
-		"typescript": "5.4.5",
+		"typescript": "5.5.2",
 		"unbuild": "1.2.1",
 		"vue": "3.4.21"
 	},

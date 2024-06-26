@@ -51,7 +51,6 @@ const TAGS = [
 	'kol-quote',
 	'kol-select',
 	'kol-skip-nav',
-	'kol-span',
 	'kol-spin',
 	'kol-split-button',
 	'kol-symbol',
@@ -75,6 +74,7 @@ const EXCLUDE_TAGS = [
 	'kol-input-radio-group',
 	'kol-link-wc',
 	'kol-popover-wc',
+	'kol-span',
 	'kol-span-wc',
 	'kol-tooltip-wc',
 ];

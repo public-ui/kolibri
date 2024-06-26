@@ -6,6 +6,9 @@ import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { Props } from './types';
 import { KolSpanWcTag } from '../../core/component-names';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-span',
 	styleUrls: {
