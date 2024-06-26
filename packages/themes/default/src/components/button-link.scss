@@ -3,7 +3,6 @@
 		color: var(--color-primary);
 		font-style: normal;
 		font-weight: 400;
-		text-decoration-line: underline;
 		font-size: inherit;
 	}
 
@@ -18,7 +17,9 @@
 
 	a:hover:not([aria-disabled]),
 	button:hover:not([disabled]) {
-		text-decoration-thickness: 0.25em;
+		.kol-span-wc .span-label {
+			text-decoration-thickness: 0.25em;
+		}
 	}
 
 	:is(a, button):visited {
