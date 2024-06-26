@@ -145,6 +145,10 @@ ROUTES.set('drawer/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('drawer/basic?align=left');
+ROUTES.set('drawer/basic?align=top');
+ROUTES.set('drawer/basic?align=right');
+ROUTES.set('drawer/basic?align=bottom');
 ROUTES.set('drawer/controlled', {
 	axe: {
 		skipFailures: false,
