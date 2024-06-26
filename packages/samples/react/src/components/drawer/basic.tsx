@@ -1,11 +1,15 @@
 import type { FC } from 'react';
 import React, { useRef, useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { HideMenusContext } from '../../shares/HideMenusContext';
+import type { AlignPropType } from '@public-ui/components'
 import { KolDrawer, KolButton, KolBadge } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const DrawerBasic: FC = () => {
+	const [searchParams] = useSearchParams();
+	const align = searchParams.get('align') as AlignPropType;
 	const hideMenus = useContext(HideMenusContext);
 	const drawerElement = useRef<HTMLKolDrawerElement>(null);
 	const drawerModalElement = useRef<HTMLKolDrawerElement>(null);
@@ -20,7 +24,7 @@ export const DrawerBasic: FC = () => {
 				</p>
 			</SampleDescription>
 			<div className="flex flex-wrap gap-4">
-				<KolDrawer ref={drawerElement} _label="Ich bin ein Drawer" _align="top" _on={{ onClose: () => console.log('Drawer onClose triggered!') }}>
+				<KolDrawer ref={drawerElement} _label="Ich bin ein Drawer" _align={align} _on={{ onClose: () => console.log('Drawer onClose triggered!') }}>
 					<p>
 						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 						voluptua.
@@ -28,7 +32,7 @@ export const DrawerBasic: FC = () => {
 					<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
 				</KolDrawer>
 				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.open() }} />
-				<KolDrawer ref={drawerModalElement} _modal _label="Ich bin ein Drawer Modal" _on={{ onClose: () => console.log('Drawer Modal onClose triggered!') }}>
+				<KolDrawer ref={drawerModalElement} _modal _align={align} _label="Ich bin ein Drawer Modal" _on={{ onClose: () => console.log('Drawer Modal onClose triggered!') }}>
 					<p>
 						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 						voluptua.

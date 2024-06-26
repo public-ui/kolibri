@@ -10,7 +10,7 @@ import type { DrawerProps } from '../../../schema';
 import { KolDrawer } from '../shadow';
 
 executeTests<DrawerProps>(
-	'Toolbar',
+	'Drawer',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: [KolDrawer],
@@ -21,6 +21,8 @@ executeTests<DrawerProps>(
 	{
 		_label: ['Label'],
 		_open: [true, false],
+		_modal: [true, false],
+		_align: ['top', 'right', 'bottom', 'left'],
 	},
 	getDrawerHtml,
 );

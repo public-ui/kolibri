@@ -1,34 +1,64 @@
 @import '../mixins/rem';
 
+$duration: .4s;
 @layer kol-theme-component {
-	:host .drawer__wrapper {
+	.drawer__wrapper {
 		box-shadow: 0 0 rem(4) var(--color-subtle);
+
+		&--left {
+			animation: slideInLeft $duration forwards;
+		}
+
+		&--right {
+			animation: slideInRight $duration forwards;
+		}
+
+		&--top {
+			animation: slideInTop $duration forwards;
+		}
+
+		&--bottom {
+			animation: slideInBottom $duration forwards;
+		}
 	}
+}
 
-	// :host .drawer-wrapper {
-	//     transition: transform 1s ease-in-out;
-	// }
+@keyframes slideInLeft {
+	from {
+		transform: translateX(-100%);
+	}
+  
+	to {
+		transform: translateX(0);
+	}
+}
 
-	// :host(.left) .drawer-wrapper {
-	// 	transform: translateX(-100%);
-	// }
+@keyframes slideInRight {
+	from {
+		transform: translateX(100%);
+	}
+  
+	to {
+		transform: translateX(0);
+	}
+}
 
-	// :host(.right)  .drawer-wrapper {
-	// 	transform: translateX(100%);
-	// }
+@keyframes slideInTop {
+	from {
+		transform: translateY(-100%);
+	}
+  
+	to {
+		transform: translateY(0);
+	}
+}
 
-	// :host(.top)  .drawer-wrapper {
-	// 	transform: translateY(-100%);
-	// }
-
-	// :host(.bottom)  .drawer-wrapper {
-	// 	transform: translateY(100%);
-	// }
-
-	// :host(.left.open) .drawer-wrapper,
-	// :host(.right.open) .drawer-wrapper,
-	// :host(.top.open) .drawer-wrapper,
-	// :host(.bottom.open) .drawer-wrapper {
-	// 	transform: translate(0, 0);
-	// }
+@keyframes slideInBottom {
+	from {
+		transform: translateY(100%);
+	}
+  
+	to {
+		transform: translateY(0);
+	}
 }

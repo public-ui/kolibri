@@ -7,17 +7,19 @@ export const getDrawerHtml = (props: DrawerProps): string => {
 	const state = mixMembers<DrawerProps, DrawerStates>(
 		{
 			_label: '', // ⚠ required
-			_open: true
+			_open: false,
+			_modal: false,
+			_align: "top"
 		},
 		props,
 	);
-
+	const isOpen = state._open
 	return `
-		<kol-drawer class=\"kol-drawer left\">
+		<kol-drawer class=\"drawer ${state._modal ? "drawer--modal" : ""} ${isOpen ? "drawer--open" : ""} kol-drawer\">
 			<mock:shadow-root>
-				<dialog ${state._open ? "open" : ""}>
-					<div aria-label=\"Label\" class=\"drawer-wrapper\">
-						<div class=\"drawer-content\">
+				<dialog class=\"drawer__dialog\" ${isOpen && !state._modal ? "open=\"\"" : ""}>
+					<div aria-label=\"${state._label}\" class=\"drawer__wrapper ${state._align ? `drawer__wrapper--${state._align}` : ""}\">
+						<div class=\"drawer__content\">
 							<slot></slot>
 						</div>
 					</div>

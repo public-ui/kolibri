@@ -1,17 +1,14 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropLabel, OpenPropType } from '../props';
+import type { PropLabel, PropOpen, PropAlign, PropModal } from '../props';
 import type { KoliBriModalEventCallbacks } from '../types';
 
 type RequiredProps = PropLabel;
-type OptionalProps = {
-	open: OpenPropType;
+type OptionalProps = PropAlign & PropOpen & PropModal & {
 	on: KoliBriModalEventCallbacks;
 };
-type RequiredStates = {
-	open: boolean;
-} & PropLabel;
-type OptionalStates = {
+type RequiredStates = PropAlign & PropOpen & PropLabel;
+type OptionalStates = PropModal & {
 	on: KoliBriModalEventCallbacks;
 };
 
