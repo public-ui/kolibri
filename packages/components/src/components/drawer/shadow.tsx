@@ -20,7 +20,7 @@ export class KolDrawer implements DrawerAPI {
 	private dialogElement?: HTMLDialogElement;
 
 	@Method()
-	async open() {
+	open() {
 		this.state._open = true;
 		if (this.state._modal) {
 			this.dialogElement?.showModal();
@@ -30,7 +30,7 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	@Method()
-	async close() {
+	close() {
 		this.state._open = false;
 		this._on?.onClose?.();
 		this.dialogElement?.close();
@@ -135,7 +135,7 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	public disconnectedCallback(): void {
-		this.dialogElement?.removeEventListener('close', this.handleClose);
+		this.dialogElement?.removeEventListener('close', this.handleClose.bind(this));
 	}
 
 	public componentWillLoad(): void {

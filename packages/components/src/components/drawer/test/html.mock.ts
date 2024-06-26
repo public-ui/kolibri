@@ -15,11 +15,11 @@ export const getDrawerHtml = (props: DrawerProps): string => {
 	);
 	const isOpen = state._open;
 	return `
-		<kol-drawer class=\"drawer ${state._modal ? 'drawer--modal' : ''} ${isOpen ? 'drawer--open' : ''} kol-drawer\">
+		<kol-drawer class="drawer ${state._modal ? 'drawer--modal' : ''} ${isOpen ? 'drawer--open' : ''} kol-drawer">
 			<mock:shadow-root>
-				<dialog class=\"drawer__dialog\">
-					<div aria-label=\"${state._label}\" class=\"drawer__wrapper ${state._align ? `drawer__wrapper--${state._align}` : ''}\">
-						<div class=\"drawer__content\">
+				<dialog class="drawer__dialog">
+					<div aria-label="${state._label}" class="drawer__wrapper ${state._align ? `drawer__wrapper--${state._align}` : ''}">
+						<div class="drawer__content">
 							<slot></slot>
 						</div>
 					</div>
