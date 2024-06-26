@@ -7,6 +7,7 @@ import { InternalUnderlinedAccessKey } from './InternalUnderlinedAccessKey';
 
 import type { JSX } from '@stencil/core';
 import { KolIconTag } from '../../core/component-names';
+
 /**
  * @internal
  */

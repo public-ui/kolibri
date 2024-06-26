@@ -1,12 +1,12 @@
 {
-	"name": "create-kolibri",
-	"version": "2.1.3",
+	"name": "@public-ui/schema",
+	"version": "1.7.25",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/public-ui/kolibri"
-  },
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -15,13 +15,7 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"contributors": [
-		{
-			"name": "Martin Oppitz",
-			"email": "martin.oppitz@itzbund.de"
-		}
-	],
-	"description": "The CLI can be used to create various projects based on the KoliBri (@public-ui) accessible web component library.",
+	"description": "The schema module includes the concrete specification of KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
 		"accessible",
@@ -47,41 +41,38 @@
 		"a11y",
 		"w3c",
 		"webstandard",
-		"wcag",
-		"angular",
-		"astro",
-		"next.js",
-		"preact",
-		"react",
-		"vue",
-		"remix",
-		"solid",
-		"template"
+		"wcag"
 	],
 	"scripts": {
-		"build": "tsup",
-		"clean": "git clean -f -d -X",
-		"dev": "tsup --watch --onSuccess \"node dist/index.js\"",
-		"lint": "tsc src/index.ts --noEmit --skipLibCheck && eslint src --ext .ts",
+		"build": "unbuild",
 		"format": "prettier --check src",
-		"unused": "knip"
+		"lint": "eslint src && tsc --noemit",
+		"prepack": "unbuild"
 	},
-	"bin": "dist/cli.js",
 	"dependencies": {
-		"chalk": "4.1.2",
-		"gradient-string": "2.0.2"
+		"adopted-style-sheets": "1.1.5-rc.1",
 	},
 	"devDependencies": {
-		"@types/gradient-string": "1.1.6",
 		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.14.1",
 		"@typescript-eslint/parser": "7.14.1",
 		"eslint": "8.57.0",
-		"knip": "5.23.0",
-		"prettier": "3.3.2",
-		"tsup": "8.1.0",
-		"typescript": "5.5.2"
+		"eslint-plugin-no-loops": "0.4.0",
+		"typescript": "5.5.2",
+		"unbuild": "1.2.1"
 	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
 	"files": [
 		"dist"
 	]
