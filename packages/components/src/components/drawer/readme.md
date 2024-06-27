@@ -7,7 +7,7 @@
 Mit Hilfe der **Drawer**-Komponente können zusätzliche Informationen oder auch Navigationselemente in einem ausklappbaren Seitenfenster angezeigt werden. Ein offener Drawer kann als Modal (\_modal) via ESC geschlossen werden. Die **Drawer**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt bzw. controlled mit dem Attribut \_open gesteuert.
 
 ```html
-<kol-drawer _label="Drawer" _open _modal _align="top" _on={{ onClose: () => void }}> </kol-drawer>
+<kol-drawer _label="Drawer" _open _modal _align="top"> </kol-drawer>
 ```
 
 ### Beispiel
@@ -34,7 +34,6 @@ id="example-drawer"
   const drawerOpenButton = document.querySelector('#drawer-open-button');
 
   function openDrawer() {
-    drawer._activeElement = drawerOpenButton;
     drawer.open();
   }
 

@@ -32,8 +32,8 @@ export class KolDrawer implements DrawerAPI {
 	@Method()
 	close() {
 		this.state._open = false;
-		this._on?.onClose?.();
 		this.dialogElement?.close();
+		this._on?.onClose?.();
 	}
 
 	private renderDialogContent() {
@@ -119,7 +119,7 @@ export class KolDrawer implements DrawerAPI {
 	public validateOn(value?: KoliBriModalEventCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
 			const callbacks: KoliBriModalEventCallbacks = {};
-			if (typeof value.onClose === 'function' || value.onClose === true) {
+			if (typeof value.onClose === 'function') {
 				callbacks.onClose = value.onClose;
 			}
 			setState<KoliBriModalEventCallbacks>(this, '_on', callbacks);

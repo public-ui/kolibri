@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { HideMenusContext } from '../../shares/HideMenusContext';
@@ -7,12 +7,20 @@ import type { AlignPropType } from '@public-ui/components';
 import { KolDrawer, KolButton, KolBadge } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
+import { DrawerRadioAlign } from './partials/align';
+
 export const DrawerBasic: FC = () => {
 	const [searchParams] = useSearchParams();
-	const align = searchParams.get('align') as AlignPropType;
+	const defaultAlign = searchParams.get('align') as AlignPropType;
 	const hideMenus = useContext(HideMenusContext);
 	const drawerElement = useRef<HTMLKolDrawerElement>(null);
 	const drawerModalElement = useRef<HTMLKolDrawerElement>(null);
+	const [align, setAlign] = useState<AlignPropType>(defaultAlign);
+	useEffect(() => {
+		if (!!defaultAlign) {
+			drawerModalElement.current?.open();
+		}
+	}, [defaultAlign]);
 	return (
 		<>
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
@@ -23,6 +31,7 @@ export const DrawerBasic: FC = () => {
 					Modal (_modal) durch ESC schließen. Beide Varianten können über das Attribut _align links, oben, rechts oder unten ausgerichtet werden.
 				</p>
 			</SampleDescription>
+			<DrawerRadioAlign value={align} onChange={(_, value) => setAlign(value as AlignPropType)} />
 			<div className="flex flex-wrap gap-4">
 				<KolDrawer ref={drawerElement} _label="Ich bin ein Drawer" _align={align} _on={{ onClose: () => console.log('Drawer onClose triggered!') }}>
 					<p>

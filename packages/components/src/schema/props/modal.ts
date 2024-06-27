@@ -6,7 +6,7 @@ import { watchBoolean } from '../utils';
 export type ModalPropType = boolean;
 
 /**
- * Makes the element not focusable and ignore all events.
+ * Controls if a dialog is a modal.
  */
 export type PropModal = {
 	modal: ModalPropType;

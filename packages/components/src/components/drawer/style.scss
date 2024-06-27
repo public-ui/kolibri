@@ -1,3 +1,4 @@
+@import '../@shared/mixins';
 @import '../style';
 
 @layer kol-component {
@@ -40,7 +41,7 @@
 
 		&__content {
 			position: relative;
-			padding: 0.5em;
+			padding: rem(16);
 		}
 	}
 }
