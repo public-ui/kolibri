@@ -1,12 +1,12 @@
 {
-	"name": "@public-ui/react",
-	"version": "2.1.3",
+	"name": "@public-ui/core",
+	"version": "1.7.25",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/public-ui/kolibri"
-  },
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -15,7 +15,7 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"description": "React framework adapter for KoliBri - The accessible HTML-Standard.",
+	"description": "The generic types and core logic for the KoliBri (@public-ui) accessible web component library.",
 	"keywords": [
 		"accessibility",
 		"accessible",
@@ -41,30 +41,32 @@
 		"a11y",
 		"w3c",
 		"webstandard",
-		"wcag",
-		"react"
+		"wcag"
 	],
 	"scripts": {
 		"build": "unbuild",
+		"tsc": "tsc --noemit",
+		"format": "prettier -c src",
+		"lint": "eslint src && tsc --noemit",
+		"ncu:major": "ncu",
+		"ncu:minor": "ncu -t minor -u",
+		"ncu:patch": "ncu -t patch -u",
 		"prepack": "unbuild"
 	},
+	"dependencies": {
+		"@public-ui/components": "workspace:*"
+	},
 	"devDependencies": {
-		"@public-ui/components": "workspace:*",
-		"@types/minimatch": "5.1.2",
-		"@types/minimist": "1.2.5",
+		"adopted-style-sheets": "1.1.5-rc.1",
 		"@types/node": "ts5.4",
-		"@types/normalize-package-data": "2.4.4",
-		"@types/react": "18.3.3",
-		"@types/react-dom": "18.3.0",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
+		"@typescript-eslint/eslint-plugin": "7.14.1",
+		"@typescript-eslint/parser": "7.14.1",
+		"eslint": "8.57.0",
+		"eslint-plugin-no-loops": "0.4.0",
+		"prettier": "3.3.2",
+		"ts-prune": "0.10.3",
 		"typescript": "5.5.2",
 		"unbuild": "1.2.1"
-	},
-	"peerDependencies": {
-		"@public-ui/components": "workspace:*",
-		"react": ">=16.14.0",
-		"react-dom": ">=16.14.0"
 	},
 	"sideEffects": false,
 	"type": "module",
