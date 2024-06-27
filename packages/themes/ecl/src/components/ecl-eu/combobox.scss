@@ -1,4 +1,5 @@
 @import '../mixins-eu/alert-wc.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -18,6 +19,7 @@
 		font-weight: var(--font-weight-bold);
 		order: 2;
 	}
+
 	.kol-input .input {
 		order: 3;
 	}
@@ -89,11 +91,6 @@
 			padding: 0.62rem 0.75rem;
 			margin: 1px 0;
 			cursor: pointer;
-
-			&:hover {
-				background: var(--color-blue);
-				color: white;
-			}
 
 			&:focus {
 				background: var(--color-blue);
