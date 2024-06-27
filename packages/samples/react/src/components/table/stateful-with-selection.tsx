@@ -20,7 +20,7 @@ export const TableStatefulWithSelection: FC = () => {
 		keyPropertyName: 'id',
 	};
 
-	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>();
+	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>(null);
 
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
 		console.log('Selection change via event', selection);

@@ -17,7 +17,7 @@ export const TableStatelessWithSelection: FC = () => {
 		keyPropertyName: 'id',
 	};
 
-	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>();
+	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>(null);
 
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: string[] }) => {
 		console.log('Selection change via event', selection);
