@@ -11,7 +11,7 @@ import { KolTree } from '../shadow';
 import { KolTreeWc } from '../component';
 
 executeTests<TreeProps>(
-	'Koltree',
+	'Tree',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: [KolTree, KolTreeWc],
