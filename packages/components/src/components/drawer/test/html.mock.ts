@@ -1,7 +1,5 @@
 import type { DrawerProps, DrawerStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
-// import { showExpertSlot } from '../../../schema';
-// import { KolButtonTag, KolLinkTag } from '../../../core/component-names';
 
 export const getDrawerHtml = (props: DrawerProps): string => {
 	const state = mixMembers<DrawerProps, DrawerStates>(
