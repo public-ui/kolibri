@@ -2,8 +2,7 @@ import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import { KolButton, KolTableStateful } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
-import type { KoliBriTableSelection } from '@public-ui/components';
-import type { StatefulSelectionChangeEventPayload } from '@public-ui/components/src/schema';
+import type { KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar' },
@@ -25,7 +24,7 @@ export const TableStatefulWithSelection: FC = () => {
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event: Event, selection: StatefulSelectionChangeEventPayload) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[]) => {
 		console.log('Selection change via callback', selection);
 	};
 
