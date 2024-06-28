@@ -7,18 +7,34 @@ $duration: 0.4s;
 
 		&--left {
 			animation: slideInLeft $duration forwards;
+
+			&--close {
+				animation: slideOutLeft $duration forwards !important;
+			}
 		}
 
 		&--right {
 			animation: slideInRight $duration forwards;
+
+			&--open {
+				animation: slideOutRight $duration forwards;
+			}
 		}
 
 		&--top {
 			animation: slideInTop $duration forwards;
+
+			&--open {
+				animation: slideOutTop $duration forwards;
+			}
 		}
 
 		&--bottom {
 			animation: slideInBottom $duration forwards;
+
+			&--open {
+				animation: slideOutBottom $duration forwards;
+			}
 		}
 	}
 }
@@ -54,6 +70,46 @@ $duration: 0.4s;
 }
 
 @keyframes slideInBottom {
+	from {
+		transform: translateY(100%);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideOutLeft {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes slideOutRight {
+	from {
+		transform: translateX(100%);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideOutTop {
+	from {
+		transform: translateY(-100%);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideOutBottom {
 	from {
 		transform: translateY(100%);
 	}

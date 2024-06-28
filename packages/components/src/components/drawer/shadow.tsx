@@ -21,7 +21,10 @@ export class KolDrawer implements DrawerAPI {
 
 	@Method()
 	open() {
-		this.state._open = true;
+		this.state = {
+			...this.state,
+			_open: true,
+		};
 		if (this.state._modal) {
 			this.dialogElement?.showModal();
 		} else {
@@ -31,14 +34,25 @@ export class KolDrawer implements DrawerAPI {
 
 	@Method()
 	close() {
-		this.state._open = false;
-		this.dialogElement?.close();
-		this._on?.onClose?.();
+		this.state = {
+			...this.state,
+			_open: false,
+		};
+		const wrapper = this.dialogElement?.querySelector('.drawer__wrapper');
+		if (!wrapper || wrapper === null) return;
+		const computedStyle = window.getComputedStyle(wrapper);
+		if (computedStyle.animationName === 'none') {
+			this.dialogElement?.close();
+			this._on?.onClose?.();
+		}
 	}
 
 	private renderDialogContent() {
 		return (
-			<div class={`drawer__wrapper drawer__wrapper--${this.state._align as string}`} aria-label={this.state._label}>
+			<div
+				class={`drawer__wrapper drawer__wrapper--${this.state._align as string} ${this.state._open ? 'drawer__wrapper--open' : `drawer__wrapper--${this.state._align as string}--close`}`}
+				aria-label={this.state._label}
+			>
 				<div class="drawer__content">
 					<slot />
 				</div>
@@ -52,7 +66,10 @@ export class KolDrawer implements DrawerAPI {
 		const isOpen = this.state._open;
 		return (
 			<Host class={`kol-drawer drawer ${isModal ? 'drawer--modal' : ''} ${isOpen ? 'drawer--open' : ''}`} ref={(el) => (this.hostElement = el as HTMLElement)}>
-				<dialog class="drawer__dialog" ref={this.getRef}>
+				<dialog
+					class={`drawer__dialog drawer__dialog--${this.state._align as string} ${isOpen ? 'drawer__dialog--open' : `drawer__dialog--${this.state._align as string}--close`}`}
+					ref={this.getRef}
+				>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
@@ -128,13 +145,25 @@ export class KolDrawer implements DrawerAPI {
 
 	private handleClose() {
 		this.close();
+		this.dialogElement?.close();
+		this._on?.onClose?.();
+	}
+
+	private handleAnimationEnd(e: Event) {
+		const animationEvent = e as AnimationEvent;
+		if (animationEvent.animationName.includes('slideOut')) {
+			this.dialogElement?.close();
+			this._on?.onClose?.();
+		}
 	}
 
 	public componentDidLoad(): void {
+		this.dialogElement?.addEventListener('animationend', this.handleAnimationEnd.bind(this));
 		this.dialogElement?.addEventListener('close', this.handleClose.bind(this));
 	}
 
 	public disconnectedCallback(): void {
+		this.dialogElement?.removeEventListener('animationend', this.handleAnimationEnd.bind(this));
 		this.dialogElement?.removeEventListener('close', this.handleClose.bind(this));
 	}
 
