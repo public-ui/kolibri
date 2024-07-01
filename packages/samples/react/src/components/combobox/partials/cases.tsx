@@ -3,11 +3,10 @@ import React, { forwardRef } from 'react';
 import { KolCombobox } from '@public-ui/react';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
-
-import type { Components } from '@public-ui/components';
 import { COUNTRY_SUGGESTIONS } from '../../../shares/country';
+import type { Components } from '@public-ui/components';
 
-export const ComboboxCases = forwardRef<HTMLKolSelectElement, Components.KolSelect>(function ComboboxCases(props) {
+export const ComboboxCases = forwardRef<HTMLKolComboboxElement, Components.KolCombobox>(function InputComboboxCases(props) {
 	return (
 		<div className="grid gap-4">
 			<KolCombobox

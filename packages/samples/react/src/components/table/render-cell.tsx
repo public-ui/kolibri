@@ -69,7 +69,7 @@ const HEADERS: KoliBriTableHeaders = {
 				render: (el, cell) => {
 					el.innerHTML = `<strong>${DATE_FORMATTER.format(cell.label as unknown as Date)}</strong>`;
 				},
-				sort: (data: Data[]) => data.sort((data0, data1) => data0.date.getTime() - data1.date.getTime()),
+				sort: (data) => data.sort((data0, data1) => (data0 as Data).date.getTime() - (data1 as Data).date.getTime()),
 			},
 			{
 				label: 'Action (react)',

@@ -111,7 +111,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	private checkForChildren() {
 		this.state = {
 			...this.state,
-			_hasChildren: Boolean(this.host.querySelector('slot')?.assignedElements().length),
+			_hasChildren: Boolean(this.host.querySelector('slot')?.assignedElements?.().length),
 		};
 	}
 

@@ -22,6 +22,8 @@ import {
 import { SampleDescription } from '../components/SampleDescription';
 
 import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { W3CInputValue } from '@public-ui/components';
+
 const EventTargetContext = createContext<EventTarget | undefined>(undefined);
 const EventLoggerActiveContext = createContext<boolean>(false);
 
@@ -55,7 +57,7 @@ const Scenario = (props: Props) => {
 	const eventListeners = Object.fromEntries(
 		['onInput', 'onChange', 'onBlur', 'onClick', 'onFocus', 'onMouseDown'].map((eventName) => [
 			eventName,
-			(event, value) => {
+			(event: Event, value: W3CInputValue) => {
 				if (eventLoggerActive) {
 					console.log(props.inputProps._label, eventName, value, event);
 				}
