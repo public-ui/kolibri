@@ -1,6 +1,3 @@
-import { FormWrap } from './FormWrap';
-
-import type { ButtonVariants } from './button/partials/variants';
 import type { InputCheckboxVariants } from './input-checkbox/partials/variants';
 import type { InputColorVariants } from './input-color/partials/variants';
 import type { InputDateVariants } from './input-date/partials/variants';
@@ -27,17 +24,3 @@ export type RefFormComponent =
 	| typeof InputTextVariants
 	| typeof SelectVariants
 	| typeof TextareaVariants;
-
-export type RefComponent =
-	// | typeof AbbrVariants
-	// | typeof AccordionVariants
-	// | typeof AlertVariants
-	| typeof ButtonVariants
-	// | typeof ButtonLinkVariants
-	// | typeof CardVariants
-	// | typeof LinkVariants
-	// | typeof LinkButtonVariants
-	// | typeof PopoverVariants
-	// | typeof SplitButtonVariants
-	// | typeof TabsVariants
-	| RefFormComponent;

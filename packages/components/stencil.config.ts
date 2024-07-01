@@ -48,7 +48,6 @@ const TAGS = [
 	'kol-quote',
 	'kol-select',
 	'kol-skip-nav',
-	'kol-span',
 	'kol-spin',
 	'kol-split-button',
 	'kol-symbol',
@@ -76,6 +75,7 @@ const EXCLUDE_TAGS = [
 	'kol-input',
 	'kol-link-wc',
 	'kol-popover-wc',
+	'kol-span',
 	'kol-span-wc',
 	'kol-table-stateless-wc',
 	'kol-tooltip-wc',
@@ -193,26 +193,6 @@ if (process.env.NODE_ENV === 'production') {
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v11/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v12/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v13/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v14/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v15/src/components.ts',
 		}),
 		angularOutputTarget({
@@ -224,6 +204,11 @@ if (process.env.NODE_ENV === 'production') {
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v17/src/components.ts',
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v18/src/components.ts',
 		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',

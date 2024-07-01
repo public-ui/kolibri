@@ -1,0 +1,79 @@
+{
+	"name": "@public-ui/schema",
+	"version": "1.7.25",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"description": "The schema module includes the concrete specification of KoliBri - The accessible HTML-Standard.",
+	"keywords": [
+		"accessibility",
+		"accessible",
+		"bitv",
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"webcomponents",
+		"aria",
+		"wai",
+		"axe",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag"
+	],
+	"scripts": {
+		"build": "unbuild",
+		"format": "prettier --check src",
+		"lint": "eslint src && tsc --noemit",
+		"prepack": "unbuild"
+	},
+	"dependencies": {
+		"adopted-style-sheets": "1.1.5-rc.1",
+	},
+	"devDependencies": {
+		"@types/node": "ts5.4",
+		"@typescript-eslint/eslint-plugin": "7.14.1",
+		"@typescript-eslint/parser": "7.14.1",
+		"eslint": "8.57.0",
+		"eslint-plugin-no-loops": "0.4.0",
+		"typescript": "5.5.2",
+		"unbuild": "1.2.1"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	]
+}
