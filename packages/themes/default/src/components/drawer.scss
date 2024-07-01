@@ -16,7 +16,7 @@ $duration: 0.4s;
 		&--right {
 			animation: slideInRight $duration forwards;
 
-			&--open {
+			&--close {
 				animation: slideOutRight $duration forwards;
 			}
 		}
@@ -24,7 +24,7 @@ $duration: 0.4s;
 		&--top {
 			animation: slideInTop $duration forwards;
 
-			&--open {
+			&--close {
 				animation: slideOutTop $duration forwards;
 			}
 		}
@@ -32,7 +32,7 @@ $duration: 0.4s;
 		&--bottom {
 			animation: slideInBottom $duration forwards;
 
-			&--open {
+			&--close {
 				animation: slideOutBottom $duration forwards;
 			}
 		}
@@ -91,30 +91,30 @@ $duration: 0.4s;
 
 @keyframes slideOutRight {
 	from {
-		transform: translateX(100%);
+		transform: translateX(0);
 	}
 
 	to {
-		transform: translateX(0);
+		transform: translateX(100%);
 	}
 }
 
 @keyframes slideOutTop {
 	from {
-		transform: translateY(-100%);
+		transform: translateY(0);
 	}
 
 	to {
-		transform: translateY(0);
+		transform: translateY(-100%);
 	}
 }
 
 @keyframes slideOutBottom {
 	from {
-		transform: translateY(100%);
+		transform: translateY(0);
 	}
 
 	to {
-		transform: translateY(0);
+		transform: translateY(100%);
 	}
 }
