@@ -59,11 +59,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store
 
-      - name: Bump Versions
-        run: npx lerna version ${{github.event.inputs.version}} --no-private --tag-version-prefix='' -y
-
       - name: Install
         run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
+
+      - name: Bump Versions
+        run: npx lerna version ${{github.event.inputs.version}} --no-private --tag-version-prefix='' -y
 
       - name: Build
         run: pnpm -r build
