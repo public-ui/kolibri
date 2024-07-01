@@ -99,11 +99,33 @@ Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wic
 
 **Beispiel:**
 
-```html
-.drawer__wrapper { &--left { animation: slideInLeft $duration forwards; &.is-closing { animation: slideOutLeft $duration forwards !important; } } &--right {
-animation: slideInRight $duration forwards; &.is-closing { animation: slideOutRight $duration forwards; } } &--top { animation: slideInTop $duration forwards;
-&.is-closing { animation: slideOutTop $duration forwards; } } &--bottom { animation: slideInBottom $duration forwards; &.is-closing { animation: slideOutBottom
-$duration forwards; } } }
+```scss
+.drawer__wrapper {
+	&--left {
+		animation: slideInLeft $duration forwards;
+		&.is-closing {
+			animation: slideOutLeft $duration forwards !important;
+		}
+	}
+	&--right {
+		animation: slideInRight $duration forwards;
+		&.is-closing {
+			animation: slideOutRight $duration forwards;
+		}
+	}
+	&--top {
+		animation: slideInTop $duration forwards;
+		&.is-closing {
+			animation: slideOutTop $duration forwards;
+		}
+	}
+	&--bottom {
+		animation: slideInBottom $duration forwards;
+		&.is-closing {
+			animation: slideOutBottom $duration forwards;
+		}
+	}
+}
 ```
 
 ## Links und Referenzen
