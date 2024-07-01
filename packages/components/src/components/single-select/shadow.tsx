@@ -61,34 +61,42 @@ export class KolSingleSelect implements SingleSelectAPI {
 			return;
 		} else {
 			this._isOpen = !this._isOpen;
-			if (this._isOpen && Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
-				const selectedIndex = this._filteredOptions.findIndex((option) => (option as Option<W3CInputValue>).value === this.state._value);
-				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
-				this.focusOption(this._focusedOptionIndex);
-
+			if (this._isOpen) {
 				const filterInput = document.getElementById('filter-input');
 				if (filterInput instanceof HTMLInputElement) {
 					filterInput.focus();
 					filterInput.setSelectionRange(0, 0);
 				}
-			}
-			if (Array.isArray(this._options)) {
-				const matchedOption = this._options.find((option) => option.label === this._inputValue);
-				this._value = matchedOption ? ((matchedOption as Option<W3CInputValue>).value as string) : '';
-				this._inputValue = matchedOption ? (matchedOption.label as string) : '';
-				this._filteredOptions = this.state._options;
+				this.handleInputValue();
 			}
 		}
 	};
 
+	private handleInputValue() {
+		if (Array.isArray(this._options) && this._inputValue.trim() !== '') {
+			this.setFilteredOptionsByQuery(this._inputValue);
+			if (this._filteredOptions && this._filteredOptions.length > 0) {
+				this.selectOption(this._filteredOptions[0] as Option<W3CInputValue>);
+				const selectedIndex =
+					Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0
+						? this._filteredOptions.findIndex((option) => (option as Option<W3CInputValue>).value === this.state._value)
+						: -1;
+				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				this.focusOption(this._focusedOptionIndex);
+			} else {
+				this.clearSelection();
+			}
+		}
+	}
+
 	private clearSelection() {
+		if (this.state._disabled) return;
 		this._focusedOptionIndex = -1;
 		this.state._value = '';
 		this._value = '';
 		this._inputValue = '';
 		this.state._hasValue = false;
 		this._filteredOptions = [...this.state._options];
-		this.ref?.focus();
 	}
 
 	private selectOption(option: Option<W3CInputValue>) {
@@ -98,12 +106,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 		this.state._hasValue = !!option;
 		this._filteredOptions = [...this.state._options];
-		this.ref?.focus();
 	}
 
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
 		this._inputValue = target.value;
+		this._isOpen = true;
 		this.setFilteredOptionsByQuery(target.value);
 		this._focusedOptionIndex = -1;
 	}
@@ -124,6 +132,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 				return (option.label as string).toLowerCase().includes(query.toLowerCase());
 			});
 		}
+		this._showNoResultMessage = this._filteredOptions.length === 0;
 		if (this._filteredOptions.length === 0) {
 			const event = new CustomEvent('load-more-options');
 			this.host?.dispatchEvent(event);
@@ -253,7 +262,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 									<KolIconTag
 										_icons="codicon codicon-close"
 										_label={translate('kol-dropdown')}
-										onClick={this.clearSelection.bind(this)}
+										onClick={() => {
+											this.clearSelection.bind(this);
+											this.ref?.focus();
+										}}
 										class="single-select__delete"
 									/>
 								)}
@@ -280,55 +292,55 @@ export class KolSingleSelect implements SingleSelectAPI {
 									class={{ 'single-select__listbox': true }}
 									onKeyDown={this.handleKeyDownDropdown.bind(this)}
 								>
-									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
-										this._filteredOptions.map((option, index) => (
-											<li
-												id={`option-${index}`}
-												key={`-${index}`}
-												ref={(el) => {
-													if (el) this.refOptions[index] = el;
-												}}
-												data-index={index}
-												tabIndex={0}
-												role="option"
-												aria-selected={this.state._value === (option as Option<W3CInputValue>).value}
-												onClick={(event: Event) => {
-													this.selectOption(option as Option<W3CInputValue>);
-													this.toggleListbox(event);
-												}}
-												onMouseOver={() => {
-													this._focusedOptionIndex = index;
-													this.focusOption(index);
-												}}
-												onFocus={() => {
-													this._focusedOptionIndex = index;
-													this.focusOption(index);
-												}}
-												class="single-select__item"
-												onKeyDown={(e) => {
-													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
+									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0
+										? this._filteredOptions.map((option, index) => (
+												<li
+													id={`option-${index}`}
+													key={`-${index}`}
+													ref={(el) => {
+														if (el) this.refOptions[index] = el;
+													}}
+													data-index={index}
+													tabIndex={0}
+													role="option"
+													aria-selected={this.state._value === (option as Option<W3CInputValue>).value}
+													onClick={(event: Event) => {
 														this.selectOption(option as Option<W3CInputValue>);
-														e.preventDefault();
-													}
-												}}
-											>
-												<input
-													class="visually-hidden"
-													type="radio"
-													name="options"
-													id={`option-radio-${index}`}
-													value={(option as Option<W3CInputValue>).value}
-													checked={this.state._value === (option as Option<W3CInputValue>).value}
-												/>
+														this.ref?.focus();
+														this.toggleListbox(event);
+													}}
+													onMouseOver={() => {
+														this._focusedOptionIndex = index;
+														this.focusOption(index);
+													}}
+													onFocus={() => {
+														this._focusedOptionIndex = index;
+														this.focusOption(index);
+													}}
+													class="single-select__item"
+													onKeyDown={(e) => {
+														if (e.key === 'Enter' || e.key === 'NumpadEnter') {
+															this.selectOption(option as Option<W3CInputValue>);
+															this.ref?.focus();
+															e.preventDefault();
+														}
+													}}
+												>
+													<input
+														class="visually-hidden"
+														type="radio"
+														name="options"
+														id={`option-radio-${index}`}
+														value={(option as Option<W3CInputValue>).value}
+														checked={this.state._value === (option as Option<W3CInputValue>).value}
+													/>
 
-												<label htmlfor={`option-radio-${index}`} class="radio-label">
-													{option.label}
-												</label>
-											</li>
-										))
-									) : (
-										<li class="single-select__item">Keine Ergebnisse gefunden</li>
-									)}
+													<label htmlfor={`option-radio-${index}`} class="radio-label">
+														{option.label}
+													</label>
+												</li>
+											))
+										: this._showNoResultMessage && <li class="single-select__item">Keine Ergebnisse gefunden</li>}
 								</ul>
 							)}
 						</div>
@@ -376,6 +388,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 				if (this._isOpen) {
 					if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
 						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<W3CInputValue>);
+						this.ref?.focus();
 						handleEvent(false);
 					}
 				} else {
@@ -387,7 +400,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case 'Enter': {
 				if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
 					this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<W3CInputValue>);
+					this.ref?.focus();
 					handleEvent(false);
+				} else {
+					this.toggleListbox(event);
 				}
 				break;
 			}
@@ -427,16 +443,14 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private _filteredOptions?: OptionsWithOptgroupPropType;
 	@State()
 	private _inputValue: string = '';
+	@State()
+	private _showNoResultMessage: boolean = false;
 
 	@Listen('click', { target: 'window' })
 	handleWindowClick(event: MouseEvent) {
 		if (this.host != undefined && !this.host.contains(event.target as Node)) {
 			this._isOpen = false;
-		}
-		if (Array.isArray(this._options) && !this._options.some((option) => option.label === this._inputValue)) {
-			this._value = '';
-			this._inputValue = '';
-			this._filteredOptions = this.state._options;
+			this.handleInputValue();
 		}
 	}
 

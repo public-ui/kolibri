@@ -30,6 +30,10 @@
 		}
 
 		&__item {
+			input[type='radio'] {
+				display: none;
+			}
+
 			&.highlighted {
 				background-color: #f0f0f0;
 			}
