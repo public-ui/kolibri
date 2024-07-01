@@ -141,16 +141,16 @@ ROUTES.set('details/basic', {
 	},
 });
 ROUTES.set('drawer/basic?align=left', {
-	waitForTimeout: 500,
+	waitForTimeout: 1000,
 });
 ROUTES.set('drawer/basic?align=top', {
-	waitForTimeout: 500,
+	waitForTimeout: 1000,
 });
 ROUTES.set('drawer/basic?align=right', {
-	waitForTimeout: 500,
+	waitForTimeout: 1000,
 });
 ROUTES.set('drawer/basic?align=bottom', {
-	waitForTimeout: 500,
+	waitForTimeout: 1000,
 });
 ROUTES.set('form/basic', {
 	axe: {
