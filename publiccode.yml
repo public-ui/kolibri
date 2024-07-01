@@ -5,12 +5,11 @@
 publiccodeYmlVersion: '0.2'
 
 name: 'KoliBri - The accessible HTML-Standard'
-url: 'https://public-ui.github.io'
 applicationSuite: Informationstechnikzentrum Bund
+url: 'https://github.com/public-ui/kolibri.git'
 landingURL: 'https://github.com/public-ui'
-documentationURL: 'https://public-ui.github.io'
 releaseDate: '2024-06-26'
-version: '1.7.25'
+softwareVersion: '1.7.25'
 logo: https://avatars.githubusercontent.com/u/109126739
 
 platforms:
