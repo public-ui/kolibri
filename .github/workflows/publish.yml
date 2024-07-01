@@ -67,7 +67,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
       - name: Bump Versions
-        run: 'npx lerna version ${{github.event.inputs.version}} --no-private --tag-version-prefix='' -m "chore: release %v" -y'
+        run: 'npx lerna version ${{github.event.inputs.version}} --no-private --tag-version-prefix="" -m "chore: release %v" -y'
 
       - name: Build
         run: pnpm -r build
