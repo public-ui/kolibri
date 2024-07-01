@@ -26,17 +26,17 @@ const HEADERS: KoliBriTableHeaders = {
 				textAlign: 'center',
 				width: '20em',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
-				sort: (data: Data[]) =>
+				sort: (data) =>
 					data.sort((data0, data1) => {
-						if (data0.date < data1.date) return -1;
-						else if (data1.date < data0.date) return 1;
+						if ((data0 as Data).date < (data1 as Data).date) return -1;
+						else if ((data1 as Data).date < (data0 as Data).date) return 1;
 						else return 0;
 					}),
 			},
 			{
 				label: 'Aktion',
 				key: 'order',
-				render: (el, cell, tupel) => {
+				render: (el) => {
 					getRoot(el).render(
 						<KolBadge
 							style={{
