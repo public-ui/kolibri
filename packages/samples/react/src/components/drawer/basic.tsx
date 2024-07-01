@@ -17,7 +17,7 @@ export const DrawerBasic: FC = () => {
 	const drawerModalElement = useRef<HTMLKolDrawerElement>(null);
 	const [align, setAlign] = useState<AlignPropType>(defaultAlign);
 	useEffect(() => {
-		if (!!defaultAlign) {
+		if (defaultAlign) {
 			drawerModalElement.current?.open();
 		}
 	}, [defaultAlign]);
