@@ -23,6 +23,9 @@ importers:
       husky:
         specifier: 9.0.11
         version: 9.0.11
+      js-yaml:
+        specifier: 4.1.0
+        version: 4.1.0
       lerna:
         specifier: 8.1.4
         version: 8.1.4(@swc/core@1.5.28)(encoding@0.1.13)
