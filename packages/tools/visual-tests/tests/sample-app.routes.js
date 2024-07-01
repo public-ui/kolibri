@@ -140,10 +140,18 @@ ROUTES.set('details/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('drawer/basic?align=left');
-ROUTES.set('drawer/basic?align=top');
-ROUTES.set('drawer/basic?align=right');
-ROUTES.set('drawer/basic?align=bottom');
+ROUTES.set('drawer/basic?align=left', {
+	waitForTimeout: 500,
+});
+ROUTES.set('drawer/basic?align=top', {
+	waitForTimeout: 500,
+});
+ROUTES.set('drawer/basic?align=right', {
+	waitForTimeout: 500,
+});
+ROUTES.set('drawer/basic?align=bottom', {
+	waitForTimeout: 500,
+});
 ROUTES.set('form/basic', {
 	axe: {
 		skipFailures: false,
