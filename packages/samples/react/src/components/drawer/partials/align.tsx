@@ -10,7 +10,7 @@ const options = ['left', 'top', 'right', 'bottom'].map((align) => ({
 	value: align,
 }));
 
-export type DrawerRadioAlignProps = {
+type DrawerRadioAlignProps = {
 	value?: AlignPropType;
 	onChange?: (_: Event, value: unknown) => void;
 };
