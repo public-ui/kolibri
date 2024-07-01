@@ -63,6 +63,13 @@ id="example-drawer"
 
 > </kol-drawer>
 
+<kol-drawer
+\_open=true
+\_align="left"
+\_label="Drawer"
+
+> </kol-drawer>
+
 ## Verwendung
 
 Um den **Drawer** programmgesteuert zu öffnen und zu schließen, verwenden Sie die Methoden **`open()`** und **`close()`**. Stellen Sie sicher, dass das **`_label`** Attribut gesetzt ist, um die Zugänglichkeit zu gewährleisten. Die Ausrichtung des Drawers können Sie mit dem **`_align`** Attribut und den Werten **left**, **top**, **right** oder **bottom** anpassen, um ihn auf der gewünschten Seite des Bildschirms anzuzeigen. Wenn Sie den **Drawer** als **Modal** verwenden möchten, aktivieren Sie das **`_modal`** Attribut, um den Hintergrund abzudunkeln und den Fokus auf den Drawer-Inhalt zu lenken. Zudem nutzen Sie das **`_on`** Attribut, um benutzerdefinierte Aktionen beim Schließen des Drawers auszuführen. Ein offenes **Modal** kann via **ESC** geschlossen werden.
@@ -77,18 +84,32 @@ Beim Öffnen des **Drawers** wird der Fokus automatisch auf den Inhalt des Drawe
 
 Die **Drawer**-Komponente unterstützt die vollständige Navigation über die Tastatur. Benutzer können mit der Tab-Taste durch die interaktiven Elemente innerhalb des Drawers navigieren. Zudem kann der **Drawer** mit der ESC-Taste schnell und einfach geschlossen werden, was die Bedienung erleichtert.
 
-Während der **Drawer** geöffnet ist, werden alle selektierbaren Elemente außerhalb des Drawers deaktiviert. Dies verhindert ungewollte Interaktionen mit dem Hintergrundinhalt und lenkt die Aufmerksamkeit der Benutzer auf den **Drawer**-Inhalt.
+Während der **Drawer** (als Modal) geöffnet ist, werden alle selektierbaren Elemente außerhalb des Drawers deaktiviert. Dies verhindert ungewollte Interaktionen mit dem Hintergrundinhalt und lenkt die Aufmerksamkeit der Benutzer auf den **Drawer**-Inhalt.
 
 ### Tastatursteuerung
 
-| Taste          | Funktion                                                                                     |
-| -------------- | -------------------------------------------------------------------------------------------- |
-| `Tab`          | Bei geöffnetem Drawer werden alle fokussierbaren Elemente der Reihenfolge nach angesprungen. |
-| `Pfeil-Tasten` | Schließt den Drawer.                                                                         |
+| Taste       | Funktion                                                                                     |
+| ----------- | -------------------------------------------------------------------------------------------- |
+| `Tab`       | Bei geöffnetem Drawer werden alle fokussierbaren Elemente der Reihenfolge nach angesprungen. |
+| `ESC-Taste` | Schließt den Drawer.                                                                         |
+
+## Animationen
+
+Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wichtig, dass die Keyframes die Namen `slideIn` bzw. `slideOut` enthalten und auf der Klasse `drawer__wrapper` definiert werden.
+
+**Beispiel:**
+
+```html
+.drawer__wrapper { &--left { animation: slideInLeft $duration forwards; &.is-closing { animation: slideOutLeft $duration forwards !important; } } &--right {
+animation: slideInRight $duration forwards; &.is-closing { animation: slideOutRight $duration forwards; } } &--top { animation: slideInTop $duration forwards;
+&.is-closing { animation: slideOutTop $duration forwards; } } &--bottom { animation: slideInBottom $duration forwards; &.is-closing { animation: slideOutBottom
+$duration forwards; } } }
+```
 
 ## Links und Referenzen
 
 - <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
