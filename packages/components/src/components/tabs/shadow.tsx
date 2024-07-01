@@ -218,7 +218,7 @@ export class KolTabs implements TabsAPI {
 					if (selected > 0) {
 						return this.selectNextNotDisabledTab(selected - 1, tabs, false, initialSelected || selected);
 					} else {
-						devHint(`[KolTabs] Alle Tabs sind deaktiviert und somit kann kein Tab angezeigt werden.`);
+						devHint(`[KolTabs] All tabs are disabled, and therefore no tab can be displayed.`);
 					}
 				}
 			}

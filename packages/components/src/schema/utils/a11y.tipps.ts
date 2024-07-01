@@ -63,9 +63,7 @@ export const featureHint = (msg: string, done = false, options?: HintOptions): v
 		});
 	}
 };
-devHint(
-	`Wir freuen uns über jedes Feedback, Kommentare, Screenshots oder Demo-Links von einer auf KoliBri-basierenden Anwendung (kolibri@itzbund.de). Vielen Dank!`,
-);
+devHint(`We appreciate any feedback, comments, screenshots, or demo links of an application based on KoliBri (kolibri@itzbund.de). Thank you!`);
 
 const uiUxCache: Set<string> = new Set();
 export const uiUxHint = (msg: string, options?: HintOptions): void => {

@@ -198,7 +198,7 @@ export class AssociatedInputController implements Watches {
 		});
 		if (typeof value === 'undefined') {
 			devHint(
-				`Ein Name am Eingabefeldern oder Schalter ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion und für das statische Versenden des Eingabefeldes relevant sein.`,
+				`A name on input fields or switches is not strictly required, but it might be relevant for the autocomplete function and for the static submission of the input field.`,
 			);
 		}
 	}

@@ -124,7 +124,7 @@ export const setState = <T>(component: Generic.Element.Component, propName: stri
 
 const logWarn = (component: Generic.Element.Component, propName: string, value: unknown, requiredGeneric: Set<string | null | undefined>): void => {
 	devHint(
-		`[${component.constructor.name}] Der Property-Wert (${value as string}) für '${propName}' ist nicht valide. Folgende Werte sind erlaubt: ${Array.from(
+		`[${component.constructor.name}] The property value: (${value as string}) for '${propName}' is not valid. Allowed values are: ${Array.from(
 			requiredGeneric,
 		).join(', ')}`,
 	);
@@ -256,7 +256,7 @@ export const watchJsonArrayString = <T>(
 				 * TODO: Wir haben einen Known-Bug beim Propergieren von Zeichenkettenliste (string[]).
 				 */
 				Log.debug(error);
-				// devHint(`Known bug: Zeichenkettenliste (string[])`);
+				// devHint(`Known bug: String array (string[])`);
 			}
 		});
 	});
