@@ -13,8 +13,17 @@ on:
         type: choice
         description: Which NPM tag should be assigned?
         options:
+          - dev
           - next
           - latest
+      version: # see https://github.com/lerna/lerna/tree/main/libs/commands/version#semver-bump
+        type: choice
+        description: Semver keyword for version bump
+        options:
+          - patch
+          - minor
+          - major
+          - prerelease
 
 jobs:
   publish:
@@ -49,6 +58,9 @@ jobs:
           key: ${{ runner.os }}-pnpm-store
           restore-keys: |
             ${{ runner.os }}-pnpm-store
+
+      - name: Bump Versions
+        run: npx lerna version ${{github.event.inputs.version}} --no-private --tag-version-prefix='' -y
 
       - name: Install
         run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
