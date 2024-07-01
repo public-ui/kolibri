@@ -22,10 +22,10 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
-				sort: (data: Data[]) =>
+				sort: (data) =>
 					data.sort((data0, data1) => {
-						if (data0.date < data1.date) return -1;
-						else if (data1.date < data0.date) return 1;
+						if ((data0 as Data).date < (data1 as Data).date) return -1;
+						else if ((data1 as Data).date < (data0 as Data).date) return 1;
 						else return 0;
 					}),
 			},
@@ -42,10 +42,10 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
-				sort: (data: Data[]) =>
+				sort: (data) =>
 					data.sort((data0, data1) => {
-						if (data0.date < data1.date) return -1;
-						else if (data1.date < data0.date) return 1;
+						if ((data0 as Data).date < (data1 as Data).date) return -1;
+						else if ((data1 as Data).date < (data0 as Data).date) return 1;
 						else return 0;
 					}),
 			},
