@@ -18,6 +18,7 @@ import type { JSX } from '@stencil/core';
 export class KolDrawer implements DrawerAPI {
 	public hostElement?: HTMLElement;
 	private dialogElement?: HTMLDialogElement;
+	private dialogWrapperElement?: HTMLDivElement;
 
 	@Method()
 	open() {
@@ -38,19 +39,21 @@ export class KolDrawer implements DrawerAPI {
 			...this.state,
 			_open: false,
 		};
-		const wrapper = this.dialogElement?.querySelector('.drawer__wrapper');
-		if (!wrapper || wrapper === null) return;
+		const wrapper = this.dialogWrapperElement;
+		if (!wrapper) return;
 		const computedStyle = window.getComputedStyle(wrapper);
 		if (computedStyle.animationName === 'none') {
-			this.dialogElement?.close();
-			this._on?.onClose?.();
+			this.handleCloseDialog();
 		}
 	}
 
+	private getWrapperRef = (el: HTMLDivElement | undefined) => (this.dialogWrapperElement = el as HTMLDivElement);
 	private renderDialogContent() {
+		const align = this.state._align as string;
 		return (
 			<div
-				class={`drawer__wrapper drawer__wrapper--${this.state._align as string} ${this.state._open ? 'drawer__wrapper--open' : `drawer__wrapper--${this.state._align as string}--close`}`}
+				ref={this.getWrapperRef}
+				class={`drawer__wrapper drawer__wrapper--${align} ${this.state._open ? 'drawer__wrapper--open' : 'is-closing'}`}
 				aria-label={this.state._label}
 			>
 				<div class="drawer__content">
@@ -63,13 +66,9 @@ export class KolDrawer implements DrawerAPI {
 	private getRef = (el: HTMLDialogElement | undefined) => (this.dialogElement = el as HTMLDialogElement);
 	public render(): JSX.Element {
 		const isModal = this.state._modal;
-		const isOpen = this.state._open;
 		return (
-			<Host class={`kol-drawer drawer ${isModal ? 'drawer--modal' : ''} ${isOpen ? 'drawer--open' : ''}`} ref={(el) => (this.hostElement = el as HTMLElement)}>
-				<dialog
-					class={`drawer__dialog drawer__dialog--${this.state._align as string} ${isOpen ? 'drawer__dialog--open' : `drawer__dialog--${this.state._align as string}--close`}`}
-					ref={this.getRef}
-				>
+			<Host class={`kol-drawer drawer ${isModal ? 'drawer--modal' : ''}`} ref={(el) => (this.hostElement = el as HTMLElement)}>
+				<dialog class="drawer__dialog" ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
@@ -143,17 +142,20 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
-	private handleClose() {
-		this.close();
+	private handleCloseDialog() {
 		this.dialogElement?.close();
 		this._on?.onClose?.();
+	}
+
+	private handleClose() {
+		this.close();
+		this.handleCloseDialog();
 	}
 
 	private handleAnimationEnd(e: Event) {
 		const animationEvent = e as AnimationEvent;
 		if (animationEvent.animationName.includes('slideOut')) {
-			this.dialogElement?.close();
-			this._on?.onClose?.();
+			this.handleCloseDialog();
 		}
 	}
 

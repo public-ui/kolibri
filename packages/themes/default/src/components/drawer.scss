@@ -8,7 +8,7 @@ $duration: 0.4s;
 		&--left {
 			animation: slideInLeft $duration forwards;
 
-			&--close {
+			&.is-closing {
 				animation: slideOutLeft $duration forwards !important;
 			}
 		}
@@ -16,7 +16,7 @@ $duration: 0.4s;
 		&--right {
 			animation: slideInRight $duration forwards;
 
-			&--close {
+			&.is-closing {
 				animation: slideOutRight $duration forwards;
 			}
 		}
@@ -24,7 +24,7 @@ $duration: 0.4s;
 		&--top {
 			animation: slideInTop $duration forwards;
 
-			&--close {
+			&.is-closing {
 				animation: slideOutTop $duration forwards;
 			}
 		}
@@ -32,7 +32,7 @@ $duration: 0.4s;
 		&--bottom {
 			animation: slideInBottom $duration forwards;
 
-			&--close {
+			&.is-closing {
 				animation: slideOutBottom $duration forwards;
 			}
 		}
