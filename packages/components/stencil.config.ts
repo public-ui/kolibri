@@ -10,6 +10,8 @@ import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
 
+const KOLIBRI_VERSION = require('./package.json').version;
+
 const TAGS = [
 	'kol-abbr',
 	'kol-accordion',
@@ -101,7 +103,7 @@ TAGS.forEach((tag) => {
 
 async function generateCustomElementsJson(docsData: JsonDocs) {
 	const jsonData = {
-		version: require('./package.json').version,
+		version: KOLIBRI_VERSION,
 		tags: docsData.components.map((component) => ({
 			name: component.tag,
 			// path: component.filePath,
@@ -273,4 +275,7 @@ export const config: Config = {
 		after: [],
 	},
 	taskQueue: 'immediate',
+	env: {
+		kolibriVersion: KOLIBRI_VERSION,
+	},
 };

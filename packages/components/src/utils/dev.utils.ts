@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 
 import { processEnv } from './reuse';
+import { Env } from '@stencil/core';
 
 let WINDOW: Window | null = null;
 let DOCUMENT: Document | null = null;
@@ -139,7 +140,7 @@ export const initKoliBri = (): void => {
 	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 1.7.25
+	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${Env.kolibriVersion}
 		`,
 		{
 			forceLog: true,
