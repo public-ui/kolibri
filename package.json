@@ -37,6 +37,6 @@
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
-		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major",
+		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
 	}
 }
