@@ -7,7 +7,7 @@ import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 import type { Components } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
 
-export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Components.KolSelect>(function SingleSelectCases(props) {
+export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Components.KolSingleSelect>(function SingleSelectCases(props) {
 	return (
 		<div className="grid gap-4">
 			<KolSingleSelect
