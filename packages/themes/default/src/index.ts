@@ -12,6 +12,7 @@ import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
+import drawerCss from './components/drawer.scss';
 import headingCss from './components/heading.scss';
 import iconCss from './components/icon.scss';
 import indentedTextCss from './components/indented-text.scss';
@@ -58,6 +59,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-CARD': cardCss,
 	'KOL-COMBOBOX': ComboboxCss,
 	'KOL-DETAILS': detailsCss,
+	'KOL-DRAWER': drawerCss,
 	'KOL-HEADING': headingCss,
 	'KOL-ICON': iconCss,
 	'KOL-INDENTED-TEXT': indentedTextCss,
