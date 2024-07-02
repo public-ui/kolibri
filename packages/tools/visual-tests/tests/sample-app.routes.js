@@ -141,16 +141,28 @@ ROUTES.set('details/basic', {
 	},
 });
 ROUTES.set('drawer/basic?align=left', {
-	waitForTimeout: 1000,
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
 });
 ROUTES.set('drawer/basic?align=top', {
-	waitForTimeout: 1000,
+	viewportSize: {
+		width: 800,
+		height: 600,
+	},
 });
 ROUTES.set('drawer/basic?align=right', {
-	waitForTimeout: 1000,
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
 });
 ROUTES.set('drawer/basic?align=bottom', {
-	waitForTimeout: 1000,
+	viewportSize: {
+		width: 800,
+		height: 600,
+	},
 });
 ROUTES.set('form/basic', {
 	axe: {
