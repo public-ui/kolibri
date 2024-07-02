@@ -1,13 +1,4 @@
-import type {
-	SingleSelectWatches,
-	SingleSelectProps,
-	MsgPropType,
-	OptionsWithOptgroupPropType,
-	W3CInputValue,
-	Option,
-	SelectOption,
-	Optgroup,
-} from '../../schema';
+import type { SingleSelectWatches, SingleSelectProps, MsgPropType, OptionsWithOptgroupPropType, Option, SelectOption, Optgroup } from '../../schema';
 import { watchBoolean, watchString, validateMsg, validateOptionsWithOptgroup } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -16,20 +7,20 @@ import { fillKeyOptionMap } from '../input-radio/controller';
 import type { Generic } from 'adopted-style-sheets';
 export class SingleSelectController extends InputIconController implements SingleSelectWatches {
 	protected readonly component: Generic.Element.Component & SingleSelectProps;
-	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();
+	private readonly keyOptionMap = new Map<string, Option<string>>();
 
 	public constructor(component: Generic.Element.Component & SingleSelectProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
 
-	public readonly getOptionByKey = (key: string): Option<W3CInputValue> | undefined => this.keyOptionMap.get(key);
+	public readonly getOptionByKey = (key: string): Option<string> | undefined => this.keyOptionMap.get(key);
 
-	private readonly isValueInOptions = (value: string, options: SelectOption<W3CInputValue>[]): boolean => {
+	private readonly isValueInOptions = (value: string, options: SelectOption<string>[]): boolean => {
 		return (
 			options.find((option) =>
-				typeof (option as Option<W3CInputValue>).value === 'string'
-					? (option as Option<W3CInputValue>).value === value
+				typeof (option as Option<string>).value === 'string'
+					? (option as Option<string>).value === value
 					: Array.isArray((option as Optgroup<string>).options)
 						? this.isValueInOptions(value, (option as Optgroup<string>).options)
 						: false,
@@ -37,7 +28,7 @@ export class SingleSelectController extends InputIconController implements Singl
 		);
 	};
 
-	private readonly filterValuesInOptions = (value: string, options: SelectOption<W3CInputValue>[]): string | undefined => {
+	private readonly filterValuesInOptions = (value: string, options: SelectOption<string>[]): string | undefined => {
 		return this.isValueInOptions(value, options) ? value : undefined;
 	};
 
@@ -51,9 +42,9 @@ export class SingleSelectController extends InputIconController implements Singl
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
+			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<string>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
-			const selected = this.filterValuesInOptions(value as string, options as SelectOption<W3CInputValue>[]);
+			const selected = this.filterValuesInOptions(value as string, options as SelectOption<string>[]);
 			if (selected) {
 				nextState.set('_value', selected);
 			}

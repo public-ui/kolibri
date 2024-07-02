@@ -12,7 +12,6 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 	OptionsWithOptgroupPropType,
-	W3CInputValue,
 	Option,
 } from '../../schema';
 import { Component, Element, h, Host, Method, Prop, State, Watch, Fragment, Listen } from '@stencil/core';
@@ -76,10 +75,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 		if (Array.isArray(this._options) && this._inputValue.trim() !== '') {
 			this.setFilteredOptionsByQuery(this._inputValue);
 			if (this._filteredOptions && this._filteredOptions.length > 0) {
-				this.selectOption(this._filteredOptions[0] as Option<W3CInputValue>);
+				this.selectOption(this._filteredOptions[0] as Option<string>);
 				const selectedIndex =
 					Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0
-						? this._filteredOptions.findIndex((option) => (option as Option<W3CInputValue>).value === this.state._value)
+						? this._filteredOptions.findIndex((option) => (option as Option<string>).value === this.state._value)
 						: -1;
 				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
 				this.focusOption(this._focusedOptionIndex);
@@ -99,9 +98,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this._filteredOptions = [...this.state._options];
 	}
 
-	private selectOption(option: Option<W3CInputValue>) {
-		this.state._value = option.value as string;
-		this._value = option.value as string;
+	private selectOption(option: Option<string>) {
+		this.state._value = option.value;
+		this._value = option.value;
 		this._inputValue = option.label as string;
 
 		this.state._hasValue = !!option;
@@ -303,9 +302,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 													data-index={index}
 													tabIndex={0}
 													role="option"
-													aria-selected={this.state._value === (option as Option<W3CInputValue>).value}
+													aria-selected={this.state._value === (option as Option<string>).value}
 													onClick={(event: Event) => {
-														this.selectOption(option as Option<W3CInputValue>);
+														this.selectOption(option as Option<string>);
 														this.ref?.focus();
 														this.toggleListbox(event);
 													}}
@@ -320,7 +319,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 													class="single-select__item"
 													onKeyDown={(e) => {
 														if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-															this.selectOption(option as Option<W3CInputValue>);
+															this.selectOption(option as Option<string>);
 															this.ref?.focus();
 															e.preventDefault();
 														}
@@ -331,8 +330,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 														type="radio"
 														name="options"
 														id={`option-radio-${index}`}
-														value={(option as Option<W3CInputValue>).value}
-														checked={this.state._value === (option as Option<W3CInputValue>).value}
+														value={(option as Option<string>).value}
+														checked={this.state._value === (option as Option<string>).value}
 													/>
 
 													<label htmlfor={`option-radio-${index}`} class="radio-label">
@@ -387,7 +386,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case ' ': {
 				if (this._isOpen) {
 					if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
-						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<W3CInputValue>);
+						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
 						this.ref?.focus();
 						handleEvent(false);
 					}
@@ -399,7 +398,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case 'NumpadEnter':
 			case 'Enter': {
 				if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
-					this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<W3CInputValue>);
+					this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
 					this.ref?.focus();
 					handleEvent(false);
 				} else {
@@ -680,7 +679,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this._filteredOptions = this.state._options;
 
 		if (Array.isArray(this._options)) {
-			const matchedOption = this._options.find((option) => (option as Option<W3CInputValue>).value === this.state._value);
+			const matchedOption = this._options.find((option) => (option as Option<string>).value === this.state._value);
 			this._inputValue = matchedOption ? (matchedOption.label as string) : '';
 		}
 	}

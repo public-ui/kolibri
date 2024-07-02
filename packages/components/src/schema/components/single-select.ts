@@ -13,7 +13,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, SelectOption, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHorizontalIcons, SelectOption, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptionsWithOptgroup;
 type OptionalProps = {
@@ -35,7 +35,7 @@ type OptionalProps = {
 
 type RequiredStates = {
 	hasValue: boolean;
-	options: SelectOption<W3CInputValue>[];
+	options: SelectOption<string>[];
 } & PropId &
 	PropHideError &
 	PropLabelWithExpertSlot;
