@@ -22,6 +22,7 @@ const TAGS = [
 	'kol-button-link',
 	'kol-card',
 	'kol-details',
+	'kol-drawer',
 	'kol-form',
 	'kol-heading',
 	'kol-icon',
@@ -152,17 +153,6 @@ async function generateCustomElementsJson(docsData: JsonDocs) {
 	await fsPromises.writeFile('./custom-elements.json', JSON.stringify(jsonData, null, 2));
 }
 
-const developmentHtmlFiles =
-	process.env.NODE_ENV === 'development'
-		? [
-				'dev.html',
-				...fs
-					.readdirSync(path.join(__dirname, 'src/dev'))
-					.filter((fileName: string) => fileName.endsWith('.html'))
-					.map((fileName: string) => path.join('dev', fileName)),
-			]
-		: [];
-
 let outputTargets: OutputTarget[] = [
 	{
 		type: 'dist',
@@ -179,7 +169,6 @@ let outputTargets: OutputTarget[] = [
 			{
 				src: 'assets',
 			},
-			...developmentHtmlFiles.map((filePath) => ({ src: filePath })),
 		],
 	},
 	// {

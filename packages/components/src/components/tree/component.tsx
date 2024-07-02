@@ -65,13 +65,13 @@ export class KolTreeWc implements TreeAPI {
 	}
 
 	private observeTopLevelItems() {
-		this.getTopLevelTreeItems().forEach((treeItem) => {
+		this.getTopLevelTreeItems()?.forEach((treeItem) => {
 			this.observer?.observe(treeItem, { childList: true, subtree: true });
 		});
 	}
 
 	private getTopLevelTreeItems(): HTMLKolTreeItemElement[] {
-		return (this.host.querySelector('slot')?.assignedNodes() as HTMLElement[]).filter(KolTreeWc.isTreeItem);
+		return (this.host.querySelector('slot')?.assignedNodes?.() as HTMLElement[])?.filter(KolTreeWc.isTreeItem);
 	}
 
 	private handleTreeChange(): void {
@@ -83,7 +83,7 @@ export class KolTreeWc implements TreeAPI {
 	 * Returns array of all TreeItem elements in the order they appear
 	 */
 	private getTreeItemElements(): HTMLKolTreeItemElement[] {
-		return this.getTopLevelTreeItems().reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
+		return this.getTopLevelTreeItems()?.reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
 			const children = currentValue.querySelectorAll(TREE_ITEM_TAG_NAME);
 
 			return [...accumulator, currentValue, ...children];
@@ -203,7 +203,7 @@ export class KolTreeWc implements TreeAPI {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	private async ensureActiveItemVisibility() {
 		const findActiveItem = (): HTMLKolTreeItemElement | undefined => {
-			const rootNodes = (this.host.querySelector('slot')?.assignedNodes() as HTMLElement[]).filter(KolTreeWc.isTreeItem);
+			const rootNodes = (this.host.querySelector('slot')?.assignedNodes?.() as HTMLElement[])?.filter(KolTreeWc.isTreeItem) ?? [];
 			for (const rootNode of rootNodes) {
 				if (rootNode._active) {
 					return rootNode;

@@ -11,6 +11,7 @@ import buttonLinkCss from './components/ecl-eu/button-link.scss';
 import cardCss from './components/ecl-eu/card.scss';
 import ComboboxCss from './components/ecl-eu/combobox.scss';
 import detailsCss from './components/ecl-eu/details.scss';
+import drawerCss from './components/ecl-eu/drawer.scss';
 import headingCss from './components/ecl-eu/heading.scss';
 import indentedTextCss from './components/ecl-eu/indented-text.scss';
 import inputCheckboxCss from './components/ecl-eu/input-checkbox.scss';
@@ -75,6 +76,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-DETAILS': detailsCss,
+	'KOL-DRAWER': drawerCss,
 	'KOL-SPIN': spinCss,
 	'KOL-INPUT-RADIO': inputRadioCss,
 	'KOL-INPUT-RANGE': inputRangeCss,

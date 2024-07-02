@@ -13,6 +13,7 @@ import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
 import { KolCard } from './card/shadow';
 import { KolDetails } from './details/shadow';
+import { KolDrawer } from './drawer/shadow';
 import { KolForm } from './form/shadow';
 import { KolHeadingWc } from './heading/component';
 import { KolHeading } from './heading/shadow';
@@ -79,6 +80,7 @@ export const COMPONENTS = [
 	KolCard,
 	KolCombobox,
 	KolDetails,
+	KolDrawer,
 	KolForm,
 	KolHeading,
 	KolHeadingWc,

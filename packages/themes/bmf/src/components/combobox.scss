@@ -73,11 +73,6 @@
 			cursor: pointer;
 			color: var(--color-black);
 
-			&:hover {
-				background: var(--color-ocean);
-				color: white;
-			}
-
 			&:focus {
 				background: var(--color-ocean);
 				color: white;
@@ -85,5 +80,6 @@
 			}
 		}
 	}
+
 	@include input;
 }
