@@ -42,6 +42,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private ref?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
 	private refScrollContainer?: HTMLUListElement;
+	private oldValue?: string;
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -66,25 +67,16 @@ export class KolSingleSelect implements SingleSelectAPI {
 					filterInput.focus();
 					filterInput.setSelectionRange(0, 0);
 				}
-				this.handleInputValue();
+				this.setFilteredOptionsByQuery(this._inputValue);
 			}
 		}
 	};
 
 	private handleInputValue() {
-		if (Array.isArray(this._options) && this._inputValue.trim() !== '') {
-			this.setFilteredOptionsByQuery(this._inputValue);
-			if (this._filteredOptions && this._filteredOptions.length > 0) {
-				this.selectOption(this._filteredOptions[0] as Option<string>);
-				const selectedIndex =
-					Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0
-						? this._filteredOptions.findIndex((option) => (option as Option<string>).value === this.state._value)
-						: -1;
-				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
-				this.focusOption(this._focusedOptionIndex);
-			} else {
-				this.clearSelection();
-			}
+		if (Array.isArray(this.state._options) && this.state._options.length > 0 && !this.state._options.some((option) => option.label === this._inputValue)) {
+			this._inputValue = Array.isArray(this._options)
+				? (this.state._options.find((option) => (option as Option<string>).value === this.state._value)?.label as string)
+				: '';
 		}
 	}
 
@@ -127,17 +119,19 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private setFilteredOptionsByQuery(query: string) {
-		if (query.trim() === '') {
+		if (query?.trim() === '' || !query) {
 			this._filteredOptions = [...this.state._options];
-		} else {
+		} else if (Array.isArray(this.state._options) && this.state._options.length > 0 && query.length > 0) {
 			this._filteredOptions = this.state._options.filter((option) => {
-				return (option.label as string).toLowerCase().includes(query.toLowerCase());
+				return (option.label as string)?.toLowerCase()?.includes(query?.toLowerCase());
 			});
 		}
-		this._showNoResultMessage = this._filteredOptions.length === 0;
-		if (this._filteredOptions.length === 0) {
-			const event = new CustomEvent('load-more-options');
-			this.host?.dispatchEvent(event);
+		if (Array.isArray(this._filteredOptions)) {
+			this._showNoResultMessage = this._filteredOptions.length === 0;
+			if (this._filteredOptions.length === 0) {
+				const event = new CustomEvent('load-more-options');
+				this.host?.dispatchEvent(event);
+			}
 		}
 	}
 
@@ -259,6 +253,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 									onChange={this.onChange.bind(this)}
 									placeholder={this.state._placeholder}
 									onClick={this.toggleListbox.bind(this)}
+									onBlur={() => {
+										this.handleInputValue();
+									}}
 								/>
 								{this.state._value && (
 									<KolIconTag
@@ -669,6 +666,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+		this.oldValue = value;
 	}
 
 	public componentWillLoad(): void {
@@ -676,7 +674,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-
+		this.oldValue = this._value;
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 		this._filteredOptions = this.state._options;
@@ -688,6 +686,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private onChange(event: Event): void {
+		if (this.oldValue !== this.ref?.value) {
+			this.oldValue = this.ref?.value;
+		}
 		// Event handling
 		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, this._value);
@@ -697,7 +698,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 		// Callback
 		if (typeof this.state._on?.onChange === 'function') {
-			this.state._on.onChange(event, this._value);
+			this.state._on.onChange(event, this._value && this.oldValue !== this.ref?.value);
 		}
 	}
 }
