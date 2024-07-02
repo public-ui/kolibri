@@ -89,13 +89,16 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private clearSelection() {
-		if (this.state._disabled) return;
-		this._focusedOptionIndex = -1;
-		this.state._value = '';
-		this._value = '';
-		this._inputValue = '';
-		this.state._hasValue = false;
-		this._filteredOptions = [...this.state._options];
+		if (this.state._disabled) {
+			return;
+		} else {
+			this._focusedOptionIndex = -1;
+			this.state._value = '';
+			this._value = '';
+			this._inputValue = '';
+			this.state._hasValue = false;
+			this._filteredOptions = [...this.state._options];
+		}
 	}
 
 	private selectOption(option: Option<string>) {
@@ -262,7 +265,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 										_icons="codicon codicon-close"
 										_label={translate('kol-dropdown')}
 										onClick={() => {
-											this.clearSelection.bind(this);
+											this.clearSelection();
 											this.ref?.focus();
 										}}
 										class="single-select__delete"
