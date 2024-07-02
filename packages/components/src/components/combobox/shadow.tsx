@@ -42,6 +42,7 @@ export class KolCombobox implements ComboboxAPI {
 	private ref?: HTMLSelectElement;
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
+	private oldValue?: string;
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -524,12 +525,14 @@ export class KolCombobox implements ComboboxAPI {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+		this.oldValue = value;
 	}
 
 	public componentWillLoad(): void {
 		this.refSuggestions = [];
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
+		this.oldValue = this._value;
 		this.controller.componentWillLoad();
 
 		this.state._hasValue = !!this.state._value;
@@ -542,11 +545,13 @@ export class KolCombobox implements ComboboxAPI {
 		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, this._value);
 
+		console.log('CHANGE CALLED')
+		this.oldValue = this.ref?.value;
 		// Static form handling
 		this.controller.setFormAssociatedValue(this._value as unknown as string);
 
 		// Callback
-		if (typeof this.state._on?.onChange === 'function') {
+		if (typeof this.state._on?.onChange === 'function' && this.oldValue !== this.ref?.value) {
 			this.state._on.onChange(event, this._value);
 		}
 	}
