@@ -36,7 +36,6 @@ type OptionalProps = {
 type RequiredStates = {
 	hasValue: boolean;
 	options: SelectOption<W3CInputValue>[];
-	value: string;
 } & PropId &
 	PropHideError &
 	PropLabelWithExpertSlot;
@@ -44,6 +43,7 @@ type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
 	hint: string;
+	value: string;
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	tabIndex: number;
