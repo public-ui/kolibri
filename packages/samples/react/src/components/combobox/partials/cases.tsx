@@ -16,7 +16,11 @@ export const ComboboxCases = forwardRef<HTMLKolComboboxElement, Components.KolCo
 				_suggestions={COUNTRY_SUGGESTIONS}
 				_value={'Deutschland'}
 				_on={{
+					onBlur: console.log,
+					onInput: console.log,
 					onChange: console.log,
+					onClick: console.log,
+					onFocus: console.log,
 				}}
 			/>
 			<KolCombobox {...props} _label="Disabled" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _disabled />
