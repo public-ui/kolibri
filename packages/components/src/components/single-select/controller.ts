@@ -1,5 +1,5 @@
-import type { SingleSelectWatches, SingleSelectProps, MsgPropType, OptionsWithOptgroupPropType, Option, SelectOption, Optgroup } from '../../schema';
-import { watchBoolean, watchString, validateMsg, validateOptionsWithOptgroup } from '../../schema';
+import type { SingleSelectWatches, SingleSelectProps, MsgPropType, OptionsPropType, Option, SelectOption, W3CInputValue } from '../../schema';
+import { watchBoolean, watchString, validateMsg, validateOptions } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
@@ -14,45 +14,22 @@ export class SingleSelectController extends InputIconController implements Singl
 		this.component = component;
 	}
 
-	public readonly getOptionByKey = (key: string): Option<string> | undefined => this.keyOptionMap.get(key);
-
-	private readonly isValueInOptions = (value: string, options: SelectOption<string>[]): boolean => {
-		return (
-			options.find((option) =>
-				typeof (option as Option<string>).value === 'string'
-					? (option as Option<string>).value === value
-					: Array.isArray((option as Optgroup<string>).options)
-						? this.isValueInOptions(value, (option as Optgroup<string>).options)
-						: false,
-			) !== undefined
-		);
-	};
-
-	private readonly filterValuesInOptions = (value: string, options: SelectOption<string>[]): string | undefined => {
-		return this.isValueInOptions(value, options) ? value : undefined;
-	};
-
 	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
 		if (key === '_value') {
 			this.setFormAssociatedValue(value as string);
 		}
 	};
 
-	private readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
+	protected readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
 		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<string>[]);
-			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
-			const selected = this.filterValuesInOptions(value as string, options as SelectOption<string>[]);
-			if (selected) {
-				nextState.set('_value', selected);
-			}
+			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
 		}
 	};
 
-	public validateOptions(value?: OptionsWithOptgroupPropType): void {
-		validateOptionsWithOptgroup(this.component, value, {
+	public validateOptions(value?: OptionsPropType): void {
+		validateOptions(this.component, value, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,
 				beforePatch: this.beforePatchOptions,

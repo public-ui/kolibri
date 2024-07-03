@@ -11,6 +11,7 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolSelect,
+	KolSingleSelect,
 	KolTextarea,
 } from '@public-ui/react';
 import type { FC } from 'react';
@@ -89,6 +90,14 @@ export const StaticForm: FC = () => {
 						{ label: 'Option B', value: 'B' },
 					]}
 					_rows={2}
+				/>
+				<KolSingleSelect
+					_name="singleSelect"
+					_label="Single Select"
+					_options={[
+						{ label: 'Option A', value: 'A' },
+						{ label: 'Option B', value: 'B' },
+					]}
 				/>
 				<KolTextarea _name="textarea" _label="Textarea" _rows={5} />
 				<div className="flex flex-wrap gap-4">

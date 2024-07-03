@@ -29,18 +29,16 @@
 		}
 
 		&__item {
-			input[type='radio'] {
-				display: none;
-			}
-
 			&.highlighted {
 				background-color: #f0f0f0;
 			}
 		}
 
-		&.no-results {
+		&__no-results-message {
+			cursor: default;
 			padding: 8px;
-			text-align: center !important;
+			text-align: center;
+			min-height: rem(50);
 		}
 
 		&__listbox {

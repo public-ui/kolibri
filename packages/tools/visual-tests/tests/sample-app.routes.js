@@ -285,6 +285,11 @@ ROUTES.set('spin/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('single-select/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('spin/custom', {
 	axe: {
 		skipFailures: false,

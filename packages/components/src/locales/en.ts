@@ -43,4 +43,5 @@ export default {
 	'close-alert': 'Notification {{label}} close',
 	'show-password': 'Show',
 	'hide-password': 'Hide',
+	'no-results-message': 'No results found.',
 };

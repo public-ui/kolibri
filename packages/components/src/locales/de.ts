@@ -43,4 +43,5 @@ export default {
 	'close-alert': 'Benachrichtigung {{label}} schließen',
 	'show-password': 'einblenden',
 	'hide-password': 'ausblenden',
+	'no-results-message': 'Keine Ergebnisse gefunden.',
 };

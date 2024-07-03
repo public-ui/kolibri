@@ -8,14 +8,14 @@ import type {
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
-	PropOptionsWithOptgroup,
 	PropRequired,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropOptions,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, SelectOption, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHorizontalIcons, Option, StencilUnknown, Stringified } from '../types';
 
-type RequiredProps = PropLabelWithExpertSlot & PropOptionsWithOptgroup;
+type RequiredProps = PropLabelWithExpertSlot & PropOptions;
 type OptionalProps = {
 	accessKey: string;
 	hint: string;
@@ -35,7 +35,7 @@ type OptionalProps = {
 
 type RequiredStates = {
 	hasValue: boolean;
-	options: SelectOption<string>[];
+	options: Option<StencilUnknown>[];
 } & PropId &
 	PropHideError &
 	PropLabelWithExpertSlot;
