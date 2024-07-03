@@ -140,6 +140,30 @@ ROUTES.set('details/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('drawer/basic?align=left', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('drawer/basic?align=top', {
+	viewportSize: {
+		width: 800,
+		height: 600,
+	},
+});
+ROUTES.set('drawer/basic?align=right', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('drawer/basic?align=bottom', {
+	viewportSize: {
+		width: 800,
+		height: 600,
+	},
+});
 ROUTES.set('form/basic', {
 	axe: {
 		skipFailures: false,
