@@ -1,0 +1,13 @@
+@import '../mixins/rem';
+
+@layer kol-theme-component {
+	.tree {
+		padding: rem(2);
+		&:focus-within {
+			border-radius: var(--border-radius);
+			outline-color: var(--color-ocean);
+			outline-style: solid;
+			outline-width: 1px;
+		}
+	}
+}

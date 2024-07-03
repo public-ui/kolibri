@@ -1,0 +1,45 @@
+@import '../mixins-eu/rem';
+
+@layer kol-theme-component {
+	:host {
+		display: block;
+	}
+
+	.tree-item {
+		ul {
+			list-style: disc inside;
+			border-left: 2px solid;
+			padding-left: rem(6.4);
+			margin-left: rem(32);
+			margin-top: rem(6.4);
+		}
+
+		li {
+			margin: rem(6.4) 0;
+		}
+
+		.toggle-button {
+			align-items: center;
+			border: 1px solid var(--color-blue);
+			display: inline-flex;
+			height: rem(25.6);
+			justify-content: center;
+			margin-right: rem(6.4);
+			width: rem(25.6);
+		}
+	}
+
+	.tree-link {
+		display: inline-block;
+		padding: rem(6.4);
+
+		&.active {
+			background: var(--color-yellow);
+
+			& > span {
+				font-family: var(--font-family);
+				font-weight: var(--font-weight-bold);
+			}
+		}
+	}
+}

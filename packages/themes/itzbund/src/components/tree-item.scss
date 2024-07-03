@@ -1,0 +1,20 @@
+@import '../mixins/rem';
+
+@layer kol-theme-component {
+	.tree-item .toggle-button {
+		margin-right: rem(2);
+	}
+
+	.tree-link {
+		display: inline-block;
+		padding: rem(0.5) 0;
+
+		&.active {
+			font-weight: 700;
+
+			& > span {
+				color: var(--color-achat);
+			}
+		}
+	}
+}
