@@ -267,24 +267,24 @@ export class KolTabs implements TabsAPI {
 						this.onCreateLabel = value.onCreate.label;
 					} else {
 						Log.debug(
-							`[KolTabs] Der Label-Text für Neu in {
+							`[KolTabs] The label text for New in {
   onCreate: {
     label: string (!),
     callback: Function
   }
-} ist nicht korrekt gesetzt.`,
+} is not set correctly.`,
 						);
 					}
 					if (typeof value.onCreate.callback === 'function') {
 						callbacks.onCreate = value.onCreate.callback;
 					} else {
 						Log.debug(
-							`[KolTabs] Die onCreate-Callback-Funktion für Neu in {
+							`[KolTabs] The onCreate callback function for New in {
   onCreate: {
     label: string,
     callback: Function (!)
   }
-} ist nicht korrekt gesetzt.`,
+} is not set correctly.`,
 						);
 					}
 				} else {
