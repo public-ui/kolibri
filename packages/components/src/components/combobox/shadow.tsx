@@ -62,8 +62,9 @@ export class KolCombobox implements ComboboxAPI {
 	};
 
 	private selectOption(event: Event, option: string) {
-		this.controller.onFacade.onInput(event);
+		this.controller.onFacade.onInput(event, true, option);
 		this.controller.onFacade.onChange(event, option);
+		this.controller.setFormAssociatedValue(option);
 		this.state._value = option;
 	}
 	private onInput(event: Event) {
@@ -281,6 +282,11 @@ export class KolCombobox implements ComboboxAPI {
 						this.focusOption(0);
 					}
 				});
+				break;
+			}
+			case 'Tab': {
+				this.controller.onFacade.onChange(event, this._value);
+				this.controller.setFormAssociatedValue(this._value);
 				break;
 			}
 			case 'End': {
@@ -528,6 +534,7 @@ export class KolCombobox implements ComboboxAPI {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+		this.controller.setFormAssociatedValue(value);
 	}
 
 	public componentWillLoad(): void {

@@ -16,6 +16,7 @@ type HTMLInputFileElement = HTMLInputElement & {
 
 const isAssociatedTagName = (name?: string): boolean =>
 	name === 'KOL-BUTTON' ||
+	name === 'KOL-COMBOBOX' ||
 	name === 'KOL-INPUT-CHECKBOX' ||
 	name === 'KOL-INPUT-COLOR' ||
 	name === 'KOL-INPUT-DATE' ||
