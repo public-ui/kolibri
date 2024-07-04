@@ -90,9 +90,9 @@ export class SelectController extends InputIconController implements SelectWatch
 		});
 		// if (value === true) {
 		// 	devHint(
-		// 		'[KolSelect] Aktuell wird die Mehrfachauswahl noch nicht unterstützt. Wir sind dran die Mehrfachauswahl funktionsfähig zu implementieren, da der Browser-Standard hier ein paar Lücken hat.'
+		// 		'[KolSelect] Currently, multiple selection is not yet supported. We are working on implementing it to be functional, as there are some gaps in the browser standard.'
 		// 	);
-		// 	devHint('[KolSelect] Bei der Mehrfachauswahl sollte zusätzlich auch die Listenlänge (size) gesetzt werden.');
+		// 	devHint('[KolSelect] For multiple selections, the list length (size) should also be set.');
 		// }
 	}
 
