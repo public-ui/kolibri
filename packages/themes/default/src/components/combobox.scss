@@ -6,6 +6,7 @@
 		font-family: var(--font-family);
 		@include kol-alert-theme;
 	}
+
 	.combobox {
 		display: block;
 		margin-bottom: rem(24);
@@ -68,11 +69,6 @@
 		&__item {
 			padding: rem(10) rem(12);
 			cursor: pointer;
-
-			&:hover {
-				background: var(--color-primary-variant);
-				color: var(--color-light);
-			}
 
 			&:focus {
 				background: var(--color-primary-variant);

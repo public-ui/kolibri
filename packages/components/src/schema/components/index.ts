@@ -9,6 +9,7 @@ export * from './button-group';
 export * from './button-link';
 export * from './card';
 export * from './details';
+export * from './drawer';
 export * from './form';
 export * from './heading';
 export * from './icon';

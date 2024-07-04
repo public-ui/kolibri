@@ -1,0 +1,120 @@
+@import '../mixins/rem';
+
+$duration: 0.4s;
+@layer kol-theme-component {
+	.drawer__wrapper {
+		box-shadow: 0 0 rem(4) var(--color-subtle);
+
+		&--left {
+			animation: slideInLeft $duration forwards;
+
+			&.is-closing {
+				animation: slideOutLeft $duration forwards !important;
+			}
+		}
+
+		&--right {
+			animation: slideInRight $duration forwards;
+
+			&.is-closing {
+				animation: slideOutRight $duration forwards;
+			}
+		}
+
+		&--top {
+			animation: slideInTop $duration forwards;
+
+			&.is-closing {
+				animation: slideOutTop $duration forwards;
+			}
+		}
+
+		&--bottom {
+			animation: slideInBottom $duration forwards;
+
+			&.is-closing {
+				animation: slideOutBottom $duration forwards;
+			}
+		}
+	}
+}
+
+@keyframes slideInLeft {
+	from {
+		transform: translateX(-100%);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		transform: translateX(100%);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInTop {
+	from {
+		transform: translateY(-100%);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideInBottom {
+	from {
+		transform: translateY(100%);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideOutLeft {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes slideOutRight {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(100%);
+	}
+}
+
+@keyframes slideOutTop {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes slideOutBottom {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(100%);
+	}
+}

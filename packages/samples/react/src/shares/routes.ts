@@ -9,6 +9,7 @@ import { BUTTON_LINK_ROUTES } from '../components/button-link/routes';
 import { BUTTON_ROUTES } from '../components/button/routes';
 import { CARD_ROUTES } from '../components/card/routes';
 import { DETAILS_ROUTES } from '../components/details/routes';
+import { DRAWER_ROUTES } from '../components/drawer/routes';
 import { FORM_ROUTES } from '../components/form/routes';
 import { HANDOUT_ROUTES } from '../components/handout/routes';
 import { HEADING_ROUTES } from '../components/heading/routes';
@@ -64,6 +65,7 @@ export const ROUTES: Routes = {
 	...CARD_ROUTES,
 	...COMBOBOX_ROUTES,
 	...DETAILS_ROUTES,
+	...DRAWER_ROUTES,
 	...FORM_ROUTES,
 	...HEADING_ROUTES,
 	...ICON_ROUTES,
