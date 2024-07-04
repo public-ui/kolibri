@@ -4,9 +4,8 @@ import { KolSingleSelect } from '@public-ui/react';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 
-import type { Components } from '@public-ui/components';
+import type { Components, Option, StencilUnknown } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
-import { Option, StencilUnknown } from '@public-ui/components/src';
 
 export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Components.KolSingleSelect>(function SingleSelectCases(props) {
 	return (
