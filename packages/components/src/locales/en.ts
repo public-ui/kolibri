@@ -44,4 +44,5 @@ export default {
 	'show-password': 'Show',
 	'hide-password': 'Hide',
 	'no-results-message': 'No results found.',
+	'delete-selection': 'Delete selection',
 };

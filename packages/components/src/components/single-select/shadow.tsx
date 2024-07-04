@@ -48,6 +48,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	public async getValue(): Promise<string | undefined> {
 		return this.state._value;
 	}
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.refInput = ref;
 		propagateFocus(this.host, this.refInput);
@@ -82,23 +83,23 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this.state._value = '';
 			this._value = '';
 			this._inputValue = '';
-			this.state._hasValue = false;
 			this._filteredOptions = [...this.state._options];
 		}
 	}
 
-	private selectOption(option: Option<string>) {
+	private selectOption(event: Event, option: Option<string>) {
 		this.state._value = option.value;
 		this._value = option.value;
 		this._inputValue = option.label as string;
-
-		this.state._hasValue = !!option;
+		this.controller.onFacade.onInput(event);
+		this.controller.onFacade.onChange(event, option);
 		this._filteredOptions = [...this.state._options];
 	}
 
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
 		this._inputValue = target.value;
+		this.controller.onFacade.onInput(event);
 		this._isOpen = true;
 		this.setFilteredOptionsByQuery(target.value);
 		this._focusedOptionIndex = -1;
@@ -228,7 +229,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								{this._inputValue && (
 									<KolIconTag
 										_icons="codicon codicon-close"
-										_label={translate('kol-dropdown')}
+										_label={translate('kol-delete-selection')}
 										onClick={() => {
 											this.clearSelection();
 											this.refInput?.focus();
@@ -265,7 +266,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 												role="option"
 												aria-selected={this.state._value === (option as Option<string>).value}
 												onClick={(event: Event) => {
-													this.selectOption(option as Option<string>);
+													this.selectOption(event, option as Option<string>);
 													this.refInput?.focus();
 													this.toggleListbox(event);
 												}}
@@ -280,7 +281,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 												class="single-select__item"
 												onKeyDown={(e) => {
 													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-														this.selectOption(option as Option<string>);
+														this.selectOption(e, option as Option<string>);
 														this.refInput?.focus();
 														e.preventDefault();
 													}
@@ -349,7 +350,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case ' ': {
 				if (this._isOpen) {
 					if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
-						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
+						this.selectOption(event, this._filteredOptions[this._focusedOptionIndex] as Option<string>);
 						this.refInput?.focus();
 						handleEvent(false);
 					}
@@ -361,7 +362,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case 'NumpadEnter':
 			case 'Enter': {
 				if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
-					this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
+					this.selectOption(event, this._filteredOptions[this._focusedOptionIndex] as Option<string>);
 					this.refInput?.focus();
 					handleEvent(false);
 				} else {
@@ -519,7 +520,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop({ mutable: true }) public _value?: string;
 
 	@State() public state: SingleSelectStates = {
-		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
@@ -637,8 +637,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 		this.oldValue = this._value;
-		this.state._hasValue = !!this.state._value;
-		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 		this._filteredOptions = this.state._options;
 
 		if (Array.isArray(this._options)) {
@@ -659,7 +657,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.controller.setFormAssociatedValue(this._value as unknown as string);
 
 		// Callback
-		if (typeof this.state._on?.onChange === 'function') {
+		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
 			this.state._on.onChange(event, this._value && this.oldValue !== this.refInput?.value);
 		}
 	}

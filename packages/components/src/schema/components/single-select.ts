@@ -34,7 +34,6 @@ type OptionalProps = {
 	PropTouched;
 
 type RequiredStates = {
-	hasValue: boolean;
 	options: Option<StencilUnknown>[];
 } & PropId &
 	PropHideError &

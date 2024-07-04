@@ -6,6 +6,7 @@ import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 
 import type { Components } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
+import { Option, StencilUnknown } from '@public-ui/components/src';
 
 export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Components.KolSingleSelect>(function SingleSelectCases(props) {
 	return (
@@ -14,7 +15,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 				{...props}
 				_hint={HINT_MSG}
 				_label="Label"
-				_options={COUNTRY_OPTIONS}
+				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
 				_value={'de'}
 				_on={{
 					onBlur: console.log,
@@ -23,10 +24,10 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 					onFocus: console.log,
 				}}
 			/>
-			<KolSingleSelect {...props} _label="Disabled" _options={COUNTRY_OPTIONS} _value={'de'} _disabled />
+			<KolSingleSelect {...props} _label="Disabled" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _disabled />
 			<KolSingleSelect
 				{...props}
-				_options={COUNTRY_OPTIONS}
+				_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_touched
 				_label="Label"
