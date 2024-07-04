@@ -96,9 +96,8 @@ export const uiUxHintMillerscheZahl = (className: string, length = 8): void => {
 		uiUxHint(
 			`[${className}] Within navigation structures, it is recommended to use no more than 7 menu items.
 
-Links:
-- https://de.ryte.com/wiki/Millersche_Zahl
-- https://de.wikipedia.org/wiki/Millersche_Zahl`,
+Link:
+- https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two`,
 		);
 	}
 };

@@ -242,13 +242,13 @@ export const watchJsonArrayString = <T>(
 					} else {
 						objectObjectHandler(invalid, () => {
 							Log.debug(invalid);
-							throw new Error(`↑ Das Schema für das Property (_options) ist nicht valide. Der Wert wird nicht geändert.`);
+							throw new Error(`↑ The schema for the property (_options) is not valid. The value will not be changed.`);
 						});
 					}
 				} else {
 					objectObjectHandler(value, () => {
 						Log.debug(value);
-						throw new Error(`↑ Das Schema für das Property (_options) ist nicht valide. Der Wert wird nicht geändert.`);
+						throw new Error(`↑ The schema for the property (_options) is not valid. The value will not be changed.`);
 					});
 				}
 			} catch (error) {
