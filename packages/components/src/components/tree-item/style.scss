@@ -4,11 +4,4 @@
 	:host {
 		font-size: rem(16);
 	}
-
-	.tree-link a:focus {
-		display: block;
-	}
-	.tree-link.active a:focus {
-		outline-color: red !important;
-	}
 }
