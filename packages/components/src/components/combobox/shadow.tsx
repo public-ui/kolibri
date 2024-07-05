@@ -284,11 +284,6 @@ export class KolCombobox implements ComboboxAPI {
 				});
 				break;
 			}
-			case 'Tab': {
-				this.controller.onFacade.onChange(event, this._value);
-				this.controller.setFormAssociatedValue(this._value);
-				break;
-			}
 			case 'End': {
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
