@@ -23,7 +23,7 @@ Load the necessary scripts in your HTML file, either from a CDN or from your loc
 First, initialize KoliBri with a [theme](https://github.com/public-ui/kolibri/tree/develop/packages/themes):
 
 ```ts
-import { register } from 'https://unpkg.com/@public-ui/components@2.0.3/dist/esm/index.js';
+import { register } from 'https://unpkg.com/@public-ui/components@2.0.3/dist/esm/index.ts';
 import { DEFAULT } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
 register(DEFAULT, []).catch(console.warn);
 ```

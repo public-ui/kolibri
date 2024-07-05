@@ -1,14 +1,10 @@
-import type { DetailsAPI, DetailsStates, EventCallbacks, LabelPropType } from '../../schema';
-import { propagateFocus, setState, validateLabel, validateOpen } from '../../schema';
-import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
-
-import { tryToDispatchKoliBriEvent } from '../../utils/events';
-import { DetailsAnimationController } from './DetailsAnimationController';
-
-import type { DisabledPropType } from '../../schema';
-import { validateDisabled } from '../../schema';
+import type { DetailsAPI, DetailsStates, DisabledPropType, EventCallbacks, FocusableElement, LabelPropType } from '../../schema';
+import { setState, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { preventDefaultAndStopPropagation } from '../../utils/events';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { preventDefaultAndStopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { DetailsAnimationController } from './DetailsAnimationController';
 import { KolIconTag, KolIndentedTextTag } from '../../core/component-names';
 
 /**
@@ -21,7 +17,7 @@ import { KolIconTag, KolIndentedTextTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolDetails implements DetailsAPI {
+export class KolDetails implements DetailsAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 	private detailsElement?: HTMLDetailsElement;
 	private summaryElement?: HTMLElement;
@@ -33,8 +29,21 @@ export class KolDetails implements DetailsAPI {
 
 	private readonly catchSummary = (ref?: HTMLElement) => {
 		this.summaryElement = ref;
-		propagateFocus(this.host, this.summaryElement);
 	};
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.summaryElement?.focus();
+	}
 
 	/**
 	 * Handle disabled, because the toggle event is to late.

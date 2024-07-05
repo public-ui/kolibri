@@ -1,4 +1,5 @@
 import type {
+	FocusableElement,
 	HideErrorPropType,
 	IdPropType,
 	InputRangeAPI,
@@ -15,7 +16,8 @@ import type {
 	TooltipAlignPropType,
 	W3CInputValue,
 } from '../../schema';
-import { propagateFocus, showExpertSlot } from '../../schema';
+import { showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -23,9 +25,8 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputRangeController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolInputWcTag } from '../../core/component-names';
+
 /**
  * @slot - Die Beschriftung des Eingabeelements.
  */
@@ -36,15 +37,28 @@ import { KolInputWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolInputRange implements InputRangeAPI {
+export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
 	private refInputNumber?: HTMLInputElement;
 	private refInputRange?: HTMLInputElement;
 
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.refInputRange?.focus();
+	}
+
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputNumber = element;
-			propagateFocus(this.host, element);
 			if (!this._value && this.refInputNumber?.value) {
 				this.validateValue(parseFloat(this.refInputNumber.value));
 			}
