@@ -53,7 +53,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.refInputRange?.focus();
+		this.refInputNumber?.focus();
 	}
 
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
