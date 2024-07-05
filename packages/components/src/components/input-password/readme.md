@@ -91,11 +91,25 @@ kolibriElement._on = {
 
 ## Methods
 
+### `focus() => Promise<void>`
+
+<span style="color:red">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
 ### `getValue() => Promise<string | undefined>`
 
 #### Returns
 
 Type: `Promise<string | undefined>`
+
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ## Slots
 

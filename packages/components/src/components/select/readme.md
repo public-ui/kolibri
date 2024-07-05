@@ -139,11 +139,25 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 
 ## Methods
 
+### `focus() => Promise<void>`
+
+<span style="color:red">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
 ### `getValue() => Promise<Stringified<W3CInputValue[]> | undefined>`
 
 #### Returns
 
 Type: `Promise<Stringified<W3CInputValue[]> | undefined>`
+
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ## Slots
 

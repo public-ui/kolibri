@@ -47,4 +47,20 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
 | `_tooltipAlign`      | `_tooltip-align`      | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                | `'right'`   |
 | `_variant`           | `_variant`            | Defines which variant should be used for presentation.                                                                                                       | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined` | `'normal'`  |
 
+## Methods
+
+### `focus() => Promise<void>`
+
+<span style="color:red">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
+
 ---
