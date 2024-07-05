@@ -22,6 +22,7 @@ const TAGS = [
 	'kol-button-link',
 	'kol-card',
 	'kol-details',
+	'kol-drawer',
 	'kol-form',
 	'kol-heading',
 	'kol-icon',
@@ -48,7 +49,6 @@ const TAGS = [
 	'kol-quote',
 	'kol-select',
 	'kol-skip-nav',
-	'kol-span',
 	'kol-spin',
 	'kol-split-button',
 	'kol-symbol',
@@ -76,6 +76,7 @@ const EXCLUDE_TAGS = [
 	'kol-input',
 	'kol-link-wc',
 	'kol-popover-wc',
+	'kol-span',
 	'kol-span-wc',
 	'kol-table-stateless-wc',
 	'kol-tooltip-wc',
@@ -152,17 +153,6 @@ async function generateCustomElementsJson(docsData: JsonDocs) {
 	await fsPromises.writeFile('./custom-elements.json', JSON.stringify(jsonData, null, 2));
 }
 
-const developmentHtmlFiles =
-	process.env.NODE_ENV === 'development'
-		? [
-				'dev.html',
-				...fs
-					.readdirSync(path.join(__dirname, 'src/dev'))
-					.filter((fileName: string) => fileName.endsWith('.html'))
-					.map((fileName: string) => path.join('dev', fileName)),
-			]
-		: [];
-
 let outputTargets: OutputTarget[] = [
 	{
 		type: 'dist',
@@ -179,7 +169,6 @@ let outputTargets: OutputTarget[] = [
 			{
 				src: 'assets',
 			},
-			...developmentHtmlFiles.map((filePath) => ({ src: filePath })),
 		],
 	},
 	// {
@@ -190,26 +179,6 @@ let outputTargets: OutputTarget[] = [
 ];
 if (process.env.NODE_ENV === 'production') {
 	outputTargets = outputTargets.concat([
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v11/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v12/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v13/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v14/src/components.ts',
-		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
@@ -224,6 +193,11 @@ if (process.env.NODE_ENV === 'production') {
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v17/src/components.ts',
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v18/src/components.ts',
 		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',

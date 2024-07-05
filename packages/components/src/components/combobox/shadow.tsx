@@ -41,6 +41,7 @@ export class KolCombobox implements ComboboxAPI {
 	@Element() private readonly host?: HTMLKolComboboxElement;
 	private ref?: HTMLInputElement;
 	private refSuggestions: HTMLLIElement[] = [];
+	private _focusedOptionIndex: number = -1;
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -96,8 +97,6 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	}
 
-	private _focusedOptionIndex: number = -1;
-
 	private moveFocus(delta: number) {
 		if (!this._filteredSuggestions) {
 			return;
@@ -112,11 +111,11 @@ export class KolCombobox implements ComboboxAPI {
 			newIndex = this._filteredSuggestions.length - 1;
 		}
 
-		this._focusedOptionIndex = newIndex;
-		this.focusOption(this._focusedOptionIndex);
+		this.focusOption(newIndex);
 	}
 
 	private focusOption(index: number) {
+		this._focusedOptionIndex = index;
 		if (this.refSuggestions) {
 			const optionElement = this.refSuggestions[index];
 			optionElement?.focus();
@@ -132,7 +131,6 @@ export class KolCombobox implements ComboboxAPI {
 			this._filteredSuggestions.findIndex((option: W3CInputValue) => (option as string).toLowerCase().startsWith(charLowerCase));
 
 		if (typeof index === 'number') {
-			this._focusedOptionIndex = index;
 			this.focusOption(index);
 		}
 	}
@@ -225,6 +223,12 @@ export class KolCombobox implements ComboboxAPI {
 													this.selectOption(option as string);
 													this.toggleListbox();
 												}}
+												onMouseOver={() => {
+													this.focusOption(index);
+												}}
+												onFocus={() => {
+													this.focusOption(index);
+												}}
 												class="combobox__item"
 												onKeyDown={(e) => {
 													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
@@ -281,8 +285,7 @@ export class KolCombobox implements ComboboxAPI {
 			case 'Home': {
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
-						this._focusedOptionIndex = 0;
-						this.focusOption(this._focusedOptionIndex);
+						this.focusOption(0);
 					}
 				});
 				break;
@@ -290,8 +293,7 @@ export class KolCombobox implements ComboboxAPI {
 			case 'End': {
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
-						this._focusedOptionIndex = this._filteredSuggestions ? this._filteredSuggestions.length - 1 : 0;
-						this.focusOption(this._focusedOptionIndex);
+						this.focusOption(this._filteredSuggestions ? this._filteredSuggestions.length - 1 : 0);
 					}
 				});
 				break;

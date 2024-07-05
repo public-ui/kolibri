@@ -2,8 +2,9 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { FormWrap } from '../FormWrap';
-import { InputCheckboxVariants } from './partials/variants';
 import { SampleDescription } from '../SampleDescription';
+import type { Components } from '@public-ui/components';
+import { InputCheckboxVariants } from './partials/variants';
 
 export const InputCheckboxButton: FC = () => (
 	<>
@@ -15,6 +16,6 @@ export const InputCheckboxButton: FC = () => (
 				dargestellt.
 			</p>
 		</SampleDescription>
-		<FormWrap RefComponent={InputCheckboxVariants} _variant="button" />
+		<FormWrap<Components.KolInputCheckbox> RefComponent={InputCheckboxVariants} _variant="button" />
 	</>
 );

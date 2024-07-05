@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { KoliBriModule } from '@public-ui/angular-v17';
+import { KoliBriModule } from '@public-ui/angular-v18';
 
 @Component({
 	selector: 'app-root',

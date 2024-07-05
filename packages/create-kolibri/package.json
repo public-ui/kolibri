@@ -1,6 +1,6 @@
 {
 	"name": "create-kolibri",
-	"version": "2.1.2",
+	"version": "2.1.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -74,13 +74,13 @@
 	"devDependencies": {
 		"@types/gradient-string": "1.1.6",
 		"@types/node": "ts5.4",
-		"@typescript-eslint/eslint-plugin": "7.12.0",
-		"@typescript-eslint/parser": "7.12.0",
+		"@typescript-eslint/eslint-plugin": "7.14.1",
+		"@typescript-eslint/parser": "7.14.1",
 		"eslint": "8.57.0",
-		"knip": "5.18.2",
-		"prettier": "3.3.1",
+		"knip": "5.23.0",
+		"prettier": "3.3.2",
 		"tsup": "8.1.0",
-		"typescript": "5.4.5"
+		"typescript": "5.5.2"
 	},
 	"files": [
 		"dist"

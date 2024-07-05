@@ -24,7 +24,9 @@ import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey
 import { InputPasswordController } from './controller';
 
 import type { JSX } from '@stencil/core';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolInputWcTag } from '../../core/component-names';
+import { translate } from '../../i18n';
+import { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -133,12 +135,28 @@ export class KolInputPassword implements InputPasswordAPI {
 							readOnly={this.state._readOnly}
 							required={this.state._required}
 							spellcheck="false"
-							type="password"
+							type={this._passwordVisible ? 'text' : 'password'}
 							value={this.state._value as string}
 							{...this.controller.onFacade}
 							onKeyDown={this.onKeyDown}
 							onInput={this.onInput}
 						/>
+						{this._variant === 'visibility-toggle' && this.ref && this.ref.value?.length > 0 ? (
+							<KolButtonWcTag
+								class="password-toggle-button"
+								_label={this._passwordVisible ? translate('kol-hide-password') : translate('kol-show-password')}
+								_variant="ghost"
+								_on={{
+									onClick: (): void => {
+										this._passwordVisible = !this._passwordVisible;
+									},
+								}}
+								_hideLabel
+								_icons={this._passwordVisible ? 'codicon codicon-eye-closed' : 'codicon codicon-eye-watch'}
+							/>
+						) : (
+							''
+						)}
 					</div>
 				</KolInputWcTag>
 			</Host>
@@ -287,6 +305,11 @@ export class KolInputPassword implements InputPasswordAPI {
 	 */
 	@Prop() public _value?: string;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: PasswordVariantPropType = 'default';
+
 	@State() public state: InputPasswordStates = {
 		_autoComplete: 'off',
 		_currentLength: 0,
@@ -294,7 +317,9 @@ export class KolInputPassword implements InputPasswordAPI {
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
+		_variant: 'default',
 	};
+	@State() private _passwordVisible: boolean = false;
 
 	public constructor() {
 		this.controller = new InputPasswordController(this, 'password', this.host);
@@ -314,13 +339,17 @@ export class KolInputPassword implements InputPasswordAPI {
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		this.controller.validateAutoComplete(value);
 		if (value === 'on') {
-			devHint(`[KolInputPassword] Die Option 'autocomplete' sollte bei einem Passwort-Eingabefeld nicht auf "on" gesetzt werden.`);
+			devHint(`[KolInputPassword] The 'autocomplete' option should not be set to "on" for a password input field`);
 		}
 	}
 
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
+	}
+	@Watch('_variant')
+	public validateVariant(value?: PasswordVariantPropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	@Watch('_error')

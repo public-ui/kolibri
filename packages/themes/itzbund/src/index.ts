@@ -9,6 +9,7 @@ import buttonGroupCss from './components/button-group.scss';
 import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
+import drawerCss from './components/drawer.scss';
 import headingCss from './components/heading.scss';
 import indentedTextCss from './components/indented-text.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
@@ -67,6 +68,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-NAV': navCss,
 	'KOL-CARD': cardCss,
 	'KOL-COMBOBOX': ComboboxCss,
+	'KOL-DRAWER': drawerCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-RADIO': inputRadioCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,

@@ -51,7 +51,8 @@ ROUTES.forEach((options, route) => {
 		return;
 	}
 	test(`snapshot for ${route}`, async ({ page }) => {
-		await page.goto(`/#${route}?hideMenus`, { waitUntil: 'networkidle' });
+		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
+		await page.goto(`/#${route}${hideMenusParam}`, { waitUntil: 'networkidle' });
 		if (options?.viewportSize) {
 			await page.setViewportSize(options.viewportSize);
 		}

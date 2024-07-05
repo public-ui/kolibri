@@ -3,6 +3,9 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
 import { KolSpanWcTag } from '../../core/component-names';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-span',
 	styleUrls: {
