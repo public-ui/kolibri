@@ -20,7 +20,7 @@ npm install material-symbols@latest
 
 ## Usage
 
-Import in JS (example: `src/index.ts` in Create React App, `src/main.js` in Vue CLI):
+Import in JS (example: `src/index.js` in Create React App, `src/main.js` in Vue CLI):
 
 ```js
 import 'material-symbols';
@@ -35,29 +35,22 @@ or import in CSS (example: `src/styles.css` in Angular CLI):
 or import in HTML:
 
 ```html
-<link href="/path/to/material-symbols/index.css" rel="stylesheet" />
+<link href="/path/to/material-symbols/index.css" rel="stylesheet">
 ```
 
 To display an icon, use one of the following:
 
 ```html
-<span class="material-symbols-outlined">face</span>
-<!-- Outlined -->
-<span class="material-symbols-rounded">face</span>
-<!-- Rounded -->
-<span class="material-symbols-sharp">face</span>
-<!-- Sharp -->
+<span class="material-symbols-outlined">face</span> <!-- Outlined -->
+<span class="material-symbols-rounded">face</span>  <!-- Rounded -->
+<span class="material-symbols-sharp">face</span>    <!-- Sharp -->
 ```
 
 To customize the variable font axes (fill, weight, grade, and optical size), use:
 
 ```css
 .material-symbols-outlined {
-	font-variation-settings:
-		'FILL' 0,
-		'wght' 400,
-		'GRAD' 0,
-		'opsz' 48;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
 ```
 
@@ -73,11 +66,11 @@ The default `index.css` includes CSS for all fonts. This may cause build tools s
 <details>
 <summary><strong>Show all</strong></summary><br>
 
-| Icons    | CSS          | Sass          |
-| :------- | :----------- | :------------ |
-| Outlined | outlined.css | outlined.scss |
-| Rounded  | rounded.css  | rounded.scss  |
-| Sharp    | sharp.css    | sharp.scss    |
+Icons | CSS | Sass
+:--- | :--- | :---
+Outlined | outlined.css | outlined.scss
+Rounded | rounded.css | rounded.scss
+Sharp | sharp.css | sharp.scss
 
 </details>
 
@@ -114,7 +107,7 @@ See [demo].
 Material Symbols are created by [Google](https://github.com/google/material-design-icons#license).
 
 > We have made these icons available for you to incorporate into your products under the [Apache License Version 2.0][license]. Feel free to remix and re-share these icons and documentation in your products.
-> We'd love attribution in your app's _about_ screen, but it's not required.
+We'd love attribution in your app's *about* screen, but it's not required.
 
 [releases]: https://github.com/marella/material-symbols/releases
 [license]: https://github.com/marella/material-symbols/blob/main/material-symbols/LICENSE

@@ -24,7 +24,7 @@ npm install material-icons@latest
 
 ## Usage
 
-Import in JS (example: `src/index.ts` in Create React App, `src/main.js` in Vue CLI):
+Import in JS (example: `src/index.js` in Create React App, `src/main.js` in Vue CLI):
 
 ```js
 import 'material-icons/iconfont/material-icons.css';
@@ -39,22 +39,17 @@ or import in CSS (example: `src/styles.css` in Angular CLI):
 or import in HTML:
 
 ```html
-<link href="/path/to/material-icons/iconfont/material-icons.css" rel="stylesheet" />
+<link href="/path/to/material-icons/iconfont/material-icons.css" rel="stylesheet">
 ```
 
 To display an icon, use one of the following:
 
 ```html
-<span class="material-icons">pie_chart</span>
-<!-- Filled -->
-<span class="material-icons-outlined">pie_chart</span>
-<!-- Outlined -->
-<span class="material-icons-round">pie_chart</span>
-<!-- Round -->
-<span class="material-icons-sharp">pie_chart</span>
-<!-- Sharp -->
-<span class="material-icons-two-tone">pie_chart</span>
-<!-- Two Tone -->
+<span class="material-icons">pie_chart</span>          <!-- Filled -->
+<span class="material-icons-outlined">pie_chart</span> <!-- Outlined -->
+<span class="material-icons-round">pie_chart</span>    <!-- Round -->
+<span class="material-icons-sharp">pie_chart</span>    <!-- Sharp -->
+<span class="material-icons-two-tone">pie_chart</span> <!-- Two Tone -->
 ```
 
 ### Reducing Build Size
@@ -70,13 +65,13 @@ The default `material-icons.css` includes CSS for all fonts. This may cause buil
 <details>
 <summary><strong>Show all</strong></summary><br>
 
-| Icons    | CSS          | Sass          |
-| :------- | :----------- | :------------ |
-| Filled   | filled.css   | filled.scss   |
-| Outlined | outlined.css | outlined.scss |
-| Round    | round.css    | round.scss    |
-| Sharp    | sharp.css    | sharp.scss    |
-| Two Tone | two-tone.css | two-tone.scss |
+Icons | CSS | Sass
+:--- | :--- | :---
+Filled | filled.css | filled.scss
+Outlined | outlined.css | outlined.scss
+Round | round.css | round.scss
+Sharp | sharp.css | sharp.scss
+Two Tone | two-tone.css | two-tone.scss
 
 </details>
 
@@ -127,7 +122,7 @@ See [demo].
 Material design icons are created by [Google](https://github.com/google/material-design-icons#license).
 
 > We have made these icons available for you to incorporate into your products under the [Apache License Version 2.0][license]. Feel free to remix and re-share these icons and documentation in your products.
-> We'd love attribution in your app's _about_ screen, but it's not required.
+We'd love attribution in your app's *about* screen, but it's not required.
 
 [releases]: https://github.com/marella/material-icons/releases
 [license]: https://github.com/marella/material-icons/blob/main/LICENSE
