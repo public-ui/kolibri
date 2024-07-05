@@ -3,6 +3,7 @@ import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } fro
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import { KolLinkWcTag } from '../../core/component-names';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: `kol-tree-item-wc`,
@@ -10,6 +11,7 @@ import { KolLinkWcTag } from '../../core/component-names';
 })
 export class KolTreeItemWc implements TreeItemAPI {
 	private linkElement!: HTMLKolLinkWcElement;
+	private groupId = `tree-group-${nonce()}`;
 
 	@Element() host!: HTMLElement;
 
@@ -27,6 +29,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 						_role="treeitem"
 						_tabIndex={this.state._active ? 0 : -1}
 						_ariaExpanded={this.state._open}
+						_ariaOwns={this.state._hasChildren ? this.groupId : undefined}
 						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
 					>
 						<span slot="expert">
@@ -45,7 +48,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 							{this.state._label}
 						</span>
 					</KolLinkWcTag>
-					<ul hidden={!this.state._hasChildren || !this.state._open} role="group">
+					<ul hidden={!this.state._hasChildren || !this.state._open} role="group" id={this.groupId}>
 						<slot />
 					</ul>
 				</li>
