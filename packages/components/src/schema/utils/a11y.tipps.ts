@@ -63,9 +63,7 @@ export const featureHint = (msg: string, done = false, options?: HintOptions): v
 		});
 	}
 };
-devHint(
-	`Wir freuen uns über jedes Feedback, Kommentare, Screenshots oder Demo-Links von einer auf KoliBri-basierenden Anwendung (kolibri@itzbund.de). Vielen Dank!`,
-);
+devHint(`We appreciate any feedback, comments, screenshots, or demo links of an application based on KoliBri (kolibri@itzbund.de). Thank you!`);
 
 const uiUxCache: Set<string> = new Set();
 export const uiUxHint = (msg: string, options?: HintOptions): void => {
@@ -81,14 +79,14 @@ export const uiUxHint = (msg: string, options?: HintOptions): void => {
 
 export const a11yHintDisabled = (): void => {
 	a11yHint(
-		`"Disabled" schränkt die Zugänglichkeit und Sichtbarkeit ein. Wir empfehlen aus Sicht der Barrierefreiheit readonly- statt disabled-Attribut zu verwenden.\n- https://uxdesign.cc/is-it-ok-to-grey-out-disabled-buttons-8afa74a0fae`,
+		`"Disabled" limits accessibility and visibility. From an accessibility perspective, we recommend using the readonly attribute instead of disabled.\n- https://uxdesign.cc/is-it-ok-to-grey-out-disabled-buttons-8afa74a0fae`,
 	);
 };
 
 export const a11yHintLabelingLandmarks = (value: unknown): void => {
 	if (typeof value !== 'string' || value === '') {
 		a11yHint(
-			`Manche Strukturelemente, wie bspw. der nav-Tag, können mehrfach in einer Webseite verwendet werden. Damit die gleichnamigen Strukturelemente voneinander unterschieden werden können, ist es erforderlich ein Aria-Label zu setzen.\n- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Navigation_Role#accessibility_concerns`,
+			`Some structural elements, such as the nav tag, can be used multiple times on a webpage. To distinguish between similarly named structural elements, it is necessary to set an ARIA label.\n- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Navigation_Role#accessibility_concerns`,
 		);
 	}
 };
@@ -96,11 +94,10 @@ export const a11yHintLabelingLandmarks = (value: unknown): void => {
 export const uiUxHintMillerscheZahl = (className: string, length = 8): void => {
 	if (length > 7) {
 		uiUxHint(
-			`[${className}] Innerhalb von Navigationsstrukturen wird empfohlen nicht mehr als 7 Menüpunkte zu verwenden.
+			`[${className}] Within navigation structures, it is recommended to use no more than 7 menu items.
 
-Links:
-- https://de.ryte.com/wiki/Millersche_Zahl
-- https://de.wikipedia.org/wiki/Millersche_Zahl`,
+Link:
+- https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two`,
 		);
 	}
 };
