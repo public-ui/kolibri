@@ -108,7 +108,7 @@ export class KolLogo implements API {
 		if (typeof value === 'string' && ENUM_AS_MAP.has(value)) {
 			setState(this, '_org', value);
 		} else {
-			devHint(`Die verwendete Abkürzung (${value as string}) ist nicht definiert!`);
+			devHint(`The abbreviation (${value as string}) used is not defined!`);
 		}
 	}
 
