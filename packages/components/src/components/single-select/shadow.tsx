@@ -220,10 +220,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 									required={this.state._required}
 									spellcheck="false"
 									{...this.controller.onFacade}
-									onInput={this.onInput}
-									onChange={this.onChange}
+									onInput={this.onInput.bind(this)}
+									onChange={this.onChange.bind(this)}
 									placeholder={this.state._placeholder}
-									onClick={this.toggleListbox}
+									onClick={this.toggleListbox.bind(this)}
 								/>
 								{this._inputValue && (
 									<KolIconTag
@@ -252,7 +252,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								></KolButtonWcTag>
 							</div>
 							{this._isOpen && !(this.state._disabled === true) && (
-								<ul role="listbox" class="single-select__listbox" onKeyDown={this.handleKeyDownDropdown}>
+								<ul role="listbox" class="single-select__listbox" onKeyDown={this.handleKeyDownDropdown.bind(this)}>
 									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 										this._filteredOptions.map((option, index) => (
 											<li
