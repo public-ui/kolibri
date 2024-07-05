@@ -22,10 +22,11 @@ export class KolTreeItemWc implements TreeItemAPI {
 							'tree-link': true,
 							active: Boolean(this.state._active),
 						}}
-						_label=""
 						_href={this.state._href}
-						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
+						_label=""
+						_role="treeitem"
 						_tabIndex={this.state._active ? 0 : -1}
+						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
 					>
 						<span slot="expert">
 							{this.state._hasChildren &&
