@@ -9,6 +9,10 @@
 	.single-select {
 		position: relative;
 
+		&:focus {
+			outline: 0 !important;
+		}
+
 		&.disabled,
 		&.disabled * {
 			cursor: not-allowed !important;
@@ -36,8 +40,9 @@
 
 		&__no-results-message {
 			cursor: default;
-			padding: 8px;
-			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			min-height: rem(50);
 		}
 

@@ -18,6 +18,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 				_value={'de'}
 				_on={{
 					onBlur: console.log,
+					onInput: console.log,
 					onChange: console.log,
 					onClick: console.log,
 					onFocus: console.log,

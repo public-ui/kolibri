@@ -59,6 +59,7 @@ export class AssociatedInputController implements Watches {
 				case 'radio':
 				case 'range':
 				case 'text':
+				case 'single-select':
 					this.formAssociated = document.createElement('input');
 					this.formAssociated.setAttribute('type', this.type);
 					break;
