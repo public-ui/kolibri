@@ -26,6 +26,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 						_label=""
 						_role="treeitem"
 						_tabIndex={this.state._active ? 0 : -1}
+						_ariaExpanded={this.state._open}
 						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
 					>
 						<span slot="expert">

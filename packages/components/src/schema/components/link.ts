@@ -3,6 +3,7 @@ import type {
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
 	PropAriaCurrentValue,
+	PropAriaExpanded,
 	PropDisabled,
 	PropDownload,
 	PropHideLabel,
@@ -35,7 +36,7 @@ export type OptionalProps = {
 	PropTooltipAlign;
 
 type RequiredStates = PropAriaCurrentValue & PropIcons & PropHref;
-type OptionalStates = { ariaCurrent: string } & Omit<RequiredProps & OptionalProps, keyof RequiredStates>;
+type OptionalStates = { ariaCurrent: string } & PropAriaExpanded & Omit<RequiredProps & OptionalProps, keyof RequiredStates>;
 
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type LinkStates = Generic.Element.Members<RequiredStates, OptionalStates>;
