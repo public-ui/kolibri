@@ -1,7 +1,19 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	.tree {
+		ul {
+			list-style: none;
+			padding: 0 rem(6.4);
+			margin-left: 0;
+		}
+
 		&:focus-within {
 			outline: 1px solid var(--color-primary);
 		}
+	}
+
+	span {
+		text-decoration: none !important;
 	}
 }

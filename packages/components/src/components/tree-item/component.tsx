@@ -2,7 +2,7 @@ import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } fro
 
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
-import { KolLinkTag } from '../../core/component-names';
+import { KolLinkTag, KolIconTag } from '../../core/component-names';
 
 @Component({
 	tag: `kol-tree-item-wc`,
@@ -13,37 +13,39 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	@Element() host!: HTMLElement;
 
+	public renderIcon = (props: { icon: string; label: string }) => {
+		return <KolIconTag class="toggle-button-icon" _label={props.label} _icons={props.icon} />;
+	};
+
 	public render(): JSX.Element {
+		const { _href, _active, _hasChildren, _open } = this.state;
 		return (
 			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-item-wc">
 				<li class="tree-item">
 					<KolLinkTag
 						class={{
 							'tree-link': true,
-							active: Boolean(this.state._active),
+							active: Boolean(_active),
 						}}
 						_label=""
-						_href={this.state._href}
+						_href={_href}
 						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
-						_tabIndex={this.state._active ? 0 : -1}
+						_tabIndex={_active ? 0 : -1}
 					>
 						<span slot="expert">
-							{this.state._hasChildren &&
-								(this.state._open ? (
-									// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
-									<span class="toggle-button" onClick={(event) => void this.handleCollapseClick(event)}>
-										-
-									</span>
-								) : (
-									// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
-									<span class="toggle-button" onClick={(event) => void this.handleExpandClick(event)}>
-										+
-									</span>
-								))}{' '}
+							{_hasChildren && (
+								// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
+								<span class="toggle-button" onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}>
+									{this.renderIcon({
+										icon: `codicon codicon-${_open ? 'arrow-down' : 'arrow-up'}`,
+										label: _open ? 'Vorschläge öffnen' : 'Vorschläge schließen',
+									})}
+								</span>
+							)}{' '}
 							{this.state._label}
 						</span>
 					</KolLinkTag>
-					<ul hidden={!this.state._hasChildren || !this.state._open} role="group">
+					<ul hidden={!_hasChildren || !_open} role="group">
 						<slot />
 					</ul>
 				</li>

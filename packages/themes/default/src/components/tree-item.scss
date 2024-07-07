@@ -3,25 +3,27 @@
 @layer kol-theme-component {
 	.tree-item {
 		ul {
-			list-style: disc inside;
-			border-left: 2px solid;
+			list-style: none;
 			padding-left: rem(6.4);
 			margin-left: rem(32);
 			margin-top: rem(6.4);
 		}
-
 		li {
+			padding: rem(2);
 			margin: rem(6.4) 0;
+
+			&:focus-within {
+				outline: 2px;
+				border-color: red;
+				border-width: 20px;
+			}
 		}
 
 		.toggle-button {
 			align-items: center;
-			border: 1px solid var(--color-primary);
 			display: inline-flex;
-			height: rem(25.6);
 			justify-content: center;
 			margin-right: rem(6.4);
-			width: rem(25.6);
 		}
 	}
 
@@ -30,8 +32,13 @@
 		padding: rem(6.4);
 
 		&.active {
-			background: var(--color-primary-variant);
-			color: var(--color-light);
+			border-left: 3px solid var(--color-primary);
+			background: var(--color-mute-variant);
+			color: var(--color-primary);
+
+			& > span {
+				font-weight: 700;
+			}
 		}
 	}
 }
