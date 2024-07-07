@@ -115,7 +115,7 @@ export class InputController extends ControlledInputController implements Watche
 			minLength: 1,
 		});
 		if (value === '' || typeof value === 'undefined') {
-			devHint(`Eine eindeutige ID an den Eingabefeldern ist nicht zwingend erforderlich, könnte aber für die E2E-Tests relevant sein.`);
+			devHint(`A unique ID on the input fields is not strictly required, but it might be relevant for E2E tests.`);
 		}
 	}
 
