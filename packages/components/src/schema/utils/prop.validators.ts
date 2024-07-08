@@ -124,7 +124,7 @@ export const setState = <T>(component: Generic.Element.Component, propName: stri
 
 const logWarn = (component: Generic.Element.Component, propName: string, value: unknown, requiredGeneric: Set<string | null | undefined>): void => {
 	devHint(
-		`[${component.constructor.name}] Der Property-Wert (${value as string}) für '${propName}' ist nicht valide. Folgende Werte sind erlaubt: ${Array.from(
+		`[${component.constructor.name}] The property value: (${value as string}) for '${propName}' is not valid. Allowed values are: ${Array.from(
 			requiredGeneric,
 		).join(', ')}`,
 	);
@@ -242,13 +242,13 @@ export const watchJsonArrayString = <T>(
 					} else {
 						objectObjectHandler(invalid, () => {
 							Log.debug(invalid);
-							throw new Error(`↑ Das Schema für das Property (_options) ist nicht valide. Der Wert wird nicht geändert.`);
+							throw new Error(`↑ The schema for the property (_options) is not valid. The value will not be changed.`);
 						});
 					}
 				} else {
 					objectObjectHandler(value, () => {
 						Log.debug(value);
-						throw new Error(`↑ Das Schema für das Property (_options) ist nicht valide. Der Wert wird nicht geändert.`);
+						throw new Error(`↑ The schema for the property (_options) is not valid. The value will not be changed.`);
 					});
 				}
 			} catch (error) {
@@ -256,7 +256,7 @@ export const watchJsonArrayString = <T>(
 				 * TODO: Wir haben einen Known-Bug beim Propergieren von Zeichenkettenliste (string[]).
 				 */
 				Log.debug(error);
-				// devHint(`Known bug: Zeichenkettenliste (string[])`);
+				// devHint(`Known bug: String array (string[])`);
 			}
 		});
 	});
@@ -295,7 +295,7 @@ export const stringifyJson = (value: unknown): string => {
 		return JSON.stringify(value).replace(/"/g, "'");
 	} catch (error) {
 		Log.warn(['stringifyJson', value]);
-		Log.error(`↑ Das JSON konnte nicht in einen String umgewandelt werden. Es wird ein stringifizierbares JSON erwartet.`);
+		Log.error(`↑ The JSON could not be converted to a string. A stringifiable JSON is expected.`);
 		throw new Error();
 	}
 };
@@ -312,7 +312,7 @@ export const parseJson = <T>(value: unknown): T => {
 					return JSON.parse(value.replace(/'/g, '"'));
 				} catch (error) {
 					Log.warn(['parseJson', value]);
-					Log.error(`↑ Der JSON-String konnte nicht geparsed werden. Achten Sie darauf, dass einfache Anführungszeichen im Text maskiert werden (&#8216;).`);
+					Log.error(`↑ The JSON string could not be parsed. Make sure that single quotes in the text are escaped (&#8216;).`);
 				}
 			}
 		}

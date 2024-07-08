@@ -339,7 +339,7 @@ export class KolInputPassword implements InputPasswordAPI {
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		this.controller.validateAutoComplete(value);
 		if (value === 'on') {
-			devHint(`[KolInputPassword] Die Option 'autocomplete' sollte bei einem Passwort-Eingabefeld nicht auf "on" gesetzt werden.`);
+			devHint(`[KolInputPassword] The 'autocomplete' option should not be set to "on" for a password input field`);
 		}
 	}
 
