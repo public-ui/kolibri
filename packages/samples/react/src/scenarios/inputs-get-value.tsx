@@ -16,10 +16,12 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolSelect,
+	KolCombobox,
 	KolTextarea,
 } from '@public-ui/react';
 
 import { SampleDescription } from '../components/SampleDescription';
+import { COUNTRY_SUGGESTIONS } from '../shares/country';
 
 import type { HTMLStencilElement } from '@stencil/core/internal';
 import type { W3CInputValue } from '@public-ui/components';
@@ -148,6 +150,14 @@ export const InputsGetValue: FC = () => {
 									{ label: 'Rio de Janeiro', value: 'Rio de Janeiro' },
 									{ label: 'Rosenheim', value: 'Rosenheim' },
 								],
+							}}
+						/>
+						<Scenario
+							InputComponent={KolCombobox}
+							inputProps={{
+								_label: 'KolCombobox',
+								_suggestions: COUNTRY_SUGGESTIONS,
+								_value: 'Deutschland',
 							}}
 						/>
 						<Scenario
