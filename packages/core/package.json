@@ -57,10 +57,10 @@
 		"@public-ui/components": "workspace:*"
 	},
 	"devDependencies": {
-		"adopted-style-sheets": "1.1.4",
 		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.14.1",
 		"@typescript-eslint/parser": "7.14.1",
+		"adopted-style-sheets": "1.1.4",
 		"eslint": "8.57.0",
 		"eslint-plugin-no-loops": "0.4.0",
 		"prettier": "3.3.2",
