@@ -122,7 +122,10 @@ export const FocusElements: FC = () => {
 	const componentName = searchParams.get('component');
 
 	useLayoutEffect(() => {
-		void ref.current?.kolFocus();
+		setTimeout(() => {
+			// Timeout not strictly necessary but prevents a layout glitch in snapshots with Playwright.
+			void ref.current?.kolFocus();
+		}, 500);
 	}, [ref]);
 
 	if (componentName) {
