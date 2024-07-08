@@ -6,6 +6,26 @@
 
 Die Komponente **Tree** stellt eine hierarchische Liste dar. Jedes Element in der Hierarchie kann Kindelemente haben, und Elemente, die Kinder haben, können erweitert oder reduziert werden, um die Kinder anzuzeigen oder zu verbergen.
 
+### Code
+
+```html
+<kol-tree _label="Sitemap">
+	<kol-tree-item _label="Home" _href="#" _active></kol-tree-item>
+	<kol-tree-item _label="Page 1" _href="#" _open>
+		<kol-tree-item _label="Subpage 1" _href="#" _open>
+			<kol-tree-item _label="Product 1" _href="#"></kol-tree-item>
+			<kol-tree-item _label="Product 2" _href="#"></kol-tree-item>
+			<kol-tree-item _label="Product 3" _href="#"></kol-tree-item>
+			<kol-tree-item _label="Product 4" _href="#"></kol-tree-item>
+		</kol-tree-item>
+		<kol-tree-item _label="Subpage 2" _href="#"></kol-tree-item>
+		<kol-tree-item _label="Subpage 3" _href="#"></kol-tree-item>
+		<kol-tree-item _label="Subpage 4" _href="#"></kol-tree-item>
+	</kol-tree-item>
+	<kol-tree-item _label="Page 2" _href="#"></kol-tree-item>
+</kol-tree>
+```
+
 ### Beispiel
 
 <kol-tree _label="Sitemap">
@@ -17,9 +37,9 @@ Die Komponente **Tree** stellt eine hierarchische Liste dar. Jedes Element in de
       <kol-tree-item _label="Product 3" _href="#"></kol-tree-item>
       <kol-tree-item _label="Product 4" _href="#"></kol-tree-item>
     </kol-tree-item>
-    <kol-tree-item _label="Subpage 2" _href="#" _open></kol-tree-item>
-    <kol-tree-item _label="Subpage 3" _href="#" _open></kol-tree-item>
-    <kol-tree-item _label="Subpage 4" _href="#" _open></kol-tree-item>
+    <kol-tree-item _label="Subpage 2" _href="#"></kol-tree-item>
+    <kol-tree-item _label="Subpage 3" _href="#"></kol-tree-item>
+    <kol-tree-item _label="Subpage 4" _href="#"></kol-tree-item>
   </kol-tree-item>
   <kol-tree-item _label="Page 2" _href="#"></kol-tree-item>
 </kol-tree>
@@ -38,9 +58,9 @@ Das **`_label`**-Attribut wird für den Text und das **`_href`**-Attribut für d
 | `Enter`        | Selektiert das derzeitig fokussierte Element und navigiert, falls das **`_href`**-Attribut gesetzt wurde.                                                                                                                                                                                                                                                        |
 | `Home`         | Fokussiert das erste Element in der Tree-Komponenten                                                                                                                                                                                                                                                                                                             |
 | `End`          | Fokussiert das letzte Element in der Tree-Komponenten                                                                                                                                                                                                                                                                                                            |
-| `*`            | Öffnet, wie die rechte Pfeil-Taste, das Untermenü des derzeitig fokussierten Elements                                                                                                                                                                                                                                                                            |
+| `*`            | Öffnet, alle Geschwister-Elemente der derzeitig fokussierten Ebene                                                                                                                                                                                                                                                                                               |
 
-Zusätzlich können Elemente in der **Tree**-Komponente mit Alphanumerischen-Tasten gesucht und fokussiert werden. In dem oben gennanten Beispiel, würde durch die Taste `S` das Element mit dem **`_label`** `Subpage 1` fokussiert werden und bei wiederholten Klick der selben Taste die `Subpage 2`, etc.
+Zusätzlich können Elemente in der **Tree**-Komponente mit Alphanumerischen-Tasten gesucht und fokussiert werden. In dem oben gennanten Beispiel, würde durch die Taste `S` das Element mit dem **`_label`** `Subpage 1` fokussiert werden und bei wiederholten Drücken der selben Taste die `Subpage 2`, etc.
 
 ## Links und Referenzen
 
