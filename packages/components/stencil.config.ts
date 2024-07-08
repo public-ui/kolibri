@@ -1,5 +1,4 @@
-import fs, { promises as fsPromises } from 'fs';
-import path from 'path';
+import { promises as fsPromises } from 'fs';
 
 import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
 import { Config } from '@stencil/core';
@@ -9,6 +8,8 @@ import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
+
+const KOLIBRI_VERSION = require('./package.json').version;
 
 const TAGS = [
 	'kol-abbr',
@@ -104,7 +105,7 @@ TAGS.forEach((tag) => {
 
 async function generateCustomElementsJson(docsData: JsonDocs) {
 	const jsonData = {
-		version: require('./package.json').version,
+		version: KOLIBRI_VERSION,
 		tags: docsData.components.map((component) => ({
 			name: component.tag,
 			// path: component.filePath,
@@ -281,6 +282,9 @@ export const config: Config = {
 		after: [],
 	},
 	taskQueue: 'immediate',
+	env: {
+		kolibriVersion: KOLIBRI_VERSION,
+	},
 	testing: {
 		setupFilesAfterEnv: ['./test-env.js'],
 	},
