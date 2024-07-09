@@ -22,8 +22,8 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 		<div className="flex justify-between mb-sm">
 			<KolIndentedText>{props.children}</KolIndentedText>
 			<div className="flex flex-wrap gap-2 shrink-0 ml">
-				{docLink && <KolLink _href={docLink} _label="Dokumentation" _target="_blank" />}
-				<KolLink _href={`${location.href}?hideMenus`} _label="Beispiel" _target="_blank" />
+				{docLink && <KolLink _href={docLink} _label="Documentation" _target="_blank" />}
+				<KolLink _href={`${location.href}?hideMenus`} _label="Standalone example" _target="_blank" />
 			</div>
 		</div>
 	);
