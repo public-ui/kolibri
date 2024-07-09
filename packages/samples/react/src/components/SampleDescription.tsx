@@ -9,16 +9,20 @@ import { HideMenusContext } from '../shares/HideMenusContext';
 
 export const SampleDescription: FC<PropsWithChildren> = (props) => {
 	const hideMenus = useContext(HideMenusContext);
-	const docRedirect = useMemo(() => {
+	const docLink = useMemo(() => {
 		const arr = location.href.split('/');
-		return `${PUBLIC_DOC_COMPONENT_URL}/${arr[arr.length - 2]}`;
-	}, [PUBLIC_DOC_COMPONENT_URL, location.href]);
+		const componentName = arr[arr.length - 2];
+
+		return componentName === 'scenarios'
+			? null // Scenarios are not a component and hence have no documentation.
+			: `${PUBLIC_DOC_COMPONENT_URL}/${componentName}`;
+	}, [location.href]);
 
 	return hideMenus ? null : (
 		<div className="flex justify-between mb-sm">
 			<KolIndentedText>{props.children}</KolIndentedText>
-			<div className="flex flex-wrap gap-2">
-				<KolLink _href={docRedirect} _label="Dokumentation" _target="_blank" />
+			<div className="flex flex-wrap gap-2 shrink-0 ml">
+				{docLink && <KolLink _href={docLink} _label="Dokumentation" _target="_blank" />}
 				<KolLink _href={`${location.href}?hideMenus`} _label="Beispiel" _target="_blank" />
 			</div>
 		</div>
