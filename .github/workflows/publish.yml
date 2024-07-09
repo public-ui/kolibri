@@ -32,7 +32,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - name: Install Node.js
