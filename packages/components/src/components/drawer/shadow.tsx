@@ -21,7 +21,7 @@ export class KolDrawer implements DrawerAPI {
 	private dialogWrapperElement?: HTMLDivElement;
 
 	@Method()
-	open() {
+	async open() {
 		this.state = {
 			...this.state,
 			_open: true,
@@ -34,7 +34,7 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	@Method()
-	close() {
+	async close() {
 		this.state = {
 			...this.state,
 			_open: false,
