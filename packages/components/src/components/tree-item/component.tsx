@@ -3,6 +3,7 @@ import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } fro
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import { KolLinkWcTag, KolIconTag, KolTreeTag } from '../../core/component-names';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: `kol-tree-item-wc`,
@@ -10,6 +11,7 @@ import { KolLinkWcTag, KolIconTag, KolTreeTag } from '../../core/component-names
 })
 export class KolTreeItemWc implements TreeItemAPI {
 	private linkElement!: HTMLKolLinkWcElement;
+	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
 	@Element() host!: HTMLElement;
@@ -19,7 +21,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	};
 
 	public render(): JSX.Element {
-		const { _href, _active, _hasChildren, _open } = this.state;
+		const { _href, _active, _hasChildren, _open, _label } = this.state;
 		return (
 			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-item-wc">
 				<li
@@ -33,10 +35,13 @@ export class KolTreeItemWc implements TreeItemAPI {
 							'tree-link': true,
 							active: Boolean(_active),
 						}}
-						_label=""
 						_href={_href}
-						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
+						_label=""
+						_role="treeitem"
 						_tabIndex={_active ? 0 : -1}
+						_ariaExpanded={_open}
+						_ariaOwns={_hasChildren ? this.groupId : undefined}
+						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
 					>
 						<span slot="expert">
 							{_hasChildren ? (
@@ -50,10 +55,10 @@ export class KolTreeItemWc implements TreeItemAPI {
 							) : (
 								<span class="toggle-button"></span>
 							)}{' '}
-							{this.state._label}
+							{_label}
 						</span>
 					</KolLinkWcTag>
-					<ul hidden={!_hasChildren || !_open} role="group">
+					<ul hidden={!_hasChildren || !_open} role="group" id={this.groupId}>
 						<slot />
 					</ul>
 				</li>

@@ -108,7 +108,7 @@ export class ModalService {
 
 	public openModal(modalRef: HTMLElement, activeElement?: HTMLElement): void {
 		if (modalRef instanceof HTMLElement === false) {
-			Log.warn(`[KolModalService] Die DOM-Referenz des Modals ist nicht valide.`);
+			Log.warn(`[KolModalService] The DOM reference of the modal is not valid.`);
 		} else {
 			this.modalStack.set(modalRef, {
 				activeElement,
@@ -119,7 +119,7 @@ export class ModalService {
 
 	public closeModal(modalRef: HTMLElement): void {
 		if (modalRef instanceof HTMLElement === false) {
-			Log.warn(`[KolModalService] Die DOM-Referenz des Modals ist nicht valide.`);
+			Log.warn(`[KolModalService] The DOM reference of the modal is not valid.`);
 		} else {
 			const activeElement = this.modalStack.get(modalRef)?.activeElement;
 			this.modalStack.delete(modalRef);

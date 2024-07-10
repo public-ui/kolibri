@@ -23,7 +23,9 @@ export const getTreeItemHtml = (props: TreeItemProps): string => {
 	<li class="tree-item" style="--level: 0;">
 	<${KolLinkWcTag}
 		class="tree-link ${state._active ? 'active' : ''}"
+		${state._open ? `_ariaexpanded=""` : ''}
 		_label=""
+		_role="treeitem"
 		_href="${state._href}"
 		_tabIndex="${state._active ? 0 : -1}"
 	>
@@ -42,7 +44,7 @@ export const getTreeItemHtml = (props: TreeItemProps): string => {
 			${state._label}
 		</span>
 	</${KolLinkWcTag}>
-	<ul ${!state._hasChildren || !state._open ? 'hidden=""' : ''} role="group">
+	<ul ${!state._hasChildren || !state._open ? 'hidden=""' : ''} id="tree-group-nonce" role="group">
 		<slot />
 	</ul>
 </li>

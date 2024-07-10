@@ -218,7 +218,7 @@ export class KolTabs implements TabsAPI {
 					if (selected > 0) {
 						return this.selectNextNotDisabledTab(selected - 1, tabs, false, initialSelected || selected);
 					} else {
-						devHint(`[KolTabs] Alle Tabs sind deaktiviert und somit kann kein Tab angezeigt werden.`);
+						devHint(`[KolTabs] All tabs are disabled, and therefore no tab can be displayed.`);
 					}
 				}
 			}
@@ -267,24 +267,24 @@ export class KolTabs implements TabsAPI {
 						this.onCreateLabel = value.onCreate.label;
 					} else {
 						Log.debug(
-							`[KolTabs] Der Label-Text für Neu in {
+							`[KolTabs] The label text for New in {
   onCreate: {
     label: string (!),
     callback: Function
   }
-} ist nicht korrekt gesetzt.`,
+} is not set correctly.`,
 						);
 					}
 					if (typeof value.onCreate.callback === 'function') {
 						callbacks.onCreate = value.onCreate.callback;
 					} else {
 						Log.debug(
-							`[KolTabs] Die onCreate-Callback-Funktion für Neu in {
+							`[KolTabs] The onCreate callback function for New in {
   onCreate: {
     label: string,
     callback: Function (!)
   }
-} ist nicht korrekt gesetzt.`,
+} is not set correctly.`,
 						);
 					}
 				} else {
