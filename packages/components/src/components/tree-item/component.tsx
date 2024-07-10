@@ -2,7 +2,7 @@ import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } fro
 
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
-import { KolLinkTag, KolIconTag } from '../../core/component-names';
+import { KolLinkWcTag, KolIconTag, KolTreeTag } from '../../core/component-names';
 
 @Component({
 	tag: `kol-tree-item-wc`,
@@ -11,6 +11,7 @@ import { KolLinkTag, KolIconTag } from '../../core/component-names';
 export class KolTreeItemWc implements TreeItemAPI {
 	private linkElement!: HTMLKolLinkWcElement;
 
+	@State() private level?: number;
 	@Element() host!: HTMLElement;
 
 	public renderIcon = (props: { icon: string; label: string }) => {
@@ -21,8 +22,13 @@ export class KolTreeItemWc implements TreeItemAPI {
 		const { _href, _active, _hasChildren, _open } = this.state;
 		return (
 			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-item-wc">
-				<li class="tree-item">
-					<KolLinkTag
+				<li
+					class="tree-item"
+					style={{
+						'--level': `${this.level}`,
+					}}
+				>
+					<KolLinkWcTag
 						class={{
 							'tree-link': true,
 							active: Boolean(_active),
@@ -33,18 +39,20 @@ export class KolTreeItemWc implements TreeItemAPI {
 						_tabIndex={_active ? 0 : -1}
 					>
 						<span slot="expert">
-							{_hasChildren && (
+							{_hasChildren ? (
 								// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
 								<span class="toggle-button" onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}>
 									{this.renderIcon({
-										icon: `codicon codicon-${_open ? 'arrow-down' : 'arrow-up'}`,
+										icon: `codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`,
 										label: _open ? 'Vorschläge öffnen' : 'Vorschläge schließen',
 									})}
 								</span>
+							) : (
+								<span class="toggle-button"></span>
 							)}{' '}
 							{this.state._label}
 						</span>
-					</KolLinkTag>
+					</KolLinkWcTag>
 					<ul hidden={!_hasChildren || !_open} role="group">
 						<slot />
 					</ul>
@@ -104,6 +112,17 @@ export class KolTreeItemWc implements TreeItemAPI {
 		this.validateHref(this._href);
 
 		this.checkForChildren();
+		this.determineTreeItemDepth();
+	}
+
+	private determineTreeItemDepth() {
+		let level = 0;
+		let traverseItem: HTMLElement | null = (this.host.parentNode as unknown as ShadowRoot).host.parentNode as HTMLElement;
+		while (traverseItem !== null && traverseItem.tagName.toLowerCase() !== KolTreeTag && traverseItem !== document.body) {
+			traverseItem = traverseItem.parentElement;
+			level += 1;
+		}
+		this.level = level;
 	}
 
 	private handleSlotchange() {

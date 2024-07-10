@@ -4,4 +4,14 @@
 	:host {
 		font-size: rem(16);
 	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	a .kol-span-wc {
+		display: block;
+	}
 }

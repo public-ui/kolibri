@@ -1,18 +1,51 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	.tree-item .toggle-button {
-		margin-right: rem(2);
-	}
-
 	.tree-link {
-		display: inline-block;
-		padding: rem(0.5) 0;
+		display: block;
+		border: 2px solid transparent;
+
+		&:hover,
+		&:focus-within {
+			background: var(--color-ocean);
+			border: 2px solid var(--color-midnight);
+
+			& > a {
+				outline-offset: 0;
+			}
+
+			& > a,
+			.toggle-button-icon {
+				color: var(--color-white);
+			}
+		}
 
 		&.active {
-			& > span {
+			border-radius: var(--border-radius);
+			border-left: 3px solid var(--color-midnight);
+			background: var(--color-yellow);
+
+			a {
 				font-weight: 700;
-				color: var(--color-ocean);
+			}
+
+			a,
+			.toggle-button-icon {
+				color: var(--color-midnight);
+			}
+		}
+
+		a {
+			display: block;
+			color: var(--color-text);
+			text-decoration: none;
+			text-align: left;
+			padding-top: rem(6.4);
+			padding-bottom: rem(6.4);
+			padding-left: calc(1rem * var(--level));
+
+			.toggle-button {
+				display: inline-block;
 			}
 		}
 	}

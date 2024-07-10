@@ -2,6 +2,7 @@
 /.nx/
 /license-reports/*.html
 /packages/**/pnpm-lock.yaml
+/packages/test-tag-name-transformer/
 
 # in all sub folders
 .DS_Store/

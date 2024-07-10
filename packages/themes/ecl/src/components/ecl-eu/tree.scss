@@ -1,7 +1,10 @@
+@import '../mixins-eu/rem';
+
 @layer kol-theme-component {
 	.tree {
-		&:focus-within {
-			outline: 1px solid var(--color-blue);
+		ul {
+			display: flex;
+			flex-direction: column;
 		}
 	}
 }

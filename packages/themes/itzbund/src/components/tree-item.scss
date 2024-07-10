@@ -1,19 +1,52 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	.tree-item .toggle-button {
-		margin-right: rem(2);
+	.tree-item {
+		ul {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 
 	.tree-link {
-		display: inline-block;
-		padding: rem(0.5) 0;
+		display: block;
+		border: 2px solid transparent;
+		border-radius: 0.25rem;
+
+		&:hover,
+		&:focus-within {
+			border: 2px solid var(--border-color);
+
+			& > a {
+				outline-offset: 0;
+				color: var(--color-petrol);
+			}
+		}
 
 		&.active {
-			font-weight: 700;
+			background: var(--color-anthrazit);
 
-			& > span {
-				color: var(--color-achat);
+			a {
+				color: var(--color-weiss) !important;
+			}
+		}
+
+		a {
+			display: block;
+			color: var(--color-black);
+			text-decoration: none;
+			text-align: left;
+			padding-top: rem(6.4);
+			padding-bottom: rem(6.4);
+			padding-left: calc(1rem * var(--level));
+
+			.toggle-button {
+				display: inline-block;
+				color: var(--color-blue);
+			}
+
+			&:focus {
+				color: var(--color-petrol);
 			}
 		}
 	}

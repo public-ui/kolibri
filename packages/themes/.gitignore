@@ -1,2 +1,7 @@
 .reports/
 test-results/
+
+bmf/snapshots/
+default/snapshots/
+ecl/snapshots/
+itzbund/snapshots/

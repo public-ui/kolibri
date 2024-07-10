@@ -43,7 +43,6 @@ import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
 import toolbarCss from './components/toolbar.scss';
 import treeItemCss from './components/tree-item.scss';
-import treeCss from './components/tree.scss';
 
 export const BMF = KoliBri.createTheme('bmf', {
 	GLOBAL: globalCss,
@@ -89,6 +88,5 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-SPIN': spinCss,
 	'KOL-TOOLBAR': toolbarCss,
-	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
 });

@@ -1,43 +1,47 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	.tree-item {
-		ul {
-			list-style: none;
-			padding-left: rem(6.4);
-			margin-left: rem(32);
-			margin-top: rem(6.4);
-		}
-		li {
-			padding: rem(2);
-			margin: rem(6.4) 0;
+	.tree-link {
+		display: block;
+		border: 1px solid transparent;
+		border-radius: var(--border-radius);
 
-			&:focus-within {
-				outline: 2px;
-				border-color: red;
-				border-width: 20px;
+		&:hover,
+		&:focus-within {
+			border: 1px solid var(--color-primary);
+			background: var(--color-primary-variant);
+
+			& > a {
+				outline-offset: 0;
+			}
+
+			& > a,
+			.toggle-button {
+				color: var(--color-light);
 			}
 		}
 
-		.toggle-button {
-			align-items: center;
-			display: inline-flex;
-			justify-content: center;
-			margin-right: rem(6.4);
-		}
-	}
-
-	.tree-link {
-		display: inline-block;
-		padding: rem(6.4);
-
 		&.active {
-			border-left: 3px solid var(--color-primary);
-			background: var(--color-mute-variant);
-			color: var(--color-primary);
+			border-left: 3px solid var(--color-primary-variant);
+			background: var(--color-primary);
 
-			& > span {
-				font-weight: 700;
+			a,
+			.toggle-button {
+				color: var(--color-light);
+			}
+		}
+
+		a {
+			display: block;
+			color: var(--color-text);
+			text-decoration: none;
+			text-align: left;
+			padding-top: rem(6.4);
+			padding-bottom: rem(6.4);
+			padding-left: calc(1.4rem * var(--level));
+
+			.toggle-button {
+				min-width: 44px;
 			}
 		}
 	}

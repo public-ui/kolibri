@@ -2,12 +2,19 @@
 
 @layer kol-theme-component {
 	.tree {
-		padding: rem(2);
+		ul {
+			display: flex;
+			flex-direction: column;
+			border: 2px solid transparent;
+			border-radius: 0.25rem;
+		}
+
 		&:focus-within {
-			border-radius: rem(2);
-			outline-color: var(--color-achat);
-			outline-style: solid;
-			outline-width: 1px;
+			outline: 0;
+
+			ul {
+				border: 2px solid var(--color-petrol);
+			}
 		}
 	}
 }
