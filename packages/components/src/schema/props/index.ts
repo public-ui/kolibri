@@ -7,6 +7,7 @@ export * from './alternative-button-link-role';
 export * from './aria-controls';
 export * from './aria-current-value';
 export * from './aria-expanded';
+export * from './aria-owns';
 export * from './aria-selected';
 export * from './button-callbacks';
 export * from './button-type';

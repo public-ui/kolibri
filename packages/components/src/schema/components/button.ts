@@ -1,10 +1,10 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	AriaExpandedPropType,
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
 	PropAriaControls,
-	PropAriaExpanded,
 	PropAriaSelected,
 	PropButtonCallbacks,
 	PropButtonType,
@@ -25,9 +25,12 @@ export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
 	tabIndex: number;
 	value: Stringified<StencilUnknown>;
+	/**
+	 * @deprecated
+	 */
+	ariaExpanded: AriaExpandedPropType;
 } & PropAlternativeButtonLinkRole &
 	PropAriaControls &
-	PropAriaExpanded &
 	PropAriaSelected &
 	PropButtonCallbacks<StencilUnknown> &
 	PropButtonType &
