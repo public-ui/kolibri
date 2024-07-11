@@ -21,7 +21,8 @@ export class KolDrawer implements DrawerAPI {
 	private dialogWrapperElement?: HTMLDivElement;
 
 	@Method()
-	open() {
+	// eslint-disable-next-line @typescript-eslint/require-await
+	async open() {
 		this.state = {
 			...this.state,
 			_open: true,
@@ -34,7 +35,8 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	@Method()
-	close() {
+	// eslint-disable-next-line @typescript-eslint/require-await
+	async close() {
 		this.state = {
 			...this.state,
 			_open: false,
@@ -124,10 +126,10 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	@Watch('_open')
-	public validateOpen(value?: OpenPropType): void {
+	public async validateOpen(value?: OpenPropType): Promise<void> {
 		if (typeof value === 'boolean') {
 			validateOpen(this, value);
-			value ? this.open() : this.close();
+			value ? await this.open() : await this.close();
 		}
 	}
 
@@ -147,12 +149,14 @@ export class KolDrawer implements DrawerAPI {
 		this._on?.onClose?.();
 	}
 
-	private handleClose() {
-		this.close();
-		this.handleCloseDialog();
+	private handleClose(): void {
+		async () => {
+			await this.close();
+			this.handleCloseDialog();
+		};
 	}
 
-	private handleAnimationEnd(e: Event) {
+	private handleAnimationEnd(e: Event): void {
 		const animationEvent = e as AnimationEvent;
 		if (animationEvent.animationName.includes('slideOut')) {
 			this.handleCloseDialog();
@@ -169,9 +173,9 @@ export class KolDrawer implements DrawerAPI {
 		this.dialogElement?.removeEventListener('close', this.handleClose.bind(this));
 	}
 
-	public componentWillLoad(): void {
+	public async componentWillLoad(): Promise<void> {
 		this.validateLabel(this._label);
-		this.validateOpen(this._open);
+		await this.validateOpen(this._open);
 		this.validateAlign(this._align);
 		this.validateModal(this._modal);
 		this.validateOn(this._on);
