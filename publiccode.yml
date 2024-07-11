@@ -1,18 +1,11 @@
-# This repository adheres to the publiccode.yml standard by including this
-# metadata file that makes public software easily discoverable.
-# More info at https://github.com/italia/publiccode.yml
-
 publiccodeYmlVersion: '0.2'
-
-name: 'KoliBri - The accessible HTML-Standard'
-url: 'https://public-ui.github.io'
+name: KoliBri - The accessible HTML-Standard
 applicationSuite: Informationstechnikzentrum Bund
-landingURL: 'https://github.com/public-ui'
-documentationURL: 'https://public-ui.github.io'
+url: https://github.com/public-ui/kolibri.git
+landingURL: https://github.com/public-ui
 releaseDate: '2024-06-26'
-version: '2.1.3'
+softwareVersion: 2.1.3
 logo: https://avatars.githubusercontent.com/u/109126739
-
 platforms:
   - android
   - ios
@@ -20,7 +13,6 @@ platforms:
   - mac
   - web
   - windows
-
 categories:
   - agile-project-management
   - application-development
@@ -32,51 +24,46 @@ categories:
   - seo
   - web-collaboration
   - website-builder
-
 developmentStatus: stable
-
-softwareType: 'library'
-
+softwareType: library
 description:
   de:
     shortDescription: KoliBri - Der barrierefreie HTML-Standard
-
     longDescription: >
-      Der HTML-Webstandard ist an sich sehr "offen" spezifiziert, um möglichst langlebig und robust
-      zu sein. Es kommt daher häufig vor, das HTML-Kompositionen nicht ohne Weiteres barrierefrei,
-      semantisch und valide sind. KoliBri baut direkt auf den Webstandards des W3C auf (Framework-
-      agnostisch), ist dabei eine generische Referenzimplementierung des WCAG-Standards und der BITV
-      für die Barrierefreiheit und als eine Multi-Theming-fähige Präsentationsschicht umgesetzt. Es
-      gibt keinerlei fachlichen Bezug und keine Datenübertragungsfunktionalitäten. Damit ist KoliBri
-      für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher
-      Corporate Designs und Styleguides gleichermaßen wiederverwendbar und somit für Open Source sehr
-      interessant.
-
+      Der HTML-Webstandard ist an sich sehr "offen" spezifiziert, um möglichst
+      langlebig und robust zu sein. Es kommt daher häufig vor, das
+      HTML-Kompositionen nicht ohne Weiteres barrierefrei, semantisch und valide
+      sind. KoliBri baut direkt auf den Webstandards des W3C auf (Framework-
+      agnostisch), ist dabei eine generische Referenzimplementierung des
+      WCAG-Standards und der BITV für die Barrierefreiheit und als eine
+      Multi-Theming-fähige Präsentationsschicht umgesetzt. Es gibt keinerlei
+      fachlichen Bezug und keine Datenübertragungsfunktionalitäten. Damit ist
+      KoliBri für die Realisierung statischer Webseiten als auch dynamischer
+      Webanwendungen unterschiedlicher Corporate Designs und Styleguides
+      gleichermaßen wiederverwendbar und somit für Open Source sehr interessant.
   en:
     shortDescription: KoliBri - The accessible HTML-Standard
-
     longDescription: >
-      The HTML web standard is in itself very "open" specified to be as durable and robust as possible.
-      Therefore, it often happens that HTML compositions are not easily accessible, semantic and valid.
-      KoliBri builds directly on the web standards of the W3C (framework- agnostic), is thereby a generic
-      reference implementation of the WCAG standard and the BITV for accessibility and implemented as a
-      multi-theme capable presentation layer. There no technical reference and no data transfer functionalities.
-      Thus KoliBri is for the realization of static websites as well as dynamic web applications of different
-      corporate designs and style guides and therefore very interesting for open source. interesting.
-
+      The HTML web standard is in itself very "open" specified to be as durable
+      and robust as possible. Therefore, it often happens that HTML compositions
+      are not easily accessible, semantic and valid. KoliBri builds directly on
+      the web standards of the W3C (framework- agnostic), is thereby a generic
+      reference implementation of the WCAG standard and the BITV for
+      accessibility and implemented as a multi-theme capable presentation layer.
+      There no technical reference and no data transfer functionalities. Thus
+      KoliBri is for the realization of static websites as well as dynamic web
+      applications of different corporate designs and style guides and therefore
+      very interesting for open source. interesting.
 legal:
   license: EUPL-1.2
   mainCopyrightOwner: Informationstechnikzentrum Bund
   repoOwner: Informationstechnikzentrum Bund
-
 maintenance:
-  type: 'community'
-
+  type: community
   contacts:
     - name: KoliBri
       email: kolibri@itzbund.de
       affiliation: Informationstechnikzentrum Bund
-
 localisation:
   localisationReady: true
   availableLanguages:

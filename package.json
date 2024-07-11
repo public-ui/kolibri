@@ -5,7 +5,8 @@
 		"@types/node": "ts5.4",
 		"cross-env": "7.0.3",
 		"husky": "9.0.11",
-		"lerna": "8.1.5",
+		"js-yaml": "4.1.0",
+		"lerna": "8.1.6",
 		"license-report": "6.5.0",
 		"lint-staged": "15.2.7",
 		"npm-check-updates": "16.14.20",
@@ -37,6 +38,7 @@
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
-		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
+		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major",
+		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
 	}
 }
