@@ -3,29 +3,33 @@
 @layer kol-theme-component {
 	.tree-link {
 		display: block;
-		border: 1px solid transparent;
+		border: 2px solid transparent;
 
 		&:hover,
 		&:focus-within {
-			border: 1px solid var(--color-primary);
-			background: var(--color-primary-variant);
+			background: var(--color-ocean);
+			border: 2px solid var(--color-midnight);
 
 			& > a {
 				outline-offset: 0;
 			}
 
 			& > a,
-			.toggle-button {
-				color: var(--color-light);
+			.toggle-button-icon {
+				color: var(--color-white);
 			}
 		}
 
 		&.active {
-			background: var(--color-primary);
+			background: var(--color-yellow);
+
+			a {
+				font-weight: 700;
+			}
 
 			a,
-			.toggle-button {
-				color: var(--color-light);
+			.toggle-button-icon {
+				color: var(--color-midnight);
 			}
 		}
 

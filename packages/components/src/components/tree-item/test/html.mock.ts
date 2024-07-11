@@ -20,9 +20,9 @@ export const getTreeItemHtml = (props: TreeItemProps): string => {
   <mock:shadow-root>
 
 	<${KolTreeItemWcTag} class=" kol-tree-item kol-tree-item-wc">
-	<li class="tree-item">
+	<li class="tree-item" style="--level: 0;">
 	<${KolLinkWcTag}
-		class="tree-link ${state._active ? 'active' : ''}"
+		class="tree-link first-level ${state._active ? 'active' : ''}"
 		${state._open ? `_ariaexpanded=""` : ''}
 		_label=""
 		_role="treeitem"
