@@ -1,5 +1,7 @@
 # Alert
 
+Synonyme: Alerts, Message, Snackbar, Toaster
+
 Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ `_type` des Alert.
 
 ## Konstruktion

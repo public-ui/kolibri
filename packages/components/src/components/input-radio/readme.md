@@ -1,5 +1,7 @@
 # InputRadio
 
+Synonyme: ChoiceGroup, Radio, Radios, Radio Button, Radio Buttons
+
 Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
 
 <kol-alert _alert _heading="Hinweis" _level="1" _type="info">

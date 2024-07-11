@@ -1,5 +1,7 @@
 # Details
 
+Synonyme: Disclosure, Collapse, Summary Detail
+
 Mit Hilfe der **Detail**-Komponente können weiterführende Informationen zunächst mit einem kurzen Einleitungstext angezeigt werden, die erst nach Klick
 durch die Nutzer:innen auf ein Pfeil-Icon in voller Größe aufgeklappt werden.
 

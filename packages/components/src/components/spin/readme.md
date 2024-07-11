@@ -1,5 +1,7 @@
 # Spin
 
+Synonyme: Placeholder, Placeholders, Skeleton, Shimmer
+
 Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.
 
 ## Konstruktion

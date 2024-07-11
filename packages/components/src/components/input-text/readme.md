@@ -1,5 +1,7 @@
 # InputText
 
+Synonyme: Input, Textfield, FormControl, Text input, Text, Text Input, TextField, Text field, InputText, input, Text Field, TextInput
+
 Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.
 
 Die Komponente hat Known-Issues bezüglich Browserabhängigkeit und Barrierefreiheit. Näheres kann unter [KNOWN_ISSUES.md](https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md) nachgelssen werden.

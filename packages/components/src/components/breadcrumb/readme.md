@@ -1,5 +1,7 @@
 # Breadcrumb
 
+Synonyme: Breadcrumbs
+
 Mit Hilfe der **Breadcrumb**-Komponente kann der Pfad zur aktuellen Position einer Webseite in einer hierarchischen Struktur dargestellt werden.
 
 ## Funktionsweise

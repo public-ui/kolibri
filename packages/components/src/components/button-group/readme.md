@@ -1,5 +1,7 @@
 # ButtonGroup
 
+Synonyme: Button group, Button Groups
+
 **Buttons** dienen dazu, Nutzer:innen Auswahlmöglichkeiten für Aktionen anzuzeigen und diese in einer klaren Hierarchie anzuordnen. Sie helfen den Nutzer:innen, die wichtigsten Aktionen einer Seite oder innerhalb eines Applikation zu finden und ermöglichen es ihm, diese Aktionen auszuführen.
 
 Die **ButtonGroup**-Komponente fasst mehrere Buttons zu einer optischen und funktionalen Einheit zusammen.

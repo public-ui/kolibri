@@ -1,5 +1,7 @@
 # InputRange
 
+Synonyme: Slider, Sliders, Range
+
 Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Verschieben eines Reglers verändert werden können.
 
 ## Konstruktion

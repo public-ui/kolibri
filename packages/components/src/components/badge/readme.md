@@ -1,5 +1,7 @@
 # Badge
 
+Synonyme: Badges
+
 Mit **Badges** können Sie bestimmte Informationen auf Ihrer Webseite optisch hervorheben.
 KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnung der Textfarbe auch die Möglichkeit, einem Badge ein Icon und/oder einen anderen Schriftschnitt mitzugeben.
 
