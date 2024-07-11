@@ -4,7 +4,6 @@
 	.tree-link {
 		display: block;
 		border: 1px solid transparent;
-		border-radius: var(--border-radius);
 
 		&:hover,
 		&:focus-within {
@@ -22,7 +21,6 @@
 		}
 
 		&.active {
-			border-left: 3px solid var(--color-primary-variant);
 			background: var(--color-primary);
 
 			a,
@@ -36,12 +34,13 @@
 			color: var(--color-text);
 			text-decoration: none;
 			text-align: left;
-			padding-top: rem(6.4);
-			padding-bottom: rem(6.4);
-			padding-left: calc(1.4rem * var(--level));
 
 			.toggle-button {
-				min-width: 44px;
+				display: inline-block;
+
+				&:hover {
+					transform: scale(1.3);
+				}
 			}
 		}
 	}

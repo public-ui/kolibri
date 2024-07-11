@@ -21,8 +21,6 @@
 		}
 
 		&.active {
-			border-radius: var(--border-radius);
-			border-left: 3px solid var(--color-midnight);
 			background: var(--color-yellow);
 
 			a {
@@ -40,12 +38,13 @@
 			color: var(--color-text);
 			text-decoration: none;
 			text-align: left;
-			padding-top: rem(6.4);
-			padding-bottom: rem(6.4);
-			padding-left: calc(1rem * var(--level));
 
 			.toggle-button {
 				display: inline-block;
+
+				&:hover {
+					transform: scale(1.3);
+				}
 			}
 		}
 	}

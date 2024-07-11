@@ -16,7 +16,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	@State() private level?: number;
 	@Element() host!: HTMLElement;
 
-	public renderIcon = (props: { icon: string; label: string }) => {
+	private renderIcon = (props: { icon: string; label: string }) => {
 		return <KolIconTag class="toggle-button-icon" _label={props.label} _icons={props.icon} />;
 	};
 
@@ -33,6 +33,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 					<KolLinkWcTag
 						class={{
 							'tree-link': true,
+							'first-level': this.level === 0,
 							active: Boolean(_active),
 						}}
 						_href={_href}
@@ -44,7 +45,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
 					>
 						<span slot="expert">
-							{_hasChildren ? (
+							{_hasChildren && (
 								// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
 								<span class="toggle-button" onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}>
 									{this.renderIcon({
@@ -52,8 +53,6 @@ export class KolTreeItemWc implements TreeItemAPI {
 										label: _open ? 'Vorschläge öffnen' : 'Vorschläge schließen',
 									})}
 								</span>
-							) : (
-								<span class="toggle-button"></span>
 							)}{' '}
 							{_label}
 						</span>
