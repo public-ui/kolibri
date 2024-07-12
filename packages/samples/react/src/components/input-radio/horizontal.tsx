@@ -27,8 +27,7 @@ export const InputRadioHorizontal: FC = () => {
 		<div className="grid gap-4">
 			<SampleDescription>
 				<p>
-					This sample simulates the <code>horizontal</code> and <code>vertical</code> orientation of the <code>kol-input-radio</code>, if we rerender the
-					component.
+					This sample shows the <code>horizontal</code> and <code>vertical</code> orientation of KolInoutRadio. It also features a button to test re-rendering.
 				</p>
 			</SampleDescription>
 			<div className="flex gap-4">

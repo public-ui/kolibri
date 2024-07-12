@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const ButtonLinkImage: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier wird ein Link angezeigt, der als Text gerendert wird. Nach klicken auf den Link wird das Bild abgrenzung.jpg angezeigt.</p>
+			<p>KolButtonLink can be used with slot-content instead of a label as well. This sample demonstrates the slot content used to display an image.</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolButtonLink _label="Ich bin ein Link, der als Text gerendert wird" />
 			<br />

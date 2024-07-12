@@ -30,20 +30,25 @@ const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 	</>
 );
 
-export const AlertBasic: FC<PropsBasic> = ({ variant = 'msg' }) => (
+export const AlertVariants: FC<PropsBasic> = ({ variant = 'msg' }) => (
+	<div className="grid gap-4">
+		<AlertByType level={1} type="default" variant={variant} />
+		<AlertByType level={2} type="error" variant={variant} />
+		<AlertByType level={3} type="info" variant={variant} />
+		<AlertByType level={4} type="success" variant={variant} />
+		<AlertByType level={5} type="warning" variant={variant} />
+	</div>
+);
+
+export const AlertBasic: FC<PropsBasic> = () => (
 	<>
 		<SampleDescription>
 			<p>
-				Hier werden verschiedene Alerts gezeigt. Beim klicken auf das X soll das Schließen-Event ausgelöst werden. In diesem Beispiel erscheint eine Textbox mit
-				Inhalt Schließen.
+				KolAlert can show messages of different types. This sample illustrates the variant <code>msg</code>, showing all possible types with and without
+				headlines and close buttons.
 			</p>
 		</SampleDescription>
-		<div className="grid gap-4">
-			<AlertByType level={1} type="default" variant={variant} />
-			<AlertByType level={2} type="error" variant={variant} />
-			<AlertByType level={3} type="info" variant={variant} />
-			<AlertByType level={4} type="success" variant={variant} />
-			<AlertByType level={5} type="warning" variant={variant} />
-		</div>
+
+		<AlertVariants variant="msg" />
 	</>
 );

@@ -8,8 +8,11 @@ import { SampleDescription } from '../SampleDescription';
 export const HeadingBadged: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier werden sechs verschiedene Überschriften mit unterschiedlichen Leveln und Label-Farben dargestellt. Es gibt keine Interaktionsmöglichkeit.</p>
+			<p>
+				This samples shows KolHeading with it&apos;s different levels and content provided using the export slot instead of the <code>_label</code>-property.
+			</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolHeading _label="" _level={1}>
 				<span slot="expert">

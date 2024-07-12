@@ -4,6 +4,7 @@ import { KolBadge, KolButton, KolTree, KolTreeItem } from '@public-ui/react';
 import { getRandomEmoji } from '../../shares/randomEmoji';
 import { useParams } from 'react-router';
 import { HideMenusContext } from '../../shares/HideMenusContext';
+import { SampleDescription } from '../SampleDescription';
 
 export const TreeBasic: FC = () => {
 	const hideMenus = useContext(HideMenusContext);
@@ -25,6 +26,9 @@ export const TreeBasic: FC = () => {
 
 	return (
 		<>
+			<SampleDescription>
+				<p>KolTree renders a fully keyboard accessible nested navigation. Branches of the tree can be collapsed or expanded.</p>
+			</SampleDescription>
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 
 			<KolTree _label="Sitemap" class="block w-fit">

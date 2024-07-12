@@ -101,8 +101,9 @@ const HEADERS: KoliBriTableHeaders = {
 export const TableRenderCell: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample simulates the usage of React render functions for the table column contents.</p>
+			<p>TThis sample shows KolTable using React render functions for the cell contents.</p>
 		</SampleDescription>
+
 		<KolTable _label="Sort by date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
 	</>
 );

@@ -9,13 +9,9 @@ import { InputCheckboxVariants } from './partials/variants';
 export const InputCheckboxButton: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier werden verschiedene Checkboxen mit betiteltem Wunschausgangsverhalten angezeigt. Die Checkbox &apos;Nicht ausgewählt&apos; ist Standardmäßig nicht
-				ausgewählt usw. Die Buttons unten haben keine direkte Funktion, außer, dass Sie ausgewählt werden können. Der Unterschied zwischen der linken und
-				Rechten Darstellung ist, dass erst nach anklicken im Rechten Teil ein Label angezeigt wird. In diesem Beispiel sind die Checkboxen als Buttons
-				dargestellt.
-			</p>
+			<p>This sample show KolInputCheckbox in the variant &quot;button&quot;.</p>
 		</SampleDescription>
+
 		<FormWrap<Components.KolInputCheckbox> RefComponent={InputCheckboxVariants} _variant="button" />
 	</>
 );

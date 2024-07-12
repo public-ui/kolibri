@@ -7,8 +7,9 @@ import type { FC } from 'react';
 export const AbbrBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Beim Bewegen der Maus über den unterstrichenen Abkürzungen, soll die ausgeschriebene Abkürzung an verschiedenen Stellen erscheinen.</p>
+			<p>KolAbbr shows the full expansion of an abbreviated term on mouse over. The sample illustrates the different possible alignments for the tooltip.</p>
 		</SampleDescription>
+
 		<p>
 			Ich bin <KolAbbr _label="zum Beispiel">z.B.</KolAbbr> eine Abkürzung.
 		</p>

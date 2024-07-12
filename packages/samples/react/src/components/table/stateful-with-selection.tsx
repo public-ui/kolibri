@@ -45,7 +45,7 @@ export const TableStatefulWithSelection: FC = () => {
 
 	return (
 		<>
-			<SampleDescription>KolTableStateful with selection</SampleDescription>
+			<SampleDescription>This sample shows KolTableStateful with checkboxes for selection enabled.</SampleDescription>
 
 			<KolTableStateful
 				_label="Table with selection checkboxes"

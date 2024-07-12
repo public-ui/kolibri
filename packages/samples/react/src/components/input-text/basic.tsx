@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const InputTextBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind verschiedene Freitexteingabefelder.</p>
+			<p>KolInputText renders an text input field. The sample shows KolInputText in a form context with all variations and states.</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={InputTextVariants} />
 	</>
 );

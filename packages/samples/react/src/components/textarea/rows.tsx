@@ -8,7 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const TextareaRows: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier verstehe ich es nicht. Die Rows sind nicht wie erwartet limitiert.</p>
+			<p>
+				This sample demonstrates the <code>_rows</code>-property of KolTextarea. The sample textarea has a fixed row number of 10.
+			</p>
 		</SampleDescription>
 		<KolForm>
 			<KolTextarea _rows={10} _label="Texteingabe" />

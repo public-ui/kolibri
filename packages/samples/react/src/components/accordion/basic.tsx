@@ -8,17 +8,18 @@ import type { FC } from 'react';
 export const AccordionBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Beim klicken mit der Maus auf die einzelnen Überschriften, soll der Inhalt darunter aufgeklappt und beim erneuten klicken wieder zugeklappt werden.</p>
+			<p>
+				KolAccordion hides its content until opened. The open state can be toggled by clicking the headline or by setting the <code>_open</code>-prop
+				programmatically. Additionally, the sample shows the disabled state for a closed and an open accordion.
+			</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
-			<KolAccordion _label="Überschrift Accordion Tab 1" _level={1}>
-				<div slot="">Inhalt Accordion Tab 1</div>
-			</KolAccordion>
-			<KolAccordion _disabled _label="Überschrift Accordion Tab 2 (deaktiviert)" _level={1} _open>
-				<div slot="">Inhalt Accordion Tab 2</div>
-			</KolAccordion>
-			<KolAccordion _label="Überschrift Accordion Tab 3" _level={1}>
-				<div slot="">Inhalt Accordion Tab 3</div>
+			<KolAccordion _label="Überschrift Accordion Tab 1">Inhalt Accordion Tab 1</KolAccordion>
+			<KolAccordion _label="Überschrift Accordion Tab 2">Inhalt Accordion Tab 2</KolAccordion>
+			<KolAccordion _label="Überschrift Accordion Tab 2 (deaktiviert)" _disabled></KolAccordion>
+			<KolAccordion _label="Überschrift Accordion Tab 2 (disabled and open)" _disabled _open>
+				Inhalt Accordion Tab 2
 			</KolAccordion>
 		</div>
 	</>

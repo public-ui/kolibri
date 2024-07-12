@@ -7,8 +7,9 @@ import type { FC } from 'react';
 export const AlertHtml: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier werden Alerts als html ausgegeben.</p>
+			<p>This sample illustrates how KolAlert can be used with arbitrary HTML as slot content.</p>
 		</SampleDescription>
+
 		<div>
 			<KolAlert _label="Ausgabe von HTML-Code im Alert" _type="info">
 				<h2 className="mt-2 mb-3">Hier wird eine H2-Überschrift ausgegeben</h2>

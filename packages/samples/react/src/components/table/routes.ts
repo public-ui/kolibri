@@ -1,6 +1,5 @@
 import { Routes } from '../../shares/types';
 import { PaginationPosition } from './pagination-position';
-import { TableBadgeSize } from './badge-size';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
 import { TableHorizontalScrollbar } from './horizontal-scrollbar';
@@ -14,7 +13,6 @@ import { TableWithPagination } from './with-pagination';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
-		'badge-size': TableBadgeSize,
 		'column-alignment': TableColumnAlignment,
 		'complex-headers': TableComplexHeaders,
 		'horizontal-scrollbar': TableHorizontalScrollbar,

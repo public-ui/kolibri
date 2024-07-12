@@ -9,22 +9,24 @@ export const DetailsBasic: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				Hier sind zwei Texte und ein deaktivierter Text. Beide aktivierten Texte können durch das klicken auf den &apos;Titel&apos; geöffnet und wieder
-				geschlossen werden. Der untere Text ist nach laden der Seite bereits geöffnet, während der obere Text nach laden der Seite geschlossen ist.{' '}
+				KolDetails hides its content until opened. The open state can be toggled either by clicking the label or by setting the <code>_open</code>-prop
+				programmatically. The sample includes an initially open state and a disabled but open Details component.
 			</p>
 		</SampleDescription>
+
 		<p className="grid gap-4">
-			<KolDetails _label="Nach Laden der Seite geschlossen">
+			w
+			<KolDetails _label="Closed initially">
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
 			</KolDetails>
-			<KolDetails _disabled _label="Nach Laden der Seite geöffnet (deaktiviert)" _open>
+			<KolDetails _disabled _label="Open initially (disabled)" _open>
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
 			</KolDetails>
-			<KolDetails _label="Nach Laden der Seite geöffnet" _open>
+			<KolDetails _label="Open initially" _open>
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.

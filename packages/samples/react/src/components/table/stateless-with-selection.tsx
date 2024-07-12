@@ -38,7 +38,7 @@ export const TableStatelessWithSelection: FC = () => {
 
 	return (
 		<>
-			<SampleDescription>KolTableStateless with selection</SampleDescription>
+			<SampleDescription>This sample shows KolTableStateless with checkboxes for selection enabled.</SampleDescription>
 
 			<KolTableStateless
 				_label="Table with selection checkboxes"
