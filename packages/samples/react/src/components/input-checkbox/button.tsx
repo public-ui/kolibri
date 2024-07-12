@@ -9,7 +9,7 @@ import { InputCheckboxVariants } from './partials/variants';
 export const InputCheckboxButton: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample show KolInputCheckbox in the variant &quot;button&quot;.</p>
+			<p>This sample shows KolInputCheckbox in the variant &quot;button&quot;.</p>
 		</SampleDescription>
 
 		<FormWrap<Components.KolInputCheckbox> RefComponent={InputCheckboxVariants} _variant="button" />

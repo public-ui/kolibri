@@ -15,7 +15,7 @@ export const TextareaAdjustHeight: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				This sample demonstrates the <code>_adjustHeight</code>-property of KolTextarea. The textarea automatically grows with it&apos;s content.
+				This sample demonstrates the <code>_adjustHeight</code>-property of KolTextarea. The textarea automatically grows with its content.
 			</p>
 		</SampleDescription>
 

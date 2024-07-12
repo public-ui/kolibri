@@ -19,7 +19,7 @@ export const BadgeButton: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				KolBadge can be used with an optional <code>smartButton</code>. This sample defines a &quot;close&quot; button with X-icon a click event listener.
+				This sample shows KolBadge with an optional <code>smartButton</code>. The sample defines a &quot;close&quot; button with X-icon a click event listener.
 			</p>
 		</SampleDescription>
 

@@ -8,6 +8,7 @@ export const FormErrorList: FC = () => (
 		<SampleDescription>
 			<p>This sample shows a form with error messages.</p>
 		</SampleDescription>
+
 		<KolForm
 			_errorList={[
 				{

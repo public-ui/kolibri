@@ -17,6 +17,7 @@ export const LinkGroupHorizontal: FC = () => (
 				<KolBadge _label="The component is deprecated and won't be available anymore in KoliBri version 3." _color="#db5461" />
 			</p>
 		</SampleDescription>
+
 		<KolLinkGroup _links={links} _orientation="horizontal" _label="" />
 	</>
 );

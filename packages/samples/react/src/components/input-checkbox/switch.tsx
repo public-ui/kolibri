@@ -7,7 +7,7 @@ import { FormWrap } from '../FormWrap';
 export const InputCheckboxSwitch: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample show KolInputCheckbox in the variant &quot;switch&quot;.</p>
+			<p>This sample shows KolInputCheckbox in the variant &quot;switch&quot;.</p>
 		</SampleDescription>
 
 		<FormWrap RefComponent={InputCheckboxVariants} _variant="switch" />

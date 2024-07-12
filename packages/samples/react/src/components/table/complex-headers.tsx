@@ -5,7 +5,9 @@ import { SampleDescription } from '../SampleDescription';
 
 export const TableComplexHeaders: FC = () => (
 	<>
-		<SampleDescription>This sample shows KolTable using vertical and horizontal headers, applying colspan and rowspan.</SampleDescription>
+		<SampleDescription>
+			<p>This sample shows KolTable using vertical and horizontal headers, applying colspan and rowspan.</p>
+		</SampleDescription>
 
 		<KolTable
 			_label="Business hours"

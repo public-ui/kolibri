@@ -8,7 +8,7 @@ import type { FC } from 'react';
 export const ButtonGroupBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolButtonGroup allows to visually group multiple KolButton-elements together.</p>
+			<p>KolButtonGroup shows multiple KolButton-elements visually grouped together.</p>
 
 			<p>
 				<KolBadge _label="The component is deprecated and won't be available anymore in KoliBri version 3." _color="#db5461" />

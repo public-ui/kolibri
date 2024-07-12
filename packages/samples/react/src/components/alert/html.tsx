@@ -7,7 +7,7 @@ import type { FC } from 'react';
 export const AlertHtml: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample illustrates how KolAlert can be used with arbitrary HTML as slot content.</p>
+			<p>This sample shows how KolAlert can be used with arbitrary HTML as slot content.</p>
 		</SampleDescription>
 
 		<div>

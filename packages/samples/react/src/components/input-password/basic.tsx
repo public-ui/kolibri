@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 export const InputPasswordBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolInputPassword renders an password input field. The sample shows KolInputPassword in a form context with all variations and states.</p>
+			<p>KolInputPassword renders a password input field. The sample shows KolInputPassword in a form context with all variations and states.</p>
 		</SampleDescription>
 
 		<FormWrap RefComponent={InputPasswordVariants} />

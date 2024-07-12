@@ -27,7 +27,7 @@ export const TreeBasic: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>KolTree renders a fully keyboard accessible nested navigation. Branches of the tree can be collapsed or expanded.</p>
+				<p>KolTree renders a keyboard accessible nested navigation. Branches of the tree can be collapsed or expanded.</p>
 			</SampleDescription>
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 

@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 export const ButtonLinkImage: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolButtonLink can be used with slot-content instead of a label as well. This sample demonstrates the slot content used to display an image.</p>
+			<p>This sample shows KolButtonLink with slot-content instead of a label. The sample uses an image as content.</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">

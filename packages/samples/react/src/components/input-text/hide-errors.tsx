@@ -6,9 +6,12 @@ import { SampleDescription } from '../SampleDescription';
 export const InputTextHideErrors: FC = () => (
 	<div className="grid gap-4">
 		<SampleDescription>
-			This sample shows the <code>_hideError</code> feature for KolInputText. It allows to hide the error message from an input field and can be used, when the
-			error is already shown somewhere else, e.g. for a group of inputs.
+			<p>
+				This sample shows the <code>_hideError</code> feature for KolInputText. It allows to hide the error message from an input field and can be used, when
+				the error is already shown somewhere else, e.g. for a group of inputs.
+			</p>
 		</SampleDescription>
+
 		<KolCard _label="Normal input field with error" _level={0}>
 			<KolInputText _msg={{ _type: 'error', _description: 'Error message' }} _label="Input with error" _touched />
 		</KolCard>

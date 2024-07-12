@@ -9,7 +9,7 @@ export const HeadingBadged: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				This samples shows KolHeading with it&apos;s different levels and content provided using the export slot instead of the <code>_label</code>-property.
+				This sample shows KolHeading with its different levels and content provided using the export slot instead of the <code>_label</code>-property.
 			</p>
 		</SampleDescription>
 

@@ -15,6 +15,7 @@ export const ModalBasic: FC = () => {
 					buttons &quot;Open modal&quot; and &quot;Close modal&quot;.
 				</p>
 			</SampleDescription>
+
 			<div>
 				<KolModal _label="" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }}>
 					<KolCard _label="I am a modal." style={{ width: '100%' }}>

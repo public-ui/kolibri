@@ -21,7 +21,7 @@ export const DrawerControlled: FC = () => {
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 			<SampleDescription>
 				<p>
-					This sample shows the KolDrawer controlled by the JSX or HTML-attribute <code>_open</code> instead of methods.
+					This sample shows the KolDrawer controlled by the property <code>_open</code> instead of methods.
 				</p>
 			</SampleDescription>
 

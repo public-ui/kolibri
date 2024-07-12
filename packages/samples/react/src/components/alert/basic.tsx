@@ -44,8 +44,8 @@ export const AlertBasic: FC<PropsBasic> = () => (
 	<>
 		<SampleDescription>
 			<p>
-				KolAlert can show messages of different types. This sample illustrates the variant <code>msg</code>, showing all possible types with and without
-				headlines and close buttons.
+				KolAlert shows messages of different types. This sample illustrates the variant <code>msg</code>, showing all possible types with and without headlines
+				and close buttons.
 			</p>
 		</SampleDescription>
 

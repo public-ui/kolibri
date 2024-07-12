@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 export const SelectBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolSelect renders an select field. The sample shows KolSelect in a form context with all variations and states.</p>
+			<p>KolSelect renders a select field. The sample shows KolSelect in a form context with all variations and states.</p>
 		</SampleDescription>
 
 		<FormWrap RefComponent={SelectVariants} />

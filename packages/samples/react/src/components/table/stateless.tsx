@@ -7,7 +7,9 @@ const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Ex
 
 export const TableStateless: FC = () => (
 	<>
-		<SampleDescription>This sample shows how KolTableStateless can be used directly, with the KolTableStateful wrapper.</SampleDescription>
+		<SampleDescription>
+			<p>This sample shows how KolTableStateless can be used directly, with the KolTableStateful wrapper.</p>
+		</SampleDescription>
 
 		<KolTableStateless
 			_label="Table for demonstration purposes"

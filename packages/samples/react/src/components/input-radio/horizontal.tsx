@@ -30,6 +30,7 @@ export const InputRadioHorizontal: FC = () => {
 					This sample shows the <code>horizontal</code> and <code>vertical</code> orientation of KolInoutRadio. It also features a button to test re-rendering.
 				</p>
 			</SampleDescription>
+
 			<div className="flex gap-4">
 				<KolButton _label="Click me a few times" _on={{ onClick: showClick }} />
 				<KolInputCheckbox _label="Switch orientation (horizontal/vertical)" _on={{ onChange: toggleOrientation }} _variant="switch" />

@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 export const ButtonLinkIcons: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolButtonLink can be combined with icons, as shown in this sample.</p>
+			<p>This sample shows KolButtonLink with icons in different locations.</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">

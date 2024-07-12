@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 export const HeadingParagraph: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This samples shows KolHeading with it&apos;s different levels combined with some text content each.</p>
+			<p>This sample shows KolHeading with its different levels combined with some text content each.</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">

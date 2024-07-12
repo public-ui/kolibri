@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 export const KolibriBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolKolibri render the KoliBri logo. The sample show the logo with and without label and with a custom color.</p>
+			<p>KolKolibri renders the KoliBri logo. The sample show the logo with and without label and with a custom color.</p>
 		</SampleDescription>
 
 		<KolHeading class="block" _level={3} _label="Regular" />
