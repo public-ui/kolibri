@@ -1,4 +1,7 @@
-@import '../mixins/input.scss';
+@import '../mixins/input';
+
+$option-height: 3rem;
+$visible-options: 5;
 
 @layer kol-theme-component {
 	:host {
@@ -46,8 +49,6 @@
 			display: grid;
 			place-items: center;
 			cursor: pointer;
-			padding-left: 1em;
-			padding-right: 1em;
 
 			&:focus {
 				outline: 0 !important;
@@ -59,16 +60,18 @@
 			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--color-grey);
-			max-height: 15.625rem;
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
 			width: 100%;
+			max-height: calc($option-height * $visible-options + 2px);
 		}
 
 		&__item {
+			display: flex;
+			align-items: center;
+			height: $option-height;
 			padding: 0.62rem 0.75rem;
-			margin: 1px 0;
 			border-radius: 0.25em;
 			cursor: pointer;
 			color: var(--color-black);

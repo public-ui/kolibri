@@ -39,7 +39,7 @@ import { translate } from '../../i18n';
 })
 export class KolCombobox implements ComboboxAPI {
 	@Element() private readonly host?: HTMLKolComboboxElement;
-	private ref?: HTMLSelectElement;
+	private ref?: HTMLInputElement;
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
 
@@ -54,6 +54,7 @@ export class KolCombobox implements ComboboxAPI {
 			this._isOpen = false;
 		} else {
 			this._isOpen = !this._isOpen;
+			this.ref?.focus();
 			if (this._isOpen && Array.isArray(this._filteredSuggestions) && this._filteredSuggestions.length > 0) {
 				const selectedIndex = this._filteredSuggestions.findIndex((option) => option === this._value);
 				this.focusOption(selectedIndex >= 0 ? selectedIndex : 0);
@@ -106,7 +107,6 @@ export class KolCombobox implements ComboboxAPI {
 		if (newIndex < 0) {
 			newIndex = this._filteredSuggestions.length - 1;
 		}
-
 		this.focusOption(newIndex);
 	}
 
@@ -171,6 +171,9 @@ export class KolCombobox implements ComboboxAPI {
 						<div slot="input">
 							<div class="combobox__group">
 								<input
+									ref={(el) => {
+										if (el) this.ref = el;
+									}}
 									class="combobox__input"
 									type="text"
 									role="combobox"
@@ -192,12 +195,17 @@ export class KolCombobox implements ComboboxAPI {
 									spellcheck="false"
 									{...this.controller.onFacade}
 									onInput={this.onInput.bind(this)}
-									onClick={this.toggleListbox.bind(this)}
 									onChange={this.onChange.bind(this)}
 									placeholder={this.state._placeholder}
 								/>
-								<span class={{ combobox__icon: true }}>
-									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} onClick={this.toggleListbox.bind(this)} />
+								<span
+									role="button"
+									tabIndex={-1}
+									class={{ combobox__icon: true }}
+									onClick={this.toggleListbox.bind(this)}
+									onKeyDown={this.toggleListbox.bind(this)}
+								>
+									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
 								</span>
 							</div>
 							{this._isOpen && !(this.state._disabled === true) && (
@@ -212,7 +220,7 @@ export class KolCombobox implements ComboboxAPI {
 													if (el) this.refSuggestions[index] = el;
 												}}
 												data-index={index}
-												tabIndex={0}
+												tabIndex={-1}
 												role="option"
 												aria-selected={this.state._value === option}
 												onClick={(e) => {
@@ -266,9 +274,16 @@ export class KolCombobox implements ComboboxAPI {
 				handleEvent(true, () => this.moveFocus(-1));
 				break;
 			}
+			case 'Tab':
+				if (this._isOpen) {
+					this._isOpen = !this._isOpen;
+					this.ref?.focus();
+				}
+				break;
 			case 'Esc':
 			case 'Escape': {
 				handleEvent(false);
+				this.ref?.focus();
 				break;
 			}
 			case 'NumpadEnter':

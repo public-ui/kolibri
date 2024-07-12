@@ -1,5 +1,8 @@
 @import '../mixins/rem';
-@import '../mixins/alert-wc.scss';
+@import '../mixins/alert-wc';
+
+$option-height: 3rem;
+$visible-options: 5;
 
 @layer kol-theme-component {
 	:host {
@@ -59,14 +62,17 @@
 			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--color-subtle);
-			max-height: rem(250);
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
 			width: 100%;
+			max-height: calc($option-height * $visible-options + 2px);
 		}
 
 		&__item {
+			display: flex;
+			align-items: center;
+			height: $option-height;
 			padding: rem(10) rem(12);
 			cursor: pointer;
 

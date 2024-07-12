@@ -26,6 +26,13 @@
 			flex-grow: 1;
 		}
 
+		&__icon {
+			display: flex;
+			width: 44px;
+			height: 44px;
+			align-items: center;
+		}
+
 		&__listbox {
 			display: block;
 			position: absolute;
