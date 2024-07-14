@@ -4,4 +4,27 @@
 	:host {
 		font-size: rem(16);
 	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.tree-link {
+		&.first-level > a {
+			padding-left: rem(6);
+		}
+
+		& > a {
+			padding-right: rem(6);
+			padding-left: calc(1.4rem * var(--level));
+			padding-top: rem(6.4);
+			padding-bottom: rem(6.4);
+		}
+	}
+
+	a .kol-span-wc {
+		display: block;
+	}
 }
