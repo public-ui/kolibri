@@ -15,7 +15,7 @@ import type {
 	LinkStates,
 	LinkTargetPropType,
 	Stringified,
-	TooltipAlignPropType
+	TooltipAlignPropType,
 } from '../../schema';
 import {
 	devHint,
@@ -35,7 +35,7 @@ import {
 	validateLinkCallbacks,
 	validateLinkTarget,
 	validateTabIndex,
-	validateTooltipAlign
+	validateTooltipAlign,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
