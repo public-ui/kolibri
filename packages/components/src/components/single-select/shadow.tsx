@@ -86,6 +86,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this._value = '';
 			this._inputValue = '';
 			this._filteredOptions = [...this.state._options];
+
+			this.controller.setFormAssociatedValue(this._value);
 		}
 	}
 
@@ -97,6 +99,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.controller.onFacade.onInput(event, false, option.value);
 
 		this._filteredOptions = [...this.state._options];
+
+		this.controller.setFormAssociatedValue(this._value);
 	}
 
 	private onInput(event: Event) {
@@ -645,9 +649,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 		// Event handling
 		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, this._value);
-
-		// Static form handling
-		this.controller.setFormAssociatedValue(this._value as unknown as string);
 
 		// Callback
 		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
