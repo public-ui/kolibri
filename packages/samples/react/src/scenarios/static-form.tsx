@@ -11,11 +11,13 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolSelect,
+	KolCombobox,
 	KolTextarea,
 } from '@public-ui/react';
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../components/SampleDescription';
+import { COUNTRY_SUGGESTIONS } from '../shares/country';
 
 export const StaticForm: FC = () => {
 	const { searchParams } = new URL(location.href);
@@ -90,6 +92,7 @@ export const StaticForm: FC = () => {
 					]}
 					_rows={2}
 				/>
+				<KolCombobox _name="combobox" _label="Combobox" _suggestions={COUNTRY_SUGGESTIONS} />
 				<KolTextarea _name="textarea" _label="Textarea" _rows={5} />
 				<div className="flex flex-wrap gap-4">
 					<KolButton _label="Submit" _type="submit" _variant="primary" />

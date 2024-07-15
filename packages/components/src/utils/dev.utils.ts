@@ -1,6 +1,7 @@
 import { Log, getDocument, processEnv, setColorContrastAnalysis, setDevMode, setExperimentalMode } from '../schema';
 
 import { getWindow } from '../schema';
+import { Env } from '@stencil/core';
 
 const initMeta = (): void => {
 	const meta = getDocument().querySelector('meta[name="kolibri"]');
@@ -37,7 +38,7 @@ export const initKoliBri = (): void => {
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 |  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 \`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 2.1.3
+🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${Env.kolibriVersion}
 	`,
 		{
 			forceLog: true,

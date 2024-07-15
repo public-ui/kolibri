@@ -1,0 +1,10 @@
+@import '../mixins-ec/rem';
+
+@layer kol-theme-component {
+	.tree {
+		ul {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}

@@ -7,6 +7,12 @@
 	}
 
 	.tree {
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
 		&:focus-within {
 			outline: 1px solid;
 			outline-offset: 2px;

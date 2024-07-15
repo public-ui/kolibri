@@ -17,6 +17,7 @@ export const ComboboxCases = forwardRef<HTMLKolComboboxElement, Components.KolCo
 				_value={'Deutschland'}
 				_on={{
 					onBlur: console.log,
+					onInput: console.log,
 					onChange: console.log,
 					onClick: console.log,
 					onFocus: console.log,

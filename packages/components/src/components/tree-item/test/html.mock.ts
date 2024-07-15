@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { KolLinkTag, KolTreeItemWcTag } from '../../../core/component-names';
+import { KolLinkWcTag, KolTreeItemWcTag } from '../../../core/component-names';
 import type { TreeItemProps, TreeItemStates } from '../../../schema';
 
 export const getTreeItemHtml = (props: TreeItemProps): string => {
@@ -20,10 +20,12 @@ export const getTreeItemHtml = (props: TreeItemProps): string => {
   <mock:shadow-root>
 
 	<${KolTreeItemWcTag} class=" kol-tree-item kol-tree-item-wc">
-	<li class="tree-item">
-	<${KolLinkTag}
-		class="tree-link ${state._active ? 'active' : ''}"
+	<li class="tree-item" style="--level: 0;">
+	<${KolLinkWcTag}
+		class="tree-link first-level ${state._active ? 'active' : ''}"
+		${state._open ? `_ariaexpanded=""` : ''}
 		_label=""
+		_role="treeitem"
 		_href="${state._href}"
 		_tabIndex="${state._active ? 0 : -1}"
 	>
@@ -41,8 +43,8 @@ export const getTreeItemHtml = (props: TreeItemProps): string => {
 			}
 			${state._label}
 		</span>
-	</${KolLinkTag}>
-	<ul ${!state._hasChildren || !state._open ? 'hidden=""' : ''} role="group">
+	</${KolLinkWcTag}>
+	<ul ${!state._hasChildren || !state._open ? 'hidden=""' : ''} id="tree-group-nonce" role="group">
 		<slot />
 	</ul>
 </li>

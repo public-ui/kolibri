@@ -2,6 +2,8 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
+	AriaExpandedPropType,
+	AriaOwnsPropType,
 	DisabledPropType,
 	DownloadPropType,
 	FocusableElement,
@@ -13,7 +15,7 @@ import type {
 	LinkStates,
 	LinkTargetPropType,
 	Stringified,
-	TooltipAlignPropType,
+	TooltipAlignPropType
 } from '../../schema';
 import {
 	devHint,
@@ -22,6 +24,8 @@ import {
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
 	validateAriaCurrentValue,
+	validateAriaExpanded,
+	validateAriaOwns,
 	validateDisabled,
 	validateDownload,
 	validateHideLabel,
@@ -31,16 +35,16 @@ import {
 	validateLinkCallbacks,
 	validateLinkTarget,
 	validateTabIndex,
-	validateTooltipAlign,
+	validateTooltipAlign
 } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-
-import { translate } from '../../i18n';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 import { preventDefaultAndStopPropagation } from '../../utils/events';
 import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
+
+import { translate } from '../../i18n';
 
 /**
  * @internal
@@ -120,6 +124,8 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
+					aria-expanded={this.state._ariaExpanded ? 'true' : undefined}
+					aria-owns={this.state._ariaOwns}
 					aria-label={
 						this.state._hideLabel && typeof this.state._label === 'string'
 							? `${this.state._label}${isExternal ? ` (${translate('kol-open-link-in-tab')})` : ''}`
@@ -178,6 +184,17 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Marks this element as open/expanded, or that the connected element (aria-controls/aria-owns) is open/expanded.
+	 * @TODO: Change type to `AriaExpandedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _ariaExpanded?: boolean;
+
+	/**
+	 * Defines the contextual relationship between a parent and its child elements.
+	 */
+	@Prop() public _ariaOwns?: AriaOwnsPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -252,6 +269,16 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 		validateAriaCurrentValue(this, value);
 	}
 
+	@Watch('_ariaExpanded')
+	public validateAriaExpanded(value?: AriaExpandedPropType): void {
+		validateAriaExpanded(this, value);
+	}
+
+	@Watch('_ariaOwns')
+	public validateAriaOwns(value?: AriaOwnsPropType): void {
+		validateAriaOwns(this, value);
+	}
+
 	@Watch('_disabled')
 	public validateDisabled(value?: DisabledPropType): void {
 		validateDisabled(this, value);
@@ -312,6 +339,8 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
+		this.validateAriaExpanded(this._ariaExpanded);
+		this.validateAriaOwns(this._ariaOwns);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel);

@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stenci
 
 import type { LabelPropType, TreeAPI, TreeStates } from '../../schema';
 import { validateLabel } from '../../schema';
-import { TREE_ITEM_TAG_NAME } from './constants';
+import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-tree-wc',
@@ -40,7 +40,7 @@ export class KolTreeWc implements TreeAPI {
 	}
 
 	private static isTreeItem(this: void, element?: HTMLElement | null): element is HTMLKolTreeItemElement {
-		return element?.tagName === TREE_ITEM_TAG_NAME.toUpperCase();
+		return element?.tagName === KolTreeItemTag.toUpperCase();
 	}
 
 	public componentWillLoad(): void {
@@ -84,7 +84,7 @@ export class KolTreeWc implements TreeAPI {
 	 */
 	private getTreeItemElements(): HTMLKolTreeItemElement[] {
 		return this.getTopLevelTreeItems()?.reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
-			const children = currentValue.querySelectorAll(TREE_ITEM_TAG_NAME);
+			const children = currentValue.querySelectorAll(KolTreeItemTag);
 
 			return [...accumulator, currentValue, ...children];
 		}, []);
@@ -117,7 +117,7 @@ export class KolTreeWc implements TreeAPI {
 	@Listen('keydown')
 	public async handleKeyDown(event: KeyboardEvent) {
 		const openItems = await this.getOpenTreeItemElements();
-		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(TREE_ITEM_TAG_NAME);
+		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
 
 		if (!openItems || !currentTreeItem) {
 			return;
@@ -183,7 +183,7 @@ export class KolTreeWc implements TreeAPI {
 				break;
 			}
 			case '*': {
-				const siblings = currentTreeItem.parentElement?.querySelectorAll(TREE_ITEM_TAG_NAME);
+				const siblings = currentTreeItem.parentElement?.querySelectorAll(KolTreeItemTag);
 				siblings?.forEach((element) => {
 					void element.expand();
 				});
@@ -194,7 +194,7 @@ export class KolTreeWc implements TreeAPI {
 
 	@Listen('focusout')
 	public async handleFocusOut(event: FocusEvent) {
-		if (event.relatedTarget && !(event.relatedTarget as Element).closest('kol-tree')) {
+		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
 			/* Tree lost focus */
 			await this.ensureActiveItemVisibility();
 		}
@@ -208,7 +208,7 @@ export class KolTreeWc implements TreeAPI {
 				if (rootNode._active) {
 					return rootNode;
 				}
-				const childMatch = rootNode.querySelector('kol-tree-item[_active="true"]');
+				const childMatch = rootNode.querySelector(`${KolTreeItemTag}[_active="true"]`);
 				if (childMatch && (childMatch as HTMLKolTreeItemElement)._active) {
 					return childMatch as HTMLKolTreeItemElement;
 				}
