@@ -1,6 +1,6 @@
 # Tooltip
 
-Synonyme: Tooltips, Inline dialog, Popover
+Synonyme: Inline Dialog, Popover
 
 <kol-alert _type="info" _variant="card">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
 

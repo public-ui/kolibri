@@ -1,6 +1,6 @@
 # InputDate
 
-Synonyme: DatePicker, Datetime Picker, Date picker, Date, Calendar, Datepickers, Datetime Picker.Popup, Datepicker dialog
+Synonyme: Date Picker, Datetime Picker, Week Picker Month Picker, Time Picker, Calendar
 
 Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können konkrete Daten sein, aber auch Wochen, Monate oder Zeitangaben.
 

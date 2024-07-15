@@ -1,6 +1,6 @@
 # Select
 
-Synonyme: Autocomplete, Datalist, Select Menu, Combobox, Dropdown, Picker, Selection Dropdown
+Synonyme: Datalist, Dropdown
 
 Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.
 

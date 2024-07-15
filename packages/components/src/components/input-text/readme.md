@@ -1,6 +1,6 @@
 # InputText
 
-Synonyme: Input, Textfield, FormControl, Text input, Text, Text Input, TextField, Text field, InputText, input, Text Field, TextInput
+Synonyme: Text Field
 
 Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.
 
