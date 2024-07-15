@@ -41,6 +41,8 @@ import tabsCss from './components/ecl-eu/tabs.scss';
 import textareaCss from './components/ecl-eu/textarea.scss';
 import toastContainerCss from './components/ecl-eu/toast-container.scss';
 import toolbarCss from './components/ecl-eu/toolbar.scss';
+import treeCss from './components/ecl-eu/tree.scss';
+import treeItemCss from './components/ecl-eu/tree-item.scss';
 
 // Europa Component Library - European Union | https://ec.europa.eu/component-library/eu/
 export const ECL_EU = KoliBri.createTheme('ecl-eu', {
@@ -86,4 +88,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
 	'KOL-TOOLBAR': toolbarCss,
+	'KOL-TREE': treeCss,
+	'KOL-TREE-ITEM': treeItemCss,
 });

@@ -2,6 +2,9 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
+	AriaExpandedPropType,
+	AriaOwnsPropType,
+	DisabledPropType,
 	DownloadPropType,
 	HrefPropType,
 	KoliBriIconsProp,
@@ -12,8 +15,8 @@ import type {
 	LinkTargetPropType,
 	Stringified,
 	TooltipAlignPropType,
-	DisabledPropType,
 } from '../../schema';
+import { validateAriaOwns } from '../../schema';
 import {
 	devHint,
 	propagateFocus,
@@ -22,6 +25,8 @@ import {
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
 	validateAriaCurrentValue,
+	validateAriaExpanded,
+	validateDisabled,
 	validateDownload,
 	validateHideLabel,
 	validateHref,
@@ -32,16 +37,15 @@ import {
 	validateTabIndex,
 	validateTooltipAlign,
 } from '../../schema';
-import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { onLocationChange } from './ariaCurrentService';
-
-import { validateDisabled } from '../../schema';
-import type { JSX } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
+import { onLocationChange } from './ariaCurrentService';
 import { preventDefaultAndStopPropagation } from '../../utils/events';
 import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
+
 /**
  * @internal
  */
@@ -100,7 +104,7 @@ export class KolLinkWc implements LinkAPI {
 		};
 
 		if (this.state._hideLabel === true && !this.state._label) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn _hide-label gesetzt ist.`);
+			devHint(`[KolLink] An aria-label must be set when _hide-label is set.`);
 		}
 		return { isExternal, tagAttrs };
 	};
@@ -116,6 +120,8 @@ export class KolLinkWc implements LinkAPI {
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
+					aria-expanded={this.state._ariaExpanded ? 'true' : undefined}
+					aria-owns={this.state._ariaOwns}
 					aria-label={
 						this.state._hideLabel && typeof this.state._label === 'string'
 							? `${this.state._label}${isExternal ? ` (${translate('kol-open-link-in-tab')})` : ''}`
@@ -174,6 +180,17 @@ export class KolLinkWc implements LinkAPI {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Marks this element as open/expanded, or that the connected element (aria-controls/aria-owns) is open/expanded.
+	 * @TODO: Change type to `AriaExpandedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _ariaExpanded?: boolean;
+
+	/**
+	 * Defines the contextual relationship between a parent and its child elements.
+	 */
+	@Prop() public _ariaOwns?: AriaOwnsPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -248,6 +265,16 @@ export class KolLinkWc implements LinkAPI {
 		validateAriaCurrentValue(this, value);
 	}
 
+	@Watch('_ariaExpanded')
+	public validateAriaExpanded(value?: AriaExpandedPropType): void {
+		validateAriaExpanded(this, value);
+	}
+
+	@Watch('_ariaOwns')
+	public validateAriaOwns(value?: AriaOwnsPropType): void {
+		validateAriaOwns(this, value);
+	}
+
 	@Watch('_disabled')
 	public validateDisabled(value?: DisabledPropType): void {
 		validateDisabled(this, value);
@@ -308,6 +335,8 @@ export class KolLinkWc implements LinkAPI {
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
+		this.validateAriaExpanded(this._ariaExpanded);
+		this.validateAriaOwns(this._ariaOwns);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel);

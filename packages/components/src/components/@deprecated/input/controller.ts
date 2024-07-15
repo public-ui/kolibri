@@ -68,12 +68,10 @@ export class InputController extends ControlledInputController implements Watche
 	 * @deprecated
 	 */
 	public validateError(value?: string): void {
-		const message: MsgPropType | undefined = value
-			? {
-					_description: value,
-					_type: 'error',
-				}
-			: undefined;
+		const message: MsgPropType = {
+			_description: value || '',
+			_type: 'error',
+		};
 		this.validateMsg(message);
 	}
 
@@ -115,7 +113,7 @@ export class InputController extends ControlledInputController implements Watche
 			minLength: 1,
 		});
 		if (value === '' || typeof value === 'undefined') {
-			devHint(`Eine eindeutige ID an den Eingabefeldern ist nicht zwingend erforderlich, könnte aber für die E2E-Tests relevant sein.`);
+			devHint(`A unique ID on the input fields is not strictly required, but it might be relevant for E2E tests.`);
 		}
 	}
 

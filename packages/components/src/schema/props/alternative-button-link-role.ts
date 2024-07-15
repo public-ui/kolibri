@@ -2,7 +2,7 @@
 import type { Generic } from 'adopted-style-sheets';
 import { watchString } from '../utils';
 
-export type AlternativeButtonLinkRolePropType = 'button' | 'link' | 'tab';
+export type AlternativeButtonLinkRolePropType = 'button' | 'link' | 'tab' | 'treeitem';
 
 /**
  * Defines the role of the components primary element.
