@@ -61,19 +61,22 @@ export class KolCombobox implements ComboboxAPI {
 			}
 		}
 	};
-
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
 		propagateFocus(this.host, this.ref);
 	};
 
-	private selectOption(option: string) {
+	private selectOption(event: Event, option: string) {
+		this.controller.onFacade.onInput(event, true, option);
+		this.controller.onFacade.onChange(event, option);
+		this.controller.setFormAssociatedValue(option);
 		this.state._value = option;
 		this.ref?.focus();
 	}
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
 		this.state._value = target.value;
+		this.controller.onFacade.onInput(event);
 		this.setFilteredSuggestionsByQuery(target.value);
 		this._focusedOptionIndex = -1;
 	}
@@ -219,8 +222,8 @@ export class KolCombobox implements ComboboxAPI {
 												tabIndex={0}
 												role="option"
 												aria-selected={this.state._value === option}
-												onClick={() => {
-													this.selectOption(option as string);
+												onClick={(e) => {
+													this.selectOption(e, option as string);
 													this.toggleListbox();
 												}}
 												onMouseOver={() => {
@@ -232,7 +235,8 @@ export class KolCombobox implements ComboboxAPI {
 												class="combobox__item"
 												onKeyDown={(e) => {
 													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-														this.selectOption(option as string);
+														this.selectOption(e, option as string);
+														this.toggleListbox();
 														e.preventDefault();
 													}
 												}}
@@ -535,6 +539,7 @@ export class KolCombobox implements ComboboxAPI {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+		this.controller.setFormAssociatedValue(value);
 	}
 
 	public componentWillLoad(): void {
@@ -557,7 +562,7 @@ export class KolCombobox implements ComboboxAPI {
 		this.controller.setFormAssociatedValue(this._value as unknown as string);
 
 		// Callback
-		if (typeof this.state._on?.onChange === 'function') {
+		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
 			this.state._on.onChange(event, this._value);
 		}
 	}
