@@ -22,7 +22,7 @@ import { ComboboxController } from './controller';
 
 import type { JSX } from '@stencil/core';
 import { KolIconTag, KolInputWcTag } from '../../core/component-names';
-import { showExpertSlot } from '../../schema';
+import { propagateFocus, showExpertSlot } from '../../schema';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
@@ -39,14 +39,14 @@ import { translate } from '../../i18n';
 })
 export class KolCombobox implements ComboboxAPI {
 	@Element() private readonly host?: HTMLKolComboboxElement;
-	private ref?: HTMLSelectElement;
+	private ref?: HTMLInputElement;
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this._value;
+		return this.state._value;
 	}
 
 	private toggleListbox = () => {
@@ -55,10 +55,15 @@ export class KolCombobox implements ComboboxAPI {
 		} else {
 			this._isOpen = !this._isOpen;
 			if (this._isOpen && Array.isArray(this._filteredSuggestions) && this._filteredSuggestions.length > 0) {
-				const selectedIndex = this._filteredSuggestions.findIndex((option) => option === this._value);
-				this.focusOption(selectedIndex >= 0 ? selectedIndex : 0);
+				const selectedIndex = this._filteredSuggestions.findIndex((option) => option === this.state._value);
+				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				this.focusOption(this._focusedOptionIndex);
 			}
 		}
+	};
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propagateFocus(this.host, this.ref);
 	};
 
 	private selectOption(event: Event, option: string) {
@@ -66,12 +71,14 @@ export class KolCombobox implements ComboboxAPI {
 		this.controller.onFacade.onChange(event, option);
 		this.controller.setFormAssociatedValue(option);
 		this.state._value = option;
+		this.ref?.focus();
 	}
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
-		this._value = target.value;
+		this.state._value = target.value;
 		this.controller.onFacade.onInput(event);
 		this.setFilteredSuggestionsByQuery(target.value);
+		this._focusedOptionIndex = -1;
 	}
 
 	private handleKeyDownDropdown(event: KeyboardEvent) {
@@ -151,7 +158,6 @@ export class KolCombobox implements ComboboxAPI {
 						_required={this.state._required}
 						_tooltipAlign={this._tooltipAlign}
 						_touched={this.state._touched}
-						onClick={() => this.ref?.focus()}
 						role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 					>
 						<span slot="label">
@@ -171,6 +177,7 @@ export class KolCombobox implements ComboboxAPI {
 						<div slot="input">
 							<div class="combobox__group">
 								<input
+									ref={this.catchRef}
 									class="combobox__input"
 									type="text"
 									role="combobox"
@@ -252,6 +259,9 @@ export class KolCombobox implements ComboboxAPI {
 			event.preventDefault();
 			if (isOpen !== undefined) {
 				this._isOpen = isOpen;
+				if (!isOpen) {
+					this.ref?.focus();
+				}
 			}
 			callback?.();
 		};
@@ -293,11 +303,11 @@ export class KolCombobox implements ComboboxAPI {
 				break;
 			}
 			case 'PageUp': {
-				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
+				handleEvent(undefined, () => this._isOpen && this.moveFocus(-10));
 				break;
 			}
 			case 'PageDown': {
-				handleEvent(undefined, () => this._isOpen && this.moveFocus(-10));
+				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
 				break;
 			}
 		}
