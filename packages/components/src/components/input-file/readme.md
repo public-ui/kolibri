@@ -1,5 +1,7 @@
 # InputFile
 
+Synonyme: Upload, File Uploader, File Picker, File Selector
+
 Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.
 
 ## Konstruktion
