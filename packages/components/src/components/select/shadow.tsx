@@ -1,4 +1,5 @@
 import type {
+	FocusableElement,
 	HideErrorPropType,
 	IdPropType,
 	InputTypeOnDefault,
@@ -18,7 +19,7 @@ import type {
 	TooltipAlignPropType,
 	W3CInputValue,
 } from '../../schema';
-import { propagateFocus, showExpertSlot } from '../../schema';
+import { showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
@@ -44,19 +45,32 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	},
 	shadow: true,
 })
-export class KolSelect implements SelectAPI {
+export class KolSelect implements SelectAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolSelectElement;
-	private ref?: HTMLSelectElement;
+	private selectRef?: HTMLSelectElement;
 
 	private readonly catchRef = (ref?: HTMLSelectElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.selectRef = ref;
 	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
 		return this.state._value;
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.selectRef?.focus();
 	}
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
@@ -107,7 +121,7 @@ export class KolSelect implements SelectAPI {
 					_required={this.state._required}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.ref?.focus()}
+					onClick={() => this.selectRef?.focus()}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
@@ -130,7 +144,7 @@ export class KolSelect implements SelectAPI {
 								event.preventDefault();
 								propagateSubmitEventToForm({
 									form: this.host,
-									ref: this.ref,
+									ref: this.selectRef,
 								});
 							}}
 						>
@@ -435,7 +449,7 @@ export class KolSelect implements SelectAPI {
 	}
 
 	private onInput(event: Event): void {
-		this._value = Array.from(this.ref?.options || [])
+		this._value = Array.from(this.selectRef?.options || [])
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
 

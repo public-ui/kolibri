@@ -1,5 +1,7 @@
 # InputFile
 
+Synonyme: Upload, File Uploader, File Picker, File Selector
+
 Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.
 
 ## Konstruktion
@@ -91,11 +93,25 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 
 ## Methods
 
+### `focus() => Promise<void>`
+
+<span style="color:red">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
 ### `getValue() => Promise<FileList | null | undefined>`
 
 #### Returns
 
 Type: `Promise<FileList | null | undefined>`
+
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ## Slots
 

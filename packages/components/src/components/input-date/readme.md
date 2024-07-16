@@ -1,5 +1,7 @@
 # InputDate
 
+Synonyme: Date Picker, Datetime Picker, Week Picker Month Picker, Time Picker, Calendar
+
 Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können konkrete Daten sein, aber auch Wochen, Monate oder Zeitangaben.
 
 ## Konstruktion
@@ -131,11 +133,25 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 
 ## Methods
 
+### `focus() => Promise<void>`
+
+<span style="color:red">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
 ### `getValue() => Promise<string | undefined>`
 
 #### Returns
 
 Type: `Promise<string | undefined>`
+
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ## Slots
 
