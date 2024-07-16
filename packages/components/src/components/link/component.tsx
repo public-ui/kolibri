@@ -6,6 +6,7 @@ import type {
 	AriaOwnsPropType,
 	DisabledPropType,
 	DownloadPropType,
+	FocusableElement,
 	HrefPropType,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
@@ -16,16 +17,15 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 } from '../../schema';
-import { validateAriaOwns } from '../../schema';
 import {
 	devHint,
-	propagateFocus,
 	setEventTarget,
 	showExpertSlot,
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
 	validateAriaCurrentValue,
 	validateAriaExpanded,
+	validateAriaOwns,
 	validateDisabled,
 	validateDownload,
 	validateHideLabel,
@@ -38,13 +38,13 @@ import {
 	validateTooltipAlign,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
-
-import { translate } from '../../i18n';
+import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 import { preventDefaultAndStopPropagation } from '../../utils/events';
 import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
+
+import { translate } from '../../i18n';
 
 /**
  * @internal
@@ -53,15 +53,19 @@ import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements LinkAPI {
-	@Element() private readonly host?: HTMLKolLinkWcElement;
-	private ref?: HTMLAnchorElement;
+export class KolLinkWc implements LinkAPI, FocusableElement {
+	private anchorRef?: HTMLAnchorElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.anchorRef = ref;
 	};
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.anchorRef?.focus();
+	}
 
 	private readonly onClick = (event: Event) => {
 		if (this.state._disabled === true) {
@@ -69,7 +73,7 @@ export class KolLinkWc implements LinkAPI {
 		} else if (typeof this.state._on?.onClick === 'function') {
 			event.preventDefault();
 			event.stopPropagation();
-			setEventTarget(event, this.ref);
+			setEventTarget(event, this.anchorRef);
 			this.state._on?.onClick(event, this.state._href);
 		}
 	};

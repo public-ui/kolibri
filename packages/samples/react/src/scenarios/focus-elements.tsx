@@ -23,6 +23,7 @@ import type { FC, ForwardRefRenderFunction } from 'react';
 import { useMemo } from 'react';
 import React, { forwardRef, useLayoutEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import type { FocusableElement } from '@public-ui/components';
 
 const getFocusElements = () => {
 	const focusElements = new Map<string, ForwardRefRenderFunction<any, any>>();
@@ -115,14 +116,15 @@ const Fallback = (props: FallbackProps) => {
 };
 
 export const FocusElements: FC = () => {
-	const ref = useRef(null);
+	const ref = useRef<FocusableElement>(null);
 	const focusElements = useMemo(() => getFocusElements(), []);
 	const [searchParams] = useSearchParams();
 	const componentName = searchParams.get('component');
 
 	useLayoutEffect(() => {
 		setTimeout(() => {
-			(ref.current as unknown as HTMLElement)?.focus();
+			// Timeout not strictly necessary but prevents a layout glitch in snapshots with Playwright.
+			void ref.current?.kolFocus();
 		}, 500);
 	}, [ref]);
 

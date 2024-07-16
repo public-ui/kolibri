@@ -1,5 +1,6 @@
 import type {
 	ButtonProps,
+	FocusableElement,
 	HideErrorPropType,
 	IdPropType,
 	InputPasswordAPI,
@@ -14,7 +15,8 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { devHint, propagateFocus, setState, showExpertSlot } from '../../schema';
+import { devHint, setState, showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -22,11 +24,10 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputPasswordController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolButtonWcTag, KolInputWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
-import { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
+import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
+
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -37,26 +38,39 @@ import { PasswordVariantPropType } from '../../schema/props/variant/password-var
 	},
 	shadow: true,
 })
-export class KolInputPassword implements InputPasswordAPI {
+export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputPasswordElement;
-	private ref?: HTMLInputElement;
+	private inputRef?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.inputRef = ref;
 	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.ref?.value;
+		return this.inputRef?.value;
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.inputRef?.focus();
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.ref,
+				ref: this.inputRef,
 			});
 		}
 	};
@@ -99,7 +113,7 @@ export class KolInputPassword implements InputPasswordAPI {
 					_smartButton={this.state._smartButton}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.ref?.focus()}
+					onClick={() => this.inputRef?.focus()}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
@@ -141,7 +155,7 @@ export class KolInputPassword implements InputPasswordAPI {
 							onKeyDown={this.onKeyDown}
 							onInput={this.onInput}
 						/>
-						{this._variant === 'visibility-toggle' && this.ref && this.ref.value?.length > 0 ? (
+						{this._variant === 'visibility-toggle' && this.inputRef && this.inputRef.value?.length > 0 ? (
 							<KolButtonWcTag
 								class="password-toggle-button"
 								_label={this._passwordVisible ? translate('kol-hide-password') : translate('kol-show-password')}

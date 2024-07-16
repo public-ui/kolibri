@@ -111,7 +111,7 @@ export class KolToolbar implements ToolbarAPI {
 		if (currentIndex === nextIndex) return;
 
 		this.currentIndex = nextIndex;
-		(this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkElement | HTMLKolButtonElement | undefined)?.focus();
+		void (this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkElement | HTMLKolButtonElement | undefined)?.kolFocus();
 	}
 
 	/**

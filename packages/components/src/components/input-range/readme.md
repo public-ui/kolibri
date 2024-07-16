@@ -103,11 +103,25 @@ Value types von onInput und onChange werden in [#6345](https://github.com/public
 
 ## Methods
 
+### `focus() => Promise<void>`
+
+<span style="color:red">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
 ### `getValue() => Promise<number | undefined>`
 
 #### Returns
 
 Type: `Promise<number | undefined>`
+
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ## Slots
 

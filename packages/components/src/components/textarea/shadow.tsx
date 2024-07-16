@@ -1,6 +1,7 @@
 import type {
 	AdjustHeightPropType,
 	CSSResize,
+	FocusableElement,
 	HasCounterPropType,
 	HideErrorPropType,
 	IdPropType,
@@ -9,23 +10,23 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	Stringified,
 	RowsPropType,
+	Stringified,
 	SyncValueBySelectorPropType,
 	TextareaAPI,
 	TextareaStates,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus, setState, showExpertSlot, devWarning } from '../../schema';
+import { devWarning, setState, showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { TextareaController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolInputWcTag } from '../../core/component-names';
+
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
  */
@@ -49,19 +50,32 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	},
 	shadow: true,
 })
-export class KolTextarea implements TextareaAPI {
+export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolTextareaElement;
-	private ref?: HTMLTextAreaElement;
+	private textareaRef?: HTMLTextAreaElement;
 
 	private readonly catchRef = (ref?: HTMLTextAreaElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.textareaRef = ref;
 	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.ref?.value;
+		return this.textareaRef?.value;
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.textareaRef?.focus();
 	}
 
 	public render(): JSX.Element {
@@ -89,7 +103,7 @@ export class KolTextarea implements TextareaAPI {
 					_required={this.state._required}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.ref?.focus()}
+					onClick={() => this.textareaRef?.focus()}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
@@ -427,8 +441,9 @@ export class KolTextarea implements TextareaAPI {
 
 	public componentDidLoad(): void {
 		setTimeout(() => {
-			if (this._adjustHeight === true && this.ref /* SSR instanceof HTMLTextAreaElement */) {
-				this._rows = this.state?._rows && this.state._rows > increaseTextareaHeight(this.ref) ? this.state._rows : increaseTextareaHeight(this.ref);
+			if (this._adjustHeight === true && this.textareaRef /* SSR instanceof HTMLTextAreaElement */) {
+				this._rows =
+					this.state?._rows && this.state._rows > increaseTextareaHeight(this.textareaRef) ? this.state._rows : increaseTextareaHeight(this.textareaRef);
 			} else if (!this._rows) {
 				this._rows = 1;
 			}
@@ -444,10 +459,10 @@ export class KolTextarea implements TextareaAPI {
 	}
 
 	private readonly onInput = (event: InputEvent) => {
-		if (this.ref instanceof HTMLTextAreaElement) {
-			setState(this, '_currentLength', this.ref.value.length);
+		if (this.textareaRef instanceof HTMLTextAreaElement) {
+			setState(this, '_currentLength', this.textareaRef.value.length);
 			if (this.state._adjustHeight) {
-				this._rows = increaseTextareaHeight(this.ref);
+				this._rows = increaseTextareaHeight(this.textareaRef);
 			}
 			this.controller.onFacade.onInput(event);
 		}

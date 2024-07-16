@@ -1,14 +1,23 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 
-import { featureHint, propagateFocus, setState, validateDisabled, validateLabel, validateOpen } from '../../schema';
+import type {
+	AccordionAPI,
+	AccordionStates,
+	DisabledPropType,
+	FocusableElement,
+	HeadingLevel,
+	KoliBriAccordionCallbacks,
+	LabelPropType,
+	OpenPropType,
+} from '../../schema';
+import { featureHint, setState, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
+import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
-import { KolHeadingWcTag, KolButtonWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolHeadingWcTag } from '../../core/component-names';
 
-import type { AccordionAPI, AccordionStates, DisabledPropType, HeadingLevel, KoliBriAccordionCallbacks, LabelPropType, OpenPropType } from '../../schema';
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
 - onClick auf der KolAccordion anwenden
@@ -27,13 +36,26 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 	},
 	shadow: true,
 })
-export class KolAccordion implements AccordionAPI {
-	@Element() private readonly host?: HTMLKolDetailsElement;
+export class KolAccordion implements AccordionAPI, FocusableElement {
 	private readonly nonce = nonce();
+	private buttonWcRef?: HTMLKolButtonWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		propagateFocus(this.host, ref);
+		this.buttonWcRef = ref;
 	};
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	public async kolFocus() {
+		await this.buttonWcRef?.kolFocus();
+	}
 
 	public render(): JSX.Element {
 		return (
