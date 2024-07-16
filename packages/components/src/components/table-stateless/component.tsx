@@ -27,6 +27,7 @@ import {
 	watchString,
 } from '../../schema';
 import { KolButtonWcTag, KolInputCheckboxTag } from '../../core/component-names';
+import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { Events } from '../../schema/enums';
@@ -466,10 +467,17 @@ export class KolTableStateless implements TableStatelessAPI {
 		const dataLength = this.state._data.length;
 		const isChecked = selectedKeyLength === dataLength;
 		const intermediate = selectedKeyLength !== 0 && !isChecked;
+		let translationKey = 'kol-table-selection-intermediate' as TranslationKey;
+		if (isChecked && !intermediate) {
+			translationKey = 'kol-table-selection-none';
+		}
+		if (selectedKeyLength === 0) {
+			translationKey = 'kol-table-selection-all';
+		}
 		return (
 			<th key={`thead-0-selection`} class="selection-cell selection-control">
 				<KolInputCheckboxTag
-					_label="Selection control"
+					_label={translate(translationKey)}
 					_hideLabel
 					_checked={isChecked && !intermediate}
 					_indeterminate={intermediate}
