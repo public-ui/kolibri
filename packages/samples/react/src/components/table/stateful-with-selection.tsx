@@ -12,17 +12,21 @@ type Data = (typeof DATA)[0];
 
 export const TableStatefulWithSelection: FC = () => {
 	const [selectedValue, setSelectedValue] = useState<Data[]>();
-
-	const selection: KoliBriTableSelection = {
+	const [selection, setSelection] = useState<KoliBriTableSelection>({
 		label: (row) => `Selection for ${(row as Data).name}`,
 		selectedKeys: selectedValue ? selectedValue.map((element) => element.id) : [],
 		keyPropertyName: 'id',
-	};
+	});
 
 	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>(null);
 
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
 		console.log('Selection change via event', selection);
+		const selectedKeys = selection.map((element) => element?.id);
+		setSelection((e) => ({
+			...e,
+			selectedKeys,
+		}));
 	};
 	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[]) => {
 		console.log('Selection change via callback', selection);
