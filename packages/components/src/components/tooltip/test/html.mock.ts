@@ -32,7 +32,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 				},
 				{
 					additionalAttrs: typeof state._id === 'string' ? ` id="${state._id}"` : undefined,
-					additionalClassNames: ['tooltip-area', 'tooltip-content', 'kol-span-wc'],
+					additionalClassNames: ['tooltip-area', 'tooltip-content'],
 				},
 			)}
 		</div>`

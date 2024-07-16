@@ -51,7 +51,7 @@ export const getButtonWcHtml = (
 			},
 			slots,
 			{
-				additionalClassNames: ['button-inner', 'kol-span-wc'],
+				additionalClassNames: ['button-inner'],
 			},
 		)}
 	</button>
