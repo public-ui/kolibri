@@ -8,5 +8,5 @@ test('abbr', async ({ page }) => {
 	await expect(tooltip).not.toBeVisible();
 	await kolAbbr.hover();
 	await expect(tooltip).toBeVisible();
-	await expect(tooltip).toContainText('zum Bleistift');
+	await expect(tooltip).toContainText('zum Beispiel');
 });
