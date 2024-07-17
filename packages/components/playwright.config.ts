@@ -3,6 +3,8 @@ import { createConfig, matchers } from '@stencil/playwright';
 
 expect.extend(matchers);
 
+const TEST_URL = 'http://localhost:3333';
+
 /* See https://playwright.dev/docs/test-configuration */
 export default createConfig({
 	testDir: './e2e',
@@ -25,4 +27,10 @@ export default createConfig({
 			use: { ...devices['Desktop Safari'] },
 		},
 	],
+	use: {
+		baseURL: TEST_URL,
+	},
+	webServer: {
+		url: TEST_URL,
+	},
 });
