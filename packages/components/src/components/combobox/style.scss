@@ -28,8 +28,8 @@
 
 		&__icon {
 			display: flex;
-			width: 44px;
-			height: 44px;
+			width: var(--a11y-min-size);
+			height: var(--a11y-min-size);
 			align-items: center;
 		}
 

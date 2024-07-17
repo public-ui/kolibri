@@ -39,7 +39,7 @@ import { translate } from '../../i18n';
 })
 export class KolCombobox implements ComboboxAPI {
 	@Element() private readonly host?: HTMLKolComboboxElement;
-	private ref?: HTMLInputElement;
+	private refInput?: HTMLInputElement;
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
 
@@ -54,7 +54,7 @@ export class KolCombobox implements ComboboxAPI {
 			this._isOpen = false;
 		} else {
 			this._isOpen = !this._isOpen;
-			this.ref?.focus();
+			this.refInput?.focus();
 			if (this._isOpen && Array.isArray(this._filteredSuggestions) && this._filteredSuggestions.length > 0) {
 				const selectedIndex = this._filteredSuggestions.findIndex((option) => option === this._value);
 				this.focusOption(selectedIndex >= 0 ? selectedIndex : 0);
@@ -151,7 +151,7 @@ export class KolCombobox implements ComboboxAPI {
 						_required={this.state._required}
 						_tooltipAlign={this._tooltipAlign}
 						_touched={this.state._touched}
-						onClick={() => this.ref?.focus()}
+						onClick={() => this.refInput?.focus()}
 						role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 					>
 						<span slot="label">
@@ -172,7 +172,7 @@ export class KolCombobox implements ComboboxAPI {
 							<div class="combobox__group">
 								<input
 									ref={(el) => {
-										if (el) this.ref = el;
+										if (el) this.refInput = el;
 									}}
 									class="combobox__input"
 									type="text"
@@ -198,13 +198,8 @@ export class KolCombobox implements ComboboxAPI {
 									onChange={this.onChange.bind(this)}
 									placeholder={this.state._placeholder}
 								/>
-								<span
-									role="button"
-									tabIndex={-1}
-									class={{ combobox__icon: true }}
-									onClick={this.toggleListbox.bind(this)}
-									onKeyDown={this.toggleListbox.bind(this)}
-								>
+								{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+								<span class={{ combobox__icon: true }} onClick={this.toggleListbox.bind(this)} onKeyDown={this.toggleListbox.bind(this)}>
 									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
 								</span>
 							</div>
@@ -277,13 +272,13 @@ export class KolCombobox implements ComboboxAPI {
 			case 'Tab':
 				if (this._isOpen) {
 					this._isOpen = !this._isOpen;
-					this.ref?.focus();
+					this.refInput?.focus();
 				}
 				break;
 			case 'Esc':
 			case 'Escape': {
 				handleEvent(false);
-				this.ref?.focus();
+				this.refInput?.focus();
 				break;
 			}
 			case 'NumpadEnter':

@@ -1,6 +1,7 @@
+@import '../mixins-ec/rem';
 @import '../mixins-ec/alert-wc';
 
-$option-height: 3rem;
+$option-height: rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
