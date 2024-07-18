@@ -7,11 +7,9 @@ import { SampleDescription } from '../SampleDescription';
 export const QuoteBlock: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier ist ein Beispiel für ein Zitat. Es wird eine Quelle durch ein Label angegeben. Durch anklicken des Labels wird man auf die Quellenwebseite
-				weitergeleitet.
-			</p>
+			<p>This sample shows a quote in the &quot;block&quot; variant.</p>
 		</SampleDescription>
+
 		<KolQuote
 			_label="RFC 1149"
 			_href="https://datatracker.ietf.org/doc/html/rfc1149"

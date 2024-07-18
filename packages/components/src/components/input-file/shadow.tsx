@@ -1,5 +1,6 @@
 import type {
 	ButtonProps,
+	FocusableElement,
 	HideErrorPropType,
 	IdPropType,
 	InputFileAPI,
@@ -13,7 +14,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus, showExpertSlot } from '../../schema';
+import { showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
@@ -33,19 +34,32 @@ import { KolInputWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolInputFile implements InputFileAPI {
+export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputFileElement;
-	private ref?: HTMLInputElement;
+	private inputRef?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.inputRef = ref;
 	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<FileList | null | undefined> {
-		return this.ref?.files;
+		return this.inputRef?.files;
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.inputRef?.focus();
 	}
 
 	public render(): JSX.Element {
@@ -72,7 +86,7 @@ export class KolInputFile implements InputFileAPI {
 					_smartButton={this.state._smartButton}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.ref?.focus()}
+					onClick={() => this.inputRef?.focus()}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
@@ -360,8 +374,8 @@ export class KolInputFile implements InputFileAPI {
 	}
 
 	private onChange = (event: Event): void => {
-		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file') {
-			const value = this.ref.files;
+		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
+			const value = this.inputRef.files;
 
 			this.controller.onFacade.onChange(event, value);
 
@@ -371,8 +385,8 @@ export class KolInputFile implements InputFileAPI {
 	};
 
 	private onInput = (event: Event): void => {
-		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file') {
-			const value = this.ref.files;
+		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
+			const value = this.inputRef.files;
 			this.controller.onFacade.onInput(event, false, value);
 		}
 	};

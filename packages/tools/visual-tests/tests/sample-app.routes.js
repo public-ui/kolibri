@@ -33,11 +33,6 @@ ROUTES.set('accordion/headlines', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('accordion/list', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('alert/basic', {
 	axe: {
 		skipFailures: false,
@@ -90,11 +85,6 @@ ROUTES.set('button/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('button/hide-label', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('button/icons', {
 	axe: {
 		skipFailures: false,
@@ -116,21 +106,6 @@ ROUTES.set('button/baselined', {
 	},
 });
 ROUTES.set('card/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('card/confirm', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('card/flex', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('card/selection', {
 	axe: {
 		skipFailures: false,
 	},
@@ -216,11 +191,9 @@ ROUTES.set('input-password/basic', null);
 ROUTES.set('input-password/show-password', null);
 ROUTES.set('input-radio/basic', null);
 ROUTES.set('input-radio/horizontal', null);
-ROUTES.set('input-radio/select', null);
 ROUTES.set('input-radio/object', null);
 ROUTES.set('input-range/basic', null);
 ROUTES.set('input-text/basic', null);
-ROUTES.set('input-text/blur', null);
 ROUTES.set('input-text/focus', null);
 ROUTES.set('kolibri/basic', {
 	axe: {
@@ -375,21 +348,6 @@ ROUTES.set('textarea/adjust-height', {
 	},
 });
 ROUTES.set('textarea/basic', null);
-ROUTES.set('textarea/disabled', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('textarea/placeholder', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('textarea/readonly', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('textarea/resize', {
 	axe: {
 		skipFailures: false,

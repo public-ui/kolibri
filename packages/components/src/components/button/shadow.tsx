@@ -6,6 +6,7 @@ import type {
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
+	FocusableElement,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
 	StencilUnknown,
@@ -13,11 +14,10 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus } from '../../schema';
-import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, h, Host, Method, Prop } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 
-import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-button',
 	styleUrls: {
@@ -25,17 +25,30 @@ import type { JSX } from '@stencil/core';
 	},
 	shadow: true,
 })
-export class KolButton implements ButtonProps {
-	@Element() private readonly host?: HTMLKolButtonElement;
+export class KolButton implements ButtonProps, FocusableElement {
+	private buttonWcRef?: HTMLKolButtonWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		propagateFocus(this.host, ref);
+		this.buttonWcRef = ref;
 	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<StencilUnknown> | undefined> {
 		return this._value;
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	public async kolFocus() {
+		await this.buttonWcRef?.kolFocus();
 	}
 
 	public render(): JSX.Element {

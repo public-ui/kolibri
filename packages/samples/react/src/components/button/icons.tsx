@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const ButtonIcons: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier wird ein Button mit dem Label &apos;Label&apos; angezeigt. Beim anklicken wird ein alert als Popup ausgeführt. </p>
+			<p>This sample shows KolButton with icons in all alignments.</p>
 		</SampleDescription>
+
 		<KolButton
 			_icons={{
 				bottom: 'codicon codicon-arrow-down',

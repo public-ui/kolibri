@@ -23,8 +23,10 @@ export const TableHorizontalScrollbar: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				Table examples with and without horizontal scrollbars. When a scrollbar is present, it should be possible to focus the table container and to scroll it
-				using arrow keys.
+				<p>
+					This sample shows KolTable with and without horizontal scrollbars. When a scrollbar is present, it should be possible to focus the table container and
+					to scroll it using arrow keys.
+				</p>
 			</SampleDescription>
 
 			<KolHeading _label="Table with scrollbar" _level={2} />

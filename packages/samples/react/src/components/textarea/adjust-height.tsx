@@ -1,8 +1,7 @@
+import type { FC } from 'react';
 import React from 'react';
 
 import { KolForm, KolTextarea } from '@public-ui/react';
-
-import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 const VALUE = `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
@@ -15,15 +14,13 @@ sit amet.`;
 export const TextareaAdjustHeight: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind zwei Freitextfelder. Im oberen kann die Größe des Textfelds angepasst werden, im unteren nicht.</p>
+			<p>
+				This sample demonstrates the <code>_adjustHeight</code>-property of KolTextarea. The textarea automatically grows with its content.
+			</p>
 		</SampleDescription>
-		<KolForm className="row">
-			<div className="col-sm-6">
-				<KolTextarea _adjustHeight={true} _resize="vertical" _value={VALUE} _label="Texteingabe (horizontal)" />
-			</div>
-			<div className="col-sm-6">
-				<KolTextarea _adjustHeight={true} _resize="none" _value={VALUE} _label="Texteingabe (none)" />
-			</div>
+
+		<KolForm>
+			<KolTextarea _adjustHeight={true} _value={VALUE} _label="Text input (auto grow)" />
 		</KolForm>
 	</>
 );

@@ -3,6 +3,7 @@ import type {
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
 	DownloadPropType,
+	FocusableElement,
 	HrefPropType,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
@@ -12,11 +13,10 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus } from '../../schema';
-import { Component, Element, h, Host, Prop } from '@stencil/core';
-
 import type { JSX } from '@stencil/core';
+import { Component, h, Host, Method, Prop } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
+
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
@@ -24,12 +24,25 @@ import { KolLinkWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolLink implements LinkProps {
-	@Element() private readonly host?: HTMLKolLinkElement;
+export class KolLink implements LinkProps, FocusableElement {
+	private linkWcRef?: HTMLKolLinkWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
-		propagateFocus(this.host, ref);
+		this.linkWcRef = ref;
 	};
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	public async kolFocus() {
+		await this.linkWcRef?.kolFocus();
+	}
 
 	public render(): JSX.Element {
 		return (

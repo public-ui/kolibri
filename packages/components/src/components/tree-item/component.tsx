@@ -140,14 +140,13 @@ export class KolTreeItemWc implements TreeItemAPI {
 		};
 	}
 
-	// eslint-disable-next-line @typescript-eslint/require-await
 	@Method() async focusLink() {
-		this.linkElement.focus();
+		await this.linkElement.kolFocus();
 	}
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
-		this.linkElement.focus();
+		await this.linkElement.kolFocus();
 		await this.expand();
 	}
 

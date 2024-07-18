@@ -11,10 +11,11 @@ export const InputPasswordShowPassword: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					Hier wird ein Passwort Eingabefeld angezeigt. Durch klicken auf den im Feld Rechts stehenden Button, kann zwischen verdecktem und angezeigtem Passwort
-					gewechselt werden.
+					This sample shows KolInputPassword in the variant &quot;visibility-toggle&quot;. It features a button to toggle between a visible and hidden password
+					input.
 				</p>
 			</SampleDescription>
+
 			<KolForm>
 				<KolInputPassword _placeholder="Mit 'Passwort anzeigen' Button" _label="Passwort" ref={passwordRef} className="block" _variant="visibility-toggle" />
 				<KolInputPassword

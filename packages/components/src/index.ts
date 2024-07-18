@@ -1,5 +1,5 @@
 export { KoliBriDevHelper, Optgroup, Option, SelectOption } from './schema';
-export type { Toast, ToasterOptions, KoliBriTableSelection, KoliBriTableCell } from './schema';
+export type { Toast, ToasterOptions, KoliBriTableSelection, KoliBriTableCell, FocusableElement } from './schema';
 export { KoliBri } from './schema';
 export * from './components.d';
 export { setCurrentLocation } from './components/link/ariaCurrentService';
