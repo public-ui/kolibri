@@ -68,8 +68,9 @@ export const ToastBasic: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>Hier ist ein Beispiel für verschiedene Toasts, die beim anklicken verschiedene Popups generieren. Der untere schließt alle geöffneten Toasts.</p>
+				<p>This sample demonstrates the toast service with all its options.</p>
 			</SampleDescription>
+
 			<div>
 				<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>{' '}
 				<KolButton _label="Show toast with alert variant 'msg'" _on={{ onClick: handleButtonClickVariantMessage }}></KolButton>{' '}

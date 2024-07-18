@@ -8,8 +8,11 @@ import { SampleDescription } from '../SampleDescription';
 export const IndentedTextBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier wird ein Indented Text zwischen zwei normalen Texten angezeigt. Es gibt keine Interaktionsmöglichkeit. </p>
+			<p>
+				KolIndentedText renders the given slot content, styled as indented text. The sample shows two regular paragraphs with an indented paragraph in between.
+			</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<p>
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam

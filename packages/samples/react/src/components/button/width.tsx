@@ -15,8 +15,9 @@ const ARGS = {
 export const ButtonWidth: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier werden breite Buttons angezeigt. Beim anklicken wird ein alert als Popup ausgeführt.</p>
+			<p>This sample shows KolButton with adjusted widths.</p>
 		</SampleDescription>
+
 		<div className="grid gap-14">
 			<div className="flex flex-wrap gap-14">
 				<KolButton _label="Primary" _variant="primary" {...ARGS}></KolButton>

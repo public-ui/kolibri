@@ -21,20 +21,20 @@ export const DrawerControlled: FC = () => {
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 			<SampleDescription>
 				<p>
-					Hier ist ein Beispiel für einen kontrollierten Drawer. Dieser lässt sich öffnen und schließen über das Attribut _open. Zusätzlich lässt sich der
-					Dialog als Modal (_modal) durch ESC schließen. Der Drawer kann über das Attribut _align links, oben, rechts oder unten ausgerichtet werden.
+					This sample shows the KolDrawer controlled by the property <code>_open</code> instead of methods.
 				</p>
 			</SampleDescription>
+
 			<DrawerRadioAlign value={align} onChange={(_, value) => setAlign(value as AlignPropType)} />
 			<div className="flex flex-wrap gap-4">
-				<KolDrawer _open={open} _align={align} _label="Ich bin ein kotrollierter Drawer" _on={{ onClose: () => setOpen(false) }}>
+				<KolDrawer _open={open} _align={align} _label="I'm a controlled drawer" _on={{ onClose: () => setOpen(false) }}>
 					<div>
 						<p>Lorem ipsum dolor sit amet,</p>
 						<KolButton _label="Close drawer" _on={{ onClick: () => setOpen(false) }} />
 					</div>
 				</KolDrawer>
 				<KolButton _label="Open drawer" _on={{ onClick: () => setOpen(true) }} />
-				<KolDrawer _open={modalOpen} _modal _align={align} _label="Ich bin ein kotrollierter Modal Drawer" _on={{ onClose: () => setModalOpen(false) }}>
+				<KolDrawer _open={modalOpen} _modal _align={align} _label="I'm a controlled modal drawer" _on={{ onClose: () => setModalOpen(false) }}>
 					<div>
 						<p>Lorem ipsum dolor sit amet,</p>
 						<KolButton _label="Close drawer" _on={{ onClick: () => setModalOpen(false) }} />

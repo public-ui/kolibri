@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const TextareaBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind Freitextfelder die mithilfe des Reglers unten Rechts im jeweiligen Feld in ihrer Größe angepasst werden können.</p>
+			<p>KolTextarea renders a text field. The sample shows KolTextarea in a form context with different variations and states.</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={TextareaVariants} />
 	</>
 );

@@ -8,10 +8,17 @@ import { SampleDescription } from '../SampleDescription';
 export const CardBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier wird eine Card mit Titel und &apos;Inhalt&apos; angezeigt. Es gibt keine Interaktionsmöglichkeit.</p>
+			<p>KolCard shows a card with title and slot content. The second sample features a close button.</p>
 		</SampleDescription>
-		<KolCard _label="Titel">
-			<div slot="">Inhalt</div>
-		</KolCard>
+
+		<div className="grid grid-cols-2 gap-4">
+			<KolCard _label="Card with title and content">
+				<div>Card contents.</div>
+			</KolCard>
+
+			<KolCard _label="Card with closer" _hasCloser>
+				<p>This card has a close button.</p>
+			</KolCard>
+		</div>
 	</>
 );

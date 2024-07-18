@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const LinkIcons: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind verschiedene Darstellungsweisen von Links mit Icons.</p>
+			<p>This sample shows KolLink with icons in different alignments and combinations.</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolLink _icons="codicon codicon-home" _label="Ich bin ein Link mit Icon links" _href="#/back-page" />
 			<KolLink

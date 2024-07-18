@@ -8,11 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const SelectBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier sind Beispiele für verschiedene Auswahlfelder. Es gibt die Varianten Dropdownmenü und Liste mit Scrollbar. Es kann nur ein Element gleichzeitig
-				ausgewählt werden.
-			</p>
+			<p>KolSelect renders a select field. The sample shows KolSelect in a form context with all variations and states.</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={SelectVariants} />
 	</>
 );

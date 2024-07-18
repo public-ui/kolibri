@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const InputPasswordBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind Passwort Eingabefelder dargestellt. Im Feld &apos;Passwort P&apos; eingegebene Zeichen werden verdeckt angezeigt.</p>
+			<p>KolInputPassword renders a password input field. The sample shows KolInputPassword in a form context with all variations and states.</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={InputPasswordVariants} />
 	</>
 );

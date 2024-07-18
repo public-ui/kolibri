@@ -56,10 +56,7 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 export const TableSortData: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier ist eine Tabelle, die durch anklicken des Knopfes sortiert werden kann. Entweder nach der Reihenfolge, nach dem ältesten Datum oder nach dem
-				jüngsten Datum.
-			</p>
+			<p>This sample shows KolTable with sortable columns. The sort-order can be changed by clicking the &quot;date&quot; header column.</p>
 		</SampleDescription>
 
 		<h2>Vertical</h2>

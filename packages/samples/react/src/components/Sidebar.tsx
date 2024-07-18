@@ -68,15 +68,15 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 				</div>
 			)}
 
-			<KolSelect _label="Theme wählen" _options={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={[theme]} class="mt"></KolSelect>
+			<KolSelect _label="Theme" _options={THEME_OPTIONS} _on={{ onChange: handleThemeSelectChange }} _value={[theme]} class="mt"></KolSelect>
 
-			<KolHeading _label="Komponenten" _level={2} className="block mt"></KolHeading>
+			<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
 			<div className="flex flex-justify-between flex-items-center mt">
-				<KolButton _icons="codicon codicon-arrow-left" _hideLabel _label="Vorherige Komponente auswählen" _on={{ onClick: handlePreviousClick }} />
+				<KolButton _icons="codicon codicon-arrow-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />
 				<span className="text-center">
 					{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
 				</span>
-				<KolButton _icons="codicon codicon-arrow-right" _hideLabel _label="Nächste Komponente auswählen" _on={{ onClick: handleNextClick }} />
+				<KolButton _icons="codicon codicon-arrow-right" _hideLabel _label="Next component" _on={{ onClick: handleNextClick }} />
 			</div>
 
 			<ComponentNavContainer isMobile={isMobile}>

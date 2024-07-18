@@ -1,4 +1,8 @@
 @layer kol-theme-component {
+	:host {
+		font-family: inherit;
+	}
+
 	:is(a, button) {
 		color: var(--color-primary);
 		font-style: normal;

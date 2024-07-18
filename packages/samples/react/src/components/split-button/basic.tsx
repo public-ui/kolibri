@@ -20,10 +20,11 @@ export const SplitButtonBasic: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					Hier sind zwei Dropdownmenüs. Das obere Beispiel lässt sich nur durch drücken des Pfeils öffnen. Ansonsten erscheint eine Meldung. Beim unteren
-					Beispiel kann durch drücken auf das Icon und des Pfeils das Menü geöffnet und geschlossen werden.
+					SplitButton renders a button with an additional context-menu, that can be opened by clicking the arrow icon. The first sample shows the button with an
+					assigned action. In the second sample no action is assigned and clicking the button opens the context menu instead.
 				</p>
 			</SampleDescription>
+
 			<div className="flex gap-4">
 				<KolSplitButton _label="Nur der Pfeil öffnet" _on={{ onClick: handleButtonClick }}>
 					Dropdown-Inhalt

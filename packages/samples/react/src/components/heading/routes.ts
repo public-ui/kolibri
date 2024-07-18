@@ -5,8 +5,8 @@ import { HeadingParagraph } from './paragraph';
 
 export const HEADING_ROUTES: Routes = {
 	heading: {
-		badge: HeadingBadged,
 		basic: HeadingBasic,
+		badge: HeadingBadged,
 		paragraph: HeadingParagraph,
 	},
 };
