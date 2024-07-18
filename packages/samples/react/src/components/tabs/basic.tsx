@@ -37,22 +37,21 @@ const tabsWithoutIcons = tabs.map((tab) => ({
 export const TabsBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind verschiedene Varianten von Tabs. Nur der Inhalt eines Tabs wird in jeder Zeile angezeigt.</p>
+			<p>KolTabs renders tab captions and their associated content. This sample shows tab captions with and without icons and disabled tabs.</p>
 		</SampleDescription>
-		<>
-			<KolTabs _tabs={tabsWithoutIcons} _label="Regular tabs">
-				<div slot="tab-0">Inhalte von Tab 1</div>
-				<div slot="tab-1">Inhalte von Tab 2</div>
-				<div slot="tab-2">Inhalte von Tab 3</div>
-				<div slot="tab-3">Inhalte von Tab 4</div>
-			</KolTabs>
 
-			<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with icons">
-				<div slot="tab-0">Inhalte von Tab 1</div>
-				<div slot="tab-1">Inhalte von Tab 2</div>
-				<div slot="tab-2">Inhalte von Tab 3</div>
-				<div slot="tab-3">Inhalte von Tab 4</div>
-			</KolTabs>
-		</>
+		<KolTabs _tabs={tabsWithoutIcons} _label="Regular tabs">
+			<div slot="tab-0">Inhalte von Tab 1</div>
+			<div slot="tab-1">Inhalte von Tab 2</div>
+			<div slot="tab-2">Inhalte von Tab 3</div>
+			<div slot="tab-3">Inhalte von Tab 4</div>
+		</KolTabs>
+
+		<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with icons">
+			<div slot="tab-0">Inhalte von Tab 1</div>
+			<div slot="tab-1">Inhalte von Tab 2</div>
+			<div slot="tab-2">Inhalte von Tab 3</div>
+			<div slot="tab-3">Inhalte von Tab 4</div>
+		</KolTabs>
 	</>
 );

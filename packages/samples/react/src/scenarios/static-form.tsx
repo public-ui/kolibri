@@ -25,7 +25,7 @@ export const StaticForm: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows how you can use KoliBri in static form context, too.</p>
+				<p>This sample shows how KoliBri can be used in a static form context.</p>
 				<ol>
 					<li>
 						First you have to enable the <code>experimental mode</code>:{' '}

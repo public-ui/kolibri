@@ -15,7 +15,7 @@ export const DrawerBasic: FC = () => {
 	const hideMenus = useContext(HideMenusContext);
 	const drawerElement = useRef<HTMLKolDrawerElement>(null);
 	const drawerModalElement = useRef<HTMLKolDrawerElement>(null);
-	const [align, setAlign] = useState<AlignPropType>(defaultAlign);
+	const [align, setAlign] = useState<AlignPropType>(defaultAlign || 'left');
 	useEffect(() => {
 		if (defaultAlign) {
 			drawerModalElement.current?.open();
@@ -26,11 +26,11 @@ export const DrawerBasic: FC = () => {
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 			<SampleDescription>
 				<p>
-					Hier ist ein Beispiel für ein Drawer. Dieser lässt sich öffnen und schließen mit Methoden. Dadurch erscheint ein Dialog mit Text und
-					&apos;Schließen&apos; Button. Durch anklicken des &apos;Schließen&apos; Button, schließt sich der Dialog wieder. Zusätzlich lässt sich der Dialog als
-					Modal (_modal) durch ESC schließen. Beide Varianten können über das Attribut _align links, oben, rechts oder unten ausgerichtet werden.
+					KolDrawer shows a dialog attached to one of the sides of the viewport, when opened. This sample illustrates the four alignments and the modal- and
+					non-modal modes.
 				</p>
 			</SampleDescription>
+
 			<DrawerRadioAlign value={align} onChange={(_, value) => setAlign(value as AlignPropType)} />
 			<div className="flex flex-wrap gap-4">
 				<KolDrawer ref={drawerElement} _label="Ich bin ein Drawer" _align={align} _on={{ onClose: () => console.log('Drawer onClose triggered!') }}>

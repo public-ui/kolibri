@@ -8,8 +8,9 @@ import type { FC } from 'react';
 export const BreadcrumbBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier wird eine Breadcrumb-Navigation dargestellt. Beim klicken auf die Links wird man auf Unterseiten weitergeleitet.</p>
+			<p>KolBreadcrumb shows a breadcrumb navigation. The sample illustrates a variation of link, text and icon elements.</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolBreadcrumb
 				_label="Breadcrumb aus Text-Links"

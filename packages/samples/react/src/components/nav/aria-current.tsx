@@ -9,8 +9,8 @@ export const NavAriaCurrent: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				Dieses Beispiel zeigt eine Navigation, bei welcher der zweite Link auf die aktuelle Seite verweist. Dadurch wird ihm automatisch das Attribut{' '}
-				<code>aria-current=&quot;page&quot;</code> zugewiesen.
+				This sample shows KolNav with a link to the current page. This makes the component automatically assign <code>aria-current=&quot;page&quot;</code>
+				to it.
 			</p>
 		</SampleDescription>
 
@@ -23,8 +23,8 @@ export const NavAriaCurrent: FC = () => (
 					_href: '#/back-page',
 				},
 				{
-					_label: 'Nav - aria-current (Aktuelle Seite)',
-					_href: '#/back-page',
+					_label: 'Nav - aria-current (Current page)',
+					_href: '#/nav/aria-current', // Please don't change this link. It's necessary to be the "current page" for the sample.
 					_active: true,
 				},
 			]}

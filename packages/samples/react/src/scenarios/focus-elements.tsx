@@ -23,6 +23,7 @@ import type { FC, ForwardRefRenderFunction } from 'react';
 import { useMemo } from 'react';
 import React, { forwardRef, useLayoutEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { SampleDescription } from '../components/SampleDescription';
 import type { FocusableElement } from '@public-ui/components';
 
 const getFocusElements = () => {
@@ -96,7 +97,14 @@ const Fallback = (props: FallbackProps) => {
 	const componentNames = [...focusElements.keys()].map((key) => key);
 
 	return (
-		<div>
+		<>
+			<SampleDescription>
+				<p>
+					This sample serves for automated tests of the focus state for input components. When loading one of the examples linked below, focus will be set on
+					the element initially. When testing manually, you may have to reload the page after opening an example.
+				</p>
+			</SampleDescription>
+
 			{props.invalidComponent && (
 				<KolAlert _type="error" _variant="card">
 					Component not found.
@@ -111,7 +119,7 @@ const Fallback = (props: FallbackProps) => {
 					</li>
 				))}
 			</ul>
-		</div>
+		</>
 	);
 };
 

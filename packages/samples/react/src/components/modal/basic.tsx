@@ -11,16 +11,17 @@ export const ModalBasic: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					Hier ist ein Beispiel für ein Modal. Es lässt sich öffnen. Dadurch erscheint ein Popup mit Text und &apos;Schließen&apos; Button. Durch anklicken des
-					&apos;Schließen&apos; Button, schließt sich das Modal wieder.
+					KolModal renders content in a popover, disabling interactivity with elements behind it. In the sample, the modal can be opened and closed using the
+					buttons &quot;Open modal&quot; and &quot;Close modal&quot;.
 				</p>
 			</SampleDescription>
+
 			<div>
 				<KolModal _label="" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }}>
-					<KolCard _label="Ich bin ein Modal" style={{ width: '100%' }}>
+					<KolCard _label="I am a modal." style={{ width: '100%' }}>
 						<div>
 							<KolButton
-								_label="Schließen"
+								_label="Close modal"
 								_on={{
 									onClick: () => {
 										if (modalElement?.current) {
@@ -33,7 +34,7 @@ export const ModalBasic: FC = () => {
 					</KolCard>
 				</KolModal>
 				<KolButton
-					_label="Modal öffnen"
+					_label="Open modal"
 					_on={{
 						onClick: (event: Event) => {
 							if (modalElement?.current) {

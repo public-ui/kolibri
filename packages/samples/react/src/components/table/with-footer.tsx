@@ -5,7 +5,9 @@ import { SampleDescription } from '../SampleDescription';
 
 export const TableWithFooter: FC = () => (
 	<>
-		<SampleDescription>Table with footer data</SampleDescription>
+		<SampleDescription>
+			<p>This sample shows KolTable with footer data.</p>
+		</SampleDescription>
 
 		<KolTable
 			_label="Business hours"

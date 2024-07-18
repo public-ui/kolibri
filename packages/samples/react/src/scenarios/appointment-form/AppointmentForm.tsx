@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import React, { useEffect, useState, useRef } from 'react';
 import * as Yup from 'yup';
 
-import { KolTabs } from '@public-ui/react';
+import { KolLink, KolTabs } from '@public-ui/react';
 
 import { checkAppointmentAvailability } from './appointmentService';
 import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
@@ -12,6 +12,7 @@ import { Summary } from './Summary';
 
 import type { FormikHelpers, FormikProps } from 'formik';
 import type { Iso8601 } from '@public-ui/components';
+import { SampleDescription } from '../../components/SampleDescription';
 // export interface FormProps {}
 export interface FormValues {
 	district: string;
@@ -89,47 +90,57 @@ export function AppointmentForm() {
 	};
 
 	return (
-		<Formik<FormValues> innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-			<KolTabs
-				_tabs={[
-					{
-						_label: '1. Einwohnermeldeamt wählen',
-					},
-					{
-						_label: '2. Freie Termine',
-						_disabled: activeFormSection < FormSection.AVAILABLE_APPOINTMENTS,
-					},
-					{
-						_label: '3. Persönliche Daten',
-						_disabled: activeFormSection < FormSection.PERSONAL_INFORMATION,
-					},
-					{
-						_label: 'Zusammenfassung',
-						_disabled: activeFormSection < FormSection.SUMMARY,
-					},
-				]}
-				_label="Formular-Navigation"
-				_selected={selectedTab}
-				_on={{
-					onSelect: (_event, selectedTab) => {
-						setActiveFormSection(selectedTab);
-						formikRef.current?.setErrors({});
-					},
-				}}
-			>
-				<div>
-					<DistrictForm />
-				</div>
-				<div>
-					<AvailableAppointmentsForm />
-				</div>
-				<div>
-					<PersonalInformationForm />
-				</div>
-				<div>
-					<Summary />
-				</div>
-			</KolTabs>
-		</Formik>
+		<>
+			<SampleDescription>
+				<p>
+					The Appointment Form is a full form example featuring a large variety of KoliBri form components,{' '}
+					<KolLink _label="Formik" _href="https://formik.org/" _target="blank" /> and{' '}
+					<KolLink _label="Yup" _href="https://github.com/jquense/yup" _target="blank" />.
+				</p>
+			</SampleDescription>
+
+			<Formik<FormValues> innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+				<KolTabs
+					_tabs={[
+						{
+							_label: '1. Einwohnermeldeamt wählen',
+						},
+						{
+							_label: '2. Freie Termine',
+							_disabled: activeFormSection < FormSection.AVAILABLE_APPOINTMENTS,
+						},
+						{
+							_label: '3. Persönliche Daten',
+							_disabled: activeFormSection < FormSection.PERSONAL_INFORMATION,
+						},
+						{
+							_label: 'Zusammenfassung',
+							_disabled: activeFormSection < FormSection.SUMMARY,
+						},
+					]}
+					_label="Formular-Navigation"
+					_selected={selectedTab}
+					_on={{
+						onSelect: (_event, selectedTab) => {
+							setActiveFormSection(selectedTab);
+							formikRef.current?.setErrors({});
+						},
+					}}
+				>
+					<div>
+						<DistrictForm />
+					</div>
+					<div>
+						<AvailableAppointmentsForm />
+					</div>
+					<div>
+						<PersonalInformationForm />
+					</div>
+					<div>
+						<Summary />
+					</div>
+				</KolTabs>
+			</Formik>
+		</>
 	);
 }
