@@ -1,4 +1,6 @@
 import type {
+	ComboboxAPI,
+	ComboboxStates,
 	HideErrorPropType,
 	IdPropType,
 	InputTypeOnDefault,
@@ -6,23 +8,20 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	ComboboxAPI,
-	ComboboxStates,
 	Stringified,
+	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	SuggestionsPropType,
 	W3CInputValue,
 } from '../../schema';
-import { Component, Element, h, Host, Method, Prop, State, Watch, Fragment, Listen } from '@stencil/core';
+import { showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { ComboboxController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolIconTag, KolInputWcTag } from '../../core/component-names';
-import { propagateFocus, showExpertSlot } from '../../schema';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
@@ -47,6 +46,12 @@ export class KolCombobox implements ComboboxAPI {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.state._value;
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.refInput?.focus();
 	}
 
 	private toggleListbox = () => {
