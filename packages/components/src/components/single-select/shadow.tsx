@@ -83,24 +83,22 @@ export class KolSingleSelect implements SingleSelectAPI {
 		} else {
 			this._focusedOptionIndex = -1;
 			this.state._value = '';
-			this._value = '';
 			this._inputValue = '';
 			this._filteredOptions = [...this.state._options];
 
-			this.controller.setFormAssociatedValue(this._value);
+			this.controller.setFormAssociatedValue(this.state._value);
 		}
 	}
 
 	private selectOption(event: Event, option: Option<string>) {
 		this.state._value = option.value;
-		this._value = option.value;
 		this._inputValue = option.label as string;
 		this.controller.onFacade.onChange(event, option.value);
 		this.controller.onFacade.onInput(event, false, option.value);
 
 		this._filteredOptions = [...this.state._options];
 
-		this.controller.setFormAssociatedValue(this._value);
+		this.controller.setFormAssociatedValue(this.state._value);
 	}
 
 	private onInput(event: Event) {
@@ -174,7 +172,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 		return (
 			<Host class="kol-single-select">
-				<div class={`single-select ${this.state._disabled === true ? 'disabled' : ''} `} tabIndex={this.state._disabled ? -1 : 0}>
+				<div class={`single-select ${this.state._disabled === true ? 'disabled' : ''} `}>
 					<KolInputWcTag
 						_accessKey={this.state._accessKey}
 						_disabled={this.state._disabled}
@@ -265,7 +263,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 												ref={(el) => {
 													if (el) this.refOptions[index] = el;
 												}}
-												tabIndex={0}
+												tabIndex={-1}
 												role="option"
 												aria-selected={this.state._value === (option as Option<string>).value}
 												onClick={(event: Event) => {
@@ -274,8 +272,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 													this.toggleListbox(event);
 												}}
 												onMouseOver={() => {
-													this._focusedOptionIndex = index;
-													this.focusOption(index);
+													if (!this._keyboardInteraction) {
+														this._focusedOptionIndex = index;
+														this.focusOption(index);
+													}
+													this._keyboardInteraction = false;
 												}}
 												onFocus={() => {
 													this._focusedOptionIndex = index;
@@ -317,10 +318,24 @@ export class KolSingleSelect implements SingleSelectAPI {
 		);
 	}
 
+	@Listen('focusout', { target: 'window' })
+	public handleFocusOut() {
+		setTimeout(() => {
+			if (!this.host?.contains(document.activeElement)) {
+				this.onBlur();
+			}
+		}, 0);
+	}
+	@Listen('blur', { target: 'window' })
+	public handleWindowBlur() {
+		this.onBlur();
+	}
+
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
 			event.preventDefault();
+			this._keyboardInteraction = true;
 
 			if (isOpen !== undefined) {
 				this._isOpen = isOpen;
@@ -332,10 +347,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 		};
 
 		switch (event.key) {
-			case 'Tab': {
-				this._isOpen = false;
-				break;
-			}
 			case 'Down':
 			case 'ArrowDown': {
 				handleEvent(true, () => this.moveFocus(1));
@@ -405,7 +416,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private _filteredOptions?: OptionsPropType = [];
 	@State()
 	private _inputValue: string = '';
-
+	@State()
+	private _keyboardInteraction: boolean = false;
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
@@ -633,13 +645,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 			const matchedOption = this._options.find((option) => (option as Option<string>).value === this._value);
 			this._inputValue = matchedOption ? (matchedOption.label as string) : '';
 		}
-		this.host?.addEventListener('focusout', () => {
-			setTimeout(() => {
-				if (!this.host?.contains(document.activeElement)) {
-					this.onBlur();
-				}
-			}, 0);
-		});
 	}
 
 	private onChange(event: Event): void {
@@ -652,7 +657,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 		// Callback
 		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
-			this.state._on.onChange(event, this.state._value && this.oldValue !== this.refInput?.value);
+			this.state._on.onChange(event, this._value && this.oldValue !== this.refInput?.value);
 		}
 	}
 }
