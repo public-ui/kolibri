@@ -7,8 +7,4 @@ test.describe('kol-button', () => {
 		const kolButton = page.locator('kol-button');
 		await expect(kolButton).toContainText('Test Button Element');
 	});
-
-	// test('it emits event on click', async ({ page }) => {
-	//
-	// });
 });
