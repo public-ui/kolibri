@@ -137,7 +137,7 @@ export class KolCombobox implements ComboboxAPI {
 
 		return (
 			<Host class="kol-combobox">
-				<div class={`combobox ${this.state._disabled === true ? 'disabled' : ''} `}>
+				<div class={`combobox ${this.state._disabled === true ? 'disabled' : ''}`}>
 					<KolInputWcTag
 						_accessKey={this.state._accessKey}
 						_disabled={this.state._disabled}
@@ -203,8 +203,8 @@ export class KolCombobox implements ComboboxAPI {
 									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
 								</span>
 							</div>
-							{this._isOpen && !(this.state._disabled === true) && (
-								<ul role="listbox" aria-label="" class={{ combobox__listbox: true }} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+							{/* {this._isOpen && !(this.state._disabled === true) && ( */}
+								<ul role="listbox" aria-label="" class={{ combobox__listbox: true, "cursor-hidden":  this.cursorHidden}} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
 									{Array.isArray(this._filteredSuggestions) &&
 										this._filteredSuggestions.length > 0 &&
 										this._filteredSuggestions.map((option, index) => (
@@ -241,7 +241,7 @@ export class KolCombobox implements ComboboxAPI {
 											</li>
 										))}
 								</ul>
-							)}
+							{/* )} */}
 						</div>
 					</KolInputWcTag>
 				</div>
@@ -249,6 +249,11 @@ export class KolCombobox implements ComboboxAPI {
 		);
 	}
 
+	public mouseMoveHandler() {
+		console.log('SHOW CURSOR!')
+		this.cursorHidden = false
+	}
+	
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
@@ -261,11 +266,15 @@ export class KolCombobox implements ComboboxAPI {
 		switch (event.key) {
 			case 'Down':
 			case 'ArrowDown': {
+				console.log('HIDE CURSOR!')
+				this.cursorHidden = true
 				handleEvent(true, () => this.moveFocus(1));
 				break;
 			}
 			case 'Up':
 			case 'ArrowUp': {
+				console.log('HIDE CURSOR!')
+				this.cursorHidden = true
 				handleEvent(true, () => this.moveFocus(-1));
 				break;
 			}
@@ -315,7 +324,9 @@ export class KolCombobox implements ComboboxAPI {
 
 	private readonly controller: ComboboxController;
 	@State()
-	private _isOpen = false;
+	private cursorHidden: boolean = false;
+	@State()
+	private _isOpen: boolean = false;
 	@State()
 	private _filteredSuggestions?: SuggestionsPropType;
 
@@ -550,7 +561,12 @@ export class KolCombobox implements ComboboxAPI {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.host?.addEventListener('mousemove', this.mouseMoveHandler.bind(this));
 		this._filteredSuggestions = this.state._suggestions;
+	}
+
+	public disconnectedCallback(): void {
+		this.host?.removeEventListener('mousemove', this.mouseMoveHandler.bind(this));
 	}
 
 	private onChange(event: Event): void {
