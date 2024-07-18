@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const ButtonLinkIcons: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier werden verschiedene Links mit Icons angezeigt. Die Links führen zu keinem Ziel.</p>
+			<p>This sample shows KolButtonLink with icons in different locations.</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolButtonLink _icons="codicon codicon-home" _label="Ich bin ein Link mit Icon links" />
 			<KolButtonLink

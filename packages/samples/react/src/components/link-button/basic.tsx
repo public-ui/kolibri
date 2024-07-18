@@ -12,8 +12,9 @@ const ARGS = {
 export const LinkButtonBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind fünf Buttons. Nach anklicken erscheint ein Popup mit &apos;Klick!&apos;</p>
+			<p>KolLinkButton renders a link that looks like a button. The sample shows the different styling variants.</p>
 		</SampleDescription>
+
 		<div className="grid gap-14">
 			<div className="flex flex-wrap gap-14">
 				<KolLinkButton _label="Primary" _variant="primary" {...ARGS}></KolLinkButton>

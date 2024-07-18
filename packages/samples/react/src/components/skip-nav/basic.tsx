@@ -8,26 +8,24 @@ import { SampleDescription } from '../SampleDescription';
 export const SkipNavBasic: FC = () => (
 	<div className="grid gap-4">
 		<SampleDescription>
-			<p>
-				<b>Links sind unsichtbar geschaltet</b>
-				<br />
-				Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-			</p>
+			<p>KolSkipNav renders a list of navigation links that are visually hidden by default and only visible on focus.</p>
+			<p>For testing purposes, click into the example and press the tab-key in order to focus the first link.</p>
 		</SampleDescription>
+
 		<KolSkipNav
 			_label="Versteckte Navigation"
 			_links={[
 				{
 					_label: 'Zum Anfang',
-					_href: '#header',
+					_href: '#/back-page',
 				},
 				{
 					_label: 'Zum Formular',
-					_href: '#form',
+					_href: '#/back-page',
 				},
 				{
 					_label: 'Zum Ende',
-					_href: '#footer',
+					_href: '#/back-page',
 				},
 			]}
 		></KolSkipNav>

@@ -1,5 +1,7 @@
 # Toaster
 
+Synonyme: Notification, Snackbar
+
 Mit dem **Toast**-Service geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird am Kopf des Browserfenster
 angezeigt, bis sie geschlossen wird. Werden mehrere Toasts geöffnet, ohne das die bisherigen geschlossen wurden, so werden diese untereinander angezeigt.
 
@@ -90,7 +92,7 @@ Type: `Promise<void>`
 
 | Name    | Type                                                                                                                                                                                                            | Description |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "error" \| "warning" \| "info" \| "success" \| "default"; alertVariant?: "card" \| "msg" \| undefined; }` |             |
+| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; alertVariant?: "card" \| "msg" \| undefined; }` |             |
 
 #### Returns
 

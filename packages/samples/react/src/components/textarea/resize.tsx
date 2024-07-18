@@ -4,17 +4,19 @@ import { KolForm, KolTextarea } from '@public-ui/react';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
-//Umrandung im Reactsample wird nicht angepasst bei Anpassung des Textfelds. Bug?.
 export const TextareaResize: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Diese Freitextfelder können in die beschriebenen Richtungen angepasst werden. Die Umrandung ändert sich dabei nicht.</p>
+			<p>
+				This sample demonstrates the <code>_resize</code>-property of KolTextarea. The sample textarea can (only) be resized in the given direction.
+			</p>
 		</SampleDescription>
+
 		<KolForm className="grid gap-4">
-			<KolTextarea _resize="both" _label="Texteingabe (both)" />
-			<KolTextarea _resize="vertical" _label="Texteingabe (vertical)" />
-			<KolTextarea _resize="horizontal" _label="Texteingabe (horizontal)" />
-			<KolTextarea _resize="none" _label="Texteingabe (none)" />
+			<KolTextarea _resize="both" _label="Text input (both)" />
+			<KolTextarea _resize="vertical" _label="Text input (vertical)" className="mt" />
+			<KolTextarea _resize="horizontal" _label="Text input (horizontal)" className="mt" />
+			<KolTextarea _resize="none" _label="Text input (none)" className="mt" />
 		</KolForm>
 	</>
 );

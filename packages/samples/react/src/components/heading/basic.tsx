@@ -8,15 +8,16 @@ import { SampleDescription } from '../SampleDescription';
 export const HeadingBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind sechs verschiedene Überschriften mit unterschiedlichen Leveln dargestellt. Es gibt keine Interaktionsmöglichkeit.</p>
+			<p>KolHeading renders a heading with the given level.</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
-			<KolHeading _label="Ich bin eine H1-Überschrift" _level={1} />
-			<KolHeading _label="Ich bin eine H2-Überschrift" _level={2} />
-			<KolHeading _label="Ich bin eine H3-Überschrift" _level={3} />
-			<KolHeading _label="Ich bin eine H4-Überschrift" _level={4} />
-			<KolHeading _label="Ich bin eine H5-Überschrift" _level={5} />
-			<KolHeading _label="Ich bin eine H6-Überschrift" _level={6} />
+			<KolHeading _label="I'm a H1-heading" _level={1} />
+			<KolHeading _label="I'm a H2-heading" _level={2} />
+			<KolHeading _label="I'm a H3-heading" _level={3} />
+			<KolHeading _label="I'm a H4-heading" _level={4} />
+			<KolHeading _label="I'm a H5-heading" _level={5} />
+			<KolHeading _label="I'm a H6-heading" _level={6} />
 		</div>
 	</>
 );

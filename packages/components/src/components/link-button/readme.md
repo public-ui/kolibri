@@ -41,10 +41,26 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
 | `_icons`             | `_icons`              | Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).                                                                                              | `KoliBriHorizontalIcons & KoliBriVerticalIcons \| string \| undefined`                               | `undefined` |
 | `_label`             | `_label`              | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. | `string \| undefined`                                                                                | `undefined` |
 | `_on`                | --                    | Defines the callback functions for links.                                                                                                                    | `undefined \| { onClick?: EventValueOrEventCallback<Event, string> \| undefined; }`                  | `undefined` |
-| `_role`              | `_role`               | Defines the role of the components primary element.                                                                                                          | `"button" \| "link" \| "tab" \| undefined`                                                           | `undefined` |
+| `_role`              | `_role`               | Defines the role of the components primary element.                                                                                                          | `"button" \| "link" \| "tab" \| "treeitem" \| undefined`                                             | `undefined` |
 | `_tabIndex`          | `_tab-index`          | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)             | `number \| undefined`                                                                                | `undefined` |
 | `_target`            | `_target`             | Defines where to open the link.                                                                                                                              | `string \| undefined`                                                                                | `undefined` |
 | `_tooltipAlign`      | `_tooltip-align`      | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                    | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                | `'right'`   |
 | `_variant`           | `_variant`            | Defines which variant should be used for presentation.                                                                                                       | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined` | `'normal'`  |
+
+## Methods
+
+### `focus() => Promise<void>`
+
+<span style="color:red">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ---

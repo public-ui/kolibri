@@ -134,7 +134,7 @@ Probleme mit Disabled-Status
 | `_label` _(required)_ | `_label`         | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.                     | `string`                                                                                                                                               | `undefined` |
 | `_name`               | `_name`          | Defines the technical name of an input field.                                                                                                                                    | `string \| undefined`                                                                                                                                  | `undefined` |
 | `_on`                 | --               | Defines the callback functions for button events.                                                                                                                                | `undefined \| { onClick?: EventValueOrEventCallback<MouseEvent, StencilUnknown> \| undefined; onMouseDown?: EventCallback<MouseEvent> \| undefined; }` | `undefined` |
-| `_role`               | `_role`          | Defines the role of the components primary element.                                                                                                                              | `"button" \| "link" \| "tab" \| undefined`                                                                                                             | `undefined` |
+| `_role`               | `_role`          | Defines the role of the components primary element.                                                                                                                              | `"button" \| "link" \| "tab" \| "treeitem" \| undefined`                                                                                               | `undefined` |
 | `_tabIndex`           | `_tab-index`     | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                                 | `number \| undefined`                                                                                                                                  | `undefined` |
 | `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                        | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                  | `'top'`     |
 | `_type`               | `_type`          | Defines either the type of the component or of the components interactive element.                                                                                               | `"button" \| "reset" \| "submit" \| undefined`                                                                                                         | `'button'`  |
@@ -143,10 +143,24 @@ Probleme mit Disabled-Status
 
 ## Methods
 
+### `focus() => Promise<void>`
+
+<span style="color:red">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
 ### `getValue() => Promise<Stringified<StencilUnknown> | undefined>`
 
 #### Returns
 
 Type: `Promise<Stringified<StencilUnknown>>`
+
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ---

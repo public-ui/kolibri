@@ -1,5 +1,6 @@
 import type {
 	ButtonProps,
+	FocusableElement,
 	HideErrorPropType,
 	IdPropType,
 	InputColorAPI,
@@ -15,16 +16,16 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus, showExpertSlot } from '../../schema';
+import { showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputColorController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolInputWcTag } from '../../core/component-names';
+
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -35,19 +36,32 @@ import { KolInputWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolInputColor implements InputColorAPI {
+export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputColorElement;
-	private ref?: HTMLInputElement;
+	private inputRef?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.inputRef = ref;
 	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.ref?.value;
+		return this.inputRef?.value;
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.inputRef?.focus();
 	}
 
 	public render(): JSX.Element {
@@ -75,7 +89,7 @@ export class KolInputColor implements InputColorAPI {
 					_smartButton={this.state._smartButton}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.ref?.focus()}
+					onClick={() => this.inputRef?.focus()}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">

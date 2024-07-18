@@ -16,7 +16,8 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus, showExpertSlot } from '../../schema';
+import { showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -24,9 +25,8 @@ import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputCheckboxController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolIconTag, KolInputWcTag } from '../../core/component-names';
+import type { FocusableElement } from '../../schema/interfaces/FocusableElement';
 
 /**
  * @slot expert - Die Beschriftung der Checkbox.
@@ -38,11 +38,12 @@ import { KolIconTag, KolInputWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolInputCheckbox implements InputCheckboxAPI {
+export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
+	private inputRef?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		propagateFocus(this.host, ref);
+		this.inputRef = ref;
 	};
 
 	private getModelValue(): StencilUnknown {
@@ -53,6 +54,20 @@ export class KolInputCheckbox implements InputCheckboxAPI {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
 		return this.getModelValue();
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.inputRef?.focus();
 	}
 
 	public render(): JSX.Element {

@@ -1,4 +1,5 @@
 import type {
+	FocusableElement,
 	HideErrorPropType,
 	IdPropType,
 	InputRadioAPI,
@@ -14,16 +15,15 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus, showExpertSlot } from '../../schema';
-import { Component, Element, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputRadioController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { FormFieldMsg } from '../@shared/form-field-msg';
 import { KolInputWcTag } from '../../core/component-names';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -38,21 +38,34 @@ import { propagateSubmitEventToForm } from '../form/controller';
 	},
 	shadow: true,
 })
-export class KolInputRadio implements InputRadioAPI {
+export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private currentValue?: StencilUnknown;
 
-	private ref?: HTMLInputElement;
+	private inputRef?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, ref);
+		this.inputRef = ref;
 	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown | undefined> {
 		return this.currentValue;
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.inputRef?.focus();
 	}
 
 	public render(): JSX.Element {
@@ -428,7 +441,7 @@ export class KolInputRadio implements InputRadioAPI {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.ref,
+				ref: this.inputRef,
 			});
 		}
 	};

@@ -49,6 +49,7 @@ export const DisabledInteractiveElements: FC = () => (
 			</ul>
 			<p>This implementation ensures standardized use for all users.</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolCard _label="Button" _level={0}>
 				<div className="flex flex-wrap gap-4">
