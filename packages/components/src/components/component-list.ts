@@ -50,7 +50,6 @@ import { KolQuote } from './quote/shadow';
 import { KolSelect } from './select/component';
 import { KolSkipNav } from './skip-nav/component';
 import { KolSpanWc } from './span/component';
-import { KolSpan } from './span/shadow';
 import { KolSpin } from './spin/component';
 import { KolSplitButton } from './split-button/component';
 import { KolSymbol } from './symbol/component';
@@ -114,7 +113,6 @@ export const COMPONENTS = [
 	KolQuote,
 	KolSelect,
 	KolSkipNav,
-	KolSpan,
 	KolSpanWc,
 	KolSpin,
 	KolSplitButton,

@@ -76,7 +76,6 @@ const EXCLUDE_TAGS = [
 	'kol-input-radio-group',
 	'kol-link-wc',
 	'kol-popover-wc',
-	'kol-span',
 	'kol-span-wc',
 	'kol-tooltip-wc',
 ];

@@ -5,15 +5,15 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
 import { Props } from '../types';
-import { getSpanHtml } from './html.mock';
-import { KolSpanTag } from '../../../core/component-names';
+import { getSpanWcHtml } from './html.mock';
+import { KolSpanWcTag } from '../../../core/component-names';
 
 executeTests<Props>(
 	'Span',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <KolSpanTag {...props} />,
+			template: () => <KolSpanWcTag {...props} />,
 		});
 		return page;
 	},
@@ -22,7 +22,7 @@ executeTests<Props>(
 		_hideLabel: [true, false],
 		_label: ['Text', ''],
 	},
-	getSpanHtml,
+	getSpanWcHtml,
 	{
 		execMode: 'default', // ready
 	},
