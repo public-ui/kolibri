@@ -406,11 +406,7 @@ export class KolInputDate implements ComponentApi {
 
 	@Watch('_value')
 	public validateValue(value?: Iso8601 | Date | null): void {
-		this.controller.validateValueEx(value, (v) => {
-			if (v === '' && this.ref) {
-				this.ref.value = '';
-			}
-		});
+		this.controller.validateValueEx(value);
 	}
 
 	public componentWillLoad(): void {
