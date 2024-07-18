@@ -30,7 +30,7 @@ const tabs = [
 export const TabsIconsOnly: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind verschiedene Varianten von Tabs mit Icons. Nur der Inhalt eines Tabs wird gleichzeitig angezeigt.</p>
+			<p>This sample shows KolTabs with hidden labels.</p>
 		</SampleDescription>
 
 		<KolTabs _label="Tabs with icons" _tabs={tabs}>

@@ -8,6 +8,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
+	FocusableElement,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
 	StencilUnknown,
@@ -18,7 +19,6 @@ import type {
 import {
 	mapBoolean2String,
 	mapStringOrBoolean2String,
-	propagateFocus,
 	setEventTarget,
 	setState,
 	showExpertSlot,
@@ -40,7 +40,7 @@ import {
 	watchString,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
@@ -54,25 +54,30 @@ import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements ButtonAPI {
+export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
-	private ref?: HTMLButtonElement;
+	private buttonRef?: HTMLButtonElement;
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.buttonRef = ref;
 	};
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.buttonRef?.focus();
+	}
 
 	private readonly onClick = (event: MouseEvent) => {
 		if (this.state._type === 'submit') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.ref,
+				ref: this.buttonRef,
 			});
 		} else if (this.state._type === 'reset') {
 			propagateResetEventToForm({
 				form: this.host,
-				ref: this.ref,
+				ref: this.buttonRef,
 			});
 		} else {
 			// Event handling
@@ -84,7 +89,7 @@ export class KolButtonWc implements ButtonAPI {
 
 			// Callback
 			if (typeof this.state._on?.onClick === 'function') {
-				setEventTarget(event, this.ref);
+				setEventTarget(event, this.buttonRef);
 				this.state._on?.onClick(event, this.state._value);
 			}
 		}

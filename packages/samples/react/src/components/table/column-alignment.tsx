@@ -10,7 +10,9 @@ const genericNonSorter = <T,>(data: T): T => data;
 
 export const TableColumnAlignment: FC = () => (
 	<>
-		<SampleDescription>Table with columns headers and data in different text alignments.</SampleDescription>
+		<SampleDescription>
+			<p>This sample shows KolTable with columns headers and data in different text alignments.</p>
+		</SampleDescription>
 
 		<KolHeading _label="Simple table" _level={3}></KolHeading>
 		<KolTable

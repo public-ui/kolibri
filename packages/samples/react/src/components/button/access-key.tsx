@@ -1,4 +1,4 @@
-import { KolButton } from '@public-ui/react';
+import { KolButton, KolLink } from '@public-ui/react';
 import React from 'react';
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -6,8 +6,13 @@ import { SampleDescription } from '../SampleDescription';
 export const ButtonAccessKey: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier verstehe ich es nicht!</p>
+			<p>
+				This sample shows KolButton with{' '}
+				<KolLink _label="access keys" _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey" _target="blank" />. The access keys
+				can be used to trigger the buttons using the keyboard.
+			</p>
 		</SampleDescription>
+
 		<div className="flex flex-wrap gap-4">
 			<KolButton _label="Mit S access key" _accessKey="S"></KolButton>
 			<KolButton _label="Sehr kleines s" _accessKey="s"></KolButton>

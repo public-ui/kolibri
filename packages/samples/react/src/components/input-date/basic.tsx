@@ -8,13 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const InputDateBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier sieht man ein Formularfeld mit verschiedenen Zeiteingaben. Bei Datumseingabe kann ein Datum in einem Kalender ausgewählt werden, aber auch
-				eingetippt werden. Es gibt ein gleiches Verhalten im nächsten Feld. Die Felder Monat und Woche sind Freitextfelder. Im Feld Zeit können nur Werte von 0
-				bis 23 und 0 bis 59 angegeben werden. Mit den Feldern Zahleneingabe gibt es keine Interaktionsmöglichekeit. Ein gleiches Verhalten gibt es im Rechten
-				Feld, hier werden die Label erst nach anklicken angezeigt.{' '}
-			</p>
+			<p>KolInputDate renders all types of fields for date and time input. The sample shows KolInputDate in a form context with all variations and states.</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={InputDateVariants} />
 	</>
 );
