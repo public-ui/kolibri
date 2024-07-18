@@ -69,7 +69,6 @@ export class KolCombobox implements ComboboxAPI {
 	};
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.refInput = ref;
-		propagateFocus(this.host, this.refInput);
 	};
 
 	private selectOption(event: Event, option: string) {
@@ -209,7 +208,7 @@ export class KolCombobox implements ComboboxAPI {
 									placeholder={this.state._placeholder}
 								/>
 								{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-								<span class={{ combobox__icon: true }} onClick={this.toggleListbox.bind(this)} onKeyDown={this.toggleListbox.bind(this)}>
+								<span class="combobox__icon" onClick={this.toggleListbox.bind(this)} onKeyDown={this.toggleListbox.bind(this)}>
 									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
 								</span>
 							</div>
@@ -313,6 +312,7 @@ export class KolCombobox implements ComboboxAPI {
 				break;
 			}
 			case 'Home': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
 						this.focusOption(0);
@@ -321,6 +321,7 @@ export class KolCombobox implements ComboboxAPI {
 				break;
 			}
 			case 'End': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
 						this.focusOption(this._filteredSuggestions ? this._filteredSuggestions.length - 1 : 0);
@@ -329,10 +330,12 @@ export class KolCombobox implements ComboboxAPI {
 				break;
 			}
 			case 'PageUp': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => this._isOpen && this.moveFocus(-10));
 				break;
 			}
 			case 'PageDown': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
 				break;
 			}
