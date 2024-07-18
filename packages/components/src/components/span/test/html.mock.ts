@@ -45,7 +45,7 @@ export const getSpanWcHtml = (
 	];
 
 	return `
-<kol-span-wc${classNames.length ? ` class="${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''} >
+<kol-span-wc${classNames.length ? ` class="${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
 	${
 		icons.top
 			? getIconHtml({
