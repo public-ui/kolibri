@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { KolCombobox } from '@public-ui/react';
 
@@ -6,7 +6,7 @@ import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 import { COUNTRY_SUGGESTIONS } from '../../../shares/country';
 import type { Components } from '@public-ui/components';
 
-export const ComboboxCases = forwardRef<HTMLKolComboboxElement, Components.KolCombobox>(function InputComboboxCases(props) {
+export const ComboboxCases = (props: Partial<Components.KolCombobox>) => {
 	return (
 		<div className="grid gap-4">
 			<KolCombobox
@@ -35,4 +35,4 @@ export const ComboboxCases = forwardRef<HTMLKolComboboxElement, Components.KolCo
 			/>
 		</div>
 	);
-});
+};
