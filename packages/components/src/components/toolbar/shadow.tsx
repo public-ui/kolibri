@@ -15,7 +15,7 @@ const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar-item';
 	shadow: true,
 })
 export class KolToolbar implements ToolbarAPI {
-	@Element() host!: HTMLElement;
+	@Element() host!: HTMLKolToolbarElement;
 
 	@State() public state: ToolbarStates = {
 		_label: '',
@@ -64,7 +64,8 @@ export class KolToolbar implements ToolbarAPI {
 	 */
 	@Prop() public _items!: ToolbarItemsPropType;
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 
@@ -90,7 +91,6 @@ export class KolToolbar implements ToolbarAPI {
 		this.currentIndex = this.state._items?.findIndex((item) => !item._disabled);
 	}
 
-	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		const isArrowKey = event.code === 'ArrowRight' || event.code === 'ArrowLeft';
 		if (!isArrowKey) return;
@@ -126,5 +126,10 @@ export class KolToolbar implements ToolbarAPI {
 		this.validateLabel(this._label);
 		this.validateItems(this._items);
 		this.setFirstEnabledItemIndex();
+		this.host?.addEventListener('keydown', this.handleKeyDown.bind(this));
 	}
+
+	disconnectedCallback(){
+        this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
+    }
 }

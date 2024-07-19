@@ -253,7 +253,6 @@ export class KolCombobox implements ComboboxAPI {
 		);
 	}
 
-	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
 			event.preventDefault();
@@ -314,10 +313,8 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private readonly controller: ComboboxController;
-	@State()
-	private _isOpen = false;
-	@State()
-	private _filteredSuggestions?: SuggestionsPropType;
+	@State() private _isOpen = false;
+	@State() private _filteredSuggestions?: SuggestionsPropType;
 
 	@Listen('click', { target: 'window' })
 	handleWindowClick(event: MouseEvent) {
@@ -350,7 +347,7 @@ export class KolCombobox implements ComboboxAPI {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop({ reflect: true }) public _hideError?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -430,7 +427,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: string;
+	@Prop() public _value?: string;
 
 	@State() public state: ComboboxStates = {
 		_hasValue: false,
@@ -550,8 +547,13 @@ export class KolCombobox implements ComboboxAPI {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.host?.addEventListener('keydown', this.handleKeyDown.bind(this));
 		this._filteredSuggestions = this.state._suggestions;
 	}
+
+	disconnectedCallback(){
+        this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
+    }
 
 	private onChange(event: Event): void {
 		// Event handling

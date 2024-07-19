@@ -36,6 +36,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @stencil-community/reserved-member-names
 	public async focus() {
 		await this.kolFocus();
 	}

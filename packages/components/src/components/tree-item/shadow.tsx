@@ -33,25 +33,29 @@ export class KolTreeItem implements TreeItemProps {
 	 */
 	@Prop() _href!: HrefPropType;
 
-	@Method() async focusLink() {
+	@Method()
+	public async focusLink() {
 		if (this.element) {
 			await this.element.focusLink();
 		}
 	}
 
-	@Method() async expand() {
+	@Method()
+	public async expand() {
 		if (this.element) {
 			await this.element.expand();
 		}
 	}
 
-	@Method() async collapse() {
+	@Method()
+	public async collapse() {
 		if (this.element) {
 			await this.element.collapse();
 		}
 	}
 
-	@Method() async isOpen() {
+	@Method()
+	public async isOpen() {
 		return (await this.element?.isOpen()) ?? false;
 	}
 

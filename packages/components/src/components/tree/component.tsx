@@ -10,7 +10,7 @@ import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 	shadow: false,
 })
 export class KolTreeWc implements TreeAPI {
-	@Element() host!: HTMLElement;
+	@Element() host!: HTMLKolTreeWcElement;
 
 	@State() public state: TreeStates = {
 		_label: '',
@@ -23,13 +23,14 @@ export class KolTreeWc implements TreeAPI {
 	 */
 	@Prop() _label!: LabelPropType;
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 
 	public render(): JSX.Element {
 		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-wc">
+			<Host onSlotchange={this.handleSlotchange()} class="kol-tree-wc">
 				<nav class="tree" aria-label={this.state._label}>
 					<ul class="treeview-navigation" role="tree" aria-label={this.state._label}>
 						<slot />
@@ -48,10 +49,14 @@ export class KolTreeWc implements TreeAPI {
 
 		this.handleTreeChange();
 		this.observeChildListMutations();
+		this.host?.addEventListener('keydown', this.handleKeyDown.bind(this));
+		this.host?.addEventListener('focusout', this.handleFocusOut.bind(this));
 	}
 
 	public disconnectedCallback(): void {
 		this.observer?.disconnect();
+		this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
+		this.host?.removeEventListener('focusout', this.handleFocusOut.bind(this));
 	}
 
 	private observeChildListMutations() {
@@ -114,7 +119,6 @@ export class KolTreeWc implements TreeAPI {
 		return elementsWithInclude.filter((element) => element.include).map((element) => element.value);
 	}
 
-	@Listen('keydown')
 	public async handleKeyDown(event: KeyboardEvent) {
 		const openItems = await this.getOpenTreeItemElements();
 		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);

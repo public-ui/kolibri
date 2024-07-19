@@ -63,7 +63,7 @@ type SortData = {
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
-	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+	@Element() private readonly host?: HTMLKolTableStatefulElement;
 
 	/**
 	 * @deprecated only for backward compatibility

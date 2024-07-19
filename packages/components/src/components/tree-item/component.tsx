@@ -14,7 +14,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
-	@Element() host!: HTMLElement;
+	@Element() host!: HTMLKolTreeItemWcElement;
 
 	private renderIcon = (props: { icon: string; label: string }) => {
 		return <KolIconTag class="toggle-button-icon" _label={props.label} _icons={props.icon} />;
@@ -93,19 +93,23 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 */
 	@Prop() _href!: HrefPropType;
 
-	@Watch('_active') validateActive(value?: ActivePropType): void {
+	@Watch('_active')
+	public validateActive(value?: ActivePropType): void {
 		validateActive(this, value || false);
 	}
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 
-	@Watch('_open') validateOpen(value?: OpenPropType): void {
+	@Watch('_open')
+	public validateOpen(value?: OpenPropType): void {
 		validateOpen(this, value);
 	}
 
-	@Watch('_href') validateHref(value?: HrefPropType): void {
+	@Watch('_href')
+	public validateHref(value?: HrefPropType): void {
 		validateHref(this, value);
 	}
 
@@ -140,7 +144,8 @@ export class KolTreeItemWc implements TreeItemAPI {
 		};
 	}
 
-	@Method() async focusLink() {
+	@Method()
+	public async focusLink() {
 		await this.linkElement.kolFocus();
 	}
 
