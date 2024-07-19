@@ -209,14 +209,13 @@ export class KolCombobox implements ComboboxAPI {
 									placeholder={this.state._placeholder}
 								/>
 								{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-								<span class="combobox__icon" onClick={this.toggleListbox.bind(this)} onKeyDown={this.toggleListbox.bind(this)}>
+								<span class="combobox__icon" onClick={this.toggleListbox.bind(this)}>
 									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
 								</span>
 							</div>
 							{this._isOpen && !(this.state._disabled === true) && (
 								<ul
 									role="listbox"
-									aria-label=""
 									class={clsx('combobox__listbox', this.blockSuggestionMouseOver && 'combobox__listbox--cursor-hidden')}
 									onKeyDown={this.handleKeyDownDropdown.bind(this)}
 								>
