@@ -608,14 +608,14 @@ export class KolCombobox implements ComboboxAPI {
 	private onChange(event: Event): void {
 		// Event handling
 		stopPropagation(event);
-		tryToDispatchKoliBriEvent('change', this.host, this._value);
+		tryToDispatchKoliBriEvent('change', this.host, this.state._value);
 
 		// Static form handling
-		this.controller.setFormAssociatedValue(this._value as unknown as string);
+		this.controller.setFormAssociatedValue(this.state._value as unknown as string);
 
 		// Callback
 		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
-			this.state._on.onChange(event, this._value);
+			this.state._on.onChange(event, this.state._value);
 		}
 	}
 }
