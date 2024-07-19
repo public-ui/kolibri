@@ -469,7 +469,7 @@ export class KolCombobox implements ComboboxAPI {
 	};
 
 	public constructor() {
-		this.controller = new ComboboxController(this, 'select', this.host);
+		this.controller = new ComboboxController(this, 'combobox', this.host);
 		this.onInput = this.onInput.bind(this);
 	}
 
