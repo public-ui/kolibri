@@ -7,7 +7,9 @@ type Options = {
 	placeholders?: { [K: string]: string };
 };
 
-export let translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<ComponentKeys>}`, options?: Options) => {
+export type TranslationKey = `${Lowercase<ResourcePrefix>}-${Lowercase<ComponentKeys>}`;
+
+export let translate = (key: TranslationKey, options?: Options) => {
 	const i18n = getI18nInstance() ?? initializeI18n('de');
 	return i18n.translate(key, options);
 };
