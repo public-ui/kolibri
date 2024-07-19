@@ -265,10 +265,6 @@ export class KolCombobox implements ComboboxAPI {
 		);
 	}
 
-	public mouseMoveHandler() {
-		this.blockSuggestionMouseOver = false;
-	}
-
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
@@ -581,12 +577,12 @@ export class KolCombobox implements ComboboxAPI {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-		this.host?.addEventListener('mousemove', this.mouseMoveHandler.bind(this));
 		this._filteredSuggestions = this.state._suggestions;
 	}
 
-	public disconnectedCallback(): void {
-		this.host?.removeEventListener('mousemove', this.mouseMoveHandler.bind(this));
+	@Listen('mousemove')
+	public handleMouseEvent() {
+		this.blockSuggestionMouseOver = false;
 	}
 
 	private onChange(event: Event): void {
