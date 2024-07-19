@@ -39,16 +39,11 @@ $visible-options: 5;
 			&:last-child {
 				padding-right: var(--spacing);
 			}
-
-			&:not(.disabled) &:hover {
-				border-color: var(--color-primary);
-			}
 		}
 
 		&__icon {
 			display: grid;
 			place-items: center;
-			cursor: pointer;
 			padding-left: rem(8);
 			padding-right: rem(8);
 
@@ -74,7 +69,6 @@ $visible-options: 5;
 			align-items: center;
 			height: $option-height;
 			padding: rem(10) rem(12);
-			cursor: pointer;
 
 			&:focus {
 				background: var(--color-primary-variant);

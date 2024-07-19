@@ -8,11 +8,12 @@
 
 	.combobox {
 		position: relative;
-		&.disabled,
-		&.disabled * {
+
+		&--disabled,
+		&--disabled * {
 			cursor: not-allowed !important;
 		}
-		&.disabled {
+		&--disabled {
 			opacity: 0.5;
 			outline: none;
 		}
@@ -27,10 +28,11 @@
 		}
 
 		&__icon {
-			display: flex;
-			width: var(--a11y-min-size);
-			height: var(--a11y-min-size);
 			align-items: center;
+			cursor: pointer;
+			display: flex;
+			height: var(--a11y-min-size);
+			width: var(--a11y-min-size);
 		}
 
 		&__listbox {
@@ -45,9 +47,13 @@
 			background-color: white;
 			max-height: rem(250);
 		}
-	}
 
-	.cursor-hidden .combobox__item {
-		cursor: none !important;
+		&__item {
+			cursor: pointer;
+
+			.combobox__listbox--cursor-hidden & {
+				cursor: none !important;
+			}
+		}
 	}
 }

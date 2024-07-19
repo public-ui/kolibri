@@ -25,6 +25,7 @@ import { KolIconTag, KolInputWcTag } from '../../core/component-names';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
+import clsx from 'clsx';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -148,7 +149,7 @@ export class KolCombobox implements ComboboxAPI {
 
 		return (
 			<Host class="kol-combobox">
-				<div class={`combobox ${this.state._disabled === true ? 'disabled' : ''}`}>
+				<div class={clsx('combobox', this.state._disabled && 'combobox--disabled')}>
 					<KolInputWcTag
 						_accessKey={this.state._accessKey}
 						_disabled={this.state._disabled}
@@ -216,7 +217,7 @@ export class KolCombobox implements ComboboxAPI {
 								<ul
 									role="listbox"
 									aria-label=""
-									class={{ combobox__listbox: true, 'cursor-hidden': this.blockSuggestionMouseOver }}
+									class={clsx('combobox__listbox', this.blockSuggestionMouseOver && 'combobox__listbox--cursor-hidden')}
 									onKeyDown={this.handleKeyDownDropdown.bind(this)}
 								>
 									{Array.isArray(this._filteredSuggestions) &&
