@@ -586,6 +586,26 @@ export class KolCombobox implements ComboboxAPI {
 		this.blockSuggestionMouseOver = false;
 	}
 
+	@Listen('focusout', { target: 'window' })
+	public handleFocusOut() {
+		setTimeout(() => {
+			if (!this.host?.contains(document.activeElement)) {
+				this.onBlur();
+			}
+		}, 0);
+	}
+	@Listen('blur', { target: 'window' })
+	public handleWindowBlur() {
+		this.onBlur();
+	}
+
+	private onBlur() {
+		if (this._isOpen) {
+			this._isOpen = !this._isOpen;
+			this.refInput?.focus();
+		}
+	}
+
 	private onChange(event: Event): void {
 		// Event handling
 		stopPropagation(event);
