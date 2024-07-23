@@ -1,5 +1,7 @@
 # Table
 
+Synonyme: Data Table, Details List, Data Grid
+
 <kol-alert _type="warning" _variant="card">
   <kol-badge _color="#fb4509" _label="Deprecated"></kol-badge> KolTable ist veraltet, bitte stattdessen <kol-link _label="KolTableStateful" _href="https://github.com/public-ui/kolibri/blob/develop/packages/components/src/components/table-stateless/readme.md"></kol-link> verwenden, die API und Funktionalität sind identisch.
 </kol-alert>

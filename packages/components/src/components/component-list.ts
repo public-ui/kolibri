@@ -45,7 +45,6 @@ import { KolProcess } from './progress/shadow';
 import { KolQuote } from './quote/shadow';
 import { KolSelect } from './select/shadow';
 import { KolSkipNav } from './skip-nav/shadow';
-import { KolSpan } from './span/shadow';
 import { KolSpanWc } from './span/component';
 import { KolSpin } from './spin/shadow';
 import { KolSingleSelect } from './single-select/shadow';
@@ -113,7 +112,6 @@ export const COMPONENTS = [
 	KolQuote,
 	KolSelect,
 	KolSkipNav,
-	KolSpan,
 	KolSpanWc,
 	KolSpin,
 	KolSingleSelect,

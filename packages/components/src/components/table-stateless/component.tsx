@@ -27,6 +27,7 @@ import {
 	watchString,
 } from '../../schema';
 import { KolButtonWcTag, KolInputCheckboxTag } from '../../core/component-names';
+import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { Events } from '../../schema/enums';
@@ -378,43 +379,36 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	private renderSelectionCell(row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element {
-		if (this.state._selection) {
-			const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
-			const keyCell = row.find((cell) => cell.key === keyPropertyName);
+		if (!this.state._selection) return '';
+		const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
+		const keyCell = row.find((cell) => cell.key === keyPropertyName);
 
-			if (keyCell) {
-				const keyProperty = (keyCell?.data as KoliBriTableDataType)[keyPropertyName] as string;
-				const selected = this.state._selection?.selectedKeys?.includes(keyProperty);
-				const label = this.state._selection.label(keyCell.data as KoliBriTableDataType);
+		if (!keyCell) return '';
+		const keyProperty = (keyCell?.data as KoliBriTableDataType)[keyPropertyName] as string;
+		const selected = this.state._selection?.selectedKeys?.includes(keyProperty);
+		const label = this.state._selection.label(keyCell.data as KoliBriTableDataType);
 
-				return (
-					<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
-						<KolInputCheckboxTag
-							_label={label}
-							_hideLabel
-							_checked={selected}
-							_tooltipAlign="right"
-							_on={{
-								onInput: (event: Event, value) => {
-									if (this.state._selection?.selectedKeys) {
-										const updatedSelectedKeys = value
-											? [...this.state._selection.selectedKeys, keyProperty]
-											: this.state._selection.selectedKeys.filter((key) => key !== keyProperty);
-
-										tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
-										if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-											this.state._on[Events.onSelectionChange](event, updatedSelectedKeys);
-										}
-									}
-								},
-							}}
-						/>
-					</td>
-				);
-			}
-		}
-
-		return '';
+		return (
+			<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
+				<KolInputCheckboxTag
+					_label={label}
+					_hideLabel
+					_checked={selected}
+					_tooltipAlign="right"
+					_on={{
+						onInput: (event: Event, value) => {
+							const updatedSelectedKeys = value
+								? [...(this.state._selection?.selectedKeys ?? []), keyProperty]
+								: this.state._selection?.selectedKeys?.filter((key) => key !== keyProperty);
+							tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
+							if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
+								this.state._on[Events.onSelectionChange](event, updatedSelectedKeys ?? []);
+							}
+						},
+					}}
+				/>
+			</td>
+		);
 	}
 
 	private readonly renderTableRow = (row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element => {
@@ -435,11 +429,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		let key = `${rowIndex}-${colIndex}-${cell.label}`;
 		if (cell.data) {
 			const dataKey = this.getDataKey(cell.data);
-			if (this.horizontal) {
-				key = dataKey ? `${dataKey}-${colIndex}` : key;
-			} else {
-				key = dataKey ? `${dataKey}-${rowIndex}` : key;
-			}
+			key = dataKey ? `${dataKey}-${this.horizontal ? colIndex : rowIndex}` : key;
 		}
 
 		if (cell.asTd === false) {
@@ -470,6 +460,44 @@ export class KolTableStateless implements TableStatelessAPI {
 			);
 		}
 	};
+
+	private renderHeadingSelectionCell(): JSX.Element {
+		if (!this.state._selection) return '';
+		const selectedKeyLength = this.state._selection.selectedKeys?.length;
+		const dataLength = this.state._data.length;
+		const isChecked = selectedKeyLength === dataLength;
+		const intermediate = selectedKeyLength !== 0 && !isChecked;
+		let translationKey = 'kol-table-selection-intermediate' as TranslationKey;
+		if (isChecked && !intermediate) {
+			translationKey = 'kol-table-selection-none';
+		}
+		if (selectedKeyLength === 0) {
+			translationKey = 'kol-table-selection-all';
+		}
+		return (
+			<th key={`thead-0-selection`} class="selection-cell selection-control">
+				<KolInputCheckboxTag
+					_label={translate(translationKey)}
+					_hideLabel
+					_checked={isChecked && !intermediate}
+					_indeterminate={intermediate}
+					_tooltipAlign="right"
+					_on={{
+						onInput: (event: Event, value) => {
+							let selections = [] as KoliBriTableDataType[];
+							if (value || !isChecked) {
+								selections = this.state._data;
+							}
+							tryToDispatchKoliBriEvent('selection-change', this.host, selections);
+							if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
+								this.state._on[Events.onSelectionChange](event, selections.map((el) => el?.id) as string[]);
+							}
+						},
+					}}
+				/>
+			</th>
+		);
+	}
 
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number): JSX.Element {
 		let ariaSort = undefined;
@@ -565,7 +593,7 @@ export class KolTableStateless implements TableStatelessAPI {
 							<thead>
 								{this.state._headerCells.horizontal.map((cols, rowIndex) => (
 									<tr key={`thead-${rowIndex}`}>
-										{this.state._selection && <td key="thead-selection" class="selection-header-cell"></td>}
+										{this.state._selection && this.renderHeadingSelectionCell()}
 										{cols.map((cell, colIndex) => {
 											if (cell.asTd === true) {
 												return (

@@ -5,9 +5,10 @@ import { ComboboxVariants } from './partials/variants';
 import { SampleDescription } from '../SampleDescription';
 export const ComboboxBasic: FC = () => (
 	<>
-		<SampleDescription>The Combobox merges a text input with a suggestion list, enabling users to type or select their choice.</SampleDescription>
-		<>
-			<FormWrap RefComponent={ComboboxVariants} />
-		</>
+		<SampleDescription>
+			KolCombobox combines a text input with a suggestion list, enabling users to either type in a value or to select on of the suggestions.
+		</SampleDescription>
+
+		<FormWrap RefComponent={ComboboxVariants} />
 	</>
 );

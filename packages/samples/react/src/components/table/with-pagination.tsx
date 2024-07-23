@@ -23,10 +23,7 @@ const PAGINATION: KoliBriTablePaginationProps = { _page: 2 };
 export const TableWithPagination: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Durch das Navigieren der Seitenzahlen unten kann die Tabelle umgeblättert werden. Stattdessen kann auch die komplette Tabelle mit Änderung der Einträge
-				pro Seite angezeigt werden.
-			</p>
+			<p>This sample shows how KolTable can be navigated using a pagination.</p>
 		</SampleDescription>
 		<div>
 			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTable>

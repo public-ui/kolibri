@@ -94,7 +94,7 @@ export const InputsGetValue: FC = () => {
 				<EventLoggerActiveContext.Provider value={eventLoggerActive}>
 					<SampleDescription>
 						<p>
-							This sample show how the input components <code>getValue()</code> method works. It&apos;s called when clicking the &quot;getValue()&quot; button
+							This sample shows how the input components <code>getValue()</code> method works. It&apos;s called when clicking the &quot;getValue()&quot; button
 							and prints the current value right next to itself.
 						</p>
 					</SampleDescription>

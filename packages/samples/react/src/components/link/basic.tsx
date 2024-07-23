@@ -7,8 +7,11 @@ import { SampleDescription } from '../SampleDescription';
 export const LinkBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind Beispiele für verschiedene Links.</p>
+			<p>
+				KolLink renders a link. This sample shows disabled links, links with hidden label and links with different CSS <code>display</code>-properties.
+			</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolLink _href="#/back-page" _label="Simple Link" />
 			<KolLink _disabled _href="#/back-page" _label="Simple Link (deaktiviert)" />

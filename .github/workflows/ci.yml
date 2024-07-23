@@ -65,13 +65,17 @@ jobs:
         run: pnpm -r lint
       - name: Test
         run: pnpm -r --workspace-concurrency=1 test # https://pnpm.io/configuring
-
+      - name: Install Playwright Browsers
+        run: pnpm --filter @public-ui/components exec playwright install --with-deps
+      - name: Components E2E Test
+        run: pnpm --filter @public-ui/components e2e
       - uses: actions/upload-artifact@v4
         if: failure()
-        name: Upload theme test reports
+        name: Upload test reports
         with:
           name: reports
           path: |
             packages/themes/**/test-results/**/*.png
             packages/test-tag-name-transformer/test-results/**/*.png
+            packages/components/playwright-report/
             !**/node_modules

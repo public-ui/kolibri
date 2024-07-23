@@ -1,5 +1,6 @@
 import type {
 	ButtonProps,
+	FocusableElement,
 	HideErrorPropType,
 	IdPropType,
 	InputNumberAPI,
@@ -16,7 +17,8 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus, showExpertSlot } from '../../schema';
+import { showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
@@ -24,9 +26,8 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputNumberController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolInputWcTag } from '../../core/component-names';
+
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
@@ -37,26 +38,39 @@ import { KolInputWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolInputNumber implements InputNumberAPI {
+export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputNumberElement;
-	private ref?: HTMLInputElement;
+	private inputRef?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.inputRef = ref;
 	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.ref?.value;
+		return this.inputRef?.value;
+	}
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.inputRef?.focus();
 	}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.ref,
+				ref: this.inputRef,
 			});
 		}
 	};
@@ -427,8 +441,8 @@ export class KolInputNumber implements InputNumberAPI {
 	@Watch('_value')
 	public validateValue(value?: number | Iso8601 | null): void {
 		this.controller.validateValueEx(value, (v) => {
-			if (v === '' && this.ref) {
-				this.ref.value = '';
+			if (v === '' && this.inputRef) {
+				this.inputRef.value = '';
 			}
 		});
 	}

@@ -5,6 +5,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DownloadPropType,
+	FocusableElement,
 	HrefPropType,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
@@ -13,11 +14,10 @@ import type {
 	LinkTargetPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { propagateFocus } from '../../schema';
-import { Component, Element, h, Host, Prop } from '@stencil/core';
-
 import type { JSX } from '@stencil/core';
+import { Component, h, Host, Method, Prop } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
+
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {
@@ -25,12 +25,25 @@ import { KolLinkWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolLinkButton implements LinkButtonProps {
-	@Element() private readonly host?: HTMLKolLinkButtonElement;
+export class KolLinkButton implements LinkButtonProps, FocusableElement {
+	private linkWcRef?: HTMLKolLinkWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
-		propagateFocus(this.host, ref);
+		this.linkWcRef = ref;
 	};
+
+	/**
+	 * @deprecated Use kolFocus instead.
+	 */
+	@Method()
+	public async focus() {
+		await this.kolFocus();
+	}
+
+	@Method()
+	public async kolFocus() {
+		await this.linkWcRef?.kolFocus();
+	}
 
 	public render(): JSX.Element {
 		return (

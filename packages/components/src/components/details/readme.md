@@ -1,5 +1,7 @@
 # Details
 
+Synonyme: Disclosure, Collapse, Summary Detail
+
 Mit Hilfe der **Detail**-Komponente können weiterführende Informationen zunächst mit einem kurzen Einleitungstext angezeigt werden, die erst nach Klick
 durch die Nutzer:innen auf ein Pfeil-Icon in voller Größe aufgeklappt werden.
 
@@ -96,6 +98,22 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 | `_label` _(required)_ | `_label`    | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                                              | `undefined` |
 | `_on`                 | --          | Defines the callback functions for details.                                                                        | `undefined \| { onToggle?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
 | `_open`               | `_open`     | If set (to true) opens/expands the element, closes if not set (or set to false).                                   | `boolean \| undefined`                                                                | `false`     |
+
+## Methods
+
+### `focus() => Promise<void>`
+
+<span style="color:red">**[DEPRECATED]**</span> Use kolFocus instead.<br/><br/>
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ## Slots
 
