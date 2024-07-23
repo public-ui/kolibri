@@ -34,11 +34,6 @@ export const bootstrap = async (
 		Log.trace = () => {};
 		Log.warn = () => {};
 		Log.throw = () => {};
-
-		console.debug = () => {};
-		console.info = () => {};
-		console.trace = () => {};
-		console.warn = () => {};
 	}
 
 	return coreRegisterReturnValue;
