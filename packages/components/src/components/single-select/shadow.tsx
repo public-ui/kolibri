@@ -25,6 +25,7 @@ import { KolButtonWcTag, KolIconTag, KolInputWcTag } from '../../core/component-
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
+import clsx from 'clsx';
 
 /**
  * @slot - The input field label.
@@ -258,7 +259,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 								></KolButtonWcTag>
 							</div>
 							{this._isOpen && !(this.state._disabled === true) && (
-								<ul role="listbox" class="single-select__listbox" onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+								<ul
+									role="listbox"
+									class={clsx('single-select__listbox', this.blockSuggestionMouseOver && 'single-select__listbox--cursor-hidden')}
+									onKeyDown={this.handleKeyDownDropdown.bind(this)}
+								>
 									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 										this._filteredOptions.map((option, index) => (
 											<li
@@ -276,11 +281,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 													this.toggleListbox(event);
 												}}
 												onMouseOver={() => {
-													if (!this._keyboardInteraction) {
+													if (!this.blockSuggestionMouseOver) {
 														this._focusedOptionIndex = index;
 														this.focusOption(index);
 													}
-													this._keyboardInteraction = false;
 												}}
 												onFocus={() => {
 													this._focusedOptionIndex = index;
@@ -339,7 +343,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 	public handleKeyDown(event: KeyboardEvent) {
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
 			event.preventDefault();
-			this._keyboardInteraction = true;
 
 			if (isOpen !== undefined) {
 				this._isOpen = isOpen;
@@ -353,11 +356,13 @@ export class KolSingleSelect implements SingleSelectAPI {
 		switch (event.key) {
 			case 'Down':
 			case 'ArrowDown': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(true, () => this.moveFocus(1));
 				break;
 			}
 			case 'Up':
 			case 'ArrowUp': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(true, () => this.moveFocus(-1));
 				break;
 			}
@@ -385,6 +390,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 				break;
 			}
 			case 'Home': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
 						this._focusedOptionIndex = 0;
@@ -394,6 +400,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 				break;
 			}
 			case 'End': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
 						this._focusedOptionIndex = this._filteredOptions ? this._filteredOptions.length - 1 : 0;
@@ -403,10 +410,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 				break;
 			}
 			case 'PageUp': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => this._isOpen && this.moveFocus(-10));
 				break;
 			}
 			case 'PageDown': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
 				break;
 			}
@@ -421,7 +430,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@State()
 	private _inputValue: string = '';
 	@State()
-	private _keyboardInteraction: boolean = false;
+	private blockSuggestionMouseOver: boolean = false;
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
@@ -635,6 +644,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
+	}
+
+	@Listen('mousemove')
+	public handleMouseEvent() {
+		this.blockSuggestionMouseOver = false;
 	}
 
 	public componentWillLoad(): void {

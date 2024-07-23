@@ -32,20 +32,6 @@
 			flex-grow: 1;
 		}
 
-		&__item {
-			&.highlighted {
-				background-color: #f0f0f0;
-			}
-		}
-
-		&__no-results-message {
-			cursor: default;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			min-height: rem(50);
-		}
-
 		&__listbox {
 			display: block;
 			position: absolute;
@@ -57,6 +43,23 @@
 			z-index: 2;
 			background-color: white;
 			max-height: rem(250);
+		}
+
+		&__item {
+			&.highlighted {
+				background-color: #f0f0f0;
+			}
+			.single-select__listbox--cursor-hidden & {
+				cursor: none !important;
+			}
+		}
+
+		&__no-results-message {
+			cursor: default;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: rem(50);
 		}
 	}
 }
