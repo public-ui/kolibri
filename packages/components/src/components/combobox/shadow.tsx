@@ -208,10 +208,9 @@ export class KolCombobox implements ComboboxAPI {
 									onChange={this.onChange.bind(this)}
 									placeholder={this.state._placeholder}
 								/>
-								{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-								<span class="combobox__icon" onClick={this.toggleListbox.bind(this)}>
+								<button tabindex="-1" class="combobox__icon" onClick={this.toggleListbox.bind(this)}>
 									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
-								</span>
+								</button>
 							</div>
 							{this._isOpen && !(this.state._disabled === true) && (
 								<ul
