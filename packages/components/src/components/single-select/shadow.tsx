@@ -6,23 +6,22 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
+	Option,
+	OptionsPropType,
 	SingleSelectAPI,
 	SingleSelectStates,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	Option,
-	OptionsPropType,
 } from '../../schema';
-import { Component, Element, h, Host, Method, Prop, State, Watch, Fragment, Listen } from '@stencil/core';
+import { showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { SingleSelectController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolButtonWcTag, KolIconTag, KolInputWcTag } from '../../core/component-names';
-import { propagateFocus, showExpertSlot } from '../../schema';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
@@ -49,9 +48,14 @@ export class KolSingleSelect implements SingleSelectAPI {
 		return this.state._value;
 	}
 
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.refInput?.focus();
+	}
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.refInput = ref;
-		propagateFocus(this.host, this.refInput);
 	};
 
 	private toggleListbox = (event: Event) => {
