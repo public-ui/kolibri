@@ -1,4 +1,8 @@
-@import '../mixins-eu/alert-wc.scss';
+@import '../mixins-eu/alert-wc';
+@import '../mixins-eu/rem';
+
+$option-height: rem(40);
+$visible-options: 5;
 
 @layer kol-theme-component {
 	:host {
@@ -12,13 +16,10 @@
 		&__group {
 			display: inline-flex;
 			align-items: center;
-			min-height: var(--a11y-min-size);
-			text-align: left;
 			width: 100%;
 			min-height: 44px !important;
 			color: var(--color-grey);
 			order: 4;
-			align-items: center;
 			padding: 1px 0.5em;
 		}
 
@@ -60,10 +61,9 @@
 			border-style: solid;
 			border-width: 1px;
 			border-color: var(--color-blue);
-			max-height: 15.625rem;
+			max-height: calc($option-height * $visible-options + 2px);
 			overflow-y: auto;
 			overflow-x: hidden;
-			box-sizing: border-box;
 			width: 100%;
 		}
 
@@ -72,7 +72,7 @@
 			align-items: flex-start;
 			justify-items: center !important;
 			padding: 0.62rem 0.75rem;
-			margin: 1px 0;
+			height: $option-height;
 
 			.radio-label {
 				align-self: center;

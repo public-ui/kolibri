@@ -1,6 +1,9 @@
 @import '../mixins/rem';
 @import '../mixins/alert-wc.scss';
 
+$option-height: rem(40);
+$visible-options: 5;
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -8,18 +11,12 @@
 	}
 
 	.single-select {
-		display: block;
-		position: relative;
-
 		&__group {
-			display: inline-flex;
-			align-items: center;
 			width: 100%;
-			padding-left: rem(8);
+			padding: 0 rem(8);
 		}
 
 		&__input {
-			flex-grow: 1;
 			border: none;
 			width: calc(100% - rem(40));
 			position: relative;
@@ -44,8 +41,8 @@
 		&__button {
 			display: grid;
 			place-items: center;
-			cursor: pointer;
 			padding-left: rem(8);
+			padding-right: rem(8);
 
 			&:focus {
 				outline: 0 !important;
@@ -57,23 +54,19 @@
 			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--color-subtle);
-			max-height: rem(250);
+			max-height: calc($option-height * $visible-options + 2px);
 			overflow-y: auto;
 			overflow-x: hidden;
-			box-sizing: border-box;
 			width: 100%;
 		}
 
 		&__item {
+			height: $option-height;
 			padding: rem(10) rem(12);
-
-			&label {
-				order: 3 !important;
-			}
 
 			.radio-label {
 				align-self: center;
-				padding-left: 1em;
+				padding-left: rem(1);
 			}
 
 			&:focus,

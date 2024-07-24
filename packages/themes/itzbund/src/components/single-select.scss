@@ -1,4 +1,8 @@
-@import '../mixins/alert-wc.scss';
+@import '../mixins/alert-wc';
+@import '../mixins/rem';
+
+$option-height: rem(40);
+$visible-options: 5;
 
 @layer kol-theme-component {
 	:host {
@@ -46,7 +50,6 @@
 
 		&__input {
 			flex-grow: 1;
-			border: none !important;
 			background-color: #e8edf2 !important;
 			border: none;
 			width: calc(100% - 2.5rem);
@@ -74,7 +77,7 @@
 			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--kolibri-color-normal);
-			max-height: 15.625rem;
+			max-height: calc($option-height * $visible-options + 2px);
 			background-color: #e8edf2 !important;
 			overflow-y: auto;
 			overflow-x: hidden;
@@ -83,7 +86,7 @@
 		}
 
 		&__item {
-			height: 3em;
+			height: $option-height;
 			padding: 0.62rem 0.75rem;
 
 			.radio-label {

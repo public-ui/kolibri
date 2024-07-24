@@ -21,7 +21,7 @@ import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Wat
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { SingleSelectController } from './controller';
-import { KolButtonWcTag, KolIconTag, KolInputWcTag } from '../../core/component-names';
+import { KolIconTag, KolInputWcTag } from '../../core/component-names';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
@@ -244,19 +244,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 									/>
 								)}
 
-								<KolButtonWcTag
-									class="single-select__button"
-									_label={translate('kol-dropdown')}
-									_variant="ghost"
-									_disabled={this.state._disabled}
-									_on={{
-										onClick: (event: Event): void => {
-											this.toggleListbox(event);
-										},
-									}}
-									_hideLabel
-									_icons="codicon codicon-triangle-down"
-								></KolButtonWcTag>
+								<button tabindex="-1" class="single-select__button" onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled}>
+									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
+								</button>
 							</div>
 							{this._isOpen && !(this.state._disabled === true) && (
 								<ul

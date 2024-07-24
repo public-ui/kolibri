@@ -9,27 +9,23 @@
 	.single-select {
 		position: relative;
 
-		&:focus {
-			outline: 0 !important;
-		}
-
 		&.disabled,
 		&.disabled * {
 			cursor: not-allowed !important;
 		}
 
-		&.disabled {
-			outline: none;
-		}
-
 		&__group {
 			display: inline-flex;
 			align-items: center;
-			cursor: pointer;
 		}
 
 		&__input {
 			flex-grow: 1;
+		}
+
+		&__button {
+			height: var(--a11y-min-size);
+			width: var(--a11y-min-size);
 		}
 
 		&__listbox {
