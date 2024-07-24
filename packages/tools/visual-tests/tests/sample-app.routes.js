@@ -415,6 +415,10 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 });
 
 /* Focus tests */
+ROUTES.set('scenarios/focus-elements?component=accordion');
+ROUTES.set('scenarios/focus-elements?component=button');
+ROUTES.set('scenarios/focus-elements?component=buttonLink');
+ROUTES.set('scenarios/focus-elements?component=details');
 ROUTES.set('scenarios/focus-elements?component=inputCheckbox');
 ROUTES.set('scenarios/focus-elements?component=inputColor');
 ROUTES.set('scenarios/focus-elements?component=inputDate');
@@ -426,12 +430,9 @@ ROUTES.set('scenarios/focus-elements?component=inputPassword');
 ROUTES.set('scenarios/focus-elements?component=inputRadio');
 ROUTES.set('scenarios/focus-elements?component=inputRange');
 ROUTES.set('scenarios/focus-elements?component=inputText');
-ROUTES.set('scenarios/focus-elements?component=select');
-ROUTES.set('scenarios/focus-elements?component=selectMultiple');
-ROUTES.set('scenarios/focus-elements?component=textarea');
-ROUTES.set('scenarios/focus-elements?component=accordion');
-ROUTES.set('scenarios/focus-elements?component=button');
-ROUTES.set('scenarios/focus-elements?component=buttonLink');
-ROUTES.set('scenarios/focus-elements?component=details');
 ROUTES.set('scenarios/focus-elements?component=link');
 ROUTES.set('scenarios/focus-elements?component=linkButton');
+ROUTES.set('scenarios/focus-elements?component=select');
+ROUTES.set('scenarios/focus-elements?component=selectMultiple');
+ROUTES.set('scenarios/focus-elements?component=singleSelect');
+ROUTES.set('scenarios/focus-elements?component=textarea');
