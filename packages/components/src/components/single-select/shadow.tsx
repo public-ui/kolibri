@@ -366,6 +366,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 				handleEvent(true, () => this.moveFocus(-1));
 				break;
 			}
+			case 'Tab':
+				if (this._isOpen) {
+					this._isOpen = !this._isOpen;
+					this.refInput?.focus();
+				}
+				break;
 			case 'Esc':
 			case 'Escape': {
 				handleEvent(false);
