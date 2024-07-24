@@ -54,7 +54,6 @@
 		}
 
 		th div {
-			width: 100%;
 			display: flex;
 			gap: 0.5em;
 			grid-template-columns: 1fr auto;
@@ -75,6 +74,7 @@
 		td {
 			padding: 1em 0;
 			vertical-align: top;
+			align-content: center;
 		}
 
 		th .kol-button,
@@ -85,6 +85,77 @@
 
 		.table-sort-button .button {
 			font-weight: 700;
+		}
+
+		.input {
+			input {
+				&:hover {
+					border-color: var(--color-midnight);
+				}
+
+				&:focus {
+					border-color: var(--color-midnight);
+					outline-color: var(--color-ocean);
+					outline-style: solid;
+					outline-offset: 2px;
+					outline-width: 3px;
+				}
+			}
+
+			// CHECKBOX
+			input[type='checkbox'] {
+				border-color: var(--color-grey);
+				border-radius: 5px;
+
+				&:checked {
+					background-color: var(--color-midnight);
+					border-color: var(--color-midnight);
+				}
+			}
+
+			.icon {
+				color: var(--color-white);
+			}
+
+			.icon::part(icon) {
+				font-family: 'Material Symbols Rounded';
+				font-weight: 900;
+				margin-top: 1px;
+			}
+
+			&.checked .icon::part(icon)::before {
+				content: 'check';
+			}
+
+			&.indeterminate {
+				input {
+					background-color: var(--color-midnight);
+					border-color: var(--color-midnight);
+				}
+
+				.icon::part(icon)::before {
+					content: 'remove';
+				}
+			}
+
+			kol-icon:hover ~ input[type='checkbox'],
+			input[type='checkbox']:hover {
+				border-color: var(--color-midnight);
+			}
+
+			// RADIO
+			input[type='radio'] {
+				display: flex;
+				border-color: var(--color-grey);
+
+				&:checked {
+					border-color: var(--color-midnight);
+
+					&:before {
+						background-color: var(--color-midnight);
+					}
+				}
+			}
 		}
 	}
 }
