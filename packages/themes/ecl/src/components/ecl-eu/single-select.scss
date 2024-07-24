@@ -71,7 +71,7 @@ $visible-options: 5;
 			display: flex;
 			align-items: flex-start;
 			justify-items: center !important;
-			padding: 0.62rem 0.75rem;
+			padding: rem(10) rem(12);
 			height: $option-height;
 
 			.radio-label {
@@ -112,7 +112,7 @@ $visible-options: 5;
 	}
 
 	.hint {
-		font-size: 0.875rem;
+		font-size: rem(14);
 		order: 2;
 	}
 
