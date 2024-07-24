@@ -13,9 +13,10 @@ export const SingleSelectBasic: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>SingleSelect-Komponente provides a select field for a single value, supported by a search field.</p>
+				<p>SingleSelect provides a select field for a single value, supported by a search field.</p>
 			</SampleDescription>
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
+
 			<FormWrap RefComponent={SingleSelectVariants} />
 		</>
 	);
