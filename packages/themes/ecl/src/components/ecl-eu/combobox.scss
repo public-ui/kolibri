@@ -156,7 +156,7 @@ $visible-options: 5;
 	}
 
 	.input:focus-within,
-	.input:hover {
+	.combobox:not(.combobox--disabled) .input:hover {
 		border-color: var(--color-blue) !important;
 	}
 
