@@ -28,11 +28,6 @@ ROUTES.set('abbr/basic', {
 	},
 });
 ROUTES.set('accordion/basic', null);
-ROUTES.set('accordion/header', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('accordion/headlines', {
 	axe: {
 		skipFailures: false,
@@ -201,11 +196,6 @@ ROUTES.set('logo/basic', {
 	},
 });
 ROUTES.set('modal/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('nav/active', {
 	axe: {
 		skipFailures: false,
 	},

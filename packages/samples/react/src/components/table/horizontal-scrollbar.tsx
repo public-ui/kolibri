@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 
 import { KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react';
 import { KoliBriTableHeaders } from '@public-ui/components/src';
+import { SampleDescription } from '../SampleDescription';
 
 const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
@@ -18,6 +19,12 @@ export const TableHorizontalScrollbar: FC = () => {
 
 	return (
 		<>
+			<SampleDescription>
+				<p>
+					This sample shows KolTable with and without horizontal scrollbars. When a scrollbar is present, it should be possible to focus the table container and
+					to scroll it using arrow keys.
+				</p>
+			</SampleDescription>
 			<KolHeading _label="Table with scrollbar" _level={2} />
 
 			<KolTable

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { KolTabs } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
 
 const tabs = [
 	{
@@ -25,10 +26,15 @@ const tabs = [
 	},
 ];
 export const TabsIconsOnly: FC = () => (
-	<KolTabs _tabs={tabs}>
-		<div slot="tab-0">Inhalte von Tab 1</div>
-		<div slot="tab-1">Inhalte von Tab 2</div>
-		<div slot="tab-2">Inhalte von Tab 3</div>
-		<div slot="tab-3">Inhalte von Tab 4</div>
-	</KolTabs>
+	<>
+		<SampleDescription>
+			<p>This sample shows KolTabs with hidden labels.</p>
+		</SampleDescription>
+		<KolTabs _tabs={tabs}>
+			<div slot="tab-0">Inhalte von Tab 1</div>
+			<div slot="tab-1">Inhalte von Tab 2</div>
+			<div slot="tab-2">Inhalte von Tab 3</div>
+			<div slot="tab-3">Inhalte von Tab 4</div>
+		</KolTabs>
+	</>
 );

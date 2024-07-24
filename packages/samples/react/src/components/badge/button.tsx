@@ -2,6 +2,7 @@ import React from 'react';
 import { KolBadge, KolHeading } from '@public-ui/react';
 
 import { FC } from 'react';
+import { SampleDescription } from '../SampleDescription';
 
 const createBadgeProps = (label: string) => ({
 	_smartButton: {
@@ -15,6 +16,12 @@ const createBadgeProps = (label: string) => ({
 
 export const BadgeButton: FC = () => (
 	<>
+		<SampleDescription>
+			<p>
+				This sample shows KolBadge with an optional <code>smartButton</code>. The sample defines a &quot;close&quot; button with X-icon a click event listener.
+			</p>
+		</SampleDescription>
+
 		<div className="mb-4">
 			<KolHeading _label="Badge" _level={2} />
 		</div>

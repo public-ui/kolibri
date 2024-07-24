@@ -2,6 +2,7 @@ import { ToasterService } from '@public-ui/components';
 import { KolButton } from '@public-ui/react';
 import React, { FC } from 'react';
 import { getRoot } from '../../shares/react-roots';
+import { SampleDescription } from '../SampleDescription';
 
 export const ToastBasic: FC = () => {
 	const toaster = ToasterService.getInstance(document);
@@ -53,15 +54,21 @@ export const ToastBasic: FC = () => {
 	};
 
 	return (
-		<div>
-			<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>
-			<KolButton _label="Show complex toast" _on={{ onClick: handleButtonClickComplex }}></KolButton>
-			<br />
-			<br />
-			<KolButton _label="Show toast and close after 2 seconds" _on={{ onClick: () => void handleButtonClickOpenAndClose() }}></KolButton>
-			<br />
-			<br />
-			<KolButton _label="Close all toasts" _on={{ onClick: closeAll }}></KolButton>
-		</div>
+		<>
+			<SampleDescription>
+				<p>This sample demonstrates the toast service with all its options.</p>
+			</SampleDescription>
+
+			<div>
+				<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>
+				<KolButton _label="Show complex toast" _on={{ onClick: handleButtonClickComplex }}></KolButton>
+				<br />
+				<br />
+				<KolButton _label="Show toast and close after 2 seconds" _on={{ onClick: () => void handleButtonClickOpenAndClose() }}></KolButton>
+				<br />
+				<br />
+				<KolButton _label="Close all toasts" _on={{ onClick: closeAll }}></KolButton>
+			</div>
+		</>
 	);
 };

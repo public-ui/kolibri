@@ -1,7 +1,8 @@
 import React, { FC, useState } from 'react';
 
 import { Orientation } from '@public-ui/components';
-import { KolButton, KolDetails, KolForm, KolInputCheckbox, KolInputRadio } from '@public-ui/react';
+import { KolButton, KolForm, KolInputCheckbox, KolInputRadio } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
 
 export const InputRadioHorizontal: FC = () => {
 	const [show, setShow] = useState(true);
@@ -22,12 +23,11 @@ export const InputRadioHorizontal: FC = () => {
 
 	return (
 		<div className="grid gap-4">
-			<KolDetails _label="Description" _open>
+			<SampleDescription>
 				<p>
-					This sample simulates the <code>horizontal</code> and <code>vertical</code> orientation of the <code>kol-input-radio</code>, if we rerender the
-					component.
+					This sample shows the <code>horizontal</code> and <code>vertical</code> orientation of KolInoutRadio. It also features a button to test re-rendering.
 				</p>
-			</KolDetails>
+			</SampleDescription>
 			<div className="flex gap-4">
 				<KolButton _label="Click me a few times" _on={{ onClick: showClick }} />
 				<KolInputCheckbox _label="Switch orientation (horizontal/vertical)" _on={{ onChange: toggleOrientation }} _variant="switch" />
