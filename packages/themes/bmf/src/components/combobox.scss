@@ -11,7 +11,7 @@ $visible-options: 5;
 
 	.combobox {
 		display: block;
-		margin-bottom: 1.5rem;
+		margin-bottom: rem(24);
 		position: relative;
 
 		&__group {
@@ -26,7 +26,7 @@ $visible-options: 5;
 		&__input {
 			border: none;
 			flex-grow: 1;
-			width: calc(100% - 2.5rem);
+			width: calc(100% - rem(24));
 			position: relative;
 
 			&::placeholder {
@@ -67,7 +67,7 @@ $visible-options: 5;
 			display: flex;
 			align-items: center;
 			height: $option-height;
-			padding: 0.62rem 0.75rem;
+			padding: rem(10) rem(12);
 			border-radius: 0.25em;
 			color: var(--color-black);
 

@@ -20,7 +20,7 @@ $visible-options: 5;
 
 	.combobox {
 		display: block;
-		margin-bottom: 1.5rem;
+		margin-bottom: rem(24);
 		position: relative;
 
 		&__group {
@@ -29,7 +29,7 @@ $visible-options: 5;
 			min-height: var(--a11y-min-size);
 			text-align: left;
 			width: 100%;
-			padding: 0.25rem;
+			padding: rem(4);
 			color: var(--default-letter);
 			border-width: 1px;
 			border-style: solid;
@@ -53,7 +53,7 @@ $visible-options: 5;
 			border: none !important;
 			background-color: #e8edf2 !important;
 			border: none;
-			width: calc(100% - 2.5rem);
+			width: calc(100% - rem(24));
 			position: relative;
 
 			&:focus {
@@ -90,7 +90,7 @@ $visible-options: 5;
 			display: flex;
 			align-items: center;
 			height: $option-height;
-			padding: 0.62rem 0.75rem;
+			padding: rem(10) rem(12);
 
 			&:focus {
 				background: var(--color-petrol);
