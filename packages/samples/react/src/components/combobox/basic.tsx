@@ -11,7 +11,7 @@ export const ComboboxBasic: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				KolCombobox combines a text input with a suggestion list, enabling users to either type in a value or to select on of the suggestions.
+				<p>KolCombobox combines a text input with a suggestion list, enabling users to either type in a value or to select on of the suggestions.</p>
 			</SampleDescription>
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 
