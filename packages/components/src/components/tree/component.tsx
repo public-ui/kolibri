@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type { LabelPropType, TreeAPI, TreeStates } from '../../schema';
 import { validateLabel } from '../../schema';
@@ -49,14 +49,14 @@ export class KolTreeWc implements TreeAPI {
 
 		this.handleTreeChange();
 		this.observeChildListMutations();
-		this.host?.addEventListener('keydown', this.handleKeyDown.bind(this));
-		this.host?.addEventListener('focusout', this.handleFocusOut.bind(this));
+		this.host?.addEventListener('keydown', (event) => void this.handleKeyDown(event));
+		this.host?.addEventListener('focusout', (event) => void this.handleFocusOut(event));
 	}
 
 	public disconnectedCallback(): void {
 		this.observer?.disconnect();
-		this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
-		this.host?.removeEventListener('focusout', this.handleFocusOut.bind(this));
+		this.host?.removeEventListener('keydown', (event) => void this.handleKeyDown(event));
+		this.host?.removeEventListener('focusout', (event) => void this.handleFocusOut(event));
 	}
 
 	private observeChildListMutations() {
@@ -119,7 +119,7 @@ export class KolTreeWc implements TreeAPI {
 		return elementsWithInclude.filter((element) => element.include).map((element) => element.value);
 	}
 
-	public async handleKeyDown(event: KeyboardEvent) {
+	public async handleKeyDown(event: KeyboardEvent): Promise<void> {
 		const openItems = await this.getOpenTreeItemElements();
 		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
 
@@ -196,8 +196,7 @@ export class KolTreeWc implements TreeAPI {
 		}
 	}
 
-	@Listen('focusout')
-	public async handleFocusOut(event: FocusEvent) {
+	public async handleFocusOut(event: FocusEvent): Promise<void> {
 		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
 			/* Tree lost focus */
 			await this.ensureActiveItemVisibility();

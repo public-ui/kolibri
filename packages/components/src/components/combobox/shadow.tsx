@@ -551,9 +551,9 @@ export class KolCombobox implements ComboboxAPI {
 		this._filteredSuggestions = this.state._suggestions;
 	}
 
-	disconnectedCallback(){
-        this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
-    }
+	disconnectedCallback() {
+		this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
+	}
 
 	private onChange(event: Event): void {
 		// Event handling

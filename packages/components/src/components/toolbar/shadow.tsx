@@ -129,7 +129,7 @@ export class KolToolbar implements ToolbarAPI {
 		this.host?.addEventListener('keydown', this.handleKeyDown.bind(this));
 	}
 
-	disconnectedCallback(){
-        this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
-    }
+	disconnectedCallback() {
+		this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
+	}
 }

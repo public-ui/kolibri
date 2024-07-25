@@ -1,4 +1,4 @@
-export enum KeyEnum {
+enum KeyEnum {
 	'error',
 	'warning',
 	'info',
@@ -25,3 +25,5 @@ export enum KeyEnum {
 	'open-link-in-tab',
 	'kolibri-logo',
 }
+
+export { KeyEnum };

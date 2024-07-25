@@ -12,7 +12,7 @@
  * /'([a-z äöü,ß-]+)' = '([a-z äöü,ß-]+)'gi => "'$2' = '$1'"
  */
 
-export enum Bundesministerium {
+enum Bundesministerium {
 	/**
 	 * Bundesregierung (BReg)
 	 */
@@ -35,7 +35,7 @@ export enum Bundesministerium {
 
 export const BUNDESMINISTERIEN = Object.getOwnPropertyNames(Bundesministerium);
 
-export enum Bundesamt {
+enum Bundesamt {
 	'Beschaffungsamt des Bundesministeriums des Innern' = 'BeschA',
 	'Bundesamt für Ausrüstung, Informationstechnik und Nutzung der Bundeswehr' = 'BAAINBw',
 	'Bundesamt für äußere Restitutionen' = 'BAR',
@@ -98,7 +98,7 @@ export enum Bundesamt {
 }
 export const BUNDESAEMTER = Object.getOwnPropertyNames(Bundesamt);
 
-export enum Bundesanstalt {
+enum Bundesanstalt {
 	'Informationstechnikzentrum Bund' = 'ITZBund',
 	// 'Bundesanstalt für Arbeitsschutz und Arbeitsmedizin' = 'BAuA',
 	'Bundesanstalt für den Digitalfunk der Behörden und Organisationen mit Sicherheitsaufgaben' = 'BDBOS',
@@ -133,6 +133,8 @@ export enum Bundesanstalt {
 export const BUNDESANSTALTEN = Object.getOwnPropertyNames(Bundesanstalt);
 
 export const BUND_LOGO_TEXT_MAP = new Map<Bundesamt | Bundesanstalt | Bundesministerium, string[]>();
+
+export { Bundesministerium, Bundesamt, Bundesanstalt };
 
 /* --- Bundesministerien --- */
 

@@ -1,4 +1,4 @@
-export enum TagEnum {
+enum TagEnum {
 	'abbr',
 	'accordion',
 	'accordion-group', // TODO: github pr link
@@ -54,3 +54,5 @@ export enum TagEnum {
 	'tree',
 	'tree-item',
 }
+
+export { TagEnum };
