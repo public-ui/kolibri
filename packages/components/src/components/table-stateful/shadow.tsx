@@ -512,19 +512,26 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
-	private getSelectedData(selectedKeys: string[]): KoliBriTableDataType[] {
-		if (this.state._selection) {
-			const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
-			if (keyPropertyName) return this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
+	private getSelectedData(selectedKeys: string[] | string): null | KoliBriTableDataType | KoliBriTableDataType[] {
+		const selection = this.state._selection;
+		if (selection) {
+			const keyPropertyName = selection.keyPropertyName ?? 'id';
+			const data = this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
+			if (!selection?.multiple) {
+				return data[0];
+			} else {
+				if (keyPropertyName) return data;
+			}
 		}
-		return [];
+		return null;
 	}
 	private handleSelectionChange(event: Event, value: string[]): void {
-		if (this.state._selection)
+		const selection = this.state._selection;
+		if (selection)
 			this.state = {
 				...this.state,
 				_selection: {
-					...this.state._selection,
+					...selection,
 					selectedKeys: value,
 				},
 			};
@@ -539,8 +546,8 @@ export class KolTableStateful implements TableAPI {
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getSelection(): Promise<KoliBriTableDataType[]> {
-		const selectedKeys: string[] = this.state._selection?.selectedKeys || [];
+	public async getSelection(): Promise<KoliBriTableDataType[] | KoliBriTableDataType | null> {
+		const selectedKeys: string[] | string = this.state._selection?.selectedKeys || [];
 		const selectedData = this.getSelectedData(selectedKeys);
 
 		return selectedData;

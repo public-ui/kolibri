@@ -11,10 +11,11 @@ const DATA = [
 type Data = (typeof DATA)[0];
 
 export const TableStatefulWithSelection: FC = () => {
-	const [selectedValue, setSelectedValue] = useState<Data[]>();
+	const [selectedValue, setSelectedValue] = useState<Data[] | null>();
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
+		multiple: true,
 		selectedKeys: selectedValue ? selectedValue.map((element) => element.id) : [],
 		keyPropertyName: 'id',
 	};
@@ -24,13 +25,14 @@ export const TableStatefulWithSelection: FC = () => {
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[]) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[] | KoliBriTableDataType | null) => {
 		console.log('Selection change via callback', selection);
 	};
 
 	const handleButtonClick = async () => {
 		const selection = await kolTableStatefulRef.current?.getSelection();
-		setSelectedValue(selection as Data[]);
+		console.log(selection);
+		setSelectedValue(selection as Data[] | null);
 	};
 
 	useEffect(() => {

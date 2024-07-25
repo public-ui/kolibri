@@ -12,7 +12,7 @@ export type SortEventPayload = {
 };
 
 export type SelectionChangeEventPayload = string[];
-export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[];
+export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | KoliBriTableDataType | null;
 
 export type TableCallbacksPropType = {
 	[Events.onSort]?: EventValueOrEventCallback<MouseEvent, SortEventPayload>;

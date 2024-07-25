@@ -421,10 +421,9 @@ export class KolTableStateless implements TableStatelessAPI {
 								{...props}
 								type="radio"
 								onInput={(event: Event) => {
-									const updatedSelectedKeys = [keyProperty];
-									tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
+									tryToDispatchKoliBriEvent('selection-change', this.host, [keyProperty]);
 									if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-										this.state._on[Events.onSelectionChange](event, updatedSelectedKeys ?? []);
+										this.state._on[Events.onSelectionChange](event, [keyProperty]);
 									}
 								}}
 							/>
