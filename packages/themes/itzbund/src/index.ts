@@ -10,6 +10,7 @@ import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
 import drawerCss from './components/drawer.scss';
+import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
 import indentedTextCss from './components/indented-text.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
@@ -47,6 +48,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-BUTTON-LINK': buttonLinkCss,
+	'KOL-FORM': formCss,
 	'KOL-INPUT-TEXT': inputTextCss,
 	'KOL-INPUT-PASSWORD': inputPasswordCss,
 	'KOL-INPUT-NUMBER': inputNumberCss,
