@@ -24,13 +24,7 @@ export const validateTableSelection = (component: Generic.Element.Component, val
 	};
 
 	const validateObject = (value?: KoliBriTableSelection) => {
-		return (
-			value &&
-			isObject(value) &&
-			typeof value.label === 'function' &&
-			typeof value.multiple === 'boolean' &&
-			(!value.selectedKeys || Array.isArray(value.selectedKeys))
-		);
+		return value && isObject(value) && typeof value.label === 'function' && (!value.selectedKeys || Array.isArray(value.selectedKeys));
 	};
 
 	const objectValue = typeof value === 'string' ? parseSerializedValue() : value;

@@ -13,7 +13,6 @@ type Data = (typeof DATA)[0];
 export const TableStatelessWithSelection: FC = () => {
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
-		multiple: false,
 		selectedKeys: ['1002'],
 		keyPropertyName: 'id',
 	};

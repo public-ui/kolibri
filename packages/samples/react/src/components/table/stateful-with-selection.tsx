@@ -15,7 +15,6 @@ export const TableStatefulWithSelection: FC = () => {
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
-		multiple: true,
 		selectedKeys: selectedValue ? selectedValue.map((element) => element.id) : [],
 		keyPropertyName: 'id',
 	};

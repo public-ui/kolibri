@@ -517,7 +517,7 @@ export class KolTableStateful implements TableAPI {
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
 			const data = this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
-			if (!selection?.multiple) {
+			if (selection?.multiple === false) {
 				return data[0];
 			} else {
 				if (keyPropertyName) return data;
