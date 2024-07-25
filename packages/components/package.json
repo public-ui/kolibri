@@ -64,6 +64,7 @@
 		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
+		"e2e": "playwright test",
 		"postpack": "mv package.bak.json package.json",
 		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
 		"xunused": "knip"
@@ -81,12 +82,14 @@
 		"wcag-contrast": "3.0.0"
 	},
 	"devDependencies": {
+		"@playwright/test": "1.44.1",
 		"@public-ui/stencil-angular-output-target": "0.9.0",
 		"@public-ui/stencil-react-output-target": "0.6.0",
 		"@public-ui/stencil-solid-output-target": "0.2.0",
 		"@public-ui/stencil-vue-output-target": "0.9.0",
 		"@stencil-community/eslint-plugin": "0.7.2",
 		"@stencil-community/postcss": "2.2.0",
+    "@stencil/playwright": "0.2.0",
 		"@stencil/core": "4.18.3",
 		"@stencil/sass": "3.0.12",
 		"@types/color-convert": "2.0.3",
