@@ -1,9 +1,6 @@
 @mixin kol-indented-theme {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.kol-indented-text-wc > div {
+		font-family: var(--font-family);
 		-webkit-border-start: 8px solid #0e47cb;
 		-webkit-padding-start: 1.5rem;
 		border-end-start-radius: 4px;

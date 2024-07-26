@@ -1,9 +1,6 @@
 @mixin kol-indented-theme {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.kol-indented-text-wc > div {
+		font-family: var(--font-family);
 		background-color: var(--color-white);
 		border-left: none;
 		box-shadow: -2px 0px 0px var(--color-ocean);
