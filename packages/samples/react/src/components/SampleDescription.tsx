@@ -1,7 +1,7 @@
 import type { FC, PropsWithChildren } from 'react';
 import React, { useContext, useMemo } from 'react';
 
-import { PUBLIC_DOC_COMPONENT_URL } from '../shares/constants';
+import { PUBLIC_CODE_COMPONENT_URL, PUBLIC_DOC_COMPONENT_URL } from '../shares/constants';
 
 import { KolIndentedText, KolLink } from '@public-ui/react';
 
@@ -18,10 +18,18 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 			: `${PUBLIC_DOC_COMPONENT_URL}/${componentName}`;
 	}, [location.href]);
 
+	const codeLink = useMemo(() => {
+		const arr = location.href.split('/');
+		const componentName = arr[arr.length - 2];
+		const fileName = arr[arr.length - 1];
+		return `${PUBLIC_CODE_COMPONENT_URL}/${componentName}/${fileName}.tsx`;
+	}, [location.href]);
+
 	return hideMenus ? null : (
 		<div className="flex justify-between mb-sm">
 			<KolIndentedText>{props.children}</KolIndentedText>
 			<div className="flex flex-wrap gap-2 shrink-0 ml">
+				{codeLink && <KolLink _href={codeLink} _label="Code" _target="_blank" />}
 				{docLink && <KolLink _href={docLink} _label="Documentation" _target="_blank" />}
 				<KolLink _href={`${location.href}?hideMenus`} _label="Standalone example" _target="_blank" />
 			</div>
