@@ -5,7 +5,7 @@
 	"homepage": "https://public-ui.github.io",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/public-ui/kolibri"
+		"url": "git+https://github.com/public-ui/kolibri.git"
 	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
