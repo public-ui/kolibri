@@ -4,7 +4,7 @@ applicationSuite: Informationstechnikzentrum Bund
 url: https://github.com/public-ui/kolibri.git
 landingURL: https://github.com/public-ui
 releaseDate: '2024-07-26'
-softwareVersion: 2.1.5-rc.7
+softwareVersion: 2.1.5-rc.8
 logo: https://avatars.githubusercontent.com/u/109126739
 platforms:
   - android
