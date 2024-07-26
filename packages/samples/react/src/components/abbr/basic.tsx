@@ -1,9 +1,11 @@
 import React from 'react';
 import { FC } from 'react';
 import { KolAbbr } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
 
 export const AbbrBasic: FC = () => (
 	<>
+		<SampleDescription></SampleDescription>
 		<p>
 			Ich bin <KolAbbr _title="Abkürzung">z.B.</KolAbbr> eine Abkürzung.
 		</p>

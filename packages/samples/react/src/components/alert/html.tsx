@@ -2,9 +2,11 @@ import React from 'react';
 import { KolAlert } from '@public-ui/react';
 
 import { FC } from 'react';
+import { SampleDescription } from '../SampleDescription';
 
 export const AlertHtml: FC = () => (
 	<div>
+		<SampleDescription></SampleDescription>
 		<KolAlert _heading="Ausgabe von HTML-Code im Alert" _type="info">
 			{' '}
 			<h2 className="mt-2 mb-3">Hier wird eine H2-Überschrift ausgegeben</h2>
