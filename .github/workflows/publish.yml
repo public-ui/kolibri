@@ -28,6 +28,8 @@ jobs:
   publish:
     if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/create-github-app-token@v1
         id: app-token
@@ -91,6 +93,7 @@ jobs:
         working-directory: packages/components
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v15
         continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
