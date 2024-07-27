@@ -1,0 +1,12 @@
+@import '../mixins/rem';
+
+@mixin kol-indented-theme {
+	.kol-indented-text-wc > div {
+		font-family: var(--font-family);
+		background-color: var(--color-light);
+		border-left: none;
+		box-shadow: -2px 0px 0px var(--color-primary-variant);
+		padding: 0 rem(8);
+		width: 100%;
+	}
+}

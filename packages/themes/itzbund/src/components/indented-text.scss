@@ -1,9 +1,5 @@
+@import '../mixins/indented-text.scss';
+
 @layer kol-theme-component {
-	:host > div {
-		background: var(--color-white);
-		border-left: none;
-		box-shadow: -4px 0px 0px var(--color-petrol);
-		padding: 0.25em 0.5em;
-		width: 100%;
-	}
+	@include kol-indented-theme;
 }
