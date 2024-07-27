@@ -29,6 +29,8 @@ jobs:
   publish:
     if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/create-github-app-token@v1
         id: app-token
@@ -87,123 +89,123 @@ jobs:
         run: pnpm -r build
 
       - name: Build and publish schema
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/schema
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish components
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/components
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v15
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v15
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v16
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v16
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v17
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v17
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/adapters/react
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react-standalone
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/adapters/react-standalone
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter solid
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/adapters/solid
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter vue
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/adapters/vue
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter preact
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/adapters/preact
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter hydrate
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/adapters/hydrate
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish create-kolibri
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/create-kolibri
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools kolibri-cli
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/tools/kolibri-cli
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme default
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/themes/default
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish themes
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/themes
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish sample react
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools visual-tests
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/tools/visual-tests
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
 
       # deprecated packages
       - name: Build and publish core
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/core
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
 
       # packages a obsolete with next major release
       - name: Build and publish create-kolibri
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/create-kolibri
         env:
           NODE_AUTH_TOKEN: ${{env.token}}
+          NPM_CONFIG_PROVENANCE: true
 
   publish-page:
     needs: publish

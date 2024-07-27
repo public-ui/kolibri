@@ -3,6 +3,10 @@
 	"version": "1.7.25",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"scripts": {
 		"build": "rimraf dist && cross-env NODE_ENV=production webpack",
 		"build:deps": "pnpm --filter @public-ui/sample-react^... build",
