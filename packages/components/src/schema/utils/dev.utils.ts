@@ -95,9 +95,7 @@ export class Logger {
 	}
 
 	public error(msg: unknown | unknown[], options?: LogShieldOptions): void {
-		if (isDevModeOrForceLog(this.devMode, options?.forceLog)) {
-			console.error(...getShield(this.label, options), ...mapToArray(msg));
-		}
+		console.error(...getShield(this.label, options), ...mapToArray(msg));
 	}
 
 	public throw(msg: unknown | unknown[], options?: LogShieldOptions): void {
