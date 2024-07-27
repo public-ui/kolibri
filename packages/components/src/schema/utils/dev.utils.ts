@@ -15,23 +15,23 @@ export const setDocument = (value: Document): void => {
 	DOCUMENT = value;
 };
 
-let DEV_MODE: boolean | null = null;
-let EXPERIMENTAL_MODE: boolean | null = null;
-let COLOR_CONTRAST_ANALYSIS: boolean | null = null;
+let DEV_MODE: boolean = false;
+let EXPERIMENTAL_MODE: boolean = false;
+let COLOR_CONTRAST_ANALYSIS: boolean = false;
 
 export const getDevMode = (): boolean => DEV_MODE === true;
-export const setDevMode = (value: boolean): void => {
-	DEV_MODE = value;
+export const setDevMode = (mode: boolean): void => {
+	DEV_MODE = mode === true;
 };
 
 export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
-export const setExperimentalMode = (value: boolean): void => {
-	EXPERIMENTAL_MODE = value;
+export const setExperimentalMode = (mode: boolean): void => {
+	EXPERIMENTAL_MODE = mode === true;
 };
 
 export const getColorContrastAnalysis = (): boolean => COLOR_CONTRAST_ANALYSIS === true;
-export const setColorContrastAnalysis = (value: boolean): void => {
-	COLOR_CONTRAST_ANALYSIS = value;
+export const setColorContrastAnalysis = (mode: boolean): void => {
+	COLOR_CONTRAST_ANALYSIS = mode === true;
 };
 
 type LogShieldOptions = {
