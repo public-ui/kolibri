@@ -83,7 +83,7 @@ jobs:
           git config --local user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
 
       - name: Bump Versions
-        run: 'npx lerna version ${{github.event.inputs.version}} --no-private --tag-version-prefix="" -m "chore: release %v" -y'
+        run: 'HUSKY=0 npx lerna version ${{github.event.inputs.version}} --preid=rc --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish'
 
       - name: Build
         run: pnpm -r build
