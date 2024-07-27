@@ -1,17 +1,13 @@
-import React from 'react';
-import { KolIndentedText, KolSkipNav } from '@public-ui/react';
-
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { KolSkipNav } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
 
 export const SkipNavBasic: FC = () => (
 	<div className="grid gap-4">
-		<KolIndentedText>
-			<p>
-				<b>Links sind unsichtbar geschalten</b>
-				<br />
-				Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-			</p>
-		</KolIndentedText>
+		<SampleDescription>
+			<p>KolSkipNav renders a list of navigation links that are visually hidden by default and only visible on focus.</p>
+			<p>For testing purposes, click into the example and press the tab-key in order to focus the first link.</p>
+		</SampleDescription>
 		<KolSkipNav
 			_ariaLabel="Versteckte Navigation"
 			_links={[

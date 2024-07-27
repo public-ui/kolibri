@@ -1,9 +1,14 @@
 import React from 'react';
 import { FC } from 'react';
 import { KolAbbr } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
 
 export const AbbrBasic: FC = () => (
 	<>
+		<SampleDescription>
+			<p>KolAbbr shows the full expansion of an abbreviated term on mouse over. The sample illustrates the different possible alignments for the tooltip.</p>
+		</SampleDescription>
+
 		<p>
 			Ich bin <KolAbbr _title="Abkürzung">z.B.</KolAbbr> eine Abkürzung.
 		</p>

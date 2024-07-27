@@ -5,6 +5,7 @@ import { HeadingLevel } from '@public-ui/components/dist/types/types/heading-lev
 
 import { FC } from 'react';
 import { AlertType, AlertVariant } from '@public-ui/components';
+import { SampleDescription } from '../SampleDescription';
 
 type PropsByType = {
 	level: HeadingLevel;
@@ -32,7 +33,7 @@ const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 	</>
 );
 
-export const AlertBasic: FC<PropsBasic> = ({ variant = 'msg' }) => (
+export const AlertVariants: FC<PropsBasic> = ({ variant = 'msg' }) => (
 	<div className="grid gap-4">
 		<AlertByType level={1} type="default" variant={variant} />
 		<AlertByType level={2} type="error" variant={variant} />
@@ -40,4 +41,17 @@ export const AlertBasic: FC<PropsBasic> = ({ variant = 'msg' }) => (
 		<AlertByType level={4} type="success" variant={variant} />
 		<AlertByType level={5} type="warning" variant={variant} />
 	</div>
+);
+
+export const AlertBasic = () => (
+	<>
+		<SampleDescription>
+			<p>
+				KolAlert shows messages of different types. This sample illustrates the variant <code>msg</code>, showing all possible types with and without headlines
+				and close buttons.
+			</p>
+		</SampleDescription>
+
+		<AlertVariants variant="msg" />
+	</>
 );

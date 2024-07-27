@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import { KolTable, KolHeading } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
 
 const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Example' }];
 type Data = (typeof DATA)[0];
@@ -8,6 +9,9 @@ const genericNonSorter = (data: Data[]): Data[] => data;
 
 export const TableColumnAlignment: FC = () => (
 	<>
+		<SampleDescription>
+			<p>This sample shows KolTable with columns headers and data in different text alignments.</p>
+		</SampleDescription>
 		<KolHeading _label="Simple table" _level={3}></KolHeading>
 		<KolTable
 			_label="Table for demonstration purposes with different text align properties"
