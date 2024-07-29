@@ -431,6 +431,9 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
     devDependencies:
+      '@playwright/test':
+        specifier: 1.44.1
+        version: 1.44.1
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
         version: 0.9.0(@stencil/core@4.18.3)
@@ -452,6 +455,9 @@ importers:
       '@stencil/core':
         specifier: 4.18.3
         version: 4.18.3
+      '@stencil/playwright':
+        specifier: 0.2.0
+        version: 0.2.0(@playwright/test@1.44.1)(@stencil/core@4.18.3)
       '@stencil/sass':
         specifier: 3.0.12
         version: 3.0.12(@stencil/core@4.18.3)
@@ -3533,6 +3539,11 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
+  '@playwright/test@1.44.1':
+    resolution: {integrity: sha512-1hZ4TNvD5z9VuhNJ/walIjvMVvYkZKf71axoF/uiAqpntQJXpG64dlXhoDXE3OczPuTuvjf/M5KWFg5VAVUS3Q==}
+    engines: {node: '>=16'}
+    hasBin: true
+
   '@playwright/test@1.45.0':
     resolution: {integrity: sha512-TVYsfMlGAaxeUllNkywbwek67Ncf8FRGn8ZlRdO291OL3NjG9oMbfVhyP82HQF0CZLMrYsvesqoUekxdWuF9Qw==}
     engines: {node: '>=18'}
@@ -3865,6 +3876,13 @@ packages:
     resolution: {integrity: sha512-8yoG5AFQYEPocVtuoc5kvRS0Hku0MoDWDUpADRaXPVHsOFLmxR16LJENj25ucCz5GEfeTGQ/tCE8JAypPmr/fQ==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
+
+  '@stencil/playwright@0.2.0':
+    resolution: {integrity: sha512-foJuFpjzNY3kxaI5xG+W/bRQrvosLklPL6r/Rw/VKr3H20DznLLSnkFUikEjGv3/Q2yQwT1dTvwJmSzftXFnhg==}
+    engines: {node: '>=12.0.0', npm: '>=6.0.0'}
+    peerDependencies:
+      '@playwright/test': '>=1.41.2'
+      '@stencil/core': '>=4.13.0'
 
   '@stencil/sass@3.0.12':
     resolution: {integrity: sha512-aXMgpG13ftxLYo2dDauapvE9gKzSxTAqCMOfTqbPhKUCZ43JsknkLx+PArRaFtfYeVGSQ8eTS4ck7/Nlec+PNA==}
@@ -9655,9 +9673,19 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
+  playwright-core@1.44.1:
+    resolution: {integrity: sha512-wh0JWtYTrhv1+OSsLPgFzGzt67Y7BE/ZS3jEqgGBlp2ppp1ZDj8c+9IARNW4dwf1poq5MgHreEM2KV/GuR4cFA==}
+    engines: {node: '>=16'}
+    hasBin: true
+
   playwright-core@1.45.0:
     resolution: {integrity: sha512-lZmHlFQ0VYSpAs43dRq1/nJ9G/6SiTI7VPqidld9TDefL9tX87bTKExWZZUF5PeRyqtXqd8fQi2qmfIedkwsNQ==}
     engines: {node: '>=18'}
+    hasBin: true
+
+  playwright@1.44.1:
+    resolution: {integrity: sha512-qr/0UJ5CFAtloI3avF95Y0L1xQo6r3LQArLIg/z/PoGJ6xa+EwzrwO5lpNr/09STxdHuUoP2mvuELJS+hLdtgg==}
+    engines: {node: '>=16'}
     hasBin: true
 
   playwright@1.45.0:
@@ -15879,6 +15907,10 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
+  '@playwright/test@1.44.1':
+    dependencies:
+      playwright: 1.44.1
+
   '@playwright/test@1.45.0':
     dependencies:
       playwright: 1.45.0
@@ -16234,6 +16266,13 @@ snapshots:
       postcss: 8.4.38
 
   '@stencil/core@4.18.3': {}
+
+  '@stencil/playwright@0.2.0(@playwright/test@1.44.1)(@stencil/core@4.18.3)':
+    dependencies:
+      '@playwright/test': 1.44.1
+      '@stencil/core': 4.18.3
+      deepmerge: 4.3.1
+      find-up: 7.0.0
 
   '@stencil/sass@3.0.12(@stencil/core@4.18.3)':
     dependencies:
@@ -23573,7 +23612,15 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
+  playwright-core@1.44.1: {}
+
   playwright-core@1.45.0: {}
+
+  playwright@1.44.1:
+    dependencies:
+      playwright-core: 1.44.1
+    optionalDependencies:
+      fsevents: 2.3.2
 
   playwright@1.45.0:
     dependencies:

@@ -439,11 +439,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		if (value instanceof Date) {
 			deprecatedHint('Date type will be removed in v3. Use `Iso8601` instead.');
 		}
-		this.controller.validateValueEx(value, (v) => {
-			if (v === '' && this.inputRef) {
-				this.inputRef.value = '';
-			}
-		});
+		this.controller.validateValueEx(value);
 	}
 
 	public componentWillLoad(): void {
