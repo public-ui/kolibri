@@ -23,7 +23,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;
 		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-item-wc">
+			<Host onSlotchange={this.handleSlotchange} class="kol-tree-item-wc">
 				<li
 					class="tree-item"
 					style={{
@@ -47,7 +47,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 						<span slot="expert">
 							{_hasChildren && (
 								// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
-								<span class="toggle-button" onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}>
+								<span class="toggle-button" onClick={this.handleToggleClick}>
 									{this.renderIcon({
 										icon: `codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`,
 										label: _open ? 'Vorschläge öffnen' : 'Vorschläge schließen',
@@ -133,21 +133,32 @@ export class KolTreeItemWc implements TreeItemAPI {
 		this.level = level;
 	}
 
-	private handleSlotchange() {
+	private handleSlotchange = () => {
 		this.checkForChildren();
 	}
 
-	private checkForChildren() {
+	private checkForChildren = () => {
 		this.state = {
 			...this.state,
 			_hasChildren: Boolean(this.host.querySelector('slot')?.assignedElements?.().length),
 		};
 	}
 
+	/**
+	 * Sets focus to link element in tree item.
+	 */
 	@Method()
 	public async focusLink() {
 		await this.linkElement.kolFocus();
 	}
+
+	private handleToggleClick = (event: MouseEvent) => {
+		if (this.state._open) {
+			void this.handleCollapseClick(event);
+		} else {
+			void this.handleExpandClick(event);
+		}
+	};
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
@@ -155,6 +166,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		await this.expand();
 	}
 
+	/**
+	 * Closes the tree item.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async expand() {
@@ -172,6 +186,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		await this.collapse();
 	}
 
+	/**
+	 * Opens the tree item.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async collapse() {
@@ -183,6 +200,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		}
 	}
 
+	/**
+	 * Returns the open state of tree item.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async isOpen() {

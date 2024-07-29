@@ -119,7 +119,7 @@ export class KolTreeWc implements TreeAPI {
 		return elementsWithInclude.filter((element) => element.include).map((element) => element.value);
 	}
 
-	public async handleKeyDown(event: KeyboardEvent): Promise<void> {
+	private async handleKeyDown(event: KeyboardEvent): Promise<void> {
 		const openItems = await this.getOpenTreeItemElements();
 		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
 
@@ -196,7 +196,7 @@ export class KolTreeWc implements TreeAPI {
 		}
 	}
 
-	public async handleFocusOut(event: FocusEvent): Promise<void> {
+	private async handleFocusOut(event: FocusEvent): Promise<void> {
 		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
 			/* Tree lost focus */
 			await this.ensureActiveItemVisibility();

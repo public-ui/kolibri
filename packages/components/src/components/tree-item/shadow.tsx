@@ -33,6 +33,9 @@ export class KolTreeItem implements TreeItemProps {
 	 */
 	@Prop() _href!: HrefPropType;
 
+	/**
+	 * Sets focus to link element in tree item.
+	 */
 	@Method()
 	public async focusLink() {
 		if (this.element) {
@@ -40,6 +43,9 @@ export class KolTreeItem implements TreeItemProps {
 		}
 	}
 
+	/**
+	 * Closes the tree item.
+	 */
 	@Method()
 	public async expand() {
 		if (this.element) {
@@ -47,6 +53,9 @@ export class KolTreeItem implements TreeItemProps {
 		}
 	}
 
+	/**
+	 * Opens the tree item.
+	 */
 	@Method()
 	public async collapse() {
 		if (this.element) {
@@ -54,6 +63,9 @@ export class KolTreeItem implements TreeItemProps {
 		}
 	}
 
+	/**
+	 * Returns the open state of tree item.
+	 */
 	@Method()
 	public async isOpen() {
 		return (await this.element?.isOpen()) ?? false;

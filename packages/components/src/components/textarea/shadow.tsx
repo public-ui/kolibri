@@ -58,6 +58,9 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		this.textareaRef = ref;
 	};
 
+	/**
+	 * Get value of textarea.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -73,6 +76,9 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the textarea input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

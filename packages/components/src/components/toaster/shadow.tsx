@@ -25,6 +25,10 @@ export class KolToastContainer implements ToasterAPI {
 	/* Keep track of render functions, so we call each only once. */
 	private knownRenderFunctions = new Set<ToastRenderFunction>();
 
+	/**
+	 * Hides all active toaster elements. Removes the toast container. The toaster instance can no longer be used.
+	 * @param {Toast} toast
+	 */
 	// Stencil requires async function:
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -77,6 +81,10 @@ export class KolToastContainer implements ToasterAPI {
 		}, TRANSITION_TIMEOUT);
 	}
 
+	/**
+	 * Hides all active toaster elements.
+	 * @param {boolean} immediate
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeAll(immediate: boolean = false) {
@@ -112,6 +120,14 @@ export class KolToastContainer implements ToasterAPI {
 		}
 	}
 
+	private createHandleClose = (toastState: ToastState) => () => {
+		this.handleClose(toastState);
+	};
+
+	private createHandleToastRef = (toastState: ToastState) => (element?: HTMLDivElement) => {
+		this.handleToastRef(toastState, element);
+	};
+
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-toast-container">
@@ -129,8 +145,8 @@ export class KolToastContainer implements ToasterAPI {
 				{this.state._toastStates.map((toastState) => (
 					<InternalToast
 						key={toastState.id}
-						onClose={() => this.handleClose(toastState)}
-						onRef={(element) => this.handleToastRef(toastState, element)}
+						onClose={this.createHandleClose(toastState)}
+						onRef={this.createHandleToastRef(toastState)}
 						toastState={toastState}
 					/>
 				))}

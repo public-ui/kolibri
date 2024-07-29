@@ -91,7 +91,7 @@ export class KolToolbar implements ToolbarAPI {
 		this.currentIndex = this.state._items?.findIndex((item) => !item._disabled);
 	}
 
-	public handleKeyDown(event: KeyboardEvent) {
+	private handleKeyDown(event: KeyboardEvent) {
 		const isArrowKey = event.code === 'ArrowRight' || event.code === 'ArrowLeft';
 		if (!isArrowKey) return;
 		event.preventDefault();
