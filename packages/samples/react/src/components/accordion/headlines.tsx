@@ -6,7 +6,9 @@ import { SampleDescription } from '../SampleDescription';
 
 export const AccordionHeadlines: FC = () => (
 	<>
-		<SampleDescription></SampleDescription>
+		<SampleDescription>
+			<p>This sample shows KolAccordion with the different heading levels from 1-6.</p>
+		</SampleDescription>
 		<div className="grid gap-4">
 			<KolAccordion _heading="Überschrift Level 1" _level={1}>
 				<div slot="content">Inhalt Accordion Tab 1</div>

@@ -10,7 +10,10 @@ const PROPS = {
 
 export const BadgeBasic: FC = () => (
 	<>
-		<SampleDescription></SampleDescription>
+		<SampleDescription>
+			<p>KolBadge shows badges with a label, background color and optional icon.</p>
+		</SampleDescription>
+
 		<div className="flex gap-2">
 			<KolBadge {...PROPS}></KolBadge>
 			<KolBadge _color="#86ffc6" {...PROPS}></KolBadge>

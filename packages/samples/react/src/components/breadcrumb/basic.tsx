@@ -6,7 +6,10 @@ import { SampleDescription } from '../SampleDescription';
 
 export const BreadcrumbBasic: FC = () => (
 	<>
-		<SampleDescription></SampleDescription>
+		<SampleDescription>
+			<p>KolBreadcrumb shows a breadcrumb navigation. The sample illustrates a variation of link, text and icon elements.</p>
+		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolBreadcrumb
 				_ariaLabel="Breadcrumb aus Text-Links"

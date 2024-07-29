@@ -4,7 +4,10 @@ import { SampleDescription } from '../SampleDescription';
 
 export const AvatarBasic: FC = () => (
 	<>
-		<SampleDescription></SampleDescription>
+		<SampleDescription>
+			<p>KolAlert shows a user&apos;s avatar. It can be used with or without an image. If no image is defined, the name&apos;s initials are shown instead.</p>
+		</SampleDescription>
+
 		<div className="flex flex-wrap gap-4">
 			<KolAvatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Elke Mustermann" />
 

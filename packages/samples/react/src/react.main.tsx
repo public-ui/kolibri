@@ -50,7 +50,7 @@ void (async () => {
 							detect: 'auto',
 						},
 				translation: {
-					name: 'de',
+					name: 'en',
 				},
 				transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
 			},

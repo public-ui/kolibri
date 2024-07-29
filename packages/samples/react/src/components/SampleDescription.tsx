@@ -14,7 +14,6 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 			? null // Scenarios are not a component and hence have no documentation.
 			: `${PUBLIC_DOC_COMPONENT_URL}/${componentName}`;
 	}, [location.href]);
-
 	const codeLink = useMemo(() => {
 		const arr = location.href.split('/');
 		const componentName = arr[arr.length - 2];
@@ -25,11 +24,10 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 	return hideMenus ? null : (
 		<div className="flex justify-between mb-sm">
 			<KolIndentedText>{props.children}</KolIndentedText>
-
 			<div className="flex flex-wrap gap-2 shrink-0 ml">
 				{codeLink && <KolLink _href={codeLink} _label="Code" _target="_blank" />}
-				{docLink && <KolLink _href={docLink} _label="Dokumentation" _target="_blank" />}
-				<KolLink _href={`${location.href}?hideMenus`} _label="Beispiel" _target="_blank" />
+				{docLink && <KolLink _href={docLink} _label="Documentation" _target="_blank" />}
+				<KolLink _href={`${location.href}?hideMenus`} _label="Standalone example" _target="_blank" />
 			</div>
 		</div>
 	);

@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { KolTabs } from '@public-ui/react';
+import { SampleDescription } from '../SampleDescription';
 
 const tabs = [
 	{
@@ -30,6 +31,9 @@ const tabsWithoutIcons = tabs.map((tab) => ({
 
 export const TabsBasic: FC = () => (
 	<>
+		<SampleDescription>
+			<p>KolTabs renders tab captions and their associated content. This sample shows tab captions with and without icons and disabled tabs.</p>
+		</SampleDescription>
 		<KolTabs _tabs={tabsWithoutIcons} _label="Regular tabs">
 			<div slot="tab-0">Inhalte von Tab 1</div>
 			<div slot="tab-1">Inhalte von Tab 2</div>

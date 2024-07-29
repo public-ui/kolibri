@@ -16,7 +16,12 @@ const createBadgeProps = (label: string) => ({
 
 export const BadgeButton: FC = () => (
 	<>
-		<SampleDescription></SampleDescription>
+		<SampleDescription>
+			<p>
+				This sample shows KolBadge with an optional <code>smartButton</code>. The sample defines a &quot;close&quot; button with X-icon a click event listener.
+			</p>
+		</SampleDescription>
+
 		<div className="mb-4">
 			<KolHeading _label="Badge" _level={2} />
 		</div>
