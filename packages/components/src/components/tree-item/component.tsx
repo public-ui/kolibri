@@ -36,7 +36,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 						_label=""
 						_role="treeitem"
 						_tabIndex={_active ? 0 : -1}
-						_ariaExpanded={_open}
+						_ariaExpanded={_hasChildren ? _open : undefined}
 						_ariaOwns={_hasChildren ? this.groupId : undefined}
 						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
 					>
