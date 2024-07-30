@@ -2,7 +2,6 @@
 
 const gradient = require('gradient-string');
 const chalk = require('chalk');
-const packageJson = require('../package.json');
 
 const banner = gradient.atlas.multiline(
 	`
@@ -11,7 +10,7 @@ const banner = gradient.atlas.multiline(
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 |  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 \`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${packageJson.version}
+🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io
 `,
 	{
 		interpolation: 'hsv',
