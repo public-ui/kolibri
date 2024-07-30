@@ -12,6 +12,7 @@ import cardCss from './components/ecl-ec/card.scss';
 import ComboboxCss from './components/ecl-ec/combobox.scss';
 import detailsCss from './components/ecl-ec/details.scss';
 import drawerCss from './components/ecl-ec/drawer.scss';
+import formCss from './components/ecl-ec/form.scss';
 import headingCss from './components/ecl-ec/heading.scss';
 import iconCss from './components/ecl-ec/icon.scss';
 import indentedTextCss from './components/ecl-ec/indented-text.scss';
@@ -90,4 +91,5 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-TOOLBAR': toolbarCss,
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
+	'KOL-FORM': formCss,
 });

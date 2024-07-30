@@ -13,6 +13,7 @@ import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
 import drawerCss from './components/drawer.scss';
+import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
 import iconCss from './components/icon.scss';
 import indentedTextCss from './components/indented-text.scss';
@@ -59,6 +60,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-HEADING': headingCss,
 	'KOL-BADGE': badgeCss,
 	'KOL-BUTTON-GROUP': buttonGroupCss,
+	'KOL-FORM': formCss,
 	'KOL-INDENTED-TEXT': indentedTextCss,
 	'KOL-LINK': linkCss,
 	'KOL-DETAILS': detailsCss,
