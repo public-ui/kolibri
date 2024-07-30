@@ -15,11 +15,9 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 			: `${PUBLIC_DOC_COMPONENT_URL}/${componentName}`;
 	}, [location.href]);
 	const codeLink = useMemo(() => {
-		const arr = location.href.split('/');
-		const componentName = arr[arr.length - 2];
-		const fileName = arr[arr.length - 1];
-		return `${PUBLIC_CODE_COMPONENT_URL}/${componentName}/${fileName}.tsx`;
-	}, [location.href]);
+		const link = location.hash.slice(1);
+		return `${PUBLIC_CODE_COMPONENT_URL}${link}.tsx`;
+	}, [location.hash]);
 
 	return hideMenus ? null : (
 		<div className="flex justify-between mb-sm">
