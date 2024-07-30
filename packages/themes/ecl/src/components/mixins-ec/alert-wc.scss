@@ -7,16 +7,16 @@
 @mixin kol-alert-theme {
 	font-family: var(--font-family);
 
-	> div {
+	div {
 		background-color: var(--color-white);
 	}
 
-	> div.card {
+	div.card {
 		border-style: solid;
 		border-width: 2px;
 	}
 
-	> div.msg {
+	div.msg {
 		border: none;
 	}
 
