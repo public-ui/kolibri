@@ -31,6 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+      packages: write
     steps:
       - uses: actions/create-github-app-token@v1
         id: app-token
