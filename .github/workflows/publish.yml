@@ -209,13 +209,13 @@ jobs:
           scope: '${{env.scope}}'
 
       - name: Publish designer
-        run: npm publish --access restricted || true
+        run: npm publish --access restricted
         working-directory: packages/designer
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish sample react
-        run: npm publish --access restricted || true
+        run: npm publish --access restricted
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
