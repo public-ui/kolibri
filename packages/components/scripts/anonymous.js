@@ -11,7 +11,7 @@ delete packageJson.husky;
 delete packageJson['lint-staged'];
 delete packageJson.collection;
 delete packageJson['collection:main'];
-delete packageJson.repository;
+// delete packageJson.repository;
 // delete packageJson.publishConfig;
 delete packageJson.unpkg;
 // packageJson.files.push('docs/.vitepress/dist/');
