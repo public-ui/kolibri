@@ -33,6 +33,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	};
 
 	/**
+	 * Sets the focus on the link element.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -41,6 +42,9 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the link element.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.linkWcRef?.kolFocus();

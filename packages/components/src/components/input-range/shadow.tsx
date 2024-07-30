@@ -43,6 +43,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private refInputRange?: HTMLInputElement;
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -51,6 +52,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -60,7 +64,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputNumber = element;
-			if (!this._value && this.refInputNumber?.value) {
+			if (this._value == null && this.refInputNumber?.value != null) {
 				this.validateValue(parseFloat(this.refInputNumber.value));
 			}
 		}
@@ -74,15 +78,19 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 	private getSanitizedFloatValue(value: string): number {
 		const floatValue = parseFloat(value);
-		if (this.state._max && floatValue > this.state._max) {
+		if (this.state._max != null && floatValue > this.state._max) {
 			return this.state._max;
 		}
-		if (this.state._min && floatValue < this.state._min) {
+		if (this.state._min != null && floatValue < this.state._min) {
 			return this.state._min;
 		}
 		return floatValue;
 	}
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<number | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<number | undefined> {
@@ -111,7 +119,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	};
 
 	componentDidLoad() {
-		if (!this._value && this.refInputRange?.value) {
+		if (this._value == null && this.refInputRange?.value != null) {
 			this.validateValue(parseFloat(this.refInputRange.value));
 		}
 	}
@@ -175,7 +183,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 								list={hasSuggestions ? `${this.state._id}-list` : undefined}
 								max={this.state._max}
 								min={this.state._min}
-								name={this.state._name ? `${this.state._name}-range` : undefined}
+								name={this.state._name != null ? `${this.state._name}-range` : undefined}
 								spellcheck="false"
 								step={this.state._step}
 								tabIndex={-1}
@@ -198,7 +206,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 								list={hasSuggestions ? `${this.state._id}-list` : undefined}
 								max={this.state._max}
 								min={this.state._min}
-								name={this.state._name ? `${this.state._name}-number` : undefined}
+								name={this.state._name != null ? `${this.state._name}-number` : undefined}
 								step={this.state._step}
 								type="number"
 								value={this.state._value}

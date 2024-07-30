@@ -48,6 +48,10 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<StencilUnknown | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown | undefined> {
@@ -55,6 +59,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -63,6 +68,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -148,7 +156,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 										onChange={this.onChange}
 										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 										onInput={this.onInput}
-										onKeyDown={this.onKeyDown.bind(this)}
+										onKeyDown={this.onKeyDown}
 									/>
 									<label
 										class="radio-label"

@@ -46,6 +46,10 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<string | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -53,6 +57,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -61,6 +66,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -80,6 +88,10 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
 		this.controller.onFacade.onInput(event);
 	};
+
+	private handleClick = (): void => {
+		this.inputRef?.focus()
+	}
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -114,7 +126,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 					_smartButton={this.state._smartButton}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.inputRef?.focus()}
+					onClick={this.handleClick}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
@@ -477,7 +489,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 
-		this.state._hasValue = !!this.state._value;
-		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.state._hasValue = this.state._value != null;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = Boolean(v)));
 	}
 }

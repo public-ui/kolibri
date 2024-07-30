@@ -69,6 +69,10 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		}
 	};
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<string | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -76,6 +80,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -84,10 +89,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.inputRef?.focus();
+	}
+
+	private handleClick = (): void => {
+		this.inputRef?.focus()
 	}
 
 	public render(): JSX.Element {
@@ -125,7 +137,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 					_suggestions={this.state._suggestions}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.inputRef?.focus()}
+					onClick={this.handleClick}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
@@ -485,7 +497,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.oldValue = this._value;
 		this.controller.componentWillLoad();
 
-		this.state._hasValue = !!this.state._value;
-		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.state._hasValue = this.state._value != null;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = Boolean(v)));
 	}
 }

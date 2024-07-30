@@ -218,7 +218,7 @@ export class KolTableStateful implements TableAPI {
 						settings.direction = 'ASC';
 						break;
 				}
-			} else if (headerCell.key) {
+			} else if (headerCell.key != null) {
 				this.sortData.push({
 					label: headerCell.label,
 					key: headerCell.key,
@@ -271,7 +271,7 @@ export class KolTableStateful implements TableAPI {
 								let hasSortedCells = false;
 								headers.forEach((cell) => {
 									const key = cell.key;
-									if (!key) {
+									if (key == null) {
 										return;
 									}
 									const sortDirection = cell.sortDirection;
@@ -495,9 +495,9 @@ export class KolTableStateful implements TableAPI {
 			if (headerCell.key === this.sortedColumnHead.key) {
 				return this.sortedColumnHead.sortDirection;
 			}
-			if (headerCell.key) {
+			if (headerCell.key != null) {
 				const data = this.sortData.find((value) => value.key === headerCell.key);
-				if (data?.direction) {
+				if (data?.direction != null) {
 					return data.direction;
 				}
 			}
@@ -515,7 +515,7 @@ export class KolTableStateful implements TableAPI {
 	private getSelectedData(selectedKeys: string[]): KoliBriTableDataType[] {
 		if (this.state._selection) {
 			const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
-			if (keyPropertyName) return this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
+			if (keyPropertyName != null) return this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
 		}
 		return [];
 	}
@@ -537,6 +537,10 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
+	/**
+	 * Returns the current selection of table.
+	 * @returns {Promise<KoliBriTableDataType[]>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getSelection(): Promise<KoliBriTableDataType[]> {

@@ -12,7 +12,7 @@ export const getInputHtml = (props: InputProps): string => {
 	const useTooltopInsteadOfLabel = !hasExpertSlot && props._hideLabel;
 	return `
 	<kol-input class="kol-input ${props._readOnly ? 'read-only' : ''} ${props._disabled ? 'disabled' : ''}" >
-		<label class="input-label" ${props._id ? `htmlfor="${props._id}"` : ''} id="${!useTooltopInsteadOfLabel ? `${props._id}-label` : ''}" ${useTooltopInsteadOfLabel ? `hidden=""` : ''}>
+		<label class="input-label" ${props._id != null ? `htmlfor="${props._id}"` : ''} id="${!useTooltopInsteadOfLabel ? `${props._id}-label` : ''}" ${useTooltopInsteadOfLabel ? `hidden=""` : ''}>
 			<span class="input-label-span"></span>
 		</label>
 
@@ -25,18 +25,18 @@ export const getInputHtml = (props: InputProps): string => {
 				: ''
 		}
 		<div class="input">
-		${props._icons?.left ? `<${KolIconTag} _label="" _icons=${(props._icons?.left as KoliBriCustomIcon).icon} ></${KolIconTag}>` : ''}
+		${props._icons?.left != null ? `<${KolIconTag} _label="" _icons=${(props._icons?.left as KoliBriCustomIcon).icon} ></${KolIconTag}>` : ''}
 		<div class="input-slot" id="input"></div>
 		${
 			typeof props._smartButton === 'object' && props._smartButton !== null
 				? `<${KolButtonWcTag}
-				${props._smartButton._customClass ? `_customClass="${props._smartButton._customClass}"` : ''}
+				${props._smartButton._customClass != null ? `_customClass="${props._smartButton._customClass}"` : ''}
 				${props._smartButton._disabled ? `_disabled=""` : ''}
 				${props._smartButton._hideLabel ? `_hideLabel=""` : ''}
-				${props._smartButton._id ? `_id="${props._smartButton._id}"` : ''}
-				${props._smartButton._label ? `_label="${props._smartButton._label}"` : ''}
-				${props._smartButton._tooltipAlign ? `_tooltipAlign="${props._smartButton._tooltipAlign}"` : ''}
-				${props._smartButton._variant ? `_variant="${props._smartButton._variant}"` : ''}
+				${props._smartButton._id != null ? `_id="${props._smartButton._id}"` : ''}
+				${props._smartButton._label != null ? `_label="${props._smartButton._label}"` : ''}
+				${props._smartButton._tooltipAlign != null ? `_tooltipAlign="${props._smartButton._tooltipAlign}"` : ''}
+				${props._smartButton._variant != null ? `_variant="${props._smartButton._variant}"` : ''}
 			></${KolButtonWcTag}>`
 				: ''
 		}
@@ -48,7 +48,7 @@ export const getInputHtml = (props: InputProps): string => {
 				class="input-tooltip"
 				_align="top"
 				_id="${props._hideLabel ? `${props._id}-label` : ''}"
-				${props._label ? `_label="${props._label}"` : ''}
+				${props._label != null ? `_label="${props._label}"` : ''}
 			></${KolTooltipWcTag}>`
 				: ''
 		}
@@ -65,7 +65,7 @@ export const getInputHtml = (props: InputProps): string => {
 						? `<span class="counter" aria-atomic="true" aria-live="polite">
 						${props._currentLength}
 						${
-							props._maxLength
+							props._maxLength != null
 								? `<>
 								<span aria-label="${translate('kol-of')}" role="img">
 
