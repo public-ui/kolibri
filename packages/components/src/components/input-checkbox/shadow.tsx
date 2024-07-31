@@ -50,6 +50,10 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return this._checked ? this.state._value : null;
 	}
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<StencilUnknown>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
@@ -57,6 +61,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -64,7 +69,10 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	public async focus() {
 		await this.kolFocus();
 	}
-
+	
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -262,7 +270,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: Stringified<StencilUnknown> = true;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
 	 * Defines which variant should be used for presentation.

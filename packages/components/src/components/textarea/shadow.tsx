@@ -467,7 +467,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-		this.state._hasValue = this.state._value != null;
+		this.state._hasValue = Boolean(this.state._value);
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = Boolean(v)));
 	}
 

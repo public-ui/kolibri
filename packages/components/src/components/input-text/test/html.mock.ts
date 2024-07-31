@@ -36,7 +36,7 @@ export const getInpuTextHtml = (props: InputTextProps): string => {
 					${state._accessKey != null ? `_accessKey="${state._accessKey}"` : ''}
 					_hint=""
 					_id="${state._id}"
-					_label="${state._label != null ? `${state._label}` : ''}"
+					_label="${state._label != null && state._label !== '' ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="${state._type} ${state._hideLabel ? 'hide-label' : ''} "
 					role="presentation"

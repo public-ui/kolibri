@@ -62,6 +62,9 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		this.buttonRef = ref;
 	};
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

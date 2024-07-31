@@ -14,7 +14,7 @@ export const getCardHtml = (props: CardProps): string => {
 	<mock:shadow-root>
 		<div class="card">
 			<div class="header">
-			<${KolHeadingWcTag} _label="${props._label}" _level="${props._level ? props._level : '1'}"></${KolHeadingWcTag}>
+			<${KolHeadingWcTag} _label="${props._label}" _level="${props._level != null ? props._level : '1'}"></${KolHeadingWcTag}>
 			</div>
 			<div class="content">
 				<slot />

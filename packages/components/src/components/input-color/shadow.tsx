@@ -44,6 +44,10 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<string | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -51,6 +55,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -59,10 +64,17 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.inputRef?.focus();
+	}
+
+	private handleClick = (): void => {
+		this.inputRef?.focus()
 	}
 
 	public render(): JSX.Element {
@@ -90,7 +102,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 					_smartButton={this.state._smartButton}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.inputRef?.focus()}
+					onClick={this.handleClick}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">

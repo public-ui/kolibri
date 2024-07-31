@@ -497,7 +497,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.oldValue = this._value;
 		this.controller.componentWillLoad();
 
-		this.state._hasValue = this.state._value != null;
+		this.state._hasValue = Boolean(this.state._value);
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = Boolean(v)));
 	}
 }

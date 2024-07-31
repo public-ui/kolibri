@@ -32,6 +32,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	};
 
 	/**
+	 * Sets the focus on the details.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -40,6 +41,9 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the details.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
