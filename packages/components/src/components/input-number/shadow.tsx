@@ -196,7 +196,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ reflect: true }) public _hideError?: boolean = false;
+	// eslint-disable-next-line @stencil-community/strict-mutable
+	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -307,7 +308,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: number | Iso8601 | null;
+	// eslint-disable-next-line @stencil-community/strict-mutable
+	@Prop({ mutable: true }) public _value?: number | Iso8601 | null;
 
 	@State() public state: InputNumberStates = {
 		_autoComplete: 'off',

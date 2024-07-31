@@ -61,7 +61,8 @@ export class KolSpin implements SpinAPI {
 	 * Makes the element show up.
 	 * @TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ reflect: true }) public _show?: boolean = false;
+	// eslint-disable-next-line @stencil-community/strict-mutable
+	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
 	/**
 	 * Defines which variant should be used for presentation.
