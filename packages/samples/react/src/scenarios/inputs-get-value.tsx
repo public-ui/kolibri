@@ -33,6 +33,7 @@ type Props = {
 	InputComponent: React.ComponentType<any>;
 	inputProps: { [key: string]: any };
 	formatter?: (value: any) => string;
+	testId?: string;
 };
 const Scenario = (props: Props) => {
 	const ref = useRef<HTMLStencilElement & { getValue: () => Promise<any> }>();
@@ -68,7 +69,7 @@ const Scenario = (props: Props) => {
 	);
 
 	return (
-		<div className="grid grid-cols-3 items-end gap-4">
+		<div className="grid grid-cols-3 items-end gap-4" data-testid={props.testId || ''}>
 			<props.InputComponent ref={ref} _on={eventListeners} {...props.inputProps} />
 			<KolButton
 				_label="getValue()"
@@ -108,7 +109,7 @@ export const InputsGetValue: FC = () => {
 					</KolCard>
 
 					<div className="grid gap-4">
-						<Scenario InputComponent={KolInputText} inputProps={{ _label: 'InputText' }} />
+						<Scenario testId="scenario-inputText" InputComponent={KolInputText} inputProps={{ _label: 'InputText' }} />
 						<Scenario InputComponent={KolInputCheckbox} inputProps={{ _label: 'KolInputCheckbox (value)', _value: 'Checkbox True Value' }} />
 						<Scenario InputComponent={KolInputCheckbox} inputProps={{ _label: 'KolInputCheckbox (boolean)' }} />
 						<Scenario InputComponent={KolInputColor} inputProps={{ _label: 'KolInputColor' }} />
