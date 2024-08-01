@@ -124,6 +124,7 @@
 
 			// RADIO
 			input[type='radio'] {
+				display: block;
 				border-color: var(--color-grey-75);
 
 				&:hover {

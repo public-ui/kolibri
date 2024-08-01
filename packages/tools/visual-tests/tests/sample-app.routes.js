@@ -327,6 +327,21 @@ ROUTES.set('table/complex-headers', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('table/stateful-with-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateful-with-single-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateless-with-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('table/stateless', {
 	axe: {
 		skipFailures: false,

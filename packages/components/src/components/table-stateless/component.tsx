@@ -511,10 +511,7 @@ export class KolTableStateless implements TableStatelessAPI {
 							aria-label={label}
 							type="checkbox"
 							onInput={(event: Event) => {
-								let selections = [] as KoliBriTableDataType[];
-								if (!isChecked) {
-									selections = this.state._data;
-								}
+								const selections = !isChecked ? this.state._data : [];
 								tryToDispatchKoliBriEvent('selection-change', this.host, selections);
 								if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
 									this.state._on[Events.onSelectionChange](event, selections.map((el) => el?.id) as string[]);

@@ -36,12 +36,11 @@ import {
 	watchValidator,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
 import type { SortEventPayload } from '../../schema';
-import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { Events } from '../../schema/enums';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -63,8 +62,6 @@ type SortData = {
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
-	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
-
 	/**
 	 * @deprecated only for backward compatibility
 	 */
@@ -400,6 +397,7 @@ export class KolTableStateful implements TableAPI {
 		this.validatePagination(this._pagination);
 		this.validatePaginationPosition(this._paginationPosition);
 		this.validateSelection(this._selection);
+		this.validateOn(this._on);
 	}
 
 	private selectDisplayedData(data: KoliBriTableDataType[], pageSize: number, page: number): KoliBriTableDataType[] {
@@ -512,16 +510,15 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
-	private getSelectedData(selectedKeys: string[] | string): null | KoliBriTableDataType | KoliBriTableDataType[] {
+	private getSelectedData(selectedKeys: string[]): null | KoliBriTableDataType | KoliBriTableDataType[] {
 		const selection = this.state._selection;
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
 			const data = this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
 			if (selection?.multiple === false) {
 				return data[0];
-			} else {
-				if (keyPropertyName) return data;
 			}
+			if (keyPropertyName) return data;
 		}
 		return null;
 	}
@@ -536,8 +533,6 @@ export class KolTableStateful implements TableAPI {
 				},
 			};
 		const selectedData = this.getSelectedData(value);
-
-		tryToDispatchKoliBriEvent('selection-change', this.host, selectedData);
 
 		if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
 			this.state._on[Events.onSelectionChange](event, selectedData);

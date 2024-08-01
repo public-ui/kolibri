@@ -118,6 +118,7 @@
 
 			// RADIO
 			input[type='radio'] {
+				display: block;
 				outline: 2px solid var(--color-grey-75);
 				outline-offset: 2px;
 
