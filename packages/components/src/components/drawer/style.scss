@@ -2,6 +2,10 @@
 @import '../style';
 
 @layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
+
 	.drawer {
 		&__dialog {
 			padding: 0;

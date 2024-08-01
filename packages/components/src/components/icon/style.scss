@@ -4,6 +4,7 @@
 @layer kol-component {
 	/* :host implicitly inherits font-size, see below */
 	:host {
+		font-size: rem(16);
 		color: inherit;
 		display: contents;
 		height: 1em;
