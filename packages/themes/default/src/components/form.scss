@@ -1,0 +1,7 @@
+@import '../mixins/alert-wc.scss';
+@import '../mixins/indented-text.scss';
+
+@layer kol-theme-component {
+	@include kol-alert-theme;
+	@include kol-indented-theme;
+}

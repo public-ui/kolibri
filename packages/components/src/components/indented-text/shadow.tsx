@@ -1,6 +1,7 @@
-import type { IndentedTextAPI, IndentedTextStates } from '../../schema';
+import type { IndentedTextProps } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, State } from '@stencil/core';
+import { Component, h, Host } from '@stencil/core';
+import { KolIndentedTextWcTag } from '../../core/component-names';
 
 /**
  * @slot - Der Text.
@@ -12,16 +13,13 @@ import { Component, h, Host, State } from '@stencil/core';
 	},
 	shadow: true,
 })
-export class KolIndentedText implements IndentedTextAPI {
-	@State() public state: IndentedTextStates = {};
-
+export class KolIndentedText implements IndentedTextProps {
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-indented-text-wc">
-				<div>
-					{/* TODO: Für was wird dieses div benötigt? */}
+			<Host class="kol-indented-text">
+				<KolIndentedTextWcTag>
 					<slot />
-				</div>
+				</KolIndentedTextWcTag>
 			</Host>
 		);
 	}
