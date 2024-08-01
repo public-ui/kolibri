@@ -10,7 +10,7 @@ import type { SpecPage } from '@stencil/core/testing';
 import { KolSelect } from '../shadow';
 
 executeTests<SelectProps>(
-	'Tabs',
+	'Select',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: [KolSelect],

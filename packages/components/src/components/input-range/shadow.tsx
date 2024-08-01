@@ -128,7 +128,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
 		const hasExpertSlot = showExpertSlot(this.state._label);
-
 		return (
 			<Host class="kol-input-range">
 				<KolInputWcTag
@@ -243,7 +242,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	// eslint-disable-next-line @stencil-community/strict-mutable
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -359,6 +359,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Prop() public _value?: number;
 
 	@State() public state: InputRangeStates = {
+		_alert: true,
 		_autoComplete: 'off',
 		_hideError: false,
 		_id: `id-${nonce()}`,
@@ -481,7 +482,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 	}

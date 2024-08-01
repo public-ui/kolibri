@@ -45,11 +45,11 @@ export class InputRangeController extends InputIconController implements InputRa
 
 	public componentWillLoad(): void {
 		super.componentWillLoad();
-		this.validateAutoComplete(this.component._autoComplete);
-		this.validateMax(this.component._max);
-		this.validateMin(this.component._min);
-		this.validateStep(this.component._step);
-		this.validateSuggestions(this.component._suggestions);
-		this.validateValue(this.component._value);
+		this.validateAutoComplete(this.component._autoComplete),
+		this.validateMax(this.component._max),
+		this.validateMin(this.component._min),
+		this.validateStep(this.component._step),
+		this.validateSuggestions(this.component._suggestions),
+		this.validateValue(this.component._value)
 	}
 }

@@ -200,7 +200,8 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	// eslint-disable-next-line @stencil-community/strict-mutable
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -339,6 +340,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Prop() public _variant?: PasswordVariantPropType = 'default';
 
 	@State() public state: InputPasswordStates = {
+		_alert: true,
 		_autoComplete: 'off',
 		_currentLength: 0,
 		_hasValue: false,
@@ -486,7 +488,6 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 

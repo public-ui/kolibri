@@ -192,7 +192,8 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	// eslint-disable-next-line @stencil-community/strict-mutable
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -295,6 +296,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Prop() public _value?: StencilUnknown;
 
 	@State() public state: InputRadioStates = {
+		_alert: true,
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
@@ -405,7 +407,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.currentValue = this._value;
 		this.controller.componentWillLoad();

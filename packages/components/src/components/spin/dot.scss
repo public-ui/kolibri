@@ -17,28 +17,28 @@
 	}
 
 	.spin.dot > span:first-child {
-		background-color: #fc0;
+		background-color: #000;
 		z-index: 0;
 		animation: 1s infinite spin1;
 		left: rem(0.16);
 	}
 
 	.spin.dot > span:nth-child(2) {
-		background-color: red;
+		background-color: rgba(#000, 0.8);
 		z-index: 1;
 		animation: 1s infinite spin2;
 		left: rem(0.16);
 	}
 
 	.spin.dot > span:nth-child(3) {
-		background-color: #000;
+		background-color: rgba(#000, 0.6);
 		z-index: 1;
 		animation: 1s infinite spin2;
 		left: rem(17.6);
 	}
 
 	.spin.dot > span:nth-child(4) {
-		background-color: #666;
+		background-color: rgba(#000, 0.4);
 		z-index: 0;
 		animation: 1s infinite spin3;
 		left: rem(33.6);

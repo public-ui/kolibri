@@ -8,6 +8,7 @@ import { getRenderStates } from '../../input/controller';
 export const getInpuRangeHtml = (props: InputRangeProps): string => {
 	const state = mixMembers<InputRangeProps, InputRangeStates>(
 		{
+			_alert: true,
 			_autoComplete: 'off',
 			_hideError: false,
 			_id: `id-${nonce()}`,
@@ -18,7 +19,7 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 	);
 	const hasExpertSlot = showExpertSlot(state._label);
 	const { ariaDescribedBy } = getRenderStates(state);
-
+	
 	return `
 	<kol-input-range
 	 	class="kol-input-range"

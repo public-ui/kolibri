@@ -155,7 +155,8 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	// eslint-disable-next-line @stencil-community/strict-mutable
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -261,6 +262,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Prop() public _value?: string;
 
 	@State() public state: InputColorStates = {
+		_alert: true,
 		_autoComplete: 'off',
 		_hideError: false,
 		_id: `id-${nonce()}`,
@@ -373,7 +375,6 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 	}

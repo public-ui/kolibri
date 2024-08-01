@@ -1,3 +1,4 @@
+require('@stencil/core');
 global.HTMLDivElement = class HTMLDivElement extends HTMLElement {};
 
 class MutationObserver {
@@ -9,4 +10,5 @@ class MutationObserver {
 	}
 }
 
+global.ShadowRoot = global.ShadowRoot || class extends HTMLElement {};
 global.MutationObserver = MutationObserver;

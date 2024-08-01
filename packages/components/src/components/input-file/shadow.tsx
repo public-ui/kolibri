@@ -159,7 +159,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	// eslint-disable-next-line @stencil-community/strict-mutable
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -267,6 +268,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Prop() public _value?: string;
 
 	@State() public state: InputFileStates = {
+		_alert: true,
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
@@ -382,7 +384,6 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 	}

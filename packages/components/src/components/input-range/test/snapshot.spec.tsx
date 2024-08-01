@@ -10,7 +10,7 @@ import type { InputRangeProps } from '../../../schema';
 import { KolInputRange } from '../shadow';
 
 executeTests<InputRangeProps>(
-	'InputText',
+	'InputRange',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: [KolInputRange],
