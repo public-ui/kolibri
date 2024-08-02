@@ -15,7 +15,7 @@ export const DrawerControlled: FC = () => {
 	const hideMenus = useContext(HideMenusContext);
 	const [open, setOpen] = useState(false);
 	const [modalOpen, setModalOpen] = useState(false);
-	const [align, setAlign] = useState<AlignPropType>(defaultAlign);
+	const [align, setAlign] = useState<AlignPropType>(defaultAlign || 'left');
 	return (
 		<div>
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
