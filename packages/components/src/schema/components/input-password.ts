@@ -16,7 +16,7 @@ import type {
 } from '../props';
 import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHorizontalIcons, Stringified } from '../types';
 import type { ButtonProps } from './button';
-import { PropPasswordVariant } from '../props/variant/password-variant';
+import type { PropPasswordVariant } from '../props/variant/password-variant';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {

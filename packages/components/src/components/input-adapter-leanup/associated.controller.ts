@@ -71,6 +71,7 @@ export class AssociatedInputController implements Watches {
 					this.formAssociated = document.createElement('textarea');
 					break;
 				case 'checkbox': // Checkbox use default case
+				case 'combobox': // Combobox uses default case
 				default:
 					this.formAssociated = document.createElement('input');
 					this.formAssociated.setAttribute('type', 'hidden');
