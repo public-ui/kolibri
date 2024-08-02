@@ -51,6 +51,17 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_label="Anrede"
 				_touched
 			/>
+			<KolInputRadio
+				{...props}
+				_orientation="horizontal"
+				_required
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
+				_touched
+				_value="Firma"
+				_options="[{'label':'Frau','value':'Frau', 'description':'Ich bin eine Beschreibung.'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
+				_label="Anrede (horizontal mit Fehler Hinweis und Beschreibung)"
+				_hint={'Ich bin ein Hinweis.'}
+			/>
 		</div>
 	);
 });

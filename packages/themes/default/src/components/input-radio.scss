@@ -104,7 +104,13 @@
 	}
 
 	.kol-alert-wc.error {
-		order: 1;
+		order: 3;
+	}
+
+	.hint {
+		order: 4;
+		font-size: rem(14.4);
+		font-style: italic;
 	}
 
 	fieldset legend {
@@ -113,7 +119,14 @@
 	}
 
 	fieldset .kol-input {
+		display: grid;
+		order: 2;
+	}
+
+	.kol-input .hint {
 		order: 3;
+		font-size: rem(14.4);
+		font-style: italic;
 	}
 
 	fieldset.error {
@@ -138,6 +151,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--spacing) calc(var(--spacing) * 2);
+		align-items: flex-start;
 	}
 
 	fieldset.horizontal legend {
