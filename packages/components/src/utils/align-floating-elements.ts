@@ -28,13 +28,13 @@ export const alignFloatingElements = async ({ floatingElement, referenceElement,
 		});
 
 		if (arrowElement) {
-			if (typeof middlewareData.arrow?.x === "number") {
+			if (typeof middlewareData.arrow?.x === 'number') {
 				Object.assign(arrowElement.style, {
 					left: `${middlewareData.arrow.x}px`,
 					top: placement === 'bottom' ? `${-arrowElement.offsetHeight / 2}px` : '',
 					bottom: placement === 'top' ? `${-arrowElement.offsetHeight / 2}px` : '',
 				});
-			} else if (typeof middlewareData.arrow?.y === "number") {
+			} else if (typeof middlewareData.arrow?.y === 'number') {
 				Object.assign(arrowElement.style, {
 					left: placement === 'right' ? `${-arrowElement.offsetWidth / 2}px` : '',
 					right: placement === 'left' ? `${-arrowElement.offsetWidth / 2}px` : '',

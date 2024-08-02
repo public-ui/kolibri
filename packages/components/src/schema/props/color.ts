@@ -99,7 +99,7 @@ export const handleColorChange = (value: unknown): ColorPair => {
 			const asColorPair = valueType.value as ColorPair;
 			let foreground = '';
 			if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
-			else if (typeof asColorPair.foregroundColor?.primary === "string") foreground = asColorPair.foregroundColor.primary;
+			else if (typeof asColorPair.foregroundColor?.primary === 'string') foreground = asColorPair.foregroundColor.primary;
 			if (foreground === undefined || foreground === '') foreground = '#fff';
 			colorContrast = createContrastColorPair({
 				background: asColorPair.backgroundColor,

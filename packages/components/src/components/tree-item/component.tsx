@@ -135,14 +135,14 @@ export class KolTreeItemWc implements TreeItemAPI {
 
 	private handleSlotchange = () => {
 		this.checkForChildren();
-	}
+	};
 
 	private checkForChildren = () => {
 		this.state = {
 			...this.state,
 			_hasChildren: Boolean(this.host.querySelector('slot')?.assignedElements?.().length),
 		};
-	}
+	};
 
 	/**
 	 * Sets focus to link element in tree item.
