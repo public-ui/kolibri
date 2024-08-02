@@ -30,6 +30,8 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 		[first, ...rest] = label.split(accessKey);
 	}
 
+	const hasHint = typeof state._hint === 'string' && state._hint.length > 0;
+
 	return `
 	<kol-input-radio class="kol-input-radio"  ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
 	  <mock:shadow-root>
@@ -71,7 +73,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 							${state._disabled || option.disabled ? "_disabled=''" : ''}
 							${state._hideLabel ? "_hideLabel=''" : ''}
 							${state._touched ? "_touched=''" : ''}
-							${state._hint ? `_hint="${state._hint}"` : "_hint=''"}
+							${option.description ? `_hint="${option.description}"` : ''}
 							_id="${customId}"
 							${(option.label as string) ? `_label="${option.label}"` : ''}
 							_renderNoLabel=""
@@ -113,7 +115,14 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 					})
 					.join(' ')}
 				${hasError ? `<FormFieldMsg _alert={state._alert} _hideError={state._hideError} _msg={state._msg} _id={state._id} />` : ''}
-
+				${
+					hasHint
+						? `
+						<span class="hint" id="${state._id}-hint">
+							{this._hint}
+						</span>`
+						: ''
+				}
 
 	    </fieldset>
 	  </mock:shadow-root>
