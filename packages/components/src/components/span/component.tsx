@@ -45,7 +45,7 @@ export class KolSpanWc implements SpanAPI {
 								{this.state._accessKey && this.state._label.length ? (
 									<InternalUnderlinedAccessKey label={this.state._label} accessKey={this.state._accessKey} />
 								) : (
-									this.state._label ?? ''
+									(this.state._label ?? '')
 								)}
 							</span>
 						)

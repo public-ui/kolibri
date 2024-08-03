@@ -66,24 +66,24 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "17.3.11",
-		"@angular/compiler": "17.3.11",
-		"@angular/compiler-cli": "17.3.11",
-		"@angular/core": "17.3.11",
+		"@angular/common": "17.3.12",
+		"@angular/compiler": "17.3.12",
+		"@angular/compiler-cli": "17.3.12",
+		"@angular/core": "17.3.12",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
 		"@types/node": "ts5.3",
 		"@types/normalize-package-data": "2.4.4",
-		"prettier": "3.3.2",
-		"rimraf": "5.0.7",
+		"prettier": "3.3.3",
+		"rimraf": "5.0.10",
 		"rxjs": "7.8.1",
 		"tslib": "2.6.3",
 		"typescript": "5.4.5",
-		"zone.js": "0.14.7"
+		"zone.js": "0.14.8"
 	},
 	"peerDependencies": {
-		"@angular/core": "17.3.11",
+		"@angular/core": "17.3.12",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [

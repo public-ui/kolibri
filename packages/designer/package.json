@@ -41,7 +41,7 @@
 		"monaco-editor-webpack-plugin": "7.1.0",
 		"prettier": "2.8.8",
 		"register-service-worker": "1.7.2",
-		"solid-js": "1.8.17",
+		"solid-js": "1.8.19",
 		"world_countries_lists": "2.9.0"
 	},
 	"devDependencies": {
@@ -51,18 +51,18 @@
 		"@types/prettier": "2.7.3",
 		"@unocss/preset-mini": "0.58.9",
 		"@unocss/webpack": "0.58.9",
-		"ajv": "8.16.0",
+		"ajv": "8.17.1",
 		"chromedriver": "124.0.4",
 		"cpy-cli": "5.0.0",
 		"eslint-plugin-jsx-a11y": "6.9.0",
 		"eslint-plugin-no-loops": "0.4.0",
 		"nightwatch-axe-verbose": "2.3.1",
 		"npm-run-all": "4.1.5",
-		"playwright": "1.45.0",
+		"playwright": "1.45.3",
 		"react-dev-utils": "12.0.1",
-		"rimraf": "5.0.7",
+		"rimraf": "5.0.10",
 		"ts-prune": "0.10.3",
-		"typescript": "5.5.2"
+		"typescript": "5.5.4"
 	},
 	"files": [
 		"dist"
