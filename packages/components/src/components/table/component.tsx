@@ -666,7 +666,7 @@ export class KolTable implements API {
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
-			this.showPagination ? this.state._pagination?._pageSize ?? 10 : this.state._sortedData.length,
+			this.showPagination ? (this.state._pagination?._pageSize ?? 10) : this.state._sortedData.length,
 			this.state._pagination._page || 1,
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
