@@ -25,7 +25,7 @@ export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
 			${state._quote}
 			<span${hasExpertSlot ? `` : ` aria-hidden="true" hidden=""`}>
 				<slot name="expert">
-					${hasExpertSlot ? slots.expert ?? '' : ``}
+					${hasExpertSlot ? (slots.expert ?? '') : ``}
 				</slot>
 			</span>
 			</${state._variant === 'block' ? 'blockquote' : 'q'}>
