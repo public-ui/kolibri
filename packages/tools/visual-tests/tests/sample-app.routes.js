@@ -110,6 +110,11 @@ ROUTES.set('card/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('combobox/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('details/basic', {
 	axe: {
 		skipFailures: false,
@@ -418,6 +423,7 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 ROUTES.set('scenarios/focus-elements?component=accordion');
 ROUTES.set('scenarios/focus-elements?component=button');
 ROUTES.set('scenarios/focus-elements?component=buttonLink');
+ROUTES.set('scenarios/focus-elements?component=combobox');
 ROUTES.set('scenarios/focus-elements?component=details');
 ROUTES.set('scenarios/focus-elements?component=inputCheckbox');
 ROUTES.set('scenarios/focus-elements?component=inputColor');

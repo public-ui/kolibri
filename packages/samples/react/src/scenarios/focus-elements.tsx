@@ -3,6 +3,7 @@ import {
 	KolAlert,
 	KolButton,
 	KolButtonLink,
+	KolCombobox,
 	KolDetails,
 	KolInputCheckbox,
 	KolInputColor,
@@ -90,6 +91,7 @@ const getFocusElements = () => {
 	focusElements.set('accordion', (_, ref) => <KolAccordion _label="Accordion here" ref={ref} />);
 	focusElements.set('button', (_, ref) => <KolButton _label="Button here" ref={ref}></KolButton>);
 	focusElements.set('buttonLink', (_, ref) => <KolButtonLink _label="ButtonLink here" ref={ref}></KolButtonLink>);
+	focusElements.set('combobox', (_, ref) => <KolCombobox _label="KolCombobox here" _suggestions={[]} ref={ref}></KolCombobox>);
 	focusElements.set('details', (_, ref) => (
 		<KolDetails _label="Details here" ref={ref}>
 			detailed details

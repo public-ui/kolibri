@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react-standalone",
-	"version": "2.1.4",
+	"version": "2.1.6",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -45,14 +45,15 @@
 		"react"
 	],
 	"scripts": {
-		"build": "pnpm prepare && node scripts/make-standalone.js",
-		"prepack": "pnpm build",
-		"prepare": "rimraf dist && cpy \"node_modules/@public-ui/react/dist/*.mjs\" dist --dot"
+		"build": "webpack",
+		"prepack": "pnpm build"
 	},
 	"devDependencies": {
 		"@public-ui/react": "workspace:*",
 		"cpy-cli": "5.0.0",
-		"rimraf": "5.0.7"
+		"rimraf": "5.0.10",
+		"webpack": "5.93.0",
+		"webpack-cli": "5.1.4"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",

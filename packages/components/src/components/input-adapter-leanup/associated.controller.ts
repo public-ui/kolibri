@@ -73,6 +73,7 @@ export class AssociatedInputController implements Watches {
 					break;
 				case 'checkbox': // Checkbox uses default case
 				case 'single-select': // SingleSelect uses default case
+				case 'combobox': // Combobox uses default case
 				default:
 					this.formAssociated = document.createElement('input');
 					this.formAssociated.setAttribute('type', 'hidden');
