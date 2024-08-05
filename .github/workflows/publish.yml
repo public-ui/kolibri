@@ -193,14 +193,19 @@ jobs:
           NPM_CONFIG_PROVENANCE: true
 
       # Publish packages on GitHub packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: '${{env.github-registry}}'
+
       - name: Publish designer
-        run: npm publish --access restricted --registry='${{env.github-registry}}'
+        run: npm publish --access restricted
         working-directory: packages/designer
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish sample react
-        run: npm publish --access restricted --registry='${{env.github-registry}}'
+        run: npm publish --access restricted
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
