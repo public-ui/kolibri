@@ -1,5 +1,8 @@
 @import '../mixins/rem';
-@import '../mixins/alert-wc.scss';
+@import '../mixins/alert-wc';
+
+$option-height: rem(40);
+$visible-options: 5;
 
 @layer kol-theme-component {
 	:host {
@@ -9,7 +12,6 @@
 
 	.combobox {
 		display: block;
-		margin-bottom: rem(24);
 		position: relative;
 
 		&__group {
@@ -36,16 +38,11 @@
 			&:last-child {
 				padding-right: var(--spacing);
 			}
-
-			&:not(.disabled) &:hover {
-				border-color: var(--color-primary);
-			}
 		}
 
 		&__icon {
 			display: grid;
 			place-items: center;
-			cursor: pointer;
 			padding-left: rem(8);
 			padding-right: rem(8);
 
@@ -59,16 +56,18 @@
 			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--color-subtle);
-			max-height: rem(250);
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
 			width: 100%;
+			max-height: calc($option-height * $visible-options + 2px);
 		}
 
 		&__item {
+			display: flex;
+			align-items: center;
+			height: $option-height;
 			padding: rem(10) rem(12);
-			cursor: pointer;
 
 			&:focus {
 				background: var(--color-primary-variant);
