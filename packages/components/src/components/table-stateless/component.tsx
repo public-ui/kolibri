@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 
 import type {
 	KoliBriTableCell,
@@ -54,6 +54,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	private horizontal = true;
 	private cellsToRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
+
+	private checkboxRefs: HTMLKolInputCheckboxElement[] = [];
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -134,6 +136,26 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_selection')
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
+	}
+
+	@Listen('keydown')
+	public handleKeyDown(event: KeyboardEvent) {
+		if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+			const focusedElement = this.host?.shadowRoot?.activeElement as HTMLKolInputCheckboxElement;
+			let index = this.checkboxRefs.indexOf(focusedElement);
+			console.log(focusedElement);
+
+			if (focusedElement && this.checkboxRefs.includes(focusedElement))
+				if (event.key === 'ArrowDown') {
+					event.preventDefault();
+					index = (index + 1) % this.checkboxRefs.length;
+					this.checkboxRefs[index].focus();
+				} else if (event.key === 'ArrowUp') {
+					event.preventDefault();
+					index = (index - 1) % this.checkboxRefs.length;
+					this.checkboxRefs[index].focus();
+				}
+		}
 	}
 
 	public componentDidRender(): void {
@@ -391,6 +413,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
 				<KolInputCheckboxTag
+					ref={(el) => el && this.checkboxRefs.push(el)}
 					_label={label}
 					_hideLabel
 					_checked={selected}
