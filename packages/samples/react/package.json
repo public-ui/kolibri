@@ -11,7 +11,7 @@
 		"build": "rimraf dist && cross-env NODE_ENV=production webpack",
 		"build:deps": "pnpm --filter @public-ui/sample-react^... build",
 		"format": "prettier --check src",
-		"lint": "tsc --noemit && eslint \"{src,tests}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
+		"lint": "tsc --noemit && eslint \"{src,tests,e2e}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
 		"prepare": "npm-run-all prepare:*",
 		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
 		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
