@@ -83,6 +83,12 @@ Beispiel für die Konstruktion des JSON-Array:
 
 Type: `Promise<string | undefined>`
 
+### `kolFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
+
 ## Slots
 
 | Slot | Description                         |

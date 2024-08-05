@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/hydrate",
-	"version": "2.1.5",
+	"version": "2.1.6",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -50,7 +50,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"rimraf": "5.0.7"
+		"rimraf": "5.0.10"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"
