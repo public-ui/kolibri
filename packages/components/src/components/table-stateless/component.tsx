@@ -18,6 +18,7 @@ import type {
 	TableStatelessStates,
 } from '../../schema';
 import {
+	Log,
 	validateLabel,
 	validateTableCallbacks,
 	validateTableData,
@@ -139,7 +140,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	@Listen('keydown')
-	public handleKeyDown(event: KeyboardEvent) {
+	public async handleKeyDown(event: KeyboardEvent) {
 		if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
 			const focusedElement = this.tableDivElement?.querySelector(':focus') as HTMLKolInputCheckboxElement;
 			let index = this.checkboxRefs.indexOf(focusedElement);
@@ -148,11 +149,19 @@ export class KolTableStateless implements TableStatelessAPI {
 				if (event.key === 'ArrowDown') {
 					event.preventDefault();
 					index = (index + 1) % this.checkboxRefs.length;
-					this.checkboxRefs[index].focus();
+					try {
+						await this.checkboxRefs[index].focus();
+					} catch (e) {
+						Log.debug(e);
+					}
 				} else if (event.key === 'ArrowUp') {
 					event.preventDefault();
 					index = (index - 1) % this.checkboxRefs.length;
-					this.checkboxRefs[index].focus();
+					try {
+						await this.checkboxRefs[index].focus();
+					} catch (e) {
+						Log.debug(e);
+					}
 				}
 		}
 	}
