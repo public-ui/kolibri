@@ -141,9 +141,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-			const focusedElement = this.host?.shadowRoot?.activeElement as HTMLKolInputCheckboxElement;
+			const focusedElement = this.tableDivElement?.querySelector(':focus') as HTMLKolInputCheckboxElement;
 			let index = this.checkboxRefs.indexOf(focusedElement);
-			console.log(focusedElement);
 
 			if (focusedElement && this.checkboxRefs.includes(focusedElement))
 				if (event.key === 'ArrowDown') {
@@ -500,6 +499,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<th key={`thead-0-selection`} class="selection-cell selection-control">
 				<KolInputCheckboxTag
+					ref={(el) => el && this.checkboxRefs.push(el)}
 					_label={translate(translationKey)}
 					_hideLabel
 					_checked={isChecked && !intermediate}
