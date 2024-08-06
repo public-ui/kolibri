@@ -28,6 +28,7 @@ const isAssociatedTagName = (name?: string): boolean =>
 	name === 'KOL-INPUT-RANGE' ||
 	name === 'KOL-INPUT-TEXT' ||
 	name === 'KOL-SELECT' ||
+	name === 'KOL-SINGLE-SELECT' ||
 	name === 'KOL-TEXTAREA';
 
 export class AssociatedInputController implements Watches {
@@ -45,7 +46,7 @@ export class AssociatedInputController implements Watches {
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
 
-		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName)) {
+		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName) && component._name) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
 				this.host?.removeChild(el);
 			});
@@ -70,7 +71,8 @@ export class AssociatedInputController implements Watches {
 				case 'textarea':
 					this.formAssociated = document.createElement('textarea');
 					break;
-				case 'checkbox': // Checkbox use default case
+				case 'checkbox': // Checkbox uses default case
+				case 'single-select': // SingleSelect uses default case
 				case 'combobox': // Combobox uses default case
 				default:
 					this.formAssociated = document.createElement('input');

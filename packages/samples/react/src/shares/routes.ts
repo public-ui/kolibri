@@ -49,6 +49,7 @@ import { SCENARIO_ROUTES } from '../scenarios/routes';
 import { Routes } from './types';
 import { TREE_ROUTES } from '../components/tree/routes';
 import { COMBOBOX_ROUTES } from '../components/combobox/routes';
+import { SINGLE_SELECT_ROUTES } from '../components/single-select/routes';
 
 export const ROUTES: Routes = {
 	...HANDOUT_ROUTES,
@@ -93,6 +94,7 @@ export const ROUTES: Routes = {
 	...SELECT_ROUTES,
 	...SKIP_NAV_ROUTES,
 	...SPIN_ROUTES,
+	...SINGLE_SELECT_ROUTES,
 	...SPLIT_BUTTON_ROUTES,
 	...TABLE_ROUTES,
 	...TABS_ROUTES,
