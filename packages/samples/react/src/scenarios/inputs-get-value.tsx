@@ -34,6 +34,7 @@ type Props = {
 	InputComponent: React.ComponentType<any>;
 	inputProps: { [key: string]: any };
 	formatter?: (value: any) => string;
+	testId?: string;
 };
 const Scenario = (props: Props) => {
 	const ref = useRef<HTMLStencilElement & { getValue: () => Promise<any> }>();
@@ -69,7 +70,7 @@ const Scenario = (props: Props) => {
 	);
 
 	return (
-		<div className="grid grid-cols-3 items-end gap-4">
+		<div className="grid grid-cols-3 items-end gap-4" data-testid={props.testId}>
 			<props.InputComponent ref={ref} _on={eventListeners} {...props.inputProps} />
 			<KolButton
 				_label="getValue()"
@@ -109,13 +110,18 @@ export const InputsGetValue: FC = () => {
 					</KolCard>
 
 					<div className="grid gap-4">
-						<Scenario InputComponent={KolInputText} inputProps={{ _label: 'InputText' }} />
-						<Scenario InputComponent={KolInputCheckbox} inputProps={{ _label: 'KolInputCheckbox (value)', _value: 'Checkbox True Value' }} />
-						<Scenario InputComponent={KolInputCheckbox} inputProps={{ _label: 'KolInputCheckbox (boolean)' }} />
-						<Scenario InputComponent={KolInputColor} inputProps={{ _label: 'KolInputColor' }} />
-						<Scenario InputComponent={KolInputDate} inputProps={{ _label: 'KolInputDate' }} />
-						<Scenario InputComponent={KolInputEmail} inputProps={{ _label: 'KolInputEmail' }} />
+						<Scenario testId="scenario-inputText" InputComponent={KolInputText} inputProps={{ _label: 'InputText' }} />
 						<Scenario
+							testId="scenario-inputCheckboxString"
+							InputComponent={KolInputCheckbox}
+							inputProps={{ _label: 'KolInputCheckbox (value)', _value: 'Checkbox True Value' }}
+						/>
+						<Scenario testId="scenario-inputCheckboxBoolean" InputComponent={KolInputCheckbox} inputProps={{ _label: 'KolInputCheckbox (boolean)' }} />
+						<Scenario testId="scenario-inputColor" InputComponent={KolInputColor} inputProps={{ _label: 'KolInputColor' }} />
+						<Scenario testId="scenario-inputDate" InputComponent={KolInputDate} inputProps={{ _label: 'KolInputDate' }} />
+						<Scenario testId="scenario-inputEmail" InputComponent={KolInputEmail} inputProps={{ _label: 'KolInputEmail' }} />
+						<Scenario
+							testId="scenario-inputFile"
 							InputComponent={KolInputFile}
 							inputProps={{ _label: 'KolInputFile' }}
 							formatter={(value) =>
@@ -126,10 +132,11 @@ export const InputsGetValue: FC = () => {
 									: JSON.stringify(value)
 							}
 						/>
-						<Scenario InputComponent={KolInputNumber} inputProps={{ _label: 'KolInputNumber' }} />
-						<Scenario InputComponent={KolInputPassword} inputProps={{ _label: 'KolInputPassword' }} />
-						<Scenario InputComponent={KolInputRange} inputProps={{ _label: 'KolInputRange' }} />
+						<Scenario testId="scenario-inputNumber" InputComponent={KolInputNumber} inputProps={{ _label: 'KolInputNumber' }} />
+						<Scenario testId="scenario-inputPassword" InputComponent={KolInputPassword} inputProps={{ _label: 'KolInputPassword' }} />
+						<Scenario testId="scenario-inputRange" InputComponent={KolInputRange} inputProps={{ _label: 'KolInputRange' }} />
 						<Scenario
+							testId="scenario-inputRadio"
 							InputComponent={KolInputRadio}
 							inputProps={{
 								_label: 'KolInputRadio',
@@ -143,6 +150,7 @@ export const InputsGetValue: FC = () => {
 							}}
 						/>
 						<Scenario
+							testId="scenario-select"
 							InputComponent={KolSelect}
 							inputProps={{
 								_label: 'KolSelect',
@@ -154,6 +162,7 @@ export const InputsGetValue: FC = () => {
 							}}
 						/>
 						<Scenario
+							testId="scenario-singleSelect"
 							InputComponent={KolSingleSelect}
 							inputProps={{
 								_label: 'KolSingleSelect',
@@ -166,6 +175,7 @@ export const InputsGetValue: FC = () => {
 							}}
 						/>
 						<Scenario
+							testId="scenario-combobox"
 							InputComponent={KolCombobox}
 							inputProps={{
 								_label: 'KolCombobox',
@@ -174,12 +184,14 @@ export const InputsGetValue: FC = () => {
 							}}
 						/>
 						<Scenario
+							testId="scenario-textarea"
 							InputComponent={KolTextarea}
 							inputProps={{
 								_label: 'KolTextarea',
 							}}
 						/>
 						<Scenario
+							testId="scenario-button"
 							InputComponent={KolButton}
 							inputProps={{
 								_label: 'KolButton',
@@ -188,6 +200,7 @@ export const InputsGetValue: FC = () => {
 							}}
 						/>
 						<Scenario
+							testId="scenario-buttonLink"
 							InputComponent={KolButtonLink}
 							inputProps={{
 								_label: 'KolButtonLink',
