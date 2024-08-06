@@ -105,10 +105,19 @@ test.describe('inputs-get-value', () => {
 		expect(await scenario.locator('pre').innerText()).toBe('["Rio de Janeiro"]');
 	});
 
+	test('KolSingleSelect', async ({ page }) => {
+		const scenario = page.getByTestId('scenario-singleSelect');
+		await scenario.locator('#input').getByRole('button').click();
+		await scenario.getByRole('option', { name: 'New York' }).click();
+		await scenario.getByRole('button', { name: /getValue\(\)/ }).click();
+
+		expect(await scenario.locator('pre').innerText()).toBe('"New York"');
+	});
+
 	test('KolCombobox', async ({ page }) => {
 		const scenario = page.getByTestId('scenario-combobox');
 		await scenario.getByRole('combobox').fill('Atlantis');
-		await scenario.getByRole('button').click();
+		await scenario.getByRole('button', { name: /getValue\(\)/ }).click();
 
 		expect(await scenario.locator('pre').innerText()).toBe('"Atlantis"');
 	});

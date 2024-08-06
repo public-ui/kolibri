@@ -162,6 +162,7 @@ export const InputsGetValue: FC = () => {
 							}}
 						/>
 						<Scenario
+							testId="scenario-singleSelect"
 							InputComponent={KolSingleSelect}
 							inputProps={{
 								_label: 'KolSingleSelect',
