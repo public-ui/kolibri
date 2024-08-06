@@ -16,6 +16,7 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolSelect,
+	KolSingleSelect,
 	KolCombobox,
 	KolTextarea,
 } from '@public-ui/react';
@@ -150,6 +151,18 @@ export const InputsGetValue: FC = () => {
 									{ label: 'Rio de Janeiro', value: 'Rio de Janeiro' },
 									{ label: 'Rosenheim', value: 'Rosenheim' },
 								],
+							}}
+						/>
+						<Scenario
+							InputComponent={KolSingleSelect}
+							inputProps={{
+								_label: 'KolSingleSelect',
+								_options: [
+									{ label: 'New York', value: 'New York' },
+									{ label: 'Rio de Janeiro', value: 'Rio de Janeiro' },
+									{ label: 'Rosenheim', value: 'Rosenheim' },
+								],
+								_value: 'Rosenheim',
 							}}
 						/>
 						<Scenario

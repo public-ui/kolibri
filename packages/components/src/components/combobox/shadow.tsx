@@ -1,4 +1,6 @@
 import type {
+	ComboboxAPI,
+	ComboboxStates,
 	HideErrorPropType,
 	IdPropType,
 	InputTypeOnDefault,
@@ -6,26 +8,24 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	ComboboxAPI,
-	ComboboxStates,
 	Stringified,
+	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	SuggestionsPropType,
 	W3CInputValue,
 } from '../../schema';
-import { Component, Element, h, Host, Method, Prop, State, Watch, Fragment, Listen } from '@stencil/core';
+import { showExpertSlot } from '../../schema';
+import type { JSX } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { ComboboxController } from './controller';
-
-import type { JSX } from '@stencil/core';
 import { KolIconTag, KolInputWcTag } from '../../core/component-names';
-import { propagateFocus, showExpertSlot } from '../../schema';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
+import clsx from 'clsx';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -39,7 +39,7 @@ import { translate } from '../../i18n';
 })
 export class KolCombobox implements ComboboxAPI {
 	@Element() private readonly host?: HTMLKolComboboxElement;
-	private ref?: HTMLInputElement;
+	private refInput?: HTMLInputElement;
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
 
@@ -49,11 +49,18 @@ export class KolCombobox implements ComboboxAPI {
 		return this.state._value;
 	}
 
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.refInput?.focus();
+	}
+
 	private toggleListbox = () => {
 		if (this.state._disabled === true) {
 			this._isOpen = false;
 		} else {
 			this._isOpen = !this._isOpen;
+			this.refInput?.focus();
 			if (this._isOpen && Array.isArray(this._filteredSuggestions) && this._filteredSuggestions.length > 0) {
 				const selectedIndex = this._filteredSuggestions.findIndex((option) => option === this.state._value);
 				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
@@ -62,8 +69,7 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	};
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.refInput = ref;
 	};
 
 	private selectOption(event: Event, option: string) {
@@ -71,7 +77,7 @@ export class KolCombobox implements ComboboxAPI {
 		this.controller.onFacade.onChange(event, option);
 		this.controller.setFormAssociatedValue(option);
 		this.state._value = option;
-		this.ref?.focus();
+		this.refInput?.focus();
 	}
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
@@ -113,7 +119,6 @@ export class KolCombobox implements ComboboxAPI {
 		if (newIndex < 0) {
 			newIndex = this._filteredSuggestions.length - 1;
 		}
-
 		this.focusOption(newIndex);
 	}
 
@@ -144,7 +149,7 @@ export class KolCombobox implements ComboboxAPI {
 
 		return (
 			<Host class="kol-combobox">
-				<div class={`combobox ${this.state._disabled === true ? 'disabled' : ''} `}>
+				<div class={clsx('combobox', this.state._disabled && 'combobox--disabled')}>
 					<KolInputWcTag
 						_accessKey={this.state._accessKey}
 						_disabled={this.state._disabled}
@@ -158,6 +163,7 @@ export class KolCombobox implements ComboboxAPI {
 						_required={this.state._required}
 						_tooltipAlign={this._tooltipAlign}
 						_touched={this.state._touched}
+						onClick={() => this.refInput?.focus()}
 						role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 					>
 						<span slot="label">
@@ -199,16 +205,19 @@ export class KolCombobox implements ComboboxAPI {
 									spellcheck="false"
 									{...this.controller.onFacade}
 									onInput={this.onInput.bind(this)}
-									onClick={this.toggleListbox.bind(this)}
 									onChange={this.onChange.bind(this)}
 									placeholder={this.state._placeholder}
 								/>
-								<span class={{ combobox__icon: true }}>
-									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} onClick={this.toggleListbox.bind(this)} />
-								</span>
+								<button tabindex="-1" class="combobox__icon" onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled}>
+									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
+								</button>
 							</div>
 							{this._isOpen && !(this.state._disabled === true) && (
-								<ul role="listbox" aria-label="" class={{ combobox__listbox: true }} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+								<ul
+									role="listbox"
+									class={clsx('combobox__listbox', this.blockSuggestionMouseOver && 'combobox__listbox--cursor-hidden')}
+									onKeyDown={this.handleKeyDownDropdown.bind(this)}
+								>
 									{Array.isArray(this._filteredSuggestions) &&
 										this._filteredSuggestions.length > 0 &&
 										this._filteredSuggestions.map((option, index) => (
@@ -219,7 +228,7 @@ export class KolCombobox implements ComboboxAPI {
 													if (el) this.refSuggestions[index] = el;
 												}}
 												data-index={index}
-												tabIndex={0}
+												tabIndex={-1}
 												role="option"
 												aria-selected={this.state._value === option}
 												onClick={(e) => {
@@ -227,7 +236,9 @@ export class KolCombobox implements ComboboxAPI {
 													this.toggleListbox();
 												}}
 												onMouseOver={() => {
-													this.focusOption(index);
+													if (!this.blockSuggestionMouseOver) {
+														this.focusOption(index);
+													}
 												}}
 												onFocus={() => {
 													this.focusOption(index);
@@ -260,7 +271,7 @@ export class KolCombobox implements ComboboxAPI {
 			if (isOpen !== undefined) {
 				this._isOpen = isOpen;
 				if (!isOpen) {
-					this.ref?.focus();
+					this.refInput?.focus();
 				}
 			}
 			callback?.();
@@ -268,17 +279,26 @@ export class KolCombobox implements ComboboxAPI {
 		switch (event.key) {
 			case 'Down':
 			case 'ArrowDown': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(true, () => this.moveFocus(1));
 				break;
 			}
 			case 'Up':
 			case 'ArrowUp': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(true, () => this.moveFocus(-1));
 				break;
 			}
+			case 'Tab':
+				if (this._isOpen) {
+					this._isOpen = !this._isOpen;
+					this.refInput?.focus();
+				}
+				break;
 			case 'Esc':
 			case 'Escape': {
 				handleEvent(false);
+				this.refInput?.focus();
 				break;
 			}
 			case 'NumpadEnter':
@@ -287,6 +307,7 @@ export class KolCombobox implements ComboboxAPI {
 				break;
 			}
 			case 'Home': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
 						this.focusOption(0);
@@ -295,6 +316,7 @@ export class KolCombobox implements ComboboxAPI {
 				break;
 			}
 			case 'End': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
 						this.focusOption(this._filteredSuggestions ? this._filteredSuggestions.length - 1 : 0);
@@ -303,10 +325,12 @@ export class KolCombobox implements ComboboxAPI {
 				break;
 			}
 			case 'PageUp': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => this._isOpen && this.moveFocus(-10));
 				break;
 			}
 			case 'PageDown': {
+				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
 				break;
 			}
@@ -315,7 +339,9 @@ export class KolCombobox implements ComboboxAPI {
 
 	private readonly controller: ComboboxController;
 	@State()
-	private _isOpen = false;
+	private blockSuggestionMouseOver: boolean = false;
+	@State()
+	private _isOpen: boolean = false;
 	@State()
 	private _filteredSuggestions?: SuggestionsPropType;
 
@@ -442,7 +468,7 @@ export class KolCombobox implements ComboboxAPI {
 	};
 
 	public constructor() {
-		this.controller = new ComboboxController(this, 'select', this.host);
+		this.controller = new ComboboxController(this, 'combobox', this.host);
 		this.onInput = this.onInput.bind(this);
 	}
 
@@ -553,17 +579,42 @@ export class KolCombobox implements ComboboxAPI {
 		this._filteredSuggestions = this.state._suggestions;
 	}
 
+	@Listen('mousemove')
+	public handleMouseEvent() {
+		this.blockSuggestionMouseOver = false;
+	}
+
+	@Listen('focusout', { target: 'window' })
+	public handleFocusOut() {
+		setTimeout(() => {
+			if (!this.host?.contains(document.activeElement)) {
+				this.onBlur();
+			}
+		}, 0);
+	}
+	@Listen('blur', { target: 'window' })
+	public handleWindowBlur() {
+		this.onBlur();
+	}
+
+	private onBlur() {
+		if (this._isOpen) {
+			this._isOpen = !this._isOpen;
+			this.refInput?.focus();
+		}
+	}
+
 	private onChange(event: Event): void {
 		// Event handling
 		stopPropagation(event);
-		tryToDispatchKoliBriEvent('change', this.host, this._value);
+		tryToDispatchKoliBriEvent('change', this.host, this.state._value);
 
 		// Static form handling
-		this.controller.setFormAssociatedValue(this._value as unknown as string);
+		this.controller.setFormAssociatedValue(this.state._value as unknown as string);
 
 		// Callback
 		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
-			this.state._on.onChange(event, this._value);
+			this.state._on.onChange(event, this.state._value);
 		}
 	}
 }

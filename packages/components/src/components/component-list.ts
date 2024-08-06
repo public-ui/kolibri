@@ -47,6 +47,7 @@ import { KolSelect } from './select/shadow';
 import { KolSkipNav } from './skip-nav/shadow';
 import { KolSpanWc } from './span/component';
 import { KolSpin } from './spin/shadow';
+import { KolSingleSelect } from './single-select/shadow';
 import { KolSplitButton } from './split-button/shadow';
 import { KolSymbol } from './symbol/component';
 import { KolTable } from './table/shadow';
@@ -113,6 +114,7 @@ export const COMPONENTS = [
 	KolSkipNav,
 	KolSpanWc,
 	KolSpin,
+	KolSingleSelect,
 	KolSplitButton,
 	KolSymbol,
 	KolTable,
