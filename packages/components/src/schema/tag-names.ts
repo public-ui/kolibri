@@ -41,6 +41,7 @@ export enum TagEnum {
 	'separator', // TODO: github pr link
 	'skip-nav',
 	'spin',
+	'single-select',
 	'split-button',
 	'symbol',
 	'table',

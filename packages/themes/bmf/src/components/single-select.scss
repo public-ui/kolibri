@@ -1,0 +1,86 @@
+@import '../mixins/rem';
+@import '../mixins/input.scss';
+
+$option-height: rem(40);
+$visible-options: 5;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.single-select {
+		&__group {
+			width: 100%;
+			padding: 0 0.8rem;
+		}
+
+		&__input {
+			border: none;
+			flex-grow: 1;
+			width: calc(100% - 2.5rem);
+			position: relative;
+
+			&::placeholder {
+				color: var(--color-grey);
+			}
+
+			&:first-child {
+				padding-left: var(--spacing);
+			}
+
+			&:last-child {
+				padding-right: var(--spacing);
+			}
+
+			&:not(.disabled) &:hover {
+				border-color: var(--color-primary);
+			}
+		}
+
+		&__button {
+			display: grid;
+			place-items: center;
+			padding: 0 1rem;
+
+			&:focus {
+				outline: 0 !important;
+			}
+		}
+
+		&__listbox {
+			border-style: solid;
+			border-width: 1px;
+			border-radius: var(--border-radius);
+			border-color: var(--color-grey);
+			max-height: calc($option-height * $visible-options + 2px);
+			overflow-y: auto;
+			overflow-x: hidden;
+			width: 100%;
+		}
+
+		&__item {
+			border-radius: 0.25em;
+			color: var(--color-black);
+			display: flex;
+			height: $option-height;
+
+			.radio-label {
+				align-self: center;
+				padding-left: 1em;
+			}
+
+			&:focus,
+			&.highlighted {
+				background: var(--color-ocean);
+				outline: 0 !important;
+
+				.radio-label {
+					color: white !important;
+				}
+			}
+		}
+	}
+
+	@include input;
+}

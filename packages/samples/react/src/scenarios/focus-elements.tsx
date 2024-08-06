@@ -18,6 +18,7 @@ import {
 	KolLink,
 	KolLinkButton,
 	KolSelect,
+	KolSingleSelect,
 	KolTextarea,
 } from '@public-ui/react';
 import type { FC, ForwardRefRenderFunction } from 'react';
@@ -72,6 +73,17 @@ const getFocusElements = () => {
 				{ label: 'Option B', value: 'B' },
 			]}
 			_rows={2}
+			ref={ref}
+		/>
+	));
+	focusElements.set('singleSelect', (_, ref) => (
+		<KolSingleSelect
+			_name="singleSelect"
+			_label="Single Select"
+			_options={[
+				{ label: 'Option A', value: 'A' },
+				{ label: 'Option B', value: 'B' },
+			]}
 			ref={ref}
 		/>
 	));
