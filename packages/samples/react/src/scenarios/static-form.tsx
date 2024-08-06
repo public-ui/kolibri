@@ -11,6 +11,7 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolSelect,
+	KolSingleSelect,
 	KolCombobox,
 	KolTextarea,
 } from '@public-ui/react';
@@ -91,6 +92,14 @@ export const StaticForm: FC = () => {
 						{ label: 'Option B', value: 'B' },
 					]}
 					_rows={2}
+				/>
+				<KolSingleSelect
+					_name="singleSelect"
+					_label="Single Select"
+					_options={[
+						{ label: 'Option A', value: 'A' },
+						{ label: 'Option B', value: 'B' },
+					]}
 				/>
 				<KolCombobox _name="combobox" _label="Combobox" _suggestions={COUNTRY_SUGGESTIONS} />
 				<KolTextarea _name="textarea" _label="Textarea" _rows={5} />

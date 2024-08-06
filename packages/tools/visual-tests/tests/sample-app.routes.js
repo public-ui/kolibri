@@ -287,6 +287,11 @@ ROUTES.set('spin/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('single-select/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('spin/custom', {
 	axe: {
 		skipFailures: false,
@@ -435,4 +440,5 @@ ROUTES.set('scenarios/focus-elements?component=link');
 ROUTES.set('scenarios/focus-elements?component=linkButton');
 ROUTES.set('scenarios/focus-elements?component=select');
 ROUTES.set('scenarios/focus-elements?component=selectMultiple');
+ROUTES.set('scenarios/focus-elements?component=singleSelect');
 ROUTES.set('scenarios/focus-elements?component=textarea');

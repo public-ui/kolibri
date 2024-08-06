@@ -2,8 +2,8 @@ name: 01 - Publish
 
 env:
   access: public
-  registry: https://registry.npmjs.org
-  token: ${{ secrets.NPMJS_GRANULAR_TOKEN }}
+  npmjs-registry: https://registry.npmjs.org
+  github-registry: https://npm.pkg.github.com
 
 on:
   workflow_dispatch:
@@ -30,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+      packages: write
     steps:
       - uses: actions/create-github-app-token@v1
         id: app-token
@@ -53,8 +54,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: '${{env.registry}}'
-          scope: '@public-ui'
+          registry-url: '${{env.npmjs-registry}}'
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         id: pnpm-install
@@ -65,6 +66,7 @@ jobs:
         id: pnpm-cache
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
@@ -91,105 +93,119 @@ jobs:
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/components
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v15
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v15
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v16
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v16
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v17
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v17
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v18
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v18
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/react
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react-standalone
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/react-standalone
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter solid
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/solid
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter vue
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/vue
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter preact
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/preact
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter hydrate
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/hydrate
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish create-kolibri
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/create-kolibri
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools kolibri-cli
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/tools/kolibri-cli
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme default
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/themes/default
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish themes
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/themes
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish sample react
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/samples/react
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools visual-tests
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/tools/visual-tests
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
 
-  publish-page:
-    needs: publish
-    uses: public-ui/kolibri/.github/workflows/publish-page.yml@develop
+      # Publish packages on GitHub packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: '${{env.github-registry}}'
+
+      - name: Publish designer
+        run: npm publish --access restricted
+        working-directory: packages/designer
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish sample react
+        run: npm publish --access restricted
+        working-directory: packages/samples/react
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
