@@ -22,7 +22,7 @@ export const getTreeItemHtml = (props: TreeItemProps): string => {
 	<${KolTreeItemWcTag} class=" kol-tree-item kol-tree-item-wc">
 	<li class="tree-item" style="--level: 0;">
 	<${KolLinkWcTag}
-		${state._hasChildren && state._open ? `_ariaexpanded=""` : ''}
+		${state._hasChildren && state._open ? `_ariaExpanded=""` : ''}
 		class="tree-link first-level ${state._active ? 'active' : ''}"
 		_label=""
 		_role="treeitem"
