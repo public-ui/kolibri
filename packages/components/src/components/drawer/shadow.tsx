@@ -16,7 +16,6 @@ import type { JSX } from '@stencil/core';
 	shadow: true,
 })
 export class KolDrawer implements DrawerAPI {
-	public hostElement?: HTMLElement;
 	private dialogElement?: HTMLDialogElement;
 	private dialogWrapperElement?: HTMLDivElement;
 
@@ -69,7 +68,7 @@ export class KolDrawer implements DrawerAPI {
 	public render(): JSX.Element {
 		const isModal = this.state._modal;
 		return (
-			<Host class={`kol-drawer drawer ${isModal ? 'drawer--modal' : ''}`} ref={(el) => (this.hostElement = el as HTMLElement)}>
+			<Host class={`kol-drawer drawer ${isModal ? 'drawer--modal' : ''}`}>
 				<dialog class="drawer__dialog" ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>

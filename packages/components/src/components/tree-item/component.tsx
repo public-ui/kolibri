@@ -14,7 +14,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
-	@Element() host!: HTMLElement;
+	@Element() host!: HTMLKolTreeItemWcElement;
 
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;

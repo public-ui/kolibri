@@ -10,7 +10,7 @@ import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 	shadow: false,
 })
 export class KolTreeWc implements TreeAPI {
-	@Element() host!: HTMLElement;
+	@Element() host!: HTMLKolTreeWcElement;
 
 	@State() public state: TreeStates = {
 		_label: '',
