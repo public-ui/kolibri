@@ -5,6 +5,7 @@ import type {
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
 	PropAriaControls,
+	PropAriaDescription,
 	PropAriaSelected,
 	PropButtonCallbacks,
 	PropButtonType,
@@ -31,6 +32,7 @@ export type OptionalButtonProps = {
 	ariaExpanded: AriaExpandedPropType;
 } & PropAlternativeButtonLinkRole &
 	PropAriaControls &
+	PropAriaDescription &
 	PropAriaSelected &
 	PropButtonCallbacks<StencilUnknown> &
 	PropButtonType &
