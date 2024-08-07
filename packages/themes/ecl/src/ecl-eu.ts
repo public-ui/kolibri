@@ -32,6 +32,7 @@ import navCss from './components/ecl-eu/nav.scss';
 import paginationCss from './components/ecl-eu/pagination.scss';
 import progressCss from './components/ecl-eu/progress.scss';
 import selectCss from './components/ecl-eu/select.scss';
+import singleSelectCss from './components/ecl-eu/single-select.scss';
 import skipNavCss from './components/ecl-eu/skip-nav.scss';
 import spinCss from './components/ecl-eu/spin.scss';
 import splitButtonCss from './components/ecl-eu/split-button.scss';
@@ -70,6 +71,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-INPUT-TEXT': inputTextCss,
 	'KOL-KOLIBRI': kolibriCss,
 	'KOL-SELECT': selectCss,
+	'KOL-SINGLE-SELECT': singleSelectCss,
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-TABLE-STATEFUL': tableStatefulCss,
 	'KOL-TABLE-STATELESS': tableStatelessCss,
