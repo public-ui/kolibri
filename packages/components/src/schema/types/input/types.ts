@@ -29,7 +29,7 @@ export type Option<T> = {
 	disabled?: boolean;
 	label: string | number;
 	// selected?: boolean; // wird über den value der *-Komponente gesteuert
-	value: T;
+	value?: T;
 };
 
 export type Optgroup<T> = {

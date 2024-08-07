@@ -86,7 +86,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 								disabled={option.disabled}
 								key={key}
 								// label={option.label}
-								selected={isSelected(this.state._value, (option as Option<W3CInputValue>).value)}
+								selected={isSelected(this.state._value, (option as Option<W3CInputValue>).value || option.label)}
 								value={key}
 							>
 								{option.label}
@@ -183,7 +183,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 												disabled={option.disabled}
 												key={key}
 												// label={option.label}
-												selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
+												selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value || option.label)}
 												value={key}
 											>
 												{option.label}
@@ -451,7 +451,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	private onInput(event: Event): void {
 		this._value = Array.from(this.selectRef?.options || [])
 			.filter((option) => option.selected === true)
-			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
+			.map((option) => {
+				return this.controller.getOptionByKey(option.value)?.value as string;
+			});
 
 		// Event handling
 		tryToDispatchKoliBriEvent('input', this.host, this._value);

@@ -107,7 +107,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 						 */
 						const customId = `${this.state._id}-${index}`;
 						const slotName = `radio-${index}`;
-						const selected = this.state._value === option.value;
+						const selected = this.state._value === (option.value || option.label);
 
 						return (
 							<KolInputWcTag
@@ -130,7 +130,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 							>
 								<div slot={slotName} class="radio-input-wrapper">
 									<input
-										ref={this.state._value === option.value ? this.catchRef : undefined}
+										ref={this.state._value === (option.value || option.label) ? this.catchRef : undefined}
 										title=""
 										accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
@@ -410,7 +410,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 				// Callback
 				if (typeof this.state._on?.onInput === 'function') {
-					this.state._on.onInput(event, option.value);
+					this.state._on.onInput(event, option.value || option.label);
 				}
 			}
 		}
@@ -422,17 +422,17 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			if (option !== undefined) {
 				// Event handling
 				stopPropagation(event);
-				tryToDispatchKoliBriEvent('change', this.host, option.value);
+				tryToDispatchKoliBriEvent('change', this.host, option.value || option.label);
 
 				// Static form handling
-				this.controller.setFormAssociatedValue(option.value);
+				this.controller.setFormAssociatedValue(option.value || option.label);
 
 				// Callback
 				if (typeof this.state._on?.onChange === 'function') {
-					this.state._on.onChange(event, option.value);
+					this.state._on.onChange(event, option.value || option.label);
 				}
 
-				this.currentValue = option.value;
+				this.currentValue = option.value || option.label;
 			}
 		}
 	};

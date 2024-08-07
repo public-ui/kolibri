@@ -440,9 +440,9 @@ export class KolPagination implements PaginationAPI {
 		if (Array.isArray(pageSizeOptions) && pageSizeOptions.length > 0) {
 			const find = pageSizeOptions.find((option) => option.value === pageSize);
 			if (find === undefined) {
-				pageSize = pageSizeOptions[0].value;
+				pageSize = pageSizeOptions[0].value as number;
 			} else {
-				pageSize = find.value;
+				pageSize = find.value as number;
 			}
 			nextState.set('_pageSize', pageSize);
 		}

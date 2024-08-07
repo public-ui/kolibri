@@ -141,11 +141,7 @@ export const InputsGetValue: FC = () => {
 							inputProps={{
 								_label: 'KolInputRadio',
 								_orientation: 'horizontal',
-								_options: [
-									{ label: 'New York', value: 'New York' },
-									{ label: 'Rio de Janeiro', value: 'Rio de Janeiro' },
-									{ label: 'Rosenheim', value: 'Rosenheim' },
-								],
+								_options: [{ label: 'New York' }, { label: 'Rio de Janeiro', value: 'Rio de Janeiro' }, { label: 'Rosenheim', value: 'Rosenheim' }],
 								_value: 'New York',
 							}}
 						/>
