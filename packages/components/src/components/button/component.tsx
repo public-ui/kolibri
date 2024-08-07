@@ -101,7 +101,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		const hasAriaDescription = Boolean(this._ariaDescription?.trim()?.length);
+		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
 
 		return (
 			<Host class="kol-button-wc">
@@ -153,7 +153,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 				></KolTooltipWcTag>
 				{hasAriaDescription && (
 					<span class="visually-hidden" id={this.internalDescriptionById}>
-						{this._ariaDescription}
+						{this.state._ariaDescription}
 					</span>
 				)}
 			</Host>
