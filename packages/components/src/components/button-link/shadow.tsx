@@ -1,6 +1,7 @@
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonLinkProps,
 	ButtonTypePropType,
@@ -94,7 +95,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: string;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)

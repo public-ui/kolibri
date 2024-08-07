@@ -2,6 +2,7 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
+	AriaDescriptionPropType,
 	AriaExpandedPropType,
 	AriaOwnsPropType,
 	DisabledPropType,
@@ -200,7 +201,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: string;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Marks this element as open/expanded, or that the connected element (aria-controls/aria-owns) is open/expanded.
@@ -287,7 +288,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	}
 
 	@Watch('_ariaDescription')
-	public validateAriaDescription(value?: string): void {
+	public validateAriaDescription(value?: AriaDescriptionPropType): void {
 		validateAriaDescription(this, value);
 	}
 

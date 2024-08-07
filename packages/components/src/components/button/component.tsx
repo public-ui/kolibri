@@ -1,6 +1,7 @@
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaDescriptionPropType,
 	ButtonAPI,
 	ButtonCallbacksPropType,
 	ButtonStates,
@@ -175,7 +176,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: string;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -288,7 +289,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	}
 
 	@Watch('_ariaDescription')
-	public validateAriaDescription(value?: string): void {
+	public validateAriaDescription(value?: AriaDescriptionPropType): void {
 		validateAriaDescription(this, value);
 	}
 

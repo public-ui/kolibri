@@ -9,6 +9,6 @@ export const BUTTON_LINK_ROUTES: Routes = {
 		basic: ButtonLinkBasic,
 		icons: ButtonLinkIcons,
 		image: ButtonLinkImage,
-		'aria-description': ButtonLinkAriaDescription
+		'aria-description': ButtonLinkAriaDescription,
 	},
 };

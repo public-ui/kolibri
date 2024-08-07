@@ -2,6 +2,7 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
+	AriaDescriptionPropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DownloadPropType,
@@ -89,7 +90,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: string;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.

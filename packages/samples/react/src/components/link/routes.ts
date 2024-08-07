@@ -11,6 +11,6 @@ export const LINK_ROUTES: Routes = {
 		icons: LinkIcons,
 		image: LinkImage,
 		target: LinkTarget,
-		'aria-description': LinkAriaDescription
+		'aria-description': LinkAriaDescription,
 	},
 };

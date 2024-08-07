@@ -2,6 +2,7 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
+	AriaDescriptionPropType,
 	DownloadPropType,
 	FocusableElement,
 	HrefPropType,
@@ -87,7 +88,7 @@ export class KolLink implements LinkProps, FocusableElement {
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: string;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
