@@ -153,6 +153,12 @@ Type: `Promise<string | undefined>`
 
 Type: `Promise<void>`
 
+### `reset() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
+
 ## Slots
 
 | Slot | Description                         |

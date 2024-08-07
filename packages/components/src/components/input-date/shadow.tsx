@@ -66,6 +66,22 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async reset() {
+		this.state = {
+			...this.state,
+			_value: null,
+		};
+		this.controller.setFormAssociatedValue('');
+
+		// Setting the state value might not trigger a state change and rerender if the previous value is already an empty string,
+		// which can occur during an incomplete input. Directly setting the DOM property "forces" a reset of the native element.
+		if (this.inputRef) {
+			this.inputRef.value = '';
+		}
+	}
+
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
@@ -138,7 +154,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 							step={this.state._step}
 							spellcheck="false"
 							type={this.state._type}
-							value={this.state._value as string}
+							value={this.state._value || undefined}
 							{...this.controller.onFacade}
 							onKeyDown={this.onKeyDown}
 						/>
