@@ -24,6 +24,7 @@ import {
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
 	validateAriaCurrentValue,
+	validateAriaDescription,
 	validateAriaExpanded,
 	validateAriaOwns,
 	validateDisabled,
@@ -42,6 +43,7 @@ import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 import { preventDefaultAndStopPropagation } from '../../utils/events';
+import { nonce } from '../../utils/dev.utils';
 import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 
 import { translate } from '../../i18n';
@@ -56,6 +58,8 @@ import { translate } from '../../i18n';
 export class KolLinkWc implements LinkAPI, FocusableElement {
 	private anchorRef?: HTMLAnchorElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
+
+	private readonly internalDescriptionById = nonce();
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
 		this.anchorRef = ref;
@@ -116,6 +120,8 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs } = this.getRenderValues();
 		const hasExpertSlot = showExpertSlot(this.state._label);
+		const hasAriaDescription = Boolean(this._ariaDescription?.trim()?.length);
+
 		return (
 			<Host class="kol-link-wc">
 				<a
@@ -123,6 +129,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
+					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
 					aria-expanded={this.state._ariaExpanded ? 'true' : undefined}
 					aria-owns={this.state._ariaOwns}
@@ -171,6 +178,11 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
 				></KolTooltipWcTag>
+				{hasAriaDescription && (
+					<span class="visually-hidden" id={this.internalDescriptionById}>
+						{this._ariaDescription}
+					</span>
+				)}
 			</Host>
 		);
 	}
@@ -184,6 +196,11 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: string;
 
 	/**
 	 * Marks this element as open/expanded, or that the connected element (aria-controls/aria-owns) is open/expanded.
@@ -269,6 +286,11 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 		validateAriaCurrentValue(this, value);
 	}
 
+	@Watch('_ariaDescription')
+	public validateAriaDescription(value?: string): void {
+		validateAriaDescription(this, value);
+	}
+
 	@Watch('_ariaExpanded')
 	public validateAriaExpanded(value?: AriaExpandedPropType): void {
 		validateAriaExpanded(this, value);
@@ -339,6 +361,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
+		this.validateAriaDescription(this._ariaDescription);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaOwns(this._ariaOwns);
 		this.validateDisabled(this._disabled);

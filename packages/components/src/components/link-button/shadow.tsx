@@ -57,6 +57,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 					}}
 					_accessKey={this._accessKey}
 					_ariaCurrentValue={this._ariaCurrentValue}
+					_ariaDescription={this._ariaDescription}
 					_disabled={this._disabled}
 					_download={this._download}
 					_hideLabel={this._hideLabel}
@@ -84,6 +85,11 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: string;
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.

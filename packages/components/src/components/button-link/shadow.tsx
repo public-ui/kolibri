@@ -92,7 +92,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 *
+	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: string;
 

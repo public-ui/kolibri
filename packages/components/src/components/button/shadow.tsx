@@ -99,7 +99,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 *
+	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: string;
 

@@ -44,6 +44,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
@@ -59,7 +60,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
 
-	private readonly internalDescriptionById = 'test-id';
+	private readonly internalDescriptionById = nonce();
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
 		this.buttonRef = ref;
@@ -100,10 +101,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
-
 		const hasAriaDescription = Boolean(this._ariaDescription?.trim()?.length);
-
-		console.log('ARIA DESCRIPTION: ', this._ariaDescription);
 
 		return (
 			<Host class="kol-button-wc">
@@ -175,7 +173,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 *
+	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: string;
 
