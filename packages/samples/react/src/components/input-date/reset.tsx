@@ -3,7 +3,7 @@ import { KolButton, KolInputDate } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputDateReset = () => {
-	const dateRef = useRef(null);
+	const dateRef = useRef<HTMLKolInputDateElement>(null);
 
 	return (
 		<>
