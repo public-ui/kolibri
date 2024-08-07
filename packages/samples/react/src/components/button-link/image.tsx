@@ -12,7 +12,7 @@ export const ButtonLinkImage: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolButtonLink _label="Ich bin ein Link, der als Text gerendert wird" />
+			<KolButtonLink _label="I am a link that is rendered as text" />
 			<br />
 			<KolButtonLink _label="">
 				<img alt="Darstellung des KoliBri-Theming" slot="expert" src="abgrenzung.jpg" width="300" />

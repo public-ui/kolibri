@@ -48,18 +48,18 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				asTd: true,
 			},
 			{
-				label: 'Werktage',
+				label: 'Workdays',
 				colSpan: 5,
 			},
 			{
-				label: 'Wochenende',
+				label: 'Weekend',
 				colSpan: 2,
 			},
 		],
 		[
 			{
-				key: 'montag',
-				label: 'Montag',
+				key: 'monday',
+				label: 'Monday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -82,8 +82,8 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				textAlign: 'right',
 			},
 			{
-				key: 'dienstag',
-				label: 'Dienstag',
+				key: 'tuesday',
+				label: 'Tuesday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -105,8 +105,8 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				sortDirection: 'DESC',
 			},
 			{
-				key: 'mittwoch',
-				label: 'Mittwoch',
+				key: 'wednesday',
+				label: 'Wednesday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -116,8 +116,8 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				},
 			},
 			{
-				key: 'donnerstag',
-				label: 'Donnerstag',
+				key: 'thursday',
+				label: 'Thursday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -127,8 +127,8 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				},
 			},
 			{
-				key: 'freitag',
-				label: 'Freitag',
+				key: 'friday',
+				label: 'Friday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -164,16 +164,16 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 	vertical: [
 		[
 			{
-				label: 'Früh',
+				label: 'Early',
 			},
 			{
-				label: 'Mittag',
+				label: 'Noon',
 			},
 			{
-				label: 'Abend',
+				label: 'Evening',
 			},
 			{
-				label: 'Nacht',
+				label: 'Night',
 			},
 		],
 	],
@@ -199,13 +199,13 @@ export const HandoutBasic: FC = () => (
 		<div className="grid gap-4 sm:grid-cols-6 md:grid-cols-6  xl:grid-cols-12">
 			<KolCard className="col-span-6 sm:col-span-6 md:col-span-3 xl:col-span-2" _label="Heading" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
-					<KolHeading _label="Überschrift Stufe 1" _level={1}></KolHeading>
-					<KolHeading _label="Überschrift Stufe 2" _level={2}></KolHeading>
-					<KolHeading _label="Überschrift Stufe 3" _level={3}></KolHeading>
-					<KolHeading _label="Überschrift Stufe 4" _level={4}></KolHeading>
-					<KolHeading _label="Überschrift Stufe 5" _level={5}></KolHeading>
-					<KolHeading _label="Überschrift Stufe 6" _level={6}></KolHeading>
-					<KolHeading _label="Überschrift Stufe 6" _secondaryHeadline="Unterüberricht" _level={6}></KolHeading>
+					<KolHeading _label="Heading Level 1" _level={1}></KolHeading>
+					<KolHeading _label="Heading Level 2" _level={2}></KolHeading>
+					<KolHeading _label="Heading Level 3" _level={3}></KolHeading>
+					<KolHeading _label="Heading Level 4" _level={4}></KolHeading>
+					<KolHeading _label="Heading Level 5" _level={5}></KolHeading>
+					<KolHeading _label="Heading Level 6" _level={6}></KolHeading>
+					<KolHeading _label="Heading Level 6" _secondaryHeadline="Lessons" _level={6}></KolHeading>
 				</div>
 			</KolCard>
 			{/* <KolCard className="col-span-3" _label="Accordion" _level={2}>
@@ -233,32 +233,32 @@ export const HandoutBasic: FC = () => (
 			<KolCard className="col-span-6 sm:col-span-6 md:col-span-3 xl:col-span-2" _label="Abbreviation and Progress" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
 					<p>
-						Ich bin eine{' '}
-						<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="top">
+						I am a{' '}
+						<KolAbbr _label="Detailed description" _tooltipAlign="top">
 							ABB
 						</KolAbbr>{' '}
-						mit Tooltip oben
+						with tooltip at the top
 					</p>
 					<p>
-						Ich bin eine{' '}
-						<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="right">
+						I am a{' '}
+						<KolAbbr _label="Detailed description" _tooltipAlign="right">
 							ABB
 						</KolAbbr>{' '}
-						mit Tooltip rechts
+						with tooltip on the right
 					</p>
 					<p>
-						Ich bin eine{' '}
-						<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="bottom">
+						I am a{' '}
+						<KolAbbr _label="Detailed description" _tooltipAlign="bottom">
 							ABB
 						</KolAbbr>{' '}
-						mit Tooltip unten
+						with tooltip at the bottom
 					</p>
 					<p>
-						Ich bin eine{' '}
-						<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="left">
+						I am a{' '}
+						<KolAbbr _label="Detailed description" _tooltipAlign="left">
 							ABB
 						</KolAbbr>{' '}
-						mit Tooltip links
+						with tooltip on the left
 					</p>
 					<div className="grid grid-cols-2 items-center">
 						<KolProgress _variant="bar" _max={100} _value={33} _label="Progress" />
@@ -330,22 +330,22 @@ export const HandoutBasic: FC = () => (
 				<div slot="" className="grid gap-2 p-2">
 					<KolAccordion _label="Links" _level={3} _open>
 						<div className="grid gap-2" slot="">
-							<KolLink _href="#/back-page" _label="Linktext"></KolLink>
-							<KolLink _href="#/back-page" _icons="codicon codicon-home" _label="Linktext mit Icon"></KolLink>
-							<KolLink _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="Linktext nur mit Icon"></KolLink>
-							<KolLink _href="/" _label="Besuchter Link"></KolLink>
+							<KolLink _href="#/back-page" _label="Link text"></KolLink>
+							<KolLink _href="#/back-page" _icons="codicon codicon-home" _label="Link text with icon"></KolLink>
+							<KolLink _href="#/back-page" _icons="codicon codicon-home" _hideLabel _label="Link text with icon only"></KolLink>
+							<KolLink _href="/" _label="Visited link"></KolLink>
 							<p>
-								Ich bin ein <KolLink _href="#/back-page" _label="externer Link" _target="w3c"></KolLink> im Fließtext.
+								I am a <KolLink _href="#/back-page" _label="externer Link" _target="w3c"></KolLink> in the running text.
 							</p>
 						</div>
 					</KolAccordion>
 					<KolAccordion _label="ButtonLinks" _level={3}>
 						<div className="grid gap-2" slot="">
-							<KolButtonLink _label="Linktext"></KolButtonLink>
-							<KolButtonLink _icons="codicon codicon-home" _label="Linktext mit Icon"></KolButtonLink>
-							<KolButtonLink _icons="codicon codicon-home" _hideLabel _label="Linktext nur mit Icon"></KolButtonLink>
+							<KolButtonLink _label="Link text"></KolButtonLink>
+							<KolButtonLink _icons="codicon codicon-home" _label="Link text with icon"></KolButtonLink>
+							<KolButtonLink _icons="codicon codicon-home" _hideLabel _label="Link text with icon only"></KolButtonLink>
 							<p>
-								Ich bin ein <KolButtonLink _label="Link"></KolButtonLink> im Fließtext.
+								I am a <KolButtonLink _label="Link"></KolButtonLink> in the running text.
 							</p>
 							<KolButtonLink
 								_icons={{
@@ -437,10 +437,10 @@ export const HandoutBasic: FC = () => (
 						<KolBreadcrumb
 							_label="Breadcrumb aus Text-Links"
 							_links={[
-								{ _label: 'Startseite', _href: '#/back-page' },
-								{ _label: 'Unterseite der Startseite', _href: '#/back-page' },
+								{ _label: 'homepage', _href: '#/back-page' },
+								{ _label: 'Bottom of the homepage', _href: '#/back-page' },
 								{
-									_label: 'Unterseite der Unterseite',
+									_label: 'Underside of the underside',
 									_href: '#/back-page',
 								},
 							]}
@@ -451,25 +451,25 @@ export const HandoutBasic: FC = () => (
 			<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Input" _level={2}>
 				<KolForm slot="">
 					<div className="grid gap-4 grid-cols-3 p-2">
-						<KolInputColor _label={`Farbe`} />
-						<KolInputFile _label={`Datei hochladen`} />
-						<KolInputNumber _label={`Zahleneingabe`} />
-						<KolInputDate _type="date" _label={`Datum`} />
+						<KolInputColor _label={`Color`} />
+						<KolInputFile _label={`Upload file`} />
+						<KolInputNumber _label={`Number input`} />
+						<KolInputDate _type="date" _label={`Date`} />
 						<KolInputEmail
 							_icons="{'left': 'codicon codicon-home'}"
-							_msg={{ _type: 'error', _description: 'Test einer Fehlermeldung' }}
+							_msg={{ _type: 'error', _description: 'Test of an error message' }}
 							_touched
-							_label={`E-Mail-Adresse`}
+							_label={`E-mail address`}
 						/>
-						<KolInputText _hint="Ich bin ein Hinweis." _label={`Vorname`} />
-						<KolInputPassword _label={`Passwort`} />
-						<KolSelect _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _label={`Stimmung`} />
-						<KolInputRange _min={0} _max={50} _value={25} _label={`Schieberegler`} />
-						<KolInputRadio className="herr-frau" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1" _label={`Anrede`} />
+						<KolInputText _hint="I am a hint." _label={`First name`} />
+						<KolInputPassword _label={`password`} />
+						<KolSelect _options="[{'label':'Mr.','value':0},{'label':'Mrs.','value':1}]" _label={`Stimmung`} />
+						<KolInputRange _min={0} _max={50} _value={25} _label={`Slider`} />
+						<KolInputRadio className="herr-frau" _options="[{'label':'Mr.','value':0},{'label':'Mrs.','value':1}]" _value="1" _label={`Salutation`} />
 						<div className="grid gap-4">
-							<KolInputRadio _orientation="horizontal" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="0" _label={`Anrede`} />
+							<KolInputRadio _orientation="horizontal" _options="[{'label':'Mr.','value':0},{'label':'Mrs.','value':1}]" _value="0" _label={`Salutation`} />
 							<KolInputCheckbox _label="">
-								Ich akzeptiere die <KolAbbr _label="Allgemeine Geschäftsbedingungen">AGB</KolAbbr>.
+								I accept the <KolAbbr _label="General Terms and Conditions">AGB</KolAbbr>.
 							</KolInputCheckbox>
 						</div>
 						<KolTextarea _rows={4} _label={`Textarea`} />
@@ -478,7 +478,7 @@ export const HandoutBasic: FC = () => (
 			</KolCard>
 			<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Table with Pagination" _level={2}>
 				<div slot="" className="grid gap-2 p-2">
-					<KolTable _label="Tabelle" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTable>
+					<KolTable _label="Table" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTable>
 				</div>
 			</KolCard>
 		</div>
