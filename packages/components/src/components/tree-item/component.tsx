@@ -16,10 +16,6 @@ export class KolTreeItemWc implements TreeItemAPI {
 	@State() private level?: number;
 	@Element() host!: HTMLKolTreeItemWcElement;
 
-	private renderIcon = (props: { icon: string; label: string }) => {
-		return <KolIconTag class="toggle-button-icon" _label={props.label} _icons={props.icon} />;
-	};
-
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;
 		return (
@@ -40,18 +36,18 @@ export class KolTreeItemWc implements TreeItemAPI {
 						_label=""
 						_role="treeitem"
 						_tabIndex={_active ? 0 : -1}
-						_ariaExpanded={_open}
+						_ariaExpanded={_hasChildren ? _open : undefined}
 						_ariaOwns={_hasChildren ? this.groupId : undefined}
 						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
 					>
 						<span slot="expert">
 							{_hasChildren && (
-								// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
 								<span class="toggle-button" onClick={this.handleToggleClick}>
-									{this.renderIcon({
-										icon: `codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`,
-										label: _open ? 'Vorschläge öffnen' : 'Vorschläge schließen',
-									})}
+									<KolIconTag
+										class="toggle-button-icon"
+										_icons={`codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`}
+										_label={'' /* Label deliberately left empty */}
+									/>
 								</span>
 							)}{' '}
 							{_label}

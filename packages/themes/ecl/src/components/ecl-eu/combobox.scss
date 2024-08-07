@@ -1,4 +1,8 @@
-@import '../mixins-eu/alert-wc.scss';
+@import '../mixins-eu/rem';
+@import '../mixins-eu/alert-wc';
+
+$option-height: rem(40);
+$visible-options: 5;
 
 @layer kol-theme-component {
 	:host {
@@ -25,7 +29,6 @@
 	}
 
 	.combobox {
-		margin-bottom: 1.5rem;
 		position: relative;
 
 		&__group {
@@ -44,7 +47,7 @@
 		&__input {
 			border: none;
 			flex-grow: 1;
-			width: calc(100% - 2.5rem);
+			width: calc(100% - rem(24));
 			position: relative;
 
 			&::placeholder {
@@ -58,16 +61,11 @@
 			&:last-child {
 				padding-right: var(--spacing);
 			}
-
-			&:not(.disabled) &:hover {
-				border-color: var(--color-blue);
-			}
 		}
 
 		&__icon {
 			display: grid;
 			place-items: center;
-			cursor: pointer;
 			padding-left: 1em;
 			padding-right: 1em;
 
@@ -80,17 +78,18 @@
 			border-style: solid;
 			border-width: 1px;
 			border-color: var(--color-blue);
-			max-height: 15.625rem;
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
 			width: 100%;
+			max-height: calc($option-height * $visible-options + 2px);
 		}
 
 		&__item {
-			padding: 0.62rem 0.75rem;
-			margin: 1px 0;
-			cursor: pointer;
+			display: flex;
+			align-items: center;
+			height: $option-height;
+			padding: rem(10) rem(12);
 
 			&:focus {
 				background: var(--color-blue);
@@ -124,7 +123,7 @@
 	}
 
 	.hint {
-		font-size: 0.875rem;
+		font-size: rem(14);
 		order: 2;
 	}
 
@@ -156,7 +155,7 @@
 	}
 
 	.input:focus-within,
-	.input:hover {
+	.combobox:not(.combobox--disabled) .input:hover {
 		border-color: var(--color-blue) !important;
 	}
 

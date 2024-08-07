@@ -33,6 +33,7 @@ import navCss from './components/ecl-ec/nav.scss';
 import paginationCss from './components/ecl-ec/pagination.scss';
 import progressCss from './components/ecl-ec/progress.scss';
 import selectCss from './components/ecl-ec/select.scss';
+import singleSelectCss from './components/ecl-ec/single-select.scss';
 import skipNavCss from './components/ecl-ec/skip-nav.scss';
 import spinCss from './components/ecl-ec/spin.scss';
 import splitButtonCss from './components/ecl-ec/split-button.scss';
@@ -64,6 +65,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-DRAWER': drawerCss,
 	'KOL-PROGRESS': progressCss,
 	'KOL-SPIN': spinCss,
+	'KOL-SINGLE-SELECT': singleSelectCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,

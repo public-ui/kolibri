@@ -127,7 +127,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
-					aria-expanded={this.state._ariaExpanded ? 'true' : undefined}
+					aria-expanded={typeof this.state._ariaExpanded === 'boolean' ? String(this.state._ariaExpanded) : undefined}
 					aria-owns={this.state._ariaOwns}
 					aria-label={
 						this.state._hideLabel && typeof this.state._label === 'string'
