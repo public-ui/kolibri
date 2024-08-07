@@ -64,7 +64,8 @@ export class KolToolbar implements ToolbarAPI {
 	 */
 	@Prop() public _items!: ToolbarItemsPropType;
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
+	@Watch('_label')
+	validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

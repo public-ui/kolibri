@@ -55,8 +55,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private cellsToRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
-	@State()
-	private tableDivElementHasScrollbar = false;
+	@State() private tableDivElementHasScrollbar = false;
 
 	/**
 	 * Defines the primary table data.

@@ -338,12 +338,9 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private readonly controller: ComboboxController;
-	@State()
-	private blockSuggestionMouseOver: boolean = false;
-	@State()
-	private _isOpen: boolean = false;
-	@State()
-	private _filteredSuggestions?: SuggestionsPropType;
+	@State() private blockSuggestionMouseOver: boolean = false;
+	@State() private _isOpen: boolean = false;
+	@State() private _filteredSuggestions?: SuggestionsPropType;
 
 	@Listen('click', { target: 'window' })
 	handleWindowClick(event: MouseEvent) {
@@ -376,7 +373,7 @@ export class KolCombobox implements ComboboxAPI {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop() public _hideError?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -456,7 +453,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: string;
+	@Prop() public _value?: string;
 
 	@State() public state: ComboboxStates = {
 		_hasValue: false,

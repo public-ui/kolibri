@@ -85,7 +85,7 @@ export class KolModal implements ModalAPI {
 	/**
 	 * Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.
 	 */
-	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
+	@Prop() public _activeElement?: HTMLElement | null;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).

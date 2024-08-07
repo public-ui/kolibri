@@ -13,6 +13,13 @@ const config = {
 	],
 	rules: {
 		/**
+		 * Disabling stencil rules because they are not necessary.
+		 */
+		'@stencil-community/ban-exported-const-enums': 'off',
+		'@stencil-community/prefer-vdom-listener': 'off',
+		// '@stencil-community/reserved-member-names': 'off',
+
+		/**
 		 * Import types with `import type` instead of `import`.
 		 */
 		'@typescript-eslint/consistent-type-imports': 'warn',

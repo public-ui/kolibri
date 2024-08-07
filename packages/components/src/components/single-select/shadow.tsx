@@ -419,14 +419,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private readonly controller: SingleSelectController;
-	@State()
-	private _isOpen = false;
-	@State()
-	private _filteredOptions?: OptionsPropType = [];
-	@State()
-	private _inputValue: string = '';
-	@State()
-	private blockSuggestionMouseOver: boolean = false;
+	@State() private _isOpen = false;
+	@State() private _filteredOptions?: OptionsPropType = [];
+	@State() private _inputValue: string = '';
+	@State() private blockSuggestionMouseOver: boolean = false;
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
@@ -451,7 +447,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop() public _hideError?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -531,7 +527,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: string;
+	@Prop() public _value?: string;
 
 	@State() public state: SingleSelectStates = {
 		_hideError: false,

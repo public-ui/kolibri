@@ -23,7 +23,8 @@ export class KolTreeWc implements TreeAPI {
 	 */
 	@Prop() _label!: LabelPropType;
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
+	@Watch('_label')
+	validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 
