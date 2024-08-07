@@ -5,7 +5,6 @@ import type {
 	PropHideError,
 	PropHideLabel,
 	PropId,
-	PropAlert,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
@@ -45,11 +44,11 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	suggestions: W3CInputValue[];
 } & PropId &
-	PropAlert &
 	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
+	alert: boolean;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	max: number;

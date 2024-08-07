@@ -118,7 +118,7 @@ export class KolForm implements FormAPI {
 	@Prop() public _errorList?: ErrorListPropType[];
 
 	@State() public state: FormStates = {
-		_requiredText: true
+		_requiredText: true,
 	};
 
 	@Watch('_on')

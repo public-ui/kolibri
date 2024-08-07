@@ -173,8 +173,8 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	// eslint-disable-next-line @stencil-community/strict-mutable
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -313,7 +313,6 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop({ mutable: true }) public _value?: number | Iso8601 | null;
 
 	@State() public state: InputNumberStates = {
-		_alert: true,
 		_autoComplete: 'off',
 		_hasValue: false,
 		_hideError: false,
@@ -461,6 +460,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
+		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 

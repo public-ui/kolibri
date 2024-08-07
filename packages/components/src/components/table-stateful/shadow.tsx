@@ -553,7 +553,7 @@ export class KolTableStateful implements TableAPI {
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
-			this.showPagination ? (this.state._pagination?._pageSize ?? 10) : this.state._sortedData.length,
+			this.showPagination ? this.state._pagination?._pageSize ?? 10 : this.state._sortedData.length,
 			this.state._pagination._page || 1,
 		);
 		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination() : null;

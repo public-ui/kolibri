@@ -155,7 +155,8 @@ export class KolInputWc implements Props {
 	 * Defines whether the screen-readers should read out the notification.
 	 * @TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _alert?: boolean;
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
+	@Prop() public _alert?: boolean = true;
 
 	/**
 	 * @internal

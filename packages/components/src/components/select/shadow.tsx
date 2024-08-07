@@ -108,8 +108,8 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	private handleClick = (): void => {
-		this.selectRef?.focus()
-	}
+		this.selectRef?.focus();
+	};
 
 	private handleSubmit = (event: Event): void => {
 		event.preventDefault();
@@ -117,7 +117,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 			form: this.host,
 			ref: this.selectRef,
 		});
-	}
+	};
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -160,9 +160,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 						)}
 					</span>
 					<div slot="input">
-						<form
-							onSubmit={this.handleSubmit}
-						>
+						<form onSubmit={this.handleSubmit}>
 							<input type="submit" hidden />
 							<select
 								ref={this.catchRef}
@@ -224,7 +222,8 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -474,7 +473,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 		// Callback
 		this.state._on?.onInput?.(event, this._value);
-	}
+	};
 
 	private onChange = (event: Event): void => {
 		// Event handling
@@ -486,5 +485,5 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 		// Callback
 		this.state._on?.onChange?.(event, this._value);
-	}
+	};
 }

@@ -8,7 +8,6 @@ import { getRenderStates } from '../../input/controller';
 export const getInpuRangeHtml = (props: InputRangeProps): string => {
 	const state = mixMembers<InputRangeProps, InputRangeStates>(
 		{
-			_alert: true,
 			_autoComplete: 'off',
 			_hideError: false,
 			_id: `id-${nonce()}`,
@@ -19,7 +18,7 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 	);
 	const hasExpertSlot = showExpertSlot(state._label);
 	const { ariaDescribedBy } = getRenderStates(state);
-	
+
 	return `
 	<kol-input-range
 	 	class="kol-input-range"
@@ -32,10 +31,10 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
-					${state._accessKey != null ? `_accessKey="${state._accessKey}"` : ''}
+					${state._accessKey !== undefined ? `_accessKey="${state._accessKey}"` : ''}
 					_hint=""
 					_id="${state._id}"
-					_label="${state._label != null ? `${state._label}` : ''}"
+					_label="${typeof state._label === 'string' ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="range ${state._hideLabel ? 'hide-label' : ''} "
 
@@ -56,7 +55,7 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 	       <div slot="input">
 				 <div
 							class="inputs-wrapper"
-							${state._max != null ? `style="--kolibri-input-range--input-number--width: ${`${state._max}`.length + 0.5 + 'em'}"` : "style='--kolibri-input-range--input-number--width: 9.5em;'"}
+							${state._max !== undefined ? `style="--kolibri-input-range--input-number--width: ${`${state._max}`.length + 0.5 + 'em'}"` : "style='--kolibri-input-range--input-number--width: 9.5em;'"}
 						>
 	        	<input
 							${state._disabled ? `disabled=""` : ''}
@@ -65,11 +64,11 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 							autocomplete="off"
 							autocorrect="off"
 							spellcheck="false"
-							${state._max != null ? `max="${state._max}"` : ''}
-							${state._min != null ? `min="${state._min}"` : ''}
+							${state._max !== undefined ? `max="${state._max}"` : ''}
+							${state._min !== undefined ? `min="${state._min}"` : ''}
 							aria-hidden="true"
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
-							${state._accessKey != null ? `accessKey="${state._accessKey}"` : ''}
+							${state._accessKey !== undefined ? `accessKey="${state._accessKey}"` : ''}
 							tabindex="-1" type="range"
 							>
 							<input
@@ -78,10 +77,10 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 							autocapitalize="off"
 							autocomplete="off"
 							autocorrect="off"
-							${state._max != null ? `max="${state._max}"` : ''}
-							${state._min != null ? `min="${state._min}"` : ''}
+							${state._max !== undefined ? `max="${state._max}"` : ''}
+							${state._min !== undefined ? `min="${state._min}"` : ''}
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
-							${state._accessKey != null ? `accessKey="${state._accessKey}"` : ''}
+							${state._accessKey !== undefined ? `accessKey="${state._accessKey}"` : ''}
 							type="number"
 							id="${state._id}"
 							>

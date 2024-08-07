@@ -64,7 +64,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputNumber = element;
-			if (this._value == null && this.refInputNumber?.value != null) {
+			if (this._value !== undefined && typeof this.refInputNumber?.value === 'string') {
 				this.validateValue(parseFloat(this.refInputNumber.value));
 			}
 		}
@@ -78,10 +78,10 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 	private getSanitizedFloatValue(value: string): number {
 		const floatValue = parseFloat(value);
-		if (this.state._max != null && floatValue > this.state._max) {
+		if (typeof this.state._max === 'number' && floatValue > this.state._max) {
 			return this.state._max;
 		}
-		if (this.state._min != null && floatValue < this.state._min) {
+		if (typeof this.state._min === 'number' && floatValue < this.state._min) {
 			return this.state._min;
 		}
 		return floatValue;
@@ -89,7 +89,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 	/**
 	 * Get value of input.
-	 * @returns {Promise<number | undefined>}
+	 * @returns {Promise<StencilUnknown | undefined>}
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -119,7 +119,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	};
 
 	componentDidLoad() {
-		if (this._value == null && this.refInputRange?.value != null) {
+		if (this._value !== undefined && typeof this.refInputRange?.value === 'string') {
 			this.validateValue(parseFloat(this.refInputRange.value));
 		}
 	}
@@ -128,6 +128,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
 		const hasExpertSlot = showExpertSlot(this.state._label);
+
 		return (
 			<Host class="kol-input-range">
 				<KolInputWcTag
@@ -182,7 +183,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 								list={hasSuggestions ? `${this.state._id}-list` : undefined}
 								max={this.state._max}
 								min={this.state._min}
-								name={this.state._name != null ? `${this.state._name}-range` : undefined}
+								name={this.state._name !== undefined ? `${this.state._name}-range` : undefined}
 								spellcheck="false"
 								step={this.state._step}
 								tabIndex={-1}
@@ -205,7 +206,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 								list={hasSuggestions ? `${this.state._id}-list` : undefined}
 								max={this.state._max}
 								min={this.state._min}
-								name={this.state._name != null ? `${this.state._name}-number` : undefined}
+								name={this.state._name !== undefined ? `${this.state._name}-number` : undefined}
 								step={this.state._step}
 								type="number"
 								value={this.state._value}
@@ -242,8 +243,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	// eslint-disable-next-line @stencil-community/strict-mutable
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
+	// eslint-disable-next-line @stencil-community/ban-default-true
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -359,7 +360,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Prop() public _value?: number;
 
 	@State() public state: InputRangeStates = {
-		_alert: true,
 		_autoComplete: 'off',
 		_hideError: false,
 		_id: `id-${nonce()}`,
@@ -482,6 +482,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
+		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 	}

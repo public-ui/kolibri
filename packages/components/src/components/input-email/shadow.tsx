@@ -90,8 +90,8 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	};
 
 	private handleClick = (): void => {
-		this.inputRef?.focus()
-	}
+		this.inputRef?.focus();
+	};
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -186,8 +186,8 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	// eslint-disable-next-line @stencil-community/strict-mutable
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -331,7 +331,6 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Prop() public _value?: string;
 
 	@State() public state: InputEmailStates = {
-		_alert: true,
 		_autoComplete: 'off',
 		_currentLength: 0,
 		_hasValue: false,
@@ -481,6 +480,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
+		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 

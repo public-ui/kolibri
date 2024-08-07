@@ -99,8 +99,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	private handleClick = (): void => {
-		this.inputRef?.focus()
-	}
+		this.inputRef?.focus();
+	};
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -198,8 +198,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * Defines whether the screen-readers should read out the notification.
 	 * @TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved.
 	 */
-	// eslint-disable-next-line @stencil-community/strict-mutable
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -344,7 +344,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Prop({ mutable: true }) public _value?: string;
 
 	@State() public state: InputTextStates = {
-		_alert: true,
 		_autoComplete: 'off',
 		_currentLength: 0,
 		_hasValue: false,
@@ -496,6 +495,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
+		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.oldValue = this._value;
 		this.controller.componentWillLoad();

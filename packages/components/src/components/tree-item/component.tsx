@@ -42,6 +42,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 					>
 						<span slot="expert">
 							{_hasChildren && (
+								/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 								<span class="toggle-button" onClick={this.handleToggleClick}>
 									<KolIconTag
 										class="toggle-button-icon"

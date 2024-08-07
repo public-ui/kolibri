@@ -46,7 +46,7 @@ export class AssociatedInputController implements Watches {
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
 
-		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName) && component._name) {
+		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName) && component._name !== undefined) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
 				this.host?.removeChild(el);
 			});

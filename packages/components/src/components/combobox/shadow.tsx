@@ -53,6 +53,9 @@ export class KolCombobox implements ComboboxAPI {
 		return this.state._value;
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -89,14 +92,14 @@ export class KolCombobox implements ComboboxAPI {
 		this.controller.onFacade.onInput(event);
 		this.setFilteredSuggestionsByQuery(target.value);
 		this._focusedOptionIndex = -1;
-	}
+	};
 
 	private handleKeyDownDropdown = (event: KeyboardEvent) => {
 		if (event.key.length === 1 && /[a-z0-9]/i.test(event.key)) {
 			this._isOpen = true;
 			this.focusSuggestionStartingWith(event.key);
 		}
-	}
+	};
 
 	private setFilteredSuggestionsByQuery(query: string) {
 		if (query.trim() === '') {
@@ -147,7 +150,7 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	}
 
-	private handleClick = (option: string) => (e: MouseEvent) => {
+	private handleClickListItem = (option: string) => (e: MouseEvent) => {
 		this.selectOption(e, option);
 		this.toggleListbox();
 	};
@@ -170,6 +173,10 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	};
 
+	private handleClick = (): void => {
+		this.refInput?.focus();
+	};
+
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -190,7 +197,7 @@ export class KolCombobox implements ComboboxAPI {
 						_required={this.state._required}
 						_tooltipAlign={this._tooltipAlign}
 						_touched={this.state._touched}
-						onClick={() => this.refInput?.focus()}
+						onClick={this.handleClick}
 						role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 					>
 						<span slot="label">
@@ -258,7 +265,7 @@ export class KolCombobox implements ComboboxAPI {
 												tabIndex={-1}
 												role="option"
 												aria-selected={this.state._value === option}
-												onClick={this.handleClick(option as string)}
+												onClick={this.handleClickListItem(option as string)}
 												onMouseOver={this.handleMouseOver(index)}
 												onFocus={this.handleFocus(index)}
 												class="combobox__item"
@@ -348,6 +355,10 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	}
 
+	private handleMouseMove() {
+		this.blockSuggestionMouseOver = false;
+	}
+
 	private readonly controller: ComboboxController;
 	@State() private blockSuggestionMouseOver: boolean = false;
 	@State() private _isOpen: boolean = false;
@@ -373,8 +384,8 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	// eslint-disable-next-line @stencil-community/strict-mutable
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -470,7 +481,6 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop({ mutable: true }) public _value?: string;
 
 	@State() public state: ComboboxStates = {
-		_alert: true,
 		_hasValue: false,
 		_hideError: false,
 		_id: `id-${nonce()}`,
@@ -582,22 +592,20 @@ export class KolCombobox implements ComboboxAPI {
 
 	public componentWillLoad(): void {
 		this.refSuggestions = [];
+		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 
 		this.state._hasValue = Boolean(this.state._value);
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = Boolean(v)));
 		this.host?.addEventListener('keydown', this.handleKeyDown.bind(this));
+		this.host?.addEventListener('mousemove', this.handleMouseMove.bind(this));
 		this._filteredSuggestions = this.state._suggestions;
 	}
 
 	disconnectedCallback() {
 		this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
-	}
-
-	@Listen('mousemove')
-	public handleMouseEvent() {
-		this.blockSuggestionMouseOver = false;
+		this.host?.removeEventListener('mousemove', this.handleMouseMove.bind(this));
 	}
 
 	@Listen('focusout', { target: 'window' })
@@ -620,7 +628,7 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	}
 
-	private onChange(event: Event): void {
+	private onChange = (event: Event) => {
 		// Event handling
 		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, this.state._value);
@@ -632,5 +640,5 @@ export class KolCombobox implements ComboboxAPI {
 		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
 			this.state._on.onChange(event, this.state._value);
 		}
-	}
+	};
 }

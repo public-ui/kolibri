@@ -396,9 +396,10 @@ export class KolTableStateless implements TableStatelessAPI {
 					_tooltipAlign="right"
 					_on={{
 						onInput: (event: Event, value) => {
-							const updatedSelectedKeys = value != null
-								? [...(this.state._selection?.selectedKeys ?? []), keyProperty]
-								: this.state._selection?.selectedKeys?.filter((key) => key !== keyProperty);
+							const updatedSelectedKeys =
+								value != null
+									? [...(this.state._selection?.selectedKeys ?? []), keyProperty]
+									: this.state._selection?.selectedKeys?.filter((key) => key !== keyProperty);
 							tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
 							if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
 								this.state._on[Events.onSelectionChange](event, updatedSelectedKeys ?? []);

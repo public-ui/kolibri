@@ -32,7 +32,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
 		this.buttonWcRef = ref;
 	};
-	
+
 	/**
 	 * Get value of button.
 	 * @returns {Promise<Stringified<StencilUnknown> | undefined>}

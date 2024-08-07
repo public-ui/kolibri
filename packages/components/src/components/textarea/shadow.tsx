@@ -88,8 +88,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	private handleClick = (): void => {
-		this.textareaRef?.focus()
-	}
+		this.textareaRef?.focus();
+	};
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -180,8 +180,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	// eslint-disable-next-line @stencil-community/strict-mutable
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -458,7 +458,9 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		setTimeout(() => {
 			if (this._adjustHeight === true && this.textareaRef /* SSR instanceof HTMLTextAreaElement */) {
 				this._rows =
-					this.state?._rows != null && this.state._rows > increaseTextareaHeight(this.textareaRef) ? this.state._rows : increaseTextareaHeight(this.textareaRef);
+					this.state?._rows != null && this.state._rows > increaseTextareaHeight(this.textareaRef)
+						? this.state._rows
+						: increaseTextareaHeight(this.textareaRef);
 			} else if (this._rows == null) {
 				this._rows = 1;
 			}
