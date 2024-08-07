@@ -63,6 +63,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 					}}
 					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}
+					_ariaDescription={this._ariaDescription}
 					_ariaExpanded={this._ariaExpanded}
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
@@ -96,6 +97,11 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
+
+	/**
+	 *
+	 */
+	@Prop() public _ariaDescription?: string;
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)

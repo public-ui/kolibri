@@ -58,6 +58,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 					ref={this.catchRef}
 					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}
+					_ariaDescription={this._ariaDescription}
 					_ariaExpanded={this._ariaExpanded}
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
@@ -89,6 +90,11 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
+
+	/**
+	 *
+	 */
+	@Prop() public _ariaDescription?: string;
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
