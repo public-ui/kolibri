@@ -9,20 +9,20 @@ import { createErrorList, focusErrorList } from './formUtils';
 
 const SALUTATION_OPTIONS = [
 	{
-		value: 'Firma',
-		label: 'Firma',
+		value: 'Company',
+		label: 'Company',
 	},
 	{
-		value: 'Frau',
-		label: 'Frau',
+		value: 'Mrs.',
+		label: 'Mrs.',
 	},
 	{
-		value: 'Herr',
-		label: 'Herr',
+		value: 'Mr.',
+		label: 'Mr.',
 	},
 	{
-		value: 'Hallo',
-		label: 'Hallo',
+		value: 'Hello',
+		label: 'Hello',
 	},
 ];
 
@@ -37,7 +37,7 @@ export function PersonalInformationForm() {
 	}, [sectionSubmitted]);
 	return (
 		<div className="p-2">
-			<KolHeading _level={2} _label="Geben Sie Ihre Kontaktdaten ein"></KolHeading>
+			<KolHeading _level={2} _label="Enter your contact details"></KolHeading>
 			<KolForm
 				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
@@ -56,14 +56,14 @@ export function PersonalInformationForm() {
 								void form.setFieldTouched('salutation', true);
 							}}
 							id="field-salutation"
-							_label="Anrede"
+							_label="Salutation"
 							_value={[field.value]}
 							_msg={{
 								_type: 'error',
 								_description: form.errors.salutation || '',
 							}}
 							_touched={form.touched.salutation}
-							_options={[{ label: 'Bitte wählen…', value: '' }, ...SALUTATION_OPTIONS]}
+							_options={[{ label: 'Please select…', value: '' }, ...SALUTATION_OPTIONS]}
 							_required
 							_on={{
 								onChange: (event, values: unknown) => {
@@ -77,7 +77,7 @@ export function PersonalInformationForm() {
 					)}
 				</Field>
 
-				{form.values.salutation === 'Firma' && (
+				{form.values.salutation === 'Company' && (
 					<Field name="company">
 						{({ field }: FieldProps<FormValues['company']>) => (
 							<div className="block mt-2">
@@ -86,7 +86,7 @@ export function PersonalInformationForm() {
 										void form.setFieldTouched('company', true);
 									}}
 									id="field-company"
-									_label="Firma"
+									_label="Company"
 									_value={field.value}
 									_msg={{
 										_type: 'error',
@@ -115,7 +115,7 @@ export function PersonalInformationForm() {
 									void form.setFieldTouched('name', true);
 								}}
 								id="field-name"
-								_label="Vor- und Zuname"
+								_label="First name and surname"
 								_value={field.value}
 								_msg={{
 									_type: 'error',
@@ -166,7 +166,7 @@ export function PersonalInformationForm() {
 							<KolInputText
 								id="field-phone"
 								_type="tel"
-								_label="Telefonnumer"
+								_label="Telephone number"
 								_value={field.value}
 								_msg={{
 									_type: 'error',
@@ -186,7 +186,7 @@ export function PersonalInformationForm() {
 					)}
 				</Field>
 
-				<KolButton _label="Weiter" _type="submit" className="mt-2" />
+				<KolButton _label="Next" _type="submit" className="mt-2" />
 			</KolForm>
 		</div>
 	);

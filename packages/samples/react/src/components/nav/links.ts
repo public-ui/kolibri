@@ -72,21 +72,21 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 		},
 	},
 	{
-		_label: '5 Keine eigene Seite, nur Kategorie',
+		_label: '5 No own page, only category',
 		_active: true,
 		_children: [
 			{
-				_label: '5.1 Verschachtelter Link',
+				_label: '5.1 Nested link',
 				_href: '#/back-page',
 			},
 		],
 	},
 	{
-		_label: '6 Keine eigene Seite, mit Icon',
+		_label: '6 No own page, with icon',
 		_icons: 'codicon codicon-squirrel',
 		_children: [
 			{
-				_label: '6.1 Verschachtelter Link',
+				_label: '6.1 Nested link',
 				_href: '#/back-page',
 			},
 		],

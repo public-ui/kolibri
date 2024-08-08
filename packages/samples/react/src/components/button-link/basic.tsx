@@ -19,7 +19,7 @@ export const ButtonLinkBasic: FC = () => (
 				<strong>inline element</strong>.
 			</p>
 			<p>
-				In this paragraph, a link is inserted that is rendered as an inline-block element.{' '}
+				In this paragraph, a link is inserted that is rendered as an inline-block element.
 				<KolButtonLink style={{ display: 'inline-block', margin: '1rem', border: '1px dotted' }} _label="Simple Link" />. This allows you to assign width,
 				height, and other properties to it using CSS styles.
 				<br />
