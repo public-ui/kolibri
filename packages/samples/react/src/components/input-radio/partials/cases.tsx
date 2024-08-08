@@ -58,7 +58,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_touched
 				_value="Company"
-				_options="[{'label':'Mrs.','value':'Mrs.', 'description':'I am a description.'},{'disabled':true,'label':'Mr. (disabled)'},{'label':'Company','value':'Company'}]"
+				_options="[{'label':'Mrs.','value':'Mrs.', 'hint':'I am a description.'},{'disabled':true,'label':'Mr. (disabled)'},{'label':'Company','value':'Company'}]"
 				_label="Salutation (horizontal with error hint and description)"
 				_hint={HINT_MSG}
 			/>

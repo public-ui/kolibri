@@ -32,7 +32,7 @@ export type Option<T> = {
 	value: T;
 };
 export type RadioOption<T> = Option<T> & {
-	description?: string;
+	hint?: string;
 };
 export type Optgroup<T> = {
 	disabled?: boolean;

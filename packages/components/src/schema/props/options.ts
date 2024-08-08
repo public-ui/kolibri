@@ -10,7 +10,7 @@ import { validateInputSelectOptions } from '../validators';
 
 export type OptionsPropType = Stringified<Option<StencilUnknown>[]>;
 export type OptionsWithOptgroupPropType = Stringified<(Option<StencilUnknown> | Optgroup<StencilUnknown>)[]>;
-export type RadioOptionPropType = Stringified<RadioOption<StencilUnknown>[]>;
+export type RadioOptionsPropType = Stringified<RadioOption<StencilUnknown>[]>;
 
 /**
  * Options the user can choose from.
@@ -20,7 +20,7 @@ export type PropOptions = {
 };
 
 export type PropRadioOptions = {
-	options: RadioOptionPropType;
+	options: RadioOptionsPropType;
 };
 
 /**

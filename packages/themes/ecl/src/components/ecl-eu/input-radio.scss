@@ -1,4 +1,5 @@
 @import '../mixins-eu/alert-wc.scss';
+@import '../mixins-eu/rem.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -108,7 +109,7 @@
 	}
 
 	.hint {
-		font-size: 0.875rem;
+		font-size: rem(14.4);
 		order: 4;
 	}
 }

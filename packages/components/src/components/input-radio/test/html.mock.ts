@@ -73,7 +73,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 							${state._disabled || option.disabled ? "_disabled=''" : ''}
 							${state._hideLabel ? "_hideLabel=''" : ''}
 							${state._touched ? "_touched=''" : ''}
-							${option.description ? `_hint="${option.description}"` : ''}
+							${option.hint ? `_hint="${option.hint}"` : ''}
 							_id="${customId}"
 							${(option.label as string) ? `_label="${option.label}"` : ''}
 							_renderNoLabel=""

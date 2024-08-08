@@ -8,7 +8,7 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	RadioOptionPropType,
+	RadioOptionsPropType,
 	Orientation,
 	StencilUnknown,
 	Stringified,
@@ -119,7 +119,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 								_accessKey={this.state._accessKey} // by radio?!
 								_disabled={this.state._disabled || option.disabled}
 								_hideLabel={this.state._hideLabel}
-								_hint={option.description}
+								_hint={option.hint}
 								_id={customId}
 								_label={option.label as string}
 								_renderNoLabel={true}
@@ -168,11 +168,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 						);
 					})}
 					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}
-					{hasHint && (
-						<span class="hint" id={`${this._id}-hint`}>
-							{this._hint}
-						</span>
-					)}
+					{hasHint && <span class="hint">{this._hint}</span>}
 				</fieldset>
 			</Host>
 		);
@@ -248,7 +244,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	/**
 	 * Options the user can choose from.
 	 */
-	@Prop() public _options?: RadioOptionPropType;
+	@Prop() public _options?: RadioOptionsPropType;
 
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
@@ -365,7 +361,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	@Watch('_options')
-	public validateOptions(value?: RadioOptionPropType): void {
+	public validateOptions(value?: RadioOptionsPropType): void {
 		this.controller.validateOptions(value);
 	}
 
