@@ -155,12 +155,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish create-kolibri
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
-        working-directory: packages/create-kolibri
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools kolibri-cli
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/tools/kolibri-cli
