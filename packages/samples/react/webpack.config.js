@@ -14,5 +14,6 @@ module.exports = (...args) => {
 			COMMIT_HASH: commitHash,
 		}),
 	);
+	delete config.devServer.proxy;
 	return config;
 };

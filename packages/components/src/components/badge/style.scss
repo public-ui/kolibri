@@ -3,6 +3,9 @@
 
 @layer kol-component {
 	/* :host implicitly inherits font-size, e.g. for usage in headlines */
+	:host {
+		font-size: rem(16);
+	}
 
 	:host > span {
 		display: inline-flex;
