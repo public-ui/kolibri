@@ -47,7 +47,7 @@ export const getNavHtml = (props: NavProps): string => {
 <kol-nav class="kol-nav">
 	<mock:shadow-root>
 	<div class="${props._hideLabel ? 'is-compact' : ''} nav vertical">
-	      <nav aria-label="${props._label != null ? props._label : ''}" id="nav">
+	      <nav aria-label="${props._label !== null ? props._label : ''}" id="nav">
 	         <ul class="list vertical" data-deep="0" >
 					${listItems}
 					 </ul>

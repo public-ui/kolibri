@@ -14,10 +14,10 @@ export const getTabsHtml = (props: TabsProps): string => {
 	);
 
 	return `
-<kol-tabs  _selected="${state._selected != null ? state._selected : '0'}" class="kol-tabs">
+<kol-tabs  _selected="${state._selected !== null ? state._selected : '0'}" class="kol-tabs">
   <mock:shadow-root>
 		<div class="tabs-align-top">
-	    <${KolButtonGroupWcTag} aria-label="${state._label != null ? state._label : ''}" class="tabs-button-group" role="tablist">
+	    <${KolButtonGroupWcTag} aria-label="${state._label !== null ? state._label : ''}" class="tabs-button-group" role="tablist">
 
 	    ${state._tabs
 				.map((button: TabButtonProps, index: number) => {

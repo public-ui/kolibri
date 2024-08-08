@@ -42,10 +42,10 @@ export const getSpanWcHtml = (
 
 	return `
 <kol-span-wc${classNames.length > 0 ? ` class="${classNames.join(' ')}"` : ``}${options?.additionalAttrs ?? ''}>
-	${icon.top != null ? `<${KolIconTag}  _label="${(icon.top as KoliBriCustomIcon).label ?? ''}" _icons="${(icon.top as KoliBriCustomIcon).icon}" > </${KolIconTag}>` : ''}
+	${icon.top !== null ? `<${KolIconTag}  _label="${(icon.top as KoliBriCustomIcon).label ?? ''}" _icons="${(icon.top as KoliBriCustomIcon).icon}" > </${KolIconTag}>` : ''}
 	<span>
 		${
-			icon.left != null
+			icon.left !== null
 				? `<${KolIconTag}
 				class="icon left"
 				_label="${(icon.left as KoliBriCustomIcon).label ?? ''}"
@@ -62,10 +62,10 @@ export const getSpanWcHtml = (
 				: ``
 		}
 		<span class="span-label" ${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
-			${slots.expert != null ? slots.expert : ``}
+			${slots.expert !== null ? slots.expert : ``}
 		</span>
 		${
-			icon.right != null
+			icon.right !== null
 				? `<${KolIconTag}
 				class="icon right"
 				_label="${(icon.right as KoliBriCustomIcon).label ?? ''}"
@@ -75,7 +75,7 @@ export const getSpanWcHtml = (
 		}
 	</span>
 	${
-		icon.bottom != null
+		icon.bottom !== null
 			? `<${KolIconTag}
 				_label="${(icon.bottom as KoliBriCustomIcon).label ?? ''}"
 				 _icons="${(icon.bottom as KoliBriCustomIcon).icon}" >

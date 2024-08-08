@@ -89,7 +89,7 @@ export class KolLinkGroup implements LinkGroupAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType, _oldValue?: LabelPropType, initial = false): void {
-		if (!initial && this.state._label != null) {
+		if (!initial && typeof this.state._label === 'string') {
 			removeNavLabel(this.state._label); // remove the current
 		}
 		validateLabel(this, value);

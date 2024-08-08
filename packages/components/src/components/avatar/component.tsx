@@ -15,7 +15,7 @@ export class KolAvatarWc implements AvatarAPI {
 		return (
 			<Host class="kol-avatar-wc">
 				<div aria-label={translate('kol-avatar-alt', { placeholders: { name: this.state._label } })} class="container" role="img">
-					{this.state._src != null && this.state._src !== '' ? (
+					{this.state._src !== null && this.state._src !== '' ? (
 						<img alt="" aria-hidden="true" class="image" src={this.state._src} />
 					) : (
 						<span aria-hidden="true" class="initials">

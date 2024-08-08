@@ -36,7 +36,7 @@ export class KolInputWc implements Props {
 	private slotName: string = 'input';
 
 	public componentWillRender(): void {
-		this.slotName = this._slotName != null ? this._slotName : 'input';
+		this.slotName = this._slotName !== null && this._slotName !== undefined ? this._slotName : 'input';
 	}
 
 	private catchInputSlot = (slot?: HTMLDivElement): void => {
@@ -44,7 +44,7 @@ export class KolInputWc implements Props {
 	};
 
 	private getIconStyles(icon?: AnyIconFontClass | KoliBriCustomIcon): Record<string, string> {
-		return icon != null && typeof icon === 'object' && icon.style ? icon.style : {};
+		return icon !== null && typeof icon === 'object' && icon.style ? icon.style : {};
 	}
 
 	public render(): JSX.Element {
@@ -120,7 +120,7 @@ export class KolInputWc implements Props {
 						_label={this._label}
 					></KolTooltipWcTag>
 				)}
-				{showFormFieldMsg && <FormFieldMsg _alert={this._alert != null ? this._alert : true} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
+				{showFormFieldMsg && <FormFieldMsg _alert={this._alert !== null ? this._alert : true} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (
@@ -263,14 +263,17 @@ export class KolInputWc implements Props {
 	@Prop() public _touched?: boolean = false;
 
 	private getModifierClassNameByMsgType() {
-		if (this._msg?._type != null) {
-			return {
-				default: 'msg-type-default',
-				info: 'msg-type-info',
-				success: 'msg-type-success',
-				warning: 'msg-type-warning',
-				error: 'msg-type-error',
-			}[this._msg?._type];
+		const _type = this._msg?._type;
+		if (_type === null || _type === undefined) {
+			return;
 		}
+
+		return {
+			default: 'msg-type-default',
+			info: 'msg-type-info',
+			success: 'msg-type-success',
+			warning: 'msg-type-warning',
+			error: 'msg-type-error',
+		}[_type];
 	}
 }

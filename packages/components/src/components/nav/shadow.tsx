@@ -73,7 +73,7 @@ export class KolNav implements NavAPI {
 	private collapseChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
 			...this.state,
-			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren != children),
+			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren !== children),
 		};
 	}
 
@@ -235,7 +235,7 @@ export class KolNav implements NavAPI {
 								_ariaExpanded={!hideLabel}
 								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_hideLabel
-								_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
+								_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize') || ''}
 								_on={{
 									onClick: (): void => {
 										this.state = {

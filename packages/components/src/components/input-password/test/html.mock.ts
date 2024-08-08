@@ -29,7 +29,7 @@ export const getInputPasswordHtml = (props: InputPasswordProps): string => {
 					${state._touched ? `_touched=""` : ''}
 					_hint=""
 					_id="${state._id}"
-					_label="${state._label != null ? `${state._label}` : ''}"
+					_label="${state._label !== null ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="password ${state._hideLabel ? 'hide-label' : ''} "
 					role="presentation"
@@ -61,7 +61,7 @@ export const getInputPasswordHtml = (props: InputPasswordProps): string => {
 							spellcheck="false"
 							type="password"
 							${state._readOnly ? `readonly=""` : ''}
-							${state._placeholder != null ? `placeholder="${state._placeholder}"` : ''}
+							${state._placeholder !== null ? `placeholder="${state._placeholder}"` : ''}
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
 							${state._required ? `required=""` : ''}
 							>

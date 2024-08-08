@@ -38,14 +38,17 @@ export class KolForm implements FormAPI {
 
 	private readonly handleLinkClick = (event: Event) => {
 		const href = (event.target as HTMLAnchorElement | undefined)?.href;
-		if (href != null && href !== '') {
-			const hrefUrl = new URL(href);
 
-			const targetElement = document.querySelector<HTMLElement>(hrefUrl.hash);
-			if (targetElement && typeof targetElement.focus === 'function') {
-				targetElement.scrollIntoView({ behavior: 'smooth' });
-				targetElement.focus();
-			}
+		if (href === null || href === undefined || href === '') {
+			return;
+		}
+
+		const hrefUrl = new URL(href);
+
+		const targetElement = document.querySelector<HTMLElement>(hrefUrl.hash);
+		if (targetElement && typeof targetElement.focus === 'function') {
+			targetElement.scrollIntoView({ behavior: 'smooth' });
+			targetElement.focus();
 		}
 	};
 

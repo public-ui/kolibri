@@ -352,12 +352,13 @@ export class KolTableStateless implements TableStatelessAPI {
 					rowspan += row.rowSpan || 1;
 				});
 			}
-			const emptyCell = {
+			const emptyCell: KoliBriTableCell = {
 				colSpan: colspan,
 				label: translate('kol-no-entries'),
 				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
 			};
+
 			if (dataField.length === 0) {
 				dataField.push([emptyCell]);
 			} else {
@@ -397,7 +398,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					_on={{
 						onInput: (event: Event, value) => {
 							const updatedSelectedKeys =
-								value != null
+								value !== null
 									? [...(this.state._selection?.selectedKeys ?? []), keyProperty]
 									: this.state._selection?.selectedKeys?.filter((key) => key !== keyProperty);
 							tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
@@ -429,7 +430,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		let key = `${rowIndex}-${colIndex}-${cell.label}`;
 		if (cell.data) {
 			const dataKey = this.getDataKey(cell.data);
-			key = dataKey != null ? `${dataKey}-${this.horizontal ? colIndex : rowIndex}` : key;
+			key = dataKey !== null ? `${dataKey}-${this.horizontal ? colIndex : rowIndex}` : key;
 		}
 
 		if (cell.asTd === false) {
@@ -477,7 +478,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<th key={`thead-0-selection`} class="selection-cell selection-control">
 				<KolInputCheckboxTag
-					_label={translate(translationKey)}
+					_label={translate(translationKey) || ''}
 					_hideLabel
 					_checked={isChecked && !intermediate}
 					_indeterminate={intermediate}
@@ -485,7 +486,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					_on={{
 						onInput: (event: Event, value) => {
 							let selections = [] as KoliBriTableDataType[];
-							if (value != null || !isChecked) {
+							if (value !== null || !isChecked) {
 								selections = this.state._data;
 							}
 							tryToDispatchKoliBriEvent('selection-change', this.host, selections);
@@ -503,7 +504,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		let ariaSort = undefined;
 		let sortButtonIcon = 'codicon codicon-fold';
 
-		if (cell.sortDirection != null) {
+		if (cell.sortDirection !== null) {
 			switch (cell.sortDirection) {
 				case 'ASC':
 					sortButtonIcon = 'codicon codicon-chevron-up';
@@ -519,7 +520,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<th
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
-				class={cell.textAlign != null ? `align-${cell.textAlign}` : undefined}
+				class={cell.textAlign !== null ? `align-${cell.textAlign}` : undefined}
 				scope={typeof cell.colSpan === 'number' && cell.colSpan > 1 ? 'colgroup' : 'col'}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
@@ -529,7 +530,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				aria-sort={ariaSort}
 				data-sort={`sort-${cell.sortDirection}`}
 			>
-				{cell.sortDirection != null ? (
+				{cell.sortDirection !== null && cell.sortDirection !== undefined ? (
 					<KolButtonWcTag
 						class="table-sort-button"
 						exportparts="icon"
@@ -537,12 +538,14 @@ export class KolTableStateless implements TableStatelessAPI {
 						_label={cell.label}
 						_on={{
 							onClick: (event: MouseEvent) => {
-								if (typeof this.state._on?.onSort === 'function' && cell.key != null && cell.sortDirection != null) {
-									this.state._on.onSort(event, {
-										key: cell.key,
-										currentSortDirection: cell.sortDirection,
-									});
+								if (typeof cell.key !== 'string' || cell.sortDirection === null || cell.sortDirection === undefined) {
+									return;
 								}
+
+								this.state._on?.onSort?.(event, {
+									key: cell.key,
+									currentSortDirection: cell.sortDirection,
+								});
 							},
 						}}
 					></KolButtonWcTag>
