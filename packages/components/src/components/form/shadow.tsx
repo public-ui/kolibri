@@ -17,7 +17,7 @@ import { KolAlertWcTag, KolIndentedTextWcTag, KolLinkTag } from '../../core/comp
 	shadow: true,
 })
 export class KolForm implements FormAPI {
-	errorListElement?: HTMLElement;
+	private errorListElement?: HTMLElement;
 
 	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {

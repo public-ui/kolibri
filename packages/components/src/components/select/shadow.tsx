@@ -53,6 +53,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		this.selectRef = ref;
 	};
 
+	/**
+	 * Returns the value of the interactive form element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
@@ -60,6 +63,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the primary interactive element.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -67,6 +71,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the primary interactive element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -227,7 +234,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop() public _hideError?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -318,7 +325,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
+	@Prop() public _value?: Stringified<W3CInputValue[]>;
 
 	@State() public state: SelectStates = {
 		_hasValue: false,

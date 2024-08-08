@@ -1,6 +1,8 @@
-export enum KoliBriProgressVariantEnum {
+enum KoliBriProgressVariantEnum {
 	'bar' = 'bar',
 	'cycle' = 'cycle',
 }
 
-export type KoliBriProgressVariantType = `${KoliBriProgressVariantEnum}`;
+type KoliBriProgressVariantType = `${KoliBriProgressVariantEnum}`;
+
+export { KoliBriProgressVariantEnum, KoliBriProgressVariantType };

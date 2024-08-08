@@ -15,7 +15,7 @@ const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar-item';
 	shadow: true,
 })
 export class KolToolbar implements ToolbarAPI {
-	@Element() host!: HTMLElement;
+	@Element() host!: HTMLKolToolbarElement;
 
 	@State() public state: ToolbarStates = {
 		_label: '',
@@ -64,7 +64,8 @@ export class KolToolbar implements ToolbarAPI {
 	 */
 	@Prop() public _items!: ToolbarItemsPropType;
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
+	@Watch('_label')
+	validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

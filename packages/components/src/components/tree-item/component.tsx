@@ -14,7 +14,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
-	@Element() host!: HTMLElement;
+	@Element() host!: HTMLKolTreeItemWcElement;
 
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;
@@ -90,19 +90,23 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 */
 	@Prop() _href!: HrefPropType;
 
-	@Watch('_active') validateActive(value?: ActivePropType): void {
+	@Watch('_active')
+	validateActive(value?: ActivePropType): void {
 		validateActive(this, value || false);
 	}
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
+	@Watch('_label')
+	validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 
-	@Watch('_open') validateOpen(value?: OpenPropType): void {
+	@Watch('_open')
+	validateOpen(value?: OpenPropType): void {
 		validateOpen(this, value);
 	}
 
-	@Watch('_href') validateHref(value?: HrefPropType): void {
+	@Watch('_href')
+	validateHref(value?: HrefPropType): void {
 		validateHref(this, value);
 	}
 
@@ -137,7 +141,8 @@ export class KolTreeItemWc implements TreeItemAPI {
 		};
 	}
 
-	@Method() async focusLink() {
+	@Method()
+	async focusLink() {
 		await this.linkElement.kolFocus();
 	}
 
