@@ -10,11 +10,12 @@ const DATA = [
 ];
 type Data = (typeof DATA)[0];
 
-export const TableStatelessWithSelection: FC = () => {
+export const TableStatelessWithSingleSelection: FC = () => {
 	const [selectedKeys, setSelectedKeys] = useState(['1002']);
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
+		multiple: false,
 		selectedKeys,
 		keyPropertyName: 'id',
 	};

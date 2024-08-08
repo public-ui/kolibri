@@ -36,11 +36,12 @@ import {
 	watchValidator,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, Method, Prop, State, Watch, Element } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
 import type { SortEventPayload } from '../../schema';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { Events } from '../../schema/enums';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -62,6 +63,13 @@ type SortData = {
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
+	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+	private tableWcRef?: HTMLKolTableStatelessWcElement;
+
+	private readonly catchRef = (ref?: HTMLKolTableStatelessWcElement) => {
+		this.tableWcRef = ref;
+	};
+
 	/**
 	 * @deprecated only for backward compatibility
 	 */
@@ -387,6 +395,18 @@ export class KolTableStateful implements TableAPI {
 		);
 	}
 
+	private onSelectionChange = (event: Event): void => {
+		event.stopPropagation();
+	};
+
+	public componentDidLoad(): void {
+		this.tableWcRef?.addEventListener('kol-selection-change', this.onSelectionChange);
+	}
+
+	public disconnectedCallback(): void {
+		this.tableWcRef?.removeEventListener('kol-selection-change', this.onSelectionChange);
+	}
+
 	public componentWillLoad(): void {
 		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
@@ -510,7 +530,7 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
-	private getSelectedData(selectedKeys: string[]): null | KoliBriTableDataType | KoliBriTableDataType[] {
+	private getSelectedData(selectedKeys: string[] | string): null | KoliBriTableDataType | KoliBriTableDataType[] {
 		const selection = this.state._selection;
 		if (selection) {
 			const keyPropertyName = selection.keyPropertyName ?? 'id';
@@ -518,21 +538,24 @@ export class KolTableStateful implements TableAPI {
 			if (selection?.multiple === false) {
 				return data[0];
 			}
+
 			if (keyPropertyName) return data;
 		}
 		return null;
 	}
-	private handleSelectionChange(event: Event, value: string[]): void {
+	private handleSelectionChange(event: Event, value: string[] | string): void {
 		const selection = this.state._selection;
 		if (selection)
 			this.state = {
 				...this.state,
 				_selection: {
 					...selection,
-					selectedKeys: value,
+					selectedKeys: typeof value === 'object' ? value : [value],
 				},
 			};
 		const selectedData = this.getSelectedData(value);
+
+		tryToDispatchKoliBriEvent('selection-change', this.host, selectedData);
 
 		if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
 			this.state._on[Events.onSelectionChange](event, selectedData);
@@ -565,6 +588,7 @@ export class KolTableStateful implements TableAPI {
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<KolTableStatelessWcTag
+					ref={this.catchRef}
 					_data={displayedData}
 					_headerCells={headerCells}
 					_label={this.state._label}
@@ -574,7 +598,7 @@ export class KolTableStateful implements TableAPI {
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {
 							this.handleSort(payload);
 						},
-						onSelectionChange: (event: Event, value: string[]) => {
+						onSelectionChange: (event: Event, value: string[] | string) => {
 							this.handleSelectionChange(event, value);
 						},
 					}}

@@ -421,9 +421,9 @@ export class KolTableStateless implements TableStatelessAPI {
 								{...props}
 								type="radio"
 								onInput={(event: Event) => {
-									tryToDispatchKoliBriEvent('selection-change', this.host, [keyProperty]);
+									tryToDispatchKoliBriEvent('selection-change', this.host, keyProperty);
 									if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-										this.state._on[Events.onSelectionChange](event, [keyProperty]);
+										this.state._on[Events.onSelectionChange](event, keyProperty);
 									}
 								}}
 							/>
@@ -488,6 +488,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private renderHeadingSelectionCell(): JSX.Element {
 		const selection = this.state._selection;
 		if (!selection || (!selection.multiple && selection.multiple !== undefined)) return <th key={`thead-0`}></th>;
+		const keyPropertyName = selection.keyPropertyName ?? 'id';
 		const selectedKeyLength = selection.selectedKeys?.length;
 		const dataLength = this.state._data.length;
 		const isChecked = selectedKeyLength === dataLength;
@@ -511,10 +512,10 @@ export class KolTableStateless implements TableStatelessAPI {
 							aria-label={label}
 							type="checkbox"
 							onInput={(event: Event) => {
-								const selections = !isChecked ? this.state._data : [];
+								const selections = !isChecked ? this.state._data.map((el) => el?.[keyPropertyName] as string) : [];
 								tryToDispatchKoliBriEvent('selection-change', this.host, selections);
 								if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-									this.state._on[Events.onSelectionChange](event, selections.map((el) => el?.id) as string[]);
+									this.state._on[Events.onSelectionChange](event, selections);
 								}
 							}}
 						/>
