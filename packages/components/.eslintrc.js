@@ -13,11 +13,20 @@ const config = {
 	],
 	rules: {
 		/**
-		 * Disabling stencil rules because they are not necessary.
+		 * Handle stencil rules
 		 */
+		// '@stencil-community/ban-default-true': 'off',
 		'@stencil-community/ban-exported-const-enums': 'off',
+		// '@stencil-community/decorators-style': 'off',
+		// '@stencil-community/element-type': 'off',
+		// '@stencil-community/own-props-must-be-private': 'off',
 		'@stencil-community/prefer-vdom-listener': 'off',
-		// '@stencil-community/reserved-member-names': 'off',
+		// '@stencil-community/required-jsdoc': 'off',
+		'@stencil-community/reserved-member-names': 'off',
+		// '@stencil-community/strict-boolean-conditions': 'off',
+		// '@stencil-community/strict-mutable': 'off',
+
+		// 'react/jsx-no-bind': 'off',
 
 		/**
 		 * Import types with `import type` instead of `import`.
