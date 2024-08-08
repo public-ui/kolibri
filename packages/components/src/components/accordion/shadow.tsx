@@ -45,6 +45,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	};
 
 	/**
+	 * Sets the focus on the primary interactive element.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -53,6 +54,9 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the primary interactive element.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.buttonWcRef?.kolFocus();

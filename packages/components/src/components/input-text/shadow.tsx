@@ -69,6 +69,9 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		}
 	};
 
+	/**
+	 * Returns the value of the interactive form element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -76,6 +79,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the primary interactive element.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -84,6 +88,9 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the primary interactive element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

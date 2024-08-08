@@ -33,6 +33,9 @@ export class KolButton implements ButtonProps, FocusableElement {
 		this.buttonWcRef = ref;
 	};
 
+	/**
+	 * Returns the value of the interactive form element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<StencilUnknown> | undefined> {
@@ -40,6 +43,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the primary interactive element.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -48,6 +52,9 @@ export class KolButton implements ButtonProps, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the primary interactive element.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.buttonWcRef?.kolFocus();

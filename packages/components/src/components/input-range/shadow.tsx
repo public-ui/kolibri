@@ -43,6 +43,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private refInputRange?: HTMLInputElement;
 
 	/**
+	 * Sets the focus on the primary interactive element.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -51,6 +52,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the primary interactive element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -83,6 +87,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		return floatValue;
 	}
 
+	/**
+	 * Returns the value of the interactive form element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<number | undefined> {

@@ -53,6 +53,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		this.selectRef = ref;
 	};
 
+	/**
+	 * Returns the value of the interactive form element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
@@ -60,6 +63,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the primary interactive element.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
@@ -68,6 +72,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the primary interactive element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

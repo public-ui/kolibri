@@ -43,12 +43,18 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private refOptions: HTMLLIElement[] = [];
 	private oldValue?: string;
 
+	/**
+	 * Returns the value of the interactive form element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.state._value;
 	}
 
+	/**
+	 * Sets the focus on the primary interactive element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
