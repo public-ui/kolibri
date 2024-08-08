@@ -1,3 +1,5 @@
+@import './rem';
+
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
 		:host,
@@ -74,7 +76,6 @@
 		td {
 			padding: 1em 0;
 			vertical-align: top;
-			align-content: center;
 		}
 
 		th .kol-button,
@@ -85,6 +86,14 @@
 
 		.table-sort-button .button {
 			font-weight: 700;
+		}
+
+		tbody td.selection-cell label {
+			align-items: start;
+
+			.icon {
+				padding-top: rem(3);
+			}
 		}
 
 		.input {
