@@ -381,9 +381,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	private renderSelectionCell(row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element {
 		const selection = this.state._selection;
 		if (!selection) return '';
-		const keyPropertyName = selection.keyPropertyName ?? 'id';
-		const keyCell = row.find((cell) => cell.key === keyPropertyName);
-
+		const keyPropertyName = (row?.[0]?.data?.keyPropertyName as string) ?? selection.keyPropertyName ?? 'id';
+		const keyCell = row.find((cell) => cell.data?.[keyPropertyName] || cell.key === keyPropertyName);
 		if (!keyCell) return '';
 		const isMultiple = selection.multiple || selection.multiple === undefined;
 		const keyProperty = (keyCell?.data as KoliBriTableDataType)[keyPropertyName] as string;
@@ -488,9 +487,11 @@ export class KolTableStateless implements TableStatelessAPI {
 	private renderHeadingSelectionCell(): JSX.Element {
 		const selection = this.state._selection;
 		if (!selection || (!selection.multiple && selection.multiple !== undefined)) return <th key={`thead-0`}></th>;
+		const data = this.state._data;
 		const keyPropertyName = selection.keyPropertyName ?? 'id';
+		const hasCustomKeyPropertyNameByCell = data.some((el) => 'keyPropertyName' in el);
 		const selectedKeyLength = selection.selectedKeys?.length;
-		const dataLength = this.state._data.length;
+		const dataLength = data.length;
 		const isChecked = selectedKeyLength === dataLength;
 		const indeterminate = selectedKeyLength !== 0 && !isChecked;
 		let translationKey = 'kol-table-selection-indeterminate' as TranslationKey;
@@ -512,7 +513,10 @@ export class KolTableStateless implements TableStatelessAPI {
 							aria-label={label}
 							type="checkbox"
 							onInput={(event: Event) => {
-								const selections = !isChecked ? this.state._data.map((el) => el?.[keyPropertyName] as string) : [];
+								const selection = hasCustomKeyPropertyNameByCell
+									? (data.map((el) => el[el.keyPropertyName as string]) as string[])
+									: data.map((el) => el?.[keyPropertyName] as string);
+								const selections = !isChecked ? selection : [];
 								tryToDispatchKoliBriEvent('selection-change', this.host, selections);
 								if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
 									this.state._on[Events.onSelectionChange](event, selections);

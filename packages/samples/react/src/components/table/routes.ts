@@ -4,6 +4,7 @@ import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
 import { TableHorizontalScrollbar } from './horizontal-scrollbar';
 import { TableRenderCell } from './render-cell';
+import { TableSelectionKeyByData } from './selection-key-by-data';
 import { TableSortData } from './sort-data';
 import { TableStateless } from './stateless';
 import { TableWithFooter } from './with-footer';
@@ -20,6 +21,7 @@ export const TABLE_ROUTES: Routes = {
 		'horizontal-scrollbar': TableHorizontalScrollbar,
 		'pagination-position': PaginationPosition,
 		'render-cell': TableRenderCell,
+		'selection-key-by-data': TableSelectionKeyByData,
 		'sort-data': TableSortData,
 		'with-footer': TableWithFooter,
 		'stateful-with-selection': TableStatefulWithSelection,
