@@ -8,6 +8,7 @@
 		font-size: rem(16);
 		gap: rem(16);
 		grid-template-columns: 1fr auto;
+		position: relative;
 	}
 
 	.navigation-list {
@@ -18,9 +19,16 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		flex-grow: 1;
 	}
 
 	.separator:before {
 		content: '•••';
+	}
+
+	.dropdown-menu {
+		position: fixed;
+		z-index: 1000;
+		top: 100%
 	}
 }

@@ -27,7 +27,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
+import { KolButtonWcTag, KolSplitButtonTag } from '../../core/component-names';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -165,16 +165,22 @@ export class KolPagination implements PaginationAPI {
 					</ul>
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
-					<KolSelectTag
-						_hideLabel
-						_id={`pagination-size-${this.nonce}`}
-						_label={translate('kol-entries-per-site')}
-						_options={this.state._pageSizeOptions}
-						_on={{
-							onChange: this.onChangePageSize,
-						}}
-						_value={[this.state._pageSize]}
-					></KolSelectTag>
+					<KolSplitButtonTag _label={translate('kol-entries-per-site')} _id={`pagination-size-${this.nonce}`}>
+						<ul class="dropdown-menu">
+							{this.state._pageSizeOptions.map((option) => (
+								<li
+									key={option.value}
+									role="option"
+									aria-selected={this.state._pageSize === option.value ? 'selected' : ''}
+									onClick={(event) => {
+										this.onChangePageSize(event, option.value);
+									}}
+								>
+									{option.label} {this.state._pageSize === option.value && <span> </span>}
+								</li>
+							))}
+						</ul>
+					</KolSplitButtonTag>
 				)}
 			</Host>
 		);
@@ -271,7 +277,6 @@ export class KolPagination implements PaginationAPI {
 	};
 
 	private onChangePageSize = (event: Event, value: unknown) => {
-		value = parseInt((value as string[])[0]);
 		if (typeof value === 'number' && value > 0 && this._pageSize !== value) {
 			this._pageSize = value;
 			const timeout = setTimeout(() => {
