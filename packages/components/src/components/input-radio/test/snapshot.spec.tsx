@@ -27,7 +27,7 @@ executeTests<InputRadioProps>(
 		_options: [
 			[
 				{ label: 'Field 1', value: 1 },
-				{ label: 'Field 2', value: 2, description: 'description' },
+				{ label: 'Field 2', value: 2, hint: 'description' },
 			],
 			[{ label: 'Field 1', value: { id: 1, name: 'Option 1' } }],
 		],

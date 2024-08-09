@@ -119,7 +119,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 					hasHint
 						? `
 						<span class="hint" id="${state._id}-hint">
-							{this._hint}
+							${state._hint}
 						</span>`
 						: ''
 				}

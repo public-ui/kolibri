@@ -1,4 +1,5 @@
 @import '../mixins/input-messages.scss';
+@import '../mixins/rem.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -30,7 +31,7 @@
 
 	.hint {
 		order: 4;
-		font-size: 0.875rem;
+		font-size: rem(14.4);
 		font-style: italic;
 	}
 
@@ -103,7 +104,7 @@
 
 		.kol-input .hint {
 			order: 3;
-			font-size: 0.875rem;
+			font-size: rem(14.4);
 			font-style: italic;
 		}
 

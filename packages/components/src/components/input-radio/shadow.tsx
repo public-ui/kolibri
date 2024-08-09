@@ -168,7 +168,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 						);
 					})}
 					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}
-					{hasHint && <span class="hint">{this._hint}</span>}
+					{hasHint && <span class="hint">{this.state._hint}</span>}
 				</fieldset>
 			</Host>
 		);
