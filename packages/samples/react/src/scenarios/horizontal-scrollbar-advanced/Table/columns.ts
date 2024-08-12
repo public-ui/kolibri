@@ -1,0 +1,18 @@
+export const columnDefinitions: unknown = [
+	{ key: 'companyname', label: 'Unternehmen', textAlign: 'left', width: '400px' },
+	{ key: 'businesshours', label: 'Öffnungszeiten', textAlign: 'left', width: '400px' },
+	{ key: 'branch', label: 'Branche', textAlign: 'left', width: '400px' },
+	{ key: 'taxid', label: 'Steuernummer', textAlign: 'left', width: '400px' },
+	{ key: 'firstname', label: 'Vorname', textAlign: 'left', width: '400px' },
+	{ key: 'lastname', label: 'Nachname', textAlign: 'left', width: '400px' },
+	{ key: 'datebirthday', label: 'Geburtstag', textAlign: 'left', width: '400px' },
+	{ key: 'address', label: 'Adresse', textAlign: 'left', width: '400px' },
+	{ key: 'zipcity', label: 'Ort', textAlign: 'left', width: '400px' },
+	{ key: 'state', label: 'Bundesland', textAlign: 'left', width: '400px' },
+	{ key: 'email', label: 'E-Mail', textAlign: 'left', width: '400px' },
+	{ key: 'telephone', label: 'Telephone', textAlign: 'left', width: '400px' },
+	{ key: 'mobile', label: 'Mobile', textAlign: 'left', width: '400px' },
+	{ key: 'moretelephone', label: 'Telephone 2', textAlign: 'left', width: '400px' },
+	{ key: 'moreemail', label: 'E-Mail 2', textAlign: 'left', width: '400px' },
+	{ key: 'moreinternet', label: 'Internet  2', textAlign: 'left', width: '400px' },
+];

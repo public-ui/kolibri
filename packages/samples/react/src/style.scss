@@ -27,7 +27,7 @@ hr {
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
-		grid-template-columns: 360px auto;
+		grid-template-columns: 360px calc(100% - 360px);
 		height: 100%;
 	}
 
