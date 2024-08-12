@@ -14,19 +14,19 @@
 	}
 
 	/* popover */
-	.popover {
-		height: 0;
-		left: 0;
-		min-width: 100%;
-		overflow: hidden;
-		position: absolute;
-		top: 100%;
-		transition: height 0.3s ease-in-out;
-	}
+	// .popover {
+	// 	left: 0;
+	// 	min-width: 100%;
+	// 	overflow: hidden;
+	// 	position: fixed;
+	// 	z-index: 1000;
+	// 	top: 100%;
+	// 	transition: height 0.3s ease-in-out;
+	// }
 
-	.popover-content {
-		inset: 0 0 auto 0;
-		min-width: 100%;
-		position: absolute;
-	}
+	// .popover-content {
+	// 	inset: 0 0 auto 0;
+	// 	min-width: 100%;
+	// 	position: absolute;
+	// }
 }

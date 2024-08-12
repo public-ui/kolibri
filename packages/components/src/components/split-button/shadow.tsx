@@ -18,7 +18,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KolButtonWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
@@ -31,9 +31,6 @@ import { KolButtonWcTag } from '../../core/component-names';
 	shadow: true,
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
-	private dropdown: HTMLDivElement | undefined;
-	private dropdownContent: HTMLDivElement | undefined;
-
 	private readonly clickButtonHandler = {
 		onClick: (e: MouseEvent) => {
 			if (typeof this._on?.onClick === 'function') {
@@ -46,31 +43,8 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	};
 	private readonly clickToggleHandler = { onClick: () => this.toggleDropdown() };
 
-	private readonly openDropdown = () => {
-		if (this.dropdown && this.dropdownContent) {
-			this.dropdown.style.height = `${this.dropdownContent.clientHeight}px`;
-			this.state = { ...this.state, _show: true };
-		}
-	};
-	private readonly closeDropdown = () => {
-		if (this.dropdown && this.dropdownContent) {
-			this.dropdown.style.height = ``;
-			this.state = { ...this.state, _show: false };
-		}
-	};
-	private readonly toggleDropdown = (value?: boolean) => {
-		const openIt = typeof value === 'boolean' ? value : !this.state._show;
-		if (openIt) this.openDropdown();
-		else this.closeDropdown();
-	};
-
-	private readonly catchDropdownElements = (e?: HTMLDivElement | null) => {
-		if (e) {
-			this.dropdown = e;
-			setTimeout(() => {
-				this.dropdownContent = e.firstChild as HTMLDivElement;
-			});
-		}
+	private readonly toggleDropdown = () => {
+		this.state = { ...this.state, _show: !this.state._show };
 	};
 
 	public render(): JSX.Element {
@@ -111,11 +85,9 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 					_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
 					_on={this.clickToggleHandler}
 				></KolButtonWcTag>
-				<div class="popover" ref={this.catchDropdownElements}>
-					<div class="popover-content">
-						<slot />
-					</div>
-				</div>
+				<KolPopoverWcTag _show={this.state._show} _align="bottom">
+					<slot />
+				</KolPopoverWcTag>
 			</Host>
 		);
 	}
