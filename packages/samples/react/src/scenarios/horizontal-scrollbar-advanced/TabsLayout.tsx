@@ -24,7 +24,7 @@ const tabs: TabButtonProps[] = [
 	},
 ];
 
-export type TabsLayout = {
+type TabsLayout = {
 	className?: string;
 	demoContent: React.ReactNode;
 };

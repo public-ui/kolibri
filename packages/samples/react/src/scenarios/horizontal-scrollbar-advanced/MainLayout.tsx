@@ -4,7 +4,7 @@ import TabsLayout from './TabsLayout';
 
 import './layout.css';
 
-export type MainLayoutProps = {
+type MainLayoutProps = {
 	children: React.ReactNode;
 };
 

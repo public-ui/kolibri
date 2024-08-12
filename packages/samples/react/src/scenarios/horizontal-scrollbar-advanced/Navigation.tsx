@@ -3,7 +3,7 @@ import { KolNav } from '@public-ui/react';
 
 import { LINKS } from '../../components/nav/links';
 
-export type NavigationProps = {
+type NavigationProps = {
 	className?: string;
 };
 

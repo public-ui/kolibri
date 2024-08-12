@@ -2,7 +2,7 @@ import DatabaseData from './databasedata.json';
 import { columnDefinitions } from './columns';
 import React from 'react';
 
-export type UseTableResult = {
+type UseTableResult = {
 	data: any;
 	columns: any;
 	tableWith: string;
