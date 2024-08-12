@@ -15,7 +15,7 @@ export const BreadcrumbBasic: FC = () => (
 			<KolBreadcrumb
 				_label="Breadcrumb aus Text-Links"
 				_links={[
-					{ _label: 'homepage', _href: '#/back-page' },
+					{ _label: 'Homepage', _href: '#/back-page' },
 					{ _label: 'Bottom of the homepage', _href: '#/back-page' },
 					{
 						_label: 'Underside of the underside',
@@ -27,7 +27,7 @@ export const BreadcrumbBasic: FC = () => (
 				_label="Breadcrumb from icons or text links"
 				_links={[
 					{
-						_label: 'homepage',
+						_label: 'Homepage',
 						_icons: 'codicon codicon-home',
 						_hideLabel: true,
 						_href: '#/back-page',
@@ -45,7 +45,7 @@ export const BreadcrumbBasic: FC = () => (
 			<KolBreadcrumb
 				_label="Breadcrumb from icons and text links"
 				_links={[
-					{ _label: 'homepage', _icons: 'codicon codicon-home', _href: '#/back-page' },
+					{ _label: 'Homepage', _icons: 'codicon codicon-home', _href: '#/back-page' },
 					{
 						_label: 'Subpage of the main page and I_am_a_really_long_compound_word_trying_to_break_the_layout',
 						_href: '#/back-page',

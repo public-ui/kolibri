@@ -58,7 +58,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 		],
 		[
 			{
-				key: 'monday',
+				key: 'montag',
 				label: 'Monday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
@@ -82,7 +82,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				textAlign: 'right',
 			},
 			{
-				key: 'tuesday',
+				key: 'dienstag',
 				label: 'Tuesday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
@@ -105,7 +105,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				sortDirection: 'DESC',
 			},
 			{
-				key: 'wednesday',
+				key: 'mittwoch',
 				label: 'Wednesday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
@@ -116,7 +116,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				},
 			},
 			{
-				key: 'thursday',
+				key: 'donnerstag',
 				label: 'Thursday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
@@ -127,7 +127,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 				},
 			},
 			{
-				key: 'friday',
+				key: 'freitag',
 				label: 'Friday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
@@ -139,7 +139,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			},
 			{
 				key: 'samstag',
-				label: 'Samstag',
+				label: 'Saturday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
@@ -150,7 +150,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 			},
 			{
 				key: 'sonntag',
-				label: 'Sonntag',
+				label: 'Sunday',
 				render: (el, cell) => {
 					const renderElement = document.createElement('div');
 					renderElement.setAttribute('role', 'presentation');
