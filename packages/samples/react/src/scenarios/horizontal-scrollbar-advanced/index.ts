@@ -1,1 +1,1 @@
-export { default as TableHorizontalScrollAdvanced } from './DemoPage';
+export { default as TableHorizontalScrollAdvanced } from './TableHorizontalScrollbarAdvanced';
