@@ -437,7 +437,7 @@ export const HandoutBasic: FC = () => (
 						<KolBreadcrumb
 							_label="Breadcrumb aus Text-Links"
 							_links={[
-								{ _label: 'homepage', _href: '#/back-page' },
+								{ _label: 'Homepage', _href: '#/back-page' },
 								{ _label: 'Bottom of the homepage', _href: '#/back-page' },
 								{
 									_label: 'Underside of the underside',
