@@ -1,6 +1,6 @@
 import type { SplitButtonProps, SplitButtonStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
-import { KolButtonWcTag } from '../../../core/component-names';
+import { KolButtonWcTag, KolPopoverWcTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
 
 export const getSplitButtonHtml = (props: SplitButtonProps): string => {
@@ -37,11 +37,9 @@ export const getSplitButtonHtml = (props: SplitButtonProps): string => {
 			class="secondary-button"
 		>
 		</${KolButtonWcTag}>
-    <div class="popover">
-      <div class="popover-content">
-        <slot></slot>
-      </div>
-  	</div>
+		<${KolPopoverWcTag} ${state._show ? `_show ="${state._show}"` : ''} _align="bottom">
+			<slot />
+		</${KolPopoverWcTag}>
   </mock:shadow-root>
 </kol-split-button>`;
 };
