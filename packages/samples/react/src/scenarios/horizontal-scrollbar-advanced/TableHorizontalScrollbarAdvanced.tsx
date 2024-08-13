@@ -15,7 +15,7 @@ type UseTableResult = {
 
 type TabsLayoutProps = {
 	className?: string;
-    demoContent: React.ReactNode;
+	demoContent: React.ReactNode;
 };
 
 type NavigationProps = {
@@ -94,7 +94,7 @@ function TabsLayout({ className, demoContent }: TabsLayoutProps) {
 	return (
 		<div className={className}>
 			<KolTabs _tabs={tabs} _label="Demo Tabs"></KolTabs>
-            {demoContent}
+			{demoContent}
 		</div>
 	);
 }
