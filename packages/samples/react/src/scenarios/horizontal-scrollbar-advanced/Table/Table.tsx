@@ -12,7 +12,7 @@ function Table() {
 				_minWidth={table.tableWith}
 				_headers={{ horizontal: [table.columns] }}
 				_data={table.data}
-				_pagination={{ _page: 1, _pageSize: 50 }}
+				_pagination={{ _page: 1 }}
 				className="block"
 			/>
 		</div>
