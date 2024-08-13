@@ -6,12 +6,12 @@
 		font-size: rem(16);
 	}
 
-	.kol-popover {
+	.kol-popover-wc {
 		height: 0;
 		position: absolute;
 	}
 
-	.kol-popover .popover {
+	.kol-popover-wc .popover {
 		background-color: #fff;
 		min-height: max-content;
 		min-width: max-content;
@@ -19,15 +19,15 @@
 		position: absolute;
 	}
 
-	.kol-popover .show {
+	.kol-popover-wc .show {
 		animation: 0.3s ease-in forwards fadeInOpacity;
 	}
 
-	.kol-popover .disappear {
+	.kol-popover-wc .disappear {
 		animation: 0.3s ease-in backwards fadeInOpacity;
 	}
 
-	.kol-popover .arrow {
+	.kol-popover-wc .arrow {
 		background-color: inherit;
 		height: var(--font-size);
 		position: absolute;
