@@ -68,6 +68,8 @@ export class KolPagination implements PaginationAPI {
 
 	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
 
+	private listItems: HTMLElement[] = [];
+
 	public render(): JSX.Element {
 		let ellipsis = false;
 		const count = this.getCount();
@@ -165,16 +167,19 @@ export class KolPagination implements PaginationAPI {
 					</ul>
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
-					<KolSplitButtonTag _label={translate('kol-entries-per-site')} _id={`pagination-size-${this.nonce}`}>
+					<KolSplitButtonTag _label={`${this.state._pageSize} ${translate('kol-entries-per-site')}`} _id={`pagination-size-${this.nonce}`}>
 						<ul class="dropdown-menu">
-							{this.state._pageSizeOptions.map((option) => (
+							{this.state._pageSizeOptions.map((option, index) => (
 								<li
+									ref={(el) => (this.listItems[index] = el!)}
 									key={option.value}
-									role="option"
-									aria-selected={this.state._pageSize === option.value ? 'selected' : ''}
+									role="menuitem"
+									tabindex={this.state._pageSize === option.value ? '0' : '-1'}
+									aria-selected={this.state._pageSize === option.value ? 'true' : 'false'}
 									onClick={(event) => {
 										this.onChangePageSize(event, option.value);
 									}}
+									onKeyDown={(event) => this.handleKeyDown(event, index, option.value)}
 								>
 									{option.label} {this.state._pageSize === option.value && <span> </span>}
 								</li>
@@ -259,7 +264,20 @@ export class KolPagination implements PaginationAPI {
 		_siblingCount: 1,
 		_max: 0,
 	};
-
+	private handleKeyDown(event: KeyboardEvent, index: number, value: unknown): void {
+		if (event.key === 'ArrowDown') {
+			const nextIndex = index + 1 < this.listItems.length ? index + 1 : 0;
+			this.listItems[nextIndex].focus();
+			event.preventDefault();
+		} else if (event.key === 'ArrowUp') {
+			const prevIndex = index - 1 >= 0 ? index - 1 : this.listItems.length - 1;
+			this.listItems[prevIndex].focus();
+			event.preventDefault();
+		} else if (event.key === 'Enter' || event.key === ' ') {
+			this.onChangePageSize(event, value);
+			event.preventDefault();
+		}
+	}
 	private onClick = (event: Event, page: number) => {
 		if (typeof this.state._on.onClick === 'function') {
 			this.state._on.onClick(event, page);

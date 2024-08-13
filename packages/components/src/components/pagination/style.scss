@@ -19,7 +19,6 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		flex-grow: 1;
 	}
 
 	.separator:before {
@@ -28,7 +27,14 @@
 
 	.dropdown-menu {
 		position: fixed;
-		z-index: 1000;
-		top: 100%
+		display: block;
+		list-style-type: none;
+
+		& li {
+			padding: rem(8);
+			cursor: pointer;
+
+		}
+
 	}
 }
