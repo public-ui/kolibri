@@ -38,7 +38,6 @@ import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
 import { KolLogo } from './logo/shadow';
 import { KolModal } from './modal/shadow';
-import { KolMenu } from './menu/component';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
 import { KolPopover } from './popover/component';
@@ -106,7 +105,6 @@ export const COMPONENTS = [
 	KolLinkWc,
 	KolLogo,
 	KolModal,
-	KolMenu,
 	KolNav,
 	KolPagination,
 	KolPopover,
