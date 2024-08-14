@@ -1,48 +1,48 @@
-import { FunctionalComponent, h } from '@stencil/core';
-import { JSX } from '@stencil/core/internal';
-import { Option } from '../../schema';
+import type { FunctionalComponent } from '@stencil/core';
+import { h } from '@stencil/core';
+import type { JSX } from '@stencil/core/internal';
+import type { Option } from '../../schema';
 import clsx from 'clsx';
 
 type KolMenuProps = {
 	options: Option<number>[];
 	focusedOptionIndex: number;
-	onClick: (event: Event, option: unknown) => void;
+	onItemClick: (event: Event, option: unknown) => void;
 	renderOption?: (option: Option<number>) => JSX.Element;
 	selectedValue?: number | string;
 };
-export const KolMenu: FunctionalComponent<KolMenuProps> = ({ options, onClick, renderOption, selectedValue }) => {
-	let listItems: HTMLElement | undefined = undefined;
-	// const index: number = 0;
-	function handleKeyDown(event: KeyboardEvent): void {
+export const KolMenu: FunctionalComponent<KolMenuProps> = ({ options, onItemClick, renderOption, selectedValue }) => {
+	const listItems: (HTMLElement | undefined)[] = [];
+
+	function handleKeyDown(event: KeyboardEvent, index: number, option: unknown): void {
 		if (event.key === 'ArrowDown') {
-			console.log(event.target);
-			console.log(listItems);
+			const nextIndex = index + 1 < listItems.length ? index + 1 : 0;
+			listItems[nextIndex]?.focus();
+			event.preventDefault();
+		} else if (event.key === 'ArrowUp') {
+			const prevIndex = index - 1 >= 0 ? index - 1 : listItems.length - 1;
+			listItems[prevIndex]?.focus();
+			event.preventDefault();
+		} else if (event.key === 'Enter' || event.key === ' ') {
+			onItemClick(event, option);
+			event.preventDefault();
 		}
-		// if (event.key === 'ArrowDown') {
-		// 	const nextIndex = index + 1 < listItems.length ? index + 1 : 0;
-		// 	listItems[nextIndex].focus();
-		// 	event.preventDefault();
-		// } else if (event.key === 'ArrowUp') {
-		// 	const prevIndex = index - 1 >= 0 ? index - 1 : listItems.length - 1;
-		// 	listItems[prevIndex].focus();
-		// 	event.preventDefault();
-		// } else if (event.key === 'Enter' || event.key === ' ') {
-		// 	onClick(event, option);
-		// 	event.preventDefault();
-		// }
 	}
+
 	return (
-		<ul role="listbox" class={clsx('menu__listbox')} onKeyDown={(event) => handleKeyDown(event)} ref={(el) => (listItems = el)}>
+		<ul role="listbox" class={clsx('menu__listbox')}>
 			{options.length > 0 &&
 				options.map((option, index) => (
 					<li
+						ref={(el) => (listItems[index] = el)}
 						id={`option-${index}`}
 						key={index}
 						tabIndex={-1}
 						role="option"
-						aria-selected={selectedValue === option.value}
-						onClick={(event) => onClick(event, option)}
 						class="menu__item"
+						aria-selected={selectedValue === option.value}
+						onKeyDown={(event) => handleKeyDown(event, index, option)}
+						onClick={(event) => onItemClick(event, option)}
 					>
 						{renderOption && renderOption(option)}
 					</li>

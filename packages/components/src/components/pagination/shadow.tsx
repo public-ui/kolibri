@@ -170,8 +170,8 @@ export class KolPagination implements PaginationAPI {
 						<KolMenu
 							options={this.state._pageSizeOptions}
 							selectedValue={this.state._pageSize}
-							onClick={(event, value) => {
-								this.onChangePageSize(event, value);
+							onItemClick={(event, option: unknown) => {
+								this.onChangePageSize(event, (option as { value: string }).value);
 							}}
 							focusedOptionIndex={-1}
 							renderOption={(option: Option<number>) => (
