@@ -26,10 +26,10 @@ export const SplitButtonBasic: FC = () => {
 			</SampleDescription>
 
 			<div className="flex gap-4">
-				<KolSplitButton _label="Nur der Pfeil öffnet" _on={{ onClick: handleButtonClick }}>
+				<KolSplitButton _label="Only the arrow opens" _on={{ onClick: handleButtonClick }}>
 					Dropdown-Inhalt
 				</KolSplitButton>
-				<KolSplitButton _label="Schalter ohne sichtbares Label" _hideLabel _icons="codicon codicon-git-pull-request">
+				<KolSplitButton _label="Button without visible label" _hideLabel _icons="codicon codicon-git-pull-request">
 					Dropdown-Inhalt
 				</KolSplitButton>
 			</div>

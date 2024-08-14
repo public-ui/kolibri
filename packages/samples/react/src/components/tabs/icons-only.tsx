@@ -7,23 +7,23 @@ import { SampleDescription } from '../SampleDescription';
 const tabs = [
 	{
 		_icons: 'codicon codicon-pie-chart',
-		_label: 'Erster Tab',
+		_label: 'First Tab',
 		_hideLabel: true,
 	},
 	{
 		_icons: 'codicon codicon-calendar',
-		_label: 'Zweites Tab',
+		_label: 'Second Tab',
 		_hideLabel: true,
 	},
 	{
 		_disabled: true,
 		_icons: 'codicon codicon-briefcase',
-		_label: 'Deaktiviertes Tab',
+		_label: 'Disabled Tab',
 		_hideLabel: true,
 	},
 	{
 		_icons: 'codicon codicon-telescope',
-		_label: 'Letzter Tab',
+		_label: 'Last Tab',
 		_hideLabel: true,
 	},
 ];
@@ -34,10 +34,10 @@ export const TabsIconsOnly: FC = () => (
 		</SampleDescription>
 
 		<KolTabs _label="Tabs with icons" _tabs={tabs}>
-			<div slot="tab-0">Inhalte von Tab 1</div>
-			<div slot="tab-1">Inhalte von Tab 2</div>
-			<div slot="tab-2">Inhalte von Tab 3</div>
-			<div slot="tab-3">Inhalte von Tab 4</div>
+			<div slot="tab-0">Contents of Tab 1</div>
+			<div slot="tab-1">Contents of Tab 2</div>
+			<div slot="tab-2">Contents of Tab 3</div>
+			<div slot="tab-3">Contents of Tab 4</div>
 		</KolTabs>
 	</>
 );

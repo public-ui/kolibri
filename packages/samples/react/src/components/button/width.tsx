@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 const ARGS = {
 	className: 'w-8rem',
 	_on: {
-		onClick: () => alert('Klick!'),
+		onClick: () => alert('Click!'),
 	},
 };
 

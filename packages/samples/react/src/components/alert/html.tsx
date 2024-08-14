@@ -11,11 +11,11 @@ export const AlertHtml: FC = () => (
 		</SampleDescription>
 
 		<div>
-			<KolAlert _label="Ausgabe von HTML-Code im Alert" _type="info">
-				<h2 className="mt-2 mb-3">Hier wird eine H2-Überschrift ausgegeben</h2>
+			<KolAlert _label="Output of HTML code in the alert" _type="info">
+				<h2 className="mt-2 mb-3">An H2 heading is output here</h2>
 				<div className="grid gap-4 sm:grid-cols-2">
 					<div>
-						<h3>Text in einer linken Spalte</h3>
+						<h3>Text in a left-hand column</h3>
 						<p>
 							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem sed fugiat dolorum ratione et, ullam officia nobis nihil debitis, consectetur
 							dicta accusantium. Vitae debitis, quibusdam vel recusandae deleniti placeat dolorem?

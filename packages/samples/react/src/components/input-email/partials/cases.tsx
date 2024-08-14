@@ -15,7 +15,7 @@ export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.K
 				_accessKey="M"
 				_placeholder="elke@mustermann.de"
 				_suggestions="['test1@mail.de', 'test2@mail.de', 'test3@mail.de']"
-				_label="E-Mail (Liste)"
+				_label="E-Mail (list)"
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_touched
 				_icons={{
