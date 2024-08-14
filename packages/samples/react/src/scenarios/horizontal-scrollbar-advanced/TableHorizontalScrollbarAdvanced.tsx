@@ -1,32 +1,13 @@
 import * as React from 'react';
 import { KolTable, KolTabs, KolNav } from '@public-ui/react';
-import type { TabButtonProps } from '@public-ui/components';
+import type { KoliBriTableHeaders, TabButtonProps } from '@public-ui/components';
 import { SampleDescription } from '../../components/SampleDescription';
 import { LINKS } from '../../components/nav/links';
-import DatabaseData from './databasedata.json';
+import DATA from './databasedata.json';
 
 import './layout.css';
 
-type UseTableResult = {
-	data: any;
-	columns: any;
-	tableWith: string;
-};
-
-type TabsLayoutProps = {
-	className?: string;
-	demoContent: React.ReactNode;
-};
-
-type NavigationProps = {
-	className?: string;
-};
-
-type MainLayoutProps = {
-	children: React.ReactNode;
-};
-
-const tabs: TabButtonProps[] = [
+const TABS: TabButtonProps[] = [
 	{
 		_icons: 'codicon codicon-pie-chart',
 		_label: 'Erster Tab',
@@ -48,16 +29,21 @@ const tabs: TabButtonProps[] = [
 	},
 ];
 
-const columnDefinitions: unknown = [
-	{ key: 'name', label: 'Name', textAlign: 'left', width: '400px' },
-	{ key: 'species', label: 'Species', textAlign: 'left', width: '400px' },
-	{ key: 'habitat', label: 'Habitat', textAlign: 'left', width: '400px' },
-	{ key: 'diet', label: 'Diet', textAlign: 'left', width: '400px' },
-	{ key: 'lifespan', label: 'lifespan', textAlign: 'right', width: '400px' },
-];
+const HEADERS: KoliBriTableHeaders = {
+	horizontal: [
+		[
+			{ key: 'name', label: 'Name', textAlign: 'left', width: '400px' },
+			{ key: 'species', label: 'Species', textAlign: 'left', width: '400px' },
+			{ key: 'habitat', label: 'Habitat', textAlign: 'left', width: '400px' },
+			{ key: 'diet', label: 'Diet', textAlign: 'left', width: '400px' },
+			{ key: 'lifespan', label: 'lifespan', textAlign: 'right', width: '400px' },
+		],
+	],
+};
 
-function useTable(): UseTableResult {
+function TableHorizontalScrollbarAdvanced() {
 	const [tableWith] = React.useState(() => {
+		const columnDefinitions = HEADERS.horizontal![0];
 		let width = 0;
 
 		for (const def of columnDefinitions as { width: string }[]) {
@@ -66,63 +52,27 @@ function useTable(): UseTableResult {
 		return `${width}px`;
 	});
 
-	return {
-		data: DatabaseData,
-		columns: columnDefinitions,
-		tableWith,
-	};
-}
-
-function Table() {
-	const table = useTable();
-
-	return (
-		<div style={{ overflow: 'hidden' }}>
-			<KolTable
-				_label="Table for demonstration purposes with horizontal scrollbar"
-				_minWidth={table.tableWith}
-				_headers={{ horizontal: [table.columns] }}
-				_data={table.data}
-				_pagination={{ _page: 1 }}
-				className="block"
-			/>
-		</div>
-	);
-}
-
-function TabsLayout({ className, demoContent }: TabsLayoutProps) {
-	return (
-		<div className={className}>
-			<KolTabs _tabs={tabs} _label="Demo Tabs"></KolTabs>
-			{demoContent}
-		</div>
-	);
-}
-
-function Navigation({ className }: NavigationProps) {
-	return (
-		<div className={className}>
-			<KolNav _label="Main navigation" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded />
-		</div>
-	);
-}
-
-function MainLayout({ children }: MainLayoutProps) {
-	return (
-		<div className="mainlayout">
-			<Navigation className="nav-area" />
-			<TabsLayout className="content" demoContent={children} />
-		</div>
-	);
-}
-
-function TableHorizontalScrollbarAdvanced() {
 	return (
 		<>
 			<SampleDescription></SampleDescription>
-			<MainLayout>
-				<Table />
-			</MainLayout>
+			<div className="mainlayout">
+				<aside className="nav-area">
+					<KolNav _label="Main navigation" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded />
+				</aside>
+				<div className="content">
+					<KolTabs _tabs={TABS} _label="Demo Tabs"></KolTabs>
+					<div style={{ overflow: 'hidden' }}>
+						<KolTable
+							_label="Table for demonstration purposes with horizontal scrollbar"
+							_minWidth={tableWith}
+							_headers={HEADERS}
+							_data={DATA}
+							_pagination={{ _page: 1 }}
+							className="block"
+						/>
+					</div>
+				</div>
+			</div>
 		</>
 	);
 }
