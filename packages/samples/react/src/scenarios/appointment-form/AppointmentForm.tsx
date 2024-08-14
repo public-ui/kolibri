@@ -46,22 +46,22 @@ const initialValues: FormValues = {
 };
 
 const districtSchema = {
-	district: Yup.string().required('Bitte Stadtteil wählen.'),
+	district: Yup.string().required('Please select district.'),
 };
 const personalInformationSchema = {
-	salutation: Yup.string().required('Bitte Anrede auswählen.'),
-	name: Yup.string().required('Bitte Vor- und Zuname eingeben.'),
+	salutation: Yup.string().required('Please select salutation.'),
+	name: Yup.string().required('Please enter your first and last name.'),
 	company: Yup.string().when('salutation', {
-		is: (salutation: string) => salutation === 'Firma',
-		then: (schema) => schema.required('Bitte Firma angeben.'),
+		is: (salutation: string) => salutation === 'Company',
+		then: (schema) => schema.required('Please specify company.'),
 	}),
-	email: Yup.string().required('Bitte E-Mail eingeben.'),
+	email: Yup.string().required('Please enter your e-mail address.'),
 };
 const availableAppointmentsSchema = {
-	date: Yup.string().required('Bitte Datum eingeben.'),
+	date: Yup.string().required('Please enter date.'),
 	time: Yup.string().when('date', {
 		is: (date: string) => Boolean(date), // only validate time when date is already set
-		then: (schema) => schema.test('checkTimeAvailability', 'Termin leider nicht mehr verfügbar.', checkAppointmentAvailability),
+		then: (schema) => schema.test('checkTimeAvailability', 'Date unfortunately no longer available.', checkAppointmentAvailability),
 	}),
 };
 
@@ -103,22 +103,22 @@ export function AppointmentForm() {
 				<KolTabs
 					_tabs={[
 						{
-							_label: '1. Einwohnermeldeamt wählen',
+							_label: '1. Choose registration office',
 						},
 						{
-							_label: '2. Freie Termine',
+							_label: '2. Available dates',
 							_disabled: activeFormSection < FormSection.AVAILABLE_APPOINTMENTS,
 						},
 						{
-							_label: '3. Persönliche Daten',
+							_label: '3. Personal data',
 							_disabled: activeFormSection < FormSection.PERSONAL_INFORMATION,
 						},
 						{
-							_label: 'Zusammenfassung',
+							_label: 'Summary',
 							_disabled: activeFormSection < FormSection.SUMMARY,
 						},
 					]}
-					_label="Formular-Navigation"
+					_label="Form navigation"
 					_selected={selectedTab}
 					_on={{
 						onSelect: (_event, selectedTab) => {

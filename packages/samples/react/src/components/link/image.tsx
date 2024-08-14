@@ -11,10 +11,10 @@ export const LinkImage: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolLink _href="#/back-page" _label="Ich bin ein Link, der als Text gerendert wird" />
+			<KolLink _href="#/back-page" _label="I am a link that is rendered as text" />
 			<br />
 			<KolLink _href="#/back-page" _label="">
-				<img alt="Darstellung des KoliBri-Theming" slot="expert" src="abgrenzung.jpg" width="300" />
+				<img alt="Presentation of the KoliBri theming" slot="expert" src="abgrenzung.jpg" width="300" />
 			</KolLink>
 		</div>
 	</>

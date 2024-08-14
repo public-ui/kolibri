@@ -66,7 +66,7 @@ export function AvailableAppointmentsForm() {
 	);
 	return (
 		<div className="p-2">
-			<KolHeading _level={2} _label="Wählen Sie einen Termin aus"></KolHeading>
+			<KolHeading _level={2} _label="Select an appointment"></KolHeading>
 			<KolForm
 				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
@@ -81,7 +81,7 @@ export function AvailableAppointmentsForm() {
 				{renderField('date', (field) => (
 					<KolInputDate
 						id="field-date"
-						_label="Datum"
+						_label="Date"
 						_value={field.value}
 						_msg={{
 							_type: 'error',
@@ -100,7 +100,7 @@ export function AvailableAppointmentsForm() {
 								{renderField('time', (field) => (
 									<KolInputRadio
 										id="field-time"
-										_label="Zeit"
+										_label="Time"
 										_orientation="horizontal"
 										_options={availableTimes}
 										_value={field.value}
@@ -114,17 +114,17 @@ export function AvailableAppointmentsForm() {
 									/>
 								))}
 								<p>
-									<em>Aus Testzwecken sind nur die Termine zu jeder halben Stunde verfügbar.</em>
+									<em>For test purposes, only the dates for every half hour are available.</em>
 								</p>
 							</>
 						) : (
-							<KolSpin _show className="block" aria-label="Termine werden geladen." _variant="cycle" />
+							<KolSpin _show className="block" aria-label="Dates are loaded." _variant="cycle" />
 						)}
 					</div>
 				)}
 
 				<KolButton _label="Weiter" _type="submit" className="mt-2" />
-				{form.values.date && form.isValidating ? <KolSpin _show aria-label="Termin wird geprüft." /> : ''}
+				{form.values.date && form.isValidating ? <KolSpin _show aria-label="Date being checked." /> : ''}
 			</KolForm>
 		</div>
 	);

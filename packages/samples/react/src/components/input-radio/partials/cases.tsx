@@ -10,17 +10,17 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 		<div className="grid gap-4">
 			<KolInputRadio
 				{...props}
-				_options="[{'disabled':true,'label':'Frau (disabled)','value':'Frau'},{'label':'Herr'},{'label':'Firma','value':'Firma'}]"
-				_label="Anrede"
+				_options="[{'disabled':true,'label':'Mrs. (disabled)','value':'Mrs.'},{'label':'Mr.'},{'label':'Company','value':'Company'}]"
+				_label="Salutation"
 			/>
 			<KolInputRadio
 				{...props}
 				_required
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_touched
-				_value="Firma"
-				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)','value':'Herr'},{'label':'Firma','value':'Firma'}]"
-				_label="Anrede (mit Fehler)"
+				_value="Company"
+				_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)','value':'Mr.'},{'label':'Company','value':'Company'}]"
+				_label="Salutation (with error)"
 			/>
 			<KolInputRadio
 				{...props}
@@ -28,9 +28,9 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_accessKey="A"
 				_orientation="horizontal"
 				_required
-				_value="Firma"
-				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
-				_label="Anrede (horizontal)"
+				_value="Company"
+				_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)'},{'label':'Company','value':'Company'}]"
+				_label="Salutation (horizontal)"
 			/>
 			<KolInputRadio
 				{...props}
@@ -39,16 +39,16 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_required
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_touched
-				_value="Firma"
-				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
-				_label="Anrede (horizontal mit Fehler)"
+				_value="Company"
+				_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)'},{'label':'Company','value':'Company'}]"
+				_label="Salutation (horizontal with error)"
 			/>
 			<KolInputRadio
 				{...props}
 				_disabled
-				_value="Firma"
-				_options="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
-				_label="Anrede"
+				_value="Company"
+				_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)'},{'label':'Company','value':'Company'}]"
+				_label="Salutation"
 				_touched
 			/>
 		</div>
