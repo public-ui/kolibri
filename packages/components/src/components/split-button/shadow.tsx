@@ -51,40 +51,42 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 		const i18nDropdownLabel = 'kol-split-button-dropdown-label';
 		return (
 			<Host class="kol-split-button">
-				<KolButtonWcTag
-					class={{
-						'main-button': true,
-						button: true,
-						[this._variant as string]: this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
-					}}
-					_ariaControls={this._ariaControls}
-					_ariaExpanded={this._ariaExpanded}
-					_ariaSelected={this._ariaSelected}
-					_customClass={this._customClass}
-					_disabled={this._disabled}
-					_icons={this._icons}
-					_hideLabel={this._hideLabel}
-					_label={this._label}
-					_name={this._name}
-					_on={this.clickButtonHandler}
-					_role={this._role}
-					_syncValueBySelector={this._syncValueBySelector}
-					_tabIndex={this._tabIndex}
-					_tooltipAlign={this._tooltipAlign}
-					_type={this._type}
-					_value={this._value}
-					_variant={this._variant}
-				></KolButtonWcTag>
-				<div class="horizontal-line"></div>
-				<KolButtonWcTag
-					class="secondary-button"
-					_disabled={this._disabled}
-					_hideLabel
-					_icons="codicon codicon-triangle-down"
-					_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
-					_on={this.clickToggleHandler}
-				></KolButtonWcTag>
+				<div class="split-button-root">
+					<KolButtonWcTag
+						class={{
+							'main-button': true,
+							button: true,
+							[this._variant as string]: this._variant !== 'custom',
+							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
+						}}
+						_ariaControls={this._ariaControls}
+						_ariaExpanded={this._ariaExpanded}
+						_ariaSelected={this._ariaSelected}
+						_customClass={this._customClass}
+						_disabled={this._disabled}
+						_icons={this._icons}
+						_hideLabel={this._hideLabel}
+						_label={this._label}
+						_name={this._name}
+						_on={this.clickButtonHandler}
+						_role={this._role}
+						_syncValueBySelector={this._syncValueBySelector}
+						_tabIndex={this._tabIndex}
+						_tooltipAlign={this._tooltipAlign}
+						_type={this._type}
+						_value={this._value}
+						_variant={this._variant}
+					></KolButtonWcTag>
+					<div class="horizontal-line"></div>
+					<KolButtonWcTag
+						class="secondary-button"
+						_disabled={this._disabled}
+						_hideLabel
+						_icons="codicon codicon-triangle-down"
+						_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
+						_on={this.clickToggleHandler}
+					></KolButtonWcTag>
+				</div>
 				<KolPopoverWcTag _show={this.state._show} _align="bottom">
 					<slot />
 				</KolPopoverWcTag>

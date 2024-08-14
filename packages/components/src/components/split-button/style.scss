@@ -8,13 +8,21 @@
 		position: relative;
 	}
 
+	:host .split-button-root {
+		display: flex;
+		position: relative;
+	}
+
 	.main-button {
 		flex-grow: 1;
 		text-align: left;
 	}
 
-	/* popover */
-	.popover {
-		position: fixed !important;
+	.kol-popover-wc .popover {
+		margin-top: rem(2);
+	}
+
+	.kol-popover-wc .arrow {
+		display: none;
 	}
 }
