@@ -28,6 +28,7 @@ import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { KolButtonWcTag, KolSplitButtonTag } from '../../core/component-names';
+import { KolMenu } from '../@shared/kol-menu';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -67,8 +68,6 @@ export class KolPagination implements PaginationAPI {
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
 
 	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
-
-	private listItems: HTMLElement[] = [];
 
 	public render(): JSX.Element {
 		let ellipsis = false;
@@ -168,23 +167,19 @@ export class KolPagination implements PaginationAPI {
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
 					<KolSplitButtonTag _label={`${this.state._pageSize} ${translate('kol-entries-per-site')}`} _id={`pagination-size-${this.nonce}`}>
-						<ul class="dropdown-menu">
-							{this.state._pageSizeOptions.map((option, index) => (
-								<li
-									ref={(el) => (this.listItems[index] = el!)}
-									key={option.value}
-									role="menuitem"
-									tabindex={this.state._pageSize === option.value ? '0' : '-1'}
-									aria-selected={this.state._pageSize === option.value ? 'true' : 'false'}
-									onClick={(event) => {
-										this.onChangePageSize(event, option.value);
-									}}
-									onKeyDown={(event) => this.handleKeyDown(event, index, option.value)}
-								>
+						<KolMenu
+							options={this.state._pageSizeOptions}
+							selectedValue={this.state._pageSize}
+							onClick={(event, value) => {
+								this.onChangePageSize(event, value);
+							}}
+							focusedOptionIndex={-1}
+							renderOption={(option: Option<number>) => (
+								<div>
 									{option.label} {this.state._pageSize === option.value && <span> </span>}
-								</li>
-							))}
-						</ul>
+								</div>
+							)}
+						/>
 					</KolSplitButtonTag>
 				)}
 			</Host>
@@ -264,20 +259,7 @@ export class KolPagination implements PaginationAPI {
 		_siblingCount: 1,
 		_max: 0,
 	};
-	private handleKeyDown(event: KeyboardEvent, index: number, value: unknown): void {
-		if (event.key === 'ArrowDown') {
-			const nextIndex = index + 1 < this.listItems.length ? index + 1 : 0;
-			this.listItems[nextIndex].focus();
-			event.preventDefault();
-		} else if (event.key === 'ArrowUp') {
-			const prevIndex = index - 1 >= 0 ? index - 1 : this.listItems.length - 1;
-			this.listItems[prevIndex].focus();
-			event.preventDefault();
-		} else if (event.key === 'Enter' || event.key === ' ') {
-			this.onChangePageSize(event, value);
-			event.preventDefault();
-		}
-	}
+
 	private onClick = (event: Event, page: number) => {
 		if (typeof this.state._on.onClick === 'function') {
 			this.state._on.onClick(event, page);

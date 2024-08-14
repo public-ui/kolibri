@@ -1,7 +1,10 @@
 @import '../@shared/mixins';
 @import '../style';
+@import '../@shared/kol-menu.scss';
 
 @layer kol-component {
+	@include kol-menu-styles;
+
 	:host {
 		align-items: center;
 		display: grid;
@@ -23,18 +26,5 @@
 
 	.separator:before {
 		content: '•••';
-	}
-
-	.dropdown-menu {
-		position: fixed;
-		display: block;
-		list-style-type: none;
-
-		& li {
-			padding: rem(8);
-			cursor: pointer;
-
-		}
-
 	}
 }
