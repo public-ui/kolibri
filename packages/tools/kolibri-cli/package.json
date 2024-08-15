@@ -29,6 +29,10 @@
 		"unused": "knip",
 		"watch": "nodemon --ignore package.json src/index.ts migrate --ignore-uncommitted-changes --test-tasks test"
 	},
+	"lint-staged": {
+		"*.ts|tsx|js|jsx": ["prettier --list-different src", "pnpm lint"],
+  		"*.md": "prettier --list-different"
+	},
 	"type": "commonjs",
 	"dependencies": {
 		"chalk": "4.1.2",

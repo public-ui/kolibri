@@ -24,6 +24,10 @@
 		"unused": "knip",
 		"postinstall": "pnpm exec playwright install"
 	},
+	"lint-staged": {
+		"*.ts|tsx|js|jsx": ["prettier --list-different src", "pnpm lint"],
+  		"*.md": "prettier --list-different"
+	},
 	"bin": {
 		"kolibri-visual-test": "src/index.js"
 	},

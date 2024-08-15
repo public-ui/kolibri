@@ -34,7 +34,7 @@
 		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @unocss/*",
 		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u",
 		"pack": "pnpm -r exec pnpm pack",
-		"prepare": "husky && echo \"Don't forget to build all packages once: pnpm -r build\"",
+		"prepare": "husky",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
@@ -43,6 +43,9 @@
 		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
 	},
 	"husky": {
-		"pre-commit": "lint-staged"
-	}
+		"hooks": {
+		"pre-commit": "lint-staged",
+		"pre-push": "pnpm test"
+		}
+  	}
 }
