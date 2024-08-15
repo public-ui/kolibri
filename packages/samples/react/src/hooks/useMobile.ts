@@ -9,7 +9,7 @@ export function useMobile(): boolean {
 	};
 
 	useEffect(() => {
-		1handleChange(); // handle initial value
+		handleChange(); // handle initial value
 		mediaQuery.addEventListener('change', handleChange);
 
 		return () => {
