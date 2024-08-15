@@ -56,7 +56,7 @@ export class InputController extends ControlledInputController implements Watche
 
 	public validateDisabled(value?: boolean): void {
 		watchBoolean(this.component, '_disabled', value);
-		if (value === true) {
+		if value == true {
 			a11yHintDisabled();
 		}
 	}

@@ -27,6 +27,7 @@
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "pnpm -r format",
 		"lint": "pnpm -r lint",
+		"lint-staged": "lint-staged",
 		"unused": "pnpm -r unused",
 		"ts-prune": "git clean -f -d -X packages/adapters/**/src && pnpm -r exec npx ts-prune src -e",
 		"ncu:major": "ncu && pnpm -r exec ncu",
@@ -43,9 +44,5 @@
 	},
 	"husky": {
 		"pre-commit": "lint-staged"
-	},
-	"lint-staged": {
-		"*.{ts|tsx|js|jsx}": ["prettier --list-different", "eslint"],
-  		"*.md": "prettier --list-different"
 	}
 }

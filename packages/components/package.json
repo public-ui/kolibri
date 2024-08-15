@@ -133,5 +133,9 @@
 		"doc",
 		"custom-elements.json",
 		"vscode-custom-data.json"
-	]
+	],
+	"lint-staged": {
+		"*.ts|tsx|js|jsx": ["prettier --list-different src", "eslint src"],
+  		"*.md": "prettier --list-different"
+	}
 }

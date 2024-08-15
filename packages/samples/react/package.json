@@ -7,6 +7,10 @@
 		"type": "git",
 		"url": "https://github.com/public-ui/kolibri"
 	},
+	"lint-staged": {
+		"*.ts|tsx|js|jsx": ["prettier --list-different src", "pnpm lint"],
+  		"*.md": "prettier --list-different"
+	},
 	"scripts": {
 		"build": "rimraf dist && cross-env NODE_ENV=production webpack",
 		"build:deps": "pnpm --filter @public-ui/sample-react^... build",
