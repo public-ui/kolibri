@@ -63,7 +63,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		<${KolTooltipWcTag}
 			aria-hidden="true"
 			${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}
-			_align="${state._tooltipAlign != null ? state._tooltipAlign : 'right'}"
+			_align="${state._tooltipAlign !== null ? state._tooltipAlign : 'right'}"
 			_label="${state._label || state._href}"
 		></${KolTooltipWcTag}>
 

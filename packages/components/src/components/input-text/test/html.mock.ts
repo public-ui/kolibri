@@ -33,10 +33,10 @@ export const getInpuTextHtml = (props: InputTextProps): string => {
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
-					${state._accessKey != null ? `_accessKey="${state._accessKey}"` : ''}
+					${state._accessKey !== null ? `_accessKey="${state._accessKey}"` : ''}
 					_hint=""
 					_id="${state._id}"
-					_label="${state._label != null && state._label !== '' ? `${state._label}` : ''}"
+					_label="${state._label !== null && state._label !== '' ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="${state._type} ${state._hideLabel ? 'hide-label' : ''} "
 					role="presentation"
@@ -67,10 +67,10 @@ export const getInpuTextHtml = (props: InputTextProps): string => {
 							spellcheck="false"
 							type="${state._type}"
 							${state._readOnly ? `readonly=""` : ''}
-							${state._placeholder != null ? `placeholder="${state._placeholder}"` : ''}
+							${state._placeholder !== null ? `placeholder="${state._placeholder}"` : ''}
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
 							${state._required ? `required=""` : ''}
-							${state._accessKey != null ? `accessKey="${state._accessKey}"` : ''}
+							${state._accessKey !== null ? `accessKey="${state._accessKey}"` : ''}
 							>
 	       </div>
 	     </${KolInputWcTag}>

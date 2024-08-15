@@ -19,7 +19,7 @@ export const getButtonLinkHtml = (props: ButtonLinkProps): string => {
 		<${KolButtonWcTag}
 					_role="link"
 					_type="button"
-					${state._label != null && state._label !== '' ? `_label="${state._label}"` : ''}
+					${state._label !== null && state._label !== '' ? `_label="${state._label}"` : ''}
 					_tooltipalign="top"
 				>
 					<slot name="expert" slot="expert"></slot>

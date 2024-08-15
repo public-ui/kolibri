@@ -44,7 +44,7 @@ function isColorObjectString(value: string): { type: typeOfColorType; value: Pro
 }
 
 function typeOfColor(value?: unknown): { type: typeOfColorType; valid: boolean; value: PropColor | string } {
-	if (value != null) {
+	if (value !== null) {
 		if (typeof value === 'string') {
 			if (isHexString(value)) return { type: 'string', valid: true, value: value };
 			else {

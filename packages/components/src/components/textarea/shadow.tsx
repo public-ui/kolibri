@@ -458,10 +458,10 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		setTimeout(() => {
 			if (this._adjustHeight === true && this.textareaRef /* SSR instanceof HTMLTextAreaElement */) {
 				this._rows =
-					this.state?._rows != null && this.state._rows > increaseTextareaHeight(this.textareaRef)
+					typeof this.state?._rows === 'number' && this.state._rows > increaseTextareaHeight(this.textareaRef)
 						? this.state._rows
 						: increaseTextareaHeight(this.textareaRef);
-			} else if (this._rows == null) {
+			} else if (this._rows === null) {
 				this._rows = 1;
 			}
 		}, 0);

@@ -75,6 +75,9 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
+	/**
+	 * Reset
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async reset() {

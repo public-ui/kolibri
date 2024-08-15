@@ -29,7 +29,7 @@ export const getInputNumberHtml = (props: InputNumberProps): string => {
 					${state._touched ? `_touched=""` : ''}
 					_hint=""
 					_id="${state._id}"
-					_label="${state._label != null ? `${state._label}` : ''}"
+					_label="${state._label !== null ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="number ${state._hideLabel ? 'hide-label' : ''} "
 					${state._readOnly ? `_readonly=""` : ''}
@@ -59,9 +59,9 @@ export const getInputNumberHtml = (props: InputNumberProps): string => {
 							spellcheck="false"
 							type="number"
 							value=""
-							max="${state._max != null ? state._max : ''}"
-							min="${state._min != null ? state._min : ''}"
-							${state._step != null ? `step="${state._step}"` : ''}
+							max="${state._max !== null ? state._max : ''}"
+							min="${state._min !== null ? state._min : ''}"
+							${state._step !== null ? `step="${state._step}"` : ''}
 							${state._readOnly ? `readonly=""` : ''}
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
 							${state._required ? `required=""` : ''}

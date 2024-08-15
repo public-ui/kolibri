@@ -38,6 +38,7 @@ const config = {
 		'@typescript-eslint/no-unsafe-return': 'off',
 
 		'no-console': 'error',
+		'eqeqeq': 'error'
 	},
 	settings: {
 		react: {

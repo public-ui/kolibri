@@ -115,7 +115,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 			download: typeof this.state._download === 'string' ? this.state._download : undefined,
 		};
 
-		if (this.state._hideLabel === true && this.state._label == null) {
+		if (this.state._hideLabel === true && this.state._label === null) {
 			devHint(`[KolLink] An aria-label must be set when _hide-label is set.`);
 		}
 		return { isExternal, tagAttrs };

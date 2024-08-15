@@ -31,7 +31,7 @@ export const getInputDateHtml = (props: InputDateProps): string => {
 					${state._touched ? `_touched=""` : ''}
 					_hint=""
 					_id="${state._id}"
-					_label="${state._label != null ? `${state._label}` : ''}"
+					_label="${state._label !== null ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="date ${state._hideLabel ? `hide-label` : ''}"
 			 >
@@ -56,7 +56,7 @@ export const getInputDateHtml = (props: InputDateProps): string => {
 							autocomplete="off"
 							autocorrect="off"
 							id="${state._id}"
-							max=${state._max != null ? state._max : '9999-12-31'}
+							max=${state._max !== null ? state._max : '9999-12-31'}
 							spellcheck="false"
 							type="date"
 							${state._readOnly ? `readonly=""` : ''}

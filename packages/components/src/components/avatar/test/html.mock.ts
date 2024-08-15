@@ -19,7 +19,7 @@ export const getAvatarHtml = (props: AvatarProps): string => {
 		<kol-avatar-wc class="kol-avatar-wc">
 			<div aria-label="kol-avatar-alt" class="container" role="img">
 				${
-					state._src != null && state._src != ''
+					state._src !== null && state._src !== ''
 						? `<img alt="" aria-hidden="true" class="image" src="${state._src}" />`
 						: `<span aria-hidden="true" class="initials">
 							${formatLabelAsInitials(state._label)}

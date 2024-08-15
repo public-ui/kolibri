@@ -14,7 +14,7 @@ export const getSkipNavHtml = (props: SkipNavProps): string => {
 	return `
 <kol-skip-nav  class="kol-skip-nav">
   <mock:shadow-root>
-	<nav aria-label="${props._label != null ? props._label : ''}">
+	<nav aria-label="${props._label !== null ? props._label : ''}">
           <ul>
 					${state._links
 						.map((link: LinkProps) => {

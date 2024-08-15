@@ -114,7 +114,7 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private moveFocus(delta: number) {
-		if (this._filteredSuggestions == null) {
+		if (this._filteredSuggestions === null || this._filteredSuggestions === undefined) {
 			return;
 		}
 		let newIndex = this._focusedOptionIndex + delta;
@@ -337,7 +337,7 @@ export class KolCombobox implements ComboboxAPI {
 				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
-						this.focusOption(this._filteredSuggestions != null ? this._filteredSuggestions.length - 1 : 0);
+						this.focusOption(this._filteredSuggestions !== null && this._filteredSuggestions !== undefined ? this._filteredSuggestions.length - 1 : 0);
 					}
 				});
 				break;
@@ -366,7 +366,7 @@ export class KolCombobox implements ComboboxAPI {
 
 	@Listen('click', { target: 'window' })
 	handleWindowClick(event: MouseEvent) {
-		if (this.host != undefined && !this.host.contains(event.target as Node)) {
+		if (this.host !== undefined && !this.host.contains(event.target as Node)) {
 			this._isOpen = false;
 		}
 	}
