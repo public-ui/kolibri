@@ -85,6 +85,7 @@ export class KolModal implements ModalAPI {
 	/**
 	 * Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable
 	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
 
 	/**

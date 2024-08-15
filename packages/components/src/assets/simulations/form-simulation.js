@@ -345,7 +345,7 @@ function domReady() {
 }
 
 document.onreadystatechange = function () {
-	if (document.readyState == 'complete') {
+	if (document.readyState === 'complete') {
 		setTimeout(domReady, 1000);
 	}
 };

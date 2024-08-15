@@ -33,6 +33,10 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 		this.buttonWcRef = ref;
 	};
 
+	/**
+	 * Get value of button.
+	 * @returns {Promise<Stringified<StencilUnknown> | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<StencilUnknown> | undefined> {
@@ -40,13 +44,18 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the button.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @stencil-community/reserved-member-names
 	public async focus() {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the button.
+	 */
 	@Method()
 	public async kolFocus() {
 		await this.buttonWcRef?.kolFocus();

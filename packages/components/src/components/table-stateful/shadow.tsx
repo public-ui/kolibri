@@ -63,7 +63,7 @@ type SortData = {
 	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
-	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+	@Element() private readonly host?: HTMLKolTableStatefulElement;
 
 	/**
 	 * @deprecated only for backward compatibility
@@ -199,7 +199,7 @@ export class KolTableStateful implements TableAPI {
 
 	private changeCellSort(headerCell: KoliBriTableHeaderCellWithLogic) {
 		if (typeof headerCell.compareFn === 'function') {
-			if (!this.state._allowMultiSort && headerCell.key != this.sortData[0]?.key) {
+			if (!this.state._allowMultiSort && headerCell.key !== this.sortData[0]?.key) {
 				// clear when another column is sorted and multi sort is not allowed
 				this.sortData = [];
 			}
@@ -218,7 +218,7 @@ export class KolTableStateful implements TableAPI {
 						settings.direction = 'ASC';
 						break;
 				}
-			} else if (headerCell.key) {
+			} else if (typeof headerCell.key === 'string') {
 				this.sortData.push({
 					label: headerCell.label,
 					key: headerCell.key,
@@ -271,7 +271,7 @@ export class KolTableStateful implements TableAPI {
 								let hasSortedCells = false;
 								headers.forEach((cell) => {
 									const key = cell.key;
-									if (!key) {
+									if (typeof key !== 'string') {
 										return;
 									}
 									const sortDirection = cell.sortDirection;
@@ -495,9 +495,9 @@ export class KolTableStateful implements TableAPI {
 			if (headerCell.key === this.sortedColumnHead.key) {
 				return this.sortedColumnHead.sortDirection;
 			}
-			if (headerCell.key) {
+			if (typeof headerCell.key !== 'string') {
 				const data = this.sortData.find((value) => value.key === headerCell.key);
-				if (data?.direction) {
+				if (data?.direction !== null && data?.direction !== undefined) {
 					return data.direction;
 				}
 			}
@@ -515,7 +515,7 @@ export class KolTableStateful implements TableAPI {
 	private getSelectedData(selectedKeys: string[]): KoliBriTableDataType[] {
 		if (this.state._selection) {
 			const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
-			if (keyPropertyName) return this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
+			if (keyPropertyName !== null) return this.state._sortedData.filter((item) => selectedKeys.includes(item[keyPropertyName] as string));
 		}
 		return [];
 	}
@@ -537,6 +537,10 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
+	/**
+	 * Returns the current selection of table.
+	 * @returns {Promise<KoliBriTableDataType[]>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getSelection(): Promise<KoliBriTableDataType[]> {

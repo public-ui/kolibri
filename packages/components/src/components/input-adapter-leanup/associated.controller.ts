@@ -46,7 +46,7 @@ export class AssociatedInputController implements Watches {
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
 
-		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName) && component._name) {
+		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName) && component._name !== undefined) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
 				this.host?.removeChild(el);
 			});
@@ -92,8 +92,8 @@ export class AssociatedInputController implements Watches {
 	private findHostWithShadowRoot(host?: HTMLElement): HTMLElement | undefined {
 		while (host?.shadowRoot === null && host !== document.body) {
 			host = host?.parentNode as HTMLElement;
-			if ((host as unknown as ShadowRoot).host) {
-				host = (host as unknown as ShadowRoot).host as HTMLElement;
+			if (host instanceof ShadowRoot) {
+				host = host.host as HTMLElement;
 			}
 		}
 		return host;

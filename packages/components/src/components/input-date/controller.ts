@@ -99,7 +99,7 @@ export class InputDateController extends InputIconController implements InputDat
 		return watchValidator(
 			this.component,
 			propName,
-			(value): boolean => value === undefined || value == null || value === '' || this.validateDateString(value),
+			(value): boolean => value === undefined || value === null || value === '' || this.validateDateString(value),
 			new Set(['Date', 'string{ISO-8601}']),
 			this.tryParseToString(value),
 			{
@@ -117,9 +117,10 @@ export class InputDateController extends InputIconController implements InputDat
 	protected onBlur(event: Event): void {
 		super.onBlur(event);
 
+		const value = (event.target as HTMLInputElement).value;
 		// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
-		if (!!(event.target as HTMLInputElement).value !== !!this.component._value) {
-			this.component._value = (event.target as HTMLInputElement).value as Iso8601;
+		if ((value !== '' && value !== null) !== Boolean(this.component._value)) {
+			this.component._value = value as Iso8601;
 		}
 	}
 
@@ -153,7 +154,7 @@ export class InputDateController extends InputIconController implements InputDat
 			...value,
 			onChange: (e: Event, v: unknown) => {
 				// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
-				if (!!v !== !!this.component._value) {
+				if (Boolean(v) !== Boolean(this.component._value)) {
 					this.component._value = v as Iso8601;
 				}
 

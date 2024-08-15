@@ -18,7 +18,7 @@ export const InternalUnderlinedAccessKey = ({ accessKey, label }: Props) => {
 	return (
 		<>
 			{first}
-			{rest.length ? (
+			{rest.length > 0 ? (
 				<>
 					<u>{accessKey}</u>
 					{rest.join(accessKey)}

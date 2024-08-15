@@ -73,7 +73,7 @@ export class KolNav implements NavAPI {
 	private collapseChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
 			...this.state,
-			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren != children),
+			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren !== children),
 		};
 	}
 
@@ -235,7 +235,7 @@ export class KolNav implements NavAPI {
 								_ariaExpanded={!hideLabel}
 								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_hideLabel
-								_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
+								_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize') || ''}
 								_on={{
 									onClick: (): void => {
 										this.state = {
@@ -258,7 +258,7 @@ export class KolNav implements NavAPI {
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _collapsible?: boolean = true;
+	@Prop() public _collapsible?: boolean;
 
 	/**
 	 * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".

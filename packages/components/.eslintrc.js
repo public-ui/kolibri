@@ -7,7 +7,7 @@ const config = {
 	extends: [
 		'eslint:recommended',
 		// 'plugin:@stencil/recommended',
-		// 'plugin:@stencil-community/recommended',
+		'plugin:@stencil-community/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 	],
@@ -38,6 +38,7 @@ const config = {
 		'@typescript-eslint/no-unsafe-return': 'off',
 
 		'no-console': 'error',
+		'eqeqeq': 'error'
 	},
 	settings: {
 		react: {

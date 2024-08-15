@@ -28,7 +28,7 @@ export const getInputColorHtml = (props: InputColorProps): string => {
 					${state._touched ? `_touched=""` : ''}
 					_hint=""
 					_id="${state._id}"
-					_label="${state._label ? `${state._label}` : ''}"
+					_label="${state._label !== null ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="color ${state._hideLabel ? 'hide-label' : ''} "
 					role="presentation"

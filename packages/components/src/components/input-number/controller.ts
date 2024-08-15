@@ -48,7 +48,7 @@ export class InputNumberController extends InputIconController implements InputN
 
 	private readonly validateIso8601 = (propName: string, value?: number | Iso8601 | null, afterPatch?: (v: string) => void) => {
 		const parsedValue = parseFloat(value as string);
-		const valueMatched = parsedValue == value;
+		const valueMatched = parsedValue === value;
 		return watchValidator(
 			this.component,
 			propName,
@@ -70,9 +70,10 @@ export class InputNumberController extends InputIconController implements InputN
 	protected onChange(event: Event): void {
 		super.onChange(event);
 
+		const value = (event.target as HTMLInputElement).value;
 		// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
-		if (!!(event.target as HTMLInputElement).value !== !!this.component._value) {
-			this.component._value = (event.target as HTMLInputElement).value as number | Iso8601;
+		if ((value !== '' && value !== null) !== Boolean(this.component._value)) {
+			this.component._value = value as number | Iso8601;
 		}
 	}
 

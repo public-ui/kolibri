@@ -9,7 +9,7 @@ const CycleSvg = ({ state }: { state: ProgressStates }) => {
 	const fullCircle = 342;
 	const textPositionTop = '43%';
 	const textPositionBottom = '57%';
-	const valueY = state._label ? textPositionBottom : '50%';
+	const valueY = state._label !== null ? textPositionBottom : '50%';
 
 	return (
 		<svg class="cycle" width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">

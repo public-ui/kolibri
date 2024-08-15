@@ -17,7 +17,7 @@ import { KolAlertWcTag, KolIndentedTextWcTag, KolLinkTag } from '../../core/comp
 	shadow: true,
 })
 export class KolForm implements FormAPI {
-	errorListElement?: HTMLElement;
+	private errorListElement?: HTMLElement;
 
 	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {
@@ -38,14 +38,17 @@ export class KolForm implements FormAPI {
 
 	private readonly handleLinkClick = (event: Event) => {
 		const href = (event.target as HTMLAnchorElement | undefined)?.href;
-		if (href) {
-			const hrefUrl = new URL(href);
 
-			const targetElement = document.querySelector<HTMLElement>(hrefUrl.hash);
-			if (targetElement && typeof targetElement.focus === 'function') {
-				targetElement.scrollIntoView({ behavior: 'smooth' });
-				targetElement.focus();
-			}
+		if (href === null || href === undefined || href === '') {
+			return;
+		}
+
+		const hrefUrl = new URL(href);
+
+		const targetElement = document.querySelector<HTMLElement>(hrefUrl.hash);
+		if (targetElement && typeof targetElement.focus === 'function') {
+			targetElement.scrollIntoView({ behavior: 'smooth' });
+			targetElement.focus();
 		}
 	};
 
@@ -89,6 +92,9 @@ export class KolForm implements FormAPI {
 		);
 	}
 
+	/**
+	 * Sets the focus on the error list of form.
+	 */
 	@Method()
 	async focusErrorList(): Promise<void> {
 		setTimeout(() => {
@@ -107,14 +113,16 @@ export class KolForm implements FormAPI {
 	/**
 	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
 	 */
-	@Prop() public _requiredText?: Stringified<boolean> = true;
+	@Prop() public _requiredText?: Stringified<boolean>;
 	/**
 	 * A list of error objects that each describe an issue encountered in the form.
 	 * Each error object contains a message and a selector for identifying the form element related to the error.
 	 */
 	@Prop() public _errorList?: ErrorListPropType[];
 
-	@State() public state: FormStates = {};
+	@State() public state: FormStates = {
+		_requiredText: true,
+	};
 
 	@Watch('_on')
 	public validateOn(value?: KoliBriFormCallbacks): void {

@@ -44,7 +44,7 @@ function isColorObjectString(value: string): { type: typeOfColorType; value: Pro
 }
 
 function typeOfColor(value?: unknown): { type: typeOfColorType; valid: boolean; value: PropColor | string } {
-	if (value) {
+	if (value !== null) {
 		if (typeof value === 'string') {
 			if (isHexString(value)) return { type: 'string', valid: true, value: value };
 			else {
@@ -99,8 +99,8 @@ export const handleColorChange = (value: unknown): ColorPair => {
 			const asColorPair = valueType.value as ColorPair;
 			let foreground = '';
 			if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
-			else if (asColorPair.foregroundColor?.primary) foreground = asColorPair.foregroundColor.primary;
-			if (!foreground || typeof foreground !== 'string') foreground = '#fff';
+			else if (typeof asColorPair.foregroundColor?.primary === 'string') foreground = asColorPair.foregroundColor.primary;
+			if (foreground === undefined || foreground === '') foreground = '#fff';
 			colorContrast = createContrastColorPair({
 				background: asColorPair.backgroundColor,
 				foreground,

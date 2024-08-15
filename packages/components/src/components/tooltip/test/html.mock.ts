@@ -18,7 +18,7 @@ export const getTooltipHtml = (props: TooltipProps, additionalAttrs = ''): strin
 			? ''
 			: `<div class="tooltip-floating">
 			<div class="tooltip-area tooltip-arrow"></div>
-			<${KolSpanWcTag} class="tooltip-area tooltip-content" ${state._id ? `id="${state._id}"` : ''} _label="${state._label}"></${KolSpanWcTag}>
+			<${KolSpanWcTag} class="tooltip-area tooltip-content" ${state._id !== null ? `id="${state._id}"` : ''} _label="${state._label}"></${KolSpanWcTag}>
 		</div>`
 	}
 </kol-tooltip-wc>`;

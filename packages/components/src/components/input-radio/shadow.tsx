@@ -48,6 +48,10 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<StencilUnknown | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown | undefined> {
@@ -55,13 +59,18 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @stencil-community/reserved-member-names
 	public async focus() {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -147,7 +156,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 										onChange={this.onChange}
 										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 										onInput={this.onInput}
-										onKeyDown={this.onKeyDown.bind(this)}
+										onKeyDown={this.onKeyDown}
 									/>
 									<label
 										class="radio-label"
@@ -183,6 +192,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
@@ -201,6 +211,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**

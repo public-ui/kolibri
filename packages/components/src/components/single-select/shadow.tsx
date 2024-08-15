@@ -43,12 +43,19 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private refOptions: HTMLLIElement[] = [];
 	private oldValue?: string;
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<string | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.state._value;
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -106,21 +113,21 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.controller.setFormAssociatedValue(this.state._value);
 	}
 
-	private onInput(event: Event) {
+	private onInput = (event: Event) => {
 		const target = event.target as HTMLInputElement;
 		this._inputValue = target.value;
 		this._isOpen = true;
 		this.setFilteredOptionsByQuery(target.value);
 		this._focusedOptionIndex = -1;
-	}
+	};
 
-	private handleKeyDownDropdown(event: KeyboardEvent) {
+	private handleKeyDownDropdown = (event: KeyboardEvent) => {
 		if (event.key.length === 1 && /[a-z0-9]/i.test(event.key)) {
 			event.preventDefault();
 			this._isOpen = true;
 			this.focusSuggestionStartingWith(event.key);
 		}
-	}
+	};
 
 	private setFilteredOptionsByQuery(query: string) {
 		if (query?.trim() === '') {
@@ -135,7 +142,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private _focusedOptionIndex: number = -1;
 
 	private moveFocus(delta: number) {
-		if (!this._filteredOptions) {
+		if (this._filteredOptions === undefined) {
 			return;
 		}
 		let newIndex = this._focusedOptionIndex + delta;
@@ -153,7 +160,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private focusOption(index: number) {
-		if (this.refOptions) {
+		if (this.refOptions?.length > 0) {
 			const optionElement = this.refOptions[index];
 			optionElement?.focus();
 		}
@@ -170,6 +177,38 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this.focusOption(index);
 		}
 	}
+
+	private handleClickIcon = () => {
+		this.clearSelection();
+		this.refInput?.focus();
+	};
+
+	private handleClickOption = (option: Option<string>) => (event: Event) => {
+		this.selectOption(event, option);
+		this.refInput?.focus();
+		this.toggleListbox(event);
+	};
+
+	private handleMouseOverOption = (index: number) => () => {
+		if (!this.blockSuggestionMouseOver) {
+			this._focusedOptionIndex = index;
+			this.focusOption(index);
+		}
+	};
+
+	private handleFocusOption = (index: number) => () => {
+		this._focusedOptionIndex = index;
+		this.focusOption(index);
+	};
+
+	private handleKeyDownOption = (option: Option<string>) => (e: KeyboardEvent) => {
+		if (e.key === 'Enter' || e.key === 'NumpadEnter') {
+			this.selectOption(e, option);
+			this.refInput?.focus();
+			this.toggleListbox(e);
+			e.preventDefault();
+		}
+	};
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
@@ -227,24 +266,21 @@ export class KolSingleSelect implements SingleSelectAPI {
 									required={this.state._required}
 									spellcheck="false"
 									{...this.controller.onFacade}
-									onInput={this.onInput.bind(this)}
-									onChange={this.onChange.bind(this)}
+									onInput={this.onInput}
+									onChange={this.onChange}
 									placeholder={this.state._placeholder}
-									onClick={this.toggleListbox.bind(this)}
+									onClick={this.toggleListbox}
 								/>
 								{this._inputValue && (
 									<KolIconTag
 										_icons="codicon codicon-close"
 										_label={translate('kol-delete-selection')}
-										onClick={() => {
-											this.clearSelection();
-											this.refInput?.focus();
-										}}
+										onClick={this.handleClickIcon}
 										class="single-select__delete"
 									/>
 								)}
 
-								<button tabindex="-1" class="single-select__button" onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled}>
+								<button tabindex="-1" class="single-select__button" onClick={this.toggleListbox} disabled={this.state._disabled}>
 									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
 								</button>
 							</div>
@@ -252,7 +288,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								<ul
 									role="listbox"
 									class={clsx('single-select__listbox', this.blockSuggestionMouseOver && 'single-select__listbox--cursor-hidden')}
-									onKeyDown={this.handleKeyDownDropdown.bind(this)}
+									onKeyDown={this.handleKeyDownDropdown}
 								>
 									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 										this._filteredOptions.map((option, index) => (
@@ -265,30 +301,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 												tabIndex={-1}
 												role="option"
 												aria-selected={this.state._value === (option as Option<string>).value}
-												onClick={(event: Event) => {
-													this.selectOption(event, option as Option<string>);
-													this.refInput?.focus();
-													this.toggleListbox(event);
-												}}
-												onMouseOver={() => {
-													if (!this.blockSuggestionMouseOver) {
-														this._focusedOptionIndex = index;
-														this.focusOption(index);
-													}
-												}}
-												onFocus={() => {
-													this._focusedOptionIndex = index;
-													this.focusOption(index);
-												}}
+												onClick={this.handleClickOption(option as Option<string>)}
+												onMouseOver={this.handleMouseOverOption(index)}
+												onFocus={this.handleFocusOption(index)}
 												class="single-select__item"
-												onKeyDown={(e) => {
-													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-														this.selectOption(e, option as Option<string>);
-														this.refInput?.focus();
-														this.toggleListbox(e);
-														e.preventDefault();
-													}
-												}}
+												onKeyDown={this.handleKeyDownOption(option as Option<string>)}
 											>
 												<input
 													class="visually-hidden"
@@ -329,8 +346,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.onBlur();
 	}
 
-	@Listen('keydown')
-	public handleKeyDown(event: KeyboardEvent) {
+	private handleKeyDown(event: KeyboardEvent) {
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
 			event.preventDefault();
 
@@ -399,7 +415,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
-						this._focusedOptionIndex = this._filteredOptions ? this._filteredOptions.length - 1 : 0;
+						this._focusedOptionIndex = this._filteredOptions !== undefined ? this._filteredOptions.length - 1 : 0;
 						this.focusOption(this._focusedOptionIndex);
 					}
 				});
@@ -418,15 +434,15 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 	}
 
+	private handleMouseMove() {
+		this.blockSuggestionMouseOver = false;
+	}
+
 	private readonly controller: SingleSelectController;
-	@State()
-	private _isOpen = false;
-	@State()
-	private _filteredOptions?: OptionsPropType = [];
-	@State()
-	private _inputValue: string = '';
-	@State()
-	private blockSuggestionMouseOver: boolean = false;
+	@State() private _isOpen = false;
+	@State() private _filteredOptions?: OptionsPropType = [];
+	@State() private _inputValue: string = '';
+	@State() private blockSuggestionMouseOver: boolean = false;
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
@@ -440,6 +456,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
+	// eslint-disable-next-line @stencil-community/ban-default-true
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
@@ -451,6 +468,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
@@ -531,6 +549,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines the value of the input.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable
 	@Prop({ mutable: true }) public _value?: string;
 
 	@State() public state: SingleSelectStates = {
@@ -642,16 +661,13 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.oldValue = value;
 	}
 
-	@Listen('mousemove')
-	public handleMouseEvent() {
-		this.blockSuggestionMouseOver = false;
-	}
-
 	public componentWillLoad(): void {
 		this.refOptions = [];
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
+		this.host?.addEventListener('keydown', this.handleKeyDown.bind(this));
+		this.host?.addEventListener('mousemove', this.handleMouseMove.bind(this));
 		this.oldValue = this._value;
 		this._filteredOptions = this._options;
 
@@ -661,7 +677,12 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 	}
 
-	private onChange(event: Event): void {
+	disconnectedCallback() {
+		this.host?.removeEventListener('keydown', this.handleKeyDown.bind(this));
+		this.host?.removeEventListener('mousemove', this.handleMouseMove.bind(this));
+	}
+
+	private onChange = (event: Event): void => {
 		if (this.oldValue !== this.refInput?.value) {
 			this.oldValue = this.refInput?.value;
 		}
@@ -673,5 +694,5 @@ export class KolSingleSelect implements SingleSelectAPI {
 		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
 			this.state._on.onChange(event, this._value && this.oldValue !== this.refInput?.value);
 		}
-	}
+	};
 }

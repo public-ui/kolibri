@@ -41,7 +41,7 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 		return `<li >
 				<kol-button-wc
 					exportparts="icon"
-					${state._customClass ? `_customClass="${state._customClass}" ` : ''}
+					${state._customClass !== null ? `_customClass="${state._customClass}" ` : ''}
 					_label=""
 				>
 					<span slot="expert">
@@ -53,7 +53,7 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 
 	function getSelectedPageButton(page: number): JSX.Element {
 		return `<li >
-				<kol-button-wc class="selected" ${state._customClass ? `_customClass="${state._customClass}" ` : ''} _disabled="" _label="">
+				<kol-button-wc class="selected" ${state._customClass !== null ? `_customClass="${state._customClass}" ` : ''} _disabled="" _label="">
 					<span slot="expert">
 						<span class="visually-hidden">${translate('kol-page')}</span> ${NUMBER_FORMATTER.format(page)}
 					</span>
@@ -74,7 +74,7 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 	return `
 <kol-pagination class="kol-pagination">
   <mock:shadow-root>
-	     <nav aria-label="${props._label ? props._label : 'kol-pagination'}">
+	     <nav aria-label="${props._label !== null ? props._label : 'kol-pagination'}">
            <ul class="navigation-list">
 					 ${
 							state._hasButtons.first
@@ -82,11 +82,11 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 							<kol-button-wc
 								class="first"
 								exportparts="icon"
-								${state._customClass ? `_customClass="${state._customClass}" ` : ''}
+								${state._customClass !== null ? `_customClass="${state._customClass}" ` : ''}
 								${state._page <= 1 ? `_disabled="" ` : ''}
 								_hideLabel=""
 								_label="${translate('kol-page-first')}"
-								${state._tooltipAlign ? `_tooltipalign="${state._tooltipAlign}" ` : ' _tooltipalign="top" '}
+								${state._tooltipAlign !== null ? `_tooltipalign="${state._tooltipAlign}" ` : ' _tooltipalign="top" '}
 							></kol-button-wc>
 						</li>`
 								: ''
@@ -97,11 +97,11 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 							<kol-button-wc
 								class="previous"
 								exportparts="icon"
-								${state._customClass ? `_customClass="${state._customClass}" ` : ''}
+								${state._customClass !== null ? `_customClass="${state._customClass}" ` : ''}
 								${state._page <= 1 ? `_disabled="" ` : ''}
 								_hideLabel=""
 								_label="${translate('kol-page-back')}"
-								${state._tooltipAlign ? `_tooltipalign="${state._tooltipAlign}" ` : ' _tooltipalign="top" '}
+								${state._tooltipAlign !== null ? `_tooltipalign="${state._tooltipAlign}" ` : ' _tooltipalign="top" '}
 							></kol-button-wc>
 						</li>`
 							: ''
@@ -138,11 +138,11 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 									<kol-button-wc
 										class="next"
 										exportparts="icon"
-										${state._customClass ? `_customClass="${state._customClass}" ` : ''}
+										${state._customClass !== null ? `_customClass="${state._customClass}" ` : ''}
 										${count <= state._page ? `_disabled="" ` : ''}
 										_hideLabel=""
 										_label="${translate('kol-page-next')}"
-										${state._tooltipAlign ? `_tooltipalign="${state._tooltipAlign}" ` : ' _tooltipalign="top" '}
+										${state._tooltipAlign !== null ? `_tooltipalign="${state._tooltipAlign}" ` : ' _tooltipalign="top" '}
 									></kol-button-wc>
 								</li>`
 										: ''
@@ -153,11 +153,11 @@ export const getPaginationHtml = (props: PaginationProps): string => {
 									<kol-button-wc
 										class="last"
 										exportparts="icon"
-										${state._customClass ? `_customClass="${state._customClass}" ` : ''}
+										${state._customClass !== null ? `_customClass="${state._customClass}" ` : ''}
 										${count <= state._page ? `_disabled="" ` : ''}
 										_hideLabel=""
 										_label="${translate('kol-page-last')}"
-										${state._tooltipAlign ? `_tooltipalign="${state._tooltipAlign}" ` : ' _tooltipalign="top" '}
+										${state._tooltipAlign !== null ? `_tooltipalign="${state._tooltipAlign}" ` : ' _tooltipalign="top" '}
 									></kol-button-wc>
 								</li>`
 									: ''

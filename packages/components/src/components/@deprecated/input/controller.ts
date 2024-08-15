@@ -79,7 +79,8 @@ export class InputController extends ControlledInputController implements Watche
 		validateHideError(this.component, value, {
 			hooks: {
 				afterPatch: () => {
-					if (this.component.state._hideError) {
+					const hideError = this.component.state._hideError;
+					if (typeof hideError === 'boolean' && hideError) {
 						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
 					}
 				},
@@ -91,7 +92,8 @@ export class InputController extends ControlledInputController implements Watche
 		validateHideLabel(this.component, value, {
 			hooks: {
 				afterPatch: () => {
-					if (this.component.state._hideLabel) {
+					const hideLabel = this.component.state._hideLabel;
+					if (typeof hideLabel === 'boolean' && hideLabel) {
 						a11yHint('Property hide-label for inputs: Only use for exceptions like search inputs that are clearly identifiable by their context.');
 					}
 				},

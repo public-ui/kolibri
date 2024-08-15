@@ -53,6 +53,10 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		this.selectRef = ref;
 	};
 
+	/**
+	 * Returns the value of the input.
+	 * @returns {Promise<Stringified<W3CInputValue[]> | undefined}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
@@ -60,13 +64,18 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the select input element.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @stencil-community/reserved-member-names
 	public async focus() {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the select input element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -98,6 +107,18 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		);
 	}
 
+	private handleClick = (): void => {
+		this.selectRef?.focus();
+	};
+
+	private handleSubmit = (event: Event): void => {
+		event.preventDefault();
+		propagateSubmitEventToForm({
+			form: this.host,
+			ref: this.selectRef,
+		});
+	};
+
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
@@ -121,7 +142,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 					_required={this.state._required}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.selectRef?.focus()}
+					onClick={this.handleClick}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
@@ -139,15 +160,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 						)}
 					</span>
 					<div slot="input">
-						<form
-							onSubmit={(event) => {
-								event.preventDefault();
-								propagateSubmitEventToForm({
-									form: this.host,
-									ref: this.selectRef,
-								});
-							}}
-						>
+						<form onSubmit={this.handleSubmit}>
 							<input type="submit" hidden />
 							<select
 								ref={this.catchRef}
@@ -165,8 +178,8 @@ export class KolSelect implements SelectAPI, FocusableElement {
 								size={this.state._rows}
 								spellcheck="false"
 								{...this.controller.onFacade}
-								onInput={this.onInput.bind(this)}
-								onChange={this.onChange.bind(this)}
+								onInput={this.onInput}
+								onChange={this.onChange}
 							>
 								{this.state._options.map((option, index) => {
 									/**
@@ -209,6 +222,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
@@ -227,6 +241,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
@@ -444,11 +459,11 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 
-		this.state._hasValue = !!this.state._value;
-		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.state._hasValue = Boolean(this.state._value);
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = Boolean(v)));
 	}
 
-	private onInput(event: Event): void {
+	private onInput = (event: Event): void => {
 		this._value = Array.from(this.selectRef?.options || [])
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
@@ -458,9 +473,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 		// Callback
 		this.state._on?.onInput?.(event, this._value);
-	}
+	};
 
-	private onChange(event: Event): void {
+	private onChange = (event: Event): void => {
 		// Event handling
 		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, this._value);
@@ -470,5 +485,5 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 		// Callback
 		this.state._on?.onChange?.(event, this._value);
-	}
+	};
 }

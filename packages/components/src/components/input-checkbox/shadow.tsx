@@ -50,6 +50,10 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return this._checked ? this.state._value : null;
 	}
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<StencilUnknown>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
@@ -57,13 +61,18 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @stencil-community/reserved-member-names
 	public async focus() {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -156,6 +165,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
@@ -168,6 +178,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
@@ -261,7 +272,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: Stringified<StencilUnknown> = true;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
 	 * Defines which variant should be used for presentation.

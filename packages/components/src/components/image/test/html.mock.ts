@@ -12,8 +12,8 @@ export const getImageHtml = (props: ImageProps, additionalAttrs = ''): string =>
 		},
 		props,
 	);
-	const sizes = state._sizes ? ` sizes="${state._sizes}"` : '';
-	const srcset = state._srcset ? ` srcset="${state._srcset}"` : '';
+	const sizes = state._sizes !== null && state._sizes !== '' ? ` sizes="${state._sizes}"` : '';
+	const srcset = state._srcset !== null && state._srcset !== '' ? ` srcset="${state._srcset}"` : '';
 	return `<kol-image${additionalAttrs} class="kol-image">
   <mock:shadow-root>
     <img alt="${state._alt}" loading="${state._loading}" src="${state._src}"${sizes}${srcset}>
