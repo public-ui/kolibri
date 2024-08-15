@@ -15,5 +15,8 @@ module.exports = {
 		},
 		requireConfigFile: false,
 	},
+	rules: {
+		eqeqeq: "error",
+	},
 	plugins: ['no-loops'],
 };

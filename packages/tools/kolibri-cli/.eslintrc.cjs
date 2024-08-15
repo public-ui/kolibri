@@ -17,6 +17,9 @@ module.exports = {
 		sourceType: 'module',
 		tsconfigRootDir: __dirname,
 	},
+	rules: {
+		eqeqeq: "error",
+	},
 	plugins: [
 		'html',
 		// 'jsdoc',

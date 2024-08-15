@@ -199,7 +199,7 @@ export class KolTableStateful implements TableAPI {
 
 	private changeCellSort(headerCell: KoliBriTableHeaderCellWithLogic) {
 		if (typeof headerCell.compareFn === 'function') {
-			if (!this.state._allowMultiSort && headerCell.key != this.sortData[0]?.key) {
+			if (!this.state._allowMultiSort && headerCell.key !== this.sortData[0]?.key) {
 				// clear when another column is sorted and multi sort is not allowed
 				this.sortData = [];
 			}

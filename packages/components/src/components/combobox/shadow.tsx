@@ -347,7 +347,7 @@ export class KolCombobox implements ComboboxAPI {
 
 	@Listen('click', { target: 'window' })
 	handleWindowClick(event: MouseEvent) {
-		if (this.host != undefined && !this.host.contains(event.target as Node)) {
+		if (this.host !== undefined && !this.host.contains(event.target as Node)) {
 			this._isOpen = false;
 		}
 	}
