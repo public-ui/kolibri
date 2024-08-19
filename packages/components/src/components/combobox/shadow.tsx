@@ -98,11 +98,13 @@ export class KolCombobox implements ComboboxAPI {
 		if (query.trim() === '') {
 			this._filteredSuggestions = [...this._suggestions];
 		} else {
-			this._filteredSuggestions = this._suggestions.filter((option: string) => {
-				return option.toLowerCase().includes(query.toLowerCase());
-			});
+			this._filteredSuggestions = Array.isArray(this._suggestions)
+				? this._suggestions.filter((option: W3CInputValue) => {
+						return (option as string).toLowerCase().includes(query.toLowerCase());
+					})
+				: this._filteredSuggestions;
 
-			this._isOpen = this._filteredSuggestions && this._filteredSuggestions.length > 0;
+			this._isOpen = this._filteredSuggestions && this._filteredSuggestions.length > 0 ? true : false;
 		}
 	}
 
@@ -423,7 +425,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Suggestions the user can choose from.
 	 */
-	@Prop() public _suggestions!: string[];
+	@Prop() public _suggestions!: SuggestionsPropType;
 
 	/**
 	 * Makes the input element required.

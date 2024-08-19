@@ -15,7 +15,7 @@ import type {
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified, W3CInputValue } from '../types';
 
-type RequiredProps = PropSuggestions;
+type RequiredProps = PropLabelWithExpertSlot & PropSuggestions;
 type OptionalProps = {
 	accessKey: string;
 	hint: string;
@@ -27,7 +27,6 @@ type OptionalProps = {
 } & PropDisabled &
 	PropHideError &
 	PropHideLabel &
-	PropLabelWithExpertSlot &
 	PropMsg &
 	PropName &
 	PropRequired &

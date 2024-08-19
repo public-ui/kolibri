@@ -20,7 +20,6 @@ executeTests<ComboboxProps>(
 	},
 	{
 		_hideError: [false, true],
-		_label: ['Label'],
 		_suggestions: ['Frau', 'Herr', 'Divers'],
 		_icons: [
 			{
@@ -34,6 +33,7 @@ executeTests<ComboboxProps>(
 		],
 		_required: [false, true],
 		_touched: [false, true],
+		_label: ['Label'],
 	},
 	getComboboxHtml,
 	{
