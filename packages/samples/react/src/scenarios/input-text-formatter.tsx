@@ -230,7 +230,7 @@ const validationSchema = Yup.object().shape({
 function InputTextFormattedField({ id, required = false, fieldKey, label, formatter = defaultFormatter }: InputFormattedFieldProps) {
 	return (
 		<Field name={fieldKey}>
-			{({ field, form }: FieldProps) => {
+			{({ form }: FieldProps) => {
 				return (
 					<KolInputText
 						id={id}
@@ -239,7 +239,7 @@ function InputTextFormattedField({ id, required = false, fieldKey, label, format
 							void form.setFieldTouched(fieldKey, true);
 						}}
 						// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-						_value={formatter.format(field.value[fieldKey] ?? '')}
+						_value={formatter.format(form.values[fieldKey] ?? '')}
 						_msg={{
 							_type: 'error',
 							_description: (form.errors[fieldKey] as string) || '',
