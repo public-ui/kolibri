@@ -247,7 +247,7 @@ function InputTextFormattedField({ id, required = false, fieldKey, label, format
 						_touched={Boolean(form.touched[fieldKey])}
 						_required={required}
 						_on={{
-							onChange: (event, value: unknown) => {
+							onInput: (event, value: unknown) => {
 								if (event.target) {
 									void form.setFieldValue(fieldKey, formatter.parse((value as string) ?? ''), true);
 								}
