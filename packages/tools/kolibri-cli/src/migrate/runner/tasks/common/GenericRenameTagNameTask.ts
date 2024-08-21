@@ -6,6 +6,7 @@ import { AbstractTask, TaskOptions } from '../../abstract-task';
 
 export class GenericRenameTagNameTask extends AbstractTask {
 	private readonly componentRegExp: RegExp;
+	private readonly componentImportRegExp: RegExp;
 	private readonly customElementRegExp: RegExp;
 
 	private readonly newTagNameInCamelCase: string;
@@ -32,6 +33,7 @@ export class GenericRenameTagNameTask extends AbstractTask {
 		this.newTagNameInCamelCase = kebabToCapitalCase(newTagName);
 
 		this.componentRegExp = new RegExp(`([\\<\\/])${kebabToCapitalCase(oldTagName)}(\\s+[^\\>]*|\\>)`, 'g');
+		this.componentImportRegExp = new RegExp(`([\\w {,\\r\\n]+)${kebabToCapitalCase(oldTagName)}([, ]\\s+[\\r\\n\\w },]+'@public-ui/react')`, 'g');
 		this.customElementRegExp = new RegExp(`([\\<\\/])${oldTagName}(\\s+[^\\>]*|\\>)`, 'g');
 	}
 
@@ -43,13 +45,17 @@ export class GenericRenameTagNameTask extends AbstractTask {
 	private transpileComponentFileRename(baseDir: string): void {
 		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
+			console.log('CONTENT: ', content);
 			const newContent = content
 				// Replacements
-				.replace(this.componentRegExp, `$1${this.newTagNameInCamelCase}$2`);
+				.replace(this.componentRegExp, `$1${this.newTagNameInCamelCase}$2`)
+				.replace(this.componentImportRegExp, `$1${this.newTagNameInCamelCase}$2`);
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
 			}
+
+			console.log('NEW CONTENT: ', newContent);
 		});
 	}
 
