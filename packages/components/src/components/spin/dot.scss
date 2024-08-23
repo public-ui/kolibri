@@ -6,7 +6,7 @@
 		width: rem(48);
 	}
 
-	.spin.dot > span {
+	.spin.dot>span {
 		animation-timing-function: cubic-bezier(0, 1, 1, 0);
 		border-radius: 50%;
 		border: rem(0.16) solid #fff;
@@ -16,28 +16,28 @@
 		width: rem(12.8);
 	}
 
-	.spin.dot > span:first-child {
-		background-color: #fc0;
+	.spin.dot>span:first-child {
+		background-color: #000;
 		z-index: 0;
 		animation: 1s infinite spin1;
 		left: rem(0.16);
 	}
 
-	.spin.dot > span:nth-child(2) {
-		background-color: red;
+	.spin.dot>span:nth-child(2) {
+		background-color: #000;
 		z-index: 1;
 		animation: 1s infinite spin2;
 		left: rem(0.16);
 	}
 
-	.spin.dot > span:nth-child(3) {
+	.spin.dot>span:nth-child(3) {
 		background-color: #000;
 		z-index: 1;
 		animation: 1s infinite spin2;
 		left: rem(17.6);
 	}
 
-	.spin.dot > span:nth-child(4) {
+	.spin.dot>span:nth-child(4) {
 		background-color: #666;
 		z-index: 0;
 		animation: 1s infinite spin3;
@@ -48,31 +48,39 @@
 		0% {
 			transform: scale(0);
 		}
+
 		100% {
 			transform: scale(1);
 		}
 	}
+
 	@keyframes spin2 {
 		0% {
 			transform: translate(0, 0);
 		}
+
 		100% {
 			transform: translate(rem(16), 0);
 		}
 	}
+
 	@keyframes spin3 {
 		0% {
 			transform: scale(1);
 		}
+
 		100% {
 			transform: scale(0);
 		}
-	} /* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
+	}
+
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
 	@media (prefers-reduced-motion) {
-		.spin.dot > span:first-child,
-		.spin.dot > span:nth-child(2),
-		.spin.dot > span:nth-child(3),
-		.spin.dot > span:nth-child(4) {
+
+		.spin.dot>span:first-child,
+		.spin.dot>span:nth-child(2),
+		.spin.dot>span:nth-child(3),
+		.spin.dot>span:nth-child(4) {
 			animation-duration: 2s;
 		}
 	}
