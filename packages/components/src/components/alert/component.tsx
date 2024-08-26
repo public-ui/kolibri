@@ -66,8 +66,6 @@ export class KolAlertWc implements AlertAPI {
 			}, 10000);
 		}
 
-		console.log('TEST LABEL: ', this.state._label);
-
 		return (
 			<Host
 				class={{
