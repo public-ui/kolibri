@@ -104,14 +104,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateId(value?: string): void {
-		watchString(this.component, '_id', value, {
-			hooks: {
-				afterPatch: () => {
-					this.setAttribute('id', this.formAssociated, this.component.state._id as string);
-				},
-			},
-			minLength: 1,
-		});
+		watchString(this.component, '_id', value, { minLength: 1 });
 		if (value === '' || typeof value === 'undefined') {
 			devHint(`A unique ID on the input fields is not strictly required, but it might be relevant for E2E tests.`);
 		}
