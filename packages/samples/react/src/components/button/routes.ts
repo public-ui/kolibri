@@ -1,5 +1,6 @@
 import { Routes } from '../../shares/types';
 import { ButtonAccessKey } from './access-key';
+import { ButtonAriaDescription } from './aria-description';
 import { ButtonBaselined } from './baselined';
 import { ButtonBasic } from './basic';
 import { ButtonIcons } from './icons';
@@ -11,6 +12,7 @@ export const BUTTON_ROUTES: Routes = {
 		icons: ButtonIcons,
 		width: ButtonWidth,
 		'access-key': ButtonAccessKey,
+		'aria-description': ButtonAriaDescription,
 		baselined: ButtonBaselined,
 	},
 };

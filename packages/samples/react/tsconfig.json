@@ -27,5 +27,5 @@
 		"jsxFactory": "React.createElement",
 		"jsxFragmentFactory": "React.Fragment"
 	},
-	"include": ["src/**/*"]
+	"include": ["src/**/*", "e2e/**/*"]
 }

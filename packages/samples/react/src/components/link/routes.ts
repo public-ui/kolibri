@@ -3,6 +3,7 @@ import { LinkBasic } from './basic';
 import { LinkIcons } from './icons';
 import { LinkImage } from './image';
 import { LinkTarget } from './target';
+import { LinkAriaDescription } from './aria-description';
 
 export const LINK_ROUTES: Routes = {
 	link: {
@@ -10,5 +11,6 @@ export const LINK_ROUTES: Routes = {
 		icons: LinkIcons,
 		image: LinkImage,
 		target: LinkTarget,
+		'aria-description': LinkAriaDescription,
 	},
 };

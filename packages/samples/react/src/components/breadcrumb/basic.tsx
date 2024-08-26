@@ -15,43 +15,43 @@ export const BreadcrumbBasic: FC = () => (
 			<KolBreadcrumb
 				_label="Breadcrumb aus Text-Links"
 				_links={[
-					{ _label: 'Startseite', _href: '#/back-page' },
-					{ _label: 'Unterseite der Startseite', _href: '#/back-page' },
+					{ _label: 'Homepage', _href: '#/back-page' },
+					{ _label: 'Bottom of the homepage', _href: '#/back-page' },
 					{
-						_label: 'Unterseite der Unterseite',
+						_label: 'Underside of the underside',
 						_href: '#/back-page',
 					},
 				]}
 			></KolBreadcrumb>
 			<KolBreadcrumb
-				_label="Breadcrumb aus Icons- oder Text-Links"
+				_label="Breadcrumb from icons or text links"
 				_links={[
 					{
-						_label: 'Startseite',
+						_label: 'Homepage',
 						_icons: 'codicon codicon-home',
 						_hideLabel: true,
 						_href: '#/back-page',
 					},
 					{
-						_label: 'Unterseite der Startseite mit sehr langem Link-Test',
+						_label: 'Subpage of the start page with very long link test',
 						_href: '#/back-page',
 					},
 					{
-						_label: 'Unterseite der Unterseite',
+						_label: 'Underside of the underside',
 						_href: '#/back-page',
 					},
 				]}
 			></KolBreadcrumb>
 			<KolBreadcrumb
-				_label="Breadcrumb aus Icons- und Text-Links"
+				_label="Breadcrumb from icons and text links"
 				_links={[
-					{ _label: 'Startseite', _icons: 'codicon codicon-home', _href: '#/back-page' },
+					{ _label: 'Homepage', _icons: 'codicon codicon-home', _href: '#/back-page' },
 					{
-						_label: 'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+						_label: 'Subpage of the main page and I_am_a_really_long_compound_word_trying_to_break_the_layout',
 						_href: '#/back-page',
 					},
 					{
-						_label: 'Unterseite der Unterseite',
+						_label: 'Underside of the underside',
 						_href: '#/back-page',
 					},
 				]}

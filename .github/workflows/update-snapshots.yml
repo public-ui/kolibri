@@ -3,9 +3,6 @@ name: 03 - Update Snapshots
 on:
   workflow_dispatch:
     inputs:
-      target_branch:
-        description: 'Target branch'
-        required: true
       purge_snapshots:
         description: 'Delete all snapshots before regenerating them'
         type: boolean
@@ -30,7 +27,7 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.target_branch }}
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
           token: ${{ steps.app-token.outputs.token }}
 

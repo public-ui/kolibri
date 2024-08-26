@@ -13,5 +13,3 @@ npm dist-tag $1 @public-ui/components@$2 $3
 npm dist-tag $1 @public-ui/themes@$2 $3
 npm dist-tag $1 @public-ui/theme-default@$2 $3
 npm dist-tag $1 @public-ui/visual-tests@$2 $3
-
-npm dist-tag $1 create-kolibri@$2 $3

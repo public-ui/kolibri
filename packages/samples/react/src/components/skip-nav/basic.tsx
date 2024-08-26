@@ -13,18 +13,18 @@ export const SkipNavBasic: FC = () => (
 		</SampleDescription>
 
 		<KolSkipNav
-			_label="Versteckte Navigation"
+			_label="Hidden navigation"
 			_links={[
 				{
-					_label: 'Zum Anfang',
+					_label: 'To the top',
 					_href: '#/back-page',
 				},
 				{
-					_label: 'Zum Formular',
+					_label: 'To the form',
 					_href: '#/back-page',
 				},
 				{
-					_label: 'Zum Ende',
+					_label: 'To the end',
 					_href: '#/back-page',
 				},
 			]}
