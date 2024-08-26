@@ -31,13 +31,15 @@ export type Option<T> = {
 	// selected?: boolean; // wird über den value der *-Komponente gesteuert
 	value: T;
 };
-
+export type RadioOption<T> = Option<T> & {
+	hint?: string;
+};
 export type Optgroup<T> = {
 	disabled?: boolean;
 	label: string;
 	options: Option<T>[];
 };
 
-export type SelectOption<T> = Option<T> | Optgroup<T>;
+export type SelectOption<T> = Option<T> | Optgroup<T> | RadioOption<T>;
 
 export type InputTypeOnDefault = InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus & InputTypeOnInput;

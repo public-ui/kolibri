@@ -4,7 +4,7 @@ import type {
 	InputRadioProps,
 	InputRadioWatches,
 	Optgroup,
-	Option,
+	RadioOption,
 	OptionsPropType,
 	Orientation,
 	PropLabelWithExpertSlot,
@@ -17,14 +17,14 @@ import { mapString2Unknown, orientationOptions, setState, validateOptions, valid
 
 import { InputController } from '../@deprecated/input/controller';
 
-export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, options: SelectOption<T>[], preKey = ''): void => {
+export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, RadioOption<T>>, options: SelectOption<T>[], preKey = ''): void => {
 	options.forEach((option, index) => {
 		const key = `${preKey}-${index}`;
 		if (typeof option === 'object' && option !== null && typeof option.label === 'string' && option.label.length > 0) {
 			if (Array.isArray((option as Optgroup<T>).options)) {
 				fillKeyOptionMap(keyOptionMap, (option as Optgroup<T>).options, key);
 			} else {
-				keyOptionMap.set(key, option as Option<T>);
+				keyOptionMap.set(key, option as RadioOption<T>);
 			}
 		}
 	});
@@ -57,14 +57,14 @@ export class InputCheckboxRadioController extends InputController implements Inp
 
 export class InputRadioController extends InputCheckboxRadioController implements InputRadioWatches {
 	protected readonly component: Generic.Element.Component & InputRadioProps;
-	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();
+	private readonly keyOptionMap = new Map<string, RadioOption<W3CInputValue>>();
 
 	public constructor(component: Generic.Element.Component & InputRadioProps, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
 
-	public readonly getOptionByKey = (key: string): Option<W3CInputValue> | undefined => this.keyOptionMap.get(key);
+	public readonly getOptionByKey = (key: string): RadioOption<W3CInputValue> | undefined => this.keyOptionMap.get(key);
 
 	protected readonly afterPatchOptions = (value: unknown, _state: Record<string, unknown>, _component: Generic.Element.Component, key: string): void => {
 		if (key === '_value') {
