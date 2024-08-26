@@ -5,7 +5,6 @@ import { DisabledInteractiveElements } from './disabled-interactive-elements';
 import { InputsGetValue } from './inputs-get-value';
 import { StaticForm } from './static-form';
 import { FocusElements } from './focus-elements';
-import { InputTextFormatterDemo } from './input-text-formatter';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
@@ -15,6 +14,5 @@ export const SCENARIO_ROUTES: Routes = {
 		'static-form': StaticForm,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
-		'input-text-formatter': InputTextFormatterDemo,
 	},
 };

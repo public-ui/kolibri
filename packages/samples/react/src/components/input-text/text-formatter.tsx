@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Formik, Field, type FieldProps } from 'formik';
 import { KolForm, KolInputText } from '@public-ui/react';
-import { SampleDescription } from '../components/SampleDescription';
+import { SampleDescription } from '../SampleDescription';
 
 const NON_ALPHANUM = /[^a-zA-Z0-9]/g;
 const EVERY_FOUR_CHARS = /(.{4})(?!$)/g;
