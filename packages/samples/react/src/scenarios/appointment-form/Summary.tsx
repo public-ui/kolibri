@@ -16,23 +16,23 @@ export function Summary() {
 			<KolHeading _level={2} _label="Zusammenfassung"></KolHeading>
 
 			<dl>
-				<dt>Stadtteil</dt>
+				<dt>District</dt>
 				<dd>
 					<ValueWithFallback value={values.district} />
 				</dd>
-				<dt>Termin</dt>
+				<dt>Appointment</dt>
 				<dd>{values.date && values.time ? `${values.date} ${values.time} Uhr` : <ValueFallback />}</dd>
 
-				{values.salutation === 'Firma' ? (
+				{values.salutation === 'Company' ? (
 					<>
-						<dt>Firma</dt>
+						<dt>Company</dt>
 						<dd>
 							<ValueWithFallback value={values.company} />
 						</dd>
 					</>
 				) : (
 					<>
-						<dt>Anrede</dt>
+						<dt>Salutation</dt>
 						<dd>
 							<ValueWithFallback value={values.salutation} />
 						</dd>
@@ -47,7 +47,7 @@ export function Summary() {
 				<dd>
 					<ValueWithFallback value={values.email} />
 				</dd>
-				<dt>Telefon</dt>
+				<dt>Phone number</dt>
 				<dd>
 					<ValueWithFallback value={values.phone} />
 				</dd>
