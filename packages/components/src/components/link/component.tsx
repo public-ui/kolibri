@@ -66,6 +66,9 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 		this.anchorRef = ref;
 	};
 
+	/**
+	 * Sets the focus on the link element.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -112,7 +115,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 			download: typeof this.state._download === 'string' ? this.state._download : undefined,
 		};
 
-		if (this.state._hideLabel === true && !this.state._label) {
+		if (this.state._hideLabel === true && this.state._label == null) {
 			devHint(`[KolLink] An aria-label must be set when _hide-label is set.`);
 		}
 		return { isExternal, tagAttrs };

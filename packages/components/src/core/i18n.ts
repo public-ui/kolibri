@@ -62,7 +62,7 @@ export class I18nService {
 					}
 
 					Object.entries(t).forEach(([k, v]) => {
-						if (v) {
+						if (v != null) {
 							resources.set(k, v);
 						}
 					});
@@ -88,7 +88,7 @@ export class I18nService {
 	 */
 	public translate(key: string, options?: ITranslationOptions) {
 		let result = this.resourceMap.get(this.language)?.get(key);
-		if (result) {
+		if (result != null) {
 			if (options?.placeholders) {
 				Object.entries(options.placeholders).forEach(([k, v]) => {
 					result = replaceAll(result!, `{{${k}}}`, v);

@@ -42,7 +42,7 @@ export class KolSpanWc implements SpanAPI {
 							<span class="span-label md" innerHTML={md(this.state._label)} />
 						) : (
 							<span class="span-label">
-								{this.state._accessKey && this.state._label.length ? (
+								{this.state._accessKey != null && this.state._label.length > 0 ? (
 									<InternalUnderlinedAccessKey label={this.state._label} accessKey={this.state._accessKey} />
 								) : (
 									(this.state._label ?? '')

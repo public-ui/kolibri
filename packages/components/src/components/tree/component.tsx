@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type { LabelPropType, TreeAPI, TreeStates } from '../../schema';
 import { validateLabel } from '../../schema';
@@ -10,7 +10,7 @@ import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 	shadow: false,
 })
 export class KolTreeWc implements TreeAPI {
-	@Element() host!: HTMLElement;
+	@Element() host!: HTMLKolTreeWcElement;
 
 	@State() public state: TreeStates = {
 		_label: '',
@@ -23,13 +23,14 @@ export class KolTreeWc implements TreeAPI {
 	 */
 	@Prop() _label!: LabelPropType;
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 
 	public render(): JSX.Element {
 		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-wc">
+			<Host onSlotchange={this.handleSlotchange()} class="kol-tree-wc">
 				<nav class="tree" aria-label={this.state._label}>
 					<ul class="treeview-navigation" role="tree" aria-label={this.state._label}>
 						<slot />
@@ -48,10 +49,14 @@ export class KolTreeWc implements TreeAPI {
 
 		this.handleTreeChange();
 		this.observeChildListMutations();
+		this.host?.addEventListener('keydown', (event) => void this.handleKeyDown(event));
+		this.host?.addEventListener('focusout', (event) => void this.handleFocusOut(event));
 	}
 
 	public disconnectedCallback(): void {
 		this.observer?.disconnect();
+		this.host?.removeEventListener('keydown', (event) => void this.handleKeyDown(event));
+		this.host?.removeEventListener('focusout', (event) => void this.handleFocusOut(event));
 	}
 
 	private observeChildListMutations() {
@@ -114,8 +119,7 @@ export class KolTreeWc implements TreeAPI {
 		return elementsWithInclude.filter((element) => element.include).map((element) => element.value);
 	}
 
-	@Listen('keydown')
-	public async handleKeyDown(event: KeyboardEvent) {
+	private async handleKeyDown(event: KeyboardEvent): Promise<void> {
 		const openItems = await this.getOpenTreeItemElements();
 		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
 
@@ -192,8 +196,7 @@ export class KolTreeWc implements TreeAPI {
 		}
 	}
 
-	@Listen('focusout')
-	public async handleFocusOut(event: FocusEvent) {
+	private async handleFocusOut(event: FocusEvent): Promise<void> {
 		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
 			/* Tree lost focus */
 			await this.ensureActiveItemVisibility();

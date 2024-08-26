@@ -36,7 +36,7 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 					${state._required ? `_required=""` : ''}
 					_hint=""
 					_id="${state._id}"
-					_label="${state._label ? `${state._label}` : ''}"
+					_label="${state._label != null ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="checkbox ${state._hideLabel ? 'hide-label' : ''} default"
 					${state._alert || state._alert === undefined ? `_alert=""` : ''}
@@ -70,10 +70,10 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 					type="checkbox"
 					${state._disabled ? `disabled=""` : ''}
 					${state._required ? `required=""` : ''}
-					${state._name ? `name=""` : ''}
+					${state._name != null ? `name=""` : ''}
 					${state._checked ? `checked=""` : ''}
 					${state._indeterminate ? `indeterminate=""` : ''}
-					${state._tabIndex ? `tabIndex=""` : ''}
+					${state._tabIndex != null ? `tabIndex=""` : ''}
 
 				/>
 			</label>

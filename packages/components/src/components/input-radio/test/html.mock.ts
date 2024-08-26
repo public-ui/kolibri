@@ -18,8 +18,8 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 	);
 	const hasExpertSlot = showExpertSlot(state._label);
 	const { ariaDescribedBy, hasError } = getRenderStates(state);
-	const label = state._label ? state._label : '';
-	let accessKey = state._accessKey ? state._accessKey : '';
+	const label = state._label != null ? state._label : '';
+	let accessKey = state._accessKey != null ? state._accessKey : '';
 	let [first, ...rest] = label.split(accessKey);
 	if (rest.length === 0) {
 		accessKey = accessKey.toUpperCase();
@@ -45,7 +45,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 										<>
 										${first}
 										${
-											rest.length
+											rest.length > 0
 												? `<>
 												<u>{accessKey}</u>
 												{rest.join(accessKey)}
@@ -71,9 +71,9 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 							${state._disabled || option.disabled ? "_disabled=''" : ''}
 							${state._hideLabel ? "_hideLabel=''" : ''}
 							${state._touched ? "_touched=''" : ''}
-							${state._hint ? `_hint="${state._hint}"` : "_hint=''"}
+							${state._hint != null ? `_hint="${state._hint}"` : "_hint=''"}
 							_id="${customId}"
-							${(option.label as string) ? `_label="${option.label}"` : ''}
+							${option.label != null ? `_label="${option.label}"` : ''}
 							_renderNoLabel=""
 							${state._required ? "_required=''" : ''}
 							_slotName="${slotName}"
@@ -89,7 +89,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 									name="${state._name || state._id}"
 									${state._disabled || option.disabled ? "disabled=''" : ''}
 									${state._required ? "required=''" : ''}
-									${state._tabIndex ? `tabIndex="${state._tabIndex}"` : ''}
+									${state._tabIndex != null ? `tabIndex="${state._tabIndex}"` : ''}
 									${selected ? `checked=""` : ''}
 
 									value="-${index}"

@@ -12,7 +12,7 @@ export const formatLabelAsInitials = (label: string): string => {
 	const last = names.at(-1);
 
 	// names might consist of only one word
-	if (names.length >= 2 && first && last) {
+	if (names.length >= 2 && typeof first === 'string' && typeof last === 'string') {
 		return `${formatNameAsInitial(first)}${formatNameAsInitial(last)}`;
 	}
 

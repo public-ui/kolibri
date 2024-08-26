@@ -14,12 +14,12 @@ export class KolTreeItemWc implements TreeItemAPI {
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
-	@Element() host!: HTMLElement;
+	@Element() host!: HTMLKolTreeItemWcElement;
 
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;
 		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-item-wc">
+			<Host onSlotchange={this.handleSlotchange} class="kol-tree-item-wc">
 				<li
 					class="tree-item"
 					style={{
@@ -42,8 +42,8 @@ export class KolTreeItemWc implements TreeItemAPI {
 					>
 						<span slot="expert">
 							{_hasChildren && (
-								// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
-								<span class="toggle-button" onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}>
+								/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+								<span class="toggle-button" onClick={this.handleToggleClick}>
 									<KolIconTag
 										class="toggle-button-icon"
 										_icons={`codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`}
@@ -90,19 +90,23 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 */
 	@Prop() _href!: HrefPropType;
 
-	@Watch('_active') validateActive(value?: ActivePropType): void {
+	@Watch('_active')
+	public validateActive(value?: ActivePropType): void {
 		validateActive(this, value || false);
 	}
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 
-	@Watch('_open') validateOpen(value?: OpenPropType): void {
+	@Watch('_open')
+	public validateOpen(value?: OpenPropType): void {
 		validateOpen(this, value);
 	}
 
-	@Watch('_href') validateHref(value?: HrefPropType): void {
+	@Watch('_href')
+	public validateHref(value?: HrefPropType): void {
 		validateHref(this, value);
 	}
 
@@ -126,20 +130,32 @@ export class KolTreeItemWc implements TreeItemAPI {
 		this.level = level;
 	}
 
-	private handleSlotchange() {
+	private handleSlotchange = () => {
 		this.checkForChildren();
-	}
+	};
 
-	private checkForChildren() {
+	private checkForChildren = () => {
 		this.state = {
 			...this.state,
 			_hasChildren: Boolean(this.host.querySelector('slot')?.assignedElements?.().length),
 		};
-	}
+	};
 
-	@Method() async focusLink() {
+	/**
+	 * Sets focus to link element in tree item.
+	 */
+	@Method()
+	public async focusLink() {
 		await this.linkElement.kolFocus();
 	}
+
+	private handleToggleClick = (event: MouseEvent) => {
+		if (this.state._open) {
+			void this.handleCollapseClick(event);
+		} else {
+			void this.handleExpandClick(event);
+		}
+	};
 
 	private async handleExpandClick(event: MouseEvent) {
 		event.preventDefault();
@@ -147,6 +163,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		await this.expand();
 	}
 
+	/**
+	 * Closes the tree item.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async expand() {
@@ -164,6 +183,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		await this.collapse();
 	}
 
+	/**
+	 * Opens the tree item.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async collapse() {
@@ -175,6 +197,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 		}
 	}
 
+	/**
+	 * Returns the open state of tree item.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async isOpen() {

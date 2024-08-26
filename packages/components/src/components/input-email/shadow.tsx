@@ -46,6 +46,10 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<string | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -53,13 +57,18 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @stencil-community/reserved-member-names
 	public async focus() {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -78,6 +87,10 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	private readonly onInput = (event: InputEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
 		this.controller.onFacade.onInput(event);
+	};
+
+	private handleClick = (): void => {
+		this.inputRef?.focus();
 	};
 
 	public render(): JSX.Element {
@@ -113,7 +126,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 					_smartButton={this.state._smartButton}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.inputRef?.focus()}
+					onClick={this.handleClick}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
@@ -173,6 +186,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
@@ -201,6 +215,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
@@ -469,7 +484,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 
-		this.state._hasValue = !!this.state._value;
-		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.state._hasValue = Boolean(this.state._value);
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = Boolean(v)));
 	}
 }

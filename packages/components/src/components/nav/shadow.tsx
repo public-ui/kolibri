@@ -258,7 +258,7 @@ export class KolNav implements NavAPI {
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _collapsible?: boolean = true;
+	@Prop() public _collapsible?: boolean;
 
 	/**
 	 * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".

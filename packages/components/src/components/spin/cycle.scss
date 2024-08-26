@@ -36,15 +36,15 @@
 			clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
 		}
 		25% {
-			border-color: #666;
+			border-color: rgba(#000, 0.25);
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
 		}
 		50% {
-			border-color: #fc0;
+			border-color: rgba(#000, 0.5);
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
 		}
 		75% {
-			border-color: red;
+			border-color: rgba(#000, 0.75);
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
 		}
 		100% {

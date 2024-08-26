@@ -43,13 +43,18 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private refInputRange?: HTMLInputElement;
 
 	/**
+	 * Sets the focus on the input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @stencil-community/reserved-member-names
 	public async focus() {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -59,7 +64,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.refInputNumber = element;
-			if (!this._value && this.refInputNumber?.value) {
+			if (this._value !== undefined && typeof this.refInputNumber?.value === 'string') {
 				this.validateValue(parseFloat(this.refInputNumber.value));
 			}
 		}
@@ -73,15 +78,19 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 	private getSanitizedFloatValue(value: string): number {
 		const floatValue = parseFloat(value);
-		if (this.state._max && floatValue > this.state._max) {
+		if (typeof this.state._max === 'number' && floatValue > this.state._max) {
 			return this.state._max;
 		}
-		if (this.state._min && floatValue < this.state._min) {
+		if (typeof this.state._min === 'number' && floatValue < this.state._min) {
 			return this.state._min;
 		}
 		return floatValue;
 	}
 
+	/**
+	 * Get value of input.
+	 * @returns {Promise<StencilUnknown | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<number | undefined> {
@@ -110,7 +119,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	};
 
 	componentDidLoad() {
-		if (!this._value && this.refInputRange?.value) {
+		if (this._value !== undefined && typeof this.refInputRange?.value === 'string') {
 			this.validateValue(parseFloat(this.refInputRange.value));
 		}
 	}
@@ -174,7 +183,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 								list={hasSuggestions ? `${this.state._id}-list` : undefined}
 								max={this.state._max}
 								min={this.state._min}
-								name={this.state._name ? `${this.state._name}-range` : undefined}
+								name={this.state._name !== undefined ? `${this.state._name}-range` : undefined}
 								spellcheck="false"
 								step={this.state._step}
 								tabIndex={-1}
@@ -197,7 +206,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 								list={hasSuggestions ? `${this.state._id}-list` : undefined}
 								max={this.state._max}
 								min={this.state._min}
-								name={this.state._name ? `${this.state._name}-number` : undefined}
+								name={this.state._name !== undefined ? `${this.state._name}-number` : undefined}
 								step={this.state._step}
 								type="number"
 								value={this.state._value}
@@ -234,6 +243,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
+	// eslint-disable-next-line @stencil-community/ban-default-true
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
@@ -257,6 +267,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**

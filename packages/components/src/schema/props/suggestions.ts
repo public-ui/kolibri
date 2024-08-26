@@ -20,7 +20,7 @@ export const validateSuggestions = (component: Generic.Element.Component, value?
 	watchJsonArrayString(component, '_suggestions', (item: W3CInputValue) => typeof item === 'string' || typeof item === 'number', value, undefined, {
 		hooks: {
 			afterPatch: (value: unknown) => {
-				if (Array.isArray(value) && value.length) {
+				if (Array.isArray(value) && value.length > 0) {
 					a11yHint('Property suggestions: Options have accessibility issues in how browsers implemented them and should not be used for now.');
 				}
 			},

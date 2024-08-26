@@ -58,6 +58,10 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		this.textareaRef = ref;
 	};
 
+	/**
+	 * Get value of textarea.
+	 * @returns {Promise<string | undefined>}
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -65,18 +69,27 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	/**
+	 * Sets the focus on the textarea input.
 	 * @deprecated Use kolFocus instead.
 	 */
 	@Method()
+	// eslint-disable-next-line @stencil-community/reserved-member-names
 	public async focus() {
 		await this.kolFocus();
 	}
 
+	/**
+	 * Sets the focus on the textarea input.
+	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.textareaRef?.focus();
 	}
+
+	private handleClick = (): void => {
+		this.textareaRef?.focus();
+	};
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
@@ -103,7 +116,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 					_required={this.state._required}
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this.state._touched}
-					onClick={() => this.textareaRef?.focus()}
+					onClick={this.handleClick}
 					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
 				>
 					<span slot="label">
@@ -167,6 +180,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable, @stencil-community/ban-default-true
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
@@ -191,6 +205,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
 	 */
+	// eslint-disable-next-line @stencil-community/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
 
 	/**
@@ -443,8 +458,10 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		setTimeout(() => {
 			if (this._adjustHeight === true && this.textareaRef /* SSR instanceof HTMLTextAreaElement */) {
 				this._rows =
-					this.state?._rows && this.state._rows > increaseTextareaHeight(this.textareaRef) ? this.state._rows : increaseTextareaHeight(this.textareaRef);
-			} else if (!this._rows) {
+					this.state?._rows != null && this.state._rows > increaseTextareaHeight(this.textareaRef)
+						? this.state._rows
+						: increaseTextareaHeight(this.textareaRef);
+			} else if (this._rows == null) {
 				this._rows = 1;
 			}
 		}, 0);
@@ -454,8 +471,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-		this.state._hasValue = !!this.state._value;
-		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.state._hasValue = Boolean(this.state._value);
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = Boolean(v)));
 	}
 
 	private readonly onInput = (event: InputEvent) => {

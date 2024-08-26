@@ -47,7 +47,7 @@ export class KolKolibri implements KolibriAPI {
 	/**
 	 * Defines whether the component has a label.
 	 */
-	@Prop() public _labeled?: boolean = true;
+	@Prop() public _labeled?: boolean;
 
 	@State() public state: KolibriStates = {
 		_color: {

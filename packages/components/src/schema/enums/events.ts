@@ -1,4 +1,4 @@
-export enum Events {
+enum Events {
 	onBlur = 'onBlur',
 	onChange = 'onChange',
 	onClick = 'onClick',
@@ -19,3 +19,5 @@ export enum Events {
 	onSelectionChange = 'onSelectionChange',
 	onSubmit = 'onSubmit',
 }
+
+export { Events };

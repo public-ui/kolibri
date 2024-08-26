@@ -23,14 +23,14 @@ export const getTextareaHtml = (props: TextareaProps): string => {
 	const hasExpertSlot = showExpertSlot(props._label);
 	const { ariaDescribedBy } = getRenderStates(state);
 	return `
-<kol-textarea  _alert="" ${props._touched ? '_touched=""' : ''} class="${props._value ? 'has-value kol-textarea' : 'kol-textarea'}">
+<kol-textarea  _alert="" ${props._touched ? '_touched=""' : ''} class="${props._value != null ? 'has-value kol-textarea' : 'kol-textarea'}">
   <mock:shadow-root>
 		<${KolInputWcTag} _alert=""
-				_currentlength="${props._value ? `${props._value.length}` : '0'}"
+				_currentlength="${props._value != null ? `${props._value.length}` : '0'}"
 				${props._disabled ? ' _disabled=""' : ''}
-				_hint="${props._hint ? props._hint : ''}"
+				_hint="${props._hint != null ? props._hint : ''}"
 				_id="id-nonce"
-				_label="${props._label ? props._label : ''}"
+				_label="${props._label != null ? props._label : ''}"
 				${props._touched ? '_touched=""' : ''}
 				_tooltipalign="top"
 				class="textarea"
@@ -38,7 +38,7 @@ export const getTextareaHtml = (props: TextareaProps): string => {
 		>
 			<span slot="label">
 					${
-						hasExpertSlot || !props._label
+						hasExpertSlot || props._label == null
 							? `<slot name="expert"></slot>`
 							: typeof props._accessKey === 'string'
 								? `<>
@@ -57,8 +57,8 @@ export const getTextareaHtml = (props: TextareaProps): string => {
 						${props._disabled ? ' disabled=""' : ''}
 						id="id-nonce"
 						spellcheck="false"
-						${props._value ? `value="${props._value}"` : ''}
-						${props._placeholder ? `placeholder="${props._placeholder}"` : ''}
+						${props._value != null ? `value="${props._value}"` : ''}
+						${props._placeholder != null ? `placeholder="${props._placeholder}"` : ''}
 						style="resize: vertical;"
 						${ariaDescribedBy.length > 0 ? `aria-describedby= "${ariaDescribedBy.join(' ')}"` : ''}
 				>

@@ -32,13 +32,13 @@ export const getButtonWcHtml = (props: ButtonProps, additionalAttrs = ''): strin
 	});
 
 	return `<kol-button-wc${additionalAttrs}>
-	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
+	<button${ariaControls != null ? ' aria-controls="nonce"' : ''}${
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
 	}
 	${state._hideLabel && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''}
 	class="${classNames}"
 	${state._disabled ? `disabled` : ''}
-	${state._role ? `role="${state._role}"` : ''} type="${type}">
+	${state._role != null ? `role="${state._role}"` : ''} type="${type}">
 
 		<${KolSpanWcTag}
 		class="button-inner"
@@ -51,7 +51,7 @@ export const getButtonWcHtml = (props: ButtonProps, additionalAttrs = ''): strin
 	<${KolTooltipWcTag}
 				aria-hidden="true"
 				hidden=""
-					${state._tooltipAlign ? `_align=${state._tooltipAlign}` : "_align='top'"}
+					${state._tooltipAlign != null ? `_align=${state._tooltipAlign}` : "_align='top'"}
 					_label="${typeof state._label === 'string' ? state._label : ''}"
 				></${KolTooltipWcTag}>
 </kol-button-wc>`;

@@ -198,7 +198,7 @@ export class KolPagination implements PaginationAPI {
 	/**
 	 * Defines which navigation buttons to render (first, last, next, previous buttons).
 	 */
-	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
+	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton>;
 
 	/**
 	 * Defines the current page.
