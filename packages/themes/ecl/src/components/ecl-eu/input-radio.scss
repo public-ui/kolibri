@@ -1,4 +1,5 @@
 @import '../mixins-eu/alert-wc.scss';
+@import '../mixins-eu/rem.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -8,8 +9,9 @@
 
 	fieldset {
 		border: 0;
-		gap: 0.5rem;
+		gap: rem(8);
 		flex-wrap: wrap;
+		align-items: flex-start;
 	}
 
 	fieldset .kol-alert-wc {
@@ -17,15 +19,24 @@
 	}
 
 	fieldset .hint {
-		order: 2;
+		order: 4;
+		font-size: rem(14.4);
+		font-style: italic;
 	}
 
 	fieldset .kol-alert-wc {
 		order: 3;
 	}
 
-	fieldset .kol-input-wc {
-		order: 4;
+	fieldset .kol-input {
+		display: grid;
+		order: 2;
+	}
+
+	fieldset .kol-input .hint {
+		order: 3;
+		font-size: rem(14.4);
+		font-style: italic;
 	}
 
 	.radio-input-wrapper {
@@ -39,7 +50,7 @@
 	}
 
 	.radio-label {
-		padding-left: 0.5rem;
+		padding-left: rem(8);
 	}
 
 	input[type='radio'] {
@@ -98,7 +109,7 @@
 	}
 
 	.hint {
-		font-size: 0.875rem;
+		font-size: rem(14.4);
 		order: 4;
 	}
 }

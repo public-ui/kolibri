@@ -1,4 +1,5 @@
 @import '../mixins/input-messages.scss';
+@import '../mixins/rem.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -12,6 +13,7 @@
 			.input {
 				opacity: 0.5;
 			}
+
 			input,
 			label {
 				opacity: 1;
@@ -25,6 +27,12 @@
 		line-height: 20px;
 		gap: 8px;
 		width: 100%;
+	}
+
+	.hint {
+		order: 4;
+		font-size: rem(14.4);
+		font-style: italic;
 	}
 
 	input {
@@ -64,6 +72,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			gap: 0.25rem 1.5rem;
+			align-items: flex-start;
 
 			legend span {
 				width: 100%;
@@ -71,7 +80,7 @@
 		}
 
 		.kol-alert-wc {
-			order: 1;
+			order: 3;
 			padding-bottom: 0.25em;
 		}
 
@@ -86,11 +95,17 @@
 		}
 
 		.kol-input {
-			order: 3;
+			order: 2;
 		}
 
 		.input-slot {
 			gap: 0.5rem;
+		}
+
+		.kol-input .hint {
+			order: 3;
+			font-size: rem(14.4);
+			font-style: italic;
 		}
 
 		&.error {
@@ -151,6 +166,7 @@
 				border-radius: 100%;
 				display: block;
 			}
+
 			&:checked {
 				border-color: var(--color-midnight);
 
