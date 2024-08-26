@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
-test.describe('Accordion', () => {
+test.describe('kol-accordion', () => {
 	test.describe('when accordion is enabled', () => {
 		test.beforeEach(async ({ page }) => {
 			await page.setContent('<kol-accordion _label="Accordion Label">Accordion contents</kol-accordion>');

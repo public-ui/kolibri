@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
-test.describe('kol-popover-wc', () => {
+test.describe('kol-popover', () => {
 	test('should display popover when _show is true and hide when _show is false', async ({ page }) => {
 		await page.setContent(` <button id="trigger">Trigger Button</button> <kol-popover-wc _align="top" >Dropdown-Inhalt</kol-popover-wc> `);
 		const popover = page.locator('kol-popover-wc');
