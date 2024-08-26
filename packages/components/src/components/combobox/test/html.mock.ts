@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 
-import { ComboboxProps, ComboboxStates, showExpertSlot } from '../../../schema';
+import { showExpertSlot, type ComboboxProps, type ComboboxStates } from '../../../schema';
 import { KolInputWcTag } from '../../../core/component-names';
 import clsx from 'clsx';
 
