@@ -30,6 +30,7 @@
 			transform: rotate(360deg);
 		}
 	}
+
 	@keyframes prixClipFix {
 		0% {
 			border-color: #fff;
@@ -40,18 +41,20 @@
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
 		}
 		50% {
-			border-color: #fc0;
+			border-color: #000;
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
 		}
 		75% {
-			border-color: red;
+			border-color: #000;
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
 		}
 		100% {
 			border-color: #000;
 			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
 		}
-	} /* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
+	}
+
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
 	@media (prefers-reduced-motion) {
 		.spin.cycle > .loader {
 			animation-duration: 4s;

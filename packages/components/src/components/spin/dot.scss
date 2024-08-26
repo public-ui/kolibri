@@ -17,14 +17,14 @@
 	}
 
 	.spin.dot > span:first-child {
-		background-color: #fc0;
+		background-color: #000;
 		z-index: 0;
 		animation: 1s infinite spin1;
 		left: rem(0.16);
 	}
 
 	.spin.dot > span:nth-child(2) {
-		background-color: red;
+		background-color: #000;
 		z-index: 1;
 		animation: 1s infinite spin2;
 		left: rem(0.16);
@@ -52,6 +52,7 @@
 			transform: scale(1);
 		}
 	}
+
 	@keyframes spin2 {
 		0% {
 			transform: translate(0, 0);
@@ -60,6 +61,7 @@
 			transform: translate(rem(16), 0);
 		}
 	}
+
 	@keyframes spin3 {
 		0% {
 			transform: scale(1);
@@ -67,7 +69,9 @@
 		100% {
 			transform: scale(0);
 		}
-	} /* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
+	}
+
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
 	@media (prefers-reduced-motion) {
 		.spin.dot > span:first-child,
 		.spin.dot > span:nth-child(2),
