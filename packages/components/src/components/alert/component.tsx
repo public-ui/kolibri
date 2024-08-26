@@ -45,6 +45,11 @@ export class KolAlertWc implements AlertAPI {
 	};
 
 	public render(): JSX.Element {
+		let trimmedLabelforTranslation = this.state._label?.trim() || '';
+		if (trimmedLabelforTranslation) {
+			trimmedLabelforTranslation = ` ${trimmedLabelforTranslation}`;
+		}
+
 		if (this.state._alert) {
 			/**
 			 * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
@@ -60,6 +65,8 @@ export class KolAlertWc implements AlertAPI {
 				this.validateAlert(false);
 			}, 10000);
 		}
+
+		console.log('TEST LABEL: ', this.state._label);
 
 		return (
 			<Host
@@ -93,7 +100,7 @@ export class KolAlertWc implements AlertAPI {
 									icon: 'codicon codicon-close',
 								},
 							}}
-							_label={translate('kol-close-alert', { placeholders: { label: this.state._label as string } })}
+							_label={translate('kol-close-alert', { placeholders: { label: trimmedLabelforTranslation } })}
 							_on={this.on}
 							_tooltipAlign="left"
 						></KolButtonWcTag>
