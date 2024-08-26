@@ -81,7 +81,6 @@ export class AssociatedInputController implements Watches {
 			this.formAssociated.setAttribute('aria-hidden', 'true');
 			this.formAssociated.setAttribute('data-form-associated', '');
 			this.formAssociated.setAttribute('hidden', '');
-			this.formAssociated.removeAttribute('id');
 			this.host?.appendChild(this.formAssociated);
 		}
 	}
