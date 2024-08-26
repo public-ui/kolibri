@@ -8,7 +8,7 @@
 		position: relative;
 	}
 
-	:host .split-button-root {
+	.split-button-root {
 		display: flex;
 		position: relative;
 	}
@@ -18,11 +18,13 @@
 		text-align: left;
 	}
 
-	.kol-popover-wc .popover {
-		margin-top: rem(2);
-	}
+	.kol-popover {
+		.popover {
+			margin-top: rem(2);
+		}
 
-	.kol-popover-wc .arrow {
-		display: none;
+		.arrow {
+			display: none;
+		}
 	}
 }
