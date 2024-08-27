@@ -43,7 +43,7 @@ export default {
 	dropdown: 'Dropdown',
 	'nav-label-open': 'Submenu for {{label}} open',
 	'nav-label-close': 'Submenu for {{label}} close',
-	'close-alert': 'Close notification{{label}}',
+	'close-alert': 'Close notification {{label}}',
 	'show-password': 'Show',
 	'hide-password': 'Hide',
 	'no-results-message': 'No results found.',
