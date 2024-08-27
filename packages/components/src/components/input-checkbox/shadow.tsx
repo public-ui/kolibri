@@ -8,6 +8,7 @@ import type {
 	InputCheckboxStates,
 	InputCheckboxVariant,
 	InputTypeOnDefault,
+	LabelAlignPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -216,6 +217,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
+	 * Defines which alignment should be used for presentation.
+	 */
+	@Prop() public _labelAlign?: LabelAlignPropType;
+
+	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
 	@Prop() public _msg?: MsgPropType;
@@ -344,6 +350,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
+		this.controller.validateLabel(value);
+	}
+
+	@Watch('_labelAlign')
+	public validateLabelAlign(value?: LabelAlignPropType): void {
 		this.controller.validateLabel(value);
 	}
 

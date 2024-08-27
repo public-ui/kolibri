@@ -5,6 +5,7 @@ import type {
 	ButtonProps,
 	HideErrorPropType,
 	InputTypeOnDefault,
+	LabelAlignPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	StencilUnknown,
@@ -26,6 +27,7 @@ import {
 	watchBoolean,
 	watchString,
 	validateTooltipAlign,
+	validateLabelAlign,
 } from '../../../schema';
 
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../../utils/events';
@@ -114,6 +116,10 @@ export class InputController extends ControlledInputController implements Watche
 		validateLabelWithExpertSlot(this.component, value, {
 			required: true,
 		});
+	}
+
+	public validateLabelAlign(value?: LabelAlignPropType): void {
+		validateLabelAlign(this.component, value);
 	}
 
 	public validateMsg(value?: MsgPropType): void {
