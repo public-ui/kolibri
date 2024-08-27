@@ -7,13 +7,13 @@ import type {
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
-	PropOptions,
+	PropRadioOptions,
 	PropRequired,
 	PropSyncValueBySelector,
 	PropTooltipAlign,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, Option, Orientation, StencilUnknown } from '../types';
+import type { InputTypeOnDefault, RadioOption, Orientation, StencilUnknown } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -33,14 +33,14 @@ type OptionalProps = {
 	PropHideLabel &
 	PropMsg &
 	PropName &
-	PropOptions & // PropOptions becomes required with 2.0
+	PropRadioOptions & // PropRadioOptions becomes required with 2.0
 	PropRequired &
 	PropSyncValueBySelector &
 	PropTouched &
 	PropTooltipAlign;
 
 type RequiredStates = {
-	options: Option<StencilUnknown>[];
+	options: RadioOption<StencilUnknown>[];
 	orientation: Orientation;
 } & PropId &
 	PropHideError &
