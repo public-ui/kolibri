@@ -21,8 +21,8 @@
 		grid-template-columns: auto 1fr;
 	}
 
-	.kol-input.default[data-label-align='left'],
-	.kol-input.switch[data-label-align='left'] {
+	.kol-input.default[data-label-align='left']:not(.hide-label),
+	.kol-input.switch[data-label-align='left']:not(.hide-label) {
 		grid-template-areas: 'label input';
 		grid-template-columns: 1fr auto;
 	}
