@@ -565,10 +565,8 @@ export class KolTableStateful implements TableAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getSelection(): Promise<KoliBriTableDataType[] | KoliBriTableDataType | null> {
-		const selectedKeys: string[] | string = this.state._selection?.selectedKeys || [];
-		const selectedData = this.getSelectedData(selectedKeys);
-
-		return selectedData;
+		const selectedKeys: string[] = this.state._selection?.selectedKeys || [];
+		return this.getSelectedData(selectedKeys);
 	}
 
 	public render(): JSX.Element {
