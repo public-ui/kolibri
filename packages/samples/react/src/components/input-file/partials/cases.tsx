@@ -12,7 +12,7 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 				{...props}
 				_required
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
-				_label="Datei hochladen"
+				_label="Upload file"
 				_icons={{
 					left: {
 						icon: 'codicon codicon-save',
@@ -20,8 +20,8 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 				}}
 				_touched
 			/>
-			<KolInputFile {...props} ref={ref} _accessKey="h" _multiple _msg={{ _type: 'error', _description: ERROR_MSG }} _label="Datei hochladen (Multiple)" />
-			<KolInputFile {...props} _disabled _label="Datei hochladen (Disabled)" />
+			<KolInputFile {...props} ref={ref} _accessKey="h" _multiple _msg={{ _type: 'error', _description: ERROR_MSG }} _label="Upload file (Multiple)" />
+			<KolInputFile {...props} _disabled _label="Upload file (Disabled)" />
 		</div>
 	);
 });

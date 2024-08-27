@@ -89,7 +89,7 @@ const HEADERS: KoliBriTableHeaders = {
 							}}
 						>
 							<KolInputText _label="Input" />
-							<KolButton _label={'Save'} />
+							<KolButton _label="Save" _icons={{ left: 'codicon codicon-save' }} />
 						</div>,
 					);
 				},
