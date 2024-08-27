@@ -65,7 +65,7 @@ type OptionalProps = {
 	PropName &
 	PropRequired &
 	PropSyncValueBySelector &
-	PropTouched & 
+	PropTouched &
 	PropLabelAlign;
 
 type RequiredStates = {

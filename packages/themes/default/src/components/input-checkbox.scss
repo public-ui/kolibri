@@ -21,8 +21,16 @@
 		grid-template-columns: rem(24) auto;
 	}
 
+	:host .kol-input.default[data-label-align='left'] {
+		grid-template-columns: auto rem(24);
+	}
+
 	:host .kol-input.switch {
 		grid-template-columns: rem(56) auto;
+	}
+
+	:host .kol-input.switch[data-label-align='left'] {
+		grid-template-columns: auto rem(56);
 	}
 
 	:host .kol-input.button {
