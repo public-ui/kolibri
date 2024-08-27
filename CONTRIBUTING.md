@@ -78,15 +78,15 @@ The simplest procedure is therefore to create a new branch from the release bran
 The Continuous Integration (CI) pipeline incorporates automated visual regression testing using the React sample app across all available themes.
 
 When introducing visual modifications to components, themes, or the React sample app, initial test failures are expected. To address this, the
-`update-snapshots` action on GitHub should be executed, followed by a **careful review** of the changes.
+`update-snapshots.yml` action on GitHub should be executed, followed by a **careful review** of the changes.
 
 #### How to Update Snapshots
 
 1. **GitHub website:**
 
-   - Execute the `update-snapshots` action on GitHub.
-   - The action prompts for a branch selection.
-   - It checks out the specified branch, updates all snapshot files, and commits the changes to that branch.
+   - Execute the `update-snapshots.yml` action on GitHub.
+   - Select the desired branch in which you want to update the snapshots.
+   - The workflow checks out the branch, updates all snapshot files, and commits the changes to that branch.
 
 2. **Terminal Command:**
 
