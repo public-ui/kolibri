@@ -312,11 +312,6 @@ ROUTES.set('table/column-alignment', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('table/selection-key-by-data', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('table/sort-data', {
 	axe: {
 		skipFailures: false,

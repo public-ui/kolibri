@@ -9,7 +9,6 @@ export type KoliBriTableCell = {
 	asTd?: boolean;
 	colSpan?: number;
 	label: string;
-	keyPropertyName?: string;
 	render?: KoliBriTableRender;
 	rowSpan?: number;
 	textAlign?: KoliBriTableCellTextAlign;
