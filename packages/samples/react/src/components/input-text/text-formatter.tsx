@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Formik, Field, type FieldProps } from 'formik';
-import { KolForm, KolInputText } from '@public-ui/react';
+import { KolForm, KolHeading, KolInputText } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 const NON_ALPHANUM = /[^a-zA-Z0-9]/g;
@@ -43,6 +43,7 @@ export function InputTextFormatterDemo() {
 				{(form) => (
 					<>
 						<div className="p-2">
+						<KolHeading _label="Formatted Form Field" _level={3} />
 							<KolForm>
 								<Field name="iban">
 									{({ field }: FieldProps<FormValues['iban']>) => (
@@ -76,7 +77,8 @@ export function InputTextFormatterDemo() {
 							</KolForm>
 						</div>
 						<div className="p-2">
-							<pre>{JSON.stringify(form.values)}</pre>
+							<KolHeading _label="Model" _level={3} />
+							<pre>{JSON.stringify(form.values, null, 2)}</pre>
 						</div>
 					</>
 				)}
