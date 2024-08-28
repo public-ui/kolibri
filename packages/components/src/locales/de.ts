@@ -39,7 +39,7 @@ export default {
 	'table-visible-range': 'Einträge {{start}} bis {{end}} von {{total}}',
 	'table-selection-all': 'Alle auswählen',
 	'table-selection-none': 'Alle abwählen',
-	'table-selection-intermediate': 'Alle auswählen bei teilweiser Auswahl',
+	'table-selection-indeterminate': 'Alle auswählen bei teilweiser Auswahl',
 	dropdown: 'Auswahlliste',
 	'nav-label-open': 'Untermenü zu {{label}} öffnen',
 	'nav-label-close': 'Untermenü zu {{label}} schließen',

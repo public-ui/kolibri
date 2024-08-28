@@ -8,7 +8,9 @@ import { TableSortData } from './sort-data';
 import { TableStateless } from './stateless';
 import { TableWithFooter } from './with-footer';
 import { TableStatefulWithSelection } from './stateful-with-selection';
+import { TableStatefulWithSingleSelection } from './stateful-with-single-selection';
 import { TableStatelessWithSelection } from './stateless-with-selection';
+import { TableStatelessWithSingleSelection } from './stateless-with-single-selection';
 import { TableWithPagination } from './with-pagination';
 
 export const TABLE_ROUTES: Routes = {
@@ -21,7 +23,9 @@ export const TABLE_ROUTES: Routes = {
 		'sort-data': TableSortData,
 		'with-footer': TableWithFooter,
 		'stateful-with-selection': TableStatefulWithSelection,
+		'stateful-with-single-selection': TableStatefulWithSingleSelection,
 		'stateless-with-selection': TableStatelessWithSelection,
+		'stateless-with-single-selection': TableStatelessWithSingleSelection,
 		'with-pagination': TableWithPagination,
 		stateless: TableStateless,
 	},

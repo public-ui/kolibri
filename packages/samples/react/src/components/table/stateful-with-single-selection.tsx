@@ -8,14 +8,16 @@ const DATA = [
 	{ id: '1001', name: 'Foo Bar' },
 	{ id: '1002', name: 'Foo Baz' },
 ];
+
 type Data = (typeof DATA)[0];
 
-export const TableStatefulWithSelection: FC = () => {
-	const [selectedValue, setSelectedValue] = useState<Data[] | null>();
+export const TableStatefulWithSingleSelection: FC = () => {
+	const [selectedValue, setSelectedValue] = useState<Data | null>();
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
-		selectedKeys: selectedValue ? selectedValue.map((element) => element.id) : [],
+		multiple: false,
+		selectedKeys: selectedValue ? [selectedValue.id] : [],
 		keyPropertyName: 'id',
 	};
 
@@ -24,13 +26,13 @@ export const TableStatefulWithSelection: FC = () => {
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[] | KoliBriTableDataType | null) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[] | KoliBriTableDataType | string | null) => {
 		console.log('Selection change via callback', selection);
 	};
 
 	const handleButtonClick = async () => {
 		const selection = await kolTableStatefulRef.current?.getSelection();
-		setSelectedValue(selection as Data[] | null);
+		setSelectedValue(selection as Data | null);
 	};
 
 	useEffect(() => {
@@ -46,11 +48,11 @@ export const TableStatefulWithSelection: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows KolTableStateful with checkboxes for selection enabled.</p>
+				<p>This sample shows KolTableStateful with radio buttons for selection enabled.</p>
 			</SampleDescription>
 
 			<KolTableStateful
-				_label="Table with selection checkboxes"
+				_label="Table with selection radio"
 				_headers={{
 					horizontal: [
 						[

@@ -24,5 +24,6 @@ export type KoliBriTableHeaderCell = KoliBriTableCell & {
 export type KoliBriTableSelection = {
 	label: (row: KoliBriTableDataType) => string;
 	keyPropertyName?: string;
+	multiple?: boolean;
 	selectedKeys?: string[];
 };
