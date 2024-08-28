@@ -1,0 +1,317 @@
+[
+	{
+		"name": "Elephant",
+		"species": "Loxodonta",
+		"habitat": "Savannah",
+		"diet": "Herbivore",
+		"lifespan": 60
+	},
+	{
+		"name": "Tiger",
+		"species": "Panthera tigris",
+		"habitat": "Forest",
+		"diet": "Carnivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Kangaroo",
+		"species": "Macropus",
+		"habitat": "Grassland",
+		"diet": "Herbivore",
+		"lifespan": 23
+	},
+	{
+		"name": "Penguin",
+		"species": "Aptenodytes forsteri",
+		"habitat": "Antarctica",
+		"diet": "Carnivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Giraffe",
+		"species": "Giraffa camelopardalis",
+		"habitat": "Savannah",
+		"diet": "Herbivore",
+		"lifespan": 25
+	},
+	{
+		"name": "Panda",
+		"species": "Ailuropoda melanoleuca",
+		"habitat": "Forest",
+		"diet": "Herbivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Dolphin",
+		"species": "Delphinus delphis",
+		"habitat": "Ocean",
+		"diet": "Carnivore",
+		"lifespan": 40
+	},
+	{
+		"name": "Eagle",
+		"species": "Aquila chrysaetos",
+		"habitat": "Mountains",
+		"diet": "Carnivore",
+		"lifespan": 30
+	},
+	{
+		"name": "Koala",
+		"species": "Phascolarctos cinereus",
+		"habitat": "Forest",
+		"diet": "Herbivore",
+		"lifespan": 18
+	},
+	{
+		"name": "Lion",
+		"species": "Panthera leo",
+		"habitat": "Savannah",
+		"diet": "Carnivore",
+		"lifespan": 15
+	},
+	{
+		"name": "Zebra",
+		"species": "Equus quagga",
+		"habitat": "Savannah",
+		"diet": "Herbivore",
+		"lifespan": 25
+	},
+	{
+		"name": "Wolf",
+		"species": "Canis lupus",
+		"habitat": "Forest",
+		"diet": "Carnivore",
+		"lifespan": 14
+	},
+	{
+		"name": "Cheetah",
+		"species": "Acinonyx jubatus",
+		"habitat": "Savannah",
+		"diet": "Carnivore",
+		"lifespan": 12
+	},
+	{
+		"name": "Polar Bear",
+		"species": "Ursus maritimus",
+		"habitat": "Arctic",
+		"diet": "Carnivore",
+		"lifespan": 25
+	},
+	{
+		"name": "Rhinoceros",
+		"species": "Rhinocerotidae",
+		"habitat": "Savannah",
+		"diet": "Herbivore",
+		"lifespan": 40
+	},
+	{
+		"name": "Hippopotamus",
+		"species": "Hippopotamus amphibius",
+		"habitat": "Rivers",
+		"diet": "Herbivore",
+		"lifespan": 45
+	},
+	{
+		"name": "Chimpanzee",
+		"species": "Pan troglodytes",
+		"habitat": "Forest",
+		"diet": "Omnivore",
+		"lifespan": 50
+	},
+	{
+		"name": "Orangutan",
+		"species": "Pongo",
+		"habitat": "Forest",
+		"diet": "Omnivore",
+		"lifespan": 45
+	},
+	{
+		"name": "Leopard",
+		"species": "Panthera pardus",
+		"habitat": "Forest",
+		"diet": "Carnivore",
+		"lifespan": 17
+	},
+	{
+		"name": "Hyena",
+		"species": "Hyaenidae",
+		"habitat": "Savannah",
+		"diet": "Carnivore",
+		"lifespan": 25
+	},
+	{
+		"name": "Crocodile",
+		"species": "Crocodylidae",
+		"habitat": "Rivers",
+		"diet": "Carnivore",
+		"lifespan": 70
+	},
+	{
+		"name": "Alligator",
+		"species": "Alligatoridae",
+		"habitat": "Swamps",
+		"diet": "Carnivore",
+		"lifespan": 50
+	},
+	{
+		"name": "Ostrich",
+		"species": "Struthio camelus",
+		"habitat": "Savannah",
+		"diet": "Omnivore",
+		"lifespan": 40
+	},
+	{
+		"name": "Flamingo",
+		"species": "Phoenicopterus",
+		"habitat": "Lakes",
+		"diet": "Omnivore",
+		"lifespan": 30
+	},
+	{
+		"name": "Peacock",
+		"species": "Pavo cristatus",
+		"habitat": "Forest",
+		"diet": "Omnivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Parrot",
+		"species": "Psittaciformes",
+		"habitat": "Forest",
+		"diet": "Omnivore",
+		"lifespan": 50
+	},
+	{
+		"name": "Toucan",
+		"species": "Ramphastidae",
+		"habitat": "Forest",
+		"diet": "Omnivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Sloth",
+		"species": "Folivora",
+		"habitat": "Forest",
+		"diet": "Herbivore",
+		"lifespan": 30
+	},
+	{
+		"name": "Armadillo",
+		"species": "Dasypodidae",
+		"habitat": "Grassland",
+		"diet": "Omnivore",
+		"lifespan": 15
+	},
+	{
+		"name": "Anteater",
+		"species": "Myrmecophaga tridactyla",
+		"habitat": "Forest",
+		"diet": "Insectivore",
+		"lifespan": 14
+	},
+	{
+		"name": "Bat",
+		"species": "Chiroptera",
+		"habitat": "Caves",
+		"diet": "Omnivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Otter",
+		"species": "Lutrinae",
+		"habitat": "Rivers",
+		"diet": "Carnivore",
+		"lifespan": 16
+	},
+	{
+		"name": "Beaver",
+		"species": "Castor",
+		"habitat": "Rivers",
+		"diet": "Herbivore",
+		"lifespan": 24
+	},
+	{
+		"name": "Moose",
+		"species": "Alces alces",
+		"habitat": "Forest",
+		"diet": "Herbivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Deer",
+		"species": "Cervidae",
+		"habitat": "Forest",
+		"diet": "Herbivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Bison",
+		"species": "Bison bison",
+		"habitat": "Grassland",
+		"diet": "Herbivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Buffalo",
+		"species": "Syncerus caffer",
+		"habitat": "Savannah",
+		"diet": "Herbivore",
+		"lifespan": 25
+	},
+	{
+		"name": "Camel",
+		"species": "Camelus",
+		"habitat": "Desert",
+		"diet": "Herbivore",
+		"lifespan": 50
+	},
+	{
+		"name": "Llama",
+		"species": "Lama glama",
+		"habitat": "Mountains",
+		"diet": "Herbivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Alpaca",
+		"species": "Vicugna pacos",
+		"habitat": "Mountains",
+		"diet": "Herbivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Goat",
+		"species": "Capra aegagrus hircus",
+		"habitat": "Mountains",
+		"diet": "Herbivore",
+		"lifespan": 18
+	},
+	{
+		"name": "Sheep",
+		"species": "Ovis aries",
+		"habitat": "Grassland",
+		"diet": "Herbivore",
+		"lifespan": 12
+	},
+	{
+		"name": "Cow",
+		"species": "Bos taurus",
+		"habitat": "Grassland",
+		"diet": "Herbivore",
+		"lifespan": 20
+	},
+	{
+		"name": "Pig",
+		"species": "Sus scrofa domesticus",
+		"habitat": "Farm",
+		"diet": "Omnivore",
+		"lifespan": 15
+	},
+	{
+		"name": "Chicken",
+		"species": "Gallus gallus domesticus",
+		"habitat": "Farm",
+		"diet": "Omnivore",
+		"lifespan": 10
+	}
+]
