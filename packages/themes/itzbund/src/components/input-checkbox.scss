@@ -39,14 +39,29 @@
 		grid-template-columns: calc(6 * 2 * var(--spacing)) auto;
 	}
 
+	.default[data-label-align='left']:not(.hide-label) {
+		grid-template-columns: auto calc(6 * 2 * var(--spacing));
+	}
+
 	.switch {
 		grid-template-columns: calc(13 * 2 * var(--spacing)) auto;
+	}
+
+	.switch[data-label-align='left']:not(.hide-label) {
+		grid-template-columns: auto calc(13 * 2 * var(--spacing));
 	}
 
 	.button {
 		gap: 0.5rem 0;
 		grid-template-areas:
 			'input label'
+			'hint hint'
+			'error error';
+	}
+
+	.button[data-label-align='left']:not(.hide-label) {
+		grid-template-areas:
+			'label input'
 			'hint hint'
 			'error error';
 	}
