@@ -34,6 +34,7 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
 					${state._required ? `_required=""` : ''}
+					${state._labelAlign ? `_labelAlign="${state._labelAlign}"` : ''}
 					_hint=""
 					_id="${state._id}"
 					_label="${state._label ? `${state._label}` : ''}"
