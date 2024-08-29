@@ -105,7 +105,7 @@ export class KolTabs implements TabsAPI {
 	}
 
 	private getKeyboardTabChangeMode(): 'selectFocusOnly' | 'activateComplete' {
-		if (this.state._behavior === 'select-manual') {
+		if (this._behavior === 'select-manual') {
 			return 'selectFocusOnly';
 		}
 
