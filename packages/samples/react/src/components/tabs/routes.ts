@@ -8,6 +8,5 @@ export const TABS_ROUTES: Routes = {
 		basic: TabsBasic,
 		'icons-only': TabsIconsOnly,
 		'behavior-select-manuel': TabsBehaviorSelectManuel,
-		'behavior-select-manuel2': TabsBehaviorSelectManuel,
 	},
 };
