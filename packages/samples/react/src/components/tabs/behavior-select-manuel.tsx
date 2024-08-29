@@ -34,7 +34,7 @@ const tabsWithoutIcons = tabs.map((tab) => ({
 	_icons: undefined,
 }));
 
-export const TabsBasic: FC = () => (
+export const TabsBehaviorSelectManuel: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
