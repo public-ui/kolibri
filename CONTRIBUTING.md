@@ -4,9 +4,16 @@ We would love for you to contribute to **KoliBri**and help make it even better t
 
 - [Contributing](#contributing)
   - [Code of Conduct](#code-of-conduct)
-  - [Questions and Problems](#questions-and-problems)
-  - [Report bug](#report-bug)
+  - [Questions and problems](#questions-and-problems)
+  - [Report an error](#report-an-error)
   - [Further development](#further-development)
+    - [Git flow](#git-flow)
+    - [Developing](#developing)
+    - [Develop new component](#develop-new-component)
+    - [Switching between branches](#switching-between-branches)
+    - [Back porting to older Major-Versions](#back-porting-to-older-major-versions)
+    - [Snapshot Testing for Visual Changes](#snapshot-testing-for-visual-changes)
+      - [How to Update Snapshots](#how-to-update-snapshots)
 
 ## Code of Conduct
 
@@ -82,26 +89,28 @@ When introducing visual modifications to components, themes, or the React sample
 
 #### How to Update Snapshots
 
-1. **GitHub website:**
+The following methods can be used to update the snapshots.
 
-   - Execute the `update-snapshots.yml` action on GitHub.
+1. **GitHub website:** Update the snapshots directly on the GitHub website by following these steps.
+
+   - Navigate to the `Actions` tab in the `kolibri` repository.
+   - Execute the `03 - Update Snapshots` action.
    - Select the desired branch in which you want to update the snapshots.
    - The workflow checks out the branch, updates all snapshot files, and commits the changes to that branch.
 
-2. **Terminal Command:**
+2. **Terminal Command:** Use the [GitHub CLI (gh)](https://cli.github.com/) to run the `update-snapshots.yml` action from the local terminal. This method is recommended for updating snapshots on the current branch without navigating to the GitHub website. For terminal convenience, the [GitHub CLI (gh)](https://cli.github.com/) needs to be installed.
 
-   - For terminal convenience, the [GitHub CLI (gh)](https://cli.github.com/) needs to be installed.
-   - Run the following command within the project directory:
-
-     ```bash
-     # Replace $YOUR_BRANCH with the desired branch name
-     gh workflow run update-snapshots.yml -f target_branch=$YOUR_BRANCH
-     ```
-
-     Alternatively, to run the action on the current branch:
-
-     ```bash
-     gh workflow run update-snapshots.yml -f target_branch=`git rev-parse --abbrev-ref HEAD`
-     ```
+    - Run the following command within the project directory to update the snapshots in your checked-out branch:
+      ```bash
+      gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD`
+      ```
+    - If your want to delete all snapshots before regenerating them add `-f purge_snapshots=true` to the command:
+      ```bash
+      gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD` -f purge_snapshots=true
+      ```
+    - You can also run the action on a different branch by specifying the another target branch with the `-r <branch_name>` flag. For example, to update snapshots on the `main` branch:
+      ```bash
+      gh workflow run update-snapshots.yml -r main
+      ```
 
 These steps ensure that visual snapshots are updated systematically, maintaining the integrity of the testing process.
