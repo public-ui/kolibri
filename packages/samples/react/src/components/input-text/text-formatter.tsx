@@ -43,7 +43,7 @@ export function InputTextFormatterDemo() {
 				{(form) => (
 					<>
 						<div className="p-2">
-						<KolHeading _label="Formatted Form Field" _level={3} />
+							<KolHeading _label="Formatted Form Field" _level={3} />
 							<KolForm>
 								<Field name="iban">
 									{({ field }: FieldProps<FormValues['iban']>) => (
