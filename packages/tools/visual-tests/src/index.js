@@ -34,7 +34,8 @@ if (!fs.existsSync(workingDir)) {
 }
 
 const buildPath = path.join(tempDir, `kolibri-visual-testing-build-${crypto.randomUUID()}`);
-const packageJsonPath = pathToFileURL(new URL(path.join(workingDir, 'package.json'), import.meta.url).href); //@todo URL necessary?
+const rawPackageJsonPath = new URL(path.join(workingDir, 'package.json'), import.meta.url).href;
+const packageJsonPath = process.platform === 'win32' ? pathToFileURL(rawPackageJsonPath) : rawPackageJsonPath;
 const packageJson = await import(packageJsonPath, {
 	assert: { type: 'json' },
 });
@@ -55,7 +56,7 @@ console.log(`React Sample App build finished. Directory:`, buildPath);
 void (async () => {
 	process.env.KOLIBRI_VISUAL_TEST_PORT = String(await portfinder.getPortPromise());
 
-	const playwright = child_process.spawn(path.join(binaryPath, 'playwright'), ['test', ...process.argv.slice(2)], {
+	const playwright = child_process.spawn(`"${path.join(binaryPath, 'playwright')}"`, ['test', ...process.argv.slice(2)], {
 		cwd: visualsTestModulePath,
 		shell: true,
 	});
