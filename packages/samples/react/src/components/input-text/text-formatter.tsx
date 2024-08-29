@@ -37,7 +37,10 @@ export function InputTextFormatterDemo() {
 	return (
 		<>
 			<SampleDescription>
-				<p>This example demonstrates a text field with formatting</p>
+				<p>
+					This example demonstrates formatting a data value in an input field (example IBAN). The data value is formatted to the input field (print format) and
+					vice versa the formatting is removed again (machine format)
+				</p>
 			</SampleDescription>
 			<Formik<FormValues> initialValues={initialValues} onSubmit={handleSubmit}>
 				{(form) => (
