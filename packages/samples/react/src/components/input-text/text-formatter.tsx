@@ -43,7 +43,7 @@ export function InputTextFormatterDemo() {
 				{(form) => (
 					<>
 						<div className="p-2">
-							<KolHeading _label="Formatted Form Field" _level={3} />
+							<KolHeading _label="Formatted Form Field" _level={2} />
 							<KolForm>
 								<Field name="iban">
 									{({ field }: FieldProps<FormValues['iban']>) => (
@@ -77,7 +77,7 @@ export function InputTextFormatterDemo() {
 							</KolForm>
 						</div>
 						<div className="p-2">
-							<KolHeading _label="Model" _level={3} />
+							<KolHeading _label="Model" _level={2} />
 							<pre>{JSON.stringify(form.values, null, 2)}</pre>
 						</div>
 					</>
