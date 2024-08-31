@@ -113,13 +113,13 @@ export class KolTabs implements TabsAPI {
 	}
 
 	private goToNextTab(event: KeyboardEvent) {
-		this.currentFocusIndex = this.nextPossibleTabIndex(this.state._tabs, this.getCurrentFocusIndex());
-		this.selectNextTabEvent(event, this.currentFocusIndex, this.getKeyboardTabChangeMode());
+		const nextFocusIndex = this.nextPossibleTabIndex(this.state._tabs, this.getCurrentFocusIndex());
+		this.selectNextTabEvent(event, nextFocusIndex, this.getKeyboardTabChangeMode());
 	}
 
 	private goToPreviousTab(event: KeyboardEvent) {
-		this.currentFocusIndex = this.prevPossibleTabIndex(this.state._tabs, this.getCurrentFocusIndex());
-		this.selectNextTabEvent(event, this.currentFocusIndex, this.getKeyboardTabChangeMode());
+		const nextFocusIndex = this.prevPossibleTabIndex(this.state._tabs, this.getCurrentFocusIndex());
+		this.selectNextTabEvent(event, nextFocusIndex, this.getKeyboardTabChangeMode());
 	}
 
 	private activateFocusedTab(event: KeyboardEvent) {
@@ -137,6 +137,8 @@ export class KolTabs implements TabsAPI {
 		nextTabIndex: number,
 		changeMode: 'selectFocusOnly' | 'activateComplete' = 'activateComplete',
 	): void {
+		this.currentFocusIndex = nextTabIndex;
+
 		if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
 			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.state._label.replace(/\s/g, '-')}-tab-${nextTabIndex}`, this.tabPanelsElement);
 			button?.focus();
