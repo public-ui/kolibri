@@ -22,7 +22,8 @@
 		"format": "prettier --check src",
 		"lint": "eslint src",
 		"unused": "knip",
-		"postinstall": "pnpm exec playwright install"
+		"postinstall": "pnpm exec playwright install",
+		"lint-staged": "lint-staged"
 	},
 	"bin": {
 		"kolibri-visual-test": "src/index.js"
