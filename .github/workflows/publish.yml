@@ -194,14 +194,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
 
-      # packages obsolete with next major release
-      - name: Build and publish create-kolibri
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
-        working-directory: packages/create-kolibri
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-
       # Publish packages on GitHub packages
       - uses: actions/setup-node@v4
         with:
