@@ -1,0 +1,4 @@
+{
+    "*.ts|tsx|js|jsx": ["prettier --list-different src", "pnpm lint"],
+    "*.md": "prettier --list-different"
+}
