@@ -3,16 +3,16 @@ import { executeTests } from 'stencil-awesome-test';
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
-import { COMPONENTS } from '../../component-list';
 import { Props } from '../types';
 import { getAccordionHtml } from './html.mock';
 import { KolAccordionTag } from '../../../core/component-names';
+import { KolAccordion } from '../component';
 
 executeTests<Props>(
 	'Accordion',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
-			components: COMPONENTS,
+			components: [KolAccordion],
 			template: () => <KolAccordionTag {...props} />,
 		});
 		return page;
