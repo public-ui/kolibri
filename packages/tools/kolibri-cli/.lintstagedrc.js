@@ -8,5 +8,5 @@ module.exports = {
         console.log('Staged Files (**/*.{md,css,scss,json}): ', stagedFiles)
         const strFiles = stagedFiles.join(' ');
         return `prettier --check ${strFiles}`;
-}
+    }
 }
