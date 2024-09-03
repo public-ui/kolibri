@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "2.1.6",
+	"version": "2.1.7-rc.0",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
