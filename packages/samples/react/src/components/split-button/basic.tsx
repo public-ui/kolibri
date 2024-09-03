@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ToasterService } from '@public-ui/components';
-import { KolSplitButton } from '@public-ui/react';
+import { KolButton, KolInputText, KolSplitButton } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
@@ -32,6 +32,9 @@ export const SplitButtonBasic: FC = () => {
 				<KolSplitButton _label="Button without visible label" _hideLabel _icons="codicon codicon-git-pull-request">
 					Dropdown-Inhalt
 				</KolSplitButton>
+				<KolButton _label='Test'></KolButton>
+				<KolInputText _label='Irgendwas'></KolInputText>
+				<input />
 			</div>
 		</>
 	);
