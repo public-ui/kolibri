@@ -2,7 +2,7 @@ import * as React from 'react';
 import { KolAccordion, KolTree, KolTreeItem } from '@public-ui/react';
 import { useMobile } from '../hooks/useMobile';
 import type { Routes, Route } from '../shares/types';
-import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import { useHref, useMatch, useResolvedPath } from 'react-router-dom';
 
 type NavigationProps = {
 	routes: Routes;
@@ -21,15 +21,14 @@ function ComponentNavContainer({ children }: { children?: React.ReactNode }): Re
 }
 
 function TreeItem({ label, to, children }: any) {
+	const href = useHref(to);
 	const resolved = useResolvedPath(to);
 	const match = useMatch({ path: resolved.pathname, end: true });
 
 	return (
-		<Link to={to}>
-			<KolTreeItem _label={label} _href="" _active={!!match}>
-				{children}
-			</KolTreeItem>
-		</Link>
+		<KolTreeItem _label={label} _href={href} _active={!!match}>
+			{children}
+		</KolTreeItem>
 	);
 }
 
@@ -38,8 +37,9 @@ function Navigation({ routes }: NavigationProps): React.ReactNode {
 		return Object.keys(children).map((childName) => {
 			const isTreeExample = parentName === 'tree' && childName === 'basic/:subPage';
 			const subPathName = isTreeExample ? 'basic/home' : childName;
+			const label = isTreeExample ? 'basic' : childName;
 
-			return <TreeItem key={[parentName, childName].join('/')} label={childName} to={[parentName, subPathName].join('/')}></TreeItem>;
+			return <TreeItem key={[parentName, childName].join('/')} label={label} to={[parentName, subPathName].join('/')}></TreeItem>;
 		});
 	};
 
