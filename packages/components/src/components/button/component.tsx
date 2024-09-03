@@ -44,7 +44,7 @@ import {
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { /* stopPropagation, */ tryToDispatchKoliBriEvent } from '../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
@@ -86,20 +86,18 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 			});
 		} else {
 			// Event handling
-			// stopPropagation(event);
+			stopPropagation(event);
 
-			setTimeout(() => {
-				tryToDispatchKoliBriEvent('click', this.host, this.state._value);
+			tryToDispatchKoliBriEvent('click', this.host, this.state._value);
 
-				// TODO: Static form handling
-				this.controller.setFormAssociatedValue(this.state._value);
+			// TODO: Static form handling
+			this.controller.setFormAssociatedValue(this.state._value);
 
-				// Callback
-				if (typeof this.state._on?.onClick === 'function') {
-					setEventTarget(event, this.buttonRef);
-					this.state._on?.onClick(event, this.state._value);
-				}
-			}, 10);
+			// Callback
+			if (typeof this.state._on?.onClick === 'function') {
+				setEventTarget(event, this.buttonRef);
+				this.state._on?.onClick(event, this.state._value);
+			}
 		}
 	};
 

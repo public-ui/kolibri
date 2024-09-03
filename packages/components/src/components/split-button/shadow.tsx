@@ -15,7 +15,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, State } from '@stencil/core';
+import { Component, h, Host, Method, Prop, State } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
@@ -96,6 +96,11 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 				</KolPopoverWcTag>
 			</Host>
 		);
+	}
+
+	@Method()
+	public closePopup() {
+		this.handleOnClose();
 	}
 
 	/**
