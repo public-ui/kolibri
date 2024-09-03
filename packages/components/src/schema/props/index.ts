@@ -44,6 +44,7 @@ export * from './name';
 export * from './open';
 export * from './options';
 export * from './pagination-position';
+export * from './popover-callbacks';
 export * from './read-only';
 export * from './required';
 export * from './rows';

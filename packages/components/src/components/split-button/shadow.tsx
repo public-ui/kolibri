@@ -47,6 +47,10 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 		this.state = { ...this.state, _show: !this.state._show };
 	};
 
+	private readonly handleOnClose = () => {
+		this.state = { ...this.state, _show: false };
+	};
+
 	public render(): JSX.Element {
 		const i18nDropdownLabel = 'kol-split-button-dropdown-label';
 		return (
@@ -87,7 +91,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						_on={this.clickToggleHandler}
 					></KolButtonWcTag>
 				</div>
-				<KolPopoverWcTag _show={this.state._show} _align="bottom">
+				<KolPopoverWcTag _show={this.state._show} _on={{ onClose: this.handleOnClose }} _align="bottom">
 					<slot />
 				</KolPopoverWcTag>
 			</Host>
