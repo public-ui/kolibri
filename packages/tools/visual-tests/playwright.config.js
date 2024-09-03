@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as process from 'process';
 
 const PORT = Number(process.env.KOLIBRI_VISUAL_TEST_PORT);
-const URL = `http://127.0.0.1:${PORT}`;
+const URL = `http://localhost:${PORT}`;
 
 console.log('Serving React Sample app:', URL);
 

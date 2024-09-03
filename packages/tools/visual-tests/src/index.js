@@ -6,7 +6,6 @@ import * as fs from 'fs';
 import portfinder from 'portfinder';
 import * as process from 'process';
 
-process.env.KOLIBRI_CWD = process.cwd();
 const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR; // TODO: Check on Windows
 
 if (!process.env.THEME_MODULE) {
@@ -40,8 +39,6 @@ const packageJson = await import(packageJsonPath, {
 	assert: { type: 'json' },
 });
 
-process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH = buildPath;
-
 console.log(`
 Building React Sample App (v${packageJson?.default?.version ?? '#.#.#'}) …`);
 
@@ -54,11 +51,16 @@ child_process.spawnSync('pnpm', ['run', 'build', '--', `--output-path="${buildPa
 console.log(`React Sample App build finished. Directory:`, buildPath);
 
 void (async () => {
-	process.env.KOLIBRI_VISUAL_TEST_PORT = String(await portfinder.getPortPromise());
-
 	const playwright = child_process.spawn(`"${path.join(binaryPath, 'playwright')}"`, ['test', ...process.argv.slice(2)], {
 		cwd: visualsTestModulePath,
 		shell: true,
+		env: {
+			...process.env,
+			KOLIBRI_CWD: process.cwd(),
+			KOLIBRI_VISUAL_TESTS_BUILD_PATH: buildPath,
+			KOLIBRI_VISUAL_TEST_PORT: String(await portfinder.getPortPromise()),
+			NO_PROXY: 'localhost',
+		},
 	});
 
 	playwright.stdout.on('data', (data) => {
