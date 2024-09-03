@@ -32,8 +32,8 @@ export const SplitButtonBasic: FC = () => {
 				<KolSplitButton _label="Button without visible label" _hideLabel _icons="codicon codicon-git-pull-request">
 					Dropdown-Inhalt
 				</KolSplitButton>
-				<KolButton _label='Test'></KolButton>
-				<KolInputText _label='Irgendwas'></KolInputText>
+				<KolButton _label="Test"></KolButton>
+				<KolInputText _label="Irgendwas"></KolInputText>
 				<input />
 			</div>
 		</>
