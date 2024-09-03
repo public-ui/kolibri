@@ -1,7 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getButtonWcHtml } from '../../button/test/html.mock';
-import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { Props } from '../types';
 import { KolButtonWcTag, KolHeadingWcTag } from '../../../core/component-names';
 
