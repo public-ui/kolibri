@@ -12,8 +12,8 @@
 		"prepack": "pnpm build",
 		"start": "npm-run-all --parallel dev serve",
 		"serve": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=ITZBund npm --prefix \"node_modules/@public-ui/sample-react/\" start",
-		"xtest": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test",
-		"xtest-update": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"xtest": "cross-env THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test",
+		"xtest-update": "cross-env THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest-update": "pnpm build"
 	},
