@@ -29,6 +29,10 @@ export class KolModal implements ModalAPI {
 		void this.closeModal();
 	}
 
+	private handleNativeCloseEvent() {
+		this.state._on?.onClose?.();
+	}
+
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	async openModal() {
@@ -42,7 +46,6 @@ export class KolModal implements ModalAPI {
 
 		/* The optional chaining for the `close` method is not strictly necessary, but a simple/lazy workaround for HTMLDialog not being implemented in jsdom, causing Jest tests to fail. It may be removed in the future. */
 		this.refDialog?.close?.();
-		this.state._on?.onClose?.();
 	}
 
 	public render(): JSX.Element {
@@ -56,6 +59,7 @@ export class KolModal implements ModalAPI {
 					width: this.state._width,
 				}}
 				aria-label={this.state._label}
+				onClose={this.handleNativeCloseEvent.bind(this)}
 			>
 				<slot />
 			</dialog>
