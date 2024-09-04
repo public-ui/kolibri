@@ -25,7 +25,6 @@ export const ModalBasic: FC = () => {
 								_on={{
 									onClick: () => {
 										if (modalElement?.current) {
-											// modalElement.current._activeElement = null;
 											modalElement.current.closeModal();
 										}
 									},
@@ -38,9 +37,8 @@ export const ModalBasic: FC = () => {
 				<KolButton
 					_label="Open modal"
 					_on={{
-						onClick: (event: Event) => {
+						onClick: () => {
 							if (modalElement?.current) {
-								// modalElement.current._activeElement = event.target as HTMLElement;
 								modalElement.current.openModal();
 							}
 						},
