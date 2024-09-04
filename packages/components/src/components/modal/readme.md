@@ -108,19 +108,37 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+https://en.wikipedia.org/wiki/Modal_window
+
 ## Properties
 
-| Property              | Attribute | Description                                                                                                        | Type                                                      | Default     |
-| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | ----------- |
-| `_activeElement`      | --        | Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.                            | `HTMLElement \| null \| undefined`                        | `undefined` |
-| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                  | `undefined` |
-| `_on`                 | --        | Gibt die EventCallback-Function für das Schließen des Modals an.                                                   | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |
-| `_width`              | `_width`  | Defines the width of the modal. (max-width: 100%)                                                                  | `string \| undefined`                                     | `'100%'`    |
+| Property              | Attribute | Description                                                                                                                                                                  | Type                                                      | Default     |
+| --------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------- |
+| `_activeElement`      | --        | <span style="color:red">**[DEPRECATED]**</span> Use methode `openModal` and `closeModal` instead.<br/><br/>Legacy property - while set to an HTMLElement, the modal is open. | `HTMLElement \| null \| undefined`                        | `undefined` |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).                                                           | `string`                                                  | `undefined` |
+| `_on`                 | --        | Defines the modal callback functions.                                                                                                                                        | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |
+| `_width`              | `_width`  | Defines the width of the modal. (max-width: 100%)                                                                                                                            | `string \| undefined`                                     | `'100%'`    |
+
+## Methods
+
+### `closeModal() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `openModal() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ## Slots
 
-| Slot | Description            |
-| ---- | ---------------------- |
-|      | Der Inhalt des Modals. |
+| Slot | Description           |
+| ---- | --------------------- |
+|      | The modal's contents. |
 
 ---
