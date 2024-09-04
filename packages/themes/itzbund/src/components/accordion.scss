@@ -8,13 +8,13 @@
 		border-color: var(--kolibri-border-color);
 		border-width: 1px;
 		border-style: solid;
-		border-radius: 0.25rem;
+		border-radius: 0.25em;
 	}
 
 	:host > div > .kol-heading-wc {
 		font-weight: 700;
-		font-size: 1.25rem;
-		line-height: 1.75rem;
+		font-size: 1.25em;
+		line-height: 1.75em;
 	}
 
 	:host > div > .kol-heading-wc button {
@@ -29,7 +29,7 @@
 		font-size: inherit;
 		line-height: 1.75em;
 		background-color: transparent;
-		padding: 0.5rem;
+		padding: 0.5em;
 	}
 
 	:host > div[part*='open'] > .kol-heading-wc button {
@@ -46,12 +46,12 @@
 	}
 
 	:host > div div[part='header'] {
-		padding-left: 2rem;
+		padding-left: 2em;
 	}
 
 	:host > div[part*='open'] div[part='content'] {
 		margin: 0;
-		padding: 0 1rem 1rem 2.25rem;
+		padding: 0 1em 1em 2.25em;
 	}
 
 	:host > div > .kol-heading-wc button .kol-icon::part(icon) {
@@ -66,7 +66,7 @@
 	}
 
 	.content {
-		padding: 0.5rem;
+		padding: 0.5em;
 	}
 
 	:host > div > .kol-heading-wc button .kol-icon::part(close)::before {

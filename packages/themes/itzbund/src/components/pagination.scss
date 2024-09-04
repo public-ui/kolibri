@@ -1,24 +1,24 @@
 @layer kol-theme-component {
 	.button {
-		border-radius: 2rem;
+		border-radius: 2em;
 		font-family: var(--font-family-sans);
 	}
 	.button-inner {
 		background-color: var(--color-weiss);
-		border-radius: 2rem;
+		border-radius: 2em;
 		border: var(--spacing) solid var(--color-anthrazit);
 		color: var(--color-anthrazit);
 		font-size: inherit;
 		gap: 0.25em;
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
-		padding: 0 1rem;
+		padding: 0 1em;
 		transition-duration: 0.5s;
 		transition-property: background, color, border-color;
 		transition-timing-function: ease-in-out;
 	}
 	.hide-label .button-inner {
-		padding: 0 0.5rem;
+		padding: 0 0.5em;
 	}
 	.button:not(:disabled):hover .button-inner,
 	.button:focus .button-inner {

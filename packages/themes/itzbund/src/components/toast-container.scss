@@ -1,6 +1,6 @@
 @layer kol-theme-component {
 	:host {
-		top: 1rem;
+		top: 1em;
 		width: 750px;
 		max-width: 100%;
 		left: 50%;
@@ -8,6 +8,6 @@
 	}
 	.toast {
 		background: #fff;
-		margin-top: 1rem;
+		margin-top: 1em;
 	}
 }

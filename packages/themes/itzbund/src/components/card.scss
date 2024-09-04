@@ -10,7 +10,7 @@
 	}
 
 	.kol-heading {
-		padding: 0.5rem;
+		padding: 0.5em;
 		display: block;
 		border-bottom-style: solid;
 		border-bottom-color: var(--border-color);
@@ -19,12 +19,12 @@
 
 	:host > div > div {
 		display: block;
-		padding: 0.5rem;
+		padding: 0.5em;
 	}
 
 	:host > div > div:last-child {
 		display: block;
-		padding: 0.5rem;
+		padding: 0.5em;
 		border-top-style: solid;
 		border-top-color: var(--color-achat);
 		border-top-width: 1px;

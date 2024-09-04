@@ -7,11 +7,11 @@
 	}
 
 	.inputs-wrapper {
-		gap: 1rem;
+		gap: 1em;
 	}
 
 	.kol-input {
-		gap: 0.25rem;
+		gap: 0.25em;
 	}
 
 	.kol-input .error {
@@ -28,7 +28,7 @@
 
 	.kol-input .hint {
 		order: 4;
-		font-size: 0.9rem;
+		font-size: 0.9em;
 		font-style: italic;
 	}
 
@@ -42,24 +42,24 @@
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
-		padding: 0 0.5rem;
+		padding: 0 0.5em;
 	}
 
 	.input > .kol-icon {
-		width: 1rem;
+		width: 1em;
 	}
 
 	.input.icon-left > .kol-icon:first-child {
-		margin-right: 0.5rem;
+		margin-right: 0.5em;
 	}
 
 	.input.icon-right > .kol-icon:last-child {
-		margin-left: 0.5rem;
+		margin-left: 0.5em;
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: 1rem;
-		padding-right: 1rem;
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 
 	.input:hover {
@@ -77,7 +77,7 @@
 
 	.kol-input.error {
 		border-left: 3px solid var(--color-danger);
-		padding-left: 1rem;
+		padding-left: 1em;
 	}
 
 	.kol-input.error .input:focus-within {
