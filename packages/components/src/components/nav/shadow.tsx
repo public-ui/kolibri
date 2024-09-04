@@ -339,6 +339,8 @@ export class KolNav implements NavAPI {
 	public validateLinks(value?: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>): void {
 		watchNavLinks('KolNav', this, value);
 		devHint(`[KolNav] The navigation structure is not yet validated recursively.`);
+
+		this.initializeExpandedChildren();
 	}
 
 	@Watch('_orientation')
