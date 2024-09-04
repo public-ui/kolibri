@@ -39,7 +39,9 @@ export class KolModal implements ModalAPI {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeModal() {
 		this._activeElement = null;
-		this.refDialog?.close();
+
+		/* The optional chaining for the `close` method is not strictly necessary, but a simple/lazy workaround for HTMLDialog not being implemented in jsdom, causing Jest tests to fail. It may be removed in the future. */
+		this.refDialog?.close?.();
 		this.state._on?.onClose?.();
 	}
 
