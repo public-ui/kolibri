@@ -43,12 +43,6 @@ export class KolModal implements ModalAPI {
 		this.state._on?.onClose?.();
 	}
 
-	private readonly onKeyDown = (event: KeyboardEvent) => {
-		if (event?.code === 'Escape') {
-			void this.closeModal();
-		}
-	};
-
 	public render(): JSX.Element {
 		return (
 			<dialog
@@ -60,7 +54,6 @@ export class KolModal implements ModalAPI {
 					width: this.state._width,
 				}}
 				aria-label={this.state._label}
-				onKeyDown={this.onKeyDown}
 			>
 				<slot />
 			</dialog>
