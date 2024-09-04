@@ -34,12 +34,12 @@ const tabsWithoutIcons = tabs.map((tab) => ({
 	_icons: undefined,
 }));
 
-export const TabsBehaviorSelectManuel: FC = () => (
+export const TabsBehaviorSelectManual: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				KolTabs renders tab captions and their associated content. This example shows how to change the tab using the keyboard. The tab change only takes place
-				with the enter or space key
+				This sample shows KolTabs with the property _behavior set to &quot;select-manual&quot;. With this property set, the tab change only takes place when the
+				enter or space key is pressed.
 			</p>
 		</SampleDescription>
 
