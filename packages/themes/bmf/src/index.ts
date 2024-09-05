@@ -29,7 +29,6 @@ import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
-import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import progressCss from './components/progress.scss';
