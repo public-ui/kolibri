@@ -12,6 +12,7 @@ import { TableStatefulWithSingleSelection } from './stateful-with-single-selecti
 import { TableStatelessWithSelection } from './stateless-with-selection';
 import { TableStatelessWithSingleSelection } from './stateless-with-single-selection';
 import { TableWithPagination } from './with-pagination';
+import { InteractiveChildElements } from './interactive-child-elements';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
@@ -27,6 +28,7 @@ export const TABLE_ROUTES: Routes = {
 		'stateless-with-selection': TableStatelessWithSelection,
 		'stateless-with-single-selection': TableStatelessWithSingleSelection,
 		'with-pagination': TableWithPagination,
+		'interactive-child-elements': InteractiveChildElements,
 		stateless: TableStateless,
 	},
 };
