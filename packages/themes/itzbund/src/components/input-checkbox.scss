@@ -44,7 +44,7 @@
 	}
 
 	.button {
-		gap: 0.5em 0;
+		gap: 0.5rem 0;
 		grid-template-areas:
 			'input label'
 			'hint hint'
@@ -91,7 +91,7 @@
 	}
 
 	.default .icon {
-		margin-left: 0.25em;
+		margin-left: 0.25rem;
 	}
 
 	.default.checked .icon {
@@ -148,7 +148,7 @@
 	}
 
 	.button:focus-within {
-		border-radius: 2em;
+		border-radius: 2rem;
 		outline-color: var(--color-achat) !important;
 		outline-offset: 2px;
 		outline-style: solid;

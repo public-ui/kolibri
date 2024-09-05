@@ -54,7 +54,7 @@
 	}
 
 	fieldset.horizontal {
-		gap: 1em;
+		gap: 1rem;
 	}
 
 	fieldset legend {
@@ -95,7 +95,7 @@
 	}
 
 	.radio-input-wrapper input[type='radio']:checked:before {
-		box-shadow: 0 0 0.1em black;
+		box-shadow: 0 0 0.1rem black;
 		background-color: var(--color-petrol);
 	}
 

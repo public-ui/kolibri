@@ -1,14 +1,14 @@
 @layer kol-theme-component {
 	a,
 	button {
-		border-radius: 2em !important;
+		border-radius: 2rem !important;
 		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
 	}
 
 	a > .kol-span-wc,
 	button > .kol-span-wc {
-		border-radius: 2em;
+		border-radius: 2rem;
 		border-style: solid;
 		min-width: 44px;
 		min-height: 44px;
@@ -16,12 +16,12 @@
 		font-size: inherit;
 		/*line-height: 1.25em;*/
 		/*padding: calc(4 * var(--spacing));*/
-		padding: 0 1em;
+		padding: 0 1rem;
 	}
 
 	.button a.hide-label > .kol-span-wc,
 	.button button.hide-label > .kol-span-wc {
-		padding: 0 0.5em;
+		padding: 0 0.5rem;
 	}
 
 	a > .kol-span-wc,
