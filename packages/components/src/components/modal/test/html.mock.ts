@@ -12,7 +12,9 @@ export const getModalHtml = (props: ModalProps): string => {
 <kol-modal>
 	<mock:shadow-root>
 		<dialog aria-label="${props._label}" class="kol-modal" style="width: ${props._width || '100%'};">
-			<slot></slot>
+			<div>
+				<slot></slot>
+			</div>
 	 </dialog>
 	</mock:shadow-root>
 </kol-modal>`;
