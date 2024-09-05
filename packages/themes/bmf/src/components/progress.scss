@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -5,7 +7,7 @@
 
 	.bar > div {
 		flex-direction: column;
-		gap: 0.5rem !important;
+		gap: rem(8) !important;
 		width: 100px;
 	}
 
@@ -15,14 +17,14 @@
 	}
 
 	.bar svg {
-		height: 1rem;
+		height: rem(16);
 	}
 
 	.bar .background {
 		fill: var(--color-ice);
 		stroke: var(--color-ice);
 		stroke-width: 1px;
-		height: 0.5rem;
+		height: rem(8);
 	}
 
 	.bar .progress {
@@ -45,25 +47,25 @@
 
 	.cycle .background {
 		stroke: var(--color-ice);
-		stroke-width: 1rem;
+		stroke-width: rem(16);
 	}
 
 	.cycle .progress {
 		stroke: var(--color-midnight);
-		stroke-width: 1rem;
+		stroke-width: rem(16);
 	}
 
 	.cycle text:first-of-type {
 		color: var(--color-grey);
-		line-height: 1.25rem;
+		line-height: rem(20);
 		alignment-baseline: after-edge;
 	}
 
 	.cycle text:last-of-type {
 		color: var(--color-black);
-		font-size: 1.75rem;
+		font-size: rem(28);
 		font-weight: 700;
-		line-height: 1.5rem;
+		line-height: rem(24);
 		alignment-baseline: central;
 	}
 }

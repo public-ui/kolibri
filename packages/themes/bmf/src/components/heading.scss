@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	.headline-h1,
 	.headline-h2,
@@ -18,17 +20,17 @@
 	}
 
 	.headline-h1 {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
+		font-size: rem(24);
+		line-height: rem(28);
 	}
 
 	.headline-h2 {
-		font-size: 1.25rem;
-		line-height: 1.75rem;
+		font-size: rem(20);
+		line-height: rem(28);
 	}
 
 	.headline-h3 {
-		font-size: 1.125rem;
-		line-height: 1.5rem;
+		font-size: rem(18);
+		line-height: rem(24);
 	}
 }

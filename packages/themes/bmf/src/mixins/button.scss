@@ -1,6 +1,8 @@
+@import './rem';
+
 @mixin kol-button {
 	:is(a, button) {
-		font-size: 1.125em;
+		font-size: rem(18);
 	}
 
 	:is(a, button):focus {

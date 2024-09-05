@@ -1,3 +1,5 @@
+@import './rem';
+
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
 		:host,
@@ -64,7 +66,7 @@
 		th,
 		td {
 			border-bottom: 1px solid var(--color-granite);
-			height: 1.25rem;
+			height: rem(20);
 		}
 
 		tbody th {
@@ -79,8 +81,8 @@
 
 		th .kol-button,
 		td .kol-button {
-			margin-top: -0.75rem;
-			margin-bottom: -0.75rem;
+			margin-top: rem(-12);
+			margin-bottom: rem(-12);
 		}
 
 		.table-sort-button .button {

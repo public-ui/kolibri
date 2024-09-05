@@ -1,3 +1,5 @@
+@import './rem';
+
 @mixin inputMessages {
 	.kol-input {
 		&.error,
@@ -69,13 +71,13 @@
 				place-items: baseline;
 
 				&::part(icon) {
-					line-height: 1.375rem;
+					line-height: rem(22);
 				}
 			}
 
 			> div > .kol-heading-wc {
 				line-height: 20px;
-				padding-top: 0.125rem;
+				padding-top: rem(2);
 			}
 		}
 
@@ -142,14 +144,14 @@
 
 	.heading-icon {
 		color: white;
-		font-size: 1.25rem !important;
+		font-size: rem(20) !important;
 
 		&::part(icon) {
 			font-family: 'Material Symbols Rounded';
 			font-weight: 900;
 			font-variation-settings: 'FILL' 1;
-			height: 1.25rem;
-			width: 1.25rem;
+			height: rem(20);
+			width: rem(20);
 		}
 	}
 }

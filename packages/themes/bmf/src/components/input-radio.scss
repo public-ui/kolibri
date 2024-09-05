@@ -1,4 +1,5 @@
 @import '../mixins/input-messages.scss';
+@import '../mixins/rem';
 
 @layer kol-theme-component {
 	:host {
@@ -63,7 +64,7 @@
 		&.horizontal {
 			display: flex;
 			flex-wrap: wrap;
-			gap: 0.25rem 1.5rem;
+			gap: rem(4) rem(24);
 
 			legend span {
 				width: 100%;
@@ -90,7 +91,7 @@
 		}
 
 		.input-slot {
-			gap: 0.5rem;
+			gap: rem(8);
 		}
 
 		&.error {
@@ -124,7 +125,7 @@
 		position: relative;
 		min-height: 44px;
 		margin: 0;
-		gap: 0.5rem;
+		gap: rem(8);
 
 		label {
 			cursor: pointer;
