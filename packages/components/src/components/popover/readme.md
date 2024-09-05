@@ -11,10 +11,11 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 
 ## Properties
 
-| Property | Attribute | Description                                                                       | Type                                                  | Default |
-| -------- | --------- | --------------------------------------------------------------------------------- | ----------------------------------------------------- | ------- |
-| `_align` | `_align`  | Defines the alignment of the tooltip, popover or tabs in relation to the element. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'` |
-| `_show`  | `_show`   | Makes the element show up.                                                        | `boolean \| undefined`                                | `false` |
+| Property | Attribute | Description                                                                       | Type                                                                                  | Default     |
+| -------- | --------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------- |
+| `_align` | `_align`  | Defines the alignment of the tooltip, popover or tabs in relation to the element. | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                 | `'top'`     |
+| `_on`    | --        | Defines the callback functions for popover events.                                | `undefined \| { onClose?: EventCallback<MouseEvent \| KeyboardEvent> \| undefined; }` | `undefined` |
+| `_show`  | `_show`   | Makes the element show up.                                                        | `boolean \| undefined`                                                                | `false`     |
 
 ## Slots
 

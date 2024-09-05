@@ -8,25 +8,23 @@
 		position: relative;
 	}
 
+	.split-button-root {
+		display: flex;
+		position: relative;
+	}
+
 	.main-button {
 		flex-grow: 1;
 		text-align: left;
 	}
 
-	/* popover */
-	.popover {
-		height: 0;
-		left: 0;
-		min-width: 100%;
-		overflow: hidden;
-		position: absolute;
-		top: 100%;
-		transition: height 0.3s ease-in-out;
-	}
+	.kol-popover {
+		.popover {
+			margin-top: rem(2);
+		}
 
-	.popover-content {
-		inset: 0 0 auto 0;
-		min-width: 100%;
-		position: absolute;
+		.arrow {
+			display: none;
+		}
 	}
 }
