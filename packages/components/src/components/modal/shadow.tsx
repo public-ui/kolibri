@@ -61,7 +61,10 @@ export class KolModal implements ModalAPI {
 				aria-label={this.state._label}
 				onClose={this.handleNativeCloseEvent.bind(this)}
 			>
-				<slot />
+				{/* It's necessary to have a block element container for cross-browser compatibility. The display property for the slot content is unknown and could be inline. */}
+				<div>
+					<slot />
+				</div>
 			</dialog>
 		);
 	}

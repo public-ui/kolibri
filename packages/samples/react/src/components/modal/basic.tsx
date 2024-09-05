@@ -19,7 +19,7 @@ export const ModalBasic: FC = () => {
 
 			<div>
 				<KolModal _label="Primary modal" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }}>
-					<KolCard _label="I am a modal." style={{ width: '100%' }}>
+					<KolCard _label="I am a modal.">
 						<KolButton
 							_label="Open stacked modal"
 							className="mr"
