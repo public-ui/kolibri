@@ -61,6 +61,10 @@ p, .text-sm, .text-center {
 	gap: 16px
 }
 
+.gap-2 {
+	gap: 8px
+}
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;

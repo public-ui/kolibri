@@ -1,4 +1,5 @@
 @import '../mixins/alert-wc.scss';
+@import '../mixins/rem';
 
 @layer kol-theme-component {
 	:host {
@@ -54,7 +55,7 @@
 	}
 
 	fieldset.horizontal {
-		gap: 1rem;
+		gap: rem(16);
 	}
 
 	fieldset legend {
@@ -95,7 +96,7 @@
 	}
 
 	.radio-input-wrapper input[type='radio']:checked:before {
-		box-shadow: 0 0 0.1rem black;
+		box-shadow: 0 0 rem(1.6) black;
 		background-color: var(--color-petrol);
 	}
 

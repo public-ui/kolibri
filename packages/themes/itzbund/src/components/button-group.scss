@@ -1,7 +1,9 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host > .kol-button-group-wc {
 		display: inline-flex;
 		flex-wrap: wrap;
-		gap: 0.25rem;
+		gap: rem(4);
 	}
 }

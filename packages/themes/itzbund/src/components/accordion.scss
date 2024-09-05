@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host > div {
 		font-family: var(--font-family);
@@ -8,13 +10,13 @@
 		border-color: var(--kolibri-border-color);
 		border-width: 1px;
 		border-style: solid;
-		border-radius: 0.25rem;
+		border-radius: rem(4);
 	}
 
 	:host > div > .kol-heading-wc {
 		font-weight: 700;
-		font-size: 1.25rem;
-		line-height: 1.75rem;
+		font-size: rem(20);
+		line-height: rem(28);
 	}
 
 	:host > div > .kol-heading-wc button {
@@ -29,7 +31,7 @@
 		font-size: inherit;
 		line-height: 1.75em;
 		background-color: transparent;
-		padding: 0.5rem;
+		padding: rem(4);
 	}
 
 	:host > div[part*='open'] > .kol-heading-wc button {
@@ -46,12 +48,12 @@
 	}
 
 	:host > div div[part='header'] {
-		padding-left: 2rem;
+		padding-left: rem(32);
 	}
 
 	:host > div[part*='open'] div[part='content'] {
 		margin: 0;
-		padding: 0 1rem 1rem 2.25rem;
+		padding: 0 rem(16) rem(16) rem(36);
 	}
 
 	:host > div > .kol-heading-wc button .kol-icon::part(icon) {
@@ -66,7 +68,7 @@
 	}
 
 	.content {
-		padding: 0.5rem;
+		padding: rem(8);
 	}
 
 	:host > div > .kol-heading-wc button .kol-icon::part(close)::before {

@@ -1,8 +1,9 @@
 @import '../mixins/button.scss';
+@import '../mixins/rem';
 
 @layer kol-theme-component {
 	:host {
-		border-radius: 2rem;
+		border-radius: rem(32);
 		border-style: solid;
 		border-width: var(--spacing);
 	}
@@ -22,30 +23,30 @@
 	}
 
 	.secondary-button > button > .kol-span-wc {
-		border-top-right-radius: 2rem;
-		border-bottom-right-radius: 2rem;
+		border-top-right-radius: rem(32);
+		border-bottom-right-radius: rem(32);
 		border-top-left-radius: 0px;
 		border-bottom-left-radius: 0px;
 	}
 
 	.secondary-button > button > :active > .kol-span-wc {
-		border-top-right-radius: 2rem;
-		border-bottom-right-radius: 2rem;
+		border-top-right-radius: rem(32);
+		border-bottom-right-radius: rem(32);
 		border-top-left-radius: 0px;
 		border-bottom-left-radius: 0px;
 	}
 
 	.secondary-button > button > :focus > .kol-span-wc {
-		border-top-right-radius: 2rem;
-		border-bottom-right-radius: 2rem;
+		border-top-right-radius: rem(32);
+		border-bottom-right-radius: rem(32);
 		border-top-left-radius: 0px;
 		border-bottom-left-radius: 0px;
 	}
 
 	.secondary-button > a,
 	.secondary-button > button {
-		border-top-right-radius: 2rem !important;
-		border-bottom-right-radius: 2rem !important;
+		border-top-right-radius: rem(32) !important;
+		border-bottom-right-radius: rem(32) !important;
 		border-top-left-radius: 0px !important;
 		border-bottom-left-radius: 0px !important;
 		font-family: var(--font-family-sans);
@@ -54,8 +55,8 @@
 
 	a,
 	button {
-		border-top-left-radius: 2rem !important;
-		border-bottom-left-radius: 2rem !important;
+		border-top-left-radius: rem(32) !important;
+		border-bottom-left-radius: rem(32) !important;
 		border-top-right-radius: 0px !important;
 		border-bottom-right-radius: 0px !important;
 		font-family: var(--font-family-sans);
@@ -64,10 +65,10 @@
 
 	a > .kol-span-wc,
 	button > .kol-span-wc {
-		border-top-left-radius: 2rem;
-		border-bottom-left-radius: 2rem;
+		border-top-left-radius: rem(32);
+		border-bottom-left-radius: rem(32);
 		font-size: inherit;
-		padding: 0 1rem;
+		padding: 0 rem(16);
 		min-width: 44px;
 		min-height: 44px;
 	}

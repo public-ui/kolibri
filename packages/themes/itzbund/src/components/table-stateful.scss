@@ -1,4 +1,5 @@
 @import '../mixins/kol-table-stateless-wc';
+@import '../mixins/rem';
 
 @layer kol-theme-component {
 	:host > div {
@@ -20,7 +21,7 @@
 
 		:host > div.pagination .kol-pagination {
 			display: flex;
-			gap: 1rem;
+			gap: rem(16);
 		}
 	}
 }
