@@ -1,6 +1,6 @@
 import type { TabButtonProps, TabsProps, TabsStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
-import { KolButtonGroupWcTag, KolButtonWcTag } from '../../../core/component-names';
+import { KolButtonWcTag } from '../../../core/component-names';
 
 export const getTabsHtml = (props: TabsProps): string => {
 	const state = mixMembers<TabsProps, TabsStates>(
@@ -17,7 +17,12 @@ export const getTabsHtml = (props: TabsProps): string => {
 <kol-tabs  _selected="${state._selected ? state._selected : '0'}" class="kol-tabs">
   <mock:shadow-root>
 		<div class="tabs-align-top">
-	    <${KolButtonGroupWcTag} aria-label="${state._label ? state._label : ''}" class="tabs-button-group" role="tablist">
+	    <div
+	    aria-label="${state._label ? state._label : ''}"
+	    class="tabs-button-group kol-button-group-wc"
+	    role="tablist"
+	    tabindex="-1"
+	    >
 
 	    ${state._tabs
 				.map((button: TabButtonProps, index: number) => {
@@ -39,7 +44,7 @@ export const getTabsHtml = (props: TabsProps): string => {
 				`;
 				})
 				.join('')}
-				</${KolButtonGroupWcTag}>
+				</div>
 	    <div class="tabs-content"></div>
 		</div>
   </mock:shadow-root>
