@@ -1,8 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getButtonWcHtml } from '../../button/test/html.mock';
-import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { Props } from '../types';
+import { KolButtonWcTag, KolHeadingWcTag } from '../../../core/component-names';
 
 export const getCardHtml = (props: Props): string => {
 	props = mixMembers(
@@ -15,16 +14,7 @@ export const getCardHtml = (props: Props): string => {
 	<mock:shadow-root>
 		<div class="card">
 			<div class="header">
-				${getHeadingWcHtml(
-					{
-						_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
-						_level: props._level,
-					},
-					{
-						default: '',
-					},
-					` class="kol-heading-wc"`,
-				)}
+				<${KolHeadingWcTag} _label="${props._label}" _level="${props._level ? props._level : '1'}"></${KolHeadingWcTag}>
 				<slot name="header"></slot>
 			</div>
 			<div class="content">
@@ -40,20 +30,12 @@ export const getCardHtml = (props: Props): string => {
 			}
 			${
 				props._hasCloser
-					? getButtonWcHtml(
-							{
-								_hideLabel: true,
-								_icons: {
-									left: {
-										icon: 'codicon codicon-close',
-									},
-								},
-								_label: 'kol-close',
-								_tooltipAlign: 'left',
-							},
-							undefined,
-							' class=" kol-button-wc close"',
-						)
+					? `<${KolButtonWcTag}
+					class="close"
+					_hideLabel=""
+					_label='kol-close'
+					_tooltipAlign="left"
+				></${KolButtonWcTag}>`
 					: ``
 			}
 		</div>
