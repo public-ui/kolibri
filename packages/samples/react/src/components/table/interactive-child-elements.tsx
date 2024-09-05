@@ -3,16 +3,15 @@ import React from 'react';
 import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import { getRoot } from '../../shares/react-roots';
-import type { ButtonVariantPropType } from '@public-ui/components';
-import type { KoliBriTableCell } from '@public-ui/components/src';
-import type { KoliBriTableCellTextAlign } from '@public-ui/components/src/schema';
+import type { ButtonVariantPropType, KoliBriTableCell } from '@public-ui/components';
+import type { KoliBriTableHeaderCell } from '@public-ui/components/src/schema';
 
-const getButtonHeaderCell = (variant: ButtonVariantPropType) => {
+const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeaderCell => {
 	const capitalizedVariant = variant.charAt(0).toUpperCase() + variant.slice(1);
 	return {
 		label: capitalizedVariant,
 		key: variant,
-		textAlign: 'left' as KoliBriTableCellTextAlign,
+		textAlign: 'left',
 		render: (element: HTMLElement, cell: KoliBriTableCell) => {
 			const commonProps = {
 				_label: capitalizedVariant,
@@ -77,7 +76,7 @@ export const InteractiveChildElements: FC = () => (
 						{
 							key: 'regular',
 							label: 'Regular',
-							textAlign: 'left' as KoliBriTableCellTextAlign,
+							textAlign: 'left',
 							render: (element: HTMLElement, cell: KoliBriTableCell) => {
 								const commonProps = {
 									_label: cell.label,
