@@ -1,7 +1,9 @@
+@import './mixins/rem';
+
 @layer kol-theme-global {
 	:host {
 		--border-color: var(--color-anthrazit);
-		--border-radius: 0.125rem;
+		--border-radius: rem(2);
 		--color-anthrazit: #333;
 		--color-jade: #f3f7fb;
 		--color-weiss: #fff;
@@ -78,9 +80,9 @@
 	}
 
 	.kol-tooltip-wc .tooltip-content {
-		padding: 0.25rem 0.5rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
+		padding: rem(4) rem(8);
+		font-size: rem(14);
+		line-height: rem(20);
 		border-radius: 2px;
 		border: 1px solid #626262;
 	}
