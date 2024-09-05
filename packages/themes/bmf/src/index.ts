@@ -86,7 +86,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-ABBR': abbrCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
-	'KOL-MODAL': modalCss,
 	'KOL-ICON': iconCss,
 	'KOL-SKIP-NAV': skipNavCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
