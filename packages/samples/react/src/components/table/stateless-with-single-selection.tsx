@@ -24,7 +24,6 @@ export const TableStatelessWithSingleSelection: FC = () => {
 
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: string[] }) => {
 		console.log('Selection change via event', selection);
-		setSelectedKeys(selection);
 	};
 	const handleSelectionChangeCallback = (_event: Event, selection: string[] | string) => {
 		console.log('Selection change via callback', selection);
