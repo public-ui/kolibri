@@ -127,7 +127,9 @@ export class InputDateController extends InputIconController implements InputDat
 
 	public validateMax(value?: Iso8601 | Date): void {
 		const ensuredValue =
-			(value === null && this.component._type === 'date') || this.component._type === 'month' || this.component._type === 'datetime-local'
+			((value === undefined || value === null) && this.component._type === 'date') ||
+			this.component._type === 'month' ||
+			this.component._type === 'datetime-local'
 				? InputDateController.DEFAULT_MAX_DATE
 				: value;
 
