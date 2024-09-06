@@ -51,7 +51,7 @@ jobs:
       - name: Create update branch
         run: git checkout -b ${{env.issue}}-${{env.version}}/auto-update-deps
       - name: Install
-        run: pnpm i --workspace-root
+        run: pnpm i --no-frozen-lockfile
       - name: Update dependencies
         run: pnpm ncu:minor
       - name: Reinstall dependencies
