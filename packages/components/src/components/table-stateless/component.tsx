@@ -382,13 +382,13 @@ export class KolTableStateless implements TableStatelessAPI {
 		const selection = this.state._selection;
 		if (!selection) return '';
 		const keyPropertyName = selection.keyPropertyName ?? 'id';
-		const keyCell = row.find((cell) => cell.key === keyPropertyName);
+		const firstCellData = row[0]?.data;
 
-		if (!keyCell) return '';
+		if (!firstCellData) return '';
+		const keyProperty = firstCellData[keyPropertyName] as string;
 		const isMultiple = selection.multiple || selection.multiple === undefined;
-		const keyProperty = (keyCell?.data as KoliBriTableDataType)[keyPropertyName] as string;
 		const selected = selection?.selectedKeys?.includes(keyProperty);
-		const label = selection.label(keyCell.data as KoliBriTableDataType);
+		const label = selection.label(firstCellData);
 		const props = {
 			name: 'selection',
 			checked: selected,

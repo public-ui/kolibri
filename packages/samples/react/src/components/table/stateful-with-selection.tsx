@@ -5,8 +5,8 @@ import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
 
 const DATA = [
-	{ id: '1001', name: 'Foo Bar' },
-	{ id: '1002', name: 'Foo Baz' },
+	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
+	{ id: '1002', name: 'Foo Baz', internalIdentifier: `AAA1002` },
 ];
 type Data = (typeof DATA)[0];
 
@@ -15,8 +15,8 @@ export const TableStatefulWithSelection: FC = () => {
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
-		selectedKeys: selectedValue ? selectedValue.map((element) => element.id) : [],
-		keyPropertyName: 'id',
+		selectedKeys: selectedValue ? selectedValue.map((element) => element.internalIdentifier) : [],
+		keyPropertyName: 'internalIdentifier',
 	};
 
 	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>(null);

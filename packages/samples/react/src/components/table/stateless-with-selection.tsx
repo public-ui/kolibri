@@ -5,18 +5,18 @@ import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableSelection } from '@public-ui/components';
 
 const DATA = [
-	{ id: '1001', name: 'Foo Bar' },
-	{ id: '1002', name: 'Foo Baz' },
+	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
+	{ id: '1002', name: 'Foo Baz', internalIdentifier: `AAA1002` },
 ];
 type Data = (typeof DATA)[0];
 
 export const TableStatelessWithSelection: FC = () => {
-	const [selectedKeys, setSelectedKeys] = useState(['1002']);
+	const [selectedKeys, setSelectedKeys] = useState(['AAA1002']);
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
 		selectedKeys,
-		keyPropertyName: 'id',
+		keyPropertyName: 'internalIdentifier',
 	};
 
 	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>(null);
