@@ -1,10 +1,12 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
 	}
 
 	details > .kol-indented-text {
-		margin: 0.175rem;
+		margin: rem(2.8);
 		padding: 0;
 	}
 }

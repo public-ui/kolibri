@@ -1,3 +1,5 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -38,9 +40,9 @@
 		position: relative;
 		display: block;
 		font:
-			normal normal 400 1.125rem/1.75rem arial,
+			normal normal 400 rem(18) / rem(28) arial,
 			sans-serif;
-		padding: 1.5rem;
+		padding: rem(24);
 		text-align: start;
 		width: 100%;
 	}
@@ -52,13 +54,13 @@
 		content: '';
 		height: 4px;
 		position: absolute;
-		left: 1.5rem;
+		left: rem(24);
 		top: 0;
 		width: 32px;
 	}
 
 	.headline button .kol-icon {
-		margin-right: 0.75rem;
+		margin-right: rem(12);
 	}
 
 	.headline button kol-icon::part(icon)::before {
@@ -83,10 +85,10 @@
 		border-inline-start: 4px solid #0e47cb;
 		color: #515560;
 		font:
-			normal normal 400 1rem/1.5rem arial,
+			normal normal 400 rem(16) / rem(24) arial,
 			sans-serif;
 		margin-inline-start: 0;
-		padding: 1.5rem;
+		padding: rem(24);
 	}
 
 	.kol-span-wc > span {
