@@ -139,19 +139,14 @@ export class KolTabs implements TabsAPI {
 	): void {
 		this.currentFocusIndex = nextTabIndex;
 
-		if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
-			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.state._label.replace(/\s/g, '-')}-tab-${nextTabIndex}`, this.tabPanelsElement);
-			button?.focus();
-		}
+		this.focusTabById(nextTabIndex);
 
 		if (changeMode === 'activateComplete') {
 			this._selected = nextTabIndex;
 
 			const tab = this.state._tabs[nextTabIndex];
-			if (tab._on?.onSelect) {
-				tab._on?.onSelect(event, nextTabIndex);
-			}
-
+			tab._on?.onSelect?.(event, nextTabIndex);
+			
 			this.onSelect(event, nextTabIndex);
 		}
 	}
@@ -408,6 +403,7 @@ export class KolTabs implements TabsAPI {
 		this.validateOn(this._on);
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);
+		this.validateBehavior(this._behavior);
 	}
 
 	private readonly handleTabPanels = () => {
@@ -443,13 +439,17 @@ export class KolTabs implements TabsAPI {
 		}
 	}
 
-	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number): void {
-		this._on?.onSelect?.(event, index);
-
+	private focusTabById(index: number): void {
 		if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
 			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.state._label.replace(/\s/g, '-')}-tab-${index}`, this.tabPanelsElement);
 			button?.focus();
 		}
+	}
+
+	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number): void {
+		this._on?.onSelect?.(event, index);
+
+		this.focusTabById(index);
 	}
 
 	private onCreate = (event: Event) => {
