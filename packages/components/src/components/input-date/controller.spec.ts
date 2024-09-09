@@ -1,6 +1,6 @@
 import { InputDateController } from './controller';
 
-const TEST_DATE = new Date('2020-03-03T03:02:01.099');
+const TEST_DATE = new Date('2020-03-03T03:02:01.099Z');
 
 describe('InputDateController', () => {
 	describe('method tryParseToString', () => {
@@ -18,7 +18,7 @@ describe('InputDateController', () => {
 			});
 
 			it('returns a ISO8601 datetime string for type datetime-local', () => {
-				expect(InputDateController.tryParseToString(TEST_DATE, 'datetime-local')).toBe('2020-03-03T03:02:01');
+				expect(InputDateController.tryParseToString(TEST_DATE, 'datetime-local')).toBe('2020-03-03T04:02:01');
 			});
 
 			it('returns a ISO8601 month string for type month', () => {
@@ -26,19 +26,19 @@ describe('InputDateController', () => {
 			});
 
 			it('returns a ISO8601 time string omitting seconds for type time with no step', () => {
-				expect(InputDateController.tryParseToString(TEST_DATE, 'time')).toBe('03:02');
+				expect(InputDateController.tryParseToString(TEST_DATE, 'time')).toBe('04:02');
 			});
 
 			it('returns a ISO8601 time string omitting seconds for type time with a step of string "60"', () => {
-				expect(InputDateController.tryParseToString(TEST_DATE, 'time', '60')).toBe('03:02');
+				expect(InputDateController.tryParseToString(TEST_DATE, 'time', '60')).toBe('04:02');
 			});
 
 			it('returns a ISO8601 time string omitting seconds for type time with a step of number 60', () => {
-				expect(InputDateController.tryParseToString(TEST_DATE, 'time', 60)).toBe('03:02');
+				expect(InputDateController.tryParseToString(TEST_DATE, 'time', 60)).toBe('04:02');
 			});
 
 			it('returns a ISO8601 time string including seconds for type time with a step != "60"', () => {
-				expect(InputDateController.tryParseToString(TEST_DATE, 'time', 10)).toBe('03:02:01');
+				expect(InputDateController.tryParseToString(TEST_DATE, 'time', 10)).toBe('04:02:01');
 			});
 
 			it('throws an Error for type week', () => {
