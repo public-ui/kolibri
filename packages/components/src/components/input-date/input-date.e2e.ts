@@ -45,8 +45,8 @@ test.describe('kol-input-date', () => {
 		});
 
 		test('should set the correct value for type datetime-local', async ({ page }) => {
-			await page.setContent(`<kol-input-date _label="Date input" _type="datetime-local" _value="2020-03-03T04:02:01Z"></kol-input-date>`);
-			await expect(page.locator('input')).toHaveValue('2020-03-03T04:02:01Z');
+			await page.setContent(`<kol-input-date _label="Date input" _type="datetime-local" _value="2020-03-03T04:02:01"></kol-input-date>`);
+			await expect(page.locator('input')).toHaveValue('2020-03-03T04:02:01');
 		});
 
 		test('should set the correct value for type month', async ({ page }) => {
