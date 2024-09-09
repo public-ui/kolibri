@@ -146,7 +146,7 @@ export class KolTabs implements TabsAPI {
 
 			const tab = this.state._tabs[nextTabIndex];
 			tab._on?.onSelect?.(event, nextTabIndex);
-			
+
 			this.onSelect(event, nextTabIndex);
 		}
 	}
