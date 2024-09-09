@@ -15,6 +15,12 @@ export class InputPasswordController extends InputIconController implements Inpu
 		this.component = component;
 	}
 
+	protected afterSyncCharCounter = () => {
+		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
+			this.component.state._currentLength = this.component._value.length;
+		}
+	};
+
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		watchValidator(
 			this.component,
@@ -26,7 +32,11 @@ export class InputPasswordController extends InputIconController implements Inpu
 	}
 
 	public validateHasCounter(value?: boolean): void {
-		validateHasCounter(this.component, value);
+		validateHasCounter(this.component, value, {
+			hooks: {
+				afterPatch: this.afterSyncCharCounter,
+			},
+		});
 	}
 
 	public validateVariant(value?: PasswordVariantPropType): void {
@@ -35,6 +45,9 @@ export class InputPasswordController extends InputIconController implements Inpu
 
 	public validateMaxLength(value?: number): void {
 		watchNumber(this.component, '_maxLength', value, {
+			hooks: {
+				afterPatch: this.afterSyncCharCounter,
+			},
 			min: 0,
 		});
 	}
@@ -56,7 +69,12 @@ export class InputPasswordController extends InputIconController implements Inpu
 	}
 
 	public validateValue(value?: string): void {
-		watchString(this.component, '_value', value);
+		watchString(this.component, '_value', value, {
+			hooks: {
+				afterPatch: this.afterSyncCharCounter,
+			},
+		});
+
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
