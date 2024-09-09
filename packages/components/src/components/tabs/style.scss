@@ -7,6 +7,22 @@
 		font-size: rem(16);
 	}
 
+	.tabs-button-group{
+		cursor: pointer;
+		pointer-events: none;
+		width: fit-content;
+
+		&:focus {
+			outline-style: none !important;
+		}
+
+		button {
+			&:enabled{
+			pointer-events: auto;
+			}
+		}
+	}
+
 	.kol-button-group-wc {
 		display: inline-flex;
 		flex-wrap: wrap;

@@ -27,7 +27,7 @@ import { translate } from '../../i18n';
 
 import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
-import { KolButtonGroupWcTag, KolButtonWcTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 @Component({
@@ -107,7 +107,12 @@ export class KolTabs implements TabsAPI {
 
 	private renderButtonGroup() {
 		return (
-			<KolButtonGroupWcTag class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
+			<div
+				aria-label={this.state._label}
+				class="tabs-button-group kol-button-group-wc"
+				role="tablist"
+				tabindex="-1"
+				onKeyDown={this.onKeyDown}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<KolButtonWcTag
 						_disabled={button._disabled}
@@ -135,7 +140,7 @@ export class KolTabs implements TabsAPI {
 						}}
 					></KolButtonWcTag>
 				)}
-			</KolButtonGroupWcTag>
+			</div>
 		);
 	}
 
