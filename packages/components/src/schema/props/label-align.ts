@@ -16,7 +16,7 @@ export type PropLabelAlign = {
 export const validateLabelAlign = (component: Generic.Element.Component, value?: LabelAlignPropType): void => {
 	watchValidator(
 		component,
-		`_label_align`,
+		`_labelAlign`,
 		(value) => typeof value === 'string' && labelAlignPropTypeOptions.includes(value),
 		new Set([`KoliBriLabelAlign {${labelAlignPropTypeOptions.join(', ')}`]),
 		value,
