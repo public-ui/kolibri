@@ -96,12 +96,12 @@ export class KolTabs implements TabsAPI {
 		return this.state._selected;
 	}
 
-	private getKeyboardTabChangeMode(): 'selectFocusOnly' | 'activateComplete' {
+	private getKeyboardTabChangeMode(): 'selectFocusOnly' | 'activateCompletely' {
 		if (this._behavior === 'select-manual') {
 			return 'selectFocusOnly';
 		}
 
-		return 'activateComplete';
+		return 'activateCompletely';
 	}
 
 	private goToNextTab(event: KeyboardEvent) {
@@ -127,13 +127,13 @@ export class KolTabs implements TabsAPI {
 	private selectNextTabEvent(
 		event: KeyboardEvent | MouseEvent,
 		nextTabIndex: number,
-		changeMode: 'selectFocusOnly' | 'activateComplete' = 'activateComplete',
+		changeMode: 'selectFocusOnly' | 'activateCompletely' = 'activateCompletely',
 	): void {
 		this.currentFocusIndex = nextTabIndex;
 
 		this.focusTabById(nextTabIndex);
 
-		if (changeMode === 'activateComplete') {
+		if (changeMode === 'activateCompletely') {
 			this._selected = nextTabIndex;
 
 			const tab = this.state._tabs[nextTabIndex];
