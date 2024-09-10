@@ -2,7 +2,6 @@
 
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
-
 		:host,
 		.kol-table-stateless-wc * {
 			hyphens: var(--hyphens);
