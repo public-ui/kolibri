@@ -156,7 +156,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					}
 				} else if (event.key === 'ArrowUp') {
 					event.preventDefault();
-					index = (index - 1) % this.checkboxRefs.length;
+					index = (index + this.checkboxRefs.length - 1) % this.checkboxRefs.length;
 					try {
 						await this.checkboxRefs[index].focus();
 					} catch (e) {
@@ -596,6 +596,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	public render(): JSX.Element {
 		const dataField = this.createDataField(this.state._data, this.state._headerCells);
+		this.checkboxRefs = [];
 
 		return (
 			<Host class="kol-table-stateless-wc">
