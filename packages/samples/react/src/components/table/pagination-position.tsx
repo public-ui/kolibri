@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolTable } from '@public-ui/react';
+import { KolHeading, KolTable } from '@public-ui/react';
 
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
@@ -26,16 +26,16 @@ export const PaginationPosition: FC = () => (
 			<p>This sample shows KolTable with different pagination positions.</p>
 		</SampleDescription>
 
-		<section>
-			<h2>Table with pagination at the bottom.</h2>
+		<section className="grid gap-4">
+			<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
 			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="bottom"></KolTable>
 		</section>
-		<section>
-			<h2>Table with pagination at the top.</h2>
+		<section className="grid gap-4">
+			<KolHeading _level={2} _label="Table with pagination at the top."></KolHeading>
 			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="top"></KolTable>
 		</section>
-		<section>
-			<h2>Table with pagination at both top and bottom.</h2>
+		<section className="grid gap-4">
+			<KolHeading _level={2} _label="Table with pagination at both top and bottom."></KolHeading>
 			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="both"></KolTable>
 		</section>
 	</div>

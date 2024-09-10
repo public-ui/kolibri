@@ -14,6 +14,7 @@ import {
 	KolSingleSelect,
 	KolCombobox,
 	KolTextarea,
+	KolHeading,
 } from '@public-ui/react';
 import type { FC } from 'react';
 import React from 'react';
@@ -48,12 +49,12 @@ export const StaticForm: FC = () => {
 			</SampleDescription>
 
 			{searchParams.size > 0 && (
-				<>
-					<h2>Submitted data</h2>
-					<pre>
+				<div className="grid gap-4">
+					<KolHeading _level={2} _label="Submitted data" />
+					<pre style={{ fontSize: '16px' }}>
 						<code>{JSON.stringify(Object.fromEntries(searchParams.entries()), null, 2)}</code>
 					</pre>
-				</>
+				</div>
 			)}
 
 			<form className="grid gap-4" method="get" noValidate>
