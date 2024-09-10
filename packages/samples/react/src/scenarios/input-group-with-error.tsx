@@ -20,9 +20,12 @@ export const InputGroupWithError: FC = () => {
 			<fieldset>
 				<legend>Phone number</legend>
 				{phoneError && <KolAlert _alert _type="error" _label={phoneErrorMessage} />}
-				<KolInputText _label="Country code" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
-				<KolInputText _label="Area code" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
-				<KolInputText _label="Local number" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
+
+				<div className="grid grid-cols-3 gap-4 max-w-2xl">
+					<KolInputText _label="Country code" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
+					<KolInputText _label="Area code" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
+					<KolInputText _label="Local number" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
+				</div>
 			</fieldset>
 
 			<fieldset className="mt">
