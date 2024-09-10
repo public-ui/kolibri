@@ -51,7 +51,7 @@ export const StaticForm: FC = () => {
 			{searchParams.size > 0 && (
 				<div className="grid gap-4">
 					<KolHeading _level={2} _label="Submitted data" />
-					<pre style={{ fontSize: '16px' }}>
+					<pre>
 						<code>{JSON.stringify(Object.fromEntries(searchParams.entries()), null, 2)}</code>
 					</pre>
 				</div>
