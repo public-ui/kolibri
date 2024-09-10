@@ -13,21 +13,6 @@ hr {
 	margin: 0;
 }
 
-.w-4rem {
-	// width: 4rem;
-	width: 64px;
-}
-
-.w-8rem {
-	// width: 8rem;
-	width: 128px;
-}
-
-.w-12rem {
-	// width: 12rem;
-	width: 192px;
-}
-
 .grid-cols-2 {
 	grid-template-columns: auto auto;
 }
@@ -37,37 +22,6 @@ p, .text-sm, .text-center {
 	line-height: 18px;
 }
 
-.m-t-2 {
-	margin-top: 8px;
-}
-
-.mt {
-	margin-top: 16px;
-}
-
-.mb-3 {
-	margin-bottom: 12px;
-}
-
-.mb-sm {
-	margin-bottom: 14px;
-}
-
-.p-2 {
-	padding: 8px;
-}
-
-.p-4 {
-	padding: 16px;
-}
-
-.gap-4 {
-	gap: 16px
-}
-
-.gap-2 {
-	gap: 8px
-}
 
 @media (min-width: 1024px) {
 	.app-container {
