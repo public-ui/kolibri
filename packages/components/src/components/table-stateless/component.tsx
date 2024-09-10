@@ -56,7 +56,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private cellsToRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
-	private checkboxRefs: HTMLKolInputCheckboxElement[] = [];
+	private checkboxRefs: HTMLInputElement[] = [];
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -140,17 +140,18 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	@Listen('keydown')
-	public async handleKeyDown(event: KeyboardEvent) {
+	public handleKeyDown(event: KeyboardEvent) {
 		if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-			const focusedElement = this.tableDivElement?.querySelector(':focus') as HTMLKolInputCheckboxElement;
+			const focusedElement = this.tableDivElement?.querySelector(':focus') as HTMLInputElement;
 			let index = this.checkboxRefs.indexOf(focusedElement);
 
-			if (focusedElement && this.checkboxRefs.includes(focusedElement))
+			if (focusedElement && this.checkboxRefs.includes(focusedElement)) {
+				event.preventDefault();
+
 				if (event.key === 'ArrowDown') {
-					event.preventDefault();
 					index = (index + 1) % this.checkboxRefs.length;
 					try {
-						await this.checkboxRefs[index].focus();
+						this.checkboxRefs[index].focus();
 					} catch (e) {
 						Log.debug(e);
 					}
@@ -158,11 +159,12 @@ export class KolTableStateless implements TableStatelessAPI {
 					event.preventDefault();
 					index = (index + this.checkboxRefs.length - 1) % this.checkboxRefs.length;
 					try {
-						await this.checkboxRefs[index].focus();
+						this.checkboxRefs[index].focus();
 					} catch (e) {
 						Log.debug(e);
 					}
 				}
+			}
 		}
 	}
 
