@@ -16,17 +16,17 @@
 			width: 100%;
 			border-collapse: collapse;
 			border-spacing: 0;
-			border: 1px solid var(--border-color);
+			border: 1px solid var(--color-petrol);
 			border-width: 0 1px 1px 1px;
 		}
 
 		tr {
-			border-top: 1px solid var(--border-color);
+			border-top: 1px solid var(--color-petrol);
 		}
 
 		th,
 		td {
-			border-right: 1px solid var(--border-color);
+			border-right: 1px solid var(--color-petrol);
 
 			&:last-child {
 				border-right-width: 0;
@@ -48,6 +48,63 @@
 
 		.table-sort-button .button {
 			font-weight: bold;
+		}
+
+		.input {
+			// CHECKBOX
+			input[type='checkbox'] {
+				&:checked {
+					background-color: var(--color-petrol);
+					border-color: var(--color-petrol);
+				}
+
+				&:focus {
+					border-color: var(--color-petrol);
+					outline-color: var(--color-petrol);
+					outline-style: solid;
+					outline-offset: 2px;
+					outline-width: 3px;
+				}
+			}
+
+			.icon {
+				color: var(--color-weiss);
+			}
+
+			&.indeterminate {
+				input {
+					background-color: var(--color-weiss);
+				}
+
+				.icon {
+					color: var(--color-petrol);
+				}
+			}
+
+			// RADIO
+			input[type='radio'] {
+				display: flex;
+
+				&:hover {
+					border-color: var(--color-achat);
+				}
+
+				&:checked {
+					border-color: var(--color-anthrazit);
+
+					&:before {
+						background-color: var(--color-petrol);
+					}
+				}
+
+				&:focus {
+					border-color: var(--color-petrol);
+					border-color: var(--color-anthrazit);
+					outline-style: solid;
+					outline-offset: 2px;
+					outline-width: 3px;
+				}
+			}
 		}
 	}
 }

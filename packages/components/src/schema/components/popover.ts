@@ -1,12 +1,12 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropAlign, PropShow } from '../props';
+import type { PropAlign, PropShow, PropPopoverCallbacks } from '../props';
 
 type RequiredProps = NonNullable<unknown>;
-type OptionalProps = PropAlign & PropShow;
+type OptionalProps = PropAlign & PropShow & PropPopoverCallbacks;
 
 type RequiredStates = PropAlign & PropShow & { visible: boolean };
-type OptionalStates = NonNullable<unknown>;
+type OptionalStates = PropPopoverCallbacks;
 
 export type PopoverProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type PopoverStates = Generic.Element.Members<RequiredStates, OptionalStates>;

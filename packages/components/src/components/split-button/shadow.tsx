@@ -15,10 +15,10 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, State } from '@stencil/core';
+import { Component, h, Host, Method, Prop, State } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KolButtonWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
@@ -31,9 +31,6 @@ import { KolButtonWcTag } from '../../core/component-names';
 	shadow: true,
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
-	private dropdown: HTMLDivElement | undefined;
-	private dropdownContent: HTMLDivElement | undefined;
-
 	private readonly clickButtonHandler = {
 		onClick: (e: MouseEvent) => {
 			if (typeof this._on?.onClick === 'function') {
@@ -46,78 +43,64 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	};
 	private readonly clickToggleHandler = { onClick: () => this.toggleDropdown() };
 
-	private readonly openDropdown = () => {
-		if (this.dropdown && this.dropdownContent) {
-			this.dropdown.style.height = `${this.dropdownContent.clientHeight}px`;
-			this.state = { ...this.state, _show: true };
-		}
-	};
-	private readonly closeDropdown = () => {
-		if (this.dropdown && this.dropdownContent) {
-			this.dropdown.style.height = ``;
-			this.state = { ...this.state, _show: false };
-		}
-	};
-	private readonly toggleDropdown = (value?: boolean) => {
-		const openIt = typeof value === 'boolean' ? value : !this.state._show;
-		if (openIt) this.openDropdown();
-		else this.closeDropdown();
+	private readonly toggleDropdown = () => {
+		this.state = { ...this.state, _show: !this.state._show };
 	};
 
-	private readonly catchDropdownElements = (e?: HTMLDivElement | null) => {
-		if (e) {
-			this.dropdown = e;
-			setTimeout(() => {
-				this.dropdownContent = e.firstChild as HTMLDivElement;
-			});
-		}
+	private readonly handleOnClose = () => {
+		this.state = { ...this.state, _show: false };
 	};
 
 	public render(): JSX.Element {
 		const i18nDropdownLabel = 'kol-split-button-dropdown-label';
 		return (
 			<Host class="kol-split-button">
-				<KolButtonWcTag
-					class={{
-						'main-button': true,
-						button: true,
-						[this._variant as string]: this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
-					}}
-					_ariaControls={this._ariaControls}
-					_ariaExpanded={this._ariaExpanded}
-					_ariaSelected={this._ariaSelected}
-					_customClass={this._customClass}
-					_disabled={this._disabled}
-					_icons={this._icons}
-					_hideLabel={this._hideLabel}
-					_label={this._label}
-					_name={this._name}
-					_on={this.clickButtonHandler}
-					_role={this._role}
-					_syncValueBySelector={this._syncValueBySelector}
-					_tabIndex={this._tabIndex}
-					_tooltipAlign={this._tooltipAlign}
-					_type={this._type}
-					_value={this._value}
-					_variant={this._variant}
-				></KolButtonWcTag>
-				<div class="horizontal-line"></div>
-				<KolButtonWcTag
-					class="secondary-button"
-					_disabled={this._disabled}
-					_hideLabel
-					_icons="codicon codicon-triangle-down"
-					_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
-					_on={this.clickToggleHandler}
-				></KolButtonWcTag>
-				<div class="popover" ref={this.catchDropdownElements}>
-					<div class="popover-content">
-						<slot />
-					</div>
+				<div class="split-button-root">
+					<KolButtonWcTag
+						class={{
+							'main-button': true,
+							button: true,
+							[this._variant as string]: this._variant !== 'custom',
+							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
+						}}
+						_ariaControls={this._ariaControls}
+						_ariaExpanded={this._ariaExpanded}
+						_ariaSelected={this._ariaSelected}
+						_customClass={this._customClass}
+						_disabled={this._disabled}
+						_icons={this._icons}
+						_hideLabel={this._hideLabel}
+						_label={this._label}
+						_name={this._name}
+						_on={this.clickButtonHandler}
+						_role={this._role}
+						_syncValueBySelector={this._syncValueBySelector}
+						_tabIndex={this._tabIndex}
+						_tooltipAlign={this._tooltipAlign}
+						_type={this._type}
+						_value={this._value}
+						_variant={this._variant}
+					></KolButtonWcTag>
+					<div class="horizontal-line"></div>
+					<KolButtonWcTag
+						class="secondary-button"
+						_disabled={this._disabled}
+						_hideLabel
+						_icons="codicon codicon-triangle-down"
+						_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
+						_on={this.clickToggleHandler}
+					></KolButtonWcTag>
 				</div>
+				<KolPopoverWcTag _show={this.state._show} _on={{ onClose: this.handleOnClose }} _align="bottom">
+					<slot />
+				</KolPopoverWcTag>
 			</Host>
 		);
+	}
+
+	@Method()
+	public closePopup() {
+		this.handleOnClose();
 	}
 
 	/**

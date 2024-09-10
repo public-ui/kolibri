@@ -69,7 +69,6 @@
 		}
 
 		th div {
-			width: 100%;
 			display: flex;
 			gap: rem(8);
 			grid-template-columns: 1fr auto;
@@ -88,6 +87,68 @@
 		th[aria-sort='ascending'],
 		th[aria-sort='descending'] {
 			font-weight: 700;
+		}
+
+		.input {
+			input {
+				&:hover {
+					border-color: var(--color-primary);
+					box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
+				}
+
+				&:focus {
+					border-color: var(--color-primary);
+					outline-color: var(--color-primary-variant);
+					outline-style: solid;
+					outline-offset: 2px;
+					outline-width: 3px;
+				}
+
+				&:focus:hover {
+					box-shadow: none;
+				}
+			}
+
+			// CHECKBOX
+			input[type='checkbox'] {
+				border-color: var(--color-subtle);
+				border-radius: 5px;
+
+				&:checked {
+					background-color: var(--color-primary);
+					border-color: var(--color-primary);
+				}
+			}
+
+			.icon {
+				color: var(--color-light);
+			}
+
+			&.indeterminate {
+				input {
+					background-color: var(--color-primary);
+					border-color: var(--color-primary);
+				}
+			}
+
+			kol-icon:hover ~ input[type='checkbox'],
+			input[type='checkbox']:hover {
+				border-color: var(--color-primary);
+			}
+
+			// RADIO
+			input[type='radio'] {
+				display: flex;
+				border-color: var(--color-subtle);
+
+				&:checked {
+					border-color: var(--color-primary);
+
+					&:before {
+						background-color: var(--color-primary);
+					}
+				}
+			}
 		}
 	}
 }

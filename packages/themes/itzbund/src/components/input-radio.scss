@@ -40,6 +40,7 @@
 	.kol-alert-wc {
 		display: block;
 		width: 100%;
+		order: 3;
 	}
 
 	.kol-required span::after {
@@ -54,8 +55,26 @@
 		flex-wrap: wrap;
 	}
 
+	fieldset .hint {
+		order: 4;
+		font-size: rem(14.4);
+		font-style: italic;
+	}
+
+	fieldset .kol-input {
+		display: grid;
+		order: 2;
+	}
+
+	fieldset .kol-input .hint {
+		order: 3;
+		font-size: rem(14.4);
+		font-style: italic;
+	}
+
 	fieldset.horizontal {
 		gap: rem(16);
+		align-items: flex-start;
 	}
 
 	fieldset legend {

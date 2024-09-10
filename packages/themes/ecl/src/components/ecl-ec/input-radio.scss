@@ -11,6 +11,7 @@
 		border: 0;
 		gap: rem(8);
 		flex-wrap: wrap;
+		align-items: flex-start;
 	}
 
 	.input-slot {
@@ -22,7 +23,9 @@
 	}
 
 	fieldset .hint {
-		order: 2;
+		order: 4;
+		font-size: rem(14.4);
+		font-style: italic;
 	}
 
 	fieldset .kol-alert-wc {
@@ -30,7 +33,14 @@
 	}
 
 	fieldset .kol-input {
-		order: 4;
+		display: grid;
+		order: 2;
+	}
+
+	fieldset .kol-input .hint {
+		order: 3;
+		font-size: rem(14.4);
+		font-style: italic;
 	}
 
 	.radio-input-wrapper {
@@ -102,7 +112,7 @@
 	}
 
 	.hint {
-		font-size: rem(14);
+		font-size: rem(14.4);
 		order: 4;
 	}
 }

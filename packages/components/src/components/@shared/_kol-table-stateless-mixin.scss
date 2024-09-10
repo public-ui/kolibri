@@ -73,7 +73,81 @@
 		}
 
 		.selection-cell {
+			width: var(--a11y-min-size);
+			height: var(--a11y-min-size);
 			white-space: nowrap;
+		}
+
+		.input {
+			label {
+				align-items: center;
+				cursor: pointer;
+				display: flex;
+				height: var(--a11y-min-size);
+				justify-content: center;
+				position: relative;
+				width: var(--a11y-min-size);
+			}
+
+			.icon {
+				display: block;
+				inset: auto;
+				position: absolute;
+				z-index: 1;
+			}
+
+			input {
+				appearance: none;
+				border-style: solid;
+				cursor: pointer;
+				margin: 0;
+			}
+
+			input:before {
+				content: '';
+			}
+
+			input[type='checkbox'] {
+				position: relative;
+				display: flex;
+				height: calc(var(--a11y-min-size) / 2);
+				width: calc(var(--a11y-min-size) / 2);
+				align-items: center;
+				justify-content: center;
+				background-color: rgb(255, 255, 255);
+				border-width: 2px;
+				line-height: 24px;
+				transition: all 0.5s ease 0s;
+			}
+
+			input[type='radio'] {
+				display: flex;
+				border-width: 2px;
+				border-radius: 100%;
+				height: 1.5em;
+				min-height: 1.5em;
+				min-width: 1.5em;
+				padding: 0;
+				width: 1.5em;
+			}
+
+			input[type='radio']:before {
+				border-radius: 100%;
+				margin: auto;
+				height: calc(1.5em / 2);
+				width: calc(1.5em / 2);
+			}
+
+			input[type='radio']:checked:before {
+				background-color: #000;
+			}
+
+			@media (forced-colors: active) {
+				input[type='radio']:checked:before {
+					/* Give it a visible background in forced colors mode */
+					background: selectedItem !important;
+				}
+			}
 		}
 	}
 }
