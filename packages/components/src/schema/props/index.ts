@@ -33,6 +33,7 @@ export * from './id';
 export * from './image-source';
 export * from './indeterminate';
 export * from './label';
+export * from './label-align';
 export * from './link-on-callbacks';
 export * from './link-target';
 export * from './loading';

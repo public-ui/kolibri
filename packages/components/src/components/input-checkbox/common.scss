@@ -17,13 +17,20 @@
 
 	.kol-input.default,
 	.kol-input.switch {
+		grid-template-areas: 'input label';
 		grid-template-columns: auto 1fr;
 	}
 
+	.kol-input.default[data-label-align='left']:not(.hide-label),
+	.kol-input.switch[data-label-align='left']:not(.hide-label) {
+		grid-template-areas: 'label input';
+		grid-template-columns: 1fr auto;
+	}
+
 	.kol-input .input {
+		grid-area: input;
 		align-items: center;
 		display: grid;
-		order: 1;
 	}
 
 	.kol-input .input div {
@@ -35,7 +42,7 @@
 	}
 
 	.kol-input label {
-		order: 2;
+		grid-area: label;
 	}
 
 	.kol-input .hint,
