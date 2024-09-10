@@ -29,6 +29,7 @@ export default createConfig({
 	],
 	use: {
 		baseURL: TEST_URL,
+		timezoneId: 'Europe/Berlin',
 	},
 	webServer: {
 		url: TEST_URL,
