@@ -27,12 +27,30 @@ hr {
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
-		grid-template-columns: 360px auto;
+		grid-template-columns: 360px calc(100% - 360px);
+		min-height: 100vh;
 		height: 100%;
 	}
 
 	.app-sidebar {
 		border-right: 1px solid gray;
+		position: relative;
+
+		& .scrollable-container-wrapper {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 330px;
+			margin: 1rem;
+			flex-direction: column;
+			display: flex;
+
+			& .scrollable-container {
+				flex: 1 auto;
+				overflow: auto;
+			}
+		} 
 	}
 }
 

@@ -15,17 +15,17 @@ type PropsBasic = {
 
 const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 	<>
-		<KolAlert _label="Das ist die Überschrift des Alert." _level={level} _type={type} _variant={variant}>
-			Das ist der Text des Alert.
+		<KolAlert _label="This is the headline of the alert." _level={level} _type={type} _variant={variant}>
+			This is the text of the alert.
 		</KolAlert>
 		<KolAlert _type={type} _variant={variant}>
-			In diesem Alert wird nur der Text ohne Überschrift verwendet.
+			In this alert, only the text without the heading is used.
 		</KolAlert>
-		<KolAlert _label="Das ist die Überschrift des Alert." _level={level} _type={type} _variant={variant} _hasCloser>
-			Das ist der Text des Alert. Mit Schließen-Button.
+		<KolAlert _label="This is the headline of the alert." _level={level} _type={type} _variant={variant} _hasCloser>
+			This is the text of the alert. With close button.
 		</KolAlert>
 		<KolAlert _type={type} _variant={variant} _hasCloser>
-			In diesem Alert wird nur der Text ohne Überschrift verwendet. Mit Schließen-Button.
+			In this alert, only the text without the heading is used. With close button.
 		</KolAlert>
 	</>
 );

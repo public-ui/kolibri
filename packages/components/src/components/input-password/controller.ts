@@ -1,10 +1,12 @@
 import type { InputPasswordProps, InputPasswordWatches, InputTypeOnOff } from '../../schema';
 import { validateHasCounter, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
-import { PasswordVariantPropType, validatePasswordVariant } from '../../schema/props/variant/password-variant';
+import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
+import { validatePasswordVariant } from '../../schema/props/variant/password-variant';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+
 export class InputPasswordController extends InputIconController implements InputPasswordWatches {
 	protected readonly component: Generic.Element.Component & InputPasswordProps;
 

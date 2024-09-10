@@ -13,7 +13,7 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, Components.K
 				_min={0}
 				_max={50}
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
-				_label="Schieberegler"
+				_label="Slider"
 				_icons={{
 					left: {
 						icon: 'codicon codicon-arrow-left',
@@ -32,10 +32,10 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, Components.K
 				_max={50}
 				_step={10}
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
-				_label="Schieberegler mit Fehler"
+				_label="Slider with error"
 				_touched
 			/>
-			<KolInputRange {...props} _disabled _min={0} _max={50} _label="Schieberegler (disabled)" />
+			<KolInputRange {...props} _disabled _min={0} _max={50} _label="Slider (disabled)" />
 		</div>
 	);
 });

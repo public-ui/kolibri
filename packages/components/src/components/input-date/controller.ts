@@ -44,38 +44,40 @@ export class InputDateController extends InputIconController implements InputDat
 		validateSuggestions(this.component, value);
 	}
 
-	private tryParseToString(value?: Iso8601 | Date | null, defaultValue?: Date): string | null | undefined {
-		const v: Iso8601 | Date | undefined = value ?? defaultValue;
-		if (typeof v === 'string') {
-			return v;
+	public static tryParseToString(value: Iso8601 | Date | null | undefined, type?: InputDateType, step?: string | number): string | null | undefined {
+		if (typeof value === 'string' || value === null) {
+			return value;
 		}
-		if (typeof v === 'object' && v instanceof Date) {
-			switch (this.component._type) {
+
+		if (typeof value === 'object' && value instanceof Date) {
+			const formattedYear = value.getFullYear();
+			const formattedMonth = String(value.getMonth() + 1).padStart(2, '0');
+			const formattedDay = String(value.getDate()).padStart(2, '0');
+			const formattedHours = String(value.getHours()).padStart(2, '0');
+			const formattedMinutes = String(value.getMinutes()).padStart(2, '0');
+			const formattedSeconds = String(value.getSeconds()).padStart(2, '0');
+
+			const formattedDate = [formattedYear, formattedMonth, formattedDay].join('-');
+			const formattedTimeWithSeconds = [formattedHours, formattedMinutes, formattedSeconds].join(':');
+
+			switch (type) {
 				case 'date':
-					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}`;
+					return formattedDate;
 				case 'datetime-local':
-					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}T${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+					return `${formattedDate}T${formattedTimeWithSeconds}`;
 				case 'month':
-					return `${v.getFullYear()}-${v.getMonth() + 1}`;
+					return `${formattedYear}-${formattedMonth}`;
 				case 'time':
 					// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#using_the_step_attribute
-					if (
-						this.component._step === undefined ||
-						(typeof this.component._step === 'string' && this.component._step === '60') ||
-						(typeof this.component._step === 'number' && this.component._step === 60)
-					) {
-						return `${v.getHours()}:${v.getMinutes()}`;
+					if (step === undefined || String(step) === '60') {
+						return `${formattedHours}:${formattedMinutes}`;
 					} else {
-						return `${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+						return formattedTimeWithSeconds;
 					}
 				case 'week':
 					throw new Error('Auto convert to week is not supported!');
 			}
 		}
-		if (value === null) {
-			return null;
-		}
-		return undefined;
 	}
 
 	private validateDateString(value: string): boolean {
@@ -101,7 +103,7 @@ export class InputDateController extends InputIconController implements InputDat
 			propName,
 			(value): boolean => value === undefined || value == null || value === '' || this.validateDateString(value),
 			new Set(['Date', 'string{ISO-8601}']),
-			this.tryParseToString(value),
+			InputDateController.tryParseToString(value, this.component._type, this.component._step),
 			{
 				hooks: {
 					afterPatch: (value) => {
@@ -124,17 +126,19 @@ export class InputDateController extends InputIconController implements InputDat
 	}
 
 	public validateMax(value?: Iso8601 | Date): void {
+		const ensuredValue =
+			((value === undefined || value === null) && this.component._type === 'date') ||
+			this.component._type === 'month' ||
+			this.component._type === 'datetime-local'
+				? InputDateController.DEFAULT_MAX_DATE
+				: value;
+
 		watchValidator(
 			this.component,
 			'_max',
 			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
 			new Set(['Iso8601', 'Date']),
-			this.tryParseToString(
-				value,
-				this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local'
-					? InputDateController.DEFAULT_MAX_DATE
-					: undefined,
-			),
+			InputDateController.tryParseToString(ensuredValue, this.component._type, this.component._step),
 		);
 	}
 
@@ -144,7 +148,7 @@ export class InputDateController extends InputIconController implements InputDat
 			'_min',
 			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
 			new Set(['Iso8601', 'Date']),
-			this.tryParseToString(value),
+			InputDateController.tryParseToString(value, this.component._type, this.component._step),
 		);
 	}
 

@@ -33,7 +33,7 @@ export const DrawerBasic: FC = () => {
 
 			<DrawerRadioAlign value={align} onChange={(_, value) => setAlign(value as AlignPropType)} />
 			<div className="flex flex-wrap gap-4">
-				<KolDrawer ref={drawerElement} _label="Ich bin ein Drawer" _align={align} _on={{ onClose: () => console.log('Drawer onClose triggered!') }}>
+				<KolDrawer ref={drawerElement} _label="I am a drawer" _align={align} _on={{ onClose: () => console.log('Drawer onClose triggered!') }}>
 					<p>
 						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 						voluptua.
@@ -45,7 +45,7 @@ export const DrawerBasic: FC = () => {
 					ref={drawerModalElement}
 					_modal
 					_align={align}
-					_label="Ich bin ein Drawer Modal"
+					_label="I am a Drawer Modal"
 					_on={{ onClose: () => console.log('Drawer Modal onClose triggered!') }}
 				>
 					<p>

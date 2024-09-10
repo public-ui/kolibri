@@ -27,7 +27,7 @@ import {
 	validateTableSelection,
 	watchString,
 } from '../../schema';
-import { KolButtonWcTag, KolInputCheckboxTag } from '../../core/component-names';
+import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
@@ -409,35 +409,59 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	private renderSelectionCell(row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element {
-		if (!this.state._selection) return '';
-		const keyPropertyName = this.state._selection.keyPropertyName ?? 'id';
-		const keyCell = row.find((cell) => cell.key === keyPropertyName);
+		const selection = this.state._selection;
+		if (!selection) return '';
+		const keyPropertyName = selection.keyPropertyName ?? 'id';
+		const firstCellData = row[0]?.data;
 
-		if (!keyCell) return '';
-		const keyProperty = (keyCell?.data as KoliBriTableDataType)[keyPropertyName] as string;
-		const selected = this.state._selection?.selectedKeys?.includes(keyProperty);
-		const label = this.state._selection.label(keyCell.data as KoliBriTableDataType);
-
+		if (!firstCellData) return '';
+		const keyProperty = firstCellData[keyPropertyName] as string;
+		const isMultiple = selection.multiple || selection.multiple === undefined;
+		const selected = selection?.selectedKeys?.includes(keyProperty);
+		const label = selection.label(firstCellData);
+		const props = {
+			name: 'selection',
+			checked: selected,
+			id: keyProperty,
+			['aria-label']: label,
+		};
 		return (
 			<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
-				<KolInputCheckboxTag
-					ref={(el) => el && this.checkboxRefs.push(el)}
-					_label={label}
-					_hideLabel
-					_checked={selected}
-					_tooltipAlign="right"
-					_on={{
-						onInput: (event: Event, value) => {
-							const updatedSelectedKeys = value
-								? [...(this.state._selection?.selectedKeys ?? []), keyProperty]
-								: this.state._selection?.selectedKeys?.filter((key) => key !== keyProperty);
-							tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
-							if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-								this.state._on[Events.onSelectionChange](event, updatedSelectedKeys ?? []);
-							}
-						},
-					}}
-				/>
+				<div class={`input ${selected ? 'checked' : ''}`}>
+					{isMultiple ? (
+						<label class="checkbox-container">
+							<KolIconTag class="icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
+							<input
+								ref={(el) => el && this.checkboxRefs.push(el)}
+								{...props}
+								type="checkbox"
+								onInput={(event: Event) => {
+									const updatedSelectedKeys = !selected
+										? [...(selection?.selectedKeys ?? []), keyProperty]
+										: selection?.selectedKeys?.filter((key) => key !== keyProperty);
+									tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
+									if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
+										this.state._on[Events.onSelectionChange](event, updatedSelectedKeys ?? []);
+									}
+								}}
+							/>
+						</label>
+					) : (
+						<label class="radio-container">
+							<input
+								{...props}
+								type="radio"
+								onInput={(event: Event) => {
+									tryToDispatchKoliBriEvent('selection-change', this.host, keyProperty);
+									if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
+										this.state._on[Events.onSelectionChange](event, keyProperty);
+									}
+								}}
+							/>
+						</label>
+					)}
+					<KolTooltipWcTag aria-hidden="true" class="input-tooltip" _align="right" _id={`${keyProperty}-label`} _label={label}></KolTooltipWcTag>
+				</div>
 			</td>
 		);
 	}
@@ -493,40 +517,43 @@ export class KolTableStateless implements TableStatelessAPI {
 	};
 
 	private renderHeadingSelectionCell(): JSX.Element {
-		if (!this.state._selection) return '';
-		const selectedKeyLength = this.state._selection.selectedKeys?.length;
+		const selection = this.state._selection;
+		if (!selection || (!selection.multiple && selection.multiple !== undefined)) return <th key={`thead-0`}></th>;
+		const keyPropertyName = selection.keyPropertyName ?? 'id';
+		const selectedKeyLength = selection.selectedKeys?.length;
 		const dataLength = this.state._data.length;
 		const isChecked = selectedKeyLength === dataLength;
-		const intermediate = selectedKeyLength !== 0 && !isChecked;
-		let translationKey = 'kol-table-selection-intermediate' as TranslationKey;
-		if (isChecked && !intermediate) {
+		const indeterminate = selectedKeyLength !== 0 && !isChecked;
+		let translationKey = 'kol-table-selection-indeterminate' as TranslationKey;
+		if (isChecked && !indeterminate) {
 			translationKey = 'kol-table-selection-none';
 		}
 		if (selectedKeyLength === 0) {
 			translationKey = 'kol-table-selection-all';
 		}
+		const label = translate(translationKey);
 		return (
 			<th key={`thead-0-selection`} class="selection-cell selection-control">
-				<KolInputCheckboxTag
-					ref={(el) => el && this.checkboxRefs.push(el)}
-					_label={translate(translationKey)}
-					_hideLabel
-					_checked={isChecked && !intermediate}
-					_indeterminate={intermediate}
-					_tooltipAlign="right"
-					_on={{
-						onInput: (event: Event, value) => {
-							let selections = [] as KoliBriTableDataType[];
-							if (value || !isChecked) {
-								selections = this.state._data;
-							}
-							tryToDispatchKoliBriEvent('selection-change', this.host, selections);
-							if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-								this.state._on[Events.onSelectionChange](event, selections.map((el) => el?.id) as string[]);
-							}
-						},
-					}}
-				/>
+				<div class={`input ${indeterminate ? 'indeterminate' : isChecked ? 'checked' : ''}`}>
+					<label class="checkbox-container">
+						<KolIconTag class="icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
+						<input
+							ref={(el) => el && this.checkboxRefs.push(el)}
+							name="selection"
+							checked={isChecked && !indeterminate}
+							aria-label={label}
+							type="checkbox"
+							onInput={(event: Event) => {
+								const selections = !isChecked ? this.state._data.map((el) => el?.[keyPropertyName] as string) : [];
+								tryToDispatchKoliBriEvent('selection-change', this.host, selections);
+								if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
+									this.state._on[Events.onSelectionChange](event, selections);
+								}
+							}}
+						/>
+					</label>
+					<KolTooltipWcTag aria-hidden="true" class="input-tooltip" _align="right" _id={`${translationKey}-label`} _label={label}></KolTooltipWcTag>
+				</div>
 			</th>
 		);
 	}

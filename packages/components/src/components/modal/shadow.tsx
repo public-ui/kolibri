@@ -1,20 +1,13 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '../../schema';
-import { featureHint, setState, validateLabel, watchString, watchValidator } from '../../schema';
-import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
-
+import { setState, validateLabel, watchString, watchValidator } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { ModalService } from './service';
-
-const modalService = new ModalService();
+import { Method } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
- * @deprecated use the native <dialog> instead
- */
-
-/**
- * @slot - Der Inhalt des Modals.
+ *
+ * @slot - The modal's contents.
  */
 @Component({
 	tag: 'kol-modal',
@@ -24,66 +17,61 @@ const modalService = new ModalService();
 	shadow: true,
 })
 export class KolModal implements ModalAPI {
-	private hostElement?: HTMLElement;
+	private refDialog?: HTMLDialogElement;
 
 	public componentDidRender(): void {
-		if (this.hostElement /* SSR instanceof HTMLElement */) {
-			if (this.state._activeElement /* SSR instanceof HTMLElement */) {
-				modalService.openModal(this.hostElement, this.state._activeElement);
-			} else {
-				modalService.closeModal(this.hostElement);
-			}
+		if (this.state._activeElement) {
+			this.refDialog?.showModal();
 		}
 	}
 
 	public disconnectedCallback(): void {
-		if (this.hostElement /* SSR instanceof HTMLElement */) {
-			modalService.closeModal(this.hostElement);
-		}
+		void this.closeModal();
 	}
 
-	private readonly onKeyDown = (event: KeyboardEvent) => {
-		if (event && event.code === 'Escape') {
-			this._activeElement = null;
-		}
-	};
+	private handleNativeCloseEvent() {
+		this.state._on?.onClose?.();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	async openModal() {
+		this.refDialog?.showModal();
+	}
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async closeModal() {
+		this._activeElement = null;
+
+		/* The optional chaining for the `close` method is not strictly necessary, but a simple/lazy workaround for HTMLDialog not being implemented in jsdom, causing Jest tests to fail. It may be removed in the future. */
+		this.refDialog?.close?.();
+	}
 
 	public render(): JSX.Element {
 		return (
-			<Host
+			<dialog
 				class="kol-modal"
 				ref={(el) => {
-					this.hostElement = el as HTMLElement;
+					this.refDialog = el;
 				}}
+				style={{
+					width: this.state._width,
+				}}
+				aria-label={this.state._label}
+				onClose={this.handleNativeCloseEvent.bind(this)}
 			>
-				{this.state._activeElement /* SSR instanceof HTMLElement */ && (
-					<div class="overlay">
-						<div
-							class="modal"
-							style={{
-								width: this.state._width,
-							}}
-							aria-label={this.state._label}
-							aria-modal="true"
-							role="dialog"
-							onKeyDown={this.onKeyDown}
-							ref={(el) => {
-								if (el /* SSR instanceof HTMLElement */) {
-									el.setAttribute('tabindex', '0');
-									setTimeout(() => el.focus(), 250);
-								}
-							}}
-						>
-							<slot />
-						</div>
-					</div>
-				)}
-			</Host>
+				{/* It's necessary to have a block element container for cross-browser compatibility. The display property for the slot content is unknown and could be inline. */}
+				<div>
+					<slot />
+				</div>
+			</dialog>
 		);
 	}
 
 	/**
-	 * Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.
+	 * Legacy property - while set to an HTMLElement, the modal is open.
+	 * @deprecated Use methode `openModal` and `closeModal` instead.
 	 */
 	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
 
@@ -93,7 +81,7 @@ export class KolModal implements ModalAPI {
 	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Gibt die EventCallback-Function für das Schließen des Modals an.
+	 * Defines the modal callback functions.
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
@@ -114,9 +102,10 @@ export class KolModal implements ModalAPI {
 			defaultValue: null,
 			hooks: {
 				afterPatch: () => {
-					/* Call onClose event in the _activeElement watcher because activeElement can be set internally and from the outside and closes the modal when set to null. */
-					if (this._activeElement === null && this.state._on?.onClose) {
-						this.state._on.onClose();
+					if (this.state._activeElement) {
+						void this.openModal();
+					} else {
+						void this.closeModal();
 					}
 				},
 			},
@@ -133,7 +122,6 @@ export class KolModal implements ModalAPI {
 	@Watch('_on')
 	public validateOn(value?: KoliBriModalEventCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
-			featureHint('[KolTabs] Prüfen, wie man auch einen EventCallback einzeln ändern kann.');
 			const callbacks: KoliBriModalEventCallbacks = {};
 			if (typeof value.onClose === 'function' || value.onClose === true) {
 				callbacks.onClose = value.onClose;

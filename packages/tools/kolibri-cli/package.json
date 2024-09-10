@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "2.1.5",
+	"version": "2.1.7",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -36,30 +36,30 @@
 		"deepmerge": "4.3.1",
 		"gradient-string": "2.0.2",
 		"loglevel": "1.9.1",
-		"prettier": "3.3.2",
-		"semver": "7.6.2"
+		"prettier": "3.3.3",
+		"semver": "7.6.3"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@types/gradient-string": "1.1.6",
 		"@types/node": "ts5.4",
-		"@typescript-eslint/eslint-plugin": "7.14.1",
-		"@typescript-eslint/parser": "7.14.1",
+		"@typescript-eslint/eslint-plugin": "7.18.0",
+		"@typescript-eslint/parser": "7.18.0",
 		"cpy-cli": "5.0.0",
 		"eslint": "8.57.0",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-html": "8.1.1",
-		"eslint-plugin-jsdoc": "48.5.0",
+		"eslint-plugin-jsdoc": "48.10.2",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.9.0",
 		"eslint-plugin-no-loops": "0.4.0",
-		"eslint-plugin-react": "7.34.3",
-		"knip": "5.23.0",
-		"mocha": "10.5.1",
+		"eslint-plugin-react": "7.35.0",
+		"knip": "5.27.0",
+		"mocha": "10.7.0",
 		"nodemon": "3.1.4",
-		"rimraf": "5.0.7",
+		"rimraf": "5.0.10",
 		"ts-node": "10.9.2",
-		"typescript": "5.5.2"
+		"typescript": "5.5.4"
 	},
 	"files": [
 		"dist"

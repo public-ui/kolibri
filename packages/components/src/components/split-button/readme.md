@@ -47,6 +47,14 @@ dem sich weitere Aktionen verbergen.
 | `_value`              | `_value`         | Defines the value that the button emits on click.                                                                                                                                | `boolean \| null \| number \| object \| string \| undefined`                                                                                           | `undefined` |
 | `_variant`            | `_variant`       | Defines which variant should be used for presentation.                                                                                                                           | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined`                                                   | `'normal'`  |
 
+## Methods
+
+### `closePopup() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
+
 ## Slots
 
 | Slot | Description                                               |

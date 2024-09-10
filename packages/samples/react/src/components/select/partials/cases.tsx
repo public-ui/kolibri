@@ -9,17 +9,17 @@ import { COUNTRY_OPTIONS } from '../../../shares/country';
 
 const SALUTATION_OPTIONS: SelectOption<string>[] = [
 	{
-		label: 'Keine Auswahl',
+		label: 'No choice',
 		value: '',
 		disabled: true,
 	},
 	{
-		label: 'Frau',
-		value: 'Frau',
+		label: 'Mrs.',
+		value: 'Mrs.',
 	},
 	{
-		label: 'Herr',
-		value: 'Herr',
+		label: 'Mr.',
+		value: 'Mr.',
 	},
 	{
 		label: 'Divers',
@@ -35,7 +35,7 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				ref={ref}
 				_accessKey="a"
 				_options={SALUTATION_OPTIONS}
-				_label="Anrede"
+				_label="Salutation"
 				_icons={{
 					left: {
 						icon: 'codicon codicon-arrow-left',
@@ -46,12 +46,12 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				}}
 			/>
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Disabled" _disabled />
-			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Anrede mit Fehler" _msg={{ _type: 'error', _description: ERROR_MSG }} _touched />
-			<KolSelect {...props} _options={COUNTRY_OPTIONS} _label="Mehrfachauswahl" _multiple />
+			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Salutation with error" _msg={{ _type: 'error', _description: ERROR_MSG }} _touched />
+			<KolSelect {...props} _options={COUNTRY_OPTIONS} _label="Multiple choice" _multiple />
 			<KolSelect
 				{...props}
 				_options={COUNTRY_OPTIONS}
-				_label="Mehrfachauswahl mit Fehler"
+				_label="Multiple choice with error"
 				_multiple
 				_required
 				_msg={{ _type: 'error', _description: ERROR_MSG }}

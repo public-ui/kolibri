@@ -110,6 +110,11 @@ ROUTES.set('card/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('combobox/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('details/basic', {
 	axe: {
 		skipFailures: false,
@@ -282,6 +287,11 @@ ROUTES.set('spin/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('single-select/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('spin/custom', {
 	axe: {
 		skipFailures: false,
@@ -323,6 +333,26 @@ ROUTES.set('table/pagination-position', {
 	},
 });
 ROUTES.set('table/complex-headers', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateful-with-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateful-with-single-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateless-with-single-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateless-with-selection', {
 	axe: {
 		skipFailures: false,
 	},
@@ -410,6 +440,11 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 });
 
 /* Focus tests */
+ROUTES.set('scenarios/focus-elements?component=accordion');
+ROUTES.set('scenarios/focus-elements?component=button');
+ROUTES.set('scenarios/focus-elements?component=buttonLink');
+ROUTES.set('scenarios/focus-elements?component=combobox');
+ROUTES.set('scenarios/focus-elements?component=details');
 ROUTES.set('scenarios/focus-elements?component=inputCheckbox');
 ROUTES.set('scenarios/focus-elements?component=inputColor');
 ROUTES.set('scenarios/focus-elements?component=inputDate');
@@ -421,12 +456,9 @@ ROUTES.set('scenarios/focus-elements?component=inputPassword');
 ROUTES.set('scenarios/focus-elements?component=inputRadio');
 ROUTES.set('scenarios/focus-elements?component=inputRange');
 ROUTES.set('scenarios/focus-elements?component=inputText');
-ROUTES.set('scenarios/focus-elements?component=select');
-ROUTES.set('scenarios/focus-elements?component=selectMultiple');
-ROUTES.set('scenarios/focus-elements?component=textarea');
-ROUTES.set('scenarios/focus-elements?component=accordion');
-ROUTES.set('scenarios/focus-elements?component=button');
-ROUTES.set('scenarios/focus-elements?component=buttonLink');
-ROUTES.set('scenarios/focus-elements?component=details');
 ROUTES.set('scenarios/focus-elements?component=link');
 ROUTES.set('scenarios/focus-elements?component=linkButton');
+ROUTES.set('scenarios/focus-elements?component=select');
+ROUTES.set('scenarios/focus-elements?component=selectMultiple');
+ROUTES.set('scenarios/focus-elements?component=singleSelect');
+ROUTES.set('scenarios/focus-elements?component=textarea');

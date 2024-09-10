@@ -3,6 +3,7 @@ import {
 	KolAlert,
 	KolButton,
 	KolButtonLink,
+	KolCombobox,
 	KolDetails,
 	KolInputCheckbox,
 	KolInputColor,
@@ -17,6 +18,7 @@ import {
 	KolLink,
 	KolLinkButton,
 	KolSelect,
+	KolSingleSelect,
 	KolTextarea,
 } from '@public-ui/react';
 import type { FC, ForwardRefRenderFunction } from 'react';
@@ -74,10 +76,22 @@ const getFocusElements = () => {
 			ref={ref}
 		/>
 	));
+	focusElements.set('singleSelect', (_, ref) => (
+		<KolSingleSelect
+			_name="singleSelect"
+			_label="Single Select"
+			_options={[
+				{ label: 'Option A', value: 'A' },
+				{ label: 'Option B', value: 'B' },
+			]}
+			ref={ref}
+		/>
+	));
 	focusElements.set('textarea', (_, ref) => <KolTextarea _name="textarea" _label="Textarea" _rows={5} ref={ref} />);
 	focusElements.set('accordion', (_, ref) => <KolAccordion _label="Accordion here" ref={ref} />);
 	focusElements.set('button', (_, ref) => <KolButton _label="Button here" ref={ref}></KolButton>);
 	focusElements.set('buttonLink', (_, ref) => <KolButtonLink _label="ButtonLink here" ref={ref}></KolButtonLink>);
+	focusElements.set('combobox', (_, ref) => <KolCombobox _label="KolCombobox here" _suggestions={[]} ref={ref}></KolCombobox>);
 	focusElements.set('details', (_, ref) => (
 		<KolDetails _label="Details here" ref={ref}>
 			detailed details

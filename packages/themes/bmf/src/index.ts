@@ -29,11 +29,11 @@ import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
-import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
+import singleSelectCss from './components/single-select.scss';
 import skipNavCss from './components/skip-nav.scss';
 import splitButtonCss from './components/split-button.scss';
 import spinCss from './components/spin.scss';
@@ -67,6 +67,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-DRAWER': drawerCss,
 	'KOL-PROGRESS': progressCss,
 	'KOL-SELECT': selectCss,
+	'KOL-SINGLE-SELECT': singleSelectCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-ACCORDION': accordionCss,
 	'KOL-TABLE-STATEFUL': tableStatefulCss,
@@ -84,7 +85,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-ABBR': abbrCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
-	'KOL-MODAL': modalCss,
 	'KOL-ICON': iconCss,
 	'KOL-SKIP-NAV': skipNavCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,

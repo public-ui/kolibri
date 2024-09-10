@@ -1,6 +1,7 @@
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaDescriptionPropType,
 	ButtonAPI,
 	ButtonCallbacksPropType,
 	ButtonStates,
@@ -25,6 +26,7 @@ import {
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
 	validateAriaControls,
+	validateAriaDescription,
 	validateAriaExpanded,
 	validateAriaSelected,
 	validateButtonCallbacks,
@@ -43,6 +45,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
@@ -57,6 +60,8 @@ import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private buttonRef?: HTMLButtonElement;
+
+	private readonly internalDescriptionById = nonce();
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
 		this.buttonRef = ref;
@@ -82,6 +87,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		} else {
 			// Event handling
 			stopPropagation(event);
+
 			tryToDispatchKoliBriEvent('click', this.host, this.state._value);
 
 			// TODO: Static form handling
@@ -97,6 +103,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
+		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
 
 		return (
 			<Host class="kol-button-wc">
@@ -104,6 +111,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					ref={this.catchRef}
 					accessKey={this.state._accessKey || undefined}
 					aria-controls={this.state._ariaControls}
+					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
@@ -145,6 +153,11 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></KolTooltipWcTag>
+				{hasAriaDescription && (
+					<span class="visually-hidden" id={this.internalDescriptionById}>
+						{this.state._ariaDescription}
+					</span>
+				)}
 			</Host>
 		);
 	}
@@ -160,6 +173,11 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -271,6 +289,11 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		validateAriaControls(this, value);
 	}
 
+	@Watch('_ariaDescription')
+	public validateAriaDescription(value?: AriaDescriptionPropType): void {
+		validateAriaDescription(this, value);
+	}
+
 	@Watch('_ariaExpanded')
 	public validateAriaExpanded(value?: boolean): void {
 		validateAriaExpanded(this, value);
@@ -362,6 +385,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaControls(this._ariaControls);
+		this.validateAriaDescription(this._ariaDescription);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
