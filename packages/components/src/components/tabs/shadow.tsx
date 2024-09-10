@@ -30,16 +30,8 @@ import { translate } from '../../i18n';
 import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
 import { KolButtonGroupWcTag, KolButtonWcTag } from '../../core/component-names';
+import { KeyboardKey } from '../../schema/enums';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
-
-enum Key {
-	ArrowDown = 'ArrowDown',
-	ArrowLeft = 'ArrowLeft',
-	ArrowRight = 'ArrowRight',
-	ArrowUp = 'ArrowUp',
-	Enter = 'Enter',
-	Space = ' ',
-}
 
 @Component({
 	tag: 'kol-tabs',
@@ -82,15 +74,15 @@ export class KolTabs implements TabsAPI {
 	};
 
 	private onKeyDown = (event: KeyboardEvent) => {
-		switch (event.key as Key) {
-			case Key.ArrowRight:
+		switch (event.key as KeyboardKey) {
+			case KeyboardKey.ArrowRight:
 				this.goToNextTab(event);
 				break;
-			case Key.ArrowLeft:
+			case KeyboardKey.ArrowLeft:
 				this.goToPreviousTab(event);
 				break;
-			case Key.Space:
-			case Key.Enter:
+			case KeyboardKey.Space:
+			case KeyboardKey.Enter:
 				this.activateFocusedTab(event);
 				break;
 		}
