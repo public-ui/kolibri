@@ -8,7 +8,7 @@ export const InputCheckboxVariants = forwardRef<HTMLKolInputCheckboxElement, Com
 		<>
 			<div className="grid md:grid-cols-2 gap-4">
 				<fieldset>
-					<legend>Label algin &quot;left&quot; with label</legend>
+					<legend>Label align &quot;left&quot; with label</legend>
 					<InputCheckboxCases {...props} _labelAlign="left" />
 				</fieldset>
 				<fieldset>
@@ -18,7 +18,7 @@ export const InputCheckboxVariants = forwardRef<HTMLKolInputCheckboxElement, Com
 			</div>
 			<div className="grid md:grid-cols-2 gap-4">
 				<fieldset>
-					<legend>Label algin &quot;right&quot; with label</legend>
+					<legend>Label align &quot;right&quot; with label</legend>
 					<InputCheckboxCases {...props} />
 				</fieldset>
 				<fieldset>
