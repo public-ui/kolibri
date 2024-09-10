@@ -187,9 +187,6 @@ ROUTES.set('indented-text/basic', {
 ROUTES.set('input-checkbox/basic', null);
 ROUTES.set('input-checkbox/button', null);
 ROUTES.set('input-checkbox/switch', null);
-ROUTES.set('input-checkbox/basic-label-align', null);
-ROUTES.set('input-checkbox/button-label-align', null);
-ROUTES.set('input-checkbox/switch-label-align', null);
 ROUTES.set('input-color/basic', null);
 ROUTES.set('input-date/basic', null);
 ROUTES.set('input-email/basic', null);
