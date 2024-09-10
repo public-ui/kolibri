@@ -85,7 +85,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 						checked: this.state._checked,
 						indeterminate: this.state._indeterminate,
 					}}
-					data-label-align={this.state._labelAlign?.trim() || 'right'}
+					data-label-align={this.state._labelAlign || 'right'}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
