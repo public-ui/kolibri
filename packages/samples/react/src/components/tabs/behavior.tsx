@@ -32,10 +32,8 @@ const tabs = [
 export const TabsBehavior: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				This property allows controlling when an arrow key is pressed whether the tab change takes place right away or only focuses the tab caption. With this
-				property set, the tab change only takes place when the enter or space key is pressed.
-			</p>
+			<p>This sample shows KolTabs with the property `_behavior` set to `select-manual` and `select-automatic`.</p>
+			<p>This property allows controlling when an arrow key is pressed whether the tab change takes place right away or only focuses the tab caption.</p>
 		</SampleDescription>
 		<div className="grid gap-8">
 			<div className="grid gap-4">
