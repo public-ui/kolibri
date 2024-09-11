@@ -52,6 +52,7 @@ export * from './rows';
 export * from './show';
 export * from './suggestions';
 export * from './sync-value-by-selector';
+export * from './tab-behavior';
 export * from './table-callbacks';
 export * from './table-data';
 export * from './table-data-foot';
