@@ -3,6 +3,11 @@
 	font-size: 625%;
 }
 
+// currently a hack (reset font-size)
+p, pre, ul, .text-sm, .text-center {
+	font-size: 16px;
+}
+
 body {
 	margin: 0;
 	font-family: Verdana;
@@ -16,12 +21,6 @@ hr {
 .grid-cols-2 {
 	grid-template-columns: auto auto;
 }
-
-p, .text-sm, .text-center, pre {
-	font-size: 16px;
-	line-height: 18px;
-}
-
 
 @media (min-width: 1024px) {
 	.app-container {
