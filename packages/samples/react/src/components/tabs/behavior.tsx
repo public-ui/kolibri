@@ -32,7 +32,9 @@ const tabs = [
 export const TabsBehavior: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample shows KolTabs with the property `_behavior` set to `select-manual` and `select-automatic`.</p>
+			<p>
+				This sample shows KolTabs with the property <code>_behavior</code> set to <code>select-manual</code> and <code>select-automatic</code>.
+			</p>
 			<p>This property allows controlling when an arrow key is pressed whether the tab change takes place right away or only focuses the tab caption.</p>
 		</SampleDescription>
 		<div className="grid gap-8">
