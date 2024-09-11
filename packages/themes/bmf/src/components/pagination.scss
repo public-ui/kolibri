@@ -18,18 +18,27 @@
 
 	.first .icon::part(icon)::before {
 		content: 'keyboard_double_arrow_left';
+		color: var(--color-midnight);
 	}
 
 	.previous .icon::part(icon)::before {
 		content: 'chevron_left';
+		color: var(--color-midnight);
 	}
 
 	.next .icon::part(icon)::before {
 		content: 'chevron_right';
+		color: var(--color-midnight);
 	}
 
 	.last .icon::part(icon)::before {
 		content: 'keyboard_double_arrow_right';
+		color: var(--color-midnight);
+	}
+
+	.separator:before {
+		content: '...';
+		color: var(--color-midnight);
 	}
 
 	.button {
@@ -47,7 +56,9 @@
 			&:not(:disabled) .button-inner {
 				background-color: var(--color-ocean);
 				border-color: var(--color-ocean);
-				box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+				color: var(--color-white);
+			}
+			&:not(:disabled) .icon::part(icon)::before {
 				color: var(--color-white);
 			}
 		}
@@ -70,9 +81,14 @@
 		}
 	}
 
-	.selected .button-inner {
-		background-color: var(--color-ice);
-		border-color: var(--color-ice);
-		font-weight: 700;
+	.selected button {
+		&:disabled {
+			opacity: 1;
+		}
+		.button-inner {
+			background-color: var(--color-ice);
+			border-color: var(--color-ice);
+			font-weight: 700;
+		}
 	}
 }
