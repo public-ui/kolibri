@@ -26,17 +26,19 @@ export const PaginationPosition: FC = () => (
 			<p>This sample shows KolTable with different pagination positions.</p>
 		</SampleDescription>
 
-		<section className="grid gap-4">
-			<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
-			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="bottom"></KolTable>
-		</section>
-		<section className="grid gap-4">
-			<KolHeading _level={2} _label="Table with pagination at the top."></KolHeading>
-			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="top"></KolTable>
-		</section>
-		<section className="grid gap-4">
-			<KolHeading _level={2} _label="Table with pagination at both top and bottom."></KolHeading>
-			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="both"></KolTable>
+		<section className="w-full flex flex-col">
+			<section className="grid gap-4">
+				<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
+				<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="bottom"></KolTable>
+			</section>
+			<section className="grid gap-4">
+				<KolHeading _level={2} _label="Table with pagination at the top."></KolHeading>
+				<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="top"></KolTable>
+			</section>
+			<section className="grid gap-4">
+				<KolHeading _level={2} _label="Table with pagination at both top and bottom."></KolHeading>
+				<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="both"></KolTable>
+			</section>
 		</section>
 	</div>
 );

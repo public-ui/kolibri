@@ -12,7 +12,7 @@ export const ButtonVariants = function ButtonVariant() {
 		{ label: 'Button (disabled, hideLabel)', buttonProps: { _disabled: true, _hideLabel: true } },
 	];
 	return (
-		<div className="grid gap-14">
+		<div className="grid gap-8">
 			{examples.map(({ label, buttonProps }, index) => (
 				<section key={index} className="grid gap-4">
 					<KolHeading _level={2} _label={label} />

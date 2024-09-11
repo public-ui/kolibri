@@ -71,17 +71,19 @@ export const ToastBasic: FC = () => {
 				<p>This sample demonstrates the toast service with all its options.</p>
 			</SampleDescription>
 
-			<div>
-				<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>{' '}
-				<KolButton _label="Show toast with alert variant 'msg'" _on={{ onClick: handleButtonClickVariantMessage }}></KolButton>{' '}
-				<KolButton _label="Show complex toast" _on={{ onClick: handleButtonClickComplex }}></KolButton>
-				<br />
-				<br />
-				<KolButton _label="Show toast and close after 2 seconds" _on={{ onClick: () => void handleButtonClickOpenAndClose() }}></KolButton>
-				<br />
-				<br />
-				<KolButton _label="Close all toasts" _on={{ onClick: closeAll }}></KolButton>
-			</div>
+			<section className="grid">
+				<section className="flex gap-2">
+					<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>
+					<KolButton _label="Show toast with alert variant 'msg'" _on={{ onClick: handleButtonClickVariantMessage }}></KolButton>
+					<KolButton _label="Show complex toast" _on={{ onClick: handleButtonClickComplex }}></KolButton>
+				</section>
+				<section>
+					<KolButton _label="Show toast and close after 2 seconds" _on={{ onClick: () => void handleButtonClickOpenAndClose() }}></KolButton>
+				</section>
+				<section>
+					<KolButton _label="Close all toasts" _on={{ onClick: closeAll }}></KolButton>
+				</section>
+			</section>
 		</>
 	);
 };

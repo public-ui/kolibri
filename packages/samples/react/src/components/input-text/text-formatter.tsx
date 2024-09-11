@@ -42,50 +42,52 @@ export function InputTextFormatterDemo() {
 					vice versa the formatting is removed again (machine format)
 				</p>
 			</SampleDescription>
-			<Formik<FormValues> initialValues={initialValues} onSubmit={handleSubmit}>
-				{(form) => (
-					<>
-						<div className="p-2">
-							<KolHeading _label="Formatted Form Field" _level={2} />
-							<KolForm>
-								<Field name="iban">
-									{({ field }: FieldProps<FormValues['iban']>) => (
-										<div className="block mt-2">
-											<KolInputText
-												onBlur={() => {
-													void form.setFieldTouched('iban', true);
-												}}
-												id="field-iban"
-												_label="IBAN"
-												_value={formatter.format(field.value ?? '')}
-												_msg={{
-													_type: 'error',
-													_description: form.errors.iban || '',
-												}}
-												_touched={form.touched.iban}
-												_required
-												_on={{
-													onInput: (event, value: unknown) => {
-														if (event.target) {
-															const parsed_value = formatter.parse((value as string) ?? '');
+			<section className="w-full flex flex-col">
+				<Formik<FormValues> initialValues={initialValues} onSubmit={handleSubmit}>
+					{(form) => (
+						<>
+							<div className="p-2">
+								<KolHeading _label="Formatted Form Field" _level={2} />
+								<KolForm>
+									<Field name="iban">
+										{({ field }: FieldProps<FormValues['iban']>) => (
+											<div className="block mt-2">
+												<KolInputText
+													onBlur={() => {
+														void form.setFieldTouched('iban', true);
+													}}
+													id="field-iban"
+													_label="IBAN"
+													_value={formatter.format(field.value ?? '')}
+													_msg={{
+														_type: 'error',
+														_description: form.errors.iban || '',
+													}}
+													_touched={form.touched.iban}
+													_required
+													_on={{
+														onInput: (event, value: unknown) => {
+															if (event.target) {
+																const parsed_value = formatter.parse((value as string) ?? '');
 
-															void form.setFieldValue('iban', parsed_value, true);
-														}
-													},
-												}}
-											/>
-										</div>
-									)}
-								</Field>
-							</KolForm>
-						</div>
-						<div className="p-2">
-							<KolHeading _label="Model" _level={2} />
-							<pre>{JSON.stringify(form.values, null, 2)}</pre>
-						</div>
-					</>
-				)}
-			</Formik>
+																void form.setFieldValue('iban', parsed_value, true);
+															}
+														},
+													}}
+												/>
+											</div>
+										)}
+									</Field>
+								</KolForm>
+							</div>
+							<div className="p-2">
+								<KolHeading _label="Model" _level={2} />
+								<pre>{JSON.stringify(form.values, null, 2)}</pre>
+							</div>
+						</>
+					)}
+				</Formik>
+			</section>
 		</>
 	);
 }

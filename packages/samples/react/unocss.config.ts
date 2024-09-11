@@ -128,6 +128,10 @@ export default defineConfig({
 		[/^w-(\d+)rem$/, ([, d]) => ({ 
 			width: pxValueToRem(Number.parseInt(d) * 16) 
 		})],
+
+		[/^w-sm$/, () => ({ 
+			width: pxValueToRem(24 * 16) // 24rem
+		})],
 	],
 	presets: [presetUno()],
 });

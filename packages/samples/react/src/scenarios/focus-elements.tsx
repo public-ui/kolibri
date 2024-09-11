@@ -5,6 +5,7 @@ import {
 	KolButtonLink,
 	KolCombobox,
 	KolDetails,
+	KolHeading,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -125,7 +126,7 @@ const Fallback = (props: FallbackProps) => {
 				</KolAlert>
 			)}
 
-			<h4>Focus Test Cases</h4>
+			<KolHeading _level={2} _label="Focus Test Cases" />
 			<ul>
 				{componentNames.map((componentName) => (
 					<li key={componentName}>

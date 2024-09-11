@@ -10,6 +10,7 @@ export const FormErrorList: FC = () => (
 		</SampleDescription>
 
 		<KolForm
+			className="w-full"
 			_errorList={[
 				{
 					message: 'Error in Input 2',
