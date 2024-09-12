@@ -21,7 +21,7 @@ const HEADERS: KoliBriTableHeaders = {
 const PAGINATION: KoliBriTablePaginationProps = { _page: 2 };
 
 export const PaginationPosition: FC = () => (
-	<div className="grid gap-14">
+	<div className="w-full grid gap-14">
 		<SampleDescription>
 			<p>This sample shows KolTable with different pagination positions.</p>
 		</SampleDescription>

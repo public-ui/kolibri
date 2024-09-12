@@ -158,7 +158,11 @@ export const FocusElements: FC = () => {
 		}
 		const Element = forwardRef(Component);
 
-		return <Element ref={ref} />;
+		return (
+			<section className="w-full">
+				<Element ref={ref} />
+			</section>
+		);
 	} else {
 		return <Fallback />;
 	}

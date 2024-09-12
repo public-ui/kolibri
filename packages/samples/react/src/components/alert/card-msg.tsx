@@ -13,6 +13,8 @@ export const AlertCardMsg: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<AlertVariants variant="card" />
+		<section className="w-full">
+			<AlertVariants variant="card" />
+		</section>
 	</>
 );

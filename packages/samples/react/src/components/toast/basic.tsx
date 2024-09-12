@@ -71,16 +71,16 @@ export const ToastBasic: FC = () => {
 				<p>This sample demonstrates the toast service with all its options.</p>
 			</SampleDescription>
 
-			<section className="grid">
+			<section className="grid gap-4">
 				<section className="flex gap-2">
 					<KolButton _label="Show simple toast" _on={{ onClick: handleButtonClickSimple }}></KolButton>
 					<KolButton _label="Show toast with alert variant 'msg'" _on={{ onClick: handleButtonClickVariantMessage }}></KolButton>
 					<KolButton _label="Show complex toast" _on={{ onClick: handleButtonClickComplex }}></KolButton>
 				</section>
-				<section>
+				<section className="flex gap-2">
 					<KolButton _label="Show toast and close after 2 seconds" _on={{ onClick: () => void handleButtonClickOpenAndClose() }}></KolButton>
 				</section>
-				<section>
+				<section className="flex gap-2">
 					<KolButton _label="Close all toasts" _on={{ onClick: closeAll }}></KolButton>
 				</section>
 			</section>
