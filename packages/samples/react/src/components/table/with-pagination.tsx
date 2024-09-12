@@ -25,7 +25,7 @@ export const TableWithPagination: FC = () => (
 		<SampleDescription>
 			<p>This sample shows how KolTable can be navigated using a pagination.</p>
 		</SampleDescription>
-		<div className='w-full'>
+		<div className="w-full">
 			<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTable>
 		</div>
 	</>
