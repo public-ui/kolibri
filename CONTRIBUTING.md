@@ -58,7 +58,9 @@ We work according to the Git flow: https://medium.com/android-news/gitflow-with-
 8. Install all packages with `pnpm i`
 9. Build all packages within the mono repository `pnpm -r build`
 10. Navigate to the desired package in our monorepo
-11. When you want to start the project navigate to `packages/components/` and run pnpm start
+11. When you want to start the project navigate to `packages/components/` and run `pnpm dev`
+12. To watch for changes navigate to `samples/react/` an run `pnpm serve`
+13. Open `http://localhost:8080/` on an explorer and select the component on the menu
 
 ### Develop new component
 
