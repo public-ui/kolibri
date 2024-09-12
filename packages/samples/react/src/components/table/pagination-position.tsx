@@ -26,7 +26,7 @@ export const PaginationPosition: FC = () => (
 			<p>This sample shows KolTable with different pagination positions.</p>
 		</SampleDescription>
 
-		<section className="w-full flex flex-col">
+		<section className="w-full flex flex-col gap-14">
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
 				<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="bottom"></KolTable>

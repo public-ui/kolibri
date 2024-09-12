@@ -31,16 +31,17 @@ import type { FocusableElement } from '@public-ui/components';
 
 const getFocusElements = () => {
 	const focusElements = new Map<string, ForwardRefRenderFunction<any, any>>();
-	focusElements.set('inputCheckbox', (_, ref) => <KolInputCheckbox _name="checkbox" _label="Checkbox" ref={ref} />);
-	focusElements.set('inputColor', (_, ref) => <KolInputColor _name="color" _label="Color" ref={ref} />);
-	focusElements.set('inputDate', (_, ref) => <KolInputDate _name="date" _label="Date" ref={ref} />);
-	focusElements.set('inputEmail', (_, ref) => <KolInputEmail _name="email" _label="Email" ref={ref} />);
-	focusElements.set('inputFile', (_, ref) => <KolInputFile _name="file" _label="File" ref={ref} />);
-	focusElements.set('inputFileMultiple', (_, ref) => <KolInputFile _name="file" _label="Files (multiple)" _multiple ref={ref} />);
-	focusElements.set('inputNumber', (_, ref) => <KolInputNumber _name="number" _label="Number" ref={ref} />);
-	focusElements.set('inputPassword', (_, ref) => <KolInputPassword _name="password" _label="Password" ref={ref} />);
+	focusElements.set('inputCheckbox', (_, ref) => <KolInputCheckbox className="w-full" _name="checkbox" _label="Checkbox" ref={ref} />);
+	focusElements.set('inputColor', (_, ref) => <KolInputColor className="w-full" _name="color" _label="Color" ref={ref} />);
+	focusElements.set('inputDate', (_, ref) => <KolInputDate className="w-full" _name="date" _label="Date" ref={ref} />);
+	focusElements.set('inputEmail', (_, ref) => <KolInputEmail className="w-full" _name="email" _label="Email" ref={ref} />);
+	focusElements.set('inputFile', (_, ref) => <KolInputFile className="w-full" _name="file" _label="File" ref={ref} />);
+	focusElements.set('inputFileMultiple', (_, ref) => <KolInputFile className="w-full" _name="file" _label="Files (multiple)" _multiple ref={ref} />);
+	focusElements.set('inputNumber', (_, ref) => <KolInputNumber className="w-full" _name="number" _label="Number" ref={ref} />);
+	focusElements.set('inputPassword', (_, ref) => <KolInputPassword className="w-full" _name="password" _label="Password" ref={ref} />);
 	focusElements.set('inputRadio', (_, ref) => (
 		<KolInputRadio
+			className="w-full"
 			_name="radio"
 			_label="Radio"
 			_options={[
@@ -51,10 +52,11 @@ const getFocusElements = () => {
 			ref={ref}
 		/>
 	));
-	focusElements.set('inputRange', (_, ref) => <KolInputRange _name="range" _label="Range" ref={ref} />);
-	focusElements.set('inputText', (_, ref) => <KolInputText _name="text" _label="Text" ref={ref} />);
+	focusElements.set('inputRange', (_, ref) => <KolInputRange className="w-full" _name="range" _label="Range" ref={ref} />);
+	focusElements.set('inputText', (_, ref) => <KolInputText className="w-full" _name="text" _label="Text" ref={ref} />);
 	focusElements.set('select', (_, ref) => (
 		<KolSelect
+			className="w-full"
 			_name="select"
 			_label="Select"
 			_options={[
@@ -66,6 +68,7 @@ const getFocusElements = () => {
 	));
 	focusElements.set('selectMultiple', (_, ref) => (
 		<KolSelect
+			className="w-full"
 			_name="select"
 			_label="Select (multiple)"
 			_multiple
@@ -79,6 +82,7 @@ const getFocusElements = () => {
 	));
 	focusElements.set('singleSelect', (_, ref) => (
 		<KolSingleSelect
+			className="w-full"
 			_name="singleSelect"
 			_label="Single Select"
 			_options={[
@@ -88,17 +92,17 @@ const getFocusElements = () => {
 			ref={ref}
 		/>
 	));
-	focusElements.set('textarea', (_, ref) => <KolTextarea _name="textarea" _label="Textarea" _rows={5} ref={ref} />);
-	focusElements.set('accordion', (_, ref) => <KolAccordion _label="Accordion here" ref={ref} />);
+	focusElements.set('textarea', (_, ref) => <KolTextarea className="w-full" _name="textarea" _label="Textarea" _rows={5} ref={ref} />);
+	focusElements.set('accordion', (_, ref) => <KolAccordion className="w-full" _label="Accordion here" ref={ref} />);
 	focusElements.set('button', (_, ref) => <KolButton _label="Button here" ref={ref}></KolButton>);
 	focusElements.set('buttonLink', (_, ref) => <KolButtonLink _label="ButtonLink here" ref={ref}></KolButtonLink>);
-	focusElements.set('combobox', (_, ref) => <KolCombobox _label="KolCombobox here" _suggestions={[]} ref={ref}></KolCombobox>);
+	focusElements.set('combobox', (_, ref) => <KolCombobox className="w-full" _label="KolCombobox here" _suggestions={[]} ref={ref}></KolCombobox>);
 	focusElements.set('details', (_, ref) => (
-		<KolDetails _label="Details here" ref={ref}>
+		<KolDetails className="w-full" _label="Details here" ref={ref}>
 			detailed details
 		</KolDetails>
 	));
-	focusElements.set('link', (_, ref) => <KolLink _label="Link here" _href="#" ref={ref}></KolLink>);
+	focusElements.set('link', (_, ref) => <KolLink className="w-full" _label="Link here" _href="#" ref={ref}></KolLink>);
 	focusElements.set('linkButton', (_, ref) => <KolLinkButton _label="LinkButton here" _href="#" ref={ref}></KolLinkButton>);
 
 	return focusElements;
@@ -158,11 +162,7 @@ export const FocusElements: FC = () => {
 		}
 		const Element = forwardRef(Component);
 
-		return (
-			<section className="w-full">
-				<Element ref={ref} />
-			</section>
-		);
+		return <Element ref={ref} />;
 	} else {
 		return <Fallback />;
 	}
