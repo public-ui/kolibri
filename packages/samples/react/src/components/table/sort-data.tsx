@@ -59,7 +59,7 @@ export const TableSortData: FC = () => (
 			<p>This sample shows KolTable with sortable columns. The sort-order can be changed by clicking the &quot;date&quot; header column.</p>
 		</SampleDescription>
 
-		<section className="grid gap-4">
+		<section className="w-full grid gap-4">
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Vertical" />
 				<KolTable _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
