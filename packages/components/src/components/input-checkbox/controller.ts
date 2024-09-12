@@ -6,10 +6,11 @@ import type {
 	InputCheckboxProps,
 	InputCheckboxVariant,
 	InputCheckboxWatches,
+	LabelAlignPropType,
 	StencilUnknown,
 	Stringified,
 } from '../../schema';
-import { inputCheckboxVariantOptions, isString, setState, validateChecked, validateIndeterminate, watchValidator } from '../../schema';
+import { inputCheckboxVariantOptions, isString, setState, validateChecked, validateIndeterminate, validateLabelAlign, watchValidator } from '../../schema';
 
 import { InputCheckboxRadioController } from '../input-radio/controller';
 
@@ -61,6 +62,10 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		validateIndeterminate(this.component, value);
 	}
 
+	public validateLabelAlign(value?: LabelAlignPropType): void {
+		validateLabelAlign(this.component, value);
+	}
+
 	public validateValue(value?: Stringified<StencilUnknown>): void {
 		setState(this.component, '_value', value);
 		this.setFormAssociatedCheckboxValue(this.component.state._value as StencilUnknown);
@@ -83,5 +88,6 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.validateIndeterminate(this.component._indeterminate);
 		this.validateValue(this.component._value);
 		this.validateVariant(this.component._variant);
+		this.validateLabelAlign(this.component._labelAlign);
 	}
 }

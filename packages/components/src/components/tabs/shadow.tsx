@@ -5,6 +5,7 @@ import type {
 	LabelPropType,
 	StencilUnknown,
 	Stringified,
+	TabBehaviorPropType,
 	TabButtonProps,
 	TabsAPI,
 	TabsStates,
@@ -18,6 +19,7 @@ import {
 	uiUxHintMillerscheZahl,
 	validateAlign,
 	validateLabel,
+	validateTabBehavior,
 	watchJsonArrayString,
 	watchNumber,
 } from '../../schema';
@@ -28,6 +30,7 @@ import { translate } from '../../i18n';
 import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
 import { KolButtonGroupWcTag, KolButtonWcTag } from '../../core/component-names';
+import { KeyboardKey } from '../../schema/enums';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 @Component({
@@ -42,52 +45,103 @@ export class KolTabs implements TabsAPI {
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
 	private showCreateTab = false;
+	private currentFocusIndex: number | undefined;
 
-	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step: number): number => {
-		if (step > 0) {
-			if (offset + step < tabs.length) {
-				if (tabs[offset + step]._disabled) {
-					return this.nextPossibleTabIndex(tabs, offset, step + 1);
-				}
-				return offset + step;
+	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
+		const nextOffset = offset + step;
+
+		if (nextOffset < tabs.length) {
+			if (tabs[nextOffset]._disabled) {
+				return this.nextPossibleTabIndex(tabs, offset, step + 1);
 			}
-		} else if (step < 0) {
-			if (offset + step >= 0) {
-				if (tabs[offset + step]._disabled) {
-					return this.nextPossibleTabIndex(tabs, offset, step - 1);
-				}
-				return offset + step;
-			}
+			return nextOffset;
 		}
+
+		return offset;
+	};
+
+	private prevPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
+		const nextOffset = offset - step;
+
+		if (nextOffset >= 0) {
+			if (tabs[nextOffset]._disabled) {
+				return this.prevPossibleTabIndex(tabs, offset, step + 1);
+			}
+			return nextOffset;
+		}
+
 		return offset;
 	};
 
 	private onKeyDown = (event: KeyboardEvent) => {
-		let selectedIndex: number | null = null;
-		switch (event.key) {
-			case 'ArrowRight':
-				selectedIndex = this.nextPossibleTabIndex(this.state._tabs, this.state._selected, 1);
+		switch (event.key as KeyboardKey) {
+			case KeyboardKey.ArrowRight:
+				this.goToNextTab(event);
 				break;
-			case 'ArrowLeft':
-				selectedIndex = this.nextPossibleTabIndex(this.state._tabs, this.state._selected, -1);
+			case KeyboardKey.ArrowLeft:
+				this.goToPreviousTab(event);
 				break;
-		}
-		if (selectedIndex !== null) {
-			const tab = this.state._tabs[selectedIndex];
-			if (tab._on?.onSelect) {
-				tab._on?.onSelect(event, selectedIndex);
-			}
-			this.onSelect(event, selectedIndex);
+			case KeyboardKey.Space:
+			case KeyboardKey.Enter:
+				this.activateFocusedTab(event);
+				break;
 		}
 	};
 
-	private readonly onClickSelect = (event: MouseEvent, index: number): void => {
-		const tab = this.state._tabs[index];
-		if (tab._on?.onSelect) {
-			tab._on?.onSelect(event, index);
+	private getCurrentFocusIndex(): number {
+		if (typeof this.currentFocusIndex === 'number') {
+			return this.currentFocusIndex;
 		}
-		this.onSelect(event, index);
+
+		return this.state._selected;
+	}
+
+	private getKeyboardTabChangeMode(): 'selectFocusOnly' | 'activateCompletely' {
+		if (this._behavior === 'select-manual') {
+			return 'selectFocusOnly';
+		}
+
+		return 'activateCompletely';
+	}
+
+	private goToNextTab(event: KeyboardEvent) {
+		const nextFocusIndex = this.nextPossibleTabIndex(this.state._tabs, this.getCurrentFocusIndex());
+		this.selectNextTabEvent(event, nextFocusIndex, this.getKeyboardTabChangeMode());
+	}
+
+	private goToPreviousTab(event: KeyboardEvent) {
+		const nextFocusIndex = this.prevPossibleTabIndex(this.state._tabs, this.getCurrentFocusIndex());
+		this.selectNextTabEvent(event, nextFocusIndex, this.getKeyboardTabChangeMode());
+	}
+
+	private activateFocusedTab(event: KeyboardEvent) {
+		if (typeof this.currentFocusIndex === 'number') {
+			this.onSelect(event, this.currentFocusIndex);
+		}
+	}
+
+	private readonly onClickSelect = (event: MouseEvent, index: number): void => {
+		this.selectNextTabEvent(event, index);
 	};
+
+	private selectNextTabEvent(
+		event: KeyboardEvent | MouseEvent,
+		nextTabIndex: number,
+		changeMode: 'selectFocusOnly' | 'activateCompletely' = 'activateCompletely',
+	): void {
+		this.currentFocusIndex = nextTabIndex;
+
+		this.focusTabById(nextTabIndex);
+
+		if (changeMode === 'activateCompletely') {
+			this._selected = nextTabIndex;
+
+			const tab = this.state._tabs[nextTabIndex];
+			tab._on?.onSelect?.(event, nextTabIndex);
+
+			this.onSelect(event, nextTabIndex);
+		}
+	}
 
 	// private readonly onClickClose = (event: Event, button: TabButtonProps, index: number) => {
 	// 	event.preventDefault();
@@ -107,7 +161,7 @@ export class KolTabs implements TabsAPI {
 
 	private renderButtonGroup() {
 		return (
-			<KolButtonGroupWcTag class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown}>
+			<KolButtonGroupWcTag class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<KolButtonWcTag
 						_disabled={button._disabled}
@@ -169,6 +223,11 @@ export class KolTabs implements TabsAPI {
 	 * Defines the position of the tab captions.
 	 */
 	@Prop() public _align?: AlignPropType = 'top';
+
+	/**
+	 * Defines which behavior is active.
+	 */
+	@Prop() public _behavior?: TabBehaviorPropType;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -247,6 +306,11 @@ export class KolTabs implements TabsAPI {
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType) {
 		validateAlign(this, value);
+	}
+
+	@Watch('_behavior')
+	public validateBehavior(value?: TabBehaviorPropType) {
+		validateTabBehavior(this, value);
 	}
 
 	@Watch('_label')
@@ -331,6 +395,7 @@ export class KolTabs implements TabsAPI {
 		this.validateOn(this._on);
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);
+		this.validateBehavior(this._behavior);
 	}
 
 	private readonly handleTabPanels = () => {
@@ -366,15 +431,17 @@ export class KolTabs implements TabsAPI {
 		}
 	}
 
-	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number): void {
-		this._selected = index;
-		if (typeof this._on?.onSelect === 'function') {
-			this._on?.onSelect(event, index);
-		}
+	private focusTabById(index: number): void {
 		if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
 			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.state._label.replace(/\s/g, '-')}-tab-${index}`, this.tabPanelsElement);
 			button?.focus();
 		}
+	}
+
+	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number): void {
+		this._on?.onSelect?.(event, index);
+
+		this.focusTabById(index);
 	}
 
 	private onCreate = (event: Event) => {
@@ -383,5 +450,9 @@ export class KolTabs implements TabsAPI {
 		if (typeof this.state._on?.onCreate === 'function') {
 			this.state._on?.onCreate(event);
 		}
+	};
+
+	private onBlur = () => {
+		this.currentFocusIndex = undefined;
 	};
 }

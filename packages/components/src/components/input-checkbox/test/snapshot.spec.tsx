@@ -25,6 +25,7 @@ executeTests<InputCheckboxProps>(
 		_alert: [true, false],
 		_required: [true, false],
 		_touched: [true, false],
+		_labelAlign: [undefined, 'left'],
 	},
 	getInputCheckboxHtml,
 	{

@@ -27,8 +27,18 @@
 			gap: 0.4em;
 		}
 
+		&.default[data-label-align='left']:not(.hide-label) {
+			grid-template-columns: auto 1.5rem;
+			gap: 0.4em;
+		}
+
 		&.switch:not(.hide-label) {
 			grid-template-columns: rem(56) auto;
+			gap: 0.4em;
+		}
+
+		&.switch[data-label-align='left']:not(.hide-label) {
+			grid-template-columns: auto 3.5rem;
 			gap: 0.4em;
 		}
 
@@ -258,6 +268,13 @@
 				border-top-right-radius: var(--border-radius);
 				border-bottom-right-radius: var(--border-radius);
 			}
+
+			@at-root [data-label-align='left']:not(.hide-label)#{&} {
+				border-bottom-left-radius: 0;
+				border-top-left-radius: 0;
+				border-bottom-right-radius: var(--border-radius);
+				border-top-right-radius: var(--border-radius);
+			}
 		}
 
 		/* Outer, clickable, container for the label */
@@ -279,6 +296,14 @@
 			min-height: 32px;
 			padding-right: 12px;
 			width: 100%;
+
+			@at-root [data-label-align='left']:not(.hide-label)#{&} {
+				border-bottom-right-radius: 0;
+				border-top-right-radius: 0;
+				border-bottom-left-radius: var(--border-radius);
+				border-top-left-radius: var(--border-radius);
+				padding-left: 12px;
+			}
 		}
 
 		/* States */
@@ -303,7 +328,9 @@
 				background-clip: content-box; // emulate outline with offset
 				padding: 2px;
 			}
+		}
 
+		&:focus-within:not(.hide-label) {
 			.icon {
 				border-right: none;
 				padding-right: 0;
@@ -312,6 +339,22 @@
 			.input-label-span {
 				border-left: none;
 				padding-left: 0;
+			}
+		}
+
+		&[data-label-align='left']:focus-within:not(.hide-label) {
+			.icon {
+				border-right: 3px solid var(--color-ocean);
+				padding-right: 2px;
+				border-left: none;
+				padding-left: 0;
+			}
+
+			.input-label-span {
+				border-left: 3px solid var(--color-ocean);
+				padding-left: 2px;
+				border-right: none;
+				padding-right: 0;
 			}
 		}
 	}

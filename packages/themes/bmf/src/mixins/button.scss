@@ -43,8 +43,46 @@
 		color: var(--color-white);
 	}
 
+	.success.secondary :is(a, button) > .kol-span-wc,
+	.success.secondary :is(a, button):disabled:hover > .kol-span-wc {
+		background-color: var(--color-white);
+		border-color: var(--color-green);
+		color: var(--color-green);
+	}
+
+	.success.ghost :is(a, button) > .kol-span-wc,
+	.success.ghost :is(a, button):disabled:hover > .kol-span-wc {
+		border-color: var(--color-white);
+		background-color: var(--color-white);
+		box-shadow: none;
+		color: var(--color-green);
+	}
+
+	.grey :is(a, button) > .kol-span-wc,
+	.grey :is(a, button):disabled:hover > .kol-span-wc {
+		background-color: var(--color-grey);
+		border-color: var(--color-grey);
+		color: var(--color-white);
+	}
+
+	.grey.secondary :is(a, button) > .kol-span-wc,
+	.grey.secondary :is(a, button):disabled:hover > .kol-span-wc {
+		background-color: var(--color-white);
+		border-color: var(--color-grey);
+		color: var(--color-grey);
+	}
+
+	.grey.ghost :is(a, button) > .kol-span-wc,
+	.grey.ghost :is(a, button):disabled:hover > .kol-span-wc {
+		border-color: var(--color-white);
+		background-color: var(--color-white);
+		box-shadow: none;
+		color: var(--color-grey);
+	}
+
 	.ghost :is(a, button) > .kol-span-wc,
-	.ghost :is(a, button):disabled:hover > .kol-span-wc {
+	.ghost :is(a, button):disabled:hover > .kol-span-wc,
+	.ghost.no-hover :is(a, button):hover > .kol-span-wc {
 		border-color: var(--color-white);
 		background-color: var(--color-white);
 		box-shadow: none;
@@ -62,11 +100,12 @@
 	.danger :is(a, button):hover > .kol-span-wc,
 	.success :is(a, button):active > .kol-span-wc,
 	.success :is(a, button):hover > .kol-span-wc,
+	.grey :is(a, button):active > .kol-span-wc,
+	.grey :is(a, button):hover > .kol-span-wc,
 	.ghost :is(a, button):active > .kol-span-wc,
 	.ghost :is(a, button):hover > .kol-span-wc {
 		background-color: var(--color-ocean);
 		border-color: var(--color-ocean);
-		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
 		color: var(--color-white);
 	}
 
@@ -74,6 +113,18 @@
 	.danger :is(a, button):hover > .kol-span-wc {
 		background-color: var(--color-crimson);
 		border-color: var(--color-crimson);
+	}
+
+	.success :is(a, button):active > .kol-span-wc,
+	.success :is(a, button):hover > .kol-span-wc {
+		background-color: var(--color-jungle);
+		border-color: var(--color-jungle);
+	}
+
+	.grey :is(a, button):active > .kol-span-wc,
+	.grey :is(a, button):hover > .kol-span-wc {
+		background-color: var(--color-grey);
+		border-color: var(--color-grey);
 	}
 
 	:is(a, button):disabled:hover > .kol-span-wc,
@@ -86,6 +137,7 @@
 	.normal :is(a, button):active > .kol-span-wc,
 	.danger :is(a, button):active > .kol-span-wc,
 	.success :is(a, button):active > .kol-span-wc,
+	.grey :is(a, button):active > .kol-span-wc,
 	.ghost :is(a, button):active > .kol-span-wc {
 		border-color: var(--color-white);
 		box-shadow: none;
