@@ -5,7 +5,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import { preventDefaultAndStopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { DetailsAnimationController } from './DetailsAnimationController';
-import { KolIconTag, KolIndentedTextTag } from '../../core/component-names';
+import { KolIconTag } from '../../core/component-names';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -77,9 +77,9 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 						<span>{this.state._label}</span>
 					</summary>
 					<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" ref={(element) => (this.contentElement = element)}>
-						<KolIndentedTextTag>
+						<div class="kol-indented-text">
 							<slot />
-						</KolIndentedTextTag>
+						</div>
 					</div>
 				</details>
 			</Host>

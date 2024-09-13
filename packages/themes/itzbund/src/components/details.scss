@@ -1,3 +1,5 @@
+@import '../mixins/indented-text';
+
 @layer kol-theme-component {
 	details > summary {
 		border-radius: var(--border-radius);
@@ -11,4 +13,6 @@
 	.kol-icon {
 		font-size: 1.2rem;
 	}
+
+	@include kol-indented-theme;
 }

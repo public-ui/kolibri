@@ -1,3 +1,5 @@
+@import '../mixins-ec/indented-text';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -7,4 +9,6 @@
 		margin: 0.175rem;
 		padding: 0;
 	}
+
+	@include kol-indented-theme;
 }
