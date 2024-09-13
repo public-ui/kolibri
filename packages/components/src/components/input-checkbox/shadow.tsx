@@ -8,6 +8,7 @@ import type {
 	InputCheckboxStates,
 	InputCheckboxVariant,
 	InputTypeOnDefault,
+	LabelAlignPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -84,6 +85,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 						checked: this.state._checked,
 						indeterminate: this.state._indeterminate,
 					}}
+					data-label-align={this.state._labelAlign || 'right'}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					_accessKey={this.state._accessKey}
 					_alert={this.state._alert}
@@ -216,6 +218,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
+	 * Defines which alignment should be used for presentation.
+	 */
+	@Prop() public _labelAlign?: LabelAlignPropType = 'right';
+
+	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
 	@Prop() public _msg?: MsgPropType;
@@ -281,6 +288,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		_label: '', // ⚠ required
 		_value: true,
 		_variant: 'default',
+		_labelAlign: 'right',
 	};
 
 	public constructor() {
@@ -345,6 +353,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
+	}
+
+	@Watch('_labelAlign')
+	public validateLabelAlign(value?: LabelAlignPropType): void {
+		this.controller.validateLabelAlign(value);
 	}
 
 	@Watch('_msg')

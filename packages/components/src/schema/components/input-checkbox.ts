@@ -12,6 +12,7 @@ import type {
 	PropRequired,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropLabelAlign,
 } from '../props';
 import type { AnyIconFontClass, InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
 
@@ -64,7 +65,8 @@ type OptionalProps = {
 	PropName &
 	PropRequired &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropLabelAlign;
 
 type RequiredStates = {
 	icons: InputCheckboxIconsState;
@@ -86,7 +88,8 @@ type OptionalStates = {
 	PropMsg &
 	PropName &
 	PropRequired &
-	PropTouched;
+	PropTouched &
+	PropLabelAlign;
 
 export type InputCheckboxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputCheckboxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
