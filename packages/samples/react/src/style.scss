@@ -1,3 +1,14 @@
+:root {
+	--kolibri-root-font-size: 100;
+	font-size: 625%;
+}
+
+// currently a hack (reset font-size)
+p, pre, ul, .text-sm, .text-center {
+	font-size: 16px;
+	line-height: 18px;
+}
+
 body {
 	margin: 0;
 	font-family: Verdana;
@@ -6,18 +17,6 @@ body {
 dl,
 hr {
 	margin: 0;
-}
-
-.w-4rem {
-	width: 4rem;
-}
-
-.w-8rem {
-	width: 8rem;
-}
-
-.w-12rem {
-	width: 12rem;
 }
 
 .grid-cols-2 {
@@ -42,7 +41,7 @@ hr {
 			bottom: 0;
 			left: 0;
 			width: 330px;
-			margin: 1rem;
+			margin: 16px; // 1rem;
 			flex-direction: column;
 			display: flex;
 

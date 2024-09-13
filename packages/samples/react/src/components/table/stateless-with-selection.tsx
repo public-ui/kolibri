@@ -45,23 +45,25 @@ export const TableStatelessWithSelection: FC = () => {
 				<p>This sample shows KolTableStateless with checkboxes for selection enabled.</p>
 			</SampleDescription>
 
-			<KolTableStateless
-				_label="Table with selection checkboxes"
-				_headerCells={{
-					horizontal: [
-						[
-							{ key: 'id', label: '#ID', textAlign: 'left' },
-							{ key: 'name', label: 'Name', textAlign: 'left' },
+			<section className="w-full">
+				<KolTableStateless
+					_label="Table with selection checkboxes"
+					_headerCells={{
+						horizontal: [
+							[
+								{ key: 'id', label: '#ID', textAlign: 'left' },
+								{ key: 'name', label: 'Name', textAlign: 'left' },
+							],
 						],
-					],
-				}}
-				_data={DATA}
-				_selection={selection}
-				_on={{ onSelectionChange: handleSelectionChangeCallback }}
-				className="block"
-				style={{ maxWidth: '600px' }}
-				ref={kolTableStatelessRef}
-			/>
+					}}
+					_data={DATA}
+					_selection={selection}
+					_on={{ onSelectionChange: handleSelectionChangeCallback }}
+					className="block"
+					style={{ maxWidth: '600px' }}
+					ref={kolTableStatelessRef}
+				/>
+			</section>
 		</>
 	);
 };

@@ -1,3 +1,5 @@
+@import './rem';
+
 @mixin kol-button {
 	button {
 		background-color: transparent;
@@ -5,7 +7,7 @@
 
 	.button a.hide-label > .kol-span-wc,
 	.button button.hide-label > .kol-span-wc {
-		padding: 0 0.5rem;
+		padding: 0 rem(8);
 	}
 
 	a > .kol-span-wc,

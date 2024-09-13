@@ -10,6 +10,7 @@ export const TableWithFooter: FC = () => (
 		</SampleDescription>
 
 		<KolTable
+			className="w-full"
 			_label="Business hours"
 			_headers={{
 				horizontal: [

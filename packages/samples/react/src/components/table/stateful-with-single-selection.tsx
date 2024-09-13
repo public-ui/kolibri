@@ -51,34 +51,36 @@ export const TableStatefulWithSingleSelection: FC = () => {
 				<p>This sample shows KolTableStateful with radio buttons for selection enabled.</p>
 			</SampleDescription>
 
-			<KolTableStateful
-				_label="Table with selection radio"
-				_headers={{
-					horizontal: [
-						[
-							{ key: 'id', label: '#ID', textAlign: 'left' },
-							{ key: 'name', label: 'Name', textAlign: 'left' },
+			<section className="w-full">
+				<KolTableStateful
+					_label="Table with selection radio"
+					_headers={{
+						horizontal: [
+							[
+								{ key: 'id', label: '#ID', textAlign: 'left' },
+								{ key: 'name', label: 'Name', textAlign: 'left' },
+							],
 						],
-					],
-				}}
-				_data={DATA}
-				_selection={selection}
-				_on={{ onSelectionChange: handleSelectionChangeCallback }}
-				className="block"
-				style={{ maxWidth: '600px' }}
-				ref={kolTableStatefulRef}
-			/>
-			<div className="grid grid-cols-3 items-end gap-4 mt-4">
-				<KolButton
-					_label="getSelection()"
-					_on={{
-						onClick: () => {
-							void handleButtonClick();
-						},
 					}}
-				></KolButton>
-				<pre>{JSON.stringify(selectedValue, null, 2)}</pre>
-			</div>
+					_data={DATA}
+					_selection={selection}
+					_on={{ onSelectionChange: handleSelectionChangeCallback }}
+					className="block"
+					style={{ maxWidth: '600px' }}
+					ref={kolTableStatefulRef}
+				/>
+				<div className="grid grid-cols-3 items-end gap-4 mt-4">
+					<KolButton
+						_label="getSelection()"
+						_on={{
+							onClick: () => {
+								void handleButtonClick();
+							},
+						}}
+					></KolButton>
+					<pre>{JSON.stringify(selectedValue, null, 2)}</pre>
+				</div>
+			</section>
 		</>
 	);
 };

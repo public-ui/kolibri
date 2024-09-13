@@ -14,6 +14,7 @@ import {
 	KolSingleSelect,
 	KolCombobox,
 	KolTextarea,
+	KolHeading,
 } from '@public-ui/react';
 import type { FC } from 'react';
 import React from 'react';
@@ -47,70 +48,72 @@ export const StaticForm: FC = () => {
 				</ol>
 			</SampleDescription>
 
-			{searchParams.size > 0 && (
-				<>
-					<h2>Submitted data</h2>
-					<pre>
-						<code>{JSON.stringify(Object.fromEntries(searchParams.entries()), null, 2)}</code>
-					</pre>
-				</>
-			)}
+			<section className="w-full flex flex-col">
+				{searchParams.size > 0 && (
+					<div className="grid gap-4">
+						<KolHeading _level={2} _label="Submitted data" />
+						<pre>
+							<code>{JSON.stringify(Object.fromEntries(searchParams.entries()), null, 2)}</code>
+						</pre>
+					</div>
+				)}
 
-			<form className="grid gap-4" method="get" noValidate>
-				<KolInputCheckbox _name="checkbox" _label="Checkbox" />
-				<KolInputColor _name="color" _label="Color" />
-				<KolInputDate _name="date" _label="Date" />
-				<KolInputEmail _name="email" _label="Email" />
-				<KolInputFile _name="file" _label="File" />
-				<KolInputFile _name="file" _label="Files (multiple)" _multiple />
-				<KolInputNumber _name="number" _label="Number" />
-				<KolInputPassword _name="password" _label="Password" />
-				<KolInputRadio
-					_name="radio"
-					_label="Radio"
-					_options={[
-						{ label: 'Option A', value: 'A' },
-						{ label: 'Option B', value: 'B' },
-					]}
-				/>
-				<KolInputRange _name="range" _label="Range" />
-				<KolInputText _name="text" _label="Text" />
-				<KolSelect
-					_name="select"
-					_label="Select"
-					_options={[
-						{ label: 'Option A', value: 'A' },
-						{ label: 'Option B', value: 'B' },
-					]}
-				/>
-				<KolSelect
-					_name="select"
-					_label="Select (multiple)"
-					_multiple
-					_options={[
-						{ label: 'Option A', value: 'A' },
-						{ label: 'Option B', value: 'B' },
-					]}
-					_rows={2}
-				/>
-				<KolSingleSelect
-					_name="singleSelect"
-					_label="Single Select"
-					_options={[
-						{ label: 'Option A', value: 'A' },
-						{ label: 'Option B', value: 'B' },
-					]}
-				/>
-				<KolCombobox _name="combobox" _label="Combobox" _suggestions={COUNTRY_SUGGESTIONS} />
-				<KolTextarea _name="textarea" _label="Textarea" _rows={5} />
-				<div className="flex flex-wrap gap-4">
-					<KolButton _label="Submit" _type="submit" _variant="primary" />
-					<KolButton _label="Reset" _type="reset" />
-				</div>
+				<form className="grid gap-4" method="get" noValidate>
+					<KolInputCheckbox _name="checkbox" _label="Checkbox" />
+					<KolInputColor _name="color" _label="Color" />
+					<KolInputDate _name="date" _label="Date" />
+					<KolInputEmail _name="email" _label="Email" />
+					<KolInputFile _name="file" _label="File" />
+					<KolInputFile _name="file" _label="Files (multiple)" _multiple />
+					<KolInputNumber _name="number" _label="Number" />
+					<KolInputPassword _name="password" _label="Password" />
+					<KolInputRadio
+						_name="radio"
+						_label="Radio"
+						_options={[
+							{ label: 'Option A', value: 'A' },
+							{ label: 'Option B', value: 'B' },
+						]}
+					/>
+					<KolInputRange _name="range" _label="Range" />
+					<KolInputText _name="text" _label="Text" />
+					<KolSelect
+						_name="select"
+						_label="Select"
+						_options={[
+							{ label: 'Option A', value: 'A' },
+							{ label: 'Option B', value: 'B' },
+						]}
+					/>
+					<KolSelect
+						_name="select"
+						_label="Select (multiple)"
+						_multiple
+						_options={[
+							{ label: 'Option A', value: 'A' },
+							{ label: 'Option B', value: 'B' },
+						]}
+						_rows={2}
+					/>
+					<KolSingleSelect
+						_name="singleSelect"
+						_label="Single Select"
+						_options={[
+							{ label: 'Option A', value: 'A' },
+							{ label: 'Option B', value: 'B' },
+						]}
+					/>
+					<KolCombobox _name="combobox" _label="Combobox" _suggestions={COUNTRY_SUGGESTIONS} />
+					<KolTextarea _name="textarea" _label="Textarea" _rows={5} />
+					<div className="flex flex-wrap gap-4">
+						<KolButton _label="Submit" _type="submit" _variant="primary" />
+						<KolButton _label="Reset" _type="reset" />
+					</div>
 
-				{/* Add a random string to allow the form to be always submitted. Without it, if theres no change to the data, the form simply won't submit when requested. */}
-				<input type="hidden" value={crypto.randomUUID()} name="random" />
-			</form>
+					{/* Add a random string to allow the form to be always submitted. Without it, if theres no change to the data, the form simply won't submit when requested. */}
+					<input type="hidden" value={crypto.randomUUID()} name="random" />
+				</form>
+			</section>
 		</>
 	);
 };
