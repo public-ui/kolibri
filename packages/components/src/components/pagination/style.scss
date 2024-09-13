@@ -11,7 +11,6 @@
 		font-size: rem(16);
 		gap: rem(16);
 		grid-template-columns: 1fr auto;
-		position: relative;
 	}
 
 	.navigation-list {
@@ -26,5 +25,11 @@
 
 	.separator:before {
 		content: '•••';
+	}
+
+	.item-label {
+		display: flex;
+		align-items: center;
+		gap: rem(8);
 	}
 }

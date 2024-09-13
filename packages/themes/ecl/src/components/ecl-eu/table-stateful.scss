@@ -5,11 +5,6 @@
 		font-family: var(--font-family);
 	}
 
-	:host > div {
-		overflow-x: auto;
-		overflow-y: hidden;
-	}
-
 	.pagination {
 		gap: 1rem;
 	}

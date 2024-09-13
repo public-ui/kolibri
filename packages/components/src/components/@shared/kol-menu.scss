@@ -1,31 +1,16 @@
 @mixin kol-menu-styles {
 	.menu {
 		&__listbox {
-			list-style-type: none;
-
-			margin: 0;
+			width: 100%;
 			padding: 0;
+			box-sizing: border-box;
+			display: grid;
+			list-style: none;
+			margin: 0;
 			overflow-y: auto;
 			overflow-x: hidden;
-			z-index: 2;
 			background-color: white;
 			max-height: rem(250);
-		}
-
-		&__item {
-			cursor: pointer;
-
-			.menu__listbox--cursor-hidden & {
-				cursor: none !important;
-			}
-		}
-
-		&__no-results-message {
-			cursor: default;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			min-height: rem(50);
 		}
 	}
 }

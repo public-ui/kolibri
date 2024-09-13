@@ -5,11 +5,6 @@
 		font-family: var(--font-family);
 	}
 
-	:host > div {
-		overflow-x: auto;
-		overflow-y: hidden;
-	}
-
 	@media (min-width: 1024px) {
 		:host > div:last-child,
 		:host > div:last-child > div:last-child {

@@ -3,6 +3,7 @@ import { h } from '@stencil/core';
 import type { JSX } from '@stencil/core/internal';
 import type { Option } from '../../schema';
 import clsx from 'clsx';
+// import { KolButtonTag } from '../../core/component-names';
 
 type KolMenuProps = {
 	options: Option<number>[];
@@ -28,25 +29,32 @@ export const KolMenu: FunctionalComponent<KolMenuProps> = ({ options, onItemClic
 			event.preventDefault();
 		}
 	}
-
 	return (
-		<ul role="listbox" class={clsx('menu__listbox')}>
-			{options.length > 0 &&
-				options.map((option, index) => (
-					<li
-						ref={(el) => (listItems[index] = el)}
-						id={`option-${index}`}
-						key={index}
-						tabIndex={-1}
-						role="option"
-						class="menu__item"
-						aria-selected={selectedValue === option.value}
-						onKeyDown={(event) => handleKeyDown(event, index, option)}
-						onClick={(event) => onItemClick(event, option)}
-					>
-						{renderOption && renderOption(option)}
-					</li>
-				))}
-		</ul>
+		<div class="menu">
+			<ul role="listbox" class={clsx('menu__listbox')}>
+				{options.length > 0 &&
+					options.map((option, index) => (
+						<li
+							ref={(el) => (listItems[index] = el)}
+							id={`option-${index}`}
+							key={index}
+							tabIndex={-1}
+							role="option"
+							class="menu__item"
+							aria-selected={selectedValue === option.value}
+							onKeyDown={(event) => handleKeyDown(event, index, option)}
+							onClick={(event) => onItemClick(event, option)}
+							onMouseOver={() => {
+								listItems[index]?.focus();
+							}}
+							onFocus={() => {
+								listItems[index]?.focus();
+							}}
+						>
+							{renderOption && renderOption(option)}
+						</li>
+					))}
+			</ul>
+		</div>
 	);
 };

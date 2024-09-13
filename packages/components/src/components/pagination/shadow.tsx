@@ -27,7 +27,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import { KolButtonWcTag, KolSplitButtonTag } from '../../core/component-names';
+import { KolButtonWcTag, KolIconTag, KolSplitButtonTag } from '../../core/component-names';
 import { KolMenu } from '../@shared/kol-menu';
 
 const leftDoubleArrowIcon = {
@@ -166,7 +166,7 @@ export class KolPagination implements PaginationAPI {
 					</ul>
 				</nav>
 				{this.state._pageSizeOptions?.length > 0 && (
-					<KolSplitButtonTag _label={`${this.state._pageSize} ${translate('kol-entries-per-site')}`} _id={`pagination-size-${this.nonce}`}>
+					<KolSplitButtonTag class="split-button" _label={`${this.state._pageSize} ${translate('kol-entries-per-site')}`} _id={`pagination-size-${this.nonce}`}>
 						<KolMenu
 							options={this.state._pageSizeOptions}
 							selectedValue={this.state._pageSize}
@@ -175,8 +175,8 @@ export class KolPagination implements PaginationAPI {
 							}}
 							focusedOptionIndex={-1}
 							renderOption={(option: Option<number>) => (
-								<div>
-									{option.label} {this.state._pageSize === option.value && <span> </span>}
+								<div class="item-label">
+									{option.label} {this.state._pageSize === option.value && <KolIconTag _icons="codicon codicon-check" _label=""></KolIconTag>}
 								</div>
 							)}
 						/>
