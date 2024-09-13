@@ -93,9 +93,10 @@ export class KolAlertWc implements AlertAPI {
 									icon: 'codicon codicon-close',
 								},
 							}}
-							_label={translate('kol-close-alert', { placeholders: { label: this.state._label?.trim() || '' } })}
+							_label={translate('kol-close-alert')}
 							_on={this.on}
 							_tooltipAlign="left"
+							_ariaDescription={this.state._label?.trim() || ''}
 						></KolButtonWcTag>
 					)}
 				</div>
