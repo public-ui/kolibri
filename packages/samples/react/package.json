@@ -29,7 +29,6 @@
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react": "workspace:*",
 		"@public-ui/themes": "workspace:*",
-		"@types/node": "ts5.4",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",
 		"@unocss/preset-uno": "0.58.9",
