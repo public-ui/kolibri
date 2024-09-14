@@ -2,7 +2,6 @@
 	"devDependencies": {
 		"@commitlint/cli": "19.3.0",
 		"@commitlint/config-conventional": "19.2.2",
-		"@types/node": "ts5.4",
 		"cross-env": "7.0.3",
 		"husky": "9.1.4",
 		"js-yaml": "4.1.0",

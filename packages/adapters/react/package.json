@@ -49,7 +49,6 @@
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
-		"@types/node": "ts5.4",
 		"@types/normalize-package-data": "2.4.4",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",

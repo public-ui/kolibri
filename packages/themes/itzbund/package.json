@@ -13,7 +13,6 @@
 	"devDependencies": {
 		"@public-ui/schema": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
-		"@types/node": "ts5.4",
 		"typescript": "5.5.4"
 	},
 	"peerDependencies": {

@@ -72,7 +72,6 @@ config.overrides.push({
 config.plugins = config.plugins || [];
 // config.plugins.push('react');
 config.plugins.push('jsx-a11y');
-config.plugins.push('no-loops');
 
 config.settings = {
 	react: {

@@ -42,7 +42,6 @@
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@types/gradient-string": "1.1.6",
-		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"cpy-cli": "5.0.0",
@@ -52,7 +51,6 @@
 		"eslint-plugin-jsdoc": "48.11.0",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.9.0",
-		"eslint-plugin-no-loops": "0.4.0",
 		"eslint-plugin-react": "7.35.0",
 		"knip": "5.27.0",
 		"mocha": "10.7.0",
