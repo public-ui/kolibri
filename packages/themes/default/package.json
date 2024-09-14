@@ -57,7 +57,7 @@
 		"@typescript-eslint/parser": "7.18.0",
 		"eslint": "8.57.0",
 		"rollup-plugin-postcss": "4.0.2",
-		"typescript": "5.5.4",
+		"typescript": "5.6.2",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
