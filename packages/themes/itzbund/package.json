@@ -27,11 +27,11 @@
 		"@typescript-eslint/parser": "7.18.0",
 		"eslint": "8.57.0",
 		"nodemon": "3.1.4",
-		"postcss": "8.4.40",
-		"rollup": "4.19.2",
+		"postcss": "8.4.45",
+		"rollup": "4.21.3",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.77.8",
-		"typescript": "5.5.4",
+		"sass": "1.78.0",
+		"typescript": "5.6.2",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
