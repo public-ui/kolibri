@@ -6,7 +6,6 @@ packages:
   - 'packages/adapters/solid*'
   - 'packages/adapters/vue'
   - 'packages/components'
-  - 'packages/create-kolibri'
   - 'packages/designer'
   - 'packages/samples/angular'
   - 'packages/samples/react'
