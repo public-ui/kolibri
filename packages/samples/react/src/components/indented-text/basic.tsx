@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {KolBadge, KolIndentedText} from '@public-ui/react';
+import { KolBadge, KolIndentedText } from '@public-ui/react';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
