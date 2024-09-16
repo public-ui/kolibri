@@ -8,6 +8,7 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	StencilUnknown,
+	Stringified,
 	TooltipAlignPropType,
 } from '../../../schema';
 import {
@@ -23,9 +24,9 @@ import {
 	validateLabelWithExpertSlot,
 	validateMsg,
 	validateTabIndex,
+	validateTooltipAlign,
 	watchBoolean,
 	watchString,
-	validateTooltipAlign,
 } from '../../../schema';
 
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../../utils/events';
@@ -116,7 +117,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateMsg(value?: MsgPropType): void {
+	public validateMsg(value?: Stringified<MsgPropType>): void {
 		validateMsg(this.component, value);
 	}
 

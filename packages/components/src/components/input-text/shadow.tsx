@@ -251,7 +251,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: MsgPropType;
+	@Prop() public _msg?: Stringified<MsgPropType>;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -408,7 +408,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_msg')
-	public validateMsg(value?: MsgPropType): void {
+	public validateMsg(value?: Stringified<MsgPropType>): void {
 		this.controller.validateMsg(value);
 	}
 
