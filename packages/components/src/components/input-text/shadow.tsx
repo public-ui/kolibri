@@ -107,6 +107,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 						'hide-label': !!this.state._hideLabel,
 					}}
 					_accessKey={this.state._accessKey}
+					_alert={this.showAsAlert()}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_hasCounter={this.state._hasCounter}
@@ -167,6 +168,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 							onChange={this.onChange}
 							onInput={this.onInput}
 							onKeyDown={this.onKeyDown}
+							onFocus={() => (this.inputHasFocus = true)}
+							onBlur={() => (this.inputHasFocus = false)}
 						/>
 					</div>
 				</KolInputWcTag>
@@ -183,9 +186,9 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
-	 * @TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved.
+	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -338,8 +341,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		_type: 'text',
 	};
 
+	@State() private inputHasFocus = false;
+
 	public constructor() {
 		this.controller = new InputTextController(this, 'text', this.host);
+	}
+
+	private showAsAlert(): boolean {
+		if (this.state._alert === undefined) {
+			return Boolean(this.state._touched) && !this.inputHasFocus;
+		}
+		return this.state._alert;
 	}
 
 	@Watch('_accessKey')
@@ -479,7 +491,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.oldValue = this._value;
 		this.controller.componentWillLoad();
