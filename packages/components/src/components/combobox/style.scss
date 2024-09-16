@@ -51,11 +51,7 @@
 		}
 
 		&__item {
-			&.highlighted {
-				background-color: #f0f0f0;
-			}
-
-			.menu__listbox--cursor-hidden & {
+			.combobox__listbox--cursor-hidden & {
 				cursor: none !important;
 			}
 		}
