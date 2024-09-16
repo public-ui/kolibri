@@ -87,6 +87,7 @@ export class KolAlertWc implements AlertAPI {
 					{this.state._hasCloser && (
 						<KolButtonWcTag
 							class="close"
+							_ariaDescription={this.state._label?.trim() || ''}
 							_hideLabel
 							_icons={{
 								left: {
@@ -96,7 +97,6 @@ export class KolAlertWc implements AlertAPI {
 							_label={translate('kol-close-alert')}
 							_on={this.on}
 							_tooltipAlign="left"
-							_ariaDescription={this.state._label?.trim() || ''}
 						></KolButtonWcTag>
 					)}
 				</div>
