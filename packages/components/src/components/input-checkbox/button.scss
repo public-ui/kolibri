@@ -4,6 +4,12 @@
 		grid-template-columns: var(--a11y-min-size) auto;
 		grid-template-areas: 'error error' 'input label' 'hint hint';
 	}
+
+	.button[data-label-align='left']:not(.hide-label) {
+		grid-template-columns: auto var(--a11y-min-size);
+		grid-template-areas: 'error error' 'label input' 'hint hint';
+	}
+
 	.button:focus-within {
 		/* override global `[tabindex]:focus` style */
 		cursor: inherit;

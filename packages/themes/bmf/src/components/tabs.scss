@@ -3,7 +3,7 @@
 		font-family: var(--font-family);
 	}
 
-	:host .kol-button-group-wc {
+	:host .tabs-button-group {
 		display: inline-flex;
 		gap: 2rem;
 		flex-wrap: wrap;
@@ -46,7 +46,7 @@
 		gap: 0.5rem;
 	}
 
-	:host > div > div {
+	.tabs-content {
 		padding: 0.25em 0;
 	}
 
@@ -78,7 +78,7 @@
 		grid-template-columns: 1fr auto;
 	}
 
-	:host > .tabs-align-right .kol-button-group-wc {
+	:host > .tabs-align-right .tabs-button-group {
 		display: grid;
 		order: 2;
 	}
@@ -88,7 +88,7 @@
 		grid-template-columns: auto 1fr;
 	}
 
-	:host > .tabs-align-left .kol-button-group-wc {
+	:host > .tabs-align-left .tabs-button-group {
 		display: grid;
 		order: 0;
 	}
@@ -98,19 +98,19 @@
 		grid-template-rows: 1fr auto;
 	}
 
-	:host > .tabs-align-bottom .kol-button-group-wc {
+	:host > .tabs-align-bottom .tabs-button-group {
 		order: 2;
 	}
 
-	:host > .tabs-align-bottom .kol-button-group-wc > div {
+	:host > .tabs-align-bottom .tabs-button-group > div {
 		display: flex;
 	}
 
-	:host > .tabs-align-bottom > .kol-button-group-wc > div > div:first-child {
+	:host > .tabs-align-bottom > .tabs-button-group > div > div:first-child {
 		margin: 0px 1em 0px 0px;
 	}
 
-	:host > .tabs-align-bottom > .kol-button-group-wc > div > div {
+	:host > .tabs-align-bottom > .tabs-button-group > div > div {
 		margin: 0px 1em;
 	}
 
@@ -119,19 +119,19 @@
 		grid-template-rows: auto 1fr;
 	}
 
-	:host > .tabs-align-top .kol-button-group-wc {
+	:host > .tabs-align-top .tabs-button-group {
 		order: 0;
 	}
 
-	:host > .tabs-align-top .kol-button-group-wc > div {
+	:host > .tabs-align-top .tabs-button-group > div {
 		display: flex;
 	}
 
-	:host > .tabs-align-top > .kol-button-group-wc > div > div:first-child {
+	:host > .tabs-align-top > .tabs-button-group > div > div:first-child {
 		margin: 0px 1em 0px 0px;
 	}
 
-	:host > .tabs-align-top > .kol-button-group-wc > div > div {
+	:host > .tabs-align-top > .tabs-button-group > div > div {
 		margin: 0px 1em;
 	}
 
@@ -147,40 +147,40 @@
 		grid-template-columns: 1fr auto;
 	}
 
-	:host > .tabs-align-left .kol-button-group-wc,
-	:host > .tabs-align-top .kol-button-group-wc {
+	:host > .tabs-align-left .tabs-button-group,
+	:host > .tabs-align-top .tabs-button-group {
 		order: 0;
 	}
 
-	:host > .tabs-align-bottom .kol-button-group-wc,
-	:host > .tabs-align-right .kol-button-group-wc {
+	:host > .tabs-align-bottom .tabs-button-group,
+	:host > .tabs-align-right .tabs-button-group {
 		order: 1;
 	}
 
-	:host > .tabs-align-left .kol-button-group-wc,
-	:host > .tabs-align-right .kol-button-group-wc {
+	:host > .tabs-align-left .tabs-button-group,
+	:host > .tabs-align-right .tabs-button-group {
 		gap: inherit;
 	}
 
-	:host > div.tabs-align-left .kol-button-group-wc > div,
-	:host > div.tabs-align-left .kol-button-group-wc > div > div,
-	:host > div.tabs-align-right .kol-button-group-wc > div,
-	:host > div.tabs-align-right .kol-button-group-wc > div > div {
+	:host > div.tabs-align-left .tabs-button-group > div,
+	:host > div.tabs-align-left .tabs-button-group > div > div,
+	:host > div.tabs-align-right .tabs-button-group > div,
+	:host > div.tabs-align-right .tabs-button-group > div > div {
 		display: grid;
 	}
 
-	:host > div.tabs-align-left .kol-button-group-wc > div > div .kol-button-wc,
-	:host > div.tabs-align-right .kol-button-group-wc > div > div .kol-button-wc {
+	:host > div.tabs-align-left .tabs-button-group > div > div .kol-button-wc,
+	:host > div.tabs-align-right .tabs-button-group > div > div .kol-button-wc {
 		width: 100%;
 	}
 
-	:host > div.tabs-align-bottom .kol-button-group-wc div,
-	:host > div.tabs-align-top .kol-button-group-wc div {
+	:host > div.tabs-align-bottom .tabs-button-group div,
+	:host > div.tabs-align-top .tabs-button-group div {
 		display: flex;
 		flex-wrap: wrap;
 	}
 
-	:host .kol-button-group-wc button {
+	:host .tabs-button-group button {
 		border: none;
 	}
 }

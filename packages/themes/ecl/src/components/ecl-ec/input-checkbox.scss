@@ -10,6 +10,10 @@
 		justify-content: flex-start;
 	}
 
+	.default[data-label-align='left']:not(.hide-label) .checkbox-container {
+		justify-content: flex-end;
+	}
+
 	input[type='checkbox'] {
 		background-color: var(--color-white);
 		border-width: 2px;
@@ -109,6 +113,13 @@
 		gap: var(--spacing-xs) 0;
 		grid-template-areas:
 			'input label'
+			'hint hint'
+			'error error';
+	}
+
+	.button[data-label-align='left']:not(.hide-label) {
+		grid-template-areas:
+			'label input'
 			'hint hint'
 			'error error';
 	}
