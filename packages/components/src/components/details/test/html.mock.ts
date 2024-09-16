@@ -29,10 +29,8 @@ export const getDetailsHtml = (props: DetailsProps): string => {
 					${props._label}
 				</span>
 			</summary>
-			<div${props._open ? `` : ` aria-hidden="true"`} class="content">
-				<div class="kol-indented-text">
+			<div${props._open ? `` : ` aria-hidden="true"`} class="content kol-indented-text">
 					<slot />
-				</div>
 			</div>
 		</details>
 	</mock:shadow-root>
