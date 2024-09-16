@@ -92,3 +92,39 @@ export const LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 		],
 	},
 ];
+
+export const LINKS_WITHOUT_SUBMENU: ButtonOrLinkOrTextWithChildrenProps[] = [
+	{
+		_label: 'Homepage',
+		_icons: 'codicon codicon-home',
+		_on: {
+			onClick: () => console.log('Homepage clicked'),
+		},
+	},
+	{
+		_label: '2 Navigation point',
+		_href: '#/back-page',
+		_on: {
+			onClick: () => console.log('Link clicked'),
+		},
+	},
+	{
+		_label: '3 Navigation point',
+		_href: '#/back-page',
+		_icons: 'codicon codicon-home',
+	},
+	{
+		_label: '4 Navigation point with children and onClick',
+		_on: {
+			onClick: () => console.log('4.1 Nested link clicked'),
+		},
+	},
+	{
+		_label: '5 No own page, only category',
+		_active: true,
+	},
+	{
+		_label: '6 No own page, with icon',
+		_icons: 'codicon codicon-squirrel',
+	},
+];
