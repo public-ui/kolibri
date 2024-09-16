@@ -76,10 +76,12 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 						<KolIconTag _label="" _icons="codicon codicon-chevron-right" class={`icon ${this.state._open ? 'is-open' : ''}`} />
 						<span>{this.state._label}</span>
 					</summary>
-					<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" ref={(element) => (this.contentElement = element)}>
-						<div class="kol-indented-text">
-							<slot />
-						</div>
+					<div
+						aria-hidden={this.state._open === false ? 'true' : undefined}
+						class="content kol-indented-text"
+						ref={(element) => (this.contentElement = element)}
+					>
+						<slot />
 					</div>
 				</details>
 			</Host>

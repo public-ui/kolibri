@@ -5,10 +5,5 @@
 		font-family: var(--font-family);
 	}
 
-	details > .kol-indented-text {
-		margin: 0.175rem;
-		padding: 0;
-	}
-
 	@include kol-indented-theme;
 }
