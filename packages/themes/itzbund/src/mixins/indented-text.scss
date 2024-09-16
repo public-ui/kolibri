@@ -1,5 +1,6 @@
 @mixin kol-indented-theme {
 	.kol-indented-text {
+		font-family: var(--font-family);
 		background: var(--color-white);
 		border-left: none;
 		box-shadow: -4px 0px 0px var(--color-petrol);
