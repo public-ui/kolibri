@@ -168,8 +168,14 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 							onChange={this.onChange}
 							onInput={this.onInput}
 							onKeyDown={this.onKeyDown}
-							onFocus={() => (this.inputHasFocus = true)}
-							onBlur={() => (this.inputHasFocus = false)}
+							onFocus={(event) => {
+								this.controller.onFacade.onFocus(event);
+								this.inputHasFocus = true;
+							}}
+							onBlur={(event) => {
+								this.controller.onFacade.onBlur(event);
+								this.inputHasFocus = false;
+							}}
 						/>
 					</div>
 				</KolInputWcTag>

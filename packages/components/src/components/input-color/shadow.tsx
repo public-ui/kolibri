@@ -126,8 +126,14 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 							type="color"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
-							onFocus={() => (this.inputHasFocus = true)}
-							onBlur={() => (this.inputHasFocus = false)}
+							onFocus={(event) => {
+								this.controller.onFacade.onFocus(event);
+								this.inputHasFocus = true;
+							}}
+							onBlur={(event) => {
+								this.controller.onFacade.onBlur(event);
+								this.inputHasFocus = false;
+							}}
 						/>
 					</div>
 				</KolInputWcTag>

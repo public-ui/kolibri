@@ -161,7 +161,6 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onBlur(event: Event): void {
-		this.component._alert = true;
 		this.component._touched = true;
 
 		// Event handling
@@ -237,8 +236,6 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onFocus(event: Event): void {
-		this.component._alert = true;
-
 		// Event handling
 		stopPropagation(event);
 		tryToDispatchKoliBriEvent('focus', this.host);

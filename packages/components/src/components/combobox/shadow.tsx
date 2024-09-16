@@ -207,9 +207,15 @@ export class KolCombobox implements ComboboxAPI {
 									required={this.state._required}
 									spellcheck="false"
 									{...this.controller.onFacade}
-									onBlur={() => (this.inputHasFocus = false)}
+									onFocus={(event) => {
+										this.controller.onFacade.onFocus(event);
+										this.inputHasFocus = true;
+									}}
+									onBlur={(event) => {
+										this.controller.onFacade.onBlur(event);
+										this.inputHasFocus = false;
+									}}
 									onChange={this.onChange.bind(this)}
-									onFocus={() => (this.inputHasFocus = true)}
 									onInput={this.onInput.bind(this)}
 									placeholder={this.state._placeholder}
 								/>
