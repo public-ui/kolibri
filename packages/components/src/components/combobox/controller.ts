@@ -1,9 +1,10 @@
-import type { ComboboxWatches, ComboboxProps, SuggestionsPropType, MsgPropType } from '../../schema';
-import { watchBoolean, validateSuggestions, watchString, validateMsg } from '../../schema';
+import type { ComboboxProps, ComboboxWatches, MsgPropType, Stringified, SuggestionsPropType } from '../../schema';
+import { validateMsg, validateSuggestions, watchBoolean, watchString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+
 export class ComboboxController extends InputIconController implements ComboboxWatches {
 	protected readonly component: Generic.Element.Component & ComboboxProps;
 
@@ -22,7 +23,7 @@ export class ComboboxController extends InputIconController implements ComboboxW
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
 	}
-	public validateMsg(value?: MsgPropType): void {
+	public validateMsg(value?: Stringified<MsgPropType>): void {
 		validateMsg(this.component, value);
 	}
 
