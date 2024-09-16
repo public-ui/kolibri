@@ -6,12 +6,6 @@
 			font-family: var(--font-family);
 		}
 
-		:host > div,
-		.kol-table-stateless-wc > div {
-			overflow-x: auto;
-			overflow-y: hidden;
-		}
-
 		caption {
 			padding: 0.5em;
 		}

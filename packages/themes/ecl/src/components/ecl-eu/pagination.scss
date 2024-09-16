@@ -1,15 +1,23 @@
+@import '../mixins-eu/rem';
+
+$option-height: rem(40);
+$visible-options: 5;
+
 @layer kol-theme-component {
 	:host {
 		display: grid;
 		font-family: var(--font-family);
 	}
+
 	.button {
 		--kolibri-spacing: 0.25rem;
 		border-radius: 4px;
+
 		&:focus {
 			outline: none;
 		}
 	}
+
 	.button-inner {
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
@@ -21,10 +29,12 @@
 		background-color: #fc0;
 		color: #171a22;
 	}
+
 	.button:focus-visible .button-inner {
 		outline-offset: -4px;
 		outline: 2px solid var(--color-black);
 	}
+
 	button:not(:disabled):active .button-inner,
 	button:not(:disabled):hover .button-inner {
 		background-color: #fc0;
@@ -35,10 +45,12 @@
 			0 4px 5px rgb(9 49 142 / 4%),
 			0 -4px 4px rgb(9 49 142 / 4%);
 	}
+
 	.button:disabled .button-inner {
 		opacity: 0.5;
 		cursor: not-allowed;
 	}
+
 	.selected .button-inner {
 		background-color: var(--color-blue);
 		border-color: var(--color-blue);
@@ -46,5 +58,34 @@
 		font-weight: bold;
 		text-decoration: underline;
 		opacity: 1 !important;
+	}
+
+	.menu {
+		&__listbox {
+			border-style: solid;
+			border-width: 1px;
+			border-radius: var(--border-radius);
+			border-color: var(--color-blue);
+			max-height: calc($option-height * $visible-options + 2px);
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		&__item {
+			height: $option-height;
+			padding: rem(10) rem(12);
+
+			.radio-label {
+				align-self: center;
+				padding-left: rem(1);
+			}
+
+			&:focus,
+			&.highlighted {
+				background: var(--color-blue);
+				color: white;
+				outline: 0 !important;
+			}
+		}
 	}
 }

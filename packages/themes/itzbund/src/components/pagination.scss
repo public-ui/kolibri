@@ -1,8 +1,14 @@
+@import '../mixins/rem';
+
+$option-height: rem(40);
+$visible-options: 5;
+
 @layer kol-theme-component {
 	.button {
 		border-radius: 2rem;
 		font-family: var(--font-family-sans);
 	}
+
 	.button-inner {
 		background-color: var(--color-weiss);
 		border-radius: 2rem;
@@ -17,19 +23,23 @@
 		transition-property: background, color, border-color;
 		transition-timing-function: ease-in-out;
 	}
+
 	.hide-label .button-inner {
 		padding: 0 0.5rem;
 	}
+
 	.button:not(:disabled):hover .button-inner,
 	.button:focus .button-inner {
 		background-color: var(--color-anthrazit);
 		border-color: var(--color-anthrazit);
 		color: var(--color-weiss);
 	}
+
 	.button:disabled .button-inner {
 		cursor: not-allowed;
 		opacity: 0.5;
 	}
+
 	.selected .button-inner {
 		background-color: var(--color-achat);
 		border-color: var(--color-achat);
@@ -37,5 +47,35 @@
 		font-weight: bold;
 		opacity: 1 !important;
 		text-decoration: underline;
+	}
+
+	.menu {
+		&__listbox {
+			border-style: solid;
+			border-width: 1px;
+			border-radius: var(--border-radius);
+			border-color: var(--kolibri-color-normal);
+			background-color: #e8edf2 !important;
+			max-height: calc($option-height * $visible-options + 2px);
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		&__item {
+			height: $option-height;
+			padding: rem(10) rem(12);
+
+			.radio-label {
+				align-self: center;
+				padding-left: rem(1);
+			}
+
+			&:focus,
+			&.highlighted {
+				background: var(--color-petrol);
+				color: var(--color-weiss);
+				outline: 0 !important;
+			}
+		}
 	}
 }
