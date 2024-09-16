@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import type { DetailsProps } from '../../../schema';
 import clsx from 'clsx';
-import { KolIconTag, KolIndentedTextTag } from '../../../core/component-names';
+import { KolIconTag } from '../../../core/component-names';
 
 export const getDetailsHtml = (props: DetailsProps): string => {
 	props = mixMembers(
@@ -30,9 +30,9 @@ export const getDetailsHtml = (props: DetailsProps): string => {
 				</span>
 			</summary>
 			<div${props._open ? `` : ` aria-hidden="true"`} class="content">
-				<${KolIndentedTextTag}>
+				<div class="kol-indented-text">
 					<slot />
-				</${KolIndentedTextTag}>
+				</div>
 			</div>
 		</details>
 	</mock:shadow-root>
