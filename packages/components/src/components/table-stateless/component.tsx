@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 
 import type {
 	KoliBriTableCell,
@@ -54,6 +54,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	private horizontal = true;
 	private cellsToRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
+
+	private checkboxRefs: HTMLInputElement[] = [];
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -134,6 +136,27 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_selection')
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
+	}
+
+	@Listen('keydown')
+	public handleKeyDown(event: KeyboardEvent) {
+		if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+			const focusedElement = this.tableDivElement?.querySelector(':focus') as HTMLInputElement;
+			let index = this.checkboxRefs.indexOf(focusedElement);
+
+			if (index > -1) {
+				event.preventDefault();
+
+				if (event.key === 'ArrowDown') {
+					index = (index + 1) % this.checkboxRefs.length;
+					this.checkboxRefs[index].focus();
+				} else if (event.key === 'ArrowUp') {
+					event.preventDefault();
+					index = (index + this.checkboxRefs.length - 1) % this.checkboxRefs.length;
+					this.checkboxRefs[index].focus();
+				}
+			}
+		}
 	}
 
 	public componentDidRender(): void {
@@ -402,6 +425,7 @@ export class KolTableStateless implements TableStatelessAPI {
 						<label class="checkbox-container">
 							<KolIconTag class="icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
 							<input
+								ref={(el) => el && this.checkboxRefs.push(el)}
 								{...props}
 								type="checkbox"
 								onInput={(event: Event) => {
@@ -507,6 +531,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					<label class="checkbox-container">
 						<KolIconTag class="icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
 						<input
+							ref={(el) => el && this.checkboxRefs.push(el)}
 							name="selection"
 							checked={isChecked && !indeterminate}
 							aria-label={label}
@@ -591,6 +616,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	public render(): JSX.Element {
 		const dataField = this.createDataField(this.state._data, this.state._headerCells);
+		this.checkboxRefs = [];
 
 		return (
 			<Host class="kol-table-stateless-wc">
