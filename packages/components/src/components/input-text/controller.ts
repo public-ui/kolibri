@@ -1,9 +1,10 @@
 import type { InputTextProps, InputTextType, InputTextWatches, PropLabelWithExpertSlot, PropSuggestions, SuggestionsPropType } from '../../schema';
-import { inputTextTypeOptions, validateHasCounter, validateSuggestions, watchValidator } from '../../schema';
+import { inputTextTypeOptions, validateSuggestions, watchValidator } from '../../schema';
 
 import { InputPasswordController } from '../input-password/controller';
 
 import type { Generic } from 'adopted-style-sheets';
+
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	id: string;
@@ -47,10 +48,6 @@ export class InputTextController extends InputTextEmailController implements Inp
 			new Set([`String {${inputTextTypeOptions.join(', ')}`]),
 			value,
 		);
-	}
-
-	public validateHasCounter(value?: boolean): void {
-		validateHasCounter(this.component, value);
 	}
 
 	public componentWillLoad(): void {

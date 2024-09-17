@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { KolInputCheckbox, KolNav } from '@public-ui/react';
+import { KolHeading, KolInputCheckbox, KolNav } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
-import { LINKS } from './links';
+import { LINKS, LINKS_WITHOUT_SUBMENU } from './links';
 
 import type { FC } from 'react';
 export const NavBasic: FC = () => {
@@ -17,16 +17,27 @@ export const NavBasic: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<KolInputCheckbox
-				_label="Show icons when expanded"
-				_checked={hasIconsWhenExpanded}
-				_on={{
-					onChange: (_event, value: unknown) => {
-						setHasIconsWhenExpanded(value as boolean);
-					},
-				}}
-			></KolInputCheckbox>
-			<KolNav class="block w-fit" _label="Main navigation" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded={hasIconsWhenExpanded} />
+			<section className="grid gap-8">
+				<section>
+					<KolInputCheckbox
+						_label="Show icons when expanded"
+						_checked={hasIconsWhenExpanded}
+						_on={{
+							onChange: (_event, value: unknown) => {
+								setHasIconsWhenExpanded(value as boolean);
+							},
+						}}
+					></KolInputCheckbox>
+				</section>
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Navigation without submenu" />
+					<KolNav class="block w-fit" _label="Main navigation" _links={LINKS_WITHOUT_SUBMENU} _hasCompactButton _hasIconsWhenExpanded={hasIconsWhenExpanded} />
+				</section>
+				<section className="grid gap-4">
+					<KolHeading _level={2} _label="Navigation with submenu" />
+					<KolNav class="block w-fit" _label="Main navigation" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded={hasIconsWhenExpanded} />
+				</section>
+			</section>
 		</>
 	);
 };

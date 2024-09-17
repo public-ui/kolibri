@@ -6,15 +6,17 @@ import { InputsGetValue } from './inputs-get-value';
 import { StaticForm } from './static-form';
 import { FocusElements } from './focus-elements';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
+import { InputGroupWithError } from './input-group-with-error';
 
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
 		'appointment-form': AppointmentForm,
-		'inputs-get-value': InputsGetValue,
 		'custom-tooltip-width': CustomTooltipWidth,
-		'static-form': StaticForm,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
+		'input-group-with-error': InputGroupWithError,
+		'inputs-get-value': InputsGetValue,
+		'static-form': StaticForm,
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
 	},
 };

@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { Events } from '../enums';
-import type { PropAlign, PropDisabled, PropHideLabel, PropLabel, PropTooltipAlign } from '../props';
+import type { PropAlign, PropDisabled, PropHideLabel, PropLabel, PropTabBehavior, PropTooltipAlign } from '../props';
 import type { EventCallback, EventValueOrEventCallback, KoliBriIconsProp, Stringified } from '../types';
 
 export type KoliBriTabsCallbacks = {
@@ -33,7 +33,8 @@ type RequiredProps = {
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
 	selected: number;
-} & PropAlign;
+} & PropAlign &
+	PropTabBehavior;
 
 type RequiredStates = {
 	selected: number;
@@ -42,7 +43,7 @@ type RequiredStates = {
 	PropAlign;
 type OptionalStates = {
 	on: KoliBriTabsCallbacks;
-};
+} & PropTabBehavior;
 
 export type TabsProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type TabsStates = Generic.Element.Members<RequiredStates, OptionalStates>;

@@ -1,4 +1,5 @@
 import type { CSSResize, HasCounterPropType, RowsPropType, TextareaProps, TextareaWatches } from '../../schema';
+import { validateHasCounter } from '../../schema';
 import { cssResizeOptions, validateRows, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -19,7 +20,7 @@ export class TextareaController extends InputIconController implements TextareaW
 	};
 
 	public validateHasCounter(value?: HasCounterPropType): void {
-		watchBoolean(this.component, '_hasCounter', value, {
+		validateHasCounter(this.component, value, {
 			hooks: {
 				afterPatch: this.afterSyncCharCounter,
 			},
