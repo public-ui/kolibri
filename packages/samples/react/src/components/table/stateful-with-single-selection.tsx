@@ -57,15 +57,16 @@ export const TableStatefulWithSingleSelection: FC = () => {
 				<p>This sample shows KolTableStateful with radio buttons for selection enabled.</p>
 			</SampleDescription>
 
-			<section className="w-full">	
-			<KolTableStateful
-				_label="Table with selection radio"
-				_headers={{
-					horizontal: [
-						[
-							{ key: 'id', label: '#ID', textAlign: 'left' },
-							{ key: 'name', label: 'Name', textAlign: 'left' },
-							{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+			<section className="w-full">
+				<KolTableStateful
+					_label="Table with selection radio"
+					_headers={{
+						horizontal: [
+							[
+								{ key: 'id', label: '#ID', textAlign: 'left' },
+								{ key: 'name', label: 'Name', textAlign: 'left' },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+							],
 						],
 					}}
 					_data={DATA}

@@ -56,14 +56,15 @@ export const TableStatefulWithSelection: FC = () => {
 			</SampleDescription>
 
 			<section className="w-full">
-			<KolTableStateful
-				_label="Table with selection checkboxes"
-				_headers={{
-					horizontal: [
-						[
-							{ key: 'id', label: '#ID', textAlign: 'left' },
-							{ key: 'name', label: 'Name', textAlign: 'left' },
-							{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+				<KolTableStateful
+					_label="Table with selection checkboxes"
+					_headers={{
+						horizontal: [
+							[
+								{ key: 'id', label: '#ID', textAlign: 'left' },
+								{ key: 'name', label: 'Name', textAlign: 'left' },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+							],
 						],
 					}}
 					_data={DATA}

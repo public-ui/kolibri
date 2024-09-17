@@ -52,14 +52,15 @@ export const TableStatelessWithSelection: FC = () => {
 			</SampleDescription>
 
 			<section className="w-full">
-			<KolTableStateless
-				_label="Table with selection checkboxes"
-				_headerCells={{
-					horizontal: [
-						[
-							{ key: 'id', label: '#ID', textAlign: 'left' },
-							{ key: 'name', label: 'Name', textAlign: 'left' },
-							{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+				<KolTableStateless
+					_label="Table with selection checkboxes"
+					_headerCells={{
+						horizontal: [
+							[
+								{ key: 'id', label: '#ID', textAlign: 'left' },
+								{ key: 'name', label: 'Name', textAlign: 'left' },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+							],
 						],
 					}}
 					_data={DATA}
