@@ -4,6 +4,7 @@ import { KolButton, KolTableStateless, createReactRenderElement } from '@public-
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableSelection } from '@public-ui/components';
 import { getRoot } from '../../shares/react-roots';
+import { KoliBriTableCell } from '@public-ui/components/src/schema';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
@@ -40,8 +41,8 @@ export const TableStatelessWithSelection: FC = () => {
 		};
 	}, [kolTableStatelessRef]);
 
-	const renderButton = (element: HTMLElement) => {
-		getRoot(createReactRenderElement(element)).render(<KolButton _label={`Button`}></KolButton>);
+	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
+		getRoot(createReactRenderElement(element)).render(<KolButton _label={`Click ${cell.data?.id}`}></KolButton>);
 	};
 
 	return (
@@ -57,7 +58,7 @@ export const TableStatelessWithSelection: FC = () => {
 						[
 							{ key: 'id', label: '#ID', textAlign: 'left' },
 							{ key: 'name', label: 'Name', textAlign: 'left' },
-							{ key: 'action', label: 'Action', textAlign: 'left', render: (element) => renderButton(element) },
+							{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
 						],
 					],
 				}}

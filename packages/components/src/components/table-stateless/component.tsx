@@ -18,7 +18,6 @@ import type {
 	TableStatelessStates,
 } from '../../schema';
 import {
-	Log,
 	validateLabel,
 	validateTableCallbacks,
 	validateTableData,
@@ -145,24 +144,16 @@ export class KolTableStateless implements TableStatelessAPI {
 			const focusedElement = this.tableDivElement?.querySelector(':focus') as HTMLInputElement;
 			let index = this.checkboxRefs.indexOf(focusedElement);
 
-			if (focusedElement && this.checkboxRefs.includes(focusedElement)) {
+			if (index > -1) {
 				event.preventDefault();
 
 				if (event.key === 'ArrowDown') {
 					index = (index + 1) % this.checkboxRefs.length;
-					try {
-						this.checkboxRefs[index].focus();
-					} catch (e) {
-						Log.debug(e);
-					}
+					this.checkboxRefs[index].focus();
 				} else if (event.key === 'ArrowUp') {
 					event.preventDefault();
 					index = (index + this.checkboxRefs.length - 1) % this.checkboxRefs.length;
-					try {
-						this.checkboxRefs[index].focus();
-					} catch (e) {
-						Log.debug(e);
-					}
+					this.checkboxRefs[index].focus();
 				}
 			}
 		}
