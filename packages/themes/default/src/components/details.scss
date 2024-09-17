@@ -7,7 +7,8 @@
 		font-family: var(--font-family);
 	}
 
-	details .kol-indented-text {
+	details .indented-text {
+		@include indented-text;
 		margin: rem(4) 0 0 rem(10.4);
 	}
 
@@ -15,5 +16,4 @@
 		font-size: rem(19.2);
 	}
 
-	@include kol-indented-theme;
 }

@@ -24,13 +24,12 @@ hr {
 	grid-template-columns: auto auto;
 }
 
-.kol-indented-text{
-	font-family: var(--font-family);
-	background-color: var(--color-light);
-	border-left: none;
-	box-shadow: -2px 0px 0px var(--color-primary-variant);
-	padding: 0 calc(8rem / var(--kolibri-root-font-size, 16));
-	width: 100%;
+.indented-text {
+	p {
+		font-family: var(--font-family);
+		box-shadow: -2px 0px 0px var(--color-primary-variant);
+		padding: 0 calc(8rem / var(--kolibri-root-font-size, 16));
+	}
 }
 
 @media (min-width: 1024px) {

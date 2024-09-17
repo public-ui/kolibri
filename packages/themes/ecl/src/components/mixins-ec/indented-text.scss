@@ -1,5 +1,4 @@
-@mixin kol-indented-theme {
-	.kol-indented-text {
+@mixin indented-text {
 		font-family: var(--font-family);
 		border-end-start-radius: 0;
 		border-inline-start: 10px solid var(--color-yellow);
@@ -8,5 +7,4 @@
 		padding-inline-start: 1.5rem;
 		padding-top: 1rem;
 		margin: 0;
-	}
 }

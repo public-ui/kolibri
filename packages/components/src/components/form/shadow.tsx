@@ -76,11 +76,11 @@ export class KolForm implements FormAPI {
 				<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 					{this.state._requiredText === true ? (
 						<p>
-							<div class="kol-indented-text">{translate('kol-form-description')}</div>
+							<div class="mandatory-fields-hint">{translate('kol-form-description')}</div>
 						</p>
 					) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
 						<p>
-							<div class="kol-indented-text">{this.state._requiredText}</div>
+							<div class="mandatory-fields-hint">{this.state._requiredText}</div>
 						</p>
 					) : null}
 					<slot />

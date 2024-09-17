@@ -19,8 +19,9 @@
 			}
 		}
 
-		.kol-indented-text {
+		.indented-text {
 			margin: 0.25em 0 0 0.65em;
+			@include indented-text;
 		}
 
 		.kol-icon {
@@ -38,5 +39,4 @@
 		}
 	}
 
-	@include kol-indented-theme;
 }

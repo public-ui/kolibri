@@ -1,11 +1,9 @@
-@mixin kol-indented-theme {
-	.kol-indented-text {
-		font-family: var(--font-family);
-		background-color: var(--color-white);
-		border-left: none;
-		box-shadow: -2px 0px 0px var(--color-ocean);
-		padding: 0 0.5em;
-		width: 100%;
-		color: var(--color-grey);
-	}
+@mixin indented-text {
+	font-family: var(--font-family);
+	background-color: var(--color-white);
+	border-left: none;
+	box-shadow: -2px 0px 0px var(--color-ocean);
+	padding: 0 0.5em;
+	width: 100%;
+	color: var(--color-grey);
 }

@@ -30,9 +30,7 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 
 	return hideMenus ? null : (
 		<div className="flex justify-between mb-sm">
-			<div>
-				<div className="kol-indented-text">{props.children}</div>
-			</div>
+			<div className="indented-text">{props.children}</div>
 			<div className="flex flex-wrap gap-2 shrink-0 ml">
 				{codeLink && <KolLink _href={codeLink} _label="Code" _target="_blank" />}
 				{docLink && <KolLink _href={docLink} _label="Documentation" _target="_blank" />}

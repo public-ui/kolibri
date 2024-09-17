@@ -1,5 +1,5 @@
 @import '../mixins/indented-text.scss';
 
 @layer kol-theme-component {
-	@include kol-indented-theme;
+	@include indented-text;
 }
