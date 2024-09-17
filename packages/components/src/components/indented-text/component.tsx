@@ -10,7 +10,7 @@ import { Component, h, Host, State } from '@stencil/core';
 	shadow: false,
 })
 /**
- * @deprecated This component has been deprecated as it ist just styling.
+ * @deprecated Will be removed in v3. Replace with custom HTML and styling.
  */
 export class KolIndentedTextWc implements IndentedTextAPI {
 	@State() public state: IndentedTextStates = {};
