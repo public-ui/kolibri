@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
 import type { FC } from 'react';
 import type { ButtonProps } from '@public-ui/components/src';
-import { KolButton, KolInputText } from '@public-ui/react';
+import { KolInputText } from '@public-ui/react';
 
 export const InputTextSmartButton: FC = () => {
 	const smartButton: ButtonProps = {
