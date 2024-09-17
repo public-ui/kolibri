@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 import { setTagNameTransformer } from '@public-ui/react';
 
-import { bootstrap } from '@public-ui/components';
+import { bootstrap, isInitialized } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
@@ -34,6 +34,9 @@ const getThemes = async () => {
 
 void (async () => {
 	try {
+		console.info('bootstap is initialized: ', isInitialized());
+		console.info('start kolibri bootstrap');
+
 		await bootstrap(
 			await getThemes(),
 			() => {
@@ -56,6 +59,8 @@ void (async () => {
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 			},
 		);
+
+		console.info('bootstap is initialized: ', isInitialized());
 	} catch (error) {
 		console.warn('Theme registration failed:', error);
 	}
