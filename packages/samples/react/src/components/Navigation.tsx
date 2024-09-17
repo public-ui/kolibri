@@ -12,7 +12,7 @@ function ComponentNavContainer({ children }: { children?: React.ReactNode }): Re
 	const isMobile = useMobile();
 
 	return isMobile ? (
-		<KolAccordion _label="Alle Komponenten" class="mt">
+		<KolAccordion _label="All components" class="mt">
 			{children}
 		</KolAccordion>
 	) : (
