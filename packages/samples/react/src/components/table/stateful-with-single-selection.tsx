@@ -1,8 +1,9 @@
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { KolButton, KolTableStateful } from '@public-ui/react';
+import { KolButton, KolTableStateful, createReactRenderElement } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
+import { getRoot } from '../../shares/react-roots';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
@@ -45,6 +46,10 @@ export const TableStatefulWithSingleSelection: FC = () => {
 		};
 	}, [kolTableStatefulRef]);
 
+	const renderButton = (element: HTMLElement) => {
+		getRoot(createReactRenderElement(element)).render(<KolButton _label={`Button`}></KolButton>);
+	};
+
 	return (
 		<>
 			<SampleDescription>
@@ -58,6 +63,7 @@ export const TableStatefulWithSingleSelection: FC = () => {
 						[
 							{ key: 'id', label: '#ID', textAlign: 'left' },
 							{ key: 'name', label: 'Name', textAlign: 'left' },
+							{ key: 'action', label: 'Action', textAlign: 'left', render: (element) => renderButton(element) },
 						],
 					],
 				}}
