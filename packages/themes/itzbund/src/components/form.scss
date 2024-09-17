@@ -4,7 +4,6 @@
 @layer kol-theme-component {
 	@include kol-alert-theme;
 
-
 	.mandatory-fields-hint {
 		@include indented-text;
 	}
