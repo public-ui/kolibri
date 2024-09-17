@@ -7,7 +7,7 @@ export const getFormHtml = (props: FormProps): string => {
 	<mock:shadow-root>
 		<form autocomplete="off" method="post" novalidate="">
 			<p>
-			<div class="kol-indented-text">${
+			<div class="mandatory-fields-hint">${
 				typeof props._requiredText === 'string' ? props._requiredText : 'Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben.'
 			}</div>
 			</p>
