@@ -129,7 +129,7 @@ export class KolInputWc implements Props {
 					</datalist>
 				)}
 				{this._hasCounter && (
-					<span class="counter" aria-atomic="true" aria-live="polite">
+					<span class="counter" aria-atomic="true" aria-live="polite" data-testid="input-counter">
 						{this._currentLength}
 						{this._maxLength && (
 							<>

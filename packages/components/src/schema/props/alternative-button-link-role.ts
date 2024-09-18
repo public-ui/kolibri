@@ -1,8 +1,9 @@
 /* types */
 import type { Generic } from 'adopted-style-sheets';
-import { watchString } from '../utils';
+import { watchValidator } from '../utils';
 
-export type AlternativeButtonLinkRolePropType = 'button' | 'link' | 'tab' | 'treeitem';
+const alternativeButtonLinkRolePropTypeOptions = ['button', 'link', 'tab', 'treeitem'] as const;
+export type AlternativeButtonLinkRolePropType = (typeof alternativeButtonLinkRolePropTypeOptions)[number];
 
 /**
  * Defines the role of the components primary element.
@@ -13,5 +14,11 @@ export type PropAlternativeButtonLinkRole = {
 
 /* validator */
 export const validateAlternativeButtonLinkRole = (component: Generic.Element.Component, value?: AlternativeButtonLinkRolePropType) => {
-	watchString(component, '_role', value);
+	watchValidator(
+		component,
+		`_role`,
+		(value) => typeof value === 'string' && alternativeButtonLinkRolePropTypeOptions.includes(value),
+		new Set([`KoliBriAlternativeButtonLinkRole {${alternativeButtonLinkRolePropTypeOptions.join(', ')}`]),
+		value,
+	);
 };

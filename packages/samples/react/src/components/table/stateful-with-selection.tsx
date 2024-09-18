@@ -1,22 +1,24 @@
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { KolButton, KolTableStateful } from '@public-ui/react';
+import { KolButton, KolTableStateful, createReactRenderElement } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
+import { getRoot } from '../../shares/react-roots';
+import type { KoliBriTableCell } from '@public-ui/components/src/schema';
 
 const DATA = [
-	{ id: '1001', name: 'Foo Bar' },
-	{ id: '1002', name: 'Foo Baz' },
+	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
+	{ id: '1002', name: 'Foo Baz', internalIdentifier: `AAA1002` },
 ];
 type Data = (typeof DATA)[0];
 
 export const TableStatefulWithSelection: FC = () => {
-	const [selectedValue, setSelectedValue] = useState<Data[]>();
+	const [selectedValue, setSelectedValue] = useState<Data[] | null>();
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
-		selectedKeys: selectedValue ? selectedValue.map((element) => element.id) : [],
-		keyPropertyName: 'id',
+		selectedKeys: selectedValue ? selectedValue.map((element) => element.internalIdentifier) : [],
+		keyPropertyName: 'internalIdentifier',
 	};
 
 	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>(null);
@@ -24,13 +26,13 @@ export const TableStatefulWithSelection: FC = () => {
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: Data[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[]) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[] | KoliBriTableDataType | null) => {
 		console.log('Selection change via callback', selection);
 	};
 
 	const handleButtonClick = async () => {
 		const selection = await kolTableStatefulRef.current?.getSelection();
-		setSelectedValue(selection as Data[]);
+		setSelectedValue(selection as Data[] | null);
 	};
 
 	useEffect(() => {
@@ -42,6 +44,10 @@ export const TableStatefulWithSelection: FC = () => {
 			kolTableStatefulRef.current?.removeEventListener('kol-selection-change', handleSelectionChangeEvent);
 		};
 	}, [kolTableStatefulRef]);
+
+	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
+		getRoot(createReactRenderElement(element)).render(<KolButton _label={`Click ${cell.data?.id}`}></KolButton>);
+	};
 
 	return (
 		<>
@@ -56,6 +62,7 @@ export const TableStatefulWithSelection: FC = () => {
 						[
 							{ key: 'id', label: '#ID', textAlign: 'left' },
 							{ key: 'name', label: 'Name', textAlign: 'left' },
+							{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
 						],
 					],
 				}}

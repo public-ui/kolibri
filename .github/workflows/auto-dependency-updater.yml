@@ -5,8 +5,8 @@ env:
   version: v2
 
 on:
-  schedule:
-    - cron: '0 2 * * *'
+  # schedule:
+  #   - cron: '0 2 * * *'
   workflow_dispatch:
 
 jobs:
@@ -51,7 +51,7 @@ jobs:
       - name: Create update branch
         run: git checkout -b ${{env.issue}}-${{env.version}}/auto-update-deps
       - name: Install
-        run: pnpm i --workspace-root
+        run: pnpm i --no-frozen-lockfile
       - name: Update dependencies
         run: pnpm ncu:minor
       - name: Reinstall dependencies
