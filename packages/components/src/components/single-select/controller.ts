@@ -1,4 +1,4 @@
-import type { SingleSelectWatches, SingleSelectProps, MsgPropType, OptionsPropType, Option, SelectOption, W3CInputValue } from '../../schema';
+import type { SingleSelectWatches, SingleSelectProps, MsgPropType, OptionsPropType, Option, SelectOption, W3CInputValue, Stringified } from '../../schema';
 import { watchBoolean, watchString, validateMsg, validateOptions } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -43,7 +43,7 @@ export class SingleSelectController extends InputIconController implements Singl
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
 	}
-	public validateMsg(value?: MsgPropType): void {
+	public validateMsg(value?: Stringified<MsgPropType>): void {
 		validateMsg(this.component, value);
 	}
 
