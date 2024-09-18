@@ -53,7 +53,7 @@ export const TableHorizontalScrollbar: FC = () => {
 				></KolInputCheckbox>
 
 				<KolHeading _label="Same table without scrollbar" _level={2} className="block mt-4" />
-				<p className="text-base mt-0">
+				<p className="mt-0">
 					<i>Scrollbar appears on very small viewport sizes</i>
 				</p>
 
