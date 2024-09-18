@@ -5,5 +5,7 @@
 		font-family: var(--font-family);
 	}
 
-	@include indented-text;
+	.kol-indented-text-wc > div {
+		@include indented-text;
+	}
 }

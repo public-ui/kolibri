@@ -29,7 +29,7 @@ export const getDetailsHtml = (props: DetailsProps): string => {
 					${props._label}
 				</span>
 			</summary>
-			<div${props._open ? `` : ` aria-hidden="true"`} class="content indented-text">
+			<div${props._open ? `` : ` aria-hidden="true"`} class="indented-text">
 					<slot />
 			</div>
 		</details>
