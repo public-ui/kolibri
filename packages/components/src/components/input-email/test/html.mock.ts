@@ -22,7 +22,11 @@ export const getInputEmailHtml = (props: InputEmailProps): string => {
 	const { ariaDescribedBy } = getRenderStates(state);
 
 	return `
-	<kol-input-email class="kol-input-email"  ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
+	<kol-input-email
+		class="kol-input-email"
+		${state._touched ? `_touched=""` : ''}
+		${state._alert ? `_alert=""` : ''}
+	>
 	   <mock:shadow-root>
 	     <${KolInputWcTag}
 					${state._disabled ? `_disabled=""` : ''}
@@ -30,6 +34,7 @@ export const getInputEmailHtml = (props: InputEmailProps): string => {
 					${state._required ? `_required=""` : ''}
 					${state._readOnly ? `_readonly=""` : ''}
 					${state._touched ? `_touched=""` : ''}
+					${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 					_hint=""
 					_id="${state._id}"
 					_label="${state._label ? `${state._label}` : ''}"
@@ -37,7 +42,6 @@ export const getInputEmailHtml = (props: InputEmailProps): string => {
 					class="email ${state._hideLabel ? `hide-label` : ''}"
 					role="presentation"
 					_currentlength="0"
-					${state._alert || state._alert === undefined ? `_alert=""` : ''}
 			 >
 			 <span slot="label"> ${
 					hasExpertSlot

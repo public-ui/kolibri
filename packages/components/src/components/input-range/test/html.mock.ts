@@ -23,8 +23,7 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 	<kol-input-range
 	 	class="kol-input-range"
 		${state._touched ? `_touched=""` : ''}
-		${state._alert || state._alert === undefined ? `_alert=""` : ''}
-
+		${state._alert ? `_alert=""` : ''}
 	>
 	   <mock:shadow-root>
 	     <${KolInputWcTag}
@@ -32,6 +31,7 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
 					${state._accessKey ? `_accessKey="${state._accessKey}"` : ''}
+					${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 					_hint=""
 					_id="${state._id}"
 					_label="${state._label ? `${state._label}` : ''}"

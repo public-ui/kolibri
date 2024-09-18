@@ -27,9 +27,13 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 	const { ariaDescribedBy } = getRenderStates(state);
 
 	return `
-	<kol-input-checkbox class="kol-input-checkbox" ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
-	   <mock:shadow-root>
-	     <${KolInputWcTag}
+	<kol-input-checkbox
+		class="kol-input-checkbox"
+		${state._touched ? `_touched=""` : ''}
+		${state._alert ? `_alert=""` : ''}
+	>
+		<mock:shadow-root>
+			<${KolInputWcTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
@@ -40,7 +44,7 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 					_label="${state._label ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="checkbox ${state._hideLabel ? 'hide-label' : ''} default"
-					${state._alert || state._alert === undefined ? `_alert=""` : ''}
+					${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 			 >
 			 <span slot="label"> ${
 					hasExpertSlot

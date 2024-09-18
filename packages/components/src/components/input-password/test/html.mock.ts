@@ -21,12 +21,17 @@ export const getInputPasswordHtml = (props: InputPasswordProps): string => {
 	const { ariaDescribedBy } = getRenderStates(state);
 
 	return `
-	<kol-input-password class="kol-input-password"  ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
-	   <mock:shadow-root>
-	     <${KolInputWcTag}
+		<kol-input-password
+			class="kol-input-password"
+			${state._touched ? `_touched=""` : ''}
+			${state._alert ? `_alert=""` : ''}
+		>
+			<mock:shadow-root>
+				<${KolInputWcTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
+					${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 					_hint=""
 					_id="${state._id}"
 					_label="${state._label ? `${state._label}` : ''}"
