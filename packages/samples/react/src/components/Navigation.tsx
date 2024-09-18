@@ -44,9 +44,9 @@ function Navigation({ routes }: NavigationProps): React.ReactNode {
 	};
 
 	const parentTreeElements = Object.entries(routes).map(([parentName, children]) => (
-		<KolTreeItem key={parentName} _label={parentName} _href="">
+		<TreeItem key={parentName} label={parentName} to={parentName}>
 			{buildSubTree(parentName, children)}
-		</KolTreeItem>
+		</TreeItem>
 	));
 
 	return (

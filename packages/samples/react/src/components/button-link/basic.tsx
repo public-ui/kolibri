@@ -13,7 +13,7 @@ export const ButtonLinkBasic: FC = () => (
 				such as <code>block</code>, <code>inline-block</code> and <code>inline</code>. It also demonstrates the disabled-state.
 			</p>
 		</SampleDescription>
-		<div>
+		<section className="text-base">
 			<p>
 				In this paragraph, a link is inserted that contains no additional attributes. <KolButtonLink _label="Simple Link" /> It is rendered by default as an{' '}
 				<strong>inline element</strong>.
@@ -31,6 +31,6 @@ export const ButtonLinkBasic: FC = () => (
 			<p>
 				<KolButtonLink _label="Disabled ButtonLink" _disabled />
 			</p>
-		</div>
+		</section>
 	</>
 );

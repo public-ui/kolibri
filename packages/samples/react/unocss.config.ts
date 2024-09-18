@@ -1,8 +1,12 @@
 import { defineConfig } from '@unocss/webpack';
 import { presetUno } from '@unocss/preset-uno';
 
-function pxValueToRem(size: number) {
+function pxValueToRem(size: number): string {
 	return `calc(${size}rem / var(--kolibri-root-font-size, 16))`;
+}
+
+function convertRem(value: number): string {
+	return pxValueToRem(value * 16);
 }
 
 function convertDynamicClassValueToRem(value: string) {
@@ -133,5 +137,26 @@ export default defineConfig({
 			width: pxValueToRem(24 * 16) // 24rem
 		})],
 	],
+	extendTheme: (theme: any) => { 
+		return {
+			...theme,
+			fontSize: {
+				xs: [ convertRem(0.75), convertRem(1) ],
+				sm: [ convertRem(0.875), convertRem(1.25) ],
+				base: [ convertRem(1), convertRem(1.5) ],
+				lg: [ convertRem(1.125), convertRem(1.75) ],
+				xl: [ convertRem(1.25), convertRem(1.75) ],
+				'2xl': [ convertRem(1.5), convertRem(2) ],
+				'3xl': [ convertRem(1.875), convertRem(2.25) ],
+				'4xl': [ convertRem(2.25), convertRem(2.5) ],
+				'5xl': [ convertRem(3), '1' ],
+				'6xl': [ convertRem(3.75), '1' ],
+				'7xl': [ convertRem(4.5), '1' ],
+				'8xl': [ convertRem(6), '1' ],
+				'9xl': [ convertRem(8), '1' ],
+				'kol-test': ['625%', '1']
+			  },
+		}
+	},
 	presets: [presetUno()],
 });

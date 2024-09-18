@@ -82,7 +82,7 @@ export function InputTextFormatterDemo() {
 							</div>
 							<div className="p-2">
 								<KolHeading _label="Model" _level={2} />
-								<pre>{JSON.stringify(form.values, null, 2)}</pre>
+								<pre className="text-base">{JSON.stringify(form.values, null, 2)}</pre>
 							</div>
 						</>
 					)}

@@ -80,7 +80,7 @@ const Scenario = (props: Props) => {
 					},
 				}}
 			></KolButton>
-			<pre>{formatter(value)}</pre>
+			<pre className="text-base">{formatter(value)}</pre>
 		</div>
 	);
 };

@@ -63,7 +63,7 @@ export const TreeBasic: FC = () => {
 				)}
 			</KolTree>
 
-			<p>Current tree item: {subPage ?? 'none'}</p>
+			<p className="text-base">Current tree item: {subPage ?? 'none'}</p>
 
 			<div className="flex flex-row gap-2">
 				<KolButton _label="Change label for '1 Home'" _on={{ onClick: updateHomeLabel }}></KolButton>

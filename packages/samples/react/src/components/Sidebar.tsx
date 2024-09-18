@@ -28,12 +28,6 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 		onThemeChange((value as [string])[0]);
 	};
 
-	// TODO: include this, as soon as KolTree send click event
-	// const handleLinkClick = (event: Event) => {
-	// 	location.replace((event.target as HTMLLinkElement).href); // KoliBri prevents the default click behavior as soon as an event listener is set, so we need to reimplement it.
-	// 	document.querySelector('#route-container')?.scrollIntoView({ behavior: 'smooth' });
-	// };
-
 	const handlePreviousClick = () => {
 		const currentIndex = getIndexOfSample();
 		const nextIndex = currentIndex <= 0 ? routeList.length - 1 : currentIndex - 1;
@@ -66,7 +60,7 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 				<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
 				<div className="flex flex-justify-between flex-items-center mt">
 					<KolButton _icons="codicon codicon-arrow-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />
-					<span className="text-center">
+					<span className="text-base text-center">
 						{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
 					</span>
 					<KolButton _icons="codicon codicon-arrow-right" _hideLabel _label="Next component" _on={{ onClick: handleNextClick }} />

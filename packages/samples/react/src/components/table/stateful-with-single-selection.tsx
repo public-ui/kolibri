@@ -85,7 +85,7 @@ export const TableStatefulWithSingleSelection: FC = () => {
 							},
 						}}
 					></KolButton>
-					<pre>{JSON.stringify(selectedValue, null, 2)}</pre>
+					<pre className="text-base">{JSON.stringify(selectedValue, null, 2)}</pre>
 				</div>
 			</section>
 		</>
