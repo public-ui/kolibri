@@ -38,7 +38,7 @@ export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.Kol
 			<KolInputText {...props} _placeholder="Placeholder" _msg={{ _type: 'error', _description: ERROR_MSG }} _touched _type="url" _label="URL (url)" />
 			<KolInputText {...props} _placeholder="Placeholder" _type="tel" _label="Telephone (tel)" _msg={{ _type: 'warning', _description: 'Small warning' }} />
 			<KolInputText {...props} _placeholder="Placeholder" _type="tel" _label="Telephone (tel)" _msg={{ _type: 'success', _description: 'Success message' }} />
-			<KolInputText {...props} _placeholder="Placeholder" _label="With counter" _hasCounter _maxLength={10} />
+			<KolInputText {...props} _placeholder="Placeholder" _label="With counter" _hasCounter _maxLength={10} _value="Lorem Ipsum" />
 			<KolInputText {...props} _placeholder="Placeholder" _readOnly _label="First name (text, readonly)" />
 			<KolInputText {...props} _value="Value" _readOnly _label="First name (text, readonly)" />
 			<KolInputText {...props} _placeholder="Placeholder" _disabled _label="First name (text, disabled)" />

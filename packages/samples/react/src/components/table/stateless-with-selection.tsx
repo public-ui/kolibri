@@ -1,20 +1,24 @@
 import type { FC } from 'react';
-import React, { useEffect, useRef } from 'react';
-import { KolTableStateless } from '@public-ui/react';
+import React, { useEffect, useState, useRef } from 'react';
+import { KolButton, KolTableStateless, createReactRenderElement } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableSelection } from '@public-ui/components';
+import { getRoot } from '../../shares/react-roots';
+import type { KoliBriTableCell } from '@public-ui/components/src/schema';
 
 const DATA = [
-	{ id: '1001', name: 'Foo Bar' },
-	{ id: '1002', name: 'Foo Baz' },
+	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
+	{ id: '1002', name: 'Foo Baz', internalIdentifier: `AAA1002` },
 ];
 type Data = (typeof DATA)[0];
 
 export const TableStatelessWithSelection: FC = () => {
+	const [selectedKeys, setSelectedKeys] = useState(['AAA1002']);
+
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
-		selectedKeys: ['1002'],
-		keyPropertyName: 'id',
+		selectedKeys,
+		keyPropertyName: 'internalIdentifier',
 	};
 
 	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>(null);
@@ -22,8 +26,9 @@ export const TableStatelessWithSelection: FC = () => {
 	const handleSelectionChangeEvent = ({ detail: selection }: { detail: string[] }) => {
 		console.log('Selection change via event', selection);
 	};
-	const handleSelectionChangeCallback = (_event: Event, selection: string[]) => {
+	const handleSelectionChangeCallback = (_event: Event, selection: string[] | string) => {
 		console.log('Selection change via callback', selection);
+		setSelectedKeys(typeof selection === 'string' ? [selection] : selection);
 	};
 
 	useEffect(() => {
@@ -35,6 +40,10 @@ export const TableStatelessWithSelection: FC = () => {
 			kolTableStatelessRef.current?.removeEventListener('kol-selection-change', handleSelectionChangeEvent);
 		};
 	}, [kolTableStatelessRef]);
+
+	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
+		getRoot(createReactRenderElement(element)).render(<KolButton _label={`Click ${cell.data?.id}`}></KolButton>);
+	};
 
 	return (
 		<>
@@ -49,6 +58,7 @@ export const TableStatelessWithSelection: FC = () => {
 						[
 							{ key: 'id', label: '#ID', textAlign: 'left' },
 							{ key: 'name', label: 'Name', textAlign: 'left' },
+							{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
 						],
 					],
 				}}

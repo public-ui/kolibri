@@ -87,6 +87,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		} else {
 			// Event handling
 			stopPropagation(event);
+
 			tryToDispatchKoliBriEvent('click', this.host, this.state._value);
 
 			// TODO: Static form handling

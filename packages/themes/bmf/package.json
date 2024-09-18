@@ -12,8 +12,8 @@
 		"prepack": "pnpm build",
 		"start": "npm-run-all --parallel dev serve",
 		"serve": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=BMF npm --prefix \"node_modules/@public-ui/sample-react/\" start",
-		"test": "THEME_MODULE=dist THEME_EXPORT=BMF kolibri-visual-test",
-		"test-update": "THEME_MODULE=dist THEME_EXPORT=BMF kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=BMF kolibri-visual-test",
+		"test-update": "cross-env THEME_MODULE=dist THEME_EXPORT=BMF kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"pretest": "pnpm build",
 		"pretest-update": "pnpm build"
 	},

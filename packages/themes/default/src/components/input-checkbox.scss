@@ -21,8 +21,16 @@
 		grid-template-columns: rem(24) auto;
 	}
 
+	:host .kol-input.default[data-label-align='left']:not(.hide-label) {
+		grid-template-columns: auto rem(24);
+	}
+
 	:host .kol-input.switch {
 		grid-template-columns: rem(56) auto;
+	}
+
+	:host .kol-input.switch[data-label-align='left']:not(.hide-label) {
+		grid-template-columns: auto rem(56);
 	}
 
 	:host .kol-input.button {
@@ -269,6 +277,20 @@
 		&.disabled .input {
 			opacity: 0.5;
 			outline: none;
+		}
+	}
+
+	.button[data-label-align='left']:not(.hide-label) {
+		column-gap: 0;
+
+		.input {
+			border-style: solid;
+			border-width: 1px 1px 1px 0;
+		}
+
+		.input-label {
+			border-style: solid;
+			border-width: 1px 0 1px 1px;
 		}
 	}
 }
