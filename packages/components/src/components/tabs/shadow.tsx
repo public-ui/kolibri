@@ -29,7 +29,7 @@ import { translate } from '../../i18n';
 
 import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
-import { KolButtonGroupWcTag, KolButtonWcTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 import { KeyboardKey } from '../../schema/enums';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -161,7 +161,9 @@ export class KolTabs implements TabsAPI {
 
 	private renderButtonGroup() {
 		return (
-			<KolButtonGroupWcTag class="tabs-button-group" role="tablist" aria-label={this.state._label} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
+			// Rule is disabled, because KolButtonWc is focusable.
+			// eslint-disable-next-line jsx-a11y/interactive-supports-focus
+			<div aria-label={this.state._label} class="tabs-button-group" role="tablist" onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<KolButtonWcTag
 						_disabled={button._disabled}
@@ -189,7 +191,7 @@ export class KolTabs implements TabsAPI {
 						}}
 					></KolButtonWcTag>
 				)}
-			</KolButtonGroupWcTag>
+			</div>
 		);
 	}
 
