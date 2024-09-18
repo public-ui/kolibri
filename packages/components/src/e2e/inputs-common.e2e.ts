@@ -18,7 +18,7 @@ const ALL_INPUT_COMPONENTS = [
 	`kol-textarea`,
 ];
 
-const INPUT_COMPONENTS_WITH_COUNTER = [`kol-input-text`, `kol-input-password`, `kol-input-email`];
+const INPUT_COMPONENTS_WITH_COUNTER = [`kol-input-text`, `kol-input-password`, `kol-input-email`, `kol-textarea`];
 
 test.describe('inputs-common', () => {
 	for (const component of ALL_INPUT_COMPONENTS) {
@@ -38,14 +38,22 @@ test.describe('inputs-common', () => {
 				test('should control the role=alert on error messages based on focus when no _alert prop is set', async ({ page }) => {
 					await page.setContent(`<${component}
 															_label="Input"
-															_msg="{'_description': 'Broken', '_type': 'erro=r'}"
+															_msg="{'_description': 'Broken', '_type': 'error'}"
 															_touched
+															_options='${JSON.stringify([
+																{
+																	label: 'Option 1',
+																	value: 'option1',
+																},
+															])}'
 														/>`);
+					// target all primary input elements, no hidden elements
+					const inputElement = page.locator('input:visible:not([aria-hidden="true"]), textarea, select');
 
 					await expect(page.locator('kol-alert-wc')).toHaveAttribute('role', 'alert');
-					await page.locator('input').focus();
+					await inputElement.focus();
 					await expect(page.locator('kol-alert-wc')).not.toHaveAttribute('role', 'alert');
-					await page.locator('input').blur();
+					await inputElement.blur();
 					await expect(page.locator('kol-alert-wc')).toHaveAttribute('role', 'alert');
 				});
 			});
@@ -62,7 +70,7 @@ test.describe('inputs-common', () => {
 
 				test('should update the counter when the value changes', async ({ page }) => {
 					await page.setContent(`<${component} _label="Input" _value="Lorem Ipsum" _has-counter></${component}>`);
-					await page.locator('input').fill('Lorem');
+					await page.getByLabel('Input').fill('Lorem');
 					await expect(page.getByTestId('input-counter')).toHaveText('5 Zeichen');
 				});
 			});
