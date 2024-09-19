@@ -1,3 +1,5 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -48,7 +50,7 @@
 		color: var(--color-white);
 		font-size: 18px;
 		justify-items: start;
-		padding: 1rem;
+		padding: rem(16);
 		height: 100%;
 	}
 

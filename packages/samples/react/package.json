@@ -34,6 +34,7 @@
 		"@types/react-dom": "18.3.0",
 		"@unocss/preset-uno": "0.58.9",
 		"@unocss/webpack": "0.58.9",
+		"adopted-style-sheets": "1.1.5-rc.3",
 		"ajv": "8.17.1",
 		"chromedriver": "124.0.4",
 		"cpy-cli": "5.0.0",
