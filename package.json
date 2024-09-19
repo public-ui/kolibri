@@ -30,7 +30,7 @@
 		"unused": "pnpm -r unused",
 		"ts-prune": "git clean -f -d -X packages/adapters/**/src && pnpm -r exec npx ts-prune src -e",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @stencil/core,@unocss/*",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @stencil/core,@types/react,@unocss/*",
 		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u",
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky && echo \"Don't forget to build all packages once: pnpm -r build\"",
