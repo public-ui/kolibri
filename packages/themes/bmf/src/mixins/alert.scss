@@ -44,7 +44,7 @@
 				place-items: baseline;
 
 				&::part(icon) {
-					line-height: rem(22);
+					line-height: 1.375;
 				}
 			}
 
@@ -305,8 +305,8 @@
 				font-family: 'Material Symbols Rounded';
 				font-weight: 900;
 				font-variation-settings: 'FILL' 1;
-				height: rem(20);
-				width: rem(20);
+				height: 1.25;
+				width: 1.25;
 			}
 		}
 	}
