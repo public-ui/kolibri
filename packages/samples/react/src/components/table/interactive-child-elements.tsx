@@ -1,10 +1,9 @@
+import type { ButtonVariantPropType, KoliBriTableCell, KoliBriTableHeaderCell } from '@public-ui/components';
+import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react';
 import type { FC } from 'react';
 import React from 'react';
-import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react';
-import { SampleDescription } from '../SampleDescription';
 import { getRoot } from '../../shares/react-roots';
-import type { ButtonVariantPropType, KoliBriTableCell } from '@public-ui/components';
-import type { KoliBriTableHeaderCell } from '@public-ui/components/src/schema';
+import { SampleDescription } from '../SampleDescription';
 
 const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeaderCell => {
 	const capitalizedVariant = variant.charAt(0).toUpperCase() + variant.slice(1);
