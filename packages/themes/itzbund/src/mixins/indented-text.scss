@@ -1,5 +1,6 @@
 @mixin indented-text {
-	box-shadow: -4px 0px 0px var(--color-petrol);
+	border-left: 4px solid var(--color-petrol);
 	padding: 0.25em 0.5em;
+	margin-left: -4px;
 	width: 100%;
 }

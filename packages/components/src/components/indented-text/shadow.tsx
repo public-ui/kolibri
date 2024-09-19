@@ -16,7 +16,7 @@ import { KolIndentedTextWcTag } from '../../core/component-names';
 export class KolIndentedText implements IndentedTextProps {
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-indented-text">
+			<Host>
 				<KolIndentedTextWcTag>
 					<slot />
 				</KolIndentedTextWcTag>

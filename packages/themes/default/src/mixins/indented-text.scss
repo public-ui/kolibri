@@ -1,7 +1,8 @@
 @import '../mixins/rem';
 
 @mixin indented-text {
-	box-shadow: -2px 0px 0px var(--color-primary-variant);
+	border-left: 2px solid var(--color-primary-variant);
 	padding: 0 rem(18) 0 rem(8);
+	margin-left: -2px;
 	width: 100%;
 }

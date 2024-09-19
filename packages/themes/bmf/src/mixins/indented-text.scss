@@ -1,6 +1,7 @@
 @mixin indented-text {
-	box-shadow: -2px 0px 0px var(--color-ocean);
+	border-left: 2px solid var(--color-ocean);
 	padding: 0 0.5em;
+	margin-left: -2px;
 	width: 100%;
 	color: var(--color-grey);
 }
