@@ -69,7 +69,7 @@
 		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js"
 	},
 	"dependencies": {
-		"@floating-ui/dom": "1.6.10",
+		"@floating-ui/dom": "1.6.11",
 		"@public-ui/schema": "workspace:*",
 		"adopted-style-sheets": "1.1.5-rc.1",
 		"i18next": "23.15.1",
@@ -98,7 +98,7 @@
 		"color-rgba": "2.4.0",
 		"cross-env": "7.0.3",
 		"cssnano": "7.0.6",
-		"eslint": "8.57.0",
+		"eslint": "8.57.1",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-html": "8.1.1",
 		"eslint-plugin-jsdoc": "48.11.0",
@@ -109,7 +109,7 @@
 		"jest-cli": "26.6.3",
 		"lighthouse": "12.2.1",
 		"mustache": "4.2.0",
-		"postcss": "8.4.45",
+		"postcss": "8.4.47",
 		"postcss-sorting": "8.0.2",
 		"prettier": "3.3.3",
 		"pug": "3.0.3",
@@ -119,7 +119,7 @@
 		"rimraf": "5.0.10",
 		"rxjs": "7.8.1",
 		"stencil-awesome-test": "1.0.6",
-		"terser": "5.32.0",
+		"terser": "5.33.0",
 		"twig": "1.17.1",
 		"typescript": "5.6.2",
 		"wcag-contrast": "3.0.0"

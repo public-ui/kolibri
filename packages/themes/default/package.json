@@ -55,7 +55,7 @@
 		"@public-ui/visual-tests": "workspace:*",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
-		"eslint": "8.57.0",
+		"eslint": "8.57.1",
 		"rollup-plugin-postcss": "4.0.2",
 		"typescript": "5.6.2",
 		"unbuild": "1.2.1"
