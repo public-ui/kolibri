@@ -59,12 +59,12 @@
 		"@rollup/plugin-typescript": "11.1.6",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
-		"eslint": "8.57.0",
-		"nodemon": "3.1.4",
-		"postcss": "8.4.45",
+		"eslint": "8.57.1",
+		"nodemon": "3.1.5",
+		"postcss": "8.4.47",
 		"rollup": "4.21.3",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.78.0",
+		"sass": "1.79.1",
 		"typescript": "5.6.2"
 	},
 	"peerDependencies": {

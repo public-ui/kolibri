@@ -71,7 +71,7 @@
 		"xunused": "knip"
 	},
 	"dependencies": {
-		"@floating-ui/dom": "1.6.10",
+		"@floating-ui/dom": "1.6.11",
 		"adopted-style-sheets": "1.1.5-rc.1",
 		"clsx": "2.1.1",
 		"color-convert": "2.0.1",
@@ -90,7 +90,7 @@
 		"@public-ui/stencil-vue-output-target": "0.9.0",
 		"@stencil-community/postcss": "2.2.0",
 		"@stencil/core": "4.20.0",
-		"@stencil/playwright": "0.2.0",
+		"@stencil/playwright": "0.2.1",
 		"@stencil/sass": "3.0.12",
 		"@types/color-convert": "2.0.3",
 		"@types/jest": "26.0.24",
@@ -104,7 +104,7 @@
 		"autoprefixer": "10.4.20",
 		"cross-env": "7.0.3",
 		"cssnano": "7.0.6",
-		"eslint": "8.57.0",
+		"eslint": "8.57.1",
 		"eslint-plugin-html": "8.1.1",
 		"eslint-plugin-jsdoc": "48.11.0",
 		"eslint-plugin-json": "3.1.0",
@@ -114,15 +114,15 @@
 		"knip": "5.30.2",
 		"lighthouse": "12.2.1",
 		"mustache": "4.2.0",
-		"postcss": "8.4.45",
+		"postcss": "8.4.47",
 		"postcss-sorting": "8.0.2",
 		"prettier": "3.3.3",
 		"pug": "3.0.3",
 		"rimraf": "5.0.10",
 		"stencil-awesome-test": "1.0.6",
-		"terser": "5.32.0",
+		"terser": "5.33.0",
 		"twig": "1.17.1",
-		"typescript": "5.6.2"
+		"typescript": "~5.5.0"
 	},
 	"files": [
 		"assets",
