@@ -43,7 +43,7 @@
 	"scripts": {
 		"build": "unbuild",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"prepack": "unbuild",
 		"test": "THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test",
 		"test-update": "THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
@@ -53,13 +53,11 @@
 	"devDependencies": {
 		"@public-ui/schema": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
-		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
-		"eslint": "8.57.0",
-		"eslint-plugin-no-loops": "0.4.0",
+		"eslint": "8.57.1",
 		"rollup-plugin-postcss": "4.0.2",
-		"typescript": "5.5.4",
+		"typescript": "5.6.2",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {

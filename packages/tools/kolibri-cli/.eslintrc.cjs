@@ -22,7 +22,6 @@ module.exports = {
 		// 'jsdoc',
 		// 'json',
 		// 'jsx-a11y',
-		'no-loops',
 		'react',
 	],
 	settings: {

@@ -47,7 +47,7 @@
 		"build": "unbuild",
 		"tsc": "tsc --noemit",
 		"format": "prettier -c src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"ncu:major": "ncu",
 		"ncu:minor": "ncu -t minor -u",
 		"ncu:patch": "ncu -t patch -u",
@@ -57,15 +57,13 @@
 		"@public-ui/components": "workspace:*"
 	},
 	"devDependencies": {
-		"@types/node": "ts5.4",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"adopted-style-sheets": "1.1.5-rc.1",
-		"eslint": "8.57.0",
-		"eslint-plugin-no-loops": "0.4.0",
+		"eslint": "8.57.1",
 		"prettier": "3.3.3",
 		"ts-prune": "0.10.3",
-		"typescript": "5.5.4",
+		"typescript": "5.6.2",
 		"unbuild": "1.2.1"
 	},
 	"sideEffects": false,

@@ -4,15 +4,14 @@
 	"private": true,
 	"scripts": {
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"test": "THEME_MODULE=src/index THEME_EXPORT=BMF kolibri-visual-test",
 		"test-update": "THEME_MODULE=src/index THEME_EXPORT=BMF kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},
 	"devDependencies": {
 		"@public-ui/schema": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
-		"@types/node": "ts5.4",
-		"typescript": "5.5.4"
+		"typescript": "5.6.2"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"

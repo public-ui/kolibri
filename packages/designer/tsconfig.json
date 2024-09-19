@@ -9,7 +9,7 @@
 		"preserveSymlinks": true,
 		"moduleResolution": "node",
 		"lib": ["ES2017", "dom"],
-		"types": ["mocha", "node"],
+		"types": ["mocha"],
 		"typeRoots": ["node_modules/prettier", "node_modules/@types", "src/types"],
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,
