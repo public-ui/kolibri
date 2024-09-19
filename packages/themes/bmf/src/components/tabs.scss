@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -5,7 +7,7 @@
 
 	:host .tabs-button-group {
 		display: inline-flex;
-		gap: 2rem;
+		gap: rem(32);
 		flex-wrap: wrap;
 	}
 
@@ -13,7 +15,7 @@
 		box-sizing: border-box;
 		background-color: transparent;
 		border: 0;
-		border-radius: 0.25rem;
+		border-radius: rem(4);
 		font-style: normal;
 		font-weight: 700;
 		font-size: 18px;
@@ -43,7 +45,7 @@
 	}
 
 	button .kol-span-wc > span {
-		gap: 0.5rem;
+		gap: rem(8);
 	}
 
 	.tabs-content {
@@ -58,9 +60,9 @@
 	}
 
 	.close-button button {
-		width: 1rem;
+		width: rem(16);
 		position: relative;
-		height: 1rem;
+		height: rem(16);
 		left: -4.25em;
 		top: 0.25em;
 	}

@@ -1,13 +1,15 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
-		top: 5rem;
-		right: 2rem;
+		top: rem(80);
+		right: rem(32);
 		width: 440px;
 		max-width: 100%;
 	}
 
 	.toast {
-		margin-top: 1rem;
+		margin-top: rem(16);
 
 		&:first-child {
 			margin-top: 0;

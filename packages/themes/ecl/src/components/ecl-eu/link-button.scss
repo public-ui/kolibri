@@ -1,6 +1,8 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
-		--kolibri-spacing: 0.25rem;
+		--kolibri-spacing: rem(4);
 		font-family: var(--font-family);
 	}
 
@@ -22,11 +24,11 @@
 		min-width: 44px;
 		border-radius: 4px;
 		font:
-			normal normal 400 1rem/1.25rem arial,
+			normal normal 400 rem(16) / rem(20) arial,
 			sans-serif;
 		font-weight: 400;
 		margin: 0;
-		padding: 0.75rem;
+		padding: rem(12);
 	}
 
 	a:focus-visible > .kol-span-wc,
@@ -68,7 +70,7 @@
 		background-color: #fff;
 		border: 2px solid #0e47cb;
 		color: #0e47cb;
-		padding: calc(0.75rem - 2px) calc(1rem - 2px);
+		padding: calc(rem(12) - 2px) calc(rem(16) - 2px);
 	}
 
 	.secondary a:focus-visible > .kol-span-wc,

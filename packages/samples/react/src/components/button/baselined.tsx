@@ -11,7 +11,7 @@ export const ButtonBaselined: FC = () => (
 			<p>This KolButton sample is used for internal testing purposes: It features multiple buttons with and without icons which are vertically aligned.</p>
 		</SampleDescription>
 
-		<div className="inline-block">
+		<div className="flex">
 			<KolButton _label="Label-Text"></KolButton>
 			<KolButton _label="Label-Text"></KolButton>
 			<KolButton _label="Label-Text"></KolButton>

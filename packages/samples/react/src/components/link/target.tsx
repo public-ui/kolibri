@@ -13,7 +13,7 @@ export const LinkTarget: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="d-flex gap-4">
+		<div className="text-base d-flex gap-4">
 			<ul>
 				<li>
 					<KolLink _href="#/back-page" _label="Link without target" />

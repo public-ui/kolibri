@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -17,17 +19,17 @@
 
 	:host > div > .kol-heading-wc button .kol-span-wc {
 		font-weight: 700;
-		font-size: 1.125rem;
+		font-size: rem(18);
 		line-height: 24px;
-		gap: 0.5rem;
+		gap: rem(8);
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc > span {
-		gap: 0.25rem;
+		gap: rem(4);
 	}
 
 	:host > div > .kol-heading-wc button .kol-icon {
-		font-size: 1.5rem;
+		font-size: rem(24);
 	}
 
 	:host > div > .kol-heading-wc button .kol-icon::part(icon) {

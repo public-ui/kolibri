@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host > div {
 		background-color: white;
@@ -10,7 +12,7 @@
 	}
 
 	.kol-heading {
-		padding: 0.5rem;
+		padding: rem(8);
 		display: block;
 		border-bottom-style: solid;
 		border-bottom-color: var(--border-color);
@@ -19,12 +21,12 @@
 
 	:host > div > div {
 		display: block;
-		padding: 0.5rem;
+		padding: rem(8);
 	}
 
 	:host > div > div:last-child {
 		display: block;
-		padding: 0.5rem;
+		padding: rem(8);
 		border-top-style: solid;
 		border-top-color: var(--color-achat);
 		border-top-width: 1px;

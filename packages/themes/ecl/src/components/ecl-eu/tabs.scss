@@ -1,7 +1,9 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
-		--kolibri-spacing: 0.25rem;
+		--kolibri-spacing: rem(4);
 	}
 
 	.tabs-button-group {
@@ -15,7 +17,7 @@
 	}
 
 	.tabs-button-group button .kol-span-wc {
-		padding: 0.5rem;
+		padding: rem(4);
 		min-height: 44px;
 		min-width: 44px;
 	}

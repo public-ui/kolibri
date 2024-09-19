@@ -1,7 +1,9 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font:
-			normal normal 400 0.875rem/1rem arial,
+			normal normal 400 rem(14) / rem(16) arial,
 			sans-serif;
 		font-weight: var(--font-weight-bold);
 	}
@@ -15,8 +17,8 @@
 	}
 
 	.kol-icon[exportparts*='separator'] {
-		margin-inline-end: 0.5rem;
-		margin-inline-start: 0.5rem;
+		margin-inline-end: rem(8);
+		margin-inline-start: rem(8);
 		padding: 0;
 	}
 

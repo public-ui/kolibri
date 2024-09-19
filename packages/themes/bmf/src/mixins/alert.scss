@@ -1,3 +1,5 @@
+@import './rem';
+
 @mixin kol-alert-theme {
 	.kol-alert-wc {
 		border-width: 2px;
@@ -51,7 +53,7 @@
 
 				> .kol-heading-wc {
 					line-height: 20px;
-					padding-top: 0.125rem;
+					padding-top: rem(2);
 				}
 			}
 
@@ -184,11 +186,11 @@
 		}
 
 		> .heading {
-			padding: 0.5rem 1rem;
+			padding: rem(8) rem(16);
 
 			> div {
 				width: 100%;
-				min-height: 1.25rem;
+				min-height: rem(20);
 			}
 
 			.heading-icon {
@@ -199,15 +201,15 @@
 				width: 100%;
 				color: white;
 				display: flex;
-				font-size: 1.25rem;
-				line-height: 1.25rem;
+				font-size: rem(20);
+				line-height: rem(20);
 
 				> * {
 					margin: auto 0;
 				}
 
 				.headline {
-					font-size: 1rem;
+					font-size: rem(16);
 				}
 			}
 
@@ -236,8 +238,8 @@
 
 		> .content {
 			color: var(--color-black);
-			padding: 1rem;
-			max-height: 9.5rem;
+			padding: rem(16);
+			max-height: rem(152);
 			overflow-y: auto;
 		}
 
@@ -297,7 +299,7 @@
 	.success,
 	.warning {
 		.heading-icon {
-			font-size: 1.25rem !important;
+			font-size: rem(20) !important;
 
 			&::part(icon) {
 				font-family: 'Material Symbols Rounded';
@@ -315,14 +317,14 @@
 		min-height: 44px;
 		display: grid;
 		gap: 0.25em;
-		line-height: 1.5rem;
+		line-height: rem(24);
 		font-family: var(--font-family);
 		font-weight: 700;
 		cursor: pointer;
 		border-radius: 1.5em;
 		border-style: solid;
 		border-width: 2px;
-		font-size: 1rem;
+		font-size: rem(16);
 		align-items: center;
 		padding: 8px;
 		justify-content: center;
@@ -343,7 +345,7 @@
 			display: flex;
 			width: 1em;
 			height: 1em;
-			font-size: 1rem;
+			font-size: rem(16);
 
 			&::part(icon) {
 				font-family: 'Material Symbols Rounded';

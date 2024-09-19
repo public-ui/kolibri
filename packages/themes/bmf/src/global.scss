@@ -1,3 +1,5 @@
+@import './mixins/rem';
+
 @layer kol-theme-global {
 	/* Design Tokens */
 	:host {
@@ -105,7 +107,7 @@
 	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.25em;
-		padding: 0.5rem 0.75rem;
+		padding: rem(16) rem(12);
 	}
 
 	.kol-span-wc,

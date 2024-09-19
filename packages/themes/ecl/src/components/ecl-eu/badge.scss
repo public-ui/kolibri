@@ -1,10 +1,12 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
 	}
 	:host > span {
-		font: normal normal var(--font-weight) 0.875rem/1em var(--font-family);
-		padding: calc(0.5rem - 1px) calc(0.75rem - 1px);
+		font: normal normal var(--font-weight) rem(14) / 1em var(--font-family);
+		padding: calc(rem(8) - 1px) calc(rem(12) - 1px);
 		text-transform: uppercase;
 	}
 }
