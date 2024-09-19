@@ -3,6 +3,8 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, State } from '@stencil/core';
 
 /**
+ * @deprecated Will be removed in v3. Replace with custom HTML and styling.
+ * @internal
  * @slot - Der Text.
  */
 @Component({

@@ -33,6 +33,9 @@ import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { Events } from '../../schema/enums';
 import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-table-stateless-wc',
 	shadow: false,

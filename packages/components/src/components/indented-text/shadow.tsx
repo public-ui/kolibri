@@ -4,6 +4,7 @@ import { Component, h, Host } from '@stencil/core';
 import { KolIndentedTextWcTag } from '../../core/component-names';
 
 /**
+ * @deprecated Will be removed in v3. Replace with custom HTML and styling.
  * @slot - Der Text.
  */
 @Component({
@@ -13,9 +14,6 @@ import { KolIndentedTextWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-/**
- * @deprecated Will be removed in v3. Replace with custom HTML and styling.
- */
 export class KolIndentedText implements IndentedTextProps {
 	public render(): JSX.Element {
 		return (
