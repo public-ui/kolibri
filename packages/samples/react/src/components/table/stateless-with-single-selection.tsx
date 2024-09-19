@@ -4,7 +4,7 @@ import { KolButton, KolTableStateless, createReactRenderElement } from '@public-
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableSelection } from '@public-ui/components';
 import { getRoot } from '../../shares/react-roots';
-import type { KoliBriTableCell } from '@public-ui/components/src/schema';
+import type { KoliBriTableCell } from '@public-ui/components';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
