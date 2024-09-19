@@ -27,8 +27,9 @@ hr {
 .indented-text {
 	p {
 		font-family: var(--font-family);
-		box-shadow: -2px 0px 0px var(--color-primary-variant);
+		border-left: -2px solid var(--color-primary-variant);
 		padding: 0 calc(8rem / var(--kolibri-root-font-size, 16));
+		margin-left: -2px;
 	}
 }
 

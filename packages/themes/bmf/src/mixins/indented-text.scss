@@ -1,4 +1,5 @@
 @mixin indented-text {
+	font-family: var(--font-family);
 	border-left: 2px solid var(--color-ocean);
 	padding: 0 0.5em;
 	margin-left: -2px;
