@@ -71,7 +71,7 @@
 	"dependencies": {
 		"@floating-ui/dom": "1.6.11",
 		"@public-ui/schema": "workspace:*",
-		"adopted-style-sheets": "1.1.5-rc.1",
+		"adopted-style-sheets": "1.1.5-rc.3",
 		"i18next": "23.15.1",
 		"markdown-it": "14.1.0"
 	},
@@ -123,6 +123,10 @@
 		"twig": "1.17.1",
 		"typescript": "5.6.2",
 		"wcag-contrast": "3.0.0"
+	},
+	"peerDependencies": {
+		"@public-ui/schema": "workspace:*",
+		"adopted-style-sheets": "1.1.5-rc.3"
 	},
 	"files": [
 		"assets",
