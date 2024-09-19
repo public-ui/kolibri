@@ -19,8 +19,13 @@
 	}
 
 	.kol-popover {
+		z-index: 1;
+		width: 100%;
+
 		.popover {
 			margin-top: rem(2);
+			width: 100%;
+			text-align: center;
 		}
 
 		.arrow {

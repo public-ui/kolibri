@@ -1,11 +1,6 @@
 @import '../mixins/kol-table-stateless-wc';
 
 @layer kol-theme-component {
-	:host > div {
-		overflow-x: auto;
-		overflow-y: hidden;
-	}
-
 	:host > div:last-child {
 		border-style: solid;
 		border-width: 1px;

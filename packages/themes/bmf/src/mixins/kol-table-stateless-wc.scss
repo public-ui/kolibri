@@ -15,12 +15,6 @@
 			word-break: break-word;
 		}
 
-		:host > div,
-		.kol-table-stateless-wc > div {
-			overflow-x: auto;
-			overflow-y: hidden;
-		}
-
 		.table:has(.focus-element:focus) {
 			outline-color: var(--color-ocean);
 			outline-style: solid;

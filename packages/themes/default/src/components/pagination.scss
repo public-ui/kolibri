@@ -1,9 +1,14 @@
 @import '../mixins/focus-outline';
+@import '../mixins/rem';
+
+$option-height: rem(40);
+$visible-options: 5;
 
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
 	}
+
 	.button:focus {
 		outline: none;
 	}
@@ -42,5 +47,34 @@
 		background-color: var(--color-mute-variant);
 		border-radius: var(--a11y-min-size);
 		border: 0;
+	}
+
+	.menu {
+		&__listbox {
+			border-style: solid;
+			border-width: 1px;
+			border-radius: var(--border-radius);
+			border-color: var(--color-subtle);
+			max-height: calc($option-height * $visible-options + 2px);
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		&__item {
+			height: $option-height;
+			padding: rem(10) rem(12);
+
+			.radio-label {
+				align-self: center;
+				padding-left: rem(1);
+			}
+
+			&:focus,
+			&.highlighted {
+				background: var(--color-primary-variant);
+				color: var(--color-light);
+				outline: 0 !important;
+			}
+		}
 	}
 }

@@ -1,7 +1,10 @@
 @import '../@shared/mixins';
 @import '../style';
+@import '../@shared/kol-menu.scss';
 
 @layer kol-component {
+	@include kol-menu-styles;
+
 	:host {
 		align-items: center;
 		display: grid;
@@ -22,5 +25,11 @@
 
 	.separator:before {
 		content: '•••';
+	}
+
+	.item-label {
+		display: flex;
+		align-items: center;
+		gap: rem(8);
 	}
 }

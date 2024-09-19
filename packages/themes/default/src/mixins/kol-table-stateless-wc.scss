@@ -10,12 +10,6 @@
 			word-break: break-word;
 		}
 
-		:host > div,
-		kol-table-stateless-wc > div {
-			overflow-x: auto;
-			overflow-y: hidden;
-		}
-
 		caption {
 			padding: rem(8);
 		}
