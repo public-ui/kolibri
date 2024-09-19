@@ -2,7 +2,7 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	details>summary {
+	details > summary {
 		border-radius: var(--border-radius);
 		font-family: var(--font-family);
 	}

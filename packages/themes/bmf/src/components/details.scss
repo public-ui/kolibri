@@ -3,7 +3,7 @@
 
 @layer kol-theme-component {
 	details {
-		>summary {
+		> summary {
 			min-height: rem(44);
 			display: flex;
 			border-radius: var(--border-radius);
@@ -11,7 +11,7 @@
 			color: var(--color-midnight);
 			gap: rem(4);
 
-			>span {
+			> span {
 				border: none;
 
 				&:hover {
