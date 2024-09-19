@@ -1,3 +1,5 @@
+@import '../../mixins/rem';
+
 @mixin indented-text {
 	font-family: var(--font-family);
 	border-end-start-radius: 0;
