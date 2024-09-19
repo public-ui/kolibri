@@ -35,9 +35,9 @@ export class ToasterService {
 			onClose: () => {
 				const next = this.queue.values().next();
 				if (next.value) {
-					this.queue.delete(next.value as Toast);
+					this.queue.delete(next.value);
 					setTimeout(() => {
-						this.showToast(next.value as Toast);
+						this.showToast(next.value);
 					}, 200);
 				} else {
 					this.isOpen = false;

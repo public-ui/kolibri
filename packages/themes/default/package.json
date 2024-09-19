@@ -43,7 +43,7 @@
 	"scripts": {
 		"build": "unbuild",
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"prepack": "unbuild",
 		"test": "THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test",
 		"test-update": "THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots theme-snapshots.spec.js",

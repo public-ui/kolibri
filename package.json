@@ -20,6 +20,7 @@
 	},
 	"private": true,
 	"scripts": {
+		"build": "pnpm -r build",
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",

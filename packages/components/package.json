@@ -60,7 +60,7 @@
 		"clear": "rimraf -g dist doc loader www ../adapters/angular/v15/src ../adapters/angular/v16/src ../adapters/angular/v17/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"unused": "ts-prune src -e",
 		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",

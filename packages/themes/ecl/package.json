@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"xtest": "npm-run-all test:*",
 		"test:ecl-ec": "THEME_MODULE=dist THEME_EXPORT=ECL_EC kolibri-visual-test",
 		"test:ecl-eu": "THEME_MODULE=dist THEME_EXPORT=ECL_EU kolibri-visual-test",

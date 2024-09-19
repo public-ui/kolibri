@@ -47,7 +47,7 @@
 		"build": "unbuild",
 		"tsc": "tsc --noemit",
 		"format": "prettier -c src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"ncu:major": "ncu",
 		"ncu:minor": "ncu -t minor -u",
 		"ncu:patch": "ncu -t patch -u",

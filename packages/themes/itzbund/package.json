@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"xtest": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test",
 		"xtest-update": "THEME_MODULE=dist THEME_EXPORT=ITZBund kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
 		"pretest": "pnpm build",

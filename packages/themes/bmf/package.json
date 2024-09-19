@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
+		"lint": "tsc --noemit && eslint src",
 		"test": "THEME_MODULE=src/index THEME_EXPORT=BMF kolibri-visual-test",
 		"test-update": "THEME_MODULE=src/index THEME_EXPORT=BMF kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
 	},
