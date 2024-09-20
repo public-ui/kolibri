@@ -13,13 +13,13 @@ type InternalMenuProps = {
 };
 export const InternalMenu: FunctionalComponent<InternalMenuProps> = ({ options, onItemClick, renderOption, selectedValue }) => {
 	let InternalMenuElement: HTMLElement;
-	let currentFocusIndex: number | undefined;
+	let currentFocusIndex: number | undefined = 0;
 
 	const focusById = (index: number) => {
 		const button: HTMLElement | null = koliBriQuerySelector(`button#option-${index}`, InternalMenuElement);
 		button?.focus();
+		currentFocusIndex = index;
 	};
-
 	const nextPossibleMenuIndex = (items: Option<number>[], currentIndex: number): number => {
 		let nextIndex = currentIndex + 1;
 		if (nextIndex >= items.length) {
@@ -27,7 +27,6 @@ export const InternalMenu: FunctionalComponent<InternalMenuProps> = ({ options, 
 		}
 		return nextIndex;
 	};
-
 	const prevPossibleMenuIndex = (items: Option<number>[], currentIndex: number): number => {
 		let prevIndex = currentIndex - 1;
 		if (prevIndex < 0) {
@@ -51,7 +50,6 @@ export const InternalMenu: FunctionalComponent<InternalMenuProps> = ({ options, 
 		}
 		event.preventDefault();
 	};
-
 	const handleKeyDown = (event: KeyboardEvent) => {
 		switch (event.key) {
 			case 'ArrowDown':
@@ -71,6 +69,7 @@ export const InternalMenu: FunctionalComponent<InternalMenuProps> = ({ options, 
 	const onBlur = () => {
 		currentFocusIndex = undefined;
 	};
+
 	return (
 		<div
 			class="menu"
@@ -86,18 +85,16 @@ export const InternalMenu: FunctionalComponent<InternalMenuProps> = ({ options, 
 							role="option"
 							class="menu__item"
 							aria-selected={selectedValue === option.value}
-							onMouseOver={() => {
-								focusById(index);
-							}}
 							onFocus={() => {
 								focusById(index);
+								currentFocusIndex = index;
 							}}
 						>
 							<KolButtonWcTag
 								_on={{
 									onClick: (event: Event): void => {
-										currentFocusIndex = index;
 										onItemClick(event, option);
+										currentFocusIndex = index;
 									},
 								}}
 								_customClass={selectedValue === option.value ? 'selected' : undefined}

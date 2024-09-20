@@ -61,10 +61,17 @@ $visible-options: 5;
 		}
 
 		&__item {
-			height: $option-height;
+			height: 100%;
 		}
 
-		.button:is(:active, :hover, :focus):not(:disabled) .button-inner {
+		.button:is(:hover):not(:disabled) .button-inner {
+			background-color: var(--color-light);
+			border-color: none;
+			color: var(--color-primary);
+			box-shadow: none;
+		}
+
+		.button:is(:active, :focus):not(:disabled) .button-inner {
 			background-color: var(--color-primary-variant);
 			border-color: var(--color-primary-variant);
 			box-shadow: rgba(8, 35, 48, 0.24) 0px 2px 8px 2px;

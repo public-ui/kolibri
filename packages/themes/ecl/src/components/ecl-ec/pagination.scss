@@ -61,20 +61,7 @@ $visible-options: 5;
 		}
 
 		&__item {
-			height: $option-height;
-			padding: rem(10) rem(12);
-
-			.radio-label {
-				align-self: center;
-				padding-left: rem(1);
-			}
-
-			&:focus,
-			&.highlighted {
-				background: var(--color-blue);
-				color: white;
-				outline: 0 !important;
-			}
+			height: 100%;
 		}
 	}
 }
