@@ -605,13 +605,17 @@ export class KolTableStateless implements TableStatelessAPI {
 		);
 	}
 
-	private renderFoot(): JSX.Element {
+	private renderSpacer(variant: 'foot'): JSX.Element {
+		return <tr class={`${variant}-spacer`} aria-hidden="true"></tr>;
+	}
+
+	private renderFoot(): JSX.Element[] | null {
 		if (!this.state._dataFoot || this.state._dataFoot.length === 0) {
-			return '';
+			return null;
 		}
 
 		const rows: KoliBriTableCell[][] = this.createDataField(this.state._dataFoot, this.state._headerCells, true);
-		return <tfoot>{rows.map(this.renderTableRow)}</tfoot>;
+		return [this.renderSpacer('foot'), <tfoot>{rows.map(this.renderTableRow)}</tfoot>];
 	}
 
 	public render(): JSX.Element {

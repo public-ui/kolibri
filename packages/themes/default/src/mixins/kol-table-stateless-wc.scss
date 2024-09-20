@@ -10,6 +10,12 @@
 			word-break: break-word;
 		}
 
+		.kol-table-stateless-wc {
+			& .foot-spacer {
+				height: rem(24);
+			}
+		}
+
 		:host > div,
 		kol-table-stateless-wc > div {
 			overflow-x: auto;
