@@ -62,19 +62,13 @@ $visible-options: 5;
 
 		&__item {
 			height: $option-height;
-			padding: rem(10) rem(12);
+		}
 
-			.radio-label {
-				align-self: center;
-				padding-left: rem(1);
-			}
-
-			&:focus,
-			&.highlighted {
-				background: var(--color-primary-variant);
-				color: var(--color-light);
-				outline: 0 !important;
-			}
+		.button:is(:active, :hover, :focus):not(:disabled) .button-inner {
+			background-color: var(--color-primary-variant);
+			border-color: var(--color-primary-variant);
+			box-shadow: rgba(8, 35, 48, 0.24) 0px 2px 8px 2px;
+			color: var(--color-light);
 		}
 	}
 }

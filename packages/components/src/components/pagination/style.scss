@@ -1,9 +1,9 @@
 @import '../@shared/mixins';
 @import '../style';
-@import '../@shared/kol-menu.scss';
+@import '../@shared/internal-menu.scss';
 
 @layer kol-component {
-	@include kol-menu-styles;
+	@include internal-menu-styles;
 
 	:host {
 		align-items: center;
