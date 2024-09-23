@@ -24,7 +24,7 @@ export const InputTextSmartButton = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows the _smartButton feature for KolInputText. It allows the usage of a Button inside the Input.</p>
+				<p>This sample shows the smart button feature for KolInputText. It allows the usage of a button inside the bnput.</p>
 			</SampleDescription>
 
 			<KolInputText _label="With Smart Button" _type="text" _smartButton={smartButton}></KolInputText>
