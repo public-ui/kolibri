@@ -1,22 +1,21 @@
 import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
-import type { FC } from 'react';
-import type { ButtonProps } from '@public-ui/components/src';
 import { ToasterService } from '@public-ui/components';
 import { KolInputText } from '@public-ui/react';
 
-export const InputTextSmartButton: FC = () => {
+export const InputTextSmartButton = () => {
 	const toaster = ToasterService.getInstance(document);
 
-	const smartButton: ButtonProps = {
+	const smartButton = {
 		_icons: 'codicon codicon-info',
 		_hideLabel: true,
 		_label: 'Alert',
 		_on: {
-			onClick: (_event, _value) => {
+			onClick: () => {
 				void toaster.enqueue({
 					description: 'Smart-Button clicked',
 					label: `Toaster`,
+					type: 'default',
 				});
 			},
 		},
