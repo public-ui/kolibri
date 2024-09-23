@@ -44,3 +44,7 @@ avoiding Toasts in Modals and giving feedback within the modal directly.
 
 The `search` of this component is highly browser-dependent. For example, the close button is either shown or hidden depending on the browser. Accessibility is therefore not achieved.
 [🐞 GitHub issue #6307](https://github.com/public-ui/kolibri/issues/6307)
+
+## Screen reader only reads last selected in Select
+
+When using KolSelect with the `multiple` property, there may be problems with screen readers. Often the entire selection is not read out, but only the last one.
