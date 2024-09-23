@@ -4,9 +4,9 @@
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/public-ui/kolibri"
-  },
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -84,7 +84,6 @@
 		"cross-env": "7.0.3",
 		"esbuild-loader": "3.0.1",
 		"eslint": "8.44.0",
-		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-storybook": "0.6.12",
 		"esm": "3.2.25",
 		"lit-html": "2.7.4",

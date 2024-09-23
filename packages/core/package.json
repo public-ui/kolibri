@@ -59,7 +59,7 @@
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
-		"adopted-style-sheets": "1.1.5-rc.3",
+		"adopted-style-sheets": "1.1.5-rc.4",
 		"eslint": "8.57.1",
 		"prettier": "3.3.3",
 		"ts-prune": "0.10.3",
