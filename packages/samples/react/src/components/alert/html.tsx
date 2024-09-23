@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolAlert } from '@public-ui/react';
+import { KolAlert, KolHeading } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import type { FC } from 'react';
 
@@ -12,7 +12,9 @@ export const AlertHtml: FC = () => (
 
 		<div>
 			<KolAlert _label="Output of HTML code in the alert" _type="info">
-				<h2 className="mt-2 mb-3">An H2 heading is output here</h2>
+				<div className="mt-2 mb-3">
+					<KolHeading _level={2} _label="An H2 heading is output here" />
+				</div>
 				<div className="grid gap-4 sm:grid-cols-2">
 					<div>
 						<h3>Text in a left-hand column</h3>

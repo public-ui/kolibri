@@ -12,13 +12,13 @@ $visible-options: 5;
 	.single-select {
 		&__group {
 			width: 100%;
-			padding: 0 0.8rem;
+			padding: 0 rem(12.8);
 		}
 
 		&__input {
 			border: none;
 			flex-grow: 1;
-			width: calc(100% - 2.5rem);
+			width: calc(100% - rem(40));
 			position: relative;
 
 			&::placeholder {
@@ -41,7 +41,7 @@ $visible-options: 5;
 		&__button {
 			display: grid;
 			place-items: center;
-			padding: 0 1rem;
+			padding: 0 rem(16);
 
 			&:focus {
 				outline: 0 !important;

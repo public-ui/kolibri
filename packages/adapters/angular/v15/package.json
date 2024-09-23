@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v15",
-	"version": "2.1.7",
+	"version": "2.1.8-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -73,12 +73,10 @@
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
-		"@types/node": "ts4.9",
 		"@types/normalize-package-data": "2.4.4",
 		"prettier": "3.3.3",
 		"rimraf": "5.0.10",
 		"rxjs": "7.8.1",
-		"tslib": "2.6.3",
 		"typescript": "4.9.5",
 		"zone.js": "0.13.3"
 	},

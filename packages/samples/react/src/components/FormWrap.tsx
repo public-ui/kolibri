@@ -4,7 +4,7 @@ import { KolButton, KolForm } from '@public-ui/react';
 
 export const FormWrap = <P,>({ RefComponent: Component, ...props }: { RefComponent: any } & Partial<P>) => {
 	return (
-		<KolForm>
+		<KolForm className="w-full">
 			<div className="grid gap-4">
 				<Component {...props} />
 				<div className="flex gap-4">

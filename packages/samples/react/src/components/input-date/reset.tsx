@@ -14,7 +14,7 @@ export const InputDateReset = () => {
 				</p>
 			</SampleDescription>
 
-			<KolInputDate ref={dateRef} _label="Resettable Input Date" _value="2024-02-10" />
+			<KolInputDate className="w-full" ref={dateRef} _label="Resettable Input Date" _value="2024-02-10" />
 			<KolButton className="mt" _label={'Reset'} _on={{ onClick: () => dateRef.current?.reset() }} />
 		</>
 	);

@@ -5,7 +5,7 @@ import { SampleDescription } from '../../components/SampleDescription';
 import { LINKS } from '../../components/nav/links';
 import DATA from './databasedata.json';
 
-import './layout.css';
+import './layout.scss';
 
 const TABS: TabButtonProps[] = [
 	{

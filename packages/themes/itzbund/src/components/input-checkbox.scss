@@ -1,4 +1,5 @@
 @import '../mixins/alert-wc.scss';
+@import '../mixins/rem';
 
 @layer kol-theme-component {
 	:host {
@@ -52,7 +53,7 @@
 	}
 
 	.button {
-		gap: 0.5rem 0;
+		gap: rem(8) 0;
 		grid-template-areas:
 			'input label'
 			'hint hint'
@@ -106,7 +107,7 @@
 	}
 
 	.default .icon {
-		margin-left: 0.25rem;
+		margin-left: rem(4);
 	}
 
 	.default.checked .icon {
@@ -163,7 +164,7 @@
 	}
 
 	.button:focus-within {
-		border-radius: 2rem;
+		border-radius: rem(32);
 		outline-color: var(--color-achat) !important;
 		outline-offset: 2px;
 		outline-style: solid;

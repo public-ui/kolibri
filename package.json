@@ -1,27 +1,27 @@
 {
 	"devDependencies": {
-		"@commitlint/cli": "19.3.0",
-		"@commitlint/config-conventional": "19.2.2",
-		"@types/node": "ts5.4",
+		"@commitlint/cli": "19.5.0",
+		"@commitlint/config-conventional": "19.5.0",
 		"cross-env": "7.0.3",
-		"husky": "9.1.4",
+		"husky": "9.1.6",
 		"js-yaml": "4.1.0",
-		"lerna": "8.1.7",
-		"license-report": "6.5.0",
-		"lint-staged": "15.2.7",
+		"lerna": "8.1.8",
+		"license-report": "6.7.0",
+		"lint-staged": "15.2.10",
 		"npm-check-updates": "16.14.20",
 		"npm-run-all": "4.1.5",
 		"prettier": "3.3.3",
 		"rimraf": "5.0.10",
 		"ts-node": "10.9.2",
 		"ts-prune": "0.10.3",
-		"typescript": "5.5.4"
+		"typescript": "5.6.2"
 	},
 	"engines": {
 		"pnpm": "^9"
 	},
 	"private": true,
 	"scripts": {
+		"build": "pnpm -r build",
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
@@ -30,8 +30,8 @@
 		"unused": "pnpm -r unused",
 		"ts-prune": "git clean -f -d -X packages/adapters/**/src && pnpm -r exec npx ts-prune src -e",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @unocss/*",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @stencil/core,@types/react,@unocss/*",
+		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @types/react",
 		"pack": "pnpm -r exec pnpm pack",
 		"prepare": "husky && echo \"Don't forget to build all packages once: pnpm -r build\"",
 		"reinstall": "pnpm clean:pnpm && pnpm i",

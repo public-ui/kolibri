@@ -1,8 +1,10 @@
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { KolButton, KolTableStateful } from '@public-ui/react';
+import { KolButton, KolTableStateful, createReactRenderElement } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
+import { getRoot } from '../../shares/react-roots';
+import type { KoliBriTableCell } from '@public-ui/components';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
@@ -45,40 +47,47 @@ export const TableStatefulWithSingleSelection: FC = () => {
 		};
 	}, [kolTableStatefulRef]);
 
+	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
+		getRoot(createReactRenderElement(element)).render(<KolButton _label={`Click ${cell.data?.id}`}></KolButton>);
+	};
+
 	return (
 		<>
 			<SampleDescription>
 				<p>This sample shows KolTableStateful with radio buttons for selection enabled.</p>
 			</SampleDescription>
 
-			<KolTableStateful
-				_label="Table with selection radio"
-				_headers={{
-					horizontal: [
-						[
-							{ key: 'id', label: '#ID', textAlign: 'left' },
-							{ key: 'name', label: 'Name', textAlign: 'left' },
+			<section className="w-full">
+				<KolTableStateful
+					_label="Table with selection radio"
+					_headers={{
+						horizontal: [
+							[
+								{ key: 'id', label: '#ID', textAlign: 'left' },
+								{ key: 'name', label: 'Name', textAlign: 'left' },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+							],
 						],
-					],
-				}}
-				_data={DATA}
-				_selection={selection}
-				_on={{ onSelectionChange: handleSelectionChangeCallback }}
-				className="block"
-				style={{ maxWidth: '600px' }}
-				ref={kolTableStatefulRef}
-			/>
-			<div className="grid grid-cols-3 items-end gap-4 mt-4">
-				<KolButton
-					_label="getSelection()"
-					_on={{
-						onClick: () => {
-							void handleButtonClick();
-						},
 					}}
-				></KolButton>
-				<pre>{JSON.stringify(selectedValue, null, 2)}</pre>
-			</div>
+					_data={DATA}
+					_selection={selection}
+					_on={{ onSelectionChange: handleSelectionChangeCallback }}
+					className="block"
+					style={{ maxWidth: '600px' }}
+					ref={kolTableStatefulRef}
+				/>
+				<div className="grid grid-cols-3 items-end gap-4 mt-4">
+					<KolButton
+						_label="getSelection()"
+						_on={{
+							onClick: () => {
+								void handleButtonClick();
+							},
+						}}
+					></KolButton>
+					<pre className="text-base">{JSON.stringify(selectedValue, null, 2)}</pre>
+				</div>
+			</section>
 		</>
 	);
 };

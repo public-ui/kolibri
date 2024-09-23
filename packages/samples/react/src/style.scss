@@ -1,23 +1,20 @@
+@import './@shared/mixins';
+
+:root {
+	--kolibri-root-font-size: 100;
+	font-size: 625%;
+}
+
 body {
 	margin: 0;
 	font-family: Verdana;
+	font-size: rem(16);
+	line-height: normal;
 }
 
 dl,
 hr {
 	margin: 0;
-}
-
-.w-4rem {
-	width: 4rem;
-}
-
-.w-8rem {
-	width: 8rem;
-}
-
-.w-12rem {
-	width: 12rem;
 }
 
 .grid-cols-2 {
@@ -42,7 +39,7 @@ hr {
 			bottom: 0;
 			left: 0;
 			width: 330px;
-			margin: 1rem;
+			margin: rem(16);
 			flex-direction: column;
 			display: flex;
 

@@ -11,7 +11,6 @@
 		"packages/adapters/solid",
 		"packages/adapters/vue",
 		"packages/components",
-		"packages/create-kolibri",
 		"packages/designer",
 		"packages/samples/react",
 		"packages/schema",
@@ -24,5 +23,5 @@
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "2.1.7"
+	"version": "2.1.8-rc.0"
 }

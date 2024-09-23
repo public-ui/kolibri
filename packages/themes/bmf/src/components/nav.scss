@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	* {
 		margin: 0;
@@ -19,15 +21,15 @@
 		background-color: var(--color-white);
 		border-left-color: transparent;
 		border-left-style: solid;
-		border-left-width: 0.5rem;
+		border-left-width: rem(8);
 		color: var(--color-midnight);
 		display: flex;
 		font-style: normal;
 		letter-spacing: 0.175px;
-		line-height: 1.5rem;
+		line-height: rem(24);
 		min-height: 44px;
 		min-width: 44px;
-		padding: 0.75rem 0.5rem 0.75rem 0.25rem;
+		padding: rem(12) rem(8) rem(12) rem(4);
 		place-items: center;
 		text-decoration: none;
 		transition-duration: 0.5s;

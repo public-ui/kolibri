@@ -1,8 +1,10 @@
 import type { FC } from 'react';
 import React, { useEffect, useState, useRef } from 'react';
-import { KolTableStateless } from '@public-ui/react';
+import { KolButton, KolTableStateless, createReactRenderElement } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableSelection } from '@public-ui/components';
+import { getRoot } from '../../shares/react-roots';
+import type { KoliBriTableCell } from '@public-ui/components';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
@@ -39,29 +41,36 @@ export const TableStatelessWithSelection: FC = () => {
 		};
 	}, [kolTableStatelessRef]);
 
+	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
+		getRoot(createReactRenderElement(element)).render(<KolButton _label={`Click ${cell.data?.id}`}></KolButton>);
+	};
+
 	return (
 		<>
 			<SampleDescription>
 				<p>This sample shows KolTableStateless with checkboxes for selection enabled.</p>
 			</SampleDescription>
 
-			<KolTableStateless
-				_label="Table with selection checkboxes"
-				_headerCells={{
-					horizontal: [
-						[
-							{ key: 'id', label: '#ID', textAlign: 'left' },
-							{ key: 'name', label: 'Name', textAlign: 'left' },
+			<section className="w-full">
+				<KolTableStateless
+					_label="Table with selection checkboxes"
+					_headerCells={{
+						horizontal: [
+							[
+								{ key: 'id', label: '#ID', textAlign: 'left' },
+								{ key: 'name', label: 'Name', textAlign: 'left' },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+							],
 						],
-					],
-				}}
-				_data={DATA}
-				_selection={selection}
-				_on={{ onSelectionChange: handleSelectionChangeCallback }}
-				className="block"
-				style={{ maxWidth: '600px' }}
-				ref={kolTableStatelessRef}
-			/>
+					}}
+					_data={DATA}
+					_selection={selection}
+					_on={{ onSelectionChange: handleSelectionChangeCallback }}
+					className="block"
+					style={{ maxWidth: '600px' }}
+					ref={kolTableStatelessRef}
+				/>
+			</section>
 		</>
 	);
 };
