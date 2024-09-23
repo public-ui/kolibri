@@ -15,7 +15,7 @@ export const InputTextSmartButton: FC = () => {
 		_on: {
 			onClick: (_event, _value) => {
 				void toaster.enqueue({
-					description: 'Smart-Button Clicked',
+					description: 'Smart-Button clicked',
 					label: `Toaster`,
 				});
 			},
