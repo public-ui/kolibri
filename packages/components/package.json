@@ -72,7 +72,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.11",
-		"adopted-style-sheets": "1.1.5-rc.3",
+		"adopted-style-sheets": "1.1.5-rc.4",
 		"clsx": "2.1.1",
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
@@ -83,7 +83,7 @@
 		"wcag-contrast": "3.0.0"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.47.1",
+		"@playwright/test": "1.47.2",
 		"@public-ui/stencil-angular-output-target": "0.9.0",
 		"@public-ui/stencil-react-output-target": "0.6.0",
 		"@public-ui/stencil-solid-output-target": "0.2.0",
@@ -94,7 +94,7 @@
 		"@stencil/sass": "3.0.12",
 		"@types/color-convert": "2.0.3",
 		"@types/jest": "26.0.24",
-		"@types/markdown-it": "13.0.9",
+		"@types/markdown-it": "14.1.2",
 		"@types/mustache": "4.2.5",
 		"@types/pug": "2.0.10",
 		"@types/twig": "1.12.16",
@@ -105,27 +105,26 @@
 		"cross-env": "7.0.3",
 		"cssnano": "7.0.6",
 		"eslint": "8.57.1",
-		"eslint-plugin-html": "8.1.1",
-		"eslint-plugin-jsdoc": "48.11.0",
-		"eslint-plugin-json": "3.1.0",
+		"eslint-plugin-html": "8.1.2",
+		"eslint-plugin-jsdoc": "50.2.4",
 		"eslint-plugin-jsx-a11y": "6.10.0",
 		"eslint-plugin-react": "7.36.1",
 		"jest": "26.6.3",
-		"knip": "5.30.2",
+		"knip": "5.30.4",
 		"lighthouse": "12.2.1",
 		"mustache": "4.2.0",
 		"postcss": "8.4.47",
 		"postcss-sorting": "8.0.2",
 		"prettier": "3.3.3",
 		"pug": "3.0.3",
-		"rimraf": "5.0.10",
+		"rimraf": "6.0.1",
 		"stencil-awesome-test": "1.0.6",
 		"terser": "5.33.0",
 		"twig": "1.17.1",
 		"typescript": "5.6.2"
 	},
 	"peerDependencies": {
-		"adopted-style-sheets": "1.1.5-rc.3"
+		"adopted-style-sheets": "1.1.5-rc.4"
 	},
 	"files": [
 		"assets",
