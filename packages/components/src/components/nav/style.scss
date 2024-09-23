@@ -26,6 +26,10 @@
 		flex-direction: column;
 	}
 
+	.list.horizontal {
+		flex-wrap: wrap;
+	}
+
 	.entry {
 		display: flex;
 	}

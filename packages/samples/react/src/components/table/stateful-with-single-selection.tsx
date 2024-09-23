@@ -5,6 +5,7 @@ import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
 import { getRoot } from '../../shares/react-roots';
 import type { KoliBriTableCell } from '@public-ui/components';
+import { useToasterService } from '../../hooks/useToasterService';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
@@ -12,6 +13,16 @@ const DATA = [
 ];
 
 type Data = (typeof DATA)[0];
+
+function KolButtonWrapper({ label }: { label: string }) {
+	const { dummyClickEventHandler } = useToasterService();
+
+	const dummyEventHandler = {
+		onClick: dummyClickEventHandler,
+	};
+
+	return <KolButton _label={label} _on={dummyEventHandler} />;
+}
 
 export const TableStatefulWithSingleSelection: FC = () => {
 	const [selectedValue, setSelectedValue] = useState<Data | null>();
@@ -48,7 +59,7 @@ export const TableStatefulWithSingleSelection: FC = () => {
 	}, [kolTableStatefulRef]);
 
 	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
-		getRoot(createReactRenderElement(element)).render(<KolButton _label={`Click ${cell.data?.id}`}></KolButton>);
+		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${cell.data?.id}`} />);
 	};
 
 	return (
