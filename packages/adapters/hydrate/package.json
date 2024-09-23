@@ -50,7 +50,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"rimraf": "5.0.10"
+		"rimraf": "6.0.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"
