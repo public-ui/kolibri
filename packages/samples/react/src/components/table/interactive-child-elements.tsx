@@ -1,9 +1,20 @@
-import type { ButtonVariantPropType, KoliBriTableCell, KoliBriTableHeaderCell } from '@public-ui/components';
+import type { ButtonProps, ButtonVariantPropType, KoliBriTableCell, KoliBriTableHeaderCell } from '@public-ui/components';
 import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react';
 import type { FC } from 'react';
 import React from 'react';
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
+import { useToasterService } from '../../hooks/useToasterService';
+
+function KolButtonWrapper({ _on, ...other }: ButtonProps) {
+	const { dummyClickEventHandler } = useToasterService();
+
+	const dummyEventHandler = {
+		onClick: dummyClickEventHandler,
+	};
+
+	return <KolButton {...other} _on={dummyEventHandler} />;
+}
 
 const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeaderCell => {
 	const capitalizedVariant = variant.charAt(0).toUpperCase() + variant.slice(1);
@@ -18,7 +29,7 @@ const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeader
 				_icons: { right: 'codicon codicon-squirrel' },
 			};
 			getRoot(createReactRenderElement(element)).render(
-				cell.label === 'button' ? <KolButton {...commonProps} /> : <KolLinkButton _href="#/back-page" {...commonProps} />,
+				cell.label === 'button' ? <KolButtonWrapper {...commonProps} /> : <KolLinkButton _href="#/back-page" {...commonProps} />,
 			);
 		},
 	};
