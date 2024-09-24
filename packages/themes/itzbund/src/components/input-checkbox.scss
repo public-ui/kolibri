@@ -1,5 +1,6 @@
 @import '../mixins/alert-wc.scss';
 @import '../mixins/rem';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -11,12 +12,11 @@
 	}
 
 	input {
+		@include kol-typography-body;
 		color: var(--default-letter);
 		border-color: var(--default-border);
 		border-width: 2px;
 		border-style: solid;
-		line-height: 24px;
-		font-size: 16px;
 	}
 
 	.required label > span::after {

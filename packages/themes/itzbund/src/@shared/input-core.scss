@@ -1,6 +1,6 @@
-@use '../@shared/label.scss';
-@use '../@shared/kol-alert-wc.scss';
-@use '../@shared/kol-required.scss';
+@use './label.scss';
+@use './kol-alert-wc.scss';
+@use './kol-required.scss';
 
 @import '../mixins/alert-wc.scss';
 @import '../mixins/typography.scss';
@@ -11,19 +11,16 @@
 		@include kol-alert-theme;
 	}
 
-	textarea {
+	input {
 		@include kol-typography-body;
 		@include kol-input-base;
 
+		cursor: pointer;
 		width: 100%;
+		overflow: hidden;
 	}
 
-	.error textarea {
+	.error input {
 		@include kol-input-error;
-	}
-
-	textarea:read-only {
-		border-color: var(--border-default);
-		background-color: var(--background-light-grey);
 	}
 }

@@ -1,9 +1,16 @@
+@use '../@shared/label.scss';
+
 @import '../mixins/alert-wc.scss';
 @import '../mixins/rem';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
 		@include kol-alert-theme;
+	}
+
+	label {
+		font-weight: normal;
 	}
 
 	:host input:focus {
@@ -13,15 +20,8 @@
 		outline-width: 3px;
 	}
 
-	label {
-		color: var(--color-anthrazit);
-		font-size: 14px;
-		line-height: 20px;
-		gap: 8px;
-		width: 100%;
-	}
-
 	input {
+		@include kol-typography-body;
 		width: 100%;
 		color: var(--color-anthrazit);
 		border-color: var(--default-border);
@@ -29,8 +29,6 @@
 		border-style: solid;
 		border-radius: 5px;
 		/* padding: 10px 14px; */
-		line-height: 24px;
-		font-size: 16px;
 	}
 
 	input:hover {
@@ -55,10 +53,13 @@
 		flex-wrap: wrap;
 	}
 
+	fieldset .hint,
+	fieldset .kol-input .hint {
+		@include kol-typography-hint;
+	}
+
 	fieldset .hint {
 		order: 4;
-		font-size: rem(14.4);
-		font-style: italic;
 	}
 
 	fieldset .kol-input {
@@ -68,8 +69,6 @@
 
 	fieldset .kol-input .hint {
 		order: 3;
-		font-size: rem(14.4);
-		font-style: italic;
 	}
 
 	fieldset.horizontal {
@@ -80,7 +79,7 @@
 	fieldset legend {
 		display: block;
 		width: 100%;
-		line-height: 1.5em;
+		line-height: 1.5;
 	}
 
 	.radio-input-wrapper,

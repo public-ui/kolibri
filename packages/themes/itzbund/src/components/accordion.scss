@@ -1,4 +1,5 @@
 @import '../mixins/rem';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host > div {
@@ -14,24 +15,20 @@
 	}
 
 	:host > div > .kol-heading-wc {
-		font-weight: 700;
-		font-size: rem(20);
-		line-height: rem(28);
-	}
+		@include kol-typography-accordion;
 
-	:host > div > .kol-heading-wc button {
-		cursor: pointer;
-		width: 100%;
-		margin: 0;
-		display: flex;
-		gap: 0.5em;
-		border: 0;
-		align-items: center;
-		overflow: hidden;
-		font-size: inherit;
-		line-height: 1.75em;
-		background-color: transparent;
-		padding: rem(4);
+		& button {
+			cursor: pointer;
+			width: 100%;
+			margin: 0;
+			display: flex;
+			gap: 0.5em;
+			border: 0;
+			align-items: center;
+			overflow: hidden;
+			background-color: transparent;
+			padding: rem(4);
+		}
 	}
 
 	:host > div[part*='open'] > .kol-heading-wc button {

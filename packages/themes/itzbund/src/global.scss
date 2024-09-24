@@ -1,4 +1,5 @@
 @import './mixins/rem';
+@import './mixins/typography.scss';
 
 @layer kol-theme-global {
 	:host {
@@ -25,7 +26,7 @@
 		--gradient-gelb-citrin: linear-gradient(67deg, var(--color-gelb), var(--color-citrin));
 		--font-family-sans: BundesSans Web;
 		--font-family-serif: BundesSerif Web;
-		--font-size: 16px;
+		--font-size: rem(16);
 		--spacing: 0.125em;
 		--kolibri-spacing: calc(2 * var(--spacing));
 	}
@@ -80,9 +81,8 @@
 	}
 
 	.kol-tooltip-wc .tooltip-content {
+		@include kol-typography-label;
 		padding: rem(4) rem(8);
-		font-size: rem(14);
-		line-height: rem(20);
 		border-radius: 2px;
 		border: 1px solid #626262;
 	}

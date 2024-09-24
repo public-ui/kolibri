@@ -1,65 +1,32 @@
+@use '../@shared/label.scss';
+@use '../@shared/kol-alert-wc.scss';
+@use '../@shared/kol-required.scss';
+
 @import '../mixins/alert-wc.scss';
+@import '../mixins/typography.scss';
+@import '../mixins/input-base.scss';
 
 @layer kol-theme-component {
 	:host {
 		@include kol-alert-theme;
 	}
 
-	select:hover,
-	select:focus {
-		border-color: var(--default-border-hover);
-		outline-color: var(--primary) !important;
-		outline-offset: 0;
-		outline-style: solid;
-		outline-width: 1px;
-	}
-
-	label {
-		color: var(--default-letter);
-		font-size: 14px;
-		line-height: 20px;
-		gap: 8px;
-		width: 100%;
-		font-weight: bold;
-	}
-
-	select.error {
-		background-color: var(--danger-light) !important;
-		border-color: var(--danger);
+	.error select {
+		@include kol-input-error;
 	}
 
 	select {
-		width: 100%;
-		color: var(--default-letter);
-		border-width: 1px;
-		border-style: solid;
-		line-height: 24px;
-		font-size: 16px;
-		border-color: var(--kolibri-color-normal);
-		border-radius: 0;
-		background-color: #e8edf2 !important;
-	}
+		@include kol-typography-body;
+		@include kol-input-container-base;
 
-	select:disabled {
-		cursor: not-allowed;
-		border-color: var(--border-default);
-		background-color: var(--background-light-grey);
+		width: 100%;
 	}
 
 	option {
-		height: 2em;
+		height: 1;
 	}
 
 	select:not([multiple]) option {
 		padding: 0.5em;
-	}
-
-	.kol-alert-wc {
-		margin-top: var(--spacing);
-		display: block;
-	}
-
-	.kol-required span::after {
-		content: '*';
 	}
 }

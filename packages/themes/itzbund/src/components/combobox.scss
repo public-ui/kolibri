@@ -1,5 +1,11 @@
+@use '../@shared/label.scss';
+@use '../@shared/kol-alert-wc.scss';
+@use '../@shared/kol-required.scss';
+
 @import '../mixins/rem';
 @import '../mixins/alert-wc';
+@import '../mixins/typography.scss';
+@import '../mixins/input-base.scss';
 
 $option-height: rem(40);
 $visible-options: 5;
@@ -9,38 +15,24 @@ $visible-options: 5;
 		@include kol-alert-theme;
 	}
 
-	label {
-		color: var(--default-letter);
-		font-size: 14px;
-		line-height: 20px;
-		gap: 8px;
-		width: 100%;
-		font-weight: bold;
-	}
-
 	.combobox {
 		display: block;
 		position: relative;
 
 		&__group {
+			@include kol-typography-body;
+			@include kol-input-container-base;
+
 			display: inline-flex;
 			align-items: center;
 			min-height: var(--a11y-min-size);
 			text-align: left;
 			width: 100%;
 			padding: rem(4);
-			color: var(--default-letter);
-			border-width: 1px;
-			border-style: solid;
-			line-height: 24px;
-			font-size: 16px;
-			border-color: var(--kolibri-color-normal);
-			border-radius: 0;
-			background-color: #e8edf2 !important;
 
 			.combobox:not(.combobox--disabled) &:hover {
 				border-color: var(--default-border-hover);
-				outline-color: var(--primary) !important;
+				outline-color: var(--primary);
 				outline-offset: 0;
 				outline-style: solid;
 				outline-width: 1px;
@@ -50,7 +42,7 @@ $visible-options: 5;
 		&__input {
 			flex-grow: 1;
 			border: none !important;
-			background-color: #e8edf2 !important;
+			background-color: transparent;
 			border: none;
 			width: calc(100% - rem(24));
 			position: relative;
@@ -77,7 +69,7 @@ $visible-options: 5;
 			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--kolibri-color-normal);
-			background-color: #e8edf2 !important;
+			background-color: #e8edf2;
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
@@ -99,21 +91,9 @@ $visible-options: 5;
 		}
 	}
 
-	label {
-		color: var(--color-anthrazit);
-		font-size: 14px;
-		line-height: 20px;
-		gap: 8px;
-		width: 100%;
-		font-weight: bold;
-	}
-
-	.kol-alert-wc {
-		margin-top: calc(2 * var(--spacing));
-		display: block;
-	}
-
-	.kol-required span::after {
-		content: '*';
+	.error {
+		.combobox__group {
+			@include kol-input-error;
+		}
 	}
 }

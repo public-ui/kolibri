@@ -1,5 +1,6 @@
 @import '../mixins/alert-wc.scss';
 @import '../mixins/rem';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -28,9 +29,8 @@
 	}
 
 	.kol-input .hint {
+		@include kol-typography-hint;
 		order: 4;
-		font-size: rem(14.4);
-		font-style: italic;
 	}
 
 	input::placeholder {
