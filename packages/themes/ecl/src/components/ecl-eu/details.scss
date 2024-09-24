@@ -1,5 +1,11 @@
+@import '../mixins-eu/indented-text';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+
+		details .indented-text {
+			@include indented-text;
+		}
 	}
 }

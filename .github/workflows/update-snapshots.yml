@@ -65,7 +65,7 @@ jobs:
 
       - name: Purge existing snapshots
         if: ${{ github.event.inputs.purge_snapshots == 'true' }}
-        run: rm packages/themes/**/snapshots/**/*.png
+        run: rm packages/**/snapshots/**/*.png
 
       - name: Display git status (before test-update)
         run: git status
