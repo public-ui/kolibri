@@ -2,7 +2,7 @@ import React from 'react';
 import type { FC } from 'react';
 import { KolAlert, KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react';
 import { SampleDescription } from '../components/SampleDescription';
-import { SelectOption } from '@public-ui/components';
+import type { SelectOption } from '@public-ui/components';
 
 export const InputGroupWithError: FC = () => {
 	const phoneError = true;
