@@ -129,22 +129,22 @@
 		font-style: italic;
 	}
 
-	fieldset.error {
+	fieldset.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-danger);
 		color: var(--color-danger);
 		font-weight: 700;
 		padding-left: rem(16);
-	}
 
-	fieldset.error input:focus,
-	fieldset.error select:focus,
-	fieldset.error textarea:focus {
-		outline-color: var(--color-danger) !important;
-	}
+		input:focus,
+		select:focus,
+		textarea:focus {
+			outline-color: var(--color-danger) !important;
+		}
 
-	fieldset.error .kol-alert-wc.error {
-		margin-left: -0.25em;
-		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+		.kol-alert-wc.error {
+			margin-left: -0.25em;
+			@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+		}
 	}
 
 	fieldset.horizontal {
