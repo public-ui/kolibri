@@ -49,5 +49,5 @@ The `search` of this component is highly browser-dependent. For example, the clo
 
 KolSelect is using native HTML `<select>`. 
 
-When using KolSelect with the `multiple` property, there may occur problems with the interaction between the native HTML `<select>` and screen readers. 
+When using KolSelect with the `multiple` property, the native HTML `<select>` may cause problems with screen readers. 
 Often the entire selection is not read out, but only the last one.
