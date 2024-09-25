@@ -1,14 +1,12 @@
 @import '../../mixins/rem';
 
-@mixin kol-indented-theme {
-	.kol-indented-text-wc > div {
-		font-family: var(--font-family);
-		border-end-start-radius: 0;
-		border-inline-start: 10px solid var(--color-yellow);
-		border-start-start-radius: 0;
-		padding-bottom: rem(16);
-		padding-inline-start: rem(24);
-		padding-top: rem(16);
-		margin: 0;
-	}
+@mixin indented-text {
+	font-family: var(--font-family);
+	border-end-start-radius: 0;
+	border-inline-start: 10px solid var(--color-yellow);
+	border-start-start-radius: 0;
+	padding-bottom: rem(16);
+	padding-inline-start: rem(24);
+	padding-top: rem(16);
+	margin: 0;
 }

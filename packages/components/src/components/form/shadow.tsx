@@ -5,7 +5,7 @@ import { Component, h, Host, Prop, State, Watch, Method } from '@stencil/core';
 import { translate } from '../../i18n';
 
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
-import { KolAlertWcTag, KolIndentedTextWcTag, KolLinkTag } from '../../core/component-names';
+import { KolAlertWcTag, KolLinkTag } from '../../core/component-names';
 /**
  * @slot - Inhalt der Form.
  */
@@ -76,11 +76,11 @@ export class KolForm implements FormAPI {
 				<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 					{this.state._requiredText === true ? (
 						<p>
-							<KolIndentedTextWcTag>{translate('kol-form-description')}</KolIndentedTextWcTag>
+							<div class="mandatory-fields-hint">{translate('kol-form-description')}</div>
 						</p>
 					) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
 						<p>
-							<KolIndentedTextWcTag>{this.state._requiredText}</KolIndentedTextWcTag>
+							<div class="mandatory-fields-hint">{this.state._requiredText}</div>
 						</p>
 					) : null}
 					<slot />

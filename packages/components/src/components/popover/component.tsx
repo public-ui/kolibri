@@ -5,7 +5,9 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 
 import type { JSX } from '@stencil/core';
+
 /**
+ * @internal
  * @slot - Der Inhalt des Popover.
  */
 @Component({
