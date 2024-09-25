@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "2.1.8-rc.0",
+	"version": "2.1.8",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -28,7 +28,7 @@
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@playwright/test": "1.47.1",
+		"@playwright/test": "1.47.2",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.0.2",
 		"portfinder": "1.0.32",
@@ -39,7 +39,7 @@
 		"@babel/plugin-syntax-import-attributes": "7.25.6",
 		"@babel/preset-env": "7.25.4",
 		"eslint": "8.57.1",
-		"knip": "5.30.2",
+		"knip": "5.30.4",
 		"prettier": "3.3.3"
 	},
 	"files": [
