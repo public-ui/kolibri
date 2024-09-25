@@ -81,7 +81,7 @@ $visible-options: 5;
 		gap: rem(4);
 	}
 
-	.kol-input .error {
+	.kol-input .error:not(.hidden-error) {
 		order: 1;
 	}
 
@@ -148,17 +148,17 @@ $visible-options: 5;
 		padding-left: 0.125em;
 	}
 
-	.kol-input.error {
+	.kol-input.error:not(.hidden-error) {
 		border-left: 3px solid var(--color-danger);
 		padding-left: rem(16);
-	}
 
-	.kol-input.error .input:focus-within {
-		outline-color: var(--color-danger) !important;
-	}
+		.input:focus-within {
+			outline-color: var(--color-danger) !important;
+		}
 
-	.kol-input.error .kol-alert-wc.error {
-		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+		.kol-alert-wc.error {
+			@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+		}
 	}
 
 	.input {
