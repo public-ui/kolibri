@@ -1,5 +1,6 @@
 @import '../mixins/rem';
 @import '../mixins/alert-wc.scss';
+@import '../mixins/input-error';
 
 @layer kol-theme-component {
 	:host {
@@ -130,20 +131,18 @@
 	}
 
 	fieldset.error:not(.hidden-error) {
-		border-left: 3px solid var(--color-danger);
+		@include input-error;
+
 		color: var(--color-danger);
 		font-weight: 700;
-		padding-left: rem(16);
 
 		input:focus,
 		select:focus,
 		textarea:focus {
 			outline-color: var(--color-danger) !important;
 		}
-
 		.kol-alert-wc.error {
 			margin-left: -0.25em;
-			@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 		}
 	}
 
