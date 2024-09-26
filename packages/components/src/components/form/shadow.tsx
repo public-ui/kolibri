@@ -91,11 +91,9 @@ export class KolForm implements FormAPI {
 
 	@Method()
 	async focusErrorList(): Promise<void> {
-		setTimeout(() => {
-			if (this._errorList && this._errorList.length > 0) {
-				this.errorListElement?.focus();
-			}
-		}, 300);
+		if (this._errorList && this._errorList.length > 0) {
+			this.errorListElement?.focus();
+		}
 		return Promise.resolve();
 	}
 
