@@ -30,6 +30,13 @@ hr {
 	}
 }
 
+.black-background {
+	background-color: black;
+	display: flex;
+	flex-direction: column;
+	padding: rem(8);
+}
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
