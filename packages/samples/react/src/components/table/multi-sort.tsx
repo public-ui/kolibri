@@ -74,7 +74,7 @@ export const MultiSortTable: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows KolTable with multi-sort functionality, allowing sorting by both "order" and "date" columns.</p>
+				<p>This sample shows KolTable with multi-sort functionality, allowing sorting by both &quot;order&quot; and &quot;date&quot; columns.</p>
 			</SampleDescription>
 
 			<section className="w-full grid gap-4">
@@ -84,7 +84,7 @@ export const MultiSortTable: FC = () => {
 						_checked={allowMultiSortVertical}
 						_label="Allow Multi-Sort"
 						_variant="switch"
-						_on={{ onChange: (e, value) => setAllowMultiSortVertical(Boolean(value)) }}
+						_on={{ onChange: (_, value) => setAllowMultiSortVertical(Boolean(value)) }}
 					></KolInputCheckbox>
 					<KolTable
 						_label="Sort Table with Order and Date"
@@ -100,7 +100,7 @@ export const MultiSortTable: FC = () => {
 						_checked={allowMultiSortHorizontal}
 						_label="Allow Multi-Sort"
 						_variant="switch"
-						_on={{ onChange: (e, value) => setAllowMultiSortHorizontal(Boolean(value)) }}
+						_on={{ onChange: (_, value) => setAllowMultiSortHorizontal(Boolean(value)) }}
 					></KolInputCheckbox>
 					<KolTable
 						_label="Sort Table with Order and Date"
