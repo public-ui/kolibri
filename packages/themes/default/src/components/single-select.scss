@@ -72,7 +72,7 @@ $visible-options: 5;
 
 			&:focus,
 			&.highlighted {
-				background: var(--color-primary-variant);
+				background-color: var(--color-primary-variant);
 				color: var(--color-light);
 				outline: 0 !important;
 			}

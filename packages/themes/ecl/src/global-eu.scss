@@ -125,12 +125,6 @@
 		--spacing-2xs: 4px;
 	}
 
-	:host {
-		/* Reset global background-color defined by components */
-		background-color: transparent;
-		display: inline-block;
-	}
-
 	a,
 	button {
 		font-size: var(--font-size);

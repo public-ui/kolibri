@@ -113,7 +113,7 @@
 	option:checked:not(:disabled),
 	option:focus:not(:disabled),
 	option:hover:not(:disabled) {
-		background: var(--color-primary-variant);
+		background-color: var(--color-primary-variant);
 		color: var(--color-light);
 	}
 
