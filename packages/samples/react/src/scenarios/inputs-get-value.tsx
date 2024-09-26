@@ -70,18 +70,20 @@ const Scenario = (props: Props) => {
 	);
 
 	return (
-		<div className="grid grid-cols-3 items-end gap-4" data-testid={props.testId}>
-			<props.InputComponent ref={ref} _on={eventListeners} {...props.inputProps} />
-			<KolButton
-				_label="getValue()"
-				_on={{
-					onClick: () => {
-						void handleButtonClick();
-					},
-				}}
-			></KolButton>
-			<pre className="text-base">{formatter(value)}</pre>
-		</div>
+		<>
+			<div className="grid grid-cols-3 items-end gap-4" data-testid={props.testId}>
+				<props.InputComponent ref={ref} _on={eventListeners} {...props.inputProps} />
+				<KolButton
+					_label="getValue()"
+					_on={{
+						onClick: () => {
+							void handleButtonClick();
+						},
+					}}
+				></KolButton>
+				<pre className="text-base">{formatter(value)}</pre>
+			</div>
+		</>
 	);
 };
 
