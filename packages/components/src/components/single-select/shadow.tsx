@@ -614,6 +614,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	public validateOptions(value?: OptionsPropType): void {
 		this.controller.validateOptions(value);
 		this._filteredOptions = value;
+		this.updateInputValue(this._value);
 	}
 
 	@Watch('_required')
@@ -640,11 +641,19 @@ export class KolSingleSelect implements SingleSelectAPI {
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
+		this.updateInputValue(value);
 	}
 
 	@Listen('mousemove')
 	public handleMouseEvent() {
 		this.blockSuggestionMouseOver = false;
+	}
+
+	private updateInputValue(value?: string) {
+		if (Array.isArray(this._options)) {
+			const matchedOption = this._options.find((option) => (option as Option<string>).value === value);
+			this._inputValue = matchedOption ? (matchedOption.label as string) : '';
+		}
 	}
 
 	public componentWillLoad(): void {
@@ -654,11 +663,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.controller.componentWillLoad();
 		this.oldValue = this._value;
 		this._filteredOptions = this._options;
-
-		if (Array.isArray(this._options)) {
-			const matchedOption = this._options.find((option) => (option as Option<string>).value === this._value);
-			this._inputValue = matchedOption ? (matchedOption.label as string) : '';
-		}
+		this.updateInputValue(this._value);
 	}
 
 	private onChange(event: Event): void {
