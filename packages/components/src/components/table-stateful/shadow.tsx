@@ -202,6 +202,12 @@ export class KolTableStateful implements TableAPI {
 		this.sortFunction = sort;
 	};
 
+	/**
+	 * Handles sorting logic for table columns.
+	 * If multi-sort is enabled (`_allowMultiSort`), multiple columns can be sorted at once.
+	 * Otherwise, sorting is cleared when switching between columns.
+	 */
+
 	private changeCellSort(headerCell: KoliBriTableHeaderCellWithLogic) {
 		if (typeof headerCell.compareFn === 'function') {
 			if (!this.state._allowMultiSort && headerCell.key != this.sortData[0]?.key) {
@@ -473,6 +479,12 @@ export class KolTableStateful implements TableAPI {
 		setState(this, '_sortedData', sortedData);
 	};
 
+	/**
+	 * Renders the pagination controls for the table, showing the current visible data range
+	 * and providing navigation between different pages.
+	 *
+	 * @returns {JSX.Element} The rendered pagination controls including page range and navigation.
+	 */
 	private renderPagination(): JSX.Element {
 		return (
 			<div class="pagination">
