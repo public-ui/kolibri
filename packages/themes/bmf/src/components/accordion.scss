@@ -1,4 +1,5 @@
 @import '../mixins/rem';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -18,9 +19,7 @@
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc {
-		font-weight: 700;
-		font-size: rem(18);
-		line-height: 24px;
+		@include kol-typography-accordion;
 		gap: rem(8);
 	}
 

@@ -1,6 +1,8 @@
 @import '../mixins/input.scss';
 
 @layer kol-theme-component {
+	@include input;
+
 	input {
 		border: none;
 
@@ -11,7 +13,7 @@
 		&[disabled],
 		&[disabled]:focus {
 			cursor: not-allowed;
-			opacity: 1;
+			opacity: 1 !important;
 		}
 	}
 
@@ -26,6 +28,4 @@
 			padding-right: 0.375em;
 		}
 	}
-
-	@include input;
 }

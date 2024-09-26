@@ -44,7 +44,7 @@ $visible-options: 5;
 			padding: 0 rem(16);
 
 			&:focus {
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 
@@ -63,7 +63,8 @@ $visible-options: 5;
 			border-radius: 0.25em;
 			color: var(--color-black);
 			display: flex;
-			height: $option-height;
+			min-height: $option-height;
+			line-height: 1;
 
 			.radio-label {
 				align-self: center;
@@ -73,10 +74,10 @@ $visible-options: 5;
 			&:focus,
 			&.highlighted {
 				background: var(--color-ocean);
-				outline: 0 !important;
+				outline: 0;
 
 				.radio-label {
-					color: white !important;
+					color: white;
 				}
 			}
 		}

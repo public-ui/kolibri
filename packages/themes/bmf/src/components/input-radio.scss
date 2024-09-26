@@ -1,5 +1,6 @@
 @import '../mixins/input-messages.scss';
 @import '../mixins/rem';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -24,27 +25,27 @@
 	label {
 		cursor: pointer;
 		display: grid;
-		line-height: 20px;
+		line-height: 1;
 		gap: 8px;
 		width: 100%;
 	}
 
 	.hint {
+		@include kol-typography-hint;
 		order: 4;
-		font-size: rem(14.4);
-		font-style: italic;
 	}
 
 	input {
 		cursor: pointer;
-		width: 100%;
+
 		border-color: var(--color-grey);
 		border-width: 2px;
 		border-style: solid;
 		border-radius: 5px;
 		/* padding: 10px 14px; */
-		line-height: 24px;
+		//line-height: 24px;
 		font-size: 16px;
+		//width: 100%;
 
 		&:hover {
 			border-color: var(--color-midnight);
@@ -103,9 +104,8 @@
 		}
 
 		.kol-input .hint {
+			@include kol-typography-hint;
 			order: 3;
-			font-size: rem(14.4);
-			font-style: italic;
 		}
 
 		&.error {
@@ -115,7 +115,7 @@
 			input:focus,
 			select:focus,
 			textarea:focus {
-				outline-color: var(--color-red) !important;
+				outline-color: var(--color-red);
 			}
 
 			.kol-alert-wc.error {
@@ -156,9 +156,9 @@
 			appearance: none;
 			transition: 0.5s;
 			border-radius: 100%;
-			height: calc(6 * var(--spacing));
-			min-width: calc(6 * var(--spacing));
-			width: calc(6 * var(--spacing));
+			height: 1.5; // calc(6 * var(--spacing));
+			min-width: 1.5; // calc(6 * var(--spacing));
+			width: 1.5; // calc(6 * var(--spacing));
 
 			&:before {
 				content: '';

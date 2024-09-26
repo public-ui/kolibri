@@ -1,7 +1,6 @@
 @import '../mixins/rem';
 @import '../mixins/input';
 
-$option-height: rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
@@ -46,7 +45,7 @@ $visible-options: 5;
 			place-items: center;
 
 			&:focus {
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 
@@ -59,13 +58,13 @@ $visible-options: 5;
 			overflow-x: hidden;
 			box-sizing: border-box;
 			width: 100%;
-			max-height: calc($option-height * $visible-options + 2px);
+			max-height: calc(rem(40) * $visible-options + 2px);
 		}
 
 		&__item {
 			display: flex;
 			align-items: center;
-			height: $option-height;
+			min-height: 1.25;
 			padding: rem(10) rem(12);
 			border-radius: 0.25em;
 			color: var(--color-black);
@@ -73,7 +72,7 @@ $visible-options: 5;
 			&:focus {
 				background: var(--color-ocean);
 				color: white;
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 	}

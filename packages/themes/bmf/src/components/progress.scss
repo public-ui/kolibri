@@ -7,7 +7,7 @@
 
 	.bar > div {
 		flex-direction: column;
-		gap: rem(8) !important;
+		gap: rem(8);
 		width: 100px;
 	}
 
@@ -57,7 +57,7 @@
 
 	.cycle text:first-of-type {
 		color: var(--color-grey);
-		line-height: rem(20);
+		line-height: 1;
 		alignment-baseline: after-edge;
 	}
 
@@ -65,7 +65,7 @@
 		color: var(--color-black);
 		font-size: rem(28);
 		font-weight: 700;
-		line-height: rem(24);
+		line-height: 1;
 		alignment-baseline: central;
 	}
 }
