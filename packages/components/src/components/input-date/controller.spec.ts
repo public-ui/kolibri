@@ -41,7 +41,7 @@ describe('InputDateController', () => {
 				expect(InputDateController.tryParseToString(TEST_DATE, 'time', 10)).toBe('03:02:01');
 			});
 
-			it('returns a ISO8601 week string for typeweek', () => {
+			it('returns a ISO8601 week string for type week', () => {
 				expect(InputDateController.tryParseToString(TEST_DATE, 'week')).toBe('2020-W10');
 			});
 		});
