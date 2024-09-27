@@ -59,7 +59,7 @@ $visible-options: 5;
 			padding-left: 1em;
 
 			&:focus {
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 
@@ -88,7 +88,7 @@ $visible-options: 5;
 			&:focus,
 			&.highlighted {
 				background-color: var(--color-petrol);
-				outline: 0 !important;
+				outline: 0;
 
 				.radio-label {
 					color: var(--color-weiss);

@@ -47,9 +47,9 @@
 	.kol-button-wc button.selected,
 	.kol-button-wc[aria-selected='true'] button {
 		background-color: white;
-		border-bottom-width: 0.25em !important;
+		border-bottom-width: 0.25em;
 		border-bottom-style: solid;
-		border-bottom-color: var(--color-citrin) !important;
+		border-bottom-color: var(--color-citrin);
 	}
 
 	button > .kol-span-wc span {
@@ -132,8 +132,8 @@
 	}
 
 	button:active {
-		outline: 0 !important;
-		box-shadow: none !important;
+		outline: 0;
+		box-shadow: none;
 	}
 
 	.close-button {

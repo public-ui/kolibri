@@ -41,7 +41,7 @@ $visible-options: 5;
 
 		&__input {
 			flex-grow: 1;
-			border: none !important;
+			border: none;
 			background-color: transparent;
 			border: none;
 			width: calc(100% - rem(24));
@@ -60,7 +60,7 @@ $visible-options: 5;
 			padding-right: 1em;
 
 			&:focus {
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 
@@ -86,7 +86,7 @@ $visible-options: 5;
 			&:focus {
 				background-color: var(--color-petrol);
 				color: var(--color-weiss);
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 	}

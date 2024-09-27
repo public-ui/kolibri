@@ -165,7 +165,7 @@
 
 	.button:focus-within {
 		border-radius: rem(32);
-		outline-color: var(--color-achat) !important;
+		outline-color: var(--color-achat);
 		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 3px;

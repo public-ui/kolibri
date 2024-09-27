@@ -82,7 +82,7 @@
 	}
 
 	.kol-input.error .input:focus-within {
-		outline-color: var(--color-danger) !important;
+		outline-color: var(--color-danger);
 	}
 
 	.kol-input.error .kol-alert-wc.error {
