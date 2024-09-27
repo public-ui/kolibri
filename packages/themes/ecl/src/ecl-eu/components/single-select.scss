@@ -17,7 +17,7 @@ $visible-options: 5;
 			display: inline-flex;
 			align-items: center;
 			width: 100%;
-			min-height: 44px !important;
+			min-height: 44px;
 			color: var(--color-grey);
 			order: 4;
 			padding: 1px 0.5em;
@@ -53,7 +53,7 @@ $visible-options: 5;
 			padding-left: 1em;
 
 			&:focus {
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 
@@ -70,7 +70,7 @@ $visible-options: 5;
 		&__item {
 			display: flex;
 			align-items: flex-start;
-			justify-items: center !important;
+			justify-items: center;
 			padding: rem(10) rem(12);
 			min-height: $option-height;
 			line-height: 1.2;
@@ -84,7 +84,7 @@ $visible-options: 5;
 			&.highlighted {
 				background-color: var(--color-blue);
 				color: white;
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 	}
@@ -103,8 +103,8 @@ $visible-options: 5;
 
 	input,
 	select:not([multiple]) {
-		height: 44px !important;
-		min-height: 44px !important;
+		height: 44px;
+		min-height: 44px;
 	}
 
 	label {
@@ -124,7 +124,7 @@ $visible-options: 5;
 	}
 
 	.input {
-		min-height: 44px !important;
+		min-height: 44px;
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
@@ -146,7 +146,7 @@ $visible-options: 5;
 
 	.input:focus-within,
 	.input:hover {
-		border-color: var(--color-blue) !important;
+		border-color: var(--color-blue);
 	}
 
 	.error .input {

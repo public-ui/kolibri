@@ -18,7 +18,7 @@ $visible-options: 5;
 			display: inline-flex;
 			text-align: left;
 			width: 100%;
-			min-height: 44px !important;
+			min-height: 44px;
 			color: var(--color-grey);
 			order: 4;
 			align-items: center;
@@ -55,7 +55,7 @@ $visible-options: 5;
 			padding-left: 1em;
 
 			&:focus {
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 
@@ -84,7 +84,7 @@ $visible-options: 5;
 			&.highlighted {
 				background-color: var(--color-blue);
 				color: white;
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 	}
@@ -145,7 +145,7 @@ $visible-options: 5;
 
 	.input:focus-within,
 	.input:hover {
-		border-color: var(--color-blue) !important;
+		border-color: var(--color-blue);
 	}
 
 	.error .input {

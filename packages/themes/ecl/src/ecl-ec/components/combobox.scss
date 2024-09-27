@@ -20,7 +20,7 @@ $visible-options: 5;
 			min-height: var(--a11y-min-size);
 			text-align: left;
 			width: 100%;
-			min-height: 44px !important;
+			min-height: 44px;
 			color: var(--color-grey);
 			order: 4;
 			align-items: center;
@@ -53,7 +53,7 @@ $visible-options: 5;
 			padding-right: 1em;
 
 			&:focus {
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 
@@ -78,7 +78,7 @@ $visible-options: 5;
 			&:focus {
 				background-color: var(--color-blue);
 				color: white;
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 	}
@@ -139,7 +139,7 @@ $visible-options: 5;
 
 	.input:focus-within,
 	.combobox:not(.combobox--disabled) .input:hover {
-		border-color: var(--color-blue) !important;
+		border-color: var(--color-blue);
 	}
 
 	.error .input {
