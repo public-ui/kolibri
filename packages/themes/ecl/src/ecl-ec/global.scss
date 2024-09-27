@@ -1,4 +1,4 @@
-@import './mixins/rem';
+@import '../mixins/rem';
 
 @layer kol-theme-global {
 	.kol-tooltip-wc .tooltip-area {
@@ -12,7 +12,7 @@
 	.kol-tooltip-wc .tooltip-content {
 		padding: rem(4) rem(8);
 		font-size: rem(14);
-		line-height: rem(20);
+		line-height: 1;
 		border-radius: 2px;
 		border: 1px solid #626262;
 	}
@@ -52,11 +52,11 @@
 		--color-black: #000;
 		--color-white: #fff;
 		--font-family: Arial, sans-serif;
-		--font-size: 16px;
+		--font-size: rem(16);
 		--font-weight: 400;
 		--font-weight-bold: 600;
-		--line-height: 1.5em;
-		--line-height-heading: 1.2em;
+		--line-height: 1.5;
+		--line-height-heading: 1.2;
 		--spacing-4xl: 64px;
 		--spacing-3xl: 48px;
 		--spacing-2xl: 40px;

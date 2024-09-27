@@ -71,7 +71,8 @@ $visible-options: 5;
 		&__item {
 			display: flex;
 			align-items: center;
-			height: $option-height;
+			min-height: $option-height;
+			line-height: 1.2;
 			padding: rem(10) rem(12);
 
 			&:focus {

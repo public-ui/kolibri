@@ -72,7 +72,8 @@ $visible-options: 5;
 
 		&__item {
 			padding: rem(10) rem(12);
-			height: $option-height;
+			min-height: $option-height;
+			line-height: 1.2;
 
 			.radio-label {
 				align-self: center;
