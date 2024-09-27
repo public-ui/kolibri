@@ -29,7 +29,7 @@
 			&:checked:not(:disabled),
 			&:focus:not(:disabled),
 			&:hover:not(:disabled) {
-				background: var(--color-ocean);
+				background-color: var(--color-ocean);
 				color: white;
 			}
 		}

@@ -8,11 +8,13 @@ import type { Components } from '@public-ui/components';
 export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.KolInputRadio>(function InputRadioCases(props, ref) {
 	return (
 		<div className="grid gap-4">
-			<KolInputRadio
-				{...props}
-				_options="[{'disabled':true,'label':'Mrs. (disabled)','value':'Mrs.'},{'label':'Mr.'},{'label':'Company','value':'Company'}]"
-				_label="Salutation"
-			/>
+			<div className="black-background">
+				<KolInputRadio
+					{...props}
+					_options="[{'disabled':true,'label':'Mrs. (disabled)','value':'Mrs.'},{'label':'Mr.'},{'label':'Company','value':'Company'}]"
+					_label="Salutation (Black background test)"
+				/>
+			</div>
 			<KolInputRadio
 				{...props}
 				_required

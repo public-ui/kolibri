@@ -14,7 +14,7 @@
 
 		&:hover,
 		&:focus-within {
-			background: var(--color-sky);
+			background-color: var(--color-sky);
 			border: 2px solid var(--color-yellow-120);
 
 			& > a {
@@ -24,7 +24,7 @@
 
 		&.active {
 			font-weight: 700;
-			background: var(--color-yellow);
+			background-color: var(--color-yellow);
 
 			a {
 				color: var(--color-black);

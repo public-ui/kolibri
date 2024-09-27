@@ -7,7 +7,7 @@
 
 		&:hover,
 		&:focus-within {
-			background: var(--color-ocean);
+			background-color: var(--color-ocean);
 			border: 2px solid var(--color-midnight);
 
 			& > a {
@@ -21,7 +21,7 @@
 		}
 
 		&.active {
-			background: var(--color-yellow);
+			background-color: var(--color-yellow);
 
 			a {
 				font-weight: 700;
