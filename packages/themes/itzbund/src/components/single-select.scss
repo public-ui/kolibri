@@ -87,7 +87,7 @@ $visible-options: 5;
 
 			&:focus,
 			&.highlighted {
-				background: var(--color-petrol);
+				background-color: var(--color-petrol);
 				outline: 0 !important;
 
 				.radio-label {

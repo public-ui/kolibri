@@ -84,7 +84,7 @@ $visible-options: 5;
 			padding: rem(10) rem(12);
 
 			&:focus {
-				background: var(--color-petrol);
+				background-color: var(--color-petrol);
 				color: var(--color-weiss);
 				outline: 0 !important;
 			}

@@ -145,7 +145,7 @@
 			@media (forced-colors: active) {
 				input[type='radio']:checked:before {
 					/* Give it a visible background in forced colors mode */
-					background: selectedItem !important;
+					background-color: selectedItem !important;
 				}
 			}
 		}

@@ -92,7 +92,7 @@ $visible-options: 5;
 			padding: rem(10) rem(12);
 
 			&:focus {
-				background: var(--color-blue);
+				background-color: var(--color-blue);
 				color: white;
 				outline: 0 !important;
 			}

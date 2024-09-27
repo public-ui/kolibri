@@ -13,6 +13,7 @@ import { TableStatelessWithSelection } from './stateless-with-selection';
 import { TableStatelessWithSingleSelection } from './stateless-with-single-selection';
 import { TableWithPagination } from './with-pagination';
 import { InteractiveChildElements } from './interactive-child-elements';
+import { MultiSortTable } from './multi-sort';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
@@ -30,5 +31,6 @@ export const TABLE_ROUTES: Routes = {
 		'with-pagination': TableWithPagination,
 		'interactive-child-elements': InteractiveChildElements,
 		stateless: TableStateless,
+		'multi-sort': MultiSortTable,
 	},
 };
