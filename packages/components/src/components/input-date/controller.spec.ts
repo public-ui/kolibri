@@ -41,8 +41,8 @@ describe('InputDateController', () => {
 				expect(InputDateController.tryParseToString(TEST_DATE, 'time', 10)).toBe('03:02:01');
 			});
 
-			it('throws an Error for type week', () => {
-				expect(() => InputDateController.tryParseToString(TEST_DATE, 'week')).toThrowError('Auto convert to week is not supported!');
+			it('returns a ISO8601 week string for typeweek', () => {
+				expect(InputDateController.tryParseToString(TEST_DATE, 'week')).toBe('2020-W10');
 			});
 		});
 	});
