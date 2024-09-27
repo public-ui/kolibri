@@ -75,9 +75,19 @@ export class InputDateController extends InputIconController implements InputDat
 						return formattedTimeWithSeconds;
 					}
 				case 'week':
-					throw new Error('Auto convert to week is not supported!');
+					const weekNumber = this.getWeekNumberOfDate(value);
+					return `${formattedYear}-W${weekNumber}`;
 			}
 		}
+	}
+
+	static getWeekNumberOfDate(date: Date): string {
+		const yearStart = new Date(date.getFullYear(), 0, 1);
+		const today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+		const dayOfYear = (+today - +yearStart + 8400000) / 86400000;
+		return Math.ceil(dayOfYear / 7)
+			.toString()
+			.padStart(2, '0');
 	}
 
 	private validateDateString(value: string): boolean {
@@ -127,29 +137,16 @@ export class InputDateController extends InputIconController implements InputDat
 
 	public validateMax(value?: Iso8601 | Date): void {
 		const ensuredValue =
-			((value === undefined || value === null) && this.component._type === 'date') ||
-			this.component._type === 'month' ||
-			this.component._type === 'datetime-local'
+			(value === undefined || value === null) &&
+			(this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local')
 				? InputDateController.DEFAULT_MAX_DATE
 				: value;
 
-		watchValidator(
-			this.component,
-			'_max',
-			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
-			new Set(['Iso8601', 'Date']),
-			InputDateController.tryParseToString(ensuredValue, this.component._type, this.component._step),
-		);
+		this.validateIso8601('_max', ensuredValue);
 	}
 
 	public validateMin(value?: Iso8601 | Date): void {
-		watchValidator(
-			this.component,
-			'_min',
-			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
-			new Set(['Iso8601', 'Date']),
-			InputDateController.tryParseToString(value, this.component._type, this.component._step),
-		);
+		this.validateIso8601('_min', value);
 	}
 
 	public validateOn(value?: InputTypeOnDefault) {
