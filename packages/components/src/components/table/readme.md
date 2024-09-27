@@ -92,6 +92,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 
 - Zu jedem Header kann man eine Sortierfunktion definieren.
 - Es ist exakt eine oder keine Sortierfunktion aktiviert.
+- **Multi-Sort-Funktionalität**: Wenn die Multi-Sort-Option (`_allowMultiSort`) aktiviert ist, kann der Benutzer mehrere Spalten gleichzeitig sortieren. Standardmäßig ist diese Funktion deaktiviert, und nur eine Spalte kann auf einmal sortiert werden. Die Sortierung wechselt zwischen aufsteigend, absteigend und ohne Sortierung. Wenn Multi-Sort deaktiviert ist, wird die Sortierung der vorherigen Spalte aufgehoben, sobald eine neue Spalte sortiert wird.
 - Aktuell wird nicht unterstützt, dass bei zweidimensionalen Headern, die Header der jeweils anderen Header-Seite mit sortiert werden. Bei der Anforderung der Sortierung empfehlen wir die Verwendung nur einer Header-Dimension (entweder horizontal oder vertikal).
 
 ### Render Funktion
