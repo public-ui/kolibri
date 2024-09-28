@@ -2,37 +2,37 @@
 @use '../mixins/rem.scss';
 
 @layer kol-theme-component {
-	select {
-		border: none;
-	}
-
 	.input > .kol-icon {
 		width: rem(32);
 	}
 
-	select[multiple] {
-		overflow: auto;
-	}
+	select {
+		border: none;
 
-	select option {
-		margin: 1px 0;
-		border-radius: var(--border-radius);
-		cursor: pointer;
-	}
+		&[multiple] {
+			overflow: auto;
+		}
 
-	select option:disabled {
-		cursor: not-allowed;
-	}
+		option {
+			margin: 1px 0;
+			border-radius: var(--border-radius);
+			cursor: pointer;
 
-	select:not([multiple]) option {
-		padding: 0.5em;
-	}
+			&:disabled {
+				cursor: not-allowed;
+			}
 
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background-color: var(--color-primary-variant);
-		color: var(--color-light);
+			&:active:not(:disabled),
+			&:checked:not(:disabled),
+			&:focus:not(:disabled),
+			&:hover:not(:disabled) {
+				background-color: var(--color-primary-variant);
+				color: var(--color-light);
+			}
+		}
+
+		&:not([multiple]) option {
+			padding: 0.5em;
+		}
 	}
 }
