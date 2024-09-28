@@ -1,5 +1,5 @@
 @use '../@shared/input-core.scss';
-@use '../mixins/rem.scss';
+@import '../mixins/rem.scss';
 
 @layer kol-theme-component {
 	.input > .kol-icon {
