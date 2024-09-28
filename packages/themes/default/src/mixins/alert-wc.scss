@@ -12,7 +12,7 @@
 
 @mixin kol-alert-theme {
 	.msg {
-		border-width: 0 !important;
+		border-width: 0;
 	}
 
 	.kol-alert-wc {

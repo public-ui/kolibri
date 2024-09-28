@@ -139,7 +139,7 @@
 		input:focus,
 		select:focus,
 		textarea:focus {
-			outline-color: var(--color-danger) !important;
+			outline-color: var(--color-danger);
 		}
 		.kol-alert-wc.error {
 			margin-left: -0.25em;

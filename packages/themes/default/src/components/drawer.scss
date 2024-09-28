@@ -9,7 +9,7 @@ $duration: 0.4s;
 			animation: slideInLeft $duration forwards;
 
 			&.is-closing {
-				animation: slideOutLeft $duration forwards !important;
+				animation: slideOutLeft $duration forwards;
 			}
 		}
 
