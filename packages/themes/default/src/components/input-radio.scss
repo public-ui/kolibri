@@ -11,7 +11,7 @@
 	label {
 		cursor: pointer;
 		display: grid;
-		line-height: 20px;
+		line-height: 1.25;
 		gap: calc(var(--spacing) * 2);
 		width: 100%;
 	}
@@ -23,7 +23,7 @@
 		border-width: 2px;
 		border-style: solid;
 		border-radius: 5px;
-		line-height: 24px;
+		line-height: 1.5;
 	}
 
 	input:hover {
