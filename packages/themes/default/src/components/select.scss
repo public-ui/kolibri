@@ -1,94 +1,13 @@
-@import '../mixins/rem';
-@import '../mixins/alert-wc.scss';
-@import '../mixins/input-error';
+@use '../@shared/input-core.scss';
+@use '../mixins/rem.scss';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-		@include kol-alert-theme;
-	}
-
-	.kol-input {
-		gap: rem(4);
-	}
-
-	.kol-input .error:not(.hidden-error) {
-		order: 1;
-	}
-
-	.kol-input label {
-		order: 2;
-	}
-
-	.kol-input .input {
-		order: 3;
-	}
-
-	.kol-input .hint {
-		order: 4;
-		font-size: rem(14.4);
-		font-style: italic;
-	}
-
 	select {
 		border: none;
 	}
 
-	input::placeholder {
-		color: var(--color-subtle);
-	}
-
-	.input {
-		background-color: var(--color-light);
-		border-color: var(--color-subtle);
-		border-radius: var(--border-radius);
-		border-style: solid;
-		border-width: 2px;
-		padding: 0 rem(8);
-	}
-
 	.input > .kol-icon {
 		width: rem(32);
-	}
-
-	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(16);
-		padding-right: rem(16);
-	}
-
-	.input:is(.icon-left, .icon-right) input {
-		padding-left: rem(8);
-		padding-right: rem(8);
-	}
-
-	.input > input:first-child {
-		padding-left: var(--spacing);
-	}
-
-	.input > input:last-child {
-		padding-right: var(--spacing);
-	}
-
-	:not(.disabled) .input:hover {
-		border-color: var(--color-primary);
-	}
-
-	select:disabled {
-		cursor: not-allowed;
-	}
-
-	.required label > span::after {
-		content: '*';
-		padding-left: 0.125em;
-	}
-
-	.kol-input.error:not(.hidden-error) {
-		@include input-error;
-	}
-
-	.kol-input.disabled .input {
-		background-color: var(--color-mute);
-		border-color: var(--color-mute-variant);
 	}
 
 	select[multiple] {
@@ -115,11 +34,5 @@
 	option:hover:not(:disabled) {
 		background-color: var(--color-primary-variant);
 		color: var(--color-light);
-	}
-
-	.kol-input.disabled .input {
-		background-color: var(--color-mute);
-		border-color: var(--color-mute-variant);
-		color: var(--color-text);
 	}
 }
