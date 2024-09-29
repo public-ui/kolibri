@@ -24,6 +24,10 @@
 		overflow: unset;
 		border-color: transparent;
 		background-color: var(--color-light);
+
+		&.msg {
+			border-width: 0;
+		}
 	}
 
 	.kol-alert-wc > .heading {
