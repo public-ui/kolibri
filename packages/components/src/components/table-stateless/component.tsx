@@ -669,7 +669,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	private renderFoot(): JSX.Element[] | null {
-
 		if (!this.state._dataFoot || this.state._dataFoot.length === 0) {
 			return null;
 		}
