@@ -1,16 +1,14 @@
 @import '../../mixins/rem';
 
-@mixin kol-indented-theme {
-	.kol-indented-text-wc > div {
-		font-family: var(--font-family);
-		-webkit-border-start: 8px solid #0e47cb;
-		-webkit-padding-start: rem(24);
-		border-end-start-radius: 4px;
-		border-inline-start: 8px solid #0e47cb;
-		border-start-start-radius: 4px;
-		display: inline-block;
-		padding-bottom: rem(16);
-		padding-inline-start: rem(24);
-		padding-top: rem(16);
-	}
+@mixin indented-text {
+	font-family: var(--font-family);
+	-webkit-border-start: 8px solid #0e47cb;
+	-webkit-padding-start: rem(24);
+	border-end-start-radius: 4px;
+	border-inline-start: 8px solid #0e47cb;
+	border-start-start-radius: 4px;
+	display: inline-block;
+	padding-bottom: rem(16);
+	padding-inline-start: rem(24);
+	padding-top: rem(16);
 }

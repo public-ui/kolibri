@@ -5,6 +5,9 @@ import type { LabelPropType, TreeAPI, TreeStates } from '../../schema';
 import { validateLabel } from '../../schema';
 import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-tree-wc',
 	shadow: false,

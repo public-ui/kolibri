@@ -3,12 +3,14 @@
 		display: grid;
 		font-family: var(--font-family);
 	}
+
 	.button {
 		appearance: none;
-		background: none;
+		background-color: none;
 		outline: none;
 		text-decoration: none;
 	}
+
 	.button-inner {
 		background-color: var(--color-yellow);
 		border: 2px solid var(--color-yellow);
@@ -18,18 +20,22 @@
 		min-width: var(--a11y-min-size);
 		padding: 0.25em 0.75em;
 	}
+
 	.button:not(:disabled):hover .button-inner {
 		background-color: var(--color-yellow-120);
 		border-color: var(--color-yellow-120);
 	}
+
 	.button:focus .button-inner {
 		outline-offset: -4px;
 		outline: 2px solid var(--color-black);
 	}
+
 	.button:disabled .button-inner {
 		cursor: not-allowed;
 		opacity: 0.5;
 	}
+
 	.selected .button-inner {
 		background-color: var(--color-blue);
 		border-color: var(--color-blue);

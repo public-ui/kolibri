@@ -30,11 +30,6 @@
 		--kolibri-spacing: calc(2 * var(--spacing));
 	}
 
-	:host {
-		/* Reset global background-color defined by components */
-		background-color: transparent;
-	}
-
 	* {
 		box-sizing: border-box;
 	}

@@ -7,7 +7,7 @@ const config = {
 	extends: [
 		'eslint:recommended',
 		// 'plugin:@stencil/recommended',
-		// 'plugin:@stencil-community/recommended',
+		'plugin:@stencil-community/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 	],
@@ -36,6 +36,39 @@ const config = {
 		 */
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
+
+		"@stencil-community/async-methods": "error",
+		"@stencil-community/ban-prefix": ["off", ["stencil", "stnl", "st"]],
+		"@stencil-community/decorators-context": "off",
+		"@stencil-community/decorators-style": [
+		  "off", {
+			"prop": "inline",
+			"state": "inline",
+			"element": "inline",
+			"event": "inline",
+			"method": "multiline",
+			"watch": "multiline",
+			"listen": "multiline"
+		  }],
+		"@stencil-community/element-type": "off",
+		"@stencil-community/host-data-deprecated": "off",
+		"@stencil-community/methods-must-be-public": "off",
+		"@stencil-community/no-unused-watch": "off",
+		"@stencil-community/own-methods-must-be-private": "off",
+		"@stencil-community/own-props-must-be-private": "off",
+		"@stencil-community/prefer-vdom-listener": "off",
+		"@stencil-community/props-must-be-public": "off",
+		"@stencil-community/props-must-be-readonly": "off",
+		"@stencil-community/render-returns-host": "off",
+		"@stencil-community/required-jsdoc": "off",
+		"@stencil-community/reserved-member-names": "off",
+		"@stencil-community/single-export": "off",
+		"@stencil-community/strict-mutable": "off",
+		"@stencil-community/ban-exported-const-enums": "off",
+		"@stencil-community/strict-boolean-conditions": "off",
+		"@stencil-community/ban-default-true": "off",
+
+		"react/jsx-no-bind": 'off',
 
 		'no-console': 'error',
 	},

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/preact",
-	"version": "2.1.8-rc.0",
+	"version": "2.1.8",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -59,7 +59,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"preact": ">=10.24.0"
+		"preact": ">=10.24.1"
 	},
 	"sideEffects": false,
 	"type": "module",

@@ -3,5 +3,8 @@
 
 @layer kol-theme-component {
 	@include kol-alert-theme;
-	@include kol-indented-theme;
+
+	.mandatory-fields-hint {
+		@include indented-text;
+	}
 }

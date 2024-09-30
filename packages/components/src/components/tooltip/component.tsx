@@ -8,6 +8,9 @@ import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { KolSpanWcTag } from '../../core/component-names';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-tooltip-wc',
 	styleUrl: './style.scss',

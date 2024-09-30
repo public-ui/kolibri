@@ -8,6 +8,9 @@ import type { Components } from '@public-ui/components';
 export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, Components.KolInputPassword>(function InputPasswordCases(props, ref) {
 	return (
 		<div className="grid gap-4">
+			<div className="black-background">
+				<KolInputPassword {...props} _label="Passwort (Black background test)" />
+			</div>
 			<KolInputPassword {...props} _disabled _msg={{ _type: 'error', _description: ERROR_MSG }} _label="Passwort (Disabled)" _touched />
 			<KolInputPassword {...props} _readOnly _label="Passwort (Readonly)" />
 			<KolInputPassword

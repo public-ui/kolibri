@@ -1,3 +1,4 @@
+@import '../mixins/indented-text';
 @import '../mixins/rem';
 
 @layer kol-theme-component {
@@ -6,7 +7,8 @@
 		font-family: var(--font-family);
 	}
 
-	details .kol-indented-text {
+	details .indented-text {
+		@include indented-text;
 		margin: rem(4) 0 0 rem(10.4);
 	}
 

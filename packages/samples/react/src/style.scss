@@ -21,6 +21,22 @@ hr {
 	grid-template-columns: auto auto;
 }
 
+.indented-text {
+	p {
+		font-family: var(--font-family);
+		border-left: -2px solid var(--color-primary-variant);
+		padding: 0 calc(8rem / var(--kolibri-root-font-size, 16));
+		margin-left: -2px;
+	}
+}
+
+.black-background {
+	background-color: black;
+	display: flex;
+	flex-direction: column;
+	padding: rem(8);
+}
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
@@ -47,7 +63,7 @@ hr {
 				flex: 1 auto;
 				overflow: auto;
 			}
-		} 
+		}
 	}
 }
 

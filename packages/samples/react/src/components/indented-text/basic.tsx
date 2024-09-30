@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KolIndentedText } from '@public-ui/react';
+import { KolBadge, KolIndentedText } from '@public-ui/react';
 
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -10,6 +10,9 @@ export const IndentedTextBasic: FC = () => (
 		<SampleDescription>
 			<p>
 				KolIndentedText renders the given slot content, styled as indented text. The sample shows two regular paragraphs with an indented paragraph in between.
+			</p>
+			<p>
+				<KolBadge _label="The component is deprecated and won't be available anymore in KoliBri version 3." _color="#db5461" />
 			</p>
 		</SampleDescription>
 
