@@ -10,12 +10,6 @@
 			word-break: break-word;
 		}
 
-		.kol-table-stateless-wc {
-			& .foot-spacer {
-				height: rem(24);
-			}
-		}
-
 		:host > div,
 		kol-table-stateless-wc > div {
 			overflow-x: auto;
@@ -57,8 +51,8 @@
 		}
 
 		table,
-		table thead tr:last-child th,
-		table thead tr:last-child td {
+		table thead tr:nth-last-child(2) th,
+		table thead tr:nth-last-child(2) td {
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
 			border-style: solid;
@@ -81,7 +75,7 @@
 			align-items: center;
 		}
 
-		tr:nth-child(even) {
+		table tbody tr:nth-child(even) {
 			background-color: var(--color-mute);
 		}
 
@@ -93,6 +87,17 @@
 		th[aria-sort='ascending'],
 		th[aria-sort='descending'] {
 			font-weight: 700;
+		}
+
+		tr.foot-spacer,
+		tr.head-spacer {
+			display: inherit;
+			height: rem(24);
+
+			td {
+				border: none;
+				padding: 0;
+			}
 		}
 
 		.input {

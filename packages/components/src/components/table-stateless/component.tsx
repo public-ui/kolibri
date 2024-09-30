@@ -605,8 +605,14 @@ export class KolTableStateless implements TableStatelessAPI {
 		);
 	}
 
-	private renderSpacer(variant: 'foot'): JSX.Element {
-		return <tr class={`${variant}-spacer`} aria-hidden="true"></tr>;
+	private renderSpacer(variant: 'foot' | 'head', cellDefs: KoliBriTableHeaderCell[][] | KoliBriTableCell[][]): JSX.Element {
+		const colspan = cellDefs?.[0].reduce((acc, row) => acc + (row.colSpan || 1), 0);
+
+		return (
+			<tr class={`${variant}-spacer`} aria-hidden="true">
+				<td colSpan={colspan}></td>
+			</tr>
+		);
 	}
 
 	private renderFoot(): JSX.Element[] | null {
@@ -615,7 +621,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		const rows: KoliBriTableCell[][] = this.createDataField(this.state._dataFoot, this.state._headerCells, true);
-		return [this.renderSpacer('foot'), <tfoot>{rows.map(this.renderTableRow)}</tfoot>];
+		return <tfoot>{[this.renderSpacer('foot', rows), rows.map(this.renderTableRow)]}</tfoot>;
 	}
 
 	public render(): JSX.Element {
@@ -648,40 +654,43 @@ export class KolTableStateless implements TableStatelessAPI {
 
 						{Array.isArray(this.state._headerCells.horizontal) && (
 							<thead>
-								{this.state._headerCells.horizontal.map((cols, rowIndex) => (
-									<tr key={`thead-${rowIndex}`}>
-										{this.state._selection && this.renderHeadingSelectionCell()}
-										{cols.map((cell, colIndex) => {
-											if (cell.asTd === true) {
-												return (
-													<td
-														key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
-														class={{
-															[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
-														}}
-														colSpan={cell.colSpan}
-														rowSpan={cell.rowSpan}
-														style={{
-															textAlign: cell.textAlign,
-															width: cell.width,
-														}}
-														ref={
-															typeof cell.render === 'function'
-																? (el) => {
-																		this.cellRender(cell, el);
-																	}
-																: undefined
-														}
-													>
-														{typeof cell.render !== 'function' ? cell.label : ''}
-													</td>
-												);
-											} else {
-												return this.renderHeadingCell(cell, rowIndex, colIndex);
-											}
-										})}
-									</tr>
-								))}
+								{[
+									this.state._headerCells.horizontal.map((cols, rowIndex) => (
+										<tr key={`thead-${rowIndex}`}>
+											{this.state._selection && this.renderHeadingSelectionCell()}
+											{cols.map((cell, colIndex) => {
+												if (cell.asTd === true) {
+													return (
+														<td
+															key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
+															class={{
+																[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
+															}}
+															colSpan={cell.colSpan}
+															rowSpan={cell.rowSpan}
+															style={{
+																textAlign: cell.textAlign,
+																width: cell.width,
+															}}
+															ref={
+																typeof cell.render === 'function'
+																	? (el) => {
+																			this.cellRender(cell, el);
+																		}
+																	: undefined
+															}
+														>
+															{typeof cell.render !== 'function' ? cell.label : ''}
+														</td>
+													);
+												} else {
+													return this.renderHeadingCell(cell, rowIndex, colIndex);
+												}
+											})}
+										</tr>
+									)),
+									this.renderSpacer('head', this.state._headerCells.horizontal),
+								]}
 							</thead>
 						)}
 						<tbody>{dataField.map(this.renderTableRow)}</tbody>
