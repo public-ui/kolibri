@@ -151,16 +151,33 @@ export class InputDateController extends InputIconController implements InputDat
 			InputDateController.tryParseToString(value, this.component._type, this.component._step),
 		);
 	}
-
+	private getOriginalValueType(): 'date' | 'iso' | 'null' {
+		if (this.component._value instanceof Date) {
+			return 'date';
+		} else if (typeof this.component._value === 'string') {
+			return 'iso';
+		}
+		return 'null';
+	}
+	private remapValueForChange(newValue: string): Date | string | null {
+		const originalValueType = this.getOriginalValueType();
+		if (originalValueType === 'date') {
+			return new Date(newValue);
+		}
+		if (originalValueType === 'iso') {
+			return newValue;
+		}
+		return null;
+	}
 	public validateOn(value?: InputTypeOnDefault) {
 		setState(this.component, '_on', {
 			...value,
 			onChange: (e: Event, v: unknown) => {
 				// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
 				if (!!v !== !!this.component._value) {
-					this.component._value = v as Iso8601;
+					const remapValue = this.remapValueForChange(v as string);
+					this.component._value = remapValue as Iso8601;
 				}
-
 				if (value?.onChange) {
 					value.onChange(e, v);
 				}
