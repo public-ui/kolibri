@@ -66,10 +66,10 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "18.2.5",
-		"@angular/compiler": "18.2.5",
-		"@angular/compiler-cli": "18.2.5",
-		"@angular/core": "18.2.5",
+		"@angular/common": "18.2.6",
+		"@angular/compiler": "18.2.6",
+		"@angular/compiler-cli": "18.2.6",
+		"@angular/core": "18.2.6",
 		"@public-ui/components": "workspace:*",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.5",
@@ -81,7 +81,7 @@
 		"zone.js": "0.14.10"
 	},
 	"peerDependencies": {
-		"@angular/core": "18.2.5",
+		"@angular/core": "18.2.6",
 		"@public-ui/components": "workspace:*"
 	},
 	"files": [
