@@ -5,7 +5,9 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { watchHeadingLevel } from './validation';
 
 import type { JSX } from '@stencil/core';
+
 /**
+ * @internal
  * @slot - Inhalt der Überschrift.
  */
 @Component({

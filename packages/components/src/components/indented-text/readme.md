@@ -37,6 +37,8 @@ Verwenden Sie die **IndentedText**-Komponente, um Textpassagen oder Informatione
 
 <!-- Auto Generated Below -->
 
+> **[DEPRECATED]** Will be removed in v3. Replace with custom HTML and styling.
+
 ## Slots
 
 | Slot | Description |

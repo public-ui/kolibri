@@ -1,3 +1,5 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -5,9 +7,9 @@
 
 	.kol-link-wc > a > .kol-span-wc {
 		border-radius: 4px;
-		gap: 0.5rem;
-		line-height: 1rem;
-		padding: 0.75rem;
+		gap: rem(8);
+		line-height: rem(16);
+		padding: rem(12);
 		background-color: #0e47cb;
 		color: #fff;
 		cursor: pointer;

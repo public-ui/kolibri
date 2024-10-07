@@ -14,32 +14,32 @@ export const AbbrBasic: FC = () => (
 			I am <KolAbbr _label="zum Beispiel">e.g.</KolAbbr> an abbreviation.
 		</p>
 		<p>
-			I am{' '}
+			I am&nbsp;
 			<KolAbbr _label="zum Beispiel" _tooltipAlign="right">
 				e.g.
-			</KolAbbr>{' '}
-			an abbreviation (right).
+			</KolAbbr>
+			&nbsp;an abbreviation (right).
 		</p>
 		<p>
-			I am{' '}
+			I am&nbsp;
 			<KolAbbr _label="zum Beispiel" _tooltipAlign="bottom">
 				e.g.
-			</KolAbbr>{' '}
-			an abbreviation (below).
+			</KolAbbr>
+			&nbsp;an abbreviation (below).
 		</p>
 		<p>
-			I am{' '}
+			I am&nbsp;
 			<KolAbbr _label="zum Beispiel" _tooltipAlign="left">
 				e.g.
-			</KolAbbr>{' '}
-			an abbreviation (left).
+			</KolAbbr>
+			&nbsp;an abbreviation (left).
 		</p>
 		<p>
-			I am{' '}
+			I am&nbsp;
 			<KolAbbr _label="zum Beispiel" _tooltipAlign="top">
 				e.g.
-			</KolAbbr>{' '}
-			an abbreviation (top).
+			</KolAbbr>
+			&nbsp;an abbreviation (top).
 		</p>
 	</>
 );

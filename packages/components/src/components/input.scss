@@ -52,4 +52,8 @@
 	select[multiple] option {
 		padding: calc((var(--a11y-min-size) - rem(16)) / 2) 0.5em;
 	}
+
+	.input {
+		background-color: white;
+	}
 }

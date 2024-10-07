@@ -7,7 +7,8 @@ import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 
-import type { KoliBriTableHeaders } from '@public-ui/components';
+import type { IconsPropType, KoliBriTableHeaders } from '@public-ui/components';
+import { useToasterService } from '../../hooks/useToasterService';
 
 type Data = {
 	order: number;
@@ -31,6 +32,16 @@ const DATA: Data[] = [
 		date: new Date('1986-07-10T11:39:29.539Z'),
 	},
 ];
+
+function KolButtonWrapper({ label, icons }: { label: string; icons: IconsPropType }) {
+	const { dummyClickEventHandler } = useToasterService();
+
+	const dummyEventHandler = {
+		onClick: dummyClickEventHandler,
+	};
+
+	return <KolButton _label={label} _icons={icons} _on={dummyEventHandler} />;
+}
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
@@ -89,7 +100,7 @@ const HEADERS: KoliBriTableHeaders = {
 							}}
 						>
 							<KolInputText _label="Input" />
-							<KolButton _label="Save" _icons={{ left: 'codicon codicon-save' }} />
+							<KolButtonWrapper label="Save" icons={{ left: 'codicon codicon-save' }} />
 						</div>,
 					);
 				},
@@ -104,6 +115,6 @@ export const TableRenderCell: FC = () => (
 			<p>This sample shows KolTable using React render functions for the cell contents.</p>
 		</SampleDescription>
 
-		<KolTable _label="Sort by date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
+		<KolTable _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" />
 	</>
 );

@@ -4,13 +4,24 @@ import { KolButton, KolTableStateless, createReactRenderElement } from '@public-
 import { SampleDescription } from '../SampleDescription';
 import type { KoliBriTableSelection } from '@public-ui/components';
 import { getRoot } from '../../shares/react-roots';
-import type { KoliBriTableCell } from '@public-ui/components/src/schema';
+import type { KoliBriTableCell } from '@public-ui/components';
+import { useToasterService } from '../../hooks/useToasterService';
 
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
 	{ id: '1002', name: 'Foo Baz', internalIdentifier: `AAA1002` },
 ];
 type Data = (typeof DATA)[0];
+
+function KolButtonWrapper({ label }: { label: string }) {
+	const { dummyClickEventHandler } = useToasterService();
+
+	const dummyEventHandler = {
+		onClick: dummyClickEventHandler,
+	};
+
+	return <KolButton _label={label} _on={dummyEventHandler} />;
+}
 
 export const TableStatelessWithSelection: FC = () => {
 	const [selectedKeys, setSelectedKeys] = useState(['AAA1002']);
@@ -42,7 +53,7 @@ export const TableStatelessWithSelection: FC = () => {
 	}, [kolTableStatelessRef]);
 
 	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
-		getRoot(createReactRenderElement(element)).render(<KolButton _label={`Click ${cell.data?.id}`}></KolButton>);
+		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${cell.data?.id}`} />);
 	};
 
 	return (
@@ -51,24 +62,26 @@ export const TableStatelessWithSelection: FC = () => {
 				<p>This sample shows KolTableStateless with checkboxes for selection enabled.</p>
 			</SampleDescription>
 
-			<KolTableStateless
-				_label="Table with selection checkboxes"
-				_headerCells={{
-					horizontal: [
-						[
-							{ key: 'id', label: '#ID', textAlign: 'left' },
-							{ key: 'name', label: 'Name', textAlign: 'left' },
-							{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+			<section className="w-full">
+				<KolTableStateless
+					_label="Table with selection checkboxes"
+					_headerCells={{
+						horizontal: [
+							[
+								{ key: 'id', label: '#ID', textAlign: 'left' },
+								{ key: 'name', label: 'Name', textAlign: 'left' },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+							],
 						],
-					],
-				}}
-				_data={DATA}
-				_selection={selection}
-				_on={{ onSelectionChange: handleSelectionChangeCallback }}
-				className="block"
-				style={{ maxWidth: '600px' }}
-				ref={kolTableStatelessRef}
-			/>
+					}}
+					_data={DATA}
+					_selection={selection}
+					_on={{ onSelectionChange: handleSelectionChangeCallback }}
+					className="block"
+					style={{ maxWidth: '600px' }}
+					ref={kolTableStatelessRef}
+				/>
+			</section>
 		</>
 	);
 };

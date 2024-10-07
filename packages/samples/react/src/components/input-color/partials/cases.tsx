@@ -8,15 +8,17 @@ import type { Components } from '@public-ui/components';
 export const InputColorCases = forwardRef<HTMLKolInputColorElement, Components.KolInputColor>(function InputColorCases(props, ref) {
 	return (
 		<div className="grid gap-4">
-			<KolInputColor
-				{...props}
-				_msg={{ _type: 'error', _description: ERROR_MSG }}
-				_icons={{
-					left: 'codicon codicon-symbol-color',
-				}}
-				_label="Color"
-				_value="#f08080"
-			/>
+			<div className="black-background">
+				<KolInputColor
+					{...props}
+					_msg={{ _type: 'error', _description: ERROR_MSG }}
+					_icons={{
+						left: 'codicon codicon-symbol-color',
+					}}
+					_label="Color (Black background test)"
+					_value="#f08080"
+				/>
+			</div>
 			<KolInputColor
 				{...props}
 				_msg={{ _type: 'error', _description: ERROR_MSG }}

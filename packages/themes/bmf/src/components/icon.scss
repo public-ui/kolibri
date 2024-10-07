@@ -38,8 +38,6 @@
 	:host {
 		display: flex;
 		place-items: center;
-		width: 1em;
-		height: 1em;
 	}
 
 	:host > i::before {
@@ -47,8 +45,6 @@
 	}
 
 	:host > i {
-		width: 1em;
-		height: 1em;
 		font-family: 'Material Symbols Rounded';
 		font-weight: normal;
 		font-style: normal;

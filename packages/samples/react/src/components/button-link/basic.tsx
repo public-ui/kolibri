@@ -13,14 +13,14 @@ export const ButtonLinkBasic: FC = () => (
 				such as <code>block</code>, <code>inline-block</code> and <code>inline</code>. It also demonstrates the disabled-state.
 			</p>
 		</SampleDescription>
-		<div>
+		<section className="text-base">
 			<p>
 				In this paragraph, a link is inserted that contains no additional attributes. <KolButtonLink _label="Simple Link" /> It is rendered by default as an{' '}
 				<strong>inline element</strong>.
 			</p>
 			<p>
 				In this paragraph, a link is inserted that is rendered as an inline-block element.
-				<KolButtonLink style={{ display: 'inline-block', margin: '1rem', border: '1px dotted' }} _label="Simple Link" />. This allows you to assign width,
+				<KolButtonLink className="m-4" style={{ display: 'inline-block', border: '1px dotted' }} _label="Simple Link" />. This allows you to assign width,
 				height, and other properties to it using CSS styles.
 				<br />
 				<br />
@@ -31,6 +31,6 @@ export const ButtonLinkBasic: FC = () => (
 			<p>
 				<KolButtonLink _label="Disabled ButtonLink" _disabled />
 			</p>
-		</div>
+		</section>
 	</>
 );

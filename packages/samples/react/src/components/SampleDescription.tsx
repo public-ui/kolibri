@@ -3,7 +3,7 @@ import React, { useContext, useMemo } from 'react';
 
 import { PUBLIC_CODE_COMPONENT_URL, PUBLIC_DOC_COMPONENT_URL } from '../shares/constants';
 
-import { KolIndentedText, KolLink } from '@public-ui/react';
+import { KolLink } from '@public-ui/react';
 
 import { HideMenusContext } from '../shares/HideMenusContext';
 
@@ -30,7 +30,7 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 
 	return hideMenus ? null : (
 		<div className="flex justify-between mb-sm">
-			<KolIndentedText>{props.children}</KolIndentedText>
+			<div className="indented-text">{props.children}</div>
 			<div className="flex flex-wrap gap-2 shrink-0 ml">
 				{codeLink && <KolLink _href={codeLink} _label="Code" _target="_blank" />}
 				{docLink && <KolLink _href={docLink} _label="Documentation" _target="_blank" />}

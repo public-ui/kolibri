@@ -138,7 +138,7 @@ export const App: FC = () => {
 					/>
 				)}
 
-				<main className="p-4" id="route-container">
+				<main className="flex flex-col items-start p-4" id="route-container">
 					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="DRAFT" _color="#db5461" />}
 					<Routes>
 						{ROUTE_TREE}

@@ -10,7 +10,6 @@
 		"@stencil/vue-output-target",
 		"eslint-plugin-html",
 		"eslint-plugin-jsdoc",
-		"eslint-plugin-json",
 		"eslint-plugin-react"
 	],
 	"project": ["src/**/*.ts"]

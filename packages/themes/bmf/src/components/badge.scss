@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		display: inline-block;
@@ -5,7 +7,7 @@
 	}
 
 	:host > span {
-		border-radius: 0.3125rem;
+		border-radius: rem(5);
 		display: inline-flex;
 		font-style: normal;
 	}
@@ -21,24 +23,24 @@
 
 	:host > span .kol-button-wc > button {
 		color: inherit;
-		font-size: 1rem;
-		border-top-right-radius: 0.3125rem;
-		border-bottom-right-radius: 0.3125rem;
+		font-size: rem(16);
+		border-top-right-radius: rem(5);
+		border-bottom-right-radius: rem(5);
 		padding: 2px;
 	}
 
 	:host > span .kol-span-wc {
-		padding: 0.25rem 0.75rem;
+		padding: rem(4) rem(12);
 	}
 
 	:host > span > .kol-span-wc {
 		align-items: center;
 		font-style: normal;
-		gap: 0.5rem;
+		gap: rem(8);
 	}
 
 	:host > span > .kol-span-wc > span {
 		display: flex;
-		gap: 0.25rem;
+		gap: rem(4);
 	}
 }

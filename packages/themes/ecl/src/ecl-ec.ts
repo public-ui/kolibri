@@ -14,7 +14,6 @@ import detailsCss from './components/ecl-ec/details.scss';
 import drawerCss from './components/ecl-ec/drawer.scss';
 import formCss from './components/ecl-ec/form.scss';
 import headingCss from './components/ecl-ec/heading.scss';
-import iconCss from './components/ecl-ec/icon.scss';
 import indentedTextCss from './components/ecl-ec/indented-text.scss';
 import inputCheckboxCss from './components/ecl-ec/input-checkbox.scss';
 import inputColorCss from './components/ecl-ec/input-color.scss';
@@ -83,7 +82,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-INPUT-FILE': inputFileCss,
 	'KOL-SELECT': selectCss,
 	'KOL-TEXTAREA': textareaCss,
-	'KOL-ICON': iconCss,
 	'KOL-TABLE-STATEFUL': tableStatefulCss,
 	'KOL-TABLE-STATELESS': tableStatelessCss,
 	'KOL-NAV': navCss,
