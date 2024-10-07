@@ -6,41 +6,77 @@
 		font-family: var(--font-family);
 	}
 
+	:host .kol-icon {
+		color: inherit;
+	}
+
 	:host > span {
 		border-radius: rem(5);
 		display: inline-flex;
 		font-style: normal;
-	}
 
-	:host > span.smart-button {
-		align-items: center;
-	}
+		.kol-span-wc {
+			padding: rem(4) rem(12);
+		}
 
-	:host > span .kol-button-wc:hover > button {
-		background-color: var(--color-ocean);
-		color: var(--color-white);
-	}
+		> .kol-span-wc {
+			align-items: center;
+			font-style: normal;
+			gap: rem(8);
 
-	:host > span .kol-button-wc > button {
-		color: inherit;
-		font-size: rem(16);
-		border-top-right-radius: rem(5);
-		border-bottom-right-radius: rem(5);
-		padding: 2px;
-	}
+			> span {
+				display: flex;
+				gap: rem(8);
+				line-height: rem(20);
+			}
+		}
 
-	:host > span .kol-span-wc {
-		padding: rem(4) rem(12);
-	}
+		&.smart-button {
+			align-items: center;
 
-	:host > span > .kol-span-wc {
-		align-items: center;
-		font-style: normal;
-		gap: rem(8);
-	}
+			.kol-span-wc {
+				padding: rem(4) rem(8) rem(4) rem(12);
+			}
+		}
 
-	:host > span > .kol-span-wc > span {
-		display: flex;
-		gap: rem(4);
+		.kol-button-wc {
+			height: 32px;
+			width: 32px;
+			position: relative;
+
+			&:hover > button > .kol-span-wc {
+				background-color: var(--color-ocean);
+				color: var(--color-white);
+			}
+
+			> button {
+				color: inherit;
+				font-size: rem(16);
+				position: absolute;
+				top: -6px;
+				right: -12px;
+
+				> .kol-span-wc {
+					border-top-right-radius: rem(5);
+					border-bottom-right-radius: rem(5);
+					padding-left: 0;
+					padding-right: 0;
+					height: 32px;
+					width: 32px;
+				}
+
+				&:focus-visible {
+					outline: none;
+
+					> .kol-span-wc {
+						outline-color: var(--color-ocean);
+						outline-offset: 2px;
+						outline-style: solid;
+						outline-width: 3px;
+						transition: outline-offset 0.2s linear;
+					}
+				}
+			}
+		}
 	}
 }
