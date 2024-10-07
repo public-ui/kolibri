@@ -68,6 +68,11 @@
 			}
 		}
 
+		tr.foot-spacer,
+		tr.head-spacer {
+			display: none;
+		}
+
 		.selection-header-cell {
 			width: 0;
 		}
