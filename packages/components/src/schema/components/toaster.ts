@@ -27,7 +27,7 @@ export type ToastState = {
 };
 
 export type ToasterOptions = {
-	defaultAlertVariant: AlertVariant;
+	defaultVariant: AlertVariant;
 };
 
 type RequiredProps = NonNullable<unknown>;

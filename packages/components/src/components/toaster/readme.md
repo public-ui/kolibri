@@ -90,9 +90,9 @@ Type: `Promise<void>`
 
 #### Parameters
 
-| Name    | Type                                                                                                                                                                                                            | Description |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; alertVariant?: "card" \| "msg" \| undefined; }` |             |
+| Name    | Type                                                                                                                                                                                                       | Description |
+| ------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----------- |
+| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; variant?: "card" \| "msg" \| undefined; }` |             |
 
 #### Returns
 
