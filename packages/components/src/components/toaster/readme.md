@@ -16,14 +16,14 @@ import { ToasterService } from '@public-ui/components';
 
 // Get the toaster instance for the current HTML document.
 const toaster = ToasterService.getInstance(document, {
-	defaultAlertType: 'msg', // Standard: 'card'
+  defaultAlertType: 'msg', // Standard: 'card'
 });
 
 // Enqueue a new toast to the toaster to display:
 toaster.enqueue({
-	label: 'This is the title',
-	description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
-	type: 'info',
+  label: 'This is the title',
+  description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
+  type: 'info',
   variant: 'msg', // Standard: 'card'
 });
 ```
@@ -48,13 +48,13 @@ HTMLElement der Toast-Komponente aufgerufen. Zudem wird auch ein Objekt übergeb
 
 ```ts
 const closeToast = toaster.enqueue({
-	render: (element: HTMLElement, { close }) => {
-		element.textContent = 'Mein Inhalt';
-		const customCloseButton = document.createElement('button');
-		customCloseButton.textContent = 'Toast schließen';
-		element.appendChild(customCloseButton);
-		customCloseButton.addEventListener('click', close, { once: true });
-	},
+  render: (element: HTMLElement, {close}) => {
+    element.textContent = 'Mein Inhalt';
+    const customCloseButton = document.createElement('button');
+    customCloseButton.textContent = 'Toast schließen';
+    element.appendChild(customCloseButton);
+    customCloseButton.addEventListener('click', close, {once: true});
+  },
 });
 
 /* Optional: Toast wieder schließen mit `closeToast()` */
@@ -79,7 +79,7 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 #### Parameters
 
 | Name        | Type      | Description |
-| ----------- | --------- | ----------- |
+|-------------|-----------|-------------|
 | `immediate` | `boolean` |             |
 
 #### Returns
@@ -91,7 +91,7 @@ Type: `Promise<void>`
 #### Parameters
 
 | Name    | Type                                                                                                                                                                                                       | Description |
-| ------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----------- |
+|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; variant?: "card" \| "msg" \| undefined; }` |             |
 
 #### Returns
