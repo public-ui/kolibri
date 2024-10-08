@@ -103,7 +103,7 @@ export class InputDateController extends InputIconController implements InputDat
 
 		// The week number is the number of weeks between the first Thursday of the year
 		// and the Thursday in the target week (604800000 = 7 * 24 * 3600 * 1000)
-		const dayOfYear = 1 + Math.ceil((n1stThursday - date) / 604800000);
+		const dayOfYear = 1 + Math.ceil((n1stThursday - date.valueOf()) / 604800000);
 
 		return dayOfYear.toString().padStart(2, '0');
 	}
