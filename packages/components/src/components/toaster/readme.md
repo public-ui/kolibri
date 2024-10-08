@@ -24,7 +24,7 @@ toaster.enqueue({
 	label: 'This is the title',
 	description: 'Magna eu sit adipisicing cillum amet esse in aute quis in dolore.',
 	type: 'info',
-	alertType: 'msg', // Standard: 'card'
+  variant: 'msg', // Standard: 'card'
 });
 ```
 
