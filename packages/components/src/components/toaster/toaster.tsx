@@ -50,6 +50,8 @@ export class ToasterService {
 		if (this.toastContainerElement && typeof this.toastContainerElement.enqueue === 'function') {
 			if (!toast.alertVariant && this.options?.defaultAlertVariant) {
 				toast.alertVariant = this.options?.defaultAlertVariant;
+			} else if (!toast.variant && this.options?.defaultAlertVariant) {
+				toast.variant = this.options?.defaultAlertVariant;
 			}
 
 			return this.toastContainerElement.enqueue(toast);
