@@ -75,8 +75,7 @@ export class InputDateController extends InputIconController implements InputDat
 						return formattedTimeWithSeconds;
 					}
 				case 'week':
-					const weekNumber = this.getWeekNumberOfDate(value);
-					return `${formattedYear}-W${weekNumber}`;
+					return `${formattedYear}-W${this.getWeekNumberOfDate(value)}`;
 			}
 		}
 	}
