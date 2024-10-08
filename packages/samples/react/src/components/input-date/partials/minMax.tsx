@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { KolInputDate } from '@public-ui/react';
-import { Components } from '@public-ui/components';
+import type { Components } from '@public-ui/components';
 
 export const InputDateMinMaxCases = forwardRef<HTMLKolInputDateElement, Components.KolInputDate>(function InputDateCases(props) {
 	const minDateIso = '2024-09-26';
