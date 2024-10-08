@@ -13,6 +13,7 @@ import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+
 export class InputDateController extends InputIconController implements InputDateWatches {
 	// test: https://regex101.com/r/NTVh4L/1
 	private static readonly isoDateRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/;
@@ -81,12 +82,30 @@ export class InputDateController extends InputIconController implements InputDat
 	}
 
 	static getWeekNumberOfDate(date: Date): string {
-		const yearStart = new Date(date.getFullYear(), 0, 1);
-		const today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-		const dayOfYear = (+today - +yearStart + 8400000) / 86400000;
-		return Math.ceil(dayOfYear / 7)
-			.toString()
-			.padStart(2, '0');
+		// ISO week date weeks start on Monday, so correct the day number
+		const nDay = (date.getDay() + 6) % 7;
+
+		// ISO 8601 states that week 1 is the week with the first Thursday of that year
+		// Set the target date to the Thursday in the target week
+		date.setDate(date.getDate() - nDay + 3);
+
+		// Store the millisecond value of the target date
+		const n1stThursday = date.valueOf();
+
+		// Set the target to the first Thursday of the year
+		// First, set the target to January 1st
+		date.setMonth(0, 1);
+
+		// Not a Thursday? Correct the date to the next Thursday
+		if (date.getDay() !== 4) {
+			date.setMonth(0, 1 + ((4 - date.getDay() + 7) % 7));
+		}
+
+		// The week number is the number of weeks between the first Thursday of the year
+		// and the Thursday in the target week (604800000 = 7 * 24 * 3600 * 1000)
+		const dayOfYear = 1 + Math.ceil((n1stThursday - date) / 604800000);
+
+		return dayOfYear.toString().padStart(2, '0');
 	}
 
 	private validateDateString(value: string): boolean {
