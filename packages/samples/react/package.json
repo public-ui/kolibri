@@ -30,7 +30,7 @@
 		"@public-ui/react": "workspace:*",
 		"@public-ui/themes": "workspace:*",
 		"@types/node": "ts5.6",
-		"@types/react": "18.3.9",
+		"@types/react": "18.3.4",
 		"@types/react-dom": "18.3.0",
 		"@unocss/preset-uno": "0.58.9",
 		"@unocss/webpack": "0.58.9",
