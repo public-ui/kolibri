@@ -1,18 +1,17 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { InputFileControl } from '../../formik-fields';
+import { InputFileControl, type InputFileControlProps } from '../../formik-fields';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type InputFileFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-};
+export type InputFileFormFieldProps = InputFileControlProps & CoreFormFieldProps;
 
 function InputFileFormField<T extends Record<string, unknown>, V extends FileList>(
 	props: InputFileFormFieldProps,
 	ref: React.ForwardedRef<HTMLKolInputFileElement>,
 ) {
-	const { name, label, required } = props;
+	const { name: initialName, ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -24,9 +23,8 @@ function InputFileFormField<T extends Record<string, unknown>, V extends FileLis
 						form={form as FormikProps<Record<string, unknown>>}
 						error={error}
 						touched={touched}
-						label={label}
 						value={value as unknown as V}
-						required={required}
+						{...other}
 					/>
 				);
 			}}

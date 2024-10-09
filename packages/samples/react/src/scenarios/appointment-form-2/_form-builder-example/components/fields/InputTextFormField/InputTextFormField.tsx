@@ -1,18 +1,17 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { InputTextControl } from '../../formik-fields';
+import { InputTextControl, type InputTextControlProps } from '../../formik-fields';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type InputTextFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-};
+export type InputTextFormFieldProps = InputTextControlProps & CoreFormFieldProps;
 
 function InputTextFormField<T extends Record<string, unknown>, V extends string>(
 	props: InputTextFormFieldProps,
 	ref: React.ForwardedRef<HTMLKolInputTextElement>,
 ) {
-	const { name, label, required } = props;
+	const { name: initialName, ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -24,9 +23,8 @@ function InputTextFormField<T extends Record<string, unknown>, V extends string>
 						form={form as FormikProps<Record<string, unknown>>}
 						error={error}
 						touched={touched}
-						label={label}
 						value={value as unknown as V}
-						required={required}
+						{...other}
 					/>
 				);
 			}}

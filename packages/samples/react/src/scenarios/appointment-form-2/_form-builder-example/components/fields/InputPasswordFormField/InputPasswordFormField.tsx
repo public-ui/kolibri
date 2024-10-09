@@ -1,18 +1,17 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { InputPasswordControl } from '../../formik-fields';
+import { InputPasswordControl, type InputPasswordControlProps } from '../../formik-fields';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type InputPasswordFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-};
+export type InputPasswordFormFieldProps = InputPasswordControlProps & CoreFormFieldProps;
 
 function InputPasswordFormField<T extends Record<string, unknown>, V extends string>(
 	props: InputPasswordFormFieldProps,
 	ref: React.ForwardedRef<HTMLKolInputPasswordElement>,
 ) {
-	const { name, label, required } = props;
+	const { name: initialName, ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -24,9 +23,8 @@ function InputPasswordFormField<T extends Record<string, unknown>, V extends str
 						form={form as FormikProps<Record<string, unknown>>}
 						error={error}
 						touched={touched}
-						label={label}
 						value={value as unknown as V}
-						required={required}
+						{...other}
 					/>
 				);
 			}}

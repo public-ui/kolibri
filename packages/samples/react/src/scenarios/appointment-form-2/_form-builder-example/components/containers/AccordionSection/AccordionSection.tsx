@@ -8,10 +8,11 @@ export type AccordionSectionProps = {
 	open?: boolean;
 	autoUnmounted?: boolean;
 	fields: FieldDefinition[];
+	namespace?: string;
 };
 
 function AccordionSection(props: AccordionSectionProps, ref: React.ForwardedRef<HTMLKolAccordionElement>) {
-	const { label, open: initialOpen, autoUnmounted = true, fields } = props;
+	const { namespace, label, open: initialOpen, autoUnmounted = true, fields } = props;
 
 	const [open, setOpen] = React.useState(Boolean(initialOpen));
 
@@ -26,7 +27,7 @@ function AccordionSection(props: AccordionSectionProps, ref: React.ForwardedRef<
 
 	return (
 		<KolAccordion ref={ref} _label={label} {...specialProps}>
-			{open && <StackSection fields={fields} />}
+			{open && <StackSection namespace={namespace} fields={fields} />}
 		</KolAccordion>
 	);
 }

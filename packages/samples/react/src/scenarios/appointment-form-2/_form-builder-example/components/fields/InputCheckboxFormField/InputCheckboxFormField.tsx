@@ -1,20 +1,17 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { InputCheckboxControl } from '../../formik-fields';
+import { InputCheckboxControl, type InputCheckboxControlProps } from '../../formik-fields';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type InputCheckboxFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-	trueValue?: unknown;
-	falseValue?: unknown;
-};
+export type InputCheckboxFormFieldProps = InputCheckboxControlProps & CoreFormFieldProps;
 
 function InputCheckboxFormField<T extends Record<string, unknown>, V extends boolean>(
 	props: InputCheckboxFormFieldProps,
 	ref: React.ForwardedRef<HTMLKolInputCheckboxElement>,
 ) {
-	const { name, label, required, trueValue, falseValue } = props;
+	const { name: initialName, ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -26,11 +23,8 @@ function InputCheckboxFormField<T extends Record<string, unknown>, V extends boo
 						form={form as FormikProps<Record<string, unknown>>}
 						error={error}
 						touched={touched}
-						label={label}
 						value={value as unknown as V}
-						required={required}
-						trueValue={trueValue}
-						falseValue={falseValue}
+						{...other}
 					/>
 				);
 			}}

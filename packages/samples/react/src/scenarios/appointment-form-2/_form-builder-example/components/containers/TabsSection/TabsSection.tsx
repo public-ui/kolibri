@@ -9,6 +9,7 @@ export type TabsSectionProps = {
 	align?: AlignPropType;
 	tabs: {
 		label: string;
+		namespace?: string;
 		fields: FieldDefinition[];
 	}[];
 };
@@ -31,8 +32,8 @@ function TabsSection(props: TabsSectionProps, ref: React.ForwardedRef<HTMLKolTab
 
 	return (
 		<KolTabs ref={ref} _selected={selected} _label={label} _align={align} _tabs={tabNames} _on={_on}>
-			{tabs.map(({ fields }, index) => (
-				<div key={index}>{selected === index && <StackSection fields={fields} />}</div>
+			{tabs.map(({ namespace, fields }, index) => (
+				<div key={index}>{selected === index && <StackSection namespace={namespace} fields={fields} />}</div>
 			))}
 		</KolTabs>
 	);

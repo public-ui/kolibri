@@ -1,27 +1,22 @@
 import * as React from 'react';
-import { type FieldInputProps, type FormikProps } from 'formik';
 import { KolInputRadio, KolSpin } from '@public-ui/react';
-import { type InputTypeOnDefault } from '@public-ui/components';
+import { type Orientation, type InputTypeOnDefault } from '@public-ui/components';
 import { useFieldIdBuilder, useFieldMsgBuilder, useFormikControlEventHandler } from '../../../hooks';
+import type { GenericFormikInputControlProps } from '../_types';
 
-export type RadioSelectControlProps<T, V> = {
-	field: FieldInputProps<T>;
-	form: FormikProps<T>;
-	error?: string;
-	options: { value: number | string; label: string }[];
+export type RadioSelectControlProps<V> = {
+	options: { value: V; label: string }[];
 	label: string;
-	value: V;
-	touched?: boolean;
 	required?: boolean;
-	orientation?: 'horizontal' | 'vertical';
+	orientation?: Orientation;
 };
 
-export type InternRadioSelectControlProps = {
+type InternRadioSelectControlProps = {
 	isPending?: boolean;
 };
 
 function RadioSelectControl<T extends Record<string, unknown>, V extends string | number>(
-	props: RadioSelectControlProps<T, V> & InternRadioSelectControlProps,
+	props: GenericFormikInputControlProps<T, V> & RadioSelectControlProps<V> & InternRadioSelectControlProps,
 	ref: React.ForwardedRef<HTMLKolInputRadioElement>,
 ) {
 	const { isPending = false, field, form, error, orientation, options = [], label, value: initialValue, touched, required } = props;

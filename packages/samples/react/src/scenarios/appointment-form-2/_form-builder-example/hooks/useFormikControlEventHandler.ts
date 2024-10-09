@@ -22,6 +22,7 @@ export function useFormikControlEventHandler<T, V>({ value, field, form }: { val
 	const handleOnChange = React.useCallback(
 		(event: Event, newValue: V) => {
 			if (event.target) {
+				console.log('handleOnChange: ', field.name);
 				void form.setFieldValue(field.name, newValue, true);
 			}
 		},

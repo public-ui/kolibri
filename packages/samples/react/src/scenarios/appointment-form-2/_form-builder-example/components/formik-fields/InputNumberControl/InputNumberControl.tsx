@@ -1,25 +1,21 @@
 import * as React from 'react';
-import type { FieldInputProps, FormikProps } from 'formik';
 import { KolInputNumber } from '@public-ui/react';
 import type { InputTypeOnDefault } from '@public-ui/components';
 import { useFieldIdBuilder, useFieldMsgBuilder, useFormikControlEventHandler } from '../../../hooks';
+import type { GenericFormikInputControlProps } from '../_types';
 
-export type InputNumberControlProps<T, V> = {
-	field: FieldInputProps<T>;
-	form: FormikProps<T>;
-	error?: string;
+export type InputNumberControlProps<V> = {
 	label: string;
-	value: V;
 	min?: V;
 	max?: V;
-	touched?: boolean;
 	required?: boolean;
 };
 
 function InputNumberControl<T extends Record<string, unknown>, V extends number>(
-	{ field, form, error, label, value: initialValue, min, max, touched, required }: InputNumberControlProps<T, V>,
+	props: GenericFormikInputControlProps<T, V> & InputNumberControlProps<V>,
 	ref: React.ForwardedRef<HTMLKolInputNumberElement>,
 ) {
+	const { field, form, error, label, value: initialValue, min, max, touched, required } = props;
 	const { _on, value } = useFormikControlEventHandler<T, V>({ value: initialValue, field, form });
 	const { buildFieldId } = useFieldIdBuilder();
 	const { buildFieldMsg } = useFieldMsgBuilder();

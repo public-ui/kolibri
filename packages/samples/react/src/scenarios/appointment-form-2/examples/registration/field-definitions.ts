@@ -27,19 +27,21 @@ const registrationForm: FormDefinition = {
 			label: 'Address',
 			open: true,
 			autoUnmounted: true,
+			namespace: 'address',
 			fields: [
-				{ fieldType: 'input-text', name: 'address.street', label: 'Address Street', required: true },
-				{ fieldType: 'input-text', name: 'address.street2', label: 'Address Street Line 2', required: false },
+				{ fieldType: 'input-text', name: 'street', label: 'Address Street', required: true },
+				{ fieldType: 'input-text', name: 'street2', label: 'Address Street Line 2', required: false },
 				{
 					fieldType: 'stack',
 					orientation: 'horizontal',
+					namespace: 'test',
 					fields: [
-						{ fieldType: 'input-text', name: 'address.zip', label: 'Postal / Zip Code', required: 'true' },
-						{ fieldType: 'input-text', name: 'address.city', label: 'City', required: 'true' },
+						{ fieldType: 'input-text', name: 'zip', label: 'Postal / Zip Code', required: 'true' },
+						{ fieldType: 'input-text', name: 'city', label: 'City', required: 'true' },
 					],
 				},
-				{ fieldType: 'input-text', name: 'address.state', label: 'State / Province', required: false },
-				{ fieldType: 'input-text', name: 'address.county', label: 'Country', required: true },
+				{ fieldType: 'input-text', name: 'state', label: 'State / Province', required: false },
+				{ fieldType: 'input-text', name: 'county', label: 'Country', required: true },
 			],
 		},
 		{
@@ -101,11 +103,82 @@ const registrationForm: FormDefinition = {
 				},
 			],
 		},
+		{ fieldType: 'input-checkbox-array', name: 'my_checkboxes', label: 'Checkbox Array', emptyValue: null, options: ['Wert A', 'Wert B', 'Wert C'] },
 		{
-			fieldType: 'accordion',
-			label: 'Checkbox Array',
+			fieldType: 'array-section',
+			name: 'array-test',
 			fields: [
-				{ fieldType: 'input-checkbox-array', name: 'my_checkboxes', label: 'Checkbox Array', emptyValue: null, options: ['Wert A', 'Wert B', 'Wert C'] },
+				{
+					fieldType: 'fieldset',
+					label: 'Array Section',
+					fields: [
+						{
+							fieldType: 'repeat-section',
+							orientation: 'horizontal',
+							fields: [
+								{ fieldType: 'input-text', label: 'Array Item Field', name: 'text' },
+								{ fieldType: 'button', action: 'formik-array-remove-item' },
+							],
+						},
+						{ fieldType: 'button', action: 'formik-array-new-item' },
+					],
+				},
+			],
+		},
+		{
+			fieldType: 'array-section',
+			name: 'array-test2',
+			fields: [
+				{
+					fieldType: 'fieldset',
+					label: 'Array Section',
+					fields: [
+						{
+							fieldType: 'repeat-section',
+							orientation: 'vertical',
+							fields: [
+								{
+									fieldType: 'accordion',
+									label: 'Array Item',
+									fields: [
+										{ fieldType: 'input-text', label: 'Array Item Field', name: 'text' },
+										{
+											fieldType: 'array-section',
+											name: 'sub-array-test',
+											fields: [
+												{
+													fieldType: 'fieldset',
+													label: 'Sub Array Section',
+													fields: [
+														{
+															fieldType: 'repeat-section',
+															orientation: 'horizontal',
+															fields: [
+																{ fieldType: 'input-text', label: 'Array Item Field', name: 'sub-text' },
+																{ fieldType: 'button', action: 'formik-array-remove-item' },
+															],
+														},
+														{ fieldType: 'button', action: 'formik-array-new-item' },
+													],
+												},
+											],
+										},
+										{
+											fieldType: 'input-checkbox-array',
+											name: 'my_checkboxes',
+											label: 'Checkbox Array',
+											emptyValue: null,
+											options: ['Wert A', 'Wert B', 'Wert C'],
+										},
+
+										{ fieldType: 'button', action: 'formik-array-remove-item' },
+									],
+								},
+							],
+						},
+						{ fieldType: 'button', action: 'formik-array-new-item' },
+					],
+				},
 			],
 		},
 	],

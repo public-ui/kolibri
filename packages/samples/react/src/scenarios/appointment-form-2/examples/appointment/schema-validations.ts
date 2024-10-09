@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import { sleep } from '../../utils/sleep';
 
 const checkAppointmentAvailability = async (time?: string): Promise<boolean> => {
-	await sleep(500);
+	await sleep(50);
 	return time?.endsWith(':30') ?? false;
 };
 

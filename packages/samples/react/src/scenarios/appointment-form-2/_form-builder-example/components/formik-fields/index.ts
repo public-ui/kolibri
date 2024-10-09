@@ -4,6 +4,9 @@ export * from './ComboboxControl';
 export { default as InputCheckboxControl } from './InputCheckboxControl';
 export * from './InputCheckboxControl';
 
+export { default as InputCheckboxArrayControl } from './InputCheckboxArrayControl';
+export * from './InputCheckboxArrayControl';
+
 export { default as InputColorControl } from './InputColorControl';
 export * from './InputColorControl';
 

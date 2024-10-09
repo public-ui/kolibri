@@ -1,21 +1,16 @@
 import * as React from 'react';
-import type { FieldInputProps, FormikProps } from 'formik';
 import { KolInputPassword } from '@public-ui/react';
 import type { InputTypeOnDefault } from '@public-ui/components';
 import { useFieldIdBuilder, useFieldMsgBuilder, useFormikControlEventHandler } from '../../../hooks';
+import type { GenericFormikInputControlProps } from '../_types';
 
-export type InputPasswordControlProps<T, V> = {
-	field: FieldInputProps<T>;
-	form: FormikProps<T>;
-	error?: string;
+export type InputPasswordControlProps = {
 	label: string;
-	value: V;
-	touched?: boolean;
 	required?: boolean;
 };
 
 function InputPasswordControl<T extends Record<string, unknown>, V extends string>(
-	{ field, form, error, label, value: initialValue, touched, required }: InputPasswordControlProps<T, V>,
+	{ field, form, error, label, value: initialValue, touched, required }: GenericFormikInputControlProps<T, V> & InputPasswordControlProps,
 	ref: React.ForwardedRef<HTMLKolInputPasswordElement>,
 ) {
 	const { _on, value } = useFormikControlEventHandler<T, V>({ value: initialValue, field, form });

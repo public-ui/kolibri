@@ -1,30 +1,26 @@
 import * as React from 'react';
-import { type FieldInputProps, type FormikProps } from 'formik';
 import { KolInputCheckbox } from '@public-ui/react';
-import { type InputTypeOnDefault } from '@public-ui/components';
+import type { InputTypeOnDefault, Orientation } from '@public-ui/components';
+import type { GenericFormikInputControlProps } from '../_types';
+import { Fieldset } from '../../core';
 
-export type InputCheckboxArrayControlProps<T> = {
-	field: FieldInputProps<T>;
-	form: FormikProps<T>;
-	error?: string;
-	label: string;
-	value: string[];
-	touched?: boolean;
-	required?: boolean;
-	options?: ({ value: string; label: string } | string)[];
-	orientation?: 'horizontal' | 'vertical';
-	emtpyValue?: unknown;
-};
-
-export type InternaInputCheckboxArrayControlProps = {
+type InternaInputCheckboxArrayControlProps = {
 	isPending?: boolean;
 };
 
-function InputCheckboxArrayControl<T extends Record<string, unknown>>(
-	props: InputCheckboxArrayControlProps<T> & InternaInputCheckboxArrayControlProps,
-	ref: React.ForwardedRef<HTMLDivElement>,
+export type InputCheckboxArrayControlProps = {
+	label: string;
+	required?: boolean;
+	options?: ({ value: string; label: string } | string)[];
+	orientation?: Orientation;
+	emptyValue?: unknown;
+};
+
+function InputCheckboxArrayControl<T extends Record<string, unknown>, V extends string[]>(
+	props: GenericFormikInputControlProps<T, V> & InputCheckboxArrayControlProps & InternaInputCheckboxArrayControlProps,
+	ref: React.ForwardedRef<HTMLFieldSetElement>,
 ) {
-	const { field, form, /* label, */ options, value, emtpyValue = [] } = props;
+	const { field, form, label, options, value, emptyValue = [] } = props;
 
 	const handleOnBlur = React.useCallback(() => {
 		void form.setFieldTouched(field.name, true);
@@ -43,7 +39,7 @@ function InputCheckboxArrayControl<T extends Record<string, unknown>>(
 				} else {
 					let nextArray = value.filter((v) => v !== name) as unknown;
 					if (!(nextArray as string[]).length) {
-						nextArray = emtpyValue;
+						nextArray = emptyValue;
 					}
 
 					form.setFieldValue(field.name, nextArray, true);
@@ -54,7 +50,7 @@ function InputCheckboxArrayControl<T extends Record<string, unknown>>(
 	);
 
 	return (
-		<div ref={ref} onBlur={handleOnBlur}>
+		<Fieldset ref={ref} label={label} onBlur={handleOnBlur}>
 			{options?.map((option) => {
 				const optionIsString = typeof option === 'string';
 				const name = optionIsString ? option : option.value;
@@ -74,7 +70,7 @@ function InputCheckboxArrayControl<T extends Record<string, unknown>>(
 					/>
 				);
 			})}
-		</div>
+		</Fieldset>
 	);
 }
 

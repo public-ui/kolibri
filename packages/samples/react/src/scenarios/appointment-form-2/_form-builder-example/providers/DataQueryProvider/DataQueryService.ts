@@ -1,4 +1,4 @@
-export type QueryDefinition = { queryFn: (data: unknown) => Promise<unknown> };
+type QueryDefinition = { queryFn: (data: unknown) => Promise<unknown> };
 export type QueryRegistration = Record<string, QueryDefinition>;
 
 export class DataQueryService {

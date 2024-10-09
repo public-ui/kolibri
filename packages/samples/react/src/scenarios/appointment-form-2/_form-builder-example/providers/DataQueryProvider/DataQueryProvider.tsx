@@ -3,7 +3,7 @@ import { DataQueryService, type QueryRegistration } from './DataQueryService';
 
 const DataQueryContext = React.createContext(new DataQueryService());
 
-export type DataQueryProviderProps = React.PropsWithChildren<{
+type DataQueryProviderProps = React.PropsWithChildren<{
 	queryRegistrations: QueryRegistration;
 }>;
 

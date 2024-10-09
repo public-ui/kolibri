@@ -1,19 +1,17 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { TextareaControl } from '../../formik-fields';
+import { TextareaControl, type TextareaControlProps } from '../../formik-fields';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type TextareaFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-	rows?: number;
-};
+export type TextareaFormFieldProps = TextareaControlProps & CoreFormFieldProps;
 
 function TextareaFormField<T extends Record<string, unknown>, V extends string>(
 	props: TextareaFormFieldProps,
 	ref: React.ForwardedRef<HTMLKolTextareaElement>,
 ) {
-	const { name, label, required, rows } = props;
+	const { name: initialName, ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -25,10 +23,8 @@ function TextareaFormField<T extends Record<string, unknown>, V extends string>(
 						form={form as FormikProps<Record<string, unknown>>}
 						error={error}
 						touched={touched}
-						label={label}
 						value={value as unknown as V}
-						required={required}
-						rows={rows}
+						{...other}
 					/>
 				);
 			}}

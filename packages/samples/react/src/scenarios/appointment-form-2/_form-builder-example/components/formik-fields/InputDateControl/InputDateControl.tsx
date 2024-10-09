@@ -1,25 +1,21 @@
 import * as React from 'react';
-import type { FieldInputProps, FormikProps } from 'formik';
 import { KolInputDate } from '@public-ui/react';
 import type { InputTypeOnDefault, Iso8601 } from '@public-ui/components';
 import { useFieldIdBuilder, useFieldMsgBuilder, useFormikControlEventHandler } from '../../../hooks';
+import type { GenericFormikInputControlProps } from '../_types';
 
-export type InputDateControlProps<T, V> = {
-	field: FieldInputProps<T>;
-	form: FormikProps<T>;
-	error?: string;
+export type InputDateControlProps<V> = {
 	label: string;
-	value: V;
 	min?: V;
 	max?: V;
-	touched?: boolean;
 	required?: boolean;
 };
 
 function InputDateControl<T extends Record<string, unknown>, V extends Iso8601 | Date>(
-	{ field, form, error, label, value: initialValue, min, max, touched, required }: InputDateControlProps<T, V>,
+	props: GenericFormikInputControlProps<T, V> & InputDateControlProps<V>,
 	ref: React.ForwardedRef<HTMLKolInputDateElement>,
 ) {
+	const { field, form, error, label, value: initialValue, min, max, touched, required } = props;
 	const { _on, value } = useFormikControlEventHandler<T, V>({ value: initialValue, field, form });
 	const { buildFieldId } = useFieldIdBuilder();
 	const { buildFieldMsg } = useFieldMsgBuilder();

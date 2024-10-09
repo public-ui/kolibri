@@ -1,23 +1,18 @@
 import * as React from 'react';
-import { type FieldInputProps, type FormikProps } from 'formik';
 import { KolInputCheckbox } from '@public-ui/react';
 import { type InputTypeOnDefault } from '@public-ui/components';
 import { useFieldIdBuilder, useFieldMsgBuilder } from '../../../hooks';
+import type { GenericFormikInputControlProps } from '../_types';
 
-export type InputCheckboxControlProps<T, V> = {
-	field: FieldInputProps<T>;
-	form: FormikProps<T>;
-	error?: string;
+export type InputCheckboxControlProps = {
 	label: string;
-	value: V;
-	touched?: boolean;
 	required?: boolean;
 	trueValue?: unknown;
 	falseValue?: unknown;
 };
 
 function InputCheckboxControl<T extends Record<string, unknown>, V extends boolean>(
-	props: InputCheckboxControlProps<T, V>,
+	props: GenericFormikInputControlProps<T, V> & InputCheckboxControlProps,
 	ref: React.ForwardedRef<HTMLKolInputRadioElement>,
 ) {
 	const { field, form, error, label, value, trueValue = true, falseValue = false, touched, required } = props;

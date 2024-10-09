@@ -1,3 +1,3 @@
 export { default } from './CustomFieldProbider';
 export * from './CustomFieldProbider';
-export * from './CustomFieldService';
+export type { CustomFieldRegistration } from './CustomFieldService';

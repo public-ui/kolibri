@@ -1,26 +1,23 @@
 import * as React from 'react';
-import { type FieldInputProps, type FormikProps } from 'formik';
 import { KolSelect } from '@public-ui/react';
 import { type InputTypeOnDefault, type W3CInputValue } from '@public-ui/components';
 import { useFieldIdBuilder, useFieldMsgBuilder } from '../../../hooks';
+import type { GenericFormikInputControlProps } from '../_types';
 
 const PleaseOption = { label: 'Please select…', value: '' };
 
-export type NativeSelectControlProps<T, V> = {
-	field: FieldInputProps<T>;
-	form: FormikProps<T>;
-	error?: string;
-	options: { value: number | string; label: string }[];
+export type NativeSelectControlProps<V> = {
+	options: { value: V; label: string }[];
 	label: string;
-	value: V;
-	touched?: boolean;
 	required?: boolean;
 };
 
 function NativeSelectControl<T extends Record<string, unknown>, V extends string | number>(
-	{ field, form, error, options = [], label, value, touched, required }: NativeSelectControlProps<T, V>,
+	props: GenericFormikInputControlProps<T, V> & NativeSelectControlProps<V>,
 	ref: React.ForwardedRef<HTMLKolSelectElement>,
 ) {
+	const { field, form, error, options = [], label, value, touched, required } = props;
+
 	const handleOnBlur = React.useCallback(
 		(_: Event) => {
 			void form.setFieldTouched(field.name, true);

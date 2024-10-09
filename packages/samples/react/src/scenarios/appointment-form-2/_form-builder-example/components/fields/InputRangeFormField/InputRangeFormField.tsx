@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { InputRangeControl } from '../../formik-fields';
+import { InputRangeControl, type InputRangeControlProps } from '../../formik-fields';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type InputRangeFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-	min?: number;
-	max?: number;
-};
+export type InputRangeFormFieldProps<V> = InputRangeControlProps<V> & CoreFormFieldProps;
 
-function InputRangeFormField<T extends Record<string, unknown>>(props: InputRangeFormFieldProps, ref: React.ForwardedRef<HTMLKolInputRangeElement>) {
-	const { name, label, min, max, required } = props;
+function InputRangeFormField<T extends Record<string, unknown>, V extends number>(
+	props: InputRangeFormFieldProps<V>,
+	ref: React.ForwardedRef<HTMLKolInputRangeElement>,
+) {
+	const { name: initialName, ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -23,11 +23,8 @@ function InputRangeFormField<T extends Record<string, unknown>>(props: InputRang
 						form={form as FormikProps<Record<string, unknown>>}
 						error={error}
 						touched={touched}
-						label={label}
 						value={value as unknown as number}
-						min={min}
-						max={max}
-						required={required}
+						{...other}
 					/>
 				);
 			}}

@@ -15,3 +15,12 @@ export * from './StackSection';
 
 export { default as TabsSection } from './TabsSection';
 export * from './TabsSection';
+
+export { default as ArraySection } from './ArraySection';
+export * from './ArraySection';
+
+export { default as RepeatSection } from './RepeatSection';
+export * from './RepeatSection';
+
+export { default as FieldsetSection } from './FieldsetSection';
+export * from './FieldsetSection';

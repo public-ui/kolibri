@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { SelectControl } from '../../formik-fields';
+import { SelectControl, type SelectControlProps } from '../../formik-fields';
 import { OptionQueryController } from '../../data-query';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type SelectFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-	queryKey?: string;
-	options?: { value: number | string; label: string }[];
-};
+export type SelectFormFieldProps<V extends string> = SelectControlProps<V> &
+	CoreFormFieldProps & {
+		queryKey?: string;
+	};
 
 function SelectFormField<T extends Record<string, unknown>, V extends string>(
-	props: SelectFormFieldProps,
+	props: SelectFormFieldProps<V>,
 	ref: React.ForwardedRef<HTMLKolSingleSelectElement>,
 ) {
-	const { name, options = [], queryKey = '', label, required } = props;
+	const { name: initialName, queryKey = '', ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -28,10 +28,8 @@ function SelectFormField<T extends Record<string, unknown>, V extends string>(
 							form={form as FormikProps<Record<string, unknown>>}
 							error={error}
 							touched={touched}
-							label={label}
 							value={value as unknown as V}
-							required={required}
-							options={options}
+							{...other}
 						/>
 					</OptionQueryController>
 				);

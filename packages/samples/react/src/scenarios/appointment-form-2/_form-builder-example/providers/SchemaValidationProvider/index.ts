@@ -1,3 +1,3 @@
 export { default } from './SchemaValidationProvider';
 export * from './SchemaValidationProvider';
-export * from './SchemaValidationService';
+export type { SchemaRegistration } from './SchemaValidationService';

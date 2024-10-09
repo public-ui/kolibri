@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFormikContext } from 'formik';
-import { useQuery } from '../../../providers';
+import { useQuery } from '../../../providers/DataQueryProvider';
 
 function SuggestionsQueryController<T extends Record<string, unknown>>({ children, queryKey }: { children: JSX.Element; queryKey: string }) {
 	const form = useFormikContext<T>();

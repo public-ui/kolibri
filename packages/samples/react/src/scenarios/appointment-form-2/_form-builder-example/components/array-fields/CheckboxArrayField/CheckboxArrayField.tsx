@@ -1,20 +1,17 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { InputCheckboxArrayControl } from '../../formik-array-fields';
+import { InputCheckboxArrayControl, type InputCheckboxArrayControlProps } from '../../formik-fields';
 import { OptionQueryController } from '../../data-query';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type CheckboxArrayFormFieldProps = {
+export type CheckboxArrayFormFieldProps = InputCheckboxArrayControlProps & {
 	name: string;
-	label: string;
-	required?: boolean;
 	queryKey?: string;
-	options?: ({ value: string; label: string } | string)[];
-	orientation?: 'horizontal' | 'vertical';
-	emptyValue?: unknown;
 };
 
-function CheckboxArrayFormField<T extends Record<string, unknown>>(props: CheckboxArrayFormFieldProps, ref: React.ForwardedRef<HTMLDivElement>) {
-	const { name, options = [], queryKey = '', label, required, emptyValue } = props;
+function CheckboxArrayFormField<T extends Record<string, unknown>>(props: CheckboxArrayFormFieldProps, ref: React.ForwardedRef<HTMLFieldSetElement>) {
+	const { name: initialNamespace, queryKey = '', ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialNamespace);
 
 	return (
 		<FastField name={name}>
@@ -27,11 +24,8 @@ function CheckboxArrayFormField<T extends Record<string, unknown>>(props: Checkb
 							form={form as FormikProps<Record<string, unknown>>}
 							error={error}
 							touched={touched}
-							label={label}
 							value={value as unknown as string[]}
-							required={required}
-							options={options}
-							emtpyValue={emptyValue}
+							{...other}
 						/>
 					</OptionQueryController>
 				);

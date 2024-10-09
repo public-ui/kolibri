@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { InputNumberControl } from '../../formik-fields';
+import { InputNumberControl, type InputNumberControlProps } from '../../formik-fields';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type InputNumberFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-	min?: number;
-	max?: number;
-};
+export type InputNumberFormFieldProps<V> = InputNumberControlProps<V> & CoreFormFieldProps;
 
-function InputNumberFormField<T extends Record<string, unknown>>(props: InputNumberFormFieldProps, ref: React.ForwardedRef<HTMLKolInputNumberElement>) {
-	const { name, min, max, label, required } = props;
+function InputNumberFormField<T extends Record<string, unknown>, V extends number>(
+	props: InputNumberFormFieldProps<V>,
+	ref: React.ForwardedRef<HTMLKolInputNumberElement>,
+) {
+	const { name: initialName, ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -23,11 +23,8 @@ function InputNumberFormField<T extends Record<string, unknown>>(props: InputNum
 						form={form as FormikProps<Record<string, unknown>>}
 						error={error}
 						touched={touched}
-						label={label}
 						value={value as unknown as number}
-						min={min}
-						max={max}
-						required={required}
+						{...other}
 					/>
 				);
 			}}

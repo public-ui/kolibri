@@ -3,7 +3,7 @@ import { SchemaValidationService, type SchemaRegistration } from './SchemaValida
 
 const SchemaValidationContext = React.createContext(new SchemaValidationService());
 
-export type SchemaValidationProviderProps = React.PropsWithChildren<{
+type SchemaValidationProviderProps = React.PropsWithChildren<{
 	schemaRegistrations: SchemaRegistration;
 }>;
 

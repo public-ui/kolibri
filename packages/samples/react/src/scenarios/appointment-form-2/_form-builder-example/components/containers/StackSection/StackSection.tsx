@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { FieldDefinition } from '../../../types';
 import { SectionBuilder } from '../../builders';
+import FormikNamespaceProvider from '../../../providers/FormikNamespaceProvider';
 
 export type StackSectionProps = {
 	orientation?: 'vertical' | 'horizontal';
@@ -23,4 +24,18 @@ function StackSection(props: StackSectionProps, ref: React.ForwardedRef<HTMLDivE
 	);
 }
 
-export default React.forwardRef(StackSection);
+const StackSectionRef = React.forwardRef(StackSection);
+
+function StackSectionWrapper(props: StackSectionProps & { namespace?: string }, ref: React.ForwardedRef<HTMLDivElement>) {
+	const { namespace, ...other } = props;
+
+	const stack = <StackSectionRef ref={ref} {...other} />;
+
+	if (!namespace) {
+		return stack;
+	}
+
+	return <FormikNamespaceProvider namespace={namespace}>{stack}</FormikNamespaceProvider>;
+}
+
+export default React.forwardRef(StackSectionWrapper);

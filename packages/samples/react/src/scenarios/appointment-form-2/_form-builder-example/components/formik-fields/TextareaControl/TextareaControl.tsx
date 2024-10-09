@@ -1,24 +1,20 @@
 import * as React from 'react';
-import { type FieldInputProps, type FormikProps } from 'formik';
 import { KolTextarea } from '@public-ui/react';
 import { type InputTypeOnDefault } from '@public-ui/components';
 import { useFieldIdBuilder, useFieldMsgBuilder, useFormikControlEventHandler } from '../../../hooks';
+import type { GenericFormikInputControlProps } from '../_types';
 
-export type TextareaControlProps<T, V> = {
-	field: FieldInputProps<T>;
-	form: FormikProps<T>;
-	error?: string;
+export type TextareaControlProps = {
 	label: string;
-	value: V;
-	touched?: boolean;
 	required?: boolean;
 	rows?: number;
 };
 
 function TextareaControl<T extends Record<string, unknown>, V extends string>(
-	{ field, form, error, label, value: initialValue, touched, required, rows }: TextareaControlProps<T, V>,
+	props: GenericFormikInputControlProps<T, V> & TextareaControlProps,
 	ref: React.ForwardedRef<HTMLKolTextareaElement>,
 ) {
+	const { field, form, error, label, value: initialValue, touched, required, rows } = props;
 	const { _on, value } = useFormikControlEventHandler<T, V>({ value: initialValue, field, form });
 	const { buildFieldId } = useFieldIdBuilder();
 	const { buildFieldMsg } = useFieldMsgBuilder();

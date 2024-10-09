@@ -1,22 +1,21 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { RadioSelectControl } from '../../formik-fields';
+import { RadioSelectControl, type RadioSelectControlProps } from '../../formik-fields';
 import { OptionQueryController } from '../../data-query';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type RadioSelectFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-	queryKey?: string;
-	options?: { value: number | string; label: string }[];
-	orientation?: 'horizontal' | 'vertical';
-};
+export type RadioSelectFormFieldProps<V extends string | number> = RadioSelectControlProps<V> &
+	CoreFormFieldProps & {
+		queryKey?: string;
+	};
 
 function RadioSelectFormField<T extends Record<string, unknown>, V extends string | number>(
-	props: RadioSelectFormFieldProps,
+	props: RadioSelectFormFieldProps<V>,
 	ref: React.ForwardedRef<HTMLKolInputRadioElement>,
 ) {
-	const { name, orientation, options = [], queryKey = '', label, required } = props;
+	const { name: initialName, queryKey = '', ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -29,11 +28,8 @@ function RadioSelectFormField<T extends Record<string, unknown>, V extends strin
 							form={form as FormikProps<Record<string, unknown>>}
 							error={error}
 							touched={touched}
-							label={label}
 							value={value as unknown as V}
-							required={required}
-							options={options}
-							orientation={orientation}
+							{...other}
 						/>
 					</OptionQueryController>
 				);

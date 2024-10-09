@@ -1,21 +1,18 @@
 import * as React from 'react';
 import type { Iso8601 } from '@public-ui/components';
 import { FastField, type FormikProps, type FastFieldProps } from 'formik';
-import { InputDateControl } from '../../formik-fields';
+import { InputDateControl, type InputDateControlProps } from '../../formik-fields';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type InputDateFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-	min?: Iso8601 | Date;
-	max?: Iso8601 | Date;
-};
+export type InputDateFormFieldProps<V> = InputDateControlProps<V> & CoreFormFieldProps;
 
 function InputDateFormField<T extends Record<string, unknown>, V extends Iso8601 | Date>(
-	props: InputDateFormFieldProps,
+	props: InputDateFormFieldProps<V>,
 	ref: React.ForwardedRef<HTMLKolInputDateElement>,
 ) {
-	const { name, label, required } = props;
+	const { name: initialName, ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -27,9 +24,8 @@ function InputDateFormField<T extends Record<string, unknown>, V extends Iso8601
 						form={form as FormikProps<Record<string, unknown>>}
 						error={error}
 						touched={touched}
-						label={label}
 						value={value as unknown as V}
-						required={required}
+						{...other}
 					/>
 				);
 			}}

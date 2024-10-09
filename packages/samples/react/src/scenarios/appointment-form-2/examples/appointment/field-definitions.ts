@@ -45,14 +45,8 @@ const personalDataForm: FormDefinition = {
 			],
 		},
 		{ fieldType: 'input-text', name: 'name', label: 'First name and surname', required: true },
-		{
-			fieldType: 'stack',
-			orientation: 'horizontal',
-			fields: [
-				{ fieldType: 'input-email', name: 'email', label: 'E-Mail', required: true },
-				{ fieldType: 'input-phone', name: 'phone', label: 'Telephone number', required: false },
-			],
-		},
+		{ fieldType: 'input-email', name: 'email', label: 'E-Mail', required: true },
+		{ fieldType: 'input-phone', name: 'phone', label: 'Telephone number', required: false },
 	],
 };
 

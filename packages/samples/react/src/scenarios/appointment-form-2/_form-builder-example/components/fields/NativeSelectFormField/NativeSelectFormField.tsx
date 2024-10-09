@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { FastField, type FastFieldProps, type FormikProps } from 'formik';
-import { NativeSelectControl } from '../../formik-fields';
+import { NativeSelectControl, type NativeSelectControlProps } from '../../formik-fields';
 import { OptionQueryController } from '../../data-query';
+import type { CoreFormFieldProps } from '../_types';
+import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
-export type NativeSelectFormFieldProps = {
-	name: string;
-	label: string;
-	required?: boolean;
-	queryKey?: string;
-	options?: { value: number | string; label: string }[];
-};
+export type NativeSelectFormFieldProps<V extends string | number> = NativeSelectControlProps<V> &
+	CoreFormFieldProps & {
+		queryKey?: string;
+	};
 
 function NativeSelectFormField<T extends Record<string, unknown>, V extends string | number>(
-	props: NativeSelectFormFieldProps,
+	props: NativeSelectFormFieldProps<V>,
 	ref: React.ForwardedRef<HTMLKolSelectElement>,
 ) {
-	const { name, options = [], queryKey = '', label, required } = props;
+	const { name: initialName, queryKey = '', ...other } = props;
+	const name = useCompleteFormikNameBuilder(initialName);
 
 	return (
 		<FastField name={name}>
@@ -28,10 +28,8 @@ function NativeSelectFormField<T extends Record<string, unknown>, V extends stri
 							form={form as FormikProps<Record<string, unknown>>}
 							error={error}
 							touched={touched}
-							label={label}
 							value={value as unknown as V}
-							required={required}
-							options={options}
+							{...other}
 						/>
 					</OptionQueryController>
 				);

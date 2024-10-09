@@ -1,3 +1,3 @@
 export { default } from './DataQueryProvider';
 export * from './DataQueryProvider';
-export * from './DataQueryService';
+export type { QueryRegistration } from './DataQueryService';

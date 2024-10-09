@@ -6,12 +6,12 @@ import StackSection from '../StackSection';
 export type ConditionalSectionProps = {
 	name: string;
 	conditionalValue?: unknown;
-
+	namespace?: string;
 	fields: FieldDefinition[];
 };
 
 function ConditionalSection<T extends Record<string, unknown>>(props: ConditionalSectionProps, ref: React.ForwardedRef<HTMLDivElement>) {
-	const { name, conditionalValue, fields } = props;
+	const { name, namespace, conditionalValue, fields } = props;
 	const form = useFormikContext<T>();
 
 	if (!form.values[name]) {
@@ -19,11 +19,11 @@ function ConditionalSection<T extends Record<string, unknown>>(props: Conditiona
 	}
 
 	if (!conditionalValue) {
-		return <StackSection ref={ref} fields={fields} />;
+		return <StackSection ref={ref} namespace={namespace} fields={fields} />;
 	}
 
 	if (conditionalValue && form.values[name] === conditionalValue) {
-		return <StackSection ref={ref} fields={fields} />;
+		return <StackSection ref={ref} namespace={namespace} fields={fields} />;
 	}
 
 	return null;

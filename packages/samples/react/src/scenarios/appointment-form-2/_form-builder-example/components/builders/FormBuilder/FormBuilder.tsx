@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { FormDefinition, WizardDefinition } from '../../../types';
 import { FormSection, WizardSection } from '../../containers';
 
-export type FormBuilderProps = {
+type FormBuilderProps = {
 	name?: string;
 	field: WizardDefinition | FormDefinition;
 };

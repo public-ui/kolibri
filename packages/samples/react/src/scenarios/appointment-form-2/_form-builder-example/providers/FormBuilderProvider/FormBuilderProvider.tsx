@@ -3,7 +3,7 @@ import { FormBuilderService } from './FormBuilderService';
 
 const FormBuilderContext = React.createContext(new FormBuilderService());
 
-export type FormBuilderProviderProps = React.PropsWithChildren<{
+type FormBuilderProviderProps = React.PropsWithChildren<{
 	initialValue: unknown;
 }>;
 

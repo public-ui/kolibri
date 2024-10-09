@@ -3,11 +3,11 @@ import { CustomFieldService, type CustomFieldType, type CustomFieldRegistration 
 
 const CustomFieldContext = React.createContext(new CustomFieldService());
 
-export type CustomFieldProviderProps = React.PropsWithChildren<{
+type CustomFieldProviderProps = React.PropsWithChildren<{
 	customFieldRegistrations: CustomFieldRegistration;
 }>;
 
-export function useCustomFieldService(): CustomFieldService {
+function useCustomFieldService(): CustomFieldService {
 	const context = React.useContext(CustomFieldContext);
 	return context;
 }

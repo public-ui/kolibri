@@ -1,26 +1,22 @@
 import * as React from 'react';
-import type { FieldInputProps, FormikProps } from 'formik';
 import { KolSingleSelect } from '@public-ui/react';
 import type { InputTypeOnDefault } from '@public-ui/components';
 import { useFieldIdBuilder, useFieldMsgBuilder, useFormikControlEventHandler } from '../../../hooks';
+import type { GenericFormikInputControlProps } from '../_types';
 
 const PleaseOption = { label: 'Please select…', value: '' };
 
-export type SelectControlProps<T, V> = {
-	field: FieldInputProps<T>;
-	form: FormikProps<T>;
-	error?: string;
-	options: { value: number | string; label: string }[];
+export type SelectControlProps<V> = {
+	options: { value: V; label: string }[];
 	label: string;
-	value: V;
-	touched?: boolean;
 	required?: boolean;
 };
 
 function SelectControl<T extends Record<string, unknown>, V extends string>(
-	{ field, form, error, options = [], label, value: initialValue, touched, required }: SelectControlProps<T, V>,
+	props: GenericFormikInputControlProps<T, V> & SelectControlProps<V>,
 	ref: React.ForwardedRef<HTMLKolSingleSelectElement>,
 ) {
+	const { field, form, error, options = [], label, value: initialValue, touched, required } = props;
 	const { _on, value } = useFormikControlEventHandler<T, V>({ value: initialValue, field, form });
 	const { buildFieldId } = useFieldIdBuilder();
 	const { buildFieldMsg } = useFieldMsgBuilder();

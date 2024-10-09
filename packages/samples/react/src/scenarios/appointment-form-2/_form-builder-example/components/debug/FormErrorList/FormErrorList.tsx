@@ -2,8 +2,8 @@ import * as React from 'react';
 import type { ErrorListPropType } from '@public-ui/components';
 import { KolAlert, KolLink } from '@public-ui/react';
 import { useFormikContext } from 'formik';
-import { useSectionSubmitted } from '../../../providers';
 import { useFieldIdBuilder } from '../../../hooks';
+import { useSectionSubmitted } from '../../../providers/SectionSubmittedProvider';
 
 function FormErrorList(_: unknown, ref: React.ForwardedRef<{ focus: () => void }>) {
 	const errorListElementRef = React.useRef<HTMLUListElement>(null);

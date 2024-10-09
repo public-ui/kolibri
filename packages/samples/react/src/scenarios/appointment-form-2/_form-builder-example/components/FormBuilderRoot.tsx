@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { CustomFieldProvider, DataQueryProvider, FormBuilderProvider, SchemaValidationProvider } from '../providers';
 import { FormBuilder } from './builders';
 import type { FormBuilderSettingsType } from '../types';
+import SchemaValidationProvider from '../providers/SchemaValidationProvider';
+import FormBuilderProvider from '../providers/FormBuilderProvider';
+import DataQueryProvider from '../providers/DataQueryProvider';
+import CustomFieldProvider from '../providers/CustomFieldProvider';
 
-export type FormBuilderRootProps<T extends object> = {
+type FormBuilderRootProps<T extends object> = {
 	settings: FormBuilderSettingsType<T>;
 };
 

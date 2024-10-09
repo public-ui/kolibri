@@ -2,10 +2,15 @@ import * as React from 'react';
 import { type FormikTouched, setNestedObjectValues, useFormikContext } from 'formik';
 import { KolButton, KolForm, KolHeading } from '@public-ui/react';
 import StackSection from '../StackSection';
-import { type FormSectionProps, type InternalFormSectionProps } from './FormSection';
+import { type FormSectionProps } from './FormSection';
 import FormDebug from '../../debug/FormDebug/FormDebug';
 import FormErrorList from '../../debug/FormErrorList';
-import { useSectionSubmitted } from '../../../providers';
+import { useSectionSubmitted } from '../../../providers/SectionSubmittedProvider';
+
+type InternalFormSectionProps = {
+	onSubmitSucceeded?: (index?: number) => void;
+	index?: number;
+};
 
 function FormikFieldContainer(props: FormSectionProps & InternalFormSectionProps, ref: React.ForwardedRef<HTMLDivElement>) {
 	const { label, fields, index, onSubmitSucceeded } = props;
@@ -30,7 +35,7 @@ function FormikFieldContainer(props: FormSectionProps & InternalFormSectionProps
 							return;
 						}
 
-						void form.submitForm();
+						await form.submitForm();
 
 						onSubmitSucceeded?.(index);
 					},
