@@ -1,4 +1,5 @@
 import { InputDateController } from './controller';
+import { describe, it, expect } from '@jest/globals';
 
 const TEST_DATE = new Date('2020-03-03T03:02:01.099');
 
@@ -44,6 +45,11 @@ describe('InputDateController', () => {
 			it('returns a ISO8601 week string for type week', () => {
 				expect(InputDateController.tryParseToString(TEST_DATE, 'week')).toBe('2020-W10');
 			});
+		});
+	});
+	describe('method getWeekNumberOfDate', () => {
+		it('should return correct WeekOfYear', () => {
+			expect(InputDateController.getWeekNumberOfDate(TEST_DATE)).toBe('10');
 		});
 	});
 });
