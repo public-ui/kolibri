@@ -1,0 +1,11 @@
+@layer kol-theme-component {
+	.kol-alert-wc {
+		margin-top: calc(2 * var(--spacing));
+		display: block;
+
+		.heading {
+			display: flex;
+			place-items: center;
+		}
+	}
+}

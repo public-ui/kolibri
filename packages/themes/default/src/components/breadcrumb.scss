@@ -14,10 +14,6 @@
 		font-size: rem(20);
 	}
 
-	ul li > :is(span, .kol-link) {
-		line-height: rem(20);
-	}
-
 	ul li:last-child > span {
 		color: var(--color-subtle);
 	}

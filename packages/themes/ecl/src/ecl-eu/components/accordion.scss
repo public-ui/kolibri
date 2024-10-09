@@ -1,0 +1,98 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.accordion,
+	div[part*='accordion'] {
+		border-radius: 8px;
+		box-shadow:
+			0 2px 4px rgb(9 49 142 / 8%),
+			0 0 10px rgb(9 49 142 / 4%),
+			0 4px 5px rgb(9 49 142 / 4%),
+			0 -4px 4px rgb(9 49 142 / 4%);
+		margin: 0;
+		overflow: hidden;
+	}
+
+	.headline {
+		font-size: 2em;
+	}
+
+	div[part*='close'] .headline button {
+		border-radius: 8px;
+	}
+
+	div[part*='open'] .headline button {
+		border-start-end-radius: 8px;
+		border-start-start-radius: 8px;
+	}
+
+	.headline button {
+		outline-offset: -1px;
+		border: 0;
+		border-bottom-color: #cfdaf5;
+		border-bottom-style: solid;
+		border-bottom-width: 2px;
+		color: #171a22;
+		position: relative;
+		display: block;
+		font:
+			normal normal 400 rem(18) / rem(28) arial,
+			sans-serif;
+		padding: rem(24);
+		text-align: start;
+		width: 100%;
+		line-height: 1.2;
+	}
+
+	.headline button::before {
+		background-color: #fc0;
+		border-end-end-radius: 2px;
+		border-end-start-radius: 2px;
+		content: '';
+		height: 4px;
+		position: absolute;
+		left: rem(24);
+		top: 0;
+		width: 32px;
+	}
+
+	.headline button .kol-icon {
+		margin-right: rem(12);
+	}
+
+	.headline button kol-icon::part(icon)::before {
+		color: #0e47cb;
+		font-weight: 900;
+		font-family: 'Font Awesome 6 Free';
+	}
+
+	.open .headline button .kol-icon::part(icon)::before {
+		content: '\f077';
+	}
+
+	:not(.open) .headline button .kol-icon::part(icon)::before {
+		content: '\f078';
+	}
+
+	.content,
+	div[part='content'] {
+		-webkit-border-start: 4px solid #0e47cb;
+		-webkit-margin-start: 0;
+		border-bottom: 2px solid #cfdaf5;
+		border-inline-start: 4px solid #0e47cb;
+		color: #515560;
+		font:
+			normal normal 400 rem(16) / rem(24) arial,
+			sans-serif;
+		margin-inline-start: 0;
+		padding: rem(24);
+	}
+
+	.kol-span-wc > span {
+		align-items: baseline;
+	}
+}

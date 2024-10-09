@@ -1,0 +1,49 @@
+@mixin kol-input-border {
+	color: var(--default-letter);
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 0;
+	border-color: var(--kolibri-color-normal);
+	background-color: #e8edf2;
+}
+
+@mixin kol-input-base {
+	@include kol-input-border;
+
+	&::placeholder {
+		// color: var(--default-border);
+		font-style: italic;
+	}
+
+	&:disabled {
+		background-color: var(--color-input-bg-default);
+		border-color: var(--border-color);
+		cursor: not-allowed;
+	}
+
+	&:not(.disabled, &:disabled):hover,
+	&:focus {
+		border-color: var(--default-border-hover);
+		outline-color: var(--primary);
+		outline-offset: 0;
+		outline-style: solid;
+		outline-width: 1px;
+	}
+}
+@mixin kol-input-error {
+	background-color: var(--color-rotton-20);
+	border-color: var(--color-rotton);
+}
+
+@mixin kol-input-container-base {
+	@include kol-input-border;
+
+	&:not(.disabled) &:hover,
+	&:focus-within {
+		border-color: var(--default-border-hover);
+		outline-color: var(--primary);
+		outline-offset: 0;
+		outline-style: solid;
+		outline-width: 1px;
+	}
+}
