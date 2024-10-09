@@ -110,9 +110,10 @@ test.describe('kol-input-date', () => {
 		test.describe('for Date-Format', () => {
 			let minDateFormat: Date;
 			let maxDateFormat: Date;
+
 			test.beforeEach(() => {
-				minDateFormat = new Date('January 10, 2024, 12:00');
-				maxDateFormat = new Date('October 20, 2024, 15:00');
+				minDateFormat = new Date('2024-01-10T12:00:00Z');
+				maxDateFormat = new Date('2024-10-20T15:00:00Z');
 			});
 			test('should set correct min and max for type date', async ({ page }) => {
 				const minDate = '2024-01-10';
@@ -132,8 +133,8 @@ test.describe('kol-input-date', () => {
 			});
 
 			test('should set correct min and max for type time', async ({ page }) => {
-				const minTime = '12:00';
-				const maxTime = '15:00';
+				const minTime = '13:00';
+				const maxTime = '17:00';
 				await page.setContent(`<kol-input-date _label="Date input" _type="time"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
@@ -148,8 +149,8 @@ test.describe('kol-input-date', () => {
 			});
 
 			test('should set correct min and max for type datetime_locale', async ({ page }) => {
-				const minDayTime = '2024-01-10T12:00:00';
-				const maxDaytime = '2024-10-20T15:00:00';
+				const minDayTime = '2024-01-10T13:00:00';
+				const maxDaytime = '2024-10-20T17:00:00';
 				await page.setContent(`<kol-input-date _label="Date input" _type="datetime-local"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
