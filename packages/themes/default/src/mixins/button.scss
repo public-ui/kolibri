@@ -79,6 +79,10 @@
 		outline: none;
 	}
 
+	:is(a, button) > .kol-span-wc {
+		display: inline-block;
+	}
+
 	:is(a, button).hide-label > .kol-span-wc {
 		padding: rem(12.8);
 		width: unset;
