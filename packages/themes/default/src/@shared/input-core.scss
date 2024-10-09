@@ -1,0 +1,92 @@
+@import '../mixins/rem';
+@import '../mixins/alert-wc.scss';
+@import '../mixins/input-error';
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		@include kol-alert-theme;
+	}
+
+	.kol-input {
+		gap: rem(4);
+
+		&.disabled .input {
+			background-color: var(--color-mute);
+			border-color: var(--color-mute-variant);
+			color: var(--color-text);
+		}
+
+		&.error:not(.hidden-error) {
+			@include input-error;
+		}
+
+		.kol-alert-wc {
+			order: 1;
+		}
+
+		label {
+			order: 2;
+		}
+
+		.input {
+			order: 3;
+
+			background-color: var(--color-light);
+			border-color: var(--color-subtle);
+			border-radius: var(--border-radius);
+			border-style: solid;
+			border-width: 2px;
+			padding: 0 rem(8);
+
+			> .kol-icon {
+				width: rem(16);
+			}
+
+			&:is(.icon-left, .icon-right) {
+				padding-left: rem(16);
+				padding-right: rem(16);
+			}
+
+			&:is(.icon-left, .icon-right) input {
+				padding-left: rem(8);
+				padding-right: rem(8);
+			}
+
+			> input:first-child {
+				padding-left: var(--spacing);
+			}
+
+			> input:last-child {
+				padding-right: var(--spacing);
+			}
+
+			input {
+				border: none;
+
+				&::placeholder {
+					color: var(--color-subtle);
+				}
+
+				&:disabled {
+					cursor: not-allowed;
+				}
+			}
+		}
+
+		.hint {
+			order: 4;
+			font-size: rem(14.4);
+			font-style: italic;
+		}
+	}
+
+	:not(.disabled) .input:hover {
+		border-color: var(--color-primary);
+	}
+
+	.required label > span::after {
+		content: '*';
+		padding-left: 0.125em;
+	}
+}

@@ -6,7 +6,7 @@
 	padding-left: rem(16);
 
 	.input:focus-within {
-		outline-color: var(--color-danger) !important;
+		outline-color: var(--color-danger);
 	}
 
 	.kol-alert-wc.error {

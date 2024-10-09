@@ -4,7 +4,7 @@
 @layer kol-theme-component {
 	a,
 	button {
-		border-radius: rem(32) !important;
+		border-radius: rem(32);
 		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
 	}

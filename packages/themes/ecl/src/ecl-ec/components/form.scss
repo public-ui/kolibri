@@ -1,0 +1,19 @@
+@import '../mixins/alert-wc.scss';
+@import '../mixins/indented-text.scss';
+
+@layer kol-theme-component {
+	:host {
+		width: 100%;
+	}
+
+	@include kol-alert-theme;
+
+	.mandatory-fields-hint {
+		@include indented-text;
+	}
+
+	.kol-alert-wc .heading {
+		display: flex;
+		place-items: center;
+	}
+}

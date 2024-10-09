@@ -1,7 +1,7 @@
 @layer kol-theme-component {
 	abbr {
 		border-bottom: dotted var(--color-black) 1px;
-		text-decoration: none !important;
+		text-decoration: none;
 	}
 	abbr:focus {
 		border-radius: 5px;
