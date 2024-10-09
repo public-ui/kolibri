@@ -23,5 +23,5 @@
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "2.1.8"
+	"version": "2.1.9-rc.0"
 }
