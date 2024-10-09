@@ -1,0 +1,52 @@
+@import '../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-link-wc a,
+	.kol-button-wc button {
+		text-decoration-line: none;
+	}
+
+	a,
+	button {
+		background-image: repeating-linear-gradient(to right, #66ddec, #66ddec);
+		background-repeat: no-repeat;
+		background-position: left 0 bottom 0;
+		background-size: 25% 0.25ex;
+		border-radius: var(--spacing);
+		color: var(--color-petrol);
+		font-family: var(--font-family-sans);
+		font-size: inherit;
+		/* text-transform: uppercase; */
+		transition-delay: 0;
+		transition-timing-function: ease-in-out;
+		transition-duration: 0.5s;
+		transition-property: background, color, border-color;
+	}
+
+	a:focus,
+	a:hover,
+	button:focus,
+	button:hover {
+		background-size: 100% 0.25ex;
+		color: var(--color-achat);
+	}
+
+	a > .kol-span-wc,
+	button > .kol-span-wc {
+		gap: 0.25em;
+	}
+
+	a.skip {
+		left: -99999px;
+		overflow: hidden;
+		position: absolute;
+		z-index: 9999999;
+	}
+
+	a.skip:focus {
+		background-color: white;
+		box-shadow: 0 0 rem(8) rem(8) white;
+		left: unset;
+		position: unset;
+	}
+}

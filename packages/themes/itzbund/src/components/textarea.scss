@@ -1,65 +1,29 @@
+@use '../@shared/label.scss';
+@use '../@shared/kol-alert-wc.scss';
+@use '../@shared/kol-required.scss';
+
 @import '../mixins/alert-wc.scss';
+@import '../mixins/typography.scss';
+@import '../mixins/input-base.scss';
 
 @layer kol-theme-component {
 	:host {
 		@include kol-alert-theme;
 	}
 
-	textarea:hover,
-	textarea:focus {
-		border-color: var(--default-border-hover);
-		outline-color: var(--primary) !important;
-		outline-offset: 0;
-		outline-style: solid;
-		outline-width: 1px;
-	}
-
-	label {
-		color: var(--default-letter);
-		font-size: 14px;
-		line-height: 20px;
-		gap: 8px;
-		width: 100%;
-		font-weight: bold;
-	}
-
-	textarea.error {
-		background-color: var(--danger-light) !important;
-		border-color: var(--danger);
-	}
-
 	textarea {
+		@include kol-typography-body;
+		@include kol-input-base;
+
 		width: 100%;
-		color: var(--default-letter);
-		border-width: 1px;
-		border-style: solid;
-		line-height: 24px;
-		font-size: 16px;
-		border-color: var(--kolibri-color-normal);
-		border-radius: 0;
-		background-color: #e8edf2 !important;
 	}
 
-	textarea::placeholder {
-		color: var(--default-border);
+	.error textarea {
+		@include kol-input-error;
 	}
 
-	textarea:disabled {
-		cursor: not-allowed;
-	}
-
-	textarea:disabled,
 	textarea:read-only {
 		border-color: var(--border-default);
 		background-color: var(--background-light-grey);
-	}
-
-	.kol-required span::after {
-		content: '*';
-	}
-
-	.kol-alert-wc {
-		margin-top: var(--spacing);
-		display: block;
 	}
 }

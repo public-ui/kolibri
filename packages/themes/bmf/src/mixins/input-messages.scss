@@ -2,114 +2,41 @@
 
 @mixin inputMessages {
 	.kol-input {
-		&.error,
-		&.msg-type-info,
-		&.msg-type-warning,
-		&.msg-type-success {
-			.input {
-				border-width: 3px;
-
-				&:hover {
-					border-color: var(--color-midnight);
-				}
-			}
-			&:not(.hidden-error) {
-				padding-left: 1em;
-			}
-		}
-
-		&.error {
-			.input {
-				border-color: var(--color-red);
-			}
-			&:not(.hidden-error) {
-				border-left: 3px solid var(--color-red);
-			}
-		}
-
-		&.msg-type-info {
-			.input {
-				border-color: var(--color-midnight);
-			}
-			&:not(.hidden-error) {
-				border-left: 3px solid var(--color-midnight);
-			}
-		}
-
-		&.msg-type-warning {
-			.input {
-				border-color: var(--color-orange);
-			}
-			&:not(.hidden-error) {
-				border-left: 3px solid var(--color-orange);
-			}
-		}
-
-		&.msg-type-success {
-			.input {
-				border-color: var(--color-green);
-			}
-			&:not(.hidden-error) {
-				border-left: 3px solid var(--color-green);
-			}
-		}
+		@include setInputMessageType(error, --color-red);
+		@include setInputMessageType(msg-type-info, --color-midnight);
+		@include setInputMessageType(msg-type-success, --color-green);
+		@include setInputMessageType(msg-type-warning, --color-orange);
 	}
+
 	.msg {
 		border-width: 0;
 		background-color: transparent;
 		align-items: start;
 
-		> .heading {
+		.heading {
 			place-items: flex-start;
 
-			> .kol-icon {
-				place-self: baseline;
-			}
-
 			.heading-icon {
+				place-self: baseline;
 				padding-top: 0;
 				place-items: baseline;
 
 				&::part(icon) {
-					line-height: rem(22);
+					line-height: 1.5;
 				}
 			}
 
-			> div > .kol-heading-wc {
-				line-height: 20px;
-				padding-top: rem(2);
+			.heading-content {
+				line-height: 1.5;
+				align-self: center;
 			}
 		}
 
-		&.default {
-			.heading > div > .kol-heading-wc {
-				color: var(--color-grey);
-			}
-		}
-
-		&.error {
-			.heading > div > .kol-heading-wc {
-				color: var(--color-red);
-			}
-		}
-
-		&.info {
-			.heading > div > .kol-heading-wc {
-				color: var(--color-midnight);
-			}
-		}
-
-		&.success {
-			.heading > div > .kol-heading-wc {
-				color: var(--color-green);
-			}
-		}
-
-		&.warning {
-			.heading > div > .kol-heading-wc {
-				color: var(--color-orange);
-			}
-		}
+		@include setMsgHeadingColor(default, --color-grey);
+		@include setMsgHeadingColor(error, --color-red);
+		@include setMsgHeadingColor(info, --color-midnight);
+		@include setMsgHeadingColor(success, --color-green);
+		@include setMsgHeadingColor(warning, --color-orange);
 	}
 
 	.kol-alert-wc {
@@ -144,14 +71,37 @@
 
 	.heading-icon {
 		color: white;
-		font-size: rem(20) !important;
+		font-size: rem(20);
 
 		&::part(icon) {
 			font-family: 'Material Symbols Rounded';
 			font-weight: 900;
 			font-variation-settings: 'FILL' 1;
-			height: rem(20);
-			width: rem(20);
+		}
+	}
+}
+
+@mixin setMsgHeadingColor($type, $color) {
+	&.#{$type} {
+		.heading > div > .kol-heading-wc {
+			color: var(#{$color});
+		}
+	}
+}
+
+@mixin setInputMessageType($type, $color) {
+	&.#{$type} {
+		.input {
+			border-color: var(#{$color});
+			border-width: 3px;
+
+			&:hover {
+				border-color: var(--color-midnight);
+			}
+		}
+		&:not(.hidden-error) {
+			padding-left: 1em;
+			border-left: 3px solid var(#{$color});
 		}
 	}
 }

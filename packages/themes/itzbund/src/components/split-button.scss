@@ -45,20 +45,20 @@
 
 	.secondary-button > a,
 	.secondary-button > button {
-		border-top-right-radius: rem(32) !important;
-		border-bottom-right-radius: rem(32) !important;
-		border-top-left-radius: 0px !important;
-		border-bottom-left-radius: 0px !important;
+		border-top-right-radius: rem(32);
+		border-bottom-right-radius: rem(32);
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
 		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
 	}
 
 	a,
 	button {
-		border-top-left-radius: rem(32) !important;
-		border-bottom-left-radius: rem(32) !important;
-		border-top-right-radius: 0px !important;
-		border-bottom-right-radius: 0px !important;
+		border-top-left-radius: rem(32);
+		border-bottom-left-radius: rem(32);
+		border-top-right-radius: 0px;
+		border-bottom-right-radius: 0px;
 		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
 	}

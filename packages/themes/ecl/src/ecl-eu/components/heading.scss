@@ -1,0 +1,39 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+	.headline-h1,
+	.headline-h2,
+	.headline-h3,
+	.headline-h4,
+	.headline-h5,
+	.headline-h6 {
+		font-weight: var(--font-weight-bold);
+	}
+	.headline-h1 {
+		font-size: rem(42);
+		line-height: 3.25;
+	}
+	.headline-h2 {
+		font-size: rem(36);
+		line-height: 2.755;
+	}
+	.headline-h3 {
+		font-size: rem(32);
+		line-height: 2.5;
+	}
+	.headline-h4 {
+		font-size: rem(28);
+		line-height: 2;
+	}
+	.headline-h5 {
+		font-size: rem(24);
+		line-height: 1.75;
+	}
+	.headline-h6 {
+		font-size: rem(20);
+		line-height: 1.75;
+	}
+}
