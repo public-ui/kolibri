@@ -108,8 +108,8 @@ test.describe('kol-input-date', () => {
 			});
 		});
 		test.describe('for Date-Format', () => {
-			let minDateFormat = null;
-			let maxDateFormat = null;
+			let minDateFormat: Date;
+			let maxDateFormat: Date;
 			test.beforeEach(() => {
 				minDateFormat = new Date('January 10, 2024, 12:00');
 				maxDateFormat = new Date('October 20, 2024, 15:00');
