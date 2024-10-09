@@ -22,20 +22,20 @@ export const InputDateMinMaxCases = forwardRef<HTMLKolInputDateElement, Componen
 	const maxDate = new Date('October 20, 2024, 15:00');
 	return (
 		<div className="grid gap-4">
-			<KolInputDate data-testid="isoDate" {...props} _type="date" _label="Date with Iso" _min={minDateIso} _max={maxDateIso} />
-			<KolInputDate data-testid="dateDate" {...props} _type="date" _label="Date with Date" _min={minDate} _max={maxDate} />
+			<KolInputDate {...props} _type="date" _label="Date with Iso" _min={minDateIso} _max={maxDateIso} />
+			<KolInputDate {...props} _type="date" _label="Date with Date" _min={minDate} _max={maxDate} />
 
-			<KolInputDate data-testid="isoTime" {...props} _type="time" _label="Time with Iso" _min={minTimeIso} _max={maxTimeIso} />
-			<KolInputDate data-testid="dateTime" {...props} _type="time" _label="Time with Date" _min={minDate} _max={maxDate} />
+			<KolInputDate {...props} _type="time" _label="Time with Iso" _min={minTimeIso} _max={maxTimeIso} />
+			<KolInputDate {...props} _type="time" _label="Time with Date" _min={minDate} _max={maxDate} />
 
-			<KolInputDate data-testid="isoDatetime" {...props} _type="datetime-local" _label="DayTime with Iso" _min={minDayTimeIso} _max={maxDaytimeIso} />
-			<KolInputDate data-testid="dateDatetime" {...props} _type="datetime-local" _label="DayTime with Date" _min={minDate} _max={maxDate} />
+			<KolInputDate {...props} _type="datetime-local" _label="DayTime with Iso" _min={minDayTimeIso} _max={maxDaytimeIso} />
+			<KolInputDate {...props} _type="datetime-local" _label="DayTime with Date" _min={minDate} _max={maxDate} />
 
-			<KolInputDate data-testid="isoWeek" {...props} _type="week" _label="Week with Iso" _min={minWeekIso} _max={maxWeekIso} />
-			<KolInputDate data-testid="dateWeek" {...props} _type="week" _label="Week with Date" _min={minDate} _max={maxDate} />
+			<KolInputDate {...props} _type="week" _label="Week with Iso" _min={minWeekIso} _max={maxWeekIso} />
+			<KolInputDate {...props} _type="week" _label="Week with Date" _min={minDate} _max={maxDate} />
 
-			<KolInputDate data-testid="isoMonth" {...props} _type="month" _label="Month with Iso" _min={minMonthIso} _max={maxMonthIso} />
-			<KolInputDate data-testid="dateMonth" {...props} _type="month" _label="Month with Date" _min={minDate} _max={maxDate} />
+			<KolInputDate {...props} _type="month" _label="Month with Iso" _min={minMonthIso} _max={maxMonthIso} />
+			<KolInputDate {...props} _type="month" _label="Month with Date" _min={minDate} _max={maxDate} />
 		</div>
 	);
 });
