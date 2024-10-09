@@ -77,7 +77,7 @@ $visible-options: 5;
 		}
 
 		&__item {
-			height: 1;
+			min-height: $option-height;
 			padding: rem(10) rem(12);
 
 			.radio-label {
