@@ -1,4 +1,5 @@
 import { Routes } from '../shares/types';
+import AppointmentForm2 from './appointment-form-2';
 import { AppointmentForm } from './appointment-form/AppointmentForm';
 import { CustomTooltipWidth } from './custom-tooltip-width';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
@@ -11,6 +12,7 @@ import { InputGroupWithError } from './input-group-with-error';
 export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
 		'appointment-form': AppointmentForm,
+		'appointment-form2': AppointmentForm2,
 		'custom-tooltip-width': CustomTooltipWidth,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
