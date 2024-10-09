@@ -156,9 +156,9 @@
 			appearance: none;
 			transition: 0.5s;
 			border-radius: 100%;
-			height: 1.5; // calc(6 * var(--spacing));
-			min-width: 1.5; // calc(6 * var(--spacing));
-			width: 1.5; // calc(6 * var(--spacing));
+			height: calc(6 * var(--spacing));
+			min-width: calc(6 * var(--spacing));
+			width: calc(6 * var(--spacing));
 
 			&:before {
 				content: '';

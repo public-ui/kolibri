@@ -1,6 +1,7 @@
 @import '../mixins/rem';
 @import '../mixins/input';
 
+$option-height: rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
@@ -58,13 +59,13 @@ $visible-options: 5;
 			overflow-x: hidden;
 			box-sizing: border-box;
 			width: 100%;
-			max-height: calc(rem(40) * $visible-options + 2px);
+			max-height: calc($option-height * $visible-options + 2px);
 		}
 
 		&__item {
 			display: flex;
 			align-items: center;
-			min-height: 1.25;
+			min-height: $option-height;
 			padding: rem(10) rem(12);
 			border-radius: 0.25em;
 			color: var(--color-black);
