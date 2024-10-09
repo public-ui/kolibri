@@ -27,6 +27,10 @@ export type ToastState = {
 };
 
 export type ToasterOptions = {
+	/**
+	 * @deprecated Use defaultVariant instead
+	 */
+	defaultAlertVariant: AlertVariant;
 	defaultVariant: AlertVariant;
 };
 

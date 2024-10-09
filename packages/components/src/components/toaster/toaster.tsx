@@ -48,10 +48,12 @@ export class ToasterService {
 		 * so we can't enqueue toasts.
 		 */
 		if (this.toastContainerElement && typeof this.toastContainerElement.enqueue === 'function') {
-			if (!toast.alertVariant && this.options?.defaultVariant) {
-				toast.alertVariant = this.options?.defaultVariant;
-			} else if (!toast.variant && this.options?.defaultVariant) {
-				toast.variant = this.options?.defaultVariant;
+			const defaultVariant = this.options?.defaultVariant ?? undefined;
+			const defaultAlertVariant = this.options?.defaultAlertVariant ?? undefined;
+			if (!toast.alertVariant && this.options) {
+				toast.alertVariant = defaultAlertVariant ?? defaultVariant;
+			} else if (!toast.variant && this.options) {
+				toast.variant = defaultAlertVariant ?? defaultVariant;
 			}
 
 			return this.toastContainerElement.enqueue(toast);
