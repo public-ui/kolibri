@@ -1,5 +1,5 @@
 import * as React from 'react';
-import StackSection, { StackSectionProps } from '../StackSection';
+import StackSection, { type StackSectionProps } from '../StackSection';
 
 export type FieldsetSectionProps = StackSectionProps & { label: string };
 

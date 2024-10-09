@@ -1,7 +1,7 @@
 import { FieldArray, type FieldArrayRenderProps } from 'formik';
 import * as React from 'react';
 import FormikArrayHelperProvider from '../../../providers/FormikArrayHelperProvider';
-import StackSection, { StackSectionProps } from '../StackSection';
+import StackSection, { type StackSectionProps } from '../StackSection';
 import { useCompleteFormikNameBuilder } from '../../../providers/FormikNamespaceProvider';
 
 export type ArraySectionProps = StackSectionProps & {
