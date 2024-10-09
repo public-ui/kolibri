@@ -1,4 +1,5 @@
 @import '../mixins/input.scss';
+@import '../mixins/rem';
 
 @layer kol-theme-component {
 	textarea {
@@ -24,7 +25,7 @@
 
 		textarea ~ span {
 			position: absolute;
-			top: -1.5rem;
+			top: rem(-24);
 			right: 0;
 			color: var(--color-grey);
 		}

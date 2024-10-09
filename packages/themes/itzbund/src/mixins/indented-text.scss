@@ -1,9 +1,7 @@
-@mixin kol-indented-theme {
-	.kol-indented-text-wc > div {
-		background: var(--color-white);
-		border-left: none;
-		box-shadow: -4px 0px 0px var(--color-petrol);
-		padding: 0.25em 0.5em;
-		width: 100%;
-	}
+@mixin indented-text {
+	font-family: var(--font-family);
+	border-left: 4px solid var(--color-petrol);
+	padding: 0.25em 0.5em;
+	margin-left: -4px;
+	width: 100%;
 }

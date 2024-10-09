@@ -15,5 +15,4 @@ module.exports = {
 		},
 		requireConfigFile: false,
 	},
-	plugins: ['no-loops'],
 };

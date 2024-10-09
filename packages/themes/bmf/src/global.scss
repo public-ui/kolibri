@@ -1,3 +1,5 @@
+@import './mixins/rem';
+
 @layer kol-theme-global {
 	/* Design Tokens */
 	:host {
@@ -42,7 +44,6 @@
 
 	:host {
 		/* Reset global background-color defined by components */
-		background-color: transparent;
 		color: var(--color-black);
 	}
 
@@ -105,7 +106,7 @@
 	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.25em;
-		padding: 0.5rem 0.75rem;
+		padding: rem(16) rem(12);
 	}
 
 	.kol-span-wc,

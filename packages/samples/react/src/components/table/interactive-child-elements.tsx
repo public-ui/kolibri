@@ -1,10 +1,20 @@
+import type { ButtonProps, ButtonVariantPropType, KoliBriTableCell, KoliBriTableHeaderCell } from '@public-ui/components';
+import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react';
 import type { FC } from 'react';
 import React from 'react';
-import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react';
-import { SampleDescription } from '../SampleDescription';
 import { getRoot } from '../../shares/react-roots';
-import type { ButtonVariantPropType, KoliBriTableCell } from '@public-ui/components';
-import type { KoliBriTableHeaderCell } from '@public-ui/components/src/schema';
+import { SampleDescription } from '../SampleDescription';
+import { useToasterService } from '../../hooks/useToasterService';
+
+function KolButtonWrapper({ _on, ...other }: ButtonProps) {
+	const { dummyClickEventHandler } = useToasterService();
+
+	const dummyEventHandler = {
+		onClick: dummyClickEventHandler,
+	};
+
+	return <KolButton {...other} _on={dummyEventHandler} />;
+}
 
 const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeaderCell => {
 	const capitalizedVariant = variant.charAt(0).toUpperCase() + variant.slice(1);
@@ -19,7 +29,7 @@ const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeader
 				_icons: { right: 'codicon codicon-squirrel' },
 			};
 			getRoot(createReactRenderElement(element)).render(
-				cell.label === 'button' ? <KolButton {...commonProps} /> : <KolLinkButton _href="#/back-page" {...commonProps} />,
+				cell.label === 'button' ? <KolButtonWrapper {...commonProps} /> : <KolLinkButton _href="#/back-page" {...commonProps} />,
 			);
 		},
 	};
@@ -33,73 +43,75 @@ export const InteractiveChildElements: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolTableStateless
-			_label="Button styles"
-			_headerCells={{
-				horizontal: [
-					[
-						{ label: '', asTd: true, width: '20ex' },
-						getButtonHeaderCell('primary'),
-						getButtonHeaderCell('secondary'),
-						getButtonHeaderCell('normal'),
-						getButtonHeaderCell('danger'),
-						getButtonHeaderCell('ghost'),
+		<section className="w-full flex flex-col">
+			<KolTableStateless
+				_label="Button styles"
+				_headerCells={{
+					horizontal: [
+						[
+							{ label: '', asTd: true, width: '20ex' },
+							getButtonHeaderCell('primary'),
+							getButtonHeaderCell('secondary'),
+							getButtonHeaderCell('normal'),
+							getButtonHeaderCell('danger'),
+							getButtonHeaderCell('ghost'),
+						],
 					],
-				],
-				vertical: [[{ label: 'Button' }, { label: 'Link-Button' }]],
-			}}
-			_data={[
-				{
-					primary: 'button',
-					secondary: 'button',
-					normal: 'button',
-					danger: 'button',
-					ghost: 'button',
-				},
-				{
-					primary: 'link-button',
-					secondary: 'link-button',
-					normal: 'link-button',
-					danger: 'link-button',
-					ghost: 'link-button',
-				},
-			]}
-			className="block"
-		/>
+					vertical: [[{ label: 'Button' }, { label: 'Link-Button' }]],
+				}}
+				_data={[
+					{
+						primary: 'button',
+						secondary: 'button',
+						normal: 'button',
+						danger: 'button',
+						ghost: 'button',
+					},
+					{
+						primary: 'link-button',
+						secondary: 'link-button',
+						normal: 'link-button',
+						danger: 'link-button',
+						ghost: 'link-button',
+					},
+				]}
+				className="block"
+			/>
 
-		<KolTableStateless
-			_label="Link styles"
-			_headerCells={{
-				horizontal: [
-					[
-						{ label: '', asTd: true, width: '20ex' },
-						{
-							key: 'regular',
-							label: 'Regular',
-							textAlign: 'left',
-							render: (element: HTMLElement, cell: KoliBriTableCell) => {
-								const commonProps = {
-									_label: cell.label,
-									_icons: { right: 'codicon codicon-squirrel' },
-								};
-								getRoot(createReactRenderElement(element)).render(
-									cell.label === 'button-link' ? <KolButtonLink {...commonProps} /> : <KolLink _href="#/back-page" {...commonProps} />,
-								);
+			<KolTableStateless
+				_label="Link styles"
+				_headerCells={{
+					horizontal: [
+						[
+							{ label: '', asTd: true, width: '20ex' },
+							{
+								key: 'regular',
+								label: 'Regular',
+								textAlign: 'left',
+								render: (element: HTMLElement, cell: KoliBriTableCell) => {
+									const commonProps = {
+										_label: cell.label,
+										_icons: { right: 'codicon codicon-squirrel' },
+									};
+									getRoot(createReactRenderElement(element)).render(
+										cell.label === 'button-link' ? <KolButtonLink {...commonProps} /> : <KolLink _href="#/back-page" {...commonProps} />,
+									);
+								},
 							},
-						},
+						],
 					],
-				],
-				vertical: [[{ label: 'Link' }, { label: 'Button-Link' }]],
-			}}
-			_data={[
-				{
-					regular: 'link',
-				},
-				{
-					regular: 'button-link',
-				},
-			]}
-			className="block mt"
-		/>
+					vertical: [[{ label: 'Link' }, { label: 'Button-Link' }]],
+				}}
+				_data={[
+					{
+						regular: 'link',
+					},
+					{
+						regular: 'button-link',
+					},
+				]}
+				className="block mt"
+			/>
+		</section>
 	</>
 );

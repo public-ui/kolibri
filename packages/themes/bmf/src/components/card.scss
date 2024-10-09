@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
@@ -10,25 +12,25 @@
 		height: 100%;
 		background-color: white;
 		grid-template-rows: min-content 2fr min-content;
-		box-shadow: 0 0 0.25rem var(--color-grey);
-		border-radius: 0.25rem;
+		box-shadow: 0 0 rem(4) var(--color-grey);
+		border-radius: rem(4);
 	}
 
 	:host .kol-heading-wc {
-		line-height: 1.75rem;
+		line-height: rem(28);
 	}
 
 	:host div.header {
-		padding: 1rem 1rem 0.5rem 1rem;
+		padding: rem(16) rem(16) rem(8) rem(16);
 	}
 
 	:host div.content {
-		padding: 0.5rem 1rem 1rem;
+		padding: rem(8) rem(16) rem(16);
 		overflow: hidden;
 	}
 
 	:host div.footer {
-		padding: 0.5rem 1rem;
+		padding: rem(8) rem(16);
 	}
 
 	:host > div > div.content + div.footer {

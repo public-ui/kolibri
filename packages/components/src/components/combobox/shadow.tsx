@@ -561,6 +561,7 @@ export class KolCombobox implements ComboboxAPI {
 	@Watch('_suggestions')
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		this.controller.validateSuggestions(value);
+		this._filteredSuggestions = value;
 	}
 
 	@Watch('_required')

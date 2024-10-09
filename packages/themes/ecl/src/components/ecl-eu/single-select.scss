@@ -1,5 +1,5 @@
 @import '../mixins-eu/alert-wc';
-@import '../mixins-eu/rem';
+@import '../../mixins/rem';
 
 $option-height: rem(40);
 $visible-options: 5;
@@ -81,7 +81,7 @@ $visible-options: 5;
 
 			&:focus,
 			&.highlighted {
-				background: var(--color-blue);
+				background-color: var(--color-blue);
 				color: white;
 				outline: 0 !important;
 			}

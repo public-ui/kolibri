@@ -1,6 +1,15 @@
+@import './@shared/mixins';
+
+:root {
+	--kolibri-root-font-size: 100;
+	font-size: 625%;
+}
+
 body {
 	margin: 0;
 	font-family: Verdana;
+	font-size: rem(16);
+	line-height: normal;
 }
 
 dl,
@@ -8,20 +17,24 @@ hr {
 	margin: 0;
 }
 
-.w-4rem {
-	width: 4rem;
-}
-
-.w-8rem {
-	width: 8rem;
-}
-
-.w-12rem {
-	width: 12rem;
-}
-
 .grid-cols-2 {
 	grid-template-columns: auto auto;
+}
+
+.indented-text {
+	p {
+		font-family: var(--font-family);
+		border-left: -2px solid var(--color-primary-variant);
+		padding: 0 calc(8rem / var(--kolibri-root-font-size, 16));
+		margin-left: -2px;
+	}
+}
+
+.black-background {
+	background-color: black;
+	display: flex;
+	flex-direction: column;
+	padding: rem(8);
 }
 
 @media (min-width: 1024px) {
@@ -42,7 +55,7 @@ hr {
 			bottom: 0;
 			left: 0;
 			width: 330px;
-			margin: 1rem;
+			margin: rem(16);
 			flex-direction: column;
 			display: flex;
 
@@ -50,7 +63,7 @@ hr {
 				flex: 1 auto;
 				overflow: auto;
 			}
-		} 
+		}
 	}
 }
 

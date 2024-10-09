@@ -1,12 +1,12 @@
-import type { FC, PropsWithChildren } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 
-import { KolAccordion, KolButton, KolHeading, KolLink, KolSelect, KolVersion } from '@public-ui/react';
+import { KolButton, KolHeading, KolSelect, KolVersion } from '@public-ui/react';
 
-import { useMobile } from '../hooks/useMobile';
 import { THEME_OPTIONS } from '../shares/theme';
 
 import type { Routes } from '../shares/types';
+import Navigation from './Navigation';
 type Props = {
 	version: string;
 	theme: string;
@@ -18,28 +18,14 @@ type Props = {
 	onThemeChange: (theme: unknown) => void;
 };
 
-const ComponentNavContainer = ({ children, isMobile }: PropsWithChildren<{ isMobile: boolean }>) =>
-	isMobile ? (
-		<KolAccordion _label="Alle Komponenten" class="mt">
-			{children}
-		</KolAccordion>
-	) : (
-		<div className="mt scrollable-container">{children}</div>
-	);
 export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, buildDate, commitHash, onThemeChange }) => {
 	/* KolSelect calls onChange initially by design - work around this with a state variable  */
-	const isMobile = useMobile();
 
 	const getIndexOfSample = () => routeList.indexOf(sample);
 	const formatSampleAsLabel = () => sample.replace(/\//g, ' ');
 
 	const handleThemeSelectChange = (_event: Event, value: unknown) => {
 		onThemeChange((value as [string])[0]);
-	};
-
-	const handleLinkClick = (event: Event) => {
-		location.replace((event.target as HTMLLinkElement).href); // KoliBri prevents the default click behavior as soon as an event listener is set, so we need to reimplement it.
-		document.querySelector('#route-container')?.scrollIntoView({ behavior: 'smooth' });
 	};
 
 	const handlePreviousClick = () => {
@@ -74,35 +60,13 @@ export const Sidebar: FC<Props> = ({ version, theme, routes, routeList, sample, 
 				<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
 				<div className="flex flex-justify-between flex-items-center mt">
 					<KolButton _icons="codicon codicon-arrow-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />
-					<span className="text-center">
+					<span className="text-base text-center">
 						{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
 					</span>
 					<KolButton _icons="codicon codicon-arrow-right" _hideLabel _label="Next component" _on={{ onClick: handleNextClick }} />
 				</div>
 
-				<ComponentNavContainer isMobile={isMobile}>
-					<nav>
-						<ul className="m0 p0 list-inside">
-							{Object.entries(routes).map(([parentName, children]) => (
-								<li key={parentName} className="mt-2">
-									{parentName}
-									<ul className="list-inside ml p0">
-										{Object.keys(children).map((childName) => (
-											<li key={`${parentName}/${childName}`}>
-												{/* Handle special case for nested routes in tree example - this might need a proper refactoring in the future  */}
-												{parentName === 'tree' && childName === 'basic/:subPage' ? (
-													<KolLink _label="basic" _href={`#/${parentName}/basic/home`} _on={{ onClick: handleLinkClick }} />
-												) : (
-													<KolLink _label={childName} _href={`#/${parentName}/${childName}`} _on={{ onClick: handleLinkClick }} />
-												)}
-											</li>
-										))}
-									</ul>
-								</li>
-							))}
-						</ul>
-					</nav>
-				</ComponentNavContainer>
+				<Navigation routes={routes} />
 			</div>
 		</aside>
 	);

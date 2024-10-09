@@ -29,34 +29,36 @@ export const TableHorizontalScrollbar: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<KolHeading _label="Table with scrollbar" _level={2} />
+			<section className="w-full flex flex-col">
+				<KolHeading _label="Table with scrollbar" _level={2} />
 
-			<KolTable
-				_label="Table for demonstration purposes with horizontal scrollbar."
-				_minWidth={hasWidthRestriction ? '600px' : 'auto'}
-				_headers={HEADERS}
-				_data={DATA}
-				className="block"
-				style={{ width: '400px' }}
-			/>
+				<KolTable
+					_label="Table for demonstration purposes with horizontal scrollbar."
+					_minWidth={hasWidthRestriction ? '600px' : 'auto'}
+					_headers={HEADERS}
+					_data={DATA}
+					className="block"
+					style={{ width: '400px' }}
+				/>
 
-			<KolInputCheckbox
-				_checked={hasWidthRestriction}
-				_label="Toggle width restriction"
-				_variant="switch"
-				_on={{
-					onChange: (_event, value) => {
-						setHasWidthRestriction(Boolean(value));
-					},
-				}}
-			></KolInputCheckbox>
+				<KolInputCheckbox
+					_checked={hasWidthRestriction}
+					_label="Toggle width restriction"
+					_variant="switch"
+					_on={{
+						onChange: (_event, value) => {
+							setHasWidthRestriction(Boolean(value));
+						},
+					}}
+				></KolInputCheckbox>
 
-			<KolHeading _label="Same table without scrollbar" _level={2} className="block mt-4" />
-			<p className="mt-0">
-				<i>Scrollbar appears on very small viewport sizes</i>
-			</p>
+				<KolHeading _label="Same table without scrollbar" _level={2} className="block mt-4" />
+				<p className="mt-0">
+					<i>Scrollbar appears on very small viewport sizes</i>
+				</p>
 
-			<KolTable _label="Table for demonstration purposes without horizontal scrollbar" _minWidth="600px" _headers={HEADERS} _data={DATA} className="block" />
+				<KolTable _label="Table for demonstration purposes without horizontal scrollbar" _minWidth="600px" _headers={HEADERS} _data={DATA} className="block" />
+			</section>
 		</>
 	);
 };

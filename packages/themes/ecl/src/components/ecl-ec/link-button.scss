@@ -1,6 +1,8 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
-		--kolibri-spacing: 0.25rem;
+		--kolibri-spacing: rem(4);
 	}
 	a,
 	button {

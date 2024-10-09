@@ -19,11 +19,6 @@
 		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
 	}
 
-	:host {
-		/* Reset global background-color defined by components */
-		background-color: transparent;
-	}
-
 	* {
 		box-sizing: border-box;
 	}

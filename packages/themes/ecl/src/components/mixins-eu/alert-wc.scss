@@ -1,3 +1,5 @@
+@import '../../mixins/rem';
+
 @mixin kol-alert-wc($color: null) {
 	color: var($color);
 	font-size: 0.875em;
@@ -30,22 +32,22 @@
 	}
 
 	.card {
-		padding-bottom: 1.5rem;
-		padding-inline-end: 0.5rem;
-		padding-inline-start: 1.5rem;
-		padding-top: 1.5rem;
+		padding-bottom: rem(24);
+		padding-inline-end: rem(8);
+		padding-inline-start: rem(24);
+		padding-top: rem(24);
 	}
 
 	.card .heading {
-		gap: 0.5rem;
+		gap: rem(8);
 	}
 
 	.card .content {
-		margin-left: 2.5rem;
+		margin-left: rem(40);
 	}
 
 	.card .heading .kol-icon {
-		font-size: 2rem;
+		font-size: rem(32);
 	}
 
 	.default {

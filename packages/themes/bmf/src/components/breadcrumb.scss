@@ -1,10 +1,12 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
 	}
 
 	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon {
-		font-size: 1.5rem;
+		font-size: rem(24);
 	}
 
 	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon::part(icon) {
@@ -18,11 +20,11 @@
 	}
 
 	.kol-link::part(icon) {
-		font-size: 1.25rem;
+		font-size: rem(20);
 	}
 
 	ul li > :is(span, .kol-link) {
-		line-height: 1.25rem;
+		line-height: rem(20);
 	}
 
 	ul li:last-child > span {

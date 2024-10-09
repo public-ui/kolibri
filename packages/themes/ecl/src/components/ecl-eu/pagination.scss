@@ -1,10 +1,12 @@
+@import '../../mixins/rem';
+
 @layer kol-theme-component {
 	:host {
 		display: grid;
 		font-family: var(--font-family);
 	}
 	.button {
-		--kolibri-spacing: 0.25rem;
+		--kolibri-spacing: rem(4);
 		border-radius: 4px;
 		&:focus {
 			outline: none;
@@ -15,9 +17,9 @@
 		min-width: var(--a11y-min-size);
 		border-radius: 4px;
 		font:
-			normal normal 400 1rem/1.25rem Arial,
+			normal normal 400 rem(16) / rem(20) Arial,
 			sans-serif;
-		padding: 0.75rem;
+		padding: rem(12);
 		background-color: #fc0;
 		color: #171a22;
 	}
