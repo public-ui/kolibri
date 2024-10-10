@@ -39,7 +39,7 @@ export const TabsAlign: FC = () => (
 		</SampleDescription>
 		<div className="grid gap-8">
 			{(['left', 'right', 'top', 'bottom'] as AlignPropType[]).map((align) => {
-				const text = `Tabs with ${align} algin`;
+				const text = `Tabs with ${align} align`;
 				return (
 					<div key={align} className="grid gap-4">
 						<KolHeading _level={2} _label={text} />
