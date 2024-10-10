@@ -37,18 +37,31 @@ test.describe('kol-input-date', () => {
 			}, TEST_DATE);
 			await expect(page.locator('input')).toHaveValue('04:02');
 		});
-
-		test('should return Date when initial value is a Date object', async ({ page }) => {
-			const TEST_DATE = new Date('2020-03-03T03:02:01.099Z');
+		test('should return Date when initial value is a Date object and trigger onChange', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
 				element._value = date;
 				element.addEventListener('change', (e: Event) => {
-					expect((e as CustomEvent).detail.value).toBeInstanceOf(Date);
+					const { value } = (e as CustomEvent).detail;
+					expect(value).toBeInstanceOf(Date);
+					expect(value.toISOString()).toBe('2021-04-04T00:00:00.000Z');
 				});
 			}, TEST_DATE);
 			await page.locator('input').fill('2021-04-04');
 			await page.locator('input').dispatchEvent('change');
+		});
+
+		test('should return the correct value with getValue()', async ({ page }) => {
+			await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
+				element._value = date;
+			}, TEST_DATE);
+			await page.locator('input').fill('2021-04-04');
+			const value = await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
+				return element.getValue();
+			});
+			expect(value).toBeInstanceOf(Date);
+			if (value instanceof Date) expect(value?.toISOString()).toBe('2021-04-04T00:00:00.000Z');
 		});
 	});
 
@@ -72,19 +85,34 @@ test.describe('kol-input-date', () => {
 			await page.setContent(`<kol-input-date _label="Date input" _type="time" _value="04:02"></kol-input-date>`);
 			await expect(page.locator('input')).toHaveValue('04:02');
 		});
-		test('should return ISO 8601 string when initial value is a string', async ({ page }) => {
+
+		test('should return ISO 8601 string when initial value is a string and trigger onChange', async ({ page }) => {
 			const TEST_STRING = '2020-03-03T03:02:01' as Iso8601;
 			await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, isoString) => {
 				element._value = isoString;
 				element.addEventListener('change', (e: Event) => {
-					expect((e as CustomEvent).detail.value).toBe(isoString);
+					const { value } = (e as CustomEvent).detail;
+					expect(value).toBe(isoString);
 				});
 			}, TEST_STRING);
 			await page.locator('input').fill('2021-04-04');
 			await page.locator('input').dispatchEvent('change');
 		});
+		test('should return the correct ISO 8601 string with getValue()', async ({ page }) => {
+			const TEST_STRING = '2020-03-03T03:02:01' as Iso8601;
+			await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, isoString) => {
+				element._value = isoString;
+			}, TEST_STRING);
+			await page.locator('input').fill('2021-04-04');
+			const value = await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
+				return element.getValue();
+			});
+			expect(value).toBe('2021-04-04');
+		});
 	});
+
 	test.describe('when value is null', () => {
 		test('should set value to null', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
