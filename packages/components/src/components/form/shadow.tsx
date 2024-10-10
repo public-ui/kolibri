@@ -5,7 +5,7 @@ import { Component, h, Host, Prop, State, Watch, Method } from '@stencil/core';
 import { translate } from '../../i18n';
 
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
-import { KolAlertWcTag, KolLinkTag } from '../../core/component-names';
+import { KolAlertWcTag, KolLinkWcTag } from '../../core/component-names';
 /**
  * @slot - Inhalt der Form.
  */
@@ -59,13 +59,13 @@ export class KolForm implements FormAPI {
 							<ul>
 								{this._errorList.map((error, index) => (
 									<li key={index}>
-										<KolLinkTag
+										<KolLinkWcTag
 											_href={error.selector}
 											_label={error.message}
 											_on={{ onClick: this.handleLinkClick }}
-											ref={(el?: HTMLKolLinkElement) => {
-												if (index === 0) this.errorListElement = el;
-											}}
+											// ref={(el?: HTMLKolLinkElement) => {
+											// 	if (index === 0) this.errorListElement = el;
+											// }}
 										/>
 									</li>
 								))}
