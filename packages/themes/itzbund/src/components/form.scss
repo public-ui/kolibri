@@ -1,10 +1,14 @@
-@use '../@shared/link-core.scss';
-
 @import '../mixins/alert-wc.scss';
 @import '../mixins/indented-text.scss';
+@import '../mixins/link.scss';
 
 @layer kol-theme-component {
 	@include kol-alert-theme;
+
+	.kol-link-wc {
+		@include kol-link;
+		display: inline-block;
+	}
 
 	.mandatory-fields-hint {
 		@include indented-text;
