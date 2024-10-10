@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { Iso8601 } from '../../schema';
+import type { Iso8601 } from '../../schema';
 
 test.describe('kol-input-date', () => {
 	test.describe('when value is Date object', () => {
@@ -42,9 +42,9 @@ test.describe('kol-input-date', () => {
 			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
 				element._value = date;
 				element.addEventListener('change', (e: Event) => {
-					const { value } = (e as CustomEvent).detail;
+					const value: Date | string = (e as CustomEvent).detail.value;
 					expect(value).toBeInstanceOf(Date);
-					expect(value.toISOString()).toBe('2021-04-04T00:00:00.000Z');
+					if (value instanceof Date) expect(value.toISOString()).toBe('2021-04-04T00:00:00.000Z');
 				});
 			}, TEST_DATE);
 			await page.locator('input').fill('2021-04-04');
@@ -92,7 +92,7 @@ test.describe('kol-input-date', () => {
 			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, isoString) => {
 				element._value = isoString;
 				element.addEventListener('change', (e: Event) => {
-					const { value } = (e as CustomEvent).detail;
+					const value: Date | string = (e as CustomEvent).detail.value;
 					expect(value).toBe(isoString);
 				});
 			}, TEST_STRING);
