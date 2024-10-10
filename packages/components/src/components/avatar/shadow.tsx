@@ -9,7 +9,9 @@ import { KolAvatarWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolAvatar implements AvatarProps {
 	public render(): JSX.Element {

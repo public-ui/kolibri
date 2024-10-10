@@ -9,7 +9,9 @@ import { KolLinkTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolQuote implements QuoteAPI {
 	/**

@@ -9,7 +9,9 @@ import { KolTreeWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolTree implements TreeProps {
 	/**

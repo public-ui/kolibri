@@ -18,7 +18,9 @@ import { KolTableStatefulTag } from '../../core/component-names';
  */
 @Component({
 	tag: 'kol-table',
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolTable implements TableProps {
 	/**

@@ -11,7 +11,9 @@ import { KolAlertWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolAlert implements AlertProps {
 	public render(): JSX.Element {

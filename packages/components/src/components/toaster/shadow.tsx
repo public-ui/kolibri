@@ -15,7 +15,9 @@ const TRANSITION_TIMEOUT = 300;
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolToastContainer implements ToasterAPI {
 	@State() public state: ToasterStates = {

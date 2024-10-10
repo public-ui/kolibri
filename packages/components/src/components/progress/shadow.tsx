@@ -108,7 +108,9 @@ const createProgressSVG = (state: ProgressStates): JSX.Element => {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolProcess implements ProgressAPI {
 	private interval?: number;

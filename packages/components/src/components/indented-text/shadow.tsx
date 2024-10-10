@@ -12,7 +12,9 @@ import { KolIndentedTextWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolIndentedText implements IndentedTextProps {
 	public render(): JSX.Element {

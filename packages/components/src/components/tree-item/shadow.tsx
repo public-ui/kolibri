@@ -8,7 +8,9 @@ import { KolTreeItemWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolTreeItem implements TreeItemProps {
 	private element?: HTMLKolTreeItemWcElement;

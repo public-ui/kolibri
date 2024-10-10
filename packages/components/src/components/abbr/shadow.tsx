@@ -15,7 +15,9 @@ import type { AbbrAPI, AbbrStates, LabelPropType, TooltipAlignPropType } from '.
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolAbbr implements AbbrAPI {
 	private readonly nonce = nonce();

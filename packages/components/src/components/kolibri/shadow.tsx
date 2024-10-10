@@ -15,7 +15,9 @@ import type { KolibriAPI, KolibriStates, PropColor, Stringified } from '../../sc
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolKolibri implements KolibriAPI {
 	public render(): JSX.Element {

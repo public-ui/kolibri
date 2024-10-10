@@ -11,7 +11,9 @@ import type { JSX } from '@stencil/core';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolIcon implements IconAPI {
 	public render(): JSX.Element {

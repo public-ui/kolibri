@@ -35,7 +35,9 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 
 /**
