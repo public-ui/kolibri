@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	MsgPropType,
 	PropDisabled,
 	PropHideError,
 	PropHideLabel,
@@ -9,9 +10,9 @@ import type {
 	PropMsg,
 	PropName,
 	PropRequired,
+	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropSuggestions,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified, W3CInputValue } from '../types';
 
@@ -20,14 +21,14 @@ type OptionalProps = {
 	accessKey: string;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
+	placeholder: string;
 	tabIndex: number;
 	value: string;
-	placeholder: string;
 } & PropDisabled &
 	PropHideError &
 	PropHideLabel &
-	PropMsg &
 	PropName &
 	PropRequired &
 	PropSyncValueBySelector &

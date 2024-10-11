@@ -180,6 +180,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 				<div class={`single-select ${this.state._disabled === true ? 'disabled' : ''} `}>
 					<KolInputWcTag
 						_accessKey={this.state._accessKey}
+						_alert={this.showAsAlert()}
 						_disabled={this.state._disabled}
 						_hideError={this.state._hideError}
 						_hideLabel={this.state._hideLabel}
@@ -229,8 +230,16 @@ export class KolSingleSelect implements SingleSelectAPI {
 									{...this.controller.onFacade}
 									onInput={this.onInput.bind(this)}
 									onChange={this.onChange.bind(this)}
-									placeholder={this.state._placeholder}
 									onClick={this.toggleListbox.bind(this)}
+									onFocus={(event) => {
+										this.controller.onFacade.onFocus(event);
+										this.inputHasFocus = true;
+									}}
+									onBlur={(event) => {
+										this.controller.onFacade.onBlur(event);
+										this.inputHasFocus = false;
+									}}
+									placeholder={this.state._placeholder}
 								/>
 								{this._inputValue && (
 									<KolIconTag
@@ -439,8 +448,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
+	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -483,7 +493,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: MsgPropType;
+	@Prop() public _msg?: Stringified<MsgPropType>;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -541,8 +551,17 @@ export class KolSingleSelect implements SingleSelectAPI {
 		_value: '',
 	};
 
+	@State() private inputHasFocus = false;
+
 	public constructor() {
 		this.controller = new SingleSelectController(this, 'single-select', this.host);
+	}
+
+	private showAsAlert(): boolean {
+		if (this.state._alert === undefined) {
+			return Boolean(this.state._touched) && !this.inputHasFocus;
+		}
+		return this.state._alert;
 	}
 
 	@Watch('_placeholder')
@@ -596,7 +615,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_msg')
-	public validateMsg(value?: MsgPropType): void {
+	public validateMsg(value?: Stringified<MsgPropType>): void {
 		this.controller.validateMsg(value);
 	}
 
@@ -614,6 +633,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	public validateOptions(value?: OptionsPropType): void {
 		this.controller.validateOptions(value);
 		this._filteredOptions = value;
+		this.updateInputValue(this._value);
 	}
 
 	@Watch('_required')
@@ -640,6 +660,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
+		this.updateInputValue(value);
 	}
 
 	@Listen('mousemove')
@@ -647,18 +668,20 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.blockSuggestionMouseOver = false;
 	}
 
+	private updateInputValue(value?: string) {
+		if (Array.isArray(this._options)) {
+			const matchedOption = this._options.find((option) => (option as Option<string>).value === value);
+			this._inputValue = matchedOption ? (matchedOption.label as string) : '';
+		}
+	}
+
 	public componentWillLoad(): void {
 		this.refOptions = [];
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 		this.oldValue = this._value;
 		this._filteredOptions = this._options;
-
-		if (Array.isArray(this._options)) {
-			const matchedOption = this._options.find((option) => (option as Option<string>).value === this._value);
-			this._inputValue = matchedOption ? (matchedOption.label as string) : '';
-		}
+		this.updateInputValue(this._value);
 	}
 
 	private onChange(event: Event): void {

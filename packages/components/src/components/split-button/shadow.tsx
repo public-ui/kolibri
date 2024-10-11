@@ -99,8 +99,10 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	}
 
 	@Method()
-	public closePopup() {
+	public async closePopup() {
 		this.handleOnClose();
+
+		return Promise.resolve();
 	}
 
 	/**

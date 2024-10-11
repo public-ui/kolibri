@@ -16,5 +16,3 @@ npm deprecate @public-ui/components@$1 ""
 npm deprecate @public-ui/themes@$1 ""
 npm deprecate @public-ui/theme-default@$1 ""
 npm deprecate @public-ui/visual-tests@$1 ""
-
-npm deprecate create-kolibri@$1 ""

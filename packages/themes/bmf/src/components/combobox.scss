@@ -71,7 +71,7 @@ $visible-options: 5;
 			color: var(--color-black);
 
 			&:focus {
-				background: var(--color-ocean);
+				background-color: var(--color-ocean);
 				color: white;
 				outline: 0 !important;
 			}

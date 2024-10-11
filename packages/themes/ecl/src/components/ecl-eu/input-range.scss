@@ -1,4 +1,5 @@
 @import '../mixins-eu/alert-wc.scss';
+@import '../../mixins/rem';
 
 @layer kol-theme-component {
 	:host {
@@ -7,6 +8,6 @@
 	}
 
 	.inputs-wrapper {
-		gap: 1rem;
+		gap: rem(16);
 	}
 }

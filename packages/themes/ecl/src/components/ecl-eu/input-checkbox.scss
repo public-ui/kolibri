@@ -1,4 +1,5 @@
 @import '../mixins-eu/alert-wc.scss';
+@import '../../mixins/rem';
 
 @layer kol-theme-component {
 	:host {
@@ -20,7 +21,7 @@
 		border-style: solid;
 		color: var(--color-grey);
 		line-height: 1.5em;
-		font-size: 1rem;
+		font-size: rem(16);
 	}
 
 	input[type='checkbox']:focus {
@@ -71,7 +72,7 @@
 	}
 
 	.default .icon {
-		margin-left: 0.2rem;
+		margin-left: rem(3.2);
 	}
 
 	.default.checked .icon {
@@ -138,7 +139,7 @@
 	}
 
 	.hint {
-		font-size: 0.875rem;
+		font-size: rem(14);
 	}
 
 	.button:focus-within {

@@ -101,6 +101,7 @@ export function AppointmentForm() {
 
 			<Formik<FormValues> innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
 				<KolTabs
+					className="w-full"
 					_tabs={[
 						{
 							_label: '1. Choose registration office',

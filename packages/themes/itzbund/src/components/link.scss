@@ -1,3 +1,5 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	.kol-link-wc a,
 	.kol-button-wc button {
@@ -43,7 +45,7 @@
 
 	a.skip:focus {
 		background-color: white;
-		box-shadow: 0 0 0.5rem 0.5rem white;
+		box-shadow: 0 0 rem(8) rem(8) white;
 		left: unset;
 		position: unset;
 	}

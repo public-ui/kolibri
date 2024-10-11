@@ -1,26 +1,24 @@
 import React from 'react';
 
 import { ButtonCases } from './cases';
+import { KolHeading } from '@public-ui/react';
+import type { Components } from '@public-ui/components';
 
 export const ButtonVariants = function ButtonVariant() {
+	const examples: { label: string; buttonProps: Partial<Components.KolButton> }[] = [
+		{ label: 'Button', buttonProps: {} },
+		{ label: 'Button (disabled)', buttonProps: { _disabled: true } },
+		{ label: 'Button (hideLabel)', buttonProps: { _hideLabel: true } },
+		{ label: 'Button (disabled, hideLabel)', buttonProps: { _disabled: true, _hideLabel: true } },
+	];
 	return (
-		<div className="grid gap-4">
-			<section>
-				<h2>Button</h2>
-				<ButtonCases />
-			</section>
-			<section>
-				<h2>Button (disabled)</h2>
-				<ButtonCases _disabled />
-			</section>
-			<section>
-				<h2>Button (hideLabel)</h2>
-				<ButtonCases _hideLabel />
-			</section>
-			<section>
-				<h2>Button (disabled, hideLabel)</h2>
-				<ButtonCases _disabled _hideLabel />
-			</section>
+		<div className="grid gap-8">
+			{examples.map(({ label, buttonProps }, index) => (
+				<section key={index} className="grid gap-4">
+					<KolHeading _level={2} _label={label} />
+					<ButtonCases {...buttonProps} />
+				</section>
+			))}
 		</div>
 	);
 };

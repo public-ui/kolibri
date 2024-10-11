@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	MsgPropType,
 	PropAdjustHeight,
 	PropDisabled,
 	PropHasCounter,
@@ -16,7 +17,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons } from '../types';
+import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified } from '../types';
 
 /**
  * TODO: In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `none` (default) and `vertical`.
@@ -35,6 +36,7 @@ type OptionalProps = {
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	maxLength: number;
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	resize: CSSResize;
@@ -45,7 +47,6 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideError &
 	PropHideLabel &
-	PropMsg &
 	PropName &
 	PropReadOnly &
 	PropRequired &

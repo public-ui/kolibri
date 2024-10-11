@@ -33,6 +33,9 @@ import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { Events } from '../../schema/enums';
 import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-table-stateless-wc',
 	shadow: false,
@@ -199,6 +202,13 @@ export class KolTableStateless implements TableStatelessAPI {
 		return this.dataToKeyMap.get(data);
 	}
 
+	/**
+	 * Applies a custom render function to a specific table cell if provided.
+	 * Ensures that the content is updated after a delay to avoid excessive re-renders.
+	 *
+	 * @param {KoliBriTableCell} cell The cell to be rendered, with a possible custom `render` function.
+	 * @param {HTMLElement} el The HTML element where the cell is rendered.
+	 */
 	private cellRender(cell: KoliBriTableCell, el?: HTMLElement): void {
 		if (el) {
 			clearTimeout(this.cellsToRenderTimeouts.get(el));
@@ -401,6 +411,15 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateSelection(this._selection);
 	}
 
+	/**
+	 * Renders the selection cell for a row, either as a checkbox (for multiple selection)
+	 * or as a radio button (for single selection). It handles selection states and dispatches
+	 * events for selection changes.
+	 *
+	 * @param {KoliBriTableCell[]} row  The row data containing the cell with selection properties.
+	 * @param {number} rowIndex  The index of the row.
+	 * @returns {JSX.Element}  The rendered selection cell, either with a checkbox or radio input.
+	 */
 	private renderSelectionCell(row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element {
 		const selection = this.state._selection;
 		if (!selection) return '';
@@ -459,6 +478,14 @@ export class KolTableStateless implements TableStatelessAPI {
 		);
 	}
 
+	/**
+	 * Renders a full table row by mapping over each cell and calling `renderTableCell`.
+	 * It also handles the row's unique key generation and selection functionality.
+	 *
+	 * @param {KoliBriTableCell[]} row  The data for the current row.
+	 * @param {number} rowIndex  The index of the current row being rendered.
+	 * @returns {JSX.Element}  The rendered row with its cells.
+	 */
 	private readonly renderTableRow = (row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element => {
 		let key = String(rowIndex);
 		if (this.horizontal && row[0]?.data) {
@@ -473,6 +500,15 @@ export class KolTableStateless implements TableStatelessAPI {
 		);
 	};
 
+	/**
+	 * Renders a table cell, either as a data cell (`<td>`) or a header cell (`<th>`).
+	 * If a custom `render` function is provided in the cell, it will be used to display content.
+	 *
+	 * @param {KoliBriTableCell} cell The cell data, containing label, colSpan, rowSpan, and potential render function.
+	 * @param {number} rowIndex  The current row index.
+	 * @param {number} colIndex  The current column index.
+	 * @returns {JSX.Element}  The rendered table cell (either `<td>` or `<th>`).
+	 */
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
 		let key = `${rowIndex}-${colIndex}-${cell.label}`;
 		if (cell.data) {
@@ -509,6 +545,14 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	};
 
+	/**
+	 * Renders the header cell for row selection. This cell contains a checkbox for selecting
+	 * all rows when selection is enabled. If multiple selection is allowed, the checkbox allows
+	 * selecting/deselecting all rows at once. It also supports an indeterminate state
+	 * if only some rows are selected.
+	 *
+	 * @returns {JSX.Element} - The rendered header cell containing the selection checkbox.
+	 */
 	private renderHeadingSelectionCell(): JSX.Element {
 		const selection = this.state._selection;
 		if (!selection || (!selection.multiple && selection.multiple !== undefined)) return <th key={`thead-0`}></th>;
@@ -551,6 +595,15 @@ export class KolTableStateless implements TableStatelessAPI {
 		);
 	}
 
+	/**
+	 *  Renders a table header cell (`<th>`), with optional sorting functionality.
+	 *  If the cell has a `sortDirection` property, a sort button is rendered within the header.
+	 *
+	 * @param {KoliBriTableHeaderCell} cell  The header cell data, containing label, colSpan, rowSpan, and possible sort direction.
+	 * @param {number} rowIndex  The index of the current row in the table.
+	 * @param {number} colIndex  The index of the current column in the row.
+	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
+	 */
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number): JSX.Element {
 		let ariaSort = undefined;
 		let sortButtonIcon = 'codicon codicon-fold';
@@ -605,13 +658,23 @@ export class KolTableStateless implements TableStatelessAPI {
 		);
 	}
 
-	private renderFoot(): JSX.Element {
+	private renderSpacer(variant: 'foot' | 'head', cellDefs: KoliBriTableHeaderCell[][] | KoliBriTableCell[][]): JSX.Element {
+		const colspan = cellDefs?.[0].reduce((acc, row) => acc + (row.colSpan || 1), 0);
+
+		return (
+			<tr class={`${variant}-spacer`} aria-hidden="true">
+				<td colSpan={colspan}></td>
+			</tr>
+		);
+	}
+
+	private renderFoot(): JSX.Element[] | null {
 		if (!this.state._dataFoot || this.state._dataFoot.length === 0) {
-			return '';
+			return null;
 		}
 
 		const rows: KoliBriTableCell[][] = this.createDataField(this.state._dataFoot, this.state._headerCells, true);
-		return <tfoot>{rows.map(this.renderTableRow)}</tfoot>;
+		return <tfoot>{[this.renderSpacer('foot', rows), rows.map(this.renderTableRow)]}</tfoot>;
 	}
 
 	public render(): JSX.Element {
@@ -644,40 +707,43 @@ export class KolTableStateless implements TableStatelessAPI {
 
 						{Array.isArray(this.state._headerCells.horizontal) && (
 							<thead>
-								{this.state._headerCells.horizontal.map((cols, rowIndex) => (
-									<tr key={`thead-${rowIndex}`}>
-										{this.state._selection && this.renderHeadingSelectionCell()}
-										{cols.map((cell, colIndex) => {
-											if (cell.asTd === true) {
-												return (
-													<td
-														key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
-														class={{
-															[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
-														}}
-														colSpan={cell.colSpan}
-														rowSpan={cell.rowSpan}
-														style={{
-															textAlign: cell.textAlign,
-															width: cell.width,
-														}}
-														ref={
-															typeof cell.render === 'function'
-																? (el) => {
-																		this.cellRender(cell, el);
-																	}
-																: undefined
-														}
-													>
-														{typeof cell.render !== 'function' ? cell.label : ''}
-													</td>
-												);
-											} else {
-												return this.renderHeadingCell(cell, rowIndex, colIndex);
-											}
-										})}
-									</tr>
-								))}
+								{[
+									this.state._headerCells.horizontal.map((cols, rowIndex) => (
+										<tr key={`thead-${rowIndex}`}>
+											{this.state._selection && this.renderHeadingSelectionCell()}
+											{cols.map((cell, colIndex) => {
+												if (cell.asTd === true) {
+													return (
+														<td
+															key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
+															class={{
+																[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
+															}}
+															colSpan={cell.colSpan}
+															rowSpan={cell.rowSpan}
+															style={{
+																textAlign: cell.textAlign,
+																width: cell.width,
+															}}
+															ref={
+																typeof cell.render === 'function'
+																	? (el) => {
+																			this.cellRender(cell, el);
+																		}
+																	: undefined
+															}
+														>
+															{typeof cell.render !== 'function' ? cell.label : ''}
+														</td>
+													);
+												} else {
+													return this.renderHeadingCell(cell, rowIndex, colIndex);
+												}
+											})}
+										</tr>
+									)),
+									this.renderSpacer('head', this.state._headerCells.horizontal),
+								]}
 							</thead>
 						)}
 						<tbody>{dataField.map(this.renderTableRow)}</tbody>

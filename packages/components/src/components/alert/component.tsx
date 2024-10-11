@@ -27,6 +27,7 @@ const AlertIcon = (props: { label?: string; type?: AlertType }) => {
 };
 
 /**
+ * @internal
  * @slot - Der Inhalt der Meldung.
  */
 @Component({

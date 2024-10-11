@@ -8,7 +8,9 @@ import type { Components } from '@public-ui/components';
 export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.KolInputEmail>(function InputEmailCases(props, ref) {
 	return (
 		<div className="grid gap-4">
-			<KolInputEmail {...props} _required _value="test@mail.de" _msg={{ _type: 'error', _description: ERROR_MSG }} _label="E-Mail" />
+			<div className="black-background">
+				<KolInputEmail {...props} _required _value="test@mail.de" _msg={{ _type: 'error', _description: ERROR_MSG }} _label="E-Mail (Black background test)" />
+			</div>
 			<KolInputEmail
 				{...props}
 				ref={ref}

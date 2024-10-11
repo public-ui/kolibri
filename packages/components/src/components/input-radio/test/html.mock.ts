@@ -33,7 +33,11 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 	const hasHint = typeof state._hint === 'string' && state._hint.length > 0;
 
 	return `
-	<kol-input-radio class="kol-input-radio"  ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
+	<kol-input-radio
+		class="kol-input-radio"
+		${state._touched ? `_touched=""` : ''}
+		${state._alert ? `_alert=""` : ''}
+	>
 	  <mock:shadow-root>
 			<fieldset class="${state._required ? 'required' : ''}  ${state._disabled ? 'disabled' : ''} ${hasError ? 'error' : ''}   ${state._hideError ? 'hidden-error' : ''} fieldset vertical">
 				<legend class="block w-full mb-1 leading-normal">
@@ -114,7 +118,7 @@ export const getInputRadioHtml = (props: InputRadioProps): string => {
 						</${KolInputWcTag}>`;
 					})
 					.join(' ')}
-				${hasError ? `<FormFieldMsg _alert={state._alert} _hideError={state._hideError} _msg={state._msg} _id={state._id} />` : ''}
+				${hasError ? `<FormFieldMsg ${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''} _hideError={state._hideError} _msg={state._msg} _id={state._id} />` : ''}
 				${
 					hasHint
 						? `

@@ -27,18 +27,24 @@ export const getComboboxHtml = (props: ComboboxProps): string => {
 	const hasExpertSlot = showExpertSlot(state._label);
 
 	return `
-<kol-combobox _alert="" ${state._hideError ? '_hide-error=""' : ''} class="kol-combobox" ${state._touched ? ' _touched=""' : ''}>
+<kol-combobox
+	${state._alert ? `_alert=""` : ''}
+	${state._hideError ? '_hide-error=""' : ''}
+	class="kol-combobox"
+	${state._touched ? ' _touched=""' : ''}
+>
 	<mock:shadow-root>
 	<div class=${clsx('combobox', state._disabled && 'combobox--disabled')}>
 		<${KolInputWcTag}
-					${state._hideError ? '_hideerror=""' : ''}
-					_hint=""
-					_id="id-nonce"
-					_label="${typeof state._label === 'string' ? state._label : ''}"
-					_tooltipalign="top"
-					role="presentation"
-					${state._required ? ' _required=""' : ''}
-					${state._touched ? ' _touched=""' : ''}
+			${state._hideError ? '_hideerror=""' : ''}
+			_hint=""
+			_id="id-nonce"
+			_label="${typeof state._label === 'string' ? state._label : ''}"
+			_tooltipalign="top"
+			role="presentation"
+			${state._required ? ' _required=""' : ''}
+			${state._touched ? ' _touched=""' : ''}
+			${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 		>
 				<span slot="label">
 				${

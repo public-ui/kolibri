@@ -1,3 +1,5 @@
+@import './mixins/rem';
+
 @layer kol-theme-global {
 	.kol-tooltip-wc .tooltip-area {
 		background-color: #f2f2f2;
@@ -8,9 +10,9 @@
 	}
 
 	.kol-tooltip-wc .tooltip-content {
-		padding: 0.25rem 0.5rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
+		padding: rem(4) rem(8);
+		font-size: rem(14);
+		line-height: rem(20);
 		border-radius: 2px;
 		border: 1px solid #626262;
 	}
@@ -64,12 +66,6 @@
 		--spacing-s: 12px;
 		--spacing-xs: 8px;
 		--spacing-2xs: 4px;
-	}
-
-	:host {
-		/* Reset global background-color defined by components */
-		background-color: transparent;
-		display: inline-block;
 	}
 
 	a,

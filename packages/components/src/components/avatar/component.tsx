@@ -6,6 +6,10 @@ import { translate } from '../../i18n';
 import { formatLabelAsInitials } from './controller';
 
 import type { AvatarAPI, AvatarStates, ImageSourcePropType, LabelPropType } from '../../schema';
+
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-avatar-wc',
 	shadow: false,

@@ -23,15 +23,20 @@ export const getTextareaHtml = (props: TextareaProps): string => {
 	const hasExpertSlot = showExpertSlot(props._label);
 	const { ariaDescribedBy } = getRenderStates(state);
 	return `
-<kol-textarea  _alert="" ${props._touched ? '_touched=""' : ''} class="${props._value ? 'has-value kol-textarea' : 'kol-textarea'}">
+<kol-textarea
+	${props._touched ? '_touched=""' : ''}
+	${state._alert ? `_alert=""` : ''}
+	class="${props._value ? 'has-value kol-textarea' : 'kol-textarea'}"
+>
   <mock:shadow-root>
-		<${KolInputWcTag} _alert=""
+		<${KolInputWcTag}
 				_currentlength="${props._value ? `${props._value.length}` : '0'}"
 				${props._disabled ? ' _disabled=""' : ''}
 				_hint="${props._hint ? props._hint : ''}"
 				_id="id-nonce"
 				_label="${props._label ? props._label : ''}"
 				${props._touched ? '_touched=""' : ''}
+				${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 				_tooltipalign="top"
 				class="textarea"
 				role="presentation"

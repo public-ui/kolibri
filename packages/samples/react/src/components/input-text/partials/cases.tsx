@@ -8,6 +8,9 @@ import type { Components } from '@public-ui/components';
 export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.KolInputText>(function InputTextCases(props, ref) {
 	return (
 		<div className="grid gap-4">
+			<div className="black-background">
+				<KolInputText {...props} _value="Value" _label="First name (Black background test)" />
+			</div>
 			<KolInputText
 				{...props}
 				_hint={HINT_MSG}

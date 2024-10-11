@@ -1,14 +1,18 @@
+@import '../mixins/indented-text';
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	details > summary {
 		border-radius: var(--border-radius);
 		font-family: var(--font-family);
 	}
 
-	details .kol-indented-text {
-		margin: 0.25rem 0 0 0.65rem;
+	details .indented-text {
+		@include indented-text;
+		margin: rem(4) 0 0 rem(10.4);
 	}
 
 	.kol-icon {
-		font-size: 1.2rem;
+		font-size: rem(19.2);
 	}
 }

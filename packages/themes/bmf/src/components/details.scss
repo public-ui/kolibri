@@ -1,12 +1,15 @@
+@import '../mixins/indented-text';
+@import '../mixins/rem';
+
 @layer kol-theme-component {
 	details {
 		> summary {
-			min-height: 2.75rem;
+			min-height: rem(44);
 			display: flex;
 			border-radius: var(--border-radius);
 			font-family: var(--font-family);
 			color: var(--color-midnight);
-			gap: 0.25rem;
+			gap: rem(4);
 
 			> span {
 				border: none;
@@ -17,12 +20,13 @@
 			}
 		}
 
-		.kol-indented-text {
+		.indented-text {
 			margin: 0.25em 0 0 0.65em;
+			@include indented-text;
 		}
 
 		.kol-icon {
-			font-size: 1rem;
+			font-size: rem(16);
 
 			&::part(icon) {
 				font-family: 'Material Symbols Rounded';

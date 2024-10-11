@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/designer",
-	"version": "2.1.7",
+	"version": "2.1.9-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -36,12 +36,11 @@
 		"@public-ui/components": "workspace:*",
 		"@public-ui/solid": "workspace:*",
 		"@public-ui/themes": "workspace:*",
-		"adopted-style-sheets": "1.1.5-rc.1",
-		"monaco-editor": "0.50.0",
+		"monaco-editor": "0.52.0",
 		"monaco-editor-webpack-plugin": "7.1.0",
 		"prettier": "2.8.8",
 		"register-service-worker": "1.7.2",
-		"solid-js": "1.8.19",
+		"solid-js": "1.9.1",
 		"world_countries_lists": "2.9.0"
 	},
 	"devDependencies": {
@@ -51,18 +50,18 @@
 		"@types/prettier": "2.7.3",
 		"@unocss/preset-mini": "0.58.9",
 		"@unocss/webpack": "0.58.9",
+		"adopted-style-sheets": "1.1.5-rc.4",
 		"ajv": "8.17.1",
-		"chromedriver": "124.0.4",
+		"chromedriver": "129.0.0",
 		"cpy-cli": "5.0.0",
-		"eslint-plugin-jsx-a11y": "6.9.0",
-		"eslint-plugin-no-loops": "0.4.0",
+		"eslint-plugin-jsx-a11y": "6.10.0",
 		"nightwatch-axe-verbose": "2.3.1",
 		"npm-run-all": "4.1.5",
-		"playwright": "1.45.3",
+		"playwright": "1.47.2",
 		"react-dev-utils": "12.0.1",
-		"rimraf": "5.0.10",
+		"rimraf": "6.0.1",
 		"ts-prune": "0.10.3",
-		"typescript": "5.5.4"
+		"typescript": "5.6.2"
 	},
 	"files": [
 		"dist"

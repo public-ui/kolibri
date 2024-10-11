@@ -97,6 +97,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 						password: true,
 					}}
 					_accessKey={this.state._accessKey}
+					_alert={this.showAsAlert()}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_msg={this.state._msg}
@@ -154,6 +155,14 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 							{...this.controller.onFacade}
 							onKeyDown={this.onKeyDown}
 							onInput={this.onInput}
+							onFocus={(event) => {
+								this.controller.onFacade.onFocus(event);
+								this.inputHasFocus = true;
+							}}
+							onBlur={(event) => {
+								this.controller.onFacade.onBlur(event);
+								this.inputHasFocus = false;
+							}}
 						/>
 						{this._variant === 'visibility-toggle' && this.inputRef && this.inputRef.value?.length > 0 ? (
 							<KolButtonWcTag
@@ -186,8 +195,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
+	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -253,7 +263,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: MsgPropType;
+	@Prop() public _msg?: Stringified<MsgPropType>;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -334,9 +344,17 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		_variant: 'default',
 	};
 	@State() private _passwordVisible: boolean = false;
+	@State() private inputHasFocus = false;
 
 	public constructor() {
 		this.controller = new InputPasswordController(this, 'password', this.host);
+	}
+
+	private showAsAlert(): boolean {
+		if (this.state._alert === undefined) {
+			return Boolean(this.state._touched) && !this.inputHasFocus;
+		}
+		return this.state._alert;
 	}
 
 	@Watch('_accessKey')
@@ -412,7 +430,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	@Watch('_msg')
-	public validateMsg(value?: MsgPropType): void {
+	public validateMsg(value?: Stringified<MsgPropType>): void {
 		this.controller.validateMsg(value);
 	}
 
@@ -472,7 +490,6 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 
