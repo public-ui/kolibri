@@ -60,17 +60,21 @@ function TableHorizontalScrollbarAdvanced() {
 					<KolNav _label="Main navigation" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded />
 				</aside>
 				<div className="content">
-					<KolTabs _tabs={TABS} _label="Demo Tabs"></KolTabs>
-					<div style={{ overflow: 'hidden' }}>
-						<KolTable
-							_label="Table for demonstration purposes with horizontal scrollbar"
-							_minWidth={tableWith}
-							_headers={HEADERS}
-							_data={DATA}
-							_pagination={{ _page: 1 }}
-							className="block"
-						/>
-					</div>
+					<KolTabs _tabs={TABS} _align="top" _label="Demo Tabs">
+						<div style={{ overflow: 'hidden' }}>
+							<KolTable
+								_label="Table for demonstration purposes with horizontal scrollbar"
+								_minWidth={tableWith}
+								_headers={HEADERS}
+								_data={DATA}
+								_pagination={{ _page: 1 }}
+								className="block"
+							/>
+						</div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</KolTabs>
 				</div>
 			</div>
 		</>
