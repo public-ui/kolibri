@@ -6,6 +6,7 @@ import { Log } from '../../../schema';
 import { translate } from '../../../i18n';
 import type { JSXBase } from '@stencil/core/internal';
 import { KolButtonWcTag, KolIconTag } from '../../../core/component-names';
+import { KolHeadingWc } from '../../heading/component';
 
 type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 	AlertProps & {
@@ -46,7 +47,7 @@ const HeadingContent: FC<KolAlertFcProps> = ({ _label, _level = DEFAULT_PROPS._l
 	const content: unknown[] = [];
 
 	if (_label) {
-		content.push(<kol-heading-wc _label={_label} _level={_level} />);
+		content.push(<KolHeadingWc _label={_label} _level={_level} />);
 	}
 
 	if (_variant === 'msg') {
