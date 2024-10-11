@@ -30,7 +30,7 @@
 	.msg {
 		background-color: transparent;
 		align-items: start;
-		border-width: 0 !important;
+		border-width: 0;
 
 		> .heading {
 			place-items: flex-start;
@@ -299,7 +299,7 @@
 	.success,
 	.warning {
 		.heading-icon {
-			font-size: rem(20) !important;
+			font-size: rem(20);
 
 			&::part(icon) {
 				font-family: 'Material Symbols Rounded';

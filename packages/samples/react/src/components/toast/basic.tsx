@@ -23,7 +23,7 @@ export const ToastBasic: FC = () => {
 			description: 'Toasty',
 			label: `Toast with variant 'msg'`,
 			type: 'warning',
-			alertVariant: 'msg',
+			variant: 'msg',
 		});
 	};
 
