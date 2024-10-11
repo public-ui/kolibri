@@ -55,7 +55,7 @@ Often the entire selection is not read out, but only the last one. Therefore, th
 ## Limited Styling Capabilities for `<select>` and `<option>` Elements
 [Stackblitz Example](https://stackblitz.com/edit/vitejs-vite-nthnce?file=src%2Fstyle.css)
 
-The `<select>` element and its `<option>` tags offer limited styling options. Specifically, states such as "selected," "focused," or "active" cannot be reliably customized using CSS. This leads to challenges in meeting accessibility standards, especially in ensuring sufficient contrast ratios.
+The `<select>` element and its `<option>` tags offer limited styling options. Specifically, states such as "selected", "focus" or "active" cannot be reliably customized using CSS. This leads to challenges in meeting accessibility standards, especially in ensuring sufficient contrast ratios.
 
 **Impact**:
 - **Limited Customization**: The visual state of dropdown options (e.g., on focus or selection) cannot be consistently customized across all browsers. This makes it difficult to create an accessible visual experience for all users.
