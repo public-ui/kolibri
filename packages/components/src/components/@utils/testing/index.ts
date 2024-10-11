@@ -1,1 +1,1 @@
-export * from './functional-component-rendering';
+export { default as renderFunctionalComponentToSpecPage } from './functional-component-rendering';
