@@ -51,5 +51,15 @@ describe('InputDateController', () => {
 		it('should return correct WeekOfYear', () => {
 			expect(InputDateController.getWeekNumberOfDate(TEST_DATE)).toBe('10');
 		});
+
+		it('should return correct WeekOfYear when first day of year is in last kw', () => {
+			const date = new Date('2021-01-01T03:02:01.099');
+			expect(InputDateController.getWeekNumberOfDate(date)).toBe('53');
+		});
+
+		it('should return correct WeekOfYear when last years week is in first kw ', () => {
+			const date = new Date('2019-12-30T03:02:01.099');
+			expect(InputDateController.getWeekNumberOfDate(date)).toBe('01');
+		});
 	});
 });
