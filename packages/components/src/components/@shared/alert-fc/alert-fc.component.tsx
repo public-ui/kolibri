@@ -5,6 +5,7 @@ import type { AlertProps, AlertType } from '../../../schema';
 import { Log } from '../../../schema';
 import { translate } from '../../../i18n';
 import type { JSXBase } from '@stencil/core/internal';
+import { KolButtonWcTag, KolIconTag } from '../../../core/component-names';
 
 type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 	AlertProps & {
@@ -19,7 +20,7 @@ const DEFAULT_PROPS: Partial<AlertProps> = {
 };
 
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return <kol-icon class="heading-icon" _label={props.label ? '' : props.ariaLabel} _icons={props.icon} />;
+	return <KolIconTag class="heading-icon" _label={props.label ? '' : props.ariaLabel} _icons={props.icon} />;
 };
 
 const AlertIcon = (props: { label?: string; type?: AlertType }) => {
@@ -57,7 +58,7 @@ const HeadingContent: FC<KolAlertFcProps> = ({ _label, _level = DEFAULT_PROPS._l
 
 const CloserButton: FC<{ label?: string; onClick?: () => void }> = (props) => {
 	return (
-		<kol-button-wc
+		<KolButtonWcTag
 			class="close"
 			_ariaDescription={props.label?.trim() || ''}
 			_hideLabel
