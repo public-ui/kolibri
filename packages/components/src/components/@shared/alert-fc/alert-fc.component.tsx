@@ -1,12 +1,21 @@
+import clsx from 'clsx';
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import type { AlertProps, AlertType } from '../../../schema';
 import { Log } from '../../../schema';
 import { translate } from '../../../i18n';
+import type { JSXBase } from '@stencil/core/internal';
 
-type KolAlertFcProps = AlertProps & {
-	onCloserClick?: () => void;
-	onVibrationTimeout?: () => void;
+type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
+	AlertProps & {
+		onCloserClick?: () => void;
+		onVibrationTimeout?: () => void;
+	};
+
+const DEFAULT_PROPS: Partial<AlertProps> = {
+	_level: 1,
+	_variant: 'msg',
+	_type: 'default',
 };
 
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
@@ -32,7 +41,7 @@ const Content: FC = (_, children) => {
 	return <div class="content">{children}</div>;
 };
 
-const HeadingContent: FC<KolAlertFcProps> = ({ _label, _level = 1, _variant = 'msg' }, children) => {
+const HeadingContent: FC<KolAlertFcProps> = ({ _label, _level = DEFAULT_PROPS._level, _variant = DEFAULT_PROPS._variant }, children) => {
 	const content: unknown[] = [];
 
 	if (_label) {
@@ -65,7 +74,21 @@ const CloserButton: FC<{ label?: string; onClick?: () => void }> = (props) => {
 };
 
 export const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
-	const { _type = 'default', _variant = 'msg', _label, _hasCloser, _alert, onVibrationTimeout, onCloserClick } = props;
+	const {
+		class: classNames = {},
+		_type = DEFAULT_PROPS._type,
+		_variant = DEFAULT_PROPS._variant,
+		_label,
+		_hasCloser,
+		_alert,
+		onVibrationTimeout,
+		onCloserClick,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		_on,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		_level,
+		...other
+	} = props;
 
 	if (_alert) {
 		/**
@@ -91,8 +114,14 @@ export const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 		hasCloser: !!_hasCloser,
 	};
 
+	const rootProps = {
+		class: clsx(rootClasses, classNames),
+		role: _alert ? 'alert' : undefined,
+		...other,
+	} as Partial<JSXBase.HTMLAttributes<HTMLDivElement>>;
+
 	return (
-		<div class={rootClasses} role={_alert ? 'alert' : undefined}>
+		<div {...rootProps}>
 			<div class="heading">
 				<AlertIcon label={_label} type={_type} />
 				<HeadingContent {...props}>{children}</HeadingContent>

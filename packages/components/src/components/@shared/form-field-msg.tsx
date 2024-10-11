@@ -1,7 +1,9 @@
+import clsx from 'clsx';
 import type { AlertPropType, HideErrorPropType, IdPropType, MsgPropType } from '../../schema';
 import type { FunctionalComponent } from '@stencil/core';
 import { h } from '@stencil/core';
-import { KolAlertWcTag } from '../../core/component-names';
+// import { KolAlertWcTag } from '../../core/component-names';
+import { KolAlertFc } from './alert-fc';
 
 type FormFieldMsgProps = {
 	_alert?: AlertPropType;
@@ -11,7 +13,7 @@ type FormFieldMsgProps = {
 };
 
 export const FormFieldMsg: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _msg, _hideError, _id }) => (
-	<KolAlertWcTag
+	<KolAlertFc
 		/**
 		 * This message is read out by screen readers if the input field
 		 * refers to the message using the <code>aria-describedby</code>
@@ -22,12 +24,12 @@ export const FormFieldMsg: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _
 		id={`${_id}-error`}
 		_alert={_alert}
 		_type="error"
-		class={{
+		class={clsx({
 			error: true,
 			'visually-hidden': _hideError === true,
-		}}
+		})}
 		{..._msg}
 	>
 		{_msg?._description || undefined}
-	</KolAlertWcTag>
+	</KolAlertFc>
 );
