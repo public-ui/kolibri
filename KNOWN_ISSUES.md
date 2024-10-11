@@ -51,3 +51,16 @@ KolSelect is using native HTML `<select>`.
 
 When using KolSelect with the `multiple` property, the native HTML `<select>` may cause problems with screen readers. 
 Often the entire selection is not read out, but only the last one. Therefore, the KolSelect has no full accessibility.
+
+## VoiceOver Reads Date Inputs with Percentage in Google Chrome
+
+In Google Chrome, when using VoiceOver with empty `date` input fields (no initial value), an unexpected percentage value is read aloud alongside the usual prompt.
+
+The problem seems to stem from Chrome’s handling of empty inputs, where an internal percentage value is passed to VoiceOver. 
+Notably, this issue does not occur with Windows Narrator, which handles empty date inputs correctly.
+
+The likely cause is that when the `date` input field is empty, Chrome may internally handle the field as a progress indicator, passing a default numeric value to VoiceOver, which then announces this as a percentage. 
+This behavior may stem from how the Chromium Accessibility API manages empty form fields, passing unnecessary information to assistive technologies like VoiceOver. 
+In turn, VoiceOver may be misinterpreting the absence of an initial value, reading the input as a percentage rather than leaving it blank.
+
+To work around this issue, users can switch to Safari, which integrates better with macOS’s  native Accessibility API (AX API).
