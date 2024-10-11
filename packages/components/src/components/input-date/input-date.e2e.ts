@@ -120,12 +120,13 @@ test.describe('kol-input-date', () => {
 				const maxDate = '2024-10-20';
 				await page.setContent(`<kol-input-date _label="Date input" _type="date"></kol-input-date>`);
 
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._min = date;
-				}, minDateFormat);
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._max = date;
-				}, maxDateFormat);
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
 				await page.waitForChanges();
 
 				await expect(page.locator('input')).toHaveAttribute('min', minDate);
@@ -137,12 +138,13 @@ test.describe('kol-input-date', () => {
 				const maxTime = '17:00';
 				await page.setContent(`<kol-input-date _label="Date input" _type="time"></kol-input-date>`);
 
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._min = date;
-				}, minDateFormat);
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._max = date;
-				}, maxDateFormat);
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
 
 				await expect(page.locator('input')).toHaveAttribute('min', minTime);
 				await expect(page.locator('input')).toHaveAttribute('max', maxTime);
@@ -153,12 +155,13 @@ test.describe('kol-input-date', () => {
 				const maxDaytime = '2024-10-20T17:00:00';
 				await page.setContent(`<kol-input-date _label="Date input" _type="datetime-local"></kol-input-date>`);
 
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._min = date;
-				}, minDateFormat);
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._max = date;
-				}, maxDateFormat);
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
 
 				await expect(page.locator('input')).toHaveAttribute('min', minDayTime);
 				await expect(page.locator('input')).toHaveAttribute('max', maxDaytime);
@@ -169,12 +172,13 @@ test.describe('kol-input-date', () => {
 				const maxWeek = '2024-W42';
 				await page.setContent(`<kol-input-date _label="Date input" _type="week"></kol-input-date>`);
 
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._min = date;
-				}, minDateFormat);
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._max = date;
-				}, maxDateFormat);
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
 
 				await expect(page.locator('input')).toHaveAttribute('min', minWeek);
 				await expect(page.locator('input')).toHaveAttribute('max', maxWeek);
@@ -185,12 +189,13 @@ test.describe('kol-input-date', () => {
 				const maxMonth = '2024-10';
 				await page.setContent(`<kol-input-date _label="Date input" _type="month"></kol-input-date>`);
 
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._min = date;
-				}, minDateFormat);
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._max = date;
-				}, maxDateFormat);
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
 
 				await expect(page.locator('input')).toHaveAttribute('min', minMonth);
 				await expect(page.locator('input')).toHaveAttribute('max', maxMonth);
