@@ -19,7 +19,7 @@ export const InternalToast = ({ key, onClose, onRef, toastState }: Props) => {
 				_level={0}
 				_hasCloser={true}
 				_type={toastState.toast.type}
-				_variant={toastState.toast.alertVariant || 'card'}
+				_variant={toastState.toast.alertVariant || toastState.toast.variant || 'card'}
 				_on={{ onClose }}
 			>
 				<div ref={onRef}>{typeof toastState.toast.description === 'string' ? toastState.toast.description : null}</div>
