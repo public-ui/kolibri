@@ -12,9 +12,7 @@ import { KolLinkWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolSkipNav implements SkipNavAPI {
 	public render(): JSX.Element {

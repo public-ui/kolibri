@@ -14,9 +14,7 @@ import { KolAlertWcTag, KolLinkTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolForm implements FormAPI {
 	errorListElement?: HTMLElement;

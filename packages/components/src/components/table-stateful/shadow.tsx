@@ -60,9 +60,7 @@ type SortData = {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolTableStateful implements TableAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;

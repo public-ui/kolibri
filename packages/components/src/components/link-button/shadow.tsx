@@ -24,9 +24,7 @@ import { KolLinkWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	private linkWcRef?: HTMLKolLinkWcElement;

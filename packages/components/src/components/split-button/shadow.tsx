@@ -28,9 +28,7 @@ import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	private readonly clickButtonHandler = {

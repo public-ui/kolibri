@@ -34,9 +34,7 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolAccordion implements AccordionAPI, FocusableElement {
 	private readonly nonce = nonce();

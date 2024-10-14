@@ -13,9 +13,7 @@ import { KolIconTag, KolLinkTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolBreadcrumb implements BreadcrumbAPI {
 	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {

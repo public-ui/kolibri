@@ -13,9 +13,7 @@ import type { JSX } from '@stencil/core';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolDrawer implements DrawerAPI {
 	public hostElement?: HTMLElement;

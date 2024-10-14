@@ -43,9 +43,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolSelect implements SelectAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolSelectElement;

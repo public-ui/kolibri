@@ -12,9 +12,7 @@ import { KolBadgeTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolVersion implements VersionAPI {
 	public render(): JSX.Element {

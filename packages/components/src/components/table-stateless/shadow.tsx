@@ -16,9 +16,7 @@ import type {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolTableStateless implements TableStatelessProps {
 	/**

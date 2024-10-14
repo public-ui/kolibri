@@ -59,9 +59,7 @@ const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolPagination implements PaginationAPI {
 	private readonly nonce = nonce();

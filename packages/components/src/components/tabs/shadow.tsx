@@ -38,9 +38,7 @@ import { KeyboardKey } from '../../schema/enums';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolTabs implements TabsAPI {
 	@Element() private readonly host?: HTMLKolTabsElement;

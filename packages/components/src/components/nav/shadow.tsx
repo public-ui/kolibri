@@ -61,9 +61,7 @@ const entryIsButton = (entryProps: ButtonOrLinkOrTextWithChildrenProps): entryPr
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolNav implements NavAPI {
 	private expandChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {

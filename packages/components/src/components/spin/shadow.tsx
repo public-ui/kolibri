@@ -28,9 +28,7 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolSpin implements SpinAPI {
 	private showToggled = false;

@@ -14,9 +14,7 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolModal implements ModalAPI {
 	private refDialog?: HTMLDialogElement;

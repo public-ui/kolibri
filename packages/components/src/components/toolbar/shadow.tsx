@@ -12,9 +12,7 @@ const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar-item';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolToolbar implements ToolbarAPI {
 	@Element() host!: HTMLElement;

@@ -8,9 +8,7 @@ import { KolButtonGroupWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: {
-		delegatesFocus: true,
-	},
+	shadow: true,
 })
 export class KolButtonGroup implements ButtonGroupProps {
 	public render(): JSX.Element {
