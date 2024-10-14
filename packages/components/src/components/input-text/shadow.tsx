@@ -37,7 +37,9 @@ import { KolInputWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolInputText implements InputTextAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputTextElement;
