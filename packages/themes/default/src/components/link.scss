@@ -1,46 +1,9 @@
+@import '../mixins/link.scss';
+
 @layer kol-theme-component {
 	:host {
 		font-family: inherit;
 	}
 
-	:is(a, button) {
-		color: var(--color-primary);
-		font-style: normal;
-		font-weight: 400;
-		line-height: 1;
-	}
-
-	:is(a, button):focus {
-		outline: none;
-	}
-
-	:is(a, button):focus kol-span-wc {
-		border-radius: var(--border-radius);
-		outline: var(--border-width) solid;
-	}
-
-	a:is(:focus, :hover):not([aria-disabled]),
-	button:is(:focus, :hover):not([disabled]) {
-		.kol-span-wc .span-label {
-			text-decoration-thickness: 0.25em;
-		}
-	}
-
-	:is(a, button):visited {
-		color: var(--visited);
-	}
-
-	.skip {
-		left: -99999px;
-		overflow: hidden;
-		position: absolute;
-		z-index: 9999999;
-		line-height: 1;
-	}
-
-	.skip:focus {
-		background-color: white;
-		left: unset;
-		position: unset;
-	}
+	@include kol-link;
 }
