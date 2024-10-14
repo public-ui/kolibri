@@ -75,15 +75,14 @@ test.describe('kol-input-date', () => {
 				const inputDate = page.locator('kol-input-date');
 
 				await inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
-					element._value = date as Iso8601 | Date;
+					element._value = date;
 				}, value);
 
 				const inputDateEventPromise = inputDate.evaluate((element: HTMLKolInputDateElement) => {
 					return new Promise<Date | Iso8601>((resolve) => {
-						element.addEventListener('change', (e: Event) => {
+						element.addEventListener('kol-change', (e: Event) => {
 							const eventValue: Date | Iso8601 = (e as CustomEvent).detail;
-							console.log('event dd', JSON.stringify(e));
-							resolve(eventValue as Date | Iso8601);
+							resolve(eventValue);
 						});
 					});
 				});
@@ -91,10 +90,13 @@ test.describe('kol-input-date', () => {
 				await page.waitForChanges();
 				await page.locator('input').dispatchEvent('change');
 
-				if (label === 'Date Object') {
-					expect(await inputDateEventPromise).toBeInstanceOf(Date);
+				const eventDetail = await inputDateEventPromise;
+
+				if (value instanceof Date) {
+					expect(eventDetail).toBeInstanceOf(Date);
+					expect((eventDetail as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
 				} else {
-					expect(await inputDateEventPromise).toBe(value);
+					expect(eventDetail).toBe(value);
 				}
 			});
 
