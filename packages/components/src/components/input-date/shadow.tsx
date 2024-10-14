@@ -94,14 +94,9 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		}
 	}
 	private remapValue(newValue: string): Date | string {
-		if (this._initialValueType === 'Date') {
-			return new Date(newValue);
-		}
-		if (this._initialValueType === 'String') {
-			return newValue;
-		}
-		return newValue;
+		return this._initialValueType === 'Date' ? new Date(newValue) : newValue;
 	}
+
 	private readonly onChange = (event: Event) => {
 		const newValue = (event.target as HTMLInputElement).value;
 		const remappedValue = this.remapValue(newValue);
