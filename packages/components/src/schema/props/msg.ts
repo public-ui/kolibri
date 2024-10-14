@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 import type { AlertProps } from '../components';
-import { objectObjectHandler, parseJson, setState, watchValidator } from '../utils';
+import { objectObjectHandler, parseJson, watchValidator } from '../utils';
 import type { Stringified } from '../types';
 
 /* types */
