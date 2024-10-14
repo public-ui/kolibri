@@ -59,4 +59,147 @@ test.describe('kol-input-date', () => {
 			await expect(page.locator('input')).toHaveValue('04:02');
 		});
 	});
+
+	test.describe('when min and max is set', () => {
+		test.describe('for Iso8601-Format', () => {
+			test('should set correct min and max for type date', async ({ page }) => {
+				const minDate = '2024-09-26';
+				const maxDate = '2024-09-27';
+				await page.setContent(`<kol-input-date _label="Date input" _type="date" _min="${minDate}" _max="${maxDate}"></kol-input-date>`);
+
+				await expect(page.locator('input')).toHaveAttribute('min', minDate);
+				await expect(page.locator('input')).toHaveAttribute('max', maxDate);
+			});
+
+			test('should set correct min and max for type time', async ({ page }) => {
+				const minTime = '12:00';
+				const maxTime = '15:00';
+				await page.setContent(`<kol-input-date _label="Date input" _type="time" _min="${minTime}" _max="${maxTime}"></kol-input-date>`);
+
+				await expect(page.locator('input')).toHaveAttribute('min', minTime);
+				await expect(page.locator('input')).toHaveAttribute('max', maxTime);
+			});
+
+			test('should set correct min and max for type datetime_locale', async ({ page }) => {
+				const minDayTime = '2024-09-26T12:00';
+				const maxDaytime = '2024-09-27T15:00';
+				await page.setContent(`<kol-input-date _label="Date input" _type="datetime-local" _min="${minDayTime}" _max="${maxDaytime}"></kol-input-date>`);
+
+				await expect(page.locator('input')).toHaveAttribute('min', minDayTime);
+				await expect(page.locator('input')).toHaveAttribute('max', maxDaytime);
+			});
+
+			test('should set correct min and max for type week', async ({ page }) => {
+				const minWeek = '2024-W10';
+				const maxWeek = '2024-W50';
+				await page.setContent(`<kol-input-date _label="Date input" _type="week" _min="${minWeek}" _max="${maxWeek}"></kol-input-date>`);
+
+				await expect(page.locator('input')).toHaveAttribute('min', minWeek);
+				await expect(page.locator('input')).toHaveAttribute('max', maxWeek);
+			});
+
+			test('should set correct min and max for type month', async ({ page }) => {
+				const minMonth = '2024-02';
+				const maxMonth = '2024-10';
+				await page.setContent(`<kol-input-date _label="Date input" _type="month" _min="${minMonth}" _max="${maxMonth}"></kol-input-date>`);
+
+				await expect(page.locator('input')).toHaveAttribute('min', minMonth);
+				await expect(page.locator('input')).toHaveAttribute('max', maxMonth);
+			});
+		});
+		test.describe('for Date-Format', () => {
+			let minDateFormat: Date;
+			let maxDateFormat: Date;
+
+			test.beforeEach(() => {
+				minDateFormat = new Date('2024-01-10T12:00:00Z');
+				maxDateFormat = new Date('2024-10-20T15:00:00Z');
+			});
+			test('should set correct min and max for type date', async ({ page }) => {
+				const minDate = '2024-01-10';
+				const maxDate = '2024-10-20';
+				await page.setContent(`<kol-input-date _label="Date input" _type="date"></kol-input-date>`);
+
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
+				await page.waitForChanges();
+
+				await expect(page.locator('input')).toHaveAttribute('min', minDate);
+				await expect(page.locator('input')).toHaveAttribute('max', maxDate);
+			});
+
+			test('should set correct min and max for type time', async ({ page }) => {
+				const minTime = '13:00';
+				const maxTime = '17:00';
+				await page.setContent(`<kol-input-date _label="Date input" _type="time"></kol-input-date>`);
+
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
+
+				await expect(page.locator('input')).toHaveAttribute('min', minTime);
+				await expect(page.locator('input')).toHaveAttribute('max', maxTime);
+			});
+
+			test('should set correct min and max for type datetime_locale', async ({ page }) => {
+				const minDayTime = '2024-01-10T13:00:00';
+				const maxDaytime = '2024-10-20T17:00:00';
+				await page.setContent(`<kol-input-date _label="Date input" _type="datetime-local"></kol-input-date>`);
+
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
+
+				await expect(page.locator('input')).toHaveAttribute('min', minDayTime);
+				await expect(page.locator('input')).toHaveAttribute('max', maxDaytime);
+			});
+
+			test('should set correct min and max for type week', async ({ page }) => {
+				const minWeek = '2024-W02';
+				const maxWeek = '2024-W42';
+				await page.setContent(`<kol-input-date _label="Date input" _type="week"></kol-input-date>`);
+
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
+
+				await expect(page.locator('input')).toHaveAttribute('min', minWeek);
+				await expect(page.locator('input')).toHaveAttribute('max', maxWeek);
+			});
+
+			test('should set correct min and max for type month', async ({ page }) => {
+				const minMonth = '2024-01';
+				const maxMonth = '2024-10';
+				await page.setContent(`<kol-input-date _label="Date input" _type="month"></kol-input-date>`);
+
+				await page.locator('kol-input-date').evaluate(
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+						element._min = minDateFormat;
+						element._max = maxDateFormat;
+					},
+					{ minDateFormat, maxDateFormat },
+				);
+
+				await expect(page.locator('input')).toHaveAttribute('min', minMonth);
+				await expect(page.locator('input')).toHaveAttribute('max', maxMonth);
+			});
+		});
+	});
 });
