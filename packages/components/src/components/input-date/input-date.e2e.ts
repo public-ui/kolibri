@@ -70,8 +70,8 @@ test.describe('kol-input-date', () => {
 			test(`should dispatch onchange  with value as ${label} in event detail`, async ({ page }) => {
 				await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 				const inputDate = page.locator('kol-input-date');
-				inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
-					element._value = date as Iso8601 | Date;
+				void inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
+					element._value = date;
 				}, value);
 
 				const inputDateEventPromise = inputDate.evaluate((element) => {
@@ -99,8 +99,8 @@ test.describe('kol-input-date', () => {
 			test(`should dispatch onInput with value as ${label} in event detail`, async ({ page }) => {
 				await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 				const inputDate = page.locator('kol-input-date');
-				inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
-					element._value = date as Iso8601 | Date;
+				void inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
+					element._value = date;
 				}, value);
 
 				const inputDateEventPromise = inputDate.evaluate((element) => {
@@ -188,7 +188,7 @@ test.describe('kol-input-date', () => {
 			test(`should return the correct value with getValue() as ${label}`, async ({ page }) => {
 				await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._value = date as Iso8601 | Date;
+					element._value = date;
 				}, value);
 
 				const getValue = await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
