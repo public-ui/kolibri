@@ -205,16 +205,6 @@ test.describe('kol-input-date', () => {
 					}
 				});
 			});
-
-			test.describe('when initial value is null', () => {
-				test('should set value as empty string when null is provided', async ({ page }) => {
-					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
-						element._value = null;
-					});
-					await expect(page.locator('input')).toHaveValue('');
-				});
-			});
 		});
 	});
 
@@ -358,6 +348,16 @@ test.describe('kol-input-date', () => {
 				await expect(page.locator('input')).toHaveAttribute('min', minMonth);
 				await expect(page.locator('input')).toHaveAttribute('max', maxMonth);
 			});
+		});
+	});
+
+	test.describe('when initial value is null', () => {
+		test('should set value as empty string', async ({ page }) => {
+			await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
+				element._value = null;
+			});
+			await expect(page.locator('input')).toHaveValue('');
 		});
 	});
 });
