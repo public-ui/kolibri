@@ -1,4 +1,5 @@
 import { InputDateController } from './controller';
+import { describe, it, expect } from '@jest/globals';
 
 const TEST_DATE = new Date('2020-03-03T03:02:01.099');
 
@@ -41,9 +42,24 @@ describe('InputDateController', () => {
 				expect(InputDateController.tryParseToString(TEST_DATE, 'time', 10)).toBe('03:02:01');
 			});
 
-			it('throws an Error for type week', () => {
-				expect(() => InputDateController.tryParseToString(TEST_DATE, 'week')).toThrowError('Auto convert to week is not supported!');
+			it('returns a ISO8601 week string for type week', () => {
+				expect(InputDateController.tryParseToString(TEST_DATE, 'week')).toBe('2020-W10');
 			});
+		});
+	});
+	describe('method getWeekNumberOfDate', () => {
+		it('should return correct WeekOfYear', () => {
+			expect(InputDateController.getWeekNumberOfDate(TEST_DATE)).toBe('10');
+		});
+
+		it('should return correct WeekOfYear when first day of year is in last kw', () => {
+			const date = new Date('2021-01-01T03:02:01.099');
+			expect(InputDateController.getWeekNumberOfDate(date)).toBe('53');
+		});
+
+		it('should return correct WeekOfYear when last years week is in first kw ', () => {
+			const date = new Date('2019-12-30T03:02:01.099');
+			expect(InputDateController.getWeekNumberOfDate(date)).toBe('01');
 		});
 	});
 });

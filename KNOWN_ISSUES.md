@@ -64,3 +64,12 @@ The `<select>` element and its `<option>` tags offer limited styling options. Sp
 
 - **Contrast Issues**: Since the contrast of the default dropdown rendering is controlled by the browser, it's not always possible to ensure WCAG-compliant contrast ratios, which may hinder readability for users with visual impairments.
 
+## VoiceOver Reads Date Inputs with Percentage in Google Chrome
+
+In Google Chrome, when using VoiceOver with empty `date` input fields (no initial value), an unexpected percentage value is read aloud alongside the usual prompt.
+
+Notably, this issue does not occur with Windows Narrator, which handles empty date inputs correctly.
+
+There is a Bug Report for this Issue:
+
+[VoiceOver reads negative percent values for month, day, and year steppers in `<input type="date">`](https://issuetracker.google.com/issues/361250561?pli=1)
