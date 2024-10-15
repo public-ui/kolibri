@@ -42,14 +42,16 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputDateElement;
 	private inputRef?: HTMLInputElement;
 
+	@State() private _initialValueType: 'Date' | 'String' | null = null;
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.inputRef?.value;
+	public async getValue(): Promise<string | Date | undefined> {
+		return this.inputRef && this.remapValue(this.inputRef?.value);
 	}
 
 	/**
@@ -81,6 +83,31 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 			this.inputRef.value = '';
 		}
 	}
+
+	private setInitialValueType(value: Iso8601 | Date | null) {
+		if (value instanceof Date) {
+			this._initialValueType = 'Date';
+		} else if (typeof value === 'string') {
+			this._initialValueType = 'String';
+		} else {
+			this._initialValueType = null;
+		}
+	}
+	private remapValue(newValue: string): Date | string {
+		return this._initialValueType === 'Date' ? new Date(newValue) : newValue;
+	}
+
+	private readonly onChange = (event: Event) => {
+		const newValue = (event.target as HTMLInputElement).value;
+		const remappedValue = this.remapValue(newValue);
+		this.controller.onFacade.onChange(event, remappedValue);
+	};
+
+	private readonly onInput = (event: Event) => {
+		const newValue = (event.target as HTMLInputElement).value;
+		const remappedValue = this.remapValue(newValue);
+		this.controller.onFacade.onInput(event, true, remappedValue);
+	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
@@ -158,14 +185,16 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 							value={this.state._value || undefined}
 							{...this.controller.onFacade}
 							onKeyDown={this.onKeyDown}
-							onFocus={(event) => {
-								this.controller.onFacade.onFocus(event);
-								this.inputHasFocus = true;
-							}}
 							onBlur={(event) => {
 								this.controller.onFacade.onBlur(event);
 								this.inputHasFocus = false;
 							}}
+							onFocus={(event) => {
+								this.controller.onFacade.onFocus(event);
+								this.inputHasFocus = true;
+							}}
+							onChange={this.onChange}
+							onInput={this.onInput}
 						/>
 					</div>
 				</KolInputWcTag>
@@ -474,9 +503,12 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 			deprecatedHint('Date type will be removed in v3. Use `Iso8601` instead.');
 		}
 		this.controller.validateValueEx(value);
+		if (value !== undefined) this.setInitialValueType(value);
 	}
 
 	public componentWillLoad(): void {
+		if (this._value !== undefined) this.setInitialValueType(this._value);
+		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 
