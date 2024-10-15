@@ -26,7 +26,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputEmailController } from './controller';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -92,7 +92,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<KolInputWcTag
+				<KolInputTag
 					class={{ email: true, 'hide-label': !!this.state._hideLabel }}
 					_accessKey={this.state._accessKey}
 					_alert={this.showAsAlert()}
@@ -166,7 +166,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 							}}
 						/>
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}

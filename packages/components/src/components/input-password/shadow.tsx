@@ -24,7 +24,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputPasswordController } from './controller';
-import { KolButtonWcTag, KolInputWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolInputTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 
@@ -91,7 +91,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<KolInputWcTag
+				<KolInputTag
 					class={{
 						'hide-label': !!this.state._hideLabel,
 						password: true,
@@ -181,7 +181,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 							''
 						)}
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}

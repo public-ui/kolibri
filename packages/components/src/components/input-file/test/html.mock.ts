@@ -1,7 +1,7 @@
 import type { InputFileProps, InputFileStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
-import { KolInputWcTag } from '../../../core/component-names';
+import { KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
@@ -23,7 +23,7 @@ export const getInputFileHtml = (props: InputFileProps): string => {
 		${state._alert ? `_alert=""` : ''}
 	>
 	   <mock:shadow-root>
-	     <${KolInputWcTag}
+	     <${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._required ? `_required=""` : ''}
@@ -63,7 +63,7 @@ export const getInputFileHtml = (props: InputFileProps): string => {
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
 						>
 	       </div>
-	     </${KolInputWcTag}>
+	     </${KolInputTag}>
 	   </mock:shadow-root>
 	</kol-input-file>`;
 };

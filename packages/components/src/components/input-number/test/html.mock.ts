@@ -1,7 +1,7 @@
 import type { InputNumberProps, InputNumberStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
-import { KolInputWcTag } from '../../../core/component-names';
+import { KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
@@ -27,7 +27,7 @@ export const getInputNumberHtml = (props: InputNumberProps): string => {
 		${state._alert ? `_alert=""` : ''}
 	>
 	   <mock:shadow-root>
-	     <${KolInputWcTag}
+	     <${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
@@ -72,7 +72,7 @@ export const getInputNumberHtml = (props: InputNumberProps): string => {
 							${state._required ? `required=""` : ''}
 						>
 	       </div>
-	     </${KolInputWcTag}>
+	     </${KolInputTag}>
 	   </mock:shadow-root>
 	</kol-input-number>`;
 };

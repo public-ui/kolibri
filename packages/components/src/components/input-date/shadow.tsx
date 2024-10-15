@@ -26,7 +26,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputDateController } from './controller';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -125,7 +125,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 		return (
 			<Host class={{ 'kol-input-date': true, 'has-value': this.state._hasValue }}>
-				<KolInputWcTag
+				<KolInputTag
 					class={{
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
@@ -197,7 +197,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 							onInput={this.onInput}
 						/>
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}

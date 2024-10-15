@@ -25,7 +25,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputRangeController } from './controller';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -122,7 +122,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 		return (
 			<Host class="kol-input-range">
-				<KolInputWcTag
+				<KolInputTag
 					class={{
 						range: true,
 						'hide-label': !!this.state._hideLabel,
@@ -236,7 +236,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 							// </ul>,
 						]}
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}

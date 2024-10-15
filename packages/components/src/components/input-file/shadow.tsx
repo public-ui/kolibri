@@ -22,7 +22,7 @@ import { nonce } from '../../utils/dev.utils';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputFileController } from './controller';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -68,7 +68,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 		return (
 			<Host class="kol-input-file">
-				<KolInputWcTag
+				<KolInputTag
 					class={{
 						file: true,
 						'hide-label': !!this.state._hideLabel,
@@ -135,7 +135,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 							}}
 						/>
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}

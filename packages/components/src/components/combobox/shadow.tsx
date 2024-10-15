@@ -21,7 +21,7 @@ import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Wat
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { ComboboxController } from './controller';
-import { KolIconTag, KolInputWcTag } from '../../core/component-names';
+import { KolIconTag, KolInputTag } from '../../core/component-names';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
@@ -152,7 +152,7 @@ export class KolCombobox implements ComboboxAPI {
 		return (
 			<Host class="kol-combobox">
 				<div class={clsx('combobox', this.state._disabled && 'combobox--disabled')}>
-					<KolInputWcTag
+					<KolInputTag
 						_accessKey={this.state._accessKey}
 						_alert={this.showAsAlert()}
 						_disabled={this.state._disabled}
@@ -269,7 +269,7 @@ export class KolCombobox implements ComboboxAPI {
 								</ul>
 							)}
 						</div>
-					</KolInputWcTag>
+					</KolInputTag>
 				</div>
 			</Host>
 		);

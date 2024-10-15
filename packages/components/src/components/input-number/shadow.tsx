@@ -26,7 +26,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputNumberController } from './controller';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -87,7 +87,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				<KolInputWcTag
+				<KolInputTag
 					class={{
 						number: true,
 						'hide-label': !!this.state._hideLabel,
@@ -158,7 +158,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 							}}
 						/>
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}

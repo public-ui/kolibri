@@ -25,7 +25,7 @@ import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputRadioController } from './controller';
 import { FormFieldMsg } from '../@shared/form-field-msg';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 import { propagateSubmitEventToForm } from '../form/controller';
 
 /**
@@ -110,7 +110,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 						const selected = this.state._value === option.value;
 
 						return (
-							<KolInputWcTag
+							<KolInputTag
 								class={{
 									radio: true,
 									disabled: Boolean(this.state._disabled || option.disabled),
@@ -172,7 +172,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 										</span>
 									</label>
 								</div>
-							</KolInputWcTag>
+							</KolInputTag>
 						);
 					})}
 					{hasError && <FormFieldMsg _alert={this.showAsAlert()} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}

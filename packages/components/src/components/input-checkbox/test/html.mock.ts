@@ -1,7 +1,7 @@
 import type { InputCheckboxProps, InputCheckboxStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
-import { KolIconTag, KolInputWcTag } from '../../../core/component-names';
+import { KolIconTag, KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
@@ -33,7 +33,7 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 		${state._alert ? `_alert=""` : ''}
 	>
 		<mock:shadow-root>
-			<${KolInputWcTag}
+			<${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
@@ -82,7 +82,7 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 
 				/>
 			</label>
-	     </${KolInputWcTag}>
+	     </${KolInputTag}>
 	   </mock:shadow-root>
 	</kol-input-checkbox>`;
 };

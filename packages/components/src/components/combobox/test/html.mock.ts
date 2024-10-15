@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 
 import { showExpertSlot, type ComboboxProps, type ComboboxStates } from '../../../schema';
-import { KolInputWcTag } from '../../../core/component-names';
+import { KolInputTag } from '../../../core/component-names';
 import clsx from 'clsx';
 
 interface ExtendedComboboxStates extends ComboboxStates {
@@ -35,7 +35,7 @@ export const getComboboxHtml = (props: ComboboxProps): string => {
 >
 	<mock:shadow-root>
 	<div class=${clsx('combobox', state._disabled && 'combobox--disabled')}>
-		<${KolInputWcTag}
+		<${KolInputTag}
 			${state._hideError ? '_hideerror=""' : ''}
 			_hint=""
 			_id="id-nonce"
@@ -82,7 +82,7 @@ export const getComboboxHtml = (props: ComboboxProps): string => {
 							: ''
 					}
       </div>
-		</${KolInputWcTag}t>
+		</${KolInputTag}t>
 		</div>
 	</mock:shadow-root>
 </kol-combobox>`;

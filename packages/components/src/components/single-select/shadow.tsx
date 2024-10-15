@@ -21,7 +21,7 @@ import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Wat
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { SingleSelectController } from './controller';
-import { KolIconTag, KolInputWcTag } from '../../core/component-names';
+import { KolIconTag, KolInputTag } from '../../core/component-names';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
@@ -178,7 +178,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		return (
 			<Host class="kol-single-select">
 				<div class={`single-select ${this.state._disabled === true ? 'disabled' : ''} `}>
-					<KolInputWcTag
+					<KolInputTag
 						_accessKey={this.state._accessKey}
 						_alert={this.showAsAlert()}
 						_disabled={this.state._disabled}
@@ -319,7 +319,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								</ul>
 							)}
 						</div>
-					</KolInputWcTag>
+					</KolInputTag>
 				</div>
 			</Host>
 		);

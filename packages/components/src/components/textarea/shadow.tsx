@@ -25,7 +25,7 @@ import { nonce } from '../../utils/dev.utils';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { TextareaController } from './controller';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -84,7 +84,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 
 		return (
 			<Host class={{ 'kol-textarea': true, 'has-value': this.state._hasValue }}>
-				<KolInputWcTag
+				<KolInputTag
 					class={{ textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
 					_accessKey={this.state._accessKey}
 					_alert={this.showAsAlert()}
@@ -154,7 +154,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 							value={this.state._value}
 						/>
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}

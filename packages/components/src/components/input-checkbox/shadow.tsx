@@ -26,7 +26,7 @@ import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputCheckboxController } from './controller';
-import { KolIconTag, KolInputWcTag } from '../../core/component-names';
+import { KolIconTag, KolInputTag } from '../../core/component-names';
 import type { FocusableElement } from '../../schema/interfaces/FocusableElement';
 
 /**
@@ -77,7 +77,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 		return (
 			<Host class="kol-input-checkbox">
-				<KolInputWcTag
+				<KolInputTag
 					class={{
 						checkbox: true,
 						[this.state._variant]: true,
@@ -151,7 +151,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 						/>
 					</label>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}

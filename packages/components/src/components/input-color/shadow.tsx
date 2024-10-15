@@ -24,7 +24,7 @@ import { nonce } from '../../utils/dev.utils';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputColorController } from './controller';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -71,7 +71,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 
 		return (
 			<Host class="kol-input-color">
-				<KolInputWcTag
+				<KolInputTag
 					class={{
 						color: true,
 						'hide-label': !!this.state._hideLabel,
@@ -136,7 +136,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 							}}
 						/>
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}

@@ -27,7 +27,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputTextController } from './controller';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -101,7 +101,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 					'kol-input-text': true,
 				}}
 			>
-				<KolInputWcTag
+				<KolInputTag
 					class={{
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
@@ -178,7 +178,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 							}}
 						/>
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}
