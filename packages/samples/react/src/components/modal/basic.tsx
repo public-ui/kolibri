@@ -1,12 +1,21 @@
 import type { FC } from 'react';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { KolButton, KolCard, KolModal } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const ModalBasic: FC = () => {
+	const [searchParams] = useSearchParams();
+	const modalState = searchParams.get('show-modal') as string;
 	const modalElement = useRef<HTMLKolModalElement>(null);
 	const stackedModalElement = useRef<HTMLKolModalElement>(null);
+
+	useEffect(() => {
+		if (modalState === 'true') {
+			modalElement.current?.openModal();
+		}
+	}, [modalState]);
 
 	return (
 		<>

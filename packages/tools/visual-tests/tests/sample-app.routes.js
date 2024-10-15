@@ -245,6 +245,13 @@ ROUTES.set('modal/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('modal/basic?show-modal=true', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+
 ROUTES.set('nav/aria-current', {
 	axe: {
 		skipFailures: false,
