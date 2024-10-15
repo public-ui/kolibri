@@ -205,6 +205,7 @@ test.describe('kol-input-date', () => {
 					}
 				});
 			});
+
 			test.describe('when initial value is null', () => {
 				test('should set value as empty string when null is provided', async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
