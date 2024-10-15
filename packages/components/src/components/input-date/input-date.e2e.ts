@@ -60,6 +60,7 @@ test.describe('kol-input-date', () => {
 			await expect(page.locator('input')).toHaveValue('04:02');
 		});
 	});
+
 	test.describe('Consistent Return Value for type datetime-local', () => {
 		const testValues = [
 			{ label: 'ISO String', value: '2020-03-03' as Iso8601 },
