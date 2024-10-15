@@ -1,0 +1,40 @@
+@import './rem';
+
+@mixin kol-typography-body {
+	font-size: rem(16);
+	line-height: 1.5;
+}
+
+@mixin kol-typography-h1 {
+	font-size: rem(24);
+	font-weight: 700;
+	line-height: 1.1667;
+}
+
+@mixin kol-typography-h2 {
+	font-size: rem(20);
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+@mixin kol-typography-h3 {
+	font-size: rem(18);
+	font-weight: 700;
+	line-height: 1.3333;
+}
+
+@mixin kol-typography-accordion {
+	font-weight: 700;
+	font-size: rem(18);
+	line-height: 1.3333;
+}
+
+@mixin kol-typography-label {
+	font-size: 14px;
+	line-height: 1.25;
+}
+
+@mixin kol-typography-hint {
+	font-size: rem(14.4);
+	font-style: italic;
+}

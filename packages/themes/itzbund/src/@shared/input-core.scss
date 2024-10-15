@@ -1,0 +1,26 @@
+@use './label.scss';
+@use './kol-alert-wc.scss';
+@use './kol-required.scss';
+
+@import '../mixins/alert-wc.scss';
+@import '../mixins/typography.scss';
+@import '../mixins/input-base.scss';
+
+@layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+
+	input {
+		@include kol-typography-body;
+		@include kol-input-base;
+
+		cursor: pointer;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.error input {
+		@include kol-input-error;
+	}
+}

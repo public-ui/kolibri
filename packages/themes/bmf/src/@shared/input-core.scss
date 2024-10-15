@@ -1,0 +1,31 @@
+@import '../mixins/input.scss';
+
+@layer kol-theme-component {
+	@include input;
+
+	input {
+		border: none;
+
+		&::placeholder {
+			color: var(--color-grey);
+		}
+
+		&[disabled],
+		&[disabled]:focus {
+			cursor: not-allowed;
+			opacity: 1;
+		}
+	}
+
+	.input {
+		padding: 0 1em;
+
+		> input:first-child {
+			padding-left: 0.375em;
+		}
+
+		> input:last-child {
+			padding-right: 0.375em;
+		}
+	}
+}

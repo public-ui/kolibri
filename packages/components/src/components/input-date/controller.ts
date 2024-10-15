@@ -13,6 +13,7 @@ import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+
 export class InputDateController extends InputIconController implements InputDateWatches {
 	// test: https://regex101.com/r/NTVh4L/1
 	private static readonly isoDateRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/;
@@ -75,9 +76,38 @@ export class InputDateController extends InputIconController implements InputDat
 						return formattedTimeWithSeconds;
 					}
 				case 'week':
-					throw new Error('Auto convert to week is not supported!');
+					return `${formattedYear}-W${this.getWeekNumberOfDate(value)}`;
 			}
 		}
+	}
+
+	static getWeekNumberOfDate(date: Date): string {
+		const copiedDate = new Date(date);
+
+		// ISO week date weeks start on Monday, so correct the day number
+		const nDay = (copiedDate.getDay() + 6) % 7;
+
+		// ISO 8601 states that week 1 is the week with the first Thursday of that year
+		// Set the target date to the Thursday in the target week
+		copiedDate.setDate(copiedDate.getDate() - nDay + 3);
+
+		// Store the millisecond value of the target date
+		const n1stThursday = copiedDate.valueOf();
+
+		// Set the target to the first Thursday of the year
+		// First, set the target to January 1st
+		copiedDate.setMonth(0, 1);
+
+		// Not a Thursday? Correct the date to the next Thursday
+		if (copiedDate.getDay() !== 4) {
+			copiedDate.setMonth(0, 1 + ((4 - copiedDate.getDay() + 7) % 7));
+		}
+
+		// The week number is the number of weeks between the first Thursday of the year
+		// and the Thursday in the target week (604800000 = 7 * 24 * 3600 * 1000)
+		const dayOfYear = 1 + Math.ceil((n1stThursday - copiedDate.valueOf()) / 604800000);
+
+		return dayOfYear.toString().padStart(2, '0');
 	}
 
 	private validateDateString(value: string): boolean {
@@ -127,29 +157,16 @@ export class InputDateController extends InputIconController implements InputDat
 
 	public validateMax(value?: Iso8601 | Date): void {
 		const ensuredValue =
-			((value === undefined || value === null) && this.component._type === 'date') ||
-			this.component._type === 'month' ||
-			this.component._type === 'datetime-local'
+			(value === undefined || value === null) &&
+			(this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local')
 				? InputDateController.DEFAULT_MAX_DATE
 				: value;
 
-		watchValidator(
-			this.component,
-			'_max',
-			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
-			new Set(['Iso8601', 'Date']),
-			InputDateController.tryParseToString(ensuredValue, this.component._type, this.component._step),
-		);
+		this.validateIso8601('_max', ensuredValue);
 	}
 
 	public validateMin(value?: Iso8601 | Date): void {
-		watchValidator(
-			this.component,
-			'_min',
-			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
-			new Set(['Iso8601', 'Date']),
-			InputDateController.tryParseToString(value, this.component._type, this.component._step),
-		);
+		this.validateIso8601('_min', value);
 	}
 
 	public validateOn(value?: InputTypeOnDefault) {

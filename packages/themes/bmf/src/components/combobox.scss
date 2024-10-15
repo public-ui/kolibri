@@ -46,7 +46,7 @@ $visible-options: 5;
 			place-items: center;
 
 			&:focus {
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 
@@ -65,7 +65,7 @@ $visible-options: 5;
 		&__item {
 			display: flex;
 			align-items: center;
-			height: $option-height;
+			min-height: $option-height;
 			padding: rem(10) rem(12);
 			border-radius: 0.25em;
 			color: var(--color-black);
@@ -73,7 +73,7 @@ $visible-options: 5;
 			&:focus {
 				background-color: var(--color-ocean);
 				color: white;
-				outline: 0 !important;
+				outline: 0;
 			}
 		}
 	}

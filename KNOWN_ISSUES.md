@@ -51,3 +51,13 @@ KolSelect is using native HTML `<select>`.
 
 When using KolSelect with the `multiple` property, the native HTML `<select>` may cause problems with screen readers. 
 Often the entire selection is not read out, but only the last one. Therefore, the KolSelect has no full accessibility.
+
+## VoiceOver Reads Date Inputs with Percentage in Google Chrome
+
+In Google Chrome, when using VoiceOver with empty `date` input fields (no initial value), an unexpected percentage value is read aloud alongside the usual prompt.
+
+Notably, this issue does not occur with Windows Narrator, which handles empty date inputs correctly.
+
+There is a Bug Report for this Issue:
+
+[VoiceOver reads negative percent values for month, day, and year steppers in `<input type="date">`](https://issuetracker.google.com/issues/361250561?pli=1)
