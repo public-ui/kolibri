@@ -7,5 +7,9 @@
 @layer kol-component {
 	:host {
 		font-size: rem(16);
+
+		option:checked::before {
+			content: '✓ ';
+		}
 	}
 }
