@@ -508,7 +508,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		if (this._value !== undefined) this.setInitialValueType(this._value);
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 

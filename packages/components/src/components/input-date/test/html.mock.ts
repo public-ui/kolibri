@@ -33,7 +33,7 @@ export const getInputDateHtml = (props: InputDateProps): string => {
 					${state._required ? `_required=""` : ''}
 					${state._readOnly ? `_readonly=""` : ''}
 					${state._touched ? `_touched=""` : ''}
-					${state._alert ? `_alert=""` : ''}
+					${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 					_hint=""
 					_id="${state._id}"
 					_label="${state._label ? `${state._label}` : ''}"
