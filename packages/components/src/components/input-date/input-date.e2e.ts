@@ -60,155 +60,160 @@ test.describe('kol-input-date', () => {
 			await expect(page.locator('input')).toHaveValue('04:02');
 		});
 	});
-	test.describe('Consistent Return Value for type datetime-local', () => {
+
+	test.describe('Events', () => {
 		const testValues = [
 			{ label: 'ISO String', value: '2020-03-03' as Iso8601 },
 			{ label: 'Date Object', value: new Date('2020-03-03T03:02:01.099Z') },
 		];
 
 		testValues.forEach(({ label, value }) => {
-			test(`should dispatch onchange  with value as ${label} in event detail`, async ({ page }) => {
-				await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-				const inputDate = page.locator('kol-input-date');
-				void inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
-					element._value = date;
-				}, value);
+			test.describe(`when initial value is a ${label}`, () => {
+				test(`should call onChange with value parameter as ${label}`, async ({ page }) => {
+					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+					const inputDate = page.locator('kol-input-date');
+					void inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
+						element._value = date;
+					}, value);
 
-				const inputDateEventPromise = inputDate.evaluate((element) => {
-					return new Promise<Date | Iso8601>((resolve) => {
-						(element as HTMLKolSelectElement)._on = {
-							onChange: (_event, eventValue: unknown) => {
-								resolve(eventValue as Date | Iso8601);
-							},
-						};
-					});
-				});
-
-				await page.waitForChanges();
-				await page.locator('input').dispatchEvent('change');
-
-				const eventDetail = await inputDateEventPromise;
-				if (value instanceof Date) {
-					expect(eventDetail).toBeInstanceOf(Date);
-					expect((eventDetail as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
-				} else {
-					expect(eventDetail).toBe(value);
-				}
-			});
-
-			test(`should dispatch onInput with value as ${label} in event detail`, async ({ page }) => {
-				await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-				const inputDate = page.locator('kol-input-date');
-				void inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
-					element._value = date;
-				}, value);
-
-				const inputDateEventPromise = inputDate.evaluate((element) => {
-					return new Promise<Date | Iso8601>((resolve) => {
-						(element as HTMLKolSelectElement)._on = {
-							onInput: (_event, eventValue: unknown) => {
-								resolve(eventValue as Date | Iso8601);
-							},
-						};
-					});
-				});
-
-				await page.waitForChanges();
-				await page.locator('input').dispatchEvent('input');
-
-				const eventDetail = await inputDateEventPromise;
-				if (value instanceof Date) {
-					expect(eventDetail).toBeInstanceOf(Date);
-					expect((eventDetail as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
-				} else {
-					expect(eventDetail).toBe(value);
-				}
-			});
-
-			test(`should return ${label} when initial value is a ${label} and trigger custom "change" DOM event`, async ({ page }) => {
-				await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-				const inputDate = page.locator('kol-input-date');
-
-				await inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
-					element._value = date;
-				}, value);
-
-				const inputDateEventPromise = inputDate.evaluate((element: HTMLKolInputDateElement) => {
-					return new Promise<Date | Iso8601>((resolve) => {
-						element.addEventListener('kol-change', (e: Event) => {
-							const eventValue: Date | Iso8601 = (e as CustomEvent).detail;
-							resolve(eventValue);
+					const inputDateEventPromise = inputDate.evaluate((element) => {
+						return new Promise<Date | Iso8601>((resolve) => {
+							(element as HTMLKolSelectElement)._on = {
+								onChange: (_event, eventValue: unknown) => {
+									resolve(eventValue as Date | Iso8601);
+								},
+							};
 						});
 					});
+
+					await page.waitForChanges();
+					await page.locator('input').dispatchEvent('change');
+
+					const eventDetail = await inputDateEventPromise;
+					if (value instanceof Date) {
+						expect(eventDetail).toBeInstanceOf(Date);
+						expect((eventDetail as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
+					} else {
+						expect(eventDetail).toBe(value);
+					}
 				});
 
-				await page.waitForChanges();
-				await page.locator('input').dispatchEvent('change');
+				test(`should call onInput with value parameter as ${label}`, async ({ page }) => {
+					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+					const inputDate = page.locator('kol-input-date');
+					void inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
+						element._value = date;
+					}, value);
 
-				const eventDetail = await inputDateEventPromise;
-
-				if (value instanceof Date) {
-					expect(eventDetail).toBeInstanceOf(Date);
-					expect((eventDetail as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
-				} else {
-					expect(eventDetail).toBe(value);
-				}
-			});
-
-			test(`should return ${label} when initial value is a ${label} and trigger custom "input" DOM event`, async ({ page }) => {
-				await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-				const inputDate = page.locator('kol-input-date');
-
-				await inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
-					element._value = date;
-				}, value);
-
-				const inputDateEventPromise = inputDate.evaluate((element: HTMLKolInputDateElement) => {
-					return new Promise<Date | Iso8601>((resolve) => {
-						element.addEventListener('kol-input', (e: Event) => {
-							const eventValue: Date | Iso8601 = (e as CustomEvent).detail;
-							resolve(eventValue);
+					const inputDateEventPromise = inputDate.evaluate((element) => {
+						return new Promise<Date | Iso8601>((resolve) => {
+							(element as HTMLKolSelectElement)._on = {
+								onInput: (_event, eventValue: unknown) => {
+									resolve(eventValue as Date | Iso8601);
+								},
+							};
 						});
 					});
+
+					await page.waitForChanges();
+					await page.locator('input').dispatchEvent('input');
+
+					const eventDetail = await inputDateEventPromise;
+					if (value instanceof Date) {
+						expect(eventDetail).toBeInstanceOf(Date);
+						expect((eventDetail as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
+					} else {
+						expect(eventDetail).toBe(value);
+					}
 				});
 
-				await page.waitForChanges();
-				await page.locator('input').dispatchEvent('input');
+				test(`should trigger custom "kol-change" DOM event with ${label} as event detail`, async ({ page }) => {
+					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+					const inputDate = page.locator('kol-input-date');
 
-				const eventDetail = await inputDateEventPromise;
+					await inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
+						element._value = date;
+					}, value);
 
-				if (value instanceof Date) {
-					expect(eventDetail).toBeInstanceOf(Date);
-					expect((eventDetail as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
-				} else {
-					expect(eventDetail).toBe(value);
-				}
-			});
+					const inputDateEventPromise = inputDate.evaluate((element: HTMLKolInputDateElement) => {
+						return new Promise<Date | Iso8601>((resolve) => {
+							element.addEventListener('kol-change', (e: Event) => {
+								const eventValue: Date | Iso8601 = (e as CustomEvent).detail;
+								resolve(eventValue);
+							});
+						});
+					});
 
-			test(`should return the correct value with getValue() as ${label}`, async ({ page }) => {
-				await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-				await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
-					element._value = date;
-				}, value);
+					await page.waitForChanges();
+					await page.locator('input').dispatchEvent('change');
 
-				const getValue = await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
-					return element.getValue();
+					const eventDetail = await inputDateEventPromise;
+
+					if (value instanceof Date) {
+						expect(eventDetail).toBeInstanceOf(Date);
+						expect((eventDetail as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
+					} else {
+						expect(eventDetail).toBe(value);
+					}
 				});
 
-				if (label === 'Date Object') {
-					expect(getValue).toBeInstanceOf(Date);
-				} else {
-					expect(getValue).toBe(value);
-				}
-			});
-		});
+				test(`should trigger custom "kol-input" DOM event with ${label} as event detail`, async ({ page }) => {
+					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+					const inputDate = page.locator('kol-input-date');
 
-		test('should set value as empty string when null is provided', async ({ page }) => {
-			await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
-				element._value = null;
+					await inputDate.evaluate((element: HTMLKolInputDateElement, date) => {
+						element._value = date;
+					}, value);
+
+					const inputDateEventPromise = inputDate.evaluate((element: HTMLKolInputDateElement) => {
+						return new Promise<Date | Iso8601>((resolve) => {
+							element.addEventListener('kol-input', (e: Event) => {
+								const eventValue: Date | Iso8601 = (e as CustomEvent).detail;
+								resolve(eventValue);
+							});
+						});
+					});
+
+					await page.waitForChanges();
+					await page.locator('input').dispatchEvent('input');
+
+					const eventDetail = await inputDateEventPromise;
+
+					if (value instanceof Date) {
+						expect(eventDetail).toBeInstanceOf(Date);
+						expect((eventDetail as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
+					} else {
+						expect(eventDetail).toBe(value);
+					}
+				});
+
+				test(`should return the correct value for getValue() as ${label}`, async ({ page }) => {
+					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
+						element._value = date;
+					}, value);
+
+					const getValue = await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
+						return element.getValue();
+					});
+
+					if (value instanceof Date) {
+						expect(getValue).toBeInstanceOf(Date);
+						expect((getValue as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
+					} else {
+						expect(getValue).toBe(value);
+					}
+				});
 			});
-			await expect(page.locator('input')).toHaveValue('');
+			test.describe('when initial value is null', () => {
+				test('should set value as empty string when null is provided', async ({ page }) => {
+					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
+					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
+						element._value = null;
+					});
+					await expect(page.locator('input')).toHaveValue('');
+				});
+			});
 		});
 	});
 
