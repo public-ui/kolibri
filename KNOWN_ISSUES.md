@@ -52,6 +52,18 @@ KolSelect is using native HTML `<select>`.
 When using KolSelect with the `multiple` property, the native HTML `<select>` may cause problems with screen readers. 
 Often the entire selection is not read out, but only the last one. Therefore, the KolSelect has no full accessibility.
 
+## Limited Styling Capabilities for `<select>` and `<option>` Elements
+[Stackblitz Example](https://stackblitz.com/edit/vitejs-vite-nthnce?file=src%2Fstyle.css)
+
+The `<select>` element and its `<option>` tags offer limited styling options. Specifically, states such as "selected", "focus" or "active" cannot be reliably customized using CSS. This leads to challenges in meeting accessibility standards, especially in ensuring sufficient contrast ratios.
+
+**Impact**:
+- **Limited Customization**: The visual state of dropdown options (e.g., on focus or selection) cannot be consistently customized across all browsers. This makes it difficult to create an accessible visual experience for all users.
+
+- **Browser-Dependent Rendering**: The appearance of the `<select>` element varies across browsers and operating systems, resulting in inconsistent user experiences.
+
+- **Contrast Issues**: Since the contrast of the default dropdown rendering is controlled by the browser, it's not always possible to ensure WCAG-compliant contrast ratios, which may hinder readability for users with visual impairments.
+
 ## VoiceOver Reads Date Inputs with Percentage in Google Chrome
 
 In Google Chrome, when using VoiceOver with empty `date` input fields (no initial value), an unexpected percentage value is read aloud alongside the usual prompt.
