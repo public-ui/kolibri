@@ -36,7 +36,9 @@ import { propagateSubmitEventToForm } from '../form/controller';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;

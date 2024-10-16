@@ -32,7 +32,9 @@ import { KolInputWcTag } from '../../core/component-names';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputFileElement;
