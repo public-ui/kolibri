@@ -14,6 +14,26 @@ export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML =
 	const type: string = props._type !== undefined ? props._type : 'default';
 	props._type = props._type || 'default';
 	props._variant = props._variant || 'msg';
+
+	let kolIcon = '';
+	switch (props._type) {
+		case 'default':
+			kolIcon = 'kol-message';
+			break;
+		case 'success':
+			kolIcon = 'kol-success';
+			break;
+		case 'info':
+			kolIcon = 'kol-info';
+			break;
+		case 'warning':
+			kolIcon = 'kol-warning';
+			break;
+		case 'error':
+			kolIcon = 'kol-error';
+			break;
+	}
+	const ariaLabel = kolIcon + ': ' + props._label;
 	return `<kol-alert${additionalHTML} class="kol-alert">
   <mock:shadow-root>
     <kol-alert-wc class="kol-alert-wc alert ${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}"${props._alert === true ? ' role="alert"' : ''}>
@@ -22,7 +42,7 @@ export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML =
 								class="heading-icon"
 			_label="${
 				props._label !== undefined
-					? ''
+					? ariaLabel
 					: props._type === 'success'
 						? 'kol-success'
 						: props._type === 'error'
@@ -66,8 +86,8 @@ export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML =
 						_hideLabel
 						_icons={{
 							left: {
-								icon: 'codicon codicon-close',
-							},
+								icon: 'codicon codicon-close'
+							}
 						}}
 						_label="${translate('kol-close')}"
 						_tooltipAlign="left"
