@@ -405,12 +405,6 @@ ROUTES.set('toast/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('toast/basic?type=default', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
-	},
-});
 ROUTES.set('toast/basic?type=info', {
 	viewportSize: {
 		width: 1920,
@@ -447,36 +441,7 @@ ROUTES.set('toast/basic?variant=card', {
 		height: 600,
 	},
 });
-ROUTES.set('toast/basic?type=default&variant=card', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
-	},
-});
-ROUTES.set('toast/basic?type=info&variant=card', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
-	},
-});
-ROUTES.set('toast/basic?type=success&variant=card', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
-	},
-});
-ROUTES.set('toast/basic?type=warning&variant=card', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
-	},
-});
-ROUTES.set('toast/basic?type=error&variant=card', {
-	viewportSize: {
-		width: 1920,
-		height: 600,
-	},
-});
+
 ROUTES.set('toast/basic?type=default&variant=msg', {
 	viewportSize: {
 		width: 1920,
