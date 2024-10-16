@@ -245,6 +245,13 @@ ROUTES.set('modal/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('modal/basic?show-modal=true', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+
 ROUTES.set('nav/aria-current', {
 	axe: {
 		skipFailures: false,
@@ -398,6 +405,74 @@ ROUTES.set('toast/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('toast/basic?type=info', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=success', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=warning', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=error', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?variant=card', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+
+ROUTES.set('toast/basic?type=default&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=info&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=success&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=warning&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=error&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+
 ROUTES.set('toolbar/basic', {
 	axe: {
 		skipFailures: false,
