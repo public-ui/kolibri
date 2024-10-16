@@ -67,7 +67,7 @@ Die **Alert**-Komponente wurde auf die Darstellung mit höchstmöglichen Kontras
 
 Das zusätzliche Icon (je nach gewähltem Typ) gewährleistet, dass die Information vom Nutzer nicht allein über die Farbe klassifiziert werden muss.
 
-Bei der Nutzung eines Screenreaders wird beim Lesen des Icons zusätzlich der Titel mitgelesen. 
+Bei der Nutzung eines Screenreaders wird beim Lesen des Icons zusätzlich der Titel mitgelesen.
 Der Titel sollte daher nicht mit dem **Alert**-Typ beginnen, da das zu einem doppelten Vorlesen des **Alert**-Typs führt.
 <br>
 Beispiel:
@@ -75,7 +75,6 @@ Beispiel:
 Richtig: Label = "Füllen Sie das Feld aus" -> Ausgabe: Fehler - Füllen Sie das Feld aus
 <br>
 Falsch: Label = "Fehler: Füllen Sie das Feld aus." -> Ausgabe: Fehler - Fehler: Füllen ie das Feld aus
-
 
 Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefreiheit betrachtet:
 
