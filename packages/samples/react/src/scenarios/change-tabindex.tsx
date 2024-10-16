@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/tabindex-no-positive */
+
 import { SampleDescription } from '../components/SampleDescription';
 import {
 	KolButton,
@@ -21,7 +23,7 @@ import {
 	KolTextarea,
 } from '@public-ui/react';
 import React from 'react';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HINT_MSG } from '../shares/constants';
 import { COUNTRY_OPTIONS, COUNTRY_SUGGESTIONS } from '../shares/country';
 import type { Option, StencilUnknown } from '@public-ui/components';
