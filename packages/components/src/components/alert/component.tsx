@@ -8,7 +8,13 @@ import { KolIconTag, KolHeadingWcTag, KolButtonWcTag } from '../../core/componen
 
 import type { AlertAPI, AlertStates, AlertType, AlertVariant, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return <KolIconTag class="heading-icon" _label={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icons={props.icon} />;
+	return (
+		<KolIconTag
+			class="heading-icon"
+			_label={typeof props.label === 'string' && props.label.length > 0 ? props.ariaLabel + ': ' + props.label : props.ariaLabel}
+			_icons={props.icon}
+		/>
+	);
 };
 
 const AlertIcon = (props: { label?: string; type?: AlertType }) => {
