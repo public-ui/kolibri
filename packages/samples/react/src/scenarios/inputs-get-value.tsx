@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/tabindex-no-positive */
+
 import type { FC } from 'react';
 import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
