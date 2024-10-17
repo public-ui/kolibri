@@ -1,7 +1,7 @@
 import type { InputCheckboxProps, InputCheckboxStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
-import { KolIconTag, KolInputWcTag } from '../../../core/component-names';
+import { KolIconTag, KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
@@ -27,9 +27,13 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 	const { ariaDescribedBy } = getRenderStates(state);
 
 	return `
-	<kol-input-checkbox class="kol-input-checkbox" ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
-	   <mock:shadow-root>
-	     <${KolInputWcTag}
+	<kol-input-checkbox
+		class="kol-input-checkbox"
+		${state._touched ? `_touched=""` : ''}
+		${state._alert ? `_alert=""` : ''}
+	>
+		<mock:shadow-root>
+			<${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
@@ -40,7 +44,7 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 					_label="${state._label ? `${state._label}` : ''}"
 					_tooltipalign="top"
 					class="checkbox ${state._hideLabel ? 'hide-label' : ''} default"
-					${state._alert || state._alert === undefined ? `_alert=""` : ''}
+					${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 			 >
 			 <span slot="label"> ${
 					hasExpertSlot
@@ -78,7 +82,7 @@ export const getInputCheckboxHtml = (props: InputCheckboxProps): string => {
 
 				/>
 			</label>
-	     </${KolInputWcTag}>
+	     </${KolInputTag}>
 	   </mock:shadow-root>
 	</kol-input-checkbox>`;
 };

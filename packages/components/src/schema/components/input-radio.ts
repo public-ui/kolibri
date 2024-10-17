@@ -1,5 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 import type {
+	MsgPropType,
 	PropDisabled,
 	PropHideError,
 	PropHideLabel,
@@ -13,7 +14,7 @@ import type {
 	PropTooltipAlign,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, RadioOption, Orientation, StencilUnknown } from '../types';
+import type { InputTypeOnDefault, RadioOption, Orientation, StencilUnknown, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -24,6 +25,7 @@ type OptionalProps = {
 	 */
 	error: string;
 	hint: string;
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	orientation: Orientation;
 	tabIndex: number;
@@ -31,7 +33,6 @@ type OptionalProps = {
 } & PropDisabled &
 	PropHideError &
 	PropHideLabel &
-	PropMsg &
 	PropName &
 	PropRadioOptions & // PropRadioOptions becomes required with 2.0
 	PropRequired &

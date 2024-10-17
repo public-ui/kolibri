@@ -1,7 +1,7 @@
 import type { InputDateProps, InputDateStates } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
-import { KolInputWcTag } from '../../../core/component-names';
+import { KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
@@ -21,14 +21,19 @@ export const getInputDateHtml = (props: InputDateProps): string => {
 	const hasExpertSlot = showExpertSlot(state._label);
 	const { ariaDescribedBy } = getRenderStates(state);
 	return `
-	<kol-input-date class="kol-input-date" ${state._touched ? `_touched=""` : ''} ${state._alert || state._alert === undefined ? `_alert=""` : ''} >
+	<kol-input-date
+		class="kol-input-date"
+		${state._touched ? `_touched=""` : ''}
+		${state._alert ? `_alert=""` : ''}
+	>
 	   <mock:shadow-root>
-	     <${KolInputWcTag}
+	     <${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._required ? `_required=""` : ''}
 					${state._readOnly ? `_readonly=""` : ''}
 					${state._touched ? `_touched=""` : ''}
+					${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 					_hint=""
 					_id="${state._id}"
 					_label="${state._label ? `${state._label}` : ''}"
@@ -64,7 +69,7 @@ export const getInputDateHtml = (props: InputDateProps): string => {
 							${ariaDescribedBy.length > 0 ? `aria-describedby="${ariaDescribedBy.join(' ')}"` : ''}
 						>
 	       </div>
-	     </${KolInputWcTag}>
+	     </${KolInputTag}>
 	   </mock:shadow-root>
 	</kol-input-date>`;
 };
