@@ -1,85 +1,84 @@
 @import '../mixins/rem';
 @import '../mixins/typography.scss';
+@import '../mixins/focus-outline.scss';
 
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		font-size: rem(16);
 	}
 
-	.kol-span-wc > span {
-		display: flex;
-		align-items: center;
-		text-align: left;
-	}
-
-	:host > div > .kol-heading-wc button {
-		border-radius: var(--border-radius);
-		min-height: 24px;
-		padding: 10px 8px;
-	}
-
-	:host > div > .kol-heading-wc button .kol-span-wc {
-		@include kol-typography-accordion;
-		gap: rem(8);
-	}
-
-	:host > div > .kol-heading-wc button .kol-span-wc > span {
-		gap: rem(4);
-	}
-
-	:host > div > .kol-heading-wc button .kol-icon {
-		font-size: rem(24);
-	}
-
-	:host > div > .kol-heading-wc button .kol-icon::part(icon) {
-		font-family: 'Material Symbols Rounded';
-		font-weight: 400;
-		color: var(--color-midnight);
-	}
-
-	.kol-icon::part(icon)::before {
-		content: 'arrow_forward_ios';
-		transition-property: transform;
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-		transition-duration: 150ms;
-	}
-
-	:host > div.open > .kol-heading-wc button .kol-icon::part(icon)::before {
-		transform: rotate(90deg);
-	}
-
-	:host > div {
+	.accordion {
 		width: 100%;
 		height: 100%;
 		display: grid;
-	}
 
-	:host > div div[class='header'],
-	:host > div[class*='open'] div[class='content'] {
-		margin: 0;
-	}
+		.open &__heading {
+			margin: 0;
+		}
 
-	:host > div div[class='content'] {
-		padding-left: 2.25em;
-		padding-bottom: 12px;
-		padding-right: 8px;
-	}
+		&__wrapper {
+			margin-top: 3px;
+		}
 
-	button:focus {
-		outline: none;
-	}
+		&__content {
+			padding-left: 2.25em;
+			padding-bottom: 12px;
+			padding-right: 8px;
+		}
 
-	:host > .accordion:hover > kol-heading-wc {
-		background-color: var(--color-smoke);
-	}
+		&__heading-button {
+			button {
+				&:focus {
+					outline: none;
+				}
 
-	:host > .accordion:focus-within > kol-heading-wc {
-		border-radius: var(--border-radius);
-		cursor: pointer;
-		outline-color: var(--color-ocean);
-		outline-offset: -3px;
-		outline-style: solid;
-		outline-width: 3px;
-		transition: outline 0.2s linear;
+				border-radius: var(--border-radius);
+				min-height: 24px;
+				padding: 10px 8px;
+
+				@include kol-typography-accordion;
+				gap: rem(8);
+
+				.kol-span-wc > span {
+					display: flex;
+					align-items: center;
+					text-align: left;
+					gap: rem(4);
+				}
+
+				.kol-icon {
+					font-size: rem(24);
+				}
+
+				.kol-icon::part(icon) {
+					font-family: 'Material Symbols Rounded';
+					font-weight: 400;
+					color: var(--color-midnight);
+
+					&::before {
+						content: 'arrow_forward_ios';
+						transition-property: transform;
+						transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+						transition-duration: 150ms;
+					}
+				}
+			}
+		}
+
+		.open &__heading-button {
+			.kol-icon::part(icon) {
+				transform: rotate(90deg);
+			}
+		}
+
+		&:hover > &__heading {
+			background-color: var(--color-smoke);
+		}
+
+		&:focus-within &__heading-button button {
+			@include focus-outline;
+			outline-offset: 0;
+		}
 	}
 }

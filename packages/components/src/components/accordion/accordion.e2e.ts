@@ -13,16 +13,16 @@ test.describe('kol-accordion', () => {
 		});
 
 		test('should show the accordion content after the title has been clicked', async ({ page }) => {
-			await expect(page.locator('.content')).toHaveAttribute('aria-hidden', 'true');
+			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
 			await page.getByRole('button', { name: 'Accordion label' }).click();
-			await expect(page.locator('.content')).not.toHaveAttribute('aria-hidden', 'true');
+			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
 		});
 
 		test('should hide the accordion content after the title has been clicked again', async ({ page }) => {
 			await page.getByRole('button', { name: 'Accordion label' }).click();
-			await expect(page.locator('.content')).not.toHaveAttribute('aria-hidden', 'true');
+			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
 			await page.getByRole('button', { name: 'Accordion label' }).click();
-			await expect(page.locator('.content')).toHaveAttribute('aria-hidden', 'true');
+			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
 		});
 	});
 
@@ -33,7 +33,7 @@ test.describe('kol-accordion', () => {
 
 		test('should not show the accordion content after the title has been clicked', async ({ page }) => {
 			await page.getByRole('button', { name: 'Accordion label' }).click({ force: true });
-			await expect(page.locator('.content')).toHaveAttribute('aria-hidden', 'true');
+			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
 		});
 	});
 });

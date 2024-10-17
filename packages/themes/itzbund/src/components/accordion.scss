@@ -2,8 +2,12 @@
 @import '../mixins/typography.scss';
 
 @layer kol-theme-component {
-	:host > div {
+	:host {
 		font-family: var(--font-family);
+		font-size: rem(16);
+	}
+
+	.accordion {
 		box-sizing: border-box;
 		width: 100%;
 		height: 100%;
@@ -12,69 +16,62 @@
 		border-width: 1px;
 		border-style: solid;
 		border-radius: rem(4);
-	}
 
-	:host > div > .kol-heading-wc {
-		@include kol-typography-accordion;
+		&__heading-button {
+			@include kol-typography-accordion;
 
-		& button {
-			cursor: pointer;
-			width: 100%;
-			margin: 0;
-			display: flex;
-			gap: 0.5em;
-			border: 0;
-			align-items: center;
-			overflow: hidden;
-			background-color: transparent;
-			padding: rem(4);
+			& button {
+				font-weight: inherit;
+				font-size: inherit;
+				line-height: inherit;
+
+				cursor: pointer;
+				width: 100%;
+				margin: 0;
+				display: flex;
+				gap: 0.5em;
+				border: 0;
+				align-items: center;
+				overflow: hidden;
+				background-color: transparent;
+				padding: rem(4);
+			}
+
+			.kol-icon::part(icon) {
+				color: var(--color-midnight);
+			}
+
+			.kol-icon::part(close)::before {
+				font-family: 'Font Awesome 6 Free';
+				content: '\f077';
+			}
+
+			.kol-icon::part(open)::before {
+				font-family: 'Font Awesome 6 Free';
+				content: '\f078';
+			}
 		}
-	}
 
-	:host > div[part*='open'] > .kol-heading-wc button {
-		padding-bottom: 0;
-	}
+		&__heading {
+			margin: 0;
+		}
 
-	:host > div[part*='open'] > .kol-heading-wc button .kol-icon {
-		width: 1em;
-	}
+		&__content {
+			padding: rem(8);
+		}
 
-	:host > div div[part='header'],
-	:host > div[part*='open'] div[part='content'] {
-		margin: 0;
-	}
+		.open &__heading-button {
+			button {
+				padding-bottom: 0;
+			}
 
-	:host > div div[part='header'] {
-		padding-left: rem(32);
-	}
+			.kol-icon {
+				width: 1em;
+			}
+		}
 
-	:host > div[part*='open'] div[part='content'] {
-		margin: 0;
-		padding: 0 rem(16) rem(16) rem(36);
-	}
-
-	:host > div > .kol-heading-wc button .kol-icon::part(icon) {
-		color: var(--color-midnight);
-	}
-
-	button {
-		cursor: pointer;
-		font-weight: inherit;
-		font-size: inherit;
-		line-height: inherit;
-	}
-
-	.content {
-		padding: rem(8);
-	}
-
-	:host > div > .kol-heading-wc button .kol-icon::part(close)::before {
-		font-family: 'Font Awesome 6 Free';
-		content: '\f077';
-	}
-
-	:host > div > .kol-heading-wc button .kol-icon::part(open)::before {
-		font-family: 'Font Awesome 6 Free';
-		content: '\f078';
+		.open &__content {
+			margin: 0;
+		}
 	}
 }

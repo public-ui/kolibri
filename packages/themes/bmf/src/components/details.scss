@@ -1,13 +1,69 @@
 @import '../mixins/indented-text';
 @import '../mixins/rem';
+@import '../mixins/focus-outline.scss';
 
 @layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		font-size: rem(16);
+	}
+
+	.details {
+		&__heading-button {
+			min-height: rem(44);
+			display: flex;
+			border-radius: var(--border-radius);
+
+			.button-inner {
+				color: var(--color-midnight);
+
+				.span-label {
+					border-bottom-color: transparent;
+				}
+			}
+
+			.kol-span-wc > span {
+				gap: rem(4);
+			}
+
+			.kol-icon {
+				font-size: rem(16);
+
+				&::part(icon) {
+					font-family: 'Material Symbols Rounded';
+					font-weight: 400;
+					color: var(--color-midnight);
+
+					&:before {
+						content: 'chevron_right';
+					}
+				}
+			}
+		}
+
+		&__wrapper {
+			margin-top: 4px;
+			margin-left: -2px;
+		}
+
+		&__content {
+			&.indented-text {
+				@include indented-text;
+				margin: 0;
+			}
+		}
+
+		&:focus-within &__heading-button {
+			@include focus-outline;
+			outline-offset: 0;
+		}
+	}
+
 	details {
 		> summary {
 			min-height: rem(44);
 			display: flex;
 			border-radius: var(--border-radius);
-			font-family: var(--font-family);
 			color: var(--color-midnight);
 			gap: rem(4);
 

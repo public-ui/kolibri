@@ -1,0 +1,8 @@
+@mixin focus-outline {
+	cursor: pointer;
+	outline-color: var(--color-ocean);
+	outline-offset: 2px;
+	outline-style: solid;
+	outline-width: 3px;
+	transition: outline-offset 0.2s linear;
+}
