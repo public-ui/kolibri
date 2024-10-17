@@ -4,9 +4,35 @@
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
+		font-size: rem(16);
 	}
 
-	details .indented-text {
-		@include indented-text;
+	.details {
+		&__heading-button {
+			&:focus-within {
+				cursor: pointer;
+			}
+
+			button .kol-span-wc .span-label {
+				border-bottom-color: #000;
+			}
+
+			.kol-icon {
+				font-size: rem(19.2);
+			}
+
+			.kol-span-wc > span {
+				display: flex;
+				text-align: left;
+				gap: 0;
+			}
+		}
+
+		&__content {
+			&.indented-text {
+				@include indented-text;
+				margin: 0;
+			}
+		}
 	}
 }
