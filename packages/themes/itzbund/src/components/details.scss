@@ -1,18 +1,40 @@
-@import '../mixins/indented-text';
 @import '../mixins/rem';
+@import '../mixins/indented-text';
 
 @layer kol-theme-component {
-	details > summary {
-		border-radius: var(--border-radius);
+	:host {
 		font-family: var(--font-family);
+		font-size: rem(16);
 	}
 
-	details .indented-text {
-		@include indented-text;
-		margin: rem(4) 0 0 rem(10.4);
-	}
+	.details {
+		&__heading-button {
+			border-radius: var(--border-radius);
 
-	.kol-icon {
-		font-size: rem(19.2);
+			&:focus-within {
+				cursor: pointer;
+			}
+
+			button .span-label {
+				border-bottom-color: #000;
+			}
+
+			.kol-icon {
+				font-size: rem(19.2);
+			}
+
+			.kol-span-wc > span {
+				display: flex;
+				text-align: left;
+				gap: 0;
+			}
+		}
+
+		&__content {
+			&.indented-text {
+				@include indented-text;
+				margin: rem(4) 0 0 rem(10.4);
+			}
+		}
 	}
 }
