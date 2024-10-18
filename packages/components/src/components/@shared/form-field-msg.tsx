@@ -21,8 +21,8 @@ export const FormFieldMsg: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _
 		 */
 		aria-hidden="true"
 		id={`${_id}-error`}
-		_alert={_alert}
-		_type="error"
+		alert={_alert}
+		type="error"
 		class={clsx({
 			error: true,
 			'visually-hidden': _hideError === true,

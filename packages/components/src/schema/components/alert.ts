@@ -26,6 +26,8 @@ type OptionalAlertProps = {
 type RequiredAlertStates = RequiredAlertProps;
 type OptionalAlertStates = OptionalAlertProps;
 
+export type InternalAlertProps = RequiredAlertProps & OptionalAlertProps;
+
 export type AlertProps = Generic.Element.Members<RequiredAlertProps, OptionalAlertProps>;
 export type AlertStates = Generic.Element.Members<RequiredAlertStates, OptionalAlertStates>;
 export type AlertAPI = Generic.Element.ComponentApi<RequiredAlertProps, OptionalAlertProps, RequiredAlertStates, OptionalAlertStates>;

@@ -4,6 +4,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { watchHeadingLevel } from '../heading/validation';
 import type { AlertAPI, AlertStates, AlertType, AlertVariant, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
 import { KolAlertFc } from '../@shared';
+import type { KolAlertFcProps } from '../@shared/alert-fc/component';
 
 /**
  * @internal
@@ -23,9 +24,22 @@ export class KolAlertWc implements AlertAPI {
 	};
 
 	public render(): JSX.Element {
+		const { _alert, _hasCloser, _label, _level, _type, _variant } = this.state;
+
+		const props: KolAlertFcProps = {
+			alert: _alert,
+			hasCloser: _hasCloser,
+			label: _label,
+			level: _level,
+			type: _type,
+			variant: _variant,
+			onCloserClick: this.close,
+			onVibrationTimeout: this.handleVibrationTimeout,
+		};
+
 		return (
 			<Host>
-				<KolAlertFc {...this.state} onCloserClick={this.close} onVibrationTimeout={this.handleVibrationTimeout}>
+				<KolAlertFc {...props}>
 					<slot />
 				</KolAlertFc>
 			</Host>

@@ -54,7 +54,7 @@ export class KolForm implements FormAPI {
 
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (
-			<KolAlertFc _type="error" _variant="msg">
+			<KolAlertFc type="error" variant="msg">
 				{translate('kol-error-list-message')}
 				<nav aria-label={translate('kol-error-list')}>
 					<ul>
