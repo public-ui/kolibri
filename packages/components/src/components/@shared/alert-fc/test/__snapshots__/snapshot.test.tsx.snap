@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeedThumbnail should render 1`] = `
+<div class="alert default kol-alert-wc msg">
+  <div class="heading">
+    <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
+    <div class="heading-content">
+      <div class="content"></div>
+    </div>
+  </div>
+</div>
+`;

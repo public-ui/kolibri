@@ -1,6 +1,7 @@
 @import '../@shared/mixins';
 @import '../input-line';
 @import '../@shared/kol-alert-mixin.scss';
+@import '../link';
 
 @include kol-alert-styles;
 
