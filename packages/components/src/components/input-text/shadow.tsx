@@ -19,8 +19,8 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import { setState, showExpertSlot, validateAlert } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type { EventEmitter, JSX } from '@stencil/core';
+import { Component, Element, Event, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -44,19 +44,44 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private inputRef?: HTMLInputElement;
 	private oldValue?: string;
 
+	@Event({ eventName: 'kolBlur' }) blurEvent?: EventEmitter<void>;
+	@Event({ eventName: 'kolChange' }) changeEvent?: EventEmitter<void>;
+	@Event({ eventName: 'kolClick' }) clickEvent?: EventEmitter<void>;
+	@Event({ eventName: 'kolFocus' }) focusEvent?: EventEmitter<void>;
+	@Event({ eventName: 'kolInput' }) inputEvent?: EventEmitter<void>;
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
+	};
+
+	private readonly onBlur = (event: FocusEvent) => {
+		this.blurEvent?.emit();
+		this.controller.onFacade.onBlur(event);
 	};
 
 	private readonly onChange = (event: Event) => {
 		if (this.oldValue !== this.inputRef?.value) {
 			this.oldValue = this.inputRef?.value;
-			this.controller.onFacade.onChange(event);
 		}
+
+		this.changeEvent?.emit();
+		this.controller.onFacade.onChange(event);
+	};
+
+	private readonly onClick = (event: MouseEvent) => {
+		this.clickEvent?.emit();
+		this.controller.onFacade.onClick(event);
+	};
+
+	private readonly onFocus = (event: FocusEvent) => {
+		this.focusEvent?.emit();
+		this.controller.onFacade.onFocus(event);
 	};
 
 	private readonly onInput = (event: InputEvent) => {
 		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+
+		this.inputEvent?.emit();
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -163,8 +188,10 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 							spellcheck="false"
 							type={this.state._type}
 							value={this.state._value as string}
-							{...this.controller.onFacade}
+							onBlur={this.onBlur}
 							onChange={this.onChange}
+							onClick={this.onClick}
+							onFocus={this.onFocus}
 							onInput={this.onInput}
 							onKeyDown={this.onKeyDown}
 						/>
