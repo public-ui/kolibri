@@ -13,6 +13,7 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
+	StencilUnknown,
 	Stringified,
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
@@ -45,10 +46,10 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private oldValue?: string;
 
 	@Event({ eventName: 'kolBlur' }) blurEvent?: EventEmitter<void>;
-	@Event({ eventName: 'kolChange' }) changeEvent?: EventEmitter<void>;
+	@Event({ eventName: 'kolChange' }) changeEvent?: EventEmitter<StencilUnknown>;
 	@Event({ eventName: 'kolClick' }) clickEvent?: EventEmitter<void>;
 	@Event({ eventName: 'kolFocus' }) focusEvent?: EventEmitter<void>;
-	@Event({ eventName: 'kolInput' }) inputEvent?: EventEmitter<void>;
+	@Event({ eventName: 'kolInput' }) inputEvent?: EventEmitter<StencilUnknown>;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
@@ -60,11 +61,13 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onChange = (event: Event) => {
-		if (this.oldValue !== this.inputRef?.value) {
-			this.oldValue = this.inputRef?.value;
+		const value = this.inputRef?.value;
+
+		if (this.oldValue !== value) {
+			this.oldValue = value;
 		}
 
-		this.changeEvent?.emit();
+		this.changeEvent?.emit(value);
 		this.controller.onFacade.onChange(event);
 	};
 
@@ -79,9 +82,10 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		const value = this.inputRef?.value ?? '';
+		setState(this, '_currentLength', value.length);
 
-		this.inputEvent?.emit();
+		this.inputEvent?.emit(value);
 		this.controller.onFacade.onInput(event);
 	};
 
