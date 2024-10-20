@@ -113,6 +113,16 @@ kolibriElement._on = {
 | `_type`               | `_type`          | Defines either the type of the component or of the components interactive element.                                                                           | `"search" \| "tel" \| "text" \| "url" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `'text'`    |
 | `_value`              | `_value`         | Defines the value of the input.                                                                                                                              | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
 
+## Events
+
+| Event       | Description | Type                |
+| ----------- | ----------- | ------------------- |
+| `kolBlur`   |             | `CustomEvent<void>` |
+| `kolChange` |             | `CustomEvent<void>` |
+| `kolClick`  |             | `CustomEvent<void>` |
+| `kolFocus`  |             | `CustomEvent<void>` |
+| `kolInput`  |             | `CustomEvent<void>` |
+
 ## Methods
 
 ### `focus() => Promise<void>`
