@@ -3,7 +3,7 @@
 @layer kol-theme-global {
 	:host {
 		--border-radius: var(--kolibri-border-radius, 5px);
-		--font-family: var(--kolibri-font-family, Calibri, Verdana, Arial, Helvetica, sans-serif);
+		--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
 		--font-size: var(--kolibri-font-size, 16px);
 		--spacing: var(--kolibri-spacing, #{rem(4)});
 		--border-width: var(--kolibri-border-width, 1px);
