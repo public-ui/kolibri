@@ -11,8 +11,10 @@ const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'Large Column', key: 'large', textAlign: 'left', width: '400px' },
+			{ label: 'Large Column', key: 'large', textAlign: 'left', width: '300px' },
 			{ label: 'Small Column', key: 'small', textAlign: 'left', width: '200px' },
+			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
+			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
 		],
 	],
 };
@@ -29,7 +31,7 @@ export const TableHorizontalScrollbar: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<section className="w-full flex flex-col">
+			<section className="w-full flex flex-col gap-4">
 				<KolHeading _label="Table with scrollbar" _level={2} />
 
 				<KolTable
@@ -37,6 +39,17 @@ export const TableHorizontalScrollbar: FC = () => {
 					_minWidth={hasWidthRestriction ? '600px' : 'auto'}
 					_headers={HEADERS}
 					_data={DATA}
+					className="block"
+					style={{ width: '400px' }}
+				/>
+
+				<KolHeading _label="Empty Table with scrollbar" _level={3} />
+
+				<KolTable
+					_label="Table for demonstration purposes with horizontal scrollbar with auto minWidth."
+					_minWidth={hasWidthRestriction ? '600px' : 'auto'}
+					_headers={HEADERS}
+					_data={[]}
 					className="block"
 					style={{ width: '400px' }}
 				/>
