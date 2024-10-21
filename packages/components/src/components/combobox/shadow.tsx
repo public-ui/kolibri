@@ -35,7 +35,9 @@ import clsx from 'clsx';
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
 export class KolCombobox implements ComboboxAPI {
 	@Element() private readonly host?: HTMLKolComboboxElement;
