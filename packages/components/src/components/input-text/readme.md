@@ -115,13 +115,13 @@ kolibriElement._on = {
 
 ## Events
 
-| Event       | Description | Type                |
-| ----------- | ----------- | ------------------- |
-| `kolBlur`   |             | `CustomEvent<void>` |
-| `kolChange` |             | `CustomEvent<void>` |
-| `kolClick`  |             | `CustomEvent<void>` |
-| `kolFocus`  |             | `CustomEvent<void>` |
-| `kolInput`  |             | `CustomEvent<void>` |
+| Event       | Description | Type                                                                      |
+| ----------- | ----------- | ------------------------------------------------------------------------- |
+| `kolBlur`   |             | `CustomEvent<void>`                                                       |
+| `kolChange` |             | `CustomEvent<boolean \| null \| number \| object \| string \| undefined>` |
+| `kolClick`  |             | `CustomEvent<void>`                                                       |
+| `kolFocus`  |             | `CustomEvent<void>`                                                       |
+| `kolInput`  |             | `CustomEvent<boolean \| null \| number \| object \| string \| undefined>` |
 
 ## Methods
 
