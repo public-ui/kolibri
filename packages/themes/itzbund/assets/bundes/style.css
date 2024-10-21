@@ -1,0 +1,39 @@
+@font-face {
+	font-family: 'BundesSerif Web';
+	font-style: normal;
+	font-weight: bold;
+	src:
+		url(serif/BundesSerif-Web-Bold.woff) format('woff'),
+		url(serif/BundesSerif-Web-Bold.woff2) format('woff2'),
+		url(serif/BundesSerif-Web-Bold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSerif Web';
+	font-style: italic;
+	font-weight: bolder;
+	src:
+		url(serif/BundesSerif-Web-BoldItalic.woff) format('woff'),
+		url(serif/BundesSerif-Web-BoldItalic.woff2) format('woff2'),
+		url(serif/BundesSerif-Web-BoldItalic.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSerif Web';
+	font-style: italic;
+	font-weight: normal;
+	src:
+		url(serif/BundesSerif-Web-Italic.woff) format('woff'),
+		url(serif/BundesSerif-Web-Italic.woff2) format('woff2'),
+		url(serif/BundesSerif-Web-Italic.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSerif Web';
+	font-style: normal;
+	font-weight: normal;
+	src:
+		url(serif/BundesSerif-Web-Regular.woff) format('woff'),
+		url(serif/BundesSerif-Web-Regular.woff2) format('woff2'),
+		url(serif/BundesSerif-Web-Regular.ttf) format('truetype');
+}
