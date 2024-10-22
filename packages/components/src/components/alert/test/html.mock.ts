@@ -14,6 +14,7 @@ export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML =
 	const type: string = props._type !== undefined ? props._type : 'default';
 	props._type = props._type || 'default';
 	props._variant = props._variant || 'msg';
+
 	return `<kol-alert${additionalHTML} class="kol-alert">
   <mock:shadow-root>
     <kol-alert-wc class="kol-alert-wc alert ${type} ${props._variant}${props._hasCloser ? ' hasCloser' : ''}"${props._alert === true ? ' role="alert"' : ''}>
@@ -21,17 +22,15 @@ export const getAlertHtml = (props: AlertProps, innerHTML = '', additionalHTML =
 			<${KolIconTag}
 								class="heading-icon"
 			_label="${
-				props._label !== undefined
-					? ''
-					: props._type === 'success'
-						? 'kol-success'
-						: props._type === 'error'
-							? 'kol-error'
-							: props._type === 'warning'
-								? 'kol-warning'
-								: props._type === 'info'
-									? 'kol-info'
-									: 'kol-message'
+				props._type === 'success'
+					? 'kol-success'
+					: props._type === 'error'
+						? 'kol-error'
+						: props._type === 'warning'
+							? 'kol-warning'
+							: props._type === 'info'
+								? 'kol-info'
+								: 'kol-message'
 			}"
 								_icons="${
 									props._type === 'success'
