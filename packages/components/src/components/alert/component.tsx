@@ -3,8 +3,7 @@ import { alertTypeOptions, alertVariantOptions, setState, validateHasCloser, val
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { watchHeadingLevel } from '../heading/validation';
 import type { AlertAPI, AlertStates, AlertType, AlertVariant, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
-import { KolAlertFc } from '../@shared';
-import type { KolAlertFcProps } from '../@shared/alert-fc/component';
+import KolAlertFc, { type KolAlertFcProps } from '../../functional-components/Alert';
 
 /**
  * @internal
@@ -19,7 +18,7 @@ export class KolAlertWc implements AlertAPI {
 		this._on?.onClose?.(new Event('Close'));
 	};
 
-	private readonly handleVibrationTimeout = () => {
+	private readonly handleAlertTimeout = () => {
 		this.validateAlert(false);
 	};
 
@@ -34,7 +33,7 @@ export class KolAlertWc implements AlertAPI {
 			type: _type,
 			variant: _variant,
 			onCloserClick: this.close,
-			onVibrationTimeout: this.handleVibrationTimeout,
+			onAlertTimeout: this.handleAlertTimeout,
 		};
 
 		return (

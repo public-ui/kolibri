@@ -6,8 +6,7 @@ import { translate } from '../../i18n';
 
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { KolLinkWcTag } from '../../core/component-names';
-
-import { KolAlertFc } from '../@shared';
+import KolAlertFc from '../../functional-components/Alert';
 
 /**
  * @slot - Inhalt der Form.

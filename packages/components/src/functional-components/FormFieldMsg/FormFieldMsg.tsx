@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import type { AlertPropType, HideErrorPropType, IdPropType, MsgPropType } from '../../schema';
 import type { FunctionalComponent } from '@stencil/core';
 import { h } from '@stencil/core';
-import KolAlertFc from './alert-fc';
+import KolAlertFc from '../Alert';
 
 type FormFieldMsgProps = {
 	_alert?: AlertPropType;
@@ -11,7 +11,7 @@ type FormFieldMsgProps = {
 	_id: IdPropType;
 };
 
-export const FormFieldMsg: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _msg, _hideError, _id }) => (
+const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _msg, _hideError, _id }) => (
 	<KolAlertFc
 		/**
 		 * This message is read out by screen readers if the input field
@@ -32,3 +32,5 @@ export const FormFieldMsg: FunctionalComponent<FormFieldMsgProps> = ({ _alert, _
 		{_msg?._description || undefined}
 	</KolAlertFc>
 );
+
+export default FormFieldMsgFc;
