@@ -97,15 +97,37 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		return this._initialValueType === 'Date' ? new Date(newValue) : newValue;
 	}
 
+	private emitEvent(type: string): void {
+		this.host?.dispatchEvent(new Event(type, { bubbles: true, composed: true }));
+	}
+
+	private readonly onBlur = (event: Event) => {
+		this.emitEvent('blur');
+		this.controller.onFacade.onBlur(event);
+	};
+
+	private readonly onClick = (event: Event) => {
+		this.emitEvent('click');
+		this.controller.onFacade.onClick(event);
+	};
+
+	private readonly onFocus = (event: Event) => {
+		this.emitEvent('focus');
+		this.controller.onFacade.onFocus(event);
+	};
+
 	private readonly onChange = (event: Event) => {
 		const newValue = (event.target as HTMLInputElement).value;
 		const remappedValue = this.remapValue(newValue);
+		this.emitEvent('change');
 		this.controller.onFacade.onChange(event, remappedValue);
 	};
 
 	private readonly onInput = (event: Event) => {
 		const newValue = (event.target as HTMLInputElement).value;
 		const remappedValue = this.remapValue(newValue);
+		this.value = remappedValue;
+		this.emitEvent('input');
 		this.controller.onFacade.onInput(event, true, remappedValue);
 	};
 
@@ -182,7 +204,9 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 							spellcheck="false"
 							type={this.state._type}
 							value={this.state._value || undefined}
-							{...this.controller.onFacade}
+							onBlur={this.onBlur}
+							onClick={this.onClick}
+							onFocus={this.onFocus}
 							onKeyDown={this.onKeyDown}
 							onChange={this.onChange}
 							onInput={this.onInput}
@@ -338,6 +362,8 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
+
+	@Prop({ mutable: true, reflect: true }) public value?: string | Date;
 
 	@State() public state: InputDateStates = {
 		_autoComplete: 'off',
