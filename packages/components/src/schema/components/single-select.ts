@@ -12,6 +12,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 	PropOptions,
+	MsgPropType,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHorizontalIcons, Option, StencilUnknown, Stringified } from '../types';
 
@@ -20,14 +21,14 @@ type OptionalProps = {
 	accessKey: string;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
+	placeholder: string;
 	tabIndex: number;
 	value: string;
-	placeholder: string;
 } & PropDisabled &
 	PropHideError &
 	PropHideLabel &
-	PropMsg &
 	PropName &
 	PropRequired &
 	PropSyncValueBySelector &

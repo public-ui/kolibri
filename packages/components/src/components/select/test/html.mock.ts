@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
 
 import { type SelectProps, type SelectStates, showExpertSlot, type W3CInputValue, type Option } from '../../../schema';
-import { KolInputWcTag } from '../../../core/component-names';
+import { KolInputTag } from '../../../core/component-names';
 
 export const getSelectHtml = (props: SelectProps): string => {
 	const state = mixMembers<SelectProps, SelectStates>(
@@ -23,18 +23,24 @@ export const getSelectHtml = (props: SelectProps): string => {
 		return Array.isArray(valueList) && valueList.includes(optionValue);
 	};
 	return `
-<kol-select _alert="" ${state._hideError ? '_hide-error=""' : ''} class="${state._hasValue ? 'has-value kol-select' : 'kol-select'}" ${state._touched ? ' _touched=""' : ''}>
+<kol-select
+	${state._alert ? `_alert=""` : ''}
+	${state._hideError ? '_hide-error=""' : ''}
+	class="${state._hasValue ? 'has-value kol-select' : 'kol-select'}"
+	${state._touched ? ' _touched=""' : ''}
+>
 	<mock:shadow-root>
-		<${KolInputWcTag}
-					${state._hideError ? '_hideerror=""' : ''}
-					_hint=""
-					_id="id-nonce"
-					_label="${typeof state._label === 'string' ? state._label : ''}"
-					_tooltipalign="top"
-					class="select"
-					role="presentation"
-					${state._required ? ' _required=""' : ''}
-					${state._touched ? ' _touched=""' : ''}
+		<${KolInputTag}
+			${state._hideError ? '_hideerror=""' : ''}
+			_hint=""
+			_id="id-nonce"
+			_label="${typeof state._label === 'string' ? state._label : ''}"
+			_tooltipalign="top"
+			class="select"
+			role="presentation"
+			${state._required ? ' _required=""' : ''}
+			${state._touched ? ' _touched=""' : ''}
+			${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 		>
 			<span slot="label">
 				${
@@ -70,7 +76,7 @@ export const getSelectHtml = (props: SelectProps): string => {
 					</select>
 				<form>
 			</div>
-		</${KolInputWcTag}t>
+		</${KolInputTag}t>
 	</mock:shadow-root>
 </kol-select>`;
 };

@@ -1,7 +1,7 @@
 import type { InputRangeStates, InputRangeProps } from '../../../schema';
 import { mixMembers } from 'stencil-awesome-test';
 import { nonce } from '../../../utils/dev.utils';
-import { KolInputWcTag } from '../../../core/component-names';
+import { KolInputTag } from '../../../core/component-names';
 import { showExpertSlot } from '../../../schema';
 import { getRenderStates } from '../../input/controller';
 
@@ -23,15 +23,15 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 	<kol-input-range
 	 	class="kol-input-range"
 		${state._touched ? `_touched=""` : ''}
-		${state._alert || state._alert === undefined ? `_alert=""` : ''}
-
+		${state._alert ? `_alert=""` : ''}
 	>
 	   <mock:shadow-root>
-	     <${KolInputWcTag}
+	     <${KolInputTag}
 					${state._disabled ? `_disabled=""` : ''}
 					${state._hideLabel ? `_hideLabel=""` : ''}
 					${state._touched ? `_touched=""` : ''}
 					${state._accessKey ? `_accessKey="${state._accessKey}"` : ''}
+					${(state._alert === undefined && state._touched) || state._alert ? `_alert=""` : ''}
 					_hint=""
 					_id="${state._id}"
 					_label="${state._label ? `${state._label}` : ''}"
@@ -86,7 +86,7 @@ export const getInpuRangeHtml = (props: InputRangeProps): string => {
 							>
 	       </div>
 				 </div>
-	     </${KolInputWcTag}>
+	     </${KolInputTag}>
 	   </mock:shadow-root>
 	</kol-input-range>`;
 };

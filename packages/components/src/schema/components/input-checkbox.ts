@@ -1,18 +1,19 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	MsgPropType,
 	PropChecked,
 	PropDisabled,
 	PropHideError,
 	PropHideLabel,
 	PropIndeterminate,
+	PropLabelAlign,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
 	PropRequired,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropLabelAlign,
 } from '../props';
 import type { AnyIconFontClass, InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
 
@@ -52,6 +53,7 @@ type OptionalProps = {
 	error: string;
 	hint: string;
 	icons: Stringified<InputCheckboxIconsProp>;
+	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
 	value: Stringified<StencilUnknown>;
@@ -61,7 +63,6 @@ type OptionalProps = {
 	PropHideError &
 	PropHideLabel &
 	PropIndeterminate &
-	PropMsg &
 	PropName &
 	PropRequired &
 	PropSyncValueBySelector &

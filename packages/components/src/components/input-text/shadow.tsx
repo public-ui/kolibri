@@ -27,7 +27,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputTextController } from './controller';
-import { KolInputWcTag } from '../../core/component-names';
+import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -101,12 +101,13 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 					'kol-input-text': true,
 				}}
 			>
-				<KolInputWcTag
+				<KolInputTag
 					class={{
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
 					}}
 					_accessKey={this.state._accessKey}
+					_alert={this.showAsAlert()}
 					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_hasCounter={this.state._hasCounter}
@@ -167,9 +168,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 							onChange={this.onChange}
 							onInput={this.onInput}
 							onKeyDown={this.onKeyDown}
+							onFocus={(event) => {
+								this.controller.onFacade.onFocus(event);
+								this.inputHasFocus = true;
+							}}
+							onBlur={(event) => {
+								this.controller.onFacade.onBlur(event);
+								this.inputHasFocus = false;
+							}}
 						/>
 					</div>
-				</KolInputWcTag>
+				</KolInputTag>
 			</Host>
 		);
 	}
@@ -183,9 +192,9 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
-	 * @TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved.
+	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -251,7 +260,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: MsgPropType;
+	@Prop() public _msg?: Stringified<MsgPropType>;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -338,8 +347,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		_type: 'text',
 	};
 
+	@State() private inputHasFocus = false;
+
 	public constructor() {
 		this.controller = new InputTextController(this, 'text', this.host);
+	}
+
+	private showAsAlert(): boolean {
+		if (this.state._alert === undefined) {
+			return Boolean(this.state._touched) && !this.inputHasFocus;
+		}
+		return this.state._alert;
 	}
 
 	@Watch('_accessKey')
@@ -408,7 +426,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_msg')
-	public validateMsg(value?: MsgPropType): void {
+	public validateMsg(value?: Stringified<MsgPropType>): void {
 		this.controller.validateMsg(value);
 	}
 
@@ -479,7 +497,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.oldValue = this._value;
 		this.controller.componentWillLoad();

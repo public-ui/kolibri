@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	MsgPropType,
 	PropDisabled,
 	PropHasCounter,
 	PropHideError,
@@ -36,12 +37,12 @@ type OptionalProps = {
 	smartButton: Stringified<ButtonProps>;
 	tabIndex: number;
 	value: string;
+	msg: Stringified<MsgPropType>;
 } & PropPasswordVariant &
 	PropDisabled &
 	PropHasCounter &
 	PropHideError &
 	PropHideLabel &
-	PropMsg &
 	PropName &
 	PropReadOnly &
 	PropRequired &

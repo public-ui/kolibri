@@ -1,10 +1,11 @@
-import type { SingleSelectWatches, SingleSelectProps, MsgPropType, OptionsPropType, Option, SelectOption, W3CInputValue } from '../../schema';
-import { watchBoolean, watchString, validateMsg, validateOptions } from '../../schema';
+import type { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, W3CInputValue } from '../../schema';
+import { validateOptions, watchBoolean, watchString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
 
 import type { Generic } from 'adopted-style-sheets';
+
 export class SingleSelectController extends InputIconController implements SingleSelectWatches {
 	protected readonly component: Generic.Element.Component & SingleSelectProps;
 	private readonly keyOptionMap = new Map<string, Option<string>>();
@@ -36,15 +37,13 @@ export class SingleSelectController extends InputIconController implements Singl
 			},
 		});
 	}
+
 	public validateRequired(value?: boolean): void {
 		watchBoolean(this.component, '_required', value);
 	}
 
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
-	}
-	public validateMsg(value?: MsgPropType): void {
-		validateMsg(this.component, value);
 	}
 
 	public validatePlaceholder(value?: string): void {
