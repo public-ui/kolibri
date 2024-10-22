@@ -13,15 +13,14 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	StencilUnknown,
 	Stringified,
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
 import { setState, showExpertSlot, validateAlert } from '../../schema';
-import type { EventEmitter, JSX } from '@stencil/core';
-import { Component, Element, Event, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -45,18 +44,16 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private inputRef?: HTMLInputElement;
 	private oldValue?: string;
 
-	@Event({ eventName: 'kolBlur' }) blurEvent?: EventEmitter<void>;
-	@Event({ eventName: 'kolChange' }) changeEvent?: EventEmitter<StencilUnknown>;
-	@Event({ eventName: 'kolClick' }) clickEvent?: EventEmitter<void>;
-	@Event({ eventName: 'kolFocus' }) focusEvent?: EventEmitter<void>;
-	@Event({ eventName: 'kolInput' }) inputEvent?: EventEmitter<StencilUnknown>;
+	private emitEvent(type: string): void {
+		this.host?.dispatchEvent(new Event(type, { bubbles: true, composed: true }));
+	}
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
 	private readonly onBlur = (event: FocusEvent) => {
-		this.blurEvent?.emit();
+		this.emitEvent('blur');
 		this.controller.onFacade.onBlur(event);
 	};
 
@@ -67,17 +64,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			this.oldValue = value;
 		}
 
-		this.changeEvent?.emit(value);
+		this.emitEvent('change');
 		this.controller.onFacade.onChange(event);
 	};
 
 	private readonly onClick = (event: MouseEvent) => {
-		this.clickEvent?.emit();
+		this.emitEvent('click');
 		this.controller.onFacade.onClick(event);
 	};
 
 	private readonly onFocus = (event: FocusEvent) => {
-		this.focusEvent?.emit();
+		this.emitEvent('focus');
 		this.controller.onFacade.onFocus(event);
 	};
 
@@ -85,7 +82,9 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		const value = this.inputRef?.value ?? '';
 		setState(this, '_currentLength', value.length);
 
-		this.inputEvent?.emit(value);
+		this.value = value;
+		this.emitEvent('input');
+
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -357,6 +356,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true }) public _value?: string;
+
+	@Prop({ mutable: true, reflect: true }) public value?: string;
 
 	@State() public state: InputTextStates = {
 		_autoComplete: 'off',
