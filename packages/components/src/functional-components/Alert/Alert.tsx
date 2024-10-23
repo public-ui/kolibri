@@ -32,11 +32,11 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 		}, 10000);
 	}
 
-	const rootProps = {
+	const rootProps: Partial<JSXBase.HTMLAttributes<HTMLDivElement>> = {
 		class: clsx('kol-alert-wc', 'alert', type, variant, { hasCloser: !!hasCloser }, classNames),
 		role: alert ? 'alert' : undefined,
 		...other,
-	} as Partial<JSXBase.HTMLAttributes<HTMLDivElement>>;
+	};
 
 	return (
 		<div {...rootProps}>
