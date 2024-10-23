@@ -1,5 +1,5 @@
-import type { AccessKeyPropType, HideLabelPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanAPI, SpanStates, Stringified } from '../../schema';
-import { showExpertSlot, validateAccessKey, validateHideLabel, validateIcons, validateLabelWithExpertSlot, watchBoolean } from '../../schema';
+import { BadgeTextPropType, HideLabelPropType, KoliBriIconsProp, LabelWithExpertSlotPropType, SpanAPI, SpanStates, Stringified } from '../../schema';
+import { showExpertSlot, validateBadgeText, validateHideLabel, validateIcons, validateLabelWithExpertSlot, watchBoolean } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { md } from '../../utils/markdown';
@@ -42,8 +42,8 @@ export class KolSpanWc implements SpanAPI {
 							<span class="span-label md" innerHTML={md(this.state._label)} />
 						) : (
 							<span class="span-label">
-								{this.state._accessKey && this.state._label.length ? (
-									<InternalUnderlinedAccessKey label={this.state._label} accessKey={this.state._accessKey} />
+								{this.state._badgeText && this.state._label.length ? (
+									<InternalUnderlinedAccessKey label={this.state._label} accessKey={this.state._badgeText} />
 								) : (
 									(this.state._label ?? '')
 								)}
@@ -55,9 +55,9 @@ export class KolSpanWc implements SpanAPI {
 					<span aria-hidden={hideExpertSlot ? 'true' : undefined} class="span-label" hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
-					{this.state._accessKey && (
-						<span class="access-key-hint" aria-hidden="true">
-							{this.state._accessKey}
+					{this.state._badgeText && (
+						<span class="badge-text-hint" aria-hidden="true">
+							{this.state._badgeText}
 						</span>
 					)}
 					{this.state._icons.right && (
@@ -84,7 +84,7 @@ export class KolSpanWc implements SpanAPI {
 	/**
 	 * Defines the elements access key.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _badgeText?: BadgeTextPropType;
 
 	/**
 	 * Allows to use markdown in the label. Defaults to `false`.
@@ -115,9 +115,9 @@ export class KolSpanWc implements SpanAPI {
 		_label: '', // ⚠ required
 	};
 
-	@Watch('_accessKey')
-	public validateAccessKey(value?: AccessKeyPropType): void {
-		validateAccessKey(this, value);
+	@Watch('_badgeText')
+	public validateBadgeText(value?: BadgeTextPropType): void {
+		validateBadgeText(this, value);
 	}
 
 	@Watch('_allowMarkdown')
@@ -147,7 +147,7 @@ export class KolSpanWc implements SpanAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateAccessKey(this._accessKey);
+		this.validateBadgeText(this._badgeText);
 		this.validateAllowMarkdown(this._allowMarkdown);
 		this.validateHideLabel(this._hideLabel);
 		this.validateIcons(this._icons);

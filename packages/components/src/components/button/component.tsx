@@ -134,7 +134,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 				>
 					<KolSpanWcTag
 						class="button-inner"
-						_accessKey={this.state._accessKey}
+						_badgeText={this.state._accessKey}
 						_icons={this.state._icons}
 						_hideLabel={this.state._hideLabel}
 						_label={hasExpertSlot ? '' : this.state._label}
