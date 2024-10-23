@@ -84,8 +84,11 @@
 	:not(.disabled) .input:hover {
 		border-color: var(--color-primary);
 	}
-
-	.required label > span::after {
+	.kol-span-wc {
+		place-items: unset;
+		width: fit-content;
+	}
+	.required label > .kol-span-wc > span > .span-label::after {
 		content: '*';
 		padding-left: 0.125em;
 	}

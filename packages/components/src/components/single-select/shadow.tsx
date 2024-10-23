@@ -22,7 +22,7 @@ import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { SingleSelectController } from './controller';
 import { KolIconTag, KolInputWcTag } from '../../core/component-names';
-import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
+import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
 import clsx from 'clsx';
@@ -198,7 +198,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								<slot name="expert"></slot>
 							) : typeof this.state._accessKey === 'string' ? (
 								<>
-									<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />{' '}
+									<InternalUnderlinedBadgeText badgeText={this.state._accessKey} label={this.state._label} />{' '}
 									<span class="access-key-hint" aria-hidden="true">
 										{this.state._accessKey}
 									</span>

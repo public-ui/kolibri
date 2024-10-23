@@ -25,7 +25,7 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 
 ```css
 .container {
-  --kol-tooltip-width': '40rem';
+  --kol-tooltip-width: '40rem';
 }
 ```
 
@@ -38,8 +38,8 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 ## Properties
 
 | Property              | Attribute     | Description                                                                                                        | Type                                                  | Default     |
-| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
-| `_accessKey`          | `_access-key` | Defines the elements access key.                                                                                   | `string \| undefined`                                 | `undefined` |
+| --------------------- |---------------|--------------------------------------------------------------------------------------------------------------------| ----------------------------------------------------- | ----------- |
+| `_badgeText`          | `_badge_text` | Defines the elements badge text.                                                                                   | `string \| undefined`                                 | `undefined` |
 | `_align`              | `_align`      | Defines the alignment of the tooltip, popover or tabs in relation to the element.                                  | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
 | `_id`                 | `_id`         | Defines the internal ID of the primary component element.                                                          | `string \| undefined`                                 | `undefined` |
 | `_label` _(required)_ | `_label`      | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                              | `undefined` |
