@@ -9,6 +9,7 @@ packages:
   - 'packages/designer'
   - 'packages/samples/angular'
   - 'packages/samples/react'
+  - 'packages/samples/vue'
   - 'packages/test-tag-name-transformer'
   - 'packages/themes'
   - 'packages/themes/bmf'

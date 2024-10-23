@@ -1,15 +1,52 @@
-import React from 'react';
-
-import { KolVersion } from '@public-ui/react';
-
 import type { FC } from 'react';
-import { SampleDescription } from '../SampleDescription';
-export const VersionBasic: FC = () => (
-	<>
-		<SampleDescription>
-			<p>KolVersion renders a label showing the given version number.</p>
-		</SampleDescription>
+import React from 'react';
+import { KolInputDate, KolInputText } from '@public-ui/react';
 
-		<KolVersion _label="1.1.1" />
-	</>
-);
+export const VersionBasic: FC = () => {
+	return (
+		<div>
+			<b>text:</b>
+
+			<KolInputText
+				_label="text"
+				onBlur={(e) => {
+					console.log('blur', e);
+				}}
+				onChange={(e) => {
+					console.log('change', e.target.value!, typeof e.target.value!);
+				}}
+				onFocus={(e) => {
+					console.log('focus', e);
+				}}
+				onClick={(e) => {
+					console.log('click', e);
+				}}
+				onInput={(e) => {
+					console.log('input', e.target.value!, typeof e.target.value!);
+				}}
+			></KolInputText>
+
+			<b>date:</b>
+
+			<KolInputDate
+				_label="date"
+				_value={new Date()}
+				onBlur={(e) => {
+					console.log('blur', e);
+				}}
+				onChange={(e) => {
+					console.log('change', e.target.value!, typeof e.target.value!);
+				}}
+				onFocus={(e) => {
+					console.log('focus', e);
+				}}
+				onClick={(e) => {
+					console.log('click', e);
+				}}
+				onInput={(e) => {
+					console.log('input', e.target.value!, typeof e.target.value!);
+				}}
+			></KolInputDate>
+		</div>
+	);
+};
