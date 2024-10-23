@@ -22,7 +22,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
+import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { InputRadioController } from './controller';
 import { FormFieldMsg } from '../@shared/form-field-msg';
 import { KolInputWcTag } from '../../core/component-names';
@@ -92,7 +92,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 								{hasExpertSlot ? (
 									<slot name="expert"></slot>
 								) : typeof this._accessKey === 'string' ? (
-									<InternalUnderlinedAccessKey accessKey={this._accessKey} label={this._label} />
+									<InternalUnderlinedBadgeText badgeText={this._accessKey} label={this._label} />
 								) : (
 									this._label
 								)}

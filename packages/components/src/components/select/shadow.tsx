@@ -26,7 +26,7 @@ import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } fro
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
+import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { SelectController } from './controller';
 import { KolInputWcTag } from '../../core/component-names';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -129,7 +129,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 							<slot name="expert"></slot>
 						) : typeof this.state._accessKey === 'string' ? (
 							<>
-								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />{' '}
+								<InternalUnderlinedBadgeText badgeText={this.state._accessKey} label={this.state._label} />{' '}
 								<span class="access-key-hint" aria-hidden="true">
 									{this.state._accessKey}
 								</span>

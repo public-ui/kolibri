@@ -3,7 +3,7 @@ import { showExpertSlot, validateBadgeText, validateHideLabel, validateIcons, va
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { md } from '../../utils/markdown';
-import { InternalUnderlinedAccessKey } from './InternalUnderlinedAccessKey';
+import { InternalUnderlinedBadgeText } from './InternalUnderlinedBadgeText';
 
 import type { JSX } from '@stencil/core';
 import { KolIconTag } from '../../core/component-names';
@@ -43,7 +43,7 @@ export class KolSpanWc implements SpanAPI {
 						) : (
 							<span class="span-label">
 								{this.state._badgeText && this.state._label.length ? (
-									<InternalUnderlinedAccessKey label={this.state._label} accessKey={this.state._badgeText} />
+									<InternalUnderlinedBadgeText label={this.state._label} badgeText={this.state._badgeText} />
 								) : (
 									(this.state._label ?? '')
 								)}

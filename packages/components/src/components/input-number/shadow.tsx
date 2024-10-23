@@ -24,7 +24,7 @@ import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } fro
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
+import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { InputNumberController } from './controller';
 import { KolInputWcTag } from '../../core/component-names';
 
@@ -113,7 +113,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 							<slot name="expert"></slot>
 						) : typeof this.state._accessKey === 'string' ? (
 							<>
-								<InternalUnderlinedAccessKey accessKey={this.state._accessKey} label={this.state._label} />{' '}
+								<InternalUnderlinedBadgeText badgeText={this.state._accessKey} label={this.state._label} />{' '}
 								<span class="access-key-hint" aria-hidden="true">
 									{this.state._accessKey}
 								</span>
