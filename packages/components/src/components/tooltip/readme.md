@@ -25,7 +25,7 @@ Um die Breite eines Tooltips zu konfigurieren, kann auf dem umgebenden Container
 
 ```css
 .container {
-  --kol-tooltip-width': '40rem';
+  --kol-tooltip-width: '40rem';
 }
 ```
 
