@@ -50,6 +50,7 @@ export * from './popover-callbacks';
 export * from './read-only';
 export * from './required';
 export * from './rows';
+export * from './short-key';
 export * from './show';
 export * from './suggestions';
 export * from './sync-value-by-selector';
