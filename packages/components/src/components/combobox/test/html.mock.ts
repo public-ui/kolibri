@@ -55,7 +55,7 @@ export const getComboboxHtml = (props: ComboboxProps): string => {
 				}
 			</span>
       <div slot="input">
-	<div class="combobox__group">
+      	<div class="combobox__group">
           <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" id="id-nonce" ${state._required ? ' required=""' : ''} role="combobox" spellcheck="false" type="text" value="">
             <button class="combobox__icon" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
