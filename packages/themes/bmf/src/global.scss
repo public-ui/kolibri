@@ -37,8 +37,8 @@
 		--color-smoke: #f2f3f4;
 		--color-cloud: #f6f7f7;
 		--color-white: #ffffff;
-		--font-family: BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif;
-		--font-size: 16px;
+		--font-family: Verdana, Arial, Calibri, Helvetica, sans-serif;
+		--font-size: rem(16);
 		--spacing: 0.25em;
 	}
 
@@ -105,12 +105,12 @@
 
 	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
-		line-height: 1.25em;
+		line-height: 1.25;
 		padding: rem(16) rem(12);
 	}
 
 	.kol-span-wc,
 	.kol-span-wc > span {
-		gap: 0.5em;
+		gap: rem(8);
 	}
 }

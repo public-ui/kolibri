@@ -7,15 +7,23 @@
 		font-size: rem(16);
 	}
 
-	.tabs-button-group {
-		display: inline-flex;
-		flex-wrap: wrap;
+	:host > div {
+		display: grid;
 	}
 
-	.tabs-button-group button {
-		border-bottom-color: transparent;
-		border-bottom-style: solid;
-		display: block;
+	.tabs-content {
+		overflow: auto;
+	}
+
+	.tabs-button-group {
+		display: flex;
+		flex-wrap: wrap;
+
+		button {
+			border-bottom-color: transparent;
+			border-bottom-style: solid;
+			display: block;
+		}
 	}
 
 	div.grid,
@@ -26,94 +34,70 @@
 	:host > .tabs-align-right {
 		display: grid;
 		grid-template-columns: 1fr auto;
-	}
 
-	:host > .tabs-align-right .tabs-button-group {
-		display: grid;
-		order: 2;
+		.tabs-button-group {
+			flex-direction: column;
+			order: 2;
+
+			.kol-button-wc {
+				width: 100%;
+			}
+		}
 	}
 
 	:host > .tabs-align-left {
 		display: grid;
 		grid-template-columns: auto 1fr;
-	}
 
-	:host > .tabs-align-left .tabs-button-group {
-		display: grid;
-		order: 0;
+		.tabs-button-group {
+			flex-direction: column;
+			order: 0;
+
+			.kol-button-wc {
+				width: 100%;
+			}
+		}
 	}
 
 	:host > .tabs-align-bottom {
 		display: grid;
 		grid-template-rows: 1fr auto;
-	}
 
-	:host > .tabs-align-bottom .tabs-button-group {
-		order: 2;
-	}
+		.tabs-button-group {
+			order: 2;
 
-	:host > .tabs-align-bottom .tabs-button-group > div {
-		display: flex;
-	}
+			& > div {
+				display: flex;
 
-	:host > .tabs-align-bottom > .tabs-button-group > div > div:first-child {
-		margin: 0 1em 0 0;
-	}
+				& > div {
+					&:first-child {
+						margin: 0 1em 0 0;
+					}
+				}
 
-	:host > .tabs-align-bottom > .tabs-button-group > div > div {
-		margin: 0 1em;
+				margin: 0 1em;
+			}
+		}
 	}
 
 	:host > .tabs-align-top {
 		display: grid;
 		grid-template-rows: auto 1fr;
-	}
 
-	:host > .tabs-align-top .tabs-button-group {
-		order: 0;
-	}
+		.tabs-button-group {
+			order: 0;
 
-	:host > .tabs-align-top .tabs-button-group > div {
-		display: flex;
-	}
+			& > div {
+				display: flex;
 
-	:host > .tabs-align-top > .tabs-button-group > div > div:first-child {
-		margin: 0 1em 0 0;
-	}
+				& > div {
+					&:first-child {
+						margin: 0 1em 0 0;
+					}
 
-	:host > .tabs-align-top > .tabs-button-group > div > div {
-		margin: 0 1em;
-	}
-
-	:host > div {
-		display: grid;
-	}
-
-	:host > .tabs-align-left .tabs-button-group,
-	:host > .tabs-align-top .tabs-button-group {
-		order: 0;
-	}
-
-	:host > .tabs-align-bottom .tabs-button-group,
-	:host > .tabs-align-right .tabs-button-group {
-		order: 1;
-	}
-
-	:host > div.tabs-align-left .tabs-button-group > div,
-	:host > div.tabs-align-left .tabs-button-group > div > div,
-	:host > div.tabs-align-right .tabs-button-group > div,
-	:host > div.tabs-align-right .tabs-button-group > div > div {
-		display: grid;
-	}
-
-	:host > div.tabs-align-left .tabs-button-group > div > div .kol-button-wc,
-	:host > div.tabs-align-right .tabs-button-group > div > div .kol-button-wc {
-		width: 100%;
-	}
-
-	:host > div.tabs-align-bottom .tabs-button-group div,
-	:host > div.tabs-align-top .tabs-button-group div {
-		display: flex;
-		flex-wrap: wrap;
+					margin: 0 1em;
+				}
+			}
+		}
 	}
 }

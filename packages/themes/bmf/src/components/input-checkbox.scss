@@ -7,7 +7,7 @@
 	}
 
 	/* INPUT */
-	:host .kol-input {
+	.kol-input {
 		display: grid;
 		align-items: center;
 		justify-items: left;
@@ -67,18 +67,18 @@
 		}
 
 		&.error input:focus {
-			outline-color: var(--color-red) !important;
+			outline-color: var(--color-red);
 		}
 	}
 
-	:host input {
+	input {
 		order: 1;
 		width: 100%;
 		border-color: var(--color-grey);
 		border-width: 2px;
 		border-style: solid;
 		border-radius: 5px;
-		line-height: 24px;
+		line-height: 1;
 		font-size: rem(16);
 
 		&:focus {
@@ -92,22 +92,22 @@
 		}
 	}
 
-	:host kol-icon:hover ~ input,
-	:host input:hover {
+	kol-icon:hover ~ input,
+	input:hover {
 		border-color: var(--color-midnight);
 	}
 
 	/* CHECKBOX */
-	:host .kol-input:not(.button) label span {
+	.kol-input:not(.button) label span {
 		margin-top: rem(2);
 	}
 
-	:host .required label > span::after {
+	.required label > span::after {
 		content: '*';
 		padding-left: 0.125em;
 	}
 
-	:host .kol-input {
+	.kol-input {
 		input[type='checkbox'] {
 			appearance: none;
 			background-color: white;
@@ -136,6 +136,7 @@
 				}
 			}
 			.icon {
+				display: flex;
 				color: var(--color-white);
 				margin: rem(-2) 0 0 rem(4);
 				/* visually align */

@@ -1,0 +1,12 @@
+@layer kol-theme-component {
+	a,
+	button {
+		appearance: none;
+		color: var(--color-blue);
+		line-height: 1.2;
+	}
+	a:hover,
+	button:hover {
+		color: var(--color-blue-130);
+	}
+}

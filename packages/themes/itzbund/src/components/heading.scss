@@ -1,3 +1,5 @@
+@import '../mixins/typography.scss';
+
 @layer kol-theme-component {
 	.headline-h1,
 	.headline-h2,
@@ -5,38 +7,31 @@
 	.headline-h4,
 	.headline-h5,
 	.headline-h6 {
-		line-height: 1em;
 		margin: 0;
 		padding: 0;
 	}
+
 	.headline-h1 {
-		font-family: var(--font-family-serif);
-		font-size: 54px;
-		font-weight: bold;
+		@include kol-typography-h1;
 	}
+
 	.headline-h2 {
-		font-family: var(--font-family-serif);
-		font-size: 32px;
-		font-weight: bold;
+		@include kol-typography-h2;
 	}
+
 	.headline-h3 {
-		font-family: var(--font-family-serif);
-		font-size: 26px;
-		font-weight: bold;
+		@include kol-typography-h3;
 	}
+
 	.headline-h4 {
-		font-family: var(--font-family-serif);
-		font-size: 20px;
-		font-weight: normal;
+		@include kol-typography-h4;
 	}
+
 	.headline-h5 {
-		font-family: var(--font-family-serif);
-		font-size: 17px;
-		font-weight: bold;
+		@include kol-typography-h5;
 	}
+
 	.headline-h6 {
-		font-family: var(--font-family-sans);
-		font-size: 17px;
-		font-weight: normal;
+		@include kol-typography-h6;
 	}
 }

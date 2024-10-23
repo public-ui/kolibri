@@ -1,32 +1,12 @@
-@import '../mixins/input.scss';
+@use '../@shared/input-core.scss';
 
 @layer kol-theme-component {
 	input {
-		border: none;
-		min-height: 40px !important;
 		background-color: transparent;
-
-		&::placeholder {
-			color: var(--color-grey);
-		}
 
 		&:not([type='color']):read-only,
 		&:disabled {
 			cursor: not-allowed;
 		}
 	}
-
-	.input {
-		padding: 0 1em;
-
-		> input:first-child {
-			padding-left: 0.375em;
-		}
-
-		> input:last-child {
-			padding-right: 0.375em;
-		}
-	}
-
-	@include input;
 }
