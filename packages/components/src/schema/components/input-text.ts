@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type {
+import {
+	PropAccessKey,
 	PropDisabled,
 	PropHasCounter,
 	PropHideError,
@@ -11,6 +12,7 @@ import type {
 	PropName,
 	PropReadOnly,
 	PropRequired,
+	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
@@ -59,7 +61,6 @@ type RequiredStates = {
 	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	accessKey: string;
 	alert: boolean;
 	currentLength: number;
 	hint: string;
@@ -71,13 +72,15 @@ type OptionalStates = {
 	smartButton: ButtonProps;
 	tabIndex: number;
 	value: string;
-} & PropDisabled &
+} & PropAccessKey &
+	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
 	PropMsg &
 	PropName &
 	PropReadOnly &
 	PropRequired &
+	PropShortKey &
 	PropTouched;
 
 export type InputTextProps = Generic.Element.Members<RequiredProps, OptionalProps>;

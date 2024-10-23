@@ -14,6 +14,7 @@ import type {
 	PropLabelWithExpertSlot,
 	PropReadOnly,
 	PropRequired,
+	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTooltipAlign,
@@ -38,6 +39,7 @@ type OptionalProps = {
 	PropHideLabel &
 	PropReadOnly &
 	PropRequired &
+	PropShortKey &
 	PropSuggestions &
 	PropSyncValueBySelector &
 	PropTooltipAlign &

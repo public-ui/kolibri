@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { handleSlotContent, type MsgPropType, showExpertSlot } from '../../schema';
+import { handleSlotContent, type MsgPropType, ShortKeyPropType, showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
 import clsx from 'clsx';
@@ -21,7 +21,7 @@ import type {
 } from '../../schema';
 import { FormFieldMsg } from '../@shared/form-field-msg';
 import type { Props } from './types';
-import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 
 /**
  * @internal
@@ -67,11 +67,9 @@ export class KolInputWc implements Props {
 				})}
 			>
 				<label class="input-label" id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltopInsteadOfLabel} htmlFor={this._id}>
-					{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
-					<span class="input-label-span">
-						{/* INFO: label comes with any html tag or as plain text! */}
-						<slot name="label"></slot>
-					</span>
+					<KolSpanWcTag _badgeText={this._accessKey || this._shortKey} _hideLabel={this._hideLabel} _label={hasExpertSlot ? '' : this._label}>
+						<slot name="expert" slot="expert"></slot>
+					</KolSpanWcTag>
 				</label>
 				{hasHint && (
 					<span class="hint" id={`${this._id}-hint`}>
@@ -114,7 +112,7 @@ export class KolInputWc implements Props {
 						 */
 						aria-hidden="true"
 						class="input-tooltip"
-						_badgeText={this._accessKey}
+						_badgeText={this._accessKey || this._shortKey}
 						_align={this._tooltipAlign}
 						_id={this._hideLabel ? `${this._id}-label` : undefined}
 						_label={this._label}
@@ -233,6 +231,11 @@ export class KolInputWc implements Props {
 	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean = false;
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
 	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines Shadow DOMs existieren würden.

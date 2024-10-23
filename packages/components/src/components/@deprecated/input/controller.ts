@@ -1,14 +1,18 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type {
+import {
+	AccessKeyPropType,
 	AdjustHeightPropType,
 	ButtonProps,
 	HideErrorPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	ShortKeyPropType,
 	StencilUnknown,
 	TooltipAlignPropType,
+	validateShortKey,
+	validateAccessKey,
 } from '../../../schema';
 import {
 	a11yHint,
@@ -46,8 +50,8 @@ export class InputController extends ControlledInputController implements Watche
 		this.component = component;
 	}
 
-	public validateAccessKey(value?: string): void {
-		watchString(this.component, '_accessKey', value);
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this.component, value);
 	}
 
 	public validateAdjustHeight(value?: AdjustHeightPropType): void {
@@ -126,6 +130,10 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
+	public validateShortKey(value?: ShortKeyPropType): void {
+		validateShortKey(this.component, value);
+	}
+
 	public validateSmartButton(value?: ButtonProps | string): void {
 		objectObjectHandler(value, () => {
 			try {
@@ -154,6 +162,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateHint(this.component._hint);
 		this.validateId(this.component._id);
 		this.validateLabel(this.component._label);
+		this.validateShortKey(this.component._shortKey);
 		this.validateSmartButton(this.component._smartButton);
 		this.validateOn(this.component._on);
 		this.validateTabIndex(this.component._tabIndex);
