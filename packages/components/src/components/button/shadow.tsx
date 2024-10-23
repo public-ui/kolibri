@@ -1,4 +1,4 @@
-import type {
+import {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
@@ -10,6 +10,7 @@ import type {
 	FocusableElement,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
+	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
@@ -63,6 +64,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 					}}
 					_accessKey={this._accessKey}
+					_shortKey={this._shortKey}
 					_ariaControls={this._ariaControls}
 					_ariaDescription={this._ariaDescription}
 					_ariaExpanded={this._ariaExpanded}
@@ -160,6 +162,11 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 * Defines the role of the components primary element.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+
+	/**
+	 * Defines the elements access key.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
