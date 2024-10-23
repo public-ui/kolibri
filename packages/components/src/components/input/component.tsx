@@ -114,7 +114,7 @@ export class KolInputWc implements Props {
 						 */
 						aria-hidden="true"
 						class="input-tooltip"
-						_accessKey={this._accessKey}
+						_badgeText={this._accessKey}
 						_align={this._tooltipAlign}
 						_id={this._hideLabel ? `${this._id}-label` : undefined}
 						_label={this._label}

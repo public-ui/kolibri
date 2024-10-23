@@ -82,7 +82,7 @@ export class KolSpanWc implements SpanAPI {
 	}
 
 	/**
-	 * Defines the elements access key.
+	 * Defines the elements badge text.
 	 */
 	@Prop() public _badgeText?: BadgeTextPropType;
 

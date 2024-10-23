@@ -175,7 +175,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 					 */
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
-					_accessKey={this.state._accessKey}
+					_badgeText={this.state._accessKey}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
 				></KolTooltipWcTag>
