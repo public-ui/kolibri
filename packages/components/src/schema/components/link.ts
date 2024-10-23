@@ -14,6 +14,7 @@ import type {
 	PropLabelWithExpertSlot,
 	PropLinkOnCallbacks,
 	PropLinkTarget,
+	PropShortKey,
 	PropTooltipAlign,
 } from '../props';
 
@@ -36,6 +37,7 @@ export type OptionalProps = {
 	PropLabelWithExpertSlot &
 	PropLinkOnCallbacks &
 	PropLinkTarget &
+	PropShortKey &
 	PropTooltipAlign;
 
 type RequiredStates = PropAriaCurrentValue & PropIcons & PropHref;

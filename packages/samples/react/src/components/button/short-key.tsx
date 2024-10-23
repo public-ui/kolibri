@@ -18,10 +18,10 @@ export const ButtonShortKey: FC = () => {
 			</SampleDescription>
 
 			<div className="flex flex-wrap gap-4">
-				<KolButton _label="With S access key" _shortKey="S" _on={dummyEventHandler}></KolButton>
+				<KolButton _label="With S short key" _shortKey="S" _on={dummyEventHandler}></KolButton>
 				<KolButton _label="Very small s" _shortKey="s" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="Access key does not appear in label" _shortKey="x" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="access key without label" _hideLabel _shortKey="s" _icons="codicon codicon-dashboard" _on={dummyEventHandler}></KolButton>
+				<KolButton _label="Short key does not appear in label" _shortKey="x" _on={dummyEventHandler}></KolButton>
+				<KolButton _label="short key without label" _hideLabel _shortKey="s" _icons="codicon codicon-dashboard" _on={dummyEventHandler}></KolButton>
 				<KolButton
 					_label="with inline icons"
 					_icons={{

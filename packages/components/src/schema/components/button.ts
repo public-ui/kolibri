@@ -17,6 +17,7 @@ import type {
 	PropId,
 	PropLabelWithExpertSlot,
 	PropName,
+	PropShortKey,
 	PropSyncValueBySelector,
 	PropTooltipAlign,
 } from '../props';
@@ -30,7 +31,8 @@ export type OptionalButtonProps = {
 	 * @deprecated
 	 */
 	ariaExpanded: AriaExpandedPropType;
-} & PropAlternativeButtonLinkRole &
+} & PropAccessKey &
+	PropAlternativeButtonLinkRole &
 	PropAriaControls &
 	PropAriaDescription &
 	PropAriaSelected &
@@ -43,9 +45,9 @@ export type OptionalButtonProps = {
 	PropIcons &
 	PropId &
 	PropName &
+	PropShortKey &
 	PropSyncValueBySelector &
-	PropTooltipAlign &
-	PropAccessKey;
+	PropTooltipAlign;
 
 export type RequiredButtonStates = RequiredButtonProps &
 	PropButtonType &

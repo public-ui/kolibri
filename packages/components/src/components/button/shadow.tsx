@@ -64,7 +64,6 @@ export class KolButton implements ButtonProps, FocusableElement {
 						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 					}}
 					_accessKey={this._accessKey}
-					_shortKey={this._shortKey}
 					_ariaControls={this._ariaControls}
 					_ariaDescription={this._ariaDescription}
 					_ariaExpanded={this._ariaExpanded}
@@ -78,6 +77,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 					_name={this._name}
 					_on={this._on}
 					_role={this._role}
+					_shortKey={this._shortKey}
 					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
 					_tooltipAlign={this._tooltipAlign}
