@@ -18,5 +18,6 @@ export enum Events {
 	onSort = 'onSort',
 	onSelectionChange = 'onSelectionChange',
 	onSubmit = 'onSubmit',
+	onToggle = 'onToggle',
 	onClose = 'onClose',
 }

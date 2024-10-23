@@ -1,9 +1,9 @@
-import type { DetailsAPI, DetailsStates, DisabledPropType, EventCallbacks, FocusableElement, LabelPropType } from '../../schema';
-import { setState, validateDisabled, validateLabel, validateOpen } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, Method, Prop, State, Watch, type JSX } from '@stencil/core';
+import type { CollapsibleCallbacksPropType, DetailsAPI, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
+import { validateCollapsibleCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import { nonce } from '../../utils/dev.utils';
+import { watchHeadingLevel } from '../heading/validation';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -107,9 +107,14 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	@Prop() public _label!: LabelPropType;
 
 	/**
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 */
+	@Prop() public _level?: HeadingLevel = 1;
+
+	/**
 	 * Defines the callback functions for details.
 	 */
-	@Prop() public _on?: EventCallbacks;
+	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
@@ -119,6 +124,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 
 	@State() public state: DetailsStates = {
 		_label: '', // ⚠ required
+		_level: 1,
 		_on: {},
 	};
 
@@ -134,11 +140,14 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 		});
 	}
 
+	@Watch('_level')
+	public validateLevel(value?: HeadingLevel): void {
+		watchHeadingLevel(this, value);
+	}
+
 	@Watch('_on')
-	public validateOn(on?: EventCallbacks) {
-		if (typeof on === 'object' && on !== null && typeof on.onToggle === 'function') {
-			setState<EventCallbacks>(this, '_on', on);
-		}
+	public validateOn(on?: CollapsibleCallbacksPropType<boolean>) {
+		validateCollapsibleCallbacks(this, on);
 	}
 
 	@Watch('_open')
@@ -149,6 +158,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	public componentWillLoad(): void {
 		this.validateDisabled(this._disabled);
 		this.validateLabel(this._label);
+		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateOpen(this._open);
 	}

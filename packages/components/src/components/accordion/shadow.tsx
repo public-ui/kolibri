@@ -1,19 +1,17 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
-
+import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
 import type {
 	AccordionAPI,
 	AccordionStates,
+	CollapsibleCallbacksPropType,
 	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
-	KoliBriAccordionCallbacks,
 	LabelPropType,
 	OpenPropType,
 } from '../../schema';
-import { featureHint, setState, validateDisabled, validateLabel, validateOpen } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-
+import { featureHint, validateCollapsibleCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
@@ -57,7 +55,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		await this.buttonWcRef?.kolFocus();
 	}
 
-	private handleOnClick = (event: Event) => {
+	private handleOnClick = (event: MouseEvent) => {
 		this._open = !this._open;
 
 		/**
@@ -122,7 +120,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	/**
 	 * Gibt die EventCallback-Funktionen an.
 	 */
-	@Prop() public _on?: KoliBriAccordionCallbacks;
+	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
@@ -133,6 +131,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	@State() public state: AccordionStates = {
 		_label: '', // ⚠ required
 		_level: 1,
+		_on: {},
 	};
 
 	@Watch('_disabled')
@@ -153,10 +152,8 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	}
 
 	@Watch('_on')
-	public validateOn(value?: KoliBriAccordionCallbacks): void {
-		if (typeof value === 'object' && value !== null && typeof value.onClick === 'function') {
-			setState(this, '_on', value);
-		}
+	public validateOn(on?: CollapsibleCallbacksPropType<boolean>): void {
+		validateCollapsibleCallbacks(this, on);
 	}
 
 	@Watch('_open')
