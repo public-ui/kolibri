@@ -16,7 +16,7 @@ import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
-import KolCollapsibleFc, { type CollapsibleProps } from '../@shared/collapsible-fc';
+import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 

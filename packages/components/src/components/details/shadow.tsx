@@ -2,7 +2,7 @@ import type { DetailsAPI, DetailsStates, DisabledPropType, EventCallbacks, Focus
 import { setState, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import KolCollapsibleFc, { type CollapsibleProps } from '../@shared/collapsible-fc';
+import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import { nonce } from '../../utils/dev.utils';
 
 /**
