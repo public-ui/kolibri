@@ -24,9 +24,13 @@
 		}
 
 		&__heading-button {
-			& button:focus-within {
+			&:focus-within {
 				@include focus-outline;
 				cursor: pointer;
+
+				button {
+					outline: 0;
+				}
 			}
 
 			.kol-span-wc > span {
@@ -42,9 +46,10 @@
 
 			border-radius: var(--border-radius);
 			min-height: rem(35.2);
-			padding: 12px 8px;
+			
 
 			button {
+				padding: 12px 8px;
 				:focus {
 					outline: none;
 				}
