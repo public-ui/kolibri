@@ -17,7 +17,7 @@ export const DomEvents: FC = () => {
 				_label="Date Input"
 				_value={date}
 				onInput={(event) => {
-					setDate(event.target._value as Date);
+					setDate((event.target as HTMLKolInputDateElement)._value as Date);
 				}}
 			/>
 			<KolButton
