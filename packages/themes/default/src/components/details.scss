@@ -1,18 +1,50 @@
 @import '../mixins/rem';
 @import '../mixins/indented-text';
+@import '../mixins/focus-outline';
 
 @layer kol-theme-component {
-	details > summary {
-		border-radius: var(--border-radius);
+	:host {
+		font-size: rem(16);
 		font-family: var(--font-family);
 	}
 
-	details .indented-text {
-		@include indented-text;
-		margin: rem(4) 0 0 rem(10.4);
-	}
+	.details {
+		width: 100%;
+		height: 100%;
+		display: grid;
 
-	.kol-icon {
-		font-size: rem(19.2);
+		&__content {
+			&.indented-text {
+				@include indented-text;
+				margin: rem(4) 0 0 rem(10.4);
+			}
+		}
+
+		&__heading {
+			margin: 0;
+		}
+
+		&__heading-button {
+			.kol-icon {
+				font-size: rem(19.2);
+			}
+
+			.kol-span-wc {
+				& > span {
+					display: flex;
+					text-align: left;
+					gap: 0;
+				}
+
+				.span-label {
+					border-bottom-color: #000;
+				}
+			}
+
+			button:focus-within {
+				@include focus-outline;
+				cursor: pointer;
+			}
+		}
 	}
 }

@@ -19,12 +19,12 @@ export const getAccordionHtml = (
 	);
 	return `<kol-accordion${props._open ? ' _open' : ''} class="kol-accordion">
   <mock:shadow-root>
-    <div class="accordion${props._disabled ? ' disabled' : ''}${props._open ? ' open' : ''}">
-			<${KolHeadingWcTag} _label="" _level="${props._level}" class="accordion-heading">
+    <div class="accordion collapsible${props._disabled ? ' disabled' : ''}${props._open ? ' open' : ''}" id="nonce">
+		<${KolHeadingWcTag} _label="" _level="${props._level}" class="accordion__heading collapsible__heading">
 			<${KolButtonWcTag}
-				class="accordion-button"
+				class="accordion__heading-button collapsible__heading-button"
 				slot="expert"
-				_ariaControls="nonce"
+				_ariaControls="nonce-control"
 				${props._open ? '_ariaExpanded=""' : ''}
 				${props._disabled ? '_disabled=""' : ''}
 				_icons="codicon codicon-${props._open ? 'remove' : 'add'}"
@@ -32,9 +32,9 @@ export const getAccordionHtml = (
 			></${KolButtonWcTag}>
 		</${KolHeadingWcTag}>
 
-			<div class="wrapper">
-				<div class="animation-wrapper">
-					<div class="content" id="nonce" ${props._open ? '' : 'aria-hidden="true"'}>
+			<div class="accordion__wrapper collapsible__wrapper">
+				<div class="accordion__wrapper-animation collapsible__wrapper-animation">
+					<div class="accordion__content collapsible__content" id="nonce-control" ${props._open ? '' : 'aria-hidden="true"'}>
 						<slot />
 					</div>
 				</div>

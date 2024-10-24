@@ -15,6 +15,7 @@ export * from './button-type';
 export * from './button-variant';
 export * from './checked';
 export * from './collapsible';
+export * from './collapsible-callbacks';
 export * from './color';
 export * from './custom-class';
 export * from './disabled';

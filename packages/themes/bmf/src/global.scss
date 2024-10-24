@@ -1,4 +1,5 @@
 @import './mixins/rem';
+@import './mixins/focus-outline.scss';
 
 @layer kol-theme-global {
 	/* Design Tokens */
@@ -67,12 +68,7 @@
 	.kol-input:not(.checkbox, .radio) .input:focus-within,
 	.kol-input:is(.checkbox, .radio) input:focus,
 	summary:focus {
-		cursor: pointer;
-		outline-color: var(--color-ocean);
-		outline-offset: 2px;
-		outline-style: solid;
-		outline-width: 3px;
-		transition: outline-offset 0.2s linear;
+		@include focus-outline;
 	}
 
 	@keyframes spin {

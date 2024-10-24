@@ -1,22 +1,20 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
-
+import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
 import type {
 	AccordionAPI,
 	AccordionStates,
+	CollapsibleCallbacksPropType,
 	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
-	KoliBriAccordionCallbacks,
 	LabelPropType,
 	OpenPropType,
 } from '../../schema';
-import { featureHint, setState, validateDisabled, validateLabel, validateOpen } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-
+import { featureHint, validateCollapsibleCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
-import { KolButtonWcTag, KolHeadingWcTag } from '../../core/component-names';
+import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
@@ -57,37 +55,49 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		await this.buttonWcRef?.kolFocus();
 	}
 
+	private handleOnClick = (event: MouseEvent) => {
+		this._open = !this._open;
+
+		/**
+		 * Der Timeout wird benötigt, damit das Event
+		 * vom Button- auf das Accordion-Event wechselt.
+		 * So ist es dem Anwendenden möglich das _open-
+		 * Attribute abzufragen.
+		 */
+		setTimeout(() => {
+			this.state._on?.onClick?.(event, this._open === true);
+		});
+	};
+
 	public render(): JSX.Element {
+		const { _open, _label, _disabled, _level } = this.state;
+		const rootClass = 'accordion';
+
+		const props: CollapsibleProps = {
+			id: this.nonce,
+			label: _label,
+			open: _open,
+			disabled: _disabled,
+			level: _level,
+			onClick: this.handleOnClick,
+			class: rootClass,
+			HeadingProps: { class: `${rootClass}__heading` },
+			HeadingButtonProps: {
+				ref: this.catchRef,
+				class: `${rootClass}__heading-button`,
+			},
+			ContentProps: {
+				class: `${rootClass}__content`,
+				wrapperClass: `${rootClass}__wrapper`,
+				animationClass: `${rootClass}__wrapper-animation`,
+			},
+		};
+
 		return (
 			<Host class="kol-accordion">
-				<div
-					class={{
-						accordion: true,
-						disabled: this.state._disabled === true,
-						open: this.state._open === true,
-					}}
-				>
-					<KolHeadingWcTag _label="" _level={this.state._level} class="accordion-heading">
-						<KolButtonWcTag
-							class="accordion-button"
-							ref={this.catchRef}
-							slot="expert"
-							_ariaControls={this.nonce}
-							_ariaExpanded={this.state._open}
-							_disabled={this.state._disabled}
-							_icons={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
-							_label={this.state._label}
-							_on={{ onClick: this.onClick }}
-						></KolButtonWcTag>
-					</KolHeadingWcTag>
-					<div class="wrapper">
-						<div class="animation-wrapper">
-							<div aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
-								<slot />
-							</div>
-						</div>
-					</div>
-				</div>
+				<KolCollapsibleFc {...props}>
+					<slot />
+				</KolCollapsibleFc>
 			</Host>
 		);
 	}
@@ -110,7 +120,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	/**
 	 * Gibt die EventCallback-Funktionen an.
 	 */
-	@Prop() public _on?: KoliBriAccordionCallbacks;
+	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
@@ -121,6 +131,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	@State() public state: AccordionStates = {
 		_label: '', // ⚠ required
 		_level: 1,
+		_on: {},
 	};
 
 	@Watch('_disabled')
@@ -141,10 +152,8 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	}
 
 	@Watch('_on')
-	public validateOn(value?: KoliBriAccordionCallbacks): void {
-		if (typeof value === 'object' && value !== null && typeof value.onClick === 'function') {
-			setState(this, '_on', value);
-		}
+	public validateOn(on?: CollapsibleCallbacksPropType<boolean>): void {
+		validateCollapsibleCallbacks(this, on);
 	}
 
 	@Watch('_open')
@@ -159,20 +168,4 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		this.validateOn(this._on);
 		this.validateOpen(this._open);
 	}
-
-	private onClick = (event: Event) => {
-		this._open = !this._open;
-
-		/**
-		 * Der Timeout wird benötigt, damit das Event
-		 * vom Button- auf das Accordion-Event wechselt.
-		 * So ist es dem Anwendenden möglich das _open-
-		 * Attribute abzufragen.
-		 */
-		setTimeout(() => {
-			if (typeof this.state._on?.onClick === 'function') {
-				this.state._on.onClick(event, this._open === true);
-			}
-		});
-	};
 }

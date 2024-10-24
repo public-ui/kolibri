@@ -1,38 +1,31 @@
-@import '../@shared/mixins';
-@import '../style';
-@import '../host-display-block';
+@use '../@shared/mixins';
+@use '../style';
+@use '../host-display-block';
+@use '../../functional-components/Collapsible/styles.scss';
 
 @layer kol-component {
 	:host {
 		font-size: rem(16);
 	}
 
-	details {
-		display: grid;
-	}
+	.details {
+		&__heading-button {
+			display: flex;
 
-	details > summary {
-		cursor: pointer;
-		display: flex;
-		place-items: center;
-	}
+			button {
+				min-height: auto;
+			}
 
-	details > summary > span {
-		border-bottom-color: grey;
-		border-bottom-style: solid;
-	}
+			button .kol-span-wc .span-label {
+				border-bottom-color: grey;
+				border-bottom-style: solid;
+			}
+		}
 
-	details > summary:focus > span,
-	details > summary:hover > span,
-	details[open] > summary > span {
-		border-bottom-color: #000;
-	}
-
-	.content {
-		overflow: hidden;
-	}
-
-	.icon.is-open::part(icon) {
-		transform: rotate(90deg);
+		.open &__heading-button {
+			.kol-icon::part(icon) {
+				transform: rotate(90deg);
+			}
+		}
 	}
 }
