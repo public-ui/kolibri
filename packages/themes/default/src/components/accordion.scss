@@ -24,7 +24,7 @@
 		}
 
 		&__heading-button {
-			&:focus-within {
+			& button:focus-within {
 				@include focus-outline;
 				cursor: pointer;
 			}
@@ -40,11 +40,11 @@
 				gap: 0.5em;
 			}
 
-			button {
-				border-radius: var(--border-radius);
-				min-height: rem(35.2);
-				padding: 12px 8px;
+			border-radius: var(--border-radius);
+			min-height: rem(35.2);
+			padding: 12px 8px;
 
+			button {
 				:focus {
 					outline: none;
 				}

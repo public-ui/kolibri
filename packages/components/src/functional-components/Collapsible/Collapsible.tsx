@@ -19,6 +19,7 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> &
 	label: string;
 
 	HeadingProps?: {
+		ref?: ((elm?: HTMLKolHeadingWcElement | undefined) => void) | undefined;
 		class?: ClassType;
 	};
 
@@ -52,7 +53,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 			)}
 			{...other}
 		>
-			<KolHeadingWcTag _label="" _level={level} class={clsx('collapsible__heading', HeadingProps?.class)}>
+			<KolHeadingWcTag ref={HeadingProps?.ref} _label="" _level={level} class={clsx('collapsible__heading', HeadingProps?.class)}>
 				<KolButtonWcTag
 					class={clsx('collapsible__heading-button', HeadingButtonProps?.class)}
 					ref={HeadingButtonProps?.ref}

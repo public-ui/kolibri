@@ -34,7 +34,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.buttonWcRef?.focus();
+		await this.buttonWcRef?.kolFocus();
 	}
 
 	private toggleTimeout?: ReturnType<typeof setTimeout>;
