@@ -205,13 +205,13 @@ test.describe('kol-input-date', () => {
 					}
 				});
 
-				test(`should set the correct value (as ${label}) as 'value' property on the web component`, async ({ page }) => {
+				test(`should reflect the correct _value property as ${label} on the web component`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
 					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
 						element._value = date;
 					}, value);
 
-					const valueDomProperty = await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => element.value);
+					const valueDomProperty = await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => element._value);
 
 					if (value instanceof Date) {
 						expect(valueDomProperty).toBeInstanceOf(Date);

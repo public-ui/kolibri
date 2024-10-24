@@ -126,7 +126,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	private readonly onInput = (event: Event) => {
 		const newValue = (event.target as HTMLInputElement).value;
 		const remappedValue = this.remapValue(newValue);
-		this.value = remappedValue;
+		this._value = remappedValue;
 		this.emitEvent('input');
 		this.controller.onFacade.onInput(event, true, remappedValue);
 	};
@@ -361,9 +361,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
-
-	@Prop({ mutable: true, reflect: true }) public value?: Iso8601 | Date | null;
+	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 
 	@State() public state: InputDateStates = {
 		_autoComplete: 'off',
@@ -511,12 +509,10 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		}
 		this.controller.validateValueEx(value);
 		if (value !== undefined) this.setInitialValueType(value);
-		this.value = value;
 	}
 
 	public componentWillLoad(): void {
 		if (this._value !== undefined) this.setInitialValueType(this._value);
-		this.value = this._value;
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
