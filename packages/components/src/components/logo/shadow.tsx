@@ -134,7 +134,7 @@ export class KolLogo implements API {
 						<rect y="60" width="5" height="30" fill="#fc0"></rect>
 					</svg>
 					<svg x="50" y="0">
-						<text x="0" y="-0.05em" font-family="BundesSans Web" style={{ backgroundColor: 'white', color: 'black' }}>
+						<text x="0" y="-0.05em" font-family="Verdana" style={{ backgroundColor: 'white', color: 'black' }}>
 							{BUND_LOGO_TEXT_MAP.has(this.state._org) ? (
 								<tspan>
 									{BUND_LOGO_TEXT_MAP.get(this.state._org)?.map((text: string, index: number) => {
