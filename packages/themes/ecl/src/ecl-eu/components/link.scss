@@ -1,12 +1,9 @@
+@import '../mixins/link.scss';
+
 @layer kol-theme-component {
-	a,
-	button {
-		appearance: none;
-		color: var(--color-blue);
-		line-height: 1.2;
+	:host {
+		font-family: var(--font-family);
 	}
-	a:hover,
-	button:hover {
-		color: var(--color-blue-130);
-	}
+
+	@include kol-link;
 }

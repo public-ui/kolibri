@@ -1,30 +1,10 @@
 import type { JSX } from '@stencil/core';
-import { Log, alertTypeOptions, alertVariantOptions, setState, validateHasCloser, validateLabel, watchBoolean, watchValidator } from '../../schema';
+import { alertTypeOptions, alertVariantOptions, setState, validateHasCloser, validateLabel, watchBoolean, watchValidator } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
-
-import { translate } from '../../i18n';
 import { watchHeadingLevel } from '../heading/validation';
-import { KolIconTag, KolHeadingWcTag, KolButtonWcTag } from '../../core/component-names';
-
 import type { AlertAPI, AlertStates, AlertType, AlertVariant, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
-const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
-	return <KolIconTag class="heading-icon" _label={props.ariaLabel} _icons={props.icon} />;
-};
+import KolAlertFc, { type KolAlertFcProps } from '../../functional-components/Alert';
 
-const AlertIcon = (props: { label?: string; type?: AlertType }) => {
-	switch (props.type) {
-		case 'error':
-			return <Icon ariaLabel={translate('kol-error')} icon="codicon codicon-error" label={props.label} />;
-		case 'info':
-			return <Icon ariaLabel={translate('kol-info')} icon="codicon codicon-info" label={props.label} />;
-		case 'warning':
-			return <Icon ariaLabel={translate('kol-warning')} icon="codicon codicon-warning" label={props.label} />;
-		case 'success':
-			return <Icon ariaLabel={translate('kol-success')} icon="codicon codicon-pass" label={props.label} />;
-		default:
-			return <Icon ariaLabel={translate('kol-message')} icon="codicon codicon-comment" label={props.label} />;
-	}
-};
 /**
  * @internal
  * @slot - Der Inhalt der Meldung.
@@ -35,76 +15,32 @@ const AlertIcon = (props: { label?: string; type?: AlertType }) => {
 })
 export class KolAlertWc implements AlertAPI {
 	private readonly close = () => {
-		if (this._on?.onClose !== undefined) {
-			this._on.onClose(new Event('Close'));
-		}
+		this._on?.onClose?.(new Event('Close'));
 	};
 
-	private readonly on = {
-		onClick: this.close,
+	private readonly handleAlertTimeout = () => {
+		this.validateAlert(false);
 	};
 
 	public render(): JSX.Element {
-		if (this.state._alert) {
-			/**
-			 * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
-			 * - https://googlechrome.github.io/samples/vibration/
-			 */
-			try {
-				Log.debug(['Navigator should vibrate ...', navigator.vibrate([100, 75, 100, 75, 100])]);
-			} catch (e) {
-				Log.debug('Navigator does not support vibration.');
-			}
+		const { _alert, _hasCloser, _label, _level, _type, _variant } = this.state;
 
-			setTimeout(() => {
-				this.validateAlert(false);
-			}, 10000);
-		}
+		const props: KolAlertFcProps = {
+			alert: _alert,
+			hasCloser: _hasCloser,
+			label: _label,
+			level: _level,
+			type: _type,
+			variant: _variant,
+			onCloserClick: this.close,
+			onAlertTimeout: this.handleAlertTimeout,
+		};
 
 		return (
-			<Host
-				class={{
-					'kol-alert-wc': true,
-					alert: true,
-					[this.state._type as string]: true,
-					[this.state._variant as string]: true,
-					hasCloser: !!this.state._hasCloser,
-				}}
-				role={this.state._alert ? 'alert' : undefined}
-			>
-				<div class="heading">
-					<AlertIcon label={this.state._label} type={this.state._type} />
-					<div class="heading-content">
-						{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
-							<KolHeadingWcTag _label={this.state._label} _level={this.state._level}></KolHeadingWcTag>
-						)}
-						{this.state._variant === 'msg' && (
-							<div class="content">
-								<slot />
-							</div>
-						)}
-					</div>
-					{this.state._hasCloser && (
-						<KolButtonWcTag
-							class="close"
-							_ariaDescription={this.state._label?.trim() || ''}
-							_hideLabel
-							_icons={{
-								left: {
-									icon: 'codicon codicon-close',
-								},
-							}}
-							_label={translate('kol-close-alert')}
-							_on={this.on}
-							_tooltipAlign="left"
-						></KolButtonWcTag>
-					)}
-				</div>
-				{this.state._variant === 'card' && (
-					<div class="content">
-						<slot />
-					</div>
-				)}
+			<Host>
+				<KolAlertFc {...props}>
+					<slot />
+				</KolAlertFc>
 			</Host>
 		);
 	}

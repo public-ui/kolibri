@@ -24,9 +24,9 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedAccessKey } from '../span/InternalUnderlinedAccessKey';
 import { InputRadioController } from './controller';
-import { FormFieldMsg } from '../@shared/form-field-msg';
 import { KolInputWcTag } from '../../core/component-names';
 import { propagateSubmitEventToForm } from '../form/controller';
+import { KolFormFieldMsgFc } from '../../functional-components';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -167,7 +167,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 							</KolInputWcTag>
 						);
 					})}
-					{hasError && <FormFieldMsg _alert={this.state._alert} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}
+					{hasError && <KolFormFieldMsgFc _alert={this.state._alert} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}
 					{hasHint && <span class="hint">{this.state._hint}</span>}
 				</fieldset>
 			</Host>
