@@ -19,9 +19,9 @@ import type {
 	TooltipAlignPropType,
 	W3CInputValue,
 } from '../../schema';
-import { FormFieldMsg } from '../@shared/form-field-msg';
 import type { Props } from './types';
 import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolFormFieldMsgFc } from '../../functional-components';
 
 /**
  * @internal
@@ -120,7 +120,7 @@ export class KolInputWc implements Props {
 						_label={this._label}
 					></KolTooltipWcTag>
 				)}
-				{showFormFieldMsg && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
+				{showFormFieldMsg && <KolFormFieldMsgFc _alert={this._alert} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (

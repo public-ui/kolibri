@@ -5,7 +5,9 @@ import { Component, h, Host, Prop, State, Watch, Method } from '@stencil/core';
 import { translate } from '../../i18n';
 
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
-import { KolAlertWcTag, KolLinkTag } from '../../core/component-names';
+import { KolLinkWcTag } from '../../core/component-names';
+import KolAlertFc from '../../functional-components/Alert';
+
 /**
  * @slot - Inhalt der Form.
  */
@@ -49,42 +51,54 @@ export class KolForm implements FormAPI {
 		}
 	};
 
+	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
+		return (
+			<KolAlertFc type="error" variant="msg">
+				{translate('kol-error-list-message')}
+				<nav aria-label={translate('kol-error-list')}>
+					<ul>
+						{errorList?.map((error, index) => (
+							<li key={index}>
+								<KolLinkWcTag
+									_href={error.selector}
+									_label={error.message}
+									_on={{ onClick: this.handleLinkClick }}
+									ref={(el) => {
+										if (index === 0) this.errorListElement = el;
+									}}
+								/>
+							</li>
+						))}
+					</ul>
+				</nav>
+			</KolAlertFc>
+		);
+	}
+
+	private renderFormElement(): JSX.Element {
+		return (
+			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
+				{this.state._requiredText === true ? (
+					<p>
+						<div class="mandatory-fields-hint">{translate('kol-form-description')}</div>
+					</p>
+				) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
+					<p>
+						<div class="mandatory-fields-hint">{this.state._requiredText}</div>
+					</p>
+				) : null}
+				<slot />
+			</form>
+		);
+	}
+
 	public render(): JSX.Element {
+		const hasErrorList = Array.isArray(this._errorList) && this._errorList.length > 0;
+
 		return (
 			<Host class="kol-form">
-				{this._errorList && this._errorList.length > 0 && (
-					<KolAlertWcTag _type="error">
-						{translate('kol-error-list-message')}
-						<nav aria-label={translate('kol-error-list')}>
-							<ul>
-								{this._errorList.map((error, index) => (
-									<li key={index}>
-										<KolLinkTag
-											_href={error.selector}
-											_label={error.message}
-											_on={{ onClick: this.handleLinkClick }}
-											ref={(el?: HTMLKolLinkElement) => {
-												if (index === 0) this.errorListElement = el;
-											}}
-										/>
-									</li>
-								))}
-							</ul>
-						</nav>
-					</KolAlertWcTag>
-				)}
-				<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
-					{this.state._requiredText === true ? (
-						<p>
-							<div class="mandatory-fields-hint">{translate('kol-form-description')}</div>
-						</p>
-					) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
-						<p>
-							<div class="mandatory-fields-hint">{this.state._requiredText}</div>
-						</p>
-					) : null}
-					<slot />
-				</form>
+				{hasErrorList && this.renderErrorList(this._errorList)}
+				{this.renderFormElement()}
 			</Host>
 		);
 	}
