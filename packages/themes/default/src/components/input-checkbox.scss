@@ -2,6 +2,7 @@
 @import '../mixins/focus-outline';
 @import '../mixins/alert-wc.scss';
 @import '../mixins/input-error';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -35,7 +36,7 @@
 	}
 
 	.kol-input.button {
-		gap: rem(6.4) 1px;
+		gap: rem(6.4) rem(1);
 	}
 
 	.checkbox-container {
@@ -49,7 +50,7 @@
 	}
 
 	.kol-input > div.input input {
-		margin: 0px;
+		margin: rem(0);
 	}
 
 	kol-input > label {
@@ -82,16 +83,15 @@
 		order: 1;
 		width: 100%;
 		border-color: var(--color-subtle);
-		border-width: 2px;
+		border-width: rem(2);
 		border-style: solid;
 		border-radius: var(--border-radius);
-		line-height: 1.5;
-		font-size: rem(16);
+		@include kol-typography-body;
 	}
 
 	input:hover {
 		border-color: var(--color-primary);
-		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
+		box-shadow: rem(0) rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
 	}
 
 	input:focus:hover {
@@ -154,14 +154,14 @@
 		position: relative;
 		width: 3.5em;
 		/* Visible with forced colors  */
-		outline: transparent solid 1px;
+		outline: transparent solid rem(1);
 	}
 
 	.kol-input.switch input[type='checkbox']:before {
 		width: 1.25em;
 		height: 1.25em;
-		left: calc(0.25em - 2px);
-		top: calc(0.25em - 2px);
+		left: calc(0.25em - rem(2));
+		top: calc(0.25em - rem(2));
 		border-radius: 1.25em;
 		background-color: white;
 		position: absolute;
@@ -183,7 +183,7 @@
 		& .icon {
 			width: 1.25em;
 			height: 1.25em;
-			left: 2px;
+			left: rem(2);
 		}
 
 		&.checked .icon {
@@ -197,9 +197,9 @@
 
 	.button {
 		.input {
-			border-top-width: 1px;
-			border-left-width: 1px;
-			border-bottom-width: 1px;
+			border-top-width: rem(1);
+			border-left-width: rem(1);
+			border-bottom-width: rem(1);
 
 			border-top-style: solid;
 			border-left-style: solid;
@@ -207,14 +207,14 @@
 		}
 
 		&.hide-label .input {
-			border-right-width: 1px;
+			border-right-width: rem(1);
 			border-right-style: solid;
 		}
 
 		.input-label {
-			border-top-width: 1px;
-			border-right-width: 1px;
-			border-bottom-width: 1px;
+			border-top-width: rem(1);
+			border-right-width: rem(1);
+			border-bottom-width: rem(1);
 
 			border-top-style: solid;
 			border-right-style: solid;
@@ -281,12 +281,12 @@
 
 		.input {
 			border-style: solid;
-			border-width: 1px 1px 1px 0;
+			border-width: rem(1) rem(1) rem(1) 0;
 		}
 
 		.input-label {
 			border-style: solid;
-			border-width: 1px 0 1px 1px;
+			border-width: rem(1) 0 rem(1) rem(1);
 		}
 	}
 }

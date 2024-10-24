@@ -42,7 +42,7 @@
 		border-color: var(--color-subtle);
 		border-radius: var(--border-radius);
 		border-style: solid;
-		border-width: 2px;
+		border-width: rem(2);
 		padding: 0 rem(8);
 	}
 
@@ -77,7 +77,7 @@
 	}
 
 	.kol-input.error {
-		border-left: 3px solid var(--color-danger);
+		border-left: rem(3) solid var(--color-danger);
 		padding-left: rem(16);
 	}
 

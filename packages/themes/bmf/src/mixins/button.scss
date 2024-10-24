@@ -145,7 +145,7 @@
 	}
 
 	:is(a, button).hide-label > .kol-span-wc {
-		padding: 8px;
+		padding: rem(8);
 		width: unset;
 	}
 
@@ -159,7 +159,7 @@
 
 	/** button with inline focus */
 	:is(a, button).focus-inline:focus > .kol-span-wc {
-		outline-offset: -2px;
+		outline-offset: rem(-2);
 	}
 
 	/** :is(a,button) with transparent background */

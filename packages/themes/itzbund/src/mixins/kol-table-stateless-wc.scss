@@ -1,3 +1,5 @@
+@import './rem';
+
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
 		.table {
@@ -6,9 +8,9 @@
 
 		.table:has(.focus-element:focus) {
 			outline-color: var(--color-petrol);
-			outline-offset: 2px;
+			outline-offset: rem(2);
 			outline-style: solid;
-			outline-width: 3px;
+			outline-width: rem(3);
 			transition: outline-offset 0.2s linear;
 		}
 
@@ -16,17 +18,17 @@
 			width: 100%;
 			border-collapse: collapse;
 			border-spacing: 0;
-			border: 1px solid var(--color-petrol);
-			border-width: 0 1px 1px 1px;
+			border: rem(1) solid var(--color-petrol);
+			border-width: 0 rem(1) rem(1) rem(1);
 		}
 
 		tr {
-			border-top: 1px solid var(--color-petrol);
+			border-top: rem(1) solid var(--color-petrol);
 		}
 
 		th,
 		td {
-			border-right: 1px solid var(--color-petrol);
+			border-right: rem(1) solid var(--color-petrol);
 
 			&:last-child {
 				border-right-width: 0;
@@ -62,8 +64,8 @@
 					border-color: var(--color-petrol);
 					outline-color: var(--color-petrol);
 					outline-style: solid;
-					outline-offset: 2px;
-					outline-width: 3px;
+					outline-offset: rem(2);
+					outline-width: rem(3);
 				}
 			}
 
@@ -101,8 +103,8 @@
 					border-color: var(--color-petrol);
 					border-color: var(--color-anthrazit);
 					outline-style: solid;
-					outline-offset: 2px;
-					outline-width: 3px;
+					outline-offset: rem(2);
+					outline-width: rem(3);
 				}
 			}
 		}

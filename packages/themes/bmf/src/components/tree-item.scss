@@ -3,12 +3,12 @@
 @layer kol-theme-component {
 	.tree-link {
 		display: block;
-		border: 2px solid transparent;
+		border: rem(2) solid transparent;
 
 		&:hover,
 		&:focus-within {
 			background-color: var(--color-ocean);
-			border: 2px solid var(--color-midnight);
+			border: rem(2) solid var(--color-midnight);
 
 			& > a {
 				outline-offset: 0;

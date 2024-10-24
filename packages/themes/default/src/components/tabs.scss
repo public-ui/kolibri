@@ -18,7 +18,7 @@
 		border-radius: var(--border-radius);
 		font-style: normal;
 		font-weight: 700;
-		font-size: 18px;
+		font-size: rem(18);
 		line-height: 1.2;
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
@@ -97,11 +97,11 @@
 	}
 
 	:host > .tabs-align-bottom > .tabs-button-group > div > div:first-child {
-		margin: 0px rem(16) 0px 0px;
+		margin: rem(0) rem(16) rem(0) rem(0);
 	}
 
 	:host > .tabs-align-bottom > .tabs-button-group > div > div {
-		margin: 0px rem(16);
+		margin: rem(0) rem(16);
 	}
 
 	:host > .tabs-align-top {
@@ -118,11 +118,11 @@
 	}
 
 	:host > .tabs-align-top > .tabs-button-group > div > div:first-child {
-		margin: 0px rem(16) 0px 0px;
+		margin: rem(0) rem(16) rem(0) rem(0);
 	}
 
 	:host > .tabs-align-top > .tabs-button-group > div > div {
-		margin: 0px rem(16);
+		margin: rem(0) rem(16);
 	}
 
 	:host > div {

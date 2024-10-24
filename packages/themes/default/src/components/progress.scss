@@ -2,18 +2,21 @@
 	:host {
 		font-family: var(--font-family);
 	}
+
 	:host progress,
 	:host span {
 		display: block;
-		height: 0px;
+		height: rem(0);
 		overflow: hidden;
-		width: 0px;
+		width: rem(0);
 	}
+
 	:host svg line:first-child,
 	:host svg circle:first-child {
 		fill: transparent;
 		stroke: var(--color-mute-variant);
 	}
+
 	:host svg line:last-child,
 	:host svg circle:last-child {
 		fill: transparent;

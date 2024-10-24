@@ -10,11 +10,11 @@
 
 	.tree-link {
 		display: block;
-		border: 2px solid transparent;
+		border: rem(2) solid transparent;
 
 		&:hover,
 		&:focus-within {
-			border: 2px solid var(--border-color);
+			border: rem(2) solid var(--border-color);
 
 			& > a {
 				outline-offset: 0;

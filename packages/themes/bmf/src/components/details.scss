@@ -15,7 +15,7 @@
 				border: none;
 
 				&:hover {
-					box-shadow: 0 3px var(--color-ocean);
+					box-shadow: 0 rem(3) var(--color-ocean);
 				}
 			}
 		}

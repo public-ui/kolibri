@@ -1,5 +1,6 @@
 @import '../mixins/rem';
 @import '../mixins/focus-outline';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -15,13 +16,11 @@
 	:host > div > .kol-heading-wc button {
 		border-radius: var(--border-radius);
 		min-height: rem(35.2);
-		padding: 12px 8px;
+		padding: rem(12) rem(8);
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc {
-		font-weight: 700;
-		font-size: rem(18);
-		line-height: 1.1;
+		@include kol-typography-accordion;
 		gap: rem(8);
 	}
 
@@ -47,8 +46,8 @@
 
 	:host > div div[class='content'] {
 		padding-left: 2.25em;
-		padding-bottom: 12px;
-		padding-right: 8px;
+		padding-bottom: rem(12);
+		padding-right: rem(8);
 	}
 
 	button:focus {

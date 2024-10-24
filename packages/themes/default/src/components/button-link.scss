@@ -27,7 +27,7 @@
 	}
 
 	.skip {
-		left: -99999px;
+		left: rem(-99999);
 		overflow: hidden;
 		position: absolute;
 		z-index: 9999999;
@@ -41,7 +41,7 @@
 
 	.access-key-hint {
 		background-color: var(--color-mute-variant);
-		border-radius: 3px;
+		border-radius: rem(3);
 		color: var(--color-text);
 		padding: 0 0.3em;
 	}

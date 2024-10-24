@@ -1,8 +1,8 @@
 @layer kol-theme-component {
 	:host > div > nav ul {
 		list-style: none;
-		margin: 0px;
-		padding: 0px;
+		margin: rem(0);
+		padding: rem(0);
 		border-radius: var(--border-radius);
 		background-color: var(--color-petrol);
 	}
@@ -44,7 +44,7 @@
 	:host > div > nav .kol-link-wc a {
 		border-radius: var(--border-radius);
 		background-color: var(--color-petrol);
-		border: 1px solid transparent;
+		border: rem(1) solid transparent;
 		grid: flex;
 		line-height: 2;
 		padding: 0.5em;
@@ -72,7 +72,7 @@
 
 	:host > div > nav .kol-link-wc a:focus,
 	:host > div > nav .kol-link-wc a:hover {
-		border: 1px solid white;
+		border: rem(1) solid white;
 		background-color: var(--color-fluorit);
 		color: var(--color-anthrazit);
 	}

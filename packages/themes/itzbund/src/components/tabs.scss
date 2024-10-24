@@ -21,7 +21,7 @@
 
 	.tabs-content {
 		padding: 0.25em;
-		border: 1px solid var(--border-color);
+		border: rem(1) solid var(--border-color);
 	}
 
 	button {
@@ -29,7 +29,7 @@
 		font-size: inherit;
 		line-height: 1.25;
 		cursor: pointer;
-		border-width: 2px;
+		border-width: rem(2);
 		box-shadow: 0 0 0.25em gray;
 		width: inherit;
 		overflow: hidden;

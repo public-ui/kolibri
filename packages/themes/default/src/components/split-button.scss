@@ -21,8 +21,8 @@
 
 	.horizontal-line {
 		background-color: var(--color-primary);
-		border-radius: 2px;
-		width: 1px;
+		border-radius: rem(2);
+		width: rem(1);
 	}
 
 	:is(a, button) > .kol-span-wc {
@@ -31,7 +31,7 @@
 		border-bottom-left-radius: var(--border-radius);
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
-		padding: 8px 14px;
+		padding: rem(8) rem(14);
 		text-align: center;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;

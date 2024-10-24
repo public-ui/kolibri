@@ -1,6 +1,6 @@
 @layer kol-theme-component {
 	.toolbar {
-		padding: 8px 14px;
+		padding: rem(8) rem(14);
 		border-radius: var(--border-radius);
 		background-color: var(--color-light);
 		border-width: var(--border-width);

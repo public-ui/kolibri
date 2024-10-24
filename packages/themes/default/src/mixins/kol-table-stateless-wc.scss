@@ -38,9 +38,9 @@
 
 			&:has(.focus-element:focus) {
 				outline-color: var(--color-primary-variant);
-				outline-offset: 2px;
+				outline-offset: rem(2);
 				outline-style: solid;
-				outline-width: 3px;
+				outline-width: rem(3);
 				transition: outline-offset 0.2s linear;
 			}
 		}
@@ -104,15 +104,15 @@
 			input {
 				&:hover {
 					border-color: var(--color-primary);
-					box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
+					box-shadow: rem(0) rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
 				}
 
 				&:focus {
 					border-color: var(--color-primary);
 					outline-color: var(--color-primary-variant);
 					outline-style: solid;
-					outline-offset: 2px;
-					outline-width: 3px;
+					outline-offset: rem(2);
+					outline-width: rem(3);
 				}
 
 				&:focus:hover {
@@ -123,7 +123,7 @@
 			// CHECKBOX
 			input[type='checkbox'] {
 				border-color: var(--color-subtle);
-				border-radius: 5px;
+				border-radius: rem(5);
 
 				&:checked {
 					background-color: var(--color-primary);

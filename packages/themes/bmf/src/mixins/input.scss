@@ -9,7 +9,7 @@
 		gap: 0.25em;
 		display: grid;
 		grid-template-areas: 'error error' 'label label' 'input input' 'hint hint';
-		grid-template-columns: 1fr 115px;
+		grid-template-columns: 1fr rem(115);
 
 		&:has(> .counter) {
 			grid-template-areas: 'error error' 'label counter' 'input input' 'hint hint';
@@ -48,6 +48,7 @@
 			label {
 				opacity: 1;
 			}
+
 			.input {
 				background-color: var(--color-smoke);
 				border-color: var(--color-granite);
@@ -61,7 +62,7 @@
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
-		border-width: 2px;
+		border-width: rem(2);
 
 		> .kol-icon {
 			width: 1em;

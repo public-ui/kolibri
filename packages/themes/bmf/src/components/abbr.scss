@@ -1,9 +1,10 @@
 @layer kol-theme-component {
 	abbr {
-		border-bottom: dotted var(--color-black) 1px;
+		border-bottom: dotted var(--color-black) rem(1);
 		text-decoration: none;
 	}
+
 	abbr:focus {
-		border-radius: 5px;
+		border-radius: rem(5);
 	}
 }

@@ -14,8 +14,8 @@
 
 	.horizontal-line {
 		background-color: var(--border-color);
-		border-radius: 2px;
-		width: 1px;
+		border-radius: rem(2);
+		width: rem(1);
 	}
 
 	.secondary-button button {
@@ -25,30 +25,30 @@
 	.secondary-button > button > .kol-span-wc {
 		border-top-right-radius: rem(32);
 		border-bottom-right-radius: rem(32);
-		border-top-left-radius: 0px;
-		border-bottom-left-radius: 0px;
+		border-top-left-radius: rem(0);
+		border-bottom-left-radius: rem(0);
 	}
 
 	.secondary-button > button > :active > .kol-span-wc {
 		border-top-right-radius: rem(32);
 		border-bottom-right-radius: rem(32);
-		border-top-left-radius: 0px;
-		border-bottom-left-radius: 0px;
+		border-top-left-radius: rem(0);
+		border-bottom-left-radius: rem(0);
 	}
 
 	.secondary-button > button > :focus > .kol-span-wc {
 		border-top-right-radius: rem(32);
 		border-bottom-right-radius: rem(32);
-		border-top-left-radius: 0px;
-		border-bottom-left-radius: 0px;
+		border-top-left-radius: rem(0);
+		border-bottom-left-radius: rem(0);
 	}
 
 	.secondary-button > a,
 	.secondary-button > button {
 		border-top-right-radius: rem(32);
 		border-bottom-right-radius: rem(32);
-		border-top-left-radius: 0px;
-		border-bottom-left-radius: 0px;
+		border-top-left-radius: rem(0);
+		border-bottom-left-radius: rem(0);
 		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
 	}
@@ -57,8 +57,8 @@
 	button {
 		border-top-left-radius: rem(32);
 		border-bottom-left-radius: rem(32);
-		border-top-right-radius: 0px;
-		border-bottom-right-radius: 0px;
+		border-top-right-radius: rem(0);
+		border-bottom-right-radius: rem(0);
 		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
 	}
@@ -69,8 +69,8 @@
 		border-bottom-left-radius: rem(32);
 		font-size: inherit;
 		padding: 0 rem(16);
-		min-width: 44px;
-		min-height: 44px;
+		min-width: rem(44);
+		min-height: rem(44);
 	}
 
 	@include kol-button;

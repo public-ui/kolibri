@@ -25,10 +25,10 @@
 		color: var(--color-midnight);
 		display: flex;
 		font-style: normal;
-		letter-spacing: 0.175px;
+		letter-spacing: rem(0.175);
 		line-height: 1;
-		min-height: 44px;
-		min-width: 44px;
+		min-height: rem(44);
+		min-width: rem(44);
 		padding: rem(12) rem(8) rem(12) rem(4);
 		place-items: center;
 		text-decoration: none;

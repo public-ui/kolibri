@@ -7,9 +7,9 @@
 
 	:is(a, button):focus .kol-span-wc {
 		outline-color: var(--color-ocean);
-		outline-offset: 2px;
+		outline-offset: rem(2);
 		outline-style: solid;
-		outline-width: 3px;
+		outline-width: rem(3);
 		transition: outline-offset 0.2s linear;
 	}
 
@@ -18,14 +18,15 @@
 			font-weight: 700;
 			border-radius: var(--a11y-min-size);
 			border-style: solid;
-			border-width: 2px;
+			border-width: rem(2);
 			min-height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
-			padding: 8px 14px;
+			padding: rem(8) rem(14);
 			text-align: center;
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
 		}
+
 		&.regular > .kol-span-wc {
 			font-weight: 500;
 		}

@@ -5,7 +5,7 @@
 		ul {
 			display: flex;
 			flex-direction: column;
-			border: 2px solid transparent;
+			border: rem(2) solid transparent;
 			border-radius: rem(4);
 		}
 
@@ -13,7 +13,7 @@
 			outline: 0;
 
 			ul {
-				border: 2px solid var(--color-petrol);
+				border: rem(2) solid var(--color-petrol);
 			}
 		}
 	}

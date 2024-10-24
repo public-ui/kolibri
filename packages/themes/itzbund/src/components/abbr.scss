@@ -1,6 +1,6 @@
 @layer kol-theme-component {
 	abbr {
-		border-bottom: dashed var(--color-text) 1px;
+		border-bottom: dashed var(--color-text) rem(1);
 		text-decoration: none;
 	}
 }
