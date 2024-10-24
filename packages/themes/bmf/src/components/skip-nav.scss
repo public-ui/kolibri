@@ -4,10 +4,10 @@
 	.kol-link-wc > a > .kol-span-wc {
 		border-radius: var(--a11y-min-size);
 		border-style: solid;
-		border-width: 2px;
+		border-width: rem(2);
 		gap: rem(8);
 		line-height: 1;
-		padding: 8px 14px;
+		padding: rem(8) rem(14);
 		background-color: var(--color-ocean);
 		border-color: var(--color-ocean);
 		color: var(--color-white);

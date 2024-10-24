@@ -15,7 +15,7 @@
 		@include kol-typography-body;
 		color: var(--default-letter);
 		border-color: var(--default-border);
-		border-width: 2px;
+		border-width: rem(2);
 		border-style: solid;
 	}
 
@@ -73,7 +73,7 @@
 	}
 
 	.kol-input > div.input input {
-		margin: 0px;
+		margin: rem(0);
 	}
 
 	.kol-input > label {
@@ -130,8 +130,8 @@
 		transition: 0.5;
 		width: 1.2em;
 		height: 1.2em;
-		left: calc(0.25em - 2px);
-		top: calc(0.25em - 2px);
+		left: calc(0.25em - rem(2));
+		top: calc(0.25em - rem(2));
 		background-color: black;
 		position: absolute;
 	}
@@ -166,8 +166,8 @@
 	.button:focus-within {
 		border-radius: rem(32);
 		outline-color: var(--color-achat);
-		outline-offset: 2px;
+		outline-offset: rem(2);
 		outline-style: solid;
-		outline-width: 3px;
+		outline-width: rem(3);
 	}
 }

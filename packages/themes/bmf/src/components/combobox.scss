@@ -52,14 +52,14 @@ $visible-options: 5;
 
 		&__listbox {
 			border-style: solid;
-			border-width: 1px;
+			border-width: rem(1);
 			border-radius: var(--border-radius);
 			border-color: var(--color-grey);
 			overflow-y: auto;
 			overflow-x: hidden;
 			box-sizing: border-box;
 			width: 100%;
-			max-height: calc($option-height * $visible-options + 2px);
+			max-height: calc($option-height * $visible-options + rem(2));
 		}
 
 		&__item {

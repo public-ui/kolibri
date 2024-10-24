@@ -7,30 +7,27 @@
 
 @mixin kol-typography-h1 {
 	font-size: rem(24);
-	font-weight: 700;
-	line-height: 1.1667;
+	line-height: 1.6667;
 }
 
 @mixin kol-typography-h2 {
 	font-size: rem(20);
-	font-weight: 700;
 	line-height: 1.4;
 }
 
 @mixin kol-typography-h3 {
 	font-size: rem(18);
-	font-weight: 700;
-	line-height: 1.3333;
+	line-height: 1.333;
 }
 
 @mixin kol-typography-accordion {
 	font-weight: 700;
 	font-size: rem(18);
-	line-height: 1.3333;
+	line-height: 1.1;
 }
 
 @mixin kol-typography-label {
-	font-size: rem(14);
+	font-size: 14px;
 	line-height: 1.25;
 }
 

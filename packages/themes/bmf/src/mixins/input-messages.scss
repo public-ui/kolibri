@@ -93,15 +93,16 @@
 	&.#{$type} {
 		.input {
 			border-color: var(#{$color});
-			border-width: 3px;
+			border-width: rem(3);
 
 			&:hover {
 				border-color: var(--color-midnight);
 			}
 		}
+
 		&:not(.hidden-error) {
 			padding-left: 1em;
-			border-left: 3px solid var(#{$color});
+			border-left: rem(3) solid var(#{$color});
 		}
 	}
 }

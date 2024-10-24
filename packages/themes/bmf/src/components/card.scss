@@ -34,6 +34,6 @@
 	}
 
 	:host > div > div.content + div.footer {
-		border-top: 2px solid var(--color-ice);
+		border-top: rem(2) solid var(--color-ice);
 	}
 }

@@ -11,7 +11,7 @@
 		border-width: var(--border-width);
 		gap: calc(var(--spacing) * 2);
 		line-height: 1;
-		padding: 8px 14px;
+		padding: rem(8) rem(14);
 		background-color: var(--color-primary-variant);
 		border-color: var(--color-primary-variant);
 		color: var(--color-light);

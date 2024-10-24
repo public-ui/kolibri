@@ -153,7 +153,7 @@
 	.card {
 		border-width: var(--border-width);
 		border-style: solid;
-		filter: drop-shadow(0px 2px 4px rgba(8, 35, 48, 0.24));
+		filter: drop-shadow(rem(0) rem(2) rem(4) rgba(8, 35, 48, 0.24));
 		flex-direction: column;
 	}
 
@@ -174,7 +174,7 @@
 
 	.card > .heading .heading-icon {
 		justify-self: right;
-		margin-top: -4px;
+		margin-top: rem(-4);
 	}
 
 	.card > .heading .kol-heading-wc {

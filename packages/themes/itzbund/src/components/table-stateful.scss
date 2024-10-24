@@ -9,7 +9,7 @@
 
 	:host > div:last-child {
 		border-style: solid;
-		border-width: 1px;
+		border-width: rem(1);
 		border-color: var(--border-color);
 	}
 

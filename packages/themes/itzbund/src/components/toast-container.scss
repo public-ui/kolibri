@@ -3,7 +3,7 @@
 @layer kol-theme-component {
 	:host {
 		top: rem(16);
-		width: 750px;
+		width: rem(750);
 		max-width: 100%;
 		left: 50%;
 		transform: translateX(-50%);

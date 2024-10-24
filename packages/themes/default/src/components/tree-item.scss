@@ -3,11 +3,11 @@
 @layer kol-theme-component {
 	.tree-link {
 		display: block;
-		border: 1px solid transparent;
+		border: rem(1) solid transparent;
 
 		&:hover,
 		&:focus-within {
-			border: 1px solid var(--color-primary);
+			border: rem(1) solid var(--color-primary);
 			background-color: var(--color-primary-variant);
 
 			& > a {

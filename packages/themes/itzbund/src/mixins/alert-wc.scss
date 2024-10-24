@@ -1,7 +1,7 @@
 @import './rem';
 
 @mixin kol-alert-theme {
-	--kolibri-border-width: 1px;
+	--kolibri-border-width: rem(1);
 
 	.default {
 		border-color: var(--color-anthrazit);

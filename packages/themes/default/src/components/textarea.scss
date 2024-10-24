@@ -1,6 +1,7 @@
 @import '../mixins/rem';
 @import '../mixins/alert-wc.scss';
 @import '../mixins/input-error';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -30,8 +31,7 @@
 
 	.kol-input .hint {
 		order: 5;
-		font-size: rem(14.4);
-		font-style: italic;
+		@include kol-typography-hint;
 	}
 
 	textarea {
@@ -47,7 +47,7 @@
 		border-color: var(--color-subtle);
 		border-radius: var(--border-radius);
 		border-style: solid;
-		border-width: 2px;
+		border-width: rem(2);
 		padding: 0 rem(8);
 	}
 

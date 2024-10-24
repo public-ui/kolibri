@@ -8,7 +8,7 @@
 	}
 
 	.icon {
-		font-size: 18px;
+		font-size: rem(18);
 
 		&::part(icon) {
 			font-family: 'Material Symbols Rounded';
@@ -46,11 +46,12 @@
 			outline: none;
 
 			.button-inner {
-				outline-offset: 2px;
-				outline: 3px solid var(--color-ocean);
+				outline-offset: rem(2);
+				outline: rem(3) solid var(--color-ocean);
 				transition: outline-offset 0.2s linear;
 			}
 		}
+
 		&:active,
 		&:hover {
 			&:not(:disabled) .button-inner {
@@ -58,10 +59,12 @@
 				border-color: var(--color-ocean);
 				color: var(--color-white);
 			}
+
 			&:not(:disabled) .icon::part(icon)::before {
 				color: var(--color-white);
 			}
 		}
+
 		&:active .button-inner {
 			border-color: var(--color-white);
 			outline: none;
@@ -70,11 +73,11 @@
 		.button-inner {
 			background-color: transparent;
 			border-radius: var(--a11y-min-size);
-			border: 2px solid transparent;
+			border: rem(2) solid transparent;
 			color: var(--color-midnight);
 			min-height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
-			padding: 8px;
+			padding: rem(8);
 			text-align: center;
 			transition-duration: 0.5s;
 			transition-property: background-color, color, border-color;
@@ -85,6 +88,7 @@
 		&:disabled {
 			opacity: 1;
 		}
+
 		.button-inner {
 			background-color: var(--color-ice);
 			border-color: var(--color-ice);

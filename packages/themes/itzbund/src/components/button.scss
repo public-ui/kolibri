@@ -13,8 +13,8 @@
 	button > .kol-span-wc {
 		border-radius: rem(32);
 		border-style: solid;
-		min-width: 44px;
-		min-height: 44px;
+		min-width: rem(44);
+		min-height: rem(44);
 		border-width: var(--spacing);
 		font-size: inherit;
 		/*line-height: 1.25em;*/

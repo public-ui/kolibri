@@ -15,9 +15,9 @@
 
 	:host input:focus {
 		outline-color: var(--color-achat);
-		outline-offset: 2px;
+		outline-offset: rem(2);
 		outline-style: solid;
-		outline-width: 3px;
+		outline-width: rem(3);
 	}
 
 	input {
@@ -25,10 +25,10 @@
 		width: 100%;
 		color: var(--color-anthrazit);
 		border-color: var(--default-border);
-		border-width: 2px;
+		border-width: rem(2);
 		border-style: solid;
-		border-radius: 5px;
-		/* padding: 10px 14px; */
+		border-radius: rem(5);
+		/* padding: rem(10) 14px; */
 	}
 
 	input:hover {
@@ -47,9 +47,9 @@
 
 	/* RADIO */
 	fieldset {
-		border: 0px;
-		margin: 0px;
-		padding: 0px;
+		border: rem(0);
+		margin: rem(0);
+		padding: rem(0);
 		flex-wrap: wrap;
 	}
 

@@ -5,7 +5,7 @@
 		font-family: var(--font-family);
 		border-radius: var(--a11y-min-size);
 		border-style: solid;
-		border-width: 2px;
+		border-width: rem(2);
 		border-color: var(--color-midnight);
 	}
 
@@ -15,8 +15,8 @@
 
 	.horizontal-line {
 		background-color: var(--color-midnight);
-		border-radius: 2px;
-		width: 1px;
+		border-radius: rem(2);
+		width: rem(1);
 	}
 
 	.secondary-button button {
@@ -31,16 +31,16 @@
 	.secondary-button :focus .kol-span-wc {
 		border-top-right-radius: var(--a11y-min-size);
 		border-bottom-right-radius: var(--a11y-min-size);
-		border-top-left-radius: 0px;
-		border-bottom-left-radius: 0px;
+		border-top-left-radius: rem(0);
+		border-bottom-left-radius: rem(0);
 		outline-offset: 0;
 	}
 
 	:is(a, button):focus .kol-span-wc {
 		outline-color: var(--color-ocean);
 		outline-style: solid;
-		outline-width: 3px;
-		outline-offset: 2px;
+		outline-width: rem(3);
+		outline-offset: rem(2);
 		transition: outline-offset 0.2s linear;
 	}
 
@@ -50,7 +50,7 @@
 		border-bottom-left-radius: var(--a11y-min-size);
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
-		padding: 8px 14px;
+		padding: rem(8) rem(14);
 		text-align: center;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;

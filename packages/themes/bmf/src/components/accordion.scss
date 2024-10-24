@@ -14,8 +14,8 @@
 
 	:host > div > .kol-heading-wc button {
 		border-radius: var(--border-radius);
-		min-height: 24px;
-		padding: 10px 8px;
+		min-height: rem(24);
+		padding: rem(10) rem(8);
 	}
 
 	:host > div > .kol-heading-wc button .kol-span-wc {
@@ -61,8 +61,8 @@
 
 	:host > div div[class='content'] {
 		padding-left: 2.25em;
-		padding-bottom: 12px;
-		padding-right: 8px;
+		padding-bottom: rem(12);
+		padding-right: rem(8);
 	}
 
 	button:focus {
@@ -77,9 +77,9 @@
 		border-radius: var(--border-radius);
 		cursor: pointer;
 		outline-color: var(--color-ocean);
-		outline-offset: -3px;
+		outline-offset: rem(-3);
 		outline-style: solid;
-		outline-width: 3px;
+		outline-width: rem(3);
 		transition: outline 0.2s linear;
 	}
 }

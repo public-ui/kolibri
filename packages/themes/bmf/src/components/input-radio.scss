@@ -26,7 +26,7 @@
 		cursor: pointer;
 		display: grid;
 		line-height: 1;
-		gap: 8px;
+		gap: rem(8);
 		width: 100%;
 	}
 
@@ -39,12 +39,12 @@
 		cursor: pointer;
 
 		border-color: var(--color-grey);
-		border-width: 2px;
+		border-width: rem(2);
 		border-style: solid;
-		border-radius: 5px;
-		/* padding: 10px 14px; */
+		border-radius: rem(5);
+		/* padding: rem(10) 14px; */
 		//line-height: 24px;
-		font-size: 16px;
+		font-size: rem(16);
 		//width: 100%;
 
 		&:hover {
@@ -62,9 +62,9 @@
 	}
 
 	fieldset {
-		border: 0px;
-		margin: 0px;
-		padding: 0px;
+		border: rem(0);
+		margin: rem(0);
+		padding: rem(0);
 		gap: 0.25em;
 		color: var(--color-black);
 		display: grid;
@@ -109,7 +109,7 @@
 		}
 
 		&.error {
-			border-left: 3px solid var(--color-red);
+			border-left: rem(3) solid var(--color-red);
 			padding-left: 1em;
 
 			input:focus,
@@ -137,7 +137,7 @@
 		flex-direction: row;
 		align-items: center;
 		position: relative;
-		min-height: 44px;
+		min-height: rem(44);
 		margin: 0;
 		gap: rem(8);
 

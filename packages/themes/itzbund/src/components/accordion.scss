@@ -9,7 +9,7 @@
 		height: 100%;
 		display: grid;
 		border-color: var(--kolibri-border-color);
-		border-width: 1px;
+		border-width: rem(1);
 		border-style: solid;
 		border-radius: rem(4);
 	}

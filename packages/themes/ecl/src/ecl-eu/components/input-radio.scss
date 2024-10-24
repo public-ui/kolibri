@@ -1,5 +1,6 @@
 @import '../../mixins/rem';
 @import '../mixins/alert-wc.scss';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -20,8 +21,7 @@
 
 	fieldset .hint {
 		order: 4;
-		font-size: rem(14.4);
-		font-style: italic;
+		@include kol-typography-hint
 	}
 
 	fieldset .kol-alert-wc {
@@ -35,8 +35,7 @@
 
 	fieldset .kol-input .hint {
 		order: 3;
-		font-size: rem(14.4);
-		font-style: italic;
+		@include kol-typography-hint
 	}
 
 	.radio-input-wrapper {

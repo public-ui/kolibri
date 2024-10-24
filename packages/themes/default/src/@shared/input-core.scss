@@ -1,6 +1,7 @@
 @import '../mixins/rem';
 @import '../mixins/alert-wc.scss';
 @import '../mixins/input-error';
+@import '../mixins/typography.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -76,8 +77,7 @@
 
 		.hint {
 			order: 4;
-			font-size: rem(14.4);
-			font-style: italic;
+			@include kol-typography-hint;
 		}
 	}
 

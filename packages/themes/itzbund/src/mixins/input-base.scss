@@ -1,6 +1,8 @@
+@import './rem';
+
 @mixin kol-input-border {
 	color: var(--default-letter);
-	border-width: 1px;
+	border-width: rem(1);
 	border-style: solid;
 	border-radius: 0;
 	border-color: var(--kolibri-color-normal);
@@ -27,9 +29,10 @@
 		outline-color: var(--primary);
 		outline-offset: 0;
 		outline-style: solid;
-		outline-width: 1px;
+		outline-width: rem(1);
 	}
 }
+
 @mixin kol-input-error {
 	background-color: var(--color-rotton-20);
 	border-color: var(--color-rotton);
@@ -44,6 +47,6 @@
 		outline-color: var(--primary);
 		outline-offset: 0;
 		outline-style: solid;
-		outline-width: 1px;
+		outline-width: rem(1);
 	}
 }

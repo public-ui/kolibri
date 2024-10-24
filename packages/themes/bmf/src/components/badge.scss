@@ -40,8 +40,8 @@
 		}
 
 		.kol-button-wc {
-			height: 32px;
-			width: 32px;
+			height: rem(32);
+			width: rem(32);
 			position: relative;
 
 			&:hover > button > .kol-span-wc {
@@ -53,16 +53,16 @@
 				color: inherit;
 				font-size: rem(16);
 				position: absolute;
-				top: -6px;
-				right: -12px;
+				top: rem(-6);
+				right: rem(-12);
 
 				> .kol-span-wc {
 					border-top-right-radius: rem(5);
 					border-bottom-right-radius: rem(5);
 					padding-left: 0;
 					padding-right: 0;
-					height: 32px;
-					width: 32px;
+					height: rem(32);
+					width: rem(32);
 				}
 
 				&:focus-visible {

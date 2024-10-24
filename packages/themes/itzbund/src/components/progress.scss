@@ -1,25 +1,28 @@
 @layer kol-theme-component {
 	:host {
-		--kolibri-text-label-padding: 60px;
+		--kolibri-text-label-padding: rem(60);
 	}
 
 	:host progress,
 	:host span {
 		display: block;
-		height: 0px;
+		height: rem(0);
 		overflow: hidden;
-		width: 0px;
+		width: rem(0);
 	}
+
 	svg line:first-child,
 	svg circle:first-child {
 		fill: transparent;
 		stroke: var(--color-fluorit);
 	}
+
 	svg line:last-child,
 	svg circle:last-child {
 		stroke: var(--color-achat);
 		fill: transparent;
 	}
+
 	progress {
 		display: none;
 	}

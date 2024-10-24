@@ -24,15 +24,15 @@
 		.table:has(.focus-element:focus) {
 			outline-color: var(--color-ocean);
 			outline-style: solid;
-			outline-width: 3px;
+			outline-width: rem(3);
 			transition: outline-offset 0.2s linear;
 		}
 
 		caption {
-			width: 1px;
-			height: 1px;
+			width: rem(1);
+			height: rem(1);
 			padding: 0;
-			margin: -1px;
+			margin: rem(-1);
 			overflow: hidden;
 			clip: rect(0, 0, 0, 0);
 			white-space: nowrap;
@@ -64,7 +64,7 @@
 
 		th,
 		td {
-			border-bottom: 1px solid var(--color-granite);
+			border-bottom: rem(1) solid var(--color-granite);
 			height: rem(20);
 		}
 
@@ -106,15 +106,15 @@
 					border-color: var(--color-midnight);
 					outline-color: var(--color-ocean);
 					outline-style: solid;
-					outline-offset: 2px;
-					outline-width: 3px;
+					outline-offset: rem(2);
+					outline-width: rem(3);
 				}
 			}
 
 			// CHECKBOX
 			input[type='checkbox'] {
 				border-color: var(--color-grey);
-				border-radius: 5px;
+				border-radius: rem(5);
 
 				&:checked {
 					background-color: var(--color-midnight);
@@ -129,7 +129,7 @@
 			.icon::part(icon) {
 				font-family: 'Material Symbols Rounded';
 				font-weight: 900;
-				margin-top: 1px;
+				margin-top: rem(1);
 			}
 
 			&.checked .icon::part(icon)::before {

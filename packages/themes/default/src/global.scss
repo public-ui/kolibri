@@ -2,11 +2,11 @@
 
 @layer kol-theme-global {
 	:host {
-		--border-radius: var(--kolibri-border-radius, 5px);
+		--border-radius: var(--kolibri-border-radius, rem(5));
 		--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
-		--font-size: var(--kolibri-font-size, 16px);
+		--font-size: var(--kolibri-font-size, rem(16));
 		--spacing: var(--kolibri-spacing, #{rem(4)});
-		--border-width: var(--kolibri-border-width, 1px);
+		--border-width: var(--kolibri-border-width, rem(1));
 		--color-primary: var(--kolibri-color-primary, #004b76);
 		--color-primary-variant: var(--kolibri-color-primary-variant, #0077b6);
 		--color-danger: var(--kolibri-color-danger, #b4003c);
@@ -39,9 +39,9 @@
 	summary:focus {
 		cursor: pointer;
 		outline-color: var(--color-primary-variant);
-		outline-offset: 2px;
+		outline-offset: rem(2);
 		outline-style: solid;
-		outline-width: 3px;
+		outline-width: rem(3);
 		transition: outline-offset 0.2s linear;
 	}
 

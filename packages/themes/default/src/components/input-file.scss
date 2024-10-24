@@ -2,7 +2,7 @@
 
 @layer kol-theme-component {
 	.kol-input .input input[type='file'] {
-		padding-top: calc(0.5em + 2px);
+		padding-top: calc(0.5em + rem(2));
 	}
 
 	input[type='file'] {

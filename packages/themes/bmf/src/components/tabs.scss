@@ -18,10 +18,10 @@
 		border-radius: rem(4);
 		font-style: normal;
 		font-weight: 700;
-		font-size: 18px;
+		font-size: rem(18);
 		line-height: 1;
-		min-height: 44px;
-		min-width: 44px;
+		min-height: rem(44);
+		min-width: rem(44);
 		color: var(--color-grey);
 		padding: 0;
 	}
@@ -109,11 +109,11 @@
 	}
 
 	:host > .tabs-align-bottom > .tabs-button-group > div > div:first-child {
-		margin: 0px 1em 0px 0px;
+		margin: rem(0) 1em rem(0) rem(0);
 	}
 
 	:host > .tabs-align-bottom > .tabs-button-group > div > div {
-		margin: 0px 1em;
+		margin: rem(0) 1em;
 	}
 
 	:host > .tabs-align-top {
@@ -130,11 +130,11 @@
 	}
 
 	:host > .tabs-align-top > .tabs-button-group > div > div:first-child {
-		margin: 0px 1em 0px 0px;
+		margin: rem(0) 1em rem(0) rem(0);
 	}
 
 	:host > .tabs-align-top > .tabs-button-group > div > div {
-		margin: 0px 1em;
+		margin: rem(0) 1em;
 	}
 
 	:host > div {

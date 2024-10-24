@@ -1,8 +1,8 @@
 @mixin indented-text {
 	font-family: var(--font-family);
-	border-left: 2px solid var(--color-ocean);
+	border-left: rem(2) solid var(--color-ocean);
 	padding: 0 0.5em;
-	margin-left: -2px;
+	margin-left: rem(-2);
 	width: 100%;
 	color: var(--color-grey);
 }

@@ -8,7 +8,7 @@
 	.bar > div {
 		flex-direction: column;
 		gap: rem(8);
-		width: 100px;
+		width: rem(100);
 	}
 
 	.bar > div text {
@@ -23,7 +23,7 @@
 	.bar .background {
 		fill: var(--color-ice);
 		stroke: var(--color-ice);
-		stroke-width: 1px;
+		stroke-width: rem(1);
 		height: rem(8);
 	}
 

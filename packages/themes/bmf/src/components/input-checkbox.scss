@@ -12,7 +12,7 @@
 		align-items: center;
 		justify-items: left;
 		width: 100%;
-		min-height: 44px;
+		min-height: rem(44);
 
 		&:not(.disabled) :is(.input, label) {
 			cursor: pointer;
@@ -44,12 +44,12 @@
 
 		> div.input {
 			display: inherit;
-			min-height: 44px;
+			min-height: rem(44);
 			order: 2;
 			height: 100%;
 
 			input {
-				margin: 0px;
+				margin: rem(0);
 			}
 		}
 
@@ -75,18 +75,20 @@
 		order: 1;
 		width: 100%;
 		border-color: var(--color-grey);
-		border-width: 2px;
+		border-width: rem(2);
 		border-style: solid;
-		border-radius: 5px;
+		border-radius: rem(5);
 		line-height: 1;
 		font-size: rem(16);
 
 		&:focus {
 			border-color: var(--color-midnight);
 		}
+
 		&:hover {
 			box-shadow: none;
 		}
+
 		&:active {
 			box-shadow: none;
 		}
@@ -116,25 +118,30 @@
 			&:before {
 				content: '';
 			}
+
 			&:checked {
 				background-color: var(--color-midnight);
 				border-color: var(--color-midnight);
 			}
 		}
+
 		&.default {
 			.checkbox-container {
 				justify-content: flex-start;
 			}
+
 			input[type='checkbox'] {
 				border-radius: var(--border-radius);
 				height: calc(6 * var(--spacing));
 				min-width: calc(6 * var(--spacing));
 				width: calc(6 * var(--spacing));
+
 				&:indeterminate {
 					background-color: var(--color-midnight);
 					border-color: var(--color-midnight);
 				}
 			}
+
 			.icon {
 				display: flex;
 				color: var(--color-white);
@@ -148,7 +155,7 @@
 		.icon::part(icon) {
 			font-family: 'Material Symbols Rounded';
 			font-weight: 900;
-			margin-top: 1px;
+			margin-top: rem(1);
 		}
 
 		&.checked .icon::part(icon)::before {
@@ -171,18 +178,19 @@
 			border-radius: 1.25em;
 			position: relative;
 			/* Visible with forced colors  */
-			outline: transparent solid 1px;
+			outline: transparent solid rem(1);
 
 			&:before {
 				transition: 0.5;
 				width: 1.25em;
 				height: 1.25em;
-				left: calc(0.25em - 2px);
-				top: calc(0.25em - 2px);
+				left: calc(0.25em - rem(2));
+				top: calc(0.25em - rem(2));
 				border-radius: 1.25em;
 				background-color: white;
 				position: absolute;
 			}
+
 			&:checked {
 				background-color: var(--color-midnight);
 
@@ -191,6 +199,7 @@
 					--tw-bg-opacity: 1;
 				}
 			}
+
 			&:indeterminate {
 				--tw-bg-opacity: 1;
 
@@ -199,6 +208,7 @@
 				}
 			}
 		}
+
 		& .checkbox-input-element {
 			display: block;
 		}
@@ -206,7 +216,7 @@
 		& .icon {
 			width: 1.25em;
 			height: 1.25em;
-			left: 2px;
+			left: rem(2);
 			color: #000;
 
 			&::part(icon) {
@@ -244,7 +254,7 @@
 		.checkbox-container {
 			align-items: center;
 			display: flex;
-			min-height: 44px;
+			min-height: rem(44);
 			position: relative;
 		}
 
@@ -254,8 +264,8 @@
 			border-bottom-left-radius: var(--border-radius);
 			border-top-left-radius: var(--border-radius);
 			height: auto;
-			min-height: 32px;
-			min-width: 32px;
+			min-height: rem(32);
+			min-width: rem(32);
 
 			/* Stable position when paddings are changing */
 			&::part(icon) {
@@ -282,7 +292,7 @@
 		.input-label {
 			align-items: center;
 			display: flex;
-			min-height: 44px;
+			min-height: rem(44);
 			width: 100%;
 			padding-top: 0;
 		}
@@ -294,8 +304,8 @@
 			border-bottom-right-radius: var(--border-radius);
 			border-top-right-radius: var(--border-radius);
 			display: flex;
-			min-height: 32px;
-			padding-right: 12px;
+			min-height: rem(32);
+			padding-right: rem(12);
 			width: 100%;
 
 			@at-root [data-label-align='left']:not(.hide-label)#{&} {
@@ -303,7 +313,7 @@
 				border-top-right-radius: 0;
 				border-bottom-left-radius: var(--border-radius);
 				border-top-left-radius: var(--border-radius);
-				padding-left: 12px;
+				padding-left: rem(12);
 			}
 		}
 
@@ -324,10 +334,10 @@
 
 			.icon,
 			.input-label-span {
-				min-height: 34px;
-				border: 3px solid var(--color-ocean);
+				min-height: rem(34);
+				border: rem(3) solid var(--color-ocean);
 				background-clip: content-box; // emulate outline with offset
-				padding: 2px;
+				padding: rem(2);
 			}
 		}
 
@@ -345,15 +355,15 @@
 
 		&[data-label-align='left']:focus-within:not(.hide-label) {
 			.icon {
-				border-right: 3px solid var(--color-ocean);
-				padding-right: 2px;
+				border-right: rem(3) solid var(--color-ocean);
+				padding-right: rem(2);
 				border-left: none;
 				padding-left: 0;
 			}
 
 			.input-label-span {
-				border-left: 3px solid var(--color-ocean);
-				padding-left: 2px;
+				border-left: rem(3) solid var(--color-ocean);
+				padding-left: rem(2);
 				border-right: none;
 				padding-right: 0;
 			}

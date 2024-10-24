@@ -11,8 +11,8 @@
 			text-decoration-thickness: unset;
 
 			.kol-span-wc {
-				border-radius: 5px;
-				outline: 3px solid var(--color-ocean);
+				border-radius: rem(5);
+				outline: rem(3) solid var(--color-ocean);
 			}
 
 			&:hover {
@@ -27,7 +27,7 @@
 	}
 
 	.skip {
-		left: -99999px;
+		left: rem(-99999);
 		overflow: hidden;
 		position: absolute;
 		z-index: 9999999;

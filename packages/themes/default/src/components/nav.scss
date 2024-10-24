@@ -28,7 +28,7 @@
 		text-decoration: none;
 
 		.vertical & {
-			border-left: 2px solid transparent;
+			border-left: rem(2) solid transparent;
 			padding-left: rem(8);
 		}
 
