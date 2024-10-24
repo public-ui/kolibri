@@ -24,6 +24,8 @@
 		}
 
 		&__heading-button {
+			display: flex;
+
 			&:focus-within {
 				@include focus-outline;
 				cursor: pointer;
