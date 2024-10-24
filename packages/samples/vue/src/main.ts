@@ -8,6 +8,6 @@ register(DEFAULT, defineCustomElements)
 	.then(() => {
 		createApp(App).mount('#app');
 	})
-	.catch((error) => {
+	.catch(() => {
 		/* Handle errors */
 	});
