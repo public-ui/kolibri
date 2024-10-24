@@ -12,7 +12,7 @@ const increaseDate = () => {
 	date.value = new Date((date.value?.getTime() ?? 0) + 1000 * 60 * 60 * 24);
 };
 
-const text = defineModel<Date>('text');
+const text = defineModel<string>('text');
 text.value = 'Hello, World!';
 </script>
 
