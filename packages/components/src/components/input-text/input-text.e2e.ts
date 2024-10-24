@@ -14,6 +14,7 @@ test.describe('kol-input-text', () => {
 			await expect(page.getByTestId('input-counter')).toHaveText('5 Zeichen');
 		});
 	});
+
 	test.describe('smart-button', () => {
 		test('should have smart-button', async ({ page }) => {
 			const smartButton = JSON.stringify({
@@ -26,6 +27,22 @@ test.describe('kol-input-text', () => {
 			await expect(kolButton).toHaveCount(1);
 
 			await kolButton.click();
+		});
+	});
+
+	test.describe('DOM events', () => {
+		['click', 'focus', 'blur', 'input', 'change'].forEach((event) => {
+			test(`should emit ${event} when internal input emits ${event}`, async ({ page }) => {
+				await page.setContent('<kol-input-text _label="Input"></kol-input-text>');
+				const eventPromise = page.locator('kol-input-text').evaluate(async (element, event) => {
+					return new Promise((resolve) => {
+						element.addEventListener(event, resolve);
+					});
+				}, event);
+				await page.waitForChanges();
+				await page.locator('input').dispatchEvent(event);
+				await expect(eventPromise).resolves.toBeTruthy();
+			});
 		});
 	});
 });

@@ -44,19 +44,47 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	private inputRef?: HTMLInputElement;
 	private oldValue?: string;
 
+	private emitEvent(type: string): void {
+		this.host?.dispatchEvent(new Event(type, { bubbles: true, composed: true }));
+	}
+
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.inputRef = ref;
 	};
 
+	private readonly onBlur = (event: FocusEvent) => {
+		this.emitEvent('blur');
+		this.controller.onFacade.onBlur(event);
+	};
+
 	private readonly onChange = (event: Event) => {
-		if (this.oldValue !== this.inputRef?.value) {
-			this.oldValue = this.inputRef?.value;
-			this.controller.onFacade.onChange(event);
+		const value = this.inputRef?.value;
+
+		if (this.oldValue !== value) {
+			this.oldValue = value;
 		}
+
+		this.emitEvent('change');
+		this.controller.onFacade.onChange(event);
+	};
+
+	private readonly onClick = (event: MouseEvent) => {
+		this.emitEvent('click');
+		this.controller.onFacade.onClick(event);
+	};
+
+	private readonly onFocus = (event: FocusEvent) => {
+		this.emitEvent('focus');
+		this.controller.onFacade.onFocus(event);
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		const value = this.inputRef?.value ?? '';
+		setState(this, '_currentLength', value.length);
+
+		this._value = value;
+		this.emitEvent('input');
+
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -163,8 +191,10 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 							spellcheck="false"
 							type={this.state._type}
 							value={this.state._value as string}
-							{...this.controller.onFacade}
+							onBlur={this.onBlur}
 							onChange={this.onChange}
+							onClick={this.onClick}
+							onFocus={this.onFocus}
 							onInput={this.onInput}
 							onKeyDown={this.onKeyDown}
 						/>
@@ -325,7 +355,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: InputTextStates = {
 		_autoComplete: 'off',

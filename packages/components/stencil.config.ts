@@ -216,6 +216,13 @@ if (process.env.NODE_ENV === 'production') {
 			excludeComponents: EXCLUDE_TAGS,
 			proxiesFile: '../adapters/vue/src/index.ts',
 			includeDefineCustomElements: false,
+			componentModels: [
+				{
+					elements: ['kol-input-text'],
+					event: 'input',
+					targetAttr: '_value',
+				},
+			],
 		}),
 		{
 			minify: true,
