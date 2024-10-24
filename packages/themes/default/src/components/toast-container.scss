@@ -1,4 +1,5 @@
 @import '../mixins/rem';
+@import '../mixins/alert-wc.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -6,7 +7,10 @@
 		right: rem(16);
 		width: 440px;
 	}
+
 	.toast {
 		margin-top: rem(16);
+
+		@include kol-alert-theme;
 	}
 }

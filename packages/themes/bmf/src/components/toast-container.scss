@@ -1,4 +1,5 @@
 @import '../mixins/rem';
+@import '../mixins/alert.scss';
 
 @layer kol-theme-component {
 	:host {
@@ -14,5 +15,7 @@
 		&:first-child {
 			margin-top: 0;
 		}
+
+		@include kol-alert-theme;
 	}
 }

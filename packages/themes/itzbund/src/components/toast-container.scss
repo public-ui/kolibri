@@ -1,3 +1,4 @@
+@use './alert.scss';
 @import '../mixins/rem';
 
 @layer kol-theme-component {
@@ -12,5 +13,13 @@
 	.toast {
 		background-color: #fff;
 		margin-top: rem(16);
+
+		.heading {
+			width: 100%;
+
+			.heading-content {
+				flex: 1;
+			}
+		}
 	}
 }

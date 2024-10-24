@@ -1,6 +1,6 @@
-import type { ToastState } from '../../schema';
 import { h } from '@stencil/core';
-import { KolAlertTag } from '../../core/component-names';
+import KolAlertFc from '../../functional-components/Alert';
+import type { ToastState } from '../../schema';
 
 type Props = {
 	key: string;
@@ -12,18 +12,18 @@ type Props = {
 export const InternalToast = ({ key, onClose, onRef, toastState }: Props) => {
 	return (
 		<div class={`toast ${toastState.status}`} key={key}>
-			<KolAlertTag
+			<KolAlertFc
 				class="alert"
-				_alert={true}
-				_label={toastState.toast.label}
-				_level={0}
-				_hasCloser={true}
-				_type={toastState.toast.type}
-				_variant={toastState.toast.alertVariant || toastState.toast.variant || 'card'}
-				_on={{ onClose }}
+				alert={true}
+				label={toastState.toast.label}
+				level={0}
+				hasCloser={true}
+				type={toastState.toast.type}
+				variant={toastState.toast.alertVariant || toastState.toast.variant || 'card'}
+				onCloserClick={onClose}
 			>
 				<div ref={onRef}>{typeof toastState.toast.description === 'string' ? toastState.toast.description : null}</div>
-			</KolAlertTag>
+			</KolAlertFc>
 		</div>
 	);
 };
