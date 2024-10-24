@@ -7,21 +7,27 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 	selector: 'app-root',
 	standalone: true,
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.scss',
 	imports: [RouterOutlet, KoliBriModule, FormsModule],
 })
 export class AppComponent {
-	dateModel = new Date();
+	date = new Date();
+
+	get dateJson() {
+		return JSON.stringify(this.date);
+	}
+
+	get dateType() {
+		return typeof this.date;
+	}
 
 	public handleInput(evt: Event) {
-		const value = (evt.target as HTMLKolInputDateElement).value;
-		console.log('input', evt, value);
+		const value = (evt.target as HTMLKolInputDateElement)._value;
 		if (value instanceof Date) {
-			this.dateModel = value;
+			this.date = value;
 		}
 	}
 
-	public handleChange(evt: Event) {
-		console.log('change', evt, (evt.target as HTMLKolInputDateElement).value);
-	}
+	public readonly increaseDate = () => {
+		this.date = new Date(this.date.getTime() + 1000 * 60 * 60 * 24);
+	};
 }
