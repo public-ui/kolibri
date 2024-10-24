@@ -13,8 +13,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.5.12"
-  },
+    "vue": "^3.5.12",
+		"@public-ui/components": "workspace:*",
+		"@public-ui/vue": "workspace:*",
+		"@public-ui/themes": "workspace:*"
+	},
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.16.11",

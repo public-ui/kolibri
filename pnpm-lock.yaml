@@ -781,6 +781,15 @@ importers:
 
   packages/samples/vue:
     dependencies:
+      '@public-ui/components':
+        specifier: workspace:*
+        version: link:../../components
+      '@public-ui/themes':
+        specifier: workspace:*
+        version: link:../../themes
+      '@public-ui/vue':
+        specifier: workspace:*
+        version: link:../../adapters/vue
       vue:
         specifier: ^3.5.12
         version: 3.5.12(typescript@5.5.4)
