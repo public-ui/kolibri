@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { KolButton, KolInputDate } from '@public-ui/vue';
+import { KolButton, KolInputDate, KolInputText } from '@public-ui/vue';
 
-const date = defineModel('date');
+const date = defineModel<Date>('date');
 date.value = new Date();
 
-const handleDateInput = (event) => {
-	date.value = event.target._value;
+const handleDateInput = (event: Event) => {
+	date.value = (event.target as HTMLKolInputDateElement)._value as Date;
 };
 
 const increaseDate = () => {
-	date.value = new Date(date.value.getTime() + 1000 * 60 * 60 * 24);
+	date.value = new Date((date.value?.getTime() ?? 0) + 1000 * 60 * 60 * 24);
 };
+
+const text = defineModel<Date>('text');
+text.value = 'Hello, World!';
 </script>
 
 <template>
@@ -19,6 +22,12 @@ const increaseDate = () => {
 		<KolButton _label="increase" :_on="{ onClick: increaseDate }" />
 		<pre>
 value: {{ JSON.stringify(date) }} ({{ typeof date }})
+			</pre
+		>
+
+		<KolInputText _label="Text Input w/ v-model" v-model="text" />
+		<pre>
+value: {{ JSON.stringify(text) }} ({{ typeof text }})
 			</pre
 		>
 	</main>
