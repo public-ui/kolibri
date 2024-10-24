@@ -26,18 +26,20 @@ function FormikFieldContainer(props: FormSectionProps & InternalFormSectionProps
 			<KolForm
 				_on={{
 					onSubmit: async () => {
-						setSectionSubmitted(true);
-						const errors = await form.validateForm();
+						setTimeout(async () => {
+							setSectionSubmitted(true);
+							const errors = await form.validateForm();
 
-						if (Object.keys(errors).length) {
-							form.setTouched(setNestedObjectValues<FormikTouched<unknown>>(errors, true));
-							setTimeout(() => formErrorListRef.current?.focus(), 300);
-							return;
-						}
+							if (Object.keys(errors).length) {
+								form.setTouched(setNestedObjectValues<FormikTouched<unknown>>(errors, true));
+								setTimeout(() => formErrorListRef.current?.focus(), 30);
+								return;
+							}
 
-						await form.submitForm();
+							await form.submitForm();
 
-						onSubmitSucceeded?.(index);
+							onSubmitSucceeded?.(index);
+						}, 10)
 					},
 				}}
 			>
