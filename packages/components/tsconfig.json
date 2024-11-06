@@ -18,7 +18,17 @@
 		"removeComments": true,
 		"typeRoots": ["node_modules/@types"],
 		"strict": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"@component-names": ["./src/core/component-names"],
+			"@fc": ["./src/functional-components"],
+			"@functional-components": ["./src/functional-components"],
+			"@schema": ["./src/schema"],
+			"@testing": ["./src/utils/testing"],
+			"@utils": ["./src/utils"],
+			"@i18n": ["./src/i18n"]
+		}
 	},
 	"include": ["src"],
 	"exclude": ["node_modules"]
