@@ -109,6 +109,8 @@ Durch die Verwendung des **`_dataFoot_`**-Attribut können zusammenfassende Info
 
 ### Render Funktion
 
+Render-Funktionen werden als Teil der Tabellen-Header definiert. Siehe Abschnitt "KoliBriTableHeaders". Gibt es sowohl horizontale als auch vertikale Header, muss die Render-Funktion für die _horizontalen_ Header definiert werden. Gibt es nur vertikale Header, können die Render-Funktionen dort definiert werden.
+
 Die `render` Funktion kann auf verschiedene Arten wie folgt verwendet werden.  
 Alle Methoden sind auch in diesem Beispiel demonstriert: [render-cell.tsx](https://github.com/public-ui/kolibri/blob/23ebb42d1ce3c8d1e4c74a5c7972842d5e4203fe/packages/samples/react/src/components/table/render-cell.tsx#L34)
 

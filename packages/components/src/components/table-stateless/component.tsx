@@ -486,7 +486,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @param {number} rowIndex  The index of the current row being rendered.
 	 * @returns {JSX.Element}  The rendered row with its cells.
 	 */
-	private readonly renderTableRow = (row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element => {
+	private readonly renderTableRow = (row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number, isVertical: boolean): JSX.Element => {
 		let key = String(rowIndex);
 		if (this.horizontal && row[0]?.data) {
 			key = this.getDataKey(row[0].data) ?? key;
@@ -495,7 +495,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<tr key={`row-${key}`}>
 				{this.renderSelectionCell(row, rowIndex)}
-				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex))}
+				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex, isVertical))}
 			</tr>
 		);
 	};
@@ -509,7 +509,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @param {number} colIndex  The current column index.
 	 * @returns {JSX.Element}  The rendered table cell (either `<td>` or `<th>`).
 	 */
-	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
+	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element => {
 		let key = `${rowIndex}-${colIndex}-${cell.label}`;
 		if (cell.data) {
 			const dataKey = this.getDataKey(cell.data);
@@ -517,7 +517,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		if (cell.asTd === false) {
-			return this.renderHeadingCell(cell, rowIndex, colIndex);
+			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
 		} else {
 			return (
 				<td
@@ -604,7 +604,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @param {number} colIndex  The index of the current column in the row.
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
-	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number): JSX.Element {
+	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
 		let ariaSort = undefined;
 		let sortButtonIcon = 'codicon codicon-fold';
 
@@ -621,11 +621,13 @@ export class KolTableStateless implements TableStatelessAPI {
 			}
 		}
 
+		const scope = isVertical ? 'row' : typeof cell.colSpan === 'number' && cell.colSpan > 1 ? 'colgroup' : 'col';
+
 		return (
 			<th
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
 				class={cell.textAlign ? `align-${cell.textAlign}` : undefined}
-				scope={typeof cell.colSpan === 'number' && cell.colSpan > 1 ? 'colgroup' : 'col'}
+				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
 				style={{
@@ -674,7 +676,14 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		const rows: KoliBriTableCell[][] = this.createDataField(this.state._dataFoot, this.state._headerCells, true);
-		return <tfoot>{[this.renderSpacer('foot', rows), rows.map(this.renderTableRow)]}</tfoot>;
+		return (
+			<tfoot>
+				{[
+					this.renderSpacer('foot', rows),
+					rows.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true)),
+				]}
+			</tfoot>
+		);
 	}
 
 	public render(): JSX.Element {
@@ -737,7 +746,7 @@ export class KolTableStateless implements TableStatelessAPI {
 														</td>
 													);
 												} else {
-													return this.renderHeadingCell(cell, rowIndex, colIndex);
+													return this.renderHeadingCell(cell, rowIndex, colIndex, false);
 												}
 											})}
 										</tr>
@@ -746,7 +755,7 @@ export class KolTableStateless implements TableStatelessAPI {
 								]}
 							</thead>
 						)}
-						<tbody>{dataField.map(this.renderTableRow)}</tbody>
+						<tbody>{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}</tbody>
 						{this.renderFoot()}
 					</table>
 				</div>

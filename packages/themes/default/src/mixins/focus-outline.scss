@@ -6,3 +6,10 @@
 	outline: var(--color-primary-variant) solid rem(3);
 	transition: 200ms outline-offset linear;
 }
+
+@mixin switch-outline {
+	outline-color: var(--color-primary);
+	outline-offset: rem(2);
+	outline-style: solid;
+	outline-width: rem(2);
+}

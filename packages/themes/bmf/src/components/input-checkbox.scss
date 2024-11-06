@@ -1,5 +1,6 @@
 @import '../mixins/input-messages';
 @import '../mixins/rem';
+@import '../mixins/focus-outline';
 
 @layer kol-theme-component {
 	:host {
@@ -67,7 +68,7 @@
 		}
 
 		&.error input:focus {
-			outline-color: var(--color-red);
+			outline-color: var(--color-red) !important;
 		}
 	}
 
@@ -168,6 +169,7 @@
 	}
 
 	/* SWITCH */
+
 	:host .kol-input.switch {
 		input[type='checkbox'] {
 			min-width: 3.5em;
@@ -198,6 +200,10 @@
 					transform: translateX(2em);
 					--tw-bg-opacity: 1;
 				}
+			}
+
+			&:focus {
+				@include switch-outline;
 			}
 
 			&:indeterminate {
