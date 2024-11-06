@@ -4,13 +4,16 @@ on:
     types: [opened, edited, synchronize]
 
 concurrency:
-  group: ci-{{ github.head_ref || github.ref }}
+  group: pr-{{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
   check-dod:
     runs-on: ubuntu-20.04
     steps:
+      - name: Print Pull Request ID
+        run: |
+          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
       - name: Clone Repo
         uses: actions/checkout@v3
       - name: Check DoD
