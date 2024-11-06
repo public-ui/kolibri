@@ -1,29 +1,11 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolSpanWcTag } from '@component-names';
+import type { SpanProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { SpanProps } from '../../../schema';
 import { KolSpanWc } from '../component';
-import { getSpanWcHtml } from './html.mock';
 
-executeTests<SpanProps>(
-	'Span',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolSpanWc],
-			template: () => <kol-span-wc {...props} />,
-		});
-		return page;
-	},
-	{
-		_icons: ['codicon codicon-home'],
-		_hideLabel: [true, false],
-		_label: ['Text', ''],
-	},
-	getSpanWcHtml,
-	{
-		execMode: 'default', // ready
-	},
+executeSnapshotTests<SpanProps>(
+	KolSpanWcTag,
+	[KolSpanWc],
+	[{ _label: 'Text' }, { _label: 'Text', _accessKey: 'v' }, { _label: 'Text', _hideLabel: true }, { _label: 'Text', _icons: 'codicon codicon-home' }],
 );

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-span-wc should render with _label="Text" _accessKey="v" 1`] = `
+<kol-span-wc class="kol-span-wc">
+  <!---->
+  <span>
+    <span class="span-label">
+      Text
+    </span>
+    <span aria-hidden="true" class="span-label" hidden=""></span>
+    <span aria-hidden="true" class="access-key-hint">
+      v
+    </span>
+  </span>
+</kol-span-wc>
+`;
+
+exports[`kol-span-wc should render with _label="Text" _hideLabel=true 1`] = `
+<kol-span-wc class="hide-label kol-span-wc">
+  <!---->
+  <span>
+    <span aria-hidden="true" class="span-label" hidden=""></span>
+  </span>
+</kol-span-wc>
+`;
+
+exports[`kol-span-wc should render with _label="Text" _icons="codicon codicon-home" 1`] = `
+<kol-span-wc class="kol-span-wc">
+  <!---->
+  <span>
+    <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+    <span class="span-label">
+      Text
+    </span>
+    <span aria-hidden="true" class="span-label" hidden=""></span>
+  </span>
+</kol-span-wc>
+`;
+
+exports[`kol-span-wc should render with _label="Text" 1`] = `
+<kol-span-wc class="kol-span-wc">
+  <!---->
+  <span>
+    <span class="span-label">
+      Text
+    </span>
+    <span aria-hidden="true" class="span-label" hidden=""></span>
+  </span>
+</kol-span-wc>
+`;

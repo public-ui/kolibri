@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-indented-text should render with  1`] = `
+<kol-indented-text class="kol-indented-text">
+  <template shadowrootmode="open">
+    <kol-indented-text-wc class="kol-indented-text-wc">
+      <!---->
+      <div>
+        <slot></slot>
+      </div>
+    </kol-indented-text-wc>
+  </template>
+</kol-indented-text>
+`;
