@@ -1,30 +1,20 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolDetailsTag } from '@component-names';
+import type { DetailsProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getDetailsHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { DetailsProps } from '../../../schema';
 import { KolDetails } from '../shadow';
 
-executeTests<DetailsProps>(
-	'Details',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolDetails],
-			template: () => <kol-details {...props} />,
-		});
-		return page;
-	},
-	{
-		_disabled: [true, false],
-		_label: ['Zusammenfassung'],
-		_open: [false, true],
-	},
-	getDetailsHtml,
-	{
-		execMode: 'default', // ready
-	},
+executeSnapshotTests<DetailsProps>(
+	KolDetailsTag,
+	[KolDetails],
+	[
+		{ _label: 'Zusammenfassung' },
+
+		{ _label: 'Zusammenfassung', _disabled: true, _open: false },
+		{ _label: 'Zusammenfassung', _disabled: true, _open: true },
+		{ _label: 'Zusammenfassung', _disabled: false, _open: false },
+		{ _label: 'Zusammenfassung', _disabled: false, _open: true },
+
+		...[0, 1, 2, 3, 4, 5, 6].map((_level) => ({ _label: 'Zusammenfassung', _level }) as DetailsProps),
+	],
 );

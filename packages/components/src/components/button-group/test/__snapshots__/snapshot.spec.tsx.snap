@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-button-group should render with  1`] = `
+<kol-button-group class="kol-button-group">
+  <template shadowrootmode="open">
+    <kol-button-group-wc class="kol-button-group-wc">
+      <!---->
+      <slot></slot>
+    </kol-button-group-wc>
+  </template>
+</kol-button-group>
+`;

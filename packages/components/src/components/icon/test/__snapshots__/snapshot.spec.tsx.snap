@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-icon should render with _label="Aria-Label" _icons="codicon codicon-home" 1`] = `
+<kol-icon class="kol-icon" exportparts="icon">
+  <template shadowrootmode="open">
+    <i aria-label="Aria-Label" class="codicon codicon-home" part="icon" role="img"></i>
+  </template>
+</kol-icon>
+`;

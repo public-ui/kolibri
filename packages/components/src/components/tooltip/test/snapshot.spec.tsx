@@ -1,30 +1,17 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolTooltipWcTag } from '@component-names';
+import type { TooltipProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getTooltipHtml } from './html.mock';
-
-import type { TooltipProps } from '../../../schema';
-import type { SpecPage } from '@stencil/core/testing';
 import { KolTooltipWc } from '../component';
 
-executeTests<TooltipProps>(
-	'Tooltip',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolTooltipWc],
-			template: () => <kol-tooltip-wc {...props} />,
-		});
-		return page;
-	},
-	{
-		_align: ['top', 'right', 'bottom', 'left'],
-		_id: ['id'],
-		_label: ['Label'],
-	},
-	getTooltipHtml,
-	{
-		execMode: 'default', // ready
-	},
+executeSnapshotTests<TooltipProps>(
+	KolTooltipWcTag,
+	[KolTooltipWc],
+	[
+		{ _id: 'id', _label: 'Label' },
+		{ _id: 'id', _label: 'Label', _align: 'top' },
+		{ _id: 'id', _label: 'Label', _align: 'left' },
+		{ _id: 'id', _label: 'Label', _align: 'right' },
+		{ _id: 'id', _label: 'Label', _align: 'bottom' },
+	],
 );

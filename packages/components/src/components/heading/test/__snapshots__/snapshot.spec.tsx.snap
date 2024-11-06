@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-heading should render with _label="Headline" _level=0 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _level="0" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _level=1 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _level="1" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _level=2 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _level="2" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _level=3 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _level="3" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _level=4 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _level="4" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _level=5 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _level="5" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _level=6 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _level="6" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _variant="h1" 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _variant="h1" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _variant="h2" 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _variant="h2" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _variant="h3" 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _variant="h3" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _variant="h4" 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _variant="h4" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _variant="h5" 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _variant="h5" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _variant="h6" 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _variant="h6" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" _variant="strong" 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" _variant="strong" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;
+
+exports[`kol-heading should render with _label="Headline" 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <kol-heading-wc _label="Headline" class="kol-heading">
+      <slot name="expert" slot="expert"></slot>
+    </kol-heading-wc>
+  </template>
+</kol-heading>
+`;

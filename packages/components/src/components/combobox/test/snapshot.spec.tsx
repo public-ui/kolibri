@@ -1,28 +1,21 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolComboboxTag } from '@component-names';
+import type { ComboboxProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getComboboxHtml } from './html.mock';
-
-import type { ComboboxProps } from '../../../schema';
-import type { SpecPage } from '@stencil/core/testing';
 import { KolCombobox } from '../shadow';
 
-executeTests<ComboboxProps>(
-	'Combobox',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolCombobox],
-			template: () => <kol-combobox {...props} />,
-		});
-		return page;
-	},
-	{
-		_hideError: [false, true],
-		_suggestions: ['Frau', 'Herr', 'Divers'],
-		_icons: [
-			{
+const baseObj: ComboboxProps = { _label: 'Label', _suggestions: ['Frau', 'Herr', 'Divers'] };
+
+executeSnapshotTests<ComboboxProps>(
+	KolComboboxTag,
+	[KolCombobox],
+	[
+		{ ...baseObj },
+		{ ...baseObj, _hideError: false },
+		{ ...baseObj, _hideError: true },
+		{
+			...baseObj,
+			_icons: {
 				left: {
 					icon: 'codicon codicon-arrow-left',
 				},
@@ -30,14 +23,11 @@ executeTests<ComboboxProps>(
 					icon: 'codicon codicon-arrow-right',
 				},
 			},
-		],
-		_required: [false, true],
-		_touched: [false, true],
-		_label: ['Label'],
-	},
-	getComboboxHtml,
-	{
-		execMode: 'default', // ready
-		needTimers: true,
-	},
+		},
+		{ ...baseObj, _required: false },
+		{ ...baseObj, _required: true },
+		{ ...baseObj, _touched: false },
+		{ ...baseObj, _touched: true },
+		{ ...baseObj, _disabled: true },
+	],
 );

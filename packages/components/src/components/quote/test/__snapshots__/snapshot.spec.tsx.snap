@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-quote should render with _label="Caption" _href="https://www.example.com" _quote="Text of the Quote" _variant="block" 1`] = `
+<kol-quote class="kol-quote">
+  <template shadowrootmode="open">
+    <figure class="block">
+      <blockquote cite="https://www.example.com">
+        Text of the Quote
+        <span aria-hidden="true" hidden="">
+          <slot name="expert"></slot>
+        </span>
+      </blockquote>
+      <figcaption>
+        <cite>
+          <kol-link _href="https://www.example.com" _label="Caption" _target="_blank"></kol-link>
+        </cite>
+      </figcaption>
+    </figure>
+  </template>
+</kol-quote>
+`;
+
+exports[`kol-quote should render with _label="Caption" _href="https://www.example.com" _quote="Text of the Quote" _variant="inline" 1`] = `
+<kol-quote class="kol-quote">
+  <template shadowrootmode="open">
+    <figure class="inline">
+      <q cite="https://www.example.com">
+        Text of the Quote
+        <span aria-hidden="true" hidden="">
+          <slot name="expert"></slot>
+        </span>
+      </q>
+      <figcaption>
+        <cite>
+          <kol-link _href="https://www.example.com" _label="Caption" _target="_blank"></kol-link>
+        </cite>
+      </figcaption>
+    </figure>
+  </template>
+</kol-quote>
+`;
+
+exports[`kol-quote should render with _label="Caption" _href="https://www.example.com" _quote="Text of the Quote" 1`] = `
+<kol-quote class="kol-quote">
+  <template shadowrootmode="open">
+    <figure class="inline">
+      <q cite="https://www.example.com">
+        Text of the Quote
+        <span aria-hidden="true" hidden="">
+          <slot name="expert"></slot>
+        </span>
+      </q>
+      <figcaption>
+        <cite>
+          <kol-link _href="https://www.example.com" _label="Caption" _target="_blank"></kol-link>
+        </cite>
+      </figcaption>
+    </figure>
+  </template>
+</kol-quote>
+`;

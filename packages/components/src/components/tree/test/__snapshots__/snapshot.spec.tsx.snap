@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-tree should render with _label="Label" 1`] = `
+<kol-tree class="kol-tree">
+  <template shadowrootmode="open">
+    <kol-tree-wc class="kol-tree-wc">
+      <!---->
+      <nav aria-label="Label" class="tree">
+        <ul aria-label="Label" class="treeview-navigation" role="tree">
+          <slot></slot>
+        </ul>
+      </nav>
+    </kol-tree-wc>
+  </template>
+</kol-tree>
+`;

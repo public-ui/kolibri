@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=false _disabled=false 1`] = `
+<kol-accordion class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible" id="nonce">
+      <kol-heading-wc _label="" _level="1" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _icons="codicon codicon-add" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div aria-hidden="true" class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=false _disabled=true 1`] = `
+<kol-accordion class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible disabled" id="nonce">
+      <kol-heading-wc _label="" _level="1" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _disabled="" _icons="codicon codicon-add" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div aria-hidden="true" class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=true _disabled=false 1`] = `
+<kol-accordion _open="" class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible open" id="nonce">
+      <kol-heading-wc _label="" _level="1" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _ariaexpanded="" _icons="codicon codicon-remove" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=true _disabled=true 1`] = `
+<kol-accordion _open="" class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible disabled open" id="nonce">
+      <kol-heading-wc _label="" _level="1" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _ariaexpanded="" _disabled="" _icons="codicon codicon-remove" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" _level=1 1`] = `
+<kol-accordion class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible" id="nonce">
+      <kol-heading-wc _label="" _level="1" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _icons="codicon codicon-add" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div aria-hidden="true" class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" _level=2 1`] = `
+<kol-accordion class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible" id="nonce">
+      <kol-heading-wc _label="" _level="2" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _icons="codicon codicon-add" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div aria-hidden="true" class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" _level=3 1`] = `
+<kol-accordion class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible" id="nonce">
+      <kol-heading-wc _label="" _level="3" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _icons="codicon codicon-add" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div aria-hidden="true" class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" _level=4 1`] = `
+<kol-accordion class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible" id="nonce">
+      <kol-heading-wc _label="" _level="4" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _icons="codicon codicon-add" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div aria-hidden="true" class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" _level=5 1`] = `
+<kol-accordion class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible" id="nonce">
+      <kol-heading-wc _label="" _level="5" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _icons="codicon codicon-add" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div aria-hidden="true" class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" _level=6 1`] = `
+<kol-accordion class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible" id="nonce">
+      <kol-heading-wc _label="" _level="6" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _icons="codicon codicon-add" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div aria-hidden="true" class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;
+
+exports[`kol-accordion should render with _label="Überschrift" 1`] = `
+<kol-accordion class="kol-accordion">
+  <template shadowrootmode="open">
+    <div class="accordion collapsible" id="nonce">
+      <kol-heading-wc _label="" _level="1" class="accordion__heading collapsible__heading">
+        <kol-button-wc _ariacontrols="nonce-control" _icons="codicon codicon-add" _label="Überschrift" class="accordion__heading-button collapsible__heading-button" slot="expert"></kol-button-wc>
+      </kol-heading-wc>
+      <div class="accordion__wrapper collapsible__wrapper">
+        <div class="accordion__wrapper-animation collapsible__wrapper-animation">
+          <div aria-hidden="true" class="accordion__content collapsible__content" id="nonce-control">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-accordion>
+`;

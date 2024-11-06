@@ -1,30 +1,37 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolCardTag } from '@component-names';
+import type { CardProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getCardHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { CardProps } from '../../../schema';
 import { KolCard } from '../shadow';
 
-executeTests<CardProps>(
-	'Card',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolCard],
-			template: () => <kol-card {...props} />,
-		});
-		return page;
-	},
-	{
-		_hasCloser: [false, true],
-		_label: ['Überschrift'],
-		_level: [1, 2, 3, 4, 5, 6],
-	},
-	getCardHtml,
-	{
-		execMode: 'default', // ready
-	},
+executeSnapshotTests<CardProps>(
+	KolCardTag,
+	[KolCard],
+	[
+		{ _label: 'Überschrift' },
+
+		{ _label: 'Überschrift', _level: 0 },
+		{ _label: 'Überschrift', _level: 1 },
+		{ _label: 'Überschrift', _level: 2 },
+		{ _label: 'Überschrift', _level: 3 },
+		{ _label: 'Überschrift', _level: 4 },
+		{ _label: 'Überschrift', _level: 5 },
+		{ _label: 'Überschrift', _level: 6 },
+
+		{ _label: 'Überschrift', _level: 0, _hasCloser: false },
+		{ _label: 'Überschrift', _level: 1, _hasCloser: false },
+		{ _label: 'Überschrift', _level: 2, _hasCloser: false },
+		{ _label: 'Überschrift', _level: 3, _hasCloser: false },
+		{ _label: 'Überschrift', _level: 4, _hasCloser: false },
+		{ _label: 'Überschrift', _level: 5, _hasCloser: false },
+		{ _label: 'Überschrift', _level: 6, _hasCloser: false },
+
+		{ _label: 'Überschrift', _level: 0, _hasCloser: true },
+		{ _label: 'Überschrift', _level: 1, _hasCloser: true },
+		{ _label: 'Überschrift', _level: 2, _hasCloser: true },
+		{ _label: 'Überschrift', _level: 3, _hasCloser: true },
+		{ _label: 'Überschrift', _level: 4, _hasCloser: true },
+		{ _label: 'Überschrift', _level: 5, _hasCloser: true },
+		{ _label: 'Überschrift', _level: 6, _hasCloser: true },
+	],
 );

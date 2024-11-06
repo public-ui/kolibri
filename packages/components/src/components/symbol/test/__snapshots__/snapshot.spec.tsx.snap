@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-symbol should render with _label="Backslash" _symbol="\\\\" 1`] = `
+<kol-symbol class="kol-symbol">
+  <span aria-label="Backslash" role="term">
+    \\
+  </span>
+</kol-symbol>
+`;
+
+exports[`kol-symbol should render with _label="Slash" _symbol="/" 1`] = `
+<kol-symbol class="kol-symbol">
+  <span aria-label="Slash" role="term">
+    /
+  </span>
+</kol-symbol>
+`;

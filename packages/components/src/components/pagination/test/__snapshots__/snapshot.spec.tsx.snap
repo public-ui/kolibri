@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 _hasButtons=false _siblingCount=0 1`] = `
+<kol-pagination class="kol-pagination">
+  <template shadowrootmode="open">
+    <nav aria-label="Label">
+      <ul class="navigation-list"></ul>
+    </nav>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 1`] = `
+<kol-pagination class="kol-pagination">
+  <template shadowrootmode="open">
+    <nav aria-label="Label">
+      <ul class="navigation-list">
+        <li>
+          <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="first" exportparts="icon"></kol-button-wc>
+        </li>
+        <li>
+          <kol-button-wc _disabled="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="previous" exportparts="icon"></kol-button-wc>
+        </li>
+        <li>
+          <kol-button-wc _disabled="" _label="" class="selected">
+            <span slot="expert">
+              <span class="visually-hidden">
+                kol-page
+              </span>
+              1
+            </span>
+          </kol-button-wc>
+        </li>
+        <li>
+          <kol-button-wc _label="" exportparts="icon">
+            <span slot="expert">
+              <span class="visually-hidden">
+                kol-page
+              </span>
+              2
+            </span>
+          </kol-button-wc>
+        </li>
+        <li>
+          <kol-button-wc _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="next" exportparts="icon"></kol-button-wc>
+        </li>
+        <li>
+          <kol-button-wc _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="last" exportparts="icon"></kol-button-wc>
+        </li>
+      </ul>
+    </nav>
+  </template>
+</kol-pagination>
+`;

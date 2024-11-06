@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-combobox should render with _label="Label" _suggestions=["Frau","Herr","Divers"] _disabled=true 1`] = `
+<kol-combobox class="kol-combobox">
+  <template shadowrootmode="open">
+    <div class="combobox combobox--disabled">
+      <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="combobox__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" disabled="" id="id-nonce" role="combobox" spellcheck="false" type="text" value="">
+            <button class="combobox__icon" disabled="" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-combobox>
+`;
+
+exports[`kol-combobox should render with _label="Label" _suggestions=["Frau","Herr","Divers"] _hideError=false 1`] = `
+<kol-combobox class="kol-combobox">
+  <template shadowrootmode="open">
+    <div class="combobox">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="combobox__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" id="id-nonce" role="combobox" spellcheck="false" type="text" value="">
+            <button class="combobox__icon" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-combobox>
+`;
+
+exports[`kol-combobox should render with _label="Label" _suggestions=["Frau","Herr","Divers"] _hideError=true 1`] = `
+<kol-combobox _hide-error="" class="kol-combobox">
+  <template shadowrootmode="open">
+    <div class="combobox">
+      <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="combobox__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" id="id-nonce" role="combobox" spellcheck="false" type="text" value="">
+            <button class="combobox__icon" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-combobox>
+`;
+
+exports[`kol-combobox should render with _label="Label" _suggestions=["Frau","Herr","Divers"] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-combobox class="kol-combobox">
+  <template shadowrootmode="open">
+    <div class="combobox">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="combobox__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" id="id-nonce" role="combobox" spellcheck="false" type="text" value="">
+            <button class="combobox__icon" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-combobox>
+`;
+
+exports[`kol-combobox should render with _label="Label" _suggestions=["Frau","Herr","Divers"] _required=false 1`] = `
+<kol-combobox class="kol-combobox">
+  <template shadowrootmode="open">
+    <div class="combobox">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="combobox__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" id="id-nonce" role="combobox" spellcheck="false" type="text" value="">
+            <button class="combobox__icon" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-combobox>
+`;
+
+exports[`kol-combobox should render with _label="Label" _suggestions=["Frau","Herr","Divers"] _required=true 1`] = `
+<kol-combobox class="kol-combobox">
+  <template shadowrootmode="open">
+    <div class="combobox">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _required="" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="combobox__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" id="id-nonce" required="" role="combobox" spellcheck="false" type="text" value="">
+            <button class="combobox__icon" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-combobox>
+`;
+
+exports[`kol-combobox should render with _label="Label" _suggestions=["Frau","Herr","Divers"] _touched=false 1`] = `
+<kol-combobox class="kol-combobox">
+  <template shadowrootmode="open">
+    <div class="combobox">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="combobox__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" id="id-nonce" role="combobox" spellcheck="false" type="text" value="">
+            <button class="combobox__icon" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-combobox>
+`;
+
+exports[`kol-combobox should render with _label="Label" _suggestions=["Frau","Herr","Divers"] _touched=true 1`] = `
+<kol-combobox _touched="" class="kol-combobox">
+  <template shadowrootmode="open">
+    <div class="combobox">
+      <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="combobox__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" id="id-nonce" role="combobox" spellcheck="false" type="text" value="">
+            <button class="combobox__icon" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-combobox>
+`;
+
+exports[`kol-combobox should render with _label="Label" _suggestions=["Frau","Herr","Divers"] 1`] = `
+<kol-combobox class="kol-combobox">
+  <template shadowrootmode="open">
+    <div class="combobox">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="combobox__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="combobox__input" id="id-nonce" role="combobox" spellcheck="false" type="text" value="">
+            <button class="combobox__icon" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-combobox>
+`;

@@ -1,28 +1,28 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolDrawerTag } from '@component-names';
+import type { DrawerProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getDrawerHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { DrawerProps } from '../../../schema';
 import { KolDrawer } from '../shadow';
 
-executeTests<DrawerProps>(
-	'Drawer',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolDrawer],
-			template: () => <kol-drawer {...props} />,
-		});
-		return page;
-	},
-	{
-		_label: ['Label'],
-		_open: [true, false],
-		_modal: [true, false],
-		_align: ['top', 'right', 'bottom', 'left'],
-	},
-	getDrawerHtml,
+function getVariantsByModalMode(modal: boolean) {
+	return ['top', 'right', 'bottom', 'left'].map((variant) => ({
+		_label: 'Label',
+		_modal: modal,
+		_open: true,
+		_variant: variant,
+	}));
+}
+
+executeSnapshotTests<DrawerProps>(
+	KolDrawerTag,
+	[KolDrawer],
+	[
+		{ _label: 'Label' },
+		{ _label: 'Label', _open: false },
+		{ _label: 'Label', _modal: false, _open: false },
+		{ _label: 'Label', _modal: true, _open: false },
+
+		...getVariantsByModalMode(false),
+		...getVariantsByModalMode(true),
+	],
 );

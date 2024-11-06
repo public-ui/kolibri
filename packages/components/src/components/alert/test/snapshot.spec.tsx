@@ -1,32 +1,29 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolAlertTag } from '@component-names';
+import type { AlertProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getAlertHtml } from './html.mock';
-
-import type { AlertProps } from '../../../schema';
-import type { SpecPage } from '@stencil/core/testing';
 import { KolAlert } from '../shadow';
 import { KolAlertWc } from '../component';
 
-executeTests<AlertProps>(
-	'Alert',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolAlert, KolAlertWc],
-			template: () => <kol-alert {...props} />,
-		});
-		return page;
-	},
-	{
-		_alert: [false, true],
-		_label: ['Überschrift'],
-		_level: [1, 2, 3, 4, 5, 6],
-		_type: ['default', 'error', 'info', 'success', 'warning'],
-	},
-	getAlertHtml,
-	{
-		needTimers: true,
-	},
+// _alert: [false, true],
+// _label: ['Überschrift'],
+// _level: [1, 2, 3, 4, 5, 6],
+// _type: ['default', 'error', 'info', 'success', 'warning'],
+
+const baseObject = { _label: 'Überschrift' };
+const baseArray = [true, false].map((_alert) => ({ ...baseObject, _alert }));
+
+function buildByType(_type: 'default' | 'error' | 'info' | 'success' | 'warning') {
+	const nextArray: AlertProps[] = [];
+	[1, 2, 3, 4, 5, 6].forEach((_level) => {
+		nextArray.push(...baseArray.map((o) => ({ ...o, _level, _type }) as AlertProps));
+	});
+
+	return nextArray;
+}
+
+executeSnapshotTests<AlertProps>(
+	KolAlertTag,
+	[KolAlert, KolAlertWc],
+	[...buildByType('default'), ...buildByType('error'), ...buildByType('info'), ...buildByType('success'), ...buildByType('warning')],
 );

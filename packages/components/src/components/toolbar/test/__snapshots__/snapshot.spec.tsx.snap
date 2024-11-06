@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-toolbar should render with _label="Text" _items=[{"_label":"Button"},{"_href":"#","_label":"Link"}] 1`] = `
+<kol-toolbar class="kol-toolbar">
+  <template shadowrootmode="open">
+    <div aria-label="Text" class="toolbar" role="toolbar">
+      <kol-button _label="Button" _tabindex="0" class="kol-toolbar-item"></kol-button>
+      <kol-link _href="#" _label="Link" _tabindex="-1" class="kol-toolbar-item"></kol-link>
+    </div>
+  </template>
+</kol-toolbar>
+`;

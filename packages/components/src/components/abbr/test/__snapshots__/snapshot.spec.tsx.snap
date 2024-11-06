@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-abbr should render with _label="Text" _tooltipAlign="bottom" 1`] = `
+<kol-abbr class="kol-abbr">
+  <template shadowrootmode="open">
+    <abbr aria-labelledby="nonce" role="definition" tabindex="0" title="Text">
+      <span>
+        <slot></slot>
+      </span>
+    </abbr>
+    <kol-tooltip-wc _align="bottom" _id="nonce" _label="Text"></kol-tooltip-wc>
+  </template>
+</kol-abbr>
+`;
+
+exports[`kol-abbr should render with _label="Text" _tooltipAlign="left" 1`] = `
+<kol-abbr class="kol-abbr">
+  <template shadowrootmode="open">
+    <abbr aria-labelledby="nonce" role="definition" tabindex="0" title="Text">
+      <span>
+        <slot></slot>
+      </span>
+    </abbr>
+    <kol-tooltip-wc _align="left" _id="nonce" _label="Text"></kol-tooltip-wc>
+  </template>
+</kol-abbr>
+`;
+
+exports[`kol-abbr should render with _label="Text" _tooltipAlign="right" 1`] = `
+<kol-abbr class="kol-abbr">
+  <template shadowrootmode="open">
+    <abbr aria-labelledby="nonce" role="definition" tabindex="0" title="Text">
+      <span>
+        <slot></slot>
+      </span>
+    </abbr>
+    <kol-tooltip-wc _align="right" _id="nonce" _label="Text"></kol-tooltip-wc>
+  </template>
+</kol-abbr>
+`;
+
+exports[`kol-abbr should render with _label="Text" _tooltipAlign="top" 1`] = `
+<kol-abbr class="kol-abbr">
+  <template shadowrootmode="open">
+    <abbr aria-labelledby="nonce" role="definition" tabindex="0" title="Text">
+      <span>
+        <slot></slot>
+      </span>
+    </abbr>
+    <kol-tooltip-wc _align="top" _id="nonce" _label="Text"></kol-tooltip-wc>
+  </template>
+</kol-abbr>
+`;
+
+exports[`kol-abbr should render with _label="Text" 1`] = `
+<kol-abbr class="kol-abbr">
+  <template shadowrootmode="open">
+    <abbr aria-labelledby="nonce" role="definition" tabindex="0" title="Text">
+      <span>
+        <slot></slot>
+      </span>
+    </abbr>
+    <kol-tooltip-wc _align="top" _id="nonce" _label="Text"></kol-tooltip-wc>
+  </template>
+</kol-abbr>
+`;

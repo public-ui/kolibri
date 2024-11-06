@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-tabs should render with _label="Text" _selected=1 _tabs=[{"_icons":"codicon codicon-pie-chart","_label":"Erster Tab"},{"_icons":"codicon codicon-calendar","_label":"Zweiter Tab"},{"_disabled":true,"_icons":"codicon codicon-briefcase","_label":"Deaktivierter Tab"},{"_icons":"codicon codicon-telescope","_label":"Letzter Tab"}] 1`] = `
+<kol-tabs _selected="1" class="kol-tabs">
+  <template shadowrootmode="open">
+    <div class="tabs-align-top">
+      <div aria-label="Text" class="tabs-button-group" role="tablist">
+        <kol-button-wc _ariacontrols="tabpanel-0" _icons="codicon codicon-pie-chart" _id="Text-tab-0" _label="Erster Tab" _role="tab" _tabindex="-1" _value="0"></kol-button-wc>
+        <kol-button-wc _ariacontrols="tabpanel-1" _ariaselected="" _customclass="selected" _icons="codicon codicon-calendar" _id="Text-tab-1" _label="Zweiter Tab" _role="tab" _tabindex="0" _value="1" _variant="custom"></kol-button-wc>
+        <kol-button-wc _ariacontrols="tabpanel-2" _disabled="" _icons="codicon codicon-briefcase" _id="Text-tab-2" _label="Deaktivierter Tab" _role="tab" _tabindex="-1" _value="2"></kol-button-wc>
+        <kol-button-wc _ariacontrols="tabpanel-3" _icons="codicon codicon-telescope" _id="Text-tab-3" _label="Letzter Tab" _role="tab" _tabindex="-1" _value="3"></kol-button-wc>
+      </div>
+      <div class="tabs-content"></div>
+    </div>
+  </template>
+</kol-tabs>
+`;

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-image should render with _alt="somedescription" _loading="eager" _src="https://some-url.tld/images/awesome.jpg" _sizes="(max-width: 710px) 120px, (max-width: 991px) 193px, 278px" _srcset="https://some-url.tld/images/awesome.avif" 1`] = `
+<kol-image class="kol-image">
+  <template shadowrootmode="open">
+    <img alt="somedescription" loading="eager" sizes="(max-width: 710px) 120px, (max-width: 991px) 193px, 278px" src="https://some-url.tld/images/awesome.jpg" srcset="https://some-url.tld/images/awesome.avif">
+  </template>
+</kol-image>
+`;
+
+exports[`kol-image should render with _alt="somedescription" _loading="eager" _src="https://some-url.tld/images/awesome.jpg" 1`] = `
+<kol-image class="kol-image">
+  <template shadowrootmode="open">
+    <img alt="somedescription" loading="eager" src="https://some-url.tld/images/awesome.jpg">
+  </template>
+</kol-image>
+`;
+
+exports[`kol-image should render with _alt="somedescription" _loading="lazy" _src="https://some-url.tld/images/awesome.jpg" 1`] = `
+<kol-image class="kol-image">
+  <template shadowrootmode="open">
+    <img alt="somedescription" loading="lazy" src="https://some-url.tld/images/awesome.jpg">
+  </template>
+</kol-image>
+`;
+
+exports[`kol-image should render with _alt="somedescription" _src="something" 1`] = `
+<kol-image class="kol-image">
+  <template shadowrootmode="open">
+    <img alt="somedescription" loading="lazy" src="something">
+  </template>
+</kol-image>
+`;

@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-link should render with _href="https://google.de" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="bottom" 1`] = `
+<kol-link class="kol-link">
+  <template shadowrootmode="open">
+    <kol-link-wc class="kol-link-wc">
+      <!---->
+      <a class="external-link" href="https://google.de" rel="noopener" target="self">
+        <kol-span-wc _label="Label">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="bottom" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://google.de" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="left" 1`] = `
+<kol-link class="kol-link">
+  <template shadowrootmode="open">
+    <kol-link-wc class="kol-link-wc">
+      <!---->
+      <a class="external-link" href="https://google.de" rel="noopener" target="self">
+        <kol-span-wc _label="Label">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="left" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://google.de" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="right" 1`] = `
+<kol-link class="kol-link">
+  <template shadowrootmode="open">
+    <kol-link-wc class="kol-link-wc">
+      <!---->
+      <a class="external-link" href="https://google.de" rel="noopener" target="self">
+        <kol-span-wc _label="Label">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://google.de" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" _hideLabel=true 1`] = `
+<kol-link class="kol-link">
+  <template shadowrootmode="open">
+    <kol-link-wc class="kol-link-wc">
+      <!---->
+      <a aria-label="Label (kol-open-link-in-tab)" class="external-link hide-label" href="https://google.de" rel="noopener" target="self">
+        <kol-span-wc _hidelabel="" _label="Label">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+        <kol-icon _icons="codicon codicon-link-external" _label="" aria-hidden="" class="external-link-icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true"></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://google.de" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" 1`] = `
+<kol-link class="kol-link">
+  <template shadowrootmode="open">
+    <kol-link-wc class="kol-link-wc">
+      <!---->
+      <a class="external-link" href="https://google.de" rel="noopener" target="self">
+        <kol-span-wc _label="Label">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://google.de" _icons="codicon codicon-home" _label="Label" _target="self" 1`] = `
+<kol-link class="kol-link">
+  <template shadowrootmode="open">
+    <kol-link-wc class="kol-link-wc">
+      <!---->
+      <a class="external-link" href="https://google.de" rel="noopener" target="self">
+        <kol-span-wc _label="Label">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _label="Label" _href="" _download="download-file.zip" _target="blank" 1`] = `
+<kol-link class="kol-link">
+  <template shadowrootmode="open">
+    <kol-link-wc class="kol-link-wc">
+      <!---->
+      <a class="external-link" download="download-file.zip" href="javascript:void(0);" rel="noopener" target="blank">
+        <kol-span-wc _label="Label">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;

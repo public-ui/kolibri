@@ -1,31 +1,25 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolAccordionTag } from '@component-names';
+import type { AccordionProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getAccordionHtml } from './html.mock';
-
-import type { AccordionProps } from '../../../schema';
-import type { SpecPage } from '@stencil/core/testing';
 import { KolAccordion } from '../shadow';
 
-executeTests<AccordionProps>(
-	'Accordion',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolAccordion],
-			template: () => <kol-accordion {...props} />,
-		});
-		return page;
-	},
-	{
-		_disabled: [true, false],
-		_label: ['Überschrift'],
-		_level: [1, 2, 3, 4, 5, 6],
-		_open: [true, false],
-	},
-	getAccordionHtml,
-	{
-		execMode: 'default', // ready
-	},
+// _disabled: [true, false],
+// _label: ['Überschrift'],
+// _level: [1, 2, 3, 4, 5, 6],
+// _open: [true, false],
+
+const baseObject = { _label: 'Überschrift' };
+
+executeSnapshotTests<AccordionProps>(
+	KolAccordionTag,
+	[KolAccordion],
+	[
+		{ ...baseObject },
+		...([1, 2, 3, 4, 5, 6].map((_level) => ({ ...baseObject, _level })) as AccordionProps[]),
+		{ ...baseObject, _level: 1, _open: false, _disabled: false },
+		{ ...baseObject, _level: 1, _open: false, _disabled: true },
+		{ ...baseObject, _level: 1, _open: true, _disabled: true },
+		{ ...baseObject, _level: 1, _open: true, _disabled: false },
+	],
 );

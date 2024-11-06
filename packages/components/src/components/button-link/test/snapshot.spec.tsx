@@ -1,24 +1,7 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolButtonLinkTag } from '@component-names';
+import type { ButtonLinkProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getButtonLinkHtml } from './html.mock';
-
-import type { ButtonLinkProps } from '../../../schema';
-import type { SpecPage } from '@stencil/core/testing';
 import { KolButtonLink } from '../shadow';
 
-executeTests<ButtonLinkProps>(
-	'ButtonLink',
-	async (props): Promise<SpecPage> => {
-		return await newSpecPage({
-			components: [KolButtonLink],
-			template: () => <kol-button-link {...props}></kol-button-link>,
-		});
-	},
-	{
-		_label: [`Beschreibung`],
-	},
-	getButtonLinkHtml,
-);
+executeSnapshotTests<ButtonLinkProps>(KolButtonLinkTag, [KolButtonLink], [{ _label: 'Beschreibung' }]);

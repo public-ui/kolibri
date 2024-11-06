@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-spin should render with _show=false 1`] = `
+<kol-spin class="kol-spin">
+  <template shadowrootmode="open"></template>
+</kol-spin>
+`;
+
+exports[`kol-spin should render with _show=true 1`] = `
+<kol-spin _show="" class="kol-spin">
+  <template shadowrootmode="open">
+    <span aria-busy="true" aria-label="kol-action-running" aria-live="polite" class="dot spin" role="alert">
+      <span class="bg-spin-1"></span>
+      <span class="bg-spin-2"></span>
+      <span class="bg-spin-3"></span>
+      <span class="bg-neutral"></span>
+    </span>
+  </template>
+</kol-spin>
+`;

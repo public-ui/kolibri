@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-modal should render with _label="Label" _width="80%" 1`] = `
+<kol-modal>
+  <template shadowrootmode="open">
+    <dialog aria-label="Label" class="kol-modal" style="width: 80%;">
+      <div>
+        <slot></slot>
+      </div>
+    </dialog>
+  </template>
+</kol-modal>
+`;

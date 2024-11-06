@@ -1,34 +1,20 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolLinkGroupTag } from '@component-names';
+import type { LinkGroupProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getLinkGroupHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { LinkGroupProps } from '../../../schema';
 import { KolLinkGroup } from '../shadow';
 
-executeTests<LinkGroupProps>(
-	'LinkGroup',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolLinkGroup],
-			template: () => <kol-link-group {...props} />,
-		});
-		return page;
-	},
-	{
-		_label: ['Primary', 'Danger'],
-		_links: [
-			{ _label: 'Link 1', _href: '#' },
-			{ _label: 'Link 2', _href: '#' },
-			{ _label: 'Link 3', _href: '#' },
-		],
-		_orientation: ['vertical', 'horizontal'],
-	},
-	(props) => getLinkGroupHtml(props),
-	{
-		execMode: 'default', // ready
-	},
+const baseObj: LinkGroupProps = {
+	_label: 'Primary',
+	_links: [
+		{ _label: 'Link 1', _href: '#' },
+		{ _label: 'Link 2', _href: '#' },
+		{ _label: 'Link 3', _href: '#' },
+	],
+};
+
+executeSnapshotTests<LinkGroupProps>(
+	KolLinkGroupTag,
+	[KolLinkGroup],
+	[{ ...baseObj }, { ...baseObj, _orientation: 'horizontal' }, { ...baseObj, _orientation: 'vertical' }, { ...baseObj, _listStyleType: 'square' }],
 );

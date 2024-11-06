@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-form should render with _requiredText="Pflichtfeld" 1`] = `
+<kol-form class="kol-form">
+  <template shadowrootmode="open">
+    <form autocomplete="off" method="post" novalidate="">
+      <p>
+        <div class="mandatory-fields-hint">
+          Pflichtfeld
+        </div>
+      </p>
+      <slot></slot>
+    </form>
+  </template>
+</kol-form>
+`;

@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasCompactButton=false 1`] = `
+<kol-nav class="kol-nav">
+  <template shadowrootmode="open">
+    <div class="nav vertical">
+      <nav aria-label="Nav Label" id="nav">
+        <ul class="list vertical" data-deep="0">
+          <li>
+            <div class="entry">
+              <kol-link-wc _href="#" _label="Homepage" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="active">
+            <div class="entry">
+              <kol-link-wc _active="" _href="#" _label="Nav - aria-current" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="has-children">
+            <div class="entry">
+              <kol-link-wc _href="#" _label="3 Navigation point" class="entry-item"></kol-link-wc>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-add" _label="kol-nav-label-open" class="expand-button"></kol-button-wc>
+            </div>
+          </li>
+          <li>
+            <div class="entry">
+              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="entry-item"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasCompactButton=true 1`] = `
+<kol-nav class="kol-nav">
+  <template shadowrootmode="open">
+    <div class="nav vertical">
+      <nav aria-label="Nav Label" id="nav">
+        <ul class="list vertical" data-deep="0">
+          <li>
+            <div class="entry">
+              <kol-link-wc _href="#" _label="Homepage" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="active">
+            <div class="entry">
+              <kol-link-wc _active="" _href="#" _label="Nav - aria-current" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="has-children">
+            <div class="entry">
+              <kol-link-wc _href="#" _label="3 Navigation point" class="entry-item"></kol-link-wc>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-add" _label="kol-nav-label-open" class="expand-button"></kol-button-wc>
+            </div>
+          </li>
+          <li>
+            <div class="entry">
+              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="entry-item"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="compact">
+        <kol-button _ariacontrols="nav" _ariaexpanded="" _hidelabel="" _icons="codicon codicon-chevron-left" _label="kol-nav-minimize" _tooltipalign="right" _variant="ghost"></kol-button>
+      </div>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasIconsWhenExpanded=false 1`] = `
+<kol-nav class="kol-nav">
+  <template shadowrootmode="open">
+    <div class="nav vertical">
+      <nav aria-label="Nav Label" id="nav">
+        <ul class="list vertical" data-deep="0">
+          <li>
+            <div class="entry">
+              <kol-link-wc _href="#" _label="Homepage" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="active">
+            <div class="entry">
+              <kol-link-wc _active="" _href="#" _label="Nav - aria-current" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="has-children">
+            <div class="entry">
+              <kol-link-wc _href="#" _label="3 Navigation point" class="entry-item"></kol-link-wc>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-add" _label="kol-nav-label-open" class="expand-button"></kol-button-wc>
+            </div>
+          </li>
+          <li>
+            <div class="entry">
+              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="entry-item"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasIconsWhenExpanded=true 1`] = `
+<kol-nav class="kol-nav">
+  <template shadowrootmode="open">
+    <div class="nav vertical">
+      <nav aria-label="Nav Label" id="nav">
+        <ul class="list vertical" data-deep="0">
+          <li>
+            <div class="entry">
+              <kol-link-wc _href="#" _label="Homepage" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="active">
+            <div class="entry">
+              <kol-link-wc _active="" _href="#" _label="Nav - aria-current" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="has-children">
+            <div class="entry">
+              <kol-link-wc _href="#" _icons="codicon codicon-home" _label="3 Navigation point" class="entry-item"></kol-link-wc>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-add" _label="kol-nav-label-open" class="expand-button"></kol-button-wc>
+            </div>
+          </li>
+          <li>
+            <div class="entry">
+              <kol-button-wc _icons="codicon codicon-squirrel" _label="6 Keine eigene Seite, mit Icon" class="entry-item"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hideLabel=false 1`] = `
+<kol-nav class="kol-nav">
+  <template shadowrootmode="open">
+    <div class="nav vertical">
+      <nav aria-label="Nav Label" id="nav">
+        <ul class="list vertical" data-deep="0">
+          <li>
+            <div class="entry">
+              <kol-link-wc _href="#" _label="Homepage" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="active">
+            <div class="entry">
+              <kol-link-wc _active="" _href="#" _label="Nav - aria-current" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="has-children">
+            <div class="entry">
+              <kol-link-wc _href="#" _label="3 Navigation point" class="entry-item"></kol-link-wc>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-add" _label="kol-nav-label-open" class="expand-button"></kol-button-wc>
+            </div>
+          </li>
+          <li>
+            <div class="entry">
+              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="entry-item"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hideLabel=true 1`] = `
+<kol-nav class="kol-nav">
+  <template shadowrootmode="open">
+    <div class="is-compact nav vertical">
+      <nav aria-label="Nav Label" id="nav">
+        <ul class="list vertical" data-deep="0">
+          <li>
+            <div class="entry hide-label">
+              <kol-link-wc _hidelabel="" _href="#" _icons="codicon codicon-symbol-method" _label="Homepage" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="active">
+            <div class="entry hide-label">
+              <kol-link-wc _active="" _hidelabel="" _href="#" _icons="codicon codicon-symbol-method" _label="Nav - aria-current" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="has-children">
+            <div class="entry hide-label">
+              <kol-link-wc _hidelabel="" _href="#" _icons="codicon codicon-home" _label="3 Navigation point" class="entry-item"></kol-link-wc>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-add" _label="kol-nav-label-open" class="expand-button"></kol-button-wc>
+            </div>
+          </li>
+          <li>
+            <div class="entry hide-label">
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-squirrel" _label="6 Keine eigene Seite, mit Icon" class="entry-item"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] 1`] = `
+<kol-nav class="kol-nav">
+  <template shadowrootmode="open">
+    <div class="nav vertical">
+      <nav aria-label="Nav Label" id="nav">
+        <ul class="list vertical" data-deep="0">
+          <li>
+            <div class="entry">
+              <kol-link-wc _href="#" _label="Homepage" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="active">
+            <div class="entry">
+              <kol-link-wc _active="" _href="#" _label="Nav - aria-current" class="entry-item"></kol-link-wc>
+            </div>
+          </li>
+          <li class="has-children">
+            <div class="entry">
+              <kol-link-wc _href="#" _label="3 Navigation point" class="entry-item"></kol-link-wc>
+              <kol-button-wc _hidelabel="" _icons="codicon codicon-add" _label="kol-nav-label-open" class="expand-button"></kol-button-wc>
+            </div>
+          </li>
+          <li>
+            <div class="entry">
+              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="entry-item"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;

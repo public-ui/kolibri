@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-button should render with _label="Label" _ariaDescription="Aria Description" 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button kol-button-wc normal">
+      <!---->
+      <button aria-describedby="nonce" class="button normal" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+      <span class="visually-hidden" id="nonce">
+        Aria Description
+      </span>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _disabled=false 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button kol-button-wc normal">
+      <!---->
+      <button class="button normal" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _disabled=true 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button kol-button-wc normal">
+      <!---->
+      <button class="button disabled normal" disabled="" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _value="Hello" 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button kol-button-wc normal">
+      <!---->
+      <button class="button normal" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="danger" 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button danger kol-button-wc">
+      <!---->
+      <button class="button danger" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="ghost" 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button ghost kol-button-wc">
+      <!---->
+      <button class="button ghost" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="normal" 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button kol-button-wc normal">
+      <!---->
+      <button class="button normal" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="primary" 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button kol-button-wc primary">
+      <!---->
+      <button class="button primary" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="secondary" 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button kol-button-wc secondary">
+      <!---->
+      <button class="button secondary" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" 1`] = `
+<kol-button class="kol-button">
+  <template shadowrootmode="open">
+    <kol-button-wc class="button kol-button-wc normal">
+      <!---->
+      <button class="button normal" type="button">
+        <kol-span-wc _label="Label" class="button-inner">
+          <slot name="expert" slot="expert"></slot>
+        </kol-span-wc>
+      </button>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
+    </kol-button-wc>
+  </template>
+</kol-button>
+`;

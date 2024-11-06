@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-button-link should render with _label="Beschreibung" 1`] = `
+<kol-button-link class="kol-button-link">
+  <template shadowrootmode="open">
+    <kol-button-wc _label="Beschreibung" _role="link" _tooltipalign="top" _type="button">
+      <slot name="expert" slot="expert"></slot>
+    </kol-button-wc>
+  </template>
+</kol-button-link>
+`;

@@ -1,27 +1,16 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolToolbarTag } from '@component-names';
+import type { ToolbarProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getToolbarHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { ToolbarProps } from '../../../schema';
 import { KolToolbar } from '../shadow';
 
-executeTests<ToolbarProps>(
-	'Toolbar',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolToolbar],
-			template: () => <kol-toolbar {...props} />,
-		});
-		return page;
-	},
-	{
-		_label: ['Label'],
-		_items: [
-			[
+executeSnapshotTests<ToolbarProps>(
+	KolToolbarTag,
+	[KolToolbar],
+	[
+		{
+			_label: 'Text',
+			_items: [
 				{
 					_label: 'Button',
 				},
@@ -30,7 +19,6 @@ executeTests<ToolbarProps>(
 					_label: 'Link',
 				},
 			],
-		],
-	},
-	getToolbarHtml,
+		},
+	],
 );

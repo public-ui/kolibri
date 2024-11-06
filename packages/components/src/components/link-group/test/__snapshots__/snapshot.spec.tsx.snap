@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-link-group should render with _label="Primary" _links=[{"_label":"Link 1","_href":"#"},{"_label":"Link 2","_href":"#"},{"_label":"Link 3","_href":"#"}] _listStyleType="square" 1`] = `
+<kol-link-group class="kol-link-group">
+  <template shadowrootmode="open">
+    <ul aria-label="Primary" class="vertical">
+      <li style="list-style-type: square;">
+        <kol-link _href="#" _label="Link 1"></kol-link>
+      </li>
+      <li class="ident" style="list-style-type: square;">
+        <kol-link _href="#" _label="Link 2"></kol-link>
+      </li>
+      <li class="ident" style="list-style-type: square;">
+        <kol-link _href="#" _label="Link 3"></kol-link>
+      </li>
+    </ul>
+  </template>
+</kol-link-group>
+`;
+
+exports[`kol-link-group should render with _label="Primary" _links=[{"_label":"Link 1","_href":"#"},{"_label":"Link 2","_href":"#"},{"_label":"Link 3","_href":"#"}] _orientation="horizontal" 1`] = `
+<kol-link-group class="kol-link-group">
+  <template shadowrootmode="open">
+    <ul aria-label="Primary" class="horizontal">
+      <li class="list-none" style="list-style-type: disc;">
+        <kol-link _href="#" _label="Link 1"></kol-link>
+      </li>
+      <li style="list-style-type: disc;">
+        <kol-link _href="#" _label="Link 2"></kol-link>
+      </li>
+      <li style="list-style-type: disc;">
+        <kol-link _href="#" _label="Link 3"></kol-link>
+      </li>
+    </ul>
+  </template>
+</kol-link-group>
+`;
+
+exports[`kol-link-group should render with _label="Primary" _links=[{"_label":"Link 1","_href":"#"},{"_label":"Link 2","_href":"#"},{"_label":"Link 3","_href":"#"}] _orientation="vertical" 1`] = `
+<kol-link-group class="kol-link-group">
+  <template shadowrootmode="open">
+    <ul aria-label="Primary" class="vertical">
+      <li style="list-style-type: disc;">
+        <kol-link _href="#" _label="Link 1"></kol-link>
+      </li>
+      <li class="ident" style="list-style-type: disc;">
+        <kol-link _href="#" _label="Link 2"></kol-link>
+      </li>
+      <li class="ident" style="list-style-type: disc;">
+        <kol-link _href="#" _label="Link 3"></kol-link>
+      </li>
+    </ul>
+  </template>
+</kol-link-group>
+`;
+
+exports[`kol-link-group should render with _label="Primary" _links=[{"_label":"Link 1","_href":"#"},{"_label":"Link 2","_href":"#"},{"_label":"Link 3","_href":"#"}] 1`] = `
+<kol-link-group class="kol-link-group">
+  <template shadowrootmode="open">
+    <ul aria-label="Primary" class="vertical">
+      <li style="list-style-type: disc;">
+        <kol-link _href="#" _label="Link 1"></kol-link>
+      </li>
+      <li class="ident" style="list-style-type: disc;">
+        <kol-link _href="#" _label="Link 2"></kol-link>
+      </li>
+      <li class="ident" style="list-style-type: disc;">
+        <kol-link _href="#" _label="Link 3"></kol-link>
+      </li>
+    </ul>
+  </template>
+</kol-link-group>
+`;

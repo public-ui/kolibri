@@ -1,28 +1,17 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolTabsTag } from '@component-names';
+import type { TabsProps } from '@schema';
+import { executeSnapshotTests } from '@testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getTabsHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { TabsProps } from '../../../schema';
 import { KolTabs } from '../shadow';
 
-executeTests<TabsProps>(
-	'Tabs',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolTabs],
-			template: () => <kol-tabs {...props} />,
-		});
-		return page;
-	},
-	{
-		_label: ['Label'],
-		_selected: [1, 0],
-		_tabs: [
-			[
+executeSnapshotTests<TabsProps>(
+	KolTabsTag,
+	[KolTabs],
+	[
+		{
+			_label: 'Text',
+			_selected: 1,
+			_tabs: [
 				{
 					_icons: 'codicon codicon-pie-chart',
 					_label: 'Erster Tab',
@@ -41,7 +30,6 @@ executeTests<TabsProps>(
 					_label: 'Letzter Tab',
 				},
 			],
-		],
-	},
-	getTabsHtml,
+		},
+	],
 );
