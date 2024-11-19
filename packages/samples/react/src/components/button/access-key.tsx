@@ -5,10 +5,10 @@ import { SampleDescription } from '../SampleDescription';
 import { useToasterService } from '../../hooks/useToasterService';
 
 export const ButtonAccessKey: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { buttonWithTextClickEventHandler } = useToasterService();
 
 	const dummyEventHandler = {
-		onClick: dummyClickEventHandler,
+		onClick: buttonWithTextClickEventHandler,
 	};
 
 	return (
@@ -23,16 +23,17 @@ export const ButtonAccessKey: FC = () => {
 
 			<div className="flex flex-wrap gap-4">
 				<KolButton _label="With S access key" _accessKey="S" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="Very small s" _accessKey="s" _on={dummyEventHandler}></KolButton>
+				<KolButton _label="Very small b" _accessKey="b" _on={dummyEventHandler}></KolButton>
 				<KolButton _label="Access key does not appear in label" _accessKey="x" _on={dummyEventHandler}></KolButton>
-				<KolButton _label="access key without label" _hideLabel _accessKey="s" _icons="codicon codicon-dashboard" _on={dummyEventHandler}></KolButton>
+				<KolButton _label="access key without label" _hideLabel _accessKey="a" _icons="codicon codicon-dashboard" _on={dummyEventHandler}></KolButton>
 				<KolButton
 					_label="with inline icons"
 					_icons={{
 						left: 'codicon codicon-dashboard',
 						right: 'codicon codicon-dashboard',
 					}}
-					_accessKey="s"
+					_accessKey="n"
+					_on={dummyEventHandler}
 				/>
 			</div>
 		</>
