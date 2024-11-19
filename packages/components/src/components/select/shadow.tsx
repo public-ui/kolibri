@@ -27,7 +27,7 @@ import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } fro
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
+import { InternalUnderlinedBadgeText } from '../../functional-components';
 import { SelectController } from './controller';
 import { KolInputTag } from '../../core/component-names';
 import { propagateSubmitEventToForm } from '../form/controller';

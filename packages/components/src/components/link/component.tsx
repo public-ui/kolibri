@@ -47,10 +47,11 @@ import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 import { preventDefaultAndStopPropagation } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
-import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 
 import { translate } from '../../i18n';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import { KolSpanFc } from '../../functional-components';
 
 /**
  * @internal
@@ -154,14 +155,14 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 					role={this.state._role}
 					tabIndex={this.state._disabled ? -1 : this.state._tabIndex}
 				>
-					<KolSpanWcTag
-						_badgeText={this.state._accessKey || this.state._shortKey}
-						_icons={this.state._icons}
-						_hideLabel={this.state._hideLabel}
-						_label={hasExpertSlot ? '' : this.state._label || this.state._href}
+					<KolSpanFc
+						badgeText={this.state._accessKey || this.state._shortKey}
+						icons={this.state._icons}
+						hideLabel={this.state._hideLabel}
+						label={hasExpertSlot ? '' : this.state._label || this.state._href}
 					>
 						<slot name="expert" slot="expert"></slot>
-					</KolSpanWcTag>
+					</KolSpanFc>
 					{isExternal && (
 						<KolIconTag
 							class="external-link-icon"

@@ -6,7 +6,7 @@ export type KoliBriCustomIcon = {
 	style?: Record<string, string>;
 };
 
-type IconOrIconClass = AnyIconFontClass | KoliBriCustomIcon;
+export type IconOrIconClass = AnyIconFontClass | KoliBriCustomIcon;
 
 export type KoliBriHorizontalIcons = {
 	right?: IconOrIconClass;

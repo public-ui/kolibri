@@ -15,7 +15,6 @@ import { KolCard } from './card/shadow';
 import { KolDetails } from './details/shadow';
 import { KolDrawer } from './drawer/shadow';
 import { KolForm } from './form/shadow';
-import { KolHeadingWc } from './heading/component';
 import { KolHeading } from './heading/shadow';
 import { KolIcon } from './icon/shadow';
 import { KolImage } from './image/shadow';
@@ -45,7 +44,6 @@ import { KolProcess } from './progress/shadow';
 import { KolQuote } from './quote/shadow';
 import { KolSelect } from './select/shadow';
 import { KolSkipNav } from './skip-nav/shadow';
-import { KolSpanWc } from './span/component';
 import { KolSpin } from './spin/shadow';
 import { KolSingleSelect } from './single-select/shadow';
 import { KolSplitButton } from './split-button/shadow';
@@ -83,7 +81,6 @@ export const COMPONENTS = [
 	KolDrawer,
 	KolForm,
 	KolHeading,
-	KolHeadingWc,
 	KolIcon,
 	KolImage,
 	KolIndentedText,
@@ -112,7 +109,6 @@ export const COMPONENTS = [
 	KolQuote,
 	KolSelect,
 	KolSkipNav,
-	KolSpanWc,
 	KolSpin,
 	KolSingleSelect,
 	KolSplitButton,

@@ -50,8 +50,9 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
-import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolTooltipWcTag } from '../../core/component-names';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import { KolSpanFc } from '../../functional-components';
 
 /**
  * @internal
@@ -107,6 +108,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
+		const badgeText = this.state._accessKey || this.state._shortKey;
 
 		return (
 			<Host class="kol-button-wc">
@@ -135,15 +137,15 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<KolSpanWcTag
+					<KolSpanFc
 						class="button-inner"
-						_badgeText={this.state._accessKey || this.state._shortKey}
-						_icons={this.state._icons}
-						_hideLabel={this.state._hideLabel}
-						_label={hasExpertSlot ? '' : this.state._label}
+						badgeText={badgeText}
+						icons={this.state._icons}
+						hideLabel={this.state._hideLabel}
+						label={hasExpertSlot ? '' : this.state._label}
 					>
 						<slot name="expert" slot="expert"></slot>
-					</KolSpanWcTag>
+					</KolSpanFc>
 				</button>
 				<KolTooltipWcTag
 					/**
@@ -152,7 +154,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					 */
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
-					_badgeText={this.state._accessKey || this.state._shortKey}
+					_badgeText={badgeText}
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></KolTooltipWcTag>

@@ -23,7 +23,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
+import { InternalUnderlinedBadgeText } from '../../functional-components';
 import { InputRadioController } from './controller';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { KolInputTag } from '../../core/component-names';

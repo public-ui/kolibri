@@ -23,7 +23,7 @@ import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { ComboboxController } from './controller';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
-import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
+import { InternalUnderlinedBadgeText } from '../../functional-components';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
 import clsx from 'clsx';

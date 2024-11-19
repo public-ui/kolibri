@@ -9,7 +9,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -30,7 +32,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -51,7 +55,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -72,7 +78,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -93,7 +101,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -114,7 +124,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -135,7 +147,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -156,7 +170,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -177,7 +193,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -198,7 +216,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -219,7 +239,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -240,7 +262,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -261,7 +285,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -282,7 +308,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -303,7 +331,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -324,7 +354,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -345,7 +377,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -366,7 +400,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -387,7 +423,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -408,7 +446,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -429,7 +469,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -450,7 +492,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -471,7 +515,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -492,7 +538,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -513,7 +561,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -534,7 +584,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>
@@ -555,7 +607,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>
@@ -576,7 +630,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>
@@ -597,7 +653,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>
@@ -618,7 +676,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>
@@ -639,7 +699,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -660,7 +722,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -681,7 +745,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -702,7 +768,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -723,7 +791,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="1"></kol-heading-wc>
+            <h1 class="headline headline-h1 kol-heading-wc">
+              Überschrift
+            </h1>
             <div class="content">
               <slot></slot>
             </div>
@@ -744,7 +814,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -765,7 +837,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -786,7 +860,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -807,7 +883,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -828,7 +906,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="2"></kol-heading-wc>
+            <h2 class="headline headline-h2 kol-heading-wc">
+              Überschrift
+            </h2>
             <div class="content">
               <slot></slot>
             </div>
@@ -849,7 +929,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -870,7 +952,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -891,7 +975,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -912,7 +998,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -933,7 +1021,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="3"></kol-heading-wc>
+            <h3 class="headline headline-h3 kol-heading-wc">
+              Überschrift
+            </h3>
             <div class="content">
               <slot></slot>
             </div>
@@ -954,7 +1044,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -975,7 +1067,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -996,7 +1090,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -1017,7 +1113,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -1038,7 +1136,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="4"></kol-heading-wc>
+            <h4 class="headline headline-h4 kol-heading-wc">
+              Überschrift
+            </h4>
             <div class="content">
               <slot></slot>
             </div>
@@ -1059,7 +1159,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -1080,7 +1182,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -1101,7 +1205,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -1122,7 +1228,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -1143,7 +1251,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="5"></kol-heading-wc>
+            <h5 class="headline headline-h5 kol-heading-wc">
+              Überschrift
+            </h5>
             <div class="content">
               <slot></slot>
             </div>
@@ -1164,7 +1274,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
         <div class="heading">
           <kol-icon _icons="codicon codicon-comment" _label="kol-message" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>
@@ -1185,7 +1297,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
         <div class="heading">
           <kol-icon _icons="codicon codicon-error" _label="kol-error" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>
@@ -1206,7 +1320,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
         <div class="heading">
           <kol-icon _icons="codicon codicon-info" _label="kol-info" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>
@@ -1227,7 +1343,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
         <div class="heading">
           <kol-icon _icons="codicon codicon-pass" _label="kol-success" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>
@@ -1248,7 +1366,9 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
         <div class="heading">
           <kol-icon _icons="codicon codicon-warning" _label="kol-warning" class="heading-icon"></kol-icon>
           <div class="heading-content">
-            <kol-heading-wc _label="Überschrift" _level="6"></kol-heading-wc>
+            <h6 class="headline headline-h6 kol-heading-wc">
+              Überschrift
+            </h6>
             <div class="content">
               <slot></slot>
             </div>

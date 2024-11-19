@@ -1,11 +1,12 @@
-import { Fragment, h } from '@stencil/core';
+import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { BadgeTextPropType } from '../../schema';
 
-type Props = {
+type InternalUnderlinedBadgeTextProps = {
 	badgeText: BadgeTextPropType;
 	label: string;
 };
-export const InternalUnderlinedBadgeText = ({ badgeText, label }: Props) => {
+
+const KolInternalUnderlinedBadgeTextFc: FC<InternalUnderlinedBadgeTextProps> = ({ badgeText, label }) => {
 	/* Prefer capitalization as defined in the badge Text, try uppercase/lowercase when there's no match. */
 	const badgeTextAsString: string = badgeText;
 	let [first, ...rest] = label.split(badgeTextAsString);
@@ -29,3 +30,5 @@ export const InternalUnderlinedBadgeText = ({ badgeText, label }: Props) => {
 		</>
 	);
 };
+
+export default KolInternalUnderlinedBadgeTextFc;

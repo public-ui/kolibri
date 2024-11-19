@@ -6,9 +6,17 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
     <kol-link-wc class="kol-link-wc">
       <!---->
       <a class="external-link" href="https://example.com" rel="noopener" target="self">
-        <kol-span-wc _label="Label">
-          <slot name="expert" slot="expert"></slot>
-        </kol-span-wc>
+        <span class="kol-span-wc">
+          <span>
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="span-label">
+              Label
+            </span>
+            <span aria-hidden="true" class="span-label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
         <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
       </a>
       <kol-tooltip-wc _align="bottom" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
@@ -23,9 +31,17 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
     <kol-link-wc class="kol-link-wc">
       <!---->
       <a class="external-link" href="https://example.com" rel="noopener" target="self">
-        <kol-span-wc _label="Label">
-          <slot name="expert" slot="expert"></slot>
-        </kol-span-wc>
+        <span class="kol-span-wc">
+          <span>
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="span-label">
+              Label
+            </span>
+            <span aria-hidden="true" class="span-label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
         <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
       </a>
       <kol-tooltip-wc _align="left" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
@@ -40,9 +56,17 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
     <kol-link-wc class="kol-link-wc">
       <!---->
       <a class="external-link" href="https://example.com" rel="noopener" target="self">
-        <kol-span-wc _label="Label">
-          <slot name="expert" slot="expert"></slot>
-        </kol-span-wc>
+        <span class="kol-span-wc">
+          <span>
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="span-label">
+              Label
+            </span>
+            <span aria-hidden="true" class="span-label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
         <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
       </a>
       <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
@@ -57,9 +81,14 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
     <kol-link-wc class="kol-link-wc">
       <!---->
       <a aria-label="Label (kol-open-link-in-tab)" class="external-link hide-label" href="https://example.com" rel="noopener" target="self">
-        <kol-span-wc _hidelabel="" _label="Label">
-          <slot name="expert" slot="expert"></slot>
-        </kol-span-wc>
+        <span class="hide-label kol-span-wc">
+          <span>
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span aria-hidden="true" class="span-label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
         <kol-icon _icons="codicon codicon-link-external" _label="" aria-hidden="" class="external-link-icon"></kol-icon>
       </a>
       <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true"></kol-tooltip-wc>
@@ -74,9 +103,17 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
     <kol-link-wc class="kol-link-wc">
       <!---->
       <a class="external-link" href="https://example.com" rel="noopener" target="self">
-        <kol-span-wc _label="Label">
-          <slot name="expert" slot="expert"></slot>
-        </kol-span-wc>
+        <span class="kol-span-wc">
+          <span>
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="span-label">
+              Label
+            </span>
+            <span aria-hidden="true" class="span-label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
         <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
       </a>
       <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
@@ -91,9 +128,17 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
     <kol-link-wc class="kol-link-wc">
       <!---->
       <a class="external-link" href="https://example.com" rel="noopener" target="self">
-        <kol-span-wc _label="Label">
-          <slot name="expert" slot="expert"></slot>
-        </kol-span-wc>
+        <span class="kol-span-wc">
+          <span>
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="span-label">
+              Label
+            </span>
+            <span aria-hidden="true" class="span-label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
         <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
       </a>
       <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>
@@ -108,9 +153,16 @@ exports[`kol-link should render with _label="Label" _href="" _download="download
     <kol-link-wc class="kol-link-wc">
       <!---->
       <a class="external-link" download="download-file.zip" href="javascript:void(0);" rel="noopener" target="blank">
-        <kol-span-wc _label="Label">
-          <slot name="expert" slot="expert"></slot>
-        </kol-span-wc>
+        <span class="kol-span-wc">
+          <span>
+            <span class="span-label">
+              Label
+            </span>
+            <span aria-hidden="true" class="span-label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
         <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="external-link-icon"></kol-icon>
       </a>
       <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" hidden=""></kol-tooltip-wc>

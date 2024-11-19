@@ -1,12 +1,14 @@
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
 import type { CardAPI, CardStates, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, LabelPropType } from '../../schema';
 import { setState, validateHasCloser, validateLabel } from '../../schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { watchHeadingLevel } from '../heading/validation';
 
-import type { JSX } from '@stencil/core';
-import { KolButtonWcTag, KolHeadingWcTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
+import { KolHeadingFc } from '../../functional-components';
+
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
  */
@@ -33,7 +35,7 @@ export class KolCard implements CardAPI {
 			<Host class="kol-card">
 				<div class="card">
 					<div class="header">
-						<KolHeadingWcTag _label={this.state._label} _level={this.state._level}></KolHeadingWcTag>
+						<KolHeadingFc level={this.state._level}>{this.state._label}</KolHeadingFc>
 					</div>
 					<div class="content">
 						<slot />

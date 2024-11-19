@@ -6,7 +6,7 @@ import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
-import { KolSpanWcTag } from '../../core/component-names';
+import { KolSpanFc } from '../../functional-components';
 
 /**
  * @internal
@@ -129,7 +129,7 @@ export class KolTooltipWc implements TooltipAPI {
 				{this.state._label !== '' && (
 					<div class="tooltip-floating" ref={this.catchTooltipElement}>
 						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
-						<KolSpanWcTag class="tooltip-area tooltip-content" id={this.state._id} _badgeText={this._badgeText} _label={this.state._label}></KolSpanWcTag>
+						<KolSpanFc class="tooltip-area tooltip-content" id={this.state._id} badgeText={this._badgeText} label={this.state._label} />
 					</div>
 				)}
 			</Host>

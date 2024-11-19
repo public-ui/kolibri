@@ -25,7 +25,7 @@ import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } fro
 import { nonce } from '../../utils/dev.utils';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
+import { InternalUnderlinedBadgeText } from '../../functional-components';
 import { InputCheckboxController } from './controller';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import type { FocusableElement } from '../../schema/interfaces/FocusableElement';

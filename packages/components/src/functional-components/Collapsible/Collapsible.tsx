@@ -2,8 +2,9 @@ import { h } from '@stencil/core';
 import type { FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { KolButtonWcTag, KolHeadingWcTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 import type { HeadingLevel, IconsPropType } from '../../schema';
+import KolHeadingFc from '../Heading';
 
 type ClassType =
 	| string
@@ -19,7 +20,7 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> &
 	label: string;
 
 	HeadingProps?: {
-		ref?: ((elm?: HTMLKolHeadingWcElement | undefined) => void) | undefined;
+		ref?: ((elm?: HTMLElement | undefined) => void) | undefined;
 		class?: ClassType;
 	};
 
@@ -53,7 +54,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 			)}
 			{...other}
 		>
-			<KolHeadingWcTag ref={HeadingProps?.ref} _label="" _level={level} class={clsx('collapsible__heading', HeadingProps?.class)}>
+			<KolHeadingFc ref={HeadingProps?.ref} level={level} class={clsx('collapsible__heading', HeadingProps?.class)}>
 				<KolButtonWcTag
 					class={clsx('collapsible__heading-button', HeadingButtonProps?.class)}
 					ref={HeadingButtonProps?.ref}
@@ -65,7 +66,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 					_label={label}
 					_on={{ onClick }}
 				></KolButtonWcTag>
-			</KolHeadingWcTag>
+			</KolHeadingFc>
 			<div class={clsx('collapsible__wrapper', ContentProps?.wrapperClass)}>
 				<div class={clsx('collapsible__wrapper-animation', ContentProps?.animationClass)}>
 					<div aria-hidden={open === false ? 'true' : undefined} class={clsx('collapsible__content', ContentProps?.class)} id={`${id}-control`}>

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KolSpanFc should allow markdown in label 1`] = `
+<span class="kol-span-wc">
+  <span>
+    <span class="md span-label">
+      <strong>
+        Bold Label
+      </strong>
+    </span>
+    <span aria-hidden="true" class="span-label" hidden=""></span>
+  </span>
+</span>
+`;
+
+exports[`KolSpanFc should hide label when hideLabel is true 1`] = `
+<span class="hide-label kol-span-wc">
+  <span>
+    <span aria-hidden="true" class="span-label" hidden=""></span>
+  </span>
+</span>
+`;
+
+exports[`KolSpanFc should render with badge text 1`] = `
+<span class="kol-span-wc">
+  <span>
+    <span class="span-label">
+      Label with
+      <u>
+        Badge
+      </u>
+    </span>
+    <span aria-hidden="true" class="span-label" hidden=""></span>
+    <span aria-hidden="true" class="badge-text-hint">
+      Badge
+    </span>
+  </span>
+</span>
+`;
+
+exports[`KolSpanFc should render with default props 1`] = `
+<span class="kol-span-wc">
+  <span>
+    <span class="span-label">
+      Default Label
+    </span>
+    <span aria-hidden="true" class="span-label" hidden=""></span>
+  </span>
+</span>
+`;
+
+exports[`KolSpanFc should render with icons 1`] = `
+<span class="kol-span-wc">
+  <kol-icon _icons="top-icon" _label="" class="icon top"></kol-icon>
+  <span>
+    <kol-icon _icons="left-icon" _label="" class="icon left"></kol-icon>
+    <span class="span-label">
+      Label with Icons
+    </span>
+    <span aria-hidden="true" class="span-label" hidden=""></span>
+    <kol-icon _icons="right-icon" _label="" class="icon right"></kol-icon>
+  </span>
+  <kol-icon _icons="bottom-icon" _label="" class="bottom icon"></kol-icon>
+</span>
+`;

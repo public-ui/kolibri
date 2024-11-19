@@ -23,7 +23,7 @@ import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } fro
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
+import { InternalUnderlinedBadgeText } from '../../functional-components';
 import { InputPasswordController } from './controller';
 import { KolButtonWcTag, KolInputTag } from '../../core/component-names';
 import { translate } from '../../i18n';

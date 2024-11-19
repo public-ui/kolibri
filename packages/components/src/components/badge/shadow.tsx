@@ -1,7 +1,7 @@
 import type { BadgeAPI, BadgeStates, ButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
-import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor } from '../../schema';
+import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
-import { KolSpanWcTag } from '../../core/component-names';
+import { KolSpanFc } from '../../functional-components';
 
 import { nonce } from '../../utils/dev.utils';
 
@@ -40,6 +40,7 @@ export class KolBadge implements BadgeAPI {
 
 	public render(): JSX.Element {
 		const hasSmartButton = typeof this.state._smartButton === 'object' && this.state._smartButton !== null;
+
 		return (
 			<Host class="kol-badge">
 				<span
@@ -51,7 +52,7 @@ export class KolBadge implements BadgeAPI {
 						color: this.colorStr,
 					}}
 				>
-					<KolSpanWcTag id={hasSmartButton ? this.id : undefined} _allowMarkdown _icons={this._icons} _label={this._label}></KolSpanWcTag>
+					<KolSpanFc id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
 					{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
 				</span>
 			</Host>
@@ -83,6 +84,7 @@ export class KolBadge implements BadgeAPI {
 			backgroundColor: '#000',
 			foregroundColor: '#fff',
 		},
+		_icons: {},
 	};
 
 	private handleColorChange = (value: unknown) => {
@@ -90,6 +92,11 @@ export class KolBadge implements BadgeAPI {
 		this.bgColorStr = colorPair.backgroundColor;
 		this.colorStr = colorPair.foregroundColor as string;
 	};
+
+	@Watch('_icons')
+	public validateIcons(value?: KoliBriIconsProp): void {
+		validateIcons(this, value);
+	}
 
 	@Watch('_color')
 	public validateColor(value?: Stringified<PropColor>): void {
@@ -115,6 +122,7 @@ export class KolBadge implements BadgeAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.validateIcons(this._icons);
 		this.validateColor(this._color);
 		this.validateSmartButton(this._smartButton);
 	}
