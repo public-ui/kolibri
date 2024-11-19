@@ -5,10 +5,10 @@ import { SampleDescription } from '../SampleDescription';
 import { useToasterService } from '../../hooks/useToasterService';
 
 export const ButtonShortKey: FC = () => {
-	const { buttonWithTextClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useToasterService();
 
 	const dummyEventHandler = {
-		onClick: buttonWithTextClickEventHandler,
+		onClick: dummyClickEventHandler,
 	};
 
 	return (
