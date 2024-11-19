@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/designer",
-	"version": "2.2.0-alpha.0",
+	"version": "2.2.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -50,7 +50,7 @@
 		"@types/prettier": "2.7.3",
 		"@unocss/preset-mini": "0.58.9",
 		"@unocss/webpack": "0.58.9",
-		"adopted-style-sheets": "1.1.6-rc.6",
+		"adopted-style-sheets": "1.1.6-rc.8",
 		"ajv": "8.17.1",
 		"chromedriver": "130.0.1",
 		"cpy-cli": "5.0.0",

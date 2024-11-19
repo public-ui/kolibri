@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "2.2.0-alpha.0",
+	"version": "2.2.0",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -35,7 +35,7 @@
 		"@types/react-dom": "18.3.1",
 		"@unocss/preset-uno": "0.58.9",
 		"@unocss/webpack": "0.58.9",
-		"adopted-style-sheets": "1.1.6-rc.6",
+		"adopted-style-sheets": "1.1.6-rc.8",
 		"ajv": "8.17.1",
 		"chromedriver": "130.0.1",
 		"cpy-cli": "5.0.0",

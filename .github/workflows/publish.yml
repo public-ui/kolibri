@@ -29,7 +29,7 @@ on:
           - major
       label: # see https://github.com/lerna/lerna/tree/main/libs/commands/version#--preid
         type: choice
-        description: SemVer pre release label
+        description: SemVer pre release label (optional)
         options:
           - rc
           - beta
@@ -94,8 +94,13 @@ jobs:
           git config --local user.email "${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
           git config --local user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
 
-      - name: Bump Versions
+      - name: Bump Versions non-dev
+        if: github.event.inputs.tag != 'dev'
         run: 'HUSKY=0 npx lerna version ${{github.event.inputs.version}} --preid=${{github.event.inputs.label}} --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish'
+
+      - name: Bump Versions dev and do not push
+        if: github.event.inputs.tag == 'dev'
+        run: 'HUSKY=0 npx lerna version prerelease --preid=$GITHUB_SHA --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish --no-push'
 
       - name: Build
         run: pnpm -r build

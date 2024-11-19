@@ -374,8 +374,8 @@ importers:
         specifier: 1.6.11
         version: 1.6.11
       adopted-style-sheets:
-        specifier: 1.1.6-rc.6
-        version: 1.1.6-rc.6
+        specifier: 1.1.6-rc.8
+        version: 1.1.6-rc.8
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -577,8 +577,8 @@ importers:
         specifier: 0.58.9
         version: 0.58.9(rollup@4.24.3)(webpack@5.95.0(@swc/core@1.5.28)(esbuild@0.23.0))
       adopted-style-sheets:
-        specifier: 1.1.6-rc.6
-        version: 1.1.6-rc.6
+        specifier: 1.1.6-rc.8
+        version: 1.1.6-rc.8
       ajv:
         specifier: 8.17.1
         version: 8.17.1
@@ -728,8 +728,8 @@ importers:
         specifier: 0.58.9
         version: 0.58.9(rollup@4.24.3)(webpack@5.91.0(@swc/core@1.5.28)(esbuild@0.23.0)(webpack-cli@4.10.0))
       adopted-style-sheets:
-        specifier: 1.1.6-rc.6
-        version: 1.1.6-rc.6
+        specifier: 1.1.6-rc.8
+        version: 1.1.6-rc.8
       ajv:
         specifier: 8.17.1
         version: 8.17.1
@@ -5064,8 +5064,8 @@ packages:
     resolution: {integrity: sha512-OXwN5b9pCUXNQHJpwwD2qP40byEmSgzj8B4ydSN0uMNYWiFmJ6x6KwUllMmfk8Rwu/HJDFR7U8ubsWBoN0Xp0A==}
     engines: {node: '>=8.9'}
 
-  adopted-style-sheets@1.1.6-rc.6:
-    resolution: {integrity: sha512-/iwt+SY16Bnz/4EduFVXabIoB8uqdhIUw/LWWBjSXTCYcljo3uR5yyyzrPv4Iz5gl+L+IH9qegyfPI5a6AmmDg==}
+  adopted-style-sheets@1.1.6-rc.8:
+    resolution: {integrity: sha512-ZpYHq0lL8wZwoe2qP3RTOAc9A5xWRXmGp5xBAjXTtmFFwWcgdX3KJEOiw7DB5xoTeP0EyRRtWJL7iLRS7j/DdQ==}
 
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -18080,7 +18080,7 @@ snapshots:
       loader-utils: 2.0.4
       regex-parser: 2.3.0
 
-  adopted-style-sheets@1.1.6-rc.6:
+  adopted-style-sheets@1.1.6-rc.8:
     dependencies:
       loglevel: 1.9.2
 

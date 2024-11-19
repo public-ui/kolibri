@@ -76,7 +76,7 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					renderElement.setAttribute('role', 'presentation');
 					el.innerHTML = '';
 					el.appendChild(renderElement);
-					getRoot(renderElement).render(<KolButtonWrapper _label={cell.label} style={{ fontSize: '75%' }} data-theme="default" />);
+					getRoot(renderElement).render(<KolButtonWrapper _label={cell.label} style={{ fontSize: '75%' }} />);
 				},
 				sort: (data) => {
 					return data.sort((first, second) => {
