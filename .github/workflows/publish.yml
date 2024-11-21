@@ -102,7 +102,7 @@ jobs:
       - name: Bump versions are dev- or none-tag and not git push
         if: github.event.inputs.tag == 'dev' || github.event.inputs.tag == ''
         run: 'HUSKY=0 npx lerna version prerelease --preid=$GITHUB_SHA --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish --no-push'
-        
+
       - name: Build
         run: pnpm -r build
 
