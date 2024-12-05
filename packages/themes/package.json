@@ -50,6 +50,7 @@
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
 		"prepack": "pnpm build",
+		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
 	},
@@ -60,6 +61,7 @@
 		"@rollup/plugin-typescript": "12.1.1",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
+		"cpy-cli": "5.0.0",
 		"eslint": "8.57.1",
 		"nodemon": "3.1.7",
 		"postcss": "8.4.49",
