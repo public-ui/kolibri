@@ -1,9 +1,0 @@
-@import '../@shared/input-core';
-
-@layer kol-theme-component {
-	input {
-		&::-webkit-datetime-edit {
-			color: var(--color-grey);
-		}
-	}
-}

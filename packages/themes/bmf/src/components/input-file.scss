@@ -1,9 +1,0 @@
-@import '../@shared/input-core';
-@import '../mixins/rem';
-
-@layer kol-theme-component {
-	input {
-		background-color: transparent;
-		padding-top: calc(0.5em + rem(2));
-	}
-}

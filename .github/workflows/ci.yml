@@ -49,8 +49,8 @@ jobs:
       - name: Unit Tests
         run: pnpm -r test:unit
 
-       # Tests in sample app are currently failing and hence disabled.
-       # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
+        # Tests in sample app are currently failing and hence disabled.
+        # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
       - name: E2E Test
         run: pnpm --filter @public-ui/components test:e2e
 
@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: ['@public-ui/test-tag-name-transformer', '@public-ui/theme-bmf', '@public-ui/theme-default']
+        package: ['@public-ui/test-tag-name-transformer', '@public-ui/theme-default']
     steps:
       - uses: actions/checkout@v4
         with:

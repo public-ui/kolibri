@@ -23,12 +23,12 @@ Register the themes like this:
 ```tsx
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
+import { DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
 register(
 	DEFAULT,
 	// or provide an array to register multiple themes:
-	// [BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund]
+	// [DEFAULT, ECL_EC, ECL_EU, ITZBund]
 	defineCustomElements,
 )
 	.then(() => {

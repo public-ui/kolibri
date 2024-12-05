@@ -1,6 +1,6 @@
 import { SelectOption } from '@public-ui/components';
 
-export const THEMES = ['bmf', 'default', 'ecl-ec', 'ecl-eu', 'itzbund', 'unstyled'] as const;
+export const THEMES = ['default', 'ecl-ec', 'ecl-eu', 'itzbund', 'unstyled'] as const;
 export type Theme = (typeof THEMES)[number];
 export type ThemeAndUnstyled = Theme | 'unstyled';
 
@@ -21,10 +21,6 @@ export const THEME_OPTIONS: SelectOption<ThemeAndUnstyled>[] = [
 	{
 		label: 'Unstyled (Uncolored)',
 		value: 'unstyled',
-	},
-	{
-		label: 'Bundesministerium der Finanzen (Tested)',
-		value: 'bmf',
 	},
 	{
 		label: 'Default (Tested)',
