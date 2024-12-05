@@ -9,7 +9,9 @@ module.exports = (...args) => {
 		new webpack.EnvironmentPlugin({
 			THEME_MODULE: '',
 			THEME_EXPORT: '',
+			ENABLE_I18N_OVERWRITING: '',
 			ENABLE_TAG_NAME_TRANSFORMER: '',
+			ENABLE_THEME_PATCHING: '',
 			BUILD_DATE: new Date().toISOString(),
 			COMMIT_HASH: commitHash,
 		}),

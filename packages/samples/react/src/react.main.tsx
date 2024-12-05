@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 import { setTagNameTransformer } from '@public-ui/react';
 
-import { bootstrap, isInitialized } from '@public-ui/components';
+import { bootstrap, isInitialized, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
@@ -12,6 +12,12 @@ import { App } from './App';
 import type { Generic } from 'adopted-style-sheets';
 
 type Theme = Generic.Theming.RegisterPatch<string, string, string>;
+
+const ENABLE_I18N_OVERWRITING =
+	process.env.ENABLE_I18N_OVERWRITING === 'true' || new URL('https://x' + location.hash.substring(1)).searchParams.has('enableI18nOverwriting');
+
+const ENABLE_THEME_PATCHING =
+	process.env.ENABLE_THEME_PATCHING === 'true' || new URL('https://x' + location.hash.substring(1)).searchParams.has('enableThemePatching');
 
 const ENABLE_TAG_NAME_TRANSFORMER =
 	process.env.ENABLE_TAG_NAME_TRANSFORMER === 'true' || new URL('https://x' + location.hash.substring(1)).searchParams.has('enableTagNameTransformer');
@@ -55,10 +61,52 @@ void (async () => {
 				translation: {
 					name: 'en',
 				},
+				/**
+				 * You can add your own translations here.
+				 */
+				translations: ENABLE_I18N_OVERWRITING
+					? new Set([
+							(t) =>
+								t('en', {
+									// https://github.com/public-ui/kolibri/blob/develop/packages/components/src/locales/en.ts
+									'kol-error': 'Tiny error!',
+								}),
+							(t) =>
+								t('de', {
+									// https://github.com/public-ui/kolibri/blob/develop/packages/components/src/locales/de.ts
+									'kol-error': 'Kleiner Fehler!',
+								}),
+						])
+					: undefined,
 				transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 			},
 		);
+
+		/**
+		 * You should patch the theme after the components and your default theme are registered.
+		 */
+		if (ENABLE_THEME_PATCHING) {
+			KoliBriDevHelper.patchTheme(
+				'default',
+				{
+					'KOL-BUTTON': `
+						button {
+							border: 1px solid red;
+						}`,
+					'KOL-SPIN': `
+						.bg-spin-2 {
+							background-color: red;
+						}
+						.bg-spin-3 {
+							background-color: gold;
+						}`,
+				},
+				{
+					append: true,
+				},
+			);
+		}
 
 		console.info('bootstap is initialized: ', isInitialized());
 	} catch (error) {
