@@ -37,6 +37,10 @@ hr {
 	padding: rem(8);
 }
 
+.w-image {
+	width: 500px;
+}
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
