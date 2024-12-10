@@ -1,4 +1,3 @@
-import React from 'react';
 import type { FC } from 'react';
 import { FormWrap } from '../FormWrap';
 import { HideMenusContext } from '../../shares/HideMenusContext';

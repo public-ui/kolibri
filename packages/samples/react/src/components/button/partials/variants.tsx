@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ButtonCases } from './cases';
 import { KolHeading } from '@public-ui/react';
 import type { ButtonSampleProps } from './type';

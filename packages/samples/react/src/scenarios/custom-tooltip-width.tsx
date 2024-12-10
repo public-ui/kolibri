@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import React from 'react';
 
 import { KolButton } from '@public-ui/react';
 import { SampleDescription } from '../components/SampleDescription';

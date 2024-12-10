@@ -1,4 +1,3 @@
-import React from 'react';
 import { KolAlert } from '@public-ui/react';
 import type { FC } from 'react';
 import type { AlertType, AlertVariant, HeadingLevel } from '@public-ui/components';

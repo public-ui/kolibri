@@ -1,5 +1,5 @@
 import { KolLinkButton } from '@public-ui/react';
-import React from 'react';
+
 import type { FC } from 'react';
 import { SampleDescription } from '../SampleDescription';
 

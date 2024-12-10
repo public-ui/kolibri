@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import React from 'react';
 
 import { KolHeading, KolTable } from '@public-ui/react';
 import type { KoliBriTableHeaders } from '@public-ui/components';

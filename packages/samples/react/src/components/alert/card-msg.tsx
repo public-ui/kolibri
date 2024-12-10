@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import React from 'react';
 
 import { AlertVariants } from './basic';
 import { SampleDescription } from '../SampleDescription';

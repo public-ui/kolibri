@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { KolButton, KolCard, KolModal } from '@public-ui/react';

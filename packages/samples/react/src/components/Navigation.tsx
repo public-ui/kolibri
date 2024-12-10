@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { KolAccordion, KolTree, KolTreeItem } from '@public-ui/react';
 import { useMobile } from '../hooks/useMobile';
 import type { Routes, Route } from '../shares/types';

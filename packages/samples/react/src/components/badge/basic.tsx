@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { KolBadge } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 

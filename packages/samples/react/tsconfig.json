@@ -22,9 +22,7 @@
 		"removeComments": true,
 		"strict": true,
 		"allowSyntheticDefaultImports": true,
-		"jsx": "react",
-		"jsxFactory": "React.createElement",
-		"jsxFragmentFactory": "React.Fragment"
+		"jsx": "react-jsx"
 	},
 	"include": ["src/**/*", "e2e/**/*"]
 }

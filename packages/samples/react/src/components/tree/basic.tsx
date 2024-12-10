@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { KolBadge, KolButton, KolTree, KolTreeItem } from '@public-ui/react';
 import { getRandomEmoji } from '../../shares/randomEmoji';
 import { useParams } from 'react-router';
