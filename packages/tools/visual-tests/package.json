@@ -29,7 +29,6 @@
 	},
 	"dependencies": {
 		"@playwright/test": "1.49.0",
-		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.0.3",
 		"portfinder": "1.0.32",
 		"serve": "14.2.4"
@@ -38,9 +37,13 @@
 		"@babel/eslint-parser": "7.25.9",
 		"@babel/plugin-syntax-import-attributes": "7.26.0",
 		"@babel/preset-env": "7.26.0",
+		"@public-ui/sample-react": "workspace:*",
 		"eslint": "8.57.1",
 		"knip": "5.37.1",
 		"prettier": "3.3.3"
+	},
+	"peerDependencies": {
+		"@public-ui/sample-react": "workspace:*"
 	},
 	"files": [
 		"playwright.config.js",
