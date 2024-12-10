@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { KolButton } from '@public-ui/react';
 import { useToasterService } from '../../../hooks/useToasterService';
 import type { ButtonSampleProps } from './type';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { KolHeading, KolInputCheckbox, KolNav } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';

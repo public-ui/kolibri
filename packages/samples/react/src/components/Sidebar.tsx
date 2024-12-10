@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import React from 'react';
 
 import { KolButton, KolHeading, KolSelect, KolVersion } from '@public-ui/react';
 

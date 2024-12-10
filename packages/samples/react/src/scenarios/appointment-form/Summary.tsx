@@ -1,5 +1,4 @@
 import { useFormikContext } from 'formik';
-import React from 'react';
 
 import { KolHeading } from '@public-ui/react';
 

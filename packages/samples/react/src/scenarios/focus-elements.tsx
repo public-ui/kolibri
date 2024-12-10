@@ -24,7 +24,7 @@ import {
 } from '@public-ui/react';
 import type { FC, ForwardRefRenderFunction } from 'react';
 import { useMemo } from 'react';
-import React, { forwardRef, useLayoutEffect, useRef } from 'react';
+import { forwardRef, useLayoutEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SampleDescription } from '../components/SampleDescription';
 import type { FocusableElement } from '@public-ui/components';

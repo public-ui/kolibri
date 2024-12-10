@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { KolButton, KolForm, KolInputCheckbox, KolInputRadio } from '@public-ui/react';
 

@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
-import React, { useContext, useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 
 import { PUBLIC_CODE_COMPONENT_URL, PUBLIC_DOC_COMPONENT_URL } from '../shares/constants';
 

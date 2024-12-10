@@ -1,5 +1,5 @@
 import { Field, useFormikContext } from 'formik';
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 

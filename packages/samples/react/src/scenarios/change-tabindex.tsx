@@ -22,7 +22,7 @@ import {
 	KolSplitButton,
 	KolTextarea,
 } from '@public-ui/react';
-import React from 'react';
+
 import type { FC } from 'react';
 import { ERROR_MSG, HINT_MSG } from '../shares/constants';
 import { COUNTRY_OPTIONS, COUNTRY_SUGGESTIONS } from '../shares/country';

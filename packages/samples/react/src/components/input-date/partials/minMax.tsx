@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { KolInputDate } from '@public-ui/react';
 import type { Components } from '@public-ui/components';
 

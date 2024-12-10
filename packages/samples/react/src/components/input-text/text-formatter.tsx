@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Formik, Field, type FieldProps } from 'formik';
 import { KolForm, KolHeading, KolInputText } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';

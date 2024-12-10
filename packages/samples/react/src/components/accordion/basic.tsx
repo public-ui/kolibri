@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { KolAccordion } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 

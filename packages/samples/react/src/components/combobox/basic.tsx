@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useContext } from 'react';
-import React from 'react';
+
 import { FormWrap } from '../FormWrap';
 import { ComboboxVariants } from './partials/variants';
 import { SampleDescription } from '../SampleDescription';

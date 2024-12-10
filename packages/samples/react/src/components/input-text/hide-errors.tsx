@@ -1,6 +1,6 @@
 import { KolAlert, KolCard, KolInputText } from '@public-ui/react';
 import type { FC } from 'react';
-import React from 'react';
+
 import { SampleDescription } from '../SampleDescription';
 
 export const InputTextHideErrors: FC = () => (

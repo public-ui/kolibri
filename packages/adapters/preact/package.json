@@ -53,8 +53,8 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"react": "18.3.1",
-		"react-dom": "18.3.1",
+		"react": "19.0.0",
+		"react-dom": "19.0.0",
 		"typescript": "5.6.3",
 		"unbuild": "1.2.1"
 	},
