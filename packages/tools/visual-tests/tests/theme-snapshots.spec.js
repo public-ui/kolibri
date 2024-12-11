@@ -23,6 +23,9 @@ export const configureSnapshotPath =
 				// Remove test counter from snapshot name
 				.replace('-1-', '-')
 
+				// Identify 2. test as zoom snapshot
+				.replace('-2-', '-zoom-')
+
 				// Make different snapshot folder for different themes
 				.replace('theme-snapshots.spec.js', `theme-${(process.env.THEME_EXPORT || 'default').toLocaleLowerCase()}`)
 				.replace('-snapshots', '');
@@ -44,12 +47,7 @@ test.use({
 	},
 });
 
-const blocklist = [];
-
 ROUTES.forEach((options, route) => {
-	if (blocklist.includes(route)) {
-		return;
-	}
 	test(`snapshot for ${route}`, async ({ page }) => {
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
 		await page.goto(`/#${route}${hideMenusParam}`, { waitUntil: 'networkidle' });
@@ -59,6 +57,14 @@ ROUTES.forEach((options, route) => {
 		if (options?.waitForTimeout) {
 			await page.waitForTimeout(options.waitForTimeout);
 		}
+		await expect(page).toHaveScreenshot({
+			fullPage: true,
+			maxDiffPixelRatio: 0.01,
+			...options,
+		});
+		await page.evaluate(() => {
+			document.body.style.zoom = '400%';
+		});
 		await expect(page).toHaveScreenshot({
 			fullPage: true,
 			maxDiffPixelRatio: 0.01,

@@ -2,6 +2,7 @@ import child_process from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'url';
 import * as crypto from 'crypto';
+import { readFile } from 'fs/promises';
 import * as fs from 'fs';
 import portfinder from 'portfinder';
 import * as process from 'process';
@@ -35,12 +36,11 @@ if (!fs.existsSync(workingDir)) {
 const buildPath = path.join(tempDir, `kolibri-visual-testing-build-${crypto.randomUUID()}`);
 const rawPackageJsonPath = new URL(path.join(workingDir, 'package.json'), import.meta.url).href;
 const packageJsonPath = process.platform === 'win32' ? pathToFileURL(rawPackageJsonPath) : rawPackageJsonPath;
-const packageJson = await import(packageJsonPath, {
-	assert: { type: 'json' },
-});
+const packageJsonContent = await readFile(new URL(packageJsonPath, import.meta.url), 'utf8');
+const packageJson = JSON.parse(packageJsonContent);
 
 console.log(`
-Building React Sample App (v${packageJson?.default?.version ?? '#.#.#'}) …`);
+Building React Sample App (v${packageJson?.version ?? '#.#.#'}) …`);
 
 child_process.spawnSync('pnpm', ['run', 'build', '--', `--output-path="${buildPath}"`], {
 	cwd: workingDir,
