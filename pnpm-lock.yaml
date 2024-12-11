@@ -838,9 +838,6 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
-      '@public-ui/sample-react':
-        specifier: workspace:*
-        version: link:../../samples/react
       '@public-ui/visual-tests':
         specifier: workspace:*
         version: link:../../tools/visual-tests
@@ -892,9 +889,6 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
-      '@public-ui/sample-react':
-        specifier: workspace:*
-        version: link:../../samples/react
       '@public-ui/visual-tests':
         specifier: workspace:*
         version: link:../../tools/visual-tests
@@ -946,9 +940,6 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
-      '@public-ui/sample-react':
-        specifier: workspace:*
-        version: link:../../samples/react
       '@public-ui/visual-tests':
         specifier: workspace:*
         version: link:../../tools/visual-tests
@@ -1079,6 +1070,9 @@ importers:
       '@playwright/test':
         specifier: 1.49.0
         version: 1.49.0
+      '@public-ui/sample-react':
+        specifier: workspace:*
+        version: link:../../samples/react
       axe-playwright:
         specifier: 2.0.3
         version: 2.0.3(playwright@1.49.0)
@@ -1098,9 +1092,6 @@ importers:
       '@babel/preset-env':
         specifier: 7.26.0
         version: 7.26.0(@babel/core@7.25.2)
-      '@public-ui/sample-react':
-        specifier: workspace:*
-        version: link:../../samples/react
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -21421,7 +21412,7 @@ snapshots:
       jest-environment-jsdom: 26.6.2
       jest-environment-node: 26.6.2
       jest-get-type: 26.3.0
-      jest-jasmine2: 26.6.3(ts-node@10.9.2(@swc/core@1.5.28)(@types/node@22.9.0)(typescript@5.6.3))
+      jest-jasmine2: 26.6.3
       jest-regex-util: 26.0.0
       jest-resolve: 26.6.2
       jest-util: 26.6.2
@@ -21510,7 +21501,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-jasmine2@26.6.3(ts-node@10.9.2(@swc/core@1.5.28)(@types/node@22.9.0)(typescript@5.6.3)):
+  jest-jasmine2@26.6.3:
     dependencies:
       '@babel/traverse': 7.25.9
       '@jest/environment': 26.6.2
@@ -21531,11 +21522,7 @@ snapshots:
       pretty-format: 26.6.2
       throat: 5.0.0
     transitivePeerDependencies:
-      - bufferutil
-      - canvas
       - supports-color
-      - ts-node
-      - utf-8-validate
 
   jest-leak-detector@26.6.2:
     dependencies:
