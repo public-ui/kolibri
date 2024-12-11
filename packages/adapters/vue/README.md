@@ -1,5 +1,13 @@
 # KoliBri - Vue-Adapter
 
+[![npm](https://img.shields.io/npm/v/@public-ui/vue)](https://www.npmjs.com/package/@public-ui/components)
+[![license](https://img.shields.io/npm/l/@public-ui/vue)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![downloads](https://img.shields.io/npm/dt/@public-ui/vue)](https://www.npmjs.com/package/@public-ui/vue)
+[![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
+[![size](https://img.shields.io/bundlephobia/min/@public-ui/vue)](https://bundlephobia.com/result?p=@public-ui/vue)
+![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
+
 ## Motivation
 
 Provide an adapter for [Vue](https://vuejs.org/) to use the KoliBri components.
@@ -16,7 +24,7 @@ yarn add -g @public-ui/vue
 
 ## Usage
 
-First, initialize KoliBri with a [theme](https://github.com/public-ui/kolibri/tree/develop/packages/themes) and create a Vue app:
+First, initialize KoliBri with a [theme](https://github.com/public-ui/kolibri/tree/develop/packages/vue) and create a Vue app:
 
 ```ts
 import { createApp } from 'vue';
