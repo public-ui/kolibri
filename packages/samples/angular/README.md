@@ -1,5 +1,13 @@
 # Angular
 
+[![npm](https://img.shields.io/npm/v/@public-ui/sample-angular)](https://www.npmjs.com/package/@public-ui/components)
+[![license](https://img.shields.io/npm/l/@public-ui/sample-angular)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![downloads](https://img.shields.io/npm/dt/@public-ui/sample-angular)](https://www.npmjs.com/package/@public-ui/sample-angular)
+[![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
+[![size](https://img.shields.io/bundlephobia/min/@public-ui/sample-angular)](https://bundlephobia.com/result?p=@public-ui/sample-angular)
+![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
 
 ## Development server
