@@ -73,7 +73,7 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.6.12",
-		"adopted-style-sheets": "1.1.6",
+		"adopted-style-sheets": "1.1.7",
 		"clsx": "2.1.1",
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
@@ -84,7 +84,7 @@
 		"wcag-contrast": "3.0.0"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.49.0",
+		"@playwright/test": "1.49.1",
 		"@public-ui/stencil-angular-output-target": "0.9.0",
 		"@public-ui/stencil-react-output-target": "0.6.0",
 		"@public-ui/stencil-solid-output-target": "0.2.0",
@@ -108,25 +108,25 @@
 		"cssnano": "7.0.6",
 		"eslint": "8.57.1",
 		"eslint-plugin-html": "8.1.2",
-		"eslint-plugin-jsdoc": "50.5.0",
+		"eslint-plugin-jsdoc": "50.6.1",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.2",
 		"jest": "26.6.3",
-		"knip": "5.37.1",
-		"lighthouse": "12.2.2",
+		"knip": "5.40.0",
+		"lighthouse": "12.3.0",
 		"mustache": "4.2.0",
 		"postcss": "8.4.49",
 		"postcss-sorting": "9.1.0",
-		"prettier": "3.3.3",
+		"prettier": "3.4.2",
 		"pug": "3.0.3",
 		"rimraf": "6.0.1",
 		"stencil-awesome-test": "1.0.6",
-		"terser": "5.36.0",
+		"terser": "5.37.0",
 		"twig": "1.17.1",
-		"typescript": "5.6.3"
+		"typescript": "5.7.2"
 	},
 	"peerDependencies": {
-		"adopted-style-sheets": "1.1.6"
+		"adopted-style-sheets": "1.1.7"
 	},
 	"files": [
 		"assets",
