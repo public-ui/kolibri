@@ -56,19 +56,19 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"@rollup/plugin-commonjs": "28.0.1",
-		"@rollup/plugin-node-resolve": "15.3.0",
-		"@rollup/plugin-typescript": "12.1.1",
+		"@rollup/plugin-commonjs": "28.0.2",
+		"@rollup/plugin-node-resolve": "15.3.1",
+		"@rollup/plugin-typescript": "12.1.2",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"cpy-cli": "5.0.0",
 		"eslint": "8.57.1",
-		"nodemon": "3.1.7",
+		"nodemon": "3.1.9",
 		"postcss": "8.4.49",
-		"rollup": "4.27.3",
+		"rollup": "4.28.1",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.81.0",
-		"typescript": "5.6.3"
+		"sass": "1.83.0",
+		"typescript": "5.7.2"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"

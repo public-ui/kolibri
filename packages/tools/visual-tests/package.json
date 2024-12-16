@@ -28,7 +28,7 @@
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@playwright/test": "1.49.0",
+		"@playwright/test": "1.49.1",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.0.3",
 		"portfinder": "1.0.32",
@@ -39,8 +39,8 @@
 		"@babel/plugin-syntax-import-attributes": "7.26.0",
 		"@babel/preset-env": "7.26.0",
 		"eslint": "8.57.1",
-		"knip": "5.37.1",
-		"prettier": "3.3.3"
+		"knip": "5.40.0",
+		"prettier": "3.4.2"
 	},
 	"files": [
 		"playwright.config.js",
