@@ -16,7 +16,9 @@ config.overrides.push({
 	rules: {
 		'@typescript-eslint/consistent-type-imports': 'error',
 		'@typescript-eslint/no-unsafe-member-access': 'error',
-		'react/no-unused-state': 'error',
+		'react/no-unused-state': 'off',
+		'react/prop-types': 'off',
+		'react/react-in-jsx-scope': 'off',
 	},
 });
 

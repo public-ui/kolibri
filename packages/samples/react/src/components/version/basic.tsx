@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { KolVersion } from '@public-ui/react';
 
 import type { FC } from 'react';

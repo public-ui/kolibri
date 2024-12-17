@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { KolButton, KolInputDate } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+
 import { KolTableStateless } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 

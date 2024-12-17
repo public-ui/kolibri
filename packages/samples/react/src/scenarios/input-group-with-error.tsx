@@ -1,4 +1,3 @@
-import React from 'react';
 import type { FC } from 'react';
 import { KolAlert, KolInputCheckbox, KolInputText, KolSelect } from '@public-ui/react';
 import { SampleDescription } from '../components/SampleDescription';

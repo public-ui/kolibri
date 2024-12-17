@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import React from 'react';
 
 import { createReactRenderElement, KolButton, KolInputText, KolTable } from '@public-ui/react';
 

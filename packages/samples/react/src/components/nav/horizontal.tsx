@@ -1,4 +1,3 @@
-import React from 'react';
 import { KolHeading, KolNav } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 import { LINKS, LINKS_WITHOUT_SUBMENU } from './links';

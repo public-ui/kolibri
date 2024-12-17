@@ -1,27 +1,10 @@
 {
 	"compilerOptions": {
-		"allowUnreachableCode": false,
-		"allowSyntheticDefaultImports": true,
-		"declaration": true,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"esModuleInterop": true,
-		"lib": ["dom", "es2015"],
 		"module": "ESNext",
+		"target": "ES6",
 		"moduleResolution": "node",
-		"noImplicitAny": true,
-		"noImplicitReturns": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"outDir": "dist",
-		"removeComments": true,
-		"sourceMap": true,
-		"jsx": "react",
-		"target": "es2015",
-		"forceConsistentCasingInFileNames": false,
-		"importHelpers": false,
-		"strict": true
-	},
-	"compileOnSave": false,
-	"buildOnSave": false
+		"jsx": "react-jsx",
+		"esModuleInterop": true,
+		"skipLibCheck": true
+	}
 }

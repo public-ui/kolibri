@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { SampleDescription } from '../SampleDescription';
 import { ToasterService } from '@public-ui/components';
 import { KolInputText } from '@public-ui/react';

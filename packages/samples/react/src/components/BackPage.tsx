@@ -1,5 +1,4 @@
 import { KolAlert, KolButton } from '@public-ui/react';
-import React from 'react';
 
 import type { FC } from 'react';
 

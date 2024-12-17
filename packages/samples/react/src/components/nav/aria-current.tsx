@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { KolNav } from '@public-ui/react';
 
 import { SampleDescription } from '../SampleDescription';

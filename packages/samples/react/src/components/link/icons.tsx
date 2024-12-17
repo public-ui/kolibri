@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { KolLink } from '@public-ui/react';
 
 import type { FC } from 'react';

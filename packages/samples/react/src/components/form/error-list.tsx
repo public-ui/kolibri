@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+
 import { SampleDescription } from '../SampleDescription';
 import { KolForm, KolInputText } from '@public-ui/react';
 

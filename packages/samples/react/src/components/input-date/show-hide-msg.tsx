@@ -1,5 +1,5 @@
 import { KolInputCheckbox, KolInputDate } from '@public-ui/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 const msgTypes = ['default', 'error', 'info', 'success', 'warning'] as const;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { KolButton, KolForm } from '@public-ui/react';
 
 export const FormWrap = <P,>({ RefComponent: Component, ...props }: { RefComponent: any } & Partial<P>) => {

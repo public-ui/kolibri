@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { KolCombobox } from '@public-ui/react';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';

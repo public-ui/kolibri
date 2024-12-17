@@ -55,10 +55,10 @@
 		"@types/normalize-package-data": "2.4.4",
 		"@types/react": "18.3.4",
 		"@types/react-dom": "18.3.5",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
+		"react": "19.0.0",
+		"react-dom": "19.0.0",
 		"typescript": "5.7.2",
-		"unbuild": "1.2.1"
+		"unbuild": "3.0.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",

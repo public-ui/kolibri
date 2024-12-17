@@ -1,6 +1,6 @@
 import type { ButtonProps, KoliBriTableHeaders } from '@public-ui/components';
 import type { FC } from 'react';
-import React from 'react';
+
 import {
 	KolAbbr,
 	KolAccordion,

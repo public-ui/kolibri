@@ -20,7 +20,7 @@ import {
 	KolTextarea,
 } from '@public-ui/react';
 import type { FC } from 'react';
-import React from 'react';
+
 import { SampleDescription } from '../components/SampleDescription';
 import { useToasterService } from '../hooks/useToasterService';
 

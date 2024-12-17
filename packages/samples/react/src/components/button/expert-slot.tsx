@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+
 import { ButtonVariants } from './partials/variants';
 import { SampleDescription } from '../SampleDescription';
 

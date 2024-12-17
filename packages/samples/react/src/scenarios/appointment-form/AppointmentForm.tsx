@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import * as Yup from 'yup';
 
 import { KolLink, KolTabs } from '@public-ui/react';

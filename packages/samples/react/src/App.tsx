@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React from 'react';
+
 import { useLocation } from 'react-router';
 import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 

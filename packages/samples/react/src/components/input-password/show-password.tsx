@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 import { KolForm, KolInputPassword } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';

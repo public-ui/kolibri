@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useRef, useState, useContext, useEffect } from 'react';
+import { useRef, useState, useContext, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { HideMenusContext } from '../../shares/HideMenusContext';
