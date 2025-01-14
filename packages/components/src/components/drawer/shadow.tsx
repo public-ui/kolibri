@@ -27,7 +27,6 @@ export class KolDrawer implements DrawerAPI {
 			...this.state,
 			_open: true,
 		};
-		this.dialogElement?.showModal();
 		this.dialogElement?.show();
 	}
 
