@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import type { KoliBriModalEventCallbacks, LabelPropType, DrawerAPI, AlignPropType, OpenPropType, ModalPropType, DrawerStates } from '../../schema';
-import { setState, validateLabel, validateOpen, validateAlign, validateModal } from '../../schema';
+import { setState, validateLabel, validateOpen, validateAlign } from '../../schema';
 import { Component, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
@@ -27,11 +27,7 @@ export class KolDrawer implements DrawerAPI {
 			...this.state,
 			_open: true,
 		};
-		if (this.state._modal) {
-			this.dialogElement?.showModal();
-		} else {
-			this.dialogElement?.show();
-		}
+		this.dialogElement?.showModal();
 	}
 
 	@Method()
@@ -67,9 +63,8 @@ export class KolDrawer implements DrawerAPI {
 
 	private getRef = (el: HTMLDialogElement | undefined) => (this.dialogElement = el as HTMLDialogElement);
 	public render(): JSX.Element {
-		const isModal = this.state._modal;
 		return (
-			<Host class={`kol-drawer drawer ${isModal ? 'drawer--modal' : ''}`} ref={(el) => (this.hostElement = el as HTMLElement)}>
+			<Host class={`kol-drawer drawer`} ref={(el) => (this.hostElement = el as HTMLElement)}>
 				<dialog class="drawer__dialog" ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
@@ -93,6 +88,7 @@ export class KolDrawer implements DrawerAPI {
 	@Prop() public _label!: LabelPropType;
 
 	/**
+	 * @deprecated
 	 * Indicates whether the drawer is a modal.
 	 */
 	@Prop() public _modal?: ModalPropType;
@@ -118,11 +114,6 @@ export class KolDrawer implements DrawerAPI {
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
 		validateAlign(this, value);
-	}
-
-	@Watch('_modal')
-	public validateModal(value?: ModalPropType): void {
-		validateModal(this, value);
 	}
 
 	@Watch('_open')
@@ -177,7 +168,6 @@ export class KolDrawer implements DrawerAPI {
 		this.validateLabel(this._label);
 		await this.validateOpen(this._open);
 		this.validateAlign(this._align);
-		this.validateModal(this._modal);
 		this.validateOn(this._on);
 	}
 }
