@@ -55,9 +55,9 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
         sort?: (data) => data,
       },
       …
-],
-…
-],
+    ],
+    …
+  ],
   vertical: [
     [
       {
@@ -70,9 +70,9 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
         sort?: (data) => data,
       },
       …
-],
-…
-],
+    ],
+    …
+  ],
 };
 ```
 
