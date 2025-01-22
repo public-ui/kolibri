@@ -79,12 +79,16 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 ### Code
 
 ```html
-<kol-table-stateful _label="Tabellenbeschreibung" _headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}' _pagination='[{"page":2}]'></kol-table>
+<kol-table-stateful
+	_label="Tabellenbeschreibung"
+	_headers='{"horizontal": [[{"label":"Montag","key":"montag"}]]}'
+	_pagination='[{"page":2}]'
+></kol-table-stateful>
 ```
 
 ### Beispiel
 
-<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table>
+<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _pagination='{"page":2}'></kol-table-stateful>
 
 ### Footer
 
@@ -92,7 +96,7 @@ Durch die Verwendung des **`_dataFoot_`**-Attribut können zusammenfassende Info
 
 ### Beispiel
 
-<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination, DataFoot" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _dataFoot='[{"montag":"Ruhetag"}]' _pagination='{"page":2}'></kol-table>
+<kol-table-stateful _label="Nur Vertikal Header, Daten Vertikal, Pagination, DataFoot" _headers='{"horizontal":[[{"label":"Montag","key":"montag"}]]}' _data='[{"montag":"Zelle1"},{"montag":"Zelle2"}]' _dataFoot='[{"montag":"Ruhetag"}]' _pagination='{"page":2}'></kol-table-stateful>
 
 ## Verwendung
 
