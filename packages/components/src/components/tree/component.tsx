@@ -22,7 +22,7 @@ export class KolTreeWc implements TreeAPI {
 	private treeItemElements?: HTMLKolTreeItemElement[];
 
 	/**
-	 * Defines the label of the tree.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() _label!: LabelPropType;
 

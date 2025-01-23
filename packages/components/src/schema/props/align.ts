@@ -11,7 +11,7 @@ export const alignPropTypeOptions = [...horizontalAlignOptions, ...verticalAlign
 export type AlignPropType = HorizontalAlign | VerticalAlign;
 
 /**
- * Defines where to show the element preferably: top, right, bottom or left.
+ * Defines the visual orientation of the component: top, right, bottom or left.
  */
 export type PropAlign = {
 	align: AlignPropType;

@@ -73,12 +73,12 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	/**
-	 * Specifies the default open state of the drawer.
+	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
 	@Prop() public _open?: OpenPropType;
 
 	/**
-	 * Specifies the orientation of the drawer.
+	 * Defines the visual orientation of the component.
 	 */
 	@Prop() public _align?: AlignPropType;
 

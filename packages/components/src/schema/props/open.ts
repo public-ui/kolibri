@@ -7,7 +7,7 @@ import { watchBoolean } from '../utils';
 export type OpenPropType = boolean;
 
 /**
- * If set (to true) opens/expands the element, closes if not set (or set to false).
+ * Opens/expands the element when truthy, closes/collapses when falsy.
  */
 export type PropOpen = {
 	open: OpenPropType;

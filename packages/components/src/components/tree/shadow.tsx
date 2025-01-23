@@ -13,7 +13,7 @@ import { KolTreeWcTag } from '../../core/component-names';
 })
 export class KolTree implements TreeProps {
 	/**
-	 * Defines the label of the tree.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() _label!: LabelPropType;
 

@@ -51,7 +51,7 @@ export function containsOnlyNumbers(str: string): boolean {
 }
 
 /**
- * Defines the type of the label property.
+ * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
  */
 export type LabelPropType = string;
 
