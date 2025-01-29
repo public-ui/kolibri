@@ -94,7 +94,9 @@ export const TableStatefulWithSelection: FC = () => {
 							},
 						}}
 					></KolButton>
-					<pre className="text-base">{JSON.stringify(selectedValue, null, 2)}</pre>
+					<pre className="text-base" aria-live="polite">
+						{JSON.stringify(selectedValue, null, 2)}
+					</pre>
 				</div>
 			</section>
 		</>
