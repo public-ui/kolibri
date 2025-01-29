@@ -55,7 +55,7 @@ export class KolToolbar implements ToolbarAPI {
 	}
 
 	/**
-	 * Defines the semantic aria-label of the component.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: string;
 

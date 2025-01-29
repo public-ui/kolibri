@@ -5,7 +5,7 @@ import { watchString } from '../utils';
 export type AccessKeyPropType = string;
 
 /**
- * Defines the elements access key.
+ * Defines which key combination can be used to trigger or focus the interactive element of the component.
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey
  */
 export type PropAccessKey = {

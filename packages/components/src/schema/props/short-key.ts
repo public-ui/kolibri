@@ -5,7 +5,7 @@ import { watchString } from '../utils';
 export type ShortKeyPropType = string;
 
 /**
- * Defines the elements short key.
+ * Adds a visual short key hint to the component.
  */
 export type PropShortKey = {
 	shortKey: ShortKeyPropType;

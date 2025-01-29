@@ -7,7 +7,7 @@ import { watchString } from '../utils';
 export type HrefPropType = string;
 
 /**
- * This property is used for a link from a reference to the target URL.
+ * Defines the target URI of the link.
  */
 export type PropHref = {
 	href: HrefPropType;

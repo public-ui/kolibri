@@ -123,7 +123,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	@Prop() public _on?: AccordionCallbacksPropType<boolean>;
 
 	/**
-	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
