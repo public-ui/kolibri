@@ -19,17 +19,17 @@ export class KolTreeItem implements TreeItemProps {
 	@Prop() _active?: OpenPropType;
 
 	/**
-	 * Defines the label of the link.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() _label!: LabelPropType;
 
 	/**
-	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
 	@Prop() _open?: OpenPropType;
 
 	/**
-	 * This property is used for a link from a reference to the target URL.
+	 * Defines the target URI of the link.
 	 */
 	@Prop() _href!: HrefPropType;
 

@@ -436,7 +436,7 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Suggestions the user can choose from.
+	 * Suggestions to provide for the input.
 	 */
 	@Prop() public _suggestions!: SuggestionsPropType;
 
