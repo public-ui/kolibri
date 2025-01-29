@@ -1,12 +1,12 @@
 import type { JSX } from '@stencil/core';
+import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { validateErrorList, watchBoolean, watchString } from '../../schema';
-import { Component, h, Host, Prop, State, Watch, Method } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
-import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { KolLinkWcTag } from '../../core/component-names';
 import KolAlertFc from '../../functional-components/Alert';
+import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
 
 /**
  * @slot - Inhalt der Form.
@@ -19,7 +19,8 @@ import KolAlertFc from '../../functional-components/Alert';
 	shadow: true,
 })
 export class KolForm implements FormAPI {
-	errorListElement?: HTMLElement;
+	errorListBlock?: HTMLElement;
+	errorListFirstLink?: HTMLElement;
 
 	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {
@@ -38,16 +39,11 @@ export class KolForm implements FormAPI {
 		}
 	};
 
-	private readonly handleLinkClick = (event: Event) => {
-		const href = (event.target as HTMLAnchorElement | undefined)?.href;
-		if (href) {
-			const hrefUrl = new URL(href);
-
-			const targetElement = document.querySelector<HTMLElement>(hrefUrl.hash);
-			if (targetElement && typeof targetElement.focus === 'function') {
-				targetElement.scrollIntoView({ behavior: 'smooth' });
-				targetElement.focus();
-			}
+	private readonly handleLinkClick = (selector: string) => {
+		const targetElement = document.querySelector<HTMLElement>(selector);
+		if (targetElement && typeof targetElement.focus === 'function') {
+			targetElement.scrollIntoView({ behavior: 'smooth' });
+			targetElement.focus();
 		}
 	};
 
@@ -55,12 +51,7 @@ export class KolForm implements FormAPI {
 		return (
 			<KolAlertFc
 				ref={(el) => {
-					setTimeout(() => {
-						if (el && typeof el.focus === 'function') {
-							el.scrollIntoView({ behavior: 'smooth' });
-							el.focus();
-						}
-					}, 250);
+					this.errorListBlock = el;
 				}}
 				type="error"
 				variant="card"
@@ -71,11 +62,14 @@ export class KolForm implements FormAPI {
 						{errorList?.map((error, index) => (
 							<li key={index}>
 								<KolLinkWcTag
-									_href={error.selector}
+									_href=""
 									_label={error.message}
-									_on={{ onClick: this.handleLinkClick }}
+									_on={{ onClick: typeof error.selector === 'string' ? () => this.handleLinkClick(String(error.selector)) : error.selector }}
 									ref={(el) => {
-										if (index === 0) this.errorListElement = el;
+										if (index === 0) {
+											this.errorListFirstLink = el;
+											this.scrollToErrorList();
+										}
 									}}
 								/>
 							</li>
@@ -114,11 +108,19 @@ export class KolForm implements FormAPI {
 		);
 	}
 
+	private scrollToErrorList(): void {
+		this.errorListBlock?.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start',
+		});
+		setTimeout(() => {
+			this.errorListFirstLink?.querySelector('a')?.focus();
+		}, 250);
+	}
+
 	@Method()
 	async focusErrorList(): Promise<void> {
-		if (this._errorList && this._errorList.length > 0) {
-			this.errorListElement?.focus();
-		}
+		this.scrollToErrorList();
 		return Promise.resolve();
 	}
 
