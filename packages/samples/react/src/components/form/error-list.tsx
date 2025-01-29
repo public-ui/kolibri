@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 export const FormErrorList: FC = () => {
-	const formRef = useRef<HTMLKolFormElement>();
+	const formRef = useRef<HTMLKolFormElement | null>(null);
 	return (
 		<>
 			<SampleDescription>
