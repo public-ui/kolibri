@@ -64,11 +64,11 @@
 		"cpy-cli": "5.0.0",
 		"eslint": "8.57.1",
 		"nodemon": "3.1.9",
-		"postcss": "8.4.49",
-		"rollup": "4.28.1",
+		"postcss": "8.5.1",
+		"rollup": "4.32.1",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.83.0",
-		"typescript": "5.7.2"
+		"sass": "1.83.4",
+		"typescript": "5.7.3"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*"

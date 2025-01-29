@@ -48,16 +48,16 @@
 		"eslint": "8.57.1",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-html": "8.1.2",
-		"eslint-plugin-jsdoc": "50.6.1",
+		"eslint-plugin-jsdoc": "50.6.3",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
-		"eslint-plugin-react": "7.37.2",
-		"knip": "5.40.0",
+		"eslint-plugin-react": "7.37.4",
+		"knip": "5.43.6",
 		"mocha": "10.8.2",
 		"nodemon": "3.1.9",
 		"rimraf": "6.0.1",
 		"ts-node": "10.9.2",
-		"typescript": "5.7.2"
+		"typescript": "5.7.3"
 	},
 	"files": [
 		"dist"
