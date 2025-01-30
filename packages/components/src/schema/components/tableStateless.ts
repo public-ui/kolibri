@@ -7,6 +7,9 @@ import type { PropTableHeaderCells } from '../props/table-header-cells';
 type RequiredProps = PropLabel & PropTableData & PropTableHeaderCells;
 
 type OptionalProps = {
+	/**
+	 * @deprecated This property is deprecated and will be removed in the next major release.
+	 */
 	minWidth: string;
 } & PropTableCallbacks &
 	PropTableDataFoot &
@@ -18,6 +21,13 @@ type RequiredStates = {
 } & PropLabel;
 
 type OptionalStates = {
+	/**
+	 * @deprecated This property is deprecated and will be removed in the next major release.
+	 */
+	deprecatedMinWidth: string;
+	/**
+	 * Needed for internal use.
+	 */
 	minWidth: string;
 	dataFoot: KoliBriTableDataType[];
 	selection: KoliBriTableSelection;
