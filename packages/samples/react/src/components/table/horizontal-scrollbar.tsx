@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
-import { KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react';
+import { KolAlert, KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react';
 
 import { SampleDescription } from '../SampleDescription';
 
@@ -11,6 +11,9 @@ const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
+			/**
+			 * In version 3, the width of the column is required to implicitly calculate the minWidth.
+			 */
 			{ label: 'Large Column', key: 'large', textAlign: 'left', width: '300px' },
 			{ label: 'Small Column', key: 'small', textAlign: 'left', width: '200px' },
 			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
@@ -31,12 +34,18 @@ export const TableHorizontalScrollbar: FC = () => {
 				</p>
 			</SampleDescription>
 
+			<KolAlert _variant="card" _type="warning" _label="Deprecation of minWidth">
+				In version 3, the width of the column will be required for the implicit calculation of the minWidth. This behavior is also implemented in version 2, if
+				the _minWidth property is undefined.
+			</KolAlert>
+			<br />
 			<section className="w-full flex flex-col gap-4">
 				<KolHeading _label="Table with scrollbar" _level={2} />
 
 				<KolTableStateful
 					_label="Table for demonstration purposes with horizontal scrollbar."
-					_minWidth={hasWidthRestriction ? '600px' : 'auto'}
+					// minWidth will be removed in the next major release
+					_minWidth={hasWidthRestriction ? '600px' : undefined}
 					_headers={HEADERS}
 					_data={DATA}
 					className="block"
@@ -47,7 +56,8 @@ export const TableHorizontalScrollbar: FC = () => {
 
 				<KolTableStateful
 					_label="Table for demonstration purposes with horizontal scrollbar with auto minWidth."
-					_minWidth={hasWidthRestriction ? '600px' : 'auto'}
+					// minWidth will be removed in the next major release
+					_minWidth={hasWidthRestriction ? '600px' : undefined}
 					_headers={HEADERS}
 					_data={[]}
 					className="block"
