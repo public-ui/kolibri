@@ -49,7 +49,6 @@
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "pnpm build",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"

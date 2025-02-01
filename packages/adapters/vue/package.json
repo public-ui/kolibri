@@ -45,8 +45,7 @@
 		"vue"
 	],
 	"scripts": {
-		"build": "unbuild",
-		"prepack": "unbuild"
+		"build": "unbuild"
 	},
 	"devDependencies": {
 		"@babel/types": "7.26.7",
