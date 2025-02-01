@@ -46,6 +46,9 @@ type RequiredProps = {
 	PropLabel;
 type OptionalProps = {
 	allowMultiSort: boolean;
+	/**
+	 * @deprecated This property is deprecated and will be removed in the next major release.
+	 */
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
 } & PropTableDataFoot &
@@ -63,6 +66,9 @@ type RequiredStates = {
 } & PropLabel &
 	PropPaginationPosition;
 type OptionalStates = {
+	/**
+	 * Needed for internal use.
+	 */
 	minWidth: string;
 	sortDirection: KoliBriSortDirection;
 	selection: KoliBriTableSelection;

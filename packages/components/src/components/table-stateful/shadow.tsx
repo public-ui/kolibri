@@ -116,6 +116,7 @@ export class KolTableStateful implements TableAPI {
 
 	/**
 	 * Defines the table min-width.
+	 * @deprecated This property is deprecated and will be removed in the next major release.
 	 */
 	@Prop() public _minWidth?: string;
 
@@ -327,6 +328,9 @@ export class KolTableStateful implements TableAPI {
 		});
 	}
 
+	/**
+	 * @deprecated This property is deprecated and will be removed in the next major release.
+	 */
 	@Watch('_minWidth')
 	public validateMinWidth(value?: string): void {
 		watchString(this, '_minWidth', value, {
