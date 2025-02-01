@@ -54,8 +54,7 @@
 		"build:tsc": "tsc -p .",
 		"build:types": "tsc -d --outDir types && rimraf types/*.js types/*.map types/**/*.js types/**/*.map",
 		"build:umd": "tsc -m umd --outDir umd",
-		"build": "npm run build:clean && npm run build:ngc",
-		"prepack": "npm run build"
+		"build": "npm run build:clean && npm run build:ngc"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",

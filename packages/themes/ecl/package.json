@@ -9,7 +9,6 @@
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "pnpm build",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"start:ec": "npm-run-all --parallel dev serve:ec",
 		"start:eu": "npm-run-all --parallel dev serve:eu",

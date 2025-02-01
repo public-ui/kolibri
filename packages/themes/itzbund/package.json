@@ -9,7 +9,6 @@
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "pnpm build",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"start": "npm-run-all --parallel dev serve",
 		"serve": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=ITZBund npm --prefix \"node_modules/@public-ui/sample-react/\" start",
