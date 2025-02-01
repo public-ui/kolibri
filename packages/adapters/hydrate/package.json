@@ -45,8 +45,7 @@
 		"hydrate"
 	],
 	"scripts": {
-		"build": "rimraf dist/package.json",
-		"prepack": "npm run build"
+		"build": "rimraf dist/package.json"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
