@@ -1,9 +1,9 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropLabel, StatefulPropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection } from '../props';
-import type { KoliBriTableDataType, KoliBriTableHeaderCell, Stringified, KoliBriSortDirection, KoliBriTableSelection } from '../types';
-import type { KoliBriPaginationProps } from './pagination';
+import type { PropLabel, PropTableData, PropTableDataFoot, PropTableSelection, StatefulPropTableCallbacks } from '../props';
 import type { PropPaginationPosition } from '../props/pagination-position';
+import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
+import type { KoliBriPaginationProps } from './pagination';
 
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType) => number;
 
@@ -37,7 +37,6 @@ type RequiredProps = {
 	PropLabel;
 type OptionalProps = {
 	allowMultiSort: boolean;
-	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
 } & PropTableDataFoot &
 	PropPaginationPosition &
@@ -54,6 +53,9 @@ type RequiredStates = {
 } & PropLabel &
 	PropPaginationPosition;
 type OptionalStates = {
+	/**
+	 * Needed for internal use.
+	 */
 	minWidth: string;
 	sortDirection: KoliBriSortDirection;
 	selection: KoliBriTableSelection;

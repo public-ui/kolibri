@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
+import clsx from 'clsx';
 import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
@@ -28,12 +29,10 @@ import {
 	validateTableDataFoot,
 	validateTableHeaderCells,
 	validateTableSelection,
-	watchString,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import clsx from 'clsx';
 
 /**
  * @internal
@@ -86,12 +85,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Prop() public _label!: string;
 
 	/**
-	 * Defines the table min-width.
-	 * @deprecated This property is deprecated and will be removed in the next major release.
-	 */
-	@Prop() public _minWidth?: string;
-
-	/**
 	 * Defines the callback functions for table events.
 	 */
 	@Prop() public _on?: TableCallbacksPropType;
@@ -124,16 +117,6 @@ export class KolTableStateless implements TableStatelessAPI {
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value, {
 			required: true,
-		});
-	}
-
-	/**
-	 * @deprecated This property is deprecated and will be removed in the next major release.
-	 */
-	@Watch('_minWidth')
-	public validateMinWidth(value?: string): void {
-		watchString(this, '_deprecatedMinWidth', value, {
-			defaultValue: undefined,
 		});
 	}
 
@@ -424,7 +407,6 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaderCells(this._headerCells);
 		this.validateLabel(this._label);
-		this.validateMinWidth(this._minWidth);
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 	}
@@ -772,7 +754,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				<table
 					class="kol-table__table"
 					style={{
-						minWidth: this.state._deprecatedMinWidth || this.state._minWidth,
+						minWidth: this.state._minWidth,
 					}}
 				>
 					{/*

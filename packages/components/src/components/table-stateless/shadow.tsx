@@ -40,11 +40,6 @@ export class KolTableStateless implements TableStatelessProps {
 	@Prop() public _label!: string;
 
 	/**
-	 * Defines the table min-width.
-	 */
-	@Prop() public _minWidth?: string;
-
-	/**
 	 * Defines the callback functions for table events.
 	 */
 	@Prop() public _on?: TableCallbacksPropType;
@@ -61,7 +56,6 @@ export class KolTableStateless implements TableStatelessProps {
 				_dataFoot={this._dataFoot}
 				_headerCells={this._headerCells}
 				_label={this._label}
-				_minWidth={this._minWidth}
 				_on={this._on}
 				_selection={this._selection}
 			/>
