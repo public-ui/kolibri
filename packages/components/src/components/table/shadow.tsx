@@ -48,6 +48,7 @@ export class KolTable implements TableProps {
 
 	/**
 	 * Defines the table min-width.
+	 * @deprecated This property is deprecated and will be removed in the next major release.
 	 */
 	@Prop() public _minWidth?: string;
 
