@@ -17,6 +17,12 @@ export type PropTableHeaderCells = {
 	headerCells: TableHeaderCellsPropType;
 };
 
+/* constants */
+/**
+ * Regular expression to validate the width of a header cell.
+ */
+const HEADER_CELL_WIDTH_VALIDATOR = /^\d+(\.\d+)?([a-z]+)?$/;
+
 /* validator */
 export const validateTableHeaderCells = (component: Generic.Element.Component, value?: TableHeaderCellsPropType): void => {
 	emptyStringByArrayHandler(value, () => {
@@ -45,7 +51,7 @@ export const validateTableHeaderCells = (component: Generic.Element.Component, v
 							const widths: string[] = [];
 							headerCells.horizontal?.forEach((headerRow) => {
 								headerRow.forEach((headerCell) => {
-									if (headerCell.width) {
+									if (headerCell.width && HEADER_CELL_WIDTH_VALIDATOR.test(headerCell.width)) {
 										widths.push(headerCell.width);
 									}
 								});
