@@ -45,7 +45,7 @@ export const validateTableHeaderCells = (component: Generic.Element.Component, v
 							const widths: string[] = [];
 							headerCells.horizontal?.forEach((headerRow) => {
 								headerRow.forEach((headerCell) => {
-									if (headerCell.width) {
+									if (headerCell.width && headerCell.width !== 'auto') {
 										widths.push(headerCell.width);
 									}
 								});
