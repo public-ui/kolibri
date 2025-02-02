@@ -45,8 +45,7 @@
 		"react"
 	],
 	"scripts": {
-		"build": "webpack",
-		"prepack": "pnpm build"
+		"build": "webpack"
 	},
 	"devDependencies": {
 		"@public-ui/react": "workspace:*",

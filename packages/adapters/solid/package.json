@@ -45,8 +45,7 @@
 		"solidjs"
 	],
 	"scripts": {
-		"build": "unbuild",
-		"prepack": "unbuild"
+		"build": "unbuild"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
