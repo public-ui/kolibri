@@ -15,7 +15,7 @@ export type KoliBriTableCell = {
 	render?: KoliBriTableRender;
 	rowSpan?: number;
 	textAlign?: KoliBriTableCellTextAlign;
-	width?: string;
+	width: string;
 	data?: KoliBriTableDataType;
 };
 

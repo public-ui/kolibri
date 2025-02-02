@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import React, { useState } from 'react';
+import React from 'react';
 
-import { KolAlert, KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react';
+import { KolAlert, KolHeading, KolTableStateful } from '@public-ui/react';
 
 import { SampleDescription } from '../SampleDescription';
 
@@ -11,9 +11,6 @@ const DATA = [{ small: 'Small Example', large: 'Larger Example' }];
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			/**
-			 * In version 3, the width of the column is required to implicitly calculate the minWidth.
-			 */
 			{ label: 'Large Column', key: 'large', textAlign: 'left', width: '300px' },
 			{ label: 'Small Column', key: 'small', textAlign: 'left', width: '200px' },
 			{ label: 'Larger Column', key: 'large', textAlign: 'left', width: '400px' },
@@ -23,8 +20,6 @@ const HEADERS: KoliBriTableHeaders = {
 };
 
 export const TableHorizontalScrollbar: FC = () => {
-	const [hasWidthRestriction, setHasWidthRestriction] = useState(true);
-
 	return (
 		<>
 			<SampleDescription>
@@ -44,8 +39,6 @@ export const TableHorizontalScrollbar: FC = () => {
 
 				<KolTableStateful
 					_label="Table for demonstration purposes with horizontal scrollbar."
-					// minWidth will be removed in the next major release
-					_minWidth={hasWidthRestriction ? '600px' : undefined}
 					_headers={HEADERS}
 					_data={DATA}
 					className="block"
@@ -56,37 +49,18 @@ export const TableHorizontalScrollbar: FC = () => {
 
 				<KolTableStateful
 					_label="Table for demonstration purposes with horizontal scrollbar with auto minWidth."
-					// minWidth will be removed in the next major release
-					_minWidth={hasWidthRestriction ? '600px' : undefined}
 					_headers={HEADERS}
 					_data={[]}
 					className="block"
 					style={{ width: '400px' }}
 				/>
 
-				<KolInputCheckbox
-					_checked={hasWidthRestriction}
-					_label="Toggle width restriction"
-					_variant="switch"
-					_on={{
-						onChange: (_event, value) => {
-							setHasWidthRestriction(Boolean(value));
-						},
-					}}
-				></KolInputCheckbox>
-
 				<KolHeading _label="Same table without scrollbar" _level={2} className="block mt-4" />
 				<p className="mt-0">
 					<i>Scrollbar appears on very small viewport sizes</i>
 				</p>
 
-				<KolTableStateful
-					_label="Table for demonstration purposes without horizontal scrollbar"
-					_minWidth="600px"
-					_headers={HEADERS}
-					_data={DATA}
-					className="block"
-				/>
+				<KolTableStateful _label="Table for demonstration purposes without horizontal scrollbar" _headers={HEADERS} _data={DATA} className="block" />
 			</section>
 		</>
 	);

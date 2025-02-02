@@ -378,11 +378,12 @@ export class KolTableStateless implements TableStatelessAPI {
 					rowspan += row.rowSpan || 1;
 				});
 			}
-			const emptyCell = {
+			const emptyCell: KoliBriTableCell = {
 				colSpan: colspan,
 				label: translate('kol-no-entries'),
 				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
+				width: 'auto',
 			};
 			if (dataField.length === 0) {
 				dataField.push([emptyCell]);

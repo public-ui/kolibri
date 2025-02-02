@@ -32,26 +32,16 @@ const TABS: TabButtonProps[] = [
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ key: 'name', label: 'Name', textAlign: 'left', width: '400px' },
-			{ key: 'species', label: 'Species', textAlign: 'left', width: '400px' },
-			{ key: 'habitat', label: 'Habitat', textAlign: 'left', width: '400px' },
-			{ key: 'diet', label: 'Diet', textAlign: 'left', width: '400px' },
-			{ key: 'lifespan', label: 'lifespan', textAlign: 'right', width: '400px' },
+			{ key: 'name', label: 'Name', textAlign: 'left', width: 'auto' },
+			{ key: 'species', label: 'Species', textAlign: 'left', width: 'auto' },
+			{ key: 'habitat', label: 'Habitat', textAlign: 'left', width: 'auto' },
+			{ key: 'diet', label: 'Diet', textAlign: 'left', width: 'auto' },
+			{ key: 'lifespan', label: 'lifespan', textAlign: 'right', width: 'auto' },
 		],
 	],
 };
 
 function TableHorizontalScrollbarAdvanced() {
-	const [tableWith] = React.useState(() => {
-		const columnDefinitions = HEADERS.horizontal![0];
-		let width = 0;
-
-		for (const def of columnDefinitions as { width: string }[]) {
-			width += Number(def.width?.replace('px', '') || 0);
-		}
-		return `${width}px`;
-	});
-
 	return (
 		<>
 			<SampleDescription></SampleDescription>
@@ -64,7 +54,6 @@ function TableHorizontalScrollbarAdvanced() {
 						<div style={{ overflow: 'hidden' }}>
 							<KolTableStateful
 								_label="Table for demonstration purposes with horizontal scrollbar"
-								_minWidth={tableWith}
 								_headers={HEADERS}
 								_data={DATA}
 								_pagination={{ _page: 1 }}
