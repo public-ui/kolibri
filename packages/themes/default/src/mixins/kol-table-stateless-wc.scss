@@ -4,7 +4,6 @@
 	@layer kol-theme-component {
 		:host,
 		.kol-table-stateless-wc * {
-			hyphens: var(--hyphens);
 			font-family: var(--font-family);
 			line-height: var(--line-height);
 			word-break: break-word;
