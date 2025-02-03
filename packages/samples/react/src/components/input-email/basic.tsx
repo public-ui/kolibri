@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const InputEmailBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier verstehe ich es nicht. (Fehlermeldung bei Standard.) </p>
+			<p>KolInputEmail renders an email input field. The sample shows KolInputEmail in a form context with all variations and states.</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={InputEmailVariants} />
 	</>
 );

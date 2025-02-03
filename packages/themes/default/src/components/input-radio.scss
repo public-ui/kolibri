@@ -1,154 +1,98 @@
-@import '../mixins/alert-wc.scss';
+@import '../mixins/rem';
+@import '../mixins/alert-wc';
+@import '../mixins/typography';
+@import '../mixins/form-field';
+@import '../mixins/field-control';
+@import '../mixins/focus-outline';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-		@include kol-alert-theme;
-	}
+	@include kol-alert-theme;
+	@include kol-form-field-theme;
+	@include kol-field-control-theme;
 
-	label {
-		cursor: pointer;
+	.kol-form-field {
+		border: 0;
 		display: grid;
-		line-height: 20px;
-		gap: calc(var(--spacing) * 2);
-		width: 100%;
+		font-family: var(--font-family);
+		margin: 0;
+		padding: 0;
+
+		&--error {
+			color: var(--color-danger);
+			font-weight: 700;
+		}
+
+		&__label {
+			display: inline-block;
+			padding: 0;
+		}
+
+		&__input {
+			gap: rem(4);
+
+			&--orientation-horizontal {
+				margin-top: calc(var(--spacing) / 2);
+				gap: var(--spacing) calc(var(--spacing) * 2);
+			}
+		}
 	}
 
-	input {
+	.kol-field-control {
+		&__wrapper {
+			gap: rem(8);
+		}
+
+		&__label {
+			padding-top: 0.1em;
+		}
+	}
+
+	.kol-input-radio {
 		cursor: pointer;
 		width: 100%;
 		border-color: var(--color-subtle);
-		border-width: 2px;
+		border-width: rem(2);
 		border-style: solid;
-		border-radius: 5px;
-		line-height: 24px;
+		border-radius: 50%;
+		line-height: 1.5;
+
+		&:hover {
+			border-color: var(--color-primary);
+			box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+		}
+
+		&:focus {
+			outline-offset: rem(2);
+			outline: var(--color-primary-variant) solid rem(3);
+			transition: 200ms outline-offset linear;
+
+			&:hover {
+				box-shadow: none;
+			}
+		}
+
+		&:checked {
+			&:before {
+				background-color: var(--color-primary);
+			}
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+			background-color: var(--color-mute-variant);
+		}
 	}
 
-	input:hover {
-		border-color: var(--color-primary);
-		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
+	.kol-input--error:focus {
+		outline-color: var(--color-danger);
 	}
 
-	input:focus:hover {
-		box-shadow: none;
+	.kol-field-control__hint,
+	.kol-form-field__hint {
+		@include kol-typography-hint;
 	}
 
-	input:hover {
-		border-color: var(--color-primary);
-	}
-
-	.kol-alert-wc {
-		@include kol-alert-wc;
-	}
-
-	.required legend > span::after {
-		content: '*';
-		padding-left: 0.125em;
-	}
-
-	/* RADIO */
-	fieldset {
-		border: 0px;
-		margin: 0px;
-		padding: 0px;
-		display: grid;
-		gap: 0.25em;
-	}
-
-	.radio-input-wrapper {
-		align-items: center;
-		cursor: pointer;
-		display: flex;
-		flex-direction: row;
-		gap: 0.5rem;
-		margin: 0;
-		min-height: var(--a11y-min-size);
-		position: relative;
-	}
-
-	.radio-input-wrapper label {
-		cursor: pointer;
-		display: flex;
-		padding-left: calc(var(--spacing) / 2);
-		width: 100%;
-	}
-
-	.radio-input-wrapper label span {
-		margin-top: 0.125em;
-	}
-
-	.radio-input-wrapper input[type='radio'] {
-		appearance: none;
-		transition: 0.5s;
-		border-radius: 100%;
-		height: calc(6 * 0.25rem);
-		min-width: calc(6 * 0.25rem);
-		width: calc(6 * 0.25rem);
-	}
-
-	.radio-input-wrapper input[type='radio']:before {
-		content: '';
-		cursor: pointer;
-		border-radius: 100%;
-		display: block;
-	}
-
-	.radio-input-wrapper input[type='radio']:checked:before {
-		background-color: var(--color-primary);
-	}
-
-	.radio-input-wrapper input[type='radio']:disabled {
-		cursor: not-allowed;
-		background-color: var(--color-mute-variant);
-	}
-
-	.kol-alert-wc.error {
-		order: 1;
-	}
-
-	fieldset legend {
-		order: 2;
-		display: contents;
-	}
-
-	fieldset .kol-input {
-		order: 3;
-	}
-
-	fieldset.error {
-		border-left: 3px solid var(--color-danger);
-		color: var(--color-danger);
-		font-weight: 700;
-		padding-left: 1rem;
-	}
-
-	fieldset.error input:focus,
-	fieldset.error select:focus,
-	fieldset.error textarea:focus {
-		outline-color: var(--color-danger) !important;
-	}
-
-	fieldset.error .kol-alert-wc.error {
+	.kol-alert--error {
 		margin-left: -0.25em;
-		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
-	}
-
-	fieldset.horizontal {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--spacing) calc(var(--spacing) * 2);
-	}
-
-	fieldset.horizontal legend {
-		display: inline-block;
-		margin-bottom: calc(var(--spacing) / 2);
-	}
-
-	fieldset .input-slot {
-		gap: var(--spacing);
-	}
-
-	.radio-input-wrapper label {
-		padding-left: 0;
 	}
 }

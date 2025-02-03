@@ -1,0 +1,19 @@
+@import '../../@shared/mixins';
+
+.mainlayout {
+	min-height: calc(100vh - rem(32));
+	width: 100%;
+	display: grid;
+	column-gap: rem(16);
+	grid-template-columns: rem(400) calc(100% - rem(460));
+	grid-template-rows: 1fr;
+	grid-template-areas: 'nav content';
+
+	& > .nav-area {
+		grid-area: nav;
+	}
+
+	& > .content {
+		grid-area: content;
+	}
+}

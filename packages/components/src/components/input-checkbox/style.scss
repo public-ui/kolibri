@@ -1,8 +1,151 @@
-@import '../input';
-@import 'common';
-@import 'button';
-@import 'checkbox';
-@import 'switch';
-@import '../@shared/kol-alert-mixin.scss';
+@import '../../styles/global';
+@import '../../styles/kol-field-control-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../@shared/mixins';
+@import '../host-display-block';
+@import '../tooltip/style';
 
-@include kol-alert-styles;
+@include kol-form-field;
+@include kol-field-control;
+
+@layer kol-component {
+	$root: '.kol-checkbox';
+
+	.kol-form-field {
+		display: grid;
+	}
+
+	#{$root} {
+		position: relative;
+		display: flex;
+		align-items: center;
+
+		.kol-input {
+			font-size: rem(16);
+
+			appearance: none;
+			background-color: #fff;
+			cursor: pointer;
+			transition: 0.5s;
+
+			margin: 0;
+			border-style: solid;
+			border-width: rem(2);
+
+			&:before {
+				content: '';
+				cursor: pointer;
+			}
+
+			&:disabled:before {
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	/**
+	 * Variant: Checkbox
+	 */
+	#{$root}--variant-default {
+		height: var(--a11y-min-size);
+		justify-content: center;
+		position: relative;
+		width: var(--a11y-min-size);
+
+		.kol-icon {
+			display: flex;
+			inset: auto;
+			position: absolute;
+			z-index: 1;
+			pointer-events: none;
+
+			&::part(icon) {
+				display: none;
+			}
+		}
+
+		.kol-input {
+			width: rem(22);
+			height: rem(22);
+		}
+
+		&#{$root}--checked,
+		&#{$root}--indeterminate {
+			.kol-icon::part(icon) {
+				display: block;
+			}
+		}
+	}
+
+	/**
+	 * Variant: Switch
+	 */
+	#{$root}--variant-switch {
+		position: relative;
+
+		.kol-input {
+			display: inline-block;
+			height: 1.7em;
+			min-width: 3.2em;
+			position: relative;
+			width: 3.2em;
+
+			&::before {
+				background-color: #000;
+				height: 1.2em;
+				left: calc(0.25em - rem(2));
+				top: calc(0.25em - rem(2));
+				position: absolute;
+				transition: 0.5s;
+				width: 1.2em;
+			}
+
+			&:checked::before {
+				transform: translateX(1.5em);
+			}
+
+			&:indeterminate::before {
+				transform: translateX(0.75em);
+			}
+		}
+
+		.kol-icon {
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 1.2em;
+			height: 1.2em;
+			position: absolute;
+			z-index: 1;
+			top: 50%;
+			left: rem(4);
+			transform: translate(0, -50%);
+			transition: 0.5s;
+			color: #000;
+		}
+
+		&#{$root}--checked .kol-icon {
+			transform: translate(1.5em, -50%);
+		}
+
+		&#{$root}--indeterminate .kol-icon {
+			transform: translate(0.75em, -50%);
+		}
+	}
+
+	/**
+	 * Variant: Button
+	 */
+	#{$root}--variant-button {
+		width: var(--a11y-min-size);
+
+		.kol-icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: var(--a11y-min-size);
+			height: var(--a11y-min-size);
+		}
+	}
+}

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-abbr should render with _label="Text" 1`] = `
+<kol-abbr class="kol-abbr">
+  <template shadowrootmode="open">
+    <abbr>
+      <slot></slot>
+    </abbr>
+    (Text)
+  </template>
+</kol-abbr>
+`;

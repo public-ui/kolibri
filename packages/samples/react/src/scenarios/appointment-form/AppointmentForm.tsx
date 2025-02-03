@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import React, { useEffect, useState, useRef } from 'react';
 import * as Yup from 'yup';
 
-import { KolTabs } from '@public-ui/react';
+import { KolLink, KolTabs } from '@public-ui/react';
 
 import { checkAppointmentAvailability } from './appointmentService';
 import { AvailableAppointmentsForm } from './AvailableAppointmentsForm';
@@ -12,6 +12,7 @@ import { Summary } from './Summary';
 
 import type { FormikHelpers, FormikProps } from 'formik';
 import type { Iso8601 } from '@public-ui/components';
+import { SampleDescription } from '../../components/SampleDescription';
 // export interface FormProps {}
 export interface FormValues {
 	district: string;
@@ -45,22 +46,22 @@ const initialValues: FormValues = {
 };
 
 const districtSchema = {
-	district: Yup.string().required('Bitte Stadtteil wählen.'),
+	district: Yup.string().required('Please select district.'),
 };
 const personalInformationSchema = {
-	salutation: Yup.string().required('Bitte Anrede auswählen.'),
-	name: Yup.string().required('Bitte Vor- und Zuname eingeben.'),
+	salutation: Yup.string().required('Please select salutation.'),
+	name: Yup.string().required('Please enter your first and last name.'),
 	company: Yup.string().when('salutation', {
-		is: (salutation: string) => salutation === 'Firma',
-		then: (schema) => schema.required('Bitte Firma angeben.'),
+		is: (salutation: string) => salutation === 'Company',
+		then: (schema) => schema.required('Please specify company.'),
 	}),
-	email: Yup.string().required('Bitte E-Mail eingeben.'),
+	email: Yup.string().required('Please enter your e-mail address.'),
 };
 const availableAppointmentsSchema = {
-	date: Yup.string().required('Bitte Datum eingeben.'),
+	date: Yup.string().required('Please enter date.'),
 	time: Yup.string().when('date', {
 		is: (date: string) => Boolean(date), // only validate time when date is already set
-		then: (schema) => schema.test('checkTimeAvailability', 'Termin leider nicht mehr verfügbar.', checkAppointmentAvailability),
+		then: (schema) => schema.test('checkTimeAvailability', 'Date unfortunately no longer available.', checkAppointmentAvailability),
 	}),
 };
 
@@ -80,57 +81,67 @@ export function AppointmentForm() {
 	}, [activeFormSection]);
 
 	const handleSubmit = async (_values: FormValues, formik: FormikHelpers<FormValues>) => {
-		console.log(_values, formik);
 		const currentSectionIndex = formSectionSequence.indexOf(activeFormSection);
 		const nextSection = formSectionSequence[currentSectionIndex + 1];
 		if (nextSection !== undefined) {
 			await formik.setTouched({});
-			setTimeout(() => setActiveFormSection(nextSection), 1000);
+			setActiveFormSection(nextSection);
 		}
 	};
 
 	return (
-		<Formik<FormValues> innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-			<KolTabs
-				_tabs={[
-					{
-						_label: '1. Einwohnermeldeamt wählen',
-					},
-					{
-						_label: '2. Freie Termine',
-						_disabled: activeFormSection < FormSection.AVAILABLE_APPOINTMENTS,
-					},
-					{
-						_label: '3. Persönliche Daten',
-						_disabled: activeFormSection < FormSection.PERSONAL_INFORMATION,
-					},
-					{
-						_label: 'Zusammenfassung',
-						_disabled: activeFormSection < FormSection.SUMMARY,
-					},
-				]}
-				_label="Formular-Navigation"
-				_selected={selectedTab}
-				_on={{
-					onSelect: (_event, selectedTab) => {
-						setActiveFormSection(selectedTab);
-						formikRef.current?.setErrors({});
-					},
-				}}
-			>
-				<div>
-					<DistrictForm />
-				</div>
-				<div>
-					<AvailableAppointmentsForm />
-				</div>
-				<div>
-					<PersonalInformationForm />
-				</div>
-				<div>
-					<Summary />
-				</div>
-			</KolTabs>
-		</Formik>
+		<>
+			<SampleDescription>
+				<p>
+					The Appointment Form is a full form example featuring a large variety of KoliBri form components,{' '}
+					<KolLink _label="Formik" _href="https://formik.org/" _target="blank" /> and{' '}
+					<KolLink _label="Yup" _href="https://github.com/jquense/yup" _target="blank" />.
+				</p>
+			</SampleDescription>
+
+			<Formik<FormValues> innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+				<KolTabs
+					className="w-full"
+					_tabs={[
+						{
+							_label: '1. Choose registration office',
+						},
+						{
+							_label: '2. Available dates',
+							_disabled: activeFormSection < FormSection.AVAILABLE_APPOINTMENTS,
+						},
+						{
+							_label: '3. Personal data',
+							_disabled: activeFormSection < FormSection.PERSONAL_INFORMATION,
+						},
+						{
+							_label: 'Summary',
+							_disabled: activeFormSection < FormSection.SUMMARY,
+						},
+					]}
+					_label="Form navigation"
+					_selected={selectedTab}
+					_on={{
+						onSelect: (_event, selectedTab) => {
+							setActiveFormSection(selectedTab);
+							formikRef.current?.setErrors({});
+						},
+					}}
+				>
+					<div>
+						<DistrictForm />
+					</div>
+					<div>
+						<AvailableAppointmentsForm />
+					</div>
+					<div>
+						<PersonalInformationForm />
+					</div>
+					<div>
+						<Summary />
+					</div>
+				</KolTabs>
+			</Formik>
+		</>
 	);
 }

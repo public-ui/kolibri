@@ -7,12 +7,13 @@ import type {
 	Iso8601,
 	ReadOnlyPropType,
 	SuggestionsPropType,
-} from '@public-ui/schema';
-import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchNumber, watchValidator } from '@public-ui/schema';
+} from '../../schema';
+import { inputDateTypeOptions, setState, validateReadOnly, validateSuggestions, watchBoolean, watchNumber, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
+
 export class InputDateController extends InputIconController implements InputDateWatches {
 	// test: https://regex101.com/r/NTVh4L/1
 	private static readonly isoDateRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/;
@@ -44,38 +45,69 @@ export class InputDateController extends InputIconController implements InputDat
 		validateSuggestions(this.component, value);
 	}
 
-	private tryParseToString(value?: Iso8601 | Date | null, defaultValue?: Date): string | null | undefined {
-		const v: Iso8601 | Date | undefined = value ?? defaultValue;
-		if (typeof v === 'string') {
-			return v;
+	public static tryParseToString(value: Iso8601 | Date | null | undefined, type?: InputDateType, step?: string | number): string | null | undefined {
+		if (typeof value === 'string' || value === null) {
+			return value;
 		}
-		if (typeof v === 'object' && v instanceof Date) {
-			switch (this.component._type) {
+
+		if (typeof value === 'object' && value instanceof Date) {
+			const formattedYear = value.getFullYear();
+			const formattedMonth = String(value.getMonth() + 1).padStart(2, '0');
+			const formattedDay = String(value.getDate()).padStart(2, '0');
+			const formattedHours = String(value.getHours()).padStart(2, '0');
+			const formattedMinutes = String(value.getMinutes()).padStart(2, '0');
+			const formattedSeconds = String(value.getSeconds()).padStart(2, '0');
+
+			const formattedDate = [formattedYear, formattedMonth, formattedDay].join('-');
+			const formattedTimeWithSeconds = [formattedHours, formattedMinutes, formattedSeconds].join(':');
+
+			switch (type) {
 				case 'date':
-					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}`;
+					return formattedDate;
 				case 'datetime-local':
-					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}T${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+					return `${formattedDate}T${formattedTimeWithSeconds}`;
 				case 'month':
-					return `${v.getFullYear()}-${v.getMonth() + 1}`;
+					return `${formattedYear}-${formattedMonth}`;
 				case 'time':
 					// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#using_the_step_attribute
-					if (
-						this.component._step === undefined ||
-						(typeof this.component._step === 'string' && this.component._step === '60') ||
-						(typeof this.component._step === 'number' && this.component._step === 60)
-					) {
-						return `${v.getHours()}:${v.getMinutes()}`;
+					if (step === undefined || String(step) === '60') {
+						return `${formattedHours}:${formattedMinutes}`;
 					} else {
-						return `${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+						return formattedTimeWithSeconds;
 					}
 				case 'week':
-					throw new Error('Auto convert to week is not supported!');
+					return `${formattedYear}-W${this.getWeekNumberOfDate(value)}`;
 			}
 		}
-		if (value === null) {
-			return null;
+	}
+
+	static getWeekNumberOfDate(date: Date): string {
+		const copiedDate = new Date(date);
+
+		// ISO week date weeks start on Monday, so correct the day number
+		const nDay = (copiedDate.getDay() + 6) % 7;
+
+		// ISO 8601 states that week 1 is the week with the first Thursday of that year
+		// Set the target date to the Thursday in the target week
+		copiedDate.setDate(copiedDate.getDate() - nDay + 3);
+
+		// Store the millisecond value of the target date
+		const n1stThursday = copiedDate.valueOf();
+
+		// Set the target to the first Thursday of the year
+		// First, set the target to January 1st
+		copiedDate.setMonth(0, 1);
+
+		// Not a Thursday? Correct the date to the next Thursday
+		if (copiedDate.getDay() !== 4) {
+			copiedDate.setMonth(0, 1 + ((4 - copiedDate.getDay() + 7) % 7));
 		}
-		return undefined;
+
+		// The week number is the number of weeks between the first Thursday of the year
+		// and the Thursday in the target week (604800000 = 7 * 24 * 3600 * 1000)
+		const dayOfYear = 1 + Math.ceil((n1stThursday - copiedDate.valueOf()) / 604800000);
+
+		return dayOfYear.toString().padStart(2, '0');
 	}
 
 	private validateDateString(value: string): boolean {
@@ -101,7 +133,7 @@ export class InputDateController extends InputIconController implements InputDat
 			propName,
 			(value): boolean => value === undefined || value == null || value === '' || this.validateDateString(value),
 			new Set(['Date', 'string{ISO-8601}']),
-			this.tryParseToString(value),
+			InputDateController.tryParseToString(value, this.component._type, this.component._step),
 			{
 				hooks: {
 					afterPatch: (value) => {
@@ -124,28 +156,17 @@ export class InputDateController extends InputIconController implements InputDat
 	}
 
 	public validateMax(value?: Iso8601 | Date): void {
-		watchValidator(
-			this.component,
-			'_max',
-			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
-			new Set(['Iso8601', 'Date']),
-			this.tryParseToString(
-				value,
-				this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local'
-					? InputDateController.DEFAULT_MAX_DATE
-					: undefined,
-			),
-		);
+		const ensuredValue =
+			(value === undefined || value === null) &&
+			(this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local')
+				? InputDateController.DEFAULT_MAX_DATE
+				: value;
+
+		this.validateIso8601('_max', ensuredValue);
 	}
 
 	public validateMin(value?: Iso8601 | Date): void {
-		watchValidator(
-			this.component,
-			'_min',
-			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
-			new Set(['Iso8601', 'Date']),
-			this.tryParseToString(value),
-		);
+		this.validateIso8601('_min', value);
 	}
 
 	public validateOn(value?: InputTypeOnDefault) {

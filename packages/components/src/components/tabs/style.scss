@@ -1,114 +1,65 @@
-@import '../style';
+@import '../@shared/mixins';
+@import '../../styles/global';
 @import '../host-display-block';
+@import '../tooltip/style.scss';
 
 @layer kol-component {
-	.kol-button-group-wc {
-		display: inline-flex;
-		flex-wrap: wrap;
-	}
+	.kol-tabs {
+		font-size: rem(16);
+		display: var(--display);
+		grid-template-rows: var(--grid-template-rows);
+		grid-template-columns: var(--grid-template-columns);
 
-	.kol-button-group-wc button {
-		border-bottom-color: transparent;
-		border-bottom-style: solid;
-		display: block;
-	}
+		&--align-right {
+			--display: grid;
+			--grid-template-columns: 1fr auto;
 
-	div.grid,
-	div[role='tabpanel'] {
-		height: 100%;
-	}
+			--button-group-flex-direction: column;
+			--button-group-order: 2;
+		}
 
-	:host > .tabs-align-right {
-		display: grid;
-		grid-template-columns: 1fr auto;
-	}
+		&--align-left {
+			--display: grid;
+			--grid-template-columns: auto 1fr;
 
-	:host > .tabs-align-right .kol-button-group-wc {
-		display: grid;
-		order: 2;
-	}
+			--button-group-flex-direction: column;
+			--button-group-order: 0;
+		}
 
-	:host > .tabs-align-left {
-		display: grid;
-		grid-template-columns: auto 1fr;
-	}
+		&--align-bottom {
+			--display: grid;
+			--grid-template-rows: 1fr auto;
 
-	:host > .tabs-align-left .kol-button-group-wc {
-		display: grid;
-		order: 0;
-	}
+			--button-group-order: 2;
+		}
 
-	:host > .tabs-align-bottom {
-		display: grid;
-		grid-template-rows: 1fr auto;
-	}
+		&__tabs-align-top {
+			--display: grid;
+			--grid-template-rows: auto 1fr;
 
-	:host > .tabs-align-bottom .kol-button-group-wc {
-		order: 2;
-	}
+			--button-group-order: 0;
+		}
 
-	:host > .tabs-align-bottom .kol-button-group-wc > div {
-		display: flex;
-	}
+		&__content {
+			overflow: auto;
+		}
 
-	:host > .tabs-align-bottom > .kol-button-group-wc > div > div:first-child {
-		margin: 0 1em 0 0;
-	}
+		&__button-group {
+			display: flex;
+			flex-wrap: wrap;
 
-	:host > .tabs-align-bottom > .kol-button-group-wc > div > div {
-		margin: 0 1em;
-	}
+			flex-direction: var(--button-group-flex-direction);
+			order: var(--button-group-order);
 
-	:host > .tabs-align-top {
-		display: grid;
-		grid-template-rows: auto 1fr;
-	}
+			.kol-button {
+				border-bottom-color: transparent;
+				border-bottom-style: solid;
+				display: block;
+			}
+		}
 
-	:host > .tabs-align-top .kol-button-group-wc {
-		order: 0;
-	}
-
-	:host > .tabs-align-top .kol-button-group-wc > div {
-		display: flex;
-	}
-
-	:host > .tabs-align-top > .kol-button-group-wc > div > div:first-child {
-		margin: 0 1em 0 0;
-	}
-
-	:host > .tabs-align-top > .kol-button-group-wc > div > div {
-		margin: 0 1em;
-	}
-
-	:host > div {
-		display: grid;
-	}
-
-	:host > .tabs-align-left .kol-button-group-wc,
-	:host > .tabs-align-top .kol-button-group-wc {
-		order: 0;
-	}
-
-	:host > .tabs-align-bottom .kol-button-group-wc,
-	:host > .tabs-align-right .kol-button-group-wc {
-		order: 1;
-	}
-
-	:host > div.tabs-align-left .kol-button-group-wc > div,
-	:host > div.tabs-align-left .kol-button-group-wc > div > div,
-	:host > div.tabs-align-right .kol-button-group-wc > div,
-	:host > div.tabs-align-right .kol-button-group-wc > div > div {
-		display: grid;
-	}
-
-	:host > div.tabs-align-left .kol-button-group-wc > div > div .kol-button-wc,
-	:host > div.tabs-align-right .kol-button-group-wc > div > div .kol-button-wc {
-		width: 100%;
-	}
-
-	:host > div.tabs-align-bottom .kol-button-group-wc div,
-	:host > div.tabs-align-top .kol-button-group-wc div {
-		display: flex;
-		flex-wrap: wrap;
+		&__panel {
+			height: 100%;
+		}
 	}
 }

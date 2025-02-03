@@ -1,11 +1,11 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"entry": ["src/index.ts"],
-	"ignore": ["playwright.config.js"],
 	"ignoreBinaries": [],
-	"ignoreDependencies": ["@public-ui/sample-react", "serve"],
+	"ignoreDependencies": ["@public-ui/sample-react", "serve", "axe-playwright"],
 	"project": ["src/**/*.ts"],
 	"rules": {
 		"classMembers": "warn"
-	}
+	},
+	"playwright": false
 }

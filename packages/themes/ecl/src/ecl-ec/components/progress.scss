@@ -1,0 +1,19 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-progress {
+		font-family: var(--font-family);
+
+		&__bar-progress {
+			fill: var(--color-blue-130);
+		}
+
+		&__cycle-background {
+			stroke: var(--color-grey-25);
+		}
+
+		&__cycle-progress {
+			stroke: var(--color-blue-130);
+		}
+	}
+}

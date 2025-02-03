@@ -33,11 +33,6 @@ ROUTES.set('accordion/headlines', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('accordion/list', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('alert/basic', {
 	axe: {
 		skipFailures: false,
@@ -65,11 +60,6 @@ ROUTES.set('breadcrumb/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('button-group/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('button-link/basic', {
 	axe: {
 		skipFailures: false,
@@ -86,11 +76,6 @@ ROUTES.set('button-link/image', {
 	},
 });
 ROUTES.set('button/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('button/hide-label', {
 	axe: {
 		skipFailures: false,
 	},
@@ -120,22 +105,46 @@ ROUTES.set('card/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('card/confirm', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('card/flex', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('card/selection', {
+ROUTES.set('combobox/basic', {
 	axe: {
 		skipFailures: false,
 	},
 });
 ROUTES.set('details/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('drawer/basic?align=left', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('drawer/basic?align=top', {
+	viewportSize: {
+		width: 800,
+		height: 600,
+	},
+});
+ROUTES.set('drawer/basic?align=right', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('drawer/basic?align=bottom', {
+	viewportSize: {
+		width: 800,
+		height: 600,
+	},
+});
+ROUTES.set('form/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('form/error-list', {
 	axe: {
 		skipFailures: false,
 	},
@@ -165,11 +174,6 @@ ROUTES.set('image/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('indented-text/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('input-checkbox/basic', null);
 ROUTES.set('input-checkbox/button', null);
 ROUTES.set('input-checkbox/switch', null);
@@ -182,11 +186,9 @@ ROUTES.set('input-password/basic', null);
 ROUTES.set('input-password/show-password', null);
 ROUTES.set('input-radio/basic', null);
 ROUTES.set('input-radio/horizontal', null);
-ROUTES.set('input-radio/select', null);
 ROUTES.set('input-radio/object', null);
 ROUTES.set('input-range/basic', null);
 ROUTES.set('input-text/basic', null);
-ROUTES.set('input-text/blur', null);
 ROUTES.set('input-text/focus', null);
 ROUTES.set('kolibri/basic', {
 	axe: {
@@ -194,16 +196,6 @@ ROUTES.set('kolibri/basic', {
 	},
 });
 ROUTES.set('link-button/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link-group/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link-group/horizontal', {
 	axe: {
 		skipFailures: false,
 	},
@@ -228,16 +220,18 @@ ROUTES.set('link/target', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('logo/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('modal/basic', {
 	axe: {
 		skipFailures: false,
 	},
 });
+ROUTES.set('modal/basic?show-modal=true', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+
 ROUTES.set('nav/aria-current', {
 	axe: {
 		skipFailures: false,
@@ -276,6 +270,11 @@ ROUTES.set('skip-nav/basic', {
 	},
 });
 ROUTES.set('spin/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('single-select/basic', {
 	axe: {
 		skipFailures: false,
 	},
@@ -325,6 +324,26 @@ ROUTES.set('table/complex-headers', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('table/stateful-with-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateful-with-single-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateless-with-single-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('table/stateless-with-selection', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('table/stateless', {
 	axe: {
 		skipFailures: false,
@@ -346,21 +365,6 @@ ROUTES.set('textarea/adjust-height', {
 	},
 });
 ROUTES.set('textarea/basic', null);
-ROUTES.set('textarea/disabled', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('textarea/placeholder', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('textarea/readonly', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('textarea/resize', {
 	axe: {
 		skipFailures: false,
@@ -381,6 +385,84 @@ ROUTES.set('toast/basic', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('toast/basic?type=info', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=success', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=warning', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=error', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?variant=card', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+
+ROUTES.set('toast/basic?type=default&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=info&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=success&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=warning&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+ROUTES.set('toast/basic?type=error&variant=msg', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
+
+ROUTES.set('toolbar/basic', {
+	axe: {
+		skipFailures: false,
+	},
+});
+ROUTES.set('toolbar/disabled', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('tree/basic/home', {
 	axe: {
 		skipFailures: false,
@@ -396,11 +478,6 @@ ROUTES.set('version/context', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('scenarios/appointment-form', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('scenarios/static-form', {
 	axe: {
 		skipFailures: false,
@@ -411,3 +488,27 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 		skipFailures: false,
 	},
 });
+
+/* Focus tests */
+ROUTES.set('scenarios/focus-elements?component=accordion');
+ROUTES.set('scenarios/focus-elements?component=button');
+ROUTES.set('scenarios/focus-elements?component=buttonLink');
+ROUTES.set('scenarios/focus-elements?component=combobox');
+ROUTES.set('scenarios/focus-elements?component=details');
+ROUTES.set('scenarios/focus-elements?component=inputCheckbox');
+ROUTES.set('scenarios/focus-elements?component=inputColor');
+ROUTES.set('scenarios/focus-elements?component=inputDate');
+ROUTES.set('scenarios/focus-elements?component=inputEmail');
+ROUTES.set('scenarios/focus-elements?component=inputFile');
+ROUTES.set('scenarios/focus-elements?component=inputFileMultiple');
+ROUTES.set('scenarios/focus-elements?component=inputNumber');
+ROUTES.set('scenarios/focus-elements?component=inputPassword');
+ROUTES.set('scenarios/focus-elements?component=inputRadio');
+ROUTES.set('scenarios/focus-elements?component=inputRange');
+ROUTES.set('scenarios/focus-elements?component=inputText');
+ROUTES.set('scenarios/focus-elements?component=link');
+ROUTES.set('scenarios/focus-elements?component=linkButton');
+ROUTES.set('scenarios/focus-elements?component=select');
+ROUTES.set('scenarios/focus-elements?component=selectMultiple');
+ROUTES.set('scenarios/focus-elements?component=singleSelect');
+ROUTES.set('scenarios/focus-elements?component=textarea');

@@ -1,0 +1,14 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-toolbar {
+		padding: var(--spacing-s);
+		border-radius: rem(8);
+		box-shadow:
+			0 rem(2) rem(4) rgb(9 49 142 / 8%),
+			0 0 rem(10) rgb(9 49 142 / 4%),
+			0 rem(4) rem(5) rgb(9 49 142 / 4%),
+			0 rem(-4) rem(4) rgb(9 49 142 / 4%);
+		background-color: var(--color-white);
+	}
+}

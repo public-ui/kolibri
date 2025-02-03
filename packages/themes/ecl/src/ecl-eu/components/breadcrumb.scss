@@ -1,0 +1,9 @@
+@layer kol-theme-component {
+	.kol-breadcrumb {
+		font-family: var(--font-family);
+
+		&__link {
+			font-family: var(--font-family);
+		}
+	}
+}

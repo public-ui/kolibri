@@ -1,27 +1,32 @@
-@import '../style';
+@import '../@shared/mixins';
+@import '../../styles/global';
 
 @layer kol-component {
-	ul {
-		display: grid;
-		list-style: none;
-		place-items: center;
-	}
+	.kol-skip-nav {
+		font-size: rem(16);
 
-	ul li {
-		height: 0;
-	}
+		&__list {
+			display: grid;
+			list-style: none;
+			place-items: center;
+		}
 
-	.kol-link-wc a {
-		left: -99999px;
-		overflow: hidden;
-		position: absolute;
-		z-index: 9999999;
-		line-height: 1em;
-	}
+		&__list-item {
+			height: 0;
+		}
 
-	.kol-link-wc a:focus {
-		background-color: #fff;
-		left: unset;
-		position: unset;
+		.kol-link {
+			left: rem(-99999);
+			overflow: hidden;
+			position: absolute;
+			z-index: 9999999;
+			line-height: 1;
+
+			&:focus {
+				background-color: #fff;
+				left: unset;
+				position: unset;
+			}
+		}
 	}
 }

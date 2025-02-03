@@ -1,14 +1,19 @@
-@import '../style';
+@import '../@shared/mixins';
+@import '../../styles/global';
+@import '../tooltip/style.scss';
 
 @layer kol-component {
-	:host > span {
+	.kol-badge {
 		display: inline-flex;
 		place-items: center;
 		/* Visible with forced colors  */
-		outline: transparent solid 1px;
-	}
+		outline: transparent solid rem(1);
+		font-size: rem(16);
 
-	:host > span > .kol-button-wc button {
-		color: inherit;
+		.kol-badge__smart-button {
+			.button {
+				color: inherit;
+			}
+		}
 	}
 }

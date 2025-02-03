@@ -1,0 +1,56 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-tree-item {
+		$root: &;
+
+		&__children {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__link {
+			display: block;
+			border: rem(2) solid transparent;
+
+			&:hover,
+			&:focus-within {
+				background-color: var(--color-sky);
+				border: rem(2) solid var(--color-yellow-120);
+
+				.kol-link {
+					color: var(--color-black);
+				}
+			}
+
+			&--active {
+				font-weight: 700;
+				background-color: var(--color-yellow);
+
+				.kol-link {
+					color: var(--color-black);
+					background-color: var(--color-yellow);
+				}
+			}
+
+			.kol-link {
+				display: block;
+				color: var(--color-black);
+				text-decoration: none;
+				text-align: left;
+
+				&:focus {
+					color: var(--color-black);
+				}
+			}
+		}
+
+		&__toggle-button {
+			display: inline-block;
+
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+	}
+}

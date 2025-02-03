@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-avatar should render with _label="Erika Maria Mustermann" _src=undefined 1`] = `
+<kol-avatar>
+  <template shadowrootmode="open">
+    <kol-avatar-wc>
+      <div aria-label="kol-avatar-alt" class="kol-avatar" role="img">
+        <span aria-hidden="true" class="kol-avatar__initials">
+          EM
+        </span>
+      </div>
+    </kol-avatar-wc>
+  </template>
+</kol-avatar>
+`;
+
+exports[`kol-avatar should render with _label="Erika" _src="/image.webp" 1`] = `
+<kol-avatar>
+  <template shadowrootmode="open">
+    <kol-avatar-wc>
+      <div aria-label="kol-avatar-alt" class="kol-avatar" role="img">
+        <img alt="" aria-hidden="true" class="kol-avatar__image" src="/image.webp">
+      </div>
+    </kol-avatar-wc>
+  </template>
+</kol-avatar>
+`;
+
+exports[`kol-avatar should render with _label="Erika" _src=undefined 1`] = `
+<kol-avatar>
+  <template shadowrootmode="open">
+    <kol-avatar-wc>
+      <div aria-label="kol-avatar-alt" class="kol-avatar" role="img">
+        <span aria-hidden="true" class="kol-avatar__initials">
+          E
+        </span>
+      </div>
+    </kol-avatar-wc>
+  </template>
+</kol-avatar>
+`;

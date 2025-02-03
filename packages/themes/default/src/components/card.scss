@@ -1,33 +1,27 @@
-@layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
+@import '../mixins/rem';
 
-	/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
-	:host > div {
+@layer kol-theme-component {
+	.kol-card {
+		font-family: var(--font-family);
 		display: grid;
 		width: 100%;
 		height: 100%;
 		background-color: var(--color-light);
 		grid-template-rows: min-content 2fr min-content;
-		box-shadow: 0 0 0.25rem var(--color-subtle);
+		box-shadow: 0 0 rem(4) color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
 		border-radius: var(--border-radius);
-	}
 
-	:host .kol-heading-wc {
-		line-height: 1.75rem;
-	}
+		&__header {
+			padding: rem(16) rem(16) rem(8) rem(16);
+		}
 
-	:host div.header {
-		padding: 1rem 1rem 0.5rem 1rem;
-	}
+		&__content {
+			padding: rem(8) rem(16) rem(16);
+			overflow: hidden;
+		}
 
-	:host div.content {
-		padding: 0.5rem 1rem 1rem;
-		overflow: hidden;
-	}
-
-	:host div.footer {
-		padding: 0.5rem 1rem;
+		&__headline {
+			line-height: 1.75;
+		}
 	}
 }

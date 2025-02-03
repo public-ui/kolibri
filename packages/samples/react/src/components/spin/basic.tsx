@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const SpinBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier ist eine drehende Animation in Deutschlandfarben.</p>
+			<p>KolSpin renders a loading indicator. This sample shows the default variant &quot;dot&quot;.</p>
 		</SampleDescription>
+
 		<KolSpin _show />
 	</>
 );

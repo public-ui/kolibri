@@ -1,6 +1,6 @@
-import type { ImageAPI, ImageSourcePropType, ImageStates, Loading } from '@public-ui/schema';
-import { validateImageSource, validateLoading, watchString } from '@public-ui/schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import type { ImageAPI, ImageSourcePropType, ImageStates, Loading } from '../../schema';
+import { validateImageSource, validateLoading, watchString } from '../../schema';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
 @Component({
@@ -81,9 +81,14 @@ export class KolImage implements ImageAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-image">
-				<img alt={this.state._alt} loading={this.state._loading} sizes={this.state._sizes} src={this.state._src} srcset={this.state._srcset}></img>
-			</Host>
+			<img
+				class="kol-image"
+				alt={this.state._alt}
+				loading={this.state._loading}
+				sizes={this.state._sizes}
+				src={this.state._src}
+				srcset={this.state._srcset}
+			></img>
 		);
 	}
 }

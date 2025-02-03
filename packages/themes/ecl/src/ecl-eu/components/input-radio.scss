@@ -1,0 +1,224 @@
+@import '../../mixins/rem';
+@import '../mixins/alert-wc';
+@import '../mixins/typography';
+@import '../mixins/required';
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	@include kol-alert-theme;
+
+	/**
+	 * normalizes the layout of form elements.
+	*/
+	.kol-form-field {
+		border: 0;
+		margin: 0;
+		padding: 0;
+		flex-wrap: wrap;
+	}
+
+	/**
+	 * order the layout of form elements.
+	*/
+	.kol-form-field {
+		&__label {
+			order: 1;
+		}
+
+		&__input {
+			order: 2;
+		}
+
+		&__msg {
+			order: 3;
+		}
+
+		&__hint {
+			order: 4;
+		}
+	}
+
+	.kol-form-field {
+		border: 0;
+		gap: rem(8);
+		flex-wrap: wrap;
+		align-items: flex-start;
+		padding: 0 rem(14) rem(10) rem(14);
+
+		&__label {
+			color: var(--color-grey);
+			font-weight: var(--font-weight-bold);
+
+			&-text::after {
+				@include kol-required-info;
+			}
+		}
+
+		&__hint {
+			@include kol-typography-hint;
+		}
+
+		&__input {
+			gap: rem(8);
+		}
+
+		&__msg {
+			@include kol-alert-wc;
+
+			&.kol-alert--error {
+				@include kol-alert-wc(--color-red);
+			}
+		}
+	}
+
+	.kol-field-control {
+		gap: rem(8);
+	}
+
+	.kol-input {
+		outline: rem(2) solid var(--color-grey-75);
+		outline-offset: rem(2);
+
+		&:before {
+			display: none;
+		}
+
+		&:checked {
+			border-color: var(--color-blue);
+			border-width: rem(7);
+		}
+
+		&:focus {
+			outline-color: var(--color-blue);
+		}
+
+		&:not(:disabled) {
+			&:hover {
+				border-color: var(--color-blue);
+			}
+		}
+
+		&#{&}--error {
+			border: rem(2) solid var(--color-red);
+
+			&:before {
+				display: none;
+			}
+
+			&:checked {
+				border-color: var(--color-red);
+				border-width: rem(7);
+			}
+
+			&:not(:disabled) {
+				&:hover {
+					border-color: var(--color-red-1xx);
+				}
+			}
+		}
+	}
+
+	// fieldset {
+
+	// }
+
+	// fieldset .kol-alert {
+	// 	order: 1;
+	// }
+
+	// fieldset .hint {
+	// 	order: 4;
+	// 	@include kol-typography-hint;
+	// }
+
+	// fieldset .kol-alert {
+	// 	order: 3;
+	// }
+
+	// fieldset .kol-input {
+	// 	display: grid;
+	// 	order: 2;
+	// }
+
+	// fieldset .kol-input .hint {
+	// 	order: 3;
+	// 	@include kol-typography-hint;
+	// }
+
+	// .radio-input-wrapper {
+	// 	display: flex;
+	// 	align-items: center;
+	// 	display: flex;
+	// 	flex-direction: row;
+	// 	margin: 0;
+	// 	min-height: var(--a11y-min-size);
+	// 	position: relative;
+	// }
+
+	// .radio-label {
+	// 	padding-left: rem(8);
+	// }
+
+	// input[type='radio'] {
+	// 	outline: rem(2) solid var(--color-grey-75);
+	// 	outline-offset: rem(2);
+	// }
+
+	// input[type='radio']:before {
+	// 	display: none;
+	// }
+
+	// input[type='radio']:checked {
+	// 	border-color: var(--color-blue);
+	// 	border-width: rem(7);
+	// }
+
+	// input[type='radio']:focus {
+	// 	outline-color: var(--color-blue);
+	// }
+
+	// input[type='radio']:not(:disabled):hover {
+	// 	border-color: var(--color-blue);
+	// }
+
+	// label,
+	// legend {
+	// 	color: var(--color-grey);
+	// }
+
+	// legend {
+	// 	font-weight: var(--font-weight-bold);
+	// }
+
+	// .error input[type='radio'] {
+	// 	border: rem(2) solid var(--color-red);
+	// }
+
+	// .error input[type='radio']:before {
+	// 	display: none;
+	// }
+
+	// .error input[type='radio']:checked {
+	// 	border-color: var(--color-red);
+	// 	border-width: rem(7);
+	// }
+
+	// .error input[type='radio']:not(:disabled):hover {
+	// 	border-color: var(--color-red-1xx);
+	// }
+
+	// .kol-alert {
+	// 	@include kol-alert-wc(--color-red);
+
+	// 	order: 1;
+	// 	width: 100%;
+	// }
+
+	// .hint {
+	// 	font-size: rem(14.4);
+	// 	order: 4;
+	// }
+}

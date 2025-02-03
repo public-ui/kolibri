@@ -1,14 +1,16 @@
 import { Routes } from '../../shares/types';
 import { InputTextBasic } from './basic';
-import { InputTextBlur } from './blur';
-import { InputTextFocus } from './focus';
 import { InputTextHideErrors } from './hide-errors';
+import { InputTextFormatterDemo } from './text-formatter';
+import { InputTextSmartButton } from './smart-button';
+import { InputTextExpertSlot } from './expert-slot';
 
 export const INPUT_TEXT_ROUTES: Routes = {
 	'input-text': {
 		basic: InputTextBasic,
-		blur: InputTextBlur,
-		focus: InputTextFocus,
 		'hide-errors': InputTextHideErrors,
+		'text-formatter': InputTextFormatterDemo,
+		'smart-button': InputTextSmartButton,
+		'expert-slot': InputTextExpertSlot,
 	},
 };

@@ -1,0 +1,94 @@
+@mixin kol-field-control {
+	@layer kol-component {
+		.kol-field-control {
+			$base: &;
+
+			min-height: var(--a11y-min-size);
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-template-areas: 'input label';
+			grid-template-rows: auto;
+
+			align-items: center;
+			justify-content: left;
+
+			&:has(&__hint) {
+				grid-template-columns: auto 1fr;
+				grid-template-areas: 'input label' 'hint hint';
+				grid-template-rows: auto auto;
+			}
+
+			&--label-align-left:not(&--hide-label) {
+				&:has(.kol-field-control__hint) {
+					grid-template-columns: 1fr auto;
+					grid-template-areas: 'label input' 'hint hint';
+					grid-template-rows: auto auto;
+				}
+
+				grid-template-columns: 1fr auto;
+				grid-template-areas: 'label input';
+				grid-template-rows: auto;
+			}
+
+			&__input {
+				grid-area: input;
+				display: flex;
+				min-height: var(--a11y-min-size);
+				align-items: center;
+			}
+
+			&__label {
+				align-items: center;
+				cursor: pointer;
+				display: flex;
+				flex-grow: 1;
+				grid-area: label;
+				min-height: var(--a11y-min-size);
+
+				&--visually-hidden {
+					height: 0;
+					margin: 0;
+					padding: 0;
+					visibility: hidden;
+				}
+
+				&-text {
+					&::after {
+						content: '';
+					}
+				}
+			}
+
+			&__tooltip {
+				.span-label::after {
+					content: '';
+				}
+			}
+
+			&__hint {
+				grid-area: hint;
+			}
+
+			&--disabled & {
+				&__label {
+					cursor: not-allowed;
+					opacity: 0.5;
+				}
+			}
+
+			&--required & {
+				&__label-text {
+					&::after {
+						content: '*';
+					}
+				}
+
+				&__tooltip {
+					.span-label::after {
+						content: '*';
+					}
+				}
+			}
+		}
+	}
+}

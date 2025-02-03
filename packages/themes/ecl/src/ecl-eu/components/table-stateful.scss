@@ -1,0 +1,33 @@
+@import '../../mixins/rem';
+@import '../mixins/kol-table-stateless-wc';
+
+@layer kol-theme-component {
+	@include kol-table-stateless-wc;
+
+	.kol-table-stateful {
+		$root: &;
+
+		font-family: var(--font-family);
+
+		&__pagination-wrapper {
+			@media (min-width: 1024px) {
+				grid-auto-flow: column;
+			}
+		}
+		&__pagination {
+			overflow-x: auto;
+			overflow-y: hidden;
+			gap: rem(16);
+			grid-auto-flow: column;
+		}
+
+		.kol-pagination {
+			@at-root #{$root}__pagination & {
+				@media (min-width: 1024px) {
+					display: flex;
+					gap: rem(16);
+				}
+			}
+		}
+	}
+}

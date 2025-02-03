@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { InputEmailProps, InputEmailWatches, MultiplePropType } from '@public-ui/schema';
-import { validateMultiple } from '@public-ui/schema';
+import type { InputEmailProps, InputEmailWatches, MultiplePropType } from '../../schema';
+import { validateMultiple } from '../../schema';
 
 import { InputTextEmailController } from '../input-text/controller';
 

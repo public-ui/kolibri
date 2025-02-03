@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KolFormFieldHintFc should render with hint 1`] = `
+<span class="custom-class kol-form-field__hint" id="test-id-hint">
+  This is a hint
+</span>
+`;

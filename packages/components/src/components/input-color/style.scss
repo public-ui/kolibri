@@ -1,10 +1,11 @@
-@import '../input-line';
-@import '../@shared/kol-alert-mixin.scss';
+@import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
+@import '../../styles/kol-input-mixin';
+@import '../@shared/mixins';
 
-@include kol-alert-styles;
-
-@layer kol-component {
-	div.input {
-		cursor: pointer;
-	}
-}
+@include kol-alert;
+@include kol-form-field;
+@include kol-input-container;
+@include kol-input;

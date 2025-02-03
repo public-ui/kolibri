@@ -3,14 +3,13 @@ $material-symbols-font-path: './' !default;
 // @see https://github.com/twbs/bootstrap/blob/main/scss/_functions.scss
 @function material-symbols-str-replace($string, $search, $replace: '') {
   $index: str-index($string, $search);
+
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace +
-      material-symbols-str-replace(
-        str-slice($string, $index + str-length($search)),
-        $search,
-        $replace
-      );
+    @return str-slice($string, 1, $index - 1)+$replace +material-symbols-str-replace(str-slice($string, $index + str-length($search)),
+      $search,
+      $replace );
   }
+
   @return $string;
 }
 
@@ -31,7 +30,7 @@ $material-symbols-font-path: './' !default;
     font-family: $font-family;
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
+    font-size: rem(24);
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputFc should render and match snapshot 1`] = `<input autocapitalize="off" autocorrect="off" class="kol-input" id="test" type="text" value="test">`;

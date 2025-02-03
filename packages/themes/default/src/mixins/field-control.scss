@@ -1,0 +1,21 @@
+@import './rem';
+
+@mixin kol-field-control-theme {
+	.kol-field-control {
+		column-gap: rem(8);
+
+		&--required & {
+			&__label-text {
+				&::after {
+					padding-left: 0.125em;
+				}
+			}
+
+			&__tooltip {
+				.span-label::after {
+					padding-left: 0.125em;
+				}
+			}
+		}
+	}
+}

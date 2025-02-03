@@ -1,0 +1,59 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	:host {
+		display: grid;
+		font-family: var(--font-family);
+	}
+
+	.kol-button {
+		--kolibri-spacing: #{rem(4)};
+		border-radius: rem(4);
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.kol-button__text {
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		border-radius: rem(4);
+		font:
+			normal normal 400 rem(16) / rem(20) Arial,
+			sans-serif;
+		padding: rem(12);
+		background-color: #fc0;
+		color: #171a22;
+
+		.kol-button:focus-visible & {
+			outline-offset: rem(-4);
+			outline: rem(2) solid var(--color-black);
+		}
+
+		.kol-button:not(:disabled):active &,
+		.kol-button:not(:disabled):hover & {
+			background-color: #fc0;
+			border-color: #fc0;
+			box-shadow:
+				0 rem(2) rem(4) rgb(9 49 142 / 8%),
+				0 0 rem(10) rgb(9 49 142 / 4%),
+				0 rem(4) rem(5) rgb(9 49 142 / 4%),
+				0 rem(-4) rem(4) rgb(9 49 142 / 4%);
+		}
+
+		.kol-pagination__button--selected & {
+			background-color: var(--color-blue);
+			border-color: var(--color-blue);
+			color: var(--color-white);
+			font-weight: bold;
+			text-decoration: underline;
+			opacity: 1;
+		}
+
+		.kol-button:disabled & {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
+}

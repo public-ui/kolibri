@@ -1,0 +1,16 @@
+@import '../../mixins/rem';
+@import '../mixins/alert-wc';
+@import '../mixins/form-field-order';
+@import '../mixins/form-field';
+@import '../mixins/input-container';
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	@include kol-alert-theme;
+	@include kol-form-field-order-theme;
+	@include kol-form-field-theme;
+	@include kol-input-container-theme;
+}

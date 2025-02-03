@@ -1,0 +1,22 @@
+@import '../mixins/button';
+
+@layer kol-theme-component {
+	.kol-split-button {
+		font-family: var(--font-family);
+		border-style: solid;
+		border-width: rem(2);
+		border-color: var(--color-blue);
+		border-radius: rem(4);
+
+		&__horizontal-line {
+			border: 0;
+			border-top: rem(1) solid var(--color-blue);
+		}
+
+		.kol-popover__content {
+			background-color: #fff;
+		}
+
+		@include kol-button('kol-button');
+	}
+}

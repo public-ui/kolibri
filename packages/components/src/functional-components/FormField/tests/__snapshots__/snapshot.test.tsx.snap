@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KolFormFieldFc should render correctly 1`] = `
+<div class="kol-form-field" role="presentation">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input"></div>
+</div>
+`;
+
+exports[`KolFormFieldFc should render correctly with div tag 1`] = `
+<div class="kol-form-field" role="presentation">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input"></div>
+</div>
+`;
+
+exports[`KolFormFieldFc should render correctly with fieldset tag 1`] = `
+<fieldset class="kol-form-field" role="presentation">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input"></div>
+</fieldset>
+`;
+
+exports[`KolFormFieldFc should render with counter 1`] = `
+<div class="kol-form-field" role="presentation">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input"></div>
+  <span aria-atomic="true" aria-live="polite" class="kol-form-field__counter" data-testid="input-counter">
+    5
+    <span aria-label="kol-of" role="img">
+      /
+    </span>
+    10
+    <span>
+      kol-characters
+    </span>
+  </span>
+</div>
+`;
+
+exports[`KolFormFieldFc should render with custom children 1`] = `
+<div class="kol-form-field" role="presentation">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+</div>
+`;
+
+exports[`KolFormFieldFc should render with error message 1`] = `
+<div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched" role="presentation">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input"></div>
+  <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" description="Error message" id="test-id-msg">
+    <div class="kol-alert__container">
+      <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+      <div class="kol-alert__container-content">
+        <div class="kol-alert__content">
+          Error message
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`KolFormFieldFc should render with hint 1`] = `
+<div class="kol-form-field" role="presentation">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input"></div>
+  <span class="kol-form-field__hint" id="test-id-hint">
+    Hint message
+  </span>
+</div>
+`;
+
+exports[`KolFormFieldFc should render with required props 1`] = `
+<div class="kol-form-field kol-form-field--required" role="presentation">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input"></div>
+</div>
+`;
+
+exports[`KolFormFieldFc should render with tooltip 1`] = `
+<div class="kol-form-field" role="presentation">
+  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+    <span class="kol-form-field__label-text">
+      <span>
+        Test Label
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input"></div>
+</div>
+`;

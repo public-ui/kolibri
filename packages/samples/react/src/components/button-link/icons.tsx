@@ -8,27 +8,28 @@ import { SampleDescription } from '../SampleDescription';
 export const ButtonLinkIcons: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier werden verschiedene Links mit Icons angezeigt. Die Links führen zu keinem Ziel.</p>
+			<p>This sample shows KolButtonLink with icons in different locations.</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolButtonLink _icons="codicon codicon-home" _label="Ich bin ein Link mit Icon links" />
 			<KolButtonLink
 				_icons={{
 					right: 'codicon codicon-home',
 				}}
-				_label="Ich bin ein Link mit Icon rechts"
+				_label="I am a link with an icon on the right"
 			/>
 			<KolButtonLink
 				_icons={{
 					top: 'codicon codicon-home',
 				}}
-				_label="Ich bin ein Link mit Icon oben"
+				_label="I am a link with an icon at the top"
 			/>
 			<KolButtonLink
 				_icons={{
 					bottom: 'codicon codicon-home',
 				}}
-				_label="Ich bin ein Link mit Icon unten"
+				_label="I am a link with icon below"
 			/>
 			<KolButtonLink
 				_icons={{
@@ -37,7 +38,7 @@ export const ButtonLinkIcons: FC = () => (
 					bottom: 'codicon codicon-home',
 					left: 'codicon codicon-home',
 				}}
-				_label="Ich bin ein Link mit allen Icons"
+				_label="I am a link with all icons"
 			/>
 		</div>
 	</>

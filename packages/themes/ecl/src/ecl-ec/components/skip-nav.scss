@@ -1,0 +1,23 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-skip-nav {
+		font-family: var(--font-family);
+
+		.kol-link {
+			&__text {
+				border-radius: 0;
+				border-style: solid;
+				border-width: rem(2);
+				font-weight: var(--font-weight-bold);
+				gap: rem(8);
+				line-height: 1;
+				padding: 0.25em 0.75em;
+				background-color: var(--color-blue);
+				border-color: var(--color-blue);
+				color: var(--color-white);
+				cursor: pointer;
+			}
+		}
+	}
+}

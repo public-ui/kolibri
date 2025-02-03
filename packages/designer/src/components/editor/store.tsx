@@ -1,4 +1,4 @@
-import { Bundesanstalt, Bundesministerium, ButtonOrLinkOrTextWithChildrenProps, SelectOption, TabButtonProps, ToasterService } from '@public-ui/components';
+import { AlertType, ButtonOrLinkOrTextWithChildrenProps, SelectOption, TabButtonProps, ToasterService } from '@public-ui/components';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -7,13 +7,11 @@ import {
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,
-	KolButtonGroup,
 	KolButtonLink,
 	KolCard,
 	KolDetails,
 	KolHeading,
 	KolIcon,
-	KolIndentedText,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -26,8 +24,6 @@ import {
 	KolInputText,
 	KolLink,
 	KolLinkButton,
-	KolLinkGroup,
-	KolLogo,
 	KolModal,
 	KolNav,
 	KolPagination,
@@ -35,21 +31,15 @@ import {
 	KolSelect,
 	KolSkipNav,
 	KolSpin,
-	KolTable,
 	KolTabs,
 	KolTextarea,
-	KolToast,
 	KolVersion,
 } from '@public-ui/solid';
 import { Component } from 'solid-js';
 import { COUNTRIES } from './countries';
-import { DATA, Zeiten } from './data';
-import { AlertType } from '@public-ui/components';
 
 // https://css-tricks.com/snippets/javascript/random-hex-color/
 const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
-
-const toaster = ToasterService.getInstance(document);
 
 const STATUS_OPTIONS: SelectOption<string>[] = [
 	{
@@ -177,32 +167,10 @@ export const components: Record<string, Component> = {
 	'KOL-ABBR': () => (
 		<div class="grid gap-6">
 			<p>
-				Ich bin eine{' '}
-				<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="top">
-					ABB
-				</KolAbbr>{' '}
-				mit Tooltip oben
+				Ich <KolAbbr _label="zum Beispiel">z. B.</KolAbbr> bin eine Abkürzung mit Label.
 			</p>
 			<p>
-				Ich bin eine{' '}
-				<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="right">
-					ABB
-				</KolAbbr>{' '}
-				mit Tooltip rechts
-			</p>
-			<p>
-				Ich bin eine{' '}
-				<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="bottom">
-					ABB
-				</KolAbbr>{' '}
-				mit Tooltip unten
-			</p>
-			<p>
-				Ich bin eine{' '}
-				<KolAbbr _label="Ausführliche Beschreibung" _tooltipAlign="left">
-					ABB
-				</KolAbbr>{' '}
-				mit Tooltip links
+				Ich <KolAbbr>z. B.</KolAbbr> bin eine Abkürzung ohne Label.
 			</p>
 		</div>
 	),
@@ -673,26 +641,6 @@ export const components: Record<string, Component> = {
 			</div>
 		</div>
 	),
-	'KOL-BUTTON-GROUP': () => (
-		<div class="grid gap-6">
-			<KolButtonGroup>
-				<KolButton _label="Primary" _variant="primary" />
-				<KolButton _label="Secondary" _variant="secondary" />
-				<KolButton _label="Normal" _variant="normal" />
-				<KolButton _label="Danger" _variant="danger" />
-				<KolButton _label="Ghost" _variant="ghost" />
-				<KolButton _label="Disabled" _disabled />
-			</KolButtonGroup>
-			<KolButtonGroup>
-				<KolButton _label="Primary" _variant="primary" />
-				<KolButton _label="Secondary" _variant="secondary" />
-				<KolButton _label="Normal" _variant="normal" />
-				<KolButton _label="Danger" _icons="codicon codicon-trash" _hideLabel _variant="danger" />
-				<KolButton _label="Ghost" _icons="codicon codicon-info" _hideLabel _variant="ghost" />
-				<KolButton _label="Disabled" _icons="codicon codicon-lock" _hideLabel _disabled />
-			</KolButtonGroup>
-		</div>
-	),
 	'KOL-CARD': () => (
 		<div class="grid xl:grid-cols-2 2xl:grid-cols-3 gap-6">
 			<KolCard _label="H1-Überschrift der Card" _level={1}>
@@ -710,10 +658,8 @@ export const components: Record<string, Component> = {
 					<img alt="Einleitungsbild der Stadtverwaltung" class="w-full" src="http://placeimg.com/400/200/arch" />
 				</div>
 				<div slot="footer">
-					<KolButtonGroup>
-						<KolButton _label="Kaufen" _variant="primary" />
-						<KolButton _label="Löschen" _icons="codicon codicon-trash" _hideLabel _variant="danger" />
-					</KolButtonGroup>
+					<KolButton _label="Kaufen" _variant="primary" />
+					<KolButton _label="Löschen" _icons="codicon codicon-trash" _hideLabel _variant="danger" />
 				</div>
 			</KolCard>
 			<KolCard _label="H3-Überschrift der Card" _level={3}>
@@ -734,11 +680,9 @@ export const components: Record<string, Component> = {
 			<KolCard _label="H6-Überschrift der Card" _level={6}>
 				<div slot="">Inhalt der Card</div>
 				<div slot="footer">
-					<KolButtonGroup>
-						<KolButton _label="Speichern" _variant="primary" />
-						<KolButton _label="Abbrechen" _variant="secondary" />
-						<KolButton _label="Löschen" _variant="danger" />
-					</KolButtonGroup>
+					<KolButton _label="Speichern" _variant="primary" />
+					<KolButton _label="Abbrechen" _variant="secondary" />
+					<KolButton _label="Löschen" _variant="danger" />
 				</div>
 			</KolCard>
 			<KolCard _label="Kann geschlossen werden" _level={6}>
@@ -811,16 +755,6 @@ export const components: Record<string, Component> = {
 				<KolIcon _label="tabler arrow right" _icons="ti ti-arrow-right" />
 				<KolIcon class="text-red" _label="tabler arrow right in red" _icons="ti ti-arrow-right" />
 			</div>
-		</div>
-	),
-	'KOL-INDENTED-TEXT': () => (
-		<div class="grid gap-6">
-			<KolIndentedText>
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			</KolIndentedText>
 		</div>
 	),
 	'KOL-INPUT-CHECKBOX': () => (
@@ -1161,30 +1095,6 @@ export const components: Record<string, Component> = {
 			<KolInputText _label="Vorname (text, disabled)" _id="" _value="Value" _disabled _type="text"></KolInputText>
 		</div>
 	),
-	'KOL-LINK-GROUP': () => (
-		<div class="grid gap-6">
-			<KolLinkGroup
-				_label="Überschrift für diese Linkgroup"
-				_links={[
-					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icons: 'codicon codicon-home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icons: 'codicon codicon-home' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
-				]}
-				_orientation="vertical"
-			></KolLinkGroup>
-			<KolLinkGroup
-				_label="Horizontale Linkgroup"
-				_links={[
-					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icons: 'codicon codicon-home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icons: 'codicon codicon-home' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
-				]}
-				_orientation="horizontal"
-			></KolLinkGroup>
-		</div>
-	),
 	'KOL-LINK': () => (
 		<div class="grid gap-6">
 			<div>
@@ -1209,16 +1119,6 @@ export const components: Record<string, Component> = {
 				<KolLink _href="/" _label={`Besuchter Link`} />
 			</div>
 			<div>
-				<KolLink _href="#/">
-					<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-				</KolLink>
-			</div>
-			<div>
-				<KolLink _href="#/">
-					<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-				</KolLink>
-			</div>
-			<div>
 				<KolLink
 					_href="#"
 					_icons={{
@@ -1231,11 +1131,9 @@ export const components: Record<string, Component> = {
 				/>
 			</div>
 			<div>
-				<KolIndentedText>
-					<b>Links sind unsichtbar geschalten</b>
-					<br />
-					Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-				</KolIndentedText>
+				<b>Links sind unsichtbar geschalten</b>
+				<br />
+				Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
 				<KolSkipNav
 					_label="Skip-Nav"
 					_links={[
@@ -1275,11 +1173,6 @@ export const components: Record<string, Component> = {
 				<KolButtonLink _label="Besuchter Link (gibt es nicht bei ButtonLink)" />
 			</div>
 			<div>
-				<KolButtonLink _label="">
-					<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-				</KolButtonLink>
-			</div>
-			<div>
 				<KolButtonLink
 					_icons={{
 						left: 'codicon codicon-arrow-left',
@@ -1291,13 +1184,11 @@ export const components: Record<string, Component> = {
 				/>
 			</div>
 			<div>
-				<KolIndentedText>
-					<p>
-						<b>Links sind unsichtbar geschalten</b>
-						<br />
-						Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-					</p>
-				</KolIndentedText>
+				<p>
+					<b>Links sind unsichtbar geschalten</b>
+					<br />
+					Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
+				</p>
 				<KolSkipNav
 					_label="Skip-Nav"
 					_links={[
@@ -1308,13 +1199,6 @@ export const components: Record<string, Component> = {
 					]}
 				/>
 			</div>
-		</div>
-	),
-	'KOL-LOGO': () => (
-		<div class="grid gap-6">
-			<KolLogo _org={Bundesministerium['Die Bundesregierung']} />
-			<KolLogo _org={Bundesministerium['Bundesministerium der Finanzen']} />
-			<KolLogo _org={Bundesministerium['Bundesministerium für Gesundheit']} />
 		</div>
 	),
 	'KOL-MODAL': () => (
@@ -1419,114 +1303,6 @@ export const components: Record<string, Component> = {
 			<KolSpin _show _variant="none" />
 		</div>
 	),
-	'KOL-TABLE': () => (
-		<div class="grid gap-6">
-			<KolTable
-				_label="Öffnungszeiten"
-				_data={DATA}
-				_headers={{
-					horizontal: [
-						[
-							{ label: '', asTd: true },
-							{ label: 'Tag', colSpan: 5 },
-						],
-						[
-							{
-								label: 'Stadtteil',
-								key: 'stadtteil',
-								textAlign: 'left',
-								sort: (data: Zeiten[]) => {
-									return data.sort((first, second) => {
-										if (first.stadtteil < second.stadtteil) {
-											return -1;
-										}
-										if (first.stadtteil > second.stadtteil) {
-											return 1;
-										}
-										return 0;
-									});
-								},
-							},
-							{ label: 'Montag', key: 'montag', textAlign: 'center' },
-							{ label: 'Dienstag', key: 'dienstag', textAlign: 'center' },
-							{ label: 'Mittwoch', key: 'mittwoch', textAlign: 'center' },
-							{ label: 'Donnerstag', key: 'donnerstag', textAlign: 'center' },
-							{ label: 'Freitag', key: 'freitag', textAlign: 'center' },
-						],
-					],
-				}}
-				_minWidth="50em"
-				_pagination={{
-					_page: 1,
-				}}
-				style={{
-					display: 'inline-grid',
-					width: '100%',
-				}}
-			/>
-			<KolTable
-				_label="Öffnungszeiten"
-				_data={[
-					{
-						asp: 'City',
-						montag: '08:00',
-						dienstag: '08:00',
-						mittwoch: '10:00',
-						donnerstag: '11:00',
-						freitag: '08:00',
-					},
-					{
-						asp: 'City-Süd',
-						montag: '08:00',
-						dienstag: '08:00',
-						mittwoch: '10:00',
-						donnerstag: '11:00',
-						freitag: '08:00',
-					},
-					{
-						asp: 'City-Nord',
-						montag: '08:00',
-						dienstag: '08:00',
-						mittwoch: '10:00',
-						donnerstag: '11:00',
-						freitag: '08:00',
-					},
-				]}
-				_headers={{
-					vertical: [[{ label: 'Berlin' }, { label: 'Hamburg' }, { label: 'München' }]],
-					horizontal: [
-						[
-							{ label: '' },
-							{
-								label: 'Stadtteil',
-								key: 'asp',
-							},
-							{
-								label: 'Montag',
-								key: 'montag',
-							},
-							{
-								label: 'Dienstag',
-								key: 'dienstag',
-							},
-							{
-								label: 'Mittwoch',
-								key: 'mittwoch',
-							},
-							{
-								label: 'Donnerstag',
-								key: 'donnerstag',
-							},
-							{
-								label: 'Freitag',
-								key: 'freitag',
-							},
-						],
-					],
-				}}
-			/>
-		</div>
-	),
 	'KOL-TABS': () => (
 		<div class="grid gap-6">
 			<KolTabs _label="" _selected={0} _tabs={DEFAULT_TABS} _align="top">
@@ -1592,11 +1368,9 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-SKIP-NAV': () => (
 		<div class="grid gap-6">
-			<KolIndentedText>
-				<b>Links sind unsichtbar geschalten</b>
-				<br />
-				Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-			</KolIndentedText>
+			<b>Links sind unsichtbar geschalten</b>
+			<br />
+			Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
 			<KolSkipNav
 				_label="Skip-Nav"
 				_links={[
@@ -1608,23 +1382,26 @@ export const components: Record<string, Component> = {
 			/>
 		</div>
 	),
-	'KOL-TOAST-CONTAINER': () => (
-		<div class="grid gap-1">
-			{['default', 'info', 'success', 'warning', 'error'].map((type) => (
-				<KolButton
-					_label={`Toast zeigen (${type})`}
-					_on={{
-						onClick: () =>
-							void toaster.enqueue({
-								label: `${type.toUpperCase()} Toast`,
-								description: `Dies ist eine Toast-Nachricht vom Typ "${type}".`,
-								type: type as AlertType,
-							}),
-					}}
-				/>
-			))}
-		</div>
-	),
+	'KOL-TOAST-CONTAINER': () => {
+		const toaster = ToasterService.getInstance(document);
+		return (
+			<div class="grid gap-1">
+				{['default', 'info', 'success', 'warning', 'error'].map((type) => (
+					<KolButton
+						_label={`Toast zeigen (${type})`}
+						_on={{
+							onClick: () =>
+								void toaster.enqueue({
+									label: `${type.toUpperCase()} Toast`,
+									description: `Dies ist eine Toast-Nachricht vom Typ "${type}".`,
+									type: type as AlertType,
+								}),
+						}}
+					/>
+				))}
+			</div>
+		);
+	},
 	'KOL-TOOLTIP-WC': () => (
 		<div class="grid justify-items-center gap-8">
 			<div class="grid gap-4 grid-cols-4 justify-items-center">

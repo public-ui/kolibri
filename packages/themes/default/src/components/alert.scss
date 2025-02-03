@@ -1,8 +1,9 @@
-@import '../mixins/alert-wc.scss';
+@import '../mixins/alert-wc';
 
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
-		@include kol-alert-theme;
 	}
+
+	@include kol-alert-theme;
 }

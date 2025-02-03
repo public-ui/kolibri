@@ -1,0 +1,38 @@
+@mixin kol-form-field {
+	@layer kol-component {
+		.kol-form-field {
+			$root: &;
+
+			display: grid;
+			font-size: rem(16);
+
+			&__label {
+				#{$root}:not(#{$root}--disabled) & {
+					cursor: pointer;
+				}
+
+				#{$root}--disabled & {
+					opacity: 0.5;
+				}
+			}
+
+			&__label-text::after {
+				#{$root}--required & {
+					content: '*';
+				}
+			}
+
+			&__hint {
+				#{$root}--disabled & {
+					opacity: 0.5;
+				}
+			}
+
+			&__tooltip .span-label::after {
+				#{$root}--required & {
+					content: '*';
+				}
+			}
+		}
+	}
+}

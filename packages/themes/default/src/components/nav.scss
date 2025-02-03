@@ -1,85 +1,89 @@
+@import '../mixins/rem';
 @import '../mixins/focus-outline';
 
 @layer kol-theme-component {
-	:host {
+	.kol-nav {
+		$root: &;
+
 		font-family: var(--font-family);
-	}
 
-	nav {
-		background-color: var(--color-mute);
-	}
-
-	ul {
-		list-style: none;
-	}
-
-	.kol-link-wc {
-		display: flex;
-	}
-
-	.entry-item a,
-	.entry-item .button {
-		align-items: center;
-		color: var(--color-primary);
-		display: flex;
-		gap: 0.5rem;
-		min-height: var(--a11y-min-size);
-		text-decoration: none;
-
-		.vertical & {
-			border-left: 2px solid transparent;
-			padding-left: 0.5rem;
+		&__navigation {
+			background-color: var(--color-mute);
 		}
 
-		.horizontal & {
-			padding: 0 1rem;
-		}
+		&__list {
+			list-style: none;
 
-		.vertical .active & {
-			border-left-color: var(--color-primary);
-		}
+			// nested lists
+			&--nested {
+				padding-left: rem(16);
 
-		&:focus-visible {
-			@include focus-outline;
-		}
-	}
-
-	.entry-item a:hover {
-		text-decoration: underline;
-	}
-
-	// nested lists
-	.list .list {
-		padding-left: 1rem;
-	}
-
-	.active .entry-item a,
-	.active .entry-item .button {
-		font-weight: bold;
-	}
-
-	.active .list .entry-item a,
-	.active .list .entry-item .button {
-		font-weight: normal;
-		border-left-color: transparent;
-	}
-
-	.expand-button {
-		margin-left: 0.5rem;
-
-		.button {
-			&:hover {
-				background-color: var(--color-primary);
-				color: var(--color-light);
-			}
-
-			&:focus-visible {
-				@include focus-outline;
+				.kol-link,
+				.kol-button {
+					font-weight: normal !important;
+					border-left-color: transparent !important;
+				}
 			}
 		}
 
-		.button-inner {
-			justify-content: center;
+		&__entry {
+			&--link {
+				display: flex;
+			}
+
+			.kol-link:hover {
+				text-decoration: underline;
+			}
+
+			.kol-link,
+			.kol-button {
+				align-items: center;
+				color: var(--color-primary);
+				display: flex;
+				gap: rem(8);
+				min-height: var(--a11y-min-size);
+				text-decoration: none;
+
+				&:focus-visible {
+					@include focus-outline;
+				}
+
+				#{$root}__list--vertical & {
+					border-left: rem(2) solid transparent;
+					padding-left: rem(8);
+				}
+
+				#{$root}--horizontal & {
+					padding: 0 rem(16);
+				}
+
+				#{$root}--vertical #{$root}__list-item--active & {
+					border-left-color: var(--color-primary);
+				}
+
+				#{$root}__list-item--active & {
+					font-weight: bold;
+				}
+			}
+		}
+
+		&__expand-button {
+			margin-left: rem(8);
+
+			.kol-button {
+				&:hover {
+					background-color: var(--color-primary);
+					color: var(--color-light);
+				}
+
+				&:focus-visible {
+					@include focus-outline;
+				}
+
+				&__text {
+					justify-content: center;
+				}
+			}
 		}
 	}
 }

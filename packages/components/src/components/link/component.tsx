@@ -2,7 +2,14 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
+	AriaDescriptionPropType,
+	AriaExpandedPropType,
+	AriaOwnsPropType,
+	ButtonVariantPropType,
+	CustomClassPropType,
+	DisabledPropType,
 	DownloadPropType,
+	FocusableElement,
 	HrefPropType,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
@@ -10,18 +17,23 @@ import type {
 	LinkOnCallbacksPropType,
 	LinkStates,
 	LinkTargetPropType,
+	ShortKeyPropType,
 	Stringified,
 	TooltipAlignPropType,
-	DisabledPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 import {
 	devHint,
-	propagateFocus,
 	setEventTarget,
 	showExpertSlot,
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
 	validateAriaCurrentValue,
+	validateAriaDescription,
+	validateAriaExpanded,
+	validateAriaOwns,
+	validateButtonVariant,
+	validateCustomClass,
+	validateDisabled,
 	validateDownload,
 	validateHideLabel,
 	validateHref,
@@ -29,19 +41,23 @@ import {
 	validateLabelWithExpertSlot,
 	validateLinkCallbacks,
 	validateLinkTarget,
+	validateShortKey,
 	validateTabIndex,
 	validateTooltipAlign,
-} from '@public-ui/schema';
-import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
+} from '../../schema';
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type { UnsubscribeFunction } from './ariaCurrentService';
+import { onLocationChange } from './ariaCurrentService';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { nonce } from '../../utils/dev.utils';
+import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 
 import { translate } from '../../i18n';
-import { onLocationChange } from './ariaCurrentService';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import { KolSpanFc } from '../../functional-components';
+import clsx from 'clsx';
 
-import { validateDisabled } from '@public-ui/schema';
-import type { JSX } from '@stencil/core';
-import type { UnsubscribeFunction } from './ariaCurrentService';
-import { preventDefaultAndStopPropagation } from '../../utils/events';
-import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 /**
  * @internal
  */
@@ -49,24 +65,36 @@ import { KolIconTag, KolSpanWcTag, KolTooltipWcTag } from '../../core/component-
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements LinkAPI {
-	@Element() private readonly host?: HTMLKolLinkWcElement;
-	private ref?: HTMLAnchorElement;
+export class KolLinkWc implements LinkAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolLinkElement;
+
+	private anchorRef?: HTMLAnchorElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
+	private readonly internalDescriptionById = nonce();
+
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.anchorRef = ref;
 	};
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.anchorRef?.focus();
+	}
 
 	private readonly onClick = (event: Event) => {
 		if (this.state._disabled === true) {
-			preventDefaultAndStopPropagation(event);
-		} else if (typeof this.state._on?.onClick === 'function') {
 			event.preventDefault();
-			event.stopPropagation();
-			setEventTarget(event, this.ref);
-			this.state._on?.onClick(event, this.state._href);
+		} else {
+			if (typeof this.state._on?.onClick === 'function') {
+				event.preventDefault();
+				setEventTarget(event, this.anchorRef);
+				this.state._on?.onClick(event, this.state._href);
+			}
+			if (this.host) {
+				dispatchDomEvent(this.host, KolEvent.click, this.state._href);
+			}
 		}
 	};
 
@@ -100,7 +128,7 @@ export class KolLinkWc implements LinkAPI {
 		};
 
 		if (this.state._hideLabel === true && !this.state._label) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn _hide-label gesetzt ist.`);
+			devHint(`[KolLink] An aria-label must be set when _hide-label is set.`);
 		}
 		return { isExternal, tagAttrs };
 	};
@@ -108,24 +136,32 @@ export class KolLinkWc implements LinkAPI {
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs } = this.getRenderValues();
 		const hasExpertSlot = showExpertSlot(this.state._label);
+		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
+
 		return (
-			<Host class="kol-link-wc">
+			<Host>
 				<a
 					ref={this.catchRef}
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
+					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
+					aria-expanded={typeof this.state._ariaExpanded === 'boolean' ? String(this.state._ariaExpanded) : undefined}
+					aria-owns={this.state._ariaOwns}
 					aria-label={
 						this.state._hideLabel && typeof this.state._label === 'string'
 							? `${this.state._label}${isExternal ? ` (${translate('kol-open-link-in-tab')})` : ''}`
 							: undefined
 					}
-					class={{
-						disabled: this.state._disabled === true,
-						'external-link': isExternal,
-						'hide-label': this.state._hideLabel === true,
-					}}
+					class={clsx('kol-link', {
+						'kol-link--disabled': this.state._disabled === true,
+						'kol-link--external-link': isExternal,
+						'kol-link--hide-label': this.state._hideLabel === true,
+						[`kol-link--${this.state._variant as string}`]: this.state._role === 'button' && this.state._variant !== 'custom',
+						[this.state._customClass as string]:
+							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+					})}
 					{...this.state._on}
 					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
 					onClick={this.onClick}
@@ -133,17 +169,18 @@ export class KolLinkWc implements LinkAPI {
 					role={this.state._role}
 					tabIndex={this.state._disabled ? -1 : this.state._tabIndex}
 				>
-					<KolSpanWcTag
-						_accessKey={this.state._accessKey}
-						_icons={this.state._icons}
-						_hideLabel={this.state._hideLabel}
-						_label={hasExpertSlot ? '' : this.state._label || this.state._href}
+					<KolSpanFc
+						class="kol-link__text"
+						badgeText={this.state._accessKey || this.state._shortKey}
+						icons={this.state._icons}
+						hideLabel={this.state._hideLabel}
+						label={hasExpertSlot ? '' : this.state._label || this.state._href}
 					>
 						<slot name="expert" slot="expert"></slot>
-					</KolSpanWcTag>
+					</KolSpanFc>
 					{isExternal && (
 						<KolIconTag
-							class="external-link-icon"
+							class="kol-link__icon"
 							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
 							_icons={'codicon codicon-link-external'}
 							aria-hidden={this.state._hideLabel}
@@ -156,17 +193,23 @@ export class KolLinkWc implements LinkAPI {
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 					 */
 					aria-hidden="true"
+					class="kol-link__tooltip"
 					hidden={hasExpertSlot || !this.state._hideLabel}
-					_accessKey={this.state._accessKey}
+					_badgeText={this.state._accessKey || this.state._shortKey}
 					_align={this.state._tooltipAlign}
 					_label={this.state._label || this.state._href}
 				></KolTooltipWcTag>
+				{hasAriaDescription && (
+					<span class="visually-hidden" id={this.internalDescriptionById}>
+						{this.state._ariaDescription}
+					</span>
+				)}
 			</Host>
 		);
 	}
 
 	/**
-	 * Defines the elements access key.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -174,6 +217,27 @@ export class KolLinkWc implements LinkAPI {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+
+	/**
+	 * Marks this element as open/expanded, or that the connected element (aria-controls/aria-owns) is open/expanded.
+	 * @TODO: Change type to `AriaExpandedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _ariaExpanded?: boolean;
+
+	/**
+	 * Defines the contextual relationship between a parent and its child elements.
+	 */
+	@Prop() public _ariaOwns?: AriaOwnsPropType;
+
+	/**
+	 * Defines the custom class attribute if _variant="custom" is set.
+	 */
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -218,6 +282,11 @@ export class KolLinkWc implements LinkAPI {
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
+	 * Adds a visual short key hint to the component.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
@@ -232,6 +301,11 @@ export class KolLinkWc implements LinkAPI {
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
+	/**
+	 * Defines which button variant should be used for presentation.
+	 */
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+
 	@State() public state: LinkStates = {
 		_ariaCurrentValue: 'page',
 		_href: '', // ⚠ required
@@ -241,11 +315,32 @@ export class KolLinkWc implements LinkAPI {
 	@Watch('_accessKey')
 	public validateAccessKey(value?: AccessKeyPropType): void {
 		validateAccessKey(this, value);
+		validateAccessAndShortKey(value, this._shortKey);
 	}
 
 	@Watch('_ariaCurrentValue')
 	public validateAriaCurrentValue(value?: AriaCurrentValuePropType): void {
 		validateAriaCurrentValue(this, value);
+	}
+
+	@Watch('_ariaDescription')
+	public validateAriaDescription(value?: AriaDescriptionPropType): void {
+		validateAriaDescription(this, value);
+	}
+
+	@Watch('_ariaExpanded')
+	public validateAriaExpanded(value?: AriaExpandedPropType): void {
+		validateAriaExpanded(this, value);
+	}
+
+	@Watch('_ariaOwns')
+	public validateAriaOwns(value?: AriaOwnsPropType): void {
+		validateAriaOwns(this, value);
+	}
+
+	@Watch('_customClass')
+	public validateCustomClass(value?: CustomClassPropType): void {
+		validateCustomClass(this, value);
 	}
 
 	@Watch('_disabled')
@@ -290,6 +385,12 @@ export class KolLinkWc implements LinkAPI {
 		validateAlternativeButtonLinkRole(this, value);
 	}
 
+	@Watch('_shortKey')
+	public validateShortKey(value?: ShortKeyPropType): void {
+		validateShortKey(this, value);
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
 	@Watch('_tabIndex')
 	public validateTabIndex(value?: number): void {
 		validateTabIndex(this, value);
@@ -305,9 +406,18 @@ export class KolLinkWc implements LinkAPI {
 		validateTooltipAlign(this, value);
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: ButtonVariantPropType): void {
+		validateButtonVariant(this, value);
+	}
+
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
+		this.validateAriaDescription(this._ariaDescription);
+		this.validateAriaExpanded(this._ariaExpanded);
+		this.validateAriaOwns(this._ariaOwns);
+		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel);
@@ -316,12 +426,15 @@ export class KolLinkWc implements LinkAPI {
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
+		this.validateShortKey(this._shortKey);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
 		this.validateTooltipAlign(this._tooltipAlign);
+		this.validateVariant(this._variant);
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
 		});
+		validateAccessAndShortKey(this._accessKey, this._shortKey);
 	}
 
 	public disconnectedCallback(): void {

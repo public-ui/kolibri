@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-progress should render with _max=42 _value=17 _label="Progress" _unit="cm" 1`] = `
+<kol-progress>
+  <template shadowrootmode="open">
+    <div class="kol-progress">
+      <div class="kol-progress__bar">
+        <div>
+          Progress
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-progress__bar-background" fill="currentColor" height="10" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: calc(100% - 2px - var(--kolibri-text-label-padding, 45px));"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="10" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: calc(100% - 2px - var(--kolibri-text-label-padding, 45px));"></rect>
+          <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="2.5" y="2.5" style="width: calc(40.476190476190474% - 5px - (var(--kolibri-text-label-padding, 45px) / 100 * 40.476190476190474));"></rect>
+          <text aria-hidden="true" dominant-baseline="middle" fill="currentColor" text-anchor="end" x="100%" y="50%">
+            17cm
+          </text>
+        </svg>
+      </div>
+      <progress aria-busy="true" class="visually-hidden" max="42" value="17"></progress>
+      <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+        0 von 42 cm
+      </span>
+    </div>
+  </template>
+</kol-progress>
+`;
+
+exports[`kol-progress should render with _max=42 _value=17 _label="Progress" _variant="cycle" 1`] = `
+<kol-progress>
+  <template shadowrootmode="open">
+    <div class="kol-progress">
+      <svg class="kol-progress__cycle" viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
+        <circle class="kol-progress__cycle-background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
+        <circle class="kol-progress__cycle-whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
+        <circle class="kol-progress__cycle-border" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="1"></circle>
+        <circle class="kol-progress__cycle-whitespace" cx="60" cy="60" fill="currentColor" r="51" stroke="currentColor" stroke-width="1"></circle>
+        <circle class="kol-progress__cycle-border" cx="60" cy="60" fill="currentColor" r="50" stroke="currentColor" stroke-width="1"></circle>
+        <circle class="kol-progress__cycle-progress" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-dasharray="138px 342px" stroke-linecap="round" stroke-width="6"></circle>
+        <text aria-hidden="true" fill="currentColor" text-anchor="middle" x="50%" y="43%">
+          Progress
+        </text>
+        <text aria-hidden="true" fill="currentColor" text-anchor="middle" x="50%" y="57%">
+          17%
+        </text>
+      </svg>
+      <progress aria-busy="true" class="visually-hidden" max="42" value="17"></progress>
+      <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+        0 von 42 %
+      </span>
+    </div>
+  </template>
+</kol-progress>
+`;
+
+exports[`kol-progress should render with _max=42 _value=17 _label="Progress" 1`] = `
+<kol-progress>
+  <template shadowrootmode="open">
+    <div class="kol-progress">
+      <div class="kol-progress__bar">
+        <div>
+          Progress
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-progress__bar-background" fill="currentColor" height="10" rx="5" stroke="currentColor" stroke-width="3" x="1" y="1" style="width: calc(100% - 2px - var(--kolibri-text-label-padding, 45px));"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="10" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: calc(100% - 2px - var(--kolibri-text-label-padding, 45px));"></rect>
+          <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="2.5" y="2.5" style="width: calc(40.476190476190474% - 5px - (var(--kolibri-text-label-padding, 45px) / 100 * 40.476190476190474));"></rect>
+          <text aria-hidden="true" dominant-baseline="middle" fill="currentColor" text-anchor="end" x="100%" y="50%">
+            17%
+          </text>
+        </svg>
+      </div>
+      <progress aria-busy="true" class="visually-hidden" max="42" value="17"></progress>
+      <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+        0 von 42 %
+      </span>
+    </div>
+  </template>
+</kol-progress>
+`;

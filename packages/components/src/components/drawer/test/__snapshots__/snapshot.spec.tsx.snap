@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-drawer should render with _label="Label" _open=false 1`] = `
+<kol-drawer class="kol-drawer">
+  <template shadowrootmode="open">
+    <dialog class="kol-drawer__dialog">
+      <div aria-label="Label" class="kol-drawer__wrapper kol-drawer__wrapper--is-closing kol-drawer__wrapper--top">
+        <div class="kol-drawer__content">
+          <slot></slot>
+        </div>
+      </div>
+    </dialog>
+  </template>
+</kol-drawer>
+`;
+
+exports[`kol-drawer should render with _label="Label" _open=true _variant="bottom" 1`] = `
+<kol-drawer _variant="bottom" class="kol-drawer">
+  <template shadowrootmode="open">
+    <dialog class="kol-drawer__dialog">
+      <div aria-label="Label" class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
+        <div class="kol-drawer__content">
+          <slot></slot>
+        </div>
+      </div>
+    </dialog>
+  </template>
+</kol-drawer>
+`;
+
+exports[`kol-drawer should render with _label="Label" _open=true _variant="left" 1`] = `
+<kol-drawer _variant="left" class="kol-drawer">
+  <template shadowrootmode="open">
+    <dialog class="kol-drawer__dialog">
+      <div aria-label="Label" class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
+        <div class="kol-drawer__content">
+          <slot></slot>
+        </div>
+      </div>
+    </dialog>
+  </template>
+</kol-drawer>
+`;
+
+exports[`kol-drawer should render with _label="Label" _open=true _variant="right" 1`] = `
+<kol-drawer _variant="right" class="kol-drawer">
+  <template shadowrootmode="open">
+    <dialog class="kol-drawer__dialog">
+      <div aria-label="Label" class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
+        <div class="kol-drawer__content">
+          <slot></slot>
+        </div>
+      </div>
+    </dialog>
+  </template>
+</kol-drawer>
+`;
+
+exports[`kol-drawer should render with _label="Label" _open=true _variant="top" 1`] = `
+<kol-drawer _variant="top" class="kol-drawer">
+  <template shadowrootmode="open">
+    <dialog class="kol-drawer__dialog">
+      <div aria-label="Label" class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
+        <div class="kol-drawer__content">
+          <slot></slot>
+        </div>
+      </div>
+    </dialog>
+  </template>
+</kol-drawer>
+`;
+
+exports[`kol-drawer should render with _label="Label" 1`] = `
+<kol-drawer class="kol-drawer">
+  <template shadowrootmode="open">
+    <dialog class="kol-drawer__dialog">
+      <div aria-label="Label" class="kol-drawer__wrapper kol-drawer__wrapper--is-closing kol-drawer__wrapper--top">
+        <div class="kol-drawer__content">
+          <slot></slot>
+        </div>
+      </div>
+    </dialog>
+  </template>
+</kol-drawer>
+`;

@@ -61,9 +61,9 @@ export class TaskRunner {
 
 	public registerTasks(tasks: AbstractTask[]): void {
 		tasks.forEach((task) => {
-			const dependentTasks = task.getDependentTasks();
-			if (dependentTasks.length > 0) {
-				this.registerTasks(dependentTasks);
+			const taskDependencies = task.getTaskDependencies();
+			if (taskDependencies.length > 0) {
+				this.registerTasks(taskDependencies);
 			}
 			if (
 				semver.gtr(this.projectVersion, task.getVersionRange(), {
@@ -118,18 +118,18 @@ export class TaskRunner {
 		}
 	}
 
-	private dependentTaskRun(task: AbstractTask, dependentTasks: AbstractTask[]) {
-		dependentTasks.forEach((dependentTask) => {
-			this.dependentTaskRun(dependentTask, dependentTask.getDependentTasks());
+	private dependentTaskRun(task: AbstractTask, taskDependencies: AbstractTask[]) {
+		taskDependencies.forEach((dependentTask) => {
+			this.dependentTaskRun(dependentTask, dependentTask.getTaskDependencies());
 		});
-		if (dependentTasks.every((dependentTask) => dependentTask.getStatus() === 'done')) {
+		if (taskDependencies.every((dependentTask) => dependentTask.getStatus() === 'done')) {
 			this.runTask(task);
 		}
 	}
 
 	public run(): void {
 		this.tasks.forEach((task) => {
-			this.dependentTaskRun(task, task.getDependentTasks());
+			this.dependentTaskRun(task, task.getTaskDependencies());
 		});
 	}
 

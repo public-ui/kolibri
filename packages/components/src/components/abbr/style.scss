@@ -1,7 +1,9 @@
-@import '../style';
+@import '../@shared/mixins';
+@import '../../styles/global';
+@import '../tooltip/style.scss';
 
 @layer kol-component {
-	:host > abbr {
-		cursor: help;
+	.kol-abbr {
+		font-size: rem(16);
 	}
 }

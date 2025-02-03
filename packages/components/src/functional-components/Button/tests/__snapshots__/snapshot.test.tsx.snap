@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KolButtonFc should handle click event 1`] = `
+<kol-button-wc
+  _label="Test Button"
+  tabindex="0"
+/>
+`;
+
+exports[`KolButtonFc should hide label when hideLabel is true 1`] = `
+<kol-button-wc
+  _hidelabel=""
+  _label="Test Button"
+  tabindex="0"
+/>
+`;
+
+exports[`KolButtonFc should render correctly 1`] = `
+<kol-button-wc
+  _label="Test Button"
+  tabindex="0"
+/>
+`;
+
+exports[`KolButtonFc should render with custom class 1`] = `
+<kol-button-wc
+  _label="Test Button"
+  class="custom-class"
+  tabindex="0"
+/>
+`;
+
+exports[`KolButtonFc should render with icons 1`] = `
+<kol-button-wc
+  _label="Test Button"
+  tabindex="0"
+/>
+`;

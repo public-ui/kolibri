@@ -1,0 +1,6 @@
+@import '../../mixins/rem';
+@import '../mixins/button';
+
+@layer kol-theme-component {
+	@include kol-button('kol-button');
+}

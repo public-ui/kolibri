@@ -7,20 +7,25 @@ import { SampleDescription } from '../SampleDescription';
 const tabs = [
 	{
 		_icons: 'codicon codicon-pie-chart',
-		_label: 'Erster Tab',
+		_label: 'First tab',
+		_on: {
+			onSelect: (event: Event) => {
+				console.log('First tab selected', event);
+			},
+		},
 	},
 	{
 		_icons: 'codicon codicon-calendar',
-		_label: 'Zweiter Tab',
+		_label: 'Second Tab',
 	},
 	{
 		_disabled: true,
 		_icons: 'codicon codicon-briefcase',
-		_label: 'Deaktivierter Tab',
+		_label: 'Disabled Tab',
 	},
 	{
 		_icons: 'codicon codicon-telescope',
-		_label: 'Letzter Tab',
+		_label: 'Last tab',
 	},
 ];
 
@@ -32,22 +37,21 @@ const tabsWithoutIcons = tabs.map((tab) => ({
 export const TabsBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind verschiedene Varianten von Tabs. Nur der Inhalt eines Tabs wird in jeder Zeile angezeigt.</p>
+			<p>KolTabs renders tab captions and their associated content. This sample shows tab captions with and without icons and disabled tabs.</p>
 		</SampleDescription>
-		<>
-			<KolTabs _tabs={tabsWithoutIcons} _label="Regular tabs">
-				<div slot="tab-0">Inhalte von Tab 1</div>
-				<div slot="tab-1">Inhalte von Tab 2</div>
-				<div slot="tab-2">Inhalte von Tab 3</div>
-				<div slot="tab-3">Inhalte von Tab 4</div>
-			</KolTabs>
 
-			<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with icons">
-				<div slot="tab-0">Inhalte von Tab 1</div>
-				<div slot="tab-1">Inhalte von Tab 2</div>
-				<div slot="tab-2">Inhalte von Tab 3</div>
-				<div slot="tab-3">Inhalte von Tab 4</div>
-			</KolTabs>
-		</>
+		<KolTabs _tabs={tabsWithoutIcons} _label="Regular tabs">
+			<div slot="tab-0">Contents of Tab 1</div>
+			<div slot="tab-1">Contents of Tab 2</div>
+			<div slot="tab-2">Contents of Tab 3</div>
+			<div slot="tab-3">Contents of Tab 4</div>
+		</KolTabs>
+
+		<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with icons">
+			<div slot="tab-0">Contents of Tab 1</div>
+			<div slot="tab-1">Contents of Tab 2</div>
+			<div slot="tab-2">Contents of Tab 3</div>
+			<div slot="tab-3">Contents of Tab 4</div>
+		</KolTabs>
 	</>
 );

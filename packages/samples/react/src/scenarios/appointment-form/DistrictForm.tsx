@@ -1,5 +1,5 @@
 import { Field, useFormikContext } from 'formik';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 import { KolButton, KolForm, KolHeading, KolSelect } from '@public-ui/react';
 
@@ -21,12 +21,12 @@ const LOCATION_OPTIONS = [
 		label: 'Dorstfeld',
 	},
 	{
-		value: 'Innenstadt Ost',
-		label: 'Innenstadt Ost',
+		value: 'Downtown East',
+		label: 'downtown East',
 	},
 	{
-		value: 'Innenstadt West',
-		label: 'Innenstadt West',
+		value: 'Downtown West',
+		label: 'downtown West',
 	},
 ];
 
@@ -35,22 +35,24 @@ export function DistrictForm() {
 	const errorList = createErrorList(form.errors);
 	const [sectionSubmitted, setSectionSubmitted] = useState(false);
 	const formikRef = useRef<HTMLKolFormElement>(null);
-
-	useEffect(() => {
-		focusErrorList(errorList, formikRef);
-	}, [sectionSubmitted]);
-
 	return (
 		<div className="p-2">
-			<KolHeading _level={2} _label="Wählen Sie einen Stadtteil aus"></KolHeading>
+			<KolHeading _level={2} _label="Select a district"></KolHeading>
 			<KolForm
 				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
 				_on={{
 					onSubmit: () => {
-						void form.submitForm();
 						setSectionSubmitted(true);
-						focusErrorList(errorList, formikRef);
+						form
+							.validateForm()
+							.then((res) => {
+								if (res && Object.keys(res).length > 0) throw Error();
+								void form.submitForm();
+							})
+							.catch(() => {
+								focusErrorList(formikRef);
+							});
 					},
 				}}
 			>
@@ -58,10 +60,13 @@ export function DistrictForm() {
 					{({ field }: FieldProps<FormValues['district']>) => (
 						<KolSelect
 							id="field-district"
-							_label="Stadtteil"
-							_options={[{ label: 'Bitte wählen…', value: '' }, ...LOCATION_OPTIONS]}
+							_label="District"
+							_options={[{ label: 'Please select…', value: '' }, ...LOCATION_OPTIONS]}
 							_value={[field.value]}
-							_error={form.errors.district || ''}
+							_msg={{
+								_type: 'error',
+								_description: form.errors.district || '',
+							}}
 							_touched={form.touched.district}
 							_required
 							onBlur={() => {
@@ -69,6 +74,7 @@ export function DistrictForm() {
 							}}
 							_on={{
 								onChange: (event, values: unknown) => {
+									setSectionSubmitted(false);
 									// Select und Radio setzen den Wert immer initial.
 									if (event.target) {
 										const [value] = values as [FormValues['district']];
@@ -80,7 +86,7 @@ export function DistrictForm() {
 					)}
 				</Field>
 
-				<KolButton _label="Weiter" _type="submit" className="mt-2" />
+				<KolButton _label="Next" _type="submit" className="mt-2" />
 			</KolForm>
 		</div>
 	);

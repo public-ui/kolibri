@@ -1,48 +1,38 @@
 import type { FC } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { KolForm, KolInputPassword } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputPasswordShowPassword: FC = () => {
-	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 	const passwordRef = useRef<HTMLKolInputPasswordElement>(null);
-	const handleTogglePasswordClick = () => {
-		setIsPasswordVisible(!isPasswordVisible);
-	};
-	useEffect(() => {
-		const input = passwordRef.current?.shadowRoot?.querySelector('input');
-		if (input) {
-			input.type = isPasswordVisible ? 'text' : 'password';
-		}
-	}, [isPasswordVisible]);
 
 	return (
 		<>
 			<SampleDescription>
 				<p>
-					Hier wird ein Passwort Eingabefeld angezeigt. Durch klicken auf den im Feld Rechts stehenden Button, kann zwischen verdecktem und angezeigtem Passwort
-					gewechselt werden.
+					This sample shows KolInputPassword in the variant &quot;visibility-toggle&quot;. It features a button to toggle between a visible and hidden password
+					input.
 				</p>
 			</SampleDescription>
-			<KolForm>
+
+			<KolForm className="w-full">
+				<KolInputPassword _placeholder="With 'Show password' button" _label="Password" ref={passwordRef} className="block" _variant="visibility-toggle" />
 				<KolInputPassword
-					_placeholder="Mit 'Passwort anzeigen' Button"
-					_label="Passwort"
+					_placeholder="With 'Show password' button"
+					_label="Password"
 					ref={passwordRef}
-					_smartButton={{
-						_icons: {
-							left: {
-								icon: 'codicon codicon-eye',
-							},
-						},
-						_hideLabel: true,
-						_label: `Passwort ${isPasswordVisible ? 'ausblenden' : 'einblenden'}`,
-						_on: {
-							onClick: handleTogglePasswordClick,
-						},
-					}}
 					className="block"
+					_variant="visibility-toggle"
+					_value="Password"
+				/>
+				<KolInputPassword
+					_placeholder="With 'Show password' button and disabled"
+					_label="Password"
+					ref={passwordRef}
+					className="block"
+					_disabled
+					_variant="visibility-toggle"
 				/>
 			</KolForm>
 		</>

@@ -1,4 +1,35 @@
-@import '../input-line';
+@import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
+@import '../../styles/kol-input-mixin';
+@import '../@shared/mixins';
+
+@include kol-alert;
+@include kol-form-field;
+@include kol-input-container;
 
 @layer kol-component {
+	.kol-select {
+		font-size: rem(16);
+		cursor: pointer;
+		width: 100%;
+
+		&:not([multiple], [size]) {
+			height: 2.75em;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&__option:checked::before {
+			content: '✓ ';
+		}
+
+		/* needed hack for vertical alignment */
+		&[multiple] option {
+			padding: calc((var(--a11y-min-size) - rem(16)) / 2) 0.5em;
+		}
+	}
 }

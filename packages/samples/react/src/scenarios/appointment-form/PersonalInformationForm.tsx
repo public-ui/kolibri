@@ -9,20 +9,20 @@ import { createErrorList, focusErrorList } from './formUtils';
 
 const SALUTATION_OPTIONS = [
 	{
-		value: 'Firma',
-		label: 'Firma',
+		value: 'Company',
+		label: 'Company',
 	},
 	{
-		value: 'Frau',
-		label: 'Frau',
+		value: 'Mrs.',
+		label: 'Mrs.',
 	},
 	{
-		value: 'Herr',
-		label: 'Herr',
+		value: 'Mr.',
+		label: 'Mr.',
 	},
 	{
-		value: 'Hallo',
-		label: 'Hallo',
+		value: 'Hello',
+		label: 'Hello',
 	},
 ];
 
@@ -33,11 +33,11 @@ export function PersonalInformationForm() {
 	const formikRef = useRef(null);
 
 	useEffect(() => {
-		focusErrorList(errorList, formikRef);
+		focusErrorList(formikRef);
 	}, [sectionSubmitted]);
 	return (
 		<div className="p-2">
-			<KolHeading _level={2} _label="Geben Sie Ihre Kontaktdaten ein"></KolHeading>
+			<KolHeading _level={2} _label="Enter your contact details"></KolHeading>
 			<KolForm
 				ref={formikRef}
 				_errorList={sectionSubmitted ? errorList : []}
@@ -45,7 +45,7 @@ export function PersonalInformationForm() {
 					onSubmit: () => {
 						void form.submitForm();
 						setSectionSubmitted(true);
-						focusErrorList(errorList, formikRef);
+						focusErrorList(formikRef);
 					},
 				}}
 			>
@@ -56,11 +56,14 @@ export function PersonalInformationForm() {
 								void form.setFieldTouched('salutation', true);
 							}}
 							id="field-salutation"
-							_label="Anrede"
+							_label="Salutation"
 							_value={[field.value]}
-							_error={form.errors.salutation || ''}
+							_msg={{
+								_type: 'error',
+								_description: form.errors.salutation || '',
+							}}
 							_touched={form.touched.salutation}
-							_options={[{ label: 'Bitte wählen…', value: '' }, ...SALUTATION_OPTIONS]}
+							_options={[{ label: 'Please select…', value: '' }, ...SALUTATION_OPTIONS]}
 							_required
 							_on={{
 								onChange: (event, values: unknown) => {
@@ -74,7 +77,7 @@ export function PersonalInformationForm() {
 					)}
 				</Field>
 
-				{form.values.salutation === 'Firma' && (
+				{form.values.salutation === 'Company' && (
 					<Field name="company">
 						{({ field }: FieldProps<FormValues['company']>) => (
 							<div className="block mt-2">
@@ -83,9 +86,12 @@ export function PersonalInformationForm() {
 										void form.setFieldTouched('company', true);
 									}}
 									id="field-company"
-									_label="Firma"
+									_label="Company"
 									_value={field.value}
-									_error={form.errors.company || ''}
+									_msg={{
+										_type: 'error',
+										_description: form.errors.company || '',
+									}}
 									_touched={form.touched.company}
 									_required
 									_on={{
@@ -109,9 +115,12 @@ export function PersonalInformationForm() {
 									void form.setFieldTouched('name', true);
 								}}
 								id="field-name"
-								_label="Vor- und Zuname"
+								_label="First name and surname"
 								_value={field.value}
-								_error={form.errors.name || ''}
+								_msg={{
+									_type: 'error',
+									_description: form.errors.name || '',
+								}}
 								_touched={form.touched.name}
 								_required
 								_on={{
@@ -136,7 +145,10 @@ export function PersonalInformationForm() {
 								id="field-email"
 								_label="E-Mail"
 								_value={field.value}
-								_error={form.errors.email || ''}
+								_msg={{
+									_type: 'error',
+									_description: form.errors.email || '',
+								}}
 								_touched={form.touched.email}
 								_required
 								_on={{
@@ -157,9 +169,12 @@ export function PersonalInformationForm() {
 							<KolInputText
 								id="field-phone"
 								_type="tel"
-								_label="Telefonnumer"
+								_label="Telephone number"
 								_value={field.value}
-								_error={form.errors.phone || ''}
+								_msg={{
+									_type: 'error',
+									_description: form.errors.phone || '',
+								}}
 								_touched={form.touched.phone}
 								_on={{
 									onChange: (event, value: unknown) => {
@@ -174,7 +189,7 @@ export function PersonalInformationForm() {
 					)}
 				</Field>
 
-				<KolButton _label="Weiter" _type="submit" className="mt-2" />
+				<KolButton _label="Next" _type="submit" className="mt-2" />
 			</KolForm>
 		</div>
 	);

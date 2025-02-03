@@ -1,0 +1,24 @@
+@import '../components/@shared/mixins';
+@import '../components/host-display-block';
+@import '../components/tooltip/style';
+
+@mixin kol-alert {
+	@layer kol-component {
+		.kol-alert {
+			display: grid;
+
+			&__container {
+				place-items: center;
+				display: flex;
+			}
+			&__container-content {
+				flex-grow: 1;
+			}
+
+			&__close-button {
+				/* Visible with forced colors */
+				outline: transparent solid rem(1);
+			}
+		}
+	}
+}

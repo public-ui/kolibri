@@ -8,11 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const InputColorBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier sind verschiedene Formular-Felder mit Farben angezeigt. Links mit Label, Rechts nur nach anklicken mit Label. Die Farben können verändert werden.
-				Die Buttons unten haben keine direkte Funktion. Sie können angeklickt werden.{' '}
-			</p>
+			<p>KolInputColor renders a color input. The sample shows KolInputColor in a form context with all variations and states.</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={InputColorVariants} />
 	</>
 );

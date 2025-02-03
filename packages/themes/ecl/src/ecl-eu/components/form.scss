@@ -1,0 +1,28 @@
+@import '../mixins/alert-wc';
+@import '../mixins/indented-text';
+@import '../mixins/link';
+
+@layer kol-theme-component {
+	@include kol-link('kol-link');
+	@include kol-alert-theme;
+
+	.kol-form {
+		font-family: var(--font-family);
+		width: 100%;
+
+		&__link {
+			display: inline-block;
+		}
+
+		&__mandatory-fields-hint {
+			@include indented-text;
+		}
+
+		&__alert {
+			.kol-alert__heading {
+				display: flex;
+				place-items: center;
+			}
+		}
+	}
+}

@@ -1,5 +1,5 @@
-import type { InputRangeProps, InputRangeWatches, InputTypeOnOff, SuggestionsPropType } from '@public-ui/schema';
-import { validateSuggestions, watchNumber, watchValidator } from '@public-ui/schema';
+import type { InputRangeProps, InputRangeWatches, InputTypeOnOff, SuggestionsPropType } from '../../schema';
+import { validateSuggestions, watchNumber, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -40,6 +40,7 @@ export class InputRangeController extends InputIconController implements InputRa
 
 	public validateValue(value?: number): void {
 		watchNumber(this.component, '_value', value);
+		this.component._value = value;
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 

@@ -1,41 +1,24 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolInputColorTag } from '../../../core/component-names';
+import type { InputColorProps } from '../../../schema';
+import { executeInputSnapshotTests } from '../../../utils/testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
+import { KolInputColor } from '../shadow';
 
-import { getInputColorHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { InputColorProps } from '@public-ui/schema';
-import { KolInputColor } from '../component';
-
-executeTests<InputColorProps>(
-	'InputColor',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolInputColor],
-			template: () => <kol-input-color {...props} />,
-		});
-		return page;
-	},
+executeInputSnapshotTests<InputColorProps>(
+	KolInputColorTag,
+	[KolInputColor],
 	{
-		_label: ['Label'],
-		_hideLabel: [true, false],
-		_disabled: [true, false],
-		_alert: [true, false],
-		_icons: [[{ left: 'codicon codicon-home' }]],
-		_touched: [true, false],
-		_smartButton: [
-			{
-				_icons: ['codicon codicon-eye'],
-				_hideLabel: true,
-				_label: 'einblenden',
-			},
-		],
+		_value: '#FFF',
 	},
-	getInputColorHtml,
+	{ hasSmartButton: true },
+);
+
+executeInputSnapshotTests<InputColorProps>(
+	KolInputColorTag,
+	[KolInputColor],
 	{
-		execMode: 'default', // ready
-		needTimers: true,
+		_value: '#FFF',
+		_suggestions: ['#F00', '#0F0', '#00F'],
 	},
+	{ hasSmartButton: true },
 );

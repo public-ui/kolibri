@@ -1,17 +1,24 @@
 import React from 'react';
-import { KolNav } from '@public-ui/react';
+import { KolHeading, KolNav } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
-import { LINKS } from './links';
+import { LINKS, LINKS_WITHOUT_SUBMENU } from './links';
 
 import type { FC } from 'react';
 export const NavHorizontal: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier ist ein Beispiel für eine horizontale Navigation. Durch anklicken des rechten + Symbols kann die Navigation erweitert und Untermenüs geöffnet
-				werden.
-			</p>
+			<p>This sample shows KolNav with horizontal alignment.</p>
 		</SampleDescription>
-		<KolNav _label="Main navigation" _links={LINKS} _orientation="horizontal" />
+
+		<section className="grid gap-8">
+			<section className="grid gap-4">
+				<KolHeading _level={2} _label="Navigation without submenu" />
+				<KolNav _label="Navigation without submenu" _links={LINKS_WITHOUT_SUBMENU} _orientation="horizontal" />
+			</section>
+			<section className="grid gap-4">
+				<KolHeading _level={2} _label="Navigation with submenu" />
+				<KolNav _label="Navigation with submenu" _links={LINKS} _orientation="horizontal" />
+			</section>
+		</section>
 	</>
 );

@@ -1,21 +1,24 @@
 name: Definition of Done
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, edited, synchronize]
 
 concurrency:
-  group: ci-pr-{{ github.event.number }}
+  group: 'pr-${{ github.event.pull_request.number }}'
   cancel-in-progress: true
 
 jobs:
   check-dod:
-    if: contains(github.actor, 'dependabot') == false
     runs-on: ubuntu-20.04
     steps:
+      - name: Print Pull Request ID
+        run: |
+          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
       - name: Clone Repo
         uses: actions/checkout@v3
       - name: Check DoD
         uses: platisd/definition-of-done@master
         with:
           dod_yaml: '.github/dod.yml'
+          message_header: 'The A11y and PO reviews will only take place after all other DoD steps have been completed by the Developer:'
           github_token: ${{ secrets.GITHUB_TOKEN }}

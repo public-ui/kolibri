@@ -1,5 +1,5 @@
-import type { NamePropType, PropSyncValueBySelector, StencilUnknown, SyncValueBySelectorPropType } from '@public-ui/schema';
-import { devHint, devWarning, getExperimentalMode, validateName } from '@public-ui/schema';
+import type { NamePropType, PropSyncValueBySelector, StencilUnknown, SyncValueBySelectorPropType } from '../../schema';
+import { devHint, devWarning, getExperimentalMode, validateName } from '../../schema';
 
 import type { Generic } from 'adopted-style-sheets';
 
@@ -16,6 +16,7 @@ type HTMLInputFileElement = HTMLInputElement & {
 
 const isAssociatedTagName = (name?: string): boolean =>
 	name === 'KOL-BUTTON' ||
+	name === 'KOL-COMBOBOX' ||
 	name === 'KOL-INPUT-CHECKBOX' ||
 	name === 'KOL-INPUT-COLOR' ||
 	name === 'KOL-INPUT-DATE' ||
@@ -27,6 +28,7 @@ const isAssociatedTagName = (name?: string): boolean =>
 	name === 'KOL-INPUT-RANGE' ||
 	name === 'KOL-INPUT-TEXT' ||
 	name === 'KOL-SELECT' ||
+	name === 'KOL-SINGLE-SELECT' ||
 	name === 'KOL-TEXTAREA';
 
 export class AssociatedInputController implements Watches {
@@ -44,7 +46,7 @@ export class AssociatedInputController implements Watches {
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
 
-		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName)) {
+		if (this.experimentalMode && isAssociatedTagName(this.host?.tagName) && component._name) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
 				this.host?.removeChild(el);
 			});
@@ -69,12 +71,13 @@ export class AssociatedInputController implements Watches {
 				case 'textarea':
 					this.formAssociated = document.createElement('textarea');
 					break;
-				case 'checkbox': // Checkbox use default case
+				case 'checkbox': // Checkbox uses default case
+				case 'single-select': // SingleSelect uses default case
+				case 'combobox': // Combobox uses default case
 				default:
 					this.formAssociated = document.createElement('input');
 					this.formAssociated.setAttribute('type', 'hidden');
 			}
-			this.formAssociated.setAttribute('aria-hidden', 'true');
 			this.formAssociated.setAttribute('data-form-associated', '');
 			this.formAssociated.setAttribute('hidden', '');
 			this.host?.appendChild(this.formAssociated);
@@ -169,6 +172,13 @@ export class AssociatedInputController implements Watches {
 						});
 					}
 					break;
+				case 'radio':
+					if (typeof strValue === 'string') {
+						associatedElement.setAttribute('value', strValue);
+						associatedElement.setAttribute('checked', '');
+						associatedElement.value = strValue;
+					}
+					break;
 				default:
 					if (typeof strValue === 'string') {
 						associatedElement.setAttribute('value', strValue);
@@ -191,7 +201,7 @@ export class AssociatedInputController implements Watches {
 		});
 		if (typeof value === 'undefined') {
 			devHint(
-				`Ein Name am Eingabefeldern oder Schalter ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion und für das statische Versenden des Eingabefeldes relevant sein.`,
+				`A name on input fields or switches is not strictly required, but it might be relevant for the autocomplete function and for the static submission of the input field.`,
 			);
 		}
 	}

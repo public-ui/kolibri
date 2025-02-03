@@ -1,0 +1,26 @@
+@mixin kol-input-container-theme {
+	.kol-input-container {
+		min-height: rem(44);
+		border: rem(1) solid var(--color-grey-75);
+		color: var(--color-grey);
+		order: 4;
+		align-items: center;
+		padding: rem(1) 0.5em;
+
+		&:focus-within {
+			box-shadow:
+				inset rem(1) rem(1) var(--color-blue),
+				inset rem(-1) rem(-1) var(--color-blue);
+			outline: none;
+		}
+
+		&:focus-within,
+		&:hover {
+			border-color: var(--color-blue);
+		}
+
+		&#{&}--error {
+			border-color: var(--color-red);
+		}
+	}
+}

@@ -1,43 +1,10 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolInputDateTag } from '../../../core/component-names';
+import type { InputDateProps } from '../../../schema';
+import { executeInputSnapshotTests } from '../../../utils/testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
+import { KolInputDate } from '../shadow';
 
-import { getInputDateHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { InputDateProps } from '@public-ui/schema';
-import { KolInputDate } from '../component';
-
-executeTests<InputDateProps>(
-	'InputDate',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolInputDate],
-			template: () => <kol-input-date {...props} />,
-		});
-		return page;
-	},
-	{
-		_label: ['Label'],
-		_hideLabel: [true, false],
-		_disabled: [true, false],
-		_alert: [true, false],
-		_readOnly: [true, false],
-		_msg: [{ _type: 'error', _description: 'Error message' }],
-		_required: [true, false],
-		_touched: [true, false],
-		_smartButton: [
-			{
-				_icons: ['codicon codicon-eye'],
-				_hideLabel: true,
-				_label: 'einblenden',
-			},
-		],
-	},
-	getInputDateHtml,
-	{
-		execMode: 'default', // ready
-		needTimers: true,
-	},
-);
+executeInputSnapshotTests<InputDateProps>(KolInputDateTag, [KolInputDate], {
+	_value: '2025-01-01',
+	// _suggestions: [ ]
+});

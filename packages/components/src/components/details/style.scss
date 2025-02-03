@@ -1,37 +1,31 @@
-@import '../style';
+@import '../@shared/mixins';
+@import '../../styles/global';
 @import '../host-display-block';
+@import '../../functional-components/Collapsible/collapsible';
 
 @layer kol-component {
-	details {
-		display: grid;
-	}
+	.kol-details {
+		font-size: rem(16);
 
-	details > summary {
-		cursor: pointer;
-		display: flex;
-		place-items: center;
-	}
+		&__heading-button {
+			display: flex;
 
-	details > summary > span {
-		border-bottom-color: grey;
-		border-bottom-style: solid;
-	}
+			.kol-button {
+				min-height: auto;
 
-	details > summary:focus > span,
-	details > summary:hover > span,
-	details[open] > summary > span {
-		border-bottom-color: #000;
-	}
+				.kol-span {
+					&__label {
+						border-bottom-color: grey;
+						border-bottom-style: solid;
+					}
+				}
+			}
+		}
 
-	.content {
-		overflow: hidden;
-	}
-
-	details > .kol-indented-text {
-		margin: 0.25em 0 0 0.5em;
-	}
-
-	.icon.is-open::part(icon) {
-		transform: rotate(90deg);
+		.collapsible--open &__heading-button {
+			.kol-icon::part(icon) {
+				transform: rotate(90deg);
+			}
+		}
 	}
 }

@@ -1,26 +1,19 @@
-@layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-	:host progress,
-	:host span {
-		display: block;
-		height: 0px;
-		overflow: hidden;
-		width: 0px;
-	}
-	:host svg line:first-child,
-	:host svg circle:first-child {
-		fill: transparent;
-		stroke: var(--color-mute-variant);
-	}
-	:host svg line:last-child,
-	:host svg circle:last-child {
-		fill: transparent;
-		stroke: var(--color-primary);
-	}
+@import '../mixins/rem';
 
-	.cycle .progress {
-		stroke: var(--color-primary-variant);
+@layer kol-theme-component {
+	.kol-progress {
+		font-family: var(--font-family);
+
+		&__bar-progress {
+			fill: var(--color-primary-variant);
+		}
+
+		&__cycle-background {
+			stroke: var(--color-mute-variant);
+		}
+
+		&__cycle-progress {
+			stroke: var(--color-primary-variant);
+		}
 	}
 }

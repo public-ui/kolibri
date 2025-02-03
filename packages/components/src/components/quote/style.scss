@@ -1,31 +1,44 @@
-@import '../style';
+@import '../@shared/mixins';
+@import '../../styles/global';
 
 @layer kol-component {
-	cite,
-	figure,
-	q + figcaption {
+	.kol-quote {
+		$root: &;
+		font-size: rem(16);
 		display: inline;
 		margin: 0;
 		padding: 0;
-	}
 
-	blockquote:before {
-		content: open-quote;
-	}
+		&__cite {
+			&::before {
+				content: '—';
 
-	blockquote::after {
-		content: close-quote;
-	}
+				@at-root #{$root}--block & {
+					padding-right: 0.5em;
+				}
 
-	cite:before {
-		content: '—';
-	}
+				@at-root #{$root}--inline & {
+					padding: 0.5em;
+				}
+			}
+		}
 
-	.block cite:before {
-		padding-right: 0.5em;
-	}
+		&__figcaption {
+			@at-root #{$root}--block & {
+				display: inline;
+				margin: 0;
+				padding: 0;
+			}
+		}
 
-	.inline cite:before {
-		padding: 0.5em;
+		&__blockquote {
+			&::before {
+				content: open-quote;
+			}
+
+			&::after {
+				content: close-quote;
+			}
+		}
 	}
 }

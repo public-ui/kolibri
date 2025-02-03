@@ -1,12 +1,12 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "2.0.14",
+	"version": "3.0.0-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/public-ui/kolibri"
-  },
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -21,26 +21,26 @@
 	"scripts": {
 		"format": "prettier --check src",
 		"lint": "eslint src",
-		"unused": "knip"
+		"unused": "knip",
+		"postinstall": "pnpm exec playwright install"
 	},
 	"bin": {
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@playwright/test": "1.43.1",
-		"@public-ui/sample-react": "2.0.14",
-		"axe-playwright": "2.0.1",
+		"@playwright/test": "1.49.1",
+		"@public-ui/sample-react": "workspace:*",
+		"axe-playwright": "2.0.3",
 		"portfinder": "1.0.32",
-		"serve": "14.2.1"
+		"serve": "14.2.4"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "7.24.1",
-		"@babel/plugin-syntax-import-attributes": "7.24.1",
-		"@babel/preset-env": "7.24.4",
-		"eslint": "8.57.0",
-		"eslint-plugin-no-loops": "0.3.0",
-		"knip": "5.9.4",
-		"prettier": "3.2.5"
+		"@babel/eslint-parser": "7.25.9",
+		"@babel/plugin-syntax-import-attributes": "7.26.0",
+		"@babel/preset-env": "7.26.7",
+		"eslint": "8.57.1",
+		"knip": "5.40.0",
+		"prettier": "3.4.2"
 	},
 	"files": [
 		"playwright.config.js",

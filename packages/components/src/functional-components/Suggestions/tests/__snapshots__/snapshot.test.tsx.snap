@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SuggestionsFc should render correctly 1`] = `<datalist id="test-id-list"></datalist>`;
+
+exports[`SuggestionsFc should render with suggestions 1`] = `
+<datalist id="test-id-list">
+  <option value="Option 1"></option>
+  <option value="Option 2"></option>
+</datalist>
+`;

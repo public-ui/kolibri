@@ -1,22 +1,17 @@
-@import '../input-line';
-@import '../@shared/kol-alert-mixin.scss';
+@import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
+@import '../../styles/kol-input-mixin';
+@import '../@shared/mixins';
 
-@include kol-alert-styles;
+@include kol-alert;
+@include kol-form-field;
+@include kol-input-container;
+@include kol-input;
 
 @layer kol-component {
-	label input[type='file']::-webkit-file-upload-button {
-		display: none;
-	}
-
-	label input[type='file']:before {
-		content: 'Datei auswählen';
-	}
-
-	label input[multiple]:before {
-		content: 'Dateien auswählen';
-	}
-
-	div.input {
-		cursor: pointer;
+	.kol-input {
+		padding: calc((var(--a11y-min-size) - rem(16)) / 10) 0.5em;
 	}
 }

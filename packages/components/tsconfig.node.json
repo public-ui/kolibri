@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"allowUnreachableCode": false,
+		"declaration": false,
+		"experimentalDecorators": true,
+		"lib": ["ES2017"],
+		"moduleResolution": "node",
+		"module": "ESNext",
+		"target": "ES2017",
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"jsx": "react",
+		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment",
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"removeComments": true,
+		"typeRoots": ["node_modules/@types"],
+		"strict": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true
+	},
+	"include": [".eslintrc.js", "playwright.config.ts", "stencil.config.ts", "test-env.js", "scripts/vaadin.js"],
+	"exclude": ["node_modules"]
+}

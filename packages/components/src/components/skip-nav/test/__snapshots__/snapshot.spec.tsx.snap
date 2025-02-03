@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https://example.com","_label":"Zum Anfang"},{"_href":"https://example.com","_label":"Zum Formular"},{"_href":"https://example.com","_label":"Zum Ende"}] 1`] = `
+<kol-skip-nav>
+  <template shadowrootmode="open">
+    <nav aria-label="Label" class="kol-skip-nav">
+      <ul class="kol-skip-nav__list">
+        <li class="kol-skip-nav__list-item">
+          <kol-link-wc _href="https://example.com" _label="Zum Anfang"></kol-link-wc>
+        </li>
+        <li class="kol-skip-nav__list-item">
+          <kol-link-wc _href="https://example.com" _label="Zum Formular"></kol-link-wc>
+        </li>
+        <li class="kol-skip-nav__list-item">
+          <kol-link-wc _href="https://example.com" _label="Zum Ende"></kol-link-wc>
+        </li>
+      </ul>
+    </nav>
+  </template>
+</kol-skip-nav>
+`;

@@ -1,28 +1,7 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolVersionTag } from '../../../core/component-names';
+import type { VersionProps } from '../../../schema';
+import { executeSnapshotTests } from '../../../utils/testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
+import { KolVersion } from '../shadow';
 
-import { getVersionHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { VersionProps } from '@public-ui/schema';
-import { KolVersion } from '../component';
-
-executeTests<VersionProps>(
-	'Version',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolVersion],
-			template: () => <kol-version {...props} />,
-		});
-		return page;
-	},
-	{
-		_label: ['1.0.0'],
-	},
-	(props) => getVersionHtml(props),
-	{
-		execMode: 'default', // ready
-	},
-);
+executeSnapshotTests<VersionProps>(KolVersionTag, [KolVersion], [{ _label: '1.0.0' }]);

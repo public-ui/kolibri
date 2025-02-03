@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { handleSlotContent, type MsgPropType, showExpertSlot } from '@public-ui/schema';
+import { convertMsgToInternMsg, handleSlotContent, type MsgPropType, type ShortKeyPropType, showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
 import clsx from 'clsx';
@@ -18,10 +18,10 @@ import type {
 	SuggestionsPropType,
 	TooltipAlignPropType,
 	W3CInputValue,
-} from '@public-ui/schema';
-import { FormFieldMsg } from '../@shared/form-field-msg';
+} from '../../schema';
 import type { Props } from './types';
 import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolFormFieldMsgFc } from '../../functional-components';
 
 /**
  * @internal
@@ -30,7 +30,7 @@ import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/componen
 	tag: 'kol-input',
 	shadow: false,
 })
-export class KolInput implements Props {
+export class KolInputWc implements Props {
 	@Element() private readonly host?: HTMLElement;
 
 	private slotName: string = 'input';
@@ -48,25 +48,39 @@ export class KolInput implements Props {
 	}
 
 	public render(): JSX.Element {
-		const isMessageValidError = Boolean(this._msg?._type === 'error' && this._msg._description && this._msg._description?.length > 0);
-		const hasError = !this._readOnly && isMessageValidError && this._touched === true;
-		const showFormFieldMsg = Boolean(hasError || (this._msg?._type !== 'error' && this._msg?._description));
+		/**
+		 * We support 5 types of messages:
+		 * - default
+		 * - info
+		 * - success
+		 * - warning
+		 * - error
+		 *
+		 * The message is shown if:
+		 * - the message text is not an empty string
+		 * - we show only one message at a time
+		 * - by error messages the input must be touched
+		 */
+		const hasValidMsg =
+			typeof this._msg === 'object' && this._msg !== null && typeof this._msg?._description === 'string' && this._msg?._description.length > 0;
+		const showMsg = hasValidMsg && (this._touched === true || this._msg?._type !== 'error');
+
 		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
-		const useTooltopInsteadOfLabel = !hasExpertSlot && this._hideLabel;
+		const useTooltipInsteadOfLabel = !hasExpertSlot && this._hideLabel;
 
 		return (
 			<Host
-				class={clsx('kol-input', this.getModifierClassNameByMsgType(), {
+				class={clsx('kol-input', this.getModifierClassNameByMsgType(showMsg), {
 					disabled: this._disabled === true,
-					error: hasError === true,
+					[this._msg?._type || 'error']: showMsg === true,
 					'read-only': this._readOnly === true,
 					required: this._required === true,
 					touched: this._touched === true,
 					'hidden-error': this._hideError === true,
 				})}
 			>
-				<label class="input-label" id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltopInsteadOfLabel} htmlFor={this._id}>
+				<label class="input-label" id={!useTooltipInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltipInsteadOfLabel} htmlFor={this._id}>
 					{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 					<span class="input-label-span">
 						{/* INFO: label comes with any html tag or as plain text! */}
@@ -106,7 +120,7 @@ export class KolInput implements Props {
 						<KolIconTag _label="" _icons={(this._icons?.right as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.right)}></KolIconTag>
 					)}
 				</div>
-				{useTooltopInsteadOfLabel && (
+				{useTooltipInsteadOfLabel && (
 					<KolTooltipWcTag
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
@@ -114,13 +128,13 @@ export class KolInput implements Props {
 						 */
 						aria-hidden="true"
 						class="input-tooltip"
-						_accessKey={this._accessKey}
+						_badgeText={this._accessKey || this._shortKey}
 						_align={this._tooltipAlign}
 						_id={this._hideLabel ? `${this._id}-label` : undefined}
 						_label={this._label}
 					></KolTooltipWcTag>
 				)}
-				{showFormFieldMsg && <FormFieldMsg _alert={this._alert} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
+				{showMsg && <KolFormFieldMsgFc alert={this._alert} hideError={this._hideError} msg={convertMsgToInternMsg(this._msg)} id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (
@@ -129,7 +143,7 @@ export class KolInput implements Props {
 					</datalist>
 				)}
 				{this._hasCounter && (
-					<span class="counter" aria-atomic="true" aria-live="polite">
+					<span class="counter" aria-atomic="true" aria-live="polite" data-testid="input-counter">
 						{this._currentLength}
 						{this._maxLength && (
 							<>
@@ -147,7 +161,7 @@ export class KolInput implements Props {
 	}
 
 	/**
-	 * Defines the elements access key.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -235,6 +249,11 @@ export class KolInput implements Props {
 	@Prop() public _required?: boolean = false;
 
 	/**
+	 * Adds a visual short key hint to the component.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	/**
 	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines Shadow DOMs existieren würden.
 	 * @internal
 	 */
@@ -261,8 +280,8 @@ export class KolInput implements Props {
 	 */
 	@Prop() public _touched?: boolean = false;
 
-	private getModifierClassNameByMsgType() {
-		if (this._msg?._type) {
+	private getModifierClassNameByMsgType(showMsg: boolean) {
+		if (showMsg && this._msg?._type) {
 			return {
 				default: 'msg-type-default',
 				info: 'msg-type-info',

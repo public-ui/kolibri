@@ -1,13 +1,15 @@
+@import 'mixins/rem';
+
 @layer kol-theme-global {
 	:host {
-		--border-radius: var(--kolibri-border-radius, 5px);
-		--font-family: var(--kolibri-font-family, BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif);
-		--font-size: var(--kolibri-font-size, 16px);
-		--spacing: var(--kolibri-spacing, 0.25rem);
-		--border-width: var(--kolibri-border-width, 1px);
+		--border-radius: var(--kolibri-border-radius, #{rem(5)});
+		--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
+		--font-size: var(--kolibri-font-size, #{rem(16)});
+		--spacing: var(--kolibri-spacing, #{rem(4)});
+		--border-width: var(--kolibri-border-width, #{rem(1)});
 		--color-primary: var(--kolibri-color-primary, #004b76);
 		--color-primary-variant: var(--kolibri-color-primary-variant, #0077b6);
-		--color-danger: var(--kolibri-color-danger, #c0003c);
+		--color-danger: var(--kolibri-color-danger, #b4003c);
 		--color-warning: var(--kolibri-color-warning, #c44931);
 		--color-success: var(--kolibri-color-success, #005c45);
 		--color-subtle: var(--kolibri-color-subtle, #576164);
@@ -15,11 +17,6 @@
 		--color-text: var(--kolibri-color-text, #202020);
 		--color-mute: var(--kolibri-color-mute, #f2f3f4);
 		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
-	}
-
-	:host {
-		/* Reset global background-color defined by components */
-		background-color: transparent;
 	}
 
 	* {
@@ -42,38 +39,38 @@
 	summary:focus {
 		cursor: pointer;
 		outline-color: var(--color-primary-variant);
-		outline-offset: 2px;
+		outline-offset: rem(2);
 		outline-style: solid;
-		outline-width: 3px;
+		outline-width: rem(3);
 		transition: outline-offset 0.2s linear;
 	}
 
-	.kol-heading-wc {
+	.kol-headline {
 		font-weight: 700;
 	}
 
-	.kol-tooltip-wc .tooltip-floating {
-		border: var(--border-width) solid var(--color-subtle);
-		border-radius: var(--border-radius);
+	.kol-tooltip {
+		&__floating {
+			border: var(--border-width) solid var(--color-subtle);
+			border-radius: var(--border-radius);
+		}
+
+		&__arrow {
+			background-color: var(--color-light);
+			border: var(--border-width) solid var(--color-subtle);
+		}
+
+		&__content {
+			background-color: var(--color-light);
+			border-radius: var(--border-radius);
+			line-height: 1.5;
+			padding: rem(8) rem(12);
+		}
 	}
 
-	.kol-tooltip-wc .tooltip-arrow {
-		border: var(--border-width) solid var(--color-subtle);
-	}
-
-	.kol-tooltip-wc .tooltip-area {
-		background-color: var(--color-light);
-	}
-
-	.kol-tooltip-wc .tooltip-content {
-		border-radius: var(--border-radius);
-		line-height: 1.5;
-		padding: 0.5rem 0.75rem;
-	}
-
-	.kol-span-wc,
-	.kol-span-wc > span {
-		gap: 0.5rem;
+	.kol-span,
+	.kol-span__container {
+		gap: rem(8);
 	}
 
 	@keyframes spin {

@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _active=false 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <kol-tree-item-wc>
+      <!---->
+      <li class="kol-tree-item" style="--level: 0;">
+        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
+          <span slot="expert">
+            Label
+          </span>
+        </kol-link-wc>
+        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+          <slot></slot>
+        </ul>
+      </li>
+    </kol-tree-item-wc>
+  </template>
+</kol-tree-item>
+`;
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _active=true 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <kol-tree-item-wc>
+      <!---->
+      <li class="kol-tree-item" style="--level: 0;">
+        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="0" class="kol-tree-item__link kol-tree-item__link--active kol-tree-item__link--first-level">
+          <span slot="expert">
+            Label
+          </span>
+        </kol-link-wc>
+        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+          <slot></slot>
+        </ul>
+      </li>
+    </kol-tree-item-wc>
+  </template>
+</kol-tree-item>
+`;
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _open=false 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <kol-tree-item-wc>
+      <!---->
+      <li class="kol-tree-item" style="--level: 0;">
+        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
+          <span slot="expert">
+            Label
+          </span>
+        </kol-link-wc>
+        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+          <slot></slot>
+        </ul>
+      </li>
+    </kol-tree-item-wc>
+  </template>
+</kol-tree-item>
+`;
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _open=true 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <kol-tree-item-wc>
+      <!---->
+      <li class="kol-tree-item" style="--level: 0;">
+        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
+          <span slot="expert">
+            Label
+          </span>
+        </kol-link-wc>
+        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+          <slot></slot>
+        </ul>
+      </li>
+    </kol-tree-item-wc>
+  </template>
+</kol-tree-item>
+`;
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <kol-tree-item-wc>
+      <!---->
+      <li class="kol-tree-item" style="--level: 0;">
+        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
+          <span slot="expert">
+            Label
+          </span>
+        </kol-link-wc>
+        <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+          <slot></slot>
+        </ul>
+      </li>
+    </kol-tree-item-wc>
+  </template>
+</kol-tree-item>
+`;

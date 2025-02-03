@@ -1,5 +1,13 @@
 # KoliBri - CLI-Tools
 
+[![npm](https://img.shields.io/npm/v/@public-ui/kolibri-cli)](https://www.npmjs.com/package/@public-ui/components)
+[![license](https://img.shields.io/npm/l/@public-ui/kolibri-cli)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![downloads](https://img.shields.io/npm/dt/@public-ui/kolibri-cli)](https://www.npmjs.com/package/@public-ui/kolibri-cli)
+[![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
+[![size](https://img.shields.io/bundlephobia/min/@public-ui/kolibri-cli)](https://bundlephobia.com/result?p=@public-ui/kolibri-cli)
+![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
+
 ## Motivation
 
 The `KoliBri` CLI-Tools are a collection of tools to support the development with `KoliBri` components.
@@ -39,9 +47,18 @@ Options:
   -h, --help                  display help for command
 
 Commands:
+  info						  Shows the system and KoliBri package information
   migrate [options] <string>  This command migrates KoliBri code to the current version.
   help [command]              display help for command
 ```
+
+### Info
+
+With the `info` command you can show the current system and KoliBri package information.
+
+This command is mainly needed for our bug issue templates.
+If errors occur in our packages, we would like to ask you to create an issue under the following link:
+[Submit report](https://github.com/public-ui/kolibri/issues/new/choose)
 
 ### Migrate
 

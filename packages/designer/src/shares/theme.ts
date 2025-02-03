@@ -27,8 +27,14 @@ export const restoreThemes = () => {
 	}
 };
 
-export const storeThemes = () => {
-	if (window.A11yUi?.Themes && typeof window.A11yUi?.Themes === 'object') {
-		sessionStorage.setItem('kolibri-themes', JSON.stringify(window.A11yUi.Themes));
-	}
+export const storeThemeChange = (theme: string, tagName: string, css: string) => {
+	let store = JSON.parse(sessionStorage.getItem('kolibri-themes') || '{}') as Record<string, Record<string, string>>;
+	store = {
+		...store,
+		[theme]: {
+			...store[theme],
+			[tagName]: css,
+		},
+	};
+	sessionStorage.setItem('kolibri-themes', JSON.stringify(store));
 };

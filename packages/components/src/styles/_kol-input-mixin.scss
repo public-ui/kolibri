@@ -1,0 +1,14 @@
+@mixin kol-input {
+	@layer kol-component {
+		.kol-input {
+			font-size: rem(16);
+			height: rem(44);
+			min-width: var(--a11y-min-size);
+			width: 100%;
+
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+}

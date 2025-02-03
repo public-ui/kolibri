@@ -1,35 +1,39 @@
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonProps,
 	ButtonTypePropType,
 	ButtonVariantPropType,
 	CustomClassPropType,
+	FocusableElement,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
+	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
-import { propagateFocus } from '@public-ui/schema';
-import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
+} from '../../schema';
+import type { JSX } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 
-import type { JSX } from '@stencil/core';
 @Component({
 	tag: 'kol-button',
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
-export class KolButton implements ButtonProps {
-	@Element() private readonly host?: HTMLKolButtonElement;
+export class KolButton implements ButtonProps, FocusableElement {
+	private buttonWcRef?: HTMLKolButtonWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		propagateFocus(this.host, ref);
+		this.buttonWcRef = ref;
 	};
 
 	@Method()
@@ -38,44 +42,44 @@ export class KolButton implements ButtonProps {
 		return this._value;
 	}
 
+	@Method()
+	public async kolFocus() {
+		await this.buttonWcRef?.kolFocus();
+	}
+
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-button">
-				<KolButtonWcTag
-					ref={this.catchRef}
-					class={{
-						button: true,
-						[this._variant as string]: this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
-					}}
-					_accessKey={this._accessKey}
-					_ariaControls={this._ariaControls}
-					_ariaExpanded={this._ariaExpanded}
-					_ariaSelected={this._ariaSelected}
-					_customClass={this._customClass}
-					_disabled={this._disabled}
-					_hideLabel={this._hideLabel}
-					_icons={this._icons}
-					_id={this._id}
-					_label={this._label}
-					_name={this._name}
-					_on={this._on}
-					_role={this._role}
-					_syncValueBySelector={this._syncValueBySelector}
-					_tabIndex={this._tabIndex}
-					_tooltipAlign={this._tooltipAlign}
-					_type={this._type}
-					_value={this._value}
-					_variant={this._variant}
-				>
-					<slot name="expert" slot="expert"></slot>
-				</KolButtonWcTag>
-			</Host>
+			<KolButtonWcTag
+				ref={this.catchRef}
+				_accessKey={this._accessKey}
+				_ariaControls={this._ariaControls}
+				_ariaDescription={this._ariaDescription}
+				_ariaExpanded={this._ariaExpanded}
+				_ariaSelected={this._ariaSelected}
+				_customClass={this._customClass}
+				_disabled={this._disabled}
+				_hideLabel={this._hideLabel}
+				_icons={this._icons}
+				_id={this._id}
+				_label={this._label}
+				_name={this._name}
+				_on={this._on}
+				_role={this._role}
+				_shortKey={this._shortKey}
+				_syncValueBySelector={this._syncValueBySelector}
+				_tabIndex={this._tabIndex}
+				_tooltipAlign={this._tooltipAlign}
+				_type={this._type}
+				_value={this._value}
+				_variant={this._variant}
+			>
+				<slot name="expert" slot="expert"></slot>
+			</KolButtonWcTag>
 		);
 	}
 
 	/**
-	 * Defines the elements access key.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -83,6 +87,11 @@ export class KolButton implements ButtonProps {
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -140,6 +149,11 @@ export class KolButton implements ButtonProps {
 	 * Defines the role of the components primary element.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+
+	/**
+	 * Adds a visual short key hint to the component.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.

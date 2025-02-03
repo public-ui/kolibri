@@ -4,9 +4,16 @@ We would love for you to contribute to **KoliBri**and help make it even better t
 
 - [Contributing](#contributing)
   - [Code of Conduct](#code-of-conduct)
-  - [Questions and Problems](#questions-and-problems)
-  - [Report bug](#report-bug)
+  - [Questions and problems](#questions-and-problems)
+  - [Report an error](#report-an-error)
   - [Further development](#further-development)
+    - [Git flow](#git-flow)
+    - [Developing](#developing)
+    - [Develop new component](#develop-new-component)
+    - [Switching between branches](#switching-between-branches)
+    - [Back porting to older Major-Versions](#back-porting-to-older-major-versions)
+    - [Snapshot Testing for Visual Changes](#snapshot-testing-for-visual-changes)
+      - [How to Update Snapshots](#how-to-update-snapshots)
 
 ## Code of Conduct
 
@@ -51,7 +58,8 @@ We work according to the Git flow: https://medium.com/android-news/gitflow-with-
 8. Install all packages with `pnpm i`
 9. Build all packages within the mono repository `pnpm -r build`
 10. Navigate to the desired package in our monorepo
-11. When you want to start the project navigate to `packages/components/` and run pnpm start
+11. When you want to start the project navigate to `packages/components/` and run `pnpm dev`
+12. To watch for changes navigate to `packages/samples/react/` and execute `pnpm start`. `http://localhost:8080/` will open automatically
 
 ### Develop new component
 
@@ -70,38 +78,40 @@ If it is also necessary to edit dependent packages such as `@public-ui/component
 
 ### Back porting to older Major-Versions
 
-By default, development is carried out in the `development` branch for the following version. However, if it becomes necessary to provide an issue for an older major release, such as version 1.7.x, the code change must also be merged into the corresponding release branch. In this case, it would be the `release/1.7` branch. It is important that the branch that was created from the `develop` is not merged into the release branch, as otherwise the next patch version will receive all the changes from the current development status.
-The simplest procedure is therefore to create a new branch from the release branch (e.g. `release/1.7`) and transfer the individual commits of the feature branch from the `develop` to the new branch using cherry-picking. This branch can then be merged into the release branch as normal with a new pull request.
+By default, development is carried out in the `development` branch for the following version. However, if it becomes necessary to provide an issue for an older major release, such as version 1.x.x, the code change must also be merged into the corresponding release branch. In this case, it would be the `release/1` branch. It is important that the branch that was created from the `develop` is not merged into the release branch, as otherwise the next patch version will receive all the changes from the current development status.
+The simplest procedure is therefore to create a new branch from the release branch (e.g. `release/1`) and transfer the individual commits of the feature branch from the `develop` to the new branch using cherry-picking. This branch can then be merged into the release branch as normal with a new pull request.
 
 ### Snapshot Testing for Visual Changes
 
 The Continuous Integration (CI) pipeline incorporates automated visual regression testing using the React sample app across all available themes.
 
 When introducing visual modifications to components, themes, or the React sample app, initial test failures are expected. To address this, the
-`update-snapshots` action on GitHub should be executed, followed by a **careful review** of the changes.
+`update-snapshots.yml` action on GitHub should be executed, followed by a **careful review** of the changes.
 
 #### How to Update Snapshots
 
-1. **GitHub website:**
+The following methods can be used to update the snapshots.
 
-   - Execute the `update-snapshots` action on GitHub.
-   - The action prompts for a branch selection.
-   - It checks out the specified branch, updates all snapshot files, and commits the changes to that branch.
+1. **GitHub website:** Update the snapshots directly on the GitHub website by following these steps.
 
-2. **Terminal Command:**
+- Navigate to the `Actions` tab in the `kolibri` repository.
+- Execute the `03 - Update Snapshots` action.
+- Select the desired branch in which you want to update the snapshots.
+- The workflow checks out the branch, updates all snapshot files, and commits the changes to that branch.
 
-   - For terminal convenience, the [GitHub CLI (gh)](https://cli.github.com/) needs to be installed.
-   - Run the following command within the project directory:
+2. **Terminal Command:** Use the [GitHub CLI (gh)](https://cli.github.com/) to run the `update-snapshots.yml` action from the local terminal. This method is recommended for updating snapshots on the current branch without navigating to the GitHub website. For terminal convenience, the [GitHub CLI (gh)](https://cli.github.com/) needs to be installed.
 
-     ```bash
-     # Replace $YOUR_BRANCH with the desired branch name
-     gh workflow run update-snapshots.yml -f target_branch=$YOUR_BRANCH
-     ```
-
-     Alternatively, to run the action on the current branch:
-
-     ```bash
-     gh workflow run update-snapshots.yml -f target_branch=`git rev-parse --abbrev-ref HEAD`
-     ```
+- Run the following command within the project directory to update the snapshots in your checked-out branch:
+  ```bash
+  gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD`
+  ```
+- If your want to delete all snapshots before regenerating them add `-f purge_snapshots=true` to the command:
+  ```bash
+  gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD` -f purge_snapshots=true
+  ```
+- You can also run the action on a different branch by specifying the another target branch with the `-r <branch_name>` flag. For example, to update snapshots on the `main` branch:
+  ```bash
+  gh workflow run update-snapshots.yml -r main
+  ```
 
 These steps ensure that visual snapshots are updated systematically, maintaining the integrity of the testing process.

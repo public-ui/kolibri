@@ -2,66 +2,75 @@ import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
+	AriaDescriptionPropType,
 	DownloadPropType,
+	FocusableElement,
 	HrefPropType,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
 	LinkProps,
 	LinkTargetPropType,
+	ShortKeyPropType,
 	Stringified,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
-import { propagateFocus } from '@public-ui/schema';
-import { Component, Element, h, Host, Prop } from '@stencil/core';
-
+} from '../../schema';
 import type { JSX } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
+
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
 		default: './style.scss',
 	},
-	shadow: true,
+	shadow: {
+		delegatesFocus: true,
+	},
 })
-export class KolLink implements LinkProps {
-	@Element() private readonly host?: HTMLKolLinkElement;
+export class KolLink implements LinkProps, FocusableElement {
+	private linkWcRef?: HTMLKolLinkWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
-		propagateFocus(this.host, ref);
+		this.linkWcRef = ref;
 	};
+
+	@Method()
+	public async kolFocus() {
+		await this.linkWcRef?.kolFocus();
+	}
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-link">
-				<KolLinkWcTag
-					ref={this.catchRef}
-					_accessKey={this._accessKey}
-					_ariaCurrentValue={this._ariaCurrentValue}
-					_disabled={this._disabled}
-					_download={this._download}
-					_hideLabel={this._hideLabel}
-					_href={this._href}
-					_icons={this._icons}
-					_label={this._label}
-					_on={this._on}
-					_role={this._role}
-					_tabIndex={this._tabIndex}
-					_target={this._target}
-					_tooltipAlign={this._tooltipAlign}
-				>
-					{/*
+			<KolLinkWcTag
+				ref={this.catchRef}
+				_accessKey={this._accessKey}
+				_ariaCurrentValue={this._ariaCurrentValue}
+				_ariaDescription={this._ariaDescription}
+				_disabled={this._disabled}
+				_download={this._download}
+				_hideLabel={this._hideLabel}
+				_href={this._href}
+				_icons={this._icons}
+				_label={this._label}
+				_on={this._on}
+				_role={this._role}
+				_shortKey={this._shortKey}
+				_tabIndex={this._tabIndex}
+				_target={this._target}
+				_tooltipAlign={this._tooltipAlign}
+			>
+				{/*
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
 						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
 					*/}
-					<slot name="expert" slot="expert"></slot>
-				</KolLinkWcTag>
-			</Host>
+				<slot name="expert" slot="expert"></slot>
+			</KolLinkWcTag>
 		);
 	}
 
 	/**
-	 * Defines the elements access key.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -69,6 +78,11 @@ export class KolLink implements LinkProps {
 	 * Defines the value for the aria-current attribute.
 	 */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -111,6 +125,11 @@ export class KolLink implements LinkProps {
 	 * Defines the role of the components primary element.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+
+	/**
+	 * Adds a visual short key hint to the component.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)

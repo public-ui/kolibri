@@ -1,0 +1,156 @@
+@import '../@shared/mixins';
+@import '../host-display-block';
+@import '../tooltip/style.scss';
+
+@mixin kol-table-stateless-styles {
+	@layer kol-component {
+		.kol-table {
+			display: block;
+			font-size: rem(16);
+
+			max-width: 100%;
+			overflow-x: auto;
+			overflow-y: hidden;
+
+			&__table {
+				width: 100%;
+			}
+
+			&__caption {
+				text-align: start;
+			}
+
+			&__focus-element {
+				font-size: 0;
+
+				&:focus {
+					outline: 0 !important;
+					/* @see https://remysharp.com/til/css/focus-ring-default-styles */
+					outline: rem(5) auto Highlight;
+					outline: rem(5) auto -webkit-focus-ring-color;
+					outline-offset: rem(2);
+				}
+			}
+
+			&__sort-button {
+				.kol-button {
+					color: inherit;
+				}
+			}
+
+			// headings in table body default to text-align left, unless defined otherwise.
+			&__body {
+				text-align: left;
+
+				.kol-button__text {
+					justify-items: start;
+				}
+			}
+
+			&__cell {
+				&--align-left {
+					text-align: left;
+
+					.kol-button__text {
+						justify-items: start;
+					}
+				}
+
+				&--align-center {
+					text-align: center;
+
+					& .kol-button__text {
+						justify-items: center;
+					}
+				}
+
+				&--align-right {
+					text-align: right;
+
+					.kol-button__text {
+						justify-items: end;
+					}
+				}
+			}
+
+			&__cell {
+				&--selection {
+					width: var(--a11y-min-size);
+					height: var(--a11y-min-size);
+					white-space: nowrap;
+				}
+			}
+
+			&__spacer {
+				display: none;
+			}
+
+			&__selection-label {
+				align-items: center;
+				cursor: pointer;
+				display: flex;
+				height: var(--a11y-min-size);
+				justify-content: center;
+				position: relative;
+				width: var(--a11y-min-size);
+			}
+
+			&__selection-icon {
+				display: block;
+				inset: auto;
+				position: absolute;
+				z-index: 1;
+			}
+
+			&__selection-input {
+				appearance: none;
+				border-style: solid;
+				cursor: pointer;
+				margin: 0;
+
+				&:before {
+					content: '';
+				}
+
+				&--checkbox {
+					position: relative;
+					display: flex;
+					height: calc(var(--a11y-min-size) / 2);
+					width: calc(var(--a11y-min-size) / 2);
+					align-items: center;
+					justify-content: center;
+					background-color: rgb(255, 255, 255);
+					border-width: rem(2);
+					line-height: 1.5;
+					transition: all 0.5s ease 0s;
+				}
+
+				&--radio {
+					display: flex;
+					border-width: rem(2);
+					border-radius: 100%;
+					height: 1.5em;
+					min-height: 1.5em;
+					min-width: 1.5em;
+					padding: 0;
+					width: 1.5em;
+
+					&:before {
+						border-radius: 100%;
+						margin: auto;
+						height: calc(1.5em / 2);
+						width: calc(1.5em / 2);
+					}
+
+					&:checked:before {
+						background-color: #000;
+						@media (forced-colors: active) {
+							/* Give it a visible background in forced colors mode */
+							background-color: selectedItem !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}

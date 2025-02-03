@@ -4,7 +4,7 @@
 		"allowUnreachableCode": false,
 		"declaration": false,
 		"experimentalDecorators": true,
-		"lib": ["dom", "dom.iterable", "ES2017"],
+		"lib": ["dom", "dom.iterable", "ES2017", "ESNext.Disposable"],
 		"moduleResolution": "node",
 		"module": "ESNext",
 		"target": "ES2017",
@@ -16,11 +16,10 @@
 		"forceConsistentCasingInFileNames": true,
 		"importHelpers": true,
 		"removeComments": true,
-		"types": ["node", "jest"],
 		"typeRoots": ["node_modules/@types"],
 		"strict": true,
 		"skipLibCheck": true
 	},
-	"include": ["declare.d.ts", "src"],
+	"include": ["src"],
 	"exclude": ["node_modules"]
 }

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KolIconFc should render correctly 1`] = `
+<kol-icon
+  _icons="test"
+  _label="test"
+/>
+`;
+
+exports[`KolIconFc should render with the correct class 1`] = `
+<kol-icon
+  _icons="test"
+  _label="test"
+  class="test-class"
+/>
+`;
+
+exports[`KolIconFc should render with the correct icons and label 1`] = `
+<kol-icon
+  _icons="test-icons"
+  _label="test-label"
+/>
+`;
+
+exports[`KolIconFc should render with the correct style 1`] = `
+<kol-icon
+  _icons="test"
+  _label="test"
+/>
+`;

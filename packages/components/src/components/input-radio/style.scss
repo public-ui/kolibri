@@ -1,23 +1,42 @@
-@import '../input';
-@import '../@shared/kol-alert-mixin.scss';
+@import '../@shared/mixins';
+@import '../../styles/global';
+@import '../host-display-block';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-field-control-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
 
-@include kol-alert-styles;
+@include kol-alert;
+@include kol-field-control;
+@include kol-form-field;
+@include kol-input-container;
 
 @layer kol-component {
-	:host {
-		--border-width: 2px;
+	.kol-form-field {
+		--border-width: #{rem(2)};
 		--input-size: 1.5em;
+
+		&__label {
+			display: contents;
+		}
+
+		&__input {
+			display: flex;
+			flex-direction: column;
+
+			&--orientation-horizontal {
+				flex-direction: row;
+				flex-wrap: wrap;
+				align-items: flex-start;
+			}
+		}
+
+		&--disabled {
+			opacity: unset;
+		}
 	}
 
-	.kol-input .icons {
-		display: none;
-	}
-
-	label {
-		cursor: pointer;
-	}
-
-	input {
+	.kol-input-radio {
 		appearance: none;
 		border-width: var(--border-width);
 		border-style: solid;
@@ -30,42 +49,29 @@
 		min-width: var(--input-size);
 		padding: 0;
 		width: var(--input-size);
-	}
 
-	input:before {
-		border-radius: 100%;
-		content: '';
-		margin: auto;
-		height: calc(var(--input-size) / 2);
-		width: calc(var(--input-size) / 2);
-	}
-
-	input:checked:before {
-		background-color: #000;
-	}
-
-	@media (forced-colors: active) {
-		input:checked:before {
-			/* Give it a visible background in forced colors mode */
-			background: highlight !important;
+		&:before {
+			border-radius: 100%;
+			content: '';
+			margin: auto;
+			height: calc(var(--input-size) / 2);
+			width: calc(var(--input-size) / 2);
 		}
-	}
 
-	fieldset {
-		display: flex;
-	}
+		&:checked {
+			&:before {
+				background-color: #000;
 
-	fieldset.vertical {
-		flex-direction: column;
-	}
+				@media (forced-colors: active) {
+					/* Give it a visible background in forced colors mode */
+					background-color: selectedItem !important;
+				}
+			}
+		}
 
-	fieldset .input-slot {
-		align-items: center;
-		display: flex;
-	}
-
-	/* required star is on fieldset legend */
-	.required label > span::after {
-		content: '';
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
 	}
 }

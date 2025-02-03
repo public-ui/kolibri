@@ -1,4 +1,5 @@
 /dist/
+/dist-e2e/
 /doc/**
 /loader/
 /public/
@@ -43,3 +44,7 @@ UserInterfaceState.xcuserstate
 
 # Allow
 !/node_martin/*.tgz
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

@@ -1,16 +1,18 @@
-import type { AlignPropType, PopoverAPI, PopoverStates, ShowPropType } from '@public-ui/schema';
-import { getDocument, validateAlign, validateShow } from '@public-ui/schema';
+import type { AlignPropType, PopoverAPI, PopoverCallbacksPropType, PopoverStates, ShowPropType } from '../../schema';
+import { getDocument, validateAlign, validatePopoverCallbacks, validateShow } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';
+import clsx from 'clsx';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
-import type { JSX } from '@stencil/core';
 /**
+ * @internal
  * @slot - Der Inhalt des Popover.
  */
 @Component({
 	tag: 'kol-popover-wc',
-	styleUrl: './style.scss',
 	shadow: false,
 })
 export class KolPopover implements PopoverAPI {
@@ -32,7 +34,7 @@ export class KolPopover implements PopoverAPI {
 			this.state = { ...this.state, _visible: true };
 		}
 	}
-	private hidePopover(): void {
+	private hidePopover(event: MouseEvent | KeyboardEvent): void {
 		this.state = {
 			...this.state,
 			_visible: false,
@@ -40,13 +42,20 @@ export class KolPopover implements PopoverAPI {
 		this._show = false;
 		this.triggerElement?.focus();
 		this.removeListenersToBody();
+
+		this.state._on?.onClose?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.close);
+		}
 	}
+
 	private hidePopoverByEscape = (event: KeyboardEvent): void => {
-		if (event.key === 'Escape') this.hidePopover();
+		if (event.key === 'Escape') this.hidePopover(event);
 	};
+
 	private hidePopoverByClickOutside = (event: MouseEvent): void => {
 		if (this.host && !this.host.contains(event.target as HTMLElement)) {
-			this.hidePopover();
+			this.hidePopover(event);
 		}
 	};
 
@@ -88,9 +97,13 @@ export class KolPopover implements PopoverAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host ref={this.catchHostAndTriggerElement} class="kol-popover-wc">
-				<div class={{ popover: true, hidden: !this.state._show, show: this.state._visible }} ref={this.catchPopoverElement}>
-					<div class={`arrow ${this.state._align}`} ref={this.catchArrowElement} />
+			<Host ref={this.catchHostAndTriggerElement} class="kol-popover">
+				<div
+					class={clsx('kol-popover__content', { 'kol-popover__content--visible': this.state._visible })}
+					ref={this.catchPopoverElement}
+					hidden={!this.state._show}
+				>
+					<div class={clsx('kol-popover__arrow', `kol-popover__arrow--${this.state._align}`)} ref={this.catchArrowElement} />
 					<slot />
 				</div>
 			</Host>
@@ -103,6 +116,11 @@ export class KolPopover implements PopoverAPI {
 	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
+	 * Defines the callback functions for popover events.
+	 */
+	@Prop() public _on?: PopoverCallbacksPropType;
+
+	/**
 	 * Makes the element show up.
 	 * @TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved.
 	 */
@@ -110,6 +128,7 @@ export class KolPopover implements PopoverAPI {
 
 	@State() public state: PopoverStates = {
 		_align: 'top',
+		_on: {},
 		_show: false,
 		_visible: false,
 	};
@@ -117,6 +136,11 @@ export class KolPopover implements PopoverAPI {
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
 		validateAlign(this, value);
+	}
+
+	@Watch('_on')
+	public validateOn(value?: PopoverCallbacksPropType): void {
+		validatePopoverCallbacks(this, value);
 	}
 
 	@Watch('_show')

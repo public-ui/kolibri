@@ -4,14 +4,15 @@ const prettier = require('prettier');
 
 packageJson = JSON.parse(packageJson);
 
-delete packageJson.dependencies;
+// delete packageJson.dependencies;
 delete packageJson.devDependencies;
+// delete packageJson.peerDependencies;
 delete packageJson.scripts;
 delete packageJson.husky;
 delete packageJson['lint-staged'];
 delete packageJson.collection;
 delete packageJson['collection:main'];
-delete packageJson.repository;
+// delete packageJson.repository;
 // delete packageJson.publishConfig;
 delete packageJson.unpkg;
 // packageJson.files.push('docs/.vitepress/dist/');

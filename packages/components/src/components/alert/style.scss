@@ -1,3 +1,11 @@
-@import '../@shared/kol-alert-mixin.scss';
+@import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../@shared/mixins';
 
-@include kol-alert-styles;
+@include kol-alert;
+
+@layer kol-component {
+	.kol-alert {
+		font-size: rem(16);
+	}
+}

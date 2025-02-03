@@ -1,61 +1,57 @@
-@import '../style';
+@import '../@shared/mixins';
+@import '../../styles/global';
 
 @layer kol-component {
-	progress {
-		display: block;
-		height: 0;
-		overflow: hidden;
-		width: 0;
-	}
+	.kol-progress {
+		font-size: rem(16);
 
-	.bar {
-		width: 150px;
+		&__bar {
+			width: rem(150);
+		}
 
-		.border {
+		&__bar-border {
 			fill: transparent;
 			stroke: black;
 		}
 
-		.background {
+		&__bar-background {
 			fill: lightgray;
 			stroke: white;
 		}
 
-		.progress {
+		&__bar-progress {
 			fill: #0075ff;
 			stroke: transparent;
-			transition: 250ms ease-in-out 50ms;
+
+			@media (prefers-reduced-motion: no-preference) {
+				transition: 250ms ease-in-out 50ms;
+			}
 		}
-	}
 
-	.cycle .background {
-		fill: transparent;
-		stroke: lightgray;
-	}
+		&__cycle-background {
+			fill: transparent;
+			stroke: lightgray;
+		}
 
-	.cycle .border {
-		fill: transparent;
-		stroke: black;
-	}
+		&__cycle-border {
+			fill: transparent;
+			stroke: black;
+		}
 
-	.cycle .whitespace {
-		fill: transparent;
-		stroke: white;
-	}
+		&__cycle-whitespace {
+			fill: transparent;
+			stroke: white;
+		}
 
-	.cycle .progress {
-		fill: transparent;
-		stroke: #0075ff;
-		transform-origin: 50% 50%;
-		transform: rotate(-90deg);
-		transition: 250ms ease-in-out 50ms;
-	}
+		&__cycle-progress {
+			fill: transparent;
+			stroke: #0075ff;
+			transform-origin: 50% 50%;
+			transform: rotate(-90deg);
 
-	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion */
-	@media (prefers-reduced-motion) {
-		.progress {
-			transition-duration: 0s;
-			transition-delay: 0s;
+			@media (prefers-reduced-motion: no-preference) {
+				transition: 250ms ease-in-out 50ms;
+			}
 		}
 	}
 }

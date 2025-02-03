@@ -1,0 +1,31 @@
+@mixin kol-input-text-theme {
+	.kol-input,
+	.kol-select,
+	.kol-textarea {
+		border: none;
+		margin: rem(1);
+		outline: none;
+	}
+
+	.kol-input,
+	.kol-select:not([multiple]) {
+		height: rem(44);
+		min-height: rem(44);
+	}
+
+	.kol-input,
+	.kol-select,
+	.kol-textarea {
+		&:focus {
+			border-top: rem(1) solid var(--color-blue);
+			border-bottom: rem(1) solid var(--color-blue);
+		}
+	}
+
+	.kol-input,
+	.kol-textarea {
+		&::placeholder {
+			color: var(--color-grey-50);
+		}
+	}
+}

@@ -1,24 +1,25 @@
+@import '../@shared/mixins';
 @import '../../assets/codicons/codicon';
 
 @layer kol-component {
-	:host {
-		color: inherit;
-		display: contents;
-		height: 1em;
-		line-height: inherit;
-		width: 1em;
-	}
-
-	:host > i {
-		height: 1em;
-		width: 1em;
-	}
-
 	/*
-   * The <code>:important</code> is important, because we should always override the font icon style.
-   */
-	:host > i,
-	:host > i:before {
-		font-size: inherit !important;
+	* Necessary to center icon
+	 */
+	:host {
+		display: contents;
+	}
+
+	.kol-icon {
+		font-size: rem(16);
+		color: inherit;
+		line-height: inherit;
+		&__icon,
+		&__icon:before {
+			font-size: inherit !important;
+		}
+
+		&__icon:before {
+			line-height: normal;
+		}
 	}
 }

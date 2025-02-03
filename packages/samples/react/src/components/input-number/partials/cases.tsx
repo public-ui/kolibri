@@ -8,13 +8,16 @@ import type { Components } from '@public-ui/components';
 export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components.KolInputNumber>(function InputNumberCases(props, ref) {
 	return (
 		<div className="grid gap-4">
+			<div className="black-background">
+				<KolInputNumber {...props} _required _touched _value={123} _label="Number input (Black background test)" />{' '}
+			</div>
 			<KolInputNumber
 				{...props}
 				_required
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_touched
 				_placeholder="Mit Icons"
-				_label="Zahleneingabe"
+				_label="Number input"
 				_icons={{
 					left: {
 						icon: 'codicon codicon-arrow-left',
@@ -24,9 +27,15 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 					},
 				}}
 			/>
-			<KolInputNumber {...props} ref={ref} _accessKey="Z" _max={10} _min={-10} _step={2} _label="Zahleneingabe (-10 bis 10 in 2er Schritten)" />
-			<KolInputNumber {...props} _readOnly _label="Zahleneingabe (Readonly)" />
-			<KolInputNumber {...props} _disabled _label="Zahleneingabe (Disabled)" />
+			<KolInputNumber {...props} _required _msg={{ _type: 'error', _description: ERROR_MSG }} _touched _value={123} _label="Number input" />
+			<KolInputNumber {...props} _required _msg={{ _type: 'warning', _description: ERROR_MSG }} _touched _value={123} _label="Number input" />
+			<KolInputNumber {...props} _required _msg={{ _type: 'info', _description: ERROR_MSG }} _touched _value={123} _label="Number input" />
+			<KolInputNumber {...props} _required _msg={{ _type: 'success', _description: ERROR_MSG }} _touched _value={123} _label="Number input" />
+			<KolInputNumber {...props} ref={ref} _accessKey="Z" _max={10} _min={-10} _step={2} _label="Number input (-10 to 10 in steps of 2)" />
+			<KolInputNumber {...props} _readOnly _label="Number input (Readonly)" />
+			<KolInputNumber {...props} _disabled _label="Number input (Disabled)" />
+			<KolInputNumber {...props} _label="With access key" _accessKey="c" />
+			<KolInputNumber {...props} _label="With short key" _shortKey="s" />
 		</div>
 	);
 });

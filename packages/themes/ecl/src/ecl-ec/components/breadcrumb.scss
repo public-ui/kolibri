@@ -1,0 +1,32 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-breadcrumb {
+		font:
+			normal normal 400 rem(14) / rem(16) arial,
+			sans-serif;
+		font-weight: var(--font-weight-bold);
+
+		&__icon {
+			&::part(icon separator)::before {
+				color: var(--color-blue);
+			}
+
+			&[exportparts*='separator'] {
+				margin-inline-end: rem(8);
+				margin-inline-start: rem(8);
+				padding: 0;
+			}
+		}
+
+		&__list-element {
+			&:last-child {
+				color: var(--color-grey-75);
+			}
+		}
+
+		&__link {
+			font-family: var(--font-family);
+		}
+	}
+}

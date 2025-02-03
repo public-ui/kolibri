@@ -52,7 +52,7 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 						element={
 							<div className="d-grid gap-4">
 								{THEME_OPTIONS.filter((theme) => THEMES.indexOf((theme as Option<Theme>).value) >= 0).map((theme) => (
-									<div className="d-grid gap-2" key={(theme as Option<ThemeAndUnstyled>).value} data-theme={(theme as Option<ThemeAndUnstyled>).value}>
+									<div className="d-grid gap-2" key={(theme as Option<ThemeAndUnstyled>).value}>
 										<div className="mt-4">
 											<strong>{theme.label}</strong>
 										</div>
@@ -90,8 +90,6 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 
 const ROUTE_LIST = getRouteList(ROUTES);
 const ROUTE_TREE = getRouteTree(ROUTES);
-
-console.log('ROUTE_LIST', ROUTE_LIST);
 
 const componentList: Map<string, Option<string>> = new Map();
 ROUTE_LIST.forEach((route) => {
@@ -132,12 +130,14 @@ export const App: FC = () => {
 						sample={routerLocation.pathname}
 						routes={ROUTES}
 						routeList={ROUTE_LIST}
+						buildDate={process.env.BUILD_DATE}
+						commitHash={process.env.COMMIT_HASH}
 						onThemeChange={handleThemeChange}
 					/>
 				)}
 
-				<main className="p-4" id="route-container">
-					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="DRAFT" _color="#db5461" />}
+				<main className="flex flex-col items-stretch p-4" id="route-container">
+					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="In progress" _color="#db5461" />}
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<Navigate to={ROUTE_LIST[0]} replace />} />

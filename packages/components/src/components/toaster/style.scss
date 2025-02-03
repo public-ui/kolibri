@@ -1,13 +1,22 @@
+@import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../@shared/mixins';
+
+@include kol-alert;
+
 @layer kol-component {
 	:host {
 		display: flex;
 		flex-direction: column;
+		font-size: rem(16);
 		position: fixed;
 		z-index: 200;
 	}
 
-	.close-all {
-		align-self: flex-end;
+	.kol-toast-container {
+		&__close-all {
+			align-self: flex-end;
+		}
 	}
 
 	dialog {

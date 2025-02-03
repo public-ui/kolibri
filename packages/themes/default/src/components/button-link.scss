@@ -1,51 +1,44 @@
+@import '../mixins/rem';
+@import '../mixins/link';
+
 @layer kol-theme-component {
-	:is(a, button) {
+	@include kol-link('kol-button');
+
+	.kol-button {
+		$root: &;
+
 		color: var(--color-primary);
 		font-style: normal;
 		font-weight: 400;
-		text-decoration-line: underline;
 		font-size: inherit;
+
+		&:focus {
+			outline: none;
+
+			--text-border-radius: var(--border-radius);
+			--text-outline: calc(var(--border-width) * 2) solid;
+		}
+
+		&:visited {
+			color: var(--visited);
+		}
+
+		&__text {
+			@at-root #{$root}:focus & {
+				border-radius: var(--text-border-radius);
+				outline: var(--text-outline);
+			}
+			.kol-span__label {
+				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+					text-decoration-thickness: 0.25em;
+				}
+			}
+		}
 	}
 
-	:is(a, button):focus {
-		outline: none;
-	}
-
-	:is(a, button):focus .kol-span-wc {
-		border-radius: var(--border-radius);
-		outline: calc(var(--border-width) * 2) solid;
-	}
-
-	a:hover:not([aria-disabled]),
-	button:hover:not([disabled]) {
-		text-decoration-thickness: 0.25em;
-	}
-
-	:is(a, button):visited {
-		color: var(--visited);
-	}
-
-	.hidden {
-		display: none;
-		visibility: hidden;
-	}
-
-	.skip {
-		left: -99999px;
-		overflow: hidden;
-		position: absolute;
-		z-index: 9999999;
-	}
-
-	.skip:focus {
-		background: white;
-		left: unset;
-		position: unset;
-	}
-
-	.access-key-hint {
-		background: var(--color-mute-variant);
-		border-radius: 3px;
+	.badge-text-hint {
+		background-color: var(--color-mute-variant);
+		border-radius: rem(3);
 		color: var(--color-text);
 		padding: 0 0.3em;
 	}

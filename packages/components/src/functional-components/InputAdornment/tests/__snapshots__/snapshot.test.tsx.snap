@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KolInputContainerFc should render correctly 1`] = `<div class="kol-input-container__adornment kol-input-container__adornment--start"></div>`;
+
+exports[`KolInputContainerFc should render with children 1`] = `
+<div class="kol-input-container__adornment kol-input-container__adornment--start">
+  <kol-icon _icons="codicon codicon-start-icon" _label=""></kol-icon>
+</div>
+`;

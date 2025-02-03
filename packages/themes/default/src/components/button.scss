@@ -1,22 +1,16 @@
-@import '../mixins/button.scss';
+@import '../mixins/button';
+@import '../mixins/rem';
 
 @layer kol-theme-component {
-	:host {
+	@include kol-button('kol-button');
+	.kol-button {
 		font-family: var(--font-family);
-	}
 
-	:is(a, button) > .kol-span-wc {
-		font-weight: 700;
-		border-radius: var(--border-radius);
-		border-style: solid;
-		border-width: var(--border-width);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: 8px 14px;
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
+		&__text {
+			font-weight: 700;
+			border-style: solid;
+			border-width: var(--border-width);
+			border-radius: var(--border-radius);
+		}
 	}
-
-	@include kol-button;
 }

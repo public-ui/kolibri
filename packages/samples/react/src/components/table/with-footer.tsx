@@ -1,13 +1,16 @@
 import type { FC } from 'react';
 import React from 'react';
-import { KolTable } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const TableWithFooter: FC = () => (
 	<>
-		<SampleDescription>Table with footer data</SampleDescription>
+		<SampleDescription>
+			<p>This sample shows KolTableStateful with footer data.</p>
+		</SampleDescription>
 
-		<KolTable
+		<KolTableStateful
+			className="w-full"
 			_label="Business hours"
 			_headers={{
 				horizontal: [

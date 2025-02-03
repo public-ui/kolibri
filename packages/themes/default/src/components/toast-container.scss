@@ -1,10 +1,16 @@
+@import '../mixins/rem';
+@import '../mixins/alert-wc';
+
 @layer kol-theme-component {
+	@include kol-alert-theme;
+
 	:host {
-		top: 1rem;
-		right: 1rem;
-		width: 440px;
+		top: rem(16);
+		right: rem(16);
+		width: rem(440);
 	}
-	.toast {
-		margin-top: 1rem;
+
+	.kol-toast-item {
+		margin-top: rem(16);
 	}
 }

@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="bottom" 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <kol-link-wc>
+      <!---->
+      <a class="kol-link kol-link--external-link" href="https://example.com" rel="noopener" target="self">
+        <span class="kol-link__text kol-span">
+          <span class="kol-span__container">
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="bottom" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="left" 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <kol-link-wc>
+      <!---->
+      <a class="kol-link kol-link--external-link" href="https://example.com" rel="noopener" target="self">
+        <span class="kol-link__text kol-span">
+          <span class="kol-span__container">
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="left" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="right" 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <kol-link-wc>
+      <!---->
+      <a class="kol-link kol-link--external-link" href="https://example.com" rel="noopener" target="self">
+        <span class="kol-link__text kol-span">
+          <span class="kol-span__container">
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" _hideLabel=true 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <kol-link-wc>
+      <!---->
+      <a aria-label="Label (kol-open-link-in-tab)" class="kol-link kol-link--external-link kol-link--hide-label" href="https://example.com" rel="noopener" target="self">
+        <span class="kol-link__text kol-span kol-span--hide-label">
+          <span class="kol-span__container">
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-icon _icons="codicon codicon-link-external" _label="" aria-hidden="" class="kol-link__icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" class="kol-link__tooltip"></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <kol-link-wc>
+      <!---->
+      <a class="kol-link kol-link--external-link" href="https://example.com" rel="noopener" target="self">
+        <span class="kol-link__text kol-span">
+          <span class="kol-span__container">
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="top" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <kol-link-wc>
+      <!---->
+      <a class="kol-link kol-link--external-link" href="https://example.com" rel="noopener" target="self">
+        <span class="kol-link__text kol-span">
+          <span class="kol-span__container">
+            <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _label="Label" _href="" _download="download-file.zip" _target="blank" 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <kol-link-wc>
+      <!---->
+      <a class="kol-link kol-link--external-link" download="download-file.zip" href="javascript:void(0);" rel="noopener" target="blank">
+        <span class="kol-link__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__label" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-icon _icons="codicon codicon-link-external" _label="kol-open-link-in-tab" class="kol-link__icon"></kol-icon>
+      </a>
+      <kol-tooltip-wc _align="right" _label="Label" aria-hidden="true" class="kol-link__tooltip" hidden=""></kol-tooltip-wc>
+    </kol-link-wc>
+  </template>
+</kol-link>
+`;

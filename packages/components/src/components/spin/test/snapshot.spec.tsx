@@ -1,28 +1,7 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolSpinTag } from '../../../core/component-names';
+import type { SpinProps } from '../../../schema';
+import { executeSnapshotTests } from '../../../utils/testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
+import { KolSpin } from '../shadow';
 
-import { getSpinHtml } from './html.mock';
-
-import type { SpinProps } from '@public-ui/schema';
-import type { SpecPage } from '@stencil/core/testing';
-import { KolSpin } from '../component';
-
-executeTests<SpinProps>(
-	'Spin',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolSpin],
-			template: () => <kol-spin {...props} />,
-		});
-		return page;
-	},
-	{
-		_show: [false, true],
-	},
-	getSpinHtml,
-	{
-		execMode: 'default', // ready
-	},
-);
+executeSnapshotTests<SpinProps>(KolSpinTag, [KolSpin], [{ _show: false }, { _show: true }]);

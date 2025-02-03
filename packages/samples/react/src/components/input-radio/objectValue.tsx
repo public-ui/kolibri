@@ -14,22 +14,22 @@ export const InputRadioObjectValue: FC = () => {
 	return (
 		<div className="grid gap-4">
 			<SampleDescription>
-				Examples of implementing the <code>KolInputRadio</code> component with object-based preselected value and undefined value.
+				This sample shows KolInputRadio with <code>object</code> and <code>undefined</code> values.
 			</SampleDescription>
-			<p>
-				In this example for <code>KolInputRadio</code>, the values of the options are defined as objects.
-			</p>
+
 			<KolForm>
+				<p>
+					In this example for <code>KolInputRadio</code>, the values of the options are defined as objects.
+				</p>
 				<div className="container my-4 d-grid gap-4">
-					<KolInputRadio _value={options[1].value} _options={options} _label="Test(with object value)" />
+					<KolInputRadio _value={options[1].value} _options={options} _label="Test (with object value)" />
 				</div>
-			</KolForm>
-			<p>
-				In this example for <code>KolInputRadio</code>, no value is set.
-			</p>
-			<KolForm>
+
+				<p>
+					In this example for <code>KolInputRadio</code>, no value is set.
+				</p>
 				<div className="container my-4 d-grid gap-4">
-					<KolInputRadio _options={options} _label="Test(without value)" />
+					<KolInputRadio _options={options} _label="Test (without value)" />
 				</div>
 			</KolForm>
 		</div>

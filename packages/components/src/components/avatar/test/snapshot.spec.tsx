@@ -1,27 +1,15 @@
-import { executeTests } from 'stencil-awesome-test';
-
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getAvatarHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { AvatarProps } from '@public-ui/schema';
 import { KolAvatar } from '../shadow';
 import { KolAvatarWc } from '../component';
+import type { AvatarProps } from '../../../schema';
+import { executeSnapshotTests } from '../../../utils/testing';
+import { KolAvatarTag } from '../../../core/component-names';
 
-executeTests<AvatarProps>(
-	'Avatar',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolAvatar, KolAvatarWc],
-			template: () => <kol-avatar {...props} />,
-		});
-		return page;
-	},
-	{
-		_label: ['Erika Maria Mustermann', `Erika`],
-		_src: [`/example-image.jpg`],
-	},
-	getAvatarHtml,
+executeSnapshotTests<AvatarProps>(
+	KolAvatarTag,
+	[KolAvatar, KolAvatarWc],
+	[
+		{ _label: 'Erika Maria Mustermann', _src: undefined },
+		{ _label: 'Erika', _src: undefined },
+		{ _label: 'Erika', _src: '/image.webp' },
+	],
 );

@@ -1,0 +1,25 @@
+@mixin kol-form-field-order-textarea-theme {
+	.kol-form-field {
+		$root: &;
+
+		@at-root #{$root}__msg {
+			order: 1;
+		}
+
+		@at-root #{$root}__label {
+			order: 2;
+		}
+
+		@at-root #{$root}__input {
+			order: 3;
+		}
+
+		@at-root #{$root}__counter {
+			order: 4;
+		}
+
+		@at-root #{$root}__hint {
+			order: 5;
+		}
+	}
+}

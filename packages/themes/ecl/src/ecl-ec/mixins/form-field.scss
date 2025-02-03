@@ -1,0 +1,28 @@
+@import './required';
+
+@mixin kol-form-field-theme {
+	.kol-form-field {
+		color: var(--color-grey);
+		gap: var(--spacing-xs);
+
+		&__label {
+			font-weight: var(--font-weight-bold);
+
+			&-text::after {
+				@include kol-required-info;
+			}
+		}
+
+		&__hint {
+			font-size: rem(14);
+		}
+
+		&__msg {
+			@include kol-alert-wc;
+
+			&.kol-alert--error {
+				@include kol-alert-wc(--color-red);
+			}
+		}
+	}
+}

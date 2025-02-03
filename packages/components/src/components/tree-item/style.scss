@@ -1,2 +1,32 @@
+@import '../@shared/mixins';
+@import '../../styles/global';
+
 @layer kol-component {
+	.kol-tree-item {
+		$root: &;
+		font-size: rem(16);
+
+		&__link {
+			.kol-link {
+				padding-right: rem(6);
+				padding-left: calc(rem(22.4) * var(--level));
+				padding-top: rem(6.4);
+				padding-bottom: rem(6.4);
+			}
+
+			&--first-level .kol-link {
+				padding-left: rem(6);
+			}
+		}
+
+		&__children {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.kol-span {
+			place-items: unset; // unset 'center' style from global layer
+		}
+	}
 }

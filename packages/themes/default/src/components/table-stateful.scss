@@ -1,15 +1,20 @@
-@layer kol-theme-component {
-	:host * {
-		hyphens: var(--hyphens);
-		font-family: var(--font-family);
-		line-height: var(--line-height);
-		word-break: break-word;
-	}
+@import '../mixins/kol-table-stateless-wc';
 
-	@media (min-width: 1024px) {
-		div.pagination .kol-pagination {
-			display: flex;
-			align-items: center;
+@layer kol-theme-component {
+	@include kol-table-stateless-wc;
+
+	.kol-table-stateful {
+		&__pagination {
+			font-family: var(--font-family);
+			line-height: var(--line-height);
+			word-break: break-word;
+		}
+
+		.kol-pagination {
+			@media (min-width: 1024px) {
+				display: flex;
+				align-items: center;
+			}
 		}
 	}
 }

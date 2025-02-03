@@ -1,13 +1,14 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { createReactRenderElement, KolButton, KolInputText, KolTable } from '@public-ui/react';
+import { createReactRenderElement, KolButton, KolInputText, KolTableStateful } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 
-import type { KoliBriTableHeaders } from '@public-ui/components';
+import type { IconsPropType, KoliBriTableHeaders } from '@public-ui/components';
+import { useToasterService } from '../../hooks/useToasterService';
 
 type Data = {
 	order: number;
@@ -31,6 +32,16 @@ const DATA: Data[] = [
 		date: new Date('1986-07-10T11:39:29.539Z'),
 	},
 ];
+
+function KolButtonWrapper({ label, icons }: { label: string; icons: IconsPropType }) {
+	const { dummyClickEventHandler } = useToasterService();
+
+	const dummyEventHandler = {
+		onClick: dummyClickEventHandler,
+	};
+
+	return <KolButton _label={label} _icons={icons} _on={dummyEventHandler} />;
+}
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
@@ -69,7 +80,7 @@ const HEADERS: KoliBriTableHeaders = {
 				render: (el, cell) => {
 					el.innerHTML = `<strong>${DATE_FORMATTER.format(cell.label as unknown as Date)}</strong>`;
 				},
-				sort: (data: Data[]) => data.sort((data0, data1) => data0.date.getTime() - data1.date.getTime()),
+				compareFn: (data0, data1) => (data0 as Data).date.getTime() - (data1 as Data).date.getTime(),
 			},
 			{
 				label: 'Action (react)',
@@ -89,7 +100,7 @@ const HEADERS: KoliBriTableHeaders = {
 							}}
 						>
 							<KolInputText _label="Input" />
-							<KolButton _label={'Save'} />
+							<KolButtonWrapper label="Save" icons={{ left: 'codicon codicon-save' }} />
 						</div>,
 					);
 				},
@@ -101,8 +112,9 @@ const HEADERS: KoliBriTableHeaders = {
 export const TableRenderCell: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample simulates the usage of React render functions for the table column contents.</p>
+			<p>This sample shows KolTableStateful using React render functions for the cell contents.</p>
 		</SampleDescription>
-		<KolTable _label="Sort by date column" _data={DATA} _headers={HEADERS} className="block min-w-75em" />
+
+		<KolTableStateful _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" />
 	</>
 );

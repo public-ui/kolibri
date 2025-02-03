@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextAreaFc should render and match snapshot 1`] = `<textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="test" value="test"></textarea>`;

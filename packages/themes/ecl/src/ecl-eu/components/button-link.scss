@@ -1,0 +1,5 @@
+@import '../mixins/link';
+
+@layer kol-theme-component {
+	@include kol-link('kol-button');
+}

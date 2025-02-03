@@ -11,10 +11,11 @@ export const SpinCustom: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				Hier ist ein Beispiel für eine custom Lade-Animation. Mittels des Expert-Slots ist es möglich, eigene Animationen einzufügen. Diese kann nach eigenen
-				Vorstellungen angepasst werden und ist nicht zwingend barrierefrei.
+				This sample shows a custom loading animation. Using the expert slot, it is possible to insert custom animations. Custom animations are not necessarily
+				barrier-free.
 			</p>
 		</SampleDescription>
+
 		<KolSpin _show _variant="none">
 			<span slot="expert" className="loader"></span>
 		</KolSpin>

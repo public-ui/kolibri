@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KolIconButtonFc should render button component correctly 1`] = `
+<kol-button-wc
+  _hidelabel=""
+  _icons="codicon codicon-test-icon"
+  _label="Test Button"
+  tabindex="0"
+/>
+`;
+
+exports[`KolIconButtonFc should render icon component correctly 1`] = `
+<kol-icon
+  _icons="codicon codicon-test-icon"
+  _label=""
+/>
+`;
+
+exports[`KolIconButtonFc should render with additional props 1`] = `
+<kol-button-wc
+  _hidelabel=""
+  _icons="codicon codicon-test-icon"
+  _label="Test Button"
+  class="custom-class"
+  tabindex="0"
+/>
+`;

@@ -1,44 +1,45 @@
-@layer kol-theme-component {
-	:host {
-		display: inline-block;
-		font-family: var(--font-family);
-		font-size: inherit;
-	}
+@import '../mixins/rem';
 
-	:host > span {
+@layer kol-theme-component {
+	.kol-badge {
+		font-family: var(--font-family);
 		border-radius: var(--border-radius);
 		display: inline-flex;
 		font-style: normal;
-	}
 
-	:host > span.smart-button {
-		align-items: center;
-	}
+		&--has-smart-button {
+			align-items: center;
+		}
 
-	:host > span .kol-button-wc:hover > button {
-		background-color: var(--color-primary-variant);
-		color: var(--color-light);
-	}
+		&__smart-button {
+			.kol-button {
+				color: inherit;
+				border-top-right-radius: var(--border-radius);
+				border-bottom-right-radius: var(--border-radius);
+				padding: rem(3.2);
+				&:hover {
+					background-color: var(--color-primary-variant);
+					color: var(--color-light);
+				}
 
-	:host > span .kol-button-wc > button {
-		color: inherit;
-		border-top-right-radius: var(--border-radius);
-		border-bottom-right-radius: var(--border-radius);
-		padding: 0.2rem;
-	}
+				&__text {
+					align-items: center;
+					font-style: normal;
+					padding: rem(4) rem(12);
+				}
+			}
+		}
 
-	:host > span .kol-span-wc {
-		padding: 0.25rem 0.75rem;
-	}
+		&__label {
+			padding: rem(4) rem(12);
+			align-items: center;
+			font-style: normal;
+			gap: rem(8);
 
-	:host > span > .kol-span-wc {
-		align-items: center;
-		font-style: normal;
-		gap: 0.5rem;
-	}
-
-	:host > span > .kol-span-wc > span {
-		display: flex;
-		gap: 0.25rem;
+			.kol-span__container {
+				display: flex;
+				gap: rem(4);
+			}
+		}
 	}
 }

@@ -1,10 +1,10 @@
 import { SelectOption } from '@public-ui/components';
 
-export const THEMES = ['bmf', 'default', 'ecl-ec', 'ecl-eu', 'itzbund'] as const;
+export const THEMES = ['default', 'ecl-ec', 'ecl-eu', 'unstyled'] as const;
 export type Theme = (typeof THEMES)[number];
 export type ThemeAndUnstyled = Theme | 'unstyled';
 
-const drafts: ThemeAndUnstyled[] = ['ecl-ec', 'ecl-eu', 'itzbund'];
+const drafts: ThemeAndUnstyled[] = ['ecl-ec', 'ecl-eu'];
 
 export const isDraftTheme = (theme: ThemeAndUnstyled) => drafts.includes(theme);
 
@@ -23,23 +23,15 @@ export const THEME_OPTIONS: SelectOption<ThemeAndUnstyled>[] = [
 		value: 'unstyled',
 	},
 	{
-		label: 'Bundesministerium der Finanzen (Tested)',
-		value: 'bmf',
-	},
-	{
 		label: 'Default (Tested)',
 		value: 'default',
 	},
 	{
-		label: 'European Commission (Draft)',
+		label: 'European Commission (in progress)',
 		value: 'ecl-ec',
 	},
 	{
-		label: 'European Union (Draft)',
+		label: 'European Union (in progress)',
 		value: 'ecl-eu',
-	},
-	{
-		label: 'Informationstechnikzentrum Bund (Draft)',
-		value: 'itzbund',
 	},
 ];

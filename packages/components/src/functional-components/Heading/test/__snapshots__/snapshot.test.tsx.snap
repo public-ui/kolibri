@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KolHeadingFc should apply custom class names 1`] = `
+<h1 class="custom-class kol-headline kol-headline--h1 kol-headline--single">
+  Custom Class Heading
+</h1>
+`;
+
+exports[`KolHeadingFc should render with a secondary headline 1`] = `
+<hgroup class="kol-heading-group">
+  <h1 class="kol-headline kol-headline--group kol-headline--h1 kol-headline--primary">
+    Main Heading
+  </h1>
+  <h2 class="kol-headline kol-headline--group kol-headline--secondary">
+    Secondary Headline
+  </h2>
+</hgroup>
+`;
+
+exports[`KolHeadingFc should render with a specific level 1`] = `
+<h3 class="kol-headline kol-headline--h3 kol-headline--single">
+  Level 3 Heading
+</h3>
+`;
+
+exports[`KolHeadingFc should render with default props 1`] = `
+<h1 class="kol-headline kol-headline--h1 kol-headline--single">
+  Default Heading
+</h1>
+`;

@@ -1,0 +1,14 @@
+@import '../../mixins/rem';
+
+@mixin indented-text {
+	font-family: var(--font-family);
+	-webkit-border-start: rem(8) solid #0e47cb;
+	-webkit-padding-start: rem(24);
+	border-end-start-radius: rem(4);
+	border-inline-start: rem(8) solid #0e47cb;
+	border-start-start-radius: rem(4);
+	display: inline-block;
+	padding-bottom: rem(16);
+	padding-inline-start: rem(24);
+	padding-top: rem(16);
+}

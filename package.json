@@ -1,41 +1,45 @@
 {
-	"name": "root",
+	"devDependencies": {
+		"@commitlint/cli": "19.6.1",
+		"@commitlint/config-conventional": "19.6.0",
+		"cross-env": "7.0.3",
+		"husky": "9.1.7",
+		"js-yaml": "4.1.0",
+		"lerna": "8.1.9",
+		"license-report": "6.7.1",
+		"lint-staged": "15.4.3",
+		"npm-check-updates": "17.1.14",
+		"npm-run-all": "4.1.5",
+		"prettier": "3.4.2",
+		"rimraf": "6.0.1",
+		"ts-node": "10.9.2",
+		"ts-prune": "0.10.3",
+		"typescript": "5.7.3"
+	},
+	"engines": {
+		"pnpm": "^9"
+	},
 	"private": true,
 	"scripts": {
+		"build": "pnpm -r build",
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "pnpm -r format",
 		"lint": "pnpm -r lint",
+		"lint-staged": "lint-staged",
 		"unused": "pnpm -r unused",
 		"ts-prune": "git clean -f -d -X packages/adapters/**/src && pnpm -r exec npx ts-prune src -e",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u",
-		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @types/react,@stencil/core,@unocss/*",
+		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @types/react",
 		"pack": "pnpm -r exec pnpm pack",
-		"prepare": "pnpm exec playwright install && husky && echo \"Don't forget to build all packages once: pnpm -r build\"",
+		"prepare": "husky",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test-update",
 		"test-update": "pnpm -r test-update",
-		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "19.2.1",
-		"@commitlint/config-conventional": "19.1.0",
-		"@types/node": "ts5.4",
-		"cross-env": "7.0.3",
-		"husky": "9.0.11",
-		"lerna": "8.1.2",
-		"license-report": "6.5.0",
-		"lint-staged": "15.2.2",
-		"npm-check-updates": "16.14.18",
-		"npm-run-all": "4.1.5",
-		"pnpm": "8.15.6",
-		"prettier": "3.2.5",
-		"rimraf": "5.0.5",
-		"ts-node": "10.9.2",
-		"ts-prune": "0.10.3",
-		"typescript": "5.4.5"
+		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major",
+		"version": "node scripts/update-publiccode.mjs && git add publiccode.yml"
 	}
 }

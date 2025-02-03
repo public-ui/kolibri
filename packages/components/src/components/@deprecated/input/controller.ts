@@ -1,14 +1,18 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type {
+	AccessKeyPropType,
 	AdjustHeightPropType,
 	ButtonProps,
 	HideErrorPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	ShortKeyPropType,
+	StencilUnknown,
+	Stringified,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
+} from '../../../schema';
 import {
 	a11yHint,
 	a11yHintDisabled,
@@ -16,24 +20,27 @@ import {
 	objectObjectHandler,
 	parseJson,
 	setState,
+	validateAccessKey,
 	validateAdjustHeight,
 	validateHideError,
 	validateHideLabel,
 	validateLabelWithExpertSlot,
 	validateMsg,
+	validateShortKey,
 	validateTabIndex,
+	validateTooltipAlign,
 	watchBoolean,
 	watchString,
-	validateTooltipAlign,
-} from '@public-ui/schema';
+} from '../../../schema';
 
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import type { Props, Watches } from './types';
+import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
 
-type ValueChangeListener = (value: string) => void;
+type ValueChangeListener = (value: StencilUnknown) => void;
 
 export class InputController extends ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props & AdapterProps;
@@ -45,8 +52,9 @@ export class InputController extends ControlledInputController implements Watche
 		this.component = component;
 	}
 
-	public validateAccessKey(value?: string): void {
-		watchString(this.component, '_accessKey', value);
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this.component, value);
+		validateAccessAndShortKey(value, this.component._shortKey);
 	}
 
 	public validateAdjustHeight(value?: AdjustHeightPropType): void {
@@ -61,19 +69,6 @@ export class InputController extends ControlledInputController implements Watche
 	}
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this.component, value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	public validateError(value?: string): void {
-		const message: MsgPropType | undefined = value
-			? {
-					_description: value,
-					_type: 'error',
-				}
-			: undefined;
-		this.validateMsg(message);
 	}
 
 	public validateHideError(value?: HideErrorPropType): void {
@@ -105,16 +100,9 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateId(value?: string): void {
-		watchString(this.component, '_id', value, {
-			hooks: {
-				afterPatch: () => {
-					this.setAttribute('id', this.formAssociated, this.component.state._id as string);
-				},
-			},
-			minLength: 1,
-		});
+		watchString(this.component, '_id', value, { minLength: 1 });
 		if (value === '' || typeof value === 'undefined') {
-			devHint(`Eine eindeutige ID an den Eingabefeldern ist nicht zwingend erforderlich, könnte aber für die E2E-Tests relevant sein.`);
+			devHint(`A unique ID on the input fields is not strictly required, but it might be relevant for E2E tests.`);
 		}
 	}
 
@@ -124,7 +112,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	public validateMsg(value?: MsgPropType): void {
+	public validateMsg(value?: Stringified<MsgPropType>): void {
 		validateMsg(this.component, value);
 	}
 
@@ -132,6 +120,11 @@ export class InputController extends ControlledInputController implements Watche
 		if (typeof value === 'object') {
 			setState(this.component, '_on', value);
 		}
+	}
+
+	public validateShortKey(value?: ShortKeyPropType): void {
+		validateShortKey(this.component, value);
+		validateAccessAndShortKey(this.component._accessKey, value);
 	}
 
 	public validateSmartButton(value?: ButtonProps | string): void {
@@ -154,7 +147,6 @@ export class InputController extends ControlledInputController implements Watche
 		super.componentWillLoad();
 		this.validateAccessKey(this.component._accessKey);
 		this.validateAdjustHeight(this.component._adjustHeight);
-		this.validateError(this.component._error);
 		this.validateMsg(this.component._msg);
 		this.validateDisabled(this.component._disabled);
 		this.validateHideError(this.component._hideError);
@@ -162,18 +154,24 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateHint(this.component._hint);
 		this.validateId(this.component._id);
 		this.validateLabel(this.component._label);
+		this.validateShortKey(this.component._shortKey);
 		this.validateSmartButton(this.component._smartButton);
 		this.validateOn(this.component._on);
 		this.validateTabIndex(this.component._tabIndex);
+		validateAccessAndShortKey(this.component._accessKey, this.component._shortKey);
+	}
+
+	private emitEvent(type: KolEvent, value?: unknown): void {
+		if (this.host) {
+			dispatchDomEvent(this.host, type, value);
+		}
 	}
 
 	protected onBlur(event: Event): void {
-		this.component._alert = true;
 		this.component._touched = true;
 
 		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('blur', this.host);
+		this.emitEvent(KolEvent.blur);
 
 		// Callback
 		if (typeof this.component._on?.onBlur === 'function') {
@@ -181,11 +179,17 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	protected onChange(event: Event): void {
-		const value = (event.target as HTMLInputElement).value;
+	/**
+	 * @param event - The original event object
+	 * @param value - Optional value. Taken from event if not defined.
+	 */
+	protected onChange(event: Event, value?: StencilUnknown): void {
+		if (typeof value === 'undefined') {
+			value = (event.target as HTMLInputElement).value;
+		}
 
 		// Event handling
-		tryToDispatchKoliBriEvent('change', this.host, value);
+		this.emitEvent(KolEvent.change, value);
 
 		// Callback
 		if (typeof this.component._on?.onChange === 'function') {
@@ -205,12 +209,18 @@ export class InputController extends ControlledInputController implements Watche
 		this.valueChangeListeners.forEach((listener) => listener(value));
 	}
 
-	protected onInput(event: Event, shouldSetFormAssociatedValue = true): void {
-		const value = (event.target as HTMLInputElement).value;
+	/**
+	 * @param event - The original event object
+	 * @param shouldSetFormAssociatedValue - Set to false when setting form associated value is not desired.
+	 * @param value - Optional value. Taken from event if not defined.
+	 */
+	protected onInput(event: Event, shouldSetFormAssociatedValue = true, value?: StencilUnknown): void {
+		if (typeof value === 'undefined') {
+			value = (event.target as HTMLInputElement).value;
+		}
 
 		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('input', this.host, value);
+		this.emitEvent(KolEvent.input, value);
 
 		// Static form handling
 		if (shouldSetFormAssociatedValue) {
@@ -225,8 +235,7 @@ export class InputController extends ControlledInputController implements Watche
 
 	protected onClick(event: Event): void {
 		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('click', this.host);
+		this.emitEvent(KolEvent.click);
 
 		// Callback
 		if (typeof this.component._on?.onClick === 'function') {
@@ -235,11 +244,8 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onFocus(event: Event): void {
-		this.component._alert = true;
-
 		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('focus', this.host);
+		this.emitEvent(KolEvent.focus);
 
 		// Callback
 		if (typeof this.component._on?.onFocus === 'function') {

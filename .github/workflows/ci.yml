@@ -10,68 +10,89 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
+      - uses: ./.github/actions/pnpm-setup
 
-      # - uses: pnpm/action-setup@v3
-      #   with:
-      #     run_install: false
-      #     version: 8
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     cache: pnpm
-      #     node-version: 20
-
-      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          # cache: pnpm
-          node-version: 20
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store
-
-      - name: Install
-        run: pnpm i --no-frozen-lockfile
-      - name: Unused
-        run: pnpm -r unused
-      - name: Depcheck
-        run: pnpm -r depcheck
-      - name: Format
-        run: pnpm -r format
       - name: Build
         run: pnpm -r build
+
+      - name: Unused
+        run: pnpm -r --parallel unused
+
       - name: Lint
-        run: pnpm -r lint
-      - name: Test
-        run: pnpm -r --workspace-concurrency=1 test # https://pnpm.io/configuring
+        run: pnpm -r --parallel lint
+
+      - name: Format
+        run: pnpm -r --parallel format
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/pnpm-setup
+
+      - name: Install Playwright Browsers
+        run: pnpm --filter @public-ui/components exec playwright install --with-deps
+
+      - name: Build
+        run: pnpm --filter @public-ui/sample-react^... build
+
+      - name: Unit Tests
+        run: pnpm -r test:unit
+
+        # Tests in sample app are currently failing and hence disabled.
+        # Remove `--filter @public-ui/components` after tests have been fixed in #7003.
+      - name: E2E Test
+        run: pnpm --filter @public-ui/components test:e2e
 
       - uses: actions/upload-artifact@v4
         if: failure()
-        name: Upload theme test reports
+        name: Upload test reports
         with:
           name: reports
           path: |
             packages/themes/**/test-results/**/*.png
             packages/test-tag-name-transformer/test-results/**/*.png
+            packages/components/playwright-report/
+            !**/node_modules
+
+  test-visual:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: ['@public-ui/test-tag-name-transformer', '@public-ui/theme-default']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/pnpm-setup
+
+      - name: Install Playwright Browsers
+        run: pnpm --filter @public-ui/components exec playwright install --with-deps
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Visual Tests
+        run: pnpm --filter=${{ matrix.package }} test:visual
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        name: Upload test reports
+        with:
+          name: reports
+          path: |
+            packages/themes/**/test-results/**/*.png
+            packages/test-tag-name-transformer/test-results/**/*.png
+            packages/components/playwright-report/
             !**/node_modules

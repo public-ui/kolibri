@@ -1,5 +1,5 @@
-import type { HrefProp, LabelProp, Stringified } from '@public-ui/schema';
-import { uiUxHintMillerscheZahl, watchJsonArrayString } from '@public-ui/schema';
+import type { HrefProp, LabelProp, Stringified } from '../../schema';
+import { uiUxHintMillerscheZahl, watchJsonArrayString } from '../../schema';
 
 import type { Generic } from 'adopted-style-sheets';
 

@@ -1,35 +1,46 @@
+@import '../mixins/rem';
+
 @layer kol-theme-component {
-	.tree-item {
-		ul {
-			list-style: disc inside;
-			border-left: 2px solid;
-			padding-left: 0.4rem;
-			margin-left: 2rem;
-			margin-top: 0.4rem;
+	.kol-tree-item {
+		$root: &;
+
+		&__link {
+			display: block;
+			border: rem(1) solid transparent;
+
+			.kol-link {
+				display: block;
+				color: var(--color-text);
+				text-decoration: none;
+				text-align: left;
+			}
+
+			&:hover,
+			&:focus-within {
+				border: rem(1) solid var(--color-primary);
+				background-color: var(--color-primary-variant);
+
+				.kol-link {
+					outline-offset: 0;
+					color: var(--color-light);
+				}
+			}
+
+			&--active {
+				background-color: var(--color-primary);
+
+				.kol-link {
+					color: var(--color-light);
+				}
+			}
 		}
 
-		li {
-			margin: 0.4rem 0;
-		}
+		&__toggle-button {
+			display: inline-block;
 
-		.toggle-button {
-			align-items: center;
-			border: 1px solid var(--color-primary);
-			display: inline-flex;
-			height: 1.6rem;
-			justify-content: center;
-			margin-right: 0.4rem;
-			width: 1.6rem;
-		}
-	}
-
-	.tree-link {
-		display: inline-block;
-		padding: 0.4rem;
-
-		&.active {
-			background: var(--color-primary-variant);
-			color: var(--color-light);
+			&:hover {
+				transform: scale(1.3);
+			}
 		}
 	}
 }

@@ -1,17 +1,37 @@
-import type { Components } from '@public-ui/components';
-import React, { forwardRef } from 'react';
+import * as React from 'react';
 
 import { KolButton } from '@public-ui/react';
+import { useToasterService } from '../../../hooks/useToasterService';
+import type { ButtonSampleProps } from './type';
 
-export const ButtonCases = forwardRef<HTMLKolButtonElement, Components.KolButton>(function InputCheckboxCases(props, ref) {
+export const ButtonCases: React.FC<ButtonSampleProps> = (props) => {
+	const { children, ...other } = props;
+	const { dummyClickEventHandler } = useToasterService();
+
+	const dummyEventHandler = {
+		onClick: dummyClickEventHandler,
+	};
+
 	return (
 		<div className="flex flex-wrap gap-4">
-			<KolButton {...props} _icons="codicon codicon-home" _label="Primary" _variant="primary"></KolButton>
-			<KolButton {...props} _icons="codicon codicon-heart" _label="Secondary" _variant="secondary"></KolButton>
-			<KolButton {...props} _icons="codicon codicon-hubot" _label="Normal" _variant="normal"></KolButton>
-			<KolButton {...props} _icons="codicon codicon-hubot" _label="Tertiary" _variant="tertiary"></KolButton>
-			<KolButton {...props} _icons="codicon codicon-trash" _label="Danger" _variant="danger"></KolButton>
-			<KolButton ref={ref} {...props} _icons="codicon codicon-reactions" _label="Ghost" _variant="ghost"></KolButton>
+			<KolButton _icons="codicon codicon-home" _label="Primary" _variant="primary" _on={dummyEventHandler} {...other}>
+				{children}
+			</KolButton>
+			<KolButton _icons="codicon codicon-heart" _label="Secondary" _variant="secondary" _on={dummyEventHandler} {...other}>
+				{children}
+			</KolButton>
+			<KolButton _icons="codicon codicon-hubot" _label="Normal" _variant="normal" _on={dummyEventHandler} {...other}>
+				{children}
+			</KolButton>
+			<KolButton _icons="codicon codicon-hubot" _label="Tertiary" _variant="tertiary" _on={dummyEventHandler} {...other}>
+				{children}
+			</KolButton>
+			<KolButton _icons="codicon codicon-trash" _label="Danger" _variant="danger" _on={dummyEventHandler} {...other}>
+				{children}
+			</KolButton>
+			<KolButton _icons="codicon codicon-reactions" _label="Ghost" _variant="ghost" _on={dummyEventHandler} {...other}>
+				{children}
+			</KolButton>
 		</div>
 	);
-});
+};

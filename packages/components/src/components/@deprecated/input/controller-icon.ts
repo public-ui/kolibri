@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { KoliBriHorizontalIcons, Stringified } from '@public-ui/schema';
-import { isIcon, isString, objectObjectHandler, parseJson, watchValidator } from '@public-ui/schema';
+import type { KoliBriHorizontalIcons, Stringified } from '../../../schema';
+import { isIcon, isString, objectObjectHandler, parseJson, watchValidator } from '../../../schema';
 
 import { InputController } from './controller';
 
@@ -26,10 +26,6 @@ export class InputIconController extends InputController implements Watches {
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
-	}
-
-	public validateIcon(value?: Stringified<KoliBriHorizontalIcons>): void {
-		this.validateIcons(value);
 	}
 
 	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
@@ -62,6 +58,6 @@ export class InputIconController extends InputController implements Watches {
 
 	public componentWillLoad(): void {
 		super.componentWillLoad();
-		this.validateIcons(this.component._icons || this.component._icon);
+		this.validateIcons(this.component._icons);
 	}
 }

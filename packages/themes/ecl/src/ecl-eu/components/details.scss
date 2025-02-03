@@ -1,0 +1,37 @@
+@import '../../mixins/rem';
+@import '../mixins/indented-text';
+
+@layer kol-theme-component {
+	.kol-details {
+		font-family: var(--font-family);
+		font-size: rem(16);
+		&__heading-button {
+			&:focus-within {
+				cursor: pointer;
+			}
+
+			.kol-button {
+				.kol-span__label {
+					border-bottom-color: #000;
+				}
+			}
+
+			.kol-icon {
+				font-size: rem(19.2);
+			}
+
+			.kol-span__container {
+				display: flex;
+				text-align: left;
+				gap: 0;
+			}
+		}
+
+		&__content {
+			&.indented-text {
+				@include indented-text;
+				margin: 0;
+			}
+		}
+	}
+}

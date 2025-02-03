@@ -1,9 +1,10 @@
-import type { HrefPropType, KoliBriQuoteVariant, LabelPropType, QuoteAPI, QuoteStates } from '@public-ui/schema';
-import { koliBriQuoteVariantOptions, showExpertSlot, validateLabel, watchString, watchValidator } from '@public-ui/schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import type { HrefPropType, KoliBriQuoteVariant, LabelPropType, QuoteAPI, QuoteStates } from '../../schema';
+import { koliBriQuoteVariantOptions, showExpertSlot, validateLabel, watchString, watchValidator } from '../../schema';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
 import { KolLinkTag } from '../../core/component-names';
+import clsx from 'clsx';
 @Component({
 	tag: 'kol-quote',
 	styleUrls: {
@@ -78,36 +79,30 @@ export class KolQuote implements QuoteAPI {
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._quote); // _quote instead of _caption as _label
 		return (
-			<Host class="kol-quote">
-				<figure
-					class={{
-						[this.state._variant]: true,
-					}}
-				>
-					{this.state._variant === 'block' ? (
-						<blockquote cite={this.state._href}>
-							{this.state._quote}
-							<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
-								<slot name="expert" />
-							</span>
-						</blockquote>
-					) : (
-						<q cite={this.state._href}>
-							{this.state._quote}
-							<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
-								<slot name="expert" />
-							</span>
-						</q>
-					)}
-					{typeof this.state._label === 'string' && this.state._label.length > 0 && (
-						<figcaption>
-							<cite>
-								<KolLinkTag _href={this.state._href} _label={this.state._label} _target="_blank" />
-							</cite>
-						</figcaption>
-					)}
-				</figure>
-			</Host>
+			<figure class={clsx('kol-quote', `kol-quote--${this.state._variant}`)}>
+				{this.state._variant === 'block' ? (
+					<blockquote class="kol-quote__blockquote" cite={this.state._href}>
+						{this.state._quote}
+						<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
+							<slot name="expert" />
+						</span>
+					</blockquote>
+				) : (
+					<q class="kol-quote__quote" cite={this.state._href}>
+						{this.state._quote}
+						<span aria-hidden={!hasExpertSlot ? 'true' : undefined} hidden={!hasExpertSlot}>
+							<slot name="expert" />
+						</span>
+					</q>
+				)}
+				{typeof this.state._label === 'string' && this.state._label.length > 0 && (
+					<figcaption class="kol-quote__figcaption">
+						<cite class="kol-quote__cite">
+							<KolLinkTag _href={this.state._href} _label={this.state._label} _target="_blank" />
+						</cite>
+					</figcaption>
+				)}
+			</figure>
 		);
 	}
 }

@@ -1,0 +1,16 @@
+@mixin kol-form-field-order-theme {
+	.kol-form-field {
+		&__label {
+			order: 1;
+		}
+		&__hint {
+			order: 2;
+		}
+		&__msg {
+			order: 3;
+		}
+		&__input {
+			order: 4;
+		}
+	}
+}

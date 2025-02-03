@@ -1,7 +1,8 @@
-@import '../mixins/button.scss';
+@import '../mixins/button';
+@import '../mixins/rem';
 
 @layer kol-theme-component {
-	:host {
+	.kol-split-button {
 		font-family: var(--font-family);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -9,33 +10,44 @@
 		border-color: var(--color-primary);
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
-	}
 
-	.popover {
-		background: #fff;
-	}
+		&__button .kol-button {
+			// Temp-Fix Hover-effect on Button clipping border
+			.kol-span {
+				border-top-left-radius: var(--border-radius);
+				border-bottom-left-radius: var(--border-radius);
+			}
+		}
 
-	.secondary-button button {
-		height: 100%;
-	}
+		&__horizontal-line {
+			background-color: var(--color-primary);
+			border-radius: rem(2);
+			width: rem(1);
+		}
 
-	.horizontal-line {
-		background-color: var(--color-primary);
-		border-radius: 2px;
-		width: 1px;
-	}
+		&__secondary-button {
+			height: 100%;
 
-	:is(a, button) > .kol-span-wc {
-		font-weight: 700;
-		border-top-left-radius: var(--border-radius);
-		border-bottom-left-radius: var(--border-radius);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: 8px 14px;
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
-	}
+			.kol-span {
+				border-top-right-radius: var(--border-radius);
+				border-bottom-right-radius: var(--border-radius);
+			}
+		}
 
-	@include kol-button;
+		.kol-span {
+			font-weight: 700;
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			padding: rem(8) rem(14);
+			text-align: center;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
+		}
+
+		.kol-popover__content {
+			background-color: #fff;
+		}
+
+		@include kol-button('kol-button');
+	}
 }

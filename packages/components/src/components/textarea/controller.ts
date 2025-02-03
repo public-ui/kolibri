@@ -1,10 +1,10 @@
-import type { CSSResize, HasCounterPropType, RowsPropType, TextareaProps, TextareaWatches } from '@public-ui/schema';
-import { cssResizeOptions, validateRows, watchBoolean, watchNumber, watchString, watchValidator } from '@public-ui/schema';
+import type { CSSResize, HasCounterPropType, RowsPropType, SpellCheckPropType, TextareaProps, TextareaWatches } from '../../schema';
+import { cssResizeOptions, validateHasCounter, validateRows, validateSpellCheck, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 
-import { InputController } from '../@deprecated/input/controller';
+import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
-export class TextareaController extends InputController implements TextareaWatches {
+export class TextareaController extends InputIconController implements TextareaWatches {
 	protected readonly component: Generic.Element.Component & TextareaProps;
 
 	public constructor(component: Generic.Element.Component & TextareaProps, name: string, host?: HTMLElement) {
@@ -19,7 +19,7 @@ export class TextareaController extends InputController implements TextareaWatch
 	};
 
 	public validateHasCounter(value?: HasCounterPropType): void {
-		watchBoolean(this.component, '_hasCounter', value, {
+		validateHasCounter(this.component, value, {
 			hooks: {
 				afterPatch: this.afterSyncCharCounter,
 			},
@@ -50,6 +50,9 @@ export class TextareaController extends InputController implements TextareaWatch
 			(value) => typeof value === 'string' && cssResizeOptions.includes(value),
 			new Set(`String {${cssResizeOptions.join(', ')}`),
 			value,
+			{
+				defaultValue: 'vertical',
+			},
 		);
 	}
 
@@ -61,13 +64,17 @@ export class TextareaController extends InputController implements TextareaWatch
 		validateRows(this.component, value);
 	}
 
+	public validateSpellCheck(value?: SpellCheckPropType): void {
+		validateSpellCheck(this.component, value);
+	}
+
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value, {
 			hooks: {
 				afterPatch: this.afterSyncCharCounter,
 			},
 		});
-		this.setFormAssociatedValue(this.component._value as string);
+		this.setFormAssociatedValue(this.component._value);
 	}
 
 	public componentWillLoad(): void {
@@ -79,6 +86,7 @@ export class TextareaController extends InputController implements TextareaWatch
 		this.validateResize(this.component._resize);
 		this.validateRequired(this.component._required);
 		this.validateRows(this.component._rows);
+		this.validateSpellCheck(this.component._spellCheck);
 		this.validateValue(this.component._value);
 	}
 }

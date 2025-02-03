@@ -8,16 +8,20 @@ import type { Components } from '@public-ui/components';
 export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.KolInputText>(function InputTextCases(props, ref) {
 	return (
 		<div className="grid gap-4">
+			<div className="black-background">
+				<KolInputText {...props} _value="Value" _label="First name (Black background test)" />
+			</div>
 			<KolInputText
 				{...props}
 				_hint={HINT_MSG}
-				_msg={{ _type: 'error', _description: ERROR_MSG }}
-				_placeholder="Mit Icons"
+				_msg={{ _type: 'error', _description: ERROR_MSG, _label: 'test headline' }}
+				_placeholder="With icons"
 				_icons={{
 					right: {
 						icon: 'codicon codicon-arrow-right',
 						style: {
 							'font-size': '200%',
+							'margin-right': 'calc(-8rem / var(--kolibri-root-font-size, 16))',
 						},
 					},
 				}}
@@ -30,17 +34,21 @@ export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.Kol
 				_required
 				_type="search"
 				_touched
-				_label="Vorname (text)"
+				_label="First name (text)"
 				_accessKey="V"
 				ref={ref}
 			/>
-			<KolInputText {...props} _placeholder="Placeholder" _msg={{ _type: 'info', _description: 'Nur ein Hinweis' }} _label="Suche (search)" _type="search" />
+			<KolInputText {...props} _placeholder="Placeholder" _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Search" _type="search" />
 			<KolInputText {...props} _placeholder="Placeholder" _msg={{ _type: 'error', _description: ERROR_MSG }} _touched _type="url" _label="URL (url)" />
-			<KolInputText {...props} _placeholder="Placeholder" _type="tel" _label="Telefon (tel)" _msg={{ _type: 'warning', _description: 'Kleine Warnung' }} />
-			<KolInputText {...props} _placeholder="Placeholder" _readOnly _label="Vorname (text, readonly)" />
-			<KolInputText {...props} _value="Value" _readOnly _label="Vorname (text, readonly)" />
-			<KolInputText {...props} _placeholder="Placeholder" _disabled _label="Vorname (text, disabled)" />
-			<KolInputText {...props} _value="Value" _disabled _label="Vorname (text, disabled)" />
+			<KolInputText {...props} _placeholder="Placeholder" _type="tel" _label="Telephone (tel)" _msg={{ _type: 'warning', _description: 'Small warning' }} />
+			<KolInputText {...props} _placeholder="Placeholder" _type="tel" _label="Telephone (tel)" _msg={{ _type: 'success', _description: 'Success message' }} />
+			<KolInputText {...props} _placeholder="Placeholder" _label="With counter" _hasCounter _maxLength={10} _value="Lorem Ipsum" />
+			<KolInputText {...props} _placeholder="Placeholder" _readOnly _label="First name (text, readonly)" />
+			<KolInputText {...props} _value="Value" _readOnly _label="First name (text, readonly)" />
+			<KolInputText {...props} _placeholder="Placeholder" _disabled _label="First name (text, disabled)" />
+			<KolInputText {...props} _value="Value" _disabled _label="First name (text, disabled)" />
+			<KolInputText {...props} _value="Value" _label="With access key" _accessKey="c" />
+			<KolInputText {...props} _value="Value" _label="With short key" _shortKey="s" />
 		</div>
 	);
 });

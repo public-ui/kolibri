@@ -1,19 +1,21 @@
 import { autoUpdate } from '@floating-ui/dom';
-import type { AccessKeyPropType, AlignPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '@public-ui/schema';
-import { getDocument, validateAccessKey, validateAlign, validateId, validateLabel } from '@public-ui/schema';
+import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '../../schema';
+import { getDocument, validateBadgeText, validateAlign, validateId, validateLabel } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
-import { KolSpanWcTag } from '../../core/component-names';
+import { KolSpanFc } from '../../functional-components';
 
+/**
+ * @internal
+ */
 @Component({
 	tag: 'kol-tooltip-wc',
-	styleUrl: './style.scss',
 	shadow: false,
 })
-export class KolTooltip implements TooltipAPI {
+export class KolTooltipWc implements TooltipAPI {
 	@Element() private host!: HTMLKolTooltipWcElement;
 
 	private arrowElement?: HTMLDivElement;
@@ -123,11 +125,11 @@ export class KolTooltip implements TooltipAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-tooltip-wc">
+			<Host class="kol-tooltip">
 				{this.state._label !== '' && (
-					<div class="tooltip-floating" ref={this.catchTooltipElement}>
-						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
-						<KolSpanWcTag class="tooltip-area tooltip-content" id={this.state._id} _accessKey={this._accessKey} _label={this.state._label}></KolSpanWcTag>
+					<div class="kol-tooltip__floating" ref={this.catchTooltipElement}>
+						<div class="kol-tooltip__arrow" ref={this.catchArrowElement} />
+						<KolSpanFc class="kol-tooltip__content" id={this.state._id} badgeText={this._badgeText} label={this.state._label} />
 					</div>
 				)}
 			</Host>
@@ -135,9 +137,9 @@ export class KolTooltip implements TooltipAPI {
 	}
 
 	/**
-	 * Defines the elements access key.
+	 * Defines the elements badge text.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _badgeText?: BadgeTextPropType;
 
 	/**
 	 * Defines the alignment of the tooltip, popover or tabs in relation to the element.
@@ -159,9 +161,9 @@ export class KolTooltip implements TooltipAPI {
 		_label: '', // ⚠ required
 	};
 
-	@Watch('_accessKey')
-	public validateAccessKey(value?: AccessKeyPropType): void {
-		validateAccessKey(this, value);
+	@Watch('_badgeText')
+	public validateBadgeText(value?: BadgeTextPropType): void {
+		validateBadgeText(this, value);
 	}
 
 	@Watch('_align')
@@ -191,11 +193,12 @@ export class KolTooltip implements TooltipAPI {
 			} else {
 				this.hideTooltip();
 			}
-		}, 250);
+			// Timing Guidelines for Exposing Hidden Content: https://www.nngroup.com/articles/timing-exposing-content/
+		}, 300);
 	};
 
 	public componentWillLoad(): void {
-		this.validateAccessKey(this._accessKey);
+		this.validateBadgeText(this._badgeText);
 		this.validateAlign(this._align);
 		this.validateId(this._id);
 		this.validateLabel(this._label);

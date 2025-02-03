@@ -1,14 +1,14 @@
-import fs, { promises as fsPromises } from 'fs';
-import path from 'path';
+import { promises as fsPromises } from 'fs';
 
 import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
-import { Config } from '@stencil/core';
-import { JsonDocs, OutputTarget } from '@stencil/core/internal';
-import { postcss } from '@stencil/postcss';
+import type { Config } from '@stencil/core';
+import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
+import { postcss } from '@stencil-community/postcss';
 import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
+import { version as KOLIBRI_VERSION } from './package.json' assert { type: 'json' };
 
 const TAGS = [
 	'kol-abbr',
@@ -18,15 +18,14 @@ const TAGS = [
 	'kol-badge',
 	'kol-breadcrumb',
 	'kol-button',
-	'kol-button-group',
 	'kol-button-link',
 	'kol-card',
 	'kol-details',
+	'kol-drawer',
 	'kol-form',
 	'kol-heading',
 	'kol-icon',
 	'kol-image',
-	'kol-indented-text',
 	'kol-input-checkbox',
 	'kol-input-color',
 	'kol-input-date',
@@ -39,8 +38,6 @@ const TAGS = [
 	'kol-kolibri',
 	'kol-link',
 	'kol-link-button',
-	'kol-link-group',
-	'kol-logo',
 	'kol-modal',
 	'kol-nav',
 	'kol-pagination',
@@ -48,14 +45,13 @@ const TAGS = [
 	'kol-quote',
 	'kol-select',
 	'kol-skip-nav',
-	'kol-span',
 	'kol-spin',
 	'kol-split-button',
 	'kol-symbol',
-	'kol-table',
 	'kol-table-stateless',
 	'kol-table-stateful',
 	'kol-tabs',
+	'kol-toolbar',
 	'kol-textarea',
 	'kol-toast-container',
 	'kol-tree',
@@ -66,7 +62,6 @@ const EXCLUDE_TAGS = [
 	'kol-alert-wc',
 	'kol-all',
 	'kol-avatar-wc',
-	'kol-button-group-wc',
 	'kol-button-link-text-switch',
 	'kol-button-wc',
 	'kol-color',
@@ -102,7 +97,7 @@ TAGS.forEach((tag) => {
 
 async function generateCustomElementsJson(docsData: JsonDocs) {
 	const jsonData = {
-		version: require('./package.json').version,
+		version: KOLIBRI_VERSION,
 		tags: docsData.components.map((component) => ({
 			name: component.tag,
 			// path: component.filePath,
@@ -148,23 +143,16 @@ async function generateCustomElementsJson(docsData: JsonDocs) {
 		})),
 	};
 
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 	await fsPromises.writeFile('./custom-elements.json', JSON.stringify(jsonData, null, 2));
 }
-
-const developmentHtmlFiles =
-	process.env.NODE_ENV === 'development'
-		? [
-				'dev.html',
-				...fs
-					.readdirSync(path.join(__dirname, 'src/dev'))
-					.filter((fileName: string) => fileName.endsWith('.html'))
-					.map((fileName: string) => path.join('dev', fileName)),
-			]
-		: [];
 
 let outputTargets: OutputTarget[] = [
 	{
 		type: 'dist',
+
+		/* Prevent E2E tests from overriding the existing components build. This avoids conflicts when running the Sample App at the same time. */
+		dir: process.env.E2E === '1' ? 'dist-e2e' : undefined,
 		copy: [
 			{
 				src: 'assets',
@@ -178,7 +166,6 @@ let outputTargets: OutputTarget[] = [
 			{
 				src: 'assets',
 			},
-			...developmentHtmlFiles.map((filePath) => ({ src: filePath })),
 		],
 	},
 	// {
@@ -189,26 +176,6 @@ let outputTargets: OutputTarget[] = [
 ];
 if (process.env.NODE_ENV === 'production') {
 	outputTargets = outputTargets.concat([
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v11/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v12/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v13/src/components.ts',
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v14/src/components.ts',
-		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
@@ -223,6 +190,11 @@ if (process.env.NODE_ENV === 'production') {
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v17/src/components.ts',
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v18/src/components.ts',
 		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',
@@ -306,4 +278,13 @@ export const config: Config = {
 		after: [],
 	},
 	taskQueue: 'immediate',
+	env: {
+		kolibriVersion: KOLIBRI_VERSION,
+	},
+	testing: {
+		setupFilesAfterEnv: ['./test-env.js'],
+		moduleNameMapper: {
+			'^lodash-es$': 'lodash',
+		},
+	},
 };

@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const SpinCycle: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier ist eine drehende Animation in verschiedenen Farben.</p>
+			<p>This sample shows the KolSpin variant &quot;cycle&quot;.</p>
 		</SampleDescription>
+
 		<KolSpin _show _variant="cycle" />
 	</>
 );

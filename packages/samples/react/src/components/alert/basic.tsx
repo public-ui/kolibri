@@ -10,40 +10,45 @@ type PropsByType = {
 	variant: AlertVariant;
 };
 type PropsBasic = {
-	variant: AlertVariant;
+	variant?: AlertVariant;
 };
 
 const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 	<>
-		<KolAlert _label="Das ist die Überschrift des Alert." _level={level} _type={type} _variant={variant}>
-			Das ist der Text des Alert.
+		<KolAlert _label={`This is the headline level ${level} of the alert.`} _level={level} _type={type} _variant={variant}>
+			This is the text of the alert.
 		</KolAlert>
 		<KolAlert _type={type} _variant={variant}>
-			In diesem Alert wird nur der Text ohne Überschrift verwendet.
+			In this alert, only the text without the heading is used.
 		</KolAlert>
-		<KolAlert _label="Das ist die Überschrift des Alert." _level={level} _type={type} _variant={variant} _hasCloser>
-			Das ist der Text des Alert. Mit Schließen-Button.
+		<KolAlert _label={`This is the headline level ${level} of the alert.`} _level={level} _type={type} _variant={variant} _hasCloser>
+			This is the text of the alert. With close button.
 		</KolAlert>
 		<KolAlert _type={type} _variant={variant} _hasCloser>
-			In diesem Alert wird nur der Text ohne Überschrift verwendet. Mit Schließen-Button.
+			In this alert, only the text without the heading is used. With close button.
 		</KolAlert>
 	</>
 );
 
-export const AlertBasic: FC<PropsBasic> = ({ variant = 'msg' }) => (
+export const AlertVariants: FC<PropsBasic> = ({ variant = 'msg' }) => (
+	<div className="grid gap-4">
+		<AlertByType level={1} type="default" variant={variant} />
+		<AlertByType level={2} type="error" variant={variant} />
+		<AlertByType level={3} type="info" variant={variant} />
+		<AlertByType level={4} type="success" variant={variant} />
+		<AlertByType level={5} type="warning" variant={variant} />
+	</div>
+);
+
+export const AlertBasic: FC<PropsBasic> = () => (
 	<>
 		<SampleDescription>
 			<p>
-				Hier werden verschiedene Alerts gezeigt. Beim klicken auf das X soll das Schließen-Event ausgelöst werden. In diesem Beispiel erscheint eine Textbox mit
-				Inhalt Schließen.
+				KolAlert shows messages of different types. This sample illustrates the variant <code>msg</code>, showing all possible types with and without headlines
+				and close buttons.
 			</p>
 		</SampleDescription>
-		<div className="grid gap-4">
-			<AlertByType level={1} type="default" variant={variant} />
-			<AlertByType level={2} type="error" variant={variant} />
-			<AlertByType level={3} type="info" variant={variant} />
-			<AlertByType level={4} type="success" variant={variant} />
-			<AlertByType level={5} type="warning" variant={variant} />
-		</div>
+
+		<AlertVariants variant="msg" />
 	</>
 );

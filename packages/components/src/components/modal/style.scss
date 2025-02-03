@@ -1,19 +1,14 @@
-@import '../style';
+@import '../@shared/mixins';
+@import '../../styles/global';
 
 @layer kol-component {
-	.overlay {
-		background-color: rgba(0, 0, 0, 0.33);
-		display: flex;
-		height: 100%;
-		inset: 0;
-		position: fixed;
-		width: 100%;
-		z-index: 100;
-	}
+	.kol-modal {
+		border: 0;
+		padding: 0;
+		font-size: rem(16);
 
-	.modal {
-		margin: auto;
-		max-height: 100%;
-		max-width: 100%;
+		&::backdrop {
+			background-color: rgba(0, 0, 0, 0.33);
+		}
 	}
 }

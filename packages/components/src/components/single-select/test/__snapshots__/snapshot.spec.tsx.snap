@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _accessKey="V" 1`] = `
+<kol-single-select class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          Label
+          <span aria-hidden="true" class="access-key-hint">
+            V
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input accesskey="V" aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _alert=true 1`] = `
+<kol-single-select _alert="" class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _disabled=true 1`] = `
+<kol-single-select class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="disabled single-select">
+      <kol-input _disabled="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" disabled="" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" disabled="" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _hint="Hint" 1`] = `
+<kol-single-select class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hint="Hint" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-single-select class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
+<kol-single-select class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-single-select class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
+<kol-single-select _hide-error="" class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
+<kol-single-select class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _readOnly=true 1`] = `
+<kol-single-select _readonly="" class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _shortKey="S" 1`] = `
+<kol-single-select class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          Label
+          <span aria-hidden="true" class="access-key-hint">
+            S
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _touched=true 1`] = `
+<kol-single-select _touched="" class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" _touched="" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
+<kol-single-select class="kol-single-select">
+  <template shadowrootmode="open">
+    <div class="single-select">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+        <span slot="label">
+          <span>
+            Label
+          </span>
+        </span>
+        <div slot="input">
+          <div class="single-select__group">
+            <input aria-autocomplete="both" aria-controls="listbox" autocapitalize="off" autocorrect="off" class="single-select__input" name="field" placeholder="Hier steht ein Platzhaltertext" type="text" value="">
+            <button class="single-select__button" tabindex="-1">
+              <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+            </button>
+          </div>
+        </div>
+      </kol-input>
+    </div>
+  </template>
+</kol-single-select>
+`;

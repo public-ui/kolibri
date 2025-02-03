@@ -1,12 +1,12 @@
 {
 	"name": "@public-ui/hydrate",
-	"version": "2.0.14",
+	"version": "3.0.0-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/public-ui/kolibri"
-  },
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -45,15 +45,14 @@
 		"hydrate"
 	],
 	"scripts": {
-		"build": "rimraf dist/package.json",
-		"prepack": "npm run build"
+		"build": "rimraf dist/package.json"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.14",
-		"rimraf": "5.0.5"
+		"@public-ui/components": "workspace:*",
+		"rimraf": "6.0.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "2.0.14"
+		"@public-ui/components": "workspace:*"
 	},
 	"sideEffects": false,
 	"type": "commonjs",

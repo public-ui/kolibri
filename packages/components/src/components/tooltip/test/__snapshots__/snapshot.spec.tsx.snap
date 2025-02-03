@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="bottom" 1`] = `
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</kol-tooltip-wc>
+`;
+
+exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="left" 1`] = `
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</kol-tooltip-wc>
+`;
+
+exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="right" 1`] = `
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</kol-tooltip-wc>
+`;
+
+exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="top" 1`] = `
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</kol-tooltip-wc>
+`;
+
+exports[`kol-tooltip-wc should render with _id="id" _label="Label" 1`] = `
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      </span>
+    </span>
+  </div>
+</kol-tooltip-wc>
+`;

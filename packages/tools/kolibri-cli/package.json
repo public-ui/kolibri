@@ -1,12 +1,12 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "2.0.14",
+	"version": "3.0.0-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/public-ui/kolibri"
-  },
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
 	"bugs": {
 		"url": "https://github.com/public-ui/kolibri/issues",
 		"email": "kolibri@itzbund.de"
@@ -20,10 +20,10 @@
 	},
 	"description": "CLI for executing some helpful commands for KoliBri projects.",
 	"scripts": {
+		"build": "tsc",
 		"reset": "pnpm i @public-ui/components@1.1.7",
 		"format": "prettier -c src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "tsc",
 		"start": "rimraf test && cpy \"../../samples/react/src/components\" test/src && cpy \"../../samples/react/public/*.html\" test/ && ts-node src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
 		"restart": "pnpm reset && pnpm start",
 		"unused": "knip",
@@ -32,34 +32,32 @@
 	"type": "commonjs",
 	"dependencies": {
 		"chalk": "4.1.2",
-		"commander": "12.0.0",
+		"commander": "12.1.0",
 		"deepmerge": "4.3.1",
 		"gradient-string": "2.0.2",
-		"loglevel": "1.9.1",
-		"prettier": "3.2.5",
-		"semver": "7.6.0"
+		"loglevel": "1.9.2",
+		"prettier": "3.4.2",
+		"semver": "7.6.3"
 	},
 	"devDependencies": {
-		"@public-ui/components": "2.0.14",
+		"@public-ui/components": "workspace:*",
 		"@types/gradient-string": "1.1.6",
-		"@types/node": "ts5.4",
-		"@typescript-eslint/eslint-plugin": "7.6.0",
-		"@typescript-eslint/parser": "7.6.0",
+		"@typescript-eslint/eslint-plugin": "7.18.0",
+		"@typescript-eslint/parser": "7.18.0",
 		"cpy-cli": "5.0.0",
-		"eslint": "8.57.0",
+		"eslint": "8.57.1",
 		"eslint-config-prettier": "9.1.0",
-		"eslint-plugin-html": "8.1.0",
-		"eslint-plugin-jsdoc": "48.2.3",
+		"eslint-plugin-html": "8.1.2",
+		"eslint-plugin-jsdoc": "50.6.3",
 		"eslint-plugin-json": "3.1.0",
-		"eslint-plugin-jsx-a11y": "6.8.0",
-		"eslint-plugin-no-loops": "0.3.0",
-		"eslint-plugin-react": "7.34.1",
-		"knip": "5.9.4",
-		"mocha": "10.4.0",
-		"nodemon": "3.1.0",
-		"rimraf": "5.0.5",
+		"eslint-plugin-jsx-a11y": "6.10.2",
+		"eslint-plugin-react": "7.37.4",
+		"knip": "5.43.6",
+		"mocha": "10.8.2",
+		"nodemon": "3.1.9",
+		"rimraf": "6.0.1",
 		"ts-node": "10.9.2",
-		"typescript": "5.4.5"
+		"typescript": "5.7.3"
 	},
 	"files": [
 		"dist"

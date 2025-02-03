@@ -5,7 +5,8 @@
 	"license": "EUPL-1.2",
   "description": "Performs snapshot testing on the default theme with a tag name transformer enabled.",
   "scripts": {
-    "test": "THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test",
+		"test": "pnpm test:visual",
+		"test:visual": "THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test",
     "test-update": "THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test --update-snapshots theme-snapshots.spec.js"
   },
   "devDependencies": {

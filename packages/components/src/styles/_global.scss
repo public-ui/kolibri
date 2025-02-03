@@ -1,0 +1,67 @@
+@import '../components/a11y';
+@import '../components/preset';
+
+@layer kol-global {
+	:host {
+		/*
+		 * The max-width is needed to prevent the table from overflowing the
+		 * parent node, if the table is wider than the parent node.
+		 */
+		max-width: 100%;
+	}
+
+	* {
+		/*
+		 * We prefer to box-sizing: border-box for all elements.
+		 */
+		box-sizing: border-box;
+	}
+
+	.kol-span {
+		/* KolSpan is a layout component with icons in all directions and a label text in the middle. */
+		display: grid;
+		place-items: center;
+
+		/* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
+		&__container {
+			display: flex;
+			place-items: center;
+		}
+	}
+
+	a,
+	button {
+		cursor: pointer;
+	}
+
+	.kol-span {
+		$spanRoot: &;
+
+		&__label {
+			@at-root #{$spanRoot} &--hide-label & {
+				display: none;
+			}
+		}
+	}
+
+	/* Reset browser agent style. */
+	button:disabled {
+		color: unset;
+	}
+
+	.disabled label,
+	.disabled:focus-within label,
+	[aria-disabled='true'],
+	[aria-disabled='true']:focus,
+	[disabled],
+	[disabled]:focus {
+		cursor: not-allowed;
+		opacity: 0.5;
+		outline: none;
+	}
+
+	[aria-disabled='true']:focus .kol-span,
+	[disabled]:focus .kol-span {
+		outline: none !important;
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"entry": ["src/main.ts"],
+	"ignore": [
+		"src/assets/**",
+		"src/scenarios/appointment-form/AppointmentForm.tsx",
+		"src/scenarios/appointment-form/appointmentService.ts",
+		"src/scenarios/appointment-form/AvailableAppointmentsForm.tsx",
+		"src/scenarios/appointment-form/DistrictForm.tsx",
+		"src/scenarios/appointment-form/formUtils.ts",
+		"src/scenarios/appointment-form/PersonalInformationForm.tsx",
+		"src/scenarios/appointment-form/Summary.tsx",
+		"unocss.config.ts"
+	],
+	"ignoreDependencies": [
+		"@leanup/stack-webpack",
+		"@public-ui/components",
+		"@public-ui/react",
+		"@public-ui/themes",
+		"@unocss/preset-uno",
+		"ajv",
+		"nightwatch-axe-verbose",
+		"uno.css",
+		"yup"
+	],
+	"project": ["src/**/*.ts", "src/**/*.tsx"]
+}

@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolTable } from '@public-ui/react';
+import { KolHeading, KolTableStateful } from '@public-ui/react';
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
@@ -22,12 +22,11 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
-				sort: (data: Data[]) =>
-					data.sort((data0, data1) => {
-						if (data0.date < data1.date) return -1;
-						else if (data1.date < data0.date) return 1;
-						else return 0;
-					}),
+				compareFn: (data0, data1) => {
+					if ((data0 as Data).date < (data1 as Data).date) return -1;
+					else if ((data1 as Data).date < (data0 as Data).date) return 1;
+					else return 0;
+				},
 			},
 		],
 	],
@@ -42,12 +41,11 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 				key: 'date',
 				textAlign: 'center',
 				render: (_el, _cell, tupel) => DATE_FORMATTER.format((tupel as Data).date),
-				sort: (data: Data[]) =>
-					data.sort((data0, data1) => {
-						if (data0.date < data1.date) return -1;
-						else if (data1.date < data0.date) return 1;
-						else return 0;
-					}),
+				compareFn: (data0, data1) => {
+					if ((data0 as Data).date < (data1 as Data).date) return -1;
+					else if ((data1 as Data).date < (data0 as Data).date) return 1;
+					else return 0;
+				},
 			},
 		],
 	],
@@ -56,18 +54,18 @@ const HEADERS_VERTICAL: KoliBriTableHeaders = {
 export const TableSortData: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier ist eine Tabelle, die durch anklicken des Knopfes sortiert werden kann. Entweder nach der Reihenfolge, nach dem ältesten Datum oder nach dem
-				jüngsten Datum.
-			</p>
+			<p>This sample shows KolTableStateful with sortable columns. The sort-order can be changed by clicking the &quot;date&quot; header column.</p>
 		</SampleDescription>
 
-		<h2>Vertical</h2>
-
-		<KolTable _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
-
-		<h2>Horizontal</h2>
-
-		<KolTable _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+		<section className="w-full grid gap-4">
+			<section className="grid gap-4">
+				<KolHeading _level={2} _label="Vertical" />
+				<KolTableStateful _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
+			</section>
+			<section className="grid gap-4">
+				<KolHeading _level={2} _label="Horizontal" />
+				<KolTableStateful _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+			</section>
+		</section>
 	</>
 );

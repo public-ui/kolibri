@@ -3,9 +3,9 @@
 import type { JSX } from '@stencil/core';
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
 
-import type { HeadingLevel } from '@public-ui/schema';
+import type { HeadingLevel } from '@public-ui/components';
 import { nonce } from '../../utils/dev.utils';
-import { setState, watchBoolean, watchString } from '@public-ui/schema';
+import { setState, watchBoolean, watchString } from '@public-ui/components';
 import { watchHeadingLevel } from '../heading/validation';
 import type { KoliBriNewComponentCallbacks, NewComponentAPI, NewComponentStates } from './types';
 
@@ -54,7 +54,7 @@ export class KolNewComponent implements NewComponentAPI {
 										display: 'none',
 										height: '0',
 										visibility: 'hidden',
-								  }
+									}
 						}
 					>
 						<slot name="content" />

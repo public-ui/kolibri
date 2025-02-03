@@ -1,8 +1,10 @@
+@import '../@shared/mixins';
+@import '../../styles/global';
+
 @layer kol-component {
-	:host {
+	.kol-image {
 		display: inline-block;
-	}
-	img {
+		font-size: rem(16);
 		max-height: 100%;
 		max-width: 100%;
 	}

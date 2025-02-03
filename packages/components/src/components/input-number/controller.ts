@@ -1,5 +1,5 @@
-import type { InputNumberProps, InputNumberWatches, InputTypeOnOff, Iso8601, SuggestionsPropType } from '@public-ui/schema';
-import { validateSuggestions, watchBoolean, watchNumber, watchString, watchValidator } from '@public-ui/schema';
+import type { InputNumberProps, InputNumberWatches, InputTypeOnOff, Iso8601, SuggestionsPropType } from '../../schema';
+import { validateSuggestions, watchBoolean, watchNumber, watchString, watchValidator } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 

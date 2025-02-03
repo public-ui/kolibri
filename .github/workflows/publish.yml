@@ -2,8 +2,8 @@ name: 01 - Publish
 
 env:
   access: public
-  registry: https://registry.npmjs.org
-  token: ${{ secrets.NPMJS_GRANULAR_TOKEN }}
+  npmjs-registry: https://registry.npmjs.org
+  github-registry: https://npm.pkg.github.com
 
 on:
   workflow_dispatch:
@@ -12,35 +12,72 @@ on:
         type: choice
         description: Which NPM tag should be assigned?
         options:
+          - dev
           - next
           - latest
+          - lts
+      version: # see https://github.com/lerna/lerna/tree/main/libs/commands/version#semver-bump
+        type: choice
+        description: SemVer keyword for version bump
+        options:
+          - prerelease
+          - prepatch
+          - patch
+          - preminor
+          - minor
+          - premajor
+          - major
+      label: # see https://github.com/lerna/lerna/tree/main/libs/commands/version#--preid
+        type: choice
+        description: SemVer pre release label (optional)
+        options:
+          - rc
+          - beta
+          - alpha
 
 jobs:
   publish:
     if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      packages: write
     steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
+          token: ${{ steps.app-token.outputs.token }}
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: '${{env.registry}}'
-          scope: '@public-ui'
+          registry-url: '${{env.npmjs-registry}}'
+
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         id: pnpm-install
         with:
-          version: 8
+          version: 9
+
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
@@ -52,136 +89,133 @@ jobs:
       - name: Install
         run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
 
+      - name: Configure Git user
+        run: |
+          git config --local user.email "${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
+          git config --local user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
+
+      - name: Bump Versions non-dev
+        if: github.event.inputs.tag != 'dev'
+        run: 'HUSKY=0 npx lerna version ${{github.event.inputs.version}} --preid=${{github.event.inputs.label}} --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish'
+
+      - name: Bump Versions dev and do not push
+        if: github.event.inputs.tag == 'dev'
+        run: 'HUSKY=0 npx lerna version prerelease --preid=$GITHUB_SHA --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish --no-push'
+
       - name: Build
         run: pnpm -r build
 
-      - name: Build and publish schema
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
-        working-directory: packages/schema
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
       - name: Build and publish components
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/components
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish adapter angular v11
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v11
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish adapter angular v12
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v12
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish adapter angular v13
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v13
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish adapter angular v14
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v14
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v15
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v15
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v16
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v16
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v17
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v17
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
+      - name: Build and publish adapter angular v18
+        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
+        working-directory: packages/adapters/angular/v18
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/react
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react-standalone
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/react-standalone
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter solid
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/solid
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter vue
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/vue
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter preact
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/preact
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter hydrate
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/adapters/hydrate
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
-      - name: Build and publish create-kolibri
-        continue-on-error: true
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
-        working-directory: packages/create-kolibri
-        env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools kolibri-cli
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/tools/kolibri-cli
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme default
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/themes/default
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish themes
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/themes
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish sample react
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/samples/react
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools visual-tests
-        continue-on-error: true
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/tools/visual-tests
         env:
-          NODE_AUTH_TOKEN: ${{env.token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
 
-  publish-page:
-    needs: publish
-    uses: public-ui/kolibri/.github/workflows/publish-page.yml@develop
+      # Publish packages on GitHub packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: '${{env.github-registry}}'
+
+      - name: Publish designer
+        run: npm publish --access restricted
+        working-directory: packages/designer
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish sample react
+        run: npm publish --access restricted
+        working-directory: packages/samples/react
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

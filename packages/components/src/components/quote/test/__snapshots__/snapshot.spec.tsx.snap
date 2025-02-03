@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-quote should render with _label="Caption" _href="https://example.com" _quote="Text of the Quote" _variant="block" 1`] = `
+<kol-quote>
+  <template shadowrootmode="open">
+    <figure class="kol-quote kol-quote--block">
+      <blockquote cite="https://example.com" class="kol-quote__blockquote">
+        Text of the Quote
+        <span aria-hidden="true" hidden="">
+          <slot name="expert"></slot>
+        </span>
+      </blockquote>
+      <figcaption class="kol-quote__figcaption">
+        <cite class="kol-quote__cite">
+          <kol-link _href="https://example.com" _label="Caption" _target="_blank"></kol-link>
+        </cite>
+      </figcaption>
+    </figure>
+  </template>
+</kol-quote>
+`;
+
+exports[`kol-quote should render with _label="Caption" _href="https://example.com" _quote="Text of the Quote" _variant="inline" 1`] = `
+<kol-quote>
+  <template shadowrootmode="open">
+    <figure class="kol-quote kol-quote--inline">
+      <q cite="https://example.com" class="kol-quote__quote">
+        Text of the Quote
+        <span aria-hidden="true" hidden="">
+          <slot name="expert"></slot>
+        </span>
+      </q>
+      <figcaption class="kol-quote__figcaption">
+        <cite class="kol-quote__cite">
+          <kol-link _href="https://example.com" _label="Caption" _target="_blank"></kol-link>
+        </cite>
+      </figcaption>
+    </figure>
+  </template>
+</kol-quote>
+`;
+
+exports[`kol-quote should render with _label="Caption" _href="https://example.com" _quote="Text of the Quote" 1`] = `
+<kol-quote>
+  <template shadowrootmode="open">
+    <figure class="kol-quote kol-quote--inline">
+      <q cite="https://example.com" class="kol-quote__quote">
+        Text of the Quote
+        <span aria-hidden="true" hidden="">
+          <slot name="expert"></slot>
+        </span>
+      </q>
+      <figcaption class="kol-quote__figcaption">
+        <cite class="kol-quote__cite">
+          <kol-link _href="https://example.com" _label="Caption" _target="_blank"></kol-link>
+        </cite>
+      </figcaption>
+    </figure>
+  </template>
+</kol-quote>
+`;

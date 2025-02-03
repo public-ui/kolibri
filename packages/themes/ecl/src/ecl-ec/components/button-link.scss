@@ -1,0 +1,13 @@
+@import '../../mixins/rem';
+@import '../mixins/link';
+
+@layer kol-theme-component {
+	@include kol-link('kol-button');
+
+	.badge-text-hint {
+		background-color: var(--color-mute-variant);
+		border-radius: rem(3);
+		color: var(--color-text);
+		padding: 0 0.3em;
+	}
+}

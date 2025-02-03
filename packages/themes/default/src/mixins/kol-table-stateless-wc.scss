@@ -1,0 +1,150 @@
+@import './rem';
+
+@mixin kol-table-stateless-wc {
+	.kol-table {
+		$root: &;
+
+		font-family: var(--font-family);
+		line-height: var(--line-height);
+		word-break: break-word;
+
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding: rem(8);
+
+		&__table,
+		&__caption {
+			border-width: 0;
+			border-bottom-width: calc(var(--border-width) * 2);
+			border-color: var(--color-primary-variant);
+			border-style: solid;
+		}
+
+		&__table {
+			width: 100%;
+			border-spacing: 0;
+		}
+
+		&__caption {
+			padding: rem(8);
+		}
+
+		&__focus-element {
+			&:focus {
+				outline-color: var(--color-primary-variant);
+				outline-offset: rem(2);
+				outline-style: solid;
+				outline-width: rem(3);
+				transition: outline-offset 0.2s linear;
+			}
+		}
+
+		&__cell {
+			padding: rem(8);
+			&--header {
+				font-weight: normal;
+				color: var(--color-primary);
+				background-color: var(--color-light);
+			}
+			&--ascending,
+			&--descending {
+				font-weight: 700;
+				.kol-button {
+					font-weight: 700;
+				}
+			}
+		}
+
+		&__selection {
+			display: flex;
+			gap: rem(8);
+			grid-template-columns: 1fr auto;
+			align-items: center;
+		}
+
+		&__spacer {
+			display: table-row;
+			height: rem(24);
+		}
+
+		&__spacer-line {
+			border-width: 0;
+			border-color: var(--color-primary-variant);
+			border-style: solid;
+
+			&--foot {
+				border-bottom-width: calc(var(--border-width) * 2);
+			}
+
+			&--head {
+				border-top-width: calc(var(--border-width) * 2);
+			}
+		}
+
+		&__row {
+			&--body {
+				&:nth-child(even) {
+					background-color: var(--color-mute);
+				}
+			}
+		}
+
+		&__selection-input {
+			&:hover {
+				border-color: var(--color-primary);
+				box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+			}
+
+			&:focus {
+				border-color: var(--color-primary);
+				outline-color: var(--color-primary-variant);
+				outline-style: solid;
+				outline-offset: rem(2);
+				outline-width: rem(3);
+			}
+
+			&:focus:hover {
+				box-shadow: none;
+			}
+
+			// CHECKBOX
+			&--checkbox {
+				border-color: var(--color-subtle);
+				border-radius: rem(5);
+
+				&:checked {
+					background-color: var(--color-primary);
+					border-color: var(--color-primary);
+				}
+			}
+
+			// RADIO
+			&--radio {
+				display: flex;
+				border-color: var(--color-subtle);
+
+				&:checked {
+					border-color: var(--color-primary);
+
+					&:before {
+						background-color: var(--color-primary);
+					}
+				}
+			}
+
+			@at-root #{$root}__selection--indeterminate & {
+				background-color: var(--color-primary);
+				border-color: var(--color-primary);
+			}
+		}
+
+		&__selection-icon {
+			color: var(--color-light);
+		}
+
+		.kol-icon:hover ~ &__selection-input--checkbox,
+		&__selection-input--checkbox:hover {
+			border-color: var(--color-primary);
+		}
+	}
+}

@@ -44,25 +44,6 @@ const setStore = () => {
 	STORAGE.setItem(STORE_IDENTIFIER, JSON.stringify(STORE));
 };
 
-const switchDarkMode = (mode: boolean) => {
-	const html = document.querySelector('html');
-	if (html) {
-		html.dataset.theme = mode ? 'dark' : 'light';
-	}
-};
-
-// ts-prune-ignore-next
-export const setDarkMode = (value: boolean) => {
-	STORE.darkMode = value === true;
-	switchDarkMode(STORE.darkMode);
-	setStore();
-};
-
-// ts-prune-ignore-next
-export const getDarkMode = (): boolean => {
-	return STORE.darkMode === true;
-};
-
 export const setTheme = (theme: ThemeAndUnstyled) => {
 	if (isTheme(theme)) {
 		STORE.theme = theme;

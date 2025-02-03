@@ -5,7 +5,6 @@ import type {
 	KoliBriHorizontalIcons,
 	MsgPropType,
 	PropAccessKey,
-	PropAlert,
 	PropDisabled,
 	PropHasCounter,
 	PropHideError,
@@ -14,12 +13,13 @@ import type {
 	PropLabelWithExpertSlot,
 	PropReadOnly,
 	PropRequired,
+	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTooltipAlign,
 	PropTouched,
 	Stringified,
-} from '@public-ui/schema';
+} from '../../schema';
 
 type RequiredProps = PropId & PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -31,13 +31,13 @@ type OptionalProps = {
 	slotName: string;
 	smartButton: Stringified<ButtonProps>;
 } & PropAccessKey &
-	PropAlert &
 	PropDisabled &
 	PropHasCounter &
 	PropHideError &
 	PropHideLabel &
 	PropReadOnly &
 	PropRequired &
+	PropShortKey &
 	PropSuggestions &
 	PropSyncValueBySelector &
 	PropTooltipAlign &

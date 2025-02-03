@@ -1,0 +1,9 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-badge {
+		font: normal normal var(--font-weight) 1em var(--font-family);
+		padding: calc(rem(8) - rem(1)) calc(rem(12) - rem(1));
+		text-transform: uppercase;
+	}
+}

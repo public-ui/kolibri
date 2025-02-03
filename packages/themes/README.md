@@ -1,5 +1,13 @@
 # KoliBri - Themes
 
+[![npm](https://img.shields.io/npm/v/@public-ui/themes)](https://www.npmjs.com/package/@public-ui/components)
+[![license](https://img.shields.io/npm/l/@public-ui/themes)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![downloads](https://img.shields.io/npm/dt/@public-ui/themes)](https://www.npmjs.com/package/@public-ui/themes)
+[![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
+[![size](https://img.shields.io/bundlephobia/min/@public-ui/themes)](https://bundlephobia.com/result?p=@public-ui/themes)
+![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
+
 The **Themes** module contains numerous themes (style guides) for the component library. They can be loaded in combination with the Components module.
 
 You can read more about **modularization** in the [architecture concept](https://public-ui.github.io/docs/concepts/architecture).
@@ -23,12 +31,12 @@ Register the themes like this:
 ```tsx
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
+import { DEFAULT, ECL_EC, ECL_EU } from '@public-ui/themes';
 
 register(
 	DEFAULT,
 	// or provide an array to register multiple themes:
-	// [BMF, DEFAULT, ECL_EC, ECL_EU, ITZBund]
+	// [DEFAULT, ECL_EC, ECL_EU]
 	defineCustomElements,
 )
 	.then(() => {

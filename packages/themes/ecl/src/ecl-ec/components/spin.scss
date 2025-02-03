@@ -1,0 +1,10 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	.cycle {
+		padding: rem(2);
+		& span {
+			background-color: var(--color-blue-75);
+		}
+	}
+}

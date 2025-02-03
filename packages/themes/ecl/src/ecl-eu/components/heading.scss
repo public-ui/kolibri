@@ -1,0 +1,43 @@
+@import '../../mixins/rem';
+@import '../mixins/typography';
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	.kol-headline {
+		&--h1 {
+			@include kol-typography-h1;
+		}
+
+		&--h2 {
+			@include kol-typography-h2;
+		}
+
+		&--h3 {
+			@include kol-typography-h3;
+		}
+
+		&--h4 {
+			@include kol-typography-h4;
+		}
+
+		&--h5 {
+			@include kol-typography-h5;
+		}
+
+		&--h6 {
+			@include kol-typography-h6;
+		}
+
+		&--h1,
+		&--h2,
+		&--h3,
+		&--h4,
+		&--h5,
+		&--h6 {
+			font-weight: var(--font-weight-bold);
+		}
+	}
+}

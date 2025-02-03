@@ -1,0 +1,54 @@
+@import './rem';
+@import './focus-outline';
+
+@mixin kol-input-theme {
+	.kol-input-container {
+		$root: &;
+
+		background-color: var(--color-light);
+		border-color: var(--color-subtle);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: rem(2);
+		padding: 0 rem(8);
+		gap: rem(6);
+
+		@at-root #{$root}__adornment {
+			min-width: rem(8);
+
+			&--start {
+				> .kol-icon {
+					margin-left: rem(8);
+				}
+			}
+
+			&--end {
+				> .kol-icon {
+					margin-right: rem(8);
+				}
+			}
+		}
+
+		@at-root #{$root}--disabled {
+			background-color: var(--color-mute);
+			border-color: var(--color-mute-variant);
+			color: var(--color-text);
+		}
+
+		&:not(&--disabled) {
+			&:hover {
+				border-color: var(--color-primary);
+			}
+		}
+
+		&:focus-within {
+			@include focus-outline;
+		}
+
+		&--error {
+			&:focus-within {
+				outline-color: var(--color-danger);
+			}
+		}
+	}
+}

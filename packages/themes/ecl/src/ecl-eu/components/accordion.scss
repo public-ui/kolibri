@@ -1,0 +1,98 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		font-size: rem(16);
+	}
+
+	.kol-accordion {
+		border-radius: rem(8);
+		box-shadow:
+			0 rem(2) rem(4) rgb(9 49 142 / 8%),
+			0 0 rem(10) rgb(9 49 142 / 4%),
+			0 rem(4) rem(5) rgb(9 49 142 / 4%),
+			0 rem(-4) rem(4) rgb(9 49 142 / 4%);
+		margin: 0;
+		overflow: hidden;
+
+		&__heading {
+			font-size: 2em;
+		}
+
+		&__heading-button {
+			.kol-button {
+				border-radius: rem(8);
+				outline-offset: rem(-1);
+				border: 0;
+				border-bottom-color: #cfdaf5;
+				border-bottom-style: solid;
+				border-bottom-width: rem(2);
+				color: #171a22;
+				position: relative;
+				display: block;
+				font:
+					normal normal 400 rem(18) / rem(28) arial,
+					sans-serif;
+				padding: rem(24);
+				text-align: start;
+				width: 100%;
+				line-height: 1.2;
+
+				&__text {
+					align-items: baseline;
+				}
+
+				&::before {
+					background-color: #fc0;
+					border-end-end-radius: rem(2);
+					border-end-start-radius: rem(2);
+					content: '';
+					height: rem(4);
+					position: absolute;
+					left: rem(24);
+					top: 0;
+					width: 3rem (2);
+				}
+			}
+
+			.kol-icon {
+				margin-right: rem(12);
+
+				&::part(icon)::before {
+					color: #0e47cb;
+					font-weight: 900;
+					font-family: 'Font Awesome 6 Free';
+				}
+			}
+		}
+
+		&__content {
+			-webkit-border-start: rem(4) solid #0e47cb;
+			-webkit-margin-start: 0;
+			border-bottom: rem(2) solid #cfdaf5;
+			border-inline-start: rem(4) solid #0e47cb;
+			color: #515560;
+			font:
+				normal normal 400 rem(16) / rem(24) arial,
+				sans-serif;
+			margin-inline-start: 0;
+			padding: rem(24);
+		}
+
+		.collapsible--open &__heading-button {
+			.kol-button {
+				border-start-end-radius: rem(8);
+				border-start-start-radius: rem(8);
+			}
+
+			.kol-icon::part(icon)::before {
+				content: '\f077';
+			}
+		}
+
+		:not(.collapsible--open) &__heading-button .kol-button .kol-icon::part(icon)::before {
+			content: '\f078';
+		}
+	}
+}

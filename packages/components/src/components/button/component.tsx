@@ -1,6 +1,7 @@
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaDescriptionPropType,
 	ButtonAPI,
 	ButtonCallbacksPropType,
 	ButtonStates,
@@ -8,23 +9,25 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	DisabledPropType,
+	FocusableElement,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
+	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-} from '@public-ui/schema';
+} from '../../schema';
 import {
 	mapBoolean2String,
 	mapStringOrBoolean2String,
-	propagateFocus,
 	setEventTarget,
 	setState,
 	showExpertSlot,
 	validateAccessKey,
 	validateAlternativeButtonLinkRole,
 	validateAriaControls,
+	validateAriaDescription,
 	validateAriaExpanded,
 	validateAriaSelected,
 	validateButtonCallbacks,
@@ -35,17 +38,22 @@ import {
 	validateHideLabel,
 	validateIcons,
 	validateLabelWithExpertSlot,
+	validateShortKey,
 	validateTabIndex,
 	validateTooltipAlign,
 	watchString,
-} from '@public-ui/schema';
+} from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
-import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolTooltipWcTag } from '../../core/component-names';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import { KolSpanFc } from '../../functional-components';
+import clsx from 'clsx';
 
 /**
  * @internal
@@ -54,80 +62,96 @@ import { KolSpanWcTag, KolTooltipWcTag } from '../../core/component-names';
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements ButtonAPI {
+export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
-	private ref?: HTMLButtonElement;
+	private buttonRef?: HTMLButtonElement;
+
+	private readonly internalDescriptionById = nonce();
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		this.buttonRef = ref;
 	};
+
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async kolFocus() {
+		this.buttonRef?.focus();
+	}
 
 	private readonly onClick = (event: MouseEvent) => {
 		if (this.state._type === 'submit') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.ref,
+				ref: this.buttonRef,
 			});
 		} else if (this.state._type === 'reset') {
 			propagateResetEventToForm({
 				form: this.host,
-				ref: this.ref,
+				ref: this.buttonRef,
 			});
 		} else {
-			// Event handling
-			stopPropagation(event);
-			tryToDispatchKoliBriEvent('click', this.host, this.state._value);
-
 			// TODO: Static form handling
 			this.controller.setFormAssociatedValue(this.state._value);
 
 			// Callback
 			if (typeof this.state._on?.onClick === 'function') {
-				setEventTarget(event, this.ref);
+				setEventTarget(event, this.buttonRef);
 				this.state._on?.onClick(event, this.state._value);
 			}
+		}
+
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.click, this.state._value);
+		}
+	};
+
+	private readonly onMouseDown = (event: MouseEvent) => {
+		this.state?._on?.onMouseDown?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.mousedown);
 		}
 	};
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
+		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
+		const badgeText = this.state._accessKey || this.state._shortKey;
 
 		return (
-			<Host class="kol-button-wc">
+			<Host>
 				<button
 					ref={this.catchRef}
 					accessKey={this.state._accessKey || undefined}
 					aria-controls={this.state._ariaControls}
+					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
-					class={{
-						button: true,
-						disabled: this.state._disabled === true,
-						[this.state._variant as string]: this.state._variant !== 'custom',
+					class={clsx('kol-button', {
+						'kol-button--disabled': this.state._disabled === true,
+						[`kol-button--${this.state._variant as string}`]: this.state._variant !== 'custom',
+						'kol-button--hide-label': this.state._hideLabel === true,
 						[this.state._customClass as string]:
 							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
-						'hide-label': this.state._hideLabel === true,
-					}}
+					})}
 					disabled={this.state._disabled}
 					id={this.state._id}
 					name={this.state._name}
-					{...this.state._on}
 					onClick={this.onClick}
+					onMouseDown={this.onMouseDown}
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<KolSpanWcTag
-						class="button-inner"
-						_accessKey={this.state._accessKey}
-						_icons={this.state._icons}
-						_hideLabel={this.state._hideLabel}
-						_label={hasExpertSlot ? '' : this.state._label}
+					<KolSpanFc
+						class="kol-button__text"
+						badgeText={badgeText}
+						icons={this.state._icons}
+						hideLabel={this.state._hideLabel}
+						label={hasExpertSlot ? '' : this.state._label}
 					>
 						<slot name="expert" slot="expert"></slot>
-					</KolSpanWcTag>
+					</KolSpanFc>
 				</button>
 				<KolTooltipWcTag
 					/**
@@ -136,10 +160,16 @@ export class KolButtonWc implements ButtonAPI {
 					 */
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
-					_accessKey={this._accessKey}
+					class="kol-button__tooltip"
+					_badgeText={badgeText}
 					_align={this.state._tooltipAlign}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></KolTooltipWcTag>
+				{hasAriaDescription && (
+					<span class="visually-hidden" id={this.internalDescriptionById}>
+						{this.state._ariaDescription}
+					</span>
+				)}
 			</Host>
 		);
 	}
@@ -147,7 +177,7 @@ export class KolButtonWc implements ButtonAPI {
 	private readonly controller: AssociatedInputController;
 
 	/**
-	 * Defines the elements access key.
+	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
 
@@ -155,6 +185,11 @@ export class KolButtonWc implements ButtonAPI {
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -214,6 +249,11 @@ export class KolButtonWc implements ButtonAPI {
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
+	 * Adds a visual short key hint to the component.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
@@ -259,11 +299,17 @@ export class KolButtonWc implements ButtonAPI {
 	@Watch('_accessKey')
 	public validateAccessKey(value?: AccessKeyPropType): void {
 		validateAccessKey(this, value);
+		validateAccessAndShortKey(value, this._shortKey);
 	}
 
 	@Watch('_ariaControls')
 	public validateAriaControls(value?: string): void {
 		validateAriaControls(this, value);
+	}
+
+	@Watch('_ariaDescription')
+	public validateAriaDescription(value?: AriaDescriptionPropType): void {
+		validateAriaDescription(this, value);
 	}
 
 	@Watch('_ariaExpanded')
@@ -323,6 +369,12 @@ export class KolButtonWc implements ButtonAPI {
 		validateAlternativeButtonLinkRole(this, value);
 	}
 
+	@Watch('_shortKey')
+	public validateShortKey(value?: ShortKeyPropType): void {
+		validateShortKey(this, value);
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
 	@Watch('_syncValueBySelector')
 	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
@@ -357,6 +409,7 @@ export class KolButtonWc implements ButtonAPI {
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaControls(this._ariaControls);
+		this.validateAriaDescription(this._ariaDescription);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
@@ -368,11 +421,13 @@ export class KolButtonWc implements ButtonAPI {
 		this.validateName(this._name);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
+		this.validateShortKey(this._shortKey);
 		this.validateSyncValueBySelector(this._syncValueBySelector);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateValue(this._value);
 		this.validateVariant(this._variant);
+		validateAccessAndShortKey(this._accessKey, this._shortKey);
 	}
 }

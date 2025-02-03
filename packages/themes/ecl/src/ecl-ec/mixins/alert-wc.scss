@@ -1,0 +1,93 @@
+@import '../../mixins/rem';
+
+@mixin kol-alert-wc($color: null) {
+	color: var($color);
+	font-size: 0.875em;
+	margin-left: calc(-1 * var(--spacing-2xs));
+}
+
+@mixin kol-alert-theme {
+	.kol-alert {
+		$root: &;
+
+		font-family: var(--font-family);
+
+		&--msg {
+			border: none;
+		}
+
+		&--card {
+			padding-bottom: rem(24);
+			padding-inline-end: rem(8);
+			padding-inline-start: rem(24);
+			padding-top: rem(24);
+			border-style: solid;
+			border-width: rem(2);
+		}
+
+		&--default {
+			--alert-accent-color: var(--color-grey);
+		}
+
+		&--error {
+			--alert-accent-color: var(--color-red);
+		}
+
+		&--info {
+			--alert-accent-color: var(--color-blue);
+		}
+
+		&--success {
+			--alert-accent-color: var(--color-green);
+		}
+
+		&--warning {
+			--alert-accent-color: var(--color-orange);
+		}
+
+		&__container {
+			background-color: var(--color-white);
+
+			@at-root #{$root}--card & {
+				gap: rem(8);
+			}
+		}
+
+		&__container-content {
+			@at-root #{$root}--msg & {
+				padding: var(--spacing-2xs);
+			}
+		}
+
+		&__close-button {
+			.kol-button {
+				color: var(--alert-accent-color);
+			}
+
+			.kol-icon {
+				@at-root #{$root}--card & {
+					font-size: rem(32);
+				}
+			}
+		}
+
+		&__heading-icon {
+			color: var(--alert-accent-color);
+
+			@at-root #{$root}--msg & {
+				font-size: 1.5em;
+				margin: var(--spacing-2xs);
+			}
+
+			@at-root #{$root}--card & {
+				font-size: rem(32);
+			}
+		}
+
+		&__content {
+			@at-root #{$root}--card & {
+				margin-left: rem(40);
+			}
+		}
+	}
+}

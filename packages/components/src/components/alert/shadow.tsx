@@ -1,6 +1,6 @@
-import type { AlertProps, AlertStates, AlertType, AlertVariant, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '@public-ui/schema';
+import type { AlertProps, AlertStates, AlertType, AlertVariant, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { KolAlertWcTag } from '../../core/component-names';
 
 /**
@@ -16,19 +16,17 @@ import { KolAlertWcTag } from '../../core/component-names';
 export class KolAlert implements AlertProps {
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-alert">
-				<KolAlertWcTag
-					_alert={this._alert}
-					_hasCloser={this._hasCloser}
-					_label={this._label}
-					_level={this._level}
-					_on={this._on}
-					_type={this._type}
-					_variant={this._variant}
-				>
-					<slot />
-				</KolAlertWcTag>
-			</Host>
+			<KolAlertWcTag
+				_alert={this._alert}
+				_hasCloser={this._hasCloser}
+				_label={this._label}
+				_level={this._level}
+				_on={this._on}
+				_type={this._type}
+				_variant={this._variant}
+			>
+				<slot />
+			</KolAlertWcTag>
 		);
 	}
 

@@ -8,8 +8,12 @@ import { SampleDescription } from '../SampleDescription';
 export const InputRangeBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier ist ein Schieberegler mit Schalter am Rand. Der Wert kann von 0 bis 50 verändert werden.</p>
+			<p>
+				KolInputRange renders a pair of range- and number fields wich are synchronized with each other. The sample shows KolInputRange in a form context with
+				all variations and states.
+			</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={InputRangeVariants} />
 	</>
 );

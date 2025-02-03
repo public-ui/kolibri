@@ -1,10 +1,19 @@
-@import '../style';
+@import '../@shared/mixins';
+@import '../../styles/global';
 
 @layer kol-component {
-	.tree {
+	.kol-tree {
+		font-size: rem(16);
+
+		&__treeview-navigation {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
 		&:focus-within {
-			outline: 1px solid;
-			outline-offset: 2px;
+			outline: rem(1) solid;
+			outline-offset: rem(2);
 		}
 	}
 }

@@ -8,8 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const InputRadioBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>Hier sind Radio-Buttons in verschiedenen Ausführungen angezeigt. Es kann immer nur einer der drei Radio-Buttons gleichzeitig angeklickt werden.</p>
+			<p>KolInputRadio renders a set of radio buttons. The sample shows KolInputRadio in a form context with all variations and states.</p>
 		</SampleDescription>
+
 		<FormWrap RefComponent={InputRadioVariants} />
 	</>
 );

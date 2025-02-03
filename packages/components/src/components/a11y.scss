@@ -1,3 +1,5 @@
+@import '@shared/mixins';
+
 /*
  * This file contains all rules for accessibility.
  */
@@ -6,7 +8,7 @@
 		/*
 		 * Minimum size of interactive elements.
 		 */
-		--a11y-min-size: 44px;
+		--a11y-min-size: #{rem(44)};
 		/*
 		 * No element should be used without a background and font color whose contrast ratio has
 		 * not been checked. By initially setting the background color to white and the font color
@@ -40,15 +42,14 @@
 	}
 
 	/*
-	 * All interactive elements should have a minimum size of 44px.
+	 * All interactive elements should have a minimum size of rem(44).
 	 */
 	/* input:not([type='checkbox'], [type='radio'], [type='range']), */
 	/* option, */
 	/* select, */
 	/* textarea, */
 	[role='button'],
-	button:not([role='link']),
-	.kol-input .input {
+	button:not([role='link']) {
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
 	}
@@ -88,9 +89,9 @@
 .visually-hidden {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
-	height: 1px;
+	height: rem(1);
 	overflow: hidden;
 	position: absolute;
 	white-space: nowrap;
-	width: 1px;
+	width: rem(1);
 }

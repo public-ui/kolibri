@@ -1,36 +1,24 @@
-import { executeTests } from 'stencil-awesome-test';
+import { KolLinkTag } from '../../../core/component-names';
+import type { LinkProps } from '../../../schema';
+import { executeSnapshotTests } from '../../../utils/testing';
 
-import { h } from '@stencil/core';
-import { newSpecPage } from '@stencil/core/testing';
-
-import { getLinkHtml } from './html.mock';
-
-import type { SpecPage } from '@stencil/core/testing';
-import type { LinkProps } from '@public-ui/schema';
 import { KolLink } from '../shadow';
 import { KolLinkWc } from '../component';
 
-executeTests<LinkProps>(
-	'Link',
-	async (props): Promise<SpecPage> => {
-		const page = await newSpecPage({
-			components: [KolLink, KolLinkWc],
-			template: () => <kol-link {...props} />,
-		});
-		return page;
-	},
-	{
-		_disabled: [true, false],
-		_href: ['https://google.de'],
-		_icons: ['codicon codicon-home'],
-		_hideLabel: [false, true],
-		_label: ['Label'],
-		_target: ['_self', '_blank', 'egal'],
-		_tooltipAlign: ['top', 'right', 'bottom', 'left'],
-		_download: ['', 'download-file.zip'],
-	},
-	getLinkHtml,
-	{
-		execMode: 'default', // ready
-	},
+const baseObj = { _href: 'https://example.com', _icons: 'codicon codicon-home', _label: 'Label', _target: 'self' };
+
+executeSnapshotTests<LinkProps>(
+	KolLinkTag,
+	[KolLink, KolLinkWc],
+	[
+		{ ...baseObj },
+		{ ...baseObj, _tooltipAlign: 'top' },
+		{ ...baseObj, _tooltipAlign: 'left' },
+		{ ...baseObj, _tooltipAlign: 'right' },
+		{ ...baseObj, _tooltipAlign: 'bottom' },
+
+		{ ...baseObj, _tooltipAlign: 'top', _hideLabel: true },
+
+		{ _label: 'Label', _href: '', _download: 'download-file.zip', _target: 'blank' },
+	],
 );

@@ -1,0 +1,48 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		--kolibri-spacing: #{rem(4)};
+	}
+
+	.kol-tabs {
+		&__button-group {
+			border-bottom: rem(1) solid var(--color-grey-25);
+			margin-bottom: rem(-1);
+		}
+
+		.kol-button {
+			border: none;
+			margin-bottom: rem(-1);
+
+			&:hover:not(:disabled) {
+				.kol-span {
+					color: var(--color-blue-130);
+				}
+			}
+			&:focus .kol-span {
+				outline: var(--color-blue-130) solid rem(2);
+			}
+
+			&.selected {
+				.kol-span {
+					border-color: var(--color-grey-25);
+					border-style: solid;
+					border-width: rem(1);
+					border-bottom-color: white;
+					border-top-color: var(--color-blue);
+					box-shadow: 0 rem(-3) var(--color-blue);
+					font-weight: var(--font-weight-bold);
+					color: var(--color-blue);
+				}
+			}
+
+			.kol-span {
+				padding: rem(4);
+				min-height: rem(44);
+				min-width: rem(44);
+			}
+		}
+	}
+}

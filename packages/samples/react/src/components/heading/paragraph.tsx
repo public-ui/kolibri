@@ -8,11 +8,9 @@ import { SampleDescription } from '../SampleDescription';
 export const HeadingParagraph: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				Hier sind sechs verschiedene Überschriften mit unterschiedlichen Leveln dargestellt. Sie haben jeweils noch ein Beispieltext. Es gibt keine
-				Interaktionsmöglichkeit.
-			</p>
+			<p>This sample shows KolHeading with its different levels combined with some text content each.</p>
 		</SampleDescription>
+
 		<div className="grid gap-4">
 			<KolHeading _label="Ich bin eine H1-Überschrift" _level={1} />
 			<p>

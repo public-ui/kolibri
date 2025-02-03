@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NativeOptionFc should render an option tag with the correct index as value and label 1`] = `
+<option class="kol-select__option" value="-1">
+  testLabel
+</option>
+`;
+
+exports[`NativeOptionFc should render an option tag with the correct value and label 1`] = `
+<option class="kol-select__option" value="testValue">
+  testLabel
+</option>
+`;
+
+exports[`NativeOptionFc should render and match snapshot 1`] = `
+<option class="kol-select__option" value="testValue">
+  testLabel
+</option>
+`;
+
+exports[`NativeOptionFc should set selected attribute correctly based on selected prop 1`] = `
+<option class="kol-select__option kol-select__option--selected" selected="" value="testValue">
+  testLabel
+</option>
+`;
+
+exports[`NativeOptionFc should set selected attribute correctly based on selectedValue (with index as value) 1`] = `
+<option class="kol-select__option kol-select__option--selected" selected="" value="-1">
+  testLabel
+</option>
+`;
+
+exports[`NativeOptionFc should set selected attribute correctly based on selectedValue 1`] = `
+<option class="kol-select__option kol-select__option--selected" selected="" value="testValue">
+  testLabel
+</option>
+`;
+
+exports[`NativeOptionFc should set selected attribute correctly based on selectedValue as number (with index as value) 1`] = `
+<option class="kol-select__option kol-select__option--selected" selected="" value="-1">
+  testLabel
+</option>
+`;

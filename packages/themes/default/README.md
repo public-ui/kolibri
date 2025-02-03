@@ -1,5 +1,13 @@
 # Public UI - Default-Theme
 
+[![npm](https://img.shields.io/npm/v/@public-ui/theme-default)](https://www.npmjs.com/package/@public-ui/components)
+[![license](https://img.shields.io/npm/l/@public-ui/theme-default)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![downloads](https://img.shields.io/npm/dt/@public-ui/theme-default)](https://www.npmjs.com/package/@public-ui/theme-default)
+[![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
+[![size](https://img.shields.io/bundlephobia/min/@public-ui/theme-default)](https://bundlephobia.com/result?p=@public-ui/theme-default)
+![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
+
 This is the default theme for the [Public UI web component library](https://public-ui.github.io). You can customize this theme by using `css variables` or by creating a new theme.
 
 ## Integration in React
@@ -29,23 +37,23 @@ Das Default-Theme ist ein _Token-Based_ Theme, das mit minimalen Anpassungen sof
 
 ### Variablen
 
-| Variable                          | Standard-Wert                                                    | Bedeutung                                          |
-| --------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------- |
-| `--kolibri-border-radius`         | `5px`                                                            | Border-Radius für abgerundete Elemente             |
-| `--kolibri-font-family`           | `BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif` | Allgemeine Schriftart                              |
-| `--kolibri-font-size`             | `16px`                                                           | Allgemeine Schriftgröße                            |
-| `--kolibri-spacing`               | `0.25rem`                                                        | Allgemeiner Abstand zwischen Elementen             |
-| `--kolibri-border-width`          | `1px`                                                            | Allgemeine Rahmen-Breite                           |
-| `--kolibri-color-primary`         | `#004b76`                                                        | Primärfarbe                                        |
-| `--kolibri-color-primary-variant` | `#0077b6`                                                        | Alternative Variante der Primärfarbe               |
-| `--kolibri-color-danger`          | `#c0003c`                                                        | Farbe für Fehlermeldungen und gefährliche Aktionen |
-| `--kolibri-color-warning`         | `#c44931`                                                        | Farbe für Warnungen                                |
-| `--kolibri-color-success`         | `#005c45`                                                        | Farbe für Erfolgsmeldungen                         |
-| `--kolibri-color-subtle`          | `#576164`                                                        | Farbe für feine Akzente wie z.B. Rahmen            |
-| `--kolibri-color-light`           | `#ffffff`                                                        | Helle Farbe für z.B. Hintergründe                  |
-| `--kolibri-color-text`            | `#202020`                                                        | Textfarbe                                          |
-| `--kolibri-color-mute`            | `#f2f3f4`                                                        | Farbe für deaktivierte Elemente                    |
-| `--kolibri-color-mute-variant`    | `#bec5c9`                                                        | Alternative Farbe für deaktivierte Elemente        |
+| Variable                          | Standard-Wert                                    | Bedeutung                                          |
+| --------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
+| `--kolibri-border-radius`         | `5px`                                            | Border-Radius für abgerundete Elemente             |
+| `--kolibri-font-family`           | `Verdana, Arial, Calibri, Helvetica, sans-serif` | Allgemeine Schriftart                              |
+| `--kolibri-font-size`             | `16px`                                           | Allgemeine Schriftgröße                            |
+| `--kolibri-spacing`               | `0.25rem`                                        | Allgemeiner Abstand zwischen Elementen             |
+| `--kolibri-border-width`          | `1px`                                            | Allgemeine Rahmen-Breite                           |
+| `--kolibri-color-primary`         | `#004b76`                                        | Primärfarbe                                        |
+| `--kolibri-color-primary-variant` | `#0077b6`                                        | Alternative Variante der Primärfarbe               |
+| `--kolibri-color-danger`          | `#c0003c`                                        | Farbe für Fehlermeldungen und gefährliche Aktionen |
+| `--kolibri-color-warning`         | `#c44931`                                        | Farbe für Warnungen                                |
+| `--kolibri-color-success`         | `#005c45`                                        | Farbe für Erfolgsmeldungen                         |
+| `--kolibri-color-subtle`          | `#576164`                                        | Farbe für feine Akzente wie z.B. Rahmen            |
+| `--kolibri-color-light`           | `#ffffff`                                        | Helle Farbe für z.B. Hintergründe                  |
+| `--kolibri-color-text`            | `#202020`                                        | Textfarbe                                          |
+| `--kolibri-color-mute`            | `#f2f3f4`                                        | Farbe für deaktivierte Elemente                    |
+| `--kolibri-color-mute-variant`    | `#bec5c9`                                        | Alternative Farbe für deaktivierte Elemente        |
 
 ### Verwendung
 

@@ -1,0 +1,5 @@
+@import '../mixins/alert-wc';
+
+@layer kol-theme-component {
+	@include kol-alert-theme;
+}

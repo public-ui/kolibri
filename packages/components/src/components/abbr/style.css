@@ -1,6 +1,0 @@
-@import '../style';
-@layer kol-component {
-	:host > abbr {
-		cursor: help;
-	}
-}

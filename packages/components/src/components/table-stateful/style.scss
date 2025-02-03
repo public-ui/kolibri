@@ -1,27 +1,34 @@
-div.pagination .kol-pagination {
-	display: flex;
-	flex-wrap: wrap;
-}
+@import '../@shared/mixins';
+@import '../../styles/global';
+@import '../@shared/kol-table-stateless-mixin';
 
-div.pagination,
-div.pagination > div:last-child {
-	display: grid;
-	place-items: center;
-}
+@include kol-table-stateless-styles;
 
-@media (max-width: 1024px) {
-	div.pagination .kol-pagination {
-		flex-direction: column;
-	}
-}
-
-@media (min-width: 1024px) {
-	div.pagination,
-	div.pagination > div:last-child {
-		grid-auto-flow: column;
+@layer kol-component {
+	:host {
+		font-size: rem(16);
 	}
 
-	div.pagination .kol-pagination {
+	.kol-table-stateful {
+		&__pagination,
+		&__pagination-wrapper {
+			display: grid;
+			place-items: center;
+			@media (min-width: 1024px) {
+				grid-auto-flow: column;
+			}
+		}
+	}
+
+	.kol-pagination {
 		display: flex;
+		flex-wrap: wrap;
+		@media (min-width: 1024px) {
+			display: flex;
+		}
+
+		@media (max-width: 1024px) {
+			flex-direction: column;
+		}
 	}
 }

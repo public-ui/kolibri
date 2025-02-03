@@ -1,0 +1,382 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=false 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <strong class="kol-card__headline kol-headline kol-headline--single kol-headline--strong">
+          Überschrift
+        </strong>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=true 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <strong class="kol-card__headline kol-headline kol-headline--single kol-headline--strong">
+          Überschrift
+        </strong>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button" data-testid="card-close-button"></kol-button-wc>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=0 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <strong class="kol-card__headline kol-headline kol-headline--single kol-headline--strong">
+          Überschrift
+        </strong>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=1 _hasCloser=false 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h1 class="kol-card__headline kol-headline kol-headline--h1 kol-headline--single">
+          Überschrift
+        </h1>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=1 _hasCloser=true 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h1 class="kol-card__headline kol-headline kol-headline--h1 kol-headline--single">
+          Überschrift
+        </h1>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button" data-testid="card-close-button"></kol-button-wc>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=1 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h1 class="kol-card__headline kol-headline kol-headline--h1 kol-headline--single">
+          Überschrift
+        </h1>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=2 _hasCloser=false 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h2 class="kol-card__headline kol-headline kol-headline--h2 kol-headline--single">
+          Überschrift
+        </h2>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=2 _hasCloser=true 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h2 class="kol-card__headline kol-headline kol-headline--h2 kol-headline--single">
+          Überschrift
+        </h2>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button" data-testid="card-close-button"></kol-button-wc>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=2 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h2 class="kol-card__headline kol-headline kol-headline--h2 kol-headline--single">
+          Überschrift
+        </h2>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=3 _hasCloser=false 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h3 class="kol-card__headline kol-headline kol-headline--h3 kol-headline--single">
+          Überschrift
+        </h3>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=3 _hasCloser=true 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h3 class="kol-card__headline kol-headline kol-headline--h3 kol-headline--single">
+          Überschrift
+        </h3>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button" data-testid="card-close-button"></kol-button-wc>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=3 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h3 class="kol-card__headline kol-headline kol-headline--h3 kol-headline--single">
+          Überschrift
+        </h3>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=4 _hasCloser=false 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h4 class="kol-card__headline kol-headline kol-headline--h4 kol-headline--single">
+          Überschrift
+        </h4>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=4 _hasCloser=true 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h4 class="kol-card__headline kol-headline kol-headline--h4 kol-headline--single">
+          Überschrift
+        </h4>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button" data-testid="card-close-button"></kol-button-wc>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=4 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h4 class="kol-card__headline kol-headline kol-headline--h4 kol-headline--single">
+          Überschrift
+        </h4>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=5 _hasCloser=false 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h5 class="kol-card__headline kol-headline kol-headline--h5 kol-headline--single">
+          Überschrift
+        </h5>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=5 _hasCloser=true 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h5 class="kol-card__headline kol-headline kol-headline--h5 kol-headline--single">
+          Überschrift
+        </h5>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button" data-testid="card-close-button"></kol-button-wc>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=5 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h5 class="kol-card__headline kol-headline kol-headline--h5 kol-headline--single">
+          Überschrift
+        </h5>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=6 _hasCloser=false 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h6 class="kol-card__headline kol-headline kol-headline--h6 kol-headline--single">
+          Überschrift
+        </h6>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=6 _hasCloser=true 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h6 class="kol-card__headline kol-headline kol-headline--h6 kol-headline--single">
+          Überschrift
+        </h6>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button" data-testid="card-close-button"></kol-button-wc>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _level=6 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h6 class="kol-card__headline kol-headline kol-headline--h6 kol-headline--single">
+          Überschrift
+        </h6>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <div class="kol-card">
+      <div class="kol-card__header">
+        <h1 class="kol-card__headline kol-headline kol-headline--h1 kol-headline--single">
+          Überschrift
+        </h1>
+      </div>
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-card>
+`;
