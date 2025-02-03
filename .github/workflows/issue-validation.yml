@@ -104,7 +104,7 @@ jobs:
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           script: |
             try {
-
+              
               const result = await github.rest.teams.getMembershipForUserInOrg({
                 org: context.repo.owner,
                 team_slug: 'specteam',

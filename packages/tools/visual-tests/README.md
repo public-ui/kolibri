@@ -10,7 +10,7 @@
 
 ## Motivation
 
-The `KoliBri` Visual Tests provide a way to add visual regression testing to **theme** modules.
+The `KoliBri` Visual Tests provide a way to add visual regression testing to **theme** modules.  
 It takes screenshots of every component defined in the [React Sample App](https://github.com/public-ui/kolibri/tree/develop/packages/samples/react) with the theme applied and compares them to their references.
 
 ## Installation
