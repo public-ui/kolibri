@@ -1,3 +1,5 @@
+# TableStateful
+
 Synonyme: Data Table, Details List, Data Grid
 
 <kol-alert _type="warning" _variant="card">
