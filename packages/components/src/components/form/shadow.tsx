@@ -68,7 +68,6 @@ export class KolForm implements FormAPI {
 									ref={(el) => {
 										if (index === 0) {
 											this.errorListFirstLink = el;
-											this.scrollToErrorList();
 										}
 									}}
 								/>
