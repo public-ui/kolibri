@@ -130,7 +130,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 
 	@State() public state: AccordionStates = {
 		_label: '', // ⚠ required
-		_level: 1,
+		_level: 0,
 		_on: {},
 	};
 
