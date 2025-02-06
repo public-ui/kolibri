@@ -62,8 +62,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	};
 
 	public render(): JSX.Element {
-		const { _open, _label, _disabled } = this.state;
-		const _level = 1;
+		const { _open, _label, _disabled, _level } = this.state;
 
 		const rootClass = 'details';
 
@@ -110,7 +109,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 1;
+	@Prop() public _level?: HeadingLevel = 0;
 
 	/**
 	 * Defines the callback functions for details.
@@ -125,7 +124,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 
 	@State() public state: DetailsStates = {
 		_label: '', // ⚠ required
-		_level: 1,
+		_level: 0,
 		_on: {},
 	};
 
