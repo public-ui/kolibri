@@ -189,7 +189,6 @@ ROUTES.set('input-radio/horizontal?noColumns', null);
 ROUTES.set('input-radio/object?noColumns', null);
 ROUTES.set('input-range/basic?noColumns', null);
 ROUTES.set('input-text/basic?noColumns', null);
-ROUTES.set('input-text/focus?noColumns', null);
 ROUTES.set('kolibri/basic', {
 	axe: {
 		skipFailures: false,
