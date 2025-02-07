@@ -703,9 +703,6 @@ importers:
       '@public-ui/react':
         specifier: workspace:*
         version: link:../../adapters/react
-      '@public-ui/theme-bwst':
-        specifier: workspace:*
-        version: link:../../themes/bwst
       '@public-ui/themes':
         specifier: workspace:*
         version: link:../../themes
