@@ -105,7 +105,7 @@ ROUTES.set('card/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('combobox/basic', {
+ROUTES.set('combobox/basic?noColumns', {
 	axe: {
 		skipFailures: false,
 	},
@@ -174,22 +174,22 @@ ROUTES.set('image/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('input-checkbox/basic', null);
-ROUTES.set('input-checkbox/button', null);
-ROUTES.set('input-checkbox/switch', null);
-ROUTES.set('input-color/basic', null);
-ROUTES.set('input-date/basic', null);
-ROUTES.set('input-email/basic', null);
-ROUTES.set('input-file/basic', null);
-ROUTES.set('input-number/basic', null);
-ROUTES.set('input-password/basic', null);
-ROUTES.set('input-password/show-password', null);
-ROUTES.set('input-radio/basic', null);
-ROUTES.set('input-radio/horizontal', null);
-ROUTES.set('input-radio/object', null);
-ROUTES.set('input-range/basic', null);
-ROUTES.set('input-text/basic', null);
-ROUTES.set('input-text/focus', null);
+ROUTES.set('input-checkbox/basic?noColumns', null);
+ROUTES.set('input-checkbox/button?noColumns', null);
+ROUTES.set('input-checkbox/switch?noColumns', null);
+ROUTES.set('input-color/basic?noColumns', null);
+ROUTES.set('input-date/basic?noColumns', null);
+ROUTES.set('input-email/basic?noColumns', null);
+ROUTES.set('input-file/basic?noColumns', null);
+ROUTES.set('input-number/basic?noColumns', null);
+ROUTES.set('input-password/basic?noColumns', null);
+ROUTES.set('input-password/show-password?noColumns', null);
+ROUTES.set('input-radio/basic?noColumns', null);
+ROUTES.set('input-radio/horizontal?noColumns', null);
+ROUTES.set('input-radio/object?noColumns', null);
+ROUTES.set('input-range/basic?noColumns', null);
+ROUTES.set('input-text/basic?noColumns', null);
+ROUTES.set('input-text/focus?noColumns', null);
 ROUTES.set('kolibri/basic', {
 	axe: {
 		skipFailures: false,
@@ -268,7 +268,7 @@ ROUTES.set('quote/block', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('select/basic', null);
+ROUTES.set('select/basic?noColumns', null);
 ROUTES.set('skip-nav/basic', {
 	axe: {
 		skipFailures: false,
@@ -279,7 +279,7 @@ ROUTES.set('spin/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('single-select/basic', {
+ROUTES.set('single-select/basic?noColumns', {
 	axe: {
 		skipFailures: false,
 	},
@@ -369,7 +369,7 @@ ROUTES.set('textarea/adjust-height', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('textarea/basic', null);
+ROUTES.set('textarea/basic?noColumns', null);
 ROUTES.set('textarea/resize', {
 	axe: {
 		skipFailures: false,
