@@ -3,9 +3,10 @@ import React, { forwardRef } from 'react';
 import { InputRadioCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleColumns } from '../../SampleColumns';
 export const InputRadioVariants = forwardRef<HTMLKolInputRadioElement, Components.KolInputRadio>(function InputRadioVariant(props, ref) {
 	return (
-		<div className="grid md:grid-cols-2 gap-4">
+		<SampleColumns>
 			<fieldset>
 				<legend>Radio</legend>
 				<InputRadioCases {...props} />
@@ -14,6 +15,6 @@ export const InputRadioVariants = forwardRef<HTMLKolInputRadioElement, Component
 				<legend>Radio (hideLabel)</legend>
 				<InputRadioCases ref={ref} {...props} _hideLabel />
 			</fieldset>
-		</div>
+		</SampleColumns>
 	);
 });

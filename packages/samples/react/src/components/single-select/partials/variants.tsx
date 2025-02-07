@@ -2,10 +2,11 @@ import React from 'react';
 
 import { SingleSelectCases } from './cases';
 import type { Components } from '@public-ui/components';
+import { SampleColumns } from '../../SampleColumns';
 
 export const SingleSelectVariants = (props: Components.KolSingleSelect) => {
 	return (
-		<div className="grid md:grid-cols-2 gap-4">
+		<SampleColumns>
 			<fieldset>
 				<legend>Text</legend>
 				<SingleSelectCases {...props} />
@@ -14,6 +15,6 @@ export const SingleSelectVariants = (props: Components.KolSingleSelect) => {
 				<legend>Text (hideLabel)</legend>
 				<SingleSelectCases {...props} _hideLabel />
 			</fieldset>
-		</div>
+		</SampleColumns>
 	);
 };

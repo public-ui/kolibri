@@ -2,10 +2,11 @@ import React from 'react';
 import type { Components } from '@public-ui/components';
 
 import { ComboboxCases } from './cases';
+import { SampleColumns } from '../../SampleColumns';
 
 export const ComboboxVariants = (props: Partial<Components.KolCombobox>) => {
 	return (
-		<div className="w-full grid md:grid-cols-2 gap-4">
+		<SampleColumns>
 			<fieldset>
 				<legend>Text</legend>
 				<ComboboxCases {...props} />
@@ -14,6 +15,6 @@ export const ComboboxVariants = (props: Partial<Components.KolCombobox>) => {
 				<legend>Text (hideLabel)</legend>
 				<ComboboxCases {...props} _hideLabel />
 			</fieldset>
-		</div>
+		</SampleColumns>
 	);
 };
