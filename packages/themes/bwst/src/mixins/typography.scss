@@ -1,0 +1,6 @@
+@use '../rem' as *;
+
+@mixin kol-typography-hint {
+	font-size: rem(14.4);
+	font-style: italic;
+}

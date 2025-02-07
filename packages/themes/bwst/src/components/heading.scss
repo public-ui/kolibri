@@ -1,0 +1,35 @@
+@use '../rem' as *;
+
+@layer kol-theme-component {
+	.headline-h1,
+	.headline-h2,
+	.headline-h3,
+	.headline-h4,
+	.headline-h5,
+	.headline-h6 {
+		color: inherit;
+		font-style: normal;
+		font-family: var(--font-family);
+	}
+
+	.headline-h1,
+	.headline-h2,
+	.headline-h3 {
+		font-weight: 700;
+	}
+
+	.headline-h1 {
+		font-size: rem(calc(1.5 * 16));
+		line-height: rem(calc(1.75 * 16));
+	}
+
+	.headline-h2 {
+		font-size: rem(calc(1.25 * 16));
+		line-height: rem(calc(1.75 * 16));
+	}
+
+	.headline-h3 {
+		font-size: rem(calc(1.125 * 16));
+		line-height: rem(calc(1.5 * 16));
+	}
+}

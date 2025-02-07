@@ -1,0 +1,131 @@
+@use '../rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/input-error' as *;
+@use '../mixins/typography' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		@include kol-alert-theme;
+	}
+
+	.inputs-wrapper {
+		gap: rem(calc(1 * 16));
+	}
+
+	.kol-input {
+		gap: rem(calc(0.25 * 16));
+	}
+
+	.kol-input .error {
+		order: 1;
+	}
+
+	.kol-input label {
+		order: 2;
+		font-size: rem(calc(0.9 * 16));
+		font-weight: 700;
+	}
+
+	.kol-input .input {
+		order: 3;
+	}
+
+	.kol-input .hint {
+		order: 4;
+		@include kol-typography-hint;
+	}
+
+	input::placeholder {
+		color: var(--color-subtle);
+	}
+
+	/*.input {
+		background-color: var(--color-light);
+		border-color: var(--color-subtle);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: var(--border-width);
+		padding: 0 rem(calc(0.5*16));
+	}*/
+
+	.input {
+		border-radius: var(--border-radius);
+		padding: 0 rem(calc(0.5 * 16));
+	}
+
+	.input > .kol-icon {
+		width: rem(calc(1 * 16));
+	}
+
+	.input.icon-left > .kol-icon:first-child {
+		margin-right: rem(calc(0.5 * 16));
+	}
+
+	.input.icon-right > .kol-icon:last-child {
+		margin-left: rem(calc(0.5 * 16));
+	}
+
+	.input:is(.icon-left, .icon-right) {
+		padding-left: rem(calc(1 * 16));
+		padding-right: rem(calc(1 * 16));
+	}
+
+	:not(.disabled) .input:hover {
+		border-color: var(--color-primary);
+	}
+
+	input:disabled {
+		cursor: not-allowed;
+	}
+
+	.required label > span::after {
+		content: '*';
+		padding-left: 0.125em;
+	}
+
+	.kol-input.error:not(.hidden-error) {
+		@include input-error;
+	}
+
+	.kol-input.disabled .input {
+		background-color: var(--color-mute);
+		border-color: var(--color-mute-variant);
+		color: var(--color-text);
+	}
+
+	.kol-input input[type='range'] {
+		appearance: none;
+		background-color: var(--color-mute-variant);
+		border: rem(1) solid var(--border-color);
+		height: calc(rem(calc(1 * 16)) / 2);
+		line-height: rem(calc(1.5 * 16));
+	}
+
+	.kol-input input[type='range']::-webkit-slider-thumb {
+		appearance: none;
+		height: rem(20);
+		width: rem(20);
+		border-radius: 50%;
+		background: var(--color-primary);
+		cursor: ew-resize;
+		transition: background 0.3s ease-in-out;
+	}
+
+	.kol-input input[type='range']::-moz-range-thumb {
+		appearance: none;
+		height: rem(20);
+		width: rem(20);
+		border-radius: 50%;
+		background: var(--color-primary);
+		cursor: ew-resize;
+		transition: background 0.3s ease-in-out;
+	}
+
+	/*	.kol-input input[type=range]::-webkit-slider-runnable-track  {
+		appearance: none;
+		box-shadow: none;
+		border: none;
+		background: transparent;
+	}*/
+}

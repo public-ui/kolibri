@@ -1,0 +1,35 @@
+@use '../rem' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
+	:host > div {
+		display: grid;
+		width: 100%;
+		height: 100%;
+		background-color: var(--color-light);
+		grid-template-rows: min-content 2fr min-content;
+		border-radius: var(--border-radius);
+		border: rem(1) solid var(--color-subtle);
+	}
+
+	:host .kol-heading-wc {
+		line-height: rem(calc(1.75 * 16));
+	}
+
+	:host div.header {
+		padding: rem(calc(1 * 16)) rem(calc(1 * 16)) rem(calc(0.5 * 16)) rem(calc(1 * 16));
+	}
+
+	:host div.content {
+		padding: rem(calc(0.5 * 16)) rem(calc(1 * 16)) rem(calc(1 * 16));
+		overflow: hidden;
+	}
+
+	:host div.footer {
+		padding: rem(calc(0.5 * 16)) rem(calc(1 * 16));
+	}
+}

@@ -1,0 +1,37 @@
+@layer kol-theme-component {
+	.dot > span {
+		&:nth-child(1) {
+			background-color: #fc0;
+		}
+		&:nth-child(2) {
+			background-color: red;
+		}
+		&:nth-child(4) {
+			background-color: #666;
+		}
+	}
+
+	/* Override colors for cycle animation */
+	@keyframes prixClipFix {
+		0% {
+			border-color: #fff;
+			clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+		}
+		25% {
+			border-color: #666;
+			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+		}
+		50% {
+			border-color: #fc0;
+			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+		}
+		75% {
+			border-color: red;
+			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+		}
+		100% {
+			border-color: #000;
+			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+		}
+	}
+}

@@ -1,0 +1,302 @@
+@use '../rem' as *;
+@use '../mixins/focus-outline' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/typography' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		@include kol-alert-theme;
+	}
+
+	:host fieldset legend {
+		order: 2;
+		display: contents;
+		font-size: rem(calc(0.9 * 16));
+		font-weight: 700;
+	}
+
+	:host .kol-input {
+		display: grid;
+		align-items: center;
+		justify-items: left;
+		width: 100%;
+		min-height: var(--a11y-min-size);
+		gap: rem(calc(0.4 * 16));
+
+		.hint {
+			@include kol-typography-hint;
+		}
+	}
+
+	:host .kol-input:is(.default, .switch) {
+		grid-template-columns: rem(calc(1.5 * 16)) auto;
+		grid-template-areas: unset;
+
+		.input,
+		.input-label {
+			grid-area: unset;
+		}
+	}
+
+	:host .kol-input.switch {
+		grid-template-columns: rem(calc(3.5 * 16)) auto;
+	}
+
+	:host .kol-input.button {
+		gap: rem(calc(0.4 * 16)) rem(1);
+	}
+
+	.checkbox-container {
+		justify-content: flex-start;
+	}
+
+	:host .kol-input > div.input {
+		display: inherit;
+		min-height: var(--a11y-min-size);
+		order: 2;
+	}
+
+	:host .kol-input > div.input input {
+		margin: rem(0);
+	}
+
+	:host .kol-input > label {
+		order: 3;
+	}
+
+	.disabled .input-label,
+	.disabled .checkbox-container {
+		cursor: not-allowed;
+	}
+
+	:host .kol-input > .kol-alert-wc.error {
+		order: 1;
+		padding-top: calc(var(--spacing) / 2);
+		grid-column: span 2;
+	}
+
+	:host .kol-input.error {
+		border-left: rem(3) solid var(--color-danger);
+		padding-left: rem(calc(1 * 16));
+	}
+
+	:host .kol-input.error input:focus,
+	.kol-input.error select:focus,
+	.kol-input.error textarea:focus {
+		outline-color: var(--color-danger) !important;
+	}
+
+	:host .kol-input.error .kol-alert-wc.error {
+		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+	}
+
+	:host input {
+		cursor: pointer;
+		width: 100%;
+		border-color: var(--color-subtle);
+		border-width: rem(2);
+		border-style: solid;
+		border-radius: var(--border-radius);
+		line-height: rem(24);
+		font-size: rem(calc(1 * 16));
+	}
+
+	:host input:hover {
+		border-color: var(--color-primary);
+		box-shadow: rem(0) rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+	}
+
+	:host input:focus:hover {
+		box-shadow: none;
+	}
+
+	:host input:active {
+		box-shadow: none;
+	}
+
+	:host .kol-alert-wc {
+		@include kol-alert-wc;
+	}
+
+	/* CHECKBOX */
+	:host .kol-input label span {
+		margin-top: rem(calc(0.125 * 16));
+	}
+
+	:host .required label > span::after {
+		content: '*';
+		padding-left: rem(calc(0.125 * 16));
+	}
+
+	:host .kol-input input[type='checkbox'] {
+		appearance: none;
+		background-color: white;
+		cursor: pointer;
+		transition: 0.5s;
+	}
+
+	:host .kol-input input[type='checkbox']:checked {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	:host .kol-input.default input[type='checkbox'] {
+		border-radius: var(--border-radius);
+		height: calc(6 * rem(calc(0.25 * 16)));
+		min-width: calc(6 * rem(calc(0.25 * 16)));
+		width: calc(6 * rem(calc(0.25 * 16)));
+	}
+
+	:host .kol-input.default input[type='checkbox']:indeterminate {
+		background-color: var(--color-primary);
+	}
+
+	:host .kol-input.default .icon {
+		color: var(--color-light);
+		margin-left: rem(calc(0.25 * 16));
+	}
+
+	:host .kol-input.switch input[type='checkbox'] {
+		background-color: var(--color-subtle);
+		border-radius: rem(calc(1.25 * 16));
+		border-width: 0;
+		display: block;
+		height: rem(calc(1.5 * 16));
+		min-width: rem(calc(3.5 * 16));
+		position: relative;
+		width: rem(calc(3.5 * 16));
+		/* Visible with forced colors  */
+		outline: transparent solid rem(1);
+	}
+
+	:host .kol-input.switch input[type='checkbox']:before {
+		width: rem(calc(1.25 * 16));
+		height: rem(calc(1.25 * 16));
+		left: calc(rem(calc(0.25 * 16)) - rem(2));
+		top: calc(rem(calc(0.25 * 16)) - rem(2));
+		border-radius: rem(calc(1.25 * 16));
+		background-color: white;
+		position: absolute;
+	}
+
+	:host .kol-input.switch input[type='checkbox']:checked {
+		background-color: var(--color-primary);
+	}
+
+	:host .kol-input.switch input[type='checkbox']:checked:before {
+		transform: translateX(rem(calc(2 * 16)));
+	}
+
+	:host .kol-input.switch input[type='checkbox']:indeterminate:before {
+		transform: translateX(rem(calc(1 * 16)));
+	}
+
+	.switch {
+		& .icon {
+			width: rem(calc(1.25 * 16));
+			height: rem(calc(1.25 * 16));
+			left: rem(2);
+		}
+
+		&.checked .icon {
+			transform: translate(rem(calc(2 * 16)), -50%);
+		}
+
+		&.indeterminate .icon {
+			transform: translate(rem(calc(1 * 16)), -50%);
+		}
+	}
+
+	.button {
+		.input {
+			border-top-width: rem(1);
+			border-left-width: rem(1);
+			border-bottom-width: rem(1);
+
+			border-top-style: solid;
+			border-left-style: solid;
+			border-bottom-style: solid;
+		}
+
+		&.hide-label .input {
+			border-right-width: rem(1);
+			border-right-style: solid;
+		}
+
+		.input-label {
+			border-top-width: rem(1);
+			border-right-width: rem(1);
+			border-bottom-width: rem(1);
+
+			border-top-style: solid;
+			border-right-style: solid;
+			border-bottom-style: solid;
+
+			justify-self: stretch;
+			align-self: stretch;
+			display: flex;
+
+			padding-right: rem(calc(1 * 16));
+
+			.input-label-span {
+				margin: auto 0;
+			}
+		}
+
+		&:focus-within {
+			@include focus-outline;
+		}
+
+		.input,
+		.input-label {
+			border-color: var(--color-primary);
+			background-color: var(--color-light);
+			color: var(--color-primary);
+		}
+
+		&.indeterminate {
+			.input,
+			.input-label {
+				border-color: var(--color-primary);
+				background-color: var(--color-mute);
+				color: var(--color-primary);
+			}
+		}
+
+		&.checked {
+			.input,
+			.input-label {
+				border-color: var(--color-primary);
+				background-color: var(--color-primary);
+				color: var(--color-light);
+			}
+		}
+
+		&:is(:active, :hover):not(.disabled) {
+			.input,
+			.input-label {
+				background-color: var(--color-primary-variant);
+				border-color: var(--color-primary-variant);
+				color: var(--color-light);
+			}
+		}
+
+		&.disabled .input {
+			opacity: 0.5;
+			outline: none;
+		}
+	}
+
+	.kol-input:not(.checkbox.switch, .radio) .input:focus,
+	.kol-input:not(.checkbox) .input:focus,
+	.kol-input:is(.checkbox.switch, .radio) input:focus,
+	.kol-input:is(.checkbox) input:focus {
+		cursor: pointer;
+		outline-color: var(--color-primary-variant);
+		outline-offset: rem(2);
+		outline-style: solid;
+		outline-width: rem(2);
+		transition: outline-offset 0.2s linear;
+	}
+}

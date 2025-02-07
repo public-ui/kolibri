@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: ['@public-ui/test-tag-name-transformer', '@public-ui/theme-default']
+        package: ['@public-ui/test-tag-name-transformer', '@public-ui/theme-default', '@public-ui/theme-bwst']
     steps:
       - uses: actions/checkout@v4
         with:

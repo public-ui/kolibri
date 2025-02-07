@@ -1,0 +1,18 @@
+@use '../mixins/indented-text' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/link' as *;
+@use '../rem' as *;
+
+@layer kol-theme-component {
+	@include kol-alert-theme;
+	@include kol-link;
+
+	:host {
+		display: block;
+	}
+
+	.mandatory-fields-hint {
+		font-family: var(--font-family);
+		@include indented-text;
+	}
+}
