@@ -5,8 +5,7 @@ import { setTagNameTransformer } from '@public-ui/react';
 
 import { bootstrap, isInitialized, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
-import { BWSt } from '@public-ui/theme-bwst';
+import { BWSt, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
 import { App } from './App';
 
