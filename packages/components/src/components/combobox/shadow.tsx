@@ -15,19 +15,19 @@ import type {
 	TooltipAlignPropType,
 	W3CInputValue,
 } from '../../schema';
-import { buildBadgeTextString, showExpertSlot } from '../../schema';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { ComboboxController } from './controller';
-import { KolIconTag, KolInputTag } from '../../core/component-names';
-import { InternalUnderlinedBadgeText } from '../../functional-components';
+import { KolIconTag } from '../../core/component-names';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
 import clsx from 'clsx';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -150,13 +150,25 @@ export class KolCombobox implements ComboboxAPI {
 		}
 	}
 
+	private getFormFieldProps(): FormFieldStateWrapperProps {
+		return {
+			state: this.state,
+			class: clsx('kol-combobox', {
+				'has-value': this.state._hasValue,
+			}),
+			tooltipAlign: this._tooltipAlign,
+			onClick: () => this.refInput?.focus(),
+			alert: this.showAsAlert(),
+		};
+	}
+
 	private getInputProps(): InputStateWrapperProps {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 
 		return {
 			ref: this.catchRef,
 			state: this.state,
-			class: 'combobox__input',
+			class: 'kol-combobox__input',
 			type: 'text',
 			role: 'combobox',
 			'aria-autocomplete': 'both',
@@ -176,9 +188,6 @@ export class KolCombobox implements ComboboxAPI {
 			name: this.state._name,
 			required: this.state._required,
 			...this.controller.onFacade,
-			onChange: this.onChange.bind(this),
-			onInput: this.onInput.bind(this),
-			placeholder: this.state._placeholder,
 			onFocus: (event) => {
 				this.controller.onFacade.onFocus(event);
 				this.inputHasFocus = true;
@@ -187,103 +196,70 @@ export class KolCombobox implements ComboboxAPI {
 				this.controller.onFacade.onBlur(event);
 				this.inputHasFocus = false;
 			},
+			onChange: this.onChange.bind(this),
+			onInput: this.onInput.bind(this),
+			placeholder: this.state._placeholder,
 		};
 	}
 
 	public render(): JSX.Element {
-		const hasExpertSlot = showExpertSlot(this.state._label);
-
 		return (
-			<Host class="kol-combobox">
-				<div class={clsx('combobox', this.state._disabled && 'combobox--disabled')}>
-					<KolInputTag
-						_accessKey={this.state._accessKey}
-						_alert={this.showAsAlert()}
-						_disabled={this.state._disabled}
-						_hideMsg={this.state._hideMsg}
-						_hideLabel={this.state._hideLabel}
-						_hint={this.state._hint}
-						_icons={this.state._icons}
-						_id={this.state._id}
-						_label={this.state._label}
-						_msg={this.state._msg}
-						_required={this.state._required}
-						_shortKey={this.state._shortKey}
-						_tooltipAlign={this._tooltipAlign}
-						_touched={this.state._touched}
-						onClick={() => this.refInput?.focus()}
-						role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
-					>
-						<span slot="label">
-							{hasExpertSlot ? (
-								<slot name="expert"></slot>
-							) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
-								<>
-									<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-									<span class="access-key-hint" aria-hidden="true">
-										{buildBadgeTextString(this.state._accessKey, this.state._shortKey)}
-									</span>
-								</>
-							) : (
-								<span>{this.state._label}</span>
-							)}
-						</span>
-						<div slot="input">
-							<div class="combobox__group">
-								<KolInputStateWrapperFc {...this.getInputProps()} />
-								<button tabindex="-1" class="combobox__icon" onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled}>
-									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
-								</button>
-							</div>
-							{this._isOpen && !(this.state._disabled === true) && (
-								<ul
-									role="listbox"
-									class={clsx('combobox__listbox', this.blockSuggestionMouseOver && 'combobox__listbox--cursor-hidden')}
-									onKeyDown={this.handleKeyDownDropdown.bind(this)}
-								>
-									{Array.isArray(this._filteredSuggestions) &&
-										this._filteredSuggestions.length > 0 &&
-										this._filteredSuggestions.map((option, index) => (
-											<li
-												id={`option-${index}`}
-												key={`-${index}`}
-												ref={(el) => {
-													if (el) this.refSuggestions[index] = el;
-												}}
-												data-index={index}
-												tabIndex={-1}
-												role="option"
-												aria-selected={this.state._value === option ? 'true' : undefined}
-												onClick={(e) => {
-													this.selectOption(e, option as string);
-													this.toggleListbox();
-												}}
-												onMouseOver={() => {
-													if (!this.blockSuggestionMouseOver) {
-														this.focusOption(index);
-													}
-												}}
-												onFocus={() => {
-													this.focusOption(index);
-												}}
-												class="combobox__item"
-												onKeyDown={(e) => {
-													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-														this.selectOption(e, option as string);
-														this.toggleListbox();
-														e.preventDefault();
-													}
-												}}
-											>
-												{option}
-											</li>
-										))}
-								</ul>
-							)}
-						</div>
-					</KolInputTag>
-				</div>
-			</Host>
+			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
+				<KolInputContainerFc state={this.state}>
+					<div class="kol-combobox__group">
+						<KolInputStateWrapperFc {...this.getInputProps()} />
+						<button tabindex="-1" class="kol-combobox__icon" onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled}>
+							<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
+						</button>
+					</div>
+
+					{this._isOpen && !(this.state._disabled === true) && (
+						<ul
+							role="listbox"
+							class={clsx('kol-combobox__listbox', this.blockSuggestionMouseOver && 'kol-combobox__listbox--cursor-hidden')}
+							onKeyDown={this.handleKeyDownDropdown.bind(this)}
+						>
+							{Array.isArray(this._filteredSuggestions) &&
+								this._filteredSuggestions.length > 0 &&
+								this._filteredSuggestions.map((option, index) => (
+									<li
+										id={`option-${index}`}
+										key={`-${index}`}
+										ref={(el) => {
+											if (el) this.refSuggestions[index] = el;
+										}}
+										data-index={index}
+										tabIndex={-1}
+										role="option"
+										aria-selected={this.state._value === option ? 'true' : undefined}
+										onClick={(e) => {
+											this.selectOption(e, option as string);
+											this.toggleListbox();
+										}}
+										onMouseOver={() => {
+											if (!this.blockSuggestionMouseOver) {
+												this.focusOption(index);
+											}
+										}}
+										onFocus={() => {
+											this.focusOption(index);
+										}}
+										class="kol-combobox__item"
+										onKeyDown={(e) => {
+											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
+												this.selectOption(e, option as string);
+												this.toggleListbox();
+												e.preventDefault();
+											}
+										}}
+									>
+										{option}
+									</li>
+								))}
+						</ul>
+					)}
+				</KolInputContainerFc>
+			</KolFormFieldStateWrapperFc>
 		);
 	}
 
