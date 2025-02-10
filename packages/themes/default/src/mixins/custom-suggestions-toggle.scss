@@ -1,0 +1,16 @@
+@import './rem';
+@import './alert-wc';
+@import './typography';
+
+@mixin kol-custom-suggestions-toggle-theme {
+	.kol-custom-suggestions-toggle {
+		display: grid;
+		place-items: center;
+		padding-left: rem(8);
+		padding-right: rem(8);
+
+		&:focus {
+			outline: 0;
+		}
+	}
+}

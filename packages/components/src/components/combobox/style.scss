@@ -1,11 +1,13 @@
 @import '../../styles/global';
 @import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-custom-suggestions-toggle';
 @import '../../styles/kol-form-field-mixin';
 @import '../../styles/kol-input-container-mixin';
 @import '../../styles/kol-input-mixin';
 @import '../@shared/mixins';
 
 @include kol-alert;
+@include kol-custom-suggestions-toggle;
 @include kol-form-field;
 @include kol-input-container;
 @include kol-input;
@@ -13,14 +15,6 @@
 @layer kol-component {
 	.kol-combobox {
 		$root: &;
-
-		&__icon {
-			align-items: center;
-			cursor: pointer;
-			display: flex;
-			height: var(--a11y-min-size);
-			width: var(--a11y-min-size);
-		}
 
 		&__listbox {
 			display: block;

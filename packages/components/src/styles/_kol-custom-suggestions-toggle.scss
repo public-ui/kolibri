@@ -1,0 +1,11 @@
+@mixin kol-custom-suggestions-toggle {
+	@layer kol-component {
+		.kol-custom-suggestions-toggle {
+			align-items: center;
+			cursor: pointer;
+			display: flex;
+			height: var(--a11y-min-size);
+			width: var(--a11y-min-size);
+		}
+	}
+}

@@ -21,13 +21,12 @@ import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@sten
 
 import { nonce } from '../../utils/dev.utils';
 import { ComboboxController } from './controller';
-import { KolIconTag } from '../../core/component-names';
 import { getRenderStates } from '../input/controller';
-import { translate } from '../../i18n';
 import clsx from 'clsx';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
+import CustomSuggestionsFc from '../../functional-components/CustomSuggestionsToggle';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -208,9 +207,7 @@ export class KolCombobox implements ComboboxAPI {
 				<KolInputContainerFc state={this.state}>
 					<div class="kol-combobox__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
-						<button tabindex="-1" class="kol-combobox__icon" onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled}>
-							<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
-						</button>
+						<CustomSuggestionsFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
 					</div>
 
 					{this._isOpen && !(this.state._disabled === true) && (
