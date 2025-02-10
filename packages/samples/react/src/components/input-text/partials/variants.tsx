@@ -3,9 +3,10 @@ import React, { forwardRef } from 'react';
 import { InputTextCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleColumns } from '../../SampleColumns';
 export const InputTextVariants = forwardRef<HTMLKolInputTextElement, Components.KolInputText>(function InputTextVariant(props, ref) {
 	return (
-		<div className="grid md:grid-cols-2 gap-4">
+		<SampleColumns>
 			<fieldset>
 				<legend>Text</legend>
 				<InputTextCases {...props} />
@@ -14,6 +15,6 @@ export const InputTextVariants = forwardRef<HTMLKolInputTextElement, Components.
 				<legend>Text (hideLabel)</legend>
 				<InputTextCases ref={ref} {...props} _hideLabel />
 			</fieldset>
-		</div>
+		</SampleColumns>
 	);
 });

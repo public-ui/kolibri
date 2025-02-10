@@ -3,9 +3,10 @@ import React, { forwardRef } from 'react';
 import { InputRangeCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleColumns } from '../../SampleColumns';
 export const InputRangeVariants = forwardRef<HTMLKolInputRangeElement, Components.KolInputRange>(function InputRangeVariant(props, ref) {
 	return (
-		<div className="grid md:grid-cols-2 gap-4">
+		<SampleColumns>
 			<fieldset>
 				<legend>Range</legend>
 				<InputRangeCases {...props} />
@@ -14,6 +15,6 @@ export const InputRangeVariants = forwardRef<HTMLKolInputRangeElement, Component
 				<legend>Range (hideLabel)</legend>
 				<InputRangeCases ref={ref} {...props} _hideLabel />
 			</fieldset>
-		</div>
+		</SampleColumns>
 	);
 });

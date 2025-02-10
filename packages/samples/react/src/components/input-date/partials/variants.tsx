@@ -4,9 +4,10 @@ import { InputDateCases } from './cases';
 
 import type { Components } from '@public-ui/components';
 import { InputDateMinMaxCases } from './minMax';
+import { SampleColumns } from '../../SampleColumns';
 export const InputDateVariants = forwardRef<HTMLKolInputDateElement, Components.KolInputDate>(function InputDateVariant(props, ref) {
 	return (
-		<div className="grid md:grid-cols-2 gap-4">
+		<SampleColumns>
 			<fieldset>
 				<legend>Date</legend>
 				<InputDateCases {...props} />
@@ -19,6 +20,6 @@ export const InputDateVariants = forwardRef<HTMLKolInputDateElement, Components.
 				<legend>Date (with min/max)</legend>
 				<InputDateMinMaxCases {...props} />
 			</fieldset>
-		</div>
+		</SampleColumns>
 	);
 });
