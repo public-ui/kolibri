@@ -1,0 +1,46 @@
+@use '../rem' as *;
+
+@layer kol-theme-component {
+	:host {
+		display: inline-block;
+		font-family: var(--font-family);
+		font-size: inherit;
+	}
+
+	:host > span {
+		border-radius: var(--border-radius);
+		display: inline-flex;
+		font-style: normal;
+	}
+
+	:host > span.smart-button {
+		align-items: center;
+	}
+
+	:host > span .kol-button-wc:hover > button {
+		background-color: var(--color-primary-variant);
+		color: var(--color-light);
+	}
+
+	:host > span .kol-button-wc > button {
+		color: inherit;
+		border-top-right-radius: var(--border-radius);
+		border-bottom-right-radius: var(--border-radius);
+		padding: rem(calc(0.2 * 16));
+	}
+
+	:host > span .kol-span-wc {
+		padding: rem(calc(0.25 * 16)) rem(calc(0.75 * 16));
+	}
+
+	:host > span > .kol-span-wc {
+		align-items: center;
+		font-style: normal;
+		gap: rem(calc(0.5 * 16));
+	}
+
+	:host > span > .kol-span-wc > span {
+		display: flex;
+		gap: rem(calc(0.25 * 16));
+	}
+}

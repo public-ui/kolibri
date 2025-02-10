@@ -13,6 +13,7 @@ packages:
   - 'packages/themes'
   - 'packages/themes/default'
   - 'packages/themes/ecl'
+  - 'packages/themes/bwst'
   - 'packages/themes/itzbund'
   - 'packages/tools/kolibri-cli'
   - 'packages/tools/visual-tests'

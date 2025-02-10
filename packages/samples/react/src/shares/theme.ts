@@ -1,6 +1,6 @@
 import { SelectOption } from '@public-ui/components';
 
-export const THEMES = ['default', 'ecl-ec', 'ecl-eu', 'itzbund', 'unstyled'] as const;
+export const THEMES = ['default', 'ecl-ec', 'ecl-eu', 'itzbund', 'bwst', 'unstyled'] as const;
 export type Theme = (typeof THEMES)[number];
 export type ThemeAndUnstyled = Theme | 'unstyled';
 
@@ -25,6 +25,10 @@ export const THEME_OPTIONS: SelectOption<ThemeAndUnstyled>[] = [
 	{
 		label: 'Default (Tested)',
 		value: 'default',
+	},
+	{
+		label: 'BWSt (Tested)',
+		value: 'bwst',
 	},
 	{
 		label: 'European Commission (Draft)',

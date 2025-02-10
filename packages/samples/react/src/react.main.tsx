@@ -5,7 +5,7 @@ import { setTagNameTransformer } from '@public-ui/react';
 
 import { bootstrap, isInitialized, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
+import { BWSt, DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
 import { App } from './App';
 
@@ -35,7 +35,7 @@ const getThemes = async () => {
 	}
 
 	/* List of regular sample app themes */
-	return [DEFAULT, ECL_EC, ECL_EU, ITZBund] as Theme[];
+	return [DEFAULT, ECL_EC, ECL_EU, ITZBund, BWSt] as Theme[];
 };
 
 void (async () => {

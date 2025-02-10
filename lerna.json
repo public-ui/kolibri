@@ -18,6 +18,7 @@
 		"packages/themes/default",
 		"packages/themes/ecl",
 		"packages/themes/itzbund",
+		"packages/themes/bwst",
 		"packages/tools/kolibri-cli",
 		"packages/tools/visual-tests"
 	],

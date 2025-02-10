@@ -1,0 +1,86 @@
+@use '../rem' as *;
+@use '../mixins/focus-outline' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	nav {
+		background-color: var(--color-mute);
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	.kol-link-wc {
+		display: flex;
+	}
+
+	.entry-item a,
+	.entry-item .button {
+		align-items: center;
+		color: var(--color-primary);
+		display: flex;
+		gap: rem(calc(0.5 * 16));
+		min-height: var(--a11y-min-size);
+		text-decoration: none;
+
+		.vertical & {
+			border-left: rem(2) solid transparent;
+			padding-left: rem(calc(0.5 * 16));
+		}
+
+		.horizontal & {
+			padding: 0 rem(calc(1 * 16));
+		}
+
+		.vertical .active & {
+			border-left-color: var(--color-primary);
+		}
+
+		&:focus-visible {
+			@include focus-outline;
+		}
+	}
+
+	.entry-item a:hover {
+		text-decoration: underline;
+	}
+
+	// nested lists
+	.list .list {
+		padding-left: rem(calc(1 * 16));
+	}
+
+	.active .entry-item a,
+	.active .entry-item .button {
+		font-weight: bold;
+	}
+
+	.active .list .entry-item a,
+	.active .list .entry-item .button {
+		font-weight: normal;
+		border-left-color: transparent;
+	}
+
+	.expand-button {
+		margin-left: rem(calc(0.5 * 16));
+
+		.button {
+			&:hover {
+				background-color: var(--color-primary);
+				color: var(--color-light);
+			}
+
+			&:focus-visible {
+				@include focus-outline;
+			}
+		}
+
+		.button-inner {
+			justify-content: center;
+		}
+	}
+}

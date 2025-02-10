@@ -1,0 +1,47 @@
+@use '../rem' as *;
+
+@mixin kol-link {
+	:is(a, button) {
+		color: var(--color-primary);
+		font-style: normal;
+		font-weight: 400;
+		text-decoration-line: underline;
+	}
+
+	:is(a, button):focus {
+		outline: none;
+	}
+
+	:is(a, button):focus kol-span-wc {
+		border-radius: calc(var(--border-radius) / 2);
+		outline: var(--border-width) solid;
+		outline-offset: calc(rem(calc(1 * 16)) / 8);
+	}
+
+	:is(a, button):visited {
+		color: var(--visited);
+	}
+
+	.hidden {
+		display: none;
+		visibility: hidden;
+	}
+
+	.skip {
+		left: rem(-99999);
+		overflow: hidden;
+		position: absolute;
+		z-index: 9999999;
+		line-height: 1em;
+	}
+
+	.skip:focus {
+		background: white;
+		left: unset;
+		position: unset;
+	}
+
+	.external-link-icon {
+		margin-left: 0;
+	}
+}
