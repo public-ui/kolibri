@@ -3,6 +3,7 @@
 @import '../mixins/input-error';
 @import '../mixins/typography';
 @import '../mixins/custom-suggestions-option';
+@import '../mixins/custom-suggestions-options-group';
 @import '../mixins/custom-suggestions-toggle';
 @import '../@shared/input-core';
 
@@ -12,6 +13,7 @@ $visible-options: 5;
 @layer kol-theme-component {
 	@include kol-alert-theme;
 	@include kol-custom-suggestions-option-theme($option-height);
+	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
 	@include kol-custom-suggestions-toggle-theme;
 
 	:host {
@@ -38,21 +40,6 @@ $visible-options: 5;
 			&::placeholder {
 				color: var(--color-subtle);
 			}
-		}
-
-		&__icon {
-		}
-
-		&__listbox {
-			border-style: solid;
-			border-width: rem(1);
-			border-radius: var(--border-radius);
-			border-color: var(--color-subtle);
-			overflow-y: auto;
-			overflow-x: hidden;
-			max-height: calc($option-height * $visible-options + rem(2));
-			left: rem(-8);
-			right: rem(-8);
 		}
 	}
 }

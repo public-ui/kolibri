@@ -28,6 +28,7 @@ import KolInputStateWrapperFc from '../../functional-component-wrappers/InputSta
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import CustomSuggestionsFc from '../../functional-components/CustomSuggestionsToggle';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
+import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -212,11 +213,7 @@ export class KolCombobox implements ComboboxAPI {
 					</div>
 
 					{this._isOpen && !(this.state._disabled === true) && (
-						<ul
-							role="listbox"
-							class={clsx('kol-combobox__listbox', this.blockSuggestionMouseOver && 'kol-combobox__listbox--cursor-hidden')}
-							onKeyDown={this.handleKeyDownDropdown.bind(this)}
-						>
+						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
 							{Array.isArray(this._filteredSuggestions) &&
 								this._filteredSuggestions.length > 0 &&
 								this._filteredSuggestions.map((option, index) => (
@@ -248,7 +245,7 @@ export class KolCombobox implements ComboboxAPI {
 										}}
 									/>
 								))}
-						</ul>
+						</CustomSuggestionsOptionsGroupFc>
 					)}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>

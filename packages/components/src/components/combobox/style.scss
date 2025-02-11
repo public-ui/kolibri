@@ -1,6 +1,7 @@
 @import '../../styles/global';
 @import '../../styles/kol-alert-mixin';
 @import '../../styles/kol-custom-suggestions-option';
+@import '../../styles/kol-custom-suggestions-options-group';
 @import '../../styles/kol-custom-suggestions-toggle';
 @import '../../styles/kol-form-field-mixin';
 @import '../../styles/kol-input-container-mixin';
@@ -9,26 +10,8 @@
 
 @include kol-alert;
 @include kol-custom-suggestions-option;
+@include kol-custom-suggestions-options-group;
 @include kol-custom-suggestions-toggle;
 @include kol-form-field;
 @include kol-input-container;
 @include kol-input;
-
-@layer kol-component {
-	.kol-combobox {
-		$root: &;
-
-		&__listbox {
-			display: block;
-			position: absolute;
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			overflow-y: auto;
-			overflow-x: hidden;
-			z-index: 2;
-			background-color: white;
-			max-height: rem(250);
-		}
-	}
-}

@@ -1,0 +1,15 @@
+@import './rem';
+
+@mixin kol-custom-suggestions-options-group-theme($option-height, $visible-options) {
+	.kol-custom-suggestions-options-group {
+		border-style: solid;
+		border-width: rem(1);
+		border-radius: var(--border-radius);
+		border-color: var(--color-subtle);
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: calc($option-height * $visible-options + rem(2));
+		left: rem(-8);
+		right: rem(-8);
+	}
+}

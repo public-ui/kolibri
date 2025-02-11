@@ -3,7 +3,7 @@
 		.kol-custom-suggestions-option {
 			cursor: pointer;
 
-			.kol-combobox__listbox--cursor-hidden & {
+			.kol-custom-suggestions-options-group--cursor-hidden & {
 				cursor: none !important;
 			}
 		}
