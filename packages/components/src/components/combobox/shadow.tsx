@@ -26,7 +26,7 @@ import clsx from 'clsx';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
-import CustomSuggestionsFc from '../../functional-components/CustomSuggestionsToggle';
+import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 
@@ -209,7 +209,7 @@ export class KolCombobox implements ComboboxAPI {
 				<KolInputContainerFc state={this.state}>
 					<div class="kol-combobox__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
-						<CustomSuggestionsFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
+						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
 					</div>
 
 					{this._isOpen && !(this.state._disabled === true) && (
