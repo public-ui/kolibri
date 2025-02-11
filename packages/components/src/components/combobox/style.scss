@@ -1,5 +1,6 @@
 @import '../../styles/global';
 @import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-custom-suggestions-option';
 @import '../../styles/kol-custom-suggestions-toggle';
 @import '../../styles/kol-form-field-mixin';
 @import '../../styles/kol-input-container-mixin';
@@ -7,6 +8,7 @@
 @import '../@shared/mixins';
 
 @include kol-alert;
+@include kol-custom-suggestions-option;
 @include kol-custom-suggestions-toggle;
 @include kol-form-field;
 @include kol-input-container;
@@ -27,14 +29,6 @@
 			z-index: 2;
 			background-color: white;
 			max-height: rem(250);
-		}
-
-		&__item {
-			cursor: pointer;
-
-			#{$root}__listbox--cursor-hidden & {
-				cursor: none !important;
-			}
 		}
 	}
 }

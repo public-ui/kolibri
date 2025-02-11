@@ -27,6 +27,7 @@ import type { InputStateWrapperProps } from '../../functional-component-wrappers
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import CustomSuggestionsFc from '../../functional-components/CustomSuggestionsToggle';
+import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -219,16 +220,13 @@ export class KolCombobox implements ComboboxAPI {
 							{Array.isArray(this._filteredSuggestions) &&
 								this._filteredSuggestions.length > 0 &&
 								this._filteredSuggestions.map((option, index) => (
-									<li
-										id={`option-${index}`}
-										key={`-${index}`}
+									<CustomSuggestionsOptionFc
+										index={index}
+										option={option}
 										ref={(el) => {
 											if (el) this.refSuggestions[index] = el;
 										}}
-										data-index={index}
-										tabIndex={-1}
-										role="option"
-										aria-selected={this.state._value === option ? 'true' : undefined}
+										selected={this.state._value === option}
 										onClick={(e) => {
 											this.selectOption(e, option as string);
 											this.toggleListbox();
@@ -241,7 +239,6 @@ export class KolCombobox implements ComboboxAPI {
 										onFocus={() => {
 											this.focusOption(index);
 										}}
-										class="kol-combobox__item"
 										onKeyDown={(e) => {
 											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
 												this.selectOption(e, option as string);
@@ -249,9 +246,7 @@ export class KolCombobox implements ComboboxAPI {
 												e.preventDefault();
 											}
 										}}
-									>
-										{option}
-									</li>
+									/>
 								))}
 						</ul>
 					)}

@@ -1,0 +1,11 @@
+@mixin kol-custom-suggestions-option {
+	@layer kol-component {
+		.kol-custom-suggestions-option {
+			cursor: pointer;
+
+			.kol-combobox__listbox--cursor-hidden & {
+				cursor: none !important;
+			}
+		}
+	}
+}

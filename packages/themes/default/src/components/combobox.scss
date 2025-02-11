@@ -2,6 +2,7 @@
 @import '../mixins/alert-wc';
 @import '../mixins/input-error';
 @import '../mixins/typography';
+@import '../mixins/custom-suggestions-option';
 @import '../mixins/custom-suggestions-toggle';
 @import '../@shared/input-core';
 
@@ -10,6 +11,7 @@ $visible-options: 5;
 
 @layer kol-theme-component {
 	@include kol-alert-theme;
+	@include kol-custom-suggestions-option-theme($option-height);
 	@include kol-custom-suggestions-toggle-theme;
 
 	:host {
@@ -51,20 +53,6 @@ $visible-options: 5;
 			max-height: calc($option-height * $visible-options + rem(2));
 			left: rem(-8);
 			right: rem(-8);
-		}
-
-		&__item {
-			display: flex;
-			align-items: center;
-			min-height: $option-height;
-			line-height: 1;
-			padding: rem(10) rem(12);
-
-			&:focus {
-				background-color: var(--color-primary-variant);
-				color: var(--color-light);
-				outline: 0;
-			}
 		}
 	}
 }
