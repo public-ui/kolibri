@@ -20,10 +20,6 @@ $visible-options: 5;
 		font-family: var(--font-family);
 	}
 
-	.kol-input-container__container {
-		position: relative;
-	}
-
 	.kol-combobox {
 		&__group {
 			display: inline-flex;
