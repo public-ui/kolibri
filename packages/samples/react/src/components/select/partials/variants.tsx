@@ -3,9 +3,10 @@ import React, { forwardRef } from 'react';
 import { SelectCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleColumns } from '../../SampleColumns';
 export const SelectVariants = forwardRef<HTMLKolSelectElement, Components.KolSelect>(function SelectVariant(props, ref) {
 	return (
-		<div className="grid md:grid-cols-2 gap-4">
+		<SampleColumns>
 			<fieldset>
 				<legend>Text</legend>
 				<SelectCases {...props} />
@@ -14,6 +15,6 @@ export const SelectVariants = forwardRef<HTMLKolSelectElement, Components.KolSel
 				<legend>Text (hideLabel)</legend>
 				<SelectCases ref={ref} {...props} _hideLabel />
 			</fieldset>
-		</div>
+		</SampleColumns>
 	);
 });

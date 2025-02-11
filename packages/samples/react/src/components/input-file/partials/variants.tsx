@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
 
 import { InputFileCases } from './cases';
+import { SampleColumns } from '../../SampleColumns';
 
 import type { Components } from '@public-ui/components';
 export const InputFileVariants = forwardRef<HTMLKolInputFileElement, Components.KolInputFile>(function InputFileVariant(props, ref) {
 	return (
-		<div className="grid md:grid-cols-2 gap-4">
+		<SampleColumns>
 			<fieldset>
 				<legend>File</legend>
 				<InputFileCases {...props} />
@@ -14,6 +15,6 @@ export const InputFileVariants = forwardRef<HTMLKolInputFileElement, Components.
 				<legend>File (hideLabel)</legend>
 				<InputFileCases ref={ref} {...props} _hideLabel />
 			</fieldset>
-		</div>
+		</SampleColumns>
 	);
 });
