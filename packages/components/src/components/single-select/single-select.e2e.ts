@@ -14,7 +14,7 @@ const OPTIONS = [
 const OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OPTIONS)}'`;
 const fillAction: FillAction = async (page) => {
 	await page.getByRole('button').click();
-	await page.getByRole('listbox').getByLabel(TEST_LABEL).click({ force: true });
+	await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 };
 
 test.describe(COMPONENT_NAME, () => {
