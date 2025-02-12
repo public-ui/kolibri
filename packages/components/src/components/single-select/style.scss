@@ -1,62 +1,23 @@
 @import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-custom-suggestions-option';
+@import '../../styles/kol-custom-suggestions-options-group';
+@import '../../styles/kol-custom-suggestions-toggle';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
+@import '../../styles/kol-input-mixin';
 @import '../@shared/mixins';
-@import '../host-display-block';
-@import '../tooltip/style';
+
+@include kol-alert;
+@include kol-custom-suggestions-option;
+@include kol-custom-suggestions-options-group;
+@include kol-custom-suggestions-toggle;
+@include kol-form-field;
+@include kol-input-container;
+@include kol-input;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
-	.single-select {
-		position: relative;
-
-		&.disabled,
-		&.disabled * {
-			cursor: not-allowed !important;
-		}
-
-		&__group {
-			display: inline-flex;
-			align-items: center;
-		}
-
-		&__input {
-			flex-grow: 1;
-
-			&:focus {
-				outline: none;
-			}
-		}
-
-		&__button {
-			height: var(--a11y-min-size);
-			width: var(--a11y-min-size);
-		}
-
-		&__listbox {
-			display: block;
-			position: absolute;
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			overflow-y: auto;
-			overflow-x: hidden;
-			z-index: 2;
-			background-color: white;
-			max-height: rem(250);
-		}
-
-		&__item {
-			&.highlighted {
-				background-color: #f0f0f0;
-			}
-
-			.single-select__listbox--cursor-hidden & {
-				cursor: none !important;
-			}
-		}
-
+	.kol-single-select {
 		&__no-results-message {
 			cursor: default;
 			display: flex;
@@ -64,9 +25,5 @@
 			justify-content: center;
 			min-height: rem(50);
 		}
-	}
-
-	.kol-input {
-		display: grid;
 	}
 }

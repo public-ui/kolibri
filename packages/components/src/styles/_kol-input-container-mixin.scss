@@ -24,6 +24,10 @@
 				grid-template-columns: auto 1fr auto;
 			}
 
+			&__container {
+				position: relative;
+			}
+
 			&__adornment {
 				display: flex;
 				align-items: center;

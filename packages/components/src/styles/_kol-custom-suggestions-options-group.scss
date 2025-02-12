@@ -1,0 +1,16 @@
+@mixin kol-custom-suggestions-options-group {
+	@layer kol-component {
+		.kol-custom-suggestions-options-group {
+			display: block;
+			position: absolute;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow-y: auto;
+			overflow-x: hidden;
+			z-index: 2;
+			background-color: white;
+			max-height: rem(250);
+		}
+	}
+}

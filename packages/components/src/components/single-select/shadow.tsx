@@ -15,17 +15,21 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { buildBadgeTextString, showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { SingleSelectController } from './controller';
-import { KolIconTag, KolInputTag } from '../../core/component-names';
-import { InternalUnderlinedBadgeText } from '../../functional-components';
+import { KolIconTag } from '../../core/component-names';
 import { getRenderStates } from '../input/controller';
 import { translate } from '../../i18n';
-import clsx from 'clsx';
+import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
+import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
+import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
+import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 
 /**
  * @slot - The input field label.
@@ -173,157 +177,116 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 	}
 
-	public render(): JSX.Element {
-		const hasExpertSlot = showExpertSlot(this.state._label);
+	private getFormFieldProps(): FormFieldStateWrapperProps {
+		return {
+			state: this.state,
+			class: 'kol-single-select',
+			tooltipAlign: this._tooltipAlign,
+			onClick: () => this.refInput?.focus(),
+			alert: this.showAsAlert(),
+		};
+	}
+
+	private getInputProps(): InputStateWrapperProps {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 
+		return {
+			'aria-activedescendant': this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined,
+			'aria-autocomplete': 'both',
+			'aria-controls': 'listbox',
+			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
+			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
+			accessKey: this.state._accessKey,
+			autocapitalize: 'off',
+			autocorrect: 'off',
+			class: 'kol-single-select__input',
+			disabled: this.state._disabled,
+			name: this.state._name,
+			placeholder: this.state._placeholder,
+			ref: this.catchRef,
+			required: this.state._required,
+			state: this.state,
+			type: 'text',
+			value: this._inputValue,
+			...this.controller.onFacade,
+			onChange: this.onChange.bind(this),
+			onClick: this.onClick.bind(this),
+			onInput: this.onInput.bind(this),
+			onFocus: (event) => {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
+			},
+			onBlur: (event) => {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+			},
+		};
+	}
+
+	public render(): JSX.Element {
 		return (
-			<Host class="kol-single-select">
-				<div class={`single-select ${this.state._disabled === true ? 'disabled' : ''} `}>
-					<KolInputTag
-						_accessKey={this.state._accessKey}
-						_alert={this.showAsAlert()}
-						_disabled={this.state._disabled}
-						_hideMsg={this.state._hideMsg}
-						_hideLabel={this.state._hideLabel}
-						_hint={this.state._hint}
-						_icons={this.state._icons}
-						_id={this.state._id}
-						_label={this.state._label}
-						_msg={this.state._msg}
-						_required={this.state._required}
-						_shortKey={this.state._shortKey}
-						_tooltipAlign={this._tooltipAlign}
-						_touched={this.state._touched}
-						role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
-					>
-						<span slot="label">
-							{hasExpertSlot ? (
-								<slot name="expert"></slot>
-							) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
-								<>
-									<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey || this.state._shortKey)} label={this.state._label} />{' '}
-									<span class="access-key-hint" aria-hidden="true">
-										{buildBadgeTextString(this.state._accessKey || this.state._shortKey)}
-									</span>
-								</>
-							) : (
-								<span>{this.state._label}</span>
-							)}
-						</span>
-						<div slot="input">
-							<div class="single-select__group">
-								<input
-									ref={this.catchRef}
-									class="single-select__input"
-									type="text"
-									aria-autocomplete="both"
-									aria-controls="listbox"
-									value={this._inputValue}
-									accessKey={this.state._accessKey}
-									aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-									aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-									aria-activedescendant={this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined}
-									autoCapitalize="off"
-									autoCorrect="off"
-									disabled={this.state._disabled}
-									name={this.state._name}
-									required={this.state._required}
-									{...this.controller.onFacade}
-									onInput={this.onInput.bind(this)}
-									onChange={this.onChange.bind(this)}
-									onClick={this.onClick.bind(this)}
-									onFocus={(event) => {
-										this.controller.onFacade.onFocus(event);
-										this.inputHasFocus = true;
-									}}
-									onBlur={(event) => {
-										this.controller.onFacade.onBlur(event);
-										this.inputHasFocus = false;
-									}}
-									placeholder={this.state._placeholder}
-								/>
-								{this._inputValue && (
-									<KolIconTag
-										_icons="codicon codicon-close"
-										_label={translate('kol-delete-selection')}
-										onClick={() => {
-											this.clearSelection();
-											this.refInput?.focus();
+			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
+				<KolInputContainerFc state={this.state}>
+					<div class="kol-single-select__group">
+						<KolInputStateWrapperFc {...this.getInputProps()} />
+
+						{this._inputValue && (
+							<KolIconTag
+								_icons="codicon codicon-close"
+								_label={translate('kol-delete-selection')}
+								onClick={() => {
+									this.clearSelection();
+									this.refInput?.focus();
+								}}
+								class="kol-single-select__delete"
+							/>
+						)}
+
+						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
+					</div>
+					{this._isOpen && !(this.state._disabled === true) && (
+						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
+								this._filteredOptions.map((option, index) => (
+									<CustomSuggestionsOptionFc
+										index={index}
+										option={option.label}
+										ref={(el) => {
+											if (el) this.refOptions[index] = el;
 										}}
-										class="single-select__delete"
+										selected={this._value === (option as Option<string>).value}
+										onClick={(event: Event) => {
+											this.selectOption(event, option as Option<string>);
+											this.refInput?.focus();
+											this.toggleListbox(event);
+										}}
+										onMouseOver={() => {
+											if (!this.blockSuggestionMouseOver) {
+												this._focusedOptionIndex = index;
+												this.focusOption(index);
+											}
+										}}
+										onFocus={() => {
+											this._focusedOptionIndex = index;
+											this.focusOption(index);
+										}}
+										onKeyDown={(e) => {
+											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
+												this.selectOption(e, option as Option<string>);
+												this.refInput?.focus();
+												this.toggleListbox(e);
+												e.preventDefault();
+											}
+										}}
 									/>
-								)}
-
-								<button tabindex="-1" class="single-select__button" onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled}>
-									<KolIconTag _icons="codicon codicon-triangle-down" _label={translate('kol-dropdown')} />
-								</button>
-							</div>
-							{this._isOpen && !(this.state._disabled === true) && (
-								<ul
-									role="listbox"
-									class={clsx('single-select__listbox', this.blockSuggestionMouseOver && 'single-select__listbox--cursor-hidden')}
-									onKeyDown={this.handleKeyDownDropdown.bind(this)}
-								>
-									{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
-										this._filteredOptions.map((option, index) => (
-											<li
-												id={`option-${index}`}
-												key={`-${index}`}
-												ref={(el) => {
-													if (el) this.refOptions[index] = el;
-												}}
-												tabIndex={-1}
-												role="option"
-												aria-selected={this._value === (option as Option<string>).value ? 'true' : undefined}
-												onClick={(event: Event) => {
-													this.selectOption(event, option as Option<string>);
-													this.refInput?.focus();
-													this.toggleListbox(event);
-												}}
-												onMouseOver={() => {
-													if (!this.blockSuggestionMouseOver) {
-														this._focusedOptionIndex = index;
-														this.focusOption(index);
-													}
-												}}
-												onFocus={() => {
-													this._focusedOptionIndex = index;
-													this.focusOption(index);
-												}}
-												class="single-select__item"
-												onKeyDown={(e) => {
-													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-														this.selectOption(e, option as Option<string>);
-														this.refInput?.focus();
-														this.toggleListbox(e);
-														e.preventDefault();
-													}
-												}}
-											>
-												<input
-													class="visually-hidden"
-													type="radio"
-													name="options"
-													id={`option-radio-${index}`}
-													value={(option as Option<string>).value}
-													checked={this._value === (option as Option<string>).value || index === this._focusedOptionIndex}
-												/>
-
-												<label htmlFor={`option-radio-${index}`} class="radio-label">
-													{option.label}
-												</label>
-											</li>
-										))
-									) : (
-										<li class="single-select__no-results-message">{translate('kol-no-results-message')} </li>
-									)}
-								</ul>
+								))
+							) : (
+								<li class="kol-single-select__no-results-message">{translate('kol-no-results-message')} </li>
 							)}
-						</div>
-					</KolInputTag>
-				</div>
-			</Host>
+						</CustomSuggestionsOptionsGroupFc>
+					)}
+				</KolInputContainerFc>
+			</KolFormFieldStateWrapperFc>
 		);
 	}
 

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomSuggestionsOptionsGroup renders default state 1`] = `
+<ul class="kol-custom-suggestions-options-group" role="listbox">
+  <li>
+    Test Content
+  </li>
+</ul>
+`;
+
+exports[`CustomSuggestionsOptionsGroup renders with blocked mouse over 1`] = `
+<ul class="kol-custom-suggestions-options-group kol-custom-suggestions-options-group--cursor-hidden" role="listbox">
+  <li>
+    Test Content
+  </li>
+</ul>
+`;
