@@ -1,5 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
-import { EventCallback } from '../types';
+import type { EventCallback } from '../types';
 import { watchValidator } from '../utils';
 
 /* types */
