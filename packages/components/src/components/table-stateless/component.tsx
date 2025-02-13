@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
+import clsx from 'clsx';
 import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
@@ -28,12 +29,12 @@ import {
 	validateTableDataFoot,
 	validateTableHeaderCells,
 	validateTableSelection,
-	watchString,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
+import type { MinWidthPropType } from '../../schema/props/min-width';
+import { validateMinWidth } from '../../schema/props/min-width';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import clsx from 'clsx';
 
 /**
  * @internal
@@ -47,11 +48,12 @@ export class KolTableStateless implements TableStatelessAPI {
 
 	@State() public state: TableStatelessStates = {
 		_data: [],
-		_label: '',
 		_headerCells: {
 			horizontal: [],
 			vertical: [],
 		},
+		_label: '',
+		_minWidth: 'auto',
 	};
 
 	private tableDivElement?: HTMLDivElement;
@@ -86,9 +88,9 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Prop() public _label!: string;
 
 	/**
-	 * Defines the table min-width.
+	 * Defines the table min-width (CSS width values).
 	 */
-	@Prop() public _minWidth?: string;
+	@Prop() public _minWidth!: MinWidthPropType;
 
 	/**
 	 * Defines the callback functions for table events.
@@ -127,10 +129,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	@Watch('_minWidth')
-	public validateMinWidth(value?: string): void {
-		watchString(this, '_minWidth', value, {
-			defaultValue: undefined,
-		});
+	public validateMinWidth(value?: MinWidthPropType): void {
+		validateMinWidth(this, value);
 	}
 
 	@Watch('_on')

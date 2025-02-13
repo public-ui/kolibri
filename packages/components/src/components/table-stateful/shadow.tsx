@@ -1,4 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
+import { translate } from '../../i18n';
 import type {
 	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,
@@ -34,13 +38,9 @@ import {
 	watchString,
 	watchValidator,
 } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-
-import { translate } from '../../i18n';
-import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { Callback } from '../../schema/enums';
+import type { MinWidthPropType } from '../../schema/props/min-width';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -100,9 +100,9 @@ export class KolTableStateful implements TableAPI {
 	@Prop() public _label!: string;
 
 	/**
-	 * Defines the table min-width.
+	 * Defines the table min-width (CSS width values).
 	 */
-	@Prop() public _minWidth?: string;
+	@Prop() public _minWidth!: MinWidthPropType;
 
 	/**
 	 * Defines whether to show the data distributed over multiple pages.
@@ -130,6 +130,7 @@ export class KolTableStateful implements TableAPI {
 			vertical: [],
 		},
 		_label: '', // ⚠ required
+		_minWidth: 'auto',
 		_pagination: {
 			_page: 1,
 			_pageSize: 10,
