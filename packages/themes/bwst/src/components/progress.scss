@@ -1,0 +1,35 @@
+@use '../rem' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	:host progress,
+	:host span {
+		display: block;
+		height: rem(0);
+		overflow: hidden;
+		width: rem(0);
+	}
+
+	:host svg line:first-child,
+	:host svg circle:first-child {
+		fill: transparent;
+		stroke: var(--color-mute-variant);
+	}
+
+	:host svg line:last-child,
+	:host svg circle:last-child {
+		fill: transparent;
+		stroke: var(--color-primary);
+	}
+
+	.cycle .progress {
+		stroke: var(--color-primary-variant);
+	}
+
+	.bar .progress {
+		fill: var(--color-primary-variant);
+	}
+}

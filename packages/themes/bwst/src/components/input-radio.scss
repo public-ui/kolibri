@@ -1,0 +1,157 @@
+@use '../rem' as *;
+@use '../mixins/alert-wc' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		@include kol-alert-theme;
+	}
+
+	label {
+		cursor: pointer;
+		display: grid;
+		line-height: rem(20);
+		gap: calc(var(--spacing) * 2);
+		width: 100%;
+	}
+
+	input {
+		cursor: pointer;
+		width: 100%;
+		border-color: var(--color-subtle);
+		border-width: rem(2);
+		border-style: solid;
+		border-radius: rem(5);
+		line-height: rem(24);
+	}
+
+	input:hover {
+		border-color: var(--color-primary);
+		box-shadow: rem(0) rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+	}
+
+	input:focus:hover {
+		box-shadow: none;
+	}
+
+	input:hover {
+		border-color: var(--color-primary);
+	}
+
+	.kol-alert-wc {
+		@include kol-alert-wc;
+	}
+
+	.required legend > span::after {
+		content: '*';
+		padding-left: 0.125em;
+	}
+
+	/* RADIO */
+	fieldset {
+		border: rem(0);
+		margin: rem(0);
+		padding: rem(0);
+		display: grid;
+		gap: 0.25em;
+	}
+
+	.radio-input-wrapper {
+		align-items: center;
+		cursor: pointer;
+		display: flex;
+		flex-direction: row;
+		gap: rem(calc(0.5 * 16));
+		margin: 0;
+		min-height: var(--a11y-min-size);
+		position: relative;
+	}
+
+	.radio-input-wrapper label {
+		cursor: pointer;
+		display: flex;
+		padding-left: calc(var(--spacing) / 2);
+		width: 100%;
+	}
+
+	.radio-input-wrapper label span {
+		margin-top: 0.125em;
+	}
+
+	.radio-input-wrapper input[type='radio'] {
+		appearance: none;
+		transition: 0.5s;
+		border-radius: 100%;
+		height: calc(6 * rem(calc(0.25 * 16)));
+		min-width: calc(6 * rem(calc(0.25 * 16)));
+		width: calc(6 * rem(calc(0.25 * 16)));
+	}
+
+	.radio-input-wrapper input[type='radio']:before {
+		content: '';
+		cursor: pointer;
+		border-radius: 100%;
+		display: block;
+	}
+
+	.radio-input-wrapper input[type='radio']:checked:before {
+		background-color: var(--color-primary);
+	}
+
+	.radio-input-wrapper input[type='radio']:disabled {
+		cursor: not-allowed;
+		background-color: var(--color-mute-variant);
+	}
+
+	.kol-alert-wc.error {
+		order: 1;
+	}
+
+	fieldset legend {
+		order: 2;
+		display: contents;
+		font-size: rem(calc(0.9 * 16));
+		font-weight: 700;
+	}
+
+	fieldset .kol-input {
+		order: 3;
+	}
+
+	fieldset.error {
+		border-left: rem(3) solid var(--color-danger);
+		color: var(--color-danger);
+		font-weight: 700;
+		padding-left: rem(calc(1 * 16));
+	}
+
+	fieldset.error input:focus,
+	fieldset.error select:focus,
+	fieldset.error textarea:focus {
+		outline-color: var(--color-danger) !important;
+	}
+
+	fieldset.error .kol-alert-wc.error {
+		margin-left: -0.25em;
+		@include kol-input-error-with-kol-alert-wc-error(--color-danger);
+	}
+
+	fieldset.horizontal {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing) calc(var(--spacing) * 2);
+	}
+
+	fieldset.horizontal legend {
+		display: inline-block;
+		margin-bottom: calc(var(--spacing) / 2);
+	}
+
+	fieldset .input-slot {
+		gap: var(--spacing);
+	}
+
+	.radio-input-wrapper label {
+		padding-left: 0;
+	}
+}

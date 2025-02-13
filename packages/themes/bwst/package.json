@@ -1,0 +1,56 @@
+{
+	"name": "@public-ui/theme-bwst",
+	"version": "1.0.0-alpha.0",
+	"private": true,
+	"type": "module",
+	"sideEffects": false,
+	"scripts": {
+		"build": "rollup -c",
+		"dev": "rollup -c --watch",
+		"format": "prettier --check src",
+		"lint": "tsc --noemit && eslint src",
+		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
+		"start": "npm-run-all --parallel dev serve",
+		"serve": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=BWSt npm --prefix \"node_modules/@public-ui/sample-react/\" start",
+		"test": "pnpm test:visual",
+		"test:visual": "cross-env THEME_MODULE=dist THEME_EXPORT=BWSt kolibri-visual-test",
+		"test-update": "cross-env THEME_MODULE=dist THEME_EXPORT=BWSt kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
+		"pretest": "pnpm build",
+		"pretest-update": "pnpm build"
+	},
+	"devDependencies": {
+		"@public-ui/components": "workspace:*",
+		"@public-ui/visual-tests": "workspace:*",
+		"@rollup/plugin-commonjs": "28.0.2",
+		"@rollup/plugin-node-resolve": "15.3.1",
+		"@rollup/plugin-typescript": "12.1.2",
+		"@typescript-eslint/eslint-plugin": "7.18.0",
+		"@typescript-eslint/parser": "7.18.0",
+		"cpy-cli": "5.0.0",
+		"eslint": "8.57.1",
+		"nodemon": "3.1.9",
+		"postcss": "8.5.1",
+		"rollup": "4.32.1",
+		"rollup-plugin-postcss": "4.0.2",
+		"sass": "1.83.4",
+		"typescript": "5.7.3",
+		"unbuild": "1.2.1"
+	},
+	"peerDependencies": {
+		"@public-ui/components": "workspace:*"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"assets",
+		"dist"
+	]
+}

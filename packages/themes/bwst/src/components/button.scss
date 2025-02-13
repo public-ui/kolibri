@@ -1,0 +1,23 @@
+@use '../rem' as *;
+@use '../mixins/button' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	:is(a, button) > .kol-span-wc {
+		font-weight: 400;
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: var(--border-width);
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		padding: rem(8) rem(14);
+		text-align: center;
+		transition-duration: 0.2s;
+		transition-property: background-color, color, border-color;
+	}
+
+	@include kol-button;
+}

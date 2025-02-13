@@ -1,0 +1,18 @@
+@use '../rem' as *;
+
+@layer kol-theme-component {
+	.tree {
+		ul {
+			border: rem(2) solid transparent;
+			border-radius: var(--border-radius);
+		}
+
+		&:focus-within {
+			outline: 0;
+
+			ul {
+				border: rem(2) solid var(--color-primary);
+			}
+		}
+	}
+}

@@ -6,7 +6,7 @@ Synonyme: Data Table, Details List, Data Grid
   <kol-badge _color="#476af5" _label="Preview"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da die Barrierefreiheitstests noch ausstehen. Die verschiedenen Tests können aufgrund der Modularität bei neuen Komponenten und Funktionalitäten meist erst nach einem Release erfolgen. Wir empfehlen daher, die Komponente noch nicht in Produktion zu verwenden.
 </kol-alert>
 
-Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe [KolTableStateful](../table-stateful/readme.md).
+Die **TableStateless**-Komponente ist für die reine Darstellung der KoliBri-Tabelle verantwortlich. Für eine Tabellen-Komponente, die Sortierung und Paginierung mit den zur Verfügung gestellten Daten automatisch übernehmen kann, siehe <kol-link _href="table-stateful" _label="KolTableStateful" />.
 
 TableStateless bietet sich insbesondere bei größeren Datenmengen an, wenn es nicht praktikabel ist, die komplette Datenmenge zur Filterung und Sortierung in den Browser auszuliefern.
 

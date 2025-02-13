@@ -1,0 +1,224 @@
+@use '../rem' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
+	:host .kol-button-group-wc {
+		display: inline-flex;
+		gap: rem(calc(0.5 * 16));
+		flex-wrap: wrap;
+	}
+
+	button {
+		box-sizing: border-box;
+		background-color: transparent;
+		border: 0;
+		border-radius: var(--border-radius);
+		font-style: normal;
+		font-weight: 400;
+		font-size: rem(16);
+		line-height: rem(calc(1.2 * 16));
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		color: var(--color-subtle);
+		padding: 0;
+		transition: all 0.2s linear;
+
+		&.selected,
+		.primary {
+			color: var(--color-primary);
+		}
+
+		&.selected {
+			&:hover {
+				color: var(--color-light);
+			}
+		}
+
+		&:hover {
+			color: var(--color-light);
+			background-color: var(--color-primary-variant);
+			border-color: var(--color-primary-variant);
+			box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+		}
+	}
+
+	*[tabindex]:is(.kol-button-group-wc button) {
+		//	outline: none;
+		width: 100%;
+		padding: 0 rem(calc(0.25 * 16));
+		border: var(--border-width) solid transparent;
+		border-radius: var(--border-radius);
+		border-bottom-width: var(--border-width);
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		position: relative;
+		top: var(--border-width);
+		box-shadow: none;
+	}
+
+	*[tabindex]:is(.kol-button-group-wc button.selected) {
+		border-color: var(--color-primary);
+		border-bottom-color: var(--page-bg);
+
+		&:hover {
+			border-bottom-color: var(--color-primary);
+		}
+
+		&:before {
+			position: absolute;
+			top: 0;
+			content: '';
+			height: calc(rem(calc(1 * 16)) / 4);
+
+			background-color: var(--color-primary);
+			border-top-right-radius: calc(rem(calc(1 * 16)) / 8);
+			border-top-left-radius: calc(rem(calc(1 * 16)) / 8);
+			left: 0;
+			right: 0;
+		}
+
+		&:after {
+			content: ' ';
+			background-color: var(--page-bg);
+			height: rem(6);
+			position: absolute;
+			width: calc(100% + rem(10));
+			bottom: rem(-7);
+			left: rem(-5);
+		}
+	}
+
+	button .kol-span-wc > span {
+		gap: rem(calc(0.5 * 16));
+	}
+
+	.kol-icon {
+		font-size: rem(calc(1 * 16));
+	}
+
+	.tabs-content {
+		padding: 0.25em 0;
+	}
+
+	div[role='tabpanel'] {
+		height: 100%;
+	}
+
+	div.grid {
+		height: 100%;
+	}
+
+	:host > .tabs-align-right {
+		display: grid;
+		grid-template-columns: 1fr auto;
+	}
+
+	:host > .tabs-align-right .kol-button-group-wc {
+		display: grid;
+		order: 2;
+	}
+
+	:host > .tabs-align-left {
+		display: grid;
+		grid-template-columns: auto 1fr;
+	}
+
+	:host > .tabs-align-left .kol-button-group-wc {
+		display: grid;
+		order: 0;
+	}
+
+	:host > .tabs-align-bottom {
+		display: grid;
+		grid-template-rows: 1fr auto;
+	}
+
+	:host > .tabs-align-bottom .kol-button-group-wc {
+		order: 2;
+	}
+
+	:host > .tabs-align-bottom .kol-button-group-wc > div {
+		display: flex;
+	}
+
+	:host > .tabs-align-bottom > .kol-button-group-wc > div > div:first-child {
+		margin: 0 rem(calc(1 * 16)) 0 0;
+	}
+
+	:host > .tabs-align-bottom > .kol-button-group-wc > div > div {
+		margin: 0 rem(calc(1 * 16));
+	}
+
+	:host > .tabs-align-top {
+		display: grid;
+		grid-template-rows: auto 1fr;
+	}
+
+	:host > .tabs-align-top .kol-button-group-wc {
+		order: 0;
+	}
+
+	:host > .tabs-align-top .kol-button-group-wc > div {
+		display: flex;
+	}
+
+	:host > .tabs-align-top > .kol-button-group-wc > div > div:first-child {
+		margin: 0 rem(calc(1 * 16)) 0 0;
+	}
+
+	:host > .tabs-align-top > .kol-button-group-wc > div > div {
+		margin: 0 rem(calc(1 * 16));
+	}
+
+	:host > div {
+		display: grid;
+	}
+
+	:host > div.tabs-align-left {
+		grid-template-columns: auto 1fr;
+	}
+
+	:host > div.tabs-align-right {
+		grid-template-columns: 1fr auto;
+	}
+
+	:host > .tabs-align-left .kol-button-group-wc,
+	:host > .tabs-align-top .kol-button-group-wc {
+		order: 0;
+	}
+
+	:host > .tabs-align-bottom .kol-button-group-wc,
+	:host > .tabs-align-right .kol-button-group-wc {
+		order: 1;
+	}
+
+	:host > .tabs-align-left .kol-button-group-wc,
+	:host > .tabs-align-right .kol-button-group-wc {
+		gap: inherit;
+	}
+
+	:host > div.tabs-align-left .kol-button-group-wc > div,
+	:host > div.tabs-align-left .kol-button-group-wc > div > div,
+	:host > div.tabs-align-right .kol-button-group-wc > div,
+	:host > div.tabs-align-right .kol-button-group-wc > div > div {
+		display: grid;
+	}
+
+	:host > div.tabs-align-left .kol-button-group-wc > div > div .kol-button-wc,
+	:host > div.tabs-align-right .kol-button-group-wc > div > div .kol-button-wc {
+		width: 100%;
+	}
+
+	:host > div.tabs-align-bottom .kol-button-group-wc div,
+	:host > div.tabs-align-top .kol-button-group-wc div {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	:host .kol-button-group-wc {
+		border-bottom: rem(1) solid var(--color-primary);
+	}
+}

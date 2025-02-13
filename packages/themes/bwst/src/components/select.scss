@@ -1,0 +1,131 @@
+@use '../rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/input-error' as *;
+@use '../mixins/typography' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		@include kol-alert-theme;
+	}
+
+	.kol-input {
+		gap: rem(calc(0.25 * 16));
+	}
+
+	.kol-input .error {
+		order: 1;
+	}
+
+	.kol-input label {
+		order: 2;
+		font-size: rem(calc(0.9 * 16));
+		font-weight: 700;
+	}
+
+	.kol-input .input {
+		order: 3;
+	}
+
+	.kol-input .hint {
+		order: 4;
+		@include kol-typography-hint;
+	}
+
+	select {
+		border: none;
+	}
+
+	input::placeholder {
+		color: var(--color-subtle);
+	}
+
+	.input {
+		background-color: var(--color-light);
+		border-color: var(--color-subtle);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: var(--border-width);
+		padding: 0 rem(calc(0.5 * 16));
+
+		select {
+			background-color: var(--color-light);
+		}
+	}
+
+	.input > .kol-icon {
+		width: rem(calc(2 * 16));
+	}
+
+	.input:is(.icon-left, .icon-right) {
+		padding-left: rem(calc(1 * 16));
+		padding-right: rem(calc(1 * 16));
+	}
+
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: rem(calc(0.5 * 16));
+		padding-right: rem(calc(0.5 * 16));
+	}
+
+	.input > input:first-child {
+		padding-left: var(--spacing);
+	}
+
+	.input > input:last-child {
+		padding-right: var(--spacing);
+	}
+
+	:not(.disabled) .input:hover {
+		border-color: var(--color-primary);
+	}
+
+	select:disabled {
+		cursor: not-allowed;
+	}
+
+	.required label > span::after {
+		content: '*';
+		padding-left: 0.125em;
+	}
+
+	.kol-input.error:not(.hidden-error) {
+		@include input-error;
+	}
+
+	.kol-input.disabled .input {
+		background-color: var(--color-mute);
+		border-color: var(--color-mute-variant);
+	}
+
+	select[multiple] {
+		overflow: auto;
+	}
+
+	select option {
+		margin: rem(1) 0;
+		border-radius: var(--border-radius);
+		cursor: pointer;
+	}
+
+	select option:disabled {
+		cursor: not-allowed;
+	}
+
+	select:not([multiple]) option {
+		padding: 0.5em;
+	}
+
+	option:active:not(:disabled),
+	option:checked:not(:disabled),
+	option:focus:not(:disabled),
+	option:hover:not(:disabled) {
+		background: var(--color-primary-variant);
+		color: var(--color-light);
+	}
+
+	.kol-input.disabled .input {
+		background-color: var(--color-mute);
+		border-color: var(--color-mute-variant);
+		color: var(--color-text);
+	}
+}

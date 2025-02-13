@@ -1,0 +1,43 @@
+@use '../rem' as *;
+@use '../mixins/button' as *;
+
+@layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: var(--border-width);
+		border-color: var(--color-primary);
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+	}
+
+	.popover {
+		background: var(--color-light);
+		top: calc(100% + rem(calc(0.25 * 16)));
+	}
+
+	.secondary-button button {
+		height: 100%;
+	}
+
+	.horizontal-line {
+		background-color: var(--color-primary);
+		border-radius: rem(2);
+		width: rem(1);
+	}
+
+	:is(a, button) > .kol-span-wc {
+		font-weight: 700;
+		border-top-left-radius: var(--border-radius);
+		border-bottom-left-radius: var(--border-radius);
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		padding: rem(8) rem(14);
+		text-align: center;
+		transition-duration: 0.2s;
+		transition-property: background-color, color, border-color;
+	}
+
+	@include kol-button;
+}
