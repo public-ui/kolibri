@@ -14,6 +14,7 @@ export const TableStateless: FC = () => (
 		<section className="w-full">
 			<KolTableStateless
 				_label="Table for demonstration purposes"
+				_minWidth="auto"
 				_headerCells={{
 					horizontal: [
 						[

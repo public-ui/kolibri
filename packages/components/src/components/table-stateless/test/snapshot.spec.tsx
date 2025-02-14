@@ -10,6 +10,7 @@ executeSnapshotTests<TableStatelessProps>(
 	[
 		{
 			_label: 'Table with horizontal and vertical headers',
+			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[
@@ -34,6 +35,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with only horizontal headers',
+			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[
@@ -50,6 +52,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with two horizontal header rows',
+			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[
@@ -75,6 +78,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with two spanned horizontal and vertical headers',
+			_minWidth: '400px',
 			_headerCells: {
 				horizontal: [
 					[{ label: 'H-Header', colSpan: 2 }],

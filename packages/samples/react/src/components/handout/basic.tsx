@@ -471,7 +471,7 @@ export const HandoutBasic: FC = () => {
 				</KolCard>
 				<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Table with Pagination" _level={2}>
 					<div slot="" className="grid gap-2 p-2">
-						<KolTableStateful _label="Table" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
+						<KolTableStateful _label="Table" _minWidth="auto" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
 					</div>
 				</KolCard>
 			</div>

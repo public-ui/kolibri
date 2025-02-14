@@ -88,6 +88,7 @@ export const MultiSortTable: FC = () => {
 					></KolInputCheckbox>
 					<KolTableStateful
 						_label="Sort Table with Order and Date"
+						_minWidth="auto"
 						_data={DATA.slice(0, 10)}
 						_headers={HEADERS_VERTICAL}
 						className="block"
@@ -104,6 +105,7 @@ export const MultiSortTable: FC = () => {
 					></KolInputCheckbox>
 					<KolTableStateful
 						_label="Sort Table with Order and Date"
+						_minWidth="auto"
 						_data={DATA}
 						_headers={HEADERS_HORIZONTAL}
 						className="block"

@@ -12,6 +12,7 @@ export const TableComplexHeaders: FC = () => (
 		<section className="w-full flex flex-col">
 			<KolTableStateful
 				_label="Business hours"
+				_minWidth="auto"
 				_data={[
 					{
 						asp: 'Center',

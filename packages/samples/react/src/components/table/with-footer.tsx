@@ -12,6 +12,7 @@ export const TableWithFooter: FC = () => (
 		<KolTableStateful
 			className="w-full"
 			_label="Business hours"
+			_minWidth="auto"
 			_headers={{
 				horizontal: [
 					[

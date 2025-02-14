@@ -46,6 +46,7 @@ export const InteractiveChildElements: FC = () => (
 		<section className="w-full flex flex-col">
 			<KolTableStateless
 				_label="Button styles"
+				_minWidth="auto"
 				_headerCells={{
 					horizontal: [
 						[
@@ -79,6 +80,7 @@ export const InteractiveChildElements: FC = () => (
 
 			<KolTableStateless
 				_label="Link styles"
+				_minWidth="auto"
 				_headerCells={{
 					horizontal: [
 						[
