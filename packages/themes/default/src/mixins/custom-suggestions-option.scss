@@ -1,0 +1,17 @@
+@import './rem';
+
+@mixin kol-custom-suggestions-option-theme($option-height) {
+	.kol-custom-suggestions-option {
+		display: flex;
+		align-items: center;
+		min-height: $option-height;
+		line-height: 1;
+		padding: rem(10) rem(12);
+
+		&:focus {
+			background-color: var(--color-primary-variant);
+			color: var(--color-light);
+			outline: 0;
+		}
+	}
+}

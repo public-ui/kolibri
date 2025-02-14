@@ -3,6 +3,10 @@ import { setState, validateLabel, watchString } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { ModalVariantPropType, validateModalVariant } from '../../schema/props/variant/modal';
+import { KolButtonWcTag } from '../../core/component-names';
+import { translate } from '../../i18n';
+import clsx from 'clsx';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -44,10 +48,16 @@ export class KolModal implements ModalAPI {
 		this.refDialog?.close?.();
 	}
 
+	private readonly on = {
+		onClick: async () => {
+			await this.closeModal();
+		},
+	};
+
 	public render(): JSX.Element {
 		return (
 			<dialog
-				class="kol-modal"
+				class={clsx('kol-modal', { 'kol-modal__card': this.state._variant === 'card' })}
 				ref={(el) => {
 					this.refDialog = el;
 				}}
@@ -58,9 +68,24 @@ export class KolModal implements ModalAPI {
 				onClose={this.handleNativeCloseEvent.bind(this)}
 			>
 				{/* It's necessary to have a block element container for cross-browser compatibility. The display property for the slot content is unknown and could be inline. */}
-				<div>
+				<div tabindex="-1">
 					<slot />
 				</div>
+				{this.state._variant === 'card' && (
+					<KolButtonWcTag
+						class="kol-modal__close-button"
+						data-testid="modal-close-button"
+						_hideLabel
+						_icons={{
+							left: {
+								icon: 'codicon codicon-close',
+							},
+						}}
+						_label={translate('kol-close')}
+						_on={this.on}
+						_tooltipAlign="left"
+					></KolButtonWcTag>
+				)}
 			</dialog>
 		);
 	}
@@ -79,6 +104,11 @@ export class KolModal implements ModalAPI {
 	 * Defines the width of the modal. (max-width: 100%)
 	 */
 	@Prop() public _width?: string = '100%';
+
+	/**
+	 * Defines the variant of the modal.
+	 */
+	@Prop() public _variant?: ModalVariantPropType = 'blank';
 
 	@State() public state: ModalStates = {
 		_label: '', // ⚠ required
@@ -110,9 +140,15 @@ export class KolModal implements ModalAPI {
 		});
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: ModalVariantPropType): void {
+		validateModalVariant(this, value);
+	}
+
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateWidth(this._width);
+		this.validateVariant(this._variant);
 	}
 }

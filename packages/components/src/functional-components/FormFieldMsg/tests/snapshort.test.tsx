@@ -29,8 +29,8 @@ describe('FormFieldMsgFc', () => {
 		expect(page.root?.className).toContain(classNames);
 	});
 
-	it('should handle hideError prop correctly', async () => {
-		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldMsgFc id="test-id" hideError={true} />);
+	it('should handle hideMsg prop correctly', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldMsgFc id="test-id" hideMsg={true} />);
 
 		expect(page.root?.className).toContain('visually-hidden');
 	});

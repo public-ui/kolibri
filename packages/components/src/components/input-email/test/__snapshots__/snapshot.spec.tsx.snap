@@ -179,10 +179,10 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 </kol-input-email>
 `;
 
-exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-email _hide-error="" _value="email@example.com">
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-email _hide-msg="" _value="email@example.com">
   <template shadowrootmode="open">
-    <div class="email has-value kol-form-field kol-form-field--hidden-error kol-input-email" role="presentation">
+    <div class="email has-value kol-form-field kol-form-field--hidden-msg kol-input-email" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -513,10 +513,10 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 </kol-input-email>
 `;
 
-exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-email _hide-error="" _value="email@example.com">
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-email _hide-msg="" _value="email@example.com">
   <template shadowrootmode="open">
-    <div class="email has-value kol-form-field kol-form-field--hidden-error kol-input-email" role="presentation">
+    <div class="email has-value kol-form-field kol-form-field--hidden-msg kol-input-email" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>

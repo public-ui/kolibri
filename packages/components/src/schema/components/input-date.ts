@@ -4,7 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -34,7 +34,7 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	type: InputDateType;
 } & OptionalInputProps<Iso8601 | Date> &
-	PropHideError &
+	PropHideMsg &
 	PropSuggestions;
 
 type RequiredStates = {
@@ -43,7 +43,7 @@ type RequiredStates = {
 	suggestions: W3CInputValue[];
 	type: InputDateType;
 } & PropLabelWithExpertSlot &
-	PropHideError &
+	PropHideMsg &
 	PropId;
 
 type OptionalStates = {

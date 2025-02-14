@@ -114,4 +114,29 @@ test.describe('kol-modal', () => {
 			await expect(eventPromise).resolves.toBeUndefined();
 		});
 	});
+
+	test.describe('kol-modal - variant', () => {
+		test('it renders the close button in card variant', async ({ page }) => {
+			await page.setContent('<kol-modal _variant="card" _label="">Modal content</kol-modal>');
+			const kolModal = page.locator('kol-modal');
+			const dialog = page.locator('dialog');
+			await expect(dialog).toBeHidden();
+			await kolModal.evaluate((element: HTMLKolModalElement) => element.openModal());
+			await expect(dialog).toBeVisible();
+			const closeButton = page.locator('.kol-modal__close-button');
+			await expect(closeButton).toBeVisible();
+			await closeButton.click();
+			await expect(dialog).toBeHidden();
+		});
+
+		test('it does not render the close button in blank variant', async ({ page }) => {
+			await page.setContent('<kol-modal _variant="blank" _label="">Modal content</kol-modal>');
+			const kolModal = page.locator('kol-modal');
+			const dialog = page.locator('dialog');
+			const closeButton = page.locator('.kol-modal__close-button');
+			await kolModal.evaluate((element: HTMLKolModalElement) => element.openModal());
+			await expect(dialog).toBeVisible();
+			await expect(closeButton).toBeHidden();
+		});
+	});
 });

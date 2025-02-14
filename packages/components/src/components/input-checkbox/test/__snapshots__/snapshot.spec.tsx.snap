@@ -186,10 +186,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-checkbox _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-checkbox _hide-msg="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default" role="presentation">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -529,10 +529,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-checkbox _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-checkbox _hide-msg="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button" data-role="button" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button" data-role="button" role="presentation">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
@@ -872,10 +872,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-checkbox _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-checkbox _hide-msg="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-switch" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-switch" role="presentation">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
@@ -1215,10 +1215,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-checkbox _checked="" _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-checkbox _checked="" _hide-msg="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default" role="presentation">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -1558,10 +1558,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-checkbox _checked="" _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-checkbox _checked="" _hide-msg="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-default" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-default" role="presentation">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">
@@ -1901,10 +1901,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-checkbox _checked="" _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-checkbox _checked="" _hide-msg="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button" data-role="button" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button" data-role="button" role="presentation">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
           <div class="kol-field-control__input">
@@ -2244,10 +2244,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-checkbox _checked="" _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-checkbox _checked="" _hide-msg="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-switch" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-switch" role="presentation">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-switch">
           <div class="kol-field-control__input">
@@ -2587,10 +2587,10 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-checkbox _hide-error="" _indeterminate="" _placeholder="Hier steht ein Platzhaltertext">
+exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-checkbox _hide-msg="" _indeterminate="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-checkbox kol-input-checkbox--indeterminate kol-input-checkbox--label-align-right kol-input-checkbox--variant-default" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-checkbox kol-input-checkbox--indeterminate kol-input-checkbox--label-align-right kol-input-checkbox--variant-default" role="presentation">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-default">
           <div class="kol-field-control__input">

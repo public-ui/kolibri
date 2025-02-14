@@ -42,9 +42,9 @@ export const InputGroupWithError: FC = () => {
 				{phoneError && <KolAlert _alert _type="error" _label={phoneErrorMessage} />}
 
 				<div className="grid grid-cols-3 gap-4 max-w-2xl">
-					<KolSelect _options={countryCodes} _label="CountryCode " _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
-					<KolInputText _label="Area code" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
-					<KolInputText _label="Local number" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
+					<KolSelect _options={countryCodes} _label="CountryCode " _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideMsg />
+					<KolInputText _label="Area code" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideMsg />
+					<KolInputText _label="Local number" _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideMsg />
 				</div>
 			</fieldset>
 
@@ -53,7 +53,7 @@ export const InputGroupWithError: FC = () => {
 				{pizzaError && <KolAlert _alert _type="error" _label={pizzaErrorMessage} />}
 
 				{pizzaToppings.map((topping) => (
-					<KolInputCheckbox key={topping} _label={topping} _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideError />
+					<KolInputCheckbox key={topping} _label={topping} _msg={{ _description: phoneErrorMessage, _type: 'error' }} _touched _hideMsg />
 				))}
 			</fieldset>
 		</>

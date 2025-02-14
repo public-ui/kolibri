@@ -7,7 +7,7 @@ import type {
 	PropAccessKey,
 	PropDisabled,
 	PropHasCounter,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -33,7 +33,7 @@ type OptionalProps = {
 } & PropAccessKey &
 	PropDisabled &
 	PropHasCounter &
-	PropHideError &
+	PropHideMsg &
 	PropHideLabel &
 	PropReadOnly &
 	PropRequired &

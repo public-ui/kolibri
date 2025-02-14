@@ -28,7 +28,7 @@ export * from './has-compact-button';
 export * from './has-counter';
 export * from './has-icons-when-expanded';
 export * from './heading-variant';
-export * from './hide-error';
+export * from './hide-msg';
 export * from './hide-label';
 export * from './href';
 export * from './icons';

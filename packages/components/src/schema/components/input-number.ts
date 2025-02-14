@@ -4,7 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -17,15 +17,15 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, Iso8601, KoliBriHorizontalIcons, OptionalInputProps, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHorizontalIcons, OptionalInputProps, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	placeholder: string;
-} & OptionalInputProps<number | Iso8601> &
-	PropHideError &
+} & OptionalInputProps<number> &
+	PropHideMsg &
 	PropSuggestions;
 
 type RequiredStates = {
@@ -33,7 +33,7 @@ type RequiredStates = {
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
 } & PropId &
-	PropHideError &
+	PropHideMsg &
 	PropLabelWithExpertSlot;
 
 type OptionalStates = {

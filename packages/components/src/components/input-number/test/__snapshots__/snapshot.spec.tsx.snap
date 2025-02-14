@@ -179,10 +179,10 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 </kol-input-number>
 `;
 
-exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-number _hide-error="">
+exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-number _hide-msg="">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-number number" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-number number" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -513,10 +513,10 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
 </kol-input-number>
 `;
 
-exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-number _hide-error="">
+exports[`kol-input-number should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-number _hide-msg="">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-number number" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-number number" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>

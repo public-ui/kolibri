@@ -1,14 +1,23 @@
 @import '../@shared/mixins';
 @import '../../styles/global';
+@import '../tooltip/style.scss';
 
 @layer kol-component {
 	.kol-modal {
 		border: 0;
 		padding: 0;
 		font-size: rem(16);
+		position: relative;
 
 		&::backdrop {
 			background-color: rgba(0, 0, 0, 0.33);
+		}
+
+		&__close-button {
+			position: absolute;
+			top: rem(1);
+			right: rem(1);
+			z-index: 1;
 		}
 	}
 }

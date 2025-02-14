@@ -28,7 +28,7 @@ First, initialize KoliBri with a [theme](https://github.com/public-ui/kolibri/tr
 
 ```ts
 import { createApp } from 'vue';
-import { DEFAULT } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/theme-default';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/components';
 

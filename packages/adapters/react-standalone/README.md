@@ -32,7 +32,7 @@ First, initialize KoliBri with a [theme](https://github.com/public-ui/kolibri/tr
 
 ```ts
 import { register } from 'https://unpkg.com/@public-ui/components@2.0.3/dist/esm/index.js';
-import { DEFAULT } from 'https://unpkg.com/@public-ui/themes/dist/index.mjs';
+import { DEFAULT } from 'https://unpkg.com/@public-ui/theme-default/dist/index.mjs';
 register(DEFAULT, []).catch(console.warn);
 ```
 

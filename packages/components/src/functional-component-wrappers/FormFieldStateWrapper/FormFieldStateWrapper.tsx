@@ -38,7 +38,7 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		hint: state._hint,
 		label: state._label,
 		hideLabel: state._hideLabel,
-		hideError: state._hideError,
+		hideMsg: state._hideMsg,
 		touched: state._touched,
 		accessKey: state._accessKey,
 		shortKey: state._shortKey,

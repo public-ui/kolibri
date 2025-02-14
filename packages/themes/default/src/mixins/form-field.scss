@@ -12,7 +12,7 @@
 			@include kol-typography-hint;
 		}
 
-		&--error:not(&--hidden-error) {
+		&--error:not(&--hide-msg) {
 			border-left: rem(3) solid var(--color-danger);
 			padding-left: rem(16);
 

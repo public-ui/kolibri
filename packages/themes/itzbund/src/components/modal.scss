@@ -1,0 +1,12 @@
+@import '../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-modal {
+		&__card {
+			border-color: var(--border-color);
+			border-style: solid;
+			border-width: rem(1);
+			border-radius: calc(2 * var(--border-radius));
+		}
+	}
+}

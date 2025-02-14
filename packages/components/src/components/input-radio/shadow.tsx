@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import type {
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputRadioAPI,
 	InputRadioStates,
@@ -75,7 +75,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 				class: `kol-form-field__input--orientation-${this.state._orientation}`,
 			},
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 			hideLabel: false,
 		};
@@ -170,9 +169,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -261,7 +260,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Prop({ mutable: true, reflect: true }) public _value?: StencilUnknown;
 
 	@State() public state: InputRadioStates = {
-		_hideError: false,
+		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
@@ -298,9 +297,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.controller.validateHideLabel(value);
 	}
 
-	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
-		this.controller.validateHideError(value);
+	@Watch('_hideMsg')
+	public validateHideMsg(value?: HideMsgPropType): void {
+		this.controller.validateHideMsg(value);
 	}
 
 	@Watch('_hint')

@@ -4,7 +4,7 @@ import type {
 	MsgPropType,
 	PropChecked,
 	PropDisabled,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropIndeterminate,
 	PropLabelAlign,
@@ -57,7 +57,7 @@ type OptionalProps = {
 } & PropAccessKey &
 	PropChecked &
 	PropDisabled &
-	PropHideError &
+	PropHideMsg &
 	PropHideLabel &
 	PropIndeterminate &
 	PropName &
@@ -73,7 +73,7 @@ type RequiredStates = {
 	value: StencilUnknown;
 	variant: InputCheckboxVariant;
 } & PropChecked &
-	PropHideError &
+	PropHideMsg &
 	PropIndeterminate &
 	PropLabelWithExpertSlot;
 type OptionalStates = {

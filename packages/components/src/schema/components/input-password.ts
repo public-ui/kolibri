@@ -5,7 +5,7 @@ import type {
 	PropAccessKey,
 	PropDisabled,
 	PropHasCounter,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -38,7 +38,7 @@ type OptionalProps = {
 	PropPasswordVariant &
 	PropDisabled &
 	PropHasCounter &
-	PropHideError &
+	PropHideMsg &
 	PropHideLabel &
 	PropName &
 	PropReadOnly &
@@ -51,7 +51,7 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 } & PropId &
-	PropHideError &
+	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	currentLength: number;

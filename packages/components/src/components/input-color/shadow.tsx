@@ -1,7 +1,7 @@
 import type {
 	ButtonProps,
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputColorAPI,
 	InputColorStates,
@@ -126,9 +126,9 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -216,7 +216,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 
 	@State() public state: InputColorStates = {
 		_autoComplete: 'off',
-		_hideError: false,
+		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
@@ -247,9 +247,9 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		this.controller.validateDisabled(value);
 	}
 
-	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
-		this.controller.validateHideError(value);
+	@Watch('_hideMsg')
+	public validateHideMsg(value?: HideMsgPropType): void {
+		this.controller.validateHideMsg(value);
 	}
 
 	@Watch('_hideLabel')

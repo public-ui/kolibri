@@ -36,7 +36,7 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	hint?: string;
 	label: string;
 	hideLabel?: boolean;
-	hideError?: boolean;
+	hideMsg?: boolean;
 	accessKey?: string;
 	shortKey?: string;
 	counter?: { currentLength?: number; maxLength?: number };
@@ -79,7 +79,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		disabled,
 		class: classNames,
 		msg,
-		hideError,
+		hideMsg,
 		hideLabel,
 		label,
 		hint,
@@ -112,7 +112,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		['kol-form-field--touched']: Boolean(touched),
 		['kol-form-field--hide-label']: Boolean(hideLabel),
 		['kol-form-field--read-only']: Boolean(readOnly),
-		['kol-form-field--hidden-error']: Boolean(hideError),
+		['kol-form-field--hidden-msg']: Boolean(hideMsg),
 	};
 
 	if (showMsg) {
@@ -147,7 +147,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 				)}
 			</InputContainer>
 			{counter ? <KolFormFieldCounterFc {...(formFieldCounterProps || {})} {...counter} /> : null}
-			{showMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} hideError={hideError} />}
+			{showMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} hideMsg={hideMsg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}
 		</Component>

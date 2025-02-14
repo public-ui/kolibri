@@ -172,10 +172,10 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 </kol-textarea>
 `;
 
-exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-textarea _hide-error="" _value="Value">
+exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-textarea _hide-msg="" _value="Value">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-error kol-form-field-textarea" role="presentation">
+    <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-textarea" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>

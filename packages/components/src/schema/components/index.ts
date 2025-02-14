@@ -38,7 +38,6 @@ export * from './skip-nav';
 export * from './span';
 export * from './spin';
 export * from './split-button';
-export * from './symbol';
 export * from './table';
 export * from './tableStateless';
 export * from './tabs';

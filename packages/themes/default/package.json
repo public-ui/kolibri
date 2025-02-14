@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-default",
-	"version": "3.0.0-rc.2",
+	"version": "3.0.0-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -47,7 +47,6 @@
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "pnpm build",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"start": "npm-run-all --parallel dev serve",
 		"serve": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=DEFAULT npm --prefix \"node_modules/@public-ui/sample-react/\" start",

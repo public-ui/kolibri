@@ -40,7 +40,7 @@ export const InputDateShowHideMsg = () => {
 				{msgTypes.map((type) => (
 					<KolInputDate
 						key={type}
-						_hideError={hideMsg}
+						_hideMsg={hideMsg}
 						_label={`Date (_msg, ${type})`}
 						_msg={
 							showMsg

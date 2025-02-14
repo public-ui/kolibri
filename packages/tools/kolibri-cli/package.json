@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "3.0.0-rc.2",
+	"version": "3.0.0-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -20,10 +20,10 @@
 	},
 	"description": "CLI for executing some helpful commands for KoliBri projects.",
 	"scripts": {
+		"build": "tsc",
 		"reset": "pnpm i @public-ui/components@1.1.7",
 		"format": "prettier -c src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "tsc",
 		"start": "rimraf test && cpy \"../../samples/react/src/components\" test/src && cpy \"../../samples/react/public/*.html\" test/ && ts-node src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
 		"restart": "pnpm reset && pnpm start",
 		"unused": "knip",

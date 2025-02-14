@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import type {
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputRangeAPI,
 	InputRangeStates,
@@ -205,9 +205,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -305,7 +305,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 	@State() public state: InputRangeStates = {
 		_autoComplete: 'off',
-		_hideError: false,
+		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
@@ -336,9 +336,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		this.controller.validateDisabled(value);
 	}
 
-	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
-		this.controller.validateHideError(value);
+	@Watch('_hideMsg')
+	public validateHideMsg(value?: HideMsgPropType): void {
+		this.controller.validateHideMsg(value);
 	}
 
 	@Watch('_hideLabel')

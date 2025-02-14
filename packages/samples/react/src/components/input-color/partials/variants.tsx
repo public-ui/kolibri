@@ -3,9 +3,10 @@ import React, { forwardRef } from 'react';
 import { InputColorCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleColumns } from '../../SampleColumns';
 export const InputColorVariants = forwardRef<HTMLKolInputColorElement, Components.KolInputColor>(function InputColorVariant(props, ref) {
 	return (
-		<div className="grid md:grid-cols-2 gap-4">
+		<SampleColumns>
 			<fieldset>
 				<legend>Color</legend>
 				<InputColorCases {...props} />
@@ -14,6 +15,6 @@ export const InputColorVariants = forwardRef<HTMLKolInputColorElement, Component
 				<legend>Color (hideLabel)</legend>
 				<InputColorCases ref={ref} {...props} _hideLabel />
 			</fieldset>
-		</div>
+		</SampleColumns>
 	);
 });

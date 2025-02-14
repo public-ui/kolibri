@@ -25,6 +25,7 @@ import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
 import kolibriCss from './components/kolibri.scss';
 import linkButtonCss from './components/link-button.scss';
+import modalCss from './components/modal.scss';
 import linkCss from './components/link.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
@@ -70,6 +71,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-KOLIBRI': kolibriCss,
 	'KOL-LINK': linkCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
+	'KOL-MODAL': modalCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-PROGRESS': progressCss,

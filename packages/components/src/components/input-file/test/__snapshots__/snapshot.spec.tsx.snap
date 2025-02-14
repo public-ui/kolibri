@@ -179,10 +179,10 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
 </kol-input-file>
 `;
 
-exports[`kol-input-file should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-file _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+exports[`kol-input-file should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-file _hide-msg="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="file kol-form-field kol-form-field--hidden-error kol-input-file" role="presentation">
+    <div class="file kol-form-field kol-form-field--hidden-msg kol-input-file" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>

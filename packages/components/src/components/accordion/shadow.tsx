@@ -111,7 +111,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 1;
+	@Prop() public _level?: HeadingLevel = 0;
 
 	/**
 	 * Gibt die EventCallback-Funktionen an.
@@ -126,7 +126,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 
 	@State() public state: AccordionStates = {
 		_label: '', // ⚠ required
-		_level: 1,
+		_level: 0,
 		_on: {},
 	};
 

@@ -179,10 +179,10 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 </kol-input-text>
 `;
 
-exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-text _hide-error="" _value="Value">
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-text _hide-msg="" _value="Value">
   <template shadowrootmode="open">
-    <div class="has-value kol-form-field kol-form-field--hidden-error kol-input-text text" role="presentation">
+    <div class="has-value kol-form-field kol-form-field--hidden-msg kol-input-text text" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>

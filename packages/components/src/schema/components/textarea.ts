@@ -6,7 +6,7 @@ import type {
 	PropAdjustHeight,
 	PropDisabled,
 	PropHasCounter,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -40,7 +40,7 @@ type OptionalProps = {
 	PropAdjustHeight &
 	PropDisabled &
 	PropHasCounter &
-	PropHideError &
+	PropHideMsg &
 	PropHideLabel &
 	PropId &
 	PropName &
@@ -58,7 +58,7 @@ type RequiredStates = {
 	hasValue: boolean;
 	resize: CSSResize;
 } & PropAdjustHeight &
-	PropHideError &
+	PropHideMsg &
 	PropId &
 	PropLabelWithExpertSlot;
 

@@ -47,17 +47,19 @@ The `search` of this component is highly browser-dependent. For example, the clo
 
 ## Screen reader only reads last selected in Select
 
-KolSelect is using native HTML `<select>`. 
+KolSelect is using native HTML `<select>`.
 
-When using KolSelect with the `multiple` property, the native HTML `<select>` may cause problems with screen readers. 
+When using KolSelect with the `multiple` property, the native HTML `<select>` may cause problems with screen readers.
 Often the entire selection is not read out, but only the last one. Therefore, the KolSelect has no full accessibility.
 
 ## Limited Styling Capabilities for `<select>` and `<option>` Elements
+
 [Stackblitz Example](https://stackblitz.com/edit/vitejs-vite-nthnce?file=src%2Fstyle.css)
 
 The `<select>` element and its `<option>` tags offer limited styling options. Specifically, states such as "selected", "focus" or "active" cannot be reliably customized using CSS. This leads to challenges in meeting accessibility standards, especially in ensuring sufficient contrast ratios.
 
 **Impact**:
+
 - **Limited Customization**: The visual state of dropdown options (e.g., on focus or selection) cannot be consistently customized across all browsers. This makes it difficult to create an accessible visual experience for all users.
 
 - **Browser-Dependent Rendering**: The appearance of the `<select>` element varies across browsers and operating systems, resulting in inconsistent user experiences.
@@ -81,9 +83,16 @@ Related: [🐞 GitHub issue #7076](https://github.com/public-ui/kolibri/issues/7
 The use of `aria-label` or `aria-labelledby` on `<kol-icon>` or its nested elements does not work reliably in Firefox. Even applying these attributes directly to `<kol-icon>` has no effect, which points to a browser-specific issue with ARIA support in custom elements or shadow DOM contexts.
 
 ### Key Points:
+
 - The issue lies in Firefox's handling of ARIA attributes on custom web components or deeply nested elements.
 - This is not related to dynamic announcements (`aria-live`) but specifically to the inability of Firefox to process `aria-label` or `aria-labelledby` correctly in these cases.
 - The issue is browser-specific and does not consistently occur in Chrome, Edge, or Safari.
 
 ### Conclusion:
+
 This is a limitation in Firefox’s ARIA implementation. Until it is resolved, alternative strategies like visually hidden text near the element or redundant error messages should be used to ensure accessibility. We have created a ticket for this: [🐞 GitHub issue #7119](https://github.com/public-ui/kolibri/issues/7119)
+
+## NVDA spells out certain words instead of reading them
+
+It has been observed that on a system with German locale, NVDA spells out certain English words such as "selection", instead of reading them properly.  
+References: <https://github.com/public-ui/kolibri/issues/6898>, <https://stackoverflow.com/questions/69091167/nvda-spells-words-where-it-shouldnt>

@@ -183,12 +183,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish themes
-        run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
-        working-directory: packages/themes
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish sample react
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{github.event.inputs.tag}}
         working-directory: packages/samples/react
@@ -207,12 +201,6 @@ jobs:
         with:
           node-version: 20
           registry-url: '${{env.github-registry}}'
-
-      - name: Publish designer
-        run: npm publish --access restricted
-        working-directory: packages/designer
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish sample react
         run: npm publish --access restricted

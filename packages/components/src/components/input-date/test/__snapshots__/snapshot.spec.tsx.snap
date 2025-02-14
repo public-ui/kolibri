@@ -179,10 +179,10 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 </kol-input-date>
 `;
 
-exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-date _hide-error="" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01">
+exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-date _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01">
   <template shadowrootmode="open">
-    <div class="date has-value kol-form-field kol-form-field--hidden-error kol-input-date" role="presentation">
+    <div class="date has-value kol-form-field kol-form-field--hidden-msg kol-input-date" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>

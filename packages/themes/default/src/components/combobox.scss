@@ -2,24 +2,29 @@
 @import '../mixins/alert-wc';
 @import '../mixins/input-error';
 @import '../mixins/typography';
+@import '../mixins/custom-suggestions-option';
+@import '../mixins/custom-suggestions-options-group';
+@import '../mixins/custom-suggestions-toggle';
+@import '../@shared/input-core';
 
 $option-height: rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
+	@include kol-alert-theme;
+	@include kol-custom-suggestions-option-theme($option-height);
+	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
+	@include kol-custom-suggestions-toggle-theme;
+
 	:host {
 		font-family: var(--font-family);
 	}
 
-	.combobox {
-		display: block;
-		position: relative;
-
+	.kol-combobox {
 		&__group {
 			display: inline-flex;
 			align-items: center;
 			width: 100%;
-			padding: 0 rem(8);
 		}
 
 		&__input {
@@ -31,137 +36,6 @@ $visible-options: 5;
 			&::placeholder {
 				color: var(--color-subtle);
 			}
-
-			&:first-child {
-				padding-left: var(--spacing);
-			}
-
-			&:last-child {
-				padding-right: var(--spacing);
-			}
-		}
-
-		&__icon {
-			display: grid;
-			place-items: center;
-			padding-left: rem(8);
-			padding-right: rem(8);
-
-			&:focus {
-				outline: 0;
-			}
-		}
-
-		&__listbox {
-			border-style: solid;
-			border-width: rem(1);
-			border-radius: var(--border-radius);
-			border-color: var(--color-subtle);
-			overflow-y: auto;
-			overflow-x: hidden;
-			box-sizing: border-box;
-			width: 100%;
-			max-height: calc($option-height * $visible-options + rem(2));
-		}
-
-		&__item {
-			display: flex;
-			align-items: center;
-			min-height: $option-height;
-			line-height: 1;
-			padding: rem(10) rem(12);
-
-			&:focus {
-				background-color: var(--color-primary-variant);
-				color: var(--color-light);
-				outline: 0;
-			}
 		}
 	}
-
-	.kol-input {
-		gap: rem(4);
-	}
-
-	.kol-input:not(.hidden-error) .kol-alert {
-		order: 1;
-	}
-
-	.kol-input label {
-		order: 2;
-	}
-
-	.kol-input .input {
-		order: 3;
-		padding: 0;
-	}
-
-	.kol-input .counter {
-		order: 4;
-	}
-
-	.kol-input .hint {
-		order: 5;
-		@include kol-typography-hint;
-	}
-
-	input::placeholder {
-		color: var(--color-subtle);
-	}
-
-	.input {
-		background-color: var(--color-light);
-		border-color: var(--color-subtle);
-		border-radius: var(--border-radius);
-		border-style: solid;
-		border-width: rem(2);
-		padding: 0 rem(8);
-	}
-
-	.input > .kol-icon {
-		width: rem(16);
-	}
-
-	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(16);
-		padding-right: rem(16);
-	}
-
-	.input:is(.icon-left, .icon-right) input {
-		padding-left: rem(8);
-		padding-right: rem(8);
-	}
-
-	.input > input:first-child {
-		padding-left: var(--spacing);
-	}
-
-	.input > input:last-child {
-		padding-right: var(--spacing);
-	}
-
-	:not(.disabled) .input:hover {
-		border-color: var(--color-primary);
-	}
-
-	.required label > span::after {
-		content: '*';
-		padding-left: 0.125em;
-	}
-
-	.kol-input.error:not(.hidden-error) {
-		@include input-error;
-	}
-
-	.input {
-		position: relative;
-	}
-
-	.kol-input.disabled .input {
-		background-color: var(--color-mute);
-		border-color: var(--color-mute-variant);
-		color: var(--color-text);
-	}
-
-	@include kol-alert-theme;
 }

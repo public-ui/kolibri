@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import type {
 	CheckedPropType,
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	IndeterminatePropType,
 	InputCheckboxAPI,
@@ -151,9 +151,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -259,7 +259,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 	@State() public state: InputCheckboxStates = {
 		_checked: false,
-		_hideError: false,
+		_hideMsg: false,
 		_icons: {
 			checked: 'codicon codicon-check',
 			indeterminate: 'codicon codicon-remove',
@@ -298,9 +298,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		this.controller.validateDisabled(value);
 	}
 
-	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
-		this.controller.validateHideError(value);
+	@Watch('_hideMsg')
+	public validateHideMsg(value?: HideMsgPropType): void {
+		this.controller.validateHideMsg(value);
 	}
 
 	@Watch('_hideLabel')

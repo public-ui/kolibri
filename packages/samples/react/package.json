@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "3.0.0-rc.2",
+	"version": "3.0.0-rc.3",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -8,6 +8,7 @@
 		"url": "https://github.com/public-ui/kolibri"
 	},
 	"scripts": {
+		"prebuild": "pnpm -r --filter=@public-ui/theme-* --filter @public-ui-/theme-* build",
 		"build": "rimraf dist && cross-env NODE_ENV=production webpack",
 		"build:deps": "pnpm --filter @public-ui/sample-react^... build",
 		"format": "prettier --check src",
@@ -15,7 +16,7 @@
 		"postinstall": "pnpm exec playwright install",
 		"prepare": "npm-run-all prepare:*",
 		"prepare:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
-		"prepare:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
+		"prepare:themes-assets": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" public/assets --dot",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map",
 		"start": "npm run serve -- --open",
 		"test": "pnpm test:e2e",
@@ -29,7 +30,8 @@
 		"@playwright/test": "1.49.1",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react": "workspace:*",
-		"@public-ui/themes": "workspace:*",
+		"@public-ui/theme-default": "workspace:*",
+		"@public-ui-/theme-ecl": "workspace:*",
 		"@stencil/core": "4.22.3",
 		"@types/node": "ts5.7",
 		"@types/react": "18.3.4",

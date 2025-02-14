@@ -321,7 +321,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					if (typeof rows === 'object') {
 						dataRow.push({
 							...rows,
-							asTd: false,
+							headerCell: true,
 							data: {},
 						});
 						let rowSpan = 1;
@@ -545,7 +545,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			key = dataKey ? `${dataKey}-${this.horizontal ? colIndex : rowIndex}` : key;
 		}
 
-		if (cell.asTd === false) {
+		if ((cell as KoliBriTableHeaderCellWithLogic).headerCell) {
 			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
 		} else {
 			return (
@@ -792,36 +792,7 @@ export class KolTableStateless implements TableStatelessAPI {
 									<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
 										{this.state._selection && this.renderHeadingSelectionCell()}
 										{rowIndex === 0 && this.renderHeaderTdCell()}
-										{Array.isArray(cols) &&
-											cols.map((cell, colIndex) => {
-												if (cell.asTd === true) {
-													return (
-														<td
-															key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
-															class={clsx({
-																[`kol-table__head--${cell.textAlign}`]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
-															})}
-															colSpan={cell.colSpan}
-															rowSpan={cell.rowSpan}
-															style={{
-																textAlign: cell.textAlign,
-																width: cell.width,
-															}}
-															ref={
-																typeof cell.render === 'function'
-																	? (el) => {
-																			this.cellRender(cell, el);
-																		}
-																	: undefined
-															}
-														>
-															{typeof cell.render !== 'function' ? cell.label : ''}
-														</td>
-													);
-												} else {
-													return this.renderHeadingCell(cell, rowIndex, colIndex, false);
-												}
-											})}
+										{Array.isArray(cols) && cols.map((cell, colIndex) => this.renderHeadingCell(cell, rowIndex, colIndex, false))}
 									</tr>
 								)),
 								this.renderSpacer('head', this.state._headerCells.horizontal),

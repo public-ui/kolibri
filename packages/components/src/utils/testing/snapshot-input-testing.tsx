@@ -22,7 +22,7 @@ export function executeInputSnapshotTests<Props extends Record<string, unknown>>
 		{ ...(baseObj as Props), _readOnly: true },
 		{ ...(baseObj as Props), _disabled: true },
 		{ ...(baseObj as Props), _msg: { _type: 'error', _description: 'Es ist ein Fehler aufgetreten' } },
-		{ ...(baseObj as Props), _msg: { _type: 'error', _description: 'Es ist ein Fehler aufgetreten' }, _hideError: true },
+		{ ...(baseObj as Props), _msg: { _type: 'error', _description: 'Es ist ein Fehler aufgetreten' }, _hideMsg: true },
 		{ ...(baseObj as Props), _hint: 'Hint' },
 		{ ...(baseObj as Props), _touched: true },
 		{

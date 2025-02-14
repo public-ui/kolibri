@@ -3,7 +3,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -28,7 +28,7 @@ type OptionalProps = {
 	value: StencilUnknown;
 } & PropAccessKey &
 	PropDisabled &
-	PropHideError &
+	PropHideMsg &
 	PropHideLabel &
 	PropName &
 	PropRadioOptions & // PropRadioOptions becomes required with 2.0
@@ -42,7 +42,7 @@ type RequiredStates = {
 	options: RadioOption<StencilUnknown>[];
 	orientation: Orientation;
 } & PropId &
-	PropHideError &
+	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	hint: string;

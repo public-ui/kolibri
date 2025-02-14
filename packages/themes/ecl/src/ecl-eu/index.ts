@@ -26,6 +26,7 @@ import inputTextCss from './components/input-text.scss';
 import kolibriCss from './components/kolibri.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
+import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import progressCss from './components/progress.scss';
@@ -74,6 +75,7 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-AVATAR': avatarCss,
 	'KOL-TABS': tabsCss,
 	'KOL-LINK': linkCss,
+	'KOL-MODAL': modalCss,
 	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-DETAILS': detailsCss,

@@ -77,7 +77,7 @@ export class KolInputWc implements Props {
 					'read-only': this._readOnly === true,
 					required: this._required === true,
 					touched: this._touched === true,
-					'hidden-error': this._hideError === true,
+					'hidden-msg': this._hideMsg === true,
 				})}
 			>
 				<label class="input-label" id={!useTooltipInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltipInsteadOfLabel} htmlFor={this._id}>
@@ -134,7 +134,7 @@ export class KolInputWc implements Props {
 						_label={this._label}
 					></KolTooltipWcTag>
 				)}
-				{showMsg && <KolFormFieldMsgFc alert={this._alert} hideError={this._hideError} msg={convertMsgToInternMsg(this._msg)} id={this._id} />}
+				{showMsg && <KolFormFieldMsgFc alert={this._alert} hideMsg={this._hideMsg} msg={convertMsgToInternMsg(this._msg)} id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (
@@ -190,9 +190,9 @@ export class KolInputWc implements Props {
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideError?: boolean = false;
+	@Prop() public _hideMsg?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the

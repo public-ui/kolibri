@@ -5,13 +5,12 @@ import clsx from 'clsx';
 import type {
 	ButtonProps,
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputNumberAPI,
 	InputNumberStates,
 	InputTypeOnDefault,
 	InputTypeOnOff,
-	Iso8601,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -137,9 +136,9 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -171,12 +170,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the largest possible input value.
 	 */
-	@Prop() public _max?: number | Iso8601;
+	@Prop() public _max?: number;
 
 	/**
 	 * Defines the smallest possible input value.
 	 */
-	@Prop() public _min?: number | Iso8601;
+	@Prop() public _min?: number;
 
 	/**
 	 * Defines the properties for a message rendered as Alert component.
@@ -255,12 +254,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: number | Iso8601 | null;
+	@Prop({ mutable: true, reflect: true }) public _value?: number | null;
 
 	@State() public state: InputNumberStates = {
 		_autoComplete: 'off',
 		_hasValue: false,
-		_hideError: false,
+		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
@@ -291,9 +290,9 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		this.controller.validateDisabled(value);
 	}
 
-	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
-		this.controller.validateHideError(value);
+	@Watch('_hideMsg')
+	public validateHideMsg(value?: HideMsgPropType): void {
+		this.controller.validateHideMsg(value);
 	}
 
 	@Watch('_hideLabel')
@@ -322,12 +321,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_max')
-	public validateMax(value?: number | Iso8601): void {
+	public validateMax(value?: number): void {
 		this.controller.validateMax(value);
 	}
 
 	@Watch('_min')
-	public validateMin(value?: number | Iso8601): void {
+	public validateMin(value?: number): void {
 		this.controller.validateMin(value);
 	}
 
@@ -397,7 +396,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: number | Iso8601 | null): void {
+	public validateValue(value?: number | null): void {
 		this.controller.validateValueEx(value);
 	}
 

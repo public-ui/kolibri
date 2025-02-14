@@ -3,7 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropDisabled,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -29,7 +29,7 @@ type OptionalProps = {
 	value: string;
 } & PropAccessKey &
 	PropDisabled &
-	PropHideError &
+	PropHideMsg &
 	PropHideLabel &
 	PropName &
 	PropRequired &
@@ -42,7 +42,7 @@ type RequiredStates = {
 	suggestions: W3CInputValue[];
 	value: string;
 } & PropId &
-	PropHideError &
+	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	hint: string;

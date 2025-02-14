@@ -4,7 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -31,7 +31,7 @@ type OptionalProps = {
 	value: number;
 } & PropAccessKey &
 	PropDisabled &
-	PropHideError &
+	PropHideMsg &
 	PropHideLabel &
 	PropName &
 	PropSuggestions &
@@ -43,7 +43,7 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	suggestions: W3CInputValue[];
 } & PropId &
-	PropHideError &
+	PropHideMsg &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	hint: string;

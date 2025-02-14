@@ -179,10 +179,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 </kol-input-color>
 `;
 
-exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-color _hide-error="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
+exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-color _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-color" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-color" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -513,10 +513,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 </kol-input-color>
 `;
 
-exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-color _hide-error="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
+exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-input-color _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-error kol-input-color" role="presentation">
+    <div class="kol-form-field kol-form-field--hidden-msg kol-input-color" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>

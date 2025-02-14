@@ -4,7 +4,7 @@ import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
 	ButtonProps,
-	HideErrorPropType,
+	HideMsgPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -22,7 +22,7 @@ import {
 	setState,
 	validateAccessKey,
 	validateAdjustHeight,
-	validateHideError,
+	validateHideMsg,
 	validateHideLabel,
 	validateLabelWithExpertSlot,
 	validateMsg,
@@ -71,12 +71,12 @@ export class InputController extends ControlledInputController implements Watche
 		validateTooltipAlign(this.component, value);
 	}
 
-	public validateHideError(value?: HideErrorPropType): void {
-		validateHideError(this.component, value, {
+	public validateHideMsg(value?: HideMsgPropType): void {
+		validateHideMsg(this.component, value, {
 			hooks: {
 				afterPatch: () => {
-					if (this.component.state._hideError) {
-						a11yHint('Property hide-error for inputs: Only use when the error message is shown outside of the input component.');
+					if (this.component.state._hideMsg) {
+						a11yHint('Property _hideMsg for inputs: Only use when the error message is shown outside of the input component.');
 					}
 				},
 			},
@@ -149,7 +149,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateAdjustHeight(this.component._adjustHeight);
 		this.validateMsg(this.component._msg);
 		this.validateDisabled(this.component._disabled);
-		this.validateHideError(this.component._hideError);
+		this.validateHideMsg(this.component._hideMsg);
 		this.validateHideLabel(this.component._hideLabel);
 		this.validateHint(this.component._hint);
 		this.validateId(this.component._id);

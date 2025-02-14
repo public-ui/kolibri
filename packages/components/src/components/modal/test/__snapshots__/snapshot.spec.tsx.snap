@@ -4,7 +4,7 @@ exports[`kol-modal should render with _label="Label" _width="80%" 1`] = `
 <kol-modal>
   <template shadowrootmode="open">
     <dialog aria-label="Label" class="kol-modal" style="width: 80%;">
-      <div>
+      <div tabindex="-1">
         <slot></slot>
       </div>
     </dialog>

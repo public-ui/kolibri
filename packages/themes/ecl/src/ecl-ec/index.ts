@@ -26,6 +26,7 @@ import inputTextCss from './components/input-text.scss';
 import linkButtonCss from './components/link-button.scss';
 import kolibriCss from './components/kolibri.scss';
 import linkCss from './components/link.scss';
+import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import progressCss from './components/progress.scss';
@@ -76,6 +77,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-INPUT-DATE': inputDateCss,
 	'KOL-INPUT-EMAIL': inputEmailCss,
 	'KOL-INPUT-FILE': inputFileCss,
+	'KOL-MODAL': modalCss,
 	'KOL-SELECT': selectCss,
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-TABLE-STATEFUL': tableStatefulCss,

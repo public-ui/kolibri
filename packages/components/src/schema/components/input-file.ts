@@ -3,7 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropDisabled,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -30,7 +30,7 @@ type OptionalProps = {
 	tabIndex: number;
 } & PropAccessKey &
 	PropDisabled &
-	PropHideError &
+	PropHideMsg &
 	PropHideLabel &
 	PropMultiple &
 	PropName &
@@ -39,7 +39,7 @@ type OptionalProps = {
 	PropSyncValueBySelector &
 	PropTouched;
 
-type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideError;
+type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideMsg;
 type OptionalStates = {
 	accept: string;
 	hint: string;

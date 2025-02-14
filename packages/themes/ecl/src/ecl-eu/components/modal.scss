@@ -1,0 +1,9 @@
+@import '../../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-modal {
+		&__card {
+			box-shadow: 0 0 calc(var(--spacing-2xs) / 2) var(--color-black);
+		}
+	}
+}

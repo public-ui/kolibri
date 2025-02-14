@@ -5,7 +5,7 @@ import type {
 	PropAccessKey,
 	PropDisabled,
 	PropHasCounter,
-	PropHideError,
+	PropHideMsg,
 	PropHideLabel,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -39,7 +39,7 @@ type OptionalProps = {
 } & PropAccessKey &
 	PropDisabled &
 	PropHasCounter &
-	PropHideError &
+	PropHideMsg &
 	PropHideLabel &
 	PropId &
 	PropName &
@@ -56,7 +56,7 @@ type RequiredStates = {
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
 	type: InputTextType;
-} & PropHideError &
+} & PropHideMsg &
 	PropId &
 	PropLabelWithExpertSlot;
 type OptionalStates = {

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomSuggestionsOption renders default state 1`] = `
+<li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+  Test Option
+</li>
+`;
+
+exports[`CustomSuggestionsOption renders selected state 1`] = `
+<li aria-selected="true" class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+  Test Option
+</li>
+`;
+
+exports[`CustomSuggestionsOption renders with different index and option 1`] = `
+<li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+  Different Option
+</li>
+`;

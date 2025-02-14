@@ -7,7 +7,7 @@ import type {
 	CSSResize,
 	FocusableElement,
 	HasCounterPropType,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputTypeOnDefault,
 	KoliBriHorizontalIcons,
@@ -146,9 +146,9 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -266,7 +266,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		_adjustHeight: false,
 		_currentLength: 0,
 		_hasValue: false,
-		_hideError: false,
+		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_resize: 'vertical',
@@ -302,9 +302,9 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		this.controller.validateHasCounter(value);
 	}
 
-	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
-		this.controller.validateHideError(value);
+	@Watch('_hideMsg')
+	public validateHideMsg(value?: HideMsgPropType): void {
+		this.controller.validateHideMsg(value);
 	}
 
 	@Watch('_hideLabel')

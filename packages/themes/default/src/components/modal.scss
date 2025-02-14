@@ -1,0 +1,10 @@
+@import '../mixins/rem';
+
+@layer kol-theme-component {
+	.kol-modal {
+		&__card {
+			box-shadow: 0 0 rem(4) var(--color-subtle);
+			border-radius: var(--border-radius);
+		}
+	}
+}

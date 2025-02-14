@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomSuggestionsToggle renders default state 1`] = `
+<button class="kol-custom-suggestions-toggle" tabindex="-1">
+  <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+</button>
+`;
+
+exports[`CustomSuggestionsToggle renders disabled state 1`] = `
+<button class="kol-custom-suggestions-toggle" disabled="" tabindex="-1">
+  <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
+</button>
+`;

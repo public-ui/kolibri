@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/vue",
-	"version": "3.0.0-rc.2",
+	"version": "3.0.0-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -45,8 +45,7 @@
 		"vue"
 	],
 	"scripts": {
-		"build": "unbuild",
-		"prepack": "unbuild"
+		"build": "unbuild"
 	},
 	"devDependencies": {
 		"@babel/types": "7.26.7",
