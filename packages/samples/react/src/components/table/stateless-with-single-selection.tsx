@@ -66,6 +66,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 			<section className="w-full">
 				<KolTableStateless
 					_label="Table with selection checkboxes"
+					_minWidth="auto"
 					_headerCells={{
 						horizontal: [
 							[

@@ -26,7 +26,7 @@ export const TableWithPagination: FC = () => (
 			<p>This sample shows how KolTableStateful can be navigated using a pagination.</p>
 		</SampleDescription>
 		<div className="w-full">
-			<KolTableStateful _label="Table description" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTableStateful>
+			<KolTableStateful _label="Table description" _minWidth="auto" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTableStateful>
 		</div>
 	</>
 );

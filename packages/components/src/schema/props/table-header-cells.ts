@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
-import { emptyStringByArrayHandler, objectObjectHandler, parseJson, watchValidator } from '../utils';
 import type { KoliBriTableHeaderCell, Stringified } from '../types';
+import { emptyStringByArrayHandler, objectObjectHandler, parseJson, watchValidator } from '../utils';
 
 /* types */
 export type TableHeaderCells = {
@@ -23,11 +23,22 @@ export const validateTableHeaderCells = (component: Generic.Element.Component, v
 		objectObjectHandler(value, () => {
 			try {
 				value = parseJson<TableHeaderCells>(value);
-				// eslint-disable-next-line no-empty
 			} catch (e) {
-				// value keeps the original data
+				void e;
 			}
-			watchValidator(component, '_headerCells', (value): boolean => typeof value === 'object' && value !== null, new Set(['TableHeaderCellsPropType']), value);
+			watchValidator(
+				component,
+				'_headerCells',
+				(value): boolean =>
+					typeof value === 'object' &&
+					value !== null &&
+					(value.horizontal === undefined ||
+						(Array.isArray(value.horizontal) && value.horizontal.find((headerRow) => !Array.isArray(headerRow)) === undefined)) &&
+					(value.vertical === undefined || (Array.isArray(value.vertical) && value.vertical.find((headerCol) => !Array.isArray(headerCol)) === undefined)) &&
+					true,
+				new Set(['TableHeaderCellsPropType']),
+				value,
+			);
 		});
 	});
 };

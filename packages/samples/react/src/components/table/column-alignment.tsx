@@ -18,6 +18,7 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Simple table" _level={3}></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with different text align properties"
+				_minWidth="auto"
 				_headers={{
 					horizontal: [
 						[
@@ -35,6 +36,7 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Table with sortable columns" _level={3} className="block mt-6"></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with sortable columns"
+				_minWidth="auto"
 				_headers={{
 					horizontal: [
 						[
@@ -52,6 +54,7 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Table some sortable columns" _level={3} className="block mt-6"></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with some but not all columns sortable"
+				_minWidth="auto"
 				_headers={{
 					horizontal: [
 						[
@@ -69,6 +72,7 @@ export const TableColumnAlignment: FC = () => (
 			<KolHeading _label="Table with vertical heading" _level={3} className="block mt-6"></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with vertical heading"
+				_minWidth="auto"
 				_headers={{
 					horizontal: [
 						[

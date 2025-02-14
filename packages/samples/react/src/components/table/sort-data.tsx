@@ -60,11 +60,11 @@ export const TableSortData: FC = () => (
 		<section className="w-full grid gap-4">
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Vertical" />
-				<KolTableStateful _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
+				<KolTableStateful _label="Sort a date column" _minWidth="auto" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Horizontal" />
-				<KolTableStateful _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
+				<KolTableStateful _label="Sort a date column" _minWidth="auto" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
 			</section>
 		</section>
 	</>

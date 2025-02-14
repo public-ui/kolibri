@@ -1,24 +1,20 @@
 import type { Generic } from 'adopted-style-sheets';
-
 import type { PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection, TableHeaderCells } from '../props';
-import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
+import type { PropMinWidth } from '../props/min-width';
 import type { PropTableHeaderCells } from '../props/table-header-cells';
+import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
 
-type RequiredProps = PropLabel & PropTableData & PropTableHeaderCells;
+type RequiredProps = PropLabel & PropMinWidth & PropTableData & PropTableHeaderCells;
 
-type OptionalProps = {
-	minWidth: string;
-} & PropTableCallbacks &
-	PropTableDataFoot &
-	PropTableSelection;
+type OptionalProps = PropTableCallbacks & PropTableDataFoot & PropTableSelection;
 
 type RequiredStates = {
 	headerCells: TableHeaderCells;
 	data: KoliBriTableDataType[];
-} & PropLabel;
+} & PropLabel &
+	PropMinWidth;
 
 type OptionalStates = {
-	minWidth: string;
 	dataFoot: KoliBriTableDataType[];
 	selection: KoliBriTableSelection;
 } & PropTableCallbacks;
