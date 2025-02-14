@@ -47,16 +47,13 @@ export class KolForm implements FormAPI {
 		}
 	};
 
+	private readonly setBlockElement = (el?: HTMLElement) => (this.errorListBlock = el);
+
+	private readonly setFirstLinkElement = (el?: HTMLElement) => (this.errorListFirstLink = el);
+
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (
-			<KolAlertFc
-				ref={(el) => {
-					this.errorListBlock = el;
-				}}
-				type="error"
-				variant="card"
-				label={translate('kol-error-list-message')}
-			>
+			<KolAlertFc ref={this.setBlockElement} type="error" variant="card" label={translate('kol-error-list-message')}>
 				<nav aria-label={translate('kol-error-list')}>
 					<ul>
 						{errorList?.map((error, index) => (
@@ -65,11 +62,7 @@ export class KolForm implements FormAPI {
 									_href=""
 									_label={error.message}
 									_on={{ onClick: typeof error.selector === 'string' ? () => this.handleLinkClick(String(error.selector)) : error.selector }}
-									ref={(el) => {
-										if (index === 0) {
-											this.errorListFirstLink = el;
-										}
-									}}
+									ref={index === 0 ? this.setFirstLinkElement : undefined}
 								/>
 							</li>
 						))}
