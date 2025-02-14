@@ -40,6 +40,18 @@ The following components have been removed:
 
 - The DOM event `kol-selection-change` has been renamed to `kolSelectionChange`.
 
+### kol-alert
+
+- The default value for the property `_level` changed to `0` which results in rendering a `strong` tag instead of `h1` when no level is provided.
+
+### kol-card
+
+- The default value for the property `_level` changed to `0` which results in rendering a `strong` tag instead of `h1` when no level is provided.
+
+### kol-heading
+
+- The default value for the property `_level` changed to `0` which results in rendering a `strong` tag instead of `h1` when no level is provided.
+
 ### kol-table-stateless
 
 - The DOM event `kol-selection-change` has been renamed to `kolSelectionChange`.

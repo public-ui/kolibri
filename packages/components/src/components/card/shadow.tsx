@@ -85,7 +85,7 @@ export class KolCard implements CardAPI {
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 1;
+	@Prop() public _level?: HeadingLevel = 0;
 
 	@State() public state: CardStates = {
 		_label: '', // ⚠ required

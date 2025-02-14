@@ -369,9 +369,9 @@ exports[`kol-card should render with _label="Überschrift" 1`] = `
   <template shadowrootmode="open">
     <div class="kol-card">
       <div class="kol-card__header">
-        <h1 class="kol-card__headline kol-headline kol-headline--h1 kol-headline--single">
+        <strong class="kol-card__headline kol-headline kol-headline--single kol-headline--strong">
           Überschrift
-        </h1>
+        </strong>
       </div>
       <div class="kol-card__content">
         <slot></slot>
