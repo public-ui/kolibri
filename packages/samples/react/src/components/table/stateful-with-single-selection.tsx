@@ -71,6 +71,7 @@ export const TableStatefulWithSingleSelection: FC = () => {
 			<section className="w-full">
 				<KolTableStateful
 					_label="Table with selection radio"
+					_minWidth="auto"
 					_headers={{
 						horizontal: [
 							[
