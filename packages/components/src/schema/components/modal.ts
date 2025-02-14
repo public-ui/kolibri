@@ -2,7 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { PropLabel } from '../props';
 import type { KoliBriModalEventCallbacks } from '../types';
-import { PropModalVariant } from '../props/variant/modal';
+import type { PropModalVariant } from '../props/variant/modal';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
