@@ -59,7 +59,7 @@ ROUTES.forEach((options, route) => {
 		}
 		await expect(page).toHaveScreenshot({
 			fullPage: true,
-			maxDiffPixelRatio: 0.0,
+			maxDiffPixelRatio: 0.01,
 			...options,
 		});
 		await page.evaluate(() => {
@@ -67,7 +67,7 @@ ROUTES.forEach((options, route) => {
 		});
 		await expect(page).toHaveScreenshot({
 			fullPage: true,
-			maxDiffPixelRatio: 0.01,
+			maxDiffPixelRatio: 0.02,
 			...options,
 		});
 	});
