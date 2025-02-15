@@ -188,8 +188,8 @@ jobs:
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/themes/bwst
         env:
-        NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-        NPM_CONFIG_PROVENANCE: true
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish themes
         run: pnpm publish --access ${{env.access}} --no-git-checks --tag ${{env.prefix}}-${{github.event.inputs.tag}}
         working-directory: packages/themes
