@@ -24,22 +24,6 @@ The following components have been removed:
 - Visually, the tooltip has been replaced by a simple label shown in parentheses after the abbreviation.
 - The property `_tooltipAlign` has been removed.
 
-### kol-modal
-
-- The property `_activeElement` has been removed. Use the methods `openModal` and `closeModal` instead.
-
-### kol-table-stateful
-
-- The table header property `sort` has been removed. Use `compareFn` instead.
-
-### kol-input-file
-
-- The property `_value` has been removed as it never served a purpose. Use the `getValue()` method instead to access the FileList.
-
-### kol-table-stateful
-
-- The DOM event `kol-selection-change` has been renamed to `kolSelectionChange`.
-
 ### kol-alert
 
 - The default value for the property `_level` changed to `0` which results in rendering a `strong` tag instead of `h1` when no level is provided.
@@ -51,6 +35,21 @@ The following components have been removed:
 ### kol-heading
 
 - The default value for the property `_level` changed to `0` which results in rendering a `strong` tag instead of `h1` when no level is provided.
+
+### kol-input-file
+
+- The property `_value` has been removed as it never served a purpose. Use the `getValue()` method instead to access the FileList.
+
+### kol-modal
+
+- The property `_activeElement` has been removed. Use the methods `openModal` and `closeModal` instead.
+
+### kol-table-stateful
+
+- The table header property `sort` has been removed. Use `compareFn` instead.
+- The property `_minWidth` becomes required. This is to ensure that the inner width of the table and columns are wide enough to display the content. If the table gets too narrow, then the table becomes
+  automatically horizontally scrollbar.
+- The DOM event `kol-selection-change` has been renamed to `kolSelectionChange`.
 
 ### kol-table-stateless
 
