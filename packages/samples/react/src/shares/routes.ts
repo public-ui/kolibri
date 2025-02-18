@@ -30,8 +30,10 @@ import { LINK_ROUTES } from '../components/link/routes';
 import { MODAL_ROUTES } from '../components/modal/routes';
 import { NAV_ROUTES } from '../components/nav/routes';
 import { PAGINATION_ROUTES } from '../components/pagination/routes';
+import { POPOVER_BUTTON_ROUTES } from '../components/popover-button/routes';
 import { PROGRESS_ROUTES } from '../components/progress/routes';
 import { QUOTE_ROUTES } from '../components/quote/routes';
+import { SCENARIO_ROUTES } from '../scenarios/routes';
 import { SELECT_ROUTES } from '../components/select/routes';
 import { SKIP_NAV_ROUTES } from '../components/skip-nav/routes';
 import { SPIN_ROUTES } from '../components/spin/routes';
@@ -42,7 +44,6 @@ import { TEXTAREA_ROUTES } from '../components/textarea/routes';
 import { TOAST_ROUTES } from '../components/toast/routes';
 import { TOOLBAR_ROUTES } from '../components/toolbar/routes';
 import { VERSION_ROUTES } from '../components/version/routes';
-import { SCENARIO_ROUTES } from '../scenarios/routes';
 import { Routes } from './types';
 import { TREE_ROUTES } from '../components/tree/routes';
 import { COMBOBOX_ROUTES } from '../components/combobox/routes';
@@ -82,6 +83,7 @@ export const ROUTES: Routes = {
 	...MODAL_ROUTES,
 	...NAV_ROUTES,
 	...PAGINATION_ROUTES,
+	...POPOVER_BUTTON_ROUTES,
 	...PROGRESS_ROUTES,
 	...QUOTE_ROUTES,
 	...SELECT_ROUTES,
