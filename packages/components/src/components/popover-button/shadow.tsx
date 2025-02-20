@@ -112,6 +112,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					_type={this._type}
 					_value={this._value}
 					_variant={this._variant}
+					data-testid="popover-button"
 					class="kol-popover-button__button"
 					ref={(element) => (this.refButton = element)}
 					onClick={this.handleButtonClick.bind(this)}
@@ -119,7 +120,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					<slot name="expert" slot="expert"></slot>
 				</KolButtonWcTag>
 
-				<div ref={(element) => (this.refPopover = element)} popover="auto" id="popover" class="kol-popover-button__popover">
+				<div ref={(element) => (this.refPopover = element)} data-testid="popover-content" popover="auto" id="popover" class="kol-popover-button__popover">
 					<slot />
 				</div>
 			</div>
