@@ -52,6 +52,11 @@ export class KolPopoverButton implements PopoverButtonProps {
 				// Reset the flag after the event loop tick.
 				this.justClosed = false;
 			}, 10); // timeout of 0 should be sufficient but doesn't work in Safari Mobile (needs further investigation).
+		} else if (this.refPopover) {
+			/**
+			 * Avoid "flicker" by hiding the element until the position is set in the `toggle` event handler. `alignFloatingElements` is responsible for setting the visibility back to 'visible'.
+			 */
+			this.refPopover.style.visibility = 'hidden';
 		}
 	}
 
