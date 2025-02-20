@@ -25,29 +25,29 @@ export const PopoverButtonBasic: FC = () => {
 			{!hideMenus && <KolBadge className="block mb-3" _label="Component is a DRAFT - Don't use in production yet." _color="#db5461" />}
 
 			<div className="flex flex-wrap gap-4">
-				<KolPopoverButton _label={'Open popover'} _variant="primary">
+				<KolPopoverButton _label={'Open popover'} _variant="primary" _icons={{ right: 'codicon codicon-chevron-down' }}>
 					<KolButton _label="Button within popover" _variant="primary" _on={dummyEventHandler} />
 					<br />
 					<br />
 					<KolButton _label="Second Button within popover" _on={dummyEventHandler} />
 				</KolPopoverButton>
 
-				<KolPopoverButton _label="Open popover (align right)" _popoverAlign="right">
+				<KolPopoverButton _label="Open popover" _popoverAlign="right" _icons={{ right: 'codicon codicon-chevron-right' }}>
 					<p className="w-sm">
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut dolore dolores itaque praesentium reprehenderit sed voluptatum!
 						Exercitationem ipsa magni maiores modi, placeat quas quos reprehenderit rerum sit veniam vitae.
 					</p>
 				</KolPopoverButton>
 
-				<KolPopoverButton _label="icon-only with tooltip" _icons="codicon codicon-squirrel" _hideLabel>
-					Popover content
+				<KolPopoverButton _label="icon-only with tooltip" _icons="codicon codicon-info" _tooltipAlign="right" _hideLabel>
+					This is an explanation shown on click.
 				</KolPopoverButton>
 
 				<KolPopoverButton _label="">
 					<span slot="expert">
 						<u>Expert slot content</u>
 					</span>
-					Popover content
+					This sample illustrates a button with expert slot.
 				</KolPopoverButton>
 			</div>
 		</>
