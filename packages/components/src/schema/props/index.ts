@@ -50,7 +50,6 @@ export * from './options';
 export * from './pagination-position';
 export * from './popover-align';
 export * from './popover-callbacks';
-export * from './popover-target';
 export * from './read-only';
 export * from './required';
 export * from './rows';

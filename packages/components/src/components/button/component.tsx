@@ -12,7 +12,6 @@ import type {
 	FocusableElement,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
-	PopoverTargetPropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
@@ -138,7 +137,6 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					disabled={this.state._disabled}
 					id={this.state._id}
 					name={this.state._name}
-					popoverTarget={this._popoverTarget}
 					onClick={this.onClick}
 					onMouseDown={this.onMouseDown}
 					role={this.state._role}
@@ -239,12 +237,6 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: string;
-
-	/**
-	 * Defines the `popovertarget` attribute
-	 * @internal
-	 */
-	@Prop() public _popoverTarget?: PopoverTargetPropType;
 
 	/**
 	 * Defines the callback functions for button events.
