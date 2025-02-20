@@ -41,8 +41,20 @@ export class KolPopoverButton implements PopoverButtonProps {
 		_label: '',
 		_popoverAlign: 'bottom',
 	};
+	@State() private justClosed = false;
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
+	private handleBeforeToggle(event: Event) {
+		if ((event as ToggleEvent).newState === 'closed') {
+			this.justClosed = true;
+
+			setTimeout(() => {
+				// Reset the flag after the event loop tick.
+				this.justClosed = false;
+			}, 10); // timeout of 0 should be sufficient but doesn't work in Safari Mobile (needs further investigation).
+		}
+	}
+
 	private handleToggle(event: Event) {
 		if ((event as ToggleEvent).newState === 'open' && this.refPopover && this.refButton) {
 			void alignFloatingElements({
@@ -53,12 +65,21 @@ export class KolPopoverButton implements PopoverButtonProps {
 		}
 	}
 
+	private handleButtonClick() {
+		// If the popover was just closed by native behavior, do nothing (and let it stay closed).
+		if (!this.justClosed) {
+			this.refPopover?.togglePopover();
+		}
+	}
+
 	public componentDidRender() {
 		this.refPopover?.addEventListener('toggle', this.handleToggle.bind(this));
+		this.refPopover?.addEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
 	}
 
 	public disconnectedCallback() {
 		this.refPopover?.removeEventListener('toggle', this.handleToggle.bind(this));
+		this.refPopover?.removeEventListener('beforetoggle', this.handleBeforeToggle.bind(this));
 	}
 
 	public render(): JSX.Element {
@@ -88,9 +109,7 @@ export class KolPopoverButton implements PopoverButtonProps {
 					_variant={this._variant}
 					class="kol-popover-button__button"
 					ref={(element) => (this.refButton = element)}
-					onClick={() => {
-						this.refPopover?.showPopover();
-					}}
+					onClick={this.handleButtonClick.bind(this)}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</KolButtonWcTag>
