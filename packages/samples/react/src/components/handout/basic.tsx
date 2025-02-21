@@ -248,10 +248,8 @@ export const HandoutBasic: FC = () => {
 						<p>
 							I am <KolAbbr>e.g.</KolAbbr> an abbreviation without label.
 						</p>
-						<div className="grid grid-cols-2 items-center">
-							<KolProgress _variant="bar" _max={100} _value={33} _label="Progress" />
-							<KolProgress _variant="cycle" _max={100} _value={66} _label="Progress" />
-						</div>
+						<KolProgress _variant="bar" _max={100} _value={33} _label="Progress" />
+						<KolProgress _variant="cycle" _max={100} _value={66} _label="Progress" />
 					</div>
 				</KolCard>
 				<KolCard className="col-span-6 sm:col-span-6 md:col-span-6 xl:col-span-3" _label="Button, LinkButton and Tab" _level={2}>
