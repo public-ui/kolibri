@@ -92,7 +92,7 @@ Type: `Promise<void>`
 
 | Name    | Type                                                                                                                                                                                                                                                    | Description |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "default" \| "info" \| "success" \| "warning" \| "error"; alertVariant?: "card" \| "msg" \| undefined; variant?: "card" \| "msg" \| undefined; }` |             |
+| `toast` | `{ description?: string \| undefined; render?: ToastRenderFunction \| undefined; label: string; type: "error" \| "default" \| "info" \| "success" \| "warning"; alertVariant?: "card" \| "msg" \| undefined; variant?: "card" \| "msg" \| undefined; }` |             |
 
 #### Returns
 
