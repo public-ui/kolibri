@@ -7,87 +7,86 @@ const VALID_VARIANTS = Object.keys(KoliBriProgressVariantEnum);
 
 const CycleSvg = ({ state }: { state: ProgressStates }) => {
 	const fullCircle = 342;
-	const textPositionTop = '43%';
-	const textPositionBottom = '57%';
-	const valueY = state._label ? textPositionBottom : '50%';
+	const value = state._unit === '%' ? `${Math.round(100 * (state._value / state._max))} %` : `${state._value} ${state._unit}`;
 
 	return (
-		<svg class="cycle" width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-			<circle class="background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
-			<circle class="whitespace" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="3"></circle>
-			<circle class="border" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
-			<circle class="whitespace" cx="60" cy="60" r="51" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
-			<circle class="border" cx="60" cy="60" r="50" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
-			<circle
-				class="progress"
-				fill="currentColor"
-				stroke="currentColor"
-				stroke-linecap="round"
-				stroke-dasharray={`${Math.round((state._value / state._max) * fullCircle)}px ${fullCircle}px`}
-				stroke-width="6"
-				cx="60"
-				cy="60"
-				r="54.5"
-			></circle>
-			{state._label && (
-				<text aria-hidden="true" x="50%" y={textPositionTop} text-anchor="middle" fill="currentColor">
-					{state._label}
-				</text>
-			)}
-			<text aria-hidden="true" x="50%" y={valueY} text-anchor="middle" fill="currentColor">
-				{state._value}
-				{state._unit}
-			</text>
-		</svg>
+		<div class="cycle">
+			<svg width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+				<circle class="background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
+				<circle class="whitespace" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="3"></circle>
+				<circle class="border" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+				<circle class="whitespace" cx="60" cy="60" r="51" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+				<circle class="border" cx="60" cy="60" r="50" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+				<circle
+					class="progress"
+					fill="currentColor"
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-dasharray={`${Math.round((state._value / state._max) * fullCircle)}px ${fullCircle}px`}
+					stroke-width="6"
+					cx="60"
+					cy="60"
+					r="54.5"
+				></circle>
+			</svg>
+			<div class="text">
+				{state._label && (
+					<div class="label">
+						{state._label}
+					</div>
+				)}
+				<div class="value">
+					{value}
+				</div>
+			</div>
+		</div>
 	);
 };
 
 const BarSvg = ({ state }: { state: ProgressStates }) => {
-	const textLabelPadding = 'var(--kolibri-text-label-padding, 45px)';
 	const percentage = 100 * (state._value / state._max);
+	const value = state._unit === '%' ? `${Math.round(percentage)}` : `${state._value}`;
 
 	return (
 		<div class="bar">
-			{state._label && <div>{state._label}</div>}
+			{state._label && <div class="label">{state._label}</div>}
 			<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="12" overflow="visible">
 				<rect
 					class="background"
 					x="1"
 					y="1"
-					height="10"
+					height="11"
 					rx="5"
 					fill="currentColor"
 					stroke="currentColor"
 					stroke-width="3"
-					style={{ width: `calc(100% - 2px - ${textLabelPadding})` }}
+					style={{ width: `100%` }}
 				></rect>
 				<rect
 					class="border"
 					x="1"
 					y="1"
-					height="10"
+					height="11"
 					rx="5"
 					fill="currentColor"
 					stroke="currentColor"
 					stroke-width="1"
-					style={{ width: `calc(100% - 2px - ${textLabelPadding})` }}
+					style={{ width: `100%` }}
 				></rect>
 				<rect
 					class="progress"
-					x="2.5"
-					y="2.5"
+					x="3"
+					y="3"
 					height="7"
 					rx="3.5"
 					fill="currentColor"
 					stroke="currentColor"
 					stroke-width="3"
-					style={{ width: `calc(${percentage}% - 5px - (${textLabelPadding} / 100 * ${percentage}))` }}
+					style={{ width: `calc(${percentage}% - 4px)` }}
 				></rect>
-				<text aria-hidden="true" text-anchor="end" dominant-baseline="middle" fill="currentColor" x="100%" y="50%">
-					{state._value}
-					{state._unit}
-				</text>
 			</svg>
+			<div class="value" style={{ "width": `${`${state._max}`.length}ch` }}>{value}</div>
+			<div class="unit">{state._unit}</div>
 		</div>
 	);
 };
@@ -115,6 +114,9 @@ export class KolProcess implements ProgressAPI {
 
 	// https://dequeuniversity.com/library/aria/progress-bar-bounded
 	public render(): JSX.Element {
+		const isPercentage = this.state._unit === '%';
+		const value = isPercentage ? `${Math.round((this.state._liveValue / this.state._max) * 100)}%` : this.state._liveValue;
+
 		return (
 			<Host class="kol-progress">
 				{createProgressSVG(this.state)}
@@ -122,7 +124,7 @@ export class KolProcess implements ProgressAPI {
 				{/* https://css-tricks.com/html5-progress-element/ */}
 				<progress aria-busy={this.state._value < this.state._max ? 'true' : 'false'} max={this.state._max} value={this.state._value}></progress>
 				<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
-					{this.state._liveValue} von {this.state._max} {this.state._unit}
+					{isPercentage ? `${value} %` : `${value} von ${this.state._max} ${this.state._unit}`}
 				</span>
 			</Host>
 		);
