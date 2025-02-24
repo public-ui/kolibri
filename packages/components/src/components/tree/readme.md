@@ -73,8 +73,8 @@ Zusätzlich können Elemente in der **Tree**-Komponente mit Alphanumerischen-Tas
 
 ## Properties
 
-| Property              | Attribute | Description                    | Type     | Default     |
-| --------------------- | --------- | ------------------------------ | -------- | ----------- |
-| `_label` _(required)_ | `_label`  | Defines the label of the tree. | `string` | `undefined` |
+| Property              | Attribute | Description                                                                                                        | Type     | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | -------- | ----------- |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string` | `undefined` |
 
 ---

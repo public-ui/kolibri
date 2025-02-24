@@ -131,11 +131,11 @@ Optional können Animationen mit Keyframes hinzugefügt werden. Dabei ist es wic
 
 | Property              | Attribute | Description                                                                                                        | Type                                                      | Default     |
 | --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | ----------- |
-| `_align`              | `_align`  | Specifies the orientation of the drawer.                                                                           | `"bottom" \| "left" \| "right" \| "top" \| undefined`     | `undefined` |
+| `_align`              | `_align`  | Defines the visual orientation of the component.                                                                   | `"bottom" \| "left" \| "right" \| "top" \| undefined`     | `undefined` |
 | `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`                                                  | `undefined` |
-| `_modal`              | `_modal`  | Indicates whether the drawer is a modal.                                                                           | `boolean \| undefined`                                    | `undefined` |
+| `_modal`              | `_modal`  | <span style="color:red">**[DEPRECATED]**</span> Indicates whether the drawer is a modal.<br/><br/>                 | `boolean \| undefined`                                    | `undefined` |
 | `_on`                 | --        | Specifies the EventCallback function to be called when the drawer is closing.                                      | `undefined \| ({ onClose?: (() => void) \| undefined; })` | `undefined` |
-| `_open`               | `_open`   | Specifies the default open state of the drawer.                                                                    | `boolean \| undefined`                                    | `undefined` |
+| `_open`               | `_open`   | Opens/expands the element when truthy, closes/collapses when falsy.                                                | `boolean \| undefined`                                    | `undefined` |
 
 ## Methods
 

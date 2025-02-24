@@ -6,12 +6,12 @@ Weitere Informationen zum Tree finden Sie auf der <kol-link _href="/docs/compone
 
 ## Properties
 
-| Property              | Attribute | Description                                                                      | Type                   | Default     |
-| --------------------- | --------- | -------------------------------------------------------------------------------- | ---------------------- | ----------- |
-| `_active`             | `_active` | If set (to true) the tree item is the active one.                                | `boolean \| undefined` | `undefined` |
-| `_href` _(required)_  | `_href`   | This property is used for a link from a reference to the target URL.             | `string`               | `undefined` |
-| `_label` _(required)_ | `_label`  | Defines the label of the link.                                                   | `string`               | `undefined` |
-| `_open`               | `_open`   | If set (to true) opens/expands the element, closes if not set (or set to false). | `boolean \| undefined` | `undefined` |
+| Property              | Attribute | Description                                                                                                        | Type                   | Default     |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----------- |
+| `_active`             | `_active` | If set (to true) the tree item is the active one.                                                                  | `boolean \| undefined` | `undefined` |
+| `_href` _(required)_  | `_href`   | Defines the target URI of the link.                                                                                | `string`               | `undefined` |
+| `_label` _(required)_ | `_label`  | Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). | `string`               | `undefined` |
+| `_open`               | `_open`   | Opens/expands the element when truthy, closes/collapses when falsy.                                                | `boolean \| undefined` | `undefined` |
 
 ## Methods
 
