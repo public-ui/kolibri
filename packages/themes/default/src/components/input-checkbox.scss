@@ -34,7 +34,7 @@
 			order: 1;
 			width: 100%;
 			border-color: var(--color-subtle);
-			border-width: rem(2);
+			border-width: 2px;
 			border-style: solid;
 			border-radius: var(--border-radius);
 			appearance: none;
@@ -66,7 +66,7 @@
 
 			&:hover {
 				border-color: var(--color-primary);
-				box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+				box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
 			}
 		}
 
@@ -162,13 +162,13 @@
 
 				&__input {
 					height: 100%;
-					border-width: rem(1) 0 rem(1) rem(1);
+					border-width: 1px 0 1px 1px;
 					border-style: solid none solid solid;
 					border-radius: var(--border-radius) 0 0 var(--border-radius);
 				}
 
 				&__label {
-					border-width: rem(1) rem(1) rem(1) 0;
+					border-width: 1px 1px 1px 0;
 					border-style: solid solid solid none;
 					border-radius: 0 var(--border-radius) var(--border-radius) 0;
 
@@ -216,7 +216,7 @@
 						background-color: var(--color-primary-variant);
 						border-color: var(--color-primary-variant);
 						color: var(--color-light);
-						box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+						box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
 					}
 				}
 
@@ -241,13 +241,13 @@
 				&--label-align-left {
 					.kol-field-control {
 						&__input {
-							border-width: rem(1) rem(1) rem(1) 0;
+							border-width: 1px 1px 1px 0;
 							border-style: solid solid solid none;
 							border-radius: 0 var(--border-radius) var(--border-radius) 0;
 						}
 
 						&__label {
-							border-width: rem(1) 0 rem(1) rem(1);
+							border-width: 1px 0 rem(1) rem(1);
 							border-style: solid none solid solid;
 							border-radius: var(--border-radius) 0 0 var(--border-radius);
 						}
@@ -271,7 +271,7 @@
 				&--hide-label {
 					.kol-field-control {
 						&__input {
-							border-width: rem(1);
+							border-width: 1px;
 							border-style: solid;
 							border-radius: var(--border-radius);
 						}
@@ -285,6 +285,7 @@
 							outline: none;
 							cursor: not-allowed;
 						}
+
 						&__label {
 							cursor: not-allowed;
 						}

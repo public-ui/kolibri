@@ -6,7 +6,7 @@
 		font-family: var(--font-family);
 		border-radius: 0;
 		border-style: solid;
-		border-width: rem(2);
+		border-width: 2px;
 		border-color: var(--color-blue);
 
 		.kol-popover__content {
@@ -23,7 +23,7 @@
 
 		&__horizontal-line {
 			border: 0;
-			border-top: rem(1) solid var(--color-blue);
+			border-top: 1px solid var(--color-blue);
 		}
 
 		@include kol-button('kol-button');

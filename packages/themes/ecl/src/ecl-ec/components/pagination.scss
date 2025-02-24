@@ -15,7 +15,7 @@
 
 	.kol-button__text {
 		background-color: var(--color-yellow);
-		border: rem(2) solid var(--color-yellow);
+		border: 2px solid var(--color-yellow);
 		color: var(--color-black);
 		font-weight: var(--font-weight-bold);
 		min-height: var(--a11y-min-size);
@@ -28,8 +28,8 @@
 		}
 
 		.kol-button:focus & {
-			outline-offset: rem(-4);
-			outline: rem(2) solid var(--color-black);
+			outline-offset: -4px;
+			outline: 2px solid var(--color-black);
 		}
 
 		.kol-pagination__button--selected & {
