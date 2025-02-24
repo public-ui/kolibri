@@ -89,20 +89,21 @@ export class KolSingleSelect implements SingleSelectAPI {
 		if (this.state._disabled) {
 			return;
 		} else {
+			const emptyValue = '';
 			this._focusedOptionIndex = -1;
-			this.state._value = '';
-			this._inputValue = '';
+			this.state._value = emptyValue;
+			this._inputValue = emptyValue;
 			this._filteredOptions = [...this.state._options];
-
-			this.controller.setFormAssociatedValue(this.state._value);
+			this.controller.onFacade.onInput(new Event('input'), true, emptyValue);
+			this.controller.onFacade.onChange(new Event('change'), emptyValue);
 		}
 	}
 
 	private selectOption(event: Event, option: Option<string>) {
 		this.state._value = option.value;
 		this._inputValue = option.label as string;
-		this.controller.onFacade.onChange(event, option.value);
 		this.controller.onFacade.onInput(event, false, option.value);
+		this.controller.onFacade.onChange(event, option.value);
 
 		this._filteredOptions = [...this.state._options];
 
