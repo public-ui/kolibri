@@ -7,7 +7,7 @@
 	}
 
 	.tabs-button-group {
-		border-bottom: rem(1) solid var(--color-grey-25);
+		border-bottom: 1px solid var(--color-grey-25);
 		margin-bottom: rem(-1);
 	}
 
@@ -25,10 +25,10 @@
 	.tabs-button-group button.selected .kol-span-wc {
 		border-color: var(--color-grey-25);
 		border-style: solid;
-		border-width: rem(1);
+		border-width: 1px;
 		border-bottom-color: white;
 		border-top-color: var(--color-blue);
-		box-shadow: 0 rem(-3) var(--color-blue);
+		box-shadow: 0 -3px var(--color-blue);
 		font-weight: var(--font-weight-bold);
 		color: var(--color-blue);
 	}
@@ -40,6 +40,6 @@
 	.tabs-button-group button:focus .kol-span-wc {
 		outline-color: var(--color-blue-130);
 		outline-style: solid;
-		outline-width: rem(2);
+		outline-width: 2px;
 	}
 }

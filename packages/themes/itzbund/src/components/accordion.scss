@@ -13,9 +13,9 @@
 		height: 100%;
 		display: grid;
 		border-color: var(--kolibri-border-color);
-		border-width: rem(1);
+		border-width: 1px;
 		border-style: solid;
-		border-radius: rem(4);
+		border-radius: 4px;
 
 		&__heading-button {
 			@include kol-typography-accordion;

@@ -15,7 +15,7 @@
 		@include kol-typography-body;
 		color: var(--default-letter);
 		border-color: var(--default-border);
-		border-width: rem(2);
+		border-width: 2px;
 		border-style: solid;
 	}
 
@@ -164,10 +164,10 @@
 	}
 
 	.button:focus-within {
-		border-radius: rem(32);
+		border-radius: 32px;
 		outline-color: var(--color-achat);
 		outline-offset: rem(2);
 		outline-style: solid;
-		outline-width: rem(3);
+		outline-width: 3px;
 	}
 }

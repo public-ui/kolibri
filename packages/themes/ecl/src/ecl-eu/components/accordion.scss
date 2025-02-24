@@ -7,7 +7,7 @@
 	}
 
 	.accordion {
-		border-radius: rem(8);
+		border-radius: 8px;
 		box-shadow:
 			0 rem(2) rem(4) rgb(9 49 142 / 8%),
 			0 0 rem(10) rgb(9 49 142 / 4%),
@@ -22,12 +22,12 @@
 
 		&__heading-button {
 			button {
-				border-radius: rem(8);
+				border-radius: 8px;
 				outline-offset: rem(-1);
 				border: 0;
 				border-bottom-color: #cfdaf5;
 				border-bottom-style: solid;
-				border-bottom-width: rem(2);
+				border-bottom-width: 2px;
 				color: #171a22;
 				position: relative;
 				display: block;
@@ -70,7 +70,7 @@
 		&__content {
 			-webkit-border-start: rem(4) solid #0e47cb;
 			-webkit-margin-start: 0;
-			border-bottom: rem(2) solid #cfdaf5;
+			border-bottom: 2px solid #cfdaf5;
 			border-inline-start: rem(4) solid #0e47cb;
 			color: #515560;
 			font:

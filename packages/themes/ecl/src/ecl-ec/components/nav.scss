@@ -46,7 +46,7 @@
 	.kol-span-wc {
 		border-color: transparent;
 		border-style: solid;
-		border-width: rem(2);
+		border-width: 2px;
 		color: var(--color-white);
 		font-size: rem(18);
 		justify-items: start;
@@ -59,7 +59,7 @@
 		border-color: var(--color-blue-75);
 		border-style: solid;
 		border-width: 0;
-		border-top-width: rem(2);
+		border-top-width: 2px;
 	}
 
 	a {

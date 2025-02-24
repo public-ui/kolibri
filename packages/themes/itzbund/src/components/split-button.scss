@@ -3,7 +3,7 @@
 
 @layer kol-theme-component {
 	:host {
-		border-radius: rem(32);
+		border-radius: 32px;
 		border-style: solid;
 		border-width: var(--spacing);
 	}
@@ -14,7 +14,7 @@
 
 	.horizontal-line {
 		background-color: var(--border-color);
-		border-radius: rem(2);
+		border-radius: 2px;
 		width: rem(1);
 	}
 

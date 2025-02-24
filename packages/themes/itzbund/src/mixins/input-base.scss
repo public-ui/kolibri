@@ -2,7 +2,7 @@
 
 @mixin kol-input-border {
 	color: var(--default-letter);
-	border-width: rem(1);
+	border-width: 1px;
 	border-style: solid;
 	border-radius: 0;
 	border-color: var(--kolibri-color-normal);
@@ -29,7 +29,7 @@
 		outline-color: var(--primary);
 		outline-offset: 0;
 		outline-style: solid;
-		outline-width: rem(1);
+		outline-width: 1px;
 	}
 }
 
@@ -47,6 +47,6 @@
 		outline-color: var(--primary);
 		outline-offset: 0;
 		outline-style: solid;
-		outline-width: rem(1);
+		outline-width: 1px;
 	}
 }

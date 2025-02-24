@@ -3,14 +3,14 @@
 @layer kol-theme-component {
 	a,
 	button {
-		border-radius: rem(32);
+		border-radius: 32px;
 		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
 	}
 
 	a > .kol-span-wc,
 	button > .kol-span-wc {
-		border-radius: rem(32);
+		border-radius: 32px;
 		border-style: solid;
 		min-width: rem(44);
 		min-height: rem(44);

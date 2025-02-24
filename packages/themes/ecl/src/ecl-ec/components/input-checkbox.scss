@@ -17,7 +17,7 @@
 
 	input[type='checkbox'] {
 		background-color: var(--color-white);
-		border-width: rem(2);
+		border-width: 2px;
 		border-style: solid;
 		color: var(--color-grey);
 		line-height: 1.5;
@@ -28,7 +28,7 @@
 		outline-color: var(--color-blue);
 		outline-offset: rem(2);
 		outline-style: solid;
-		outline-width: rem(2);
+		outline-width: 2px;
 	}
 
 	input[type='checkbox'] {
@@ -146,6 +146,6 @@
 		outline-color: var(--color-blue);
 		outline-offset: rem(2);
 		outline-style: solid;
-		outline-width: rem(2);
+		outline-width: 2px;
 	}
 }

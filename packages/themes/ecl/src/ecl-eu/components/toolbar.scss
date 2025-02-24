@@ -3,7 +3,7 @@
 @layer kol-theme-component {
 	.toolbar {
 		padding: var(--spacing-s);
-		border-radius: rem(8);
+		border-radius: 8px;
 		box-shadow:
 			0 rem(2) rem(4) rgb(9 49 142 / 8%),
 			0 0 rem(10) rgb(9 49 142 / 4%),

@@ -35,7 +35,7 @@ $visible-options: 5;
 				outline-color: var(--primary);
 				outline-offset: 0;
 				outline-style: solid;
-				outline-width: rem(1);
+				outline-width: 1px;
 			}
 		}
 
@@ -65,7 +65,7 @@ $visible-options: 5;
 
 		&__listbox {
 			border-style: solid;
-			border-width: rem(1);
+			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--kolibri-color-normal);
 			max-height: calc($option-height * $visible-options + rem(2));

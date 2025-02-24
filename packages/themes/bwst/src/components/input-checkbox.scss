@@ -77,7 +77,7 @@
 	}
 
 	:host .kol-input.error {
-		border-left: rem(3) solid var(--color-danger);
+		border-left: 3px solid var(--color-danger);
 		padding-left: rem(calc(1 * 16));
 	}
 
@@ -95,7 +95,7 @@
 		cursor: pointer;
 		width: 100%;
 		border-color: var(--color-subtle);
-		border-width: rem(2);
+		border-width: 2px;
 		border-style: solid;
 		border-radius: var(--border-radius);
 		line-height: rem(24);
@@ -104,7 +104,7 @@
 
 	:host input:hover {
 		border-color: var(--color-primary);
-		box-shadow: rem(0) rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+		box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
 	}
 
 	:host input:focus:hover {
@@ -210,9 +210,9 @@
 
 	.button {
 		.input {
-			border-top-width: rem(1);
-			border-left-width: rem(1);
-			border-bottom-width: rem(1);
+			border-top-width: 1px;
+			border-left-width: 1px;
+			border-bottom-width: 1px;
 
 			border-top-style: solid;
 			border-left-style: solid;
@@ -220,14 +220,14 @@
 		}
 
 		&.hide-label .input {
-			border-right-width: rem(1);
+			border-right-width: 1px;
 			border-right-style: solid;
 		}
 
 		.input-label {
-			border-top-width: rem(1);
-			border-right-width: rem(1);
-			border-bottom-width: rem(1);
+			border-top-width: 1px;
+			border-right-width: 1px;
+			border-bottom-width: 1px;
 
 			border-top-style: solid;
 			border-right-style: solid;
@@ -296,7 +296,7 @@
 		outline-color: var(--color-primary-variant);
 		outline-offset: rem(2);
 		outline-style: solid;
-		outline-width: rem(2);
+		outline-width: 2px;
 		transition: outline-offset 0.2s linear;
 	}
 }

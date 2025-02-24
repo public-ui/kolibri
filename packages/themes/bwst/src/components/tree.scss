@@ -3,7 +3,7 @@
 @layer kol-theme-component {
 	.tree {
 		ul {
-			border: rem(2) solid transparent;
+			border: 2px solid transparent;
 			border-radius: var(--border-radius);
 		}
 
@@ -11,7 +11,7 @@
 			outline: 0;
 
 			ul {
-				border: rem(2) solid var(--color-primary);
+				border: 2px solid var(--color-primary);
 			}
 		}
 	}
