@@ -37,7 +37,7 @@
 
 		.table:has(.focus-element:focus) {
 			outline-color: var(--color-blue);
-			outline-offset: rem(2);
+			outline-offset: 2px;
 			outline-style: solid;
 			outline-width: 2px;
 		}
@@ -91,7 +91,7 @@
 				border-color: var(--color-blue);
 				outline-color: var(--color-blue);
 				outline-style: solid;
-				outline-offset: rem(2);
+				outline-offset: 2px;
 				outline-width: 2px;
 			}
 

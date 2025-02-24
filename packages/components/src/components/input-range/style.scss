@@ -62,6 +62,6 @@
 /* Fix missing outline in Chromium-based browsers on Windows in high contrast mode. */
 @media (prefers-contrast: more) {
 	::-webkit-slider-thumb {
-		outline: rem(1) solid currentColor;
+		outline: 1px solid currentColor;
 	}
 }

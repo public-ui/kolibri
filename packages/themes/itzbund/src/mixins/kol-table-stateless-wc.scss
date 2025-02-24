@@ -8,7 +8,7 @@
 
 		.table:has(.focus-element:focus) {
 			outline-color: var(--color-petrol);
-			outline-offset: rem(2);
+			outline-offset: 2px;
 			outline-style: solid;
 			outline-width: 3px;
 			transition: outline-offset 0.2s linear;
@@ -64,7 +64,7 @@
 					border-color: var(--color-petrol);
 					outline-color: var(--color-petrol);
 					outline-style: solid;
-					outline-offset: rem(2);
+					outline-offset: 2px;
 					outline-width: 3px;
 				}
 			}
@@ -103,7 +103,7 @@
 					border-color: var(--color-petrol);
 					border-color: var(--color-anthrazit);
 					outline-style: solid;
-					outline-offset: rem(2);
+					outline-offset: 2px;
 					outline-width: 2px;
 				}
 			}

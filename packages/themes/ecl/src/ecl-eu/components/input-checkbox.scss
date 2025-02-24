@@ -26,7 +26,7 @@
 
 	input[type='checkbox']:focus {
 		outline-color: var(--color-blue);
-		outline-offset: rem(2);
+		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 2px;
 	}

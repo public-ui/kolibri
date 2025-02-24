@@ -15,7 +15,7 @@
 
 	:host input:focus {
 		outline-color: var(--color-achat);
-		outline-offset: rem(2);
+		outline-offset: 2px;
 		outline-style: solid;
 		outline-width: 3px;
 	}

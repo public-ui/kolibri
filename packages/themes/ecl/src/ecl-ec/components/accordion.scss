@@ -35,8 +35,8 @@
 				}
 
 				&:focus {
-					outline: rem(2) solid var(--color-blue);
-					outline-offset: rem(-2);
+					outline: 2px solid var(--color-blue);
+					outline-offset: -2px;
 				}
 			}
 

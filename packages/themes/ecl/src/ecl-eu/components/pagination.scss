@@ -28,8 +28,8 @@
 	}
 
 	.button:focus-visible .button-inner {
-		outline-offset: rem(-4);
-		outline: rem(2) solid var(--color-black);
+		outline-offset: -4px;
+		outline: 2px solid var(--color-black);
 	}
 
 	button:not(:disabled):active .button-inner,

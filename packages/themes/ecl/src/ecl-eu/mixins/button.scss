@@ -29,7 +29,7 @@
 
 	a:focus-visible > .kol-span-wc,
 	button:focus-visible > .kol-span-wc {
-		outline-offset: rem(-4);
+		outline-offset: -4px;
 		outline-style: solid;
 		outline-width: 2px;
 	}
