@@ -9,7 +9,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @internal
- * @slot - Der Inhalt des Popover.
+ * @slot - The popover content.
  */
 @Component({
 	tag: 'kol-popover-wc',

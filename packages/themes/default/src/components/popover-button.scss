@@ -1,0 +1,24 @@
+@import '../mixins/button';
+@import '../mixins/rem';
+
+@layer kol-theme-component {
+	@include kol-button('kol-button');
+
+	.kol-button {
+		font-family: var(--font-family);
+
+		&__text {
+			font-weight: 700;
+			border-style: solid;
+			border-width: var(--border-width);
+			border-radius: var(--border-radius);
+		}
+	}
+
+	.kol-popover-button {
+		&__popover {
+			border: var(--border-width) solid var(--color-primary);
+			padding: var(--spacing);
+		}
+	}
+}
