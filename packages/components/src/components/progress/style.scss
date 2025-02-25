@@ -14,7 +14,31 @@
 	}
 
 	.bar {
-		width: rem(150);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-areas:
+			'LABEL LABEL LABEL'
+			'BAR VALUE UNIT';
+		align-items: center;
+		column-gap: 0.05rem;
+
+		.label {
+			grid-column-end: 2;
+			grid-area: LABEL;
+		}
+
+		svg {
+			grid-area: BAR;
+		}
+
+		.value {
+			grid-area: VALUE;
+			text-align: right;
+		}
+
+		.unit {
+			grid-area: UNIT;
+		}
 
 		.border {
 			fill: transparent;
@@ -33,9 +57,34 @@
 		}
 	}
 
-	.cycle .background {
-		fill: transparent;
-		stroke: lightgray;
+	.cycle {
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-areas: 'ALL';
+		justify-items: center;
+		align-content: center;
+
+		> * {
+			grid-area: ALL;
+		}
+
+		.text {
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+
+			font-size: x-small;
+
+			* {
+				background-color: white;
+			}
+		}
+
+		.background {
+			fill: transparent;
+			stroke: lightgray;
+		}
 	}
 
 	.cycle .border {

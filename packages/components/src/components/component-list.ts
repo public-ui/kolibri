@@ -41,7 +41,7 @@ import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
 import { KolPopover } from './popover/component';
-import { KolProcess } from './progress/shadow';
+import { KolProgress } from './progress/shadow';
 import { KolQuote } from './quote/shadow';
 import { KolSelect } from './select/shadow';
 import { KolSkipNav } from './skip-nav/shadow';
@@ -108,7 +108,7 @@ export const COMPONENTS = [
 	KolNav,
 	KolPagination,
 	KolPopover,
-	KolProcess,
+	KolProgress,
 	KolQuote,
 	KolSelect,
 	KolSkipNav,
