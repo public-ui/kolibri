@@ -55,7 +55,6 @@ type OptionalStates = {
 	placeholder: string;
 	smartButton: ButtonProps;
 	step: number;
-	tabIndex: number;
 	value: Iso8601 | null;
 } & PropAccessKey &
 	PropSyncValueBySelector &

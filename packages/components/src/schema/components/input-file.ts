@@ -27,7 +27,6 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
-	tabIndex: number;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideMsg &
@@ -46,7 +45,6 @@ type OptionalStates = {
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
-	tabIndex: number;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &

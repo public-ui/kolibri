@@ -58,7 +58,6 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 				_on={this._on}
 				_role="button"
 				_shortKey={this._shortKey}
-				_tabIndex={this._tabIndex}
 				_target={this._target}
 				_tooltipAlign={this._tooltipAlign}
 				_variant={this._variant}
@@ -134,11 +133,6 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 * Adds a visual short key hint to the component.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
-	 */
-	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to open the link.
