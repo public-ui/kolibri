@@ -618,9 +618,6 @@ importers:
       '@playwright/test':
         specifier: 1.49.1
         version: 1.49.1
-      '@public-ui-/theme-ecl':
-        specifier: workspace:*
-        version: link:../../themes/ecl
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -762,6 +759,10 @@ importers:
       yup:
         specifier: 1.5.0
         version: 1.5.0
+    optionalDependencies:
+      '@public-ui-/theme-ecl':
+        specifier: workspace:*
+        version: link:../../themes/ecl
 
   packages/test-tag-name-transformer:
     devDependencies:
@@ -11556,8 +11557,8 @@ packages:
   third-party-web@0.26.1:
     resolution: {integrity: sha512-I5Y7YT4841769UjrAcy/c0G/Bb/4lqBzA7LHzx17z5rxE7zzNhf4gpOME3hK3oktZc36oZQpskUG2UXGrUAECA==}
 
-  third-party-web@0.26.2:
-    resolution: {integrity: sha512-taJ0Us0lKoYBqcbccMuDElSUPOxmBfwlHe1OkHQ3KFf+RwovvBHdXhbFk9XJVQE2vHzxbTwvwg5GFsT9hbDokQ==}
+  third-party-web@0.26.5:
+    resolution: {integrity: sha512-tDuKQJUTfjvi9Fcrs1s6YAQAB9mzhTSbBZMfNgtWNmJlHuoFeXO6dzBFdGeCWRvYL50jQGK0jPsBZYxqZQJ2SA==}
 
   throat@5.0.0:
     resolution: {integrity: sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA==}
@@ -15605,7 +15606,7 @@ snapshots:
 
   '@paulirish/trace_engine@0.0.39':
     dependencies:
-      third-party-web: 0.26.2
+      third-party-web: 0.26.5
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -25626,7 +25627,7 @@ snapshots:
 
   third-party-web@0.26.1: {}
 
-  third-party-web@0.26.2: {}
+  third-party-web@0.26.5: {}
 
   throat@5.0.0: {}
 
