@@ -1,30 +1,29 @@
-import { KolProcess } from '../shadow';
+import { KolProgress } from '../shadow';
 import { executeSnapshotTests } from '../../../utils/testing';
-import type { ProgressProps } from '../../../schema';
+import { ProgressProps } from '../../../schema';
 import { KolProgressTag } from '../../../core/component-names';
-
-const DEFAULT_PROPS = {
-	_max: 42,
-	_value: 17,
-};
 
 executeSnapshotTests<ProgressProps>(
 	KolProgressTag,
-	[KolProcess],
+	[KolProgress],
 	[
-		{
-			...DEFAULT_PROPS,
-			_label: 'Progress',
-		},
-		{
-			...DEFAULT_PROPS,
-			_label: 'Progress',
-			_unit: 'cm',
-		},
-		{
-			...DEFAULT_PROPS,
-			_label: 'Progress',
-			_variant: 'cycle',
-		},
+		{ _label: 'Label', _variant: 'bar', _max: 100, _value: 0 },
+		{ _label: 'Label', _variant: 'bar', _max: 100, _value: 42 },
+		{ _label: 'Label', _variant: 'bar', _max: 100, _value: 100 },
+		{ _label: 'Label', _variant: 'cycle', _max: 100, _value: 0 },
+		{ _label: 'Label', _variant: 'cycle', _max: 100, _value: 42 },
+		{ _label: 'Label', _variant: 'cycle', _max: 100, _value: 100 },
+
+		{ _label: 'Label', _variant: 'bar', _max: 42, _value: 0 },
+		{ _label: 'Label', _variant: 'bar', _max: 42, _value: 17 },
+		{ _label: 'Label', _variant: 'bar', _max: 42, _value: 100 },
+		{ _label: 'Label', _variant: 'cycle', _max: 42, _value: 0 },
+		{ _label: 'Label', _variant: 'cycle', _max: 42, _value: 17 },
+		{ _label: 'Label', _variant: 'cycle', _max: 42, _value: 42 },
+
+		{ _label: 'Label', _variant: 'bar', _max: 42, _value: 0, _unit: 'kg' },
+		{ _label: 'Label', _variant: 'bar', _max: 42, _value: 21, _unit: 'kg' },
+		{ _label: 'Label', _variant: 'cycle', _max: 42, _value: 0, _unit: 'kg' },
+		{ _label: 'Label', _variant: 'cycle', _max: 42, _value: 21, _unit: 'kg' },
 	],
 );
