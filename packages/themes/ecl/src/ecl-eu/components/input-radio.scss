@@ -79,8 +79,8 @@
 	}
 
 	.kol-input {
-		outline: rem(2) solid var(--color-grey-75);
-		outline-offset: rem(2);
+		outline: 2px solid var(--color-grey-75);
+		outline-offset: 2px;
 
 		&:before {
 			display: none;
@@ -88,7 +88,7 @@
 
 		&:checked {
 			border-color: var(--color-blue);
-			border-width: rem(7);
+			border-width: 7px;
 		}
 
 		&:focus {
@@ -102,7 +102,7 @@
 		}
 
 		&#{&}--error {
-			border: rem(2) solid var(--color-red);
+			border: 2px solid var(--color-red);
 
 			&:before {
 				display: none;
@@ -110,7 +110,7 @@
 
 			&:checked {
 				border-color: var(--color-red);
-				border-width: rem(7);
+				border-width: 7px;
 			}
 
 			&:not(:disabled) {
@@ -163,8 +163,8 @@
 	// }
 
 	// input[type='radio'] {
-	// 	outline: rem(2) solid var(--color-grey-75);
-	// 	outline-offset: rem(2);
+	// 	outline: 2px solid var(--color-grey-75);
+	// 	outline-offset: 2px;
 	// }
 
 	// input[type='radio']:before {
@@ -173,7 +173,7 @@
 
 	// input[type='radio']:checked {
 	// 	border-color: var(--color-blue);
-	// 	border-width: rem(7);
+	// 	border-width: 7px;
 	// }
 
 	// input[type='radio']:focus {
@@ -194,7 +194,7 @@
 	// }
 
 	// .error input[type='radio'] {
-	// 	border: rem(2) solid var(--color-red);
+	// 	border: 2px solid var(--color-red);
 	// }
 
 	// .error input[type='radio']:before {
@@ -203,7 +203,7 @@
 
 	// .error input[type='radio']:checked {
 	// 	border-color: var(--color-red);
-	// 	border-width: rem(7);
+	// 	border-width: 7px;
 	// }
 
 	// .error input[type='radio']:not(:disabled):hover {

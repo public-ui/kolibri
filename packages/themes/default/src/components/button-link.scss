@@ -28,6 +28,7 @@
 				border-radius: var(--text-border-radius);
 				outline: var(--text-outline);
 			}
+
 			.kol-span__label {
 				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
 					text-decoration-thickness: 0.25em;
@@ -38,7 +39,7 @@
 
 	.badge-text-hint {
 		background-color: var(--color-mute-variant);
-		border-radius: rem(3);
+		border-radius: 3px;
 		color: var(--color-text);
 		padding: 0 0.3em;
 	}

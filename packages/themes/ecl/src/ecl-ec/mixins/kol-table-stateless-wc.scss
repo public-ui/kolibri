@@ -40,6 +40,7 @@
 				font-weight: normal;
 				color: var(--color-midnight);
 			}
+
 			&--ascending,
 			&--descending {
 				font-weight: 700;
@@ -49,12 +50,13 @@
 				}
 			}
 		}
+
 		&__focus-element {
 			&:focus {
 				outline-color: var(--color-blue);
-				outline-offset: rem(2);
+				outline-offset: 2px;
 				outline-style: solid;
-				outline-width: rem(2);
+				outline-width: 2px;
 			}
 		}
 
@@ -87,8 +89,8 @@
 				border-color: var(--color-blue);
 				outline-color: var(--color-blue);
 				outline-style: solid;
-				outline-offset: rem(2);
-				outline-width: rem(2);
+				outline-offset: 2px;
+				outline-width: 2px;
 			}
 
 			// CHECKBOX
@@ -112,7 +114,7 @@
 
 				&:checked {
 					border-color: var(--color-blue);
-					border-width: rem(7);
+					border-width: 7px;
 
 					&:before {
 						background-color: var(--color-white);
@@ -127,6 +129,7 @@
 
 		&__selection-icon {
 			color: var(--color-white);
+
 			@at-root #{$root}__selection--indeterminate & {
 				color: var(--color-blue);
 			}

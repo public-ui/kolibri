@@ -3,7 +3,7 @@
 @mixin kol-custom-suggestions-options-group-theme($option-height, $visible-options) {
 	.kol-custom-suggestions-options-group {
 		border-style: solid;
-		border-width: rem(1);
+		border-width: 1px;
 		border-radius: var(--border-radius);
 		border-color: var(--color-subtle);
 		overflow-y: auto;

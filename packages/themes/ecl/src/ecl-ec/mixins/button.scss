@@ -9,8 +9,9 @@
 		appearance: none;
 		outline: none;
 		text-decoration: none;
+
 		&:focus {
-			outline-offset: rem(-4);
+			outline-offset: -4px;
 			outline: var(--text-focus-outline-color) solid rem(2);
 		}
 
@@ -95,7 +96,7 @@
 
 			border-radius: 0;
 			border-style: solid;
-			border-width: rem(2);
+			border-width: 2px;
 			font-weight: var(--font-weight-bold);
 			margin: 0;
 			min-height: rem(44);
@@ -110,11 +111,11 @@
 			}
 
 			@at-root #{$root}--secondary:focus & {
-				outline-offset: rem(-6);
+				outline-offset: -6px;
 			}
 
 			@at-root #{$root}--ghost:focus & {
-				outline-offset: rem(-2);
+				outline-offset: -2px;
 			}
 		}
 	}

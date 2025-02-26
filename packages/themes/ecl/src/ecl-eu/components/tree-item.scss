@@ -11,13 +11,13 @@
 
 		&__link {
 			display: block;
-			border: rem(2) solid transparent;
-			border-radius: rem(4);
+			border: 2px solid transparent;
+			border-radius: 4px;
 
 			&:hover,
 			&:focus-within {
 				background-color: var(--color-sky);
-				border: rem(2) solid var(--color-blue);
+				border: 2px solid var(--color-blue);
 
 				.kol-link {
 					color: var(--color-black);

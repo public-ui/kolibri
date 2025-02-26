@@ -11,12 +11,12 @@
 
 		&__link {
 			display: block;
-			border: rem(2) solid transparent;
+			border: 2px solid transparent;
 
 			&:hover,
 			&:focus-within {
 				background-color: var(--color-sky);
-				border: rem(2) solid var(--color-yellow-120);
+				border: 2px solid var(--color-yellow-120);
 
 				.kol-link {
 					color: var(--color-black);

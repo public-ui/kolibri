@@ -13,7 +13,7 @@
 
 @layer kol-component {
 	.kol-form-field {
-		--border-width: #{rem(2)};
+		--border-width: 2px;
 		--input-size: 1.5em;
 
 		&__label {
