@@ -34,9 +34,9 @@
 
 		.table:has(.focus-element:focus) {
 			/* @see https://remysharp.com/til/css/focus-ring-default-styles */
-			outline: rem(5) auto Highlight;
-			outline: rem(5) auto -webkit-focus-ring-color;
-			outline-offset: rem(2);
+			outline: 5px auto Highlight;
+			outline: 5px auto -webkit-focus-ring-color;
+			outline-offset: 2px;
 		}
 
 		.table-sort-button .button {
@@ -121,14 +121,14 @@
 				align-items: center;
 				justify-content: center;
 				background-color: rgb(255, 255, 255);
-				border-width: rem(2);
+				border-width: 2px;
 				line-height: 1.5;
 				transition: all 0.5s ease 0s;
 			}
 
 			input[type='radio'] {
 				display: flex;
-				border-width: rem(2);
+				border-width: 2px;
 				border-radius: 100%;
 				height: 1.5em;
 				min-height: 1.5em;

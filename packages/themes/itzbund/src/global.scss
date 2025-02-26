@@ -4,7 +4,7 @@
 @layer kol-theme-global {
 	:host {
 		--border-color: var(--color-anthrazit);
-		--border-radius: #{rem(2)};
+		--border-radius: 2px;
 		--color-anthrazit: #333;
 		--color-jade: #f3f7fb;
 		--color-weiss: #fff;
@@ -56,9 +56,9 @@
 	textarea:focus {
 		cursor: pointer;
 		outline-color: var(--color-petrol);
-		outline-offset: rem(2);
+		outline-offset: 2px;
 		outline-style: solid;
-		outline-width: rem(3);
+		outline-width: 3px;
 		transition: outline-offset 0.2s linear;
 	}
 
@@ -78,7 +78,7 @@
 	.kol-tooltip-wc .tooltip-content {
 		@include kol-typography-label;
 		padding: rem(4) rem(8);
-		border-radius: rem(2);
-		border: rem(1) solid #626262;
+		border-radius: 2px;
+		border: 1px solid #626262;
 	}
 }

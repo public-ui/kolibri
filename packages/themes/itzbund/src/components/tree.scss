@@ -5,15 +5,15 @@
 		ul {
 			display: flex;
 			flex-direction: column;
-			border: rem(2) solid transparent;
-			border-radius: rem(4);
+			border: 2px solid transparent;
+			border-radius: 4px;
 		}
 
 		&:focus-within {
 			outline: 0;
 
 			ul {
-				border: rem(2) solid var(--color-petrol);
+				border: 2px solid var(--color-petrol);
 			}
 		}
 	}

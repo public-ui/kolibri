@@ -6,7 +6,7 @@
 
 @layer kol-component {
 	:host {
-		--border-width: #{rem(2)};
+		--border-width: 2px;
 		--input-size: 1.5em;
 		font-size: rem(16);
 	}

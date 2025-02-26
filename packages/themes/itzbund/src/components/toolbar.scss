@@ -3,9 +3,9 @@
 @layer kol-theme-component {
 	.toolbar {
 		padding: rem(8);
-		border-width: rem(1);
+		border-width: 1px;
 		border-style: solid;
-		border-radius: rem(4);
+		border-radius: 4px;
 		border-color: var(--kolibri-border-color);
 		background-color: var(--color-white);
 	}

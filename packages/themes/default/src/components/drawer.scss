@@ -1,9 +1,10 @@
 @import '../mixins/rem';
 
 $duration: 0.4s;
+
 @layer kol-theme-component {
 	.drawer__wrapper {
-		box-shadow: 0 0 rem(4) var(--color-subtle);
+		box-shadow: 0 0 4px var(--color-subtle);
 
 		&--left {
 			animation: slideInLeft $duration forwards;

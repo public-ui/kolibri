@@ -9,13 +9,13 @@
 
 	a:focus .kol-span-wc,
 	button:focus .kol-span-wc {
-		outline-offset: rem(-4);
-		outline-width: rem(2);
+		outline-offset: -4px;
+		outline-width: 2px;
 		outline-style: solid;
 	}
 
 	button.ghost:focus .kol-span-wc {
-		outline-offset: rem(-2);
+		outline-offset: -2px;
 	}
 
 	.primary a .kol-span-wc,
@@ -46,7 +46,7 @@
 	.secondary a:focus .kol-span-wc,
 	.secondary button:focus .kol-span-wc {
 		outline-color: var(--color-blue);
-		outline-offset: rem(-6);
+		outline-offset: -6px;
 	}
 
 	.secondary a:hover .kol-span-wc,

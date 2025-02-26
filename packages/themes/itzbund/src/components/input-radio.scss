@@ -15,9 +15,9 @@
 
 	:host input:focus {
 		outline-color: var(--color-achat);
-		outline-offset: rem(2);
+		outline-offset: 2px;
 		outline-style: solid;
-		outline-width: rem(3);
+		outline-width: 3px;
 	}
 
 	input {
@@ -25,9 +25,9 @@
 		width: 100%;
 		color: var(--color-anthrazit);
 		border-color: var(--default-border);
-		border-width: rem(2);
+		border-width: 2px;
 		border-style: solid;
-		border-radius: rem(5);
+		border-radius: 5px;
 		/* padding: rem(10) rem(14); */
 	}
 
@@ -114,7 +114,7 @@
 	}
 
 	.radio-input-wrapper input[type='radio']:checked:before {
-		box-shadow: 0 0 rem(1.6) black;
+		box-shadow: 0 0 1.6px black;
 		background-color: var(--color-petrol);
 	}
 

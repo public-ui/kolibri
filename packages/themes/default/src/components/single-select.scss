@@ -53,7 +53,7 @@ $visible-options: 5;
 
 		&__listbox {
 			border-style: solid;
-			border-width: rem(1);
+			border-width: 1px;
 			border-radius: var(--border-radius);
 			border-color: var(--color-subtle);
 			max-height: calc($option-height * $visible-options + rem(2));
@@ -116,7 +116,7 @@ $visible-options: 5;
 		border-color: var(--color-subtle);
 		border-radius: var(--border-radius);
 		border-style: solid;
-		border-width: rem(2);
+		border-width: 2px;
 		padding: 0 rem(8);
 	}
 

@@ -8,9 +8,9 @@
 
 		.table:has(.focus-element:focus) {
 			outline-color: var(--color-petrol);
-			outline-offset: rem(2);
+			outline-offset: 2px;
 			outline-style: solid;
-			outline-width: rem(3);
+			outline-width: 3px;
 			transition: outline-offset 0.2s linear;
 		}
 
@@ -18,17 +18,17 @@
 			width: 100%;
 			border-collapse: collapse;
 			border-spacing: 0;
-			border: rem(1) solid var(--color-petrol);
-			border-width: 0 rem(1) rem(1) rem(1);
+			border: 1px solid var(--color-petrol);
+			border-width: 0 1px 1px 1px;
 		}
 
 		tr {
-			border-top: rem(1) solid var(--color-petrol);
+			border-top: 1px solid var(--color-petrol);
 		}
 
 		th,
 		td {
-			border-right: rem(1) solid var(--color-petrol);
+			border-right: 1px solid var(--color-petrol);
 
 			&:last-child {
 				border-right-width: 0;
@@ -64,8 +64,8 @@
 					border-color: var(--color-petrol);
 					outline-color: var(--color-petrol);
 					outline-style: solid;
-					outline-offset: rem(2);
-					outline-width: rem(3);
+					outline-offset: 2px;
+					outline-width: 3px;
 				}
 			}
 
@@ -103,8 +103,8 @@
 					border-color: var(--color-petrol);
 					border-color: var(--color-anthrazit);
 					outline-style: solid;
-					outline-offset: rem(2);
-					outline-width: rem(2);
+					outline-offset: 2px;
+					outline-width: 2px;
 				}
 			}
 		}

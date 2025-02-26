@@ -46,7 +46,7 @@
 	:host > div > nav .kol-link-wc a {
 		border-radius: var(--border-radius);
 		background-color: var(--color-petrol);
-		border: rem(1) solid transparent;
+		border: 1px solid transparent;
 		grid: flex;
 		line-height: 2;
 		padding: 0.5em;
@@ -74,7 +74,7 @@
 
 	:host > div > nav .kol-link-wc a:focus,
 	:host > div > nav .kol-link-wc a:hover {
-		border: rem(1) solid white;
+		border: 1px solid white;
 		background-color: var(--color-fluorit);
 		color: var(--color-anthrazit);
 	}

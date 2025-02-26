@@ -97,7 +97,7 @@
 	.kol-input input[type='range'] {
 		appearance: none;
 		background-color: var(--color-mute-variant);
-		border: rem(1) solid var(--border-color);
+		border: 1px solid var(--border-color);
 		height: calc(rem(calc(1 * 16)) / 2);
 		line-height: rem(calc(1.5 * 16));
 	}

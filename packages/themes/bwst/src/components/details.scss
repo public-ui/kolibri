@@ -27,7 +27,7 @@
 
 		.button:not(:disabled):focus {
 			@include focus-outline;
-			outline-width: rem(2);
+			outline-width: 2px;
 			border-radius: calc(var(--border-radius) / 2);
 		}
 

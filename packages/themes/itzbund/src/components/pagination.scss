@@ -2,13 +2,13 @@
 
 @layer kol-theme-component {
 	.button {
-		border-radius: rem(32);
+		border-radius: 32px;
 		font-family: var(--font-family-sans);
 	}
 
 	.button-inner {
 		background-color: var(--color-weiss);
-		border-radius: rem(32);
+		border-radius: 32px;
 		border: var(--spacing) solid var(--color-anthrazit);
 		color: var(--color-anthrazit);
 		font-size: inherit;

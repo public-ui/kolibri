@@ -14,11 +14,11 @@
 		--box-shadow-inputs: #{rem(0)} #{rem(2)} #{rem(8)} #{rem(2)} rgba(8, 35, 48, 0.24);
 		--page-bg: #ffffff;
 		--element-bg: #eee;
-		--border-radius: #{rem(4)};
+		--border-radius: 4px;
 		--font-family: 'Noto Sans Regular', Arial, helvetica, sans-serif;
 		--font-size: #{rem(16)};
 		--spacing: #{rem(calc(0.25 * 16))};
-		--border-width: #{rem(1)};
+		--border-width: 1px;
 		--color-primary: #156570;
 		--color-primary-light: #1a7a87;
 		--color-primary-variant: #207a8b;
@@ -58,9 +58,9 @@
 	summary:focus {
 		cursor: pointer;
 		outline-color: var(--color-primary-variant);
-		outline-offset: rem(2);
+		outline-offset: 2px;
 		outline-style: solid;
-		outline-width: rem(2);
+		outline-width: 2px;
 		transition: outline-offset 0.2s linear;
 	}
 
