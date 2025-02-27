@@ -27,6 +27,7 @@ import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
+import popoverButtonCss from './components/popover-button.scss';
 import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
 import singleSelectCss from './components/single-select.scss';
@@ -39,50 +40,51 @@ import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
 import toolbarCss from './components/toolbar.scss';
-import treeItemCss from './components/tree-item.scss';
 import treeCss from './components/tree.scss';
+import treeItemCss from './components/tree-item.scss';
 
 // Informationstechnikzentrum Bund
 export const ITZBund = KoliBri.createTheme('itzbund', {
 	GLOBAL: globalCss,
+	'KOL-ACCORDION': accordionCss,
+	'KOL-ALERT': alertCss,
+	'KOL-BADGE': badgeCss,
+	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-BUTTON': buttonCss,
 	'KOL-BUTTON-GROUP': buttonGroupCss,
-	'KOL-LINK-BUTTON': linkButtonCss,
-	'KOL-PAGINATION': paginationCss,
 	'KOL-BUTTON-LINK': buttonLinkCss,
-	'KOL-FORM': formCss,
-	'KOL-INPUT-TEXT': inputTextCss,
-	'KOL-INPUT-PASSWORD': inputPasswordCss,
-	'KOL-INPUT-NUMBER': inputNumberCss,
-	'KOL-INPUT-DATE': inputDateCss,
-	'KOL-INPUT-EMAIL': inputEmailCss,
-	'KOL-INPUT-FILE': inputFileCss,
-	'KOL-TEXTAREA': textareaCss,
-	'KOL-ALERT': alertCss,
-	'KOL-HEADING': headingCss,
-	'KOL-BADGE': badgeCss,
-	'KOL-INDENTED-TEXT': indentedTextCss,
-	'KOL-LINK': linkCss,
-	'KOL-BREADCRUMB': breadcrumbCss,
-	'KOL-SPIN': spinCss,
-	'KOL-SINGLE-SELECT': singleSelectCss,
-	'KOL-PROGRESS': progressCss,
-	'KOL-SELECT': selectCss,
-	'KOL-INPUT-COLOR': inputColorCss,
-	'KOL-ACCORDION': accordionCss,
-	'KOL-TABLE-STATEFUL': tableStatefulCss,
-	'KOL-TABLE-STATELESS': tableStatelessCss,
-	'KOL-NAV': navCss,
 	'KOL-CARD': cardCss,
 	'KOL-COMBOBOX': ComboboxCss,
 	'KOL-DETAILS': detailsCss,
 	'KOL-DRAWER': drawerCss,
+	'KOL-FORM': formCss,
+	'KOL-HEADING': headingCss,
+	'KOL-INDENTED-TEXT': indentedTextCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
+	'KOL-INPUT-COLOR': inputColorCss,
+	'KOL-INPUT-DATE': inputDateCss,
+	'KOL-INPUT-EMAIL': inputEmailCss,
+	'KOL-INPUT-FILE': inputFileCss,
+	'KOL-INPUT-NUMBER': inputNumberCss,
+	'KOL-INPUT-PASSWORD': inputPasswordCss,
 	'KOL-INPUT-RADIO': inputRadioCss,
-	'KOL-TOAST-CONTAINER': toastContainerCss,
-	'KOL-TABS': tabsCss,
+	'KOL-INPUT-TEXT': inputTextCss,
+	'KOL-LINK': linkCss,
+	'KOL-LINK-BUTTON': linkButtonCss,
+	'KOL-NAV': navCss,
+	'KOL-PAGINATION': paginationCss,
+	'KOL-POPOVER-BUTTON': popoverButtonCss,
+	'KOL-PROGRESS': progressCss,
+	'KOL-SELECT': selectCss,
+	'KOL-SINGLE-SELECT': singleSelectCss,
 	'KOL-SKIP-NAV': skipNavCss,
+	'KOL-SPIN': spinCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
+	'KOL-TABLE-STATEFUL': tableStatefulCss,
+	'KOL-TABLE-STATELESS': tableStatelessCss,
+	'KOL-TABS': tabsCss,
+	'KOL-TEXTAREA': textareaCss,
+	'KOL-TOAST-CONTAINER': toastContainerCss,
 	'KOL-TOOLBAR': toolbarCss,
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,

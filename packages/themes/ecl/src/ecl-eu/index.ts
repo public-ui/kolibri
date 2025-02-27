@@ -11,8 +11,8 @@ import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
-import formCss from './components/form.scss';
 import drawerCss from './components/drawer.scss';
+import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
 import indentedTextCss from './components/indented-text.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
@@ -30,6 +30,7 @@ import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
+import popoverButtonCss from './components/popover-button.scss';
 import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
 import singleSelectCss from './components/single-select.scss';
@@ -48,48 +49,49 @@ import treeItemCss from './components/tree-item.scss';
 // Europa Component Library - European Union | https://ec.europa.eu/component-library/eu/
 export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	GLOBAL: globalCss,
-	'KOL-HEADING': headingCss,
 	'KOL-ACCORDION': accordionCss,
-	'KOL-INDENTED-TEXT': indentedTextCss,
-	'KOL-BUTTON': buttonCss,
-	'KOL-LINK-BUTTON': linkButtonCss,
-	'KOL-BUTTON-GROUP': buttonGroupCss,
-	'KOL-PAGINATION': paginationCss,
-	'KOL-PROGRESS': progressCss,
-	'KOL-NAV': navCss,
-	'KOL-BADGE': badgeCss,
 	'KOL-ALERT': alertCss,
+	'KOL-AVATAR': avatarCss,
+	'KOL-BADGE': badgeCss,
+	'KOL-BREADCRUMB': breadcrumbCss,
+	'KOL-BUTTON': buttonCss,
+	'KOL-BUTTON-GROUP': buttonGroupCss,
+	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-CARD': cardCss,
 	'KOL-COMBOBOX': ComboboxCss,
-	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
-	'KOL-INPUT-COLOR': inputColorCss,
-	'KOL-INPUT-FILE': inputFileCss,
-	'KOL-INPUT-EMAIL': inputEmailCss,
-	'KOL-INPUT-NUMBER': inputNumberCss,
-	'KOL-INPUT-DATE': inputDateCss,
-	'KOL-INPUT-PASSWORD': inputPasswordCss,
-	'KOL-INPUT-TEXT': inputTextCss,
-	'KOL-KOLIBRI': kolibriCss,
-	'KOL-SELECT': selectCss,
-	'KOL-SINGLE-SELECT': singleSelectCss,
-	'KOL-TEXTAREA': textareaCss,
-	'KOL-TABLE-STATEFUL': tableStatefulCss,
-	'KOL-TABLE-STATELESS': tableStatelessCss,
-	'KOL-AVATAR': avatarCss,
-	'KOL-TABS': tabsCss,
-	'KOL-LINK': linkCss,
-	'KOL-BUTTON-LINK': buttonLinkCss,
-	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-DETAILS': detailsCss,
 	'KOL-DRAWER': drawerCss,
-	'KOL-SPIN': spinCss,
+	'KOL-FORM': formCss,
+	'KOL-HEADING': headingCss,
+	'KOL-INDENTED-TEXT': indentedTextCss,
+	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
+	'KOL-INPUT-COLOR': inputColorCss,
+	'KOL-INPUT-DATE': inputDateCss,
+	'KOL-INPUT-EMAIL': inputEmailCss,
+	'KOL-INPUT-FILE': inputFileCss,
+	'KOL-INPUT-NUMBER': inputNumberCss,
+	'KOL-INPUT-PASSWORD': inputPasswordCss,
 	'KOL-INPUT-RADIO': inputRadioCss,
 	'KOL-INPUT-RANGE': inputRangeCss,
+	'KOL-INPUT-TEXT': inputTextCss,
+	'KOL-KOLIBRI': kolibriCss,
+	'KOL-LINK': linkCss,
+	'KOL-LINK-BUTTON': linkButtonCss,
+	'KOL-NAV': navCss,
+	'KOL-PAGINATION': paginationCss,
+	'KOL-POPOVER-BUTTON': popoverButtonCss,
+	'KOL-PROGRESS': progressCss,
+	'KOL-SELECT': selectCss,
+	'KOL-SINGLE-SELECT': singleSelectCss,
 	'KOL-SKIP-NAV': skipNavCss,
+	'KOL-SPIN': spinCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
+	'KOL-TABLE-STATEFUL': tableStatefulCss,
+	'KOL-TABLE-STATELESS': tableStatelessCss,
+	'KOL-TABS': tabsCss,
+	'KOL-TEXTAREA': textareaCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
 	'KOL-TOOLBAR': toolbarCss,
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
-	'KOL-FORM': formCss,
 });

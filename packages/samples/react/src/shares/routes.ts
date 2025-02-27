@@ -1,3 +1,4 @@
+import { Routes } from './types';
 import { ABBR_ROUTES } from '../components/abbr/routes';
 import { ACCORDION_ROUTES } from '../components/accordion/routes';
 import { ALERT_ROUTES } from '../components/alert/routes';
@@ -8,6 +9,7 @@ import { BUTTON_GROUP_ROUTES } from '../components/button-group/routes';
 import { BUTTON_LINK_ROUTES } from '../components/button-link/routes';
 import { BUTTON_ROUTES } from '../components/button/routes';
 import { CARD_ROUTES } from '../components/card/routes';
+import { COMBOBOX_ROUTES } from '../components/combobox/routes';
 import { DETAILS_ROUTES } from '../components/details/routes';
 import { DRAWER_ROUTES } from '../components/drawer/routes';
 import { FORM_ROUTES } from '../components/form/routes';
@@ -33,9 +35,12 @@ import { LINK_ROUTES } from '../components/link/routes';
 import { MODAL_ROUTES } from '../components/modal/routes';
 import { NAV_ROUTES } from '../components/nav/routes';
 import { PAGINATION_ROUTES } from '../components/pagination/routes';
+import { POPOVER_BUTTON_ROUTES } from '../components/popover-button/routes';
 import { PROGRESS_ROUTES } from '../components/progress/routes';
 import { QUOTE_ROUTES } from '../components/quote/routes';
+import { SCENARIO_ROUTES } from '../scenarios/routes';
 import { SELECT_ROUTES } from '../components/select/routes';
+import { SINGLE_SELECT_ROUTES } from '../components/single-select/routes';
 import { SKIP_NAV_ROUTES } from '../components/skip-nav/routes';
 import { SPIN_ROUTES } from '../components/spin/routes';
 import { SPLIT_BUTTON_ROUTES } from '../components/split-button/routes';
@@ -44,15 +49,10 @@ import { TABS_ROUTES } from '../components/tabs/routes';
 import { TEXTAREA_ROUTES } from '../components/textarea/routes';
 import { TOAST_ROUTES } from '../components/toast/routes';
 import { TOOLBAR_ROUTES } from '../components/toolbar/routes';
-import { VERSION_ROUTES } from '../components/version/routes';
-import { SCENARIO_ROUTES } from '../scenarios/routes';
-import { Routes } from './types';
 import { TREE_ROUTES } from '../components/tree/routes';
-import { COMBOBOX_ROUTES } from '../components/combobox/routes';
-import { SINGLE_SELECT_ROUTES } from '../components/single-select/routes';
+import { VERSION_ROUTES } from '../components/version/routes';
 
 export const ROUTES: Routes = {
-	...HANDOUT_ROUTES,
 	...ABBR_ROUTES,
 	...ACCORDION_ROUTES,
 	...ALERT_ROUTES,
@@ -67,6 +67,7 @@ export const ROUTES: Routes = {
 	...DETAILS_ROUTES,
 	...DRAWER_ROUTES,
 	...FORM_ROUTES,
+	...HANDOUT_ROUTES,
 	...HEADING_ROUTES,
 	...ICON_ROUTES,
 	...IMAGE_ROUTES,
@@ -88,13 +89,15 @@ export const ROUTES: Routes = {
 	...MODAL_ROUTES,
 	...NAV_ROUTES,
 	...PAGINATION_ROUTES,
+	...POPOVER_BUTTON_ROUTES,
 	...PROGRESS_ROUTES,
 	...QUOTE_ROUTES,
+	...SCENARIO_ROUTES,
 	...SELECT_ROUTES,
 	...SELECT_ROUTES,
+	...SINGLE_SELECT_ROUTES,
 	...SKIP_NAV_ROUTES,
 	...SPIN_ROUTES,
-	...SINGLE_SELECT_ROUTES,
 	...SPLIT_BUTTON_ROUTES,
 	...TABLE_ROUTES,
 	...TABS_ROUTES,
@@ -103,5 +106,4 @@ export const ROUTES: Routes = {
 	...TOOLBAR_ROUTES,
 	...TREE_ROUTES,
 	...VERSION_ROUTES,
-	...SCENARIO_ROUTES,
 };

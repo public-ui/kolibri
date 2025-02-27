@@ -1,5 +1,4 @@
 import { KoliBri } from '@public-ui/components';
-import globalCss from './global.scss';
 import abbrCss from './components/abbr.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
@@ -14,6 +13,7 @@ import ComboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
+import globalCss from './global.scss';
 import headingCss from './components/heading.scss';
 import indentedTextCss from './components/indented-text.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
@@ -31,6 +31,7 @@ import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
+import popoverButtonCss from './components/popover-button.scss';
 import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
 import singleSelect from './components/single-select.scss';
@@ -42,8 +43,8 @@ import tabsCss from './components/tabs.scss';
 import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
 import toolbarCss from './components/toolbar.scss';
-import treeItemCss from './components/tree-item.scss';
 import treeCss from './components/tree.scss';
+import treeItemCss from './components/tree-item.scss';
 
 export const DEFAULT = KoliBri.createTheme('default', {
 	GLOBAL: globalCss,
@@ -78,6 +79,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,
+	'KOL-POPOVER-BUTTON': popoverButtonCss,
 	'KOL-PROGRESS': progressCss,
 	'KOL-SELECT': selectCss,
 	'KOL-SINGLE-SELECT': singleSelect,
