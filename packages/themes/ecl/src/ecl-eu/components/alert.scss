@@ -1,4 +1,4 @@
-@import '../mixins/alert-wc';
+@use '../mixins/alert-wc' as *;
 
 @layer kol-theme-component {
 	@include kol-alert-theme;

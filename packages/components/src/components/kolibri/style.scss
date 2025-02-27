@@ -1,11 +1,12 @@
-@import '../@shared/mixins';
-@import '../../styles/global';
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
 
 @layer kol-component {
 	.kol-kolibri {
 		display: inline-block;
 		font-size: rem(16);
 		max-height: 100%;
+
 		&__text {
 			font-size: rem(90);
 			letter-spacing: normal;

@@ -1,12 +1,12 @@
-@import '../../styles/global';
-@import '../../styles/kol-alert-mixin';
-@import '../../styles/kol-custom-suggestions-option';
-@import '../../styles/kol-custom-suggestions-options-group';
-@import '../../styles/kol-custom-suggestions-toggle';
-@import '../../styles/kol-form-field-mixin';
-@import '../../styles/kol-input-container-mixin';
-@import '../../styles/kol-input-mixin';
-@import '../@shared/mixins';
+@use '../../styles/global' as *;
+@use '../../styles/kol-alert-mixin' as *;
+@use '../../styles/kol-custom-suggestions-option' as *;
+@use '../../styles/kol-custom-suggestions-options-group' as *;
+@use '../../styles/kol-custom-suggestions-toggle' as *;
+@use '../../styles/kol-form-field-mixin' as *;
+@use '../../styles/kol-input-container-mixin' as *;
+@use '../../styles/kol-input-mixin' as *;
+@use '../@shared/mixins' as *;
 
 @include kol-alert;
 @include kol-custom-suggestions-option;

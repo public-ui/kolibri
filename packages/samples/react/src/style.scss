@@ -1,4 +1,4 @@
-@import './@shared/mixins';
+@use './@shared/mixins' as *;
 
 :root {
 	--kolibri-root-font-size: 100;

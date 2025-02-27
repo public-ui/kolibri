@@ -1,8 +1,9 @@
-@import '../../mixins/rem';
+@use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
 	.cycle {
 		padding: rem(2);
+
 		& span {
 			background-color: var(--color-blue-75);
 		}

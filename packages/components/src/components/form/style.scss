@@ -1,8 +1,8 @@
-@import '../@shared/mixins';
-@import '../../styles/global';
-@import '../host-display-block';
-@import '../@shared/kol-link-mixin';
-@import '../../styles/kol-alert-mixin';
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
+@use '../host-display-block' as *;
+@use '../@shared/kol-link-mixin' as *;
+@use '../../styles/kol-alert-mixin' as *;
 
 @layer kol-component {
 	@include kol-link-styles('kol-link');

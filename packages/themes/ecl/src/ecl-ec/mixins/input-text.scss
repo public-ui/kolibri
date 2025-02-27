@@ -1,3 +1,5 @@
+@use '../../mixins/rem' as *;
+
 @mixin kol-input-text-theme {
 	.kol-input,
 	.kol-select,
