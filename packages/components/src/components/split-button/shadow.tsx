@@ -83,7 +83,6 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						_on={this.clickButtonHandler}
 						_role={this._role}
 						_syncValueBySelector={this._syncValueBySelector}
-						_tabIndex={this._tabIndex}
 						_tooltipAlign={this._tooltipAlign}
 						_type={this._type}
 						_value={this._value}
@@ -180,11 +179,6 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	 * @internal
 	 */
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
-
-	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
-	 */
-	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.

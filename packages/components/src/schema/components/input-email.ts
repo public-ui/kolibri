@@ -33,7 +33,6 @@ type OptionalProps = {
 	pattern: string;
 	placeholder: string;
 	smartButton: Stringified<ButtonProps>;
-	tabIndex: number;
 	value: string;
 } & PropAccessKey &
 	PropDisabled &
@@ -66,7 +65,6 @@ type OptionalStates = {
 	pattern: string;
 	placeholder: string;
 	smartButton: ButtonProps;
-	tabIndex: number;
 	value: string;
 } & PropAccessKey &
 	PropDisabled &

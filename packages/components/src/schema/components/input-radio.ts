@@ -24,7 +24,6 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	orientation: Orientation;
-	tabIndex: number;
 	value: StencilUnknown;
 } & PropAccessKey &
 	PropDisabled &
@@ -47,7 +46,6 @@ type RequiredStates = {
 type OptionalStates = {
 	hint: string;
 	on: InputTypeOnDefault;
-	tabIndex: number;
 	value: StencilUnknown;
 } & PropAccessKey &
 	PropDisabled &
