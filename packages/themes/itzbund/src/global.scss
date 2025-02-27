@@ -1,5 +1,5 @@
-@import './mixins/rem';
-@import './mixins/typography';
+@use './mixins/rem' as *;
+@use './mixins/typography' as *;
 
 @layer kol-theme-global {
 	:host {

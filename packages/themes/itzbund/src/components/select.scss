@@ -1,10 +1,10 @@
-@import '../@shared/label';
-@import '../@shared/kol-alert-wc';
-@import '../@shared/kol-required';
+@use '../@shared/label' as *;
+@use '../@shared/kol-alert-wc' as *;
+@use '../@shared/kol-required' as *;
 
-@import '../mixins/alert-wc';
-@import '../mixins/typography';
-@import '../mixins/input-base';
+@use '../mixins/alert-wc' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/input-base' as *;
 
 @layer kol-theme-component {
 	:host {

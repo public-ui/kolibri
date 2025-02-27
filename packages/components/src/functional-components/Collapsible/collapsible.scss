@@ -1,4 +1,4 @@
-@import '../../components/@shared/mixins';
+@use '../../components/@shared/mixins' as *;
 
 /* For animation technique see https://css-tricks.com/css-grid-can-do-auto-height-transitions/ */
 

@@ -1,11 +1,11 @@
-@import '../@shared/label';
-@import '../@shared/kol-alert-wc';
-@import '../@shared/kol-required';
+@use '../@shared/label' as *;
+@use '../@shared/kol-alert-wc' as *;
+@use '../@shared/kol-required' as *;
 
-@import '../mixins/alert-wc';
-@import '../mixins/rem';
-@import '../mixins/typography';
-@import '../mixins/input-base';
+@use '../mixins/alert-wc' as *;
+@use '../mixins/rem' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/input-base' as *;
 
 $option-height: rem(40);
 $visible-options: 5;

@@ -1,4 +1,4 @@
-@import '../mixins/indented-text';
+@use '../mixins/indented-text' as *;
 
 @layer kol-theme-component {
 	:host {

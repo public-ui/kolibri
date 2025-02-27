@@ -1,4 +1,4 @@
-@import '../../@shared/mixins';
+@use '../../@shared/mixins' as *;
 
 .mainlayout {
 	min-height: calc(100vh - rem(32));
@@ -9,11 +9,11 @@
 	grid-template-rows: 1fr;
 	grid-template-areas: 'nav content';
 
-	& > .nav-area {
+	&>.nav-area {
 		grid-area: nav;
 	}
 
-	& > .content {
+	&>.content {
 		grid-area: content;
 	}
 }

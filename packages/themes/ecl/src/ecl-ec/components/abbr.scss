@@ -1,4 +1,4 @@
-@import '../../mixins/rem';
+@use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
 	abbr {

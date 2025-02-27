@@ -1,5 +1,5 @@
-@import '../mixins/rem';
-@import '../mixins/indented-text';
+@use '../mixins/rem' as *;
+@use '../mixins/indented-text' as *;
 
 @layer kol-theme-component {
 	:host {

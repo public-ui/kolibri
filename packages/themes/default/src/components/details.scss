@@ -1,6 +1,6 @@
-@import '../mixins/rem';
-@import '../mixins/indented-text';
-@import '../mixins/focus-outline';
+@use '../mixins/rem' as *;
+@use '../mixins/indented-text' as *;
+@use '../mixins/focus-outline' as *;
 
 @layer kol-theme-component {
 	:host {
