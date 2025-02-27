@@ -124,11 +124,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	}
 
 	return (
-		<Component
-			class={clsx('kol-form-field', stateCssClasses, classNames)}
-			role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
-			{...other}
-		>
+		<Component class={clsx('kol-form-field', stateCssClasses, classNames)} {...other}>
 			{showLabel && (
 				<KolFormFieldLabelFc
 					{...(formFieldLabelProps || {})}
