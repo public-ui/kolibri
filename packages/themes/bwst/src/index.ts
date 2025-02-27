@@ -32,6 +32,7 @@ import linkCss from './components/link.scss';
 import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
+import popoverButtonCss from './components/popover-button.scss';
 import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
 import singleSelectCss from './components/single-select.scss';
@@ -80,6 +81,7 @@ export const BWSt = KoliBri.createTheme('bwst', {
 	'KOL-MODAL': modalCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,
+	'KOL-POPOVER-BUTTON': popoverButtonCss,
 	'KOL-PROGRESS': progressCss,
 	'KOL-SELECT': selectCss,
 	'KOL-SINGLE-SELECT': singleSelectCss,
