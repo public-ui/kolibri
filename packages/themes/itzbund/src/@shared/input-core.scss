@@ -1,10 +1,10 @@
-@import './label';
-@import './kol-alert-wc';
-@import './kol-required';
+@use './label' as *;
+@use './kol-alert-wc' as *;
+@use './kol-required' as *;
 
-@import '../mixins/alert-wc';
-@import '../mixins/typography';
-@import '../mixins/input-base';
+@use '../mixins/alert-wc' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/input-base' as *;
 
 @layer kol-theme-component {
 	:host {

@@ -1,6 +1,6 @@
-@import '../@shared/mixins';
-@import '../style';
-@import '../@shared/kol-table-stateless-mixin';
-@import '../host-display-block';
+@use '../@shared/mixins' as *;
+@use '../style' as *;
+@use '../@shared/kol-table-stateless-mixin' as *;
+@use '../host-display-block' as *;
 
 @include kol-table-stateless-styles;

@@ -1,7 +1,7 @@
-@import '../@shared/mixins';
-@import '../style';
-@import '../host-display-block';
-@import '../tooltip/style.scss';
+@use '../@shared/mixins' as *;
+@use '../style' as *;
+@use '../host-display-block' as *;
+@use '../tooltip/style.scss' as *;
 
 @layer kol-component {
 	:host {

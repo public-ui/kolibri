@@ -1,5 +1,5 @@
-@import '../mixins/alert-wc';
-@import '../mixins/rem';
+@use '../mixins/alert-wc' as *;
+@use '../mixins/rem' as *;
 
 @layer kol-theme-component {
 	.default {

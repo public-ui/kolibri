@@ -1,7 +1,7 @@
-@import './@shared/mixins';
-@import './@shared/kol-alert-mixin';
-@import './label';
-@import './host-display-block';
+@use './@shared/mixins' as *;
+@use './@shared/kol-alert-mixin' as *;
+@use './label' as *;
+@use './host-display-block' as *;
 
 @layer kol-component {
 	input,

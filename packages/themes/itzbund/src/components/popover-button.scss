@@ -1,0 +1,16 @@
+@import '../mixins/button';
+@import '../mixins/rem';
+
+@layer kol-theme-component {
+	@include kol-button;
+
+	button > .kol-span-wc {
+		border-radius: rem(32);
+		border-style: solid;
+		min-width: rem(44);
+		min-height: rem(44);
+		border-width: var(--spacing);
+		font-size: inherit;
+		padding: 0 rem(16);
+	}
+}

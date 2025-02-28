@@ -1,4 +1,4 @@
-@import '../mixins/button';
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
 	:host {

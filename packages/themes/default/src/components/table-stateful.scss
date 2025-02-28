@@ -1,4 +1,4 @@
-@import '../mixins/kol-table-stateless-wc';
+@use '../mixins/kol-table-stateless-wc' as *;
 
 @layer kol-theme-component {
 	:host * {

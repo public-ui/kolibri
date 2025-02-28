@@ -1,7 +1,7 @@
-@import '../mixins/rem';
-@import '../mixins/alert-wc';
-@import '../mixins/input-error';
-@import '../mixins/typography';
+@use '../mixins/rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/input-error' as *;
+@use '../mixins/typography' as *;
 
 $option-height: rem(40);
 $visible-options: 5;

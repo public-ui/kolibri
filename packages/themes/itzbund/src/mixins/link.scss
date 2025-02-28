@@ -1,4 +1,4 @@
-@import './rem';
+@use './rem' as *;
 
 @mixin kol-link {
 	.kol-link-wc a,

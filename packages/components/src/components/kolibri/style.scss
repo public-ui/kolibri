@@ -1,5 +1,5 @@
-@import '../@shared/mixins';
-@import '../style';
+@use '../@shared/mixins' as *;
+@use '../style' as *;
 
 @layer kol-component {
 	:host {

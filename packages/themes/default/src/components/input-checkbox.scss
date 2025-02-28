@@ -1,8 +1,8 @@
-@import '../mixins/rem';
-@import '../mixins/focus-outline';
-@import '../mixins/alert-wc';
-@import '../mixins/input-error';
-@import '../mixins/typography';
+@use '../mixins/rem' as *;
+@use '../mixins/focus-outline' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/input-error' as *;
+@use '../mixins/typography' as *;
 
 @layer kol-theme-component {
 	:host {

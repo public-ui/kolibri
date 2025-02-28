@@ -1,5 +1,5 @@
-@import '../mixins/focus-outline';
-@import '../mixins/rem';
+@use '../mixins/focus-outline' as *;
+@use '../mixins/rem' as *;
 
 @layer kol-theme-component {
 	:host {
