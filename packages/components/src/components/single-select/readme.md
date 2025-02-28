@@ -53,15 +53,15 @@ Beispiel für die Konstruktion des JSON-Objektes:
 | `_tabIndex`             | `_tab-index`     | Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                                      | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
 | `_tooltipAlign`         | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                                                             | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                       | `'top'`     |
 | `_touched`              | `_touched`       | Shows if the input was touched by a user.                                                                                                                                             | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                      | `false`     |
-| `_value`                | `_value`         | Defines the value of the input.                                                                                                                                                       | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                       | `undefined` |
+| `_value`                | `_value`         | Defines the value of the input.                                                                                                                                                       | `boolean \| null \| number \| object \| string \| undefined`                                                                                                                                                                                                                                                                                                                                | `undefined` |
 
 ## Methods
 
-### `getValue() => Promise<string | undefined>`
+### `getValue() => Promise<StencilUnknown | undefined>`
 
 #### Returns
 
-Type: `Promise<string | undefined>`
+Type: `Promise<StencilUnknown>`
 
 ### `kolFocus() => Promise<void>`
 
