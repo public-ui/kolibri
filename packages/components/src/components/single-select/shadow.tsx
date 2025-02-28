@@ -245,7 +245,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									}}
 									placeholder={this.state._placeholder}
 								/>
-								{this._inputValue && (
+								{this._inputValue && !this._hideClearButton && (
 									<KolIconTag
 										_icons="codicon codicon-close"
 										_label={translate('kol-delete-selection')}
@@ -552,12 +552,18 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Prop({ mutable: true }) public _value?: string;
 
+	/**
+	 * Defines the value of the input.
+	 */
+	@Prop() public _hideClearButton?: boolean = false;
+
 	@State() public state: SingleSelectStates = {
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
 		_value: '',
+		_hideClearButton: false,
 	};
 
 	@State() private inputHasFocus = false;
@@ -675,6 +681,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.controller.validateValue(value);
 		this.oldValue = value;
 		this.updateInputValue(value);
+	}
+
+	@Watch('_hideClearButton ')
+	public validateHideClearButton(value?: boolean): void {
+		this.controller.validateHideClearButton(value);
 	}
 
 	@Listen('mousemove')

@@ -27,6 +27,7 @@ type OptionalProps = {
 	placeholder: string;
 	tabIndex: number;
 	value: string;
+	hideClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideError &
@@ -50,6 +51,7 @@ type OptionalStates = {
 	on: InputTypeOnDefault;
 	tabIndex: number;
 	placeholder: string;
+	hideClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
