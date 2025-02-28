@@ -1,6 +1,6 @@
-@import '../../styles/global';
-@import '../../styles/kol-alert-mixin';
-@import '../@shared/mixins';
+@use '../../styles/global' as *;
+@use '../../styles/kol-alert-mixin' as *;
+@use '../@shared/mixins' as *;
 
 @include kol-alert;
 

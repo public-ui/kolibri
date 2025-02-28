@@ -1,8 +1,8 @@
-@import '../../mixins/rem';
-@import '../mixins/alert-wc';
-@import '../mixins/form-field-order';
-@import '../mixins/form-field';
-@import '../mixins/input-container';
+@use '../../mixins/rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/form-field-order' as *;
+@use '../mixins/form-field' as *;
+@use '../mixins/input-container' as *;
 
 @layer kol-theme-component {
 	:host {

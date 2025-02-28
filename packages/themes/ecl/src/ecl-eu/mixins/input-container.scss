@@ -1,3 +1,5 @@
+@use '../../mixins/rem' as *;
+
 @mixin kol-input-container-theme {
 	.kol-input-container {
 		min-height: rem(44);

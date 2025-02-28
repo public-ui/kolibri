@@ -1,4 +1,6 @@
-@import './required';
+@use './required' as *;
+@use '../mixins/alert-wc' as *;
+@use '../../mixins/rem' as *;
 
 @mixin kol-form-field-theme {
 	.kol-form-field {

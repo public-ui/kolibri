@@ -1,5 +1,5 @@
-@import '../@shared/input-text';
-@import '../mixins/form-field-order.textarea';
+@use '../@shared/input-text' as *;
+@use '../mixins/form-field-order.textarea' as *;
 
 @layer kol-theme-component {
 	:host {

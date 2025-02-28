@@ -1,7 +1,7 @@
-@import '../@shared/mixins';
-@import '../../styles/global';
-@import '../host-display-block';
-@import '../../functional-components/Collapsible/collapsible';
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
+@use '../host-display-block' as *;
+@use '../../functional-components/Collapsible/collapsible' as *;
 
 @layer kol-component {
 	.kol-accordion {

@@ -1,5 +1,5 @@
-@import 'mixins';
-@import '../tooltip/style';
+@use 'mixins' as *;
+@use '../tooltip/style' as *;
 
 @mixin kol-link-styles($block-classname) {
 	@layer kol-component {

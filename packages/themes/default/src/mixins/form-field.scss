@@ -1,6 +1,6 @@
-@import './rem';
-@import './alert-wc';
-@import './typography';
+@use './rem' as *;
+@use './alert-wc' as *;
+@use './typography' as *;
 
 @mixin kol-form-field-theme {
 	.kol-form-field {

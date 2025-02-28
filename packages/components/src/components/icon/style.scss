@@ -1,5 +1,5 @@
-@import '../@shared/mixins';
-@import '../../assets/codicons/codicon';
+@use '../@shared/mixins' as *;
+@use '../../assets/codicons/codicon' as *;
 
 @layer kol-component {
 	/*
@@ -13,6 +13,7 @@
 		font-size: rem(16);
 		color: inherit;
 		line-height: inherit;
+
 		&__icon,
 		&__icon:before {
 			font-size: inherit !important;

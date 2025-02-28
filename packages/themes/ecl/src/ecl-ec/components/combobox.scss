@@ -1,5 +1,5 @@
-@import '../../mixins/rem';
-@import '../mixins/alert-wc';
+@use '../../mixins/rem' as *;
+@use '../mixins/alert-wc' as *;
 
 $option-height: rem(40);
 $visible-options: 5;

@@ -1,4 +1,4 @@
-@import '../mixins/link';
+@use '../mixins/link' as *;
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
@@ -6,6 +6,7 @@
 	:host {
 		font-family: inherit;
 	}
+
 	.kol-link {
 		line-height: 1;
 	}
