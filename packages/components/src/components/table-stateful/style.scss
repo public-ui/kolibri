@@ -1,6 +1,6 @@
-@import '../@shared/mixins';
-@import '../style';
-@import '../@shared/kol-table-stateless-mixin';
+@use '../@shared/mixins' as *;
+@use '../style' as *;
+@use '../@shared/kol-table-stateless-mixin' as *;
 
 @layer kol-component {
 	:root {

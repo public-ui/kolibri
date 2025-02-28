@@ -1,4 +1,4 @@
-@import '../../mixins/rem';
+@use '../../mixins/rem' as *;
 
 @mixin kol-typography-body {
 	font-size: rem(16);

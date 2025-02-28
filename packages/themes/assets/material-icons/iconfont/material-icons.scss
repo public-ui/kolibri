@@ -1,5 +1,5 @@
-@import 'filled';
-@import 'outlined';
-@import 'round';
-@import 'sharp';
-@import 'two-tone';
+@use 'filled' as *;
+@use 'outlined' as *;
+@use 'round' as *;
+@use 'sharp' as *;
+@use 'two-tone' as *;

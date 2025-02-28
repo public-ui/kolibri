@@ -1,4 +1,4 @@
-@import './input';
+@use './input' as *;
 
 @layer kol-component {
 	.kol-input {

@@ -1,5 +1,5 @@
-@import './@shared/mixins';
-@import './tooltip/style.scss';
+@use './@shared/mixins' as *;
+@use './tooltip/style.scss' as *;
 
 @layer kol-component {
 	:host {

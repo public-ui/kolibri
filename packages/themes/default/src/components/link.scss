@@ -1,4 +1,4 @@
-@import '../mixins/link';
+@use '../mixins/link' as *;
 
 @layer kol-theme-component {
 	:host {

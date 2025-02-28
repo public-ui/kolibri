@@ -1,4 +1,4 @@
-@import '../../mixins/rem';
+@use '../../mixins/rem' as *;
 
 @mixin kol-alert-wc($color: null) {
 	color: var($color);

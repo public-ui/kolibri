@@ -1,6 +1,6 @@
-@import '../@shared/mixins';
-@import '../style';
-@import '../input-line';
+@use '../@shared/mixins' as *;
+@use '../style' as *;
+@use '../input-line' as *;
 
 @layer kol-component {
 	:host {

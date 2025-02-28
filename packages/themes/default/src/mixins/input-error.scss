@@ -1,5 +1,5 @@
-@import './rem';
-@import '../mixins/alert-wc';
+@use './rem' as *;
+@use '../mixins/alert-wc' as *;
 
 @mixin input-error {
 	border-left: 3px solid var(--color-danger);

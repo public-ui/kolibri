@@ -1,4 +1,4 @@
-@import '../@shared/mixins';
+@use '../@shared/mixins' as *;
 
 @layer kol-component {
 	.spin.cycle {

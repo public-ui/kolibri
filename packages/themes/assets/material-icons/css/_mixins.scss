@@ -1,4 +1,4 @@
-@import '../iconfont/mixins';
+@use '../iconfont/mixins' as *;
 
 @function material-icons-content($codepoint) {
   @return unquote('"\\#{$codepoint}"');
