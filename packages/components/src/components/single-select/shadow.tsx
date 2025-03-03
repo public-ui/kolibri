@@ -553,7 +553,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop({ mutable: true }) public _value?: string;
 
 	/**
-	 * Defines the value of the input.
+	 * Defines the whether the clear button should be hidden.
 	 */
 	@Prop() public _hideClearButton?: boolean = false;
 
