@@ -71,7 +71,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 			if (this._isOpen) {
 				this.refInput?.focus();
 				const selectedIndex = Array.isArray(this._filteredOptions) ? this._filteredOptions.findIndex((option) => option.label === this._inputValue) : -1;
-				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				const selectedOptionElement = this.refOptions[selectedIndex];
+				selectedOptionElement?.scrollIntoView({ block: 'nearest' });
 				this.focusOption(this._focusedOptionIndex);
 			}
 		}
