@@ -13,5 +13,35 @@
 @layer kol-component {
 	.kol-input {
 		padding: calc((var(--a11y-min-size) - rem(16)) / 10) 0.5em;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	.kol-input-container {
+		$root: &;
+		padding: 0 0 0 rem(8) !important;
+
+		&__container {
+			display: flex;
+			align-items: center;
+			overflow: hidden;
+			height: var(--a11y-min-size);
+		}
+
+		&__filename {
+			flex-grow: 1;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			margin-left: rem(4);
+		}
+
+		&:has(> #{$root}__adornment--start):has(> #{$root}__adornment--end) {
+			grid-template-columns: auto 1fr;
+		}
 	}
 }

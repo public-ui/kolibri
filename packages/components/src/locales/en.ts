@@ -48,4 +48,6 @@ export default {
 	'hide-password': 'Hide',
 	'no-results-message': 'No results found.',
 	'delete-selection': 'Delete selection',
+	'filename-text': 'Choose a file or drop it here...',
+	'data-browse-text': 'Browse',
 };
