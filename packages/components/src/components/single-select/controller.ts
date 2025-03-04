@@ -51,11 +51,16 @@ export class SingleSelectController extends InputIconController implements Singl
 		watchString(this.component, '_placeholder', value);
 	}
 
+	public validateHideClearButton(value?: boolean): void {
+		watchBoolean(this.component, '_hideClearButton', value);
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateOptions(this.component._options);
 		this.validateRequired(this.component._required);
 		this.validateValue(this.component._value);
 		this.validatePlaceholder(this.component._placeholder);
+		this.validateHideClearButton(this.component._hideClearButton);
 	}
 }

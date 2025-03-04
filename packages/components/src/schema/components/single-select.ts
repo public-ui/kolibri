@@ -26,6 +26,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	placeholder: string;
 	value: StencilUnknown;
+	hideClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideMsg &
@@ -46,6 +47,7 @@ type OptionalStates = {
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	placeholder: string;
+	hideClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
