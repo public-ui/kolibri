@@ -36,6 +36,7 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 			/>
 			<KolSingleSelect {...props} _label="With access key" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _accessKey="c" />
 			<KolSingleSelect {...props} _label="With short key" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _shortKey="s" />
+			<KolSingleSelect {...props} _label="With hidden clear button" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _hideClearButton />
 		</div>
 	);
 });

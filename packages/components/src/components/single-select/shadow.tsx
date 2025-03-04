@@ -72,7 +72,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 			if (this._isOpen) {
 				this.refInput?.focus();
 				const selectedIndex = Array.isArray(this._filteredOptions) ? this._filteredOptions.findIndex((option) => option.label === this._inputValue) : -1;
-				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				const selectedOptionElement = this.refOptions[selectedIndex];
+				selectedOptionElement?.scrollIntoView({ block: 'nearest' });
 				this.focusOption(this._focusedOptionIndex);
 			}
 		}
@@ -246,7 +247,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									}}
 									placeholder={this.state._placeholder}
 								/>
-								{this._inputValue && (
+								{this._inputValue && !this.state._hideClearButton && (
 									<KolIconTag
 										_icons="codicon codicon-close"
 										_label={translate('kol-delete-selection')}
@@ -553,12 +554,18 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Prop({ mutable: true }) public _value?: StencilUnknown;
 
+	/**
+	 * Defines the whether the clear button should be hidden.
+	 */
+	@Prop() public _hideClearButton?: boolean = false;
+
 	@State() public state: SingleSelectStates = {
 		_hideError: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
 		_value: '',
+		_hideClearButton: false,
 	};
 
 	@State() private inputHasFocus = false;
@@ -676,6 +683,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.controller.validateValue(value);
 		this.oldValue = value;
 		this.updateInputValue(value);
+	}
+
+	@Watch('_hideClearButton ')
+	public validateHideClearButton(value?: boolean): void {
+		this.controller.validateHideClearButton(value);
 	}
 
 	@Listen('mousemove')
