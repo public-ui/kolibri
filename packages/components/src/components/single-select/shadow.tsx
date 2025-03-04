@@ -245,7 +245,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 									}}
 									placeholder={this.state._placeholder}
 								/>
-								{this._inputValue && !this._hideClearButton && (
+								{this._inputValue && !this.state._hideClearButton && (
 									<KolIconTag
 										_icons="codicon codicon-close"
 										_label={translate('kol-delete-selection')}
