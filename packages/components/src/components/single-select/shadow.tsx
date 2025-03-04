@@ -232,7 +232,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 					<div class="kol-single-select__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 
-						{this._inputValue && !this._hideClearButton && (
+						{this._inputValue && !this.state._hideClearButton && (
 							<KolIconTag
 								_icons="codicon codicon-close"
 								_label={translate('kol-delete-selection')}
