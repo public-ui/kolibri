@@ -11,6 +11,7 @@ import type {
 	ShortKeyPropType,
 	SingleSelectAPI,
 	SingleSelectStates,
+	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
@@ -47,11 +48,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Element() private readonly host?: HTMLKolSingleSelectElement;
 	private refInput?: HTMLInputElement;
 	private refOptions: HTMLLIElement[] = [];
-	private oldValue?: string;
+	private oldValue?: StencilUnknown;
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
+	public async getValue(): Promise<StencilUnknown | undefined> {
 		return this._value;
 	}
 
@@ -502,7 +503,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: StencilUnknown;
 
 	/**
 	 * Defines the whether the clear button should be hidden.
@@ -615,7 +616,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: string): void {
+	public validateValue(value?: StencilUnknown): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
 		this.updateInputValue(value);
@@ -631,10 +632,10 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.blockSuggestionMouseOver = false;
 	}
 
-	private updateInputValue(value?: string) {
+	private updateInputValue(value?: StencilUnknown) {
 		if (Array.isArray(this._options)) {
-			const matchedOption = this._options.find((option) => (option as Option<string>).value === value);
-			this._inputValue = matchedOption ? (matchedOption.label as string) : '';
+			const matchedOption = this._options.find((option) => option.value === value);
+			this._inputValue = matchedOption ? String(matchedOption.label) : '';
 		}
 	}
 

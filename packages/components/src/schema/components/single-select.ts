@@ -25,7 +25,7 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	placeholder: string;
-	value: string;
+	value: StencilUnknown;
 	hideClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
