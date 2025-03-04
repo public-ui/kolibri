@@ -81,6 +81,7 @@ export class KolProgress implements ProgressAPI {
 		return (
 			<Host class="kol-progress">
 				<div
+					aria-hidden="true"
 					class={{
 						cycle: this.state._variant === 'cycle',
 						bar: this.state._variant === 'bar',
