@@ -15,13 +15,6 @@ export const ROUTES = new Map();
  *
  */
 
-ROUTES.set('handout/basic', {
-	viewportSize: {
-		width: 1920,
-		height: 1280,
-	},
-	waitForTimeout: 500,
-});
 ROUTES.set('abbr/basic', {
 	axe: {
 		skipFailures: false,
