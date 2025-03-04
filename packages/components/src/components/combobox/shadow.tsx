@@ -75,9 +75,9 @@ export class KolCombobox implements ComboboxAPI {
 		this.refInput = ref;
 	};
 
-	private selectOption(event: Event, option: string) {
-		this.controller.onFacade.onInput(event, true, option);
-		this.controller.onFacade.onChange(event, option);
+	private selectOption(option: string) {
+		this.controller.onFacade.onInput(new Event('input', { bubbles: true }), true, option);
+		this.controller.onFacade.onChange(new Event('change', { bubbles: true }), option);
 		this.controller.setFormAssociatedValue(option);
 		this.state._value = option;
 		this.refInput?.focus();
@@ -245,8 +245,8 @@ export class KolCombobox implements ComboboxAPI {
 												tabIndex={-1}
 												role="option"
 												aria-selected={this.state._value === option ? 'true' : undefined}
-												onClick={(e) => {
-													this.selectOption(e, option as string);
+												onClick={() => {
+													this.selectOption(option as string);
 													this.toggleListbox();
 												}}
 												onMouseOver={() => {
@@ -260,7 +260,7 @@ export class KolCombobox implements ComboboxAPI {
 												class="combobox__item"
 												onKeyDown={(e) => {
 													if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-														this.selectOption(e, option as string);
+														this.selectOption(option as string);
 														this.toggleListbox();
 														e.preventDefault();
 													}
