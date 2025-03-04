@@ -3,7 +3,7 @@
 exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _value=0 _unit="kg" 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="bar">
+    <div aria-hidden="true" class="bar">
       <div class="label">
         Label
       </div>
@@ -30,7 +30,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
 exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _value=0 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="bar">
+    <div aria-hidden="true" class="bar">
       <div class="label">
         Label
       </div>
@@ -57,7 +57,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
 exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _value=17 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="bar">
+    <div aria-hidden="true" class="bar">
       <div class="label">
         Label
       </div>
@@ -84,7 +84,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
 exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _value=21 _unit="kg" 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="bar">
+    <div aria-hidden="true" class="bar">
       <div class="label">
         Label
       </div>
@@ -111,7 +111,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
 exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _value=100 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="bar">
+    <div aria-hidden="true" class="bar">
       <div class="label">
         Label
       </div>
@@ -138,7 +138,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
 exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 _value=0 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="bar">
+    <div aria-hidden="true" class="bar">
       <div class="label">
         Label
       </div>
@@ -165,7 +165,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
 exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 _value=42 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="bar">
+    <div aria-hidden="true" class="bar">
       <div class="label">
         Label
       </div>
@@ -192,7 +192,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
 exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 _value=100 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="bar">
+    <div aria-hidden="true" class="bar">
       <div class="label">
         Label
       </div>
@@ -219,7 +219,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=100 
 exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42 _value=0 _unit="kg" 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="cycle">
+    <div aria-hidden="true" class="cycle">
       <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
         <circle class="background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
         <circle class="whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
@@ -248,7 +248,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
 exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42 _value=0 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="cycle">
+    <div aria-hidden="true" class="cycle">
       <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
         <circle class="background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
         <circle class="whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
@@ -277,7 +277,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
 exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42 _value=17 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="cycle">
+    <div aria-hidden="true" class="cycle">
       <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
         <circle class="background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
         <circle class="whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
@@ -306,7 +306,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
 exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42 _value=21 _unit="kg" 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="cycle">
+    <div aria-hidden="true" class="cycle">
       <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
         <circle class="background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
         <circle class="whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
@@ -335,7 +335,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
 exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42 _value=42 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="cycle">
+    <div aria-hidden="true" class="cycle">
       <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
         <circle class="background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
         <circle class="whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
@@ -364,7 +364,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=42
 exports[`kol-progress should render with _label="Label" _variant="cycle" _max=100 _value=0 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="cycle">
+    <div aria-hidden="true" class="cycle">
       <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
         <circle class="background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
         <circle class="whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
@@ -393,7 +393,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=10
 exports[`kol-progress should render with _label="Label" _variant="cycle" _max=100 _value=42 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="cycle">
+    <div aria-hidden="true" class="cycle">
       <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
         <circle class="background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
         <circle class="whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
@@ -422,7 +422,7 @@ exports[`kol-progress should render with _label="Label" _variant="cycle" _max=10
 exports[`kol-progress should render with _label="Label" _variant="cycle" _max=100 _value=100 1`] = `
 <kol-progress class="kol-progress">
   <template shadowrootmode="open">
-    <div class="cycle">
+    <div aria-hidden="true" class="cycle">
       <svg viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
         <circle class="background" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-width="8"></circle>
         <circle class="whitespace" cx="60" cy="60" fill="currentColor" r="59" stroke="currentColor" stroke-width="3"></circle>
