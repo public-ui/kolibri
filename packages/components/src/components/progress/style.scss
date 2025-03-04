@@ -6,51 +6,100 @@
 		font-size: rem(16);
 
 		&__bar {
-			width: rem(150);
-		}
+			display: grid;
+			grid-template-columns: 1fr auto;
+			grid-template-areas:
+				'LABEL LABEL LABEL'
+				'BAR VALUE UNIT';
+			align-items: center;
+			column-gap: 0.05rem;
 
-		&__bar-border {
-			fill: transparent;
-			stroke: black;
-		}
+			&-label {
+				grid-column-end: 2;
+				grid-area: LABEL;
+			}
 
-		&__bar-background {
-			fill: lightgray;
-			stroke: white;
-		}
+			svg {
+				grid-area: BAR;
+			}
 
-		&__bar-progress {
-			fill: #0075ff;
-			stroke: transparent;
+			&-value {
+				grid-area: VALUE;
+				text-align: right;
+			}
 
-			@media (prefers-reduced-motion: no-preference) {
-				transition: 250ms ease-in-out 50ms;
+			&-unit {
+				grid-area: UNIT;
+			}
+
+			&-border {
+				fill: transparent;
+				stroke: black;
+			}
+
+			&-background {
+				fill: lightgray;
+				stroke: white;
+			}
+
+			&-progress {
+				fill: #0075ff;
+				stroke: transparent;
+
+				@media (prefers-reduced-motion: no-preference) {
+					transition: 250ms ease-in-out 50ms;
+				}
 			}
 		}
 
-		&__cycle-background {
-			fill: transparent;
-			stroke: lightgray;
-		}
+		&__cycle {
+			display: grid;
+			grid-template-columns: auto;
+			grid-template-areas: 'ALL';
+			justify-items: center;
+			align-content: center;
 
-		&__cycle-border {
-			fill: transparent;
-			stroke: black;
-		}
+			> * {
+				grid-area: ALL;
+			}
 
-		&__cycle-whitespace {
-			fill: transparent;
-			stroke: white;
-		}
+			&-text {
+				text-align: center;
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
 
-		&__cycle-progress {
-			fill: transparent;
-			stroke: #0075ff;
-			transform-origin: 50% 50%;
-			transform: rotate(-90deg);
+				font-size: x-small;
 
-			@media (prefers-reduced-motion: no-preference) {
-				transition: 250ms ease-in-out 50ms;
+				* {
+					background-color: white;
+				}
+			}
+
+			&-background {
+				fill: transparent;
+				stroke: lightgray;
+			}
+
+			&-border {
+				fill: transparent;
+				stroke: black;
+			}
+
+			&-whitespace {
+				fill: transparent;
+				stroke: white;
+			}
+
+			&-progress {
+				fill: transparent;
+				stroke: #0075ff;
+				transform-origin: 50% 50%;
+				transform: rotate(-90deg);
+
+				@media (prefers-reduced-motion: no-preference) {
+					transition: 250ms ease-in-out 50ms;
+				}
 			}
 		}
 	}
