@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KolFormFieldFc should render correctly 1`] = `
-<div class="kol-form-field" role="presentation">
+<div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text">
       <span>
@@ -14,7 +14,7 @@ exports[`KolFormFieldFc should render correctly 1`] = `
 `;
 
 exports[`KolFormFieldFc should render correctly with div tag 1`] = `
-<div class="kol-form-field" role="presentation">
+<div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text">
       <span>
@@ -27,7 +27,7 @@ exports[`KolFormFieldFc should render correctly with div tag 1`] = `
 `;
 
 exports[`KolFormFieldFc should render correctly with fieldset tag 1`] = `
-<fieldset class="kol-form-field" role="presentation">
+<fieldset class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text">
       <span>
@@ -40,7 +40,7 @@ exports[`KolFormFieldFc should render correctly with fieldset tag 1`] = `
 `;
 
 exports[`KolFormFieldFc should render with counter 1`] = `
-<div class="kol-form-field" role="presentation">
+<div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text">
       <span>
@@ -63,7 +63,7 @@ exports[`KolFormFieldFc should render with counter 1`] = `
 `;
 
 exports[`KolFormFieldFc should render with custom children 1`] = `
-<div class="kol-form-field" role="presentation">
+<div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text">
       <span>
@@ -78,7 +78,7 @@ exports[`KolFormFieldFc should render with custom children 1`] = `
 `;
 
 exports[`KolFormFieldFc should render with error message 1`] = `
-<div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched" role="presentation">
+<div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text">
       <span>
@@ -101,7 +101,7 @@ exports[`KolFormFieldFc should render with error message 1`] = `
 `;
 
 exports[`KolFormFieldFc should render with hint 1`] = `
-<div class="kol-form-field" role="presentation">
+<div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text">
       <span>
@@ -117,7 +117,7 @@ exports[`KolFormFieldFc should render with hint 1`] = `
 `;
 
 exports[`KolFormFieldFc should render with required props 1`] = `
-<div class="kol-form-field kol-form-field--required" role="presentation">
+<div class="kol-form-field kol-form-field--required">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text">
       <span>
@@ -130,7 +130,7 @@ exports[`KolFormFieldFc should render with required props 1`] = `
 `;
 
 exports[`KolFormFieldFc should render with tooltip 1`] = `
-<div class="kol-form-field" role="presentation">
+<div class="kol-form-field">
   <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text">
       <span>
