@@ -9,4 +9,10 @@
 			white-space: nowrap;
 		}
 	}
+
+	.kol-input-container {
+		&--is-dragover {
+			border-color: var(--color-blue) !important;
+		}
+	}
 }

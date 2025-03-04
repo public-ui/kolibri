@@ -11,6 +11,10 @@
 		&__filename {
 			color: var(--color-subtle);
 		}
+
+		&--is-dragover {
+			border-color: var(--color-primary) !important;
+		}
 	}
 
 	.kol-button {
