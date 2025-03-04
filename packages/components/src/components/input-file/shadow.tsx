@@ -25,6 +25,8 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import { InputFileController } from './controller';
+import { translate } from '../../i18n';
+import { KolButtonWcTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -93,7 +95,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
+					<span class="kol-input-container__filename">{this.filename}</span>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
+					<KolButtonWcTag class="kol-input-container__button" _label={translate('kol-data-browse-text')} _variant="primary" _disabled={this._disabled} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
@@ -204,6 +208,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
+	@State() private filename: string = translate('kol-filename-text');
 	@State() public state: InputFileStates = {
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
@@ -315,13 +320,43 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.controller.componentWillLoad();
 	}
 
+	public componentDidLoad(): void {
+		const container = this.inputRef?.parentElement?.parentElement;
+		container?.addEventListener('dragover', this.onDragOver);
+		container?.addEventListener('dragleave', this.onDragLeave);
+		container?.addEventListener('drop', this.onDrop);
+	}
+
+	private onDragOver = (event: DragEvent): void => {
+		event.preventDefault();
+		this.inputRef?.parentElement?.parentElement?.classList.add('kol-input-container--is-dragover');
+	};
+
+	private onDragLeave = (): void => {
+		this.inputRef?.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
+	};
+
+	private onDrop = (event: DragEvent): void => {
+		event.preventDefault();
+		this.inputRef?.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
+		if (event.dataTransfer?.files.length) {
+			const files = event.dataTransfer.files;
+			this.filename = Array.from(files)
+				.map((file) => file.name)
+				.join(', ');
+			this.controller.setFormAssociatedValue(files);
+		}
+	};
 	private onChange = (event: Event): void => {
 		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
 			const value = this.inputRef.files;
+			this.filename = value?.length
+				? Array.from(value)
+						.map((file) => file.name)
+						.join(', ')
+				: translate('kol-filename-text');
 
 			this.controller.onFacade.onChange(event, value);
-
-			// Static form handling
 			this.controller.setFormAssociatedValue(value);
 		}
 	};
