@@ -15,7 +15,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
@@ -38,7 +42,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
@@ -61,7 +69,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" type="file">
+            <kol-button-wc _disabled="" _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
@@ -84,7 +96,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input aria-describedby="id-nonce-hint" autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
@@ -113,7 +129,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
@@ -142,7 +162,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
         </div>
@@ -167,7 +191,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
@@ -193,7 +221,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
@@ -216,7 +248,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
@@ -239,7 +275,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
@@ -263,7 +303,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
@@ -287,7 +331,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-button-wc _hidelabel="" _label="einblenden" tabindex="0"></kol-button-wc>
@@ -313,7 +361,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
@@ -336,7 +388,11 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" type="file">
+            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>
       </div>
