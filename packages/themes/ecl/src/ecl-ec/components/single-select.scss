@@ -1,5 +1,5 @@
-@import '../../mixins/rem';
-@import '../mixins/alert-wc';
+@use '../../mixins/rem' as *;
+@use '../mixins/alert-wc' as *;
 
 $option-height: rem(40);
 $visible-options: 5;
@@ -61,7 +61,7 @@ $visible-options: 5;
 
 		&__listbox {
 			border-style: solid;
-			border-width: rem(1);
+			border-width: 1px;
 			border-color: var(--color-blue);
 			max-height: calc($option-height * $visible-options + rem(1));
 			overflow-y: auto;
@@ -104,8 +104,8 @@ $visible-options: 5;
 	input:not([type='range']):focus,
 	select:focus,
 	textarea:focus {
-		border-top: rem(1) solid var(--color-blue);
-		border-bottom: rem(1) solid var(--color-blue);
+		border-top: 1px solid var(--color-blue);
+		border-bottom: 1px solid var(--color-blue);
 	}
 
 	label {
@@ -124,7 +124,7 @@ $visible-options: 5;
 	}
 
 	.input {
-		border: rem(1) solid var(--color-grey-75);
+		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;

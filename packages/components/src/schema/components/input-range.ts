@@ -27,7 +27,6 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	step: number;
-	tabIndex: number;
 	value: number;
 } & PropAccessKey &
 	PropDisabled &
@@ -52,7 +51,6 @@ type OptionalStates = {
 	min: number;
 	on: InputTypeOnDefault;
 	step: number;
-	tabIndex: number;
 	value: number;
 } & PropAccessKey &
 	PropDisabled &

@@ -1,4 +1,4 @@
-@import '../../mixins/rem';
+@use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
 	:host {
@@ -8,7 +8,7 @@
 
 	.kol-tabs {
 		&__button-group {
-			border-bottom: rem(1) solid var(--color-grey-25);
+			border-bottom: 1px solid var(--color-grey-25);
 			margin-bottom: rem(-1);
 		}
 
@@ -21,6 +21,7 @@
 					color: var(--color-blue-130);
 				}
 			}
+
 			&:focus .kol-span {
 				outline: var(--color-blue-130) solid rem(2);
 			}
@@ -29,10 +30,10 @@
 				.kol-span {
 					border-color: var(--color-grey-25);
 					border-style: solid;
-					border-width: rem(1);
+					border-width: 1px;
 					border-bottom-color: white;
 					border-top-color: var(--color-blue);
-					box-shadow: 0 rem(-3) var(--color-blue);
+					box-shadow: 0 -3px var(--color-blue);
 					font-weight: var(--font-weight-bold);
 					color: var(--color-blue);
 				}

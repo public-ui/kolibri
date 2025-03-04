@@ -1,5 +1,5 @@
-@import '../components/a11y';
-@import '../components/preset';
+@use '../components/a11y' as *;
+@use '../components/preset' as *;
 
 @layer kol-global {
 	:host {

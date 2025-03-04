@@ -1,5 +1,5 @@
-@import '../../mixins/rem';
-@import '../mixins/kol-table-stateless-wc';
+@use '../../mixins/rem' as *;
+@use '../mixins/kol-table-stateless-wc' as *;
 
 @layer kol-theme-component {
 	@include kol-table-stateless-wc;
@@ -14,6 +14,7 @@
 				grid-auto-flow: column;
 			}
 		}
+
 		&__pagination {
 			overflow-x: auto;
 			overflow-y: hidden;

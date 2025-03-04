@@ -1,10 +1,10 @@
-@import '../@shared/mixins';
-@import '../../styles/global';
-@import '../host-display-block';
-@import '../../styles/kol-alert-mixin';
-@import '../../styles/kol-field-control-mixin';
-@import '../../styles/kol-form-field-mixin';
-@import '../../styles/kol-input-container-mixin';
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
+@use '../host-display-block' as *;
+@use '../../styles/kol-alert-mixin' as *;
+@use '../../styles/kol-field-control-mixin' as *;
+@use '../../styles/kol-form-field-mixin' as *;
+@use '../../styles/kol-input-container-mixin' as *;
 
 @include kol-alert;
 @include kol-field-control;
@@ -13,7 +13,7 @@
 
 @layer kol-component {
 	.kol-form-field {
-		--border-width: #{rem(2)};
+		--border-width: 2px;
 		--input-size: 1.5em;
 
 		&__label {

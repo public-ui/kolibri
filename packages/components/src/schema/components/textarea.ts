@@ -34,7 +34,6 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	placeholder: string;
 	resize: CSSResize;
-	tabIndex: number;
 	value: string;
 } & PropAccessKey &
 	PropAdjustHeight &
@@ -68,7 +67,6 @@ type OptionalStates = {
 	maxLength: number;
 	on: InputTypeOnDefault;
 	placeholder: string;
-	tabIndex: number;
 	value: string;
 } & PropAccessKey &
 	PropDisabled &

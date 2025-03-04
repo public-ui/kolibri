@@ -1,6 +1,6 @@
-@import '../components/@shared/mixins';
-@import '../components/host-display-block';
-@import '../components/tooltip/style';
+@use '../components/@shared/mixins' as *;
+@use '../components/host-display-block' as *;
+@use '../components/tooltip/style' as *;
 
 @mixin kol-alert {
 	@layer kol-component {
@@ -11,6 +11,7 @@
 				place-items: center;
 				display: flex;
 			}
+
 			&__container-content {
 				flex-grow: 1;
 			}

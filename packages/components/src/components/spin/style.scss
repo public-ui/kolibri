@@ -1,11 +1,12 @@
-@import '../@shared/mixins';
-@import '../../styles/global';
-@import './cycle';
-@import './dot';
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
+@use './cycle' as *;
+@use './dot' as *;
 
 @layer kol-component {
 	.kol-spin {
 		font-size: rem(16);
+
 		&__spinner {
 			display: block;
 			padding: rem(2);

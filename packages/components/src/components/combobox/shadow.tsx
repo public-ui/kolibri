@@ -426,11 +426,6 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
-	 */
-	@Prop() public _tabIndex?: number;
-
-	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
@@ -545,11 +540,6 @@ export class KolCombobox implements ComboboxAPI {
 	@Watch('_syncValueBySelector')
 	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
-	}
-
-	@Watch('_tabIndex')
-	public validateTabIndex(value?: number): void {
-		this.controller.validateTabIndex(value);
 	}
 
 	@Watch('_touched')

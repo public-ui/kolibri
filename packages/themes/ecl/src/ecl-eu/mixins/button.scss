@@ -1,4 +1,4 @@
-@import '../../mixins/rem';
+@use '../../mixins/rem' as *;
 
 @mixin kol-button($block-classname) {
 	.#{$block-classname} {
@@ -8,7 +8,7 @@
 
 		font-family: var(--font-family);
 		appearance: none;
-		border-radius: rem(4);
+		border-radius: 4px;
 		text-decoration: none;
 
 		&--primary {
@@ -70,7 +70,7 @@
 		&__text {
 			min-height: rem(44);
 			min-width: rem(44);
-			border-radius: rem(4);
+			border-radius: 4px;
 			font:
 				normal normal 400 rem(16) / rem(20) arial,
 				sans-serif;
@@ -94,7 +94,7 @@
 
 			@at-root #{$root}--secondary & {
 				padding: calc(rem(12) - rem(2)) calc(rem(16) - rem(2));
-				border: rem(2) solid #0e47cb;
+				border: 2px solid #0e47cb;
 			}
 
 			@at-root #{$root}--secondary.button:focus-visible & {
@@ -102,7 +102,7 @@
 			}
 
 			@at-root #{$root}:focus-visible & {
-				outline-offset: rem(-4);
+				outline-offset: -4px;
 				outline: var(--text-focus-outline-color) solid rem(2);
 			}
 

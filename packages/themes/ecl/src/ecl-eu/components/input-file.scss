@@ -1,1 +1,19 @@
-@import '../@shared/input-text';
+@use '../@shared/input-text' as *;
+@use '../mixins/button' as *;
+
+@layer kol-theme-component {
+	@include kol-button('kol-button');
+
+	.kol-button {
+		&__text {
+			border-radius: 0 !important;
+			white-space: nowrap;
+		}
+	}
+
+	.kol-input-container {
+		&--is-dragover {
+			border-color: var(--color-blue) !important;
+		}
+	}
+}

@@ -3,7 +3,7 @@
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _accessKey="V" 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -32,7 +32,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _alert=true 1`] = `
 <kol-combobox _alert="" _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -60,7 +60,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _disabled=true 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field kol-form-field--disabled" role="presentation">
+    <div class="has-value kol-combobox kol-form-field kol-form-field--disabled">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -88,7 +88,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _hint="Hint" 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -119,7 +119,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -153,7 +153,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -185,7 +185,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -217,7 +217,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
 <kol-combobox _hide-msg="" _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field kol-form-field--hidden-msg" role="presentation">
+    <div class="has-value kol-combobox kol-form-field kol-form-field--hidden-msg">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -245,7 +245,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -273,7 +273,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _readOnly=true 1`] = `
 <kol-combobox _readonly="" _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -301,7 +301,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _shortKey="S" 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -330,7 +330,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _touched=true 1`] = `
 <kol-combobox _touched="" _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field kol-form-field--touched" role="presentation">
+    <div class="has-value kol-combobox kol-form-field kol-form-field--touched">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -358,7 +358,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field" role="presentation">
+    <div class="has-value kol-combobox kol-form-field">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>

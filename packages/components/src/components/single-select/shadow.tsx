@@ -232,7 +232,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 					<div class="kol-single-select__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 
-						{this._inputValue && (
+						{this._inputValue && !this.state._hideClearButton && (
 							<KolIconTag
 								_icons="codicon codicon-close"
 								_label={translate('kol-delete-selection')}
@@ -489,11 +489,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
-	 */
-	@Prop() public _tabIndex?: number;
-
-	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
@@ -509,11 +504,17 @@ export class KolSingleSelect implements SingleSelectAPI {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
+	/**
+	 * Defines the whether the clear button should be hidden.
+	 */
+	@Prop() public _hideClearButton?: boolean = false;
+
 	@State() public state: SingleSelectStates = {
 		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_options: [],
+		_hideClearButton: false,
 	};
 
 	@State() private inputHasFocus = false;
@@ -608,11 +609,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.controller.validateSyncValueBySelector(value);
 	}
 
-	@Watch('_tabIndex')
-	public validateTabIndex(value?: number): void {
-		this.controller.validateTabIndex(value);
-	}
-
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
 		this.controller.validateTouched(value);
@@ -623,6 +619,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this.controller.validateValue(value);
 		this.oldValue = value;
 		this.updateInputValue(value);
+	}
+
+	@Watch('_hideClearButton ')
+	public validateHideClearButton(value?: boolean): void {
+		this.controller.validateHideClearButton(value);
 	}
 
 	@Listen('mousemove')

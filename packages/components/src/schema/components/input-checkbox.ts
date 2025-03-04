@@ -51,7 +51,6 @@ type OptionalProps = {
 	icons: Stringified<InputCheckboxIconsProp>;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
-	tabIndex: number;
 	value: Stringified<StencilUnknown>;
 	variant: InputCheckboxVariant;
 } & PropAccessKey &
@@ -79,7 +78,6 @@ type RequiredStates = {
 type OptionalStates = {
 	hint: string;
 	on: InputTypeOnDefault;
-	tabIndex: number;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &

@@ -1,6 +1,6 @@
-@import '../../mixins/rem';
-@import '../mixins/alert-wc';
-@import '../mixins/required';
+@use '../../mixins/rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/required' as *;
 
 @layer kol-theme-component {
 	:host {
@@ -38,7 +38,7 @@
 	.kol-checkbox {
 		.kol-input {
 			background-color: var(--color-white);
-			border-width: rem(2);
+			border-width: 2px;
 			border-style: solid;
 			border-color: var(--color-grey-75);
 			color: var(--color-grey);
@@ -47,9 +47,9 @@
 
 			&:focus {
 				outline-color: var(--color-blue);
-				outline-offset: rem(2);
+				outline-offset: 2px;
 				outline-style: solid;
-				outline-width: rem(2);
+				outline-width: 2px;
 			}
 
 			&:checked {
@@ -161,7 +161,7 @@
 		&:focus-within {
 			outline-color: var(--color-blue-130);
 			outline-style: solid;
-			outline-width: rem(2);
+			outline-width: 2px;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-@import '../../mixins/rem';
+@use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
 	:host {
@@ -8,7 +8,7 @@
 
 	.kol-button {
 		--kolibri-spacing: #{rem(4)};
-		border-radius: rem(4);
+		border-radius: 4px;
 
 		&:focus {
 			outline: none;
@@ -18,7 +18,7 @@
 	.kol-button__text {
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
-		border-radius: rem(4);
+		border-radius: 4px;
 		font:
 			normal normal 400 rem(16) / rem(20) Arial,
 			sans-serif;
@@ -27,8 +27,8 @@
 		color: #171a22;
 
 		.kol-button:focus-visible & {
-			outline-offset: rem(-4);
-			outline: rem(2) solid var(--color-black);
+			outline-offset: -4px;
+			outline: 2px solid var(--color-black);
 		}
 
 		.kol-button:not(:disabled):active &,

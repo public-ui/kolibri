@@ -1,7 +1,7 @@
-@import '../../mixins/rem';
-@import '../mixins/alert-wc';
-@import '../mixins/typography';
-@import '../mixins/required';
+@use '../../mixins/rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/required' as *;
 
 @layer kol-theme-component {
 	:host {
@@ -85,7 +85,7 @@
 
 		&:checked {
 			border-color: var(--color-blue);
-			border-width: rem(7);
+			border-width: 7px;
 		}
 
 		&:focus {
@@ -99,7 +99,7 @@
 		}
 
 		&#{&}--error {
-			border: rem(2) solid var(--color-red);
+			border: 2px solid var(--color-red);
 
 			&:before {
 				display: none;
@@ -107,7 +107,7 @@
 
 			&:checked {
 				border-color: var(--color-red);
-				border-width: rem(7);
+				border-width: 7px;
 			}
 
 			&:not(:disabled) {

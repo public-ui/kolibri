@@ -1,6 +1,6 @@
-@import '../@shared/mixins';
-@import '../host-display-block';
-@import '../tooltip/style.scss';
+@use '../@shared/mixins' as *;
+@use '../host-display-block' as *;
+@use '../tooltip/style.scss' as *;
 
 @mixin kol-table-stateless-styles {
 	@layer kol-component {
@@ -26,9 +26,9 @@
 				&:focus {
 					outline: 0 !important;
 					/* @see https://remysharp.com/til/css/focus-ring-default-styles */
-					outline: rem(5) auto Highlight;
-					outline: rem(5) auto -webkit-focus-ring-color;
-					outline-offset: rem(2);
+					outline: 5px auto Highlight;
+					outline: 5px auto -webkit-focus-ring-color;
+					outline-offset: 2px;
 				}
 			}
 
@@ -120,14 +120,14 @@
 					align-items: center;
 					justify-content: center;
 					background-color: rgb(255, 255, 255);
-					border-width: rem(2);
+					border-width: 2px;
 					line-height: 1.5;
 					transition: all 0.5s ease 0s;
 				}
 
 				&--radio {
 					display: flex;
-					border-width: rem(2);
+					border-width: 2px;
 					border-radius: 100%;
 					height: 1.5em;
 					min-height: 1.5em;
@@ -144,6 +144,7 @@
 
 					&:checked:before {
 						background-color: #000;
+
 						@media (forced-colors: active) {
 							/* Give it a visible background in forced colors mode */
 							background-color: selectedItem !important;

@@ -1,5 +1,5 @@
-@import 'mixins';
-@import '../tooltip/style';
+@use 'mixins' as *;
+@use '../tooltip/style' as *;
 
 @mixin kol-button-styles($block-classname) {
 	@layer kol-component {
@@ -7,6 +7,7 @@
 			//Needed for custom width
 			display: inline-block;
 		}
+
 		.#{$block-classname} {
 			font-style: rem(16);
 			display: inline-flex;

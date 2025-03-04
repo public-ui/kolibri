@@ -1,5 +1,5 @@
-@import '../@shared/mixins';
-@import '../../styles/global';
-@import '../@shared/kol-link-mixin';
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
+@use '../@shared/kol-link-mixin' as *;
 
 @include kol-link-styles('kol-button');

@@ -1,5 +1,5 @@
-@import '../../mixins/rem';
-@import '../mixins/alert-wc';
+@use '../../mixins/rem' as *;
+@use '../mixins/alert-wc' as *;
 
 $option-height: rem(40);
 $visible-options: 5;
@@ -76,7 +76,7 @@ $visible-options: 5;
 
 		&__listbox {
 			border-style: solid;
-			border-width: rem(1);
+			border-width: 1px;
 			border-color: var(--color-blue);
 			overflow-y: auto;
 			overflow-x: hidden;
@@ -136,7 +136,7 @@ $visible-options: 5;
 
 	.input {
 		min-height: rem(44);
-		border: rem(1) solid var(--color-grey-75);
+		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;

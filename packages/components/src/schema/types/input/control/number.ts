@@ -21,7 +21,6 @@ export type OptionalInputProps<T> = {
 	required: boolean;
 	smartButton: Stringified<ButtonProps>;
 	step: number;
-	tabIndex: number;
 	touched: boolean;
 	value: T | null;
 };

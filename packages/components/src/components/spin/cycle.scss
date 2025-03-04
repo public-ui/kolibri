@@ -1,4 +1,4 @@
-@import '../@shared/mixins';
+@use '../@shared/mixins' as *;
 
 @layer kol-component {
 	.kol-spin {
@@ -8,6 +8,7 @@
 				height: rem(48);
 			}
 		}
+
 		&__loader {
 			display: block;
 			width: 100%;
@@ -22,7 +23,7 @@
 				position: absolute;
 				inset: 0;
 				border-radius: 50%;
-				border: rem(5) solid #333;
+				border: 5px solid #333;
 				animation: 3s linear infinite prixClipFix;
 			}
 		}
@@ -65,6 +66,7 @@
 	@media (prefers-reduced-motion) {
 		.kol-spin__loader {
 			animation-duration: 4s;
+
 			&::before {
 				animation-duration: 6s;
 			}

@@ -1,4 +1,4 @@
-@import '../../mixins/rem';
+@use '../../mixins/rem' as *;
 
 @mixin kol-alert-wc($color: null) {
 	color: var($color);
@@ -22,7 +22,7 @@
 			padding-inline-start: rem(24);
 			padding-top: rem(24);
 			border-style: solid;
-			border-width: rem(2);
+			border-width: 2px;
 		}
 
 		&--default {

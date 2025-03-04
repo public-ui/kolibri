@@ -1,11 +1,11 @@
-@import '../mixins/rem';
-@import '../mixins/alert-wc';
-@import '../mixins/input-error';
-@import '../mixins/typography';
-@import '../mixins/custom-suggestions-option';
-@import '../mixins/custom-suggestions-options-group';
-@import '../mixins/custom-suggestions-toggle';
-@import '../@shared/input-core';
+@use '../mixins/rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/input-error' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/custom-suggestions-option' as *;
+@use '../mixins/custom-suggestions-options-group' as *;
+@use '../mixins/custom-suggestions-toggle' as *;
+@use '../@shared/input-core' as *;
 
 $option-height: rem(40);
 $visible-options: 5;

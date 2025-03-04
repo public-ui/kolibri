@@ -1,9 +1,9 @@
-@import '../../styles/global';
-@import '../../styles/kol-field-control-mixin';
-@import '../../styles/kol-form-field-mixin';
-@import '../@shared/mixins';
-@import '../host-display-block';
-@import '../tooltip/style';
+@use '../../styles/global' as *;
+@use '../../styles/kol-field-control-mixin' as *;
+@use '../../styles/kol-form-field-mixin' as *;
+@use '../@shared/mixins' as *;
+@use '../host-display-block' as *;
+@use '../tooltip/style' as *;
 
 @include kol-form-field;
 @include kol-field-control;
@@ -30,7 +30,7 @@
 
 			margin: 0;
 			border-style: solid;
-			border-width: rem(2);
+			border-width: 2px;
 
 			&:before {
 				content: '';

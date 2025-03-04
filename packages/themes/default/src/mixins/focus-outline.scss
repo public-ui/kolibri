@@ -1,15 +1,15 @@
-@import './rem';
+@use './rem' as *;
 
 @mixin focus-outline {
 	border-radius: var(--border-radius);
-	outline-offset: rem(2);
+	outline-offset: 2px;
 	outline: var(--color-primary-variant) solid rem(3);
 	transition: 200ms outline-offset linear;
 }
 
 @mixin switch-outline {
 	outline-color: var(--color-primary);
-	outline-offset: rem(2);
+	outline-offset: 2px;
 	outline-style: solid;
-	outline-width: rem(2);
+	outline-width: 2px;
 }

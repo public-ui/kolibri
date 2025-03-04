@@ -1,9 +1,9 @@
-@import '../../styles/global';
-@import '../../styles/kol-alert-mixin';
-@import '../../styles/kol-form-field-mixin';
-@import '../../styles/kol-input-container-mixin';
-@import '../../styles/kol-input-mixin';
-@import '../@shared/mixins';
+@use '../../styles/global' as *;
+@use '../../styles/kol-alert-mixin' as *;
+@use '../../styles/kol-form-field-mixin' as *;
+@use '../../styles/kol-input-container-mixin' as *;
+@use '../../styles/kol-input-mixin' as *;
+@use '../@shared/mixins' as *;
 
 @include kol-alert;
 @include kol-form-field;
@@ -27,7 +27,7 @@
 			&--range {
 				appearance: none;
 				background-color: #d3d3d3;
-				border: rem(1) solid #000;
+				border: 1px solid #000;
 				display: inline-block;
 				flex-grow: 1;
 				height: rem(8);
@@ -42,12 +42,12 @@
 					background-color: #000;
 					height: rem(20);
 					width: rem(20);
-					border-radius: rem(20);
+					border-radius: 20px;
 					cursor: pointer;
 					-webkit-appearance: none;
 
 					@media (prefers-contrast: more) or (forced-colors: active) {
-						outline: rem(1) solid currentColor;
+						outline: 1px solid currentColor;
 					}
 				}
 
@@ -56,7 +56,7 @@
 					background-color: #000;
 					height: rem(20);
 					width: rem(20);
-					border-radius: rem(20);
+					border-radius: 20px;
 					cursor: pointer;
 					-moz-appearance: none;
 				}

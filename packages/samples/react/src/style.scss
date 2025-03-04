@@ -1,4 +1,4 @@
-@import './@shared/mixins';
+@use './@shared/mixins' as *;
 
 :root {
 	--kolibri-root-font-size: 100;
@@ -24,7 +24,7 @@ hr {
 .indented-text {
 	p {
 		font-family: var(--font-family);
-		border-left: rem(-2) solid var(--color-primary-variant);
+		border-left: -2px solid var(--color-primary-variant);
 		padding: 0 calc(8rem / var(--kolibri-root-font-size, 16));
 		margin-left: rem(-2);
 	}
@@ -50,7 +50,7 @@ hr {
 	}
 
 	.app-sidebar {
-		border-right: rem(1) solid gray;
+		border-right: 1px solid gray;
 		position: relative;
 
 		& .scrollable-container-wrapper {

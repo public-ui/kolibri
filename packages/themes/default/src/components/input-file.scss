@@ -1,9 +1,27 @@
-@import '../@shared/input-text';
-@import '../mixins/rem';
+@use '../@shared/input-text' as *;
+@use '../mixins/rem' as *;
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
+	@include kol-button('kol-button');
+
 	.kol-input-container {
 		gap: initial;
+
+		&__filename {
+			color: var(--color-subtle);
+		}
+
+		&--is-dragover {
+			border-color: var(--color-primary) !important;
+		}
+	}
+
+	.kol-button {
+		&__text {
+			border-radius: 0 !important;
+			white-space: nowrap;
+		}
 	}
 
 	.kol-input {

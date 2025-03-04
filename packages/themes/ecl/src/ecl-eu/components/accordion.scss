@@ -1,4 +1,4 @@
-@import '../../mixins/rem';
+@use '../../mixins/rem' as *;
 
 @layer kol-theme-component {
 	:host {
@@ -7,7 +7,7 @@
 	}
 
 	.kol-accordion {
-		border-radius: rem(8);
+		border-radius: 8px;
 		box-shadow:
 			0 rem(2) rem(4) rgb(9 49 142 / 8%),
 			0 0 rem(10) rgb(9 49 142 / 4%),
@@ -22,8 +22,8 @@
 
 		&__heading-button {
 			.kol-button {
-				border-radius: rem(8);
-				outline-offset: rem(-1);
+				border-radius: 8px;
+				outline-offset: -1px;
 				border: 0;
 				border-bottom-color: #cfdaf5;
 				border-bottom-style: solid;
@@ -70,7 +70,7 @@
 		&__content {
 			-webkit-border-start: rem(4) solid #0e47cb;
 			-webkit-margin-start: 0;
-			border-bottom: rem(2) solid #cfdaf5;
+			border-bottom: 2px solid #cfdaf5;
 			border-inline-start: rem(4) solid #0e47cb;
 			color: #515560;
 			font:

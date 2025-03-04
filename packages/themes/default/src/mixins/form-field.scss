@@ -1,6 +1,6 @@
-@import './rem';
-@import './alert-wc';
-@import './typography';
+@use './rem' as *;
+@use './alert-wc' as *;
+@use './typography' as *;
 
 @mixin kol-form-field-theme {
 	.kol-form-field {
@@ -13,7 +13,7 @@
 		}
 
 		&--error:not(&--hide-msg) {
-			border-left: rem(3) solid var(--color-danger);
+			border-left: 3px solid var(--color-danger);
 			padding-left: rem(16);
 
 			.kol-form-field__msg {

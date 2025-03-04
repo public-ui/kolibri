@@ -1,6 +1,6 @@
-@import '../@shared/mixins';
-@import '../../styles/global';
-@import '../@shared/kol-table-stateless-mixin';
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
+@use '../@shared/kol-table-stateless-mixin' as *;
 
 @include kol-table-stateless-styles;
 
@@ -14,6 +14,7 @@
 		&__pagination-wrapper {
 			display: grid;
 			place-items: center;
+
 			@media (min-width: 1024px) {
 				grid-auto-flow: column;
 			}
@@ -23,6 +24,7 @@
 	.kol-pagination {
 		display: flex;
 		flex-wrap: wrap;
+
 		@media (min-width: 1024px) {
 			display: flex;
 		}

@@ -3,7 +3,7 @@
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _accessKey="V" 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -58,7 +58,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _alert=true 1`] = `
 <kol-input-radio _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -112,7 +112,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _disabled=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--disabled kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--disabled kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -166,7 +166,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _hint="Hint" 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -223,7 +223,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -277,7 +277,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -331,7 +331,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -385,7 +385,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
 <kol-input-radio _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--hidden-msg kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--hidden-msg kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -439,7 +439,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -493,7 +493,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _accessKey="V" 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -548,7 +548,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _alert=true 1`] = `
 <kol-input-radio _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -602,7 +602,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _disabled=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--disabled kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--disabled kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -656,7 +656,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _hint="Hint" 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -713,7 +713,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -767,7 +767,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -821,7 +821,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -875,7 +875,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
 <kol-input-radio _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--hidden-msg kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--hidden-msg kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -929,7 +929,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -983,7 +983,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _readOnly=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -1037,7 +1037,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _shortKey="S" 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -1092,7 +1092,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _touched=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio kol-form-field--touched" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio kol-form-field--touched">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -1146,7 +1146,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -1200,7 +1200,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _readOnly=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -1254,7 +1254,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _shortKey="S" 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -1309,7 +1309,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _touched=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio kol-form-field--touched" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio kol-form-field--touched">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -1363,7 +1363,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--radio" role="presentation">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>

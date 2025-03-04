@@ -1,4 +1,4 @@
-@import '../@shared/mixins';
+@use '../@shared/mixins' as *;
 
 @layer kol-component {
 	:host {
@@ -9,7 +9,7 @@
 		display: contents;
 
 		&__floating {
-			animation-duration: 0.5s;
+			animation-duration: 0.25s;
 			animation-iteration-count: 1;
 			animation-name: fadeInOpacity;
 			animation-timing-function: ease-in;

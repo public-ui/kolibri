@@ -1,5 +1,5 @@
-@import '../@shared/mixins';
-@import '../../styles/global';
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
 
 @layer kol-component {
 	.kol-quote {

@@ -1,5 +1,5 @@
-@import '../@shared/mixins';
-@import '../../styles/global';
+@use '../@shared/mixins' as *;
+@use '../../styles/global' as *;
 
 @layer kol-component {
 	.kol-toolbar {
@@ -11,8 +11,8 @@
 		flex-wrap: wrap;
 
 		&:focus-within {
-			outline: rem(1) solid;
-			outline-offset: rem(2);
+			outline: 1px solid;
+			outline-offset: 2px;
 		}
 	}
 }

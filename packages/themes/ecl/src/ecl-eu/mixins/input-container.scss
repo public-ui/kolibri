@@ -1,7 +1,9 @@
+@use '../../mixins/rem' as *;
+
 @mixin kol-input-container-theme {
 	.kol-input-container {
 		min-height: rem(44);
-		border: rem(1) solid var(--color-grey-75);
+		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
 		align-items: center;
