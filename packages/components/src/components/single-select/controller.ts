@@ -1,4 +1,5 @@
-import type { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, W3CInputValue } from '../../schema';
+import type { Option, OptionsPropType, SelectOption, SingleSelectProps, SingleSelectWatches, StencilUnknown, W3CInputValue } from '../../schema';
+import { watchValidator } from '../../schema';
 import { validateOptions, watchBoolean, watchString } from '../../schema';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -42,8 +43,8 @@ export class SingleSelectController extends InputIconController implements Singl
 		watchBoolean(this.component, '_required', value);
 	}
 
-	public validateValue(value?: string): void {
-		watchString(this.component, '_value', value);
+	public validateValue(value?: StencilUnknown): void {
+		watchValidator(this.component, '_value', v => v !== undefined, new Set([`StencilUnknown`]), value);
 	}
 
 	public validatePlaceholder(value?: string): void {

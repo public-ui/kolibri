@@ -26,7 +26,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	placeholder: string;
 	tabIndex: number;
-	value: string;
+	value: StencilUnknown;
 	hideClearButton: boolean;
 } & PropAccessKey &
 	PropDisabled &
