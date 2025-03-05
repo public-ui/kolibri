@@ -76,8 +76,8 @@ export class KolCombobox implements ComboboxAPI {
 	};
 
 	private selectOption(option: string) {
-		this.controller.onFacade.onInput(new Event('input', { bubbles: true }), true, option);
-		this.controller.onFacade.onChange(new Event('change', { bubbles: true }), option);
+		this.controller.onFacade.onInput(new CustomEvent('input', { bubbles: true, detail: { name: this.state._name, value: option } }), true, option);
+		this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail: { name: this.state._name, value: option } }), option);
 		this.controller.setFormAssociatedValue(option);
 		this.state._value = option;
 		this.refInput?.focus();

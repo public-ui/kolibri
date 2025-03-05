@@ -95,18 +95,16 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this.state._value = emptyValue;
 			this._inputValue = emptyValue;
 			this._filteredOptions = [...this.state._options];
-			this.controller.onFacade.onInput(new Event('input', { bubbles: true }), true, emptyValue);
-			this.controller.onFacade.onChange(new Event('change', { bubbles: true }), emptyValue);
+			this.controller.onFacade.onInput(new CustomEvent('input', { bubbles: true, detail: { name: this.state._name, value: emptyValue } }), true, emptyValue);
+			this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail: { name: this.state._name, value: emptyValue } }), emptyValue);
 		}
 	}
 
 	private selectOption(option: Option<string>) {
 		this.state._value = option.value;
 		this._inputValue = option.label as string;
-
-		this.controller.onFacade.onInput(new Event('input', { bubbles: true }), false, option.value);
-		this.controller.onFacade.onChange(new Event('change', { bubbles: true }), option.value);
-
+		this.controller.onFacade.onInput(new CustomEvent('input', { bubbles: true, detail: { name: this.state._name, value: option.value } }), false, option.value);
+		this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail: { name: this.state._name, value: option.value } }), option.value);
 		this._filteredOptions = [...this.state._options];
 
 		this.controller.setFormAssociatedValue(this.state._value);
@@ -706,7 +704,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		}
 		// Event handling
 		stopPropagation(event);
-		tryToDispatchKoliBriEvent('change', this.host, { value: this._value, name: this._name });
+		tryToDispatchKoliBriEvent('change', this.host, this._value);
 
 		// Callback
 		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
