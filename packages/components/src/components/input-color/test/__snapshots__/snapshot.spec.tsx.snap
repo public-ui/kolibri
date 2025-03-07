@@ -15,7 +15,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input accesskey="V" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>
@@ -38,7 +41,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>
@@ -61,7 +67,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-color__input kol-input-color__input--color" disabled="" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-color__input kol-input-color__input--text" disabled="" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>
@@ -84,7 +93,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-describedby="id-nonce-hint" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>
@@ -113,7 +125,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
@@ -142,7 +157,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
         </div>
@@ -167,7 +185,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
@@ -193,7 +214,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-describedby="id-nonce-msg" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>
@@ -216,7 +240,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-describedby="id-nonce-msg" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>
@@ -239,7 +266,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>
@@ -263,7 +293,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>
@@ -287,7 +320,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-button-wc _hidelabel="" _label="einblenden" tabindex="0"></kol-button-wc>
@@ -314,12 +350,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input accesskey="V" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -342,12 +386,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -370,12 +422,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-color__input kol-input-color__input--color" disabled="" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-color__input kol-input-color__input--text" disabled="" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -398,12 +458,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-describedby="id-nonce-hint" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -432,12 +500,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
@@ -466,12 +542,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
         </div>
@@ -496,12 +580,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
@@ -527,12 +619,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-describedby="id-nonce-msg" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -555,12 +655,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-describedby="id-nonce-msg" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -583,12 +691,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -612,12 +728,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -641,12 +765,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-button-wc _hidelabel="" _label="einblenden" tabindex="0"></kol-button-wc>
@@ -672,12 +804,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -700,12 +840,20 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
-            <datalist id="id-nonce-list">
-              <option value="#F00"></option>
-              <option value="#0F0"></option>
-              <option value="#00F"></option>
-            </datalist>
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" list="id-nonce-list" name="field-color" type="color" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" list="id-nonce-list" name="field-text" type="text" value="#FFF">
+              <datalist id="id-nonce-list">
+                <option value="#F00"></option>
+                <option value="#0F0"></option>
+                <option value="#00F"></option>
+              </datalist>
+            </div>
           </div>
         </div>
       </div>
@@ -728,7 +876,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>
@@ -751,7 +902,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <div class="kol-input-color__inputs-wrapper">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="id-nonce" name="field-color" type="color" value="#FFF">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--text" id="id-nonce" name="field-text" type="text" value="#FFF">
+            </div>
           </div>
         </div>
       </div>

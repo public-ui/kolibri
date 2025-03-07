@@ -40,12 +40,15 @@ import { InputColorController } from './controller';
 })
 export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputColorElement;
-	private inputRef?: HTMLInputElement;
+	private refInputText?: HTMLInputElement;
+	private refInputColor?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
+		this.refInputText = ref;
 	};
-
+	private readonly catchColorRef = (ref?: HTMLInputElement) => {
+		this.refInputColor = ref;
+	};
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
 		this.inputHasFocus = false;
@@ -56,21 +59,32 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		this.inputHasFocus = true;
 	};
 
-	private readonly onInput = (event: InputEvent) => {
-		this._value = this.inputRef?.value ?? '';
+	private readonly onColorInput = (event: InputEvent) => {
+		const value = (event.target as HTMLInputElement).value;
+		this._value = value;
+		if (this.refInputText) {
+			this.refInputText.value = value;
+		}
 		this.controller.onFacade.onInput(event);
 	};
-
+	private readonly onTextInput = (event: InputEvent) => {
+		const value = (event.target as HTMLInputElement).value;
+		this._value = value;
+		if (this.refInputColor) {
+			this.refInputColor.value = value;
+		}
+		this.controller.onFacade.onInput(event);
+	};
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.inputRef?.value;
+		return this.refInputText?.value;
 	}
 
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
-		this.inputRef?.focus();
+		this.refInputText?.focus();
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -78,29 +92,42 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 			state: this.state,
 			class: 'kol-input-color',
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
+			onClick: () => this.refInputText?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
 
-	private getInputProps(): InputStateWrapperProps {
+	private getInputColorProps(): InputStateWrapperProps {
 		return {
-			ref: this.catchRef,
+			ref: this.catchColorRef,
 			type: 'color',
-			slot: 'input',
+			name: this.state._name ? `${this.state._name}-color` : undefined,
+			'aria-hidden': 'true',
 			state: this.state,
 			...this.controller.onFacade,
-			onBlur: this.onBlur,
-			onFocus: this.onFocus,
-			onInput: this.onInput,
+			onInput: this.onColorInput,
 		};
 	}
-
+	private getInputTextProps(): InputStateWrapperProps {
+		return {
+			ref: this.catchRef,
+			type: 'text',
+			name: this.state._name ? `${this.state._name}-text` : undefined,
+			state: this.state,
+			...this.controller.onFacade,
+			onInput: this.onTextInput,
+			onBlur: this.onBlur,
+			onFocus: this.onFocus,
+		};
+	}
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<KolInputContainerFc state={this.state}>
-					<KolInputStateWrapperFc {...this.getInputProps()} />
+				<KolInputContainerFc state={this.state} class="kol-input-color__inputs-wrapper">
+					<div class="kol-input-color__inputs-wrapper">
+						<KolInputStateWrapperFc class="kol-input-color__input kol-input-color__input--color" {...this.getInputColorProps()} />
+						<KolInputStateWrapperFc class="kol-input-color__input kol-input-color__input--text" {...this.getInputTextProps()} />
+					</div>
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
