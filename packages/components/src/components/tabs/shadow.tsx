@@ -418,7 +418,7 @@ export class KolTabs implements TabsAPI {
 			div.appendChild(slot);
 			this.tabPanelHost?.appendChild(div);
 
-			if (this.host?.children instanceof HTMLCollection && this.host?.children[i] /* SSR instanceof HTMLElement */) {
+			if (typeof HTMLCollection !== 'undefined' && this.host?.children instanceof HTMLCollection && this.host?.children[i] /* SSR instanceof HTMLElement */) {
 				this.host.children[i].setAttribute('slot', `tabpanel-slot-${i}`);
 			}
 		}
