@@ -385,6 +385,7 @@ export class KolTabs implements TabsAPI {
 			{
 				hooks: {
 					beforePatch: this.syncSelectedAndTabs,
+					afterPatch: this.refreshTabPanels,
 				},
 			},
 		);
@@ -400,37 +401,43 @@ export class KolTabs implements TabsAPI {
 		this.validateBehavior(this._behavior);
 	}
 
-	private readonly handleTabPanels = () => {
-		if (this.tabPanelHost instanceof HTMLDivElement) {
-			for (let i = this.tabPanelHost.children.length; i < this.state._tabs.length; i++) {
-				const div = document.createElement('div');
-				div.setAttribute('aria-labelledby', `${this.state._label.replace(/\s/g, '-')}-tab-${i}`);
-				div.setAttribute('id', `tabpanel-${i}`);
-				div.setAttribute('role', 'tabpanel');
-				div.setAttribute('hidden', '');
-				const slot = document.createElement('slot');
-				slot.setAttribute('name', `tabpanel-slot-${i}`);
-				div.appendChild(slot);
-				this.tabPanelHost.appendChild(div);
-				if (this.host?.children instanceof HTMLCollection && this.host?.children[i] /* SSR instanceof HTMLElement */) {
-					// div.appendChild(this.host?.children[0]);
-					this.host?.children[i].setAttribute('slot', `tabpanel-slot-${i}`);
-				}
+	private refreshTabPanels = () => {
+		if (!this.tabPanelHost) return;
+		// Clear existing panels
+		while (this.tabPanelHost.firstChild) {
+			this.tabPanelHost.removeChild(this.tabPanelHost.firstChild);
+		}
+		for (let i = 0; i < this.state._tabs?.length; i++) {
+			const div = document.createElement('div');
+			div.setAttribute('aria-labelledby', `${this.state._label.replace(/\s/g, '-')}-tab-${i}`);
+			div.setAttribute('id', `tabpanel-${i}`);
+			div.setAttribute('role', 'tabpanel');
+			div.setAttribute('hidden', '');
+			const slot = document.createElement('slot');
+			slot.setAttribute('name', `tabpanel-slot-${i}`);
+			div.appendChild(slot);
+			this.tabPanelHost?.appendChild(div);
+
+			if (typeof HTMLCollection !== 'undefined' && this.host?.children instanceof HTMLCollection && this.host?.children[i] /* SSR instanceof HTMLElement */) {
+				this.host.children[i].setAttribute('slot', `tabpanel-slot-${i}`);
 			}
 		}
+		this.updateVisiblePanel();
+	};
+
+	private updateVisiblePanel = () => {
+		if (!this.tabPanelHost) return;
+		Array.from(this.tabPanelHost.children).forEach((child, i) => {
+			if (i === this.state._selected) {
+				child.removeAttribute('hidden');
+			} else {
+				child.setAttribute('hidden', '');
+			}
+		});
 	};
 
 	public componentDidRender(): void {
-		this.handleTabPanels();
-		if (this.tabPanelHost instanceof HTMLDivElement) {
-			for (let i = 0; i < this.tabPanelHost.children.length; i++) {
-				if (i !== this.state._selected) {
-					this.tabPanelHost.children[i].setAttribute('hidden', '');
-				} else {
-					this.tabPanelHost.children[i].removeAttribute('hidden');
-				}
-			}
-		}
+		this.refreshTabPanels();
 	}
 
 	private focusTabById(index: number): void {

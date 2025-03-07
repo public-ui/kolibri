@@ -10,7 +10,20 @@ exports[`kol-tabs should render with _label="Text" _selected=1 _tabs=[{"_icons":
         <kol-button-wc _ariacontrols="tabpanel-2" _disabled="" _icons="codicon codicon-briefcase" _id="Text-tab-2" _label="Deaktivierter Tab" _role="tab" _tabindex="-1" _value="2"></kol-button-wc>
         <kol-button-wc _ariacontrols="tabpanel-3" _icons="codicon codicon-telescope" _id="Text-tab-3" _label="Letzter Tab" _role="tab" _tabindex="-1" _value="3"></kol-button-wc>
       </div>
-      <div class="tabs-content"></div>
+      <div class="tabs-content">
+        <div aria-labelledby="Text-tab-0" hidden="" id="tabpanel-0" role="tabpanel">
+          <slot name="tabpanel-slot-0"></slot>
+        </div>
+        <div aria-labelledby="Text-tab-1" id="tabpanel-1" role="tabpanel">
+          <slot name="tabpanel-slot-1"></slot>
+        </div>
+        <div aria-labelledby="Text-tab-2" hidden="" id="tabpanel-2" role="tabpanel">
+          <slot name="tabpanel-slot-2"></slot>
+        </div>
+        <div aria-labelledby="Text-tab-3" hidden="" id="tabpanel-3" role="tabpanel">
+          <slot name="tabpanel-slot-3"></slot>
+        </div>
+      </div>
     </div>
   </template>
 </kol-tabs>
