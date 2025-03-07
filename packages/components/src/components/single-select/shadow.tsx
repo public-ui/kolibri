@@ -31,6 +31,7 @@ import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggest
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { EventDetail } from '../../schema/interfaces/EventDetail';
 
 /**
  * @slot - The input field label.
@@ -99,16 +100,30 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this._inputValue = emptyValue;
 			this._filteredOptions = [...this.state._options];
 
-			this.controller.onFacade.onInput(new Event('input'), true, emptyValue);
-			this.controller.onFacade.onChange(new Event('change'), emptyValue);
+			this.controller.onFacade.onInput(
+				new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
+				true,
+				emptyValue,
+			);
+			this.controller.onFacade.onChange(
+				new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: emptyValue } }),
+				emptyValue,
+			);
 		}
 	}
 
-	private selectOption(event: Event, option: Option<string>) {
+	private selectOption(option: Option<string>) {
 		this._value = option.value;
 		this._inputValue = option.label as string;
-		this.controller.onFacade.onInput(event, false, option.value);
-		this.controller.onFacade.onChange(event, option.value);
+		this.controller.onFacade.onInput(
+			new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: option.value } }),
+			false,
+			option.value,
+		);
+		this.controller.onFacade.onChange(
+			new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: option.value } }),
+			option.value,
+		);
 
 		this._filteredOptions = [...this.state._options];
 
@@ -259,7 +274,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 										}}
 										selected={this._value === (option as Option<string>).value}
 										onClick={(event: Event) => {
-											this.selectOption(event, option as Option<string>);
+											this.selectOption(option as Option<string>);
 											this.refInput?.focus();
 											this.toggleListbox(event);
 										}}
@@ -275,7 +290,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 										}}
 										onKeyDown={(e) => {
 											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(e, option as Option<string>);
+												this.selectOption(option as Option<string>);
 												this.refInput?.focus();
 												this.toggleListbox(e);
 												e.preventDefault();
@@ -347,7 +362,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			case ' ': {
 				if (this._isOpen) {
 					if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0) {
-						this.selectOption(event, this._filteredOptions[this._focusedOptionIndex] as Option<string>);
+						this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
 						this.refInput?.focus();
 						handleEvent(false);
 					}

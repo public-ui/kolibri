@@ -29,6 +29,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggestionsToggle';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
+import { EventDetail } from '../../schema/interfaces/EventDetail';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -77,9 +78,16 @@ export class KolCombobox implements ComboboxAPI {
 		this.refInput = ref;
 	};
 
-	private selectOption(event: Event, option: string) {
-		this.controller.onFacade.onInput(event, true, option);
-		this.controller.onFacade.onChange(event, option);
+	private selectOption(option: string) {
+		this.controller.onFacade.onInput(
+			new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: option } }),
+			true,
+			option,
+		);
+		this.controller.onFacade.onChange(
+			new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: option } }),
+			option,
+		);
 		this.controller.setFormAssociatedValue(option);
 		this.state._value = option;
 		this.refInput?.focus();
@@ -224,8 +232,8 @@ export class KolCombobox implements ComboboxAPI {
 											if (el) this.refSuggestions[index] = el;
 										}}
 										selected={this.state._value === option}
-										onClick={(e) => {
-											this.selectOption(e, option as string);
+										onClick={() => {
+											this.selectOption(option as string);
 											this.toggleListbox();
 										}}
 										onMouseOver={() => {
@@ -238,7 +246,7 @@ export class KolCombobox implements ComboboxAPI {
 										}}
 										onKeyDown={(e) => {
 											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(e, option as string);
+												this.selectOption(option as string);
 												this.toggleListbox();
 												e.preventDefault();
 											}
