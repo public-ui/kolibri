@@ -42,7 +42,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
           <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(0% - 4px);"></rect>
         </svg>
-        <div class="kol-progress__bar-value" style="width: 2ch;">
+        <div class="kol-progress__bar-value" style="width: 3ch;">
           0
         </div>
         <div class="kol-progress__bar-unit">
@@ -71,7 +71,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
           <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(40.476190476190474% - 4px);"></rect>
         </svg>
-        <div class="kol-progress__bar-value" style="width: 2ch;">
+        <div class="kol-progress__bar-value" style="width: 3ch;">
           40
         </div>
         <div class="kol-progress__bar-unit">
@@ -129,7 +129,7 @@ exports[`kol-progress should render with _label="Label" _variant="bar" _max=42 _
           <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" x="1" y="1" style="width: 100%;"></rect>
           <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(238.0952380952381% - 4px);"></rect>
         </svg>
-        <div class="kol-progress__bar-value" style="width: 2ch;">
+        <div class="kol-progress__bar-value" style="width: 3ch;">
           238
         </div>
         <div class="kol-progress__bar-unit">

@@ -116,7 +116,7 @@ export class KolProgress implements ProgressAPI {
 						</div>
 					)}
 					{this.state._variant == 'bar' && (
-						<div class="kol-progress__bar-value" style={{ width: `${`${this.state._max}`.length}ch` }}>
+						<div class="kol-progress__bar-value" style={{ width: `${`${(isPercentage ? 100 : this.state._max) + 1}`.length}ch` }}>
 							{displayValue}
 						</div>
 					)}
