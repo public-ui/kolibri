@@ -9,9 +9,8 @@ import { COUNTRY_OPTIONS } from '../../../shares/country';
 
 const SALUTATION_OPTIONS: SelectOption<string>[] = [
 	{
-		label: 'No choice',
+		label: 'Select salutation',
 		value: '',
-		disabled: true,
 	},
 	{
 		label: 'Mrs.',
