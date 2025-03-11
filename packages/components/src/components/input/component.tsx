@@ -61,9 +61,7 @@ export class KolInputWc implements Props {
 		 * - we show only one message at a time
 		 * - by error messages the input must be touched
 		 */
-		const hasValidMsg =
-			typeof this._msg === 'object' && this._msg !== null && typeof this._msg?._description === 'string' && this._msg?._description.length > 0;
-		const showMsg = hasValidMsg && (this._touched === true || this._msg?._type !== 'error');
+		const showMsg = this._touched === true || this._msg?._type !== 'error';
 
 		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
