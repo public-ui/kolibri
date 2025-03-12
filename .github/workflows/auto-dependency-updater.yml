@@ -25,13 +25,13 @@ jobs:
       # - uses: actions/setup-node@v4
       #   with:
       #     cache: pnpm
-      #     node-version: 20
+      #     node-version: 22
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - uses: actions/setup-node@v4
         with:
           # cache: pnpm
-          node-version: 20
+          node-version: 22
       - uses: pnpm/action-setup@v4
         id: pnpm-install
         with:
