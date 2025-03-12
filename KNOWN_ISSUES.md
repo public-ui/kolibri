@@ -8,10 +8,14 @@ The component InputColor is a wrapper for the native HTML element `<input type="
 
 - With NVDA, the element is announced as "clickable" and not as an input element.
 - It's not possible to select a color using a screen reader.
-- **9.1.3.1h Beschriftung von Formularelementen programmatisch ermittelbar:** Die Beschriftung wird vom Screenreader nicht ausgegeben. Nur linear Lesend, daher ist bei hideLabel gar kein Label erschließbar.
-- **9.1.3.2 Sinnvolle Reihenfolge:** Beim öffnen der Farbauswahl von "Color with error" gibt es keine Ausgabe. Mit der Tab-Taste gelangt man da nicht rein, nur mit Pfeiltasten. Sehr unverständlich mit Screenreader.
-- **9.2.4.3 Schlüssige Reihenfolge bei Tastaturbedienung:** Die Fokusreihenfolge bei "Color with error" ist sehr merkwürdig. Man kommt nicht drauf das man mit Pfeiltasten da rein muss. Besonders weil es auf Schwarz auch nicht sichtbar ist.
-- **9.2.4.7 Aktuelle Position des Fokus deutlich:** Der Fokus ist auf schwarzem Farbicon in "Color with error" nicht sichtbar.
+- **9.1.3.1h Labeling of form elements programmatically detectable:**  
+  The label is not announced by the screen reader. Since it reads linearly, no label is perceivable when `hideLabel` is used.
+- **9.1.3.2 Meaningful sequence:**  
+  When opening the color selection for "Color with error," there is no output. It is not accessible via the Tab key, only with the arrow keys, making it very confusing for screen reader users.
+- **9.2.4.3 Logical keyboard navigation order:**  
+  The focus order for "Color with error" is very unusual. Users do not realize that they have to use arrow keys to enter. This is especially problematic since it is not visible on black.
+- **9.2.4.7 Clearly visible focus position:**  
+  The focus is not visible on the black color icon in "Color with error."
 
 For full accessibility, consider using predefined colors lists, e.g. using KolSelect or KolCheckbox.
 
