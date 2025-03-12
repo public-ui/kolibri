@@ -4,6 +4,8 @@ Synonyme: Datalist, Dropdown
 
 Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.
 
+Die Komponente hat Known-Issues bezüglich Browserabhängigkeit und Barrierefreiheit. Näheres kann unter [KNOWN_ISSUES.md](https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md) nachgelssen werden.
+
 ## Konstruktion
 
 ### Code

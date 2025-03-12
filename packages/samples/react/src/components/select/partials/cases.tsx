@@ -9,7 +9,7 @@ import { COUNTRY_OPTIONS } from '../../../shares/country';
 
 const SALUTATION_OPTIONS: SelectOption<string>[] = [
 	{
-		label: 'Select salutation',
+		label: 'No salutation',
 		value: '',
 	},
 	{
@@ -25,6 +25,10 @@ const SALUTATION_OPTIONS: SelectOption<string>[] = [
 		value: 'Divers',
 	},
 ];
+
+const SALUTATION_OPTIONS_DISABLED = SALUTATION_OPTIONS.map((option, index) =>
+	index === 0 ? { label: 'Select salutation', value: '', disabled: true } : option,
+);
 
 export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect>(function SelectCases(props, ref) {
 	return (
@@ -45,7 +49,7 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				}}
 			/>
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Disabled" _disabled />
-			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Salutation with error" _msg={{ _type: 'error', _description: ERROR_MSG }} _touched />
+			<KolSelect {...props} _options={SALUTATION_OPTIONS_DISABLED} _label="Salutation with error" _msg={{ _type: 'error', _description: ERROR_MSG }} _touched />
 			<KolSelect {...props} _options={COUNTRY_OPTIONS} _label="Multiple choice" _multiple />
 			<KolSelect
 				{...props}

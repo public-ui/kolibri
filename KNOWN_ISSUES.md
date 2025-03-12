@@ -2,6 +2,12 @@
 
 # Known Issues
 
+## select
+
+- Disabled options in KolSelect affect the total count in screen readers When an option in `KolSelect` is set to `disabled: true`, it is still counted by screen readers. This leads to incorrect numbering, for example, NVDA announces "2 of 4" instead of "2 of 3". To ensure the correct order, the `aria-hidden="true"` attribute should be set for `disabled` options. This will hide the disabled option from screen readers and keep the total number of items consistent.
+
+[🐞 GitHub issue #7454](https://github.com/public-ui/kolibri/pull/7454)
+
 ## input-color
 
 The component InputColor is a wrapper for the native HTML element `<input type="color">` which has accessibility problems:
@@ -47,17 +53,19 @@ The `search` of this component is highly browser-dependent. For example, the clo
 
 ## Screen reader only reads last selected in Select
 
-KolSelect is using native HTML `<select>`. 
+KolSelect is using native HTML `<select>`.
 
-When using KolSelect with the `multiple` property, the native HTML `<select>` may cause problems with screen readers. 
+When using KolSelect with the `multiple` property, the native HTML `<select>` may cause problems with screen readers.
 Often the entire selection is not read out, but only the last one. Therefore, the KolSelect has no full accessibility.
 
 ## Limited Styling Capabilities for `<select>` and `<option>` Elements
+
 [Stackblitz Example](https://stackblitz.com/edit/vitejs-vite-nthnce?file=src%2Fstyle.css)
 
 The `<select>` element and its `<option>` tags offer limited styling options. Specifically, states such as "selected", "focus" or "active" cannot be reliably customized using CSS. This leads to challenges in meeting accessibility standards, especially in ensuring sufficient contrast ratios.
 
 **Impact**:
+
 - **Limited Customization**: The visual state of dropdown options (e.g., on focus or selection) cannot be consistently customized across all browsers. This makes it difficult to create an accessible visual experience for all users.
 
 - **Browser-Dependent Rendering**: The appearance of the `<select>` element varies across browsers and operating systems, resulting in inconsistent user experiences.
