@@ -2,6 +2,12 @@ name: 03 - Update Snapshots
 
 on:
   workflow_dispatch:
+    inputs:
+      delete_snapshots:
+        description: 'Delete existing snapshots before update?'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   update-snapshots:
@@ -58,7 +64,8 @@ jobs:
       - name: Build
         run: pnpm -r build
 
-      - name: Purge existing snapshots
+      - name: Purge existing snapshots (optional)
+        if: inputs.delete_snapshots == true
         run: find packages -name '*.png' -path '*/snapshots/*' | grep -v 'node_modules' | xargs rm # Remove any existing snapshots, except those in node_modules
 
       - name: Display git status (before test-update)
