@@ -61,14 +61,19 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 
 	private readonly onColorInput = (event: InputEvent) => {
 		const value = (event.target as HTMLInputElement).value;
-		this._value = value;
+		this.state._value = value;
+
 		if (this.refInputText) {
 			this.refInputText.value = value;
 		}
 		this.controller.onFacade.onInput(event);
 	};
+
 	private readonly onTextInput = (event: InputEvent) => {
-		const value = (event.target as HTMLInputElement).value;
+		let value = (event.target as HTMLInputElement).value;
+		if (!value.startsWith('#')) {
+			value = `#${value}`;
+		}
 		this._value = value;
 		if (this.refInputColor) {
 			this.refInputColor.value = value;
@@ -87,6 +92,10 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		this.refInputText?.focus();
 	}
 
+	private get hasSuggestions(): boolean {
+		return Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
+	}
+
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
@@ -99,27 +108,40 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 
 	private getInputColorProps(): InputStateWrapperProps {
 		return {
+			...this.getGenericInputProps(),
 			ref: this.catchColorRef,
 			type: 'color',
 			name: this.state._name ? `${this.state._name}-color` : undefined,
+			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
+			id: undefined,
 			'aria-hidden': 'true',
-			state: this.state,
-			...this.controller.onFacade,
+			tabIndex: -1,
 			onInput: this.onColorInput,
 		};
 	}
 	private getInputTextProps(): InputStateWrapperProps {
 		return {
+			...this.getGenericInputProps(),
 			ref: this.catchRef,
 			type: 'text',
 			name: this.state._name ? `${this.state._name}-text` : undefined,
-			state: this.state,
-			...this.controller.onFacade,
+			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
 			onInput: this.onTextInput,
+		};
+	}
+
+	private getGenericInputProps() {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		const { _suggestions, ...other } = this.state;
+
+		return {
+			state: { ...other, _suggestions: [] },
+			...this.controller.onFacade,
 			onBlur: this.onBlur,
 			onFocus: this.onFocus,
 		};
 	}
+
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
@@ -342,6 +364,12 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+	}
+
+	public componentDidLoad(): void {
+		if (!this._value && this.refInputColor) {
+			this._value = this.refInputColor.value;
+		}
 	}
 
 	public componentWillLoad(): void {
