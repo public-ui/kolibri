@@ -2,6 +2,12 @@
 
 # Known Issues
 
+## select
+
+- Disabled options in KolSelect affect the total count in screen readers When an option in `KolSelect` is set to `disabled: true`, it is still counted by screen readers. This leads to incorrect numbering, for example, NVDA announces "2 of 4" instead of "2 of 3". To ensure the correct order, the `aria-hidden="true"` attribute should be set for `disabled` options. This will hide the disabled option from screen readers and keep the total number of items consistent.
+
+[🐞 GitHub issue #7453](https://github.com/public-ui/kolibri/pull/7453)
+
 ## input-color
 
 The component InputColor is a wrapper for the native HTML element `<input type="color">` which has accessibility problems:
