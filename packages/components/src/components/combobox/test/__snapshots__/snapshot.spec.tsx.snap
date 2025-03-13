@@ -3,7 +3,7 @@
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _accessKey="V" 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -13,14 +13,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input accesskey="V" aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input accesskey="V" aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -32,7 +40,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _alert=true 1`] = `
 <kol-combobox _alert="" _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -41,14 +49,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -60,7 +76,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _disabled=true 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field kol-form-field--disabled">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--disabled kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -69,14 +85,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container kol-input-container--disabled">
+        <div class="kol-input-container kol-input-container--disabled kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--disabled kol-input--error" disabled="" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" disabled="" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -88,7 +112,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _hint="Hint" 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -97,14 +121,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="id-nonce-hint" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-describedby="id-nonce-hint" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -119,7 +151,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -128,13 +160,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
@@ -142,6 +174,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -153,7 +193,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -162,19 +202,27 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -185,7 +233,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -194,11 +242,11 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
@@ -206,6 +254,14 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -217,7 +273,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
 <kol-combobox _hide-msg="" _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field kol-form-field--hidden-msg">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error kol-form-field--hidden-msg">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -226,14 +282,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg visually-hidden" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -245,7 +309,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -254,14 +318,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -273,7 +345,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _readOnly=true 1`] = `
 <kol-combobox _readonly="" _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -282,14 +354,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -301,7 +381,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _shortKey="S" 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -311,14 +391,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -330,7 +418,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _touched=true 1`] = `
 <kol-combobox _touched="" _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field kol-form-field--touched">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error kol-form-field--touched">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -339,14 +427,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg" role="alert">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -358,7 +454,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
-    <div class="has-value kol-combobox kol-form-field">
+    <div class="has-value kol-combobox kol-form-field kol-form-field-- kol-form-field--error">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -367,14 +463,22 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="listbox" aria-expanded="false" aria-labelledby="id-nonce" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <button class="kol-custom-suggestions-toggle" tabindex="-1">
                 <kol-icon _icons="codicon codicon-triangle-down" _label="kol-dropdown"></kol-icon>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>

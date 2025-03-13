@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KolInputContainerFc should render correctly 1`] = `
-<div class="kol-input-container">
+<div class="kol-input-container kol-input-container--error">
   <div class="kol-input-container__container"></div>
 </div>
 `;
 
 exports[`KolInputContainerFc should render with both startAdornment and endAdornment 1`] = `
-<div class="kol-input-container">
+<div class="kol-input-container kol-input-container--error">
   <div class="kol-input-container__adornment kol-input-container__adornment--start">
     <kol-icon _icons="codicon codicon-start-icon" _label=""></kol-icon>
   </div>
@@ -19,7 +19,7 @@ exports[`KolInputContainerFc should render with both startAdornment and endAdorn
 `;
 
 exports[`KolInputContainerFc should render with children 1`] = `
-<div class="kol-input-container">
+<div class="kol-input-container kol-input-container--error">
   <div class="kol-input-container__container">
     <input type="text">
   </div>
@@ -27,7 +27,7 @@ exports[`KolInputContainerFc should render with children 1`] = `
 `;
 
 exports[`KolInputContainerFc should render with endAdornment 1`] = `
-<div class="kol-input-container">
+<div class="kol-input-container kol-input-container--error">
   <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
   <div class="kol-input-container__container"></div>
   <div class="kol-input-container__adornment kol-input-container__adornment--end">
@@ -37,7 +37,7 @@ exports[`KolInputContainerFc should render with endAdornment 1`] = `
 `;
 
 exports[`KolInputContainerFc should render with startAdornment 1`] = `
-<div class="kol-input-container">
+<div class="kol-input-container kol-input-container--error">
   <div class="kol-input-container__adornment kol-input-container__adornment--start">
     <kol-icon _icons="codicon codicon-start-icon" _label=""></kol-icon>
   </div>

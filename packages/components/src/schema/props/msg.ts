@@ -50,7 +50,7 @@ export function isMsgEmpty(msg?: MsgPropType): boolean {
 		return true;
 	}
 
-	return msg._type === 'error' && !msg._description;
+	return msg._type === 'error';
 }
 
 export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | undefined {
@@ -71,12 +71,10 @@ export function checkHasError(msg?: InternMsgPropType, touched?: boolean): boole
 	 * - error
 	 *
 	 * The message is shown if:
-	 * - the message text is not an empty string
 	 * - we show only one message at a time
 	 * - by error messages the input must be touched
 	 */
-	const hasValidMsg = Boolean(msg?.description && msg?.description.length > 0);
-	const showMsg = hasValidMsg && (touched === true || msg?.type !== 'error');
+	const showMsg = touched === true || msg?.type !== 'error';
 
 	return showMsg;
 }

@@ -3,7 +3,7 @@
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _accessKey="V" 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -13,9 +13,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -27,7 +35,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _alert=true 1`] = `
 <kol-input-color _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -36,9 +44,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -50,7 +66,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _disabled=true 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--disabled kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--disabled kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -59,9 +75,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container kol-input-container--disabled">
+        <div class="kol-input-container kol-input-container--disabled kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error" disabled="" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -73,7 +97,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _hint="Hint" 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -82,9 +106,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -99,7 +131,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -108,15 +140,23 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -128,7 +168,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -137,14 +177,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -155,7 +203,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -164,13 +212,21 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -182,7 +238,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
 <kol-input-color _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-msg kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-form-field--hidden-msg kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -191,9 +247,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg visually-hidden" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -205,7 +269,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -214,9 +278,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -228,7 +300,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _readOnly=true 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -237,9 +309,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -251,7 +331,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _shortKey="S" 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -261,9 +341,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -275,7 +363,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -284,13 +372,21 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-button-wc _hidelabel="" _label="einblenden" tabindex="0"></kol-button-wc>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -302,7 +398,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _accessKey="V" 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -312,14 +408,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -331,7 +435,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _alert=true 1`] = `
 <kol-input-color _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -340,14 +444,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -359,7 +471,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _disabled=true 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--disabled kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--disabled kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -368,14 +480,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container kol-input-container--disabled">
+        <div class="kol-input-container kol-input-container--disabled kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error" disabled="" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -387,7 +507,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _hint="Hint" 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -396,14 +516,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -418,7 +546,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -427,12 +555,12 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
@@ -441,6 +569,14 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -452,7 +588,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -461,12 +597,12 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
             <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
           </div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
@@ -474,6 +610,14 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             </datalist>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -484,7 +628,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -493,10 +637,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
@@ -508,6 +652,14 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
           </div>
         </div>
       </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </template>
 </kol-input-color>
@@ -516,7 +668,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
 <kol-input-color _hide-msg="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--hidden-msg kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-form-field--hidden-msg kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -525,14 +677,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg visually-hidden" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -544,7 +704,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -553,14 +713,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -572,7 +740,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _readOnly=true 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -581,14 +749,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -600,7 +776,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _shortKey="S" 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
@@ -610,14 +786,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -629,7 +813,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -638,10 +822,10 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
@@ -653,6 +837,14 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
           </div>
         </div>
       </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </template>
 </kol-input-color>
@@ -661,7 +853,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _touched=true 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--touched kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-form-field--touched kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -670,14 +862,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg" role="alert">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -689,7 +889,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -698,14 +898,22 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" list="id-nonce-list" name="field" slot="input" type="color" value="#FFF">
             <datalist id="id-nonce-list">
               <option value="#F00"></option>
               <option value="#0F0"></option>
               <option value="#00F"></option>
             </datalist>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -717,7 +925,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _touched=true 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--touched kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-form-field--touched kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -726,9 +934,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg" role="alert">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
@@ -740,7 +956,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
-    <div class="kol-form-field kol-input-color">
+    <div class="kol-form-field kol-form-field-- kol-form-field--error kol-input-color">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           <span>
@@ -749,9 +965,17 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
         </span>
       </label>
       <div class="kol-form-field__input">
-        <div class="kol-input-container">
+        <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error" id="id-nonce" name="field" slot="input" type="color" value="#FFF">
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="kol-alert kol-alert--error kol-alert--msg kol-form-field__msg" id="id-nonce-msg">
+        <div class="kol-alert__container">
+          <kol-icon _icons="codicon codicon-error" _label="kol-error" class="kol-alert__heading-icon"></kol-icon>
+          <div class="kol-alert__container-content">
+            <div class="kol-alert__content"></div>
           </div>
         </div>
       </div>
