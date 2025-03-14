@@ -191,6 +191,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 										return (
 											<option
 												disabled={option.disabled}
+												aria-hidden={option.disabled ? 'true' : undefined}
 												key={key}
 												// label={option.label}
 												selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
