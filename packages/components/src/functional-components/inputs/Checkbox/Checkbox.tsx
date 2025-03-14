@@ -3,7 +3,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import KolIconFc, { type IconProps } from '../../Icon';
 import KolInputFc, { type InputProps } from '../Input';
-import { checkHasError } from '../../../schema';
+import { checkHasMsg } from '../../../schema';
 
 export type CheckboxProps = JSXBase.HTMLAttributes<HTMLLabelElement> & {
 	icon: string;
@@ -20,7 +20,7 @@ const InputWrapperFc: FC<InputProps> = ({ class: classNames, ...other }) => {
 };
 
 const CheckboxFc: FC<CheckboxProps> = ({ class: classNames, variant = 'default', icon, inputProps, ...other }) => {
-	const showMsg = checkHasError(inputProps?.msg, inputProps?.touched);
+	const showMsg = checkHasMsg(inputProps?.msg, inputProps?.touched);
 
 	const cssVariants = {
 		[`kol-checkbox--variant-${variant}`]: true,

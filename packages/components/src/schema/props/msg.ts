@@ -35,7 +35,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 		watchValidator<MsgPropType>(
 			component,
 			`_msg`,
-			(value) => isObject(value) && typeof value?._description === 'string',
+			(value) => (isObject(value) && typeof value?._description === 'string') || value === undefined,
 			new Set(['MsgPropType']),
 			value as MsgPropType,
 			{
@@ -46,11 +46,7 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 };
 
 export function isMsgEmpty(msg?: MsgPropType): boolean {
-	if (!msg) {
-		return true;
-	}
-
-	return msg._type === 'error';
+	return Boolean(!msg);
 }
 
 export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | undefined {
@@ -61,7 +57,7 @@ export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | un
 	return transformObjectProperties(msg);
 }
 
-export function checkHasError(msg?: InternMsgPropType, touched?: boolean): boolean {
+export function checkHasMsg(msg?: InternMsgPropType, touched?: boolean): boolean {
 	/**
 	 * We support 5 types of messages:
 	 * - default
@@ -74,7 +70,7 @@ export function checkHasError(msg?: InternMsgPropType, touched?: boolean): boole
 	 * - we show only one message at a time
 	 * - by error messages the input must be touched
 	 */
-	const showMsg = touched === true || msg?.type !== 'error';
+	const showMsg = Boolean(msg) && (touched === true || msg?.type !== 'error');
 
 	return showMsg;
 }

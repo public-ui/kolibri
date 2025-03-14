@@ -3,7 +3,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
-import { checkHasError, type InternMsgPropType } from '../../../schema';
+import { checkHasMsg, type InternMsgPropType } from '../../../schema';
 
 export type TextAreaProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement>> & {
 	value: string;
@@ -14,7 +14,7 @@ export type TextAreaProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<HTM
 const TextAreaFc: FC<TextAreaProps> = (props) => {
 	const { class: classNames, msg, touched, readonly, disabled, required, ariaDescribedBy, hideLabel, label, ...other } = props;
 
-	const showMsg = checkHasError(msg, touched);
+	const showMsg = checkHasMsg(msg, touched);
 
 	const stateCssClasses = {
 		['kol-textarea--disabled']: Boolean(disabled),
