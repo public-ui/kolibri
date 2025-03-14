@@ -44,7 +44,7 @@ export class SingleSelectController extends InputIconController implements Singl
 	}
 
 	public validateValue(value?: StencilUnknown): void {
-		watchValidator(this.component, '_value', v => v !== undefined, new Set([`StencilUnknown`]), value);
+		watchValidator(this.component, '_value', (v) => v !== undefined, new Set([`StencilUnknown`]), value);
 	}
 
 	public validatePlaceholder(value?: string): void {

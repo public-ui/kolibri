@@ -1,1 +1,17 @@
 @use '../@shared/input-text' as *;
+@use '../../mixins/rem' as *;
+
+.kol-input-color {
+	&__inputs-wrapper {
+		gap: rem(16);
+	}
+
+	&__input {
+		&--text,
+		&--color {
+			background-color: var(--color-white);
+			border: 1px solid var(--color-blue);
+			min-height: calc(var(--a11y-min-size) - rem(8));
+		}
+	}
+}
