@@ -47,6 +47,11 @@ test.use({
 	},
 });
 
+const DEFAULT_SNAPSHOT_OPTIONS = {
+	fullPage: true,
+	maxDiffPixelRatio: 0,
+};
+
 ROUTES.forEach((options, route) => {
 	test(`snapshot for ${route}`, async ({ page }) => {
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
@@ -58,16 +63,18 @@ ROUTES.forEach((options, route) => {
 			await page.waitForTimeout(options.waitForTimeout);
 		}
 		await expect(page).toHaveScreenshot({
-			fullPage: true,
-			maxDiffPixelRatio: 0.01,
+			...DEFAULT_SNAPSHOT_OPTIONS,
 			...options,
 		});
 		await page.evaluate(() => {
+			// eslint-disable-next-line no-undef
 			document.body.style.zoom = '400%';
+			// document.body.style.transform = 'scale(4)';
+			// document.body.style.transformOrigin = 'top left';
+			// document.body.style.width = '25vw';
 		});
 		await expect(page).toHaveScreenshot({
-			fullPage: true,
-			maxDiffPixelRatio: 0.02,
+			...DEFAULT_SNAPSHOT_OPTIONS,
 			...options,
 		});
 	});

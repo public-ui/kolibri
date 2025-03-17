@@ -42,6 +42,7 @@ const NativeOptionFc: FC<NativeOptionProps> = ({
 			)}
 			selected={isSelected}
 			disabled={disabled}
+			aria-hidden={disabled ? 'true' : undefined} //See Known Issue: https://github.com/public-ui/kolibri/blob/develop/KNOWN_ISSUES.md
 			value={index || value}
 			{...other}
 		>

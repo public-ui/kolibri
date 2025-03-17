@@ -9,3 +9,23 @@
 @include kol-form-field;
 @include kol-input-container;
 @include kol-input;
+
+.kol-input-color {
+	&__input {
+		&--color {
+			cursor: pointer;
+			flex-grow: 1;
+		}
+
+		&--text {
+			width: rem(112);
+		}
+	}
+
+	&__inputs-wrapper {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		gap: rem(6) !important;
+	}
+}
