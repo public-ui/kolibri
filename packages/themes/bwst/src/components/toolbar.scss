@@ -1,17 +1,9 @@
+@use '../rem' as *;
 @use '../mixins/button' as *;
-@use '../mixins/rem' as *;
 
 @layer kol-theme-component {
-	.toolbar {
-		padding: rem(8) rem(14);
-		border-radius: var(--border-radius);
-		background-color: var(--color-light);
-		border-width: var(--border-width);
-		border-style: solid;
-	}
-
 	:is(a, button) > .kol-span-wc {
-		font-weight: 700;
+		font-weight: 400;
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: var(--border-width);
@@ -19,7 +11,7 @@
 		min-width: var(--a11y-min-size);
 		padding: rem(8) rem(14);
 		text-align: center;
-		transition-duration: 0.5s;
+		transition-duration: 0.2s;
 		transition-property: background-color, color, border-color;
 	}
 
