@@ -17,8 +17,8 @@ export const getRenderStates = (state: {
 	hasHint: boolean;
 	ariaDescribedBy: string[];
 } => {
-	const isMessageValidError = Boolean(state._msg?._type === 'error');
-	const hasError = isMessageValidError && state._touched === true;
+	const isMessageValid = state._msg?._type === 'error';
+	const hasError = isMessageValid && state._touched === true;
 	const hasHint = typeof state._hint === 'string' && state._hint.length > 0;
 
 	const ariaDescribedBy: string[] = [];

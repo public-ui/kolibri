@@ -2,7 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type { AlertProps, InternalAlertProps } from '../components';
 import type { Stringified } from '../types';
 import { objectObjectHandler, parseJson, watchValidator } from '../utils';
-import { isObject } from '../validators';
+import { isObject, isString } from '../validators';
 import { transformObjectProperties } from '../../utils/transformObjectProperties';
 
 /* types */
@@ -35,22 +35,15 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 		watchValidator<MsgPropType>(
 			component,
 			`_msg`,
-			(value) => (isObject(value) && typeof value?._description === 'string') || value === undefined,
+			(value) => (isObject(value) && isString(value?._description, 1)) || value?._type === undefined,
 			new Set(['MsgPropType']),
 			value as MsgPropType,
-			{
-				defaultValue: undefined,
-			},
 		);
 	});
 };
 
-export function isMsgEmpty(msg?: MsgPropType): boolean {
-	return Boolean(!msg);
-}
-
 export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | undefined {
-	if (!msg || isMsgEmpty(msg)) {
+	if (!msg) {
 		return undefined;
 	}
 
@@ -70,7 +63,7 @@ export function checkHasMsg(msg?: InternMsgPropType, touched?: boolean): boolean
 	 * - we show only one message at a time
 	 * - by error messages the input must be touched
 	 */
-	const showMsg = Boolean(msg) && (touched === true || msg?.type !== 'error');
+	const showMsg = msg ? touched === true || msg?.type !== 'error' : false;
 
 	return showMsg;
 }
