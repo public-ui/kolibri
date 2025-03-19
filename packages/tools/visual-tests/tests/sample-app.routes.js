@@ -98,6 +98,11 @@ ROUTES.set('button/baselined', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('button/short-key', {
+	axe: {
+		skipFailures: false,
+	},
+});
 ROUTES.set('card/basic', {
 	axe: {
 		skipFailures: false,
