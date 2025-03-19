@@ -15,5 +15,9 @@
 		transition-property: background-color, color, border-color;
 	}
 
+	.kol-link-wc > a {
+		text-decoration: none;
+	}
+
 	@include kol-button;
 }

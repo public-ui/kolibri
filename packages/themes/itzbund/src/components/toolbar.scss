@@ -31,5 +31,9 @@
 		padding: 0 rem(16);
 	}
 
+	.kol-link-wc > a {
+		text-decoration: none;
+	}
+
 	@include kol-button;
 }

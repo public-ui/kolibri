@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stenci
 
 import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, ToolbarItemPropType } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
-import { KolButtonWcTag, KolLinkButtonTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 
 const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar-item';
 
@@ -24,22 +24,23 @@ export class KolToolbar implements ToolbarAPI {
 
 	@State() private currentIndex: number = 0;
 
-	private indexToElement = new Map<number, HTMLKolLinkButtonElement | HTMLKolButtonWcElement>();
+	private indexToElement = new Map<number, HTMLKolLinkWcElement | HTMLKolButtonWcElement>();
 
 	private renderItem = (element: ToolbarItemPropType, index: number): JSX.Element => {
 		const tabIndex = index === this.currentIndex && !element?._disabled ? 0 : -1;
 		const props = {
 			key: index,
 			_tabIndex: tabIndex,
+			class: `button normal ${TOOLBAR_ITEM_TAG_NAME} `,
 		};
-		const catchRef = (element?: HTMLKolLinkButtonElement | HTMLKolButtonWcElement) => {
+		const catchRef = (element?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
 			element && this.indexToElement.set(index, element);
 		};
 
 		return '_href' in element ? (
-			<KolLinkButtonTag {...element} {...props} class={TOOLBAR_ITEM_TAG_NAME} ref={catchRef}></KolLinkButtonTag>
+			<KolLinkWcTag {...element} {...props} ref={catchRef}></KolLinkWcTag>
 		) : (
-			<KolButtonWcTag {...element} {...props} class={{ button: true, normal: true, TOOLBAR_ITEM_TAG_NAME: true }} ref={catchRef}></KolButtonWcTag>
+			<KolButtonWcTag {...element} {...props} ref={catchRef}></KolButtonWcTag>
 		);
 	};
 
