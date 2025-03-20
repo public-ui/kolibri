@@ -1,11 +1,26 @@
 @use '../../mixins/rem' as *;
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
+	@include kol-button('kol-button');
+	@include kol-button('kol-link');
+
 	.kol-toolbar {
 		padding: var(--spacing-s);
 		border-color: var(--color-grey-25);
 		border-style: solid;
 		border-width: 1px;
 		background-color: var(--color-grey-5);
+	}
+
+	.kol-link {
+		--text-background-color: var(--color-yellow);
+		--text-border-color: var(--color-yellow);
+		--text-color: var(--color-black);
+
+		&:hover {
+			--text-background-color: var(--color-yellow-120);
+			--text-border-color: var(--color-yellow-120);
+		}
 	}
 }

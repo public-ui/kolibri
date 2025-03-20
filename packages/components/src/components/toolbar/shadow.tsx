@@ -3,7 +3,7 @@ import { Component, Element, h, Listen, Prop, State, Watch } from '@stencil/core
 
 import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, ToolbarItemPropType } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
-import { KolLinkTag, KolButtonTag } from '../../core/component-names';
+import { KolLinkWcTag, KolButtonWcTag } from '../../core/component-names';
 
 @Component({
 	tag: 'kol-toolbar',
@@ -22,23 +22,23 @@ export class KolToolbar implements ToolbarAPI {
 
 	@State() private currentIndex: number = 0;
 
-	private indexToElement = new Map<number, HTMLKolLinkElement | HTMLKolButtonElement>();
+	private indexToElement = new Map<number, HTMLKolLinkWcElement | HTMLKolButtonWcElement>();
 
 	private renderItem = (element: ToolbarItemPropType, index: number): JSX.Element => {
 		const tabIndex = index === this.currentIndex && !element?._disabled ? 0 : -1;
 		const props = {
 			key: index,
-			class: 'kol-toolbar__item',
+			class: 'button normal kol-toolbar__item',
 			_tabIndex: tabIndex,
 		};
-		const catchRef = (element?: HTMLKolLinkElement | HTMLKolButtonElement) => {
+		const catchRef = (element?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
 			element && this.indexToElement.set(index, element);
 		};
 
 		return '_href' in element ? (
-			<KolLinkTag {...element} {...props} ref={catchRef}></KolLinkTag>
+			<KolLinkWcTag {...element} {...props} ref={catchRef}></KolLinkWcTag>
 		) : (
-			<KolButtonTag {...element} {...props} ref={catchRef}></KolButtonTag>
+			<KolButtonWcTag {...element} {...props} ref={catchRef}></KolButtonWcTag>
 		);
 	};
 
@@ -107,7 +107,7 @@ export class KolToolbar implements ToolbarAPI {
 		if (currentIndex === nextIndex) return;
 
 		this.currentIndex = nextIndex;
-		void (this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkElement | HTMLKolButtonElement | undefined)?.kolFocus();
+		void (this.getCurrentToolbarItem(nextIndex) as HTMLKolLinkWcElement | HTMLKolButtonWcElement | undefined)?.kolFocus();
 	}
 
 	/**
