@@ -5,10 +5,9 @@ import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
-import { Log, getDocument, getExperimentalMode } from './dev.utils';
+import { getDocument, getExperimentalMode, Log } from './dev.utils';
 
 import type { Stringified } from '../types/common';
-import type { StencilUnknown } from '../types/unknown';
 import { devHint } from './a11y.tipps';
 // https://regex101.com/r/lSYLO9/1
 /**
@@ -260,34 +259,6 @@ export const watchJsonArrayString = <T>(
 			}
 		});
 	});
-};
-
-const BOOLEAN = /^(true|false)$/;
-const INTEGER = /^-?(0|[1-9]\d*)$/;
-const FLOAT = /^-?(0.|[1-9]\d*.)\d*[1-9]$/;
-export const mapString2Unknown = (value: StencilUnknown) => {
-	const typeStr = typeof value;
-	const oldValue = `${value as string}`;
-	if (typeof value === 'string') {
-		if (BOOLEAN.test(value)) {
-			value = value === 'true';
-		} else if (INTEGER.test(value)) {
-			value = parseInt(value);
-		} else if (FLOAT.test(value)) {
-			value = parseFloat(value);
-		} else if (JSON_CHARS.test(value)) {
-			try {
-				value = parseJson<StencilUnknown>(value);
-				// eslint-disable-next-line no-empty
-			} catch (e) {
-				// value behält den ursprünglichen Wert
-			}
-		}
-	}
-	if (typeStr !== typeof value) {
-		devHint(`You have used a stringified property value (${oldValue} to ${JSON.stringify(value)}) which type switched from ${typeStr} to ${typeof value}!`);
-	}
-	return value;
 };
 
 export const stringifyJson = (value: unknown): string => {
