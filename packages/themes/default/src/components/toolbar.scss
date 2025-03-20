@@ -1,11 +1,40 @@
+@use '../mixins/button' as *;
 @use '../mixins/rem' as *;
 
 @layer kol-theme-component {
+	@include kol-button('kol-button');
+	@include kol-button('kol-link');
+
 	.kol-toolbar {
 		padding: rem(8) rem(14);
 		border-radius: var(--border-radius);
 		background-color: var(--color-light);
 		border-width: var(--border-width);
 		border-style: solid;
+	}
+
+	.kol-button,
+	.kol-link {
+		font-family: var(--font-family);
+
+		&__text {
+			font-weight: 700;
+			border-style: solid;
+			border-width: var(--border-width);
+			border-radius: var(--border-radius);
+		}
+	}
+
+	.kol-link {
+		text-decoration: none;
+		--text-background-color: var(--color-light);
+		--text-border-color: var(--color-primary);
+		--text-color: var(--color-primary);
+
+		&:not([disabled]):hover {
+			--text-background-color: var(--color-primary-variant);
+			--text-border-color: var(--color-primary-variant);
+			--text-color: var(--color-light);
+		}
 	}
 }

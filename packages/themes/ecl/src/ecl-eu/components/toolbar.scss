@@ -1,6 +1,10 @@
 @use '../../mixins/rem' as *;
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
+	@include kol-button('kol-button');
+	@include kol-button('kol-link');
+
 	.kol-toolbar {
 		padding: var(--spacing-s);
 		border-radius: 8px;
@@ -10,5 +14,16 @@
 			0 rem(4) rem(5) rgb(9 49 142 / 4%),
 			0 rem(-4) rem(4) rgb(9 49 142 / 4%);
 		background-color: var(--color-white);
+	}
+
+	.kol-link {
+		--text-background-color: #fc0;
+		--text-color: #171a22;
+		--text-focus-outline-color: #000;
+		--text-border-color: #fc0;
+
+		&:hover {
+			--text-background-color: #fc0;
+		}
 	}
 }
