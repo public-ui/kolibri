@@ -4,16 +4,16 @@ import type {
 	InputRadioProps,
 	InputRadioWatches,
 	Optgroup,
-	RadioOption,
 	OptionsPropType,
 	Orientation,
 	PropLabelWithExpertSlot,
+	RadioOption,
 	SelectOption,
 	StencilUnknown,
 	Stringified,
 	W3CInputValue,
 } from '../../schema';
-import { mapString2Unknown, orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '../../schema';
+import { orientationOptions, setState, validateOptions, validateRequired, watchValidator } from '../../schema';
 
 import { InputController } from '../@deprecated/input/controller';
 
@@ -103,7 +103,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 	}
 
 	public validateValue(value?: Stringified<StencilUnknown>): void {
-		value = mapString2Unknown(value);
 		value = Array.isArray(value) ? (value[0] as StencilUnknown) : value;
 		setState(this.component, '_value', value, {
 			afterPatch: this.afterPatchOptions,
