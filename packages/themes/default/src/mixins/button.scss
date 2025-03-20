@@ -1,7 +1,10 @@
-@use './rem' as *;
+@use './badge-text-hint' as *;
 @use './focus-outline' as *;
+@use './rem' as *;
 
 @mixin kol-button {
+	@include badge-text-hint;
+
 	:is(a, button):focus {
 		outline: none;
 	}
@@ -123,12 +126,5 @@
 	:is(a, button).transparent > .kol-span-wc {
 		background-color: transparent;
 		border-color: transparent;
-	}
-
-	.badge-text-hint {
-		background-color: var(--color-mute-variant);
-		border-radius: 3px;
-		color: var(--color-text);
-		padding: 0 0.3em;
 	}
 }
