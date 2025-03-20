@@ -14,10 +14,19 @@ The component InputColor is a wrapper for the native HTML element `<input type="
 
 - With NVDA, the element is announced as "clickable" and not as an input element.
 - It's not possible to select a color using a screen reader.
+- **9.1.3.1h Labeling of form elements programmatically detectable:**  
+  The label is not announced by the screen reader. Since it reads linearly, no label is perceivable when `hideLabel` is used.
+- **9.1.3.2 Meaningful sequence:**  
+  When opening the color selection for "Color with error," there is no output. It is not accessible via the Tab key, only with the arrow keys, making it very confusing for screen reader users.
+- **9.2.4.3 Logical keyboard navigation order:**  
+  The focus order for "Color with error" is very unusual. Users do not realize that they have to use arrow keys to enter. This is especially problematic since it is not visible on black.
+- **9.2.4.7 Clearly visible focus position:**  
+  The focus is not visible on the black color icon in "Color with error."
 
 For full accessibility, consider using predefined colors lists, e.g. using KolSelect or KolCheckbox.
 
 [🐞 GitHub issue #5549](https://github.com/public-ui/kolibri/issues/5549)
+[🐞 GitHub issue #7455](https://github.com/public-ui/kolibri/pull/7455)
 
 ## `aria-sort` changes sometimes not announced in NVDA
 
