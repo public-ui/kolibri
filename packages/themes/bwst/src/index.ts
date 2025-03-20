@@ -46,6 +46,7 @@ import textareaCss from './components/textarea.scss';
 import toastContainerCss from './components/toast-container.scss';
 import treeCss from './components/tree.scss';
 import treeItemCss from './components/tree-item.scss';
+import toolbarCss from './components/toolbar.scss';
 
 export const BWSt = KoliBri.createTheme('bwst', {
 	GLOBAL: globalCss,
@@ -93,6 +94,7 @@ export const BWSt = KoliBri.createTheme('bwst', {
 	'KOL-TABS': tabsCss,
 	'KOL-TEXTAREA': textareaCss,
 	'KOL-TOAST-CONTAINER': toastContainerCss,
+	'KOL-TOOLBAR': toolbarCss,
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
 });
