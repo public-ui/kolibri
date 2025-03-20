@@ -1,3 +1,4 @@
+@use '../mixins/badge-text-hint' as *;
 @use '../mixins/rem' as *;
 
 @layer kol-theme-component {
@@ -41,10 +42,5 @@
 		position: unset;
 	}
 
-	.access-key-hint {
-		background-color: var(--color-mute-variant);
-		border-radius: 3px;
-		color: var(--color-text);
-		padding: 0 0.3em;
-	}
+	@include badge-text-hint;
 }
