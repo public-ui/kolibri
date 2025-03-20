@@ -1,6 +1,11 @@
+@use '../mixins/button' as *;
 @use '../mixins/rem' as *;
 
 @layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
 	.toolbar {
 		padding: rem(8);
 		border-width: 1px;
@@ -9,4 +14,30 @@
 		border-color: var(--kolibri-border-color);
 		background-color: var(--color-white);
 	}
+
+	a,
+	button {
+		border-radius: 32px;
+		font-family: var(--font-family-sans);
+		/* text-transform: uppercase; */
+	}
+
+	a > .kol-span-wc,
+	button > .kol-span-wc {
+		border-radius: 32px;
+		border-style: solid;
+		min-width: rem(44);
+		min-height: rem(44);
+		border-width: var(--spacing);
+		font-size: inherit;
+		/*line-height: 1.25em;*/
+		/*padding: calc(4 * var(--spacing));*/
+		padding: 0 rem(16);
+	}
+
+	.kol-link-wc > a {
+		text-decoration: none;
+	}
+
+	@include kol-button;
 }

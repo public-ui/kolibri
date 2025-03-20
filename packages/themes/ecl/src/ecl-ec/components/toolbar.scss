@@ -1,6 +1,11 @@
 @use '../../mixins/rem' as *;
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
+	:host {
+		font-family: var(--font-family);
+	}
+
 	.toolbar {
 		padding: var(--spacing-s);
 		border-color: var(--color-grey-25);
@@ -8,4 +13,19 @@
 		border-width: 1px;
 		background-color: var(--color-grey-5);
 	}
+
+	a .kol-span-wc,
+	button .kol-span-wc {
+		border-radius: 0;
+		border-style: solid;
+		border-width: 2px;
+		font-weight: var(--font-weight-bold);
+		margin: 0;
+		min-height: rem(44);
+		min-width: rem(44);
+		padding: 0.25em 0.75em;
+		line-height: 1.2;
+	}
+
+	@include kol-button;
 }
