@@ -9,7 +9,7 @@ import buttonCss from './components/button.scss';
 import buttonGroupCss from './components/button-group.scss';
 import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
-import ComboboxCss from './components/combobox.scss';
+import comboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
@@ -58,7 +58,7 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-BUTTON-GROUP': buttonGroupCss,
 	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-CARD': cardCss,
-	'KOL-COMBOBOX': ComboboxCss,
+	'KOL-COMBOBOX': comboboxCss,
 	'KOL-DETAILS': detailsCss,
 	'KOL-DRAWER': drawerCss,
 	'KOL-FORM': formCss,
