@@ -13,20 +13,20 @@ export const getRenderStates = (state: {
 	_id: string;
 	_touched?: TouchedPropType;
 }): {
-	hasError: boolean;
+	hasMsg: boolean;
 	hasHint: boolean;
 	ariaDescribedBy: string[];
 } => {
 	const isMessageValid = state._msg?._type === 'error';
-	const hasError = isMessageValid && state._touched === true;
+	const hasMsg = isMessageValid && state._touched === true;
 	const hasHint = typeof state._hint === 'string' && state._hint.length > 0;
 
 	const ariaDescribedBy: string[] = [];
-	if (hasError === true) {
+	if (hasMsg === true) {
 		ariaDescribedBy.push(`${state._id}-error`);
 	}
 	if (hasHint === true) {
 		ariaDescribedBy.push(`${state._id}-hint`);
 	}
-	return { hasError, hasHint, ariaDescribedBy };
+	return { hasMsg, hasHint, ariaDescribedBy };
 };
