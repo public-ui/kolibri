@@ -8,7 +8,7 @@ import KolFormFieldTooltipFc from '../FormFieldTooltip';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import type { AlignPropType, InternMsgPropType } from '../../schema';
-import { buildBadgeTextString, checkHasError, showExpertSlot } from '../../schema';
+import { buildBadgeTextString, checkHasMsg, showExpertSlot } from '../../schema';
 
 function getModifierClassNameByMsgType(msg?: { type?: string }): string {
 	if (msg?.type) {
@@ -102,7 +102,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const showHint = !renderNoHint;
 	const showTooltip = !renderNoTooltip;
 	const hasExpertSlot = showExpertSlot(label);
-	const showMsg = checkHasError(msg, touched);
+	const showMsg = checkHasMsg(msg, touched);
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = showTooltip && !hasExpertSlot && hideLabel;
 

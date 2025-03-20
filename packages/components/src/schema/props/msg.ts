@@ -2,7 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type { AlertProps, InternalAlertProps } from '../components';
 import type { Stringified } from '../types';
 import { objectObjectHandler, parseJson, watchValidator } from '../utils';
-import { isObject } from '../validators';
+import { isObject, isString } from '../validators';
 import { transformObjectProperties } from '../../utils/transformObjectProperties';
 
 /* types */
@@ -35,36 +35,22 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 		watchValidator<MsgPropType>(
 			component,
 			`_msg`,
-			(value) => isObject(value) && typeof value?._description === 'string',
+			(value) => (isObject(value) && isString(value?._description, 1)) || value?._type === undefined,
 			new Set(['MsgPropType']),
 			value as MsgPropType,
-			{
-				defaultValue: {
-					_description: '',
-					_type: 'error',
-				},
-			},
 		);
 	});
 };
 
-export function isMsgEmpty(msg?: MsgPropType): boolean {
-	if (!msg) {
-		return true;
-	}
-
-	return msg._type === 'error' && !msg._description;
-}
-
 export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | undefined {
-	if (!msg || isMsgEmpty(msg)) {
+	if (!msg) {
 		return undefined;
 	}
 
 	return transformObjectProperties(msg);
 }
 
-export function checkHasError(msg?: InternMsgPropType, touched?: boolean): boolean {
+export function checkHasMsg(msg?: InternMsgPropType, touched?: boolean): boolean {
 	/**
 	 * We support 5 types of messages:
 	 * - default
@@ -74,12 +60,10 @@ export function checkHasError(msg?: InternMsgPropType, touched?: boolean): boole
 	 * - error
 	 *
 	 * The message is shown if:
-	 * - the message text is not an empty string
 	 * - we show only one message at a time
 	 * - by error messages the input must be touched
 	 */
-	const hasValidMsg = Boolean(msg?.description && msg?.description.length > 0);
-	const showMsg = hasValidMsg && (touched === true || msg?.type !== 'error');
+	const showMsg = msg ? touched === true || msg?.type !== 'error' : false;
 
 	return showMsg;
 }

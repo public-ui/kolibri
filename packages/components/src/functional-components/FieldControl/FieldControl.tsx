@@ -1,7 +1,7 @@
 import { h, Fragment, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
-import { type AlignPropType, type LabelAlignPropType, buildBadgeTextString, checkHasError, type InternMsgPropType, showExpertSlot } from '../../schema';
+import { type AlignPropType, type LabelAlignPropType, buildBadgeTextString, checkHasMsg, type InternMsgPropType, showExpertSlot } from '../../schema';
 import KolFieldControlTooltipFc from '../FormFieldTooltip';
 import KolFieldControlLabelFc from '../FormFieldLabel';
 import KolFieldControlHintFc from '../FormFieldHint';
@@ -70,7 +70,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 
 	const canShowHint = !renderNoHint;
 	const canShowTooltip = !renderNoTooltip;
-	const showMsg = checkHasError(msg, touched);
+	const showMsg = checkHasMsg(msg, touched);
 	const hasExpertSlot = showExpertSlot(label);
 	const useTooltipInsteadOfLabel = canShowTooltip && !hasExpertSlot && hideLabel;
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
