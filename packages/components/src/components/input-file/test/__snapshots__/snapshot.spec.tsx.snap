@@ -6,7 +6,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
     <kol-input _accesskey="V" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" class="file" role="presentation">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="access-key-hint">
+        <span aria-hidden="true" class="badge-text-hint">
           V
         </span>
       </span>
@@ -177,7 +177,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
     <kol-input _hint="" _id="id-nonce" _label="Label" _shortkey="S" _tooltipalign="top" class="file" role="presentation">
       <span slot="label">
         Label
-        <span aria-hidden="true" class="access-key-hint">
+        <span aria-hidden="true" class="badge-text-hint">
           S
         </span>
       </span>
