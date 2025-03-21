@@ -24,6 +24,11 @@ export default {
 		postcss({
 			plugins: [],
 			inject: false,
+			use: {
+				sass: {
+					silenceDeprecations: ['legacy-js-api'], // may be removed when the following issue has been resolved: https://github.com/egoist/rollup-plugin-postcss/issues/463
+				},
+			},
 		}),
 	],
 };

@@ -7,7 +7,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
-          <span aria-hidden="true" class="access-key-hint">
+          <span aria-hidden="true" class="badge-text-hint">
             V
           </span>
         </span>
@@ -349,7 +349,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
-          <span aria-hidden="true" class="access-key-hint">
+          <span aria-hidden="true" class="badge-text-hint">
             V
           </span>
         </span>
@@ -727,7 +727,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
-          <span aria-hidden="true" class="access-key-hint">
+          <span aria-hidden="true" class="badge-text-hint">
             S
           </span>
         </span>
@@ -872,7 +872,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="kol-form-field__label-text">
           Label
-          <span aria-hidden="true" class="access-key-hint">
+          <span aria-hidden="true" class="badge-text-hint">
             S
           </span>
         </span>

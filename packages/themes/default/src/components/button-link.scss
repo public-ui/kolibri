@@ -1,8 +1,10 @@
-@use '../mixins/rem' as *;
+@use '../mixins/badge-text-hint' as *;
 @use '../mixins/link' as *;
+@use '../mixins/rem' as *;
 
 @layer kol-theme-component {
 	@include kol-link('kol-button');
+	@include badge-text-hint;
 
 	.kol-button {
 		$root: &;
@@ -35,12 +37,5 @@
 				}
 			}
 		}
-	}
-
-	.badge-text-hint {
-		background-color: var(--color-mute-variant);
-		border-radius: 3px;
-		color: var(--color-text);
-		padding: 0 0.3em;
 	}
 }
