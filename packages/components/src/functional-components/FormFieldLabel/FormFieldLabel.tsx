@@ -42,7 +42,7 @@ const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label, sh
 		<>
 			<InternalUnderlinedBadgeText badgeText={badgeText} label={label} />
 			&nbsp;
-			<span class="access-key-hint" aria-hidden="true">
+			<span class="badge-text-hint" aria-hidden="true">
 				{badgeText}
 			</span>
 		</>

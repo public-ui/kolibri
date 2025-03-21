@@ -24,7 +24,7 @@ exports[`KolFormFieldLabelFc should render with accessKey and shortKey 1`] = `
 <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
   <span class="kol-form-field__label-text">
     Test Label
-    <span aria-hidden="true" class="access-key-hint">
+    <span aria-hidden="true" class="badge-text-hint">
       A
     </span>
   </span>
