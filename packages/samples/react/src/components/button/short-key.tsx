@@ -1,4 +1,4 @@
-import { createReactRenderElement, KolButton, KolHeading, KolTable } from '@public-ui/react';
+import { createReactRenderElement, KolButton, KolHeading, KolTableStateful } from '@public-ui/react';
 import type { FC } from 'react';
 import { useRef } from 'react';
 import React from 'react';
@@ -129,7 +129,12 @@ export const ButtonShortKey: FC = () => {
 
 			<KolHeading _level={2} _label="Interactive sample" className="mt" />
 
-			<KolTable _label={`Move focus within one of the "Actions" cells and press "e" or "d" to trigger an action.`} _data={DATA} _headers={HEADERS} />
+			<KolTableStateful
+				_label={`Move focus within one of the "Actions" cells and press "e" or "d" to trigger an action.`}
+				_data={DATA}
+				_headers={HEADERS}
+				_minWidth="400px"
+			/>
 		</>
 	);
 };
