@@ -1,3 +1,5 @@
+@use '../components/@shared/mixins' as *;
+
 @mixin kol-input {
 	@layer kol-component {
 		.kol-input {
