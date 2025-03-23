@@ -63,4 +63,5 @@ export default defineConfig({
 		url: URL,
 		reuseExistingServer: false,
 	},
+	snapshotPathTemplate: `{snapshotDir}/theme-${(process.env.THEME_EXPORT || 'default').toLocaleLowerCase()}/{arg}-{projectName}-{platform}{ext}`,
 });
