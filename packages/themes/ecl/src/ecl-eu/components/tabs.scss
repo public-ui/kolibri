@@ -41,8 +41,8 @@
 
 			.kol-span {
 				padding: rem(4);
-				min-height: rem(44);
-				min-width: rem(44);
+				min-height: var(--a11y-min-size);
+				min-width: var(--a11y-min-size);
 			}
 		}
 	}

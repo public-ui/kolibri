@@ -4,7 +4,7 @@
 	@layer kol-component {
 		.kol-input {
 			font-size: rem(16);
-			height: rem(44);
+			// height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
 			width: 100%;
 

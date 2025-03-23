@@ -2,7 +2,7 @@
 
 @mixin kol-input-container-theme {
 	.kol-input-container {
-		min-height: rem(44);
+		min-height: var(--a11y-min-size);
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
