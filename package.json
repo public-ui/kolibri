@@ -17,7 +17,7 @@
 		"typescript": "5.7.3"
 	},
 	"engines": {
-		"pnpm": "^9 || ^10"
+		"pnpm": "^10"
 	},
 	"private": true,
 	"scripts": {
