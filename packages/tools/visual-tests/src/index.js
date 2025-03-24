@@ -20,7 +20,7 @@ process.env.THEME_MODULE = path.join(process.cwd(), process.env.THEME_MODULE); /
 const visualsTestModulePath = fileURLToPath(new URL('..', import.meta.url));
 const binaryPath = fileURLToPath(new URL('../node_modules/.bin', import.meta.url));
 
-let sampleReactPath = '../node_modules/@public-ui/sample-react';
+let sampleReactPath = '../node_modules/@public-ui/visual-tests/node_modules/@public-ui/sample-react';
 let backSteps = ``;
 let workingDir = null;
 do {
