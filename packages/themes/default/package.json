@@ -49,7 +49,7 @@
 		"lint": "tsc --noemit && eslint src",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"start": "npm-run-all --parallel dev serve",
-		"serve": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=DEFAULT npm --prefix \"node_modules/@public-ui/sample-react/\" start",
+		"serve": "sh serve.sh DEFAULT",
 		"test": "pnpm test:visual",
 		"test:visual": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test",
 		"test-update": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots theme-snapshots.spec.js",
