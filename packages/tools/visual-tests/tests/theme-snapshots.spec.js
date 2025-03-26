@@ -1,40 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { ROUTES } from './sample-app.routes.js';
 
-// https://github.com/microsoft/playwright/issues/7575#issuecomment-1288164474
-export const configureSnapshotPath =
-	() =>
-	// eslint-disable-next-line no-empty-pattern
-	({}, testInfo) => {
-		const originalSnapshotPath = testInfo.snapshotPath;
-		testInfo.snapshotPath = (snapshotName) => {
-			const result = originalSnapshotPath
-				.apply(testInfo, [snapshotName])
-
-				// Remove browser name from snapshot name
-				// .replace('-chromium', '')
-				// .replace('-firefox', '')
-
-				// Remove os name from snapshot name
-				// .replace('-darwin', '')
-				// .replace('-linux', '')
-				// .replace('-windows', '')
-
-				// Remove test counter from snapshot name
-				.replace('-1-', '-')
-
-				// Identify 2. test as zoom snapshot
-				.replace('-2-', '-zoom-')
-
-				// Make different snapshot folder for different themes
-				.replace('theme-snapshots.spec.js', `theme-${(process.env.THEME_EXPORT || 'default').toLocaleLowerCase()}`)
-				.replace('-snapshots', '');
-			return result;
-		};
-	};
-
-test.beforeEach(configureSnapshotPath());
-
 // https://playwright.dev/docs/emulation
 test.use({
 	colorScheme: 'light',
@@ -48,21 +14,39 @@ test.use({
 });
 
 const DEFAULT_SNAPSHOT_OPTIONS = {
+	animations: 'disabled',
 	fullPage: true,
 	maxDiffPixelRatio: 0,
+	scale: 'css', // 'css' or 'device'
+	timeout: 10000,
 };
 
 ROUTES.forEach((options, route) => {
 	test(`snapshot for ${route}`, async ({ page }) => {
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
-		await page.goto(`/#${route}${hideMenusParam}`, { waitUntil: 'networkidle' });
+		await page.goto(`/#${route}${hideMenusParam}`);
+		await page.waitForLoadState('networkidle');
+		await page.addStyleTag({
+			content: `
+				* {
+					transition: none !important;
+					animation: none !important;
+				}
+			`,
+		});
 		if (options?.viewportSize) {
 			await page.setViewportSize(options.viewportSize);
 		}
 		if (options?.waitForTimeout) {
 			await page.waitForTimeout(options.waitForTimeout);
 		}
-		await expect(page).toHaveScreenshot({
+
+		/**
+		 * We would like to use a readable name for the snapshot file.
+		 */
+		const snapshotName = `snapshot-for-${route.replace(/(\/|\?|&|=)/g, '-')}`;
+
+		await expect(page).toHaveScreenshot(`${snapshotName}.png`, {
 			...DEFAULT_SNAPSHOT_OPTIONS,
 			...options,
 		});
@@ -73,7 +57,7 @@ ROUTES.forEach((options, route) => {
 			// document.body.style.transformOrigin = 'top left';
 			// document.body.style.width = '25vw';
 		});
-		await expect(page).toHaveScreenshot({
+		await expect(page).toHaveScreenshot(`${snapshotName}-zoom.png`, {
 			...DEFAULT_SNAPSHOT_OPTIONS,
 			...options,
 		});

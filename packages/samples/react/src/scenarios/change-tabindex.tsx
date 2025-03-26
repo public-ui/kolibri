@@ -228,7 +228,7 @@ export const ChangeTabindex: FC = () => {
 						</KolSplitButton>
 						<KolSplitButton _label="InputText 3, Tabindex 2" tabIndex={2}>
 							Dropdown-Inhalt
-						</KolSplitButton>{' '}
+						</KolSplitButton>
 						<KolSplitButton _label="InputText 4, Tabindex 1" tabIndex={1}>
 							Dropdown-Inhalt
 						</KolSplitButton>

@@ -1,3 +1,5 @@
+@use '../components/@shared/mixins' as *;
+
 @mixin kol-form-field {
 	@layer kol-component {
 		.kol-form-field {

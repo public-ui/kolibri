@@ -68,8 +68,8 @@
 		}
 
 		&__text {
-			min-height: rem(44);
-			min-width: rem(44);
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
 			border-radius: 4px;
 			font:
 				normal normal 400 rem(16) / rem(20) arial,
