@@ -159,7 +159,7 @@ export const ChangeTabindex: FC = () => {
 							_label="InputRadio 3, Tabindex 2"
 							_msg={{ _type: 'error', _description: ERROR_MSG }}
 							tabIndex={2}
-						/>{' '}
+						/>
 						<KolInputRadio
 							_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)','value':'Mr.'},{'label':'Company','value':'Company'}]"
 							_label="InputRadio 4, Tabindex 1"
@@ -228,7 +228,7 @@ export const ChangeTabindex: FC = () => {
 						</KolSplitButton>
 						<KolSplitButton _label="InputText 3, Tabindex 2" tabIndex={2}>
 							Dropdown-Inhalt
-						</KolSplitButton>{' '}
+						</KolSplitButton>
 						<KolSplitButton _label="InputText 4, Tabindex 1" tabIndex={1}>
 							Dropdown-Inhalt
 						</KolSplitButton>
