@@ -14,14 +14,26 @@ test.use({
 });
 
 const DEFAULT_SNAPSHOT_OPTIONS = {
+	animations: 'disabled',
 	fullPage: true,
 	maxDiffPixelRatio: 0,
+	scale: 'css', // 'css' or 'device'
+	timeout: 10000,
 };
 
 ROUTES.forEach((options, route) => {
 	test(`snapshot for ${route}`, async ({ page }) => {
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
-		await page.goto(`/#${route}${hideMenusParam}`, { waitUntil: 'networkidle' });
+		await page.goto(`/#${route}${hideMenusParam}`);
+		await page.waitForLoadState('networkidle');
+		await page.addStyleTag({
+			content: `
+				* {
+					transition: none !important;
+					animation: none !important;
+				}
+			`,
+		});
 		if (options?.viewportSize) {
 			await page.setViewportSize(options.viewportSize);
 		}
