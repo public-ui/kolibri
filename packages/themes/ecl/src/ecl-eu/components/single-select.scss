@@ -17,7 +17,7 @@ $visible-options: 5;
 			display: inline-flex;
 			align-items: center;
 			width: 100%;
-			min-height: rem(44);
+			min-height: var(--a11y-min-size);
 			color: var(--color-grey);
 			order: 4;
 			padding: rem(1) 0.5em;
@@ -103,8 +103,8 @@ $visible-options: 5;
 
 	input,
 	select:not([multiple]) {
-		height: rem(44);
-		min-height: rem(44);
+		height: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 	}
 
 	label {
@@ -124,7 +124,7 @@ $visible-options: 5;
 	}
 
 	.input {
-		min-height: rem(44);
+		min-height: var(--a11y-min-size);
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
