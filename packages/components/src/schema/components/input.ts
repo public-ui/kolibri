@@ -17,7 +17,7 @@ import type {
 	PropTooltipAlign,
 	PropTouched,
 } from '../props';
-import type { KoliBriHorizontalIcons, Stringified } from '../types';
+import type { KoliBriHIcons, Stringified } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropId & PropLabelWithExpertSlot;
@@ -29,7 +29,6 @@ type OptionalProps = {
 	 */
 	error: string;
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	slotName: string;
 	smartButton: Stringified<ButtonProps>;
@@ -39,6 +38,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideError &
 	PropHideLabel &
+	KoliBriHIcons &
 	PropMsg &
 	PropReadOnly &
 	PropRequired &

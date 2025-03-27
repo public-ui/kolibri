@@ -4,6 +4,7 @@ import type {
 	ButtonProps,
 	FocusableElement,
 	HideErrorPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputDateAPI,
 	InputDateStates,
@@ -11,7 +12,6 @@ import type {
 	InputTypeOnDefault,
 	InputTypeOnOff,
 	Iso8601,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -24,12 +24,12 @@ import type {
 } from '../../schema';
 import { buildBadgeTextString, deprecatedHint, showExpertSlot } from '../../schema';
 
+import { KolInputTag } from '../../core/component-names';
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { InputDateController } from './controller';
-import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -258,7 +258,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -423,7 +423,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

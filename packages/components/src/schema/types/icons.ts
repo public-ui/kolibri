@@ -18,8 +18,13 @@ type KoliBriVerticalIcons = {
 	bottom?: IconOrIconClass;
 };
 
+export type KoliBriHIcons = {
+	icons?: KoliBriHorizontalIcons;
+};
+
 export type KoliBriAllIcons = KoliBriHorizontalIcons & KoliBriVerticalIcons;
 
 export type KoliBriIconsProp = AnyIconFontClass | KoliBriAllIcons;
+export type KoliBriHorizontalIconsProp = AnyIconFontClass | KoliBriHorizontalIcons;
 
 export type KoliBriIconsState = KoliBriAllIcons;
