@@ -8,8 +8,6 @@
 		border-style: solid;
 		border-width: var(--border-width);
 		border-color: var(--color-primary);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
 	}
 
 	.popover {
@@ -27,6 +25,14 @@
 	}
 
 	@include kol-button;
+
+	:is(a, button) {
+		height: 100%;
+	}
+	:is(a, button) > .kol-span-wc {
+		border-style: none;
+		height: 100%;
+	}
 
 	.main-button :is(a, button) > .kol-span-wc {
 		border-right: none;
