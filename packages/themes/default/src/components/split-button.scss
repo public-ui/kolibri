@@ -26,17 +26,17 @@
 		width: rem(1);
 	}
 
-	:is(a, button) > .kol-span-wc {
-		font-weight: 700;
-		border-top-left-radius: var(--border-radius);
-		border-bottom-left-radius: var(--border-radius);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: rem(8) rem(14);
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
+	@include kol-button;
+
+	.main-button :is(a, button) > .kol-span-wc {
+		border-right: none;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
 	}
 
-	@include kol-button;
+	.secondary-button :is(a, button) > .kol-span-wc {
+		border-left: none;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
 }
