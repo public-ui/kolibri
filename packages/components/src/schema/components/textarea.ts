@@ -8,6 +8,7 @@ import type {
 	PropHasCounter,
 	PropHideError,
 	PropHideLabel,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
@@ -20,7 +21,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 
 /**
  * TODO: In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `none` (default) and `vertical`.
@@ -36,7 +37,6 @@ type OptionalProps = {
 	 */
 	error: string;
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
@@ -50,6 +50,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideError &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropId &
 	PropName &
 	PropReadOnly &
@@ -74,7 +75,6 @@ type OptionalStates = {
 	alert: boolean;
 	error: string;
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	placeholder: string;
@@ -84,6 +84,7 @@ type OptionalStates = {
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
+	KoliBriHIcons &
 	PropMsg &
 	PropName &
 	PropReadOnly &

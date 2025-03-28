@@ -2,7 +2,6 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type {
 	ButtonProps,
-	KoliBriHorizontalIcons,
 	MsgPropType,
 	PropAccessKey,
 	PropAlert,
@@ -10,6 +9,7 @@ import type {
 	PropHasCounter,
 	PropHideError,
 	PropHideLabel,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropReadOnly,
@@ -26,7 +26,6 @@ type RequiredProps = PropId & PropLabelWithExpertSlot;
 type OptionalProps = {
 	currentLength: number;
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	msg: MsgPropType;
 	slotName: string;
@@ -37,6 +36,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideError &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &
