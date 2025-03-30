@@ -669,6 +669,9 @@ importers:
       css-loader:
         specifier: 7.1.2
         version: 7.1.2(webpack@5.98.0)
+      docx-preview:
+        specifier: 0.3.5
+        version: 0.3.5
       esbuild-loader:
         specifier: 4.3.0
         version: 4.3.0(webpack@5.98.0)
@@ -6157,6 +6160,9 @@ packages:
 
   doctypes@1.1.0:
     resolution: {integrity: sha512-LLBi6pEqS6Do3EKQ3J0NqHWV5hhb78Pi8vvESYwyOy2c31ZEZVdtitdzsQsKb7878PEERhzUk0ftqGhG6Mz+pQ==}
+
+  docx-preview@0.3.5:
+    resolution: {integrity: sha512-nod1jG5PkvzDIiZAcgAY4gSFQzgmAAChcuZH4Hj9dj7oCzscY3Hn8NfbUv7X7Jk4xL1lfKO113JLDhWKOt6fYw==}
 
   dom-serialize@2.2.1:
     resolution: {integrity: sha512-Yra4DbvoW7/Z6LBN560ZwXMjoNOSAN2wRsKFGc4iBeso+mpIA6qj1vfdf9HpMaKAqG6wXTy+1SYEzmNpKXOSsQ==}
@@ -18649,6 +18655,10 @@ snapshots:
       esutils: 2.0.3
 
   doctypes@1.1.0: {}
+
+  docx-preview@0.3.5:
+    dependencies:
+      jszip: 3.10.1
 
   dom-serialize@2.2.1:
     dependencies:

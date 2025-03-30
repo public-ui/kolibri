@@ -71,6 +71,10 @@ hr {
 	}
 }
 
+.docx-preview * {
+	cursor: text !important;
+}
+
 @media print {
 
 	.no-print,

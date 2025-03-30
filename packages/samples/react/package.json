@@ -45,6 +45,7 @@
 		"cpy-cli": "5.0.0",
 		"cross-env": "7.0.3",
 		"css-loader": "7.1.2",
+		"docx-preview": "0.3.5",
 		"esbuild-loader": "4.3.0",
 		"eslint": "^8",
 		"eslint-plugin-html": "8.1.2",
