@@ -32,16 +32,8 @@
 		@include kol-typography-hint;
 	}
 
-	.kol-input .input input[type='file'] {
-		padding-top: calc(0.5em + rem(2));
-	}
-
 	input {
 		border: none;
-	}
-
-	input[type='file'] {
-		background-color: transparent;
 	}
 
 	input::placeholder {

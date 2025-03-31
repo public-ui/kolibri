@@ -515,6 +515,10 @@ ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
 	axe: {
 		skipFailures: false,
 	},
+	viewportSize: {
+		width: 4000,
+		height: 0,
+	},
 });
 
 /* Focus tests */

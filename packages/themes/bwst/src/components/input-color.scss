@@ -41,10 +41,6 @@
 		min-height: rem(40) !important;
 	}
 
-	input[type='color'] {
-		background-color: transparent;
-	}
-
 	input::placeholder {
 		color: var(--color-subtle);
 	}

@@ -111,7 +111,6 @@
 @layer kol-component {
 	input:not([type='checkbox'], [type='radio']),
 	select:not([multiple], [size]) {
-		height: rem(calc(2.75 * 16));
 		border-radius: var(--border-radius);
 		border-width: var(--border-width);
 	}

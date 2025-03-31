@@ -22,7 +22,6 @@
 
 	input,
 	select:not([multiple]) {
-		height: var(--a11y-min-size);
 		min-height: var(--a11y-min-size);
 	}
 
