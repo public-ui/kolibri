@@ -2,26 +2,26 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type {
 	MsgPropType,
+	PropAccessKey,
 	PropDisabled,
 	PropHideError,
 	PropHideLabel,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
 	PropRequired,
+	PropShortKey,
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropAccessKey,
-	PropShortKey,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropSuggestions;
 type OptionalProps = {
 	hint: string;
-	icons: Stringified<KoliBriHorizontalIcons>;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	placeholder: string;
@@ -31,6 +31,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideError &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropName &
 	PropRequired &
 	PropShortKey &
@@ -47,13 +48,13 @@ type RequiredStates = {
 type OptionalStates = {
 	alert: boolean;
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	tabIndex: number;
 	placeholder: string;
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	KoliBriHIcons &
 	PropId &
 	PropName &
 	PropRequired &

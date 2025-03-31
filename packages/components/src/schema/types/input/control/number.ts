@@ -1,6 +1,6 @@
-import type { Stringified } from '../../common';
-import type { KoliBriHorizontalIcons } from '../../icons';
 import type { ButtonProps } from '../../../components';
+import type { PropHorizontalIcons } from '../../../props';
+import type { Stringified } from '../../common';
 import type { InputTypeOnDefault, InputTypeOnOff } from '../types';
 
 export const inputDateTypeOptions = ['date', 'datetime-local', 'month', 'time', 'week'] as const;
@@ -14,7 +14,6 @@ export type OptionalInputProps<T> = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icons: Stringified<KoliBriHorizontalIcons>;
 	max: T;
 	min: T;
 	name: string;
@@ -26,4 +25,4 @@ export type OptionalInputProps<T> = {
 	tabIndex: number;
 	touched: boolean;
 	value: T | null;
-};
+} & PropHorizontalIcons;

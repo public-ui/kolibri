@@ -1,8 +1,10 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	HideErrorPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -17,17 +19,15 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import { buildBadgeTextString, showExpertSlot } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
+import clsx from 'clsx';
+import { KolIconTag, KolInputTag } from '../../core/component-names';
+import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { SingleSelectController } from './controller';
-import { KolIconTag, KolInputTag } from '../../core/component-names';
-import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { getRenderStates } from '../input/controller';
-import { translate } from '../../i18n';
-import clsx from 'clsx';
+import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
+import { SingleSelectController } from './controller';
 
 /**
  * @slot - The input field label.
@@ -483,7 +483,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -616,7 +616,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

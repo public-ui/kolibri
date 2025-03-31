@@ -8,8 +8,6 @@
 		border-style: solid;
 		border-width: var(--border-width);
 		border-color: var(--color-primary);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
 	}
 
 	.popover {
@@ -26,17 +24,25 @@
 		width: rem(1);
 	}
 
+	@include kol-button;
+
+	:is(a, button) {
+		height: 100%;
+	}
 	:is(a, button) > .kol-span-wc {
-		font-weight: 700;
-		border-top-left-radius: var(--border-radius);
-		border-bottom-left-radius: var(--border-radius);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: rem(8) rem(14);
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
+		border-style: none;
+		height: 100%;
 	}
 
-	@include kol-button;
+	.main-button :is(a, button) > .kol-span-wc {
+		border-right: none;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	.secondary-button :is(a, button) > .kol-span-wc {
+		border-left: none;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
 }

@@ -1,9 +1,11 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	FocusableElement,
 	HideErrorPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -21,16 +23,14 @@ import type {
 	W3CInputValue,
 } from '../../schema';
 import { buildBadgeTextString, showExpertSlot } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
+import { KolInputTag } from '../../core/component-names';
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { SelectController } from './controller';
-import { KolInputTag } from '../../core/component-names';
-import { propagateSubmitEventToForm } from '../form/controller';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -256,7 +256,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -292,7 +292,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Options the user can choose from, also supporting Optgroup.
 	 */
-	@Prop() public _options?: OptionsWithOptgroupPropType;
+	@Prop() public _options!: OptionsWithOptgroupPropType;
 
 	/**
 	 * Makes the input element required.
@@ -396,7 +396,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

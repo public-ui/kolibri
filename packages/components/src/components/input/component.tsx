@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { handleSlotContent, type MsgPropType, type ShortKeyPropType, showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
 import clsx from 'clsx';
+import { handleSlotContent, showExpertSlot, type MsgPropType, type ShortKeyPropType } from '../../schema';
 
 import { translate } from '../../i18n';
 
+import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolFormFieldMsgFc } from '../../functional-components';
 import type {
 	AccessKeyPropType,
 	AnyIconFontClass,
@@ -20,8 +22,6 @@ import type {
 	W3CInputValue,
 } from '../../schema';
 import type { Props } from './types';
-import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
-import { KolFormFieldMsgFc } from '../../functional-components';
 
 /**
  * @internal

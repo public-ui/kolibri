@@ -1,12 +1,14 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AdjustHeightPropType,
 	CSSResize,
 	FocusableElement,
 	HasCounterPropType,
 	HideErrorPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -20,14 +22,12 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import { buildBadgeTextString, devWarning, setState, showExpertSlot } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
+import { KolInputTag } from '../../core/component-names';
 import { nonce } from '../../utils/dev.utils';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { TextareaController } from './controller';
-import { KolInputTag } from '../../core/component-names';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -222,7 +222,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: KoliBriHorizontalIcons;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -388,7 +388,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

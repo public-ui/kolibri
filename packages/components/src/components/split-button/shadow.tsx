@@ -85,12 +85,13 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 					></KolButtonWcTag>
 					<div class="horizontal-line"></div>
 					<KolButtonWcTag
-						class="secondary-button"
+						class={{ 'secondary-button': true, [this._variant as string]: this._variant !== 'custom' }}
 						_disabled={this._disabled}
 						_hideLabel
 						_icons="codicon codicon-triangle-down"
 						_label={this.state._show ? translate(`${i18nDropdownLabel}-close`) : translate(`${i18nDropdownLabel}-open`)}
 						_on={this.clickToggleHandler}
+						_variant={this._variant}
 					></KolButtonWcTag>
 				</div>
 				<KolPopoverWcTag _show={this.state._show} _on={{ onClose: this.handleOnClose }} _align="bottom">

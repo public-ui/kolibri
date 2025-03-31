@@ -511,6 +511,11 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 		skipFailures: false,
 	},
 });
+ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
+	axe: {
+		skipFailures: false,
+	},
+});
 
 /* Focus tests */
 ROUTES.set('scenarios/focus-elements?component=accordion');

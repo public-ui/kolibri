@@ -2,21 +2,22 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type {
 	MsgPropType,
+	PropAccessKey,
 	PropDisabled,
 	PropHideError,
 	PropHideLabel,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropMultiple,
 	PropName,
 	PropRequired,
+	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropAccessKey,
-	PropShortKey,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -28,7 +29,6 @@ type OptionalProps = {
 	 */
 	error: string;
 	hint: string;
-	icons: Stringified<KoliBriHorizontalIcons>;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
@@ -38,6 +38,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideError &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropMultiple &
 	PropName &
 	PropRequired &
@@ -50,7 +51,6 @@ type OptionalStates = {
 	accept: string;
 	alert: boolean;
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
 	tabIndex: number;
@@ -58,6 +58,7 @@ type OptionalStates = {
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	KoliBriHIcons &
 	PropMsg &
 	PropMultiple &
 	PropName &
