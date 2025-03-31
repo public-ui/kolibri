@@ -7,35 +7,4 @@
 	:host {
 		font-family: var(--font-family);
 	}
-
-	.kol-link {
-		$root: &;
-
-		&:focus {
-			outline: none;
-		}
-
-		&__text {
-			font-weight: 700;
-			border-style: solid;
-			border-radius: var(--a11y-min-size);
-			outline-width: calc(var(--border-width) * 2);
-
-			@at-root #{$root}:focus & {
-				outline-color: var(--color-primary-variant);
-				outline-offset: 2px;
-				outline-style: solid;
-				outline-width: calc(var(--border-width) * 2);
-				transition: outline-offset 0.2s linear;
-			}
-
-			@at-root #{$root}:disabled:hover & {
-				box-shadow: none;
-			}
-
-			@at-root #{$root}:focus:hover & {
-				box-shadow: none;
-			}
-		}
-	}
 }
