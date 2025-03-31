@@ -13,13 +13,16 @@
 		}
 
 		&--is-dragover {
-			border-color: var(--color-primary) !important;
+			border-color: var(--color-primary);
 		}
 	}
 
 	.kol-button {
 		&__text {
-			border-radius: 0 !important;
+			border-top-right-radius: calc(var(--border-radius) - 2px);
+			border-bottom-right-radius: calc(var(--border-radius) - 2px);
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
 			white-space: nowrap;
 		}
 	}
