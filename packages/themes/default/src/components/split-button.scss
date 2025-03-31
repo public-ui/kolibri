@@ -49,5 +49,28 @@
 		}
 
 		@include kol-button('kol-button');
+
+		&__button {
+			.kol-button__text {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+		}
+
+		&__secondary-button {
+			.kol-button__text {
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+		}
+
+		.kol-button {
+			height: 100%;
+
+			&__text {
+				height: 100%;
+				border: none;
+			}
+		}
 	}
 }

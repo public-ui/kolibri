@@ -13,18 +13,6 @@
 		border-style: solid;
 	}
 
-	.kol-button,
-	.kol-link {
-		font-family: var(--font-family);
-
-		&__text {
-			font-weight: 700;
-			border-style: solid;
-			border-width: var(--border-width);
-			border-radius: var(--border-radius);
-		}
-	}
-
 	.kol-link {
 		text-decoration: none;
 		--text-background-color: var(--color-light);
