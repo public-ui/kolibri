@@ -56,7 +56,7 @@ These atomic components are where we should **collaborate** and **cooperate** to
 
 Let's make KoliBri **better** and **more colorful** together!
 
-> Continue [to **Documentation**](https://public-ui.github.io)…
+> Continue [to **Documentation**](https://public-ui.github.io/en/)…
 
 ## Let's go
 
