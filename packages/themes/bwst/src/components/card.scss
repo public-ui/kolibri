@@ -17,19 +17,19 @@
 	}
 
 	:host .kol-heading-wc {
-		line-height: rem(calc(1.75 * 16));
+		line-height: rem(28);
 	}
 
 	:host div.header {
-		padding: rem(calc(1 * 16)) rem(calc(1 * 16)) rem(calc(0.5 * 16)) rem(calc(1 * 16));
+		padding: rem(16) rem(16) rem(8) rem(16);
 	}
 
 	:host div.content {
-		padding: rem(calc(0.5 * 16)) rem(calc(1 * 16)) rem(calc(1 * 16));
+		padding: rem(8) rem(16) rem(16);
 		overflow: hidden;
 	}
 
 	:host div.footer {
-		padding: rem(calc(0.5 * 16)) rem(calc(1 * 16));
+		padding: rem(8) rem(16);
 	}
 }

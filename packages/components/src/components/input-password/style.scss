@@ -1,21 +1,16 @@
-@use '../@shared/mixins' as *;
-@use '../@shared/kol-alert-mixin' as *;
 @use '../style' as *;
 @use '../input-line' as *;
 
-@include kol-alert-styles;
-
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
+	[slot='input'] {
+		display: grid;
+		grid-template-columns: 1fr auto;
 
-	.password-toggle-button {
-		position: absolute;
-		transform: translateX(-100%);
-	}
-
-	.kol-tooltip-wc {
-		--kol-tooltip-width: #{rem(160)};
+		.kol-button,
+		.kol-button-wc {
+			button {
+				min-height: var(--a11y-min-size);
+			}
+		}
 	}
 }

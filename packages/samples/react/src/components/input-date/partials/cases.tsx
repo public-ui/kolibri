@@ -9,7 +9,7 @@ export const InputDateCases = forwardRef<HTMLKolInputDateElement, Components.Kol
 	return (
 		<div className="grid gap-4">
 			<div className="black-background">
-				<KolInputDate {...props} _type="date" _label="Date input (Black background test)" _required />{' '}
+				<KolInputDate {...props} _type="date" _label="Date input (Black background test)" _required />
 			</div>
 			<KolInputDate {...props} _type="datetime-local" _label="Local-Datetime (Standard)" _required />
 			<KolInputDate

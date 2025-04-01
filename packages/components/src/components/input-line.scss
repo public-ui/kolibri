@@ -1,4 +1,7 @@
 @use './input' as *;
+@use './@shared/kol-alert-mixin' as *;
+
+@include kol-alert-styles;
 
 @layer kol-component {
 	.kol-input {
@@ -7,11 +10,7 @@
 
 	.kol-input .input-slot {
 		flex-grow: 1;
-	}
-
-	input:not([type='checkbox'], [type='radio']),
-	select:not([multiple], [size]) {
-		height: 2.75em;
+		overflow: hidden;
 	}
 
 	input:focus,
@@ -22,13 +21,18 @@
 	}
 
 	.input {
-		display: flex;
 		align-items: center;
+		background-color: white;
+		cursor: pointer;
+		display: flex;
+	}
+
+	button:not([role='link']) {
+		min-height: auto;
 	}
 
 	.input > .kol-icon {
 		display: grid;
-		height: var(--a11y-min-size);
 		place-items: center;
 	}
 

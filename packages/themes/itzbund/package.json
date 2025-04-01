@@ -20,7 +20,7 @@
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
-		"@rollup/plugin-commonjs": "28.0.2",
+		"@rollup/plugin-commonjs": "28.0.3",
 		"@rollup/plugin-node-resolve": "15.3.1",
 		"@rollup/plugin-typescript": "12.1.2",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
@@ -28,11 +28,11 @@
 		"cpy-cli": "5.0.0",
 		"eslint": "8.57.1",
 		"nodemon": "3.1.9",
-		"postcss": "8.5.1",
-		"rollup": "4.32.1",
+		"postcss": "8.5.3",
+		"rollup": "4.36.0",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.83.4",
-		"typescript": "5.7.3",
+		"sass": "1.86.0",
+		"typescript": "5.8.2",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {

@@ -17,7 +17,7 @@
 		--border-radius: 4px;
 		--font-family: 'Noto Sans Regular', Arial, helvetica, sans-serif;
 		--font-size: #{rem(16)};
-		--spacing: #{rem(calc(0.25 * 16))};
+		--spacing: #{rem(4)};
 		--border-width: 1px;
 		--color-primary: #156570;
 		--color-primary-light: #1a7a87;
@@ -84,17 +84,17 @@
 	.kol-tooltip-wc .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5;
-		padding: rem(8) rem(calc(0.75 * 16));
+		padding: rem(8) rem(12);
 	}
 
 	.kol-span-wc,
 	.kol-span-wc > span {
-		gap: rem(calc(0.5 * 16));
+		gap: rem(8);
 	}
 
 	a:is(:focus, :hover):not([aria-disabled]),
 	button:is(:focus, :hover):not([disabled]) {
-		text-decoration-thickness: calc(rem(calc(1 * 16)) / 8);
+		text-decoration-thickness: calc(rem(16) / 8);
 	}
 
 	@keyframes spin {
@@ -111,7 +111,6 @@
 @layer kol-component {
 	input:not([type='checkbox'], [type='radio']),
 	select:not([multiple], [size]) {
-		height: rem(calc(2.75 * 16));
 		border-radius: var(--border-radius);
 		border-width: var(--border-width);
 	}

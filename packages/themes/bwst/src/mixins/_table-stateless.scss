@@ -14,7 +14,7 @@
 	}
 
 	caption {
-		padding: rem(calc(0.5 * 16));
+		padding: rem(8);
 		font-weight: bold;
 	}
 
@@ -51,7 +51,7 @@
 	}
 
 	.table {
-		padding: rem(calc(0.5 * 16));
+		padding: rem(8);
 
 		&:has(.focus-element:focus) {
 			outline-color: var(--color-primary-variant);
@@ -74,7 +74,7 @@
 	th div {
 		width: 100%;
 		display: flex;
-		gap: rem(calc(0.5 * 16));
+		gap: rem(8);
 		grid-template-columns: 1fr auto;
 		align-items: center;
 	}
@@ -85,7 +85,7 @@
 
 	th,
 	td {
-		padding: rem(calc(0.5 * 16));
+		padding: rem(8);
 	}
 
 	th[aria-sort='ascending'],

@@ -69,8 +69,8 @@
 		border-bottom-left-radius: rem(32);
 		font-size: inherit;
 		padding: 0 rem(16);
-		min-width: rem(44);
-		min-height: rem(44);
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
 	}
 
 	@include kol-button;

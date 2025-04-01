@@ -3,10 +3,6 @@
 @use '../tooltip/style.scss' as *;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.toolbar {
 		display: flex;
 		align-items: center;

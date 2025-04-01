@@ -15,7 +15,7 @@
 	:is(a, button):focus kol-span-wc {
 		border-radius: calc(var(--border-radius) / 2);
 		outline: var(--border-width) solid;
-		outline-offset: calc(rem(calc(1 * 16)) / 8);
+		outline-offset: calc(rem(16) / 8);
 	}
 
 	:is(a, button):visited {

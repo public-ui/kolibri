@@ -37,9 +37,10 @@
 	input[type='time'],
 	input[type='url'],
 	input[type='week'],
+	option,
 	select,
-	select[multiple] option,
 	textarea {
+		background-color: transparent; // would be backgrounded by the host
 		font-size: rem(16);
 		width: 100%;
 	}
@@ -52,9 +53,5 @@
 	/* needed hack for vertical alignment */
 	select[multiple] option {
 		padding: calc((var(--a11y-min-size) - rem(16)) / 2) 0.5em;
-	}
-
-	.input {
-		background-color: white;
 	}
 }

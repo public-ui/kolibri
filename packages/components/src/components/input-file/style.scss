@@ -1,15 +1,7 @@
-@use '../@shared/mixins' as *;
-@use '../@shared/kol-alert-mixin' as *;
 @use '../style' as *;
 @use '../input-line' as *;
 
-@include kol-alert-styles;
-
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	label input[type='file']::-webkit-file-upload-button {
 		display: none;
 	}
@@ -20,9 +12,5 @@
 
 	label input[multiple]:before {
 		content: 'Dateien auswählen';
-	}
-
-	div.input {
-		cursor: pointer;
 	}
 }

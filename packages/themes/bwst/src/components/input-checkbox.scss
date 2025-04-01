@@ -30,7 +30,7 @@
 	}
 
 	:host .kol-input:is(.default, .switch) {
-		grid-template-columns: rem(calc(1.5 * 16)) auto;
+		grid-template-columns: rem(24) auto;
 		grid-template-areas: unset;
 
 		.input,
@@ -78,7 +78,7 @@
 
 	:host .kol-input.error {
 		border-left: 3px solid var(--color-danger);
-		padding-left: rem(calc(1 * 16));
+		padding-left: rem(16);
 	}
 
 	:host .kol-input.error input:focus,
@@ -99,7 +99,7 @@
 		border-style: solid;
 		border-radius: var(--border-radius);
 		line-height: rem(24);
-		font-size: rem(calc(1 * 16));
+		font-size: rem(16);
 	}
 
 	:host input:hover {
@@ -143,9 +143,9 @@
 
 	:host .kol-input.default input[type='checkbox'] {
 		border-radius: var(--border-radius);
-		height: calc(6 * rem(calc(0.25 * 16)));
-		min-width: calc(6 * rem(calc(0.25 * 16)));
-		width: calc(6 * rem(calc(0.25 * 16)));
+		height: calc(6 * rem(4));
+		min-width: calc(6 * rem(4));
+		width: calc(6 * rem(4));
 	}
 
 	:host .kol-input.default input[type='checkbox']:indeterminate {
@@ -154,15 +154,15 @@
 
 	:host .kol-input.default .icon {
 		color: var(--color-light);
-		margin-left: rem(calc(0.25 * 16));
+		margin-left: rem(4);
 	}
 
 	:host .kol-input.switch input[type='checkbox'] {
 		background-color: var(--color-subtle);
-		border-radius: rem(calc(1.25 * 16));
+		border-radius: rem(20);
 		border-width: 0;
 		display: block;
-		height: rem(calc(1.5 * 16));
+		height: rem(24);
 		min-width: rem(calc(3.5 * 16));
 		position: relative;
 		width: rem(calc(3.5 * 16));
@@ -171,11 +171,11 @@
 	}
 
 	:host .kol-input.switch input[type='checkbox']:before {
-		width: rem(calc(1.25 * 16));
-		height: rem(calc(1.25 * 16));
-		left: calc(rem(calc(0.25 * 16)) - rem(2));
-		top: calc(rem(calc(0.25 * 16)) - rem(2));
-		border-radius: rem(calc(1.25 * 16));
+		width: rem(20);
+		height: rem(20);
+		left: calc(rem(4) - rem(2));
+		top: calc(rem(4) - rem(2));
+		border-radius: rem(20);
 		background-color: white;
 		position: absolute;
 	}
@@ -185,26 +185,26 @@
 	}
 
 	:host .kol-input.switch input[type='checkbox']:checked:before {
-		transform: translateX(rem(calc(2 * 16)));
+		transform: translateX(rem(32));
 	}
 
 	:host .kol-input.switch input[type='checkbox']:indeterminate:before {
-		transform: translateX(rem(calc(1 * 16)));
+		transform: translateX(rem(16));
 	}
 
 	.switch {
 		& .icon {
-			width: rem(calc(1.25 * 16));
-			height: rem(calc(1.25 * 16));
+			width: rem(20);
+			height: rem(20);
 			left: rem(2);
 		}
 
 		&.checked .icon {
-			transform: translate(rem(calc(2 * 16)), -50%);
+			transform: translate(rem(32), -50%);
 		}
 
 		&.indeterminate .icon {
-			transform: translate(rem(calc(1 * 16)), -50%);
+			transform: translate(rem(16), -50%);
 		}
 	}
 
@@ -237,7 +237,7 @@
 			align-self: stretch;
 			display: flex;
 
-			padding-right: rem(calc(1 * 16));
+			padding-right: rem(16);
 
 			.input-label-span {
 				margin: auto 0;

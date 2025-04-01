@@ -1,11 +1,4 @@
-@use '../@shared/mixins' as *;
 @use '../style' as *;
 @use '../@shared/kol-alert-mixin' as *;
-
-@layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-}
 
 @include kol-alert-styles;

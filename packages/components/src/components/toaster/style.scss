@@ -1,4 +1,3 @@
-@use '../@shared/mixins' as *;
 @use '../style' as *;
 @use '../@shared/kol-alert-mixin' as *;
 
@@ -8,7 +7,6 @@
 	:host {
 		display: flex;
 		flex-direction: column;
-		font-size: rem(16);
 		position: fixed;
 		z-index: 200;
 	}

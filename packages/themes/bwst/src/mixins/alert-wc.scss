@@ -35,7 +35,7 @@
 
 	.kol-alert-wc > .heading > div {
 		display: grid;
-		gap: rem(calc(0.25 * 16));
+		gap: rem(4);
 	}
 
 	.msg > .heading > .kol-icon {
@@ -155,7 +155,7 @@
 	}
 
 	.card > .heading {
-		padding: rem(calc(0.5 * 16)) rem(calc(1 * 16));
+		padding: rem(8) rem(16);
 	}
 
 	.card[_has-closer] > .heading {
@@ -166,7 +166,7 @@
 
 	.card > .heading > div {
 		width: 100%;
-		min-height: rem(calc(1.25 * 16));
+		min-height: rem(20);
 	}
 
 	.card > .heading .heading-icon {
@@ -178,8 +178,8 @@
 		width: 100%;
 		color: var(--color-light);
 		display: flex;
-		font-size: rem(calc(1.25 * 16));
-		line-height: rem(calc(1.25 * 16));
+		font-size: rem(20);
+		line-height: rem(20);
 	}
 
 	.card > .heading .kol-heading-wc > * {
@@ -187,7 +187,7 @@
 	}
 
 	.card > .content {
-		padding: rem(calc(1 * 16));
+		padding: rem(16);
 	}
 
 	.card.default > .heading {
@@ -211,7 +211,7 @@
 	}
 
 	:is(.error, .info, .success, .warning) .heading-icon {
-		font-size: rem(calc(1.25 * 16));
+		font-size: rem(20);
 	}
 
 	.card > div > .content {

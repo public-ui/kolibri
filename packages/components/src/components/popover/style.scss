@@ -1,10 +1,4 @@
-@use '../@shared/mixins' as *;
-
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.kol-popover {
 		height: 0;
 		position: absolute;

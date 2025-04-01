@@ -1,8 +1,10 @@
+@use './@shared/mixins' as *;
 @use './a11y' as *;
 @use './preset' as *;
 
 @layer kol-global {
 	:host {
+		font-size: rem(16);
 		/*
 		 * The max-width is needed to prevent the table from overflowing the
 		 * parent node, if the table is wider than the parent node.

@@ -8,7 +8,7 @@ export const LinkShortKey: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
-				This sample shows KolButton with short key without functionality. The short key is purely visual. Its functionality needs to be developed separately.{' '}
+				This sample shows KolButton with short key without functionality. The short key is purely visual. Its functionality needs to be developed separately.
 			</p>
 		</SampleDescription>
 

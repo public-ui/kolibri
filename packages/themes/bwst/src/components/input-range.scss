@@ -10,11 +10,11 @@
 	}
 
 	.inputs-wrapper {
-		gap: rem(calc(1 * 16));
+		gap: rem(16);
 	}
 
 	.kol-input {
-		gap: rem(calc(0.25 * 16));
+		gap: rem(4);
 	}
 
 	.kol-input .error {
@@ -36,39 +36,34 @@
 		@include kol-typography-hint;
 	}
 
+	input {
+		border: none;
+	}
+
 	input::placeholder {
 		color: var(--color-subtle);
 	}
 
-	/*.input {
+	.input {
 		background-color: var(--color-light);
 		border-color: var(--color-subtle);
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: var(--border-width);
-		padding: 0 rem(calc(0.5*16));
-	}*/
-
-	.input {
-		border-radius: var(--border-radius);
-		padding: 0 rem(calc(0.5 * 16));
-	}
-
-	.input > .kol-icon {
-		width: rem(calc(1 * 16));
+		padding: 0 rem(8);
 	}
 
 	.input.icon-left > .kol-icon:first-child {
-		margin-right: rem(calc(0.5 * 16));
+		margin-right: rem(8);
 	}
 
 	.input.icon-right > .kol-icon:last-child {
-		margin-left: rem(calc(0.5 * 16));
+		margin-left: rem(8);
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(calc(1 * 16));
-		padding-right: rem(calc(1 * 16));
+		padding-left: rem(16);
+		padding-right: rem(16);
 	}
 
 	:not(.disabled) .input:hover {
@@ -98,8 +93,8 @@
 		appearance: none;
 		background-color: var(--color-mute-variant);
 		border: 1px solid var(--border-color);
-		height: calc(rem(calc(1 * 16)) / 2);
-		line-height: rem(calc(1.5 * 16));
+		height: calc(rem(16) / 2);
+		line-height: rem(24);
 	}
 
 	.kol-input input[type='range']::-webkit-slider-thumb {

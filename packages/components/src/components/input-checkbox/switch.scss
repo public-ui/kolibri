@@ -1,3 +1,5 @@
+@use '../@shared/mixins' as *;
+
 @layer kol-component {
 	.switch .input {
 		position: relative;

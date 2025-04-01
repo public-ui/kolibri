@@ -7,7 +7,7 @@
 
 	:host .kol-button-group-wc {
 		display: inline-flex;
-		gap: rem(calc(0.5 * 16));
+		gap: rem(8);
 		flex-wrap: wrap;
 	}
 
@@ -46,9 +46,8 @@
 	}
 
 	*[tabindex]:is(.kol-button-group-wc button) {
-		//	outline: none;
 		width: 100%;
-		padding: 0 rem(calc(0.25 * 16));
+		padding: 0 rem(4);
 		border: var(--border-width) solid transparent;
 		border-radius: var(--border-radius);
 		border-bottom-width: var(--border-width);
@@ -71,11 +70,11 @@
 			position: absolute;
 			top: 0;
 			content: '';
-			height: calc(rem(calc(1 * 16)) / 4);
+			height: calc(rem(16) / 4);
 
 			background-color: var(--color-primary);
-			border-top-right-radius: calc(rem(calc(1 * 16)) / 8);
-			border-top-left-radius: calc(rem(calc(1 * 16)) / 8);
+			border-top-right-radius: calc(rem(16) / 8);
+			border-top-left-radius: calc(rem(16) / 8);
 			left: 0;
 			right: 0;
 		}
@@ -92,11 +91,11 @@
 	}
 
 	button .kol-span-wc > span {
-		gap: rem(calc(0.5 * 16));
+		gap: rem(8);
 	}
 
 	.kol-icon {
-		font-size: rem(calc(1 * 16));
+		font-size: rem(16);
 	}
 
 	.tabs-content {
@@ -145,11 +144,11 @@
 	}
 
 	:host > .tabs-align-bottom > .kol-button-group-wc > div > div:first-child {
-		margin: 0 rem(calc(1 * 16)) 0 0;
+		margin: 0 rem(16) 0 0;
 	}
 
 	:host > .tabs-align-bottom > .kol-button-group-wc > div > div {
-		margin: 0 rem(calc(1 * 16));
+		margin: 0 rem(16);
 	}
 
 	:host > .tabs-align-top {
@@ -166,11 +165,11 @@
 	}
 
 	:host > .tabs-align-top > .kol-button-group-wc > div > div:first-child {
-		margin: 0 rem(calc(1 * 16)) 0 0;
+		margin: 0 rem(16) 0 0;
 	}
 
 	:host > .tabs-align-top > .kol-button-group-wc > div > div {
-		margin: 0 rem(calc(1 * 16));
+		margin: 0 rem(16);
 	}
 
 	:host > div {
