@@ -36,12 +36,20 @@
 		@include kol-typography-hint;
 	}
 
+	input {
+		border: none;
+	}
+
 	input::placeholder {
 		color: var(--color-subtle);
 	}
 
 	.input {
+		background-color: var(--color-light);
+		border-color: var(--color-subtle);
 		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: var(--border-width);
 		padding: 0 rem(8);
 	}
 

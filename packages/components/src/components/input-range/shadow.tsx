@@ -162,7 +162,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 						<div
 							class="inputs-wrapper"
 							style={{
-								'--kolibri-input-range--input-number--width': `${this.state._max}`.length + 0.5 + 'em',
+								'--kolibri-input-range--input-number--width': `${this.state._max || this.state._value}`.length + 0.5 + 'em',
 							}}
 						>
 							<input
