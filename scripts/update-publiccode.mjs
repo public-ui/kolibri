@@ -3,7 +3,9 @@
 import yaml from 'js-yaml';
 import fs from 'fs';
 import * as prettier from 'prettier';
-import packageJson from '../packages/components/package.json' assert { type: 'json' };
+
+const packageJsonPath = new URL('../packages/components/package.json', import.meta.url);
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
 const filePath = new URL('../publiccode.yml', import.meta.url);
 const doc = yaml.load(fs.readFileSync(filePath, 'utf8'));
