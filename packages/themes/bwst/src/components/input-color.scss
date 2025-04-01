@@ -10,7 +10,7 @@
 	}
 
 	.kol-input {
-		gap: rem(calc(0.25 * 16));
+		gap: rem(4);
 	}
 
 	.kol-input .error {
@@ -51,21 +51,21 @@
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: var(--border-width);
-		padding: 0 rem(calc(0.5 * 16));
+		padding: 0 rem(8);
 	}
 
 	.input > .kol-icon {
-		width: rem(calc(1 * 16));
+		width: rem(16);
 	}
 
 	.input:is(.icon-left, .icon-right) {
-		padding-left: rem(calc(1 * 16));
-		padding-right: rem(calc(1 * 16));
+		padding-left: rem(16);
+		padding-right: rem(16);
 	}
 
 	.input:is(.icon-left, .icon-right) input {
-		padding-left: rem(calc(0.5 * 16));
-		padding-right: rem(calc(0.5 * 16));
+		padding-left: rem(8);
+		padding-right: rem(8);
 	}
 
 	.input > input:first-child {

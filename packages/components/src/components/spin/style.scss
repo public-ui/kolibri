@@ -4,10 +4,6 @@
 @use './dot' as *;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.spin {
 		display: block;
 		padding: rem(2);

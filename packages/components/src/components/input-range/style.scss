@@ -1,15 +1,8 @@
 @use '../@shared/mixins' as *;
-@use '../@shared/kol-alert-mixin' as *;
 @use '../style' as *;
 @use '../input-line' as *;
 
-@include kol-alert-styles;
-
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.inputs-wrapper {
 		align-items: center;
 		display: flex;
@@ -17,7 +10,7 @@
 	}
 
 	input[type='number'] {
-		min-height: var(--a11y-min-size);
+		min-height: auto;
 		min-width: var(--a11y-min-size);
 		width: var(--kolibri-input-range--input-number--width);
 	}

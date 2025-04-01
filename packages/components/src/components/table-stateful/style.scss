@@ -1,12 +1,7 @@
-@use '../@shared/mixins' as *;
 @use '../style' as *;
 @use '../@shared/kol-table-stateless-mixin' as *;
 
 @layer kol-component {
-	:root {
-		font-size: rem(16);
-	}
-
 	div.pagination .kol-pagination {
 		display: flex;
 		flex-wrap: wrap;

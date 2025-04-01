@@ -9,7 +9,7 @@
 		.kol-button,
 		.kol-button-wc {
 			button {
-				min-height: 40px; // --a11y-min-size - 4px (Border)
+				min-height: var(--a11y-min-size);
 			}
 		}
 	}

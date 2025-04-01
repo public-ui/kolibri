@@ -1,8 +1,1 @@
-@use '../@shared/mixins' as *;
 @use '../style' as *;
-
-@layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-}

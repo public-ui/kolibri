@@ -1,12 +1,7 @@
-@use '../@shared/mixins' as *;
 @use '../style' as *;
 @use '../tooltip/style.scss' as *;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	:host > div {
 		display: flex;
 		flex-direction: column;

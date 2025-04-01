@@ -1,11 +1,6 @@
-@use '../@shared/mixins' as *;
 @use '../style' as *;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	:host > .kol-button-group-wc {
 		display: flex;
 		flex-wrap: wrap;

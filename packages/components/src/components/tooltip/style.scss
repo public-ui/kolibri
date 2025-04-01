@@ -1,10 +1,6 @@
 @use '../@shared/mixins' as *;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.kol-tooltip-wc {
 		display: contents;
 	}
