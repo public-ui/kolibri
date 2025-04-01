@@ -2,10 +2,6 @@
 @use '../mixins/rem' as *;
 
 @layer kol-theme-component {
-	.input > .kol-icon {
-		width: rem(16);
-	}
-
 	select {
 		border: none;
 
