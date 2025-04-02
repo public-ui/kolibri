@@ -38,7 +38,8 @@ describe('FormFieldMsgFc', () => {
 	it('should render the message correctly', async () => {
 		const msg: InternMsgPropType = { description: 'This is an error message' };
 		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldMsgFc id="test-id" msg={msg} />);
+		const ICON_LABEL = 'kol-error';
 
-		expect(page.root?.textContent).toBe(msg.description);
+		expect(page.root?.textContent).toBe(`${ICON_LABEL}${msg.description}`);
 	});
 });
