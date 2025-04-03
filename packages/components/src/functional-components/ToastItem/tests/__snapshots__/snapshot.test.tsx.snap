@@ -4,7 +4,10 @@ exports[`ToastItemFc should render with basic props and status 1`] = `
 <div class="kol-toast-item kol-toast-item--settled">
   <div class="kol-alert kol-alert--card kol-alert--hasCloser kol-alert--info kol-toast-item__alert" role="alert">
     <div class="kol-alert__container">
-      <kol-icon _icons="codicon codicon-info" _label="kol-info" class="kol-alert__heading-icon"></kol-icon>
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <kol-icon _icons="codicon codicon-info" _label="" class="kol-alert__heading-icon"></kol-icon>
       <div class="kol-alert__container-content">
         <strong class="kol-alert__heading kol-headline kol-headline--single kol-headline--strong">
           Test Toast
