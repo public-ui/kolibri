@@ -50,7 +50,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 										_label={'' /* Label deliberately left empty */}
 									/>
 								</span>
-							)}{' '}
+							)}
 							{_label}
 						</span>
 					</KolLinkWcTag>

@@ -31,16 +31,14 @@
 		}
 
 		a {
-			display: block;
 			color: var(--color-black);
 			text-decoration: none;
 			text-align: left;
 
 			.toggle-button {
-				display: inline-block;
 				color: var(--color-blue);
 
-				&:hover {
+				&:hover .toggle-button-icon::part(icon) {
 					transform: scale(1.3);
 				}
 			}

@@ -2,6 +2,8 @@
 @use '../style' as *;
 
 @layer kol-component {
+	$base-horizontal-padding: rem(8);
+
 	ul {
 		margin: 0;
 		padding: 0;
@@ -14,14 +16,23 @@
 		}
 
 		& > a {
+			align-items: center;
+			display: inline-flex;
+			min-height: var(--a11y-min-size);
+			padding-left: max(calc(($base-horizontal-padding + var(--a11y-min-size)) * var(--level)), $base-horizontal-padding);
 			padding-right: rem(6);
-			padding-left: calc(rem(22.4) * var(--level));
-			padding-top: rem(6.4);
-			padding-bottom: rem(6.4);
 		}
 	}
 
 	a .kol-span-wc {
 		place-items: unset; // unset 'center' style from global layer
+	}
+
+	.toggle-button {
+		width: var(--a11y-min-size);
+		height: var(--a11y-min-size);
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
