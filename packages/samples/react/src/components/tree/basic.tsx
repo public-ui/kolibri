@@ -34,6 +34,7 @@ export const TreeBasic: FC = () => {
 			<KolTree _label="Sitemap" class="block w-fit">
 				<KolTreeItem _label={homeLabel} {...getItemProps('home')}></KolTreeItem>
 				<KolTreeItem _label="2 About (open initially)" {...getItemProps('about')} _open>
+					<KolTreeItem _label="2.0 Legal" {...getItemProps('legal')}></KolTreeItem>
 					<KolTreeItem _label="2.1 Team" {...getItemProps('team')}>
 						<KolTreeItem _label="2.1.1. Values" {...getItemProps('values')}></KolTreeItem>
 						<KolTreeItem _label="2.1.2. Members" {...getItemProps('members')}>
