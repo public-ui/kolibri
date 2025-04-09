@@ -10,6 +10,7 @@ import { useToasterService } from '../../hooks/useToasterService';
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
 	{ id: '1002', name: 'Foo Baz', internalIdentifier: `AAA1002` },
+	{ id: '1003', name: 'Foo Disabled', internalIdentifier: `AAA1003` },
 ];
 type Data = (typeof DATA)[0];
 
@@ -30,6 +31,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 		label: (row) => `Selection for ${(row as Data).name}`,
 		multiple: false,
 		selectedKeys,
+		disabledKeys: ['AAA1003'],
 		keyPropertyName: 'internalIdentifier',
 	};
 
