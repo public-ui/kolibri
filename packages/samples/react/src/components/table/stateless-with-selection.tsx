@@ -30,6 +30,7 @@ export const TableStatelessWithSelection: FC = () => {
 		label: (row) => `Selection for ${(row as Data).name}`,
 		selectedKeys,
 		keyPropertyName: 'internalIdentifier',
+		disabledKeys: ['AAA1001'],
 	};
 
 	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>(null);

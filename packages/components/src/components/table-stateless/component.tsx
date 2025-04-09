@@ -444,10 +444,12 @@ export class KolTableStateless implements TableStatelessAPI {
 		const keyProperty = firstCellData[keyPropertyName] as string;
 		const isMultiple = selection.multiple || selection.multiple === undefined;
 		const selected = selection?.selectedKeys?.includes(keyProperty);
+		const disabled = selection?.disabledKeys?.includes(keyProperty);
 		const label = selection.label(firstCellData);
 		const props = {
 			name: 'selection',
 			checked: selected,
+			disabled,
 			id: keyProperty,
 			['aria-label']: label,
 		};
@@ -455,7 +457,11 @@ export class KolTableStateless implements TableStatelessAPI {
 			<td key={`tbody-${rowIndex}-selection`} class="kol-table__cell kol-table__cell--selection">
 				<div class={clsx('kol-table__selection', { 'kol-table__selection--checked': selected })}>
 					{isMultiple ? (
-						<label class="kol-table__selection-label">
+						<label
+							class={clsx('kol-table__selection-label', {
+								'kol-table__selection-label--disabled': disabled,
+							})}
+						>
 							<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
 							<input
 								class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}

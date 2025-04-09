@@ -108,7 +108,7 @@
 				display: block;
 				border-color: var(--color-grey-75);
 
-				&:hover {
+				&:not(:disabled):hover {
 					border-color: var(--color-blue);
 				}
 
@@ -135,8 +135,8 @@
 			}
 		}
 
-		.kol-icon:hover ~ &__selection-input--checkbox,
-		&__selection-input--checkbox:hover {
+		.kol-icon:hover ~ &__selection-input--checkbox:not(:disabled),
+		&__selection-input--checkbox:not(:disabled):hover {
 			border-color: var(--color-blue);
 		}
 	}

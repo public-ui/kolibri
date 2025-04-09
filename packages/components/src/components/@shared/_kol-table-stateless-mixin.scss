@@ -93,6 +93,10 @@
 				justify-content: center;
 				position: relative;
 				width: var(--a11y-min-size);
+
+				&--disabled {
+					cursor: not-allowed;
+				}
 			}
 
 			&__selection-icon {
@@ -107,6 +111,10 @@
 				border-style: solid;
 				cursor: pointer;
 				margin: 0;
+
+				&:disabled {
+					cursor: not-allowed;
+				}
 
 				&:before {
 					content: '';
