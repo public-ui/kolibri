@@ -14,7 +14,6 @@ import comboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
 import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
-import iconCss from './components/icon.scss';
 import indentedTextCss from './components/indented-text.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
@@ -64,7 +63,6 @@ export const BWSt = KoliBri.createTheme('bwst', {
 	'KOL-DETAILS': detailsCss,
 	'KOL-FORM': formCss,
 	'KOL-HEADING': headingCss,
-	'KOL-ICON': iconCss,
 	'KOL-INDENTED-TEXT': indentedTextCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,

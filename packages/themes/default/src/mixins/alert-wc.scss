@@ -247,14 +247,10 @@
 		/* visible on focus */
 		color: var(--color-light);
 		cursor: pointer;
-		height: var(--a11y-min-size);
-		width: var(--a11y-min-size);
 	}
 
 	.close > button.hide-label .kol-icon {
 		display: flex;
-		width: 1em;
-		height: 1em;
 		font-size: rem(19.2);
 	}
 
