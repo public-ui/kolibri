@@ -12,9 +12,9 @@ export const IconBasic: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-4">
-			<KolIcon className="block w-[1em] h-[1m]" _label="" _icons="codicon codicon-home" />
+			<KolIcon className="block w-[1em] h-[1em]" _label="" _icons="codicon codicon-home" />
 			<KolIcon
-				className="block w-[1em] h-[1m]"
+				className="block w-[1em] h-[1em]"
 				style={{
 					color: 'red',
 				}}
