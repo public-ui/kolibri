@@ -154,7 +154,9 @@
 
 	:host .kol-input.default .icon {
 		color: var(--color-light);
+		height: rem(16);
 		margin-left: rem(4);
+		width: rem(16);
 	}
 
 	:host .kol-input.switch input[type='checkbox'] {
