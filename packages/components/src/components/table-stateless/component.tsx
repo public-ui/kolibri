@@ -437,7 +437,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	private renderSelectionCell(row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number): JSX.Element {
 		const selection = this.state._selection;
 		if (!selection) return '';
-		const keyPropertyName = selection.keyPropertyName ?? 'id';
+		const keyPropertyName = this.getSelectionKeyPropertyName();
 		const firstCellData = row[0]?.data;
 
 		if (!firstCellData) return '';
@@ -580,6 +580,34 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	};
 
+	private getSelectionKeyPropertyName(): string {
+		return this.state._selection?.keyPropertyName ?? 'id';
+	}
+
+	private getDataWithSelectionEnabled() {
+		const keyPropertyName = this.getSelectionKeyPropertyName();
+		return this.state._data.filter((item) => !this.state._selection?.disabledKeys?.includes(item[keyPropertyName] as string));
+	}
+
+	private getSelectedKeysWithoutDisabledKeys() {
+		return this.state._selection?.selectedKeys?.filter((key) => !this.state._selection?.disabledKeys?.includes(key));
+	}
+
+	private getSelectedKeysWithDisabledKeysOnly() {
+		return this.state._selection?.selectedKeys?.filter((key) => this.state._selection?.disabledKeys?.includes(key));
+	}
+
+	private getRevertedSelection(selectAll: boolean) {
+		const keyPropertyName = this.getSelectionKeyPropertyName();
+		const selection = this.getSelectedKeysWithDisabledKeysOnly() ?? []; // Always include already selected, but disabled, rows.
+
+		if (selectAll) {
+			selection.push(...this.getDataWithSelectionEnabled().map((el) => el?.[keyPropertyName] as string)); // add all enabled rows
+		}
+
+		return selection;
+	}
+
 	/**
 	 * Renders the header cell for row selection. This cell contains a checkbox for selecting
 	 * all rows when selection is enabled. If multiple selection is allowed, the checkbox allows
@@ -592,9 +620,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		const selection = this.state._selection;
 		if (!selection || (!selection.multiple && selection.multiple !== undefined))
 			return <th class="kol-table__cell kol-table__cell--header" key={`thead-0`}></th>;
-		const keyPropertyName = selection.keyPropertyName ?? 'id';
-		const selectedKeyLength = selection.selectedKeys?.length;
-		const dataLength = this.state._data.length;
+		const selectedKeyLength = this.getSelectedKeysWithoutDisabledKeys()?.length ?? 0;
+		const dataLength = this.getDataWithSelectionEnabled().length;
 		const isChecked = selectedKeyLength === dataLength;
 		const indeterminate = selectedKeyLength !== 0 && !isChecked;
 		let translationKey = 'kol-table-selection-indeterminate' as TranslationKey;
@@ -623,8 +650,7 @@ export class KolTableStateless implements TableStatelessAPI {
 							aria-label={label}
 							type="checkbox"
 							onInput={(event: Event) => {
-								const selections = !isChecked ? this.state._data.map((el) => el?.[keyPropertyName] as string) : [];
-								this.handleSelectionChangeCallbackAndEvent(event, selections);
+								this.handleSelectionChangeCallbackAndEvent(event, this.getRevertedSelection(!isChecked));
 							}}
 						/>
 					</label>
