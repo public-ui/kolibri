@@ -644,9 +644,11 @@ export class KolTableStateless implements TableStatelessAPI {
 						<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
 						<input
 							class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
+							data-testid="selection-checkbox-all"
 							ref={(el) => el && this.checkboxRefs.push(el)}
 							name="selection"
 							checked={isChecked && !indeterminate}
+							indeterminate={indeterminate}
 							aria-label={label}
 							type="checkbox"
 							onInput={(event: Event) => {
