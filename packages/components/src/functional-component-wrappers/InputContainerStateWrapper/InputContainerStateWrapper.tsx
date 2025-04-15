@@ -87,15 +87,17 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ sta
 	}
 
 	if (leftIconProps) {
-		startAdornment.push(<KolIconButtonFc componentName="icon" {...(isObject(leftIconProps) ? leftIconProps : {})} />);
+		startAdornment.push(<KolIconButtonFc componentName="icon" class="kol-input-container__icon" {...(isObject(leftIconProps) ? leftIconProps : {})} />);
 	}
 
 	if (isObject(smartButton)) {
-		endAdornment.push(<KolIconButtonFc componentName="button" {...smartButton} hideLabel={true} disabled={disabled} />);
+		endAdornment.push(
+			<KolIconButtonFc componentName="button" class="kol-input-container__smart-button" {...smartButton} hideLabel={true} disabled={disabled} />,
+		);
 	}
 
 	if (rightIconProps) {
-		endAdornment.push(<KolIconButtonFc componentName="icon" {...(isObject(rightIconProps) ? rightIconProps : {})} />);
+		endAdornment.push(<KolIconButtonFc componentName="icon" class="kol-input-container__icon" {...(isObject(rightIconProps) ? rightIconProps : {})} />);
 	}
 
 	return (
