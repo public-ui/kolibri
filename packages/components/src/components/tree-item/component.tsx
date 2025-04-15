@@ -40,8 +40,8 @@ export class KolTreeItemWc implements TreeItemAPI {
 						_ariaOwns={_hasChildren ? this.groupId : undefined}
 						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
 					>
-						<span slot="expert">
-							{_hasChildren && (
+						<span class="kol-tree-item__link-inner" slot="expert">
+							{_hasChildren ? (
 								// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
 								<span
 									class="kol-tree-item__toggle-button"
@@ -53,7 +53,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 										_label={'' /* Label deliberately left empty */}
 									/>
 								</span>
-							)}{' '}
+							) : (
+								<span class="kol-tree-item__toggle-button-placeholder"></span>
+							)}
 							{_label}
 						</span>
 					</KolLinkWcTag>
