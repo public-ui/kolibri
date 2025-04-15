@@ -19,15 +19,8 @@ if (!tempDir) {
 process.env.THEME_MODULE = path.join(process.cwd(), process.env.THEME_MODULE); // Use current working directory (i.e. the theme folder) to complete module path
 const visualsTestModulePath = fileURLToPath(new URL('..', import.meta.url));
 const binaryPath = fileURLToPath(new URL('../node_modules/.bin', import.meta.url));
-
-let sampleReactPath = '../node_modules/@public-ui/visual-tests/node_modules/@public-ui/sample-react';
-let backSteps = ``;
-let workingDir = null;
-do {
-	const url = new URL(backSteps + sampleReactPath, import.meta.url);
-	workingDir = fileURLToPath(url);
-	backSteps += `../`;
-} while (!fs.existsSync(workingDir) && path.resolve(process.cwd(), backSteps) !== '/');
+const sampleReactPackageJsonPath = import.meta.resolve('@public-ui/sample-react/package.json');
+const workingDir = fileURLToPath(path.dirname(sampleReactPackageJsonPath));
 
 if (!fs.existsSync(workingDir)) {
 	throw new Error('Could not find React Sample App package. Please install it with "npm install @public-ui/sample-react".');
