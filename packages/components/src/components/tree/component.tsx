@@ -121,6 +121,7 @@ export class KolTreeWc implements TreeAPI {
 	public async handleKeyDown(event: KeyboardEvent) {
 		const openItems = await this.getOpenTreeItemElements();
 		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
+		const hasModifierKeyPressed = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
 
 		if (!openItems || !currentTreeItem) {
 			return;
@@ -172,16 +173,19 @@ export class KolTreeWc implements TreeAPI {
 				break;
 			}
 			case event.key.match(/[a-zA-Z0-9]/)?.input: {
-				const char = event.key.toLowerCase();
-				const startIndex = openItems.indexOf(currentTreeItem) + 1;
-				const wrapAroundItems = openItems.concat(openItems);
-				const matchIndex = wrapAroundItems
-					.slice(startIndex, startIndex + openItems.length)
-					.findIndex((item) => item.getAttribute('_label')?.trim().toLowerCase().startsWith(char));
+				/* Ignore events with any modifier key to avoid breaking native browser or OS shortcuts such as ⌘+L */
+				if (!hasModifierKeyPressed) {
+					const char = event.key.toLowerCase();
+					const startIndex = openItems.indexOf(currentTreeItem) + 1;
+					const wrapAroundItems = openItems.concat(openItems);
+					const matchIndex = wrapAroundItems
+						.slice(startIndex, startIndex + openItems.length)
+						.findIndex((item) => item.getAttribute('_label')?.trim().toLowerCase().startsWith(char));
 
-				if (matchIndex !== -1) {
-					await wrapAroundItems[startIndex + matchIndex].focusLink();
-					event.preventDefault();
+					if (matchIndex !== -1) {
+						await wrapAroundItems[startIndex + matchIndex].focusLink();
+						event.preventDefault();
+					}
 				}
 				break;
 			}
