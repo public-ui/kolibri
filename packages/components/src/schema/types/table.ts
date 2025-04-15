@@ -25,4 +25,5 @@ export type KoliBriTableSelection = {
 	keyPropertyName?: string;
 	multiple?: boolean;
 	selectedKeys?: string[];
+	disabledKeys?: string[];
 };

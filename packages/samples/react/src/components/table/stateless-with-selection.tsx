@@ -10,6 +10,8 @@ import { useToasterService } from '../../hooks/useToasterService';
 const DATA = [
 	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
 	{ id: '1002', name: 'Foo Baz', internalIdentifier: `AAA1002` },
+	{ id: '1003', name: 'This row is always unchecked', internalIdentifier: `AAA1003` },
+	{ id: '1004', name: 'This row is always checked', internalIdentifier: `AAA1004` },
 ];
 type Data = (typeof DATA)[0];
 
@@ -24,12 +26,13 @@ function KolButtonWrapper({ label }: { label: string }) {
 }
 
 export const TableStatelessWithSelection: FC = () => {
-	const [selectedKeys, setSelectedKeys] = useState(['AAA1002']);
+	const [selectedKeys, setSelectedKeys] = useState(['AAA1002', 'AAA1004']);
 
 	const selection: KoliBriTableSelection = {
 		label: (row) => `Selection for ${(row as Data).name}`,
 		selectedKeys,
 		keyPropertyName: 'internalIdentifier',
+		disabledKeys: ['AAA1003', 'AAA1004'],
 	};
 
 	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>(null);
