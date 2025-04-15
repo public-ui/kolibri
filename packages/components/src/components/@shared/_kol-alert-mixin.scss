@@ -11,6 +11,7 @@
 		.kol-alert-wc .heading {
 			display: flex;
 			place-items: center;
+			overflow: hidden; // Avoid issues in high contrast mode. @see https://github.com/public-ui/kolibri/pull/7563#issuecomment-2801297809
 		}
 
 		.kol-alert-wc .heading > div {
