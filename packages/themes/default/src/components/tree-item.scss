@@ -1,6 +1,10 @@
 @use '../mixins/rem' as *;
 
 @layer kol-theme-component {
+	.tree-item {
+		--tree-item-indentation: #{rem(20)};
+	}
+
 	.tree-link {
 		display: block;
 		border: 1px solid transparent;
@@ -30,16 +34,13 @@
 		}
 
 		a {
-			display: block;
 			color: var(--color-text);
 			text-decoration: none;
 			text-align: left;
 
-			.toggle-button {
-				display: inline-block;
-
-				&:hover {
-					transform: scale(1.3);
+			.toggle-button:hover {
+				.toggle-button-icon::part(icon) {
+					transform: scale(1.6);
 				}
 			}
 		}

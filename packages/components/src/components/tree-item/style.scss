@@ -2,6 +2,12 @@
 @use '../style' as *;
 
 @layer kol-component {
+	$base-horizontal-padding: rem(8);
+
+	.tree-item {
+		--indentation: var(--tree-item-indentation, #{rem(10)}); // Set `--tree-item-indentation` in themes to control padding
+	}
+
 	ul {
 		margin: 0;
 		padding: 0;
@@ -14,14 +20,29 @@
 		}
 
 		& > a {
+			align-items: center;
+			display: inline-flex;
+			min-height: var(--a11y-min-size);
+			padding-left: max(calc((var(--indentation) * var(--level)) + $base-horizontal-padding), $base-horizontal-padding);
 			padding-right: rem(6);
-			padding-left: calc(rem(22.4) * var(--level));
-			padding-top: rem(6.4);
-			padding-bottom: rem(6.4);
 		}
+	}
+
+	.tree-link-inner {
+		display: flex;
+		align-items: center;
 	}
 
 	a .kol-span-wc {
 		place-items: unset; // unset 'center' style from global layer
+	}
+
+	.toggle-button,
+	.toggle-button-placeholder {
+		width: var(--a11y-min-size);
+		height: var(--a11y-min-size);
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
