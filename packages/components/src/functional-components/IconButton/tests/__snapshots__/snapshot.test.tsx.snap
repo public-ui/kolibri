@@ -5,7 +5,6 @@ exports[`KolIconButtonFc should render button component correctly 1`] = `
   _hidelabel=""
   _icons="codicon codicon-test-icon"
   _label="Test Button"
-  tabindex="0"
 />
 `;
 
@@ -22,6 +21,5 @@ exports[`KolIconButtonFc should render with additional props 1`] = `
   _icons="codicon codicon-test-icon"
   _label="Test Button"
   class="custom-class"
-  tabindex="0"
 />
 `;

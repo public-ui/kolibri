@@ -11,7 +11,7 @@ export type ButtonProps = Partial<InternalButtonProps> & {
 const KolButtonFc: FC<ButtonProps> = (props) => {
 	const { label, icons, hideLabel, disabled, onClick, ...other } = props;
 
-	return <KolButtonWcTag tabindex={0} _label={label} _disabled={disabled} _icons={icons} _hideLabel={hideLabel} _on={{ onClick }} {...other} />;
+	return <KolButtonWcTag _label={label} _disabled={disabled} _icons={icons} _hideLabel={hideLabel} _on={{ onClick }} {...other} />;
 };
 
 export default KolButtonFc;
