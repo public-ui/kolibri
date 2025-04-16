@@ -21,14 +21,11 @@
 	.kol-field-control {
 		$root: &;
 
-		&__label {
-			@at-root #{$root}--label-align-left & {
-				padding-right: rem(6.4);
-			}
-
-			@at-root #{$root}--label-align-right & {
-				padding-left: rem(6.4);
-			}
+		&--label-align-left:not(.kol-input-checkbox__field-control--variant-button) &__label {
+			padding-right: rem(6.4);
+		}
+		&--label-align-right:not(.kol-input-checkbox__field-control--variant-button) &__label {
+			padding-left: rem(6.4);
 		}
 	}
 
@@ -150,9 +147,7 @@
 		$root: &;
 
 		&--variant-button {
-			gap: unset;
-
-			& .kol-field-control {
+			.kol-field-control {
 				&__input,
 				&__label {
 					border-color: var(--color-primary);
