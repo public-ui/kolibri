@@ -106,12 +106,12 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
+            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container"><textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
         </div>
       </div>
@@ -134,7 +134,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
+            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
           <div class="kol-input-container__container"><textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
           </div>
@@ -163,7 +163,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__container"><textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" class="kol-input-container__icon"></kol-icon>
           </div>
         </div>
       </div>

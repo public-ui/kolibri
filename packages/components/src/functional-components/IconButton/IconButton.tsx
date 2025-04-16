@@ -5,7 +5,7 @@ import KolIconFc, { type IconProps } from '../Icon';
 type IconType = Partial<Omit<IconProps, 'icons'>> & {
 	componentName: 'icon';
 	icon?: string;
-	class?: never;
+	class?: string;
 
 	onClick?: (event: MouseEvent) => void;
 };
