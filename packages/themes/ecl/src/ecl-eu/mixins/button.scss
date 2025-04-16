@@ -16,7 +16,7 @@
 			--text-color: #fff;
 			--text-focus-outline-color: #fff;
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-background-color: #3e6cd5;
 			}
 		}
@@ -27,7 +27,7 @@
 			--text-border-color: #0e47cb;
 			--text-focus-outline-color: #fff;
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-color: #0e47cb;
 			}
 		}
@@ -38,7 +38,7 @@
 			--text-focus-outline-color: #000;
 			--text-border-color: #fc0;
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-background-color: #fc0;
 			}
 		}
@@ -48,7 +48,7 @@
 			--text-border-color: var(--color-red);
 			--text-color: var(--color-white);
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-background-color: var(--color-red);
 				--text-border-color: var(--color-red);
 			}
@@ -58,7 +58,7 @@
 			--text-color: #0e47cb;
 			--text-focus-outline-color: #0e47cb;
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-color: #0e47cb;
 			}
 		}
@@ -84,7 +84,7 @@
 			color: var(--text-color);
 
 			&:active,
-			&:hover {
+			&:not(:disabled):hover {
 				box-shadow:
 					0 rem(2) rem(4) rgb(9 49 142 / 8%),
 					0 0 rem(10) rgb(9 49 142 / 4%),

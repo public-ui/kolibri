@@ -26,7 +26,17 @@
 	}
 
 	.kol-field-control {
-		gap: rem(8);
+		$root: &;
+
+		&__label {
+			@at-root #{$root}--label-align-left & {
+				padding-right: rem(8);
+			}
+
+			@at-root #{$root}--label-align-right & {
+				padding-left: rem(8);
+			}
+		}
 
 		&__label {
 			&-text::after {
@@ -57,12 +67,12 @@
 				border-color: var(--color-blue);
 			}
 
-			&:hover {
+			&:not(:disabled):hover {
 				border-color: var(--color-blue);
 			}
 
 			&:checked {
-				&:hover {
+				&:not(:disabled):hover {
 					background-color: var(--color-blue-130);
 					border-color: var(--color-blue-130);
 				}
@@ -76,12 +86,12 @@
 					border-color: var(--color-red);
 				}
 
-				&:hover {
+				&:not(:disabled):hover {
 					border-color: var(--color-red);
 				}
 
 				&:checked {
-					&:hover {
+					&:not(:disabled):hover {
 						background-color: var(--color-red-120);
 						border-color: var(--color-red-120);
 					}
@@ -118,7 +128,7 @@
 		}
 
 		&:hover {
-			.kol-input::before {
+			.kol-input:not(:disabled)::before {
 				background-color: var(--color-blue);
 			}
 		}
@@ -139,7 +149,7 @@
 			}
 
 			&:hover {
-				.kol-input::before {
+				.kol-input:not(:disabled)::before {
 					background-color: var(--color-red);
 				}
 			}

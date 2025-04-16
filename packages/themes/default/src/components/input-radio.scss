@@ -40,17 +40,13 @@
 	}
 
 	.kol-field-control {
-		&__wrapper {
-			gap: rem(8);
-		}
-
 		&__label {
 			padding-top: 0.1em;
+			padding-left: rem(8);
 		}
 	}
 
 	.kol-input-radio {
-		cursor: pointer;
 		width: 100%;
 		border-color: var(--color-subtle);
 		border-width: 2px;
@@ -58,7 +54,7 @@
 		border-radius: 50%;
 		line-height: 1.5;
 
-		&:hover {
+		&:not(:disabled):hover {
 			border-color: var(--color-primary);
 			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
 		}
@@ -80,7 +76,6 @@
 		}
 
 		&:disabled {
-			cursor: not-allowed;
 			background-color: var(--color-mute-variant);
 		}
 	}

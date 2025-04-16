@@ -13,7 +13,6 @@
 .kol-input-color {
 	&__input {
 		&--color {
-			cursor: pointer;
 			flex-grow: 1;
 		}
 
@@ -27,5 +26,13 @@
 		display: flex;
 		flex-direction: row;
 		gap: rem(6) !important;
+	}
+}
+
+.kol-input {
+	cursor: pointer;
+
+	&:disabled {
+		cursor: not-allowed;
 	}
 }

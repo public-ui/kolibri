@@ -8,9 +8,5 @@
 		&::placeholder {
 			color: var(--color-subtle);
 		}
-
-		&:disabled {
-			cursor: not-allowed;
-		}
 	}
 }

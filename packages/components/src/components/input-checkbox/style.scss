@@ -16,29 +16,27 @@
 	}
 
 	#{$root} {
-		position: relative;
-		display: flex;
 		align-items: center;
+		cursor: pointer;
+		display: flex;
+		position: relative;
+
+		&--disabled {
+			cursor: not-allowed;
+		}
 
 		.kol-input {
-			font-size: rem(16);
-
 			appearance: none;
 			background-color: #fff;
-			cursor: pointer;
-			transition: 0.5s;
-
-			margin: 0;
 			border-style: solid;
 			border-width: 2px;
+			cursor: inherit;
+			font-size: rem(16);
+			margin: 0;
+			transition: 0.5s;
 
 			&:before {
 				content: '';
-				cursor: pointer;
-			}
-
-			&:disabled:before {
-				cursor: not-allowed;
 			}
 		}
 	}
@@ -110,7 +108,6 @@
 		}
 
 		.kol-icon {
-			cursor: pointer;
 			display: flex;
 			align-items: center;
 			justify-content: center;

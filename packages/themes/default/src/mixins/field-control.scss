@@ -2,8 +2,6 @@
 
 @mixin kol-field-control-theme {
 	.kol-field-control {
-		column-gap: rem(8);
-
 		&--required & {
 			&__label-text {
 				&::after {
