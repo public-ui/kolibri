@@ -12,11 +12,6 @@
 		&--disabled {
 			#{$root}__input {
 				outline: none;
-				cursor: not-allowed;
-			}
-
-			#{$root}__label {
-				cursor: not-allowed;
 			}
 		}
 	}
@@ -24,13 +19,19 @@
 	@include kol-field-control-theme;
 
 	.kol-field-control {
-		gap: rem(6.4);
+		$root: &;
+
+		&--label-align-left:not(.kol-input-checkbox__field-control--variant-button) &__label {
+			padding-right: rem(6.4);
+		}
+		&--label-align-right:not(.kol-input-checkbox__field-control--variant-button) &__label {
+			padding-left: rem(6.4);
+		}
 	}
 
 	.kol-checkbox {
 		.kol-input {
 			@include kol-typography-body;
-			cursor: pointer;
 			order: 1;
 			width: 100%;
 			border-color: var(--color-subtle);
@@ -48,10 +49,6 @@
 				border-color: var(--color-primary);
 			}
 
-			&:disabled {
-				cursor: not-allowed;
-			}
-
 			&:focus {
 				@include focus-outline;
 			}
@@ -64,7 +61,7 @@
 				box-shadow: none;
 			}
 
-			&:hover {
+			&:not(:disabled):hover {
 				border-color: var(--color-primary);
 				box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
 			}
@@ -150,9 +147,7 @@
 		$root: &;
 
 		&--variant-button {
-			gap: unset;
-
-			& .kol-field-control {
+			.kol-field-control {
 				&__input,
 				&__label {
 					border-color: var(--color-primary);
@@ -283,11 +278,6 @@
 						&__input {
 							opacity: 0.5;
 							outline: none;
-							cursor: not-allowed;
-						}
-
-						&__label {
-							cursor: not-allowed;
 						}
 					}
 				}

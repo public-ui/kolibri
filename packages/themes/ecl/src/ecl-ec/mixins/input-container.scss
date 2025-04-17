@@ -17,8 +17,12 @@
 		}
 
 		&:focus-within,
-		&:hover {
+		&:not(&--disabled):hover {
 			border-color: var(--color-blue);
+		}
+
+		&--disabled {
+			cursor: not-allowed;
 		}
 
 		&#{&}--error {

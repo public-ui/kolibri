@@ -18,6 +18,14 @@
 
 @layer kol-component {
 	.kol-single-select {
+		&__delete {
+			cursor: pointer;
+
+			&--disabled {
+				cursor: not-allowed;
+			}
+		}
+
 		&__no-results-message {
 			cursor: default;
 			display: flex;

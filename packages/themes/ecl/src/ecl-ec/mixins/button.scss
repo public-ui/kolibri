@@ -26,7 +26,7 @@
 				--text-focus-outline-color: var(--color-white);
 			}
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-background-color: var(--color-blue-130);
 				--text-border-color: var(--color-blue-130);
 			}
@@ -41,7 +41,7 @@
 				--text-focus-outline-color: var(--color-blue);
 			}
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-border-color: var(--color-blue-130);
 				--text-color: var(--color-blue-130);
 			}
@@ -52,7 +52,7 @@
 			--text-border-color: var(--color-yellow);
 			--text-color: var(--color-black);
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-background-color: var(--color-yellow-120);
 				--text-border-color: var(--color-yellow-120);
 			}
@@ -67,7 +67,7 @@
 				--text-focus-outline-color: var(--color-white);
 			}
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-background-color: var(--color-red);
 				--text-border-color: var(--color-red);
 			}
@@ -82,7 +82,7 @@
 				--text-focus-outline-color: var(--color-blue);
 			}
 
-			&:hover {
+			&:not(:disabled):hover {
 				--text-background-color: unset;
 				--text-border-color: transparent;
 				--text-color: var(--color-blue-130);

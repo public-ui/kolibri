@@ -33,6 +33,7 @@
 			background-color: var(--color-mute);
 			border-color: var(--color-mute-variant);
 			color: var(--color-text);
+			cursor: not-allowed;
 		}
 
 		&:not(&--disabled) {

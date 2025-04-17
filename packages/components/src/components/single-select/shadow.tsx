@@ -31,7 +31,8 @@ import CustomSuggestionsToggleFc from '../../functional-components/CustomSuggest
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import { EventDetail } from '../../schema/interfaces/EventDetail';
+import type { EventDetail } from '../../schema/interfaces/EventDetail';
+import clsx from 'clsx';
 
 /**
  * @slot - The input field label.
@@ -256,7 +257,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 									this.clearSelection();
 									this.refInput?.focus();
 								}}
-								class="kol-single-select__delete"
+								class={clsx('kol-single-select__delete', {
+									'kol-single-select__delete--disabled': this.state._disabled,
+								})}
 							/>
 						)}
 
