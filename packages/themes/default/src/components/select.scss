@@ -12,11 +12,6 @@
 		&__option {
 			margin: rem(1) 0;
 			border-radius: var(--border-radius);
-			cursor: pointer;
-
-			&:disabled {
-				cursor: not-allowed;
-			}
 
 			&:active:not(:disabled),
 			&:checked:not(:disabled),

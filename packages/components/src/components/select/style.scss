@@ -12,8 +12,11 @@
 @layer kol-component {
 	.kol-select {
 		font-size: rem(16);
-		cursor: pointer;
 		width: 100%;
+
+		&:not(:disabled) {
+			cursor: pointer;
+		}
 
 		&:not([multiple], [size]) {
 			height: 2.75em;

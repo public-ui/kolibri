@@ -13,10 +13,6 @@
 		display: block;
 		overflow: auto;
 
-		&:disabled {
-			cursor: not-allowed;
-		}
-
 		&::placeholder {
 			color: var(--color-subtle);
 		}

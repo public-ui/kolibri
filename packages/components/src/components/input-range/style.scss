@@ -20,6 +20,8 @@
 		}
 
 		&__input {
+			$input: &;
+
 			&--number {
 				width: var(--kolibri-input-range--input-number--width);
 			}
@@ -43,8 +45,11 @@
 					height: rem(20);
 					width: rem(20);
 					border-radius: 20px;
-					cursor: pointer;
 					-webkit-appearance: none;
+
+					@at-root #{$input}:not(:disabled)#{&} {
+						cursor: pointer;
+					}
 
 					@media (prefers-contrast: more) or (forced-colors: active) {
 						outline: 1px solid currentColor;
@@ -57,8 +62,11 @@
 					height: rem(20);
 					width: rem(20);
 					border-radius: 20px;
-					cursor: pointer;
 					-moz-appearance: none;
+
+					@at-root #{$input}:not(:disabled)#{&} {
+						cursor: pointer;
+					}
 				}
 			}
 		}
