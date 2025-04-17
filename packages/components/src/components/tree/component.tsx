@@ -172,7 +172,7 @@ export class KolTreeWc implements TreeAPI {
 				event.preventDefault();
 				break;
 			}
-			case event.key.match(/[a-zA-Z0-9]/)?.input: {
+			case event.key.match(/^[a-zA-Z0-9]$/)?.input: {
 				/* Ignore events with any modifier key to avoid breaking native browser or OS shortcuts such as ⌘+L */
 				if (!hasModifierKeyPressed) {
 					const char = event.key.toLowerCase();
