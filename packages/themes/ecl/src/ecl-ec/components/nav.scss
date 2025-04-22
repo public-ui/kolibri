@@ -82,4 +82,25 @@
 	.expanded > div > .expand-button kol-icon::part(icon)::before {
 		content: '\eab4';
 	}
+
+	button.toggle-button :focus .kol-span-wc {
+		outline-offset: -2px;
+	}
+
+	.toggle-button a .kol-span-wc,
+	.toggle-button button .kol-span-wc {
+		background-color: transparent;
+		border-color: transparent;
+		color: var(--color-blue);
+	}
+
+	.toggle-button a:focus .kol-span-wc,
+	.toggle-button button:focus .kol-span-wc {
+		outline-color: var(--color-blue);
+	}
+
+	.toggle-button a:hover .kol-span-wc,
+	.toggle-button button:hover .kol-span-wc {
+		color: var(--color-blue-130);
+	}
 }
