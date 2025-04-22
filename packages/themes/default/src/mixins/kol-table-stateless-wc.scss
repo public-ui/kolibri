@@ -26,7 +26,12 @@
 		}
 
 		&__caption {
-			padding: rem(8);
+			padding: rem(8) var(--a11y-min-size) rem(8) rem(8);
+		}
+
+		&__configuration-button {
+			right: rem(8);
+			top: rem(8);
 		}
 
 		&__focus-element {

@@ -1,6 +1,6 @@
-@use '../@shared/mixins' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style.scss' as *;
+@use './mixins' as *;
 
 @mixin kol-table-stateless-styles {
 	@layer kol-component {
@@ -19,12 +19,13 @@
 			&__caption {
 				text-align: start;
 				min-height: var(--a11y-min-size); // align with configuration button
+				padding-right: var(--a11y-min-size);
 			}
 
 			&__configuration-button {
 				position: absolute;
-				right: rem(8);
-				top: rem(8);
+				top: 0;
+				right: 0;
 			}
 
 			&__focus-element {
