@@ -28,7 +28,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
-import { KolButtonTag, KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import type { StencilUnknown } from '../../schema';
 
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
@@ -230,7 +230,7 @@ export class KolNav implements NavAPI {
 					</nav>
 					{hasCompactButton && (
 						<div class="compact">
-							<KolButtonTag
+							<KolButtonWcTag
 								_ariaControls="nav"
 								_ariaExpanded={!hideLabel}
 								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
@@ -246,7 +246,7 @@ export class KolNav implements NavAPI {
 								}}
 								_tooltipAlign="right"
 								_variant="ghost"
-							></KolButtonTag>
+							></KolButtonWcTag>
 						</div>
 					)}
 				</div>
