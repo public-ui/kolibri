@@ -1,6 +1,10 @@
 @use './rem' as *;
+@use './button' as *;
+@use './kol-table-settings-wc' as *;
 
-@mixin kol-table-stateless-wc {
+@mixin kol-table-stateless-theme {
+	@include kol-table-settings-theme;
+
 	.kol-table {
 		$root: &;
 
@@ -27,11 +31,6 @@
 
 		&__caption {
 			padding: rem(8) var(--a11y-min-size) rem(8) rem(8);
-		}
-
-		&__configuration-button {
-			right: rem(8);
-			top: rem(8);
 		}
 
 		&__focus-element {

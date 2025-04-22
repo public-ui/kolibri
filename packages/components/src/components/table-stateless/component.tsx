@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import clsx from 'clsx';
-import { KolButtonWcTag, KolIconTag, KolPopoverButtonWcTag, KolTooltipWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolIconTag, KolTableSettingsWcTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import type {
@@ -819,14 +819,7 @@ export class KolTableStateless implements TableStatelessAPI {
 						{this.state._label}
 					</caption>
 
-					<KolPopoverButtonWcTag
-						class="kol-table__configuration-button"
-						_icons="codicon codicon-settings-gear"
-						_label={translate('kol-table-configuration')}
-						_hideLabel
-					>
-						Settings here
-					</KolPopoverButtonWcTag>
+					<KolTableSettingsWcTag />
 
 					{Array.isArray(this.state._headerCells.horizontal) && (
 						<thead class="kol-table__head">
