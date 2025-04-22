@@ -231,6 +231,7 @@ export class KolNav implements NavAPI {
 					{hasCompactButton && (
 						<div class="compact">
 							<KolButtonWcTag
+								class="toggle-button"
 								_ariaControls="nav"
 								_ariaExpanded={!hideLabel}
 								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
