@@ -1,8 +1,13 @@
 @use './rem' as *;
+@use './button' as *;
 
 @mixin kol-table-settings-theme {
 	.kol-table-settings {
 		right: rem(8);
 		top: rem(8);
+
+		&__actions {
+			@include kol-button('kol-button');
+		}
 	}
 }
