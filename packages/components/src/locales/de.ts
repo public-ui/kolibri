@@ -40,6 +40,7 @@ export default {
 	'table-selection-all': 'Alle auswählen',
 	'table-selection-none': 'Alle abwählen',
 	'table-selection-indeterminate': 'Alle auswählen bei teilweiser Auswahl',
+	'table-configuration': 'Tabellenkonfiguration',
 	dropdown: 'Auswahlliste',
 	'nav-label-open': 'Untermenü zu {{label}} öffnen',
 	'nav-label-close': 'Untermenü zu {{label}} schließen',

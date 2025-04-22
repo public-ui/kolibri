@@ -8,6 +8,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
       <caption class="kol-table__caption" id="caption">
         Table with horizontal and vertical headers
       </caption>
+      <kol-button-wc _hidelabel="" _icons="codicon codicon-settings-gear" _label="kol-table-configuration" class="kol-table__configuration-button"></kol-button-wc>
       <thead class="kol-table__head">
         <tr class="kol-table__head-row">
           <td aria-hidden="true" colspan="1" rowspan="1"></td>
@@ -82,6 +83,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
       <caption class="kol-table__caption" id="caption">
         Table with only horizontal headers
       </caption>
+      <kol-button-wc _hidelabel="" _icons="codicon codicon-settings-gear" _label="kol-table-configuration" class="kol-table__configuration-button"></kol-button-wc>
       <thead class="kol-table__head">
         <tr class="kol-table__head-row">
           <th class="kol-table__cell kol-table__cell--align-left kol-table__cell--header" data-sort="sort-undefined" scope="col">
@@ -126,6 +128,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
       <caption class="kol-table__caption" id="caption">
         Table with two horizontal header rows
       </caption>
+      <kol-button-wc _hidelabel="" _icons="codicon codicon-settings-gear" _label="kol-table-configuration" class="kol-table__configuration-button"></kol-button-wc>
       <thead class="kol-table__head">
         <tr class="kol-table__head-row">
           <td aria-hidden="true" colspan="1" rowspan="2"></td>
@@ -185,6 +188,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
       <caption class="kol-table__caption" id="caption">
         Table with two spanned horizontal and vertical headers
       </caption>
+      <kol-button-wc _hidelabel="" _icons="codicon codicon-settings-gear" _label="kol-table-configuration" class="kol-table__configuration-button"></kol-button-wc>
       <thead class="kol-table__head">
         <tr class="kol-table__head-row">
           <td aria-hidden="true" colspan="2" rowspan="2"></td>

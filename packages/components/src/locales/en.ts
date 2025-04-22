@@ -40,6 +40,7 @@ export default {
 	'table-selection-all': 'Select all',
 	'table-selection-none': 'Deselect all',
 	'table-selection-indeterminate': 'Select all with partial selection',
+	'table-configuration': 'Table configuration',
 	dropdown: 'Dropdown',
 	'nav-label-open': 'Submenu for {{label}} open',
 	'nav-label-close': 'Submenu for {{label}} close',

@@ -7,10 +7,10 @@
 		.kol-table {
 			display: block;
 			font-size: rem(16);
-
 			max-width: 100%;
 			overflow-x: auto;
 			overflow-y: hidden;
+			position: relative;
 
 			&__table {
 				width: 100%;
@@ -18,6 +18,13 @@
 
 			&__caption {
 				text-align: start;
+				min-height: var(--a11y-min-size); // align with configuration button
+			}
+
+			&__configuration-button {
+				position: absolute;
+				right: rem(8);
+				top: rem(8);
 			}
 
 			&__focus-element {

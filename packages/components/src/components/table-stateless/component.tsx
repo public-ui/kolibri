@@ -819,6 +819,13 @@ export class KolTableStateless implements TableStatelessAPI {
 						{this.state._label}
 					</caption>
 
+					<KolButtonWcTag
+						class="kol-table__configuration-button"
+						_icons="codicon codicon-settings-gear"
+						_label={translate('kol-table-configuration')}
+						_hideLabel
+					/>
+
 					{Array.isArray(this.state._headerCells.horizontal) && (
 						<thead class="kol-table__head">
 							{[
