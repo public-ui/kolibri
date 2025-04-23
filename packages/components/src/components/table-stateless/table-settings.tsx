@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h } from '@stencil/core';
 import { translate } from '../../i18n';
-import { KolPopoverButtonWcTag, KolInputNumberTag, KolInputCheckboxTag, KolButtonWcTag } from '../../core/component-names';
+import { KolPopoverButtonWcTag, KolInputNumberTag, KolInputCheckboxTag, KolButtonWcTag, KolHeadingTag } from '../../core/component-names';
 
 /**
  * @internal
@@ -13,14 +13,44 @@ import { KolPopoverButtonWcTag, KolInputNumberTag, KolInputCheckboxTag, KolButto
 export class KolTableSettings {
 	public render(): JSX.Element {
 		return (
-			<KolPopoverButtonWcTag class="kol-table-settings" _icons="codicon codicon-settings-gear" _label={translate('kol-table-settings')} _hideLabel>
+			<KolPopoverButtonWcTag
+				class="kol-table-settings"
+				_icons="codicon codicon-settings-gear"
+				_label={translate('kol-table-settings')}
+				_popoverAlign="top"
+				_hideLabel
+			>
 				<div class="kol-table-settings__content">
-					<h2 class="kol-table-settings__title">{translate('kol-table-settings')}</h2>
-					<div class="kol-table-settings__columns">
-						<div class="kol-table-settings__column">
+					<KolHeadingTag _label={translate('kol-table-settings')} _level={0} />
+
+					<div class="kol-table-settings__columns-container">
+						<div class="kol-table-settings__columns">
 							<KolInputCheckboxTag _checked _label={translate('kol-table-settings-show-column', { placeholders: { column: 'Left Column' } })} _hideLabel />
 							<span>Left Column</span>
+							<KolInputNumberTag _hideLabel _value={10} _label={translate('kol-table-settings-column-width', { placeholders: { column: 'Left Column' } })} />
+							<KolButtonWcTag _icons="codicon codicon-arrow-up" _label={translate('kol-table-settings-move-up')} _hideLabel _variant="ghost" />
+							<KolButtonWcTag _icons="codicon codicon-arrow-down" _label={translate('kol-table-settings-move-down')} _hideLabel _variant="ghost" />
 
+							<KolInputCheckboxTag _checked _label={translate('kol-table-settings-show-column', { placeholders: { column: 'Left Column' } })} _hideLabel />
+							<span>Left Column</span>
+							<KolInputNumberTag _hideLabel _value={10} _label={translate('kol-table-settings-column-width', { placeholders: { column: 'Left Column' } })} />
+							<KolButtonWcTag _icons="codicon codicon-arrow-up" _label={translate('kol-table-settings-move-up')} _hideLabel _variant="ghost" />
+							<KolButtonWcTag _icons="codicon codicon-arrow-down" _label={translate('kol-table-settings-move-down')} _hideLabel _variant="ghost" />
+
+							<KolInputCheckboxTag _checked _label={translate('kol-table-settings-show-column', { placeholders: { column: 'Left Column' } })} _hideLabel />
+							<span>Left Column</span>
+							<KolInputNumberTag _hideLabel _value={10} _label={translate('kol-table-settings-column-width', { placeholders: { column: 'Left Column' } })} />
+							<KolButtonWcTag _icons="codicon codicon-arrow-up" _label={translate('kol-table-settings-move-up')} _hideLabel _variant="ghost" />
+							<KolButtonWcTag _icons="codicon codicon-arrow-down" _label={translate('kol-table-settings-move-down')} _hideLabel _variant="ghost" />
+
+							<KolInputCheckboxTag _checked _label={translate('kol-table-settings-show-column', { placeholders: { column: 'Left Column' } })} _hideLabel />
+							<span>Left Column</span>
+							<KolInputNumberTag _hideLabel _value={10} _label={translate('kol-table-settings-column-width', { placeholders: { column: 'Left Column' } })} />
+							<KolButtonWcTag _icons="codicon codicon-arrow-up" _label={translate('kol-table-settings-move-up')} _hideLabel _variant="ghost" />
+							<KolButtonWcTag _icons="codicon codicon-arrow-down" _label={translate('kol-table-settings-move-down')} _hideLabel _variant="ghost" />
+
+							<KolInputCheckboxTag _checked _label={translate('kol-table-settings-show-column', { placeholders: { column: 'Left Column' } })} _hideLabel />
+							<span>Left Column</span>
 							<KolInputNumberTag _hideLabel _value={10} _label={translate('kol-table-settings-column-width', { placeholders: { column: 'Left Column' } })} />
 							<KolButtonWcTag _icons="codicon codicon-arrow-up" _label={translate('kol-table-settings-move-up')} _hideLabel _variant="ghost" />
 							<KolButtonWcTag _icons="codicon codicon-arrow-down" _label={translate('kol-table-settings-move-down')} _hideLabel _variant="ghost" />

@@ -7,37 +7,19 @@
 			top: 0;
 			right: 0;
 
-			&__content {
-				padding: rem(24);
-				min-width: rem(800);
-			}
-
-			&__title {
-				font-size: rem(20);
-				font-weight: 600;
-				margin: 0 0 rem(24);
+			&__columns-container {
+				margin-top: rem(16);
+				max-height: rem(200);
+				overflow: auto;
 			}
 
 			&__columns {
-				display: flex;
-				flex-direction: column;
-				gap: rem(16);
-			}
-
-			&__column {
-				display: flex;
 				align-items: center;
+				display: grid;
 				gap: rem(8);
-				padding-left: rem(24);
-			}
-
-			&__actions {
-				display: flex;
-				justify-content: flex-end;
-				gap: rem(8);
-				margin-top: rem(24);
-				padding-top: rem(16);
-				border-top: 1px solid #eee;
+				grid-auto-rows: min-content;
+				grid-template-columns: min-content 1fr rem(100) auto auto;
+				overflow: hidden;
 			}
 		}
 	}
