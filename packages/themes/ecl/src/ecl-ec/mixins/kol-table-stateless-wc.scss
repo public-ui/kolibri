@@ -7,9 +7,11 @@
 		display: block;
 		font-family: var(--font-family);
 
-		overflow-x: auto;
-		overflow-y: hidden;
-		padding: 0.5em;
+		&__scroll-container {
+			overflow-x: auto;
+			overflow-y: hidden;
+			padding: 0.5em;
+		}
 
 		&__caption {
 			padding: 0.5em;

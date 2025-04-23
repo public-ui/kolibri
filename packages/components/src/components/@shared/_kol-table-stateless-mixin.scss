@@ -11,9 +11,12 @@
 			display: block;
 			font-size: rem(16);
 			max-width: 100%;
-			overflow-x: auto;
-			overflow-y: hidden;
 			position: relative;
+
+			&__scroll-container {
+				overflow-x: auto;
+				overflow-y: hidden;
+			}
 
 			&__table {
 				width: 100%;

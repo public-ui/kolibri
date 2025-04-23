@@ -3,9 +3,11 @@
 @mixin kol-table-settings-styles {
 	@layer kol-component {
 		.kol-table-settings {
+			background: #fff;
 			position: absolute;
-			top: 0;
 			right: 0;
+			top: 0;
+			z-index: 1;
 
 			&__columns-container {
 				margin-top: rem(16);

@@ -794,52 +794,58 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.checkboxRefs = [];
 
 		return (
-			/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-			 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
-			 */
-			/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
-			<div ref={(element) => (this.tableDivElement = element)} class="kol-table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
-				<table
-					class="kol-table__table"
-					style={{
-						minWidth: this.state._minWidth,
-					}}
+			<div class="kol-table">
+				<KolTableSettingsWcTag />
+
+				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
+				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
+				 */}
+				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+				<div
+					ref={(element) => (this.tableDivElement = element)}
+					class="kol-table__scroll-container"
+					tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}
 				>
-					{/*
-					 * The following element allows the table to receive focus without providing redundant content to screen readers.
-					 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
-					 * prevent screen readers from just reading "blank".
-					 */}
-					{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-					<div class="kol-table__focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
-						&nbsp;
-					</div>
+					<table
+						class="kol-table__table"
+						style={{
+							minWidth: this.state._minWidth,
+						}}
+					>
+						{/*
+						 * The following element allows the table to receive focus without providing redundant content to screen readers.
+						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
+						 * prevent screen readers from just reading "blank".
+						 */}
+						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+						<div class="kol-table__focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
+							&nbsp;
+						</div>
 
-					<caption class="kol-table__caption" id="caption">
-						{this.state._label}
-					</caption>
+						<caption class="kol-table__caption" id="caption">
+							{this.state._label}
+						</caption>
 
-					<KolTableSettingsWcTag />
-
-					{Array.isArray(this.state._headerCells.horizontal) && (
-						<thead class="kol-table__head">
-							{[
-								this.state._headerCells.horizontal.map((cols, rowIndex) => (
-									<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
-										{this.state._selection && this.renderHeadingSelectionCell()}
-										{rowIndex === 0 && this.renderHeaderTdCell()}
-										{Array.isArray(cols) && cols.map((cell, colIndex) => this.renderHeadingCell(cell, rowIndex, colIndex, false))}
-									</tr>
-								)),
-								this.renderSpacer('head', this.state._headerCells.horizontal),
-							]}
-						</thead>
-					)}
-					<tbody class="kol-table__body">
-						{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
-					</tbody>
-					{this.renderFoot()}
-				</table>
+						{Array.isArray(this.state._headerCells.horizontal) && (
+							<thead class="kol-table__head">
+								{[
+									this.state._headerCells.horizontal.map((cols, rowIndex) => (
+										<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
+											{this.state._selection && this.renderHeadingSelectionCell()}
+											{rowIndex === 0 && this.renderHeaderTdCell()}
+											{Array.isArray(cols) && cols.map((cell, colIndex) => this.renderHeadingCell(cell, rowIndex, colIndex, false))}
+										</tr>
+									)),
+									this.renderSpacer('head', this.state._headerCells.horizontal),
+								]}
+							</thead>
+						)}
+						<tbody class="kol-table__body">
+							{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
+						</tbody>
+						{this.renderFoot()}
+					</table>
+				</div>
 			</div>
 		);
 	}
