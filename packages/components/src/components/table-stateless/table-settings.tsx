@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, State, Fragment } from '@stencil/core';
+import { Component, Fragment, h, State } from '@stencil/core';
 import { translate } from '../../i18n';
-import { KolPopoverButtonWcTag, KolInputNumberTag, KolInputCheckboxTag, KolButtonWcTag, KolHeadingTag } from '../../core/component-names';
+import { KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
 
 interface ColumnSettings {
 	key: string;
@@ -27,6 +27,8 @@ export class KolTableSettings {
 		{ key: 'col5', label: 'Actions Column', visible: true, width: 10, position: 4 },
 	];
 
+	private popoverRef: HTMLKolPopoverButtonWcElement | undefined;
+
 	private moveColumn(columnId: string, direction: 'up' | 'down'): void {
 		const columnSettings = [...this.columnSettings];
 
@@ -51,6 +53,7 @@ export class KolTableSettings {
 
 		return (
 			<KolPopoverButtonWcTag
+				ref={(el) => (this.popoverRef = el)}
 				class="kol-table-settings"
 				_icons="codicon codicon-settings-gear"
 				_label={translate('kol-table-settings')}
@@ -97,7 +100,15 @@ export class KolTableSettings {
 					</div>
 
 					<div class="kol-table-settings__actions">
-						<KolButtonWcTag _label={translate('kol-table-settings-cancel')} _variant="secondary" />
+						<KolButtonWcTag
+							_label={translate('kol-table-settings-cancel')}
+							_variant="secondary"
+							_on={{
+								onClick: () => {
+									void this.popoverRef?.hidePopover();
+								},
+							}}
+						/>
 						<KolButtonWcTag _label={translate('kol-table-settings-apply')} _variant="primary" />
 					</div>
 				</div>
