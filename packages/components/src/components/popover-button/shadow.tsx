@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
 import { KolPopoverButtonWcTag } from '../../core/component-names';
 import type { PopoverButtonProps } from '../../schema/components/popover-button';
 import type {
@@ -31,9 +31,21 @@ import type {
 	shadow: true,
 })
 export class KolPopoverButton implements PopoverButtonProps {
+	private ref?: HTMLKolPopoverButtonWcElement;
+
+	/**
+	 * Hides the popover programmatically by forwarding the call to the web component.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async hidePopover() {
+		void this.ref?.hidePopover();
+	}
+
 	public render(): JSX.Element {
 		return (
 			<KolPopoverButtonWcTag
+				ref={(element) => (this.ref = element)}
 				_accessKey={this._accessKey}
 				_ariaControls={this._ariaControls}
 				_ariaDescription={this._ariaDescription}

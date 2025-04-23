@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
@@ -39,6 +39,15 @@ export class KolPopoverButton implements PopoverButtonProps {
 		_popoverAlign: 'bottom',
 	};
 	@State() private justClosed = false;
+
+	/**
+	 * Hides the popover programmatically by calling the native hidePopover method.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async hidePopover() {
+		void this.refPopover?.hidePopover();
+	}
 
 	/* Regarding type issue see https://github.com/microsoft/TypeScript/issues/54864 */
 	private handleBeforeToggle(event: Event) {
