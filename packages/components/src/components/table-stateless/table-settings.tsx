@@ -1,7 +1,8 @@
 import type { JSX } from '@stencil/core';
-import { Component, Fragment, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 interface ColumnSettings {
 	key: string;
@@ -19,6 +20,7 @@ interface ColumnSettings {
 	shadow: false,
 })
 export class KolTableSettings {
+	@Element() private readonly host?: HTMLKolTableSettingsWcElement;
 	@State() columnSettings: ColumnSettings[] = [];
 	@Prop() _columnSettings: ColumnSettings[] = [];
 
@@ -50,6 +52,17 @@ export class KolTableSettings {
 
 		// re-sort by position and update
 		this.columnSettings = newCols.sort((colA, colB) => colA.position - colB.position);
+	}
+
+	private handleCancel() {
+		void this.popoverRef?.hidePopover();
+	}
+
+	private handleApply(): void {
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.tableSettingsChange, this.columnSettings);
+			void this.popoverRef?.hidePopover();
+		}
 	}
 
 	public render(): JSX.Element {
@@ -104,16 +117,8 @@ export class KolTableSettings {
 					</div>
 
 					<div class="kol-table-settings__actions">
-						<KolButtonWcTag
-							_label={translate('kol-table-settings-cancel')}
-							_variant="secondary"
-							_on={{
-								onClick: () => {
-									void this.popoverRef?.hidePopover();
-								},
-							}}
-						/>
-						<KolButtonWcTag _label={translate('kol-table-settings-apply')} _variant="primary" />
+						<KolButtonWcTag _label={translate('kol-table-settings-cancel')} _variant="secondary" _on={{ onClick: () => this.handleCancel() }} />
+						<KolButtonWcTag _label={translate('kol-table-settings-apply')} _variant="primary" _on={{ onClick: () => this.handleApply() }} />
 					</div>
 				</div>
 			</KolPopoverButtonWcTag>

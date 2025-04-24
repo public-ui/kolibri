@@ -179,6 +179,11 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	}
 
+	@Listen('kolTableSettingsChange')
+	public handleSettingsChange(event: CustomEvent<ColumnSettings[]>) {
+		this.columnSettings = event.detail;
+	}
+
 	public disconnectedCallback() {
 		this.tableDivElementResizeObserver?.disconnect();
 	}
@@ -551,6 +556,10 @@ export class KolTableStateless implements TableStatelessAPI {
 		);
 	};
 
+	private getColumnSettings(cell: KoliBriTableCell | KoliBriTableHeaderCell): ColumnSettings | undefined {
+		return this.columnSettings.find((setting) => setting.key === (cell as KoliBriTableHeaderCellWithLogic).key);
+	}
+
 	/**
 	 * Renders a table cell, either as a data cell (`<td>`) or a header cell (`<th>`).
 	 * If a custom `render` function is provided in the cell, it will be used to display content.
@@ -561,6 +570,12 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @returns {JSX.Element}  The rendered table cell (either `<td>` or `<th>`).
 	 */
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element => {
+		// Skip rendering if the column is not visible
+		const columnSetting = this.getColumnSettings(cell);
+		if (columnSetting && !columnSetting.visible) {
+			return '';
+		}
+
 		let key = `${rowIndex}-${colIndex}-${cell.label}`;
 		if (cell.data) {
 			const dataKey = this.getDataKey(cell.data);
@@ -713,6 +728,12 @@ export class KolTableStateless implements TableStatelessAPI {
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
+		// Skip rendering if the column is not visible
+		const columnSetting = this.getColumnSettings(cell);
+		if (columnSetting && !columnSetting.visible) {
+			return '';
+		}
+
 		let ariaSort = undefined;
 		let sortButtonIcon = 'codicon codicon-fold';
 
