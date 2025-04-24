@@ -54,6 +54,14 @@ export class KolTableSettings {
 		this.columnSettings = newCols.sort((colA, colB) => colA.position - colB.position);
 	}
 
+	private handleVisibilityChange(key: string, visible: unknown): void {
+		this.columnSettings = this.columnSettings.map((col) => (col.key === key ? { ...col, visible: Boolean(visible) } : col));
+	}
+
+	private handleWidthChange(key: string, width: unknown): void {
+		this.columnSettings = this.columnSettings.map((col) => (col.key === key ? { ...col, width: Number(width) } : col));
+	}
+
 	private handleCancel() {
 		void this.popoverRef?.hidePopover();
 	}
@@ -87,13 +95,17 @@ export class KolTableSettings {
 									<KolInputCheckboxTag
 										_checked={column.visible}
 										_label={translate('kol-table-settings-show-column', { placeholders: { column: column.label } })}
+										_value={true}
 										_hideLabel
+										_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key, value) }}
 									/>
 									<span>{column.label}</span>
 									<KolInputNumberTag
 										_hideLabel
 										_value={column.width}
 										_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
+										_min={0}
+										_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key, value) }}
 									/>
 									<KolButtonWcTag
 										_icons="codicon codicon-arrow-up"
