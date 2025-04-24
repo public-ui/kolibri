@@ -9,7 +9,9 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="first-level tree-link">
           <span class="tree-link-inner" slot="expert">
             <span class="toggle-button-placeholder"></span>
-            Label
+            <span class="text">
+              Label
+            </span>
           </span>
         </kol-link-wc>
         <ul hidden="" id="tree-group-nonce" role="group">
@@ -30,7 +32,9 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="0" class="active first-level tree-link">
           <span class="tree-link-inner" slot="expert">
             <span class="toggle-button-placeholder"></span>
-            Label
+            <span class="text">
+              Label
+            </span>
           </span>
         </kol-link-wc>
         <ul hidden="" id="tree-group-nonce" role="group">
@@ -51,7 +55,9 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="first-level tree-link">
           <span class="tree-link-inner" slot="expert">
             <span class="toggle-button-placeholder"></span>
-            Label
+            <span class="text">
+              Label
+            </span>
           </span>
         </kol-link-wc>
         <ul hidden="" id="tree-group-nonce" role="group">
@@ -72,7 +78,9 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="first-level tree-link">
           <span class="tree-link-inner" slot="expert">
             <span class="toggle-button-placeholder"></span>
-            Label
+            <span class="text">
+              Label
+            </span>
           </span>
         </kol-link-wc>
         <ul hidden="" id="tree-group-nonce" role="group">
@@ -93,7 +101,9 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="first-level tree-link">
           <span class="tree-link-inner" slot="expert">
             <span class="toggle-button-placeholder"></span>
-            Label
+            <span class="text">
+              Label
+            </span>
           </span>
         </kol-link-wc>
         <ul hidden="" id="tree-group-nonce" role="group">
