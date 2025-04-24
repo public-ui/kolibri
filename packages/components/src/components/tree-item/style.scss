@@ -33,6 +33,10 @@
 		align-items: center;
 	}
 
+	a {
+		text-decoration: none;
+	}
+
 	a .kol-span-wc {
 		place-items: unset; // unset 'center' style from global layer
 	}
@@ -44,5 +48,9 @@
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	.text {
+		text-decoration: underline;
 	}
 }

@@ -31,13 +31,16 @@
 
 		a {
 			color: var(--color-text);
-			text-decoration: none;
 			text-align: left;
 
 			.toggle-button:hover {
 				.toggle-button-icon::part(icon) {
 					transform: scale(1.6);
 				}
+			}
+
+			.text {
+				text-decoration: none;
 			}
 		}
 	}
