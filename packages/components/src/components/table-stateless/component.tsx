@@ -595,7 +595,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					rowSpan={cell.rowSpan}
 					style={{
 						textAlign: cell.textAlign,
-						width: cell.width,
+						width: columnSetting?.width ? `${columnSetting.width}ch` : cell.width,
 					}}
 					ref={
 						typeof cell.render === 'function'
@@ -729,8 +729,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
 		// Skip rendering if the column is not visible
-		const columnSetting = this.getColumnSettings(cell);
-		if (columnSetting && !columnSetting.visible) {
+		const columnSettings = this.getColumnSettings(cell);
+		if (columnSettings && !columnSettings.visible) {
 			return '';
 		}
 
@@ -763,7 +763,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
 				style={{
-					width: cell.width,
+					width: columnSettings?.width ? `${columnSettings.width}ch` : cell.width,
 				}}
 				aria-sort={ariaSort}
 				data-sort={`sort-${cell.sortDirection}`}
