@@ -82,7 +82,6 @@
 	/* compact button */
 	:host > div > div:last-child {
 		margin-top: 0.5em;
-		width: 100%;
 		text-align: center;
 	}
 
@@ -103,5 +102,28 @@
 
 	.kol-span-wc {
 		justify-items: baseline;
+	}
+
+	.toggle-button :is(a, button) > .kol-span-wc,
+	.toggle-button :is(a, button):disabled:hover > .kol-span-wc {
+		background-color: var(--color-ghost);
+		color: var(--color-anthrazit);
+		display: grid;
+		place-items: center;
+		border-radius: 32px;
+		border-style: solid;
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		border-width: var(--spacing);
+		font-size: inherit;
+		padding: 0 rem(8);
+		border-color: transparent;
+	}
+
+	.toggle-button :is(a, button):hover > .kol-span-wc,
+	.toggle-button :is(a, button):focus > .kol-span-wc {
+		background-color: var(--color-ghost);
+		border-color: var(--color-ghost);
+		color: var(--color-anthrazit);
 	}
 }

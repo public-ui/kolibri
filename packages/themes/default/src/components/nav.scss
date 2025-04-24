@@ -1,5 +1,6 @@
 @use '../mixins/rem' as *;
 @use '../mixins/focus-outline' as *;
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
 	:host {
@@ -82,5 +83,26 @@
 		.button-inner {
 			justify-content: center;
 		}
+	}
+
+	.toggle-button :is(a, button) > .kol-span-wc,
+	.toggle-button :is(a, button):disabled:hover > .kol-span-wc {
+		color: var(--color-primary);
+		font-weight: 700;
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
+		border-color: var(--color-light);
+		background-color: var(--color-light);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		box-shadow: none;
+	}
+
+	.toggle-button :is(a, button):active > .kol-span-wc,
+	.toggle-button :is(a, button):hover > .kol-span-wc {
+		background-color: var(--color-primary-variant);
+		border-color: var(--color-primary-variant);
+		box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
+		color: var(--color-light);
 	}
 }
