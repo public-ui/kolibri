@@ -56,7 +56,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 							) : (
 								<span class="kol-tree-item__toggle-button-placeholder"></span>
 							)}
-							{_label}
+							<span class="kol-tree-item__text">{_label}</span>
 						</span>
 					</KolLinkWcTag>
 					<ul class="kol-tree-item__children" hidden={!_hasChildren || !_open} role="group" id={this.groupId}>
