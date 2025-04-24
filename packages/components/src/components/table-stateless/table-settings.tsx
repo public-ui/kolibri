@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Fragment, h, State } from '@stencil/core';
+import { Component, Fragment, h, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
 
@@ -19,13 +19,17 @@ interface ColumnSettings {
 	shadow: false,
 })
 export class KolTableSettings {
-	@State() columnSettings: ColumnSettings[] = [
-		{ key: 'col1', label: 'Left Column', visible: true, width: 10, position: 0 },
-		{ key: 'col2', label: 'Middle Column', visible: true, width: 10, position: 1 },
-		{ key: 'col3', label: 'Right Column', visible: true, width: 10, position: 2 },
-		{ key: 'col4', label: 'Status Column', visible: true, width: 10, position: 3 },
-		{ key: 'col5', label: 'Actions Column', visible: true, width: 10, position: 4 },
-	];
+	@State() columnSettings: ColumnSettings[] = [];
+	@Prop() _columnSettings: ColumnSettings[] = [];
+
+	@Watch('_columnSettings')
+	handleColumnSettingsChange(newValue: ColumnSettings[]) {
+		this.columnSettings = newValue;
+	}
+
+	public componentWillLoad() {
+		this.columnSettings = this._columnSettings;
+	}
 
 	private popoverRef: HTMLKolPopoverButtonWcElement | undefined;
 

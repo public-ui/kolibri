@@ -22,6 +22,7 @@ import type {
 	TableStatelessAPI,
 	TableStatelessStates,
 } from '../../schema';
+import type { ColumnSettings } from '../../schema/types/column-settings';
 import {
 	validateLabel,
 	validateTableCallbacks,
@@ -55,6 +56,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		_label: '',
 		_minWidth: 'auto',
 	};
+
+	@State() public columnSettings: ColumnSettings[] = [];
 
 	private tableDivElement?: HTMLDivElement;
 	private tableDivElementResizeObserver?: ResizeObserver;
@@ -119,6 +122,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	@Watch('_headerCells')
 	public validateHeaderCells(value?: TableHeaderCellsPropType) {
 		validateTableHeaderCells(this, value);
+		this.initializeColumnSettings();
 	}
 
 	@Watch('_label')
@@ -413,6 +417,18 @@ export class KolTableStateless implements TableStatelessAPI {
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.selectionChange, payload);
 		}
+	}
+
+	private initializeColumnSettings() {
+		const primaryHeaders = this.getPrimaryHeaders(this.state._headerCells as KoliBriTableHeaders);
+		this.columnSettings = primaryHeaders
+			.filter((header) => header.key) // only headers with a key are supported
+			.map((header, index) => ({
+				key: header.key ?? nonce(),
+				label: header.label,
+				position: index,
+				visible: true,
+			}));
 	}
 
 	public componentWillLoad(): void {
@@ -795,7 +811,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		return (
 			<div class="kol-table">
-				<KolTableSettingsWcTag />
+				<KolTableSettingsWcTag _columnSettings={this.columnSettings} />
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
