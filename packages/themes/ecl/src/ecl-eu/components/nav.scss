@@ -1,5 +1,4 @@
 @use '../../mixins/rem' as *;
-@use '../mixins/button' as *;
 
 @layer kol-theme-component {
 	.kol-nav {
@@ -58,12 +57,66 @@
 		}
 
 		&__toggle-button {
-			.kol-span {
-				border-color: transparent !important;
-				text-decoration: none !important;
-			}
+			.kol-button {
+				$root: &;
+				--kolibri-spacing: #{rem(4)};
+				--text-focus-outline-color: var(--color-white);
 
-			@include kol-button('kol-button');
+				font-family: var(--font-family);
+				appearance: none;
+				border-radius: 4px;
+				text-decoration: none;
+
+				&--ghost {
+					--text-color: #0e47cb;
+					--text-focus-outline-color: #0e47cb;
+
+					&:hover {
+						--text-color: #0e47cb;
+					}
+				}
+
+				&:focus {
+					outline: none;
+				}
+
+				&__text {
+					text-decoration: none !important;
+					min-height: rem(44);
+					min-width: rem(44);
+					border-radius: 4px;
+					font:
+						normal normal 400 rem(16) / rem(20) arial,
+						sans-serif;
+					font-weight: 400;
+					margin: 0;
+					padding: rem(12);
+					line-height: 1.2;
+
+					background-color: var(--text-background-color);
+					color: var(--text-color);
+
+					&:active,
+					&:hover {
+						box-shadow:
+							0 rem(2) rem(4) rgb(9 49 142 / 8%),
+							0 0 rem(10) rgb(9 49 142 / 4%),
+							0 rem(4) rem(5) rgb(9 49 142 / 4%),
+							0 rem(-4) rem(4) rgb(9 49 142 / 4%);
+					}
+
+					@at-root #{$root}:focus-visible & {
+						outline-offset: -4px;
+						outline: var(--text-focus-outline-color) solid rem(2);
+					}
+
+					@at-root #{$root}--hide-label & {
+						.kol-span__label {
+							display: none;
+						}
+					}
+				}
+			}
 		}
 	}
 
