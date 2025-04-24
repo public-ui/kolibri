@@ -300,6 +300,23 @@ export class KolTableStateless implements TableStatelessAPI {
 		return primaryHeadersWithKeys;
 	}
 
+	private getColumnPositionMap(): Map<string, number> {
+		const keyToPosition = new Map<string, number>();
+		this.columnSettings.forEach((setting) => {
+			keyToPosition.set(setting.key, setting.position);
+		});
+		return keyToPosition;
+	}
+
+	private sortByColumnPosition<T extends { key?: string }>(columns: T[]): T[] {
+		const keyToPosition = this.getColumnPositionMap();
+		return [...columns].sort((a, b) => {
+			const posA = keyToPosition.get(a.key ?? '') ?? Number.MAX_SAFE_INTEGER;
+			const posB = keyToPosition.get(b.key ?? '') ?? Number.MAX_SAFE_INTEGER;
+			return posA - posB;
+		});
+	}
+
 	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): (KoliBriTableCell & KoliBriTableDataType)[][] {
 		headers.horizontal = Array.isArray(headers?.horizontal) ? headers.horizontal : [];
 		headers.vertical = Array.isArray(headers?.vertical) ? headers.vertical : [];
@@ -319,6 +336,8 @@ export class KolTableStateless implements TableStatelessAPI {
 			rowCount[index] = 0;
 			rowSpans[index] = [];
 		});
+
+		const sortedPrimaryHeader = this.sortByColumnPosition(primaryHeader);
 
 		for (let i = startRow; i < maxRows; i++) {
 			const dataRow: KoliBriTableHeaderCellWithLogic[] = [];
@@ -351,33 +370,33 @@ export class KolTableStateless implements TableStatelessAPI {
 				if (this.horizontal === true) {
 					const row = isFoot && this.state._dataFoot ? this.state._dataFoot[i - startRow] : data[i];
 					if (
-						typeof primaryHeader[j] === 'object' &&
-						primaryHeader[j] !== null &&
-						typeof primaryHeader[j].key === 'string' &&
+						typeof sortedPrimaryHeader[j] === 'object' &&
+						sortedPrimaryHeader[j] !== null &&
+						typeof sortedPrimaryHeader[j].key === 'string' &&
 						typeof row === 'object' &&
 						row !== null
 					) {
 						dataRow.push({
-							...primaryHeader[j],
+							...sortedPrimaryHeader[j],
 							colSpan: undefined,
 							data: row,
-							label: row[primaryHeader[j].key as unknown as string] as string,
+							label: row[sortedPrimaryHeader[j].key as unknown as string] as string,
 							rowSpan: undefined,
 						});
 					}
 				} else {
 					if (
-						typeof primaryHeader[i] === 'object' &&
-						primaryHeader[i] !== null &&
-						typeof primaryHeader[i].key === 'string' &&
+						typeof sortedPrimaryHeader[i] === 'object' &&
+						sortedPrimaryHeader[i] !== null &&
+						typeof sortedPrimaryHeader[i].key === 'string' &&
 						typeof data[j] === 'object' &&
 						data[j] !== null
 					) {
 						dataRow.push({
-							...primaryHeader[i],
+							...sortedPrimaryHeader[i],
 							colSpan: undefined,
 							data: data[j],
-							label: data[j][primaryHeader[i].key as unknown as number] as string,
+							label: data[j][sortedPrimaryHeader[i].key as unknown as number] as string,
 							rowSpan: undefined,
 						});
 					}
@@ -830,6 +849,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		const dataField = this.createDataField(this.state._data, this.state._headerCells);
 		this.checkboxRefs = [];
 
+		const sortedHorizontalHeaders = this.state._headerCells.horizontal?.map((row) => this.sortByColumnPosition(row));
+
 		return (
 			<div class="kol-table">
 				<KolTableSettingsWcTag _columnSettings={this.columnSettings} />
@@ -863,17 +884,17 @@ export class KolTableStateless implements TableStatelessAPI {
 							{this.state._label}
 						</caption>
 
-						{Array.isArray(this.state._headerCells.horizontal) && (
+						{Array.isArray(sortedHorizontalHeaders) && (
 							<thead class="kol-table__head">
 								{[
-									this.state._headerCells.horizontal.map((cols, rowIndex) => (
+									sortedHorizontalHeaders.map((cols, rowIndex) => (
 										<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
 											{this.state._selection && this.renderHeadingSelectionCell()}
 											{rowIndex === 0 && this.renderHeaderTdCell()}
 											{Array.isArray(cols) && cols.map((cell, colIndex) => this.renderHeadingCell(cell, rowIndex, colIndex, false))}
 										</tr>
 									)),
-									this.renderSpacer('head', this.state._headerCells.horizontal),
+									this.renderSpacer('head', sortedHorizontalHeaders),
 								]}
 							</thead>
 						)}
