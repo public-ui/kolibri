@@ -97,6 +97,13 @@
 		text-decoration-thickness: calc(rem(16) / 8);
 	}
 
+	.badge-text-hint {
+		background: var(--color-mute-variant);
+		border-radius: 3px;
+		color: var(--color-text);
+		padding: 0 0.3em;
+	}
+
 	@keyframes spin {
 		0% {
 			transform: rotate(0deg);

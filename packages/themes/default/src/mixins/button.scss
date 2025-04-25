@@ -1,10 +1,7 @@
-@use './badge-text-hint' as *;
 @use './focus-outline' as *;
 @use './rem' as *;
 
 @mixin kol-button {
-	@include badge-text-hint;
-
 	:is(a, button) > .kol-span-wc {
 		font-weight: 700;
 		border-radius: var(--border-radius);
