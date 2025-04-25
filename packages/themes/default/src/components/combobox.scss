@@ -1,6 +1,5 @@
 @use '../mixins/rem' as *;
 @use '../mixins/alert-wc' as *;
-@use '../mixins/badge-text-hint' as *;
 @use '../mixins/input-error' as *;
 @use '../mixins/typography' as *;
 @use '../mixins/custom-suggestions-option' as *;
@@ -12,7 +11,6 @@ $option-height: rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
-	@include badge-text-hint;
 	@include kol-alert-theme;
 	@include kol-custom-suggestions-option-theme($option-height);
 	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
