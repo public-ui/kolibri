@@ -1,5 +1,4 @@
 @use '../mixins/alert-wc' as *;
-@use '../mixins/badge-text-hint' as *;
 @use '../mixins/form-field' as *;
 @use '../mixins/form-field-order' as *;
 @use '../mixins/input' as *;
@@ -9,7 +8,6 @@
 		font-family: var(--font-family);
 	}
 
-	@include badge-text-hint;
 	@include kol-alert-theme;
 	@include kol-form-field-theme;
 	@include kol-form-field-order-theme;
