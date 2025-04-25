@@ -17,11 +17,11 @@ const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefa
 ) => {
 	test.describe('Callbacks and DOM events', () => {
 		const EVENTS: [string, Callback, string, unknown?][] = [
-			['click', Callback.onClick, 'kolClick'],
-			['focus', Callback.onFocus, 'kolFocus'],
-			['blur', Callback.onBlur, 'kolBlur'],
-			['input', Callback.onInput, 'kolInput', testValue],
-			['change', Callback.onChange, 'kolChange', testValue],
+			['click', Callback.onClick, 'kol-click'],
+			['focus', Callback.onFocus, 'kol-focus'],
+			['blur', Callback.onBlur, 'kol-blur'],
+			['input', Callback.onInput, 'kol-input', testValue],
+			['change', Callback.onChange, 'kol-change', testValue],
 		];
 
 		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([nativeEventName, callbackName, kolEventName, testValue]) => {
