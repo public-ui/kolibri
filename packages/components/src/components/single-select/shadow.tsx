@@ -73,8 +73,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 		if (this.state._disabled) {
 			return;
 		} else {
-			this._isOpen = !this._isOpen;
-			if (this._isOpen) {
+			if (!this._hasOpened) {
+				this._isOpen = true;
+				this._hasOpened = true;
 				this.refInput?.focus();
 				const selectedIndex = Array.isArray(this._filteredOptions) ? this._filteredOptions.findIndex((option) => option.label === this._inputValue) : -1;
 				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
@@ -89,6 +90,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 			this._filteredOptions = [...this.state._options];
 		}
 		this._isOpen = false;
+		this._hasOpened = false;
 	}
 
 	private clearSelection() {
@@ -359,6 +361,8 @@ export class KolSingleSelect implements SingleSelectAPI {
 				break;
 			case 'Esc':
 			case 'Escape': {
+				this._hasOpened = false;
+				this._isOpen = false;
 				handleEvent(false);
 				break;
 			}
@@ -422,6 +426,9 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private _inputValue: string = '';
 	@State()
 	private blockSuggestionMouseOver: boolean = false;
+	@State()
+	private _hasOpened = false;
+
 	/**
 	 * Defines which key combination can be used to trigger or focus the interactive element of the component.
 	 */
