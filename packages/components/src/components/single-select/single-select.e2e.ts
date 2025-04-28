@@ -17,7 +17,6 @@ const fillAction: FillAction = async (page) => {
 	await page.getByRole('button').click();
 	await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 };
-
 const selectInput = (page: Page) => {
 	return page.getByTestId('single-select-input');
 };
