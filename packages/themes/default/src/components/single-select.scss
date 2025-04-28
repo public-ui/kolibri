@@ -1,5 +1,4 @@
 @use '../mixins/alert-wc' as *;
-@use '../mixins/badge-text-hint' as *;
 @use '../mixins/input-error' as *;
 @use '../mixins/rem' as *;
 @use '../mixins/typography' as *;
@@ -8,8 +7,6 @@ $option-height: rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
-	@include badge-text-hint;
-
 	:host {
 		font-family: var(--font-family);
 		@include kol-alert-theme;
