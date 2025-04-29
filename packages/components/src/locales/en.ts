@@ -47,6 +47,7 @@ export default {
 	'table-settings-column-width': '{{column}} width',
 	'table-settings-move-up': 'Move column up',
 	'table-settings-move-down': 'Move column down',
+	'table-settings-error-all-invisible': 'At least one column must be visible.',
 	dropdown: 'Dropdown',
 	'nav-label-open': 'Submenu for {{label}} open',
 	'nav-label-close': 'Submenu for {{label}} close',

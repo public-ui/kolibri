@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
-import { KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
+import { KolAlertWcTag, KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { TableSettingsPropType } from '../../schema/props/table-settings';
 import type { ColumnSettings } from '../../schema';
@@ -16,6 +16,7 @@ import type { ColumnSettings } from '../../schema';
 export class KolTableSettings {
 	@Element() private readonly host?: HTMLKolTableSettingsWcElement;
 	@State() tableSettings: TableSettingsPropType = { columns: [] };
+	@State() errorMessage: string | null = null;
 	@Prop() _tableSettings: TableSettingsPropType = { columns: [] };
 
 	@Watch('_tableSettings')
@@ -77,7 +78,13 @@ export class KolTableSettings {
 	}
 
 	private handleApply(): void {
-		if (this.host) {
+		const hasVisibleColumn = this.tableSettings.columns.some((column) => column.visible);
+
+		if (!hasVisibleColumn) {
+			this.errorMessage = translate('kol-table-settings-error-all-invisible');
+			return;
+		} else if (this.host) {
+			this.errorMessage = null;
 			dispatchDomEvent(this.host, KolEvent.tableSettingsChange, this.tableSettings);
 			void this.popoverRef?.hidePopover();
 		}
@@ -97,6 +104,8 @@ export class KolTableSettings {
 			>
 				<div class="kol-table-settings__content">
 					<KolHeadingTag _label={translate('kol-table-settings')} _level={0} />
+
+					{this.errorMessage && <KolAlertWcTag _type="error" _label={this.errorMessage} _variant="msg" class="kol-table-settings__error-message" />}
 
 					<div class="kol-table-settings__columns-container">
 						<div class="kol-table-settings__columns">

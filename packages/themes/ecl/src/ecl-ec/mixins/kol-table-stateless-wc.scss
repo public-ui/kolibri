@@ -1,6 +1,9 @@
 @use '../../mixins/rem' as *;
+@use './alert-wc' as *;
 
 @mixin kol-table-stateless-wc {
+	@include kol-alert-theme;
+
 	.kol-table {
 		$root: &;
 

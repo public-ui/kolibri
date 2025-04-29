@@ -12,6 +12,11 @@
 			@include kol-button('kol-button'); // use buttons styles only in the content, not for the popover button
 		}
 
+		&__error-message {
+			display: block;
+			margin-top: rem(16);
+		}
+
 		&__columns {
 			padding: rem(8); // some space for hover and focus styles
 		}

@@ -1,8 +1,10 @@
 @use './rem' as *;
 @use './kol-table-settings-wc' as *;
+@use './alert-wc' as *;
 
 @mixin kol-table-stateless-theme {
 	@include kol-table-settings-theme;
+	@include kol-alert-theme;
 
 	.kol-table {
 		$root: &;
