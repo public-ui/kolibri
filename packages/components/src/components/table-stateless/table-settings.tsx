@@ -114,7 +114,7 @@ export class KolTableSettings {
 										_hideLabel
 										_value={column.width}
 										_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
-										_min={0}
+										_min={1}
 										_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key, value) }}
 									/>
 									<KolButtonWcTag
