@@ -3,14 +3,8 @@ import { Component, Element, Fragment, h, Prop, State, Watch } from '@stencil/co
 import { translate } from '../../i18n';
 import { KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-
-interface ColumnSettings {
-	key: string;
-	label: string;
-	visible: boolean;
-	width: number;
-	position: number;
-}
+import type { TableSettingsPropType } from '../../schema/props/table-settings';
+import type { ColumnSettings } from '../../schema';
 
 /**
  * @internal
@@ -21,22 +15,29 @@ interface ColumnSettings {
 })
 export class KolTableSettings {
 	@Element() private readonly host?: HTMLKolTableSettingsWcElement;
-	@State() columnSettings: ColumnSettings[] = [];
-	@Prop() _columnSettings: ColumnSettings[] = [];
+	@State() tableSettings: TableSettingsPropType = { columns: [] };
+	@Prop() _tableSettings: TableSettingsPropType = { columns: [] };
 
-	@Watch('_columnSettings')
-	handleColumnSettingsChange(newValue: ColumnSettings[]) {
-		this.columnSettings = newValue;
+	@Watch('_tableSettings')
+	handleTableSettingsChange(newValue: TableSettingsPropType) {
+		this.tableSettings = {
+			...newValue,
+			columns: this.sortColumnsByPosition(newValue.columns),
+		};
 	}
 
 	public componentWillLoad() {
-		this.columnSettings = this._columnSettings;
+		this.handleTableSettingsChange(this._tableSettings);
 	}
 
 	private popoverRef: HTMLKolPopoverButtonWcElement | undefined;
 
+	private sortColumnsByPosition(columns: ColumnSettings[]): ColumnSettings[] {
+		return [...columns].sort((colA, colB) => colA.position - colB.position);
+	}
+
 	private moveColumn(columnId: string, direction: 'up' | 'down'): void {
-		const columnSettings = [...this.columnSettings];
+		const columnSettings = [...this.tableSettings.columns];
 
 		const sourceIndex = columnSettings.findIndex((col) => col.key === columnId);
 		const targetIndex = direction === 'up' ? sourceIndex - 1 : sourceIndex + 1;
@@ -51,15 +52,24 @@ export class KolTableSettings {
 		});
 
 		// re-sort by position and update
-		this.columnSettings = newCols.sort((colA, colB) => colA.position - colB.position);
+		this.tableSettings = {
+			...this.tableSettings,
+			columns: this.sortColumnsByPosition(newCols),
+		};
 	}
 
 	private handleVisibilityChange(key: string, visible: unknown): void {
-		this.columnSettings = this.columnSettings.map((col) => (col.key === key ? { ...col, visible: Boolean(visible) } : col));
+		this.tableSettings = {
+			...this.tableSettings,
+			columns: this.tableSettings.columns.map((col) => (col.key === key ? { ...col, visible: Boolean(visible) } : col)),
+		};
 	}
 
 	private handleWidthChange(key: string, width: unknown): void {
-		this.columnSettings = this.columnSettings.map((col) => (col.key === key ? { ...col, width: Number(width) } : col));
+		this.tableSettings = {
+			...this.tableSettings,
+			columns: this.tableSettings.columns.map((col) => (col.key === key ? { ...col, width: Number(width) } : col)),
+		};
 	}
 
 	private handleCancel() {
@@ -68,13 +78,13 @@ export class KolTableSettings {
 
 	private handleApply(): void {
 		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.tableSettingsChange, this.columnSettings);
+			dispatchDomEvent(this.host, KolEvent.tableSettingsChange, this.tableSettings);
 			void this.popoverRef?.hidePopover();
 		}
 	}
 
 	public render(): JSX.Element {
-		const sortedColumns = [...this.columnSettings].sort((a, b) => a.position - b.position);
+		const sortedColumns = [...this.tableSettings.columns].sort((a, b) => a.position - b.position);
 
 		return (
 			<KolPopoverButtonWcTag

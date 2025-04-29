@@ -5,3 +5,7 @@ export interface ColumnSettings {
 	position: number;
 	width?: number;
 }
+
+export interface TableSettings {
+	columns: ColumnSettings[];
+}
