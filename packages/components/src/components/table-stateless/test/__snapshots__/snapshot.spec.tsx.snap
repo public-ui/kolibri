@@ -5,7 +5,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
   <div class="kol-table">
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 400px;">
+      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
         <div aria-describedby="caption" class="kol-table__focus-element"></div>
         <caption class="kol-table__caption" id="caption">
           Table with horizontal and vertical headers
@@ -82,7 +82,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
   <div class="kol-table">
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 400px;">
+      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
         <div aria-describedby="caption" class="kol-table__focus-element"></div>
         <caption class="kol-table__caption" id="caption">
           Table with only horizontal headers
@@ -129,7 +129,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
   <div class="kol-table">
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 400px;">
+      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
         <div aria-describedby="caption" class="kol-table__focus-element"></div>
         <caption class="kol-table__caption" id="caption">
           Table with two horizontal header rows
@@ -191,7 +191,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
   <div class="kol-table">
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 400px;">
+      <table class="kol-table__table" style="min-width: max(400px, 0ch);">
         <div aria-describedby="caption" class="kol-table__focus-element"></div>
         <caption class="kol-table__caption" id="caption">
           Table with two spanned horizontal and vertical headers
