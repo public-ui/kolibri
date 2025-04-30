@@ -48,4 +48,6 @@ export default {
 	'hide-password': 'Hide',
 	'no-results-message': 'No results found.',
 	'delete-selection': 'Delete selection',
+	'pagination-position-top': 'top',
+	'pagination-position-bottom': 'bottom',
 };
