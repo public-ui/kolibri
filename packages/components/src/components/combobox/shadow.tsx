@@ -23,7 +23,7 @@ import clsx from 'clsx';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { ComboboxController } from './controller';
@@ -67,7 +67,7 @@ export class KolCombobox implements ComboboxAPI {
 				this._isOpen = true;
 				this._hasOpened = true;
 				const selectedIndex = this._filteredSuggestions.findIndex((option) => option === this.state._value);
-				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : -1;
 				this.focusOption(this._focusedOptionIndex);
 			}
 		}
@@ -81,11 +81,13 @@ export class KolCombobox implements ComboboxAPI {
 		this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail: { name: this.state._name, value: option } }), option);
 		this.controller.setFormAssociatedValue(option);
 		this.state._value = option;
+		this._value = option;
 		this.refInput?.focus();
 	}
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
 		this.state._value = target.value;
+		this._value = target.value;
 		this.controller.onFacade.onInput(event);
 		this.setFilteredSuggestionsByQuery(target.value);
 		this._focusedOptionIndex = -1;
@@ -479,7 +481,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: ComboboxStates = {
 		_hasValue: false,
@@ -646,7 +648,6 @@ export class KolCombobox implements ComboboxAPI {
 
 	private onChange(event: Event): void {
 		// Event handling
-		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, this.state._value);
 
 		// Static form handling

@@ -24,7 +24,7 @@ import clsx from 'clsx';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../span/InternalUnderlinedBadgeText';
 import { SingleSelectController } from './controller';
@@ -95,7 +95,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		} else {
 			const emptyValue = '';
 			this._focusedOptionIndex = -1;
-			this.state._value = emptyValue;
+			this._value = emptyValue;
 			this._inputValue = emptyValue;
 			this._filteredOptions = [...this.state._options];
 			this.controller.onFacade.onInput(new CustomEvent('input', { bubbles: true, detail: { name: this.state._name, value: emptyValue } }), true, emptyValue);
@@ -104,7 +104,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	private selectOption(option: Option<string>) {
-		this.state._value = option.value;
+		this._value = option.value;
 		this._inputValue = option.label as string;
 		this.controller.onFacade.onInput(new CustomEvent('input', { bubbles: true, detail: { name: this.state._name, value: option.value } }), false, option.value);
 		this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail: { name: this.state._name, value: option.value } }), option.value);
@@ -221,6 +221,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 								<input
 									ref={this.catchRef}
 									class="single-select__input"
+									data-testid="single-select-input"
 									type="text"
 									aria-autocomplete="both"
 									aria-controls="listbox"
@@ -558,7 +559,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: StencilUnknown;
+	@Prop({ mutable: true, reflect: true }) public _value?: StencilUnknown;
 
 	/**
 	 * Defines the whether the clear button should be hidden.
@@ -713,7 +714,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 		this.oldValue = this._value;
-		this._filteredOptions = this._options;
+		this._filteredOptions = this.state._options;
 		this.updateInputValue(this._value);
 	}
 
@@ -721,8 +722,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 		if (this.oldValue !== this.refInput?.value) {
 			this.oldValue = this.refInput?.value;
 		}
-		// Event handling
-		stopPropagation(event);
+
 		tryToDispatchKoliBriEvent('change', this.host, this._value);
 
 		// Callback
