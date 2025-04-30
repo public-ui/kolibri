@@ -678,6 +678,18 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	/**
+	 * Calculates and returns the minimum width for a table based on its settings and columns' visibility and widths.
+	 *
+	 * @return {string} The minimum width of the table as a string. If `_minWidth` is set to 'auto', the width is
+	 * calculated based on the total visible column widths in characters. Otherwise, it returns the greater value
+	 * between `_minWidth` and the calculated total visible column widths.
+	 */
+	private getTableMinWidth(): string {
+		const totalColumnWidth = this.state._tableSettings?.columns.filter((col) => col.visible).reduce((total, col) => total + (col.width ?? 0), 0) ?? 0;
+		return this.state._minWidth === 'auto' ? `${totalColumnWidth}ch` : `max(${this.state._minWidth}, ${totalColumnWidth}ch)`;
+	}
+
+	/**
 	 * Renders the header cell for row selection. This cell contains a checkbox for selecting
 	 * all rows when selection is enabled. If multiple selection is allowed, the checkbox allows
 	 * selecting/deselecting all rows at once. It also supports an indeterminate state
@@ -886,7 +898,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					<table
 						class="kol-table__table"
 						style={{
-							minWidth: this.state._minWidth,
+							minWidth: this.getTableMinWidth(),
 						}}
 					>
 						{/*

@@ -27,11 +27,12 @@ export const PredefinedSettings: FC = () => {
 				_tableSettings={{
 					columns: [
 						{ key: 'columnA', visible: false, label: 'Column A', position: 2 },
-						{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 60 },
-						{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 400 },
+						{ key: 'columnB', visible: true, label: 'Column B', position: 1, width: 20 },
+						{ key: 'columnC', visible: true, label: 'Column C', position: 0, width: 45 },
 					],
 				}}
 				_data={DATA}
+				_min-width="500px"
 				className="block"
 				style={{ maxWidth: '600px' }}
 			/>
