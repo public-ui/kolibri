@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { KolAlertWcTag, KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -77,7 +77,9 @@ export class KolTableSettings {
 		void this.popoverRef?.hidePopover();
 	}
 
-	private handleApply(): void {
+	private handleSubmit(event: Event): void {
+		event.preventDefault();
+
 		const hasVisibleColumn = this.tableSettings.columns.some((column) => column.visible);
 
 		if (!hasVisibleColumn) {
@@ -107,50 +109,52 @@ export class KolTableSettings {
 
 					{this.errorMessage && <KolAlertWcTag _type="error" _label={this.errorMessage} _variant="msg" class="kol-table-settings__error-message" />}
 
-					<div class="kol-table-settings__columns-container">
-						<div class="kol-table-settings__columns">
-							{sortedColumns.map((column, index) => (
-								<Fragment>
-									<KolInputCheckboxTag
-										_checked={column.visible}
-										_label={translate('kol-table-settings-show-column', { placeholders: { column: column.label } })}
-										_value={true}
-										_hideLabel
-										_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key, value) }}
-									/>
-									<span>{column.label}</span>
-									<KolInputNumberTag
-										_hideLabel
-										_value={column.width}
-										_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
-										_min={1}
-										_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key, value) }}
-									/>
-									<KolButtonWcTag
-										_icons="codicon codicon-arrow-up"
-										_label={translate('kol-table-settings-move-up')}
-										_hideLabel
-										_variant="ghost"
-										_on={{ onClick: () => this.moveColumn(column.key, 'up') }}
-										_disabled={index === 0}
-									/>
-									<KolButtonWcTag
-										_icons="codicon codicon-arrow-down"
-										_label={translate('kol-table-settings-move-down')}
-										_hideLabel
-										_variant="ghost"
-										_on={{ onClick: () => this.moveColumn(column.key, 'down') }}
-										_disabled={index === sortedColumns.length - 1}
-									/>
-								</Fragment>
-							))}
+					<form onSubmit={this.handleSubmit.bind(this)}>
+						<div class="kol-table-settings__columns-container">
+							<div class="kol-table-settings__columns">
+								{sortedColumns.map((column, index) => (
+									<div key={column.key} class="kol-table-settings__column">
+										<KolInputCheckboxTag
+											_checked={column.visible}
+											_label={translate('kol-table-settings-show-column', { placeholders: { column: column.label } })}
+											_value={true}
+											_hideLabel
+											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key, value) }}
+										/>
+										<span>{column.label}</span>
+										<KolInputNumberTag
+											_hideLabel
+											_value={column.width}
+											_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
+											_min={1}
+											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key, value) }}
+										/>
+										<KolButtonWcTag
+											_icons="codicon codicon-arrow-up"
+											_label={translate('kol-table-settings-move-up')}
+											_hideLabel
+											_variant="ghost"
+											_on={{ onClick: () => this.moveColumn(column.key, 'up') }}
+											_disabled={index === 0}
+										/>
+										<KolButtonWcTag
+											_icons="codicon codicon-arrow-down"
+											_label={translate('kol-table-settings-move-down')}
+											_hideLabel
+											_variant="ghost"
+											_on={{ onClick: () => this.moveColumn(column.key, 'down') }}
+											_disabled={index === sortedColumns.length - 1}
+										/>
+									</div>
+								))}
+							</div>
 						</div>
-					</div>
 
-					<div class="kol-table-settings__actions">
-						<KolButtonWcTag _label={translate('kol-table-settings-cancel')} _variant="secondary" _on={{ onClick: () => this.handleCancel() }} />
-						<KolButtonWcTag _label={translate('kol-table-settings-apply')} _variant="primary" _on={{ onClick: () => this.handleApply() }} />
-					</div>
+						<div class="kol-table-settings__actions">
+							<KolButtonWcTag _label={translate('kol-table-settings-cancel')} _variant="secondary" _on={{ onClick: () => this.handleCancel() }} />
+							<KolButtonWcTag _label={translate('kol-table-settings-apply')} _variant="primary" _type="submit" />
+						</div>
+					</form>
 				</div>
 			</KolPopoverButtonWcTag>
 		);

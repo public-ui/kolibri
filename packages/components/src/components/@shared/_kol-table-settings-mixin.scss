@@ -23,6 +23,10 @@
 				grid-template-columns: min-content 1fr rem(100) auto auto;
 				overflow: hidden;
 			}
+
+			&__column {
+				display: contents;
+			}
 		}
 	}
 }
