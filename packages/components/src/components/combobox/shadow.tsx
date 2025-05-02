@@ -70,7 +70,7 @@ export class KolCombobox implements ComboboxAPI {
 				this._isOpen = true;
 				this._hasOpened = true;
 				const selectedIndex = this._filteredSuggestions.findIndex((option) => option === this.state._value);
-				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : -1;
 				this.focusOption(this._focusedOptionIndex);
 			}
 		}

@@ -78,7 +78,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 				this._hasOpened = true;
 				this.refInput?.focus();
 				const selectedIndex = Array.isArray(this._filteredOptions) ? this._filteredOptions.findIndex((option) => option.label === this._inputValue) : -1;
-				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : -1;
 				this.focusOption(this._focusedOptionIndex);
 			}
 		}
@@ -254,6 +254,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 						{this._inputValue && !this.state._hideClearButton && (
 							<KolIconTag
 								_icons="codicon codicon-close"
+								data-testid="single-select-delete"
 								_label={translate('kol-delete-selection')}
 								onClick={() => {
 									this.clearSelection();
