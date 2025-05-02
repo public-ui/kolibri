@@ -68,12 +68,12 @@ void (async () => {
 					? new Set([
 							(t) =>
 								t('en', {
-									// https://github.com/public-ui/kolibri/blob/develop/packages/components/src/locales/en.ts
+									// https://github.com/public-ui/kolibri/blob/release/2/packages/components/src/locales/en.ts
 									'kol-error': 'Tiny error!',
 								}),
 							(t) =>
 								t('de', {
-									// https://github.com/public-ui/kolibri/blob/develop/packages/components/src/locales/de.ts
+									// https://github.com/public-ui/kolibri/blob/release/2/packages/components/src/locales/de.ts
 									'kol-error': 'Kleiner Fehler!',
 								}),
 						])
