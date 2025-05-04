@@ -29,7 +29,7 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 		<>
 			<h1 className="visually-hidden">{location.pathname.replace(/\//g, ' ')}</h1>
 			{hideMenus ? null : (
-				<div className="grid sm:flex gap-4 justify-between pb-sm border-b-1 border-b-solid border-gray">
+				<div className="grid sm:flex gap-4 justify-between pb-sm border-b-1 border-b-solid border-gray mb-2">
 					<div className="indented-text">{props.children}</div>
 					<ul className="flex flex-wrap gap-2 list-none m-0 p-0">
 						{codeLink && (
