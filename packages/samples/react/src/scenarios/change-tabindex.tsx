@@ -37,7 +37,7 @@ export const ChangeTabindex: FC = () => {
 
 			<div className="w-full grid gap-4">
 				<KolCard _label="Button" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolButton _label="Button 1, Tabindex 4" _variant="primary" tabIndex={4} />
 						<KolButton _disabled _label="Button 2, Tabindex 3" _variant="primary" tabIndex={3} />
 						<KolButton _label="Button 3, Tabindex 2" _variant="primary" tabIndex={2} />
@@ -46,7 +46,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="ButtonLink" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolButtonLink _label="ButtonLink 1, Tabindex 4" tabIndex={4} />
 						<KolButtonLink _disabled _label="ButtonLink 2, Tabindex 3" tabIndex={3} />
 						<KolButtonLink _label="ButtonLink 3, Tabindex 2" tabIndex={2} />
@@ -55,7 +55,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="Combobox" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolCombobox _hint={HINT_MSG} _label="Combobox 1, Tabindex 4" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} tabIndex={4} />
 						<KolCombobox _disabled _hint={HINT_MSG} _label="Combobox 2, Tabindex 3" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} tabIndex={3} />
 						<KolCombobox
@@ -72,7 +72,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputCheckbox" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputCheckbox _label="InputCheckbox 4, Tabindex 1" _value={false} tabIndex={4} />
 						<KolInputCheckbox _disabled _label="InputCheckbox 3, Tabindex 2" _value={false} tabIndex={3} />
 						<KolInputCheckbox _touched _label="InputCheckbox 2, Tabindex 3" _msg={{ _type: 'error', _description: ERROR_MSG }} _value={false} tabIndex={2} />
@@ -81,7 +81,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputColor" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputColor _value="#f08080" _label="InputCheckbox 1, Tabindex 4" tabIndex={4} />
 						<KolInputColor _disabled _value="#f08080" _label="InputCheckbox 2, Tabindex 3" tabIndex={3} />
 						<KolInputColor _touched _value="#f08080" _label="InputCheckbox 3, Tabindex 2" _msg={{ _type: 'error', _description: ERROR_MSG }} tabIndex={2} />
@@ -90,7 +90,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputDate" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputDate _type="datetime-local" _label="InputCheckbox 1, Tabindex 4" tabIndex={4} />
 						<KolInputDate _disabled _type="datetime-local" _label="InputCheckbox 2, Tabindex 3" tabIndex={3} />
 						<KolInputDate
@@ -105,7 +105,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputEmail" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputEmail _label="InputEmail 1, Tabindex 4" tabIndex={4} />
 						<KolInputEmail _disabled _label="InputEmail 2, Tabindex 3" tabIndex={3} />
 						<KolInputEmail _touched _label="InputEmail 3, Tabindex 2" _msg={{ _type: 'error', _description: ERROR_MSG }} tabIndex={2} />
@@ -114,7 +114,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputFile" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputFile _label="InputFile 1, Tabindex 4" tabIndex={4} />
 						<KolInputFile _disabled _label="InputFile 2, Tabindex 3" tabIndex={3} />
 						<KolInputFile _touched _label="InputFile 3, Tabindex 2" _msg={{ _type: 'error', _description: ERROR_MSG }} tabIndex={2} />
@@ -123,7 +123,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputNumber" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputNumber _label="InputNumber 1, Tabindex 4" tabIndex={4} />
 						<KolInputNumber _disabled _label="InputNumber 2, Tabindex 3" tabIndex={3} />
 						<KolInputNumber _touched _label="InputNumber 3, Tabindex 2" _msg={{ _type: 'error', _description: ERROR_MSG }} tabIndex={2} />
@@ -132,7 +132,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputPassword" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputPassword _label="InputPassword 1, Tabindex 4" tabIndex={4} />
 						<KolInputPassword _disabled _label="InputPassword 2, Tabindex 3" tabIndex={3} />
 						<KolInputPassword _touched _label="InputPassword 3, Tabindex 2" _msg={{ _type: 'error', _description: ERROR_MSG }} tabIndex={2} />
@@ -141,7 +141,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputRadio" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputRadio
 							_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)','value':'Mr.'},{'label':'Company','value':'Company'}]"
 							_label="InputRadio 1, Tabindex 4"
@@ -169,7 +169,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputRange" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputRange _label="InputRange 1, Tabindex 4" _min={0} _max={50} tabIndex={4} />
 						<KolInputRange _disabled _label="InputRange 2, Tabindex 3" _min={0} _max={50} tabIndex={3} />
 						<KolInputRange _touched _label="InputRange 3, Tabindex 2" _min={0} _max={50} _msg={{ _type: 'error', _description: ERROR_MSG }} tabIndex={2} />
@@ -178,7 +178,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="InputText" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolInputText _label="InputText 1, Tabindex 4" tabIndex={4} />
 						<KolInputText _disabled _label="InputText 2, Tabindex 3" tabIndex={3} />
 						<KolInputText _touched _label="InputText 3, Tabindex 2" _msg={{ _type: 'error', _description: ERROR_MSG }} tabIndex={2} />
@@ -187,7 +187,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="LinkButton" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolLinkButton _href={'#/back-page'} _label="InputText 1, Tabindex 4" _variant="primary" tabIndex={4}></KolLinkButton>
 						<KolLinkButton _disabled _href={'#/back-page'} _label="InputText 2, Tabindex 3" _variant="primary" tabIndex={3}></KolLinkButton>
 						<KolLinkButton _href={'#/back-page'} _label="InputText 3, Tabindex 2" _variant="primary" tabIndex={2}></KolLinkButton>
@@ -196,14 +196,16 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="Link" _level={0}>
-					<KolLink _href="#/back-page" _label="InputText 1, Tabindex 4" tabIndex={4} />
-					<KolLink _disabled _href="#/back-page" _label="InputText 2, Tabindex 3" tabIndex={3} />
-					<KolLink _href="#/back-page" _label="InputText 3, Tabindex 2" tabIndex={2} />
-					<KolLink _href="#/back-page" _label="InputText 4, Tabindex 1" tabIndex={1} />
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
+						<KolLink _href="#/back-page" _label="InputText 1, Tabindex 4" tabIndex={4} />
+						<KolLink _disabled _href="#/back-page" _label="InputText 2, Tabindex 3" tabIndex={3} />
+						<KolLink _href="#/back-page" _label="InputText 3, Tabindex 2" tabIndex={2} />
+						<KolLink _href="#/back-page" _label="InputText 4, Tabindex 1" tabIndex={1} />
+					</div>
 				</KolCard>
 
 				<KolCard _label="SingleSelect" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolSingleSelect _label="InputText 1, Tabindex 4" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} tabIndex={4} />
 						<KolSingleSelect _disabled _label="InputText 2, Tabindex 3" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} tabIndex={3} />
 						<KolSingleSelect
@@ -219,7 +221,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="SplitButton" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolSplitButton _label="InputText 1, Tabindex 4" tabIndex={4}>
 							Dropdown-Inhalt
 						</KolSplitButton>
@@ -236,7 +238,7 @@ export const ChangeTabindex: FC = () => {
 				</KolCard>
 
 				<KolCard _label="Textarea" _level={0}>
-					<div className="flex flex-wrap gap-4">
+					<div className="grid sm:flex flex-wrap gap-4 items-end">
 						<KolTextarea _label="Textarea 1, Tabindex 4" _rows={3} _placeholder="Placeholder" tabIndex={4} />
 						<KolTextarea _disabled _label="Textarea 2, Tabindex 3" _rows={3} _placeholder="Placeholder" tabIndex={3} />
 						<KolTextarea
