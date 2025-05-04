@@ -460,7 +460,9 @@ export const HandoutBasic: FC = () => {
 							<div className="grid gap-4">
 								<KolInputRadio _orientation="horizontal" _options="[{'label':'Mr.','value':0},{'label':'Mrs.','value':1}]" _value="0" _label={`Salutation`} />
 								<KolInputCheckbox _label="">
-									I accept the <KolAbbr _label="General Terms and Conditions">AGB</KolAbbr>.
+									<span slot="expert">
+										I accept the <KolAbbr _label="General Terms and Conditions">AGB</KolAbbr>.
+									</span>
 								</KolInputCheckbox>
 							</div>
 							<KolTextarea _rows={4} _label={`Textarea`} />
