@@ -190,7 +190,7 @@ export const HandoutBasic: FC = () => {
 
 	return (
 		<div className="grid gap-4">
-			<div className="grid gap-4 grid-cols-[auto_1fr_1fr] items-center">
+			<div className="grid gap-4 md:grid-cols-[auto_1fr_1fr] items-center">
 				<KolKolibri className="block w-75px" _labeled={false}></KolKolibri>
 				<KolHeading _label="" _level={1}>
 					<span slot="expert">
@@ -441,7 +441,7 @@ export const HandoutBasic: FC = () => {
 				</KolCard>
 				<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Input" _level={2}>
 					<KolForm slot="">
-						<div className="grid gap-4 grid-cols-3 p-2">
+						<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 p-2">
 							<KolInputColor _label={`Color`} />
 							<KolInputFile _label={`Upload file`} />
 							<KolInputNumber _label={`Number input`} />
@@ -460,7 +460,9 @@ export const HandoutBasic: FC = () => {
 							<div className="grid gap-4">
 								<KolInputRadio _orientation="horizontal" _options="[{'label':'Mr.','value':0},{'label':'Mrs.','value':1}]" _value="0" _label={`Salutation`} />
 								<KolInputCheckbox _label="">
-									I accept the <KolAbbr _label="General Terms and Conditions">AGB</KolAbbr>.
+									<span slot="expert">
+										I accept the <KolAbbr _label="General Terms and Conditions">AGB</KolAbbr>.
+									</span>
 								</KolInputCheckbox>
 							</div>
 							<KolTextarea _rows={4} _label={`Textarea`} />

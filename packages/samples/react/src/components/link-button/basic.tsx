@@ -15,16 +15,14 @@ export const LinkButtonBasic: FC = () => (
 			<p>KolLinkButton renders a link that looks like a button. The sample shows the different styling variants.</p>
 		</SampleDescription>
 
-		<div className="grid gap-14">
-			<div className="flex flex-wrap gap-14">
-				<KolLinkButton _label="Primary" _variant="primary" {...ARGS}></KolLinkButton>
-				<KolLinkButton _label="Secondary" _variant="secondary" {...ARGS}></KolLinkButton>
-				<KolLinkButton _label="Normal" _variant="normal" {...ARGS}></KolLinkButton>
-				<KolLinkButton _label="Danger" _variant="danger" {...ARGS}></KolLinkButton>
-				<KolLinkButton _label="Ghost" _variant="ghost" {...ARGS}></KolLinkButton>
-				<KolLinkButton _label="Access Key" _variant="primary" _accessKey="c" {...ARGS}></KolLinkButton>
-				<KolLinkButton _label="Short Key" _variant="primary" _shortKey="s" {...ARGS}></KolLinkButton>
-			</div>
+		<div className="flex flex-wrap gap-2">
+			<KolLinkButton _label="Primary" _variant="primary" {...ARGS}></KolLinkButton>
+			<KolLinkButton _label="Secondary" _variant="secondary" {...ARGS}></KolLinkButton>
+			<KolLinkButton _label="Normal" _variant="normal" {...ARGS}></KolLinkButton>
+			<KolLinkButton _label="Danger" _variant="danger" {...ARGS}></KolLinkButton>
+			<KolLinkButton _label="Ghost" _variant="ghost" {...ARGS}></KolLinkButton>
+			<KolLinkButton _label="Access Key" _variant="primary" _accessKey="c" {...ARGS}></KolLinkButton>
+			<KolLinkButton _label="Short Key" _variant="primary" _shortKey="s" {...ARGS}></KolLinkButton>
 		</div>
 	</>
 );

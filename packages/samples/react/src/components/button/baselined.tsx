@@ -19,7 +19,7 @@ export const ButtonBaselined: FC = () => {
 				<p>This KolButton sample is used for internal testing purposes: It features multiple buttons with and without icons which are vertically aligned.</p>
 			</SampleDescription>
 
-			<div className="flex">
+			<div className="flex flex-wrap gap-2">
 				<KolButton _label="Label-Text" _on={dummyEventHandler}></KolButton>
 				<KolButton _label="Label-Text" _on={dummyEventHandler}></KolButton>
 				<KolButton _label="Label-Text" _on={dummyEventHandler}></KolButton>
