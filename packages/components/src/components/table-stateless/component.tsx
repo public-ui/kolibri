@@ -191,7 +191,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 	}
 
-	@Listen('kolTableSettingsChange')
+	@Listen('settingsChange')
 	public handleSettingsChange(event: CustomEvent<TableSettings>) {
 		setState(this, '_tableSettings', event.detail);
 	}

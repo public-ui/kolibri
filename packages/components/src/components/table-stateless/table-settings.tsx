@@ -87,7 +87,7 @@ export class KolTableSettings {
 			return;
 		} else if (this.host) {
 			this.errorMessage = null;
-			dispatchDomEvent(this.host, KolEvent.tableSettingsChange, this.tableSettings);
+			dispatchDomEvent(this.host, KolEvent.settingsChange, this.tableSettings);
 			void this.popoverRef?.hidePopover();
 		}
 	}

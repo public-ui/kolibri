@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { TableHeaderCellsPropType } from '../../schema';
+import type { TableHeaderCellsPropType, TableSettings } from '../../schema';
+import { KolEvent } from '../../utils/events';
 
 const DATA = [
 	{ id: '1001', name: 'John', age: 30 },
@@ -62,6 +63,47 @@ test.describe('kol-table-settings', () => {
 
 			// Verify name column is still hidden
 			await expect(nameCheckbox).not.toBeChecked();
+		});
+
+		test('it emits an DOM event when settings change', async ({ page }) => {
+			const tableStateless = page.locator('kol-table-stateless');
+			const settingsButton = page.getByTestId('popover-button').locator('button');
+			await settingsButton.click();
+
+			const eventPromise = tableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
+				return new Promise<TableSettings>((resolve) => {
+					element.addEventListener(KolEvent.settingsChange, (event: Event) => {
+						resolve((event as CustomEvent).detail as TableSettings);
+					});
+				});
+			}, KolEvent);
+
+			// Apply changes
+			const applyButton = page.getByTestId('table-settings-apply');
+			await applyButton.click();
+
+			await expect(eventPromise).resolves.toEqual({
+				columns: [
+					{
+						key: 'id',
+						label: 'ID',
+						position: 0,
+						visible: true,
+					},
+					{
+						key: 'name',
+						label: 'Name',
+						position: 1,
+						visible: true,
+					},
+					{
+						key: 'age',
+						label: 'Age',
+						position: 2,
+						visible: true,
+					},
+				],
+			});
 		});
 	});
 
