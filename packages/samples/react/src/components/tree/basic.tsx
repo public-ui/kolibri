@@ -66,7 +66,7 @@ export const TreeBasic: FC = () => {
 
 			<p>Current tree item: {subPage ?? 'none'}</p>
 
-			<div className="flex flex-row gap-2">
+			<div className="flex flex-wrap gap-2">
 				<KolButton _label="Change label for '1 Home'" _on={{ onClick: updateHomeLabel }}></KolButton>
 				<KolButton _label="Toggle '2.1.2.2 Pets'" _on={{ onClick: () => setShowPets(!showPets) }}></KolButton>
 				<KolButton _label="Toggle '2.2.1 Europe' (two levels at once)" _on={{ onClick: () => setShowEurope(!showEurope) }}></KolButton>
