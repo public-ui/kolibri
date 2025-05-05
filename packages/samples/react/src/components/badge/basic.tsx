@@ -11,7 +11,7 @@ export const BadgeBasic: FC = () => (
 			<p>KolBadge shows badges with a label, background color and optional icon.</p>
 		</SampleDescription>
 
-		<div className="flex gap-2">
+		<div className="flex flex-wrap gap-2">
 			<KolBadge _label="black"></KolBadge>
 			<KolBadge _color="#86ffc6" _label="teal"></KolBadge>
 			<KolBadge _color="#06539e" _label="blue"></KolBadge>

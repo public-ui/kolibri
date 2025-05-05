@@ -1,10 +1,8 @@
-@use '../mixins/badge-text-hint' as *;
 @use '../mixins/link' as *;
 @use '../mixins/rem' as *;
 
 @layer kol-theme-component {
 	@include kol-link('kol-button');
-	@include badge-text-hint;
 
 	.kol-button {
 		$root: &;

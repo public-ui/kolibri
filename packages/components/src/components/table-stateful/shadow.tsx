@@ -432,7 +432,12 @@ export class KolTableStateful implements TableAPI {
 	 *
 	 * @returns {JSX.Element} The rendered pagination controls including page range and navigation.
 	 */
-	private renderPagination(): JSX.Element {
+	private renderPagination(position: 'top' | 'bottom'): JSX.Element {
+		const label = translate('kol-table-pagination-label', {
+			placeholders: {
+				label: `${this.state._label} (${translate(`kol-pagination-position-${position}`)})`,
+			},
+		});
 		return (
 			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
 				<span>
@@ -461,7 +466,7 @@ export class KolTableStateful implements TableAPI {
 						_siblingCount={this.state._pagination._siblingCount}
 						_tooltipAlign="bottom"
 						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
-						_label={translate('kol-table-pagination-label', { placeholders: { label: this.state._label } })}
+						_label={label}
 					></KolPaginationTag>
 				</div>
 			</div>
@@ -533,8 +538,8 @@ export class KolTableStateful implements TableAPI {
 			this.showPagination ? (this.state._pagination?._pageSize ?? 10) : this.state._sortedData.length,
 			this.state._pagination._page || 1,
 		);
-		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination() : null;
-		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination() : null;
+		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination('top') : null;
+		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
 		const headerCells: TableHeaderCells = {
 			horizontal: this.state._headers.horizontal?.map((row) => row.map((cell) => ({ ...cell, sortDirection: this.getHeaderCellSortState(cell) }))),

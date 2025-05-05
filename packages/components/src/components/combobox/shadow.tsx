@@ -65,11 +65,12 @@ export class KolCombobox implements ComboboxAPI {
 		if (this.state._disabled === true) {
 			this._isOpen = false;
 		} else {
-			this._isOpen = !this._isOpen;
 			this.refInput?.focus();
-			if (this._isOpen && Array.isArray(this._filteredSuggestions) && this._filteredSuggestions.length > 0) {
+			if (!this._hasOpened && Array.isArray(this._filteredSuggestions) && this._filteredSuggestions.length > 0) {
+				this._isOpen = true;
+				this._hasOpened = true;
 				const selectedIndex = this._filteredSuggestions.findIndex((option) => option === this.state._value);
-				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : 0;
+				this._focusedOptionIndex = selectedIndex >= 0 ? selectedIndex : -1;
 				this.focusOption(this._focusedOptionIndex);
 			}
 		}
@@ -293,6 +294,8 @@ export class KolCombobox implements ComboboxAPI {
 				break;
 			case 'Esc':
 			case 'Escape': {
+				this._hasOpened = false;
+				this._isOpen = false;
 				handleEvent(false);
 				this.refInput?.focus();
 				break;
@@ -340,6 +343,8 @@ export class KolCombobox implements ComboboxAPI {
 	private _isOpen: boolean = false;
 	@State()
 	private _filteredSuggestions?: SuggestionsPropType;
+	@State()
+	private _hasOpened = false;
 
 	@Listen('click', { target: 'window' })
 	handleWindowClick(event: MouseEvent) {
@@ -590,6 +595,7 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private onBlur() {
+		this._hasOpened = false;
 		if (this._isOpen) {
 			this._isOpen = !this._isOpen;
 			this.refInput?.focus();
