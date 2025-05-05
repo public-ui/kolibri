@@ -28,7 +28,7 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
-import { KolButtonTag, KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import type { StencilUnknown } from '../../schema';
 import clsx from 'clsx';
 
@@ -237,7 +237,8 @@ export class KolNav implements NavAPI {
 				</nav>
 				{hasCompactButton && (
 					<div class="kol-nav__compact">
-						<KolButtonTag
+						<KolButtonWcTag
+							class="kol-nav__toggle-button"
 							_ariaControls="nav"
 							_ariaExpanded={!hideLabel}
 							_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
@@ -253,7 +254,7 @@ export class KolNav implements NavAPI {
 							}}
 							_tooltipAlign="right"
 							_variant="ghost"
-						></KolButtonTag>
+						></KolButtonWcTag>
 					</div>
 				)}
 			</div>

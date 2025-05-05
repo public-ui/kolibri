@@ -16,6 +16,7 @@
 				min-height: var(--a11y-min-size);
 				padding-left: max(calc((var(--indentation) * var(--level)) + $base-horizontal-padding), $base-horizontal-padding);
 				padding-right: rem(6);
+				text-decoration: none;
 			}
 
 			&--first-level .kol-link {
@@ -45,6 +46,10 @@
 			display: inline-flex;
 			justify-content: center;
 			align-items: center;
+		}
+
+		&__text {
+			text-decoration: underline;
 		}
 	}
 }

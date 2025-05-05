@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/preact",
-	"version": "3.0.0-rc.6",
+	"version": "3.0.0-rc.7",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -47,9 +47,6 @@
 	"scripts": {
 		"build": "unbuild"
 	},
-	"dependencies": {
-		"@public-ui/react": "workspace:*"
-	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"react": "18.3.1",
@@ -58,6 +55,7 @@
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
+		"@public-ui/react": "workspace:*",
 		"preact": ">=10.26.4"
 	},
 	"sideEffects": false,
