@@ -16,6 +16,9 @@
 @include kol-input-container;
 @include kol-input;
 
+$option-height: rem(40);
+$visible-options: var(--visible-options, 5);
+
 @layer kol-component {
 	.kol-single-select {
 		&__delete {
@@ -32,6 +35,10 @@
 			align-items: center;
 			justify-content: center;
 			min-height: rem(50);
+		}
+
+		.kol-custom-suggestions-options-group {
+			max-height: calc($option-height * $visible-options + rem(2));
 		}
 	}
 }

@@ -269,7 +269,11 @@ export class KolSingleSelect implements SingleSelectAPI {
 						<CustomSuggestionsToggleFc onClick={this.toggleListbox.bind(this)} disabled={this.state._disabled} />
 					</div>
 					{this._isOpen && !(this.state._disabled === true) && (
-						<CustomSuggestionsOptionsGroupFc blockSuggestionMouseOver={this.blockSuggestionMouseOver} onKeyDown={this.handleKeyDownDropdown.bind(this)}>
+						<CustomSuggestionsOptionsGroupFc
+							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
+							onKeyDown={this.handleKeyDownDropdown.bind(this)}
+							style={{ '--visible-options': `${this._rows ?? 5}` }}
+						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
 									<CustomSuggestionsOptionFc
