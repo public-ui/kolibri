@@ -9,6 +9,7 @@ import type {
 	PropHasCounter,
 	PropHideMsg,
 	PropHideLabel,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropReadOnly,
@@ -35,6 +36,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &

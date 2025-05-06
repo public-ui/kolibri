@@ -5,6 +5,7 @@ import type {
 	PropDisabled,
 	PropHideMsg,
 	PropHideLabel,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
@@ -16,7 +17,7 @@ import type {
 	PropShortKey,
 	PropAccessKey,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, Option, StencilUnknown, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, KoliBriHorizontalIcons, Option, StencilUnknown, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptions;
 type OptionalProps = {
@@ -31,6 +32,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropName &
 	PropRequired &
 	PropSyncValueBySelector &
@@ -51,6 +53,7 @@ type OptionalStates = {
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	KoliBriHIcons &
 	PropId &
 	PropName &
 	PropRequired &

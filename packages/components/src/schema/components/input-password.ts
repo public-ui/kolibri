@@ -7,6 +7,7 @@ import type {
 	PropHasCounter,
 	PropHideMsg,
 	PropHideLabel,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
@@ -17,7 +18,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHorizontalIcons, Stringified } from '../types';
+import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHorizontalIcons, KoliBriHIcons, Stringified } from '../types';
 import type { ButtonProps } from './button';
 import type { PropPasswordVariant } from '../props/variant/password-variant';
 
@@ -39,6 +40,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropName &
 	PropReadOnly &
 	PropRequired &
@@ -67,6 +69,7 @@ type OptionalStates = {
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
+	KoliBriHIcons &
 	PropMsg &
 	PropName &
 	PropReadOnly &

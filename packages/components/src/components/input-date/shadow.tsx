@@ -6,6 +6,7 @@ import type {
 	ButtonProps,
 	FocusableElement,
 	HideMsgPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputDateAPI,
 	InputDateStates,
@@ -13,7 +14,6 @@ import type {
 	InputTypeOnDefault,
 	InputTypeOnOff,
 	Iso8601,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -202,7 +202,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -349,7 +349,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

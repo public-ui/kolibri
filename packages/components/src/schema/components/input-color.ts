@@ -6,6 +6,7 @@ import type {
 	PropDisabled,
 	PropHideMsg,
 	PropHideLabel,
+	PropHorizontalIcons,
 	PropLabelWithExpertSlot,
 	PropMsg,
 	PropName,
@@ -14,7 +15,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHorizontalIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, KoliBriHorizontalIcons, Stringified, W3CInputValue } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -30,6 +31,7 @@ type OptionalProps = {
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropName &
 	PropShortKey &
 	PropSuggestions &
@@ -51,6 +53,7 @@ type OptionalStates = {
 } & PropAccessKey &
 	PropDisabled &
 	PropHideLabel &
+	KoliBriHIcons &
 	PropMsg &
 	PropName &
 	PropShortKey &

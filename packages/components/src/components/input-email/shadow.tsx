@@ -6,12 +6,12 @@ import type {
 	ButtonProps,
 	FocusableElement,
 	HideMsgPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputEmailAPI,
 	InputEmailStates,
 	InputTypeOnDefault,
 	InputTypeOnOff,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	MultiplePropType,
@@ -165,7 +165,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: Stringified<KoliBriHorizontalIcons>;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -317,7 +317,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 
