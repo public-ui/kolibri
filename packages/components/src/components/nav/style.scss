@@ -32,11 +32,13 @@
 		flex-grow: 1;
 	}
 
-	.kol-span-wc {
-		place-items: start;
-	}
+	.entry {
+		.kol-span-wc {
+			place-items: start;
+		}
 
-	.button {
-		text-align: left;
+		.button {
+			text-align: left;
+		}
 	}
 }
