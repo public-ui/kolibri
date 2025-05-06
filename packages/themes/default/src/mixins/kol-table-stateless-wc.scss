@@ -32,6 +32,7 @@
 
 		&__caption {
 			padding: rem(8) var(--a11y-min-size) rem(8) rem(8);
+			min-height: calc(var(--a11y-min-size) + 2px); // leave some extra space so the settings button doesn't overlap the table borders
 		}
 
 		&__focus-element {
