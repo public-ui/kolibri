@@ -1,0 +1,21 @@
+{
+	"$schema": "https://unpkg.com/knip@5/schema.json",
+	"entry": ["src/main.ts"],
+	"ignore": ["src/assets/**", "unocss.config.ts"],
+	"ignoreBinaries": ["cross-env", "webpack", "prettier", "eslint"],
+	"ignoreDependencies": [
+		"@leanup/stack",
+		"@leanup/stack-react",
+		"@leanup/stack-webpack",
+		"@public-ui/components",
+		"@public-ui/react",
+		"@public-ui/themes",
+		"@unocss/preset-uno",
+		"@unocss/webpack",
+		"ajv",
+		"eslint-plugin-jsx-a11y",
+		"eslint-plugin-react",
+		"uno.css"
+	],
+	"project": ["src/**/*.ts", "src/**/*.tsx"]
+}
