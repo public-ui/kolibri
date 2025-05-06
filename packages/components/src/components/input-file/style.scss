@@ -20,8 +20,16 @@
 		opacity: 0;
 		cursor: pointer;
 
-		&:disabled {
+		&::-webkit-file-upload-button,
+		&::file-selector-button {
+			cursor: pointer;
+		}
+
+		&:disabled,
+		&:disabled::-webkit-file-upload-button,
+		&:disabled::file-selector-button {
 			cursor: not-allowed;
+			pointer-events: none;
 		}
 	}
 
