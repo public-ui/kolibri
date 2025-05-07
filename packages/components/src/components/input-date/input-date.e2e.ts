@@ -138,7 +138,7 @@ test.describe('kol-input-date', () => {
 					const inputDateEventPromise = inputDate.evaluate((element: HTMLKolInputDateElement) => {
 						return new Promise<Date | Iso8601>((resolve) => {
 							element.addEventListener('kol-change', (e: Event) => {
-								const eventValue: Date | Iso8601 = (e as CustomEvent).detail;
+								const eventValue: Date | Iso8601 = (e as CustomEvent).detail as Date;
 								resolve(eventValue);
 							});
 						});
@@ -168,7 +168,7 @@ test.describe('kol-input-date', () => {
 					const inputDateEventPromise = inputDate.evaluate((element: HTMLKolInputDateElement) => {
 						return new Promise<Date | Iso8601>((resolve) => {
 							element.addEventListener('kol-input', (e: Event) => {
-								const eventValue: Date | Iso8601 = (e as CustomEvent).detail;
+								const eventValue: Date | Iso8601 = (e as CustomEvent).detail as Date;
 								resolve(eventValue);
 							});
 						});
