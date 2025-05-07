@@ -69,6 +69,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasExpertSlot = showExpertSlot(this.state._label);
 
+		// Cursor-Stil basierend auf disabled Zustand
+		const cursorStyle = this.state._disabled ? 'not-allowed' : 'pointer';
+
 		return (
 			<Host class="kol-input-file">
 				<KolInputTag
@@ -108,7 +111,48 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 							<span>{this.state._label}</span>
 						)}
 					</span>
-					<div slot="input">
+					<label
+						slot="input"
+						style={{
+							position: 'relative',
+							display: 'flex',
+							alignItems: 'center',
+							cursor: cursorStyle,
+							width: '100%',
+						}}
+						htmlFor={this.state._id}
+					>
+						<div
+							style={{
+								padding: '0.15em 0.4em',
+								border: '1px solid black',
+								borderRadius: '2px',
+								backgroundColor: '#f0f0f0',
+								whiteSpace: 'nowrap',
+								margin: '6px',
+								fontSize: '15px',
+								textAlign: 'left',
+								cursor: cursorStyle,
+							}}
+							aria-hidden="true"
+						>
+							{this.state._multiple ? 'Dateien auswählen' : 'Datei auswählen'}
+						</div>
+
+						{/* Ersatz für den Text-Teil rechts */}
+						<div
+							style={{
+								color: '#333',
+								whiteSpace: 'nowrap',
+								overflow: 'hidden',
+								textOverflow: 'ellipsis',
+								cursor: cursorStyle,
+							}}
+							aria-hidden="true"
+						>
+							{this.state._value ? this.state._value : 'Keine Datei ausgewählt'}
+						</div>
+
 						<input
 							ref={this.catchRef}
 							title=""
@@ -129,6 +173,10 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 							onChange={this.onChange}
 							onInput={this.onInput}
 							onFocus={(event) => {
+								if (this.state._disabled) {
+									event.preventDefault();
+									return false;
+								}
 								this.controller.onFacade.onFocus(event);
 								this.inputHasFocus = true;
 							}}
@@ -136,8 +184,16 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 								this.controller.onFacade.onBlur(event);
 								this.inputHasFocus = false;
 							}}
+							style={{
+								position: 'absolute',
+								inset: '0',
+								width: '100%',
+								height: '100%',
+								opacity: '0',
+								cursor: cursorStyle,
+							}}
 						/>
-					</div>
+					</label>
 				</KolInputTag>
 			</Host>
 		);
@@ -406,12 +462,26 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	private onChange = (event: Event): void => {
 		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
-			const value = this.inputRef.files;
+			const files = this.inputRef.files;
 
-			this.controller.onFacade.onChange(event, value);
+			if (files && files.length > 0) {
+				if (this.state._multiple && files.length > 1) {
+					// Bei multiple Auswahl und mehr als einer Datei: Anzahl der Dateien anzeigen
+					this._value = `${files.length} Dateien`;
+				} else {
+					// Bei einer einzelnen Datei: Dateiname anzeigen
+					this._value = files[0].name;
+				}
+			} else {
+				// Keine Datei ausgewählt
+				this._value = undefined;
+			}
+
+			this.state._value = this._value; // Update the state with the new value
+			this.controller.onFacade.onChange(event, files);
 
 			// Static form handling
-			this.controller.setFormAssociatedValue(value);
+			this.controller.setFormAssociatedValue(files);
 		}
 	};
 
