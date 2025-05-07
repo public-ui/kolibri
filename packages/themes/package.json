@@ -48,7 +48,9 @@
 		"build:deps": "pnpm --filter @public-ui/themes^... build",
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
-		"lint": "tsc --noemit && eslint src",
+		"lint": "pnpm lint:eslint && pnpm lint:tsc",
+		"lint:eslint": "eslint src",
+		"lint:tsc": "tsc --noemit",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test-update-all": "pnpm -r --workspace-concurrency=1 test-update"
