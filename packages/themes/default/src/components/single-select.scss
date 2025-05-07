@@ -72,6 +72,7 @@ $visible-options: 5;
 				padding-left: rem(1);
 			}
 
+			&[aria-selected],
 			&:focus,
 			&.highlighted {
 				background-color: var(--color-primary-variant);
