@@ -636,6 +636,9 @@ importers:
       '@public-ui/theme-default':
         specifier: workspace:*
         version: link:../../themes/default
+      '@public-ui/theme-ecl':
+        specifier: workspace:*
+        version: link:../../themes/ecl
       '@stencil/core':
         specifier: 4.22.3
         version: 4.22.3
@@ -780,10 +783,6 @@ importers:
       yup:
         specifier: 1.6.1
         version: 1.6.1
-    optionalDependencies:
-      '@public-ui-/theme-ecl':
-        specifier: workspace:*
-        version: link:../../themes/ecl
 
   packages/test-tag-name-transformer:
     devDependencies:

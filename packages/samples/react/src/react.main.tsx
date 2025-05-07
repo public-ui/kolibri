@@ -6,6 +6,7 @@ import { setTagNameTransformer } from '@public-ui/react';
 import { bootstrap, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { DEFAULT } from '@public-ui/theme-default';
+import { ECL_EC, ECL_EU } from '@public-ui/theme-ecl';
 
 import { App } from './App';
 
@@ -34,17 +35,8 @@ const getThemes = async () => {
 		return [theme];
 	}
 
-	const optionalThemes: Theme[] = [];
-	const { ECL_EC, ECL_EU } = await import('@public-ui-/theme-ecl');
-
-	if (ECL_EC && ECL_EU) {
-		optionalThemes.push(ECL_EC, ECL_EU);
-	} else {
-		console.warn('Theme package @public-ui-/theme-ecl not available. Continuing without it.');
-	}
-
 	/* List of regular sample app themes */
-	return [DEFAULT, ...optionalThemes] as Theme[];
+	return [DEFAULT, ECL_EC, ECL_EU] as Theme[];
 };
 
 void (async () => {
