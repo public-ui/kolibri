@@ -30,11 +30,13 @@ export const DrawerBasic: FC = () => {
 			<DrawerRadioAlign value={align} onChange={(_, value) => setAlign(value as AlignPropType)} />
 			<div className="flex flex-wrap gap-4">
 				<KolDrawer ref={drawerElement} _label="I am a drawer" _align={align} _on={{ onClose: () => console.log('Drawer onClose triggered!') }}>
-					<p>
-						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-						voluptua.
-					</p>
-					<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
+					<div className={align === 'left' || align == 'right' ? 'drawer-content-vertical' : ''}>
+						<p>
+							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+							voluptua.
+						</p>
+						<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
+					</div>
 				</KolDrawer>
 				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.open() }} />
 			</div>
