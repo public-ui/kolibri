@@ -3,14 +3,10 @@
 exports[`kol-popover-button should render with _label="Click to toggle" 1`] = `
 <kol-popover-button>
   <template shadowrootmode="open">
-    <div class="kol-popover-button">
-      <kol-button-wc _label="Click to toggle" _tooltipalign="top" _type="button" _variant="normal" class="kol-popover-button__button" data-testid="popover-button">
-        <slot name="expert" slot="expert"></slot>
-      </kol-button-wc>
-      <div class="kol-popover-button__popover" data-testid="popover-content" id="popover" popover="auto">
-        <slot></slot>
-      </div>
-    </div>
+    <kol-popover-button-wc _label="Click to toggle" _popoveralign="bottom" _tooltipalign="top" _type="button" _variant="normal">
+      <slot name="expert" slot="expert"></slot>
+      <slot></slot>
+    </kol-popover-button-wc>
   </template>
 </kol-popover-button>
 `;

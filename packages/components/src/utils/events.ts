@@ -14,6 +14,7 @@ enum KolEvent {
 	sort = 'kolSort',
 	submit = 'kolSubmit',
 	toggle = 'kolToggle',
+	settingsChange = 'settingsChange',
 }
 
 function createKoliBriEvent<T>(event: KolEvent, detail?: T): CustomEvent {
