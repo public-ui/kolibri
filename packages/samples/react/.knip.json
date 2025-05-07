@@ -14,10 +14,10 @@
 	],
 	"ignoreDependencies": [
 		"@leanup/stack-webpack",
+		"@public-ui-/theme-ecl",
 		"@public-ui/components",
 		"@public-ui/react",
 		"@public-ui/theme-default",
-		"@public-ui/theme-ecl",
 		"@unocss/preset-uno",
 		"ajv",
 		"nightwatch-axe-verbose",

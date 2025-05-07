@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 
+const OPTIONAL_THEME_PACKAGE = '@public-ui-/theme-ecl';
+
 /**
  * @returns {null|string}
  */
@@ -28,5 +30,25 @@ module.exports = (...args) => {
 		}),
 	);
 	delete config.devServer.proxy;
+
+	config.externals = [
+		...(config.externals || []),
+
+		/* Handle optional theme dependencies */
+		({ request }, callback) => {
+			if (request === OPTIONAL_THEME_PACKAGE) {
+				try {
+					require.resolve(OPTIONAL_THEME_PACKAGE);
+					// Package exists, include it
+					return callback();
+				} catch (e) {
+					// Package doesn't exist, replace with empty module
+					return callback(null, 'null');
+				}
+			}
+			callback();
+		},
+	];
+
 	return config;
 };
