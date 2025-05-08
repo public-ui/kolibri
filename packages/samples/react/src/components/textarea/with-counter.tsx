@@ -4,7 +4,7 @@ import React from 'react';
 import { KolTextarea } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
-export const TextareaCounter: FC = () => (
+export const TextareaWithCounter: FC = () => (
 	<>
 		<SampleDescription>
 			<p>
