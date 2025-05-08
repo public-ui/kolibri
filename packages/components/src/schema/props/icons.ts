@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconsProp, KoliBriIconsState } from '../types';
+import type { AnyIconFontClass, KoliBriCustomIcon, KoliBriHorizontalIconsProp, KoliBriIconsProp, KoliBriIconsState } from '../types';
 import type { Stringified } from '../types/common';
 import type { WatchOptions } from '../utils';
 import { objectObjectHandler, parseJson, watchValidator } from '../utils';
@@ -10,12 +10,16 @@ import type { AlignPropType } from './align';
 
 /* types */
 export type IconsPropType = Stringified<KoliBriIconsProp>;
+export type IconsHorizontalPropType = Stringified<KoliBriHorizontalIconsProp>;
 
 /**
  * Defines the icon classnames.
  */
 export type PropIcons = {
 	icons: IconsPropType;
+};
+export type PropHorizontalIcons = {
+	icons: IconsHorizontalPropType;
 };
 
 /* validator */

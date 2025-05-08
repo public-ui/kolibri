@@ -8,9 +8,9 @@ import type {
 	FocusableElement,
 	HasCounterPropType,
 	HideMsgPropType,
+	IconsHorizontalPropType,
 	IdPropType,
 	InputTypeOnDefault,
-	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -165,7 +165,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: KoliBriHorizontalIcons;
+	@Prop() public _icons?: IconsHorizontalPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -313,7 +313,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	@Watch('_icons')
-	public validateIcons(value?: Stringified<KoliBriHorizontalIcons>): void {
+	public validateIcons(value?: IconsHorizontalPropType): void {
 		this.controller.validateIcons(value);
 	}
 

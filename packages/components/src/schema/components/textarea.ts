@@ -6,8 +6,9 @@ import type {
 	PropAdjustHeight,
 	PropDisabled,
 	PropHasCounter,
-	PropHideMsg,
 	PropHideLabel,
+	PropHideMsg,
+	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
 	PropMsg,
@@ -20,7 +21,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHorizontalIcons, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 
 export const cssResizeOptions = ['vertical', 'none'] as const;
 export type CSSResize = (typeof cssResizeOptions)[number];
@@ -28,7 +29,6 @@ export type CSSResize = (typeof cssResizeOptions)[number];
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
@@ -41,6 +41,7 @@ type OptionalProps = {
 	PropHasCounter &
 	PropHideMsg &
 	PropHideLabel &
+	PropHorizontalIcons &
 	PropId &
 	PropName &
 	PropReadOnly &
@@ -63,7 +64,6 @@ type RequiredStates = {
 
 type OptionalStates = {
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	placeholder: string;
@@ -72,6 +72,7 @@ type OptionalStates = {
 	PropDisabled &
 	PropHasCounter &
 	PropHideLabel &
+	KoliBriHIcons &
 	PropMsg &
 	PropName &
 	PropReadOnly &
