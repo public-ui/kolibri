@@ -4,8 +4,8 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropDisabled,
-	PropHideMsg,
 	PropHideLabel,
+	PropHideMsg,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -19,12 +19,11 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, KoliBriHorizontalIcons, SelectOption, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, SelectOption, Stringified, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptionsWithOptgroup;
 type OptionalProps = {
 	hint: string;
-	icons: Stringified<KoliBriHorizontalIcons>;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	tabIndex: number;
@@ -52,7 +51,6 @@ type RequiredStates = {
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	tabIndex: number;
 } & PropAccessKey &

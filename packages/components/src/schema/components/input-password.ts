@@ -5,8 +5,8 @@ import type {
 	PropAccessKey,
 	PropDisabled,
 	PropHasCounter,
-	PropHideMsg,
 	PropHideLabel,
+	PropHideMsg,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -18,15 +18,14 @@ import type {
 	PropSyncValueBySelector,
 	PropTouched,
 } from '../props';
-import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHorizontalIcons, KoliBriHIcons, Stringified } from '../types';
-import type { ButtonProps } from './button';
 import type { PropPasswordVariant } from '../props/variant/password-variant';
+import type { InputTypeOnDefault, InputTypeOnOff, KoliBriHIcons, Stringified } from '../types';
+import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	autoComplete: InputTypeOnOff;
 	hint: string;
-	icons: Stringified<KoliBriHorizontalIcons>;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;
@@ -57,7 +56,6 @@ type RequiredStates = {
 type OptionalStates = {
 	currentLength: number;
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	maxLength: number;
 	on: InputTypeOnDefault;
 	pattern: string;

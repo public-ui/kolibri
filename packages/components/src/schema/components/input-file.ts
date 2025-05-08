@@ -2,9 +2,10 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type {
 	MsgPropType,
+	PropAccessKey,
 	PropDisabled,
-	PropHideMsg,
 	PropHideLabel,
+	PropHideMsg,
 	PropHorizontalIcons,
 	PropId,
 	PropLabelWithExpertSlot,
@@ -12,19 +13,17 @@ import type {
 	PropMultiple,
 	PropName,
 	PropRequired,
+	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
-	PropAccessKey,
-	PropShortKey,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, KoliBriHorizontalIcons, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 import type { ButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accept: string;
 	hint: string;
-	icons: Stringified<KoliBriHorizontalIcons>;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
@@ -44,7 +43,6 @@ type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideMsg;
 type OptionalStates = {
 	accept: string;
 	hint: string;
-	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
 } & PropAccessKey &
