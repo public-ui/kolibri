@@ -15,6 +15,7 @@
 		"packages/schema",
 		"packages/themes/default",
 		"packages/themes/ecl",
+		"packages/themes",
 		"packages/tools/kolibri-cli",
 		"packages/tools/visual-tests"
 	],
