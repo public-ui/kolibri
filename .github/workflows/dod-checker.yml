@@ -9,7 +9,7 @@ concurrency:
 
 jobs:
   check-dod:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Print Pull Request ID
         run: |
